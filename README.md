@@ -35,7 +35,7 @@ sekmelere ulaşılıyor:
 | Günlük Çalışma Takibi | `/gunluk-takip` | Öğrenci | Her gün çalışılan konu, süre, doğru/yanlış/boş sayısı girilir ve geçmiş listelenir |
 | Ödevler | `/odevler` | İkisi de | Öğretmen ödev atar, öğrenci durumunu (Yapılıyor/Tamamlandı) günceller |
 | LGS / YKS / KPSS Denemeleri | `/denemeler` | Öğrenci | Ders bazlı doğru/yanlış/net girişi ve net gelişim grafiği |
-| Sorunlu Sorular | `/sorular` | İkisi de | Fotoğraflı soru gönderimi + öğretmenin yazılı yanıtı |
+| Sorunlu Sorular | `/sorular` | İkisi de | Fotoğraflı soru gönderimi, öğretmenin yazılı/fotoğraflı yanıtı, görsel büyütme ve öğrenci arşivi |
 | Mesajlar | `/mesajlar` | İkisi de | Öğrenci-öğretmen arası birebir, anlık mesajlaşma |
 
 Öğretmen tarafında, bir öğrencinin profiline tıkladığınızda (öğretmen
@@ -125,6 +125,13 @@ ayrıca soru fotoğraflarının yükleneceği depolama alanını otomatik kurar.
 > **KPSS deneme türünü kullanacaksanız:** `supabase/migration_kpss.sql`
 > dosyasını da aynı şekilde çalıştırın. Bu, deneme türü listesine
 > `KPSS`'yi ekler; mevcut LGS/TYT/AYT denemeleriniz etkilenmez.
+
+> **Öğretmenin fotoğraflı yanıt verebilmesi için:**
+> `supabase/migration_reply_image.sql` dosyasını da çalıştırın. Bu,
+> `questions` tablosuna tek bir kolon ekler — **yeni bir Storage bucket
+> açmanıza gerek yoktur**, öğrenci sorularının fotoğrafları için zaten
+> kurmuş olduğunuz `question-images` bucket'ı öğretmenin yanıt fotoğrafı
+> için de otomatik olarak kullanılır.
 
 ### Adım 4: Bağlantı bilgilerinizi alın
 

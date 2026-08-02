@@ -6,6 +6,51 @@ import QuestionForm from '../components/QuestionForm'
 import MyQuestionsList from '../components/MyQuestionsList'
 import QuestionInbox from '../components/QuestionInbox'
 
+function StudentQuestionsView({ questions, onSubmitted }) {
+  const [tab, setTab] = useState('active') // 'active' | 'archive'
+
+  const active = questions.filter((q) => q.status !== 'Çözüldü')
+  const archive = questions.filter((q) => q.status === 'Çözüldü')
+
+  return (
+    <>
+      <QuestionForm onSubmitted={onSubmitted} />
+
+      <div className="flex bg-white rounded-xl2 shadow-card border border-ink/5 p-1 w-fit">
+        <button
+          onClick={() => setTab('active')}
+          className={`focus-ring flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors ${
+            tab === 'active' ? 'bg-brand-50 text-brand-700' : 'text-ink/40 hover:text-ink/60'
+          }`}
+        >
+          Aktif Sorular
+          <span className="text-xs rounded-full bg-ink/5 px-1.5 py-0.5">{active.length}</span>
+        </button>
+        <button
+          onClick={() => setTab('archive')}
+          className={`focus-ring flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-colors ${
+            tab === 'archive' ? 'bg-brand-50 text-brand-700' : 'text-ink/40 hover:text-ink/60'
+          }`}
+        >
+          📚 Arşiv (Çözülenler)
+          <span className="text-xs rounded-full bg-ink/5 px-1.5 py-0.5">{archive.length}</span>
+        </button>
+      </div>
+
+      {tab === 'active' ? (
+        <MyQuestionsList questions={active} />
+      ) : (
+        <>
+          <p className="text-sm text-ink/50 -mt-2">
+            Geçmişte sorduğun ve öğretmeninin yanıtladığı tüm sorular — sınav öncesi tekrar için burada.
+          </p>
+          <MyQuestionsList questions={archive} />
+        </>
+      )}
+    </>
+  )
+}
+
 export default function Questions() {
   const { user, role } = useAuth()
   const [questions, setQuestions] = useState([])
@@ -52,10 +97,7 @@ export default function Questions() {
         {role === 'teacher' ? (
           <QuestionInbox questions={questions} onChanged={load} />
         ) : (
-          <>
-            <QuestionForm onSubmitted={load} />
-            <MyQuestionsList questions={questions} />
-          </>
+          <StudentQuestionsView questions={questions} onSubmitted={load} />
         )}
       </main>
     </div>

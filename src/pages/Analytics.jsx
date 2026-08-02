@@ -9,6 +9,7 @@ import TopicBarChart from '../components/TopicBarChart'
 import TrendLineChart from '../components/TrendLineChart'
 import QuestionDistributionChart from '../components/QuestionDistributionChart'
 import TopicProgressTable from '../components/TopicProgressTable'
+import SubjectNetTable from '../components/SubjectNetTable'
 import { buildDailyAccuracyTrend, buildSubjectDistribution, buildTopicStats } from '../lib/topicHelpers'
 import { buildSubjectPerformance } from '../lib/examHelpers'
 
@@ -97,11 +98,23 @@ export default function Analytics() {
           <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5">
             <h3 className="font-display font-bold text-lg text-ink mb-2">Deneme Sonuçlarına Göre Ders Başarısı</h3>
             <p className="text-xs text-ink/40 -mt-1 mb-2">
-              Girdiğin tüm deneme sınavlarındaki doğru/yanlış oranına göre, ana ders bazında
+              Net Başarı Yüzdesi = (Ortalama Net / Toplam Soru Sayısı) × 100
             </p>
-            <TopicBarChart data={subjectPerformance} />
+            <TopicBarChart
+              data={subjectPerformance}
+              tooltipLabel="Net Başarı"
+              emptyText="Henüz deneme sonucu girilmemiş."
+            />
           </div>
         </div>
+
+        <section>
+          <h2 className="font-display font-bold text-lg text-ink mb-1">Ders Bazlı Net Tablosu</h2>
+          <p className="text-sm text-ink/50 mb-3">
+            Tüm denemelerindeki ders bazlı ortalama ve toplam netlerin dökümü.
+          </p>
+          <SubjectNetTable data={subjectPerformance} />
+        </section>
 
         <section>
           <h2 className="font-display font-bold text-lg text-ink mb-1">Konu Bazlı Gelişim</h2>

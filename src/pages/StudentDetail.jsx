@@ -13,6 +13,7 @@ import MockExamTrendChart from '../components/MockExamTrendChart'
 import HomeworkForm from '../components/HomeworkForm'
 import HomeworkList from '../components/HomeworkList'
 import TopicProgressTable from '../components/TopicProgressTable'
+import SubjectNetTable from '../components/SubjectNetTable'
 import QuestionDistributionChart from '../components/QuestionDistributionChart'
 import { buildSubjectDistribution, buildTopicStats } from '../lib/topicHelpers'
 import { buildSubjectPerformance } from '../lib/examHelpers'
@@ -145,11 +146,21 @@ export default function StudentDetail() {
               <MockExamTrendChart exams={mockExams} />
             </div>
             <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5">
-              <h3 className="font-display font-bold text-lg text-ink mb-2">Ders Bazlı Başarı</h3>
-              <TopicBarChart data={subjectPerformance} />
+              <h3 className="font-display font-bold text-lg text-ink mb-2">Ders Bazlı Net Başarısı</h3>
+              <p className="text-xs text-ink/40 -mt-1 mb-2">
+                Net Başarı Yüzdesi = (Ortalama Net / Toplam Soru Sayısı) × 100
+              </p>
+              <TopicBarChart
+                data={subjectPerformance}
+                tooltipLabel="Net Başarı"
+                emptyText="Henüz deneme sonucu girilmemiş."
+              />
             </div>
           </div>
-          <MockExamList exams={mockExams} readOnly />
+          <SubjectNetTable data={subjectPerformance} />
+          <div className="mt-6">
+            <MockExamList exams={mockExams} readOnly />
+          </div>
         </section>
 
         <section>

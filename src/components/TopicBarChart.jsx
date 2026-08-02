@@ -6,11 +6,11 @@ function barColor(value) {
   return '#D14343'
 }
 
-export default function TopicBarChart({ data }) {
+export default function TopicBarChart({ data, tooltipLabel = 'Başarı', emptyText = 'Henüz konu bazlı veri yok.' }) {
   if (!data || data.length === 0) {
     return (
       <div className="h-64 grid place-items-center text-sm text-ink/40">
-        Henüz konu bazlı veri yok.
+        {emptyText}
       </div>
     )
   }
@@ -34,7 +34,7 @@ export default function TopicBarChart({ data }) {
         />
         <Tooltip
           cursor={{ fill: '#EEF2FC' }}
-          formatter={(value) => [`%${value}`, 'Başarı']}
+          formatter={(value) => [`%${value}`, tooltipLabel]}
           contentStyle={{ borderRadius: 12, border: '1px solid #E4E7F0' }}
         />
         <Bar dataKey="success" radius={[8, 8, 0, 0]} maxBarSize={48}>

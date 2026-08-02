@@ -12,34 +12,46 @@ export function calcNet(correct, incorrect) {
 }
 
 // Öğrencinin TÜM deneme sınavlarındaki (mock_exams + mock_exam_subjects)
-// sonuçlarını ana derse göre gruplayıp ortalama net ve başarı yüzdesi üretir.
-// Analiz ekranındaki "Deneme Sonuçlarına Göre Ders Başarısı" grafiği bunu kullanır.
+// sonuçlarını ana derse göre gruplar. Başarı, ham doğru/yanlış oranı değil,
+// DOĞRUDAN NET üzerinden hesaplanır: yanlışların (-0.25) ve boşların netlere
+// olan standart sınav etkisi zaten `net` alanında (veritabanında otomatik
+// hesaplanan generated column) yansımış durumdadır.
+//
+// Her ders için:
+//  - avgNet: o dersteki tüm denemelerin ortalama neti (asıl performans göstergesi)
+//  - totalNet: o dersteki tüm denemelerin net toplamı
+//  - netSuccessPct: ortalama net / o derste ortalama soru sayısı × 100
+//    (grafikte derslerin karşılaştırılabilmesi için 0-100 ölçeğine getirilmiş,
+//    yine tamamen net'e dayalı bir orandır — doğru/yanlış sayımı değildir)
 export function buildSubjectPerformance(mockExams) {
   const map = {}
 
   ;(mockExams ?? []).forEach((exam) => {
     ;(exam.mock_exam_subjects ?? []).forEach((s) => {
       if (!map[s.subject]) {
-        map[s.subject] = { subject: s.subject, correct: 0, incorrect: 0, empty: 0, netSum: 0, count: 0 }
+        map[s.subject] = { subject: s.subject, netSum: 0, questionSum: 0, examCount: 0 }
       }
       const row = map[s.subject]
-      row.correct += s.correct || 0
-      row.incorrect += s.incorrect || 0
-      row.empty += s.empty || 0
+      const questionCount = (s.correct || 0) + (s.incorrect || 0) + (s.empty || 0)
       row.netSum += Number(s.net || 0)
-      row.count += 1
+      row.questionSum += questionCount
+      row.examCount += 1
     })
   })
 
   return Object.values(map)
     .map((row) => {
-      const answered = row.correct + row.incorrect
-      const successPct = answered > 0 ? Math.round((row.correct / answered) * 100) : 0
+      const avgNet = Math.round((row.netSum / row.examCount) * 100) / 100
+      const avgQuestions = row.questionSum / row.examCount
+      const netSuccessPct = avgQuestions > 0 ? Math.max(0, Math.round((avgNet / avgQuestions) * 100)) : 0
       return {
-        topic: row.subject, // TopicBarChart bileşeniyle uyumlu olması için "topic" anahtarı kullanılıyor
-        success: successPct,
-        avgNet: Math.round((row.netSum / row.count) * 100) / 100,
+        topic: row.subject, // TopicBarChart/tablo bileşenleriyle uyumlu olması için "topic" anahtarı
+        subject: row.subject,
+        avgNet,
+        totalNet: Math.round(row.netSum * 100) / 100,
+        examCount: row.examCount,
+        success: netSuccessPct, // grafikteki renklendirme ve eksen için net-bazlı yüzde
       }
     })
-    .sort((a, b) => b.success - a.success)
+    .sort((a, b) => b.avgNet - a.avgNet)
 }
