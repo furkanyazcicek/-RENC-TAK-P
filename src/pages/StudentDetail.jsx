@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
 import Navbar from '../components/Navbar'
@@ -15,6 +15,7 @@ import HomeworkList from '../components/HomeworkList'
 import TopicProgressTable from '../components/TopicProgressTable'
 import SubjectNetTable from '../components/SubjectNetTable'
 import QuestionDistributionChart from '../components/QuestionDistributionChart'
+import DateFilterControl from '../components/DateFilterControl'
 import { buildSubjectDistribution, buildTopicStats } from '../lib/topicHelpers'
 import { buildSubjectPerformance } from '../lib/examHelpers'
 
@@ -27,6 +28,7 @@ export default function StudentDetail() {
   const [mockExams, setMockExams] = useState([])
   const [homeworks, setHomeworks] = useState([])
   const [loading, setLoading] = useState(true)
+  const [distributionDate, setDistributionDate] = useState(null)
 
   const load = useCallback(async () => {
     const [profileRes, examsRes, questionsRes, dailyLogsRes, mockExamsRes, homeworksRes] = await Promise.all([
@@ -99,7 +101,11 @@ export default function StudentDetail() {
     : '—'
 
   const topicStats = buildTopicStats(dailyLogs)
-  const subjectDistribution = buildSubjectDistribution(dailyLogs)
+  const distributionLogs = useMemo(
+    () => (distributionDate ? dailyLogs.filter((l) => l.study_date === distributionDate) : dailyLogs),
+    [dailyLogs, distributionDate]
+  )
+  const subjectDistribution = useMemo(() => buildSubjectDistribution(distributionLogs), [distributionLogs])
   const subjectPerformance = buildSubjectPerformance(mockExams)
 
   return (
@@ -176,7 +182,15 @@ export default function StudentDetail() {
           <div className="grid lg:grid-cols-2 gap-6 items-start mb-6">
             <DailyLogsList logs={dailyLogs} readOnly title="Bu Öğrencinin Çalışma Geçmişi" />
             <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5">
-              <h3 className="font-display font-bold text-lg text-ink mb-2">Derslere Göre Soru Dağılımı</h3>
+              <div className="flex items-center justify-between gap-2 flex-wrap mb-2">
+                <h3 className="font-display font-bold text-lg text-ink">Derslere Göre Soru Dağılımı</h3>
+                <DateFilterControl value={distributionDate} onChange={setDistributionDate} label="Dağılımı tarihe göre filtrele" />
+              </div>
+              <p className="text-xs text-ink/40 -mt-1 mb-2">
+                {distributionDate
+                  ? `${new Date(distributionDate).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' })} tarihinde çözülen sorular`
+                  : 'Tüm zamanlar'}
+              </p>
               <QuestionDistributionChart data={subjectDistribution} />
             </div>
           </div>

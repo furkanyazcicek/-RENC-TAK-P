@@ -31,7 +31,7 @@ export default function DailyLogsList({ logs, readOnly = false, onChanged, title
 
   return (
     <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5 flex flex-col gap-4">
-      <h3 className="font-display font-bold text-lg text-ink">{title}</h3>
+      {title && <h3 className="font-display font-bold text-lg text-ink">{title}</h3>}
       <ul className="flex flex-col gap-3 max-h-[520px] overflow-y-auto pr-1">
         {logs.map((log) => {
           const net = calcNet(log.correct, log.incorrect)

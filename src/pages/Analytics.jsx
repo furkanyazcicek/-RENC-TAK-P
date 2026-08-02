@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
 import Navbar from '../components/Navbar'
@@ -10,6 +10,9 @@ import TrendLineChart from '../components/TrendLineChart'
 import QuestionDistributionChart from '../components/QuestionDistributionChart'
 import TopicProgressTable from '../components/TopicProgressTable'
 import SubjectNetTable from '../components/SubjectNetTable'
+import DateFilterControl from '../components/DateFilterControl'
+import Modal from '../components/Modal'
+import DailyLogsList from '../components/DailyLogsList'
 import { buildDailyAccuracyTrend, buildSubjectDistribution, buildTopicStats } from '../lib/topicHelpers'
 import { buildSubjectPerformance } from '../lib/examHelpers'
 
@@ -18,6 +21,12 @@ export default function Analytics() {
   const [dailyLogs, setDailyLogs] = useState([])
   const [mockExams, setMockExams] = useState([])
   const [loading, setLoading] = useState(true)
+
+  // 1) "Son 14 Günün Çalışma Süresi" sütununa tıklanınca o günün detayını tutar
+  const [selectedDay, setSelectedDay] = useState(null)
+
+  // 2) "Derslere Göre Soru Dağılımı" için tarih filtresi (null = Tüm Zamanlar)
+  const [distributionDate, setDistributionDate] = useState(null)
 
   useEffect(() => {
     async function load() {
@@ -36,6 +45,19 @@ export default function Analytics() {
     }
     load()
   }, [user])
+
+  // Seçilen günün tüm çalışma kayıtları (modal içeriği)
+  const selectedDayLogs = useMemo(
+    () => dailyLogs.filter((l) => l.study_date === selectedDay),
+    [dailyLogs, selectedDay]
+  )
+
+  // Tarih filtresine göre daraltılmış kayıtlar → pasta grafiği bunları kullanır
+  const distributionLogs = useMemo(
+    () => (distributionDate ? dailyLogs.filter((l) => l.study_date === distributionDate) : dailyLogs),
+    [dailyLogs, distributionDate]
+  )
+  const subjectDistribution = useMemo(() => buildSubjectDistribution(distributionLogs), [distributionLogs])
 
   if (loading) {
     return (
@@ -57,10 +79,13 @@ export default function Analytics() {
 
   // Günlük çalışma kayıtlarından (daily_logs) konu bazlı detaylı istatistik
   const topicStats = buildTopicStats(dailyLogs)
-  const subjectDistribution = buildSubjectDistribution(dailyLogs)
   const dailyAccuracyTrend = buildDailyAccuracyTrend(dailyLogs)
 
   const totalSolved = dailyLogs.reduce((sum, l) => sum + (l.correct || 0) + (l.incorrect || 0) + (l.empty || 0), 0)
+
+  const selectedDayLabel = selectedDay
+    ? new Date(selectedDay).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric', weekday: 'long' })
+    : ''
 
   return (
     <div className="min-h-screen bg-paper">
@@ -75,7 +100,13 @@ export default function Analytics() {
 
         <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5">
           <h3 className="font-display font-bold text-lg text-ink mb-2">Son 14 Günün Çalışma Süresi</h3>
-          <StudyTimeChart logs={dailyLogs} />
+          <StudyTimeChart
+            logs={dailyLogs}
+            selectedDate={selectedDay}
+            onBarClick={(bucket) => {
+              if (bucket.minutes > 0) setSelectedDay(bucket.date)
+            }}
+          />
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6">
@@ -85,7 +116,15 @@ export default function Analytics() {
             <TrendLineChart data={dailyAccuracyTrend} />
           </div>
           <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5">
-            <h3 className="font-display font-bold text-lg text-ink mb-2">Derslere Göre Soru Dağılımı</h3>
+            <div className="flex items-center justify-between gap-2 flex-wrap mb-2">
+              <h3 className="font-display font-bold text-lg text-ink">Derslere Göre Soru Dağılımı</h3>
+              <DateFilterControl value={distributionDate} onChange={setDistributionDate} label="Dağılımı tarihe göre filtrele" />
+            </div>
+            <p className="text-xs text-ink/40 -mt-1 mb-2">
+              {distributionDate
+                ? `${new Date(distributionDate).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' })} tarihinde çözülen sorular`
+                : 'Tüm zamanlar'}
+            </p>
             <QuestionDistributionChart data={subjectDistribution} />
           </div>
         </div>
@@ -125,6 +164,14 @@ export default function Analytics() {
           <TopicProgressTable stats={topicStats} />
         </section>
       </main>
+
+      <Modal open={!!selectedDay} onClose={() => setSelectedDay(null)} title={selectedDayLabel}>
+        <p className="text-sm text-ink/50 mb-3">
+          Toplam {selectedDayLogs.reduce((s, l) => s + (l.duration_minutes || 0), 0)} dakika çalışma,{' '}
+          {selectedDayLogs.reduce((s, l) => s + (l.correct || 0) + (l.incorrect || 0) + (l.empty || 0), 0)} soru çözüldü.
+        </p>
+        <DailyLogsList logs={selectedDayLogs} readOnly title="" />
+      </Modal>
     </div>
   )
 }
