@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
+import { ClipboardList, Percent, AlertTriangle, HelpCircle } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import StatCard from '../components/StatCard'
 import TopicBarChart from '../components/TopicBarChart'
@@ -125,10 +126,10 @@ export default function StudentDetail() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <StatCard label="Toplam Deneme" value={exams.length} accent="brand" />
-          <StatCard label="Genel Ortalama" value={overallAverage != null ? `%${overallAverage}` : '—'} accent="good" />
-          <StatCard label="En Zayıf Konu" value={weakestTopic} accent="warn" />
-          <StatCard label="Bekleyen Sorular" value={questions.filter((q) => q.status !== 'Çözüldü').length} accent="accent" />
+          <StatCard label="Toplam Deneme" value={exams.length} accent="brand" icon={ClipboardList} />
+          <StatCard label="Genel Ortalama" value={overallAverage != null ? `%${overallAverage}` : '—'} accent="good" icon={Percent} />
+          <StatCard label="En Zayıf Konu" value={weakestTopic} accent="warn" icon={AlertTriangle} />
+          <StatCard label="Bekleyen Sorular" value={questions.filter((q) => q.status !== 'Çözüldü').length} accent="accent" icon={HelpCircle} />
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6">

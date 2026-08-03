@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
+import { Clock, CheckCircle2, Target, ClipboardList } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import StatCard from '../components/StatCard'
 import StudyTimeChart from '../components/StudyTimeChart'
@@ -92,10 +93,10 @@ export default function Analytics() {
       <Navbar title="Profil & Analiz" subtitle="Genel gelişimine tek bakışta bak" />
       <main className="mx-auto max-w-5xl px-4 sm:px-6 py-6 flex flex-col gap-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <StatCard label="Toplam Çalışma" value={`${totalMinutes} dk`} accent="brand" />
-          <StatCard label="Toplam Çözülen Soru" value={totalSolved} accent="accent" />
-          <StatCard label="Son Deneme Neti" value={lastExamNet != null ? lastExamNet : '—'} accent="good" />
-          <StatCard label="Girilen Deneme" value={mockExams.length} accent="warn" />
+          <StatCard label="Toplam Çalışma" value={`${totalMinutes} dk`} accent="brand" icon={Clock} />
+          <StatCard label="Toplam Çözülen Soru" value={totalSolved} accent="accent" icon={CheckCircle2} />
+          <StatCard label="Son Deneme Neti" value={lastExamNet != null ? lastExamNet : '—'} accent="good" icon={Target} />
+          <StatCard label="Girilen Deneme" value={mockExams.length} accent="warn" icon={ClipboardList} />
         </div>
 
         <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5">

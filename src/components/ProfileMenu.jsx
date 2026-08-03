@@ -1,21 +1,36 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import {
+  BarChart3,
+  BookOpen,
+  CalendarDays,
+  ChevronDown,
+  ClipboardList,
+  HelpCircle,
+  Library,
+  LogOut,
+  MessageCircle,
+  Target,
+  Users,
+} from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 
 const STUDENT_LINKS = [
-  { to: '/analiz', label: 'Profil & Analiz', icon: '📊' },
-  { to: '/gunluk-takip', label: 'Günlük Çalışma Takibi', icon: '📅' },
-  { to: '/odevler', label: 'Ödevler', icon: '📝' },
-  { to: '/denemeler', label: 'LGS / YKS Denemeleri', icon: '🎯' },
-  { to: '/sorular', label: 'Sorunlu Sorular', icon: '❓' },
-  { to: '/mesajlar', label: 'Mesajlar', icon: '💬' },
+  { to: '/analiz', label: 'Profil & Analiz', Icon: BarChart3 },
+  { to: '/gunluk-takip', label: 'Günlük Çalışma Takibi', Icon: CalendarDays },
+  { to: '/notlar', label: 'Ders Notları Kütüphanesi', Icon: Library },
+  { to: '/odevler', label: 'Ödevler', Icon: ClipboardList },
+  { to: '/denemeler', label: 'LGS / YKS / KPSS Denemeleri', Icon: Target },
+  { to: '/sorular', label: 'Sorunlu Sorular', Icon: HelpCircle },
+  { to: '/mesajlar', label: 'Mesajlar', Icon: MessageCircle },
 ]
 
 const TEACHER_LINKS = [
-  { to: '/ogretmen', label: 'Öğrencilerim', icon: '👥' },
-  { to: '/odevler', label: 'Ödevler', icon: '📝' },
-  { to: '/sorular', label: 'Sorunlu Sorular', icon: '❓' },
-  { to: '/mesajlar', label: 'Mesajlar', icon: '💬' },
+  { to: '/ogretmen', label: 'Öğrencilerim', Icon: Users },
+  { to: '/notlar', label: 'Ders Notları Kütüphanesi', Icon: Library },
+  { to: '/odevler', label: 'Ödevler', Icon: ClipboardList },
+  { to: '/sorular', label: 'Sorunlu Sorular', Icon: HelpCircle },
+  { to: '/mesajlar', label: 'Mesajlar', Icon: MessageCircle },
 ]
 
 export default function ProfileMenu() {
@@ -40,42 +55,46 @@ export default function ProfileMenu() {
         onClick={() => setOpen((o) => !o)}
         className="focus-ring flex items-center gap-2 rounded-full pl-1 pr-2 py-1 hover:bg-brand-50 transition-colors"
       >
-        <div className="h-9 w-9 rounded-full bg-brand-500 text-white grid place-items-center font-semibold font-display">
+        <div className="h-9 w-9 rounded-full bg-gradient-to-br from-brand-500 to-brand-700 text-white grid place-items-center font-semibold font-display shadow-sm">
           {profile?.full_name?.charAt(0)?.toUpperCase() ?? '?'}
         </div>
         <span className="hidden sm:block text-sm font-semibold text-ink">
           {profile?.full_name?.split(' ')[0]}
         </span>
-        <svg
+        <ChevronDown
           className={`hidden sm:block h-4 w-4 text-ink/40 transition-transform ${open ? 'rotate-180' : ''}`}
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path
-            fillRule="evenodd"
-            d="M5.23 7.21a.75.75 0 011.06.02L10 11.293l3.71-4.06a.75.75 0 111.08 1.04l-4.25 4.65a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z"
-            clipRule="evenodd"
-          />
-        </svg>
+        />
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-64 rounded-xl2 bg-white shadow-elevated border border-ink/5 py-2 z-20 animate-[fadeIn_0.12s_ease-out]">
-          <div className="px-4 py-2 border-b border-brand-50 mb-1">
-            <p className="text-sm font-semibold text-ink truncate">{profile?.full_name}</p>
-            <p className="text-xs text-ink/40">{profile?.role === 'teacher' ? 'Öğretmen' : 'Öğrenci'}</p>
+        <div className="absolute right-0 mt-2 w-72 rounded-xl2 bg-white shadow-elevated border border-ink/5 py-2 z-20 animate-[fadeIn_0.12s_ease-out]">
+          <div className="px-4 py-3 border-b border-brand-50 mb-1 flex items-center gap-3">
+            <div className="h-10 w-10 rounded-full bg-gradient-to-br from-brand-500 to-brand-700 text-white grid place-items-center font-semibold font-display flex-shrink-0">
+              {profile?.full_name?.charAt(0)?.toUpperCase() ?? '?'}
+            </div>
+            <div className="min-w-0">
+              <p className="text-sm font-semibold text-ink truncate">{profile?.full_name}</p>
+              <p className="text-xs text-ink/40 flex items-center gap-1">
+                <span
+                  className={`inline-block h-1.5 w-1.5 rounded-full ${
+                    profile?.role === 'teacher' ? 'bg-accent-500' : 'bg-good'
+                  }`}
+                />
+                {profile?.role === 'teacher' ? 'Öğretmen' : 'Öğrenci'}
+              </p>
+            </div>
           </div>
-          {links.map((link) => (
+          {links.map(({ to, label, Icon }) => (
             <button
-              key={link.to}
+              key={to}
               onClick={() => {
                 setOpen(false)
-                navigate(link.to)
+                navigate(to)
               }}
-              className="focus-ring w-full flex items-center gap-3 px-4 py-2.5 text-sm text-ink/70 hover:bg-brand-50 hover:text-brand-700 transition-colors"
+              className="focus-ring w-full flex items-center gap-3 px-4 py-2.5 text-sm text-ink/70 hover:bg-brand-50 hover:text-brand-700 transition-colors group"
             >
-              <span>{link.icon}</span>
-              <span>{link.label}</span>
+              <Icon className="h-4 w-4 text-ink/40 group-hover:text-brand-600 transition-colors" strokeWidth={2} />
+              <span>{label}</span>
             </button>
           ))}
           <div className="border-t border-brand-50 mt-1 pt-1">
@@ -83,7 +102,7 @@ export default function ProfileMenu() {
               onClick={signOut}
               className="focus-ring w-full flex items-center gap-3 px-4 py-2.5 text-sm text-bad hover:bg-bad/5 transition-colors"
             >
-              <span>🚪</span>
+              <LogOut className="h-4 w-4" strokeWidth={2} />
               <span>Çıkış yap</span>
             </button>
           </div>

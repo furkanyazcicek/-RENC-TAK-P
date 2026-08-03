@@ -10,6 +10,7 @@ import Homeworks from './pages/Homeworks'
 import MockExams from './pages/MockExams'
 import Questions from './pages/Questions'
 import Messages from './pages/Messages'
+import Library from './pages/Library'
 
 function FullPageLoader() {
   return (
@@ -119,6 +120,14 @@ export default function App() {
         element={
           <ProtectedRoute>
             <Messages />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/notlar"
+        element={
+          <ProtectedRoute>
+            <Library />
           </ProtectedRoute>
         }
       />

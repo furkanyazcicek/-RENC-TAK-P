@@ -36,6 +36,7 @@ sekmelere ulaşılıyor:
 | Ödevler | `/odevler` | İkisi de | Öğretmen ödev atar, öğrenci durumunu (Yapılıyor/Tamamlandı) günceller |
 | LGS / YKS / KPSS Denemeleri | `/denemeler` | Öğrenci | Ders bazlı doğru/yanlış/net girişi ve net gelişim grafiği |
 | Sorunlu Sorular | `/sorular` | İkisi de | Fotoğraflı soru gönderimi, öğretmenin yazılı/fotoğraflı yanıtı, görsel büyütme ve öğrenci arşivi |
+| Ders Notları Kütüphanesi | `/notlar` | İkisi de | Sınav türü → ders → konu → not hiyerarşisinde düzenlenmiş kaynaklar; öğretmen yükler, öğrenci görüntüler |
 | Mesajlar | `/mesajlar` | İkisi de | Öğrenci-öğretmen arası birebir, anlık mesajlaşma |
 
 Öğretmen tarafında, bir öğrencinin profiline tıkladığınızda (öğretmen
@@ -132,6 +133,24 @@ ayrıca soru fotoğraflarının yükleneceği depolama alanını otomatik kurar.
 > açmanıza gerek yoktur**, öğrenci sorularının fotoğrafları için zaten
 > kurmuş olduğunuz `question-images` bucket'ı öğretmenin yanıt fotoğrafı
 > için de otomatik olarak kullanılır.
+
+> **Ders Notları Kütüphanesi'ni kullanacaksanız (sırayla 2 dosya):**
+> 1. `supabase/migration_library.sql` — 3 yeni tablo (`library_subjects`,
+>    `library_topics`, `library_notes`), gerekli izinler (RLS) ve dosya
+>    yüklemek için yeni bir Storage bucket (`library-files`, herkese
+>    açık okuma / sadece öğretmen yazma) oluşturur.
+> 2. `supabase/seed_library_curriculum.sql` — LGS, TYT, AYT ve KPSS için
+>    Matematik ve Geometri derslerinin güncel konu başlıklarını otomatik
+>    olarak ekler, böylece hiyerarşiyi elle girmenize gerek kalmaz.
+>    **Bu dosyayı sadece bir kez çalıştırın** — tekrar çalıştırırsanız
+>    konular mükerrer eklenir. Konu listesi yaygın kabul gören standart
+>    bir kırılımdır; kurumunuzun kaynağıyla tam örtüşmüyorsa öğretmen
+>    panelinden düzenleyebilir/silebilirsiniz.
+>
+> Kurulumdan sonra öğretmen `/notlar` sayfasında bir konuya girip
+> "Bu Konuya Not Ekle" ile yazılı not ve/veya PDF/görsel yükleyebilir;
+> öğrenci aynı sayfada sınav türü → ders → konu şeklinde gezinip
+> notları görüntüleyebilir.
 
 ### Adım 4: Bağlantı bilgilerinizi alın
 

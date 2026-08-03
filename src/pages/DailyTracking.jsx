@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
+import { Clock, CheckCircle2, TrendingUp, ListChecks } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import StatCard from '../components/StatCard'
 import DailyLogForm from '../components/DailyLogForm'
@@ -52,10 +53,10 @@ export default function DailyTracking() {
       <Navbar title="Günlük Çalışma ve Soru Takibi" subtitle="Her gün ne çalıştığını kaydet, gelişimini izle" />
       <main className="mx-auto max-w-5xl px-4 sm:px-6 py-6 flex flex-col gap-6">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <StatCard label="Bu Hafta Çalışma" value={`${weeklyMinutes} dk`} accent="brand" />
-          <StatCard label="Toplam Çözülen Soru" value={totalSolved} accent="accent" />
-          <StatCard label="Genel Başarı" value={overallAccuracy != null ? `%${overallAccuracy}` : '—'} accent="good" />
-          <StatCard label="Toplam Kayıt" value={dailyLogs.length} accent="warn" />
+          <StatCard label="Bu Hafta Çalışma" value={`${weeklyMinutes} dk`} accent="brand" icon={Clock} />
+          <StatCard label="Toplam Çözülen Soru" value={totalSolved} accent="accent" icon={CheckCircle2} />
+          <StatCard label="Genel Başarı" value={overallAccuracy != null ? `%${overallAccuracy}` : '—'} accent="good" icon={TrendingUp} />
+          <StatCard label="Toplam Kayıt" value={dailyLogs.length} accent="warn" icon={ListChecks} />
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6 items-start">

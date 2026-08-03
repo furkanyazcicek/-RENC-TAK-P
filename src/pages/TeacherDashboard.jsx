@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
+import { Users, HelpCircle, Inbox } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import StatCard from '../components/StatCard'
 import StudentList from '../components/StudentList'
@@ -69,9 +70,9 @@ export default function TeacherDashboard() {
       <Navbar title={`Hoş geldin, ${profile?.full_name?.split(' ')[0] ?? ''}`} subtitle="Sınıfının genel görünümü" />
       <main className="mx-auto max-w-6xl px-4 sm:px-6 py-6 flex flex-col gap-6">
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-          <StatCard label="Toplam Öğrenci" value={students.length} accent="brand" />
-          <StatCard label="Bekleyen Sorular" value={pendingCount} accent="warn" />
-          <StatCard label="Toplam Soru" value={questions.length} accent="accent" />
+          <StatCard label="Toplam Öğrenci" value={students.length} accent="brand" icon={Users} />
+          <StatCard label="Bekleyen Sorular" value={pendingCount} accent="warn" icon={HelpCircle} />
+          <StatCard label="Toplam Soru" value={questions.length} accent="accent" icon={Inbox} />
         </div>
 
         <section>
