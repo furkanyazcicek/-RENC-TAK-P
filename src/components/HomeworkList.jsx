@@ -1,3 +1,4 @@
+import { CheckCircle2, Circle, Trash2, CalendarClock } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
 
 function formatDate(dateStr) {
@@ -24,51 +25,64 @@ export default function HomeworkList({ homeworks, role, onChanged, showStudentNa
 
   if (!homeworks || homeworks.length === 0) {
     return (
-      <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5 text-sm text-ink/40">
-        {role === 'teacher' ? 'Henüz atanmış ödev yok.' : 'Şu anda sana atanmış bir ödev yok. 🎉'}
+      <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-8 text-center text-sm text-ink/40">
+        {role === 'teacher' ? 'Henüz atanmış görev yok.' : 'Şu anda sana atanmış bir görev yok. 🎉'}
       </div>
     )
   }
 
   return (
-    <div className="rounded-xl2 bg-white shadow-card border border-ink/5 divide-y divide-brand-50">
+    <div className="grid sm:grid-cols-2 gap-4">
       {homeworks.map((hw) => {
         const overdue = isOverdue(hw.due_date, hw.status)
+        const done = hw.status === 'Tamamlandı'
         return (
-          <div key={hw.id} className="p-5 flex flex-col sm:flex-row sm:items-center gap-3">
+          <div
+            key={hw.id}
+            className={`group rounded-xl2 bg-white shadow-card border p-5 flex gap-3 transition-all hover:shadow-elevated hover:-translate-y-0.5 ${
+              done ? 'border-good/20' : overdue ? 'border-bad/20' : 'border-ink/5'
+            }`}
+          >
+            <button
+              onClick={() => toggleStatus(hw)}
+              className="focus-ring flex-shrink-0 mt-0.5"
+              aria-label={done ? 'Tamamlanmadı olarak işaretle' : 'Tamamlandı olarak işaretle'}
+            >
+              {done ? (
+                <CheckCircle2 className="h-6 w-6 text-good" strokeWidth={2} />
+              ) : (
+                <Circle className="h-6 w-6 text-ink/20 group-hover:text-brand-400 transition-colors" strokeWidth={2} />
+              )}
+            </button>
+
             <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 flex-wrap">
-                <h4 className="font-semibold text-ink">{hw.title}</h4>
-                {showStudentName && hw.profiles?.full_name && (
-                  <span className="text-xs text-ink/40">— {hw.profiles.full_name}</span>
+              <div className="flex items-start justify-between gap-2">
+                <h4 className={`font-semibold ${done ? 'text-ink/40 line-through' : 'text-ink'}`}>{hw.title}</h4>
+                {role === 'teacher' && (
+                  <button
+                    onClick={() => handleDelete(hw.id)}
+                    className="focus-ring flex-shrink-0 h-7 w-7 rounded-lg grid place-items-center text-ink/20 hover:text-bad hover:bg-bad/5 transition-colors opacity-0 group-hover:opacity-100"
+                    aria-label="Görevi sil"
+                  >
+                    <Trash2 className="h-3.5 w-3.5" />
+                  </button>
                 )}
               </div>
-              {hw.description && <p className="text-sm text-ink/60 mt-1">{hw.description}</p>}
-              {hw.due_date && (
-                <p className={`text-xs mt-1 font-medium ${overdue ? 'text-bad' : 'text-ink/40'}`}>
-                  Son tarih: {formatDate(hw.due_date)} {overdue && '(gecikti)'}
-                </p>
+              {showStudentName && hw.profiles?.full_name && (
+                <p className="text-xs text-brand-600 font-medium mt-0.5">{hw.profiles.full_name}</p>
               )}
-            </div>
-
-            <div className="flex items-center gap-2 flex-shrink-0">
-              <button
-                onClick={() => toggleStatus(hw)}
-                className={`focus-ring rounded-full px-3 py-1.5 text-xs font-semibold transition-colors ${
-                  hw.status === 'Tamamlandı'
-                    ? 'bg-good/10 text-good hover:bg-good/20'
-                    : 'bg-warn/10 text-warn hover:bg-warn/20'
-                }`}
-              >
-                {hw.status === 'Tamamlandı' ? '✓ Tamamlandı' : '⏳ Yapılıyor'}
-              </button>
-              {role === 'teacher' && (
-                <button
-                  onClick={() => handleDelete(hw.id)}
-                  className="focus-ring text-xs text-ink/30 hover:text-bad transition-colors"
+              {hw.description && (
+                <p className={`text-sm mt-1.5 ${done ? 'text-ink/30' : 'text-ink/60'}`}>{hw.description}</p>
+              )}
+              {hw.due_date && (
+                <p
+                  className={`text-xs mt-2 font-medium inline-flex items-center gap-1 ${
+                    overdue ? 'text-bad' : 'text-ink/40'
+                  }`}
                 >
-                  Sil
-                </button>
+                  <CalendarClock className="h-3.5 w-3.5" />
+                  {formatDate(hw.due_date)} {overdue && '(gecikti)'}
+                </p>
               )}
             </div>
           </div>

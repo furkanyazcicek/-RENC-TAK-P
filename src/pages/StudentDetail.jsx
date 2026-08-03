@@ -73,6 +73,17 @@ export default function StudentDetail() {
     load()
   }, [load])
 
+  // Bu iki useMemo, `if (loading) return ...` bloğundan ÖNCE tanımlanmalı.
+  // Aksi halde loading=true renderında bu hook'lar hiç çağrılmaz, loading=false
+  // olduğunda ise çağrılır — render'lar arası hook sayısı değişir ve React bunu
+  // "Rendered fewer hooks than expected" (production'da minified Error #310)
+  // olarak fırlatır. Kural: TÜM hook'lar erken return'den önce, koşulsuz çağrılmalı.
+  const distributionLogs = useMemo(
+    () => (distributionDate ? dailyLogs.filter((l) => l.study_date === distributionDate) : dailyLogs),
+    [dailyLogs, distributionDate]
+  )
+  const subjectDistribution = useMemo(() => buildSubjectDistribution(distributionLogs), [distributionLogs])
+
   if (loading) {
     return (
       <div className="min-h-screen grid place-items-center bg-paper">
@@ -102,11 +113,6 @@ export default function StudentDetail() {
     : '—'
 
   const topicStats = buildTopicStats(dailyLogs)
-  const distributionLogs = useMemo(
-    () => (distributionDate ? dailyLogs.filter((l) => l.study_date === distributionDate) : dailyLogs),
-    [dailyLogs, distributionDate]
-  )
-  const subjectDistribution = useMemo(() => buildSubjectDistribution(distributionLogs), [distributionLogs])
   const subjectPerformance = buildSubjectPerformance(mockExams)
 
   return (
