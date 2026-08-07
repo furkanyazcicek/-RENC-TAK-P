@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {
   BarChart3,
-  BookOpen,
+  Bell,
+  BellOff,
   CalendarDays,
   ChevronDown,
   ClipboardList,
@@ -14,6 +15,7 @@ import {
   Users,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
+import { getPushPermissionState, isPushSupported, subscribeToPush } from '../lib/push'
 
 const STUDENT_LINKS = [
   { to: '/analiz', label: 'Profil & Analiz', Icon: BarChart3 },
@@ -36,10 +38,16 @@ const TEACHER_LINKS = [
 export default function ProfileMenu() {
   const { profile, signOut } = useAuth()
   const [open, setOpen] = useState(false)
+  const [permission, setPermission] = useState('default')
+  const [subscribing, setSubscribing] = useState(false)
   const ref = useRef(null)
   const navigate = useNavigate()
 
   const links = profile?.role === 'teacher' ? TEACHER_LINKS : STUDENT_LINKS
+
+  useEffect(() => {
+    getPushPermissionState().then(setPermission)
+  }, [])
 
   useEffect(() => {
     function handleClickOutside(e) {
@@ -48,6 +56,18 @@ export default function ProfileMenu() {
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
+
+  async function handleEnableNotifications() {
+    setSubscribing(true)
+    try {
+      await subscribeToPush(profile.id)
+      setPermission('granted')
+    } catch (err) {
+      alert(err.message ?? 'Bildirimler açılamadı.')
+    } finally {
+      setSubscribing(false)
+    }
+  }
 
   return (
     <div className="relative" ref={ref}>
@@ -84,6 +104,30 @@ export default function ProfileMenu() {
               </p>
             </div>
           </div>
+
+          {isPushSupported() && permission !== 'granted' && (
+            <button
+              onClick={handleEnableNotifications}
+              disabled={subscribing || permission === 'denied'}
+              className="focus-ring w-full flex items-center gap-3 px-4 py-2.5 text-sm text-brand-600 hover:bg-brand-50 transition-colors disabled:opacity-50"
+            >
+              <Bell className="h-4 w-4" strokeWidth={2} />
+              <span>
+                {permission === 'denied'
+                  ? 'Bildirimler engellendi'
+                  : subscribing
+                    ? 'Açılıyor...'
+                    : 'Bildirimleri Aç'}
+              </span>
+            </button>
+          )}
+          {permission === 'granted' && (
+            <div className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-good">
+              <Bell className="h-4 w-4" strokeWidth={2} />
+              <span>Bildirimler açık</span>
+            </div>
+          )}
+
           {links.map(({ to, label, Icon }) => (
             <button
               key={to}

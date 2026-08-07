@@ -16,8 +16,18 @@ import HomeworkList from '../components/HomeworkList'
 import TopicProgressTable from '../components/TopicProgressTable'
 import SubjectNetTable from '../components/SubjectNetTable'
 import QuestionDistributionChart from '../components/QuestionDistributionChart'
+import DependentSubjectTopicSelect from '../components/DependentSubjectTopicSelect'
+import TopicHierarchyAccordion from '../components/TopicHierarchyAccordion'
+import Modal from '../components/Modal'
 import DateFilterControl from '../components/DateFilterControl'
-import { buildSubjectDistribution, buildTopicStats } from '../lib/topicHelpers'
+import ExamTypeTabs from '../components/ExamTypeTabs'
+import {
+  buildCombinedNetPercentage,
+  buildNetTrend,
+  buildSubjectDistribution,
+  buildSubjectTopicHierarchy,
+  buildTopicStats,
+} from '../lib/topicHelpers'
 import { buildSubjectPerformance } from '../lib/examHelpers'
 
 export default function StudentDetail() {
@@ -30,6 +40,10 @@ export default function StudentDetail() {
   const [homeworks, setHomeworks] = useState([])
   const [loading, setLoading] = useState(true)
   const [distributionDate, setDistributionDate] = useState(null)
+  const [examType, setExamType] = useState(null)
+  const [trendSubject, setTrendSubject] = useState(null)
+  const [trendTopic, setTrendTopic] = useState(null)
+  const [examsModalOpen, setExamsModalOpen] = useState(false)
 
   const load = useCallback(async () => {
     const [profileRes, examsRes, questionsRes, dailyLogsRes, mockExamsRes, homeworksRes] = await Promise.all([
@@ -84,6 +98,57 @@ export default function StudentDetail() {
   )
   const subjectDistribution = useMemo(() => buildSubjectDistribution(distributionLogs), [distributionLogs])
 
+  useEffect(() => {
+    if (examType === null && mockExams.length > 0) setExamType(mockExams[0].exam_type)
+  }, [mockExams, examType])
+
+  const examCountsByType = useMemo(() => {
+    const counts = {}
+    mockExams.forEach((e) => {
+      counts[e.exam_type] = (counts[e.exam_type] ?? 0) + 1
+    })
+    return counts
+  }, [mockExams])
+
+  const examsForType = useMemo(
+    () => mockExams.filter((e) => e.exam_type === (examType ?? mockExams[0]?.exam_type)),
+    [mockExams, examType]
+  )
+
+  const hierarchy = useMemo(() => buildSubjectTopicHierarchy(dailyLogs), [dailyLogs])
+
+  const trendData = useMemo(
+    () => buildNetTrend(dailyLogs, trendSubject, trendTopic),
+    [dailyLogs, trendSubject, trendTopic]
+  )
+
+  const combinedNet = useMemo(() => buildCombinedNetPercentage(dailyLogs, mockExams), [dailyLogs, mockExams])
+
+  const weakestTopicNet = useMemo(() => {
+    const allTopics = hierarchy.flatMap((s) => s.topics.map((t) => ({ ...t, subject: s.subject })))
+    if (allTopics.length === 0) return '—'
+    const weakest = [...allTopics].sort((a, b) => a.netPct - b.netPct)[0]
+    return `${weakest.subject} - ${weakest.topic}`
+  }, [hierarchy])
+
+  const allExamsSorted = useMemo(() => {
+    const branch = exams.map((e) => ({
+      id: `exam-${e.id}`,
+      type: 'Branş',
+      label: e.exam_name || e.topic,
+      date: e.created_at,
+      detail: `%${e.score}`,
+    }))
+    const general = mockExams.map((e) => ({
+      id: `mock-${e.id}`,
+      type: 'Genel',
+      label: `${e.exam_type}${e.exam_name ? ' — ' + e.exam_name : ''}`,
+      date: e.exam_date,
+      detail: `${Math.round((e.mock_exam_subjects?.reduce((s, x) => s + Number(x.net || 0), 0) ?? 0) * 100) / 100} net`,
+    }))
+    return [...branch, ...general].sort((a, b) => new Date(b.date) - new Date(a.date))
+  }, [exams, mockExams])
+
   if (loading) {
     return (
       <div className="min-h-screen grid place-items-center bg-paper">
@@ -92,28 +157,9 @@ export default function StudentDetail() {
     )
   }
 
-  const topicMap = {}
-  exams.forEach((e) => {
-    if (!topicMap[e.topic]) topicMap[e.topic] = []
-    topicMap[e.topic].push(e.score)
-  })
-  const topicData = Object.entries(topicMap).map(([topic, scores]) => ({
-    topic,
-    success: Math.round(scores.reduce((a, b) => a + b, 0) / scores.length),
-  }))
-  const trendData = exams.map((e, i) => ({
-    label: e.exam_name || `Deneme ${i + 1}`,
-    success: e.score,
-  }))
-  const overallAverage = exams.length
-    ? Math.round(exams.reduce((a, e) => a + e.score, 0) / exams.length)
-    : null
-  const weakestTopic = topicData.length
-    ? [...topicData].sort((a, b) => a.success - b.success)[0].topic
-    : '—'
-
   const topicStats = buildTopicStats(dailyLogs)
-  const subjectPerformance = buildSubjectPerformance(mockExams)
+  const subjectPerformance = buildSubjectPerformance(examsForType)
+  const activeExamType = examType ?? mockExams[0]?.exam_type ?? 'TYT'
 
   return (
     <div className="min-h-screen bg-paper">
@@ -132,47 +178,88 @@ export default function StudentDetail() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <StatCard label="Toplam Deneme" value={exams.length} accent="brand" icon={ClipboardList} />
-          <StatCard label="Genel Ortalama" value={overallAverage != null ? `%${overallAverage}` : '—'} accent="good" icon={Percent} />
-          <StatCard label="En Zayıf Konu" value={weakestTopic} accent="warn" icon={AlertTriangle} />
+          <button onClick={() => setExamsModalOpen(true)} className="focus-ring text-left">
+            <StatCard
+              label="Toplam Deneme"
+              value={exams.length + mockExams.length}
+              hint={`${exams.length} branş · ${mockExams.length} genel`}
+              accent="brand"
+              icon={ClipboardList}
+            />
+          </button>
+          <StatCard
+            label="Genel Ortalama"
+            value={combinedNet.netPct != null ? `%${combinedNet.netPct}` : '—'}
+            hint="Toplam Net / Toplam Soru"
+            accent="good"
+            icon={Percent}
+          />
+          <StatCard label="En Zayıf Konu" value={weakestTopicNet} accent="warn" icon={AlertTriangle} />
           <StatCard label="Bekleyen Sorular" value={questions.filter((q) => q.status !== 'Çözüldü').length} accent="accent" icon={HelpCircle} />
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-6">
-          <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5">
-            <h3 className="font-display font-bold text-lg text-ink mb-2">Konulara Göre Başarı</h3>
-            <TopicBarChart data={topicData} />
+        <section>
+          <h2 className="font-display font-bold text-lg text-ink mb-3">Konulara Göre Başarı</h2>
+          <p className="text-xs text-ink/40 -mt-2 mb-3">
+            Net Başarı % = Toplam Net / Toplam Soru × 100 — boş bırakılan sorular formülden çıkarılmaz.
+          </p>
+          <TopicHierarchyAccordion hierarchy={hierarchy} />
+        </section>
+
+        <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5">
+          <div className="flex items-center justify-between gap-3 flex-wrap mb-2">
+            <h3 className="font-display font-bold text-lg text-ink">Zaman İçindeki Gelişim</h3>
+            <DependentSubjectTopicSelect
+              logs={dailyLogs}
+              subject={trendSubject}
+              topic={trendTopic}
+              onSubjectChange={(s) => {
+                setTrendSubject(s)
+                setTrendTopic(null)
+              }}
+              onTopicChange={setTrendTopic}
+            />
           </div>
-          <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5">
-            <h3 className="font-display font-bold text-lg text-ink mb-2">Zaman İçindeki Gelişim</h3>
-            <TrendLineChart data={trendData} />
-          </div>
+          <p className="text-xs text-ink/40 -mt-1 mb-2">
+            {trendTopic
+              ? `${trendSubject} — ${trendTopic} konusundaki net bazlı gelişim`
+              : trendSubject
+                ? `${trendSubject} dersindeki net bazlı gelişim`
+                : 'Tüm derslerin genel net bazlı gelişimi'}
+          </p>
+          <TrendLineChart data={trendData} />
         </div>
 
         <AddExamForm studentId={studentId} onAdded={load} />
 
         <section>
-          <h2 className="font-display font-bold text-lg text-ink mb-3">LGS / YKS / KPSS Denemeleri</h2>
+          <div className="flex items-center justify-between gap-3 flex-wrap mb-3">
+            <h2 className="font-display font-bold text-lg text-ink">LGS / YKS / KPSS Denemeleri</h2>
+            <ExamTypeTabs value={activeExamType} onChange={setExamType} counts={examCountsByType} />
+          </div>
+          <p className="text-xs text-ink/40 -mt-2 mb-4">
+            Aşağıdaki grafik ve tablolar sadece <strong>{activeExamType}</strong> denemelerini gösterir.
+          </p>
           <div className="grid lg:grid-cols-2 gap-6 items-start mb-6">
             <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5">
-              <h3 className="font-display font-bold text-lg text-ink mb-2">Net Gelişimi</h3>
-              <MockExamTrendChart exams={mockExams} />
+              <h3 className="font-display font-bold text-lg text-ink mb-2">{activeExamType} Net Gelişimi</h3>
+              <MockExamTrendChart exams={examsForType} />
             </div>
             <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5">
               <h3 className="font-display font-bold text-lg text-ink mb-2">Ders Bazlı Net Başarısı</h3>
               <p className="text-xs text-ink/40 -mt-1 mb-2">
-                Net Başarı Yüzdesi = (Ortalama Net / Toplam Soru Sayısı) × 100
+                Net Başarı Yüzdesi = (Ortalama Net / Toplam Soru Sayısı) × 100 — boşlar dışlanmaz.
               </p>
               <TopicBarChart
                 data={subjectPerformance}
                 tooltipLabel="Net Başarı"
-                emptyText="Henüz deneme sonucu girilmemiş."
+                emptyText={`Henüz ${activeExamType} sonucu girilmemiş.`}
               />
             </div>
           </div>
           <SubjectNetTable data={subjectPerformance} />
           <div className="mt-6">
-            <MockExamList exams={mockExams} readOnly />
+            <MockExamList exams={examsForType} readOnly />
           </div>
         </section>
 
@@ -210,6 +297,33 @@ export default function StudentDetail() {
           <MyQuestionsList questions={questions} />
         </section>
       </main>
+
+      <Modal open={examsModalOpen} onClose={() => setExamsModalOpen(false)} title="Tüm Denemeler">
+        {allExamsSorted.length === 0 ? (
+          <p className="text-sm text-ink/40">Henüz deneme girilmemiş.</p>
+        ) : (
+          <ul className="flex flex-col divide-y divide-ink/5">
+            {allExamsSorted.map((e) => (
+              <li key={e.id} className="flex items-center justify-between gap-3 py-2.5 text-sm">
+                <div className="min-w-0">
+                  <span
+                    className={`inline-block text-[10px] font-bold rounded-full px-2 py-0.5 mr-2 ${
+                      e.type === 'Genel' ? 'bg-brand-50 text-brand-600' : 'bg-accent-400/10 text-accent-600'
+                    }`}
+                  >
+                    {e.type}
+                  </span>
+                  <span className="text-ink/70">{e.label}</span>
+                  <div className="text-xs text-ink/30">
+                    {new Date(e.date).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' })}
+                  </div>
+                </div>
+                <span className="font-semibold text-ink flex-shrink-0">{e.detail}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </Modal>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 // daily_logs.topic alanı "Ders - Konu" biçiminde girilmişse (örn. "Matematik - Türev"),
 // bu yardımcılar dersi ve konuyu ayırıp gruplu istatistikler üretir.
 // Biçime uymayan (tek kelimelik) konular da sorunsuz çalışır; ders adı "Genel" sayılır.
+import { calcNet } from './examHelpers'
 
 export function splitSubjectTopic(topicStr) {
   if (!topicStr) return { subject: 'Genel', topic: 'Belirtilmemiş' }
@@ -62,7 +63,7 @@ export function buildSubjectDistribution(logs) {
     .sort((a, b) => b.value - a.value)
 }
 
-// Güne göre genel başarı yüzdesi trendi — çizgi grafiği için.
+// Güne göre genel başarı yüzdesi trendi — çizgi grafiği için (doğru/yanlış oranı).
 export function buildDailyAccuracyTrend(logs) {
   const map = {}
   ;(logs ?? []).forEach((log) => {
@@ -80,3 +81,112 @@ export function buildDailyAccuracyTrend(logs) {
       }
     })
 }
+
+// ============================================================
+// NET TEMELLİ ANALİZ (boş bırakılan sorular formülden ÇIKARILMAZ)
+// Net = Doğru - (Yanlış × 0.25); Net % = Net / Toplam Soru × 100
+// ============================================================
+
+// Ders -> Konu hiyerarşisi. Her konunun ve her dersin net bazlı başarı
+// yüzdesini üretir. "Konulara Göre Başarı" akordeonunda kullanılır.
+export function buildSubjectTopicHierarchy(logs) {
+  const bySubject = {}
+
+  ;(logs ?? []).forEach((log) => {
+    const { subject, topic } = splitSubjectTopic(log.topic)
+    const correct = log.correct || 0
+    const incorrect = log.incorrect || 0
+    const empty = log.empty || 0
+    const totalQuestions = correct + incorrect + empty
+    const net = calcNet(correct, incorrect)
+
+    if (!bySubject[subject]) bySubject[subject] = { subject, net: 0, totalQuestions: 0, topics: {} }
+    bySubject[subject].net += net
+    bySubject[subject].totalQuestions += totalQuestions
+
+    if (!bySubject[subject].topics[topic]) {
+      bySubject[subject].topics[topic] = { topic, net: 0, totalQuestions: 0, sessions: 0 }
+    }
+    const t = bySubject[subject].topics[topic]
+    t.net += net
+    t.totalQuestions += totalQuestions
+    t.sessions += 1
+  })
+
+  return Object.values(bySubject)
+    .map((s) => ({
+      subject: s.subject,
+      totalQuestions: s.totalQuestions,
+      net: Math.round(s.net * 100) / 100,
+      netPct: s.totalQuestions > 0 ? Math.max(0, Math.round((s.net / s.totalQuestions) * 100)) : 0,
+      topics: Object.values(s.topics)
+        .map((t) => ({
+          ...t,
+          net: Math.round(t.net * 100) / 100,
+          netPct: t.totalQuestions > 0 ? Math.max(0, Math.round((t.net / t.totalQuestions) * 100)) : 0,
+        }))
+        .sort((a, b) => b.netPct - a.netPct),
+    }))
+    .sort((a, b) => b.netPct - a.netPct)
+}
+
+// Zaman içindeki net bazlı gelişim — Ders ve/veya Konu filtresine göre daraltılır.
+// Her ikisi de boşsa (null) TÜM derslerin genel net trendini döner.
+export function buildNetTrend(logs, subjectFilter, topicFilter) {
+  const filtered = (logs ?? []).filter((log) => {
+    if (!subjectFilter) return true
+    const { subject, topic } = splitSubjectTopic(log.topic)
+    if (subject !== subjectFilter) return false
+    if (topicFilter && topic !== topicFilter) return false
+    return true
+  })
+
+  const byDate = {}
+  filtered.forEach((log) => {
+    const correct = log.correct || 0
+    const incorrect = log.incorrect || 0
+    const empty = log.empty || 0
+    if (!byDate[log.study_date]) byDate[log.study_date] = { net: 0, totalQuestions: 0 }
+    byDate[log.study_date].net += calcNet(correct, incorrect)
+    byDate[log.study_date].totalQuestions += correct + incorrect + empty
+  })
+
+  return Object.entries(byDate)
+    .sort(([a], [b]) => new Date(a) - new Date(b))
+    .map(([date, { net, totalQuestions }]) => ({
+      label: new Date(date).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }),
+      success: totalQuestions > 0 ? Math.max(0, Math.round((net / totalQuestions) * 100)) : 0,
+    }))
+}
+
+// "Genel Ortalama" kartı için: günlük çalışmalar + tüm mock deneme dersleri
+// birlikte, SADECE net/toplam soru üzerinden tek bir yüzdeye indirilir.
+// (Not: eski "branş denemesi" (exams tablosu, elle girilen 0-100 puan) net
+// içermediği için bu formüle dahil edilmez — bu kart yalnızca gerçek
+// doğru/yanlış/boş verisi olan kaynaklardan hesaplanır.)
+export function buildCombinedNetPercentage(dailyLogs, mockExams) {
+  let totalNet = 0
+  let totalQuestions = 0
+
+  ;(dailyLogs ?? []).forEach((log) => {
+    const correct = log.correct || 0
+    const incorrect = log.incorrect || 0
+    const empty = log.empty || 0
+    totalNet += calcNet(correct, incorrect)
+    totalQuestions += correct + incorrect + empty
+  })
+
+  ;(mockExams ?? []).forEach((exam) => {
+    ;(exam.mock_exam_subjects ?? []).forEach((s) => {
+      totalNet += Number(s.net || 0)
+      totalQuestions += (s.correct || 0) + (s.incorrect || 0) + (s.empty || 0)
+    })
+  })
+
+  return {
+    totalNet: Math.round(totalNet * 100) / 100,
+    totalQuestions,
+    netPct: totalQuestions > 0 ? Math.max(0, Math.round((totalNet / totalQuestions) * 100)) : null,
+  }
+}
+

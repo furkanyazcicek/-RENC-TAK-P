@@ -35,6 +35,11 @@ export default function MyQuestionsList({ questions }) {
                 </button>
               )}
               <div className="flex-1 min-w-0">
+                {q.subject && (
+                  <span className="inline-block text-[11px] font-semibold bg-brand-50 text-brand-600 rounded-full px-2 py-0.5 mb-1">
+                    {q.subject}{q.topic ? ` · ${q.topic}` : ''}
+                  </span>
+                )}
                 <p className="text-sm text-ink/80 line-clamp-2">{q.content || 'Fotoğraf ile gönderildi'}</p>
                 <p className="text-xs text-ink/40 mt-1">
                   {new Date(q.created_at).toLocaleDateString('tr-TR', {

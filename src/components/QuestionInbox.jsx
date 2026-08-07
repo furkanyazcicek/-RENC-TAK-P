@@ -3,6 +3,7 @@ import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
 import StatusBadge from './StatusBadge'
 import ImageLightbox from './ImageLightbox'
+import SubjectTopicFilter, { useSubjectTopicFilter } from './SubjectTopicFilter'
 
 const STATUS_OPTIONS = ['İnceleniyor', 'Derste Çözülecek', 'Çözüldü']
 
@@ -103,6 +104,7 @@ function ReplyBox({ question, onChanged }) {
 export default function QuestionInbox({ questions, onChanged }) {
   const [openReplyId, setOpenReplyId] = useState(null)
   const [lightboxSrc, setLightboxSrc] = useState(null)
+  const { subject, topic, subjects, topics, filtered, selectSubject, selectTopic } = useSubjectTopicFilter(questions)
 
   async function updateStatus(id, status) {
     const { error } = await supabase.from('questions').update({ status }).eq('id', id)
@@ -119,8 +121,26 @@ export default function QuestionInbox({ questions, onChanged }) {
 
   return (
     <>
+      {subjects.length > 0 && (
+        <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-4 mb-4">
+          <SubjectTopicFilter
+            subject={subject}
+            topic={topic}
+            subjects={subjects}
+            topics={topics}
+            onSelectSubject={selectSubject}
+            onSelectTopic={selectTopic}
+          />
+        </div>
+      )}
+
+      {filtered.length === 0 ? (
+        <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5 text-sm text-ink/40">
+          Bu ders/konuda birikmiş soru yok.
+        </div>
+      ) : (
       <div className="rounded-xl2 bg-white shadow-card border border-ink/5 divide-y divide-brand-50">
-        {questions.map((q) => (
+        {filtered.map((q) => (
           <div key={q.id} className="p-5 flex flex-col sm:flex-row gap-4">
             {q.image_url && (
               <button
@@ -148,6 +168,11 @@ export default function QuestionInbox({ questions, onChanged }) {
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
                 <span className="font-semibold text-ink">{q.profiles?.full_name ?? 'Bilinmeyen öğrenci'}</span>
+                {q.subject && (
+                  <span className="text-[11px] font-semibold bg-brand-50 text-brand-600 rounded-full px-2 py-0.5">
+                    {q.subject}{q.topic ? ` · ${q.topic}` : ''}
+                  </span>
+                )}
                 <span className="text-xs text-ink/40">
                   {new Date(q.created_at).toLocaleDateString('tr-TR', {
                     day: 'numeric',
@@ -205,6 +230,7 @@ export default function QuestionInbox({ questions, onChanged }) {
           </div>
         ))}
       </div>
+      )}
 
       {lightboxSrc && <ImageLightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />}
     </>

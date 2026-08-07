@@ -5,12 +5,16 @@ import Navbar from '../components/Navbar'
 import QuestionForm from '../components/QuestionForm'
 import MyQuestionsList from '../components/MyQuestionsList'
 import QuestionInbox from '../components/QuestionInbox'
+import SubjectTopicFilter, { useSubjectTopicFilter } from '../components/SubjectTopicFilter'
 
 function StudentQuestionsView({ questions, onSubmitted }) {
   const [tab, setTab] = useState('active') // 'active' | 'archive'
 
   const active = questions.filter((q) => q.status !== 'Çözüldü')
   const archive = questions.filter((q) => q.status === 'Çözüldü')
+  const currentList = tab === 'active' ? active : archive
+
+  const { subject, topic, subjects, topics, filtered, selectSubject, selectTopic } = useSubjectTopicFilter(currentList)
 
   return (
     <>
@@ -37,16 +41,26 @@ function StudentQuestionsView({ questions, onSubmitted }) {
         </button>
       </div>
 
-      {tab === 'active' ? (
-        <MyQuestionsList questions={active} />
-      ) : (
-        <>
-          <p className="text-sm text-ink/50 -mt-2">
-            Geçmişte sorduğun ve öğretmeninin yanıtladığı tüm sorular — sınav öncesi tekrar için burada.
-          </p>
-          <MyQuestionsList questions={archive} />
-        </>
+      {tab === 'archive' && (
+        <p className="text-sm text-ink/50 -mb-2">
+          Geçmişte sorduğun ve öğretmeninin yanıtladığı tüm sorular — sınav öncesi tekrar için burada.
+        </p>
       )}
+
+      {subjects.length > 0 && (
+        <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-4">
+          <SubjectTopicFilter
+            subject={subject}
+            topic={topic}
+            subjects={subjects}
+            topics={topics}
+            onSelectSubject={selectSubject}
+            onSelectTopic={selectTopic}
+          />
+        </div>
+      )}
+
+      <MyQuestionsList questions={filtered} />
     </>
   )
 }

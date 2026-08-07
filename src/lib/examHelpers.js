@@ -5,6 +5,25 @@ export const SUBJECT_PRESETS = {
   KPSS: ['Türkçe', 'Matematik', 'Tarih', 'Coğrafya', 'Vatandaşlık', 'Güncel Bilgiler'],
 }
 
+// Sorunlu Sorular'da öğrencinin "Ders" seçebilmesi için ortak liste.
+// Konu (topic) serbest metin — sabit bir listeye bağlı değil.
+export const COMMON_SUBJECTS = [
+  'Matematik',
+  'Geometri',
+  'Türkçe',
+  'Fizik',
+  'Kimya',
+  'Biyoloji',
+  'Tarih',
+  'Coğrafya',
+  'Felsefe',
+  'Din Kültürü',
+  'İngilizce',
+  'Edebiyat',
+  'Vatandaşlık',
+  'Diğer',
+]
+
 export function calcNet(correct, incorrect) {
   const c = Number(correct) || 0
   const i = Number(incorrect) || 0

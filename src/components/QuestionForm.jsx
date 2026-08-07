@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
+import { COMMON_SUBJECTS } from '../lib/examHelpers'
 
 export default function QuestionForm({ onSubmitted }) {
   const { user } = useAuth()
   const [content, setContent] = useState('')
+  const [subject, setSubject] = useState('')
+  const [topic, setTopic] = useState('')
   const [file, setFile] = useState(null)
   const [sending, setSending] = useState(false)
   const [feedback, setFeedback] = useState(null)
@@ -37,12 +40,16 @@ export default function QuestionForm({ onSubmitted }) {
       const { error: insertError } = await supabase.from('questions').insert({
         student_id: user.id,
         content: content.trim() || null,
+        subject: subject || null,
+        topic: topic.trim() || null,
         image_url: imageUrl,
         status: 'İnceleniyor',
       })
       if (insertError) throw insertError
 
       setContent('')
+      setSubject('')
+      setTopic('')
       setFile(null)
       setFeedback({ type: 'success', text: 'Sorunuz öğretmeninize iletildi!' })
       onSubmitted?.()
@@ -56,6 +63,28 @@ export default function QuestionForm({ onSubmitted }) {
   return (
     <form onSubmit={handleSubmit} className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5 flex flex-col gap-3">
       <h3 className="font-display font-bold text-lg text-ink">Çözemediğin bir soru mu var?</h3>
+
+      <div className="grid sm:grid-cols-2 gap-3">
+        <select
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+          className="focus-ring w-full rounded-xl border border-brand-100 bg-paper px-4 py-2.5 text-sm text-ink/70"
+        >
+          <option value="">Ders seç (opsiyonel)</option>
+          {COMMON_SUBJECTS.map((s) => (
+            <option key={s} value={s}>
+              {s}
+            </option>
+          ))}
+        </select>
+        <input
+          value={topic}
+          onChange={(e) => setTopic(e.target.value)}
+          placeholder="Konu (örn. Trigonometri)"
+          className="focus-ring w-full rounded-xl border border-brand-100 bg-paper px-4 py-2.5 text-sm placeholder:text-ink/30"
+        />
+      </div>
+
       <textarea
         value={content}
         onChange={(e) => setContent(e.target.value)}
