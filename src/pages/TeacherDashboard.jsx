@@ -14,36 +14,29 @@ export default function TeacherDashboard() {
   const [loading, setLoading] = useState(true)
 
   const loadData = useCallback(async () => {
-    const [profilesRes, examsRes, questionsRes] = await Promise.all([
+    const [profilesRes, dailyLogsRes, questionsRes] = await Promise.all([
       supabase.from('profiles').select('*').eq('role', 'student'),
-      supabase.from('exams').select('*'),
+      supabase.from('daily_logs').select('*'),
       supabase
         .from('questions')
         .select('*, profiles!questions_student_id_fkey(full_name)')
         .order('created_at', { ascending: false }),
     ])
 
-    const exams = examsRes.data ?? []
+    const dailyLogs = dailyLogsRes.data ?? []
     const enrichedStudents = (profilesRes.data ?? []).map((s) => {
-      const studentExams = exams.filter((e) => e.student_id === s.id)
-      const average = studentExams.length
-        ? Math.round(studentExams.reduce((a, e) => a + e.score, 0) / studentExams.length)
-        : null
+      const studentLogs = dailyLogs.filter((l) => l.student_id === s.id)
+      const totalMinutes = studentLogs.reduce((sum, l) => sum + (l.duration_minutes || 0), 0)
+      const totalSolved = studentLogs.reduce(
+        (sum, l) => sum + (l.correct || 0) + (l.incorrect || 0) + (l.empty || 0),
+        0
+      )
 
-      const topicMap = {}
-      studentExams.forEach((e) => {
-        if (!topicMap[e.topic]) topicMap[e.topic] = []
-        topicMap[e.topic].push(e.score)
-      })
-      const topicAverages = Object.entries(topicMap).map(([topic, scores]) => ({
-        topic,
-        avg: scores.reduce((a, b) => a + b, 0) / scores.length,
-      }))
-      const weakestTopic = topicAverages.length
-        ? [...topicAverages].sort((a, b) => a.avg - b.avg)[0].topic
-        : null
-
-      return { ...s, average, weakestTopic }
+      return {
+        ...s,
+        totalMinutes: studentLogs.length ? totalMinutes : null,
+        totalSolved: studentLogs.length ? totalSolved : null,
+      }
     })
 
     setStudents(enrichedStudents)
