@@ -1,12 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-
-function formatDuration(minutes) {
-  if (minutes == null) return null
-  if (minutes < 60) return `${minutes} Dk`
-  const hours = Math.floor(minutes / 60)
-  const remaining = minutes % 60
-  return remaining > 0 ? `${hours} Saat ${remaining} Dk` : `${hours} Saat`
-}
+import { formatDuration } from '../lib/topicHelpers'
 
 export default function StudentList({ students }) {
   const navigate = useNavigate()

@@ -3,6 +3,15 @@
 // Biçime uymayan (tek kelimelik) konular da sorunsuz çalışır; ders adı "Genel" sayılır.
 import { calcNet } from './examHelpers'
 
+// Dakikayı okunaklı bir metne çevirir: 45 -> "45 Dk", 90 -> "1 Saat 30 Dk"
+export function formatDuration(minutes) {
+  if (minutes == null) return null
+  if (minutes < 60) return `${minutes} Dk`
+  const hours = Math.floor(minutes / 60)
+  const remaining = minutes % 60
+  return remaining > 0 ? `${hours} Saat ${remaining} Dk` : `${hours} Saat`
+}
+
 export function splitSubjectTopic(topicStr) {
   if (!topicStr) return { subject: 'Genel', topic: 'Belirtilmemiş' }
   const parts = topicStr.split(' - ')

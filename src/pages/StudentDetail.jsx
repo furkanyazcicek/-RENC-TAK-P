@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
-import { ClipboardList, Percent, AlertTriangle, HelpCircle } from 'lucide-react'
+import { ClipboardList, HelpCircle, Clock, CheckCircle2 } from 'lucide-react'
 import Navbar from '../components/Navbar'
 import StatCard from '../components/StatCard'
 import TopicBarChart from '../components/TopicBarChart'
@@ -23,11 +23,11 @@ import Modal from '../components/Modal'
 import DateFilterControl from '../components/DateFilterControl'
 import ExamTypeTabs from '../components/ExamTypeTabs'
 import {
-  buildCombinedNetPercentage,
   buildNetTrend,
   buildSubjectDistribution,
   buildSubjectTopicHierarchy,
   buildTopicStats,
+  formatDuration,
 } from '../lib/topicHelpers'
 import { buildSubjectPerformance } from '../lib/examHelpers'
 
@@ -45,6 +45,8 @@ export default function StudentDetail() {
   const [trendSubject, setTrendSubject] = useState(null)
   const [trendTopic, setTrendTopic] = useState(null)
   const [examsModalOpen, setExamsModalOpen] = useState(false)
+  const [studyModalOpen, setStudyModalOpen] = useState(false)
+  const [solvedModalOpen, setSolvedModalOpen] = useState(false)
 
   const load = useCallback(async () => {
     const [profileRes, examsRes, questionsRes, dailyLogsRes, mockExamsRes, homeworksRes] = await Promise.all([
@@ -123,14 +125,36 @@ export default function StudentDetail() {
     [dailyLogs, trendSubject, trendTopic]
   )
 
-  const combinedNet = useMemo(() => buildCombinedNetPercentage(dailyLogs, mockExams, exams), [dailyLogs, mockExams, exams])
+  const totalStudyMinutes = useMemo(
+    () => dailyLogs.reduce((sum, l) => sum + (l.duration_minutes || 0), 0),
+    [dailyLogs]
+  )
+  const totalSolved = useMemo(
+    () => dailyLogs.reduce((sum, l) => sum + (l.correct || 0) + (l.incorrect || 0) + (l.empty || 0), 0),
+    [dailyLogs]
+  )
 
-  const weakestTopicNet = useMemo(() => {
-    const allTopics = hierarchy.flatMap((s) => s.topics.map((t) => ({ ...t, subject: s.subject })))
-    if (allTopics.length === 0) return '—'
-    const weakest = [...allTopics].sort((a, b) => a.netPct - b.netPct)[0]
-    return `${weakest.subject} - ${weakest.topic}`
-  }, [hierarchy])
+  // Çalışma Süresi modalı — güne göre gruplanmış, tarihe göre azalan sıralı
+  const studyByDay = useMemo(() => {
+    const map = {}
+    dailyLogs.forEach((l) => {
+      map[l.study_date] = (map[l.study_date] ?? 0) + (l.duration_minutes || 0)
+    })
+    return Object.entries(map)
+      .map(([date, minutes]) => ({ date, minutes }))
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+  }, [dailyLogs])
+
+  // Çözülen Soru modalı — güne göre gruplanmış, tarihe göre azalan sıralı
+  const solvedByDay = useMemo(() => {
+    const map = {}
+    dailyLogs.forEach((l) => {
+      map[l.study_date] = (map[l.study_date] ?? 0) + (l.correct || 0) + (l.incorrect || 0) + (l.empty || 0)
+    })
+    return Object.entries(map)
+      .map(([date, count]) => ({ date, count }))
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+  }, [dailyLogs])
 
   const allExamsSorted = useMemo(() => {
     const branch = exams.map((e) => ({
@@ -188,14 +212,17 @@ export default function StudentDetail() {
               icon={ClipboardList}
             />
           </button>
-          <StatCard
-            label="Genel Ortalama"
-            value={combinedNet.netPct != null ? `%${combinedNet.netPct}` : '—'}
-            hint="Toplam Net / Toplam Soru"
-            accent="good"
-            icon={Percent}
-          />
-          <StatCard label="En Zayıf Konu" value={weakestTopicNet} accent="warn" icon={AlertTriangle} />
+          <button onClick={() => setStudyModalOpen(true)} className="focus-ring text-left">
+            <StatCard
+              label="Toplam Çalışma Süresi"
+              value={formatDuration(totalStudyMinutes) ?? '—'}
+              accent="good"
+              icon={Clock}
+            />
+          </button>
+          <button onClick={() => setSolvedModalOpen(true)} className="focus-ring text-left">
+            <StatCard label="Toplam Çözülen Soru" value={totalSolved} accent="warn" icon={CheckCircle2} />
+          </button>
           <StatCard label="Bekleyen Sorular" value={questions.filter((q) => q.status !== 'Çözüldü').length} accent="accent" icon={HelpCircle} />
         </div>
 
@@ -326,6 +353,49 @@ export default function StudentDetail() {
                   </div>
                 </div>
                 <span className="font-semibold text-ink flex-shrink-0">{e.detail}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </Modal>
+      <Modal open={studyModalOpen} onClose={() => setStudyModalOpen(false)} title="Günlük Çalışma Süresi">
+        {studyByDay.length === 0 ? (
+          <p className="text-sm text-ink/40">Henüz çalışma kaydı yok.</p>
+        ) : (
+          <ul className="flex flex-col divide-y divide-ink/5">
+            {studyByDay.map((d) => (
+              <li key={d.date} className="flex items-center justify-between py-2.5 text-sm">
+                <span className="text-ink/70">
+                  {new Date(d.date).toLocaleDateString('tr-TR', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                    weekday: 'long',
+                  })}
+                </span>
+                <span className="font-semibold text-good">{formatDuration(d.minutes)}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </Modal>
+
+      <Modal open={solvedModalOpen} onClose={() => setSolvedModalOpen(false)} title="Günlük Çözülen Soru Sayısı">
+        {solvedByDay.length === 0 ? (
+          <p className="text-sm text-ink/40">Henüz çalışma kaydı yok.</p>
+        ) : (
+          <ul className="flex flex-col divide-y divide-ink/5">
+            {solvedByDay.map((d) => (
+              <li key={d.date} className="flex items-center justify-between py-2.5 text-sm">
+                <span className="text-ink/70">
+                  {new Date(d.date).toLocaleDateString('tr-TR', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                    weekday: 'long',
+                  })}
+                </span>
+                <span className="font-semibold text-warn">{d.count} soru</span>
               </li>
             ))}
           </ul>
