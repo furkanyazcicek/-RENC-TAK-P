@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
 export default function Login() {
@@ -36,12 +37,16 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-paper px-4">
       <div className="w-full max-w-md">
+        <Link to="/" className="focus-ring flex items-center gap-1.5 text-sm font-medium text-ink/40 hover:text-brand-600 transition-colors mb-6">
+          <span aria-hidden>←</span> Anasayfaya dön
+        </Link>
+
         <div className="text-center mb-8">
           <div className="mx-auto h-12 w-12 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 grid place-items-center font-display font-bold text-white text-lg shadow-elevated">
-            S
+            D
           </div>
-          <h1 className="mt-4 text-2xl font-display font-bold tracking-tight text-ink">Sınıfım</h1>
-          <p className="text-sm text-ink/50 mt-1">Özel ders & öğrenci koçluk platformu</p>
+          <h1 className="mt-4 text-2xl font-display font-bold tracking-tight text-ink">Dr. Koç</h1>
+          <p className="text-sm text-ink/50 mt-1">Öğrenci &amp; Öğretmen Girişi</p>
         </div>
 
         <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-6">

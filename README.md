@@ -1,4 +1,4 @@
-# Sınıfım — Öğrenci Takip Uygulaması
+# Dr. Koç — Öğrenci Koçluk Platformu
 
 Bu doküman, kod bilmeseniz bile uygulamayı çalıştırıp yayına almanız için
 gereken **her adımı** anlatır. Hiçbir adımı atlamayın, sırayla ilerleyin.

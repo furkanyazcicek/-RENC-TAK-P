@@ -19,7 +19,7 @@ self.addEventListener('activate', (event) => {
 // PUSH: Edge Function'dan (send-push) gelen bildirimi göster
 // ============================================================
 self.addEventListener('push', (event) => {
-  let data = { title: 'Fokus Koçluk', body: 'Yeni bir bildiriminiz var.', url: '/' }
+  let data = { title: 'Dr. Koç', body: 'Yeni bir bildiriminiz var.', url: '/' }
   try {
     if (event.data) data = { ...data, ...event.data.json() }
   } catch {

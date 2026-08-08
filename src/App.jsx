@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
+import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
 import StudentDashboard from './pages/StudentDashboard'
 import TeacherDashboard from './pages/TeacherDashboard'
@@ -23,7 +24,7 @@ function FullPageLoader() {
 function ProtectedRoute({ children, allow }) {
   const { session, role, loading } = useAuth()
   if (loading) return <FullPageLoader />
-  if (!session) return <Navigate to="/" replace />
+  if (!session) return <Navigate to="/login" replace />
   if (allow && role !== allow) {
     return <Navigate to={role === 'teacher' ? '/ogretmen' : '/ogrenci'} replace />
   }
@@ -37,6 +38,18 @@ export default function App() {
     <Routes>
       <Route
         path="/"
+        element={
+          loading ? (
+            <FullPageLoader />
+          ) : session ? (
+            <Navigate to={role === 'teacher' ? '/ogretmen' : '/ogrenci'} replace />
+          ) : (
+            <LandingPage />
+          )
+        }
+      />
+      <Route
+        path="/login"
         element={
           loading ? (
             <FullPageLoader />
