@@ -18,6 +18,7 @@ import SubjectNetTable from '../components/SubjectNetTable'
 import QuestionDistributionChart from '../components/QuestionDistributionChart'
 import DependentSubjectTopicSelect from '../components/DependentSubjectTopicSelect'
 import TopicHierarchyAccordion from '../components/TopicHierarchyAccordion'
+import BranchExamNetChart from '../components/BranchExamNetChart'
 import Modal from '../components/Modal'
 import DateFilterControl from '../components/DateFilterControl'
 import ExamTypeTabs from '../components/ExamTypeTabs'
@@ -122,7 +123,7 @@ export default function StudentDetail() {
     [dailyLogs, trendSubject, trendTopic]
   )
 
-  const combinedNet = useMemo(() => buildCombinedNetPercentage(dailyLogs, mockExams), [dailyLogs, mockExams])
+  const combinedNet = useMemo(() => buildCombinedNetPercentage(dailyLogs, mockExams, exams), [dailyLogs, mockExams, exams])
 
   const weakestTopicNet = useMemo(() => {
     const allTopics = hierarchy.flatMap((s) => s.topics.map((t) => ({ ...t, subject: s.subject })))
@@ -136,8 +137,8 @@ export default function StudentDetail() {
       id: `exam-${e.id}`,
       type: 'Branş',
       label: e.exam_name || e.topic,
-      date: e.created_at,
-      detail: `%${e.score}`,
+      date: e.exam_date ?? e.created_at,
+      detail: e.net != null ? `${Number(e.net).toFixed(2)} net` : `%${e.score}`,
     }))
     const general = mockExams.map((e) => ({
       id: `mock-${e.id}`,
@@ -230,7 +231,13 @@ export default function StudentDetail() {
           <TrendLineChart data={trendData} />
         </div>
 
-        <AddExamForm studentId={studentId} onAdded={load} />
+        <div className="grid lg:grid-cols-2 gap-6 items-start">
+          <AddExamForm studentId={studentId} onAdded={load} />
+          <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5">
+            <h3 className="font-display font-bold text-lg text-ink mb-2">Branş Denemesi Net Grafiği</h3>
+            <BranchExamNetChart exams={exams} />
+          </div>
+        </div>
 
         <section>
           <div className="flex items-center justify-between gap-3 flex-wrap mb-3">

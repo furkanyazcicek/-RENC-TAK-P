@@ -160,11 +160,11 @@ export function buildNetTrend(logs, subjectFilter, topicFilter) {
 }
 
 // "Genel Ortalama" kartı için: günlük çalışmalar + tüm mock deneme dersleri
-// birlikte, SADECE net/toplam soru üzerinden tek bir yüzdeye indirilir.
-// (Not: eski "branş denemesi" (exams tablosu, elle girilen 0-100 puan) net
-// içermediği için bu formüle dahil edilmez — bu kart yalnızca gerçek
-// doğru/yanlış/boş verisi olan kaynaklardan hesaplanır.)
-export function buildCombinedNetPercentage(dailyLogs, mockExams) {
+// + net girilmiş branş denemeleri, SADECE net/toplam soru üzerinden tek bir
+// yüzdeye indirilir.
+// (Not: eski, net'siz branş denemeleri (sadece elle girilen 0-100 puan)
+// doğru/yanlış/boş içermediği için bu formüle dahil edilmez.)
+export function buildCombinedNetPercentage(dailyLogs, mockExams, branchExams) {
   let totalNet = 0
   let totalQuestions = 0
 
@@ -181,6 +181,12 @@ export function buildCombinedNetPercentage(dailyLogs, mockExams) {
       totalNet += Number(s.net || 0)
       totalQuestions += (s.correct || 0) + (s.incorrect || 0) + (s.empty || 0)
     })
+  })
+
+  ;(branchExams ?? []).forEach((e) => {
+    if (e.net == null) return // net'siz eski kayıtlar (sadece puan) dahil edilmez
+    totalNet += Number(e.net)
+    totalQuestions += (e.correct || 0) + (e.incorrect || 0) + (e.empty || 0)
   })
 
   return {

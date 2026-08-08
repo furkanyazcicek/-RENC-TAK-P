@@ -257,3 +257,14 @@ emin olun — depolama alanı (bucket) bu adımda oluşturuluyor.
 **Daha fazla konu/ders eklemek istiyorum.**
 "Yeni Deneme Sonucu Ekle" formundaki konu kutusuna dilediğiniz konuyu
 serbestçe yazabilirsiniz; listedeki öneriler sadece kolaylık içindir.
+
+**Branş Denemesi Ekle / net grafiği çalışmıyor.**
+`supabase/migration_branch_exam_upgrade.sql` dosyasını çalıştırmanız
+gerekiyor — bu, `exams` tablosuna tarih/doğru/yanlış/boş/net kolonlarını
+ekler ve öğrencinin kendi branş denemesini girebilmesine izin verir.
+
+**Sorunlu soru bildirimi gelmiyor / SQL hatası veriyor.**
+`supabase/migration_push_notifications.sql` dosyasını yeniden çalıştırın
+(içindeki `notify_new_question` fonksiyonu güncellendi) — `<PROJECT_REF>`
+ve `<WEBHOOK_SECRET>` yer tutucularını kendi değerlerinizle değiştirmeyi
+unutmayın.

@@ -7,6 +7,7 @@ import StatCard from '../components/StatCard'
 import TrendLineChart from '../components/TrendLineChart'
 import DependentSubjectTopicSelect from '../components/DependentSubjectTopicSelect'
 import TopicHierarchyAccordion from '../components/TopicHierarchyAccordion'
+import BranchExamNetChart from '../components/BranchExamNetChart'
 import Modal from '../components/Modal'
 import QuestionForm from '../components/QuestionForm'
 import MyQuestionsList from '../components/MyQuestionsList'
@@ -62,7 +63,7 @@ export default function StudentDashboard() {
   )
 
   // 4) Net / Toplam Soru formülüyle tek bir genel başarı yüzdesi
-  const combinedNet = useMemo(() => buildCombinedNetPercentage(dailyLogs, mockExams), [dailyLogs, mockExams])
+  const combinedNet = useMemo(() => buildCombinedNetPercentage(dailyLogs, mockExams, exams), [dailyLogs, mockExams, exams])
 
   // En zayıf konu — net bazlı hiyerarşideki tüm konular arasından en düşük net %
   const weakestTopic = useMemo(() => {
@@ -78,8 +79,8 @@ export default function StudentDashboard() {
       id: `exam-${e.id}`,
       type: 'Branş',
       label: e.exam_name || e.topic,
-      date: e.created_at,
-      detail: `%${e.score}`,
+      date: e.exam_date ?? e.created_at,
+      detail: e.net != null ? `${Number(e.net).toFixed(2)} net` : `%${e.score}`,
     }))
     const general = mockExams.map((e) => ({
       id: `mock-${e.id}`,
@@ -163,6 +164,14 @@ export default function StudentDashboard() {
                 : 'Tüm derslerin genel net bazlı gelişimi'}
           </p>
           <TrendLineChart data={trendData} />
+        </div>
+
+        <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5">
+          <h3 className="font-display font-bold text-lg text-ink mb-2">Branş Denemesi Net Grafiği</h3>
+          <p className="text-xs text-ink/40 -mt-1 mb-2">
+            Seçtiğin derse ait branş denemelerinin tarih bazlı net gelişimi.
+          </p>
+          <BranchExamNetChart exams={exams} />
         </div>
 
         <section>

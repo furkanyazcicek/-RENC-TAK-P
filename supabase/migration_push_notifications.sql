@@ -72,8 +72,15 @@ create or replace function notify_new_question() returns trigger as $$
 declare
   teacher record;
   student_name text;
+  preview text;
 begin
   select full_name into student_name from profiles where id = new.student_id;
+
+  -- Sorular tablosunda `title` yok, metin alanı `content` — önizleme için kısaltıyoruz
+  preview := coalesce(new.content, '📎 Fotoğraflı bir soru');
+  if length(preview) > 80 then
+    preview := substring(preview from 1 for 80) || '...';
+  end if;
 
   for teacher in select id from profiles where role = 'teacher' loop
     perform net.http_post(
@@ -85,7 +92,7 @@ begin
       body := jsonb_build_object(
         'user_id', teacher.id,
         'title', 'Yeni Sorunlu Soru',
-        'body', coalesce(student_name, 'Bir öğrenci') || ' bir soru gönderdi',
+        'body', coalesce(student_name, 'Bir öğrenci') || ': ' || preview,
         'url', '/sorular'
       )
     );
