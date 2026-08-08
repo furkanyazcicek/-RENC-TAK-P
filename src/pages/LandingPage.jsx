@@ -112,19 +112,16 @@ function AboutSection() {
         </div>
         <div>
           <span className="text-xs font-semibold uppercase tracking-wider text-brand-600">Hakkımda</span>
-          <h2 className="mt-2 text-3xl font-display font-bold text-ink">Merhaba, ben [Furkan Talha Yazçiçek]</h2>
+          <h2 className="mt-2 text-3xl font-display font-bold text-ink">Merhaba, ben Furkan Talha Yazçiçek</h2>
           <p className="mt-4 text-ink/60 leading-relaxed">
-            {/* Yer tutucu tanıtım metni — kendi biyografinizle değiştirin. */}
-            Yıllardır LGS, YKS ve KPSS'ye hazırlanan öğrencilere matematik ve geometri koçluğu
-            yapıyorum. Amacım sadece konu anlatmak değil; her öğrencinin çalışma düzenini,
-            eksiklerini ve gelişimini veriye dayalı olarak takip edip ona özel bir yol haritası
-            çıkarmak. Bu platform da tam olarak bunun için: günlük çalışmalarını, deneme
-            sonuçlarını ve konu bazlı gelişimini tek yerden birlikte takip ediyoruz.
-          </p>
+  Merhaba, ben Furkan Talha Yazçiçek. Lise ve ortaokul müfredatına yönelik verdiğim özel matematik dersleriyle bugüne kadar birçok öğrencinin zorlu sınav sürecini başarı hikayesine dönüştürmesine rehberlik ettim. Yıllar içindeki tecrübelerim bana şunu gösterdi: Kalıcı başarı sadece masada saatlerce ders çalışmaktan değil; doğru planlama, veriye dayalı takip ve güçlü bir psikolojik dayanıklılıktan geçiyor.
+  <br /><br />
+  Öğrencilerimin potansiyellerini en üst düzeye çıkarmak amacıyla kurduğum Dr. Koç platformu, işte bu vizyonun dijital bir yansımasıdır. Biz burada sadece matematik soruları çözmüyor; çalışma sürelerini analiz ediyor, branş denemelerindeki netlere göre eksikleri nokta atışı tespit ediyor ve hedefe giden yolu birlikte inşa ediyoruz. Geleceğinizi şansa değil, doğru yönlendirmeye emanet etmek istiyorsanız; doğru yerdesiniz. Başarıya giden bu yolda yol arkadaşınız olmaktan mutluluk duyacağım.
+</p>
           <ul className="mt-6 flex flex-col gap-2 text-sm text-ink/60">
             <li className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-              [X] yıllık özel ders ve koçluk deneyimi
+              6 yıllık özel ders ve koçluk deneyimi
             </li>
             <li className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
