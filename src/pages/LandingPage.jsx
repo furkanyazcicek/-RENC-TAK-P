@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import {
+  ArrowRight,
   BarChart3,
   BookOpen,
   Calculator,
+  CheckCircle2,
   GraduationCap,
   Mail,
   MapPin,
@@ -10,29 +12,30 @@ import {
   Phone,
   Sparkles,
   Target,
+  TrendingUp,
 } from 'lucide-react'
 
 function LandingNavbar() {
   return (
-    <header className="sticky top-0 z-20 bg-paper/90 backdrop-blur supports-[backdrop-filter]:bg-paper/70 border-b border-ink/[0.06]">
+    <header className="sticky top-0 z-20 bg-slate-950/80 backdrop-blur-md supports-[backdrop-filter]:bg-slate-950/70 border-b border-white/10">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 h-16 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
-          <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 grid place-items-center text-white shadow-sm">
+          <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-brand-500 to-violet-700 grid place-items-center text-white shadow-sm">
             <GraduationCap className="h-5 w-5" strokeWidth={2.2} />
           </div>
-          <span className="font-display font-bold text-lg tracking-tight text-ink">Dr. Koç</span>
+          <span className="font-display font-bold text-lg tracking-tight text-white">Dr. Koç</span>
         </a>
 
         <nav className="hidden sm:flex items-center gap-7">
-          <a href="#hakkimda" className="text-sm font-medium text-ink/60 hover:text-brand-600 transition-colors">
+          <a href="#hakkimda" className="text-sm font-medium text-white/60 hover:text-white transition-colors">
             Hakkımda
           </a>
-          <a href="#iletisim" className="text-sm font-medium text-ink/60 hover:text-brand-600 transition-colors">
+          <a href="#iletisim" className="text-sm font-medium text-white/60 hover:text-white transition-colors">
             İletişim
           </a>
           <Link
             to="/login"
-            className="focus-ring rounded-xl bg-brand-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-600 transition-colors"
+            className="focus-ring rounded-full bg-amber-400 px-5 py-2.5 text-sm font-bold text-slate-950 shadow-sm hover:bg-amber-300 hover:shadow-[0_0_20px_rgba(251,191,36,0.5)] transition-all"
           >
             Giriş Yap
           </Link>
@@ -40,7 +43,7 @@ function LandingNavbar() {
 
         <Link
           to="/login"
-          className="focus-ring sm:hidden rounded-xl bg-brand-500 px-4 py-2 text-sm font-semibold text-white shadow-sm"
+          className="focus-ring sm:hidden rounded-full bg-amber-400 px-4 py-2 text-sm font-bold text-slate-950 shadow-sm"
         >
           Giriş Yap
         </Link>
@@ -49,52 +52,153 @@ function LandingNavbar() {
   )
 }
 
-function HeroSection() {
+function GlassBadge({ Icon, iconBg, iconColor, label, value, className }) {
   return (
-    <section id="top" className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-50 via-paper to-paper -z-10" />
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 pt-16 sm:pt-24 pb-20 sm:pb-28 text-center">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-50 border border-brand-100 text-brand-700 text-xs font-semibold px-3 py-1.5">
-          <Sparkles className="h-3.5 w-3.5" />
-          LGS · YKS (TYT/AYT) · KPSS
-        </span>
+    <div
+      className={`absolute rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 shadow-2xl px-4 py-3 flex items-center gap-2.5 ${className}`}
+    >
+      <div className={`h-8 w-8 rounded-xl grid place-items-center flex-shrink-0 ${iconBg}`}>
+        <Icon className={`h-4 w-4 ${iconColor}`} strokeWidth={2.2} />
+      </div>
+      <div>
+        <p className="text-[10px] font-semibold text-white/40 uppercase tracking-wide">{label}</p>
+        <p className="text-sm font-bold text-white">{value}</p>
+      </div>
+    </div>
+  )
+}
 
-        <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-tight text-ink leading-[1.1]">
-          Profesyonel YKS ve
-          <br />
-          <span className="text-brand-600">Matematik Koçluğu</span>
-        </h1>
+function HeroIllustration() {
+  return (
+    <div className="relative mx-auto w-full max-w-md aspect-square">
+      {/* Panelin arkasından süzülen ışık (glow) */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[110%] w-[110%] rounded-full bg-[radial-gradient(circle,_rgba(139,92,246,0.35),_transparent_65%)] blur-2xl" />
 
-        <p className="mt-5 max-w-xl mx-auto text-base sm:text-lg text-ink/60">
-          Günlük çalışmandan deneme netlerine, konu bazlı gelişiminden ödevlerine kadar her şeyi
-          tek platformda takip ediyoruz — hedefine düzenli ve veriye dayalı adımlarla ulaş.
-        </p>
+      {/* Ana cam panel */}
+      <div className="absolute inset-6 rounded-[2rem] bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-md border border-white/15 shadow-2xl overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-25"
+          style={{
+            backgroundImage:
+              'linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+        <div className="relative h-full grid place-items-center">
+          <div className="h-24 w-24 rounded-3xl bg-gradient-to-br from-brand-400 to-violet-600 shadow-[0_0_40px_rgba(139,92,246,0.5)] grid place-items-center">
+            <GraduationCap className="h-12 w-12 text-white" strokeWidth={1.5} />
+          </div>
+        </div>
+      </div>
 
-        <div className="mt-8 flex items-center justify-center gap-3 flex-wrap">
-          <Link
-            to="/login"
-            className="focus-ring rounded-xl bg-brand-500 px-7 py-3.5 text-sm font-semibold text-white shadow-elevated hover:bg-brand-600 transition-colors"
-          >
-            Hemen Başla
-          </Link>
-          <a
-            href="#hakkimda"
-            className="focus-ring rounded-xl bg-white border border-ink/10 px-7 py-3.5 text-sm font-semibold text-ink/70 hover:bg-ink/5 transition-colors"
-          >
-            Daha Fazla Bilgi
-          </a>
+      {/* Yüzen cam (glassmorphism) rozetler */}
+      <GlassBadge
+        Icon={TrendingUp}
+        iconBg="bg-emerald-400/15"
+        iconColor="text-emerald-400"
+        label="Net Artışı"
+        value="+18.5"
+        className="-left-2 top-8 rotate-[-4deg]"
+      />
+      <GlassBadge
+        Icon={CheckCircle2}
+        iconBg="bg-blue-400/15"
+        iconColor="text-blue-400"
+        label="LGS Denemesi"
+        value="Tamamlandı"
+        className="-right-2 top-1/2 -translate-y-1/2 rotate-[3deg]"
+      />
+      <GlassBadge
+        Icon={Target}
+        iconBg="bg-amber-400/15"
+        iconColor="text-amber-400"
+        label="Hedef Başarı"
+        value="%92"
+        className="left-4 -bottom-2 rotate-[2deg]"
+      />
+    </div>
+  )
+}
+
+function HeroSection() {
+  const features = [
+    { Icon: Target, label: 'Net Bazlı Analiz' },
+    { Icon: BarChart3, label: 'Anlık İlerleme Takibi' },
+    { Icon: BookOpen, label: 'Ders Notu Kütüphanesi' },
+    { Icon: Calculator, label: 'Konu Bazlı Gelişim' },
+  ]
+
+  return (
+    <section id="top" className="relative overflow-hidden bg-slate-950">
+      {/* Derinlikli, asimetrik radial-gradient aydınlatmalar */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_15%_10%,_rgba(99,102,241,0.28),_transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_45%_at_85%_85%,_rgba(251,191,36,0.18),_transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_40%_at_50%_0%,_rgba(139,92,246,0.15),_transparent_65%)]" />
+      {/* İnce ızgara (grid) deseni */}
+      <div
+        className="absolute inset-0 opacity-[0.05]"
+        style={{
+          backgroundImage:
+            'linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)',
+          backgroundSize: '44px 44px',
+        }}
+      />
+
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-16 sm:pt-24 pb-20 sm:pb-28">
+        <div className="grid md:grid-cols-[1.15fr_0.85fr] gap-14 md:gap-10 items-center">
+          {/* SOL: Başlık, açıklama, butonlar */}
+          <div className="text-left">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/15 text-amber-300 text-xs font-semibold px-3 py-1.5">
+              <Sparkles className="h-3.5 w-3.5" />
+              LGS · YKS (TYT/AYT) · KPSS · Tüm Sınıflar
+            </span>
+
+            <h1 className="mt-6 text-5xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight text-white leading-[1.05]">
+              Başarıya Giden
+              <br />
+              <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 bg-clip-text text-transparent">
+                Yolu Biliyoruz
+              </span>
+            </h1>
+
+            <p className="mt-6 max-w-lg text-base sm:text-lg text-gray-300 leading-relaxed">
+              Ortaokuldan üniversiteye; LGS, YKS ve KPSS'ye hazırlanan her öğrenci ve her ders
+              için tek platform. Günlük çalışmandan deneme netlerine, konu bazlı gelişiminden
+              ödevlerine kadar tüm sınav stratejini veriye dayalı olarak birlikte yönetelim.
+            </p>
+
+            <div className="mt-10 flex items-center gap-4 flex-wrap">
+              <Link
+                to="/login"
+                className="focus-ring group inline-flex items-center gap-2 rounded-full bg-amber-400 px-8 py-4 text-sm font-bold text-slate-950 shadow-[0_0_20px_rgba(251,191,36,0.35)] hover:bg-amber-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(251,191,36,0.5)] transition-all duration-300"
+              >
+                Hedefini Seç
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+              <a
+                href="#hakkimda"
+                className="focus-ring rounded-full bg-white/5 border border-white/15 px-8 py-4 text-sm font-semibold text-white/80 hover:bg-white/10 hover:text-white transition-all duration-300"
+              >
+                Daha Fazla Bilgi
+              </a>
+            </div>
+          </div>
+
+          {/* SAĞ: Görsel yer tutucu (3D illüstrasyon + glow) */}
+          <HeroIllustration />
         </div>
 
-        <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
-          {[
-            { Icon: Target, label: 'Net Bazlı Analiz' },
-            { Icon: BarChart3, label: 'Anlık İlerleme Takibi' },
-            { Icon: BookOpen, label: 'Ders Notu Kütüphanesi' },
-            { Icon: Calculator, label: 'Konu Bazlı Gelişim' },
-          ].map(({ Icon, label }) => (
-            <div key={label} className="rounded-xl2 bg-white shadow-card border border-ink/5 p-4 flex flex-col items-center gap-2">
-              <Icon className="h-5 w-5 text-brand-600" strokeWidth={2} />
-              <span className="text-xs font-semibold text-ink/60 text-center">{label}</span>
+        {/* Glassmorphism özellik kartları */}
+        <div className="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
+          {features.map(({ Icon, label }) => (
+            <div
+              key={label}
+              className="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-4 flex flex-col items-center gap-2 hover:-translate-y-2 hover:bg-white/[0.08] transition-all duration-300 cursor-default"
+            >
+              <div className="h-9 w-9 rounded-xl bg-white/10 grid place-items-center">
+                <Icon className="h-4 w-4 text-amber-300" strokeWidth={2} />
+              </div>
+              <span className="text-xs font-semibold text-white/70 text-center">{label}</span>
             </div>
           ))}
         </div>
@@ -112,16 +216,19 @@ function AboutSection() {
         </div>
         <div>
           <span className="text-xs font-semibold uppercase tracking-wider text-brand-600">Hakkımda</span>
-          <h2 className="mt-2 text-3xl font-display font-bold text-ink">Merhaba, ben Furkan Talha Yazçiçek</h2>
+          <h2 className="mt-2 text-3xl font-display font-bold text-ink">Merhaba, ben [Öğretmen Adı]</h2>
           <p className="mt-4 text-ink/60 leading-relaxed">
-  Merhaba, ben Furkan Talha Yazçiçek. Lise ve ortaokul müfredatına yönelik verdiğim özel matematik dersleriyle bugüne kadar birçok öğrencinin zorlu sınav sürecini başarı hikayesine dönüştürmesine rehberlik ettim. Yıllar içindeki tecrübelerim bana şunu gösterdi: Kalıcı başarı sadece masada saatlerce ders çalışmaktan değil; doğru planlama, veriye dayalı takip ve güçlü bir psikolojik dayanıklılıktan geçiyor.
-  <br /><br />
-  Öğrencilerimin potansiyellerini en üst düzeye çıkarmak amacıyla kurduğum Dr. Koç platformu, işte bu vizyonun dijital bir yansımasıdır. Biz burada sadece matematik soruları çözmüyor; çalışma sürelerini analiz ediyor, branş denemelerindeki netlere göre eksikleri nokta atışı tespit ediyor ve hedefe giden yolu birlikte inşa ediyoruz. Geleceğinizi şansa değil, doğru yönlendirmeye emanet etmek istiyorsanız; doğru yerdesiniz. Başarıya giden bu yolda yol arkadaşınız olmaktan mutluluk duyacağım.
-</p>
+            {/* Yer tutucu tanıtım metni — kendi biyografinizle değiştirin. */}
+            Yıllardır LGS, YKS ve KPSS'ye hazırlanan öğrencilere matematik ve geometri koçluğu
+            yapıyorum. Amacım sadece konu anlatmak değil; her öğrencinin çalışma düzenini,
+            eksiklerini ve gelişimini veriye dayalı olarak takip edip ona özel bir yol haritası
+            çıkarmak. Bu platform da tam olarak bunun için: günlük çalışmalarını, deneme
+            sonuçlarını ve konu bazlı gelişimini tek yerden birlikte takip ediyoruz.
+          </p>
           <ul className="mt-6 flex flex-col gap-2 text-sm text-ink/60">
             <li className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-              6 yıllık özel ders ve koçluk deneyimi
+              [X] yıllık özel ders ve koçluk deneyimi
             </li>
             <li className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
