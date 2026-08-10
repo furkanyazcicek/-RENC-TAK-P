@@ -65,11 +65,14 @@ export default function Register() {
       setError(signUpError.message);
       setLoading(false);
     } else {
-      // Veli kaydıysa Supabase profiline öğrenci ID'sini doğrudan güncelliyoruz
-      if (role === 'parent' && data?.user?.id) {
+      // GARANTİCİ ÇÖZÜM: Kayıt olduktan sonra rolü ve öğrenci bağını doğrudan güncelliyoruz
+      if (data?.user?.id) {
         await supabase
           .from('profiles')
-          .update({ student_id: selectedStudentId })
+          .update({ 
+            role: role, 
+            student_id: role === 'parent' ? selectedStudentId : null 
+          })
           .eq('id', data.user.id);
       }
       navigate('/');
