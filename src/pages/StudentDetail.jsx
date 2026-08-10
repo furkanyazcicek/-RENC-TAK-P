@@ -128,7 +128,6 @@ export default function StudentDetail() {
     
     return buildNetTrend(logsWithQuestions, trendSubject, trendTopic);
   }, [dailyLogs, trendSubject, trendTopic]);
-  )
 
   const totalStudyMinutes = useMemo(
     () => dailyLogs.reduce((sum, l) => sum + (l.duration_minutes || 0), 0),
