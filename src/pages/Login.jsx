@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 
@@ -9,7 +8,6 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [resetMessage, setResetMessage] = useState('');
-  const { signIn } = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -17,7 +15,13 @@ export default function Login() {
     setLoading(true);
     setError('');
     setResetMessage('');
-    const { error: signInError } = await signIn({ email, password });
+
+    // Supabase doğrudan çağrılarak JSON unmarshal hataları engelleniyor
+    const { error: signInError } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
     if (signInError) {
       setError(signInError.message);
       setLoading(false);
@@ -42,7 +46,7 @@ export default function Login() {
     if (error) {
       setError(error.message);
     } else {
-      setResetMessage('Şifre sıfırlama bağlantısı e-posta adresinize gönderildi. Lütfen gelen kutunuzu (ve spam klasörünü) kontrol edin.');
+      setResetMessage('Şifre sıfırlama bağlantısı e-posta adresinize gönderildi. Lütfen gelen kutunuzu kontrol edin.');
     }
     setLoading(false);
   };
