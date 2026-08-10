@@ -33,12 +33,12 @@ export default function ParentDashboard() {
       
       setStudentData(student);
 
-      // 3. Öğrencinin çalışma geçmişini (loglarını) çekiyoruz
+      // 3. Öğrencin صحيح çalışma geçmişini doğru sütun adlarıyla (study_date ve duration_minutes) çekiyoruz
       const { data: dailyLogs } = await supabase
         .from('daily_logs')
         .select('*')
         .eq('student_id', parentProfile.student_id)
-        .order('date', { ascending: false });
+        .order('study_date', { ascending: false });
 
       if (dailyLogs) setLogs(dailyLogs);
     }
@@ -65,24 +65,23 @@ export default function ParentDashboard() {
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tarih</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ders / Konu</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Konu</th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Süre</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Doğru/Yanlış/Boş</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Doğru/Yanlış</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {logs.map((log) => (
                   <tr key={log.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-medium">
-                      {new Date(log.date).toLocaleDateString('tr-TR')}
+                      {log.study_date ? new Date(log.study_date).toLocaleDateString('tr-TR') : '-'}
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-900">
-                      <span className="font-semibold">{log.subject}</span> <br/>
-                      <span className="text-xs text-gray-500">{log.topic}</span>
+                      <span className="font-semibold text-gray-800">{log.topic}</span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{log.duration} dk</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{log.duration_minutes || 0} dk</td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                      <span className="text-green-600 font-medium">{log.correct || 0} D</span> / <span className="text-red-600 font-medium">{log.wrong || 0} Y</span> / <span className="text-gray-500">{log.empty || 0} B</span>
+                      <span className="text-green-600 font-medium">{log.correct || 0} D</span> / <span className="text-red-600 font-medium">{log.wrong || 0} Y</span>
                     </td>
                   </tr>
                 ))}
