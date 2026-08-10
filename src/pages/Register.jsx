@@ -43,40 +43,40 @@ export default function Register() {
 
     setLoading(true);
     setError('');
-    
-    const metadata = {
-      full_name: fullName,
-      role: role,
-    };
-    
-    if (role === 'parent') {
-      metadata.student_id = selectedStudentId;
-    }
 
-    const { data, error: signUpError } = await signUp({ 
+    // 1. Supabase Auth ile kullanıcıyı oluşturuyoruz
+    const { data: authData, error: signUpError } = await signUp({ 
       email, 
-      password,
-      options: {
-        data: metadata
-      }
+      password 
     });
     
     if (signUpError) {
       setError(signUpError.message);
       setLoading(false);
-    } else {
-      // GARANTİCİ ÇÖZÜM: Kayıt olduktan sonra rolü ve öğrenci bağını doğrudan güncelliyoruz
-      if (data?.user?.id) {
-        await supabase
-          .from('profiles')
-          .update({ 
-            role: role, 
-            student_id: role === 'parent' ? selectedStudentId : null 
-          })
-          .eq('id', data.user.id);
-      }
-      navigate('/');
+      return;
     }
+
+    // 2. Kullanıcı başarıyla oluştuysa, profiles tablosuna kaydı BİZ yazıyoruz (Garanti Yöntem)
+    const userId = authData?.user?.id;
+    if (userId) {
+      const { error: profileError } = await supabase
+        .from('profiles')
+        .upsert({
+          id: userId,
+          full_name: fullName,
+          role: role,
+          student_id: role === 'parent' && selectedStudentId ? selectedStudentId : null
+        });
+
+      if (profileError) {
+        setError('Profil oluşturulurken bir hata oluştu: ' + profileError.message);
+        setLoading(false);
+        return;
+      }
+    }
+
+    setLoading(false);
+    navigate('/');
   };
 
   return (
