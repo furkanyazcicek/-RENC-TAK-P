@@ -12,6 +12,7 @@ export default function Register() {
   const [selectedStudentId, setSelectedStudentId] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  
   const { signUp } = useAuth();
   const navigate = useNavigate();
 
@@ -27,135 +28,162 @@ export default function Register() {
       .from('profiles')
       .select('id, full_name')
       .eq('role', 'student');
-    
-    if (data) setStudents(data);
+    if (data) {
+      setStudents(data);
+    }
   };
 
-  const handleSubmit = async (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError('');
-
+    
     if (role === 'parent' && !selectedStudentId) {
-      setError('Lütfen listeden öğrencinizi (çocuğunuzu) seçin.');
-      setLoading(false);
+      setError('Lütfen bir öğrenci seçin.');
       return;
     }
 
-    // AuthContext'teki signUp fonksiyonuna verileri yolluyoruz
-    const { error: signUpError } = await signUp(email, password, {
+    setLoading(true);
+    setError('');
+    
+    const metadata = {
       full_name: fullName,
       role: role,
-      student_id: role === 'parent' ? selectedStudentId : null
-    });
+    };
+    
+    if (role === 'parent') {
+      metadata.student_id = selectedStudentId;
+    }
 
+    const { error: signUpError } = await signUp({ 
+      email, 
+      password,
+      options: {
+        data: metadata
+      }
+    });
+    
     if (signUpError) {
       setError(signUpError.message);
+      setLoading(false);
     } else {
-      alert('Kayıt başarılı! Şimdi giriş yapabilirsiniz.');
-      navigate('/login');
+      navigate('/');
     }
-    setLoading(false);
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-md border border-gray-100">
-        <div>
-          <h2 className="text-center text-3xl font-extrabold text-gray-900">
-            Dr. Koç'a Kayıt Ol
-          </h2>
+    <div className="min-h-screen bg-paper flex flex-col items-center justify-center relative px-4 py-12">
+      {/* Sol Üst Geri Dön Butonu */}
+      <div className="absolute top-6 left-6 sm:top-8 sm:left-8">
+        <Link to="/" className="text-brand-700 text-sm font-medium flex items-center gap-2 hover:underline">
+          ← Anasayfaya dön
+        </Link>
+      </div>
+
+      {/* Logo ve Başlık Alanı */}
+      <div className="flex flex-col items-center mb-8 mt-4">
+        <div className="w-14 h-14 bg-brand-700 text-white rounded-2xl flex items-center justify-center text-2xl font-bold shadow-sm mb-4">
+          D
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          {error && (
-            <div className="bg-red-50 text-red-600 p-3 rounded-md text-sm">
-              {error}
-            </div>
-          )}
-          
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Ad Soyad</label>
-              <input
-                type="text"
-                required
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-              />
-            </div>
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-ink mb-1">Dr. Koç</h1>
+        <p className="text-sm text-ink/50 font-medium">Öğrenci & Veli Kaydı</p>
+      </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700">E-posta</label>
-              <input
-                type="email"
-                required
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
+      {/* Kayıt Kartı */}
+      <div className="w-full max-w-md bg-white rounded-[24px] shadow-card border border-ink/5 p-6 sm:p-8">
+        
+        {/* Üst Sekmeler (Giriş Yap / Kayıt Ol) */}
+        <div className="flex bg-paper p-1.5 rounded-2xl mb-8 border border-ink/5">
+          <Link to="/login" className="flex-1 text-ink/50 text-center py-2.5 rounded-xl text-sm font-bold hover:text-ink transition-colors">
+            Giriş Yap
+          </Link>
+          <div className="flex-1 bg-white shadow-sm text-brand-700 text-center py-2.5 rounded-xl text-sm font-bold">
+            Kayıt Ol
+          </div>
+        </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Şifre</label>
-              <input
-                type="password"
-                required
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
+        {/* Uyarı Mesajları */}
+        {error && (
+          <div className="mb-4 bg-red-50 border border-red-100 text-red-600 p-3 rounded-xl text-sm font-medium">
+            {error}
+          </div>
+        )}
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Kayıt Türü</label>
-              <select
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-              >
-                <option value="student">Öğrenci Olarak Kaydol</option>
-                <option value="parent">Veli Olarak Kaydol</option>
-              </select>
-            </div>
-
-            {role === 'parent' && (
-              <div>
-                <label className="block text-sm font-medium text-gray-700">Çocuğunuzu (Öğrenciyi) Seçin</label>
-                <select
-                  required
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                  value={selectedStudentId}
-                  onChange={(e) => setSelectedStudentId(e.target.value)}
-                >
-                  <option value="">-- Öğrenci Seçin --</option>
-                  {students.map((student) => (
-                    <option key={student.id} value={student.id}>
-                      {student.full_name}
-                    </option>
-                  ))}
-                </select>
-                <p className="mt-1 text-xs text-gray-500">Sadece seçtiğiniz öğrencinin verilerini görebileceksiniz.</p>
-              </div>
-            )}
+        {/* Form */}
+        <form onSubmit={handleRegister} className="space-y-4">
+          <div>
+            <label className="block text-sm font-bold text-ink/70 mb-1.5 ml-1">Ad Soyad</label>
+            <input
+              type="text"
+              required
+              className="w-full px-4 py-3.5 rounded-xl border border-ink/10 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-all placeholder:text-ink/30 text-sm font-medium bg-white"
+              placeholder="İsim ve Soyisim"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+            />
           </div>
 
           <div>
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+            <label className="block text-sm font-bold text-ink/70 mb-1.5 ml-1">E-posta</label>
+            <input
+              type="email"
+              required
+              className="w-full px-4 py-3.5 rounded-xl border border-ink/10 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-all placeholder:text-ink/30 text-sm font-medium bg-white"
+              placeholder="ornek@eposta.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-bold text-ink/70 mb-1.5 ml-1">Şifre</label>
+            <input
+              type="password"
+              required
+              className="w-full px-4 py-3.5 rounded-xl border border-ink/10 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-all placeholder:text-ink/30 text-sm font-medium bg-white"
+              placeholder="En az 6 karakter"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-bold text-ink/70 mb-1.5 ml-1">Kayıt Türü</label>
+            <select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className="w-full px-4 py-3.5 rounded-xl border border-ink/10 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-all text-sm font-medium bg-white"
             >
-              {loading ? 'Kaydediliyor...' : 'Kayıt Ol'}
-            </button>
+              <option value="student">Öğrenci Olarak Kaydol</option>
+              <option value="parent">Veli Olarak Kaydol</option>
+            </select>
           </div>
-          
-          <div className="text-sm text-center">
-            <span className="text-gray-600">Zaten hesabın var mı? </span>
-            <Link to="/login" className="font-medium text-blue-600 hover:text-blue-500">
-              Giriş Yap
-            </Link>
-          </div>
+
+          {/* Veli seçildiyse Çocuğu Seçme Ekranı */}
+          {role === 'parent' && (
+            <div>
+              <label className="block text-sm font-bold text-ink/70 mb-1.5 ml-1">Çocuğunuzu Seçin</label>
+              <select
+                value={selectedStudentId}
+                onChange={(e) => setSelectedStudentId(e.target.value)}
+                className="w-full px-4 py-3.5 rounded-xl border border-ink/10 focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition-all text-sm font-medium bg-white"
+                required={role === 'parent'}
+              >
+                <option value="">-- Öğrenci Seçin --</option>
+                {students.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.full_name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full bg-brand-600 text-white font-bold py-3.5 rounded-xl hover:bg-brand-700 transition-colors shadow-sm mt-4 disabled:opacity-50"
+          >
+            {loading ? 'Kayıt yapılıyor...' : 'Kayıt Ol'}
+          </button>
         </form>
       </div>
     </div>
