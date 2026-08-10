@@ -9,7 +9,7 @@ import DailyLogsList from '../components/DailyLogsList'
 import Modal from '../components/Modal'
 import { formatDuration } from '../lib/topicHelpers'
 
-// Donut grafiği için sabit renk paleti (Tailwind sınıfları conic-gradient içinde çalışmadığından hex kullanılıyor)
+// Donut grafiği için sabit renk paleti
 const DONUT_COLORS = ['#6366f1', '#f59e0b', '#10b981', '#f43f5e', '#0ea5e9', '#a855f7', '#84cc16', '#ec4899']
 
 export default function ParentDashboard() {
@@ -51,9 +51,8 @@ export default function ParentDashboard() {
       return
     }
 
-    // 2) Sadece bu öğrenciye ait veriler — güvenli, tek yönlü (salt okunur) sorgular
-    //    mock_exams <-> mock_exam_subjects join edilerek ders bazlı netler birlikte çekiliyor
-    const [studentRes, dailyLogsRes, mockExamsRes, homeworksRes] = await Promise.all([
+    // 2) Sadece bu öğrenciye ait veriler — güvenli, ayrı ayrı çekip JS ile eşleştiriyoruz
+    const [studentRes, dailyLogsRes, mockExamsRes, mockExamSubjectsRes, homeworksRes] = await Promise.all([
       supabase.from('profiles').select('id, full_name').eq('id', studentId).single(),
       supabase
         .from('daily_logs')
@@ -62,9 +61,12 @@ export default function ParentDashboard() {
         .order('study_date', { ascending: false }),
       supabase
         .from('mock_exams')
-        .select('*, mock_exam_subjects (net, subject)')
+        .select('*')
         .eq('student_id', studentId)
         .order('exam_date', { ascending: false }),
+      supabase
+        .from('mock_exam_subjects')
+        .select('*'),
       supabase
         .from('homeworks')
         .select('*')
@@ -75,7 +77,20 @@ export default function ParentDashboard() {
 
     setStudentProfile(studentRes.data)
     setDailyLogs(dailyLogsRes.data ?? [])
-    setMockExams(mockExamsRes.data ?? [])
+    
+    // Denemeler ile alt ders netlerini güvenli bir şekilde eşleştiriyoruz
+    const examsRaw = mockExamsRes.data ?? []
+    const subjectsRaw = mockExamSubjectsRes.data ?? []
+    
+    const examsWithSubjects = examsRaw.map(exam => {
+      const matchSubjects = subjectsRaw.filter(s => s.mock_exam_id === exam.id || s.exam_id === exam.id)
+      return {
+        ...exam,
+        mock_exam_subjects: matchSubjects
+      }
+    })
+
+    setMockExams(examsWithSubjects)
     setHomeworks(homeworksRes.data ?? [])
     setLoading(false)
   }, [user])
@@ -120,8 +135,7 @@ export default function ParentDashboard() {
       .sort((a, b) => b.count - a.count)
   }, [dailyLogs])
 
-  // ---- Gün bazlı kırılım: hangi gün / hangi ders-konu / kaç soru & kaç dakika ----
-  // 4 özet kart modalının ve tarih filtresinin ortak veri kaynağı
+  // ---- Gün bazlı kırılım ----
   const byDay = useMemo(() => {
     const map = {}
     dailyLogs.forEach((l) => {
@@ -168,7 +182,6 @@ export default function ParentDashboard() {
       cumulative += s.pct
       return `${DONUT_COLORS[i % DONUT_COLORS.length]} ${start}% ${cumulative}%`
     })
-    // Yuvarlama hatalarından kalan boşluğu son dilime doldur
     if (cumulative < 100) stops.push(`${DONUT_COLORS[(dayDistribution.slices.length - 1) % DONUT_COLORS.length]} ${cumulative}% 100%`)
     return `conic-gradient(${stops.join(', ')})`
   }, [dayDistribution])
@@ -191,7 +204,7 @@ export default function ParentDashboard() {
       .sort((a, b) => new Date(b.date) - new Date(a.date))
   }, [mockExams])
 
-  // ---- Ödevler: devam eden / tamamlanan (hem `status` hem `is_completed` şemasını destekler) ----
+  // ---- Ödevler ----
   const isHomeworkDone = (h) => h.status === 'Tamamlandı' || h.is_completed === true
   const pendingHomeworks = useMemo(() => homeworks.filter((h) => !isHomeworkDone(h)), [homeworks])
   const doneHomeworks = useMemo(() => homeworks.filter((h) => isHomeworkDone(h)), [homeworks])
@@ -250,7 +263,7 @@ export default function ParentDashboard() {
       </header>
 
       <main className="mx-auto max-w-6xl px-4 sm:px-6 py-6 flex flex-col gap-6">
-        {/* Özet istatistik kartları — her biri tıklanabilir, gün bazlı dökümü modalda açar */}
+        {/* Özet istatistik kartları */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <button onClick={() => setDetailModal('time')} className="focus-ring text-left">
             <StatCard label="Toplam Çalışma Süresi" value={formatDuration(totalMinutes) ?? '—'} accent="brand" icon={Clock} />
@@ -266,7 +279,7 @@ export default function ParentDashboard() {
           </button>
         </div>
 
-        {/* Ders bazlı çalışma dağılımı (tüm zamanlar) */}
+        {/* Ders bazlı çalışma dağılımı */}
         <section className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5">
           <h2 className="font-display font-bold text-lg text-ink mb-1">Ders Bazlı Çalışma Dağılımı</h2>
           <p className="text-xs text-ink/40 mb-4">Çözülen soruların derslere göre yüzdelik dağılımı (tüm zamanlar)</p>
@@ -291,7 +304,7 @@ export default function ParentDashboard() {
           )}
         </section>
 
-        {/* Tarih seçmeli konu/ders dağılımı — donut grafik */}
+        {/* Tarih seçmeli konu/ders dağılımı */}
         <section className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5">
           <div className="flex items-center justify-between gap-3 flex-wrap mb-1">
             <h2 className="font-display font-bold text-lg text-ink flex items-center gap-2">
