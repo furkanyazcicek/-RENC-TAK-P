@@ -44,10 +44,19 @@ export default function Register() {
     setLoading(true);
     setError('');
 
-    // 1. Supabase Auth ile kullanıcıyı oluşturuyoruz
+    // Meta verileri doğrudan signUp options içine veriyoruz
+    const metadata = {
+      full_name: fullName,
+      role: role,
+      student_id: role === 'parent' ? selectedStudentId : null
+    };
+
     const { data: authData, error: signUpError } = await signUp({ 
       email, 
-      password 
+      password,
+      options: {
+        data: metadata
+      }
     });
     
     if (signUpError) {
@@ -56,10 +65,10 @@ export default function Register() {
       return;
     }
 
-    // 2. Kullanıcı başarıyla oluştuysa, profiles tablosuna kaydı BİZ yazıyoruz (Garanti Yöntem)
+    // Ekstra güvenlik için manuel upsert de ekliyoruz (Oturum açık dönerse)
     const userId = authData?.user?.id;
     if (userId) {
-      const { error: profileError } = await supabase
+      await supabase
         .from('profiles')
         .upsert({
           id: userId,
@@ -67,12 +76,6 @@ export default function Register() {
           role: role,
           student_id: role === 'parent' && selectedStudentId ? selectedStudentId : null
         });
-
-      if (profileError) {
-        setError('Profil oluşturulurken bir hata oluştu: ' + profileError.message);
-        setLoading(false);
-        return;
-      }
     }
 
     setLoading(false);
