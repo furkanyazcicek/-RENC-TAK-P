@@ -24,7 +24,7 @@ export default function Register() {
   }, [role]);
 
   const fetchStudents = async () => {
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from('profiles')
       .select('id, full_name')
       .eq('role', 'student');
@@ -53,7 +53,7 @@ export default function Register() {
       metadata.student_id = selectedStudentId;
     }
 
-    const { error: signUpError } = await signUp({ 
+    const { data, error: signUpError } = await signUp({ 
       email, 
       password,
       options: {
@@ -65,6 +65,13 @@ export default function Register() {
       setError(signUpError.message);
       setLoading(false);
     } else {
+      // Veli kaydıysa Supabase profiline öğrenci ID'sini doğrudan güncelliyoruz
+      if (role === 'parent' && data?.user?.id) {
+        await supabase
+          .from('profiles')
+          .update({ student_id: selectedStudentId })
+          .eq('id', data.user.id);
+      }
       navigate('/');
     }
   };
