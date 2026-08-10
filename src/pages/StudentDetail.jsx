@@ -119,9 +119,15 @@ export default function StudentDetail() {
 
   const hierarchy = useMemo(() => buildSubjectTopicHierarchy(dailyLogs), [dailyLogs])
 
-  const trendData = useMemo(
-    () => buildNetTrend(dailyLogs, trendSubject, trendTopic),
-    [dailyLogs, trendSubject, trendTopic]
+  const trendData = useMemo(() => {
+    // Sadece soru çözülen (doğru, yanlış veya boş girilen) kayıtları filtreliyoruz
+    // Böylece sadece konu çalışılan günler başarı grafiğini aşağı çekmiyor
+    const logsWithQuestions = dailyLogs.filter(
+      (log) => (log.correct || 0) + (log.incorrect || 0) + (log.empty || 0) > 0
+    );
+    
+    return buildNetTrend(logsWithQuestions, trendSubject, trendTopic);
+  }, [dailyLogs, trendSubject, trendTopic]);
   )
 
   const totalStudyMinutes = useMemo(
