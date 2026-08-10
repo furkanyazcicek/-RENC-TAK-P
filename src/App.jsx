@@ -2,6 +2,9 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
 import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
+import Register from './pages/Register';
+import UpdatePassword from './pages/UpdatePassword';
+import ParentDashboard from './pages/ParentDashboard';
 import StudentDashboard from './pages/StudentDashboard'
 import TeacherDashboard from './pages/TeacherDashboard'
 import StudentDetail from './pages/StudentDetail'
@@ -26,7 +29,8 @@ function ProtectedRoute({ children, allow }) {
   if (loading) return <FullPageLoader />
   if (!session) return <Navigate to="/login" replace />
   if (allow && role !== allow) {
-    return <Navigate to={role === 'teacher' ? '/ogretmen' : '/ogrenci'} replace />
+    // Veli rolü eklendi
+    return <Navigate to={role === 'teacher' ? '/ogretmen' : role === 'parent' ? '/veli' : '/ogrenci'} replace />
   }
   return children
 }
@@ -42,7 +46,8 @@ export default function App() {
           loading ? (
             <FullPageLoader />
           ) : session ? (
-            <Navigate to={role === 'teacher' ? '/ogretmen' : '/ogrenci'} replace />
+            // Veli rolü eklendi
+            <Navigate to={role === 'teacher' ? '/ogretmen' : role === 'parent' ? '/veli' : '/ogrenci'} replace />
           ) : (
             <LandingPage />
           )
@@ -54,12 +59,40 @@ export default function App() {
           loading ? (
             <FullPageLoader />
           ) : session ? (
-            <Navigate to={role === 'teacher' ? '/ogretmen' : '/ogrenci'} replace />
+            // Veli rolü eklendi
+            <Navigate to={role === 'teacher' ? '/ogretmen' : role === 'parent' ? '/veli' : '/ogrenci'} replace />
           ) : (
             <Login />
           )
         }
       />
+      
+      {/* YENİ EKLENEN SAYFALAR BAŞLANGIÇ */}
+      <Route
+        path="/register"
+        element={
+          loading ? (
+            <FullPageLoader />
+          ) : session ? (
+            <Navigate to={role === 'teacher' ? '/ogretmen' : role === 'parent' ? '/veli' : '/ogrenci'} replace />
+          ) : (
+            <Register />
+          )
+        }
+      />
+      
+      <Route path="/update-password" element={<UpdatePassword />} />
+      
+      <Route
+        path="/veli"
+        element={
+          <ProtectedRoute allow="parent">
+            <ParentDashboard />
+          </ProtectedRoute>
+        }
+      />
+      {/* YENİ EKLENEN SAYFALAR BİTİŞ */}
+
       <Route
         path="/ogrenci"
         element={
