@@ -1,155 +1,129 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { useAuth } from '../context/AuthContext'
+import { useState } from 'react';
+import { supabase } from '../supabaseClient';
+import { useNavigate, Link } from 'react-router-dom';
 
 export default function Login() {
-  const { signIn, signUp } = useAuth()
-  const [mode, setMode] = useState('signin') // 'signin' | 'signup'
-  const [fullName, setFullName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [role, setRole] = useState('student')
-  const [error, setError] = useState(null)
-  const [info, setInfo] = useState(null)
-  const [loading, setLoading] = useState(false)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [message, setMessage] = useState('');
+  const [isForgotPassword, setIsForgotPassword] = useState(false);
+  const navigate = useNavigate();
 
-  async function handleSubmit(e) {
-    e.preventDefault()
-    setError(null)
-    setInfo(null)
-    setLoading(true)
-
-    if (mode === 'signin') {
-      const { error } = await signIn(email, password)
-      if (error) setError(error.message)
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    setMessage('');
+    
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    
+    if (error) {
+      setError('Giriş başarısız. Lütfen e-posta ve şifrenizi kontrol edin.');
     } else {
-      const { error } = await signUp({ email, password, fullName, role })
-      if (error) {
-        setError(error.message)
-      } else {
-        setInfo('Hesabın oluşturuldu! E-postana gelen doğrulama bağlantısına tıkladıktan sonra giriş yapabilirsin.')
-        setMode('signin')
-      }
+      // Başarılı girişte sistem otomatik yönlendirecektir (App.jsx üzerinden)
+      navigate('/'); 
     }
-    setLoading(false)
-  }
+    setLoading(false);
+  };
+
+  const handleResetPassword = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    setMessage('');
+    
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/update-password`,
+    });
+    
+    if (error) {
+      setError(error.message);
+    } else {
+      setMessage('Şifre sıfırlama bağlantısı e-posta adresinize gönderildi! Lütfen gelen kutunuzu kontrol edin.');
+    }
+    setLoading(false);
+  };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-paper px-4">
-      <div className="w-full max-w-md">
-        <Link to="/" className="focus-ring flex items-center gap-1.5 text-sm font-medium text-ink/40 hover:text-brand-600 transition-colors mb-6">
-          <span aria-hidden>←</span> Anasayfaya dön
-        </Link>
-
-        <div className="text-center mb-8">
-          <div className="mx-auto h-12 w-12 rounded-2xl bg-gradient-to-br from-brand-500 to-brand-700 grid place-items-center font-display font-bold text-white text-lg shadow-elevated">
-            D
-          </div>
-          <h1 className="mt-4 text-2xl font-display font-bold tracking-tight text-ink">Dr. Koç</h1>
-          <p className="text-sm text-ink/50 mt-1">Öğrenci &amp; Öğretmen Girişi</p>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-md border border-gray-100">
+        <div>
+          <h2 className="text-center text-3xl font-extrabold text-gray-900">
+            {isForgotPassword ? 'Şifremi Unuttum' : 'Dr. Koç Sistemine Giriş'}
+          </h2>
+          <p className="mt-2 text-center text-sm text-gray-600">
+            {isForgotPassword 
+              ? 'Kayıtlı e-posta adresinizi girin, size sıfırlama linki gönderelim.' 
+              : 'Hesabınıza erişmek için bilgilerinizi girin.'}
+          </p>
         </div>
 
-        <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-6">
-          <div className="flex bg-paper rounded-xl p-1 mb-6">
+        <form className="mt-8 space-y-6" onSubmit={isForgotPassword ? handleResetPassword : handleLogin}>
+          {error && <div className="bg-red-50 text-red-600 p-3 rounded-md text-sm">{error}</div>}
+          {message && <div className="bg-green-50 text-green-600 p-3 rounded-md text-sm">{message}</div>}
+
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700">E-posta</label>
+              <input
+                type="email"
+                required
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+
+            {!isForgotPassword && (
+              <div>
+                <label className="block text-sm font-medium text-gray-700">Şifre</label>
+                <input
+                  type="password"
+                  required
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            )}
+          </div>
+
+          <div className="flex items-center justify-between">
             <button
               type="button"
-              onClick={() => setMode('signin')}
-              className={`focus-ring flex-1 py-2 rounded-lg text-sm font-semibold transition-colors ${
-                mode === 'signin' ? 'bg-white shadow-sm text-brand-600' : 'text-ink/40'
-              }`}
+              onClick={() => {
+                setIsForgotPassword(!isForgotPassword);
+                setError('');
+                setMessage('');
+              }}
+              className="text-sm font-medium text-blue-600 hover:text-blue-500"
             >
-              Giriş Yap
-            </button>
-            <button
-              type="button"
-              onClick={() => setMode('signup')}
-              className={`focus-ring flex-1 py-2 rounded-lg text-sm font-semibold transition-colors ${
-                mode === 'signup' ? 'bg-white shadow-sm text-brand-600' : 'text-ink/40'
-              }`}
-            >
-              Kayıt Ol
+              {isForgotPassword ? 'Giriş ekranına dön' : 'Şifremi unuttum'}
             </button>
           </div>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            {mode === 'signup' && (
-              <>
-                <div>
-                  <label className="text-xs font-semibold text-ink/50">Ad Soyad</label>
-                  <input
-                    required
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    className="focus-ring mt-1 w-full rounded-xl border border-brand-100 px-4 py-2.5 text-sm"
-                    placeholder="Ayşe Yılmaz"
-                  />
-                </div>
-                <div>
-                  <label className="text-xs font-semibold text-ink/50">Rolün</label>
-                  <div className="mt-1 grid grid-cols-2 gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setRole('student')}
-                      className={`focus-ring rounded-xl border px-3 py-2.5 text-sm font-medium transition-colors ${
-                        role === 'student'
-                          ? 'border-brand-500 bg-brand-50 text-brand-700'
-                          : 'border-brand-100 text-ink/50'
-                      }`}
-                    >
-                      Öğrenci
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setRole('teacher')}
-                      className={`focus-ring rounded-xl border px-3 py-2.5 text-sm font-medium transition-colors ${
-                        role === 'teacher'
-                          ? 'border-brand-500 bg-brand-50 text-brand-700'
-                          : 'border-brand-100 text-ink/50'
-                      }`}
-                    >
-                      Öğretmen
-                    </button>
-                  </div>
-                </div>
-              </>
-            )}
-            <div>
-              <label className="text-xs font-semibold text-ink/50">E-posta</label>
-              <input
-                required
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="focus-ring mt-1 w-full rounded-xl border border-brand-100 px-4 py-2.5 text-sm"
-                placeholder="ornek@eposta.com"
-              />
-            </div>
-            <div>
-              <label className="text-xs font-semibold text-ink/50">Şifre</label>
-              <input
-                required
-                type="password"
-                minLength={6}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="focus-ring mt-1 w-full rounded-xl border border-brand-100 px-4 py-2.5 text-sm"
-                placeholder="En az 6 karakter"
-              />
-            </div>
-
-            {error && <p className="text-sm text-bad">{error}</p>}
-            {info && <p className="text-sm text-good">{info}</p>}
-
+          <div>
             <button
               type="submit"
               disabled={loading}
-              className="focus-ring mt-2 w-full rounded-xl bg-brand-500 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-600 disabled:opacity-60 transition-colors"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
             >
-              {loading ? 'Lütfen bekleyin...' : mode === 'signin' ? 'Giriş Yap' : 'Hesap Oluştur'}
+              {loading ? 'İşleniyor...' : (isForgotPassword ? 'Bağlantı Gönder' : 'Giriş Yap')}
             </button>
-          </form>
-        </div>
+          </div>
+        </form>
+
+        {!isForgotPassword && (
+          <div className="mt-4 text-sm text-center">
+            <span className="text-gray-600">Hesabınız yok mu? </span>
+            <Link to="/register" className="font-medium text-blue-600 hover:text-blue-500">
+              Kayıt Ol
+            </Link>
+          </div>
+        )}
       </div>
     </div>
-  )
+  );
 }

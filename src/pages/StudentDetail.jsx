@@ -22,6 +22,7 @@ import BranchExamNetChart from '../components/BranchExamNetChart'
 import Modal from '../components/Modal'
 import DateFilterControl from '../components/DateFilterControl'
 import ExamTypeTabs from '../components/ExamTypeTabs'
+import DailyLogEditModal from '../components/DailyLogEditModal' // YENİ EKLENDİ
 import {
   buildNetTrend,
   buildSubjectDistribution,
@@ -47,6 +48,9 @@ export default function StudentDetail() {
   const [examsModalOpen, setExamsModalOpen] = useState(false)
   const [studyModalOpen, setStudyModalOpen] = useState(false)
   const [solvedModalOpen, setSolvedModalOpen] = useState(false)
+  
+  // YENİ EKLENDİ - Düzenlenen kaydı tutan state
+  const [editingLog, setEditingLog] = useState(null)
 
   const load = useCallback(async () => {
     const [profileRes, examsRes, questionsRes, dailyLogsRes, mockExamsRes, homeworksRes] = await Promise.all([
@@ -90,11 +94,6 @@ export default function StudentDetail() {
     load()
   }, [load])
 
-  // Bu iki useMemo, `if (loading) return ...` bloğundan ÖNCE tanımlanmalı.
-  // Aksi halde loading=true renderında bu hook'lar hiç çağrılmaz, loading=false
-  // olduğunda ise çağrılır — render'lar arası hook sayısı değişir ve React bunu
-  // "Rendered fewer hooks than expected" (production'da minified Error #310)
-  // olarak fırlatır. Kural: TÜM hook'lar erken return'den önce, koşulsuz çağrılmalı.
   const distributionLogs = useMemo(
     () => (distributionDate ? dailyLogs.filter((l) => l.study_date === distributionDate) : dailyLogs),
     [dailyLogs, distributionDate]
@@ -134,7 +133,6 @@ export default function StudentDetail() {
     [dailyLogs]
   )
 
-  // Çalışma Süresi modalı — güne göre gruplanmış, tarihe göre azalan sıralı
   const studyByDay = useMemo(() => {
     const map = {}
     dailyLogs.forEach((l) => {
@@ -145,7 +143,6 @@ export default function StudentDetail() {
       .sort((a, b) => new Date(b.date) - new Date(a.date))
   }, [dailyLogs])
 
-  // Çözülen Soru modalı — güne göre gruplanmış, tarihe göre azalan sıralı
   const solvedByDay = useMemo(() => {
     const map = {}
     dailyLogs.forEach((l) => {
@@ -308,7 +305,14 @@ export default function StudentDetail() {
         <section>
           <h2 className="font-display font-bold text-lg text-ink mb-3">Günlük Çalışma Kayıtları</h2>
           <div className="grid lg:grid-cols-2 gap-6 items-start mb-6">
-            <DailyLogsList logs={dailyLogs} readOnly title="Bu Öğrencinin Çalışma Geçmişi" />
+            {/* YENİ EKLENDİ - Öğretmene özel Edit butonu aktifleştirildi */}
+            <DailyLogsList 
+              logs={dailyLogs} 
+              readOnly 
+              title="Bu Öğrencinin Çalışma Geçmişi" 
+              allowTeacherEdit={true}
+              onEditClick={(log) => setEditingLog(log)}
+            />
             <div className="rounded-xl2 bg-white shadow-card border border-ink/5 p-5">
               <div className="flex items-center justify-between gap-2 flex-wrap mb-2">
                 <h3 className="font-display font-bold text-lg text-ink">Derslere Göre Soru Dağılımı</h3>
@@ -401,6 +405,18 @@ export default function StudentDetail() {
           </ul>
         )}
       </Modal>
+
+      {/* YENİ EKLENDİ - Düzenleme Modalı */}
+      {editingLog && (
+        <DailyLogEditModal
+          log={editingLog}
+          onClose={() => setEditingLog(null)}
+          onUpdated={() => {
+            setEditingLog(null);
+            load(); // Veriyi Supabase'den tekrar çekip tabloyu yeniler
+          }}
+        />
+      )}
     </div>
   )
 }
