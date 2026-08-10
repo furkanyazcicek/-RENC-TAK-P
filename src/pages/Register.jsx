@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useAuth } from '../context/AuthContext';
 import { supabase } from '../lib/supabaseClient';
 import { useNavigate, Link } from 'react-router-dom';
 
@@ -13,7 +12,6 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   
-  const { signUp } = useAuth();
   const navigate = useNavigate();
 
   // Rol "veli" seçilirse sistemdeki öğrencileri çekiyoruz
@@ -44,18 +42,16 @@ export default function Register() {
     setLoading(true);
     setError('');
 
-    // Meta verileri doğrudan signUp options içine veriyoruz
-    const metadata = {
-      full_name: fullName,
-      role: role,
-      student_id: role === 'parent' ? selectedStudentId : null
-    };
-
-    const { data: authData, error: signUpError } = await signUp({ 
+    // 1. Doğrudan Supabase Auth çağrısı (AuthContext engeline takılmadan options gidiyor)
+    const { data: authData, error: signUpError } = await supabase.auth.signUp({ 
       email, 
       password,
       options: {
-        data: metadata
+        data: {
+          full_name: fullName,
+          role: role,
+          student_id: role === 'parent' ? selectedStudentId : null
+        }
       }
     });
     
@@ -65,10 +61,10 @@ export default function Register() {
       return;
     }
 
-    // Ekstra güvenlik için manuel upsert de ekliyoruz (Oturum açık dönerse)
+    // 2. Garanti Çözüm: Profiles tablosuna rolü ve öğrenci bağını doğrudan BİZ yazıyoruz
     const userId = authData?.user?.id;
     if (userId) {
-      await supabase
+      const { error: profileError } = await supabase
         .from('profiles')
         .upsert({
           id: userId,
@@ -76,6 +72,12 @@ export default function Register() {
           role: role,
           student_id: role === 'parent' && selectedStudentId ? selectedStudentId : null
         });
+
+      if (profileError) {
+        setError('Profil kaydedilirken hata oluştu: ' + profileError.message);
+        setLoading(false);
+        return;
+      }
     }
 
     setLoading(false);
