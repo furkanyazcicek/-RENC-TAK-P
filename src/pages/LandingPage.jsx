@@ -306,7 +306,7 @@ function AboutSection() {
           </div>
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-brand-500" />
-            LGS, TYT/AYT ve KPSS 
+            LGS, TYT/AYT ve KPSS eğitmenliği
           </div>
           <div className="flex items-center gap-2">
             <span className="h-2 w-2 rounded-full bg-brand-500" />
