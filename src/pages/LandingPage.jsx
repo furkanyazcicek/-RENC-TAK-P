@@ -216,19 +216,35 @@ function AboutSection() {
         </div>
         <div>
           <span className="text-xs font-semibold uppercase tracking-wider text-brand-600">Hakkımda</span>
-          <h2 className="mt-2 text-3xl font-display font-bold text-ink">Merhaba, ben [Öğretmen Adı]</h2>
+          <h2 className="mt-2 text-3xl font-display font-bold text-ink">Merhaba, ben Furkan Talha Yazçiçek</h2>
           <p className="mt-4 text-ink/60 leading-relaxed">
             {/* Yer tutucu tanıtım metni — kendi biyografinizle değiştirin. */}
-            Yıllardır LGS, YKS ve KPSS'ye hazırlanan öğrencilere matematik ve geometri koçluğu
-            yapıyorum. Amacım sadece konu anlatmak değil; her öğrencinin çalışma düzenini,
-            eksiklerini ve gelişimini veriye dayalı olarak takip edip ona özel bir yol haritası
-            çıkarmak. Bu platform da tam olarak bunun için: günlük çalışmalarını, deneme
-            sonuçlarını ve konu bazlı gelişimini tek yerden birlikte takip ediyoruz.
+            Merhaba, ben Furkan Talha Yazçiçek
+Tıp fakültesi son sınıf öğrencisi,yıllardır eğitim koçluğu yapan ve sayısal derslerde ders veren bir eğitmen olarak, sınav sürecinin sadece akademik bir yarıştan ibaret olmadığını; strateji, motivasyon ve doğru takip gerektiren kişisel bir yolculuk olduğunu çok iyi biliyorum. Kendi sınav tecrübelerimden ve tıp eğitimimin bana kazandırdığı analitik bakış açısındanyola çıkarak, öğrencilerimin bu zorlu maratonda yalnız hissetmemesi ve potansiyellerini en üst düzeye çıkarması için Dr. Koç platformunu hayata geçirdim.
+
+LGS, YKS, KPSS ve ara sınıflara hazırlanan öğrencilerime sadece ders anlatmıyor; onların çalışma düzenlerini, eksiklerini ve gelişimlerini veriye dayalı olarak takip edip her biri için özel bir yol haritası çıkarıyorum.
+
+Öğrencilerimizi Sadece Rakamlarla Değil, Bir Bütün Olarak Ele Alıyoruz
+Klasik koçluk anlayışının aksine, öğrencilerimizi sadece düz verilerden ibaret görmüyoruz. Onların ruh halini, çalışma temposunu ve eksik kaldıkları noktaları anlamlı bir bütünlük içinde inceliyor, başarıyı tesadüflere bırakmıyoruz. Geliştirdiğimiz bu platform sayesinde süreç tamamen şeffaf, ölçülebilir ve interaktif bir şekilde ilerliyor:
+
+Detaylı Analiz ve Takip: Öğrencilerimizin günlük çalışma sürelerini, çözdükleri soru adetlerini ve başarı oranlarını grafiklerle detaylıca analiz ediyor, gelişimlerini anlık olarak izliyoruz.
+
+Soru Çözüm Desteği: Öğrencilerin takıldıkları ve yapamadıkları soruları sisteme kolayca atabildiği, üzerlerinden geçerek eksikleri kapattığımız akışkan bir soru havuzu sunuyoruz.
+
+Ödev ve Görev Yönetimi: Disiplini elden bırakmamak adına verilen ödevleri ve görevleri dijital ortamda atıyor, tamamlanma durumlarını yakından takip ediyoruz.
+
+Ders Kütüphanesi: İhtiyaç duyulan çalışma notlarına ve kaynaklara tek tıkla ulaşılabilecek zengin bir dijital kütüphane barındırıyoruz.
+
+Direkt İletişim: Öğrencinin kafasına takılan herhangi bir soruyu sorması veya anlık destek alabilmesi için doğrudan öğretmen-öğrenci mesajlaşma altyapısı sunuyoruz.
+
+Veli Bilgilendirme Paneli (Önemli Yenilik): Başarının en büyük paydaşlarından birinin aileler olduğuna inanıyoruz. Bu yüzden velilerimiz için özel olarak geliştirdiğimiz Gözlemci Modu Veli Paneli ile velilerimiz; çocuklarının günlük çalışma geçmişini, deneme sınavı netlerini, ödev durumlarını ve tüm gelişim grafiklerini hiçbir işlem yetkisi olmaksızın, tamamen şeffaf ve canlı bir şekilde takip edebiliyorlar.
+
+Eğitimde ezberleri bozan, öğrenciyi merkeze alan ve veliyi süreçten koparmayan bu modern sistemle, hedeflerinize birlikte yürümek için buradayım. Sizi de başarı odaklı bu büyük aileye davet ediyorum.
           </p>
           <ul className="mt-6 flex flex-col gap-2 text-sm text-ink/60">
             <li className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-              [X] yıllık özel ders ve koçluk deneyimi
+              7 yıllık özel ders ve koçluk deneyimi
             </li>
             <li className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
@@ -247,9 +263,9 @@ function AboutSection() {
 
 function ContactSection() {
   const contactItems = [
-    { Icon: Mail, label: 'E-posta', value: 'ornek@drkoc.com' },
-    { Icon: Phone, label: 'Telefon', value: '+90 5XX XXX XX XX' },
-    { Icon: MapPin, label: 'Konum', value: 'İstanbul, Türkiye' },
+    { Icon: Mail, label: 'E-posta', value: 'furkan.yazcicek35@icloud.com' },
+    { Icon: Phone, label: 'Telefon', value: '+90 5467911712' },
+    { Icon: MapPin, label: 'Konum', value: 'izmir, Türkiye' },
   ]
 
   return (
