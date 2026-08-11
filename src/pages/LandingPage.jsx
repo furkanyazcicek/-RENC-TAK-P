@@ -13,6 +13,9 @@ import {
   Sparkles,
   Target,
   TrendingUp,
+  ShieldCheck,
+  FileText,
+  Users
 } from 'lucide-react'
 
 function LandingNavbar() {
@@ -71,10 +74,8 @@ function GlassBadge({ Icon, iconBg, iconColor, label, value, className }) {
 function HeroIllustration() {
   return (
     <div className="relative mx-auto w-full max-w-md aspect-square">
-      {/* Panelin arkasından süzülen ışık (glow) */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[110%] w-[110%] rounded-full bg-[radial-gradient(circle,_rgba(139,92,246,0.35),_transparent_65%)] blur-2xl" />
 
-      {/* Ana cam panel */}
       <div className="absolute inset-6 rounded-[2rem] bg-gradient-to-br from-white/10 via-white/5 to-transparent backdrop-blur-md border border-white/15 shadow-2xl overflow-hidden">
         <div
           className="absolute inset-0 opacity-25"
@@ -91,7 +92,6 @@ function HeroIllustration() {
         </div>
       </div>
 
-      {/* Yüzen cam (glassmorphism) rozetler */}
       <GlassBadge
         Icon={TrendingUp}
         iconBg="bg-emerald-400/15"
@@ -130,11 +130,9 @@ function HeroSection() {
 
   return (
     <section id="top" className="relative overflow-hidden bg-slate-950">
-      {/* Derinlikli, asimetrik radial-gradient aydınlatmalar */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_15%_10%,_rgba(99,102,241,0.28),_transparent_60%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_45%_at_85%_85%,_rgba(251,191,36,0.18),_transparent_60%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_40%_at_50%_0%,_rgba(139,92,246,0.15),_transparent_65%)]" />
-      {/* İnce ızgara (grid) deseni */}
       <div
         className="absolute inset-0 opacity-[0.05]"
         style={{
@@ -146,7 +144,6 @@ function HeroSection() {
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 pt-16 sm:pt-24 pb-20 sm:pb-28">
         <div className="grid md:grid-cols-[1.15fr_0.85fr] gap-14 md:gap-10 items-center">
-          {/* SOL: Başlık, açıklama, butonlar */}
           <div className="text-left">
             <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 border border-white/15 text-amber-300 text-xs font-semibold px-3 py-1.5">
               <Sparkles className="h-3.5 w-3.5" />
@@ -184,11 +181,9 @@ function HeroSection() {
             </div>
           </div>
 
-          {/* SAĞ: Görsel yer tutucu (3D illüstrasyon + glow) */}
           <HeroIllustration />
         </div>
 
-        {/* Glassmorphism özellik kartları */}
         <div className="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto">
           {features.map(({ Icon, label }) => (
             <div
@@ -210,52 +205,115 @@ function HeroSection() {
 function AboutSection() {
   return (
     <section id="hakkimda" className="mx-auto max-w-5xl px-4 sm:px-6 py-20 sm:py-28">
-      <div className="grid md:grid-cols-[220px_1fr] gap-8 md:gap-12 items-start">
-        <div className="mx-auto md:mx-0 h-44 w-44 rounded-2xl bg-gradient-to-br from-brand-100 to-brand-50 border border-brand-100 grid place-items-center">
-          <GraduationCap className="h-16 w-16 text-brand-500" strokeWidth={1.5} />
+      <div className="bg-white rounded-[24px] shadow-card border border-ink/5 p-6 sm:p-10 lg:p-12">
+        
+        {/* Üst Kısım: Profil Başlığı ve Giriş */}
+        <div className="flex flex-col md:flex-row gap-8 items-start mb-10">
+          <div className="h-32 w-32 sm:h-40 sm:w-40 rounded-2xl bg-gradient-to-br from-brand-100 to-brand-50 border border-brand-100 grid place-items-center flex-shrink-0 mx-auto md:mx-0 shadow-sm">
+            <GraduationCap className="h-16 w-16 text-brand-500" strokeWidth={1.5} />
+          </div>
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-brand-600 bg-brand-50 px-3 py-1 rounded-full border border-brand-100">
+              Hakkımda
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-ink mt-3 mb-4">
+              Merhaba, ben Furkan Talha Yazçiçek
+            </h2>
+            <p className="text-base text-ink/70 leading-relaxed">
+              Tıp fakültesi son sınıf öğrencisi ve yıllardır eğitim koçluğu yapan bir eğitmen olarak, sınav sürecinin sadece akademik bir yarıştan ibaret olmadığını; strateji, motivasyon ve doğru takip gerektiren kişisel bir yolculuk olduğunu çok iyi biliyorum. Kendi sınav tecrübelerimden ve tıp eğitimimin bana kazandırdığı analitik bakış açısıyla, öğrencilerimin bu zorlu maratonda yalnız hissetmemesi ve potansiyellerini en üst düzeye çıkarması için <span className="font-bold text-brand-600">Dr. Koç</span> platformunu hayata geçirdim.
+            </p>
+          </div>
         </div>
-        <div>
-          <span className="text-xs font-semibold uppercase tracking-wider text-brand-600">Hakkımda</span>
-          <h2 className="mt-2 text-3xl font-display font-bold text-ink">Merhaba, ben Furkan Talha Yazçiçek</h2>
-          <p className="mt-4 text-ink/60 leading-relaxed">
-            {/* Yer tutucu tanıtım metni — kendi biyografinizle değiştirin. */}
-            Merhaba, ben Furkan Talha Yazçiçek
-Tıp fakültesi son sınıf öğrencisi,yıllardır eğitim koçluğu yapan ve sayısal derslerde ders veren bir eğitmen olarak, sınav sürecinin sadece akademik bir yarıştan ibaret olmadığını; strateji, motivasyon ve doğru takip gerektiren kişisel bir yolculuk olduğunu çok iyi biliyorum. Kendi sınav tecrübelerimden ve tıp eğitimimin bana kazandırdığı analitik bakış açısındanyola çıkarak, öğrencilerimin bu zorlu maratonda yalnız hissetmemesi ve potansiyellerini en üst düzeye çıkarması için Dr. Koç platformunu hayata geçirdim.
 
-LGS, YKS, KPSS ve ara sınıflara hazırlanan öğrencilerime sadece ders anlatmıyor; onların çalışma düzenlerini, eksiklerini ve gelişimlerini veriye dayalı olarak takip edip her biri için özel bir yol haritası çıkarıyorum.
-
-Öğrencilerimizi Sadece Rakamlarla Değil, Bir Bütün Olarak Ele Alıyoruz
-Klasik koçluk anlayışının aksine, öğrencilerimizi sadece düz verilerden ibaret görmüyoruz. Onların ruh halini, çalışma temposunu ve eksik kaldıkları noktaları anlamlı bir bütünlük içinde inceliyor, başarıyı tesadüflere bırakmıyoruz. Geliştirdiğimiz bu platform sayesinde süreç tamamen şeffaf, ölçülebilir ve interaktif bir şekilde ilerliyor:
-
-Detaylı Analiz ve Takip: Öğrencilerimizin günlük çalışma sürelerini, çözdükleri soru adetlerini ve başarı oranlarını grafiklerle detaylıca analiz ediyor, gelişimlerini anlık olarak izliyoruz.
-
-Soru Çözüm Desteği: Öğrencilerin takıldıkları ve yapamadıkları soruları sisteme kolayca atabildiği, üzerlerinden geçerek eksikleri kapattığımız akışkan bir soru havuzu sunuyoruz.
-
-Ödev ve Görev Yönetimi: Disiplini elden bırakmamak adına verilen ödevleri ve görevleri dijital ortamda atıyor, tamamlanma durumlarını yakından takip ediyoruz.
-
-Ders Kütüphanesi: İhtiyaç duyulan çalışma notlarına ve kaynaklara tek tıkla ulaşılabilecek zengin bir dijital kütüphane barındırıyoruz.
-
-Direkt İletişim: Öğrencinin kafasına takılan herhangi bir soruyu sorması veya anlık destek alabilmesi için doğrudan öğretmen-öğrenci mesajlaşma altyapısı sunuyoruz.
-
-Veli Bilgilendirme Paneli (Önemli Yenilik): Başarının en büyük paydaşlarından birinin aileler olduğuna inanıyoruz. Bu yüzden velilerimiz için özel olarak geliştirdiğimiz Gözlemci Modu Veli Paneli ile velilerimiz; çocuklarının günlük çalışma geçmişini, deneme sınavı netlerini, ödev durumlarını ve tüm gelişim grafiklerini hiçbir işlem yetkisi olmaksızın, tamamen şeffaf ve canlı bir şekilde takip edebiliyorlar.
-
-Eğitimde ezberleri bozan, öğrenciyi merkeze alan ve veliyi süreçten koparmayan bu modern sistemle, hedeflerinize birlikte yürümek için buradayım. Sizi de başarı odaklı bu büyük aileye davet ediyorum.
+        {/* Vurgulu Bütünsel Yaklaşım Kutusu */}
+        <div className="bg-paper border border-ink/5 rounded-2xl p-6 mb-8">
+          <h3 className="font-bold text-lg text-ink mb-2">Öğrencilerimizi Sadece Rakamlarla Değil, Bir Bütün Olarak Ele Alıyoruz</h3>
+          <p className="text-sm text-ink/60 leading-relaxed">
+            Klasik koçluk anlayışının aksine, öğrencilerimizi düz verilerden ibaret görmüyoruz. Onların ruh halini, çalışma temposunu ve eksik kaldıkları noktaları anlamlı bir bütünlük içinde inceliyor, başarıyı tesadüflere bırakmıyoruz. Geliştirdiğimiz bu platform sayesinde süreç tamamen şeffaf, ölçülebilir ve interaktif ilerliyor.
           </p>
-          <ul className="mt-6 flex flex-col gap-2 text-sm text-ink/60">
-            <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-              7 yıllık özel ders ve koçluk deneyimi
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-              LGS, TYT/AYT ve KPSS Matematik-Geometri uzmanlığı
-            </li>
-            <li className="flex items-center gap-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-500" />
-              Birebir ve grup koçluk seçenekleri
-            </li>
-          </ul>
         </div>
+
+        {/* Özellikler Grid Kartları */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          
+          <div className="bg-paper p-5 rounded-2xl border border-ink/5">
+            <h4 className="font-bold text-ink text-base mb-1 flex items-center gap-2">
+              <BarChart3 className="h-4 w-4 text-brand-600" />
+              Detaylı Analiz ve Takip
+            </h4>
+            <p className="text-sm text-ink/60">
+              Günlük çalışma sürelerini, çözülen soru adetlerini ve başarı oranlarını grafiklerle detaylıca analiz ediyor, gelişimlerini anlık olarak izliyoruz.
+            </p>
+          </div>
+
+          <div className="bg-paper p-5 rounded-2xl border border-ink/5">
+            <h4 className="font-bold text-ink text-base mb-1 flex items-center gap-2">
+              <FileText className="h-4 w-4 text-blue-600" />
+              Soru Çözüm Desteği
+            </h4>
+            <p className="text-sm text-ink/60">
+              Öğrencilerin takıldıkları ve yapamadıkları soruları sisteme kolayca atabildiği, üzerlerinden geçerek eksikleri kapattığımız akışkan bir soru havuzu sunuyoruz.
+            </p>
+          </div>
+
+          <div className="bg-paper p-5 rounded-2xl border border-ink/5">
+            <h4 className="font-bold text-ink text-base mb-1 flex items-center gap-2">
+              <CheckCircle2 className="h-4 w-4 text-amber-600" />
+              Ödev ve Görev Yönetimi
+            </h4>
+            <p className="text-sm text-ink/60">
+              Disiplini elden bırakmamak adına verilen ödevleri ve görevleri dijital ortamda atıyor, tamamlanma durumlarını yakından takip ediyoruz.
+            </p>
+          </div>
+
+          <div className="bg-paper p-5 rounded-2xl border border-ink/5">
+            <h4 className="font-bold text-ink text-base mb-1 flex items-center gap-2">
+              <BookOpen className="h-4 w-4 text-purple-600" />
+              Ders Kütüphanesi
+            </h4>
+            <p className="text-sm text-ink/60">
+              İhtiyaç duyulan çalışma notlarına ve kaynaklara tek tıkla ulaşılabilecek zengin bir dijital kütüphane barındırıyoruz.
+            </p>
+          </div>
+
+          <div className="bg-paper p-5 rounded-2xl border border-ink/5">
+            <h4 className="font-bold text-ink text-base mb-1 flex items-center gap-2">
+              <MessageCircle className="h-4 w-4 text-emerald-600" />
+              Direkt İletişim
+            </h4>
+            <p className="text-sm text-ink/60">
+              Öğrencinin kafasına takılan herhangi bir soruyu sorması veya anlık destek alabilmesi için doğrudan öğretmen-öğrenci mesajlaşma altyapısı sunuyoruz.
+            </p>
+          </div>
+
+          <div className="bg-paper p-5 rounded-2xl border border-ink/5">
+            <h4 className="font-bold text-ink text-base mb-1 flex items-center gap-2">
+              <ShieldCheck className="h-4 w-4 text-rose-600" />
+              Veli Bilgilendirme Paneli
+            </h4>
+            <p className="text-sm text-ink/60">
+              Gözlemci Modu Veli Paneli ile aileler; çocuklarının çalışma geçmişini, deneme netlerini ve gelişim grafiklerini şeffaf ve güvenli bir şekilde takip edebiliyor.
+            </p>
+          </div>
+
+        </div>
+
+        {/* Alt Deneyim Maddeleri */}
+        <div className="border-t border-ink/5 pt-6 flex flex-wrap gap-6 text-sm font-semibold text-ink/70">
+          <div className="flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-brand-500" />
+            7 yıllık özel ders ve koçluk deneyimi
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-brand-500" />
+            LGS, TYT/AYT ve KPSS uzmanlığı
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="h-2 w-2 rounded-full bg-brand-500" />
+            Birebir ve grup koçluk seçenekleri
+          </div>
+        </div>
+
       </div>
     </section>
   )
@@ -294,7 +352,7 @@ function ContactSection() {
 
         <div className="mt-10 flex justify-center">
           <a
-            href="mailto:ornek@drkoc.com"
+            href="mailto:furkan.yazcicek35@icloud.com"
             className="focus-ring inline-flex items-center gap-2 rounded-xl bg-brand-500 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-brand-600 transition-colors"
           >
             <MessageCircle className="h-4 w-4" />
