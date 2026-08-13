@@ -5,3 +5,9 @@ dist/
 .DS_Store
 *.log
 .vercel
+
+.vercel
+.env*
+
+# Veri yedekleri (öğrenci verisi içerir — asla commit edilmez)
+backup/

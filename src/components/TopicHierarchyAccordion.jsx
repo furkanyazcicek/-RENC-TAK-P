@@ -7,6 +7,17 @@ import { EmptyState } from './ui'
  * bu yüzden Aurora paletinden değil durum renklerinden beslenir.
  */
 function tierFor(pct) {
+  // Ölçülemeyen durum: yalnızca konu anlatımı çalışılmış, hiç soru çözülmemiş.
+  // "Zayıf" (kırmızı) göstermek yanlış olur — ortada bir başarısızlık yok,
+  // ölçülecek doğru/yanlış yok. Nötr bir gri kullanılır.
+  if (pct == null) {
+    return {
+      bar: 'bg-ink/15',
+      text: 'text-ink/45',
+      badge: 'bg-ink/[0.06] text-ink/50 ring-ink/[0.06]',
+      unmeasured: true,
+    }
+  }
   if (pct >= 75) {
     return {
       bar: 'bg-gradient-to-r from-success-500/70 to-success-500',
@@ -77,10 +88,15 @@ export default function TopicHierarchyAccordion({ hierarchy }) {
                 <div className="hidden sm:block w-28 h-2 rounded-full bg-ink/[0.06] overflow-hidden">
                   <div
                     className={`h-full rounded-full ${tier.bar} transition-all duration-500`}
-                    style={{ width: `${Math.min(100, s.netPct)}%` }}
+                    style={{ width: tier.unmeasured ? '0%' : `${Math.min(100, s.netPct)}%` }}
                   />
                 </div>
-                <span className={`min-w-[3rem] text-right text-sm font-bold tabular-nums ${tier.text}`}>%{s.netPct}</span>
+                <span
+                  className={`min-w-[3rem] text-right text-sm font-bold tabular-nums ${tier.text}`}
+                  title={tier.unmeasured ? 'Bu derste henüz soru çözülmemiş' : undefined}
+                >
+                  {tier.unmeasured ? '—' : `%${s.netPct}`}
+                </span>
                 <ChevronDown className={`h-4 w-4 text-ink/45 transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
               </div>
             </button>
@@ -99,11 +115,14 @@ export default function TopicHierarchyAccordion({ hierarchy }) {
                       <div className="w-20 sm:w-28 h-1.5 rounded-full bg-ink/[0.06] overflow-hidden flex-shrink-0">
                         <div
                           className={`h-full rounded-full ${tTier.bar} transition-all duration-500`}
-                          style={{ width: `${Math.min(100, t.netPct)}%` }}
+                          style={{ width: tTier.unmeasured ? '0%' : `${Math.min(100, t.netPct)}%` }}
                         />
                       </div>
-                      <span className={`text-xs font-bold w-9 text-right flex-shrink-0 tabular-nums ${tTier.text}`}>
-                        %{t.netPct}
+                      <span
+                        className={`text-xs font-bold w-9 text-right flex-shrink-0 tabular-nums ${tTier.text}`}
+                        title={tTier.unmeasured ? 'Bu konuda henüz soru çözülmemiş' : undefined}
+                      >
+                        {tTier.unmeasured ? '—' : `%${t.netPct}`}
                       </span>
                     </div>
                   )

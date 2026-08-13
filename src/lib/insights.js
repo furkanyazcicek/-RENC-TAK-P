@@ -9,6 +9,8 @@
  * cümle üretilmez — asla uydurma cümle eklenmez.
  */
 
+import { subjectOf } from './subjectSplit.js'
+
 const DAY = 24 * 60 * 60 * 1000
 
 /** 'YYYY-MM-DD' — yerel saate göre, UTC kayması olmadan. */
@@ -146,8 +148,11 @@ export function totals(logs) {
 export function subjectBreakdown(logs) {
   const map = {}
   logs.forEach((l) => {
-    const raw = l.subject || (l.topic?.includes('-') ? l.topic.split('-')[0] : l.topic) || 'Genel'
-    const subject = String(raw).trim()
+    // Ders adı `subjectSplit`ten gelir — tire, boşluksuz tire ve ayırıcısız
+    // ("matematik köklü ifadeler") biçimlerinin üçünü de tanır. Eskiden
+    // burada bare '-' ile bölünüyordu ve topicHelpers'ın ' - ' kuralıyla
+    // ayrışıyordu; aynı ders iki yerde farklı gruplanıyordu.
+    const subject = String(l.subject || subjectOf(l.topic) || 'Genel').trim()
     const solved = (l.correct || 0) + (l.incorrect || 0) + (l.empty || 0)
     if (!map[subject]) map[subject] = { subject, solved: 0, minutes: 0, correct: 0, incorrect: 0 }
     map[subject].solved += solved

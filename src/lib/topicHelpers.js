@@ -2,6 +2,7 @@
 // bu yardımcılar dersi ve konuyu ayırıp gruplu istatistikler üretir.
 // Biçime uymayan (tek kelimelik) konular da sorunsuz çalışır; ders adı "Genel" sayılır.
 import { calcNet } from './examHelpers'
+import { splitSubjectTopic } from './subjectSplit.js'
 
 // Dakikayı okunaklı bir metne çevirir: 45 -> "45 Dk", 90 -> "1 Saat 30 Dk"
 export function formatDuration(minutes) {
@@ -21,17 +22,24 @@ function capitalizeFirstTr(segment) {
   return segment.charAt(0).toLocaleUpperCase('tr-TR') + segment.slice(1)
 }
 
-// "vektörler" / "Vektörler" gibi sadece ilk harf büyük/küçük farkından kaynaklanan
-// mükerrer konu kayıtlarını önlemek için girişi trimler, fazla boşlukları
-// sıkıştırır ve her "Ders - Konu" segmentinin ilk harfini büyütür.
+// "vektörler" / "Vektörler" gibi sadece ilk harf büyük/küçük farkından
+// kaynaklanan mükerrer kayıtları önler; ayrıca girişi TEK KANONİK biçime
+// ("Ders - Konu") getirir.
+//
+// Ayrıştırmayı `subjectSplit.js` yapar; o da üç yazım biçimini birden tanır:
+// "Matematik - Türev", "Matematik-Türev" ve ayırıcısız "matematik türev".
+// Kayıt anında burada normalize edildiği için bundan sonraki girişler zaten
+// düzgün saklanır; eski kayıtlar da okunurken aynı kuraldan geçer.
 export function normalizeTopicLabel(topicStr) {
   if (!topicStr) return ''
-  const collapsed = topicStr.trim().replace(/\s+/g, ' ')
+  const collapsed = String(topicStr).trim().replace(/\s+/g, ' ')
   if (!collapsed) return ''
-  return collapsed
-    .split(' - ')
-    .map((seg) => capitalizeFirstTr(seg.trim()))
-    .join(' - ')
+
+  const { subject, topic } = splitSubjectTopic(collapsed)
+  // Ders ve konu aynıysa ayrıştırılacak bir şey yok ("Geometri", "e-Devlet").
+  if (!subject || subject === topic) return capitalizeFirstTr(collapsed)
+
+  return `${capitalizeFirstTr(subject)} - ${capitalizeFirstTr(topic)}`
 }
 
 // Kullanıcının yazdığı metin, mevcut önerilerden (müfredat havuzu veya geçmiş
@@ -48,15 +56,10 @@ export function resolveTopicLabel(topicStr, options) {
   return canonical ?? normalized
 }
 
-export function splitSubjectTopic(topicStr) {
-  if (!topicStr) return { subject: 'Genel', topic: 'Belirtilmemiş' }
-  const normalized = normalizeTopicLabel(topicStr)
-  const parts = normalized.split(' - ')
-  if (parts.length >= 2) {
-    return { subject: parts[0], topic: parts.slice(1).join(' - ') }
-  }
-  return { subject: normalized, topic: normalized }
-}
+// Ayrıştırma mantığı `subjectSplit.js` içinde tek kaynakta toplandı. Hem bu
+// dosyanın içinde kullanıldığı için import ediliyor, hem de mevcut çağıranlar
+// (grafikler, tablolar) kırılmasın diye yeniden dışa aktarılıyor.
+export { splitSubjectTopic }
 
 // Öğrencinin en güncel denemesine bakarak hangi müfredat havuzunun (LGS ya da
 // YKS = TYT + AYT) gösterileceğine karar verir. Deneme kaydı yoksa (yeni
@@ -174,15 +177,19 @@ export function buildDailyAccuracyTrend(logs) {
     map[log.study_date].correct += log.correct || 0
     map[log.study_date].incorrect += log.incorrect || 0
   })
-  return Object.entries(map)
-    .sort(([a], [b]) => new Date(a) - new Date(b))
-    .map(([date, { correct, incorrect }]) => {
-      const answered = correct + incorrect
-      return {
+  return (
+    Object.entries(map)
+      .sort(([a], [b]) => new Date(a) - new Date(b))
+      // Soru çözülmemiş günler grafiğe HİÇ GİRMEZ.
+      // Eskiden bu günler %0 olarak çiziliyordu; oysa sadece konu anlatımı
+      // izlemek başarısızlık değildir. Ölçülecek bir isabet yoksa o gün
+      // hakkında bir şey söylenemez — sıfır yazmak yanlış bilgi olur.
+      .filter(([, { correct, incorrect }]) => correct + incorrect > 0)
+      .map(([date, { correct, incorrect }]) => ({
         label: new Date(date).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }),
-        success: answered > 0 ? Math.round((correct / answered) * 100) : 0,
-      }
-    })
+        success: Math.round((correct / (correct + incorrect)) * 100),
+      }))
+  )
 }
 
 // ============================================================
@@ -216,21 +223,35 @@ export function buildSubjectTopicHierarchy(logs) {
     t.sessions += 1
   })
 
+  // Soru çözülmemişse başarı yüzdesi HESAPLANAMAZ — `null` döner, `0` değil.
+  // Sadece konu anlatımı çalışılmış bir ders "%0 başarı" diye gösterilmemeli;
+  // ortada ölçülecek bir doğru/yanlış yok. Arayüz `null` gördüğünde "—" basar.
+  const pct = (net, questions) =>
+    questions > 0 ? Math.max(0, Math.round((net / questions) * 100)) : null
+
+  // Ölçülemeyenler listenin sonuna: sıralamada `null` her zaman en altta.
+  const byPctDesc = (a, b) => {
+    if (a.netPct == null && b.netPct == null) return 0
+    if (a.netPct == null) return 1
+    if (b.netPct == null) return -1
+    return b.netPct - a.netPct
+  }
+
   return Object.values(bySubject)
     .map((s) => ({
       subject: s.subject,
       totalQuestions: s.totalQuestions,
       net: Math.round(s.net * 100) / 100,
-      netPct: s.totalQuestions > 0 ? Math.max(0, Math.round((s.net / s.totalQuestions) * 100)) : 0,
+      netPct: pct(s.net, s.totalQuestions),
       topics: Object.values(s.topics)
         .map((t) => ({
           ...t,
           net: Math.round(t.net * 100) / 100,
-          netPct: t.totalQuestions > 0 ? Math.max(0, Math.round((t.net / t.totalQuestions) * 100)) : 0,
+          netPct: pct(t.net, t.totalQuestions),
         }))
-        .sort((a, b) => b.netPct - a.netPct),
+        .sort(byPctDesc),
     }))
-    .sort((a, b) => b.netPct - a.netPct)
+    .sort(byPctDesc)
 }
 
 // Zaman içindeki net bazlı gelişim — Ders ve/veya Konu filtresine göre daraltılır.
@@ -254,12 +275,16 @@ export function buildNetTrend(logs, subjectFilter, topicFilter) {
     byDate[log.study_date].totalQuestions += correct + incorrect + empty
   })
 
-  return Object.entries(byDate)
-    .sort(([a], [b]) => new Date(a) - new Date(b))
-    .map(([date, { net, totalQuestions }]) => ({
-      label: new Date(date).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }),
-      success: totalQuestions > 0 ? Math.max(0, Math.round((net / totalQuestions) * 100)) : 0,
-    }))
+  return (
+    Object.entries(byDate)
+      .sort(([a], [b]) => new Date(a) - new Date(b))
+      // Soru çözülmemiş günler dışarıda kalır (bkz. buildDailyAccuracyTrend).
+      .filter(([, { totalQuestions }]) => totalQuestions > 0)
+      .map(([date, { net, totalQuestions }]) => ({
+        label: new Date(date).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }),
+        success: Math.max(0, Math.round((net / totalQuestions) * 100)),
+      }))
+  )
 }
 
 // "Genel Ortalama" kartı için: günlük çalışmalar + tüm mock deneme dersleri
