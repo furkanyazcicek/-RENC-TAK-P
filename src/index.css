@@ -1,0 +1,628 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==================================================================
+   Dr. Koç — AURORA GRADIENT DESIGN SYSTEM / Token Katmanı
+   ------------------------------------------------------------------
+   Tasarım dili: Aurora Gradient × Premium SaaS × Subtle Glass × Bento.
+
+   Renkler RGB kanal listesi olarak tutulur (örn. "139 92 246") çünkü
+   Tailwind bunları rgb(var(--x) / <alpha-value>) biçiminde kullanıp
+   `text-ink/50` gibi saydamlık varyantlarını üretebiliyor.
+   Temayı değiştirmek için sadece aşağıdaki değerleri güncellemek yeterli.
+
+   Renk rolleri (semantik):
+     brand  → mor/violet   — birincil aksiyon, aktif durum
+     info   → mavi         — bilgi
+     aqua   → camgöbeği    — ilerleme
+     accent → pembe        — öne çıkarma / ödül
+   ================================================================== */
+
+:root {
+  /* --- Yüzeyler (hafif violet'e çalan soğuk nötrler) --- */
+  --c-ink: 19 19 41;
+  --c-paper: 247 247 252;
+  --c-surface: 255 255 255;
+  --c-surface-muted: 250 250 254;
+  --c-surface-sunken: 242 242 250;
+  --c-line: 231 231 242;
+  --c-line-strong: 213 213 232;
+  --c-shadow: 30 27 58;
+
+  /* --- Marka — Violet/Purple (Aurora'nın kalbi) --- */
+  --c-brand-50: 245 243 255;
+  --c-brand-100: 237 233 254;
+  --c-brand-200: 221 214 254;
+  --c-brand-300: 196 181 253;
+  --c-brand-400: 167 139 250;
+  --c-brand-500: 139 92 246;
+  --c-brand-600: 124 58 237;
+  --c-brand-700: 109 40 217;
+  --c-brand-800: 91 33 182;
+  --c-brand-900: 76 29 149;
+  --c-brand-950: 46 16 101;
+
+  /* --- Vurgu — Pembe (highlight, ödül, rozet) --- */
+  --c-accent-50: 253 242 248;
+  --c-accent-100: 252 231 243;
+  --c-accent-200: 251 207 232;
+  --c-accent-300: 249 168 212;
+  --c-accent-400: 244 114 182;
+  --c-accent-500: 236 72 153;
+  --c-accent-600: 219 39 119;
+  --c-accent-700: 190 24 93;
+
+  /* --- Aqua — Camgöbeği (ilerleme, tamamlanma) --- */
+  --c-aqua-50: 236 254 255;
+  --c-aqua-100: 207 250 254;
+  --c-aqua-200: 165 243 252;
+  --c-aqua-300: 103 232 249;
+  --c-aqua-400: 34 211 238;
+  --c-aqua-500: 6 182 212;
+  --c-aqua-600: 8 145 178;
+  --c-aqua-700: 14 116 144;
+
+  /* --- Durum renkleri --- */
+  --c-success-50: 236 253 245;
+  --c-success-100: 209 250 229;
+  --c-success-500: 16 185 129;
+  --c-success-600: 5 150 105;
+  --c-success-700: 4 120 87;
+
+  --c-warning-50: 255 251 235;
+  --c-warning-100: 254 243 199;
+  --c-warning-500: 245 158 11;
+  --c-warning-600: 217 119 6;
+  --c-warning-700: 180 83 9;
+
+  --c-danger-50: 255 241 242;
+  --c-danger-100: 255 228 230;
+  --c-danger-500: 244 63 94;
+  --c-danger-600: 225 29 72;
+  --c-danger-700: 190 18 60;
+
+  --c-info-50: 239 246 255;
+  --c-info-100: 219 234 254;
+  --c-info-500: 59 130 246;
+  --c-info-600: 37 99 235;
+  --c-info-700: 29 78 216;
+
+  /* --- Aurora durakları — yalnızca gradient/blob üretiminde kullanılır --- */
+  --c-aurora-purple: 168 85 247;
+  --c-aurora-violet: 139 92 246;
+  --c-aurora-blue: 59 130 246;
+  --c-aurora-cyan: 34 211 238;
+  --c-aurora-pink: 244 114 182;
+
+  /* --- Gradient ailesi ---------------------------------------------
+     Kural: gradient her elemente değil, yalnızca birincil aksiyon,
+     aktif durum, hero ve öne çıkan istatistiklere uygulanır.
+     `--g-aurora` beyaz metinle AA kontrast sağlayacak koyulukta tutuldu;
+     parlak cyan yalnızca dekoratif katmanlarda (blob/glow) yer alır.  */
+  --g-aurora: linear-gradient(135deg, rgb(124 58 237) 0%, rgb(91 75 230) 45%, rgb(37 99 235) 100%);
+  --g-aurora-hover: linear-gradient(135deg, rgb(109 40 217) 0%, rgb(79 66 214) 45%, rgb(29 78 216) 100%);
+  --g-aurora-soft: linear-gradient(
+    135deg,
+    rgb(var(--c-brand-500) / 0.14) 0%,
+    rgb(var(--c-aurora-blue) / 0.12) 50%,
+    rgb(var(--c-aurora-cyan) / 0.12) 100%
+  );
+  --g-aurora-pink: linear-gradient(135deg, rgb(190 24 93) 0%, rgb(147 51 234) 100%);
+  --g-aurora-line: linear-gradient(
+    90deg,
+    rgb(var(--c-aurora-purple)) 0%,
+    rgb(var(--c-aurora-violet)) 30%,
+    rgb(var(--c-aurora-blue)) 65%,
+    rgb(var(--c-aurora-cyan)) 100%
+  );
+  --g-aurora-text: linear-gradient(
+    115deg,
+    rgb(109 40 217) 0%,
+    rgb(124 58 237) 35%,
+    rgb(37 99 235) 70%,
+    rgb(8 145 178) 100%
+  );
+
+  /* Cihaz güvenli alanları (iOS çentik / Android gesture bar) */
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-inset-left: env(safe-area-inset-left, 0px);
+  --safe-area-inset-right: env(safe-area-inset-right, 0px);
+
+  /* Navbar yüksekliği — sticky offset hesapları için */
+  --app-header-height: 4.25rem;
+
+  /* Cam yüzey değişkenleri — tek yerden ayarlanır */
+  --glass-bg: 255 255 255;
+  --glass-alpha: 0.72;
+  --glass-border: 255 255 255;
+  --glass-border-alpha: 0.6;
+}
+
+/* ------------------------------------------------------------------
+   Koyu tema — yalnızca değişkenler yeniden tanımlanır, hiçbir bileşen
+   dosyasına dokunulmaz. `<html class="dark">` ile devreye girer.
+   ------------------------------------------------------------------ */
+.dark {
+  --c-ink: 232 232 245;
+  --c-paper: 9 9 20;
+  --c-surface: 21 21 38;
+  --c-surface-muted: 27 27 46;
+  --c-surface-sunken: 16 16 31;
+  --c-line: 45 45 70;
+  --c-line-strong: 62 62 94;
+  --c-shadow: 0 0 0;
+
+  --c-brand-50: 46 16 101;
+  --c-brand-100: 60 25 120;
+  --c-brand-200: 76 29 149;
+  --c-brand-300: 91 33 182;
+  --c-brand-400: 124 58 237;
+  --c-brand-500: 155 118 249;
+  --c-brand-600: 180 155 252;
+  --c-brand-700: 205 190 253;
+  --c-brand-800: 221 214 254;
+  --c-brand-900: 237 233 254;
+  --c-brand-950: 245 243 255;
+
+  --c-accent-50: 88 15 55;
+  --c-accent-100: 110 20 68;
+  --c-accent-200: 150 30 90;
+  --c-accent-300: 190 24 93;
+  --c-accent-400: 236 72 153;
+  --c-accent-500: 244 114 182;
+  --c-accent-600: 249 168 212;
+  --c-accent-700: 251 207 232;
+
+  --c-aqua-50: 12 51 63;
+  --c-aqua-100: 14 70 85;
+  --c-aqua-200: 14 116 144;
+  --c-aqua-300: 8 145 178;
+  --c-aqua-400: 6 182 212;
+  --c-aqua-500: 34 211 238;
+  --c-aqua-600: 103 232 249;
+  --c-aqua-700: 165 243 252;
+
+  --c-success-50: 6 46 33;
+  --c-success-100: 6 66 46;
+  --c-success-500: 52 211 153;
+  --c-success-600: 110 231 183;
+  --c-success-700: 167 243 208;
+
+  --c-warning-50: 60 36 4;
+  --c-warning-100: 84 50 6;
+  --c-warning-500: 251 191 36;
+  --c-warning-600: 252 211 77;
+  --c-warning-700: 253 230 138;
+
+  --c-danger-50: 70 12 24;
+  --c-danger-100: 96 17 33;
+  --c-danger-500: 251 113 133;
+  --c-danger-600: 253 164 175;
+  --c-danger-700: 254 205 211;
+
+  --c-info-50: 15 35 74;
+  --c-info-100: 20 48 100;
+  --c-info-500: 96 165 250;
+  --c-info-600: 147 197 253;
+  --c-info-700: 191 219 254;
+
+  --glass-bg: 30 30 52;
+  --glass-alpha: 0.66;
+  --glass-border: 255 255 255;
+  --glass-border-alpha: 0.1;
+
+  --g-aurora: linear-gradient(135deg, rgb(139 92 246) 0%, rgb(109 108 245) 45%, rgb(59 130 246) 100%);
+  --g-aurora-hover: linear-gradient(135deg, rgb(155 118 249) 0%, rgb(129 128 250) 45%, rgb(96 165 250) 100%);
+  --g-aurora-text: linear-gradient(
+    115deg,
+    rgb(196 181 253) 0%,
+    rgb(167 139 250) 35%,
+    rgb(147 197 253) 70%,
+    rgb(103 232 249) 100%
+  );
+}
+
+/* ------------------------------------------------------------------
+   Temel katman
+   ------------------------------------------------------------------ */
+@layer base {
+  * {
+    @apply border-line;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+    overscroll-behavior-y: none;
+    -webkit-tap-highlight-color: transparent;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    /* Aurora arka planları hiçbir ekranda yatay taşma yaratmamalı */
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Sayısal veriler hizalı görünsün */
+  table,
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    @apply bg-brand-200 text-brand-900;
+  }
+
+  /* Klavyeyle gezinenler için her yerde tutarlı odak halkası */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-400 ring-offset-2 ring-offset-paper;
+  }
+
+  /* İnce, markaya uygun kaydırma çubuğu */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--c-line-strong)) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--c-line-strong));
+    border-radius: 9999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(var(--c-brand-400) / 0.6);
+    background-clip: content-box;
+  }
+
+  /* Hareket azaltma tercihine saygı — Aurora animasyonları dahil */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------
+   Bileşen katmanı — sık tekrar eden kalıplar
+   Bunlar `src/components/ui/*` bileşenlerinin temelini oluşturur;
+   doğrudan className olarak da kullanılabilirler.
+
+   Kart hiyerarşisi bilinçli olarak dört kademelidir; her kart cam
+   olursa hiyerarşi kaybolur:
+     .card          → düz beyaz yüzey (varsayılan, en sık)
+     .card-glass    → yarı saydam cam (Aurora zemin üstünde)
+     .card-gradient → Aurora gradient (yalnızca öne çıkan tek kart)
+     .card-outline  → yalnız çizgi (ikincil, gömük içerik)
+   ------------------------------------------------------------------ */
+@layer components {
+  /* `min-w-0` neden her kartta var:
+     Bir ızgara/esnek öğesinin varsayılan asgari genişliği içeriğinin
+     min-content genişliğidir. İçinde `min-w-[560px]` taşıyan bir tablo olan
+     kart, iki sütunlu bir ızgarada sütununu zorla genişletir ve sayfa yatay
+     kayar — `overflow-x-auto` da devreye giremez. `min-w-0` kartın daralmasına
+     izin verir, kaydırma tablonun kendi kabında kalır. Normal akıştaki blok
+     öğeler için bu bildirimin hiçbir etkisi yoktur, yani bedelsizdir. */
+  .card {
+    @apply min-w-0 rounded-card bg-surface border border-line shadow-card;
+  }
+
+  .card-interactive {
+    @apply card transition-all duration-200 ease-smooth
+           hover:shadow-card-hover hover:-translate-y-0.5 hover:border-brand-200;
+  }
+
+  .card-glass {
+    @apply min-w-0 rounded-card border shadow-glass;
+    background-color: rgb(var(--glass-bg) / var(--glass-alpha));
+    border-color: rgb(var(--glass-border) / var(--glass-border-alpha));
+  }
+
+  /* backdrop-filter pahalı bir efekt — yalnızca destekleyen tarayıcıda
+     ve saydamlığı biraz daha artırarak uygula. */
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    .card-glass {
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      backdrop-filter: blur(20px) saturate(150%);
+      background-color: rgb(var(--glass-bg) / calc(var(--glass-alpha) - 0.12));
+    }
+  }
+
+  .card-gradient {
+    @apply min-w-0 rounded-card border border-white/15 text-white shadow-aurora;
+    background-image: var(--g-aurora);
+  }
+
+  .card-outline {
+    @apply min-w-0 rounded-card border border-line bg-surface-muted;
+  }
+
+  .surface-panel {
+    @apply rounded-card bg-surface-muted border border-line;
+  }
+
+  .section-title {
+    @apply font-display font-bold text-lg text-ink;
+  }
+
+  .label-base {
+    @apply block text-xs font-semibold text-ink/60 mb-1.5;
+  }
+
+  .input-base {
+    /* text-[16px] mobilde iOS'un otomatik zoom yapmasını engeller */
+    @apply w-full rounded-input border border-line bg-surface px-3.5 py-2.5 text-[16px] sm:text-sm text-ink
+           placeholder:text-ink/35 transition-all duration-200 ease-smooth
+           hover:border-line-strong
+           focus:border-brand-400 focus:outline-none focus:ring-4 focus:ring-brand-500/12
+           disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:text-ink/40;
+  }
+
+  .btn-base {
+    @apply inline-flex items-center justify-center gap-2 rounded-btn font-semibold
+           transition-all duration-200 ease-smooth select-none
+           disabled:cursor-not-allowed disabled:opacity-55 disabled:shadow-none
+           disabled:hover:translate-y-0
+           active:scale-[0.97];
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+
+  .divider {
+    @apply h-px w-full bg-line;
+  }
+
+  /* Yüklenirken gösterilen iskelet blok */
+  .skeleton {
+    @apply relative overflow-hidden rounded-lg bg-surface-sunken;
+  }
+
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 bg-shimmer animate-shimmer;
+    transform: translateX(-100%);
+  }
+
+  /* Yatay kaydırılan sekme/filtre şeritleri için */
+  .hide-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Yapışkan başlık gibi ince cam şeritler için (kart değil, yüzey) */
+  .glass {
+    background-color: rgb(var(--glass-bg) / 0.8);
+  }
+
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    .glass {
+      -webkit-backdrop-filter: blur(16px) saturate(150%);
+      backdrop-filter: blur(16px) saturate(150%);
+      background-color: rgb(var(--glass-bg) / 0.66);
+    }
+  }
+}
+
+/* ------------------------------------------------------------------
+   Yardımcı sınıflar
+   ------------------------------------------------------------------ */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-paper;
+  }
+
+  .app-container {
+    @apply mx-auto w-full max-w-content px-4 sm:px-6;
+  }
+
+  /* Gradient metin — yalnızca hero başlıkları ve tekil vurgular içindir.
+     Okunabilirliği bozacak yerlerde KULLANILMAZ (gövde metni, etiket…). */
+  .text-aurora {
+    background-image: var(--g-aurora-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* Gradient metin seçildiğinde kaybolmasın */
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Gradient kenarlık — kart zeminini bozmadan ince Aurora çerçevesi.
+     `border-radius` üst öğeden miras alınır. */
+  .border-aurora {
+    position: relative;
+  }
+
+  .border-aurora::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--g-aurora-line);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+
+  /* Kartın üstünde ince Aurora şeridi — "önemli" işareti */
+  .top-aurora-line {
+    position: relative;
+  }
+
+  .top-aurora-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1.25rem;
+    right: 1.25rem;
+    height: 2px;
+    border-radius: 9999px;
+    background: var(--g-aurora-line);
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .bg-aurora {
+    background-image: var(--g-aurora);
+  }
+
+  .bg-aurora-soft {
+    background-image: var(--g-aurora-soft);
+  }
+
+  .bg-aurora-line {
+    background-image: var(--g-aurora-line);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Aurora arka plan katmanı
+   ------------------------------------------------------------------
+   Amaç: "arka planda bir ışık atmosferi var" hissi. Neon değil.
+   Blob'lar `AuroraBackground` bileşeni tarafından basılır; burada
+   yalnızca hareket tanımlanır. Süreler bilinçli olarak çok uzun
+   (24–40sn) — göz hareketi fark etmez, yalnızca atmosferi tazeler.
+
+   Performans notu: yalnızca `transform` ve `opacity` animasyonu var
+   (compositor üzerinde çalışır, layout/paint tetiklemez). Blur değeri
+   filtre olarak statik kalır, animasyon edilmez.
+   ------------------------------------------------------------------ */
+@keyframes auroraDriftA {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate3d(4%, -3%, 0) scale(1.12);
+    opacity: 1;
+  }
+}
+
+@keyframes auroraDriftB {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.08);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate3d(-5%, 4%, 0) scale(1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes auroraDriftC {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate3d(3%, 5%, 0) scale(1.15);
+    opacity: 0.85;
+  }
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.aurora-blob-a {
+  animation: auroraDriftA 34s ease-in-out infinite;
+}
+
+.aurora-blob-b {
+  animation: auroraDriftB 28s ease-in-out infinite;
+}
+
+.aurora-blob-c {
+  animation: auroraDriftC 40s ease-in-out infinite;
+}
+
+/* Mobilde büyük blur alanları GPU'yu yorar: blur'u düşür, hareketi durdur. */
+@media (max-width: 640px) {
+  .aurora-blob {
+    animation: none !important;
+    filter: blur(48px) !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   NOT — burada bir zamanlar ikinci bir `@keyframes fadeIn` tanımı vardı.
+   Adı tailwind.config.js içindeki `fadeIn` ile aynıydı ve dosya sonunda
+   yer aldığı için onu geçersiz kılıyordu. O tanım `transform` içerdiğinden,
+   `animate-fade-in` verilen her öğe (AppShell'in <main>'i dahil) kalıcı bir
+   transform kazanıyordu — `animation-fill-mode: both` yüzünden animasyon
+   bitse de transform üzerinde kalıyor.
+
+   Transform'lu bir öğe, içindeki `position: fixed` elemanlar için yeni bir
+   sarmalayıcı blok (containing block) oluşturur. Sonuç: Modal ve
+   ImageLightbox ekrana değil, sayfanın tamamına göre konumlanıyor,
+   sayfanın en altına düşüyordu; gövde kaydırması da kilitli olduğu için
+   kullanıcı oraya erişemiyordu.
+
+   Bu yüzden tanım kaldırıldı. Aynı hisse ihtiyaç duyan yerler
+   `animate-slide-down` veya `animate-fade-in-up` kullanır.
+   Buraya `transform` içeren yeni bir keyframe eklemeyin.
+
+   Aynı kural Aurora katmanı için de geçerli: `.aurora-blob` yalnızca
+   dekoratif, mutlak konumlu bir çocuk öğedir — sayfa iskeletine veya
+   içerik sarmalayıcısına transform/filter uygulanmaz.
+   ------------------------------------------------------------------ */

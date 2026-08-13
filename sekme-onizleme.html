@@ -1,0 +1,1106 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dr. Koç — Sekme Önizleme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --ink:17 22 41; --paper:244 246 251; --surface:255 255 255; --muted:248 250 253; --sunken:240 243 250;
+  --line:226 231 242; --lineS:205 213 231;
+  --b50:239 243 253; --b100:220 228 250; --b200:186 201 244; --b300:142 165 234;
+  --b400:98 128 220; --b500:50 83 195; --b600:39 67 165; --b700:32 54 136;
+  --a50:253 247 234; --a500:217 164 65; --a600:179 130 43;
+  --s50:232 247 240; --s100:201 237 221; --s500:30 158 110; --s600:23 128 90; --s700:18 101 72;
+  --w50:253 242 231; --w100:250 223 196; --w500:217 118 43; --w600:184 94 29; --w700:148 74 22;
+  --d50:252 237 237; --d100:248 213 213; --d500:209 67 67; --d600:176 52 52;
+  --i50:234 244 253; --i100:203 228 250; --i500:43 127 217; --i600:30 100 176; --i700:23 80 141;
+  --slate:2 6 23;
+  --sh-card:0 1px 2px rgba(18,23,43,.04),0 6px 20px -8px rgba(18,23,43,.1);
+  --sh-hover:0 2px 4px rgba(18,23,43,.05),0 12px 28px -10px rgba(18,23,43,.16);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:hidden}
+body{background:rgb(var(--paper));color:rgb(var(--ink));font-family:Inter,system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;line-height:1.5}
+h1,h2,h3,h4{font-family:Sora,sans-serif;letter-spacing:-.02em}
+.tabular{font-variant-numeric:tabular-nums}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+svg{display:block}
+.wrap{max-width:72rem;margin:0 auto;padding:0 1.25rem}
+
+/* Üst şerit */
+.top{position:sticky;top:0;z-index:30;background:rgb(var(--surface)/.8);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgb(var(--line))}
+.top .in{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.875rem 0}
+.top h1{font-size:1.125rem;font-weight:700;line-height:1.2}
+.top p{font-size:.75rem;color:rgb(var(--ink)/.5)}
+.tabs{display:inline-flex;gap:.25rem;border-radius:.75rem;background:rgb(var(--sunken));padding:.25rem}
+.tab{border-radius:.5rem;padding:.5rem .875rem;font-size:.8125rem;font-weight:600;color:rgb(var(--ink)/.55);transition:.15s}
+.tab.on{background:rgb(var(--surface));color:rgb(var(--b700));box-shadow:0 1px 2px rgba(18,23,43,.05)}
+.avatar-sm{display:grid;place-items:center;width:2.25rem;height:2.25rem;border-radius:50%;
+  background:rgb(var(--b500));color:#fff;font-family:Sora;font-size:.75rem;font-weight:700}
+
+main{display:flex;flex-direction:column;gap:1.5rem;padding:1.5rem 0 4rem}
+
+/* Karşılama bandı */
+.hero{position:relative;overflow:hidden;border-radius:1rem;background:rgb(var(--slate));color:#fff;padding:1.75rem}
+@media(max-width:640px){.hero{padding:1.25rem}}
+.hero .g{position:absolute;inset:0;pointer-events:none}
+.hero .g1{background:radial-gradient(ellipse 55% 70% at 10% 0%,rgba(99,102,241,.35),transparent 65%)}
+.hero .g2{background:radial-gradient(ellipse 45% 60% at 95% 100%,rgba(251,191,36,.16),transparent 65%)}
+.hero .g3{opacity:.06;background-image:linear-gradient(rgba(255,255,255,.7) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.7) 1px,transparent 1px);background-size:32px 32px}
+.hero .row{position:relative;display:flex;gap:1.25rem;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.hero .who{display:flex;align-items:center;gap:1rem;min-width:0}
+.hero .ava{display:grid;place-items:center;width:3.5rem;height:3.5rem;border-radius:1rem;flex:none;
+  background:linear-gradient(135deg,rgb(var(--b400)),rgb(var(--b700)));font-family:Sora;font-size:1.25rem;font-weight:800;
+  box-shadow:0 8px 24px -8px rgba(50,83,195,.45)}
+.hero .eyebrow{font-size:.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:#fcd34d}
+.hero .pill{border-radius:999px;padding:.125rem .5rem;font-size:.6875rem;font-weight:700}
+.pill-amber{background:rgb(251 191 36);color:rgb(var(--slate))}
+.pill-glass{background:rgb(255 255 255/.1);color:#fff;border:1px solid rgb(255 255 255/.2)}
+.hero h2{margin-top:.375rem;font-size:1.875rem;font-weight:800}
+@media(max-width:640px){.hero h2{font-size:1.5rem}}
+.hero .sub{margin-top:.25rem;font-size:.875rem;color:rgb(255 255 255/.55)}
+.hl{display:flex;gap:.75rem;flex-wrap:wrap}
+.hl div{border-radius:.75rem;border:1px solid rgb(255 255 255/.1);background:rgb(255 255 255/.06);
+  padding:.625rem 1rem;min-width:6.5rem}
+.hl .l{font-size:.6875rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:rgb(255 255 255/.45)}
+.hl .v{margin-top:.125rem;font-family:Sora;font-size:1.125rem;font-weight:700;line-height:1}
+
+/* İçgörüler */
+.ins-h{display:flex;align-items:center;gap:.5rem;margin-bottom:.625rem}
+.ins-h span{font-size:.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgb(var(--ink)/.45)}
+.ins{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{display:inline-flex;align-items:center;gap:.5rem;border-radius:999px;border:1px solid;padding:.375rem .75rem;
+  font-size:.75rem;font-weight:500;transition:transform .2s}
+.chip:hover{transform:translateY(-2px)}
+.c-success{border-color:rgb(var(--s100));background:rgb(var(--s50));color:rgb(var(--s700))}
+.c-warning{border-color:rgb(var(--w100));background:rgb(var(--w50));color:rgb(var(--w700))}
+.c-info{border-color:rgb(var(--i100));background:rgb(var(--i50));color:rgb(var(--i700))}
+.c-brand{border-color:rgb(var(--b100));background:rgb(var(--b50));color:rgb(var(--b700))}
+
+/* Metrik kartları */
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+@media(max-width:900px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tile{position:relative;overflow:hidden;border-radius:1rem;border:1px solid rgb(var(--line));
+  background:rgb(var(--surface));padding:1rem;text-align:left;width:100%;transition:all .2s cubic-bezier(.4,0,.2,1);
+  box-shadow:var(--sh-card)}
+.tile:hover{transform:translateY(-4px);box-shadow:var(--sh-hover);border-color:rgb(var(--lineS))}
+.tile .bar{position:absolute;left:0;top:0;bottom:0;width:4px}
+.tile .in{padding-left:.5rem}
+.tile .head{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem}
+.tile .lbl{font-size:.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgb(var(--ink)/.45)}
+.tile .ic{display:grid;place-items:center;width:1.75rem;height:1.75rem;border-radius:.5rem;flex:none;transition:transform .2s}
+.tile:hover .ic{transform:scale(1.1)}
+.tile .body{margin-top:.5rem;display:flex;align-items:flex-end;justify-content:space-between;gap:.75rem}
+.tile .val{font-family:Sora;font-size:1.75rem;font-weight:700;line-height:1}
+@media(max-width:520px){.tile .val{font-size:1.375rem}}
+.tile .meta{margin-top:.5rem;flex-wrap:wrap;display:flex;align-items:center;gap:.375rem;min-height:1.25rem}
+.tile .delta{display:inline-flex;align-items:center;gap:.125rem;border-radius:999px;padding:.125rem .375rem;
+  font-size:.6875rem;font-weight:700}
+.d-up{background:rgb(var(--s50));color:rgb(var(--s700))}
+.d-down{background:rgb(var(--d50));color:rgb(var(--d600))}
+.tile .hint{font-size:.75rem;color:rgb(var(--ink)/.45);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tile .arrow{position:absolute;right:.75rem;bottom:.75rem;color:rgb(var(--ink)/.2);opacity:0;transition:all .2s}
+.tile:hover .arrow{opacity:1;transform:translateX(2px)}
+
+/* Panel */
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
+.grid-a{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:1.25rem}
+@media(max-width:1023px){.grid2,.grid-a{grid-template-columns:minmax(0,1fr)}}
+.panel{border-radius:1rem;border:1px solid rgb(var(--line));background:rgb(var(--surface));
+  box-shadow:var(--sh-card);overflow:hidden;display:flex;flex-direction:column}
+.panel > header{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;padding:1.25rem 1.25rem 1rem}
+.panel .hd{display:flex;align-items:flex-start;gap:.75rem;min-width:0}
+.panel .hic{display:grid;place-items:center;width:2.25rem;height:2.25rem;border-radius:.75rem;flex:none;margin-top:.125rem}
+.panel h3{font-family:Sora;font-weight:700;line-height:1.35}
+.panel .desc{margin-top:.125rem;font-size:.75rem;color:rgb(var(--ink)/.45);line-height:1.5}
+.panel .body{flex:1;padding:0 1.25rem 1.25rem}
+.panel .foot{border-top:1px solid rgb(var(--line));background:rgb(var(--muted));padding:.625rem 1.25rem;
+  font-size:.6875rem;color:rgb(var(--ink)/.4);line-height:1.5}
+
+/* Aktivite şeridi */
+.strip{display:flex;align-items:flex-end;gap:4px}
+.strip .cell{position:relative;flex:1;min-width:0}
+.strip .sq{height:2rem;border-radius:.375rem;transition:all .2s}
+.strip .cell:hover .sq{transform:scale(1.06);box-shadow:0 0 0 2px rgb(var(--b400)),0 0 0 3px rgb(var(--surface))}
+.lv0{background:rgb(var(--sunken))}.lv1{background:rgb(var(--b100))}.lv2{background:rgb(var(--b300))}
+.lv3{background:rgb(var(--b500))}.lv4{background:rgb(var(--b700))}
+.strip-foot{margin-top:.75rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem;
+  font-size:.6875rem;color:rgb(var(--ink)/.4)}
+.legend{display:flex;align-items:center;gap:.375rem}
+.legend i{width:.625rem;height:.625rem;border-radius:.125rem;display:block}
+.tip{position:absolute;bottom:100%;left:50%;transform:translate(-50%,-8px);z-index:10;pointer-events:none;
+  white-space:nowrap;border-radius:.5rem;background:rgb(var(--ink));padding:.25rem .5rem;text-align:center;
+  box-shadow:0 10px 24px -8px rgba(0,0,0,.4);opacity:0;transition:opacity .15s}
+.cell:hover .tip{opacity:1}
+.tip .a{font-size:.6875rem;font-weight:700;color:#fff;line-height:1.2}
+.tip .b{font-size:.5625rem;color:rgb(255 255 255/.5);line-height:1.2}
+
+.mini3{margin-top:1.25rem;padding-top:1rem;border-top:1px solid rgb(var(--line));
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem}
+.mini3 .l{font-size:.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgb(var(--ink)/.4)}
+.mini3 .v{margin-top:.25rem;font-family:Sora;font-size:1.125rem;font-weight:700}
+
+/* Ders çubukları */
+.sbars{display:flex;flex-direction:column;gap:.875rem}
+.sb{cursor:default;transition:opacity .2s}
+.sbars.dim .sb:not(:hover){opacity:.45}
+.sb .r{display:flex;align-items:baseline;justify-content:space-between;gap:.75rem;margin-bottom:.375rem}
+.sb .n{display:flex;align-items:center;gap:.5rem;font-size:.875rem;font-weight:600;color:rgb(var(--ink)/.7);min-width:0}
+.sb:hover .n{color:rgb(var(--ink))}
+.sb .dot{width:.5rem;height:.5rem;border-radius:50%;flex:none}
+.sb .v{font-size:.875rem;font-weight:700;flex:none}
+.sb .v em{font-style:normal;font-weight:400;color:rgb(var(--ink)/.35)}
+.sb .track{height:.5rem;border-radius:999px;background:rgb(var(--sunken));overflow:hidden}
+.sb .fill{height:100%;border-radius:999px;transition:transform .2s,box-shadow .2s}
+.sb .acc{margin-top:.25rem;font-size:.6875rem;opacity:0;transition:opacity .2s}
+.sb:hover .acc{opacity:1}
+
+/* Donut */
+.donut{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.donut .ring{position:relative;flex:none}
+.donut .mid{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:0 1.5rem;pointer-events:none}
+.donut .mid .n{font-family:Sora;font-size:1.5rem;font-weight:700;line-height:1}
+.donut .mid .l{margin-top:.25rem;font-size:.6875rem;color:rgb(var(--ink)/.45);line-height:1.2}
+.donut ul{flex:1;min-width:12rem;display:flex;flex-direction:column;gap:.375rem;list-style:none}
+.donut li{display:flex;align-items:center;justify-content:space-between;gap:.75rem;border-radius:.5rem;
+  padding:.375rem .5rem;font-size:.875rem;transition:background .15s}
+.donut li:hover{background:rgb(var(--muted))}
+.donut li .lab{display:flex;align-items:center;gap:.5rem;min-width:0;color:rgb(var(--ink)/.7)}
+.donut li .lab i{width:.625rem;height:.625rem;border-radius:50%;flex:none}
+.donut li .val{font-weight:600;flex:none}
+.donut li .val em{font-style:normal;font-weight:400;color:rgb(var(--ink)/.35)}
+
+/* Deneme akordiyonu */
+.acc{border-radius:1rem;border:1px solid rgb(var(--line));background:rgb(var(--surface));
+  box-shadow:var(--sh-card);overflow:hidden}
+.acc .row{display:flex;align-items:center;justify-content:space-between;gap:.75rem;width:100%;
+  padding:1rem 1.25rem;text-align:left;border-bottom:1px solid rgb(var(--line));transition:background .15s}
+.acc .row:hover{background:rgb(var(--muted))}
+.acc .row.open{background:rgb(var(--b50)/.5)}
+.acc .lft{display:flex;align-items:center;gap:.75rem;min-width:0}
+.acc .type{border-radius:999px;background:rgb(var(--b50));color:rgb(var(--b700));padding:.125rem .5rem;
+  font-size:.6875rem;font-weight:700;flex:none}
+.acc .nm{font-size:.875rem;font-weight:600}
+.acc .dt{font-size:.6875rem;color:rgb(var(--ink)/.4)}
+.acc .rgt{display:flex;align-items:center;gap:.625rem;flex:none}
+.acc .net{font-family:Sora;font-size:1rem;font-weight:700}
+.acc .net em{font-style:normal;font-size:.6875rem;font-weight:600;color:rgb(var(--ink)/.4);margin-left:.25rem}
+.acc .chev{transition:transform .2s;color:rgb(var(--ink)/.3)}
+.acc .row.open .chev{transform:rotate(180deg)}
+.acc .detail{padding:0 1.25rem 1.25rem;border-bottom:1px solid rgb(var(--line))}
+.acc .detail ul{list-style:none;display:flex;flex-direction:column;gap:.625rem}
+.acc .dr{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem;margin-bottom:.25rem}
+.acc .dr span:first-child{font-size:.75rem;font-weight:600;color:rgb(var(--ink)/.7)}
+.acc .dr span:last-child{font-size:.75rem;font-weight:700}
+.acc .dtrack{height:.375rem;border-radius:999px;background:rgb(var(--sunken));overflow:hidden}
+.acc .dfill{height:100%;border-radius:999px}
+
+/* Ödev satırı */
+.hw{border-radius:1rem;border:1px solid rgb(var(--line));background:rgb(var(--surface));box-shadow:var(--sh-card)}
+.hw .r{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;padding:1.25rem;
+  border-bottom:1px solid rgb(var(--line))}
+.hw .r:last-child{border-bottom:0}
+.hw .ic{display:grid;place-items:center;width:1.5rem;height:1.5rem;border-radius:50%;flex:none;margin-top:.125rem}
+.hw .t{font-weight:600}
+.hw .t.done{color:rgb(var(--ink)/.45);text-decoration:line-through}
+.hw .d{margin-top:.125rem;font-size:.875rem;color:rgb(var(--ink)/.5)}
+.badge{display:inline-flex;align-items:center;gap:.375rem;border-radius:999px;padding:.25rem .625rem;
+  font-size:.75rem;font-weight:600;white-space:nowrap}
+.badge i{width:.375rem;height:.375rem;border-radius:50%}
+.b-success{background:rgb(var(--s50));color:rgb(var(--s700))}.b-success i{background:rgb(var(--s500))}
+.b-warning{background:rgb(var(--w50));color:rgb(var(--w700))}.b-warning i{background:rgb(var(--w500))}
+.b-danger{background:rgb(var(--d50));color:rgb(var(--d600))}.b-danger i{background:rgb(var(--d500))}
+.b-brand{background:rgb(var(--b50));color:rgb(var(--b700))}.b-brand i{background:rgb(var(--b500))}
+.b-neutral{background:rgb(var(--ink)/.06);color:rgb(var(--ink)/.55)}.b-neutral i{background:rgb(var(--ink)/.4)}
+
+.sec-h{display:flex;align-items:flex-end;justify-content:space-between;gap:.75rem;flex-wrap:wrap;margin-bottom:.75rem}
+.sec-h h2{font-family:Sora;font-size:1.125rem;font-weight:700}
+.sec-h p{margin-top:.125rem;font-size:.875rem;color:rgb(var(--ink)/.5)}
+
+/* Öğrenci tablosu */
+.tbl{width:100%;border-collapse:collapse;font-size:.875rem;font-variant-numeric:tabular-nums}
+.tbl thead{background:rgb(var(--muted))}
+.tbl th{text-align:left;padding:.75rem 1.25rem;font-size:.6875rem;font-weight:600;text-transform:uppercase;
+  letter-spacing:.06em;color:rgb(var(--ink)/.45);border-bottom:1px solid rgb(var(--line))}
+.tbl td{padding:.875rem 1.25rem;border-bottom:1px solid rgb(var(--line));color:rgb(var(--ink)/.8)}
+.tbl tbody tr:last-child td{border-bottom:0}
+.tbl tbody tr:hover{background:rgb(var(--b50)/.6);cursor:pointer}
+.ava-t{display:grid;place-items:center;width:2.25rem;height:2.25rem;border-radius:50%;color:#fff;
+  font-family:Sora;font-size:.75rem;font-weight:700;flex:none;transition:transform .2s}
+.tbl tbody tr:hover .ava-t{transform:scale(1.1)}
+
+.empty{display:flex;flex-direction:column;align-items:center;text-align:center;padding:2rem 1.5rem;
+  border:1px dashed rgb(var(--line));border-radius:1rem;background:rgb(var(--surface))}
+.empty .ic{width:3rem;height:3rem;border-radius:1rem;background:rgb(var(--b50));color:rgb(var(--b300));
+  display:grid;place-items:center;margin-bottom:.75rem}
+.empty h4{font-family:Sora;font-weight:700}
+.empty p{margin-top:.25rem;font-size:.875rem;color:rgb(var(--ink)/.5);max-width:26rem}
+
+.note{border-radius:.75rem;border:1px solid rgb(var(--i100));background:rgb(var(--i50));
+  padding:.75rem 1rem;font-size:.8125rem;color:rgb(var(--i700));display:flex;gap:.5rem;align-items:center}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+/* ------------------------------------------------------------------
+   sekme-onizleme.html'e özel ek kalıplar.
+   panel-onizleme.html'deki temel CSS'in üzerine biner; oradaki
+   token ve bileşen adları burada yeniden tanımlanmaz.
+   ------------------------------------------------------------------ */
+
+[hidden]{display:none!important}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+@media(max-width:900px){.grid3,.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.chat-grid{display:grid;grid-template-columns:16rem minmax(0,1fr);gap:1.25rem}
+@media(max-width:1023px){.chat-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Düğmeler */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:.75rem;
+  font-weight:600;font-size:.875rem;height:2.25rem;padding:0 .875rem;transition:all .15s}
+.btn.lg{height:2.75rem;padding:0 1.25rem}
+.btn-primary{background:rgb(var(--b500));color:#fff;box-shadow:0 1px 2px rgba(18,23,43,.05)}
+.btn-primary:hover{background:rgb(var(--b600));box-shadow:0 8px 24px -8px rgba(50,83,195,.45)}
+.btn-secondary{background:rgb(var(--surface));color:rgb(var(--ink));border:1px solid rgb(var(--line))}
+.btn-secondary:hover{background:rgb(var(--muted));border-color:rgb(var(--lineS))}
+.btn-ghost{color:rgb(var(--ink)/.7)}
+.btn-ghost:hover{background:rgb(var(--ink)/.06);color:rgb(var(--ink))}
+.btn-subtle{background:rgb(var(--b50));color:rgb(var(--b700))}
+.btn-subtle:hover{background:rgb(var(--b100))}
+
+/* Sekme şeridindeki sayaç */
+.tab .cnt{margin-left:.375rem;border-radius:999px;padding:.0625rem .375rem;font-size:.6875rem;font-weight:700;
+  background:rgb(var(--ink)/.06);color:rgb(var(--ink)/.5)}
+.tab.on .cnt{background:rgb(var(--b50));color:rgb(var(--b600))}
+
+/* Filtre çipleri */
+.fbox{border-radius:1rem;border:1px solid rgb(var(--line));background:rgb(var(--muted));padding:1rem}
+.frow{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem}
+.frow + .frow{margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgb(var(--line))}
+.flabel{margin-right:.125rem;font-size:.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  color:rgb(var(--ink)/.45)}
+.fchip{display:inline-flex;align-items:center;gap:.375rem;border-radius:999px;padding:.375rem .75rem;
+  font-size:.75rem;font-weight:600;background:rgb(var(--sunken));color:rgb(var(--ink)/.6);transition:all .15s}
+.fchip:hover{background:rgb(var(--ink)/.08);color:rgb(var(--ink))}
+.fchip.on{background:rgb(var(--b500));color:#fff;box-shadow:0 1px 2px rgba(18,23,43,.05)}
+.fchip i{width:.375rem;height:.375rem;border-radius:50%;display:block}
+.fchip .n{font-weight:700;color:rgb(var(--ink)/.35)}
+.fchip.on .n{color:rgb(255 255 255/.7)}
+
+/* İlerleme çubuğu */
+.prog{height:.75rem;border-radius:999px;background:rgb(var(--sunken));overflow:hidden}
+.prog i{display:block;height:100%;border-radius:999px}
+.prog-h{display:flex;align-items:baseline;justify-content:space-between;gap:.5rem;margin-bottom:.375rem;
+  font-size:.75rem;color:rgb(var(--ink)/.6)}
+.prog-h b{font-variant-numeric:tabular-nums;color:rgb(var(--ink)/.7)}
+
+/* Ödev kartları */
+.hwgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+@media(max-width:768px){.hwgrid{grid-template-columns:minmax(0,1fr)}}
+.hwcard{display:flex;gap:.75rem;border-radius:1rem;border:1px solid rgb(var(--line));background:rgb(var(--surface));
+  box-shadow:var(--sh-card);padding:1.25rem;transition:all .2s}
+.hwcard:hover{transform:translateY(-2px);box-shadow:var(--sh-hover)}
+.hwcard.done{border-color:rgb(var(--s100));background:rgb(var(--s50)/.3)}
+.hwcard.late{border-color:rgb(var(--d100))}
+.hwcard .tick{flex:none;margin-top:.125rem;color:rgb(var(--ink)/.2)}
+.hwcard.done .tick{color:rgb(var(--s500))}
+.hwcard h4{font-family:Inter,sans-serif;font-weight:600;line-height:1.35}
+.hwcard.done h4{color:rgb(var(--ink)/.4);text-decoration:line-through}
+.hwcard .who{margin-top:.25rem;font-size:.75rem;font-weight:600;color:rgb(var(--b600))}
+.hwcard .dsc{margin-top:.375rem;font-size:.875rem;color:rgb(var(--ink)/.6);line-height:1.55}
+.hwcard .ft{margin-top:.75rem}
+
+/* Soru kartları */
+.qlist{display:flex;flex-direction:column;gap:.75rem;list-style:none}
+.qcard{position:relative;display:flex;gap:1rem;border-radius:1rem;border:1px solid rgb(var(--line));
+  background:rgb(var(--surface));box-shadow:var(--sh-card);padding:1rem 1rem 1rem 1.25rem;overflow:hidden}
+.qcard.answered{border-color:rgb(var(--s100))}
+.qcard .stripe{position:absolute;left:0;top:0;bottom:0;width:4px;background:rgb(var(--b500))}
+.qcard.answered .stripe{background:rgb(var(--s500))}
+.qthumb{width:4rem;height:4rem;border-radius:.75rem;border:1px solid rgb(var(--line));flex:none;
+  background:linear-gradient(135deg,rgb(var(--sunken)),rgb(var(--b100)));display:grid;place-items:center;
+  color:rgb(var(--b400))}
+.qthumb.lg{width:5rem;height:5rem}
+.qmeta{display:inline-flex;align-items:center;gap:.375rem;font-size:.6875rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;color:rgb(var(--ink)/.45)}
+.qmeta i{width:.375rem;height:.375rem;border-radius:50%;display:block}
+.qbody{font-size:.875rem;line-height:1.6;color:rgb(var(--ink)/.8)}
+.qdate{margin-top:.25rem;font-size:.6875rem;color:rgb(var(--ink)/.4)}
+.reply{margin-top:.75rem;border-radius:.75rem;border:1px solid rgb(var(--s100));background:rgb(var(--s50)/.6);
+  padding:.75rem .875rem}
+.reply .h{display:flex;align-items:center;gap:.375rem;font-size:.6875rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;color:rgb(var(--s700))}
+.reply p{margin-top:.375rem;font-size:.875rem;line-height:1.6;color:rgb(var(--ink)/.75)}
+.qside{display:flex;flex-direction:column;align-items:flex-end;gap:.5rem;flex:none}
+.select{appearance:none;border-radius:.75rem;border:1px solid rgb(var(--line));background:rgb(var(--surface));
+  padding:.375rem 1.75rem .375rem .625rem;font-size:.75rem;color:rgb(var(--ink)/.75);font-family:inherit;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%2364708A' stroke-width='1.75'%3E%3Cpath d='M6 8l4 4 4-4' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .375rem center;background-size:1rem}
+
+/* Mesajlar */
+.contacts{border-radius:1rem;border:1px solid rgb(var(--line));background:rgb(var(--surface));
+  box-shadow:var(--sh-card);overflow:hidden;height:fit-content}
+.contacts .hd{padding:.75rem;border-bottom:1px solid rgb(var(--line))}
+.contacts .hd .l{padding:0 .25rem;margin-bottom:.5rem;font-size:.6875rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;color:rgb(var(--ink)/.45)}
+.contacts .hd .l b{color:rgb(var(--ink)/.3);margin-left:.375rem}
+.contacts .list{padding:.5rem;display:flex;flex-direction:column;gap:.25rem}
+.contact{display:flex;align-items:center;gap:.625rem;border-radius:.75rem;padding:.625rem .75rem;text-align:left;
+  font-size:.875rem;font-weight:500;color:rgb(var(--ink)/.65);transition:all .15s;width:100%}
+.contact:hover{background:rgb(var(--muted));color:rgb(var(--ink))}
+.contact.on{background:rgb(var(--b50));color:rgb(var(--b700))}
+.ava-xs{display:grid;place-items:center;width:1.75rem;height:1.75rem;border-radius:50%;color:#fff;
+  font-family:Sora;font-size:.6875rem;font-weight:700;flex:none}
+.input{width:100%;border-radius:.75rem;border:1px solid rgb(var(--line));background:rgb(var(--surface));
+  padding:.5rem .75rem;font-size:.8125rem;font-family:inherit;color:rgb(var(--ink))}
+.input::placeholder{color:rgb(var(--ink)/.35)}
+.input-ic{position:relative}
+.input-ic svg{position:absolute;left:.625rem;top:50%;transform:translateY(-50%);color:rgb(var(--ink)/.35)}
+.input-ic .input{padding-left:2rem}
+
+.chat{border-radius:1rem;border:1px solid rgb(var(--line));background:rgb(var(--surface));box-shadow:var(--sh-card);
+  display:flex;flex-direction:column;height:34rem;overflow:hidden}
+.chat > header{display:flex;align-items:center;gap:.75rem;padding:.875rem 1.25rem;border-bottom:1px solid rgb(var(--line))}
+.chat > header .nm{font-family:Sora;font-weight:700;line-height:1.2}
+.chat > header .sb{font-size:.6875rem;color:rgb(var(--ink)/.4)}
+.chat .stream{flex:1;overflow-y:auto;padding:1rem 1.25rem;display:flex;flex-direction:column;gap:.5rem;
+  background:rgb(var(--muted)/.4)}
+.daysep{display:flex;justify-content:center;margin:.5rem 0}
+.daysep span{border-radius:999px;background:rgb(var(--ink)/.06);padding:.25rem .75rem;font-size:.6875rem;
+  font-weight:600;color:rgb(var(--ink)/.45)}
+.msg{display:flex}
+.msg.me{justify-content:flex-end}
+.msg .bub{max-width:78%;border-radius:1rem;padding:.625rem 1rem;font-size:.875rem;line-height:1.55;
+  box-shadow:0 1px 2px rgba(18,23,43,.05)}
+.msg.me .bub{background:rgb(var(--b500));color:#fff;border-bottom-right-radius:.375rem}
+.msg.you .bub{background:rgb(var(--surface));border:1px solid rgb(var(--line));border-bottom-left-radius:.375rem}
+.msg .tm{margin-top:.25rem;font-size:.625rem;font-variant-numeric:tabular-nums}
+.msg.me .tm{color:rgb(255 255 255/.65)}
+.msg.you .tm{color:rgb(var(--ink)/.4)}
+.msg .file{display:flex;align-items:center;gap:.5rem;border-radius:.5rem;padding:.5rem .75rem;font-size:.75rem;
+  font-weight:500;margin-bottom:.375rem}
+.msg.me .file{background:rgb(255 255 255/.15)}
+.msg.you .file{background:rgb(var(--muted));border:1px solid rgb(var(--line))}
+.composer{display:flex;align-items:center;gap:.5rem;border-top:1px solid rgb(var(--line));padding:.75rem}
+.composer .clip{display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:.75rem;flex:none;
+  border:1px solid rgb(var(--line));color:rgb(var(--b600))}
+.composer .clip:hover{background:rgb(var(--b50))}
+.composer .input{height:2.75rem}
+
+/* Kütüphane */
+.libgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}
+.libgrid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){.libgrid,.libgrid.three{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.libcard{border-radius:1rem;border:1px solid rgb(var(--line));background:rgb(var(--surface));box-shadow:var(--sh-card);
+  padding:1.25rem;text-align:left;transition:all .2s}
+.libcard:hover{transform:translateY(-2px);box-shadow:var(--sh-hover)}
+.libcard .ic{display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:.75rem;margin-bottom:.75rem;
+  background:rgb(var(--b50));color:rgb(var(--b600));transition:all .2s}
+.libcard:hover .ic{background:rgb(var(--b500));color:#fff}
+.libcard h3{font-family:Sora;font-weight:700}
+.libcard .hint{margin-top:.125rem;font-size:.75rem;color:rgb(var(--ink)/.45)}
+.libcard .cnt{margin-top:.75rem;font-size:.6875rem;font-weight:600;color:rgb(var(--ink)/.4)}
+.libcard .cnt b{color:rgb(var(--b600));font-weight:600}
+
+.crumb{display:flex;flex-wrap:wrap;align-items:center;gap:.375rem;font-size:.875rem}
+.crumb a{font-weight:600;color:rgb(var(--ink)/.5);text-decoration:none;transition:color .15s}
+.crumb a:hover{color:rgb(var(--b600))}
+.crumb .cur{font-weight:600;color:rgb(var(--b700))}
+.crumb svg{color:rgb(var(--ink)/.25)}
+
+.toplist{list-style:none;border-top:1px solid rgb(var(--line))}
+.toplist li + li .toprow{border-top:1px solid rgb(var(--line))}
+.toprow{display:flex;align-items:center;gap:.75rem;width:100%;padding:.875rem 1.25rem;text-align:left;transition:background .15s}
+.toprow:hover{background:rgb(var(--muted))}
+.toprow .ic{display:grid;place-items:center;width:2.25rem;height:2.25rem;border-radius:.5rem;flex:none;
+  background:rgb(var(--b50));color:rgb(var(--b600))}
+.toprow .ic.off{background:rgb(var(--sunken));color:rgb(var(--ink)/.3)}
+.toprow .nm{flex:1;min-width:0;font-weight:500}
+.toprow .none{font-size:.6875rem;color:rgb(var(--ink)/.3)}
+
+.notegrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+@media(max-width:768px){.notegrid{grid-template-columns:minmax(0,1fr)}}
+.notecard{display:flex;flex-direction:column;gap:.75rem;border-radius:1rem;border:1px solid rgb(var(--line));
+  background:rgb(var(--surface));box-shadow:var(--sh-card);padding:1.25rem;transition:all .2s}
+.notecard:hover{transform:translateY(-2px);box-shadow:var(--sh-hover)}
+.notecard h4{font-family:Sora;font-weight:700;line-height:1.35}
+.notecard .meta{margin-top:.375rem;display:flex;flex-wrap:wrap;align-items:center;gap:.5rem}
+.notecard .meta .dt{font-size:.6875rem;color:rgb(var(--ink)/.4)}
+.notecard p{font-size:.875rem;line-height:1.6;color:rgb(var(--ink)/.6);white-space:pre-line}
+.shot{border-radius:.75rem;border:1px solid rgb(var(--line));height:8rem;
+  background:linear-gradient(135deg,rgb(var(--sunken)),rgb(var(--b100)));display:grid;place-items:center;
+  color:rgb(var(--b400));width:10rem}
+
+/* Form önizleme */
+.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+@media(max-width:640px){.formgrid{grid-template-columns:minmax(0,1fr)}}
+.flabel2{display:block;margin-bottom:.375rem;font-size:.75rem;font-weight:600;color:rgb(var(--ink)/.55)}
+.netbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem;
+  border-top:1px solid rgb(var(--line));padding-top:1rem;margin-top:.25rem}
+.netbar .l{font-size:.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgb(var(--ink)/.45)}
+.netbar .v{font-family:Sora;font-size:1.5rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.netbar .h{margin-top:.25rem;font-size:.75rem;color:rgb(var(--ink)/.45)}
+.rowgrid{display:grid;grid-template-columns:minmax(0,1fr) 56px 56px 56px;gap:.5rem;align-items:center}
+.rowhead{padding:0 .25rem;font-size:.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+  color:rgb(var(--ink)/.45)}
+.rowbox{display:flex;flex-direction:column;gap:.5rem;border-radius:1rem;border:1px solid rgb(var(--line));
+  background:rgb(var(--muted));padding:.75rem}
+.num{height:2.5rem;text-align:center;border-radius:.75rem;border:1px solid rgb(var(--line));
+  background:rgb(var(--surface));font-family:inherit;font-size:.875rem;width:100%}
+.live{display:flex;flex-wrap:wrap;gap:1.25rem;border-radius:.75rem;border:1px solid rgb(var(--line));
+  background:rgb(var(--muted));padding:.75rem 1rem}
+.live .l{font-size:.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:rgb(var(--ink)/.45)}
+.live .v{font-family:Sora;font-size:1.125rem;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<g id="i-up"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></g>
+<g id="i-down"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></g>
+<g id="i-flat"><line x1="5" y1="12" x2="19" y2="12"/></g>
+<g id="i-target"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></g>
+<g id="i-award"><circle cx="12" cy="9" r="6"/><polyline points="8.5 14 7 22 12 19 17 22 15.5 14"/></g>
+<g id="i-list"><path d="M3 6h13M3 12h13M3 18h13"/><path d="M19 5.5l1.5 1.5L23 4"/><path d="M19 17.5l1.5 1.5L23 16"/></g>
+<g id="i-clock"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></g>
+<g id="i-check"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></g>
+<g id="i-circle"><circle cx="12" cy="12" r="9"/></g>
+<g id="i-flame"><path d="M12 22c4 0 7-2.7 7-6.5 0-4.5-4-6.5-4-11 0 0-3 2-3 5 0 1.6-1 2.5-2 2.5S8 10.5 8 9c-1.5 1.6-3 3.7-3 6.5C5 19.3 8 22 12 22z"/></g>
+<g id="i-cal"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/></g>
+<g id="i-pie"><path d="M21 12A9 9 0 1 1 12 3v9z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/></g>
+<g id="i-todo"><path d="M10 6h11M10 12h11M10 18h11"/><path d="M3 5.5l1.5 1.5L7 4"/><path d="M3 17.5l1.5 1.5L7 16"/></g>
+<g id="i-alarm"><circle cx="12" cy="13" r="8"/><polyline points="12 9 12 13 15 15"/><path d="M4 4l3-2M20 4l-3-2"/></g>
+<g id="i-clipboard"><rect x="6" y="4" width="12" height="17" rx="2"/><rect x="9" y="2" width="6" height="4" rx="1.2"/><path d="M9.5 11h5M9.5 15h5"/></g>
+<g id="i-msgs"><path d="M8 15H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v1"/><path d="M21 20l-2-2h-7a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2z"/></g>
+<g id="i-inbox"><path d="M3 12h5l1.5 3h5L16 12h5"/><path d="M5.5 5h13l2.5 7v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5z"/></g>
+<g id="i-present"><path d="M2 4h20M4 4v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4"/><path d="M12 15v5M9 22l3-2 3 2"/></g>
+<g id="i-help"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.6 2.6 0 0 1 5 .9c0 1.7-2.5 2.1-2.5 3.6"/><circle cx="12" cy="17.5" r=".6" fill="currentColor"/></g>
+<g id="i-filter"><path d="M3 5h18l-7 8.5V20l-4-2v-4.5z"/></g>
+<g id="i-chat"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.8 8.8 0 0 1-3.9-.9L3 20.5l1.6-4.6A8.4 8.4 0 1 1 21 11.5z"/></g>
+<g id="i-users"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M17 5.2a3.5 3.5 0 0 1 0 6.6M18 14.5a6.2 6.2 0 0 1 3.5 5.5"/></g>
+<g id="i-search"><circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="21" y2="21"/></g>
+<g id="i-clip"><path d="M20 11.5l-8 8a5 5 0 0 1-7-7l8.5-8.5a3.4 3.4 0 0 1 4.8 4.8L9.5 17.5a1.8 1.8 0 0 1-2.5-2.5l7.5-7.5"/></g>
+<g id="i-send"><path d="M21.5 2.5L11 13"/><path d="M21.5 2.5l-6.5 19-4-8.5-8.5-4z"/></g>
+<g id="i-plus"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></g>
+<g id="i-right"><polyline points="9 5 16 12 9 19"/></g>
+<g id="i-chev"><polyline points="6 9 12 15 18 9"/></g>
+<g id="i-left"><line x1="20" y1="12" x2="5" y2="12"/><polyline points="11 5 4 12 11 19"/></g>
+<g id="i-folder"><path d="M3 8V6.5A1.5 1.5 0 0 1 4.5 5h4L11 8h8.5A1.5 1.5 0 0 1 21 9.5V10"/><path d="M3 8h18.5l-2 10.5A1.5 1.5 0 0 1 18 19.5H5.5A1.5 1.5 0 0 1 4 18z"/></g>
+<g id="i-stack"><path d="M4 8.5L12 4l8 4.5-8 4.5z"/><path d="M4 13l8 4.5 8-4.5"/><path d="M4 17.5L12 22l8-4.5"/></g>
+<g id="i-pen"><path d="M4 20h4L19 9a2.5 2.5 0 0 0-3.5-3.5L4.5 16.5z"/><path d="M14.5 6.5l3 3"/></g>
+<g id="i-cap"><path d="M2 9l10-4.5L22 9l-10 4.5z"/><path d="M6 11v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></g>
+<g id="i-book"><path d="M4 4.5A2 2 0 0 1 6 3h13v15H6a2 2 0 0 0-2 2z"/><path d="M4 18.5A2 2 0 0 1 6 17h13v4H6a2 2 0 0 1-2-2z"/></g>
+<g id="i-case"><rect x="2.5" y="7" width="19" height="13" rx="2"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M2.5 12.5h19"/></g>
+<g id="i-img"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><circle cx="8.5" cy="10" r="1.6"/><path d="M3.5 17l5-5 4.5 4.5L16 14l4.5 4"/></g>
+<g id="i-bulb"><path d="M9 18h6M10 21.5h4"/><path d="M12 2.5a6.5 6.5 0 0 1 4 11.7V18H8v-3.8A6.5 6.5 0 0 1 12 2.5z"/></g>
+<g id="i-trash"><path d="M4 7h16M10 4h4M6 7l1 13h10l1-13"/><path d="M10 11v6M14 11v6"/></g>
+<g id="i-file"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><polyline points="14 3 14 8 19 8"/></g>
+<g id="i-zoom"><circle cx="11" cy="11" r="7"/><line x1="16" y1="16" x2="21" y2="21"/><path d="M8.5 11h5M11 8.5v5"/></g>
+<g id="i-flask"><path d="M9 2.5h6M10.5 2.5v6L4.5 19a2 2 0 0 0 1.8 3h11.4a2 2 0 0 0 1.8-3l-6-10.5v-6"/><path d="M7.5 15h9"/></g>
+<g id="i-lib"><path d="M4 3v18M8 3v18"/><path d="M13 3.5l6 1.5-4 16-6-1.5z"/></g>
+<g id="i-quote"><path d="M4 5h16v11H8l-4 4z"/><path d="M9 9.5h1.5M14 9.5h1.5"/></g>
+<g id="i-archive"><rect x="3" y="4" width="18" height="4.5" rx="1.2"/><path d="M5 8.5V19a1.5 1.5 0 0 0 1.5 1.5h11A1.5 1.5 0 0 0 19 19V8.5"/><path d="M10 12.5h4"/></g>
+<g id="i-party"><path d="M3.5 20.5L8 8l8 8z"/><path d="M15 3.5c1.5 1 1.5 3 0 4M19 6c1.6 1.3 1.6 3.7 0 5M17.5 14.5l3 .5M13.5 2l.5 3"/></g>
+</defs></svg>
+
+<div class="top"><div class="wrap in">
+  <div><h1 id="pageTitle">Denemeler</h1><p id="pageSub">Genel ve branş denemelerinin net dökümü</p></div>
+  <div style="display:flex;align-items:center;gap:.75rem">
+    <div class="tabs" role="tablist">
+      <button class="tab on" data-go="denemeler">Denemeler</button>
+      <button class="tab" data-go="gunluk">Günlük</button>
+      <button class="tab" data-go="odevler">Ödevler</button>
+      <button class="tab" data-go="sorular">Sorular</button>
+      <button class="tab" data-go="mesajlar">Mesajlar</button>
+      <button class="tab" data-go="notlar">Notlar</button>
+    </div>
+    <div class="avatar-sm">AY</div>
+  </div>
+</div></div>
+
+<main class="wrap">
+
+<!-- ================= DENEMELER ================= -->
+<section data-tab="denemeler" style="display:flex;flex-direction:column;gap:1.5rem">
+  <div class="hero">
+    <span class="g g1"></span><span class="g g2"></span><span class="g g3"></span>
+    <div class="row">
+      <div class="who">
+        <div class="ava">AY</div>
+        <div>
+          <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap">
+            <span class="eyebrow">Denemeler</span><span class="pill pill-amber">TYT</span>
+          </div>
+          <h2>Ayşe, deneme tablon</h2>
+          <p class="sub">9 genel deneme, 4 branş denemesi kayıtlı</p>
+        </div>
+      </div>
+      <div class="hl">
+        <div><div class="l">Son net</div><div class="v">84,25</div></div>
+        <div><div class="l">Ortalama</div><div class="v">76,4</div></div>
+        <div><div class="l">En iyi</div><div class="v">84,25</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="ins-h"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(217,164,65)" stroke-width="2.2" stroke-linecap="round"><use href="#i-bulb"/></svg><span>Denemelerinde öne çıkanlar</span></div>
+    <div class="ins">
+      <span class="chip c-success"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-up"/></svg>Son denemende bir öncekine göre 6,5 net daha fazla yaptın.</span>
+      <span class="chip c-success"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-up"/></svg>Son denemen genel ortalamanın 7,85 net üzerinde.</span>
+      <span class="chip c-success"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-up"/></svg>84,25 net ile şimdiye kadarki en iyi denemen bu.</span>
+      <span class="chip c-info"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-flat"/></svg>Son denemede en çok net Türkçe dersinden geldi (28,5).</span>
+    </div>
+  </div>
+
+  <div class="tiles">
+    <div class="tile"><span class="bar" style="background:rgb(var(--b500))"></span><div class="in">
+      <div class="head"><span class="lbl">Son Deneme</span><span class="ic" style="background:rgb(var(--b50));color:rgb(var(--b600))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><use href="#i-up"/></svg></span></div>
+      <div class="body"><span class="val tabular">84,25</span>
+        <svg width="72" height="32" viewBox="0 0 72 32"><path d="M0 26 C 8 24, 14 18, 22 20 S 36 10, 44 14 S 58 6, 72 4" fill="none" stroke="#3253C3" stroke-width="1.75" stroke-linecap="round"/><circle cx="72" cy="4" r="2.25" fill="#3253C3"/></svg></div>
+      <div class="meta"><span class="delta d-up"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><use href="#i-up"/></svg>6,5 net</span><span class="hint">net</span></div>
+    </div></div>
+    <div class="tile"><span class="bar" style="background:rgb(var(--i500))"></span><div class="in">
+      <div class="head"><span class="lbl">Ortalama Net</span><span class="ic" style="background:rgb(var(--i50));color:rgb(var(--i600))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><use href="#i-target"/></svg></span></div>
+      <div class="body"><span class="val tabular">76,4</span></div>
+      <div class="meta"><span class="hint">9 deneme boyunca</span></div>
+    </div></div>
+    <div class="tile"><span class="bar" style="background:rgb(var(--a500))"></span><div class="in">
+      <div class="head"><span class="lbl">En İyi Net</span><span class="ic" style="background:rgb(var(--a50));color:rgb(var(--a600))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><use href="#i-award"/></svg></span></div>
+      <div class="body"><span class="val tabular">84,25</span></div>
+      <div class="meta"><span class="hint">şimdiye kadarki zirven</span></div>
+    </div></div>
+    <div class="tile"><span class="bar" style="background:#7C4DBE"></span><div class="in">
+      <div class="head"><span class="lbl">Toplam Deneme</span><span class="ic" style="background:#7C4DBE14;color:#7C4DBE"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><use href="#i-list"/></svg></span></div>
+      <div class="body"><span class="val tabular">13</span></div>
+      <div class="meta"><span class="hint">9 genel · 4 branş</span></div>
+    </div></div>
+  </div>
+
+  <section class="panel">
+    <header>
+      <div class="hd"><span class="hic" style="background:#3253C314;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><use href="#i-up"/></svg></span>
+        <div><h3>Net Gelişimi</h3><p class="desc">Tüm denemelerin toplam neti, tarih sırasıyla</p></div></div>
+      <div class="tabs"><button class="tab on">Tümü<span class="cnt">9</span></button><button class="tab">TYT<span class="cnt">6</span></button><button class="tab">AYT<span class="cnt">3</span></button></div>
+    </header>
+    <div class="body">
+      <svg viewBox="0 0 680 240" width="100%" height="240" preserveAspectRatio="none" role="img" aria-label="Net gelişim çizgisi">
+        <g stroke="#E2E7F2" stroke-dasharray="3 3"><line x1="0" y1="40" x2="680" y2="40"/><line x1="0" y1="90" x2="680" y2="90"/><line x1="0" y1="140" x2="680" y2="140"/><line x1="0" y1="190" x2="680" y2="190"/></g>
+        <line x1="0" y1="112" x2="680" y2="112" stroke="#64708A" stroke-dasharray="4 4" stroke-width="1.25"/>
+        <text x="676" y="104" text-anchor="end" font-size="11" fill="#64708A" font-family="Inter">ort. 76,4</text>
+        <path d="M20 196 L100 172 L180 180 L260 140 L340 148 L420 116 L500 104 L580 88 L660 46" fill="none" stroke="#3253C3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <g fill="#3253C3" stroke="#fff" stroke-width="2"><circle cx="20" cy="196" r="3.5"/><circle cx="100" cy="172" r="3.5"/><circle cx="180" cy="180" r="3.5"/><circle cx="260" cy="140" r="3.5"/><circle cx="340" cy="148" r="3.5"/><circle cx="420" cy="116" r="3.5"/><circle cx="500" cy="104" r="3.5"/><circle cx="580" cy="88" r="3.5"/><circle cx="660" cy="46" r="5.5"/></g>
+        <g font-size="11" fill="#64708A" font-family="Inter" text-anchor="middle"><text x="20" y="228">3 Şub</text><text x="180" y="228">2 Mar</text><text x="340" y="228">6 Nis</text><text x="500" y="228">11 May</text><text x="660" y="228">8 Haz</text></g>
+      </svg>
+    </div>
+    <p class="foot">Kesikli gri çizgi, seçili denemelerin ortalama netidir. Net = doğru − yanlış/4 (LGS'de yanlış/3).</p>
+  </section>
+
+  <section class="panel">
+    <header><div class="hd"><span class="hic" style="background:#3253C314;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><use href="#i-target"/></svg></span>
+      <div><h3>Ders Bazlı Ortalama Net</h3><p class="desc">Her dersin ortalama neti, o derste sorulan ortalama soru sayısına oranlanarak karşılaştırılabilir hâle getirildi</p></div></div></header>
+    <div class="body"><div class="sbars">
+      <div class="sb"><div class="r"><span class="n"><span class="dot" style="background:#1E9E6E"></span>Türkçe</span><span class="v tabular">%71<em> · 9 deneme</em></span></div><div class="track"><i class="fill" style="width:71%;background:#1E9E6E;display:block"></i></div></div>
+      <div class="sb"><div class="r"><span class="n"><span class="dot" style="background:#3253C3"></span>Matematik</span><span class="v tabular">%58<em> · 9 deneme</em></span></div><div class="track"><i class="fill" style="width:58%;background:#3253C3;display:block"></i></div></div>
+      <div class="sb"><div class="r"><span class="n"><span class="dot" style="background:#7C4DBE"></span>Fen Bilimleri</span><span class="v tabular">%46<em> · 9 deneme</em></span></div><div class="track"><i class="fill" style="width:46%;background:#7C4DBE;display:block"></i></div></div>
+      <div class="sb"><div class="r"><span class="n"><span class="dot" style="background:#D9762B"></span>Sosyal Bilimler</span><span class="v tabular">%39<em> · 9 deneme</em></span></div><div class="track"><i class="fill" style="width:39%;background:#D9762B;display:block"></i></div></div>
+    </div></div>
+    <p class="foot">Yüzde, doğru/yanlış sayımı değil net oranıdır: ortalama net ÷ ortalama soru sayısı.</p>
+  </section>
+
+  <section class="panel">
+    <header><div class="hd"><span class="hic" style="background:#3253C314;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><use href="#i-list"/></svg></span>
+      <div><h3>Deneme Kayıtları</h3><p class="desc">Bir satıra dokun, o denemenin ders bazlı net dökümü açılsın</p></div></div>
+      <div class="tabs"><button class="tab on">Genel<span class="cnt">9</span></button><button class="tab">Branş<span class="cnt">4</span></button></div></header>
+    <div class="body"><div class="acc">
+      <div class="row open"><div class="lft"><span class="type">TYT</span><div><p class="nm">Final Deneme 9</p><p class="dt">8 Haziran 2026</p></div></div>
+        <div class="rgt"><span class="delta d-up" style="border-radius:999px;padding:.125rem .375rem;font-size:.6875rem;font-weight:700">↑ 6,5</span><span class="net tabular">84,25<em>net</em></span>
+        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-chev"/></svg></div></div>
+      <div class="detail"><ul>
+        <li><div class="dr"><span>Türkçe</span><span class="tabular"><em style="font-style:normal;font-weight:400;color:rgb(var(--ink)/.4)"><span style="color:rgb(var(--s600))">31</span> · <span style="color:rgb(var(--d600))">6</span> · 3</em> &nbsp;28,50<em style="font-style:normal;font-weight:400;color:rgb(var(--ink)/.35)"> net</em></span></div><div class="dtrack"><div class="dfill" style="width:100%;background:#1E9E6E"></div></div></li>
+        <li><div class="dr"><span>Matematik</span><span class="tabular"><em style="font-style:normal;font-weight:400;color:rgb(var(--ink)/.4)"><span style="color:rgb(var(--s600))">24</span> · <span style="color:rgb(var(--d600))">8</span> · 8</em> &nbsp;22,00<em style="font-style:normal;font-weight:400;color:rgb(var(--ink)/.35)"> net</em></span></div><div class="dtrack"><div class="dfill" style="width:77%;background:#3253C3"></div></div></li>
+        <li><div class="dr"><span>Fen Bilimleri</span><span class="tabular"><em style="font-style:normal;font-weight:400;color:rgb(var(--ink)/.4)"><span style="color:rgb(var(--s600))">17</span> · <span style="color:rgb(var(--d600))">2</span> · 1</em> &nbsp;16,50<em style="font-style:normal;font-weight:400;color:rgb(var(--ink)/.35)"> net</em></span></div><div class="dtrack"><div class="dfill" style="width:58%;background:#7C4DBE"></div></div></li>
+        <li><div class="dr"><span>Sosyal Bilimler</span><span class="tabular"><em style="font-style:normal;font-weight:400;color:rgb(var(--ink)/.4)"><span style="color:rgb(var(--s600))">18</span> · <span style="color:rgb(var(--d600))">3</span> · 4</em> &nbsp;17,25<em style="font-style:normal;font-weight:400;color:rgb(var(--ink)/.35)"> net</em></span></div><div class="dtrack"><div class="dfill" style="width:61%;background:#D9762B"></div></div></li>
+      </ul></div>
+      <div class="row"><div class="lft"><span class="type">TYT</span><div><p class="nm">Deneme 8</p><p class="dt">11 Mayıs 2026</p></div></div>
+        <div class="rgt"><span class="delta d-up" style="border-radius:999px;padding:.125rem .375rem;font-size:.6875rem;font-weight:700">↑ 2,1</span><span class="net tabular">77,75<em>net</em></span><svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-chev"/></svg></div></div>
+      <div class="row" style="border-bottom:0"><div class="lft"><span class="type">AYT</span><div><p class="nm">AYT Deneme 3</p><p class="dt">6 Nisan 2026</p></div></div>
+        <div class="rgt"><span class="delta d-down" style="border-radius:999px;padding:.125rem .375rem;font-size:.6875rem;font-weight:700">↓ 1,4</span><span class="net tabular">62,50<em>net</em></span><svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-chev"/></svg></div></div>
+    </div></div>
+  </section>
+
+  <section class="panel">
+    <header><div class="hd"><span class="hic" style="background:#3253C314;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><use href="#i-plus"/></svg></span>
+      <div><h3>Deneme Ekleme Formu</h3><p class="desc">Sayfada "Deneme Ekle" düğmesine basınca açılan diyalog</p></div></div></header>
+    <div class="body" style="display:flex;flex-direction:column;gap:1.25rem">
+      <div><p class="flabel2">Sınav Türü</p><div class="tabs"><button class="tab">LGS</button><button class="tab on">TYT</button><button class="tab">AYT</button><button class="tab">KPSS</button></div></div>
+      <div class="formgrid">
+        <div><label class="flabel2">Deneme Adı</label><input class="input" placeholder="örn. Final Deneme 3" /><p style="margin-top:.375rem;font-size:.75rem;color:rgb(var(--ink)/.45)">İsteğe bağlı — listede bunu görürsün</p></div>
+        <div><label class="flabel2">Tarih <span style="color:rgb(var(--d500))">*</span></label><input class="input" value="2026-06-08" /></div>
+      </div>
+      <div>
+        <div class="rowgrid rowhead"><span>Ders</span><span style="text-align:center;color:rgb(var(--s600))">Doğru</span><span style="text-align:center;color:rgb(var(--d600))">Yanlış</span><span style="text-align:center">Boş</span></div>
+        <div class="rowbox" style="margin-top:.5rem">
+          <div class="rowgrid"><span style="font-size:.875rem;font-weight:500;color:rgb(var(--ink)/.8)">Türkçe</span><input class="num" value="31"/><input class="num" value="6"/><input class="num" value="3"/></div>
+          <div class="rowgrid"><span style="font-size:.875rem;font-weight:500;color:rgb(var(--ink)/.8)">Sosyal Bilimler</span><input class="num" value="18"/><input class="num" value="3"/><input class="num" value="4"/></div>
+          <div class="rowgrid"><span style="font-size:.875rem;font-weight:500;color:rgb(var(--ink)/.8)">Matematik</span><input class="num" value="24"/><input class="num" value="8"/><input class="num" value="8"/></div>
+          <div class="rowgrid"><span style="font-size:.875rem;font-weight:500;color:rgb(var(--ink)/.8)">Fen Bilimleri</span><input class="num" value="17"/><input class="num" value="2"/><input class="num" value="1"/></div>
+        </div>
+      </div>
+      <div class="netbar"><div><p class="l">Toplam Net</p><p class="v">84,25</p><p class="h">4/4 ders dolduruldu · 4 yanlış 1 doğruyu götürür</p></div>
+        <button class="btn btn-primary lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-file"/></svg>Denemeyi Kaydet</button></div>
+    </div>
+  </section>
+</section>
+
+<!-- ================= GÜNLÜK ================= -->
+<section data-tab="gunluk" hidden style="display:flex;flex-direction:column;gap:1.5rem">
+  <div class="hero">
+    <span class="g g1"></span><span class="g g2"></span><span class="g g3"></span>
+    <div class="row">
+      <div class="who"><div class="ava">AY</div>
+        <div><div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap"><span class="eyebrow">Günlük Çalışma</span><span class="pill pill-amber">6 günlük seri</span></div>
+          <h2>Ayşe, bu haftaki temposu</h2><p class="sub">128 çalışma kaydı üzerinden hesaplandı</p></div></div>
+      <div class="hl"><div><div class="l">Bu hafta</div><div class="v">14s 20dk</div></div><div><div class="l">Bu hafta soru</div><div class="v">412</div></div><div><div class="l">İsabet</div><div class="v">%78</div></div></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="ins-h"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(217,164,65)" stroke-width="2.2" stroke-linecap="round"><use href="#i-bulb"/></svg><span>Çalışmanda öne çıkanlar</span></div>
+    <div class="ins">
+      <span class="chip c-success"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-up"/></svg>Bu hafta geçen haftaya göre 2s 45dk daha fazla çalıştın.</span>
+      <span class="chip c-success"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-up"/></svg>6 gündür ara vermeden çalışıyorsun.</span>
+      <span class="chip c-success"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-up"/></svg>Çözdüğün sorularda isabet oranın %78.</span>
+      <span class="chip c-warning"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-down"/></svg>Fizik dersinde isabet oranın %54 — burası öncelikli.</span>
+    </div>
+  </div>
+
+  <div class="tiles">
+    <div class="tile"><span class="bar" style="background:rgb(var(--b500))"></span><div class="in">
+      <div class="head"><span class="lbl">Bu Hafta Çalışma</span><span class="ic" style="background:rgb(var(--b50));color:rgb(var(--b600))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><use href="#i-clock"/></svg></span></div>
+      <div class="body"><span class="val tabular">14s 20dk</span><svg width="72" height="32" viewBox="0 0 72 32"><path d="M0 24 C 10 26, 16 12, 26 16 S 40 22, 48 12 S 62 10, 72 6" fill="none" stroke="#3253C3" stroke-width="1.75" stroke-linecap="round"/><circle cx="72" cy="6" r="2.25" fill="#3253C3"/></svg></div>
+      <div class="meta"><span class="delta d-up"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><use href="#i-up"/></svg>2s 45dk</span><span class="hint">geçen haftaya göre</span></div></div></div>
+    <div class="tile"><span class="bar" style="background:rgb(var(--i500))"></span><div class="in">
+      <div class="head"><span class="lbl">Bu Hafta Soru</span><span class="ic" style="background:rgb(var(--i50));color:rgb(var(--i600))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><use href="#i-check"/></svg></span></div>
+      <div class="body"><span class="val tabular">412</span><svg width="72" height="32" viewBox="0 0 72 32"><path d="M0 20 C 10 14, 16 24, 26 20 S 40 8, 48 14 S 62 8, 72 10" fill="none" stroke="#2B7FD9" stroke-width="1.75" stroke-linecap="round"/><circle cx="72" cy="10" r="2.25" fill="#2B7FD9"/></svg></div>
+      <div class="meta"><span class="delta d-up"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><use href="#i-up"/></svg>63 soru</span><span class="hint">geçen haftaya göre</span></div></div></div>
+    <div class="tile"><span class="bar" style="background:rgb(var(--s500))"></span><div class="in">
+      <div class="head"><span class="lbl">Genel İsabet</span><span class="ic" style="background:rgb(var(--s50));color:rgb(var(--s600))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><use href="#i-target"/></svg></span></div>
+      <div class="body"><span class="val tabular">%78</span></div>
+      <div class="meta"><span class="hint">3.284 işaretlenen soruda</span></div></div></div>
+    <div class="tile"><span class="bar" style="background:rgb(var(--s500))"></span><div class="in">
+      <div class="head"><span class="lbl">Kesintisiz Seri</span><span class="ic" style="background:rgb(var(--s50));color:rgb(var(--s600))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><use href="#i-flame"/></svg></span></div>
+      <div class="body"><span class="val tabular">6 gün</span></div>
+      <div class="meta"><span class="hint">ara vermeden</span></div></div></div>
+  </div>
+
+  <section class="panel">
+    <header><div class="hd"><span class="hic" style="background:#3253C314;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><use href="#i-cal"/></svg></span>
+      <div><h3>Son 21 Gün</h3><p class="desc">Her kare bir gün; koyulaştıkça o gün daha çok çalışılmış demektir</p></div></div></header>
+    <div class="body"><div class="strip" id="strip21"></div>
+      <div class="strip-foot"><span>Son 21 günün <strong style="color:rgb(var(--ink)/.6)">18</strong> gününde çalışma kaydı var</span>
+        <span class="legend">az<i class="lv0"></i><i class="lv1"></i><i class="lv2"></i><i class="lv3"></i><i class="lv4"></i>çok</span></div></div>
+    <p class="foot">Kutunun üzerine gelince o günün süresi ve çözülen soru sayısı görünür.</p>
+  </section>
+
+  <div class="grid2">
+    <section class="panel"><header><div class="hd"><span class="hic" style="background:#3253C314;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><use href="#i-pie"/></svg></span><div><h3>Ders Dağılımı</h3><p class="desc">Çözdüğün soruların derslere göre payı</p></div></div></header>
+      <div class="body"><div class="sbars">
+        <div class="sb"><div class="r"><span class="n"><span class="dot" style="background:#3253C3"></span>Matematik</span><span class="v tabular">%34<em> · 1.116 soru</em></span></div><div class="track"><i class="fill" style="width:34%;background:#3253C3;display:block"></i></div><p class="acc"><span style="color:rgb(var(--ink)/.45)">İsabet oranı </span><b style="color:rgb(var(--s600))">%81</b></p></div>
+        <div class="sb"><div class="r"><span class="n"><span class="dot" style="background:#1E9E6E"></span>Türkçe</span><span class="v tabular">%26<em> · 853 soru</em></span></div><div class="track"><i class="fill" style="width:26%;background:#1E9E6E;display:block"></i></div></div>
+        <div class="sb"><div class="r"><span class="n"><span class="dot" style="background:#7C4DBE"></span>Fizik</span><span class="v tabular">%18<em> · 591 soru</em></span></div><div class="track"><i class="fill" style="width:18%;background:#7C4DBE;display:block"></i></div></div>
+        <div class="sb"><div class="r"><span class="n"><span class="dot" style="background:#D9762B"></span>Kimya</span><span class="v tabular">%13<em> · 427 soru</em></span></div><div class="track"><i class="fill" style="width:13%;background:#D9762B;display:block"></i></div></div>
+        <div class="sb"><div class="r"><span class="n"><span class="dot" style="background:#00A0B4"></span>Biyoloji</span><span class="v tabular">%9<em> · 297 soru</em></span></div><div class="track"><i class="fill" style="width:9%;background:#00A0B4;display:block"></i></div></div>
+      </div></div>
+      <p class="foot">Bir satırın üzerine gelince o dersteki isabet oranın belirir.</p></section>
+
+    <section class="panel"><header><div class="hd"><span class="hic" style="background:#3253C314;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><use href="#i-target"/></svg></span><div><h3>Doğru / Yanlış / Boş</h3><p class="desc">Tüm kayıtlarının toplam dağılımı</p></div></div></header>
+      <div class="body"><div class="donut">
+        <div class="ring" style="width:168px;height:168px">
+          <svg width="168" height="168" style="transform:rotate(-90deg)">
+            <circle cx="84" cy="84" r="73" fill="none" stroke="#1E9E6E" stroke-width="22" stroke-dasharray="311 459" stroke-dashoffset="0"/>
+            <circle cx="84" cy="84" r="73" fill="none" stroke="#D14343" stroke-width="22" stroke-dasharray="87 459" stroke-dashoffset="-313"/>
+            <circle cx="84" cy="84" r="73" fill="none" stroke="#64708A" stroke-width="22" stroke-dasharray="55 459" stroke-dashoffset="-402"/>
+          </svg>
+          <div class="mid"><div><p class="n tabular">3.578</p><p class="l">soru</p></div></div>
+        </div>
+        <ul>
+          <li><span class="lab"><i style="background:#1E9E6E"></i>Doğru</span><span class="val tabular">%68<em> · 2.434</em></span></li>
+          <li><span class="lab"><i style="background:#D14343"></i>Yanlış</span><span class="val tabular">%19<em> · 680</em></span></li>
+          <li><span class="lab"><i style="background:#64708A"></i>Boş</span><span class="val tabular">%13<em> · 464</em></span></li>
+        </ul>
+      </div></div>
+      <p class="foot">Boşlar isabet oranına dahil edilmez; isabet = doğru ÷ (doğru + yanlış).</p></section>
+  </div>
+
+  <div class="grid2" style="align-items:start">
+    <section class="panel"><header><div class="hd"><span class="hic" style="background:rgb(var(--b50));color:rgb(var(--b600))"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-pen"/></svg></span><div><h3>Bugün Ne Çalıştın?</h3><p class="desc">Tek bir ders/konu için süre ve soru sayılarını gir</p></div></div></header>
+      <div class="body" style="display:flex;flex-direction:column;gap:1rem">
+        <div class="formgrid">
+          <div><label class="flabel2">Tarih *</label><input class="input" value="2026-08-11"/></div>
+          <div><label class="flabel2">Çalışma Süresi</label><input class="input" value="45"/><p style="margin-top:.375rem;font-size:.75rem;color:rgb(var(--ink)/.45)">Dakika cinsinden</p></div>
+        </div>
+        <div><label class="flabel2">Konu *</label><input class="input" value="Matematik - Türev"/><p style="margin-top:.375rem;font-size:.75rem;color:rgb(var(--ink)/.45)">Ders - Konu biçiminde yaz, örn. Matematik - Türev</p></div>
+        <div class="grid3" style="gap:.75rem"><div><label class="flabel2">Doğru</label><input class="input" value="28"/></div><div><label class="flabel2">Yanlış</label><input class="input" value="7"/></div><div><label class="flabel2">Boş</label><input class="input" value="5"/></div></div>
+        <div class="live"><div><p class="l">Çözülen</p><p class="v">40</p></div><div><p class="l">İsabet</p><p class="v">%80</p></div><div><p class="l">Net</p><p class="v">26,25</p></div></div>
+        <button class="btn btn-primary lg" style="width:100%"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-file"/></svg>Çalışmayı Kaydet</button>
+      </div></section>
+
+    <section class="panel"><header><div class="hd"><span class="hic" style="background:rgb(var(--b50));color:rgb(var(--b600))"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-cal"/></svg></span><div><h3>Çalışma Geçmişi</h3><p class="desc">128 kayıt</p></div></div></header>
+      <table class="tbl"><thead><tr><th>Tarih</th><th>Ders / Konu</th><th style="text-align:right">Süre</th><th style="text-align:right">D / Y / B</th></tr></thead>
+      <tbody>
+        <tr><td style="font-weight:500;color:rgb(var(--ink))">11 Ağu</td><td><b>Matematik</b><span style="display:block;font-size:.75rem;color:rgb(var(--ink)/.5)">Türev</span></td><td style="text-align:right;font-weight:600">45<span style="color:rgb(var(--ink)/.4);font-weight:400"> dk</span></td><td style="text-align:right"><b style="color:rgb(var(--s600))">28</b><span style="color:rgb(var(--ink)/.25);margin:0 .25rem">/</span><b style="color:rgb(var(--d600))">7</b><span style="color:rgb(var(--ink)/.25);margin:0 .25rem">/</span><span style="color:rgb(var(--ink)/.4)">5</span></td></tr>
+        <tr><td style="font-weight:500;color:rgb(var(--ink))">10 Ağu</td><td><b>Türkçe</b><span style="display:block;font-size:.75rem;color:rgb(var(--ink)/.5)">Paragraf</span></td><td style="text-align:right;font-weight:600">60<span style="color:rgb(var(--ink)/.4);font-weight:400"> dk</span></td><td style="text-align:right"><b style="color:rgb(var(--s600))">33</b><span style="color:rgb(var(--ink)/.25);margin:0 .25rem">/</span><b style="color:rgb(var(--d600))">4</b><span style="color:rgb(var(--ink)/.25);margin:0 .25rem">/</span><span style="color:rgb(var(--ink)/.4)">3</span></td></tr>
+        <tr><td style="font-weight:500;color:rgb(var(--ink))">10 Ağu</td><td><b>Fizik</b><span style="display:block;font-size:.75rem;color:rgb(var(--ink)/.5)">Elektrik</span></td><td style="text-align:right;font-weight:600">35<span style="color:rgb(var(--ink)/.4);font-weight:400"> dk</span></td><td style="text-align:right"><b style="color:rgb(var(--s600))">12</b><span style="color:rgb(var(--ink)/.25);margin:0 .25rem">/</span><b style="color:rgb(var(--d600))">10</b><span style="color:rgb(var(--ink)/.25);margin:0 .25rem">/</span><span style="color:rgb(var(--ink)/.4)">3</span></td></tr>
+        <tr><td style="font-weight:500;color:rgb(var(--ink))">9 Ağu</td><td><b>Kimya</b><span style="display:block;font-size:.75rem;color:rgb(var(--ink)/.5)">Mol Kavramı</span></td><td style="text-align:right;font-weight:600">50<span style="color:rgb(var(--ink)/.4);font-weight:400"> dk</span></td><td style="text-align:right"><b style="color:rgb(var(--s600))">21</b><span style="color:rgb(var(--ink)/.25);margin:0 .25rem">/</span><b style="color:rgb(var(--d600))">6</b><span style="color:rgb(var(--ink)/.25);margin:0 .25rem">/</span><span style="color:rgb(var(--ink)/.4)">2</span></td></tr>
+      </tbody></table></section>
+  </div>
+</section>
+
+<!-- ================= ÖDEVLER ================= -->
+<section data-tab="odevler" hidden style="display:flex;flex-direction:column;gap:1.5rem">
+  <div class="hero"><span class="g g1"></span><span class="g g2"></span><span class="g g3"></span>
+    <div class="row"><div class="who"><div class="ava">AY</div>
+      <div><div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap"><span class="eyebrow">Ödevler</span><span class="pill pill-glass">2 gecikmiş</span></div>
+        <h2>Ayşe, ödev tablon</h2><p class="sub">18 ödevin 11 tanesi tamamlandı</p></div></div>
+      <div class="hl"><div><div class="l">Devam eden</div><div class="v">7</div></div><div><div class="l">Bu hafta</div><div class="v">3</div></div><div><div class="l">Tamamlanma</div><div class="v">%61</div></div></div></div></div>
+
+  <div>
+    <div class="ins-h"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(217,164,65)" stroke-width="2.2" stroke-linecap="round"><use href="#i-bulb"/></svg><span>Ödevlerinde öne çıkanlar</span></div>
+    <div class="ins">
+      <span class="chip" style="border-color:rgb(var(--d100));background:rgb(var(--d50));color:rgb(var(--d600))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-down"/></svg>2 ödevin gecikti — önce bunları kapatmak iyi olur.</span>
+      <span class="chip c-warning"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-flat"/></svg>Bugün teslim etmen gereken 1 ödev var.</span>
+      <span class="chip c-brand"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-flat"/></svg>Sana atanan ödevlerin %61'ini tamamladın.</span>
+    </div>
+  </div>
+
+  <div class="tiles">
+    <div class="tile"><span class="bar" style="background:rgb(var(--b500))"></span><div class="in"><div class="head"><span class="lbl">Devam Eden</span><span class="ic" style="background:rgb(var(--b50));color:rgb(var(--b600))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><use href="#i-todo"/></svg></span></div><div class="body"><span class="val tabular">7</span></div><div class="meta"><span class="hint">tamamlanmayı bekliyor</span></div></div></div>
+    <div class="tile"><span class="bar" style="background:rgb(var(--w500))"></span><div class="in"><div class="head"><span class="lbl">Bugün Teslim</span><span class="ic" style="background:rgb(var(--w50));color:rgb(var(--w600))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><use href="#i-cal"/></svg></span></div><div class="body"><span class="val tabular">1</span></div><div class="meta"><span class="hint">bu hafta 3 ödev</span></div></div></div>
+    <div class="tile"><span class="bar" style="background:rgb(var(--d500))"></span><div class="in"><div class="head"><span class="lbl">Geciken</span><span class="ic" style="background:rgb(var(--d50));color:rgb(var(--d600))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><use href="#i-alarm"/></svg></span></div><div class="body"><span class="val tabular">2</span></div><div class="meta"><span class="hint">teslim tarihi geçti</span></div>
+      <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-right"/></svg></div></div>
+    <div class="tile"><span class="bar" style="background:rgb(var(--s500))"></span><div class="in"><div class="head"><span class="lbl">Tamamlanan</span><span class="ic" style="background:rgb(var(--s50));color:rgb(var(--s600))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><use href="#i-check"/></svg></span></div><div class="body"><span class="val tabular">11</span></div><div class="meta"><span class="hint">toplamın %61'i</span></div></div></div>
+  </div>
+
+  <section class="panel"><header><div class="hd"><span class="hic" style="background:#1E9E6E14;color:#1E9E6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><use href="#i-check"/></svg></span><div><h3>Tamamlanma Oranı</h3><p class="desc">Sana atanan tüm ödevler içinde tamamladıklarının payı</p></div></div></header>
+    <div class="body"><div class="prog-h"><span>11 / 18 ödev</span><b>61%</b></div><div class="prog"><i style="width:61%;background:rgb(var(--b500))"></i></div></div></section>
+
+  <section class="panel"><header><div class="hd"><span class="hic" style="background:#3253C314;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><use href="#i-clipboard"/></svg></span><div><h3>Ödev Listesi</h3><p class="desc">Daireye dokunarak bir ödevi tamamlandı olarak işaretleyebilirsin</p></div></div>
+      <div class="tabs"><button class="tab on">Devam eden<span class="cnt">7</span></button><button class="tab">Geciken<span class="cnt">2</span></button><button class="tab">Tamamlanan<span class="cnt">11</span></button></div></header>
+    <div class="body"><div class="hwgrid">
+      <div class="hwcard late"><span class="tick"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-circle"/></svg></span>
+        <div style="min-width:0;flex:1"><h4>Türev — 40 soru çöz</h4><p class="dsc">Palme soru bankası, sayfa 112-118 arası.</p>
+          <div class="ft"><span class="badge b-danger"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><use href="#i-cal"/></svg>9 Ağustos • 2 gün gecikti</span></div></div></div>
+      <div class="hwcard late"><span class="tick"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-circle"/></svg></span>
+        <div style="min-width:0;flex:1"><h4>Paragraf tekrarı</h4><p class="dsc">Geçen haftaki denemede yanlış yaptığın soruları defterine çöz.</p>
+          <div class="ft"><span class="badge b-danger"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><use href="#i-cal"/></svg>10 Ağustos • 1 gün gecikti</span></div></div></div>
+      <div class="hwcard"><span class="tick"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-circle"/></svg></span>
+        <div style="min-width:0;flex:1"><h4>Elektrik konu tekrarı</h4><p class="dsc">Ders notlarındaki formül kâğıdını ezberle.</p>
+          <div class="ft"><span class="badge b-neutral"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><use href="#i-cal"/></svg>Bugün teslim</span></div></div></div>
+      <div class="hwcard"><span class="tick"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-circle"/></svg></span>
+        <div style="min-width:0;flex:1"><h4>Mol kavramı 25 soru</h4><p class="dsc">Karışım problemlerine ağırlık ver.</p>
+          <div class="ft"><span class="badge b-neutral"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><use href="#i-cal"/></svg>Yarın teslim</span></div></div></div>
+      <div class="hwcard done"><span class="tick"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-check"/></svg></span>
+        <div style="min-width:0;flex:1"><h4>Limit — 30 soru</h4><p class="dsc">Tamamlandı.</p>
+          <div class="ft"><span class="badge b-success"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><use href="#i-cal"/></svg>5 Ağustos</span></div></div></div>
+      <div class="hwcard done"><span class="tick"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-check"/></svg></span>
+        <div style="min-width:0;flex:1"><h4>Sözcükte anlam testi</h4><p class="dsc">Tamamlandı.</p>
+          <div class="ft"><span class="badge b-success"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><use href="#i-cal"/></svg>2 Ağustos</span></div></div></div>
+    </div></div>
+    <p class="foot">Geciken ödevler listenin başında gösterilir.</p></section>
+
+  <section class="panel"><header><div class="hd"><span class="hic" style="background:#3253C314;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><use href="#i-party"/></svg></span><div><h3>Boş Durum Örneği</h3><p class="desc">"Geciken" sekmesinde gecikme yoksa görünen ekran</p></div></div></header>
+    <div class="body"><div class="empty"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><use href="#i-party"/></svg></span>
+      <h4>Geciken ödev yok</h4><p>Teslim tarihi geçmiş, tamamlanmamış bir ödev bulunmuyor.</p></div></div></section>
+</section>
+
+<!-- ================= SORULAR ================= -->
+<section data-tab="sorular" hidden style="display:flex;flex-direction:column;gap:1.5rem">
+  <div class="hero"><span class="g g1"></span><span class="g g2"></span><span class="g g3"></span>
+    <div class="row"><div class="who"><div class="ava">AY</div>
+      <div><div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap"><span class="eyebrow">Sorunlu Sorular</span><span class="pill pill-glass">3 inceleniyor</span></div>
+        <h2>Ayşe, soru arşivin</h2><p class="sub">24 sorunun 18 tanesi çözüldü</p></div></div>
+      <div class="hl"><div><div class="l">Bekleyen</div><div class="v">3</div></div><div><div class="l">Derste</div><div class="v">3</div></div><div><div class="l">Çözülen</div><div class="v">18</div></div>
+        <button class="btn btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-plus"/></svg>Soru Gönder</button></div></div></div>
+
+  <div>
+    <div class="ins-h"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(217,164,65)" stroke-width="2.2" stroke-linecap="round"><use href="#i-bulb"/></svg><span>Sorularında öne çıkanlar</span></div>
+    <div class="ins">
+      <span class="chip c-info"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-flat"/></svg>3 sorun öğretmeninde inceleniyor.</span>
+      <span class="chip c-brand"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-flat"/></svg>3 sorun derste çözülecek olarak işaretlendi.</span>
+      <span class="chip c-success"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-up"/></svg>Sorduğun soruların %75'i çözüldü.</span>
+      <span class="chip c-warning"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-flat"/></svg>En çok Matematik dersinden soru sordun (9 soru) — burada takılıyor olabilirsin.</span>
+    </div>
+  </div>
+
+  <div class="tiles">
+    <div class="tile"><span class="bar" style="background:rgb(var(--b500))"></span><div class="in"><div class="head"><span class="lbl">Toplam Soru</span><span class="ic" style="background:rgb(var(--b50));color:rgb(var(--b600))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><use href="#i-msgs"/></svg></span></div><div class="body"><span class="val tabular">24</span></div><div class="meta"><span class="hint">bu hafta 4 yeni</span></div></div></div>
+    <div class="tile"><span class="bar" style="background:rgb(var(--w500))"></span><div class="in"><div class="head"><span class="lbl">İnceleniyor</span><span class="ic" style="background:rgb(var(--w50));color:rgb(var(--w600))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><use href="#i-inbox"/></svg></span></div><div class="body"><span class="val tabular">3</span></div><div class="meta"><span class="hint">öğretmende</span></div></div></div>
+    <div class="tile"><span class="bar" style="background:#7C4DBE"></span><div class="in"><div class="head"><span class="lbl">Derste Çözülecek</span><span class="ic" style="background:#7C4DBE14;color:#7C4DBE"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><use href="#i-present"/></svg></span></div><div class="body"><span class="val tabular">3</span></div><div class="meta"><span class="hint">ders için işaretlendi</span></div></div></div>
+    <div class="tile"><span class="bar" style="background:rgb(var(--s500))"></span><div class="in"><div class="head"><span class="lbl">Çözülen</span><span class="ic" style="background:rgb(var(--s50));color:rgb(var(--s600))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><use href="#i-check"/></svg></span></div><div class="body"><span class="val tabular">18</span></div><div class="meta"><span class="hint">toplamın %75'i</span></div>
+      <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-right"/></svg></div></div>
+  </div>
+
+  <div class="grid2">
+    <section class="panel"><header><div class="hd"><span class="hic" style="background:#3253C314;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"><use href="#i-help"/></svg></span><div><h3>Durum Dağılımı</h3><p class="desc">Soruların hangi aşamada olduğu</p></div></div></header>
+      <div class="body"><div class="donut"><div class="ring" style="width:168px;height:168px">
+        <svg width="168" height="168" style="transform:rotate(-90deg)">
+          <circle cx="84" cy="84" r="73" fill="none" stroke="#D9762B" stroke-width="22" stroke-dasharray="55 459" stroke-dashoffset="0"/>
+          <circle cx="84" cy="84" r="73" fill="none" stroke="#3253C3" stroke-width="22" stroke-dasharray="55 459" stroke-dashoffset="-57"/>
+          <circle cx="84" cy="84" r="73" fill="none" stroke="#1E9E6E" stroke-width="22" stroke-dasharray="341 459" stroke-dashoffset="-114"/>
+        </svg><div class="mid"><div><p class="n tabular">24</p><p class="l">soru</p></div></div></div>
+        <ul><li><span class="lab"><i style="background:#D9762B"></i>İnceleniyor</span><span class="val tabular">%12<em> · 3</em></span></li>
+          <li><span class="lab"><i style="background:#3253C3"></i>Derste çözülecek</span><span class="val tabular">%13<em> · 3</em></span></li>
+          <li><span class="lab"><i style="background:#1E9E6E"></i>Çözüldü</span><span class="val tabular">%75<em> · 18</em></span></li></ul>
+      </div></div></section>
+
+    <section class="panel"><header><div class="hd"><span class="hic" style="background:#3253C314;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"><use href="#i-filter"/></svg></span><div><h3>Ders Dağılımı</h3><p class="desc">En çok hangi derslerden soru sordun</p></div></div></header>
+      <div class="body"><div class="donut"><div class="ring" style="width:168px;height:168px">
+        <svg width="168" height="168" style="transform:rotate(-90deg)">
+          <circle cx="84" cy="84" r="73" fill="none" stroke="#3253C3" stroke-width="22" stroke-dasharray="170 459" stroke-dashoffset="0"/>
+          <circle cx="84" cy="84" r="73" fill="none" stroke="#1E9E6E" stroke-width="22" stroke-dasharray="112 459" stroke-dashoffset="-172"/>
+          <circle cx="84" cy="84" r="73" fill="none" stroke="#7C4DBE" stroke-width="22" stroke-dasharray="93 459" stroke-dashoffset="-286"/>
+          <circle cx="84" cy="84" r="73" fill="none" stroke="#D9762B" stroke-width="22" stroke-dasharray="74 459" stroke-dashoffset="-381"/>
+        </svg><div class="mid"><div><p class="n tabular">24</p><p class="l">soru</p></div></div></div>
+        <ul><li><span class="lab"><i style="background:#3253C3"></i>Matematik</span><span class="val tabular">%37<em> · 9</em></span></li>
+          <li><span class="lab"><i style="background:#1E9E6E"></i>Fizik</span><span class="val tabular">%25<em> · 6</em></span></li>
+          <li><span class="lab"><i style="background:#7C4DBE"></i>Kimya</span><span class="val tabular">%21<em> · 5</em></span></li>
+          <li><span class="lab"><i style="background:#D9762B"></i>Türkçe</span><span class="val tabular">%17<em> · 4</em></span></li></ul>
+      </div></div>
+      <p class="foot">Ders bilgisi girilmemiş sorular bu dağılıma dahil edilmez.</p></section>
+  </div>
+
+  <section class="panel"><header><div class="hd"><span class="hic" style="background:#3253C314;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><use href="#i-inbox"/></svg></span><div><h3>Sorularım</h3><p class="desc">Öğretmeninin yanıtını beklediğin sorular</p></div></div>
+      <div class="tabs"><button class="tab on">Aktif<span class="cnt">6</span></button><button class="tab">Arşiv<span class="cnt">18</span></button></div></header>
+    <div class="body" style="display:flex;flex-direction:column;gap:1rem">
+      <div class="fbox">
+        <div class="frow"><span class="flabel">Ders</span>
+          <button class="fchip on">Tümü</button>
+          <button class="fchip"><i style="background:#3253C3"></i>Matematik<span class="n">9</span></button>
+          <button class="fchip"><i style="background:#7C4DBE"></i>Fizik<span class="n">6</span></button>
+          <button class="fchip"><i style="background:#1E9E6E"></i>Kimya<span class="n">5</span></button>
+          <button class="fchip"><i style="background:#D9762B"></i>Türkçe<span class="n">4</span></button></div>
+      </div>
+
+      <ul class="qlist">
+        <li class="qcard"><span class="stripe"></span>
+          <span class="qthumb"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><use href="#i-img"/></svg></span>
+          <div style="flex:1;min-width:0">
+            <span class="qmeta"><i style="background:#3253C3"></i>Matematik · Türev</span>
+            <p class="qbody" style="margin-top:.25rem">Zincir kuralında içteki fonksiyonun türevini alırken neden dıştakini olduğu gibi bırakıyoruz?</p>
+            <p class="qdate">10 Ağustos 2026</p>
+          </div>
+          <div class="qside"><span class="badge b-warning"><i></i>İnceleniyor</span></div></li>
+
+        <li class="qcard answered"><span class="stripe"></span>
+          <div style="flex:1;min-width:0">
+            <span class="qmeta"><i style="background:#7C4DBE"></i>Fizik · Elektrik</span>
+            <p class="qbody" style="margin-top:.25rem">Seri bağlı dirençlerde eşdeğer direnç neden artıyor?</p>
+            <p class="qdate">8 Ağustos 2026</p>
+            <div class="reply"><span class="h"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><use href="#i-quote"/></svg>Öğretmen Yanıtı</span>
+              <p>Seri bağlamada akımın izlediği yol uzuyor; her direnç yolun bir parçası olduğu için toplam engel artıyor. Formülü ezberlemek yerine "yol uzuyor" diye düşün.</p></div>
+          </div>
+          <div class="qside"><span class="badge b-success"><i></i>Çözüldü</span></div></li>
+
+        <li class="qcard"><span class="stripe"></span>
+          <div style="flex:1;min-width:0">
+            <span class="qmeta"><i style="background:#1E9E6E"></i>Kimya · Mol Kavramı</span>
+            <p class="qbody" style="margin-top:.25rem">Karışım sorularında molce yüzde ile kütlece yüzdeyi hep karıştırıyorum.</p>
+            <p class="qdate">7 Ağustos 2026</p>
+          </div>
+          <div class="qside"><span class="badge b-brand"><i></i>Derste Çözülecek</span></div></li>
+      </ul>
+    </div></section>
+
+  <section class="panel"><header><div class="hd"><span class="hic" style="background:#3253C314;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><use href="#i-inbox"/></svg></span><div><h3>Öğretmen Görünümü — Gelen Kutusu</h3><p class="desc">Aynı sekme, öğretmen rolüyle</p></div></div></header>
+    <div class="body"><ul class="qlist">
+      <li class="qcard"><span class="stripe"></span>
+        <span class="qthumb lg"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><use href="#i-img"/></svg></span>
+        <div style="flex:1;min-width:0">
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:.5rem">
+            <span class="ava-xs" style="background:rgb(var(--b500))">AY</span><span style="font-size:.875rem;font-weight:600">Ayşe Yılmaz</span>
+            <span class="qmeta"><i style="background:#3253C3"></i>Matematik · Türev</span><span style="font-size:.6875rem;color:rgb(var(--ink)/.4)">10 Ağustos</span></div>
+          <p class="qbody" style="margin-top:.375rem">Zincir kuralında içteki fonksiyonun türevini alırken neden dıştakini olduğu gibi bırakıyoruz?</p>
+          <div style="margin-top:.75rem;border-radius:.75rem;border:1px solid rgb(var(--line));background:rgb(var(--muted));padding:.875rem;display:flex;flex-direction:column;gap:.75rem">
+            <textarea class="input" rows="2" placeholder="Öğrenciye yanıtını yaz…" style="resize:vertical"></textarea>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;gap:.5rem">
+              <span style="display:inline-flex;align-items:center;gap:.375rem;border-radius:.5rem;border:1px dashed rgb(var(--b300));padding:.375rem .75rem;font-size:.75rem;font-weight:600;color:rgb(var(--b600))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-img"/></svg>Fotoğraf ekle</span>
+              <span style="margin-left:auto;display:flex;gap:.5rem"><button class="btn btn-ghost" style="height:2rem;font-size:.75rem">Vazgeç</button>
+              <button class="btn btn-primary" style="height:2rem;font-size:.75rem"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-send"/></svg>Yanıtla ve kapat</button></span>
+            </div>
+          </div>
+        </div>
+        <div class="qside"><span class="badge b-warning"><i></i>İnceleniyor</span>
+          <select class="select"><option>İnceleniyor</option><option>Derste Çözülecek</option><option>Çözüldü</option></select></div></li>
+    </ul></div></section>
+</section>
+
+<!-- ================= MESAJLAR ================= -->
+<section data-tab="mesajlar" hidden style="display:flex;flex-direction:column;gap:1.5rem">
+  <div class="chat-grid">
+    <aside class="contacts">
+      <div class="hd"><p class="l">Öğrenciler <b>8</b></p>
+        <div class="input-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-search"/></svg><input class="input" placeholder="İsim ara…" /></div></div>
+      <div class="list">
+        <button class="contact on"><span class="ava-xs" style="background:rgb(var(--b500))">AY</span>Ayşe Yılmaz</button>
+        <button class="contact"><span class="ava-xs" style="background:rgb(var(--i500))">MK</span>Mert Kaya</button>
+        <button class="contact"><span class="ava-xs" style="background:rgb(var(--s500))">ZD</span>Zeynep Demir</button>
+        <button class="contact"><span class="ava-xs" style="background:rgb(var(--a600))">EÇ</span>Emir Çelik</button>
+        <button class="contact"><span class="ava-xs" style="background:rgb(var(--w500))">SA</span>Selin Aydın</button>
+        <button class="contact"><span class="ava-xs" style="background:rgb(var(--b700))">BÖ</span>Burak Öz</button>
+      </div>
+    </aside>
+
+    <div class="chat">
+      <header><span class="ava-xs" style="background:rgb(var(--b500));width:2.25rem;height:2.25rem;font-size:.75rem">AY</span>
+        <div><p class="nm">Ayşe Yılmaz</p><p class="sb">14 mesaj</p></div></header>
+      <div class="stream">
+        <div class="daysep"><span>Dün</span></div>
+        <div class="msg you"><div class="bub">Hocam türev konusunda takıldığım bir soru var, fotoğrafını atabilir miyim?<div class="tm">19:42</div></div></div>
+        <div class="msg me"><div class="bub">Tabii, gönder. Akşam bakıp dönerim.<div class="tm">19:55</div></div></div>
+        <div class="msg you"><div class="bub"><div class="file"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><use href="#i-file"/></svg><span style="flex:1">turev-soru.pdf</span></div>Bu soruda 3. adımı anlamadım.<div class="tm">20:03</div></div></div>
+        <div class="daysep"><span>Bugün</span></div>
+        <div class="msg me"><div class="bub">Baktım. 3. adımda içteki fonksiyonun türevini çarpan olarak yazman gerekiyor — dıştaki aynen kalıyor. Yarın derste tahtada da yapalım.<div class="tm">09:12</div></div></div>
+        <div class="msg you"><div class="bub">Şimdi anladım, teşekkürler hocam!<div class="tm">09:20</div></div></div>
+      </div>
+      <div class="composer">
+        <span class="clip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-clip"/></svg></span>
+        <input class="input" placeholder="Bir mesaj yaz…" />
+        <button class="btn btn-primary lg"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-send"/></svg>Gönder</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="panel"><header><div class="hd"><span class="hic" style="background:#3253C314;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><use href="#i-chat"/></svg></span><div><h3>Boş Durum Örnekleri</h3><p class="desc">Kişi yokken ve sohbet seçilmemişken</p></div></div></header>
+    <div class="body"><div class="grid2">
+      <div class="empty"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><use href="#i-users"/></svg></span>
+        <h4>Henüz kayıtlı öğrenci yok</h4><p>Öğrencilerin sisteme kaydolduğunda burada listelenecek ve onlarla yazışabileceksin.</p></div>
+      <div class="empty"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><use href="#i-chat"/></svg></span>
+        <h4>Sohbet seç</h4><p>Soldaki listeden bir öğrenci seçtiğinde yazışma burada açılır.</p></div>
+    </div></div></section>
+</section>
+
+<!-- ================= NOTLAR ================= -->
+<section data-tab="notlar" hidden style="display:flex;flex-direction:column;gap:1.5rem">
+  <div class="hero"><span class="g g1"></span><span class="g g2"></span><span class="g g3"></span>
+    <div class="row"><div class="who">
+      <div><span class="eyebrow">Kütüphane</span><h2>Ders Notları</h2><p class="sub">Sınav türünü seç, dersten konuya inerek notlara ulaş</p></div></div>
+      <div class="hl"><div><div class="l">Ders</div><div class="v">14</div></div><div><div class="l">Konu</div><div class="v">186</div></div><div><div class="l">Not</div><div class="v">63</div></div></div></div></div>
+
+  <div>
+    <div class="ins-h"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(217,164,65)" stroke-width="2.2" stroke-linecap="round"><use href="#i-bulb"/></svg><span>Kütüphanede</span></div>
+    <div class="ins">
+      <span class="chip c-brand"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-flat"/></svg>14 ders ve 186 konu kayıtlı.</span>
+      <span class="chip c-success"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><use href="#i-up"/></svg>63 ders notu, 41 konuya dağılmış durumda.</span>
+    </div>
+  </div>
+
+  <nav class="crumb"><a href="#">Kütüphane</a></nav>
+
+  <div class="libgrid">
+    <button class="libcard"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><use href="#i-cap"/></svg></span>
+      <h3>LGS</h3><p class="hint">Liselere Geçiş Sınavı</p><p class="cnt">6 ders · 74 konu<b> · 21 not</b></p></button>
+    <button class="libcard"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><use href="#i-book"/></svg></span>
+      <h3>TYT</h3><p class="hint">YKS — Temel Yeterlilik Testi</p><p class="cnt">4 ders · 52 konu<b> · 28 not</b></p></button>
+    <button class="libcard"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><use href="#i-award"/></svg></span>
+      <h3>AYT</h3><p class="hint">YKS — Alan Yeterlilik Testi</p><p class="cnt">3 ders · 44 konu<b> · 14 not</b></p></button>
+    <button class="libcard"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><use href="#i-case"/></svg></span>
+      <h3>KPSS</h3><p class="hint">Kamu Personeli Seçme Sınavı</p><p class="cnt">1 ders · 16 konu</p></button>
+  </div>
+
+  <nav class="crumb"><a href="#">Kütüphane</a><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-right"/></svg><span class="cur">TYT</span></nav>
+
+  <section class="panel"><header><div class="hd"><span class="hic" style="background:#3253C314;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round"><use href="#i-lib"/></svg></span><div><h3>TYT Dersleri</h3><p class="desc">Bir derse dokun, konuları açılsın</p></div></div>
+      <button class="btn btn-ghost"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-left"/></svg>Sınav türleri</button></header>
+    <div class="body"><div class="libgrid three">
+      <button class="libcard"><span class="ic" style="background:#3253C31A;color:#3253C3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-pen"/></svg></span><h3>Matematik</h3><p class="hint">18 konu<b style="color:rgb(var(--b600))"> · 12 not</b></p></button>
+      <button class="libcard"><span class="ic" style="background:#1E9E6E1A;color:#1E9E6E"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-pen"/></svg></span><h3>Türkçe</h3><p class="hint">14 konu<b style="color:rgb(var(--b600))"> · 9 not</b></p></button>
+      <button class="libcard"><span class="ic" style="background:#7C4DBE1A;color:#7C4DBE"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-pen"/></svg></span><h3>Fen Bilimleri</h3><p class="hint">12 konu<b style="color:rgb(var(--b600))" > · 7 not</b></p></button>
+    </div></div></section>
+
+  <section class="panel"><header><div class="hd"><span class="hic" style="background:#3253C31A;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"><use href="#i-folder"/></svg></span><div><h3>Matematik</h3><p class="desc">18 konu · TYT</p></div></div>
+      <button class="btn btn-ghost"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-left"/></svg>TYT dersleri</button></header>
+    <ul class="toplist">
+      <li><button class="toprow"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><use href="#i-folder"/></svg></span><span class="nm">Temel Kavramlar</span><span class="badge b-brand"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><use href="#i-stack"/></svg>3 not</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(17,22,41,.25)" stroke-width="2" stroke-linecap="round"><use href="#i-right"/></svg></button></li>
+      <li><button class="toprow"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><use href="#i-folder"/></svg></span><span class="nm">Türev</span><span class="badge b-brand"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><use href="#i-stack"/></svg>4 not</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(17,22,41,.25)" stroke-width="2" stroke-linecap="round"><use href="#i-right"/></svg></button></li>
+      <li><button class="toprow"><span class="ic off"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><use href="#i-folder"/></svg></span><span class="nm">İntegral</span><span class="none">not yok</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(17,22,41,.25)" stroke-width="2" stroke-linecap="round"><use href="#i-right"/></svg></button></li>
+      <li><button class="toprow"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><use href="#i-folder"/></svg></span><span class="nm">Problemler</span><span class="badge b-brand"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><use href="#i-stack"/></svg>2 not</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgb(17,22,41,.25)" stroke-width="2" stroke-linecap="round"><use href="#i-right"/></svg></button></li>
+    </ul></section>
+
+  <section class="panel"><header><div class="hd"><span class="hic" style="background:#3253C31A;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"><use href="#i-stack"/></svg></span><div><h3>Türev</h3><p class="desc">Matematik · 4 ders notu</p></div></div>
+      <div style="display:flex;gap:.5rem"><button class="btn btn-ghost"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-left"/></svg>Konular</button>
+        <button class="btn btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-plus"/></svg>Not Ekle</button></div></header>
+    <div class="body"><div class="notegrid">
+      <article class="notecard"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem">
+        <div><h4>Türev Alma Kuralları — Özet</h4>
+          <div class="meta"><span class="badge b-danger"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><use href="#i-file"/></svg>PDF</span><span class="dt">4 Mayıs 2026</span></div></div>
+        <span style="color:rgb(var(--ink)/.25)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-trash"/></svg></span></div>
+        <p>Çarpım, bölüm ve zincir kuralının tek sayfalık özeti. Sınav öncesi son tekrar için.</p>
+        <button class="btn btn-subtle" style="width:fit-content"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><use href="#i-file"/></svg>PDF'i Görüntüle</button></article>
+
+      <article class="notecard"><div style="display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem">
+        <div><h4>Zincir Kuralı — Tahta Çözümü</h4>
+          <div class="meta"><span class="badge" style="background:rgb(var(--i50));color:rgb(var(--i700))"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><use href="#i-img"/></svg>Görsel</span><span class="dt">28 Nisan 2026</span></div></div>
+        <span style="color:rgb(var(--ink)/.25)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-trash"/></svg></span></div>
+        <p>Derste çözdüğümüz üç örneğin tahta fotoğrafı.</p>
+        <div class="shot"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><use href="#i-img"/></svg></div></article>
+    </div></div></section>
+
+  <section class="panel"><header><div class="hd"><span class="hic" style="background:#3253C314;color:#3253C3"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round"><use href="#i-stack"/></svg></span><div><h3>Boş Durum Örneği</h3><p class="desc">Konuya henüz not eklenmemişken (öğretmen görünümü)</p></div></div></header>
+    <div class="body"><div class="empty"><span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linejoin="round"><use href="#i-stack"/></svg></span>
+      <h4>Bu konu için ders notu yok</h4><p>Bu konuya bir özet, formül kâğıdı veya PDF ekleyerek başlayabilirsin.</p>
+      <button class="btn btn-primary lg" style="margin-top:1.25rem"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><use href="#i-plus"/></svg>Bu Konuya Not Ekle</button></div></div></section>
+</section>
+
+</main>
+
+<script>
+// Aktivite şeridi — 21 gün, sabit örnek desen
+(function(){
+  var mins=[0,45,60,0,90,120,75,30,0,105,80,140,60,0,95,110,45,130,70,150,85];
+  var max=Math.max.apply(null,mins);
+  var host=document.getElementById('strip21');
+  if(!host) return;
+  var d=new Date(2026,7,11);
+  mins.forEach(function(m,i){
+    var day=new Date(d.getTime()-(mins.length-1-i)*864e5);
+    var lvl=!m?0:(m/max>.75?4:m/max>.5?3:m/max>.25?2:1);
+    var h=Math.floor(m/60), r=m%60;
+    var txt=!m?'Çalışma yok':(h?(r?h+'s '+r+'dk':h+'s'):r+'dk');
+    var el=document.createElement('div');
+    el.className='cell';
+    el.innerHTML='<div class="tip"><div class="a">'+txt+'</div><div class="b">'+
+      day.toLocaleDateString('tr-TR',{day:'numeric',month:'short'})+'</div></div>'+
+      '<div class="sq lv'+lvl+'"></div>';
+    host.appendChild(el);
+  });
+})();
+
+// Sekme geçişi
+(function(){
+  var titles={
+    denemeler:['Denemeler','Genel ve branş denemelerinin net dökümü'],
+    gunluk:['Günlük Takip','Her gün ne çalıştığını kaydet, gelişimini izle'],
+    odevler:['Ödevler','Sana atanan ödevler'],
+    sorular:['Sorunlu Sorular','Çözemediğin soruları gönder'],
+    mesajlar:['Mesajlar','Öğrencilerinle birebir yaz'],
+    notlar:['Ders Notları Kütüphanesi','Sınav türüne, derse ve konuya göre düzenlenmiş kaynaklar']
+  };
+  function show(name){
+    document.querySelectorAll('[data-tab]').forEach(function(s){ s.hidden = s.dataset.tab!==name; });
+    document.querySelectorAll('.top .tab').forEach(function(b){ b.classList.toggle('on', b.dataset.go===name); });
+    var t=titles[name]||titles.denemeler;
+    document.getElementById('pageTitle').textContent=t[0];
+    document.getElementById('pageSub').textContent=t[1];
+    window.scrollTo(0,0);
+  }
+  document.querySelectorAll('.top .tab').forEach(function(b){
+    b.addEventListener('click',function(){ show(b.dataset.go); });
+  });
+  var q=new URLSearchParams(location.search).get('t');
+  if(q && titles[q]) show(q);
+})();
+</script>
+</body></html>
