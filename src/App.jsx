@@ -14,6 +14,7 @@ import MockExams from './pages/MockExams'
 import Questions from './pages/Questions'
 import Messages from './pages/Messages'
 import Library from './pages/Library'
+import AICoach from './pages/AICoach'
 import { PageLoader } from './components/ui'
 
 /** Route geçişlerinde gösterilen tam sayfa yükleyici (tasarım sisteminden). */
@@ -132,6 +133,16 @@ export default function App() {
         element={
           <ProtectedRoute allow="student">
             <DailyTracking />
+          </ProtectedRoute>
+        }
+      />
+      {/* AI Koç — ilk sürümde yalnızca öğrenci deneyimi (sunucu tarafında da
+          `role !== 'student'` reddedilir, bkz. api/_lib/auth.js) */}
+      <Route
+        path="/ai-koc"
+        element={
+          <ProtectedRoute allow="student">
+            <AICoach />
           </ProtectedRoute>
         }
       />

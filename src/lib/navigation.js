@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   Library,
   MessageCircle,
+  Sparkles,
   Target,
   Users,
 } from 'lucide-react'
@@ -24,6 +25,7 @@ import {
 
 export const STUDENT_NAV = [
   { to: '/analiz', label: 'Profil & Analiz', short: 'Analiz', Icon: BarChart3, primary: true },
+  { to: '/ai-koc', label: 'AI Koç', short: 'AI Koç', Icon: Sparkles, primary: true },
   {
     to: '/gunluk-takip',
     label: 'Günlük Çalışma Takibi',
@@ -32,7 +34,11 @@ export const STUDENT_NAV = [
     primary: true,
   },
   { to: '/denemeler', label: 'Denemeler', short: 'Deneme', Icon: Target, primary: true },
-  { to: '/odevler', label: 'Ödevler', short: 'Ödev', Icon: ClipboardList, primary: true },
+  // NOT: Mobil alt çubuk yalnızca İLK 4 `primary` öğeyi gösterir (bkz.
+  // MobileNav). AI Koç eklenince Ödevler çubuktan "Menü" çekmecesine indi.
+  // Ödevleri çubuğa geri almak isterseniz buradaki `primary: true` ile
+  // yukarıdaki bir öğenin `primary` değerini yer değiştirin.
+  { to: '/odevler', label: 'Ödevler', short: 'Ödev', Icon: ClipboardList },
   { to: '/notlar', label: 'Ders Notları Kütüphanesi', short: 'Notlar', Icon: Library },
   { to: '/sorular', label: 'Sorunlu Sorular', short: 'Sorular', Icon: HelpCircle },
   { to: '/mesajlar', label: 'Mesajlar', short: 'Mesaj', Icon: MessageCircle },

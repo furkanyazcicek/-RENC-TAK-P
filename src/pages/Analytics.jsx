@@ -32,6 +32,7 @@ import DailyLogsList from '../components/DailyLogsList'
 import QuestionForm from '../components/QuestionForm'
 import MyQuestionsList from '../components/MyQuestionsList'
 
+import AICoachCard from '../components/ai/AICoachCard'
 import { AppShell, Badge, Modal, PageLoader } from '../components/ui'
 import {
   ActivityStrip,
@@ -286,6 +287,9 @@ export default function Analytics() {
           { label: 'İsabet', value: overallAccuracy != null ? `%${overallAccuracy}` : '—' },
         ]}
       />
+
+      {/* ---------- AI KOÇ ---------- */}
+      <AICoachCard />
 
       {/* ---------- İÇGÖRÜLER ---------- */}
       <InsightBar insights={insights} />
