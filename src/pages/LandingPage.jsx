@@ -158,7 +158,7 @@ function HeroPreview() {
           <div className="flex items-center gap-2">
             <Logo size="sm" markOnly />
             <div>
-              <p className="font-display text-[11px] font-bold leading-tight text-ink">Profil & Analiz</p>
+              <p className="font-display text-[11px] font-bold leading-tight text-ink">Analiz</p>
               <p className="text-[9px] leading-tight text-ink/55">Ayşe Y. · 8. sınıf · LGS</p>
             </div>
           </div>

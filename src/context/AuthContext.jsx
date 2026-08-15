@@ -65,6 +65,15 @@ export function AuthProvider({ children }) {
     await supabase.auth.signOut()
   }
 
+  /**
+   * Profili sunucudan yeniden okur. Profil sayfasında ad değiştirildiğinde
+   * çağrılır — yoksa üst şeritteki isim ve baş harfler eski değerde kalır.
+   */
+  async function refreshProfile() {
+    if (!session?.user) return
+    await loadProfile(session.user.id)
+  }
+
   const value = {
     session,
     user: session?.user ?? null,
@@ -74,6 +83,7 @@ export function AuthProvider({ children }) {
     signIn,
     signUp,
     signOut,
+    refreshProfile,
   }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

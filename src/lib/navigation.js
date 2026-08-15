@@ -3,6 +3,7 @@ import {
   CalendarDays,
   ClipboardList,
   HelpCircle,
+  Home,
   LayoutDashboard,
   Library,
   MessageCircle,
@@ -24,7 +25,10 @@ import {
  */
 
 export const STUDENT_NAV = [
-  { to: '/analiz', label: 'Profil & Analiz', short: 'Analiz', Icon: BarChart3, primary: true },
+  // Anasayfa kasten ilk sırada: öğrenci girişte grafik duvarına değil,
+  // "bugün ne yapmalıyım" sorusunun yanıtına düşer. Grafikler /analiz'de.
+  { to: '/anasayfa', label: 'Anasayfa', short: 'Anasayfa', Icon: Home, primary: true },
+  { to: '/analiz', label: 'Analiz', short: 'Analiz', Icon: BarChart3, primary: true },
   { to: '/ai-koc', label: 'AI Koç', short: 'AI Koç', Icon: Sparkles, primary: true },
   {
     to: '/gunluk-takip',
@@ -33,11 +37,12 @@ export const STUDENT_NAV = [
     Icon: CalendarDays,
     primary: true,
   },
-  { to: '/denemeler', label: 'Denemeler', short: 'Deneme', Icon: Target, primary: true },
   // NOT: Mobil alt çubuk yalnızca İLK 4 `primary` öğeyi gösterir (bkz.
-  // MobileNav). AI Koç eklenince Ödevler çubuktan "Menü" çekmecesine indi.
-  // Ödevleri çubuğa geri almak isterseniz buradaki `primary: true` ile
-  // yukarıdaki bir öğenin `primary` değerini yer değiştirin.
+  // MobileNav). Anasayfa eklenince Denemeler çubuktan "Menü" çekmecesine
+  // indi; Anasayfa'daki hızlı işlemler kartından tek dokunuşla açılıyor.
+  // Çubuğa geri almak isterseniz buradaki `primary: true` ile yukarıdaki
+  // bir öğenin `primary` değerini yer değiştirin.
+  { to: '/denemeler', label: 'Denemeler', short: 'Deneme', Icon: Target },
   { to: '/odevler', label: 'Ödevler', short: 'Ödev', Icon: ClipboardList },
   { to: '/notlar', label: 'Ders Notları Kütüphanesi', short: 'Notlar', Icon: Library },
   { to: '/sorular', label: 'Sorunlu Sorular', short: 'Sorular', Icon: HelpCircle },
@@ -65,6 +70,28 @@ const BY_ROLE = {
 export function navForRole(role) {
   return BY_ROLE[role] ?? STUDENT_NAV
 }
+
+/**
+ * Rolün açılış sayfası — girişte, yetkisiz yönlendirmede ve logo
+ * bağlantısında kullanılır. Dört ayrı yerde tekrarlanan üçlü koşul
+ * yerine tek kaynak.
+ */
+export const HOME_PATHS = {
+  student: '/anasayfa',
+  teacher: '/ogretmen',
+  parent: '/veli',
+}
+
+export function homePathForRole(role) {
+  return HOME_PATHS[role] ?? HOME_PATHS.student
+}
+
+/**
+ * Profil sayfası gezinme listesinde YOKTUR — sağ üstteki isim düğmesinden
+ * açılır (bkz. components/ProfileMenu.jsx). Sekme çubuğu günlük işe,
+ * profil hesaba aittir; ikisi karışmasın.
+ */
+export const PROFILE_PATH = '/profil'
 
 /** Rolün insan okunur adı — rozet ve profil menüsünde kullanılır. */
 export const ROLE_LABELS = {

@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { Bell, BellRing, ChevronDown, LogOut } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
+import { Bell, BellRing, ChevronDown, ChevronRight, LogOut, UserRound } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { getPushPermissionState, isPushSupported, subscribeToPush } from '../lib/push'
-import { ROLE_LABELS, ROLE_TONES } from '../lib/navigation'
+import { PROFILE_PATH, ROLE_LABELS, ROLE_TONES } from '../lib/navigation'
 import { cn } from '../lib/cn'
 import { Avatar, Badge } from './ui'
 import { useToast } from './ui/Toast'
@@ -13,11 +14,17 @@ import { useToast } from './ui/Toast'
  * Gezinme bağlantıları buradan çıkarıldı: masaüstünde `Sidebar`,
  * mobilde `MobileNav` çekmecesi aynı listeyi (src/lib/navigation.js)
  * gösteriyor. Aynı bağlantıyı üç yerde tekrar etmek yerine bu menü
- * yalnızca hesaba ait işleri taşır — kimlik, bildirim izni, çıkış.
+ * yalnızca hesaba ait işleri taşır — kimlik, profil, bildirim, çıkış.
+ *
+ * Profil sayfasının TEK girişi burasıdır: sekme çubuğunda yer almaz,
+ * isim düğmesine tıklanıp "Profilim" seçilerek açılır. Menüdeki kimlik
+ * kutusunun kendisi de aynı yere gider — kullanıcı çoğu zaman doğrudan
+ * adına tıklıyor.
  */
 export default function ProfileMenu() {
   const { profile, signOut } = useAuth()
   const toast = useToast()
+  const { pathname } = useLocation()
   const [open, setOpen] = useState(false)
   const [permission, setPermission] = useState('default')
   const [subscribing, setSubscribing] = useState(false)
@@ -28,6 +35,12 @@ export default function ProfileMenu() {
   useEffect(() => {
     getPushPermissionState().then(setPermission)
   }, [])
+
+  // Sayfa değişince menü kapansın — profil bağlantısına tıklandığında
+  // menünün açık kalması "tıkladım ama bir şey olmadı" hissi veriyordu.
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
 
   useEffect(() => {
     function handleClickOutside(e) {
@@ -90,44 +103,71 @@ export default function ProfileMenu() {
         >
           <span className="absolute inset-x-0 top-0 h-[3px] bg-aurora-line" aria-hidden="true" />
 
-          {/* Kimlik */}
-          <div className="flex items-center gap-3 px-4 pb-4 pt-5">
+          {/* Kimlik — tıklanınca profil sayfası */}
+          <Link
+            to={PROFILE_PATH}
+            role="menuitem"
+            onClick={() => setOpen(false)}
+            className="focus-ring group flex items-center gap-3 px-4 pb-4 pt-5 transition-colors hover:bg-brand-500/[0.05]"
+          >
             <Avatar name={profile?.full_name} size="md" />
-            <div className="min-w-0">
+            <div className="min-w-0 flex-1">
               <p className="truncate text-sm font-semibold text-ink">{profile?.full_name}</p>
               <Badge tone={ROLE_TONES[role] ?? 'brand'} size="sm" dot className="mt-1">
                 {ROLE_LABELS[role] ?? 'Öğrenci'}
               </Badge>
             </div>
-          </div>
+            <ChevronRight
+              className="h-4 w-4 shrink-0 text-ink/35 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:text-brand-500"
+              aria-hidden="true"
+            />
+          </Link>
 
           <div className="divider" />
 
-          {/* Bildirim izni */}
-          {isPushSupported() && permission !== 'granted' && (
-            <button
-              type="button"
-              role="menuitem"
-              onClick={handleEnableNotifications}
-              disabled={subscribing || permission === 'denied'}
-              className="focus-ring flex w-full items-center gap-3 px-4 py-3 text-sm font-medium
-                         text-brand-700 transition-colors hover:bg-brand-500/[0.07] disabled:opacity-50"
-            >
-              <Bell className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-              <span>
-                {permission === 'denied'
-                  ? 'Bildirimler engellendi'
-                  : subscribing
-                    ? 'Açılıyor…'
-                    : 'Bildirimleri Aç'}
-              </span>
-            </button>
-          )}
-          {permission === 'granted' && (
-            <div className="flex w-full items-center gap-3 px-4 py-3 text-sm text-success-700">
-              <BellRing className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-              <span>Bildirimler açık</span>
-            </div>
+          {/* Profil */}
+          <Link
+            to={PROFILE_PATH}
+            role="menuitem"
+            onClick={() => setOpen(false)}
+            className="focus-ring flex w-full items-center gap-3 px-4 py-3 text-sm font-medium
+                       text-ink/80 transition-colors hover:bg-brand-500/[0.07] hover:text-brand-700"
+          >
+            <UserRound className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+            <span>Profilim</span>
+          </Link>
+
+          {/* Bildirim izni — ayrıntılı yönetim Profil sayfasında; burada
+              yalnızca tek dokunuşluk "aç" kestirmesi ve durum bilgisi var.
+              Desteklenmeyen tarayıcıda blok hiç çizilmez (boş ayraç kalmasın). */}
+          {isPushSupported() && (
+            <>
+              <div className="divider" />
+              {permission === 'granted' ? (
+                <div className="flex w-full items-center gap-3 px-4 py-3 text-sm text-success-700">
+                  <BellRing className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+                  <span>Bildirimler açık</span>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  role="menuitem"
+                  onClick={handleEnableNotifications}
+                  disabled={subscribing || permission === 'denied'}
+                  className="focus-ring flex w-full items-center gap-3 px-4 py-3 text-sm font-medium
+                             text-brand-700 transition-colors hover:bg-brand-500/[0.07] disabled:opacity-50"
+                >
+                  <Bell className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+                  <span>
+                    {permission === 'denied'
+                      ? 'Bildirimler engellendi'
+                      : subscribing
+                        ? 'Açılıyor…'
+                        : 'Bildirimleri Aç'}
+                  </span>
+                </button>
+              )}
+            </>
           )}
 
           <div className="divider" />

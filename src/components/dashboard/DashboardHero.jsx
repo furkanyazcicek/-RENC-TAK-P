@@ -9,7 +9,7 @@ import AuroraBackground from '../ui/AuroraBackground'
  * Panelin "genel yönetim ekranı" gibi değil, kişiye ait gibi durmasını sağlar.
  *
  *   <DashboardHero
- *     eyebrow="Profil & Analiz"
+ *     eyebrow="Anasayfa"
  *     title="Merhaba Ayşe"
  *     subtitle="Bu haftaki tablon aşağıda"
  *     avatar="AY"

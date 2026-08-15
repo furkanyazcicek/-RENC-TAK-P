@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
 import {
@@ -7,7 +8,7 @@ import {
   CheckCircle2,
   Clock,
   Flame,
-  HelpCircle,
+  Home,
   LineChart,
   ListChecks,
   PieChart,
@@ -27,13 +28,9 @@ import SubjectNetTable from '../components/SubjectNetTable'
 import DateFilterControl from '../components/DateFilterControl'
 import DependentSubjectTopicSelect from '../components/DependentSubjectTopicSelect'
 import ExamTypeTabs from '../components/ExamTypeTabs'
-import DailyLogForm from '../components/DailyLogForm'
 import DailyLogsList from '../components/DailyLogsList'
-import QuestionForm from '../components/QuestionForm'
-import MyQuestionsList from '../components/MyQuestionsList'
 
-import AICoachCard from '../components/ai/AICoachCard'
-import { AppShell, Badge, Modal, PageLoader } from '../components/ui'
+import { AppShell, Badge, Button, Modal, PageLoader } from '../components/ui'
 import {
   ActivityStrip,
   DashboardHero,
@@ -47,9 +44,7 @@ import {
   buildNetTrend,
   buildSubjectDistribution,
   buildSubjectTopicHierarchy,
-  buildTopicOptions,
   buildTopicStats,
-  resolveCurriculumExamTypes,
 } from '../lib/topicHelpers'
 import { buildSubjectPerformance } from '../lib/examHelpers'
 import {
@@ -62,14 +57,25 @@ import {
   weekOverWeek,
 } from '../lib/insights'
 
+/**
+ * Analiz — grafiklerin ve tabloların tamamı.
+ *
+ * Bu sayfa eskiden "Profil & Analiz" adıyla açılış sayfasıydı; öğrenci
+ * daha giriş yapar yapmaz on beş grafiğin içine düşüyordu. Artık açılış
+ * /anasayfa'da; buraya isteyerek gelinir. Karşılığında:
+ *
+ *   - AI Koç kartı Anasayfa'ya taşındı (öneri günlük iş, analiz değil).
+ *   - Günlük kayıt ve soru gönderme formları buradan çıkarıldı; ikisinin
+ *     de kendi sekmesi var (/gunluk-takip, /sorular). Aynı formu iki
+ *     yerde tutmak sayfayı uzatmaktan başka işe yaramıyordu.
+ *
+ * Burada kalan tek şey okumaktır: ne oldu, nasıl gidiyor, nerede zayıfım.
+ */
 export default function Analytics() {
   const { user, profile } = useAuth()
   const [dailyLogs, setDailyLogs] = useState([])
   const [mockExams, setMockExams] = useState([]) // genel denemeler (LGS/TYT/AYT/KPSS)
   const [branchExams, setBranchExams] = useState([]) // branş denemeleri (`exams` tablosu)
-  const [questions, setQuestions] = useState([]) // sorunlu sorular
-  const [librarySubjects, setLibrarySubjects] = useState([]) // müfredat dersleri
-  const [libraryTopics, setLibraryTopics] = useState([]) // müfredat konuları
   const [loading, setLoading] = useState(true)
 
   // 1) Çalışma süresi sütununa tıklanınca o günün detayı
@@ -86,37 +92,26 @@ export default function Analytics() {
 
   const loadData = useCallback(async () => {
     if (!user) return
-    const [logsRes, mockRes, branchRes, questionsRes, librarySubjectsRes, libraryTopicsRes] =
-      await Promise.all([
-        supabase
-          .from('daily_logs')
-          .select('*')
-          .eq('student_id', user.id)
-          .order('study_date', { ascending: false }),
-        supabase
-          .from('mock_exams')
-          .select('*, mock_exam_subjects(*)')
-          .eq('student_id', user.id)
-          .order('exam_date', { ascending: false }),
-        supabase
-          .from('exams')
-          .select('*')
-          .eq('student_id', user.id)
-          .order('created_at', { ascending: false }),
-        supabase
-          .from('questions')
-          .select('*')
-          .eq('student_id', user.id)
-          .order('created_at', { ascending: false }),
-        supabase.from('library_subjects').select('*'),
-        supabase.from('library_topics').select('*'),
-      ])
+    const [logsRes, mockRes, branchRes] = await Promise.all([
+      supabase
+        .from('daily_logs')
+        .select('*')
+        .eq('student_id', user.id)
+        .order('study_date', { ascending: false }),
+      supabase
+        .from('mock_exams')
+        .select('*, mock_exam_subjects(*)')
+        .eq('student_id', user.id)
+        .order('exam_date', { ascending: false }),
+      supabase
+        .from('exams')
+        .select('*')
+        .eq('student_id', user.id)
+        .order('created_at', { ascending: false }),
+    ])
     setDailyLogs(logsRes.data ?? [])
     setMockExams(mockRes.data ?? [])
     setBranchExams(branchRes.data ?? [])
-    setQuestions(questionsRes.data ?? [])
-    setLibrarySubjects(librarySubjectsRes.data ?? [])
-    setLibraryTopics(libraryTopicsRes.data ?? [])
     setLoading(false)
   }, [user])
 
@@ -157,12 +152,6 @@ export default function Analytics() {
   )
 
   const hierarchy = useMemo(() => buildSubjectTopicHierarchy(dailyLogs), [dailyLogs])
-
-  const curriculumExamTypes = useMemo(() => resolveCurriculumExamTypes(mockExams), [mockExams])
-  const topicOptions = useMemo(
-    () => buildTopicOptions(dailyLogs, librarySubjects, libraryTopics, curriculumExamTypes),
-    [dailyLogs, librarySubjects, libraryTopics, curriculumExamTypes]
-  )
 
   const filteredTrend = useMemo(
     () => buildNetTrend(dailyLogs, trendSubject, trendTopic),
@@ -248,7 +237,6 @@ export default function Analytics() {
 
   const totalExamCount = branchExams.length + mockExams.length
   const activeExamType = examType ?? mockExams[0]?.exam_type ?? 'TYT'
-  const pendingQuestions = questions.filter((q) => q.status !== 'Çözüldü').length
 
   const selectedDayLabel = selectedDay
     ? new Date(selectedDay).toLocaleDateString('tr-TR', {
@@ -266,11 +254,20 @@ export default function Analytics() {
     .reverse()
 
   return (
-    <AppShell title="Profil & Analiz" subtitle="Gelişimine tek bakışta bak" width="default">
+    <AppShell
+      title="Analiz"
+      subtitle="Gelişimin, grafiklerle"
+      width="default"
+      headerAction={
+        <Button as={Link} to="/anasayfa" variant="ghost" size="sm" icon={Home}>
+          <span className="hidden sm:inline">Anasayfa</span>
+        </Button>
+      }
+    >
       {/* ---------- KARŞILAMA ---------- */}
       <DashboardHero
-        eyebrow="Profil & Analiz"
-        title={firstName ? `Merhaba ${firstName}` : 'Merhaba'}
+        eyebrow="Analiz"
+        title={firstName ? `${firstName}, gelişim tablon` : 'Gelişim tablon'}
         subtitle="Aşağıdaki her kart tıklanabilir — detayına inebilirsin."
         avatar={
           profile?.full_name
@@ -287,9 +284,6 @@ export default function Analytics() {
           { label: 'İsabet', value: overallAccuracy != null ? `%${overallAccuracy}` : '—' },
         ]}
       />
-
-      {/* ---------- AI KOÇ ---------- */}
-      <AICoachCard />
 
       {/* ---------- İÇGÖRÜLER ---------- */}
       <InsightBar insights={insights} />
@@ -530,31 +524,27 @@ export default function Analytics() {
         <TopicProgressTable stats={topicStats} />
       </Panel>
 
-      {/* ---------- GÜNLÜK TAKİP ---------- */}
-      <section className="flex flex-col gap-3">
-        <div className="flex items-end justify-between gap-3">
-          <h2 className="section-title">Günlük Çalışma Takibi</h2>
-          <Badge tone="neutral">{dailyLogs.length} kayıt</Badge>
+      {/* ---------- VERİ GİRİŞİNE DÖNÜŞ ----------
+          Formlar bu sayfadan çıkarıldı; kendi sekmelerine giden yol açık
+          kalsın diye sayfanın sonunda tek satırlık bir köprü duruyor. */}
+      <section
+        className="flex flex-wrap items-center justify-between gap-4 rounded-panel border border-line
+                   bg-surface-muted px-5 py-5"
+      >
+        <div className="min-w-0">
+          <h2 className="font-display font-bold text-ink">Grafikler verilerinden besleniyor</h2>
+          <p className="mt-1 text-sm text-ink/60">
+            Yeni bir çalışma kaydı ya da deneme girdiğinde bu sayfa kendini günceller.
+          </p>
         </div>
-        <div className="grid lg:grid-cols-2 gap-5 items-start">
-          <DailyLogForm onSubmitted={loadData} existingTopics={topicOptions} />
-          <DailyLogsList logs={dailyLogs} onChanged={loadData} />
-        </div>
-      </section>
-
-      {/* ---------- SORUNLU SORULAR ---------- */}
-      <section className="flex flex-col gap-3">
-        <div className="flex items-end justify-between gap-3">
-          <h2 className="section-title">Sorunlu Sorular</h2>
-          {pendingQuestions > 0 && (
-            <Badge tone="warning" icon={HelpCircle}>
-              {pendingQuestions} soru yanıt bekliyor
-            </Badge>
-          )}
-        </div>
-        <div className="grid lg:grid-cols-2 gap-5 items-start">
-          <QuestionForm onSubmitted={loadData} />
-          <MyQuestionsList questions={questions} />
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge tone="neutral">{dailyLogs.length} çalışma kaydı</Badge>
+          <Button as={Link} to="/gunluk-takip" variant="secondary" size="sm" icon={Clock}>
+            Çalışma kaydet
+          </Button>
+          <Button as={Link} to="/denemeler" variant="secondary" size="sm" icon={Target}>
+            Deneme gir
+          </Button>
         </div>
       </section>
 

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Link, useLocation } from 'react-router-dom'
-import { LogOut, Menu, X } from 'lucide-react'
+import { ChevronRight, LogOut, Menu, X } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
-import { navForRole, ROLE_LABELS, ROLE_TONES } from '../../lib/navigation'
+import { navForRole, PROFILE_PATH, ROLE_LABELS, ROLE_TONES } from '../../lib/navigation'
 import { cn } from '../../lib/cn'
 import Avatar from './Avatar'
 import Badge from './Badge'
@@ -154,15 +154,23 @@ function NavDrawer({ items, pathname, onClose, profile, role, onSignOut }) {
           </button>
         </div>
 
-        <div className="mx-5 mb-3 flex items-center gap-3 rounded-card border border-line bg-surface-muted p-3">
+        {/* Kimlik kutusu profil sayfasına gider — masaüstündeki isim
+            düğmesinin mobildeki karşılığı (bkz. ProfileMenu). */}
+        <Link
+          to={PROFILE_PATH}
+          onClick={onClose}
+          className="focus-ring mx-5 mb-3 flex items-center gap-3 rounded-card border border-line
+                     bg-surface-muted p-3 transition-colors hover:border-brand-200 hover:bg-surface"
+        >
           <Avatar name={profile?.full_name} size="md" />
-          <div className="min-w-0">
+          <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-semibold text-ink">{profile?.full_name}</p>
             <Badge tone={ROLE_TONES[role] ?? 'brand'} size="sm" className="mt-1">
               {ROLE_LABELS[role] ?? 'Öğrenci'}
             </Badge>
           </div>
-        </div>
+          <ChevronRight className="h-4 w-4 shrink-0 text-ink/35" aria-hidden="true" />
+        </Link>
 
         <ul className="flex flex-col gap-1 px-3 pb-2">
           {items.map(({ to, label, Icon }) => {

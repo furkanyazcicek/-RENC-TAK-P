@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
+import { homePathForRole } from './lib/navigation'
 import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
 import Register from './pages/Register';
@@ -7,6 +8,8 @@ import UpdatePassword from './pages/UpdatePassword';
 import ParentDashboard from './pages/ParentDashboard';
 import TeacherDashboard from './pages/TeacherDashboard'
 import StudentDetail from './pages/StudentDetail'
+import Home from './pages/Home'
+import Profile from './pages/Profile'
 import Analytics from './pages/Analytics'
 import DailyTracking from './pages/DailyTracking'
 import Homeworks from './pages/Homeworks'
@@ -27,8 +30,8 @@ function ProtectedRoute({ children, allow }) {
   if (loading) return <FullPageLoader />
   if (!session) return <Navigate to="/login" replace />
   if (allow && role !== allow) {
-    // Veli rolü eklendi
-    return <Navigate to={role === 'teacher' ? '/ogretmen' : role === 'parent' ? '/veli' : '/analiz'} replace />
+    // Rolün açılış sayfası tek kaynaktan gelir (src/lib/navigation.js)
+    return <Navigate to={homePathForRole(role)} replace />
   }
   return children
 }
@@ -44,8 +47,7 @@ export default function App() {
           loading ? (
             <FullPageLoader />
           ) : session ? (
-            // Veli rolü eklendi
-            <Navigate to={role === 'teacher' ? '/ogretmen' : role === 'parent' ? '/veli' : '/analiz'} replace />
+            <Navigate to={homePathForRole(role)} replace />
           ) : (
             <LandingPage />
           )
@@ -57,8 +59,7 @@ export default function App() {
           loading ? (
             <FullPageLoader />
           ) : session ? (
-            // Veli rolü eklendi
-            <Navigate to={role === 'teacher' ? '/ogretmen' : role === 'parent' ? '/veli' : '/analiz'} replace />
+            <Navigate to={homePathForRole(role)} replace />
           ) : (
             <Login />
           )
@@ -72,7 +73,7 @@ export default function App() {
           loading ? (
             <FullPageLoader />
           ) : session ? (
-            <Navigate to={role === 'teacher' ? '/ogretmen' : role === 'parent' ? '/veli' : '/analiz'} replace />
+            <Navigate to={homePathForRole(role)} replace />
           ) : (
             <Register />
           )
@@ -92,8 +93,19 @@ export default function App() {
       {/* YENİ EKLENEN SAYFALAR BİTİŞ */}
 
       {/* Eski "Genel Durum" sayfası kaldırıldı — eski bağlantı/yer imleri
-          artık doğrudan Profil & Analiz sayfasına yönlendirilir. */}
-      <Route path="/ogrenci" element={<Navigate to="/analiz" replace />} />
+          artık Anasayfa'ya yönlendirilir. */}
+      <Route path="/ogrenci" element={<Navigate to="/anasayfa" replace />} />
+
+      {/* Profil — sekme listesinde değil, sağ üstteki isim düğmesinde.
+          Her rol kendi profilini görebilir. */}
+      <Route
+        path="/profil"
+        element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/ogretmen"
         element={
@@ -111,7 +123,15 @@ export default function App() {
         }
       />
 
-      {/* Sadece öğrenciye özel yeni sekmeler */}
+      {/* Sadece öğrenciye özel sekmeler */}
+      <Route
+        path="/anasayfa"
+        element={
+          <ProtectedRoute allow="student">
+            <Home />
+          </ProtectedRoute>
+        }
+      />
       <Route
         path="/analiz"
         element={

@@ -24,14 +24,23 @@ veritabanı servisidir — bir nevi "hazır sunucu".
 seçer. Bu bilgi veritabanındaki `profiles` tablosunda saklanır ve uygulama
 girişte kişiyi otomatik olarak doğru panele yönlendirir.
 
-### Sağ üstteki profil menüsü
+### Sağ üstteki isim düğmesi (profil)
 
-Artık her sayfanın sağ üstünde bir profil ikonu var. Buna tıklayınca şu
-sekmelere ulaşılıyor:
+Her sayfanın sağ üstünde adınızın yazdığı bir düğme var. Buna tıklayınca
+açılan menüden **Profilim** sayfasına ulaşırsınız: ad soyad değiştirme,
+şifre değiştirme, bildirim ayarı ve çıkış. Profil, soldaki sekme
+listesinde yer almaz — günlük işle karışmaması için yalnızca buradadır.
+
+### Sekmeler
+
+Soldaki menüden (mobilde alttaki çubuk ve "Menü" çekmecesinden) ulaşılan
+sayfalar:
 
 | Sekme | Rota | Kim görür | Ne işe yarar |
 |---|---|---|---|
-| Profil & Analiz | `/analiz` | Öğrenci | Çalışma süresi, LGS/YKS net gelişimi, ders bazlı ve **konu bazlı** başarı tek ekranda |
+| Anasayfa | `/anasayfa` | Öğrenci | Girişte açılan sakin ekran: **sınava kalan süre geri sayımı**, AI Koç önerisi, bekleyen ödev/sorular, **soru + çözüm akışı**, hızlı işlemler ve özet sayılar — **grafik yok** |
+| Analiz | `/analiz` | Öğrenci | Çalışma süresi, LGS/YKS net gelişimi, ders bazlı ve **konu bazlı** başarı grafiklerinin tamamı |
+| Profilim | `/profil` | Hepsi | Ad soyad, şifre, bildirim tercihi ve hesap özeti (sağ üstteki isim düğmesinden açılır) |
 | Günlük Çalışma Takibi | `/gunluk-takip` | Öğrenci | Her gün çalışılan konu, süre, doğru/yanlış/boş sayısı girilir ve geçmiş listelenir |
 | Ödevler | `/odevler` | İkisi de | Öğretmen ödev atar, öğrenci durumunu (Yapılıyor/Tamamlandı) günceller |
 | LGS / YKS / KPSS Denemeleri | `/denemeler` | Öğrenci | Ders bazlı doğru/yanlış/net girişi ve net gelişim grafiği |
@@ -45,7 +54,7 @@ panelinden) o öğrencinin LGS/YKS denemelerini, ödevlerini, günlük
 
 > **İpucu — konu bazlı analiz için:** Günlük Çalışma Takibi'nde "Konu"
 > alanına `Ders - Konu` biçiminde yazarsanız (örn. `Matematik - Türev`,
-> `Fizik - Vektörler`), Profil & Analiz sayfasındaki "Konu Bazlı Gelişim"
+> `Fizik - Vektörler`), Analiz sayfasındaki "Konu Bazlı Gelişim"
 > tablosu ve derslere göre soru dağılımı grafiği bu bilgiyi otomatik
 > ayrıştırıp gösterir. Bu biçimde yazmasanız da form yine çalışır, sadece
 > o kayıt "Genel" dersi altında görünür.
@@ -133,6 +142,24 @@ ayrıca soru fotoğraflarının yükleneceği depolama alanını otomatik kurar.
 > açmanıza gerek yoktur**, öğrenci sorularının fotoğrafları için zaten
 > kurmuş olduğunuz `question-images` bucket'ı öğretmenin yanıt fotoğrafı
 > için de otomatik olarak kullanılır.
+
+> **Anasayfadaki sınav geri sayımını kullanacaksanız (ZORUNLU):**
+> `supabase/migration_student_exam_profile.sql` dosyasını çalıştırın.
+> Bu, `profiles` tablosuna öğrencinin sınıfı, hedef sınavı ve sınav yılı
+> için kolonlar ekler. Çalıştırmadan önce geri sayım hiç görünmez;
+> öğrenci sınav bilgisini kaydetmeye çalışırsa uygulama hata vermek
+> yerine bu dosyayı çalıştırmanız gerektiğini yazar.
+>
+> Çalıştırdıktan sonra:
+> * **Yeni öğrenciler** sınıf/sınav bilgisini kayıt formunda verir.
+> * **Mevcut öğrenciler** Anasayfa'da çıkan tek seferlik anket kartını
+>   doldurur. Öğretmen, Mesajlar sekmesindeki "Sınav bilgisi anketi"
+>   kutusundan bilgisi eksik olan tüm öğrencilere tek tıkla hatırlatma
+>   mesajı gönderebilir (mesaj gönderilmeden önce önizlenip düzenlenebilir).
+> * Sınav tarihi girilmezse uygulama son yılların takvimine göre
+>   **tahmini** bir tarih kullanır ve bunu geri sayımın altında açıkça
+>   belirtir. ÖSYM kesin tarihi açıkladığında öğrenci Profil sayfasından
+>   gerçek tarihi girer.
 
 > **Ders Notları Kütüphanesi'ni kullanacaksanız (sırayla 2 dosya):**
 > 1. `supabase/migration_library.sql` — 3 yeni tablo (`library_subjects`,

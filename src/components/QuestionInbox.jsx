@@ -153,7 +153,17 @@ export default function QuestionInbox({
   filterable = true,
 }) {
   const [openReplyId, setOpenReplyId] = useState(null)
-  const [lightboxSrc, setLightboxSrc] = useState(null)
+  // Soru ve yanıt görseli aynı katmanda gezilebilir olsun — öğretmen
+  // çözümü kontrol ederken soruya dönebilmeli.
+  const [lightbox, setLightbox] = useState(null)
+
+  function openLightbox(q, wanted) {
+    const items = [
+      q.image_url && { src: q.image_url, label: 'Öğrencinin sorusu' },
+      q.teacher_reply_image_url && { src: q.teacher_reply_image_url, label: 'Yanıtınız' },
+    ].filter(Boolean)
+    setLightbox({ items, index: Math.max(0, items.findIndex((i) => i.src === wanted)) })
+  }
   const { subject, topic, subjects, topics, filtered, selectSubject, selectTopic } =
     useSubjectTopicFilter(questions)
 
@@ -223,14 +233,17 @@ export default function QuestionInbox({
                 {q.image_url && (
                   <button
                     type="button"
-                    onClick={() => setLightboxSrc(q.image_url)}
-                    className="focus-ring group relative h-20 w-20 shrink-0 overflow-hidden rounded-xl border border-line"
+                    onClick={() => openLightbox(q, q.image_url)}
+                    className="focus-ring group relative grid h-28 w-28 shrink-0 place-items-center
+                               overflow-hidden rounded-xl border border-line bg-surface-muted"
                     aria-label="Soru görselini büyüt"
                   >
+                    {/* Kırpma yok: sorunun kenarındaki şık ya da şekil kesilmesin */}
                     <img
                       src={q.image_url}
                       alt="Soru görseli"
-                      className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
+                      loading="lazy"
+                      className="max-h-full max-w-full object-contain transition-transform duration-200 group-hover:scale-105"
                     />
                     <span className="absolute inset-0 grid place-items-center bg-ink/0 transition-colors group-hover:bg-ink/25">
                       <ZoomIn className="h-4 w-4 text-white opacity-0 transition-opacity group-hover:opacity-100" />
@@ -281,15 +294,20 @@ export default function QuestionInbox({
                       {q.teacher_reply_image_url && (
                         <button
                           type="button"
-                          onClick={() => setLightboxSrc(q.teacher_reply_image_url)}
-                          className="focus-ring mt-2 block w-fit overflow-hidden rounded-lg border border-line"
+                          onClick={() => openLightbox(q, q.teacher_reply_image_url)}
+                          className="focus-ring group relative mt-2 grid h-36 w-full max-w-[14rem] place-items-center
+                                     overflow-hidden rounded-lg border border-line bg-surface"
                           aria-label="Yanıt görselini büyüt"
                         >
                           <img
                             src={q.teacher_reply_image_url}
                             alt="Yanıt görseli"
-                            className="h-16 w-16 object-cover transition-opacity hover:opacity-85"
+                            loading="lazy"
+                            className="max-h-full max-w-full object-contain transition-opacity group-hover:opacity-85"
                           />
+                          <span className="absolute inset-0 grid place-items-center bg-ink/0 transition-colors group-hover:bg-ink/20">
+                            <ZoomIn className="h-5 w-5 text-white opacity-0 transition-opacity group-hover:opacity-100" />
+                          </span>
                         </button>
                       )}
                     </div>
@@ -338,7 +356,13 @@ export default function QuestionInbox({
       </ul>
       )}
 
-      {lightboxSrc && <ImageLightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />}
+      {lightbox && (
+        <ImageLightbox
+          items={lightbox.items}
+          index={lightbox.index}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </div>
   )
 }

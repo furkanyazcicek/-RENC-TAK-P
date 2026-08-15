@@ -238,7 +238,7 @@ function TeacherPanel() {
 const PANELS = {
   student: {
     render: StudentPanel,
-    title: 'Profil & Analiz',
+    title: 'Analiz',
     path: 'drkoc.app/analiz',
     icon: Target,
     who: 'Ayşe Y. · 8. sınıf · LGS',

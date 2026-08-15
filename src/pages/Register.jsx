@@ -3,6 +3,8 @@ import { supabase } from '../lib/supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { Lock, Mail, User } from 'lucide-react';
 import AuthLayout, { AuthTabs } from '../components/auth/AuthLayout';
+import ExamProfileFields from '../components/ExamProfileFields';
+import { defaultExamYear, isMissingColumnError } from '../lib/examProfile';
 import { Alert, Button, Field, Input, Select } from '../components/ui';
 
 export default function Register() {
@@ -14,6 +16,15 @@ export default function Register() {
   const [selectedStudentId, setSelectedStudentId] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
+  // Öğrenci kaydında sınav profili de baştan alınır; böylece yeni
+  // öğrenciler için Anasayfa'daki anket kartı hiç çıkmaz.
+  const [exam, setExam] = useState({
+    grade: null,
+    target_exam: '',
+    is_exam_year: null,
+    exam_year: null,
+  });
 
   const navigate = useNavigate();
 
@@ -42,6 +53,13 @@ export default function Register() {
       return;
     }
 
+    if (role === 'student') {
+      if (!exam.grade || exam.is_exam_year === null || !exam.target_exam) {
+        setError('Sınıfını, sınav durumunu ve hedef sınavını seçin.');
+        return;
+      }
+    }
+
     setLoading(true);
     setError('');
 
@@ -67,14 +85,38 @@ export default function Register() {
     // 2. Garanti Çözüm: Profiles tablosuna rolü ve öğrenci bağını doğrudan BİZ yazıyoruz
     const userId = authData?.user?.id;
     if (userId) {
-      const { error: profileError } = await supabase
+      const base = {
+        id: userId,
+        full_name: fullName,
+        role: role,
+        student_id: role === 'parent' && selectedStudentId ? selectedStudentId : null
+      };
+
+      const noExam = exam.target_exam === 'YOK';
+      const examFields =
+        role === 'student'
+          ? {
+              grade: exam.grade,
+              target_exam: exam.target_exam,
+              is_exam_year: exam.is_exam_year,
+              exam_year: noExam
+                ? null
+                : (exam.exam_year ??
+                  defaultExamYear(exam.grade, exam.target_exam, exam.is_exam_year)),
+              exam_profile_updated_at: new Date().toISOString()
+            }
+          : {};
+
+      let { error: profileError } = await supabase
         .from('profiles')
-        .upsert({
-          id: userId,
-          full_name: fullName,
-          role: role,
-          student_id: role === 'parent' && selectedStudentId ? selectedStudentId : null
-        });
+        .upsert({ ...base, ...examFields });
+
+      // Sınav kolonları henüz eklenmemişse (göç çalıştırılmamışsa) kayıt
+      // tümden başarısız olmasın: profili sınav alanları olmadan yaz.
+      // Öğrenci bilgiyi Anasayfa'daki anket kartından tamamlar.
+      if (profileError && isMissingColumnError(profileError)) {
+        ({ error: profileError } = await supabase.from('profiles').upsert(base));
+      }
 
       if (profileError) {
         setError('Profil kaydedilirken hata oluştu: ' + profileError.message);
@@ -152,6 +194,17 @@ export default function Register() {
             </Select>
           )}
         </Field>
+
+        {/* Öğrenci seçildiyse sınav profili — geri sayım ve seviyeye göre
+            öneriler için gerekli, kayıt anında bir kez sorulur. */}
+        {role === 'student' && (
+          <div className="animate-slide-down rounded-card border border-line bg-surface-muted p-4">
+            <p className="mb-3 text-2xs font-bold uppercase tracking-wider text-ink/55">
+              Sınav bilgin
+            </p>
+            <ExamProfileFields value={exam} onChange={setExam} />
+          </div>
+        )}
 
         {/* Veli seçildiyse Çocuğu Seçme Ekranı */}
         {role === 'parent' && (

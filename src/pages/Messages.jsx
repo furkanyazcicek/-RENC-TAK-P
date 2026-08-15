@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
 import { cn } from '../lib/cn'
 import ChatThread from '../components/ChatThread'
+import ExamSurveyDialog from '../components/ExamSurveyDialog'
 import { AppShell, Avatar, EmptyState, Input } from '../components/ui'
 
 export default function Messages() {
@@ -18,9 +19,12 @@ export default function Messages() {
   useEffect(() => {
     async function loadContacts() {
       const targetRole = isTeacher ? 'student' : 'teacher'
+      // `*` bilinçli: sınav kolonları (migration_student_exam_profile.sql)
+      // henüz eklenmemiş olabilir; adıyla seçmek sorguyu tümden hataya
+      // düşürürdü. Anket kutusu alanın gelip gelmediğine bakarak davranır.
       const { data } = await supabase
         .from('profiles')
-        .select('id, full_name')
+        .select('*')
         .eq('role', targetRole)
         .order('full_name')
       setContacts(data ?? [])
@@ -54,7 +58,12 @@ export default function Messages() {
           }
         />
       ) : (
-        <div className="grid gap-5 lg:grid-cols-[16rem_1fr]">
+        <>
+          {/* Öğretmene özel: sınav bilgisi eksik öğrencilere tek seferlik
+              anket hatırlatması. Gönderme işini öğretmen başlatır. */}
+          {isTeacher && <ExamSurveyDialog students={contacts} />}
+
+          <div className="grid gap-5 lg:grid-cols-[16rem_1fr]">
           <aside className="card flex h-fit flex-col overflow-hidden">
             <div className="border-b border-line px-3 py-3">
               <p className="mb-2 px-1 text-2xs font-bold uppercase tracking-wider text-ink/55">
@@ -115,7 +124,8 @@ export default function Messages() {
               className="min-h-[50vh] justify-center"
             />
           )}
-        </div>
+          </div>
+        </>
       )}
     </AppShell>
   )

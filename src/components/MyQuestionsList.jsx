@@ -30,7 +30,17 @@ export default function MyQuestionsList({
   bare = false,
   title = 'Gönderdiğim sorular',
 }) {
-  const [lightboxSrc, setLightboxSrc] = useState(null)
+  // Katman soru ve çözümü birlikte alır: öğrenci ikisi arasında ok
+  // tuşlarıyla geçebilsin, çözüme bakarken soruya dönebilsin.
+  const [lightbox, setLightbox] = useState(null)
+
+  function openLightbox(q, wanted) {
+    const items = [
+      q.image_url && { src: q.image_url, label: 'Sorun' },
+      q.teacher_reply_image_url && { src: q.teacher_reply_image_url, label: 'Öğretmen çözümü' },
+    ].filter(Boolean)
+    setLightbox({ items, index: Math.max(0, items.findIndex((i) => i.src === wanted)) })
+  }
 
   if (!questions || questions.length === 0) {
     return (
@@ -65,14 +75,17 @@ export default function MyQuestionsList({
               {q.image_url && (
                 <button
                   type="button"
-                  onClick={() => setLightboxSrc(q.image_url)}
-                  className="focus-ring group relative h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-line"
+                  onClick={() => openLightbox(q, q.image_url)}
+                  className="focus-ring group relative grid h-24 w-24 shrink-0 place-items-center overflow-hidden
+                             rounded-xl border border-line bg-surface-muted"
                   aria-label="Soru görselini büyüt"
                 >
+                  {/* object-contain: küçük görselde bile sorunun tamamı görünür */}
                   <img
                     src={q.image_url}
                     alt="Soru görseli"
-                    className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
+                    loading="lazy"
+                    className="max-h-full max-w-full object-contain transition-transform duration-200 group-hover:scale-105"
                   />
                   <span className="absolute inset-0 grid place-items-center bg-ink/0 transition-colors group-hover:bg-ink/25">
                     <ZoomIn className="h-4 w-4 text-white opacity-0 transition-opacity group-hover:opacity-100" />
@@ -116,15 +129,20 @@ export default function MyQuestionsList({
                     {q.teacher_reply_image_url && (
                       <button
                         type="button"
-                        onClick={() => setLightboxSrc(q.teacher_reply_image_url)}
-                        className="focus-ring mt-2 block w-fit overflow-hidden rounded-lg border border-line"
-                        aria-label="Yanıt görselini büyüt"
+                        onClick={() => openLightbox(q, q.teacher_reply_image_url)}
+                        className="focus-ring group relative mt-2 grid h-40 w-full max-w-[16rem] place-items-center
+                                   overflow-hidden rounded-lg border border-line bg-surface"
+                        aria-label="Çözüm görselini büyüt"
                       >
                         <img
                           src={q.teacher_reply_image_url}
-                          alt="Yanıt görseli"
-                          className="h-20 w-20 object-cover transition-opacity hover:opacity-85"
+                          alt="Çözüm görseli"
+                          loading="lazy"
+                          className="max-h-full max-w-full object-contain transition-opacity group-hover:opacity-85"
                         />
+                        <span className="absolute inset-0 grid place-items-center bg-ink/0 transition-colors group-hover:bg-ink/20">
+                          <ZoomIn className="h-5 w-5 text-white opacity-0 transition-opacity group-hover:opacity-100" />
+                        </span>
                       </button>
                     )}
                   </div>
@@ -147,7 +165,13 @@ export default function MyQuestionsList({
         </Card>
       )}
 
-      {lightboxSrc && <ImageLightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />}
+      {lightbox && (
+        <ImageLightbox
+          items={lightbox.items}
+          index={lightbox.index}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </>
   )
 }
