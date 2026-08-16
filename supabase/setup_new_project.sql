@@ -38,14 +38,17 @@ create table if not exists profiles (
 
 alter table profiles enable row level security;
 
--- DİKKAT — GİZLİLİK NOTU:
+-- DİKKAT — BU POLİTİKALAR GEÇİCİDİR:
 -- Aşağıdaki SELECT politikası `using (true)` olduğu için, publishable
 -- anahtara sahip HERKES (giriş yapmamış ziyaretçiler dahil) tüm öğrenci
--- adlarını listeleyebilir. Bu bilinçli bir taviz değil, eski bir
--- eksiklik: Register.jsx, veli kaydında öğrenci listesini HENÜZ GİRİŞ
--- YAPMADAN okuyor. Politikayı `auth.uid() is not null` yapmak veli
--- kaydını bozar. Doğru çözüm, yalnızca (id, full_name) döndüren bir
--- SECURITY DEFINER fonksiyonu açıp bu politikayı daraltmaktır.
+-- adlarını listeleyebilir. Sebebi Register.jsx'in veli kaydında öğrenci
+-- listesini giriş yapmadan okumasıydı.
+--
+-- BU ARTIK ÇÖZÜLDÜ: veli kayıt ekranındaki öğrenci seçimi kaldırıldı ve
+-- `migration_parent_verification.sql` bu üç politikayı daraltıyor
+-- (görünürlük kısıtı + rol yükseltme engeli + role/student_id dondurma).
+-- O dosyayı bunun HEMEN ARDINDAN çalıştırın; aksi halde proje bu açık
+-- politikalarla ayakta kalır.
 drop policy if exists "Herkes tüm profilleri görebilir" on profiles;
 create policy "Herkes tüm profilleri görebilir"
   on profiles for select using (true);
@@ -625,8 +628,18 @@ create policy "Öğrenci kendi kullanımını kaydedebilir"
 
 
 -- ============================================================
--- BİTTİ. Doğrulama:
+-- BİTTİ — ama bir dosya daha çalıştırın:
+--
+--   supabase/migration_parent_verification.sql
+--
+-- Veli doğrulama sistemi (parent_links, davet kodları, veliye veri
+-- okuma izni) ve profil politikalarının sıkılaştırılmış hâli orada.
+-- Bu dosyadaki `profiles` politikaları (özellikle SELECT `using (true)`)
+-- o göç tarafından DEĞİŞTİRİLİR — sıralama önemlidir: önce bu dosya,
+-- sonra migration_parent_verification.sql, en son scripts/import-data.mjs.
+--
+-- Doğrulama:
 --   select table_name from information_schema.tables
 --    where table_schema = 'public' order by table_name;
---   → 17 tablo görmelisiniz.
+--   → bu dosyadan sonra 17, veli göçünden sonra 20 tablo görmelisiniz.
 -- ============================================================

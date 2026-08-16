@@ -1,19 +1,30 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { useNavigate } from 'react-router-dom';
-import { Lock, Mail, User } from 'lucide-react';
+import { Lock, Mail, ShieldCheck, User } from 'lucide-react';
 import AuthLayout, { AuthTabs } from '../components/auth/AuthLayout';
 import ExamProfileFields from '../components/ExamProfileFields';
 import { defaultExamYear, isMissingColumnError } from '../lib/examProfile';
 import { Alert, Button, Field, Input, Select } from '../components/ui';
 
+/**
+ * Kayıt ekranı.
+ *
+ * VELİ ARTIK BURADA ÖĞRENCİ SEÇMEZ. Eskiden bu ekranda sistemdeki tüm
+ * öğrencileri listeleyen bir açılır menü vardı ve veli istediğini seçip
+ * doğrudan eşleşiyordu — yani herkes, herhangi bir öğrencinin velisi
+ * olduğunu iddia edebiliyordu. Üstelik o liste giriş yapılmadan
+ * okunduğu için `profiles` tablosu herkese açık kalmak zorundaydı.
+ *
+ * Yeni akış: veli önce boş bir hesap açar, sonra öğrencinin profilinden
+ * aldığı tek kullanımlık kodu kendi panelinde kullanır ve öğrenci onaylar.
+ * Bkz. src/lib/parentLink.js ve supabase/migration_parent_verification.sql
+ */
 export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
   const [role, setRole] = useState('student');
-  const [students, setStudents] = useState([]);
-  const [selectedStudentId, setSelectedStudentId] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -28,30 +39,8 @@ export default function Register() {
 
   const navigate = useNavigate();
 
-  // Rol "veli" seçilirse sistemdeki öğrencileri çekiyoruz
-  useEffect(() => {
-    if (role === 'parent') {
-      fetchStudents();
-    }
-  }, [role]);
-
-  const fetchStudents = async () => {
-    const { data } = await supabase
-      .from('profiles')
-      .select('id, full_name')
-      .eq('role', 'student');
-    if (data) {
-      setStudents(data);
-    }
-  };
-
   const handleRegister = async (e) => {
     e.preventDefault();
-
-    if (role === 'parent' && !selectedStudentId) {
-      setError('Lütfen bir öğrenci seçin.');
-      return;
-    }
 
     if (role === 'student') {
       if (!exam.grade || exam.is_exam_year === null || !exam.target_exam) {
@@ -64,14 +53,15 @@ export default function Register() {
     setError('');
 
     // 1. Doğrudan Supabase Auth çağrısı (AuthContext engeline takılmadan options gidiyor)
+    // `student_id` bilerek GÖNDERİLMİYOR: veli bağı yalnızca parent_links
+    // tablosundan, öğrencinin onayıyla kurulur.
     const { data: authData, error: signUpError } = await supabase.auth.signUp({
       email,
       password,
       options: {
         data: {
           full_name: fullName,
-          role: role,
-          student_id: role === 'parent' ? selectedStudentId : null
+          role: role
         }
       }
     });
@@ -88,8 +78,7 @@ export default function Register() {
       const base = {
         id: userId,
         full_name: fullName,
-        role: role,
-        student_id: role === 'parent' && selectedStudentId ? selectedStudentId : null
+        role: role
       };
 
       const noExam = exam.target_exam === 'YOK';
@@ -206,25 +195,26 @@ export default function Register() {
           </div>
         )}
 
-        {/* Veli seçildiyse Çocuğu Seçme Ekranı */}
+        {/* Veli seçildiyse: öğrenci SEÇİLMEZ, sonraki adım anlatılır.
+            Buradan öğrenci seçtirmek, herkesin istediği çocuğun velisi
+            olabilmesi demekti. */}
         {role === 'parent' && (
-          <Field label="Çocuğunuzu Seçin" className="animate-slide-down">
-            {({ id }) => (
-              <Select
-                id={id}
-                value={selectedStudentId}
-                onChange={(e) => setSelectedStudentId(e.target.value)}
-                required={role === 'parent'}
-              >
-                <option value="">-- Öğrenci Seçin --</option>
-                {students.map((s) => (
-                  <option key={s.id} value={s.id}>
-                    {s.full_name}
-                  </option>
-                ))}
-              </Select>
-            )}
-          </Field>
+          <div className="animate-slide-down rounded-card border border-line bg-surface-muted p-4">
+            <div className="flex items-start gap-3">
+              <span className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-aqua-500/10 text-aqua-600">
+                <ShieldCheck className="h-[18px] w-[18px]" strokeWidth={2.1} aria-hidden="true" />
+              </span>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-ink">Öğrenci bağlantısı sonraki adımda</p>
+                <p className="mt-1 text-xs leading-relaxed text-ink/65">
+                  Güvenlik gereği öğrenciyi buradan seçemezsiniz. Hesabınızı oluşturduktan sonra
+                  panelinizdeki <span className="font-semibold text-ink/80">Öğrenci Doğrula</span>{' '}
+                  alanına, öğrencinin kendi profilinden aldığı doğrulama kodunu gireceksiniz.
+                  Bağlantı, öğrenci onayladığında aktifleşir.
+                </p>
+              </div>
+            </div>
+          </div>
         )}
 
         <Button type="submit" size="lg" fullWidth loading={loading} className="mt-2">

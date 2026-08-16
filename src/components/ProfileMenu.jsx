@@ -1,8 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Bell, BellRing, ChevronDown, ChevronRight, LogOut, UserRound } from 'lucide-react'
+import {
+  Bell,
+  BellRing,
+  ChevronDown,
+  ChevronRight,
+  LogOut,
+  ShieldCheck,
+  UserRound,
+} from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { getPushPermissionState, isPushSupported, subscribeToPush } from '../lib/push'
+import { listStudentParentLinks } from '../lib/parentLink'
 import { PROFILE_PATH, ROLE_LABELS, ROLE_TONES } from '../lib/navigation'
 import { cn } from '../lib/cn'
 import { Avatar, Badge } from './ui'
@@ -32,9 +41,25 @@ export default function ProfileMenu() {
 
   const role = profile?.role ?? 'student'
 
+  // Bekleyen veli bağlantı isteği. Öğrenci bunu görmezse veli sonsuza
+  // kadar onay bekler; istek Profil sayfasında ama uyarı her sayfada.
+  const [pendingParentLinks, setPendingParentLinks] = useState(0)
+
   useEffect(() => {
     getPushPermissionState().then(setPermission)
   }, [])
+
+  useEffect(() => {
+    if (role !== 'student' || !profile?.id) return
+    let cancelled = false
+    listStudentParentLinks().then(({ links }) => {
+      if (cancelled) return
+      setPendingParentLinks((links ?? []).filter((l) => l.status === 'pending').length)
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [role, profile?.id, pathname])
 
   // Sayfa değişince menü kapansın — profil bağlantısına tıklandığında
   // menünün açık kalması "tıkladım ama bir şey olmadı" hissi veriyordu.
@@ -82,10 +107,19 @@ export default function ProfileMenu() {
           open ? 'bg-brand-500/10 ring-1 ring-brand-500/20' : 'hover:bg-ink/[0.05]'
         )}
       >
-        <Avatar name={profile?.full_name} size="sm" />
+        <span className="relative">
+          <Avatar name={profile?.full_name} size="sm" />
+          {pendingParentLinks > 0 && (
+            <span
+              className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full bg-warning-500 ring-2 ring-surface"
+              aria-hidden="true"
+            />
+          )}
+        </span>
         <span className="hidden max-w-[9rem] truncate text-sm font-semibold text-ink sm:block">
           {profile?.full_name?.split(' ')[0]}
         </span>
+        {pendingParentLinks > 0 && <span className="sr-only">Bekleyen veli bağlantı isteği var</span>}
         <ChevronDown
           className={cn(
             'hidden h-4 w-4 text-ink/55 transition-transform duration-200 sm:block',
@@ -136,6 +170,23 @@ export default function ProfileMenu() {
             <UserRound className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
             <span>Profilim</span>
           </Link>
+
+          {/* Bekleyen veli isteği — öğrenciyi doğrudan onay bölümüne götürür */}
+          {pendingParentLinks > 0 && (
+            <Link
+              to={PROFILE_PATH}
+              role="menuitem"
+              onClick={() => setOpen(false)}
+              className="focus-ring flex w-full items-center gap-3 bg-warning-50/60 px-4 py-3 text-sm
+                         font-semibold text-warning-700 transition-colors hover:bg-warning-500/[0.12]"
+            >
+              <ShieldCheck className="h-4 w-4 shrink-0" strokeWidth={2.2} aria-hidden="true" />
+              <span>
+                {pendingParentLinks} veli bağlantı isteği
+              </span>
+              <ChevronRight className="ml-auto h-4 w-4 shrink-0" aria-hidden="true" />
+            </Link>
+          )}
 
           {/* Bildirim izni — ayrıntılı yönetim Profil sayfasında; burada
               yalnızca tek dokunuşluk "aç" kestirmesi ve durum bilgisi var.

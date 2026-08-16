@@ -161,6 +161,40 @@ ayrıca soru fotoğraflarının yükleneceği depolama alanını otomatik kurar.
 >   belirtir. ÖSYM kesin tarihi açıkladığında öğrenci Profil sayfasından
 >   gerçek tarihi girer.
 
+> **Veli panelini kullanacaksanız (ZORUNLU, sırayla 2 dosya):**
+> 1. `supabase/migration_parent_verification.sql`
+> 2. `supabase/migration_parent_verification_cleanup.sql`
+>
+> İkincisi atlanamaz. Canlı veritabanında bu depodaki hiçbir dosyada
+> bulunmayan, zamanla panelden elle eklenmiş politikalar vardı
+> (örneğin `profiles` üzerinde adı "Kullanıcılar kendi profillerini
+> görebilir" olan ama koşulu düpedüz `true` olan bir politika).
+> PostgreSQL aynı komut için birden fazla permissive politikayı
+> **VEYA**'lar — biri bile "true" derse satır görünür. Yani eskiler
+> düşürülmeden yeni ve dar politikalar hiçbir işe yaramaz.
+> Bu göç olmadan **veli paneli boş görünür** — `parent` rolüne hiçbir
+> tabloda okuma izni yoktur, sorgular hata vermeden boş döner ve panel
+> "doğru isim, sıfır metrik" tablosu çizer.
+>
+> Göç şunları yapar:
+> * `parent_links` tablosunu açar — veli–öğrenci ilişkisinin tek kaynağı.
+>   Mevcut `profiles.student_id` bağları **kaybolmadan** 'active' olarak
+>   taşınır; hiçbir veli erişimini yitirmez.
+> * Veliye, YALNIZCA öğrencinin onayladığı bağlar için okuma izni verir
+>   (`daily_logs`, `mock_exams`, `mock_exam_subjects`, `homeworks`,
+>   `exams`). Mesajlar, sorunlu sorular ve AI Koç sohbeti veliye kapalıdır.
+> * `profiles` politikalarını sıkılaştırır: tablo artık giriş yapmamış
+>   ziyaretçilere kapalıdır ve kullanıcı kendi `role`/`student_id`
+>   kolonunu değiştiremez.
+>
+> ⚠ Göçten sonra **kayıt ekranından öğretmen hesabı açılamaz** (rol
+> yükseltme açığıydı). Yeni öğretmen için:
+> `update profiles set role = 'teacher' where id = '<uuid>';`
+>
+> Uygulamadan önce göçü çalıştırın: göç eski arayüzle de uyumludur, ama
+> yeni arayüz göç olmadan bağlantı kuramaz. Göçün doğruluğunu üretime
+> dokunmadan sınamak için: `npm run test:parent-rls`
+
 > **Ders Notları Kütüphanesi'ni kullanacaksanız (sırayla 2 dosya):**
 > 1. `supabase/migration_library.sql` — 3 yeni tablo (`library_subjects`,
 >    `library_topics`, `library_notes`), gerekli izinler (RLS) ve dosya

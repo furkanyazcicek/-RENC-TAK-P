@@ -31,6 +31,7 @@ import {
   resolveExamCountdown,
 } from '../lib/examProfile'
 import ExamProfileFields from '../components/ExamProfileFields'
+import StudentParentLinkPanel from '../components/parent/StudentParentLinkPanel'
 import { AppShell, Alert, Badge, Button, Field, Input, useToast } from '../components/ui'
 import { CountdownRing, DashboardHero, MetricTile, Panel } from '../components/dashboard'
 
@@ -359,6 +360,11 @@ export default function Profile() {
           </form>
         </Panel>
       )}
+
+      {/* ---------- VELİ DOĞRULAMA (yalnızca öğrenci) ----------
+          Veli–öğrenci eşleşmesinin başladığı yer burasıdır; veli kendi
+          kayıt ekranından öğrenci seçemez. */}
+      {isStudent && <StudentParentLinkPanel />}
 
       {/* ---------- BİLDİRİMLER ---------- */}
       <Panel
