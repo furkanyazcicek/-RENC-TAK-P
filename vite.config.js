@@ -27,18 +27,21 @@ export default defineConfig({
         background_color: '#F7F7FC',
         theme_color: '#7C3AED',
         lang: 'tr',
-        // Manifest yalnızca GERÇEKTEN var olan dosyaları göstermeli; daha önce
-        // burada `/icon-192x192.png` yazıyordu ama böyle bir dosya yoktu ve
-        // yükleme (install) sırasında 404 dönüyordu.
+        // Manifest yalnızca GERÇEKTEN var olan dosyaları göstermeli. Bir ara
+        // burada `/icon-192x192.png` yazıyordu ama dosya yoktu ve yükleme
+        // sırasında 404 dönüyordu; o yüzden listeden çıkarılmıştı.
         //
-        // Tek bir 512×512 ikon yeterlidir: Chrome'un yükleme ölçütü "en az
-        // 192px bir ikon" ister, Android gerekli boyutlara kendisi küçültür.
+        // Dosya artık VAR (512'den küçültüldü), bu yüzden geri eklendi.
+        // Sadece manifest için değil: `src/sw.js` push bildirimlerinde bu
+        // yolu doğrudan kullanıyor, dosya olmadığı için bildirimler
+        // markasız çıkıyordu.
         //
         // `maskable` bilerek eklenmedi: Android maskeli ikonu daire içine
         // kırpar ve güvenli alan merkezden %40 yarıçaptır. Logonun altındaki
         // "DRKOC" yazısı bu kırpmada kesilirdi. Ayrı, bol boşluklu bir
         // maskeli sürüm hazırlanırsa buraya eklenebilir.
         icons: [
+          { src: '/icon-192x192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
           { src: '/icon-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
         ],
       },
