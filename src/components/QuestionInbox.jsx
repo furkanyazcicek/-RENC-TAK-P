@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import { ImagePlus, Inbox, MessageSquareQuote, Send, X, ZoomIn } from 'lucide-react'
+import { ImagePlus, Inbox, MessageSquareQuote, PenLine, Send, X, ZoomIn } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
 import { cn } from '../lib/cn'
 import { colorForKey } from '../lib/chartTheme'
 import StatusBadge from './StatusBadge'
 import ImageLightbox from './ImageLightbox'
+import SolveBoard from './solve/SolveBoard'
 import SubjectTopicFilter, { useSubjectTopicFilter } from './SubjectTopicFilter'
 import { Alert, Avatar, Button, EmptyState, Select, Textarea } from './ui'
 
@@ -156,6 +157,10 @@ export default function QuestionInbox({
   // Soru ve yanıt görseli aynı katmanda gezilebilir olsun — öğretmen
   // çözümü kontrol ederken soruya dönebilmeli.
   const [lightbox, setLightbox] = useState(null)
+  // Tablet kalemiyle sorunun üzerine çözüm yazılan tam ekran tahta.
+  // Gönderme işini yine mevcut alanlar üstlenir; tahta yalnızca
+  // çizimi üretir.
+  const [boardQuestion, setBoardQuestion] = useState(null)
 
   function openLightbox(q, wanted) {
     const items = [
@@ -212,6 +217,9 @@ export default function QuestionInbox({
         {visible.map((q) => {
           const answered = Boolean(q.teacher_reply || q.teacher_reply_image_url)
           const replying = openReplyId === q.id
+          // Kalemle başlanmış bir çözüm var mı? Varsa düğme "devam et"
+          // anlamına gelir — öğretmen yarım bıraktığını buradan görür.
+          const drafted = Boolean(q.teacher_reply_strokes?.strokes?.length)
 
           return (
             <li
@@ -323,14 +331,19 @@ export default function QuestionInbox({
                       }}
                     />
                   ) : (
-                    <Button
-                      variant="link"
-                      size="xs"
-                      className="mt-2"
-                      onClick={() => setOpenReplyId(q.id)}
-                    >
-                      {answered ? 'Yanıtı düzenle' : 'Yanıtla'}
-                    </Button>
+                    <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-2">
+                      <Button
+                        variant="secondary"
+                        size="xs"
+                        icon={PenLine}
+                        onClick={() => setBoardQuestion(q)}
+                      >
+                        {drafted ? 'Çözüme devam et' : 'Kalemle Çöz'}
+                      </Button>
+                      <Button variant="link" size="xs" onClick={() => setOpenReplyId(q.id)}>
+                        {answered ? 'Yanıtı düzenle' : 'Yanıtla'}
+                      </Button>
+                    </div>
                   )}
                 </div>
 
@@ -361,6 +374,15 @@ export default function QuestionInbox({
           items={lightbox.items}
           index={lightbox.index}
           onClose={() => setLightbox(null)}
+        />
+      )}
+
+      {boardQuestion && (
+        <SolveBoard
+          key={boardQuestion.id}
+          question={boardQuestion}
+          onSaved={onChanged}
+          onClose={() => setBoardQuestion(null)}
         />
       )}
     </div>
