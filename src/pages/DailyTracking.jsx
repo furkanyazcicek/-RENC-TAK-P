@@ -14,8 +14,10 @@ import { STATUS } from '../lib/chartTheme'
 import {
   accuracy,
   buildInsights,
+  combineStudyEntries,
   formatMinutes,
   lastNDays,
+  splitBySource,
   studyStreak,
   subjectBreakdown,
   totals,
@@ -31,13 +33,15 @@ import {
   InsightBar,
   MetricTile,
   Panel,
+  SourceNote,
   SubjectBars,
 } from '../components/dashboard'
 
 export default function DailyTracking() {
   const { user } = useAuth()
   const [dailyLogs, setDailyLogs] = useState([])
-  const [mockExams, setMockExams] = useState([]) // sınav türünü belirlemek için (LGS/TYT/AYT)
+  const [mockExams, setMockExams] = useState([]) // sınav türü + istatistiklere katkı
+  const [branchExams, setBranchExams] = useState([]) // branş denemeleri de çalışmaya sayılır
   const [librarySubjects, setLibrarySubjects] = useState([]) // müfredat dersleri
   const [libraryTopics, setLibraryTopics] = useState([]) // müfredat konuları
   const [profile, setProfile] = useState(null)
@@ -45,24 +49,38 @@ export default function DailyTracking() {
 
   const load = useCallback(async () => {
     if (!user) return
-    const [logsRes, mockExamsRes, librarySubjectsRes, libraryTopicsRes, profileRes] =
-      await Promise.all([
-        supabase
-          .from('daily_logs')
-          .select('*')
-          .eq('student_id', user.id)
-          .order('study_date', { ascending: false }),
-        supabase
-          .from('mock_exams')
-          .select('exam_type, exam_date')
-          .eq('student_id', user.id)
-          .order('exam_date', { ascending: false }),
-        supabase.from('library_subjects').select('*'),
-        supabase.from('library_topics').select('*'),
-        supabase.from('profiles').select('full_name').eq('id', user.id).maybeSingle(),
-      ])
+    const [
+      logsRes,
+      mockExamsRes,
+      branchExamsRes,
+      librarySubjectsRes,
+      libraryTopicsRes,
+      profileRes,
+    ] = await Promise.all([
+      supabase
+        .from('daily_logs')
+        .select('*')
+        .eq('student_id', user.id)
+        .order('study_date', { ascending: false }),
+      // Sınav türünü belirlemenin yanı sıra artık istatistiklere de
+      // giriyorlar; alt ders satırları ve süre bu yüzden gerekli.
+      supabase
+        .from('mock_exams')
+        .select('exam_type, exam_date, exam_name, duration_minutes, mock_exam_subjects(*)')
+        .eq('student_id', user.id)
+        .order('exam_date', { ascending: false }),
+      supabase
+        .from('exams')
+        .select('*')
+        .eq('student_id', user.id)
+        .order('exam_date', { ascending: false }),
+      supabase.from('library_subjects').select('*'),
+      supabase.from('library_topics').select('*'),
+      supabase.from('profiles').select('full_name').eq('id', user.id).maybeSingle(),
+    ])
     setDailyLogs(logsRes.data ?? [])
     setMockExams(mockExamsRes.data ?? [])
+    setBranchExams(branchExamsRes.data ?? [])
     setLibrarySubjects(librarySubjectsRes.data ?? [])
     setLibraryTopics(libraryTopicsRes.data ?? [])
     setProfile(profileRes.data ?? null)
@@ -75,15 +93,26 @@ export default function DailyTracking() {
 
   /* --- Türetilen veriler --- */
 
-  const days = useMemo(() => lastNDays(dailyLogs, 21), [dailyLogs])
-  const wow = useMemo(() => weekOverWeek(dailyLogs), [dailyLogs])
-  const streak = useMemo(() => studyStreak(dailyLogs), [dailyLogs])
-  const overall = useMemo(() => totals(dailyLogs), [dailyLogs])
-  const overallAccuracy = useMemo(() => accuracy(dailyLogs), [dailyLogs])
-  const subjects = useMemo(() => subjectBreakdown(dailyLogs), [dailyLogs])
+  /* Denemeler de çalışmadır (bkz. lib/insights.js).
+     ALTTAKİ KAYIT LİSTESİ yalnızca günlük kayıtları gösterir — burası
+     onların düzenlendiği sayfa, deneme satırı oraya karışmamalı. Ama
+     ÜSTTEKİ ÖZET KARTLARI denemeleri de kapsar ki rakam Anasayfa,
+     Analiz ve Veli Paneli'ndekiyle aynı olsun. */
+  const studyEntries = useMemo(
+    () => combineStudyEntries(dailyLogs, mockExams, branchExams),
+    [dailyLogs, mockExams, branchExams]
+  )
+  const sourceSplit = useMemo(() => splitBySource(studyEntries), [studyEntries])
+
+  const days = useMemo(() => lastNDays(studyEntries, 21), [studyEntries])
+  const wow = useMemo(() => weekOverWeek(studyEntries), [studyEntries])
+  const streak = useMemo(() => studyStreak(studyEntries), [studyEntries])
+  const overall = useMemo(() => totals(studyEntries), [studyEntries])
+  const overallAccuracy = useMemo(() => accuracy(studyEntries), [studyEntries])
+  const subjects = useMemo(() => subjectBreakdown(studyEntries), [studyEntries])
   const insights = useMemo(
-    () => buildInsights(dailyLogs, { audience: 'student' }),
-    [dailyLogs]
+    () => buildInsights(studyEntries, { audience: 'student' }),
+    [studyEntries]
   )
 
   const topicOptions = useMemo(
@@ -204,6 +233,8 @@ export default function DailyTracking() {
           tone={streak >= 5 ? 'success' : 'purple'}
         />
       </div>
+
+      <SourceNote split={sourceSplit} />
 
       <Panel
         title="Son 21 Gün"

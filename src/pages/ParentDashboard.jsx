@@ -45,6 +45,7 @@ import {
   InsightBar,
   MetricTile,
   Panel,
+  SourceNote,
   SubjectBars,
 } from '../components/dashboard'
 import { listParentLinkedStudents, revokeParentLink } from '../lib/parentLink'
@@ -52,9 +53,11 @@ import { splitSubjectTopic } from '../lib/topicHelpers'
 import {
   accuracy,
   buildInsights,
+  combineStudyEntries,
   formatMinutes,
   lastNDays,
   mockExamRows,
+  splitBySource,
   studyStreak,
   subjectBreakdown,
   totals,
@@ -213,20 +216,29 @@ export default function ParentDashboard() {
   const selectedLink = activeLinks.find((l) => l.student_id === selectedStudentId) ?? null
   const studentName = selectedLink?.student_name ?? ''
 
-  const overall = useMemo(() => totals(dailyLogs), [dailyLogs])
-  const wow = useMemo(() => weekOverWeek(dailyLogs), [dailyLogs])
-  const streak = useMemo(() => studyStreak(dailyLogs), [dailyLogs])
-  const last14 = useMemo(() => lastNDays(dailyLogs, 14), [dailyLogs])
-  const overallAccuracy = useMemo(() => accuracy(dailyLogs), [dailyLogs])
-  const subjects = useMemo(() => subjectBreakdown(dailyLogs), [dailyLogs])
+  /* Denemeler de çalışmadır (bkz. lib/insights.js). Veli panelindeki
+     rakam, öğrencinin kendi panelinde gördüğüyle aynı olmalı. */
+  const studyEntries = useMemo(
+    () => combineStudyEntries(dailyLogs, mockExams, branchExams),
+    [dailyLogs, mockExams, branchExams]
+  )
+  const sourceSplit = useMemo(() => splitBySource(studyEntries), [studyEntries])
+
+  const overall = useMemo(() => totals(studyEntries), [studyEntries])
+  const wow = useMemo(() => weekOverWeek(studyEntries), [studyEntries])
+  const streak = useMemo(() => studyStreak(studyEntries), [studyEntries])
+  const last14 = useMemo(() => lastNDays(studyEntries, 14), [studyEntries])
+  const overallAccuracy = useMemo(() => accuracy(studyEntries), [studyEntries])
+  const subjects = useMemo(() => subjectBreakdown(studyEntries), [studyEntries])
   const insights = useMemo(
-    () => buildInsights(dailyLogs, { audience: 'parent', name: studentName }),
-    [dailyLogs, studentName]
+    () => buildInsights(studyEntries, { audience: 'parent', name: studentName }),
+    [studyEntries, studentName]
   )
 
+  // Modal, üstteki kartların dökümü — aynı listeden beslenmeli.
   const byDay = useMemo(() => {
     const map = {}
-    dailyLogs.forEach((l) => {
+    studyEntries.forEach((l) => {
       const d = l.study_date
       if (!map[d]) map[d] = { date: d, minutes: 0, solved: 0, correct: 0, wrong: 0, items: [] }
       map[d].minutes += l.duration_minutes || 0
@@ -236,17 +248,17 @@ export default function ParentDashboard() {
       map[d].items.push(l)
     })
     return Object.values(map).sort((a, b) => new Date(b.date) - new Date(a.date))
-  }, [dailyLogs])
+  }, [studyEntries])
 
   const availableDates = useMemo(
-    () => [...new Set(dailyLogs.map((l) => l.study_date))].sort((a, b) => new Date(b) - new Date(a)),
-    [dailyLogs]
+    () => [...new Set(studyEntries.map((l) => l.study_date))].sort((a, b) => new Date(b) - new Date(a)),
+    [studyEntries]
   )
 
   const dayDistribution = useMemo(() => {
     if (!selectedDate) return []
     const map = {}
-    dailyLogs
+    studyEntries
       .filter((l) => l.study_date === selectedDate)
       .forEach((l) => {
         const solved = (l.correct || 0) + (l.incorrect || 0) + (l.empty || 0)
@@ -259,7 +271,7 @@ export default function ParentDashboard() {
     return Object.entries(map)
       .map(([label, count]) => ({ label, count }))
       .sort((a, b) => b.count - a.count)
-  }, [dailyLogs, selectedDate])
+  }, [studyEntries, selectedDate])
 
   /* Deneme türleri ASLA aynı grafikte karışmaz — TYT 120, AYT 80, LGS 90
      net üzerinden hesaplanır. Hepsini tek çizgiye dizmek, öğrenci
@@ -466,6 +478,8 @@ export default function ParentDashboard() {
                 onClick={() => setDetailModal('wrong')}
               />
             </div>
+
+            <SourceNote split={sourceSplit} />
 
             {/* ---------- ÇALIŞMA DÜZENİ + DERS DAĞILIMI ---------- */}
             <div className="grid lg:grid-cols-2 gap-5">

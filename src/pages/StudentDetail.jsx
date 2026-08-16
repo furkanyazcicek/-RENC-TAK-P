@@ -32,7 +32,14 @@ import {
   formatDuration,
 } from '../lib/topicHelpers'
 import { buildSubjectPerformance } from '../lib/examHelpers'
-import { accuracy, buildInsights, formatMinutes, lastNDays, studyStreak } from '../lib/insights'
+import {
+  accuracy,
+  buildInsights,
+  combineStudyEntries,
+  formatMinutes,
+  lastNDays,
+  studyStreak,
+} from '../lib/insights'
 
 export default function StudentDetail() {
   const { studentId } = useParams()
@@ -184,10 +191,17 @@ export default function StudentDetail() {
   const subjectPerformance = buildSubjectPerformance(examsForType)
   const activeExamType = examType ?? mockExams[0]?.exam_type ?? 'TYT'
 
-  const last14 = lastNDays(dailyLogs, 14)
-  const streak = studyStreak(dailyLogs)
-  const studentAccuracy = accuracy(dailyLogs)
-  const insights = buildInsights(dailyLogs, {
+  /* Denemeler de çalışmadır (bkz. lib/insights.js). Öğretmenin gördüğü
+     rakam, öğrencinin kendi panelinde gördüğüyle aynı olmalı. */
+  const studyEntries = useMemo(
+    () => combineStudyEntries(dailyLogs, mockExams, exams),
+    [dailyLogs, mockExams, exams]
+  )
+
+  const last14 = lastNDays(studyEntries, 14)
+  const streak = studyStreak(studyEntries)
+  const studentAccuracy = accuracy(studyEntries)
+  const insights = buildInsights(studyEntries, {
     audience: 'parent',
     name: studentProfile?.full_name ?? '',
   })

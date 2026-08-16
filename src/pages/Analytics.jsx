@@ -37,6 +37,7 @@ import {
   InsightBar,
   MetricTile,
   Panel,
+  SourceNote,
 } from '../components/dashboard'
 
 import {
@@ -50,8 +51,10 @@ import { buildSubjectPerformance } from '../lib/examHelpers'
 import {
   accuracy,
   buildInsights,
+  combineStudyEntries,
   formatMinutes,
   lastNDays,
+  splitBySource,
   studyStreak,
   totals,
   weekOverWeek,
@@ -159,26 +162,40 @@ export default function Analytics() {
   )
 
   /* ---- Özet ve içgörü hesapları ---- */
-  const last14 = useMemo(() => lastNDays(dailyLogs, 14), [dailyLogs])
-  const wow = useMemo(() => weekOverWeek(dailyLogs), [dailyLogs])
-  const streak = useMemo(() => studyStreak(dailyLogs), [dailyLogs])
-  const overall = useMemo(() => totals(dailyLogs), [dailyLogs])
-  const overallAccuracy = useMemo(() => accuracy(dailyLogs), [dailyLogs])
-  const insights = useMemo(() => buildInsights(dailyLogs, { audience: 'student' }), [dailyLogs])
+  /* Denemeler de çalışmadır: deneme soruları ve süreleri artık günlük
+     istatistiklere katılır. Denemeleri günlük kayıt biçimine çeviren tek
+     yer lib/insights.js; burada yalnızca birleştirip veriyoruz. */
+  const studyEntries = useMemo(
+    () => combineStudyEntries(dailyLogs, mockExams, branchExams),
+    [dailyLogs, mockExams, branchExams]
+  )
+  const sourceSplit = useMemo(() => splitBySource(studyEntries), [studyEntries])
 
+  const last14 = useMemo(() => lastNDays(studyEntries, 14), [studyEntries])
+  const wow = useMemo(() => weekOverWeek(studyEntries), [studyEntries])
+  const streak = useMemo(() => studyStreak(studyEntries), [studyEntries])
+  const overall = useMemo(() => totals(studyEntries), [studyEntries])
+  const overallAccuracy = useMemo(() => accuracy(studyEntries), [studyEntries])
+  const insights = useMemo(
+    () => buildInsights(studyEntries, { audience: 'student' }),
+    [studyEntries]
+  )
+
+  // Süre grafiği de denemeleri kapsar — yoksa üstteki "Toplam Çalışma"
+  // kartıyla altındaki grafik farklı iki rakam gösterirdi.
   const studyByDay = useMemo(() => {
     const map = {}
-    dailyLogs.forEach((l) => {
+    studyEntries.forEach((l) => {
       map[l.study_date] = (map[l.study_date] ?? 0) + (l.duration_minutes || 0)
     })
     return Object.entries(map)
       .map(([date, minutes]) => ({ date, minutes }))
       .sort((a, b) => new Date(b.date) - new Date(a.date))
-  }, [dailyLogs])
+  }, [studyEntries])
 
   const weeklySolvedBreakdown = useMemo(
     () =>
-      lastNDays(dailyLogs, 7).map((d) => ({
+      lastNDays(studyEntries, 7).map((d) => ({
         date: d.date,
         label: new Date(d.date).toLocaleDateString('tr-TR', {
           weekday: 'long',
@@ -187,7 +204,7 @@ export default function Analytics() {
         }),
         count: d.solved,
       })),
-    [dailyLogs]
+    [studyEntries]
   )
 
   const allExamsSorted = useMemo(() => {
@@ -350,6 +367,8 @@ export default function Analytics() {
           onClick={() => setDetailModal('allExams')}
         />
       </div>
+
+      <SourceNote split={sourceSplit} />
 
       {/* ---------- ÇALIŞMA DÜZENİ ---------- */}
       <div className="grid lg:grid-cols-[1.35fr_1fr] gap-5">

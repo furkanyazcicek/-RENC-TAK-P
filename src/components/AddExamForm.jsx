@@ -30,6 +30,10 @@ export default function AddExamForm({ studentId, onAdded, bare = false }) {
   const [correct, setCorrect] = useState('')
   const [incorrect, setIncorrect] = useState('')
   const [empty, setEmpty] = useState('')
+  // Boş bırakılabilir — o zaman süre soru sayısından tahmin edilir
+  // (bkz. src/lib/examDuration.js). Deneme artık günlük çalışma
+  // istatistiklerine de girdiği için süre anlam taşıyor.
+  const [durationMinutes, setDurationMinutes] = useState('')
   const [saving, setSaving] = useState(false)
   const [feedback, setFeedback] = useState(null)
 
@@ -57,6 +61,7 @@ export default function AddExamForm({ studentId, onAdded, bare = false }) {
       correct: correctNum,
       incorrect: incorrectNum,
       empty: empty === '' ? 0 : Number(empty),
+      duration_minutes: durationMinutes === '' ? null : Number(durationMinutes),
       net,
     })
     setSaving(false)
@@ -69,6 +74,7 @@ export default function AddExamForm({ studentId, onAdded, bare = false }) {
       setCorrect('')
       setIncorrect('')
       setEmpty('')
+      setDurationMinutes('')
       setFeedback({ tone: 'success', text: `Branş denemesi kaydedildi (${net} net).` })
       onAdded?.()
     }
@@ -154,6 +160,25 @@ export default function AddExamForm({ studentId, onAdded, bare = false }) {
           )}
         </Field>
       </div>
+
+      <Field
+        label="Süre (dakika)"
+        hint="İsteğe bağlı — boş bırakırsan soru sayısından tahmin edilir. Bu süre günlük çalışma toplamına eklenir."
+      >
+        {({ id, describedBy }) => (
+          <Input
+            id={id}
+            aria-describedby={describedBy}
+            type="number"
+            min="0"
+            max="1440"
+            inputMode="numeric"
+            placeholder="örn. 30"
+            value={durationMinutes}
+            onChange={(e) => setDurationMinutes(e.target.value)}
+          />
+        )}
+      </Field>
 
       <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
         <div>

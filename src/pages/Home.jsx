@@ -23,12 +23,14 @@ import { needsExamSetup, resolveExamCountdown } from '../lib/examProfile'
 import {
   accuracy,
   buildInsights,
+  combineStudyEntries,
   examStats,
   formatMinutes,
   formatNumber,
   homeworkStats,
   lastNDays,
   questionStats,
+  splitBySource,
   studyStreak,
   toKey,
   totals,
@@ -45,6 +47,7 @@ import {
   InsightBar,
   MetricTile,
   Panel,
+  SourceNote,
 } from '../components/dashboard'
 
 /**
@@ -66,6 +69,7 @@ export default function Home() {
   const { user, profile } = useAuth()
   const [dailyLogs, setDailyLogs] = useState([])
   const [mockExams, setMockExams] = useState([])
+  const [branchExams, setBranchExams] = useState([])
   const [homeworks, setHomeworks] = useState([])
   const [questions, setQuestions] = useState([])
   const [loading, setLoading] = useState(true)
@@ -74,19 +78,26 @@ export default function Home() {
 
   const load = useCallback(async () => {
     if (!user) return
-    const [logsRes, examsRes, homeworkRes, questionRes] = await Promise.all([
+    const [logsRes, examsRes, branchExamsRes, homeworkRes, questionRes] = await Promise.all([
       supabase
         .from('daily_logs')
         .select('*')
         .eq('student_id', user.id)
         .order('study_date', { ascending: false }),
-      // Yalnızca son denemeler gerekiyor — tüm geçmiş /analiz'de.
+      // Denemeler artık günlük istatistiklere de katıldığı için TAMAMI
+      // gerekiyor: limit(12) kalsaydı "toplam çalışma" son 12 denemeyle
+      // sınırlı kalır, /analiz'deki rakamla tutmazdı. Alt ders satırları
+      // da net'in yanı sıra doğru/yanlış/boş taşımak zorunda.
       supabase
         .from('mock_exams')
-        .select('id, exam_type, exam_name, exam_date, mock_exam_subjects(net)')
+        .select('id, exam_type, exam_name, exam_date, duration_minutes, mock_exam_subjects(*)')
         .eq('student_id', user.id)
-        .order('exam_date', { ascending: false })
-        .limit(12),
+        .order('exam_date', { ascending: false }),
+      supabase
+        .from('exams')
+        .select('*')
+        .eq('student_id', user.id)
+        .order('exam_date', { ascending: false }),
       supabase
         .from('homeworks')
         .select('id, title, status, due_date')
@@ -100,6 +111,7 @@ export default function Home() {
     ])
     setDailyLogs(logsRes.data ?? [])
     setMockExams(examsRes.data ?? [])
+    setBranchExams(branchExamsRes.data ?? [])
     setHomeworks(homeworkRes.data ?? [])
     setQuestions(questionRes.data ?? [])
     setLoading(false)
@@ -111,18 +123,29 @@ export default function Home() {
 
   /* ---- Türetilen veriler ---- */
 
+  /* Denemeler de çalışmadır — soru sayıları ve süreleri günlük
+     istatistiklere katılır (bkz. lib/insights.js). */
+  const studyEntries = useMemo(
+    () => combineStudyEntries(dailyLogs, mockExams, branchExams),
+    [dailyLogs, mockExams, branchExams]
+  )
+  const sourceSplit = useMemo(() => splitBySource(studyEntries), [studyEntries])
+
   const todayKey = toKey(new Date())
   const todayLogs = useMemo(
-    () => dailyLogs.filter((l) => l.study_date === todayKey),
-    [dailyLogs, todayKey]
+    () => studyEntries.filter((l) => l.study_date === todayKey),
+    [studyEntries, todayKey]
   )
   const todayTotals = useMemo(() => totals(todayLogs), [todayLogs])
 
-  const last14 = useMemo(() => lastNDays(dailyLogs, 14), [dailyLogs])
-  const wow = useMemo(() => weekOverWeek(dailyLogs), [dailyLogs])
-  const streak = useMemo(() => studyStreak(dailyLogs), [dailyLogs])
-  const overallAccuracy = useMemo(() => accuracy(dailyLogs), [dailyLogs])
-  const insights = useMemo(() => buildInsights(dailyLogs, { audience: 'student' }), [dailyLogs])
+  const last14 = useMemo(() => lastNDays(studyEntries, 14), [studyEntries])
+  const wow = useMemo(() => weekOverWeek(studyEntries), [studyEntries])
+  const streak = useMemo(() => studyStreak(studyEntries), [studyEntries])
+  const overallAccuracy = useMemo(() => accuracy(studyEntries), [studyEntries])
+  const insights = useMemo(
+    () => buildInsights(studyEntries, { audience: 'student' }),
+    [studyEntries]
+  )
 
   // "Son deneme neti" karşılaştırılabilir olsun diye yalnızca EN SON
   // girilen türün denemelerine bakar — TYT ile AYT neti yan yana konmaz.
@@ -333,6 +356,8 @@ export default function Home() {
           tone={streak >= 5 ? 'success' : 'accent'}
         />
       </div>
+
+      <SourceNote split={sourceSplit} />
 
       {/* ---------- BEKLEYENLER ---------- */}
       <Panel

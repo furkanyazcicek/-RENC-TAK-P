@@ -10,8 +10,135 @@
  */
 
 import { subjectOf } from './subjectSplit.js'
+import { branchExamMinutes, mockExamMinutes, questionCount } from './examDuration.js'
 
 const DAY = 24 * 60 * 60 * 1000
+
+/* ==================================================================
+   DENEMELERİ ÇALIŞMA KAYDINA ÇEVİRME
+
+   Deneme çözmek de çalışmaktır: bir öğrenci 165 dakika TYT denemesi
+   çözdüğünde bu, günlük istatistiklerinde görünmeliydi ama görünmüyordu
+   — denemeler ayrı tablolarda duruyordu ve hiçbir toplama girmiyordu.
+
+   Çözüm, aşağıdaki fonksiyonlarla denemeleri `daily_logs` satırlarıyla
+   AYNI biçime çevirmek. Böylece `totals`, `lastNDays`, `weekOverWeek`,
+   `studyStreak`, `accuracy` ve `subjectBreakdown` tek satır bile
+   değişmeden denemeleri de kapsıyor; beş sayfa aynı anda tutarlı kalıyor.
+
+   Her üretilen satır `source: 'exam'` taşır — çağıran taraf "bu toplamın
+   ne kadarı denemelerden geldi" sorusunu `splitBySource` ile yanıtlar.
+   ================================================================== */
+
+/**
+ * Genel denemeyi alt derslerine göre satırlara böler.
+ * Ders bazlı dağılımın doğru çıkması için her ders ayrı satır olur;
+ * süre, derslerin soru sayısı oranında paylaştırılır.
+ */
+function mockExamEntries(exam) {
+  const subjects = exam?.mock_exam_subjects ?? []
+  const { minutes, estimated } = mockExamMinutes(exam)
+  const totalQuestions = subjects.reduce((n, s) => n + questionCount(s), 0)
+
+  // Hiç ders satırı yoksa denemeyi tek parça olarak say — yoksa
+  // girilmiş bir deneme istatistikten tümden düşerdi.
+  if (subjects.length === 0) {
+    return [
+      {
+        study_date: exam.exam_date,
+        subject: exam.exam_type || 'Deneme',
+        topic: `${exam.exam_type || 'Deneme'} - ${exam.exam_name || 'Genel deneme'}`,
+        duration_minutes: minutes,
+        correct: 0,
+        incorrect: 0,
+        empty: 0,
+        source: 'exam',
+        estimatedDuration: estimated,
+      },
+    ]
+  }
+
+  return subjects.map((s) => {
+    const q = questionCount(s)
+    // Soru girilmemiş derse süre pay etmek, boş bırakılan bir dersi
+    // çalışılmış göstermek olurdu.
+    const share = totalQuestions > 0 ? q / totalQuestions : 0
+    return {
+      study_date: exam.exam_date,
+      subject: s.subject,
+      topic: `${s.subject} - ${exam.exam_type || 'Deneme'}`,
+      duration_minutes: Math.round(minutes * share),
+      correct: s.correct || 0,
+      incorrect: s.incorrect || 0,
+      empty: s.empty || 0,
+      source: 'exam',
+      estimatedDuration: estimated,
+    }
+  })
+}
+
+/** Branş denemesini tek bir çalışma satırına çevirir. */
+function branchExamEntry(exam) {
+  const { minutes, estimated } = branchExamMinutes(exam)
+  const subject = exam.subject || subjectOf(exam.topic) || 'Genel'
+  return {
+    study_date: exam.exam_date,
+    subject,
+    topic: exam.topic ? `${subject} - ${exam.topic}` : subject,
+    duration_minutes: minutes,
+    correct: exam.correct || 0,
+    incorrect: exam.incorrect || 0,
+    empty: exam.empty || 0,
+    source: 'exam',
+    estimatedDuration: estimated,
+  }
+}
+
+/**
+ * Denemeleri çalışma kaydı satırlarına çevirir.
+ * Tarihi olmayan kayıtlar atlanır — gün bazlı her hesap `study_date`e
+ * dayanıyor, tarihsiz satır sessizce yanlış güne düşerdi.
+ */
+export function examsAsStudyEntries(mockExams = [], branchExams = []) {
+  const out = []
+  ;(mockExams ?? []).forEach((e) => {
+    if (!e?.exam_date) return
+    out.push(...mockExamEntries(e))
+  })
+  ;(branchExams ?? []).forEach((e) => {
+    if (!e?.exam_date) return
+    out.push(branchExamEntry(e))
+  })
+  return out
+}
+
+/**
+ * Günlük kayıtlarla denemeleri tek listede birleştirir.
+ * Sayfaların istatistik fonksiyonlarına vereceği liste budur.
+ */
+export function combineStudyEntries(dailyLogs = [], mockExams = [], branchExams = []) {
+  return [...(dailyLogs ?? []), ...examsAsStudyEntries(mockExams, branchExams)]
+}
+
+/**
+ * Toplamın ne kadarının denemelerden geldiğini ayırır.
+ *
+ * Çift sayım ihtimali var: öğrenci denemeyi hem Denemeler sekmesine
+ * girip hem de "TYT denemesi çözdüm" diye günlük kayıt açmış olabilir.
+ * Bunu otomatik ayıklamak yanlış tahminlere yol açardı; onun yerine
+ * katkıyı görünür kılıyoruz ki şişme olursa fark edilsin.
+ */
+export function splitBySource(entries = []) {
+  const logs = entries.filter((e) => e.source !== 'exam')
+  const exams = entries.filter((e) => e.source === 'exam')
+  return {
+    logs: logTotals(logs),
+    exams: logTotals(exams),
+    examCount: exams.length,
+    /** Deneme sürelerinin en az biri tahminse toplam da tahminlidir. */
+    hasEstimatedDuration: exams.some((e) => e.estimatedDuration && e.duration_minutes > 0),
+  }
+}
 
 /** 'YYYY-MM-DD' — yerel saate göre, UTC kayması olmadan. */
 export function toKey(date) {

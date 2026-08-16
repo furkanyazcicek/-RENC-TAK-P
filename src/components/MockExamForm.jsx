@@ -3,6 +3,7 @@ import { Save } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
 import { SUBJECT_PRESETS, calcNet } from '../lib/examHelpers'
+import { EXAM_DURATIONS, durationHint } from '../lib/examDuration'
 import { toKey } from '../lib/insights'
 import { Alert, Button, Field, Input, Tabs } from './ui'
 
@@ -28,6 +29,10 @@ export default function MockExamForm({ onSubmitted }) {
   const [examType, setExamType] = useState('TYT')
   const [examName, setExamName] = useState('')
   const [examDate, setExamDate] = useState(todayStr())
+  // Boş bırakılabilir — o zaman sınav türünün standart süresi kullanılır
+  // (bkz. src/lib/examDuration.js). Deneme artık günlük çalışma
+  // istatistiklerine de girdiği için süre anlam taşıyor.
+  const [durationMinutes, setDurationMinutes] = useState('')
   const [rows, setRows] = useState(buildRows('TYT'))
   const [saving, setSaving] = useState(false)
   const [feedback, setFeedback] = useState(null)
@@ -68,6 +73,7 @@ export default function MockExamForm({ onSubmitted }) {
         exam_type: examType,
         exam_name: examName.trim() || null,
         exam_date: examDate,
+        duration_minutes: durationMinutes === '' ? null : Number(durationMinutes),
       })
       .select()
       .single()
@@ -94,6 +100,7 @@ export default function MockExamForm({ onSubmitted }) {
       setFeedback({ tone: 'danger', text: subjectsError.message })
     } else {
       setExamName('')
+      setDurationMinutes('')
       setRows(buildRows(examType))
       setFeedback({ tone: 'success', text: 'Deneme sonucun kaydedildi.' })
       onSubmitted?.()
@@ -111,7 +118,7 @@ export default function MockExamForm({ onSubmitted }) {
         />
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-4">
+      <div className="grid sm:grid-cols-3 gap-4">
         <Field label="Deneme Adı" hint="İsteğe bağlı — listede bunu görürsün">
           {({ id }) => (
             <Input
@@ -131,6 +138,21 @@ export default function MockExamForm({ onSubmitted }) {
               value={examDate}
               max={todayStr()}
               onChange={(e) => setExamDate(e.target.value)}
+            />
+          )}
+        </Field>
+        <Field label="Süre (dakika)" hint={durationHint(examType)}>
+          {({ id, describedBy }) => (
+            <Input
+              id={id}
+              aria-describedby={describedBy}
+              type="number"
+              min="0"
+              max="1440"
+              inputMode="numeric"
+              placeholder={String(EXAM_DURATIONS[examType] ?? '')}
+              value={durationMinutes}
+              onChange={(e) => setDurationMinutes(e.target.value)}
             />
           )}
         </Field>
