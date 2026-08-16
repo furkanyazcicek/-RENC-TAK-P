@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
 import Register from './pages/Register';
 import UpdatePassword from './pages/UpdatePassword';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import ParentDashboard from './pages/ParentDashboard';
 import TeacherDashboard from './pages/TeacherDashboard'
 import StudentDetail from './pages/StudentDetail'
@@ -81,6 +82,11 @@ export default function App() {
       />
       
       <Route path="/update-password" element={<UpdatePassword />} />
+
+      {/* Gizlilik politikası HERKESE AÇIK olmalı — giriş arkasına
+          koyulamaz. Google Play ve App Store inceleme ekipleri bu adrese
+          hesapsız bakıyor ve erişemezlerse başvuru reddediliyor. */}
+      <Route path="/gizlilik" element={<PrivacyPolicy />} />
       
       <Route
         path="/veli"

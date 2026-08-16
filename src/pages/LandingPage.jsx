@@ -459,6 +459,15 @@ export default function LandingPage() {
       <footer className="border-t border-line py-10">
         <div className="mx-auto flex max-w-content flex-col items-center gap-3 px-4 sm:px-6">
           <Logo size="sm" />
+          {/* Gizlilik bağlantısı mağaza incelemeleri için gerekli: Play ve
+              App Store, politikanın uygulamadan da ulaşılabilir olmasını
+              istiyor — yalnızca mağaza kaydındaki URL yetmiyor. */}
+          <Link
+            to="/gizlilik"
+            className="focus-ring rounded text-xs font-semibold text-ink/65 underline underline-offset-4 transition-colors hover:text-brand-700"
+          >
+            Gizlilik Politikası
+          </Link>
           <p className="text-center text-xs text-ink/55">
             © {new Date().getFullYear()} Dr. Koç. Tüm hakları saklıdır.
           </p>

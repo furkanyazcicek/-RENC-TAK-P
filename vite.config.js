@@ -36,13 +36,26 @@ export default defineConfig({
         // yolu doğrudan kullanıyor, dosya olmadığı için bildirimler
         // markasız çıkıyordu.
         //
-        // `maskable` bilerek eklenmedi: Android maskeli ikonu daire içine
-        // kırpar ve güvenli alan merkezden %40 yarıçaptır. Logonun altındaki
-        // "DRKOC" yazısı bu kırpmada kesilirdi. Ayrı, bol boşluklu bir
-        // maskeli sürüm hazırlanırsa buraya eklenebilir.
+        // MASKELİ İKON AYRI BİR DOSYADIR, tesadüfen değil:
+        // Android maskeli ikonu daire/squircle içine kırpar ve güvence
+        // altındaki alan yalnızca merkezden %40 yarıçaplı dairedir. Normal
+        // logo bu kırpmaya sokulursa alttaki "DRKOÇ" yazısı kesilir.
+        //
+        // Bu yüzden `icon-512x512-maskable.png` farklı çizilmiştir:
+        //   • yazı yok, yalnızca mezuniyet şapkası
+        //   • gradyan köşelere kadar taşar (yuvarlak köşe YOK — kırpmayı
+        //     maskenin kendisi yapar; yuvarlak köşe eklersek çift kırpılır)
+        //   • şapka 286×216 olarak ortalanmıştır, köşeleri merkeze 179 px
+        //     uzaklıkta kalır; güvenli dairenin yarıçapı 205 px.
         icons: [
           { src: '/icon-192x192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
           { src: '/icon-512x512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+          {
+            src: '/icon-512x512-maskable.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'maskable',
+          },
         ],
       },
       devOptions: {
