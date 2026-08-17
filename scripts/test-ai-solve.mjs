@@ -1169,6 +1169,73 @@ head('13) Gemini reddinde kendini toparlama')
 }
 
 /* ==================================================================
+   14) UZUN SÜREN ÇÖZÜMDE ÖĞRENCİ BİLGİLENDİRİLİR (§40)
+   ------------------------------------------------------------------
+   Süre tavanı yükseltildi: zor soru dakikalarca sürebiliyor. Sessiz
+   bekleme donmuş gibi hissettirir; bu satır GERÇEK bir duruma karşılık
+   gelir — sahte ilerleme değil.
+   ================================================================== */
+
+head('14) Uzun süren çözümde "bu soru zor" bilgisi')
+
+{
+  const { solveQuestion } = await import('../api/_lib/solve/engine.js')
+  const realFetch = globalThis.fetch
+  const realKey = solveConfig.apiKey
+  const realNotice = solveConfig.slowNoticeMs
+  const realSkip = solveConfig.skipTriage
+
+  solveConfig.apiKey = 'test-anahtari'
+  solveConfig.slowNoticeMs = 40 // testte 40 saniye beklemeyelim
+  solveConfig.skipTriage = true // tek çağrıya indir
+
+  globalThis.fetch = async () => {
+    await new Promise((r) => setTimeout(r, 120))
+    return {
+      ok: true,
+      status: 200,
+      text: async () =>
+        JSON.stringify({
+          candidates: [{ content: { parts: [{ text: '{"bos":true}' }] } }],
+          usageMetadata: {},
+        }),
+    }
+  }
+
+  const asamalar = []
+  await solveQuestion({
+    supabase: null,
+    userId: 't',
+    examType: 'AYT',
+    text: 'soru',
+    imagePaths: [],
+    studentNote: null,
+    onStage: (key) => asamalar.push(key),
+  })
+
+  check('Uzun sürünce "zor soru" aşaması bildirilir', asamalar.includes('deepening'), asamalar.join(','))
+  check('Normal aşamalar da bildirilmeye devam eder', asamalar.includes('solving'))
+
+  solveConfig.slowNoticeMs = 5_000
+  const hizli = []
+  await solveQuestion({
+    supabase: null,
+    userId: 't',
+    examType: 'AYT',
+    text: 'soru',
+    imagePaths: [],
+    studentNote: null,
+    onStage: (key) => hizli.push(key),
+  })
+  check('Hızlı çözümde gereksiz uyarı GÖSTERİLMEZ', !hizli.includes('deepening'), hizli.join(','))
+
+  globalThis.fetch = realFetch
+  solveConfig.apiKey = realKey
+  solveConfig.slowNoticeMs = realNotice
+  solveConfig.skipTriage = realSkip
+}
+
+/* ==================================================================
    SONUÇ
    ================================================================== */
 

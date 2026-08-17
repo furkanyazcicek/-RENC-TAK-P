@@ -52,6 +52,9 @@ export const STAGES = {
   reading: 'Soruyu okuyorum…',
   analyzing: 'Konusunu ve zorluğunu belirliyorum…',
   solving: 'Çözüm yolunu oluşturuyorum…',
+  // Uzun süren çözümde gösterilir. Sahte bir "yükleniyor" cümlesi değil:
+  // gerçekten uzun süren bir çağrının ortasında olduğumuz için basılıyor.
+  deepening: 'Bu soru zor — acele etmeden çözüyorum, biraz sürebilir…',
   verifying: 'Çözümü kontrol ediyorum…',
   escalating: 'Bu soru zor — daha dikkatli bakıyorum…',
   board: 'Tahtayı hazırlıyorum…',
@@ -215,17 +218,27 @@ export async function solveQuestion(input) {
 
   const userPrompt = solveUserPrompt({ text, hasImage: images.length > 0, studentNote })
 
-  let attempt = await generateWithFallback({
-    role: route.role,
-    system: SOLVE_SYSTEM,
-    user: userPrompt,
-    images,
-    schema,
-    fallbackSchema: plainSchema,
-    thinkingLevel: route.thinkingLevel,
-    deadline,
-    signal,
-  })
+  /* Uzun sürerse öğrenciye SEBEBİNİ söyle. Süre tavanı yüksek olduğu için
+     zor bir soru dakikalarca sürebiliyor; sessiz bekleme donmuş gibi
+     hissettiriyor. Bu satır gerçek bir duruma karşılık gelir (§40). */
+  const slowNotice = setTimeout(() => stage('deepening'), solveConfig.slowNoticeMs)
+
+  let attempt
+  try {
+    attempt = await generateWithFallback({
+      role: route.role,
+      system: SOLVE_SYSTEM,
+      user: userPrompt,
+      images,
+      schema,
+      fallbackSchema: plainSchema,
+      thinkingLevel: route.thinkingLevel,
+      deadline,
+      signal,
+    })
+  } finally {
+    clearTimeout(slowNotice)
+  }
 
   calls.push({ role: attempt.role, usage: attempt.usage })
   routingLog.push(

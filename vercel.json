@@ -10,10 +10,10 @@
       "maxDuration": 60
     },
     "api/ai-solve/solve.js": {
-      "maxDuration": 120
+      "maxDuration": 240
     },
     "api/ai-solve/check.js": {
-      "maxDuration": 120
+      "maxDuration": 240
     },
     "api/ai-solve/ask.js": {
       "maxDuration": 45

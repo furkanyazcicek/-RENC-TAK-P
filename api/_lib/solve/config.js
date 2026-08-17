@@ -126,7 +126,18 @@ export const solveConfig = {
    * Üst sınır `totalBudgetMs` ve vercel.json'daki maxDuration; istemci
    * zaten kalan bütçeyi aşacak bekleme yapmıyor (bkz. gemini.js).
    */
-  requestTimeoutMs: positive(process.env.GEMINI_TIMEOUT_MS, 90_000),
+  requestTimeoutMs: positive(process.env.GEMINI_TIMEOUT_MS, 180_000),
+
+  /**
+   * Çözüm bu süreyi aşarsa öğrenciye "bu soru zor" satırı gösterilir.
+   *
+   * Süre TAVANI yükseltmek kolay soruları yavaşlatmaz (40 soruluk ölçümde
+   * en hızlı soru 8sn, ortanca 46sn, yalnızca 2 soru tavana dayandı) — ama
+   * bekleyen öğrenci bunu bilmez. Sessiz bekleme "donmuş" gibi hissettirir;
+   * sebebini söylemek beklemeyi katlanılır kılar (§40: aşamalar gerçektir,
+   * bu satır da gerçek bir duruma karşılık gelir).
+   */
+  slowNoticeMs: positive(process.env.SOLVE_SLOW_NOTICE_MS, 40_000),
 
   /**
    * TÜM hattın (triyaj + çözüm + yükseltme) süre bütçesi.
@@ -136,12 +147,17 @@ export const solveConfig = {
    * vercel.json'daki `maxDuration`ın (solve.js = 120sn) ALTINDA tutulur;
    * ikisi birlikte değiştirilir.
    *
-   * Ölçüm (2026-08-17): triyaj 2-20sn, düşünen çözüm 28-45sn. Eski 60
-   * saniyelik sınır tek bir düşünen çözüme ancak yetiyordu; yükseltme
-   * (escalate) pratikte HİÇ çalışamıyordu. 110 saniye yavaş bir triyaj +
-   * çözüm + gerekiyorsa yükseltme için yer bırakır.
+   * BU BİR TAVAN, SABİT BEKLEME DEĞİL. 40 çıkmış AYT sorusuyla ölçüldü:
+   * en hızlı soru 8sn, ortanca 46sn. Tavanı yükseltmek kolay soruları
+   * yavaşlatmaz; yalnızca zor sorunun "çözemedim" demek yerine işini
+   * bitirmesine izin verir.
+   *
+   * 220 saniye şuradan geliyor: ölçümdeki en zor soru (iki yarım çemberin
+   * kesişim alanı, 8.049 düşünme token'ı) 160 saniye sürdü ve eski 110
+   * saniyelik tavanda kesiliyordu. 220, o soruya rahat pay bırakır ve
+   * vercel.json'daki maxDuration'ın (240sn) altında kalır.
    */
-  totalBudgetMs: positive(process.env.SOLVE_TOTAL_BUDGET_MS, 110_000),
+  totalBudgetMs: positive(process.env.SOLVE_TOTAL_BUDGET_MS, 220_000),
 
   /**
    * Aynı bütçe, kısa uç nokta için: "Neden?" / "Takıldım" / alternatif
