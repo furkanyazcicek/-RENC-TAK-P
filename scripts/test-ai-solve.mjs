@@ -24,9 +24,16 @@ import { runVerification, checkStructure, combinedConfidence, sampleFunction } f
 import { routeFromTriage, decideAfterSolve } from '../api/_lib/solve/router.js'
 import { resolveTopic, topicLabel } from '../api/_lib/solve/taxonomy.js'
 import { calculateAICost, totalCost } from '../api/_lib/solve/cost.js'
-import { toGeminiSchema, parseJsonLoose } from '../api/_lib/solve/gemini.js'
+import {
+  toGeminiSchema,
+  parseJsonLoose,
+  generateStructured,
+  generateWithFallback,
+  GeminiError,
+} from '../api/_lib/solve/gemini.js'
 import { buildSolutionSchema, TRIAGE_SCHEMA, readIssueMessage } from '../api/_lib/solve/schema.js'
 import { validatePath } from '../api/_lib/solve/image.js'
+import { userMessage } from '../api/_lib/errors.js'
 import { solveConfig, THINKING_LEVELS } from '../api/_lib/solve/config.js'
 import { plotCurves } from '../api/_lib/solve/plot.js'
 
@@ -810,6 +817,211 @@ check(
   'Mesajlar öğrenciye NE YAPACAĞINI söyler (soru işareti içerir)',
   readIssueMessage('alt_kisim_kesik').includes('?')
 )
+
+/* ==================================================================
+   13) SAĞLAYICI REDDİNDE KENDİNİ TOPARLAMA
+   ------------------------------------------------------------------
+   Üretimde görülen hata: şekilli fizik/geometri sorularında öğrenciye
+   "yapılandırma sorunu var" deniyordu. Sebebi ne olursa olsun (şema reddi
+   ya da Pro modelin kotası), TEK bir sağlayıcı reddi özelliğin tamamını
+   öldürmemeli. Bu testler gerçek ağ çağrısı YAPMAZ; `fetch` taklit edilir.
+   ================================================================== */
+
+head('13) Gemini reddinde kendini toparlama')
+
+{
+  const realFetch = globalThis.fetch
+  const realKey = solveConfig.apiKey
+  // Gerçek çağrı yok; istemcinin "anahtar tanımsız" kısa devresini aşmak
+  // için sahte bir değer.
+  solveConfig.apiKey = 'test-anahtari'
+
+  const reply = (status, body) => ({ ok: status === 200, status, text: async () => body })
+
+  const okBody = (payload) =>
+    JSON.stringify({
+      candidates: [
+        { content: { parts: [{ text: JSON.stringify(payload) }] }, finishReason: 'STOP' },
+      ],
+      usageMetadata: { promptTokenCount: 10, candidatesTokenCount: 5 },
+    })
+
+  const errorBody = (message) => JSON.stringify({ error: { code: 400, message } })
+
+  const figureSchema = buildSolutionSchema({ withFigure: true })
+  const plainSchema = buildSolutionSchema({ withFigure: false })
+
+  /* --- a) Şekilli şema reddedilir → sade şemayla çözüm yine de üretilir --- */
+  {
+    const sent = []
+    globalThis.fetch = async (_url, init) => {
+      const payload = JSON.parse(init.body)
+      sent.push(payload.generationConfig)
+      const hasFigure = JSON.stringify(payload.generationConfig.responseSchema).includes('polylines')
+      return hasFigure
+        ? reply(400, errorBody('Invalid JSON payload: responseSchema is too complex'))
+        : reply(200, okBody({ cozuldu: true }))
+    }
+
+    const result = await generateStructured({
+      role: 'fast',
+      system: 's',
+      user: 'u',
+      schema: figureSchema,
+      fallbackSchema: plainSchema,
+      thinkingLevel: 'low',
+    })
+
+    check('Şema reddinde çözüm sade şemayla üretilir', result.data?.cozuldu === true)
+    check('Düşüş çağırana bildirilir (schemaDowngraded)', result.schemaDowngraded === true)
+    check(
+      'Düşünme düzeyi doğru alana yazılır (thinkingConfig)',
+      sent[0]?.thinkingConfig?.thinkingLevel === 'low' && sent[0]?.thinkingLevel === undefined,
+      JSON.stringify(sent[0]?.thinkingConfig ?? null)
+    )
+    check(
+      'Sebep şema olduğunda düşünme düzeyi GERİ ALINIR',
+      sent.at(-1)?.thinkingConfig?.thinkingLevel === 'low',
+      JSON.stringify(sent.map((c) => c.thinkingConfig ?? null))
+    )
+    check(
+      'Onarımlar yeniden deneme bütçesini tüketmez',
+      result.attempts === 1 && sent.length === 3,
+      `attempts=${result.attempts}, istek=${sent.length}`
+    )
+  }
+
+  /* --- b) Sebep düşünme düzeyiyse şema DÜŞÜRÜLMEZ (şekiller korunur) --- */
+  {
+    globalThis.fetch = async (_url, init) => {
+      const config = JSON.parse(init.body).generationConfig
+      return config.thinkingConfig
+        ? reply(400, errorBody('thinkingLevel is not supported by this model'))
+        : reply(200, okBody({ cozuldu: true }))
+    }
+
+    const result = await generateStructured({
+      role: 'fast',
+      system: 's',
+      user: 'u',
+      schema: figureSchema,
+      fallbackSchema: plainSchema,
+      thinkingLevel: 'high',
+    })
+
+    check('Düşünme düzeyi reddinde çözüm yine üretilir', result.data?.cozuldu === true)
+    check('Şekil alanları gereksiz yere düşürülmez', result.schemaDowngraded === false)
+  }
+
+  /* --- c) Pro'nun kotası dolduğunda Flash devralır --- */
+  {
+    const roles = []
+    globalThis.fetch = async (url) => {
+      const pro = String(url).includes(encodeURIComponent(solveConfig.models.pro))
+      roles.push(pro ? 'pro' : 'fast')
+      return pro
+        ? reply(429, JSON.stringify({ error: { message: 'You exceeded your current quota' } }))
+        : reply(200, okBody({ cozuldu: true }))
+    }
+
+    const result = await generateWithFallback({
+      role: 'pro',
+      system: 's',
+      user: 'u',
+      schema: plainSchema,
+      thinkingLevel: 'high',
+    })
+
+    check('Pro kotası dolunca Flash devralır', result.data?.cozuldu === true)
+    check('Devralma sessiz değil (fallbackFrom taşınır)', result.fallbackFrom === 'pro')
+    check('Kota hatasında Pro tekrar tekrar denenmez', roles.filter((r) => r === 'pro').length === 1)
+  }
+
+  /* --- d) Anahtar hatasında yedek model DENENMEZ --- */
+  {
+    let calls = 0
+    globalThis.fetch = async () => {
+      calls += 1
+      return reply(401, JSON.stringify({ error: { message: 'API key not valid' } }))
+    }
+
+    let thrown = null
+    try {
+      await generateWithFallback({
+        role: 'pro',
+        system: 's',
+        user: 'u',
+        schema: plainSchema,
+        thinkingLevel: 'high',
+      })
+    } catch (error) {
+      thrown = error
+    }
+
+    check('Anahtar hatası yutulmaz', thrown instanceof GeminiError && thrown.kind === 'auth')
+    check('Anahtar hatasında ikinci model denenmez', calls === 1, `çağrı=${calls}`)
+    check(
+      'Öğrenciye giden kod "yapılandırma"',
+      thrown?.code === 'solve_not_configured'
+    )
+  }
+
+  /* --- e) Süre bütçesi bitince yeniden DENENMEZ ---
+     Üretimde görülen hâl: 45 saniyelik zaman aşımı üç kez denendi = 135
+     saniye. Vercel fonksiyonu 60. saniyede kesildiği için öğrenci hata
+     bile göremiyor, ekranda çark dönüyordu. */
+  {
+    let calls = 0
+    globalThis.fetch = async (_url, init) =>
+      new Promise((_resolve, reject) => {
+        calls += 1
+        // Gerçek fetch gibi davran: iptal edilince AbortError fırlat.
+        init.signal.addEventListener(
+          'abort',
+          () => reject(Object.assign(new Error('aborted'), { name: 'AbortError' })),
+          { once: true }
+        )
+      })
+
+    const attempt = async (budgetMs) => {
+      calls = 0
+      const started = Date.now()
+      let thrown = null
+      try {
+        await generateStructured({
+          role: 'fast',
+          system: 's',
+          user: 'u',
+          schema: plainSchema,
+          timeoutMs: 45_000, // Vercel'in 60sn'sini üç kez aşacak sabit değer
+          deadline: Date.now() + budgetMs,
+        })
+      } catch (error) {
+        thrown = error
+      }
+      return { elapsed: Date.now() - started, calls, thrown }
+    }
+
+    // Kalan süre anlamlı bir denemeye yetmiyorsa hiç deneme yapılmaz.
+    const hopeless = await attempt(2_000)
+    check('Umutsuz bütçede istek hiç atılmaz', hopeless.calls === 0, `çağrı=${hopeless.calls}`)
+    check('Umutsuz bütçe anında biter', hopeless.elapsed < 1_000, `${hopeless.elapsed} ms`)
+
+    // Bütçe bir denemeye yetiyor: TEK deneme yapılır, zaman aşımından
+    // sonra yeniden denenmez (eski davranış: 3 × 45sn).
+    const single = await attempt(6_000)
+    check('Bekleme süresi kalan bütçeyle sınırlanır', single.elapsed < 9_000, `${single.elapsed} ms`)
+    check('Zaman aşımından sonra yeniden denenmez', single.calls === 1, `çağrı=${single.calls}`)
+    check(
+      'Öğrenciye Soru Çöz diliyle zaman aşımı mesajı gider',
+      single.thrown?.code === 'solve_timeout' && !userMessage(single.thrown.code).includes('AI Koç'),
+      single.thrown?.code
+    )
+  }
+
+  globalThis.fetch = realFetch
+  solveConfig.apiKey = realKey
+}
 
 /* ==================================================================
    SONUÇ

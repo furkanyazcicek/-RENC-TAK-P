@@ -40,6 +40,15 @@ const MESSAGES = {
   // modülde paylaşmak, hata mesajını yanlış yere işaret ettirdi.
   solve_not_configured:
     'Soru çözüm servisi şu anda kullanılamıyor. Bir yapılandırma sorunu var — öğretmenine haber verebilirsin.',
+  // Aynı gerekçe `solve_not_configured` ile birebir aynı: yukarıdaki
+  // `upstream_*` mesajları "AI Koç" diyor ve Soru Çöz ekranında çıkınca
+  // öğrenci yanlış özelliğin bozuk olduğunu sanıyor. Gemini kaynaklı
+  // geçici hatalar bu üç koda düşer (bkz. solve/gemini.js > codeFor).
+  solve_timeout:
+    'Çözüm hazırlamak beklenenden uzun sürdü. Soruyu tekrar gönderir misin? Tek soru gönderirsen daha hızlı çözerim.',
+  solve_busy: 'Şu anda çok yoğunum. Birkaç saniye sonra tekrar dener misin?',
+  solve_upstream_error:
+    'Çözüm servisine şu anda ulaşamıyorum. Birkaç saniye sonra tekrar deneyebilirsin.',
   rate_limited_minute:
     'Çok hızlı gidiyorsun — art arda çok fazla soru gönderdin. Bir dakika sonra tekrar dener misin?',
   solve_no_input: 'Çözmem için bir soru fotoğrafı yükle ya da soruyu yazarak gönder.',

@@ -81,12 +81,19 @@ export const solveConfig = {
   temperature: num(process.env.GEMINI_TEMPERATURE, 0),
 
   /**
-   * Çıktı token tavanı — kaçak maliyete karşı sert sınır. Tahta adımları
-   * + doğrulama iddiaları uzun sorularda 4-5 bin token'a çıkabiliyor;
-   * 8000 rahat bir tavan bırakır. Bu sınıra dayanan yanıt `truncated`
-   * işaretlenir ve ÇÖZÜM OLARAK GÖSTERİLMEZ (bkz. gemini.js).
+   * Çıktı token tavanı — kaçak maliyete karşı sert sınır. Bu sınıra dayanan
+   * yanıt `truncated` işaretlenir ve ÇÖZÜM OLARAK GÖSTERİLMEZ (bkz.
+   * gemini.js), yani düşük tavan doğrudan "çözemiyorum" demektir.
+   *
+   * ⚠️ DÜŞÜNME TOKEN'LARI DA BU TAVANDAN HARCANIR. 2026-08-17'de gerçek
+   * anahtarla ölçüldü (zor fizik sorusu, şekilli şema, gemini-3.6-flash):
+   *   düşünme yok → 2.169 token
+   *   medium      → 3.642 düşünme + 2.651 çıktı =  6.293
+   *   high        → 6.169 düşünme + 1.963 çıktı =  8.132  ← 8000'i AŞIYOR
+   * Eski 8000 tavanı, düşünme gerçekten çalışmaya başlayınca zor soruları
+   * MAX_TOKENS'a düşürüyordu. 16000 iki katına yakın pay bırakır.
    */
-  maxOutputTokens: positive(process.env.GEMINI_MAX_OUTPUT_TOKENS, 8000),
+  maxOutputTokens: positive(process.env.GEMINI_MAX_OUTPUT_TOKENS, 16000),
 
   /** Triyaj kısa bir sınıflandırma — ayrı ve çok daha düşük tavan. */
   maxTriageTokens: positive(process.env.GEMINI_MAX_TRIAGE_TOKENS, 1200),
@@ -101,6 +108,27 @@ export const solveConfig = {
    */
   requestTimeoutMs: positive(process.env.GEMINI_TIMEOUT_MS, 45_000),
 
+  /**
+   * TÜM hattın (triyaj + çözüm + yükseltme) süre bütçesi.
+   *
+   * Fonksiyon süresi dolduğunda SSE akışı ortasından kopar ve öğrenci
+   * dönen çarkla kalır — hata bile göremez. Bu yüzden bütçe daima
+   * vercel.json'daki `maxDuration`ın (solve.js = 120sn) ALTINDA tutulur;
+   * ikisi birlikte değiştirilir.
+   *
+   * Ölçüm (2026-08-17): triyaj 2-20sn, düşünen çözüm 28-45sn. Eski 60
+   * saniyelik sınır tek bir düşünen çözüme ancak yetiyordu; yükseltme
+   * (escalate) pratikte HİÇ çalışamıyordu. 110 saniye yavaş bir triyaj +
+   * çözüm + gerekiyorsa yükseltme için yer bırakır.
+   */
+  totalBudgetMs: positive(process.env.SOLVE_TOTAL_BUDGET_MS, 110_000),
+
+  /**
+   * Aynı bütçe, kısa uç nokta için: "Neden?" / "Takıldım" / alternatif
+   * yöntem `api/ai-solve/ask.js` üzerinden gidiyor (maxDuration = 45sn).
+   */
+  askBudgetMs: positive(process.env.SOLVE_ASK_BUDGET_MS, 38_000),
+
   /** Triyaj hızlı olmalı; kullanıcı ilk aşamada bekliyor. */
   triageTimeoutMs: positive(process.env.GEMINI_TRIAGE_TIMEOUT_MS, 20_000),
 
@@ -114,22 +142,41 @@ export const solveConfig = {
      Gemini düşünme token'ı üretir ve bunlar FATURALANIR; düzeyi role göre
      ayırmak, kolay soruda Pro fiyatına düşünme yakmayı engeller.
 
-     ⚠️ ALAN ADI GEMINI 3'TE DEĞİŞTİ. Eski nesil `thinkingConfig.thinkingBudget`
-     (sayı) bekliyordu; Gemini 3 modelleri `thinkingLevel` (metin) bekliyor ve
-     eskisini gönderince isteğin TAMAMINI 400 ile reddediyor. Üretimde tam
-     olarak bu yaşandı: her çözüm isteği "bad_request" ile düşüyordu.
+     ⚠️ ALAN ADI GEMINI 3'TE DEĞİŞTİ ama YERİ DEĞİŞMEDİ. Doğru yazım:
+        generationConfig.thinkingConfig.thinkingLevel = "low" | "high"
+     Eski nesil aynı yerde `thinkingBudget` (sayı) bekliyordu. `thinkingLevel`
+     GENERATION_CONFIG'İN KÖKÜNE yazılırsa Google gövdeyi ayrıştırırken
+     reddeder ("Unknown name ... Cannot find field") — üretimde tam olarak bu
+     yaşandı ve fark edilmedi: gemini.js istekten bu alanı atıp yeniden
+     denediği için çözümler geliyor, ama düşünme düzeyi UYGULANMIYORDU.
 
      Ayrıca DÜŞÜNME KAPATILAMIYOR. En düşük değer modele göre 'minimal' ya da
      'low'; 'off' ya da 0 diye bir seçenek yok.
 
-     Varsayılanlar bilinçli olarak 'low'/'high': 'minimal' bazı modellerde
+     Varsayılanlar bilinçli olarak 'low'/'medium': 'minimal' bazı modellerde
      (örn. gemini-3.7-flash) desteklenmiyor ve model değiştirildiğinde
-     sessizce 400'e düşmemeliyiz. */
+     sessizce 400'e düşmemeliyiz.
+
+     ⚠️ DÜZEY DOĞRUDAN SÜREYE ÇEVRİLİR — VE SÜRE BURADA KITTIR. Ölçüm
+     (2026-08-17, gemini-3.6-flash, ücretsiz katman, makaralı fizik sorusu):
+       low    → 28-34sn, 2.169 token · kütleleri AYIRAMADI ("m2+m3=5 kg")
+       medium → 39sn, 6.293 token · iki kütleyi de veren tam çözüm
+       high   → 40sn, 8.132 token · medium'a göre kazanç yok, tavana baskı var
+
+     'high' DEĞİL 'medium': kazancı yokken 60 saniyelik Vercel sınırına
+     dayanıyor. 'low' da değil: en zor soruda yanlış cevaba götürdü ve bu
+     modülün ilk kuralı yanlış cevap vermemek (§30).
+
+     Yine de medium + yavaş bir triyaj toplamda 50 saniyeyi bulabiliyor.
+     Loglarda `solve_timeout` görülmeye başlarsa iki gerçek çözüm var:
+     Gemini faturalandırmasını açmak (gerçek Pro model + daha hızlı katman)
+     ya da vercel.json'daki maxDuration'ı yükseltmek. Acil durumda
+     GEMINI_THINKING_PRO=low tek satırlık geri adımdır. */
 
   thinkingLevel: {
     triage: level(process.env.GEMINI_THINKING_TRIAGE, 'low'),
     fast: level(process.env.GEMINI_THINKING_FAST, 'low'),
-    pro: level(process.env.GEMINI_THINKING_PRO, 'high'),
+    pro: level(process.env.GEMINI_THINKING_PRO, 'medium'),
     explain: level(process.env.GEMINI_THINKING_EXPLAIN, 'low'),
   },
 
@@ -167,19 +214,30 @@ export const solveConfig = {
   },
 
   /* ---------- Fiyatlandırma ($ / 1 milyon token) ----------
-     ⚠️ DOĞRULANMAMIŞ. `scripts/bench/config.mjs` ile aynı uyarı geçerli:
-     bu değerler üçüncü taraf toplayıcılardan derlendi, Google'ın resmî
-     fiyat sayfasından DEĞİL. Maliyet raporunu ciddiye almadan önce
-     doğrulayın ve ortam değişkeniyle ezin. Yanlış fiyat = yanlış model
-     seçimi. Fiyatlar model KİMLİĞİNE değil ROLE bağlıdır; kimlik ortam
+     Kaynak: ai.google.dev/gemini-api/docs/pricing — 2026-08-17'de
+     Google'ın RESMÎ sayfasından alındı (önceki değerler üçüncü taraf
+     toplayıcılardan derlenmiş tahminlerdi ve Flash'ı iki katı pahalı
+     gösteriyordu).
+
+     ⚠️ 1 OCAK 2027'DE FLASH FİYATI İKİYE KATLANIYOR: $0.75/$3.75 tanıtım
+     fiyatı 31 Aralık 2026'da bitiyor, ardından $1.50/$7.50. O tarihte bu
+     iki satır güncellenmeli, yoksa maliyet raporu yarısını gösterir.
+
+     ⚠️ MALİYETİN NEREDEYSE TAMAMI ÇIKTI TOKEN'I. Düşünme token'ları da
+     çıktı sayılır — yani `thinkingLevel` bir kalite ayarı olduğu kadar
+     doğrudan bir FİYAT ayarıdır ('medium', 'low'un ~2 katı).
+
+     Fiyatlar model KİMLİĞİNE değil ROLE bağlıdır; kimlik ortam
      değişkeniyle değiştiğinde fiyat eşlemesi bozulmasın diye. */
 
   pricing: {
+    // gemini-3.6-flash
     fast: {
-      in: num(process.env.SOLVE_PRICE_FAST_IN, 1.5),
-      out: num(process.env.SOLVE_PRICE_FAST_OUT, 7.5),
+      in: num(process.env.SOLVE_PRICE_FAST_IN, 0.75),
+      out: num(process.env.SOLVE_PRICE_FAST_OUT, 3.75),
       verified: process.env.SOLVE_PRICE_FAST_IN != null,
     },
+    // gemini-3.1-pro-preview (≤200k token istem)
     pro: {
       in: num(process.env.SOLVE_PRICE_PRO_IN, 2.0),
       out: num(process.env.SOLVE_PRICE_PRO_OUT, 12.0),

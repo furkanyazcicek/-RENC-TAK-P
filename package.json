@@ -13,7 +13,8 @@
     "bench:review": "node scripts/bench/review.mjs",
     "bench:report": "node scripts/bench/report.mjs",
     "test:parent-rls": "node scripts/test-parent-rls.mjs",
-    "test:ai-solve": "node scripts/test-ai-solve.mjs"
+    "test:ai-solve": "node scripts/test-ai-solve.mjs",
+    "diagnose:solve": "node scripts/diagnose-solve.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.45.4",

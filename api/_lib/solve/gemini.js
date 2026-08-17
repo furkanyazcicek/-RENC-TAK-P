@@ -85,13 +85,13 @@ function codeFor(kind) {
     case 'bad_request':
       return 'solve_not_configured'
     case 'rate_limit':
-      return 'upstream_rate_limited'
+      return 'solve_busy'
     case 'timeout':
-      return 'upstream_timeout'
+      return 'solve_timeout'
     case 'image_rejected':
       return 'solve_image_rejected'
     default:
-      return 'upstream_error'
+      return 'solve_upstream_error'
   }
 }
 
@@ -136,6 +136,10 @@ export function toGeminiSchema(node) {
   const out = {}
   for (const [key, value] of Object.entries(node)) {
     if (UNSUPPORTED.has(key)) continue
+    // Boş açıklama modele hiçbir şey öğretmez ama şema boyutuna yazılır;
+    // şema karmaşıklığı 400'ün bilinen sebeplerinden biri (bkz. aşağıdaki
+    // şema küçültme yedeği).
+    if (key === 'description' && typeof value === 'string' && !value.trim()) continue
     out[key] = toGeminiSchema(value)
   }
 
@@ -267,14 +271,16 @@ async function httpPost(url, { body, signal, timeoutMs }) {
  * @param {string} params.user                Kullanıcı istemi
  * @param {GeminiImage[]} [params.images]     Soru / öğrenci çözümü görselleri
  * @param {object} params.schema              Sağlayıcı-bağımsız JSON Schema
+ * @param {object} [params.fallbackSchema]    Şema 400 ile reddedilirse denenecek SADE şema
  * @param {number} [params.maxOutputTokens]
  * @param {string} [params.thinkingLevel]
  * @param {number} [params.timeoutMs]
+ * @param {number} [params.deadline]         Tüm hattın bitmesi gereken an (epoch ms)
  * @param {AbortSignal} [params.signal]
  *
  * @returns {Promise<{
- *   data: object, role: string, modelId: string, usage: object,
- *   recovered: boolean, truncated: boolean, latencyMs: number, attempts: number
+ *   data: object, role: string, modelId: string, usage: object, recovered: boolean,
+ *   truncated: boolean, schemaDowngraded: boolean, latencyMs: number, attempts: number
  * }>}
  * @throws {GeminiError}
  */
@@ -284,9 +290,11 @@ export async function generateStructured({
   user,
   images = [],
   schema,
+  fallbackSchema = null,
   maxOutputTokens = solveConfig.maxOutputTokens,
   thinkingLevel,
   timeoutMs = solveConfig.requestTimeoutMs,
+  deadline = 0,
   signal,
 }) {
   if (!solveConfig.apiKey) {
@@ -310,12 +318,16 @@ export async function generateStructured({
 
   // Düşünme düzeyi yalnızca AÇIKÇA verildiğinde gönderilir.
   //
-  // ⚠️ Bu alan sağlayıcı tarafında bir kez zaten değişti (bkz. config.js).
-  // Desteklemeyen bir modele gönderilirse istek 400 ile TAMAMEN reddedilir;
-  // model ortam değişkeniyle değiştirilebildiği için bu sürekli bir risk.
-  // Aşağıdaki döngü, 400 alınca düşünme alanı olmadan bir kez daha dener.
+  // ⚠️ ALAN YERİ: `generationConfig.thinkingConfig.thinkingLevel`.
+  // KÖKÜNE (generationConfig.thinkingLevel) yazılırsa Google isteği daha
+  // gövdeyi ayrıştırırken reddeder:
+  //   Unknown name "thinkingLevel" at 'generation_config': Cannot find field
+  // Bu üretimde yaşandı ve GÖRÜNMEDİ: aşağıdaki onarım merdiveni alanı
+  // atıp yeniden denediği için çözümler geliyordu — ama HİÇBİRİ istenen
+  // düşünme düzeyiyle üretilmiyordu ve her istek boşa bir tur atıyordu.
+  // (`thinkingConfig.thinkingBudget` de geçerli bir alandır; sayı bekler.)
   if (thinkingLevel) {
-    generationConfig.thinkingLevel = thinkingLevel
+    generationConfig.thinkingConfig = { thinkingLevel }
   }
 
   const body = {
@@ -327,10 +339,85 @@ export async function generateStructured({
   const url = `${solveConfig.baseUrl}/models/${encodeURIComponent(modelId)}:generateContent`
 
   let lastError = null
+  let schemaDowngraded = false
+
+  /* ---------- ONARIM MERDİVENİ (400 için) ----------
+     400, isteğin TAMAMININ reddedilmesi demek: sağlayıcının beğenmediği
+     TEK bir alan yüzünden özelliğin tamamı çalışmaz hâle geliyor. Düşünme
+     alanının yanlış yere yazılması (bkz. yukarısı) tam olarak buna yol
+     açtı; her istek önce reddediliyor, sonra bu merdivenle kurtarılıyordu.
+
+     Sağlayıcı hangi alanı beğenmediğini her zaman ayırt edilebilir biçimde
+     söylemediği için tahmin etmeye çalışmıyoruz: şüphelileri SIRAYLA
+     eliyoruz. Her basamak en fazla bir kez uygulanır (merdiven sonludur)
+     ve yeniden deneme bütçesinden düşmez — bunlar geçici bir hatanın
+     tekrarı değil, isteği düzeltme hamleleri.
+
+     İkinci basamağın düşünme düzeyini GERİ ALMASI bilinçli: birinci
+     basamak işe yaramadıysa sebep o değildi, kalitesini boşuna
+     kaybetmeyelim. */
+  const repairs = []
+
+  if (thinkingLevel) {
+    repairs.push({
+      label: `düşünme yapılandırması bırakıldı (thinkingLevel="${thinkingLevel}")`,
+      apply: () => {
+        delete generationConfig.thinkingConfig
+      },
+    })
+  }
+
+  if (fallbackSchema) {
+    repairs.push({
+      label: 'şema sadeleştirildi (şekil alanları düşürüldü)',
+      apply: () => {
+        if (thinkingLevel) generationConfig.thinkingConfig = { thinkingLevel }
+        generationConfig.responseSchema = toGeminiSchema(fallbackSchema)
+        schemaDowngraded = true
+      },
+    })
+
+    if (thinkingLevel) {
+      repairs.push({
+        label: 'sade şema + düşünme yapılandırması bırakıldı',
+        apply: () => {
+          delete generationConfig.thinkingConfig
+        },
+      })
+    }
+  }
+
+  let repairIndex = 0
+
+  /* ---------- SÜRE BÜTÇESİ ----------
+     Sabit zaman aşımı tek başına yetmiyor: 45sn'lik üç deneme 135 saniye
+     eder, oysa Vercel fonksiyonu 60. saniyede kesilir. Kesilme öğrenciye
+     hata bile göstermez — SSE akışı ortasından kopar, ekranda çark döner
+     kalır. Bu yüzden BEKLEME SÜRESİ kalan bütçeden hesaplanır ve bütçe
+     bittiğinde yeniden deneme yapılmaz: geç kalmış bir cevabı kimse
+     görmeyecekse onu beklemek yalnızca zarar. */
+  const timeLeft = () => (deadline ? deadline - Date.now() : Number.POSITIVE_INFINITY)
+
+  /** Anlamlı bir denemeye yetecek en az süre. */
+  const MIN_ATTEMPT_MS = 4000
 
   for (let attempt = 1; attempt <= solveConfig.maxRetries + 1; attempt += 1) {
+    const budget = timeLeft()
+
+    if (budget < MIN_ATTEMPT_MS) {
+      console.error(`[ai-solve:gemini] ${modelId} süre bütçesi bitti (kalan ${Math.max(0, budget)}ms)`)
+      throw (
+        lastError ??
+        new GeminiError('solve_timeout', { status: 408, kind: 'timeout', detail: 'süre bütçesi bitti' })
+      )
+    }
+
     const started = Date.now()
-    const response = await httpPost(url, { body, signal, timeoutMs })
+    const response = await httpPost(url, {
+      body,
+      signal,
+      timeoutMs: Math.min(timeoutMs, budget),
+    })
 
     if (response.ok) {
       const parsed = readCandidate(response.json)
@@ -358,6 +445,9 @@ export async function generateStructured({
         usage: parsed.usage,
         recovered: parsed.recovered,
         truncated: parsed.truncated,
+        // Şekil alanları düşürüldüyse çağıran taraf bunu BİLMELİ: çözüm
+        // geçerlidir ama tahtada çizim olmayacaktır.
+        schemaDowngraded,
         latencyMs: Date.now() - started,
         attempts: attempt,
       }
@@ -371,22 +461,22 @@ export async function generateStructured({
       `[ai-solve:gemini] ${modelId} HTTP ${response.status} (${kind}) ${response.body?.slice(0, 300) ?? ''}`
     )
 
-    /* ---------- KENDİNİ TOPARLAYAN YEDEK ----------
-       400, isteğin tamamının reddedilmesi demek. Sağlayıcının kabul
-       etmediği tek bir alan yüzünden ÖZELLİĞİN TAMAMI çalışmaz hâle
-       geliyor — Gemini 3'te `thinkingBudget` → `thinkingLevel` değişikliği
-       tam olarak buna yol açtı.
+    /* Reddi kabullenmeden önce merdivenin bir sonraki basamağını dene.
+       Ürün karşılığı: şekilli sorularda çözüm şeması, her adıma iliştirilen
+       büyük FIGURE_SCHEMA yüzünden reddedilebiliyor. Yedek şema şekilsizdir
+       — öğrenci tahtada çizim görmez ama ÇÖZÜMÜ görür. Hiçbir şey
+       göstermemekten iyidir; §30 yanlış cevabı yasaklar, çizimsiz çözümü
+       değil. Düşüş `schemaDowngraded` ile yukarı bildirilir.
 
-       Bu yüzden 400 alındığında düşünme alanını atıp BİR KEZ daha
-       deniyoruz. Düşünme düzeyi bir optimizasyondur; onsuz çözüm biraz
-       daha pahalı olabilir ama ÇALIŞIR. Sağlayıcı alan adını yine
-       değiştirirse öğrenci bunu hiç fark etmez, biz logdan görürüz. */
-    if (response.status === 400 && generationConfig.thinkingLevel) {
-      console.error(
-        `[ai-solve:gemini] ${modelId} düşünme düzeyi reddedildi ` +
-          `(thinkingLevel="${generationConfig.thinkingLevel}") — alansız yeniden deneniyor`
-      )
-      delete generationConfig.thinkingLevel
+       `image_rejected` dışarıda: orada sorun istekte değil FOTOĞRAFTA ve
+       öğrenciye söylenecek net bir şey var ("düz açıyla tekrar çek").
+       Onarım denemek yalnızca o cümleyi geciktirir. */
+    if (response.status === 400 && kind !== 'image_rejected' && repairIndex < repairs.length) {
+      const repair = repairs[repairIndex]
+      repairIndex += 1
+      repair.apply()
+      console.error(`[ai-solve:gemini] ${modelId} 400 — onarım: ${repair.label}`)
+      attempt -= 1
       continue
     }
 
@@ -401,10 +491,16 @@ export async function generateStructured({
 
     // Üstel geri çekilme + jitter: hız sınırına çarpmışken sağlayıcıyı
     // dövmek yalnızca öğrenciyi bekletir.
-    await sleep(backoffMs(attempt))
+    const wait = backoffMs(attempt)
+
+    // Bekleyip sonra "süre bitti" demek en kötüsü: hem geciktirir hem
+    // sonuç vermez. Bütçe yetmiyorsa hemen vazgeç.
+    if (timeLeft() < wait + MIN_ATTEMPT_MS) throw lastError
+
+    await sleep(wait)
   }
 
-  throw lastError ?? new GeminiError('upstream_error', { kind: 'unknown' })
+  throw lastError ?? new GeminiError('solve_upstream_error', { kind: 'unknown' })
 }
 
 function backoffMs(attempt) {
@@ -458,9 +554,16 @@ export async function generateWithFallback(params) {
   try {
     return await generateStructured(params)
   } catch (error) {
+    /* `quota` de kurtarılabilir sayılır. Sebep: kota model BAŞINA ve
+       katman başına verilir; önizleme (preview) modellerinin kotası
+       genellikle çok daha dardır. Pro'nun günlük kotası dolduğunda
+       öğrenciye "yapılandırma sorunu" demek yerine Flash ile çözmek
+       doğru davranış — kotanın dolması ÖZELLİĞİN ÖLMESİ demek olmamalı.
+       `auth` ve `schema_rejected` burada YOK: ikisi de diğer modelde de
+       aynı şekilde başarısız olur, denemek yalnızca öğrenciyi bekletir. */
     const recoverable =
       error instanceof GeminiError &&
-      ['model_not_found', 'server', 'rate_limit', 'timeout', 'unknown'].includes(error.kind)
+      ['model_not_found', 'server', 'rate_limit', 'quota', 'timeout', 'unknown'].includes(error.kind)
 
     if (!backup || !recoverable) throw error
 
@@ -468,10 +571,17 @@ export async function generateWithFallback(params) {
       `[ai-solve:gemini] ${primary} kullanılamadı (${error.kind}) → ${backup} ile deneniyor`
     )
 
+    /* DÜŞÜNME DÜZEYİ KORUNUR — yedek rolün varsayılanına DÜŞÜRÜLMEZ.
+       Değişen şey modeldi, sorunun zorluğu değil: Pro istenmişse soru zor
+       demektir ve Flash'ın o soruyu daha az düşünerek çözmesi beklenemez.
+       Ölçüldü (2026-08-17, gemini-3.6-flash, makaralı fizik sorusu):
+       'low' ile kütleleri ayıramayıp "m2+m3=5 kg" dedi; 'medium' ile tam
+       çözümü verdi. Yedeğe düşerken düzeyi düşürmek, tam da en zor soruda
+       en zayıf ayarı kullanmak olurdu. */
     const result = await generateStructured({
       ...params,
       role: backup,
-      thinkingLevel: solveConfig.thinkingLevel[backup],
+      thinkingLevel: params.thinkingLevel ?? solveConfig.thinkingLevel[backup],
     })
 
     return { ...result, fallbackFrom: primary, fallbackReason: error.kind }

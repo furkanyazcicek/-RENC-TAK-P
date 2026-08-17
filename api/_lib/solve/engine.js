@@ -80,6 +80,12 @@ export async function solveQuestion(input) {
   const calls = []
   const routingLog = []
 
+  /* Hattın tamamının bitmesi gereken an. Her Gemini çağrısına veriliyor:
+     istemci bekleme süresini buradan hesaplıyor ve bütçe bittiğinde
+     yeniden denemiyor. Olmazsa üç kez 45sn beklenip Vercel'in 60sn
+     sınırına çarpılıyor — öğrenci hata bile göremiyor (bkz. gemini.js). */
+  const deadline = startedAt + solveConfig.totalBudgetMs
+
   const stage = (key) => onStage?.(key, STAGES[key])
 
   /* ---------- 0) Görseller ---------- */
@@ -105,6 +111,7 @@ export async function solveQuestion(input) {
     maxOutputTokens: solveConfig.maxTriageTokens,
     thinkingLevel: solveConfig.thinkingLevel.triage,
     timeoutMs: solveConfig.triageTimeoutMs,
+    deadline,
     signal,
   })
 
@@ -145,6 +152,14 @@ export async function solveQuestion(input) {
   stage('solving')
 
   const schema = buildSolutionSchema({ withFigure: route.needsFigure, multipleChoice })
+
+  // Şekil şeması büyüktür ve sağlayıcı tarafından reddedilebilir (400).
+  // O durumda çözümden tamamen vazgeçmek yerine şekilsiz şemayla devam
+  // ederiz: öğrenci çizim göremez ama çözümü görür (bkz. gemini.js).
+  const plainSchema = route.needsFigure
+    ? buildSolutionSchema({ withFigure: false, multipleChoice })
+    : null
+
   const userPrompt = solveUserPrompt({ text, hasImage: images.length > 0, studentNote })
 
   let attempt = await generateWithFallback({
@@ -153,7 +168,9 @@ export async function solveQuestion(input) {
     user: userPrompt,
     images,
     schema,
+    fallbackSchema: plainSchema,
     thinkingLevel: route.thinkingLevel,
+    deadline,
     signal,
   })
 
@@ -167,6 +184,7 @@ export async function solveQuestion(input) {
       usage: attempt.usage,
       latencyMs: attempt.latencyMs,
       fallbackFrom: attempt.fallbackFrom,
+      schemaDowngraded: attempt.schemaDowngraded,
     })
   )
 
@@ -188,7 +206,28 @@ export async function solveQuestion(input) {
 
   let escalated = false
 
-  if (decision.action === 'escalate') {
+  /* SÜRE BÜTÇESİ. Yükseltme İKİNCİ bir tam çözüm çağrısıdır ve düşünen
+     modelde 30-40 saniye sürer. Vercel fonksiyonu 60. saniyede kesiliyor;
+     kesilme SSE akışını ortasında koparır ve öğrenci hata mesajı bile
+     görmeden dönen çarkla kalır — elimizdeki geçerli çözümü göstermekten
+     çok daha kötü bir sonuç. Bu yüzden kalan süre bir çağrıya yetmiyorsa
+     yükseltmeden VAZGEÇİYORUZ; karar, yükseltme başarısız olmuş gibi
+     yeniden veriliyor (güven eşiği hâlâ geçilmiyorsa çözüm yine
+     gösterilmez — §30 gevşetilmiyor). */
+  const remainingMs = () => solveConfig.totalBudgetMs - (Date.now() - startedAt)
+
+  if (decision.action === 'escalate' && remainingMs() < Math.max(attempt.latencyMs ?? 0, 12_000)) {
+    routingLog.push({
+      stage: 'escalate_skipped',
+      reason: `süre bütçesi yetmiyor (kalan ${Math.max(0, remainingMs())}ms)`,
+    })
+    decision = decideAfterSolve({
+      role: attempt.role,
+      verification,
+      confidence,
+      alreadyEscalated: true,
+    })
+  } else if (decision.action === 'escalate') {
     escalated = true
     stage('escalating')
 
@@ -199,7 +238,9 @@ export async function solveQuestion(input) {
         user: userPrompt,
         images,
         schema,
+        fallbackSchema: plainSchema,
         thinkingLevel: solveConfig.thinkingLevel.pro,
+        deadline,
         signal,
       })
 
@@ -212,6 +253,7 @@ export async function solveQuestion(input) {
           reason: decision.reason,
           usage: proAttempt.usage,
           latencyMs: proAttempt.latencyMs,
+          schemaDowngraded: proAttempt.schemaDowngraded,
         })
       )
 
@@ -356,6 +398,7 @@ export async function explainStep({ session, stepIndex, kind, question, signal }
     schema: EXPLAIN_SCHEMA,
     maxOutputTokens: solveConfig.maxExplainTokens,
     thinkingLevel: solveConfig.thinkingLevel.explain,
+    deadline: Date.now() + solveConfig.askBudgetMs,
     signal,
   })
 
@@ -390,7 +433,9 @@ export async function alternativeSolution({ session, signal }) {
       answer: session.board?.answer?.latex ?? '',
     }),
     schema: buildAlternativeSchema({ withFigure: true }),
+    fallbackSchema: buildAlternativeSchema({ withFigure: false }),
     thinkingLevel: solveConfig.thinkingLevel.pro,
+    deadline: Date.now() + solveConfig.askBudgetMs,
     signal,
   })
 
@@ -438,7 +483,9 @@ export async function checkStudentWork({ supabase, questionPath, workPath, quest
     user: checkUserPrompt({ questionText, hasQuestionImage: Boolean(questionPath) }),
     images,
     schema: buildCheckSchema({ withFigure: true }),
+    fallbackSchema: buildCheckSchema({ withFigure: false }),
     thinkingLevel: solveConfig.thinkingLevel.pro,
+    deadline: Date.now() + solveConfig.totalBudgetMs,
     signal,
   })
 

@@ -144,7 +144,16 @@ export function decideAfterSolve({ role, verification, confidence, alreadyEscala
  * Yönlendirme günlüğü — `ai_solution_sessions.routing_log` alanına yazılır.
  * Öğrenciye GÖSTERİLMEZ; §41'deki admin metriklerinin ham verisi budur.
  */
-export function routingEntry({ stage, role, modelId, reason, usage, latencyMs, fallbackFrom }) {
+export function routingEntry({
+  stage,
+  role,
+  modelId,
+  reason,
+  usage,
+  latencyMs,
+  fallbackFrom,
+  schemaDowngraded,
+}) {
   return {
     stage,
     role,
@@ -155,6 +164,9 @@ export function routingEntry({ stage, role, modelId, reason, usage, latencyMs, f
     reasoning_tokens: usage?.reasoning ?? 0,
     latency_ms: latencyMs ?? null,
     ...(fallbackFrom ? { fallback_from: fallbackFrom } : {}),
+    // Şekil alanları sağlayıcı reddi yüzünden düşürüldüyse burada durur:
+    // "şekilli sorularda tahta boş" şikâyetinin tek kanıtı bu bayrak.
+    ...(schemaDowngraded ? { schema_downgraded: true } : {}),
   }
 }
 
