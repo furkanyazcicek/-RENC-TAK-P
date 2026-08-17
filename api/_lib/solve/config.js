@@ -285,6 +285,20 @@ export const solveConfig = {
   maxAsksPerSession: positive(process.env.SOLVE_MAX_ASKS_PER_SESSION, 25),
 }
 
+/* Pro ROLÜ, Flash MODELİNE bağlanabiliyor (GEMINI_PRO_MODEL ile) — ücretsiz
+   katmanda Pro modellerin kotası sıfır olduğu için bu gerçek bir kurulum.
+   O durumda fiyat eşlemesi elle düzeltilmezse maliyet raporu aynı modeli
+   beş kat pahalı sayar ve bütün maliyet kararları yanlış veriye dayanır.
+   Açıkça SOLVE_PRICE_PRO_* verilmişse ona dokunulmaz. */
+if (solveConfig.models.pro === solveConfig.models.fast) {
+  if (process.env.SOLVE_PRICE_PRO_IN == null) {
+    solveConfig.pricing.pro.in = solveConfig.pricing.fast.in
+  }
+  if (process.env.SOLVE_PRICE_PRO_OUT == null) {
+    solveConfig.pricing.pro.out = solveConfig.pricing.fast.out
+  }
+}
+
 /**
  * Öğrencinin planına göre limitler. Bugün tek plan var; imza ileride
  * abonelik geldiğinde değişmesin diye profili alıyor.
