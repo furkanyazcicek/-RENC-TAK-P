@@ -7,6 +7,7 @@ import {
   LayoutDashboard,
   Library,
   MessageCircle,
+  ScanText,
   Sparkles,
   Target,
   Users,
@@ -28,20 +29,23 @@ export const STUDENT_NAV = [
   // Anasayfa kasten ilk sırada: öğrenci girişte grafik duvarına değil,
   // "bugün ne yapmalıyım" sorusunun yanıtına düşer. Grafikler /analiz'de.
   { to: '/anasayfa', label: 'Anasayfa', short: 'Anasayfa', Icon: Home, primary: true },
-  { to: '/analiz', label: 'Analiz', short: 'Analiz', Icon: BarChart3, primary: true },
+  // Soru Çöz bilinçli olarak Analiz'den önce ve alt çubukta: öğrencinin
+  // GÜN İÇİNDE en sık ihtiyaç duyduğu şey "şu soruda takıldım". Grafik
+  // haftada bir bakılır, takıldığı soru her akşam vardır.
+  { to: '/soru-coz', label: 'AI Soru Çöz', short: 'Soru Çöz', Icon: ScanText, primary: true },
   { to: '/ai-koc', label: 'AI Koç', short: 'AI Koç', Icon: Sparkles, primary: true },
+  { to: '/analiz', label: 'Analiz', short: 'Analiz', Icon: BarChart3, primary: true },
+  // NOT: Mobil alt çubuk yalnızca İLK 4 `primary` öğeyi gösterir (bkz.
+  // MobileNav). Soru Çöz eklenince Günlük Takip çubuktan "Menü"
+  // çekmecesine indi; Anasayfa'daki hızlı işlemler kartından tek
+  // dokunuşla açılmaya devam ediyor. Çubuğa geri almak isterseniz
+  // buradaki `primary: true` değerlerini yer değiştirin.
   {
     to: '/gunluk-takip',
     label: 'Günlük Çalışma Takibi',
     short: 'Takip',
     Icon: CalendarDays,
-    primary: true,
   },
-  // NOT: Mobil alt çubuk yalnızca İLK 4 `primary` öğeyi gösterir (bkz.
-  // MobileNav). Anasayfa eklenince Denemeler çubuktan "Menü" çekmecesine
-  // indi; Anasayfa'daki hızlı işlemler kartından tek dokunuşla açılıyor.
-  // Çubuğa geri almak isterseniz buradaki `primary: true` ile yukarıdaki
-  // bir öğenin `primary` değerini yer değiştirin.
   { to: '/denemeler', label: 'Denemeler', short: 'Deneme', Icon: Target },
   { to: '/odevler', label: 'Ödevler', short: 'Ödev', Icon: ClipboardList },
   { to: '/notlar', label: 'Ders Notları Kütüphanesi', short: 'Notlar', Icon: Library },

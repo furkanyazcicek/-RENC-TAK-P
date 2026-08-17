@@ -1,11 +1,14 @@
 /**
- * AI Koç — hata çevirisi.
+ * AI modülleri — hata çevirisi.
  *
- * KURAL: OpenAI'ın veya Supabase'in ham hata metni ASLA kullanıcıya
- * gösterilmez. Ham metin API anahtarı parçaları, kuruluş kimliği, tablo
- * adı veya sorgu ayrıntısı sızdırabilir. Kullanıcı yalnızca ne yapması
- * gerektiğini söyleyen sade bir cümle görür; teknik ayrıntı sunucu
- * loglarında kalır.
+ * KURAL: OpenAI'ın, Gemini'nin veya Supabase'in ham hata metni ASLA
+ * kullanıcıya gösterilmez. Ham metin API anahtarı parçaları, kuruluş
+ * kimliği, tablo adı veya sorgu ayrıntısı sızdırabilir. Kullanıcı yalnızca
+ * ne yapması gerektiğini söyleyen sade bir cümle görür; teknik ayrıntı
+ * sunucu loglarında kalır.
+ *
+ * Hem AI Koç (`api/ai-coach/*`) hem AI Soru Çözüm (`api/ai-solve/*`)
+ * buradan beslenir; iki modülün de aynı dili konuşması için tek dosya.
  */
 
 const MESSAGES = {
@@ -25,6 +28,34 @@ const MESSAGES = {
   upstream_error: 'AI Koç şu anda yanıt veremiyor. Birkaç saniye sonra tekrar deneyebilirsin.',
   database_error: 'Verilerine şu anda ulaşılamıyor. Birkaç saniye sonra tekrar deneyebilirsin.',
   unknown: 'Beklenmedik bir sorun oluştu. Birkaç saniye sonra tekrar deneyebilirsin.',
+
+  /* ---------- AI Soru Çözüm Merkezi (api/ai-solve/*) ----------
+     Bu mesajların hepsi öğrenciye NE YAPACAĞINI söyler. "Hata oluştu"
+     demek öğrenciyi çıkmaza sokar; "fotoğrafın alt kısmı görünmüyor"
+     demek ise doğrudan çözüme götürür (§23, §29). */
+
+  rate_limited_minute:
+    'Çok hızlı gidiyorsun — art arda çok fazla soru gönderdin. Bir dakika sonra tekrar dener misin?',
+  solve_no_input: 'Çözmem için bir soru fotoğrafı yükle ya da soruyu yazarak gönder.',
+  solve_invalid_image:
+    'Bu dosyayı okuyamadım. JPEG, PNG ya da WebP biçiminde bir fotoğraf yükler misin?',
+  solve_image_too_large:
+    'Fotoğraf çok büyük. Daha küçük bir fotoğraf ya da ekran görüntüsü yükleyebilir misin?',
+  solve_image_rejected:
+    'Bu görseli işleyemedim. Soruyu düz açıyla, iyi ışıkta tekrar çeker misin?',
+  solve_unreadable:
+    'Sorunun tamamını net okuyamadım. Fotoğrafı biraz daha yakından ve düz açıyla çeker misin?',
+  solve_low_confidence:
+    'Bu soruyu şu anda güvenilir şekilde çözemiyorum. Yanlış yönlendirmemek için çözüm göstermiyorum — fotoğrafı netleştirip tekrar dener misin?',
+  solve_question_too_long: 'Soru metni biraz uzun kaçtı. Kısaltıp tekrar dener misin?',
+  solve_parse_failed:
+    'Çözümü hazırlarken bir sorun oldu. Birkaç saniye sonra tekrar deneyebilirsin.',
+  solve_session_not_found: 'Bu çözüm bulunamadı. Soruyu yeniden yükleyebilirsin.',
+  solve_step_not_found: 'Bu adım bulunamadı. Çözümü yeniden açmayı dener misin?',
+  solve_too_many_asks:
+    'Bu soru için soru sorma sınırına ulaştın. Yeni bir soru yükleyip devam edebilirsin.',
+  solve_ask_too_long: 'Sorun biraz uzun kaçtı. Daha kısa yazıp tekrar dener misin?',
+  solve_no_alternative: 'Bu soru için anlamlı bir alternatif yöntem bulamadım.',
 }
 
 /** Hata kodunu kullanıcıya gösterilecek Türkçe cümleye çevirir. */
@@ -47,10 +78,19 @@ export function mapUpstreamStatus(status) {
 /**
  * Sunucu logu için güvenli özet. Hata nesnesinin tamamını loglamak
  * istek gövdesindeki öğrenci verisini de loglara taşıyabilir.
+ *
+ * `module` varsayılanı `ai-coach`: bu fonksiyon önce yalnızca AI Koç
+ * tarafından kullanılıyordu ve mevcut çağrıların hiçbiri değişmesin diye
+ * imzanın sonuna eklendi.
  */
-export function logError(scope, error, extra = {}) {
+export function logError(scope, error, extra = {}, module = 'ai-coach') {
   const detail = error instanceof Error ? `${error.name}: ${error.message}` : String(error)
-  console.error(`[ai-coach:${scope}] ${detail}`, extra)
+  console.error(`[${module}:${scope}] ${detail}`, extra)
+}
+
+/** AI Soru Çözüm modülü için önceden bağlanmış logger. */
+export function logSolveError(scope, error, extra = {}) {
+  logError(scope, error, extra, 'ai-solve')
 }
 
 /** JSON hata yanıtı — gövdede yalnızca kod ve çevrilmiş mesaj bulunur. */

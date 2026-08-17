@@ -19,6 +19,7 @@ import Questions from './pages/Questions'
 import Messages from './pages/Messages'
 import Library from './pages/Library'
 import AICoach from './pages/AICoach'
+import AISolve from './pages/AISolve'
 import { PageLoader } from './components/ui'
 
 /** Route geçişlerinde gösterilen tam sayfa yükleyici (tasarım sisteminden). */
@@ -169,6 +170,17 @@ export default function App() {
         element={
           <ProtectedRoute allow="student">
             <AICoach />
+          </ProtectedRoute>
+        }
+      />
+      {/* AI Soru Çözüm Merkezi — AI Koç gibi yalnızca öğrenci deneyimi.
+          Sunucu tarafında da `role !== 'student'` reddedilir
+          (bkz. api/_lib/auth.js). */}
+      <Route
+        path="/soru-coz"
+        element={
+          <ProtectedRoute allow="student">
+            <AISolve />
           </ProtectedRoute>
         }
       />

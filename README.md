@@ -39,6 +39,7 @@ sayfalar:
 | Sekme | Rota | Kim görür | Ne işe yarar |
 |---|---|---|---|
 | Anasayfa | `/anasayfa` | Öğrenci | Girişte açılan sakin ekran: **sınava kalan süre geri sayımı**, AI Koç önerisi, bekleyen ödev/sorular, **soru + çözüm akışı**, hızlı işlemler ve özet sayılar — **grafik yok** |
+| AI Soru Çöz | `/soru-coz` | Öğrenci | Sorunun fotoğrafını yükler, yapay zekâ **dijital tahtada adım adım** çözer; "neden?" / "burada takıldım" sorulabilir, öğrenci kendi çözümünü kontrol ettirebilir |
 | Analiz | `/analiz` | Öğrenci | Çalışma süresi, LGS/YKS net gelişimi, ders bazlı ve **konu bazlı** başarı grafiklerinin tamamı |
 | Profilim | `/profil` | Hepsi | Ad soyad, şifre, bildirim tercihi ve hesap özeti (sağ üstteki isim düğmesinden açılır) |
 | Günlük Çalışma Takibi | `/gunluk-takip` | Öğrenci | Her gün çalışılan konu, süre, doğru/yanlış/boş sayısı girilir ve geçmiş listelenir |
@@ -208,6 +209,25 @@ ayrıca soru fotoğraflarının yükleneceği depolama alanını otomatik kurar.
 >    bir kırılımdır; kurumunuzun kaynağıyla tam örtüşmüyorsa öğretmen
 >    panelinden düzenleyebilir/silebilirsiniz.
 >
+> **AI Soru Çözüm Merkezi'ni kullanacaksanız (`/soru-coz`):**
+> `supabase/migration_ai_solve.sql` dosyasını çalıştırın. Bu dosya
+> **2 yeni tablo** ekler (`ai_solution_sessions` = çözülen her sorunun
+> kaydı, `ai_solution_events` = "neden?" / "takıldım" etkileşimleri) ve
+> ikisine de RLS kurar: bir öğrenci yalnızca kendi çözümlerini görür.
+>
+> **Mevcut hiçbir tabloya dokunulmaz.** Yeni Storage kovası da açılmaz —
+> soru fotoğrafları zaten kurulu olan `question-images` kovasına,
+> `ai-solve/<kullanıcı-id>/` klasörü altına yazılır. Hız sınırı sayacı
+> için de yeni tablo yok; AI Koç'un kullandığı `ai_usage_events` tablosu
+> `kind = 'solve'` değeriyle paylaşılıyor.
+>
+> Göçü çalıştırmasanız uygulama çökmez ama soru çözümleri kaydedilemez;
+> bu durumda "Neden?" ve çözüm geçmişi çalışmaz.
+>
+> Ayrıca **`GEMINI_API_KEY` ortam değişkeni zorunludur** (aşağıdaki
+> "AI Soru Çözüm Merkezi" bölümüne bakın). Anahtar tanımlı değilse sayfa
+> açılır ama çözüm isteği "henüz yapılandırılmamış" mesajıyla döner.
+
 > Kurulumdan sonra öğretmen `/notlar` sayfasında bir konuya girip
 > "Bu Konuya Not Ekle" ile yazılı not ve/veya PDF/görsel yükleyebilir;
 > öğrenci aynı sayfada sınav türü → ders → konu şeklinde gezinip
@@ -301,6 +321,88 @@ Vercel siteyi otomatik olarak güncelleyecektir.
 
 ---
 
+## 4.5) AI Soru Çözüm Merkezi — Kurulum
+
+Bu modül Google Gemini kullanır (AI Koç'tan **bağımsızdır**; o OpenAI
+kullanır, ikisi birbirini etkilemez).
+
+### Adım 1: Gemini API anahtarı alın
+
+1. [aistudio.google.com/apikey](https://aistudio.google.com/apikey)
+   adresine Google hesabınızla girin.
+2. **"Create API key"** deyip anahtarı kopyalayın.
+
+### Adım 2: Anahtarı Vercel'e girin
+
+Vercel'de **Project Settings → Environment Variables** altına ekleyin:
+
+```
+GEMINI_API_KEY = (aldığınız anahtar)
+```
+
+> ⚠️ Değişken adının başına **`VITE_` YAZMAYIN**. Vite yalnızca `VITE_`
+> önekli değişkenleri tarayıcıya gömer; öneki eklerseniz anahtarınız
+> siteyi açan herkes tarafından görülebilir hale gelir.
+
+### Adım 3: Veritabanı göçünü çalıştırın
+
+`supabase/migration_ai_solve.sql` dosyasını SQL Editor'e yapıştırıp
+çalıştırın (yukarıdaki nota bakın).
+
+### Kullanılan modeller
+
+Kod içinde **hiçbir yerde model adı yazılı değildir**. Değiştirmek için
+yalnızca şu iki değişkeni güncellemeniz yeterli:
+
+```
+GEMINI_FAST_MODEL = gemini-3.6-flash          (varsayılan)
+GEMINI_PRO_MODEL  = gemini-3.1-pro-preview    (varsayılan)
+```
+
+Sistem her soruyu pahalı modele göndermez: önce ucuz modelle sorunun
+konusu ve zorluğu belirlenir, kolay sorular orada çözülür, zor sorular
+ve **düşük güvenli cevaplar** güçlü modele yükseltilir. Cevabı
+doğrulanamayan soruda sistem **uydurmaz**, "bu soruyu güvenilir şekilde
+çözemiyorum" der.
+
+> ⚠️ Model kimlikleri zamanla değişir. Çözüm istekleri sürekli hata
+> veriyorsa Google'ın güncel model listesinden kontrol edip yukarıdaki
+> iki değişkeni güncelleyin.
+
+Diğer tüm ayarlar (hız sınırı, zaman aşımı, fiyat, yönlendirme eşikleri)
+`.env.example` dosyasında açıklandı; hiçbiri zorunlu değildir.
+
+### Öğrenci başına maliyeti nasıl görürüm?
+
+Her çözüm `ai_solution_sessions` tablosuna model, token sayısı, süre ve
+tahmini maliyetle birlikte yazılır:
+
+```sql
+select
+  count(*)                as soru,
+  round(sum(cost_usd), 4) as toplam_usd,
+  round(avg(cost_usd), 6) as soru_basi_usd,
+  count(*) filter (where model_role = 'pro') as pro_kullanimi
+from ai_solution_sessions
+where created_at > now() - interval '30 days';
+```
+
+> ⚠️ `cost_usd` **tahmindir**: `api/_lib/solve/config.js` içindeki birim
+> fiyatlar doğrulanmamış varsayılanlardır. Gerçek fatura için Google'ın
+> fiyat sayfasından doğrulayıp `SOLVE_PRICE_*` değişkenleriyle ezin.
+
+### Yerel testler
+
+```
+npm run test:ai-solve
+```
+
+Ağ, veritabanı ve API anahtarı gerektirmez; tahta güvenlik
+doğrulayıcısını, matematiksel doğrulama motorunu ve model yönlendirme
+kurallarını sınar.
+
+---
+
 ## 5) Sık Sorulan Sorular
 
 **"npm install" hata verdi, ne yapmalıyım?**
@@ -323,6 +425,21 @@ serbestçe yazabilirsiniz; listedeki öneriler sadece kolaylık içindir.
 `supabase/migration_branch_exam_upgrade.sql` dosyasını çalıştırmanız
 gerekiyor — bu, `exams` tablosuna tarih/doğru/yanlış/boş/net kolonlarını
 ekler ve öğrencinin kendi branş denemesini girebilmesine izin verir.
+
+**AI Soru Çöz "henüz yapılandırılmamış" diyor.**
+`GEMINI_API_KEY` ortam değişkeni tanımlı değil ya da geçersiz. Vercel'de
+**Project Settings → Environment Variables** altına ekleyip projeyi
+yeniden yayınlayın (**Redeploy**). Değişken eklemek tek başına yetmez,
+yeniden yayınlamak gerekir.
+
+**AI Soru Çöz "çözüm kaydedilemedi" diyor / geçmiş boş görünüyor.**
+`supabase/migration_ai_solve.sql` çalıştırılmamış demektir.
+
+**Çözüm çıkmıyor, "soruyu net okuyamadım" diyor.**
+Bu bir hata değil, bilinçli bir davranış: sistem okuyamadığı soruda
+çözüm uydurmaz. Fotoğrafı düz açıyla, aydınlık ortamda ve sorunun
+tamamı (şıklar dahil) kadraja girecek şekilde çekin. Tek karede birden
+fazla soru varsa yalnızca çözdürmek istediğinizi kırpın.
 
 **Sorunlu soru bildirimi gelmiyor / SQL hatası veriyor.**
 `supabase/migration_push_notifications.sql` dosyasını yeniden çalıştırın

@@ -12,6 +12,7 @@ import {
   HelpCircle,
   Library,
   MessageCircle,
+  ScanText,
   Sparkles,
   Target,
 } from 'lucide-react'
@@ -224,6 +225,12 @@ export default function Home() {
   ].filter(Boolean)
 
   const quickActions = [
+    {
+      to: '/soru-coz',
+      label: 'AI Soru Çöz',
+      description: 'Takıldığın soruyu çözdür',
+      icon: ScanText,
+    },
     {
       to: '/gunluk-takip',
       label: 'Çalışma Kaydet',

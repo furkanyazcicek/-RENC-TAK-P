@@ -156,6 +156,16 @@ export async function fetchStudentData(supabase, studentId) {
         .limit(60),
     ])
 
+  // AI Soru Çözüm geçmişi (§20) — AYRI SORGU, hatası AYRI YUTULUYOR.
+  //
+  // Neden yukarıdaki Promise.all'a katılmadı: `ai_solution_sessions`
+  // tablosu `migration_ai_solve.sql` ile geliyor. Göçü çalıştırmamış bir
+  // kurulumda sorgu hata verir; hata `degraded` bayrağına karışsaydı AI
+  // Koç, verisi tamamen sağlamken "verilerin eksik olabilir" moduna
+  // düşerdi. Yani ÇALIŞAN bir özelliği, henüz kurulmamış başka bir
+  // özellik yüzünden bozmuş olurduk.
+  const solveSessions = await fetchSolveSessions(supabase, studentId)
+
   return {
     logs: logsRes.data ?? [],
     mockExams: mockRes.data ?? [],
@@ -164,12 +174,41 @@ export async function fetchStudentData(supabase, studentId) {
     questions: questionRes.data ?? [],
     memory: memoryRes.data ?? [],
     tasks: taskRes.data ?? [],
+    solveSessions,
     // Sorgulardan biri RLS/ağ nedeniyle patlarsa bunu prompt'a yansıtmak
     // yerine sessizce boş liste kullanmak modeli yanıltırdı; hata bayrağı
     // taşınır ve prompt "veri eksik olabilir" notu alır.
     degraded: [logsRes, mockRes, branchRes, homeworkRes, questionRes, memoryRes, taskRes].some(
       (r) => r.error
     ),
+  }
+}
+
+/**
+ * AI Soru Çözüm Merkezi'nde çözülen son sorular.
+ *
+ * Hata durumunda BOŞ DİZİ döner ve hiçbir yere bayrak taşımaz: bu veri
+ * AI Koç için "varsa iyi olur" kategorisindedir, olmadan da koçluk
+ * yapılabilir.
+ */
+async function fetchSolveSessions(supabase, studentId) {
+  try {
+    const { data, error } = await supabase
+      .from('ai_solution_sessions')
+      .select(
+        'subject, topic, canonical_topic, subtopic, difficulty, status, ' +
+          'confidence, help_requested, student_correct, error_type, created_at'
+      )
+      .eq('student_id', studentId)
+      .eq('status', 'ok')
+      .gte('created_at', new Date(Date.now() - 30 * DAY_MS).toISOString())
+      .order('created_at', { ascending: false })
+      .limit(60)
+
+    if (error) return []
+    return data ?? []
+  } catch {
+    return []
   }
 }
 
@@ -403,6 +442,10 @@ export function buildFacts(profile, raw) {
       items: openQuestions,
     },
 
+    /* AI Soru Çözüm Merkezi'nde çözdürdüğü sorular (§20). Burada
+       "çözdürdü" = takıldı demektir; öğrenci kolay soruyu yüklemez. */
+    solve: summarizeSolveSessions(raw.solveSessions ?? []),
+
     plan: {
       todayPlannedMinutes,
       today: todayTasks.map(taskSummary),
@@ -417,6 +460,83 @@ export function buildFacts(profile, raw) {
 
     degraded: raw.degraded,
   }
+}
+
+/**
+ * AI Soru Çözüm oturumlarını konu bazında özetler (§20).
+ *
+ * YORUM KURALI: bir soruyu buraya yüklemek, öğrencinin o soruda
+ * TAKILDIĞI anlamına gelir — kolay soruyu kimse fotoğraflayıp
+ * yüklemez. Bu yüzden "en çok çözdürülen konu" aslında "en çok
+ * zorlanılan konu"nun iyi bir vekilidir. `help_requested` (adım
+ * açıklaması isteme) ise zorlanmanın DERECESİNİ verir.
+ *
+ * Bu veri `daily_logs` isabet oranının YERİNE GEÇMEZ, onu tamamlar:
+ * orası "kaç soru doğru", burası "hangi soruda pes etti".
+ */
+function summarizeSolveSessions(sessions) {
+  if (!sessions.length) {
+    return { total: 0, topics: [], errorTypes: [], selfWrong: 0 }
+  }
+
+  const byTopic = new Map()
+  const errorCounts = new Map()
+  let selfWrong = 0
+
+  for (const s of sessions) {
+    const subject = s.subject ?? 'Genel'
+    const topic = s.canonical_topic ?? s.topic ?? 'Belirsiz'
+    const key = `${subject}|${topic}`
+
+    let row = byTopic.get(key)
+    if (!row) {
+      row = { subject, topic, count: 0, helpTotal: 0, difficultySum: 0, lastDate: null }
+      byTopic.set(key, row)
+    }
+    row.count += 1
+    row.helpTotal += s.help_requested ?? 0
+    row.difficultySum += s.difficulty ?? 3
+    if (!row.lastDate || s.created_at > row.lastDate) row.lastDate = s.created_at
+
+    if (s.student_correct === false) selfWrong += 1
+    if (s.error_type) errorCounts.set(s.error_type, (errorCounts.get(s.error_type) ?? 0) + 1)
+  }
+
+  const topics = [...byTopic.values()]
+    .map((row) => ({
+      subject: row.subject,
+      topic: row.topic,
+      count: row.count,
+      helpTotal: row.helpTotal,
+      avgDifficulty: Math.round((row.difficultySum / row.count) * 10) / 10,
+      lastDate: row.lastDate ? row.lastDate.slice(0, 10) : null,
+    }))
+    // Önce en çok yardım istenen, sonra en çok çözdürülen: ikisi de
+    // "zorlanıyor" sinyali ama yardım istemek daha güçlü olanı.
+    .sort((a, b) => b.helpTotal - a.helpTotal || b.count - a.count)
+    .slice(0, 8)
+
+  return {
+    total: sessions.length,
+    topics,
+    errorTypes: [...errorCounts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([type, count]) => ({ type, count })),
+    selfWrong,
+  }
+}
+
+/** `ai_solution_sessions.error_type` enum'unun insan okunur karşılıkları. */
+const SOLVE_ERROR_LABELS = {
+  isaret_hatasi: 'işaret hatası',
+  islem_hatasi: 'işlem hatası',
+  formul_yanlis: 'yanlış formül',
+  kavram_yanilgisi: 'kavram yanılgısı',
+  birim_hatasi: 'birim hatası',
+  okuma_hatasi: 'soruyu yanlış okuma',
+  eksik_durum: 'durumlardan birini atlama',
+  dikkatsizlik: 'dikkatsizlik',
 }
 
 const ACTIVITY_LABELS = {
@@ -572,6 +692,32 @@ export function renderContext(facts) {
     facts.strongTopics.forEach((t) => {
       L.push(`- ${t.subject} – ${t.topic}: isabet %${t.accuracy} (${t.attempted} soruda)`)
     })
+  }
+
+  /* ---- AI Soru Çözüm Merkezi (§20) ---- */
+  if (facts.solve?.total) {
+    L.push('')
+    L.push(`## AI'a çözdürdüğü sorular (son 30 gün, ${facts.solve.total} soru)`)
+    L.push(
+      'YORUM: Öğrenci buraya TAKILDIĞI soruyu yükler; kolay soruyu kimse ' +
+        'fotoğraflamaz. "Yardım" sayısı, çözüm gösterildikten SONRA bile ' +
+        '"bunu neden yaptık / burada takıldım" diye sorduğu adım sayısıdır — ' +
+        'zorlanmanın en güçlü göstergesi budur.'
+    )
+    facts.solve.topics.forEach((t) => {
+      const help = t.helpTotal ? `, ${t.helpTotal} kez ek açıklama istedi` : ''
+      L.push(`- ${t.subject} – ${t.topic}: ${t.count} soru${help} (son: ${t.lastDate})`)
+    })
+
+    if (facts.solve.errorTypes.length) {
+      L.push(
+        `Kendi çözümünü kontrol ettirdiğinde çıkan hata türleri: ` +
+          facts.solve.errorTypes.map((e) => `${SOLVE_ERROR_LABELS[e.type] ?? e.type} (${e.count})`).join(', ')
+      )
+    }
+    if (facts.solve.selfWrong) {
+      L.push(`Bu sorulardan ${facts.solve.selfWrong} tanesini kendisi yanlış çözmüştü.`)
+    }
   }
 
   /* ---- Müfredat sırası / ön koşullar ---- */

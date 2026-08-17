@@ -8,6 +8,15 @@
   "functions": {
     "api/ai-coach/chat.js": {
       "maxDuration": 60
+    },
+    "api/ai-solve/solve.js": {
+      "maxDuration": 60
+    },
+    "api/ai-solve/check.js": {
+      "maxDuration": 60
+    },
+    "api/ai-solve/ask.js": {
+      "maxDuration": 30
     }
   }
 }
