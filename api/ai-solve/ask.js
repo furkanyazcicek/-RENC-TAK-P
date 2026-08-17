@@ -45,7 +45,7 @@ export default async function handler(req, res) {
   const missing = missingSolveConfig()
   if (missing.length) {
     logSolveError('config', `eksik ortam değişkenleri: ${missing.join(', ')}`)
-    return sendError(res, 503, 'not_configured')
+    return sendError(res, 503, 'solve_not_configured')
   }
 
   const auth = await authenticate(req)

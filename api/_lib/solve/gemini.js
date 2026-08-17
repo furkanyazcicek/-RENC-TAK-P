@@ -83,7 +83,7 @@ function codeFor(kind) {
     case 'model_not_found':
     case 'schema_rejected':
     case 'bad_request':
-      return 'not_configured'
+      return 'solve_not_configured'
     case 'rate_limit':
       return 'upstream_rate_limited'
     case 'timeout':
@@ -290,7 +290,7 @@ export async function generateStructured({
   signal,
 }) {
   if (!solveConfig.apiKey) {
-    throw new GeminiError('not_configured', { kind: 'auth', detail: 'GEMINI_API_KEY tanımsız' })
+    throw new GeminiError('solve_not_configured', { kind: 'auth', detail: 'GEMINI_API_KEY tanımsız' })
   }
 
   const modelId = modelIdFor(role)
