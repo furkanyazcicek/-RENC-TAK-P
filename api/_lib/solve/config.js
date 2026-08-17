@@ -149,6 +149,24 @@ export const solveConfig = {
    */
   askBudgetMs: positive(process.env.SOLVE_ASK_BUDGET_MS, 38_000),
 
+  /**
+   * Triyajı tamamen atla.
+   *
+   * Triyaj eskiden PARA KAZANDIRIYORDU: kolay soruyu ucuz modele
+   * yönlendirip pahalı modelden kaçınıyordu. İki rol de aynı fiyata
+   * geldiğinde (bkz. models.pro) bu kazanç ortadan kalktı — triyajın
+   * kendi maliyeti, sağladığı tasarruftan büyük olabiliyor.
+   *
+   * Kalan tek gerçek faydası, okunamayan fotoğrafı ucuza reddetmek.
+   * Kırılma noktası: yüklemelerin ~%10'undan fazlası okunamıyorsa triyaj
+   * kârlı. Bu oran `ai_solution_sessions` içindeki `unreadable` payından
+   * okunur — kapatma kararı ölçümle verilmeli, tahminle değil.
+   *
+   * Atlandığında soru ZOR varsayılır (aynı kod yolu triyaj çöktüğünde de
+   * kullanılıyor, bkz. engine.js).
+   */
+  skipTriage: process.env.SOLVE_SKIP_TRIAGE === '1',
+
   /** Triyaj hızlı olmalı; kullanıcı ilk aşamada bekliyor. */
   triageTimeoutMs: positive(process.env.GEMINI_TRIAGE_TIMEOUT_MS, 20_000),
 

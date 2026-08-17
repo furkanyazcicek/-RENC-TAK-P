@@ -296,6 +296,7 @@ async function httpPost(url, { body, signal, timeoutMs }) {
  * @param {string} [params.thinkingLevel]
  * @param {number} [params.timeoutMs]
  * @param {number} [params.deadline]         Tüm hattın bitmesi gereken an (epoch ms)
+ * @param {number} [params.maxRetries]       Geçici hatada kaç kez yeniden denenir
  * @param {AbortSignal} [params.signal]
  *
  * @returns {Promise<{
@@ -315,6 +316,7 @@ export async function generateStructured({
   thinkingLevel,
   timeoutMs = solveConfig.requestTimeoutMs,
   deadline = 0,
+  maxRetries = solveConfig.maxRetries,
   signal,
 }) {
   if (!solveConfig.apiKey) {
@@ -421,7 +423,7 @@ export async function generateStructured({
   /** Anlamlı bir denemeye yetecek en az süre. */
   const MIN_ATTEMPT_MS = 4000
 
-  for (let attempt = 1; attempt <= solveConfig.maxRetries + 1; attempt += 1) {
+  for (let attempt = 1; attempt <= maxRetries + 1; attempt += 1) {
     const budget = timeLeft()
 
     if (budget < MIN_ATTEMPT_MS) {
@@ -451,7 +453,7 @@ export async function generateStructured({
           kind: 'unparsable',
           detail: parsed.rawText.slice(0, 200),
         })
-        if (attempt <= solveConfig.maxRetries) {
+        if (attempt <= maxRetries) {
           await sleep(backoffMs(attempt))
           continue
         }
@@ -507,7 +509,7 @@ export async function generateStructured({
     })
 
     if (FATAL.has(kind)) throw lastError
-    if (attempt > solveConfig.maxRetries) throw lastError
+    if (attempt > maxRetries) throw lastError
 
     // Üstel geri çekilme + jitter: hız sınırına çarpmışken sağlayıcıyı
     // dövmek yalnızca öğrenciyi bekletir.
@@ -572,7 +574,16 @@ export async function generateWithFallback(params) {
   const backup = primary === 'pro' ? 'fast' : null
 
   try {
-    return await generateStructured(params)
+    /* YEDEK VARKEN BİRİNCİL MODELDE ISRAR ETME.
+       40 soruluk gerçek ölçümde (2026-08-17) gemini-3.7-flash kapasite
+       darlığında sürekli 503 döndü. İstemci aynı modeli iki kez daha
+       deneyip geri çekilme süreleriyle bekleyince süre bütçesi bitiyor ve
+       öğrenci hiç çözüm göremiyordu: triyajsız koşuda 40 sorunun 13'ü
+       böyle düştü. Yedek model hazır beklerken kapasitesi olmadığını
+       söyleyen modeli tekrar zorlamak, öğrenciyi bekletmekten başka bir
+       işe yaramıyor. Yedeğe düşerken tam yeniden deneme hakkı geri
+       geliyor (aşağıda). */
+    return await generateStructured(backup ? { ...params, maxRetries: 0 } : params)
   } catch (error) {
     /* Kota hataları kurtarılabilir sayılır. Sebep: kota model BAŞINA
        verilir — bir modelin hakkı bitmişken diğerininki durabilir.

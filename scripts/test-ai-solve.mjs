@@ -1020,6 +1020,31 @@ head('13) Gemini reddinde kendini toparlama')
     check('Devralma sessiz değil (fallbackFrom taşınır)', result.fallbackFrom === 'pro')
     check('Kota hatasında Pro tekrar tekrar denenmez', roles.filter((r) => r === 'pro').length === 1)
 
+    /* 503 = "kapasitem yok". Yedek model hazır beklerken aynı modeli
+       zorlamak süre bütçesini yakıyor; 40 soruluk ölçümde 13 soru bu
+       yüzden düştü. Birincil model TEK kez denenmeli. */
+    {
+      const calls = []
+      globalThis.fetch = async (url) => {
+        const pro = String(url).includes(encodeURIComponent(solveConfig.models.pro))
+        calls.push(pro ? 'pro' : 'fast')
+        return pro
+          ? reply(503, JSON.stringify({ error: { message: 'high demand' } }))
+          : reply(200, okBody({ cozuldu: true }))
+      }
+
+      const r = await generateWithFallback({
+        role: 'pro',
+        system: 's',
+        user: 'u',
+        schema: plainSchema,
+        thinkingLevel: 'medium',
+      })
+
+      check('503 alan model ısrarla denenmez', calls.filter((c) => c === 'pro').length === 1, calls.join(','))
+      check('503 sonrası yedek model çözer', r.data?.cozuldu === true)
+    }
+
     /* Aynı 429, İKİ farklı sebep — öğrenciye giden cümle farklı olmalı.
        Üretimde ikisi de "yapılandırma sorunu" diyordu; günlük hak
        dolduğunda bu, herkesi yanlış yere bakmaya gönderiyor. */

@@ -92,9 +92,20 @@ export async function solveQuestion(input) {
   /* ---------- 0) Görseller ---------- */
   stage('reading')
 
+  /* Görseller hazır verilebilir (`input.images`) ya da depolama yolundan
+     indirilir. Hazır verme yolu ölçüm içindir: dosya başlığındaki "motor
+     veritabanı bilmez, testte gerçek bir Supabase olmadan koşturulabilir"
+     sözü ancak böyle tutulabiliyor — `scripts/bench-ayt.mjs` gerçek soru
+     görselleriyle tam boru hattını buradan koşturuyor. Üretim akışı
+     değişmedi: uç noktalar yol gönderir, yollar doğrulanır. */
   const images = []
-  for (const path of imagePaths.slice(0, solveConfig.image.maxPerRequest)) {
-    images.push(await fetchImageForModel(supabase, path))
+
+  if (Array.isArray(input.images) && input.images.length) {
+    images.push(...input.images.slice(0, solveConfig.image.maxPerRequest))
+  } else {
+    for (const path of imagePaths.slice(0, solveConfig.image.maxPerRequest)) {
+      images.push(await fetchImageForModel(supabase, path))
+    }
   }
 
   if (!images.length && !text) {
@@ -114,42 +125,51 @@ export async function solveQuestion(input) {
      olurdu. Şekil alanları da açık bırakılır (görsel varsa muhtemelen
      gerekir; maliyeti yalnızca kullanılırsa doğar). */
   let triage = null
-  let triageFailed = false
 
-  try {
-    const triageCall = await generateStructured({
-      role: 'fast',
-      system: TRIAGE_SYSTEM,
-      user: text ? `${TRIAGE_USER}\n\nSoru metni:\n${text}` : TRIAGE_USER,
-      images,
-      schema: TRIAGE_SCHEMA,
-      maxOutputTokens: solveConfig.maxTriageTokens,
-      thinkingLevel: solveConfig.thinkingLevel.triage,
-      timeoutMs: solveConfig.triageTimeoutMs,
-      deadline,
-      signal,
-    })
+  /* Triyajsız devam etmenin İKİ yolu var ve ikisi de aynı rotayı kullanır:
+     ayarla kapatılmış olması (skipTriage) ya da çağrının başarısız olması. */
+  let triageless = solveConfig.skipTriage
 
-    calls.push({ role: 'fast', usage: triageCall.usage })
-    routingLog.push(
-      routingEntry({
-        stage: 'triage',
+  if (solveConfig.skipTriage) {
+    routingLog.push({ stage: 'triage_skipped', reason: 'SOLVE_SKIP_TRIAGE=1' })
+  }
+
+  if (!solveConfig.skipTriage) {
+    try {
+      const triageCall = await generateStructured({
         role: 'fast',
-        modelId: triageCall.modelId,
-        reason: 'ilk sınıflandırma',
-        usage: triageCall.usage,
-        latencyMs: triageCall.latencyMs,
+        system: TRIAGE_SYSTEM,
+        user: text ? `${TRIAGE_USER}\n\nSoru metni:\n${text}` : TRIAGE_USER,
+        images,
+        schema: TRIAGE_SCHEMA,
+        maxOutputTokens: solveConfig.maxTriageTokens,
+        thinkingLevel: solveConfig.thinkingLevel.triage,
+        timeoutMs: solveConfig.triageTimeoutMs,
+        deadline,
+        signal,
       })
-    )
 
-    triage = triageCall.data
-  } catch (error) {
-    triageFailed = true
-    routingLog.push({
-      stage: 'triage_failed',
-      reason: error instanceof GeminiError ? error.kind : 'bilinmeyen',
-    })
-    logSolveError('triage', error, { kind: error?.kind })
+      calls.push({ role: 'fast', usage: triageCall.usage })
+      routingLog.push(
+        routingEntry({
+          stage: 'triage',
+          role: 'fast',
+          modelId: triageCall.modelId,
+          reason: 'ilk sınıflandırma',
+          usage: triageCall.usage,
+          latencyMs: triageCall.latencyMs,
+        })
+      )
+
+      triage = triageCall.data
+    } catch (error) {
+      triageless = true
+      routingLog.push({
+        stage: 'triage_failed',
+        reason: error instanceof GeminiError ? error.kind : 'bilinmeyen',
+      })
+      logSolveError('triage', error, { kind: error?.kind })
+    }
   }
 
   // Okunamayan soruda ÇÖZMEYE ÇALIŞMIYORUZ (§23). Buradan dönmek hem
@@ -168,10 +188,10 @@ export async function solveQuestion(input) {
   /* ---------- 2) YÖNLENDİRME ---------- */
   stage('analyzing')
 
-  const route = triageFailed
+  const route = triageless
     ? {
         role: 'pro',
-        reason: 'triyaj başarısız — soru zor varsayıldı',
+        reason: solveConfig.skipTriage ? 'triyaj kapalı' : 'triyaj başarısız — soru zor varsayıldı',
         thinkingLevel: solveConfig.thinkingLevel.pro,
         needsFigure: images.length > 0,
       }
