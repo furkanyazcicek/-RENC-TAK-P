@@ -27,6 +27,7 @@ import { calculateAICost, totalCost } from '../api/_lib/solve/cost.js'
 import { toGeminiSchema, parseJsonLoose } from '../api/_lib/solve/gemini.js'
 import { buildSolutionSchema, TRIAGE_SCHEMA, readIssueMessage } from '../api/_lib/solve/schema.js'
 import { validatePath } from '../api/_lib/solve/image.js'
+import { solveConfig, THINKING_LEVELS } from '../api/_lib/solve/config.js'
 import { plotCurves } from '../api/_lib/solve/plot.js'
 
 let pass = 0
@@ -662,6 +663,51 @@ check(
 )
 check('Önüne cümle yazılmış JSON kurtarılır', parseJsonLoose('İşte cevap: {"a":3}').value.a === 3)
 check('Tamamen bozuk çıktı null döner', parseJsonLoose('merhaba').value === null)
+
+/* ==================================================================
+   9.5) DÜŞÜNME DÜZEYİ — ÜRETİMDE YAŞANMIŞ HATANIN REGRESYON TESTİ
+   ------------------------------------------------------------------
+   İlk sürümde `thinkingConfig.thinkingBudget` (sayı) gönderiliyordu.
+   Gemini 3 modelleri bu alanı tanımıyor ve isteğin TAMAMINI 400 ile
+   reddediyor — yani her çözüm isteği düşüyordu. Doğru alan
+   `thinkingLevel` (metin) ve düşünme KAPATILAMIYOR.
+   ================================================================== */
+
+head('9.5) Düşünme düzeyi yapılandırması')
+
+check(
+  'Düşünme düzeyi METİN, sayı değil',
+  ['triage', 'fast', 'pro', 'explain'].every(
+    (k) => typeof solveConfig.thinkingLevel[k] === 'string'
+  ),
+  JSON.stringify(solveConfig.thinkingLevel)
+)
+
+check(
+  'Tüm düzeyler Gemini’nin kabul ettiği değerlerden',
+  ['triage', 'fast', 'pro', 'explain'].every((k) =>
+    THINKING_LEVELS.includes(solveConfig.thinkingLevel[k])
+  )
+)
+
+check(
+  'Hiçbir rolde düşünme KAPALI değil (0/off geçersiz)',
+  ['triage', 'fast', 'pro', 'explain'].every((k) => {
+    const v = solveConfig.thinkingLevel[k]
+    return v !== '0' && v !== 'off' && v !== 'none' && Boolean(v)
+  })
+)
+
+check(
+  'Pro, hızlı modelden daha derin düşünür',
+  THINKING_LEVELS.indexOf(solveConfig.thinkingLevel.pro) >
+    THINKING_LEVELS.indexOf(solveConfig.thinkingLevel.fast)
+)
+
+check(
+  'Geçersiz ortam değeri varsayılana düşer (400 üretmez)',
+  THINKING_LEVELS.includes(solveConfig.thinkingLevel.triage)
+)
 
 /* ==================================================================
    10) GÖRSEL YOLU DOĞRULAMASI (§46)

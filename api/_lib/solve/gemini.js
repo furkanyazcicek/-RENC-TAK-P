@@ -268,7 +268,7 @@ async function httpPost(url, { body, signal, timeoutMs }) {
  * @param {GeminiImage[]} [params.images]     Soru / öğrenci çözümü görselleri
  * @param {object} params.schema              Sağlayıcı-bağımsız JSON Schema
  * @param {number} [params.maxOutputTokens]
- * @param {number} [params.thinkingBudget]
+ * @param {string} [params.thinkingLevel]
  * @param {number} [params.timeoutMs]
  * @param {AbortSignal} [params.signal]
  *
@@ -285,7 +285,7 @@ export async function generateStructured({
   images = [],
   schema,
   maxOutputTokens = solveConfig.maxOutputTokens,
-  thinkingBudget,
+  thinkingLevel,
   timeoutMs = solveConfig.requestTimeoutMs,
   signal,
 }) {
@@ -308,11 +308,14 @@ export async function generateStructured({
     temperature: solveConfig.temperature,
   }
 
-  // Düşünme bütçesi yalnızca AÇIKÇA verildiğinde gönderilir. Desteklemeyen
-  // bir model kimliğine gönderilirse 400 döner; ortam değişkeniyle model
-  // değiştirilebildiği için bu gerçek bir risk.
-  if (Number.isFinite(thinkingBudget)) {
-    generationConfig.thinkingConfig = { thinkingBudget }
+  // Düşünme düzeyi yalnızca AÇIKÇA verildiğinde gönderilir.
+  //
+  // ⚠️ Bu alan sağlayıcı tarafında bir kez zaten değişti (bkz. config.js).
+  // Desteklemeyen bir modele gönderilirse istek 400 ile TAMAMEN reddedilir;
+  // model ortam değişkeniyle değiştirilebildiği için bu sürekli bir risk.
+  // Aşağıdaki döngü, 400 alınca düşünme alanı olmadan bir kez daha dener.
+  if (thinkingLevel) {
+    generationConfig.thinkingLevel = thinkingLevel
   }
 
   const body = {
@@ -367,6 +370,25 @@ export async function generateStructured({
     console.error(
       `[ai-solve:gemini] ${modelId} HTTP ${response.status} (${kind}) ${response.body?.slice(0, 300) ?? ''}`
     )
+
+    /* ---------- KENDİNİ TOPARLAYAN YEDEK ----------
+       400, isteğin tamamının reddedilmesi demek. Sağlayıcının kabul
+       etmediği tek bir alan yüzünden ÖZELLİĞİN TAMAMI çalışmaz hâle
+       geliyor — Gemini 3'te `thinkingBudget` → `thinkingLevel` değişikliği
+       tam olarak buna yol açtı.
+
+       Bu yüzden 400 alındığında düşünme alanını atıp BİR KEZ daha
+       deniyoruz. Düşünme düzeyi bir optimizasyondur; onsuz çözüm biraz
+       daha pahalı olabilir ama ÇALIŞIR. Sağlayıcı alan adını yine
+       değiştirirse öğrenci bunu hiç fark etmez, biz logdan görürüz. */
+    if (response.status === 400 && generationConfig.thinkingLevel) {
+      console.error(
+        `[ai-solve:gemini] ${modelId} düşünme düzeyi reddedildi ` +
+          `(thinkingLevel="${generationConfig.thinkingLevel}") — alansız yeniden deneniyor`
+      )
+      delete generationConfig.thinkingLevel
+      continue
+    }
 
     lastError = new GeminiError(codeFor(kind), {
       status: response.status,
@@ -449,7 +471,7 @@ export async function generateWithFallback(params) {
     const result = await generateStructured({
       ...params,
       role: backup,
-      thinkingBudget: solveConfig.thinkingBudget[backup],
+      thinkingLevel: solveConfig.thinkingLevel[backup],
     })
 
     return { ...result, fallbackFrom: primary, fallbackReason: error.kind }

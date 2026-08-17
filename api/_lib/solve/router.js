@@ -28,7 +28,7 @@ import { solveConfig } from './config.js'
  * @typedef {object} RouteDecision
  * @property {'fast'|'pro'} role
  * @property {string} reason        Loglanacak insan-okunur gerekçe
- * @property {number} thinkingBudget
+ * @property {string} thinkingLevel   Düşünme düzeyi (minimal|low|medium|high)
  * @property {boolean} needsFigure  Çözüm şemasına şekil alanları eklensin mi
  */
 
@@ -82,7 +82,7 @@ export function routeFromTriage(triage) {
     return {
       role: 'pro',
       reason: reasons.join(', '),
-      thinkingBudget: solveConfig.thinkingBudget.pro,
+      thinkingLevel: solveConfig.thinkingLevel.pro,
       needsFigure,
     }
   }
@@ -90,7 +90,7 @@ export function routeFromTriage(triage) {
   return {
     role: 'fast',
     reason: `kolay/orta (zorluk ${difficulty}, ${steps} adım)`,
-    thinkingBudget: solveConfig.thinkingBudget.fast,
+    thinkingLevel: solveConfig.thinkingLevel.fast,
     needsFigure,
   }
 }

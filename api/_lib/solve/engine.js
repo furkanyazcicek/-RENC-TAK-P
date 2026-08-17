@@ -103,7 +103,7 @@ export async function solveQuestion(input) {
     images,
     schema: TRIAGE_SCHEMA,
     maxOutputTokens: solveConfig.maxTriageTokens,
-    thinkingBudget: solveConfig.thinkingBudget.triage,
+    thinkingLevel: solveConfig.thinkingLevel.triage,
     timeoutMs: solveConfig.triageTimeoutMs,
     signal,
   })
@@ -153,7 +153,7 @@ export async function solveQuestion(input) {
     user: userPrompt,
     images,
     schema,
-    thinkingBudget: route.thinkingBudget,
+    thinkingLevel: route.thinkingLevel,
     signal,
   })
 
@@ -199,7 +199,7 @@ export async function solveQuestion(input) {
         user: userPrompt,
         images,
         schema,
-        thinkingBudget: solveConfig.thinkingBudget.pro,
+        thinkingLevel: solveConfig.thinkingLevel.pro,
         signal,
       })
 
@@ -355,7 +355,7 @@ export async function explainStep({ session, stepIndex, kind, question, signal }
     }),
     schema: EXPLAIN_SCHEMA,
     maxOutputTokens: solveConfig.maxExplainTokens,
-    thinkingBudget: solveConfig.thinkingBudget.explain,
+    thinkingLevel: solveConfig.thinkingLevel.explain,
     signal,
   })
 
@@ -390,7 +390,7 @@ export async function alternativeSolution({ session, signal }) {
       answer: session.board?.answer?.latex ?? '',
     }),
     schema: buildAlternativeSchema({ withFigure: true }),
-    thinkingBudget: solveConfig.thinkingBudget.pro,
+    thinkingLevel: solveConfig.thinkingLevel.pro,
     signal,
   })
 
@@ -438,7 +438,7 @@ export async function checkStudentWork({ supabase, questionPath, workPath, quest
     user: checkUserPrompt({ questionText, hasQuestionImage: Boolean(questionPath) }),
     images,
     schema: buildCheckSchema({ withFigure: true }),
-    thinkingBudget: solveConfig.thinkingBudget.pro,
+    thinkingLevel: solveConfig.thinkingLevel.pro,
     signal,
   })
 

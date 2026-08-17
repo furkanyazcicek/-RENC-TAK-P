@@ -28,6 +28,14 @@ function positive(value, fallback) {
   return Number.isFinite(n) && n > 0 ? n : fallback
 }
 
+/** Geçerli düşünme düzeyleri. Beyaz liste: yanlış bir değer 400 demek. */
+export const THINKING_LEVELS = ['minimal', 'low', 'medium', 'high']
+
+function level(value, fallback) {
+  const clean = String(value ?? '').trim().toLowerCase()
+  return THINKING_LEVELS.includes(clean) ? clean : fallback
+}
+
 /* ==================================================================
    MODEL KİMLİKLERİ
    ------------------------------------------------------------------
@@ -102,16 +110,27 @@ export const solveConfig = {
    */
   maxRetries: num(process.env.GEMINI_MAX_RETRIES, 2),
 
-  /* ---------- Düşünme (thinking) bütçesi ----------
-     Gemini düşünme token'ı üretir ve bunlar FATURALANIR. Bütçeyi role
-     göre ayırmak, kolay soruda Pro fiyatına düşünme yakmayı engeller.
-     -1 = model kendi karar versin, 0 = kapalı. */
+  /* ---------- Düşünme (thinking) düzeyi ----------
+     Gemini düşünme token'ı üretir ve bunlar FATURALANIR; düzeyi role göre
+     ayırmak, kolay soruda Pro fiyatına düşünme yakmayı engeller.
 
-  thinkingBudget: {
-    triage: num(process.env.GEMINI_THINKING_TRIAGE, 0),
-    fast: num(process.env.GEMINI_THINKING_FAST, 2048),
-    pro: num(process.env.GEMINI_THINKING_PRO, 8192),
-    explain: num(process.env.GEMINI_THINKING_EXPLAIN, 512),
+     ⚠️ ALAN ADI GEMINI 3'TE DEĞİŞTİ. Eski nesil `thinkingConfig.thinkingBudget`
+     (sayı) bekliyordu; Gemini 3 modelleri `thinkingLevel` (metin) bekliyor ve
+     eskisini gönderince isteğin TAMAMINI 400 ile reddediyor. Üretimde tam
+     olarak bu yaşandı: her çözüm isteği "bad_request" ile düşüyordu.
+
+     Ayrıca DÜŞÜNME KAPATILAMIYOR. En düşük değer modele göre 'minimal' ya da
+     'low'; 'off' ya da 0 diye bir seçenek yok.
+
+     Varsayılanlar bilinçli olarak 'low'/'high': 'minimal' bazı modellerde
+     (örn. gemini-3.7-flash) desteklenmiyor ve model değiştirildiğinde
+     sessizce 400'e düşmemeliyiz. */
+
+  thinkingLevel: {
+    triage: level(process.env.GEMINI_THINKING_TRIAGE, 'low'),
+    fast: level(process.env.GEMINI_THINKING_FAST, 'low'),
+    pro: level(process.env.GEMINI_THINKING_PRO, 'high'),
+    explain: level(process.env.GEMINI_THINKING_EXPLAIN, 'low'),
   },
 
   /* ---------- Yönlendirme (routing) eşikleri ----------
