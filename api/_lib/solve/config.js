@@ -66,10 +66,24 @@ export const solveConfig = {
     fast: process.env.GEMINI_FAST_MODEL || 'gemini-3.6-flash',
 
     /**
-     * Güçlü model. Zor matematik, geometri, çok adımlı akıl yürütme ve
-     * düşük güvenli cevapların yeniden çözümü için.
+     * Zor sorular, düşük güvenli cevapların yeniden çözümü ve öğrenci
+     * çözümünün kontrolü için.
+     *
+     * NEDEN "PRO" DEĞİL DE 3.7-FLASH? Ölçüldü (2026-08-17, kullanıcının
+     * makaralı fizik sorusu, ücretli katman, düşünme medium):
+     *   gemini-3.6-flash       39sn   E   ✗ (kendi güveni 1.0 — kendinden emin yanlış)
+     *   gemini-3.1-pro-preview 64sn   B   ✓  ama 4 kat pahalı ve 4 kat yavaş
+     *   gemini-3.5-flash       41sn   B   ✓
+     *   gemini-3.7-flash       14sn   B   ✓  ve 3.6 ile AYNI fiyat
+     * Yani gerçek Pro modelin verdiği doğruluğu, 3.7-flash dörtte bir
+     * sürede ve dörtte bir fiyata veriyor. Pro modelin 64 saniyesi ayrıca
+     * sunucusuz fonksiyon süresine sığmıyordu.
+     *
+     * TEK ZAYIFLIĞI: 3.7-flash zaman zaman 503 "high demand" dönüyor.
+     * Bu yüzden `fast` rolü daha oturmuş 3.6-flash'ta bırakıldı; 503
+     * geldiğinde generateWithFallback zaten oraya düşüyor.
      */
-    pro: process.env.GEMINI_PRO_MODEL || 'gemini-3.1-pro-preview',
+    pro: process.env.GEMINI_PRO_MODEL || 'gemini-3.7-flash',
   },
 
   /* ---------- Üretim parametreleri ---------- */
@@ -102,11 +116,17 @@ export const solveConfig = {
   maxExplainTokens: positive(process.env.GEMINI_MAX_EXPLAIN_TOKENS, 1500),
 
   /**
-   * Tek bir Gemini isteğinin zaman aşımı. Reasoning modelleri yavaştır;
-   * cömert tutulur ama Vercel fonksiyon süresinin altında kalmalı
-   * (vercel.json > maxDuration = 60sn).
+   * Tek bir Gemini isteğinin zaman aşımı.
+   *
+   * ⚠️ 45 SANİYE YETMİYORDU. Ölçüm (2026-08-17, ücretli katman, şekilli
+   * şema, düşünme medium): Flash 24-39sn, gerçek Pro 64-74sn. Yani eski
+   * değerle Pro modeli HER SEFERİNDE zaman aşımına uğruyordu — parasını
+   * ödediğin model hiç cevap veremiyordu.
+   *
+   * Üst sınır `totalBudgetMs` ve vercel.json'daki maxDuration; istemci
+   * zaten kalan bütçeyi aşacak bekleme yapmıyor (bkz. gemini.js).
    */
-  requestTimeoutMs: positive(process.env.GEMINI_TIMEOUT_MS, 45_000),
+  requestTimeoutMs: positive(process.env.GEMINI_TIMEOUT_MS, 90_000),
 
   /**
    * TÜM hattın (triyaj + çözüm + yükseltme) süre bütçesi.
@@ -237,10 +257,11 @@ export const solveConfig = {
       out: num(process.env.SOLVE_PRICE_FAST_OUT, 3.75),
       verified: process.env.SOLVE_PRICE_FAST_IN != null,
     },
-    // gemini-3.1-pro-preview (≤200k token istem)
+    // gemini-3.7-flash — 3.6 ile aynı fiyat. (Gerçek Pro modele
+    // dönülürse: gemini-3.1-pro-preview 2.00 / 12.00.)
     pro: {
-      in: num(process.env.SOLVE_PRICE_PRO_IN, 2.0),
-      out: num(process.env.SOLVE_PRICE_PRO_OUT, 12.0),
+      in: num(process.env.SOLVE_PRICE_PRO_IN, 0.75),
+      out: num(process.env.SOLVE_PRICE_PRO_OUT, 3.75),
       verified: process.env.SOLVE_PRICE_PRO_IN != null,
     },
   },

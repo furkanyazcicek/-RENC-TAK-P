@@ -17,6 +17,7 @@
  * testte gerçek bir Supabase olmadan koşturulabilir.
  */
 
+import { logSolveError } from '../errors.js'
 import { solveConfig } from './config.js'
 import { generateStructured, generateWithFallback, GeminiError } from './gemini.js'
 import { fetchImageForModel } from './image.js'
@@ -102,32 +103,54 @@ export async function solveQuestion(input) {
 
   /* ---------- 1) TRİYAJ — ucuz model, çözmez ---------- */
 
-  const triageCall = await generateStructured({
-    role: 'fast',
-    system: TRIAGE_SYSTEM,
-    user: text ? `${TRIAGE_USER}\n\nSoru metni:\n${text}` : TRIAGE_USER,
-    images,
-    schema: TRIAGE_SCHEMA,
-    maxOutputTokens: solveConfig.maxTriageTokens,
-    thinkingLevel: solveConfig.thinkingLevel.triage,
-    timeoutMs: solveConfig.triageTimeoutMs,
-    deadline,
-    signal,
-  })
+  /* TRİYAJ ÇÖKERSE İSTEK ÖLMEZ. Triyaj bir YARDIMCIDIR: hangi modele
+     gidileceğine karar verir ve okunmayan fotoğrafı ucuza yakalar. Onsuz
+     çözüm üretilebilir — ama bugünkü kod triyajın hatasını yukarı fırlatıp
+     bütün isteği düşürüyordu. Üretimde görüldü: triyaj iki kez zaman
+     aşımına uğradı ve öğrenci hiç çözüm göremedi.
 
-  calls.push({ role: 'fast', usage: triageCall.usage })
-  routingLog.push(
-    routingEntry({
-      stage: 'triage',
+     Triyaj yoksa soruyu ZOR varsayıyoruz: sınıflandıramadığımız bir soruda
+     ucuz modele güvenmek, tam da en riskli yerde en zayıf ayarı seçmek
+     olurdu. Şekil alanları da açık bırakılır (görsel varsa muhtemelen
+     gerekir; maliyeti yalnızca kullanılırsa doğar). */
+  let triage = null
+  let triageFailed = false
+
+  try {
+    const triageCall = await generateStructured({
       role: 'fast',
-      modelId: triageCall.modelId,
-      reason: 'ilk sınıflandırma',
-      usage: triageCall.usage,
-      latencyMs: triageCall.latencyMs,
+      system: TRIAGE_SYSTEM,
+      user: text ? `${TRIAGE_USER}\n\nSoru metni:\n${text}` : TRIAGE_USER,
+      images,
+      schema: TRIAGE_SCHEMA,
+      maxOutputTokens: solveConfig.maxTriageTokens,
+      thinkingLevel: solveConfig.thinkingLevel.triage,
+      timeoutMs: solveConfig.triageTimeoutMs,
+      deadline,
+      signal,
     })
-  )
 
-  const triage = triageCall.data
+    calls.push({ role: 'fast', usage: triageCall.usage })
+    routingLog.push(
+      routingEntry({
+        stage: 'triage',
+        role: 'fast',
+        modelId: triageCall.modelId,
+        reason: 'ilk sınıflandırma',
+        usage: triageCall.usage,
+        latencyMs: triageCall.latencyMs,
+      })
+    )
+
+    triage = triageCall.data
+  } catch (error) {
+    triageFailed = true
+    routingLog.push({
+      stage: 'triage_failed',
+      reason: error instanceof GeminiError ? error.kind : 'bilinmeyen',
+    })
+    logSolveError('triage', error, { kind: error?.kind })
+  }
 
   // Okunamayan soruda ÇÖZMEYE ÇALIŞMIYORUZ (§23). Buradan dönmek hem
   // öğrenciye doğru geri bildirim verir hem de pahalı çözüm çağrısını
@@ -145,7 +168,17 @@ export async function solveQuestion(input) {
   /* ---------- 2) YÖNLENDİRME ---------- */
   stage('analyzing')
 
-  const route = routeFromTriage(triage)
+  const route = triageFailed
+    ? {
+        role: 'pro',
+        reason: 'triyaj başarısız — soru zor varsayıldı',
+        thinkingLevel: solveConfig.thinkingLevel.pro,
+        needsFigure: images.length > 0,
+      }
+    : routeFromTriage(triage)
+
+  // Triyaj yoksa şıkları bilmiyoruz; şık analizi istemek boşuna token
+  // olur, model şık göremezse zaten üretemez.
   const multipleChoice = triage?.question_type === 'coktan_secmeli'
 
   /* ---------- 3) ÇÖZÜM ---------- */

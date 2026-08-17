@@ -204,7 +204,9 @@ function nearlyEqual(a, b, tolerance) {
 const CHECKERS = {
   substitute: (expr, scope, expect, tolerance) => {
     const r = evaluateExpression(expr, scope)
-    if (!r.ok) return { pass: false, reason: r.reason }
+    // Hesaplanamayan ifade "çürüdü" DEĞİLDİR: modelin iddiayı kötü
+    // yazması, cevabının yanlış olduğunu göstermez (bkz. runVerification).
+    if (!r.ok) return { reject: true, reason: r.reason }
     const pass = nearlyEqual(r.value, expect, tolerance)
     return { pass, actual: r.value, reason: pass ? null : `${r.value} ≠ ${expect}` }
   },
@@ -212,16 +214,31 @@ const CHECKERS = {
   arithmetic: (expr, scope, expect, tolerance) =>
     CHECKERS.substitute(expr, scope, expect, tolerance),
 
-  /** "sol = sağ" biçimindeki ifadenin iki tarafını ayrı hesaplar. */
-  equation_check: (expr, scope, _expect, tolerance) => {
+  /**
+   * "sol = sağ" biçimindeki ifadenin iki tarafını ayrı hesaplar.
+   *
+   * EŞİTTİR İŞARETİ YOKSA REDDETMİYORUZ. Model denklemi sık sık
+   * "5*m2 + 4*m3 - 20" gibi sıfıra eşitlenmiş tek taraf olarak yazıyor —
+   * bu geçerli bir denklem ifadesidir, biçim hatası değil. Üretimde
+   * ölçüldü: doğru çözümler yalnızca bu yüzden "çürüdü" sayılıp
+   * öğrenciye HİÇ gösterilmiyordu. Tek taraflı yazımda ifade `expect`
+   * (yoksa 0) ile karşılaştırılır.
+   */
+  equation_check: (expr, scope, expect, tolerance) => {
     const parts = expr.split('=')
-    if (parts.length !== 2) {
-      return { pass: false, reason: 'equation_check "sol = sag" biçiminde olmalı' }
+
+    if (parts.length === 1) {
+      return CHECKERS.substitute(expr, scope, typeof expect === 'number' ? expect : 0, tolerance)
     }
+
+    if (parts.length !== 2) {
+      return { reject: true, reason: 'equation_check ikiden fazla "=" içeriyor' }
+    }
+
     const left = evaluateExpression(parts[0], scope)
-    if (!left.ok) return { pass: false, reason: 'sol taraf: ' + left.reason }
+    if (!left.ok) return { reject: true, reason: 'sol taraf: ' + left.reason }
     const right = evaluateExpression(parts[1], scope)
-    if (!right.ok) return { pass: false, reason: 'sağ taraf: ' + right.reason }
+    if (!right.ok) return { reject: true, reason: 'sağ taraf: ' + right.reason }
 
     const pass = nearlyEqual(left.value, right.value, tolerance)
     return {
@@ -300,6 +317,16 @@ export function runVerification(solution) {
     }
 
     const result = checker(exprCheck.expr, varCheck.scope, expect, claim.tolerance)
+
+    /* İDDİANIN KOŞTURULAMAMASI, ÇÜRÜMESİ DEĞİLDİR. Ayrım kritik: `failed`
+       "cevap yanlış" demek ve çözümü öğrenciye hiç göstermemeye kadar
+       gidiyor. Modelin iddiayı kötü yazması bunun kanıtı değil; o yalnızca
+       "doğrulanamadı" demektir ve `unusable` yolundan güveni düşürür. */
+    if (result.reject) {
+      rejected += 1
+      details.push({ type, status: 'rejected', reason: result.reason })
+      continue
+    }
 
     if (result.pass) {
       passed += 1

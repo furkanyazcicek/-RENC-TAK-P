@@ -596,14 +596,17 @@ check(
 
 head('8) Maliyet hesabı')
 
+/* Fiyatlar yapılandırmadan OKUNUR, teste gömülmez: model değiştiğinde
+   (ve fiyat 1 Ocak 2027'de zamlandığında) bu testler kendiliğinden doğru
+   kalmalı. Sınanan şey rakam değil, çarpımın doğruluğu. */
 {
   const c = calculateAICost({ role: 'pro', inputTokens: 1_000_000, outputTokens: 0 })
-  check('1M girdi token = girdi fiyatı', c.usd === 2.0, `${c.usd}`)
+  check('1M girdi token = girdi fiyatı', c.usd === solveConfig.pricing.pro.in, `${c.usd}`)
 }
 
 {
   const c = calculateAICost({ role: 'pro', inputTokens: 0, outputTokens: 1_000_000 })
-  check('1M çıktı token = çıktı fiyatı', c.usd === 12.0, `${c.usd}`)
+  check('1M çıktı token = çıktı fiyatı', c.usd === solveConfig.pricing.pro.out, `${c.usd}`)
 }
 
 {
@@ -817,6 +820,87 @@ check(
   'Mesajlar öğrenciye NE YAPACAĞINI söyler (soru işareti içerir)',
   readIssueMessage('alt_kisim_kesik').includes('?')
 )
+
+/* ==================================================================
+   12b) İDDİA BİÇİMİ — "koşturulamadı" ile "çürüdü" ayrımı
+   ------------------------------------------------------------------
+   Üretimde ölçüldü: model denklemi sık sık "5*m2 + 4*m3 - 20" gibi tek
+   taraflı yazıyor. Eski kod bunu "çürüdü" sayıp DOĞRU çözümleri bile
+   öğrenciye hiç göstermiyordu — gerçek Pro modelin doğru cevabı dahil.
+   ================================================================== */
+
+head('12b) Doğrulama iddialarının biçim toleransı')
+
+{
+  const withClaim = (claim) => ({
+    solution: { steps: [], answer: { plain: '2' } },
+    verification: { claims: [claim], self_confidence: 0.9 },
+    reading: { read_confidence: 0.9 },
+  })
+
+  const tekTaraf = runVerification(
+    withClaim({
+      type: 'equation_check',
+      expression: '5*m2 + 4*m3 - 20',
+      variables: [{ name: 'm2', value: 2 }, { name: 'm3', value: 2.5 }],
+      expect: 0,
+      tolerance: 0,
+    })
+  )
+  check('Tek taraflı denklem (=0 biçimi) koşturulur', tekTaraf.status === 'passed', JSON.stringify(tekTaraf))
+
+  const ciftTaraf = runVerification(
+    withClaim({
+      type: 'equation_check',
+      expression: '5*m2 + 4*m3 = 20',
+      variables: [{ name: 'm2', value: 2 }, { name: 'm3', value: 2.5 }],
+      expect: 0,
+      tolerance: 0,
+    })
+  )
+  check('"sol = sağ" biçimi çalışmaya devam eder', ciftTaraf.status === 'passed')
+
+  const gercektenYanlis = runVerification(
+    withClaim({
+      type: 'equation_check',
+      expression: '5*m2 + 4*m3 = 99',
+      variables: [{ name: 'm2', value: 2 }, { name: 'm3', value: 2.5 }],
+      expect: 0,
+      tolerance: 0,
+    })
+  )
+  check('Gerçekten tutmayan denklem ÇÜRÜR', gercektenYanlis.status === 'failed')
+
+  const bozuk = runVerification(
+    withClaim({
+      type: 'equation_check',
+      expression: 'm2 = = 3',
+      variables: [],
+      expect: 0,
+      tolerance: 0,
+    })
+  )
+  check(
+    'Koşturulamayan iddia "çürüdü" değil "kullanılamaz" sayılır',
+    bozuk.status === 'unusable' && bozuk.failed === 0 && bozuk.rejected === 1,
+    JSON.stringify(bozuk)
+  )
+
+  const tanimsizDegisken = runVerification(
+    withClaim({
+      type: 'substitute',
+      expression: 'x + y',
+      variables: [{ name: 'x', value: 1 }],
+      expect: 3,
+      tolerance: 0,
+    })
+  )
+  check(
+    'Eksik değişken de çürütme sayılmaz',
+    tanimsizDegisken.failed === 0 && tanimsizDegisken.rejected === 1,
+    JSON.stringify(tanimsizDegisken)
+  )
+}
 
 /* ==================================================================
    13) SAĞLAYICI REDDİNDE KENDİNİ TOPARLAMA
