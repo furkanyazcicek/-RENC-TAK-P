@@ -52,9 +52,18 @@ function classify(status, body = '') {
   if (status === 401 || status === 403) return 'auth'
   if (status === 404) return 'model_not_found'
   if (status === 429) {
-    return /quota|billing|insufficient|credit|exceeded your current quota/i.test(body)
-      ? 'quota'
-      : 'rate_limit'
+    if (!/quota|billing|insufficient|credit|exceeded your current quota/i.test(body)) {
+      return 'rate_limit'
+    }
+
+    /* İKİ AYRI DURUM, AYNI HTTP KODU — ve öğrenciye söylenecek şey farklı:
+         limit: 0  → bu model bu katmanda HİÇ kullanılamıyor (ücretsiz
+                     katmanda Pro modelleri böyle). Yapılandırma sorunu;
+                     bekleyerek düzelmez, plan değişmeli.
+         limit > 0 → günlük/dakikalık hak DOLDU. Yarın kendiliğinden
+                     dolar. Buna "yapılandırma sorunu" demek öğrenciyi de
+                     öğretmeni de yanlış yere bakmaya gönderir. */
+    return /"quotaValue":\s*"?0"?|limit:\s*0\b/i.test(body) ? 'quota_unavailable' : 'quota'
   }
   if (status === 408) return 'timeout'
   if (status >= 500) return 'server'
@@ -67,7 +76,14 @@ function classify(status, body = '') {
 }
 
 /** Bu sınıflarda yeniden denemek anlamsız — hemen vazgeç. */
-const FATAL = new Set(['auth', 'model_not_found', 'quota', 'schema_rejected', 'bad_request'])
+const FATAL = new Set([
+  'auth',
+  'model_not_found',
+  'quota',
+  'quota_unavailable',
+  'schema_rejected',
+  'bad_request',
+])
 
 /**
  * Hata sınıfını `api/_lib/errors.js` mesaj anahtarına eşler.
@@ -79,11 +95,15 @@ const FATAL = new Set(['auth', 'model_not_found', 'quota', 'schema_rejected', 'b
 function codeFor(kind) {
   switch (kind) {
     case 'auth':
-    case 'quota':
+    case 'quota_unavailable':
     case 'model_not_found':
     case 'schema_rejected':
     case 'bad_request':
       return 'solve_not_configured'
+    // Günlük hak dolduysa "yapılandırma sorunu" demek yanlış: kimse bir
+    // şey bozmadı, hak yarın yenilenecek.
+    case 'quota':
+      return 'solve_quota_exhausted'
     case 'rate_limit':
       return 'solve_busy'
     case 'timeout':
@@ -554,16 +574,17 @@ export async function generateWithFallback(params) {
   try {
     return await generateStructured(params)
   } catch (error) {
-    /* `quota` de kurtarılabilir sayılır. Sebep: kota model BAŞINA ve
-       katman başına verilir; önizleme (preview) modellerinin kotası
-       genellikle çok daha dardır. Pro'nun günlük kotası dolduğunda
-       öğrenciye "yapılandırma sorunu" demek yerine Flash ile çözmek
-       doğru davranış — kotanın dolması ÖZELLİĞİN ÖLMESİ demek olmamalı.
-       `auth` ve `schema_rejected` burada YOK: ikisi de diğer modelde de
-       aynı şekilde başarısız olur, denemek yalnızca öğrenciyi bekletir. */
+    /* Kota hataları kurtarılabilir sayılır. Sebep: kota model BAŞINA
+       verilir — bir modelin hakkı bitmişken diğerininki durabilir.
+       Ücretsiz katmanda Pro'nun hakkı sıfır, Flash'ınki günde 20; Pro'ya
+       ulaşılamadığında öğrenciye hata göstermek yerine Flash'a düşmek
+       doğru davranış. `auth` ve `schema_rejected` burada YOK: ikisi de
+       diğer modelde de aynı şekilde başarısız olur. */
     const recoverable =
       error instanceof GeminiError &&
-      ['model_not_found', 'server', 'rate_limit', 'quota', 'timeout', 'unknown'].includes(error.kind)
+      ['model_not_found', 'server', 'rate_limit', 'quota', 'quota_unavailable', 'timeout', 'unknown'].includes(
+        error.kind
+      )
 
     if (!backup || !recoverable) throw error
 

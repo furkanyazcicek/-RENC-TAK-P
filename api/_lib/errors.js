@@ -44,6 +44,12 @@ const MESSAGES = {
   // `upstream_*` mesajları "AI Koç" diyor ve Soru Çöz ekranında çıkınca
   // öğrenci yanlış özelliğin bozuk olduğunu sanıyor. Gemini kaynaklı
   // geçici hatalar bu üç koda düşer (bkz. solve/gemini.js > codeFor).
+  // Günlük hak dolduğunda. "Yapılandırma sorunu" DEMİYOR çünkü kimse bir
+  // şey bozmadı; sistem geneli günlük hak bitti ve yarın yenilenecek.
+  // Öğrenciye ne olduğunu ve ne zaman düzeleceğini söylemek, onu boşuna
+  // fotoğraf çekip tekrar denemekten kurtarır.
+  solve_quota_exhausted:
+    'Bugünlük soru çözüm hakkımız doldu — sistem genelinde günlük bir sınır var. Yarın tekrar deneyebilirsin; acilse öğretmenine haber ver.',
   solve_timeout:
     'Çözüm hazırlamak beklenenden uzun sürdü. Soruyu tekrar gönderir misin? Tek soru gönderirsen daha hızlı çözerim.',
   solve_busy: 'Şu anda çok yoğunum. Birkaç saniye sonra tekrar dener misin?',

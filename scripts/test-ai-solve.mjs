@@ -935,6 +935,42 @@ head('13) Gemini reddinde kendini toparlama')
     check('Pro kotası dolunca Flash devralır', result.data?.cozuldu === true)
     check('Devralma sessiz değil (fallbackFrom taşınır)', result.fallbackFrom === 'pro')
     check('Kota hatasında Pro tekrar tekrar denenmez', roles.filter((r) => r === 'pro').length === 1)
+
+    /* Aynı 429, İKİ farklı sebep — öğrenciye giden cümle farklı olmalı.
+       Üretimde ikisi de "yapılandırma sorunu" diyordu; günlük hak
+       dolduğunda bu, herkesi yanlış yere bakmaya gönderiyor. */
+    const kindOf = async (body) => {
+      globalThis.fetch = async () => reply(429, body)
+      try {
+        await generateStructured({ role: 'fast', system: 's', user: 'u', schema: plainSchema })
+      } catch (error) {
+        return error
+      }
+      return null
+    }
+
+    const gunluk = await kindOf(
+      JSON.stringify({
+        error: {
+          message: 'You exceeded your current quota',
+          details: [{ violations: [{ quotaValue: '20' }] }],
+        },
+      })
+    )
+    const hicYok = await kindOf(
+      JSON.stringify({
+        error: {
+          message: 'Quota exceeded for metric: generate_content_free_tier_requests, limit: 0',
+        },
+      })
+    )
+
+    check('Günlük hak dolduğunda "yarın dene" denir', gunluk?.code === 'solve_quota_exhausted')
+    check(
+      'Günlük hak mesajı "yapılandırma" demez',
+      !userMessage('solve_quota_exhausted').includes('yapılandırma')
+    )
+    check('Katmanda hiç hak yoksa yapılandırma sorunudur', hicYok?.code === 'solve_not_configured')
   }
 
   /* --- d) Anahtar hatasında yedek model DENENMEZ --- */
