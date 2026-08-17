@@ -185,18 +185,22 @@ export default function StudentDetail() {
     return [...branch, ...general].sort((a, b) => new Date(b.date) - new Date(a.date))
   }, [exams, mockExams])
 
+  /* Denemeler de çalışmadır (bkz. lib/insights.js). Öğretmenin gördüğü
+     rakam, öğrencinin kendi panelinde gördüğüyle aynı olmalı.
+     DİKKAT: Bu hook aşağıdaki `loading` erken dönüşünün ÜSTÜNDE kalmalı —
+     altına alınırsa ilk render'da çağrılmayıp ikincisinde çağrılır ve React
+     "Rendered more hooks than during the previous render" ile sayfayı komple
+     çökertir. */
+  const studyEntries = useMemo(
+    () => combineStudyEntries(dailyLogs, mockExams, exams),
+    [dailyLogs, mockExams, exams]
+  )
+
   if (loading) return <PageLoader label="Öğrenci verileri yükleniyor…" />
 
   const topicStats = buildTopicStats(dailyLogs)
   const subjectPerformance = buildSubjectPerformance(examsForType)
   const activeExamType = examType ?? mockExams[0]?.exam_type ?? 'TYT'
-
-  /* Denemeler de çalışmadır (bkz. lib/insights.js). Öğretmenin gördüğü
-     rakam, öğrencinin kendi panelinde gördüğüyle aynı olmalı. */
-  const studyEntries = useMemo(
-    () => combineStudyEntries(dailyLogs, mockExams, exams),
-    [dailyLogs, mockExams, exams]
-  )
 
   const last14 = lastNDays(studyEntries, 14)
   const streak = studyStreak(studyEntries)
