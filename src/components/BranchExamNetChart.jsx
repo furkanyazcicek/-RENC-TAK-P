@@ -2,11 +2,15 @@ import { useMemo, useState } from 'react'
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { calcNet } from '../lib/examHelpers'
 
-// Kayıtta net yoksa veya 0 geldiyse (eski kayıtlar), doğru/yanlıştan yeniden hesaplar.
+// Doğru/yanlış girilmişse net burada hesaplanır: veritabanındaki `net`
+// generated column'u sabit /4 uygular, LGS'nin /3 katsayısını bilmez.
+// Saklı değer yalnızca doğru/yanlışı olmayan eski kayıtlar için kullanılır.
+// (Aynı kural BranchExamList#resolveNet içinde de geçerli.)
 function resolveNet(exam) {
-  if (exam.net != null && Number(exam.net) !== 0) return Number(exam.net)
-  if (exam.correct == null && exam.incorrect == null) return null
-  return calcNet(exam.correct, exam.incorrect, exam.exam_type)
+  if (exam.correct != null || exam.incorrect != null) {
+    return calcNet(exam.correct, exam.incorrect, exam.exam_type)
+  }
+  return exam.net != null ? Number(exam.net) : null
 }
 
 export default function BranchExamNetChart({ exams }) {

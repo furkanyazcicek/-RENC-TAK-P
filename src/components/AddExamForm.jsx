@@ -11,6 +11,41 @@ function todayStr() {
   return toKey(new Date())
 }
 
+// `exams` tablosunda henüz olmayabilecek alanlar. Bu proje iki farklı şema
+// geçmişi taşıyor (migration_*.sql dosyaları ile canlı şema örtüşmüyor —
+// bkz. supabase/setup_new_project.sql başlığı), o yüzden kolonun varlığına
+// güvenmek yerine yokluğunu tolere ediyoruz: PostgREST bilinmeyen kolonu
+// PGRST204 ile reddediyor, biz de tüm kaydı çöpe atmaktansa o alanı düşürüp
+// yeniden deniyor ve neyin eksik kaldığını öğrenciye söylüyoruz.
+const OPTIONAL_COLUMNS = ['exam_type', 'duration_minutes']
+
+const OPTIONAL_COLUMN_LABELS = {
+  exam_type: 'sınav türü',
+  duration_minutes: 'süre',
+}
+
+async function insertExam(supabaseClient, payload) {
+  const body = { ...payload }
+  const dropped = []
+
+  // En kötü ihtimalle her isteğe bağlı kolon için bir tur.
+  for (let attempt = 0; attempt <= OPTIONAL_COLUMNS.length; attempt++) {
+    const { error } = await supabaseClient.from('exams').insert(body)
+    if (!error) return { dropped }
+
+    const missing =
+      error.code === 'PGRST204'
+        ? OPTIONAL_COLUMNS.find((col) => col in body && error.message?.includes(`'${col}'`))
+        : null
+    if (!missing) return { error, dropped }
+
+    delete body[missing]
+    dropped.push(missing)
+  }
+
+  return { error: new Error('Branş denemesi kaydedilemedi.'), dropped }
+}
+
 /**
  * AddExamForm — tek ders üzerine yapılan branş denemesi girişi.
  *
@@ -49,11 +84,14 @@ export default function AddExamForm({ studentId, onAdded, bare = false }) {
 
     const correctNum = correct === '' ? 0 : Number(correct)
     const incorrectNum = incorrect === '' ? 0 : Number(incorrect)
-    // Net, Supabase'e gönderilmeden önce burada (frontend'de) hesaplanır.
-    // LGS seçiliyse yanlış/3, diğer sınav türlerinde (veya tür seçilmezse) yanlış/4 uygulanır.
     const net = calcNet(correctNum, incorrectNum, examType)
 
-    const { error } = await supabase.from('exams').insert({
+    // DİKKAT: `net` payload'a KONMAZ. Veritabanında generated column'dur
+    // (correct - incorrect*0.25, stored) ve Postgres üretilen kolona değer
+    // yazılmasına izin vermez — net gönderildiği sürece her kayıt hata
+    // dönüyordu. LGS'nin /3 katsayısı okuma tarafında calcNet ile uygulanır
+    // (bkz. BranchExamList#resolveNet).
+    const { error, dropped } = await insertExam(supabase, {
       student_id: targetStudentId,
       topic: subject,
       exam_type: examType || null,
@@ -62,7 +100,6 @@ export default function AddExamForm({ studentId, onAdded, bare = false }) {
       incorrect: incorrectNum,
       empty: empty === '' ? 0 : Number(empty),
       duration_minutes: durationMinutes === '' ? null : Number(durationMinutes),
-      net,
     })
     setSaving(false)
 
@@ -75,7 +112,16 @@ export default function AddExamForm({ studentId, onAdded, bare = false }) {
       setIncorrect('')
       setEmpty('')
       setDurationMinutes('')
-      setFeedback({ tone: 'success', text: `Branş denemesi kaydedildi (${net} net).` })
+      setFeedback(
+        dropped.length
+          ? {
+              tone: 'warning',
+              text: `Branş denemesi kaydedildi (${net} net), ancak ${dropped
+                .map((col) => OPTIONAL_COLUMN_LABELS[col] ?? col)
+                .join(' ve ')} bilgisi veritabanında saklanamadı — eksik göç var.`,
+            }
+          : { tone: 'success', text: `Branş denemesi kaydedildi (${net} net).` }
+      )
       onAdded?.()
     }
   }

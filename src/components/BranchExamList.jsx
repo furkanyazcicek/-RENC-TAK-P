@@ -4,12 +4,16 @@ import { calcNet } from '../lib/examHelpers'
 import { colorForKey } from '../lib/chartTheme'
 import { Badge, EmptyState, IconButton } from './ui'
 
-// Kayıtta net yoksa veya 0 geldiyse (eski kayıtlar), doğru/yanlıştan yeniden hesaplar.
-// Sınav türü kayıtlıysa ona göre (LGS: /3), değilse varsayılan /4 uygulanır.
+// Doğru/yanlış girilmişse net HER ZAMAN burada hesaplanır. Veritabanındaki
+// `net` generated column'u sabit /4 uygular, LGS'nin /3 katsayısını bilmez —
+// ona güvenilirse LGS branş denemesi, formun gösterdiği önizlemeden farklı
+// bir netle listelenir. Saklı değere yalnızca doğru/yanlışı olmayan eski
+// kayıtlarda düşülür.
 function resolveNet(exam) {
-  if (exam.net != null && Number(exam.net) !== 0) return Number(exam.net)
-  if (exam.correct == null && exam.incorrect == null) return null
-  return calcNet(exam.correct, exam.incorrect, exam.exam_type)
+  if (exam.correct != null || exam.incorrect != null) {
+    return calcNet(exam.correct, exam.incorrect, exam.exam_type)
+  }
+  return exam.net != null ? Number(exam.net) : null
 }
 
 /**
