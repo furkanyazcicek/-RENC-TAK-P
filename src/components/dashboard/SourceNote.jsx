@@ -39,13 +39,12 @@ export default function SourceNote({ split, className }) {
       <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" strokeWidth={2.2} aria-hidden="true" />
       <span>
         Yukarıdaki toplamların <span className="font-semibold text-ink/75">{parts.join(' ve ')}</span>
-        {"'"}sı deneme çözümlerinden geliyor.
+        {"'"}sı denemelerden geliyor.
         {hasEstimatedDuration && (
           <>
             {' '}
-            Süresi girilmemiş denemeler sınav türünün standart süresinden{' '}
-            <span className="font-semibold text-ink/75">tahmin edildi</span> — deneme kaydına
-            gerçek süreyi yazarsanız tahmin yerine o kullanılır.
+            Süresi girilmemiş denemeler standart sınav süresinden{' '}
+            <span className="font-semibold text-ink/75">tahmin edildi</span>.
           </>
         )}
       </span>

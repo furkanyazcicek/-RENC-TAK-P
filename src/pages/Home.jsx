@@ -184,7 +184,7 @@ export default function Home() {
       icon: AlarmClock,
       tone: 'danger',
       title: `${hw.overdue.length} ödevin gecikmiş`,
-      hint: 'Teslim tarihi geçti — önce bunlara bak.',
+      hint: 'Önce bunlara bak.',
     },
     hw.dueToday.length && {
       key: 'dueToday',
@@ -192,7 +192,7 @@ export default function Home() {
       icon: ClipboardList,
       tone: 'warning',
       title: `${hw.dueToday.length} ödevin bugün teslim`,
-      hint: 'Bugün içinde tamamlanması gerekiyor.',
+      hint: 'Gün bitmeden tamamla.',
     },
     !hw.overdue.length &&
       !hw.dueToday.length &&
@@ -202,7 +202,7 @@ export default function Home() {
         icon: ClipboardList,
         tone: 'brand',
         title: `${hw.pending.length} ödevin bekliyor`,
-        hint: 'Teslim tarihi henüz gelmedi.',
+        hint: 'Teslim tarihi gelmedi.',
       },
     q.reviewing.length && {
       key: 'questions',
@@ -210,7 +210,7 @@ export default function Home() {
       icon: HelpCircle,
       tone: 'brand',
       title: `${q.reviewing.length} sorun öğretmeninde`,
-      hint: 'Yanıt geldiğinde burada göreceksin.',
+      hint: 'Yanıt bekleniyor.',
     },
     !todayTotals.minutes && {
       key: 'today',
@@ -218,36 +218,31 @@ export default function Home() {
       icon: CalendarDays,
       tone: 'brand',
       title: 'Bugünün kaydını girmedin',
-      hint: streak
-        ? `${streak} günlük serini bozma — bugünü de ekle.`
-        : 'Ne çalıştığını yaz, gelişimin buradan hesaplanıyor.',
+      hint: streak ? `${streak} günlük serini bozma.` : 'Ne çalıştığını yaz.',
     },
   ].filter(Boolean)
 
+  // Açıklamalar tek satırda kırpılıyor (truncate); iki kelimeyi geçmemeleri
+  // ve birbirini tekrar etmemeleri gerekiyor — "AI Soru Çöz" ile "Soru Sor"
+  // aynı cümleyi taşıyınca hangisinin ne yaptığı kayboluyordu.
   const quickActions = [
-    {
-      to: '/soru-coz',
-      label: 'AI Soru Çöz',
-      description: 'Takıldığın soruyu çözdür',
-      icon: ScanText,
-    },
+    { to: '/soru-coz', label: 'AI Soru Çöz', description: 'Fotoğraftan çözüm', icon: ScanText },
     {
       to: '/gunluk-takip',
       label: 'Çalışma Kaydet',
       description: 'Bugün ne çalıştın?',
       icon: CalendarDays,
     },
-    { to: '/denemeler', label: 'Deneme Gir', description: 'Net ve ders bazlı sonuç', icon: Target },
-    { to: '/sorular', label: 'Soru Sor', description: 'Takıldığın soruyu gönder', icon: HelpCircle },
+    { to: '/denemeler', label: 'Deneme Gir', description: 'Net ve ders dökümü', icon: Target },
+    { to: '/sorular', label: 'Soru Sor', description: 'Öğretmenine gönder', icon: HelpCircle },
     { to: '/ai-koc', label: 'AI Koç', description: 'Plan ve öneri al', icon: Sparkles },
-    { to: '/notlar', label: 'Ders Notları', description: 'Konu anlatımı ve kaynak', icon: Library },
+    { to: '/notlar', label: 'Ders Notları', description: 'Konu anlatımları', icon: Library },
     { to: '/mesajlar', label: 'Mesajlar', description: 'Öğretmeninle konuş', icon: MessageCircle },
   ]
 
   return (
     <AppShell
       title="Anasayfa"
-      subtitle="Bugün nereden devam edeceğin burada"
       loading={loading}
       loadingLabel="Anasayfan hazırlanıyor…"
       headerAction={
@@ -264,7 +259,7 @@ export default function Home() {
         subtitle={
           todayTotals.minutes
             ? `Bugün ${formatMinutes(todayTotals.minutes)} çalıştın — böyle devam.`
-            : 'Bugün için henüz bir kaydın yok. Küçük bir adımla başlayabilirsin.'
+            : 'Bugün için henüz kaydın yok.'
         }
         avatar={avatarInitials}
         badge={streak >= 2 ? { label: `${streak} günlük seri`, tone: 'glass' } : null}
@@ -293,8 +288,8 @@ export default function Home() {
             title="Sınava kalan süre"
             description={
               countdown.passed
-                ? 'Yeni hedefini Profil sayfasından güncelleyebilirsin'
-                : 'Halka, öğretim yılının ne kadarının geçtiğini gösterir'
+                ? 'Hedefini Profil sayfasından güncelle'
+                : 'Halka, öğretim yılının geçen kısmını gösterir'
             }
             icon={CalendarDays}
             iconTone="#7C3AED"
@@ -369,7 +364,6 @@ export default function Home() {
       {/* ---------- BEKLEYENLER ---------- */}
       <Panel
         title="Dikkatini bekleyenler"
-        description="Bugün yapılacaklar — hepsi tek dokunuş uzağında"
         icon={AlarmClock}
         iconTone="#D97706"
       >
@@ -377,7 +371,7 @@ export default function Home() {
           <EmptyState
             icon={CheckCircle2}
             title="Bekleyen bir şey yok"
-            description="Ödevlerin tamam, soruların yanıtlanmış ve bugünün kaydı girilmiş. Serini sürdür."
+            description="Ödevlerin tamam, soruların yanıtlanmış, bugünü de kaydettin."
             compact
           />
         ) : (
@@ -422,7 +416,7 @@ export default function Home() {
           Soru ve öğretmen çözümü yan yana, kaydırılabilir kartlarda. */}
       <Panel
         title="Sorularım"
-        description="Sağa kaydır — solda sorun, sağda öğretmenin çözümü. Fotoğrafa dokunup yakınlaştırabilirsin."
+        description="Solda sorun, sağda öğretmeninin çözümü"
         icon={HelpCircle}
         iconTone="#DB2777"
         action={
@@ -439,7 +433,6 @@ export default function Home() {
       {/* ---------- HIZLI İŞLEMLER ---------- */}
       <Panel
         title="Hızlı işlemler"
-        description="En sık yaptığın işler"
         icon={Sparkles}
         iconTone="#7C3AED"
       >
@@ -472,7 +465,7 @@ export default function Home() {
       {/* ---------- SON ÇALIŞMALAR ---------- */}
       <Panel
         title="Son çalışmaların"
-        description="En son girdiğin beş kayıt"
+        description="Son 5 kayıt"
         icon={CalendarDays}
         iconTone="#0891B2"
         action={
@@ -485,7 +478,7 @@ export default function Home() {
           <EmptyState
             icon={CalendarDays}
             title="Henüz çalışma kaydın yok"
-            description="Günlük Çalışma Takibi'nden ilk kaydını eklediğinde burada görünecek."
+            description="Günlük Takip'ten ilk kaydını ekle."
             compact
           />
         ) : (
@@ -534,8 +527,7 @@ export default function Home() {
             <h2 className="font-display font-bold text-ink">Derinlemesine bakmak ister misin?</h2>
           </div>
           <p className="mt-1 text-sm text-ink/60">
-            Çalışma süresi, net gelişimi, ders ve konu bazlı başarı — tüm grafikler Analiz
-            sayfasında.
+            Net gelişimi, ders ve konu bazlı başarı — tüm grafikler Analiz sayfasında.
           </p>
         </div>
         <div className="flex items-center gap-2">
