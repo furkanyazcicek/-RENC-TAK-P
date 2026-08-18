@@ -243,6 +243,7 @@ export default function Home() {
   return (
     <AppShell
       title="Anasayfa"
+      subtitle="Günün özeti"
       loading={loading}
       loadingLabel="Anasayfan hazırlanıyor…"
       headerAction={
@@ -364,6 +365,7 @@ export default function Home() {
       {/* ---------- BEKLEYENLER ---------- */}
       <Panel
         title="Dikkatini bekleyenler"
+        description="Bugün yapılacaklar"
         icon={AlarmClock}
         iconTone="#D97706"
       >
@@ -433,6 +435,7 @@ export default function Home() {
       {/* ---------- HIZLI İŞLEMLER ---------- */}
       <Panel
         title="Hızlı işlemler"
+        description="En sık yaptığın işler"
         icon={Sparkles}
         iconTone="#7C3AED"
       >

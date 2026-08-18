@@ -13,6 +13,12 @@ export default defineConfig({
       filename: 'sw.js',
       injectManifest: {
         globPatterns: ['**/*.{js,css,html,svg,png,ico}'],
+        // pdf.js (~0.5 MB js + 1.3 MB worker) yalnızca PDF ders notu açan
+        // kullanıcıya lazım; ön belleğe alınırsa herkes ilk açılışta indirir.
+        // Zaten PDF'in kendisi uzak sunucuda, çevrimdışı okunamıyor.
+        // (Parça adı `src/lib/pdf.js` modülünden geliyor — dosya yeniden
+        // adlandırılırsa bu desen de güncellenmeli.)
+        globIgnores: ['**/pdf-*.js', '**/pdf.worker*'],
       },
       registerType: 'autoUpdate',
       includeAssets: ['logo.png'],
