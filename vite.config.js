@@ -3,6 +3,16 @@ import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  // Yeni bir paket kurulduğunda Vite bağımlılık önbelleğini yeniler. Sunucu
+  // o sırada açıksa React'in iki ayrı kopyası yüklenebiliyor ve site
+  // "Invalid hook call" hatasıyla bembeyaz açılıyor — atlas değil, bütün
+  // sayfalar. Bu satır React'in her zaman tek kopya çözülmesini garanti eder.
+  //
+  // Yine de olursa: sunucuyu durdurup `npm run dev:temiz` ile başlatmak
+  // önbelleği sıfırdan kurar.
+  resolve: {
+    dedupe: ['react', 'react-dom'],
+  },
   plugins: [
     react(),
     VitePWA({

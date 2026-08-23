@@ -25,7 +25,8 @@
     "atlas:uret": "node scripts/tarihAtlasiUret.mjs",
     "atlas:dogrula": "node scripts/tarihAtlasiDogrula.mjs",
     "atlas:eyalet": "node scripts/eyaletleriUret.mjs",
-    "atlas:eyalet-dogrula": "node scripts/eyaletleriDogrula.mjs"
+    "atlas:eyalet-dogrula": "node scripts/eyaletleriDogrula.mjs",
+    "dev:temiz": "rm -rf node_modules/.vite && vite"
   },
   "dependencies": {
     "@openhistoricalmap/maplibre-gl-dates": "^1.4.0",
