@@ -10,6 +10,8 @@ import { lessonBySlug } from '../../content/lessons'
 import LessonDocument from './reader/LessonDocument'
 import LessonMasthead from './reader/LessonMasthead'
 import TeacherVoice from './reader/TeacherVoice'
+import LessonNarrationPlayer from './reader/LessonNarrationPlayer'
+import { buildNarrationItems } from '../../lib/lessonNarration'
 import { AppShell, Button, EmptyState, Modal, PageLoader } from '../ui'
 
 /**
@@ -33,6 +35,8 @@ export default function LessonReader() {
   const [audioAssets, setAudioAssets] = useState([])
   const [completedSections, setCompletedSections] = useState(() => new Set())
   const [voicePanel, setVoicePanel] = useState(null)
+  const [narrationOpen, setNarrationOpen] = useState(false)
+  const [activeNarrationBlockId, setActiveNarrationBlockId] = useState(null)
 
   const articleRef = useRef(null)
 
@@ -51,6 +55,7 @@ export default function LessonReader() {
         id: lessonId,
         title: bundledSource.title,
         subtitle: bundledSource.subtitle,
+        slug: bundledSource.slug,
         document: bundledSource.document,
         status: 'published',
         learning_mode: bundledSource.learningMode ?? 'interactive',
@@ -90,6 +95,12 @@ export default function LessonReader() {
     return () => {
       cancelled = true
     }
+  }, [lessonId])
+
+  useEffect(() => {
+    setNarrationOpen(false)
+    setActiveNarrationBlockId(null)
+    setVoicePanel(null)
   }, [lessonId])
 
   /* ---------------- Yan katmanlar (okumayı bekletmez) ---------------- */
@@ -137,6 +148,16 @@ export default function LessonReader() {
         .filter((section) => section.script),
     [document]
   )
+  const narrationItems = useMemo(() => buildNarrationItems(document, lesson?.slug), [document, lesson?.slug])
+  const isNarrationPilot = narrationItems.length > 0
+
+  useEffect(() => {
+    if (!activeNarrationBlockId) return
+    window.document.getElementById(`lesson-block-${activeNarrationBlockId}`)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+    })
+  }, [activeNarrationBlockId])
 
   const recordEvent = useCallback(
     (eventName, payload = {}) => {
@@ -169,6 +190,10 @@ export default function LessonReader() {
   )
 
   const openLessonVoice = useCallback(async () => {
+    if (isNarrationPilot) {
+      setNarrationOpen((open) => !open)
+      return
+    }
     recordEvent('audio_started')
     const asset = findAudio(audioAssets, { scope: 'master' })
     const url = asset ? await signedAudioUrl(asset.storage_path) : null
@@ -179,7 +204,7 @@ export default function LessonReader() {
       audioUrl: url,
       durationSeconds: asset?.duration_seconds ?? null,
     })
-  }, [audioAssets, narrationSections, recordEvent])
+  }, [audioAssets, isNarrationPilot, narrationSections, recordEvent])
 
   function handleInteraction(result) {
     if (result?.kind === 'quiz') {
@@ -231,10 +256,20 @@ export default function LessonReader() {
           subjectName={subject?.name}
           examType={subject?.exam_type}
           topicName={topic?.name}
-          hasNarration={narrationSections.length > 0 || Boolean(findAudio(audioAssets, { scope: 'master' }))}
-          narrationReady={Boolean(findAudio(audioAssets, { scope: 'master' }))}
+          hasNarration={isNarrationPilot || narrationSections.length > 0 || Boolean(findAudio(audioAssets, { scope: 'master' }))}
+          narrationReady={isNarrationPilot || Boolean(findAudio(audioAssets, { scope: 'master' }))}
           onStartVoice={openLessonVoice}
         />
+
+        {isNarrationPilot && narrationOpen && (
+          <LessonNarrationPlayer
+            key={lesson.slug}
+            lessonSlug={lesson.slug}
+            items={narrationItems}
+            onActiveBlockChange={setActiveNarrationBlockId}
+            onClose={() => setNarrationOpen(false)}
+          />
+        )}
 
         <LessonDocument
           document={document}
@@ -243,6 +278,7 @@ export default function LessonReader() {
           onSectionComplete={completeSection}
           onExplainFigure={openFigureVoice}
           onInteraction={handleInteraction}
+          activeNarrationBlockId={activeNarrationBlockId}
         />
         
       </article>

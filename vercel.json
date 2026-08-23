@@ -17,6 +17,9 @@
     },
     "api/ai-solve/ask.js": {
       "maxDuration": 45
+    },
+    "api/lessons/narrate.js": {
+      "maxDuration": 60
     }
   }
 }

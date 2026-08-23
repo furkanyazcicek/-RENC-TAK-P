@@ -7,6 +7,8 @@ import { FIGURES } from '../components/lessons/figures'
 import LessonDocument from '../components/lessons/reader/LessonDocument'
 import LessonMasthead from '../components/lessons/reader/LessonMasthead'
 import TeacherVoice from '../components/lessons/reader/TeacherVoice'
+import LessonNarrationPlayer from '../components/lessons/reader/LessonNarrationPlayer'
+import { buildNarrationItems } from '../lib/lessonNarration'
 import { Modal } from '../components/ui'
 
 /**
@@ -74,6 +76,8 @@ export default function LessonPreview() {
   const [voicePanel, setVoicePanel] = useState(null)
   const [personalized, setPersonalized] = useState(true)
   const [completedSections, setCompletedSections] = useState(() => new Set())
+  const [narrationOpen, setNarrationOpen] = useState(false)
+  const [activeNarrationBlockId, setActiveNarrationBlockId] = useState(null)
 
   const source = useMemo(
     () => LESSONS.find((item) => item.slug === activeSlug) ?? LESSONS[0],
@@ -95,6 +99,8 @@ export default function LessonPreview() {
         .filter((section) => section.script),
     [document]
   )
+  const narrationItems = useMemo(() => buildNarrationItems(document, source.slug), [document, source.slug])
+  const isNarrationPilot = narrationItems.length > 0
 
   const lesson = {
     id: 'preview',
@@ -109,7 +115,18 @@ export default function LessonPreview() {
   // katmanıdır. Önizleme ders değişince ilgili aşamanın doğal görünümünü açar.
   useEffect(() => {
     setPersonalized((source.learningMode ?? 'interactive') !== 'foundation')
+    setNarrationOpen(false)
+    setActiveNarrationBlockId(null)
+    setVoicePanel(null)
   }, [source])
+
+  useEffect(() => {
+    if (!activeNarrationBlockId) return
+    window.document.getElementById(`lesson-block-${activeNarrationBlockId}`)?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+    })
+  }, [activeNarrationBlockId])
 
   return (
     <div className="min-h-screen bg-paper text-ink">
@@ -165,12 +182,23 @@ export default function LessonPreview() {
             subjectName={source.placement.subject}
             examType={source.placement.examType}
             topicName={source.placement.topic}
-            hasNarration={narrationSections.length > 0}
-            narrationReady={false}
-            onStartVoice={() =>
-              setVoicePanel({ kind: 'lesson', title: 'Hocayla Çalış', sections: narrationSections })
-            }
+            hasNarration={isNarrationPilot || narrationSections.length > 0}
+            narrationReady={isNarrationPilot}
+            onStartVoice={() => {
+              if (isNarrationPilot) setNarrationOpen((open) => !open)
+              else setVoicePanel({ kind: 'lesson', title: 'Hocayla Çalış', sections: narrationSections })
+            }}
           />
+
+          {isNarrationPilot && narrationOpen && (
+            <LessonNarrationPlayer
+              key={source.slug}
+              lessonSlug={source.slug}
+              items={narrationItems}
+              onActiveBlockChange={setActiveNarrationBlockId}
+              onClose={() => setNarrationOpen(false)}
+            />
+          )}
 
           <LessonDocument
             document={document}
@@ -180,6 +208,7 @@ export default function LessonPreview() {
             onExplainFigure={(block) =>
               setVoicePanel({ kind: 'figure', title: block.title || 'Görseli Hocayla İncele', script: block.audio_script })
             }
+            activeNarrationBlockId={activeNarrationBlockId}
           />
         </article>
 

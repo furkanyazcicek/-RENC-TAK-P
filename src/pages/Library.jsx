@@ -98,33 +98,22 @@ export default function Library() {
     const topicRows = [...(topicsRes.data ?? [])]
     const bundledMap = {}
 
-    // İçerik kayıt defteri uygulamanın yayınlanan ders kaynağıdır. Veritabanı
-    // henüz seed edilmemiş olsa bile yerel/önizleme ortamında bu dersler
-    // kütüphaneden kaybolmamalı. Eksik konu başlığını yalnız görünüm katmanında
-    // üretir; veritabanına sessizce konu yazmaz.
-    LESSONS.forEach((lesson) => {
-      const shouldExposeBundledLesson =
-        lesson.placement.examType === 'TYT' &&
-        (lesson.placement.subject === 'Türkçe' || lesson.placement.subject === 'Kimya')
-      if (!shouldExposeBundledLesson) return
-
-      const subject = subjectRows.find(
+    // İçerik kayıt defteri uygulamanın yayınlanan ders kaynağıdır: bütün ders
+    // notları uygulamanın içinde gelir. Veritabanındaki `structured_lessons`
+    // tablosu boş olsa bile bu dersler kütüphanede görünmelidir — kütüphane
+    // ile önizleme aynı içeriği gösterir. Kayıt defterindeki konu adının
+    // veritabanında karşılığı yoksa konu YALNIZ görünüm katmanında üretilir;
+    // veritabanına sessizce satır yazılmaz.
+    const dersiBul = (lesson) =>
+      subjectRows.find(
         (row) =>
           row.exam_type === lesson.placement.examType &&
           row.name === lesson.placement.subject
       )
-      if (!subject) return
 
-      const bundledTopicOrder =
-        [
-          ...new Set(
-            LESSONS.filter(
-              (item) =>
-                item.placement.examType === lesson.placement.examType &&
-                item.placement.subject === lesson.placement.subject
-            ).map((item) => item.placement.topic)
-          ),
-        ].indexOf(lesson.placement.topic) + 1
+    LESSONS.forEach((lesson) => {
+      const subject = dersiBul(lesson)
+      if (!subject) return
 
       let topic = topicRows.find(
         (row) =>
@@ -142,14 +131,10 @@ export default function Library() {
             slugifyLibraryValue(lesson.placement.topic),
           subject_id: subject.id,
           name: lesson.placement.topic,
-          order_index: bundledTopicOrder,
+          order_index: null,
           is_bundled: true,
         }
         topicRows.push(topic)
-      } else {
-        // Kayıt defterindeki sıra, yerel görünümde eski curriculum seed'inin
-        // sırasını devralmasın. Bu yalnız istemci görünümünü düzenler.
-        topic.order_index = bundledTopicOrder
       }
 
       if (!bundledMap[topic.id]) bundledMap[topic.id] = []
@@ -164,6 +149,43 @@ export default function Library() {
         status: 'published',
         is_gold_standard: Boolean(lesson.goldStandard),
         is_bundled: true,
+      })
+    })
+
+    // KONU SIRASI
+    // Veritabanının müfredat sırası korunur; kayıt defterinden gelen yeni konu
+    // araya girer. Her yeni konu, kayıt defterinde kendisinden önce gelen
+    // konunun hemen ardına yerleşir; önceki de yeniyse zincir olarak onu izler.
+    // Hiç çapa bulunamazsa dersin sonuna eklenir. Böylece mevcut sıralama
+    // bozulmadan yeni konular doğru yere oturur.
+    const kayitDefteriKonuSirasi = new Map()
+    LESSONS.forEach((lesson) => {
+      const subject = dersiBul(lesson)
+      if (!subject) return
+      const liste = kayitDefteriKonuSirasi.get(subject.id) ?? []
+      if (!liste.includes(lesson.placement.topic)) liste.push(lesson.placement.topic)
+      kayitDefteriKonuSirasi.set(subject.id, liste)
+    })
+
+    kayitDefteriKonuSirasi.forEach((konuAdlari, subjectId) => {
+      const sirali = topicRows.filter((row) => row.subject_id === subjectId && !row.is_bundled)
+      konuAdlari.forEach((ad, index) => {
+        const yeniKonu = topicRows.find(
+          (row) => row.subject_id === subjectId && row.is_bundled && row.name === ad
+        )
+        if (!yeniKonu || sirali.includes(yeniKonu)) return
+        let hedef = sirali.length
+        for (let i = index - 1; i >= 0; i -= 1) {
+          const capa = sirali.findIndex((row) => row.name === konuAdlari[i])
+          if (capa !== -1) {
+            hedef = capa + 1
+            break
+          }
+        }
+        sirali.splice(hedef, 0, yeniKonu)
+      })
+      sirali.forEach((row, index) => {
+        row.order_index = index + 1
       })
     })
 

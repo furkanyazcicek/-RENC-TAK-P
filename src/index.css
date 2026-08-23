@@ -1588,6 +1588,26 @@
     color: rgb(var(--c-ink) / 0.82);
   }
 
+  /* Ses oynarken yalnızca anlatılan içerik bloğu görünür biçimde öne çıkar.
+     Çerçeve/kart eklemek yerine mevcut kitap akışına ince bir vurgu bırakır. */
+  .lesson-narration-active {
+    position: relative;
+    border-radius: 0.55rem;
+    background: rgb(var(--c-brand-50) / 0.72);
+    box-shadow: 0 0 0 0.45rem rgb(var(--c-brand-50) / 0.72);
+    transition: background-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .lesson-narration-active::before {
+    content: '';
+    position: absolute;
+    inset-block: 0.1rem;
+    inset-inline-start: -0.75rem;
+    width: 3px;
+    border-radius: 9999px;
+    background: rgb(var(--c-brand-500));
+  }
+
   /* --- Tanımlanan terim: kutu değil, sözlük girdisi ---------------- */
   .lesson-term {
     display: inline-block;

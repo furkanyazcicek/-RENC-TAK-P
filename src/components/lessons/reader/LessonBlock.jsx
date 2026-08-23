@@ -145,17 +145,22 @@ const RHYTHM = {
   teacher_note: '',
 }
 
-export default function LessonBlock({ block, first = false, figureIndex, onExplainFigure, onInteraction }) {
+export default function LessonBlock({ block, first = false, figureIndex, onExplainFigure, onInteraction, activeNarration = false }) {
   if (!block?.type) return null
   if (block.type === 'audio_script') return null
 
   const rhythm = first ? '' : (RHYTHM[block.type] ?? 'mt-6')
   const layout = block.type === 'figure' ? (block.width === 'full' ? 'lesson-full' : 'lesson-wide') : (LAYOUT[block.type] ?? '')
-  const className = [rhythm, layout].filter(Boolean).join(' ')
+  const className = [rhythm, layout, activeNarration ? 'lesson-narration-active' : ''].filter(Boolean).join(' ')
+  const sharedProps = {
+    id: `lesson-block-${block.id}`,
+    className,
+    'aria-current': activeNarration ? 'true' : undefined,
+  }
 
   if (block.type === 'figure') {
     return (
-      <div className={className}>
+      <div {...sharedProps}>
         <LessonFigure block={block} index={figureIndex} onExplain={onExplainFigure} />
       </div>
     )
@@ -165,7 +170,7 @@ export default function LessonBlock({ block, first = false, figureIndex, onExpla
   if (!Presenter) return null
 
   return (
-    <div className={className}>
+    <div {...sharedProps}>
       <Presenter block={block} onAnswered={onInteraction} />
     </div>
   )
