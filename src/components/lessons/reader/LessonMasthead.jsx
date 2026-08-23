@@ -36,6 +36,11 @@ export default function LessonMasthead({
   )
   const foundation = lesson.learning_mode === 'foundation' || lesson.learningMode === 'foundation'
   const goldStandard = lesson.is_gold_standard || lesson.goldStandard
+  // Rozet metni dersin kendi sınav/ders bilgisinden kurulur; sabit "TYT Fizik"
+  // yazmak felsefe, kimya gibi derslerde yanlış etiket gösteriyordu.
+  const goldStandardEtiketi = [[examType, subjectName].filter(Boolean).join(' '), 'Gold Standard interaktif ders']
+    .filter(Boolean)
+    .join(' · ')
 
   return (
     <header className="lesson-doc">
@@ -46,7 +51,7 @@ export default function LessonMasthead({
 
             <p className={`m-0 mt-3 text-[0.75rem] font-bold uppercase tracking-[0.12em] ${foundation ? 'text-aqua-700' : 'text-brand-700'}`}>
               {goldStandard
-                ? 'TYT Fizik · Gold Standard interaktif ders'
+                ? goldStandardEtiketi
                 : foundation
                   ? '1. aşama · temel öğrenme notu'
                   : '2. aşama · etkileşimli pekiştirme notu'}

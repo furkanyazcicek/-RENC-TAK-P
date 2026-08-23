@@ -156,6 +156,8 @@ export default function InteractiveIllustration({
         >
           <img
             src={detail.src ?? src}
+            srcSet={detail.srcSet}
+            sizes="(min-width: 1024px) 56rem, 40rem"
             width="960"
             height="640"
             alt={detail.alt}
@@ -167,6 +169,12 @@ export default function InteractiveIllustration({
               transformOrigin: `${detailZoom?.x ?? 50}% ${detailZoom?.y ?? 50}%`,
             }}
           />
+          {detail.formula && (
+            <div className="absolute left-1/2 top-1/2 min-w-[12rem] -translate-x-1/2 -translate-y-1/2 rounded-[2rem] border-2 border-brand-300 bg-surface/92 px-10 py-7 text-center shadow-xl backdrop-blur-sm">
+              <p className="m-0 text-[clamp(3.5rem,12vw,7.5rem)] font-black leading-none tracking-tight text-brand-700">{detail.formula}</p>
+              {detail.formulaSub && <p className="m-0 mt-3 text-[clamp(.82rem,2vw,1.15rem)] font-extrabold tracking-wide text-ink/70">{detail.formulaSub}</p>}
+            </div>
+          )}
           <div className="absolute left-5 top-5 rounded-full border border-white/25 bg-ink/85 px-4 py-2 text-[clamp(.72rem,1.7vw,.95rem)] font-extrabold tracking-wide text-white shadow-lg backdrop-blur-sm">
             Açıklayıcı detay · {detail.title}
           </div>

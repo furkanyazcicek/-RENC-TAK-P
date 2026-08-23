@@ -1,9 +1,44 @@
 import InteractiveIllustration from './InteractiveIllustration'
 
 const languageRegions = [
-  { key: 'makro', shape: { x: 0, y: 0, width: 512, height: 1024 }, zoom: { x: 16.7, y: 50, scale: 1.3 } },
-  { key: 'tanecik', shape: { x: 512, y: 0, width: 512, height: 1024 }, zoom: { x: 50, y: 50, scale: 1.3 } },
-  { key: 'sembolik', shape: { x: 1024, y: 0, width: 512, height: 1024 }, zoom: { x: 83.3, y: 50, scale: 1.3 } },
+  {
+    key: 'makro',
+    shape: { x: 0, y: 0, width: 512, height: 1024 },
+    zoom: { x: 16.7, y: 50, scale: 1.3 },
+    detail: {
+      src: '/lesson-assets/kimya-bilimi/details/makroskobik-duzey.jpg',
+      srcSet: '/lesson-assets/kimya-bilimi/details/makroskobik-duzey-900.jpg 900w, /lesson-assets/kimya-bilimi/details/makroskobik-duzey.jpg 1536w',
+      title: 'Makroskobik düzey',
+      alt: 'Suyun menisküs, sıcaklık, hacim ve kütle gibi doğrudan gözlenebilir veya ölçülebilir özelliklerini gösteren yakın plan.',
+      note: 'Bu düzeyde tanecikleri değil; hâl, renk, akışkanlık, sıcaklık, hacim ve kütle gibi gözlem ya da ölçüm sonuçlarını kaydedersin.',
+    },
+  },
+  {
+    key: 'tanecik',
+    shape: { x: 512, y: 0, width: 512, height: 1024 },
+    zoom: { x: 50, y: 50, scale: 1.3 },
+    detail: {
+      src: '/lesson-assets/kimya-bilimi/details/tanecik-modeli.jpg',
+      srcSet: '/lesson-assets/kimya-bilimi/details/tanecik-modeli-900.jpg 900w, /lesson-assets/kimya-bilimi/details/tanecik-modeli.jpg 1536w',
+      title: 'Alt mikroskobik düzey',
+      alt: 'Sıvı hâlde hareket eden, her biri bir oksijen ve iki hidrojen atomundan oluşan su moleküllerinin modeli.',
+      note: 'Model, doğrudan gördüğün bir fotoğraf değildir. Her su molekülünde bir O atomuna açılı biçimde bağlı iki H atomu bulunur; sıvıda moleküller yakın ve hareketlidir.',
+    },
+  },
+  {
+    key: 'sembolik',
+    shape: { x: 1024, y: 0, width: 512, height: 1024 },
+    zoom: { x: 83.3, y: 50, scale: 1.3 },
+    detail: {
+      src: '/lesson-assets/kimya-bilimi/details/sembolik-dil.jpg',
+      srcSet: '/lesson-assets/kimya-bilimi/details/sembolik-dil-900.jpg 900w, /lesson-assets/kimya-bilimi/details/sembolik-dil.jpg 1536w',
+      title: 'Sembolik düzey',
+      alt: 'İki hidrojen ve bir oksijen oranını çevreleyen boş formül kartı bulunan kimyasal sembolik dil levhası.',
+      note: 'H ve O element türlerini, alt indis 2 hidrojen atomu sayısını gösterir. O’nun alt indisi 1 olduğu için yazılmaz; formül bir molekülün fotoğrafı değildir.',
+      formula: 'H₂O',
+      formulaSub: '2 H · 1 O',
+    },
+  },
 ]
 
 const languageMarkers = [
@@ -32,10 +67,54 @@ export function ChemistryLanguageLevels({ activeRegion = null }) {
 }
 
 const safetyRegions = [
-  { key: 'yangin', shape: { x: 0, y: 0, width: 768, height: 512 }, zoom: { x: 25, y: 25, scale: 1.35 } },
-  { key: 'maruziyet', shape: { x: 768, y: 0, width: 768, height: 512 }, zoom: { x: 75, y: 25, scale: 1.35 } },
-  { key: 'asindirma', shape: { x: 0, y: 512, width: 768, height: 512 }, zoom: { x: 25, y: 75, scale: 1.35 } },
-  { key: 'ozel', shape: { x: 768, y: 512, width: 768, height: 512 }, zoom: { x: 75, y: 75, scale: 1.35 } },
+  {
+    key: 'yangin',
+    shape: { x: 0, y: 0, width: 768, height: 512 },
+    zoom: { x: 25, y: 25, scale: 1.35 },
+    detail: {
+      src: '/lesson-assets/kimya-bilimi/details/yangin-tepkime.jpg',
+      srcSet: '/lesson-assets/kimya-bilimi/details/yangin-tepkime-900.jpg 900w, /lesson-assets/kimya-bilimi/details/yangin-tepkime.jpg 1536w',
+      title: 'Yangın ve tepkime riski',
+      alt: 'Darbeye duyarlı, yanıcı ve oksitleyici maddelerin ısıdan ve birbirinden ayrılarak güvenli saklanmasını gösteren levha.',
+      note: 'Patlayıcıyı darbe ve ısıdan, yanıcıyı alev ve kıvılcımdan uzak tut. Oksitleyici madde yanıcı değildir diye düşünme: başka maddelerin yanmasını şiddetlendirebilir.',
+    },
+  },
+  {
+    key: 'maruziyet',
+    shape: { x: 768, y: 0, width: 768, height: 512 },
+    zoom: { x: 75, y: 25, scale: 1.35 },
+    detail: {
+      src: '/lesson-assets/kimya-bilimi/details/maruziyet-korunma.jpg',
+      srcSet: '/lesson-assets/kimya-bilimi/details/maruziyet-korunma-900.jpg 900w, /lesson-assets/kimya-bilimi/details/maruziyet-korunma.jpg 1536w',
+      title: 'Vücuda maruziyeti önle',
+      alt: 'Çeker ocak, koruyucu gözlük, laboratuvar önlüğü ve uygun eldivenle buhar ve sıçrama temasını önleyen öğrenci.',
+      note: 'Toksik, tahriş edici ve ciddi sağlık tehlikesi aynı etki düzeyi değildir. Etiketi oku; solunumu çeker ocakla, göz ve deri temasını uygun koruyucu ekipmanla sınırla.',
+    },
+  },
+  {
+    key: 'asindirma',
+    shape: { x: 0, y: 512, width: 768, height: 512 },
+    zoom: { x: 25, y: 75, scale: 1.35 },
+    detail: {
+      src: '/lesson-assets/kimya-bilimi/details/asindirma-cevre.jpg',
+      srcSet: '/lesson-assets/kimya-bilimi/details/asindirma-cevre-900.jpg 900w, /lesson-assets/kimya-bilimi/details/asindirma-cevre.jpg 1536w',
+      title: 'Aşındırma ve çevre riski',
+      alt: 'Korozif sıvının uzun eldiven, gözlük ve ikincil kapla aktarılması; metal etkisi ve kapalı atık yönetiminin gösterimi.',
+      note: 'Korozif madde cilt, göz ve metallere zarar verebilir. Dökülmeyi ikincil kapla sınırla, göz duşunu erişilebilir tut ve atığı lavaboya değil uyumlu kapalı kaba ver.',
+    },
+  },
+  {
+    key: 'ozel',
+    shape: { x: 768, y: 512, width: 768, height: 512 },
+    zoom: { x: 75, y: 75, scale: 1.35 },
+    detail: {
+      src: '/lesson-assets/kimya-bilimi/details/basinc-radyasyon.jpg',
+      srcSet: '/lesson-assets/kimya-bilimi/details/basinc-radyasyon-900.jpg 900w, /lesson-assets/kimya-bilimi/details/basinc-radyasyon.jpg 1536w',
+      title: 'Basınç ve radyasyon riski',
+      alt: 'Dik ve zincirli basınçlı gaz tüpü ile kilitli, zırhlı dolaptaki kapalı radyasyon kaynağının yetkili kişi tarafından kullanımı.',
+      note: 'Basınçlı tüp dik ve sabit tutulur; vana korunur, tüp ısıtılmaz. Radyoaktif kaynak yalnız yetkili kişi tarafından kapalı, zırhlı ve kontrollü sistemle kullanılır.',
+    },
+  },
 ]
 
 const safetyMarkers = [
@@ -109,10 +188,54 @@ export function ChemicalSafetyPictograms({ activeRegion = null }) {
 }
 
 const toolRegions = [
-  { key: 'karistir', shape: { x: 0, y: 0, width: 768, height: 512 }, zoom: { x: 25, y: 25, scale: 1.35 } },
-  { key: 'olc', shape: { x: 768, y: 0, width: 768, height: 512 }, zoom: { x: 75, y: 25, scale: 1.35 } },
-  { key: 'hazirla', shape: { x: 0, y: 512, width: 768, height: 512 }, zoom: { x: 25, y: 75, scale: 1.35 } },
-  { key: 'ayir', shape: { x: 768, y: 512, width: 768, height: 512 }, zoom: { x: 75, y: 75, scale: 1.35 } },
+  {
+    key: 'karistir',
+    shape: { x: 0, y: 0, width: 768, height: 512 },
+    zoom: { x: 25, y: 25, scale: 1.35 },
+    detail: {
+      src: '/lesson-assets/kimya-bilimi/details/karistirma-isitma.jpg',
+      srcSet: '/lesson-assets/kimya-bilimi/details/karistirma-isitma-900.jpg 900w, /lesson-assets/kimya-bilimi/details/karistirma-isitma.jpg 1536w',
+      title: 'Karıştırma ve ısıtma ailesi',
+      alt: 'Beherde karıştırma, erlenmayerde çalkalama ve cam balonda düzenli ısıtmayı karşılaştıran laboratuvar levhası.',
+      note: 'Beher geniş ağzıyla karıştırma ve aktarmaya; erlenmayer dar boynuyla sıçratmadan çalkalamaya; cam balon yuvarlak gövdesiyle daha düzenli ısıtmaya uygundur. Üçü de hassas hacim aracı değildir.',
+    },
+  },
+  {
+    key: 'olc',
+    shape: { x: 768, y: 0, width: 768, height: 512 },
+    zoom: { x: 75, y: 25, scale: 1.35 },
+    detail: {
+      src: '/lesson-assets/kimya-bilimi/details/hacim-olcme.jpg',
+      srcSet: '/lesson-assets/kimya-bilimi/details/hacim-olcme-900.jpg 900w, /lesson-assets/kimya-bilimi/details/hacim-olcme.jpg 1536w',
+      title: 'Hacmi ölç ve aktar',
+      alt: 'Mezürde menisküs okuma, pipet doldurucuyla hassas aktarım ve büret musluğuyla damla kontrolünü gösteren levha.',
+      note: 'Mezürde menisküsü göz hizasında oku. Pipeti ağızla değil doldurucuyla kullan. Büret dik tutulur; muslukla verilen değişken hacim kontrollü ve hassas izlenir.',
+    },
+  },
+  {
+    key: 'hazirla',
+    shape: { x: 0, y: 512, width: 768, height: 512 },
+    zoom: { x: 25, y: 75, scale: 1.35 },
+    detail: {
+      src: '/lesson-assets/kimya-bilimi/details/cozelti-hazirlama.jpg',
+      srcSet: '/lesson-assets/kimya-bilimi/details/cozelti-hazirlama-900.jpg 900w, /lesson-assets/kimya-bilimi/details/cozelti-hazirlama.jpg 1536w',
+      title: 'Belirli hacimde çözelti hazırla',
+      alt: 'Balon jojede çözüneni çözme, damlalıkla çizgiye tamamlama, menisküsü göz hizasında okuma ve homojenleştirme basamakları.',
+      note: 'Çözüneni önce daha az çözücüde çöz; işaret çizgisine yaklaşınca damlalık kullan. Menisküsün altını göz hizasında çizgiye getir, kapa ve ters çevirerek homojenleştir. Balon joje ısıtılmaz.',
+    },
+  },
+  {
+    key: 'ayir',
+    shape: { x: 768, y: 512, width: 768, height: 512 },
+    zoom: { x: 75, y: 75, scale: 1.35 },
+    detail: {
+      src: '/lesson-assets/kimya-bilimi/details/faz-ayirma.jpg',
+      srcSet: '/lesson-assets/kimya-bilimi/details/faz-ayirma-900.jpg 900w, /lesson-assets/kimya-bilimi/details/faz-ayirma.jpg 1536w',
+      title: 'Karışmayan sıvı fazlarını ayır',
+      alt: 'İki sıvı fazlı ayırma hunisinde havalandırma, kapağı çıkarma ve yoğun alt fazı musluktan alma sırasını gösteren levha.',
+      note: 'Karışmayan sıvılar iki faz oluşturur; daha yoğun faz altta kalır. Güvenli biçimde havalandır, boşaltmadan önce kapağı çıkar ve alt fazı musluktan kontrollü al.',
+    },
+  },
 ]
 
 const toolMarkers = [

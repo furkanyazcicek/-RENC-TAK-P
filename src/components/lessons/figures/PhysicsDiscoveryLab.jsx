@@ -66,12 +66,23 @@ function ScaleScene({ item }) {
   const earthClipId = `scale-earth-clip-${uid}`
 
   return (
-    <svg
-      className={`physics-scale-scene is-${visual}`}
-      viewBox="0 0 560 330"
+    <div
+      className={`physics-scale-scene is-${visual}${item.image ? ' has-raster' : ''}`}
       role="img"
-      aria-label={`${item.label}, yaklaşık ${item.scale}`}
+      aria-label={item.imageAlt || `${item.label}, yaklaşık ${item.scale}`}
     >
+      {item.image && (
+        <img
+          className="physics-scale-scene__image"
+          src={item.image}
+          srcSet={item.imageSet}
+          sizes="(max-width: 640px) 90vw, 720px"
+          alt=""
+          aria-hidden="true"
+          decoding="async"
+        />
+      )}
+      <svg viewBox="0 0 560 330" aria-hidden="true" focusable="false">
       <defs>
         <radialGradient id={gradientId} cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor="currentColor" stopOpacity="0.32" />
@@ -221,7 +232,8 @@ function ScaleScene({ item }) {
         <path d="M66 286h120M66 280v12M186 280v12" />
         <text x="126" y="307" textAnchor="middle">SEÇİLİ ÖLÇEK · {item.scale}</text>
       </g>
-    </svg>
+      </svg>
+    </div>
   )
 }
 
@@ -260,7 +272,7 @@ function ScaleLab({ data }) {
           </div>
         </div>
 
-        <div className="physics-scale-explorer__viewport">
+        <div className={`physics-scale-explorer__viewport${current.image ? ' has-raster' : ''}`}>
           <ScaleScene key={current.label} item={current} />
           <div className="physics-scale-explorer__scale" aria-hidden="true">
             <span>Yaklaşık boyut</span>
