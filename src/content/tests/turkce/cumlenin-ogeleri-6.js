@@ -327,7 +327,7 @@ export default [
           { id: 'B', text: 'Yüklem' },
           { id: 'C', text: 'Belirtili Nesne' },
           { id: 'D', text: 'Dolaylı Tümleç' },
-          { id: 'E', text: 'Yoktur (Hepsi verilmiştir veya belirtisiz nesne de eklenebilir. Soru "hangi öge yoktur" diyor, Zarf Tümleci yoktur, fakat seçeneklerde Belirtili Nesne var). Cevap C\'dir.'
+          { id: 'E', text: 'Yoktur (Hepsi verilmiştir veya belirtisiz nesne de eklenebilir. Soru "hangi öge yoktur" diyor, Zarf Tümleci yoktur, fakat seçeneklerde Belirtili Nesne var). Cevap C\'dir.' }
         ],
         correctOptionId: 'C',
         explanation: 'vuruyordu (yüklem). Ne vuruyordu? "Tepenin ardında batan güneşin son kızıllığı" (özne). Nereye vuruyordu? "ovadaki tüm evlerin camlarına" (dolaylı tümleç). Cümlede belirtili nesne yoktur.'

@@ -290,7 +290,7 @@ export default [
           { id: 'B', text: 'Belirtili Nesne' },
           { id: 'C', text: 'Dolaylı Tümleç' },
           { id: 'D', text: 'Yüklem' },
-          { id: 'E', text: 'Tüm ögeler (Özne, Nesne, Yüklem) vardır, sadece Dolaylı Tümleç yoktur. (Soru: "hangi öge yoktur?")'
+          { id: 'E', text: 'Tüm ögeler (Özne, Nesne, Yüklem) vardır, sadece Dolaylı Tümleç yoktur. (Soru: "hangi öge yoktur?")' }
         ],
         correctOptionId: 'C',
         explanation: 'süslüyor (yüklem). Süslenen yer? (veya neyi süslüyor?) "salonun en güzel köşesini" (belirtili nesne). Süyleyen ne? "Geçmişin izlerini taşıyan bu antika saat" (özne). Dolaylı tümleç cümlede yer almaz.'

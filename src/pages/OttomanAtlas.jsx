@@ -1,14 +1,15 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowLeft, Castle, Check, Crown, Flag, Layers3, Map as MapIcon, Minus, Plus, RotateCcw, Sparkles, Swords, Target, Users, X } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import maplibregl from 'maplibre-gl'
+import { filterByDate } from '@openhistoricalmap/maplibre-gl-dates'
+import 'maplibre-gl/dist/maplibre-gl.css'
 import { getHistoricalMap } from '../data/historicalMaps'
 import '../styles/ottoman-atlas.css'
 
-const MAP_WIDTH = 1440
-const MAP_HEIGHT = 820
 const MAP_DATA = getHistoricalMap(1526)
 const [WEST, SOUTH, EAST, NORTH] = MAP_DATA.meta.bounds
-const REAL_LAND_GEOMETRY = MAP_DATA.land
+const OHM_STYLE = 'https://www.openhistoricalmap.org/map-styles/main/main.json'
 const TIMELINE_YEARS = [
   { year: 1453, title: 'Veri hazırlanıyor', disabled: true },
   { year: 1526, title: 'Kanuni Dönemi', disabled: false },
@@ -16,38 +17,28 @@ const TIMELINE_YEARS = [
   { year: 1922, title: 'Veri hazırlanıyor', disabled: true },
 ]
 const LAYERS = [
-  { id: 'states', label: 'Siyasi devletler', icon: Flag },
+  { id: 'states', label: 'Devletler ve sınırlar', icon: Flag },
   { id: 'labels', label: 'Devlet isimleri', icon: MapIcon },
   { id: 'cities', label: 'Şehirler', icon: Castle },
   { id: 'events', label: 'Tarihsel olaylar', icon: Swords },
 ]
-
-function project([lng, lat]) {
-  return [((lng - WEST) / (EAST - WEST)) * MAP_WIDTH, ((NORTH - lat) / (NORTH - SOUTH)) * MAP_HEIGHT]
+const MAP_LAYER_GROUPS = {
+  states: ['atlas-states-fill', 'atlas-states-border', 'atlas-state-highlight', 'admin_country_lines_z10_case', 'admin_country_lines_z10', 'admin_admin3', 'state_lines_admin_4-case', 'state_lines_admin_4', 'admin_admin_5-6'],
+  labels: ['atlas-state-labels'],
+  cities: ['atlas-city-points', 'atlas-city-labels'],
+  events: ['atlas-event-points', 'atlas-event-labels'],
 }
-
-function geometryPath(geometry) {
-  const path = new Path2D()
-  const polygons = geometry.type === 'MultiPolygon' ? geometry.coordinates : [geometry.coordinates]
-  polygons.forEach((polygon) => polygon.forEach((ring) => {
-    ring.forEach((point, index) => {
-      const [x, y] = project(point)
-      if (index === 0) path.moveTo(x, y)
-      else path.lineTo(x, y)
-    })
-    path.closePath()
-  }))
-  return path
-}
-
-function linePath(ctx, coordinates) {
-  ctx.beginPath()
-  coordinates.forEach((point, index) => {
-    const [x, y] = project(point)
-    if (index === 0) ctx.moveTo(x, y)
-    else ctx.lineTo(x, y)
-  })
-}
+const STATE_COLOR = [
+  'match', ['get', 'tone'],
+  'ottoman', '#568f5f',
+  'hungary', '#d5c588',
+  'habsburg', '#955b50',
+  'safavid', '#79578f',
+  'venice', '#4d829c',
+  'poland', '#ad854e',
+  'france', '#526e9c',
+  '#a7956d',
+]
 
 function stateSelection(feature) {
   return { entityType: 'state', ...feature.properties }
@@ -73,296 +64,238 @@ function Timeline() {
   </div>
 }
 
-function CanvasPoliticalMap({ activeLayers, data, onSelect, selected }) {
-  const viewportRef = useRef(null)
-  const canvasRef = useRef(null)
-  const viewRef = useRef({ scale: 1, x: 0, y: 0, initialized: false })
-  const interactionRef = useRef({ dragging: false, moved: false, startX: 0, startY: 0, viewX: 0, viewY: 0 })
-  const statePathsRef = useRef([])
-  const visiblePointsRef = useRef([])
-  const drawRef = useRef(() => {})
-  const [zoomPercent, setZoomPercent] = useState(100)
-  const states = data.states.features
-  const cities = data.cities.features
-  const events = data.events.features
+function makeStateLabels(states) {
+  return {
+    type: 'FeatureCollection',
+    features: states.features.map(({ properties }) => ({
+      type: 'Feature',
+      properties: {
+        id: properties.id,
+        name: properties.mapLabel,
+        tone: properties.tone,
+        context: Boolean(properties.context),
+        rotation: (properties.labelRotation || 0) * (180 / Math.PI),
+      },
+      geometry: { type: 'Point', coordinates: properties.labelAt },
+    })),
+  }
+}
 
-  const fitMap = useCallback(() => {
-    const viewport = viewportRef.current
-    if (!viewport) return
-    const scale = Math.min(viewport.clientWidth / MAP_WIDTH, viewport.clientHeight / MAP_HEIGHT) * 1.08
-    viewRef.current = { scale, x: (viewport.clientWidth - MAP_WIDTH * scale) / 2, y: (viewport.clientHeight - MAP_HEIGHT * scale) / 2, initialized: true }
-    setZoomPercent(100)
-    drawRef.current()
-  }, [])
+function styleHistoricalBoundaries(map) {
+  const boundaryStyles = [
+    {
+      id: 'admin_country_lines_z10_case', minzoom: 0,
+      paint: {
+        'line-color': 'rgba(31, 25, 19, .94)',
+        'line-width': ['interpolate', ['linear'], ['zoom'], 2, 2.6, 4, 4.2, 6, 6.2, 9, 9],
+        'line-opacity': .92,
+      },
+    },
+    {
+      id: 'admin_country_lines_z10', minzoom: 0,
+      paint: {
+        'line-color': '#f0d28b',
+        'line-width': ['interpolate', ['linear'], ['zoom'], 2, .7, 4, 1.2, 6, 2, 9, 3],
+        'line-opacity': .98,
+      },
+    },
+    {
+      id: 'admin_admin3', minzoom: 4,
+      paint: {
+        'line-color': 'rgba(73, 57, 38, .9)',
+        'line-width': ['interpolate', ['linear'], ['zoom'], 4, .55, 7, 1.15, 10, 1.7],
+        'line-dasharray': [5, 2],
+      },
+    },
+    {
+      id: 'state_lines_admin_4-case', minzoom: 4.5,
+      paint: {
+        'line-color': 'rgba(238, 216, 158, .28)',
+        'line-width': ['interpolate', ['linear'], ['zoom'], 4.5, 2.4, 7, 4.5, 10, 7],
+      },
+    },
+    {
+      id: 'state_lines_admin_4', minzoom: 4.5,
+      paint: {
+        'line-color': 'rgba(54, 49, 36, .92)',
+        'line-width': ['interpolate', ['linear'], ['zoom'], 4.5, .55, 7, 1.15, 10, 1.8],
+        'line-dasharray': [3, 1.5],
+      },
+    },
+    {
+      id: 'admin_admin_5-6', minzoom: 6.5,
+      paint: {
+        'line-color': 'rgba(68, 63, 48, .68)',
+        'line-width': ['interpolate', ['linear'], ['zoom'], 6.5, .35, 9, .9],
+        'line-dasharray': [2, 2],
+      },
+    },
+  ]
+  boundaryStyles.forEach(({ id, minzoom, paint }) => {
+    if (!map.getLayer(id)) return
+    map.setLayerZoomRange(id, minzoom, 20)
+    Object.entries(paint).forEach(([property, value]) => map.setPaintProperty(id, property, value))
+  })
+}
 
-  const zoomBy = useCallback((factor) => {
-    const viewport = viewportRef.current
-    if (!viewport) return
-    const view = viewRef.current
-    const centerX = viewport.clientWidth / 2
-    const centerY = viewport.clientHeight / 2
-    const baseScale = Math.min(viewport.clientWidth / MAP_WIDTH, viewport.clientHeight / MAP_HEIGHT) * 1.08
-    const nextScale = Math.min(baseScale * 4.2, Math.max(baseScale * .72, view.scale * factor))
-    const worldX = (centerX - view.x) / view.scale
-    const worldY = (centerY - view.y) / view.scale
-    viewRef.current = { ...view, scale: nextScale, x: centerX - worldX * nextScale, y: centerY - worldY * nextScale }
-    setZoomPercent(Math.round((nextScale / baseScale) * 100))
-    drawRef.current()
+function addAtlasLayers(map, data) {
+  map.addSource('atlas-states', { type: 'geojson', data: data.states, promoteId: 'id' })
+  map.addSource('atlas-state-labels', { type: 'geojson', data: makeStateLabels(data.states) })
+  map.addSource('atlas-cities', { type: 'geojson', data: data.cities, promoteId: 'id' })
+  map.addSource('atlas-events', { type: 'geojson', data: data.events, promoteId: 'id' })
+
+  const beforeBoundary = map.getLayer('state_lines_admin_4-case') ? 'state_lines_admin_4-case' : undefined
+  map.addLayer({
+    id: 'atlas-states-fill', type: 'fill', source: 'atlas-states',
+    paint: {
+      'fill-color': STATE_COLOR,
+      'fill-opacity': ['case', ['boolean', ['get', 'context'], false], .34, .62],
+      'fill-antialias': true,
+    },
+  }, beforeBoundary)
+  map.addLayer({
+    id: 'atlas-states-border', type: 'line', source: 'atlas-states',
+    paint: {
+      'line-color': 'rgba(44, 35, 25, .86)',
+      'line-width': ['interpolate', ['linear'], ['zoom'], 2, 1, 5, 1.5, 8, 2.2],
+      'line-opacity': .9,
+    },
+  }, beforeBoundary)
+  map.addLayer({
+    id: 'atlas-state-highlight', type: 'line', source: 'atlas-states', filter: ['==', ['get', 'id'], ''],
+    paint: { 'line-color': '#f1d58d', 'line-width': ['interpolate', ['linear'], ['zoom'], 2, 3, 7, 6], 'line-blur': .4 },
+  })
+  map.addLayer({
+    id: 'atlas-state-labels', type: 'symbol', source: 'atlas-state-labels', minzoom: 2,
+    layout: {
+      'text-field': ['get', 'name'],
+      'text-size': ['interpolate', ['linear'], ['zoom'], 2, ['case', ['==', ['get', 'id'], 'ottoman'], 18, 12], 5, ['case', ['==', ['get', 'id'], 'ottoman'], 30, 19]],
+      'text-letter-spacing': .14,
+      'text-rotate': ['get', 'rotation'],
+      'text-allow-overlap': false,
+      'text-max-width': 12,
+    },
+    paint: { 'text-color': '#25251f', 'text-halo-color': 'rgba(225, 211, 168, .78)', 'text-halo-width': 2.2, 'text-opacity': ['interpolate', ['linear'], ['zoom'], 5.2, 1, 7, 0] },
+  })
+  map.addLayer({
+    id: 'atlas-city-points', type: 'circle', source: 'atlas-cities', minzoom: 4.2,
+    paint: {
+      'circle-radius': ['case', ['==', ['get', 'kind'], 'capital'], 6, ['==', ['get', 'kind'], 'fortress'], 5, 3.5],
+      'circle-color': ['case', ['==', ['get', 'kind'], 'capital'], '#d7ae55', '#173a35'],
+      'circle-stroke-color': '#f0d696', 'circle-stroke-width': 1.5,
+    },
+  })
+  map.addLayer({
+    id: 'atlas-city-labels', type: 'symbol', source: 'atlas-cities', minzoom: 4.65,
+    layout: { 'text-field': ['get', 'name'], 'text-size': ['interpolate', ['linear'], ['zoom'], 4.6, 10, 8, 14], 'text-anchor': 'left', 'text-offset': [.8, 0], 'text-allow-overlap': false },
+    paint: { 'text-color': '#f4e8bf', 'text-halo-color': 'rgba(20, 29, 27, .92)', 'text-halo-width': 1.8 },
+  })
+  map.addLayer({
+    id: 'atlas-event-points', type: 'circle', source: 'atlas-events', minzoom: 5.1,
+    paint: { 'circle-radius': 8, 'circle-color': '#b63f38', 'circle-stroke-color': '#f2d88d', 'circle-stroke-width': 2.5 },
+  })
+  map.addLayer({
+    id: 'atlas-event-labels', type: 'symbol', source: 'atlas-events', minzoom: 5.1,
+    layout: { 'text-field': ['get', 'shortLabel'], 'text-size': 13, 'text-anchor': 'left', 'text-offset': [1, 0], 'text-allow-overlap': true },
+    paint: { 'text-color': '#fff0c5', 'text-halo-color': '#4a1714', 'text-halo-width': 2 },
+  })
+}
+
+function HistoricalMap({ activeLayers, data, onSelect, selected }) {
+  const containerRef = useRef(null)
+  const mapRef = useRef(null)
+  const [mapStatus, setMapStatus] = useState('loading')
+  const [zoomLevel, setZoomLevel] = useState(4)
+
+  const fitAtlas = useCallback(() => {
+    mapRef.current?.fitBounds([[WEST, SOUTH], [EAST, NORTH]], { padding: { top: 60, right: 90, bottom: 65, left: 220 }, duration: 650 })
   }, [])
 
   useEffect(() => {
-    const canvas = canvasRef.current
-    const viewport = viewportRef.current
-    if (!canvas || !viewport) return undefined
-    const ctx = canvas.getContext('2d')
-    const palette = getComputedStyle(viewport.closest('.ottoman-atlas'))
-    const token = (name, alpha = 1) => `rgb(${palette.getPropertyValue(name).trim()} / ${alpha})`
-    const stateColors = Object.fromEntries(states.map(({ properties }) => [properties.tone, token(`--state-${properties.tone}`)]))
-    const realLandPath = geometryPath(REAL_LAND_GEOMETRY)
-    const statePaths = states.map((feature) => ({ feature, path: geometryPath(feature.geometry) }))
-    statePathsRef.current = statePaths
-
-    const draw = () => {
-      const rect = viewport.getBoundingClientRect()
-      const dpr = Math.min(window.devicePixelRatio || 1, 2)
-      const width = Math.max(1, Math.round(rect.width))
-      const height = Math.max(1, Math.round(rect.height))
-      if (canvas.width !== width * dpr || canvas.height !== height * dpr) {
-        canvas.width = width * dpr
-        canvas.height = height * dpr
-        canvas.style.width = `${width}px`
-        canvas.style.height = `${height}px`
-      }
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      ctx.clearRect(0, 0, width, height)
-      const sea = ctx.createLinearGradient(0, 0, 0, height)
-      sea.addColorStop(0, token('--map-sea-top'))
-      sea.addColorStop(1, token('--map-sea-bottom'))
-      ctx.fillStyle = sea
-      ctx.fillRect(0, 0, width, height)
-
-      ctx.save()
-      ctx.globalAlpha = .15
-      ctx.strokeStyle = token('--map-sea-foam')
-      for (let row = 20; row < height; row += 30) {
-        ctx.beginPath()
-        for (let column = -40; column < width + 40; column += 70) {
-          ctx.moveTo(column, row)
-          ctx.bezierCurveTo(column + 16, row - 5, column + 35, row + 5, column + 52, row)
-        }
-        ctx.stroke()
-      }
-      ctx.restore()
-
-      const view = viewRef.current
-      const baseScale = Math.min(viewport.clientWidth / MAP_WIDTH, viewport.clientHeight / MAP_HEIGHT) * 1.08
-      const zoomRatio = view.scale / baseScale
-      ctx.save()
-      ctx.translate(view.x, view.y)
-      ctx.scale(view.scale, view.scale)
-
-      ctx.strokeStyle = token('--map-grid', .13)
-      ctx.lineWidth = 1 / view.scale
-      for (let lng = -10; lng <= 60; lng += 10) {
-        const [x] = project([lng, SOUTH])
-        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, MAP_HEIGHT); ctx.stroke()
-      }
-      for (let lat = 20; lat <= 55; lat += 5) {
-        const [, y] = project([WEST, lat])
-        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(MAP_WIDTH, y); ctx.stroke()
-      }
-
-      ctx.fillStyle = token('--map-neutral-land')
-      ctx.fill(realLandPath, 'evenodd')
-      ctx.save()
-      ctx.clip(realLandPath, 'evenodd')
-      ctx.globalAlpha = .14
-      ctx.fillStyle = token('--map-parchment-grain')
-      for (let dot = 0; dot < 440; dot += 1) {
-        const x = (Math.sin((dot + 1) * 12.91) * .5 + .5) * MAP_WIDTH
-        const y = (Math.sin((dot + 7) * 8.37) * .5 + .5) * MAP_HEIGHT
-        ctx.fillRect(x, y, 1.4 / view.scale, 1.4 / view.scale)
-      }
-      ctx.restore()
-
-      if (activeLayers.has('states')) {
-        statePaths.forEach(({ feature, path }, index) => {
-          const { id, tone } = feature.properties
-          const gradient = ctx.createLinearGradient(0, index * 45, MAP_WIDTH, MAP_HEIGHT)
-          gradient.addColorStop(0, stateColors[tone])
-          gradient.addColorStop(1, token(`--state-${tone}-shadow`))
-          ctx.fillStyle = gradient
-          ctx.strokeStyle = selected?.id === id ? token('--atlas-gold') : token('--map-border')
-          ctx.lineWidth = (selected?.id === id ? 5 : 2.7) / view.scale
-          ctx.save()
-          ctx.shadowColor = token('--map-border', .34)
-          ctx.shadowBlur = 7 / view.scale
-          ctx.shadowOffsetY = 2 / view.scale
-          ctx.fill(path, 'evenodd')
-          ctx.restore()
-          ctx.stroke(path)
-        })
-      }
-
-      if (zoomRatio >= 1.05) {
-        ctx.save()
-        ctx.clip(realLandPath, 'evenodd')
-        ctx.strokeStyle = token('--map-river', .72)
-        ctx.lineWidth = 1.7 / view.scale
-        data.physical.rivers.forEach((river) => { linePath(ctx, river.geometry.coordinates); ctx.stroke() })
-        if (zoomRatio >= 1.3) {
-          data.physical.mountainRanges.forEach((range) => range.points.forEach((point, index) => {
-            const [x, y] = project(point)
-            const size = index % 2 ? 7 : 10
-            ctx.beginPath(); ctx.moveTo(x - size, y + size * .55); ctx.lineTo(x, y - size); ctx.lineTo(x + size, y + size * .55); ctx.closePath()
-            ctx.fillStyle = token('--map-relief-light', .28); ctx.fill()
-            ctx.strokeStyle = token('--map-relief-dark', .5); ctx.lineWidth = 1 / view.scale; ctx.stroke()
-          }))
-        }
-        ctx.restore()
-      }
-
-      ctx.strokeStyle = token('--map-coast')
-      ctx.lineWidth = 2.1 / view.scale
-      ctx.stroke(realLandPath)
-
-      data.physical.seaLabels.forEach((label) => {
-        const [x, y] = project(label.at)
-        ctx.save(); ctx.translate(x, y); ctx.rotate(label.rotation || 0)
-        ctx.fillStyle = token('--map-water-label', .58); ctx.font = 'italic 700 15px Georgia, serif'; ctx.textAlign = 'center'; ctx.fillText(label.name, 0, 0); ctx.restore()
+    if (!containerRef.current || mapRef.current) return undefined
+    let map
+    try {
+      map = new maplibregl.Map({
+        container: containerRef.current,
+        style: OHM_STYLE,
+        center: [27, 39],
+        zoom: 3.7,
+        minZoom: 2,
+        maxZoom: 10,
+        attributionControl: false,
+        cooperativeGestures: false,
       })
+    } catch (error) {
+      console.error('Tarih haritası başlatılamadı:', error)
+      setMapStatus('error')
+      return undefined
+    }
+    mapRef.current = map
+    map.addControl(new maplibregl.AttributionControl({ compact: true, customAttribution: 'DrKoç sınır verisi · OpenHistoricalMap altlığı' }), 'bottom-right')
 
-      if (activeLayers.has('labels') && zoomRatio <= 1.75) {
-        states.forEach(({ properties }) => {
-          const [x, y] = project(properties.labelAt)
-          const size = properties.context ? 17 : properties.id === 'ottoman' ? 31 : properties.id === 'venice' ? 14 : properties.id === 'hungary' || properties.id === 'habsburg' ? 18 : 23
-          ctx.save(); ctx.translate(x, y); ctx.rotate(properties.labelRotation || 0)
-          ctx.font = `700 ${size}px Georgia, serif`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'
-          ctx.strokeStyle = token('--map-label-halo', .58); ctx.lineWidth = 5 / view.scale; ctx.strokeText(properties.mapLabel, 0, 0)
-          ctx.fillStyle = token('--map-label'); ctx.fillText(properties.mapLabel, 0, 0); ctx.restore()
-        })
+    const loadTimeout = window.setTimeout(() => setMapStatus((status) => status === 'loading' ? 'error' : status), 15000)
+    map.once('load', () => {
+      window.clearTimeout(loadTimeout)
+      try { filterByDate(map, '1526') } catch (error) { console.warn('OHM tarih filtresi uygulanamadı:', error) }
+      styleHistoricalBoundaries(map)
+      addAtlasLayers(map, data)
+      fitAtlas()
+      setMapStatus('ready')
+    })
+    map.on('zoom', () => setZoomLevel(map.getZoom()))
+    map.on('mousemove', (event) => {
+      if (!map.getLayer('atlas-states-fill')) return
+      const features = map.queryRenderedFeatures(event.point, { layers: ['atlas-event-points', 'atlas-city-points', 'atlas-states-fill'] })
+      map.getCanvas().style.cursor = features.length ? 'pointer' : ''
+    })
+    map.on('click', (event) => {
+      if (!map.getLayer('atlas-states-fill')) return
+      const features = map.queryRenderedFeatures(event.point, { layers: ['atlas-event-points', 'atlas-city-points', 'atlas-states-fill'] })
+      const feature = features[0]
+      if (!feature) return
+      const id = feature.properties?.id
+      if (feature.layer.id === 'atlas-event-points') {
+        const original = data.events.features.find((item) => item.properties.id === id)
+        if (original) onSelect(pointSelection(original, 'event'))
+      } else if (feature.layer.id === 'atlas-city-points') {
+        const original = data.cities.features.find((item) => item.properties.id === id)
+        if (original) onSelect(pointSelection(original, 'city'))
+      } else {
+        const original = data.states.features.find((item) => item.properties.id === id)
+        if (original) onSelect(stateSelection(original))
       }
-
-      const pointLayers = [
-        ...(activeLayers.has('cities') ? cities.map((feature) => ({ feature, entityType: 'city' })) : []),
-        ...(activeLayers.has('events') ? events.map((feature) => ({ feature, entityType: 'event' })) : []),
-      ].filter(({ feature }) => zoomRatio >= (feature.properties.minZoom || 1))
-      visiblePointsRef.current = pointLayers
-
-      pointLayers.forEach(({ feature, entityType }) => {
-        const properties = feature.properties
-        const [x, y] = project(feature.geometry.coordinates)
-        const isEvent = entityType === 'event'
-        const isCapital = properties.kind === 'capital'
-        const radius = isEvent ? 14 : isCapital ? 8 : 5
-        ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI * 2)
-        ctx.fillStyle = isEvent ? token('--atlas-red') : isCapital ? token('--atlas-gold') : token('--map-marker')
-        ctx.fill()
-        ctx.strokeStyle = selected?.id === properties.id ? token('--atlas-gold-light') : token('--map-marker-border')
-        ctx.lineWidth = (selected?.id === properties.id ? 4 : 2.4) / view.scale
-        ctx.stroke()
-        ctx.fillStyle = token('--map-marker-text'); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.font = `800 ${isEvent ? 13 : 8}px Georgia, serif`
-        ctx.fillText(isEvent ? '⚔' : isCapital ? '★' : '•', x, y + .5)
-        ctx.font = `800 ${isEvent ? 12 : 9}px Inter, sans-serif`; ctx.textAlign = 'left'
-        const label = isEvent ? properties.shortLabel : properties.name
-        ctx.strokeStyle = token('--map-label-halo', .9); ctx.lineWidth = 4 / view.scale; ctx.strokeText(label, x + radius + 5, y)
-        ctx.fillStyle = token('--map-city-label'); ctx.fillText(label, x + radius + 5, y)
-      })
-
-      ctx.restore()
-      const vignette = ctx.createLinearGradient(0, 0, width, 0)
-      vignette.addColorStop(0, token('--map-vignette', .34)); vignette.addColorStop(.12, 'transparent'); vignette.addColorStop(.88, 'transparent'); vignette.addColorStop(1, token('--map-vignette', .34))
-      ctx.fillStyle = vignette; ctx.fillRect(0, 0, width, height)
-    }
-
-    drawRef.current = draw
-    if (!viewRef.current.initialized) fitMap()
-    else draw()
-    const resizeObserver = new ResizeObserver(draw)
-    resizeObserver.observe(viewport)
-
-    const screenToWorld = (event) => {
-      const rect = canvas.getBoundingClientRect()
-      const view = viewRef.current
-      return [(event.clientX - rect.left - view.x) / view.scale, (event.clientY - rect.top - view.y) / view.scale]
-    }
-    const selectAt = (event) => {
-      const [worldX, worldY] = screenToWorld(event)
-      const point = [...visiblePointsRef.current].reverse().find(({ feature, entityType }) => {
-        const [x, y] = project(feature.geometry.coordinates)
-        return Math.hypot(worldX - x, worldY - y) <= (entityType === 'event' ? 22 : 13)
-      })
-      if (point) { onSelect(pointSelection(point.feature, point.entityType)); return }
-      const state = [...statePathsRef.current].reverse().find(({ path }) => ctx.isPointInPath(path, worldX, worldY, 'evenodd'))
-      if (state) onSelect(stateSelection(state.feature))
-    }
-    const onPointerDown = (event) => {
-      canvas.setPointerCapture(event.pointerId)
-      interactionRef.current = { dragging: true, moved: false, startX: event.clientX, startY: event.clientY, viewX: viewRef.current.x, viewY: viewRef.current.y }
-      canvas.classList.add('is-dragging')
-    }
-    const onPointerMove = (event) => {
-      const interaction = interactionRef.current
-      if (!interaction.dragging) return
-      const dx = event.clientX - interaction.startX
-      const dy = event.clientY - interaction.startY
-      if (Math.hypot(dx, dy) > 4) interaction.moved = true
-      viewRef.current = { ...viewRef.current, x: interaction.viewX + dx, y: interaction.viewY + dy }
-      draw()
-    }
-    const onPointerUp = (event) => {
-      if (!interactionRef.current.moved) selectAt(event)
-      interactionRef.current.dragging = false
-      canvas.classList.remove('is-dragging')
-    }
-    const onWheel = (event) => {
-      event.preventDefault()
-      const rect = canvas.getBoundingClientRect()
-      const view = viewRef.current
-      const cursorX = event.clientX - rect.left
-      const cursorY = event.clientY - rect.top
-      const baseScale = Math.min(viewport.clientWidth / MAP_WIDTH, viewport.clientHeight / MAP_HEIGHT) * 1.08
-      const factor = event.deltaY < 0 ? 1.12 : .89
-      const nextScale = Math.min(baseScale * 4.2, Math.max(baseScale * .72, view.scale * factor))
-      const worldX = (cursorX - view.x) / view.scale
-      const worldY = (cursorY - view.y) / view.scale
-      viewRef.current = { ...view, scale: nextScale, x: cursorX - worldX * nextScale, y: cursorY - worldY * nextScale }
-      setZoomPercent(Math.round((nextScale / baseScale) * 100))
-      draw()
-    }
-    canvas.addEventListener('pointerdown', onPointerDown)
-    canvas.addEventListener('pointermove', onPointerMove)
-    canvas.addEventListener('pointerup', onPointerUp)
-    canvas.addEventListener('pointercancel', onPointerUp)
-    canvas.addEventListener('wheel', onWheel, { passive: false })
+    })
     return () => {
-      resizeObserver.disconnect()
-      canvas.removeEventListener('pointerdown', onPointerDown)
-      canvas.removeEventListener('pointermove', onPointerMove)
-      canvas.removeEventListener('pointerup', onPointerUp)
-      canvas.removeEventListener('pointercancel', onPointerUp)
-      canvas.removeEventListener('wheel', onWheel)
+      window.clearTimeout(loadTimeout)
+      map.remove()
+      mapRef.current = null
     }
-  }, [activeLayers, cities, data, events, fitMap, onSelect, selected, states])
+  }, [data, fitAtlas, onSelect])
 
   useEffect(() => {
-    if (selected?.lng == null || selected?.lat == null || !viewportRef.current) return
-    const viewport = viewportRef.current
-    const [targetX, targetY] = project([selected.lng, selected.lat])
-    const baseScale = Math.min(viewport.clientWidth / MAP_WIDTH, viewport.clientHeight / MAP_HEIGHT) * 1.08
-    const nextScale = Math.max(viewRef.current.scale, baseScale * 1.8)
-    viewRef.current = { ...viewRef.current, scale: nextScale, x: viewport.clientWidth * .47 - targetX * nextScale, y: viewport.clientHeight * .46 - targetY * nextScale }
-    setZoomPercent(Math.round((nextScale / baseScale) * 100))
-    drawRef.current()
-  }, [selected])
+    const map = mapRef.current
+    if (!map || mapStatus !== 'ready') return
+    Object.entries(MAP_LAYER_GROUPS).forEach(([group, layerIds]) => layerIds.forEach((layerId) => {
+      if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', activeLayers.has(group) ? 'visible' : 'none')
+    }))
+  }, [activeLayers, mapStatus])
 
-  return <section className="atlas-map-shell" aria-label="1526 siyasi tarih haritası">
-    <div className="atlas-map-caption"><span><MapIcon size={15} /> 1526 siyasi görünümü</span><small>Sürükle · Yakınlaştır · Devletlere dokun</small></div>
-    <div ref={viewportRef} className="atlas-map-viewport">
-      <canvas ref={canvasRef} className="simulation-canvas" tabIndex="0" aria-label="Sürüklenebilir 1526 siyasi haritası" />
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map || mapStatus !== 'ready') return
+    if (map.getLayer('atlas-state-highlight')) map.setFilter('atlas-state-highlight', ['==', ['get', 'id'], selected?.entityType === 'state' ? selected.id : ''])
+    if (selected?.lng != null && selected?.lat != null) map.flyTo({ center: [selected.lng, selected.lat], zoom: Math.max(map.getZoom(), 6.1), duration: 850, essential: true })
+  }, [mapStatus, selected])
+
+  return <section className="atlas-map-shell" aria-label="1526 OpenHistoricalMap siyasi tarih haritası">
+    <div className="atlas-map-caption"><span><MapIcon size={15} /> 1526 siyasi görünümü</span><small>OpenHistoricalMap · Sürükle · Yakınlaştır · Devletlere dokun</small></div>
+    <div className="atlas-map-viewport">
+      <div ref={containerRef} className="historical-maplibre" aria-label="Sürüklenebilir 1526 tarih haritası" />
+      {mapStatus === 'loading' && <div className="atlas-map-loading"><span />1526 tarih haritası yükleniyor…</div>}
+      {mapStatus === 'error' && <div className="atlas-map-loading is-error">OpenHistoricalMap altlığı yüklenemedi. İnternet bağlantısını kontrol edin.</div>}
       <div className="atlas-map-help">1526 · KANUNİ DÖNEMİ SİYASİ ATLASI</div>
-      <div className="simulation-zoom-controls" aria-label="Harita yakınlaştırma kontrolleri"><button type="button" onClick={() => zoomBy(1.2)} aria-label="Yakınlaştır"><Plus size={17} /></button><span>{zoomPercent}%</span><button type="button" onClick={() => zoomBy(.83)} aria-label="Uzaklaştır"><Minus size={17} /></button><button type="button" onClick={fitMap} aria-label="Haritayı sıfırla"><RotateCcw size={15} /></button></div>
-      <div className="atlas-legend">{states.filter(({ properties }) => !properties.context).map(({ properties }) => <span key={properties.id}><i className={`state-${properties.tone}`} />{properties.name}</span>)}</div>
+      <div className="simulation-zoom-controls" aria-label="Harita yakınlaştırma kontrolleri"><button type="button" onClick={() => mapRef.current?.zoomIn()} aria-label="Yakınlaştır"><Plus size={17} /></button><span>Z{zoomLevel.toFixed(1)}</span><button type="button" onClick={() => mapRef.current?.zoomOut()} aria-label="Uzaklaştır"><Minus size={17} /></button><button type="button" onClick={fitAtlas} aria-label="Haritayı sıfırla"><RotateCcw size={15} /></button></div>
+      <div className="atlas-legend">{data.states.features.filter(({ properties }) => !properties.context).map(({ properties }) => <span key={properties.id}><i className={`state-${properties.tone}`} />{properties.name}</span>)}</div>
     </div>
   </section>
 }
@@ -398,9 +331,9 @@ export default function OttomanAtlas() {
 
   return <main className="ottoman-atlas">
     <header className="atlas-header"><AtlasLogo /><TopStatus data={MAP_DATA} /><Link to="/" className="atlas-back-link"><ArrowLeft size={16} /> Platforma dön</Link></header>
-    <section className="atlas-timebar"><div className="atlas-timebar-label"><span>DÖNEM</span><strong>1526</strong><small>Kanuni Dönemi</small></div><Timeline /><div className="atlas-demo-badge"><span /> TARİHSEL GEOJSON DEMOSU</div></section>
+    <section className="atlas-timebar"><div className="atlas-timebar-label"><span>DÖNEM</span><strong>1526</strong><small>Kanuni Dönemi</small></div><Timeline /><div className="atlas-demo-badge"><span /> OPENHISTORICALMAP · 1526</div></section>
     <div className="atlas-workspace">
-      <CanvasPoliticalMap activeLayers={activeLayers} data={MAP_DATA} selected={selected} onSelect={onSelect} />
+      <HistoricalMap activeLayers={activeLayers} data={MAP_DATA} selected={selected} onSelect={onSelect} />
       <aside className="atlas-layers-panel">
         <div className="atlas-country-card"><span className="atlas-country-crest"><MapIcon size={22} /></span><div><small>DÖNEMİN MERKEZ DEVLETİ</small><strong>Osmanlı Devleti</strong><span>{MAP_DATA.meta.ruler}</span></div></div>
         <div className="atlas-panel-heading"><Layers3 size={17} /><span><strong>Harita katmanları</strong><small>Yakınlaştıkça ayrıntı açılır</small></span></div>
@@ -408,10 +341,10 @@ export default function OttomanAtlas() {
         <div className="atlas-divider" />
         <div className="atlas-learning-label">1526 SİYASİ AKTÖRLERİ</div>
         <div className="simulation-state-list">{primaryStates.map((feature) => { const state = stateSelection(feature); return <button key={state.id} type="button" className={selected?.id === state.id ? 'is-active' : ''} onClick={() => setSelected(state)}><i className={`state-${state.tone}`} /><span><strong>{state.name}</strong><small>{state.importance}</small></span></button> })}</div>
-        <div className="atlas-source-note"><strong>HARİTA VERİSİ</strong><span>Natural Earth kıyılarıyla kesiştirilmiş dönemsel GeoJSON</span><small>İç siyasi sınırlar eğitim amaçlı kaynaklarla hizalanmış yaklaşık rekonstrüksiyondur.</small></div>
+        <div className="atlas-source-note"><strong>SINIR HİYERARŞİSİ</strong><span>Kalın açık çizgi: devlet · Kesik koyu çizgi: eyalet/idari bölge</span><small>OHM’nin 1526 tarihli sınırları öne çıkarılır; eksik alanları DrKoç rekonstrüksiyon katmanı tamamlar.</small></div>
       </aside>
       <DetailPanel data={MAP_DATA} selected={selected} onClose={() => setSelected(null)} />
     </div>
-    <footer className="atlas-footer"><span><span className="atlas-live-dot" /> 1526 siyasi düzenini keşfediyorsun</span><span>Genel: devletler · Orta: coğrafya · Yakın: şehirler ve olaylar</span></footer>
+    <footer className="atlas-footer"><span><span className="atlas-live-dot" /> OpenHistoricalMap üzerinde 1526 siyasi düzenini keşfediyorsun</span><span>Genel: devletler · Orta: tarihsel coğrafya · Yakın: şehirler ve olaylar</span></footer>
   </main>
 }

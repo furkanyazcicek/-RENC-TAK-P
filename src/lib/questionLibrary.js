@@ -13,11 +13,15 @@ import dolasimBagisiklikSistemi from '../content/tests/biyoloji/dolasim-bagisikl
 import duyuOrganlariTemel from '../content/tests/biyoloji/duyu-organlari-temel.js'
 import duyuOrganlari from '../content/tests/biyoloji/duyu-organlari.js'
 import { slugifyLibraryValue } from './libraryRoutes'
+import { turkceTests } from '../content/tests/turkce/index.js'
 
 // Geçiş döneminde mevcut kod tabanındaki testler kaybolmasın. Yeni testler
 // `library_question_sets` tablosuna yazılır; bu sabit kaynak yalnızca eski
 // pilot içeriğin uyumluluk köprüsüdür.
 const BUNDLED_SETS = {
+  ...Object.fromEntries(Object.entries(turkceTests).map(([k, v]) => [k, { tests: v }])),
+  'sozcuk-turleri': { tests: [...(turkceTests['isimler']||[]), ...(turkceTests['sifatlar']||[]), ...(turkceTests['zarflar']||[]), ...(turkceTests['zamirler']||[]), ...(turkceTests['edat-baglac-unlem']||[])] },
+  'fiilimsi': { tests: turkceTests['fiilimsiler'] || [] },
   'canlilarin-ortak-ozellikleri': canlilarinOrtakOzellikleri,
   'canlilarin-temel-bilesenleri': canlilarinTemelBilesenleri,
   'bitki-biyolojisi': bitkiBiyolojisi,
