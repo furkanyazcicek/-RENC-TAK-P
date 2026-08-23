@@ -90,13 +90,23 @@ export default function MetricTile({
       type={clickable ? 'button' : undefined}
       onClick={onClick}
       className={cn(
-        'group relative w-full overflow-hidden rounded-card border border-line bg-surface p-4 text-left shadow-card',
-        'transition-colors duration-200 ease-smooth',
+        'group relative w-full overflow-hidden rounded-card border border-line bg-surface p-4 pt-[1.125rem] text-left shadow-card',
+        'transition-all duration-200 ease-smooth',
         clickable &&
-          'focus-ring cursor-pointer hover:border-line-strong hover:bg-surface-muted',
+          'focus-ring cursor-pointer hover:-translate-y-1 hover:shadow-card-hover hover:border-brand-200',
         className
       )}
     >
+      {/* Üstteki Aurora şeridi — kartın kimliği. Hover'da tam genişler. */}
+      <span
+        className={cn(
+          'absolute left-4 right-4 top-0 h-[2px] rounded-full bg-gradient-to-r opacity-80',
+          'transition-all duration-300 ease-smooth group-hover:left-0 group-hover:right-0 group-hover:opacity-100',
+          t.bar
+        )}
+        aria-hidden="true"
+      />
+
       <div>
         <div className="flex items-start justify-between gap-2">
           <span className="text-2xs font-bold uppercase tracking-wider text-ink/60">{label}</span>

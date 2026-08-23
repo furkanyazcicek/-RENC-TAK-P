@@ -22,22 +22,23 @@ import Spinner from './Spinner'
 
 const VARIANTS = {
   primary:
-    'bg-brand-700 text-white shadow-xs hover:bg-brand-800 focus-visible:ring-brand-500',
+    'bg-aurora-gradient text-white shadow-aurora hover:shadow-aurora-lg hover:-translate-y-0.5 ' +
+    'hover:brightness-110 focus-visible:ring-brand-500',
   secondary:
-    'bg-surface text-ink border border-line shadow-xs hover:border-line-strong hover:bg-surface-muted ' +
-    'focus-visible:ring-brand-400',
+    'bg-surface text-ink border border-line shadow-xs hover:border-brand-300 hover:bg-brand-50/50 ' +
+    'hover:-translate-y-0.5 hover:shadow-card focus-visible:ring-brand-400',
   glass:
-    'bg-surface text-ink border border-line shadow-xs hover:border-line-strong ' +
+    'glass text-ink border border-white/60 shadow-glass hover:border-brand-200 hover:-translate-y-0.5 ' +
     'focus-visible:ring-brand-400',
   subtle:
     'bg-brand-50 text-brand-700 hover:bg-brand-100 focus-visible:ring-brand-400',
   ghost:
     'bg-transparent text-ink/70 hover:bg-brand-500/[0.08] hover:text-brand-700 focus-visible:ring-brand-400',
   danger:
-    'bg-danger-500 text-white shadow-xs hover:bg-danger-600 ' +
+    'bg-danger-500 text-white shadow-xs hover:bg-danger-600 hover:-translate-y-0.5 ' +
     'hover:shadow-[0_8px_24px_-10px_rgb(var(--c-danger-500)/0.6)] focus-visible:ring-danger-500',
   success:
-    'bg-success-600 text-white shadow-xs hover:bg-success-700 ' +
+    'bg-success-600 text-white shadow-xs hover:bg-success-700 hover:-translate-y-0.5 ' +
     'hover:shadow-[0_8px_24px_-10px_rgb(var(--c-success-500)/0.6)] focus-visible:ring-success-500',
   link: 'bg-transparent text-brand-600 hover:text-brand-700 hover:underline underline-offset-4 px-0 py-0 h-auto focus-visible:ring-brand-400',
 }

@@ -30,7 +30,7 @@ function MiniStat({ label, value, decimals = 0, suffix = '', icon: Icon, tone = 
   return (
     <div
       ref={ref}
-      className="landing-visual-interactive group relative overflow-hidden rounded-xl border border-line bg-surface p-3"
+      className="group relative overflow-hidden rounded-xl border border-line bg-surface p-3 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card-hover"
     >
       <span className="absolute left-0 top-0 bottom-0 w-[3px]" style={{ background: tone }} />
       <div className="flex items-start justify-between gap-2 pl-1.5">

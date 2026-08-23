@@ -103,10 +103,10 @@ export default function Library() {
     // kütüphaneden kaybolmamalı. Eksik konu başlığını yalnız görünüm katmanında
     // üretir; veritabanına sessizce konu yazmaz.
     LESSONS.forEach((lesson) => {
-      if (
-        lesson.placement.examType !== 'TYT' ||
-        lesson.placement.subject !== 'Türkçe'
-      ) return
+      const shouldExposeBundledLesson =
+        lesson.placement.examType === 'TYT' &&
+        (lesson.placement.subject === 'Türkçe' || lesson.placement.subject === 'Kimya')
+      if (!shouldExposeBundledLesson) return
 
       const subject = subjectRows.find(
         (row) =>

@@ -86,14 +86,18 @@ import urinerSistemTemel from './biyoloji/uriner-sistem-temel.js'
 import uremeSistemiEmbriyonikGelisim from './biyoloji/ureme-sistemi-embriyonik-gelisim.js'
 import uremeSistemiEmbriyonikGelisimTemel from './biyoloji/ureme-sistemi-embriyonik-gelisim-temel.js'
 import { philosophyLessons } from './felsefe/index.js'
+import fizikBilimineGiris from './fizik/fizik-bilimine-giris.js'
 import { TYT_HISTORY_LESSONS } from './tarih/tyt-tarih-kutuphanesi.js'
 import { TYT_RELIGION_LESSONS } from './din-kulturu/topics.js'
 import { TURKISH_LESSONS } from './turkce/catalog.js'
+import kimyaBilimi from './kimya/kimya-bilimi.js'
 
 export const LESSONS = [
   ...philosophyLessons,
+  fizikBilimineGiris,
   ...TURKISH_LESSONS,
   ...TYT_RELIGION_LESSONS,
+  kimyaBilimi,
   canlilarinOrtakOzellikleriTemel,
   canlilarinOrtakOzellikleri,
   canlilarinTemelBilesenleriTemel,

@@ -305,7 +305,7 @@ export default function ParentDashboard() {
   if (linksLoading) return <PageLoader label="Panel hazırlanıyor…" />
 
   const header = (
-    <header className="sticky top-0 z-sticky border-b border-line bg-surface/95 pt-safe-top backdrop-blur-md">
+    <header className="sticky top-0 z-sticky border-b border-line glass pt-safe-top">
       <div className="mx-auto flex h-header max-w-content items-center justify-between gap-4 px-4 sm:px-6">
         <div className="flex min-w-0 items-center gap-2.5">
           <Logo size="sm" markOnly />
@@ -313,7 +313,7 @@ export default function ParentDashboard() {
             <h1 className="truncate font-display font-bold leading-tight text-ink">Veli Paneli</h1>
             <p className="flex items-center gap-1.5 truncate text-xs text-ink/60">
               <Eye className="h-3 w-3 shrink-0" strokeWidth={2.2} aria-hidden="true" />
-              Dr. Koç · salt okunur görünüm
+              Dr. Koç · gözlemci modu
             </p>
           </div>
         </div>

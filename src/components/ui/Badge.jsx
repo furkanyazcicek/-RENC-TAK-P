@@ -24,7 +24,7 @@ const TONES = {
   success: 'bg-success-500/10 text-success-700 ring-1 ring-inset ring-success-500/15',
   warning: 'bg-warning-500/12 text-warning-700 ring-1 ring-inset ring-warning-500/20',
   danger: 'bg-danger-500/10 text-danger-700 ring-1 ring-inset ring-danger-500/15',
-  aurora: 'bg-brand-700 text-white ring-1 ring-inset ring-brand-800',
+  aurora: 'bg-aurora-gradient text-white shadow-[0_2px_10px_-4px_rgb(var(--c-brand-500)/0.6)]',
 }
 
 /* Eski/alternatif adlar */

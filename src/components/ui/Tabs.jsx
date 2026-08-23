@@ -42,7 +42,7 @@ export default function Tabs({ items = [], value, onChange, variant = 'pill', cl
               )}
               {active && (
                 <span
-                  className="absolute inset-x-3 -bottom-px h-[2px] bg-brand-600"
+                  className="absolute inset-x-3 -bottom-px h-[2px] rounded-full bg-aurora-line"
                   aria-hidden="true"
                 />
               )}
@@ -72,9 +72,9 @@ export default function Tabs({ items = [], value, onChange, variant = 'pill', cl
             aria-selected={active}
             onClick={() => onChange?.(item.value)}
             className={cn(
-              'focus-ring whitespace-nowrap rounded-btn px-3.5 py-2 text-sm font-semibold transition-colors duration-200 ease-smooth',
+              'focus-ring whitespace-nowrap rounded-btn px-3.5 py-2 text-sm font-semibold transition-all duration-200 ease-smooth',
               active
-                ? 'bg-surface text-brand-800 shadow-xs ring-1 ring-line-strong'
+                ? 'bg-surface text-brand-700 shadow-xs ring-1 ring-brand-500/15'
                 : 'text-ink/65 hover:text-ink hover:bg-surface/70'
             )}
           >

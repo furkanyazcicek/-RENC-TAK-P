@@ -2,7 +2,7 @@ import { GraduationCap } from 'lucide-react'
 import { cn } from '../../lib/cn'
 
 /**
- * Logo — sade marka işareti + kelime markası.
+ * Logo — Aurora marka işareti + kelime markası.
  *
  *   <Logo />              → işaret + "Dr. Koç"
  *   <Logo markOnly />     → yalnızca işaret (dar alanlar)
@@ -25,7 +25,7 @@ export default function Logo({ size = 'md', markOnly = false, tone = 'default', 
     <span className={cn('inline-flex items-center gap-2.5 select-none', className)}>
       <span
         className={cn(
-          'grid shrink-0 place-items-center bg-brand-800 text-white shadow-xs',
+          'grid shrink-0 place-items-center bg-aurora-gradient text-white shadow-aurora',
           s.mark
         )}
         aria-hidden="true"

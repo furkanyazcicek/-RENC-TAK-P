@@ -28,7 +28,7 @@ export default function Sidebar() {
   return (
     <aside
       className="fixed inset-y-0 left-0 z-sticky hidden w-[16.5rem] flex-col border-r border-line
-                 bg-surface lg:flex"
+                 bg-surface/70 backdrop-blur-xl lg:flex"
     >
       {/* Marka */}
       <div className="flex h-header shrink-0 items-center px-5">
@@ -39,8 +39,8 @@ export default function Sidebar() {
 
       {/* Gezinme */}
       <nav className="flex-1 overflow-y-auto px-3 py-2" aria-label="Ana gezinme">
-        <p className="px-3 pb-2 pt-3 text-2xs font-semibold uppercase tracking-[0.12em] text-ink/45">
-          Platform
+        <p className="px-3 pb-2 pt-3 text-2xs font-semibold uppercase tracking-wider text-ink/55">
+          Menü
         </p>
         <ul className="flex flex-col gap-1">
           {items.map(({ to, label, Icon }) => {
@@ -52,17 +52,17 @@ export default function Sidebar() {
                   aria-current={active ? 'page' : undefined}
                   className={cn(
                     'focus-ring group relative flex items-center gap-3 rounded-btn px-3 py-2.5',
-                    'text-sm transition-colors duration-200 ease-smooth',
+                    'text-sm transition-all duration-200 ease-smooth',
                     active
-                      ? 'bg-brand-50 font-semibold text-brand-800'
+                      ? 'bg-aurora-soft font-semibold text-brand-700 shadow-[inset_0_0_0_1px_rgb(var(--c-brand-500)/0.15)]'
                       : 'text-ink/65 hover:bg-ink/[0.04] hover:text-ink'
                   )}
                 >
                   {/* Aktif göstergesi — sol kenarda ışıyan şerit */}
                   <span
                     className={cn(
-                      'absolute left-0 top-1/2 w-[3px] -translate-y-1/2 rounded-r-full bg-brand-600',
-                      'transition-all duration-200',
+                      'absolute left-0 top-1/2 w-[3px] -translate-y-1/2 rounded-r-full bg-aurora-line',
+                      'transition-all duration-300 ease-out-expo',
                       active ? 'h-6 opacity-100' : 'h-0 opacity-0'
                     )}
                     aria-hidden="true"

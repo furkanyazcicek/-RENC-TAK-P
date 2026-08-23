@@ -26,7 +26,7 @@ export function CoachAvatar({ className }) {
   return (
     <span
       className={cn(
-        'grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand-700 text-white shadow-xs',
+        'grid h-8 w-8 shrink-0 place-items-center rounded-xl bg-aurora-gradient text-white shadow-aurora',
         className
       )}
       aria-hidden="true"
@@ -49,8 +49,8 @@ export default function ChatMessage({
     return (
       <div className="flex items-start justify-end gap-3">
         <div
-          className="max-w-[85%] rounded-panel rounded-tr-md bg-brand-700 px-4 py-3
-                     text-sm leading-relaxed text-white shadow-xs sm:max-w-[75%]"
+          className="max-w-[85%] rounded-panel rounded-tr-md bg-aurora-gradient px-4 py-3
+                     text-sm leading-relaxed text-white shadow-aurora sm:max-w-[75%]"
         >
           {/* Kullanıcı metni markdown olarak yorumlanmaz — ne yazdıysa o görünür. */}
           <p className="whitespace-pre-wrap break-words">{message.content}</p>

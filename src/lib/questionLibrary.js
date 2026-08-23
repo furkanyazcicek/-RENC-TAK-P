@@ -12,6 +12,11 @@ import destekHareketSistemi from '../content/tests/biyoloji/destek-hareket-siste
 import dolasimBagisiklikSistemi from '../content/tests/biyoloji/dolasim-bagisiklik-sistemi.js'
 import duyuOrganlariTemel from '../content/tests/biyoloji/duyu-organlari-temel.js'
 import duyuOrganlari from '../content/tests/biyoloji/duyu-organlari.js'
+import ekosistemEkolojisi from '../content/tests/biyoloji/ekosistem-ekolojisi.js'
+import ekosistemEkolojisiTemel from '../content/tests/biyoloji/ekosistem-ekolojisi-temel.js'
+import endokrinSistemTemel from '../content/tests/biyoloji/endokrin-sistem-temel.js'
+import fotosentezKemosentez from "../content/tests/biyoloji/fotosentez-kemosentez.js";
+import endokrinSistem from '../content/tests/biyoloji/endokrin-sistem.js'
 import { slugifyLibraryValue } from './libraryRoutes'
 import { turkceTests } from '../content/tests/turkce/index.js'
 
@@ -35,6 +40,11 @@ const BUNDLED_SETS = {
   'dolasim-bagisiklik-sistemi': { tests: dolasimBagisiklikSistemi },
   'duyu-organlari-temel': { tests: duyuOrganlariTemel },
   'duyu-organlari': { tests: duyuOrganlari },
+  'ekosistem-ekolojisi': { tests: ekosistemEkolojisi },
+  'ekosistem-ekolojisi-temel': { tests: ekosistemEkolojisiTemel },
+  'endokrin-sistem-temel': { tests: endokrinSistemTemel },
+  'endokrin-sistem': { tests: endokrinSistem },
+  'fotosentez-kemosentez': { tests: fotosentezKemosentez },
 }
 
 export function bundledQuestionSetsForTopic(topicName) {

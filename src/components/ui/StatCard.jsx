@@ -86,20 +86,21 @@ export default function StatCard({
   return (
     <div
       className={cn(
-        'group relative overflow-hidden flex flex-col p-5 transition-colors duration-200 ease-smooth',
+        'group relative overflow-hidden flex flex-col p-5 transition-all duration-200 ease-smooth hover:-translate-y-0.5',
         isGradient
-          ? 'card-gradient hover:bg-brand-800'
-          : 'card hover:border-line-strong',
+          ? 'card-gradient hover:shadow-aurora-lg'
+          : 'card hover:shadow-card-hover hover:border-brand-200',
         className
       )}
     >
       {isGradient ? (
         <AuroraBackground variant="panel" />
       ) : (
-        /* İnce durum şeridi */
+        /* Üstte ince Aurora şeridi — hover'da tam genişliğe açılır */
         <span
           className={cn(
-            'absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r opacity-75',
+            'absolute left-5 right-5 top-0 h-[2px] rounded-full bg-gradient-to-r opacity-80',
+            'transition-all duration-300 ease-smooth group-hover:left-0 group-hover:right-0 group-hover:opacity-100',
             tone.line
           )}
           aria-hidden="true"

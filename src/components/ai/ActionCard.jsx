@@ -76,7 +76,7 @@ export default function ActionCard({ action, onCompleted }) {
     <div
       className={cn(
         'mt-3 overflow-hidden rounded-card border bg-surface transition-colors',
-        state === 'done' ? 'border-success-500/30' : 'border-brand-200'
+        state === 'done' ? 'border-success-500/30' : 'border-aurora'
       )}
     >
       <div className="flex items-start gap-3 px-4 pt-4">

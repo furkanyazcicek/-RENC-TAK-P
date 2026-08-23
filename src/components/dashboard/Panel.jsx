@@ -33,7 +33,7 @@ export default function Panel({
           <div className="flex min-w-0 items-start gap-3">
             {Icon && (
               <span
-                className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg ring-1 ring-inset"
+                className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl ring-1 ring-inset"
                 style={{
                   background: `color-mix(in srgb, ${iconTone} 10%, transparent)`,
                   color: iconTone,

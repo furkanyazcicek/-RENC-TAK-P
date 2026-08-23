@@ -684,6 +684,26 @@ export const FIGURE_META = {
     regions: [],
   },
 
+  /* ---------- TYT Kimya · Kimya Bilimi ---------- */
+  'kimya-gosterim-duzeyleri': {
+    label: 'Kimyanın üç gösterim düzeyi',
+    minWidth: 700,
+    markers: 'numbered',
+    regions: ['makro', 'tanecik', 'sembolik'],
+  },
+  'kimya-guvenlik-piktogramlari': {
+    label: 'Kimyasal tehlike piktogramları',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['yangin', 'maruziyet', 'asindirma', 'ozel'],
+  },
+  'kimya-laboratuvar-araclari': {
+    label: 'Temel laboratuvar araçları',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['karistir', 'olc', 'hazirla', 'ayir'],
+  },
+
   /* ---------- Matematik ---------- */
   'birim-cember': {
     label: 'Birim çember',
@@ -696,6 +716,10 @@ export const FIGURE_META = {
     label: 'Manyetik kuvvetin yönü',
     minWidth: 480,
     regions: ['v', 'B', 'F'],
+  },
+  'fizik-kesif-laboratuvari': {
+    label: 'Yapılandırılabilir fizik keşif laboratuvarı',
+    regions: [],
   },
 }
 

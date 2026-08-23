@@ -100,7 +100,7 @@ export default function ShowcaseSection() {
                   className={cn(
                     'focus-ring flex items-center gap-2 rounded-full px-4 sm:px-6 py-2.5 text-sm font-bold transition-all duration-300',
                     on
-                      ? 'bg-brand-700 text-white shadow-xs'
+                      ? 'bg-aurora-gradient text-white shadow-aurora'
                       : 'text-ink/60 hover:text-ink hover:bg-ink/[0.05]'
                   )}
                 >
@@ -158,7 +158,7 @@ export default function ShowcaseSection() {
             <PanelPreview
               key={tab.value}
               variant={tab.value}
-              className="relative animate-fade-in"
+              className="relative animate-fade-in transition-transform duration-500 ease-smooth lg:rotate-[1.2deg] lg:group-hover:rotate-0 lg:group-hover:-translate-y-1"
             />
           </div>
         </div>

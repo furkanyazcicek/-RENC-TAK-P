@@ -11,10 +11,10 @@ dolasim-bagisiklik-sistemi (DONE)
 duyu-organlari-temel (DONE)
 duyu-organlari (DONE)
 ekosistem-ekolojisi-temel (DONE)
-ekosistem-ekolojisi
-endokrin-sistem-temel
-endokrin-sistem
-fotosentez-kemosentez
+ekosistem-ekolojisi (DONE)
+endokrin-sistem-temel (DONE)
+endokrin-sistem (DONE)
+fotosentez-kemosentez (DONE)
 genden-proteine
 hucre-1-zar-pasif-tasima
 hucre-2-osmoz

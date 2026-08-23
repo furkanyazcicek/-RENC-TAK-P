@@ -384,7 +384,7 @@ export default function Home() {
                   to={item.to}
                   className="focus-ring group flex items-center gap-3 rounded-card border border-line
                              bg-surface-muted px-4 py-3 transition-all duration-200 ease-smooth
-                             hover:border-line-strong hover:bg-surface-muted"
+                             hover:-translate-y-0.5 hover:border-brand-200 hover:bg-surface"
                 >
                   <span
                     className={
@@ -446,7 +446,7 @@ export default function Home() {
               to={to}
               className="focus-ring group flex flex-col gap-2 rounded-card border border-line bg-surface
                          p-4 shadow-card transition-all duration-200 ease-smooth
-                         hover:border-line-strong hover:bg-surface-muted"
+                         hover:-translate-y-1 hover:border-brand-200 hover:shadow-card-hover"
             >
               <span
                 className="grid h-9 w-9 place-items-center rounded-xl bg-brand-500/10 text-brand-600

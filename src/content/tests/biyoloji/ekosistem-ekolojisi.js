@@ -2446,5 +2446,283 @@ export default [
         explanation: 'Fizikte enerjinin korunumu vardır ama biyolojide ısıya dönüşen enerji sisteme "ışık" olarak geri dönemez, uzaya dağılır (Tek yönlü kayıp akışı).'
       }
     ]
+  },
+  {
+    id: 'test-13',
+    title: 'Kavrama Finali',
+    description: 'Konunun tamamını ölçen genel tekrar testi',
+    type: 'comprehension',
+    order: 13,
+    questions: [
+      {
+        id: 'q-13-1', difficulty: 'medium',
+        questionText: 'Bir ekosistemde I. Üreticiler, II. Tüketiciler, III. Saprofitler gruplarından hangilerinin TAMAMEN YOK OLMASI madde döngülerini (özellikle inorganik madde oluşumunu) KESİNLİKLE DURDURUR?',
+        options: [
+          { id: 'A', text: 'Yalnız I' },
+          { id: 'B', text: 'Yalnız III' },
+          { id: 'C', text: 'I ve II' },
+          { id: 'D', text: 'I ve III' },
+          { id: 'E', text: 'I, II ve III' }
+        ],
+        correctOptionId: 'B',
+        explanation: 'Saprofitler olmadan organik atıklar mineralleşemez (inorganik olamaz). Döngünün kilidi saprofitlerdir.'
+      },
+      {
+        id: 'q-13-2', difficulty: 'medium',
+        questionText: 'Azot döngüsünde gerçekleşen "Denitrifikasyon" olayı için HANGİSİ SÖYLENEMEZ?',
+        options: [
+          { id: 'A', text: 'Topraktaki nitrat tuzlarını azot gazına çevirir.' },
+          { id: 'B', text: 'Havadaki azot gazı (N2) oranını artırır.' },
+          { id: 'C', text: 'Sadece oksijensiz (anaerobik) koşullarda bakteriler tarafından yapılır.' },
+          { id: 'D', text: 'Toprağı azot bakımından zenginleştirerek bitkilere GÜBRE sağlar.' },
+          { id: 'E', text: 'Bitkiler için zararlı bir toprağın oluşmasına neden olabilir.' }
+        ],
+        correctOptionId: 'D',
+        explanation: 'Denitrifikasyon, topraktaki azotu GÖKYÜZÜNE KAÇIRDIĞI İÇİN toprağı fakirleştirir, gübre sağlamaz.'
+      },
+      {
+        id: 'q-13-3', difficulty: 'medium',
+        questionText: 'Lojistik Büyüme (S Eğrisi) yapan bir popülasyonda, Büyüme Hızının (Artış Miktarının) MAKSİMUM olduğu zaman dilimi, birey sayısı grafiğinin NERESİNE denk gelir?',
+        options: [
+          { id: 'A', text: 'Taşıma kapasitesinin (K) en üst noktasına' },
+          { id: 'B', text: 'Taşıma kapasitesinin tam YARISINA (K/2) - Logaritmik evrenin ortasına' },
+          { id: 'C', text: 'Kuruluş evresinin başına' },
+          { id: 'D', text: 'Popülasyonun çöküş anına' },
+          { id: 'E', text: 'Taşıma kapasitesinin üstüne çıkıldığı an' }
+        ],
+        correctOptionId: 'B',
+        explanation: 'Birey sayısı taşıma kapasitesinin (K) yarısındayken (K/2 noktasında) eğri en diktir, yani üreme hızının çevre direncine galip geldiği altın çağdır.'
+      },
+      {
+        id: 'q-13-4', difficulty: 'medium',
+        questionText: 'Göldeki Ötrofikasyon sürecinde meydana gelen olaylar: I. Sudaki oksijenin tükenmesi, II. Alglerin (Yosunların) aşırı çoğalması, III. Dipteki bitkilerin ölmesi, IV. Göl suyuna tarımsal gübrelerin karışması. Hangi sırayla gerçekleşir?',
+        options: [
+          { id: 'A', text: 'IV - II - III - I' },
+          { id: 'B', text: 'I - II - III - IV' },
+          { id: 'C', text: 'IV - I - II - III' },
+          { id: 'D', text: 'II - IV - I - III' },
+          { id: 'E', text: 'IV - III - II - I' }
+        ],
+        correctOptionId: 'A',
+        explanation: 'Önce gübre gelir (IV), yosun patlar (II), yüzey kapanınca dipte ışık kesilir ve bitki ölür (III), ölüleri çürüten bakteriler oksijeni bitirir (I).'
+      },
+      {
+        id: 'q-13-5', difficulty: 'medium',
+        questionText: 'Ekolojik nişleri TAMAMEN AYNI olan iki farklı tür (A ve B) aynı adaya bırakılıyor. Birkaç ay sonra B türünün tamamen yok olduğu görülüyor. Bu durum hangi kavramla açıklanır?',
+        options: [
+          { id: 'A', text: 'Mutualizm' },
+          { id: 'B', text: 'Süksesyon' },
+          { id: 'C', text: 'Rekabetçi Dışlanma İlkesi (Gause Prensibi)' },
+          { id: 'D', text: 'Kaynak Paylaşımı' },
+          { id: 'E', text: 'Biyolojik birikim' }
+        ],
+        correctOptionId: 'C',
+        explanation: 'Gause Prensibi: Aynı nişi paylaşan iki tür aynı ortamda kalıcı olarak bulunamaz; güçlü olan kalır, zayıf olan yok olur.'
+      },
+      {
+        id: 'q-13-6', difficulty: 'medium',
+        questionText: 'Bir komünitedeki "Kilit Taşı Tür" için aşağıdakilerden hangisi HER ZAMAN DOĞRUDUR?',
+        options: [
+          { id: 'A', text: 'Sayıca veya biyokütlece ortamdaki en fazla olan türdür.' },
+          { id: 'B', text: 'Sadece bitkilerden oluşur.' },
+          { id: 'C', text: 'Ekosistemden çıkarılması, sayısına oranla ÇOK BÜYÜK bir yıkıma neden olur.' },
+          { id: 'D', text: 'Kesinlikle etoburdur.' },
+          { id: 'E', text: 'Asla ölmezler.' }
+        ],
+        correctOptionId: 'C',
+        explanation: 'Kilit taşı türlerin sayısı azdır (baskın değillerdir) ama ekolojik etkileri devasadır.'
+      },
+      {
+        id: 'q-13-7', difficulty: 'medium',
+        questionText: 'Küresel Isınmaya bağlı olarak gerçekleşen "Pozitif Geribildirim (Felaketi Hızlandıran)" olaylara aşağıdakilerden hangisi EN İYİ ÖRNEKTİR?',
+        options: [
+          { id: 'A', text: 'Isınmayla bitkilerin çok fotosentez yapıp soğutması' },
+          { id: 'B', text: 'Buzulların eriyerek beyaz (yansıtıcı) yüzeyin kaybolması ve alttaki koyu renkli okyanusun güneş ışığını DAHA ÇOK EMEREK daha hızlı ısınması (Albedo etkisinin düşmesi)' },
+          { id: 'C', text: 'Kuşların daha yükseğe uçması' },
+          { id: 'D', text: 'Ormanların genişlemesi' },
+          { id: 'E', text: 'Güneşin enerjisinin azalması' }
+        ],
+        correctOptionId: 'B',
+        explanation: 'Buz (beyaz ayna) ısıyı uzaya yansıtır (Albedo). Buz eriyip siyah deniz çıkınca suyu daha çok emer, daha çok ısınır, daha çok buz eritir (Kısır döngü).'
+      },
+      {
+        id: 'q-13-8', difficulty: 'medium',
+        questionText: 'Enerji piramidinde üreticiden (ottan) son tüketiciye (kartala) doğru çıkıldıkça AŞAĞIDAKİLERDEN HANGİSİ ARTAR?',
+        options: [
+          { id: 'A', text: 'Aktarılan Toplam Enerji' },
+          { id: 'B', text: 'Toplam Biyokütle' },
+          { id: 'C', text: 'Biyolojik Birikim (Zehir/DDT Oranı)' },
+          { id: 'D', text: 'Birey Sayısı' },
+          { id: 'E', text: 'Üreme hızı' }
+        ],
+        correctOptionId: 'C',
+        explanation: 'Piramitte yukarı çıkıldıkça enerji, biyokütle ve birey sayısı AZALIR. Sadece vücut büyüklüğü (genellikle) ve Zehir (Biyolojik Birikim) ARTAR.'
+      },
+      {
+        id: 'q-13-9', difficulty: 'medium',
+        questionText: 'Türkiye nüfus piramidinin incelenmesi sonucunda "Tabanın daraldığı, orta yaşın şişkinleştiği, yaşlı nüfusun artmaya başladığı" gözleniyorsa, bu ülke hangi DEMOGRAFİK EVREDEDİR?',
+        options: [
+          { id: 'A', text: 'Nüfusu çok hızlı artan (Afrika gibi)' },
+          { id: 'B', text: 'Doğurganlığın düştüğü, nüfus artış hızının yavaşladığı ve nüfusun giderek yaşlandığı Gelişmekte/Gelişmiş Geçiş Evresi' },
+          { id: 'C', text: 'Nüfusu sıfırlanmış evre' },
+          { id: 'D', text: 'Sadece göçmenlerden oluşan evre' },
+          { id: 'E', text: 'Bebek ölümlerinin tavan yaptığı evre' }
+        ],
+        correctOptionId: 'B',
+        explanation: 'Daralan taban = Azalan doğum oranı = Yaşlanan nüfus demektir.'
+      },
+      {
+        id: 'q-13-10', difficulty: 'medium',
+        questionText: 'Sürdürülebilirlik kavramı açısından "Ekolojik Ayak İzi"ni DÜŞÜRMEK isteyen bir toplum HANGİSİNİ YAPMAMALIDIR?',
+        options: [
+          { id: 'A', text: 'Geri dönüşüm tesislerini artırmak' },
+          { id: 'B', text: 'Fosil yakıtlara dayalı tek kullanımlık plastik üretimini ARTIRMAK' },
+          { id: 'C', text: 'Yenilenebilir enerji (Güneş, Rüzgar) kullanmak' },
+          { id: 'D', text: 'Et tüketimini daha dengeli (karbon ayak izi düşük) seviyeye çekmek' },
+          { id: 'E', text: 'Toplu taşımayı ücretsiz veya ucuz yapmak' }
+        ],
+        correctOptionId: 'B',
+        explanation: 'Tek kullanımlık plastikler petrol ürünüdür ve parçalanmaz. Bunu artırmak ekolojik ayak izini büyütür, doğayı tüketir.'
+      }
+    ]
+  },
+  {
+    id: 'mastery',
+    title: 'Ustalık Testi',
+    description: 'Yüksek yorum, analiz ve birleştirilmiş kazanımlar',
+    type: 'mastery',
+    order: 14,
+    questions: [
+      {
+        id: 'q-m-1', difficulty: 'hard',
+        questionText: 'Bir orman ekosistemindeki besin ağı şu şekildedir: Meşe Palamudu -> Fare -> Yılan -> Şahin. Ayrıca Fare, Cırcır Böceği yemektedir. Palamudu, Sincap da yemektedir; Şahin Sincabı da yemektedir. Bu ağda YILAN sayısının aniden azalması (Örn: Hastalık) KISA VADEDE hangi canlıların sayısını nasıl etkiler?',
+        options: [
+          { id: 'A', text: 'Fare azalır, Şahin artar' },
+          { id: 'B', text: 'Fare ARTAR, Şahin AZALIR, Sincap AZALIR (Şahin aç kalıp sincaba yöneleceği için)' },
+          { id: 'C', text: 'Fare değişmez, Sincap artar' },
+          { id: 'D', text: 'Tüm canlılar yok olur' },
+          { id: 'E', text: 'Palamut artar' }
+        ],
+        correctOptionId: 'B',
+        explanation: 'Yılan biterse Avı olan FARE ARTAR. Yılanı yiyen ŞAHİN aç kalır (azalır) veya yılan bulamadığı için mecburen ağdaki diğer avına (SİNCAP) daha çok saldırır, bu yüzden Sincap AZALIR.'
+      },
+      {
+        id: 'q-m-2', difficulty: 'hard',
+        questionText: 'Bir göle bırakılan radyoaktif (işaretlenmiş) FOSFOR atomu (PO4), bir ay sonra bir KARTALIN kemiklerinde tespit edilmiştir. Bu fosfor atomu kartala gelene kadar SIRASIYLA hangi canlı gruplarından geçmiş OLABİLİR?',
+        options: [
+          { id: 'A', text: 'Su -> Fitoplankton (Üretici) -> Zooplankton (Otçul) -> Küçük Balık -> Büyük Balık -> Kartal' },
+          { id: 'B', text: 'Su -> Bakteri -> Kartal' },
+          { id: 'C', text: 'Güneş -> Fitoplankton -> Kartal' },
+          { id: 'D', text: 'Hava (Gaz) -> Bitki -> Kartal' },
+          { id: 'E', text: 'Kaya -> Kartal' }
+        ],
+        correctOptionId: 'A',
+        explanation: 'Fosfor suda çözünür, onu önce suda fotosentez yapan ÜRETİCİ (Fitoplankton) alır. Sonra besin zinciriyle sırayla yukarı aktarılır (Biyolojik aktarım).'
+      },
+      {
+        id: 'q-m-3', difficulty: 'hard',
+        questionText: 'Paramesyum Aurelia ve Paramesyum Caudatum türleri AYRI AYRI tüplerde yetiştirildiğinde her ikisi de S tipi lojistik büyüme gösterir. Ancak AYNI TÜPE konduklarında (besin sınırlı), Aurelia S tipi büyümeye devam ederken, Caudatum sayısı sıfıra inip ÖLÜR. Bu deneyden çıkarılacak EN KAPSAMLI sonuç nedir?',
+        options: [
+          { id: 'A', text: 'Biri diğerini yemiştir (Av-Avcı)' },
+          { id: 'B', text: 'Aurelia zehir üretmiştir (Amensalizm)' },
+          { id: 'C', text: 'Aynı Ekolojik Nişe sahip iki tür Sınırlı Kaynaklar için rekabet ettiğinde, rekabet gücü yüksek olan (Aurelia) hayatta kalır, diğeri (Caudatum) ELENİR (Rekabetçi Dışlanma)' },
+          { id: 'D', text: 'Caudatum oksijensiz solunum yapar' },
+          { id: 'E', text: 'Aurelia ototroftur' }
+        ],
+        correctOptionId: 'C',
+        explanation: 'Bu Gause\'nin ünlü Rekabetçi Dışlanma deneyidir. Aynı besini aynı ortamda yiyen iki tür beraber yaşayamaz, zayıf olan yok olur.'
+      },
+      {
+        id: 'q-m-4', difficulty: 'hard',
+        questionText: 'Azot döngüsünde toprağa düşen bir kuş tüyündeki (Protein) azotun, HAVAYA (N2 gazına) karışana kadar geçirdiği biyolojik aşamalar SIRASIYLA hangisinde doğru verilmiştir?',
+        options: [
+          { id: 'A', text: 'Saprofit faaliyeti (Amonyak oluşumu) -> Nitrifikasyon (Nitrat oluşumu) -> Denitrifikasyon (N2 gazı oluşumu)' },
+          { id: 'B', text: 'Nitrifikasyon -> Saprofit -> Denitrifikasyon' },
+          { id: 'C', text: 'Denitrifikasyon -> Nitrifikasyon -> Fotosentez' },
+          { id: 'D', text: 'Fotosentez -> Solunum -> Terleme' },
+          { id: 'E', text: 'Azot fiksasyonu -> Nitrifikasyon -> Saprofit' }
+        ],
+        correctOptionId: 'A',
+        explanation: 'Ölü Proteini önce Çürükçüller (Saprofitler) parçalayıp Amonyak yapar. Sonra Kemosentetikler onu Nitrata çevirir (Nitrifikasyon). En son Oksijensiz solunum yapan bakteriler Nitratı gaza (N2) çevirir (Denitrifikasyon).'
+      },
+      {
+        id: 'q-m-5', difficulty: 'hard',
+        questionText: 'Karbon Ayak İzi ile Su Ayak İzi hesaplamaları bazen yanıltıcı olabilir. Örneğin, bir "Biftek" yemenin Su Ayak İzi (yaklaşık 15.000 Litre su/kg) neden bir "Elma" yemenin Su Ayak İzinden (yaklaşık 800 Litre/kg) yüzlerce kat DAHA BÜYÜKTÜR?',
+        options: [
+          { id: 'A', text: 'İnekler eti sulu sevdiği için' },
+          { id: 'B', text: 'İneklerin kendi içtiği suyun çok olmasından' },
+          { id: 'C', text: 'Et üretilene kadar geçen sürede (Yıllarca); ineğin yediği binlerce kilo yemin/tahılın SULANMASI, tarlanın bakımı ve kesim sürecinde harcanan GİZLİ SUYUN (Sanal Su) tamamının toplanması yüzünden' },
+          { id: 'D', text: 'Elma susuz yetiştiği için' },
+          { id: 'E', text: 'Etin yıkanması çok su gerektirdiği için' }
+        ],
+        correctOptionId: 'C',
+        explanation: 'Su ayak izi, doğrudan içilen değil "Üretim zincirindeki dolaylı/sanal suyun" toplamıdır. İnek yıllarca tonlarca "sulanmış" yem yediği için o etin maliyeti devasadır.'
+      },
+      {
+        id: 'q-m-6', difficulty: 'hard',
+        questionText: 'Bir komünitedeki "Baskın Tür" ile "Kilit Taşı Tür" arasındaki temel fark HANGİSİDİR?',
+        options: [
+          { id: 'A', text: 'Baskın tür her zaman avcıdır, Kilit taşı avdır.' },
+          { id: 'B', text: 'Baskın tür sayıca veya kütlece komüniteye HAKİMDİR (Örn: Ormandaki Çam ağaçları). Kilit taşı tür ise SAYICA ÇOK AZ olmasına rağmen etkisiz hale gelirse tüm sistemi ÇÖKERTEN türdür (Örn: Deniz Yıldızı, Su samuru).' },
+          { id: 'C', text: 'İkisi aynı şeydir.' },
+          { id: 'D', text: 'Baskın tür küçüktür, kilit taşı tür çok büyüktür.' },
+          { id: 'E', text: 'Kilit taşı tür bitkidir, baskın tür hayvandır.' }
+        ],
+        correctOptionId: 'B',
+        explanation: 'Baskın tür (Dominant) miktar olarak en göze batandır. Kilit taşı (Keystone) ise bir motorun küçük ama kritik bujisi gibidir; sayısı az, etkisi sistemiktir.'
+      },
+      {
+        id: 'q-m-7', difficulty: 'hard',
+        questionText: 'Popülasyonlarda Tip 1, Tip 2 ve Tip 3 hayatta kalma eğrileri, üreme stratejileriyle doğrudan ilgilidir (K ve r seçilimi). Buna göre aşağıdakilerden hangisi Tip 3 (Böcek/Balık - r seçilimli) bir canlıya ait bir özellik OLAMAZ?',
+        options: [
+          { id: 'A', text: 'Tek seferde milyonlarca yumurta üretmek' },
+          { id: 'B', text: 'Vücut boyutunun genellikle küçük olması' },
+          { id: 'C', text: 'Erken yaşta (gençken) ölüm oranının %99 olması' },
+          { id: 'D', text: 'Yavrularına uzun süre KORUYUCU BAKIM yapıp onları beslemesi' },
+          { id: 'E', text: 'Çevre şartları bozulduğunda çok hızlı yok olabilmeleri' }
+        ],
+        correctOptionId: 'D',
+        explanation: 'Tip 3 canlılar (r stratejistleri) "çok üret, arkana bakma" taktiğini kullanır. Yavru bakımı SIFIRDIR, bu yüzden çoğu doğar doğmaz ölür.'
+      },
+      {
+        id: 'q-m-8', difficulty: 'hard',
+        questionText: 'Bir milli parkta Orman (Çekirdek alan) tam ortadan bir OTOYOL ile ikiye bölünmüştür (Habitat Fragmantasyonu). Bu olayın sonucunda "Kenar Etkisi" oluşur. Kenar etkisi ormanı NASIL DEĞİŞTİRİR?',
+        options: [
+          { id: 'A', text: 'Orman daha gürleşir.' },
+          { id: 'B', text: 'Otoyol kenarı, ormanın iç kısımlarına göre IŞIK, RÜZGAR ve KURAKLIK açısından DÜŞMANCA bir hal alır. Ormanın GÜVENLİ ÇEKİRDEK ALANI daralır ve neme/gölgeye ihtiyaç duyan türler ölür.' },
+          { id: 'C', text: 'Hayvanlar yolda yürümeyi sevdiği için türler artar.' },
+          { id: 'D', text: 'Hiçbir değişiklik olmaz.' },
+          { id: 'E', text: 'Süksesyon geriye sarar ve deniz oluşur.' }
+        ],
+        correctOptionId: 'B',
+        explanation: 'Orman kenarı fırtınaya, güneşe ve avcılara açıktır (Kenar etkisi). Yol geçince "kenar" artar, güvenli nemli "iç (çekirdek)" bölge kaybolur, iç orman kuşları yok olur.'
+      },
+      {
+        id: 'q-m-9', difficulty: 'hard',
+        questionText: 'Grafik: "Tilki ve Tavşan nüfusları dalgalanmaktadır. Ancak uzun yıllar sonra, Tavşanların Kaçma Hızının, Tilkilerin ise Pusu Kurma yeteneklerinin Gözle Görülür Şekilde arttığı saptanmıştır." Bu durum ekolojide ve evrimde hangi kavramla açıklanır?',
+        options: [
+          { id: 'A', text: 'Mutualizm' },
+          { id: 'B', text: 'Süksesyon' },
+          { id: 'C', text: 'Birlikte Evrim (Ko-evrim) - Sürekli bir genetik "Silahlanma Yarışı"' },
+          { id: 'D', text: 'Ötrofikasyon' },
+          { id: 'E', text: 'Sıfır büyüme' }
+        ],
+        correctOptionId: 'C',
+        explanation: 'Av ve Avcı sadece birbirini yemez, birbirinin evrimini de tetikler. Hızlı tavşanı yakalamak için tilki hızlanmak zorundadır, tilki hızlandıkça daha hızlı tavşanlar sağ kalır (Ko-evrim / Silahlanma yarışı).'
+      },
+      {
+        id: 'q-m-10', difficulty: 'hard',
+        questionText: 'Bir gölde alglerin fotosentezi ile üretilen Oksijen (O2) miktarının Gündüz maksimum, Gece minimum olmasının yanı sıra; Suyun derinliklerine inildikçe (Işık azaldıkça) Oksijen oranının HIZLA DÜŞMESİ, ekolojide neyi ifade eder?',
+        options: [
+          { id: 'A', text: 'Oksijenin çok ağır bir gaz olduğunu' },
+          { id: 'B', text: 'Fotosentez hızının Abiyotik Faktörlerden (Güneş ışığı) doğrudan etkilendiğini ve suda IŞIĞIN SINIRLAYICI FAKTÖR olduğunu' },
+          { id: 'C', text: 'Balıkların sadece gece solunum yaptığını' },
+          { id: 'D', text: 'Suyun dibinde yerçekimi olmadığını' },
+          { id: 'E', text: 'Alglerin ışıksız ortamda kemosentez yaptığını' }
+        ],
+        correctOptionId: 'B',
+        explanation: 'Algler güneş varsa (gündüz ve suyun yüzeyinde) fotosentez yapar (O2 artar). Gece veya derinlerde ışık yoktur (Sınırlayıcı Faktör), fotosentez durur, sadece solunumla O2 harcanır.'
+      }
+    ]
   }
 ]

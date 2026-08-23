@@ -104,7 +104,7 @@ export default function ExamSetupCard({ onSaved, onSnooze }) {
   return (
     <Card variant="highlight" glow padding="none" className="overflow-hidden">
       <div className="flex items-start gap-3 px-5 pt-5 sm:px-6 sm:pt-6">
-        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-brand-700 text-white shadow-xs">
+        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-aurora-gradient text-white shadow-aurora">
           <CalendarClock className="h-5 w-5" strokeWidth={2.2} aria-hidden="true" />
         </span>
         <div className="min-w-0">

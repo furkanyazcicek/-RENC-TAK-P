@@ -231,7 +231,7 @@ export default function ChatThread({ contact, className }) {
                   className={cn(
                     'max-w-[78%] rounded-card px-4 py-2.5 text-sm',
                     mine
-                      ? 'rounded-br-md bg-brand-700 text-white shadow-xs'
+                      ? 'rounded-br-md bg-aurora-gradient text-white shadow-aurora'
                       : 'rounded-bl-md border border-line bg-surface text-ink shadow-xs'
                   )}
                 >

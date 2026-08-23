@@ -102,6 +102,7 @@ export default function LessonPreview() {
     subtitle: source.subtitle,
     status: 'published',
     learning_mode: source.learningMode ?? 'interactive',
+    is_gold_standard: Boolean(source.goldStandard),
   }
 
   // Temel not, kişiselleştirilmiş müdahalelerden önce gelen sakin okuma

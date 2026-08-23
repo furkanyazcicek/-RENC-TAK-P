@@ -13,7 +13,7 @@ import Logo from './ui/Logo'
  */
 export default function Navbar({ title, subtitle, action }) {
   return (
-    <header className="sticky top-0 z-sticky border-b border-line bg-surface/95 pt-safe-top backdrop-blur-md">
+    <header className="sticky top-0 z-sticky border-b border-line glass pt-safe-top">
       <div className="flex h-header items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         <div className="flex min-w-0 items-center gap-3">
           {/* Mobilde sidebar yok — marka işareti buraya taşınır */}
@@ -21,7 +21,7 @@ export default function Navbar({ title, subtitle, action }) {
             <Logo size="sm" markOnly />
           </span>
           <div className="min-w-0">
-            <h1 className="truncate font-display text-lg font-semibold tracking-tight text-ink sm:text-xl">
+            <h1 className="truncate font-display text-lg font-bold tracking-tight text-ink sm:text-xl">
               {title}
             </h1>
             {subtitle && (

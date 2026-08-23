@@ -46,7 +46,7 @@ function SummaryTile({ label, value, decimals = 0, suffix = '', hint, icon: Icon
   return (
     <div
       ref={ref}
-      className="landing-visual-interactive group relative overflow-hidden rounded-xl border border-line bg-surface p-3"
+      className="group relative overflow-hidden rounded-xl border border-line bg-surface p-3 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card"
     >
       <span
         className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 transition-transform duration-300 group-hover:scale-x-100"

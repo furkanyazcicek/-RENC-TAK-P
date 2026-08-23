@@ -78,6 +78,49 @@ for (const lesson of LESSONS) {
   console.log('')
 }
 
+/* İlk TYT Fizik notu, kullanıcı onayı gelene kadar tek fizik içeriği ve
+   sonraki bütün fizik notlarının kalite referansı olarak kalmalıdır. */
+const tytPhysicsLessons = LESSONS.filter(
+  (lesson) => lesson.placement.examType === 'TYT' && lesson.placement.subject === 'Fizik'
+)
+if (tytPhysicsLessons.length !== 1) {
+  console.error(`\n✗ Gold Standard aşamasında tam olarak bir TYT Fizik notu olmalı; bulunan: ${tytPhysicsLessons.length}`)
+  failed += 1
+} else {
+  const physicsLesson = tytPhysicsLessons[0]
+  const physicsDocument = validateLessonDocument(physicsLesson.document).document
+  const physicsTypes = new Set(physicsDocument.sections.flatMap((section) => section.blocks.map((block) => block.type)))
+  const requiredPhysicsTypes = ['why', 'figure', 'table', 'formula', 'worked_example', 'trap', 'quiz', 'osym_simulation', 'summary']
+  const missingPhysicsTypes = requiredPhysicsTypes.filter((type) => !physicsTypes.has(type))
+  const physicsLabs = physicsDocument.sections.flatMap((section) =>
+    section.blocks.filter((block) => block.type === 'figure' && block.kind === 'fizik-kesif-laboratuvari')
+  )
+  const physicsDepth = auditLessonDepth(physicsDocument)
+
+  if (physicsLesson.placement.topic !== 'Fizik Bilimine Giriş' || physicsLesson.order !== 1) {
+    console.error('\n✗ Gold Standard notu platformdaki ilk TYT Fizik konusu ve birinci sıra olmalı.')
+    failed += 1
+  }
+  if (!physicsLesson.goldStandard) {
+    console.error('\n✗ İlk TYT Fizik notu Gold Standard olarak işaretlenmemiş.')
+    failed += 1
+  }
+  if (missingPhysicsTypes.length) {
+    console.error(`\n✗ Fizik Gold Standard omurgasında eksik bloklar: ${missingPhysicsTypes.join(', ')}`)
+    failed += 1
+  }
+  if (physicsLabs.length < 4) {
+    console.error(`\n✗ Fizik Gold Standard en az dört yapılandırılabilir laboratuvar örneği taşımalı; bulunan: ${physicsLabs.length}`)
+    failed += 1
+  }
+  if (physicsDepth.warnings.length) {
+    physicsDepth.warnings.forEach((warning) => console.error(`\n✗ Fizik Gold Standard derinlik kapısı: ${warning}`))
+    failed += 1
+  }
+
+  console.log(`\nTYT Fizik Gold Standard: 1/1 konu · ${physicsLabs.length} yapılandırılabilir laboratuvar · ${physicsDepth.score}/100 kalite kapısı.\n`)
+}
+
 const requiredHistoryBlocks = ['why', 'table', 'worked_example', 'timeline', 'cause_effect', 'period_summary', 'trap', 'exam', 'checkpoint', 'summary']
 const requiredHistorySlugs = [
   'tarih-bilimi-ve-zaman',

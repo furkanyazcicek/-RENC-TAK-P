@@ -157,12 +157,22 @@ const VARIANTS = {
   },
 }
 
-export default function AuroraBackground({ variant = 'page', className }) {
-  const placement = variant === 'page' ? 'fixed inset-0' : 'absolute inset-0'
-  const surface =
-    variant === 'panel'
-      ? 'bg-[linear-gradient(135deg,rgb(var(--c-brand-900)/0.04),transparent_55%)]'
-      : 'bg-[linear-gradient(180deg,rgb(var(--c-surface))_0%,rgb(var(--c-paper))_100%)]'
+export default function AuroraBackground({ variant = 'page', mesh = false, className }) {
+  const config = VARIANTS[variant] ?? VARIANTS.page
 
-  return <div aria-hidden="true" className={cn('pointer-events-none z-0', placement, surface, className)} />
+  return (
+    <div
+      aria-hidden="true"
+      className={cn(
+        'pointer-events-none overflow-hidden z-0',
+        config.wrapper,
+        className
+      )}
+    >
+      {mesh && <div className="absolute inset-0 bg-mesh-aurora" />}
+      {config.blobs.map((blob, i) => (
+        <span key={i} className={cn('aurora-blob', blob.className)} style={blob.style} />
+      ))}
+    </div>
+  )
 }

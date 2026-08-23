@@ -106,7 +106,7 @@ function ProfileCard() {
     <div className="relative shrink-0">
       {/* Arkadaki yumuşak ışık */}
       <div
-        className="hidden"
+        className="absolute -inset-4 rounded-[2.5rem] opacity-70 blur-2xl"
         style={{
           background:
             'radial-gradient(circle at 50% 40%, rgb(var(--c-aurora-violet) / 0.35), rgb(var(--c-aurora-cyan) / 0.15) 45%, transparent 70%)',
@@ -114,7 +114,7 @@ function ProfileCard() {
         aria-hidden="true"
       />
 
-      <div className="relative grid h-40 w-40 place-items-center overflow-hidden rounded-panel bg-brand-950 shadow-card sm:h-44 sm:w-44">
+      <div className="relative grid h-40 w-40 place-items-center overflow-hidden rounded-panel bg-aurora-gradient shadow-aurora-lg sm:h-44 sm:w-44">
         {/* İnce ızgara dokusu */}
         <div
           className="absolute inset-0 opacity-[0.18]"
@@ -144,7 +144,7 @@ function ProfileCard() {
 function StepCard({ step, index }) {
   const Icon = step.icon
   return (
-    <div className="group relative flex-1 rounded-card border border-line bg-surface p-5 transition-colors duration-200 hover:border-line-strong">
+    <div className="group relative flex-1 rounded-card border border-line bg-surface p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover">
       {/* Üstte, hover'da beliren renk çizgisi */}
       <span
         className="absolute inset-x-5 top-0 h-0.5 rounded-full opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -176,10 +176,10 @@ function StepCard({ step, index }) {
 function FeatureCard({ feature }) {
   const Icon = feature.icon
   return (
-    <div className="group relative overflow-hidden rounded-card border border-line bg-surface p-5 transition-colors duration-200 hover:border-line-strong">
+    <div className="group relative overflow-hidden rounded-card border border-line bg-surface p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-card-hover">
       {/* Hover'da köşeden yayılan renk */}
       <span
-        className="hidden"
+        className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-60"
         style={{ background: feature.tone }}
         aria-hidden="true"
       />

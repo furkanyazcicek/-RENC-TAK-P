@@ -35,7 +35,7 @@ export default function QuickActions({ onSelect, disabled = false, variant = 'ro
               'group flex shrink-0 snap-start items-center gap-1.5 rounded-full border border-line',
               'bg-surface px-3.5 py-2 text-xs font-medium text-ink/75',
               'transition-all duration-200 ease-smooth',
-              'hover:border-line-strong hover:bg-surface-muted hover:text-brand-800',
+              'hover:-translate-y-0.5 hover:border-brand-300 hover:bg-brand-50/60 hover:text-brand-700',
               'focus-ring disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0'
             )}
           >

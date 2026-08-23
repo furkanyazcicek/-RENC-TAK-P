@@ -41,7 +41,7 @@ const STEP_ICONS = [PenLine, ClipboardList, Target, MessageCircle]
 /* Ekran çerçevelerindeki rozet tonları — satır içi hex yerine token.
    `accent` artık bir renk kodu değil, semantik bir ad. */
 const SCREEN_ACCENTS = {
-  brand: 'bg-brand-700 text-white',
+  brand: 'bg-aurora-gradient text-white',
   success: 'bg-success-600 text-white',
   warning: 'bg-warning-600 text-white',
   accent: 'bg-accent-600 text-white',
@@ -49,7 +49,7 @@ const SCREEN_ACCENTS = {
 
 function ScreenFrame({ title, subtitle, badge, accent = 'brand', children }) {
   return (
-    <div className="landing-visual-interactive overflow-hidden rounded-panel border border-line bg-paper shadow-elevated">
+    <div className="overflow-hidden rounded-panel border border-white/60 bg-paper shadow-elevated">
       <div className="flex items-center justify-between gap-2 border-b border-line bg-surface px-3.5 py-2.5">
         <div className="min-w-0">
           <p className="font-display text-xs font-bold leading-tight text-ink">{title}</p>
@@ -350,7 +350,7 @@ export default function HowItWorksSection() {
                         className={cn(
                           'grid h-10 w-10 shrink-0 place-items-center rounded-xl transition-all duration-300',
                           on
-                            ? 'bg-brand-700 text-white shadow-xs'
+                            ? 'bg-aurora-gradient text-white shadow-aurora'
                             : done
                               ? 'bg-success-500/12 text-success-600'
                               : 'bg-ink/[0.05] text-ink/55 group-hover:text-ink/60'

@@ -54,6 +54,7 @@ import HomeostasisLoop from './HomeostasisLoop'
 import InheritanceConceptMap from './InheritanceConceptMap'
 import KingdomDecisionTree from './KingdomDecisionTree'
 import MagneticForce from './MagneticForce'
+import PhysicsDiscoveryLab from './PhysicsDiscoveryLab'
 import MatterCycles from './MatterCycles'
 import AtpStructure from './AtpStructure'
 import MembraneModel from './MembraneModel'
@@ -92,6 +93,7 @@ import { AdaptationPlate, HumanSelectionPlate, MutationPlate, NaturalSelectionPl
 import WaterPolarity from './WaterPolarity'
 import VirusLifeCriteria from './VirusLifeCriteria'
 import VitaminSolubility from './VitaminSolubility'
+import { ChemicalSafetyPictograms, ChemistryLanguageLevels, LaboratoryTools } from './ChemistryIllustrations'
 import { FIGURE_META, canonicalFigureKind } from './registry'
 
 /** Şema adı → çizim bileşeni. `registry.js` ile aynı anahtarları kullanır. */
@@ -215,8 +217,12 @@ const COMPONENTS = {
   endosimbiyoz: EndosymbiosisSequence,
   'karbon-izleme': CarbonTracing,
   'atp-bilancosu': AtpLedger,
+  'kimya-gosterim-duzeyleri': ChemistryLanguageLevels,
+  'kimya-guvenlik-piktogramlari': ChemicalSafetyPictograms,
+  'kimya-laboratuvar-araclari': LaboratoryTools,
   'birim-cember': UnitCircle,
   'manyetik-kuvvet': MagneticForce,
+  'fizik-kesif-laboratuvari': PhysicsDiscoveryLab,
 }
 
 export const FIGURES = Object.fromEntries(

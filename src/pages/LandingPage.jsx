@@ -10,6 +10,7 @@ import {
   MapPin,
   MessageCircle,
   Phone,
+  Sparkles,
   Target,
   ShieldCheck,
   Users,
@@ -53,7 +54,7 @@ const NAV_LINKS = [
 
 function LandingNavbar() {
   return (
-    <header className="sticky top-0 z-sticky border-b border-line bg-surface/95 backdrop-blur-md">
+    <header className="sticky top-0 z-sticky border-b border-line glass">
       <div className="mx-auto flex h-header max-w-content items-center justify-between px-4 sm:px-6">
         <a href="#top" className="focus-ring rounded-xl">
           <Logo />
@@ -64,14 +65,17 @@ function LandingNavbar() {
             <a
               key={l.href}
               href={l.href}
-              className="focus-ring rounded text-sm font-medium text-ink/60 transition-colors hover:text-brand-800"
+              className="focus-ring relative rounded text-sm font-medium text-ink/60 transition-colors hover:text-ink
+                         after:absolute after:-bottom-1.5 after:left-0 after:h-[2px] after:w-0 after:rounded-full
+                         after:bg-aurora-line after:transition-all after:duration-300 hover:after:w-full"
             >
               {l.label}
             </a>
           ))}
           <Link
             to="/login"
-            className="focus-ring btn-base h-10 bg-brand-700 px-5 text-sm text-white shadow-xs hover:bg-brand-800"
+            className="focus-ring btn-base h-10 bg-aurora-gradient px-5 text-sm text-white shadow-aurora
+                       transition-all duration-200 hover:-translate-y-0.5 hover:shadow-aurora-lg hover:brightness-110"
           >
             Giriş Yap
           </Link>
@@ -79,7 +83,7 @@ function LandingNavbar() {
 
         <Link
           to="/login"
-          className="focus-ring btn-base h-9 bg-brand-700 px-4 text-sm text-white shadow-xs hover:bg-brand-800 md:hidden"
+          className="focus-ring btn-base h-9 bg-aurora-gradient px-4 text-sm text-white shadow-aurora md:hidden"
         >
           Giriş Yap
         </Link>
@@ -108,7 +112,7 @@ function HeroStat({ label, value, decimals = 0, suffix = '', icon: Icon, tone = 
   return (
     <div
       ref={ref}
-      className="landing-visual-interactive group relative overflow-hidden rounded-xl border border-line bg-surface p-2.5"
+      className="group relative overflow-hidden rounded-xl border border-line bg-surface p-2.5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card-hover"
     >
       <span className={cn('absolute bottom-0 left-0 top-0 w-[3px]', t.bar)} aria-hidden="true" />
       <div className="flex items-start justify-between gap-1.5 pl-1.5">
@@ -134,8 +138,20 @@ function HeroStat({ label, value, decimals = 0, suffix = '', icon: Icon, tone = 
 function HeroPreview() {
   return (
     <div className="relative mx-auto w-full max-w-[27rem] lg:max-w-none">
+      {/* Arkadaki Aurora ışığı */}
       <div
-        className="relative overflow-hidden rounded-panel border border-line bg-paper shadow-elevated"
+        className="absolute -inset-8 rounded-[4rem] opacity-80"
+        style={{
+          background:
+            'radial-gradient(circle at 50% 40%, rgb(var(--c-aurora-violet) / 0.35) 0%, rgb(var(--c-aurora-cyan) / 0.18) 45%, transparent 70%)',
+          filter: 'blur(48px)',
+        }}
+        aria-hidden="true"
+      />
+
+      <div
+        className="group relative overflow-hidden rounded-panel border border-white/60 bg-paper shadow-elevated
+                   transition-transform duration-500 ease-smooth lg:rotate-[-1.5deg] lg:hover:rotate-0 lg:hover:-translate-y-1"
       >
         {/* Uygulama başlığı */}
         <div className="flex items-center justify-between gap-2 border-b border-line bg-surface px-3.5 py-2.5">
@@ -159,7 +175,7 @@ function HeroPreview() {
             <HeroStat label="Çözülen" value={1188} icon={CheckCircle2} tone="accent" />
           </div>
 
-          <div className="landing-visual-interactive rounded-xl border border-line bg-surface p-3">
+          <div className="rounded-xl border border-line bg-surface p-3">
             <div className="mb-2 flex items-baseline justify-between">
               <p className="text-[11px] font-bold text-ink">Deneme Net Gelişimi</p>
               <span className="rounded-full bg-brand-500/12 px-1.5 py-0.5 text-[9px] font-bold text-brand-700">
@@ -170,11 +186,11 @@ function HeroPreview() {
           </div>
 
           <div className="grid grid-cols-1 gap-2.5 xs:grid-cols-2">
-            <div className="landing-visual-interactive rounded-xl border border-line bg-surface p-3">
+            <div className="rounded-xl border border-line bg-surface p-3">
               <p className="mb-2.5 text-[11px] font-bold text-ink">Ders Bazlı Net</p>
               <SubjectBarChart data={SUBJECT_NETS.slice(0, 3)} />
             </div>
-            <div className="landing-visual-interactive rounded-xl border border-line bg-surface p-3">
+            <div className="rounded-xl border border-line bg-surface p-3">
               <p className="mb-2 text-[11px] font-bold text-ink">Haftalık Çalışma</p>
               <WeeklyStudyChart data={WEEKLY_STUDY} />
             </div>
@@ -200,34 +216,37 @@ function HeroSection() {
       <div className="relative z-10 mx-auto max-w-content px-4 pb-20 pt-14 sm:px-6 sm:pb-28 sm:pt-20">
         <div className="grid items-center gap-14 lg:grid-cols-[1fr_1fr] lg:gap-12">
           <div className="text-left">
-            <span className="inline-flex items-center border-l-2 border-brand-600 pl-3 text-xs font-semibold uppercase tracking-[0.12em] text-ink/55">
-              LGS · YKS · KPSS · Okul desteği
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-500/15 bg-surface/70 px-3 py-1.5 text-xs font-semibold text-brand-700 backdrop-blur-sm">
+              <Sparkles className="h-3.5 w-3.5" />
+              LGS · YKS (TYT/AYT) · KPSS · Tüm Sınıflar
             </span>
 
             <h1 className="mt-6 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-ink sm:text-6xl">
-              Daha düzenli çalış.
+              Başarıya Giden
               <br />
-              <span className="text-brand-700">Gelişimini net gör.</span>
+              <span className="text-aurora">Yolu Biliyoruz</span>
             </h1>
 
             <p className="mt-6 max-w-lg text-base leading-relaxed text-ink/65 sm:text-lg">
-              Ders notları, soru çözümleri, günlük çalışma kayıtları ve deneme sonuçları
-              aynı düzende buluşur. Öğrenci ne yapacağını bilir; öğretmen ve veli gelişimi
-              güncel verilerle izler.
+              Ortaokuldan üniversiteye; LGS, YKS ve KPSS'ye hazırlanan her öğrenci ve her ders
+              için tek platform. Günlük çalışmandan deneme netlerine, konu bazlı gelişiminden
+              ödevlerine kadar tüm sınav stratejini veriye dayalı olarak birlikte yönetelim.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <Link
-                to="/register"
-                className="focus-ring btn-base group bg-brand-700 px-8 py-4 text-sm text-white shadow-xs hover:bg-brand-800"
+                to="/login"
+                className="focus-ring btn-base group bg-aurora-gradient px-8 py-4 text-sm text-white
+                           shadow-aurora transition-all duration-300 hover:-translate-y-1 hover:shadow-aurora-lg hover:brightness-110"
               >
-                Hesap Oluştur
+                Hedefini Seç
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <a
                 href="#platform"
-                className="focus-ring btn-base border border-line bg-surface px-8 py-4 text-sm text-ink
-                           shadow-xs hover:border-line-strong hover:bg-surface-muted"
+                className="focus-ring btn-base border border-line bg-surface/80 px-8 py-4 text-sm text-ink
+                           shadow-xs backdrop-blur-sm transition-all duration-300 hover:-translate-y-1
+                           hover:border-brand-300 hover:shadow-card"
               >
                 Platformu Gör
               </a>
@@ -252,7 +271,8 @@ function HeroSection() {
           {features.map(({ Icon, label }) => (
             <div
               key={label}
-              className="card flex cursor-default flex-col items-center gap-2 p-4"
+              className="card-glass flex cursor-default flex-col items-center gap-2 p-4 transition-all duration-300
+                         hover:-translate-y-2 hover:border-brand-300/50 hover:shadow-card-hover"
             >
               <div className="grid h-10 w-10 place-items-center rounded-xl bg-brand-500/10 text-brand-600 ring-1 ring-inset ring-brand-500/15">
                 <Icon className="h-4 w-4" strokeWidth={2} />
@@ -302,7 +322,8 @@ function ClosingCTA() {
 
   return (
     <section className="relative px-4 py-20 sm:px-6 sm:py-28">
-      <div className="relative mx-auto max-w-5xl overflow-hidden rounded-panel bg-brand-950 p-8 shadow-card sm:p-14">
+      <div className="relative mx-auto max-w-5xl overflow-hidden rounded-panel bg-aurora-gradient p-8 shadow-aurora-lg sm:p-14">
+        <AuroraBackground variant="panel" />
 
         {/* Zemine çok hafif doku — düz gradient "yassı" durmasın */}
         <div
@@ -317,9 +338,9 @@ function ClosingCTA() {
 
         <div className="relative z-10 text-center">
           <h2 className="font-display text-3xl font-extrabold leading-tight text-white sm:text-4xl">
-            Bir sonraki adımını
+            Bir sonraki denemeyi
             <br className="hidden sm:block" />{' '}
-            <span className="text-white/80">veriyle belirle</span>
+            <span className="text-white/85">tesadüfe bırakma</span>
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/75">
             Bugün girdiğin ilk kayıt, iki hafta sonra bir eğilim çizgisine dönüşür.
@@ -330,7 +351,7 @@ function ClosingCTA() {
             <Link
               to="/register"
               className="focus-ring btn-base group bg-white px-8 py-4 text-sm text-brand-700 shadow-lg
-                         transition-colors duration-200 hover:bg-white/95"
+                         transition-all duration-300 hover:-translate-y-1 hover:bg-white/95"
             >
               Hemen Başla
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -349,7 +370,7 @@ function ClosingCTA() {
               <div
                 key={text}
                 className="flex items-center gap-2.5 rounded-card border border-white/15 bg-white/10 px-4 py-3
-                           text-left transition-colors duration-200 hover:bg-white/[0.18]"
+                           text-left backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.18]"
               >
                 <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-white/15 text-white">
                   <Icon className="h-4 w-4" strokeWidth={2.1} aria-hidden="true" />
@@ -380,7 +401,7 @@ function ContactSection() {
       <div className="mx-auto max-w-5xl px-4 py-20 sm:px-6 sm:py-28">
         <div className="mx-auto mb-12 max-w-xl text-center">
           <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-600">
-            <span className="h-px w-5 bg-brand-600" aria-hidden="true" />
+            <span className="h-1 w-5 rounded-full bg-aurora-line" aria-hidden="true" />
             İletişim
           </span>
           <h2 className="mt-3 font-display text-3xl font-bold text-ink">Sorularınız mı var?</h2>
@@ -408,7 +429,8 @@ function ContactSection() {
         <div className="mt-10 flex justify-center">
           <a
             href="mailto:furkan.yazcicek35@icloud.com"
-            className="focus-ring btn-base h-12 bg-brand-700 px-6 text-sm text-white shadow-xs hover:bg-brand-800"
+            className="focus-ring btn-base h-12 bg-aurora-gradient px-6 text-sm text-white shadow-aurora
+                       transition-all duration-200 hover:-translate-y-0.5 hover:shadow-aurora-lg hover:brightness-110"
           >
             <MessageCircle className="h-4 w-4" />
             Mesaj Gönder

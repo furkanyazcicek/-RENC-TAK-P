@@ -187,11 +187,11 @@ export default {
         /* Ağır gölge yok — katmanlı, yumuşak ve violet'e çalan gölgeler.
            Kart havada uçmaz, yüzeyin üzerinde durur. */
         xs: '0 1px 2px rgb(var(--c-shadow) / 0.05)',
-        card: '0 1px 2px rgb(var(--c-shadow) / 0.04), 0 5px 16px -12px rgb(var(--c-shadow) / 0.16)',
+        card: '0 1px 2px rgb(var(--c-shadow) / 0.04), 0 8px 24px -12px rgb(var(--c-shadow) / 0.12)',
         'card-hover':
-          '0 2px 4px rgb(var(--c-shadow) / 0.05), 0 10px 24px -16px rgb(var(--c-shadow) / 0.2)',
+          '0 2px 4px rgb(var(--c-shadow) / 0.05), 0 16px 36px -14px rgb(var(--c-shadow) / 0.2)',
         elevated:
-          '0 2px 8px -4px rgb(var(--c-shadow) / 0.12), 0 16px 32px -20px rgb(var(--c-shadow) / 0.22)',
+          '0 4px 12px -4px rgb(var(--c-shadow) / 0.1), 0 20px 48px -16px rgb(var(--c-shadow) / 0.22)',
         overlay: '0 32px 80px -20px rgb(var(--c-shadow) / 0.38)',
         glass:
           '0 1px 1px rgb(255 255 255 / 0.4) inset, 0 8px 32px -12px rgb(var(--c-shadow) / 0.18)',
@@ -205,10 +205,10 @@ export default {
       },
 
       borderRadius: {
-        btn: '0.625rem' /* 10px — düğmeler */,
-        input: '0.625rem' /* 10px — form alanları */,
-        card: '0.875rem' /* 14px — kartlar */,
-        panel: '1.125rem' /* 18px — büyük paneller, hero kutuları */,
+        btn: '0.75rem' /* 12px — düğmeler */,
+        input: '0.875rem' /* 14px — form alanları */,
+        card: '1.25rem' /* 20px — kartlar */,
+        panel: '1.75rem' /* 28px — büyük paneller, hero kutuları */,
         xl2: '1rem',
         '4xl': '2rem',
       },

@@ -18,7 +18,7 @@ export default function StatCounter({ value, decimals = 0, prefix = '', suffix =
       ref={ref}
       className={cn(
         'group relative rounded-card border border-line bg-surface p-5 text-center',
-        'transition-colors duration-200 hover:border-line-strong',
+        'transition-all duration-300 hover:-translate-y-1.5 hover:border-brand-200 hover:shadow-card-hover',
         className
       )}
     >

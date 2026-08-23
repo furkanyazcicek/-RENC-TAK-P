@@ -871,8 +871,8 @@ export default function SolveBoard({ question, onClose, onSaved }) {
           type="button"
           onClick={handleSend}
           disabled={sending}
-          className="focus-ring inline-flex h-10 shrink-0 items-center gap-2 rounded-lg bg-brand-700 px-3.5
-                     text-xs font-bold text-white shadow-xs transition-colors hover:bg-brand-800
+          className="focus-ring inline-flex h-10 shrink-0 items-center gap-2 rounded-lg bg-aurora-gradient px-3.5
+                     text-xs font-bold text-white shadow-aurora transition-all hover:brightness-110
                      disabled:opacity-60 sm:px-4 sm:text-sm"
         >
           {sending ? (

@@ -67,7 +67,7 @@ export default function AICoachCard() {
     return (
       <Card variant="highlight" padding="lg" className="flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-brand-700 text-white shadow-xs">
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-aurora-gradient text-white shadow-aurora">
             <Sparkles className="h-5 w-5" strokeWidth={2.2} aria-hidden="true" />
           </span>
           <div>
@@ -89,7 +89,7 @@ export default function AICoachCard() {
       {/* ---------- Başlık ---------- */}
       <div className="flex items-start justify-between gap-3 px-5 pt-5 sm:px-6 sm:pt-6">
         <div className="flex min-w-0 items-center gap-3">
-          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-brand-700 text-white shadow-xs">
+          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-aurora-gradient text-white shadow-aurora">
             <Sparkles className="h-5 w-5" strokeWidth={2.2} aria-hidden="true" />
           </span>
           <div className="min-w-0">
@@ -216,7 +216,7 @@ export default function AICoachCard() {
               onClick={() => ask(item.prompt)}
               className="focus-ring rounded-full border border-line bg-surface px-3 py-1.5 text-xs
                          font-medium text-ink/75 transition-all duration-200 ease-smooth
-                         hover:border-line-strong hover:bg-surface-muted hover:text-brand-800"
+                         hover:-translate-y-0.5 hover:border-brand-300 hover:bg-brand-50/60 hover:text-brand-700"
             >
               {item.label}
             </button>

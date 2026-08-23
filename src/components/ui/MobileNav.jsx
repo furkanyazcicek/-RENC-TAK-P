@@ -56,7 +56,7 @@ export default function MobileNav() {
     <>
       <nav
         aria-label="Ana gezinme"
-        className="fixed inset-x-0 bottom-0 z-sticky border-t border-line bg-surface/95 pb-safe-bottom backdrop-blur-md lg:hidden"
+        className="fixed inset-x-0 bottom-0 z-sticky border-t border-line glass pb-safe-bottom lg:hidden"
       >
         <ul className="flex items-stretch justify-around px-1.5 pt-1.5 pb-1.5">
           {primary.map(({ to, short, label, Icon }) => {
@@ -71,7 +71,7 @@ export default function MobileNav() {
                   <span
                     className={cn(
                       'grid h-8 w-full max-w-[3.5rem] place-items-center rounded-lg transition-all duration-200 ease-smooth',
-                      active ? 'bg-brand-50' : 'bg-transparent'
+                      active ? 'bg-aurora-soft' : 'bg-transparent'
                     )}
                   >
                     <Icon
@@ -136,7 +136,7 @@ function NavDrawer({ items, pathname, onClose, profile, role, onSignOut }) {
                    rounded-t-panel border border-line bg-surface pb-safe-bottom shadow-overlay
                    animate-fade-in-up"
       >
-        <span className="absolute inset-x-0 top-0 h-px bg-line-strong" aria-hidden="true" />
+        <span className="absolute inset-x-0 top-0 h-[3px] bg-aurora-line" aria-hidden="true" />
 
         <div className="flex justify-center pt-3" aria-hidden="true">
           <span className="h-1 w-10 rounded-full bg-ink/15" />
@@ -183,7 +183,7 @@ function NavDrawer({ items, pathname, onClose, profile, role, onSignOut }) {
                   className={cn(
                     'focus-ring flex items-center gap-3 rounded-btn px-3 py-3 text-sm transition-colors',
                     active
-                      ? 'bg-brand-50 font-semibold text-brand-800'
+                      ? 'bg-aurora-soft font-semibold text-brand-700'
                       : 'text-ink/70 hover:bg-ink/[0.04]'
                   )}
                 >

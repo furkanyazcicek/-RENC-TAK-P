@@ -36,16 +36,16 @@ const VARIANTS = {
   glass: 'card-glass',
   gradient: 'card-gradient',
   outline: 'card-outline',
-  highlight: 'card border-brand-200',
+  highlight: 'card border-aurora',
 }
 
 const INTERACTIVE = {
   default: 'card-interactive',
-  glass: 'card-glass transition-colors duration-200 ease-smooth hover:border-line-strong',
-  gradient: 'card-gradient transition-colors duration-200 ease-smooth hover:bg-brand-800',
+  glass: 'card-glass transition-all duration-200 ease-smooth hover:-translate-y-0.5 hover:shadow-card-hover',
+  gradient: 'card-gradient transition-all duration-200 ease-smooth hover:-translate-y-0.5 hover:shadow-aurora-lg',
   outline:
-    'card-outline transition-colors duration-200 ease-smooth hover:border-line-strong hover:bg-surface',
-  highlight: 'card border-brand-200 transition-colors duration-200 ease-smooth hover:border-brand-300',
+    'card-outline transition-all duration-200 ease-smooth hover:-translate-y-0.5 hover:border-brand-200 hover:bg-surface',
+  highlight: 'card border-aurora transition-all duration-200 ease-smooth hover:-translate-y-0.5 hover:shadow-card-hover',
 }
 
 export default function Card({

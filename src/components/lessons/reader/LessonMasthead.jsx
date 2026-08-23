@@ -35,6 +35,7 @@ export default function LessonMasthead({
     0
   )
   const foundation = lesson.learning_mode === 'foundation' || lesson.learningMode === 'foundation'
+  const goldStandard = lesson.is_gold_standard || lesson.goldStandard
 
   return (
     <header className="lesson-doc">
@@ -44,7 +45,11 @@ export default function LessonMasthead({
             {breadcrumb && <p className="lesson-eyebrow m-0">{breadcrumb}</p>}
 
             <p className={`m-0 mt-3 text-[0.75rem] font-bold uppercase tracking-[0.12em] ${foundation ? 'text-aqua-700' : 'text-brand-700'}`}>
-              {foundation ? '1. aşama · temel öğrenme notu' : '2. aşama · etkileşimli pekiştirme notu'}
+              {goldStandard
+                ? 'TYT Fizik · Gold Standard interaktif ders'
+                : foundation
+                  ? '1. aşama · temel öğrenme notu'
+                  : '2. aşama · etkileşimli pekiştirme notu'}
             </p>
 
             <h1 className="m-0 mt-2 font-display text-[2rem] font-bold leading-[1.1] tracking-[-0.03em] text-ink sm:text-[2.5rem]">

@@ -38,7 +38,7 @@ export default function InsightBar({ insights = [], title = 'Öne çıkanlar', c
               key={i}
               className={cn(
                 'inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium',
-                'transition-colors duration-200 hover:bg-surface-muted',
+                'transition-transform duration-200 hover:-translate-y-0.5',
                 TONES[item.tone] ?? TONES.info
               )}
             >

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* ==================================================================
-   Dr. Koç — EDITORIAL PRODUCT DESIGN SYSTEM / Token Katmanı
+   Dr. Koç — AURORA GRADIENT DESIGN SYSTEM / Token Katmanı
    ------------------------------------------------------------------
    Tasarım dili: Aurora Gradient × Premium SaaS × Subtle Glass × Bento.
 
@@ -21,37 +21,37 @@
 
 :root {
   /* --- Yüzeyler (hafif violet'e çalan soğuk nötrler) --- */
-  --c-ink: 20 31 48;
-  --c-paper: 246 248 251;
+  --c-ink: 19 19 41;
+  --c-paper: 247 247 252;
   --c-surface: 255 255 255;
-  --c-surface-muted: 249 250 252;
-  --c-surface-sunken: 241 244 248;
-  --c-line: 225 230 237;
-  --c-line-strong: 202 210 222;
-  --c-shadow: 15 23 42;
+  --c-surface-muted: 250 250 254;
+  --c-surface-sunken: 242 242 250;
+  --c-line: 231 231 242;
+  --c-line-strong: 213 213 232;
+  --c-shadow: 30 27 58;
 
   /* --- Marka — Violet/Purple (Aurora'nın kalbi) --- */
-  --c-brand-50: 239 246 255;
-  --c-brand-100: 219 234 254;
-  --c-brand-200: 191 219 254;
-  --c-brand-300: 147 197 253;
-  --c-brand-400: 96 165 250;
-  --c-brand-500: 37 99 235;
-  --c-brand-600: 29 78 216;
-  --c-brand-700: 30 64 175;
-  --c-brand-800: 30 58 138;
-  --c-brand-900: 30 48 94;
-  --c-brand-950: 17 31 61;
+  --c-brand-50: 245 243 255;
+  --c-brand-100: 237 233 254;
+  --c-brand-200: 221 214 254;
+  --c-brand-300: 196 181 253;
+  --c-brand-400: 167 139 250;
+  --c-brand-500: 139 92 246;
+  --c-brand-600: 124 58 237;
+  --c-brand-700: 109 40 217;
+  --c-brand-800: 91 33 182;
+  --c-brand-900: 76 29 149;
+  --c-brand-950: 46 16 101;
 
   /* --- Vurgu — Pembe (highlight, ödül, rozet) --- */
-  --c-accent-50: 240 253 250;
-  --c-accent-100: 204 251 241;
-  --c-accent-200: 153 246 228;
-  --c-accent-300: 94 234 212;
-  --c-accent-400: 45 212 191;
-  --c-accent-500: 20 184 166;
-  --c-accent-600: 13 148 136;
-  --c-accent-700: 15 118 110;
+  --c-accent-50: 253 242 248;
+  --c-accent-100: 252 231 243;
+  --c-accent-200: 251 207 232;
+  --c-accent-300: 249 168 212;
+  --c-accent-400: 244 114 182;
+  --c-accent-500: 236 72 153;
+  --c-accent-600: 219 39 119;
+  --c-accent-700: 190 24 93;
 
   /* --- Aqua — Camgöbeği (ilerleme, tamamlanma) --- */
   --c-aqua-50: 236 254 255;
@@ -89,34 +89,39 @@
   --c-info-700: 29 78 216;
 
   /* --- Aurora durakları — yalnızca gradient/blob üretiminde kullanılır --- */
-  --c-aurora-purple: 30 64 175;
-  --c-aurora-violet: 29 78 216;
+  --c-aurora-purple: 168 85 247;
+  --c-aurora-violet: 139 92 246;
   --c-aurora-blue: 59 130 246;
   --c-aurora-cyan: 34 211 238;
-  --c-aurora-pink: 14 116 144;
+  --c-aurora-pink: 244 114 182;
 
   /* --- Gradient ailesi ---------------------------------------------
      Kural: gradient her elemente değil, yalnızca birincil aksiyon,
      aktif durum, hero ve öne çıkan istatistiklere uygulanır.
      `--g-aurora` beyaz metinle AA kontrast sağlayacak koyulukta tutuldu;
      parlak cyan yalnızca dekoratif katmanlarda (blob/glow) yer alır.  */
-  --g-aurora: linear-gradient(135deg, rgb(30 58 138) 0%, rgb(29 78 216) 100%);
-  --g-aurora-hover: linear-gradient(135deg, rgb(30 48 94) 0%, rgb(30 64 175) 100%);
+  --g-aurora: linear-gradient(135deg, rgb(124 58 237) 0%, rgb(91 75 230) 45%, rgb(37 99 235) 100%);
+  --g-aurora-hover: linear-gradient(135deg, rgb(109 40 217) 0%, rgb(79 66 214) 45%, rgb(29 78 216) 100%);
   --g-aurora-soft: linear-gradient(
     135deg,
-    rgb(var(--c-brand-500) / 0.09) 0%,
-    rgb(var(--c-brand-500) / 0.04) 100%
+    rgb(var(--c-brand-500) / 0.14) 0%,
+    rgb(var(--c-aurora-blue) / 0.12) 50%,
+    rgb(var(--c-aurora-cyan) / 0.12) 100%
   );
-  --g-aurora-pink: linear-gradient(135deg, rgb(30 64 175) 0%, rgb(14 116 144) 100%);
+  --g-aurora-pink: linear-gradient(135deg, rgb(190 24 93) 0%, rgb(147 51 234) 100%);
   --g-aurora-line: linear-gradient(
     90deg,
-    rgb(var(--c-brand-700)) 0%,
-    rgb(var(--c-brand-500)) 100%
+    rgb(var(--c-aurora-purple)) 0%,
+    rgb(var(--c-aurora-violet)) 30%,
+    rgb(var(--c-aurora-blue)) 65%,
+    rgb(var(--c-aurora-cyan)) 100%
   );
   --g-aurora-text: linear-gradient(
     115deg,
-    rgb(30 64 175) 0%,
-    rgb(29 78 216) 100%
+    rgb(109 40 217) 0%,
+    rgb(124 58 237) 35%,
+    rgb(37 99 235) 70%,
+    rgb(8 145 178) 100%
   );
 
   /* Cihaz güvenli alanları (iOS çentik / Android gesture bar) */
@@ -130,7 +135,7 @@
 
   /* Cam yüzey değişkenleri — tek yerden ayarlanır */
   --glass-bg: 255 255 255;
-  --glass-alpha: 0.96;
+  --glass-alpha: 0.72;
   --glass-border: 255 255 255;
   --glass-border-alpha: 0.6;
 }
@@ -149,26 +154,26 @@
   --c-line-strong: 62 62 94;
   --c-shadow: 0 0 0;
 
-  --c-brand-50: 23 37 84;
-  --c-brand-100: 30 58 138;
-  --c-brand-200: 30 64 175;
-  --c-brand-300: 29 78 216;
-  --c-brand-400: 37 99 235;
-  --c-brand-500: 96 165 250;
-  --c-brand-600: 147 197 253;
-  --c-brand-700: 191 219 254;
-  --c-brand-800: 219 234 254;
-  --c-brand-900: 239 246 255;
-  --c-brand-950: 248 250 252;
+  --c-brand-50: 46 16 101;
+  --c-brand-100: 60 25 120;
+  --c-brand-200: 76 29 149;
+  --c-brand-300: 91 33 182;
+  --c-brand-400: 124 58 237;
+  --c-brand-500: 155 118 249;
+  --c-brand-600: 180 155 252;
+  --c-brand-700: 205 190 253;
+  --c-brand-800: 221 214 254;
+  --c-brand-900: 237 233 254;
+  --c-brand-950: 245 243 255;
 
-  --c-accent-50: 19 78 74;
-  --c-accent-100: 17 94 89;
-  --c-accent-200: 15 118 110;
-  --c-accent-300: 13 148 136;
-  --c-accent-400: 20 184 166;
-  --c-accent-500: 45 212 191;
-  --c-accent-600: 94 234 212;
-  --c-accent-700: 153 246 228;
+  --c-accent-50: 88 15 55;
+  --c-accent-100: 110 20 68;
+  --c-accent-200: 150 30 90;
+  --c-accent-300: 190 24 93;
+  --c-accent-400: 236 72 153;
+  --c-accent-500: 244 114 182;
+  --c-accent-600: 249 168 212;
+  --c-accent-700: 251 207 232;
 
   --c-aqua-50: 12 51 63;
   --c-aqua-100: 14 70 85;
@@ -208,12 +213,14 @@
   --glass-border: 255 255 255;
   --glass-border-alpha: 0.1;
 
-  --g-aurora: linear-gradient(135deg, rgb(30 64 175) 0%, rgb(37 99 235) 100%);
-  --g-aurora-hover: linear-gradient(135deg, rgb(30 58 138) 0%, rgb(29 78 216) 100%);
+  --g-aurora: linear-gradient(135deg, rgb(139 92 246) 0%, rgb(109 108 245) 45%, rgb(59 130 246) 100%);
+  --g-aurora-hover: linear-gradient(135deg, rgb(155 118 249) 0%, rgb(129 128 250) 45%, rgb(96 165 250) 100%);
   --g-aurora-text: linear-gradient(
     115deg,
-    rgb(191 219 254) 0%,
-    rgb(147 197 253) 100%
+    rgb(196 181 253) 0%,
+    rgb(167 139 250) 35%,
+    rgb(147 197 253) 70%,
+    rgb(103 232 249) 100%
   );
 }
 
@@ -339,12 +346,12 @@
   }
 
   .card-interactive {
-    @apply card transition-colors duration-200 ease-smooth
-           hover:border-line-strong;
+    @apply card transition-all duration-200 ease-smooth
+           hover:shadow-card-hover hover:-translate-y-0.5 hover:border-brand-200;
   }
 
   .card-glass {
-    @apply min-w-0 rounded-card border border-line bg-surface shadow-card;
+    @apply min-w-0 rounded-card border shadow-glass;
     background-color: rgb(var(--glass-bg) / var(--glass-alpha));
     border-color: rgb(var(--glass-border) / var(--glass-border-alpha));
   }
@@ -353,14 +360,14 @@
      ve saydamlığı biraz daha artırarak uygula. */
   @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
     .card-glass {
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
-      background-color: rgb(var(--glass-bg) / 0.94);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      backdrop-filter: blur(20px) saturate(150%);
+      background-color: rgb(var(--glass-bg) / calc(var(--glass-alpha) - 0.12));
     }
   }
 
   .card-gradient {
-    @apply min-w-0 rounded-card border border-brand-800 text-white shadow-card;
+    @apply min-w-0 rounded-card border border-white/15 text-white shadow-aurora;
     background-image: var(--g-aurora);
   }
 
@@ -383,18 +390,18 @@
   .input-base {
     /* text-[16px] mobilde iOS'un otomatik zoom yapmasını engeller */
     @apply w-full rounded-input border border-line bg-surface px-3.5 py-2.5 text-[16px] sm:text-sm text-ink
-           placeholder:text-ink/35 transition-colors duration-200 ease-smooth
+           placeholder:text-ink/35 transition-all duration-200 ease-smooth
            hover:border-line-strong
-           focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/12
+           focus:border-brand-400 focus:outline-none focus:ring-4 focus:ring-brand-500/12
            disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:text-ink/40;
   }
 
   .btn-base {
     @apply inline-flex items-center justify-center gap-2 rounded-btn font-semibold
-           transition-colors duration-200 ease-smooth select-none
+           transition-all duration-200 ease-smooth select-none
            disabled:cursor-not-allowed disabled:opacity-55 disabled:shadow-none
            disabled:hover:translate-y-0
-           active:opacity-90;
+           active:scale-[0.97];
   }
 
   .chip {
@@ -427,41 +434,14 @@
 
   /* Yapışkan başlık gibi ince cam şeritler için (kart değil, yüzey) */
   .glass {
-    background-color: rgb(var(--glass-bg) / 0.96);
-  }
-
-  /* Tanıtım sayfasındaki gerçek ürün/grafik önizlemeleri.
-     Etkileşim yalnızca hassas imleçli cihazlarda çalışır; dokunmatik
-     ekranda yapışan hover durumu oluşmaz. */
-  .landing-visual-interactive {
-    @apply transition-[transform,box-shadow,border-color] duration-300 ease-smooth;
-    transform-origin: center;
-    will-change: transform;
-  }
-
-  @media (hover: hover) and (pointer: fine) {
-    .landing-visual-interactive:hover {
-      transform: translateY(-3px) scale(1.008);
-      border-color: rgb(var(--c-brand-300) / 0.65);
-      box-shadow:
-        0 2px 4px rgb(var(--c-shadow) / 0.05),
-        0 14px 28px -18px rgb(var(--c-shadow) / 0.28);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .landing-visual-interactive,
-    .landing-visual-interactive:hover {
-      transform: none;
-      will-change: auto;
-    }
+    background-color: rgb(var(--glass-bg) / 0.8);
   }
 
   @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
     .glass {
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
-      background-color: rgb(var(--glass-bg) / 0.94);
+      -webkit-backdrop-filter: blur(16px) saturate(150%);
+      backdrop-filter: blur(16px) saturate(150%);
+      background-color: rgb(var(--glass-bg) / 0.66);
     }
   }
 }
@@ -485,9 +465,12 @@
   /* Gradient metin — yalnızca hero başlıkları ve tekil vurgular içindir.
      Okunabilirliği bozacak yerlerde KULLANILMAZ (gövde metni, etiket…). */
   .text-aurora {
-    background: none;
-    color: rgb(var(--c-brand-700));
-    -webkit-text-fill-color: currentColor;
+    background-image: var(--g-aurora-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    /* Gradient metin seçildiğinde kaybolmasın */
+    -webkit-text-fill-color: transparent;
   }
 
   /* Gradient kenarlık — kart zeminini bozmadan ince Aurora çerçevesi.
@@ -502,7 +485,7 @@
     inset: 0;
     border-radius: inherit;
     padding: 1px;
-    background: rgb(var(--c-brand-500));
+    background: var(--g-aurora-line);
     -webkit-mask:
       linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
@@ -528,7 +511,7 @@
     right: 1.25rem;
     height: 2px;
     border-radius: 9999px;
-    background: rgb(var(--c-brand-500));
+    background: var(--g-aurora-line);
     opacity: 0.7;
     pointer-events: none;
   }
@@ -543,6 +526,690 @@
 
   .bg-aurora-line {
     background-image: var(--g-aurora-line);
+  }
+}
+
+/* ==================================================================
+   FİZİK KEŞİF LABORATUVARI
+   Ortak kabuk; içerik yalnız deney modeli ve değişken verisini seçer.
+   Kontroller dokunmatik kullanım için en az 44 px, görsel hareketler ise
+   hafif CSS dönüşümleridir. Dark/light renkleri ana tokenlardan gelir.
+   ================================================================== */
+@layer components {
+  .physics-lab {
+    color: rgb(var(--c-ink) / 0.86);
+  }
+
+  .physics-lab__header {
+    border-bottom: 1px solid rgb(var(--c-line));
+    padding-bottom: 0.9rem;
+  }
+
+  .physics-lab__body {
+    padding-top: 1rem;
+  }
+
+  .physics-lab__status {
+    margin-top: 1rem;
+    border-inline-start: 3px solid rgb(var(--c-aqua-500));
+    background: rgb(var(--c-aqua-50) / 0.62);
+    padding: 0.8rem 0.9rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.65;
+  }
+
+  .physics-control {
+    display: block;
+    min-width: 0;
+  }
+
+  .physics-control__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: rgb(var(--c-ink) / 0.58);
+  }
+
+  .physics-control__row output {
+    color: rgb(var(--c-brand-700));
+    font-variant-numeric: tabular-nums;
+  }
+
+  .physics-control input[type='range'] {
+    width: 100%;
+    height: 2.75rem;
+    accent-color: rgb(var(--c-brand-600));
+    cursor: pointer;
+    touch-action: pan-y;
+  }
+
+  .physics-control input[type='range']:focus-visible {
+    outline: 2px solid rgb(var(--c-brand-500));
+    outline-offset: 2px;
+  }
+
+  .physics-controls-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .physics-controls-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  .physics-scale-explorer {
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line-strong));
+    border-radius: 0.9rem;
+    background: rgb(var(--c-surface));
+    box-shadow: 0 18px 48px rgb(var(--c-shadow) / 0.08);
+  }
+
+  .physics-scale-explorer__topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid rgb(var(--c-line));
+    background: rgb(var(--c-surface-sunken) / 0.72);
+    padding: 0.8rem 1rem;
+  }
+
+  .physics-scale-explorer__topline > div {
+    min-width: 0;
+  }
+
+  .physics-scale-explorer__topline span,
+  .physics-scale-explorer__insight > span {
+    display: block;
+    margin-bottom: 0.12rem;
+    color: rgb(var(--c-ink) / 0.4);
+    font-size: 0.625rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .physics-scale-explorer__topline strong {
+    display: block;
+    overflow: hidden;
+    color: rgb(var(--c-ink));
+    font-size: 0.875rem;
+    font-weight: 800;
+    line-height: 1.35;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .physics-scale-explorer__branch {
+    text-align: end;
+  }
+
+  .physics-scale-explorer__branch strong {
+    color: rgb(var(--c-brand-700));
+  }
+
+  .physics-scale-explorer__viewport {
+    position: relative;
+    min-height: 22rem;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 44%, rgb(var(--c-brand-500) / 0.16), transparent 36%),
+      linear-gradient(145deg, #07111f 0%, #0b1a2a 48%, #071421 100%);
+    isolation: isolate;
+  }
+
+  .physics-scale-scene {
+    display: block;
+    width: 100%;
+    min-height: 21rem;
+    color: rgb(var(--c-aqua-400));
+    animation: physics-scale-enter 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .physics-scale-scene.is-nucleus { color: #f4a261; }
+  .physics-scale-scene.is-atom { color: #68d8e8; }
+  .physics-scale-scene.is-nano { color: #65d6a5; }
+  .physics-scale-scene.is-mechanics { color: #8ea7ff; }
+  .physics-scale-scene.is-earth { color: #51b9ff; }
+  .physics-scale-scene.is-star { color: #ffc857; }
+
+  .physics-scale-scene__grid path {
+    fill: none;
+    stroke: rgb(255 255 255 / 0.055);
+    stroke-width: 1;
+  }
+
+  .physics-scale-scene__reticle {
+    fill: none;
+    stroke: currentColor;
+    stroke-dasharray: 3 7;
+    stroke-width: 1;
+    opacity: 0.25;
+  }
+
+  .physics-scale-scene__scan {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1;
+    opacity: 0.12;
+    filter: drop-shadow(0 0 5px currentColor);
+    animation: physics-scale-scan 4.8s ease-in-out infinite;
+  }
+
+  .physics-scale-scene__measure {
+    fill: none;
+    stroke: rgb(255 255 255 / 0.36);
+    stroke-width: 1;
+  }
+
+  .physics-scale-scene__measure text {
+    fill: rgb(255 255 255 / 0.52);
+    stroke: none;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .physics-scale-object {
+    transform-origin: 280px 165px;
+  }
+
+  .physics-scale-object--nucleus .is-orbit {
+    fill: none;
+    stroke: currentColor;
+    stroke-dasharray: 4 8;
+    opacity: 0.34;
+  }
+
+  .physics-scale-object--nucleus .is-field {
+    fill: currentColor;
+    opacity: 0.055;
+    filter: drop-shadow(0 0 28px currentColor);
+  }
+
+  .physics-scale-object--nucleus .is-binding {
+    fill: none;
+    stroke: rgb(255 255 255 / 0.22);
+    stroke-width: 1.4;
+  }
+
+  .physics-scale-object--nucleus .is-particle {
+    stroke: rgb(255 255 255 / 0.35);
+    stroke-width: 1.5;
+    filter: drop-shadow(0 6px 10px rgb(0 0 0 / 0.34));
+  }
+
+  .physics-scale-object--nucleus .is-particle-labels text {
+    fill: rgb(255 255 255 / 0.72);
+    font-size: 13px;
+    font-weight: 850;
+    text-anchor: middle;
+  }
+
+  .physics-scale-object--atom .is-orbit-system ellipse {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    opacity: 0.48;
+    filter: drop-shadow(0 0 5px currentColor);
+  }
+
+  .physics-scale-object--atom .is-core-glow { fill: currentColor; opacity: 0.1; }
+
+  .physics-scale-object--atom .is-core {
+    filter: drop-shadow(0 0 18px currentColor);
+    stroke: rgb(255 255 255 / 0.65);
+    stroke-width: 1;
+  }
+
+  .physics-scale-object--atom .is-core-detail { fill: none; stroke: rgb(255 255 255 / 0.45); stroke-width: 2; }
+
+  .physics-scale-object--atom .is-electron {
+    fill: #fff;
+    stroke: currentColor;
+    stroke-width: 3;
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+
+  .physics-scale-object--atom .is-trail { fill: none; stroke: currentColor; stroke-width: 1; opacity: 0.2; }
+
+  .physics-scale-object--nano .is-board-shadow { fill: rgb(0 0 0 / 0.28); transform: translateY(6px); }
+  .physics-scale-object--nano .is-board {
+    fill: rgb(101 214 165 / 0.075);
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+
+  .physics-scale-object--nano .is-pins path { fill: none; stroke: currentColor; stroke-width: 5; stroke-linecap: round; opacity: 0.72; }
+  .physics-scale-object--nano .is-chip-shadow { fill: rgb(0 0 0 / 0.38); transform: translateY(7px); }
+  .physics-scale-object--nano .is-chip {
+    stroke: rgb(255 255 255 / 0.52);
+    stroke-width: 1.5;
+    filter: drop-shadow(0 10px 18px rgb(0 0 0 / 0.34));
+  }
+
+  .physics-scale-object--nano circle { fill: rgb(4 21 30 / 0.76); stroke: rgb(255 255 255 / 0.24); stroke-width: 0.7; }
+  .physics-scale-object--nano .is-circuit { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; }
+  .physics-scale-object--nano .is-nodes circle { fill: currentColor; stroke: rgb(255 255 255 / 0.7); stroke-width: 1.3; filter: drop-shadow(0 0 7px currentColor); }
+  .physics-scale-object--nano .is-chip-label { fill: rgb(255 255 255 / 0.9); font-family: var(--font-display); font-size: 24px; font-weight: 850; letter-spacing: -0.03em; }
+
+  .physics-scale-object--mechanics .is-wheel > circle:first-child {
+    fill: rgb(142 167 255 / 0.04);
+    stroke: currentColor;
+    stroke-width: 5;
+    filter: drop-shadow(0 5px 8px rgb(0 0 0 / 0.28));
+  }
+
+  .physics-scale-object--mechanics .is-wheel line { stroke: rgb(255 255 255 / 0.24); stroke-width: 1; }
+  .physics-scale-object--mechanics .is-hub { fill: currentColor; stroke: rgb(255 255 255 / 0.62); stroke-width: 2; }
+
+  .physics-scale-object--mechanics .is-frame {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 9;
+    filter: drop-shadow(0 7px 8px rgb(0 0 0 / 0.34));
+  }
+
+  .physics-scale-object--mechanics .is-frame-shadow { stroke: rgb(0 0 0 / 0.35); stroke-width: 13; transform: translateY(4px); }
+  .physics-scale-object--mechanics .is-detail { fill: none; stroke: rgb(255 255 255 / 0.8); stroke-linecap: round; stroke-width: 5; }
+  .physics-scale-object--mechanics .is-crank { fill: rgb(8 20 37); stroke: currentColor; stroke-width: 4; }
+  .physics-scale-object--mechanics .is-chain { fill: none; stroke: rgb(255 255 255 / 0.35); stroke-width: 1.5; }
+  .physics-scale-object--mechanics .is-ground { fill: none; stroke: rgb(255 255 255 / 0.18); stroke-width: 2; }
+
+  .physics-scale-object--earth .is-orbit { fill: none; stroke: currentColor; stroke-dasharray: 5 8; opacity: 0.45; }
+  .physics-scale-object--earth .is-atmosphere { fill: none; stroke: currentColor; stroke-width: 7; opacity: 0.2; filter: drop-shadow(0 0 14px currentColor); }
+  .physics-scale-object--earth .is-planet { stroke: currentColor; stroke-width: 2; filter: drop-shadow(0 10px 22px rgb(0 0 0 / 0.38)); }
+  .physics-scale-object--earth .is-longitude { fill: none; stroke: currentColor; stroke-width: 1.2; opacity: 0.4; }
+  .physics-scale-object--earth .is-land { fill: #69d3a4; stroke: rgb(218 255 239 / 0.42); stroke-width: 1; opacity: 0.88; }
+  .physics-scale-object--earth .is-cloud { fill: none; stroke: rgb(255 255 255 / 0.52); stroke-linecap: round; stroke-width: 5; opacity: 0.65; }
+  .physics-scale-object--earth .is-night { fill: rgb(2 7 18 / 0.48); }
+  .physics-scale-object--earth .is-satellite circle { fill: #fff; stroke: currentColor; stroke-width: 3; filter: drop-shadow(0 0 7px currentColor); }
+  .physics-scale-object--earth .is-satellite path { fill: none; stroke: rgb(255 255 255 / 0.65); stroke-width: 3; }
+
+  .physics-scale-object--star .is-corona { fill: currentColor; }
+  .physics-scale-object--star .is-outer { opacity: 0.07; filter: drop-shadow(0 0 22px currentColor); }
+  .physics-scale-object--star .is-inner { opacity: 0.15; }
+  .physics-scale-object--star .is-star { filter: drop-shadow(0 0 30px rgb(255 200 87 / 0.7)); }
+  .physics-scale-object--star .is-rays line { stroke: currentColor; stroke-linecap: round; stroke-width: 2.2; opacity: 0.42; }
+  .physics-scale-object--star .is-texture { fill: none; stroke: rgb(255 255 255 / 0.5); stroke-linecap: round; stroke-width: 4; opacity: 0.48; }
+  .physics-scale-object--star .is-spot { fill: rgb(101 33 36 / 0.34); }
+  .physics-scale-object--star .is-flare { fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 5; opacity: 0.68; }
+  .physics-scale-object--star .is-speck { fill: #fff; opacity: 0.8; }
+
+  .physics-scale-explorer__scale {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 2;
+    border-left: 2px solid currentColor;
+    color: rgb(var(--c-aqua-400));
+    padding-left: 0.65rem;
+  }
+
+  .physics-scale-explorer__scale span,
+  .physics-scale-explorer__model-note {
+    display: block;
+    color: rgb(255 255 255 / 0.42);
+    font-size: 0.625rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .physics-scale-explorer__scale strong {
+    display: block;
+    margin-top: 0.1rem;
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .physics-scale-explorer__model-note {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: rgb(255 255 255 / 0.3);
+  }
+
+  .physics-scale-explorer__nav {
+    position: absolute;
+    right: 0.9rem;
+    bottom: 0.8rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: rgb(255 255 255 / 0.52);
+    font-size: 0.6875rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .physics-scale-explorer__nav button {
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 0.18);
+    border-radius: 50%;
+    background: rgb(4 13 24 / 0.62);
+    color: #fff;
+    font-size: 1.05rem;
+    transition: border-color 150ms ease, background-color 150ms ease, transform 150ms ease;
+  }
+
+  .physics-scale-explorer__nav button:hover {
+    border-color: rgb(var(--c-aqua-400) / 0.8);
+    background: rgb(var(--c-aqua-500) / 0.14);
+    transform: translateY(-1px);
+  }
+
+  .physics-scale-explorer__nav button:focus-visible,
+  .physics-scale-explorer__track button:focus-visible {
+    outline: 2px solid rgb(var(--c-aqua-400));
+    outline-offset: 3px;
+  }
+
+  .physics-scale-explorer__timeline {
+    border-top: 1px solid rgb(var(--c-line));
+    padding: 0.9rem 1rem 1rem;
+  }
+
+  .physics-scale-explorer__zones {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 0.55rem;
+    color: rgb(var(--c-ink) / 0.34);
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .physics-scale-explorer__zones span:nth-child(2) { text-align: center; }
+  .physics-scale-explorer__zones span:last-child { text-align: end; }
+
+  .physics-scale-explorer__track {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(var(--scale-count, 6), minmax(0, 1fr));
+    min-height: 4.5rem;
+  }
+
+  .physics-scale-explorer__track > i {
+    position: absolute;
+    left: 8.3%;
+    right: 8.3%;
+    top: 0.52rem;
+    height: 2px;
+    overflow: hidden;
+    background: rgb(var(--c-line-strong));
+  }
+
+  .physics-scale-explorer__track > i::after {
+    display: block;
+    width: var(--scale-progress);
+    height: 100%;
+    background: linear-gradient(90deg, rgb(var(--c-brand-500)), rgb(var(--c-aqua-500)));
+    content: '';
+    transition: width 260ms ease;
+  }
+
+  .physics-scale-explorer__track button {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    min-width: 0;
+    justify-items: center;
+    border: 0;
+    background: transparent;
+    color: rgb(var(--c-ink) / 0.5);
+    text-align: center;
+  }
+
+  .physics-scale-explorer__dot {
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 3px solid rgb(var(--c-surface));
+    border-radius: 50%;
+    background: rgb(var(--c-line-strong));
+    box-shadow: 0 0 0 1px rgb(var(--c-line-strong));
+    transition: background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  }
+
+  .physics-scale-explorer__track button[aria-current='true'] .physics-scale-explorer__dot {
+    background: rgb(var(--c-aqua-500));
+    box-shadow: 0 0 0 1px rgb(var(--c-aqua-500)), 0 0 0 5px rgb(var(--c-aqua-400) / 0.16);
+    transform: scale(1.06);
+  }
+
+  .physics-scale-explorer__track strong {
+    margin-top: 0.55rem;
+    color: rgb(var(--c-ink) / 0.72);
+    font-size: 0.68rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .physics-scale-explorer__track button[aria-current='true'] strong { color: rgb(var(--c-brand-700)); }
+
+  .physics-scale-explorer__track small {
+    margin-top: 0.12rem;
+    overflow: hidden;
+    max-width: 100%;
+    color: rgb(var(--c-ink) / 0.4);
+    font-size: 0.6rem;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .physics-scale-explorer__insight {
+    display: grid;
+    gap: 0.25rem 1rem;
+    border-top: 1px solid rgb(var(--c-line));
+    background: rgb(var(--c-brand-50) / 0.38);
+    padding: 0.9rem 1rem 1rem;
+  }
+
+  .physics-scale-explorer__insight p {
+    margin: 0;
+    color: rgb(var(--c-ink) / 0.7);
+    font-size: 0.84rem;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  @keyframes physics-scale-enter {
+    from { opacity: 0; transform: scale(0.965); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes physics-scale-scan {
+    0%, 100% { opacity: 0; transform: translateY(0); }
+    18% { opacity: 0.15; }
+    82% { opacity: 0.08; }
+    90% { opacity: 0; transform: translateY(186px); }
+  }
+
+  @media (max-width: 520px) {
+    .physics-scale-explorer__viewport { min-height: 18rem; }
+    .physics-scale-scene { min-height: 18rem; transform: scale(1.12); }
+    .physics-scale-explorer__model-note { display: none; }
+    .physics-scale-explorer__topline { align-items: flex-start; }
+    .physics-scale-explorer__topline strong { white-space: normal; }
+    .physics-scale-explorer__track strong { visibility: hidden; }
+    .physics-scale-explorer__track button[aria-current='true'] strong { visibility: visible; }
+    .physics-scale-explorer__track small { display: none; }
+  }
+
+  .physics-readout-grid {
+    display: grid;
+    gap: 1px;
+    margin-top: 1rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.5rem;
+    background: rgb(var(--c-line));
+  }
+
+  @media (min-width: 520px) {
+    .physics-readout-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  .physics-readout-grid > div {
+    min-width: 0;
+    background: rgb(var(--c-surface));
+    padding: 0.75rem 0.85rem;
+  }
+
+  .physics-readout-grid span { display: block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgb(var(--c-ink) / 0.38); }
+  .physics-readout-grid strong { display: block; margin-top: 0.2rem; font-size: 0.875rem; line-height: 1.35; color: rgb(var(--c-ink)); }
+  .physics-readout-grid.is-compact strong { font-variant-numeric: tabular-nums; }
+
+  .physics-case {
+    min-height: 7.5rem;
+    border-inline-start: 3px solid rgb(var(--c-brand-400));
+    background: rgb(var(--c-surface-sunken));
+    padding: 1rem;
+  }
+
+  .physics-choice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .physics-choice-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  .physics-choice-grid button,
+  .physics-prediction button,
+  .physics-resolution button {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    border: 1px solid rgb(var(--c-line-strong));
+    border-radius: 0.45rem;
+    background: rgb(var(--c-surface));
+    padding: 0.55rem 0.7rem;
+    color: rgb(var(--c-ink) / 0.72);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+    transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease;
+  }
+
+  .physics-choice-grid button:hover,
+  .physics-prediction button:hover,
+  .physics-resolution button:hover { border-color: rgb(var(--c-brand-400)); color: rgb(var(--c-brand-700)); }
+  .physics-choice-grid button:focus-visible,
+  .physics-prediction button:focus-visible,
+  .physics-resolution button:focus-visible { outline: 2px solid rgb(var(--c-brand-500)); outline-offset: 2px; }
+  .physics-choice-grid button svg { width: 1rem; height: 1rem; }
+  .physics-choice-grid button.is-active,
+  .physics-prediction button[aria-pressed='true'],
+  .physics-resolution button[aria-pressed='true'] { border-color: rgb(var(--c-brand-500)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-800)); }
+  .physics-choice-grid button.is-correct { border-color: rgb(var(--c-success-500)); background: rgb(var(--c-success-50)); color: rgb(var(--c-success-700)); }
+  .physics-choice-grid button.is-wrong { border-color: rgb(var(--c-danger-500)); background: rgb(var(--c-danger-50)); color: rgb(var(--c-danger-600)); }
+
+  .physics-lab__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+
+  .physics-lab__actions > button {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border-radius: 0.45rem;
+    background: var(--g-aurora);
+    padding: 0.62rem 1rem;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 750;
+  }
+
+  .physics-lab__actions > button:hover { filter: brightness(1.04); }
+  .physics-lab__actions > button:focus-visible { outline: 2px solid rgb(var(--c-brand-500)); outline-offset: 2px; }
+  .physics-lab__actions > button:disabled { cursor: not-allowed; opacity: 0.42; }
+  .physics-lab__actions > button.is-secondary { border: 1px solid rgb(var(--c-line-strong)); background: rgb(var(--c-surface)); color: rgb(var(--c-ink) / 0.68); }
+  .physics-lab__actions > button svg { width: 1rem; height: 1rem; }
+
+  .physics-ruler {
+    position: relative;
+    height: 9.5rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.5rem;
+    background: rgb(var(--c-surface-sunken));
+    padding: 1.25rem 1rem 0.75rem;
+  }
+
+  .physics-ruler__object {
+    height: 1.4rem;
+    max-width: 94%;
+    border-radius: 0.3rem 999px 999px 0.3rem;
+    background: linear-gradient(90deg, rgb(var(--c-brand-700)), rgb(var(--c-aqua-500)));
+    box-shadow: 0 3px 0 rgb(var(--c-shadow) / 0.08);
+    transition: width 120ms linear;
+  }
+
+  .physics-ruler__ticks { display: flex; height: 3.1rem; align-items: flex-end; justify-content: space-between; border-bottom: 2px solid rgb(var(--c-ink) / 0.55); }
+  .physics-ruler__ticks i { width: 1px; height: 0.6rem; background: rgb(var(--c-ink) / 0.5); }
+  .physics-ruler__ticks i.is-major { height: 1.1rem; }
+  .physics-ruler__numbers { display: flex; justify-content: space-between; padding-top: 0.25rem; font-size: 0.6875rem; font-variant-numeric: tabular-nums; color: rgb(var(--c-ink) / 0.48); }
+
+  .physics-resolution,
+  .physics-prediction { margin: 0; border: 0; padding: 0; }
+  .physics-resolution legend,
+  .physics-prediction legend { margin-bottom: 0.45rem; font-size: 0.8125rem; font-weight: 700; line-height: 1.45; color: rgb(var(--c-ink) / 0.58); }
+  .physics-resolution button,
+  .physics-prediction button { margin: 0 0.4rem 0.4rem 0; }
+  .physics-prediction { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgb(var(--c-line)); }
+
+  .physics-vector-stage {
+    position: relative;
+    height: 15rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.5rem;
+    background:
+      radial-gradient(circle at center, rgb(var(--c-brand-400) / 0.08), transparent 45%),
+      rgb(var(--c-surface-sunken));
+  }
+
+  .physics-vector-stage__axis { position: absolute; background: rgb(var(--c-ink) / 0.22); }
+  .physics-vector-stage__axis.is-x { top: 62%; left: 8%; right: 8%; height: 1px; }
+  .physics-vector-stage__axis.is-y { top: 10%; bottom: 8%; left: 28%; width: 1px; }
+  .physics-vector-stage__arrow { position: absolute; left: 28%; top: calc(62% - 2px); height: 4px; transform-origin: left center; border-radius: 999px; background: rgb(var(--c-brand-600)); transition: width 160ms ease, transform 160ms ease; }
+  .physics-vector-stage__arrow i { position: absolute; right: -1px; top: 50%; width: 0; height: 0; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 13px solid rgb(var(--c-brand-600)); transform: translateY(-50%); }
+  .physics-vector-stage__x,
+  .physics-vector-stage__y { position: absolute; font-size: 0.75rem; font-weight: 700; color: rgb(var(--c-ink) / 0.42); }
+  .physics-vector-stage__x { right: 7%; top: 63%; }
+  .physics-vector-stage__y { left: 26%; top: 5%; }
+  .physics-vector-stage > strong { position: absolute; right: 0.75rem; top: 0.65rem; font-size: 0.8125rem; color: rgb(var(--c-brand-700)); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .physics-scale-scene,
+    .physics-scale-scene__scan,
+    .physics-ruler__object,
+    .physics-vector-stage__arrow { animation: none; transition: none; }
   }
 }
 

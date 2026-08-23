@@ -52,8 +52,8 @@ export default function PageHeader({
         )}
         <div className="min-w-0">
           {eyebrow && (
-            <p className="mb-1.5 inline-flex items-center gap-1.5 text-2xs font-semibold uppercase tracking-[0.12em] text-ink/55">
-              <span className="h-px w-4 bg-brand-600" aria-hidden="true" />
+            <p className="mb-1.5 inline-flex items-center gap-1.5 text-2xs font-semibold uppercase tracking-wider text-brand-600">
+              <span className="h-1 w-4 rounded-full bg-aurora-line" aria-hidden="true" />
               {eyebrow}
             </p>
           )}

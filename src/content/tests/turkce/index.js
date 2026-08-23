@@ -67,6 +67,7 @@ import zamirler_9 from './zamirler-10.js';
 import zamirler_10 from './zamirler-11.js';
 import zamirler_11 from './zamirler-12.js';
 import zamirler_12 from './zamirler-13.js';
+import zamirler_13 from './zamirler-14.js';
 import edat_baglac_unlem_0 from './edat-baglac-unlem-1.js';
 import edat_baglac_unlem_1 from './edat-baglac-unlem-2.js';
 import edat_baglac_unlem_2 from './edat-baglac-unlem-3.js';
@@ -113,21 +114,79 @@ import sozcukte_anlam_0 from './sozcukte-anlam.js';
 import sozcukte_anlam_1 from './sozcukte-anlam-2.js';
 import sozcukte_anlam_2 from './sozcukte-anlam-orta-2.js';
 import sozcukte_anlam_3 from './sozcukte-anlam-zor-2.js';
+import sozcukte_anlam_4 from './sozcukte-anlam-3.js';
+import sozcukte_anlam_5 from './sozcukte-anlam-4.js';
+import sozcukte_anlam_6 from './sozcukte-anlam-5.js';
+import sozcukte_anlam_7 from './sozcukte-anlam-6.js';
+import sozcukte_anlam_8 from './sozcukte-anlam-7.js';
+import sozcukte_anlam_9 from './sozcukte-anlam-8.js';
+import sozcukte_anlam_10 from './sozcukte-anlam-9.js';
+import sozcukte_anlam_11 from './sozcukte-anlam-10.js';
+import sozcukte_anlam_12 from './sozcukte-anlam-11.js';
+import sozcukte_anlam_13 from './sozcukte-anlam-12.js';
+import sozcukte_anlam_14 from './sozcukte-anlam-13.js';
+import sozcukte_anlam_15 from './sozcukte-anlam-14.js';
 import paragrafta_anlam_0 from './paragrafta-anlam.js';
+import paragrafta_anlam_1 from './paragrafta-anlam-2.js';
+import paragrafta_anlam_2 from './paragrafta-anlam-3.js';
+import paragrafta_anlam_3 from './paragrafta-anlam-4.js';
+import paragrafta_anlam_4 from './paragrafta-anlam-5.js';
+import paragrafta_anlam_5 from './paragrafta-anlam-6.js';
+import paragrafta_anlam_6 from './paragrafta-anlam-7.js';
 import ses_bilgisi_0 from './ses-bilgisi.js';
+import ses_bilgisi_1 from './ses-bilgisi-2.js';
+import ses_bilgisi_2 from './ses-bilgisi-3.js';
+import ses_bilgisi_3 from './ses-bilgisi-4.js';
+import ses_bilgisi_4 from './ses-bilgisi-5.js';
+import ses_bilgisi_5 from './ses-bilgisi-6.js';
+import ses_bilgisi_6 from './ses-bilgisi-7.js';
+import ses_bilgisi_7 from './ses-bilgisi-8.js';
 import yazim_kurallari_0 from './yazim-kurallari.js';
+import yazim_kurallari_1 from './yazim-kurallari-2.js';
+import yazim_kurallari_2 from './yazim-kurallari-3.js';
+import yazim_kurallari_3 from './yazim-kurallari-4.js';
 import cumlede_anlam_0 from './cumlede-anlam.js';
+import cumlede_anlam_1 from './cumlede-anlam-2.js';
+import cumlede_anlam_2 from './cumlede-anlam-3.js';
+import cumlede_anlam_3 from './cumlede-anlam-4.js';
+import cumlede_anlam_4 from './cumlede-anlam-5.js';
+import cumlede_anlam_5 from './cumlede-anlam-6.js';
+import cumlede_anlam_6 from './cumlede-anlam-7.js';
+import cumlede_anlam_7 from './cumlede-anlam-8.js';
+import cumlede_anlam_8 from './cumlede-anlam-9.js';
+import cumlede_anlam_9 from './cumlede-anlam-10.js';
+import cumlede_anlam_10 from './cumlede-anlam-11.js';
+import cumlede_anlam_11 from './cumlede-anlam-12.js';
+import cumlede_anlam_12 from './cumlede-anlam-13.js';
+import cumlede_anlam_13 from './cumlede-anlam-14.js';
 import fiiller_0 from './fiiller-1.js';
 import fiiller_1 from './fiiller-2.js';
 import fiiller_2 from './fiiller-3.js';
 import fiiller_3 from './fiiller-4.js';
 import fiiller_4 from './fiiller-5.js';
+import fiiller_5 from './fiiller-6.js';
+import fiiller_6 from './fiiller-7.js';
+import fiiller_7 from './fiiller-8.js';
+import fiiller_8 from './fiiller-9.js';
+import fiiller_9 from './fiiller-10.js';
+import fiiller_10 from './fiiller-11.js';
+import fiiller_11 from './fiiller-12.js';
+import fiiller_12 from './fiiller-13.js';
+import fiiller_13 from './fiiller-14.js';
 import fiilimsiler_0 from './fiilimsiler-1.js';
 import fiilimsiler_1 from './fiilimsiler-2.js';
 import fiilimsiler_2 from './fiilimsiler-3.js';
 import fiilimsiler_3 from './fiilimsiler-4.js';
 import fiilimsiler_4 from './fiilimsiler-5.js';
 import fiilimsiler_5 from './fiilimsiler-6.js';
+import fiilimsiler_6 from './fiilimsiler-7.js';
+import fiilimsiler_7 from './fiilimsiler-8.js';
+import fiilimsiler_8 from './fiilimsiler-9.js';
+import fiilimsiler_9 from './fiilimsiler-10.js';
+import fiilimsiler_10 from './fiilimsiler-11.js';
+import fiilimsiler_11 from './fiilimsiler-12.js';
+import fiilimsiler_12 from './fiilimsiler-13.js';
+import fiilimsiler_13 from './fiilimsiler-14.js';
 
 export const turkceTests = {
   'noktalama-isaretleri': [
@@ -143,7 +202,7 @@ export const turkceTests = {
     ...[zarflar_0, zarflar_1, zarflar_2, zarflar_3, zarflar_4, zarflar_5, zarflar_6, zarflar_7, zarflar_8, zarflar_9, zarflar_10, zarflar_11, zarflar_12, zarflar_13].flat()
   ],
   'zamirler': [
-    ...[zamirler_0, zamirler_1, zamirler_2, zamirler_3, zamirler_4, zamirler_5, zamirler_6, zamirler_7, zamirler_8, zamirler_9, zamirler_10, zamirler_11, zamirler_12].flat()
+    ...[zamirler_0, zamirler_1, zamirler_2, zamirler_3, zamirler_4, zamirler_5, zamirler_6, zamirler_7, zamirler_8, zamirler_9, zamirler_10, zamirler_11, zamirler_12, zamirler_13].flat()
   ],
   'edat-baglac-unlem': [
     ...[edat_baglac_unlem_0, edat_baglac_unlem_1, edat_baglac_unlem_2, edat_baglac_unlem_3, edat_baglac_unlem_4, edat_baglac_unlem_5, edat_baglac_unlem_6, edat_baglac_unlem_7, edat_baglac_unlem_8, edat_baglac_unlem_9, edat_baglac_unlem_10, edat_baglac_unlem_11, edat_baglac_unlem_12, edat_baglac_unlem_13].flat()
@@ -155,24 +214,24 @@ export const turkceTests = {
     ...[anlatim_bozukluklari_0, anlatim_bozukluklari_1, anlatim_bozukluklari_2, anlatim_bozukluklari_3, anlatim_bozukluklari_4, anlatim_bozukluklari_5, anlatim_bozukluklari_6, anlatim_bozukluklari_7, anlatim_bozukluklari_8, anlatim_bozukluklari_9, anlatim_bozukluklari_10, anlatim_bozukluklari_11, anlatim_bozukluklari_12, anlatim_bozukluklari_13].flat()
   ],
   'sozcukte-anlam': [
-    ...[sozcukte_anlam_0, sozcukte_anlam_1, sozcukte_anlam_2, sozcukte_anlam_3].flat()
+    ...[sozcukte_anlam_0, sozcukte_anlam_1, sozcukte_anlam_2, sozcukte_anlam_3, sozcukte_anlam_4, sozcukte_anlam_5, sozcukte_anlam_6, sozcukte_anlam_7, sozcukte_anlam_8, sozcukte_anlam_9, sozcukte_anlam_10, sozcukte_anlam_11, sozcukte_anlam_12, sozcukte_anlam_13, sozcukte_anlam_14, sozcukte_anlam_15].flat()
   ],
   'paragrafta-anlam': [
-    ...[paragrafta_anlam_0].flat()
+    ...[paragrafta_anlam_0, paragrafta_anlam_1, paragrafta_anlam_2, paragrafta_anlam_3, paragrafta_anlam_4, paragrafta_anlam_5, paragrafta_anlam_6].flat()
   ],
   'ses-bilgisi': [
-    ...[ses_bilgisi_0].flat()
+    ...[ses_bilgisi_0, ses_bilgisi_1, ses_bilgisi_2, ses_bilgisi_3, ses_bilgisi_4, ses_bilgisi_5, ses_bilgisi_6, ses_bilgisi_7].flat()
   ],
   'yazim-kurallari': [
-    ...[yazim_kurallari_0].flat()
+    ...[yazim_kurallari_0, yazim_kurallari_1, yazim_kurallari_2, yazim_kurallari_3].flat()
   ],
   'cumlede-anlam': [
-    ...[cumlede_anlam_0].flat()
+    ...[cumlede_anlam_0, cumlede_anlam_1, cumlede_anlam_2, cumlede_anlam_3, cumlede_anlam_4, cumlede_anlam_5, cumlede_anlam_6, cumlede_anlam_7, cumlede_anlam_8, cumlede_anlam_9, cumlede_anlam_10, cumlede_anlam_11, cumlede_anlam_12, cumlede_anlam_13].flat()
   ],
   'fiiller': [
-    ...[fiiller_0, fiiller_1, fiiller_2, fiiller_3, fiiller_4].flat()
+    ...[fiiller_0, fiiller_1, fiiller_2, fiiller_3, fiiller_4, fiiller_5, fiiller_6, fiiller_7, fiiller_8, fiiller_9, fiiller_10, fiiller_11, fiiller_12, fiiller_13].flat()
   ],
   'fiilimsiler': [
-    ...[fiilimsiler_0, fiilimsiler_1, fiilimsiler_2, fiilimsiler_3, fiilimsiler_4, fiilimsiler_5].flat()
+    ...[fiilimsiler_0, fiilimsiler_1, fiilimsiler_2, fiilimsiler_3, fiilimsiler_4, fiilimsiler_5, fiilimsiler_6, fiilimsiler_7, fiilimsiler_8, fiilimsiler_9, fiilimsiler_10, fiilimsiler_11, fiilimsiler_12, fiilimsiler_13].flat()
   ],
 };
