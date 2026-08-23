@@ -1,0 +1,25 @@
+node_modules/
+dist/
+.env
+.env.local
+.DS_Store
+*.log
+.vercel
+
+.vercel
+.env*
+
+# Veri yedekleri (öğrenci verisi içerir — asla commit edilmez)
+backup/
+
+# Benchmark verisi. Soru görselleri ve gold etiketler YAYINEVİ TELİFİNE
+# tabidir; commit edilmez, kamuya açık soru bankasına dönüştürülmez.
+# Sonuçlar ve cache de büyük ve yerele özgüdür.
+data/bench/images/
+data/bench/questions.jsonl
+data/bench/results/
+data/bench/cache/
+
+# Geçici çalışma dosyaları
+tmp/
+.pnpm-store/

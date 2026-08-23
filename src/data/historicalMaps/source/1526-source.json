@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "year": 1526,
+    "title": "Kanuni Dönemi Siyasi Haritası",
+    "ruler": "Kanuni Sultan Süleyman",
+    "bounds": [-12, 18, 61, 57],
+    "projection": "Equirectangular regional atlas",
+    "sources": [
+      {
+        "title": "Natural Earth 1:50m Physical Vectors",
+        "url": "https://www.naturalearthdata.com/downloads/50m-physical-vectors/",
+        "use": "Coastlines, islands and land geometry"
+      },
+      {
+        "title": "Tabula Hungariae",
+        "url": "https://www.unesco.org/en/memory-world/tabula-hungariae",
+        "use": "Hungarian settlement geography and regional context"
+      },
+      {
+        "title": "Expansion of the Ottoman Empire in Central Europe, 1526–1568",
+        "url": "https://commons.wikimedia.org/wiki/File:Expansion_de_l%27Empire_ottoman_en_Europe_centrale_(1526_-_1568).png",
+        "use": "Ottoman–Hungarian frontier context"
+      },
+      {
+        "title": "Iran under the Safavids",
+        "url": "https://assets.cambridge.org/97805210/42512/frontmatter/9780521042512_frontmatter.pdf",
+        "use": "Safavid realm and provincial geography"
+      }
+    ]
+  },
+  "states": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "ottoman",
+          "name": "Osmanlı Devleti",
+          "mapLabel": "OSMANLI DEVLETİ",
+          "tone": "ottoman",
+          "labelAt": [32.5, 38.8],
+          "labelRotation": -0.04,
+          "importance": "1526 haritasının merkez gücü",
+          "summary": "Kanuni Sultan Süleyman döneminde Balkanlar, Anadolu, Suriye, Mısır ve Kuzey Afrika bağlantısını kuran imparatorluk.",
+          "relation": "Batıda Macar Krallığı ve Habsburglarla, doğuda Safevilerle komşu ve rakiptir.",
+          "leaders": ["Kanuni Sultan Süleyman", "Pargalı İbrahim Paşa"],
+          "relatedEvent": "Mohaç Meydan Muharebesi",
+          "result": "Mohaç zaferi Orta Avrupa’daki Osmanlı etkisini güçlendirdi."
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [[[13.5, 46], [15.7, 45.8], [17.8, 45.4], [19.4, 45.6], [21.2, 45.1], [23.2, 44.6], [25.4, 44.5], [27.2, 45.1], [29.6, 45.3], [30.1, 43.5], [29.5, 41.3], [28.4, 40.2], [26.3, 40], [24.4, 39.1], [22.1, 38.2], [20.4, 39.1], [19.2, 40.5], [18.2, 41.8], [16.7, 43.2], [15.2, 44.4], [13.5, 46]]],
+            [[[25.5, 42.4], [28.4, 41.7], [31, 42.2], [34.2, 42.2], [37.2, 41.6], [40, 41.4], [42.6, 40], [43.3, 38], [42, 36.8], [41.2, 35.6], [40.8, 33.5], [39.4, 32.1], [37.2, 31.5], [35.1, 31.3], [33.6, 31.5], [32.7, 30.2], [32.3, 27], [33, 23], [32.1, 20], [28.5, 20], [27.2, 23.4], [28.4, 27.5], [29.3, 31.2], [31.5, 33.7], [33.5, 35.8], [31.5, 36.2], [29.2, 36.1], [27.4, 37.2], [25.8, 39.2], [25.5, 42.4]]],
+            [[[-1.5, 37.4], [2.2, 37.6], [6.4, 37.5], [10.8, 37.2], [11.5, 35], [10.4, 32.4], [6, 31.7], [1.5, 32.2], [-1.4, 34.2], [-1.5, 37.4]]],
+            [[[35, 31], [38, 30], [41, 27], [42.5, 21], [40, 18], [36, 19], [34, 23], [33.5, 28], [35, 31]]]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "hungary",
+          "name": "Macar Krallığı",
+          "mapLabel": "MACAR KRALLIĞI",
+          "tone": "hungary",
+          "labelAt": [20.4, 48],
+          "importance": "Osmanlı’nın Orta Avrupa’daki ana rakibi",
+          "summary": "Tuna havzasında Osmanlı ilerleyişi ile Habsburg nüfuzu arasında kalan krallık.",
+          "relation": "Belgrad’ın alınmasından sonra Osmanlı baskısı arttı; 1526’da iki ordu Mohaç’ta karşılaştı.",
+          "leaders": ["II. Lajos", "Pál Tomori"],
+          "relatedEvent": "Mohaç Meydan Muharebesi",
+          "result": "Savaş sonrasında Macar siyasi düzeni çözüldü ve Habsburg rekabeti güçlendi."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[14.2, 49.1], [15.5, 50], [18.4, 50.2], [21.3, 49.8], [23.8, 48.8], [25.2, 47.4], [24.4, 45.7], [22.6, 44.8], [20.8, 44.9], [19.2, 45.6], [17.4, 45.3], [15.7, 45.8], [14.3, 47.1], [14.2, 49.1]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "habsburg",
+          "name": "Avusturya Habsburgları",
+          "mapLabel": "HABSBURG",
+          "tone": "habsburg",
+          "labelAt": [11.7, 48.2],
+          "importance": "Batıdaki yükselen hanedan gücü",
+          "summary": "Avusturya merkezli Habsburg toprakları, Macar mirası ve Orta Avrupa hâkimiyeti için Osmanlı’nın başlıca rakibidir.",
+          "relation": "Mohaç sonrasında Macar tahtı üzerindeki hak iddiası Osmanlı–Habsburg mücadelesini keskinleştirdi.",
+          "leaders": ["I. Ferdinand", "V. Karl"],
+          "relatedEvent": "Macar taht mücadelesi",
+          "result": "1526’dan sonra Osmanlı’nın Avrupa siyasetindeki en kalıcı rakiplerinden biri oldu."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[7, 47.6], [8, 49.2], [10.2, 49.8], [12.4, 50.2], [14.5, 49.2], [14.2, 47], [13, 46.1], [12.1, 45.2], [9.8, 45.8], [8.1, 46.3], [7, 47.6]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "safavid",
+          "name": "Safevi Devleti",
+          "mapLabel": "SAFEVİ DEVLETİ",
+          "tone": "safavid",
+          "labelAt": [51.5, 35.2],
+          "labelRotation": 0.03,
+          "importance": "Doğu cephesindeki büyük rakip",
+          "summary": "İran merkezli Safevi Devleti, Doğu Anadolu, Irak ve ticaret yolları üzerinde Osmanlı ile rekabet eder.",
+          "relation": "1526’da doğu sınırı sürekli askerî ve siyasi baskı üretmektedir.",
+          "leaders": ["Şah Tahmasb"],
+          "relatedEvent": "Osmanlı–Safevi sınır rekabeti",
+          "result": "Doğu seferleri Kanuni döneminin ikinci büyük stratejik eksenini oluşturdu."
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[42.2, 40], [45.5, 41.8], [49.4, 42.2], [52.7, 41.2], [55.4, 39.6], [59.7, 37.8], [61, 34], [59, 30], [55.4, 27], [51.2, 25.8], [47.8, 27.8], [44.7, 29.6], [43, 32.2], [41.7, 35.5], [41.5, 38], [42.2, 40]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "venice",
+          "name": "Venedik Cumhuriyeti",
+          "mapLabel": "VENEDİK",
+          "tone": "venice",
+          "labelAt": [12.1, 45.4],
+          "importance": "Akdeniz ticaret ve deniz gücü",
+          "summary": "Adriyatik ve Doğu Akdeniz’de limanlar, adalar ve ticaret ağlarıyla etkili deniz cumhuriyeti.",
+          "relation": "Osmanlı ile ticaret yaparken deniz yolları ve adalar için rekabet eder.",
+          "leaders": ["Andrea Gritti"],
+          "relatedEvent": "Doğu Akdeniz hâkimiyet mücadelesi",
+          "result": "Venedik’in ada ve liman ağı Osmanlı deniz siyasetinin temel hedeflerinden biri oldu."
+        },
+        "geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [[[9.2, 46.8], [13.9, 46.9], [14, 45.3], [13.1, 44], [10.2, 43.7], [9.1, 45], [9.2, 46.8]]],
+            [[[13.1, 45.6], [14.6, 45], [16.2, 43.8], [18, 42], [16.5, 41], [15, 42.2], [13.8, 43.7], [13.1, 45.6]]],
+            [[[22.8, 36], [27, 36], [27, 34], [22.8, 34], [22.8, 36]]],
+            [[[31.7, 36], [35, 36], [35, 34], [31.7, 34], [31.7, 36]]]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "poland",
+          "name": "Polonya–Litvanya",
+          "mapLabel": "POLONYA–LİTVANYA",
+          "tone": "poland",
+          "labelAt": [29.2, 53],
+          "importance": "Kuzeydeki bölgesel güç",
+          "summary": "Karadeniz’in kuzeyi ve Orta Avrupa dengelerinde etkili siyasi birlik.",
+          "relation": "Osmanlı ile Kırım, Boğdan ve Lehistan hattı üzerinden temas hâlindedir.",
+          "leaders": ["I. Zygmunt"],
+          "relatedEvent": "Kuzey Karadeniz diplomasisi",
+          "result": "Mohaç’ın tarafı değildir; bölgesel dengenin önemli aktörüdür.",
+          "context": true
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[19, 56.8], [26, 57], [33.8, 56.7], [39.8, 54.8], [38.5, 50], [35, 48], [31, 47], [25, 47.4], [23.8, 48.8], [21.4, 49.8], [19.5, 52.2], [19, 56.8]]]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "id": "france",
+          "name": "Fransa Krallığı",
+          "mapLabel": "FRANSA",
+          "tone": "france",
+          "labelAt": [2, 47],
+          "importance": "Habsburg karşıtı Batı Avrupa gücü",
+          "summary": "Habsburg kuşatmasına karşı Osmanlı ile diplomatik yakınlık geliştiren krallık.",
+          "relation": "Ortak Habsburg rakibi üzerinden Osmanlı diplomasisinde özel bir yere sahiptir.",
+          "leaders": ["I. François"],
+          "relatedEvent": "Osmanlı–Fransa yakınlaşması",
+          "result": "Avrupa güç dengesinde Osmanlı’nın dolaylı ortağı hâline geldi.",
+          "context": true
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [[[-5.5, 50.7], [-2, 51.2], [2, 50.8], [5.5, 49.5], [7.6, 47.4], [7.2, 44], [4.8, 42.3], [1.4, 42.1], [-1.8, 43.2], [-4.5, 46.5], [-5.5, 50.7]]]
+        }
+      }
+    ]
+  },
+  "cities": {
+    "type": "FeatureCollection",
+    "features": [
+      {"type":"Feature","properties":{"id":"istanbul","name":"İstanbul","kind":"capital","subtitle":"Osmanlı başkenti","minZoom":1},"geometry":{"type":"Point","coordinates":[28.9784,41.0082]}},
+      {"type":"Feature","properties":{"id":"edirne","name":"Edirne","kind":"major","subtitle":"Rumeli merkezi","minZoom":1.25},"geometry":{"type":"Point","coordinates":[26.56,41.68]}},
+      {"type":"Feature","properties":{"id":"bursa","name":"Bursa","kind":"major","subtitle":"Anadolu ticaret merkezi","minZoom":1.25},"geometry":{"type":"Point","coordinates":[29.06,40.19]}},
+      {"type":"Feature","properties":{"id":"sofia","name":"Sofya","kind":"major","subtitle":"Rumeli idare merkezi","minZoom":1.35},"geometry":{"type":"Point","coordinates":[23.32,42.7]}},
+      {"type":"Feature","properties":{"id":"belgrade","name":"Belgrad","kind":"fortress","subtitle":"Tuna geçidi","minZoom":1.25},"geometry":{"type":"Point","coordinates":[20.4489,44.7866]}},
+      {"type":"Feature","properties":{"id":"budin","name":"Budin","kind":"capital","subtitle":"Macar Krallığı merkezi","minZoom":1.15},"geometry":{"type":"Point","coordinates":[19.0402,47.4979]}},
+      {"type":"Feature","properties":{"id":"vienna","name":"Viyana","kind":"capital","subtitle":"Habsburg merkezi","minZoom":1.15},"geometry":{"type":"Point","coordinates":[16.3738,48.2082]}},
+      {"type":"Feature","properties":{"id":"venice-city","name":"Venedik","kind":"capital","subtitle":"Deniz cumhuriyeti merkezi","minZoom":1.15},"geometry":{"type":"Point","coordinates":[12.3155,45.4408]}},
+      {"type":"Feature","properties":{"id":"tabriz","name":"Tebriz","kind":"capital","subtitle":"Safevi merkezi","minZoom":1.15},"geometry":{"type":"Point","coordinates":[46.2919,38.08]}},
+      {"type":"Feature","properties":{"id":"cairo","name":"Kahire","kind":"major","subtitle":"Mısır merkezi","minZoom":1.25},"geometry":{"type":"Point","coordinates":[31.24,30.04]}},
+      {"type":"Feature","properties":{"id":"damascus","name":"Şam","kind":"major","subtitle":"Suriye merkezi","minZoom":1.35},"geometry":{"type":"Point","coordinates":[36.29,33.51]}},
+      {"type":"Feature","properties":{"id":"aleppo","name":"Halep","kind":"major","subtitle":"Ticaret merkezi","minZoom":1.35},"geometry":{"type":"Point","coordinates":[37.16,36.2]}},
+      {"type":"Feature","properties":{"id":"konya","name":"Konya","kind":"major","subtitle":"Karaman merkezi","minZoom":1.45},"geometry":{"type":"Point","coordinates":[32.49,37.87]}},
+      {"type":"Feature","properties":{"id":"thessaloniki","name":"Selanik","kind":"major","subtitle":"Rumeli limanı","minZoom":1.45},"geometry":{"type":"Point","coordinates":[22.94,40.64]}},
+      {"type":"Feature","properties":{"id":"sarajevo","name":"Saraybosna","kind":"major","subtitle":"Bosna merkezi","minZoom":1.55},"geometry":{"type":"Point","coordinates":[18.41,43.86]}},
+      {"type":"Feature","properties":{"id":"rhodes","name":"Rodos","kind":"fortress","subtitle":"Akdeniz kalesi","minZoom":1.4},"geometry":{"type":"Point","coordinates":[28.2176,36.434]}}
+    ]
+  },
+  "events": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type":"Feature",
+        "properties":{"id":"mohac-1526","name":"Mohaç Meydan Muharebesi","shortLabel":"Mohaç","kind":"battle","date":"29 Ağustos 1526","minZoom":1.2,"summary":"Osmanlı Devleti ile Macar Krallığı arasındaki belirleyici meydan savaşı.","sides":["Osmanlı Devleti","Macar Krallığı"],"commanders":["Kanuni Sultan Süleyman","II. Lajos"],"result":"Osmanlı zaferi.","historicalImportance":"Macar siyasi düzeni çözüldü ve Orta Avrupa dengeleri değişti."},
+        "geometry":{"type":"Point","coordinates":[18.683,45.995]}
+      },
+      {
+        "type":"Feature",
+        "properties":{"id":"belgrade-1521","name":"Belgrad’ın Fethi","shortLabel":"Belgrad 1521","kind":"conquest","date":"1521","minZoom":1.55,"summary":"Tuna hattındaki stratejik kalenin alınması Mohaç yolunu açtı.","result":"Osmanlı zaferi."},
+        "geometry":{"type":"Point","coordinates":[20.4489,44.7866]}
+      },
+      {
+        "type":"Feature",
+        "properties":{"id":"rhodes-1522","name":"Rodos’un Fethi","shortLabel":"Rodos 1522","kind":"conquest","date":"1522","minZoom":1.55,"summary":"Doğu Akdeniz deniz yolları için kritik ada Osmanlı yönetimine geçti.","result":"Osmanlı zaferi."},
+        "geometry":{"type":"Point","coordinates":[28.2176,36.434]}
+      }
+    ]
+  },
+  "physical": {
+    "rivers": [
+      {"name":"Tuna","geometry":{"type":"LineString","coordinates":[[9,48],[13,48.2],[16,48],[19,47.3],[22,46],[25,45],[28,44],[29,42.5]]}},
+      {"name":"Nil","geometry":{"type":"LineString","coordinates":[[31,31],[31.2,27],[31,23],[30.4,19]]}},
+      {"name":"Dicle","geometry":{"type":"LineString","coordinates":[[39,38],[42,35],[44,32],[47,30]]}}
+    ],
+    "seaLabels": [
+      {"name":"AKDENİZ","at":[20,34.2],"rotation":-0.03},
+      {"name":"KARADENİZ","at":[35,44.1],"rotation":0.02},
+      {"name":"ADRİYATİK","at":[15.2,41.5],"rotation":-1.02},
+      {"name":"KIZILDENİZ","at":[38.2,24.5],"rotation":-1.08}
+    ],
+    "mountainRanges": [
+      {"name":"Alpler","points":[[6.5,46.2],[9,46],[11.5,46.4],[14,46.5],[16.5,47]]},
+      {"name":"Karpatlar","points":[[19,49],[22,48.2],[24.5,47],[25.5,45.5]]},
+      {"name":"Balkanlar","points":[[19,43],[22,42.7],[25,42.5],[28,42.8]]},
+      {"name":"Toroslar","points":[[29,37],[33,37.2],[37,37],[40,37.2]]},
+      {"name":"Zagroslar","points":[[43.5,38],[46,35.5],[48,33],[50,30]]}
+    ]
+  }
+}

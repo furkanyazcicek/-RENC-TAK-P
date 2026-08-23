@@ -1,0 +1,1456 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==================================================================
+   Dr. Koç — EDITORIAL PRODUCT DESIGN SYSTEM / Token Katmanı
+   ------------------------------------------------------------------
+   Tasarım dili: Aurora Gradient × Premium SaaS × Subtle Glass × Bento.
+
+   Renkler RGB kanal listesi olarak tutulur (örn. "139 92 246") çünkü
+   Tailwind bunları rgb(var(--x) / <alpha-value>) biçiminde kullanıp
+   `text-ink/50` gibi saydamlık varyantlarını üretebiliyor.
+   Temayı değiştirmek için sadece aşağıdaki değerleri güncellemek yeterli.
+
+   Renk rolleri (semantik):
+     brand  → mor/violet   — birincil aksiyon, aktif durum
+     info   → mavi         — bilgi
+     aqua   → camgöbeği    — ilerleme
+     accent → pembe        — öne çıkarma / ödül
+   ================================================================== */
+
+:root {
+  /* --- Yüzeyler (hafif violet'e çalan soğuk nötrler) --- */
+  --c-ink: 20 31 48;
+  --c-paper: 246 248 251;
+  --c-surface: 255 255 255;
+  --c-surface-muted: 249 250 252;
+  --c-surface-sunken: 241 244 248;
+  --c-line: 225 230 237;
+  --c-line-strong: 202 210 222;
+  --c-shadow: 15 23 42;
+
+  /* --- Marka — Violet/Purple (Aurora'nın kalbi) --- */
+  --c-brand-50: 239 246 255;
+  --c-brand-100: 219 234 254;
+  --c-brand-200: 191 219 254;
+  --c-brand-300: 147 197 253;
+  --c-brand-400: 96 165 250;
+  --c-brand-500: 37 99 235;
+  --c-brand-600: 29 78 216;
+  --c-brand-700: 30 64 175;
+  --c-brand-800: 30 58 138;
+  --c-brand-900: 30 48 94;
+  --c-brand-950: 17 31 61;
+
+  /* --- Vurgu — Pembe (highlight, ödül, rozet) --- */
+  --c-accent-50: 240 253 250;
+  --c-accent-100: 204 251 241;
+  --c-accent-200: 153 246 228;
+  --c-accent-300: 94 234 212;
+  --c-accent-400: 45 212 191;
+  --c-accent-500: 20 184 166;
+  --c-accent-600: 13 148 136;
+  --c-accent-700: 15 118 110;
+
+  /* --- Aqua — Camgöbeği (ilerleme, tamamlanma) --- */
+  --c-aqua-50: 236 254 255;
+  --c-aqua-100: 207 250 254;
+  --c-aqua-200: 165 243 252;
+  --c-aqua-300: 103 232 249;
+  --c-aqua-400: 34 211 238;
+  --c-aqua-500: 6 182 212;
+  --c-aqua-600: 8 145 178;
+  --c-aqua-700: 14 116 144;
+
+  /* --- Durum renkleri --- */
+  --c-success-50: 236 253 245;
+  --c-success-100: 209 250 229;
+  --c-success-500: 16 185 129;
+  --c-success-600: 5 150 105;
+  --c-success-700: 4 120 87;
+
+  --c-warning-50: 255 251 235;
+  --c-warning-100: 254 243 199;
+  --c-warning-500: 245 158 11;
+  --c-warning-600: 217 119 6;
+  --c-warning-700: 180 83 9;
+
+  --c-danger-50: 255 241 242;
+  --c-danger-100: 255 228 230;
+  --c-danger-500: 244 63 94;
+  --c-danger-600: 225 29 72;
+  --c-danger-700: 190 18 60;
+
+  --c-info-50: 239 246 255;
+  --c-info-100: 219 234 254;
+  --c-info-500: 59 130 246;
+  --c-info-600: 37 99 235;
+  --c-info-700: 29 78 216;
+
+  /* --- Aurora durakları — yalnızca gradient/blob üretiminde kullanılır --- */
+  --c-aurora-purple: 30 64 175;
+  --c-aurora-violet: 29 78 216;
+  --c-aurora-blue: 59 130 246;
+  --c-aurora-cyan: 34 211 238;
+  --c-aurora-pink: 14 116 144;
+
+  /* --- Gradient ailesi ---------------------------------------------
+     Kural: gradient her elemente değil, yalnızca birincil aksiyon,
+     aktif durum, hero ve öne çıkan istatistiklere uygulanır.
+     `--g-aurora` beyaz metinle AA kontrast sağlayacak koyulukta tutuldu;
+     parlak cyan yalnızca dekoratif katmanlarda (blob/glow) yer alır.  */
+  --g-aurora: linear-gradient(135deg, rgb(30 58 138) 0%, rgb(29 78 216) 100%);
+  --g-aurora-hover: linear-gradient(135deg, rgb(30 48 94) 0%, rgb(30 64 175) 100%);
+  --g-aurora-soft: linear-gradient(
+    135deg,
+    rgb(var(--c-brand-500) / 0.09) 0%,
+    rgb(var(--c-brand-500) / 0.04) 100%
+  );
+  --g-aurora-pink: linear-gradient(135deg, rgb(30 64 175) 0%, rgb(14 116 144) 100%);
+  --g-aurora-line: linear-gradient(
+    90deg,
+    rgb(var(--c-brand-700)) 0%,
+    rgb(var(--c-brand-500)) 100%
+  );
+  --g-aurora-text: linear-gradient(
+    115deg,
+    rgb(30 64 175) 0%,
+    rgb(29 78 216) 100%
+  );
+
+  /* Cihaz güvenli alanları (iOS çentik / Android gesture bar) */
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-inset-left: env(safe-area-inset-left, 0px);
+  --safe-area-inset-right: env(safe-area-inset-right, 0px);
+
+  /* Navbar yüksekliği — sticky offset hesapları için */
+  --app-header-height: 4.25rem;
+
+  /* Cam yüzey değişkenleri — tek yerden ayarlanır */
+  --glass-bg: 255 255 255;
+  --glass-alpha: 0.96;
+  --glass-border: 255 255 255;
+  --glass-border-alpha: 0.6;
+}
+
+/* ------------------------------------------------------------------
+   Koyu tema — yalnızca değişkenler yeniden tanımlanır, hiçbir bileşen
+   dosyasına dokunulmaz. `<html class="dark">` ile devreye girer.
+   ------------------------------------------------------------------ */
+.dark {
+  --c-ink: 232 232 245;
+  --c-paper: 9 9 20;
+  --c-surface: 21 21 38;
+  --c-surface-muted: 27 27 46;
+  --c-surface-sunken: 16 16 31;
+  --c-line: 45 45 70;
+  --c-line-strong: 62 62 94;
+  --c-shadow: 0 0 0;
+
+  --c-brand-50: 23 37 84;
+  --c-brand-100: 30 58 138;
+  --c-brand-200: 30 64 175;
+  --c-brand-300: 29 78 216;
+  --c-brand-400: 37 99 235;
+  --c-brand-500: 96 165 250;
+  --c-brand-600: 147 197 253;
+  --c-brand-700: 191 219 254;
+  --c-brand-800: 219 234 254;
+  --c-brand-900: 239 246 255;
+  --c-brand-950: 248 250 252;
+
+  --c-accent-50: 19 78 74;
+  --c-accent-100: 17 94 89;
+  --c-accent-200: 15 118 110;
+  --c-accent-300: 13 148 136;
+  --c-accent-400: 20 184 166;
+  --c-accent-500: 45 212 191;
+  --c-accent-600: 94 234 212;
+  --c-accent-700: 153 246 228;
+
+  --c-aqua-50: 12 51 63;
+  --c-aqua-100: 14 70 85;
+  --c-aqua-200: 14 116 144;
+  --c-aqua-300: 8 145 178;
+  --c-aqua-400: 6 182 212;
+  --c-aqua-500: 34 211 238;
+  --c-aqua-600: 103 232 249;
+  --c-aqua-700: 165 243 252;
+
+  --c-success-50: 6 46 33;
+  --c-success-100: 6 66 46;
+  --c-success-500: 52 211 153;
+  --c-success-600: 110 231 183;
+  --c-success-700: 167 243 208;
+
+  --c-warning-50: 60 36 4;
+  --c-warning-100: 84 50 6;
+  --c-warning-500: 251 191 36;
+  --c-warning-600: 252 211 77;
+  --c-warning-700: 253 230 138;
+
+  --c-danger-50: 70 12 24;
+  --c-danger-100: 96 17 33;
+  --c-danger-500: 251 113 133;
+  --c-danger-600: 253 164 175;
+  --c-danger-700: 254 205 211;
+
+  --c-info-50: 15 35 74;
+  --c-info-100: 20 48 100;
+  --c-info-500: 96 165 250;
+  --c-info-600: 147 197 253;
+  --c-info-700: 191 219 254;
+
+  --glass-bg: 30 30 52;
+  --glass-alpha: 0.66;
+  --glass-border: 255 255 255;
+  --glass-border-alpha: 0.1;
+
+  --g-aurora: linear-gradient(135deg, rgb(30 64 175) 0%, rgb(37 99 235) 100%);
+  --g-aurora-hover: linear-gradient(135deg, rgb(30 58 138) 0%, rgb(29 78 216) 100%);
+  --g-aurora-text: linear-gradient(
+    115deg,
+    rgb(191 219 254) 0%,
+    rgb(147 197 253) 100%
+  );
+}
+
+/* ------------------------------------------------------------------
+   Temel katman
+   ------------------------------------------------------------------ */
+@layer base {
+  * {
+    @apply border-line;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper text-ink font-body antialiased;
+    overscroll-behavior-y: none;
+    -webkit-tap-highlight-color: transparent;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    /* Aurora arka planları hiçbir ekranda yatay taşma yaratmamalı */
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Sayısal veriler hizalı görünsün */
+  table,
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    @apply bg-brand-200 text-brand-900;
+  }
+
+  /* Klavyeyle gezinenler için her yerde tutarlı odak halkası */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-400 ring-offset-2 ring-offset-paper;
+  }
+
+  /* İnce, markaya uygun kaydırma çubuğu */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--c-line-strong)) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(var(--c-line-strong));
+    border-radius: 9999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(var(--c-brand-400) / 0.6);
+    background-clip: content-box;
+  }
+
+  /* Hareket azaltma tercihine saygı — Aurora animasyonları dahil */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ------------------------------------------------------------------
+   Bileşen katmanı — sık tekrar eden kalıplar
+   Bunlar `src/components/ui/*` bileşenlerinin temelini oluşturur;
+   doğrudan className olarak da kullanılabilirler.
+
+   Kart hiyerarşisi bilinçli olarak dört kademelidir; her kart cam
+   olursa hiyerarşi kaybolur:
+     .card          → düz beyaz yüzey (varsayılan, en sık)
+     .card-glass    → yarı saydam cam (Aurora zemin üstünde)
+     .card-gradient → Aurora gradient (yalnızca öne çıkan tek kart)
+     .card-outline  → yalnız çizgi (ikincil, gömük içerik)
+   ------------------------------------------------------------------ */
+@layer components {
+  /* `min-w-0` neden her kartta var:
+     Bir ızgara/esnek öğesinin varsayılan asgari genişliği içeriğinin
+     min-content genişliğidir. İçinde `min-w-[560px]` taşıyan bir tablo olan
+     kart, iki sütunlu bir ızgarada sütununu zorla genişletir ve sayfa yatay
+     kayar — `overflow-x-auto` da devreye giremez. `min-w-0` kartın daralmasına
+     izin verir, kaydırma tablonun kendi kabında kalır. Normal akıştaki blok
+     öğeler için bu bildirimin hiçbir etkisi yoktur, yani bedelsizdir. */
+  .card {
+    @apply min-w-0 rounded-card bg-surface border border-line shadow-card;
+  }
+
+  .card-interactive {
+    @apply card transition-colors duration-200 ease-smooth
+           hover:border-line-strong;
+  }
+
+  .card-glass {
+    @apply min-w-0 rounded-card border border-line bg-surface shadow-card;
+    background-color: rgb(var(--glass-bg) / var(--glass-alpha));
+    border-color: rgb(var(--glass-border) / var(--glass-border-alpha));
+  }
+
+  /* backdrop-filter pahalı bir efekt — yalnızca destekleyen tarayıcıda
+     ve saydamlığı biraz daha artırarak uygula. */
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    .card-glass {
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      background-color: rgb(var(--glass-bg) / 0.94);
+    }
+  }
+
+  .card-gradient {
+    @apply min-w-0 rounded-card border border-brand-800 text-white shadow-card;
+    background-image: var(--g-aurora);
+  }
+
+  .card-outline {
+    @apply min-w-0 rounded-card border border-line bg-surface-muted;
+  }
+
+  .surface-panel {
+    @apply rounded-card bg-surface-muted border border-line;
+  }
+
+  .section-title {
+    @apply font-display font-bold text-lg text-ink;
+  }
+
+  .label-base {
+    @apply block text-xs font-semibold text-ink/60 mb-1.5;
+  }
+
+  .input-base {
+    /* text-[16px] mobilde iOS'un otomatik zoom yapmasını engeller */
+    @apply w-full rounded-input border border-line bg-surface px-3.5 py-2.5 text-[16px] sm:text-sm text-ink
+           placeholder:text-ink/35 transition-colors duration-200 ease-smooth
+           hover:border-line-strong
+           focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/12
+           disabled:cursor-not-allowed disabled:bg-surface-sunken disabled:text-ink/40;
+  }
+
+  .btn-base {
+    @apply inline-flex items-center justify-center gap-2 rounded-btn font-semibold
+           transition-colors duration-200 ease-smooth select-none
+           disabled:cursor-not-allowed disabled:opacity-55 disabled:shadow-none
+           disabled:hover:translate-y-0
+           active:opacity-90;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+
+  .divider {
+    @apply h-px w-full bg-line;
+  }
+
+  /* Yüklenirken gösterilen iskelet blok */
+  .skeleton {
+    @apply relative overflow-hidden rounded-lg bg-surface-sunken;
+  }
+
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 bg-shimmer animate-shimmer;
+    transform: translateX(-100%);
+  }
+
+  /* Yatay kaydırılan sekme/filtre şeritleri için */
+  .hide-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Yapışkan başlık gibi ince cam şeritler için (kart değil, yüzey) */
+  .glass {
+    background-color: rgb(var(--glass-bg) / 0.96);
+  }
+
+  /* Tanıtım sayfasındaki gerçek ürün/grafik önizlemeleri.
+     Etkileşim yalnızca hassas imleçli cihazlarda çalışır; dokunmatik
+     ekranda yapışan hover durumu oluşmaz. */
+  .landing-visual-interactive {
+    @apply transition-[transform,box-shadow,border-color] duration-300 ease-smooth;
+    transform-origin: center;
+    will-change: transform;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .landing-visual-interactive:hover {
+      transform: translateY(-3px) scale(1.008);
+      border-color: rgb(var(--c-brand-300) / 0.65);
+      box-shadow:
+        0 2px 4px rgb(var(--c-shadow) / 0.05),
+        0 14px 28px -18px rgb(var(--c-shadow) / 0.28);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .landing-visual-interactive,
+    .landing-visual-interactive:hover {
+      transform: none;
+      will-change: auto;
+    }
+  }
+
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    .glass {
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+      background-color: rgb(var(--glass-bg) / 0.94);
+    }
+  }
+}
+
+/* ------------------------------------------------------------------
+   Yardımcı sınıflar
+   ------------------------------------------------------------------ */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:ring-offset-paper;
+  }
+
+  .app-container {
+    @apply mx-auto w-full max-w-content px-4 sm:px-6;
+  }
+
+  /* Gradient metin — yalnızca hero başlıkları ve tekil vurgular içindir.
+     Okunabilirliği bozacak yerlerde KULLANILMAZ (gövde metni, etiket…). */
+  .text-aurora {
+    background: none;
+    color: rgb(var(--c-brand-700));
+    -webkit-text-fill-color: currentColor;
+  }
+
+  /* Gradient kenarlık — kart zeminini bozmadan ince Aurora çerçevesi.
+     `border-radius` üst öğeden miras alınır. */
+  .border-aurora {
+    position: relative;
+  }
+
+  .border-aurora::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: rgb(var(--c-brand-500));
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.55;
+  }
+
+  /* Kartın üstünde ince Aurora şeridi — "önemli" işareti */
+  .top-aurora-line {
+    position: relative;
+  }
+
+  .top-aurora-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1.25rem;
+    right: 1.25rem;
+    height: 2px;
+    border-radius: 9999px;
+    background: rgb(var(--c-brand-500));
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .bg-aurora {
+    background-image: var(--g-aurora);
+  }
+
+  .bg-aurora-soft {
+    background-image: var(--g-aurora-soft);
+  }
+
+  .bg-aurora-line {
+    background-image: var(--g-aurora-line);
+  }
+}
+
+/* ------------------------------------------------------------------
+   Aurora arka plan katmanı
+   ------------------------------------------------------------------
+   Amaç: "arka planda bir ışık atmosferi var" hissi. Neon değil.
+   Blob'lar `AuroraBackground` bileşeni tarafından basılır; burada
+   yalnızca hareket tanımlanır. Süreler bilinçli olarak çok uzun
+   (24–40sn) — göz hareketi fark etmez, yalnızca atmosferi tazeler.
+
+   Performans notu: yalnızca `transform` ve `opacity` animasyonu var
+   (compositor üzerinde çalışır, layout/paint tetiklemez). Blur değeri
+   filtre olarak statik kalır, animasyon edilmez.
+   ------------------------------------------------------------------ */
+@keyframes auroraDriftA {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translate3d(4%, -3%, 0) scale(1.12);
+    opacity: 1;
+  }
+}
+
+@keyframes auroraDriftB {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.08);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate3d(-5%, 4%, 0) scale(1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes auroraDriftC {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate3d(3%, 5%, 0) scale(1.15);
+    opacity: 0.85;
+  }
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.aurora-blob-a {
+  animation: auroraDriftA 34s ease-in-out infinite;
+}
+
+.aurora-blob-b {
+  animation: auroraDriftB 28s ease-in-out infinite;
+}
+
+.aurora-blob-c {
+  animation: auroraDriftC 40s ease-in-out infinite;
+}
+
+/* Mobilde büyük blur alanları GPU'yu yorar: blur'u düşür, hareketi durdur. */
+@media (max-width: 640px) {
+  .aurora-blob {
+    animation: none !important;
+    filter: blur(48px) !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   NOT — burada bir zamanlar ikinci bir `@keyframes fadeIn` tanımı vardı.
+   Adı tailwind.config.js içindeki `fadeIn` ile aynıydı ve dosya sonunda
+   yer aldığı için onu geçersiz kılıyordu. O tanım `transform` içerdiğinden,
+   `animate-fade-in` verilen her öğe (AppShell'in <main>'i dahil) kalıcı bir
+   transform kazanıyordu — `animation-fill-mode: both` yüzünden animasyon
+   bitse de transform üzerinde kalıyor.
+
+   Transform'lu bir öğe, içindeki `position: fixed` elemanlar için yeni bir
+   sarmalayıcı blok (containing block) oluşturur. Sonuç: Modal ve
+   ImageLightbox ekrana değil, sayfanın tamamına göre konumlanıyor,
+   sayfanın en altına düşüyordu; gövde kaydırması da kilitli olduğu için
+   kullanıcı oraya erişemiyordu.
+
+   Bu yüzden tanım kaldırıldı. Aynı hisse ihtiyaç duyan yerler
+   `animate-slide-down` veya `animate-fade-in-up` kullanır.
+   Buraya `transform` içeren yeni bir keyframe eklemeyin.
+
+   Aynı kural Aurora katmanı için de geçerli: `.aurora-blob` yalnızca
+   dekoratif, mutlak konumlu bir çocuk öğedir — sayfa iskeletine veya
+   içerik sarmalayıcısına transform/filter uygulanmaz.
+   ------------------------------------------------------------------ */
+
+/* ==================================================================
+   DRKOÇ DERS OKUYUCUSU — EDITORIAL LEARNING LAYER
+   ------------------------------------------------------------------
+   Bu katman uygulamanın geri kalanından BİLİNÇLİ OLARAK AYRILIR.
+
+   Uygulamanın geri kalanı bir panel (dashboard): kart, gradient, cam,
+   istatistik. Ders notu ise bir BELGEDİR. Panel dilini derse taşırsak
+   ortaya "AI tarafından üretilmiş eğitim sitesi" çıkar (§9, §55). Bu
+   yüzden ders gövdesinde gradient, glow, glassmorphism, blok başına kart
+   ve başlık emojisi YOKTUR. Yerine tipografi, beyaz alan, saç teli çizgi
+   ve kenar notu vardır.
+
+   Aurora kimliği dersin ÇEVRESİNDE yaşar (üst şerit, ilerleme, kütüphane);
+   okuma alanında sessizleşir.
+
+   ------------------------------------------------------------------
+   SAYFA DÜZENİ — üç şeritli belge
+   ------------------------------------------------------------------
+   Geniş ekranda:
+
+     │  kenar notları  │ ╎ │        anlatım metni            │
+     │   (12rem)       │ ╎ │        (34rem ≈ 68 karakter)    │
+                         ↑
+                    omurga çizgisi
+
+   Omurga (spine) DrKoç'un görsel imzasıdır: kart kenarlıklarının yaptığı
+   gruplama işini tek bir sürekli çizgiyle yapar, böylece sayfa kutulara
+   parçalanmaz ve ders tek bir anlatım olarak okunur.
+
+   Kenar notu için CSS grid DEĞİL float kullanılır. Grid'de her öğe kendi
+   satırını açar; not, açıkladığı paragrafın hizasından kayar. Negatif
+   kenar boşluklu float ise notu tam da metinde geçtiği yere,
+   paragrafın hizasına yerleştirir (klasik kitap dizgisi).
+   ================================================================== */
+
+@layer components {
+  .lesson-doc {
+    /* Kap sorgusu (container query) — ekran genişliği DEĞİL, dersin
+       gerçekte sahip olduğu genişlik ölçülür.
+
+       Sebebi somut: ders okuyucusu uygulamanın içinde 264 px'lik kenar
+       çubuğunun sağında yaşıyor, `/ders-notu-onizleme` sayfasında ise tam
+       genişlikte. Tek bir `@media` eşiği ikisinden birinde her zaman yanlış
+       oluyordu: ya önizlemede kenar notu sütunu gereksiz yere kapalı
+       kalıyor, ya uygulamada yeri olmadığı hâlde açılıp metni eziyordu.
+
+       Destekleyemeyen eski tarayıcıda tek sütunlu okuma düzeni geçerli
+       kalır — kenar notları satır içine iner, ders yine okunur (§50). */
+    container-type: inline-size;
+    container-name: lesson;
+
+    --lesson-measure: 34rem;
+    --lesson-wide: 40rem;
+    --lesson-margin: 12rem;
+    --lesson-gap: 2.5rem;
+    color: rgb(var(--c-ink) / 0.88);
+    font-size: 1.0625rem;
+    line-height: 1.85;
+  }
+
+  .lesson-body {
+    width: 100%;
+    max-width: var(--lesson-wide);
+    margin-inline: auto;
+  }
+
+  /* Normal içerik okuma ölçüsünde kalır; görseller ve tablolar taşar. */
+  .lesson-flow > * {
+    max-width: var(--lesson-measure);
+  }
+
+  .lesson-flow > .lesson-wide {
+    max-width: var(--lesson-wide);
+  }
+
+  .lesson-flow > .lesson-full {
+    max-width: 100%;
+  }
+
+  @container lesson (min-width: 56rem) {
+    .lesson-body {
+      max-width: calc(var(--lesson-margin) + var(--lesson-gap) + var(--lesson-wide));
+      padding-inline-start: calc(var(--lesson-margin) + var(--lesson-gap));
+    }
+
+    /* Tam genişlikteki şekil kenar sütununu da kullanır; bu yüzden orada
+       duran bir hoca notunun ÜSTÜNE binmemeli. `clear` onu notun altına
+       indirir — kitapta da tam sayfa bir şekil, kenar notunun hizasından
+       sonra başlar. */
+    .lesson-flow > .lesson-full {
+      width: calc(var(--lesson-margin) + var(--lesson-gap) + var(--lesson-wide));
+      max-width: none;
+      margin-inline-start: calc(-1 * (var(--lesson-margin) + var(--lesson-gap)));
+      clear: left;
+    }
+
+    /* Kenar notu: metnin solundaki şeride çekilir, sağa yaslanır. */
+    .lesson-flow > .lesson-margin-item {
+      float: left;
+      clear: left;
+      width: var(--lesson-margin);
+      max-width: var(--lesson-margin);
+      margin-inline-start: calc(-1 * (var(--lesson-margin) + var(--lesson-gap)));
+      margin-block: 0.35rem 1.25rem;
+      text-align: right;
+    }
+  }
+
+  /* --- Omurga -----------------------------------------------------
+     Dar ekranda metnin solunda içeride, geniş ekranda kenar notlarıyla
+     metin arasındaki boşlukta durur. */
+  .lesson-spine {
+    position: relative;
+    padding-inline-start: 1.25rem;
+  }
+
+  .lesson-spine::before {
+    content: '';
+    position: absolute;
+    /* z-index: -1 — omurga, tam genişlikteki şekil levhalarının ALTINDA
+       kalmalı. Konumlanmış bir ::before varsayılan olarak kardeşlerinin
+       arka planının üstüne boyanır ve çizgi levhanın içinden geçiyordu. */
+    z-index: -1;
+    inset-block: 0.4rem 0;
+    inset-inline-start: 0;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      rgb(var(--c-brand-400) / 0.6),
+      rgb(var(--c-line-strong)) 10%,
+      rgb(var(--c-line-strong)) 90%,
+      transparent
+    );
+  }
+
+  /* Düğüm omurga çizgisinin ÜZERİNDE ortalanır. Çizgi, bölümün kenar
+     kutusunun sol ucundadır (inset-inline-start: 0); düğüm de oradan
+     kendi yarıçapı kadar geri çekilir. Dar ekranda -1.25rem verilirse
+     düğüm sayfanın dışına taşıp yarım daire olarak görünüyordu. */
+  .lesson-spine-node {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0.55rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-inline-start: -0.219rem;
+    border-radius: 9999px;
+    background: rgb(var(--c-surface));
+    box-shadow: 0 0 0 2px rgb(var(--c-brand-500) / 0.85);
+  }
+
+  @container lesson (min-width: 56rem) {
+    .lesson-spine {
+      padding-inline-start: 0;
+    }
+
+    .lesson-spine::before {
+      inset-inline-start: calc(-1 * var(--lesson-gap) / 2);
+    }
+
+    .lesson-spine-node {
+      inset-inline-start: calc(-1 * var(--lesson-gap) / 2);
+    }
+  }
+
+  /* --- Anlatım metni ---------------------------------------------- */
+  .lesson-prose p {
+    margin: 0;
+  }
+
+  .lesson-prose p + p {
+    margin-top: 1.15em;
+  }
+
+  .lesson-prose strong {
+    font-weight: 650;
+    color: rgb(var(--c-ink));
+  }
+
+  /* Vurgu: fosforlu kalem taraması değil, ince alt bant. Tarama ekranda
+     "AI özet çıkarmış" hissi veriyor. */
+  .lesson-prose mark {
+    background: none;
+    color: rgb(var(--c-ink));
+    font-weight: 600;
+    box-shadow: inset 0 -0.4em 0 rgb(var(--c-brand-200) / 0.65);
+  }
+
+  .lesson-prose em {
+    font-style: italic;
+    color: rgb(var(--c-ink) / 0.82);
+  }
+
+  /* --- Tanımlanan terim: kutu değil, sözlük girdisi ---------------- */
+  .lesson-term {
+    display: inline-block;
+    font-family: theme('fontFamily.display');
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: -0.012em;
+    color: rgb(var(--c-ink));
+    padding-bottom: 0.12rem;
+    border-bottom: 2px solid rgb(var(--c-brand-400) / 0.6);
+  }
+
+  .lesson-why-question {
+    font-family: theme('fontFamily.display');
+    font-size: 1.1875rem;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+    color: rgb(var(--c-ink) / 0.92);
+  }
+
+  /* --- Kenar notu (hoca notu) -------------------------------------- */
+  .lesson-note {
+    border-inline-start: 2px solid rgb(var(--c-brand-400) / 0.55);
+    padding-inline-start: 0.9rem;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: rgb(var(--c-ink) / 0.74);
+  }
+
+  @container lesson (min-width: 56rem) {
+    .lesson-margin-item .lesson-note {
+      border-inline-start: 0;
+      border-inline-end: 2px solid rgb(var(--c-brand-400) / 0.55);
+      padding-inline-start: 0;
+      padding-inline-end: 0.9rem;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+  }
+
+  .lesson-note-warning {
+    border-color: rgb(var(--c-warning-500) / 0.65);
+  }
+
+  .lesson-note-exam {
+    border-color: rgb(var(--c-aqua-500) / 0.7);
+  }
+
+  .lesson-note-connection {
+    border-color: rgb(var(--c-info-500) / 0.6);
+  }
+
+  .lesson-eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(var(--c-ink) / 0.45);
+  }
+
+  /* --- Şekil: kart değil LEVHA ------------------------------------- */
+  .lesson-figure {
+    margin: 0;
+  }
+
+  .lesson-figure-plate {
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.5rem;
+    background: rgb(var(--c-surface));
+    padding: 1rem;
+    /* Etiketli bilimsel şema telefonda okunur kalsın diye çizim kendi
+       kabında yatay kayar; sayfa gövdesi asla yatay kaymaz (§40). */
+    overflow-x: auto;
+  }
+
+  @media (min-width: 640px) {
+    .lesson-figure-plate {
+      padding: 1.5rem;
+    }
+  }
+
+  .lesson-figure figcaption {
+    margin-top: 0.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: rgb(var(--c-ink) / 0.68);
+  }
+
+  /* --- Kavram haritası: ilişkileri görünür kılan sakin şerit ------ */
+  .lesson-concept-map {
+    border-block: 1px solid rgb(var(--c-line));
+    padding-block: 1.1rem;
+  }
+
+  .lesson-concept-map-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+  }
+
+  .lesson-concept-map-item {
+    display: flex;
+    align-items: center;
+    flex: 1 0 9.5rem;
+    gap: 0.5rem;
+  }
+
+  .lesson-concept-map-node {
+    display: block;
+    width: 100%;
+    min-height: 5.5rem;
+    border: 1px solid rgb(var(--c-line-strong));
+    border-radius: 0.5rem;
+    background: rgb(var(--c-surface-muted));
+    padding: 0.8rem;
+    transition: border-color 160ms ease, background-color 160ms ease;
+  }
+
+  .lesson-concept-map-node:hover,
+  .lesson-concept-map-node.is-active {
+    border-color: rgb(var(--c-brand-400));
+    background: rgb(var(--c-brand-50) / 0.7);
+  }
+
+  .lesson-concept-map-arrow {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: rgb(var(--c-brand-700));
+    font-size: 0.6875rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .lesson-concept-map-arrow::after {
+    content: '→';
+    font-size: 1.125rem;
+  }
+
+  .lesson-concept-map figcaption {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: rgb(var(--c-ink) / 0.6);
+  }
+
+  /* --- Tarih: kronoloji ve neden-sonuç omurgaları ---------------- */
+  .lesson-history-rail {
+    border-block: 1px solid rgb(var(--c-line));
+    padding-block: 1.1rem;
+  }
+
+  .lesson-history-event {
+    position: relative;
+    padding: 0 0 1.15rem 1.5rem;
+  }
+
+  .lesson-history-event:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0.28rem;
+    inset-block: 0.55rem -0.55rem;
+    width: 1px;
+    background: rgb(var(--c-line-strong));
+  }
+
+  .lesson-history-dot {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0.38rem;
+    width: 0.58rem;
+    height: 0.58rem;
+    border: 2px solid rgb(var(--c-brand-500));
+    border-radius: 9999px;
+    background: rgb(var(--c-surface));
+  }
+
+  .lesson-cause-effect-flow {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  @media (min-width: 640px) {
+    .lesson-cause-effect-flow {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .lesson-cause-effect-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.7rem;
+    border-top: 2px solid rgb(var(--c-brand-300));
+    padding-top: 0.75rem;
+  }
+
+  .lesson-cause-effect-index {
+    display: grid;
+    width: 1.4rem;
+    height: 1.4rem;
+    place-items: center;
+    border-radius: 9999px;
+    background: rgb(var(--c-brand-50));
+    color: rgb(var(--c-brand-700));
+    font-size: 0.6875rem;
+    font-weight: 800;
+  }
+
+  .lesson-period-summary {
+    border: 1px solid rgb(var(--c-line-strong));
+    border-inline-start: 3px solid rgb(var(--c-brand-500) / 0.75);
+    border-radius: 0.5rem;
+    background: rgb(var(--c-surface-muted));
+    padding: 1rem;
+  }
+
+  /* --- Tarih: etkileşimli şematik atlas --------------------------- */
+  .lesson-historical-map {
+    border-block: 1px solid rgb(var(--c-line-strong));
+    padding-block: 1.25rem;
+  }
+
+  .lesson-map-schematic-label {
+    border: 1px solid rgb(var(--c-accent-400) / 0.6);
+    border-radius: 9999px;
+    background: rgb(var(--c-accent-50) / 0.65);
+    padding: 0.3rem 0.65rem;
+    color: rgb(var(--c-accent-700));
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lesson-map-layer-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .lesson-map-layer-button {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 0.45rem;
+    border: 1px solid rgb(var(--c-line-strong));
+    border-radius: 9999px;
+    background: rgb(var(--c-surface));
+    padding: 0.55rem 0.8rem;
+    color: rgb(var(--c-ink) / 0.64);
+    font-size: 0.78rem;
+    font-weight: 750;
+  }
+
+  .lesson-map-layer-button > span {
+    width: 0.55rem;
+    height: 0.55rem;
+    border: 2px solid currentColor;
+    border-radius: 9999px;
+  }
+
+  .lesson-map-layer-button[aria-pressed='true'] {
+    border-color: rgb(var(--c-brand-400));
+    background: rgb(var(--c-brand-50));
+    color: rgb(var(--c-brand-700));
+  }
+
+  .lesson-map-layer-button[aria-pressed='true'] > span {
+    background: currentColor;
+  }
+
+  .lesson-map-scroll {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding-bottom: 0.35rem;
+  }
+
+  .lesson-map-canvas {
+    position: relative;
+    width: 100%;
+    min-width: 44rem;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line-strong));
+    border-radius: 0.65rem;
+    background:
+      radial-gradient(circle at 78% 66%, rgb(var(--c-accent-100) / 0.44), transparent 31%),
+      linear-gradient(155deg, rgb(var(--c-surface-muted)), rgb(var(--c-aqua-50) / 0.55));
+  }
+
+  .lesson-map-canvas::before,
+  .lesson-map-canvas::after {
+    content: '';
+    position: absolute;
+    border: 1px solid rgb(var(--c-ink) / 0.08);
+    background: rgb(var(--c-accent-100) / 0.4);
+  }
+
+  .lesson-map-canvas::before {
+    inset: -22% 52% 57% -12%;
+    border-radius: 40% 48% 56% 30%;
+    transform: rotate(-8deg);
+  }
+
+  .lesson-map-canvas::after {
+    inset: 44% -12% -28% 35%;
+    border-radius: 48% 32% 30% 52%;
+    transform: rotate(-5deg);
+  }
+
+  .lesson-map-region {
+    position: absolute;
+    z-index: 1;
+    color: rgb(var(--c-ink) / 0.24);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+  }
+
+  .lesson-map-region.tone-water { color: rgb(var(--c-aqua-700) / 0.46); }
+  .lesson-map-region.tone-land { color: rgb(var(--c-accent-700) / 0.34); }
+
+  .lesson-map-route {
+    position: absolute;
+    z-index: 2;
+    height: 2px;
+    transform-origin: left center;
+    background: rgb(var(--c-brand-500) / 0.68);
+  }
+
+  .lesson-map-route::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -1px;
+    width: 0.48rem;
+    height: 0.48rem;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    color: inherit;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  .lesson-map-route.tone-aqua { background: rgb(var(--c-aqua-600) / 0.75); color: rgb(var(--c-aqua-700)); }
+  .lesson-map-route.tone-accent { background: rgb(var(--c-accent-500) / 0.75); color: rgb(var(--c-accent-700)); }
+  .lesson-map-route.tone-danger { background: rgb(var(--c-danger-500) / 0.74); color: rgb(var(--c-danger-600)); }
+
+  .lesson-map-point {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 0.35rem;
+    border: 0;
+    background: transparent;
+    color: rgb(var(--c-brand-800));
+    font-size: 0.72rem;
+    line-height: 1.2;
+    transform: translate(-0.75rem, -50%);
+  }
+
+  .lesson-map-point > span {
+    width: 0.72rem;
+    height: 0.72rem;
+    flex: 0 0 auto;
+    border: 2px solid rgb(var(--c-surface));
+    border-radius: 9999px;
+    background: rgb(var(--c-brand-600));
+    box-shadow: 0 0 0 2px rgb(var(--c-brand-500) / 0.28);
+  }
+
+  .lesson-map-point > strong {
+    border-radius: 0.25rem;
+    background: rgb(var(--c-surface) / 0.88);
+    padding: 0.18rem 0.3rem;
+    white-space: nowrap;
+  }
+
+  .lesson-map-point:hover > strong,
+  .lesson-map-point.is-active > strong {
+    background: rgb(var(--c-brand-700));
+    color: white;
+  }
+
+  .lesson-map-point.tone-aqua > span { background: rgb(var(--c-aqua-600)); box-shadow: 0 0 0 2px rgb(var(--c-aqua-500) / 0.28); }
+  .lesson-map-point.tone-accent > span { background: rgb(var(--c-accent-600)); box-shadow: 0 0 0 2px rgb(var(--c-accent-500) / 0.28); }
+  .lesson-map-point.tone-danger > span { background: rgb(var(--c-danger-600)); box-shadow: 0 0 0 2px rgb(var(--c-danger-500) / 0.28); }
+
+  .lesson-map-detail {
+    margin-top: 0.75rem;
+    border-inline-start: 3px solid rgb(var(--c-brand-500));
+    background: rgb(var(--c-brand-50) / 0.5);
+    padding: 0.75rem 0.9rem;
+  }
+
+  .lesson-map-insight {
+    margin-top: 0.9rem;
+    border-inline-start: 2px solid rgb(var(--c-aqua-500));
+    padding-inline-start: 0.9rem;
+    color: rgb(var(--c-ink) / 0.72);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .lesson-map-source {
+    margin: 0.65rem 0 0;
+    color: rgb(var(--c-ink) / 0.44);
+    font-size: 0.7rem;
+    line-height: 1.55;
+  }
+
+  /* --- Tarih: hükümdar ve önemli şahsiyet kayıtları --------------- */
+  .lesson-historical-figures {
+    border-block: 1px solid rgb(var(--c-line-strong));
+    padding-block: 1.2rem;
+  }
+
+  .lesson-figure-grid {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  @media (min-width: 720px) {
+    .lesson-figure-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  .lesson-person-record {
+    border: 1px solid rgb(var(--c-line-strong));
+    border-inline-start: 3px solid rgb(var(--c-brand-300));
+    border-radius: 0.5rem;
+    background: rgb(var(--c-surface-muted));
+    padding: 0.9rem;
+    transition: border-color 160ms ease, background-color 160ms ease;
+  }
+
+  .lesson-person-record:hover,
+  .lesson-person-record.is-active {
+    border-color: rgb(var(--c-brand-400));
+    border-inline-start-color: rgb(var(--c-brand-600));
+    background: rgb(var(--c-brand-50) / 0.48);
+  }
+
+  @media (max-width: 639px) {
+    .lesson-map-scroll {
+      margin-inline: -0.5rem;
+      padding-inline: 0.5rem;
+    }
+
+    .lesson-map-canvas { min-width: 39rem; }
+  }
+
+  /* --- Sınav bandı: kutu yerine üstte/altta saç teli çizgi ---------- */
+  .lesson-band {
+    border-top: 1px solid rgb(var(--c-line-strong));
+    border-bottom: 1px solid rgb(var(--c-line-strong));
+    padding-block: 1.15rem;
+  }
+
+  /* --- Durak: öğrencinin bir şey YAPTIĞI yer ------------------------
+     Bunlar gerçekten ayrı birer nesnedir, bu yüzden yüzeyleri vardır.
+     Ama yüzey gömüktür: gölge yok, büyük yuvarlaklık yok, gradient yok. */
+  .lesson-stop {
+    background: rgb(var(--c-surface-sunken));
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.625rem;
+    padding: 1.15rem;
+  }
+
+  @media (min-width: 640px) {
+    .lesson-stop {
+      padding: 1.5rem;
+    }
+  }
+
+  /* --- Adım rayı (süreç / çözümlü örnek) --------------------------- */
+  .lesson-steps {
+    position: relative;
+    padding-inline-start: 2.25rem;
+  }
+
+  .lesson-steps::before {
+    content: '';
+    position: absolute;
+    inset-block: 0.9rem;
+    inset-inline-start: 0.6875rem;
+    width: 1px;
+    background: rgb(var(--c-line-strong));
+  }
+
+  /* Numara, rayın ÜZERİNDE durur — yani `.lesson-steps` girintisinin içinde.
+     `inset-inline-start: 0` verilirse numara adım metninin kendi sol
+     kenarına oturur ve başlığın ilk harflerini örter. Bu yüzden liste
+     öğesinin dışına, girinti kadar geriye çekilir. */
+  .lesson-step-marker {
+    position: absolute;
+    inset-inline-start: -2.25rem;
+    top: 0.1rem;
+    display: grid;
+    place-items: center;
+    width: 1.375rem;
+    height: 1.375rem;
+    border-radius: 9999px;
+    background: rgb(var(--c-surface));
+    border: 1px solid rgb(var(--c-line-strong));
+    font-size: 0.6875rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: rgb(var(--c-ink) / 0.6);
+  }
+
+  /* --- Formül ------------------------------------------------------ */
+  .lesson-formula {
+    background: rgb(var(--c-surface-sunken));
+    border-radius: 0.5rem;
+    padding: 1.1rem 1.25rem;
+    text-align: center;
+    overflow-x: auto;
+  }
+
+  /* --- Tuzak: yanlış / doğru karşılaştırması ----------------------- */
+  .lesson-wrong {
+    border-inline-start: 3px solid rgb(var(--c-danger-500) / 0.6);
+    padding-inline-start: 0.9rem;
+  }
+
+  .lesson-right {
+    border-inline-start: 3px solid rgb(var(--c-success-500) / 0.65);
+    padding-inline-start: 0.9rem;
+  }
+
+  /* --- Bölüm başlığı ----------------------------------------------- */
+  .lesson-section-title {
+    font-family: theme('fontFamily.display');
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    color: rgb(var(--c-ink));
+  }
+
+  @media (min-width: 640px) {
+    .lesson-section-title {
+      font-size: 1.9rem;
+    }
+  }
+
+  .lesson-lead {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: rgb(var(--c-ink) / 0.7);
+  }
+
+  @media (min-width: 640px) {
+    .lesson-lead {
+      font-size: 1.125rem;
+    }
+  }
+
+  /* --- Ders içi tablo: zebra yok, saç teli çizgi var ---------------- */
+  .lesson-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+
+  .lesson-table th {
+    text-align: start;
+    font-weight: 700;
+    color: rgb(var(--c-ink) / 0.55);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0 0.85rem 0.55rem 0;
+    border-bottom: 1px solid rgb(var(--c-line-strong));
+    white-space: nowrap;
+  }
+
+  .lesson-table td {
+    padding: 0.7rem 0.85rem 0.7rem 0;
+    border-bottom: 1px solid rgb(var(--c-line));
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  .lesson-table tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .lesson-table td:first-child {
+    font-weight: 650;
+    color: rgb(var(--c-ink) / 0.9);
+  }
+}
+
+@layer utilities {
+  .lesson-link {
+    color: rgb(var(--c-brand-700));
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  .lesson-link:hover {
+    color: rgb(var(--c-brand-800));
+  }
+}

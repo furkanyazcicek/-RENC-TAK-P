@@ -1,0 +1,36 @@
+// DRKOÇ BENCHMARK — GOLD VERİ ÖRNEĞİ
+//
+// Bu dosyayı `data/bench/questions.jsonl` olarak kopyala ve GERÇEK
+// YKS sorularıyla doldur. Her satır tek bir JSON nesnesi (JSONL).
+// `//` ile başlayan satırlar yok sayılır.
+//
+// ZORUNLU ALANLAR
+//   id                benzersiz kimlik, kendi belirlediğin biçimde
+//   exam              "TYT" | "AYT"
+//   category          "tyt_mat_sekilsiz" | "tyt_mat_sekilli" | "ayt_mat"
+//   image_path        data/bench/images/ içindeki dosya adı
+//   gold_answer_choice VEYA gold_answer_value  (en az biri)
+//
+// ÖNEMLE ÖNERİLEN
+//   gold_topic        "Ders > Konu" — graph.js'teki resmî adla birebir.
+//                     Geçerli değerleri görmek için:
+//                       node -e "import('./scripts/bench/schema.mjs').then(m=>console.log(m.buildTopicEnum().join('\n')))"
+//   has_figure        true/false — şekilli/şekilsiz kırılımı bununla çıkar
+//   gold_question_text sorunun düz metni — okuma doğruluğu ölçümü için
+//
+// İSTEĞE BAĞLI
+//   gold_solution     doğru çözümün kısa özeti — insan incelemesinde yardımcı
+//   difficulty        1-5, kendi değerlendirmen
+//   source_id         hangi kaynaktan/yıldan geldiği (telif takibi için)
+//
+// ⚠️ DOĞRULANMAMIŞ BİLGİ YAZMA. Emin olmadığın gold_topic'i boş bırak;
+//    yanlış gold, modeli haksız yere cezalandırır ve ölçümü bozar.
+//
+// ⚠️ TELİF: bu dosya ve images/ klasörü .gitignore'dadır. Yayınevi
+//    sorularını commit etme, kamuya açık soru bankasına dönüştürme.
+
+{"id":"tyt-001","exam":"TYT","category":"tyt_mat_sekilsiz","has_figure":false,"image_path":"tyt-001.jpg","gold_answer_choice":"C","gold_topic":"Matematik > Çarpanlara Ayırma","gold_question_text":"x + y = 17 ve x · y = 72 olduğuna göre x² + y² kaçtır?","difficulty":2,"source_id":"ornek-kaynak-2024-s12"}
+{"id":"tyt-002","exam":"TYT","category":"tyt_mat_sekilsiz","has_figure":false,"image_path":"tyt-002.jpg","gold_answer_choice":"A","gold_topic":"Matematik > Problemler","difficulty":3}
+{"id":"tyt-051","exam":"TYT","category":"tyt_mat_sekilli","has_figure":true,"image_path":"tyt-051.jpg","gold_answer_choice":"D","gold_topic":"Geometri > Üçgende Alan","difficulty":3,"gold_solution":"ABC üçgeninde yükseklik 6, taban 10 → alan 30"}
+{"id":"ayt-001","exam":"AYT","category":"ayt_mat","has_figure":false,"image_path":"ayt-001.jpg","gold_answer_choice":"B","gold_topic":"Matematik > Türev","difficulty":4}
+{"id":"ayt-002","exam":"AYT","category":"ayt_mat","has_figure":false,"image_path":"ayt-002.jpg","gold_answer_value":"2\\sqrt{3}","gold_topic":"Matematik > İntegral","difficulty":5}

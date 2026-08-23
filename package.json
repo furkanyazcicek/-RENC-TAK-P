@@ -1,0 +1,53 @@
+{
+  "name": "ogrenci-takip",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:historical-map": "node scripts/buildHistoricalMap.mjs 1526",
+    "preview": "vite preview",
+    "preview:open": "npm run build && vite preview --host 127.0.0.1 --open /ders-notu-onizleme",
+    "bench": "node scripts/bench/run.mjs",
+    "bench:smoke": "node scripts/bench/smoke.mjs",
+    "bench:test": "node scripts/bench/verify.test.mjs",
+    "bench:review": "node scripts/bench/review.mjs",
+    "bench:report": "node scripts/bench/report.mjs",
+    "test:parent-rls": "node scripts/test-parent-rls.mjs",
+    "test:ai-solve": "node scripts/test-ai-solve.mjs",
+    "test:lesson-document": "node scripts/test-lesson-document.mjs",
+    "test:tts-cache": "node scripts/test-tts-cache.mjs",
+    "diagnose:solve": "node scripts/diagnose-solve.mjs",
+    "test:lesson-content": "node scripts/test-lesson-content.mjs",
+    "seed:lessons": "node scripts/seed-lessons.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.4",
+    "katex": "^0.16.47",
+    "lucide-react": "^0.446.0",
+    "mathjs": "^15.2.0",
+    "pdfjs-dist": "^5.7.284",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "recharts": "^2.12.7",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.5",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "pg": "^8.23.0",
+    "polygon-clipping": "^0.15.7",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "vite": "^5.4.8",
+    "vite-plugin-pwa": "^0.20.5",
+    "workbox-precaching": "7.4.1"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true
+  }
+}
