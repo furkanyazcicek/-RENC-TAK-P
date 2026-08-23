@@ -51,7 +51,7 @@ export default function QuestionDemoSection() {
             </div>
           </div>
 
-          <div className="min-w-0 rounded-panel bg-surface-sunken/80 p-2.5 ring-1 ring-line sm:p-4">
+          <div className="landing-question-glass min-w-0 rounded-panel bg-surface-sunken/80 p-2.5 ring-1 ring-line sm:p-4">
             <QuestionCard
               question={DEMO_QUESTION}
               index={0}

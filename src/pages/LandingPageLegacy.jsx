@@ -13,6 +13,7 @@ import {
   Sparkles,
   Target,
   ShieldCheck,
+  UserRound,
   Users,
 } from 'lucide-react'
 
@@ -52,16 +53,21 @@ const NAV_LINKS = [
   { href: '#iletisim', label: 'İletişim' },
 ]
 
-export function LandingNavbar() {
+export function LandingNavbar({ onAbout, onContact }) {
+  const compactInfoNavigation = Boolean(onAbout && onContact)
+  const visibleLinks = compactInfoNavigation
+    ? NAV_LINKS.filter((link) => !['#hakkimda', '#iletisim'].includes(link.href))
+    : NAV_LINKS
+
   return (
-    <header className="sticky top-0 z-sticky border-b border-line glass">
-      <div className="mx-auto flex h-header max-w-content items-center justify-between px-4 sm:px-6">
+    <header className="landing-navbar-glass sticky top-0 z-sticky border-b border-line glass">
+      <div className="landing-navbar-inner mx-auto flex h-header max-w-content items-center justify-between px-4 sm:px-6">
         <a href="#top" className="focus-ring rounded-xl">
           <Logo />
         </a>
 
         <nav className="hidden items-center gap-7 md:flex lg:gap-8">
-          {NAV_LINKS.map((l) => (
+          {visibleLinks.map((l) => (
             <a
               key={l.href}
               href={l.href}
@@ -72,6 +78,26 @@ export function LandingNavbar() {
               {l.label}
             </a>
           ))}
+          {compactInfoNavigation && (
+            <div className="flex items-center gap-1 border-l border-line pl-3">
+              <button
+                type="button"
+                onClick={onAbout}
+                className="focus-ring inline-flex min-h-10 items-center gap-1.5 rounded-xl px-3 text-sm font-semibold text-ink/65 transition-colors hover:bg-surface-sunken hover:text-ink"
+              >
+                <UserRound className="h-4 w-4" aria-hidden="true" />
+                Hakkımda
+              </button>
+              <button
+                type="button"
+                onClick={onContact}
+                className="focus-ring inline-flex min-h-10 items-center gap-1.5 rounded-xl px-3 text-sm font-semibold text-ink/65 transition-colors hover:bg-surface-sunken hover:text-ink"
+              >
+                <MessageCircle className="h-4 w-4" aria-hidden="true" />
+                İletişim
+              </button>
+            </div>
+          )}
           <Link
             to="/login"
             className="focus-ring btn-base h-10 bg-aurora-gradient px-5 text-sm text-white shadow-aurora
@@ -81,12 +107,36 @@ export function LandingNavbar() {
           </Link>
         </nav>
 
-        <Link
-          to="/login"
-          className="focus-ring btn-base h-9 bg-aurora-gradient px-4 text-sm text-white shadow-aurora md:hidden"
-        >
-          Giriş Yap
-        </Link>
+        <div className="flex items-center gap-1 md:hidden">
+          {compactInfoNavigation && (
+            <>
+              <button
+                type="button"
+                onClick={onAbout}
+                aria-label="Hakkımda"
+                title="Hakkımda"
+                className="focus-ring grid h-10 w-10 place-items-center rounded-xl text-ink/65 hover:bg-surface-sunken hover:text-ink"
+              >
+                <UserRound className="h-[1.125rem] w-[1.125rem]" aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                onClick={onContact}
+                aria-label="İletişim"
+                title="İletişim"
+                className="focus-ring grid h-10 w-10 place-items-center rounded-xl text-ink/65 hover:bg-surface-sunken hover:text-ink"
+              >
+                <MessageCircle className="h-[1.125rem] w-[1.125rem]" aria-hidden="true" />
+              </button>
+            </>
+          )}
+          <Link
+            to="/login"
+            className="focus-ring btn-base h-9 bg-aurora-gradient px-4 text-sm text-white shadow-aurora"
+          >
+            Giriş Yap
+          </Link>
+        </div>
       </div>
     </header>
   )
@@ -150,7 +200,7 @@ function HeroPreview() {
       />
 
       <div
-        className="group relative overflow-hidden rounded-panel border border-white/60 bg-paper shadow-elevated
+        className="landing-hero-preview-panel group relative overflow-hidden rounded-panel border border-white/60 bg-paper shadow-elevated
                    transition-transform duration-500 ease-smooth lg:rotate-[-1.5deg] lg:hover:rotate-0 lg:hover:-translate-y-1"
       >
         {/* Uygulama başlığı */}
@@ -210,7 +260,7 @@ export function HeroSection() {
   ]
 
   return (
-    <section id="top" className="relative overflow-hidden">
+    <section id="top" className="landing-hero-section relative overflow-hidden">
       <AuroraBackground variant="hero" mesh />
 
       <div className="relative z-10 mx-auto max-w-content px-4 pb-20 pt-14 sm:px-6 sm:pb-28 sm:pt-20">
@@ -322,7 +372,7 @@ export function ClosingCTA() {
 
   return (
     <section className="relative px-4 py-20 sm:px-6 sm:py-28">
-      <div className="relative mx-auto max-w-5xl overflow-hidden rounded-panel bg-aurora-gradient p-8 shadow-aurora-lg sm:p-14">
+      <div className="landing-closing-panel relative mx-auto max-w-5xl overflow-hidden rounded-panel bg-aurora-gradient p-8 shadow-aurora-lg sm:p-14">
         <AuroraBackground variant="panel" />
 
         {/* Zemine çok hafif doku — düz gradient "yassı" durmasın */}

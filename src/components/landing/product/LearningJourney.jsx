@@ -71,7 +71,7 @@ const SUBJECTS = [
 
 function NoteCanvas({ activeStep }) {
   return (
-    <div className="overflow-hidden rounded-panel border border-line bg-surface shadow-elevated">
+    <div className="landing-note-glass overflow-hidden rounded-panel border border-line bg-surface shadow-elevated">
       <div className="flex items-center justify-between border-b border-line bg-surface-muted/70 px-4 py-3 sm:px-6">
         <div className="flex items-center gap-2.5">
           <span className="grid h-9 w-9 place-items-center rounded-xl bg-brand-500/10 text-brand-700 ring-1 ring-inset ring-brand-500/15">
@@ -129,7 +129,7 @@ export function NotesShowcase() {
   const [activeStep, setActiveStep] = useState(NOTE_STEPS[0].key)
 
   return (
-    <section id="notlar" className="scroll-mt-20 py-20 sm:py-28 lg:py-36">
+    <section id="notlar" className="landing-notes-showcase scroll-mt-20 py-20 sm:py-28 lg:py-36">
       <div className="mx-auto max-w-content px-4 sm:px-6">
         <div className="mx-auto max-w-3xl text-center">
           <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-brand-600">Ders notları</span>
@@ -286,7 +286,7 @@ export function InteractiveVisualShowcase() {
             id="subject-demo-panel"
             role="tabpanel"
             aria-labelledby={`subject-tab-${activeSubject}`}
-            className="min-w-0 rounded-panel border border-white/15 bg-white/[0.07] p-2.5 shadow-overlay backdrop-blur-sm sm:p-4"
+            className="landing-interactive-glass min-w-0 rounded-panel border border-white/15 bg-white/[0.07] p-2.5 shadow-overlay backdrop-blur-sm sm:p-4"
           >
             <div className="mb-3 flex items-center justify-between px-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">
               <span className="inline-flex items-center gap-1.5"><Image className="h-3.5 w-3.5" /> {subject.label} · Canlı ders görseli</span>
