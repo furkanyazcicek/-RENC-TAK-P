@@ -30,3 +30,4 @@ src/data/tarihAtlasi/ham/
 
 # Atlas görsel doğrulama çıktısı (geçici)
 tmp/tarih-atlasi-dogrulama.html
+tmp/eyalet-kontrolu.html

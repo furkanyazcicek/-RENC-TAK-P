@@ -23,14 +23,22 @@ Bu koşulu sağlayan sınırlar çizilir, ötekiler gizlenir.
 | `ham/world_<yıl>.geojson` | İndirilen ham dünya anlık görüntüleri. Yedeğe alınmaz. |
 | `donemler.json` | Uygulamanın kullandığı tek dosya. 23 dönem, 1367 kayıt, sıkıştırılmış ~650 KB. |
 | `devletSozlugu.js` | İngilizce adların Türkçe karşılıkları, önem derecesi, renk grubu. |
+| `eyaletler.js` | Osmanlı eyaletlerinin merkezleri, kuruluş yılları ve müfredat notları. |
+| `eyaletSinirlari.json` | Bu merkezlerden hesaplanan yaklaşık eyalet sınırları. |
+| `kilitTarihler.js` | Zaman çizelgesinde işaretli 24 müfredat olayı. |
 
 ## Komutlar
 
 ```bash
-npm run atlas:indir    # ham veriyi indirir (bir kez, ~31 MB)
-npm run atlas:uret     # donemler.json dosyasını üretir
-npm run atlas:dogrula  # seçilen yılları SVG haritaya çizip gözle kontrol ettirir
+npm run atlas:indir          # ham veriyi indirir (bir kez, ~31 MB)
+npm run atlas:uret           # donemler.json dosyasını üretir
+npm run atlas:dogrula        # seçilen yılları SVG haritaya çizip gözle kontrol ettirir
+npm run atlas:eyalet         # eyalet sınırlarını hesaplar
+npm run atlas:eyalet-dogrula # eyaletleri haritaya çizip gözle kontrol ettirir
 ```
+
+Doğrulama betiğine bölge de verilebilir; kıyı hizalamasını yakından görmek için:
+`node scripts/tarihAtlasiDogrula.mjs 1530 --alan=24,29,40,43`
 
 Doğrulama betiğine yıl verilebilir: `node scripts/tarihAtlasiDogrula.mjs 1071 1453 1683`
 
@@ -94,6 +102,41 @@ dürüstçe belirtilmelidir.
    adı altında tek parça.
 
 Bu boşluklar, kendi elimizle hazırlanacak dönem katmanlarıyla kapatılabilir.
+
+## Kıyı hizalama
+
+Kaynak verinin kıyı çizgisi kabadır; harita altlığının karası daha ayrıntılıdır.
+Düzeltilmezse devlet dolgusunun bittiği yerle karanın bittiği yer arasında
+beyaz şeritler kalıyor. `scripts/lib/kiyiHizalama.mjs` bunu iki adımda çözer:
+
+1. Poligon 8 km dışa büyütülür — boşlukları örter, denize de taşar
+2. Gerçek kara maskesiyle kesilir — denize taşan kısım kesilir
+
+Sonuç kıyıya tam oturur. Kesimden sonra bir kez daha sadeleştirilir, yoksa
+kara maskesinin bütün ayrıntısı dosyayı beş katına çıkarıyor.
+
+Kalan minik farklar için altlığın beyaz kara rengi, nötr bir toprak rengiyle
+değiştirildi (`DEVLETSIZ_KARA`). Böylece hiçbir devlete ait olmayan topraklar
+boşluk gibi değil, haritanın doğal parçası gibi görünür.
+
+## Eyalet sınırları
+
+Tarihsel eyalet sınırlarının kesin koordinatları hiçbir açık veri setinde yok.
+`eyaletler.js` her eyaletin gerçek merkezini ve ağırlık noktalarını tutar;
+`atlas:eyalet` betiği bu noktalardan en yakın komşu bölgeleri hesaplar
+(Voronoi), merkezden 3,2 dereceden uzağa taşan kısımları atar ve sonucu
+Osmanlı'nın o dönemki sınırıyla keser.
+
+- **Dönem:** 1590–1699 (Osmanlı taşra teşkilatının en geniş hâli)
+- **Kapsam:** 35 eyalet
+- **Merkezler ve kuruluş yılları** kaynaklara dayanır, **çizgiler tahminîdir**
+
+Erişim mesafesi sınırı bilinçlidir: Garp Ocakları fiilen kıyı şeridini
+yönetirdi, çöl içleri kabile bölgesiydi. Sınır olmadan Sahra'nın ortası da
+bir eyalete atanıyor ve gerçek dışı uzantılar çıkıyordu.
+
+Kefe eyaleti üretiliyor ama haritaya alınmıyor: bu veride Kırım Hanlığı ayrı
+bir devlet sayıldığı için Osmanlı poligonuyla yeterince kesişmiyor.
 
 ## Kaynak verideki hatalar için düzeltme mekanizması
 

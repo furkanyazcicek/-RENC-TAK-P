@@ -23,7 +23,9 @@
     "seed:lessons": "node scripts/seed-lessons.mjs",
     "atlas:indir": "node scripts/tarihAtlasiIndir.mjs",
     "atlas:uret": "node scripts/tarihAtlasiUret.mjs",
-    "atlas:dogrula": "node scripts/tarihAtlasiDogrula.mjs"
+    "atlas:dogrula": "node scripts/tarihAtlasiDogrula.mjs",
+    "atlas:eyalet": "node scripts/eyaletleriUret.mjs",
+    "atlas:eyalet-dogrula": "node scripts/eyaletleriDogrula.mjs"
   },
   "dependencies": {
     "@openhistoricalmap/maplibre-gl-dates": "^1.4.0",
@@ -44,6 +46,7 @@
     "@electric-sql/pglite": "^0.5.5",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.20",
+    "d3-delaunay": "^6.0.4",
     "pg": "^8.23.0",
     "polygon-clipping": "^0.15.7",
     "postcss": "^8.4.47",

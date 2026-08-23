@@ -11,18 +11,37 @@
 import { readFile, writeFile } from 'node:fs/promises'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { TON_RENKLERI } from '../src/data/tarihAtlasi/devletSozlugu.js'
+import { DEVLETSIZ_KARA, TON_RENKLERI } from '../src/data/tarihAtlasi/devletSozlugu.js'
+import { karaMaskesiHazirla } from './lib/kiyiHizalama.mjs'
 
 const kok = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const veri = JSON.parse(await readFile(resolve(kok, 'src/data/tarihAtlasi/donemler.json'), 'utf8'))
 
-const yillar = process.argv.slice(2).map(Number).filter(Boolean)
+/**
+ * Kullanım:
+ *   node scripts/tarihAtlasiDogrula.mjs 1453 1530
+ *   node scripts/tarihAtlasiDogrula.mjs 1530 --alan=25,30,38,42   (kıyı yakınlaştırma)
+ *
+ * --alan verildiğinde harita o dörtgene kırpılır; kıyı hizalamasını yakından
+ * kontrol etmek için kullanılır.
+ */
+const argumanlar = process.argv.slice(2)
+const alanArg = argumanlar.find((a) => a.startsWith('--alan='))
+const yillar = argumanlar.filter((a) => !a.startsWith('--')).map(Number).filter(Boolean)
 const SECILI = yillar.length ? yillar : [1100, 1530, 1700, 1920]
 
 // Gösterim alanı: Avrupa + Ortadoğu + Kuzey Afrika
-const [BATI, GUNEY, DOGU, KUZEY] = [-13, 12, 60, 56]
+const [BATI, GUNEY, DOGU, KUZEY] = alanArg
+  ? alanArg.slice(7).split(',').map(Number)
+  : [-13, 12, 60, 56]
+
+const enBoyOran = (DOGU - BATI) / (KUZEY - GUNEY)
 const GENISLIK = 620
-const YUKSEKLIK = 400
+const YUKSEKLIK = Math.round(GENISLIK / enBoyOran)
+
+// Karayı da çizeriz: devlet dolgusunun kaplamadığı yerler bu renkte görünür,
+// böylece kıyıda ya da devletler arasında boşluk kalıp kalmadığı anlaşılır.
+const karaMaskesi = karaMaskesiHazirla([BATI, GUNEY, DOGU, KUZEY])
 
 /** Basit eşdikdörtgen izdüşüm — atlas önizlemesi için yeterli. */
 function izdusum([lng, lat]) {
@@ -64,11 +83,16 @@ const panolar = SECILI.map((yil) => {
     return `<text x="${x}" y="${y}" text-anchor="middle" font-size="8.5" font-family="system-ui,sans-serif" fill="#1a1509" stroke="#f2ecdc" stroke-width="2.4" paint-order="stroke" >${f.properties.ad}</text>`
   }).join('\n')
 
+  const karaYolu = karaMaskesi
+    .map((poligon) => poligon.map(halkaYolu).join(''))
+    .join('')
+
   return `
   <section>
     <h2>${yil} <small>${gecerli.length} devlet</small></h2>
     <svg viewBox="0 0 ${GENISLIK} ${YUKSEKLIK}" xmlns="http://www.w3.org/2000/svg">
-      <rect width="${GENISLIK}" height="${YUKSEKLIK}" fill="#cfd9d6"/>
+      <rect width="${GENISLIK}" height="${YUKSEKLIK}" fill="#b9e4e4"/>
+      <path d="${karaYolu}" fill="${DEVLETSIZ_KARA}" fill-rule="evenodd"/>
       ${yollar}
       ${etiketler}
     </svg>

@@ -18,6 +18,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { DEVLET_SOZLUGU, VARSAYILAN_KAYIT } from '../src/data/tarihAtlasi/devletSozlugu.js'
+import { karaMaskesiHazirla, kiyiyaOturt, maskeyiIndeksle } from './lib/kiyiHizalama.mjs'
 
 const kok = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const hamKlasor = resolve(kok, 'src/data/tarihAtlasi/ham')
@@ -97,6 +98,24 @@ const YILA_OZEL_DUZELTME = {
  * Önemli devletlerin sınırı ayrıntılı kalır, bağlam devletleri kabalaşır.
  */
 const TOLERANS = { 3: 0.02, 2: 0.04, 1: 0.07, 0: 0.12 }
+
+/**
+ * Kıyı hizalama büyütme mesafesi (derece).
+ *
+ * Kaynak verinin kıyı çizgisi kabadır; harita altlığının karası daha
+ * ayrıntılıdır. Poligon önce bu kadar dışa büyütülür, sonra gerçek kara
+ * maskesiyle kesilir. Sonuç: dolgu kıyıya tam oturur, arada beyaz şerit
+ * kalmaz. 0.08 derece ≈ 8 km — kaynak verinin sapmasını kapatmaya yeter.
+ */
+const KIYI_BUYUTME = 0.08
+
+/**
+ * Kıyıya oturtma, kara maskesinin bütün girinti çıkıntısını poligona taşır ve
+ * dosyayı beş katına çıkarıyor. Bu tolerans, kıyı çizgisini gözle görülür
+ * biçimde bozmadan fazla ayrıntıyı törpüler. Atlas zoom 4–8 arasında
+ * okunduğu için bu ölçekte fark edilmez.
+ */
+const KIYI_SONRASI_TOLERANS = { 3: 0.012, 2: 0.018, 1: 0.03, 0: 0.05 }
 
 // ————————————————————————————————————————————————————————————
 // Geometri yardımcıları
@@ -260,6 +279,10 @@ function etiketNoktasi(geometri) {
 // Ana akış
 // ————————————————————————————————————————————————————————————
 
+console.log('Kara maskesi hazırlanıyor…')
+const indeksliKaraMaskesi = maskeyiIndeksle(karaMaskesiHazirla(ALAN))
+console.log(`Kara maskesi hazır: ${indeksliKaraMaskesi.length} parça\n`)
+
 const eksikAdlar = new Set()
 const ozellikler = []
 const donemOzeti = []
@@ -343,7 +366,15 @@ for (let i = 0; i < YILLAR.length; i += 1) {
   }
 
   for (const devlet of donemDevletleri.values()) {
-    const geometri = poligonlariTopla(devlet.geometriler)
+    const toplanmis = poligonlariTopla(devlet.geometriler)
+    // Sadeleştirmeden sonra kıyıya oturtulur: iç sınırlar kabalaşmış olsa da
+    // kıyı çizgisi gerçek kara maskesinden geldiği için keskin kalır.
+    const oturtulmus = kiyiyaOturt(toplanmis, indeksliKaraMaskesi, KIYI_BUYUTME)
+    // Kara maskesinden gelen aşırı ayrıntıyı törpüle
+    const geometri = geometriSadelestir(
+      oturtulmus,
+      KIYI_SONRASI_TOLERANS[devlet.onem] ?? KIYI_SONRASI_TOLERANS[0],
+    ) || oturtulmus
     const etiket = etiketNoktasi(geometri)
     if (!etiket) { elenen += 1; continue }
 

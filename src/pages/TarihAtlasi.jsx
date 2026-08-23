@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { ArrowLeft, Crown, Flag, Info, Layers3, Map as MapIcon, Minus, Plus, RotateCcw, Sparkles, TriangleAlert, X } from 'lucide-react'
+import { ArrowLeft, Crown, Flag, Info, Landmark, Layers3, Map as MapIcon, Minus, Plus, RotateCcw, Sparkles, TriangleAlert, X } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import maplibregl from 'maplibre-gl'
 import { filterByDate } from '@openhistoricalmap/maplibre-gl-dates'
 import 'maplibre-gl/dist/maplibre-gl.css'
-import { TON_RENKLERI } from '../data/tarihAtlasi/devletSozlugu'
+import { DEVLETSIZ_KARA, TON_RENKLERI } from '../data/tarihAtlasi/devletSozlugu'
 import { KILIT_TARIHLER } from '../data/tarihAtlasi/kilitTarihler'
 import '../styles/tarih-atlasi.css'
 
@@ -18,6 +18,12 @@ const ILK_KONUM = { merkez: [28, 40], yakinlik: 4.2 }
 const KATMANLAR = [
   { kod: 'devletler', ad: 'Devletler', haritaKatmanlari: ['atlas-dolgu', 'atlas-sinir'] },
   { kod: 'isimler', ad: 'Devlet adları', haritaKatmanlari: ['atlas-etiket'] },
+  {
+    kod: 'eyaletler',
+    ad: 'Osmanlı eyaletleri',
+    haritaKatmanlari: ['atlas-eyalet-sinir', 'atlas-eyalet-etiket', 'atlas-eyalet-alan', 'atlas-eyalet-vurgu'],
+    ipucu: 'Yaklaştıkça açılır',
+  },
   // Altlığın kendi yer adları dönemin özgün dilinde yazılıdır (Yunanca, Latince,
   // Kiril). Güzel bir ayrıntı ama karmaşık geldiğinde kapatılabilmeli.
   { kod: 'yerAdlari', ad: 'Dönemin yer adları', haritaKatmanlari: 'altlikEtiketleri' },
@@ -176,7 +182,97 @@ function ZamanCizelgesi({ enAz, enCok, yil, yilDegisti }) {
   )
 }
 
-function Harita({ acikKatmanlar, donemVerisi, secili, secimYapildi, yil }) {
+/**
+ * Eyalet sınırları yalnızca kendi döneminde ve yeterince yaklaşıldığında
+ * görünür. Devlet renkleri çekilmeye başladığı ölçekte devreye girer;
+ * böylece "uzakta devlet, yakında eyalet" akışı kurulur.
+ */
+const EYALET_CIZGI_SAYDAMLIGI = [
+  'interpolate', ['linear'], ['zoom'],
+  4.4, 0,
+  5.2, 0.5,
+  6.5, 0.85,
+]
+
+const EYALET_ETIKET_SAYDAMLIGI = [
+  'interpolate', ['linear'], ['zoom'],
+  4.8, 0,
+  5.6, 1,
+]
+
+/** Eyalet kaynak ve katmanlarını haritaya kurar. */
+function eyaletKatmanlariniKur(harita, eyaletVerisi) {
+  const oncesi = harita.getLayer('atlas-etiket') ? 'atlas-etiket' : undefined
+
+  harita.addSource('atlas-eyaletler', { type: 'geojson', data: eyaletVerisi })
+
+  // Neredeyse görünmez dolgu: ince çizgiye tıklamak zor, tıklama alanı bu
+  // katman. Saydamlık tam sıfır olamaz — MapLibre hiç çizilmeyen katmanı
+  // tıklama sorgusunda döndürmüyor.
+  harita.addLayer({
+    id: 'atlas-eyalet-alan',
+    type: 'fill',
+    source: 'atlas-eyaletler',
+    paint: { 'fill-color': '#000', 'fill-opacity': 0.01 },
+  }, oncesi)
+
+  harita.addLayer({
+    id: 'atlas-eyalet-vurgu',
+    type: 'fill',
+    source: 'atlas-eyaletler',
+    filter: ['==', ['get', 'ad'], ''],
+    paint: { 'fill-color': '#f2d68d', 'fill-opacity': 0.3 },
+  }, oncesi)
+
+  harita.addLayer({
+    id: 'atlas-eyalet-sinir',
+    type: 'line',
+    source: 'atlas-eyaletler',
+    paint: {
+      'line-color': 'rgba(46, 38, 24, .85)',
+      'line-width': ['interpolate', ['linear'], ['zoom'], 5, 0.7, 8, 1.4],
+      'line-dasharray': [3, 1.6],
+      'line-opacity': EYALET_CIZGI_SAYDAMLIGI,
+    },
+  }, oncesi)
+
+  // Etiketler ayrı bir nokta kaynağından çizilir. Doğrudan poligon
+  // kaynağından çizilince, adalara yayılan eyaletlerde (Cezayir-i Bahr-i
+  // Sefid gibi) ad her parça için ayrı ayrı yazılıyordu.
+  harita.addSource('atlas-eyalet-etiketler', {
+    type: 'geojson',
+    data: {
+      type: 'FeatureCollection',
+      features: eyaletVerisi.features.map((oz) => ({
+        type: 'Feature',
+        properties: { ad: oz.properties.ad },
+        geometry: { type: 'Point', coordinates: [oz.properties.etiketX, oz.properties.etiketY] },
+      })),
+    },
+  })
+
+  harita.addLayer({
+    id: 'atlas-eyalet-etiket',
+    type: 'symbol',
+    source: 'atlas-eyalet-etiketler',
+    layout: {
+      'text-field': ['get', 'ad'],
+      'text-font': ['OpenHistorical Bold'],
+      'text-size': ['interpolate', ['linear'], ['zoom'], 5, 10, 8, 14],
+      'text-max-width': 8,
+      'text-allow-overlap': false,
+      'text-padding': 2,
+    },
+    paint: {
+      'text-color': '#43331c',
+      'text-halo-color': 'rgba(240, 232, 205, .9)',
+      'text-halo-width': 1.8,
+      'text-opacity': EYALET_ETIKET_SAYDAMLIGI,
+    },
+  })
+}
+
+function Harita({ acikKatmanlar, donemVerisi, eyaletVerisi, secili, secimYapildi, yil }) {
   const kapsayiciRef = useRef(null)
   const haritaRef = useRef(null)
   const [durum, setDurum] = useState('yukleniyor')
@@ -215,6 +311,9 @@ function Harita({ acikKatmanlar, donemVerisi, secili, secimYapildi, yil }) {
     }
 
     haritaRef.current = harita
+    // Geliştirme sırasında tarayıcı konsolundan haritayı incelemek için.
+    // Üretim derlemesinde bu satır tamamen kaldırılır.
+    if (import.meta.env.DEV) window.__atlasHarita = harita
     harita.addControl(new maplibregl.AttributionControl({
       compact: true,
       customAttribution: 'Sınırlar: historical-basemaps',
@@ -222,7 +321,7 @@ function Harita({ acikKatmanlar, donemVerisi, secili, secimYapildi, yil }) {
 
     const zamanAsimi = window.setTimeout(() => {
       setDurum((oncekiDurum) => (oncekiDurum === 'yukleniyor' ? 'hata' : oncekiDurum))
-    }, 20000)
+    }, 35000)
 
     harita.once('load', () => {
       window.clearTimeout(zamanAsimi)
@@ -231,6 +330,11 @@ function Harita({ acikKatmanlar, donemVerisi, secili, secimYapildi, yil }) {
       altlikEtiketleriRef.current = harita.getStyle().layers
         .filter((katman) => katman.type === 'symbol')
         .map((katman) => katman.id)
+
+      // Altlıkta kara bembeyaz. Devletsiz toprak beyaz kalınca harita
+      // boşluklu görünüyordu; nötr bir toprak rengi hem atlas hissini
+      // güçlendiriyor hem de bu boşlukları doğal gösteriyor.
+      if (harita.getLayer('land')) harita.setPaintProperty('land', 'fill-color', DEVLETSIZ_KARA)
 
       harita.addSource('atlas-devletler', { type: 'geojson', data: donemVerisi })
       harita.addSource('atlas-etiketler', { type: 'geojson', data: etiketVerisi })
@@ -313,12 +417,25 @@ function Harita({ acikKatmanlar, donemVerisi, secili, secimYapildi, yil }) {
 
     harita.on('click', (olay) => {
       if (!harita.getLayer('atlas-dolgu')) return
+
+      // Eyalet çizgileri görünürken eyalete tıklamak öncelikli: öğrenci o
+      // ölçekte devleti değil, iç bölümlenmeyi inceliyordur.
+      if (harita.getLayer('atlas-eyalet-sinir')
+        && harita.getLayoutProperty('atlas-eyalet-sinir', 'visibility') !== 'none'
+        && harita.getZoom() >= 5.2) {
+        const alan = harita.queryRenderedFeatures(olay.point, { layers: ['atlas-eyalet-alan'] })
+        if (alan.length) {
+          secimYapildi({ tur: 'eyalet', ...alan[0].properties })
+          return
+        }
+      }
+
       const bulunanlar = harita.queryRenderedFeatures(olay.point, { layers: ['atlas-dolgu'] })
       if (!bulunanlar.length) { secimYapildi(null); return }
       // En küçük önem değerine sahip olan üstte çizildiği için ilk sonucu almak yerine
       // en önemli devleti seçiyoruz — üst üste binen sınırlarda doğru olan bu.
       const enOnemli = bulunanlar.reduce((a, b) => (b.properties.onem > a.properties.onem ? b : a))
-      secimYapildi({ ...enOnemli.properties })
+      secimYapildi({ tur: 'devlet', ...enOnemli.properties })
     })
 
     return () => {
@@ -354,12 +471,62 @@ function Harita({ acikKatmanlar, donemVerisi, secili, secimYapildi, yil }) {
     return () => window.cancelAnimationFrame(cerceveRef.current)
   }, [durum, yil])
 
-  // Katman aç/kapa
+  /*
+   * Eyalet katmanları ayrı bir etkide eklenir.
+   *
+   * Eyalet dosyası harita kurulduktan sonra inebiliyor; katmanları harita
+   * kurulumunun içine koyduğumuzda veri henüz gelmemiş oluyor ve eyaletler
+   * hiç görünmüyordu. Burada hem haritanın hazır olmasını hem verinin
+   * gelmesini bekliyoruz.
+   */
+  useEffect(() => {
+    const harita = haritaRef.current
+    if (!harita || durum !== 'hazir' || !eyaletVerisi) return undefined
+    if (harita.getSource('atlas-eyaletler')) return undefined
+
+    let iptal = false
+
+    function katmanlariEkle() {
+      if (iptal || !haritaRef.current) return
+      if (harita.getSource('atlas-eyaletler')) return
+      try {
+        eyaletKatmanlariniKur(harita, eyaletVerisi)
+      } catch (hata) {
+        console.warn('Eyalet katmanları eklenemedi:', hata?.message || hata)
+      }
+    }
+
+    /*
+     * "load" olayı geldiğinde stil her zaman tamamlanmış olmuyor — özellikle
+     * geliştirme sırasındaki sıcak yenilemede harita yeniden kurulurken bu
+     * etki eski haritaya kaynak eklemeye kalkıyor ve "Style is not done
+     * loading" hatasıyla bileşeni çökertiyordu. Stil hazır değilse bekliyoruz.
+     */
+    if (harita.isStyleLoaded()) {
+      katmanlariEkle()
+    } else {
+      harita.once('idle', katmanlariEkle)
+    }
+
+    return () => {
+      iptal = true
+      harita.off('idle', katmanlariEkle)
+    }
+  }, [durum, eyaletVerisi])
+
+  // Katman aç/kapa. Eyaletler ayrıca kendi dönemi dışında gizlenir —
+  const eyaletDonemi = eyaletVerisi?.meta?.donem
+  const eyaletDonemindeMi = Boolean(
+    eyaletDonemi && yil >= eyaletDonemi.baslangic && yil <= eyaletDonemi.bitis,
+  )
+
   useEffect(() => {
     const harita = haritaRef.current
     if (!harita || durum !== 'hazir') return
     for (const katman of KATMANLAR) {
-      const gorunur = acikKatmanlar.has(katman.kod) ? 'visible' : 'none'
+      let acik = acikKatmanlar.has(katman.kod)
+      if (katman.kod === 'eyaletler') acik = acik && eyaletDonemindeMi
+      const gorunur = acik ? 'visible' : 'none'
       const hedefler = katman.haritaKatmanlari === 'altlikEtiketleri'
         ? altlikEtiketleriRef.current
         : katman.haritaKatmanlari
@@ -367,15 +534,23 @@ function Harita({ acikKatmanlar, donemVerisi, secili, secimYapildi, yil }) {
         if (harita.getLayer(haritaKatmani)) harita.setLayoutProperty(haritaKatmani, 'visibility', gorunur)
       }
     }
-  }, [acikKatmanlar, durum])
+  }, [acikKatmanlar, durum, eyaletDonemindeMi, eyaletVerisi])
 
-  // Seçili devletin sınırını vurgula
+
+  // Seçili olanı vurgula — devlet ise sınırını, eyalet ise alanını
   useEffect(() => {
     const harita = haritaRef.current
-    if (!harita || durum !== 'hazir' || !harita.getLayer('atlas-vurgu')) return
-    harita.setFilter('atlas-vurgu', secili
-      ? ['all', ['==', ['get', 'ad'], secili.ad], zamanSuzgeci(yil)]
-      : ['==', ['get', 'ad'], ''])
+    if (!harita || durum !== 'hazir') return
+
+    if (harita.getLayer('atlas-vurgu')) {
+      harita.setFilter('atlas-vurgu', secili && secili.tur !== 'eyalet'
+        ? ['all', ['==', ['get', 'ad'], secili.ad], zamanSuzgeci(yil)]
+        : ['==', ['get', 'ad'], ''])
+    }
+    if (harita.getLayer('atlas-eyalet-vurgu')) {
+      harita.setFilter('atlas-eyalet-vurgu',
+        secili?.tur === 'eyalet' ? ['==', ['get', 'ad'], secili.ad] : ['==', ['get', 'ad'], ''])
+    }
   }, [durum, secili, yil])
 
   return (
@@ -422,6 +597,37 @@ function BilgiPaneli({ donem, kapat, secili, yil }) {
         {donem?.uyari && (
           <p className="atlas-uyari"><TriangleAlert size={14} /> {donem.uyari}</p>
         )}
+      </aside>
+    )
+  }
+
+  if (secili.tur === 'eyalet') {
+    return (
+      <aside className="atlas-bilgi">
+        <button type="button" className="atlas-bilgi-kapat" onClick={kapat} aria-label="Paneli kapat"><X size={17} /></button>
+        <p className="atlas-bilgi-ustbaslik"><Landmark size={14} /> OSMANLI EYALETİ</p>
+        <h2>{secili.ad}</h2>
+
+        <dl className="atlas-bilgi-liste">
+          <div>
+            <dt>Yönetim merkezi</dt>
+            <dd>{secili.merkez}</dd>
+          </div>
+          <div>
+            <dt>Eyalet oluşu</dt>
+            <dd>{secili.kurulus}</dd>
+          </div>
+          <div>
+            <dt>Bilinmesi gereken</dt>
+            <dd>{secili.not}</dd>
+          </div>
+        </dl>
+
+        <p className="atlas-bilgi-dipnot">
+          <Info size={13} />
+          Eyalet sınırları yaklaşıktır: merkezler ve bölge dağılımı kaynaklara
+          dayanır, çizgiler tahminîdir.
+        </p>
       </aside>
     )
   }
@@ -477,6 +683,7 @@ function BilgiPaneli({ donem, kapat, secili, yil }) {
 
 export default function TarihAtlasi() {
   const [veri, setVeri] = useState(null)
+  const [eyaletVerisi, setEyaletVerisi] = useState(null)
   const [veriHatasi, setVeriHatasi] = useState(false)
   const [yil, setYil] = useState(BASLANGIC_YILI)
   const [secili, setSecili] = useState(null)
@@ -494,7 +701,20 @@ export default function TarihAtlasi() {
     return () => { iptal = true }
   }, [])
 
+  // Eyalet sınırları küçük bir dosya; yüklenemezse atlas eyaletsiz çalışmayı sürdürür.
+  useEffect(() => {
+    let iptal = false
+    import('../data/tarihAtlasi/eyaletSinirlari.json')
+      .then((paket) => { if (!iptal) setEyaletVerisi(paket.default) })
+      .catch((hata) => console.warn('Eyalet sınırları yüklenemedi:', hata))
+    return () => { iptal = true }
+  }, [])
+
   const donem = useMemo(() => donemBul(veri?.meta, yil), [veri, yil])
+  const eyaletDonemi = eyaletVerisi?.meta?.donem
+  const eyaletDonemindeMi = Boolean(
+    eyaletDonemi && yil >= eyaletDonemi.baslangic && yil <= eyaletDonemi.bitis,
+  )
 
   const donemdekiDevletler = useMemo(() => {
     if (!veri || !donem) return []
@@ -557,17 +777,24 @@ export default function TarihAtlasi() {
         <aside className="atlas-sol">
           <div className="atlas-bolum-basligi"><Layers3 size={15} /> Katmanlar</div>
           <div className="atlas-katman-listesi">
-            {KATMANLAR.map((katman) => (
-              <button
-                key={katman.kod}
-                type="button"
-                className={acikKatmanlar.has(katman.kod) ? 'acik' : ''}
-                aria-pressed={acikKatmanlar.has(katman.kod)}
-                onClick={() => katmanDegistir(katman.kod)}
-              >
-                {katman.ad}
-              </button>
-            ))}
+            {KATMANLAR.map((katman) => {
+              const eyaletDisi = katman.kod === 'eyaletler' && !eyaletDonemindeMi
+              return (
+                <button
+                  key={katman.kod}
+                  type="button"
+                  className={`${acikKatmanlar.has(katman.kod) ? 'acik' : ''}${eyaletDisi ? ' donem-disi' : ''}`}
+                  aria-pressed={acikKatmanlar.has(katman.kod)}
+                  onClick={() => katmanDegistir(katman.kod)}
+                  title={eyaletDisi ? `Eyalet sınırları ${eyaletDonemi?.baslangic}–${eyaletDonemi?.bitis} dönemi için hazırlandı` : katman.ipucu}
+                >
+                  <span>{katman.ad}</span>
+                  {eyaletDisi
+                    ? <small>{eyaletDonemi?.baslangic}–{eyaletDonemi?.bitis} arası</small>
+                    : katman.ipucu && <small>{katman.ipucu}</small>}
+                </button>
+              )
+            })}
           </div>
 
           <div className="atlas-ayirac" />
@@ -601,6 +828,7 @@ export default function TarihAtlasi() {
         <Harita
           acikKatmanlar={acikKatmanlar}
           donemVerisi={veri}
+          eyaletVerisi={eyaletVerisi}
           secili={secili}
           secimYapildi={setSecili}
           yil={yil}

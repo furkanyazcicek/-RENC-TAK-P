@@ -129,6 +129,7 @@
 
 .atlas-katman-listesi { display: grid; gap: 4px; }
 .atlas-katman-listesi button {
+  display: flex; flex-direction: column; gap: 2px;
   padding: 8px 10px;
   border: 1px solid rgb(var(--atlas-cizgi) / 0.6);
   border-radius: 4px;
@@ -138,6 +139,12 @@
   font-size: 11px; font-weight: 600;
   cursor: pointer;
 }
+.atlas-katman-listesi button small {
+  color: rgb(var(--atlas-soluk));
+  font-size: 9px; font-weight: 500;
+  opacity: 0.7;
+}
+.atlas-katman-listesi button.donem-disi { opacity: 0.45; }
 .atlas-katman-listesi button:hover { border-color: rgb(var(--atlas-altin) / 0.35); color: rgb(var(--atlas-metin)); }
 .atlas-katman-listesi button.acik {
   border-color: rgb(var(--atlas-altin) / 0.45);

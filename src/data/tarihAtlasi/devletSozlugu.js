@@ -440,22 +440,43 @@ export const DEVLET_SOZLUGU = {
 /** Sözlükte olmayan bir ad geldiğinde kullanılacak varsayılan kayıt. */
 export const VARSAYILAN_KAYIT = { onem: 0, ton: 'diger' }
 
-/** Renk gruplarının haritadaki karşılığı. Sakin, düşük doygunlukta atlas tonları. */
+/**
+ * Renk grupları.
+ *
+ * İki kural gözetildi:
+ *   1. Akrabalık renkte görünsün — Türk devletleri Osmanlı'nın yeşil ailesinden,
+ *      böylece öğrenci "bunlar aynı soydan" bağını haritaya bakarken kurar.
+ *   2. Komşu devletler birbirinden ayrılsın — eski palette bağlam devletlerinin
+ *      hepsi birbirine yakın bejdi ve harita tek renk gibi görünüyordu.
+ *
+ * Doygunluk bilinçli olarak düşük tutuldu: öğrenci bu ekrana uzun süre bakacak.
+ */
 export const TON_RENKLERI = {
-  osmanli: '#4f8f63',
-  turk: '#7fae72',
-  islam: '#a3a25c',
-  bizans: '#8c6fa4',
-  iran: '#9b7bb0',
-  macar: '#cbb87d',
-  habsburg: '#9a6355',
-  venedik: '#5289a0',
-  fransa: '#5b74a4',
-  ingiltere: '#7a8fb8',
-  ispanya: '#c09a5e',
-  rus: '#93867a',
-  avrupa: '#a89a80',
-  afrika: '#b3946a',
-  asya: '#8f9a86',
-  diger: '#9d9a8e',
+  // Merkez: en doygun ton, haritada ilk göze çarpan
+  osmanli: '#3f8257',
+  // Akraba Türk devletleri — aynı yeşil ailesi, daha açık
+  turk: '#87b47b',
+  // İslam dünyası — hardal
+  islam: '#b3a85c',
+  // Doğu Roma ve ardılları — mor
+  bizans: '#8265a6',
+  // İran hattı — mora komşu ama pembeye çalan, Bizans'tan ayrılsın diye
+  iran: '#b57ba4',
+  // Macaristan — sarı, Habsburg kiremitinin yanında net durur
+  macar: '#d8c274',
+  habsburg: '#ab6250',
+  // Denizci cumhuriyetler
+  venedik: '#4790ab',
+  fransa: '#5673b3',
+  ingiltere: '#8398cc',
+  ispanya: '#cf9f55',
+  rus: '#83899a',
+  // Bağlam devletleri — düşük doygunluk ama birbirinden ayrık
+  avrupa: '#aca287',
+  afrika: '#c69a66',
+  asya: '#89a186',
+  diger: '#a7a49b',
 }
+
+/** Haritada devletsiz kalan karanın rengi — altlığın beyazı yerine kullanılır. */
+export const DEVLETSIZ_KARA = '#e7e2d3'
