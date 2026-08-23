@@ -23,3 +23,10 @@ data/bench/cache/
 # Geçici çalışma dosyaları
 tmp/
 .pnpm-store/
+
+# Tarih atlası ham verisi (~31 MB). Gerektiğinde "npm run atlas:indir" ile
+# yeniden indirilir; yedekte yer kaplamasına gerek yok.
+src/data/tarihAtlasi/ham/
+
+# Atlas görsel doğrulama çıktısı (geçici)
+tmp/tarih-atlasi-dogrulama.html

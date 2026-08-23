@@ -20,7 +20,10 @@
     "test:tts-cache": "node scripts/test-tts-cache.mjs",
     "diagnose:solve": "node scripts/diagnose-solve.mjs",
     "test:lesson-content": "node scripts/test-lesson-content.mjs",
-    "seed:lessons": "node scripts/seed-lessons.mjs"
+    "seed:lessons": "node scripts/seed-lessons.mjs",
+    "atlas:indir": "node scripts/tarihAtlasiIndir.mjs",
+    "atlas:uret": "node scripts/tarihAtlasiUret.mjs",
+    "atlas:dogrula": "node scripts/tarihAtlasiDogrula.mjs"
   },
   "dependencies": {
     "@openhistoricalmap/maplibre-gl-dates": "^1.4.0",
