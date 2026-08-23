@@ -15,6 +15,7 @@ import {
 import { supabase } from '../lib/supabaseClient'
 import { colorForKey } from '../lib/chartTheme'
 import { bundledQuestionSetsForTopic } from '../lib/questionLibrary'
+import { emekliKonuMu } from '../content/emekliKonular'
 import { libraryPath, slugifyLibraryValue } from '../lib/libraryRoutes'
 import { AppShell, Badge, Button, EmptyState, Input } from '../components/ui'
 import { DashboardHero, Panel } from '../components/dashboard'
@@ -64,7 +65,26 @@ export default function QuestionLibrary() {
   const selectedSubject = useMemo(() => subjects.find((subject) => subject.exam_type === examType && slugifyLibraryValue(subject.name) === subjectSlug), [subjects, examType, subjectSlug])
   const selectedTopic = useMemo(() => topics.find((topic) => topic.subject_id === selectedSubject?.id && slugifyLibraryValue(topic.name) === topicSlug), [topics, selectedSubject, topicSlug])
   const subjectsForExam = useMemo(() => subjects.filter((subject) => subject.exam_type === examType), [subjects, examType])
-  const topicsForSubject = useMemo(() => topics.filter((topic) => topic.subject_id === selectedSubject?.id), [topics, selectedSubject])
+  const topicSetCount = useCallback((topic) => (setsByTopic[topic.id]?.length ?? 0) + bundledQuestionSetsForTopic(topic.name).length, [setsByTopic])
+
+  // Müfredattan düşmüş eski başlıklar listede yer kaplamasın; içinde soru
+  // seti varsa yine görünür (bkz. src/content/emekliKonular.js).
+  const topicsForSubject = useMemo(
+    () =>
+      topics.filter((topic) => {
+        if (topic.subject_id !== selectedSubject?.id) return false
+        if (
+          !emekliKonuMu({
+            examType: selectedSubject.exam_type,
+            subject: selectedSubject.name,
+            topic: topic.name,
+          })
+        )
+          return true
+        return topicSetCount(topic) > 0
+      }),
+    [topics, selectedSubject, topicSetCount]
+  )
   const questionSets = useMemo(() => {
     if (!selectedTopic) return []
     const remote = setsByTopic[selectedTopic.id] ?? []
@@ -72,7 +92,6 @@ export default function QuestionLibrary() {
     return [...remote, ...bundledQuestionSetsForTopic(selectedTopic.name).filter((set) => !knownIds.has(set.id))]
   }, [selectedTopic, setsByTopic])
 
-  const topicSetCount = useCallback((topic) => (setsByTopic[topic.id]?.length ?? 0) + bundledQuestionSetsForTopic(topic.name).length, [setsByTopic])
   const q = search.trim().toLocaleLowerCase('tr-TR')
   const visibleSubjects = q ? subjectsForExam.filter((subject) => subject.name.toLocaleLowerCase('tr-TR').includes(q)) : subjectsForExam
   const visibleTopics = q ? topicsForSubject.filter((topic) => topic.name.toLocaleLowerCase('tr-TR').includes(q)) : topicsForSubject

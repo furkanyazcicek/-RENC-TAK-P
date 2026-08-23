@@ -21,6 +21,7 @@ import { colorForKey } from '../lib/chartTheme'
 import { buildLibraryInsights } from '../lib/insights'
 import { libraryPath, slugifyLibraryValue } from '../lib/libraryRoutes'
 import { LESSONS } from '../content/lessons'
+import { emekliKonuMu } from '../content/emekliKonular'
 import LibraryNoteForm from '../components/LibraryNoteForm'
 import LibraryNoteCard from '../components/LibraryNoteCard'
 import LessonEditor from '../components/lessons/LessonEditor'
@@ -211,8 +212,17 @@ export default function Library() {
       counts[id] = (counts[id] || 0) + missingFromDatabase
     })
 
+    // Müfredattan düşmüş eski başlıklar listede yer kaplamasın. İçine bir
+    // not ya da ders girmişse yine gösterilir; kimse içerik kaybetmez.
+    const gorunurKonular = topicRows.filter((row) => {
+      const subject = subjectRows.find((item) => item.id === row.subject_id)
+      if (!subject) return true
+      if (!emekliKonuMu({ examType: subject.exam_type, subject: subject.name, topic: row.name })) return true
+      return (counts[row.id] ?? 0) > 0
+    })
+
     setSubjects(subjectRows)
-    setTopics(topicRows)
+    setTopics(gorunurKonular)
     setBundledLessonsByTopic(bundledMap)
     setNoteCounts(counts)
     setLoading(false)
