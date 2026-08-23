@@ -1,15 +1,21 @@
 import { getTtsProvider } from '../_lib/tts/index.js'
 import { lessonBySlug } from '../../src/content/lessons/index.js'
-import { buildNarrationItems, NARRATION_PILOT_SLUG } from '../../src/lib/lessonNarration.js'
+import { buildNarrationItems, isNarrationEnabled } from '../../src/lib/lessonNarration.js'
 
 const MAX_SCRIPT_CHARS = 3200
 const TIMEOUT_MS = 55_000
 
 /**
- * Pilot dersin sesini talep anında üretip akış olarak tarayıcıya iletir.
+ * Anlatım sesini talep anında üretip akış olarak tarayıcıya iletir.
+ *
  * İstemci serbest metin gönderemez: ders ve blok sunucudaki yayınlanmış
  * katalogdan çözülür. Böylece uç nokta genel amaçlı açık bir TTS servisi
- * hâline gelmez.
+ * hâline gelmez — aksi hâlde adresi bilen herkes bizim hesabımızdan
+ * istediği metni seslendirebilirdi.
+ *
+ * Bu uç nokta YEDEK yoldur. Sesler `npm run ses:uret` ile bir kez üretilip
+ * `public/lesson-assets/narration/` altına yazıldığında öğrenci doğrudan o
+ * dosyayı çalar ve buraya hiç uğramaz.
  */
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -19,7 +25,7 @@ export default async function handler(req, res) {
 
   const lessonSlug = scalar(req.query?.lesson)
   const blockId = scalar(req.query?.block)
-  if (lessonSlug !== NARRATION_PILOT_SLUG || !blockId) {
+  if (!isNarrationEnabled(lessonSlug) || !blockId) {
     return sendError(res, 404, 'narration_not_found', 'Bu anlatım bölümü bulunamadı.')
   }
 
@@ -38,7 +44,13 @@ export default async function handler(req, res) {
   const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS)
 
   try {
-    const audio = await provider.generateSpeech({ text: item.script, language: 'tr-TR', signal: controller.signal })
+    const audio = await provider.generateSpeech({
+      text: item.script,
+      language: 'tr-TR',
+      // Bölümün kendi anlatım yönergesi (telaffuz, tempo, vurgu).
+      style: item.voiceHint,
+      signal: controller.signal,
+    })
 
     res.statusCode = 200
     res.setHeader('Content-Type', audio.contentType)
@@ -57,7 +69,7 @@ export default async function handler(req, res) {
   } catch (error) {
     if (res.headersSent) return res.end()
     const code = error?.name === 'AbortError' ? 'tts_timeout' : error?.code || 'tts_upstream_error'
-    const status = code === 'rate_limited' ? 429 : code === 'not_configured' ? 503 : code === 'tts_timeout' ? 504 : 502
+    const status = code === 'rate_limited' ? 429 : code === 'tts_timeout' ? 504 : 502
     console.error('[lesson-narration]', { code, lessonSlug, blockId, provider: provider.id })
     return sendError(res, status, code, 'Ses şu anda hazırlanamadı. Biraz sonra yeniden deneyebilirsin.')
   } finally {

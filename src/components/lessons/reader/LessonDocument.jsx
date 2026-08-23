@@ -41,7 +41,7 @@ export default function LessonDocument({
   onInteraction,
   onSectionComplete,
   completedSections,
-  activeNarrationBlockId = null,
+  activeNarrationBlockIds = [],
 }) {
   /* Şekil numaraları tek geçişte hesaplanır. */
   const figureNumbers = useMemo(() => {
@@ -118,7 +118,7 @@ export default function LessonDocument({
                     figureIndex={figureNumbers.get(block.id)}
                     onExplainFigure={onExplainFigure}
                     onInteraction={onInteraction}
-                    activeNarration={activeNarrationBlockId === block.id}
+                    activeNarration={activeNarrationBlockIds.includes(block.id)}
                   />
                 ))}
               </div>

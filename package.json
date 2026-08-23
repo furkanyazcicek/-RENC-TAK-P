@@ -18,6 +18,8 @@
     "test:ai-solve": "node scripts/test-ai-solve.mjs",
     "test:lesson-document": "node scripts/test-lesson-document.mjs",
     "test:tts-cache": "node scripts/test-tts-cache.mjs",
+    "ses:uret": "node scripts/ders-sesi-uret.mjs",
+    "ses:tahmin": "node scripts/ders-sesi-uret.mjs --tahmin",
     "test:lesson-narration": "node scripts/test-lesson-narration.mjs",
     "diagnose:solve": "node scripts/diagnose-solve.mjs",
     "test:lesson-content": "node scripts/test-lesson-content.mjs",

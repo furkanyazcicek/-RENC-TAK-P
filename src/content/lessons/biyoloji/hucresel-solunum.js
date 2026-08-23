@@ -673,7 +673,7 @@ Hücredeki organellerin neredeyse tamamı proteinlerini çekirdekten gelen talim
 
 Şimdi çok kritik bir uyarı yapacağım, çünkü burası tam bir sınav tuzağı.
 
-Bütün bunlar, mitokondrinin hücreden bağımsız olduğu anlamına gelmiyor. Mitokondri proteinlerinin çoğu hâlâ çekirdek DNA'sında kodlu. Yani organel kendi ihtiyacının yalnızca küçük bir kısmını karşılayabiliyor.
+Bütün bunlar, mitokondrinin hücreden bağımsız olduğu anlamına gelmiyor. Bu organelin ihtiyaç duyduğu proteinlerin büyük çoğunluğunun tarifi hâlâ çekirdekte duruyor. Yani mitokondri kendi ihtiyacının yalnızca küçük bir kısmını kendi başına karşılayabiliyor.
 
 Bu yüzden mitokondriye özerk demiyoruz; yarı özerk diyoruz. Tek kelimelik bir fark ama sınavda bütün cevabı değiştirir.
 
@@ -736,7 +736,7 @@ Bu yüzden mitokondriyal hastalıklar anneden bütün çocuklara aktarılır, ba
 
 Ekrandaki karşılaştırmaya bak. Mitokondrinin DNA'sı halkasal ve histonsuz; tıpkı bakteride olduğu gibi. Ribozomu yetmiş S tipinde; yine bakteri tipi. İkiye bölünerek çoğalıyor; bakteriler gibi. Boyutu bir ila iki mikrometre; yani bir bakteri boyutunda.
 
-Bu kadar benzerlik tesadüf sayılamayacak kadar fazla.
+Dört ayrı özellikte birden aynı şeye benzemek, artık rastlantıyla açıklanamaz.
 
 Endosimbiyoz teorisi bunu şöyle açıklıyor. Bir zamanlar serbest yaşayan, oksijenli solunum yapabilen bir bakteri, büyük bir öncül hücre tarafından yutulmuş ama sindirilmemiş. İkisi birlikte yaşamayı sürdürmüş; bakteri verimli enerji sağlarken hücrenin korunaklı ortamından yararlanmış. Zamanla genlerinin çoğu çekirdeğe aktarılmış ve bağımsızlığını kaybetmiş.
 
@@ -744,7 +744,7 @@ Endosimbiyoz teorisi bunu şöyle açıklıyor. Bir zamanlar serbest yaşayan, o
 
 Aynı kanıtlar kloroplast için de geçerli. Bir soruda hangi organeller endosimbiyozla açıklanır diye sorulursa cevap ikisi birden.
 
-Son olarak konunun kalıtıma açılan kapısı. Döllenmede zigotun sitoplazması neredeyse tamamen yumurtadan geliyor. Mitokondriler de sitoplazmada bulunuyor. Sonuç şu: mitokondriyal DNA yalnızca anneden geçer. Bu yüzden mitokondriyal hastalıklar anneden bütün çocuklara aktarılır, babadan hiçbirine geçmez. Soy ağacı sorularında bu desen ayırt edici bir ipucudur.`,
+Son olarak konunun kalıtıma açılan kapısı. Döllenmede zigotun sitoplazması neredeyse tamamen yumurtadan geliyor. Mitokondriler de sitoplazmada bulunuyor. Sonuç şu: mitokondriyal DNA yalnızca anneden geçiyor. Yani mitokondri kaynaklı bir hastalık taşıyan anne, çocuklarının hepsine bunu aktarabilir; aynı hastalığı taşıyan bir baba ise hiçbir çocuğuna aktaramaz. Soy ağacı sorularında bu desen sana konuyu ele verir: hastalık kız erkek fark etmeksizin yalnızca anne tarafından iniyorsa, aklına mitokondriyal kalıtım gelmeli.`,
           },
           {
             id: 'mito-ozerklik-quiz',

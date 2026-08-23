@@ -1,12 +1,16 @@
 import assert from 'node:assert/strict'
-import { createTtsProvider } from '../api/_lib/tts/index.js'
+import { buildVoiceInstructions, createTtsProvider } from '../api/_lib/tts/index.js'
 import narrateHandler from '../api/lessons/narrate.js'
 import pilotLesson from '../src/content/lessons/biyoloji/canlilar-ve-cevre.js'
+import mitokondriLesson from '../src/content/lessons/biyoloji/hucresel-solunum.js'
+import { normalizeLessonDocument } from '../src/lib/lesson/schema.js'
 import {
   buildNarrationItems,
   findAdjacentSectionIndex,
+  isNarrationEnabled,
   narrationAudioUrl,
   readNarrationProgress,
+  stableTextVersion,
   writeNarrationProgress,
 } from '../src/lib/lessonNarration.js'
 
@@ -77,18 +81,34 @@ await check('OpenAI adapter mevcut sunucu anahtarını kullanıp ses akışını
   assert.deepEqual([...bytes], [1, 2, 3])
 })
 
-await check('Mevcut OPENAI_API_KEY ayrı TTS ayarı olmadan yeniden kullanılır', () => {
+/**
+ * PARA GÜVENLİĞİ
+ * Projede AI koç için zaten bir OPENAI_API_KEY tanımlı. Sağlayıcı yalnızca
+ * anahtar var diye kendiliğinden açılsaydı, seslendirme kimse istemeden
+ * çalışmaya ve fatura üretmeye başlardı. Bu yüzden açılış AÇIK BİR TERCİHE
+ * bağlıdır: TTS_PROVIDER yazılmadıkça ses üretilmez.
+ */
+await check('Ses sağlayıcısı açıkça seçilmeden kendiliğinden açılmaz', () => {
   const provider = createTtsProvider({ env: { OPENAI_API_KEY: 'test-only' }, fetchImpl: async () => new Response() })
+  assert.equal(provider.available, false)
+  assert.equal(provider.reason, 'not_configured')
+})
+
+await check('Sağlayıcı seçiliyse mevcut OPENAI_API_KEY yeniden kullanılır', () => {
+  const provider = createTtsProvider({
+    env: { TTS_PROVIDER: 'openai', OPENAI_API_KEY: 'test-only' },
+    fetchImpl: async () => new Response(),
+  })
   assert.equal(provider.id, 'openai')
   assert.equal(provider.available, true)
 })
 
-await check('Geçersiz sağlayıcı anahtarı yapılandırma hatasına çevrilir', async () => {
+await check('Geçersiz anahtar yukarı akış hatasına çevrilir', async () => {
   const provider = createTtsProvider({
-    env: { OPENAI_API_KEY: 'invalid-test-only' },
+    env: { TTS_PROVIDER: 'openai', OPENAI_API_KEY: 'invalid-test-only' },
     fetchImpl: async () => new Response('{}', { status: 401, headers: { 'content-type': 'application/json' } }),
   })
-  await assert.rejects(provider.generateSpeech({ text: 'Merhaba' }), (error) => error.code === 'not_configured')
+  await assert.rejects(provider.generateSpeech({ text: 'Merhaba' }), (error) => error.code === 'upstream_error')
 })
 
 await check('Yapılandırılmamış adapter güvenli hata verir', async () => {
@@ -132,6 +152,159 @@ await check('Ses API’si eksik sağlayıcıda okunabilir hata döndürür', asy
   } finally {
     restoreEnv('TTS_PROVIDER', previous)
   }
+})
+
+/* ==================================================================
+   MİTOKONDRİ PİLOTU
+   ================================================================== */
+
+await check('Mitokondri dersi on anlatım parçasına ayrılmış', () => {
+  const items = buildNarrationItems(mitokondriLesson.document, mitokondriLesson.slug)
+  assert.equal(items.length, 10)
+  // Her bölümde en az bir anlatım var: hiçbir bölüm sessiz kalmamalı.
+  const kapsananBolumler = new Set(items.map((item) => item.sectionIndex))
+  assert.equal(kapsananBolumler.size, mitokondriLesson.document.sections.length)
+})
+
+await check('Her anlatım parçası ekrandaki bir bloğa bağlı ve o blok gerçekten var', () => {
+  const items = buildNarrationItems(mitokondriLesson.document, mitokondriLesson.slug)
+  const gorunurBloklar = new Set(
+    mitokondriLesson.document.sections.flatMap((section) =>
+      section.blocks.filter((block) => block.type !== 'audio_script').map((block) => block.id)
+    )
+  )
+  items.forEach((item) => {
+    assert.ok(item.targetBlockId, `${item.id} hedefsiz`)
+    assert.ok(gorunurBloklar.has(item.targetBlockId), `${item.id} olmayan bloğa bağlı: ${item.targetBlockId}`)
+    item.highlightBlockIds.forEach((id) => assert.ok(gorunurBloklar.has(id), `${item.id} olmayan bloğu vurguluyor: ${id}`))
+  })
+})
+
+/**
+ * Anlatım, notu sesli okuyan bir metin OLMAMALI. Ölçüt: anlatımdaki uzun
+ * cümlelerin hiçbiri ekrandaki metinde birebir geçmemeli. Aynı bilgi
+ * anlatılır, aynı cümle kurulmaz.
+ */
+await check('Anlatım metni ekrandaki notu kelimesi kelimesine okumuyor', () => {
+  const items = buildNarrationItems(mitokondriLesson.document, mitokondriLesson.slug)
+  // Karşılaştırma yalnızca ÖĞRENCİNİN GÖRDÜĞÜ metinle yapılır; anlatım
+  // blokları ve görsel anlatımları ekranda metin olarak görünmez.
+  const ekranMetni = JSON.stringify(
+    mitokondriLesson.document.sections.map((section) => ({
+      ...section,
+      blocks: section.blocks
+        .filter((block) => block.type !== 'audio_script')
+        .map(({ audio_script: _atlanan, ...block }) => block),
+    }))
+  )
+  items.forEach((item) => {
+    const uzunCumleler = item.script
+      .split(/[.?!\n]/)
+      .map((cumle) => cumle.trim())
+      .filter((cumle) => cumle.length >= 50)
+    assert.ok(uzunCumleler.length >= 5, `${item.id} yeterince anlatım cümlesi içermiyor`)
+    uzunCumleler.forEach((cumle) => {
+      assert.ok(!ekranMetni.includes(cumle), `${item.id} nottaki cümleyi kopyalıyor: ${cumle.slice(0, 60)}…`)
+    })
+  })
+})
+
+await check('Anlatım uzunlukları ses üretimi sınırının altında', () => {
+  const items = buildNarrationItems(mitokondriLesson.document, mitokondriLesson.slug)
+  items.forEach((item) => {
+    assert.ok(item.script.length > 600, `${item.id} yüzeysel kalmış`)
+    assert.ok(item.script.length <= 3200, `${item.id} tek istekte üretilemeyecek kadar uzun`)
+  })
+})
+
+await check('Normalleştirme hedef bloğu ve vurgu listesini koruyor', () => {
+  const normalized = normalizeLessonDocument(mitokondriLesson.document)
+  const items = buildNarrationItems(normalized, mitokondriLesson.slug)
+  const raw = buildNarrationItems(mitokondriLesson.document, mitokondriLesson.slug)
+  assert.deepEqual(
+    items.map((item) => item.targetBlockId),
+    raw.map((item) => item.targetBlockId)
+  )
+  assert.ok(items.every((item) => item.voiceHint.length > 0))
+})
+
+await check('Hazır kayıt yoksa ses adresi API sürümüne düşer', () => {
+  const items = buildNarrationItems(normalizeLessonDocument(mitokondriLesson.document), mitokondriLesson.slug)
+  items.forEach((item) => {
+    assert.equal(item.isPrepared, false)
+    assert.match(item.audioUrl, /^\/api\/lessons\/narrate\?/)
+    assert.ok(item.audioUrl.includes(`v=${stableTextVersion(item.script)}`))
+  })
+})
+
+await check('Sesli anlatım yalnızca açık derslerde çalışır', () => {
+  assert.equal(isNarrationEnabled('hucresel-solunum-mitokondri'), true)
+  assert.equal(isNarrationEnabled('canlilar-ve-cevre'), true)
+  assert.equal(isNarrationEnabled('hucre-organeller'), false)
+  assert.deepEqual(buildNarrationItems(mitokondriLesson.document, 'hucre-organeller'), [])
+})
+
+await check('Ses API’si mitokondri bloğunu tanıyıp anlatım yönergesini sağlayıcıya iletir', async () => {
+  const previous = { provider: process.env.TTS_PROVIDER, key: process.env.TTS_API_KEY, fetch: globalThis.fetch }
+  process.env.TTS_PROVIDER = 'openai'
+  process.env.TTS_API_KEY = 'test-only'
+  let gonderilen = null
+  globalThis.fetch = async (url, options) => {
+    gonderilen = JSON.parse(options.body)
+    return new Response(new Uint8Array([7, 8, 9]), { headers: { 'content-type': 'audio/mpeg' } })
+  }
+
+  try {
+    const response = mockResponse()
+    await narrateHandler(
+      { method: 'GET', query: { lesson: 'hucresel-solunum-mitokondri', block: 'mito-kem-audio-atp' } },
+      response
+    )
+    assert.equal(response.statusCode, 200)
+    assert.match(gonderilen.input, /kemiozmoz/)
+    // Bölümün kendi yönergesi ("yavaş konuş") ortak öğretmen tonuna eklenmiş olmalı.
+    assert.match(gonderilen.instructions, /öğretmen/)
+    assert.match(gonderilen.instructions, /yavaş/)
+  } finally {
+    restoreEnv('TTS_PROVIDER', previous.provider)
+    restoreEnv('TTS_API_KEY', previous.key)
+    globalThis.fetch = previous.fetch
+  }
+})
+
+await check('Sesli anlatımı kapalı bir ders API’den ses alamaz', async () => {
+  const response = mockResponse()
+  await narrateHandler({ method: 'GET', query: { lesson: 'hucre-organeller', block: 'or-giris-audio' } }, response)
+  assert.equal(response.statusCode, 404)
+})
+
+await check('ElevenLabs adapteri aynı sözleşmeyle çalışır', async () => {
+  let istek
+  const provider = createTtsProvider({
+    env: { TTS_PROVIDER: 'elevenlabs', ELEVENLABS_API_KEY: 'test-only', TTS_VOICE_ID: 'ses-1' },
+    fetchImpl: async (url, options) => {
+      istek = { url, options }
+      return new Response(new Uint8Array([1]), { headers: { 'content-type': 'audio/mpeg' } })
+    },
+  })
+  const audio = await provider.generateSpeech({ text: 'Merhaba', language: 'tr-TR', style: 'yavaş konuş' })
+  const body = JSON.parse(istek.options.body)
+  assert.equal(provider.id, 'elevenlabs')
+  assert.match(istek.url, /text-to-speech\/ses-1/)
+  assert.equal(body.text, 'Merhaba')
+  assert.equal(body.language_code, 'tr')
+  assert.equal(audio.provider, 'elevenlabs')
+})
+
+await check('ElevenLabs ses kimliği verilmezse sessizce devre dışı kalır', () => {
+  const provider = createTtsProvider({ env: { TTS_PROVIDER: 'elevenlabs', ELEVENLABS_API_KEY: 'x' }, fetchImpl: async () => new Response() })
+  assert.equal(provider.available, false)
+})
+
+await check('Öğretmen tonu yönergesi her seslendirmede gönderilir', () => {
+  const instructions = buildVoiceInstructions({ language: 'tr-TR', style: 'Sakin ol.' })
+  assert.match(instructions, /öğretmen/)
+  assert.match(instructions, /Sakin ol\./)
 })
 
 checks.forEach(([label, pass, error]) => {

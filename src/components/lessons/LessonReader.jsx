@@ -36,7 +36,7 @@ export default function LessonReader() {
   const [completedSections, setCompletedSections] = useState(() => new Set())
   const [voicePanel, setVoicePanel] = useState(null)
   const [narrationOpen, setNarrationOpen] = useState(false)
-  const [activeNarrationBlockId, setActiveNarrationBlockId] = useState(null)
+  const [activeNarration, setActiveNarration] = useState(null)
 
   const articleRef = useRef(null)
 
@@ -99,7 +99,7 @@ export default function LessonReader() {
 
   useEffect(() => {
     setNarrationOpen(false)
-    setActiveNarrationBlockId(null)
+    setActiveNarration(null)
     setVoicePanel(null)
   }, [lessonId])
 
@@ -151,13 +151,17 @@ export default function LessonReader() {
   const narrationItems = useMemo(() => buildNarrationItems(document, lesson?.slug), [document, lesson?.slug])
   const isNarrationPilot = narrationItems.length > 0
 
+  // Anlatım yeni bir parçaya geçtiğinde konuşulan yer ekrana getirilir.
+  // Öğrenci elle kaydırdıysa bu, onu her saniye geri çekmez: etki yalnızca
+  // hedef blok DEĞİŞTİĞİNDE çalışır.
   useEffect(() => {
-    if (!activeNarrationBlockId) return
-    window.document.getElementById(`lesson-block-${activeNarrationBlockId}`)?.scrollIntoView({
+    const targetBlockId = activeNarration?.targetBlockId
+    if (!targetBlockId) return
+    window.document.getElementById(`lesson-block-${targetBlockId}`)?.scrollIntoView({
       behavior: 'smooth',
       block: 'center',
     })
-  }, [activeNarrationBlockId])
+  }, [activeNarration?.targetBlockId])
 
   const recordEvent = useCallback(
     (eventName, payload = {}) => {
@@ -266,7 +270,7 @@ export default function LessonReader() {
             key={lesson.slug}
             lessonSlug={lesson.slug}
             items={narrationItems}
-            onActiveBlockChange={setActiveNarrationBlockId}
+            onActiveBlockChange={setActiveNarration}
             onClose={() => setNarrationOpen(false)}
           />
         )}
@@ -278,7 +282,7 @@ export default function LessonReader() {
           onSectionComplete={completeSection}
           onExplainFigure={openFigureVoice}
           onInteraction={handleInteraction}
-          activeNarrationBlockId={activeNarrationBlockId}
+          activeNarrationBlockIds={activeNarration?.highlightBlockIds ?? []}
         />
         
       </article>

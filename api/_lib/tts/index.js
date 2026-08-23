@@ -1,15 +1,38 @@
 /**
  * DrKoç TTS provider sınırı.
  *
- * Ders okuyucusu veya editor hiçbir sağlayıcı SDK'sını bilmez. Kişisel ses
- * modeli seçildiğinde yalnızca bu katmana provider eklenir; cache key ve
- * storage sözleşmesi değişmez. Şimdilik `none` güvenli varsayılandır:
+ * Ders okuyucusu veya editor hiçbir sağlayıcı SDK'sını bilmez. Tek sözleşme
+ * şudur:
+ *
+ *   generateSpeech({ text, language, style, speed, signal })
+ *     → { body | arrayBuffer, contentType, provider, model, voiceId }
+ *
+ * Sağlayıcı değiştiğinde yalnızca bu dosyaya bir adapter eklenir; cache key,
+ * storage yolu ve okuyucu tarafı hiç değişmez. `none` güvenli varsayılandır:
  * yapılandırılmamış bir ses servisi dersi veya not kaydını asla bozmaz.
+ *
+ * `style` alanı ders içeriğinden gelen anlatım yönergesidir ("bu bölüm zor,
+ * biraz yavaş konuş" gibi). Bunu içerikte tutuyoruz, çünkü hangi cümlenin
+ * vurgulanacağını bilen taraf ses sağlayıcısı değil, dersi yazan öğretmendir.
  */
 import { createHash } from 'node:crypto'
 
+/** Bütün sağlayıcılar için ortak öğretmen tonu. */
+const TEACHER_STYLE_TR =
+  'Türkçe konuşan, sıcak fakat profesyonel bir lise biyoloji öğretmeni gibi anlat. ' +
+  'Metni okuyormuş gibi değil, karşındaki tek bir öğrenciye anlatıyormuş gibi konuş. ' +
+  'Cümleler arasında doğal duraklamalar bırak; kritik bilgilerde hafifçe yavaşla ve vurgula. ' +
+  'Soru cümlelerinde tonlamayı yükselt, ardından kısa bir duraklama bırak. ' +
+  'Abartılı, reklam sesi gibi veya aşırı enerjik olma; monoton da olma. ' +
+  'Kavram adlarını net telaffuz et.'
+
+export function buildVoiceInstructions({ language = 'tr-TR', style = '' } = {}) {
+  if (language !== 'tr-TR') return style || undefined
+  return style ? `${TEACHER_STYLE_TR} ${style}` : TEACHER_STYLE_TR
+}
+
 export function createAudioCacheKey({ lessonId, sectionId, blockId, content, voiceId, personalizationHash, language = 'tr-TR', model }) {
-  const input = [lessonId, sectionId ?? '', blockId ?? '', content, voiceId ?? '', personalizationHash ?? '', language, model ?? ''].join('\u001f')
+  const input = [lessonId, sectionId ?? '', blockId ?? '', content, voiceId ?? '', personalizationHash ?? '', language, model ?? ''].join('')
   return createHash('sha256').update(input).digest('hex')
 }
 
@@ -23,19 +46,22 @@ export function getTtsProvider() {
  * adapter sözleşmesini uçtan uca doğrulayabilir.
  */
 export function createTtsProvider({ env = {}, fetchImpl = globalThis.fetch } = {}) {
-  // Projede zaten OpenAI anahtarı varsa pilot ayrıca bir TTS sırrı istemez.
-  // Açık `TTS_PROVIDER=none` her zaman kazanır ve özelliği güvenle kapatır.
-  const inferredProvider = env.TTS_API_KEY || env.OPENAI_API_KEY ? 'openai' : 'none'
-  const provider = String(env.TTS_PROVIDER ?? inferredProvider).trim().toLowerCase()
+  const provider = String(env.TTS_PROVIDER ?? 'none').trim().toLowerCase()
   if (provider === 'none') return unavailableProvider()
 
   if (provider === 'openai') return openAiProvider({ env, fetchImpl })
+  if (provider === 'elevenlabs') return elevenLabsProvider({ env, fetchImpl })
 
   // Yeni sağlayıcı eklendiğinde bu fabrikaya küçük bir adapter bağlanacak.
   // Provider anahtarı yalnızca sunucuda okunur; istemciye hiçbir zaman geçmez.
   return unavailableProvider(`unsupported_provider:${provider}`)
 }
 
+/**
+ * OPENAI — pilot varsayılanı.
+ * `instructions` alanı sayesinde ton, tempo ve vurgu düz metinle yönlendirilir;
+ * ayrı bir SSML dili öğrenmeye gerek kalmaz.
+ */
 function openAiProvider({ env, fetchImpl }) {
   const apiKey = env.TTS_API_KEY || env.OPENAI_API_KEY
   const baseUrl = String(env.TTS_BASE_URL || env.OPENAI_BASE_URL || 'https://api.openai.com/v1').replace(/\/$/, '')
@@ -51,7 +77,7 @@ function openAiProvider({ env, fetchImpl }) {
     model,
     voiceId,
     responseFormat,
-    async generateSpeech({ text, language = 'tr-TR', signal }) {
+    async generateSpeech({ text, language = 'tr-TR', style = '', speed, signal }) {
       const response = await fetchImpl(`${baseUrl}/audio/speech`, {
         method: 'POST',
         headers: {
@@ -63,25 +89,13 @@ function openAiProvider({ env, fetchImpl }) {
           voice: voiceId,
           input: text,
           response_format: responseFormat,
-          instructions:
-            language === 'tr-TR'
-              ? 'Türkçe bir lise öğretmeni gibi doğal, sakin ve anlaşılır konuş. Terimleri net söyle; abartılı tonlama kullanma.'
-              : undefined,
+          ...(Number.isFinite(speed) ? { speed } : {}),
+          instructions: buildVoiceInstructions({ language, style }),
         }),
         signal,
       })
 
-      if (!response.ok) {
-        const error = new Error(`tts_upstream_${response.status}`)
-        error.code =
-          response.status === 401 || response.status === 403
-            ? 'not_configured'
-            : response.status === 429
-              ? 'rate_limited'
-              : 'upstream_error'
-        error.status = response.status
-        throw error
-      }
+      if (!response.ok) throw upstreamError(response.status)
 
       return {
         body: response.body,
@@ -93,6 +107,79 @@ function openAiProvider({ env, fetchImpl }) {
       }
     },
   }
+}
+
+/**
+ * ELEVENLABS — Türkçe doğallığı en yüksek seçenek.
+ * Ton kontrolü metinle değil sayısal ses ayarlarıyla yapılır: `stability`
+ * düştükçe tonlama canlanır, `style` arttıkça vurgu belirginleşir. Öğretmen
+ * anlatımı için ikisi de ORTA seviyede tutulur; uçlara gidildiğinde ses ya
+ * monotonlaşır ya da tiyatro gibi olur.
+ */
+function elevenLabsProvider({ env, fetchImpl }) {
+  const apiKey = env.TTS_API_KEY || env.ELEVENLABS_API_KEY
+  const baseUrl = String(env.TTS_BASE_URL || 'https://api.elevenlabs.io/v1').replace(/\/$/, '')
+  const model = env.TTS_MODEL || 'eleven_multilingual_v2'
+  const voiceId = env.TTS_VOICE_ID || ''
+  const responseFormat = env.TTS_RESPONSE_FORMAT || 'mp3'
+  const outputFormat = env.TTS_OUTPUT_FORMAT || 'mp3_44100_128'
+
+  if (!apiKey || !voiceId || typeof fetchImpl !== 'function') return unavailableProvider('not_configured')
+
+  return {
+    id: 'elevenlabs',
+    available: true,
+    model,
+    voiceId,
+    responseFormat,
+    async generateSpeech({ text, language = 'tr-TR', style = '', speed, signal }) {
+      const response = await fetchImpl(`${baseUrl}/text-to-speech/${voiceId}?output_format=${outputFormat}`, {
+        method: 'POST',
+        headers: {
+          'xi-api-key': apiKey,
+          'Content-Type': 'application/json',
+          Accept: 'audio/mpeg',
+        },
+        body: JSON.stringify({
+          text,
+          model_id: model,
+          language_code: language.startsWith('tr') ? 'tr' : language.slice(0, 2),
+          voice_settings: {
+            stability: numberFrom(env.TTS_STABILITY, 0.45),
+            similarity_boost: numberFrom(env.TTS_SIMILARITY, 0.8),
+            // Anlatım yönergesi "yavaşla/vurgula" diyorsa ifade payı biraz artar.
+            style: /yavaş|vurgu/i.test(style) ? 0.45 : numberFrom(env.TTS_STYLE, 0.3),
+            use_speaker_boost: true,
+            ...(Number.isFinite(speed) ? { speed } : {}),
+          },
+        }),
+        signal,
+      })
+
+      if (!response.ok) throw upstreamError(response.status)
+
+      return {
+        body: response.body,
+        arrayBuffer: () => response.arrayBuffer(),
+        contentType: response.headers.get('content-type') || mimeFor(responseFormat),
+        provider: 'elevenlabs',
+        model,
+        voiceId,
+      }
+    },
+  }
+}
+
+function numberFrom(value, fallback) {
+  const parsed = Number.parseFloat(value)
+  return Number.isFinite(parsed) ? parsed : fallback
+}
+
+function upstreamError(status) {
+  const error = new Error(`tts_upstream_${status}`)
+  error.code = status === 429 ? 'rate_limited' : 'upstream_error'
+  error.status = status
+  return error
 }
 
 function mimeFor(format) {

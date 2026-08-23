@@ -77,7 +77,7 @@ export default function LessonPreview() {
   const [personalized, setPersonalized] = useState(true)
   const [completedSections, setCompletedSections] = useState(() => new Set())
   const [narrationOpen, setNarrationOpen] = useState(false)
-  const [activeNarrationBlockId, setActiveNarrationBlockId] = useState(null)
+  const [activeNarration, setActiveNarration] = useState(null)
 
   const source = useMemo(
     () => LESSONS.find((item) => item.slug === activeSlug) ?? LESSONS[0],
@@ -116,17 +116,18 @@ export default function LessonPreview() {
   useEffect(() => {
     setPersonalized((source.learningMode ?? 'interactive') !== 'foundation')
     setNarrationOpen(false)
-    setActiveNarrationBlockId(null)
+    setActiveNarration(null)
     setVoicePanel(null)
   }, [source])
 
   useEffect(() => {
-    if (!activeNarrationBlockId) return
-    window.document.getElementById(`lesson-block-${activeNarrationBlockId}`)?.scrollIntoView({
+    const targetBlockId = activeNarration?.targetBlockId
+    if (!targetBlockId) return
+    window.document.getElementById(`lesson-block-${targetBlockId}`)?.scrollIntoView({
       behavior: 'smooth',
       block: 'center',
     })
-  }, [activeNarrationBlockId])
+  }, [activeNarration?.targetBlockId])
 
   return (
     <div className="min-h-screen bg-paper text-ink">
@@ -195,7 +196,7 @@ export default function LessonPreview() {
               key={source.slug}
               lessonSlug={source.slug}
               items={narrationItems}
-              onActiveBlockChange={setActiveNarrationBlockId}
+              onActiveBlockChange={setActiveNarration}
               onClose={() => setNarrationOpen(false)}
             />
           )}
@@ -208,7 +209,7 @@ export default function LessonPreview() {
             onExplainFigure={(block) =>
               setVoicePanel({ kind: 'figure', title: block.title || 'Görseli Hocayla İncele', script: block.audio_script })
             }
-            activeNarrationBlockId={activeNarrationBlockId}
+            activeNarrationBlockIds={activeNarration?.highlightBlockIds ?? []}
           />
         </article>
 

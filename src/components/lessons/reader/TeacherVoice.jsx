@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { AudioLines, Pause, Play } from 'lucide-react'
 import Prose from './Prose'
+import { registerAudioElement } from '../../../lib/lessonAudioBus'
 
 /**
  * ÖĞRETMEN ANLATIMI
@@ -70,6 +71,17 @@ function AudioPlayer({ src, durationSeconds }) {
     setProgress(0)
     setFailed(false)
   }, [src])
+
+  // Ortak ses hattı: sayfadaki anlatım oynatıcısıyla aynı anda çalmasın.
+  useEffect(() => registerAudioElement(audioRef.current), [])
+
+  useEffect(() => {
+    const node = audioRef.current
+    if (!node) return undefined
+    const handlePause = () => setPlaying(false)
+    node.addEventListener('pause', handlePause)
+    return () => node.removeEventListener('pause', handlePause)
+  }, [])
 
   if (failed) {
     return (
