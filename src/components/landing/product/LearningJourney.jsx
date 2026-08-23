@@ -1,6 +1,8 @@
 import { useState } from 'react'
-import { BookOpen, CheckCircle2, Eye, Highlighter, Image, MousePointer2 } from 'lucide-react'
+import { BookOpen, Calculator, CheckCircle2, Dna, Eye, Highlighter, Image, Landmark, MousePointer2 } from 'lucide-react'
 import PhScale from '../../lessons/figures/PhScale'
+import UnitCircle from '../../lessons/figures/UnitCircle'
+import DonemHaritasi from '../../tarih/padisahlar/DonemHaritasi'
 
 const NOTE_STEPS = [
   {
@@ -30,6 +32,41 @@ const PH_REGIONS = [
   { key: 'asit', label: 'Asidik bölge', helper: 'pH azaldıkça H⁺ derişimi artar.' },
   { key: 'notr', label: 'Nötr eşik', helper: 'Saf suda iyon dengesi eşittir.' },
   { key: 'baz', label: 'Bazik bölge', helper: 'pH yükseldikçe OH⁻ göreli olarak artar.' },
+]
+
+const MATH_REGIONS = [
+  { key: 'cos', label: 'Kosinüs izdüşümü', helper: 'Noktanın x koordinatını gör.' },
+  { key: 'sin', label: 'Sinüs izdüşümü', helper: 'Noktanın y koordinatını gör.' },
+]
+
+const HISTORY_PERIODS = [
+  { key: 'osman-1324', label: 'Osman Gazi', helper: '1299–1324 · İlk çekirdek', focus: 'yenisehir' },
+  { key: 'orhan-1362', label: 'Orhan Gazi', helper: '1324–1362 · Rumeli’ye geçiş', focus: 'cimpe' },
+  { key: 'murad-1389', label: 'I. Murad', helper: '1362–1389 · Rumeli ağırlığı', focus: 'edirne' },
+]
+
+const SUBJECTS = [
+  {
+    key: 'biology',
+    label: 'Biyoloji',
+    Icon: Dna,
+    title: 'pH ölçeğinin katmanlarını aç.',
+    text: 'Asidik, nötr ve bazik bölgeler arasında geçiş yap; iyon dengesinin ve protein yapısının nasıl değiştiğini gör.',
+  },
+  {
+    key: 'math',
+    label: 'Matematik',
+    Icon: Calculator,
+    title: 'Bir açıyı koordinata dönüştür.',
+    text: 'Birim çemberde sinüs ve kosinüs izdüşümlerini ayrı ayrı vurgula; formülün şeklin içinden nasıl doğduğunu keşfet.',
+  },
+  {
+    key: 'history',
+    label: 'Tarih',
+    Icon: Landmark,
+    title: 'Dönem değiştikçe haritayı değiştir.',
+    text: 'İlk üç Osmanlı hükümdarı arasında geçiş yap; hâkimiyet alanlarının Marmara’dan Rumeli’ye nasıl genişlediğini izle.',
+  },
 ]
 
 function NoteCanvas({ activeStep }) {
@@ -140,11 +177,37 @@ export function NotesShowcase() {
 }
 
 export function InteractiveVisualShowcase() {
+  const [activeSubject, setActiveSubject] = useState('biology')
   const [activeRegion, setActiveRegion] = useState(null)
-  const selected = PH_REGIONS.find((region) => region.key === activeRegion)
+  const [activeMathRegion, setActiveMathRegion] = useState(null)
+  const [activeHistoryPeriod, setActiveHistoryPeriod] = useState(HISTORY_PERIODS[0].key)
+  const subject = SUBJECTS.find((item) => item.key === activeSubject) ?? SUBJECTS[0]
+  const historyPeriod = HISTORY_PERIODS.find((item) => item.key === activeHistoryPeriod) ?? HISTORY_PERIODS[0]
 
   const toggleRegion = (key) => {
     setActiveRegion((current) => current === key ? null : key)
+  }
+
+  const toggleMathRegion = (key) => {
+    setActiveMathRegion((current) => current === key ? null : key)
+  }
+
+  const controls = activeSubject === 'biology'
+    ? PH_REGIONS
+    : activeSubject === 'math'
+      ? MATH_REGIONS
+      : HISTORY_PERIODS
+
+  const selectedKey = activeSubject === 'biology'
+    ? activeRegion
+    : activeSubject === 'math'
+      ? activeMathRegion
+      : activeHistoryPeriod
+
+  const handleControl = (key) => {
+    if (activeSubject === 'biology') toggleRegion(key)
+    else if (activeSubject === 'math') toggleMathRegion(key)
+    else setActiveHistoryPeriod(key)
   }
 
   return (
@@ -153,6 +216,29 @@ export function InteractiveVisualShowcase() {
       <div aria-hidden="true" className="absolute -right-48 top-0 h-[36rem] w-[36rem] rounded-full bg-brand-500/20 blur-aurora-lg" />
 
       <div className="relative mx-auto max-w-content px-4 sm:px-6">
+        <div className="mb-12 flex justify-center lg:mb-16" role="tablist" aria-label="Etkileşimli görsel dersi">
+          <div className="inline-flex w-full max-w-xl gap-1 rounded-2xl border border-white/10 bg-white/[0.06] p-1.5 backdrop-blur-sm">
+            {SUBJECTS.map(({ key, label, Icon }) => {
+              const active = activeSubject === key
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  role="tab"
+                  id={`subject-tab-${key}`}
+                  aria-selected={active}
+                  aria-controls="subject-demo-panel"
+                  onClick={() => setActiveSubject(key)}
+                  className={`focus-ring flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl px-2 text-xs font-bold transition-[background-color,color,box-shadow,transform] duration-200 active:scale-[0.98] motion-reduce:transform-none sm:text-sm ${active ? 'bg-white text-ink shadow-card' : 'text-white/60 hover:bg-white/[0.07] hover:text-white'}`}
+                >
+                  <Icon className="h-4 w-4" aria-hidden="true" />
+                  {label}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
         <div className="grid items-center gap-12 lg:grid-cols-[0.78fr_1.22fr] lg:gap-16">
           <div>
             <span className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.2em] text-brand-300">
@@ -163,19 +249,22 @@ export function InteractiveVisualShowcase() {
               Sadece bakma.
               <span className="block text-white/45">Keşfet.</span>
             </h2>
-            <p className="mt-6 max-w-xl text-base leading-7 text-white/65 sm:text-lg sm:leading-8">
-              Notların içindeki görseller, konunun katmanlarını açar. Bir bölge seç; görsel yaklaşsın ve bilimsel açıklama tam o noktada belirsin.
+            <p className="mt-6 text-lg font-bold leading-7 text-white sm:text-xl">
+              {subject.title}
+            </p>
+            <p className="mt-3 max-w-xl text-base leading-7 text-white/65 sm:text-lg sm:leading-8">
+              {subject.text}
             </p>
 
-            <div className="mt-8 grid gap-2" role="group" aria-label="pH görselinde incelenecek bölge">
-              {PH_REGIONS.map((region) => {
-                const active = activeRegion === region.key
+            <div className="mt-8 grid gap-2" role="group" aria-label={`${subject.label} görselinde incelenecek bölüm`}>
+              {controls.map((control) => {
+                const active = selectedKey === control.key
                 return (
                   <button
-                    key={region.key}
+                    key={control.key}
                     type="button"
                     aria-pressed={active}
-                    onClick={() => toggleRegion(region.key)}
+                    onClick={() => handleControl(control.key)}
                     className={`focus-ring min-h-12 rounded-xl border px-4 py-3 text-left transition-[background-color,border-color,transform] duration-200 active:scale-[0.99] motion-reduce:transform-none ${active ? 'border-brand-300 bg-white/12' : 'border-white/10 bg-white/[0.05] hover:border-white/25 hover:bg-white/[0.08]'}`}
                   >
                     <span className="flex items-center gap-3">
@@ -183,8 +272,8 @@ export function InteractiveVisualShowcase() {
                         <MousePointer2 className="h-3.5 w-3.5" aria-hidden="true" />
                       </span>
                       <span>
-                        <span className="block text-sm font-bold text-white">{region.label}</span>
-                        <span className="mt-0.5 block text-xs leading-5 text-white/55">{region.helper}</span>
+                        <span className="block text-sm font-bold text-white">{control.label}</span>
+                        <span className="mt-0.5 block text-xs leading-5 text-white/55">{control.helper}</span>
                       </span>
                     </span>
                   </button>
@@ -193,12 +282,38 @@ export function InteractiveVisualShowcase() {
             </div>
           </div>
 
-          <div className="min-w-0 rounded-panel border border-white/15 bg-white/[0.07] p-2.5 shadow-overlay backdrop-blur-sm sm:p-4">
+          <div
+            id="subject-demo-panel"
+            role="tabpanel"
+            aria-labelledby={`subject-tab-${activeSubject}`}
+            className="min-w-0 rounded-panel border border-white/15 bg-white/[0.07] p-2.5 shadow-overlay backdrop-blur-sm sm:p-4"
+          >
             <div className="mb-3 flex items-center justify-between px-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-white/50">
-              <span className="inline-flex items-center gap-1.5"><Image className="h-3.5 w-3.5" /> Canlı ders görseli</span>
-              <span>{selected ? 'Detay açık' : 'Bir bölge seç'}</span>
+              <span className="inline-flex items-center gap-1.5"><Image className="h-3.5 w-3.5" /> {subject.label} · Canlı ders görseli</span>
+              <span>{selectedKey ? 'Seçim açık' : 'Bir bölüm seç'}</span>
             </div>
-            <PhScale activeRegion={activeRegion} />
+            {activeSubject === 'biology' && <PhScale activeRegion={activeRegion} />}
+            {activeSubject === 'math' && (
+              <div className="overflow-hidden rounded-xl bg-surface p-3 sm:p-5">
+                <UnitCircle activeRegion={activeMathRegion} />
+              </div>
+            )}
+            {activeSubject === 'history' && (
+              <div
+                className="padisah-gecidi h-[22rem] overflow-hidden rounded-xl sm:h-[27rem]"
+                style={{ minHeight: 0, maxHeight: 'none' }}
+              >
+                <DonemHaritasi
+                  key={historyPeriod.key}
+                  haritaId={historyPeriod.key}
+                  odak={historyPeriod.focus}
+                  vurgular={[historyPeriod.focus]}
+                  lejant
+                  not={false}
+                  sigdir
+                />
+              </div>
+            )}
           </div>
         </div>
       </div>
