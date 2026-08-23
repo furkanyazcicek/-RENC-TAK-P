@@ -40,6 +40,10 @@
   --depth-fg-y: 0px;
   --depth-pointer-x: 0px;
   --depth-pointer-y: 0px;
+  --depth-bg-pointer-x: 0px;
+  --depth-bg-pointer-y: 0px;
+  --depth-content-pointer-x: 0px;
+  --depth-content-pointer-y: 0px;
   --depth-scale: 1;
   position: relative;
   isolation: isolate;
@@ -51,15 +55,25 @@
   inset: -4rem 0;
   overflow: hidden;
   pointer-events: none;
-  transform: translate3d(0, var(--depth-bg-y), 0);
+  transform: translate3d(
+    var(--depth-bg-pointer-x),
+    calc(var(--depth-bg-y) + var(--depth-bg-pointer-y)),
+    0
+  );
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 
 .depth-scene__content {
   position: relative;
   z-index: 1;
-  transform: translate3d(0, var(--depth-content-y), 0) scale(var(--depth-scale));
+  transform: translate3d(
+    var(--depth-content-pointer-x),
+    calc(var(--depth-content-y) + var(--depth-content-pointer-y)),
+    0
+  ) scale(var(--depth-scale));
   transform-origin: center;
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 
@@ -219,10 +233,12 @@
 }
 
 @media (max-width: 1023px) {
-  .depth-scene__content,
-  .depth-scene__background,
-  .depth-scene__foreground {
-    transform: none;
+  .depth-scene__content {
+    transform: translate3d(0, clamp(-6px, var(--depth-content-y), 6px), 0);
+  }
+
+  .depth-scene__background {
+    transform: translate3d(0, clamp(-18px, var(--depth-bg-y), 18px), 0);
   }
 
   .depth-scene__foreground {
@@ -242,6 +258,14 @@
 }
 
 @media (max-width: 640px) {
+  .depth-scene__content {
+    transform: none;
+  }
+
+  .depth-scene__background {
+    transform: translate3d(0, clamp(-12px, var(--depth-bg-y), 12px), 0);
+  }
+
   .homepage-depth::before,
   .depth-grid {
     display: none;

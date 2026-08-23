@@ -66,11 +66,19 @@ export default function DepthScene({
       const y = ((event.clientY - rect.top) / Math.max(1, rect.height) - 0.5) * 2
       scene.style.setProperty('--depth-pointer-x', `${(x * 7 * intensity).toFixed(2)}px`)
       scene.style.setProperty('--depth-pointer-y', `${(y * 5 * intensity).toFixed(2)}px`)
+      scene.style.setProperty('--depth-bg-pointer-x', `${(x * -2.2 * intensity).toFixed(2)}px`)
+      scene.style.setProperty('--depth-bg-pointer-y', `${(y * -1.6 * intensity).toFixed(2)}px`)
+      scene.style.setProperty('--depth-content-pointer-x', `${(x * 0.8 * intensity).toFixed(2)}px`)
+      scene.style.setProperty('--depth-content-pointer-y', `${(y * 0.6 * intensity).toFixed(2)}px`)
     }
 
     const resetPointerDepth = () => {
       scene.style.setProperty('--depth-pointer-x', '0px')
       scene.style.setProperty('--depth-pointer-y', '0px')
+      scene.style.setProperty('--depth-bg-pointer-x', '0px')
+      scene.style.setProperty('--depth-bg-pointer-y', '0px')
+      scene.style.setProperty('--depth-content-pointer-x', '0px')
+      scene.style.setProperty('--depth-content-pointer-y', '0px')
     }
 
     observer.observe(scene)
