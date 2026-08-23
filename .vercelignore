@@ -1,0 +1,19 @@
+# Yayına gönderilmeyecek dosyalar (yalnızca proje kökündekiler)
+/node_modules
+/dist
+/.git
+/tmp
+/.pnpm-store
+/data
+/TYT_Turkce_Soru_Kutuphanesi
+/.claude
+/supabase
+/scripts
+/*.png
+/sekme-onizleme.html
+/vercel.json.txt
+/LandingPage.jsx
+
+# Proje npm kullanıyor; eski pnpm dosyaları yayına gitmesin
+/pnpm-lock.yaml
+/pnpm-workspace.yaml
