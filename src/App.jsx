@@ -26,7 +26,7 @@ import LessonReader from './components/lessons/LessonReader'
 import LessonPreview from './pages/LessonPreview'
 import TopicTestSolve from './pages/TopicTestSolve'
 import TopicTestResult from './pages/TopicTestResult'
-import OttomanAtlas from './pages/OttomanAtlas'
+import TarihAtlasi from './pages/TarihAtlasi'
 import { PageLoader } from './components/ui'
 
 /** Route geçişlerinde gösterilen tam sayfa yükleyici (tasarım sisteminden). */
@@ -109,7 +109,7 @@ export default function App() {
           hesapsız bakıyor ve erişemezlerse başvuru reddediliyor. */}
       <Route path="/gizlilik" element={<PrivacyPolicy />} />
       <Route path="/ders-notu-onizleme" element={<LessonPreview />} />
-      <Route path="/tarih-atlasi" element={<OttomanAtlas />} />
+      <Route path="/tarih-atlasi" element={<TarihAtlasi />} />
       
       <Route
         path="/veli"

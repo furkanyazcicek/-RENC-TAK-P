@@ -1,0 +1,466 @@
+/* Dr. Koç Tarih Atlası — tam ekran harita arayüzü.
+   Eski atlas hissi: koyu yeşil zemin, altın çizgiler, sakin renkler. */
+
+.tarih-atlasi {
+  --atlas-metin: 236 229 198;
+  --atlas-soluk: 156 163 149;
+  --atlas-zemin: 13 23 26;
+  --atlas-yuzey: 25 41 43;
+  --atlas-yuzey-koyu: 9 21 24;
+  --atlas-cizgi: 71 78 66;
+  --atlas-altin: 202 164 80;
+  --atlas-altin-acik: 238 211 145;
+  --atlas-yesil: 76 137 92;
+  --atlas-kirmizi: 176 68 60;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+  background: rgb(var(--atlas-zemin));
+  color: rgb(var(--atlas-metin));
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ————— Tam ekran durum mesajları ————— */
+.atlas-tam-durum {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgb(var(--atlas-altin-acik));
+  font: 600 15px Georgia, serif;
+  letter-spacing: 0.04em;
+}
+.atlas-donen {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgb(var(--atlas-altin) / 0.25);
+  border-top-color: rgb(var(--atlas-altin));
+  border-radius: 50%;
+  animation: atlas-donme 0.8s linear infinite;
+}
+@keyframes atlas-donme { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .atlas-donen { animation-duration: 2.4s; }
+}
+
+/* ————— Üst çubuk ————— */
+.atlas-ustbar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding: 7px 14px;
+  border-bottom: 1px solid rgb(var(--atlas-altin) / 0.28);
+  background: linear-gradient(180deg, rgb(32 48 49), rgb(13 27 30));
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.32);
+  z-index: 20;
+}
+
+.atlas-marka { display: flex; align-items: center; gap: 9px; }
+.atlas-marka-simge {
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  border: 1px solid rgb(var(--atlas-altin) / 0.55);
+  border-radius: 5px;
+  background: radial-gradient(circle at 35% 30%, rgb(100 163 108), rgb(25 71 56) 68%);
+  color: #fff;
+  font: 800 11px Georgia, serif;
+  box-shadow: inset 0 0 0 2px rgb(10 30 23 / 0.6);
+}
+.atlas-marka b, .atlas-marka small { display: block; }
+.atlas-marka b { font: 700 13px Georgia, serif; }
+.atlas-marka small { margin-top: 1px; color: rgb(var(--atlas-soluk)); font-size: 9px; }
+
+.atlas-donem-rozeti { display: flex; justify-content: center; gap: 14px; }
+.atlas-donem-rozeti > span {
+  display: grid;
+  grid-template-columns: 18px auto;
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 7px;
+  padding: 3px 14px;
+  border-left: 1px solid rgb(var(--atlas-altin) / 0.22);
+  color: rgb(var(--atlas-altin));
+}
+.atlas-donem-rozeti > span:last-child { border-right: 1px solid rgb(var(--atlas-altin) / 0.22); }
+.atlas-donem-rozeti svg { grid-row: 1 / 3; }
+.atlas-donem-rozeti small { color: rgb(var(--atlas-soluk)); font-size: 8px; letter-spacing: 0.1em; }
+.atlas-donem-rozeti b { color: rgb(var(--atlas-metin)); font: 700 12px Georgia, serif; white-space: nowrap; }
+
+.atlas-geri {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: rgb(var(--atlas-soluk));
+  font-size: 11px; font-weight: 600; text-decoration: none;
+}
+.atlas-geri:hover { border-color: rgb(var(--atlas-altin) / 0.28); background: rgb(255 255 255 / 0.04); color: rgb(var(--atlas-altin-acik)); }
+.atlas-geri:focus-visible { outline: 2px solid rgb(var(--atlas-altin)); outline-offset: 2px; }
+
+/* ————— Gövde: sol panel · harita · bilgi paneli ————— */
+.atlas-govde {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 208px minmax(0, 1fr) 268px;
+}
+
+.atlas-sol, .atlas-bilgi {
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  background: linear-gradient(160deg, rgb(28 45 47 / 0.97), rgb(10 23 26 / 0.97));
+}
+.atlas-sol { padding: 12px 10px; border-right: 1px solid rgb(var(--atlas-altin) / 0.24); }
+.atlas-bilgi { position: relative; padding: 16px 15px; border-left: 1px solid rgb(var(--atlas-altin) / 0.24); }
+
+.atlas-bolum-basligi {
+  display: flex; align-items: center; gap: 7px;
+  margin: 0 0 9px;
+  color: rgb(var(--atlas-altin));
+  font-size: 11px; font-weight: 700; letter-spacing: 0.03em;
+}
+
+.atlas-katman-listesi { display: grid; gap: 4px; }
+.atlas-katman-listesi button {
+  padding: 8px 10px;
+  border: 1px solid rgb(var(--atlas-cizgi) / 0.6);
+  border-radius: 4px;
+  background: rgb(5 17 19 / 0.35);
+  color: rgb(var(--atlas-soluk));
+  text-align: left;
+  font-size: 11px; font-weight: 600;
+  cursor: pointer;
+}
+.atlas-katman-listesi button:hover { border-color: rgb(var(--atlas-altin) / 0.35); color: rgb(var(--atlas-metin)); }
+.atlas-katman-listesi button.acik {
+  border-color: rgb(var(--atlas-altin) / 0.45);
+  background: rgb(var(--atlas-altin) / 0.1);
+  color: rgb(var(--atlas-altin-acik));
+}
+.atlas-katman-listesi button:focus-visible { outline: 2px solid rgb(var(--atlas-altin)); outline-offset: 1px; }
+
+.atlas-ayirac {
+  height: 1px; margin: 14px 0;
+  background: linear-gradient(90deg, transparent, rgb(var(--atlas-altin) / 0.32), transparent);
+}
+
+.atlas-devlet-listesi { display: grid; gap: 2px; }
+.atlas-devlet-listesi button {
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  padding: 7px 6px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+.atlas-devlet-listesi button:hover, .atlas-devlet-listesi button.secili {
+  border-color: rgb(var(--atlas-altin) / 0.3);
+  background: linear-gradient(90deg, rgb(var(--atlas-altin) / 0.11), transparent);
+}
+.atlas-devlet-listesi button:focus-visible { outline: 2px solid rgb(var(--atlas-altin)); outline-offset: 1px; }
+.atlas-devlet-listesi i {
+  width: 10px; height: 10px;
+  border: 1px solid rgb(255 255 255 / 0.28);
+  border-radius: 2px;
+}
+.atlas-devlet-listesi span { min-width: 0; display: flex; flex-direction: column; }
+.atlas-devlet-listesi strong {
+  overflow: hidden;
+  color: rgb(var(--atlas-metin));
+  font: 600 11px Georgia, serif;
+  text-overflow: ellipsis; white-space: nowrap;
+}
+.atlas-devlet-listesi small { margin-top: 1px; color: rgb(var(--atlas-soluk)); font-size: 9px; }
+
+.atlas-kaynak-notu {
+  margin: 16px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid rgb(var(--atlas-altin) / 0.2);
+  color: rgb(var(--atlas-soluk));
+  font-size: 9px; line-height: 1.5;
+}
+
+/* ————— Harita ————— */
+.atlas-harita-alani { position: relative; min-width: 0; background: rgb(16 34 38); }
+.atlas-maplibre { position: absolute; inset: 0; }
+.atlas-maplibre .maplibregl-canvas { cursor: grab; }
+.atlas-maplibre .maplibregl-canvas:active { cursor: grabbing; }
+.atlas-maplibre .maplibregl-ctrl-attrib {
+  border: 1px solid rgb(var(--atlas-altin) / 0.22);
+  background: rgb(8 20 22 / 0.82);
+  color: rgb(var(--atlas-soluk));
+  font-size: 9px;
+}
+.atlas-maplibre .maplibregl-ctrl-attrib a { color: rgb(var(--atlas-altin-acik)); }
+
+.atlas-harita-durum {
+  position: absolute; z-index: 5; inset: 0;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: radial-gradient(circle at center, rgb(44 76 72 / 0.9), rgb(13 26 29 / 0.96));
+  color: rgb(var(--atlas-altin-acik));
+  font: 600 13px Georgia, serif;
+}
+.atlas-harita-durum.hatali { padding: 24px; color: rgb(246 194 174); text-align: center; }
+
+.atlas-yakinlik {
+  position: absolute; z-index: 6; right: 12px; bottom: 46px;
+  display: grid;
+  overflow: hidden;
+  border: 1px solid rgb(var(--atlas-altin) / 0.4);
+  border-radius: 4px;
+  background: linear-gradient(rgb(18 32 33 / 0.96), rgb(8 20 22 / 0.96));
+  box-shadow: 0 4px 14px rgb(0 0 0 / 0.4);
+}
+.atlas-yakinlik button {
+  width: 32px; height: 30px;
+  display: grid; place-items: center;
+  border: 0; border-bottom: 1px solid rgb(var(--atlas-cizgi));
+  background: transparent;
+  color: rgb(var(--atlas-altin));
+  cursor: pointer;
+}
+.atlas-yakinlik button:last-child { border-bottom: 0; }
+.atlas-yakinlik button:hover { background: rgb(var(--atlas-altin) / 0.12); }
+.atlas-yakinlik button:focus-visible { outline: 2px solid rgb(var(--atlas-altin)); outline-offset: -2px; }
+.atlas-yakinlik span {
+  padding: 4px 0;
+  border-bottom: 1px solid rgb(var(--atlas-cizgi));
+  color: rgb(var(--atlas-metin));
+  text-align: center; font-size: 9px; font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.atlas-yakinlik-ipucu {
+  position: absolute; z-index: 4; left: 12px; bottom: 12px;
+  margin: 0;
+  max-width: 300px;
+  padding: 7px 10px;
+  border: 1px solid rgb(var(--atlas-altin) / 0.26);
+  border-radius: 4px;
+  background: rgb(var(--atlas-yuzey-koyu) / 0.86);
+  color: rgb(var(--atlas-altin-acik));
+  font-size: 10px; font-weight: 600;
+  pointer-events: none;
+  backdrop-filter: blur(5px);
+}
+
+/* ————— Bilgi paneli ————— */
+.atlas-bilgi-ustbaslik {
+  display: flex; align-items: center; gap: 6px;
+  margin: 0;
+  color: rgb(var(--atlas-altin));
+  font-size: 9px; font-weight: 800; letter-spacing: 0.12em;
+}
+.atlas-bilgi h2 {
+  margin: 8px 0 8px;
+  color: rgb(var(--atlas-altin-acik));
+  font: 600 24px/1.14 Georgia, serif;
+  text-wrap: balance;
+}
+.atlas-bilgi.bos h2 { font-size: 21px; }
+.atlas-bilgi-giris { margin: 0 0 14px; color: rgb(var(--atlas-soluk)); font-size: 11px; line-height: 1.6; }
+
+.atlas-bilgi-kapat {
+  position: absolute; right: 10px; top: 10px;
+  width: 28px; height: 28px;
+  display: grid; place-items: center;
+  border: 1px solid rgb(var(--atlas-cizgi));
+  border-radius: 4px;
+  background: rgb(var(--atlas-yuzey-koyu) / 0.7);
+  color: rgb(var(--atlas-soluk));
+  cursor: pointer;
+}
+.atlas-bilgi-kapat:hover { border-color: rgb(var(--atlas-altin)); color: rgb(var(--atlas-altin-acik)); }
+.atlas-bilgi-kapat:focus-visible { outline: 2px solid rgb(var(--atlas-altin)); outline-offset: 1px; }
+
+.atlas-bilgi-liste { display: grid; gap: 11px; margin: 14px 0; }
+.atlas-bilgi-liste div { padding-left: 9px; border-left: 2px solid rgb(var(--atlas-altin) / 0.34); }
+.atlas-bilgi-liste dt {
+  color: rgb(106 172 118);
+  font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.07em;
+}
+.atlas-bilgi-liste dd { margin: 3px 0 0; color: rgb(var(--atlas-metin)); font-size: 11px; line-height: 1.5; }
+
+.atlas-bilgi-dipnot {
+  display: flex; gap: 7px;
+  margin: 16px 0 0;
+  padding: 10px;
+  border-left: 3px solid rgb(var(--atlas-altin) / 0.7);
+  background: rgb(var(--atlas-altin) / 0.07);
+  color: rgb(var(--atlas-soluk));
+  font-size: 10px; line-height: 1.55;
+}
+.atlas-bilgi-dipnot svg { flex: none; margin-top: 2px; }
+
+.atlas-uyari {
+  display: flex; gap: 7px;
+  margin: 12px 0 0;
+  padding: 10px;
+  border-left: 3px solid rgb(var(--atlas-kirmizi));
+  background: rgb(var(--atlas-kirmizi) / 0.1);
+  color: rgb(240 200 188);
+  font-size: 10px; line-height: 1.55;
+}
+.atlas-uyari svg { flex: none; margin-top: 2px; }
+
+/* ————— Alt çubuk: zaman çizelgesi ————— */
+.atlas-altbar {
+  border-top: 1px solid rgb(var(--atlas-altin) / 0.26);
+  background: linear-gradient(180deg, rgb(17 31 34), rgb(10 22 25));
+  z-index: 15;
+}
+
+.atlas-cizelge { position: relative; padding: 6px 24px 12px; }
+
+/* Üzerine gelinen veya seçili olan kilit tarih — çizelgenin üstünde tek satır */
+.atlas-cizelge-baslik {
+  display: flex; align-items: baseline; gap: 9px;
+  min-height: 22px;
+  padding: 0 2px;
+}
+.atlas-cizelge-baslik b {
+  color: rgb(var(--atlas-altin-acik));
+  font: 700 14px Georgia, serif;
+  font-variant-numeric: tabular-nums;
+}
+.atlas-cizelge-baslik strong { color: rgb(var(--atlas-metin)); font-size: 12px; font-weight: 700; }
+.atlas-cizelge-baslik span {
+  min-width: 0;
+  overflow: hidden;
+  color: rgb(var(--atlas-soluk));
+  font-size: 11px; white-space: nowrap; text-overflow: ellipsis;
+}
+.atlas-cizelge-ipucu { color: rgb(var(--atlas-soluk)); font-size: 11px; opacity: 0.75; }
+
+.atlas-cizelge-olaylar { position: relative; height: 14px; }
+.atlas-olay {
+  position: absolute; top: 3px;
+  width: 14px; height: 14px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+/* Görünen nokta küçük, dokunma alanı geniş */
+.atlas-olay::after {
+  content: '';
+  position: absolute; left: 50%; top: 50%;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgb(var(--atlas-cizgi));
+  transform: translate(-50%, -50%);
+  transition: background 0.12s, box-shadow 0.12s;
+}
+.atlas-olay:hover::after, .atlas-olay:focus-visible::after, .atlas-olay.secili::after {
+  background: rgb(var(--atlas-altin));
+  box-shadow: 0 0 0 3px rgb(var(--atlas-altin) / 0.2);
+}
+.atlas-olay:focus-visible { outline: 2px solid rgb(var(--atlas-altin)); outline-offset: 1px; border-radius: 50%; }
+@media (prefers-reduced-motion: reduce) {
+  .atlas-olay::after { transition: none; }
+}
+
+.atlas-cizelge-cetvel { position: relative; height: 14px; margin-top: 2px; }
+.atlas-cizelge-cetvel span {
+  position: absolute; top: 0;
+  transform: translateX(-50%);
+  color: rgb(var(--atlas-soluk));
+  font-size: 9px; font-variant-numeric: tabular-nums;
+  opacity: 0.6;
+}
+
+.atlas-kaydirici {
+  width: 100%;
+  height: 22px;
+  margin: 0;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+}
+.atlas-kaydirici:focus-visible { outline: 2px solid rgb(var(--atlas-altin)); outline-offset: 4px; border-radius: 4px; }
+.atlas-kaydirici::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgb(var(--atlas-cizgi) / 0.5), rgb(var(--atlas-cizgi)));
+}
+.atlas-kaydirici::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgb(var(--atlas-cizgi) / 0.5), rgb(var(--atlas-cizgi)));
+}
+.atlas-kaydirici::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px; height: 20px;
+  margin-top: -8px;
+  border: 2px solid rgb(34 64 50);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(var(--atlas-altin-acik)), rgb(var(--atlas-altin)));
+  box-shadow: 0 0 0 3px rgb(var(--atlas-yesil)), 0 2px 8px rgb(0 0 0 / 0.5);
+  cursor: grab;
+}
+.atlas-kaydirici::-moz-range-thumb {
+  width: 18px; height: 18px;
+  border: 2px solid rgb(34 64 50);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(var(--atlas-altin-acik)), rgb(var(--atlas-altin)));
+  box-shadow: 0 0 0 3px rgb(var(--atlas-yesil)), 0 2px 8px rgb(0 0 0 / 0.5);
+  cursor: grab;
+}
+.atlas-kaydirici:active::-webkit-slider-thumb { cursor: grabbing; }
+
+/* ————— Dar ekranlar ————— */
+@media (max-width: 1180px) {
+  .atlas-govde { grid-template-columns: 186px minmax(0, 1fr) 240px; }
+}
+
+@media (max-width: 940px) {
+  .atlas-govde { grid-template-columns: 176px minmax(0, 1fr); }
+  .atlas-bilgi {
+    position: absolute; z-index: 12; right: 10px; top: 10px;
+    width: 254px;
+    max-height: calc(100% - 20px);
+    border: 1px solid rgb(var(--atlas-altin) / 0.36);
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgb(0 0 0 / 0.5);
+  }
+  .atlas-bilgi.bos { display: none; }
+  .atlas-yakinlik { bottom: 12px; }
+  .atlas-yakinlik-ipucu { max-width: 210px; }
+}
+
+@media (max-width: 680px) {
+  .atlas-ustbar { grid-template-columns: auto 1fr auto; gap: 8px; padding: 6px 10px; }
+  .atlas-donem-rozeti > span:first-child { display: none; }
+  .atlas-donem-rozeti > span { padding: 3px 8px; }
+  .atlas-geri { font-size: 0; gap: 0; padding: 8px; }
+
+  .atlas-govde { grid-template-columns: minmax(0, 1fr); }
+  .atlas-sol {
+    position: absolute; z-index: 11; left: 8px; top: 8px; bottom: 8px;
+    width: 168px;
+    border: 1px solid rgb(var(--atlas-altin) / 0.34);
+    border-radius: 6px;
+    box-shadow: 0 8px 26px rgb(0 0 0 / 0.5);
+  }
+  .atlas-bilgi { left: 8px; right: 8px; top: auto; bottom: 8px; width: auto; max-height: 46%; }
+  .atlas-yakinlik-ipucu { display: none; }
+  .atlas-yakinlik { bottom: auto; top: 10px; right: 10px; }
+
+  .atlas-cizelge { padding: 4px 14px 10px; }
+  .atlas-cizelge-baslik { gap: 7px; min-height: 20px; }
+  .atlas-cizelge-baslik strong { font-size: 11px; }
+  .atlas-cizelge-baslik span { display: none; }
+  .atlas-cizelge-cetvel span:nth-child(even) { display: none; }
+}

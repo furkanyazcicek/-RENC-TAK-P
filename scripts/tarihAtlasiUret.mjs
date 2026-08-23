@@ -30,6 +30,19 @@ const YILLAR = [1000, 1100, 1200, 1279, 1300, 1400, 1492, 1500, 1530, 1600, 1650
 const SON_YIL = 1960
 
 /**
+ * Bir anlık görüntünün hangi yıldan itibaren geçerli sayılacağı.
+ *
+ * Kaynak veri 10 ile 100 yıl arasında değişen aralıklarla hazırlanmış; bazı
+ * dönüm noktaları iki anlık görüntünün ortasına düşüyor. Cumhuriyet 1923'te
+ * ilan edildi, ama en yakın anlık görüntü 1930 — düzeltilmezse öğrenci
+ * 1923'te hâlâ Osmanlı Devleti görüyor. 1930 sınırları Lozan sınırlarıdır,
+ * dolayısıyla bu kaydırma tarihsel olarak da doğrudur.
+ */
+const DONEM_BASLANGIC_DUZELTME = {
+  1930: 1923,
+}
+
+/**
  * Kaynak veride tarihsel tutarsızlık taşıyan anlık görüntüler.
  * Arayüz bu dönemlerde öğrenciye uyarı gösterebilsin diye işaretlenir.
  */
@@ -251,21 +264,40 @@ const eksikAdlar = new Set()
 const ozellikler = []
 const donemOzeti = []
 
-/** Bağlılık bilgisini Türkçeleştirir; anlamsız değerleri eler. */
-function bagliliktanTurkce(ham, kendiAdi) {
+/**
+ * Bağlılık bilgisini Türkçeleştirir; anlamsız değerleri eler.
+ *
+ * Karşılaştırma Türkçe karşılıklar üzerinden yapılır: kaynak veride
+ * "Kingdom of Hungary" kaydı "Hungary"ye bağlı görünüyor, ikisinin de Türkçesi
+ * Macaristan olduğu için bu bir bağlılık değil, aynı devletin iki adı.
+ */
+function bagliliktanTurkce(ham, kendiAdi, kendiTurkcesi) {
   if (!ham || typeof ham !== 'string') return null
   const temiz = ham.trim()
   if (!temiz || temiz === kendiAdi) return null
   // Kaynak veride sayı olarak kalmış bozuk kayıtlar
   if (/^\d+$/.test(temiz)) return null
-  return BAGLILIK_ESLEME[temiz] || DEVLET_SOZLUGU[temiz]?.tr || temiz
+
+  const turkcesi = BAGLILIK_ESLEME[temiz] || DEVLET_SOZLUGU[temiz]?.tr || temiz
+  if (turkcesi === kendiTurkcesi) return null
+  // "Macaristan" ile "Macar Krallığı", "İspanya" ile "İspanya (Habsburg)" gibi
+  // aynı devletin iki adlandırması
+  if (turkcesi.length > 3 && kendiTurkcesi.startsWith(turkcesi)) return null
+  if (kendiTurkcesi.length > 3 && turkcesi.startsWith(kendiTurkcesi)) return null
+  return turkcesi
+}
+
+/** Bir anlık görüntünün geçerlilik başlangıcı — düzeltme varsa onu kullanır. */
+function gecerlilikBaslangici(anlikGoruntuYili) {
+  return DONEM_BASLANGIC_DUZELTME[anlikGoruntuYili] ?? anlikGoruntuYili
 }
 
 for (let i = 0; i < YILLAR.length; i += 1) {
-  const yil = YILLAR[i]
-  const bitis = i + 1 < YILLAR.length ? YILLAR[i + 1] : SON_YIL
+  const anlikGoruntu = YILLAR[i]
+  const yil = gecerlilikBaslangici(anlikGoruntu)
+  const bitis = i + 1 < YILLAR.length ? gecerlilikBaslangici(YILLAR[i + 1]) : SON_YIL
 
-  const ham = JSON.parse(await readFile(resolve(hamKlasor, `world_${yil}.geojson`), 'utf8'))
+  const ham = JSON.parse(await readFile(resolve(hamKlasor, `world_${anlikGoruntu}.geojson`), 'utf8'))
   // Aynı devletin parçaları tek kayıtta toplanır: ad → { bilgi, geometriler }
   const donemDevletleri = new Map()
   let elenen = 0
@@ -279,7 +311,7 @@ for (let i = 0; i < YILLAR.length; i += 1) {
     const ingilizceAd = (oz.properties.NAME || oz.properties.name || '').trim()
     if (!ingilizceAd) continue
 
-    const duzeltme = YILA_OZEL_DUZELTME[`${ingilizceAd}@${yil}`]
+    const duzeltme = YILA_OZEL_DUZELTME[`${ingilizceAd}@${anlikGoruntu}`]
     const kayit = duzeltme || DEVLET_SOZLUGU[ingilizceAd]
     if (!kayit) eksikAdlar.add(ingilizceAd)
 
@@ -305,7 +337,7 @@ for (let i = 0; i < YILLAR.length; i += 1) {
       onem,
       ton,
       kesinlik: oz.properties.BORDERPRECISION ?? null,
-      bagli: bagliliktanTurkce(oz.properties.SUBJECTO, ingilizceAd),
+      bagli: bagliliktanTurkce(oz.properties.SUBJECTO, ingilizceAd, tr),
       geometriler: [geometri],
     })
   }
@@ -339,9 +371,9 @@ for (let i = 0; i < YILLAR.length; i += 1) {
     yil,
     bitis,
     devletSayisi: donemDevletleri.size,
-    ...(SUPHELI_DONEMLER[yil] ? { uyari: SUPHELI_DONEMLER[yil] } : {}),
+    ...(SUPHELI_DONEMLER[anlikGoruntu] ? { uyari: SUPHELI_DONEMLER[anlikGoruntu] } : {}),
   })
-  const isaret = SUPHELI_DONEMLER[yil] ? '  ⚠ kaynak verisi tartışmalı' : ''
+  const isaret = SUPHELI_DONEMLER[anlikGoruntu] ? '  ⚠ kaynak verisi tartışmalı' : ''
   console.log(`${yil}–${bitis}: ${String(donemDevletleri.size).padStart(3)} devlet, ${elenen} elendi${isaret}`)
 }
 
