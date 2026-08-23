@@ -249,6 +249,23 @@ kontrast gürültüsü. `DESIGN_SYSTEM.md` dosyasındaki kurallara uy.
 
 ---
 
+## 8.6 Kurulu Beceriler
+
+Projeye ECC (github.com/affaan-m/ECC) kaynaklı 35 beceri ve 8 uzman kuruldu; dosyalar
+`.claude/skills/` ve `.claude/agents/` altında. Türkçe listesi ve ne işe yaradıkları:
+**`BECERILER.md`**.
+
+Kural: ilgili bir iş geldiğinde önce kurulu beceriyi oku, sonra çalış. Özellikle
+bağlayıcı olanlar:
+
+- Veritabanı yapısı değişecekse → `database-migrations` + `safety-guard`
+- Yayına almadan önce → `verification-loop` + `production-audit`
+- Yayına aldıktan sonra → `canary-watch`
+- Düğme/akış çalışmıyorsa → `click-path-audit` + `silent-failure-hunter`
+- Arayüz cilası → `make-interfaces-feel-better` + `DESIGN_SYSTEM.md`
+
+---
+
 ## 9. Tasarım İlkeleri
 
 - **Mobil öncelikli.** Öğrenciler ağırlıklı olarak telefondan girer. Her sayfa önce
