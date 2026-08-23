@@ -22,12 +22,17 @@ export default defineConfig({
       srcDir: 'src',
       filename: 'sw.js',
       injectManifest: {
-        // Ders kütüphanesi büyüdükçe ana uygulama parçası 6 MiB eşiğini
-        // geçti. Kalan TYT dersleri de aynı kapsama ulaştırılacağı için
-        // yakın her içerik eklemesinde derlemeyi yeniden kırmayacak makul bir pay
-        // bırakıyoruz. Bu yalnız önbellek kabul sınırıdır; istemciye
-        // giden dosyanın boyutunu veya yükleme davranışını değiştirmez.
-        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
+        // Ders kütüphanesi büyüdükçe ana uygulama parçası önce 6, sonra 10
+        // MiB eşiğini geçti; şu an 12 MiB. Bu yalnız önbellek kabul
+        // sınırıdır; istemciye giden dosyanın boyutunu değiştirmez.
+        //
+        // DİKKAT: eşiği yükseltmek asıl sorunu çözmez. 12 MiB'lık tek bir
+        // paket, telefondan giren öğrencinin ilk açılışını ciddi biçimde
+        // yavaşlatıyor. Sebep, App.jsx'te 25 sayfanın tamamının statik
+        // import edilmesi — maplibre, pdfjs, recharts, katex o sayfaları
+        // hiç açmayan öğrenciye de iniyor. Kalıcı çözüm sayfaları React.lazy
+        // ile geç yüklemek; bu yapıldığında eşik tekrar düşürülmeli.
+        maximumFileSizeToCacheInBytes: 16 * 1024 * 1024,
         globPatterns: ['**/*.{js,css,html,svg,png,ico}'],
         // pdf.js (~0.5 MB js + 1.3 MB worker) yalnızca PDF ders notu açan
         // kullanıcıya lazım; ön belleğe alınırsa herkes ilk açılışta indirir.
