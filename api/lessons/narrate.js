@@ -57,7 +57,7 @@ export default async function handler(req, res) {
   } catch (error) {
     if (res.headersSent) return res.end()
     const code = error?.name === 'AbortError' ? 'tts_timeout' : error?.code || 'tts_upstream_error'
-    const status = code === 'rate_limited' ? 429 : code === 'tts_timeout' ? 504 : 502
+    const status = code === 'rate_limited' ? 429 : code === 'not_configured' ? 503 : code === 'tts_timeout' ? 504 : 502
     console.error('[lesson-narration]', { code, lessonSlug, blockId, provider: provider.id })
     return sendError(res, status, code, 'Ses şu anda hazırlanamadı. Biraz sonra yeniden deneyebilirsin.')
   } finally {

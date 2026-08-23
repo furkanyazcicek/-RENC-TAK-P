@@ -77,6 +77,20 @@ await check('OpenAI adapter mevcut sunucu anahtarını kullanıp ses akışını
   assert.deepEqual([...bytes], [1, 2, 3])
 })
 
+await check('Mevcut OPENAI_API_KEY ayrı TTS ayarı olmadan yeniden kullanılır', () => {
+  const provider = createTtsProvider({ env: { OPENAI_API_KEY: 'test-only' }, fetchImpl: async () => new Response() })
+  assert.equal(provider.id, 'openai')
+  assert.equal(provider.available, true)
+})
+
+await check('Geçersiz sağlayıcı anahtarı yapılandırma hatasına çevrilir', async () => {
+  const provider = createTtsProvider({
+    env: { OPENAI_API_KEY: 'invalid-test-only' },
+    fetchImpl: async () => new Response('{}', { status: 401, headers: { 'content-type': 'application/json' } }),
+  })
+  await assert.rejects(provider.generateSpeech({ text: 'Merhaba' }), (error) => error.code === 'not_configured')
+})
+
 await check('Yapılandırılmamış adapter güvenli hata verir', async () => {
   const provider = createTtsProvider({ env: { TTS_PROVIDER: 'none' } })
   assert.equal(provider.available, false)

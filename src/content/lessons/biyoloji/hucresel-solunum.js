@@ -155,11 +155,27 @@ Bu tanımdaki her kelimenin bir karşılığı var ve dersin geri kalanı bu kar
           {
             id: 'mito-giris-audio',
             type: 'audio_script',
-            body: `Bu derse başlamadan bir dakikanı ayır ve şunu düşün: aynı vücutta bir kas hücresi binlerce mitokondri taşırken, alyuvarda hiç yok. Bunun sebebi ne olabilir?
+            label: 'Giriş · Mitokondri hangi problemi çözüyor?',
+            target_block_id: 'mito-giris-1',
+            highlight_block_ids: ['mito-giris-why'],
+            voice_hint: 'Kısaltmaları Türkçe harflerle oku: ATP a-te-pe, ADP a-de-pe, ETS e-te-se, NADH en-a-de-ha, FADH2 ef-a-de-ha-iki, DNA de-en-a. Sayıları Türkçe sözcükle oku. Sakin, sıcak ve profesyonel bir öğretmen tonu kullan; abartma.',
+            body: `Merhaba. Bu derste mitokondriyi anlatacağım, ama klasik bir tanımla başlamayacağım.
 
-Cevabını bulduğunu düşünüyorsan devam et. Bu dersin bütün mantığı o cevabın üzerine kurulacak.
+Muhtemelen daha önce şunu duydun: mitokondri hücrenin enerji santralidir. Bu cümle doğru, ama tek başına sana hiçbir şey kazandırmaz. Çünkü asıl soru şu: santral ne demek?
 
-Bir uyarı: mitokondriyi "enerji üreten organel" diye ezberleme. Bu cümle doğru ama işe yaramaz. Sınavda sana sorulan şey mitokondrinin ne yaptığı değil, hangi yapısının hangi işi yaptığı olacak.`,
+Şöyle düşün. Bir şehirde elektrik santrali vardır, bir de elektrik deposu. Santral üretir, depo saklar. Mitokondri bunlardan hangisi? Bir saniye dur ve karar ver.
+
+Cevap: santral. Depo değil. Ve bunun çok somut bir sebebi var.
+
+Hücrenin harcadığı enerji birimi ATP. Ama ATP kararsız bir molekül; hücre onu ürettiği anda harcıyor. Ortalama bir hücredeki ATP'nin tamamı yaklaşık bir dakika içinde tükenip yeniden üretiliyor. Yani hücre ATP'yi bir kenara koyup saklayamıyor.
+
+Peki neyi depoluyor? Yakıtı. Glikojeni, yağı. Depolanan şey ATP değil, ATP'ye çevrilecek ham madde.
+
+Şimdi burada dikkat etmeni istediğim bir nokta var. Mitokondri enerjiyi yoktan üretmiyor; dönüştürüyor. Besindeki kimyasal bağ enerjisini, hücrenin kullanabileceği forma çeviriyor. Bu ayrımı bugün kurarsan, ileride fotosentezde de aynı mantığı rahatça kullanırsın.
+
+Son bir şey. Bir kas hücresinde beş bine yakın mitokondri bulunabilir. Aynı vücuttaki bir deri hücresinde birkaç yüz. Olgun alyuvarda ise hiç yok. Aynı DNA, farklı sayı. Bu farkı yaratan şey, hücrenin yaptığı iş.
+
+Bu derste ne zaman yeni bir yapı görsen kendine tek bir soru sor: bu yapı hangi işi kolaylaştırıyor? Sınav soruları da tam olarak bunu ölçüyor.`,
           },
         ],
       },
@@ -211,6 +227,31 @@ Son olarak ortadaki geniş alana bak. Burası matriks. İçindeki halkaya ve kü
 Tek zarlı bir organel bunu yapamaz. İki farklı ortam olmadan derişim farkı olmaz; derişim farkı olmadan da bu organelin ATP üretme yöntemi çalışmaz. Yani "çift zarlı olmak" bir yapı ayrıntısı değil, bütün mekanizmanın ön koşuludur.`,
           },
           {
+            id: 'mito-yapi-audio-zar',
+            type: 'audio_script',
+            label: 'Çift zar yapısı',
+            target_block_id: 'mito-yapi-figure',
+            highlight_block_ids: ['mito-yapi-prose'],
+            voice_hint: 'Kısaltmaları Türkçe harflerle oku: ATP a-te-pe, ADP a-de-pe, ETS e-te-se, NADH en-a-de-ha, FADH2 ef-a-de-ha-iki, DNA de-en-a. Sayıları Türkçe sözcükle oku. Sakin, sıcak ve profesyonel bir öğretmen tonu kullan; abartma.',
+            body: `Şimdi organeli açıp içine giriyoruz. Ekrandaki şemaya bak; birlikte gezeceğiz.
+
+Mitokondriyi incelerken ilk dikkat etmeni istediğim nokta şu: bu organel tek bir zarla değil, iki ayrı zarla çevrili. Ve bu iki zar birbirinin kopyası değil. İkisi farklı iş yapıyor.
+
+En dıştaki çizgiye bak. Bu dış zar. Düz, hiç katlanmamış. Üzerinde porin denilen geçit proteinleri var; bu yüzden küçük moleküller ve iyonlar buradan neredeyse serbestçe geçiyor. Yani dış zar bir bariyer değil, sadece bir sınır.
+
+Şimdi biraz içeri gir. İki zarın arasında ince bir aralık göreceksin. Buraya zarlar arası boşluk diyoruz. Şimdilik tek bir şeyi aklında tut: burası dar. Az sonra bu darlık işimize yarayacak.
+
+Devam et. İkinci zara geldin. İç zar. Bu zar seçici geçirgen; dış zarın aksine buradan her şey geçemez. Dersin geri kalanı büyük ölçüde bu zarla ilgili olacak, çünkü ATP üreten yapıların hepsi bu zarın üzerinde duruyor.
+
+En ortada kalan geniş sıvı bölge ise matriks.
+
+Şimdi bir saniye dur ve yapıyı zihninde canlandır. Dıştan içe doğru dört katman var: dış zar, zarlar arası boşluk, iç zar, matriks. Bunu düz bir liste gibi değil, iç içe geçmiş bir yapı gibi düşün. Bir kutunun içinde ikinci bir kutu var; aradaki ince aralık da zarlar arası boşluk.
+
+Peki bunca zahmet niye? İşte asıl cevap burada. İki zar, birbirinden kimyasal olarak farklı iki ortam yaratıyor. Matriks ayrı bir ortam, zarlar arası boşluk ayrı bir ortam. Tek zarlı bir organel bunu yapamaz.
+
+Burada ezberlemek yerine mantığını anlamanı istiyorum. Çift zarlı olmak bir yapı ayrıntısı değil; bu organelin ATP üretme yönteminin ön koşulu.`,
+          },
+          {
             id: 'mito-yapi-compare',
             type: 'compare',
             title: 'İki zar, iki farklı iş',
@@ -255,11 +296,27 @@ Elektron taşıma sistemi bir süre daha çalışmaya devam eder, hatta protonla
           {
             id: 'mito-yapi-audio',
             type: 'audio_script',
-            body: `Bu bölümde iki zarı ayırdık. Şimdi devam etmeden önce kendi kendine şunu söyleyebiliyor musun kontrol et:
+            label: 'Krista ve yüzey alanı',
+            target_block_id: 'mito-yapi-why-krista',
+            highlight_block_ids: ['mito-yapi-note-2'],
+            voice_hint: 'Kısaltmaları Türkçe harflerle oku: ATP a-te-pe, ADP a-de-pe, ETS e-te-se, NADH en-a-de-ha, FADH2 ef-a-de-ha-iki, DNA de-en-a. Sayıları Türkçe sözcükle oku. Sakin, sıcak ve profesyonel bir öğretmen tonu kullan; abartma.',
+            body: `Şimdi iç zara geri dönüyoruz, çünkü onunla işimiz bitmedi.
 
-"Dış zar geçirgen, iç zar seçici geçirgen. İç zar katlanmış çünkü üzerinde enzim taşıyor."
+Şemaya tekrar bak. İç zarın düz olmadığını, matrikse doğru kıvrımlar yaptığını göreceksin. Bu kıvrımlara krista diyoruz.
 
-Bu iki cümleyi kurabildiysen bir sonraki bölüme geçebilirsin. Kuramıyorsan şemaya geri dön; buradan sonrası bu ayrımın üzerine kurulacak.`,
+Devam etmeden önce şunu düşünmeni istiyorum: iç zar bu kadar kıvrımlıysa, bunun hücreye nasıl bir avantaj sağlayabileceğini tahmin edebilir misin?
+
+Cevap yüzey alanı. ATP üreten enzimler sıvının içinde yüzmüyor; zarın üzerine oturmuş durumdalar. Enzim sayısını artırmak istiyorsan, onları taşıyan zarın alanını artırmak zorundasın. Katlanmak bunu, organelin dış boyutunu hiç büyütmeden yapıyor.
+
+Bir kâğıdı akordeon gibi katladığını düşün. Kâğıt aynı çekmeceye sığmaya devam eder ama uzunluğu birkaç katına çıkar. İç zar tam olarak bunu yapıyor.
+
+Bu zinciri aklında bir bütün olarak tut: krista yüzey alanını artırır; artan yüzey elektron taşıma sistemi ve ATP sentaz için daha çok yer demektir; daha çok yer de daha çok ATP demektir. Krista, yüzey alanı, ATP. Üç halka.
+
+Bunun gözle görülür bir sonucu var. Kalp kası ve karaciğer hücrelerindeki mitokondrilerde kristalar sık ve derindir; enerji ihtiyacı düşük hücrelerde ise seyrektir.
+
+Burası sınavlarda karşına çıkan bir detay. Sana iki mitokondri görseli verilip hangisinin daha aktif bir hücreye ait olduğu sorulursa, cevabı boyuta bakarak vermeyeceksin. Krista yoğunluğuna bakacaksın.
+
+Bir de şu ayrımı şimdiden netleştirelim, çünkü çok karıştırılıyor. Krista iç zarın kıvrımıdır; matriks ise iç zarın çevrelediği sıvı bölgedir. Biri zar, diğeri ortam. Aynı şey değiller.`,
           },
         ],
       },
@@ -328,6 +385,31 @@ Asıl ATP üretimi üçüncü durakta, iç zarda olur. Yani ilk iki evre aslınd
               'Radyoaktif işaretli glikozun karbonunun hangi bileşikte, nerede ortaya çıkacağı sorulur.',
               'İç zarı hasarlı bir mitokondride hangi evrenin durduğu sorulur.',
             ],
+          },
+          {
+            id: 'mito-solunum-audio',
+            type: 'audio_script',
+            label: 'Matriks ve solunumun üç durağı',
+            target_block_id: 'mito-solunum-figure',
+            highlight_block_ids: ['mito-solunum-prose', 'mito-solunum-trap'],
+            voice_hint: 'Kısaltmaları Türkçe harflerle oku: ATP a-te-pe, ADP a-de-pe, ETS e-te-se, NADH en-a-de-ha, FADH2 ef-a-de-ha-iki, DNA de-en-a. Sayıları Türkçe sözcükle oku. Uyarı cümlelerinde tonunu değiştir ve hafifçe vurgula; gerisi sakin kalsın.',
+            body: `Şimdi matriksin içinde ne olduğuna bakalım, çünkü orası sadece boş bir sıvı değil.
+
+Matrikste üç şey var. Birincisi enzimler: pirüvat oksidasyonunun ve Krebs döngüsünün enzimleri burada. İkincisi mitokondrinin kendi halkasal DNA'sı. Üçüncüsü kendi ribozomları. Son ikisine dersin ilerleyen bölümünde ayrıca döneceğiz.
+
+Şimdi mitokondriyi hücresel solunumdan kopuk düşünmemen için üç durağı yerlerine yerleştirelim. Ekrandaki haritaya bak.
+
+Birinci durak: glikoliz. Burada çok dikkat et. Glikoliz mitokondride olmuyor; sitoplazmada, yani organelin dışında oluyor. Glikoz burada ikiye bölünüyor, iki pirüvat çıkıyor ve net kazanç sadece iki ATP.
+
+İkinci durak: matriks. Pirüvat buraya giriyor, önce asetil koenzim A'ya dönüşüyor, sonra Krebs döngüsüne katılıyor. Nefesinle dışarı verdiğin karbondioksit tam olarak burada oluşuyor.
+
+Üçüncü durak: iç zar. Elektron taşıma sistemi burada ve ATP'nin büyük kısmı burada üretiliyor.
+
+Şimdi bu üçlüyü sırayla tekrar et: sitoplazma, matriks, iç zar.
+
+Burası sınavlarda en çok karıştırılan yer. Öğrencilerin çoğu, hücresel solunum mitokondride olur cümlesinden yola çıkıp glikolizi de matrikse yerleştiriyor. Bu yanlış. Ve bu ayrımı bilirsen soruda çok daha rahat ilerlersin: mitokondrisi olmayan olgun bir alyuvar bile glikoliz yaparak ATP üretmeye devam eder, sadece verimi düşüktür.
+
+Bir şeyi daha fark et. İlk iki durak neredeyse hiç ATP üretmiyor. Ürettikleri şey elektron taşıyıcıları, yani NADH ve FADH2. Bir sonraki bölümün konusu tam olarak bu.`,
           },
           {
             id: 'mito-solunum-quiz',
@@ -409,6 +491,33 @@ Son olarak sağ alttaki oksijen satırına bak. Oksijen ATP üretmiyor. Zincirin
                 body: 'Biriken protonlar geri dönmek ister ama iç zar onları geçirmez. Tek geçiş noktası ATP sentazdır. Protonlar bu enzimin içinden akarken enzimin bir bölümü döner ve bu mekanik dönme, ADP + Pi → ATP tepkimesini gerçekleştirir.',
               },
             ],
+          },
+          {
+            id: 'mito-kem-audio-atp',
+            type: 'audio_script',
+            label: 'ATP nasıl üretiliyor · kemiozmoz',
+            target_block_id: 'mito-kem-mechanism',
+            highlight_block_ids: ['mito-kem-figure'],
+            voice_hint: 'Kısaltmaları Türkçe harflerle oku: ATP a-te-pe, ADP a-de-pe, ETS e-te-se, NADH en-a-de-ha, FADH2 ef-a-de-ha-iki, DNA de-en-a. Sayıları Türkçe sözcükle oku. Bu bölüm zor. Normalden biraz yavaş konuş, adım aralarında kısa duraklama bırak.',
+            body: `Buraya kadar ATP iç zarda üretilir dedik ama nasıl olduğunu söylemedik. Şimdi o boşluğu dolduruyoruz. Dersin en zor kısmı burası, o yüzden biraz yavaşlayacağım.
+
+Önce şunu netleştirelim: ATP nedir, neden gerekli? ATP hücrenin harcanabilir enerji birimi. Kas kasılması, maddelerin zardan aktif taşınması, protein üretimi; hepsi ATP harcıyor. Yani mitokondri ATP üretir demek, aslında hücrenin bütün işlerinin faturasını mitokondri öder demek.
+
+Şimdi üretimin kendisine bakalım. Üç hamlede kuracağız.
+
+Birinci hamle. Krebs döngüsünden gelen NADH ve FADH2, taşıdıkları yüksek enerjili elektronları iç zardaki komplekslere bırakıyor. Elektron bu kompleksler arasında elden ele aktarılırken enerjisi kademe kademe düşüyor.
+
+İkinci hamle. Açığa çıkan bu enerji boşa gitmiyor. Protonları, yani hidrojen iyonlarını matriksten zarlar arası boşluğa pompalamak için kullanılıyor. Az önce dar olduğunu söylediğim o boşluğu hatırlıyor musun? Protonlar orada birikiyor. Boşluğun dar olması, derişimin hızla yükselmesini sağlıyor.
+
+Şimdi bir saniye dur ve düşün. Bu protonlar sonsuza kadar orada kalabilir mi?
+
+Kalamaz. Geri dönmek istiyorlar. Ama iç zar onları geçirmiyor. Tek bir kapı var.
+
+Üçüncü hamle. O kapının adı ATP sentaz. İç zara gömülü bir enzim ve protonların geri akabildiği tek yol. Protonlar bu enzimin içinden akarken enzimin bir bölümü fiziksel olarak dönüyor; bu dönme hareketi ADP ile fosfatı birleştirip ATP'yi oluşturuyor.
+
+Bu sistemin adı kemiozmoz. Bir barajı düşün: önce suyu biriktirirsin, sonra türbinden geçirirsin. Enerji zincirin başında ATP'ye çevrilmiyor. Önce proton farkına dönüştürülüyor, ATP en sonda üretiliyor.
+
+Bu bölümü kapatmadan şu üç cümleyi kendi kelimelerinle söylemeyi dene. Elektron akar. Proton birikir. Kapıdan geri geçerken ATP olur.`,
           },
           {
             id: 'mito-kem-why-o2',
@@ -511,13 +620,25 @@ Yani aralık bir belirsizlik değil, ==ölçümün dürüst hâlidir==. Biyoloji
           {
             id: 'mito-kem-audio',
             type: 'audio_script',
-            body: `Bu bölüm dersin en zor kısmıydı. Bir dakika dur ve şu üç cümleyi kendi kelimelerinle söylemeyi dene:
+            label: 'Oksijenin görevi ve ATP bilançosu',
+            target_block_id: 'mito-kem-bilanco-figure',
+            highlight_block_ids: ['mito-kem-table', 'mito-kem-note-3638'],
+            voice_hint: 'Kısaltmaları Türkçe harflerle oku: ATP a-te-pe, ADP a-de-pe, ETS e-te-se, NADH en-a-de-ha, FADH2 ef-a-de-ha-iki, DNA de-en-a. Sayıları Türkçe sözcükle oku. Uyarı cümlelerinde tonunu değiştir ve hafifçe vurgula; gerisi sakin kalsın.',
+            body: `Şimdi çok sık yanlış bilinen bir noktaya geliyoruz. Oksijen bu işin tam olarak neresinde?
 
-Bir: elektronlar zincirde ilerlerken enerji açığa çıkar.
-İki: bu enerji protonları bir tarafa pompalar.
-Üç: protonlar geri dönerken ATP üretilir.
+Muhtemelen bir yerlerde oksijen glikozu parçalar ya da oksijen ATP üretir cümlesini duydun. İkisi de yanlış. Oksijen glikoza hiç dokunmuyor.
 
-Bu üçünü sırayla söyleyebiliyorsan kemiozmozu anlamışsın demektir. Söyleyemiyorsan şemaya dön ve okları bir kez daha takip et — bu bölümü anlamadan sonraki bölüme geçme, çünkü ATP bilançosu bunun üzerine kuruluyor.`,
+Oksijenin görevi zincirin en sonunda. Elektron taşıma sisteminden geçen elektronları alıyor, hidrojen iyonlarıyla birleşiyor ve su oluşturuyor. Yani oksijen son elektron alıcısı.
+
+Peki bu neden bu kadar kritik? Şöyle düşün: sonda elektronları alan biri yoksa zincir tıkanır. Elektronlar ilerleyemez, proton pompalanması durur, derişim farkı çöker, ATP sentaz durur. Ama etkisi burada bitmiyor. NADH taşıdığı elektronu boşaltamadığı için yeniden kullanılabilir hâline dönemez; o bitince Krebs döngüsü de durur.
+
+Yani oksijenin yokluğu sadece son evreyi değil, ondan önceki evreyi de durduruyor. Bunu tek cümlede sabitle: oksijen ATP üretmez, zincirin akmasını mümkün kılar.
+
+Şimdi bilançoya bakalım. Bir glikoz molekülünden toplam otuz ila otuz iki ATP elde ediliyor. Bunun sadece ikisi glikolizden, ikisi Krebs döngüsünden geliyor. Geri kalanın tamamı, yaklaşık yüzde seksen sekizi, iç zardan. Kristaların neden hücreden hücreye farklı yoğunlukta olduğu sorusunun cevabı da bu oran.
+
+İki noktaya daha dikkat çekeceğim. Birincisi, neden tek bir sayı değil de aralık veriliyor? Çünkü glikolizde üretilen NADH sitoplazmada bulunuyor, kullanılacağı yer ise iç zar. Elektronları içeri bir mekik sistemiyle aktarılıyor ve hangi mekiğin kullanıldığı iki ATP'lik fark yaratıyor. Yani aralık bir belirsizlik değil, ölçümün dürüst hâli.
+
+İkincisi, eski kaynaklarda otuz altı ila otuz sekiz yazar. O rakam NADH başına üç ATP kabulünden geliyordu; güncel müfredat iki buçuk kabul ediyor. Sınavda soru otuz ila otuz iki üzerinden gelir. Eski bir kitaptan çalışıyorsan bu farkı bilerek oku.`,
           },
         ],
       },
@@ -539,6 +660,24 @@ Bu üçünü sırayla söyleyebiliyorsan kemiozmozu anlamışsın demektir. Söy
 Ama tamamını değil. Mitokondri proteinlerinin çoğu hâlâ çekirdek DNA'sında kodludur. Bu yüzden mitokondriye **özerk** değil, ==yarı özerk== denir.
 
 Ayrıca mitokondri, hücre bölünmesinden bağımsız olarak kendi başına ikiye bölünerek çoğalır. Düzenli antrenman yapan bir sporcunun kas hücrelerindeki mitokondri sayısının artmasının sebebi budur.`,
+          },
+          {
+            id: 'mito-ozerklik-audio-dna',
+            type: 'audio_script',
+            label: 'Kendi DNA\'sı ve ribozomu',
+            target_block_id: 'mito-ozerklik-prose',
+            voice_hint: 'Kısaltmaları Türkçe harflerle oku: ATP a-te-pe, ADP a-de-pe, ETS e-te-se, NADH en-a-de-ha, FADH2 ef-a-de-ha-iki, DNA de-en-a. Sayıları Türkçe sözcükle oku. Uyarı cümlelerinde tonunu değiştir ve hafifçe vurgula; gerisi sakin kalsın.',
+            body: `Şemada matriksin içinde küçük bir halka ve etrafında noktalar görmüştün. Şimdi onların ne olduğuna geldik.
+
+Hücredeki organellerin neredeyse tamamı proteinlerini çekirdekten gelen talimatla, sitoplazmadaki ribozomlardan alır. Mitokondri bu kuralın dışında kalıyor. Kendi DNA'sı var, kendi ribozomları var ve bazı proteinlerini kendisi üretebiliyor. Üstelik hücre bölünmesinden bağımsız olarak, kendi başına ikiye bölünerek çoğalabiliyor. Düzenli antrenman yapan bir sporcunun kas hücrelerinde mitokondri sayısının artmasının sebebi tam olarak bu.
+
+Şimdi çok kritik bir uyarı yapacağım, çünkü burası tam bir sınav tuzağı.
+
+Bütün bunlar, mitokondrinin hücreden bağımsız olduğu anlamına gelmiyor. Mitokondri proteinlerinin çoğu hâlâ çekirdek DNA'sında kodlu. Yani organel kendi ihtiyacının yalnızca küçük bir kısmını karşılayabiliyor.
+
+Bu yüzden mitokondriye özerk demiyoruz; yarı özerk diyoruz. Tek kelimelik bir fark ama sınavda bütün cevabı değiştirir.
+
+Şunu aklında tut: mitokondrinin kendi DNA'sının bulunması, hücreden tamamen bağımsız olduğu anlamına gelmez. Bir soruda mitokondri bütün proteinlerini kendisi üretir diyen bir seçenek görürsen, orada durup düşün.`,
           },
           {
             id: 'mito-ozerklik-figure',
@@ -587,6 +726,27 @@ Bu yüzden mitokondriyal hastalıklar anneden bütün çocuklara aktarılır, ba
             links: ['Kalıtım — sitoplazmik kalıtım', 'Üreme — döllenme'],
           },
           {
+            id: 'mito-ozerklik-audio-endo',
+            type: 'audio_script',
+            label: 'Endosimbiyoz ve anneden kalıtım',
+            target_block_id: 'mito-ozerklik-compare',
+            highlight_block_ids: ['mito-ozerklik-figure', 'mito-ozerklik-connection'],
+            voice_hint: 'Kısaltmaları Türkçe harflerle oku: ATP a-te-pe, ADP a-de-pe, ETS e-te-se, NADH en-a-de-ha, FADH2 ef-a-de-ha-iki, DNA de-en-a. Sayıları Türkçe sözcükle oku. Sakin, sıcak ve profesyonel bir öğretmen tonu kullan; abartma.',
+            body: `Şimdi bir adım geri çekilip şunu soralım: bir organelin kendi DNA'sı, kendi ribozomu neden olsun ki?
+
+Ekrandaki karşılaştırmaya bak. Mitokondrinin DNA'sı halkasal ve histonsuz; tıpkı bakteride olduğu gibi. Ribozomu yetmiş S tipinde; yine bakteri tipi. İkiye bölünerek çoğalıyor; bakteriler gibi. Boyutu bir ila iki mikrometre; yani bir bakteri boyutunda.
+
+Bu kadar benzerlik tesadüf sayılamayacak kadar fazla.
+
+Endosimbiyoz teorisi bunu şöyle açıklıyor. Bir zamanlar serbest yaşayan, oksijenli solunum yapabilen bir bakteri, büyük bir öncül hücre tarafından yutulmuş ama sindirilmemiş. İkisi birlikte yaşamayı sürdürmüş; bakteri verimli enerji sağlarken hücrenin korunaklı ortamından yararlanmış. Zamanla genlerinin çoğu çekirdeğe aktarılmış ve bağımsızlığını kaybetmiş.
+
+Şimdi bir önceki bilgiyle bunu bağlayalım. Mitokondri neden çift zarlıydı? Bu teoriye göre dıştaki zar yutan hücrenin zarından geliyor, içteki zar ise bakterinin kendi zarından. Yani dersin başında yapı olarak öğrendiğin çift zar, burada bir köken hikâyesine dönüşüyor.
+
+Aynı kanıtlar kloroplast için de geçerli. Bir soruda hangi organeller endosimbiyozla açıklanır diye sorulursa cevap ikisi birden.
+
+Son olarak konunun kalıtıma açılan kapısı. Döllenmede zigotun sitoplazması neredeyse tamamen yumurtadan geliyor. Mitokondriler de sitoplazmada bulunuyor. Sonuç şu: mitokondriyal DNA yalnızca anneden geçer. Bu yüzden mitokondriyal hastalıklar anneden bütün çocuklara aktarılır, babadan hiçbirine geçmez. Soy ağacı sorularında bu desen ayırt edici bir ipucudur.`,
+          },
+          {
             id: 'mito-ozerklik-quiz',
             type: 'quiz',
             purpose: 'concept',
@@ -614,6 +774,30 @@ Diğer üç seçenek doğrudan bakteriyel özelliklerdir ve teoriyi destekler. B
         title: 'Şimdi sen çöz',
         lead: 'Buraya kadar okudun. Şimdi bilgiyi kullanma sırası sende. Cevaplara bakmadan önce gerçekten düşün — bakarak öğrenilen şey sınavda geri gelmiyor.',
         blocks: [
+          {
+            id: 'mito-uyg-audio',
+            type: 'audio_script',
+            label: 'Sınavda ayırt etmen gerekenler',
+            target_block_id: 'mito-uyg-checkpoint',
+            voice_hint: 'Kısaltmaları Türkçe harflerle oku: ATP a-te-pe, ADP a-de-pe, ETS e-te-se, NADH en-a-de-ha, FADH2 ef-a-de-ha-iki, DNA de-en-a. Sayıları Türkçe sözcükle oku. Uyarı cümlelerinde tonunu değiştir ve hafifçe vurgula; gerisi sakin kalsın.',
+            body: `Sorulara geçmeden önce bu konuda en sık kaybedilen puanları tek tek önüne koyacağım. Bunları ayırabiliyorsan soruların çoğunu zaten çözersin.
+
+Bir. Krista ile matriksi birbirine karıştırma. Krista iç zarın kıvrımıdır; matriks ise iç zarın çevrelediği sıvı bölgedir. Biri zar, diğeri ortam.
+
+İki. Kristaların içi matriksle dolu değil; zarlar arası boşlukla bağlantılı. Krista bir cep değil, bir girinti. Protonların nerede biriktiği sorulduğunda bu ayrım belirleyici olur.
+
+Üç. Glikoliz mitokondride değil, sitoplazmada gerçekleşir. Mitokondrisi olmayan bir hücre bile glikoliz yapabilir.
+
+Dört. Oksijen ATP üretmez; zincirin sonunda elektronları alır. Ortamda oksijen bulunması tek başına yetmez, oksijeni kullanacak iç zarın da bulunması gerekir.
+
+Beş. Mitokondrinin kendi DNA'sının bulunması, hücreden tamamen bağımsız olduğu anlamına gelmez. Doğru kelime yarı özerk.
+
+Altı. Toplam kazanç glikoz başına otuz ila otuz iki ATP. Otuz altı ila otuz sekiz eski kabuldür.
+
+Yedi. İki mitokondriyi karşılaştıran görsel sorularda ölçüt boyut değil, krista yoğunluğudur.
+
+Şimdi sıra sende. Aşağıdaki soruları cevaba bakmadan çöz. Takıldığın soruda hangi halkada takıldığını da not et; yanlışın hangi bilgiden geldiğini bilmek, doğruyu bilmek kadar değerli.`,
+          },
           {
             id: 'mito-uyg-checkpoint',
             type: 'checkpoint',
@@ -803,11 +987,27 @@ Ondan önce bu dersin mini quizlerine bir kez daha dön. İkisini de doğru yapt
           {
             id: 'mito-kapanis-audio',
             type: 'audio_script',
-            body: `Ders bitti. Kapatmadan önce bir şey isteyeceğim.
+            label: 'Toparlama',
+            target_block_id: 'mito-kapanis-summary',
+            highlight_block_ids: ['mito-kapanis-memory'],
+            voice_hint: 'Kısaltmaları Türkçe harflerle oku: ATP a-te-pe, ADP a-de-pe, ETS e-te-se, NADH en-a-de-ha, FADH2 ef-a-de-ha-iki, DNA de-en-a. Sayıları Türkçe sözcükle oku. Sakin, sıcak ve profesyonel bir öğretmen tonu kullan; abartma.',
+            body: `Dersi kapatıyoruz. Son bir kez zinciri baştan sona kuralım, bu sefer hızlı.
 
-Ekrandan başını kaldır ve mitokondriyi kendi cümlelerinle, kitaba bakmadan anlat. Yapıyla başla, sonra üç durağı say, en son ATP'nin nerede üretildiğini söyle.
+Hücre ATP'yi depolayamıyor, o yüzden sürekli üretmek zorunda. Mitokondri bu üretimi yapan yer; bir depo değil, bir dönüştürücü.
 
-Takıldığın yer olursa oraya dön. Takılmadıysan bu konu sende oturmuş demektir; fotosenteze geçebilirsin.`,
+İki zarı var. Dış zar geçirgen bir sınır, iç zar ise asıl işi yapan zar. İkisinin arasında dar bir boşluk, iç zarın çevrelediği yerde ise matriks bulunuyor. Bu iki farklı ortam olmasaydı organelin yöntemi hiç çalışmazdı.
+
+İç zar kristalar hâlinde katlanmış, çünkü ATP üreten enzimler zarın üzerinde duruyor ve daha çok yüzey daha çok enzim demek.
+
+Solunum üç durakta gerçekleşiyor. Glikoliz sitoplazmada, pirüvat oksidasyonu ve Krebs matrikste, elektron taşıma sistemi ve kemiozmoz iç zarda. İlk iki durak neredeyse hiç ATP üretmiyor; ürettikleri NADH ve FADH2. ATP'nin yaklaşık yüzde seksen sekizi iç zardan geliyor.
+
+Oksijen zincirin sonunda elektronları alıyor, ATP üretmiyor. Toplam kazanç otuz ila otuz iki ATP.
+
+Halkasal DNA, yetmiş S ribozom, ikiye bölünebilme ve çift zar; hepsi endosimbiyoz teorisini destekliyor. Ama mitokondri hücreden bağımsız değil, yarı özerk.
+
+Şimdi senden bir şey isteyeceğim. Ekrandan başını kaldır ve mitokondriyi kendi cümlelerinle, hiçbir yere bakmadan anlat. Yapıyla başla, üç durağı say, en son ATP'nin nerede üretildiğini söyle.
+
+Takıldığın yer olursa oraya dön. Takılmadıysan bu konu sende oturmuş demektir. Sıradaki durak fotosentez. Kloroplast neredeyse mitokondrinin tersine çalışır; şimdi çalışırsan ikisi birden yerine oturur.`,
           },
         ],
       },

@@ -23,7 +23,10 @@ export function getTtsProvider() {
  * adapter sözleşmesini uçtan uca doğrulayabilir.
  */
 export function createTtsProvider({ env = {}, fetchImpl = globalThis.fetch } = {}) {
-  const provider = String(env.TTS_PROVIDER ?? 'none').trim().toLowerCase()
+  // Projede zaten OpenAI anahtarı varsa pilot ayrıca bir TTS sırrı istemez.
+  // Açık `TTS_PROVIDER=none` her zaman kazanır ve özelliği güvenle kapatır.
+  const inferredProvider = env.TTS_API_KEY || env.OPENAI_API_KEY ? 'openai' : 'none'
+  const provider = String(env.TTS_PROVIDER ?? inferredProvider).trim().toLowerCase()
   if (provider === 'none') return unavailableProvider()
 
   if (provider === 'openai') return openAiProvider({ env, fetchImpl })
@@ -70,7 +73,12 @@ function openAiProvider({ env, fetchImpl }) {
 
       if (!response.ok) {
         const error = new Error(`tts_upstream_${response.status}`)
-        error.code = response.status === 429 ? 'rate_limited' : 'upstream_error'
+        error.code =
+          response.status === 401 || response.status === 403
+            ? 'not_configured'
+            : response.status === 429
+              ? 'rate_limited'
+              : 'upstream_error'
         error.status = response.status
         throw error
       }

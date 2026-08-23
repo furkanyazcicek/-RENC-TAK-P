@@ -8,6 +8,7 @@ dist/
 
 .vercel
 .env*
+!.env.example
 
 # Veri yedekleri (öğrenci verisi içerir — asla commit edilmez)
 backup/

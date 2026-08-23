@@ -737,6 +737,13 @@ export const BLOCK_SPECS = {
     normalize: (b) => ({
       body: richText(b.body ?? b.script, LIMITS.script),
       voice_hint: text(b.voice_hint, LIMITS.short),
+      // Anlatım oynarken ekranda hangi bloğun vurgulanacağı. Bu alan
+      // normalleştirmede korunmazsa ses ile ekran ayrışır: oynatıcı
+      // script'in bir önündeki bloğa düşer ve öğrenci konuşulan yeri
+      // değil, bölümün son kutusunu görür.
+      target_block_id: text(b.target_block_id, 120),
+      highlight_block_ids: strList(b.highlight_block_ids, 120, 6),
+      label: text(b.label, LIMITS.title),
     }),
   },
 }

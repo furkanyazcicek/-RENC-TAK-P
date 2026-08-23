@@ -1,4 +1,42 @@
-export const NARRATION_PILOT_SLUG = 'canlilar-ve-cevre'
+/**
+ * DERS SESLİ ANLATIMI — ORTAK KATMAN
+ * ==================================================================
+ *
+ * Bu dosya "hangi bölüm, hangi metinle, hangi ses dosyasıyla anlatılıyor"
+ * sorusunun tek cevabıdır. Hem okuyucu (LessonReader), hem önizleme
+ * sayfası, hem de sunucudaki ses uç noktası aynı listeyi buradan üretir.
+ * İki ayrı yerde üretilseydi, ses ile ekran er geç birbirinden ayrılırdı.
+ *
+ * ÜÇ TASARIM KARARI
+ *
+ * 1) ANLATIM METNİ ≠ EKRANDAKİ METİN. `audio_script` blokları öğrenciye
+ *    metin olarak görünmez; notu kelimesi kelimesine okumazlar. Öğretmenin
+ *    aynı bilgiyi kendi ağzıyla anlattığı ayrı bir katmandır.
+ *
+ * 2) BİR BÖLÜMDE BİRDEN FAZLA ANLATIM OLABİLİR. Uzun bir bölüm tek parça
+ *    sesle anlatılırsa öğrenci istediği yere dönemez. Bu yüzden liste
+ *    bölüm değil, ANLATIM PARÇASI düzeyinde tutulur; `sectionIndex` ile
+ *    bölüm atlama yine çalışır.
+ *
+ * 3) SES ÖNCE HAZIR DOSYADAN OKUNUR. `narrationManifest` içinde aynı
+ *    sürüme ait üretilmiş bir mp3 varsa doğrudan o çalınır; yoksa istek
+ *    anında üreten API uç noktasına düşülür. Böylece aynı ses ikinci kez
+ *    ücretli olarak üretilmez.
+ */
+import { NARRATION_AUDIO_BASE, NARRATION_MANIFEST } from '../content/lessons/narrationManifest.js'
+
+/** Sesli anlatımın açık olduğu dersler. Yeni ders buraya eklenerek açılır. */
+export const NARRATION_PILOT_SLUGS = Object.freeze([
+  'canlilar-ve-cevre',
+  'hucresel-solunum-mitokondri',
+])
+
+/** Geriye uyumluluk: eski çağrılar tek slug bekliyordu. */
+export const NARRATION_PILOT_SLUG = NARRATION_PILOT_SLUGS[0]
+
+export function isNarrationEnabled(lessonSlug) {
+  return NARRATION_PILOT_SLUGS.includes(lessonSlug)
+}
 
 /**
  * Belgedeki görünmez `audio_script` bloklarını sıralı oynatma listesine
@@ -6,7 +44,7 @@ export const NARRATION_PILOT_SLUG = 'canlilar-ve-cevre'
  * hemen önündeki görünür blok güvenli geriye uyumluluk hedefidir.
  */
 export function buildNarrationItems(document, lessonSlug) {
-  if (lessonSlug !== NARRATION_PILOT_SLUG) return []
+  if (!isNarrationEnabled(lessonSlug)) return []
 
   const items = []
   ;(document?.sections ?? []).forEach((section, sectionIndex) => {
@@ -23,19 +61,48 @@ export function buildNarrationItems(document, lessonSlug) {
       const targetBlockId = block.target_block_id || previousVisibleBlockId
       if (!targetBlockId) return
 
+      const version = stableTextVersion(script)
+      const prepared = preparedAudio(lessonSlug, block.id, version)
+
       items.push({
         id: block.id,
         sectionId: section.id,
         sectionIndex,
         sectionTitle: section.title,
+        // Bölüm başlığı yerine parçanın kendi adı: bir bölümde birden fazla
+        // anlatım olduğunda öğrenci hangi parçada olduğunu görebilsin.
+        label: block.label || section.title,
         targetBlockId,
+        // Anlatım sırasında ayrıca vurgulanacak görsel/blok kimlikleri.
+        highlightBlockIds: uniqueIds([targetBlockId, ...(block.highlight_block_ids ?? [])]),
         script,
-        audioUrl: narrationAudioUrl({ lessonSlug, blockId: block.id, script }),
+        voiceHint: block.voice_hint || '',
+        version,
+        durationSeconds: prepared?.duration ?? null,
+        audioUrl: prepared?.url ?? narrationAudioUrl({ lessonSlug, blockId: block.id, script }),
+        isPrepared: Boolean(prepared),
       })
     })
   })
 
   return items
+}
+
+/**
+ * Önceden üretilmiş ses dosyası yalnızca SÜRÜMÜ TUTUYORSA kullanılır.
+ * Anlatım metni değiştiğinde eski kayıt sessizce çalmaya devam etmesin.
+ */
+function preparedAudio(lessonSlug, blockId, version) {
+  const entry = NARRATION_MANIFEST?.[`${lessonSlug}/${blockId}`]
+  if (!entry || entry.version !== version || !entry.file) return null
+  return {
+    url: `${NARRATION_AUDIO_BASE}/${lessonSlug}/${entry.file}`,
+    duration: Number.isFinite(entry.duration) ? entry.duration : null,
+  }
+}
+
+function uniqueIds(values) {
+  return [...new Set(values.filter(Boolean))]
 }
 
 export function narrationAudioUrl({ lessonSlug, blockId, script }) {
