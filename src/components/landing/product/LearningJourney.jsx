@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { BookOpen, CheckCircle2, Crown, Dna, Eye, FlaskConical, Highlighter, Image, Landmark, MousePointer2 } from 'lucide-react'
 import MitochondrionAnatomy from '../../lessons/figures/MitochondrionAnatomy'
-import { PeriodicSystemMap } from '../../lessons/figures/AtomicPeriodicIllustrations'
 import { PADISAHLAR } from '../../../data/padisahlar'
 
 const NOTE_STEPS = [
@@ -39,6 +38,36 @@ const CHEMISTRY_REGIONS = [
   { key: 'siniflar', label: 'Element sınıfları', helper: 'Metal, ametal ve yarı metalleri ayır.' },
   { key: 'soygazlar', label: 'Soy gazlar', helper: 'Kararlı 18. grubun tablodaki yerini aç.' },
 ]
+
+const PERIODIC_ELEMENTS = [
+  { symbol: 'H', number: 1, name: 'Hidrojen', group: 1, period: 1, family: 'ametal', fact: 'En hafif elementtir; konumuna rağmen ametaldir.' },
+  { symbol: 'He', number: 2, name: 'Helyum', group: 18, period: 1, family: 'soygaz', fact: 'İlk katmanı iki elektronla doludur ve kararlıdır.' },
+  { symbol: 'Li', number: 3, name: 'Lityum', group: 1, period: 2, family: 'metal', fact: '1A grubunda bulunan hafif bir alkali metaldir.' },
+  { symbol: 'Be', number: 4, name: 'Berilyum', group: 2, period: 2, family: 'metal', fact: '2A grubundaki toprak alkali metallerden biridir.' },
+  { symbol: 'B', number: 5, name: 'Bor', group: 13, period: 2, family: 'yarimetal', fact: 'Metal ve ametal arasında özellik gösteren bir yarı metaldir.' },
+  { symbol: 'C', number: 6, name: 'Karbon', group: 14, period: 2, family: 'ametal', fact: 'Organik bileşiklerin temel iskeletini oluşturur.' },
+  { symbol: 'N', number: 7, name: 'Azot', group: 15, period: 2, family: 'ametal', fact: 'Atmosferin büyük bölümünü oluşturan ametaldir.' },
+  { symbol: 'O', number: 8, name: 'Oksijen', group: 16, period: 2, family: 'ametal', fact: 'Solunum ve yanma tepkimelerinde önemli rol oynar.' },
+  { symbol: 'F', number: 9, name: 'Flor', group: 17, period: 2, family: 'ametal', fact: 'Elektronegatifliği en yüksek elementtir.' },
+  { symbol: 'Ne', number: 10, name: 'Neon', group: 18, period: 2, family: 'soygaz', fact: 'Son katmanı dolu, tepkime eğilimi düşük bir soy gazdır.' },
+  { symbol: 'Na', number: 11, name: 'Sodyum', group: 1, period: 3, family: 'metal', fact: 'Elektron vererek genellikle +1 yüklü iyon oluşturur.' },
+  { symbol: 'Mg', number: 12, name: 'Magnezyum', group: 2, period: 3, family: 'metal', fact: 'Elektron vererek genellikle +2 yüklü iyon oluşturur.' },
+  { symbol: 'Al', number: 13, name: 'Alüminyum', group: 13, period: 3, family: 'metal', fact: 'Hafifliği ve dayanıklılığıyla yaygın kullanılan bir metaldir.' },
+  { symbol: 'Si', number: 14, name: 'Silisyum', group: 14, period: 3, family: 'yarimetal', fact: 'Yarı iletken teknolojilerinin temel elementlerinden biridir.' },
+  { symbol: 'P', number: 15, name: 'Fosfor', group: 15, period: 3, family: 'ametal', fact: 'ATP ve DNA gibi biyolojik yapılarda bulunur.' },
+  { symbol: 'S', number: 16, name: 'Kükürt', group: 16, period: 3, family: 'ametal', fact: 'Bazı amino asitlerin yapısına katılan bir ametaldir.' },
+  { symbol: 'Cl', number: 17, name: 'Klor', group: 17, period: 3, family: 'ametal', fact: 'Elektron alarak genellikle −1 yüklü iyon oluşturur.' },
+  { symbol: 'Ar', number: 18, name: 'Argon', group: 18, period: 3, family: 'soygaz', fact: 'Kararlı elektron düzenine sahip bir soy gazdır.' },
+  { symbol: 'K', number: 19, name: 'Potasyum', group: 1, period: 4, family: 'metal', fact: 'Canlılarda sinir iletimi için önemli bir alkali metaldir.' },
+  { symbol: 'Ca', number: 20, name: 'Kalsiyum', group: 2, period: 4, family: 'metal', fact: 'Kemik yapısı ve kas kasılmasında önemli rol oynar.' },
+]
+
+const ELEMENT_STYLES = {
+  metal: 'border-aqua-400/45 bg-aqua-500/15 text-aqua-100 hover:bg-aqua-500/25',
+  ametal: 'border-warning-400/45 bg-warning-500/15 text-warning-100 hover:bg-warning-500/25',
+  yarimetal: 'border-success-400/45 bg-success-500/15 text-success-100 hover:bg-success-500/25',
+  soygaz: 'border-brand-300/55 bg-brand-500/20 text-brand-100 hover:bg-brand-500/30',
+}
 
 const HISTORY_RULERS = PADISAHLAR.map((ruler) => ({
   key: ruler.id,
@@ -112,6 +141,71 @@ function RulerInfoCard({ ruler }) {
         </div>
       </div>
     </article>
+  )
+}
+
+function InteractivePeriodicTable({ activeRegion }) {
+  const [selectedSymbol, setSelectedSymbol] = useState('C')
+  const selectedElement = PERIODIC_ELEMENTS.find((element) => element.symbol === selectedSymbol) ?? PERIODIC_ELEMENTS[0]
+
+  return (
+    <div className="rounded-xl bg-[#11182d] p-3 text-white sm:p-5">
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-brand-300">İlk 20 element</p>
+          <p className="mt-1 text-sm font-bold text-white">Bir element kutusuna dokun.</p>
+        </div>
+        <div className="flex flex-wrap gap-2 text-[10px] font-bold text-white/60">
+          <span className="rounded-full bg-aqua-500/15 px-2.5 py-1">Metal</span>
+          <span className="rounded-full bg-warning-500/15 px-2.5 py-1">Ametal</span>
+          <span className="rounded-full bg-success-500/15 px-2.5 py-1">Yarı metal</span>
+          <span className="rounded-full bg-brand-500/20 px-2.5 py-1">Soy gaz</span>
+        </div>
+      </div>
+
+      <div className="overflow-x-auto pb-2">
+        <div
+          className="grid min-w-[36rem] gap-1"
+          style={{ gridTemplateColumns: 'repeat(18, minmax(1.65rem, 1fr))' }}
+          role="grid"
+          aria-label="İlk 20 elementin etkileşimli periyodik cetveli"
+        >
+          {PERIODIC_ELEMENTS.map((element) => {
+            const selected = selectedSymbol === element.symbol
+            const dimmed = activeRegion === 'soygazlar' && element.family !== 'soygaz'
+
+            return (
+              <button
+                key={element.symbol}
+                type="button"
+                role="gridcell"
+                aria-pressed={selected}
+                aria-label={`${element.name}, atom numarası ${element.number}`}
+                onClick={() => setSelectedSymbol(element.symbol)}
+                className={`focus-ring aspect-square min-h-10 rounded-lg border p-1 text-center transition-[opacity,transform,box-shadow] duration-200 active:scale-95 motion-reduce:transform-none ${ELEMENT_STYLES[element.family]} ${selected ? 'scale-110 shadow-lg ring-2 ring-white/80' : ''} ${dimmed ? 'opacity-25' : 'opacity-100'}`}
+                style={{ gridColumn: element.group, gridRow: element.period }}
+              >
+                <span className="block text-[8px] font-bold opacity-65">{element.number}</span>
+                <span className="block text-sm font-black leading-none">{element.symbol}</span>
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
+      <div className="mt-4 grid gap-3 rounded-xl border border-white/10 bg-white/[0.05] p-4 sm:grid-cols-[auto_1fr] sm:items-center">
+        <div className="grid h-16 w-16 place-items-center rounded-xl border border-brand-300/35 bg-brand-500/15">
+          <span className="text-3xl font-black text-white">{selectedElement.symbol}</span>
+        </div>
+        <div aria-live="polite">
+          <p className="text-base font-extrabold text-white">{selectedElement.number} · {selectedElement.name}</p>
+          <p className="mt-1 text-xs font-bold uppercase tracking-[0.12em] text-brand-300">
+            {selectedElement.group}. grup · {selectedElement.period}. periyot
+          </p>
+          <p className="mt-2 text-sm leading-6 text-white/68">{selectedElement.fact}</p>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -340,9 +434,7 @@ export function InteractiveVisualShowcase() {
             </div>
             {activeSubject === 'biology' && <MitochondrionAnatomy activeRegion={activeBiologyRegion} />}
             {activeSubject === 'chemistry' && (
-              <div className="overflow-hidden rounded-xl bg-surface p-3 sm:p-5">
-                <PeriodicSystemMap activeRegion={activeChemistryRegion} />
-              </div>
+              <InteractivePeriodicTable activeRegion={activeChemistryRegion} />
             )}
             {activeSubject === 'history' && (
               <RulerInfoCard ruler={activeRuler} />
