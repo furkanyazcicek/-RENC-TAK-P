@@ -32,7 +32,20 @@ export default function ZamanCizelgesi({ kayitlar, aktifId, onSec, baslik = 'Osm
     <nav className="pg-cizelge" aria-label="Padişah zaman çizelgesi">
       <div className="pg-cizelge-ust">
         <span>{baslik}</span>
-        <span>Kutu genişliği = hükümdarlık süresi</span>
+        <div className="pg-cizelge-araclar">
+          <span>Kutu genişliği = hükümdarlık süresi</span>
+          <select
+            value={aktifId}
+            aria-label="Padişah seç"
+            onChange={(olay) => onSec?.(olay.target.value)}
+          >
+            {kayitlar.filter((kayit) => kayit.hazir).map((kayit) => (
+              <option key={kayit.id} value={kayit.id}>
+                {kayit.order}. {kayit.ad} · {kayit.basMetin ?? kayit.bas}–{kayit.bitMetin ?? kayit.bit}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
       <div className="pg-cizelge-ray" ref={rayRef}>
         {kayitlar.map((kayit) => {

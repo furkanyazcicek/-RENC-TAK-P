@@ -29,6 +29,10 @@ export default function DonemHaritasi({
   not = true,
   sigdir = false,
   etiketler = true,
+  etkilesimli = false,
+  seciliAlan = null,
+  aktifTur = null,
+  onAlanSec,
 }) {
   const harita = donemHaritasi(haritaId)
 
@@ -64,24 +68,42 @@ export default function DonemHaritasi({
         className="pg-harita"
         viewBox={`0 0 ${PROJEKSIYON.genislik} ${PROJEKSIYON.yukseklik}`}
         preserveAspectRatio={sigdir ? 'xMidYMid meet' : 'xMidYMid slice'}
-        role="img"
+        role={etkilesimli ? 'group' : 'img'}
         aria-label={`${harita.baslik} — şematik dönem haritası. ${harita.okuma}`}
       >
         <g style={{ transform: donusum, transformOrigin: '0 0', transition: 'transform 720ms cubic-bezier(0.16,1,0.3,1)' }}>
           <rect x="0" y="0" width={PROJEKSIYON.genislik} height={PROJEKSIYON.yukseklik} className="pg-harita-kara" />
 
           {/* Hâkimiyet alanları */}
-          {alanYollari.map((alan) => (
-            <path
-              key={`${haritaId}-${alan.id}`}
-              d={alan.yol}
-              className="pg-harita-alan pg-harita-alan-giris"
-              data-tur={alan.tur}
-              data-ince={alan.ince ? 'true' : undefined}
-            >
-              <title>{alan.ad}</title>
-            </path>
-          ))}
+          {alanYollari.map((alan) => {
+            const secili = seciliAlan === alan.id
+            const soluk = aktifTur && aktifTur !== alan.tur
+            const alanSec = () => etkilesimli && onAlanSec?.(secili ? null : alan.id)
+            return (
+              <path
+                key={`${haritaId}-${alan.id}`}
+                d={alan.yol}
+                className="pg-harita-alan pg-harita-alan-giris"
+                data-tur={alan.tur}
+                data-ince={alan.ince ? 'true' : undefined}
+                data-etkilesimli={etkilesimli ? 'true' : undefined}
+                data-secili={secili ? 'true' : undefined}
+                data-soluk={soluk ? 'true' : undefined}
+                role={etkilesimli ? 'button' : undefined}
+                tabIndex={etkilesimli ? 0 : undefined}
+                aria-pressed={etkilesimli ? secili : undefined}
+                aria-label={etkilesimli ? `${alan.ad}. ${alan.aciklama ?? ''}`.trim() : undefined}
+                onClick={alanSec}
+                onKeyDown={(olay) => {
+                  if (!etkilesimli || !['Enter', ' '].includes(olay.key)) return
+                  olay.preventDefault()
+                  alanSec()
+                }}
+              >
+                <title>{alan.ad}{alan.aciklama ? ` — ${alan.aciklama}` : ''}</title>
+              </path>
+            )
+          })}
 
           {/* Denizler en üstte — kıyı çizgisini onlar tanımlar */}
           {denizYollari.map((deniz) => (

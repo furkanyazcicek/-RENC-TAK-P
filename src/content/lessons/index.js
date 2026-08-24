@@ -87,17 +87,47 @@ import uremeSistemiEmbriyonikGelisim from './biyoloji/ureme-sistemi-embriyonik-g
 import uremeSistemiEmbriyonikGelisimTemel from './biyoloji/ureme-sistemi-embriyonik-gelisim-temel.js'
 import { philosophyLessons } from './felsefe/index.js'
 import fizikBilimineGiris from './fizik/fizik-bilimine-giris.js'
+import maddeVeOzellikleri from './fizik/madde-ve-ozellikleri.js'
+import sivilarinKaldirmaKuvveti from './fizik/sivilarin-kaldirma-kuvveti.js'
+import basinc from './fizik/basinc.js'
+import isiSicaklikGenlesme from './fizik/isi-sicaklik-genlesme.js'
+import hareketVeKuvvet from './fizik/hareket-ve-kuvvet.js'
+import isGucEnerji from './fizik/is-guc-enerji.js'
+import elektrostatik from './fizik/elektrostatik.js'
+import elektrikDevreleri from './fizik/elektrik-devreleri.js'
+import manyetizma from './fizik/manyetizma.js'
+import dalgalar from './fizik/dalgalar.js'
 import { TYT_HISTORY_LESSONS } from './tarih/tyt-tarih-kutuphanesi.js'
 import { TYT_RELIGION_LESSONS } from './din-kulturu/topics.js'
 import { TURKISH_LESSONS } from './turkce/catalog.js'
 import kimyaBilimi from './kimya/kimya-bilimi.js'
+import atomVePeriyodikSistem from './kimya/atom-ve-periyodik-sistem.js'
+import kimyasalTurlerArasiEtkilesimler from './kimya/kimyasal-turler-arasi-etkilesimler.js'
+import maddeninHalleri from './kimya/maddenin-halleri.js'
+import dogaVeKimya from './kimya/doga-ve-kimya.js'
+import dogaVeInsan from './cografya/doga-ve-insan.js'
 
 export const LESSONS = [
   ...philosophyLessons,
   fizikBilimineGiris,
+  maddeVeOzellikleri,
+  sivilarinKaldirmaKuvveti,
+  basinc,
+  isiSicaklikGenlesme,
+  hareketVeKuvvet,
+  isGucEnerji,
+  elektrostatik,
+  elektrikDevreleri,
+  manyetizma,
+  dalgalar,
   ...TURKISH_LESSONS,
   ...TYT_RELIGION_LESSONS,
   kimyaBilimi,
+  atomVePeriyodikSistem,
+  kimyasalTurlerArasiEtkilesimler,
+  maddeninHalleri,
+  dogaVeKimya,
+  dogaVeInsan,
   canlilarinOrtakOzellikleriTemel,
   canlilarinOrtakOzellikleri,
   canlilarinTemelBilesenleriTemel,

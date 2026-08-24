@@ -28,7 +28,7 @@ const birinciMurad = {
   capitals: ['Bursa', 'Edirne (yaklaşık 1365’ten itibaren)'],
 
   traits: [
-    { field: 'askeri', level: 'belirleyici', label: 'Balkan hâkimiyeti', evidence: 'Edirne, Filibe, Sofya ve Niş’in alınması; Sırpsındığı (1364), Çirmen (1371) ve I. Kosova (1389) zaferleri.' },
+    { field: 'askeri', level: 'belirleyici', label: 'Balkan hâkimiyeti', evidence: 'Edirne, Filibe, Sofya ve Niş’in alınması; ders anlatımındaki Sırpsındığı (1364), belgeli Çirmen/Meriç (1371) ve I. Kosova (1389) zaferleri.' },
     { field: 'devletlesme', level: 'belirleyici', label: 'Merkezî ordu ve taşra teşkilatı', evidence: 'Pençik sistemiyle Yeniçeri Ocağı ve Kapıkulu ordusunun kurulması, Rumeli Beylerbeyliği’nin oluşturulması, tımar düzeninin yerleşmesi.' },
     { field: 'hukuk', level: 'belirgin', label: 'Adlî ve idarî düzen', evidence: 'Kazaskerliğin kurulması, kadıların merkezden atanan bir düzene bağlanması, ülkenin "hükümdar ve oğullarının" sayılması anlayışı.' },
     { field: 'diplomasi', level: 'belirgin', label: 'Savaşsız toprak kazanımı', evidence: 'Germiyanoğulları’ndan çeyizle, Hamitoğulları’ndan satın alma yoluyla toprak alınması.' },
@@ -54,7 +54,7 @@ const birinciMurad = {
       osym: 'Kapıkulu/Yeniçeri = I. MURAD. Yaya ve müsellem = ORHAN GAZİ. Devşirme sistemi ise daha sonra, pençiğin yetersiz kalmasıyla gelişmiştir.',
     },
     {
-      id: 'rumeli-beylerbeyligi', title: 'Rumeli Beylerbeyliği’nin kurulması', date: tartismaliTarih(1362, '1360’lar'),
+      id: 'rumeli-beylerbeyligi', title: 'Rumeli Beylerbeyliği’nin kurulması', date: tartismaliTarih(1362, '1360’lar', 'Beylerbeyliğin kuruluşu bir düzenleme sürecidir; tek yıla bağlanamaz.'),
       summary: 'Rumeli toprakları tek bir üst yönetim biriminde toplandı; ilk beylerbeyi Lala Şahin Paşa oldu.',
       detail: 'Fetihler hızlandıkça her sancağın ayrı ayrı merkeze bağlanması yönetilemez hâle geldi. Beylerbeylik, sancakların üstünde bir kademedir. İlk beylerbeylik Rumeli’de kurulmuştur — bu, ağırlık merkezinin nerede olduğunun idari kanıtıdır.',
       osym: 'İlk beylerbeylik ANADOLU’da değil, RUMELİ’de kurulmuştur. Sıkça karıştırılır.',
@@ -85,14 +85,14 @@ const birinciMurad = {
 
   battles: [
     {
-      id: 'sirpsindigi', title: 'Sırpsındığı Savaşı', date: tartismaliTarih(1364, '1364', 'Bazı kaynaklar 1363 verir.'), eventType: 'major',
-      summary: 'Osmanlı’ya karşı kurulan ilk Haçlı ittifakı, bir gece baskınıyla dağıtıldı.',
-      sides: ['Hacı İlbey komutasındaki Osmanlı akıncıları', 'Macar, Sırp, Bosna ve Eflak kuvvetlerinden oluşan Haçlı ordusu'],
-      cause: 'Edirne’nin alınması ve Osmanlı’nın Balkanlarda ilerlemesi üzerine Papa’nın çağrısıyla ittifak kurulması.',
-      detail: 'Sayıca çok üstün Haçlı ordusu Meriç kıyısında konaklarken, Hacı İlbey komutasındaki küçük Osmanlı kuvveti gece baskını düzenledi. Karanlıkta paniğe kapılan ordu dağıldı, büyük bölümü nehirde telef oldu. Savaşın adı da buradan gelir.',
-      result: 'Haçlı ordusu dağıldı; Balkanlardaki Osmanlı ilerleyişinin önü açıldı.',
-      significance: 'Osmanlı’ya karşı düzenlenen ilk Haçlı seferinin sonuçsuz kalması, Balkan devletlerinin tek başına Osmanlı’yı durduramayacağını gösterdi.',
-      osym: 'Osmanlı’ya karşı düzenlenen İLK HAÇLI SEFERİ Sırpsındığı ile sonuçlanır. Komutan: Hacı İlbey. Bu üçlü birlikte sorulur.',
+      id: 'sirpsindigi', title: 'Sırpsındığı Savaşı', date: tartismaliTarih(1364, '1363/1364?', 'MEB/klasik ders anlatımı bu olayı 1363/1364’e yerleştirir. Modern araştırmada ayrı bir savaş olup olmadığı tartışmalıdır; bazı tarihçiler anlatının 1371 Çirmen/Meriç Savaşı ile karıştığını belirtir.'), eventType: 'major',
+      summary: 'MEB ve klasik sınav anlatımında ilk Haçlı ittifakına karşı zafer; olayın 1371 Çirmen’den ayrılığı akademik olarak tartışmalıdır.',
+      sides: ['Klasik anlatımda Hacı İlbey komutasındaki Osmanlı akıncıları', 'Klasik anlatımda Macar, Sırp, Bosna ve Eflak kuvvetlerinden oluşan ittifak'],
+      cause: 'Ders anlatımında Edirne’nin alınması ve Osmanlı’nın Balkanlarda ilerlemesi karşısında kurulan ittifakla açıklanır.',
+      detail: 'Klasik Osmanlı ve ders kitabı anlatısı, Meriç kıyısındaki kalabalık ittifak ordusunun Hacı İlbey’in gece baskınıyla dağıtıldığını aktarır. Bununla birlikte çağdaş kayıtlar ayrı bir 1364 savaşını kesinleştirmez. Modern tarih yazımında bu anlatının 26 Eylül 1371 tarihli Çirmen/Meriç Savaşı’yla birleşmiş olabileceği vurgulanır.',
+      result: 'Klasik anlatıma göre ittifak ordusu dağıldı ve Balkanlardaki Osmanlı ilerleyişinin önü açıldı.',
+      significance: 'Geleneksel kuruluş dönemi kronolojisinde Osmanlı’nın Balkan ittifakları karşısındaki ilk büyük başarısı olarak konumlandırılır.',
+      osym: 'MEB/klasik sınav kabulü: ilk Haçlı seferi → Sırpsındığı; komutan → Hacı İlbey. Akademik not: olayın 1371 Çirmen’den ayrılığı tartışmalıdır.',
       figures: ['haci-ilbey-murad'],
       mapFocus: 'sirpsindigi',
       atlas: { year: 1364, eventId: 'sirpsindigi-savasi', focus: 'edirne', label: 'Meriç hattını atlasta aç' },
@@ -133,13 +133,13 @@ const birinciMurad = {
   ],
 
   conquests: [
-    { id: 'edirne-fetih', title: 'Edirne', date: tartismaliTarih(1363, '1361/1363'), from: 'Bizans', summary: 'Balkanlara açılan yolların düğüm noktası alındı.', effect: 'Başkent buraya taşındı; devletin yönü Avrupa’ya döndü.', osym: 'Üçüncü Osmanlı başkenti.', mapFocus: 'edirne' },
-    { id: 'filibe-fetih', title: 'Filibe', date: tartismaliTarih(1364, '1360’lar'), from: 'Bulgar Krallığı', summary: 'Meriç vadisindeki en önemli merkez alındı.', effect: 'Sofya yönündeki ilerlemenin üssü oldu.', mapFocus: 'filibe' },
+    { id: 'edirne-fetih', title: 'Edirne', date: tartismaliTarih(1363, '1361/1363', 'Fetih yılı kaynaklarda ayrışır; ders kitaplarında çoğunlukla 1363 verilir.'), from: 'Bizans', summary: 'Balkanlara açılan yolların düğüm noktası alındı.', effect: 'Başkent buraya taşındı; devletin yönü Avrupa’ya döndü.', osym: 'Üçüncü Osmanlı başkenti.', mapFocus: 'edirne' },
+    { id: 'filibe-fetih', title: 'Filibe', date: tartismaliTarih(1364, '1360’lar', 'Meriç vadisindeki fetihler birbirini izler; yıl kaynaklara göre değişir.'), from: 'Bulgar Krallığı', summary: 'Meriç vadisindeki en önemli merkez alındı.', effect: 'Sofya yönündeki ilerlemenin üssü oldu.', mapFocus: 'filibe' },
     { id: 'sofya-fetih', title: 'Sofya', date: tarih(1385), from: 'Bulgar Krallığı', summary: 'Balkanların iç kesimlerine açılan şehir alındı.', effect: 'Bulgar Krallığı Osmanlı’ya bağlandı.', mapFocus: 'sofya' },
     { id: 'nis-fetih', title: 'Niş', date: tarih(1386), from: 'Sırp Despotluğu', summary: 'Sırbistan yolundaki kilit şehir alındı.', effect: 'Sırbistan ile doğrudan temas kuruldu; Kosova’ya giden süreç başladı.', mapFocus: 'nis' },
     { id: 'selanik-fetih', title: 'Selanik', date: tartismaliTarih(1387, '1387', 'Şehir sonraki yıllarda el değiştirmiştir.'), from: 'Bizans', summary: 'Ege’nin kuzeyindeki en büyük liman şehri alındı.', effect: 'Rumeli’deki Osmanlı varlığı denize ulaştı.', mapFocus: 'selanik' },
     { id: 'kutahya-cehiz', title: 'Kütahya, Tavşanlı, Simav, Emet', date: tarih(1381), from: 'Germiyanoğulları (çeyiz)', summary: 'Savaşsız, evlilik yoluyla alındı.', effect: 'Anadolu’da Osmanlı toprakları genişledi, beyliklerle savaş riski azaldı.', osym: 'Çeyiz yoluyla toprak kazanımı.', mapFocus: 'kutahya' },
-    { id: 'aksehir-satin', title: 'Akşehir, Beyşehir, Seydişehir, Yalvaç', date: tartismaliTarih(1381, '1374–1381'), from: 'Hamitoğulları (satın alma)', summary: 'Para karşılığında satın alındı.', effect: 'Karamanoğulları ile komşu olundu.', osym: 'Satın alma yoluyla toprak kazanımı.', mapFocus: 'aksehir' },
+    { id: 'aksehir-satin', title: 'Akşehir, Beyşehir, Seydişehir, Yalvaç', date: tartismaliTarih(1381, '1374–1381', 'Satın alma birden çok aşamada gerçekleşmiştir; kaynaklar farklı yıl verir.'), from: 'Hamitoğulları (satın alma)', summary: 'Para karşılığında satın alındı.', effect: 'Karamanoğulları ile komşu olundu.', osym: 'Satın alma yoluyla toprak kazanımı.', mapFocus: 'aksehir' },
   ],
 
   reforms: [
@@ -152,7 +152,7 @@ const birinciMurad = {
 
   importantFigures: [
     { id: 'murad-hudavendigar', name: 'I. Murad', role: 'Üçüncü Osmanlı hükümdarı', side: 'osmanli', summary: 'Devleti Balkanlarda kalıcı kılan ve merkezî ordu ile teşkilatı kuran padişah.' },
-    { id: 'haci-ilbey-murad', name: 'Hacı İlbey', role: 'Akıncı komutanı', side: 'osmanli', summary: 'Sırpsındığı’nda gece baskınıyla Haçlı ordusunu dağıttı.' },
+    { id: 'haci-ilbey-murad', name: 'Hacı İlbey', role: 'Akıncı komutanı', side: 'osmanli', summary: 'Klasik anlatıda Sırpsındığı gece baskınının; akademik anlatıda 1371 Çirmen/Meriç zaferinin komutanı olarak anılır.' },
     { id: 'lala-sahin-pasa', name: 'Lala Şahin Paşa', role: 'İlk Rumeli beylerbeyi', side: 'osmanli', summary: 'Rumeli fetihlerini ve yeni kurulan taşra düzenini yürüttü.' },
     { id: 'candarli-kara-halil-murad', name: 'Çandarlı Kara Halil Hayreddin Paşa', role: 'İlk kazasker, sonra vezir', side: 'osmanli', summary: 'Pençik sistemi ve adlî teşkilatın kurulmasında belirleyici oldu.' },
     { id: 'evrenos-bey', name: 'Evrenos Bey', role: 'Uç beyi', side: 'osmanli', summary: 'Makedonya ve Batı Rumeli akınlarını yürüttü.' },
@@ -166,7 +166,7 @@ const birinciMurad = {
     'Üçüncü başkent: EDİRNE. (Söğüt/Yenişehir → Bursa → Edirne → İstanbul)',
     'Kapıkulu ordusu ve Yeniçeri Ocağı: I. Murad. Yaya ve müsellem: Orhan Gazi. Bu iki bilgi en sık karıştırılan çifttir.',
     'İlk kazasker: Çandarlı Kara Halil. İlk beylerbeylik: RUMELİ. İlk beylerbeyi: Lala Şahin Paşa.',
-    'Osmanlı’ya karşı düzenlenen ilk Haçlı seferi Sırpsındığı (1364) ile sonuçsuz kaldı; komutan Hacı İlbey’dir.',
+    'MEB/klasik sınav kabulü: ilk Haçlı seferi → Sırpsındığı (1363/1364), komutan → Hacı İlbey. Akademik olarak olayın 1371 Çirmen’den ayrılığı tartışmalıdır.',
     'Çirmen Savaşı (1371) → Makedonya yolu açıldı, Bulgar Krallığı Osmanlı’ya bağlandı.',
     'I. Kosova (1389) I. Murad, II. Kosova (1448) II. Murad dönemidir — yıl ve padişah birlikte ezberlenmelidir.',
     'Anadolu’da toprak SAVAŞSIZ kazanıldı: Germiyan (çeyiz), Hamitoğulları (satın alma).',
@@ -176,11 +176,19 @@ const birinciMurad = {
 
   mapState: {
     id: 'murad-1389',
+    startMapId: 'orhan-1362',
+    startCaption: 'I. Murad tahta geçtiğinde Osmanlı, Marmara’nın güneyine yerleşmiş ve Gelibolu çevresinde henüz dar bir Rumeli köprübaşı kurmuştu.',
     caption: 'Dönem sonunda Rumeli, Osmanlı’nın ağırlık merkezidir; Sırbistan ve Bulgaristan doğrudan yönetilmez, bağlı devlet olarak tutulur.',
     highlight: ['edirne', 'sofya', 'nis', 'kosova', 'kutahya'],
   },
 
-  portrait: { kind: 'monogram', alt: 'I. Murad’ı temsil eden sembolik pano.', tugra: 'م', isim: 'Murad' },
+  portrait: {
+    kind: 'image',
+    src: '/lesson-assets/tarih/osmanli-padisahlari/birinci-murad.jpg',
+    alt: 'I. Murad’ın dönem özelliklerinden esinlenen eğitim amaçlı temsili illüstrasyon; tarihî portre değildir.',
+    tugra: 'م',
+    isim: 'Murad',
+  },
 
   transitionOut: {
     transitionType: 'kesinti',
@@ -201,7 +209,7 @@ const birinciMurad = {
     },
     {
       id: 'murad-sirpsindigi', kind: 'event', targetId: 'sirpsindigi', seconds: 18,
-      text: 'Edirne’nin alınması Avrupa’da alarm zilleri çaldırdı. Macar, Sırp, Bosna ve Eflak kuvvetlerinden bir Haçlı ordusu toplandı. Meriç kıyısında konaklayan bu kalabalık ordu, Hacı İlbey komutasındaki küçük bir kuvvetin gece baskınıyla dağıldı. Osmanlı’ya karşı düzenlenen ilk Haçlı seferi, Sırpsındığı’nda sonuçsuz kaldı.',
+      text: 'MEB ve klasik sınav anlatımına göre Edirne’nin alınmasından sonra kurulan ittifak ordusu, Meriç kıyısında Hacı İlbey’in gece baskınıyla dağıtıldı; bu olay Sırpsındığı diye anılır. Fakat erken dönem kaynakları sınırlıdır. Bazı modern tarihçiler, anlatının bin üç yüz yetmiş birdeki Çirmen Savaşı’yla karışmış olabileceğini belirtir.',
     },
     {
       id: 'murad-kosova', kind: 'event', targetId: 'kosova', seconds: 24,
@@ -214,8 +222,9 @@ const birinciMurad = {
   ],
 
   sources: [
-    { label: 'MEB Tarih 10 — Beylikten Devlete Osmanlı Siyaseti', note: 'Teşkilat ve Balkan siyaseti çerçevesi.' },
+    { label: 'MEB Tarih 10 — Beylikten Devlete Osmanlı', note: 'Teşkilat ve Balkan siyaseti çerçevesi.', url: 'https://tymm.meb.gov.tr/tarih-dersi/unite/39' },
     { label: 'YKS Tarih konu-kazanım kapsamı — Osmanlı Kuruluş Dönemi', note: 'Sık karıştırılan çiftlerin (Kapıkulu/yaya-müsellem, I./II. Kosova) seçimi.' },
+    { label: 'TDV İslâm Ansiklopedisi — Murad I', note: 'Sırpsındığı/Çirmen ayrımı, Balkan seferleri ve kronoloji için akademik kontrol.', url: 'https://islamansiklopedisi.org.tr/murad-i' },
   ],
 }
 

@@ -153,6 +153,7 @@ export const MEVKILER = {
   gelibolu: { ad: 'Gelibolu', lon: 26.67, lat: 40.41, tur: 'sehir' },
   ankara: { ad: 'Ankara', lon: 32.85, lat: 39.93, tur: 'sehir' },
   konstantinopolis: { ad: 'Konstantinopolis', lon: 28.98, lat: 41.01, tur: 'rakip' },
+  istanbul: { ad: 'İstanbul', lon: 28.98, lat: 41.01, tur: 'baskent' },
   edirne: { ad: 'Edirne', lon: 26.56, lat: 41.68, tur: 'baskent' },
   filibe: { ad: 'Filibe', lon: 24.75, lat: 42.14, tur: 'sehir' },
   sofya: { ad: 'Sofya', lon: 23.32, lat: 42.7, tur: 'sehir' },

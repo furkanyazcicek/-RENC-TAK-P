@@ -64,7 +64,7 @@ const osmanGazi = {
       osym: 'Ahilik, Osmanlı’nın kuruluşunda ekonomik–toplumsal destek unsuru olarak sorulur.',
     },
     {
-      id: 'kose-mihal', title: 'Köse Mihal’in Osmanlı safına geçmesi', date: tartismaliTarih(1305, '1300’ler başı'),
+      id: 'kose-mihal', title: 'Köse Mihal’in Osmanlı safına geçmesi', date: tartismaliTarih(1305, '1300’ler başı', 'Katılımın kesin yılı bilinmez; kronikler farklı zamanlar verir.'),
       summary: 'Harmankaya tekfuru Köse Mihal, Osman Bey’in müttefiki oldu; sonradan Müslüman olarak Osmanlı hizmetine girdi.',
       detail: 'Bu, kuruluşun anlaşılması için kilit örnektir: Osmanlı ilerlemesi yalnızca "fetih" değil, yerel güçlerle uzlaşma ve onları sisteme katma sürecidir. Köse Mihal’in soyundan gelen Mihaloğulları, sonraki yüzyıllarda Rumeli akınlarının önde gelen ailelerinden biri olacaktır.',
       significance: 'İstimâlet (yerel halkı ve yöneticileri kazanma) politikasının ilk açık örneklerindendir.',
@@ -106,12 +106,12 @@ const osmanGazi = {
   ],
 
   conquests: [
-    { id: 'karacahisar', title: 'Karacahisar', date: tartismaliTarih(1288, '1288 (rivayet)'), from: 'Bizans tekfuru', summary: 'Beyliğin ilk önemli kale kazanımı; burada hutbe okutulup kadı tayin edildi.', effect: 'Hutbe ve kadı ile egemenlik işaretleri ilk kez görüldü.', osym: 'Bağımsızlık göstergeleriyle birlikte sorulur.', mapFocus: 'karacahisar' },
-    { id: 'bilecik', title: 'Bilecik', date: tartismaliTarih(1299, '1299 civarı'), from: 'Bizans tekfuru', summary: 'Beyliğin hazine ve ailelerinin emanet edildiği kale ele geçirildi.', effect: 'Söğüt–Yenişehir hattının güvenliği sağlandı.', mapFocus: 'bilecik' },
-    { id: 'yarhisar', title: 'Yarhisar', date: tartismaliTarih(1299, '1299 civarı'), from: 'Bizans tekfuru', summary: 'Bilecik ile aynı harekât içinde alındı.', effect: 'İznik yolu üzerindeki tekfur zinciri kırıldı.', mapFocus: 'yarhisar' },
-    { id: 'inegol', title: 'İnegöl', date: tartismaliTarih(1299, '1299 civarı'), from: 'Bizans tekfuru', summary: 'Beyliğin batı yönündeki en inatçı direnç noktası alındı.', effect: 'Bursa ovasına açılan yol denetim altına girdi.', mapFocus: 'inegol' },
-    { id: 'yenisehir', title: 'Yenişehir', date: tartismaliTarih(1300, '1300 civarı'), from: 'Bizans tekfuru', summary: 'Alındıktan sonra beyliğin yönetim merkezi hâline getirildi.', effect: 'Merkez, dağlık Söğüt’ten ovaya taşındı; Bursa ve İznik’e aynı anda baskı kurulabildi.', osym: 'Kuruluşta merkezin Söğüt’ten Yenişehir’e taşınması, Bursa’dan önceki aşama olarak sorulabilir.', mapFocus: 'yenisehir' },
-    { id: 'koprunisar', title: 'Köprühisar ve çevre kaleler', date: tartismaliTarih(1313, '1310’lar'), from: 'Bizans tekfurları', summary: 'Bursa ve İznik’i besleyen küçük kaleler tek tek alındı.', effect: 'Şehirlerin ikmal yolları kesildi; abluka stratejisi olgunlaştı.' },
+    { id: 'karacahisar', title: 'Karacahisar', date: tartismaliTarih(1288, '1288 (rivayet)', 'Yalnızca sonraki yüzyıllarda yazılmış kroniklere dayanır; çağdaş kayıt yoktur.'), from: 'Bizans tekfuru', summary: 'Beyliğin ilk önemli kale kazanımı; burada hutbe okutulup kadı tayin edildi.', effect: 'Hutbe ve kadı ile egemenlik işaretleri ilk kez görüldü.', osym: 'Bağımsızlık göstergeleriyle birlikte sorulur.', mapFocus: 'karacahisar' },
+    { id: 'bilecik', title: 'Bilecik', date: tartismaliTarih(1299, '1299 civarı', 'Bilecik–Yarhisar–İnegöl harekâtı aynı yıllara yerleştirilir; kesin tarih verilemez.'), from: 'Bizans tekfuru', summary: 'Beyliğin hazine ve ailelerinin emanet edildiği kale ele geçirildi.', effect: 'Söğüt–Yenişehir hattının güvenliği sağlandı.', mapFocus: 'bilecik' },
+    { id: 'yarhisar', title: 'Yarhisar', date: tartismaliTarih(1299, '1299 civarı', 'Bilecik ile aynı harekâtın parçasıdır; ayrı bir tarih verilemez.'), from: 'Bizans tekfuru', summary: 'Bilecik ile aynı harekât içinde alındı.', effect: 'İznik yolu üzerindeki tekfur zinciri kırıldı.', mapFocus: 'yarhisar' },
+    { id: 'inegol', title: 'İnegöl', date: tartismaliTarih(1299, '1299 civarı', 'Kaynaklar İnegöl’ün alınmasını farklı yıllara koyar.'), from: 'Bizans tekfuru', summary: 'Beyliğin batı yönündeki en inatçı direnç noktası alındı.', effect: 'Bursa ovasına açılan yol denetim altına girdi.', mapFocus: 'inegol' },
+    { id: 'yenisehir', title: 'Yenişehir', date: tartismaliTarih(1300, '1300 civarı', 'Merkezin taşınması bir süreçtir; tek bir yıla bağlanamaz.'), from: 'Bizans tekfuru', summary: 'Alındıktan sonra beyliğin yönetim merkezi hâline getirildi.', effect: 'Merkez, dağlık Söğüt’ten ovaya taşındı; Bursa ve İznik’e aynı anda baskı kurulabildi.', osym: 'Kuruluşta merkezin Söğüt’ten Yenişehir’e taşınması, Bursa’dan önceki aşama olarak sorulabilir.', mapFocus: 'yenisehir' },
+    { id: 'koprunisar', title: 'Köprühisar ve çevre kaleler', date: tartismaliTarih(1313, '1310’lar', 'Çevre kalelerin alınması yıllara yayılır; tek tarih verilemez.'), from: 'Bizans tekfurları', summary: 'Bursa ve İznik’i besleyen küçük kaleler tek tek alındı.', effect: 'Şehirlerin ikmal yolları kesildi; abluka stratejisi olgunlaştı.' },
   ],
 
   reforms: [
@@ -148,8 +148,9 @@ const osmanGazi = {
   },
 
   portrait: {
-    kind: 'monogram',
-    alt: 'Osman Gazi’yi temsil eden sembolik pano: dönemin uç beyliğini anlatan tuğra benzeri işaret.',
+    kind: 'image',
+    src: '/lesson-assets/tarih/osmanli-padisahlari/osman-gazi.jpg',
+    alt: 'Osman Gazi’nin dönem özelliklerinden esinlenen eğitim amaçlı temsili illüstrasyon; tarihî portre değildir.',
     tugra: 'ع',
     isim: 'Osman',
   },
@@ -181,7 +182,8 @@ const osmanGazi = {
   ],
 
   sources: [
-    { label: 'MEB Tarih 10 — Beylikten Devlete Osmanlı Siyaseti', note: 'Kazanım ve terim çerçevesi.' },
+    { label: 'MEB Tarih 10 — Beylikten Devlete Osmanlı', note: 'Kazanım, kaynak eleştirisi ve terim çerçevesi.', url: 'https://tymm.meb.gov.tr/tarih-dersi/unite/39' },
+    { label: 'TDV İslâm Ansiklopedisi — Osman I', note: 'Bafeus/Koyunhisar, erken fetihler ve kronoloji için akademik kontrol.', url: 'https://islamansiklopedisi.org.tr/osman-i' },
     { label: 'YKS Tarih konu-kazanım kapsamı — Osmanlı Kuruluş Dönemi', note: 'Sınavda sorulan ayırt edici bilgi seçimi.' },
     { label: 'Kuruluş dönemi kaynak eleştirisi', note: 'Çağdaş belge azlığı nedeniyle tarihlerin bir bölümü "rivayet" olarak işaretlendi.' },
   ],

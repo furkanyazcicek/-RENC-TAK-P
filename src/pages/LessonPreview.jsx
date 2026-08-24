@@ -3,7 +3,6 @@ import { ArrowLeft } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { LESSONS } from '../content/lessons'
 import { auditLessonDepth, normalizeLessonDocument } from '../lib/lesson/schema'
-import { FIGURES } from '../components/lessons/figures'
 import LessonDocument from '../components/lessons/reader/LessonDocument'
 import LessonMasthead from '../components/lessons/reader/LessonMasthead'
 import TeacherVoice from '../components/lessons/reader/TeacherVoice'
@@ -213,7 +212,6 @@ export default function LessonPreview() {
           />
         </article>
 
-        <FigureGallery />
         <QualityFooter audit={audit} />
       </div>
 
@@ -239,45 +237,6 @@ export default function LessonPreview() {
         )}
       </Modal>
     </div>
-  )
-}
-
-/**
- * ŞEMA GALERİSİ
- *
- * Kayıtlı bütün bilimsel şemaları tek yerde gösterir. İki işe yarar:
- * ders yazarken hangi şemanın hazır olduğunu görürsünüz, ve bir şema
- * bozulduğunda burada hemen fark edilir — her ders tek tek açılmaz.
- */
-function FigureGallery() {
-  const entries = Object.entries(FIGURES)
-
-  return (
-    <section className="mx-auto mt-20 max-w-[46rem] border-t border-line pt-6">
-      <p className="lesson-eyebrow m-0">Kayıtlı şemalar</p>
-      <p className="m-0 mt-2 text-[0.9375rem] leading-relaxed text-ink/60">
-        Ders içeriği bir şemayı adıyla ister; çizimi yazılım yapar. Aşağıdakiler şu an kullanıma hazır.
-      </p>
-
-      <div className="mt-6 flex flex-col gap-8">
-        {entries.map(([kind, entry]) => {
-          const Component = entry.Component
-          return (
-            <figure key={kind} className="lesson-figure m-0">
-              <figcaption className="m-0 mb-2 flex flex-wrap items-baseline gap-x-3">
-                <span className="text-[0.9375rem] font-bold text-ink">{entry.label}</span>
-                <code className="rounded bg-surface-sunken px-1.5 py-0.5 font-mono text-[0.75rem] text-ink/60">{kind}</code>
-              </figcaption>
-              <div className="lesson-figure-plate">
-                <div style={entry.minWidth ? { minWidth: entry.minWidth } : undefined}>
-                  <Component />
-                </div>
-              </div>
-            </figure>
-          )
-        })}
-      </div>
-    </section>
   )
 }
 

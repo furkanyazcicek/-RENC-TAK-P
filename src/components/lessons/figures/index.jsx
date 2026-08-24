@@ -55,6 +55,7 @@ import InheritanceConceptMap from './InheritanceConceptMap'
 import KingdomDecisionTree from './KingdomDecisionTree'
 import MagneticForce from './MagneticForce'
 import PhysicsDiscoveryLab from './PhysicsDiscoveryLab'
+import { ElectricCircuitsPhysicsAtlas, ElectrostaticPhysicsAtlas, MagnetismPhysicsAtlas, MotionForcePhysicsAtlas, OpticsPhysicsAtlas, ThermalPhysicsAtlas, WavesPhysicsAtlas, WorkEnergyPhysicsAtlas } from './PhysicsAtlasIllustrations'
 import MatterCycles from './MatterCycles'
 import AtpStructure from './AtpStructure'
 import MembraneModel from './MembraneModel'
@@ -94,6 +95,11 @@ import WaterPolarity from './WaterPolarity'
 import VirusLifeCriteria from './VirusLifeCriteria'
 import VitaminSolubility from './VitaminSolubility'
 import { ChemicalSafetyPictograms, ChemistryLanguageLevels, LaboratoryTools } from './ChemistryIllustrations'
+import { AtomIdentityMap, AtomModelDevelopment, PeriodicSystemMap, PeriodicTrendMechanism } from './AtomicPeriodicIllustrations'
+import { ChemicalSpeciesMap, LewisPolarityMap, StrongInteractionMechanisms, WeakInteractionMap } from './InteractionIllustrations'
+import { LiquidDynamicsMap, MatterStateParticleMap, PhaseInDailyLife, SolidStructureMap } from './PhaseIllustrations'
+import { PollutantPathwayMap, WaterHardnessMap, WaterLifeSystem, WaterResourceProtection } from './EnvironmentalChemistryIllustrations'
+import { GeoSystemsDiagram, InteractiveMap, RegionCompare } from './GeographyVisuals'
 import { FIGURE_META, canonicalFigureKind } from './registry'
 
 /** Şema adı → çizim bileşeni. `registry.js` ile aynı anahtarları kullanır. */
@@ -220,9 +226,36 @@ const COMPONENTS = {
   'kimya-gosterim-duzeyleri': ChemistryLanguageLevels,
   'kimya-guvenlik-piktogramlari': ChemicalSafetyPictograms,
   'kimya-laboratuvar-araclari': LaboratoryTools,
+  'atom-modelleri-gelisimi': AtomModelDevelopment,
+  'atom-kimlik-haritasi': AtomIdentityMap,
+  'periyodik-sistem-haritasi': PeriodicSystemMap,
+  'periyodik-egilimler-mekanizmasi': PeriodicTrendMechanism,
+  'kimyasal-tur-haritasi': ChemicalSpeciesMap,
+  'guclu-etkilesimler-mekanizmasi': StrongInteractionMechanisms,
+  'lewis-polarlik-karar-haritasi': LewisPolarityMap,
+  'zayif-etkilesimler-haritasi': WeakInteractionMap,
+  'madde-halleri-tanecik-haritasi': MatterStateParticleMap,
+  'madde-halleri-gunluk-yasam': PhaseInDailyLife,
+  'kati-turleri-yapi-haritasi': SolidStructureMap,
+  'sivi-dinamikleri-haritasi': LiquidDynamicsMap,
+  'su-yasam-sistemi': WaterLifeSystem,
+  'su-kaynaklari-koruma': WaterResourceProtection,
+  'sert-yumusak-su-haritasi': WaterHardnessMap,
+  'cevre-kirleticileri-akis-haritasi': PollutantPathwayMap,
   'birim-cember': UnitCircle,
   'manyetik-kuvvet': MagneticForce,
   'fizik-kesif-laboratuvari': PhysicsDiscoveryLab,
+  'fizik-termal-atlas': ThermalPhysicsAtlas,
+  'fizik-hareket-kuvvet-atlas': MotionForcePhysicsAtlas,
+  'fizik-is-guc-enerji-atlas': WorkEnergyPhysicsAtlas,
+  'fizik-elektrostatik-atlas': ElectrostaticPhysicsAtlas,
+  'fizik-elektrik-devreleri-atlas': ElectricCircuitsPhysicsAtlas,
+  'fizik-manyetizma-atlas': MagnetismPhysicsAtlas,
+  'fizik-dalgalar-atlas': WavesPhysicsAtlas,
+  'fizik-optik-atlas': OpticsPhysicsAtlas,
+  'cografya-sistem-diyagrami': GeoSystemsDiagram,
+  'cografya-etkilesimli-harita': InteractiveMap,
+  'cografya-bolge-karsilastirma': RegionCompare,
 }
 
 export const FIGURES = Object.fromEntries(

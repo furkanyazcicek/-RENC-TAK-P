@@ -11,6 +11,7 @@
  * bazı konular gerçekten kısa anlatılır ve bu kararı yazılım veremez.
  */
 import { LESSONS, lessonsByPlacement } from '../src/content/lessons/index.js'
+import { existsSync } from 'node:fs'
 import { auditLessonDepth, validateLessonDocument } from '../src/lib/lesson/schema.js'
 import { resolveFigure } from '../src/components/lessons/figures/registry.js'
 import { auditFoundationLesson } from '../src/content/lessons/foundation/standard.js'
@@ -46,14 +47,33 @@ for (const lesson of LESSONS) {
   figures.forEach((figure) => {
     // Şeklin iki geçerli kaynağı var: kayıtlı bir SVG şeması ya da hazır
     // bir görsel. İkisi de yoksa öğrenci yer tutucu görür — bu bir hatadır.
-    if (figure.image_url) return
+    if (figure.image_url) {
+      const imageFile = new URL(`../public${figure.image_url}`, import.meta.url)
+      if (!existsSync(imageFile)) {
+        console.error(`  ✗ bulunamayan ders görseli: "${figure.image_url}"  (${figure.title || figure.id})`)
+        failed += 1
+      }
+      return
+    }
     if (!figure.kind) {
       console.error(`  ✗ şeklin ne şeması ne görseli var: "${figure.title || figure.id}"`)
       failed += 1
       return
     }
-    if (!resolveFigure(figure.kind)) {
+    const figureMeta = resolveFigure(figure.kind)
+    if (!figureMeta) {
       console.error(`  ✗ kayıtlı olmayan şema: "${figure.kind}"  (${figure.title || figure.id})`)
+      failed += 1
+      return
+    }
+
+    const focusCount = Array.isArray(figure.focus) ? figure.focus.length : 0
+    const regionCount = Array.isArray(figureMeta.regions) ? figureMeta.regions.length : 0
+    if (focusCount > 0 && regionCount > 0 && focusCount !== regionCount) {
+      console.error(
+        `  ✗ etkileşim eşleşmesi bozuk: "${figure.title || figure.id}" ` +
+          `(${focusCount} odak düğmesi / ${regionCount} görsel bölge)`
+      )
       failed += 1
     }
   })
@@ -78,16 +98,48 @@ for (const lesson of LESSONS) {
   console.log('')
 }
 
-/* İlk TYT Fizik notu, kullanıcı onayı gelene kadar tek fizik içeriği ve
-   sonraki bütün fizik notlarının kalite referansı olarak kalmalıdır. */
+/* İlk TYT Fizik notu sonraki bütün fizik notlarının kalite referansıdır.
+   Yeni konular yalnız müfredat sırasını bozmayan kesintisiz bir ön ek
+   hâlinde yayınlanabilir. */
 const tytPhysicsLessons = LESSONS.filter(
   (lesson) => lesson.placement.examType === 'TYT' && lesson.placement.subject === 'Fizik'
 )
-if (tytPhysicsLessons.length !== 1) {
-  console.error(`\n✗ Gold Standard aşamasında tam olarak bir TYT Fizik notu olmalı; bulunan: ${tytPhysicsLessons.length}`)
+const physicsTopicSequence = [
+  'Fizik Bilimine Giriş',
+  'Madde ve Özellikleri',
+  'Sıvıların Kaldırma Kuvveti',
+  'Basınç',
+  'Isı, Sıcaklık ve Genleşme',
+  'Hareket ve Kuvvet',
+  'İş, Güç ve Enerji',
+  'Elektrostatik',
+  'Elektrik Devreleri',
+  'Manyetizma',
+  'Dalgalar',
+  'Optik',
+]
+const publishedPhysicsTopics = new Set(tytPhysicsLessons.map((lesson) => lesson.placement.topic))
+const expectedPublishedTopics = physicsTopicSequence.slice(0, tytPhysicsLessons.length)
+const sequenceBreaks = expectedPublishedTopics.filter((topic) => !publishedPhysicsTopics.has(topic))
+const unknownPhysicsTopics = [...publishedPhysicsTopics].filter((topic) => !physicsTopicSequence.includes(topic))
+
+if (!tytPhysicsLessons.length) {
+  console.error('\n✗ TYT Fizik Gold Standard notu bulunamadı.')
   failed += 1
 } else {
-  const physicsLesson = tytPhysicsLessons[0]
+  const physicsLesson = tytPhysicsLessons.find((lesson) => lesson.placement.topic === 'Fizik Bilimine Giriş')
+  if (!physicsLesson) {
+    console.error('\n✗ TYT Fizik Gold Standard konusu bulunamadı.')
+    failed += 1
+  }
+  if (sequenceBreaks.length || unknownPhysicsTopics.length) {
+    console.error(`\n✗ TYT Fizik konuları müfredat sırasını izlemiyor. Eksik sıra: ${sequenceBreaks.join(', ') || 'yok'}; tanımsız: ${unknownPhysicsTopics.join(', ') || 'yok'}`)
+    failed += 1
+  }
+
+  if (!physicsLesson) {
+    console.log(`\nTYT Fizik üretimi: ${tytPhysicsLessons.length}/${physicsTopicSequence.length} konu; Gold Standard denetimi atlandı.\n`)
+  } else {
   const physicsDocument = validateLessonDocument(physicsLesson.document).document
   const physicsTypes = new Set(physicsDocument.sections.flatMap((section) => section.blocks.map((block) => block.type)))
   const requiredPhysicsTypes = ['why', 'figure', 'table', 'formula', 'worked_example', 'trap', 'quiz', 'osym_simulation', 'summary']
@@ -118,7 +170,60 @@ if (tytPhysicsLessons.length !== 1) {
     failed += 1
   }
 
-  console.log(`\nTYT Fizik Gold Standard: 1/1 konu · ${physicsLabs.length} yapılandırılabilir laboratuvar · ${physicsDepth.score}/100 kalite kapısı.\n`)
+  console.log(`\nTYT Fizik üretimi: ${tytPhysicsLessons.length}/${physicsTopicSequence.length} konu · Gold Standard ${physicsLabs.length} yapılandırılabilir laboratuvar · ${physicsDepth.score}/100 kalite kapısı.\n`)
+  }
+}
+
+/* Coğrafya pilotu yalnızca güzel bir sayfa değil, sonraki notların
+   sözleşmesidir. Bu kapı; müfredat yerini, görsel öncelikli akışı ve
+   data-driven harita kartlarının temel alanlarını korur. */
+const geographyGoldStandard = LESSONS.find((lesson) => lesson.slug === 'doga-ve-insan')
+if (!geographyGoldStandard) {
+  console.error('\n✗ Coğrafya Gold Standard pilotu bulunamadı: doga-ve-insan')
+  failed += 1
+} else {
+  const geographyDocument = validateLessonDocument(geographyGoldStandard.document).document
+  const geographyTypes = new Set(geographyDocument.sections.flatMap((section) => section.blocks.map((block) => block.type)))
+  const requiredGeographyTypes = ['figure', 'concept_map', 'cause_effect', 'compare', 'trap', 'checkpoint', 'worked_example', 'quiz', 'summary']
+  const missingGeographyTypes = requiredGeographyTypes.filter((type) => !geographyTypes.has(type))
+  const geographyFigures = geographyDocument.sections.flatMap((section) => section.blocks.filter((block) => block.type === 'figure'))
+  const geographyKinds = new Set(geographyFigures.map((figure) => figure.kind))
+  const requiredGeographyKinds = ['cografya-sistem-diyagrami', 'cografya-etkilesimli-harita', 'cografya-bolge-karsilastirma']
+  const missingGeographyKinds = requiredGeographyKinds.filter((kind) => !geographyKinds.has(kind))
+  const interactiveMap = geographyFigures.find((figure) => figure.kind === 'cografya-etkilesimli-harita')
+  const mapPoints = Array.isArray(interactiveMap?.data?.points) ? interactiveMap.data.points : []
+  const invalidMapPoints = mapPoints.filter((point) =>
+    !point?.id || !point?.title || !point?.summary || !point?.significance || !point?.examTip ||
+    !Number.isFinite(Number(point?.x)) || !Number.isFinite(Number(point?.y))
+  )
+  const geographyDepth = auditLessonDepth(geographyDocument)
+
+  if (geographyGoldStandard.placement.examType !== 'TYT' || geographyGoldStandard.placement.subject !== 'Coğrafya' || geographyGoldStandard.placement.topic !== 'Doğa ve İnsan' || geographyGoldStandard.order !== 1) {
+    console.error('\n✗ Coğrafya Gold Standard, kaynak müfredattaki ilk TYT Coğrafya konusu ve birinci sıra olmalı.')
+    failed += 1
+  }
+  if (!geographyGoldStandard.goldStandard) {
+    console.error('\n✗ İlk TYT Coğrafya notu Gold Standard olarak işaretlenmemiş.')
+    failed += 1
+  }
+  if (missingGeographyTypes.length) {
+    console.error(`\n✗ Coğrafya Gold Standard anlatı omurgasında eksik bloklar: ${missingGeographyTypes.join(', ')}`)
+    failed += 1
+  }
+  if (missingGeographyKinds.length) {
+    console.error(`\n✗ Coğrafya Gold Standard görsel dilinde eksik figürler: ${missingGeographyKinds.join(', ')}`)
+    failed += 1
+  }
+  if (mapPoints.length < 4 || invalidMapPoints.length) {
+    console.error(`\n✗ Coğrafya haritası en az dört tam bilgi kartlı nokta taşımalı; nokta: ${mapPoints.length}, geçersiz: ${invalidMapPoints.length}`)
+    failed += 1
+  }
+  if (geographyDepth.warnings.length) {
+    geographyDepth.warnings.forEach((warning) => console.error(`\n✗ Coğrafya Gold Standard derinlik kapısı: ${warning}`))
+    failed += 1
+  }
+
+  console.log(`\nTYT Coğrafya Gold Standard: ${geographyFigures.length} veri odaklı görsel · ${mapPoints.length} harita noktası · ${geographyDepth.score}/100 kalite kapısı.\n`)
 }
 
 const requiredHistoryBlocks = ['why', 'table', 'worked_example', 'timeline', 'cause_effect', 'period_summary', 'trap', 'exam', 'checkpoint', 'summary']

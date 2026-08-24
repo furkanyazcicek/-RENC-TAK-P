@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowLeft, Crown, Flag, Info, Landmark, Layers3, Map as MapIcon, Minus, Plus, RotateCcw, Sparkles, TriangleAlert, X } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import maplibregl from 'maplibre-gl'
 import { filterByDate } from '@openhistoricalmap/maplibre-gl-dates'
 import 'maplibre-gl/dist/maplibre-gl.css'
@@ -13,6 +13,18 @@ const ALTLIK_STILI = 'https://www.openhistoricalmap.org/map-styles/main/main.jso
 
 const BASLANGIC_YILI = 1453
 const ILK_KONUM = { merkez: [28, 40], yakinlik: 4.2 }
+
+/**
+ * Atlasa dışarıdan bir yıl verilebilir: `/tarih-atlasi?yil=1453`.
+ * Padişah Geçiş Gösterisi'ndeki "Haritada İncele" düğmeleri bu yolu
+ * kullanır (bkz. src/lib/padisahAtlas.js). Geçersiz veya kapsam dışı
+ * bir değer sessizce yok sayılır; atlas varsayılan yılıyla açılır.
+ */
+function adresteVerilenYil(parametreler) {
+  const ham = Number(parametreler.get('yil'))
+  if (!Number.isFinite(ham)) return BASLANGIC_YILI
+  return Math.min(1950, Math.max(1000, Math.round(ham)))
+}
 
 /** Katman düğmeleri — hangi harita katmanlarını açıp kapattığı. */
 const KATMANLAR = [
@@ -685,7 +697,8 @@ export default function TarihAtlasi() {
   const [veri, setVeri] = useState(null)
   const [eyaletVerisi, setEyaletVerisi] = useState(null)
   const [veriHatasi, setVeriHatasi] = useState(false)
-  const [yil, setYil] = useState(BASLANGIC_YILI)
+  const [aramaParametreleri] = useSearchParams()
+  const [yil, setYil] = useState(() => adresteVerilenYil(aramaParametreleri))
   const [secili, setSecili] = useState(null)
   const [acikKatmanlar, setAcikKatmanlar] = useState(() => new Set(KATMANLAR.map((k) => k.kod)))
 

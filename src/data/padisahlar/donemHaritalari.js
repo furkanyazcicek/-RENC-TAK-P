@@ -1,3 +1,5 @@
+import { EK_DONEM_HARITALARI } from './hanedanHaritalari.js'
+
 /**
  * DÖNEM HÂKİMİYET ALANLARI — ŞEMATİK
  * ==================================================================
@@ -23,14 +25,17 @@ export const DONEM_HARITALARI = {
     alanlar: [
       {
         id: 'bizans', ad: 'Bizans', tur: 'bizans',
+        aciklama: 'Bursa, İznik ve İzmit’i birbirine bağlayan Bizans savunma kuşağı. Osman Bey bu surlu şehirleri doğrudan alamadı; yollarını ve çevre kalelerini baskı altına aldı.',
         kiyi: [[28.4, 40.45], [29.3, 40.6], [30.05, 40.9], [30.5, 40.62], [30.15, 40.38], [29.6, 40.28], [29.2, 40.0], [28.7, 39.98], [28.35, 40.2]],
       },
       {
         id: 'bizans-baskent', ad: 'Konstantinopolis', tur: 'bizans',
+        aciklama: 'Bizans’ın başkenti ve Boğazların merkezi. Erken Osmanlı döneminde güçlü surları ve deniz bağlantısı nedeniyle ayrı bir siyasi odaktı.',
         kiyi: [[27.6, 41.8], [28.7, 42.0], [29.3, 41.35], [29.0, 40.95], [28.2, 40.92], [27.4, 40.9], [27.1, 41.3]],
       },
       {
         id: 'osmanli', ad: 'Osmanlı uç beyliği', tur: 'osmanli',
+        aciklama: 'Söğüt–Domaniç’ten Yenişehir’e uzanan doğrudan denetim çekirdeği. Keskin bir modern sınırdan çok, kaleler ve ulaşım hatları üzerinden kurulan bir uç hâkimiyetidir.',
         kiyi: [[29.3, 40.45], [29.95, 40.42], [30.75, 40.1], [30.85, 39.7], [30.2, 39.48], [29.45, 39.66], [29.15, 40.05], [29.2, 40.32]],
       },
     ],
@@ -44,18 +49,22 @@ export const DONEM_HARITALARI = {
     alanlar: [
       {
         id: 'bizans-baskent', ad: 'Bizans', tur: 'bizans',
+        aciklama: 'Bursa, İznik ve İzmit’in kaybından sonra Bizans’ın Anadolu’daki alanı daraldı; Konstantinopolis ve Trakya çevresi ana merkez olarak kaldı.',
         kiyi: [[27.5, 41.9], [28.5, 42.05], [29.2, 41.35], [28.9, 40.95], [28.2, 40.9], [27.4, 40.85], [27.0, 41.2]],
       },
       {
         id: 'osmanli', ad: 'Osmanlı', tur: 'osmanli',
+        aciklama: 'Bursa merkezli doğrudan Osmanlı yönetimi. İznik, İzmit ve Karesi’nin katılmasıyla Marmara’nın güney kıyısında sürekli bir hâkimiyet alanı oluştu.',
         kiyi: [[29.95, 40.85], [30.6, 40.5], [31.0, 40.05], [30.9, 39.5], [30.0, 39.2], [29.2, 39.15], [28.2, 39.28], [27.6, 39.6], [27.4, 40.05], [27.75, 40.28], [28.8, 40.42], [29.45, 40.62]],
       },
       {
         id: 'ankara', ad: 'Ankara çevresi', tur: 'osmanli', ince: true,
+        aciklama: 'Ankara’daki Osmanlı denetimi bu dönemde kesintili ve tartışmalıdır. Bu nedenle ana bloktan ayrı, ince denetimli bir alan olarak gösterilir.',
         kiyi: [[32.3, 40.1], [32.9, 40.15], [33.2, 39.85], [32.9, 39.65], [32.4, 39.7], [32.15, 39.9]],
       },
       {
         id: 'rumeli-koprubasi', ad: 'Rumeli köprübaşı', tur: 'osmanli',
+        aciklama: 'Çimpe ve Gelibolu çevresindeki ilk kalıcı Rumeli tutunma alanı. Henüz geniş bir Balkan toprağı değil, Anadolu’dan geçişi sağlayan askerî ve iskân üssüdür.',
         kiyi: [[26.62, 40.58], [26.98, 40.46], [26.82, 40.18], [26.45, 40.08], [26.28, 40.32]],
       },
     ],
@@ -69,32 +78,39 @@ export const DONEM_HARITALARI = {
     alanlar: [
       {
         id: 'karaman', ad: 'Karamanoğulları', tur: 'rakip',
+        aciklama: 'Anadolu’daki başlıca bağımsız rakip beylik. Osmanlı’nın Germiyan ve Hamid topraklarına ulaşması iki gücü doğrudan komşu yaptı.',
         kiyi: [[31.5, 38.3], [32.8, 38.5], [34.2, 38.2], [34.5, 37.2], [33.5, 36.6], [32.2, 36.6], [31.4, 37.3]],
       },
       {
         id: 'sirbistan', ad: 'Sırp despotluğu (bağlı)', tur: 'bagli',
+        aciklama: 'I. Kosova sonrasında vergi ve askerî yükümlülük kabul eden bağlı siyasi alan. Doğrudan Osmanlı eyaleti olmadığı için ayrı tonda gösterilir.',
         kiyi: [[20.4, 42.6], [21.5, 43.3], [21.2, 44.3], [19.9, 44.5], [19.2, 43.9], [19.4, 43.0]],
       },
       {
         id: 'bulgaristan', ad: 'Bulgar krallığı (bağlı)', tur: 'bagli',
+        aciklama: 'Osmanlı üstünlüğünü kabul eden fakat yerel hanedanını koruyan bağlı alan. Vergi ve sefer yükümlülüğü, doğrudan yönetimden farklıdır.',
         kiyi: [[24.2, 43.2], [25.5, 43.6], [27.1, 43.4], [27.6, 42.75], [26.3, 42.3], [25.0, 42.7]],
       },
       {
         id: 'bizans-baskent', ad: 'Bizans', tur: 'bizans',
+        aciklama: 'Konstantinopolis merkezli daralmış Bizans alanı. Osmanlı Rumeli ve Anadolu’da genişlerken başkent deniz bağlantısı ve surları sayesinde varlığını korudu.',
         kiyi: [[28.5, 41.35], [29.2, 41.3], [29.3, 41.0], [28.9, 40.85], [28.4, 40.95], [28.3, 41.2]],
       },
       {
         id: 'osmanli-anadolu', ad: 'Osmanlı — Anadolu', tur: 'osmanli',
+        aciklama: 'Bursa–Kütahya–Ankara hattındaki doğrudan Osmanlı yönetimi. Germiyan’dan çeyizle ve Hamid’den satın almayla gelen topraklar da bu genişlemeye eklendi.',
         kiyi: [[29.95, 40.9], [31.5, 40.6], [32.6, 40.2], [33.4, 39.8], [33.2, 39.2], [32.0, 38.5], [31.0, 38.1], [30.0, 38.3], [29.0, 38.7], [28.0, 39.1], [27.4, 39.6], [27.3, 40.1], [27.8, 40.3], [28.8, 40.44], [29.5, 40.65]],
       },
       {
         id: 'osmanli-rumeli', ad: 'Osmanlı — Rumeli', tur: 'osmanli',
+        aciklama: 'Edirne merkezli doğrudan Osmanlı yönetimi. Gelibolu köprübaşından Filibe, Sofya ve Niş yönüne uzanan fetih hattı devletin yeni ağırlık merkezidir.',
         kiyi: [[26.6, 40.5], [25.6, 40.78], [24.5, 40.9], [23.4, 40.5], [22.6, 40.7], [21.6, 41.6], [21.3, 42.4], [21.7, 43.3], [22.8, 43.2], [23.8, 42.9], [24.8, 42.5], [26.0, 42.1], [27.0, 41.6], [27.3, 41.1], [26.95, 40.72]],
       },
     ],
     isaretler: ['edirne', 'filibe', 'sofya', 'nis', 'selanik', 'sirpsindigi', 'cirmen', 'kosova', 'gelibolu', 'bursa', 'kutahya', 'aksehir', 'ankara', 'konstantinopolis', 'konya'],
     okuma: 'Rumeli artık köprübaşı değil, devletin ağırlık merkezidir: Edirne başkent olmuş, Filibe–Sofya–Niş hattı açılmıştır. Sırbistan ve Bulgaristan doğrudan yönetime değil, vergiye ve askerî yükümlülüğe bağlanmıştır — haritada bu yüzden ayrı tonda. Konstantinopolis, çevresi tamamen Osmanlı olan bir şehir devletine dönüşmüştür.',
   },
+  ...EK_DONEM_HARITALARI,
 }
 
 /** Alan tonlarının anlamı — harita göstergesinde (lejant) aynen görünür. */

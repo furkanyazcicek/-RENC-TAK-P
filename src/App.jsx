@@ -27,6 +27,7 @@ import LessonPreview from './pages/LessonPreview'
 import TopicTestSolve from './pages/TopicTestSolve'
 import TopicTestResult from './pages/TopicTestResult'
 import TarihAtlasi from './pages/TarihAtlasi'
+import PadisahGecidi from './pages/PadisahGecidi'
 import { PageLoader } from './components/ui'
 
 /** Route geçişlerinde gösterilen tam sayfa yükleyici (tasarım sisteminden). */
@@ -110,6 +111,7 @@ export default function App() {
       <Route path="/gizlilik" element={<PrivacyPolicy />} />
       <Route path="/ders-notu-onizleme" element={<LessonPreview />} />
       <Route path="/tarih-atlasi" element={<TarihAtlasi />} />
+      <Route path="/osmanli-padisahlari" element={<PadisahGecidi />} />
       
       <Route
         path="/veli"

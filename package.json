@@ -23,6 +23,7 @@
     "test:lesson-narration": "node scripts/test-lesson-narration.mjs",
     "diagnose:solve": "node scripts/diagnose-solve.mjs",
     "test:lesson-content": "node scripts/test-lesson-content.mjs",
+    "test:library-curriculum": "node scripts/test-library-curriculum.mjs",
     "seed:lessons": "node scripts/seed-lessons.mjs",
     "atlas:indir": "node scripts/tarihAtlasiIndir.mjs",
     "atlas:uret": "node scripts/tarihAtlasiUret.mjs",

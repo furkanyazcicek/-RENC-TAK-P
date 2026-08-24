@@ -19,7 +19,9 @@ const topics = {
   'yazim-kurallari': [],
   'cumlede-anlam': [],
   'fiiller': [],
-  'fiilimsiler': []
+  'fiilimsiler': [],
+  'sozcuk-yapisi': [],
+  'cumle-turleri': []
 };
 
 // Map files to topics based on prefix

@@ -1,15 +1,9 @@
 /**
  * PADİŞAH PORTRESİ
  *
- * TELİF NOTU — okunmadan görsel eklenmemeli.
- * Padişah portrelerinin çoğu telifli müze/koleksiyon çekimleridir.
- * Bu yüzden sisteme rastgele internet görseli KONULMADI. Görsel
- * gelene kadar, dönemin görsel diline uygun sembolik bir pano
- * gösterilir ve bunun temsilî olduğu ekranda açıkça yazar.
- *
- * Gerçek görsel eklendiğinde tek yapılacak: veri dosyasında
- * `portrait: { kind: 'image', src: '/padisah/osman.webp', alt: '…' }`.
- * Bileşen değişmez.
+ * Görseller eğitim amacıyla üretilmiş temsilî illüstrasyonlardır;
+ * çağdaş portre veya tarihî belge gibi sunulmaz. Görsel yüklenemezse
+ * sembolik monogram pano otomatik olarak görünür kalır.
  */
 export default function Portre({ padisah, cikis = false }) {
   const portre = padisah.portrait ?? {}
@@ -17,7 +11,22 @@ export default function Portre({ padisah, cikis = false }) {
   return (
     <figure className="pg-portre" data-cikis={cikis ? 'true' : undefined}>
       {portre.kind === 'image' && portre.src ? (
-        <img src={portre.src} alt={portre.alt} loading="lazy" decoding="async" width="600" height="800" />
+        <>
+          <div className="pg-portre-monogram pg-portre-yedek" aria-hidden="true">
+            <span className="pg-portre-tugra">{portre.tugra ?? padisah.order}</span>
+            <span className="pg-portre-ad">{portre.isim ?? padisah.name}</span>
+          </div>
+          <img
+            src={portre.src}
+            alt={portre.alt}
+            loading="eager"
+            decoding="async"
+            width="720"
+            height="960"
+            onError={(olay) => { olay.currentTarget.hidden = true }}
+          />
+          <figcaption className="pg-portre-etiket">Temsilî illüstrasyon</figcaption>
+        </>
       ) : (
         <div className="pg-portre-monogram">
           <span className="pg-portre-tugra" aria-hidden="true">{portre.tugra ?? '☾'}</span>

@@ -530,6 +530,300 @@
 }
 
 /* ==================================================================
+   COĞRAFYA ÖĞRENME GÖRSELLERİ
+   ------------------------------------------------------------------
+   Coğrafya içeriği aynı ders levhasında kalır; bu katman yalnızca
+   mekânsal ilişki, harita noktası ve kesit karşılaştırması ekler.
+   Renkler içerikten değil DrKoç tema tokenlarından gelir.
+   ================================================================== */
+@layer components {
+  .geo-systems {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .geo-systems__stage {
+    position: relative;
+    min-height: 23rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.7rem;
+    background:
+      radial-gradient(circle at 50% 48%, rgb(var(--c-aqua-100) / 0.6), transparent 27%),
+      linear-gradient(145deg, rgb(var(--c-surface)), rgb(var(--c-surface-sunken)));
+  }
+
+  .geo-systems__stage > svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .geo-systems__core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    width: 9.5rem;
+    min-height: 6rem;
+    place-content: center;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .geo-systems__core strong {
+    color: rgb(var(--c-brand-800));
+    font-family: theme('fontFamily.display');
+    font-size: 1.45rem;
+  }
+
+  .geo-systems__core span {
+    margin-top: 0.2rem;
+    color: rgb(var(--c-ink) / 0.55);
+    font-size: 0.66rem;
+    font-weight: 700;
+  }
+
+  .geo-systems__node {
+    position: absolute;
+    display: grid;
+    min-width: 7.8rem;
+    min-height: 3.8rem;
+    align-content: center;
+    border: 1px solid rgb(var(--c-line-strong));
+    border-radius: 0.6rem;
+    background: rgb(var(--c-surface) / 0.92);
+    padding: 0.65rem 0.8rem;
+    color: rgb(var(--c-ink));
+    text-align: start;
+    box-shadow: 0 8px 24px -18px rgb(var(--c-shadow) / 0.35);
+    transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+  }
+
+  .geo-systems__node:hover,
+  .geo-systems__node.is-active {
+    border-color: rgb(var(--c-brand-400));
+    background: rgb(var(--c-brand-50) / 0.96);
+    transform: translateY(-2px);
+  }
+
+  .geo-systems__node:focus-visible,
+  .geo-map__marker:focus-visible,
+  .geo-map__mobile-nav button:focus-visible {
+    outline: 3px solid rgb(var(--c-brand-500) / 0.62);
+    outline-offset: 3px;
+  }
+
+  .geo-systems__node > span,
+  .geo-systems__detail > span,
+  .geo-compare__body > span {
+    color: rgb(var(--c-ink) / 0.45);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .geo-systems__node > strong { font-size: 0.86rem; }
+  .geo-systems__node.is-1 { top: 9%; left: 5%; }
+  .geo-systems__node.is-2 { top: 9%; right: 5%; }
+  .geo-systems__node.is-3 { bottom: 9%; left: 5%; }
+  .geo-systems__node.is-4 { right: 5%; bottom: 9%; }
+  .geo-systems__node.is-5 { bottom: 3%; left: 50%; transform: translateX(-50%); }
+
+  .geo-systems__detail {
+    border-inline-start: 3px solid rgb(var(--c-aqua-500));
+    background: rgb(var(--c-surface-muted));
+    padding: 0.9rem 1rem;
+  }
+
+  .geo-systems__detail > strong { display: block; margin-top: 0.12rem; color: rgb(var(--c-ink)); font-family: theme('fontFamily.display'); }
+  .geo-systems__detail p { margin: 0.25rem 0 0; color: rgb(var(--c-ink) / 0.72); font-size: 0.9rem; line-height: 1.65; }
+  .geo-systems__detail small { display: block; margin-top: 0.45rem; color: rgb(var(--c-aqua-700)); font-weight: 700; }
+
+  .geo-map {
+    border-block: 1px solid rgb(var(--c-line-strong));
+    padding-block: 1.1rem;
+  }
+
+  .geo-map__heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .geo-map__heading strong { display: block; margin-top: 0.2rem; color: rgb(var(--c-ink)); font-family: theme('fontFamily.display'); font-size: 1.1rem; }
+  .geo-map__heading > span { color: rgb(var(--c-ink) / 0.42); font-size: 0.72rem; font-weight: 700; }
+
+  .geo-map__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(15rem, 0.78fr);
+    gap: 0.9rem;
+    align-items: stretch;
+  }
+
+  .geo-map__canvas {
+    position: relative;
+    min-height: 22rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.7rem;
+    background: rgb(var(--c-aqua-50));
+  }
+
+  .geo-map__canvas > svg { display: block; width: 100%; height: 100%; min-height: 22rem; }
+  .geo-map__ocean { fill: rgb(var(--c-aqua-50)); }
+  .geo-map__grid path { fill: none; stroke: rgb(var(--c-aqua-700) / 0.12); stroke-dasharray: 3 8; }
+  .geo-map__land path { fill: rgb(var(--c-brand-100) / 0.76); stroke: rgb(var(--c-brand-700) / 0.26); stroke-width: 1.5; }
+
+  .geo-map__marker {
+    position: absolute;
+    display: grid;
+    width: 2.85rem;
+    height: 2.85rem;
+    place-items: center;
+    transform: translate(-50%, -50%);
+    border: 0;
+    border-radius: 9999px;
+    background: transparent;
+  }
+
+  .geo-map__marker > span {
+    display: grid;
+    width: 1.55rem;
+    height: 1.55rem;
+    place-items: center;
+    border: 2px solid rgb(var(--c-surface));
+    border-radius: 9999px;
+    background: rgb(var(--c-brand-700));
+    color: white;
+    font-size: 0.66rem;
+    font-weight: 800;
+    box-shadow: 0 0 0 3px rgb(var(--c-brand-500) / 0.2), 0 5px 10px rgb(var(--c-shadow) / 0.18);
+    transform: scale(1);
+    transition: transform 150ms ease, background-color 150ms ease;
+  }
+
+  .geo-map__marker.is-active > span { background: rgb(var(--c-aqua-700)); box-shadow: 0 0 0 5px rgb(var(--c-aqua-500) / 0.24); transform: scale(1.15); }
+
+  .geo-map__schematic {
+    position: absolute;
+    right: 0.6rem;
+    bottom: 0.5rem;
+    color: rgb(var(--c-ink) / 0.4);
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .geo-map__card {
+    position: relative;
+    min-height: 22rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.7rem;
+    background: rgb(var(--c-surface-muted));
+    padding: 1rem;
+  }
+
+  .geo-map__card-index {
+    position: absolute;
+    top: -1.8rem;
+    right: -0.5rem;
+    color: rgb(var(--c-brand-500) / 0.08);
+    font-family: theme('fontFamily.display');
+    font-size: 8rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .geo-map__card > div:last-child { position: relative; }
+  .geo-map__card > div > span { color: rgb(var(--c-aqua-700)); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+  .geo-map__card h3 { margin: 0.25rem 0 0; color: rgb(var(--c-ink)); font-family: theme('fontFamily.display'); font-size: 1.25rem; line-height: 1.2; }
+  .geo-map__card p { margin: 0.55rem 0 0; color: rgb(var(--c-ink) / 0.68); font-size: 0.86rem; line-height: 1.62; }
+  .geo-map__card dl { margin: 0.75rem 0 0; border-top: 1px solid rgb(var(--c-line)); padding-top: 0.65rem; }
+  .geo-map__card dt { color: rgb(var(--c-ink) / 0.45); font-size: 0.63rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  .geo-map__card dd { margin: 0.18rem 0 0; color: rgb(var(--c-ink) / 0.72); font-size: 0.8rem; line-height: 1.55; }
+
+  .geo-map__exam {
+    margin-top: 0.8rem;
+    border-inline-start: 2px solid rgb(var(--c-warning-500));
+    padding-inline-start: 0.65rem;
+    color: rgb(var(--c-ink) / 0.7);
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .geo-map__exam strong { display: block; color: rgb(var(--c-warning-700)); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .geo-map__mobile-nav { display: none; }
+
+  .geo-compare {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .geo-compare > article {
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.7rem;
+    background: rgb(var(--c-surface));
+  }
+
+  .geo-compare__visual { border-bottom: 1px solid rgb(var(--c-line)); background: rgb(var(--c-surface-sunken)); }
+  .geo-compare__visual svg { display: block; width: 100%; height: auto; }
+  .geo-compare__sky { fill: rgb(var(--c-aqua-50)); }
+  .geo-compare__back { fill: rgb(var(--c-brand-200) / 0.55); stroke: rgb(var(--c-brand-600) / 0.25); }
+  .geo-compare__front { fill: rgb(var(--c-success-500) / 0.3); }
+  .geo-compare__road { fill: none; stroke: rgb(var(--c-ink) / 0.42); stroke-dasharray: 6 5; stroke-width: 4; }
+  .geo-compare__sea { fill: rgb(var(--c-aqua-300) / 0.42); }
+  .geo-compare__plain { fill: rgb(var(--c-success-500) / 0.28); }
+  .geo-compare__river { fill: none; stroke: rgb(var(--c-aqua-600)); stroke-width: 8; }
+  .geo-compare__settlement { fill: rgb(var(--c-brand-600) / 0.48); }
+  .geo-compare__body { padding: 0.9rem 1rem 1rem; }
+  .geo-compare__body h3 { margin: 0.2rem 0 0; color: rgb(var(--c-ink)); font-family: theme('fontFamily.display'); font-size: 1.05rem; }
+  .geo-compare__body p { margin: 0.4rem 0 0; color: rgb(var(--c-ink) / 0.62); font-size: 0.82rem; line-height: 1.6; }
+  .geo-compare__body dl { display: grid; grid-template-columns: 6.8rem 1fr; gap: 0.45rem 0.65rem; margin: 0.8rem 0 0; border-top: 1px solid rgb(var(--c-line)); padding-top: 0.7rem; }
+  .geo-compare__body dt { color: rgb(var(--c-ink) / 0.44); font-size: 0.64rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; }
+  .geo-compare__body dd { margin: 0; color: rgb(var(--c-ink) / 0.72); font-size: 0.76rem; line-height: 1.5; }
+
+  @media (max-width: 760px) {
+    .geo-map__layout { grid-template-columns: 1fr; }
+    .geo-map__canvas, .geo-map__canvas > svg { min-height: 18rem; }
+    .geo-map__card { min-height: auto; }
+    .geo-map__mobile-nav { display: flex; gap: 0.45rem; overflow-x: auto; margin-top: 0.75rem; padding-bottom: 0.3rem; }
+    .geo-map__mobile-nav button { display: inline-flex; min-height: 2.75rem; flex: 0 0 auto; align-items: center; gap: 0.4rem; border: 1px solid rgb(var(--c-line-strong)); border-radius: 9999px; background: rgb(var(--c-surface)); padding: 0.45rem 0.7rem; color: rgb(var(--c-ink) / 0.66); font-size: 0.72rem; font-weight: 700; }
+    .geo-map__mobile-nav button[aria-pressed='true'] { border-color: rgb(var(--c-brand-400)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-800)); }
+    .geo-map__mobile-nav button span { display: grid; width: 1.2rem; height: 1.2rem; place-items: center; border-radius: 9999px; background: rgb(var(--c-brand-600)); color: white; font-size: 0.58rem; }
+    .geo-compare { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 540px) {
+    .geo-systems__stage { min-height: 28rem; }
+    .geo-systems__stage > svg { opacity: 0.45; }
+    .geo-systems__core { width: 8rem; }
+    .geo-systems__node { min-width: 6.8rem; padding-inline: 0.6rem; }
+    .geo-systems__node.is-1, .geo-systems__node.is-3 { left: 0.5rem; }
+    .geo-systems__node.is-2, .geo-systems__node.is-4 { right: 0.5rem; }
+    .geo-map__heading { align-items: start; }
+    .geo-map__heading > span { display: none; }
+    .geo-map__canvas, .geo-map__canvas > svg { min-height: 16rem; }
+    .geo-map__marker { width: 2.75rem; height: 2.75rem; }
+    .geo-compare__body dl { grid-template-columns: 1fr; gap: 0.12rem; }
+    .geo-compare__body dd + dt { margin-top: 0.45rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .geo-systems__node,
+    .geo-map__marker > span { transition: none; }
+  }
+}
+
+/* ==================================================================
    FİZİK KEŞİF LABORATUVARI
    Ortak kabuk; içerik yalnız deney modeli ve değişken verisini seçer.
    Kontroller dokunmatik kullanım için en az 44 px, görsel hareketler ise
@@ -1289,10 +1583,420 @@
   .physics-vector-stage__y { left: 26%; top: 5%; }
   .physics-vector-stage > strong { position: absolute; right: 0.75rem; top: 0.65rem; font-size: 0.8125rem; color: rgb(var(--c-brand-700)); }
 
+  .physics-density-stage {
+    display: grid;
+    min-height: 15rem;
+    grid-template-columns: minmax(0, 1fr) minmax(9rem, 0.72fr);
+    align-items: center;
+    gap: 1rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.65rem;
+    background:
+      radial-gradient(circle at 28% 46%, rgb(var(--c-aqua-400) / 0.12), transparent 34%),
+      linear-gradient(rgb(var(--c-line) / 0.35) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--c-line) / 0.35) 1px, transparent 1px),
+      rgb(var(--c-surface-sunken));
+    background-size: auto, 2rem 2rem, 2rem 2rem, auto;
+    padding: 1.25rem;
+  }
+
+  .physics-density-stage__object {
+    position: relative;
+    justify-self: center;
+    overflow: hidden;
+    border: 2px solid rgb(var(--c-aqua-500) / 0.62);
+    border-radius: 0.7rem;
+    background: linear-gradient(145deg, rgb(var(--c-aqua-400) / 0.18), rgb(var(--c-brand-500) / 0.08));
+    box-shadow: inset -12px -14px 24px rgb(var(--c-brand-700) / 0.1), 0 14px 26px rgb(var(--c-shadow) / 0.1);
+    transition: width 180ms ease, height 180ms ease;
+  }
+
+  .physics-density-stage__object::before {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgb(255 255 255 / 0.4), transparent 38%);
+    content: '';
+  }
+
+  .physics-density-stage__object i {
+    position: absolute;
+    border-radius: 50%;
+    background: rgb(var(--c-brand-600));
+    box-shadow: 0 0 0 1px rgb(var(--c-surface) / 0.65);
+  }
+
+  .physics-density-stage__readout {
+    border-inline-start: 2px solid rgb(var(--c-aqua-500));
+    padding-inline-start: 0.85rem;
+  }
+
+  .physics-density-stage__readout span,
+  .physics-density-stage__readout small,
+  .physics-liquid-stage__legend span { display: block; color: rgb(var(--c-ink) / 0.42); font-size: 0.65rem; font-weight: 750; letter-spacing: 0.07em; text-transform: uppercase; }
+  .physics-density-stage__readout strong { display: block; margin: 0.25rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.45rem; font-variant-numeric: tabular-nums; }
+
+  .physics-liquid-stage {
+    position: relative;
+    min-height: 17rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.65rem;
+    background: linear-gradient(180deg, rgb(var(--c-surface-sunken)), rgb(var(--c-aqua-50) / 0.45));
+  }
+
+  .physics-liquid-stage svg { display: block; width: 100%; height: 16rem; }
+  .physics-liquid-stage .is-tube { fill: rgb(255 255 255 / 0.42); stroke: rgb(var(--c-ink) / 0.35); stroke-linecap: round; stroke-width: 4; }
+  .physics-liquid-stage .is-liquid { fill: rgb(var(--c-aqua-500) / 0.56); transition: y 200ms ease, height 200ms ease, width 200ms ease, x 200ms ease; }
+  .physics-liquid-stage .is-meniscus { fill: none; stroke: rgb(var(--c-aqua-700)); stroke-width: 2.5; transition: transform 200ms ease; }
+  .physics-liquid-stage .is-surface { fill: none; stroke: rgb(var(--c-aqua-600) / 0.72); stroke-width: 2; }
+  .physics-liquid-stage__legend { position: absolute; left: 1rem; top: 1rem; border-inline-start: 2px solid rgb(var(--c-aqua-500)); padding-inline-start: 0.7rem; }
+  .physics-liquid-stage__legend strong { display: block; margin-top: 0.2rem; color: rgb(var(--c-ink)); font-size: 0.85rem; }
+
+  .physics-buoyancy-stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(11rem, 0.8fr);
+    gap: 1rem;
+    align-items: center;
+    padding: clamp(1rem, 3vw, 1.7rem);
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.65rem;
+    background: linear-gradient(145deg, rgb(var(--c-surface)), rgb(var(--c-aqua-50) / 0.6));
+  }
+  .physics-buoyancy-stage__vessel { position: relative; min-height: 290px; overflow: hidden; border: 3px solid rgb(var(--c-ink) / 0.22); border-top: 0; border-radius: 0.35rem 0.35rem 1.5rem 1.5rem; background: linear-gradient(to bottom, transparent 17%, rgb(var(--c-aqua-100) / 0.72) 17%, rgb(var(--c-aqua-300) / 0.5)); }
+  .physics-buoyancy-stage__liquid { position: absolute; inset: 17% 0 0; background: repeating-linear-gradient(165deg, transparent 0 14px, rgb(var(--c-aqua-700) / 0.05) 15px 17px); }
+  .physics-buoyancy-stage__surface { position: absolute; z-index: 2; top: 17%; right: 0; left: 0; height: 5px; background: rgb(var(--c-aqua-700) / 0.42); box-shadow: 0 2px 14px rgb(var(--c-aqua-700) / 0.16); }
+  .physics-buoyancy-stage__object { position: absolute; z-index: 4; left: 50%; display: grid; place-content: center; transform: translateX(-50%); border: 2px solid rgb(var(--c-brand-700) / 0.68); border-radius: 0.85rem; color: rgb(var(--c-brand-700)); text-align: center; background: linear-gradient(145deg, rgb(var(--c-surface) / 0.96), rgb(var(--c-brand-100) / 0.9)); box-shadow: 0 14px 30px rgb(var(--c-shadow) / 0.14); transition: top 420ms cubic-bezier(.2,.8,.2,1), width 240ms ease, height 240ms ease; }
+  .physics-buoyancy-stage__object span { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; }
+  .physics-buoyancy-stage__object small { font-size: 0.62rem; font-weight: 700; opacity: 0.64; }
+  .physics-buoyancy-stage__arrow { position: absolute; z-index: 5; left: calc(50% + 68px); width: 2px; background: currentColor; transition: height 260ms ease; }
+  .physics-buoyancy-stage__arrow::before { position: absolute; left: -5px; width: 10px; height: 10px; content: ''; transform: rotate(45deg); border-color: currentColor; }
+  .physics-buoyancy-stage__arrow b { position: absolute; left: 10px; font-family: var(--font-display); font-size: 0.78rem; white-space: nowrap; }
+  .physics-buoyancy-stage__arrow.is-up { bottom: 48%; color: rgb(var(--c-aqua-700)); }
+  .physics-buoyancy-stage__arrow.is-up::before { top: 0; border-top: 2px solid; border-left: 2px solid; }
+  .physics-buoyancy-stage__arrow.is-up b { top: 0; }
+  .physics-buoyancy-stage__arrow.is-down { top: 48%; color: rgb(var(--c-coral-700)); }
+  .physics-buoyancy-stage__arrow.is-down::before { bottom: 0; border-right: 2px solid; border-bottom: 2px solid; }
+  .physics-buoyancy-stage__arrow.is-down b { bottom: 0; }
+  .physics-buoyancy-stage__decision { padding: 1rem; border-inline-start: 3px solid rgb(var(--c-aqua-700)); }
+  .physics-buoyancy-stage__decision span, .physics-buoyancy-stage__decision small { display: block; color: rgb(var(--c-ink) / 0.55); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; }
+  .physics-buoyancy-stage__decision strong { display: block; margin: 0.35rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: clamp(1.35rem, 3vw, 2rem); }
+
+  .physics-pressure-stage { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; min-height: 18rem; padding: 1rem; border: 1px solid rgb(var(--c-line)); border-radius: 0.65rem; background: linear-gradient(145deg, rgb(var(--c-surface-sunken)), rgb(var(--c-aqua-50) / 0.48)); }
+  .physics-pressure-stage__solid, .physics-pressure-stage__liquid { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; overflow: hidden; border-radius: 0.55rem; background: rgb(var(--c-surface) / 0.7); padding: 1rem; }
+  .physics-pressure-stage__force { display: grid; width: 2px; place-items: start center; color: rgb(var(--c-coral-700)); background: currentColor; font-family: var(--font-display); font-weight: 800; transition: height 220ms ease; }
+  .physics-pressure-stage__force::after { width: 10px; height: 10px; margin-top: auto; content: ''; transform: rotate(45deg); border-right: 2px solid; border-bottom: 2px solid; }
+  .physics-pressure-stage__block { width: 82px; height: 54px; border: 2px solid rgb(var(--c-brand-700) / 0.6); border-radius: 0.45rem 0.45rem 0 0; background: linear-gradient(145deg, rgb(var(--c-brand-100)), rgb(var(--c-brand-400) / 0.3)); }
+  .physics-pressure-stage__plate { height: 8px; border-radius: 999px; background: rgb(var(--c-ink) / 0.42); transition: width 220ms ease; }
+  .physics-pressure-stage small, .physics-pressure-stage span { margin-top: 0.55rem; color: rgb(var(--c-ink) / 0.52); font-size: 0.72rem; font-weight: 700; }
+  .physics-pressure-stage strong { margin-top: 0.25rem; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.35rem; }
+  .physics-pressure-stage__column { position: relative; width: 108px; overflow: hidden; border: 3px solid rgb(var(--c-ink) / 0.25); border-top: 0; border-radius: 0 0 1rem 1rem; background: linear-gradient(180deg, rgb(var(--c-aqua-100) / 0.55), rgb(var(--c-aqua-500) / 0.62)); transition: height 220ms ease; }
+  .physics-pressure-stage__column i { position: absolute; right: 0; left: 0; height: 3px; background: rgb(var(--c-coral-600)); box-shadow: 0 0 0 4px rgb(var(--c-coral-500) / 0.12); transition: top 220ms ease; }
+
+  .physics-thermal-stage { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) minmax(10rem, 1.15fr); gap: 0.8rem; min-height: 19rem; padding: 1rem; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: linear-gradient(145deg, rgb(var(--c-surface-sunken)), rgb(var(--c-brand-50) / 0.46)); }
+  .physics-thermal-stage__sample, .physics-thermal-stage__equilibrium { position: relative; display: flex; min-width: 0; flex-direction: column; align-items: center; justify-content: flex-end; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.65rem; background: rgb(var(--c-surface) / 0.76); padding: 1rem 0.7rem; }
+  .physics-thermal-stage__sample > span, .physics-thermal-stage__equilibrium > span { margin-bottom: auto; color: rgb(var(--c-ink) / 0.48); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
+  .physics-thermal-stage__sample strong, .physics-thermal-stage__equilibrium strong { margin-top: 0.55rem; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: clamp(1.1rem, 2.8vw, 1.6rem); }
+  .physics-thermal-stage__sample small, .physics-thermal-stage__equilibrium small { margin-top: 0.2rem; color: rgb(var(--c-ink) / 0.48); font-size: 0.68rem; font-weight: 700; line-height: 1.45; text-align: center; }
+  .physics-thermal-stage__thermometer { position: relative; width: 2rem; height: 9rem; overflow: hidden; border: 3px solid rgb(var(--c-ink) / 0.2); border-radius: 999px; background: rgb(var(--c-surface)); box-shadow: inset 0 0 0 4px rgb(var(--c-surface-sunken)); }
+  .physics-thermal-stage__thermometer::after { position: absolute; bottom: 0.22rem; left: 50%; width: 1.15rem; height: 1.15rem; content: ''; transform: translateX(-50%); border-radius: 999px; background: currentColor; }
+  .physics-thermal-stage__thermometer i { position: absolute; right: 0.65rem; bottom: 0.7rem; left: 0.65rem; border-radius: 999px; background: currentColor; transition: height 240ms ease; }
+  .physics-thermal-stage__sample.is-hot { color: rgb(var(--c-coral-600)); }
+  .physics-thermal-stage__sample.is-cold { color: rgb(var(--c-aqua-700)); }
+  .physics-thermal-stage__flow { display: flex; width: 3.2rem; flex-direction: column; align-items: center; justify-content: center; color: rgb(var(--c-coral-600)); }
+  .physics-thermal-stage__flow b { font-family: var(--font-display); font-size: 1.15rem; }
+  .physics-thermal-stage__flow i { position: relative; width: 100%; height: 3px; margin-top: 0.5rem; border-radius: 999px; background: linear-gradient(90deg, rgb(var(--c-coral-600)), rgb(var(--c-aqua-600))); }
+  .physics-thermal-stage__flow i::after { position: absolute; top: 50%; right: 0; width: 0.7rem; height: 0.7rem; content: ''; transform: translateY(-50%) rotate(45deg); border-top: 3px solid rgb(var(--c-aqua-600)); border-right: 3px solid rgb(var(--c-aqua-600)); }
+  .physics-thermal-stage__mix { position: relative; width: 5.8rem; height: 9rem; overflow: hidden; border: 3px solid rgb(var(--c-ink) / 0.22); border-top-width: 1px; border-radius: 0.35rem 0.35rem 1rem 1rem; background: rgb(var(--c-surface)); }
+  .physics-thermal-stage__mix i { position: absolute; inset: auto 0 0; height: var(--thermal-level); background: linear-gradient(160deg, rgb(var(--c-coral-400) / 0.66), rgb(var(--c-aqua-500) / 0.7)); transition: height 240ms ease; }
+
+  .physics-expansion-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.65rem; margin-bottom: 0.9rem; }
+  .physics-expansion-tabs button { min-height: 3.5rem; border: 1px solid rgb(var(--c-line-strong)); border-radius: 0.6rem; background: rgb(var(--c-surface)); color: rgb(var(--c-ink) / 0.66); font-weight: 800; cursor: pointer; }
+  .physics-expansion-tabs button small { display: block; margin-top: 0.18rem; color: rgb(var(--c-ink) / 0.42); font-size: 0.65rem; }
+  .physics-expansion-tabs button.is-active { border-color: rgb(var(--c-brand-500)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-700)); box-shadow: 0 0 0 2px rgb(var(--c-brand-500) / 0.1); }
+  .physics-expansion-tabs button:focus-visible { outline: 2px solid rgb(var(--c-brand-500)); outline-offset: 2px; }
+  .physics-expansion-stage { position: relative; min-height: 18rem; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: linear-gradient(180deg, rgb(var(--c-surface-sunken)), rgb(var(--c-brand-50) / 0.32)); padding: 1rem; }
+  .physics-expansion-stage__scale { display: flex; justify-content: space-between; gap: 1rem; color: rgb(var(--c-ink) / 0.48); font-size: 0.7rem; font-weight: 750; }
+  .physics-expansion-stage__rail { position: absolute; top: 5.1rem; right: calc(50% + 1.4rem); left: 2rem; height: 3.3rem; transform-origin: left center; border: 2px solid rgb(var(--c-ink) / 0.38); border-radius: 0.4rem 0.1rem 0.1rem 0.4rem; background: linear-gradient(180deg, #edf0f2 0%, #69747e 48%, #d7dde1 54%, #48525b 100%); box-shadow: 0 12px 22px rgb(var(--c-shadow) / 0.15); transition: right 260ms ease; }
+  .physics-expansion-stage__rail::after { position: absolute; inset: 0 calc(-1 * var(--growth)) 0 0; content: ''; border-radius: inherit; background: inherit; transition: right 260ms ease; }
+  .physics-expansion-stage__rail.is-brass, .physics-expansion-stage__rail.is-brass::after { background: linear-gradient(180deg, #f2dfa7 0%, #9b7026 48%, #e1c174 54%, #795218 100%); }
+  .physics-expansion-stage__rail.is-aluminum, .physics-expansion-stage__rail.is-aluminum::after { background: linear-gradient(180deg, #f7f8f8 0%, #9fa9af 48%, #e5e8ea 54%, #79858d 100%); }
+  .physics-expansion-stage__rail i, .physics-expansion-stage__rail b { position: absolute; z-index: 2; bottom: -2rem; width: 0.85rem; height: 2rem; border-radius: 0.15rem; background: rgb(var(--c-ink) / 0.5); }
+  .physics-expansion-stage__rail i { left: 18%; }
+  .physics-expansion-stage__rail b { right: calc(-1 * var(--growth) + 14%); transition: right 260ms ease; }
+  .physics-expansion-stage__gap { position: absolute; top: 5.1rem; left: calc(50% - 1.15rem); width: 2.3rem; height: 3.3rem; border-right: 2px dashed rgb(var(--c-coral-600) / 0.7); border-left: 2px dashed rgb(var(--c-coral-600) / 0.7); }
+  .physics-expansion-stage__gap span { position: absolute; top: -1.8rem; left: 50%; width: 7rem; transform: translateX(-50%); color: rgb(var(--c-coral-700)); font-size: 0.65rem; font-weight: 800; text-align: center; }
+  .physics-expansion-stage__reading { position: absolute; right: 1.2rem; bottom: 1.2rem; left: 1.2rem; border-inline-start: 3px solid rgb(var(--c-coral-500)); background: rgb(var(--c-surface) / 0.78); padding: 0.8rem 1rem; backdrop-filter: blur(8px); }
+  .physics-expansion-stage__reading span, .physics-expansion-stage__reading small { display: block; color: rgb(var(--c-ink) / 0.48); font-size: 0.68rem; font-weight: 700; }
+  .physics-expansion-stage__reading strong { display: block; margin: 0.15rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.4rem; }
+
+  .physics-motion-stage { position: relative; min-height: 18rem; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: linear-gradient(180deg, rgb(var(--c-aqua-50) / 0.46), rgb(var(--c-surface-sunken))); }
+  .physics-motion-stage__track { position: absolute; right: 5%; bottom: 5.2rem; left: 5%; height: 4px; border-radius: 999px; background: rgb(var(--c-ink) / 0.38); }
+  .physics-motion-stage__track::before { position: absolute; right: 0; bottom: -0.9rem; left: 0; height: 0.8rem; content: ''; background: repeating-linear-gradient(90deg, rgb(var(--c-ink) / 0.14) 0 1px, transparent 1px 8%); }
+  .physics-motion-stage__origin { position: absolute; bottom: 3.8rem; left: 50%; color: rgb(var(--c-ink) / 0.42); font-size: 0.7rem; font-weight: 800; transform: translateX(-50%); }
+  .physics-motion-stage__block { position: absolute; bottom: 5.35rem; width: 6.2rem; height: 4rem; display: grid; place-items: center; transform: translateX(-50%); border: 2px solid rgb(var(--c-brand-700) / 0.58); border-radius: 0.7rem 0.7rem 0.35rem 0.35rem; background: linear-gradient(145deg, rgb(var(--c-brand-100)), rgb(var(--c-brand-400) / 0.48)); box-shadow: 0 12px 24px rgb(var(--c-shadow) / 0.14); transition: left 260ms cubic-bezier(.2,.8,.2,1); }
+  .physics-motion-stage__block > span { color: rgb(var(--c-brand-800)); font-family: var(--font-display); font-size: 0.82rem; font-weight: 850; }
+  .physics-motion-stage__block > i { position: absolute; top: 50%; height: 4px; color: rgb(var(--c-coral-600)); background: currentColor; transform: translateY(-50%); transition: width 220ms ease; }
+  .physics-motion-stage__block > i::after { position: absolute; top: 50%; width: 0.7rem; height: 0.7rem; content: ''; transform: translateY(-50%) rotate(45deg); border-color: currentColor; }
+  .physics-motion-stage__block > i b { position: absolute; top: -1.55rem; color: currentColor; font-size: 0.65rem; font-style: normal; white-space: nowrap; }
+  .physics-motion-stage__block > i.is-right { left: 100%; }
+  .physics-motion-stage__block > i.is-right::after { right: 0; border-top: 3px solid; border-right: 3px solid; }
+  .physics-motion-stage__block > i.is-right b { right: 0; }
+  .physics-motion-stage__block > i.is-left { right: 100%; color: rgb(var(--c-aqua-700)); }
+  .physics-motion-stage__block > i.is-left::after { left: 0; border-bottom: 3px solid; border-left: 3px solid; }
+  .physics-motion-stage__block > i.is-left b { left: 0; }
+  .physics-motion-stage__readout { position: absolute; top: 1rem; right: 1rem; min-width: 13rem; border-inline-start: 3px solid rgb(var(--c-brand-500)); background: rgb(var(--c-surface) / 0.82); padding: 0.7rem 0.85rem; backdrop-filter: blur(8px); }
+  .physics-motion-stage__readout span, .physics-motion-stage__readout small { display: block; color: rgb(var(--c-ink) / 0.48); font-size: 0.68rem; font-weight: 700; }
+  .physics-motion-stage__readout strong { display: block; margin: 0.15rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.25rem; }
+  .physics-motion-graphs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; margin-top: 0.8rem; }
+  .physics-motion-graphs > div { position: relative; min-width: 0; border: 1px solid rgb(var(--c-line)); border-radius: 0.6rem; background: rgb(var(--c-surface)); padding: 0.45rem; }
+  .physics-motion-graphs span { position: absolute; z-index: 2; top: 0.65rem; left: 0.8rem; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 0.72rem; font-weight: 850; }
+  .physics-motion-graphs svg { display: block; width: 100%; height: auto; }
+  .physics-motion-graphs .is-axis { fill: none; stroke: rgb(var(--c-ink) / 0.34); stroke-width: 2; }
+  .physics-motion-graphs .is-grid { fill: none; stroke: rgb(var(--c-ink) / 0.1); stroke-width: 1; stroke-dasharray: 3 5; }
+  .physics-motion-graphs .is-data { fill: none; stroke: rgb(var(--c-aqua-700)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; transition: d 240ms ease; }
+
+  .physics-energy-stage { position: relative; display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(15rem, 0.9fr); min-height: 22rem; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: linear-gradient(145deg, rgb(var(--c-aqua-50) / 0.42), rgb(var(--c-surface-sunken))); }
+  .physics-energy-track { position: relative; min-height: 22rem; overflow: hidden; }
+  .physics-energy-track::before { position: absolute; inset: 2.2rem 8% 3rem; content: ''; border-left: 4px solid rgb(var(--c-brand-700) / 0.62); border-bottom: 4px solid rgb(var(--c-brand-700) / 0.62); border-radius: 0 0 0 75%; transform: skewY(-22deg); transform-origin: left bottom; box-shadow: 0 10px 20px rgb(var(--c-shadow) / 0.1); }
+  .physics-energy-track::after { position: absolute; right: 8%; bottom: 2.45rem; left: 8%; height: 0.65rem; content: ''; background: repeating-linear-gradient(90deg, rgb(var(--c-ink) / 0.16) 0 2px, transparent 2px 9%); }
+  .physics-energy-cart { position: absolute; z-index: 2; display: grid; width: 4.7rem; height: 3.1rem; place-items: center; border: 2px solid rgb(var(--c-brand-700) / 0.64); border-radius: 0.6rem 0.6rem 0.25rem 0.25rem; background: linear-gradient(145deg, rgb(var(--c-brand-100)), rgb(var(--c-brand-500) / 0.56)); box-shadow: 0 10px 20px rgb(var(--c-shadow) / 0.18); transition: top 240ms ease, left 240ms ease, transform 240ms ease; }
+  .physics-energy-cart::before, .physics-energy-cart::after { position: absolute; bottom: -0.55rem; width: 0.85rem; height: 0.85rem; content: ''; border: 3px solid rgb(var(--c-ink) / 0.66); border-radius: 999px; background: rgb(var(--c-surface)); }
+  .physics-energy-cart::before { left: 0.55rem; }
+  .physics-energy-cart::after { right: 0.55rem; }
+  .physics-energy-cart span { color: rgb(var(--c-brand-800)); font-family: var(--font-display); font-size: 0.7rem; font-weight: 850; }
+  .physics-energy-height { position: absolute; top: 2rem; bottom: 3rem; left: 3%; width: 2.5rem; border-left: 1px dashed rgb(var(--c-ink) / 0.3); }
+  .physics-energy-height span { position: absolute; top: 0; left: 0.4rem; color: rgb(var(--c-ink) / 0.52); font-size: 0.68rem; font-weight: 800; white-space: nowrap; }
+  .physics-energy-bars { display: flex; min-width: 0; flex-direction: column; justify-content: center; gap: 0.72rem; border-inline-start: 1px solid rgb(var(--c-line)); background: rgb(var(--c-surface) / 0.72); padding: 1.2rem; backdrop-filter: blur(8px); }
+  .physics-energy-bars > div { display: grid; grid-template-columns: 5.4rem minmax(0, 1fr) 4.2rem; align-items: center; gap: 0.55rem; }
+  .physics-energy-bars span { color: rgb(var(--c-ink) / 0.58); font-size: 0.7rem; font-weight: 800; }
+  .physics-energy-bars > div > i { position: relative; height: 1.15rem; overflow: hidden; border-radius: 999px; background: rgb(var(--c-ink) / 0.08); }
+  .physics-energy-bars > div > i::after { position: absolute; inset: 0 auto 0 0; width: var(--share); content: ''; border-radius: inherit; background: rgb(var(--c-brand-600)); transition: width 240ms ease; }
+  .physics-energy-bars > div > i.is-kinetic::after { background: rgb(var(--c-aqua-600)); }
+  .physics-energy-bars > div > i.is-thermal::after { background: rgb(var(--c-coral-500)); }
+  .physics-energy-bars strong { color: rgb(var(--c-ink) / 0.76); font-size: 0.72rem; font-variant-numeric: tabular-nums; text-align: right; }
+  .physics-energy-bars p { display: flex; justify-content: space-between; margin: 0.4rem 0 0; border-top: 1px solid rgb(var(--c-line)); padding-top: 0.75rem; }
+  .physics-energy-bars p strong { color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1rem; }
+
+  .physics-electrostatic-stage { position: relative; min-height: 21rem; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: radial-gradient(circle at 50% 42%, rgb(var(--c-brand-50) / 0.8), transparent 40%), linear-gradient(180deg, rgb(var(--c-surface-sunken)), rgb(var(--c-aqua-50) / 0.28)); }
+  .physics-electrostatic-presets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.55rem; margin-bottom: 0.75rem; }
+  .physics-electrostatic-presets button { min-height: 2.8rem; border: 1px solid rgb(var(--c-line-strong)); border-radius: 0.55rem; background: rgb(var(--c-surface)); padding: 0.55rem 0.7rem; color: rgb(var(--c-ink) / 0.72); font-size: 0.72rem; font-weight: 800; transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease; }
+  .physics-electrostatic-presets button:hover { border-color: rgb(var(--c-brand-400)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-700)); }
+  .physics-electrostatic-presets button:focus-visible { outline: 2px solid rgb(var(--c-brand-500)); outline-offset: 2px; }
+  .physics-electrostatic-stage__axis { position: absolute; top: 45%; left: 50%; height: 2px; transform: translate(-50%, -50%); border-top: 2px dashed rgb(var(--c-ink) / 0.26); transition: width 240ms ease; }
+  .physics-electrostatic-stage__axis::before, .physics-electrostatic-stage__axis::after { position: absolute; top: -0.45rem; width: 1px; height: 0.8rem; content: ''; background: rgb(var(--c-ink) / 0.42); }
+  .physics-electrostatic-stage__axis::before { left: 0; }
+  .physics-electrostatic-stage__axis::after { right: 0; }
+  .physics-electrostatic-stage__axis span { position: absolute; top: -1.65rem; left: 50%; transform: translateX(-50%); color: rgb(var(--c-ink) / 0.52); font-size: 0.7rem; font-weight: 800; white-space: nowrap; }
+  .physics-electrostatic-charge { position: absolute; z-index: 2; top: 45%; display: grid; width: 5.6rem; height: 5.6rem; place-content: center; transform: translate(-50%, -50%); border: 3px solid rgb(var(--c-surface)); border-radius: 999px; background: radial-gradient(circle at 32% 28%, #fff6dc, #a68a54 58%, #4e422e); box-shadow: 0 0 0 2px rgb(var(--c-ink) / 0.18), 0 14px 28px rgb(var(--c-shadow) / 0.18); color: white; text-align: center; transition: left 240ms ease, background 200ms ease; }
+  .physics-electrostatic-charge.is-positive { background: radial-gradient(circle at 32% 28%, #fff2e7, #e8664d 55%, #8f2632); }
+  .physics-electrostatic-charge.is-negative { background: radial-gradient(circle at 32% 28%, #e9fbff, #3995ad 55%, #184d71); }
+  .physics-electrostatic-charge strong { font-family: var(--font-display); font-size: 1.4rem; line-height: 1; }
+  .physics-electrostatic-charge small { margin-top: 0.15rem; font-size: 0.6rem; font-weight: 800; opacity: 0.82; }
+  .physics-electrostatic-charge > i { position: absolute; top: 50%; height: 4px; color: rgb(var(--c-coral-600)); background: currentColor; transition: width 220ms ease; }
+  .physics-electrostatic-charge.is-two > i { color: rgb(var(--c-aqua-700)); }
+  .physics-electrostatic-charge > i::after { position: absolute; top: 50%; width: 0.7rem; height: 0.7rem; content: ''; transform: translateY(-50%) rotate(45deg); border-color: currentColor; }
+  .physics-electrostatic-charge > i b { position: absolute; top: -1.5rem; color: currentColor; font-size: 0.7rem; font-style: normal; }
+  .physics-electrostatic-charge.is-one > i { left: 100%; }
+  .physics-electrostatic-charge.is-one > i.is-outward { right: 100%; left: auto; }
+  .physics-electrostatic-charge.is-two > i { right: 100%; }
+  .physics-electrostatic-charge.is-two > i.is-outward { right: auto; left: 100%; }
+  .physics-electrostatic-charge.is-one > i.is-inward::after, .physics-electrostatic-charge.is-two > i.is-outward::after { right: 0; border-top: 3px solid; border-right: 3px solid; }
+  .physics-electrostatic-charge.is-two > i.is-inward::after, .physics-electrostatic-charge.is-one > i.is-outward::after { left: 0; border-bottom: 3px solid; border-left: 3px solid; }
+  .physics-electrostatic-charge.is-one > i b { right: 0; }
+  .physics-electrostatic-charge.is-one > i.is-outward b { right: auto; left: 0; }
+  .physics-electrostatic-charge.is-two > i b { left: 0; }
+  .physics-electrostatic-charge.is-two > i.is-outward b { right: 0; left: auto; }
+  .physics-electrostatic-stage__readout { position: absolute; right: 1rem; bottom: 1rem; left: 1rem; border-inline-start: 3px solid rgb(var(--c-brand-500)); background: rgb(var(--c-surface) / 0.84); padding: 0.7rem 0.9rem; backdrop-filter: blur(8px); }
+  .physics-electrostatic-stage__readout span, .physics-electrostatic-stage__readout small { display: block; color: rgb(var(--c-ink) / 0.52); font-size: 0.68rem; font-weight: 750; }
+  .physics-electrostatic-stage__readout strong { display: block; margin: 0.12rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.35rem; }
+  .physics-electrostatic-ratio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.8rem; }
+  .physics-electrostatic-ratio > div { display: grid; grid-template-columns: 2rem minmax(0, 1fr) 2.4rem; align-items: center; gap: 0.45rem; border: 1px solid rgb(var(--c-line)); border-radius: 0.6rem; background: rgb(var(--c-surface)); padding: 0.65rem; }
+  .physics-electrostatic-ratio span, .physics-electrostatic-ratio strong { color: rgb(var(--c-ink) / 0.6); font-size: 0.7rem; font-weight: 850; }
+  .physics-electrostatic-ratio i { position: relative; height: 0.65rem; overflow: hidden; border-radius: 999px; background: rgb(var(--c-ink) / 0.08); }
+  .physics-electrostatic-ratio i::after { position: absolute; inset: 0 auto 0 0; width: var(--force-share); content: ''; border-radius: inherit; background: linear-gradient(90deg, rgb(var(--c-coral-500)), rgb(var(--c-brand-500))); }
+
+  .physics-circuit-presets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.55rem; margin-bottom: 0.75rem; }
+  .physics-circuit-presets button { min-height: 2.8rem; border: 1px solid rgb(var(--c-line-strong)); border-radius: 0.55rem; background: rgb(var(--c-surface)); padding: 0.55rem 0.7rem; color: rgb(var(--c-ink) / 0.7); font-size: 0.72rem; font-weight: 800; }
+  .physics-circuit-presets button.is-active { border-color: rgb(var(--c-brand-500)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-700)); box-shadow: 0 0 0 2px rgb(var(--c-brand-500) / 0.1); }
+  .physics-circuit-presets button:focus-visible { outline: 2px solid rgb(var(--c-brand-500)); outline-offset: 2px; }
+  .physics-circuit-stage { position: relative; min-height: 22rem; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: radial-gradient(circle at 50% 45%, rgb(var(--c-brand-50) / 0.72), transparent 42%), linear-gradient(145deg, rgb(var(--c-surface-sunken)), rgb(var(--c-aqua-50) / 0.3)); }
+  .physics-circuit-stage svg { display: block; width: 100%; height: auto; min-height: 20rem; }
+  .physics-circuit-stage .is-wire { fill: none; stroke: rgb(var(--c-ink) / 0.64); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+  .physics-circuit-stage .is-battery-long, .physics-circuit-stage .is-battery-short { stroke: rgb(var(--c-ink) / 0.8); stroke-linecap: round; }
+  .physics-circuit-stage .is-battery-long { stroke-width: 8; }
+  .physics-circuit-stage .is-battery-short { stroke-width: 5; }
+  .physics-circuit-stage .is-resistor { fill: rgb(var(--c-brand-100)); stroke: rgb(var(--c-brand-700) / 0.62); stroke-width: 3; }
+  .physics-circuit-stage .is-zigzag { fill: none; stroke: rgb(var(--c-coral-600)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+  .physics-circuit-stage .is-junction { fill: rgb(var(--c-brand-700)); stroke: rgb(var(--c-surface)); stroke-width: 3; }
+  .physics-circuit-stage .is-current { fill: none; stroke: rgb(var(--c-coral-600)); stroke-width: 5; stroke-linecap: round; marker-end: none; }
+  .physics-circuit-stage .is-current::after { content: ''; }
+  .physics-circuit-stage .is-current.is-second { stroke: rgb(var(--c-aqua-700)); }
+  .physics-circuit-stage .is-component-label, .physics-circuit-stage .is-source-label { fill: rgb(var(--c-ink) / 0.7); font-family: var(--font-display); font-size: 20px; font-weight: 850; }
+  .physics-circuit-stage .is-source-label { fill: rgb(var(--c-brand-700)); font-size: 22px; }
+  .physics-circuit-stage__meter { position: absolute; right: 1rem; bottom: 1rem; min-width: 11rem; border-inline-start: 3px solid rgb(var(--c-brand-500)); background: rgb(var(--c-surface) / 0.86); padding: 0.72rem 0.9rem; backdrop-filter: blur(8px); }
+  .physics-circuit-stage__meter span, .physics-circuit-stage__meter small { display: block; color: rgb(var(--c-ink) / 0.52); font-size: 0.68rem; font-weight: 750; }
+  .physics-circuit-stage__meter strong { display: block; margin: 0.12rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.3rem; }
+  .physics-circuit-readings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.8rem; }
+  .physics-circuit-readings > div { border: 1px solid rgb(var(--c-line)); border-radius: 0.6rem; background: rgb(var(--c-surface)); padding: 0.75rem; }
+  .physics-circuit-readings span, .physics-circuit-readings small { display: block; color: rgb(var(--c-ink) / 0.5); font-size: 0.68rem; font-weight: 750; }
+  .physics-circuit-readings strong { display: block; margin: 0.16rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.05rem; }
+
+  .physics-magnetism-presets, .physics-magnetism-direction { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.55rem; margin-bottom: 0.7rem; }
+  .physics-magnetism-presets button, .physics-magnetism-direction button { min-height: 2.75rem; border: 1px solid rgb(var(--c-line-strong)); border-radius: 0.55rem; background: rgb(var(--c-surface)); padding: 0.5rem 0.65rem; color: rgb(var(--c-ink) / 0.7); font-size: 0.7rem; font-weight: 800; }
+  .physics-magnetism-presets button:hover, .physics-magnetism-direction button:hover { border-color: rgb(var(--c-brand-400)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-700)); }
+  .physics-magnetism-presets button:focus-visible, .physics-magnetism-direction button:focus-visible { outline: 2px solid rgb(var(--c-brand-500)); outline-offset: 2px; }
+  .physics-magnetism-direction button.is-active { border-color: rgb(var(--c-brand-500)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-700)); box-shadow: 0 0 0 2px rgb(var(--c-brand-500) / 0.1); }
+  .physics-magnetism-stage { position: relative; min-height: 24rem; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: radial-gradient(circle at 50% 44%, rgb(var(--c-aqua-50) / 0.75), transparent 43%), linear-gradient(145deg, rgb(var(--c-surface-sunken)), rgb(var(--c-brand-50) / 0.32)); }
+  .physics-magnetism-stage::before { position: absolute; inset: 0; content: ''; opacity: 0.32; background-image: linear-gradient(rgb(var(--c-brand-500) / 0.12) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--c-brand-500) / 0.12) 1px, transparent 1px); background-size: 2.5rem 2.5rem; }
+  .physics-magnetism-pole { position: absolute; z-index: 2; top: 4.4rem; bottom: 4.4rem; display: grid; width: 7.2rem; place-content: center; border: 3px solid rgb(var(--c-surface) / 0.88); box-shadow: 0 16px 35px rgb(var(--c-shadow) / 0.22); color: white; text-align: center; }
+  .physics-magnetism-pole strong { font-family: var(--font-display); font-size: 3.2rem; line-height: 1; }
+  .physics-magnetism-pole small { margin-top: 0.4rem; font-size: 0.65rem; font-weight: 800; opacity: 0.76; }
+  .physics-magnetism-pole.is-north { left: 2rem; border-radius: 1.2rem 0.3rem 0.3rem 1.2rem; background: linear-gradient(145deg, #f07a57, #9b2b38 70%); }
+  .physics-magnetism-pole.is-south { right: 2rem; border-radius: 0.3rem 1.2rem 1.2rem 0.3rem; background: linear-gradient(145deg, #4bb8d0, #164f7b 70%); }
+  .physics-magnetism-field { position: absolute; z-index: 1; inset: 5rem 9.3rem; display: flex; flex-direction: column; justify-content: space-around; }
+  .physics-magnetism-field i { position: relative; display: block; height: 2px; background: linear-gradient(90deg, rgb(var(--c-aqua-500) / 0.22), rgb(var(--c-aqua-600) / 0.86), rgb(var(--c-aqua-500) / 0.22)); }
+  .physics-magnetism-field i span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -54%); color: rgb(var(--c-aqua-700)); font-size: 1.55rem; font-style: normal; font-weight: 900; }
+  .physics-magnetism-field.is-reversed i span { transform: translate(-50%, -46%) rotate(180deg); }
+  .physics-magnetism-wire { position: absolute; z-index: 3; top: 47%; left: 50%; width: 15rem; height: 1.25rem; border: 2px solid rgb(var(--c-surface)); border-radius: 999px; background: linear-gradient(180deg, #fff1c9, #cf7b35 45%, #6b331e); box-shadow: 0 7px 18px rgb(var(--c-shadow) / 0.3); transform-origin: center; transition: transform 220ms ease; }
+  .physics-magnetism-wire > i { position: absolute; top: -2.2rem; right: 2rem; color: rgb(var(--c-coral-600)); font-size: 2rem; font-style: normal; font-weight: 900; line-height: 1; }
+  .physics-magnetism-wire > i.is-reversed { transform: rotate(180deg); }
+  .physics-magnetism-wire > span { position: absolute; top: 1.65rem; left: 50%; transform: translateX(-50%); color: rgb(var(--c-coral-700)); font-size: 0.72rem; font-weight: 900; white-space: nowrap; }
+  .physics-magnetism-force { position: absolute; z-index: 4; top: 50%; left: 50%; display: grid; min-width: 8rem; justify-items: center; transform: translate(-50%, -132%); color: rgb(var(--c-brand-700)); text-align: center; }
+  .physics-magnetism-force.is-down { transform: translate(-50%, 28%); }
+  .physics-magnetism-force.is-zero { top: 50%; transform: translate(-50%, -50%); color: rgb(var(--c-ink) / 0.52); }
+  .physics-magnetism-force i { font-size: 4.3rem; font-style: normal; font-weight: 900; line-height: 0.8; text-shadow: 0 4px 12px rgb(var(--c-brand-500) / 0.24); }
+  .physics-magnetism-force.is-down i { transform: rotate(180deg); }
+  .physics-magnetism-force strong { margin-top: 0.45rem; border-radius: 999px; background: rgb(var(--c-surface) / 0.88); padding: 0.25rem 0.55rem; font-size: 0.72rem; }
+  .physics-magnetism-force small { margin-top: 0.2rem; color: rgb(var(--c-ink) / 0.52); font-size: 0.62rem; font-weight: 750; }
+  .physics-magnetism-formula { position: absolute; z-index: 5; right: 0.8rem; bottom: 0.8rem; border-inline-start: 3px solid rgb(var(--c-brand-500)); background: rgb(var(--c-surface) / 0.88); padding: 0.65rem 0.8rem; backdrop-filter: blur(8px); }
+  .physics-magnetism-formula span, .physics-magnetism-formula strong { display: block; }
+  .physics-magnetism-formula span { color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 0.92rem; font-weight: 850; }
+  .physics-magnetism-formula strong { margin-top: 0.12rem; color: rgb(var(--c-ink) / 0.52); font-size: 0.65rem; }
+  .physics-magnetism-readings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.8rem; }
+  .physics-magnetism-readings > div { border: 1px solid rgb(var(--c-line)); border-radius: 0.6rem; background: rgb(var(--c-surface)); padding: 0.75rem; }
+  .physics-magnetism-readings span, .physics-magnetism-readings small { display: block; color: rgb(var(--c-ink) / 0.5); font-size: 0.68rem; font-weight: 750; }
+  .physics-magnetism-readings strong { display: block; margin: 0.16rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.05rem; text-transform: capitalize; }
+
+  .physics-wave-presets { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.55rem; margin-bottom: 0.75rem; }
+  .physics-wave-presets button { min-height: 2.8rem; border: 1px solid rgb(var(--c-line-strong)); border-radius: 0.55rem; background: rgb(var(--c-surface)); padding: 0.55rem 0.65rem; color: rgb(var(--c-ink) / 0.7); font-size: 0.7rem; font-weight: 800; }
+  .physics-wave-presets button:hover { border-color: rgb(var(--c-brand-400)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-700)); }
+  .physics-wave-presets button:focus-visible { outline: 2px solid rgb(var(--c-brand-500)); outline-offset: 2px; }
+  .physics-wave-stage { position: relative; min-height: 20rem; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: radial-gradient(circle at 48% 48%, rgb(var(--c-aqua-50) / 0.8), transparent 48%), linear-gradient(145deg, rgb(var(--c-surface-sunken)), rgb(var(--c-brand-50) / 0.3)); }
+  .physics-wave-stage svg { display: block; width: 100%; height: auto; min-height: 19rem; }
+  .physics-wave-stage .is-grid { fill: none; stroke: rgb(var(--c-brand-500) / 0.1); stroke-width: 1; }
+  .physics-wave-stage .is-equilibrium { fill: none; stroke: rgb(var(--c-ink) / 0.34); stroke-width: 2; stroke-dasharray: 7 7; }
+  .physics-wave-stage .is-wave { fill: none; stroke: rgb(var(--c-aqua-700)); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 5px 8px rgb(var(--c-aqua-500) / 0.25)); transition: d 220ms ease; }
+  .physics-wave-stage .is-amplitude { fill: none; stroke: rgb(var(--c-coral-600)); stroke-width: 4; stroke-linecap: round; }
+  .physics-wave-stage .is-direction { fill: none; stroke: rgb(var(--c-brand-700)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+  .physics-wave-stage text { fill: rgb(var(--c-ink) / 0.58); font-family: var(--font-display); font-size: 17px; font-weight: 800; }
+  .physics-wave-stage__formula { position: absolute; right: 0.8rem; bottom: 0.8rem; border-inline-start: 3px solid rgb(var(--c-brand-500)); background: rgb(var(--c-surface) / 0.88); padding: 0.65rem 0.8rem; backdrop-filter: blur(8px); }
+  .physics-wave-stage__formula span, .physics-wave-stage__formula strong { display: block; }
+  .physics-wave-stage__formula span { color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1rem; font-weight: 850; }
+  .physics-wave-stage__formula strong { margin-top: 0.12rem; color: rgb(var(--c-ink) / 0.52); font-size: 0.68rem; }
+  .physics-wave-readings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.8rem; }
+  .physics-wave-readings > div { border: 1px solid rgb(var(--c-line)); border-radius: 0.6rem; background: rgb(var(--c-surface)); padding: 0.75rem; }
+  .physics-wave-readings span, .physics-wave-readings small { display: block; color: rgb(var(--c-ink) / 0.5); font-size: 0.68rem; font-weight: 750; }
+  .physics-wave-readings strong { display: block; margin: 0.16rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.05rem; }
+
+  .physics-optics-presets { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.55rem; margin-bottom: 0.75rem; }
+  .physics-optics-presets button { min-height: 2.8rem; border: 1px solid rgb(var(--c-line-strong)); border-radius: 0.55rem; background: rgb(var(--c-surface)); padding: 0.5rem 0.55rem; color: rgb(var(--c-ink) / 0.7); font-size: 0.68rem; font-weight: 800; }
+  .physics-optics-presets button:hover { border-color: rgb(var(--c-brand-400)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-700)); }
+  .physics-optics-presets button:focus-visible { outline: 2px solid rgb(var(--c-brand-500)); outline-offset: 2px; }
+  .physics-optics-stage { position: relative; min-height: 21rem; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: radial-gradient(circle at 50% 48%, rgb(var(--c-aqua-50) / 0.86), transparent 45%), linear-gradient(145deg, rgb(var(--c-surface-sunken)), rgb(var(--c-brand-50) / 0.32)); }
+  .physics-optics-stage svg { display: block; width: 100%; height: auto; min-height: 20rem; }
+  .physics-optics-stage .is-axis { fill: none; stroke: rgb(var(--c-ink) / 0.4); stroke-width: 2; stroke-dasharray: 7 6; }
+  .physics-optics-stage .is-lens { fill: rgb(var(--c-aqua-100) / 0.7); stroke: rgb(var(--c-aqua-700)); stroke-width: 4; filter: drop-shadow(0 5px 10px rgb(var(--c-aqua-500) / 0.2)); }
+  .physics-optics-stage .is-focus { fill: rgb(var(--c-coral-500)); stroke: rgb(var(--c-surface)); stroke-width: 2; }
+  .physics-optics-stage .is-focus.is-double { fill: rgb(var(--c-brand-600)); }
+  .physics-optics-stage .is-object, .physics-optics-stage .is-image { fill: none; stroke: rgb(var(--c-coral-600)); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+  .physics-optics-stage .is-image { stroke: rgb(var(--c-brand-700)); }
+  .physics-optics-stage.is-virtual .is-image { stroke-dasharray: 7 5; }
+  .physics-optics-stage .is-ray { fill: none; stroke: rgb(var(--c-aqua-700)); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+  .physics-optics-stage .is-ray-two { stroke: rgb(var(--c-coral-500)); }
+  .physics-optics-stage .is-virtual-extension { fill: none; stroke: rgb(var(--c-brand-700) / 0.65); stroke-width: 2.5; stroke-dasharray: 7 6; }
+  .physics-optics-stage text { fill: rgb(var(--c-ink) / 0.58); font-family: var(--font-display); font-size: 17px; font-weight: 850; }
+  .physics-optics-stage .is-lens-label { fill: rgb(var(--c-aqua-700)); font-size: 15px; }
+  .physics-optics-stage__formula { position: absolute; right: 0.8rem; bottom: 0.8rem; border-inline-start: 3px solid rgb(var(--c-brand-500)); background: rgb(var(--c-surface) / 0.88); padding: 0.65rem 0.8rem; backdrop-filter: blur(8px); }
+  .physics-optics-stage__formula span, .physics-optics-stage__formula strong { display: block; }
+  .physics-optics-stage__formula span { color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 0.92rem; font-weight: 850; }
+  .physics-optics-stage__formula strong { margin-top: 0.12rem; color: rgb(var(--c-ink) / 0.52); font-size: 0.66rem; }
+  .physics-optics-readings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.8rem; }
+  .physics-optics-readings > div { min-width: 0; border: 1px solid rgb(var(--c-line)); border-radius: 0.6rem; background: rgb(var(--c-surface)); padding: 0.75rem; }
+  .physics-optics-readings span, .physics-optics-readings small { display: block; color: rgb(var(--c-ink) / 0.5); font-size: 0.68rem; font-weight: 750; }
+  .physics-optics-readings strong { display: block; margin: 0.16rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1rem; }
+
+  @media (max-width: 900px) {
+    .physics-electrostatic-presets,
+    .physics-electrostatic-ratio,
+    .physics-circuit-presets,
+    .physics-circuit-readings,
+    .physics-magnetism-presets,
+    .physics-magnetism-direction,
+    .physics-magnetism-readings { grid-template-columns: 1fr; }
+    .physics-wave-presets,
+    .physics-wave-readings { grid-template-columns: 1fr; }
+    .physics-optics-presets,
+    .physics-optics-readings { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 520px) {
+    .physics-density-stage { grid-template-columns: 1fr; }
+    .physics-density-stage__readout { justify-self: stretch; }
+    .physics-buoyancy-stage { grid-template-columns: 1fr; }
+    .physics-buoyancy-stage__decision { border-top: 3px solid rgb(var(--c-aqua-700)); border-inline-start: 0; }
+    .physics-pressure-stage { grid-template-columns: 1fr; }
+    .physics-thermal-stage { grid-template-columns: 1fr 2.8rem 1fr; }
+    .physics-thermal-stage__equilibrium { grid-column: 1 / -1; min-height: 13rem; }
+    .physics-expansion-tabs { grid-template-columns: 1fr; }
+    .physics-motion-graphs { grid-template-columns: 1fr; }
+    .physics-motion-stage__readout { right: 0.7rem; left: 0.7rem; min-width: 0; }
+    .physics-energy-stage { grid-template-columns: 1fr; }
+    .physics-energy-bars { border-top: 1px solid rgb(var(--c-line)); border-inline-start: 0; }
+    .physics-electrostatic-ratio { grid-template-columns: 1fr; }
+    .physics-electrostatic-presets { grid-template-columns: 1fr; }
+    .physics-circuit-stage__meter { right: 0.7rem; bottom: 0.7rem; left: 0.7rem; min-width: 0; }
+    .physics-magnetism-pole { width: 4.6rem; }
+    .physics-magnetism-pole.is-north { left: 0.5rem; }
+    .physics-magnetism-pole.is-south { right: 0.5rem; }
+    .physics-magnetism-field { right: 5rem; left: 5rem; }
+    .physics-magnetism-wire { width: 10rem; }
+    .physics-magnetism-formula { right: 0.7rem; bottom: 0.7rem; left: 0.7rem; }
+    .physics-wave-stage__formula { right: 0.7rem; bottom: 0.7rem; left: 0.7rem; }
+    .physics-optics-stage__formula { right: 0.7rem; bottom: 0.7rem; left: 0.7rem; }
+    .physics-electrostatic-charge { width: 4.5rem; height: 4.5rem; }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .physics-scale-scene,
     .physics-scale-scene__scan,
     .physics-ruler__object,
+    .physics-density-stage__object,
+    .physics-liquid-stage .is-liquid,
+    .physics-liquid-stage .is-meniscus,
+    .physics-buoyancy-stage__object,
+    .physics-buoyancy-stage__arrow,
+    .physics-pressure-stage__force,
+    .physics-pressure-stage__plate,
+    .physics-pressure-stage__column,
+    .physics-pressure-stage__column i,
+    .physics-thermal-stage__thermometer i,
+    .physics-thermal-stage__mix i,
+    .physics-expansion-stage__rail,
+    .physics-expansion-stage__rail::after,
+    .physics-expansion-stage__rail b,
+    .physics-motion-stage__block,
+    .physics-motion-stage__block > i,
+    .physics-motion-graphs .is-data,
+    .physics-energy-cart,
+    .physics-energy-bars > div > i::after,
+    .physics-electrostatic-stage__axis,
+    .physics-electrostatic-charge,
+    .physics-electrostatic-charge > i,
+    .physics-circuit-stage .is-current,
+    .physics-magnetism-wire,
+    .physics-wave-stage .is-wave,
+    .physics-optics-stage .is-ray,
     .physics-vector-stage__arrow { animation: none; transition: none; }
   }
 }

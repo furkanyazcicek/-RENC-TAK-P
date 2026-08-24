@@ -20,12 +20,19 @@ import { cn } from '../lib/cn'
 import { colorForKey } from '../lib/chartTheme'
 import { buildLibraryInsights } from '../lib/insights'
 import { libraryPath, slugifyLibraryValue } from '../lib/libraryRoutes'
+import {
+  createGradeLibraryData,
+  gradeCollectionFor,
+  isGradeCollectionKey,
+  topicSourceIds,
+} from '../data/highSchoolCurriculum'
 import { LESSONS } from '../content/lessons'
 import { emekliKonuMu } from '../content/emekliKonular'
 import LibraryNoteForm from '../components/LibraryNoteForm'
 import LibraryNoteCard from '../components/LibraryNoteCard'
 import LessonEditor from '../components/lessons/LessonEditor'
 import StructuredLessonCard from '../components/lessons/StructuredLessonCard'
+import LibraryCategorySelector from '../components/library/LibraryCategorySelector'
 import { AppShell, Badge, Button, EmptyState, Input, Modal } from '../components/ui'
 import { DashboardHero, InsightBar, Panel } from '../components/dashboard'
 
@@ -221,8 +228,16 @@ export default function Library() {
       return (counts[row.id] ?? 0) > 0
     })
 
-    setSubjects(subjectRows)
-    setTopics(gorunurKonular)
+    const gradeData = createGradeLibraryData(subjectRows, gorunurKonular)
+    gradeData.topics.forEach((topic) => {
+      counts[topic.id] = topic.source_topic_ids.reduce(
+        (sum, sourceTopicId) => sum + (counts[sourceTopicId] ?? 0),
+        0
+      )
+    })
+
+    setSubjects([...subjectRows, ...gradeData.subjects])
+    setTopics([...gorunurKonular, ...gradeData.topics])
     setBundledLessonsByTopic(bundledMap)
     setNoteCounts(counts)
     setLoading(false)
@@ -255,11 +270,20 @@ export default function Library() {
       return
     }
 
+    const targetTopic = topics.find((topic) => topic.id === id)
+    const sourceIds = topicSourceIds(targetTopic)
+    if (sourceIds.length === 0) {
+      setNotesByTopic((prev) => ({ ...prev, [id]: [] }))
+      setLessonsByTopic((prev) => ({ ...prev, [id]: [] }))
+      setNoteCounts((prev) => ({ ...prev, [id]: 0 }))
+      return
+    }
+
     const [{ data: notes }, { data: lessons }] = await Promise.all([
       supabase
       .from('library_notes')
       .select('*')
-      .eq('topic_id', id)
+      .in('topic_id', sourceIds)
       .order('created_at', { ascending: false }),
       // Konu içi sıra `order_index`ten gelir. Eskiden `updated_at desc`
       // ile diziliyordu: öğretmen eski bir dersi düzeltince o ders listenin
@@ -267,17 +291,17 @@ export default function Library() {
       supabase
         .from('structured_lessons')
         .select('*')
-        .eq('topic_id', id)
+        .in('topic_id', sourceIds)
         .order('order_index', { ascending: true })
         .order('created_at', { ascending: true }),
     ])
     setNotesByTopic((prev) => ({ ...prev, [id]: notes ?? [] }))
     setLessonsByTopic((prev) => ({ ...prev, [id]: lessons ?? [] }))
-    const bundled = bundledLessonsByTopic[id] ?? []
+    const bundled = sourceIds.flatMap((sourceId) => bundledLessonsByTopic[sourceId] ?? [])
     const bundledTitles = new Set(bundled.map((lesson) => lesson.title))
     const databaseOnly = (lessons ?? []).filter((lesson) => !bundledTitles.has(lesson.title))
     setNoteCounts((prev) => ({ ...prev, [id]: (notes ?? []).length + bundled.length + databaseOnly.length }))
-  }, [bundledLessonsByTopic])
+  }, [bundledLessonsByTopic, topics])
 
   useEffect(() => {
     if (topicId) loadNotesForTopic(topicId)
@@ -322,9 +346,13 @@ export default function Library() {
 
   const selectedSubject = subjects.find((s) => s.id === subjectId)
   const selectedTopic = topics.find((t) => t.id === topicId)
+  const currentCollection = gradeCollectionFor(examType)
+  const isGradeContext = isGradeCollectionKey(examType)
   const currentNotes = notesByTopic[topicId] ?? []
   const currentLessons = useMemo(() => {
-    const bundled = bundledLessonsByTopic[topicId] ?? []
+    const bundled = topicSourceIds(selectedTopic).flatMap(
+      (sourceId) => bundledLessonsByTopic[sourceId] ?? []
+    )
     const bundledTitles = new Set(bundled.map((lesson) => lesson.title))
     const databaseOnly = (lessonsByTopic[topicId] ?? []).filter(
       (lesson) => !bundledTitles.has(lesson.title)
@@ -332,12 +360,20 @@ export default function Library() {
     return [...bundled, ...databaseOnly].sort(
       (a, b) => (a.order_index ?? 0) - (b.order_index ?? 0)
     )
-  }, [bundledLessonsByTopic, lessonsByTopic, topicId])
+  }, [bundledLessonsByTopic, lessonsByTopic, selectedTopic, topicId])
   const totalCurrentItems = currentNotes.length + currentLessons.length
 
+  const examSubjects = useMemo(
+    () => subjects.filter((subject) => !subject.is_grade_collection),
+    [subjects]
+  )
+  const examTopics = useMemo(
+    () => topics.filter((topic) => !topic.is_grade_collection),
+    [topics]
+  )
   const insights = useMemo(
-    () => buildLibraryInsights({ subjects, topics, noteCounts }),
-    [subjects, topics, noteCounts]
+    () => buildLibraryInsights({ subjects: examSubjects, topics: examTopics, noteCounts }),
+    [examSubjects, examTopics, noteCounts]
   )
 
   const q = search.trim().toLocaleLowerCase('tr-TR')
@@ -348,6 +384,15 @@ export default function Library() {
     ? topicsForSubject.filter((t) => t.name?.toLocaleLowerCase('tr-TR').includes(q))
     : topicsForSubject
 
+  const statsForKey = useCallback(
+    (key) => {
+      const list = subjects.filter((subject) => subject.exam_type === key)
+      const stats = statsFor(list)
+      return { subjects: list.length, topics: stats.topics, items: stats.notes }
+    },
+    [statsFor, subjects]
+  )
+
   function go(payload) {
     navigate(libraryPath('notes', payload))
   }
@@ -356,11 +401,11 @@ export default function Library() {
 
   const crumbs = [
     { label: 'Ders Kütüphanesi', onClick: () => navigate('/kutuphane') },
-    { label: 'Not Kütüphanesi', onClick: resetToRoot },
+    { label: 'Konu Kütüphanesi', onClick: resetToRoot },
   ]
   if (examType) {
     crumbs.push({
-      label: examType,
+      label: currentCollection?.label ?? examType,
       onClick: () => go({ examType }),
     })
   }
@@ -369,24 +414,26 @@ export default function Library() {
   }
   if (selectedTopic) crumbs.push({ label: selectedTopic.name })
 
-  const totalNotes = Object.values(noteCounts).reduce((s, n) => s + (n || 0), 0)
+  // Sınıf koleksiyonları mevcut sınav konularını referanslayabilir;
+  // toplamda aynı notu ikinci kez saymamak için yalnız kaynak konular toplanır.
+  const totalNotes = examTopics.reduce((sum, topic) => sum + (noteCounts[topic.id] || 0), 0)
 
   return (
     <AppShell
-      title="Not Kütüphanesi"
+      title="Konu Kütüphanesi"
       subtitle="Sınav türüne, derse ve konuya göre düzenlenmiş kaynaklar"
       loading={loading}
       loadingLabel="Kütüphane yükleniyor…"
     >
       <DashboardHero
         eyebrow="Ders Kütüphanesi / Notlar"
-        title={selectedTopic?.name ?? selectedSubject?.name ?? examType ?? 'Not Kütüphanesi'}
+        title={selectedTopic?.name ?? selectedSubject?.name ?? currentCollection?.label ?? examType ?? 'Konu Kütüphanesi'}
         subtitle={
           selectedTopic
-            ? `${selectedSubject?.name} · ${examType}`
-            : 'Sınav türünü seç, dersten konuya inerek notlara ulaş'
+            ? `${selectedSubject?.name} · ${currentCollection?.label ?? examType}`
+            : 'Sınavını veya sınıfını seç, dersten konuya inerek notlara ulaş'
         }
-        badge={examType && !selectedTopic ? { label: examType, tone: 'amber' } : null}
+        badge={examType && !selectedTopic ? { label: currentCollection?.label ?? examType, tone: 'amber' } : null}
         highlights={[
           { label: 'Ders', value: subjects.length },
           { label: 'Konu', value: topics.length },
@@ -398,40 +445,19 @@ export default function Library() {
 
       <Breadcrumb items={crumbs} />
 
-      {/* LEVEL 1 — Sınav Türü */}
+      {/* LEVEL 1 — Kullanım amacı: sınav veya sınıf */}
       {!examType && (
-        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {EXAM_TYPES.map(({ key, label, hint, icon: Icon }) => {
-            const list = subjects.filter((s) => s.exam_type === key)
-            const s = statsFor(list)
-            return (
-              <button
-                key={key}
-                type="button"
-                onClick={() => go({ examType: key })}
-                className="card-interactive focus-ring group p-5 text-left"
-              >
-                <div className="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-brand-50 text-brand-600 transition-colors group-hover:bg-brand-500 group-hover:text-white">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </div>
-                <h3 className="font-display font-bold text-ink">{label}</h3>
-                <p className="mt-0.5 text-xs text-ink/55">{hint}</p>
-                <p className="mt-3 text-2xs font-semibold text-ink/55">
-                  {list.length} ders · {s.topics} konu
-                  {s.notes > 0 && (
-                    <span className="text-brand-600"> · {s.notes} not</span>
-                  )}
-                </p>
-              </button>
-            )
-          })}
-        </div>
+        <LibraryCategorySelector
+          examTypes={EXAM_TYPES}
+          statsForKey={statsForKey}
+          onSelect={(key) => go({ examType: key })}
+        />
       )}
 
       {/* LEVEL 2 — Dersler */}
       {examType && !subjectId && (
         <Panel
-          title={`${examType} Dersleri`}
+          title={`${currentCollection?.label ?? examType} Dersleri`}
           description="Bir derse dokun, konuları açılsın"
           icon={LibraryIcon}
           action={
@@ -442,11 +468,11 @@ export default function Library() {
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Ders ara…"
                 aria-label="Derslerde ara"
-                className="h-9 w-44 py-0 text-xs"
+                className="h-9 w-full py-0 text-xs sm:w-44"
               />
             ) : (
               <Button variant="ghost" size="sm" icon={ArrowLeft} onClick={resetToRoot}>
-                Sınav türleri
+                Kategori seçimi
               </Button>
             )
           }
@@ -463,7 +489,7 @@ export default function Library() {
               compact
             />
           ) : (
-            <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {visibleSubjects.map((s) => {
                 const subjectTopics = topicsBySubject[s.id] ?? []
                 const notes = subjectTopics.reduce((sum, t) => sum + (noteCounts[t.id] || 0), 0)
@@ -498,7 +524,7 @@ export default function Library() {
       {subjectId && !topicId && (
         <Panel
           title={selectedSubject?.name}
-          description={`${topicsForSubject.length} konu · ${examType}`}
+          description={`${topicsForSubject.length} konu · ${currentCollection?.label ?? examType}`}
           icon={FolderOpen}
           iconTone={colorForKey(selectedSubject?.name)}
           padding={false}
@@ -510,11 +536,11 @@ export default function Library() {
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Konu ara…"
                 aria-label="Konularda ara"
-                className="h-9 w-44 py-0 text-xs"
+                className="h-9 w-full py-0 text-xs sm:w-44"
               />
             ) : (
               <Button variant="ghost" size="sm" icon={ArrowLeft} onClick={() => go({ examType })}>
-                {examType} dersleri
+                {currentCollection?.label ?? examType} dersleri
               </Button>
             )
           }
@@ -541,7 +567,7 @@ export default function Library() {
                     <button
                       type="button"
                       onClick={() => go({ examType, subject: selectedSubject, topic: t })}
-                      className="focus-ring flex w-full items-center gap-3 px-5 py-3.5 text-left transition-colors hover:bg-surface-muted"
+                      className="focus-ring flex w-full items-center gap-3 px-4 py-3.5 text-left transition-colors hover:bg-surface-muted sm:px-5"
                     >
                       <span
                         className={cn(
@@ -551,13 +577,13 @@ export default function Library() {
                       >
                         <FolderOpen className="h-4 w-4" aria-hidden="true" />
                       </span>
-                      <span className="min-w-0 flex-1 truncate font-medium text-ink">{t.name}</span>
+                      <span className="min-w-0 flex-1 break-words font-medium leading-5 text-ink">{t.name}</span>
                       {count > 0 ? (
                         <Badge tone="brand" size="sm" icon={FileStack}>
                           {count} not
                         </Badge>
                       ) : (
-                        <span className="text-2xs text-ink/45">not yok</span>
+                        <span className="shrink-0 text-2xs text-ink/45">not yok</span>
                       )}
                       <ChevronRight className="h-4 w-4 shrink-0 text-ink/45" aria-hidden="true" />
                     </button>
@@ -581,7 +607,7 @@ export default function Library() {
               <Button variant="ghost" size="sm" icon={ArrowLeft} onClick={() => go({ examType, subject: selectedSubject })}>
                 <span className="hidden sm:inline">Konular</span>
               </Button>
-              {isTeacher && (
+              {isTeacher && !isGradeContext && (
                 <div className="flex gap-2">
                   <Button variant="secondary" size="sm" icon={Plus} onClick={() => setNoteFormOpen(true)}>
                     <span className="hidden sm:inline">Dosya notu</span>
@@ -599,12 +625,12 @@ export default function Library() {
               icon={FileStack}
               title="Bu konu için ders notu yok"
               description={
-                isTeacher
+                isTeacher && !isGradeContext
                   ? 'Bu konuya bir özet, formül kâğıdı veya PDF ekleyerek başlayabilirsin.'
                   : 'Öğretmenin bu konuya not eklediğinde burada görünecek.'
               }
               action={
-                isTeacher ? (
+                isTeacher && !isGradeContext ? (
                   <Button icon={Plus} onClick={() => { setEditingLesson(null); setLessonEditorOpen(true) }}>
                     Bu Konuya Ders Oluştur
                   </Button>
@@ -635,7 +661,7 @@ export default function Library() {
         </Panel>
       )}
 
-      {isTeacher && (
+      {isTeacher && !isGradeContext && (
         <Modal
           open={noteFormOpen}
           onClose={() => setNoteFormOpen(false)}
@@ -655,7 +681,7 @@ export default function Library() {
         </Modal>
       )}
 
-      {isTeacher && (
+      {isTeacher && !isGradeContext && (
         <Modal
           open={lessonEditorOpen}
           onClose={() => setLessonEditorOpen(false)}

@@ -447,9 +447,10 @@ Bir bölgede tür sayısının yüksek olması tek başına ekosistemin sağlık
             purpose: 'Biyoçeşitliliğin genetik düzeyini, kalıtsal varyasyon ile çevresel değişim ayrımına bağlamak.', width: 'full', complexity: 'high',
             caption: 'Genetik çeşitlilik mutasyon ve gen kombinasyonlarıyla ilişkilidir; her görünür fark kalıtsal değildir.',
             focus: [
-              { title: 'Genetik kaynak', body: 'Mutasyon ve eşeyli üremenin kalıtsal farklılık oluşturmasını gör.' },
+              { title: 'Mayoz ve döllenme', body: 'Var olan alellerin krossing-over, bağımsız dağılım ve rastgele döllenmeyle yeniden birleşmesini gör.' },
+              { title: 'Mutasyonun yeri', body: 'Üreme hücresi ve vücut hücresi mutasyonlarını kalıtsallık açısından ayır.' },
               { title: 'Çevresel etki', body: 'DNA dizisi değişmeden fenotipin değişebileceğini ayır.' },
-              { title: 'Popülasyon', body: 'Çeşitliliğin uyum ve seçilim için önemini gör.' },
+              { title: 'Varyasyon biçimi', body: 'Boy gibi sürekli dağılan özellikleri kan grubu gibi kesikli kategorilerden ayır.' },
             ],
           },
           {
@@ -602,4 +603,3 @@ Biyoçeşitlilik sorusunda tür sayısı tek ölçüt değildir. Genetik çeşit
     ],
   },
 }
-

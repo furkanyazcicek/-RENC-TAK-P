@@ -9,10 +9,11 @@
 import osmanGazi from './osman-gazi.js'
 import orhanGazi from './orhan-gazi.js'
 import birinciMurad from './birinci-murad.js'
+import { TAM_HANEDAN_PADISAHLARI } from './tamHanedan.js'
 import { KRONOLOJI, kronolojiKaydi, cizelgeAraligi, saltanatSuresi } from './kronoloji.js'
 
 /** İçeriği tamamlanmış padişahlar — kronolojik sırada. */
-export const PADISAHLAR = [osmanGazi, orhanGazi, birinciMurad]
+export const PADISAHLAR = [osmanGazi, orhanGazi, birinciMurad, ...TAM_HANEDAN_PADISAHLARI]
 
 export { KRONOLOJI, kronolojiKaydi, cizelgeAraligi, saltanatSuresi }
 
@@ -36,6 +37,7 @@ export function oncekiPadisah(id) {
 
 /** Hükümdarlık süresi — "38 yıl" gibi ekranda görünen metin. */
 export function saltanatMetni(padisah) {
+  if (padisah.reignDuration) return padisah.reignDuration
   const sure = padisah.reignEnd.year - padisah.reignStart.year
   const belirsiz = padisah.reignStart.disputed || padisah.reignEnd.disputed
   return belirsiz ? `yaklaşık ${sure} yıl` : `${sure} yıl`

@@ -122,8 +122,8 @@ const orhanGazi = {
     { id: 'bursa', title: 'Bursa', date: tarih(1326), from: 'Bizans', summary: 'Uzun ablukanın ardından teslim alındı ve başkent yapıldı.', effect: 'Devletin idari, ticari ve dinî merkezi kuruldu.', osym: 'İlk Osmanlı başkenti.', mapFocus: 'bursa' },
     { id: 'iznik-fetih', title: 'İznik', date: tarih(1331), from: 'Bizans', summary: 'Palekanon yenilgisinden sonra teslim oldu.', effect: 'İlk Osmanlı medresesi burada açıldı.', osym: 'İlk medrese ile eşleştirilir.', mapFocus: 'iznik' },
     { id: 'izmit-fetih', title: 'İzmit (Nikomedia)', date: tarih(1337), from: 'Bizans', summary: 'Marmara’nın doğu kıyısındaki son büyük Bizans şehri alındı.', effect: 'Bizans, Anadolu yakasında fiilen tasfiye edildi.', mapFocus: 'izmit' },
-    { id: 'karesi-ilhak', title: 'Karesi toprakları', date: tartismaliTarih(1345, '1345/1346'), from: 'Karesioğulları Beyliği', summary: 'Osmanlı’ya katılan ilk Türk beyliği.', effect: 'Donanma, denizci komutanlar ve Ege–Marmara kıyısı kazanıldı; Rumeli’ye geçiş mümkün oldu.', osym: 'İlk katılan beylik + Rumeli’ye geçişin sebebi.', mapFocus: 'karesi' },
-    { id: 'cimpe-fetih', title: 'Çimpe Kalesi', date: tartismaliTarih(1353, '1352/1353'), from: 'Bizans', summary: 'Rumeli’deki ilk Osmanlı toprağı.', effect: 'Balkan fetihlerinin üssü oldu.', osym: 'Rumeli’deki ilk toprak.', mapFocus: 'cimpe' },
+    { id: 'karesi-ilhak', title: 'Karesi toprakları', date: tartismaliTarih(1345, '1345/1346', 'İlhak süreci birkaç yıla yayılır; kaynaklar farklı yıl verir.'), from: 'Karesioğulları Beyliği', summary: 'Osmanlı’ya katılan ilk Türk beyliği.', effect: 'Donanma, denizci komutanlar ve Ege–Marmara kıyısı kazanıldı; Rumeli’ye geçiş mümkün oldu.', osym: 'İlk katılan beylik + Rumeli’ye geçişin sebebi.', mapFocus: 'karesi' },
+    { id: 'cimpe-fetih', title: 'Çimpe Kalesi', date: tartismaliTarih(1353, '1352/1353', 'Ders kitaplarında çoğunlukla 1353 verilir; bazı kaynaklar 1352 der.'), from: 'Bizans', summary: 'Rumeli’deki ilk Osmanlı toprağı.', effect: 'Balkan fetihlerinin üssü oldu.', osym: 'Rumeli’deki ilk toprak.', mapFocus: 'cimpe' },
     { id: 'gelibolu-fetih', title: 'Gelibolu ve çevresi', date: tarih(1354), from: 'Bizans', summary: 'Depremde surları yıkılan şehir ve çevresi alındı.', effect: 'Boğazın Rumeli yakasındaki geçiş noktası denetime girdi; iskânla kalıcılık sağlandı.', mapFocus: 'gelibolu' },
   ],
 
@@ -162,11 +162,19 @@ const orhanGazi = {
 
   mapState: {
     id: 'orhan-1362',
+    startMapId: 'osman-1324',
+    startCaption: 'Orhan Gazi tahta geçtiğinde Osmanlı, Söğüt–Yenişehir çekirdeğinde ve Bursa’yı kuşatan dar bir uç beyliğiydi.',
     caption: 'Dönem sonunda Osmanlı, Marmara’nın güney kıyısını bütünüyle denetliyor ve Rumeli’de bir köprübaşı tutuyordu.',
     highlight: ['bursa', 'iznik', 'izmit', 'karesi', 'cimpe'],
   },
 
-  portrait: { kind: 'monogram', alt: 'Orhan Gazi’yi temsil eden sembolik pano.', tugra: 'ا', isim: 'Orhan' },
+  portrait: {
+    kind: 'image',
+    src: '/lesson-assets/tarih/osmanli-padisahlari/orhan-gazi.jpg',
+    alt: 'Orhan Gazi’nin dönem özelliklerinden esinlenen eğitim amaçlı temsili illüstrasyon; tarihî portre değildir.',
+    tugra: 'ا',
+    isim: 'Orhan',
+  },
 
   transitionOut: {
     transitionType: 'devir',
@@ -199,7 +207,8 @@ const orhanGazi = {
   ],
 
   sources: [
-    { label: 'MEB Tarih 10 — Beylikten Devlete Osmanlı Siyaseti', note: 'Kurumların ve "ilk"lerin çerçevesi.' },
+    { label: 'MEB Tarih 10 — Beylikten Devlete Osmanlı', note: 'Kurumların ve "ilk"lerin çerçevesi.', url: 'https://tymm.meb.gov.tr/tarih-dersi/unite/39' },
+    { label: 'TDV İslâm Ansiklopedisi — Orhan', note: 'Bursa, İznik, İzmit, Karesi ve Rumeli’ye geçiş kronolojisi.', url: 'https://islamansiklopedisi.org.tr/orhan' },
     { label: 'YKS Tarih konu-kazanım kapsamı — Osmanlı Kuruluş Dönemi', note: 'Sık karıştırılan bilgilerin seçimi.' },
   ],
 }

@@ -23,6 +23,7 @@
  * @typedef {Object} Kaynak
  * @property {string} label  Kaynağın kısa adı (ör. "MEB Tarih 10")
  * @property {string} [note] Neden bu kaynağa dayanıldığı
+ * @property {string} [url]  Öğrencinin kaynağı açabileceği kurumsal adres
  */
 
 /**
@@ -118,6 +119,8 @@
  * @property {string} id             `donemHaritalari.js` içindeki anahtar
  * @property {string} caption        Haritanın altındaki tek cümlelik okuma
  * @property {string[]} [highlight]  Öne çıkarılacak şehir kimlikleri
+ * @property {string} [startMapId]    Dönem başı karşılaştırması için önceki harita
+ * @property {string} [startCaption]  Dönem başı haritasının kısa okuması
  */
 
 /**

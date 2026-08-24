@@ -133,6 +133,13 @@ import paragrafta_anlam_3 from './paragrafta-anlam-4.js';
 import paragrafta_anlam_4 from './paragrafta-anlam-5.js';
 import paragrafta_anlam_5 from './paragrafta-anlam-6.js';
 import paragrafta_anlam_6 from './paragrafta-anlam-7.js';
+import paragrafta_anlam_7 from './paragrafta-anlam-8.js';
+import paragrafta_anlam_8 from './paragrafta-anlam-9.js';
+import paragrafta_anlam_9 from './paragrafta-anlam-10.js';
+import paragrafta_anlam_10 from './paragrafta-anlam-11.js';
+import paragrafta_anlam_11 from './paragrafta-anlam-12.js';
+import paragrafta_anlam_12 from './paragrafta-anlam-13.js';
+import paragrafta_anlam_13 from './paragrafta-anlam-14.js';
 import ses_bilgisi_0 from './ses-bilgisi.js';
 import ses_bilgisi_1 from './ses-bilgisi-2.js';
 import ses_bilgisi_2 from './ses-bilgisi-3.js';
@@ -141,10 +148,26 @@ import ses_bilgisi_4 from './ses-bilgisi-5.js';
 import ses_bilgisi_5 from './ses-bilgisi-6.js';
 import ses_bilgisi_6 from './ses-bilgisi-7.js';
 import ses_bilgisi_7 from './ses-bilgisi-8.js';
+import ses_bilgisi_8 from './ses-bilgisi-9.js';
+import ses_bilgisi_9 from './ses-bilgisi-10.js';
+import ses_bilgisi_10 from './ses-bilgisi-11.js';
+import ses_bilgisi_11 from './ses-bilgisi-12.js';
+import ses_bilgisi_12 from './ses-bilgisi-13.js';
+import ses_bilgisi_13 from './ses-bilgisi-14.js';
 import yazim_kurallari_0 from './yazim-kurallari.js';
 import yazim_kurallari_1 from './yazim-kurallari-2.js';
 import yazim_kurallari_2 from './yazim-kurallari-3.js';
 import yazim_kurallari_3 from './yazim-kurallari-4.js';
+import yazim_kurallari_4 from './yazim-kurallari-5.js';
+import yazim_kurallari_5 from './yazim-kurallari-6.js';
+import yazim_kurallari_6 from './yazim-kurallari-7.js';
+import yazim_kurallari_7 from './yazim-kurallari-8.js';
+import yazim_kurallari_8 from './yazim-kurallari-9.js';
+import yazim_kurallari_9 from './yazim-kurallari-10.js';
+import yazim_kurallari_10 from './yazim-kurallari-11.js';
+import yazim_kurallari_11 from './yazim-kurallari-12.js';
+import yazim_kurallari_12 from './yazim-kurallari-13.js';
+import yazim_kurallari_13 from './yazim-kurallari-14.js';
 import cumlede_anlam_0 from './cumlede-anlam.js';
 import cumlede_anlam_1 from './cumlede-anlam-2.js';
 import cumlede_anlam_2 from './cumlede-anlam-3.js';
@@ -187,6 +210,34 @@ import fiilimsiler_10 from './fiilimsiler-11.js';
 import fiilimsiler_11 from './fiilimsiler-12.js';
 import fiilimsiler_12 from './fiilimsiler-13.js';
 import fiilimsiler_13 from './fiilimsiler-14.js';
+import sozcuk_yapisi_0 from './sozcuk-yapisi-1.js';
+import sozcuk_yapisi_1 from './sozcuk-yapisi-2.js';
+import sozcuk_yapisi_2 from './sozcuk-yapisi-3.js';
+import sozcuk_yapisi_3 from './sozcuk-yapisi-4.js';
+import sozcuk_yapisi_4 from './sozcuk-yapisi-5.js';
+import sozcuk_yapisi_5 from './sozcuk-yapisi-6.js';
+import sozcuk_yapisi_6 from './sozcuk-yapisi-7.js';
+import sozcuk_yapisi_7 from './sozcuk-yapisi-8.js';
+import sozcuk_yapisi_8 from './sozcuk-yapisi-9.js';
+import sozcuk_yapisi_9 from './sozcuk-yapisi-10.js';
+import sozcuk_yapisi_10 from './sozcuk-yapisi-11.js';
+import sozcuk_yapisi_11 from './sozcuk-yapisi-12.js';
+import sozcuk_yapisi_12 from './sozcuk-yapisi-13.js';
+import sozcuk_yapisi_13 from './sozcuk-yapisi-14.js';
+import cumle_turleri_0 from './cumle-turleri-1.js';
+import cumle_turleri_1 from './cumle-turleri-2.js';
+import cumle_turleri_2 from './cumle-turleri-3.js';
+import cumle_turleri_3 from './cumle-turleri-4.js';
+import cumle_turleri_4 from './cumle-turleri-5.js';
+import cumle_turleri_5 from './cumle-turleri-6.js';
+import cumle_turleri_6 from './cumle-turleri-7.js';
+import cumle_turleri_7 from './cumle-turleri-8.js';
+import cumle_turleri_8 from './cumle-turleri-9.js';
+import cumle_turleri_9 from './cumle-turleri-10.js';
+import cumle_turleri_10 from './cumle-turleri-11.js';
+import cumle_turleri_11 from './cumle-turleri-12.js';
+import cumle_turleri_12 from './cumle-turleri-13.js';
+import cumle_turleri_13 from './cumle-turleri-14.js';
 
 export const turkceTests = {
   'noktalama-isaretleri': [
@@ -217,13 +268,13 @@ export const turkceTests = {
     ...[sozcukte_anlam_0, sozcukte_anlam_1, sozcukte_anlam_2, sozcukte_anlam_3, sozcukte_anlam_4, sozcukte_anlam_5, sozcukte_anlam_6, sozcukte_anlam_7, sozcukte_anlam_8, sozcukte_anlam_9, sozcukte_anlam_10, sozcukte_anlam_11, sozcukte_anlam_12, sozcukte_anlam_13, sozcukte_anlam_14, sozcukte_anlam_15].flat()
   ],
   'paragrafta-anlam': [
-    ...[paragrafta_anlam_0, paragrafta_anlam_1, paragrafta_anlam_2, paragrafta_anlam_3, paragrafta_anlam_4, paragrafta_anlam_5, paragrafta_anlam_6].flat()
+    ...[paragrafta_anlam_0, paragrafta_anlam_1, paragrafta_anlam_2, paragrafta_anlam_3, paragrafta_anlam_4, paragrafta_anlam_5, paragrafta_anlam_6, paragrafta_anlam_7, paragrafta_anlam_8, paragrafta_anlam_9, paragrafta_anlam_10, paragrafta_anlam_11, paragrafta_anlam_12, paragrafta_anlam_13].flat()
   ],
   'ses-bilgisi': [
-    ...[ses_bilgisi_0, ses_bilgisi_1, ses_bilgisi_2, ses_bilgisi_3, ses_bilgisi_4, ses_bilgisi_5, ses_bilgisi_6, ses_bilgisi_7].flat()
+    ...[ses_bilgisi_0, ses_bilgisi_1, ses_bilgisi_2, ses_bilgisi_3, ses_bilgisi_4, ses_bilgisi_5, ses_bilgisi_6, ses_bilgisi_7, ses_bilgisi_8, ses_bilgisi_9, ses_bilgisi_10, ses_bilgisi_11, ses_bilgisi_12, ses_bilgisi_13].flat()
   ],
   'yazim-kurallari': [
-    ...[yazim_kurallari_0, yazim_kurallari_1, yazim_kurallari_2, yazim_kurallari_3].flat()
+    ...[yazim_kurallari_0, yazim_kurallari_1, yazim_kurallari_2, yazim_kurallari_3, yazim_kurallari_4, yazim_kurallari_5, yazim_kurallari_6, yazim_kurallari_7, yazim_kurallari_8, yazim_kurallari_9, yazim_kurallari_10, yazim_kurallari_11, yazim_kurallari_12, yazim_kurallari_13].flat()
   ],
   'cumlede-anlam': [
     ...[cumlede_anlam_0, cumlede_anlam_1, cumlede_anlam_2, cumlede_anlam_3, cumlede_anlam_4, cumlede_anlam_5, cumlede_anlam_6, cumlede_anlam_7, cumlede_anlam_8, cumlede_anlam_9, cumlede_anlam_10, cumlede_anlam_11, cumlede_anlam_12, cumlede_anlam_13].flat()
@@ -233,5 +284,11 @@ export const turkceTests = {
   ],
   'fiilimsiler': [
     ...[fiilimsiler_0, fiilimsiler_1, fiilimsiler_2, fiilimsiler_3, fiilimsiler_4, fiilimsiler_5, fiilimsiler_6, fiilimsiler_7, fiilimsiler_8, fiilimsiler_9, fiilimsiler_10, fiilimsiler_11, fiilimsiler_12, fiilimsiler_13].flat()
+  ],
+  'sozcuk-yapisi': [
+    ...[sozcuk_yapisi_0, sozcuk_yapisi_1, sozcuk_yapisi_2, sozcuk_yapisi_3, sozcuk_yapisi_4, sozcuk_yapisi_5, sozcuk_yapisi_6, sozcuk_yapisi_7, sozcuk_yapisi_8, sozcuk_yapisi_9, sozcuk_yapisi_10, sozcuk_yapisi_11, sozcuk_yapisi_12, sozcuk_yapisi_13].flat()
+  ],
+  'cumle-turleri': [
+    ...[cumle_turleri_0, cumle_turleri_1, cumle_turleri_2, cumle_turleri_3, cumle_turleri_4, cumle_turleri_5, cumle_turleri_6, cumle_turleri_7, cumle_turleri_8, cumle_turleri_9, cumle_turleri_10, cumle_turleri_11, cumle_turleri_12, cumle_turleri_13].flat()
   ],
 };

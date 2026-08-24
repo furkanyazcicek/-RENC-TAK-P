@@ -704,6 +704,110 @@ export const FIGURE_META = {
     regions: ['karistir', 'olc', 'hazirla', 'ayir'],
   },
 
+  /* ---------- TYT Kimya · Atom ve Periyodik Sistem ---------- */
+  'atom-modelleri-gelisimi': {
+    label: 'Atom modellerinin kanıtlarla gelişimi',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['dalton', 'thomson', 'rutherford', 'bohr-modern'],
+  },
+  'atom-kimlik-haritasi': {
+    label: 'Atomun kimlik ve yük haritası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['parcaciklar', 'kunye', 'iyon', 'izotop'],
+  },
+  'periyodik-sistem-haritasi': {
+    label: 'Periyodik sistemin adres ve sınıf haritası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['periyotlar', 'gruplar', 'siniflar', 'soygazlar'],
+  },
+  'periyodik-egilimler-mekanizmasi': {
+    label: 'Periyodik eğilimlerin mekanizması',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['yaricap', 'iyonlasma', 'elektronegatiflik', 'metalik'],
+  },
+
+  /* ---------- TYT Kimya · Kimyasal Türler Arası Etkileşimler ---------- */
+  'kimyasal-tur-haritasi': {
+    label: 'Kimyasal tür ve yapı birimi haritası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['atom', 'iyon', 'molekul', 'orgu'],
+  },
+  'guclu-etkilesimler-mekanizmasi': {
+    label: 'Güçlü kimyasal etkileşimlerin mekanizması',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['iyon-olusumu', 'iyonik-orgu', 'kovalent', 'metalik'],
+  },
+  'lewis-polarlik-karar-haritasi': {
+    label: 'Lewis yapısı ve molekül polarlığı karar haritası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['lewis', 'polar-bag', 'simetri', 'kirik'],
+  },
+  'zayif-etkilesimler-haritasi': {
+    label: 'Zayıf etkileşimler haritası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['london', 'dipol-dipol', 'iyon-dipol', 'hidrojen'],
+  },
+
+  /* ---------- TYT Kimya · Maddenin Hâlleri ---------- */
+  'madde-halleri-tanecik-haritasi': {
+    label: 'Katı, sıvı, gaz ve plazma tanecik haritası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['kati', 'sivi', 'gaz', 'plazma'],
+  },
+  'madde-halleri-gunluk-yasam': {
+    label: 'Maddenin hâllerinin günlük yaşam ve endüstrideki önemi',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['su', 'lpg-lng', 'sogutucu', 'hava'],
+  },
+  'kati-turleri-yapi-haritasi': {
+    label: 'Kristal katı türleri ve yapı haritası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['iyonik', 'molekuler', 'kovalent-ag', 'metalik'],
+  },
+  'sivi-dinamikleri-haritasi': {
+    label: 'Viskozite, denge buhar basıncı, kaynama ve nem haritası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['viskozite', 'denge', 'kaynama', 'nem'],
+  },
+
+  /* ---------- TYT Kimya · Doğa ve Kimya ---------- */
+  'su-yasam-sistemi': {
+    label: 'Suyun yaşam sistemindeki görevleri',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['cozucu', 'tasima', 'isi', 'habitat'],
+  },
+  'su-kaynaklari-koruma': {
+    label: 'Su kaynakları, kullanım, arıtma ve tasarruf sistemi',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['kaynak', 'kullanim', 'aritma', 'tasarruf'],
+  },
+  'sert-yumusak-su-haritasi': {
+    label: 'Sert ve yumuşak su neden–sonuç haritası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['mineraller', 'sabun', 'kirec', 'yumusatma'],
+  },
+  'cevre-kirleticileri-akis-haritasi': {
+    label: 'Hava, su ve toprak kirleticilerinin akış haritası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['hava', 'su', 'toprak', 'gecis'],
+  },
+
   /* ---------- Matematik ---------- */
   'birim-cember': {
     label: 'Birim çember',
@@ -719,6 +823,60 @@ export const FIGURE_META = {
   },
   'fizik-kesif-laboratuvari': {
     label: 'Yapılandırılabilir fizik keşif laboratuvarı',
+    regions: [],
+  },
+  'fizik-termal-atlas': {
+    label: 'Isı, sıcaklık ve genleşme atlası',
+    markers: 'numbered',
+    regions: ['isil-denge', 'aktarim-yollari', 'kalorimetri', 'genlesme'],
+  },
+  'fizik-hareket-kuvvet-atlas': {
+    label: 'Hareket ve kuvvet atlası',
+    markers: 'numbered',
+    regions: ['esit-zaman', 'grafikler', 'serbest-cisim', 'etki-tepki'],
+  },
+  'fizik-is-guc-enerji-atlas': {
+    label: 'İş, güç ve enerji atlası',
+    markers: 'numbered',
+    regions: ['is', 'enerji-teoremi', 'korunum', 'guc-verim'],
+  },
+  'fizik-elektrostatik-atlas': {
+    label: 'Elektrostatik atlası',
+    markers: 'numbered',
+    regions: ['yuk-korunumu', 'elektriklenme', 'coulomb', 'alan-iletken'],
+  },
+  'fizik-elektrik-devreleri-atlas': {
+    label: 'Elektrik devreleri atlası',
+    markers: 'numbered',
+    regions: ['akim-gerilim', 'ohm-direnc', 'seri-paralel', 'guc-guvenlik'],
+  },
+  'fizik-manyetizma-atlas': {
+    label: 'Manyetizma atlası',
+    markers: 'numbered',
+    regions: ['miknatis-alan', 'akimin-alani', 'manyetik-kuvvet', 'uygulamalar'],
+  },
+  'fizik-dalgalar-atlas': {
+    label: 'Dalgalar atlası',
+    markers: 'numbered',
+    regions: ['dalga-anatomisi', 'yay-atmalari', 'su-dalgalari', 'ses-deprem'],
+  },
+  'fizik-optik-atlas': {
+    label: 'Optik atlası',
+    markers: 'numbered',
+    regions: ['isik-golge-ayna', 'kuresel-aynalar', 'kirilma-renk', 'mercekler-goruntu'],
+  },
+
+  /* ---------- Coğrafya ---------- */
+  'cografya-sistem-diyagrami': {
+    label: 'Doğal sistemler ve insan ilişkisi',
+    regions: [],
+  },
+  'cografya-etkilesimli-harita': {
+    label: 'Veri odaklı etkileşimli coğrafya haritası',
+    regions: [],
+  },
+  'cografya-bolge-karsilastirma': {
+    label: 'Coğrafi bölge ve kesit karşılaştırması',
     regions: [],
   },
 }
