@@ -1,4 +1,5 @@
 import { tarih, tartismaliTarih } from './tipler.js'
+import { ANLATIMLAR } from './anlatimlar.js'
 
 /**
  * ORHAN GAZİ (1324/1326 – 1362)
@@ -10,6 +11,7 @@ import { tarih, tartismaliTarih } from './tipler.js'
 const orhanGazi = {
   id: 'orhan-gazi',
   order: 2,
+  detaySeviyesi: 'tam',
   name: 'Orhan Gazi',
   epithet: 'Beyliği Devlete Dönüştüren',
   reignStart: tartismaliTarih(1324, '1324/1326', 'Osman Bey’in ölüm yılındaki ayrışma, tahta çıkış yılına da yansır.'),
@@ -183,28 +185,13 @@ const orhanGazi = {
     body: 'Orhan Gazi öldüğünde Osmanlı’nın bir başkenti, düzenli ordusu, medresesi ve parası vardı. Ama devletin ağırlık merkezi hâlâ Anadolu’daydı. Yerine geçen oğlu Murad, bu merkezi Rumeli’ye taşıyacak ve devleti Balkan siyasetinin belirleyici gücü hâline getirecekti.',
   },
 
-  narration: [
-    {
-      id: 'orhan-intro', kind: 'intro', seconds: 20,
-      text: 'Orhan Bey tahta geçtiğinde elinde bir devlet değil, güçlü bir uç beyliği vardı. Otuz sekiz yıl sonra bıraktığı şey ise başkenti, düzenli ordusu, medresesi, parası ve divanı olan bir devletti. Osmanlı tarihinde "ilk" diye bilinen kurumların büyük bölümü bu dönemde kuruldu.',
-    },
-    {
-      id: 'orhan-reign', kind: 'reign', seconds: 28,
-      text: 'Bin üç yüz yirmi altıda Bursa teslim oldu ve başkent yapıldı. Bin üç yüz yirmi dokuzda Palekanon’da yenilen Bizans, Anadolu’daki şehirlerini kurtarmak için bir daha ordu gönderemedi; İznik ve ardından İzmit alındı. İznik’te açılan medresenin başına Davud-i Kayserî getirildi. Aynı yıllarda yaya ve müsellem adıyla ilk düzenli ordu kuruldu, Orhan Bey adına gümüş akçe bastırıldı ve devlet işleri için divan toplanmaya başladı.',
-    },
-    {
-      id: 'orhan-karesi', kind: 'event', targetId: 'karesi', seconds: 22,
-      text: 'Osmanlı’nın önündeki asıl engel denizdi. Bu engel bir savaşla değil, bir katılımla aşıldı. Karesioğulları Beyliği Osmanlı topraklarına katıldığında yalnız toprak değil; gemiler, kıyı ve Hacı İlbey, Evrenos Bey gibi tecrübeli komutanlar da geldi. Osmanlı’ya katılan ilk Türk beyliği budur ve Rumeli’ye geçişin asıl sebebidir.',
-    },
-    {
-      id: 'orhan-cimpe', kind: 'event', targetId: 'cimpe', seconds: 20,
-      text: 'Bin üç yüz elli iki ya da elli üçte, Süleyman Paşa komutasındaki kuvvetler Gelibolu yarımadasında Çimpe Kalesi’ni elde etti. Bu, Rumeli’deki ilk Osmanlı toprağıdır. Ertesi yılki deprem çevredeki surları yıkınca Gelibolu da alındı. Ama bölgeyi kalıcı kılan şey fetih değil, Anadolu’dan getirilen nüfusun buraya yerleştirilmesi, yani iskân politikasıydı.',
-    },
-    {
-      id: 'orhan-outro', kind: 'transition', seconds: 16,
-      text: 'Bin üç yüz altmış ikide Orhan Gazi öldüğünde Osmanlı artık bir devletti. Ancak ağırlık merkezi hâlâ Anadolu’daydı. Yerine geçen oğlu Murad, bu merkezi Rumeli’ye taşıyacaktı.',
-    },
-  ],
+  /**
+   * Seslendirme metni ortak kayıt defterinde tutulur
+   * (anlatimlar.js). Sebebi: metin ekrandaki bilgiyi tekrar
+   * etmemek zorunda ve bu kural tek bir yerden denetleniyor
+   * (scripts/padisah-anlatim-denetle.mjs).
+   */
+  narration: ANLATIMLAR['orhan-gazi'],
 
   sources: [
     { label: 'MEB Tarih 10 — Beylikten Devlete Osmanlı', note: 'Kurumların ve "ilk"lerin çerçevesi.', url: 'https://tymm.meb.gov.tr/tarih-dersi/unite/39' },

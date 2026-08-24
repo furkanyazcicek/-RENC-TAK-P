@@ -71,12 +71,15 @@ export function padisahAkisi(padisah) {
 /** Sekmelerin hangileri gösterilecek — boş sekme asla açılmaz. */
 export function padisahSekmeleri(padisah) {
   const sekmeler = [{ kod: 'genel', ad: 'Genel Bakış' }]
+  // ÖSYM sekmesi bilerek ikinci sırada: sınav tekrarı bu modülün en
+  // çok işe yarayan parçası, fakat şeridin sonundayken masaüstünde bile
+  // sağa taşıp görünmez kalıyordu.
+  if (padisah.osymHighlights?.length) sekmeler.push({ kod: 'osym', ad: 'ÖSYM’de Bil', adet: padisah.osymHighlights.length })
   if (padisah.battles?.length) sekmeler.push({ kod: 'savaslar', ad: 'Savaşlar', adet: padisah.battles.length })
   if (padisah.conquests?.length) sekmeler.push({ kod: 'fetihler', ad: 'Fetihler', adet: padisah.conquests.length })
   if (padisah.treaties?.length) sekmeler.push({ kod: 'antlasmalar', ad: 'Antlaşmalar', adet: padisah.treaties.length })
   if (padisah.reforms?.length) sekmeler.push({ kod: 'devlet', ad: 'Devlet & Yönetim', adet: padisah.reforms.length })
   if (padisah.importantFigures?.length) sekmeler.push({ kod: 'kisiler', ad: 'Önemli Kişiler', adet: padisah.importantFigures.length })
   if (padisah.mapState) sekmeler.push({ kod: 'harita', ad: 'Harita' })
-  if (padisah.osymHighlights?.length) sekmeler.push({ kod: 'osym', ad: 'ÖSYM’de Bil', adet: padisah.osymHighlights.length })
   return sekmeler
 }

@@ -1,4 +1,5 @@
 import { tarih, tartismaliTarih } from './tipler.js'
+import { ANLATIMLAR } from './anlatimlar.js'
 
 /**
  * I. MURAD — HÜDAVENDİGÂR (1362 – 1389)
@@ -11,6 +12,7 @@ import { tarih, tartismaliTarih } from './tipler.js'
 const birinciMurad = {
   id: 'birinci-murad',
   order: 3,
+  detaySeviyesi: 'tam',
   name: 'I. Murad',
   epithet: 'Hüdavendigâr',
   reignStart: tarih(1362),
@@ -198,28 +200,13 @@ const birinciMurad = {
     specialSequence: 'sehadet',
   },
 
-  narration: [
-    {
-      id: 'murad-intro', kind: 'intro', seconds: 20,
-      text: 'Orhan Gazi’nin bıraktığı devletin bir başkenti, ordusu ve parası vardı; ama ağırlığı hâlâ Anadolu’daydı. I. Murad’ın yirmi yedi yıllık hükümdarlığı, bu ağırlığın Rumeli’ye taşınmasının hikâyesidir.',
-    },
-    {
-      id: 'murad-reign', kind: 'reign', seconds: 28,
-      text: 'Edirne alındı ve başkent buraya taşındı. Bu bir adres değişikliği değildi: devletin yüzü artık Avrupa’ya dönüktü. Aynı yıllarda pençik sistemiyle Yeniçeri Ocağı ve Kapıkulu ordusu kuruldu. Bu askerler beylere değil, doğrudan padişaha bağlıydı; maaşlıydı ve her an sefere hazırdı. Kazaskerlik kuruldu, Rumeli Beylerbeyliği oluşturuldu, tımar düzeni yerleşti. Balkanlardaki üstünlüğün açıklaması bu kurumlardır.',
-    },
-    {
-      id: 'murad-sirpsindigi', kind: 'event', targetId: 'sirpsindigi', seconds: 18,
-      text: 'MEB ve klasik sınav anlatımına göre Edirne’nin alınmasından sonra kurulan ittifak ordusu, Meriç kıyısında Hacı İlbey’in gece baskınıyla dağıtıldı; bu olay Sırpsındığı diye anılır. Fakat erken dönem kaynakları sınırlıdır. Bazı modern tarihçiler, anlatının bin üç yüz yetmiş birdeki Çirmen Savaşı’yla karışmış olabileceğini belirtir.',
-    },
-    {
-      id: 'murad-kosova', kind: 'event', targetId: 'kosova', seconds: 24,
-      text: 'Bin üç yüz seksen dokuzda Kosova ovasında, Sırp Kralı Lazar önderliğindeki Balkan ittifakı ile karşılaşıldı. Savaş Osmanlı’nın kesin zaferiyle bitti ve Balkanlardaki hâkimiyet kesinleşti. Fakat zaferin bedeli ağır oldu: savaş alanını gezen I. Murad şehit edildi. Osmanlı tarihinde savaş meydanında şehit düşen ilk ve tek padişah odur.',
-    },
-    {
-      id: 'murad-outro', kind: 'transition', seconds: 16,
-      text: 'Ordunun dağılmaması için Şehzade Bayezid hemen biat aldı. Hızla karar veren, hızla hareket eden bu şehzade tarihe Yıldırım adıyla geçecekti. Aynı hız, on üç yıl sonra Ankara Ovası’nda devleti Fetret Devri’ne sürükleyecekti.',
-    },
-  ],
+  /**
+   * Seslendirme metni ortak kayıt defterinde tutulur
+   * (anlatimlar.js). Sebebi: metin ekrandaki bilgiyi tekrar
+   * etmemek zorunda ve bu kural tek bir yerden denetleniyor
+   * (scripts/padisah-anlatim-denetle.mjs).
+   */
+  narration: ANLATIMLAR['birinci-murad'],
 
   sources: [
     { label: 'MEB Tarih 10 — Beylikten Devlete Osmanlı', note: 'Teşkilat ve Balkan siyaseti çerçevesi.', url: 'https://tymm.meb.gov.tr/tarih-dersi/unite/39' },

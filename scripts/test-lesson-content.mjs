@@ -184,11 +184,19 @@ if (!geographyGoldStandard) {
 } else {
   const geographyDocument = validateLessonDocument(geographyGoldStandard.document).document
   const geographyTypes = new Set(geographyDocument.sections.flatMap((section) => section.blocks.map((block) => block.type)))
-  const requiredGeographyTypes = ['figure', 'concept_map', 'cause_effect', 'compare', 'trap', 'checkpoint', 'worked_example', 'quiz', 'summary']
+  const requiredGeographyTypes = ['figure', 'compare', 'trap', 'checkpoint', 'worked_example', 'quiz', 'summary']
   const missingGeographyTypes = requiredGeographyTypes.filter((type) => !geographyTypes.has(type))
   const geographyFigures = geographyDocument.sections.flatMap((section) => section.blocks.filter((block) => block.type === 'figure'))
   const geographyKinds = new Set(geographyFigures.map((figure) => figure.kind))
-  const requiredGeographyKinds = ['cografya-sistem-diyagrami', 'cografya-etkilesimli-harita', 'cografya-bolge-karsilastirma']
+  const requiredGeographyKinds = [
+    'cografya-sistem-diyagrami',
+    'cografya-okuma-rotasi',
+    'cografya-ortam-karsilastirma',
+    'cografya-neden-sonuc-akisi',
+    'cografya-etkilesimli-harita',
+    'cografya-bolge-karsilastirma',
+    'cografya-surec-seridi',
+  ]
   const missingGeographyKinds = requiredGeographyKinds.filter((kind) => !geographyKinds.has(kind))
   const interactiveMap = geographyFigures.find((figure) => figure.kind === 'cografya-etkilesimli-harita')
   const mapPoints = Array.isArray(interactiveMap?.data?.points) ? interactiveMap.data.points : []

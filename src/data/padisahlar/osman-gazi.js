@@ -1,4 +1,5 @@
 import { tarih, tartismaliTarih } from './tipler.js'
+import { ANLATIMLAR } from './anlatimlar.js'
 
 /**
  * OSMAN GAZİ (1299 – 1324/1326)
@@ -15,6 +16,7 @@ import { tarih, tartismaliTarih } from './tipler.js'
 const osmanGazi = {
   id: 'osman-gazi',
   order: 1,
+  detaySeviyesi: 'tam',
   name: 'Osman Gazi',
   epithet: 'Osmanlı Devleti’nin Kurucusu',
   reignStart: tartismaliTarih(1299, '1299', 'Bağımsızlık için verilen 1299 tarihi sembolik bir kabuldür; çağdaş bir belgeye dayanmaz. Ders kitapları bu tarihi esas alır.'),
@@ -162,24 +164,13 @@ const osmanGazi = {
     body: 'Osman Bey’in ölümüyle beyliğin başına oğlu Orhan geçti. Devir sancısız oldu; Osmanlı’nın ilk yüzyılındaki en büyük şansı, tahtın kavgasız el değiştirmesiydi. Osman Bey’in yıllardır kuşattığı Bursa, bu geçişin hemen ardından teslim olacaktı.',
   },
 
-  narration: [
-    {
-      id: 'osman-intro', kind: 'intro', seconds: 22,
-      text: '13. yüzyılın sonlarına gelindiğinde Anadolu, siyasi birlikten uzaktı. Anadolu Selçuklu Devleti Kösedağ yenilgisinin ardından eski gücünü yitirmiş, İlhanlı baskısı altında dağılmaya başlamıştı. Bu boşlukta çok sayıda Türk beyliği ortaya çıktı. Söğüt ve Domaniç çevresindeki küçük bir uç beyliği ise, ilerleyen yüzyıllarda dünya tarihinin en uzun ömürlü devletlerinden birine dönüşecekti.',
-    },
-    {
-      id: 'osman-reign', kind: 'reign', seconds: 26,
-      text: 'Osman Bey, babası Ertuğrul Gazi’den bir devlet değil, bir uç bölgesinin yönetimini devraldı. Uç, merkezden uzak ve düşman sınırına bakan bölgedir; savaşçıyı çeker, denetimi zayıftır. Osman Bey bu konumu kullandı. Karacahisar, Bilecik, Yarhisar ve İnegöl alındı; merkez dağlık Söğüt’ten ovadaki Yenişehir’e taşındı. Karacahisar’da kendi adına hutbe okutulması ve Dursun Fakih’in kadı tayin edilmesi, beyliğin artık kendi hukukunu kuran bir siyasi yapı olduğunu gösteriyordu.',
-    },
-    {
-      id: 'osman-koyunhisar', kind: 'event', targetId: 'koyunhisar', seconds: 20,
-      text: 'Bin üç yüz ikide, İzmit körfezinin güneyinde, Bizans’ın gönderdiği kuvvetle karşılaşıldı. Koyunhisar olarak bilinen bu savaş, Osmanlı ile Bizans arasındaki ilk büyük meydan savaşıdır. Kazanılan yalnızca bir muharebe değildi: Bizans artık Osmanlı’yı sınırdaki bir akıncı grubu olarak değil, karşısına ordu çıkarması gereken bir güç olarak görüyordu.',
-    },
-    {
-      id: 'osman-outro', kind: 'transition', seconds: 18,
-      text: 'Osman Bey’in son yıllarında Bursa yıllardır abluka altındaydı. Surlu bir şehri alacak kuşatma gücü yoktu; bunun yerine çevresi alınmış, yolları kesilmişti. Osman Bey bu şehrin teslim olduğunu görmedi. Bin üç yüz yirmi dört ya da bin üç yüz yirmi altıda öldüğünde, geride bir beylik ve o beyliği devletleştirecek bir oğul bıraktı: Orhan.',
-    },
-  ],
+  /**
+   * Seslendirme metni ortak kayıt defterinde tutulur
+   * (anlatimlar.js). Sebebi: metin ekrandaki bilgiyi tekrar
+   * etmemek zorunda ve bu kural tek bir yerden denetleniyor
+   * (scripts/padisah-anlatim-denetle.mjs).
+   */
+  narration: ANLATIMLAR['osman-gazi'],
 
   sources: [
     { label: 'MEB Tarih 10 — Beylikten Devlete Osmanlı', note: 'Kazanım, kaynak eleştirisi ve terim çerçevesi.', url: 'https://tymm.meb.gov.tr/tarih-dersi/unite/39' },
