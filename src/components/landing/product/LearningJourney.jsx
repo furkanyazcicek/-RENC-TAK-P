@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { BookOpen, Calculator, CheckCircle2, Dna, Eye, Highlighter, Image, Landmark, MousePointer2 } from 'lucide-react'
-import PhScale from '../../lessons/figures/PhScale'
-import UnitCircle from '../../lessons/figures/UnitCircle'
-import DonemHaritasi from '../../tarih/padisahlar/DonemHaritasi'
+import { BookOpen, CheckCircle2, Crown, Dna, Eye, FlaskConical, Highlighter, Image, Landmark, MousePointer2 } from 'lucide-react'
+import MitochondrionAnatomy from '../../lessons/figures/MitochondrionAnatomy'
+import { PeriodicSystemMap } from '../../lessons/figures/AtomicPeriodicIllustrations'
+import { PADISAHLAR } from '../../../data/padisahlar'
 
 const NOTE_STEPS = [
   {
@@ -28,46 +28,92 @@ const NOTE_STEPS = [
   },
 ]
 
-const PH_REGIONS = [
-  { key: 'asit', label: 'Asidik bölge', helper: 'pH azaldıkça H⁺ derişimi artar.' },
-  { key: 'notr', label: 'Nötr eşik', helper: 'Saf suda iyon dengesi eşittir.' },
-  { key: 'baz', label: 'Bazik bölge', helper: 'pH yükseldikçe OH⁻ göreli olarak artar.' },
+const MITOCHONDRIA_REGIONS = [
+  { key: 'krista', label: 'Krista kıvrımları', helper: 'ATP üretim yüzeyinin neden arttığını gör.' },
+  { key: 'matriks', label: 'Matriks', helper: 'Krebs döngüsü ve enzimlerin bulunduğu alanı aç.' },
+  { key: 'mtdna', label: 'mtDNA ve ribozom', helper: 'Mitokondrinin yarı özerk yapısını keşfet.' },
 ]
 
-const MATH_REGIONS = [
-  { key: 'cos', label: 'Kosinüs izdüşümü', helper: 'Noktanın x koordinatını gör.' },
-  { key: 'sin', label: 'Sinüs izdüşümü', helper: 'Noktanın y koordinatını gör.' },
+const CHEMISTRY_REGIONS = [
+  { key: 'gruplar', label: 'Gruplar', helper: 'Dikey sütunlardaki element benzerliğini gör.' },
+  { key: 'siniflar', label: 'Element sınıfları', helper: 'Metal, ametal ve yarı metalleri ayır.' },
+  { key: 'soygazlar', label: 'Soy gazlar', helper: 'Kararlı 18. grubun tablodaki yerini aç.' },
 ]
 
-const HISTORY_PERIODS = [
-  { key: 'osman-1324', label: 'Osman Gazi', helper: '1299–1324 · İlk çekirdek', focus: 'yenisehir' },
-  { key: 'orhan-1362', label: 'Orhan Gazi', helper: '1324–1362 · Rumeli’ye geçiş', focus: 'cimpe' },
-  { key: 'murad-1389', label: 'I. Murad', helper: '1362–1389 · Rumeli ağırlığı', focus: 'edirne' },
-]
+const HISTORY_RULERS = PADISAHLAR.map((ruler) => ({
+  key: ruler.id,
+  label: ruler.name,
+  helper: `${ruler.reignStart.value}–${ruler.reignEnd.value} · ${ruler.openingHeadline}`,
+}))
 
 const SUBJECTS = [
   {
     key: 'biology',
     label: 'Biyoloji',
     Icon: Dna,
-    title: 'pH ölçeğinin katmanlarını aç.',
-    text: 'Asidik, nötr ve bazik bölgeler arasında geçiş yap; iyon dengesinin ve protein yapısının nasıl değiştiğini gör.',
+    title: 'Mitokondrinin içine yaklaş.',
+    text: 'Krista, matriks ve mitokondri DNA’sına ayrı ayrı odaklan; hücrenin enerji merkezinin nasıl örgütlendiğini gör.',
   },
   {
-    key: 'math',
-    label: 'Matematik',
-    Icon: Calculator,
-    title: 'Bir açıyı koordinata dönüştür.',
-    text: 'Birim çemberde sinüs ve kosinüs izdüşümlerini ayrı ayrı vurgula; formülün şeklin içinden nasıl doğduğunu keşfet.',
+    key: 'chemistry',
+    label: 'Kimya',
+    Icon: FlaskConical,
+    title: 'Periyodik cetvelde adres bul.',
+    text: 'Grupları, periyotları ve element sınıflarını seç; ilk 20 elementin tablodaki yerini görerek düzenin mantığını keşfet.',
   },
   {
     key: 'history',
     label: 'Tarih',
     Icon: Landmark,
-    title: 'Dönem değiştikçe haritayı değiştir.',
-    text: 'İlk üç Osmanlı hükümdarı arasında geçiş yap; hâkimiyet alanlarının Marmara’dan Rumeli’ye nasıl genişlediğini izle.',
+    title: 'Padişahı seç, dönemini tanı.',
+    text: 'İlk üç Osmanlı hükümdarının adına dokun; temsilî portresi, saltanat dönemi ve sınavda ayırt edici bilgileri aynı kartta aç.',
   },
 ]
+
+function RulerInfoCard({ ruler }) {
+  const portraitIndex = Math.max(0, PADISAHLAR.findIndex((item) => item.id === ruler.id))
+
+  return (
+    <article
+      key={ruler.id}
+      className="overflow-hidden rounded-xl bg-[#11182d] text-white"
+      aria-live="polite"
+    >
+      <div className="grid sm:grid-cols-[0.72fr_1.28fr]">
+        <div
+          role="img"
+          aria-label={`${ruler.name} için hazırlanmış temsilî tarih illüstrasyonu`}
+          className="aspect-[4/3] min-h-56 bg-[length:300%_auto] bg-no-repeat sm:aspect-[2/3] sm:min-h-full"
+          style={{
+            backgroundImage: "url('/landing/padisahlar-temsili-v1.jpg')",
+            backgroundPosition: `${portraitIndex * 50}% top`,
+          }}
+        >
+          <span className="m-3 inline-flex rounded-full border border-white/20 bg-ink/75 px-3 py-1 text-[10px] font-bold text-white/80 backdrop-blur-sm">
+            Temsilî illüstrasyon
+          </span>
+        </div>
+
+        <div className="flex flex-col justify-center p-5 sm:p-7">
+          <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#c9a258]/30 bg-[#c9a258]/10 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.16em] text-[#ecd092]">
+            <Crown className="h-3.5 w-3.5" aria-hidden="true" />
+            {ruler.order}. Osmanlı hükümdarı
+          </span>
+          <h3 className="mt-4 font-display text-3xl font-extrabold text-white">{ruler.name}</h3>
+          <p className="mt-1 text-sm font-bold text-[#ecd092]">{ruler.epithet}</p>
+          <p className="mt-4 text-xs font-bold uppercase tracking-[0.12em] text-white/45">
+            {ruler.reignStart.value}–{ruler.reignEnd.value} · {ruler.dynastyPeriod}
+          </p>
+          <p className="mt-4 line-clamp-4 text-sm leading-6 text-white/70">{ruler.summary}</p>
+          <div className="mt-5 rounded-xl border border-white/10 bg-white/[0.05] p-4">
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-brand-300">Sınavda ayırt et</p>
+            <p className="mt-2 text-xs font-semibold leading-5 text-white/78">{ruler.osymHighlights[0]}</p>
+          </div>
+        </div>
+      </div>
+    </article>
+  )
+}
 
 function NoteCanvas({ activeStep }) {
   return (
@@ -178,36 +224,36 @@ export function NotesShowcase() {
 
 export function InteractiveVisualShowcase() {
   const [activeSubject, setActiveSubject] = useState('biology')
-  const [activeRegion, setActiveRegion] = useState(null)
-  const [activeMathRegion, setActiveMathRegion] = useState(null)
-  const [activeHistoryPeriod, setActiveHistoryPeriod] = useState(HISTORY_PERIODS[0].key)
+  const [activeBiologyRegion, setActiveBiologyRegion] = useState(MITOCHONDRIA_REGIONS[0].key)
+  const [activeChemistryRegion, setActiveChemistryRegion] = useState(CHEMISTRY_REGIONS[0].key)
+  const [activeRulerId, setActiveRulerId] = useState(PADISAHLAR[0].id)
   const subject = SUBJECTS.find((item) => item.key === activeSubject) ?? SUBJECTS[0]
-  const historyPeriod = HISTORY_PERIODS.find((item) => item.key === activeHistoryPeriod) ?? HISTORY_PERIODS[0]
+  const activeRuler = PADISAHLAR.find((item) => item.id === activeRulerId) ?? PADISAHLAR[0]
 
-  const toggleRegion = (key) => {
-    setActiveRegion((current) => current === key ? null : key)
+  const toggleBiologyRegion = (key) => {
+    setActiveBiologyRegion((current) => current === key ? null : key)
   }
 
-  const toggleMathRegion = (key) => {
-    setActiveMathRegion((current) => current === key ? null : key)
+  const toggleChemistryRegion = (key) => {
+    setActiveChemistryRegion((current) => current === key ? null : key)
   }
 
   const controls = activeSubject === 'biology'
-    ? PH_REGIONS
-    : activeSubject === 'math'
-      ? MATH_REGIONS
-      : HISTORY_PERIODS
+    ? MITOCHONDRIA_REGIONS
+    : activeSubject === 'chemistry'
+      ? CHEMISTRY_REGIONS
+      : HISTORY_RULERS
 
   const selectedKey = activeSubject === 'biology'
-    ? activeRegion
-    : activeSubject === 'math'
-      ? activeMathRegion
-      : activeHistoryPeriod
+    ? activeBiologyRegion
+    : activeSubject === 'chemistry'
+      ? activeChemistryRegion
+      : activeRulerId
 
   const handleControl = (key) => {
-    if (activeSubject === 'biology') toggleRegion(key)
-    else if (activeSubject === 'math') toggleMathRegion(key)
-    else setActiveHistoryPeriod(key)
+    if (activeSubject === 'biology') toggleBiologyRegion(key)
+    else if (activeSubject === 'chemistry') toggleChemistryRegion(key)
+    else setActiveRulerId(key)
   }
 
   return (
@@ -292,27 +338,14 @@ export function InteractiveVisualShowcase() {
               <span className="inline-flex items-center gap-1.5"><Image className="h-3.5 w-3.5" /> {subject.label} · Canlı ders görseli</span>
               <span>{selectedKey ? 'Seçim açık' : 'Bir bölüm seç'}</span>
             </div>
-            {activeSubject === 'biology' && <PhScale activeRegion={activeRegion} />}
-            {activeSubject === 'math' && (
+            {activeSubject === 'biology' && <MitochondrionAnatomy activeRegion={activeBiologyRegion} />}
+            {activeSubject === 'chemistry' && (
               <div className="overflow-hidden rounded-xl bg-surface p-3 sm:p-5">
-                <UnitCircle activeRegion={activeMathRegion} />
+                <PeriodicSystemMap activeRegion={activeChemistryRegion} />
               </div>
             )}
             {activeSubject === 'history' && (
-              <div
-                className="padisah-gecidi h-[22rem] overflow-hidden rounded-xl sm:h-[27rem]"
-                style={{ minHeight: 0, maxHeight: 'none' }}
-              >
-                <DonemHaritasi
-                  key={historyPeriod.key}
-                  haritaId={historyPeriod.key}
-                  odak={historyPeriod.focus}
-                  vurgular={[historyPeriod.focus]}
-                  lejant
-                  not={false}
-                  sigdir
-                />
-              </div>
+              <RulerInfoCard ruler={activeRuler} />
             )}
           </div>
         </div>
