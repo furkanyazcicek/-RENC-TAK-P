@@ -26,9 +26,33 @@ const TEACHER_STYLE_TR =
   'Abartılı, reklam sesi gibi veya aşırı enerjik olma; monoton da olma. ' +
   'Kavram adlarını net telaffuz et.'
 
-export function buildVoiceInstructions({ language = 'tr-TR', style = '' } = {}) {
+/**
+ * Belgesel anlatıcı tonu — tarih atlası içindir.
+ *
+ * Öğretmen tonundan bilerek AYRIDIR. Öğretmen tonu öğrenciye bir şey
+ * öğretmeye çalışır: soru sorar, tekrarlar, enerjisini yüksek tutar.
+ * Belgesel anlatıcısı ise anlatır ve geri çekilir; ekranda bir harita
+ * varken sesin işi dikkati kendine değil görüntüye yönlendirmektir.
+ */
+const BELGESEL_STYLE_TR =
+  'Türkçe konuşan, deneyimli bir tarih belgeseli anlatıcısı gibi oku. ' +
+  'Tempo sakin ve ölçülü olsun; öğretmen gibi anlatma, hikâye anlatır gibi anlat. ' +
+  'Cümle sonlarında net dur, paragraf aralarında biraz daha uzun bekle. ' +
+  'Soru cümlelerinde tonu hafifçe yükselt ve ardından sessizlik bırak. ' +
+  'Sonuç bildiren cümlelerde sesi biraz alçalt ve ağırlaştır. ' +
+  'Heyecanlanma, dramatize etme, reklam sesi gibi olma; ama monoton da olma. ' +
+  'Yer ve kişi adlarını net telaffuz et. Rakamları doğal konuşma diliyle söyle.'
+
+/** Ton kimlikleri. Yeni bir ürün alanı geldiğinde buraya bir satır eklenir. */
+const PERSONALAR = {
+  ogretmen: TEACHER_STYLE_TR,
+  belgesel: BELGESEL_STYLE_TR,
+}
+
+export function buildVoiceInstructions({ language = 'tr-TR', style = '', persona = 'ogretmen' } = {}) {
   if (language !== 'tr-TR') return style || undefined
-  return style ? `${TEACHER_STYLE_TR} ${style}` : TEACHER_STYLE_TR
+  const temel = PERSONALAR[persona] ?? TEACHER_STYLE_TR
+  return style ? `${temel} ${style}` : temel
 }
 
 export function createAudioCacheKey({ lessonId, sectionId, blockId, content, voiceId, personalizationHash, language = 'tr-TR', model }) {
@@ -77,7 +101,7 @@ function openAiProvider({ env, fetchImpl }) {
     model,
     voiceId,
     responseFormat,
-    async generateSpeech({ text, language = 'tr-TR', style = '', speed, signal }) {
+    async generateSpeech({ text, language = 'tr-TR', style = '', persona, speed, signal }) {
       const response = await fetchImpl(`${baseUrl}/audio/speech`, {
         method: 'POST',
         headers: {
@@ -90,7 +114,7 @@ function openAiProvider({ env, fetchImpl }) {
           input: text,
           response_format: responseFormat,
           ...(Number.isFinite(speed) ? { speed } : {}),
-          instructions: buildVoiceInstructions({ language, style }),
+          instructions: buildVoiceInstructions({ language, style, persona }),
         }),
         signal,
       })
@@ -132,7 +156,17 @@ function elevenLabsProvider({ env, fetchImpl }) {
     model,
     voiceId,
     responseFormat,
-    async generateSpeech({ text, language = 'tr-TR', style = '', speed, signal }) {
+    async generateSpeech({ text, language = 'tr-TR', style = '', persona = 'ogretmen', speed, signal }) {
+      /**
+       * Belgesel anlatımı öğretmen anlatımından daha SABİT olmalıdır.
+       * `stability` yükseldikçe ses sakinleşir ve uzun metinlerde tonlama
+       * dalgalanması azalır; `style` düştükçe ifade abartısı kaybolur.
+       * Öğretmende tersi istenir — orada canlılık öğrencinin dikkatini
+       * ayakta tutar.
+       */
+      const belgesel = persona === 'belgesel'
+      const kararlilik = numberFrom(env.TTS_STABILITY, belgesel ? 0.62 : 0.45)
+      const ifade = numberFrom(env.TTS_STYLE, belgesel ? 0.2 : 0.3)
       const response = await fetchImpl(`${baseUrl}/text-to-speech/${voiceId}?output_format=${outputFormat}`, {
         method: 'POST',
         headers: {
@@ -145,10 +179,10 @@ function elevenLabsProvider({ env, fetchImpl }) {
           model_id: model,
           language_code: language.startsWith('tr') ? 'tr' : language.slice(0, 2),
           voice_settings: {
-            stability: numberFrom(env.TTS_STABILITY, 0.45),
+            stability: kararlilik,
             similarity_boost: numberFrom(env.TTS_SIMILARITY, 0.8),
             // Anlatım yönergesi "yavaşla/vurgula" diyorsa ifade payı biraz artar.
-            style: /yavaş|vurgu/i.test(style) ? 0.45 : numberFrom(env.TTS_STYLE, 0.3),
+            style: !belgesel && /yavaş|vurgu/i.test(style) ? 0.45 : ifade,
             use_speaker_boost: true,
             ...(Number.isFinite(speed) ? { speed } : {}),
           },

@@ -1,5 +1,4 @@
 import { ChevronLeft, ChevronRight, Pause, Play, RotateCcw, Volume2, VolumeX } from 'lucide-react'
-import { seslendirmeHazirMi } from '../../../lib/padisahAnlatim'
 
 const HIZLAR = [0.75, 1, 1.25, 1.5]
 
@@ -24,12 +23,13 @@ export default function AnlatimKontrolleri({
   oncekiVar,
   sonrakiVar,
   sesAcik,
+  sesHazir = false,
   onSesDegis,
   bolumler = [],
   aktifBolumSirasi = -1,
   onBolumeGit,
 }) {
-  const sesVar = seslendirmeHazirMi()
+  const sesVar = sesHazir
 
   return (
     <div>

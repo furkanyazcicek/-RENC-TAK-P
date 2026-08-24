@@ -12,7 +12,7 @@ import {
   sonrakiPadisah,
 } from '../../../data/padisahlar'
 import { anlatimCizelgesi, anlatimSuresi, aktifBolum, bolumSirasi, kademeliGorunum } from '../../../lib/padisahAnlatim'
-import { padisahSesAdresi } from '../../../lib/padisahAnlatim'
+import { padisahSesAdresi, seslendirmeHazirMi } from '../../../lib/padisahAnlatim'
 import useAnlatimSaati from './useAnlatimSaati'
 import AnlatimKontrolleri from './AnlatimKontrolleri'
 import DonemHaritasi from './DonemHaritasi'
@@ -66,7 +66,8 @@ export default function PadisahGosterisi({ baslangicId = PADISAHLAR[0]?.id }) {
   const toplamSure = useMemo(() => anlatimSuresi(cizelge), [cizelge])
   // Sesi kapatmak audio kaynağını sökmez; yalnızca susturur. Böylece
   // yeniden açıldığında anlatım kaldığı saniyeden devam eder.
-  const sesAdresi = padisahSesAdresi(padisah.id)
+  const sesAdresi = padisahSesAdresi(padisah)
+  const sesHazir = seslendirmeHazirMi(padisah)
   const sekmeRefleri = useRef(new Map())
 
   const { an, calisiyor, bitti, sesRef, oynatDurdur, bolumeGit, sifirla, setCalisiyor } = useAnlatimSaati({
@@ -423,6 +424,7 @@ export default function PadisahGosterisi({ baslangicId = PADISAHLAR[0]?.id }) {
             oncekiVar={Boolean(onceki)}
             sonrakiVar={Boolean(sonraki) || Boolean(padisah.transitionOut)}
             sesAcik={sesAcik}
+            sesHazir={sesHazir}
             onSesDegis={() => setSesAcik((eski) => !eski)}
             bolumler={cizelge}
             aktifBolumSirasi={anlatimSira}
