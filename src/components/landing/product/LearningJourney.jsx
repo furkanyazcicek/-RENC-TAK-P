@@ -351,9 +351,9 @@ export function InteractiveVisualShowcase() {
   }
 
   return (
-    <section id="etkilesim" className="relative scroll-mt-20 overflow-hidden bg-ink py-20 text-white sm:py-28 lg:py-36">
+    <section id="etkilesim" className="landing-interactive-section relative scroll-mt-20 overflow-hidden bg-ink py-20 text-white sm:py-28 lg:py-36">
       <div aria-hidden="true" className="absolute inset-0 bg-mesh-aurora opacity-10" />
-      <div aria-hidden="true" className="absolute -right-48 top-0 h-[36rem] w-[36rem] rounded-full bg-brand-500/20 blur-aurora-lg" />
+      <div aria-hidden="true" className="landing-interactive-orb absolute -right-48 top-0 h-[36rem] w-[36rem] rounded-full bg-brand-500/20 blur-aurora-lg" />
 
       <div className="relative mx-auto max-w-content px-4 sm:px-6">
         <div className="mb-12 flex justify-center lg:mb-16" role="tablist" aria-label="Etkileşimli görsel dersi">

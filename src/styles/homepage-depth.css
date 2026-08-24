@@ -49,6 +49,35 @@
   isolation: isolate;
 }
 
+/* Bölümler kendi Aurora karakterini taşır; geçişler aynı paletin
+   farklı durakları arasında ilerler. */
+.depth-scene--hero {
+  background: linear-gradient(
+    180deg,
+    rgb(var(--c-brand-50) / 0.16),
+    transparent 72%,
+    rgb(var(--c-surface) / 0.5)
+  );
+}
+
+.depth-scene--notes {
+  background: linear-gradient(
+    150deg,
+    rgb(var(--c-aurora-purple) / 0.06),
+    rgb(var(--c-aurora-pink) / 0.045) 48%,
+    rgb(var(--c-aurora-blue) / 0.055)
+  );
+}
+
+.depth-scene--questions {
+  background: linear-gradient(
+    145deg,
+    rgb(var(--c-aurora-blue) / 0.055),
+    transparent 46%,
+    rgb(var(--c-aurora-pink) / 0.05)
+  );
+}
+
 .depth-scene__background {
   position: absolute;
   z-index: 0;
@@ -96,6 +125,7 @@
   display: block;
   border-radius: 999px;
   opacity: 0.62;
+  will-change: transform, opacity;
 }
 
 .depth-orb--one {
@@ -105,6 +135,7 @@
   height: 30rem;
   background: radial-gradient(circle, rgb(var(--c-aurora-purple) / 0.22), transparent 68%);
   filter: blur(54px);
+  animation: depth-orb-flow-one 16s ease-in-out infinite alternate;
 }
 
 .depth-orb--two {
@@ -114,6 +145,102 @@
   height: 34rem;
   background: radial-gradient(circle, rgb(var(--c-aurora-cyan) / 0.18), transparent 70%);
   filter: blur(64px);
+  animation: depth-orb-flow-two 20s ease-in-out -7s infinite alternate;
+}
+
+.depth-scene--notes .depth-orb--one {
+  background: radial-gradient(circle, rgb(var(--c-aurora-pink) / 0.2), transparent 68%);
+}
+
+.depth-scene--notes .depth-orb--two {
+  background: radial-gradient(circle, rgb(var(--c-aurora-purple) / 0.2), transparent 70%);
+}
+
+.depth-scene--questions .depth-orb--one {
+  background: radial-gradient(circle, rgb(var(--c-aurora-blue) / 0.2), transparent 68%);
+}
+
+.depth-scene--questions .depth-orb--two {
+  background: radial-gradient(circle, rgb(var(--c-aurora-pink) / 0.15), transparent 70%);
+}
+
+@keyframes depth-orb-flow-one {
+  0% { transform: translate3d(-4%, -2%, 0) scale(0.94); opacity: 0.48; }
+  52% { transform: translate3d(11%, 7%, 0) scale(1.05); opacity: 0.68; }
+  100% { transform: translate3d(5%, -5%, 0) scale(1); opacity: 0.56; }
+}
+
+@keyframes depth-orb-flow-two {
+  0% { transform: translate3d(6%, 5%, 0) scale(1.04); opacity: 0.46; }
+  48% { transform: translate3d(-10%, -6%, 0) scale(0.95); opacity: 0.64; }
+  100% { transform: translate3d(-3%, 8%, 0) scale(1.02); opacity: 0.54; }
+}
+
+/* Açık ana sayfa ile koyu keşif alanı arasındaki sert çizgiyi kaldırır. */
+.landing-interactive-section {
+  background:
+    radial-gradient(circle at 78% 22%, rgb(var(--c-aurora-purple) / 0.24), transparent 34rem),
+    radial-gradient(circle at 18% 76%, rgb(var(--c-aurora-blue) / 0.16), transparent 30rem),
+    rgb(var(--c-ink));
+}
+
+.landing-interactive-section::before,
+.landing-interactive-section::after {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  left: 0;
+  height: 5.5rem;
+  pointer-events: none;
+  content: '';
+}
+
+.landing-interactive-section::before {
+  top: 0;
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--c-paper)),
+    rgb(var(--c-brand-200) / 0.44) 48%,
+    transparent
+  );
+}
+
+.landing-interactive-section::after {
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgb(var(--c-paper)),
+    rgb(var(--c-info-100) / 0.42) 46%,
+    transparent
+  );
+}
+
+.landing-interactive-section > .relative {
+  z-index: 2;
+}
+
+.landing-interactive-orb {
+  animation: landing-interactive-orb-flow 18s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+@keyframes landing-interactive-orb-flow {
+  0% { transform: translate3d(0, -6%, 0) scale(0.92); opacity: 0.58; }
+  55% { transform: translate3d(-18%, 14%, 0) scale(1.08); opacity: 0.88; }
+  100% { transform: translate3d(-8%, 24%, 0) scale(1); opacity: 0.68; }
+}
+
+/* Eski bölümlerde düz beyaz yerine çok hafif Aurora yönü korunur. */
+.homepage-depth #nasil-calisir {
+  background-image: linear-gradient(145deg, rgb(var(--c-aurora-purple) / 0.035), transparent 42%, rgb(var(--c-aurora-cyan) / 0.035));
+}
+
+.homepage-depth #platform {
+  background-image: linear-gradient(155deg, rgb(var(--c-aurora-blue) / 0.045), transparent 44%, rgb(var(--c-aurora-pink) / 0.035));
+}
+
+.homepage-depth #veri {
+  background-image: linear-gradient(145deg, rgb(var(--c-aurora-cyan) / 0.04), transparent 40%, rgb(var(--c-aurora-purple) / 0.04));
 }
 
 .depth-grid {
@@ -269,6 +396,12 @@
   .homepage-depth::before,
   .depth-grid {
     display: none;
+  }
+
+  .depth-orb,
+  .landing-interactive-orb {
+    animation: none;
+    will-change: auto;
   }
 
   .homepage-depth .landing-navbar-glass {
