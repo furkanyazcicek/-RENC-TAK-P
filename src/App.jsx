@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes, useParams } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
 import { homePathForRole } from './lib/navigation'
@@ -27,8 +28,23 @@ import LessonPreview from './pages/LessonPreview'
 import TopicTestSolve from './pages/TopicTestSolve'
 import TopicTestResult from './pages/TopicTestResult'
 import TarihAtlasi from './pages/TarihAtlasi'
-import PadisahGecidi from './pages/PadisahGecidi'
+
 import { PageLoader } from './components/ui'
+
+/**
+ * Padişah Geçiş Gösterisi ayrı bir pakete alındı: 36 padişahın verisi,
+ * dönem haritaları ve sahne bileşenleri ana pakete girdiğinde bu sayfayı
+ * hiç açmayan öğrenci de hepsini indiriyordu. Artık yalnızca adrese
+ * girildiğinde yükleniyor.
+ */
+const PadisahGecidi = lazy(() => import('./pages/PadisahGecidi'))
+
+/**
+ * Kimya Atlası da ayrı pakete alındı: 118 elementin verisi, molekül yapı
+ * veri tabanı ve etkileşimli görselleştiriciler ana pakete girmesin diye
+ * yalnızca /kimya-atlasi adresine girildiğinde yükleniyor.
+ */
+const KimyaAtlasi = lazy(() => import('./pages/KimyaAtlasi'))
 
 /** Route geçişlerinde gösterilen tam sayfa yükleyici (tasarım sisteminden). */
 function FullPageLoader() {
@@ -111,7 +127,14 @@ export default function App() {
       <Route path="/gizlilik" element={<PrivacyPolicy />} />
       <Route path="/ders-notu-onizleme" element={<LessonPreview />} />
       <Route path="/tarih-atlasi" element={<TarihAtlasi />} />
-      <Route path="/osmanli-padisahlari" element={<PadisahGecidi />} />
+      <Route
+        path="/kimya-atlasi"
+        element={<Suspense fallback={<FullPageLoader />}><KimyaAtlasi /></Suspense>}
+      />
+      <Route
+        path="/osmanli-padisahlari"
+        element={<Suspense fallback={<FullPageLoader />}><PadisahGecidi /></Suspense>}
+      />
       
       <Route
         path="/veli"
