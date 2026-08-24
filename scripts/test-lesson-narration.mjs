@@ -4,6 +4,7 @@ import narrateHandler from '../api/lessons/narrate.js'
 import pilotLesson from '../src/content/lessons/biyoloji/canlilar-ve-cevre.js'
 import mitokondriLesson from '../src/content/lessons/biyoloji/hucresel-solunum.js'
 import { normalizeLessonDocument } from '../src/lib/lesson/schema.js'
+import { registerAudioElement, stopAllLessonAudio } from '../src/lib/lessonAudioBus.js'
 import {
   buildNarrationItems,
   findAdjacentSectionIndex,
@@ -305,6 +306,55 @@ await check('Öğretmen tonu yönergesi her seslendirmede gönderilir', () => {
   const instructions = buildVoiceInstructions({ language: 'tr-TR', style: 'Sakin ol.' })
   assert.match(instructions, /öğretmen/)
   assert.match(instructions, /Sakin ol\./)
+})
+
+/* ==================================================================
+   AYNI ANDA TEK SES
+   ================================================================== */
+
+/** Gerçek <audio> öğesinin ortak hat için kullandığı yüzeyini taklit eder. */
+function sahteSesOgesi() {
+  const dinleyiciler = {}
+  return {
+    paused: true,
+    addEventListener: (ad, islev) => { dinleyiciler[ad] = islev },
+    removeEventListener: (ad) => { delete dinleyiciler[ad] },
+    pause() { this.paused = true },
+    play() { this.paused = false; dinleyiciler.play?.() },
+  }
+}
+
+await check('İkinci ses başlayınca birincisi susar', () => {
+  const birinci = sahteSesOgesi()
+  const ikinci = sahteSesOgesi()
+  const birinciBirak = registerAudioElement(birinci)
+  const ikinciBirak = registerAudioElement(ikinci)
+
+  birinci.play()
+  assert.equal(birinci.paused, false)
+
+  ikinci.play()
+  assert.equal(ikinci.paused, false)
+  assert.equal(birinci.paused, true, 'iki ses aynı anda çalıyor')
+
+  stopAllLessonAudio()
+  assert.equal(ikinci.paused, true)
+
+  birinciBirak()
+  ikinciBirak()
+})
+
+await check('Hattan ayrılan oynatıcı başkalarını artık durduramaz', () => {
+  const kalan = sahteSesOgesi()
+  const ayrilan = sahteSesOgesi()
+  const kalanBirak = registerAudioElement(kalan)
+  const ayrilanBirak = registerAudioElement(ayrilan)
+  ayrilanBirak()
+
+  kalan.play()
+  ayrilan.play()
+  assert.equal(kalan.paused, false, 'ayrılmış oynatıcı hâlâ hatta duruyor')
+  kalanBirak()
 })
 
 checks.forEach(([label, pass, error]) => {

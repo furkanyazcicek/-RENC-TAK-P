@@ -232,7 +232,7 @@ export default function LessonNarrationPlayer({ lessonSlug, items, onActiveBlock
                       {activeItem.label}
                     </p>
                   </div>
-                  <button type="button" onClick={onClose} className="focus-ring rounded p-1 text-ink/45 hover:text-ink" aria-label="Sesli anlatımı kapat">
+                  <button type="button" onClick={onClose} className="focus-ring -me-1 -mt-1 grid h-9 w-9 shrink-0 place-items-center rounded text-ink/45 hover:text-ink" aria-label="Sesli anlatımı kapat">
                     <X className="h-4 w-4" />
                   </button>
                 </div>
