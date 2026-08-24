@@ -93,6 +93,7 @@ Basınç birimi dönüşümünde alanın karesini unutma: $1\,m^2=10^4\,cm^2$. K
           {
             id: 'basinc-atlas',
             type: 'figure',
+            kind: 'fizik-basinc-atlas',
             width: 'full',
             title: 'Basıncın üç fiziksel yüzü',
             purpose: 'Temas alanı, sıvı derinliği, barometre ve hidrolik sistem arasındaki ortak basınç fikrini karşılaştırmak.',

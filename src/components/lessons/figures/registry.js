@@ -808,6 +808,136 @@ export const FIGURE_META = {
     regions: ['hava', 'su', 'toprak', 'gecis'],
   },
 
+  /* ---------- TYT Kimya · Kimyanın Temel Kanunları ---------- */
+  'kutlenin-korunumu-deney-haritasi': {
+    label: 'Kapalı ve açık sistemlerde kütlenin korunumu',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['kapali', 'gaz-cikisi', 'oksijen', 'atomlar'],
+  },
+  'sabit-oran-bilesim-haritasi': {
+    label: 'Saf bileşikte sabit oran ve yüzde bileşim',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['kucuk', 'buyuk', 'artan', 'yuzde'],
+  },
+  'katli-oran-karsilastirma-haritasi': {
+    label: 'Katlı oran koşulları ve karşılaştırma adımları',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['kosul', 'sabitle', 'karsilastir', 'sadelestir'],
+  },
+  'temel-kanunlar-karar-laboratuvari': {
+    label: 'Üç temel kanun için karar laboratuvarı',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['bilanco', 'tek', 'iki', 'denetim'],
+  },
+
+  /* ---------- TYT Kimya · Mol Kavramı ---------- */
+  'mol-sayma-koprusu': {
+    label: 'Mol sayma birimi, Avogadro sabiti ve molar kütle',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['sayma', 'avogadro', 'tanecik', 'molar'],
+  },
+  'mol-donusum-haritasi': {
+    label: 'Mol, kütle, tanecik ve gaz hacmi dönüşüm haritası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['kutle', 'tanecik', 'gaz', 'atom'],
+  },
+  'tepkime-denklestirme-atlasi': {
+    label: 'Kimyasal tepkime denkleştirme atlası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['giren-urun', 'envanter', 'katsayi', 'hal'],
+  },
+  'stokiyometri-yol-haritasi': {
+    label: 'Kimyasal tepkime hesaplamaları yol haritası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['verilen', 'oran', 'istenen', 'denetim'],
+  },
+
+  /* ---------- TYT Kimya · Karışımlar ---------- */
+  'karisim-siniflandirma-atlasi': {
+    label: 'Çözelti, süspansiyon, emülsiyon ve aerosol sınıflandırması',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['cozelti', 'suspansiyon', 'emulsiyon', 'aerosol'],
+  },
+  'cozunme-derisim-haritasi': {
+    label: 'Çözünme, derişim ve seyreltme haritası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['solvatasyon', 'benzerlik', 'derisim', 'seyreltme'],
+  },
+  'koligatif-ozellikler-sistemi': {
+    label: 'Çözeltilerin koligatif özellikleri sistemi',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['buhar', 'kaynama', 'donma', 'osmoz'],
+  },
+  'karisim-ayirma-laboratuvari': {
+    label: 'Karışımları ayırma ve saflaştırma laboratuvarı',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['boyut', 'yogunluk', 'kaynama', 'cozunurluk'],
+  },
+
+  /* ---------- TYT Kimya · Asit, Baz ve Tuz ---------- */
+  'asit-baz-indikator-atlasi': {
+    label: 'Asit, baz, indikatör ve pH sınıflandırma atlası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['asit', 'baz', 'indikator', 'ph'],
+  },
+  'asit-baz-tanecik-sistemi': {
+    label: 'Asit ve bazların sulu ortamdaki tanecik sistemi',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['asit-su', 'baz-su', 'asidik-oksit', 'bazik-oksit'],
+  },
+  'asit-baz-tepkime-laboratuvari': {
+    label: 'Nötralleşme ve metal tepkimeleri laboratuvarı',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['notrallesme', 'mol-orani', 'metal', 'amfoter'],
+  },
+  'asit-baz-guvenlik-tuz-atlasi': {
+    label: 'Asit-baz güvenliği ve yaygın tuzlar atlası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['asit-yagmuru', 'ev-guvenligi', 'malzeme', 'tuzlar'],
+  },
+
+  /* ---------- TYT Kimya · Kimya Her Yerde ---------- */
+  'gunluk-kimya-temizlik-sistemi': {
+    label: 'Yüzey aktif madde, misel ve hijyen sistemi',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['iki-uclu', 'misel', 'kisisel', 'hijyen'],
+  },
+  'gunluk-kimya-polimer-atlasi': {
+    label: 'Polimerleşme, kullanım ve yaşam döngüsü atlası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['zincir', 'turler', 'denge', 'dongu'],
+  },
+  'gunluk-kimya-tuketici-karar-sistemi': {
+    label: 'Kozmetik, ilaç ve geri dönüşüm karar sistemi',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['kozmetik', 'form', 'kullanim', 'geri'],
+  },
+  'gunluk-kimya-gida-yag-atlasi': {
+    label: 'Gıda katkıları, işleme, etiket ve yağ atlası',
+    minWidth: 720,
+    markers: 'numbered',
+    regions: ['katki', 'islem', 'etiket', 'yag'],
+  },
+
   /* ---------- Matematik ---------- */
   'birim-cember': {
     label: 'Birim çember',
@@ -824,6 +954,26 @@ export const FIGURE_META = {
   'fizik-kesif-laboratuvari': {
     label: 'Yapılandırılabilir fizik keşif laboratuvarı',
     regions: [],
+  },
+  'fizik-madde-halleri-atlas': {
+    label: 'Maddenin hâlleri tanecik atlası',
+    markers: 'numbered',
+    regions: ['kati', 'sivi', 'gaz'],
+  },
+  'fizik-sivi-etkilesimleri-atlas': {
+    label: 'Sıvı etkileşimleri atlası',
+    markers: 'numbered',
+    regions: ['kilcal-boru', 'yaprak-cam', 'su-bocegi'],
+  },
+  'fizik-kaldirma-atlas': {
+    label: 'Arşimet ve kaldırma kuvveti atlası',
+    markers: 'numbered',
+    regions: ['yuzen-blok', 'askidaki-kapsul', 'batan-kure', 'tasirma-kabi'],
+  },
+  'fizik-basinc-atlas': {
+    label: 'Katı, sıvı ve atmosfer basıncı atlası',
+    markers: 'numbered',
+    regions: ['temas-alani', 'sivi-sutunu', 'barometre', 'hidrolik'],
   },
   'fizik-termal-atlas': {
     label: 'Isı, sıcaklık ve genleşme atlası',
@@ -868,7 +1018,23 @@ export const FIGURE_META = {
 
   /* ---------- Coğrafya ---------- */
   'cografya-sistem-diyagrami': {
-    label: 'Doğal sistemler ve insan ilişkisi',
+    label: 'Dünya sistemleri ve çift yönlü insan ilişkisi',
+    regions: [],
+  },
+  'cografya-okuma-rotasi': {
+    label: 'Coğrafi okuma rotası: dağılış, neden ve karşılıklı ilgi',
+    regions: [],
+  },
+  'cografya-ortam-karsilastirma': {
+    label: 'Doğal ve beşerî ortamın bütünleşik peyzajı',
+    regions: [],
+  },
+  'cografya-neden-sonuc-akisi': {
+    label: 'Coğrafi neden–sonuç ve geri etki akışı',
+    regions: [],
+  },
+  'cografya-surec-seridi': {
+    label: 'İnsan–doğa kararı değerlendirme süreci',
     regions: [],
   },
   'cografya-etkilesimli-harita': {
@@ -877,6 +1043,11 @@ export const FIGURE_META = {
   },
   'cografya-bolge-karsilastirma': {
     label: 'Coğrafi bölge ve kesit karşılaştırması',
+    regions: [],
+  },
+  'cografya-etkilesimli-atlas': {
+    label: 'Konuya özel etkileşimli coğrafya atlası',
+    markers: 'numbered',
     regions: [],
   },
 }

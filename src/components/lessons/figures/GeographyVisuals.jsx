@@ -1,4 +1,5 @@
 import { useId, useMemo, useState } from 'react'
+import InteractiveGeoImage from './InteractiveGeoImage'
 
 const clampCoordinate = (value) => Math.min(98, Math.max(2, Number(value) || 50))
 
@@ -7,60 +8,15 @@ const clampCoordinate = (value) => Math.min(98, Math.max(2, Number(value) || 50)
  * Düğüm metinleri içerikten gelir; yeni konuda bileşen değil veri değişir.
  */
 export function GeoSystemsDiagram({ data = {} }) {
-  const systems = Array.isArray(data.systems) ? data.systems.slice(0, 5) : []
+  const systems = Array.isArray(data.systems) ? data.systems.slice(0, 4) : []
   const [activeId, setActiveId] = useState(systems[0]?.id ?? null)
   const active = systems.find((system) => system.id === activeId) ?? systems[0]
-  const gradientId = useId()
 
   return (
     <div className="geo-systems" aria-label={data.ariaLabel || 'Doğal ortam ve insan arasındaki coğrafi sistem'}>
-      <div className="geo-systems__stage">
-        <svg viewBox="0 0 620 360" role="img" aria-label="Atmosfer, hidrosfer, litosfer ve biyosferin insanla bağlantısı">
-          <defs>
-            <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stopColor="rgb(var(--c-aqua-200))" stopOpacity=".52" />
-              <stop offset="1" stopColor="rgb(var(--c-brand-200))" stopOpacity=".42" />
-            </linearGradient>
-          </defs>
-          <circle cx="310" cy="180" r="88" fill={`url(#${gradientId})`} stroke="rgb(var(--c-line-strong))" />
-          <path d="M252 144c24-31 67-40 96-20 18 12 30 34 29 57-11-12-27-16-42-11-18 6-28 26-44 28-21 3-42-16-39-54Z" fill="rgb(var(--c-success-500))" fillOpacity=".3" />
-          <path d="M245 205c28-16 55-10 75 7 19 16 36 20 56 10-17 30-48 48-82 44-27-4-44-24-49-61Z" fill="rgb(var(--c-aqua-500))" fillOpacity=".28" />
-          {systems.map((system, index) => {
-            const angles = [-145, -35, 35, 145, 90]
-            const angle = (angles[index] ?? 90) * (Math.PI / 180)
-            const x = 310 + Math.cos(angle) * 190
-            const y = 180 + Math.sin(angle) * 118
-            return <line key={system.id} x1="310" y1="180" x2={x} y2={y} stroke="rgb(var(--c-line-strong))" strokeDasharray="5 6" />
-          })}
-        </svg>
-
-        <div className="geo-systems__core" aria-hidden="true">
-          <strong>İnsan</strong>
-          <span>seçer · dönüştürür · etkilenir</span>
-        </div>
-
-        {systems.map((system, index) => (
-          <button
-            key={system.id}
-            type="button"
-            className={`geo-systems__node is-${index + 1} ${active?.id === system.id ? 'is-active' : ''}`}
-            aria-pressed={active?.id === system.id}
-            onClick={() => setActiveId(system.id)}
-          >
-            <span>{system.kicker}</span>
-            <strong>{system.title}</strong>
-          </button>
-        ))}
-      </div>
-
-      {active && (
-        <div className="geo-systems__detail" role="status" aria-live="polite">
-          <span>{active.kicker}</span>
-          <strong>{active.title}</strong>
-          <p>{active.detail}</p>
-          {active.connection && <small>{active.connection}</small>}
-        </div>
-      )}
+      <InteractiveGeoImage src={data.image} alt={data.imageAlt} hotspots={data.hotspots} label="Dünya sistemlerini görsel üzerinde keşfet" />
+      <div className="geo-systems__tabs" aria-label="Doğal sistem katmanları">{systems.map((system) => <button key={system.id} type="button" className={`tone-${system.id} ${active?.id === system.id ? 'is-active' : ''}`} aria-pressed={active?.id === system.id} onClick={() => setActiveId(system.id)}><span className="geo-systems__tab-symbol" aria-hidden="true">{system.id === 'atmosfer' ? '◌' : system.id === 'hidrosfer' ? '≈' : system.id === 'litosfer' ? '△' : '♧'}</span><span><small>{system.kicker}</small><strong>{system.title}</strong></span></button>)}</div>
+      {active && <div className="geo-systems__detail" role="status" aria-live="polite"><div><span>Sistemin işlevi</span><strong>{active.detail}</strong></div><div className="geo-systems__relation"><b>{active.naturalLink}</b><i>→</i><b>{active.humanUse}</b></div><div className="geo-systems__feedback"><span>Geri etki</span><strong>{active.feedback}</strong></div></div>}
     </div>
   )
 }
@@ -90,7 +46,8 @@ export function InteractiveMap({ data = {} }) {
 
       <div className="geo-map__layout">
         <div className="geo-map__canvas">
-          <svg viewBox="0 0 1000 520" role="img" aria-label={data.mapAlt || 'Dünya üzerindeki doğa ve insan etkileşimi örnekleri'}>
+          <svg viewBox="0 0 1000 520" preserveAspectRatio="none" role="img" aria-label={data.mapAlt || 'Dünya üzerindeki doğa ve insan etkileşimi örnekleri'}>
+            {data.image && <image href={data.image} x="0" y="0" width="1000" height="520" preserveAspectRatio="xMidYMid slice" className="geo-map__generated-base" />}
             <rect width="1000" height="520" rx="22" className="geo-map__ocean" />
             <g className="geo-map__grid" aria-hidden="true">
               <path d="M0 130H1000M0 260H1000M0 390H1000M250 0V520M500 0V520M750 0V520" />
@@ -186,10 +143,11 @@ function Landscape({ type = 'coast' }) {
 export function RegionCompare({ data = {} }) {
   const regions = Array.isArray(data.regions) ? data.regions.slice(0, 2) : []
   return (
-    <div className="geo-compare">
+    <div className="geo-compare-shell">
+      <InteractiveGeoImage src={data.image} alt={data.imageAlt} hotspots={data.hotspots} label="Ova ve dağlık alan üzerindeki farkları keşfet" />
+      <div className="geo-compare">
       {regions.map((region) => (
         <article key={region.id || region.title}>
-          <div className="geo-compare__visual"><Landscape type={region.visual} /></div>
           <div className="geo-compare__body">
             <span>{region.kicker}</span>
             <h3>{region.title}</h3>
@@ -202,6 +160,7 @@ export function RegionCompare({ data = {} }) {
           </div>
         </article>
       ))}
+      </div>
     </div>
   )
 }

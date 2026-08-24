@@ -86,6 +86,7 @@ Atmosferde de benzer ilke gazlar için çalışır; sıcak hava balonu ve helyum
           {
             id: 'skk-atlas',
             type: 'figure',
+            kind: 'fizik-kaldirma-atlas',
             width: 'full',
             title: 'Yüzen, askıda kalan ve batan cisim atlası',
             purpose: 'Aynı sıvıda üç farklı hareket sonucunu, batan hacim ve taşırılan sıvı bağlamında tek sahnede karşılaştırmak.',

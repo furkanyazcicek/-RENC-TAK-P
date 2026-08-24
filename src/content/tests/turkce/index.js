@@ -238,6 +238,20 @@ import cumle_turleri_10 from './cumle-turleri-11.js';
 import cumle_turleri_11 from './cumle-turleri-12.js';
 import cumle_turleri_12 from './cumle-turleri-13.js';
 import cumle_turleri_13 from './cumle-turleri-14.js';
+import dusunceyi_gelistirme_0 from './dusunceyi-gelistirme-1.js';
+import dusunceyi_gelistirme_1 from './dusunceyi-gelistirme-2.js';
+import dusunceyi_gelistirme_2 from './dusunceyi-gelistirme-3.js';
+import dusunceyi_gelistirme_3 from './dusunceyi-gelistirme-4.js';
+import dusunceyi_gelistirme_4 from './dusunceyi-gelistirme-5.js';
+import dusunceyi_gelistirme_5 from './dusunceyi-gelistirme-6.js';
+import dusunceyi_gelistirme_6 from './dusunceyi-gelistirme-7.js';
+import dusunceyi_gelistirme_7 from './dusunceyi-gelistirme-8.js';
+import dusunceyi_gelistirme_8 from './dusunceyi-gelistirme-9.js';
+import dusunceyi_gelistirme_9 from './dusunceyi-gelistirme-10.js';
+import dusunceyi_gelistirme_10 from './dusunceyi-gelistirme-11.js';
+import dusunceyi_gelistirme_11 from './dusunceyi-gelistirme-12.js';
+import dusunceyi_gelistirme_12 from './dusunceyi-gelistirme-13.js';
+import dusunceyi_gelistirme_13 from './dusunceyi-gelistirme-14.js';
 
 export const turkceTests = {
   'noktalama-isaretleri': [
@@ -290,5 +304,8 @@ export const turkceTests = {
   ],
   'cumle-turleri': [
     ...[cumle_turleri_0, cumle_turleri_1, cumle_turleri_2, cumle_turleri_3, cumle_turleri_4, cumle_turleri_5, cumle_turleri_6, cumle_turleri_7, cumle_turleri_8, cumle_turleri_9, cumle_turleri_10, cumle_turleri_11, cumle_turleri_12, cumle_turleri_13].flat()
+  ],
+  'dusunceyi-gelistirme': [
+    ...[dusunceyi_gelistirme_0, dusunceyi_gelistirme_1, dusunceyi_gelistirme_2, dusunceyi_gelistirme_3, dusunceyi_gelistirme_4, dusunceyi_gelistirme_5, dusunceyi_gelistirme_6, dusunceyi_gelistirme_7, dusunceyi_gelistirme_8, dusunceyi_gelistirme_9, dusunceyi_gelistirme_10, dusunceyi_gelistirme_11, dusunceyi_gelistirme_12, dusunceyi_gelistirme_13].flat()
   ],
 };

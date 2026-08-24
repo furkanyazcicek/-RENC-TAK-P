@@ -65,6 +65,7 @@ TYT sorusunda çizim verilirse önce tanecik saymak yerine üç kanıt ara: tane
           {
             id: 'mvo-haller-figure',
             type: 'figure',
+            kind: 'fizik-madde-halleri-atlas',
             width: 'full',
             title: 'Aynı madde, üç farklı tanecik düzeni',
             purpose: 'Katı, sıvı ve gazın makroskobik davranışını taneciklerin aralığı ve hareket serbestliğiyle ilişkilendirmek.',
@@ -248,6 +249,7 @@ Sıcaklık arttığında birçok sıvıda taneciklerin hareketi artar ve yüzey 
           {
             id: 'mvo-liquid-figure',
             type: 'figure',
+            kind: 'fizik-sivi-etkilesimleri-atlas',
             width: 'full',
             title: 'Sıvı yüzeyindeki etkileşim atlası',
             purpose: 'Kılcal yükselme, ıslanma, damla biçimi ve yüzey gerilimini tek bir görsel bağlamda karşılaştırmak.',

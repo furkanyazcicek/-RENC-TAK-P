@@ -114,6 +114,15 @@ Aynı sıcaklıktaki bir bardak ve bir kazan su aynı termal durumda olabilir; f
             ],
             insight: 'Bir cismin sıcaklığını bilmek, kütlesini ve madde türünü bilmeden iç enerjisini belirlemeye yetmez.',
           },
+          {
+            id: 'termal-atlas-reading',
+            type: 'prose',
+            body: `Atlası soldan sağa bir enerji izleme düzeni gibi oku. Isıl denge odağında başlangıçta hızlı hareket eden taneciklerin enerjisi temas yoluyla daha yavaş topluluğa aktarılır; ortak sıcaklıkta net aktarım biter. Bu, iki cismin enerjilerinin mutlaka eşit olduğu anlamına gelmez. Kütleleri ve maddeleri farklıysa aynı sıcaklıktaki iç enerjileri farklı olabilir.
+
+Aktarım yolları odağında mekanizmayı ortamla eşleştir. İletimde madde topluca taşınmaz; komşu tanecikler ve serbest elektronlar enerji aktarır. Taşınım yalnız akışkanlarda yoğunluk farklarının oluşturduğu toplu hareketle gerçekleşir. Işıma elektromanyetik dalgalarla ilerlediği için boşluğu aşabilir. Gerçek bir ocakta üç yol aynı anda bulunabilir; soru baskın mekanizmayı sorar.
+
+Kalorimetri odağı enerji korunumu bilançosudur: yalıtılmış sistemde sıcak tarafın verdiği enerji, soğuk tarafın ve kabın aldığı enerjiye eşittir. Genleşme odağı ise mikroskobik hareket artışının makroskobik boy değişimine dönüşmesini gösterir. Ray boşluğu uzamaya yer açar; bimetalde genleşme katsayıları farklı iki katman aynı boy değişimini yapamadığı için şerit bükülür. Böylece atlas, tanecik enerjisinden termostat gibi mühendislik düzeneklerine kesintisiz bir neden-sonuç zinciri kurar.`,
+          },
         ],
       },
       {

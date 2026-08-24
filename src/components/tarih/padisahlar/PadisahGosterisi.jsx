@@ -13,6 +13,7 @@ import {
 } from '../../../data/padisahlar'
 import { anlatimCizelgesi, anlatimSuresi, aktifBolum, bolumSirasi, kademeliGorunum } from '../../../lib/padisahAnlatim'
 import { padisahSesAdresi, seslendirmeHazirMi } from '../../../lib/padisahAnlatim'
+import useFonMuzigi from './useFonMuzigi'
 import useAnlatimSaati from './useAnlatimSaati'
 import AnlatimKontrolleri from './AnlatimKontrolleri'
 import DonemHaritasi from './DonemHaritasi'
@@ -79,6 +80,9 @@ export default function PadisahGosterisi({ baslangicId = PADISAHLAR[0]?.id }) {
     otomatik: false,
     hiz,
   })
+
+  // Fon müziği anlatımdan ayrı kanaldır; anlatım konuşurken kendini kısar.
+  const muzik = useFonMuzigi({ calisiyor })
 
   const aktifAnlatim = aktifBolum(cizelge, an)
   const anlatimSira = bolumSirasi(cizelge, an)
@@ -426,12 +430,17 @@ export default function PadisahGosterisi({ baslangicId = PADISAHLAR[0]?.id }) {
             sesAcik={sesAcik}
             sesHazir={sesHazir}
             onSesDegis={() => setSesAcik((eski) => !eski)}
+            muzikVar={muzik.muzikVar}
+            muzikAcik={muzik.acik}
+            onMuzikDegis={muzik.degistir}
             bolumler={cizelge}
             aktifBolumSirasi={anlatimSira}
             onBolumeGit={bolumeGit}
           />
           {/* Ses geldiğinde bu öğe kaynağı alır; bugün adres yok, sessizdir. */}
           {sesAdresi && <audio ref={sesRef} src={sesAdresi} preload="metadata" muted={!sesAcik} />}
+          {/* Döngüde çalar; seviyesini useFonMuzigi yönetir. */}
+          {muzik.adres && <audio ref={muzik.sesRef} src={muzik.adres} preload="none" loop />}
         </div>
 
         {/* Sinematik sahneler iki sütunun da üzerine gelir. Böylece açılışta

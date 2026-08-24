@@ -11,7 +11,7 @@ const dogaVeInsan = {
   placement: { examType: 'TYT', subject: 'Coğrafya', topic: 'Doğa ve İnsan' },
   order: 1,
   learningMode: 'interactive',
-  partLabel: 'Gold Standard · 1. Konu',
+  partLabel: 'Görsel Atlas · 1. Konu',
   title: 'Doğa ve İnsan',
   subtitle: 'Bir yerin doğal koşullarıyla insanın seçimleri arasındaki çift yönlü ilişkiyi harita, kesit ve neden–sonuç zincirleriyle oku.',
   goldStandard: true,
@@ -46,11 +46,22 @@ const dogaVeInsan = {
             purpose: 'Konuya girmeden önce doğa–insan ilişkisinin tamamını tek bir zihinsel haritada göstermek.',
             data: {
               ariaLabel: 'Doğal ortamın dört sistemi ve insan arasındaki çift yönlü ilişki',
+              image: '/lesson-assets/cografya/doga-ve-insan/earth-systems-atlas.jpg',
+              imageAlt: 'Yağışlı dağlardan akarsu, baraj, orman ve tarım ovaları üzerinden kent ve kıyı sanayisine uzanan bütünleşik Dünya sistemi illüstrasyonu',
+              hotspots: [
+                { id: 'hava-yagis', x: 15, y: 15, tone: 'air', kicker: 'Atmosfer', title: 'Nemli hava ve yağış', body: 'Atmosferde taşınan nem dağ yamacında yükselip soğuduğunda yağış oluşur; su sistemi beslenir.', tyt: 'Atmosfer → yağış → hidrosfer bağlantısını kur.' },
+                { id: 'dag-kayac', x: 21, y: 34, tone: 'earth', kicker: 'Litosfer', title: 'Dağ ve kayaç yüzeyi', body: 'Eğim, yükselti ve kayaç yapısı akışın hızını, toprağın kalınlığını ve ulaşım güzergâhını etkiler.', tyt: 'Yer şekli “tek neden” değil, maliyet ve dağılış üzerinde güçlü bir etkendir.' },
+                { id: 'orman', x: 18, y: 53, tone: 'life', kicker: 'Biyosfer', title: 'Orman kuşağı', body: 'Bitki örtüsü iklim ve yer şekliyle bağlantılıdır; toprağı korur ve suyun yüzeydeki davranışını değiştirir.', tyt: 'İklim + litosfer → bitki örtüsü ilişkisidir.' },
+                { id: 'baraj-akarsu', x: 30, y: 62, tone: 'water', kicker: 'Hidrosfer', title: 'Akarsu ve baraj', body: 'Akarsu dağlık havzadan kıyıya malzeme ve su taşır; baraj enerji ve su yönetimi için akışı düzenler.', tyt: 'Baraj beşerî, akarsu doğaldır; ikisi aynı su sisteminde etkileşir.' },
+                { id: 'tarim', x: 50, y: 64, tone: 'human', kicker: 'İnsan faaliyeti', title: 'Sulanan tarım ovası', body: 'Düzlük, toprak ve su olanağı tarımı yoğunlaştırır; yanlış kullanım su ve toprak üzerinde baskı oluşturabilir.', tyt: 'Doğal olanak → insan tercihi → geri etki zincirini izle.' },
+                { id: 'kent', x: 64, y: 57, tone: 'human', kicker: 'Beşerî ortam', title: 'Kıyı kenti', body: 'Düz arazi, su ve ulaşım bağlantıları yerleşmeyi destekler; yoğun yapılaşma arazi rekabetini artırır.', tyt: 'Konum doğal olanaktır; kentin büyümesi beşerî süreçtir.' },
+                { id: 'sanayi', x: 86, y: 61, tone: 'risk', kicker: 'Geri etki', title: 'Kıyı sanayisi', body: 'Sanayi üretim ve istihdam sağlar; salım, kıyı kullanımı ve su tüketimi doğal sistemlere geri döner.', tyt: 'Bu noktada ok insan → doğal ortam yönündedir.' },
+              ],
               systems: [
-                { id: 'atmosfer', kicker: 'Hava küre', title: 'Atmosfer', detail: 'İklim, hava olayları ve rüzgâr; tarım takviminden ulaşıma kadar insan faaliyetlerinin koşullarını etkiler.', connection: 'İnsan da sera gazı salımı ve arazi kullanımıyla atmosferi etkileyebilir.' },
-                { id: 'hidrosfer', kicker: 'Su küre', title: 'Hidrosfer', detail: 'Okyanus, deniz, akarsu, göl, yer altı suyu ve buzullar; yaşam, üretim, enerji ve ulaşım için temel kaynaklardır.', connection: 'Baraj, sulama, tüketim ve kirlilik suyun miktarını ya da niteliğini değiştirebilir.' },
-                { id: 'litosfer', kicker: 'Taş küre', title: 'Litosfer', detail: 'Yer şekilleri, kayaçlar, toprak ve tektonik yapı; yerleşme, tarım, madencilik ve ulaşım için zemin oluşturur.', connection: 'Tünel, teraslama, maden ve yapılaşma bu zeminin kullanım biçimini dönüştürür.' },
-                { id: 'biyosfer', kicker: 'Canlılar küresi', title: 'Biyosfer', detail: 'Bitki, hayvan ve diğer canlıların oluşturduğu yaşam alanı; besin, hammadde ve ekosistem hizmetleri sunar.', connection: 'Ormansızlaşma ya da koruma kararları habitatları ve biyoçeşitliliği etkiler.' },
+                { id: 'atmosfer', kicker: 'Hava küre', title: 'Atmosfer', detail: 'Hava olayları, iklim ve rüzgâr düzenini oluşturur.', naturalLink: 'Atmosfer → iklim', humanUse: 'tarım ve ulaşım', feedback: 'Sanayi ve kentleşme hava bileşimini, sıcaklığı ve yerel iklimi etkileyebilir.' },
+                { id: 'hidrosfer', kicker: 'Su küre', title: 'Hidrosfer', detail: 'Okyanus, akarsu, göl, yer altı suyu ve buzulları kapsar.', naturalLink: 'Hidrosfer → su kaynağı', humanUse: 'yerleşme ve enerji', feedback: 'Baraj, sulama, tüketim ve kirlilik suyun akışını, miktarını ya da niteliğini değiştirebilir.' },
+                { id: 'litosfer', kicker: 'Taş küre', title: 'Litosfer', detail: 'Yer şekilleri, kayaç, zemin ve toprağın ana sahnesidir.', naturalLink: 'Litosfer → yer şekli', humanUse: 'ulaşım ve yerleşme', feedback: 'Tünel, teraslama, maden ve yapılaşma yüzeyin kullanım biçimini dönüştürür.' },
+                { id: 'biyosfer', kicker: 'Canlılar küresi', title: 'Biyosfer', detail: 'Bitki, hayvan ve diğer canlıların yaşam alanlarını kapsar.', naturalLink: 'Biyosfer → doğal kaynak', humanUse: 'ekonomik faaliyet', feedback: 'Ormansızlaşma ya da koruma kararları habitatı, toprağı ve su döngüsünü etkiler.' },
               ],
             },
           },
@@ -77,20 +88,32 @@ Doğal koşullar insanın seçeneklerini kolaylaştırabilir, zorlaştırabilir 
         blocks: [
           {
             id: 'dvi-ilkeler-map',
-            type: 'concept_map',
+            type: 'figure',
+            kind: 'cografya-okuma-rotasi',
+            width: 'full',
             title: 'Coğrafi düşünmenin üç durağı',
-            intro: 'Bir olguya bu sırayla bakmak, ezber cümlesini coğrafi açıklamaya dönüştürür.',
-            nodes: [
-              { id: 'dagilis', label: 'Dağılış · Nerede?', detail: 'Olgu her yerde aynı mı, belirli alanlarda mı yoğunlaşıyor?' },
-              { id: 'neden', label: 'Nedensellik · Neden orada?', detail: 'Konumu ve dağılışı açıklayan doğal ya da beşerî etkenler neler?' },
-              { id: 'ilgi', label: 'Karşılıklı ilgi · Neyi değiştirir?', detail: 'Bu olgu başka sistemleri, insanı ve mekânı nasıl etkiliyor?' },
-            ],
-            links: [
-              { from: 'dagilis', to: 'neden', label: 'deseni açıkla' },
-              { from: 'neden', to: 'ilgi', label: 'sonucu bağla' },
-              { from: 'ilgi', to: 'dagilis', label: 'yeni deseni gör' },
-            ],
             caption: '“Karadeniz kıyıları yağışlıdır” bir betimlemedir. Nemli hava, dağlar ve yükselme ilişkisini kurup bitki örtüsü ile insan faaliyetlerine etkisini açıkladığında coğrafi düşünme başlar.',
+            purpose: 'Dağılış, nedensellik ve karşılıklı ilgi ilkelerini aynı coğrafi sahne üzerinde sırayla uygulatmak.',
+            data: {
+              image: '/lesson-assets/cografya/doga-ve-insan/orographic-rainfall-atlas.jpg',
+              imageAlt: 'Denizden gelen nemli havanın kıyıya paralel dağ yamacında yükselip yağış bıraktığı, kıyı yamacının ormanlık ve iç yamacın daha kurak olduğu orografik yağış illüstrasyonu',
+              hotspots: [
+                { id: 'nem-kaynagi', x: 11, y: 48, tone: 'water', kicker: 'Dağılış · Nerede?', title: 'Deniz ve nem kaynağı', body: 'Deniz yüzeyinden atmosfere katılan nem, kıyıya doğru taşınan hava kütlesinin su buharı kaynağıdır.', tyt: 'Denize yakınlık tek başına yağış için yetmez; hava hareketi ve yükselme de gerekir.' },
+                { id: 'bulut', x: 34, y: 16, tone: 'air', kicker: 'Nedensellik · Neden?', title: 'Yoğunlaşan bulutlar', body: 'Nemli hava dağ yamacında yükselirken soğur; bağıl nem artar ve yoğunlaşma belirginleşir.', tyt: 'Yükselme → soğuma → yoğunlaşma → yağış zincirini kur.' },
+                { id: 'yagis', x: 39, y: 36, tone: 'water', kicker: 'Mekânsal desen', title: 'Rüzgâr önü yağışı', body: 'Yağış, nemli havaya bakan kıyı yamacında yoğunlaşır; iki yamaç aynı miktarda yağış almaz.', tyt: 'Dağın denize bakan yamacı rüzgâr önü, iç kesime bakan yamaç rüzgâr arkasıdır.' },
+                { id: 'orman', x: 35, y: 59, tone: 'life', kicker: 'Karşılıklı ilgi', title: 'Gür bitki örtüsü', body: 'Daha düzenli yağış alan kıyı yamacında bitki örtüsü gürleşir; yüzey akışı ve toprak korunması da etkilenir.', tyt: 'Yağış dağılışı → bitki örtüsü dağılışı bağlantısını gör.' },
+                { id: 'gecit', x: 61, y: 47, tone: 'human', kicker: 'İnsan cevabı', title: 'Geçit ve tünel', body: 'Dağ sırası kıyı–iç kesim ulaşımını sınırlar; yol eğimi azaltmak için geçit veya tünelden geçirilir.', tyt: 'Dağlar kıyıya paralel → geçit ihtiyacı → ulaşım maliyeti artar.' },
+                { id: 'kurak-ic', x: 84, y: 58, tone: 'earth', kicker: 'Sonuç · Neyi değiştirir?', title: 'Daha kurak iç yamaç', body: 'Neminin önemli kısmını kıyı yamacında bırakan hava alçalırken ısınır; iç tarafta yağış ve bitki örtüsü azalabilir.', tyt: 'Rüzgâr arkası yamaçta yağış gölgesi etkisi görülebilir.' },
+              ],
+              caseTitle: 'Dağların kıyıya paralel uzandığı yağışlı bir kıyı',
+              caseBody: 'Şekli önce bir dağılış deseni olarak gör; sonra yükselme ve yağış mekanizmasını, en son bitki ve ulaşım sonucunu bağla.',
+              steps: [
+                { id: 'dagilis', icon: 'dagilis', question: 'Nerede?', title: 'Dağılışı bul', body: 'Yağış kıyı ve dağın denize bakan yamacında belirginleşir.' },
+                { id: 'neden', icon: 'neden', question: 'Neden orada?', title: 'Mekanizmayı açıkla', body: 'Nemli hava dağ yamacında yükselir, soğur ve yağış bırakır.' },
+                { id: 'ilgi', icon: 'ilgi', question: 'Neyi değiştirir?', title: 'Sonucu ilişkilendir', body: 'Bitki örtüsü gürleşir; geçit azlığı kıyı–iç kesim ulaşımını zorlaştırabilir.' },
+              ],
+              tyt: 'Şekildeki oku bir cümleye çevir: “Nemli hava yükselirse yağış artar; dağ sırası ulaşımın yönünü ve maliyetini etkileyebilir.”',
+            },
           },
           {
             id: 'dvi-cografya-tanim',
@@ -124,6 +147,35 @@ Doğal koşullar insanın seçeneklerini kolaylaştırabilir, zorlaştırabilir 
         lead: 'Bir şehirdeki akarsu doğal ortamın, köprü beşerî ortamın parçasıdır. Fakat köprünün yeri akarsudan, akarsuyun davranışı da yapılaşmadan etkilenebilir.',
         blocks: [
           {
+            id: 'dvi-ortamlar-visual',
+            type: 'figure',
+            kind: 'cografya-ortam-karsilastirma',
+            width: 'full',
+            title: 'Aynı peyzajda doğal ve beşerî ortam',
+            caption: 'Doğal ve beşerî unsurlar gerçek mekânda yan yana durmakla kalmaz; birbirinin yerini, işleyişini ve oluşturduğu riski etkiler.',
+            purpose: 'Doğal unsur ile insan yapımı unsuru ayırırken aralarındaki bağı kaybetmemek.',
+            data: {
+              image: '/lesson-assets/cografya/doga-ve-insan/natural-human-landscape.jpg',
+              imageAlt: 'Dağ, orman ve akarsuyun baraj, köprü, tarla, yerleşme ve kıyı sanayisiyle aynı peyzajda buluştuğu atlas illüstrasyonu',
+              hotspots: [
+                { id: 'dag', x: 14, y: 20, tone: 'earth', kicker: 'Doğal ortam', title: 'Dağlık havza', body: 'Eğim ve yükselti suyun akış yönünü, toprak kalınlığını ve yol maliyetini belirgin biçimde etkiler.', tyt: 'Dağ doğal unsurdur; üzerindeki yolun güzergâhı beşerî karardır.' },
+                { id: 'orman', x: 16, y: 48, tone: 'life', kicker: 'Doğal ortam', title: 'Orman örtüsü', body: 'Canlı örtü toprağı korur, yüzey akışını yavaşlatır ve habitat oluşturur.', tyt: 'Ormanın varlığı biyosfer; korunması veya kesilmesi insan kararıdır.' },
+                { id: 'baraj', x: 27, y: 38, tone: 'human', kicker: 'Beşerî müdahale', title: 'Baraj', body: 'İnsan suyu enerji, sulama ve taşkın yönetimi için düzenler; akış rejimi ve ekosistem de değişebilir.', tyt: 'Doğal su kaynağı ile beşerî su yapısını ayır.' },
+                { id: 'kopru', x: 48, y: 67, tone: 'human', kicker: 'Ulaşım', title: 'Köprü ve yol ağı', body: 'Akarsu geçişi güzergâhı sınırlar; köprü bu doğal engeli teknolojiyle aşar.', tyt: 'Teknoloji doğal etkiyi azaltabilir; tamamen ortadan kaldırmaz.' },
+                { id: 'tarla', x: 66, y: 68, tone: 'human', kicker: 'Arazi kullanımı', title: 'Tarım parselleri', body: 'Düzlük ve su tarımı destekler; ürün ve sulama yöntemi insan tercihidir.', tyt: 'Ova doğal, tarla beşerî ortam unsurudur.' },
+                { id: 'yerlesme', x: 67, y: 50, tone: 'human', kicker: 'Beşerî ortam', title: 'Yerleşme', body: 'Kullanılabilir düzlük, yol ve su bağlantısı yerleşmenin konumunu etkiler.', tyt: 'Dağılışı açıklarken hem doğal hem beşerî kanıt kullan.' },
+                { id: 'sanayi', x: 85, y: 35, tone: 'risk', kicker: 'Geri etki', title: 'Sanayi alanı', body: 'Sanayi, ulaşım ve suya yakın yerde yoğunlaşabilir; atık ve salım doğal sisteme geri etki oluşturur.', tyt: 'İnsan → doğa yönünü gösteren açık kanıttır.' },
+              ],
+              pairs: [
+                { natural: 'Akarsu', human: 'köprü ve baraj' },
+                { natural: 'Ova ve toprak', human: 'tarla ve kent' },
+                { natural: 'Bitki örtüsü', human: 'orman kullanımı' },
+                { natural: 'Eğim', human: 'yol güzergâhı' },
+              ],
+              tyt: 'Ova doğal bir yer şeklidir; ovanın tarlaya, sanayi alanına veya kente dönüşmesi beşerî kullanımdır. Soruda “oluşturan süreç” ile “kullanım biçimi”ni ayır.',
+            },
+          },
+          {
             id: 'dvi-ortamlar-prose',
             type: 'prose',
             body: `**Doğal ortam**, insan eliyle oluşturulmamış hava, su, kayaç, toprak, yer şekli, bitki ve hayvan unsurları ile bunlar arasındaki süreçlerin bütünüdür. **Beşerî ortam** ise insanın yerleşme, yol, tarla, baraj, liman, sanayi alanı ve kültürel peyzaj gibi faaliyetleriyle oluşturduğu ya da belirgin biçimde dönüştürdüğü ortamı anlatır.
@@ -132,16 +184,30 @@ Gerçek bir yerde bu iki ortamı birbirinden keskin bir çizgiyle ayırmak zordu
           },
           {
             id: 'dvi-etkilesim-cause',
-            type: 'cause_effect',
+            type: 'figure',
+            kind: 'cografya-neden-sonuc-akisi',
+            width: 'full',
             title: 'Bir kıyı ovasında ilişki zinciri',
-            intro: 'Aynı mekânda doğal olanak, insan tercihi ve yeni çevresel sonuç art arda gelir.',
-            steps: [
-              { title: 'Doğal koşul', body: 'Düz arazi, alüvyal toprak ve su kaynağı tarım ile ulaşımı kolaylaştırır.' },
-              { title: 'İnsan tercihi', body: 'Tarım, yol, sanayi ve yerleşme aynı düzlükte yoğunlaşır.' },
-              { title: 'Mekânsal sonuç', body: 'Nüfus ve ekonomik faaliyet artar; arazi için kullanımlar arası rekabet doğar.' },
-              { title: 'Geri etki', body: 'Geçirimsiz yüzey, akarsu yatağına baskı ve sulak alan kaybı taşkın riskini ya da ekolojik kaybı büyütebilir.' },
-            ],
-            inference: 'Aynı düzlük hem olanak hem risk taşır. Coğrafi yorum birini seçip diğerini silmez; kullanım kararının geri etkisini de görür.',
+            caption: 'Olanak, tercih ve geri etki tek yönde bitmeyen bir coğrafi zincirdir.',
+            purpose: 'Kıyı ovasındaki yoğun kullanımın doğal koşuldan çevresel geri etkiye uzanan zincirini göstermek.',
+            data: {
+              visual: 'coast',
+              image: '/lesson-assets/cografya/doga-ve-insan/coastal-plain-cause-effect-atlas.jpg',
+              imageAlt: 'Dağlardan gelen akarsuyun verimli kıyı ovası, tarım alanları, ulaşım ağı, kent, sanayi ve delta sulak alanlarıyla buluştuğu atlas görünümü',
+              hotspots: [
+                { id: 'dogal-olanak', x: 23, y: 35, tone: 'water', kicker: '1 · Doğal koşul', title: 'Düzlük, alüvyon ve su', body: 'Akarsuyun taşıdığı malzeme geniş ve verimli bir ova oluşturur; su varlığı tarım ile yerleşmeyi destekler.', tyt: 'Doğal koşul bir olanaktır; kullanımın biçimini tek başına belirlemez.' },
+                { id: 'insan-tercihi', x: 52, y: 46, tone: 'earth', kicker: '2 · İnsan tercihi', title: 'Tarım ve ulaşım ağı', body: 'Parçalı tarlalar, sulama kanalları, ana yol ve köprü aynı düşük eğimli yüzeyden yararlanır.', tyt: 'Düşük eğim; yol yapımı ve makineli tarımı genellikle kolaylaştırır.' },
+                { id: 'mekansal-sonuc', x: 82, y: 35, tone: 'human', kicker: '3 · Mekânsal sonuç', title: 'Kent ve sanayi yoğunlaşması', body: 'Ulaşılabilir ova; konut, üretim ve hizmet alanlarını çeker, değerli tarım toprağı üzerinde arazi rekabeti oluşturur.', tyt: 'Yoğunlaşmayı yalnız doğal koşulla değil, erişilebilirlik ve ekonomik tercihlerle birlikte açıkla.' },
+                { id: 'geri-etki', x: 72, y: 67, tone: 'risk', kicker: '4 · Geri etki', title: 'Delta ve sulak alan baskısı', body: 'Yapılaşma, kanal düzenlemesi ve geçirimsiz yüzeyler suyun doğal yayılma alanını daraltıp ekolojik kaybı büyütebilir.', tyt: 'Zinciri ters yönde de oku: insan kullanımı doğal sistemin işleyişini değiştirir.' },
+              ],
+              steps: [
+                { role: 'Doğal koşul', title: 'Düzlük + alüvyon + su', body: 'Tarım ve ulaşım için güçlü bir olanak oluşturur.', tone: 'natural' },
+                { role: 'İnsan tercihi', title: 'Tarım + yol + sanayi', body: 'Aynı sınırlı düzlük üzerinde yoğunlaşır.', tone: 'human' },
+                { role: 'Mekânsal sonuç', title: 'Nüfus ve arazi rekabeti', body: 'Kent, tarım ve sanayi alan için yarışır.', tone: 'result' },
+                { role: 'Geri etki', title: 'Geçirimsiz yüzey + yatak baskısı', body: 'Taşkın ve ekolojik kayıp riskini büyütebilir.', tone: 'effect' },
+              ],
+              inference: 'Aynı düzlük hem olanak hem risk taşır. TYT’de yalnız ilk sonucu değil, insan kullanımının doğal sisteme dönüşünü de izle.',
+            },
           },
           {
             id: 'dvi-ortam-trap',
@@ -169,6 +235,7 @@ Gerçek bir yerde bu iki ortamı birbirinden keskin bir çizgiyle ayırmak zordu
             purpose: 'Nerede, neden orada ve sonucu ne sorularını gerçek coğrafi örneklerde birbirine bağlamak.',
             data: {
               title: 'Aynı gezegen, farklı coğrafi cevaplar',
+              image: '/lesson-assets/cografya/doga-ve-insan/world-cases-atlas-bg.jpg',
               mapAlt: 'Hollanda, İstanbul, Sahel, Bangladeş, Japonya ve Amazon Havzası örneklerini gösteren şematik dünya haritası',
               points: [
                 { id: 'hollanda', x: 50, y: 28, region: 'Kuzeybatı Avrupa', title: 'Hollanda kıyı ovaları', summary: 'Deniz seviyesine yakın ve yer yer altındaki alanlarda set, pompa ve polder sistemleriyle arazi kullanımı sürdürülür.', significance: 'Düşük ve düz kıyı arazisi su baskını tehlikesi taşır; aynı zamanda yerleşme, tarım ve ulaşım için değerlidir.', result: 'İnsan doğal sınırı teknoloji ve planlamayla yönetir; bakım ve su yönetimi sürekli gerekir.', examTip: 'Bu örnek “doğa insanı tamamen belirler” değil, insanın koşullara uyum sağlayıp ortamı dönüştürdüğünü gösterir.' },
@@ -204,6 +271,16 @@ Gerçek bir yerde bu iki ortamı birbirinden keskin bir çizgiyle ayırmak zordu
             caption: 'Görsel, tek bir ülkenin gerçek topoğrafyası değil; eğim farkının yerleşme ve ulaşım üzerindeki genel etkisini karşılaştıran şematik kesittir.',
             purpose: 'Aynı beşerî ihtiyacın farklı doğal koşullarda neden farklı mekânsal desen ürettiğini göstermek.',
             data: {
+              image: '/lesson-assets/cografya/doga-ve-insan/plain-mountain-comparison.jpg',
+              imageAlt: 'Geniş kıyı ovası ile dar dağ vadisinde yerleşme ve ulaşım desenlerini karşılaştıran atlas illüstrasyonu',
+              hotspots: [
+                { id: 'ova', x: 28, y: 31, tone: 'earth', kicker: 'Düşük eğim', title: 'Geniş kıyı ovası', body: 'Kullanılabilir düz yüzey tarım, kent ve ulaşım ağlarının yayılmasına olanak verir.', tyt: 'Düzlük kullanımı kolaylaştırır; tek başına nüfusun fazla olduğunu kanıtlamaz.' },
+                { id: 'menderes', x: 24, y: 49, tone: 'water', kicker: 'Akarsu', title: 'Menderesli akış', body: 'Az eğimli ovada akarsu yatağı kıvrımlanır ve geniş taşkın düzlüğü oluşturabilir.', tyt: 'Az eğim → akış hızı azalabilir → menderes belirginleşebilir.' },
+                { id: 'ova-yerlesme', x: 36, y: 58, tone: 'human', kicker: 'Yerleşme deseni', title: 'Yaygın yerleşme', body: 'Yol kurmanın görece kolay olduğu düzlükte yerleşme alana yayılabilir; tarımla arazi rekabeti doğar.', tyt: 'Düzlük → kolay ulaşım ve yoğun arazi kullanımı bağlantısı.' },
+                { id: 'vadi', x: 67, y: 58, tone: 'earth', kicker: 'Yüksek eğim', title: 'Dar vadi tabanı', body: 'Kullanılabilir düz alan sınırlıdır; akarsu, yol ve yerleşme aynı dar koridorda toplanır.', tyt: 'Vadi tabanı hem güzergâh hem taşkın alanı olabilir.' },
+                { id: 'vadi-yerlesme', x: 69, y: 69, tone: 'human', kicker: 'Yerleşme deseni', title: 'Çizgisel yerleşme', body: 'Evler ve yollar vadi doğrultusunu izler; enine genişleme eğim nedeniyle sınırlanır.', tyt: 'Dağlık alanda yerleşmenin şekli doğal yüzeye uyum gösterir.' },
+                { id: 'tunel', x: 90, y: 47, tone: 'human', kicker: 'Ulaşım', title: 'Viraj, viyadük ve tünel', body: 'Eğimli yüzey yol uzunluğunu ve yapım maliyetini artırır; teknoloji geçişi mümkün kılar.', tyt: 'Engebe → geçit sayısı azalır → ulaşım maliyeti artar.' },
+              ],
               regions: [
                 { id: 'ova', visual: 'coast', kicker: 'Düşük eğim', title: 'Düz kıyı ovası', summary: 'Geniş kullanılabilir yüzey, ağları ve yerleşmeyi yaymaya elverişlidir.', natural: 'Az eğim, alüvyal zemin, akarsu ve denize yakınlık.', human: 'Yol ve yerleşme yayılabilir; tarım, sanayi ve kent aynı arazi için yarışabilir.', result: 'Yoğun kullanım ve kolay ulaşım; buna karşın taşkın alanı ve verimli toprak kaybı baskısı.' },
                 { id: 'dag', visual: 'mountain', kicker: 'Yüksek eğim', title: 'Dağlık ve engebeli alan', summary: 'Kullanılabilir düzlükler sınırlı, güzergâh seçimi daha zor ve maliyetlidir.', natural: 'Fazla eğim, parçalı yüzey, vadi ve geçitlere bağımlılık.', human: 'Yerleşme vadi tabanı veya düzlüklerde toplanır; yol viraj, tünel ve viyadük gerektirebilir.', result: 'Seyrek ya da çizgisel yerleşme ve yüksek ulaşım maliyeti; uygun yamaçlarda turizm ya da hayvancılık olanağı.' },
@@ -247,15 +324,23 @@ Bir akarsudan yenilenme hızını aşan miktarda su çekmek aşağı havzadaki t
           },
           {
             id: 'dvi-denge-process',
-            type: 'process',
+            type: 'figure',
+            kind: 'cografya-surec-seridi',
+            width: 'full',
             title: 'Bir insan–doğa kararını dört adımda incele',
-            intro: 'Bu kontrol listesi baraj, maden, turizm tesisi, yeni yol ya da tarımsal sulama gibi farklı durumlara uygulanabilir.',
-            steps: [
-              { title: 'Mekânı tanı', body: 'Eğim, su, iklim, toprak, canlılar ve mevcut yerleşme desenini birlikte oku.' },
-              { title: 'Olanak ve riski ayır', body: 'Aynı unsurun sunduğu yararı ve oluşturabileceği tehlikeyi iki ayrı cümleyle yaz.' },
-              { title: 'Etkileşim zincirini kur', body: 'Kararın yalnızca ilk sonucunu değil, suya, toprağa, canlılara ve başka insanlara geri etkisini izle.' },
-              { title: 'Alternatifi karşılaştır', body: 'Aynı ihtiyacı daha az risk ve kaynak kaybıyla karşılayabilecek yer, ölçek ya da yöntem olup olmadığını sor.' },
-            ],
+            caption: 'Aynı rota baraj, maden, turizm tesisi, yeni yol veya sulama kararına uygulanabilir.',
+            purpose: 'Sürdürülebilirlik yorumunu soyut tanımdan çıkarıp uygulanabilir bir mekânsal karar rotasına dönüştürmek.',
+            data: {
+              title: 'Kullanım kararını mekânın kaldırma kapasitesiyle birlikte oku',
+              intro: 'Bir yatırımın yalnız yararını ya da yalnız zararını sayma; yeri, ölçeği, geri etkisi ve alternatifini sırayla değerlendir.',
+              steps: [
+                { icon: 'mekan', title: 'Mekânı tanı', body: 'Eğim, su, iklim, toprak, canlılar ve mevcut yerleşme desenini birlikte oku.' },
+                { icon: 'olanak', title: 'Olanak ve riski ayır', body: 'Aynı unsurun sunduğu yararı ve oluşturabileceği tehlikeyi iki ayrı cümleyle yaz.' },
+                { icon: 'zincir', title: 'Geri etkiyi izle', body: 'Kararın suya, toprağa, canlılara ve başka insanlara uzanan sonuç zincirini kur.' },
+                { icon: 'alternatif', title: 'Alternatifi karşılaştır', body: 'Aynı ihtiyacı daha az risk ve kaynak kaybıyla karşılayan yer, ölçek ya da yöntem var mı sor.' },
+              ],
+              tyt: '“İnsan müdahale ettiyse kesin bozmuştur” ve “teknoloji her sınırı kaldırır” yargıları aynı ölçüde sorunludur. Kanıta ve mekânsal koşula bağlı yorum yap.',
+            },
           },
           {
             id: 'dvi-denge-example',
@@ -327,4 +412,3 @@ Bir akarsudan yenilenme hızını aşan miktarda su çekmek aşağı havzadaki t
 }
 
 export default dogaVeInsan
-

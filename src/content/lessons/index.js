@@ -97,6 +97,7 @@ import elektrostatik from './fizik/elektrostatik.js'
 import elektrikDevreleri from './fizik/elektrik-devreleri.js'
 import manyetizma from './fizik/manyetizma.js'
 import dalgalar from './fizik/dalgalar.js'
+import optik from './fizik/optik.js'
 import { TYT_HISTORY_LESSONS } from './tarih/tyt-tarih-kutuphanesi.js'
 import { TYT_RELIGION_LESSONS } from './din-kulturu/topics.js'
 import { TURKISH_LESSONS } from './turkce/catalog.js'
@@ -105,7 +106,14 @@ import atomVePeriyodikSistem from './kimya/atom-ve-periyodik-sistem.js'
 import kimyasalTurlerArasiEtkilesimler from './kimya/kimyasal-turler-arasi-etkilesimler.js'
 import maddeninHalleri from './kimya/maddenin-halleri.js'
 import dogaVeKimya from './kimya/doga-ve-kimya.js'
+import kimyaninTemelKanunlari from './kimya/kimyanin-temel-kanunlari.js'
+import molKavrami from './kimya/mol-kavrami.js'
+import karisimlar from './kimya/karisimlar.js'
+import asitBazVeTuz from './kimya/asit-baz-ve-tuz.js'
+import kimyaHerYerde from './kimya/kimya-her-yerde.js'
 import dogaVeInsan from './cografya/doga-ve-insan.js'
+import dunyaninSekliVeHareketleri from './cografya/dunyanin-sekli-ve-hareketleri.js'
+import { TYT_GEOGRAPHY_LESSONS } from './cografya/topics.js'
 
 export const LESSONS = [
   ...philosophyLessons,
@@ -120,6 +128,7 @@ export const LESSONS = [
   elektrikDevreleri,
   manyetizma,
   dalgalar,
+  optik,
   ...TURKISH_LESSONS,
   ...TYT_RELIGION_LESSONS,
   kimyaBilimi,
@@ -127,7 +136,14 @@ export const LESSONS = [
   kimyasalTurlerArasiEtkilesimler,
   maddeninHalleri,
   dogaVeKimya,
+  kimyaninTemelKanunlari,
+  molKavrami,
+  karisimlar,
+  asitBazVeTuz,
+  kimyaHerYerde,
   dogaVeInsan,
+  dunyaninSekliVeHareketleri,
+  ...TYT_GEOGRAPHY_LESSONS,
   canlilarinOrtakOzellikleriTemel,
   canlilarinOrtakOzellikleri,
   canlilarinTemelBilesenleriTemel,

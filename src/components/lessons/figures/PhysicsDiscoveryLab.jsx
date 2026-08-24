@@ -1114,13 +1114,15 @@ function OpticsLab({ data }) {
   const nature = atFocus
     ? 'görüntü sonsuzda'
     : `${isReal ? 'gerçek, ters' : 'sanal, düz'}, ${Math.abs(magnification) > 1.02 ? 'büyük' : Math.abs(magnification) < 0.98 ? 'küçük' : 'eş boyda'}`
-  const objectX = 360 - clamp(objectDistance * 6, 70, 300)
-  const objectTipY = 88
+  const objectX = 360 - clamp(objectDistance * 6, 28, 300)
+  const objectTipY = atFocus ? 125 : 88
   const plottedImageDistance = atFocus ? 310 : clamp(Math.abs(imageDistance) * 6, 35, 310)
   const imageX = atFocus ? 680 : isReal ? 360 + plottedImageDistance : 360 - plottedImageDistance
   const imageHeight = atFocus ? -70 : clamp(magnification * 72, -112, 112)
   const imageTipY = 160 - imageHeight
-  const rayExitY = atFocus ? objectTipY : isReal ? imageTipY : clamp(objectTipY + (680 - 360) * ((objectTipY - imageTipY) / Math.max(1, 360 - imageX)), 34, 286)
+  const rayExitY = atFocus
+    ? objectTipY + (680 - 360) * ((160 - objectTipY) / (focalLength * 6))
+    : isReal ? imageTipY : clamp(objectTipY + (680 - 360) * ((objectTipY - imageTipY) / Math.max(1, 360 - imageX)), 34, 286)
 
   function setCase(multiplier) {
     setObjectDistance(Number((focalLength * multiplier).toFixed(1)))

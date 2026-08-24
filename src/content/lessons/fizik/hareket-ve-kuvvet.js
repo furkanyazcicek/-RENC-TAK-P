@@ -104,6 +104,14 @@ Anlık hız, konum–zaman grafiğinin ilgili andaki eğimidir. Hızın işareti
             purpose: 'Karşıt kuvvetleri, kütleyi ve zamanı değiştirerek cisim hareketiyle üç temel grafiği gerçek zamanlı eşleştirmek.',
             data: { mode: 'motion-force', title: 'Kuvveti değiştir, hareket ve grafiği birlikte oku', initialRightForce: 30, initialLeftForce: 10, initialMass: 5, initialTime: 4 },
           },
+          {
+            id: 'motion-atlas-reading', type: 'prose',
+            body: `Atlası bir deney kaydının dört temsil biçimi olarak oku. Eşit zaman fotoğrafı cismin belirli anlarda nerede bulunduğunu gösterir. Ardışık noktalar eşit aralıklıysa hız sabit, aralıklar düzenli büyüyorsa seçilen yönde ivme vardır. Fakat tek bir fotoğraf dizisi kuvvetin türünü söylemez; yalnız hareketin nasıl değiştiğine ilişkin kanıt verir.
+
+Grafik odağı aynı kaydı sayısallaştırır. Konum–zaman eğimi hızı, hız–zaman eğimi ivmeyi verir. Hız grafiğinin işaretli alanı yer değiştirmedir. Bir grafiğin yukarı gitmesi her zaman cismin hızlandığı anlamına gelmez; önce eksenleri, eğimi ve işareti ayrı oku. Zaman ekseninin altındaki hız negatif yönü gösterir, süratin negatif olması demek değildir.
+
+Serbest cisim diyagramı hareketin nedenine geçer. İncelenen cismi çevresinden ayır, yalnız o cisme etki eden ağırlık, normal, sürtünme, gerilme ve uygulanan kuvvetleri çiz. Bu okların vektörel toplamı ivmeyi belirler. Etki–tepki odağı ise benzer görünen başka bir ayrımı korur: eşit ve zıt üçüncü yasa kuvvetleri farklı cisimlere etki eder, bu yüzden aynı serbest cisim diyagramında birbirini götürmez. Fotoğraf “ne oldu?”, grafik “nasıl değişti?”, kuvvet diyagramı “neden değişti?” sorularını yanıtlar.`,
+          },
         ],
       },
       {

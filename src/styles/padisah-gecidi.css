@@ -1184,6 +1184,10 @@ a.pg-kaynak:hover { border-color: rgb(var(--pg-altin)); background: rgb(var(--pg
 }
 .pg-kontrol-dugme:hover:not(:disabled) { color: rgb(var(--pg-metin)); border-color: rgb(var(--pg-altin) / 0.45); }
 .pg-kontrol-dugme:disabled { opacity: 0.35; cursor: not-allowed; }
+/* Müzik kapalıyken düğme sönük durur: açık/kapalı ayrımı simgeyi
+   değiştirmeden, tek bakışta anlaşılsın. */
+.pg-kontrol-dugme-sonuk:not(:disabled) { opacity: 0.45; }
+.pg-kontrol-dugme-sonuk:not(:disabled):hover { opacity: 1; }
 
 /* Anlatım metni — seslendirme geldiğinde altyazı görevi görür */
 .pg-anlatim {

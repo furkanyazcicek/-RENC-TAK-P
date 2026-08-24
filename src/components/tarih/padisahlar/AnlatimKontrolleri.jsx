@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight, Pause, Play, RotateCcw, Volume2, VolumeX } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Music2, Pause, Play, RotateCcw, Volume2, VolumeX } from 'lucide-react'
 
 const HIZLAR = [0.75, 1, 1.25, 1.5]
 
@@ -25,6 +25,9 @@ export default function AnlatimKontrolleri({
   sesAcik,
   sesHazir = false,
   onSesDegis,
+  muzikVar = false,
+  muzikAcik = false,
+  onMuzikDegis,
   bolumler = [],
   aktifBolumSirasi = -1,
   onBolumeGit,
@@ -108,6 +111,18 @@ export default function AnlatimKontrolleri({
           aria-label={sesAcik ? 'Sesi kapat' : 'Sesi aç'}
         >
           {sesAcik && sesVar ? <Volume2 size={14} /> : <VolumeX size={14} />}
+        </button>
+        {/* Müzik ayrı kanaldır: anlatımı susturmadan kapatılabilir. */}
+        <button
+          type="button"
+          className={`pg-kontrol-dugme${muzikVar && muzikAcik ? '' : ' pg-kontrol-dugme-sonuk'}`}
+          onClick={onMuzikDegis}
+          disabled={!muzikVar}
+          title={muzikVar ? 'Fon müziğini aç/kapat' : 'Fon müziği henüz eklenmedi'}
+          aria-label={muzikAcik ? 'Fon müziğini kapat' : 'Fon müziğini aç'}
+          aria-pressed={muzikVar && muzikAcik}
+        >
+          <Music2 size={14} />
         </button>
       </div>
     </div>

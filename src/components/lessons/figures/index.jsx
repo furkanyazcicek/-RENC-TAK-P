@@ -55,6 +55,7 @@ import InheritanceConceptMap from './InheritanceConceptMap'
 import KingdomDecisionTree from './KingdomDecisionTree'
 import MagneticForce from './MagneticForce'
 import PhysicsDiscoveryLab from './PhysicsDiscoveryLab'
+import { BuoyancyPhysicsAtlas, LiquidInteractionsPhysicsAtlas, MatterStatesPhysicsAtlas, PressurePhysicsAtlas } from './FoundationPhysicsAtlasIllustrations'
 import { ElectricCircuitsPhysicsAtlas, ElectrostaticPhysicsAtlas, MagnetismPhysicsAtlas, MotionForcePhysicsAtlas, OpticsPhysicsAtlas, ThermalPhysicsAtlas, WavesPhysicsAtlas, WorkEnergyPhysicsAtlas } from './PhysicsAtlasIllustrations'
 import MatterCycles from './MatterCycles'
 import AtpStructure from './AtpStructure'
@@ -99,7 +100,13 @@ import { AtomIdentityMap, AtomModelDevelopment, PeriodicSystemMap, PeriodicTrend
 import { ChemicalSpeciesMap, LewisPolarityMap, StrongInteractionMechanisms, WeakInteractionMap } from './InteractionIllustrations'
 import { LiquidDynamicsMap, MatterStateParticleMap, PhaseInDailyLife, SolidStructureMap } from './PhaseIllustrations'
 import { PollutantPathwayMap, WaterHardnessMap, WaterLifeSystem, WaterResourceProtection } from './EnvironmentalChemistryIllustrations'
+import { ChemicalLawsDecisionLab, ConservationExperimentMap, DefiniteProportionsMap, MultipleProportionsMap } from './ChemicalLawsIllustrations'
+import { EquationBalancingAtlas, MoleConversionMap, MoleCountingBridge, StoichiometryRoadMap } from './MoleIllustrations'
+import { ColligativePropertiesSystem, DissolutionConcentrationMap, MixtureClassificationAtlas, MixtureSeparationLab } from './MixtureIllustrations'
+import { AcidBaseIndicatorAtlas, AcidBaseParticleSystem, AcidBaseReactionLab, AcidBaseSafetySaltAtlas } from './AcidBaseSaltIllustrations'
+import { EverydayCleaningSystem, EverydayConsumerDecisionSystem, EverydayFoodOilAtlas, EverydayPolymerAtlas } from './EverydayChemistryIllustrations'
 import { GeoSystemsDiagram, InteractiveMap, RegionCompare } from './GeographyVisuals'
+import { EnvironmentContrast, GeoAnnotatedAtlas, GeoCauseEffectFlow, GeoProcessDiagram, GeoReadingRoute } from './GeographyAtlasVisuals'
 import { FIGURE_META, canonicalFigureKind } from './registry'
 
 /** Şema adı → çizim bileşeni. `registry.js` ile aynı anahtarları kullanır. */
@@ -242,9 +249,33 @@ const COMPONENTS = {
   'su-kaynaklari-koruma': WaterResourceProtection,
   'sert-yumusak-su-haritasi': WaterHardnessMap,
   'cevre-kirleticileri-akis-haritasi': PollutantPathwayMap,
+  'kutlenin-korunumu-deney-haritasi': ConservationExperimentMap,
+  'sabit-oran-bilesim-haritasi': DefiniteProportionsMap,
+  'katli-oran-karsilastirma-haritasi': MultipleProportionsMap,
+  'temel-kanunlar-karar-laboratuvari': ChemicalLawsDecisionLab,
+  'mol-sayma-koprusu': MoleCountingBridge,
+  'mol-donusum-haritasi': MoleConversionMap,
+  'tepkime-denklestirme-atlasi': EquationBalancingAtlas,
+  'stokiyometri-yol-haritasi': StoichiometryRoadMap,
+  'karisim-siniflandirma-atlasi': MixtureClassificationAtlas,
+  'cozunme-derisim-haritasi': DissolutionConcentrationMap,
+  'koligatif-ozellikler-sistemi': ColligativePropertiesSystem,
+  'karisim-ayirma-laboratuvari': MixtureSeparationLab,
+  'asit-baz-indikator-atlasi': AcidBaseIndicatorAtlas,
+  'asit-baz-tanecik-sistemi': AcidBaseParticleSystem,
+  'asit-baz-tepkime-laboratuvari': AcidBaseReactionLab,
+  'asit-baz-guvenlik-tuz-atlasi': AcidBaseSafetySaltAtlas,
+  'gunluk-kimya-temizlik-sistemi': EverydayCleaningSystem,
+  'gunluk-kimya-polimer-atlasi': EverydayPolymerAtlas,
+  'gunluk-kimya-tuketici-karar-sistemi': EverydayConsumerDecisionSystem,
+  'gunluk-kimya-gida-yag-atlasi': EverydayFoodOilAtlas,
   'birim-cember': UnitCircle,
   'manyetik-kuvvet': MagneticForce,
   'fizik-kesif-laboratuvari': PhysicsDiscoveryLab,
+  'fizik-madde-halleri-atlas': MatterStatesPhysicsAtlas,
+  'fizik-sivi-etkilesimleri-atlas': LiquidInteractionsPhysicsAtlas,
+  'fizik-kaldirma-atlas': BuoyancyPhysicsAtlas,
+  'fizik-basinc-atlas': PressurePhysicsAtlas,
   'fizik-termal-atlas': ThermalPhysicsAtlas,
   'fizik-hareket-kuvvet-atlas': MotionForcePhysicsAtlas,
   'fizik-is-guc-enerji-atlas': WorkEnergyPhysicsAtlas,
@@ -254,8 +285,13 @@ const COMPONENTS = {
   'fizik-dalgalar-atlas': WavesPhysicsAtlas,
   'fizik-optik-atlas': OpticsPhysicsAtlas,
   'cografya-sistem-diyagrami': GeoSystemsDiagram,
+  'cografya-okuma-rotasi': GeoReadingRoute,
+  'cografya-ortam-karsilastirma': EnvironmentContrast,
+  'cografya-neden-sonuc-akisi': GeoCauseEffectFlow,
+  'cografya-surec-seridi': GeoProcessDiagram,
   'cografya-etkilesimli-harita': InteractiveMap,
   'cografya-bolge-karsilastirma': RegionCompare,
+  'cografya-etkilesimli-atlas': GeoAnnotatedAtlas,
 }
 
 export const FIGURES = Object.fromEntries(

@@ -25,8 +25,11 @@ import { turkceTests } from '../content/tests/turkce/index.js'
 // pilot içeriğin uyumluluk köprüsüdür.
 const BUNDLED_SETS = {
   ...Object.fromEntries(Object.entries(turkceTests).map(([k, v]) => [k, { tests: v }])),
+  'yapi-bilgisi': { tests: turkceTests['sozcuk-yapisi'] || [] },
   'sozcuk-turleri': { tests: [...(turkceTests['isimler']||[]), ...(turkceTests['sifatlar']||[]), ...(turkceTests['zarflar']||[]), ...(turkceTests['zamirler']||[]), ...(turkceTests['edat-baglac-unlem']||[])] },
   'fiilimsi': { tests: turkceTests['fiilimsiler'] || [] },
+  'paragrafta-anlam-ve-yapi': { tests: turkceTests['paragrafta-anlam'] || [] },
+  'paragrafta-dusunceyi-gelistirme-yollari': { tests: turkceTests['dusunceyi-gelistirme'] || [] },
   'canlilarin-ortak-ozellikleri': canlilarinOrtakOzellikleri,
   'canlilarin-temel-bilesenleri': canlilarinTemelBilesenleri,
   'bitki-biyolojisi': bitkiBiyolojisi,
