@@ -3,6 +3,7 @@ import { ChevronDown, Crown, Info, MapPin, Pause, Play, TriangleAlert } from 'lu
 import { belgeselAkisi, panelSuresi } from '../../../data/padisahlar/belgeselAkisi'
 import { NITELIK_ALANLARI, NITELIK_KADEMELERI } from '../../../data/padisahlar/tipler'
 import { padisahBul } from '../../../data/padisahlar'
+import BelgeselGirisi from './BelgeselGirisi'
 import DonemHaritasi from './DonemHaritasi'
 import useDerinlik from './useDerinlik'
 
@@ -113,9 +114,28 @@ function PanelIcerigi({ panel, padisah }) {
             <span className="pgb-rozet">
               <Crown size={12} aria-hidden="true" /> {padisah?.order}. Padişah
             </span>
+            {/* Eksik içeriğin "tam" gibi görünmesi en tehlikeli durum:
+                özet kayıtlar öğrenciye açıkça söylenir. */}
+            {padisah?.detaySeviyesi !== 'tam' && (
+              <span className="pgb-rozet pgb-rozet-ozet">Özet kayıt</span>
+            )}
             <h2 className="pgb-baslik pgb-baslik-buyuk">{panel.baslik}</h2>
             {panel.altBaslik && <p className="pgb-alt">{panel.altBaslik}</p>}
             <p className="pgb-yil pgb-yil-kucuk">{panel.yil} · {panel.metin}</p>
+            {padisah?.detaySeviyesi === 'ozet' && (
+              <p className="pgb-ozet-uyari">
+                Bu padişahın ayrıntılı anlatımı henüz hazırlanmadı. Aşağıdaki
+                bilgiler doğrulanmış özet kayıtlardır; savaş, fetih ve kişi
+                anlatımları ile sesli anlatım metni sonraki aşamada eklenecek.
+              </p>
+            )}
+            {padisah?.detaySeviyesi === 'anlatimli' && (
+              <p className="pgb-ozet-uyari">
+                Bu padişahın sesli anlatımı hazırlandı. Ekranda gördüğün savaş,
+                fetih ve kişi kayıtları ise şimdilik doğrulanmış özet
+                düzeyindedir; ayrıntılı kayıtlar sonraki aşamada eklenecek.
+              </p>
+            )}
             <dl className="pgb-kunye">
               {panel.kunye.map((satir) => (
                 <div key={satir.etiket}>
@@ -233,6 +253,45 @@ export default function BelgeselAkisi({ aktifId, onAktifDegis, hiz = 1 }) {
   const paneller = useMemo(() => belgeselAkisi(), [])
   useDerinlik(kapsayiciRef)
 
+  /**
+   * BELİRME GÜVENLİK AĞI
+   *
+   * Panel belirmeleri `animation-timeline: view()` ile sürülüyor. Bu
+   * animasyon `fill: both` olduğu için, zaman çizelgesi herhangi bir
+   * sebeple SÜRMEZSE tarayıcı animasyonun başlangıç karesini uygular —
+   * yani `--pg-belir: 0`, yani içerik GÖRÜNMEZ kalır.
+   *
+   * Bir eğitim ürününde kabul edilebilir en kötü sonuç "animasyon
+   * olmadı"dır; "içerik gelmedi" değil. Bu yüzden iki kare sonra zaman
+   * çizelgesinin gerçekten sürüp sürmediği ölçülür (`currentTime`
+   * null mı?); sürmüyorsa belirme CSS'i kapatılır ve her şey doğrudan
+   * görünür olur.
+   */
+  useEffect(() => {
+    const kapsayici = kapsayiciRef.current
+    if (!kapsayici) return undefined
+    if (typeof CSS === 'undefined' || !CSS.supports?.('animation-timeline: view()')) return undefined
+
+    const kontrolEt = () => {
+      const oge = kapsayici.querySelector('.pgb-icerik')
+      const animasyon = oge?.getAnimations?.().find((a) => a.animationName === 'pg-belirme-tetik')
+      const suruyor = Boolean(animasyon) && animasyon.currentTime !== null
+      kapsayici.classList.toggle('pgb-belirme-kapali', !suruyor)
+    }
+
+    // İki kare beklenir: ilk karede zaman çizelgesi henüz bağlanmamış olabilir.
+    let kare = requestAnimationFrame(() => { kare = requestAnimationFrame(kontrolEt) })
+    // requestAnimationFrame arka plandaki sekmede hiç çalışmayabilir;
+    // zamanlayıcı ikinci bir yoldur. İkisi de aynı kontrolü yapar.
+    const zamanlayici = window.setTimeout(kontrolEt, 400)
+    document.addEventListener('visibilitychange', kontrolEt)
+    return () => {
+      cancelAnimationFrame(kare)
+      window.clearTimeout(zamanlayici)
+      document.removeEventListener('visibilitychange', kontrolEt)
+    }
+  }, [])
+
   // Hangi panel ekranın ortasında? Üst bar ve zaman çizelgesi buna bakar.
   useEffect(() => {
     const kapsayici = kapsayiciRef.current
@@ -264,13 +323,35 @@ export default function BelgeselAkisi({ aktifId, onAktifDegis, hiz = 1 }) {
     return () => gozlemci.disconnect()
   }, [aktifId, onAktifDegis, paneller])
 
+  /**
+   * Hedef panele git.
+   *
+   * `scrollIntoView` yerine hedef konum elle hesaplanıyor: öğenin
+   * `offsetParent`'ı düzene göre değiştiği için offsetTop güvenilir
+   * değil, kutu konumlarının farkı ise her zaman doğru.
+   *
+   * Ayrıca yumuşak kaydırma bazı ortamlarda hiç başlamıyor (sekme
+   * arka planda, hareket azaltma, bazı gömülü tarayıcılar). Yarım
+   * saniye sonra hedefe ulaşılmadıysa doğrudan atlanır — düğme her
+   * koşulda bir işe yarar.
+   */
   const panelinYanina = useCallback((sira) => {
     const oge = panelRefleri.current.get(sira)
-    if (!oge) return
+    const kapsayici = kapsayiciRef.current
+    if (!oge || !kapsayici) return
     otomatikKaydirmaRef.current = true
+
+    const hedef = Math.max(
+      0,
+      kapsayici.scrollTop + (oge.getBoundingClientRect().top - kapsayici.getBoundingClientRect().top)
+    )
     const hareketAzalt = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
-    oge.scrollIntoView({ behavior: hareketAzalt ? 'auto' : 'smooth', block: 'start' })
-    window.setTimeout(() => { otomatikKaydirmaRef.current = false }, 900)
+    kapsayici.scrollTo({ top: hedef, behavior: hareketAzalt ? 'auto' : 'smooth' })
+
+    window.setTimeout(() => {
+      if (Math.abs(kapsayici.scrollTop - hedef) > 8) kapsayici.scrollTop = hedef
+      otomatikKaydirmaRef.current = false
+    }, 500)
   }, [])
 
   // Otomatik oynatma: panelden panele ilerler.
@@ -318,6 +399,14 @@ export default function BelgeselAkisi({ aktifId, onAktifDegis, hiz = 1 }) {
   return (
     <div className="pgb">
       <div className="pgb-akis" ref={kapsayiciRef}>
+        <BelgeselGirisi
+          onBasla={() => panelinYanina(0)}
+          onPadisahSec={(id) => {
+            const hedef = paneller.findIndex((panel) => panel.padisahId === id)
+            if (hedef >= 0) panelinYanina(hedef)
+          }}
+        />
+
         {paneller.map((panel, sira) => {
           const padisah = padisahBul(panel.padisahId)
           return (

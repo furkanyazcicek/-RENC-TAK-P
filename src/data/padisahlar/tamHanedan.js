@@ -1,5 +1,6 @@
 import { kronolojiKaydi } from './kronoloji.js'
 import { tarih } from './tipler.js'
+import { ANLATIMLAR } from './anlatimlar.js'
 
 /**
  * 4–36. padişahlar için öğretim odaklı özet kayıtlar.
@@ -36,6 +37,7 @@ const PROFILLER = [
   },
   {
     id: 'ikinci-murad', order: 6, name: 'II. Murad', father: 'I. Mehmed', period: 'Kuruluş Dönemi', duration: 'yaklaşık 28 yıl (iki saltanat)',
+    capitals: ['Edirne'], selef: 'I. Mehmed (Çelebi)', halef: 'II. Mehmed (Fatih)',
     headline: 'Balkan Hâkimiyeti Kesinleşiyor',
     summary: 'İç isyanlar ve Haçlı ittifaklarıyla mücadele eden II. Murad, Varna ve II. Kosova zaferleriyle Balkanlarda kalıcı Osmanlı üstünlüğünün temelini attı.',
     map: 'murad-1451', startMap: 'mehmed-1421',
@@ -49,6 +51,7 @@ const PROFILLER = [
   },
   {
     id: 'fatih-sultan-mehmed', order: 7, name: 'II. Mehmed', epithet: 'Fatih', father: 'II. Murad', period: 'Yükselme Dönemi', duration: 'yaklaşık 32 yıl (iki saltanat)',
+    capitals: ['Edirne (1451–1453)', 'İstanbul (1453’ten itibaren)'], selef: 'II. Murad', halef: 'II. Bayezid',
     headline: 'Bir Çağ Kapanıyor, İmparatorluk Doğuyor',
     summary: 'İstanbul’u fethederek Osmanlı’yı dünya imparatorluğuna dönüştürdü; Balkanlar, Anadolu ve Karadeniz’de merkezî hâkimiyeti genişletti.',
     map: 'fatih-1481', startMap: 'murad-1451',
@@ -125,7 +128,7 @@ const PROFILLER = [
     map: 'klasik-1648', startMap: 'klasik-1648',
     events: [[1596, 'Haçova Savaşı', 'Osmanlı ordusu Avusturya kuvvetlerini yendi; III. Mehmed sefere katıldı.', 'battle'], [1596, 'Eğri’nin fethi', 'Orta Avrupa cephesinde önemli bir kale alındı.', 'conquest'], [1603, 'Celâli isyanlarının büyümesi', 'Anadolu’da güvenlik, üretim ve vergi düzeni ağır biçimde sarsıldı.']],
     reforms: ['Merkez, savaş finansmanı ve Anadolu’daki güvenlik krizi için olağanüstü tedbirler aldı.'],
-    osym: ['Haçova Savaşı “Kazanova” olarak da anılır.', 'III. Mehmed sefere çıkan son padişahlardan biridir.', 'Celâli isyanları bu dönemde genişledi.'],
+    osym: ['Haçova (Mezőkeresztes) Savaşı 1596’da Avusturya’ya karşı kazanıldı.', 'III. Mehmed sefere çıkan son padişahlardan biridir.', 'Celâli isyanları bu dönemde genişledi.'],
   },
   {
     id: 'birinci-ahmed', order: 14, name: 'I. Ahmed', father: 'III. Mehmed', period: 'Klasik Düzenin Dönüşümü',
@@ -138,6 +141,7 @@ const PROFILLER = [
   },
   {
     id: 'birinci-mustafa', order: 15, name: 'I. Mustafa', father: 'III. Murad', period: 'Klasik Düzenin Dönüşümü', duration: 'iki saltanat toplamı yaklaşık 2 yıl',
+    selef: 'I. Ahmed (ilk saltanat) · II. Osman (ikinci saltanat)', halef: 'II. Osman (ilk saltanat) · IV. Murad (ikinci saltanat)',
     headline: 'İki Kısa Saltanat',
     summary: 'I. Mustafa, hanedanın kardeşten kardeşe geçen ilk taht örneği oldu; iki kısa saltanatı saray grupları ve askerî çevrelerin etkisini görünür kıldı.',
     map: 'klasik-1648', startMap: 'klasik-1648',
@@ -147,6 +151,7 @@ const PROFILLER = [
   },
   {
     id: 'genc-osman', order: 16, name: 'II. Osman', epithet: 'Genç Osman', father: 'I. Ahmed', period: 'Klasik Düzenin Dönüşümü',
+    selef: 'I. Mustafa', halef: 'I. Mustafa (ikinci kez tahta çıktı)',
     headline: 'Reform Arayışı ve Saray Darbesi',
     summary: 'Hotin Seferi sonrasında askerî sistemi yenilemek isteyen Genç Osman, yeniçeri ayaklanmasıyla tahttan indirilip öldürülen ilk Osmanlı padişahı oldu.',
     map: 'klasik-1648', startMap: 'klasik-1648',
@@ -358,15 +363,40 @@ const olayKaydi = (padisahId, kayit, sira) => {
 function padisahOlustur(profil) {
   const kronoloji = kronolojiKaydi(profil.id)
   const olaylar = profil.events.map((kayit, sira) => olayKaydi(profil.id, kayit, sira))
-  const siradakiAd = ADLAR[profil.order] ?? null
-  const oncekiAd = ADLAR[profil.order - 2] ?? null
+  /**
+   * Selef/halef sırayla türetilir; fakat İKİ KEZ tahta çıkan padişahlarda
+   * (I. Mustafa, II. Murad, II. Mehmed) sıra numarası doğru cevabı
+   * vermez. Örneğin II. Osman'dan sonra sıradaki numara IV. Murad'dır,
+   * oysa tahta ikinci kez I. Mustafa geçmiştir. Bu yüzden profil kendi
+   * değerini yazabilir; yazmazsa sıra kullanılır.
+   */
+  const siradakiAd = profil.halef ?? ADLAR[profil.order] ?? null
+  const oncekiAd = profil.selef ?? ADLAR[profil.order - 2] ?? null
   const basMetin = kronoloji.basMetin ?? String(kronoloji.bas)
   const bitMetin = kronoloji.bitMetin ?? (kronoloji.kisaSaltanat ? `${kronoloji.bit} (${kronoloji.kisaSaltanat})` : String(kronoloji.bit))
   const olayOzeti = olaylar.map((olay) => `${olay.date.value}: ${olay.title}`).join(' · ')
+  /**
+   * SESLENDİRME EKRANI OKUMAZ. Elle yazılan metin varsa otomatik
+   * taslağın yerine geçer; yoksa taslak çalışmayı sürdürür, böylece
+   * hiçbir padişah sessiz kalmaz.
+   */
+  const elleYazilanAnlatim = ANLATIMLAR[profil.id] ?? null
 
   return {
     id: profil.id,
     order: profil.order,
+    /**
+     * Bu kayıtlar elle yazılmadı; profil satırlarından üretildi.
+     * İlk üç padişahtaki gibi ayrıntılı savaş/fetih/kişi anlatımı ve
+     * delilli nitelik değerlendirmesi İÇERMEZ. Arayüz bunu öğrenciye
+     * açıkça söyler — eksik içeriğin "tam" gibi görünmesi en tehlikeli
+     * durumdur.
+     *
+     * 'anlatimli' ara kademesi: ekran kayıtları hâlâ özet, ama sesli
+     * anlatımı elle yazılmış. Uyarı metni buna göre değişir; öğrenciye
+     * "seslendirme sonra eklenecek" denmez, çünkü eklenmiştir.
+     */
+    detaySeviyesi: elleYazilanAnlatim ? 'anlatimli' : 'ozet',
     name: profil.name,
     epithet: profil.epithet,
     reignStart: tarih(kronoloji.bas, basMetin),
@@ -378,7 +408,14 @@ function padisahOlustur(profil) {
     dynastyPeriod: profil.period,
     openingHeadline: profil.headline,
     summary: profil.summary,
-    capitals: kronoloji.bas < 1453 ? ['Edirne', 'Bursa'] : ['İstanbul'],
+    /**
+     * Başkent, TAHTA ÇIKIŞ yılından değil dönemin sonundan okunur.
+     * Önceki kural "tahta çıkış < 1453" olduğu için Fatih 1444'te tahta
+     * çıktığından başkenti "Edirne · Bursa" görünüyordu — en çok sorulan
+     * padişahta yanlış bilgi. Fatih gibi geçiş dönemleri profilinde
+     * açıkça yazılır.
+     */
+    capitals: profil.capitals ?? (kronoloji.bit <= 1453 ? ['Edirne'] : ['İstanbul']),
     traits: [
       {
         field: olaylar.some((olay) => olay.kind === 'battle' || olay.kind === 'conquest') ? 'askeri' : 'diplomasi',
@@ -426,7 +463,7 @@ function padisahOlustur(profil) {
       headline: `Taht ${siradakiAd}’a Geçiyor`,
       body: `${profil.name} döneminin ardından Osmanlı tahtının bir sonraki halkası ${siradakiAd} oldu.`,
     } : undefined),
-    narration: [
+    narration: elleYazilanAnlatim ?? [
       { id: `${profil.id}-intro`, kind: 'intro', seconds: 18, text: profil.summary },
       { id: `${profil.id}-reign`, kind: 'reign', seconds: 22, text: `${profil.name} döneminin ana akışı: ${olayOzeti}.` },
       { id: `${profil.id}-transition`, kind: 'transition', seconds: 14, text: siradakiAd ? `Bu dönemin ardından Osmanlı tahtına ${siradakiAd} geçti.` : '1 Kasım 1922’de saltanatın kaldırılmasıyla Osmanlı padişahlığı sona erdi.' },

@@ -101,6 +101,28 @@ function Kunye({ padisah }) {
 function GenelBakis({ padisah, akis, onOlayAc }) {
   return (
     <>
+      {/* Özet kayıtlar tam içerik gibi görünmemeli. */}
+      {padisah.detaySeviyesi === 'ozet' && (
+        <div className="pg-kart pg-kart-uyari" style={{ marginBottom: 12 }}>
+          <span className="pg-rozet pg-rozet-sonuk">Özet kayıt</span>
+          <p className="pg-olay-ozet" style={{ marginTop: 8 }}>
+            Bu padişahın ayrıntılı anlatımı henüz hazırlanmadı. Buradaki
+            bilgiler doğrulanmış özet kayıtlardır; savaş, fetih ve önemli
+            kişi anlatımları ile sesli anlatım metni sonraki aşamada eklenecek.
+            Ayrıntılı örnek için Osman Gazi, Orhan Gazi veya I. Murad’a bak.
+          </p>
+        </div>
+      )}
+      {padisah.detaySeviyesi === 'anlatimli' && (
+        <div className="pg-kart pg-kart-uyari" style={{ marginBottom: 12 }}>
+          <span className="pg-rozet pg-rozet-sonuk">Özet kayıt · sesli anlatım hazır</span>
+          <p className="pg-olay-ozet" style={{ marginTop: 8 }}>
+            Bu padişahın sesli anlatımı hazırlandı; anlatım ekrandaki bilgiyi
+            tekrar etmez, dönemin nedenlerini ve sonuçlarını anlatır. Aşağıdaki
+            savaş, fetih ve kişi kayıtları ise şimdilik özet düzeydedir.
+          </p>
+        </div>
+      )}
       <p className="pg-ozet">{padisah.summary}</p>
 
       <h3 className="pg-bolum-basligi"><Crown size={13} aria-hidden="true" /> Hanedan ve hükümdarlık</h3>
