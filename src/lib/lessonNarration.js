@@ -31,9 +31,6 @@ export const NARRATION_PILOT_SLUGS = Object.freeze([
   'hucresel-solunum-mitokondri',
 ])
 
-/** Geriye uyumluluk: eski çağrılar tek slug bekliyordu. */
-export const NARRATION_PILOT_SLUG = NARRATION_PILOT_SLUGS[0]
-
 export function isNarrationEnabled(lessonSlug) {
   return NARRATION_PILOT_SLUGS.includes(lessonSlug)
 }
