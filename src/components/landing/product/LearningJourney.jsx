@@ -69,7 +69,11 @@ const ELEMENT_STYLES = {
   soygaz: 'border-brand-300/55 bg-brand-500/20 text-brand-100 hover:bg-brand-500/30',
 }
 
-const HISTORY_RULERS = PADISAHLAR.map((ruler) => ({
+// Ana sayfa kısa bir ürün vitrini olarak yalnızca kuruluş dönemindeki
+// ilk üç padişahı gösterir. Tam hanedan anlatımı ayrı sayfada kalır.
+const HOME_HISTORY_RULERS = PADISAHLAR.slice(0, 3)
+
+const HISTORY_RULERS = HOME_HISTORY_RULERS.map((ruler) => ({
   key: ruler.id,
   label: ruler.name,
   helper: `${ruler.reignStart.value}–${ruler.reignEnd.value} · ${ruler.openingHeadline}`,
@@ -320,9 +324,9 @@ export function InteractiveVisualShowcase() {
   const [activeSubject, setActiveSubject] = useState('biology')
   const [activeBiologyRegion, setActiveBiologyRegion] = useState(MITOCHONDRIA_REGIONS[0].key)
   const [activeChemistryRegion, setActiveChemistryRegion] = useState(CHEMISTRY_REGIONS[0].key)
-  const [activeRulerId, setActiveRulerId] = useState(PADISAHLAR[0].id)
+  const [activeRulerId, setActiveRulerId] = useState(HOME_HISTORY_RULERS[0].id)
   const subject = SUBJECTS.find((item) => item.key === activeSubject) ?? SUBJECTS[0]
-  const activeRuler = PADISAHLAR.find((item) => item.id === activeRulerId) ?? PADISAHLAR[0]
+  const activeRuler = HOME_HISTORY_RULERS.find((item) => item.id === activeRulerId) ?? HOME_HISTORY_RULERS[0]
 
   const toggleBiologyRegion = (key) => {
     setActiveBiologyRegion((current) => current === key ? null : key)
