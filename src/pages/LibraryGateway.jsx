@@ -1,4 +1,4 @@
-import { BookOpen, ClipboardList, Crown, Library as LibraryIcon, Map as MapIcon } from 'lucide-react'
+import { BookOpen, ClipboardList, Crown, FlaskConical, Library as LibraryIcon, Map as MapIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { AppShell, Button } from '../components/ui'
 import { DashboardHero, Panel } from '../components/dashboard'
@@ -23,10 +23,10 @@ const libraries = [
 ]
 
 /**
- * Etkileşimli tarih deneyimleri — kütüphanenin metin içeriğinden ayrı
- * duran, tam ekran çalışan araçlar. Buraya konuldu çünkü öğrencinin
- * "tarih çalışacağım" dediğinde bakacağı yer burası; ayrı bir sekme
- * açmak gezinmeyi kalabalıklaştırırdı.
+ * Etkileşimli deneyimler — kütüphanenin metin içeriğinden ayrı duran,
+ * tam ekran çalışan araçlar. Buraya konuldu çünkü öğrencinin "çalışacağım"
+ * dediğinde bakacağı yer burası; her araç için ayrı bir sekme açmak
+ * gezinmeyi kalabalıklaştırırdı.
  */
 const experiences = [
   {
@@ -41,6 +41,13 @@ const experiences = [
     description: 'Yılı sürükle, dönemin siyasi haritası anında değişsin.',
     to: '/tarih-atlasi',
     Icon: MapIcon,
+  },
+  {
+    title: 'Kimya Atlası',
+    description: 'Formül yaz; atom sayımı, molekül geometrisi, Lewis yapısı ve bağlar tek ekranda açılsın.',
+    to: '/kimya-atlasi',
+    Icon: FlaskConical,
+    badge: 'Yeni',
   },
 ]
 
@@ -83,7 +90,7 @@ export default function LibraryGateway() {
 
       <section className="mt-6">
         <h2 className="font-display text-sm font-bold uppercase tracking-[0.14em] text-ink/55">
-          Etkileşimli tarih deneyimleri
+          Etkileşimli deneyimler
         </h2>
         <div className="mt-3 grid gap-4 sm:grid-cols-2">
           {experiences.map(({ title, description, to, Icon, badge }) => (
