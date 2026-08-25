@@ -789,9 +789,10 @@
 
 /* ————— Duyarlı düzen ————— */
 @media (max-width: 1180px) {
-  /* Kapak dört sütuna sığmıyor: sahne ile durum alt satıra iner. */
-  .fa-modul-kapak { grid-template-columns: auto minmax(0, 1fr); }
-  .fa-modul-sahne { grid-column: 1 / -1; min-height: 118px; }
+  /* Kapak dört sütuna sığmıyor: yalnız durum satırı alta iner, çizim
+     başlığın yanında kalır. Çizim tam satıra inerse laboratuvar ilk
+     ekrandan aşağı düşüyor. */
+  .fa-modul-kapak { grid-template-columns: auto minmax(0, 1fr) minmax(150px, 0.3fr); }
   .fa-modul-kapak-durum { grid-column: 1 / -1; padding-left: 0; padding-top: 11px; border-left: 0; border-top: 1px solid rgb(var(--fa-cizgi)); }
 }
 
@@ -800,6 +801,9 @@
   .fa-lab-yan { position: static; }
   .fa-modul-kapak { grid-template-columns: auto minmax(0, 1fr); }
   .fa-modul-kapak-durum { grid-column: 2; padding: 0; border-left: 0; }
+  /* Çizim tam satıra iner; genişliği sınırlanmazsa yüksekliği
+     laboratuvarı ilk ekranın dışına itiyor. */
+  .fa-modul-sahne { grid-column: 1 / -1; width: 100%; max-width: 380px; margin-inline: auto; }
 }
 @media (max-width: 900px) {
   .fa-yan { display: none; }
