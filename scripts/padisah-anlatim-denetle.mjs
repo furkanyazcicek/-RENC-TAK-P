@@ -19,14 +19,21 @@ import { ANLATIMLAR } from '../src/data/padisahlar/anlatimlar.js'
 import { anlatimCizelgesi, anlatimSuresi } from '../src/lib/padisahAnlatim.js'
 
 /**
- * Hedef süre aralığı (konuşma; duraklamalar hariç).
- * İlk sürümde 75–100 sn'ydi. Metinlere somut ayrıntı eklenmesi
- * kararından sonra üst sınır genişletildi: olayın nedenini ve
- * kahramanlarını anlatmak yer istiyor. Duraklamalarla birlikte
- * dinlenen süre bunun yaklaşık 12 saniye üstüne çıkar.
+ * Hedef süre aralığı (saniye).
+ *
+ * Bu sayı üç kez değişti ve her seferinde gerçeğe yaklaştı:
+ *   75–100  metin tahmini, duraklama ve ayrıntı yokken
+ *   75–150  metinlere somut ayrıntı eklendikten sonra
+ *   90–180  GERÇEK kayıtlar üretildikten sonra
+ *
+ * Kayıtlar bağlandığından beri ölçülen değer tahmin değil, dosyanın
+ * kendi uzunluğudur: duraklamalar ve yavaşlatılmış belgesel temposu
+ * dâhil. Üretilen 36 kaydın dağılımı 1:45 ile 2:53 arasında, ortalama
+ * 2:10. Aralık bu dağılıma göre konuldu; dışına çıkan bir anlatım
+ * ya çok kısa kalmış ya da fazla uzamış demektir.
  */
-const EN_KISA = 75
-const EN_UZUN = 150
+const EN_KISA = 90
+const EN_UZUN = 180
 
 /**
  * KURAL NASIL DEĞİŞTİ

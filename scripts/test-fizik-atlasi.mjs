@@ -89,6 +89,19 @@ yakin('25 °C = 298,15 K', sicakligaCevir(25, '°C', 'K'), 298.15, 1e-9)
 yakin('0 °C = 32 °F', sicakligaCevir(0, '°C', '°F'), 32, 1e-9)
 yakin('-40 °C = -40 °F', sicakligaCevir(-40, '°C', '°F'), -40, 1e-9)
 dogrula('Kayan nokta kalıntısı gösterilmez', sayiBicimle(0.1 + 0.2, 2) === '0,3', sayiBicimle(0.1 + 0.2, 2))
+// Sondaki sıfırlar YALNIZCA ondalık kısımdan kırpılmalı. Tam sayının
+// basamakları kırpılırsa 90° ekranda 9° görünür — bu hata bir kez yaşandı,
+// bir daha dönmesin diye buraya kalıcı olarak yazıldı.
+for (const [deger, basamak, beklenen] of [
+  [90, 0, '90'], [180, 0, '180'], [360, 0, '360'], [30, 0, '30'], [60, 0, '60'],
+  [10, 0, '10'], [100, 0, '100'], [1000, 0, '1000'], [2700, 0, '2700'], [0, 0, '0'],
+  [-90, 0, '-90'], [1030, 0, '1030'], [4180, 0, '4180'], [20, 0, '20'],
+  [100, 1, '100'], [20.5, 1, '20,5'], [3.5, 2, '3,5'], [4.0, 2, '4'],
+  [12.30, 2, '12,3'], [0.917, 3, '0,917'], [0.5, 2, '0,5'], [9.81, 2, '9,81'],
+]) {
+  dogrula(`sayiBicimle(${deger}, ${basamak}) = "${beklenen}"`,
+    sayiBicimle(deger, basamak) === beklenen, `"${sayiBicimle(deger, basamak)}" geldi`)
+}
 dogrula('Eksi sıfır temizlenir', sayiBicimle(-0.0001, 2) === '0', sayiBicimle(-0.0001, 2))
 dogrula('Türkçe ondalık ayracı', sayiBicimle(3.5, 2) === '3,5', sayiBicimle(3.5, 2))
 yakin('Duyarlılık yuvarlama 2,37 → 2,4', duyarlilikYuvarla(2.37, 0.1), 2.4, 1e-12)
