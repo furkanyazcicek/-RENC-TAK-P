@@ -1000,3 +1000,28 @@
 @media (prefers-reduced-motion: reduce) {
   .pgg-halka-oge { transition: none; }
 }
+
+
+/* ---------- Belgesel kontrol çubuğu: ses ve müzik düğmeleri ---------- */
+/* Oynat düğmesinin yanında dururlar; ondan daha sessiz görünmeleri
+   gerekir çünkü ikincil denetimlerdir. */
+.pgb-ses-dugme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 30px;
+  block-size: 30px;
+  border-radius: 999px;
+  border: 1px solid rgb(var(--pg-altin) / 0.28);
+  background: rgb(var(--pg-gece) / 0.55);
+  color: rgb(var(--pg-metin) / 0.82);
+  cursor: pointer;
+  transition: opacity 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.pgb-ses-dugme:hover:not(:disabled) {
+  color: rgb(var(--pg-metin));
+  border-color: rgb(var(--pg-altin) / 0.5);
+}
+.pgb-ses-dugme:disabled { opacity: 0.32; cursor: not-allowed; }
+.pgb-ses-dugme-sonuk:not(:disabled) { opacity: 0.45; }
+.pgb-ses-dugme-sonuk:not(:disabled):hover { opacity: 1; }

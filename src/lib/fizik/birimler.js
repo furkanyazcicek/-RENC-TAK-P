@@ -184,11 +184,18 @@ export function sayiBicimle(deger, basamak = 2) {
 
   let yuvarlanmis = Number(deger.toFixed(basamak))
   if (Object.is(yuvarlanmis, -0)) yuvarlanmis = 0
-  // Gereksiz sıfırları at: 3,50 → 3,5 ; 4,00 → 4
-  const metin = yuvarlanmis
-    .toFixed(basamak)
-    .replace(/\.?0+$/, '')
-    .replace('.', ',')
+
+  // Gereksiz ondalık sıfırları at: 3,50 → 3,5 ; 4,00 → 4
+  // DİKKAT: kırpma yalnızca NOKTADAN SONRAKİ kısma uygulanır. Doğrudan
+  // "sondaki sıfırları sil" denirse 90 → 9, 100 → 1, 2700 → 27 olur;
+  // tam sayıların basamakları yok edilir.
+  const ham = yuvarlanmis.toFixed(basamak)
+  let metin = ham
+  if (ham.includes('.')) {
+    const [tam, kesir] = ham.split('.')
+    const kirpilmis = kesir.replace(/0+$/, '')
+    metin = kirpilmis ? `${tam},${kirpilmis}` : tam
+  }
   return metin === '' || metin === '-' ? '0' : metin
 }
 

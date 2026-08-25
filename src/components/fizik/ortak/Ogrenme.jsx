@@ -3,7 +3,7 @@ import {
   CheckCircle2, HelpCircle, Lightbulb, RotateCcw, Target, XCircle,
 } from 'lucide-react'
 import { Not } from './Panolar.jsx'
-import { vurguyuIsle } from './ModulKabugu.jsx'
+import { vurguyuIsle } from './metin.jsx'
 import { kavramKaydet } from '../../../lib/fizik/ilerleme.js'
 
 const HARFLER = ['A', 'B', 'C', 'D', 'E']

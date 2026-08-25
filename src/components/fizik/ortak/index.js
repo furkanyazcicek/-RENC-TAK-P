@@ -9,7 +9,8 @@ export {
   OlcumKarti, OlcumPanosu, FormulPaneli, Not, HataListesi, GunlukHayat, IlerlemeCubugu,
 } from './Panolar.jsx'
 export { TahminKutusu, OgrenmeKontrolu, MiniGorev } from './Ogrenme.jsx'
-export { ModulKabugu, vurguyuIsle } from './ModulKabugu.jsx'
+export { ModulKabugu } from './ModulKabugu.jsx'
+export { vurguyuIsle } from './metin.jsx'
 export {
   eksenKur, VektorOku, KoordinatDuzlemi, AciYayi, Tutamak, Iz, SahneRozeti,
 } from './Gorseller.jsx'

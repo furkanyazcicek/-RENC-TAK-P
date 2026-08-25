@@ -67,7 +67,9 @@ export function isilDenge(cisimler) {
  */
 export function isinmaEgrisi({ maddeKodu, kutle, baslangicSicakligi, isiticiGucu, sure, adim = 400 }) {
   const m = MADDE_ISI[maddeKodu]
-  if (!m) return { noktalar: [], asamalar: [] }
+  // Tanınmayan madde sessizce boş dizi döndürürse çağıran taraf "noktalar[0]"
+  // diye erişip çöker. Hatayı görünür kılmak, sessizce boş dönmekten iyidir.
+  if (!m) return { noktalar: [], asamalar: [], madde: null, hata: `Bilinmeyen madde: ${maddeKodu}` }
 
   const katiC = m.katiOzIsi ?? m.ozIsi * 0.5
   const sivic = m.ozIsi

@@ -212,12 +212,14 @@ function IsinmaEgrisi() {
   const sure = Math.max(20, toplamGerekenIsi / isiticiGucu)
 
   const egri = useMemo(
-    () => isinmaEgrisi({ maddeKod, kutle, baslangicSicakligi: baslangic, isiticiGucu, sure, adim: 400 }),
+    () => isinmaEgrisi({ maddeKodu: maddeKod, kutle, baslangicSicakligi: baslangic, isiticiGucu, sure, adim: 400 }),
     [maddeKod, kutle, baslangic, isiticiGucu, sure],
   )
 
   const sim = useSimulasyonZamani({ bitis: sure })
   const t = Math.min(sim.zaman, sure)
+  // Son noktanın zamanı yuvarlanarak saklandığı için `sure` ile birebir
+  // eşleşmeyebilir; bu yüzden aramanın sonuncuya düşen bir yedeği var.
   const aktif = egri.noktalar.find((n) => n.t >= t) ?? egri.noktalar[egri.noktalar.length - 1]
 
   const HAL_ADLARI = { kati: 'Katı', erime: 'Erime (katı + sıvı bir arada)', sivi: 'Sıvı', kaynama: 'Kaynama (sıvı + gaz bir arada)', gaz: 'Gaz' }
@@ -455,10 +457,10 @@ function GenlesmeTezgahi() {
                       <polyline points={yol(4)} fill="none" stroke={GENLESME_KATSAYILARI[ikinciMetal].renk} strokeWidth="9" strokeLinecap="round" />
                       <rect x="118" y="112" width="14" height="42" rx="3" fill="rgb(var(--fa-cizgi-guclu))" />
                       <text x="130" y="196" fontSize="11" fill={GENLESME_KATSAYILARI[metal].renk}>
-                        Üst: {GENLESME_KATSAYILARI[metal].ad} (λ = {(GENLESME_KATSAYILARI[metal].lambda * 1e6).toFixed(1)}×10⁻⁶)
+                        Üst: {GENLESME_KATSAYILARI[metal].ad} (λ = {sayiBicimle(GENLESME_KATSAYILARI[metal].lambda * 1e6, 1)}×10⁻⁶)
                       </text>
                       <text x="130" y="214" fontSize="11" fill={GENLESME_KATSAYILARI[ikinciMetal].renk}>
-                        Alt: {GENLESME_KATSAYILARI[ikinciMetal].ad} (λ = {(GENLESME_KATSAYILARI[ikinciMetal].lambda * 1e6).toFixed(1)}×10⁻⁶)
+                        Alt: {GENLESME_KATSAYILARI[ikinciMetal].ad} (λ = {sayiBicimle(GENLESME_KATSAYILARI[ikinciMetal].lambda * 1e6, 1)}×10⁻⁶)
                       </text>
                       <text x="130" y="240" fontSize="11.5" fontWeight="700" fill="rgb(var(--fa-olcum))">
                         Kıvrılma yönü: {bm?.yon === 'asagi' ? 'aşağı' : bm?.yon === 'yukari' ? 'yukarı' : 'düz (katsayılar eşit)'}
@@ -472,7 +474,7 @@ function GenlesmeTezgahi() {
 
           <div className="fa-sahne-rozet">
             <span className="fa-rozet olcum">ΔL = {sayiBicimle(uzama * 1000, 3)} mm</span>
-            <span className="fa-rozet">λ = {(m.lambda * 1e6).toFixed(1)}×10⁻⁶ /°C</span>
+            <span className="fa-rozet">λ = {sayiBicimle(m.lambda * 1e6, 1)}×10⁻⁶ /°C</span>
           </div>
         </div>
 
@@ -539,7 +541,7 @@ function GenlesmeTezgahi() {
 
         {deneyTuru === 'bimetal' && bm ? (
           <Not tur="bilgi" baslik="Termostat böyle çalışır">
-            İki metalin genleşme katsayısı farkı {(bm.lambdaFarki * 1e6).toFixed(1)}×10⁻⁶ /°C.
+            İki metalin genleşme katsayısı farkı {sayiBicimle(bm.lambdaFarki * 1e6, 1)}×10⁻⁶ /°C.
             {' '}Isınınca {GENLESME_KATSAYILARI[bm.lambdaFarki > 0 ? metal : ikinciMetal].ad} daha çok uzuyor
             ve şerit {bm.yon === 'asagi' ? 'aşağı' : bm.yon === 'yukari' ? 'yukarı' : ''} kıvrılıyor. Bu kıvrılma
             bir kontağı açıp kapatarak ütü, fırın ve su ısıtıcılarında sıcaklığı sabit tutar.

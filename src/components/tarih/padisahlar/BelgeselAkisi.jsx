@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { ChevronDown, Crown, Info, MapPin, Pause, Play, TriangleAlert } from 'lucide-react'
+import { ChevronDown, Crown, Info, MapPin, Music2, Pause, Play, TriangleAlert, Volume2, VolumeX } from 'lucide-react'
 import { belgeselAkisi, panelSuresi } from '../../../data/padisahlar/belgeselAkisi'
 import { NITELIK_ALANLARI, NITELIK_KADEMELERI } from '../../../data/padisahlar/tipler'
 import { padisahBul } from '../../../data/padisahlar'
+import { padisahSesAdresi, padisahSesSuresi } from '../../../lib/padisahAnlatim'
 import BelgeselGirisi from './BelgeselGirisi'
 import DonemHaritasi from './DonemHaritasi'
 import useDerinlik from './useDerinlik'
@@ -242,15 +243,58 @@ function PanelIcerigi({ panel, padisah }) {
   }
 }
 
-export default function BelgeselAkisi({ aktifId, onAktifDegis, hiz = 1 }) {
+export default function BelgeselAkisi({
+  aktifId,
+  onAktifDegis,
+  hiz = 1,
+  onOynuyorDegis,
+  muzikVar = false,
+  muzikAcik = false,
+  onMuzikDegis,
+}) {
   const kapsayiciRef = useRef(null)
   const panelRefleri = useRef(new Map())
   const [oynuyor, setOynuyor] = useState(false)
   const [aktifPanel, setAktifPanel] = useState(0)
+  const [sesAcik, setSesAcik] = useState(true)
   const otomatikKaydirmaRef = useRef(false)
   const zamanlayiciRef = useRef(null)
+  const sesRef = useRef(null)
+  const calanPadisahRef = useRef(null)
 
   const paneller = useMemo(() => belgeselAkisi(), [])
+
+  /**
+   * SES BELGESELİ SÜRER, PANEL DEĞİL.
+   *
+   * Panel süreleri ses yokken kullanılan tahminlerdir. Gerçek kayıt
+   * varsa anlatım ile ekranın ayrı hızlarda ilerlemesi kabul edilemez:
+   * anlatıcı Ankara Savaşı'nı anlatırken ekranda başka bir panel
+   * durursa öğrenci ikisini birbirine bağlayamaz.
+   *
+   * Bu yüzden bir padişahın panelleri, o padişahın kaydının gerçek
+   * uzunluğuna bölünür. Kayıt yoksa eski tahminler kullanılır ve
+   * belgesel sessiz ama bozulmadan akmaya devam eder.
+   */
+  const padisahAraliklari = useMemo(() => {
+    const harita = new Map()
+    paneller.forEach((panel, sira) => {
+      const kayit = harita.get(panel.padisahId)
+      if (kayit) kayit.son = sira
+      else harita.set(panel.padisahId, { ilk: sira, son: sira })
+    })
+    for (const [id, kayit] of harita) {
+      kayit.adet = kayit.son - kayit.ilk + 1
+      kayit.sesSuresi = padisahSesSuresi(padisahBul(id))
+    }
+    return harita
+  }, [paneller])
+
+  const aktifPadisahId = paneller[aktifPanel]?.padisahId ?? null
+  const aktifSesAdresi = useMemo(
+    () => padisahSesAdresi(padisahBul(aktifPadisahId)),
+    [aktifPadisahId],
+  )
   useDerinlik(kapsayiciRef)
 
   /**
@@ -359,13 +403,63 @@ export default function BelgeselAkisi({ aktifId, onAktifDegis, hiz = 1 }) {
     if (!oynuyor) return undefined
     const panel = paneller[aktifPanel]
     if (!panel) return undefined
-    const sure = (panelSuresi(panel) / Math.max(0.25, hiz)) * 1000
+    const aralik = padisahAraliklari.get(panel.padisahId)
+    const temelSure = aralik?.sesSuresi && aralik.adet
+      ? aralik.sesSuresi / aralik.adet
+      : panelSuresi(panel)
+    const sure = (temelSure / Math.max(0.25, hiz)) * 1000
     zamanlayiciRef.current = window.setTimeout(() => {
       if (aktifPanel + 1 < paneller.length) panelinYanina(aktifPanel + 1)
       else setOynuyor(false)
     }, sure)
     return () => window.clearTimeout(zamanlayiciRef.current)
-  }, [aktifPanel, hiz, oynuyor, panelinYanina, paneller])
+  }, [aktifPanel, hiz, oynuyor, padisahAraliklari, panelinYanina, paneller])
+
+  /**
+   * SESİN OYNATILMASI
+   *
+   * Kural: ses ancak öğrenci oynat düğmesine bastıktan sonra çalar.
+   * Tarayıcılar zaten kullanıcı dokunmadan ses çalmayı engeller; ama
+   * engellemeseler bile sayfayı açar açmaz konuşma başlaması rahatsız
+   * edicidir.
+   *
+   * Padişah değiştiğinde kayıt baştan başlar. Öğrenci akışın ortasına
+   * kaydırıp oynat derse, ses o padişahın panelleri içindeki konuma
+   * ORANTILI yerden devam eder; yoksa anlatıcı baştan başlarken ekran
+   * ortadan devam ediyor olurdu.
+   */
+  useEffect(() => {
+    const ses = sesRef.current
+    if (!ses) return undefined
+
+    if (!oynuyor || !sesAcik || !aktifSesAdresi) {
+      ses.pause()
+      return undefined
+    }
+
+    const aralik = padisahAraliklari.get(aktifPadisahId)
+    if (calanPadisahRef.current !== aktifPadisahId) {
+      calanPadisahRef.current = aktifPadisahId
+      if (aralik?.adet && ses.duration) {
+        const kacinci = Math.max(0, aktifPanel - aralik.ilk)
+        ses.currentTime = Math.min(ses.duration - 0.5, (kacinci / aralik.adet) * ses.duration)
+      } else {
+        ses.currentTime = 0
+      }
+    }
+
+    ses.playbackRate = Math.max(0.5, Math.min(2, hiz))
+    void ses.play().catch(() => {})
+    return undefined
+    // aktifPanel bilerek bağımlılık değil: her panel geçişinde sesi
+    // yeniden konumlandırmak anlatımı kesik kesik yapardı.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [oynuyor, sesAcik, aktifSesAdresi, aktifPadisahId, hiz, padisahAraliklari])
+
+  // Belgesel duraklayınca fon müziği de bunu bilmeli (kısılma/yükselme).
+  useEffect(() => {
+    onOynuyorDegis?.(oynuyor)
+  }, [oynuyor, onOynuyorDegis])
 
   // Kullanıcı kendisi kaydırırsa otomatik anlatım durur.
   useEffect(() => {
@@ -452,6 +546,11 @@ export default function BelgeselAkisi({ aktifId, onAktifDegis, hiz = 1 }) {
         </section>
       </div>
 
+      {/* Anlatım kaydı: padişah değiştikçe kaynağı değişir. */}
+      {aktifSesAdresi && (
+        <audio ref={sesRef} src={aktifSesAdresi} preload="metadata" muted={!sesAcik} />
+      )}
+
       <div className="pgb-kontrol">
         <button
           type="button"
@@ -461,13 +560,35 @@ export default function BelgeselAkisi({ aktifId, onAktifDegis, hiz = 1 }) {
         >
           {oynuyor ? <Pause size={16} /> : <Play size={16} style={{ marginLeft: 2 }} />}
         </button>
+        <button
+          type="button"
+          className={`pgb-ses-dugme${sesAcik && aktifSesAdresi ? '' : ' pgb-ses-dugme-sonuk'}`}
+          onClick={() => setSesAcik((eski) => !eski)}
+          disabled={!aktifSesAdresi}
+          title={aktifSesAdresi ? 'Anlatım sesini aç/kapat' : 'Bu padişahın sesi henüz eklenmedi'}
+          aria-label={sesAcik ? 'Anlatım sesini kapat' : 'Anlatım sesini aç'}
+          aria-pressed={Boolean(sesAcik && aktifSesAdresi)}
+        >
+          {sesAcik && aktifSesAdresi ? <Volume2 size={14} /> : <VolumeX size={14} />}
+        </button>
+        <button
+          type="button"
+          className={`pgb-ses-dugme${muzikVar && muzikAcik ? '' : ' pgb-ses-dugme-sonuk'}`}
+          onClick={onMuzikDegis}
+          disabled={!muzikVar}
+          title={muzikVar ? 'Fon müziğini aç/kapat' : 'Fon müziği henüz eklenmedi'}
+          aria-label={muzikAcik ? 'Fon müziğini kapat' : 'Fon müziğini aç'}
+          aria-pressed={Boolean(muzikVar && muzikAcik)}
+        >
+          <Music2 size={14} />
+        </button>
         <div className="pgb-ilerleme" role="progressbar" aria-label="Belgesel ilerlemesi" aria-valuenow={Math.round(ilerleme * 100)} aria-valuemin={0} aria-valuemax={100}>
           <span style={{ '--pg-oran': ilerleme }} />
         </div>
         <span className="pgb-sayac">{aktifPanel + 1} / {paneller.length}</span>
         <p className="pgb-ipucu">
           <Info size={12} aria-hidden="true" />
-          Kaydırarak ilerle — oynat düğmesi kendiliğinden akıtır.
+          Kaydırarak ilerle — oynat düğmesi sesli anlatımla birlikte akıtır.
         </p>
       </div>
     </div>

@@ -54,6 +54,8 @@ export default function PadisahGosterisi({ baslangicId = PADISAHLAR[0]?.id }) {
   const [sekme, setSekme] = useState('genel')
   const [seciliOlay, setSeciliOlay] = useState(null)
   const [hiz, setHiz] = useState(1)
+  // Belgesel modu kendi akışını sürüyor; müziğin kısılması için durumunu bilmeliyiz.
+  const [belgeselOynuyor, setBelgeselOynuyor] = useState(false)
   const [sesAcik, setSesAcik] = useState(true)
   const gecisZamanlayici = useRef(null)
 
@@ -82,7 +84,7 @@ export default function PadisahGosterisi({ baslangicId = PADISAHLAR[0]?.id }) {
   })
 
   // Fon müziği anlatımdan ayrı kanaldır; anlatım konuşurken kendini kısar.
-  const muzik = useFonMuzigi({ calisiyor })
+  const muzik = useFonMuzigi({ calisiyor: calisiyor || belgeselOynuyor })
 
   const aktifAnlatim = aktifBolum(cizelge, an)
   const anlatimSira = bolumSirasi(cizelge, an)
@@ -313,9 +315,22 @@ export default function PadisahGosterisi({ baslangicId = PADISAHLAR[0]?.id }) {
           belgesel → kaydırdıkça akan parallax anlatı (BelgeselAkisi)
           keşif    → sekmeli inceleme ekranı (aşağıdaki iki sütun)
           İkisi de aynı `data/padisahlar` kaynağını okur. */}
+      {/* Fon müziği MOD DIŞIDIR: belgesel ve keşif modlarında aynı öğe
+          çalmaya devam eder. Mod dalının içine konsaydı mod değişiminde
+          öğe sökülüp yeniden kurulur, müzik her geçişte baştan başlardı. */}
+      {muzik.adres && <audio ref={muzik.sesRef} src={muzik.adres} preload="none" loop />}
+
       {mod === 'belgesel' ? (
         <>
-          <BelgeselAkisi aktifId={aktifId} onAktifDegis={setAktifId} hiz={hiz} />
+          <BelgeselAkisi
+            aktifId={aktifId}
+            onAktifDegis={setAktifId}
+            hiz={hiz}
+            onOynuyorDegis={setBelgeselOynuyor}
+            muzikVar={muzik.muzikVar}
+            muzikAcik={muzik.acik}
+            onMuzikDegis={muzik.degistir}
+          />
           <ZamanCizelgesi kayitlar={kayitlar} aktifId={aktifId} onSec={setAktifId} />
         </>
       ) : (
@@ -439,8 +454,6 @@ export default function PadisahGosterisi({ baslangicId = PADISAHLAR[0]?.id }) {
           />
           {/* Ses geldiğinde bu öğe kaynağı alır; bugün adres yok, sessizdir. */}
           {sesAdresi && <audio ref={sesRef} src={sesAdresi} preload="metadata" muted={!sesAcik} />}
-          {/* Döngüde çalar; seviyesini useFonMuzigi yönetir. */}
-          {muzik.adres && <audio ref={muzik.sesRef} src={muzik.adres} preload="none" loop />}
         </div>
 
         {/* Sinematik sahneler iki sütunun da üzerine gelir. Böylece açılışta

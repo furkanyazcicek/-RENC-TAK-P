@@ -6,6 +6,7 @@ import { ICERIK } from '../../../data/fizik/icerik.js'
 import { bolgeBul } from '../../../data/fizik/bolgeler.js'
 import { FormulPaneli, GunlukHayat, HataListesi, Not } from './Panolar.jsx'
 import { MiniGorev, OgrenmeKontrolu, TahminKutusu } from './Ogrenme.jsx'
+import { vurguyuIsle } from './metin.jsx'
 import {
   deneyiTamamla, favoriDegistir, favoriMi, ilerlemeOku, konumKaydet, seviyeTamamla,
 } from '../../../lib/fizik/ilerleme.js'
@@ -195,20 +196,5 @@ export function ModulKabugu({ bolgeKod, deneyKod = null, children, deneyBasligi 
   )
 }
 
-/**
- * Metindeki **kalın** işaretlerini gerçek vurguya çevirir.
- * İçerik dosyalarında Markdown yazmak, JSX etiketi yazmaktan çok daha
- * okunaklı olduğu için bu küçük dönüştürücü var. Yalnızca kalın destekler;
- * içeriğe HTML enjekte edilmez, React düğümü üretilir.
- */
-export function vurguyuIsle(metin) {
-  if (typeof metin !== 'string') return metin
-  const parcalar = metin.split(/(\*\*[^*]+\*\*)/g)
-  return parcalar.map((p, i) => (
-    p.startsWith('**') && p.endsWith('**')
-      ? <strong key={i} style={{ color: 'rgb(var(--fa-metin))', fontWeight: 650 }}>{p.slice(2, -2)}</strong>
-      : <span key={i}>{p}</span>
-  ))
-}
 
 export default ModulKabugu
