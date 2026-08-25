@@ -112,6 +112,16 @@ dogrula('tamamlanma yalnız görevle verilmez', !tamamlanabilirMi({kontrol:false
 dogrula('tamamlanma görev + kontrol ister', tamamlanabilirMi({kontrol:true,gorev:true}))
 dogrula('ortak kabuk component/engine/type kimliği render eder', /data-component-key/.test(kaynak) && /data-engine-key/.test(kaynak) && /data-interaction-type/.test(kaynak))
 
+bolum('8) Süreç animasyonu ve görünür kanıt sözleşmesi')
+for (const testId of ['zar-gecis-akisi','osmoz-akisi','enzim-tepkime-akisi','homeostazi-akisi','fotosentez-girdi-akisi','besin-agi-akisi','populasyon-hareketi']) {
+  dogrula(`${testId}: görünür süreç katmanı`, kaynak.includes(`data-testid="${testId}"`))
+}
+const css=fs.readFileSync(path.join(root,'src/styles/biyoloji-atlasi.css'),'utf8')
+for (const kare of ['ba-zar-iceri','ba-zar-disari','ba-substrat-yaklas','ba-su-iceri','ba-evre-dalgasi','ba-foton-gir','ba-besin-ok','ba-pop-hareket']) {
+  dogrula(`${kare}: hareket anahtarı tanımlı`, css.includes(`@keyframes ${kare}`))
+}
+dogrula('azaltılmış hareket tercihi korunuyor', /prefers-reduced-motion:\s*reduce/.test(css))
+
 console.log(`\n${'─'.repeat(62)}`)
 if (!hata.length) { console.log(`✅ Biyoloji Atlası motor ve mimari denetimleri geçti (${gecen} davranış kontrolü).`); process.exit(0) }
 console.error(`❌ ${hata.length} kontrol başarısız:`);for(const x of hata)console.error(` - ${x}`);process.exit(1)

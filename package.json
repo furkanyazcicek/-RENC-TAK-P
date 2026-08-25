@@ -29,6 +29,8 @@
     "test:lesson-content": "node scripts/test-lesson-content.mjs",
     "test:kimya": "node scripts/test-kimya-atlasi.mjs",
     "test:fizik": "node scripts/test-fizik-atlasi.mjs",
+    "test:biyoloji": "node scripts/test-biyoloji-atlasi.mjs",
+    "test:cografya": "node scripts/test-cografya-atlasi.mjs",
     "test:library-curriculum": "node scripts/test-library-curriculum.mjs",
     "seed:lessons": "node scripts/seed-lessons.mjs",
     "atlas:indir": "node scripts/tarihAtlasiIndir.mjs",

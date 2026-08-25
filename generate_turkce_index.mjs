@@ -21,7 +21,8 @@ const topics = {
   'fiiller': [],
   'fiilimsiler': [],
   'sozcuk-yapisi': [],
-  'cumle-turleri': []
+  'cumle-turleri': [],
+  'dusunceyi-gelistirme': []
 };
 
 // Map files to topics based on prefix
