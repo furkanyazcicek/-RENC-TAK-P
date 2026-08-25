@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { ArrowRight, Compass, MoveHorizontal, Route, Sparkles } from 'lucide-react'
-import { BAGLANTILAR, BOLGELER, ROZETLER, TOPLAM_DENEY } from '../../data/fizik/bolgeler.js'
+import { BAGLANTILAR, BOLGELER, ROZETLER, TOPLAM_DENEY, TOPLAM_KAZANIM } from '../../data/fizik/bolgeler.js'
 import { ikonBul } from '../../data/fizik/ikonlar.js'
 import { asilanKavramlar, pusulaOzeti } from '../../data/fizik/yanilgilar.js'
 import { bolgeYuzdesi, genelYuzde } from '../../lib/fizik/ilerleme.js'
@@ -68,7 +68,7 @@ export default function AtlasHaritasi({ ilerleme, onBolgeSec }) {
           <div className="fa-atlas-kapak-metrik" aria-label="Atlas kapsamı">
             <span><b>{BOLGELER.length}</b> keşif bölgesi</span>
             <span><b>{TOPLAM_DENEY}</b> canlı deney</span>
-            <span><b>861</b> fizik doğrulaması</span>
+            <span><b>{TOPLAM_KAZANIM}</b> MEB kazanımı</span>
           </div>
         </div>
       </section>

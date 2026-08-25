@@ -59,6 +59,7 @@ import {
   ortamdaIsikHizi, prizmaAyrismasi, sinirAcisi,
 } from '../src/lib/fizik/optik.js'
 import { BUYUKLUKLER, bagilHata, olcumYap } from '../src/lib/fizik/olcme.js'
+import { readFileSync } from 'node:fs'
 import { bolgeYuzdesi, bosIlerleme, genelYuzde } from '../src/lib/fizik/ilerleme.js'
 import { BAGLANTILAR, BOLGELER, TOPLAM_DENEY } from '../src/data/fizik/bolgeler.js'
 import { ICERIK } from '../src/data/fizik/icerik.js'
@@ -914,6 +915,38 @@ bolum('15) Bölge ve içerik bütünlüğü')
   }
   const toplamSoru = Object.values(ICERIK).reduce((t, i) => t + i.kontrol.length, 0)
   console.log(`   ${BOLGELER.length} bölge, ${TOPLAM_DENEY} deney, ${toplamSoru} kontrol sorusu denetlendi.`)
+}
+
+/* ════════ 16) Sınav notu ve bölge çizimleri ════════ */
+bolum('16) Sınav notu ve bölge çizimleri')
+{
+  for (const b of BOLGELER) {
+    const n = b.sinavNotu
+    dogrula(`${b.kisaAd}: sınav notu var`, !!n)
+    dogrula(`${b.kisaAd}: sınav sıklığı yazılmış`, typeof n?.siklik === 'string' && n.siklik.length > 8)
+    dogrula(`${b.kisaAd}: soru tarzı anlatılmış`, typeof n?.tarz === 'string' && n.tarz.length > 60)
+    dogrula(`${b.kisaAd}: tuzak yazılmış`, typeof n?.tuzak === 'string' && n.tuzak.length > 40)
+  }
+
+  // Çizimler JSX olduğu için burada çalıştırılamaz; kayıt defterinin her
+  // bölgeyi kapsadığı kaynak dosyadan doğrulanır. Bir bölge eklenip
+  // çizimi unutulursa kart resimsiz kalır, bu test onu yakalar.
+  const sahneKaynak = readFileSync(
+    new URL('../src/components/fizik/BolgeSahnesi.jsx', import.meta.url), 'utf8',
+  )
+  const defter = sahneKaynak.slice(
+    sahneKaynak.indexOf('const SAHNELER = {'),
+    sahneKaynak.indexOf('export default function BolgeSahnesi'),
+  )
+  dogrula('Sahne kayıt defteri bulundu', defter.length > 200)
+  for (const b of BOLGELER) {
+    const anahtar = /^[a-z]+$/.test(b.kod) ? `${b.kod}:` : `'${b.kod}':`
+    dogrula(`${b.kisaAd}: bölge çizimi tanımlı`, defter.includes(anahtar))
+  }
+  const anlatimSayisi = (defter.match(/anlat: '/g) ?? []).length
+  dogrula('Her çizimin ekran okuyucu açıklaması var', anlatimSayisi === BOLGELER.length,
+    `${anlatimSayisi}/${BOLGELER.length}`)
+  console.log(`   ${BOLGELER.length} bölgenin sınav notu ve çizimi denetlendi.`)
 }
 
 /* ════════ Özet ════════ */

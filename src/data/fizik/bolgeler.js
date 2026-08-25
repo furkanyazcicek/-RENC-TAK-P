@@ -380,6 +380,9 @@ export const BAGLANTILAR = BOLGELER.flatMap((b) =>
   b.onKosullar.map((ok) => ({ from: ok, to: b.kod })),
 )
 
+/** Toplam MEB kazanımı — atlasın müfredat kapsamını gösterir. */
+export const TOPLAM_KAZANIM = BOLGELER.reduce((t, b) => t + b.kazanimlar.length, 0)
+
 /** Toplam deney sayısı — genel ilerleme yüzdesi için. */
 export const TOPLAM_DENEY = BOLGELER.reduce((t, b) => t + b.deneyler.length, 0)
 

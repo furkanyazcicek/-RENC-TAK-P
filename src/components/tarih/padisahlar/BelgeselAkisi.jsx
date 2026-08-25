@@ -378,6 +378,20 @@ export default function BelgeselAkisi({
     if (!oge || !kapsayici) return
     otomatikKaydirmaRef.current = true
 
+    /**
+     * Aktif panel BURADA da işaretlenir, yalnızca gözlemciye
+     * bırakılmaz. Sebebi: kesişim gözlemcisi sekme arka plandayken,
+     * hareket azaltma açıkken ya da bir panel orta şeritten uzun
+     * olduğunda tetiklenmeyebiliyor. O durumda anlatım sessizce
+     * duruyordu — ses biter, panel ilerlemez, belgesel öylece kalır.
+     * Kendi başlattığımız geçişte hedefi zaten biliyoruz; tahmin
+     * etmeye gerek yok. Gözlemci kullanıcının kendi kaydırmasını
+     * izlemeye devam eder.
+     */
+    setAktifPanel(sira)
+    const hedefPanel = paneller[sira]
+    if (hedefPanel && hedefPanel.padisahId !== aktifId) onAktifDegis?.(hedefPanel.padisahId)
+
     const hedef = Math.max(
       0,
       kapsayici.scrollTop + (oge.getBoundingClientRect().top - kapsayici.getBoundingClientRect().top)
@@ -389,7 +403,7 @@ export default function BelgeselAkisi({
       if (Math.abs(kapsayici.scrollTop - hedef) > 8) kapsayici.scrollTop = hedef
       otomatikKaydirmaRef.current = false
     }, 500)
-  }, [])
+  }, [aktifId, onAktifDegis, paneller])
 
   // Otomatik oynatma: panelden panele ilerler.
   useEffect(() => {

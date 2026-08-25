@@ -1,7 +1,8 @@
 /**
  * PADİŞAH SESLERİNİ KÜÇÜLT
  * ------------------------------------------------------------------
- *     node scripts/padisah-sesi-kucult.mjs
+ *     node scripts/padisah-sesi-kucult.mjs            keşif modu kayıtları
+ *     node scripts/padisah-sesi-kucult.mjs belgesel   belgesel modu kayıtları
  *
  * NEDEN GEREKLİ
  * Ses servisi kayıtları 128 kbps üretiyor. Bu, müzik için makul ama
@@ -28,9 +29,31 @@ import path from 'node:path'
 import { promisify } from 'node:util'
 
 const calistir = promisify(execFile)
-const KLASOR = 'public/lesson-assets/narration/padisahlar'
-const DEFTER_YOLU = 'src/data/padisahlar/sesDefteri.js'
+/**
+ * İki mod iki ayrı klasör ve deftere yazar; araç ikisine de hizmet
+ * eder. Argüman verilmezse keşif modu varsayılır.
+ */
+const HEDEFLER = {
+  kesif: {
+    klasor: 'public/lesson-assets/narration/padisahlar',
+    defter: 'src/data/padisahlar/sesDefteri.js',
+    disaAktarim: 'PADISAH_SES_DEFTERI',
+    kokSatiri: "export const PADISAH_SES_KOKU = '/lesson-assets/narration/padisahlar'",
+  },
+  belgesel: {
+    klasor: 'public/lesson-assets/narration/belgesel',
+    defter: 'src/data/padisahlar/belgeselSesDefteri.js',
+    disaAktarim: 'BELGESEL_SES_DEFTERI',
+    kokSatiri: "export const BELGESEL_SES_KOKU = '/lesson-assets/narration/belgesel'",
+  },
+}
+
+const secim = process.argv[2] === 'belgesel' ? 'belgesel' : 'kesif'
+const HEDEF = HEDEFLER[secim]
+const KLASOR = HEDEF.klasor
+const DEFTER_YOLU = HEDEF.defter
 const BITRATE = 64000
+console.log(`\n  Hedef: ${secim} modu · ${KLASOR}`)
 
 try {
   await calistir('which', ['afconvert'])
@@ -39,8 +62,8 @@ try {
   process.exit(0)
 }
 
-const { PADISAH_SES_DEFTERI } = await import(`../${DEFTER_YOLU}?t=${Date.now()}`)
-const defter = { ...PADISAH_SES_DEFTERI }
+const defterModulu = await import(`../${DEFTER_YOLU}?t=${Date.now()}`)
+const defter = { ...(defterModulu[HEDEF.disaAktarim] ?? {}) }
 
 const dosyalar = (await readdir(KLASOR)).filter((ad) => ad.endsWith('.mp3'))
 if (!dosyalar.length) {
@@ -89,13 +112,13 @@ async function defteriYaz(kayitlar) {
     return `  '${anahtar}': { file: '${kayit.file}', version: '${kayit.version}', duration: ${sure} },`
   })
   const mevcut = await readFile(DEFTER_YOLU, 'utf8')
-  const yorum = mevcut.slice(0, mevcut.indexOf('export const PADISAH_SES_KOKU'))
-  await writeFile(DEFTER_YOLU, `${yorum}export const PADISAH_SES_KOKU = '/lesson-assets/narration/padisahlar'
+  const yorum = mevcut.slice(0, mevcut.indexOf(HEDEF.kokSatiri.split(' =')[0]))
+  await writeFile(DEFTER_YOLU, `${yorum}${HEDEF.kokSatiri}
 
-export const PADISAH_SES_DEFTERI = {
+export const ${HEDEF.disaAktarim} = {
 ${satirlar.join('\n')}
 }
 
-export default PADISAH_SES_DEFTERI
+export default ${HEDEF.disaAktarim}
 `)
 }
