@@ -123,10 +123,28 @@ export default function FizikAtlasi() {
           <div className="fa-ustbar-bosluk" />
 
           {bolge !== 'harita' ? (
-            <button type="button" className="fa-dugme kucuk" onClick={() => bolgeAc('harita')}>
-              <MapIcon size={15} /> Haritaya dön
+            <button
+              type="button"
+              className="fa-dugme kucuk"
+              onClick={() => bolgeAc('harita')}
+              title="Keşif haritasına dön"
+              aria-label="Keşif haritasına dön"
+            >
+              <MapIcon size={15} /> <span className="fa-dugme-yazi">Haritaya dön</span>
             </button>
           ) : null}
+
+          {/* Platforma dönüş her ekranda üst barda durmalı: yan menü
+              telefonda gizleniyor, oradaki bağlantı tek çıkış olarak
+              kalırsa öğrenci atlasın içinde sıkışıyor. */}
+          <Link
+            to="/"
+            className="fa-dugme kucuk fa-geri"
+            title="Dr. Koç platformuna dön"
+            aria-label="Dr. Koç platformuna dön"
+          >
+            <ArrowLeft size={15} /> <span className="fa-dugme-yazi">Platforma dön</span>
+          </Link>
 
           <button
             type="button"
@@ -238,6 +256,22 @@ export default function FizikAtlasi() {
                     </div>
                   ) : null}
                   <AtlasHaritasi ilerleme={ilerleme} onBolgeSec={bolgeAc} />
+
+                  {/* Yan menü yalnızca geniş ekranda var; telefonda ilerlemeyi
+                      sıfırlama ve platforma dönüş buradan erişilebilir olmalı. */}
+                  <div className="fa-mobil-araclar">
+                    <button
+                      type="button"
+                      className="fa-dugme kucuk"
+                      onClick={() => setSilOnayi(true)}
+                      style={{ color: 'rgb(var(--fa-hata))', borderColor: 'rgb(var(--fa-hata) / 0.35)' }}
+                    >
+                      <Trash2 size={15} /> İlerlemeyi sıfırla
+                    </button>
+                    <Link to="/" className="fa-dugme kucuk">
+                      <ArrowLeft size={15} /> Dr. Koç'a dön
+                    </Link>
+                  </div>
                 </>
               ) : AktifModul ? (
                 <Suspense fallback={<BolumYukleniyor />}>

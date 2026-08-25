@@ -22,6 +22,12 @@ export const BOLGELER = [
     konum: { x: 12, y: 16 },
     onKosullar: [],
     ozet: 'Fiziğin alfabesi: hangi büyüklükler temel, hangileri türetilmiş, bir ölçüm ne kadar güvenilir?',
+    /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    sinavNotu: {
+      siklik: 'TYT\'de çoğu yıl 1 soru',
+      tarz: 'Genellikle bir birimin hangi temel birimlerden kurulduğu, skaler–vektörel ayrımı ya da bir ölçüm aletinin duyarlılığı sorulur. Uzun hesap değil, kavram sorusudur.',
+      tuzak: 'Türetilmiş bir birimi temel birim sanmak. Birimi açarak kontrol et: 1 Pa = 1 kg·m⁻¹·s⁻².',
+    },
     kazanimlar: [
       'Fizik biliminin alt dallarını ve inceleme alanlarını tanır.',
       'Temel ve türetilmiş büyüklükleri ayırt eder, SI birimlerini kullanır.',
@@ -43,6 +49,12 @@ export const BOLGELER = [
     konum: { x: 34, y: 10 },
     onKosullar: ['olcme'],
     ozet: 'Yönü olan büyüklüklerle çalışmayı öğren: topla, çıkar, bileşenlerine ayır, dengeleyicisini bul.',
+    /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    sinavNotu: {
+      siklik: 'TYT\'de temel düzeyde; ayrıntılı vektör soruları AYT ağırlıklı',
+      tarz: 'TYT\'de çoğunlukla “hangisi vektörel büyüklüktür” ya da alınan yol ile yer değiştirmenin karşılaştırılması biçiminde gelir. Bileşenlere ayırma ve bileşke hesabı AYT\'de karşına çıkar.',
+      tuzak: 'Vektörleri sayı gibi toplamak. 6 ve 8 birimlik iki vektörün bileşkesi, aralarındaki açıya göre 2 ile 14 arasında herhangi bir değer olabilir.',
+    },
     kazanimlar: [
       'Vektörü büyüklük ve yönüyle tanımlar, dik bileşenlerine ayırır.',
       'Vektörleri uç uca ekleme ve paralelkenar yöntemiyle toplar.',
@@ -63,6 +75,12 @@ export const BOLGELER = [
     konum: { x: 12, y: 42 },
     onKosullar: ['olcme'],
     ozet: 'Özkütle, dayanıklılık, adezyon–kohezyon, yüzey gerilimi ve kılcallık.',
+    /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    sinavNotu: {
+      siklik: 'TYT\'de neredeyse her yıl 1 soru',
+      tarz: 'Kütle–hacim grafiğinden özkütle okuma, karışım özkütlesi, kılcallık ve yüzey gerilimi örnekleri. Grafik yorumu çok sık.',
+      tuzak: 'Grafiğin eğimini bir noktanın koordinat oranıyla karıştırmak. Doğrusal grafikte ikisi aynıdır, kırıklı grafikte değildir.',
+    },
     kazanimlar: [
       'Kütle, hacim ve özkütle arasındaki ilişkiyi grafikle yorumlar.',
       'Özkütlenin ayırt edici bir özellik olduğunu açıklar.',
@@ -84,6 +102,12 @@ export const BOLGELER = [
     konum: { x: 56, y: 18 },
     onKosullar: ['vektorler', 'madde'],
     ozet: 'Konum, hız, ivme, grafikler ve Newton yasaları. Atlasın en geniş bölgesi.',
+    /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    sinavNotu: {
+      siklik: 'TYT\'de her yıl 1–2 soru',
+      tarz: 'Konum–zaman ve hız–zaman grafiklerinin yorumu, Newton yasalarıyla ivme bulma, sürtünmeli sistemlerde net kuvvet.',
+      tuzak: 'Hız–zaman grafiğindeki alanı “alınan yol” sanmak. Alan yer değiştirmedir; yol için eksenin altında kalan alanın mutlak değeri de eklenir.',
+    },
     kazanimlar: [
       'Konum, alınan yol, yer değiştirme, sürat ve hız kavramlarını ayırt eder.',
       'Sabit ivmeli hareketi denklemler ve grafiklerle çözümler.',
@@ -107,6 +131,12 @@ export const BOLGELER = [
     konum: { x: 78, y: 12 },
     onKosullar: ['kuvvet-hareket'],
     ozet: 'Serbest düşme, düşey atışlar, yatay atış ve eğik atış tek bir laboratuvarda.',
+    /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    sinavNotu: {
+      siklik: 'AYT ağırlıklı; TYT\'de nadiren ve niteliksel',
+      tarz: 'Atışlar 11. sınıf konusudur. AYT\'de yatay ve eğik atışta menzil, uçuş süresi ve tepe noktası hesaplanır; TYT\'de en fazla serbest düşmenin niteliksel yorumu gelir.',
+      tuzak: 'Tepe noktasında ivmenin de sıfır olduğunu sanmak. Orada hız sıfırdır, ivme her an aşağı doğru ve g büyüklüğündedir.',
+    },
     kazanimlar: [
       'Serbest düşme ve düşey atışlarda hız–zaman ilişkisini çözümler.',
       'Yatay atışta yatay ve düşey hareketin bağımsız olduğunu gösterir.',
@@ -127,6 +157,12 @@ export const BOLGELER = [
     konum: { x: 58, y: 44 },
     onKosullar: ['kuvvet-hareket'],
     ozet: 'Enerji yok olmaz; şekil değiştirir. Sürtünmede nereye gittiğini adım adım izle.',
+    /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    sinavNotu: {
+      siklik: 'TYT\'de her yıl 1 soru',
+      tarz: 'İş–enerji ilişkisi, enerjinin korunumu, sürtünmede ısıya dönüşen pay ve verim. Hesaplar kısa, yorum ağır basar.',
+      tuzak: 'İş ile gücü karıştırmak. İş bir miktardır (J); güç bu işin ne kadar sürede yapıldığıdır (W).',
+    },
     kazanimlar: [
       'Fiziksel anlamda işi, kuvvet ile yer değiştirme arasındaki açıyla hesaplar.',
       'Kinetik, potansiyel ve esneklik potansiyel enerjilerini ayırt eder.',
@@ -149,6 +185,12 @@ export const BOLGELER = [
     konum: { x: 34, y: 58 },
     onKosullar: ['madde', 'enerji'],
     ozet: 'Isı ile sıcaklık aynı şey değil. Karıştır, ısıt, erit ve grafiği izle.',
+    /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    sinavNotu: {
+      siklik: 'TYT\'de neredeyse her yıl 1 soru',
+      tarz: 'Isı alışverişi ve denge sıcaklığı hesabı, ısınma eğrisi yorumu, katı–sıvı genleşmesi örnekleri.',
+      tuzak: 'Hâl değişimi sırasında sıcaklığın arttığını sanmak. Erime ve kaynamada verilen ısı bağları koparmaya gider; sıcaklık sabit kalır.',
+    },
     kazanimlar: [
       'Isı ile sıcaklığı ayırt eder; ısıyı enerji aktarımı olarak açıklar.',
       'Öz ısı ve ısı sığasını hesaplamalarda kullanır.',
@@ -171,6 +213,12 @@ export const BOLGELER = [
     konum: { x: 12, y: 72 },
     onKosullar: ['madde', 'kuvvet-hareket'],
     ozet: 'Katı, sıvı ve gaz basıncı; Pascal ilkesi ve Arşimet.',
+    /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    sinavNotu: {
+      siklik: 'TYT\'de her yıl 1 soru',
+      tarz: 'Katı ve sıvı basıncının karşılaştırılması, kapalı kaplarda Pascal ilkesi, yüzen ve batan cisimlerde Arşimet ilkesi.',
+      tuzak: 'Sıvı basıncını kabın şekline ya da içindeki sıvının miktarına bağlamak. Basınç yalnızca derinliğe, sıvının özkütlesine ve g\'ye bağlıdır.',
+    },
     kazanimlar: [
       'Katı basıncını kuvvet ve temas alanıyla ilişkilendirir.',
       'Sıvı basıncının yalnızca derinlik, özkütle ve g’ye bağlı olduğunu gösterir.',
@@ -192,6 +240,12 @@ export const BOLGELER = [
     konum: { x: 80, y: 42 },
     onKosullar: ['vektorler', 'kuvvet-hareket'],
     ozet: 'Yükler, Coulomb kuvveti, elektrik alan ve elektriklenme yolları.',
+    /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    sinavNotu: {
+      siklik: 'TYT\'de çoğu yıl 1 soru',
+      tarz: 'Elektriklenme yolları, özdeş kürelerde yük paylaşımı, Coulomb yasasındaki orantıların yorumu ve alan çizgileri.',
+      tuzak: 'Etki ile elektriklenmede cismin net yükünün değiştiğini sanmak. Topraklama olmadan cisim nötr kalır, yalnızca yükleri ayrışır.',
+    },
     kazanimlar: [
       'Elektrik yükünü ve yükün korunumunu açıklar.',
       'İletken ve yalıtkanları elektron hareketliliğiyle ayırt eder.',
@@ -213,6 +267,12 @@ export const BOLGELER = [
     konum: { x: 80, y: 68 },
     onKosullar: ['elektrostatik', 'enerji'],
     ozet: 'Sürükle-bırak devre laboratuvarı: seri, paralel, karışık, açık ve kısa devre.',
+    /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    sinavNotu: {
+      siklik: 'TYT\'de her yıl 1 soru',
+      tarz: 'Seri ve paralel eşdeğer direnç, ampullerin parlaklığının karşılaştırılması, ampermetre ve voltmetrenin bağlanışı.',
+      tuzak: 'Paralel bağlamanın direnci artırdığını sanmak. Paralel eşdeğer direnç, kollardaki en küçük dirençten bile küçüktür.',
+    },
     kazanimlar: [
       'Ohm yasasını akım, gerilim ve direnç arasında kullanır.',
       'Seri ve paralel bağlamada eşdeğer direnci hesaplar.',
@@ -234,6 +294,12 @@ export const BOLGELER = [
     konum: { x: 58, y: 82 },
     onKosullar: ['devreler'],
     ozet: 'Mıknatıs alanı, akımın alanı, elektromıknatıs, sağ el kuralı ve indüksiyon.',
+    /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    sinavNotu: {
+      siklik: 'TYT\'de ara sıra; çoğunlukla niteliksel',
+      tarz: 'Akımın oluşturduğu manyetik alanın yönü (sağ el kuralı), mıknatıs–bobin etkileşimi ve indüksiyon akımının yönü.',
+      tuzak: 'Düz telin alanının uzaklığın karesiyle azaldığını sanmak. Düz telde alan 1/r ile azalır; ters kare bağıntısı nokta kaynaklara aittir.',
+    },
     kazanimlar: [
       'Mıknatıs kutuplarını ve manyetik alan çizgilerini yorumlar.',
       'Akım geçen telin çevresinde manyetik alan oluştuğunu gösterir.',
@@ -256,6 +322,12 @@ export const BOLGELER = [
     konum: { x: 34, y: 88 },
     onKosullar: ['enerji'],
     ozet: 'Atma, periyodik dalga, girişim, yansıma, ses ve rezonans.',
+    /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    sinavNotu: {
+      siklik: 'TYT\'de çoğu yıl 1 soru',
+      tarz: 'v = λ·f bağıntısıyla dalga boyu ve frekans, sabit ve serbest uçtan yansıma, sesin ortama göre değişen hızı, rezonans.',
+      tuzak: 'Genlikle frekansı karıştırmak. Genlik sesin gürlüğünü, frekans inceliğini belirler; ikisi birbirinden bağımsızdır.',
+    },
     kazanimlar: [
       'Genlik, periyot, frekans, dalga boyu ve hız arasındaki bağıntıyı kullanır.',
       'Enine ve boyuna dalgaları ayırt eder.',
@@ -278,6 +350,12 @@ export const BOLGELER = [
     konum: { x: 80, y: 90 },
     onKosullar: ['dalgalar'],
     ozet: 'Gölge, yansıma, aynalar, kırılma, mercekler, prizma ve renk.',
+    /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    sinavNotu: {
+      siklik: 'TYT\'de neredeyse her yıl 1 soru',
+      tarz: 'Gölge ve yarı gölge, düzlem ve küresel aynada görüntü, kırılma yönü, mercekte görüntü özellikleri ve renk karışımı.',
+      tuzak: 'Yoğun ortamdan az yoğun ortama geçen ışığın normale yaklaştığını sanmak. Az yoğuna geçişte ışık hızlanır ve normalden uzaklaşır.',
+    },
     kazanimlar: [
       'Işığın doğrusal yayıldığını gölge oluşumuyla gösterir.',
       'Yansıma yasasını düzlem ve küresel aynalarda uygular.',

@@ -118,6 +118,11 @@
 .fa-marka-ad { font-weight: 750; font-size: 15px; letter-spacing: -0.02em; white-space: nowrap; display: block; }
 .fa-marka-alt { font-size: 11.5px; color: rgb(var(--fa-metin-3)); white-space: nowrap; }
 .fa-ustbar-bosluk { flex: 1; }
+/* Üst bardaki dönüş düğmesi. Dar ekranda yalnız ok kalır — Tarih
+   Atlasındaki "Platforma dön" düğmesiyle aynı davranış. */
+.fa-geri { text-decoration: none; }
+.fa-mobil-araclar { display: none; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+.fa-mobil-araclar a { text-decoration: none; }
 
 /* ————— Düğmeler ————— */
 .fa-dugme {
@@ -520,7 +525,7 @@
 
 /* Bölge başlığı: her deney aynı atlas ailesine ait, fakat kendi rengine sahip. */
 .fa-modul-kapak {
-  position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(190px, 0.42fr);
+  position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(170px, 0.3fr) minmax(168px, 0.26fr);
   gap: 15px; align-items: center; overflow: hidden; margin-bottom: 14px; padding: 18px;
   border-radius: 18px; border: 1px solid color-mix(in srgb, var(--fa-modul-renk) 34%, rgb(var(--fa-cizgi)));
   background:
@@ -586,6 +591,12 @@
 .fa-harita-odak-metin small { color: rgb(148 165 201); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.075em; font-weight: 700; }
 .fa-harita-odak-metin b { font-size: 13px; }
 .fa-harita-odak-metin em { font-style: normal; color: rgb(174 188 219); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fa-harita-ipucu {
+  display: none; align-items: center; justify-content: center; gap: 7px;
+  margin: 8px 0 2px; color: rgb(var(--fa-metin-3)); font-size: 11.5px; font-weight: 600;
+}
+.fa-harita-ipucu svg { animation: fa-kaydir 1.8s ease-in-out infinite; }
+@keyframes fa-kaydir { 0%, 100% { transform: translateX(-2px); } 50% { transform: translateX(3px); } }
 
 /* ————— Bölge kartları ————— */
 .fa-bolge-kart {
@@ -632,7 +643,53 @@
 /* Modül kapağındaki sahne — başlığın yanında dar bir şerit. */
 .fa-modul-sahne {
   position: relative; overflow: hidden; border-radius: 13px; align-self: stretch;
-  min-height: 96px; border: 1px solid color-mix(in srgb, var(--fa-modul-renk) 30%, rgb(var(--fa-cizgi)));
+  min-height: 104px; border: 1px solid color-mix(in srgb, var(--fa-modul-renk) 30%, rgb(var(--fa-cizgi)));
+}
+.fa-modul-sahne .fa-sahne { object-fit: cover; }
+
+/* ————— Bölge künyesi —————
+   Sınav, ders, kazanım ve deney listesi. Kapalı başlar; öğrenci
+   "bu bölge beni nereye hazırlıyor" diye sorduğunda açar. */
+.fa-kunye {
+  margin-bottom: 14px; border: 1px solid rgb(var(--fa-cizgi)); border-radius: var(--fa-yuvarlak-k);
+  background: rgb(var(--fa-yuzey)); overflow: hidden;
+}
+.fa-kunye > summary {
+  display: flex; align-items: center; gap: 10px; cursor: pointer; list-style: none;
+  padding: 11px 14px; font-size: 12.5px; color: rgb(var(--fa-metin-2));
+}
+.fa-kunye > summary::-webkit-details-marker { display: none; }
+.fa-kunye > summary:hover { background: rgb(var(--fa-yuzey-2)); }
+.fa-kunye > summary > svg { margin-left: auto; flex: none; color: rgb(var(--fa-metin-3)); transition: transform var(--fa-gecis); }
+.fa-kunye[open] > summary > svg { transform: rotate(180deg); }
+.fa-kunye-etiket {
+  flex: none; font-size: 10.5px; font-weight: 750; letter-spacing: 0.07em; text-transform: uppercase;
+  color: rgb(var(--fa-vurgu-2)); padding: 3px 8px; border-radius: 999px;
+  background: rgb(var(--fa-vurgu) / 0.14);
+}
+.fa-kunye-ozet { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.fa-kunye-govde {
+  display: grid; gap: 16px; padding: 4px 14px 15px;
+  border-top: 1px solid rgb(var(--fa-cizgi));
+  grid-template-columns: minmax(0, 1fr);
+}
+.fa-kunye-govde > div { padding-top: 12px; }
+.fa-kunye-liste { margin: 0; padding-left: 17px; display: grid; gap: 6px; }
+.fa-kunye-liste li { font-size: 12.5px; color: rgb(var(--fa-metin-2)); line-height: 1.55; }
+.fa-kunye-liste.sade li::marker { color: rgb(var(--fa-metin-3)); }
+.fa-kunye-liste b { color: rgb(var(--fa-metin)); font-weight: 650; }
+.fa-kunye-sinav {
+  border-radius: var(--fa-yuvarlak-k); padding: 12px 13px;
+  background: rgb(var(--fa-vurgu) / 0.07); border: 1px solid rgb(var(--fa-vurgu) / 0.2);
+}
+.fa-kunye-sinav p { font-size: 12.5px; color: rgb(var(--fa-metin-2)); line-height: 1.55; margin-top: 5px; }
+.fa-kunye-sinav p b { color: rgb(var(--fa-metin)); }
+.fa-kunye-tuzak { color: rgb(var(--fa-uyari)) !important; }
+.fa-kunye-tuzak b { color: rgb(var(--fa-uyari)) !important; }
+
+@media (min-width: 860px) {
+  .fa-kunye-govde { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); }
+  .fa-kunye-sinav { grid-column: 1 / -1; }
 }
 
 /* ————— Atlas kapağı ————— */
@@ -731,6 +788,13 @@
 .fa-bos { text-align: center; padding: 34px 18px; color: rgb(var(--fa-metin-3)); font-size: 13.5px; }
 
 /* ————— Duyarlı düzen ————— */
+@media (max-width: 1180px) {
+  /* Kapak dört sütuna sığmıyor: sahne ile durum alt satıra iner. */
+  .fa-modul-kapak { grid-template-columns: auto minmax(0, 1fr); }
+  .fa-modul-sahne { grid-column: 1 / -1; min-height: 118px; }
+  .fa-modul-kapak-durum { grid-column: 1 / -1; padding-left: 0; padding-top: 11px; border-left: 0; border-top: 1px solid rgb(var(--fa-cizgi)); }
+}
+
 @media (max-width: 1080px) {
   .fa-lab { grid-template-columns: minmax(0, 1fr); }
   .fa-lab-yan { position: static; }
@@ -740,6 +804,7 @@
 @media (max-width: 900px) {
   .fa-yan { display: none; }
   .fa-alt-gezinme { display: flex; }
+  .fa-mobil-araclar { display: flex; }
   .fa-icerik { padding-bottom: 104px; }
 }
 @media (max-width: 640px) {
@@ -758,7 +823,14 @@
   .fa-harita-odak { position: sticky; left: 10px; width: calc(100vw - 42px); grid-template-columns: auto minmax(0, 1fr); }
   .fa-harita-odak .fa-dugme { grid-column: 1 / -1; }
   .fa-harita-odak-metin em { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .fa-harita-ipucu { display: flex; }
+  /* Üst barda yazılar sığmıyor; düğmeler ikona iner ama başlıkları
+     `title`/`aria-label` ile okunur kalır. */
+  .fa-ustbar .fa-dugme-yazi { display: none; }
+  .fa-ustbar .fa-dugme.kucuk { padding-inline: 9px; }
   .fa-modul-kapak { grid-template-columns: auto minmax(0, 1fr); padding: 14px; gap: 11px; }
+  .fa-modul-sahne { min-height: 96px; }
+  .fa-kunye > summary { flex-wrap: wrap; gap: 7px; }
   .fa-modul-kapak-ikon { width: 42px; height: 42px; border-radius: 13px; }
   .fa-modul-kapak-durum { grid-column: 1 / -1; padding-top: 10px; border-top: 1px solid rgb(var(--fa-cizgi)); }
   .fa-ogrenme-akisi { grid-template-columns: 1fr; gap: 8px; }

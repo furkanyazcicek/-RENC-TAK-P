@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { ArrowRight, Compass, Route, Sparkles } from 'lucide-react'
+import { ArrowRight, Compass, MoveHorizontal, Route, Sparkles } from 'lucide-react'
 import { BAGLANTILAR, BOLGELER, ROZETLER, TOPLAM_DENEY } from '../../data/fizik/bolgeler.js'
 import { ikonBul } from '../../data/fizik/ikonlar.js'
 import { asilanKavramlar, pusulaOzeti } from '../../data/fizik/yanilgilar.js'
@@ -215,6 +215,13 @@ export default function AtlasHaritasi({ ilerleme, onBolgeSec }) {
           </button>
         </div>
       </div>
+
+      {/* Dar ekranda harita yatay kayar; kaydırılabildiğini söylemezsek
+          öğrenci haritanın yarısını görüp eksik sanıyor. */}
+      <p className="fa-harita-ipucu">
+        <MoveHorizontal size={14} aria-hidden="true" />
+        Haritayı yana kaydırarak 13 bölgenin tamamını görebilirsin
+      </p>
 
       {/* Bölge kartları — haritayı okuyamayan ya da liste isteyen için */}
       <div className="fa-bolum-basi">

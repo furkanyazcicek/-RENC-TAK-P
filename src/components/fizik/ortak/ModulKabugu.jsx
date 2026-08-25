@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import {
-  Activity, BookOpen, Check, Compass, FlaskConical, GraduationCap, Heart, Star,
+  Activity, BookOpen, Check, ChevronDown, Compass, FlaskConical, GraduationCap, Heart, Star, Target,
 } from 'lucide-react'
 import { ICERIK } from '../../../data/fizik/icerik.js'
 import { bolgeBul } from '../../../data/fizik/bolgeler.js'
@@ -8,6 +8,7 @@ import { ikonBul } from '../../../data/fizik/ikonlar.js'
 import { FormulPaneli, GunlukHayat, HataListesi, Not } from './Panolar.jsx'
 import { MiniGorev, OgrenmeKontrolu, TahminKutusu } from './Ogrenme.jsx'
 import { vurguyuIsle } from './metin.jsx'
+import BolgeSahnesi from '../BolgeSahnesi.jsx'
 import {
   deneyiTamamla, favoriDegistir, favoriMi, ilerlemeOku, konumKaydet, seviyeTamamla,
 } from '../../../lib/fizik/ilerleme.js'
@@ -81,11 +82,52 @@ export function ModulKabugu({ bolgeKod, deneyKod = null, children, deneyBasligi 
           <h2>{deneyBasligi ?? bolge.ad}</h2>
           <p>{bolge.ozet}</p>
         </div>
+        <div className="fa-modul-sahne" aria-hidden="true">
+          <BolgeSahnesi kod={bolgeKod} renk={bolge.renk} />
+        </div>
         <div className="fa-modul-kapak-durum">
           <span><Activity size={14} /> Etkileşimli deney</span>
           <small>Değerleri değiştir; sonuç anında güncellensin.</small>
         </div>
       </header>
+
+      {/* Bölge künyesi — hangi sınav, hangi ders, hangi kazanımlar.
+          Kazanımlar veride hep vardı ama hiçbir yerde görünmüyordu;
+          öğrenci "bu deney beni nereye hazırlıyor" sorusunun cevabını
+          burada buluyor. Kapalı başlar, laboratuvarı aşağı itmez. */}
+      <details className="fa-kunye">
+        <summary>
+          <span className="fa-kunye-etiket">Bölge künyesi</span>
+          <span className="fa-kunye-ozet">
+            TYT · Fizik · {bolge.kazanimlar.length} kazanım · {bolge.deneyler.length} deney
+          </span>
+          <ChevronDown size={16} aria-hidden="true" />
+        </summary>
+        <div className="fa-kunye-govde">
+          <div>
+            <div className="fa-ust-etiket"><Target size={13} /> Bu bölgede ulaşılan kazanımlar</div>
+            <ul className="fa-kunye-liste">
+              {bolge.kazanimlar.map((k) => <li key={k}>{k}</li>)}
+            </ul>
+          </div>
+          <div>
+            <div className="fa-ust-etiket"><FlaskConical size={13} /> Bölgedeki deneyler</div>
+            <ul className="fa-kunye-liste sade">
+              {bolge.deneyler.map((d) => (
+                <li key={d.kod}><b>{d.ad}</b> — {d.tanim}</li>
+              ))}
+            </ul>
+          </div>
+          {bolge.sinavNotu ? (
+            <div className="fa-kunye-sinav">
+              <div className="fa-ust-etiket"><GraduationCap size={13} /> TYT'de nasıl sorulur</div>
+              <p><b>Sıklık:</b> {bolge.sinavNotu.siklik}</p>
+              <p>{bolge.sinavNotu.tarz}</p>
+              <p className="fa-kunye-tuzak"><b>Tuzak:</b> {bolge.sinavNotu.tuzak}</p>
+            </div>
+          ) : null}
+        </div>
+      </details>
 
       {/* Seviye şeridi */}
       <div className="fa-seviye-serit" role="tablist" aria-label="Öğrenme seviyesi">
