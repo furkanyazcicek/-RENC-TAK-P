@@ -9,6 +9,7 @@ import {
 } from '../../../lib/fizik/atislar.js'
 import { G_MUFREDAT } from '../../../lib/fizik/hareket.js'
 import { sayiBicimle } from '../../../lib/fizik/birimler.js'
+import { basarimKaydet } from '../../../lib/fizik/ilerleme.js'
 
 const ATIS_TURLERI = [
   { kod: 'egik', ad: 'Eğik atış', aci: 45, aciKilitli: false, y0: 0 },
@@ -367,6 +368,8 @@ function MenzilGorevi() {
     sim.sifirla()
     sim.oynat()
     setGecmis((e) => [{ v0, aciDerece, menzil: ideal.menzil, isabet }, ...e].slice(0, 5))
+    // Hedefi vurmak Nişancı rozetinin koşulu.
+    if (isabet) basarimKaydet('nisanci')
   }
 
   const yeniTur = () => { setHedef(yeniHedef()); setAtisYapildi(false); sim.sifirla(); setGecmis([]) }

@@ -9,6 +9,8 @@
  * bütün okuma/yazma işlemleri sessizce boş sonuca düşer.
  */
 
+import { BOLGELER, DEVRE_ARIZALARI } from '../../data/fizik/bolgeler.js'
+
 const ANAHTAR = 'drkoc-fizik-ilerleme-v1'
 
 /** Boş ilerleme kaydı — şemanın tek kaynağı. */
@@ -20,6 +22,7 @@ export function bosIlerleme() {
     rozetler: [],          // [ rozetKodu ]
     favoriler: [],         // [ 'bolge/deney' ]
     kavramPusulasi: {},    // { yanilgiKodu: { yanlis: n, dogru: n } }
+    basarimlar: {},        // { basarimKodu: true } — rozet kurallarının baktığı olaylar
     sonBolge: null,
     sonDeney: null,
     guncelleme: null,
@@ -39,7 +42,48 @@ function guvenliOku() {
   }
 }
 
+/**
+ * Rozet kuralları.
+ *
+ * Rozetler bir "olay" anında elle verilmez; kaydın kendisinden
+ * **türetilir**. Böylece bir yerde `rozetVer` çağırmayı unutmak
+ * rozetin hiç kazanılamamasına yol açmaz. (Bu tam olarak eski
+ * davranıştı: sekiz rozetin hiçbiri hiçbir zaman verilmiyordu.)
+ */
+const bolgeBitti = (v, kod) => {
+  const s = v.seviyeler?.[kod] ?? {}
+  return Boolean(s.kesfet && s.ogren && s.ustalas)
+}
+
+const ROZET_KURALLARI = [
+  { kod: 'ilk-adim', kosul: (v) => Object.values(v.tamamlanan ?? {}).some((d) => Object.keys(d).length > 0) },
+  { kod: 'vektor-ustasi', kosul: (v) => bolgeBitti(v, 'vektorler') },
+  { kod: 'enerji-dedektifi', kosul: (v) => bolgeBitti(v, 'enerji') },
+  { kod: 'grafik-okuru', kosul: (v) => v.basarimlar?.['hatasiz:kuvvet-hareket'] === true },
+  { kod: 'nisanci', kosul: (v) => v.basarimlar?.nisanci === true },
+  {
+    kod: 'devre-tamircisi',
+    kosul: (v) => DEVRE_ARIZALARI.every((k) => v.basarimlar?.[`devre-ariza:${k}`] === true),
+  },
+  { kod: 'kasif', kosul: (v) => BOLGELER.every((b) => Boolean(v.seviyeler?.[b.kod])) },
+  {
+    kod: 'atlas-ustasi',
+    kosul: (v) => BOLGELER.every((b) => bolgeYuzdesi(v, b.kod, b.deneyler.length) === 100),
+  },
+]
+
+/** Kayıttan hak edilen rozetleri hesaplar. Kazanılmış rozet geri alınmaz. */
+export function hakEdilenRozetler(veri) {
+  const kazanilmis = new Set(veri.rozetler ?? [])
+  for (const kural of ROZET_KURALLARI) {
+    try { if (kural.kosul(veri)) kazanilmis.add(kural.kod) } catch { /* eksik alan */ }
+  }
+  return [...kazanilmis]
+}
+
 function guvenliYaz(veri) {
+  // Rozetler her kayıtta yeniden türetilir; kural tek yerde durur.
+  veri.rozetler = hakEdilenRozetler(veri)
   if (typeof window === 'undefined') return
   try {
     window.localStorage.setItem(ANAHTAR, JSON.stringify({ ...veri, guncelleme: Date.now() }))
@@ -103,6 +147,18 @@ export function kavramKaydet(yanilgiKodu, dogruMu) {
   if (dogruMu) mevcut.dogru += 1
   else mevcut.yanlis += 1
   v.kavramPusulasi[yanilgiKodu] = mevcut
+  guvenliYaz(v)
+  return v
+}
+
+/**
+ * Deneyde yaşanan tekil bir başarıyı kaydeder (hedefi vurmak, arızayı
+ * onarmak, kontrolü hatasız bitirmek). Rozetler bu kayıtlardan türer.
+ */
+export function basarimKaydet(basarimKodu) {
+  const v = guvenliOku()
+  if (v.basarimlar?.[basarimKodu]) return v
+  v.basarimlar = { ...(v.basarimlar ?? {}), [basarimKodu]: true }
   guvenliYaz(v)
   return v
 }

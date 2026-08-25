@@ -708,7 +708,7 @@ export default function BolgeSahnesi({ kod, renk, sinif = '' }) {
   const Ciz = sahne.ciz
   return (
     <svg
-      className={`fa-sahne ${sinif}`.trim()}
+      className={`fa-bolge-cizim ${sinif}`.trim()}
       viewBox={`0 0 ${G} ${Y}`}
       preserveAspectRatio="xMidYMid meet"
       role="img"

@@ -104,24 +104,32 @@ export function TahminKutusu({ tahmin, onCevap = null }) {
 export function OgrenmeKontrolu({ sorular, bolgeKod, onTamamla = null }) {
   const [durum, setDurum] = useState(() => sorular.map(() => ({ secim: null, deneme: 0, bitti: false })))
 
+  /**
+   * Yan etkiler bilinçli olarak `setDurum` güncelleyicisinin DIŞINDA.
+   * İçeride yapıldığında iki sorun çıkıyordu:
+   *   1. Kavram Pusulası kaydı (localStorage) React'in render aşamasında
+   *      yazılıyor, StrictMode'da güncelleyici iki kez çalıştığı için aynı
+   *      yanlış iki kez sayılıyordu.
+   *   2. `onTamamla` üst bileşenin durumunu render sırasında değiştiriyor,
+   *      React "başka bir bileşen render edilirken güncelleme" uyarısı
+   *      veriyor ve güncelleme kayboluyordu.
+   */
   const cevapla = (soruIndeks, secenekIndeks) => {
     const soru = sorular[soruIndeks]
-    setDurum((eski) => {
-      const yeni = [...eski]
-      const d = { ...yeni[soruIndeks] }
-      if (d.bitti) return eski
+    const oncekiDurum = durum[soruIndeks]
+    if (oncekiDurum.bitti) return
 
-      const dogruMu = secenekIndeks === soru.dogru
-      d.secim = secenekIndeks
-      d.deneme += 1
-      // İlk denemede doğruysa ya da ikinci denemeye gelindiyse soru kapanır.
-      d.bitti = dogruMu || d.deneme >= 2
-      yeni[soruIndeks] = d
+    const dogruMu = secenekIndeks === soru.dogru
+    const deneme = oncekiDurum.deneme + 1
+    // İlk denemede doğruysa ya da ikinci denemeye gelindiyse soru kapanır.
+    const yeniDurum = { secim: secenekIndeks, deneme, bitti: dogruMu || deneme >= 2 }
+    const yeni = durum.map((d, i) => (i === soruIndeks ? yeniDurum : d))
+    setDurum(yeni)
 
-      if (soru.yanilgi) kavramKaydet(soru.yanilgi, dogruMu)
-      if (yeni.every((x) => x.bitti)) onTamamla?.(yeni.filter((x, i) => x.secim === sorular[i].dogru).length)
-      return yeni
-    })
+    if (soru.yanilgi) kavramKaydet(soru.yanilgi, dogruMu)
+    if (yeni.every((x) => x.bitti)) {
+      onTamamla?.(yeni.filter((x, i) => x.secim === sorular[i].dogru).length)
+    }
   }
 
   const sifirla = () => setDurum(sorular.map(() => ({ secim: null, deneme: 0, bitti: false })))

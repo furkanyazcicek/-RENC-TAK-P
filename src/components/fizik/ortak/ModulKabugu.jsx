@@ -3,14 +3,15 @@ import {
   Activity, BookOpen, Check, ChevronDown, Compass, FlaskConical, GraduationCap, Heart, Star, Target,
 } from 'lucide-react'
 import { ICERIK } from '../../../data/fizik/icerik.js'
-import { bolgeBul } from '../../../data/fizik/bolgeler.js'
+import { ROZETLER, bolgeBul } from '../../../data/fizik/bolgeler.js'
 import { ikonBul } from '../../../data/fizik/ikonlar.js'
 import { FormulPaneli, GunlukHayat, HataListesi, Not } from './Panolar.jsx'
 import { MiniGorev, OgrenmeKontrolu, TahminKutusu } from './Ogrenme.jsx'
 import { vurguyuIsle } from './metin.jsx'
 import BolgeSahnesi from '../BolgeSahnesi.jsx'
 import {
-  deneyiTamamla, favoriDegistir, favoriMi, ilerlemeOku, konumKaydet, seviyeTamamla,
+  basarimKaydet, deneyiTamamla, favoriDegistir, favoriMi, ilerlemeOku, konumKaydet,
+  seviyeTamamla,
 } from '../../../lib/fizik/ilerleme.js'
 
 const SEVIYELER = [
@@ -43,6 +44,7 @@ export function ModulKabugu({ bolgeKod, deneyKod = null, children, deneyBasligi 
   const icerik = ICERIK[bolgeKod]
   const [seviye, setSeviye] = useState('kesfet')
   const [ilerleme, setIlerleme] = useState(ilerlemeOku)
+  const [yeniRozetler, setYeniRozetler] = useState([])
 
   useEffect(() => {
     konumKaydet(bolgeKod, deneyKod)
@@ -50,6 +52,7 @@ export function ModulKabugu({ bolgeKod, deneyKod = null, children, deneyBasligi 
     // önünde durur; bunu ayrıca tıklamasını beklemek ilerlemeyi olduğundan
     // düşük gösterirdi.
     setIlerleme(seviyeTamamla(bolgeKod, 'kesfet'))
+    setYeniRozetler([])
   }, [bolgeKod, deneyKod])
 
   const seviyeSec = useCallback((yeni) => {
@@ -257,11 +260,28 @@ export function ModulKabugu({ bolgeKod, deneyKod = null, children, deneyBasligi 
             <OgrenmeKontrolu
               sorular={icerik.kontrol}
               bolgeKod={bolgeKod}
-              onTamamla={() => {
-                setIlerleme(seviyeTamamla(bolgeKod, 'ustalas'))
-                if (deneyKod) setIlerleme(deneyiTamamla(bolgeKod, deneyKod))
+              onTamamla={(dogruSayisi) => {
+                const oncekiRozetler = new Set(ilerlemeOku().rozetler)
+                // Hatasız bitirmek ayrı bir başarımdır; bazı rozetler buna bakar.
+                if (dogruSayisi === icerik.kontrol.length) basarimKaydet(`hatasiz:${bolgeKod}`)
+                seviyeTamamla(bolgeKod, 'ustalas')
+                if (deneyKod) deneyiTamamla(bolgeKod, deneyKod)
+                const sonrasi = ilerlemeOku()
+                setIlerleme(sonrasi)
+                setYeniRozetler(sonrasi.rozetler.filter((r) => !oncekiRozetler.has(r)))
               }}
             />
+            {yeniRozetler.length > 0 ? (
+              <div style={{ marginTop: 14 }}>
+                <Not tur="olumlu" baslik={yeniRozetler.length > 1 ? 'Yeni rozetler' : 'Yeni rozet'}>
+                  {yeniRozetler
+                    .map((kod) => ROZETLER.find((r) => r.kod === kod))
+                    .filter(Boolean)
+                    .map((r) => `${r.ad} — ${r.aciklama}`)
+                    .join(' · ')}
+                </Not>
+              </div>
+            ) : null}
           </div>
         </div>
       ) : null}

@@ -386,14 +386,28 @@ export const TOPLAM_KAZANIM = BOLGELER.reduce((t, b) => t + b.kazanimlar.length,
 /** Toplam deney sayısı — genel ilerleme yüzdesi için. */
 export const TOPLAM_DENEY = BOLGELER.reduce((t, b) => t + b.deneyler.length, 0)
 
-/** Rozet tanımları. Rozet, öğrenciyi yarıştırmak için değil, ilerlemeyi görünür kılmak için. */
+/**
+ * "Arızayı Bul" deneyindeki arıza kodları.
+ * Devre Tamircisi rozetinin kuralı buna bakar; deneye yeni bir arıza
+ * eklenirse rozet de kendiliğinden onu bekler.
+ */
+export const DEVRE_ARIZALARI = ['anahtar-acik', 'kisa-devre', 'voltmetre-seri', 'ampermetre-paralel']
+
+/**
+ * Rozet tanımları. Rozet, öğrenciyi yarıştırmak için değil, ilerlemeyi
+ * görünür kılmak için.
+ *
+ * `aciklama` metni rozetin gerçek kuralını anlatır (kural `lib/fizik/
+ * ilerleme.js` içindedir). İkisi ayrışırsa öğrenciye ulaşamayacağı bir
+ * rozet gösterilmiş olur; testler bunu denetler.
+ */
 export const ROZETLER = [
   { kod: 'ilk-adim', ad: 'İlk Adım', aciklama: 'İlk deneyini tamamladın.', ikon: 'Footprints' },
   { kod: 'vektor-ustasi', ad: 'Vektör Ustası', aciklama: 'Vektörler bölgesinin üç seviyesini de bitirdin.', ikon: 'MoveUpRight' },
-  { kod: 'grafik-okuru', ad: 'Grafik Okuru', aciklama: 'Hareket grafiklerinin hepsini doğru eşleştirdin.', ikon: 'LineChart' },
-  { kod: 'nisanci', ad: 'Nişancı', aciklama: 'Atış görevinde hedefi vurdun.', ikon: 'Target' },
-  { kod: 'enerji-dedektifi', ad: 'Enerji Dedektifi', aciklama: 'Kaybolan enerjinin nereye gittiğini buldun.', ikon: 'Search' },
-  { kod: 'devre-tamircisi', ad: 'Devre Tamircisi', aciklama: 'Bütün arızalı devreleri onardın.', ikon: 'Wrench' },
+  { kod: 'grafik-okuru', ad: 'Grafik Okuru', aciklama: 'Kuvvet ve Hareket öğrenme kontrolünü tek hata yapmadan bitirdin.', ikon: 'LineChart' },
+  { kod: 'nisanci', ad: 'Nişancı', aciklama: 'Menzil Görevi\'nde hedefi vurdun.', ikon: 'Target' },
+  { kod: 'enerji-dedektifi', ad: 'Enerji Dedektifi', aciklama: 'İş, Güç ve Enerji bölgesinin üç seviyesini de bitirdin.', ikon: 'Search' },
+  { kod: 'devre-tamircisi', ad: 'Devre Tamircisi', aciklama: 'Arızayı Bul deneyindeki dört arızayı da onardın.', ikon: 'Wrench' },
   { kod: 'kasif', ad: 'Kâşif', aciklama: 'On üç bölgenin hepsine uğradın.', ikon: 'Compass' },
   { kod: 'atlas-ustasi', ad: 'Atlas Ustası', aciklama: 'Atlasın tamamını %100 bitirdin.', ikon: 'Award' },
 ]

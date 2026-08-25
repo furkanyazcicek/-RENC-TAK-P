@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import {
   Battery, CircleDot, Gauge, Lightbulb, Minus, RotateCcw, SlidersHorizontal,
   Trash2, ToggleLeft, Zap,
@@ -10,6 +10,7 @@ import {
   AMPUL_TIPLERI, devreCoz, elektrikEnerjisi, paralelEsdeger, seriEsdeger,
 } from '../../../lib/fizik/devre.js'
 import { sayiBicimle } from '../../../lib/fizik/birimler.js'
+import { basarimKaydet } from '../../../lib/fizik/ilerleme.js'
 
 /* ————— Tahta (breadboard) düzeni —————
    Öğrenci serbestçe kablo çizmek yerine ızgara düğümleri arasına eleman
@@ -805,6 +806,13 @@ function ArizaBul() {
 
   const ampul = cozum.elemanlar.find((e) => e.tur === 'ampul')
   const onarildi = (ampul?.parlaklik ?? 0) > 0.2 && !cozum.kisaDevre && cozum.uyarilar.length === 0
+
+  /* Onarılan arıza kalıcı olarak kaydedilir; dördünü de onarmak Devre
+     Tamircisi rozetini getirir. Kayıt render sırasında değil, devre
+     çözümü değiştikten sonra yapılır. */
+  useEffect(() => {
+    if (onarildi) basarimKaydet(`devre-ariza:${ariza.kod}`)
+  }, [onarildi, ariza.kod])
 
   const gecis = (yeni) => {
     setIndeks(yeni)

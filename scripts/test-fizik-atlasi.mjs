@@ -60,8 +60,8 @@ import {
 } from '../src/lib/fizik/optik.js'
 import { BUYUKLUKLER, bagilHata, olcumYap } from '../src/lib/fizik/olcme.js'
 import { readFileSync } from 'node:fs'
-import { bolgeYuzdesi, bosIlerleme, genelYuzde } from '../src/lib/fizik/ilerleme.js'
-import { BAGLANTILAR, BOLGELER, TOPLAM_DENEY } from '../src/data/fizik/bolgeler.js'
+import { bolgeYuzdesi, bosIlerleme, genelYuzde, hakEdilenRozetler } from '../src/lib/fizik/ilerleme.js'
+import { BAGLANTILAR, BOLGELER, DEVRE_ARIZALARI, ROZETLER, TOPLAM_DENEY } from '../src/data/fizik/bolgeler.js'
 import { ICERIK } from '../src/data/fizik/icerik.js'
 
 let gecen = 0
@@ -947,6 +947,81 @@ bolum('16) Sınav notu ve bölge çizimleri')
   dogrula('Her çizimin ekran okuyucu açıklaması var', anlatimSayisi === BOLGELER.length,
     `${anlatimSayisi}/${BOLGELER.length}`)
   console.log(`   ${BOLGELER.length} bölgenin sınav notu ve çizimi denetlendi.`)
+}
+
+/* ════════ 17) Rozet kuralları ════════ */
+bolum('17) Rozet kuralları')
+{
+  // Rozetler uzun süre hiçbir yerde verilmiyordu: sekiz rozet de öğrenci
+  // ne yaparsa yapsın sönük kalıyordu. Bu bölüm her rozetin gerçekten
+  // ulaşılabilir olduğunu doğrular.
+  dogrula('Boş kayıtta hiç rozet yok', hakEdilenRozetler(bosIlerleme()).length === 0)
+
+  const ilk = bosIlerleme()
+  ilk.tamamlanan = { olcme: { 'olcum-tezgahi': true } }
+  dogrula('İlk deney "İlk Adım" rozetini getirir', hakEdilenRozetler(ilk).includes('ilk-adim'))
+
+  const vektor = bosIlerleme()
+  vektor.seviyeler = { vektorler: { kesfet: true, ogren: true, ustalas: true } }
+  dogrula('Vektörler üç seviye "Vektör Ustası" getirir', hakEdilenRozetler(vektor).includes('vektor-ustasi'))
+
+  const enerji = bosIlerleme()
+  enerji.seviyeler = { enerji: { kesfet: true, ogren: true, ustalas: true } }
+  dogrula('Enerji üç seviye "Enerji Dedektifi" getirir', hakEdilenRozetler(enerji).includes('enerji-dedektifi'))
+
+  const grafik = bosIlerleme()
+  grafik.basarimlar = { 'hatasiz:kuvvet-hareket': true }
+  dogrula('Hatasız hareket kontrolü "Grafik Okuru" getirir', hakEdilenRozetler(grafik).includes('grafik-okuru'))
+
+  const nisan = bosIlerleme()
+  nisan.basarimlar = { nisanci: true }
+  dogrula('Hedefi vurmak "Nişancı" getirir', hakEdilenRozetler(nisan).includes('nisanci'))
+
+  const devreEksik = bosIlerleme()
+  devreEksik.basarimlar = Object.fromEntries(
+    DEVRE_ARIZALARI.slice(0, -1).map((k) => [`devre-ariza:${k}`, true]),
+  )
+  dogrula('Eksik arıza "Devre Tamircisi" getirmez', !hakEdilenRozetler(devreEksik).includes('devre-tamircisi'))
+  const devreTam = bosIlerleme()
+  devreTam.basarimlar = Object.fromEntries(DEVRE_ARIZALARI.map((k) => [`devre-ariza:${k}`, true]))
+  dogrula('Bütün arızalar "Devre Tamircisi" getirir', hakEdilenRozetler(devreTam).includes('devre-tamircisi'))
+
+  const kasif = bosIlerleme()
+  kasif.seviyeler = Object.fromEntries(BOLGELER.map((b) => [b.kod, { kesfet: true }]))
+  dogrula('Her bölgeye uğramak "Kâşif" getirir', hakEdilenRozetler(kasif).includes('kasif'))
+  dogrula('Bir bölge eksikken "Kâşif" yok', !hakEdilenRozetler({
+    ...bosIlerleme(),
+    seviyeler: Object.fromEntries(BOLGELER.slice(1).map((b) => [b.kod, { kesfet: true }])),
+  }).includes('kasif'))
+
+  // Tam bitirilmiş atlas: her bölgede üç seviye ve bütün deneyler.
+  const tam = bosIlerleme()
+  tam.seviyeler = Object.fromEntries(
+    BOLGELER.map((b) => [b.kod, { kesfet: true, ogren: true, ustalas: true }]),
+  )
+  tam.tamamlanan = Object.fromEntries(
+    BOLGELER.map((b) => [b.kod, Object.fromEntries(b.deneyler.map((d) => [d.kod, true]))]),
+  )
+  tam.basarimlar = {
+    nisanci: true,
+    'hatasiz:kuvvet-hareket': true,
+    ...Object.fromEntries(DEVRE_ARIZALARI.map((k) => [`devre-ariza:${k}`, true])),
+  }
+  const hepsi = hakEdilenRozetler(tam)
+  dogrula('Atlas tamamlanınca "Atlas Ustası" gelir', hepsi.includes('atlas-ustasi'))
+  for (const r of ROZETLER) {
+    dogrula(`Rozet ulaşılabilir: ${r.ad}`, hepsi.includes(r.kod))
+  }
+  dogrula('Tanımsız rozet verilmiyor', hepsi.every((k) => ROZETLER.some((r) => r.kod === k)))
+
+  // Arıza kodları deneyle aynı kalmalı; biri değişirse rozet asla gelmez.
+  const devreKaynak = readFileSync(
+    new URL('../src/components/fizik/bolgeler/DevreBolgesi.jsx', import.meta.url), 'utf8',
+  )
+  for (const k of DEVRE_ARIZALARI) {
+    dogrula(`Arıza kodu deneyde var: ${k}`, devreKaynak.includes(`kod: '${k}'`))
+  }
+  console.log(`   ${ROZETLER.length} rozetin tamamı ulaşılabilir.`)
 }
 
 /* ════════ Özet ════════ */
