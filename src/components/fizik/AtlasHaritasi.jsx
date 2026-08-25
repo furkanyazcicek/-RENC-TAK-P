@@ -5,6 +5,7 @@ import { ikonBul } from '../../data/fizik/ikonlar.js'
 import { asilanKavramlar, pusulaOzeti } from '../../data/fizik/yanilgilar.js'
 import { bolgeYuzdesi, genelYuzde } from '../../lib/fizik/ilerleme.js'
 import { IlerlemeCubugu, Not } from './ortak/index.js'
+import BolgeSahnesi from './BolgeSahnesi.jsx'
 
 /**
  * Fizik Atlası — Keşif haritası
@@ -233,22 +234,28 @@ export default function AtlasHaritasi({ ilerleme, onBolgeSec }) {
               onClick={() => onBolgeSec(d.kod)}
             >
               <span className="fa-bolge-serit" aria-hidden="true" />
-              <span className="fa-bolge-kart-ust">
-                <span className="fa-bolge-ikon"><Ikon size={19} aria-hidden="true" /></span>
-                <span className="fa-bolge-sira">{String(indeks + 1).padStart(2, '0')}</span>
+              <span className="fa-bolge-afis">
+                <BolgeSahnesi kod={d.kod} renk={d.renk} />
               </span>
-              <h3>{d.ad}</h3>
-              <p>{d.ozet}</p>
-              <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap', marginTop: 10 }}>
-                <span className="fa-rozet">{d.deneyler.length} deney</span>
-                {d.yuzde > 0 ? <span className="fa-rozet olumlu">%{d.yuzde}</span> : null}
-              </div>
-              {onKosulAdlari.length > 0 ? (
-                <div style={{ fontSize: 11.5, color: 'rgb(var(--fa-metin-3))', marginTop: 8 }}>
-                  Önce bakmanda yarar var: {onKosulAdlari.join(', ')}
+              <span className="fa-bolge-govde">
+                <span className="fa-bolge-kart-ust">
+                  <span className="fa-bolge-ikon"><Ikon size={18} aria-hidden="true" /></span>
+                  <span className="fa-bolge-sira">{String(indeks + 1).padStart(2, '0')}</span>
+                </span>
+                <h3>{d.ad}</h3>
+                <p>{d.ozet}</p>
+                <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap', marginTop: 10 }}>
+                  <span className="fa-rozet">{d.deneyler.length} deney</span>
+                  <span className="fa-rozet">{d.kazanimlar.length} kazanım</span>
+                  {d.yuzde > 0 ? <span className="fa-rozet olumlu">%{d.yuzde}</span> : null}
                 </div>
-              ) : null}
-              <span className="fa-bolge-kart-eylem">Bölgeyi keşfet <ArrowRight size={14} /></span>
+                {onKosulAdlari.length > 0 ? (
+                  <div style={{ fontSize: 11.5, color: 'rgb(var(--fa-metin-3))', marginTop: 8 }}>
+                    Önce bakmanda yarar var: {onKosulAdlari.join(', ')}
+                  </div>
+                ) : null}
+                <span className="fa-bolge-kart-eylem">Bölgeyi keşfet <ArrowRight size={14} /></span>
+              </span>
             </button>
           )
         })}
