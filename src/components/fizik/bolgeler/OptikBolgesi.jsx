@@ -4,7 +4,7 @@ import {
   SecimSeridi, VektorOku,
 } from '../ortak/index.js'
 import {
-  ORTAMLAR, RENK_INDISLERI, aydinlanma, duzlemAyna, filtredenGecen, golgeHesabi,
+  ORTAMLAR, aydinlanma, duzlemAyna, filtredenGecen, golgeHesabi,
   goruntuBoyu, goruntuKonumu, isikKarisimi, kirilma, kureselAynaOdagi,
   ortamdaIsikHizi, prizmaAyrismasi, sinirAcisi,
 } from '../../../lib/fizik/optik.js'

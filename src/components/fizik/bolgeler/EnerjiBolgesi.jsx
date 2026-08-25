@@ -4,8 +4,7 @@ import {
   SimKontrol, VektorOku, useSimulasyonZamani,
 } from '../ortak/index.js'
 import {
-  anlikGuc, egikDuzlemEnerji, guc, is, kinetikEnerji, kuvvetKonumAlani,
-  potansiyelEnerji, trenEnerjisi, verim, yayEnerjisi, yaylaFirlatma,
+  anlikGuc, guc, is, kuvvetKonumAlani, trenEnerjisi, yayEnerjisi, yaylaFirlatma,
 } from '../../../lib/fizik/enerji.js'
 import { G_MUFREDAT } from '../../../lib/fizik/hareket.js'
 import { sayiBicimle } from '../../../lib/fizik/birimler.js'
@@ -598,8 +597,14 @@ function YayFirlatici() {
             alanGoster
             yukseklik={170}
           />
+          <div style={{ marginTop: 8, fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 12.5, color: 'rgb(var(--fa-metin-2))', lineHeight: 1.7 }}>
+            Grafik altındaki alan (sayısal) = <b style={{ color: 'rgb(var(--fa-enerji))' }}>
+              {sayiBicimle(kuvvetKonumAlani(yayNoktalari.map((n) => ({ x: n.x / 100, F: n.F }))), 3)} J
+            </b><br />
+            Formülle ½kx² = <b style={{ color: 'rgb(var(--fa-enerji))' }}>{sayiBicimle(yayEnerjisi(yaySabiti, sikisma), 3)} J</b>
+          </div>
           <p style={{ fontSize: 12.5, color: 'rgb(var(--fa-metin-2))', marginTop: 8 }}>
-            Doğrunun altındaki üçgenin alanı = ½·taban·yükseklik = ½·x·(k·x) = <strong>½kx²</strong>.
+            İki sayı birebir aynı: doğrunun altındaki üçgenin alanı ½·taban·yükseklik = ½·x·(k·x) = <strong>½kx²</strong>.
             Formül ezberlenmesi gereken bir şey değil; grafikteki üçgenin alanından çıkıyor.
           </p>
         </div>

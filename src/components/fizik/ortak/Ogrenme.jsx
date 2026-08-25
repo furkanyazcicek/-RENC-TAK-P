@@ -3,6 +3,7 @@ import {
   CheckCircle2, HelpCircle, Lightbulb, RotateCcw, Target, XCircle,
 } from 'lucide-react'
 import { Not } from './Panolar.jsx'
+import { vurguyuIsle } from './ModulKabugu.jsx'
 import { kavramKaydet } from '../../../lib/fizik/ilerleme.js'
 
 const HARFLER = ['A', 'B', 'C', 'D', 'E']
@@ -122,7 +123,7 @@ export function OgrenmeKontrolu({ sorular, bolgeKod, onTamamla = null }) {
           <div className="fa-kart sade" key={soru.soru} style={{ marginBottom: 12 }}>
             <div style={{ display: 'flex', gap: 9, alignItems: 'flex-start' }}>
               <span className="fa-tahmin-harf" style={{ marginTop: 1 }}>{si + 1}</span>
-              <h4 style={{ fontSize: 14.5, flex: 1 }}>{soru.soru}</h4>
+              <h4 style={{ fontSize: 14.5, flex: 1 }}>{vurguyuIsle(soru.soru)}</h4>
             </div>
 
             <div style={{ marginTop: 6 }}>

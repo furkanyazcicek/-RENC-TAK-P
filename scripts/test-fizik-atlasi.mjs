@@ -497,9 +497,13 @@ yakin('Kısa devre kolu → eşdeğer 0', paralelEsdeger([5, 0]), 0, 1e-12)
     { id: 'r4', tur: 'direnc', a: 'D', b: 'B', direnc: 40 },
     { id: 'r5', tur: 'direnc', a: 'C', b: 'D', direnc: 50 },
   ] })
-  // Elle çözüm: V_C = 170,4706/23 ≈ 7,41176 ; V_D = 2900/425 ≈ 6,82353
-  yakin('Köprü: C düğüm gerilimi', kopru.dugumGerilimleri.C, 7.411765, 1e-4)
-  yakin('Köprü: D düğüm gerilimi', kopru.dugumGerilimleri.D, 6.823529, 1e-4)
+  // Elle çözüm (B ucu sıfır alınarak): V_C ≈ 7,41176 ; V_D ≈ 6,82353
+  // Çözücü toprak düğümünü kendi seçtiği için mutlak gerilimler kayabilir;
+  // fiziksel olarak anlamlı olan POTANSİYEL FARKLARIDIR, onlar denetlenir.
+  const vB = kopru.dugumGerilimleri.B
+  yakin('Köprü: C–B potansiyel farkı', kopru.dugumGerilimleri.C - vB, 7.411765, 1e-4)
+  yakin('Köprü: D–B potansiyel farkı', kopru.dugumGerilimleri.D - vB, 6.823529, 1e-4)
+  yakin('Köprü: A–B farkı = EMK', kopru.dugumGerilimleri.A - vB, 10, 1e-9)
   yakin('Köprü: köprü kolu akımı', kopru.elemanlar.find((e) => e.id === 'r5').akim, 0.011765, 1e-5)
   yakin('Köprü: eşdeğer direnç', kopru.esdegerDirenc, 23.9437, 1e-3)
 

@@ -83,7 +83,14 @@ for (const padisah of PADISAHLAR) {
     const kelimeler = baslik.split(' ')
     const ozelAdVar = kelimeler.slice(1).some((k) => /^[A-ZÇĞİÖŞÜ]/.test(k))
     const ayirtEdici = ozelAdVar || kelimeler.length > 3
-    if (ayirtEdici && metin.includes(baslik)) tekrar.add(baslik)
+    /**
+     * Belge ve kurum adları ("Sened-i İttifak", "Kanun-ı Esasi") bu
+     * denetimin dışındadır: bunlar bir olayın ADI değil, şeyin kendi
+     * adıdır ve anmadan anlatmak mümkün değildir. Ayırt edici ölçüt,
+     * başlıkta bir olay kelimesinin bulunmasıdır.
+     */
+    const olayKelimesi = /(Savaş|Sefer|Antlaşma|Kuşatma|İsyan|Fet[hi]|Vaka|Harb|Baskın|Muharebe|Zafer)/i.test(baslik)
+    if (ayirtEdici && olayKelimesi && metin.includes(baslik)) tekrar.add(baslik)
   }
   if (tekrar.size) uyarilar.push(`${padisah.id}: ekrandaki başlık birebir tekrar ediliyor → ${[...tekrar].join(' · ')}`)
 

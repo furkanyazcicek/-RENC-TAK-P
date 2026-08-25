@@ -18,13 +18,18 @@ export function OlcumKarti({ ad, deger, birim = '', basamak = 2, tur = 'olcum', 
   )
 }
 
-/** Ölçüm kartlarını ızgaraya dizer. */
+/**
+ * Ölçüm kartlarını ızgaraya dizer.
+ * Anahtar ad + sıra numarasından üretilir: aynı büyüklüğü iki farklı birimde
+ * göstermek (özkütleyi hem kg/m³ hem g/cm³ olarak vermek gibi) meşru bir
+ * ihtiyaçtır ve yalnızca ada dayanan anahtar bu durumda çakışır.
+ */
 export function OlcumPanosu({ olcumler, baslik = null }) {
   return (
     <div>
       {baslik ? <div className="fa-alan-etiket">{baslik}</div> : null}
       <div className="fa-olcum-izgara">
-        {olcumler.map((o) => <OlcumKarti key={o.ad} {...o} />)}
+        {olcumler.map((o, i) => <OlcumKarti key={`${o.ad}-${o.birim ?? ''}-${i}`} {...o} />)}
       </div>
     </div>
   )

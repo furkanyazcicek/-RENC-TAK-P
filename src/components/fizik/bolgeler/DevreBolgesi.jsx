@@ -54,7 +54,7 @@ const HAZIR_DEVRELER = {
   seri: {
     ad: 'Seri devre (2 ampul)',
     elemanlar: () => [
-      { id: yeniId(), tur: 'pil', a: 'd2-0', b: 'd0-0', emk: 12, icDirenc: 0, etiket: 'Pil' },
+      { id: yeniId(), tur: 'pil', a: 'd2-0', b: 'd0-0', emk: 6, icDirenc: 0, etiket: 'Pil' },
       { id: yeniId(), tur: 'ampul', a: 'd0-0', b: 'd0-1', direnc: 12, tip: 'orta', etiket: 'L1' },
       { id: yeniId(), tur: 'ampul', a: 'd0-1', b: 'd0-2', direnc: 12, tip: 'orta', etiket: 'L2' },
       { id: yeniId(), tur: 'kablo', a: 'd0-2', b: 'd1-2' },
@@ -66,7 +66,7 @@ const HAZIR_DEVRELER = {
   paralel: {
     ad: 'Paralel devre (2 ampul)',
     elemanlar: () => [
-      { id: yeniId(), tur: 'pil', a: 'd2-0', b: 'd0-0', emk: 12, icDirenc: 0, etiket: 'Pil' },
+      { id: yeniId(), tur: 'pil', a: 'd2-0', b: 'd0-0', emk: 6, icDirenc: 0, etiket: 'Pil' },
       { id: yeniId(), tur: 'kablo', a: 'd0-0', b: 'd0-1' },
       { id: yeniId(), tur: 'ampul', a: 'd0-1', b: 'd1-1', direnc: 12, tip: 'orta', etiket: 'L1' },
       { id: yeniId(), tur: 'kablo', a: 'd0-1', b: 'd0-2' },
@@ -94,7 +94,7 @@ const HAZIR_DEVRELER = {
   olcum: {
     ad: 'Ölçü aletleriyle',
     elemanlar: () => [
-      { id: yeniId(), tur: 'pil', a: 'd2-0', b: 'd0-0', emk: 12, icDirenc: 0, etiket: 'Pil' },
+      { id: yeniId(), tur: 'pil', a: 'd2-0', b: 'd0-0', emk: 6, icDirenc: 0, etiket: 'Pil' },
       { id: yeniId(), tur: 'ampermetre', a: 'd0-0', b: 'd0-1', etiket: 'A' },
       { id: yeniId(), tur: 'ampul', a: 'd0-1', b: 'd0-2', direnc: 12, tip: 'orta', etiket: 'L1' },
       { id: yeniId(), tur: 'voltmetre', a: 'd0-1', b: 'd0-2', etiket: 'V' },
@@ -297,7 +297,7 @@ function DevreTezgahi({ baslangicDevresi = 'seri', kilitli = false, gorevMetni =
           </div>
         ) : null}
 
-        <div className="fa-sahne">
+        <div className="fa-sahne genis">
           <svg viewBox={`0 0 ${TG} ${TY}`} role="img"
             aria-label={`Devre tahtası. ${elemanlar.length} eleman var. ${cozum.uyarilar.length > 0 ? cozum.uyarilar[0].baslik : `Toplam akım ${sayiBicimle(cozum.toplamAkim, 2)} amper.`}`}
             onClick={() => { setSeciliEleman(null); setBekleyenDugum(null) }}
@@ -618,7 +618,7 @@ const ARIZALAR = [
     ipucu: 'Akımın geçebileceği kapalı bir yol var mı?',
     cevap: 'Anahtar açık. Açık anahtar devreyi keser; hiçbir yerden akım geçmez. Anahtarı kapatınca ampul yanar.',
     elemanlar: () => [
-      { id: yeniId(), tur: 'pil', a: 'd2-0', b: 'd0-0', emk: 12, icDirenc: 0, etiket: 'Pil' },
+      { id: yeniId(), tur: 'pil', a: 'd2-0', b: 'd0-0', emk: 6, icDirenc: 0, etiket: 'Pil' },
       { id: yeniId(), tur: 'anahtar', a: 'd0-0', b: 'd0-1', kapali: false, etiket: 'S1' },
       { id: yeniId(), tur: 'ampul', a: 'd0-1', b: 'd0-2', direnc: 12, tip: 'orta', etiket: 'L1' },
       { id: yeniId(), tur: 'kablo', a: 'd0-2', b: 'd1-2' },
@@ -633,7 +633,7 @@ const ARIZALAR = [
     ipucu: 'Akım için ampulden geçmeyen, dirençsiz bir kestirme yol var mı?',
     cevap: 'Ampulün iki ucu bir kabloyla köprülenmiş (kısa devre). Akım dirençsiz yolu tercih ettiği için ampulden geçmez. Kestirme kabloyu kaldır.',
     elemanlar: () => [
-      { id: yeniId(), tur: 'pil', a: 'd2-0', b: 'd0-0', emk: 12, icDirenc: 0.5, etiket: 'Pil' },
+      { id: yeniId(), tur: 'pil', a: 'd2-0', b: 'd0-0', emk: 6, icDirenc: 0.5, etiket: 'Pil' },
       { id: yeniId(), tur: 'ampul', a: 'd0-0', b: 'd0-1', direnc: 12, tip: 'orta', etiket: 'L1' },
       { id: yeniId(), tur: 'kablo', a: 'd0-0', b: 'd1-0' },
       { id: yeniId(), tur: 'kablo', a: 'd1-0', b: 'd1-1' },
@@ -651,7 +651,7 @@ const ARIZALAR = [
     ipucu: 'Voltmetrenin direnci çok büyüktür. Akımın geçtiği yola konursa ne olur?',
     cevap: 'Voltmetre seri bağlanmış. Direnci çok büyük olduğu için akımı keser. Voltmetre, gerilimini ölçmek istediğin elemana PARALEL bağlanmalıdır.',
     elemanlar: () => [
-      { id: yeniId(), tur: 'pil', a: 'd2-0', b: 'd0-0', emk: 12, icDirenc: 0, etiket: 'Pil' },
+      { id: yeniId(), tur: 'pil', a: 'd2-0', b: 'd0-0', emk: 6, icDirenc: 0, etiket: 'Pil' },
       { id: yeniId(), tur: 'voltmetre', a: 'd0-0', b: 'd0-1', etiket: 'V1' },
       { id: yeniId(), tur: 'ampul', a: 'd0-1', b: 'd0-2', direnc: 12, tip: 'orta', etiket: 'L1' },
       { id: yeniId(), tur: 'kablo', a: 'd0-2', b: 'd1-2' },
@@ -714,7 +714,7 @@ function ArizaBul() {
           </Not>
         </div>
 
-        <div className="fa-sahne">
+        <div className="fa-sahne genis">
           <svg viewBox={`0 0 ${TG} ${TY}`} role="img" aria-label={`Arızalı devre: ${ariza.baslik}`}>
             {Array.from({ length: SATIR }, (_, s) => Array.from({ length: SUTUN }, (_, k) => {
               const p = dugumKonumu(dugumAdi(s, k))

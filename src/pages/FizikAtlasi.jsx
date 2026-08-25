@@ -74,6 +74,18 @@ export default function FizikAtlasi() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bolge])
 
+  /**
+   * Adres çubuğu dışarıdan değişirse (tarayıcının geri/ileri tuşu, paylaşılan
+   * bir bağlantı) görünen bölge de ona uymalı. Bu olmadan geri tuşu adresi
+   * değiştirir ama ekran aynı kalır; öğrenci tuşun bozuk olduğunu sanır.
+   */
+  useEffect(() => {
+    const adrestekiBolge = parametreler.get('bolge') ?? 'harita'
+    const gecerli = adrestekiBolge === 'harita' || BOLGELER.some((b) => b.kod === adrestekiBolge)
+    if (gecerli && adrestekiBolge !== bolge) setBolge(adrestekiBolge)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [parametreler])
+
   useEffect(() => {
     document.title = bolge === 'harita'
       ? 'Fizik Atlası — Dr. Koç'

@@ -36,7 +36,11 @@ export function ModulKabugu({ bolgeKod, deneyKod = null, children, deneyBasligi 
   const [ilerleme, setIlerleme] = useState(ilerlemeOku)
 
   useEffect(() => {
-    setIlerleme(konumKaydet(bolgeKod, deneyKod))
+    konumKaydet(bolgeKod, deneyKod)
+    // Modül açıldığında öğrenci zaten Keşfet seviyesindedir ve deney
+    // önünde durur; bunu ayrıca tıklamasını beklemek ilerlemeyi olduğundan
+    // düşük gösterirdi.
+    setIlerleme(seviyeTamamla(bolgeKod, 'kesfet'))
   }, [bolgeKod, deneyKod])
 
   const seviyeSec = useCallback((yeni) => {

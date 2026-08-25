@@ -6,7 +6,7 @@ import {
 } from '../ortak/index.js'
 import {
   bobinAlani, halkaMerkezAlani, indüksiyonEmk, manyetikAki, miknatisAlani,
-  pusulaYonu, sagElKurali, telAlanVektoru, teleEtkiyenKuvvet, telinAlani, toplamAlan,
+  pusulaYonu, sagElKurali, teleEtkiyenKuvvet, telinAlani, toplamAlan,
 } from '../../../lib/fizik/manyetizma.js'
 import { sayiBicimle } from '../../../lib/fizik/birimler.js'
 
@@ -409,7 +409,7 @@ function SagElKurali() {
   return (
     <div className="fa-lab">
       <div>
-        <div className="fa-sahne">
+        <div className="fa-sahne genis">
           <svg viewBox={`0 0 ${SG} 340`} role="img"
             aria-label={`Sağ el kuralı. Akım ${YON_ADLARI[akimYonu]}, alan ${YON_ADLARI[alanYonu]}. Kuvvet ${YON_ADLARI[sonuc?.yon ?? 'yok']}.`}>
             <text x="120" y="34" textAnchor="middle" fontSize="12" fontWeight="700" fill="rgb(var(--fa-olcum))">AKIM (I)</text>
@@ -568,7 +568,7 @@ function Induksiyon() {
   return (
     <div className="fa-lab">
       <div>
-        <div className="fa-sahne">
+        <div className="fa-sahne genis">
           <svg viewBox={`0 0 ${IG} ${IY}`} role="img"
             aria-label={`İndüksiyon deneyi. Mıknatıs ${durgun ? 'duruyor' : yaklasiyor ? 'yaklaşıyor' : 'uzaklaşıyor'}. İndüksiyon EMK'sı ${sayiBicimle(emk?.emk ?? 0, 3)} volt.`}>
             {/* Bobin */}

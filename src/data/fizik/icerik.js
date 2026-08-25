@@ -823,7 +823,7 @@ export const ICERIK = {
         soru: 'Frekansı 500 Hz, dalga boyu 0,68 m olan ses dalgasının hızı kaç m/s’dir?',
         secenekler: ['340 m/s', '500 m/s', '0,00136 m/s', '735 m/s'],
         dogru: 0,
-        ipucu: 'v = λ·f.',
+        ipucu: 'Dalga hızı, dalga boyu ile frekansın çarpımıdır: v = λ·f. Değerleri doğrudan yerine koy.',
         cozum: 'v = 0,68 × 500 = 340 m/s. Bu, havadaki ses hızına çok yakındır — dalga havada yayılıyor demektir.',
         yanilgi: 'dalga-bagintisi',
       },

@@ -1,8 +1,9 @@
 import { useMemo, useState } from 'react'
 import { BAGLANTILAR, BOLGELER, ROZETLER, TOPLAM_DENEY } from '../../data/fizik/bolgeler.js'
 import { ikonBul } from '../../data/fizik/ikonlar.js'
+import { asilanKavramlar, pusulaOzeti } from '../../data/fizik/yanilgilar.js'
 import { bolgeYuzdesi, genelYuzde } from '../../lib/fizik/ilerleme.js'
-import { IlerlemeCubugu } from './ortak/index.js'
+import { IlerlemeCubugu, Not } from './ortak/index.js'
 
 /**
  * Fizik Atlası — Keşif haritası
@@ -36,6 +37,8 @@ export default function AtlasHaritasi({ ilerleme, onBolgeSec }) {
     BOLGELER.map((b) => ({ kod: b.kod, deneySayisi: b.deneyler.length })),
   )
   const kazanilanRozet = ROZETLER.filter((r) => ilerleme.rozetler.includes(r.kod))
+  const pusula = pusulaOzeti(ilerleme.kavramPusulasi)
+  const asilan = asilanKavramlar(ilerleme.kavramPusulasi)
 
   return (
     <div>
@@ -198,6 +201,63 @@ export default function AtlasHaritasi({ ilerleme, onBolgeSec }) {
           )
         })}
       </div>
+
+      {/* Kavram Pusulası — öğrencinin takıldığı kavramlar */}
+      {pusula.length > 0 || asilan.length > 0 ? (
+        <>
+          <div className="fa-bolum-basi" style={{ marginTop: 26 }}>
+            <h2>Kavram Pusulası</h2>
+            <p>
+              Öğrenme kontrollerinde takıldığın kavramlar burada toplanır. Bu bir not değil, bir
+              yön göstergesi: hangi deneye dönmen gerektiğini söyler.
+            </p>
+          </div>
+
+          {pusula.length > 0 ? (
+            <div style={{ display: 'grid', gap: 10 }}>
+              {pusula.map((k) => {
+                const b = k.bolge ? BOLGELER.find((x) => x.kod === k.bolge) : null
+                return (
+                  <div key={k.kod} className="fa-kart" style={{ borderLeft: `3px solid ${b?.renk ?? 'rgb(var(--fa-uyari))'}` }}>
+                    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'flex-start' }}>
+                      <div style={{ flex: '1 1 260px', minWidth: 0 }}>
+                        <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+                          <h4 style={{ fontSize: 14.5 }}>{k.ad}</h4>
+                          <span className="fa-rozet uyari">{k.netYanlis} kez takıldın</span>
+                          {b ? <span className="fa-rozet" style={{ color: b.renk, borderColor: `${b.renk}55` }}>{b.kisaAd}</span> : null}
+                        </div>
+                        <p style={{ fontSize: 13, color: 'rgb(var(--fa-metin-2))', marginTop: 5, lineHeight: 1.55 }}>
+                          {k.tavsiye}
+                        </p>
+                      </div>
+                      {b ? (
+                        <button type="button" className="fa-dugme kucuk" onClick={() => onBolgeSec(b.kod)}>
+                          Deneye dön
+                        </button>
+                      ) : null}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          ) : (
+            <Not tur="olumlu" baslik="Takıldığın kavram kalmadı">
+              Daha önce yanıldığın kavramların hepsini sonradan doğru cevapladın.
+            </Not>
+          )}
+
+          {asilan.length > 0 ? (
+            <div className="fa-kart sade" style={{ marginTop: 12 }}>
+              <div className="fa-ust-etiket" style={{ color: 'rgb(var(--fa-olumlu))' }}>Aştığın kavramlar</div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                {asilan.map((k) => (
+                  <span key={k.kod} className="fa-rozet olumlu">{k.ad}</span>
+                ))}
+              </div>
+            </div>
+          ) : null}
+        </>
+      ) : null}
 
       {/* Rozetler */}
       <div className="fa-bolum-basi" style={{ marginTop: 26 }}>

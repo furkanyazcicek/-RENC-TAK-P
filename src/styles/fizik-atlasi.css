@@ -339,6 +339,11 @@
 }
 .fizik-atlasi[data-tema='acik'] .fa-sahne { background: radial-gradient(circle at 50% 30%, rgb(var(--fa-vurgu) / 0.05), transparent 65%), rgb(var(--fa-yuzey-2)); }
 .fa-sahne > svg { display: block; width: 100%; height: auto; }
+
+/* Etiketleri sıkışık olan sahneler (devre tahtası gibi) dar ekranda küçülüp
+   okunmaz hâle gelmesin: sahne kendi içinde yatay kayar, sayfa gövdesi kaymaz. */
+.fa-sahne.genis { overflow-x: auto; overflow-y: hidden; }
+.fa-sahne.genis > svg { min-width: 470px; }
 .fa-sahne.surukle { cursor: grab; }
 .fa-sahne.surukle:active { cursor: grabbing; }
 
@@ -547,6 +552,18 @@
 }
 @media (max-width: 640px) {
   .fizik-atlasi { font-size: 14.5px; }
+
+  /* Sahne rozetleri dar ekranda deneyin üstünü kapatıyordu. Mutlak konumdan
+     çıkarılıp sahnenin altına, normal akışa alınır: hem sahne görünür kalır
+     hem rozetler tam okunur. */
+  .fa-sahne { position: relative; padding-bottom: 0; }
+  .fa-sahne-rozet {
+    position: static;
+    max-width: 100%;
+    padding: 8px 10px 10px;
+    border-top: 1px solid rgb(var(--fa-cizgi));
+    background: rgb(var(--fa-yuzey-2));
+  }
   .fa-kart { padding: 14px; }
   .fa-olcum-izgara { grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); }
   .fa-olcum-deger { font-size: 15.5px; }
