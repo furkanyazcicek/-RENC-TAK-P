@@ -46,6 +46,14 @@ const PadisahGecidi = lazy(() => import('./pages/PadisahGecidi'))
  */
 const KimyaAtlasi = lazy(() => import('./pages/KimyaAtlasi'))
 
+/**
+ * Fizik Atlası da ayrı pakete alındı: 13 bölgenin simülasyonları, fizik
+ * hesap motorları ve etkileşimli sahneler ana pakete girmesin diye
+ * yalnızca /fizik-atlasi adresine girildiğinde yükleniyor. Bölge
+ * modülleri de kendi içinde ayrıca bölünüyor.
+ */
+const FizikAtlasi = lazy(() => import('./pages/FizikAtlasi'))
+
 /** Route geçişlerinde gösterilen tam sayfa yükleyici (tasarım sisteminden). */
 function FullPageLoader() {
   return <PageLoader />
@@ -130,6 +138,10 @@ export default function App() {
       <Route
         path="/kimya-atlasi"
         element={<Suspense fallback={<FullPageLoader />}><KimyaAtlasi /></Suspense>}
+      />
+      <Route
+        path="/fizik-atlasi"
+        element={<Suspense fallback={<FullPageLoader />}><FizikAtlasi /></Suspense>}
       />
       <Route
         path="/osmanli-padisahlari"

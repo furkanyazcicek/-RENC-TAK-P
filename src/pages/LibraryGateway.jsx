@@ -1,4 +1,4 @@
-import { BookOpen, ClipboardList, Crown, FlaskConical, Library as LibraryIcon, Map as MapIcon } from 'lucide-react'
+import { Atom, BookOpen, ClipboardList, Crown, FlaskConical, Library as LibraryIcon, Map as MapIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { AppShell, Button } from '../components/ui'
 import { DashboardHero, Panel } from '../components/dashboard'
@@ -47,6 +47,13 @@ const experiences = [
     description: 'Formül yaz; atom sayımı, molekül geometrisi, Lewis yapısı ve bağlar tek ekranda açılsın.',
     to: '/kimya-atlasi',
     Icon: FlaskConical,
+    badge: 'Yeni',
+  },
+  {
+    title: 'Fizik Atlası',
+    description: 'On üç bölge, otuz altı deney. Değerleri değiştir, grafikleri anında gör, bağıntıyı kendin keşfet.',
+    to: '/fizik-atlasi',
+    Icon: Atom,
     badge: 'Yeni',
   },
 ]

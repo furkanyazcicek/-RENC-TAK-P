@@ -9,8 +9,8 @@
  *
  * Ne bakar?
  *  • Metinde rakamla yıl geçiyor mu (ekranda tarih zaten yazıyor)
- *  • Ekrandaki olay/antlaşma/savaş başlıklarının özel adları
- *    seslendirmede tekrar ediliyor mu
+ *  • Ekrandaki olay başlığı seslendirmede BİREBİR tekrar ediliyor mu
+ *    (isim kullanmak serbesttir; yasak olan ekrandaki cümleyi okumaktır)
  *  • Seslendirme süresi 75–100 saniye aralığında mı
  *  • Aynı anlatım bölümü kimliği iki kez kullanılmış mı
  */
@@ -18,28 +18,31 @@ import { PADISAHLAR } from '../src/data/padisahlar/index.js'
 import { ANLATIMLAR } from '../src/data/padisahlar/anlatimlar.js'
 import { anlatimCizelgesi, anlatimSuresi } from '../src/lib/padisahAnlatim.js'
 
+/**
+ * Hedef süre aralığı (konuşma; duraklamalar hariç).
+ * İlk sürümde 75–100 sn'ydi. Metinlere somut ayrıntı eklenmesi
+ * kararından sonra üst sınır genişletildi: olayın nedenini ve
+ * kahramanlarını anlatmak yer istiyor. Duraklamalarla birlikte
+ * dinlenen süre bunun yaklaşık 12 saniye üstüne çıkar.
+ */
 const EN_KISA = 75
-const EN_UZUN = 100
+const EN_UZUN = 150
 
-/** Başlıklarda geçen ama özel ad sayılmayacak sıradan kelimeler. */
-const SIRADAN = new Set([
-  'Osmanlı', 'Savaşı', 'Seferi', 'Antlaşması', 'Kuşatması', 'Devleti', 'Fethi',
-  'İsyanı', 'Ocağı', 'Paşa’nın', 'Paşa', 'Devri', 'Vakası', 'Baskını', 'Harbi',
-  'Meşrutiyet', 'Camii’nin', 'Camii', 'Sultanisi', 'Hisarı', 'Saltanatın', 'Tahta',
-  'Deniz', 'Rum', 'İmparatorluğu’nun', 'Yeni', 'Büyük', 'Kısa', 'İlk', 'İkinci',
-  /* Coğrafya adları tekrar sayılmaz: anlatım bir bölgeden söz etmeden
-     olayın anlamını veremez. Yasak olan, ekrandaki OLAYIN adını
-     tekrar etmektir — bölgenin değil. */
-  'Anadolu', 'Avrupa', 'Balkan', 'Balkanlar', 'İstanbul', 'Edirne', 'Rumeli',
-  'Karadeniz', 'Akdeniz', 'Tahttan', 'Mısır’ın', 'Kırım’ın',
-])
+/**
+ * KURAL NASIL DEĞİŞTİ
+ * İlk sürüm ekrandaki her özel adı seslendirmede yasaklıyordu. Sonuç
+ * kaçamak bir anlatım oldu: "çağının en güçlü hükümdarı" gibi ifadeler,
+ * Timur demekten kaçındığı için bilgi vermiyordu.
+ *
+ * Doğru ölçüt şudur: yasak olan İSİM değil, ekrandaki CÜMLEYİ tekrar
+ * etmektir. "Ankara Savaşı" başlığını olduğu gibi söylemek tekrardır;
+ * Timur'un kim olduğunu ve savaşın neden çıktığını anlatmak katkıdır.
+ * Bu yüzden denetim artık yalnızca başlığın BİREBİR geçmesini arar.
+ */
 
-/** "Mercidâbık Savaşı" → ["Mercidâbık"] gibi ayırt edici özel adlar. */
-function ozelAdlar(baslik) {
-  return String(baslik ?? '')
-    .split(/[\s,;:–—-]+/)
-    .map((k) => k.replace(/[’'".()]+$/g, ''))
-    .filter((k) => k.length >= 5 && /^[A-ZÇĞİÖŞÜ]/.test(k) && !SIRADAN.has(k))
+/** "1396 Niğbolu Savaşı" gibi başlıkları karşılaştırmaya hazırlar. */
+function baslikDizesi(baslik) {
+  return String(baslik ?? '').replace(/\s+/g, ' ').trim()
 }
 
 const hatalar = []
@@ -62,18 +65,27 @@ for (const padisah of PADISAHLAR) {
   const yillar = metin.match(/\b1[0-9]{3}\b|\b20[0-9]{2}\b/g)
   if (yillar) hatalar.push(`${padisah.id}: seslendirmede rakamla yıl geçiyor → ${[...new Set(yillar)].join(', ')}`)
 
-  // 2) Ekrandaki başlıkların özel adları.
+  // 2) Ekrandaki olay BAŞLIĞININ birebir tekrarı.
   const ekrandakiler = [
     ...(padisah.keyEvents ?? []), ...(padisah.battles ?? []),
     ...(padisah.conquests ?? []), ...(padisah.treaties ?? []),
   ]
   const tekrar = new Set()
   for (const olay of ekrandakiler) {
-    for (const ad of ozelAdlar(olay.title)) {
-      if (metin.includes(ad)) tekrar.add(ad)
-    }
+    const baslik = baslikDizesi(olay.title)
+    /**
+     * Yalnızca AYIRT EDİCİ başlıklar aranır. "Tahta çıkış" gibi genel
+     * ifadeler her metinde doğal olarak geçer; onları tekrar saymak
+     * denetimi gürültüye boğar. Ayırt edici sayılma ölçütü: başlıkta
+     * ilk kelime dışında büyük harfle başlayan bir kelime bulunması
+     * ("Ankara Savaşı") ya da üç kelimeden uzun olması.
+     */
+    const kelimeler = baslik.split(' ')
+    const ozelAdVar = kelimeler.slice(1).some((k) => /^[A-ZÇĞİÖŞÜ]/.test(k))
+    const ayirtEdici = ozelAdVar || kelimeler.length > 3
+    if (ayirtEdici && metin.includes(baslik)) tekrar.add(baslik)
   }
-  if (tekrar.size) uyarilar.push(`${padisah.id}: ekrandaki başlık adı seslendirmede de geçiyor → ${[...tekrar].join(', ')}`)
+  if (tekrar.size) uyarilar.push(`${padisah.id}: ekrandaki başlık birebir tekrar ediliyor → ${[...tekrar].join(' · ')}`)
 
   // 3) Süre.
   const sure = anlatimSuresi(anlatimCizelgesi(padisah))

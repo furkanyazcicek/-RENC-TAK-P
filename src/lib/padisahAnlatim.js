@@ -45,9 +45,46 @@ export function anlatimMetni(padisah) {
   return (padisah?.narration ?? []).map((bolum) => bolum.text.trim()).join('\n\n')
 }
 
-/** Metinden hesaplanan sürüm damgası. Metin değişirse damga da değişir. */
+/**
+ * Seslendirme biçimlendirmesinin sürümü. Duraklama kuralları değişirse
+ * BU SAYI ARTIRILIR; böylece eski kayıtlar bayat sayılıp yeniden üretilir.
+ * Yoksa kural değişir ama öğrenci eski duraklamalarla dinlemeye devam eder.
+ */
+const SESLENDIRME_BICIMI = 2
+
+/** Metinden hesaplanan sürüm damgası. Metin ya da biçim değişirse damga değişir. */
 export function anlatimSurumu(padisah) {
-  return stableTextVersion(anlatimMetni(padisah))
+  return stableTextVersion(`${anlatimMetni(padisah)}|bicim${SESLENDIRME_BICIMI}`)
+}
+
+/**
+ * SESLENDİRİLECEK METİN — duraklama işaretleriyle.
+ *
+ * Ses motoru Türkçe noktalamayı zayıf yorumluyor: nokta ve paragraf
+ * sonlarında belgesel temposunun istediği nefes payını bırakmıyor.
+ * Bu yüzden duraklamalar metne AÇIKÇA yazılır.
+ *
+ * Kural: duraklama, dilbilgisinin değil ANLAMIN gerektirdiği yere konur.
+ *   · Paragraf arası → en uzun bekleme; sahne değişiyor demektir.
+ *   · Soru cümlesi   → anlatımlar retorik soruyla açılır, cevap
+ *                      beklenirmiş gibi bir sessizlik gerekir.
+ *   · İki nokta      → ardından gelen sonucu öne çıkarır.
+ * Her cümle sonuna işaret konmaz: fazla işaret ses motorunda cızırtı ve
+ * tonlama bozukluğu üretir.
+ */
+export function seslendirmeMetni(padisah) {
+  return (padisah?.narration ?? [])
+    .map((bolum) => duraklamaEkle(bolum.text.trim()))
+    .join(' <break time="1.2s" />\n\n')
+}
+
+function duraklamaEkle(metin) {
+  return metin
+    .replace(/\?\s+/g, '? <break time="0.7s" /> ')
+    .replace(/:\s+/g, ': <break time="0.4s" /> ')
+    .replace(/;\s+/g, '; <break time="0.3s" /> ')
+    .replace(/\s{2,}/g, ' ')
+    .trim()
 }
 
 /**

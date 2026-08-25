@@ -165,8 +165,16 @@ function elevenLabsProvider({ env, fetchImpl }) {
        * ayakta tutar.
        */
       const belgesel = persona === 'belgesel'
-      const kararlilik = numberFrom(env.TTS_STABILITY, belgesel ? 0.62 : 0.45)
-      const ifade = numberFrom(env.TTS_STYLE, belgesel ? 0.2 : 0.3)
+      /**
+       * Belgesel ayarları dinleme geri bildirimiyle oturtuldu:
+       *   kararlilik 0.62 → 0.75  uzun okumada tonlama dalgalanması azalsın
+       *   ifade      0.20 → 0.38  anlatım düz duyulmasın, vurgular belirsin
+       *   hız        1.00 → 0.92  belgesel temposu; anlaşılırlık artar
+       * Öğretmen tonu bu değişikliklerden etkilenmez.
+       */
+      const kararlilik = numberFrom(env.TTS_STABILITY, belgesel ? 0.75 : 0.45)
+      const ifade = numberFrom(env.TTS_STYLE, belgesel ? 0.38 : 0.3)
+      const hiz = numberFrom(env.TTS_SPEED, belgesel ? 0.92 : speed)
       const response = await fetchImpl(`${baseUrl}/text-to-speech/${voiceId}?output_format=${outputFormat}`, {
         method: 'POST',
         headers: {
@@ -184,7 +192,7 @@ function elevenLabsProvider({ env, fetchImpl }) {
             // Anlatım yönergesi "yavaşla/vurgula" diyorsa ifade payı biraz artar.
             style: !belgesel && /yavaş|vurgu/i.test(style) ? 0.45 : ifade,
             use_speaker_boost: true,
-            ...(Number.isFinite(speed) ? { speed } : {}),
+            ...(Number.isFinite(hiz) ? { speed: hiz } : {}),
           },
         }),
         signal,

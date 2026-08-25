@@ -60,7 +60,7 @@ const temizle = bayrak('--temizle')
 await ortamDegiskenleriniYukle()
 
 const { PADISAHLAR, padisahBul } = await import('../src/data/padisahlar/index.js')
-const { anlatimMetni, anlatimSurumu } = await import('../src/lib/padisahAnlatim.js')
+const { anlatimMetni, anlatimSurumu, seslendirmeMetni } = await import('../src/lib/padisahAnlatim.js')
 const { createTtsProvider } = await import('../api/_lib/tts/index.js')
 
 let hedefler = PADISAHLAR
@@ -76,7 +76,10 @@ if (hedefId) {
 
 const isler = hedefler.map((padisah) => ({
   padisah,
+  // Maliyet ve rapor düz metinden; ses motoruna giden ise duraklama
+  // işaretli sürümdür. İşaretler okunmaz, sessizliğe çevrilir.
   metin: anlatimMetni(padisah),
+  soylenecek: seslendirmeMetni(padisah),
   surum: anlatimSurumu(padisah),
 })).filter((is) => is.metin.trim().length > 0)
 
@@ -153,7 +156,7 @@ for (const is of isler) {
   process.stdout.write(`   ⏳ ${etiket} — üretiliyor…`)
   try {
     const ses = await saglayici.generateSpeech({
-      text: is.metin,
+      text: is.soylenecek,
       language: 'tr-TR',
       // Öğretmen tonu DEĞİL: bu bir tarih belgeseli anlatımıdır.
       persona: 'belgesel',
