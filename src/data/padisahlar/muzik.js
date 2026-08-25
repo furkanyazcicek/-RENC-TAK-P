@@ -26,12 +26,27 @@
 
 export const ATLAS_MUZIGI = {
   /** Dosya adı — `muzik/` klasörüne göre. Boşsa müzik kapalıdır. */
-  dosya: '',
+  dosya: 'atlas-fon-dongu.m4a',
 
-  /** Ekranda ve kayıtlarda görünecek künye. */
-  ad: '',
-  lisans: '',
-  kaynak: '',
+  /**
+   * Künye. Ticari bir üründe müziğin nereden geldiği kayıtlı olmalı;
+   * yıllar sonra "bu parça nereden gelmişti?" sorusuna cevap versin.
+   */
+  ad: 'Historical — Yevhen Astafiev',
+  lisans: 'Pixabay lisansı (ticari kullanıma açık, kaynak belirtme şartsız)',
+  kaynak: 'pixabay.com · dosya kimliği 534555',
+
+  /**
+   * Dosya olduğu gibi kullanılmadı; iki işlemden geçti:
+   *   1. Parçanın sonundaki sönüm kesildi ve dört saniyelik eşit güç
+   *      çapraz geçişiyle başa bağlandı. Ham hâlinde döngü, sessizliğe
+   *      inip aniden yeniden başlıyordu.
+   *   2. 256 kbps stereo mp3 yerine 96 kbps AAC'ye alındı: 4,35 MB → 1,58 MB.
+   *      Müzik en yüksek %22 seviyede çalıyor; bu kalite fazlasıyla yeter
+   *      ve telefondan girenler için indirme yükü üçte bire iner.
+   * Özgün dosya değiştirilmedi.
+   */
+  dongulendi: true,
 
   /**
    * Ses seviyeleri. Öğrenci saatlerce dinleyecek; müzik fark edilmeli
