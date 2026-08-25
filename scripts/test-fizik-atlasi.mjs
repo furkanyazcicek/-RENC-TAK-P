@@ -926,6 +926,7 @@ bolum('16) Sınav notu ve bölge çizimleri')
     dogrula(`${b.kisaAd}: sınav sıklığı yazılmış`, typeof n?.siklik === 'string' && n.siklik.length > 8)
     dogrula(`${b.kisaAd}: soru tarzı anlatılmış`, typeof n?.tarz === 'string' && n.tarz.length > 60)
     dogrula(`${b.kisaAd}: tuzak yazılmış`, typeof n?.tuzak === 'string' && n.tuzak.length > 40)
+    dogrula(`${b.kisaAd}: sınav kapsamı yazılmış`, ['TYT', 'AYT', 'TYT + AYT'].includes(b.kapsam))
   }
 
   // Çizimler JSX olduğu için burada çalıştırılamaz; kayıt defterinin her

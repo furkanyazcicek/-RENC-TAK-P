@@ -23,6 +23,8 @@ export const BOLGELER = [
     onKosullar: [],
     ozet: 'Fiziğin alfabesi: hangi büyüklükler temel, hangileri türetilmiş, bir ölçüm ne kadar güvenilir?',
     /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    /* Hangi sınavın kapsamında: iki bölge 11. sınıf konusudur. */
+    kapsam: 'TYT',
     sinavNotu: {
       siklik: 'TYT\'de çoğu yıl 1 soru',
       tarz: 'Genellikle bir birimin hangi temel birimlerden kurulduğu, skaler–vektörel ayrımı ya da bir ölçüm aletinin duyarlılığı sorulur. Uzun hesap değil, kavram sorusudur.',
@@ -50,6 +52,8 @@ export const BOLGELER = [
     onKosullar: ['olcme'],
     ozet: 'Yönü olan büyüklüklerle çalışmayı öğren: topla, çıkar, bileşenlerine ayır, dengeleyicisini bul.',
     /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    /* Hangi sınavın kapsamında: iki bölge 11. sınıf konusudur. */
+    kapsam: 'TYT + AYT',
     sinavNotu: {
       siklik: 'TYT\'de temel düzeyde; ayrıntılı vektör soruları AYT ağırlıklı',
       tarz: 'TYT\'de çoğunlukla “hangisi vektörel büyüklüktür” ya da alınan yol ile yer değiştirmenin karşılaştırılması biçiminde gelir. Bileşenlere ayırma ve bileşke hesabı AYT\'de karşına çıkar.',
@@ -76,6 +80,8 @@ export const BOLGELER = [
     onKosullar: ['olcme'],
     ozet: 'Özkütle, dayanıklılık, adezyon–kohezyon, yüzey gerilimi ve kılcallık.',
     /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    /* Hangi sınavın kapsamında: iki bölge 11. sınıf konusudur. */
+    kapsam: 'TYT',
     sinavNotu: {
       siklik: 'TYT\'de neredeyse her yıl 1 soru',
       tarz: 'Kütle–hacim grafiğinden özkütle okuma, karışım özkütlesi, kılcallık ve yüzey gerilimi örnekleri. Grafik yorumu çok sık.',
@@ -103,6 +109,8 @@ export const BOLGELER = [
     onKosullar: ['vektorler', 'madde'],
     ozet: 'Konum, hız, ivme, grafikler ve Newton yasaları. Atlasın en geniş bölgesi.',
     /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    /* Hangi sınavın kapsamında: iki bölge 11. sınıf konusudur. */
+    kapsam: 'TYT',
     sinavNotu: {
       siklik: 'TYT\'de her yıl 1–2 soru',
       tarz: 'Konum–zaman ve hız–zaman grafiklerinin yorumu, Newton yasalarıyla ivme bulma, sürtünmeli sistemlerde net kuvvet.',
@@ -132,6 +140,8 @@ export const BOLGELER = [
     onKosullar: ['kuvvet-hareket'],
     ozet: 'Serbest düşme, düşey atışlar, yatay atış ve eğik atış tek bir laboratuvarda.',
     /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    /* Hangi sınavın kapsamında: iki bölge 11. sınıf konusudur. */
+    kapsam: 'AYT',
     sinavNotu: {
       siklik: 'AYT ağırlıklı; TYT\'de nadiren ve niteliksel',
       tarz: 'Atışlar 11. sınıf konusudur. AYT\'de yatay ve eğik atışta menzil, uçuş süresi ve tepe noktası hesaplanır; TYT\'de en fazla serbest düşmenin niteliksel yorumu gelir.',
@@ -158,6 +168,8 @@ export const BOLGELER = [
     onKosullar: ['kuvvet-hareket'],
     ozet: 'Enerji yok olmaz; şekil değiştirir. Sürtünmede nereye gittiğini adım adım izle.',
     /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    /* Hangi sınavın kapsamında: iki bölge 11. sınıf konusudur. */
+    kapsam: 'TYT',
     sinavNotu: {
       siklik: 'TYT\'de her yıl 1 soru',
       tarz: 'İş–enerji ilişkisi, enerjinin korunumu, sürtünmede ısıya dönüşen pay ve verim. Hesaplar kısa, yorum ağır basar.',
@@ -186,6 +198,8 @@ export const BOLGELER = [
     onKosullar: ['madde', 'enerji'],
     ozet: 'Isı ile sıcaklık aynı şey değil. Karıştır, ısıt, erit ve grafiği izle.',
     /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    /* Hangi sınavın kapsamında: iki bölge 11. sınıf konusudur. */
+    kapsam: 'TYT',
     sinavNotu: {
       siklik: 'TYT\'de neredeyse her yıl 1 soru',
       tarz: 'Isı alışverişi ve denge sıcaklığı hesabı, ısınma eğrisi yorumu, katı–sıvı genleşmesi örnekleri.',
@@ -214,6 +228,8 @@ export const BOLGELER = [
     onKosullar: ['madde', 'kuvvet-hareket'],
     ozet: 'Katı, sıvı ve gaz basıncı; Pascal ilkesi ve Arşimet.',
     /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    /* Hangi sınavın kapsamında: iki bölge 11. sınıf konusudur. */
+    kapsam: 'TYT',
     sinavNotu: {
       siklik: 'TYT\'de her yıl 1 soru',
       tarz: 'Katı ve sıvı basıncının karşılaştırılması, kapalı kaplarda Pascal ilkesi, yüzen ve batan cisimlerde Arşimet ilkesi.',
@@ -241,6 +257,8 @@ export const BOLGELER = [
     onKosullar: ['vektorler', 'kuvvet-hareket'],
     ozet: 'Yükler, Coulomb kuvveti, elektrik alan ve elektriklenme yolları.',
     /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    /* Hangi sınavın kapsamında: iki bölge 11. sınıf konusudur. */
+    kapsam: 'TYT',
     sinavNotu: {
       siklik: 'TYT\'de çoğu yıl 1 soru',
       tarz: 'Elektriklenme yolları, özdeş kürelerde yük paylaşımı, Coulomb yasasındaki orantıların yorumu ve alan çizgileri.',
@@ -268,6 +286,8 @@ export const BOLGELER = [
     onKosullar: ['elektrostatik', 'enerji'],
     ozet: 'Sürükle-bırak devre laboratuvarı: seri, paralel, karışık, açık ve kısa devre.',
     /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    /* Hangi sınavın kapsamında: iki bölge 11. sınıf konusudur. */
+    kapsam: 'TYT',
     sinavNotu: {
       siklik: 'TYT\'de her yıl 1 soru',
       tarz: 'Seri ve paralel eşdeğer direnç, ampullerin parlaklığının karşılaştırılması, ampermetre ve voltmetrenin bağlanışı.',
@@ -295,6 +315,8 @@ export const BOLGELER = [
     onKosullar: ['devreler'],
     ozet: 'Mıknatıs alanı, akımın alanı, elektromıknatıs, sağ el kuralı ve indüksiyon.',
     /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    /* Hangi sınavın kapsamında: iki bölge 11. sınıf konusudur. */
+    kapsam: 'TYT',
     sinavNotu: {
       siklik: 'TYT\'de ara sıra; çoğunlukla niteliksel',
       tarz: 'Akımın oluşturduğu manyetik alanın yönü (sağ el kuralı), mıknatıs–bobin etkileşimi ve indüksiyon akımının yönü.',
@@ -323,6 +345,8 @@ export const BOLGELER = [
     onKosullar: ['enerji'],
     ozet: 'Atma, periyodik dalga, girişim, yansıma, ses ve rezonans.',
     /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    /* Hangi sınavın kapsamında: iki bölge 11. sınıf konusudur. */
+    kapsam: 'TYT',
     sinavNotu: {
       siklik: 'TYT\'de çoğu yıl 1 soru',
       tarz: 'v = λ·f bağıntısıyla dalga boyu ve frekans, sabit ve serbest uçtan yansıma, sesin ortama göre değişen hızı, rezonans.',
@@ -351,6 +375,8 @@ export const BOLGELER = [
     onKosullar: ['dalgalar'],
     ozet: 'Gölge, yansıma, aynalar, kırılma, mercekler, prizma ve renk.',
     /* TYT'de bu bölgenin karşılığı — sıklık nitelikseldir, yıllara göre değişir. */
+    /* Hangi sınavın kapsamında: iki bölge 11. sınıf konusudur. */
+    kapsam: 'TYT',
     sinavNotu: {
       siklik: 'TYT\'de neredeyse her yıl 1 soru',
       tarz: 'Gölge ve yarı gölge, düzlem ve küresel aynada görüntü, kırılma yönü, mercekte görüntü özellikleri ve renk karışımı.',

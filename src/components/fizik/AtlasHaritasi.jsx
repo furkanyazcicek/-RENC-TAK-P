@@ -254,6 +254,7 @@ export default function AtlasHaritasi({ ilerleme, onBolgeSec }) {
                 <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap', marginTop: 10 }}>
                   <span className="fa-rozet">{d.deneyler.length} deney</span>
                   <span className="fa-rozet">{d.kazanimlar.length} kazanım</span>
+                  {d.kapsam !== 'TYT' ? <span className="fa-rozet uyari">{d.kapsam}</span> : null}
                   {d.yuzde > 0 ? <span className="fa-rozet olumlu">%{d.yuzde}</span> : null}
                 </div>
                 {onKosulAdlari.length > 0 ? (

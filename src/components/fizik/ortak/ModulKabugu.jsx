@@ -102,7 +102,7 @@ export function ModulKabugu({ bolgeKod, deneyKod = null, children, deneyBasligi 
         <summary>
           <span className="fa-kunye-etiket">Bölge künyesi</span>
           <span className="fa-kunye-ozet">
-            TYT · Fizik · {bolge.kazanimlar.length} kazanım · {bolge.deneyler.length} deney
+            {bolge.kapsam} · Fizik · {bolge.kazanimlar.length} kazanım · {bolge.deneyler.length} deney
           </span>
           <ChevronDown size={16} aria-hidden="true" />
         </summary>
@@ -123,7 +123,7 @@ export function ModulKabugu({ bolgeKod, deneyKod = null, children, deneyBasligi 
           </div>
           {bolge.sinavNotu ? (
             <div className="fa-kunye-sinav">
-              <div className="fa-ust-etiket"><GraduationCap size={13} /> TYT'de nasıl sorulur</div>
+              <div className="fa-ust-etiket"><GraduationCap size={13} /> Sınavda nasıl sorulur</div>
               <p><b>Sıklık:</b> {bolge.sinavNotu.siklik}</p>
               <p>{bolge.sinavNotu.tarz}</p>
               <p className="fa-kunye-tuzak"><b>Tuzak:</b> {bolge.sinavNotu.tuzak}</p>
