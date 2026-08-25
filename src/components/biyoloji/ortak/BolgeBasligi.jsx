@@ -1,0 +1,2 @@
+import { FlaskConical } from 'lucide-react'
+export default function BolgeBasligi({no,kapsam='TYT çekirdeği',baslik,aciklama,renk='#61d7b0',deney}){return <header className="ba-bolum-basi" style={{'--vurgu':renk}}><div><span className="ba-etiket">Bölge {no} · {kapsam}</span><h1>{baslik}</h1><p>{aciklama}</p></div><span className="ba-bolum-deney"><FlaskConical/><b>{deney}</b> gerçek istasyon</span></header>}

@@ -1,0 +1,21 @@
+import { useMemo, useState } from 'react'
+import { Award, BookOpenCheck, RotateCcw, TriangleAlert } from 'lucide-react'
+import { BolgeBasligi } from '../ortak/index.js'
+import { hataKaydet, ilerlemeOku } from '../../../lib/cografya/ilerleme.js'
+
+const SORULAR=[
+  {id:'kamp-koordinat',tur:'Koordinat',soru:'30°D boylamında yerel saat 12.00 iken 45°D’de saat kaçtır?',secenekler:['11.00','12.00','13.00','15.00'],cevap:2,kanit:'15° boylam farkı = 60 dakika; doğuda saat ileridir.'},
+  {id:'kamp-olcek',tur:'Ölçek',soru:'1/500.000 ölçekli haritada 4 cm olan yol gerçekte kaç km’dir?',secenekler:['2','20','200','2.000'],cevap:1,kanit:'4 × 500.000 cm = 20 km.'},
+  {id:'kamp-iklim',tur:'Grafik okuma',soru:'Sıcaklığın ocakta en yüksek, temmuzda en düşük olduğu merkez için en güçlü çıkarım nedir?',secenekler:['Güney Yarım Küre olasıdır','Boylamı 0°’dır','Deniz kıyısındadır','Muson iklimidir'],cevap:0,kanit:'Mevsim tepesi yarım küreyi destekler; diğer özellikler için veri yoktur.'},
+  {id:'kamp-nufus',tur:'Tablo okuma',soru:'Toplam alan 100, tarım alanı 10 birim olan yerde nüfus sabitse hangi yoğunluk daha büyüktür?',secenekler:['Aritmetik','Fizyolojik','İkisi eşit','Hesaplanamaz'],cevap:1,kanit:'Aynı nüfus daha küçük tarım alanına bölünür.'},
+  {id:'kamp-afet',tur:'Vaka analizi',soru:'Aynı deprem tehlikesindeki iki kentten hangisinin riski daha düşüktür?',secenekler:['Kırılgan yapı ve hazırlıksız nüfus','Güçlü yapı, düşük maruziyet ve hazırlık','Nüfusu daha yoğun kent','Yalnız kıyıda olan kent'],cevap:1,kanit:'Risk; tehlike yanında maruziyet, kırılganlık ve hazırlığa bağlıdır.'},
+  {id:'kamp-ekonomi',tur:'Mekânsal karar',soru:'Çabuk bozulan tarımsal ürünü işleyen tesiste en güçlü kuruluş yeri kanıtı hangisidir?',secenekler:['Hammaddeye yakınlık','Kutup çizgisi','Yalnız nüfus yoğunluğu','Saat dilimi'],cevap:0,kanit:'Bozulma ve taşıma kaybı kaynağa yakın işlemeyi avantajlı kılar.'},
+]
+
+export default function KampBolgesi(){
+  const [index,setIndex]=useState(0); const [cevaplar,setCevaplar]=useState({}); const [goster,setGoster]=useState(false); const soru=SORULAR[index]
+  const puan=useMemo(()=>Object.entries(cevaplar).filter(([id,c])=>SORULAR.find(s=>s.id===id)?.cevap===c).length,[cevaplar])
+  const hataSayisi=ilerlemeOku().hataDefteri.length
+  const yanitla=(i)=>{setCevaplar({...cevaplar,[soru.id]:i});setGoster(true);if(i!==soru.cevap)hataKaydet(soru.id,i,soru.kanit)}
+  return <div className="ca-bolge"><BolgeBasligi etiket="TYT Coğrafya" baslik="TYT Kampı" aciklama="Altı farklı kanıt türünü tek oturumda uygula; yanlışını cevapla değil atladığın kanıtla kaydet." renk="#55b7d3" sayi="6"/><section className="ca-kamp-panel"><header><div><BookOpenCheck size={22}/><span>Soru {index+1} / {SORULAR.length}</span><em>{soru.tur}</em></div><div className="ca-kamp-skor"><Award size={20}/><strong>{puan}</strong><small>doğru</small></div></header><div className="ca-kamp-ilerleme"><i style={{width:`${((index+1)/SORULAR.length)*100}%`}}/></div><article><h2>{soru.soru}</h2><div className="ca-kamp-secenekler">{soru.secenekler.map((s,i)=>{const sec=cevaplar[soru.id]===i;return <button type="button" key={s} onClick={()=>yanitla(i)} className={goster&&sec?(i===soru.cevap?'dogru':'yanlis'):''}><span>{String.fromCharCode(65+i)}</span>{s}</button>})}</div>{goster?<aside className={cevaplar[soru.id]===soru.cevap?'dogru':'yanlis'}><strong>{cevaplar[soru.id]===soru.cevap?'Kanıt doğru kullanıldı':'Atlanan kanıtı bul'}</strong><p>{soru.kanit}</p></aside>:null}</article><footer><button type="button" disabled={index===0} onClick={()=>{setIndex(i=>i-1);setGoster(cevaplar[SORULAR[index-1]?.id]!==undefined)}}>Önceki</button>{index<SORULAR.length-1?<button type="button" disabled={cevaplar[soru.id]===undefined} onClick={()=>{setIndex(i=>i+1);setGoster(cevaplar[SORULAR[index+1]?.id]!==undefined)}}>Sonraki soru</button>:<button type="button" onClick={()=>{setIndex(0);setCevaplar({});setGoster(false)}}><RotateCcw size={15}/> Yeniden çöz</button>}</footer></section><aside className="ca-hata-defteri"><TriangleAlert size={20}/><div><strong>Yanılgı defteri</strong><p>Atlas ve kamp boyunca kaydedilmiş {hataSayisi} kanıt eksiği var. Pusula kartlarında bu eksikleri yeniden sınıflandırabilirsin.</p></div></aside></div>
+}

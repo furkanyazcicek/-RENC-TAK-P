@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { ArrowRight, Compass, Route, Sparkles } from 'lucide-react'
 import { BAGLANTILAR, BOLGELER, ROZETLER, TOPLAM_DENEY } from '../../data/fizik/bolgeler.js'
 import { ikonBul } from '../../data/fizik/ikonlar.js'
 import { asilanKavramlar, pusulaOzeti } from '../../data/fizik/yanilgilar.js'
@@ -31,6 +32,7 @@ export default function AtlasHaritasi({ ilerleme, onBolgeSec }) {
   })), [ilerleme])
 
   const dugumBul = (kod) => dugumler.find((d) => d.kod === kod)
+  const odakDugum = dugumBul(vurgulu) ?? dugumBul('vektorler')
 
   const yuzdeGenel = genelYuzde(
     ilerleme,
@@ -42,12 +44,38 @@ export default function AtlasHaritasi({ ilerleme, onBolgeSec }) {
 
   return (
     <div>
-      <div className="fa-hero">
-        <h1>Fizik Atlası</h1>
-        <p className="fa-hero-alt">
-          On üç bölge, otuz altı deney. Formülle başlamıyoruz: önce büyüklüklerle oynuyorsun,
-          sonuçları anında görüyorsun, bağıntıyı kendin keşfediyorsun.
-        </p>
+      <section className="fa-atlas-kapak" aria-labelledby="fa-atlas-baslik">
+        <div className="fa-atlas-kapak-icerik">
+          <div className="fa-atlas-kapak-etiket"><Sparkles size={14} /> Etkileşimli TYT fizik laboratuvarı</div>
+          <h1 id="fa-atlas-baslik">Fiziği izleme.<br /><span>Onu harekete geçir.</span></h1>
+          <p>
+            Vektörü çevir, devreyi kur, atışı başlat. 13 bölge ve 36 deneyde
+            formülü ezberlemeden önce ilişkiyi kendi gözünle yakala.
+          </p>
+          <div className="fa-atlas-kapak-eylem">
+            <button type="button" className="fa-dugme birincil" onClick={() => onBolgeSec('vektorler')}>
+              <Compass size={16} /> İlk deneyi aç <ArrowRight size={15} />
+            </button>
+            <button
+              type="button"
+              className="fa-dugme fa-kapak-ikincil"
+              onClick={() => document.getElementById('fa-kesif-haritasi')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+            >
+              <Route size={16} /> Rotayı incele
+            </button>
+          </div>
+          <div className="fa-atlas-kapak-metrik" aria-label="Atlas kapsamı">
+            <span><b>{BOLGELER.length}</b> keşif bölgesi</span>
+            <span><b>{TOPLAM_DENEY}</b> canlı deney</span>
+            <span><b>861</b> fizik doğrulaması</span>
+          </div>
+        </div>
+      </section>
+
+      <div className="fa-hero fa-harita-giris">
+        <div className="fa-ust-etiket"><Route size={13} /> Kavram rotası</div>
+        <h2>Bir konudan diğerine neden geçtiğini gör</h2>
+        <p className="fa-hero-alt">Bağlantılar önerilen keşif sırasını gösterir; istediğin bölgeden başlayabilirsin.</p>
       </div>
 
       {/* Genel ilerleme şeridi */}
@@ -67,7 +95,14 @@ export default function AtlasHaritasi({ ilerleme, onBolgeSec }) {
       </div>
 
       {/* Harita */}
-      <div className="fa-harita-sarmal" style={{ marginBottom: 18 }}>
+      <div id="fa-kesif-haritasi" className="fa-harita-sarmal" style={{ marginBottom: 18 }}>
+        <div className="fa-harita-ust">
+          <div>
+            <span className="fa-canli-nokta" aria-hidden="true" />
+            <b>Keşif rotası</b>
+          </div>
+          <span>Düğüme dokun · bağlantıyı izle · deneye gir</span>
+        </div>
         <svg
           className="fa-harita"
           viewBox={`0 0 ${HARITA_G} ${HARITA_Y}`}
@@ -165,6 +200,19 @@ export default function AtlasHaritasi({ ilerleme, onBolgeSec }) {
             )
           })}
         </svg>
+        <div className="fa-harita-odak" style={{ '--fa-odak-renk': odakDugum?.renk }} aria-live="polite">
+          <span className="fa-harita-odak-ikon">
+            {odakDugum ? (() => { const Ikon = ikonBul(odakDugum.ikon); return <Ikon size={18} /> })() : null}
+          </span>
+          <span className="fa-harita-odak-metin">
+            <small>{vurgulu ? 'Bağlantıları vurgulanan bölge' : 'Önerilen ilk durak'}</small>
+            <b>{odakDugum?.ad}</b>
+            <em>{odakDugum?.ozet}</em>
+          </span>
+          <button type="button" className="fa-dugme kucuk" onClick={() => odakDugum && onBolgeSec(odakDugum.kod)}>
+            Deneye gir <ArrowRight size={14} />
+          </button>
+        </div>
       </div>
 
       {/* Bölge kartları — haritayı okuyamayan ya da liste isteyen için */}
@@ -173,7 +221,7 @@ export default function AtlasHaritasi({ ilerleme, onBolgeSec }) {
         <p>İstediğin bölgeden başlayabilirsin. Oklar zorunluluk değil, kolaylık sırası.</p>
       </div>
       <div className="fa-izgara uc">
-        {dugumler.map((d) => {
+        {dugumler.map((d, indeks) => {
           const Ikon = ikonBul(d.ikon)
           const onKosulAdlari = d.onKosullar.map((k) => dugumBul(k)?.kisaAd).filter(Boolean)
           return (
@@ -185,7 +233,10 @@ export default function AtlasHaritasi({ ilerleme, onBolgeSec }) {
               onClick={() => onBolgeSec(d.kod)}
             >
               <span className="fa-bolge-serit" aria-hidden="true" />
-              <span className="fa-bolge-ikon"><Ikon size={19} aria-hidden="true" /></span>
+              <span className="fa-bolge-kart-ust">
+                <span className="fa-bolge-ikon"><Ikon size={19} aria-hidden="true" /></span>
+                <span className="fa-bolge-sira">{String(indeks + 1).padStart(2, '0')}</span>
+              </span>
               <h3>{d.ad}</h3>
               <p>{d.ozet}</p>
               <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap', marginTop: 10 }}>
@@ -197,6 +248,7 @@ export default function AtlasHaritasi({ ilerleme, onBolgeSec }) {
                   Önce bakmanda yarar var: {onKosulAdlari.join(', ')}
                 </div>
               ) : null}
+              <span className="fa-bolge-kart-eylem">Bölgeyi keşfet <ArrowRight size={14} /></span>
             </button>
           )
         })}

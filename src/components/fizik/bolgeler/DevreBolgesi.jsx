@@ -106,47 +106,73 @@ const HAZIR_DEVRELER = {
   },
 }
 
-/* ═══════════ Eleman çizimi ═══════════ */
-
-function ElemanCizimi({ eleman, sonuc, secili, onSec }) {
+/**
+ * Bir devre elemanının çizimi.
+ *
+ * Semboller MEB ders kitaplarındaki gösterime uyar: pil uzun-kısa çizgi
+ * çifti, direnç dikdörtgen, ampul içinde çarpı olan daire. Amaç öğrencinin
+ * burada gördüğü şekli sınav kâğıdında da tanıması.
+ *
+ * Görsel dil bilinçli olarak sakin: renk yalnızca **bilgi** taşıdığı yerde
+ * kullanılır (akım geçen tel, ampulün parlaklığı, seçili eleman). Süs
+ * amaçlı parlama, gölge ya da yanıp sönme yoktur.
+ */
+function ElemanCizimi({ eleman, sonuc, secili, onSec, kaydirma = 0 }) {
   const p = dugumKonumu(eleman.a)
   const q = dugumKonumu(eleman.b)
-  const ortaX = (p.x + q.x) / 2
-  const ortaY = (p.y + q.y) / 2
   const yatay = p.satir === q.satir
   const aci = yatay ? 0 : 90
+  // Aynı iki düğüm arasına birden çok eleman bağlanabilir (bir ampule paralel
+  // voltmetre gibi). Üst üste çizilirlerse ikisi de okunmaz olur; bu yüzden
+  // bağlantı doğrultusuna DİK yönde kaydırılır — gerçek devre şemalarında
+  // paralel kollar da böyle yan yana çizilir.
+  const ortaX = (p.x + q.x) / 2 + (yatay ? 0 : kaydirma)
+  const ortaY = (p.y + q.y) / 2 + (yatay ? kaydirma : 0)
   const akim = sonuc?.akim ?? 0
-  const cizgiRengi = secili ? 'rgb(var(--fa-vurgu))' : 'rgb(var(--fa-cizgi-guclu))'
+  const cizgi = secili ? 'rgb(var(--fa-vurgu))' : 'rgb(var(--fa-cizgi-guclu))'
+  /** Elemanın gövdesi dışında kalan bağlantı uçları. */
+  const uc = (icBaslangic) => (
+    <>
+      <line x1={-HUCRE / 2} y1="0" x2={-icBaslangic} y2="0" stroke={cizgi} strokeWidth="3" strokeLinecap="round" />
+      <line x1={icBaslangic} y1="0" x2={HUCRE / 2} y2="0" stroke={cizgi} strokeWidth="3" strokeLinecap="round" />
+    </>
+  )
 
   const govde = () => {
     switch (eleman.tur) {
-      case 'pil':
+      case 'pil': {
+        // Uzun çizgi artı, kısa çizgi eksi kutuptur. İki hücre çizilir ki
+        // sembol "tek çizgi" gibi görünüp yönü belirsiz kalmasın.
+        const kutupRengi = 'rgb(var(--fa-metin-2))'
         return (
           <g>
-            <line x1="-30" y1="0" x2="-9" y2="0" stroke={cizgiRengi} strokeWidth="2.5" />
-            <line x1="9" y1="0" x2="30" y2="0" stroke={cizgiRengi} strokeWidth="2.5" />
-            {/* Uzun çizgi + kutup, kısa çizgi − kutup */}
-            <line x1="-9" y1="-16" x2="-9" y2="16" stroke="rgb(var(--fa-hata))" strokeWidth="3" />
-            <line x1="0" y1="-8" x2="0" y2="8" stroke="rgb(var(--fa-metin-3))" strokeWidth="3" />
-            <line x1="9" y1="-16" x2="9" y2="16" stroke="rgb(var(--fa-hata))" strokeWidth="3" />
-            <text x="-16" y={yatay ? -22 : -22} fontSize="13" fontWeight="700" fill="rgb(var(--fa-hata))">−</text>
-            <text x="14" y={yatay ? -22 : -22} fontSize="13" fontWeight="700" fill="rgb(var(--fa-hata))">+</text>
+            {uc(14)}
+            <rect x="-18" y="-17" width="36" height="34" fill="rgb(var(--fa-yuzey))" />
+            <line x1="-14" y1="-15" x2="-14" y2="15" stroke={kutupRengi} strokeWidth="3" strokeLinecap="round" />
+            <line x1="-6" y1="-7" x2="-6" y2="7" stroke={kutupRengi} strokeWidth="3" strokeLinecap="round" />
+            <line x1="6" y1="-15" x2="6" y2="15" stroke={kutupRengi} strokeWidth="3" strokeLinecap="round" />
+            <line x1="14" y1="-7" x2="14" y2="7" stroke={kutupRengi} strokeWidth="3" strokeLinecap="round" />
+            <g transform={`rotate(${-aci})`}>
+              <text x={yatay ? -22 : 0} y={yatay ? -20 : -26} textAnchor="middle" fontSize="13" fontWeight="700" fill="rgb(var(--fa-metin-3))">−</text>
+              <text x={yatay ? 22 : 0} y={yatay ? -20 : 30} textAnchor="middle" fontSize="13" fontWeight="700" fill="rgb(var(--fa-metin-3))">+</text>
+            </g>
           </g>
         )
+      }
       case 'direnc':
       case 'reosta':
         return (
           <g>
-            <line x1="-30" y1="0" x2="-18" y2="0" stroke={cizgiRengi} strokeWidth="2.5" />
-            <rect x="-18" y="-9" width="36" height="18" rx="2"
-              fill={eleman.tur === 'reosta' ? 'rgb(var(--fa-mor) / 0.3)' : 'rgb(var(--fa-yuzey-3))'}
-              stroke={cizgiRengi} strokeWidth="2" />
-            <line x1="18" y1="0" x2="30" y2="0" stroke={cizgiRengi} strokeWidth="2.5" />
+            {uc(20)}
+            <rect x="-20" y="-10" width="40" height="20" rx="2" fill="rgb(var(--fa-yuzey))" />
+            <rect x="-20" y="-10" width="40" height="20" rx="2" className="fa-devre-govde"
+              stroke={cizgi} fill={eleman.tur === 'reosta' ? 'rgb(var(--fa-mor) / 0.18)' : 'rgb(var(--fa-yuzey-3))'} />
             {eleman.tur === 'reosta' ? (
-              <>
-                <line x1="-14" y1="-20" x2="14" y2="-20" stroke="rgb(var(--fa-mor))" strokeWidth="2" />
-                <line x1="6" y1="-20" x2="6" y2="-9" stroke="rgb(var(--fa-mor))" strokeWidth="2" markerEnd="" />
-              </>
+              // Ayarlı direnç: gövdeyi çapraz kesen ok, sürgüyü temsil eder.
+              <g stroke="rgb(var(--fa-mor))" strokeWidth="2" strokeLinecap="round" fill="none">
+                <line x1="-16" y1="14" x2="14" y2="-16" />
+                <path d="M 14 -16 l -7 1 M 14 -16 l -1 7" />
+              </g>
             ) : null}
           </g>
         )
@@ -155,58 +181,72 @@ function ElemanCizimi({ eleman, sonuc, secili, onSec }) {
         const yandi = sonuc?.yanmisMi
         return (
           <g>
-            <line x1="-30" y1="0" x2="-15" y2="0" stroke={cizgiRengi} strokeWidth="2.5" />
-            {parlaklik > 0.03 && !yandi ? (
-              <circle cx="0" cy="0" r={15 + parlaklik * 16} fill="rgb(var(--fa-enerji))" opacity={parlaklik * 0.35} />
+            {uc(15)}
+            {/* Parlaklık, dairenin dolgusuyla anlatılır: büyük bulanık bir
+                hale yerine ölçülebilir, keskin bir doluluk. */}
+            {parlaklik > 0.02 && !yandi ? (
+              <circle cx="0" cy="0" r={16 + parlaklik * 5} fill="rgb(var(--fa-enerji))" opacity={parlaklik * 0.18} />
             ) : null}
+            {/* Opak taban: altındaki akım deseninin ampulün içinden geçip
+                parlaklık okumasını bozmasını engeller. */}
+            <circle cx="0" cy="0" r="15" fill="rgb(var(--fa-yuzey))" />
             <circle cx="0" cy="0" r="15"
-              fill={yandi ? 'rgb(var(--fa-hata) / 0.3)' : `rgb(var(--fa-enerji) / ${0.12 + parlaklik * 0.8})`}
-              stroke={yandi ? 'rgb(var(--fa-hata))' : cizgiRengi} strokeWidth="2" />
-            <path d="M -7 -7 L 0 4 L 7 -7" fill="none"
-              stroke={yandi ? 'rgb(var(--fa-hata))' : parlaklik > 0.25 ? '#3b2a00' : 'rgb(var(--fa-metin-3))'} strokeWidth="2" />
-            {yandi ? <line x1="-9" y1="9" x2="9" y2="-9" stroke="rgb(var(--fa-hata))" strokeWidth="2.5" /> : null}
-            <line x1="15" y1="0" x2="30" y2="0" stroke={cizgiRengi} strokeWidth="2.5" />
+              fill={yandi ? 'rgb(var(--fa-hata) / 0.22)' : `rgb(var(--fa-enerji) / ${(0.1 + parlaklik * 0.75).toFixed(2)})`}
+              stroke={yandi ? 'rgb(var(--fa-hata))' : cizgi} strokeWidth="2" />
+            {/* Standart ampul sembolü: daire içinde çarpı */}
+            <g stroke={yandi ? 'rgb(var(--fa-hata))' : parlaklik > 0.3 ? '#4a3400' : 'rgb(var(--fa-metin-3))'} strokeWidth="1.8" strokeLinecap="round">
+              <line x1="-10.6" y1="-10.6" x2="10.6" y2="10.6" />
+              <line x1="-10.6" y1="10.6" x2="10.6" y2="-10.6" />
+            </g>
           </g>
         )
       }
       case 'anahtar':
         return (
           <g>
-            <line x1="-30" y1="0" x2="-14" y2="0" stroke={cizgiRengi} strokeWidth="2.5" />
-            <circle cx="-14" cy="0" r="3.5" fill={cizgiRengi} />
-            <line x1="-14" y1="0" x2={eleman.kapali ? 14 : 10} y2={eleman.kapali ? 0 : -16}
-              stroke={eleman.kapali ? 'rgb(var(--fa-olumlu))' : 'rgb(var(--fa-hata))'} strokeWidth="3" strokeLinecap="round" />
-            <circle cx="14" cy="0" r="3.5" fill={cizgiRengi} />
-            <line x1="14" y1="0" x2="30" y2="0" stroke={cizgiRengi} strokeWidth="2.5" />
+            {uc(15)}
+            <rect x="-18" y="-18" width="36" height="24" fill="rgb(var(--fa-yuzey))" />
+            <circle cx="-15" cy="0" r="3.2" fill={cizgi} />
+            <circle cx="15" cy="0" r="3.2" fill={cizgi} />
+            <line
+              x1="-15" y1="0"
+              x2={eleman.kapali ? 15 : 11} y2={eleman.kapali ? 0 : -15}
+              stroke={eleman.kapali ? 'rgb(var(--fa-olumlu))' : 'rgb(var(--fa-metin-3))'}
+              strokeWidth="3" strokeLinecap="round"
+            />
           </g>
         )
       case 'kablo':
-        return <line x1="-30" y1="0" x2="30" y2="0" stroke={secili ? 'rgb(var(--fa-vurgu))' : 'rgb(var(--fa-olumlu))'} strokeWidth="3" strokeLinecap="round" />
+        return (
+          <line x1={-HUCRE / 2} y1="0" x2={HUCRE / 2} y2="0"
+            stroke={secili ? 'rgb(var(--fa-vurgu))' : 'rgb(var(--fa-cizgi-guclu))'}
+            strokeWidth="3" strokeLinecap="round" />
+        )
       case 'ampermetre':
+      case 'voltmetre': {
+        const olcum = eleman.tur === 'ampermetre'
+        const renk = olcum ? 'rgb(var(--fa-olcum))' : 'rgb(var(--fa-mor))'
         return (
           <g>
-            <line x1="-30" y1="0" x2="-16" y2="0" stroke={cizgiRengi} strokeWidth="2.5" />
-            <circle cx="0" cy="0" r="16" fill="rgb(var(--fa-olcum) / 0.15)" stroke="rgb(var(--fa-olcum))" strokeWidth="2" />
-            <text x="0" y="5" textAnchor="middle" fontSize="14" fontWeight="800" fill="rgb(var(--fa-olcum))">A</text>
-            <line x1="16" y1="0" x2="30" y2="0" stroke={cizgiRengi} strokeWidth="2.5" />
+            {/* Voltmetrenin uçları kesikli: devreden akım çekmediğini anlatır. */}
+            <line x1={-HUCRE / 2} y1="0" x2="-16" y2="0" stroke={cizgi} strokeWidth={olcum ? 3 : 2} strokeDasharray={olcum ? undefined : '4 3'} strokeLinecap="round" />
+            <line x1="16" y1="0" x2={HUCRE / 2} y2="0" stroke={cizgi} strokeWidth={olcum ? 3 : 2} strokeDasharray={olcum ? undefined : '4 3'} strokeLinecap="round" />
+            <circle cx="0" cy="0" r="16" fill="rgb(var(--fa-yuzey))" stroke={renk} strokeWidth="2" />
+            <g transform={`rotate(${-aci})`}>
+              <text x="0" y="5" textAnchor="middle" fontSize="14" fontWeight="800" fill={renk}>
+                {olcum ? 'A' : 'V'}
+              </text>
+            </g>
           </g>
         )
-      case 'voltmetre':
-        return (
-          <g>
-            <line x1="-30" y1="0" x2="-16" y2="0" stroke={cizgiRengi} strokeWidth="2" strokeDasharray="3 3" />
-            <circle cx="0" cy="0" r="16" fill="rgb(var(--fa-mor) / 0.15)" stroke="rgb(var(--fa-mor))" strokeWidth="2" />
-            <text x="0" y="5" textAnchor="middle" fontSize="14" fontWeight="800" fill="rgb(var(--fa-mor))">V</text>
-            <line x1="16" y1="0" x2="30" y2="0" stroke={cizgiRengi} strokeWidth="2" strokeDasharray="3 3" />
-          </g>
-        )
+      }
       default:
         return null
     }
   }
 
   const etiketMetni = () => {
-    if (eleman.tur === 'pil') return `${sayiBicimle(eleman.emk, 0)} V`
+    if (eleman.tur === 'pil') return `${sayiBicimle(eleman.emk, 1)} V`
     if (eleman.tur === 'direnc' || eleman.tur === 'reosta') return `${sayiBicimle(eleman.direnc, 1)} Ω`
     if (eleman.tur === 'ampul') return `${sayiBicimle(eleman.direnc, 0)} Ω`
     if (eleman.tur === 'anahtar') return eleman.kapali ? 'kapalı' : 'açık'
@@ -215,31 +255,58 @@ function ElemanCizimi({ eleman, sonuc, secili, onSec }) {
     return ''
   }
 
+  const olcumMetni = Math.abs(akim) > 1e-6 && !['voltmetre', 'kablo', 'ampermetre'].includes(eleman.tur)
+    ? `${sayiBicimle(Math.abs(akim), 2)} A`
+    : null
+
+  // Etiketler her zaman yatay okunur; eleman dik yerleştirilse bile yazı dönmez.
+  // Eleman paralel bir kol olarak kaydırıldıysa etiketi de kaydığı YÖNE konur;
+  // aksi hâlde iki paralel elemanın yazıları birbirinin üstüne düşer
+  // (ampulün etiketi altındaki voltmetrenin arkasında kalırdı).
+  const yukariKaydi = kaydirma < 0
+  const etiketKaydirmaX = yatay ? 0 : 42
+  const etiketKaydirmaY = yatay ? (yukariKaydi ? -30 : 32) : -6
+
   return (
     <g
+      className="fa-devre-eleman"
       transform={`translate(${ortaX} ${ortaY}) rotate(${aci})`}
       onClick={(e) => { e.stopPropagation(); onSec(eleman.id) }}
-      style={{ cursor: 'pointer' }}
       tabIndex={0}
       role="button"
-      aria-label={`${eleman.etiket ?? eleman.tur} — ${etiketMetni()}`}
+      aria-label={`${eleman.etiket ?? eleman.tur} — ${etiketMetni()}${olcumMetni ? `, ${olcumMetni}` : ''}`}
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onSec(eleman.id) } }}
     >
-      {secili ? <rect x="-34" y="-24" width="68" height="48" rx="8" fill="rgb(var(--fa-vurgu) / 0.14)" stroke="rgb(var(--fa-vurgu))" strokeWidth="1.5" /> : null}
+      {secili ? (
+        <rect className="secim-halkasi" x="-30" y="-22" width="60" height="44" rx="7" />
+      ) : null}
+      {/* Kaydırılmış eleman düğümlere köprüyle bağlanır ki bağlantı kopuk görünmesin. */}
+      {kaydirma !== 0 ? (
+        <g stroke={cizgi} strokeWidth="2.4" strokeLinecap="round" fill="none">
+          <path d={`M ${-HUCRE / 2} 0 l 0 ${kaydirma} `} transform={`translate(0 ${-kaydirma})`} />
+          <path d={`M ${HUCRE / 2} 0 l 0 ${kaydirma}`} transform={`translate(0 ${-kaydirma})`} />
+        </g>
+      ) : null}
       {govde()}
       <g transform={`rotate(${-aci})`}>
-        <text x="0" y={yatay ? 34 : 0} dx={yatay ? 0 : 40} textAnchor="middle" fontSize="11" fontWeight="700" fill="rgb(var(--fa-metin-2))">
+        <text className="fa-devre-etiket" x={etiketKaydirmaX} y={etiketKaydirmaY} textAnchor={yatay ? 'middle' : 'start'}>
           {eleman.etiket ? `${eleman.etiket} · ` : ''}{etiketMetni()}
         </text>
-        {Math.abs(akim) > 1e-6 && eleman.tur !== 'voltmetre' && eleman.tur !== 'kablo' ? (
-          <text x="0" y={yatay ? 48 : 14} dx={yatay ? 0 : 40} textAnchor="middle" fontSize="10" fill="rgb(var(--fa-olcum))">
-            {sayiBicimle(Math.abs(akim), 2)} A
+        {olcumMetni ? (
+          <text
+            className="fa-devre-deger"
+            x={etiketKaydirmaX}
+            y={etiketKaydirmaY + (yukariKaydi && yatay ? -13 : 14)}
+            textAnchor={yatay ? 'middle' : 'start'}
+          >
+            {olcumMetni}
           </text>
         ) : null}
       </g>
     </g>
   )
 }
+
 
 /* ═══════════ Deney 1: Devre Tezgâhı ═══════════ */
 
@@ -252,6 +319,28 @@ function DevreTezgahi({ baslangicDevresi = 'seri', kilitli = false, gorevMetni =
   const [surekliCalisma, setSurekliCalisma] = useState(2)
 
   const cozum = useMemo(() => devreCoz({ elemanlar }), [elemanlar])
+
+  /**
+   * Aynı düğüm çiftine bağlı elemanları birbirinden ayırmak için dik
+   * kaydırma miktarları. Tek eleman varsa kaydırma yoktur; iki eleman
+   * varsa biri yukarı biri aşağı, üçte ortadaki merkezde kalır.
+   */
+  const kaydirmalar = useMemo(() => {
+    const gruplar = new Map()
+    for (const e of elemanlar) {
+      const anahtar = [e.a, e.b].sort().join('|')
+      if (!gruplar.has(anahtar)) gruplar.set(anahtar, [])
+      gruplar.get(anahtar).push(e.id)
+    }
+    const harita = {}
+    for (const idler of gruplar.values()) {
+      if (idler.length < 2) { idler.forEach((id) => { harita[id] = 0 }); continue }
+      const adim = 30
+      const baslangic = -((idler.length - 1) * adim) / 2
+      idler.forEach((id, i) => { harita[id] = baslangic + i * adim })
+    }
+    return harita
+  }, [elemanlar])
   const sonucHaritasi = useMemo(
     () => Object.fromEntries(cozum.elemanlar.map((e) => [e.id, e])),
     [cozum],
@@ -319,13 +408,43 @@ function DevreTezgahi({ baslangicDevresi = 'seri', kilitli = false, gorevMetni =
                   onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); dugumTikla(ad) } }}
                 >
                   <circle cx={p.x} cy={p.y} r="16" fill="transparent" />
-                  {secilebilir ? <circle cx={p.x} cy={p.y} r="12" fill="rgb(var(--fa-olumlu) / 0.25)" stroke="rgb(var(--fa-olumlu))" strokeWidth="1.5" /> : null}
-                  <circle cx={p.x} cy={p.y} r={bekliyor ? 8 : 5.5}
-                    fill={bekliyor ? 'rgb(var(--fa-vurgu))' : 'rgb(var(--fa-cizgi-guclu))'}
-                    stroke={bekliyor ? 'rgb(var(--fa-metin))' : 'none'} strokeWidth="2" />
+                  {secilebilir ? <circle cx={p.x} cy={p.y} r="11" fill="rgb(var(--fa-olumlu) / 0.2)" stroke="rgb(var(--fa-olumlu))" strokeWidth="1.4" /> : null}
+                  <circle
+                    className="fa-devre-dugum"
+                    cx={p.x} cy={p.y} r={bekliyor ? 7 : 4}
+                    fill={bekliyor ? 'rgb(var(--fa-vurgu))' : 'rgb(var(--fa-cizgi))'}
+                    stroke={bekliyor ? 'rgb(var(--fa-metin))' : 'none'} strokeWidth="2"
+                  />
                 </g>
               )
             }))}
+
+            {/* Akım gösterimi: telin üzerinde yavaşça kayan kesikli desen.
+                Yanıp sönen noktalar yerine bu seçildi çünkü hem gerçek devre
+                şemalarının diline yakın hem de saatlerce bakılabilecek kadar
+                sakin. Desenin hızı akım şiddetiyle orantılıdır — hareket
+                süs değil, ölçü taşır. */}
+            {cozum.basarili ? elemanlar.map((e) => {
+              const s = sonucHaritasi[e.id]
+              const akim = s?.akim
+              if (!akim || Math.abs(akim) < 1e-6 || e.tur === 'voltmetre') return null
+              const a = dugumKonumu(e.a)
+              const b = dugumKonumu(e.b)
+              // Geleneksel akım artı uçtan çıkar; elektronlar ters yönde gider.
+              const elektronMu = akimYonu === 'elektron'
+              const yon = Math.sign(akim) * (elektronMu ? -1 : 1)
+              // Akım büyüdükçe desen hızlanır; çok küçük akımlarda durma noktasına
+              // yaklaşır ama hiç donmaz (alt ve üst sınır konuldu).
+              const sure = Math.min(3.2, Math.max(0.5, 1.1 / (Math.abs(akim) + 0.25)))
+              return (
+                <line
+                  key={`akim-${e.id}`}
+                  className={`fa-devre-akim ${yon < 0 ? 'ters' : ''} ${elektronMu ? 'elektron' : ''}`}
+                  x1={a.x} y1={a.y} x2={b.x} y2={b.y}
+                  style={{ animationDuration: `${sure}s` }}
+                />
+              )
+            }) : null}
 
             {/* Elemanlar */}
             {elemanlar.map((e) => (
@@ -335,38 +454,9 @@ function DevreTezgahi({ baslangicDevresi = 'seri', kilitli = false, gorevMetni =
                 sonuc={sonucHaritasi[e.id]}
                 secili={seciliEleman === e.id}
                 onSec={setSeciliEleman}
+                kaydirma={kaydirmalar[e.id] ?? 0}
               />
             ))}
-
-            {/* Akım yönü göstergesi — hareketli noktalar */}
-            {cozum.basarili && !cozum.kisaDevre ? elemanlar.map((e) => {
-              const s = sonucHaritasi[e.id]
-              const akim = s?.akim
-              if (!akim || Math.abs(akim) < 1e-6 || e.tur === 'voltmetre') return null
-              const p = dugumKonumu(e.a)
-              const q = dugumKonumu(e.b)
-              // Geleneksel akım artıdan eksiye; elektron hareketi tersi.
-              const ters = akimYonu === 'elektron' ? -1 : 1
-              const yon = Math.sign(akim) * ters
-              const nokta = 3
-              return Array.from({ length: nokta }, (_, i) => {
-                const oran = (i + 0.5) / nokta
-                const bx = p.x + (q.x - p.x) * oran
-                const by = p.y + (q.y - p.y) * oran
-                return (
-                  <circle key={`${e.id}-${i}`} cx={bx} cy={by} r="3.5"
-                    fill={akimYonu === 'elektron' ? 'rgb(var(--fa-vurgu))' : 'rgb(var(--fa-olcum))'} opacity="0.85">
-                    <animate
-                      attributeName="opacity"
-                      values={yon > 0 ? '0.2;1;0.2' : '1;0.2;1'}
-                      dur={`${Math.max(0.4, 1.6 / (Math.abs(akim) + 0.4))}s`}
-                      begin={`${i * 0.2}s`}
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-                )
-              })
-            }) : null}
           </svg>
 
           <div className="fa-sahne-rozet">
@@ -689,6 +779,28 @@ function ArizaBul() {
 
   const ariza = ARIZALAR[indeks]
   const cozum = useMemo(() => devreCoz({ elemanlar }), [elemanlar])
+
+  /**
+   * Aynı düğüm çiftine bağlı elemanları birbirinden ayırmak için dik
+   * kaydırma miktarları. Tek eleman varsa kaydırma yoktur; iki eleman
+   * varsa biri yukarı biri aşağı, üçte ortadaki merkezde kalır.
+   */
+  const kaydirmalar = useMemo(() => {
+    const gruplar = new Map()
+    for (const e of elemanlar) {
+      const anahtar = [e.a, e.b].sort().join('|')
+      if (!gruplar.has(anahtar)) gruplar.set(anahtar, [])
+      gruplar.get(anahtar).push(e.id)
+    }
+    const harita = {}
+    for (const idler of gruplar.values()) {
+      if (idler.length < 2) { idler.forEach((id) => { harita[id] = 0 }); continue }
+      const adim = 30
+      const baslangic = -((idler.length - 1) * adim) / 2
+      idler.forEach((id, i) => { harita[id] = baslangic + i * adim })
+    }
+    return harita
+  }, [elemanlar])
   const sonucHaritasi = useMemo(() => Object.fromEntries(cozum.elemanlar.map((e) => [e.id, e])), [cozum])
 
   const ampul = cozum.elemanlar.find((e) => e.tur === 'ampul')
@@ -718,7 +830,7 @@ function ArizaBul() {
           <svg viewBox={`0 0 ${TG} ${TY}`} role="img" aria-label={`Arızalı devre: ${ariza.baslik}`}>
             {Array.from({ length: SATIR }, (_, s) => Array.from({ length: SUTUN }, (_, k) => {
               const p = dugumKonumu(dugumAdi(s, k))
-              return <circle key={`${s}-${k}`} cx={p.x} cy={p.y} r="5" fill="rgb(var(--fa-cizgi-guclu))" />
+              return <circle key={`${s}-${k}`} cx={p.x} cy={p.y} r="4" className="fa-devre-dugum" fill="rgb(var(--fa-cizgi))" />
             }))}
             {elemanlar.map((e) => (
               <ElemanCizimi

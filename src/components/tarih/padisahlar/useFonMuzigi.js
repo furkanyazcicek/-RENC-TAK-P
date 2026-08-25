@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ATLAS_MUZIGI, atlasMuzikAdresi } from '../../../data/padisahlar/muzik.js'
+import { atlasMuzikAdresi, modMuzigi, YUMUSAMA_SANIYE } from '../../../data/padisahlar/muzik.js'
 
 const DEPO_ANAHTARI = 'drkoc:padisah-muzik:v1'
 
@@ -24,8 +24,14 @@ const DEPO_ANAHTARI = 'drkoc:padisah-muzik:v1'
  * 3) TERCİH HATIRLANIR. Kapatan öğrenci her padişahta yeniden kapatmak
  *    zorunda kalmaz.
  */
-export default function useFonMuzigi({ calisiyor }) {
-  const adres = atlasMuzikAdresi()
+export default function useFonMuzigi({ calisiyor, mod = 'kesif' }) {
+  /**
+   * Parça MODA göre seçilir. Mod değişince kaynak değişir ve müzik
+   * baştan başlar — bu istenen davranıştır: belgesel moduna geçmek
+   * sahne değiştirmektir, müziğin de değişmesi bunu duyurur.
+   */
+  const adres = atlasMuzikAdresi(mod)
+  const parca = modMuzigi(mod)
   const sesRef = useRef(null)
   const yumusatmaRef = useRef(null)
   const [acik, setAcik] = useState(() => okunanTercih())
@@ -56,11 +62,11 @@ export default function useFonMuzigi({ calisiyor }) {
     const ses = sesRef.current
     if (!ses || !adres || !acik || !izinVar) return undefined
 
-    const hedef = calisiyor ? ATLAS_MUZIGI.kisikSeviye : ATLAS_MUZIGI.sesSeviyesi
+    const hedef = calisiyor ? parca.kisikSeviye : parca.sesSeviyesi
     clearInterval(yumusatmaRef.current)
 
     const adim = 40
-    const toplamAdim = Math.max(1, Math.round((ATLAS_MUZIGI.yumusamaSaniye * 1000) / adim))
+    const toplamAdim = Math.max(1, Math.round((YUMUSAMA_SANIYE * 1000) / adim))
     const baslangic = ses.volume
     let sayac = 0
 
@@ -72,7 +78,7 @@ export default function useFonMuzigi({ calisiyor }) {
     }, adim)
 
     return () => clearInterval(yumusatmaRef.current)
-  }, [calisiyor, acik, izinVar, adres])
+  }, [calisiyor, acik, izinVar, adres, parca])
 
   useEffect(() => () => clearInterval(yumusatmaRef.current), [])
 

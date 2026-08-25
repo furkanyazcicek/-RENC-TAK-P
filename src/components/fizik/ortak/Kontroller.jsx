@@ -124,6 +124,9 @@ export function SimKontrol({
 }) {
   return (
     <div className="fa-kontrol">
+      <span className={`fa-sim-durum ${calisiyor ? 'calisiyor' : ''}`} aria-live="polite">
+        <span aria-hidden="true" /> {calisiyor ? 'Deney akıyor' : 'Deney beklemede'}
+      </span>
       <button
         type="button"
         className="fa-dugme birincil kucuk"

@@ -3,7 +3,8 @@ import { ChevronDown, Crown, Info, MapPin, Music2, Pause, Play, TriangleAlert, V
 import { belgeselAkisi, panelSuresi } from '../../../data/padisahlar/belgeselAkisi'
 import { NITELIK_ALANLARI, NITELIK_KADEMELERI } from '../../../data/padisahlar/tipler'
 import { padisahBul } from '../../../data/padisahlar'
-import { padisahSesAdresi, padisahSesSuresi } from '../../../lib/padisahAnlatim'
+import { belgeselSesAdresi, belgeselSesSuresi } from '../../../lib/padisahAnlatim'
+import { BELGESEL_ANLATIMLARI, BELGESEL_GECIS_BASLIKLARI } from '../../../data/padisahlar/belgeselAnlatimlari'
 import BelgeselGirisi from './BelgeselGirisi'
 import DonemHaritasi from './DonemHaritasi'
 import useDerinlik from './useDerinlik'
@@ -221,7 +222,13 @@ function PanelIcerigi({ panel, padisah }) {
             {GECIS_ETIKETLERI[panel.gecisTuru] ?? 'Geçiş'}
           </span>
           <Yil panel={panel} />
-          <h2 className="pgb-baslik pgb-baslik-buyuk">{panel.baslik}</h2>
+          {/* Veri katmanındaki başlık bilgi ekranı için yazılmıştır
+              ("Taht Orhan Gazi'ye Geçiyor"). Belgeselde geçiş bir sahne
+              kapanışıdır; başlık olayı değil ANLAMI duyurmalıdır.
+              Yazılmamış padişah kendi veri başlığını kullanır. */}
+          <h2 className="pgb-baslik pgb-baslik-buyuk">
+            {BELGESEL_GECIS_BASLIKLARI[panel.padisahId] ?? panel.baslik}
+          </h2>
           {panel.metin && <p className="pgb-metin">{panel.metin}</p>}
           {panel.sonrakiGorsel && (
             <div className="pgb-devir">
@@ -260,40 +267,26 @@ export default function BelgeselAkisi({
   const otomatikKaydirmaRef = useRef(false)
   const zamanlayiciRef = useRef(null)
   const sesRef = useRef(null)
-  const calanPadisahRef = useRef(null)
+  const calanPanelRef = useRef(null)
 
   const paneller = useMemo(() => belgeselAkisi(), [])
 
   /**
-   * SES BELGESELİ SÜRER, PANEL DEĞİL.
+   * SES PANELİ SÜRER, ZAMANLAYICI DEĞİL.
    *
-   * Panel süreleri ses yokken kullanılan tahminlerdir. Gerçek kayıt
-   * varsa anlatım ile ekranın ayrı hızlarda ilerlemesi kabul edilemez:
-   * anlatıcı Ankara Savaşı'nı anlatırken ekranda başka bir panel
-   * durursa öğrenci ikisini birbirine bağlayamaz.
+   * Panel süreleri (`panelSuresi`) ses yokken kullanılan tahminlerdir.
+   * Kayıt varsa panel, kaydı bitince ilerler. Senkron böylece tahminle
+   * değil sesin kendi uzunluğuyla kurulur: anlatıcı bir olayı
+   * anlatırken ekranda başka bir sahne duramaz.
    *
-   * Bu yüzden bir padişahın panelleri, o padişahın kaydının gerçek
-   * uzunluğuna bölünür. Kayıt yoksa eski tahminler kullanılır ve
-   * belgesel sessiz ama bozulmadan akmaya devam eder.
+   * Metni yazılmamış panel sessizce tahmini süresiyle akar; eksik
+   * içerik belgeseli durdurmaz.
    */
-  const padisahAraliklari = useMemo(() => {
-    const harita = new Map()
-    paneller.forEach((panel, sira) => {
-      const kayit = harita.get(panel.padisahId)
-      if (kayit) kayit.son = sira
-      else harita.set(panel.padisahId, { ilk: sira, son: sira })
-    })
-    for (const [id, kayit] of harita) {
-      kayit.adet = kayit.son - kayit.ilk + 1
-      kayit.sesSuresi = padisahSesSuresi(padisahBul(id))
-    }
-    return harita
-  }, [paneller])
-
-  const aktifPadisahId = paneller[aktifPanel]?.padisahId ?? null
+  const suankiPanel = paneller[aktifPanel] ?? null
+  const suankiMetin = suankiPanel ? BELGESEL_ANLATIMLARI[suankiPanel.id] : null
   const aktifSesAdresi = useMemo(
-    () => padisahSesAdresi(padisahBul(aktifPadisahId)),
-    [aktifPadisahId],
+    () => (suankiPanel ? belgeselSesAdresi(suankiPanel.id, suankiMetin) : null),
+    [suankiPanel, suankiMetin],
   )
   useDerinlik(kapsayiciRef)
 
@@ -403,17 +396,16 @@ export default function BelgeselAkisi({
     if (!oynuyor) return undefined
     const panel = paneller[aktifPanel]
     if (!panel) return undefined
-    const aralik = padisahAraliklari.get(panel.padisahId)
-    const temelSure = aralik?.sesSuresi && aralik.adet
-      ? aralik.sesSuresi / aralik.adet
-      : panelSuresi(panel)
-    const sure = (temelSure / Math.max(0.25, hiz)) * 1000
+    // Kaydı olan panelde ilerlemeyi ses tetikler (aşağıdaki 'ended'
+    // dinleyicisi); zamanlayıcı yalnızca sessiz panellerde çalışır.
+    if (belgeselSesSuresi(panel.id, BELGESEL_ANLATIMLARI[panel.id])) return undefined
+    const sure = (panelSuresi(panel) / Math.max(0.25, hiz)) * 1000
     zamanlayiciRef.current = window.setTimeout(() => {
       if (aktifPanel + 1 < paneller.length) panelinYanina(aktifPanel + 1)
       else setOynuyor(false)
     }, sure)
     return () => window.clearTimeout(zamanlayiciRef.current)
-  }, [aktifPanel, hiz, oynuyor, padisahAraliklari, panelinYanina, paneller])
+  }, [aktifPanel, hiz, oynuyor, panelinYanina, paneller])
 
   /**
    * SESİN OYNATILMASI
@@ -437,24 +429,28 @@ export default function BelgeselAkisi({
       return undefined
     }
 
-    const aralik = padisahAraliklari.get(aktifPadisahId)
-    if (calanPadisahRef.current !== aktifPadisahId) {
-      calanPadisahRef.current = aktifPadisahId
-      if (aralik?.adet && ses.duration) {
-        const kacinci = Math.max(0, aktifPanel - aralik.ilk)
-        ses.currentTime = Math.min(ses.duration - 0.5, (kacinci / aralik.adet) * ses.duration)
-      } else {
-        ses.currentTime = 0
-      }
+    // Panel değiştiyse kayıt baştan başlar.
+    if (calanPanelRef.current !== aktifSesAdresi) {
+      calanPanelRef.current = aktifSesAdresi
+      ses.currentTime = 0
     }
-
     ses.playbackRate = Math.max(0.5, Math.min(2, hiz))
     void ses.play().catch(() => {})
     return undefined
-    // aktifPanel bilerek bağımlılık değil: her panel geçişinde sesi
-    // yeniden konumlandırmak anlatımı kesik kesik yapardı.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [oynuyor, sesAcik, aktifSesAdresi, aktifPadisahId, hiz, padisahAraliklari])
+  }, [oynuyor, sesAcik, aktifSesAdresi, hiz])
+
+  /* Kayıt bitti → sıradaki panele geç. Senkronun kalbi burasıdır. */
+  useEffect(() => {
+    const ses = sesRef.current
+    if (!ses || !aktifSesAdresi) return undefined
+    const bitti = () => {
+      if (!oynuyor) return
+      if (aktifPanel + 1 < paneller.length) panelinYanina(aktifPanel + 1)
+      else setOynuyor(false)
+    }
+    ses.addEventListener('ended', bitti)
+    return () => ses.removeEventListener('ended', bitti)
+  }, [aktifSesAdresi, aktifPanel, oynuyor, paneller.length, panelinYanina])
 
   // Belgesel duraklayınca fon müziği de bunu bilmeli (kısılma/yükselme).
   useEffect(() => {

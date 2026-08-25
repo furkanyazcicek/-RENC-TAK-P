@@ -84,7 +84,7 @@ export default function PadisahGosterisi({ baslangicId = PADISAHLAR[0]?.id }) {
   })
 
   // Fon müziği anlatımdan ayrı kanaldır; anlatım konuşurken kendini kısar.
-  const muzik = useFonMuzigi({ calisiyor: calisiyor || belgeselOynuyor })
+  const muzik = useFonMuzigi({ calisiyor: calisiyor || belgeselOynuyor, mod })
 
   const aktifAnlatim = aktifBolum(cizelge, an)
   const anlatimSira = bolumSirasi(cizelge, an)

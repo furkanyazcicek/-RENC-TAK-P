@@ -587,8 +587,21 @@ yakin('Kısa devre kolu → eşdeğer 0', paralelEsdeger([5, 0]), 0, 1e-12)
     { id: 's', tur: 'anahtar', a: 'n1', b: 'n2', kapali: false },
     { id: 'r', tur: 'direnc', a: 'n2', b: 'n0', direnc: 4 },
   ] })
-  dogrula('Açık anahtarda akım yok', Math.abs(acik.elemanlar.find((e) => e.id === 'r').akim) < 1e-6)
+  // Açık devrede akım TAM sıfır okunmalı. Çözücü matrisi tekil olmaktan
+  // kurtarmak için küçük bir toprak iletkenliği kullanıyor; bu sayısal kaçak
+  // ekrana "6×10⁻¹² A" olarak sızmıştı, bir daha sızmasın.
+  dogrula('Açık anahtarda akım tam sıfır', acik.elemanlar.find((e) => e.id === 'r').akim === 0,
+    `${acik.elemanlar.find((e) => e.id === 'r').akim}`)
+  dogrula('Açık devrede toplam akım tam sıfır', acik.toplamAkim === 0, `${acik.toplamAkim}`)
   dogrula('Açık devre uyarısı verilir', acik.uyarilar.some((u) => u.tur === 'acikDevre'))
+  // Eşik gerçek küçük akımları yutmamalı: 1 V / 100 kΩ = 10 µA okunabilmeli.
+  {
+    const mikroAkim = devreCoz({ elemanlar: [
+      { id: 'p', tur: 'pil', a: 'n1', b: 'n0', emk: 1 },
+      { id: 'r', tur: 'direnc', a: 'n1', b: 'n0', direnc: 100000 },
+    ] })
+    yakin('Gerçek 10 µA akım korunur', mikroAkim.elemanlar.find((e) => e.id === 'r').akim, 1e-5, 1e-12)
+  }
 
   // Kapatılınca akım geri gelir.
   const kapali = devreCoz({ elemanlar: [

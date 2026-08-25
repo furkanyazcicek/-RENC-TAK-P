@@ -17,6 +17,7 @@
  */
 import { PADISAH_SES_DEFTERI, PADISAH_SES_KOKU } from '../data/padisahlar/sesDefteri.js'
 import { stableTextVersion } from './lessonNarration.js'
+import { BELGESEL_SES_DEFTERI, BELGESEL_SES_KOKU } from '../data/padisahlar/belgeselSesDefteri.js'
 
 /**
  * Bir padişahın hazır ses kaydının adresi. Kayıt yoksa ya da metin
@@ -57,6 +58,36 @@ export function anlatimSurumu(padisah) {
   return stableTextVersion(`${anlatimMetni(padisah)}|bicim${SESLENDIRME_BICIMI}`)
 }
 
+/* ================================================================== */
+/*  BELGESEL MODU — panel başına anlatım                              */
+/* ================================================================== */
+
+/**
+ * Belgesel modu kayıtları panel başınadır ve keşif modununkilerden
+ * ayrı bir defterde durur. Aynı doğrulama mantığı geçerlidir: metin
+ * değişirse kayıt bayat sayılır ve panel sessiz moda düşer.
+ */
+export function belgeselSesAdresi(panelId, metin) {
+  const kayit = belgeselKaydiSec(BELGESEL_SES_DEFTERI, panelId, metin)
+  return kayit ? `${BELGESEL_SES_KOKU}/${kayit.file}` : null
+}
+
+export function belgeselSesSuresi(panelId, metin) {
+  const sure = belgeselKaydiSec(BELGESEL_SES_DEFTERI, panelId, metin)?.duration
+  return Number.isFinite(sure) && sure > 0 ? sure : null
+}
+
+export function belgeselSurumu(metin) {
+  return stableTextVersion(`${String(metin ?? '').trim()}|bicim${SESLENDIRME_BICIMI}`)
+}
+
+export function belgeselKaydiSec(defter, panelId, metin) {
+  const kayit = defter?.[panelId]
+  if (!kayit?.file) return null
+  if (metin && kayit.version !== belgeselSurumu(metin)) return null
+  return kayit
+}
+
 /**
  * SESLENDİRİLECEK METİN — duraklama işaretleriyle.
  *
@@ -78,7 +109,7 @@ export function seslendirmeMetni(padisah) {
     .join(' <break time="1.2s" />\n\n')
 }
 
-function duraklamaEkle(metin) {
+export function duraklamaEkle(metin) {
   return metin
     .replace(/\?\s+/g, '? <break time="0.7s" /> ')
     .replace(/:\s+/g, ': <break time="0.4s" /> ')

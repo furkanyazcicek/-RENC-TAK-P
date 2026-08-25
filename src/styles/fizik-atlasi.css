@@ -179,7 +179,7 @@
 .fa-yan-yuzde { margin-left: auto; font-size: 10.5px; font-weight: 700; color: rgb(var(--fa-metin-3)); font-variant-numeric: tabular-nums; }
 
 .fa-icerik { flex: 1; min-width: 0; padding: clamp(16px, 3vw, 28px) clamp(12px, 3vw, 28px) 96px; }
-.fa-kapsa { max-width: 1220px; margin: 0 auto; }
+.fa-kapsa { max-width: 1320px; margin: 0 auto; }
 
 .fa-alt-gezinme {
   position: fixed; bottom: 0; left: 0; right: 0; z-index: 45;
@@ -344,13 +344,21 @@
    okunmaz hâle gelmesin: sahne kendi içinde yatay kayar, sayfa gövdesi kaymaz. */
 .fa-sahne.genis { overflow-x: auto; overflow-y: hidden; }
 .fa-sahne.genis > svg { min-width: 470px; }
+/* Rozet şeridi de aynı genişliği paylaşır ki çizimle birlikte kaysın. */
+.fa-sahne.genis > .fa-sahne-rozet { min-width: 470px; }
 .fa-sahne.surukle { cursor: grab; }
 .fa-sahne.surukle:active { cursor: grabbing; }
 
+/* Ölçüm rozetleri sahnenin ÜSTÜNE binmez, altında durur.
+   Deney sahnelerinin içeriği sık sık sol üst köşeye kadar uzanıyor (devre
+   tahtasının ilk satırı, grafiğin ekseni gibi) ve üste binen rozetler orayı
+   örtüyordu. Alta almak hem bu çakışma sınıfını tamamen kaldırıyor hem de
+   rozetleri ölçüm kartlarına yaklaştırarak okumayı kolaylaştırıyor. */
 .fa-sahne-rozet {
-  position: absolute; top: 10px; left: 10px; z-index: 3;
-  display: flex; flex-wrap: wrap; gap: 5px; max-width: calc(100% - 20px);
-  pointer-events: none;
+  display: flex; flex-wrap: wrap; gap: 5px;
+  padding: 9px 11px;
+  border-top: 1px solid rgb(var(--fa-cizgi));
+  background: rgb(var(--fa-yuzey-2));
 }
 
 /* ————— Oynatma kontrolleri ————— */
@@ -360,6 +368,15 @@
   background: rgb(var(--fa-yuzey-2)); border: 1px solid rgb(var(--fa-cizgi));
   margin-top: 10px;
 }
+.fa-sim-durum {
+  display: inline-flex; align-items: center; gap: 6px; padding: 5px 9px;
+  border-radius: 999px; border: 1px solid rgb(var(--fa-cizgi));
+  background: rgb(var(--fa-zemin-2)); color: rgb(var(--fa-metin-3));
+  font-size: 10.5px; font-weight: 750; letter-spacing: 0.035em; text-transform: uppercase;
+}
+.fa-sim-durum > span { width: 7px; height: 7px; border-radius: 50%; background: rgb(var(--fa-metin-3)); }
+.fa-sim-durum.calisiyor { color: rgb(var(--fa-olumlu)); border-color: rgb(var(--fa-olumlu) / 0.32); }
+.fa-sim-durum.calisiyor > span { background: rgb(var(--fa-olumlu)); box-shadow: 0 0 0 4px rgb(var(--fa-olumlu) / 0.12); }
 .fa-kontrol-hiz { display: flex; align-items: center; gap: 6px; margin-left: auto; font-size: 12px; color: rgb(var(--fa-metin-3)); }
 .fa-kontrol-zaman {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
@@ -426,6 +443,8 @@
   transition: background var(--fa-gecis), border-color var(--fa-gecis), transform var(--fa-gecis);
 }
 .fa-tahmin-secenek:hover:not(:disabled) { background: rgb(var(--fa-yuzey-3)); border-color: rgb(var(--fa-cizgi-guclu)); transform: translateX(2px); }
+.fa-tahmin-secenek.secili { border-color: rgb(var(--fa-mor) / 0.72); background: rgb(var(--fa-mor) / 0.14); }
+.fa-tahmin-secenek.secili .fa-tahmin-harf { background: rgb(var(--fa-mor)); color: #fff; }
 .fa-tahmin-secenek.dogru { border-color: rgb(var(--fa-olumlu) / 0.6); background: rgb(var(--fa-olumlu) / 0.12); }
 .fa-tahmin-secenek.yanlis { border-color: rgb(var(--fa-hata) / 0.6); background: rgb(var(--fa-hata) / 0.12); }
 .fa-tahmin-secenek:disabled { cursor: default; }
@@ -433,6 +452,14 @@
   flex: none; width: 22px; height: 22px; border-radius: 7px; display: grid; place-items: center;
   background: rgb(var(--fa-yuzey-3)); font-size: 11.5px; font-weight: 700; color: rgb(var(--fa-metin-2));
 }
+.fa-tahmin-kilit {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  margin-top: 12px; padding: 11px 12px; border-radius: 12px;
+  border: 1px dashed rgb(var(--fa-mor) / 0.44); background: rgb(var(--fa-zemin-2) / 0.55);
+}
+.fa-tahmin-kilit > div { display: grid; gap: 2px; min-width: 0; }
+.fa-tahmin-kilit b { font-size: 12.5px; }
+.fa-tahmin-kilit span { font-size: 11.5px; color: rgb(var(--fa-metin-3)); }
 
 /* ————— Sık hata / günlük hayat listeleri ————— */
 .fa-hata-oge {
@@ -464,6 +491,58 @@
 .fa-seviye-dugme.etkin { background: rgb(var(--fa-vurgu) / 0.16); border-color: rgb(var(--fa-vurgu) / 0.45); color: rgb(var(--fa-vurgu-2)); }
 .fa-seviye-dugme .bitti { color: rgb(var(--fa-olumlu)); }
 
+/* Öğrenme akışı deneyin ne için yapıldığını her seviyede görünür tutar. */
+.fa-ogrenme-akisi {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0;
+  margin-bottom: 12px; padding: 10px 12px; border-radius: 14px;
+  border: 1px solid rgb(var(--fa-cizgi)); background: rgb(var(--fa-yuzey) / 0.76);
+}
+.fa-ogrenme-adimi { position: relative; display: flex; align-items: center; gap: 8px; min-width: 0; }
+.fa-ogrenme-adimi:not(:last-child)::after {
+  content: ''; height: 1px; flex: 1; min-width: 16px; margin-inline: 8px;
+  background: linear-gradient(90deg, rgb(var(--fa-vurgu) / 0.75), rgb(var(--fa-cizgi)));
+}
+.fa-ogrenme-adimi > span {
+  display: grid; place-items: center; width: 24px; height: 24px; flex: none; border-radius: 8px;
+  background: rgb(var(--fa-vurgu) / 0.15); color: rgb(var(--fa-vurgu-2));
+  font-size: 11px; font-weight: 800; border: 1px solid rgb(var(--fa-vurgu) / 0.28);
+}
+.fa-ogrenme-adimi b { font-size: 11.5px; color: rgb(var(--fa-metin-2)); white-space: nowrap; }
+
+.fa-deney-alani { position: relative; }
+.fa-deney-alani-baslik {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin-bottom: 8px; color: rgb(var(--fa-metin-2));
+}
+.fa-deney-alani-baslik > span { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 750; text-transform: uppercase; letter-spacing: 0.055em; }
+.fa-deney-alani-baslik small { display: flex; align-items: center; gap: 7px; color: rgb(var(--fa-metin-3)); font-size: 11px; }
+.fa-canli-nokta { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: rgb(var(--fa-olumlu)); box-shadow: 0 0 0 4px rgb(var(--fa-olumlu) / 0.12); }
+
+/* Bölge başlığı: her deney aynı atlas ailesine ait, fakat kendi rengine sahip. */
+.fa-modul-kapak {
+  position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) minmax(190px, 0.42fr);
+  gap: 15px; align-items: center; overflow: hidden; margin-bottom: 14px; padding: 18px;
+  border-radius: 18px; border: 1px solid color-mix(in srgb, var(--fa-modul-renk) 34%, rgb(var(--fa-cizgi)));
+  background:
+    radial-gradient(520px 180px at 5% 0%, color-mix(in srgb, var(--fa-modul-renk) 18%, transparent), transparent 68%),
+    linear-gradient(135deg, rgb(var(--fa-yuzey)), rgb(var(--fa-yuzey-2)));
+  box-shadow: var(--fa-kart-golge);
+}
+.fa-modul-kapak::after { content: ''; position: absolute; inset: 0 auto 0 0; width: 3px; background: var(--fa-modul-renk); }
+.fa-modul-kapak-ikon {
+  display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px;
+  color: var(--fa-modul-renk); background: color-mix(in srgb, var(--fa-modul-renk) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fa-modul-renk) 38%, transparent);
+}
+.fa-modul-kapak-metin { min-width: 0; }
+.fa-modul-kapak-metin .fa-ust-etiket { margin-bottom: 4px; }
+.fa-modul-kapak-metin .fa-ust-etiket span { color: rgb(var(--fa-metin-3)); border-left: 1px solid rgb(var(--fa-cizgi)); padding-left: 8px; margin-left: 3px; }
+.fa-modul-kapak-metin h2 { font-size: clamp(20px, 3vw, 27px); }
+.fa-modul-kapak-metin p { color: rgb(var(--fa-metin-2)); font-size: 12.5px; margin-top: 4px; max-width: 68ch; }
+.fa-modul-kapak-durum { display: grid; gap: 5px; padding-left: 15px; border-left: 1px solid rgb(var(--fa-cizgi)); }
+.fa-modul-kapak-durum span { display: flex; align-items: center; gap: 6px; color: rgb(var(--fa-olcum)); font-size: 12px; font-weight: 750; }
+.fa-modul-kapak-durum small { color: rgb(var(--fa-metin-3)); font-size: 11px; line-height: 1.4; }
+
 /* ————— İlerleme çubuğu ————— */
 .fa-ilerleme-yol { height: 6px; border-radius: 999px; background: rgb(var(--fa-yuzey-3)); overflow: hidden; }
 .fa-ilerleme-dolu { height: 100%; border-radius: 999px; background: linear-gradient(90deg, rgb(var(--fa-vurgu)), rgb(var(--fa-olcum))); transition: width 400ms cubic-bezier(0.22, 1, 0.36, 1); }
@@ -473,20 +552,40 @@
   position: relative; border-radius: 22px; overflow: hidden;
   border: 1px solid rgb(var(--fa-cizgi));
   background:
-    radial-gradient(900px 480px at 25% 15%, rgb(var(--fa-vurgu) / 0.1), transparent 60%),
-    radial-gradient(700px 420px at 80% 80%, rgb(var(--fa-mor) / 0.1), transparent 62%),
-    rgb(var(--fa-zemin-2));
+    linear-gradient(180deg, rgb(5 10 25 / 0.76), rgb(7 12 29 / 0.93)),
+    url('/atlas-assets/fizik/imagegen/fizik-atlasi-panorama-v1.jpg') center / cover;
+  box-shadow: 0 22px 70px rgb(0 0 0 / 0.3);
+  scroll-margin-top: 82px;
 }
+.fa-harita-sarmal::after { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 90px rgb(1 5 16 / 0.72); }
+.fa-harita-ust {
+  position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 15px; color: rgb(218 229 255); border-bottom: 1px solid rgb(153 180 255 / 0.16);
+  background: rgb(6 11 28 / 0.7); backdrop-filter: blur(12px);
+}
+.fa-harita-ust > div { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.fa-harita-ust > span { font-size: 10.5px; color: rgb(166 182 220); }
 .fa-harita { display: block; width: 100%; height: auto; }
 .fa-harita-dugum { cursor: pointer; }
 .fa-harita-dugum circle.govde { transition: r 200ms cubic-bezier(0.22, 1, 0.36, 1), filter 200ms ease; }
-.fa-harita-dugum:hover circle.govde { filter: brightness(1.25); }
+.fa-harita-dugum:hover circle.govde { filter: brightness(1.35) drop-shadow(0 0 8px currentColor); }
 .fa-harita-dugum:focus-visible { outline: none; }
 .fa-harita-dugum:focus-visible circle.halka { stroke-width: 3; opacity: 1; }
-.fa-harita-ad { font-size: 11.5px; font-weight: 650; fill: rgb(var(--fa-metin)); pointer-events: none; }
-.fa-harita-alt { font-size: 9.5px; fill: rgb(var(--fa-metin-3)); pointer-events: none; }
-.fa-harita-bag { stroke: rgb(var(--fa-cizgi-guclu)); stroke-width: 1.4; fill: none; opacity: 0.55; }
+.fa-harita-ad { font-size: 11.5px; font-weight: 700; fill: rgb(236 241 255); pointer-events: none; paint-order: stroke; stroke: rgb(3 7 20 / 0.92); stroke-width: 3px; }
+.fa-harita-alt { font-size: 9.5px; fill: rgb(157 173 209); pointer-events: none; paint-order: stroke; stroke: rgb(3 7 20 / 0.9); stroke-width: 2.5px; }
+.fa-harita-bag { stroke: rgb(111 137 193); stroke-width: 1.4; fill: none; opacity: 0.52; }
 .fa-harita-bag.vurgulu { stroke: rgb(var(--fa-vurgu)); opacity: 1; stroke-width: 2.2; }
+.fa-harita-odak {
+  position: relative; z-index: 2; display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 11px; align-items: center; margin: 0 12px 12px; padding: 11px 12px;
+  border: 1px solid color-mix(in srgb, var(--fa-odak-renk) 30%, rgb(112 134 184));
+  border-radius: 14px; background: rgb(7 12 29 / 0.84); backdrop-filter: blur(14px); color: rgb(237 242 255);
+}
+.fa-harita-odak-ikon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 11px; color: var(--fa-odak-renk); background: color-mix(in srgb, var(--fa-odak-renk) 16%, transparent); }
+.fa-harita-odak-metin { display: grid; min-width: 0; }
+.fa-harita-odak-metin small { color: rgb(148 165 201); font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.075em; font-weight: 700; }
+.fa-harita-odak-metin b { font-size: 13px; }
+.fa-harita-odak-metin em { font-style: normal; color: rgb(174 188 219); font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 /* ————— Bölge kartları ————— */
 .fa-bolge-kart {
@@ -497,14 +596,43 @@
   transition: transform var(--fa-gecis), box-shadow var(--fa-gecis), border-color var(--fa-gecis);
 }
 .fa-bolge-kart:hover { transform: translateY(-3px); border-color: var(--fa-bolge-renk, rgb(var(--fa-vurgu))); box-shadow: 0 14px 34px rgb(var(--fa-golge) / calc(var(--fa-golge-guc) + 0.08)); }
+.fa-bolge-kart-ust { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
 .fa-bolge-ikon {
   display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px;
   background: color-mix(in srgb, var(--fa-bolge-renk) 18%, transparent);
   color: var(--fa-bolge-renk); margin-bottom: 11px;
 }
+.fa-bolge-sira { font-family: ui-monospace, Menlo, monospace; color: rgb(var(--fa-metin-3)); font-size: 11px; font-weight: 750; letter-spacing: 0.08em; }
 .fa-bolge-kart h3 { font-size: 15.5px; margin-bottom: 4px; }
 .fa-bolge-kart p { font-size: 12.5px; color: rgb(var(--fa-metin-2)); line-height: 1.5; }
 .fa-bolge-serit { position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--fa-bolge-renk); opacity: 0.85; }
+.fa-bolge-kart-eylem { display: flex; align-items: center; gap: 5px; margin-top: 13px; color: var(--fa-bolge-renk); font-size: 11.5px; font-weight: 750; }
+.fa-bolge-kart-eylem svg { transition: transform var(--fa-gecis); }
+.fa-bolge-kart:hover .fa-bolge-kart-eylem svg { transform: translateX(3px); }
+
+/* ————— Atlas kapağı ————— */
+.fa-atlas-kapak {
+  position: relative; min-height: clamp(390px, 48vw, 560px); display: flex; align-items: center;
+  overflow: hidden; margin: -2px 0 18px; border-radius: 24px;
+  border: 1px solid rgb(103 133 198 / 0.3);
+  background:
+    linear-gradient(90deg, rgb(4 9 24 / 0.97) 0%, rgb(5 11 29 / 0.89) 43%, rgb(5 10 25 / 0.2) 74%),
+    linear-gradient(0deg, rgb(3 8 22 / 0.62), transparent 48%),
+    url('/atlas-assets/fizik/imagegen/fizik-atlasi-panorama-v1.jpg') center / cover;
+  box-shadow: 0 28px 90px rgb(0 0 0 / 0.34);
+  color: rgb(240 245 255);
+}
+.fa-atlas-kapak::after { content: ''; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 100px rgb(1 4 14 / 0.7); }
+.fa-atlas-kapak-icerik { position: relative; z-index: 1; width: min(650px, 68%); padding: clamp(28px, 5vw, 64px); }
+.fa-atlas-kapak-etiket { display: inline-flex; align-items: center; gap: 7px; color: rgb(139 214 255); font-size: 11px; font-weight: 750; letter-spacing: 0.075em; text-transform: uppercase; }
+.fa-atlas-kapak h1 { margin-top: 12px; font-size: clamp(38px, 6.2vw, 74px); letter-spacing: -0.055em; line-height: 0.98; text-wrap: balance; }
+.fa-atlas-kapak h1 span { color: rgb(137 181 255); }
+.fa-atlas-kapak p { max-width: 58ch; margin-top: 18px; color: rgb(178 193 225); font-size: clamp(13.5px, 1.7vw, 16px); line-height: 1.65; }
+.fa-atlas-kapak-eylem { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 22px; }
+.fa-kapak-ikincil { color: rgb(224 233 255); background: rgb(10 18 42 / 0.72); border-color: rgb(138 163 221 / 0.32); backdrop-filter: blur(8px); }
+.fa-atlas-kapak-metrik { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 30px; color: rgb(146 163 199); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; }
+.fa-atlas-kapak-metrik span { display: flex; align-items: baseline; gap: 5px; }
+.fa-atlas-kapak-metrik b { color: rgb(236 242 255); font-size: 16px; letter-spacing: -0.025em; }
 
 /* ————— Hero ————— */
 .fa-hero { text-align: center; padding: clamp(16px, 4vw, 40px) 0 clamp(18px, 3vw, 28px); }
@@ -515,6 +643,8 @@
 }
 .fa-hero-alt { margin-top: 10px; font-size: clamp(14px, 2.2vw, 17px); color: rgb(var(--fa-metin-2)); max-width: 62ch; margin-inline: auto; }
 .fa-hero-eylem { display: flex; flex-wrap: wrap; gap: 9px; justify-content: center; margin-top: 20px; }
+.fa-harita-giris { padding-top: clamp(22px, 4vw, 38px); }
+.fa-harita-giris h2 { font-size: clamp(21px, 3.6vw, 32px); }
 
 /* ————— Tablo ————— */
 .fa-tablo-sarmal { overflow-x: auto; border-radius: var(--fa-yuvarlak-k); border: 1px solid rgb(var(--fa-cizgi)); }
@@ -523,6 +653,41 @@
 .fa-tablo th { background: rgb(var(--fa-yuzey-3)); font-size: 11.5px; font-weight: 700; color: rgb(var(--fa-metin-2)); text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
 .fa-tablo tbody tr:last-child td { border-bottom: 0; }
 .fa-tablo td.sayi { font-variant-numeric: tabular-nums; font-family: ui-monospace, Menlo, monospace; text-align: right; }
+
+/* ————— Devre çizimi —————
+   Akım gösterimi bilinçli olarak sakin tutuldu: yanıp sönen noktalar yerine
+   telin üzerinde yavaşça kayan kesikli bir desen kullanılıyor. Bu, hem gerçek
+   devre şemalarının diline yakın hem de saatlerce bakılabilecek kadar sessiz.
+   Akım büyüdükçe desen hızlanır — hız bilgi taşır, süs değildir. */
+.fa-devre-tel { stroke: rgb(var(--fa-cizgi-guclu)); stroke-width: 3; stroke-linecap: round; fill: none; }
+.fa-devre-akim {
+  stroke: rgb(var(--fa-olcum));
+  stroke-width: 3;
+  stroke-linecap: round;
+  fill: none;
+  stroke-dasharray: 7 11;
+  animation: fa-akim-akisi linear infinite;
+  opacity: 0.9;
+}
+.fa-devre-akim.ters { animation-direction: reverse; }
+.fa-devre-akim.elektron { stroke: rgb(var(--fa-vurgu-2)); }
+@keyframes fa-akim-akisi { to { stroke-dashoffset: -18; } }
+
+.fa-devre-govde { fill: rgb(var(--fa-yuzey-2)); stroke: rgb(var(--fa-cizgi-guclu)); stroke-width: 2; }
+.fa-devre-etiket { font-size: 11px; font-weight: 650; fill: rgb(var(--fa-metin)); }
+.fa-devre-deger {
+  font-size: 10.5px; fill: rgb(var(--fa-olcum));
+  font-family: ui-monospace, Menlo, monospace; font-variant-numeric: tabular-nums;
+}
+.fa-devre-dugum { fill: rgb(var(--fa-cizgi-guclu)); transition: r 140ms ease, fill 140ms ease; }
+.fa-devre-eleman { cursor: pointer; }
+.fa-devre-eleman:focus-visible { outline: none; }
+.fa-devre-eleman .secim-halkasi { fill: none; stroke: rgb(var(--fa-vurgu)); stroke-width: 1.6; }
+
+/* Hareket azaltma açıkken akım akışı durur; yön oku bilgiyi taşımaya devam eder. */
+@media (prefers-reduced-motion: reduce) {
+  .fa-devre-akim { animation: none; stroke-dasharray: none; opacity: 0.75; }
+}
 
 /* ————— Devre paleti ————— */
 .fa-palet { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -544,6 +709,8 @@
 @media (max-width: 1080px) {
   .fa-lab { grid-template-columns: minmax(0, 1fr); }
   .fa-lab-yan { position: static; }
+  .fa-modul-kapak { grid-template-columns: auto minmax(0, 1fr); }
+  .fa-modul-kapak-durum { grid-column: 2; padding: 0; border-left: 0; }
 }
 @media (max-width: 900px) {
   .fa-yan { display: none; }
@@ -553,22 +720,35 @@
 @media (max-width: 640px) {
   .fizik-atlasi { font-size: 14.5px; }
 
-  /* Sahne rozetleri dar ekranda deneyin üstünü kapatıyordu. Mutlak konumdan
-     çıkarılıp sahnenin altına, normal akışa alınır: hem sahne görünür kalır
-     hem rozetler tam okunur. */
-  .fa-sahne { position: relative; padding-bottom: 0; }
-  .fa-sahne-rozet {
-    position: static;
-    max-width: 100%;
-    padding: 8px 10px 10px;
-    border-top: 1px solid rgb(var(--fa-cizgi));
-    background: rgb(var(--fa-yuzey-2));
-  }
+  .fa-icerik { padding-inline: 10px; padding-top: 12px; }
+  .fa-atlas-kapak { min-height: 520px; align-items: flex-end; background-position: 62% center; border-radius: 18px; }
+  .fa-atlas-kapak { background-image: linear-gradient(0deg, rgb(3 8 22 / 0.98) 0%, rgb(4 9 24 / 0.76) 62%, rgb(4 9 24 / 0.15) 100%), url('/atlas-assets/fizik/imagegen/fizik-atlasi-panorama-v1.jpg'); }
+  .fa-atlas-kapak-icerik { width: 100%; padding: 24px 18px; }
+  .fa-atlas-kapak h1 { font-size: clamp(36px, 12vw, 52px); }
+  .fa-atlas-kapak-metrik { gap: 10px 14px; margin-top: 22px; }
+  .fa-harita-ust { align-items: flex-start; }
+  .fa-harita-ust > span { display: none; }
+  .fa-harita-sarmal { border-radius: 17px; overflow-x: auto; }
+  .fa-harita { min-width: 780px; }
+  .fa-harita-odak { position: sticky; left: 10px; width: calc(100vw - 42px); grid-template-columns: auto minmax(0, 1fr); }
+  .fa-harita-odak .fa-dugme { grid-column: 1 / -1; }
+  .fa-harita-odak-metin em { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .fa-modul-kapak { grid-template-columns: auto minmax(0, 1fr); padding: 14px; gap: 11px; }
+  .fa-modul-kapak-ikon { width: 42px; height: 42px; border-radius: 13px; }
+  .fa-modul-kapak-durum { grid-column: 1 / -1; padding-top: 10px; border-top: 1px solid rgb(var(--fa-cizgi)); }
+  .fa-ogrenme-akisi { grid-template-columns: 1fr; gap: 8px; }
+  .fa-ogrenme-adimi:not(:last-child)::after { position: absolute; top: 24px; left: 11.5px; width: 1px; height: 10px; margin: 0; background: rgb(var(--fa-cizgi)); }
+  .fa-ogrenme-adimi b { white-space: normal; }
+  .fa-deney-alani-baslik { align-items: flex-start; }
+  .fa-deney-alani-baslik small { max-width: 145px; text-align: right; }
+  .fa-tahmin-kilit { align-items: stretch; flex-direction: column; }
+  .fa-sahne-rozet { padding: 8px 10px 10px; }
   .fa-kart { padding: 14px; }
   .fa-olcum-izgara { grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); }
   .fa-olcum-deger { font-size: 15.5px; }
   .fa-kontrol { gap: 5px; padding: 9px 10px; }
   .fa-kontrol-hiz { margin-left: 0; width: 100%; }
+  .fa-sim-durum { width: 100%; justify-content: center; }
   .fa-marka-alt { display: none; }
 }
 

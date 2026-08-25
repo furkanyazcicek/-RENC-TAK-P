@@ -54,6 +54,12 @@ const KimyaAtlasi = lazy(() => import('./pages/KimyaAtlasi'))
  */
 const FizikAtlasi = lazy(() => import('./pages/FizikAtlasi'))
 
+/** Biyoloji Atlası ana uygulamadan ayrı, bölgeleri de kendi içinde parçalı yüklenir. */
+const BiyolojiAtlasi = lazy(() => import('./pages/BiyolojiAtlasi'))
+
+/** Coğrafya Atlası; harita laboratuvarlarını ana uygulama paketinden ayrı yükler. */
+const CografyaAtlasi = lazy(() => import('./pages/CografyaAtlasi'))
+
 /** Route geçişlerinde gösterilen tam sayfa yükleyici (tasarım sisteminden). */
 function FullPageLoader() {
   return <PageLoader />
@@ -142,6 +148,14 @@ export default function App() {
       <Route
         path="/fizik-atlasi"
         element={<Suspense fallback={<FullPageLoader />}><FizikAtlasi /></Suspense>}
+      />
+      <Route
+        path="/biyoloji-atlasi"
+        element={<Suspense fallback={<FullPageLoader />}><BiyolojiAtlasi /></Suspense>}
+      />
+      <Route
+        path="/cografya-atlasi"
+        element={<Suspense fallback={<FullPageLoader />}><CografyaAtlasi /></Suspense>}
       />
       <Route
         path="/osmanli-padisahlari"

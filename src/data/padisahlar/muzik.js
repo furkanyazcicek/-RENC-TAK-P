@@ -1,68 +1,71 @@
 /**
- * ATLAS FON MÜZİĞİ
+ * ATLAS FON MÜZİĞİ — MOD BAŞINA AYRI PARÇA
  * ==================================================================
  *
+ * İki mod iki ayrı deneyimdir, bu yüzden iki ayrı müzik kullanır:
+ *
+ *   Keşif modu    → öğrenci bilgiyi kendi hızında inceler. Müzik
+ *                   geri planda kalmalı, dikkat dağıtmamalıdır.
+ *   Belgesel modu → seyredilen bir anlatı. Müzik sahnenin parçasıdır;
+ *                   daha karakterli, daha "tarih belgeseli" bir parça.
+ *
  * NEDEN SESE GÖMÜLMÜYOR
- * Müzik, anlatım mp3'lerinin İÇİNE karıştırılmıyor; ayrı bir kanal
+ * Müzik, anlatım kayıtlarının İÇİNE karıştırılmıyor; ayrı bir kanal
  * olarak çalıyor. Sebepleri:
  *
  *   · Öğrenci müziği kapatabilsin ama anlatımı duymaya devam etsin.
- *   · Müzik değiştiğinde 36 anlatımın yeniden üretilmesi gerekmesin
+ *   · Müzik değiştiğinde anlatımların yeniden üretilmesi gerekmesin
  *     (ses üretimi ücretli; müzik değişimi bedava olmalı).
- *   · Tek bir müzik dosyası indirilsin, 36 dosya şişmesin.
+ *   · Tek bir müzik dosyası indirilsin, her anlatımda şişmesin.
  *   · Konuşma sırasında müzik kısılıp aralarda yükselebilsin.
  *
- * MÜZİK EKLEME
- *   1. Ticari kullanıma açık bir parça bul (bkz. muzik/OKUBENI.md).
- *   2. mp3'ü `public/lesson-assets/tarih/osmanli-padisahlari/muzik/`
- *      klasörüne koy.
- *   3. Aşağıdaki `dosya` alanına adını yaz.
- *   4. `lisans` alanını doldur — ürün ticari, kaynağı kayıtlı tutuyoruz.
+ * SES SEVİYESİ EŞİTLENMESİ
+ * Parçalar farklı yükseklikte kaydedilmiş olabilir. Yeni bir parça
+ * eklenirken ortalama seviyesi ölçülüp diğerlerine eşitlenir; böylece
+ * aşağıdaki yüzdeler parça değiştiğinde yeniden ayarlanmak zorunda
+ * kalmaz. Bkz. muzik/OKUBENI.md.
  *
- * `dosya` boş olduğu sürece müzik kanalı sessizce devre dışıdır;
- * arayüzde düğme görünür ama pasiftir. Yani eksik dosya hiçbir şeyi
+ * `dosya` boş bırakılırsa o modda müzik kanalı sessizce devre dışı
+ * kalır; arayüzde düğme görünür ama pasiftir. Eksik dosya hiçbir şeyi
  * bozmaz.
  */
 
-export const ATLAS_MUZIGI = {
-  /** Dosya adı — `muzik/` klasörüne göre. Boşsa müzik kapalıdır. */
+/** Keşif modu — sakin, geri planda. */
+export const KESIF_MUZIGI = {
   dosya: 'atlas-fon-dongu.m4a',
-
-  /**
-   * Künye. Ticari bir üründe müziğin nereden geldiği kayıtlı olmalı;
-   * yıllar sonra "bu parça nereden gelmişti?" sorusuna cevap versin.
-   */
   ad: 'Historical — Yevhen Astafiev',
   lisans: 'Pixabay lisansı (ticari kullanıma açık, kaynak belirtme şartsız)',
   kaynak: 'pixabay.com · dosya kimliği 534555',
-
-  /**
-   * Dosya olduğu gibi kullanılmadı; iki işlemden geçti:
-   *   1. Parçanın sonundaki sönüm kesildi ve dört saniyelik eşit güç
-   *      çapraz geçişiyle başa bağlandı. Ham hâlinde döngü, sessizliğe
-   *      inip aniden yeniden başlıyordu.
-   *   2. 256 kbps stereo mp3 yerine 96 kbps AAC'ye alındı: 4,35 MB → 1,58 MB.
-   *      Müzik en yüksek %22 seviyede çalıyor; bu kalite fazlasıyla yeter
-   *      ve telefondan girenler için indirme yükü üçte bire iner.
-   * Özgün dosya değiştirilmedi.
-   */
-  dongulendi: true,
-
-  /**
-   * Ses seviyeleri. Öğrenci saatlerce dinleyecek; müzik fark edilmeli
-   * ama konuşmayla yarışmamalı. Belgesel karışımlarında müzik, konuşma
-   * sırasında belirgin biçimde kısılır ve aralarda geri yükselir.
-   */
-  sesSeviyesi: 0.22,      // anlatım susarken
-  kisikSeviye: 0.09,      // anlatım konuşurken
-  yumusamaSaniye: 1.2,    // seviye değişiminin süresi
+  sesSeviyesi: 0.22,
+  kisikSeviye: 0.09,
 }
+
+/** Belgesel modu — sahnenin parçası, daha karakterli. */
+export const BELGESEL_MUZIGI = {
+  dosya: 'atlas-fon-dongu-2.m4a',
+  ad: 'Epic Historical Music — copyrightfreemusicforyou',
+  lisans: 'Pixabay lisansı (ticari kullanıma açık, kaynak belirtme şartsız)',
+  kaynak: 'pixabay.com · dosya kimliği 316909',
+  /* Bu parça öncekinden iki kattan fazla yüksek kaydedilmişti; dosya
+     0,486 ile çarpılarak aynı seviyeye indirildi. */
+  sesSeviyesi: 0.24,
+  kisikSeviye: 0.10,
+}
+
+/** Seviye geçişinin süresi — her iki modda ortak. */
+export const YUMUSAMA_SANIYE = 1.2
 
 export const MUZIK_KOKU = '/lesson-assets/tarih/osmanli-padisahlari/muzik'
 
-/** Müzik dosyasının adresi. Tanımlı değilse `null`. */
-export function atlasMuzikAdresi() {
-  return ATLAS_MUZIGI.dosya ? `${MUZIK_KOKU}/${ATLAS_MUZIGI.dosya}` : null
+/** Modun müzik tanımı. Bilinmeyen mod keşif sayılır. */
+export function modMuzigi(mod) {
+  return mod === 'belgesel' ? BELGESEL_MUZIGI : KESIF_MUZIGI
 }
 
-export default ATLAS_MUZIGI
+/** Modun müzik adresi. Tanımlı değilse `null`. */
+export function atlasMuzikAdresi(mod) {
+  const parca = modMuzigi(mod)
+  return parca.dosya ? `${MUZIK_KOKU}/${parca.dosya}` : null
+}
+
+export default KESIF_MUZIGI

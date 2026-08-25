@@ -1,4 +1,4 @@
-import { Atom, BookOpen, ClipboardList, Crown, FlaskConical, Library as LibraryIcon, Map as MapIcon } from 'lucide-react'
+import { Atom, BookOpen, ClipboardList, Crown, Dna, Earth, FlaskConical, Library as LibraryIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { AppShell, Button } from '../components/ui'
 import { DashboardHero, Panel } from '../components/dashboard'
@@ -30,17 +30,11 @@ const libraries = [
  */
 const experiences = [
   {
-    title: 'Osmanlı Padişahları Geçidi',
-    description: 'Padişahları sırayla, haritası ve olaylarıyla birlikte anlatan sinematik zaman çizelgesi.',
+    title: 'Tarih Atlası',
+    description: 'Otuz altı Osmanlı padişahını dönem haritaları, olay sahneleri ve sinematik zaman çizelgesiyle keşfet.',
     to: '/osmanli-padisahlari',
     Icon: Crown,
     badge: 'Yeni',
-  },
-  {
-    title: 'Tarih Atlası',
-    description: 'Yılı sürükle, dönemin siyasi haritası anında değişsin.',
-    to: '/tarih-atlasi',
-    Icon: MapIcon,
   },
   {
     title: 'Kimya Atlası',
@@ -54,6 +48,20 @@ const experiences = [
     description: 'On üç bölge, otuz altı deney. Değerleri değiştir, grafikleri anında gör, bağıntıyı kendin keşfet.',
     to: '/fizik-atlasi',
     Icon: Atom,
+    badge: 'Yeni',
+  },
+  {
+    title: 'TYT Biyoloji Atlası',
+    description: 'Hücreden ekosisteme ölçek değiştir; tahmin et, deney kur, veriyi oku ve canlı sistemleri keşfet.',
+    to: '/biyoloji-atlasi',
+    Icon: Dna,
+    badge: 'Yeni',
+  },
+  {
+    title: 'TYT Coğrafya Atlası',
+    description: 'Ölçeği ve katmanı değiştir; harita, kesit, grafik ve vaka kanıtlarıyla coğrafi süreçleri keşfet.',
+    to: '/cografya-atlasi',
+    Icon: Earth,
     badge: 'Yeni',
   },
 ]

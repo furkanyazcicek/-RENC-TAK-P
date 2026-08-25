@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
 import {
-  BookOpen, Check, Compass, GraduationCap, Heart, Star,
+  Activity, BookOpen, Check, Compass, FlaskConical, GraduationCap, Heart, Star,
 } from 'lucide-react'
 import { ICERIK } from '../../../data/fizik/icerik.js'
 import { bolgeBul } from '../../../data/fizik/bolgeler.js'
+import { ikonBul } from '../../../data/fizik/ikonlar.js'
 import { FormulPaneli, GunlukHayat, HataListesi, Not } from './Panolar.jsx'
 import { MiniGorev, OgrenmeKontrolu, TahminKutusu } from './Ogrenme.jsx'
 import { vurguyuIsle } from './metin.jsx'
@@ -16,6 +17,12 @@ const SEVIYELER = [
   { kod: 'ogren', ad: 'Öğren', ikon: BookOpen, aciklama: 'Önce tahmin et, sonra deneyde gör, ardından açıklamayı oku.' },
   { kod: 'ustalas', ad: 'Ustalaş', ikon: GraduationCap, aciklama: 'Görevi tamamla ve öğrenme kontrolünü çöz.' },
 ]
+
+const AKISLAR = {
+  kesfet: ['Değişkeni oynat', 'Canlı sonucu izle', 'Yeni bir soru sor'],
+  ogren: ['Tahminini kaydet', 'Deneyi çalıştır', 'Kanıtla karşılaştır'],
+  ustalas: ['Hedefi oku', 'Düzeneği kur', 'Kendini kontrol et'],
+}
 
 /**
  * Fizik Atlası — Modül kabuğu
@@ -59,17 +66,26 @@ export function ModulKabugu({ bolgeKod, deneyKod = null, children, deneyBasligi 
   }
 
   const AktifSeviye = SEVIYELER.find((s) => s.kod === seviye)
+  const BolgeIkon = ikonBul(bolge.ikon)
+  const deneySirasi = deneyKod ? bolge.deneyler.findIndex((d) => d.kod === deneyKod) : -1
 
   return (
     <div>
-      <div className="fa-bolum-basi">
-        <div className="fa-ust-etiket" style={{ color: bolge.renk }}>
-          <span className="fa-yan-nokta" style={{ background: bolge.renk }} aria-hidden="true" />
-          {bolge.ad}
+      <header className="fa-modul-kapak" style={{ '--fa-modul-renk': bolge.renk }}>
+        <span className="fa-modul-kapak-ikon"><BolgeIkon size={25} aria-hidden="true" /></span>
+        <div className="fa-modul-kapak-metin">
+          <div className="fa-ust-etiket" style={{ color: bolge.renk }}>
+            {bolge.ad}
+            {deneySirasi >= 0 ? <span>Deney {deneySirasi + 1}/{bolge.deneyler.length}</span> : null}
+          </div>
+          <h2>{deneyBasligi ?? bolge.ad}</h2>
+          <p>{bolge.ozet}</p>
         </div>
-        <h2>{deneyBasligi ?? bolge.ad}</h2>
-        <p>{bolge.ozet}</p>
-      </div>
+        <div className="fa-modul-kapak-durum">
+          <span><Activity size={14} /> Etkileşimli deney</span>
+          <small>Değerleri değiştir; sonuç anında güncellensin.</small>
+        </div>
+      </header>
 
       {/* Seviye şeridi */}
       <div className="fa-seviye-serit" role="tablist" aria-label="Öğrenme seviyesi">
@@ -104,6 +120,15 @@ export function ModulKabugu({ bolgeKod, deneyKod = null, children, deneyBasligi 
         ) : null}
       </div>
 
+      <div className="fa-ogrenme-akisi" aria-label={`${AktifSeviye.ad} seviyesi öğrenme akışı`}>
+        {AKISLAR[seviye].map((ad, indeks) => (
+          <div className="fa-ogrenme-adimi" key={ad}>
+            <span>{indeks + 1}</span>
+            <b>{ad}</b>
+          </div>
+        ))}
+      </div>
+
       <div style={{ marginBottom: 14 }}>
         <Not tur="bilgi" baslik={`${AktifSeviye.ad} seviyesi`}>{AktifSeviye.aciklama}</Not>
       </div>
@@ -129,7 +154,13 @@ export function ModulKabugu({ bolgeKod, deneyKod = null, children, deneyBasligi 
       ) : null}
 
       {/* Deney alanı — her seviyede görünür */}
-      <div>{children}</div>
+      <div className="fa-deney-alani">
+        <div className="fa-deney-alani-baslik">
+          <span><FlaskConical size={15} /> Canlı deney alanı</span>
+          <small><span className="fa-canli-nokta" aria-hidden="true" /> Değişiklikler anında hesaplanır</small>
+        </div>
+        {children}
+      </div>
 
       {/* ÖĞREN: deneyden sonra açıklama, formül, günlük hayat, hatalar */}
       {seviye === 'ogren' ? (

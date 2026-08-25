@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {
-  CheckCircle2, HelpCircle, Lightbulb, RotateCcw, Target, XCircle,
+  CheckCircle2, Eye, HelpCircle, Lightbulb, RotateCcw, Target, XCircle,
 } from 'lucide-react'
 import { Not } from './Panolar.jsx'
 import { vurguyuIsle } from './metin.jsx'
@@ -18,12 +18,18 @@ const HARFLER = ['A', 'B', 'C', 'D', 'E']
  */
 export function TahminKutusu({ tahmin, onCevap = null }) {
   const [secim, setSecim] = useState(null)
-  const acildi = secim !== null
+  const [sonucAcik, setSonucAcik] = useState(false)
+  const acildi = sonucAcik
 
   const sec = (i) => {
     if (acildi) return
     setSecim(i)
-    onCevap?.(tahmin.secenekler[i].dogru)
+  }
+
+  const sonucuAc = () => {
+    if (secim === null || acildi) return
+    setSonucAcik(true)
+    onCevap?.(tahmin.secenekler[secim].dogru)
   }
 
   return (
@@ -37,7 +43,7 @@ export function TahminKutusu({ tahmin, onCevap = null }) {
       </p>
 
       {tahmin.secenekler.map((s, i) => {
-        const durum = !acildi ? '' : s.dogru ? 'dogru' : (i === secim ? 'yanlis' : '')
+        const durum = !acildi ? (i === secim ? 'secili' : '') : s.dogru ? 'dogru' : (i === secim ? 'yanlis' : '')
         return (
           <button
             key={s.metin}
@@ -54,12 +60,29 @@ export function TahminKutusu({ tahmin, onCevap = null }) {
         )
       })}
 
+      {!acildi ? (
+        <div className="fa-tahmin-kilit">
+          <div>
+            <b>{secim === null ? 'Bir tahmin seç' : 'Tahminin kaydedildi'}</b>
+            <span>{secim === null ? 'Sonucu açmadan önce zihnindeki modeli işaretle.' : 'Yukarıdaki değerlerle oyna; sonra kanıtı aç.'}</span>
+          </div>
+          <button type="button" className="fa-dugme birincil kucuk" onClick={sonucuAc} disabled={secim === null}>
+            <Eye size={14} /> Kanıtı göster
+          </button>
+        </div>
+      ) : null}
+
       {acildi ? (
         <div style={{ marginTop: 12 }}>
           <Not tur={tahmin.secenekler[secim].dogru ? 'olumlu' : 'uyari'} baslik={tahmin.secenekler[secim].dogru ? 'Doğru tahmin' : 'Şimdi deneyde gör'}>
             {tahmin.aciklama}
           </Not>
-          <button type="button" className="fa-dugme sade kucuk" style={{ marginTop: 8 }} onClick={() => setSecim(null)}>
+          <button
+            type="button"
+            className="fa-dugme sade kucuk"
+            style={{ marginTop: 8 }}
+            onClick={() => { setSecim(null); setSonucAcik(false) }}
+          >
             <RotateCcw size={13} /> Yeniden tahmin et
           </button>
         </div>

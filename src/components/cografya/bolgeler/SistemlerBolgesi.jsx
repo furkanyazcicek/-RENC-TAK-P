@@ -1,0 +1,13 @@
+import { useMemo, useState } from 'react'
+import { MERCEK_NOKTALARI } from '../../../data/cografya/haritaNoktalari.js'
+import { BolgeBasligi, KatmanliHarita, Kaydirici, Mekanizma, ModulKabugu, Secim } from '../ortak/index.js'
+
+const KATMANLAR = ['atmosfer', 'hidrosfer', 'litosfer', 'biyosfer', 'beşerî']
+
+export default function SistemlerBolgesi() {
+  const [katman, setKatman] = useState('atmosfer')
+  const [teknoloji, setTeknoloji] = useState(45)
+  const [koruma, setKoruma] = useState(40)
+  const sonuc = useMemo(() => ({ olanak: Math.round((teknoloji * 0.65) + (koruma * 0.35)), baski: Math.max(0, Math.round(teknoloji * 0.7 - koruma * 0.55)) }), [teknoloji, koruma])
+  return <div className="ca-bolge"><BolgeBasligi baslik="Dünya Sistemleri" aciklama="Doğal ortamı bir dekor değil, insan kararıyla karşılıklı etkileşen sistem olarak kur." renk="#42c59a" sayi="1"/><ModulKabugu id="sistem-katmanlari" bolge="sistemler" baslik="Doğal koşul → insan cevabı → geri etki" aciklama="Katmanı ve karar düzeyini değiştir; aynı doğal ortamda tek bir zorunlu sonuç olmadığını gör." yanilgiId="determinist" tahmin={{ soru: 'Teknoloji arttığında doğal sınırlar tamamen ortadan kalkar mı?', secenekler: ['Evet, tamamen', 'Hayır; olanak artar ama geri etki sürer'] }} kontrol={{ soru: 'Aynı kurak ovada iki toplumun farklı tarım sonucu üretmesini en iyi ne açıklar?', secenekler: ['Yalnız enlem', 'Sulama teknolojisi, sermaye ve koruma kararı', 'Yalnız toprak rengi'], cevap: 1, aciklama: 'Doğal koşul ortak olsa da insan cevabı ve geri etki farklıdır.' }} transfer={{ soru: 'Dağlık iki bölgeden birinde ulaşımın gelişmesi hangi sonucu destekler?', secenekler: ['Relief ortadan kalkar', 'Erişilebilirlik artar; maliyet ve risk yine dikkate alınır', 'Her yerde aynı yerleşme oluşur'], cevap: 1, aciklama: 'Teknoloji sınırı dönüştürür; fiziksel yüzeyi silmez.' }}>{({ kanitla }) => <div className="ca-sim-grid"><div className="ca-kontrol-panel"><Secim etiket="İncelenen sistem" deger={katman} secenekler={KATMANLAR} onChange={(v) => { setKatman(v); kanitla() }}/><Kaydirici etiket="Teknoloji ve erişim" deger={teknoloji} min={0} max={100} birim="/100" onChange={(v) => { setTeknoloji(v); kanitla() }}/><Kaydirici etiket="Koruma ve planlama" deger={koruma} min={0} max={100} birim="/100" onChange={(v) => { setKoruma(v); kanitla() }}/><Mekanizma tur={sonuc.baski > 25 ? 'uyari' : 'olumlu'}>{katman} katmanında olanak {sonuc.olanak}/100, geri baskı {sonuc.baski}/100. Teknoloji tek başına arttığında baskı da büyüyebilir.</Mekanizma></div><KatmanliHarita points={MERCEK_NOKTALARI} baslik={`${katman} üzerinden insan–doğa etkileşimi`} aktifKatman={katman}/></div>}</ModulKabugu></div>
+}

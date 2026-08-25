@@ -263,6 +263,18 @@ export function devreCoz(devre, { zorunluIcDirenc = 0, icKontrol = false } = {})
   const dugumGerilimleri = {}
   for (const d of tumDugumler) dugumGerilimleri[d] = gerilim(d)
 
+  /**
+   * Sayısal kaçak eşiği. Denklem takımını çözülebilir tutmak için her düğüme
+   * çok küçük bir toprak iletkenliği ekleniyor (gmin tekniği). Bunun bedeli,
+   * açık devrede bile pikoamper mertebesinde sahte bir akım çıkmasıdır.
+   * Öğrenciye "I = 6×10⁻¹² A" göstermek yanlış olur; bu düzeyin altındaki
+   * her değer sıfıra çekilir. Eşik, gerçek devrelerde ölçülebilir en küçük
+   * akımın çok altındadır, dolayısıyla gerçek bir sonucu bozmaz.
+   */
+  const KACAK_ESIGI = 1e-9
+  const akimiTemizle = (i) => (i !== null && Math.abs(i) < KACAK_ESIGI ? 0 : i)
+  const gerilimiTemizle = (v) => (Math.abs(v) < KACAK_ESIGI ? 0 : v)
+
   // — 4) Her elemanın akım, gerilim ve gücünü hesapla.
   const sonuclar = []
   let toplamKaynakAkimi = 0
@@ -288,7 +300,7 @@ export function devreCoz(devre, { zorunluIcDirenc = 0, icKontrol = false } = {})
         const dal = kaynakDallari.findIndex((d) => d.eleman.id === e.id)
         akim = dal >= 0 ? -x[dugumSayisi + dal] : 0
       }
-      toplamKaynakAkimi += Math.abs(akim)
+      toplamKaynakAkimi += Math.abs(akimiTemizle(akim))
     } else if (e.tur === 'ampermetre') {
       // Ampermetre pasif elemandır: akım a ucundan b ucuna doğru pozitif sayılır.
       // (Pilde ters işaret kullanılır çünkü orada dışarıya verilen akım okunur.)
@@ -300,12 +312,14 @@ export function devreCoz(devre, { zorunluIcDirenc = 0, icKontrol = false } = {})
       akim = null // Kablodaki akım tek başına tanımlı değildir (düğüm birleşik).
     }
 
-    const guc = akim === null ? null : Math.abs(dV * akim)
+    akim = akimiTemizle(akim)
+    const temizGerilim = gerilimiTemizle(dV)
+    const guc = akim === null ? null : Math.abs(temizGerilim * akim)
     if (e.tur !== 'pil' && guc) toplamGuc += guc
 
     const kayit = {
       ...e,
-      gerilim: e.tur === 'voltmetre' ? dV : dV,
+      gerilim: temizGerilim,
       akim,
       guc,
       calisiyor,
