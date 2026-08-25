@@ -28,6 +28,12 @@
  *   node scripts/padisah-sesi-uret.mjs --zorla        hepsini yeniden üret
  *   node scripts/padisah-sesi-uret.mjs --temizle      artık kullanılmayan mp3'leri sil
  *
+ * ÜRETİMDEN SONRA
+ * `node scripts/padisah-sesi-kucult.mjs` dosyaları 64 kbps'e indirir.
+ * Ses servisi 128 kbps üretiyor; tek kişilik anlatım için bu fazla ve
+ * telefondan girenlere iki katı veri yüklüyor. Küçültme yeniden üretim
+ * DEĞİLDİR, kredi harcamaz.
+ *
  * ANAHTAR
  * `.env.local` içinde TTS_PROVIDER ve ilgili anahtar bulunmalıdır.
  * Anahtar yalnızca burada ve sunucuda okunur; tarayıcıya asla gitmez.
@@ -44,6 +50,15 @@ const DEFTER_YOLU = 'src/data/padisahlar/sesDefteri.js'
 
 /* Türkçe belgesel temposu: dakikada yaklaşık 150 kelime ≈ 900 karakter. */
 const KARAKTER_PER_DAKIKA = 900
+
+/**
+ * Yeniden deneme ayarları. Bu sabitler dosyanın ÜSTÜNDE durmak
+ * zorundadır: ana döngü modülün en üst seviyesinde çalışıyor ve
+ * `const` tanımları fonksiyonlar gibi yukarı taşınmaz. Aşağıda
+ * tanımlanırlarsa döngü onlara erişemeden hata verir.
+ */
+const GECICI_HATA = /fetch failed|ECONNRESET|ETIMEDOUT|ENOTFOUND|EAI_AGAIN|socket hang up|tts_upstream_(429|500|502|503|504)/i
+const BEKLEMELER = [2000, 5000, 12000]
 const FIYAT = {
   openai: { birim: 'dakika', usd: 0.015, ad: 'OpenAI gpt-4o-mini-tts' },
   elevenlabs: { birim: 'karakter', usd: 0.00022, ad: 'ElevenLabs multilingual v2' },
@@ -155,18 +170,20 @@ for (const is of isler) {
 
   process.stdout.write(`   ⏳ ${etiket} — üretiliyor…`)
   try {
-    const ses = await saglayici.generateSpeech({
+    const ses = await tekrarDeneyerek(() => saglayici.generateSpeech({
       text: is.soylenecek,
       language: 'tr-TR',
       // Öğretmen tonu DEĞİL: bu bir tarih belgeseli anlatımıdır.
       persona: 'belgesel',
-    })
+    }), etiket)
     const veri = Buffer.from(await ses.arrayBuffer())
     await writeFile(dosyaYolu, veri)
     const sure = mp3Suresi(veri)
     if (!denemeModu) defter[is.padisah.id] = { file: dosyaAdi, version: is.surum, duration: sure }
     uretilen += 1
     process.stdout.write(`\r   ✓  ${etiket} — ${(veri.length / 1024).toFixed(0)} KB${sure ? `, ${sure.toFixed(0)} sn` : ''}          \n`)
+    // Sunucuyu arka arkaya yormamak için kısa soluk payı.
+    await new Promise((coz) => setTimeout(coz, 800))
   } catch (hata) {
     process.stdout.write(`\r   ✗  ${etiket} — HATA: ${hata.message}          \n`)
     process.exitCode = 1
@@ -194,6 +211,33 @@ if (denemeModu) {
 }
 
 /* ================================================================== */
+
+/**
+ * GEÇİCİ HATALARDA YENİDEN DENE.
+ *
+ * Otuz altı isteğin arka arkaya gönderildiği bir çalıştırmada tek bir
+ * ağ kesintisi ya da hız sınırı, kalan bütün padişahları düşürebiliyor.
+ * Oysa bunlar geçici hatalardır: birkaç saniye sonra aynı istek çalışır.
+ *
+ * Kalıcı hatalar (yetki yok, kredi bitti, ses bulunamadı) tekrar
+ * denenmez — beklemenin faydası olmaz, kullanıcıya hemen söylenmelidir.
+ */
+async function tekrarDeneyerek(islev, etiket) {
+  let sonHata
+  for (let deneme = 0; deneme <= BEKLEMELER.length; deneme += 1) {
+    try {
+      return await islev()
+    } catch (hata) {
+      sonHata = hata
+      const mesaj = `${hata.message} ${hata.cause?.message ?? ''}`
+      if (!GECICI_HATA.test(mesaj) || deneme === BEKLEMELER.length) throw hata
+      const bekle = BEKLEMELER[deneme]
+      process.stdout.write(`\r   ↻  ${etiket} — geçici hata, ${bekle / 1000} sn sonra tekrar…          `)
+      await new Promise((coz) => setTimeout(coz, bekle))
+    }
+  }
+  throw sonHata
+}
 
 /**
  * Mevcut defteri okur, üretilen kayıtları yazar, dokunulmayanları korur.
