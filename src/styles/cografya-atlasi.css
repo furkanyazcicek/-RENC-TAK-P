@@ -144,10 +144,10 @@
 
 /* --- Açılış --- */
 .ca-hero{
-  --ca-halka-r:clamp(158px,21vw,272px);
-  --ca-halka-kart:clamp(60px,8.4vw,110px);
+  --ca-halka-r:clamp(158px,24vw,290px);
+  --ca-halka-kart:clamp(60px,7.6vw,108px);
   --ca-fx:0px;--ca-fy:0px;
-  min-height:clamp(452px,60vw,700px);
+  min-height:calc(var(--ca-halka-r) * 2 + var(--ca-halka-kart) + 56px);
   display:grid;grid-template-columns:minmax(0,1fr);
   place-content:center;place-items:center;
 }
@@ -216,8 +216,8 @@
 .ca-hero-merkez{
   position:relative;z-index:3;
   display:block;
-  width:min(calc(var(--ca-halka-r) * 1.25),74vw);
-  padding:clamp(12px,2vw,22px);text-align:center;
+  width:min(calc(var(--ca-halka-r) * 1.34),62vw);
+  padding:clamp(10px,1.6vw,18px);text-align:center;
 }
 /* Eski hero düzeninden kalan iki sütunlu kural etkisiz kılınıyor. */
 .cografya-atlasi .ca-hero>div:last-child,
@@ -236,6 +236,17 @@
   width:auto;justify-self:center;
 }
 .ca-hero-merkez>small{margin-top:14px;display:block;color:var(--ca-soluk);font-size:9.5px;letter-spacing:.08em}
+
+/* Tablet aralığı (701–999 px): halka ekran genişliğine göre büyütülür.
+   Bu aralıkta ortadaki blok daralınca yazı sarıyor, blok uzuyor ve
+   halkanın alt/üst kartlarının altına giriyordu. */
+@media (min-width:701px) and (max-width:999px){
+  .ca-hero{
+    --ca-halka-r:clamp(196px,30vw,300px);
+    --ca-halka-kart:clamp(58px,8vw,76px);
+  }
+  .ca-hero-merkez>small{display:none}
+}
 
 /* Dar ekran: halka büyür, ortadaki blok küçülür.
    Telefonda yarıçapı küçültmek kartları başlığın üstüne bindiriyordu;
