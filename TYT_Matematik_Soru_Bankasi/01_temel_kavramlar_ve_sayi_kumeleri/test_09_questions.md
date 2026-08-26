@@ -28,11 +28,11 @@ E) $-3$
 
 `K01-T09-Q02`
 
-İki girişli bir ortalama makinesi, $a$ ve $b$ sayıları için
+$a$ ve $b$ gerçek sayıları için
 
 $$a\mathbin{\star}b=\frac{a+b}{2}$$
 
-çıktısını veriyor.
+biçiminde bir işlem tanımlanıyor.
 
 Buna göre $6\mathbin{\star}(-2)$ kaçtır?
 
@@ -160,9 +160,9 @@ E) $p$'den büyüktür.
 
 `K01-T09-Q09`
 
-Bir hesaplama ekranında önce 3'ten -4 çıkarılıyor. Bulunan değer -2 ile çarpılıyor ve sonuca 5 ekleniyor.
+Önce 3'ten -4 çıkarılıyor. Bulunan değer -2 ile çarpılıyor ve sonuca 5 ekleniyor.
 
-Ekrandaki son sayı kaçtır?
+Sonuç kaçtır?
 
 A) $-19$
 
@@ -178,9 +178,9 @@ E) $19$
 
 `K01-T09-Q10`
 
-Bir sayı ekranında başlangıçta $n$ yazıyor. Ekrandaki sayıya sırasıyla 12 ekleniyor, $-12$ ekleniyor ve elde edilen sonuç 1 ile çarpılıyor.
+$n$ sayısına sırasıyla 12 ve $-12$ ekleniyor; elde edilen sonuç 1 ile çarpılıyor.
 
-Ekranda son olarak hangi sayı görünür?
+Sonuç aşağıdakilerden hangisidir?
 
 A) $-n$
 

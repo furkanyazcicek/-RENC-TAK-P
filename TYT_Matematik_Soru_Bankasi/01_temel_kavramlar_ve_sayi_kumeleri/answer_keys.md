@@ -34,15 +34,33 @@
 | 30 | A | D | C | B | E | E | B | C | D | A |
 | 31 | B | E | D | C | A | A | C | D | E | B |
 | 32 | C | A | E | D | B | B | D | E | A | C |
+| 33 | D | B | A | E | C | C | E | A | B | D |
+| 34 | E | C | B | A | D | D | A | B | C | E |
+| 35 | A | D | C | B | E | E | B | C | D | A |
+| 36 | B | E | A | C | D | D | C | A | E | B |
+| 37 | C | A | E | B | D | D | B | E | A | C |
+| 38 | D | B | A | E | C | C | E | A | B | D |
+| 39 | E | C | B | A | D | D | A | B | C | E |
+| 40 | A | D | C | B | E | E | B | C | D | A |
+| 41 | B | E | D | C | A | A | C | D | E | B |
+| 42 | C | A | E | D | B | B | D | E | A | C |
+| 43 | D | B | A | E | C | C | E | A | B | D |
+| 44 | E | C | B | A | D | D | A | B | C | E |
+| 45 | A | D | C | B | E | E | B | C | D | A |
+| 46 | B | E | C | A | D | D | A | C | E | B |
+| 47 | C | A | E | B | D | D | B | E | A | C |
+| 48 | D | B | A | E | C | C | E | A | B | D |
+| 49 | E | C | B | A | D | D | A | B | C | E |
+| 50 | A | D | C | B | E | E | B | C | D | A |
 
 ## Mevcut doğru cevap dağılımı
 
 | Seçenek | Adet |
 |:---:|---:|
-| A | 64 |
-| B | 64 |
-| C | 64 |
-| D | 64 |
-| E | 64 |
+| A | 100 |
+| B | 100 |
+| C | 100 |
+| D | 100 |
+| E | 100 |
 
 Konu tamamlandığında her seçeneğin 100 doğru cevapta dengelenmesi hedeflenir.

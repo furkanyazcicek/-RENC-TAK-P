@@ -63,7 +63,7 @@
 
 **Çözüm:** $(1+\sqrt2)+(1-\sqrt2)=2$ ve $(1+\sqrt2)(1-\sqrt2)=1-2=-1$ olur.
 
-**Neden doğru?** İki sonuç da tam sayı olduğu için rasyoneldir; girdilerin ikisi de irrasyoneldir.
+**Neden doğru?** İki sonuç da tam sayı olduğu için rasyoneldir; kullanılan iki sayı da irrasyoneldir.
 
 ## Soru 8
 **Doğru cevap:** B

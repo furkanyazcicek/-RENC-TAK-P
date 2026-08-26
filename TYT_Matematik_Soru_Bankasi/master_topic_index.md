@@ -2,8 +2,8 @@
 
 | No | Konu | Klasör | Hedef test | Hedef soru | Tamamlanan test | Doğrulanan soru | Durum |
 |---:|---|---|---:|---:|---:|---:|---|
-| 01 | Temel Kavramlar ve Sayı Kümeleri | `01_temel_kavramlar_ve_sayi_kumeleri/` | 50 | 500 | 30 | 300 | Üretimde |
-| 02 | Sayı Basamakları | `02_sayi_basamaklari/` | 50 | 500 | 0 | 0 | Bekliyor |
+| 01 | Temel Kavramlar ve Sayı Kümeleri | `01_temel_kavramlar_ve_sayi_kumeleri/` | 50 | 500 | 50 | 500 | Tamamlandı |
+| 02 | Sayı Basamakları | `02_sayi_basamaklari/` | 50 | 500 | 50 | 500 | Tamamlandı |
 | 03 | Bölme, Bölünebilme ve Kalan | `03_bolme_bolunebilme_ve_kalan/` | 50 | 500 | 0 | 0 | Bekliyor |
 | 04 | Asal Sayılar, Çarpanlar ve Bölen Sayısı | `04_asal_sayilar_carpanlar_ve_bolen_sayisi/` | 50 | 500 | 0 | 0 | Bekliyor |
 | 05 | EBOB–EKOK ve Periyodik Durumlar | `05_ebob_ekok_ve_periyodik_durumlar/` | 50 | 500 | 0 | 0 | Bekliyor |
@@ -34,6 +34,6 @@
 | 30 | Çember ve Daire | `30_cember_ve_daire/` | 50 | 500 | 0 | 0 | Bekliyor |
 | 31 | Analitik Geometri | `31_analitik_geometri/` | 50 | 500 | 0 | 0 | Bekliyor |
 | 32 | Katı Cisimler | `32_kati_cisimler/` | 50 | 500 | 0 | 0 | Bekliyor |
-| **Toplam** |  |  | **1.600** | **16.000** | **30** | **300** | **%1,875 soru** |
+| **Toplam** |  |  | **1.600** | **16.000** | **100** | **1.000** | **%6,25 soru** |
 
 > Tamamlanan sayıları `master_progress_report.md` ve otomatik denetim çıktısı ile birlikte güncellenir. Konu klasörü oluşturulmamış satırlar plan kaydıdır; üretilmiş içerik anlamına gelmez.

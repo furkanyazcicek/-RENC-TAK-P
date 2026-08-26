@@ -75,7 +75,41 @@ export const KAPSAM_MANIFESTI = [
   ]},
 ]
 
-export const ALT_BASLIKLAR = KAPSAM_MANIFESTI.flatMap((unite) => unite.altBasliklar.map((konu) => ({ ...konu, uniteId: unite.id, uniteBaslik: unite.baslik, bolge: unite.bolge })))
+/* 2026 TYMM'de 9. sınıf Yaşam/Organizasyon, 10. sınıf Enerji/Ekoloji
+   temaları kullanılır. Aşağıdaki üniteler güncel TYT çekirdeğiyle de
+   örtüştüğü için iki kapsamda birden gösterilir; bölünme, üreme ve
+   kalıtım ise mevcut TYT rotasında kalır. */
+const TYMM_ORTAK_UNITELER = new Set([
+  'bilim-canlilik', 'bilesenler', 'hucre', 'zar-gecis',
+  'siniflandirma', 'ekoloji', 'cevre', 'enerji',
+])
+
+export function biyolojiKapsamlari(kayit) {
+  if (!kayit) return []
+  const kapsamlar = new Set([kayit.kapsam])
+  const uniteId = kayit.uniteId ?? kayit.id
+  if (TYMM_ORTAK_UNITELER.has(uniteId)) kapsamlar.add('tymm')
+  return [...kapsamlar]
+}
+
+export const biyolojiKapsamdaMi = (kayit, kapsam) => (
+  kapsam === 'tum' || biyolojiKapsamlari(kayit).includes(kapsam)
+)
+
+export function biyolojiKapsamEtiketi(kayit) {
+  const kapsamlar = biyolojiKapsamlari(kayit)
+  if (kapsamlar.includes('tyt') && kapsamlar.includes('tymm')) return 'TYT + 2026 TYMM'
+  if (kapsamlar.includes('tymm')) return '2026 TYMM'
+  return 'TYT sınav çekirdeği'
+}
+
+export const ALT_BASLIKLAR = KAPSAM_MANIFESTI.flatMap((unite) => unite.altBasliklar.map((konu) => ({
+  ...konu,
+  uniteId: unite.id,
+  uniteBaslik: unite.baslik,
+  bolge: unite.bolge,
+  kapsamlar: biyolojiKapsamlari({ ...konu, uniteId: unite.id }),
+})))
 export const ETKILESIMLER = ETKILESIM_KAYDI
 
 export const bolgeKonulari = (bolge) => ALT_BASLIKLAR.filter((konu) => konu.bolge === bolge)

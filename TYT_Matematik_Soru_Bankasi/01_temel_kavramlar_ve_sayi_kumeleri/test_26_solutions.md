@@ -70,7 +70,7 @@
 
 **Çözüm:** 4 ve 8, $S$'dedir; fakat $(4+8)/2=6$ sayısı 4'ün katı değildir.
 
-**Neden doğru?** Geçerli iki girdi küme dışında çıktı verdiği için kapalılık bozulur.
+**Neden doğru?** Kümeden seçilen iki sayının işlem sonucu küme dışında kaldığı için kapalılık bozulur.
 
 **Çeldirici notu:** Diğer çiftlerin ortalamaları 4'ün katıdır.
 
@@ -114,10 +114,10 @@
 
 **Doğru cevap:** B
 
-**Kazanım:** Rasyonel bölümden girdilerin türüne ilişkin yanlış çıkarımı çürütme.
+**Kazanım:** Rasyonel bölümden sayıların türüne ilişkin yanlış çıkarımı çürütme.
 
-**Çözüm:** $\sqrt2/\sqrt2=1$ rasyoneldir; ancak iki girdi de irrasyoneldir.
+**Çözüm:** $\sqrt2/\sqrt2=1$ rasyoneldir; ancak bölünen ve bölen irrasyoneldir.
 
 **Neden doğru?** Bu tek karşı örnek iddiayı çürütür.
 
-**Çeldirici notu:** Sonucun rasyonel olması girdilerin ayrı ayrı rasyonel olmasını gerektirmez.
+**Çeldirici notu:** Sonucun rasyonel olması iki sayının ayrı ayrı rasyonel olmasını gerektirmez.

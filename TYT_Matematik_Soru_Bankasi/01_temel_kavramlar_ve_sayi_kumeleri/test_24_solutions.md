@@ -20,9 +20,9 @@
 
 **Kazanım:** Negatif parantez sonucu ile işlem önceliğini uygulama.
 
-**Çözüm:** $3+(-4)=-1$ ve $18-2(-1)=18+2=20$ bulunur.
+**Çözüm:** $7-(-3)=10$ ve $2\cdot10=20$ bulunur.
 
-**Neden doğru?** Negatif çarpımı çıkarmak toplama işlemine dönüşür.
+**Neden doğru?** Negatif bir sayıyı çıkarmak toplama işlemine dönüşür.
 
 **Çeldirici notu:** Köşeli parantez çarpmadan önce hesaplanır.
 
@@ -102,13 +102,17 @@
 
 **Doğru cevap:** C
 
-**Kazanım:** Köklü ve ondalık sınırlar arasındaki tam sayıları sayma.
+**Kazanım:** Köklü ve ondalık sınırlar arasındaki tam sayıları bulup toplama.
 
-**Çözüm:** $-\sqrt{20}\approx-4,47$ olduğundan sayılar $-4,-3,-2,-1,0,1,2$; toplam yedi tanedir.
+**Çözüm:** $-\sqrt{20}\approx-4,47$ olduğundan tam sayılar $-4,-3,-2,-1,0,1,2$'dir. Toplamları
 
-**Neden doğru?** -5 ve 3 aralığın dışındadır.
+$$-4-3-2-1+0+1+2=-7$$
 
-**Çeldirici notu:** 0 bir tam sayıdır.
+olur.
+
+**Neden doğru?** Aralıktaki yedi tam sayının toplamı -7'dir.
+
+**Çeldirici notu:** 0 toplamı değiştirmez; pozitif 1 ve 2, negatif terimlerin yalnız bir bölümünü dengeler.
 
 ## Soru 10
 

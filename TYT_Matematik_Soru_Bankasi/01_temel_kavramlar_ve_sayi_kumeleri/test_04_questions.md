@@ -10,13 +10,11 @@
 
 `K01-T04-Q01`
 
-Bir makineye pozitif çift tam sayı $x$ ile pozitif tek tam sayı $y$ girildiğinde makine
+Pozitif çift tam sayı $x$ ile pozitif tek tam sayı $y$ için
 
 $$2x+3y$$
 
-sayısını üretiyor.
-
-Makinenin ürettiği sayı için hangisi kesinlikle doğrudur?
+ifadesinin değeri hakkında hangisi kesinlikle doğrudur?
 
 A) Negatif çifttir.
 

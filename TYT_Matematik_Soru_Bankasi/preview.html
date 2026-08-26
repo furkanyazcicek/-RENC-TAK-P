@@ -79,7 +79,10 @@
       z-index: 10;
       backdrop-filter: blur(15px);
     }
-    .tests, .mode-switch { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tests, .mode-switch, .topic-switch { display: flex; flex-wrap: wrap; gap: 8px; }
+    .topic-switch { flex-basis: 100%; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+    .topic-switch .chip { min-width: 190px; font-weight: 800; }
+    .topic-switch .chip.active { border-color: var(--navy); background: var(--navy); box-shadow: none; }
     .chip {
       min-width: 44px;
       border: 1px solid var(--line);
@@ -115,6 +118,8 @@
       box-shadow: 0 10px 30px rgba(30,41,59,.055);
     }
     .question-card h2 { margin: 0 0 8px; color: var(--navy); font-size: 21px; }
+    .question-card figure { margin: 18px 0; }
+    .question-card img { display: block; width: 100%; max-height: 320px; object-fit: contain; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
     .question-card code { display: inline-flex; margin-bottom: 16px; padding: 5px 9px; border-radius: 7px; color: var(--muted); background: #f1f5f9; font-size: 11px; font-weight: 700; letter-spacing: .06em; }
     .question-card p { margin: 10px 0; line-height: 1.72; }
     .question-card .option { display: block; width: 100%; margin: 9px 0; padding: 12px 14px; border: 1px solid #e5e9f0; border-radius: 12px; color: var(--ink); background: #fbfcfe; text-align: left; line-height: 1.55; }
@@ -164,16 +169,17 @@
     <section class="hero">
       <div>
         <p class="eyebrow">DRKOÇ · TYT Matematik</p>
-        <h1>Temel Kavramlar ve Sayı Kümeleri</h1>
+        <h1 id="topic-title">Temel Kavramlar ve Sayı Kümeleri</h1>
         <p>Yayın projesi önizlemesi · Tamamlanan testler, işaretlenebilir şıklar ve adım adım çözümler.</p>
       </div>
       <div class="progress">
         <strong id="topic-progress">0 / 500</strong>
-        <span>Konu 01 doğrulanan soru</span>
+        <span id="topic-progress-label">Konu 01 doğrulanan soru</span>
       </div>
     </section>
 
     <section class="toolbar" aria-label="Önizleme kontrolleri">
+      <div class="topic-switch" id="topics"></div>
       <div class="tests" id="tests"></div>
       <div class="mode-switch">
         <button class="chip active" data-mode="questions">Sorular</button>
@@ -202,7 +208,20 @@
 
   <script src="/node_modules/katex/dist/katex.min.js"></script>
   <script>
-    const base = '/TYT_Matematik_Soru_Bankasi/01_temel_kavramlar_ve_sayi_kumeleri';
+    const topics = [
+      {
+        id: '01',
+        title: 'Temel Kavramlar ve Sayı Kümeleri',
+        folder: '01_temel_kavramlar_ve_sayi_kumeleri'
+      },
+      {
+        id: '02',
+        title: 'Sayı Basamakları',
+        folder: '02_sayi_basamaklari'
+      }
+    ];
+    let currentTopic = topics[0];
+    let base = `/TYT_Matematik_Soru_Bankasi/${currentTopic.folder}`;
     let currentTest = 1;
     let currentMode = 'questions';
     const answerKeys = {};
@@ -271,6 +290,11 @@
         }
         if (!line || line.startsWith('- Soru sayısı') || line.startsWith('- Her soruda') || line.startsWith('- Önerilen')) continue;
         if (/^`K\d{2}-T\d{2}-Q\d{2}`$/.test(line)) continue;
+        const imageMatch = line.match(/^!\[([^\]]*)\]\((?:\.\/)?visuals\/([^)]+)\)$/);
+        if (imageMatch) {
+          card.push(`<figure><img src="${base}/visuals/${escapeHtml(imageMatch[2])}" alt="${escapeHtml(imageMatch[1])}"></figure>`);
+          continue;
+        }
         if (/^[A-E]\) /.test(line)) {
           const choice = line[0];
           card.push(currentMode === 'questions'
@@ -293,6 +317,7 @@
     }
 
     async function loadAnswerKeys() {
+      Object.keys(answerKeys).forEach((key) => delete answerKeys[key]);
       const response = await fetch(`${base}/answer_keys.md`);
       if (!response.ok) throw new Error('Cevap anahtarı okunamadı');
       const text = await response.text();
@@ -324,9 +349,33 @@
       }
     }
 
+    function buildTopicButtons() {
+      const container = document.querySelector('#topics');
+      container.innerHTML = '';
+      for (const topic of topics) {
+        const button = document.createElement('button');
+        button.className = `chip${topic.id === currentTopic.id ? ' active' : ''}`;
+        button.textContent = `Konu ${topic.id} · ${topic.title}`;
+        button.addEventListener('click', async () => {
+          if (topic.id === currentTopic.id) return;
+          currentTopic = topic;
+          base = `/TYT_Matematik_Soru_Bankasi/${currentTopic.folder}`;
+          container.querySelectorAll('.chip').forEach((item) => item.classList.toggle('active', item === button));
+          document.querySelector('#topic-title').textContent = currentTopic.title;
+          document.querySelector('#topic-progress-label').textContent = `Konu ${currentTopic.id} doğrulanan soru`;
+          document.querySelector('#content').innerHTML = '<div class="empty">İçerik yükleniyor…</div>';
+          await loadAnswerKeys();
+          buildTestButtons();
+          await load();
+        });
+        container.appendChild(button);
+      }
+    }
+
     function answersForCurrentTest() {
-      if (!selectedAnswers[currentTest]) selectedAnswers[currentTest] = Array(10).fill(null);
-      return selectedAnswers[currentTest];
+      const key = `${currentTopic.id}:${currentTest}`;
+      if (!selectedAnswers[key]) selectedAnswers[key] = Array(10).fill(null);
+      return selectedAnswers[key];
     }
 
     function updateTestMeta() {
@@ -461,6 +510,7 @@
 
     async function init() {
       try {
+        buildTopicButtons();
         await loadAnswerKeys();
         buildTestButtons();
         await load();

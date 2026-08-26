@@ -70,21 +70,21 @@
 
 **Çözüm:** 6 ve 6, $S$'dedir; fakat $(6+6)/3=4$, 6'nın katı değildir.
 
-**Neden doğru?** İki geçerli girdi küme dışında çıktı üretir.
+**Neden doğru?** Kümeden seçilen iki sayının işlem sonucu küme dışında kalır.
 
-**Çeldirici notu:** Diğer seçeneklerin çıktıları 6'nın katıdır.
+**Çeldirici notu:** Diğer seçeneklerdeki işlem sonuçları 6'nın katıdır.
 
 ## Soru 7
 
 **Doğru cevap:** B
 
-**Kazanım:** İrrasyonel sayıların toplam ve çarpım türlerini birlikte inceleme.
+**Kazanım:** Verilen iki irrasyonel sayının toplam ve çarpımının sayı türlerini belirleme.
 
 **Çözüm:** Toplam $\sqrt3+2-\sqrt3=2$ rasyonel; çarpım $2\sqrt3-3$ irrasyoneldir.
 
 **Neden doğru?** Kök toplamda yok olur, çarpımda kalır.
 
-**Çeldirici notu:** Diğer çiftlerde hem toplam hem çarpım rasyoneldir.
+**Çeldirici notu:** Toplamda köklü terimler yok olurken çarpımda $2\sqrt3$ terimi kalır.
 
 ## Soru 8
 

@@ -46,9 +46,7 @@ E) $x=5$
 
 `K01-T18-Q03`
 
-Bir toplama makinesine rasyonel $a$ kartı ile bilinmeyen $b$ kartı yerleştiriliyor ve makine irrasyonel bir çıktı veriyor.
-
-Buna göre $b$ kartıyla ilgili hangi bilgi zorunludur?
+$a$ rasyonel sayı ve $a+b$ irrasyonel sayı olduğuna göre $b$ ile ilgili hangi bilgi zorunludur?
 
 A) Pozitiftir.
 
@@ -164,16 +162,16 @@ E) $(-1)\cdot(-1)=1$'dir.
 
 `K01-T18-Q10`
 
-Bir tasarımcı, iki irrasyonel girdi seçerek toplama ekranında irrasyonel, çarpma ekranında rasyonel sonuç elde etmek istiyor.
+$x=\sqrt2$ ve $y=\sqrt8$ olarak veriliyor.
 
-Hangi girdi çifti bu iki koşulu birlikte sağlar?
+Buna göre $x+y$ ile $x\cdot y$ sayılarının türü sırasıyla hangisidir?
 
-A) $\sqrt2$ ve $-\sqrt2$
+A) Rasyonel — Rasyonel
 
-B) $\sqrt3$ ve $-\sqrt3$
+B) Rasyonel — İrrasyonel
 
-C) $\sqrt5$ ve $\sqrt7$
+C) Sıfır — Rasyonel
 
-D) $\sqrt2$ ve $\sqrt8$
+D) İrrasyonel — Rasyonel
 
-E) $\pi$ ve $-\pi$
+E) İrrasyonel — İrrasyonel

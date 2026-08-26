@@ -74,9 +74,7 @@ E) Sıfırdır.
 
 `K01-T17-Q05`
 
-Bir işlem panosunda sıfırdan farklı rasyonel $r$ kartı ile irrasyonel $t$ kartı kullanılıyor.
-
-Panodaki hangi işlem kesinlikle irrasyonel bir çıktı verir?
+$r$ sıfırdan farklı rasyonel, $t$ irrasyonel sayıdır. Aşağıdaki ifadelerden hangisi kesinlikle irrasyoneldir?
 
 A) $t-t$
 

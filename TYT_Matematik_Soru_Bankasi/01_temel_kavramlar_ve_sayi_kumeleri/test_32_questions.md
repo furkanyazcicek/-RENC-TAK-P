@@ -82,7 +82,9 @@ E) $a<b<c$
 
 `K01-T32-Q05`
 
-$x<y<0$ olduğuna göre hangisi kesinlikle doğrudur?
+Sayı doğrusunda negatif $x$ ve $y$ noktalarından $x$, $y$'nin solunda bulunuyor.
+
+Bu iki sayının kareleri karşılaştırıldığında hangi sonuç elde edilir?
 
 A) $x^2<y^2$
 

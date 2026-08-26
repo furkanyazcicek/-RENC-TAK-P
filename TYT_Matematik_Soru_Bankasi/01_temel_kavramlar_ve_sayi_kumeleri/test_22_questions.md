@@ -160,9 +160,7 @@ E) $\dfrac1b$
 
 `K01-T22-Q10`
 
-Bir tarayıcı, $1/2$ noktasının sağında ve $\sqrt{30}$ noktasının solunda kalan tam sayı etiketlerini seçiyor.
-
-Tarayıcı kaç etiket seçer?
+Sayı doğrusunda $1/2$ noktasının sağında ve $\sqrt{30}$ noktasının solunda kaç tam sayı bulunur?
 
 A) $3$
 

@@ -72,7 +72,7 @@
 
 **Çözüm:** $n$ ile $n+1$ ardışık olduğundan biri mutlaka çifttir. Bu nedenle çarpımları çifttir.
 
-**Neden doğru?** Sonuç tüm tam sayı girdilerinde 2'nin katıdır.
+**Neden doğru?** Sonuç tüm tam sayı $n$ değerleri için 2'nin katıdır.
 
 ## Soru 9
 **Doğru cevap:** A

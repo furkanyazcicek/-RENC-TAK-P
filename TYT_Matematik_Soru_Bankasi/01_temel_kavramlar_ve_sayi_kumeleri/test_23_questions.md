@@ -10,9 +10,7 @@
 
 `K01-T23-Q01`
 
-Bir hesaplama ekranı $-3^2+2(-4)$ işlemini gösteriyor.
-
-Ekrandaki sonuç kaçtır?
+Üs alma ve çarpma işlemleri öncelikle yapıldığında $2(-4)-3^2$ ifadesinin değeri kaç olur?
 
 A) $17$
 
@@ -78,9 +76,7 @@ E) $z<x<y$
 
 `K01-T23-Q05`
 
-Bir sadeleştirme ekranına rasyonel $r$ ve irrasyonel $t$ yerleştiriliyor. Ekran $(t+r)+(r-t)$ ifadesini hesaplıyor.
-
-Ekrandaki sonuç hangi sayı türünde olmak zorundadır?
+$r$ rasyonel, $t$ irrasyonel sayı olmak üzere $(t+r)+(r-t)$ ifadesinin sonucu hangi sayı türünde olmak zorundadır?
 
 A) Rasyonel
 

@@ -44,9 +44,9 @@ E) $-2$ ve $-3$
 
 `K01-T20-Q03`
 
-Bir parite makinesi iki tam sayı kartını topluyor ve tek sonuç gösteriyor.
+İki tam sayının toplamı tektir.
 
-Aynı kartlar çarpma bölümüne alındığında hangi özellik zorunludur?
+Buna göre bu sayıların çarpımı için hangi özellik zorunludur?
 
 A) $x$ ve $y$ tektir.
 
@@ -62,9 +62,9 @@ E) $xy$ tektir.
 
 `K01-T20-Q04`
 
-Bir çarpım panosunun ilk girişinde irrasyonel $a$, ikinci girişinde bilinmeyen $b$ bulunuyor. Pano sıfırdan farklı rasyonel bir çıktı veriyor.
+$a=\sqrt2$ ve $ab=2$ olarak veriliyor.
 
-Bu durumda $b$ hangi etiketi taşımak zorundadır?
+Buna göre $b$ hangi sayı kümesine aittir?
 
 A) Doğal sayıdır.
 
@@ -80,19 +80,19 @@ E) Pozitif rasyoneldir.
 
 `K01-T20-Q05`
 
-Bir tasarımcı iki irrasyonel sayı seçerek hem toplama hem çarpma ekranında irrasyonel sonuç elde etmek istiyor.
+$x=\sqrt2$ ve $y=\sqrt3$ olarak veriliyor.
 
-Hangi çift tasarımcının iki koşulunu da karşılar?
+$x+y$ ile $xy$ sayılarının türü sırasıyla hangisidir?
 
-A) $\sqrt2$ ve $-\sqrt2$
+A) Rasyonel — Rasyonel
 
-B) $\sqrt2$ ve $\sqrt3$
+B) İrrasyonel — İrrasyonel
 
-C) $\sqrt5$ ve $-\sqrt5$
+C) Rasyonel — İrrasyonel
 
-D) $\pi$ ve $-\pi$
+D) İrrasyonel — Rasyonel
 
-E) $\sqrt7$ ve $-\sqrt7$
+E) Tam sayı — Doğal sayı
 
 ## Soru 6
 
@@ -148,9 +148,9 @@ E) Sıfırdan farklıdır.
 
 `K01-T20-Q09`
 
-Bir denetim tablosu, iki irrasyonel girdinin farkının daima irrasyonel kaldığını öne sürüyor.
+Bir öğrenci, iki irrasyonel sayının farkının daima irrasyonel kaldığını öne sürüyor.
 
-Hangi satır tablodaki kuralı geçersiz kılar?
+Hangi işlem bu iddiayı geçersiz kılar?
 
 A) $\sqrt3-\sqrt2$
 

@@ -94,7 +94,7 @@
 
 **Çözüm:** $\sqrt7$ irrasyoneldir; fakat $\sqrt7\cdot\sqrt7=7$ rasyoneldir.
 
-**Neden doğru?** İki irrasyonel girdi rasyonel sonuç vermiştir.
+**Neden doğru?** İki irrasyonel sayı rasyonel sonuç vermiştir.
 
 **Çeldirici notu:** Tek bir karşı örnek “her zaman” iddiasını çürütür.
 

@@ -8,11 +8,11 @@
 
 **Kazanım:** Üs, işaret ve çarpma önceliğini uygulama.
 
-**Çözüm:** $-3^2=-9$ ve $2(-4)=-8$ olduğundan toplam $-9-8=-17$'dir.
+**Çözüm:** $2(-4)=-8$ ve $3^2=9$ olduğundan fark $-8-9=-17$'dir.
 
 **Neden doğru?** Üs eksi işaretinden, çarpma da toplamadan önce uygulanır.
 
-**Çeldirici notu:** İlk terim $(-3)^2$ değil $-3^2$'dir.
+**Çeldirici notu:** Üs alma, çıkarma işleminden önce yapılır.
 
 ## Soru 2
 
@@ -114,7 +114,7 @@
 
 **Doğru cevap:** D
 
-**Kazanım:** Tanımlı işlemi negatif girdiye uygulama.
+**Kazanım:** Tanımlı işlemi negatif bir sayıya uygulama.
 
 **Çözüm:** $4\mathbin{\triangle}(-2)=4(-2)-4=-8-4=-12$ olur.
 

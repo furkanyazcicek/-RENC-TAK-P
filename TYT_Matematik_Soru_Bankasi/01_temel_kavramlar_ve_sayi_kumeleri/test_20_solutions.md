@@ -60,23 +60,25 @@ $$xy\ \text{çifttir.}$$
 
 **Doğru cevap:** D
 
-**Kazanım:** İrrasyonel çarpan ve rasyonel çarpımdan diğer çarpanın türünü belirleme.
+**Kazanım:** Verilen bir irrasyonel çarpan ve rasyonel çarpımdan diğer çarpanı bulup sınıflandırma.
 
 **Çözüm:**
 
-$b$ rasyonel ve sıfırdan farklı olsaydı irrasyonel $a$ ile çarpımı irrasyonel olurdu. $b=0$ da olamaz; çünkü $ab$ sıfırdan farklı verilmiştir.
+$\sqrt2\,b=2$ olduğundan
 
-Bu nedenle $b$ irrasyoneldir.
+$$b=\frac{2}{\sqrt2}=\sqrt2$$
 
-**Neden doğru?** İki irrasyonel sayının çarpımı uygun değerlerde rasyonel olabilir; örneğin $\sqrt2\cdot\sqrt2=2$.
+bulunur. Bu nedenle $b$ irrasyoneldir.
 
-**Çeldirici notu:** $b$'nin işareti belirlenemez; zorunlu olan sayı türüdür.
+**Neden doğru?** $b=\sqrt2$ sayısı irrasyoneldir ve $\sqrt2\cdot\sqrt2=2$ koşulu sağlar.
+
+**Çeldirici notu:** $b$ bu soruda yalnız tür olarak değil, $\sqrt2$ olarak da tek bir değere sahiptir.
 
 ## Soru 5
 
 **Doğru cevap:** B
 
-**Kazanım:** İki irrasyonel sayının toplam ve çarpım sonuçlarını birlikte sınıflandırma.
+**Kazanım:** Verilen iki irrasyonel sayının toplam ve çarpımını sayı kümelerine göre sınıflandırma.
 
 **Çözüm:**
 
@@ -86,11 +88,9 @@ $$\sqrt2\cdot\sqrt3=\sqrt6$$
 
 da irrasyoneldir.
 
-Diğer seçeneklerde sayılar birbirinin toplamaya göre tersidir; toplamları 0, çarpımları negatif bir tam sayıdır.
+**Neden doğru?** Ne toplamda kökler yok olur ne de çarpım tam kare oluşturur; iki sonuç da irrasyoneldir.
 
-**Neden doğru?** B seçeneğinde ne toplamda kökler yok olur ne de çarpım tam kare oluşturur.
-
-**Çeldirici notu:** İrrasyonel sayıların işlem sonucu tek bir kurala bağlı değildir; seçilen sayıların ilişkisi incelenmelidir.
+**Çeldirici notu:** İki irrasyonel sayının çarpımı bazı özel durumlarda rasyonel olabilir; burada $\sqrt6$ elde edilir.
 
 ## Soru 6
 
@@ -156,7 +156,7 @@ $$\pi-\pi=0$$
 
 rasyonel sonuç elde edilir.
 
-**Neden doğru?** İki irrasyonel girdi rasyonel fark verdiği için “her zaman irrasyonel” iddiası çürür.
+**Neden doğru?** İki irrasyonel sayı rasyonel fark verdiği için “her zaman irrasyonel” iddiası çürür.
 
 **Çeldirici notu:** İddiayı çürütmek için bütün seçenekleri sınıflandırmak gerekmez; tek bir rasyonel sonuç yeterlidir.
 

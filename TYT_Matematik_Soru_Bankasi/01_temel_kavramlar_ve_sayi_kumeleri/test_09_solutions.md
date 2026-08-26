@@ -32,7 +32,7 @@ Bu nedenle son kat $-3+0=-3$'tür.
 
 **Çözüm:**
 
-Makinenin kuralında $a=6$ ve $b=-2$ yazılır:
+İşlem kuralında $a=6$ ve $b=-2$ yazılır:
 
 $$6\mathbin{\star}(-2)=\frac{6+(-2)}2=\frac42=2$$
 
@@ -188,7 +188,7 @@ $$-2\cdot7+5=-14+5=-9$$
 
 **Çözüm:**
 
-Ekrandaki işlemler
+İşlemler
 
 $$(n+12+(-12))\cdot1$$
 
@@ -200,4 +200,4 @@ elde edilir.
 
 **Neden doğru?** Toplamaya göre ters işlemler birbirini götürür, 1 ile çarpma sayıyı değiştirmez.
 
-**Çeldirici notu:** Ekran her adımı sırayla uygular; -12 eklemek 12'nin etkisini yok eder.
+**Çeldirici notu:** Adımlar sırayla uygulanır; -12 eklemek 12'nin etkisini yok eder.

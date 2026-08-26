@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="190" viewBox="0 0 900 190" role="img" aria-labelledby="title desc">
+  <title id="title">P, Q ve R noktaları</title><desc id="desc">Sayı doğrusu üzerinde soldan sağa P, Q ve R noktaları.</desc>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#334155"/></marker></defs>
+  <line x1="70" y1="105" x2="840" y2="105" stroke="#334155" stroke-width="4" marker-end="url(#a)"/>
+  <g font-family="Arial" font-size="26" font-weight="700" text-anchor="middle">
+    <line x1="280" y1="82" x2="280" y2="128" stroke="#ea580c" stroke-width="4"/><circle cx="280" cy="105" r="8" fill="#ea580c"/><text x="280" y="65" fill="#9a3412">P</text>
+    <line x1="450" y1="82" x2="450" y2="128" stroke="#2563eb" stroke-width="4"/><circle cx="450" cy="105" r="8" fill="#2563eb"/><text x="450" y="65" fill="#1e3a8a">Q</text>
+    <line x1="620" y1="82" x2="620" y2="128" stroke="#16a34a" stroke-width="4"/><circle cx="620" cy="105" r="8" fill="#16a34a"/><text x="620" y="65" fill="#166534">R</text>
+  </g>
+  <text x="450" y="165" text-anchor="middle" font-family="Arial" font-size="20" fill="#64748b">Sayılar soldan sağa büyür.</text>
+</svg>

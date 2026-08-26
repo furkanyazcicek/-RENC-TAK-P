@@ -54,7 +54,7 @@
 
 **Çözüm:** $(8+8)/4=4$ olup 8'in katı değildir.
 
-**Neden doğru?** Geçerli girdiler küme dışı çıktı verir.
+**Neden doğru?** Kümeden seçilen sayıların işlem sonucu küme dışında kalır.
 
 ## Soru 7
 **Doğru cevap:** E
@@ -86,8 +86,8 @@
 ## Soru 10
 **Doğru cevap:** D
 
-**Kazanım:** Rasyonel çarpımdan girdilerin türüne ilişkin yanlış çıkarımı çürütme.
+**Kazanım:** Rasyonel çarpımdan çarpanların türüne ilişkin yanlış çıkarımı çürütme.
 
-**Çözüm:** $\sqrt5\cdot\sqrt5=5$ rasyonelken iki girdi irrasyoneldir.
+**Çözüm:** $\sqrt5\cdot\sqrt5=5$ rasyonelken iki çarpan irrasyoneldir.
 
 **Neden doğru?** Tek karşı örnek iddiayı çürütür.

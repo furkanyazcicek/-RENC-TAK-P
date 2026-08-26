@@ -36,7 +36,7 @@ $$3-5=-2$$
 
 sonucu doğal sayı değildir. Bu tek örnek, iddianın her doğal sayı çifti için geçerli olmadığını gösterir.
 
-**Neden doğru?** İşlemin girdileri doğal sayı olduğu hâlde çıktı doğal sayılar kümesinin dışındadır.
+**Neden doğru?** İşlem doğal sayılarla yapıldığı hâlde sonuç doğal sayılar kümesinin dışındadır.
 
 **Çeldirici notu:** İddiayı çürütmek için sonucu doğal sayı olan örnekler değil, kümenin dışına çıkan bir örnek gerekir.
 

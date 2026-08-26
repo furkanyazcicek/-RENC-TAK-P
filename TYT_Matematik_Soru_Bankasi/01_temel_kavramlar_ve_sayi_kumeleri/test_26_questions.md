@@ -108,7 +108,7 @@ $$a\mathbin{\circ}b=\frac{a+b}{2}$$
 
 işleminin $S$ kümesinde kapalı olmadığını gösteren çift hangisidir?
 
-A) $a=0,\ b=4$
+A) $a=0,\ b=8$
 
 B) $a=4,\ b=4$
 
@@ -122,9 +122,9 @@ E) $a=8,\ b=16$
 
 `K01-T26-Q07`
 
-Bir tür denetleyicisi irrasyonel $u$ ve rasyonel $r$ kullanılarak oluşturulan beş çıktıyı inceliyor.
+$u$ irrasyonel ve $r$ rasyonel sayıdır.
 
-Hangi çıktı her değer seçiminde irrasyonel etiketi alır?
+Aşağıdaki ifadelerden hangisi her değer seçiminde irrasyoneldir?
 
 A) $2u-r$
 
@@ -156,9 +156,7 @@ E) $m$ ve $n$ aynı paritededir.
 
 `K01-T26-Q09`
 
-Bir tam sayı tarayıcısı $-\sqrt{19}$ ile $\pi+1$ arasında kalan etiketleri seçiyor.
-
-Tarayıcı kaç etiket seçer?
+$-\sqrt{19}$ ile $\pi+1$ arasında kaç tam sayı vardır?
 
 A) $5$
 

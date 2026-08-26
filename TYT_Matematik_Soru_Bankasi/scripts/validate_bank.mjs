@@ -100,6 +100,7 @@ for (const topicDir of topicDirs) {
 
   for (const questionFileName of questionFiles) {
     const testNumber = questionFileName.match(/test_(\d{2})_/)[1];
+    const topicNumber = path.basename(topicDir).slice(0, 2);
     const solutionFileName = `test_${testNumber}_solutions.md`;
     const questionFile = path.join(topicDir, questionFileName);
     const solutionFile = path.join(topicDir, solutionFileName);
@@ -111,6 +112,9 @@ for (const topicDir of topicDirs) {
     if (questions.length !== 10) {
       errors.push(`${questionFileName}: 10 yerine ${questions.length} soru var.`);
     }
+    if (questions.map((question) => question.number).join(',') !== '1,2,3,4,5,6,7,8,9,10') {
+      errors.push(`${questionFileName}: soru numaraları 1–10 sırasında değil.`);
+    }
     if (!fs.existsSync(solutionFile)) {
       errors.push(`${questionFileName}: eşleşen çözüm dosyası eksik.`);
       continue;
@@ -121,10 +125,18 @@ for (const topicDir of topicDirs) {
     if (solutions.length !== 10) {
       errors.push(`${solutionFileName}: 10 yerine ${solutions.length} çözüm var.`);
     }
+    if (solutions.map((solution) => solution.number).join(',') !== '1,2,3,4,5,6,7,8,9,10') {
+      errors.push(`${solutionFileName}: çözüm numaraları 1–10 sırasında değil.`);
+    }
 
     const answerKey = fs.existsSync(answerKeyFile) ? parseAnswerKey(answerKeyFile, testNumber) : null;
     if (!answerKey) {
       errors.push(`${path.basename(topicDir)} Test ${testNumber}: cevap anahtarı satırı eksik veya geçersiz.`);
+    } else {
+      const perTestCounts = Object.fromEntries('ABCDE'.split('').map((choice) => [choice, answerKey.filter((item) => item === choice).length]));
+      if (Object.values(perTestCounts).some((count) => count !== 2)) {
+        warnings.push(`${path.basename(topicDir)} Test ${testNumber}: test içi cevap dağılımı 2’şer değil (${JSON.stringify(perTestCounts)}).`);
+      }
     }
 
     questions.forEach((question, index) => {
@@ -132,10 +144,17 @@ for (const topicDir of topicDirs) {
       if (optionLines.join('') !== 'ABCDE') {
         errors.push(`${questionFileName} Soru ${question.number}: seçenekler A–E olarak tam ve tekil değil.`);
       }
+      const optionTexts = [...question.text.matchAll(/^([A-E])\)\s+(.+)$/gm)]
+        .map((match) => match[2].replace(/\s+/g, ' ').trim().toLocaleLowerCase('tr-TR'));
+      if (new Set(optionTexts).size !== optionTexts.length) {
+        errors.push(`${questionFileName} Soru ${question.number}: yinelenen seçenek metni var.`);
+      }
 
       const id = question.text.match(/`(K\d{2}-T\d{2}-Q\d{2})`/)?.[1];
       if (!id) {
         errors.push(`${questionFileName} Soru ${question.number}: soru kimliği eksik.`);
+      } else if (id !== `K${topicNumber}-T${testNumber}-Q${String(question.number).padStart(2, '0')}`) {
+        errors.push(`${id}: klasör, test veya soru numarasıyla uyuşmayan kimlik.`);
       } else if (ids.has(id)) {
         errors.push(`${id}: yinelenen soru kimliği.`);
       } else {

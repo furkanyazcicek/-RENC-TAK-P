@@ -166,7 +166,7 @@ bulunur.
 
 **Doğru cevap:** A
 
-**Kazanım:** İrrasyonel sınırlar arasındaki tam sayıları belirleme.
+**Kazanım:** İrrasyonel sınırlar arasındaki tam sayıları belirleyip toplama.
 
 **Çözüm:**
 
@@ -176,11 +176,11 @@ olduğundan aralıktaki tam sayılar
 
 $$-3,-2,-1,0,1,2,3$$
 
-olmak üzere yedi tanedir.
+olur. Bu sayıların toplamı 0'dır.
 
-**Neden doğru?** -3 alt sınırdan büyük, 3 üst sınırdan küçüktür; -4 ve 4 dışarıdadır.
+**Neden doğru?** -3 ile 3 arasındaki zıt işaretli terimler birbirini götürür ve toplam 0 olur.
 
-**Çeldirici notu:** 0 da tam sayıdır ve iki sınır arasında yer alır.
+**Çeldirici notu:** Aralıkta yedi tam sayı bulunması, bu sayıların toplamının 7 olduğu anlamına gelmez.
 
 ## Soru 10
 

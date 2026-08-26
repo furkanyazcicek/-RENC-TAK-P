@@ -4,7 +4,7 @@ import { etkilesimTamamla, favoriDegistir, ilerlemeOku } from '../../../lib/biyo
 import { etkilesimKaydi } from '../../../data/biyoloji/etkilesimler.js'
 import { bolgeGorselPlani } from '../../../data/biyoloji/gorselPlanlari.js'
 import { bolgeBul } from '../../../data/biyoloji/bolgeler.js'
-import { ALT_BASLIKLAR } from '../../../data/biyoloji/kapsam.js'
+import { ALT_BASLIKLAR, biyolojiKapsamEtiketi } from '../../../data/biyoloji/kapsam.js'
 
 const HARFLER = ['A', 'B', 'C', 'D', 'E']
 
@@ -56,7 +56,7 @@ export default function BiyolojiModulKabugu({ id, bolge, baslik, soru, tahminler
         <div className="ba-rozet-sirasi">
           <span className="ba-rozet ba-rozet-vurgu">{bolgeKaydi?.ad ?? 'Biyoloji Atlası'}</span>
           <span className="ba-rozet ba-rozet-sonuk">{kayit?.interactionType.replaceAll('-', ' ')}</span>
-          {konu ? <span className="ba-rozet ba-rozet-altin">{konu.kapsam === 'tymm' ? '2026 TYMM' : 'TYT çekirdeği'}</span> : null}
+          {konu ? <span className="ba-rozet ba-rozet-altin">{biyolojiKapsamEtiketi(konu)}</span> : null}
           {tamam ? <span className="ba-rozet ba-rozet-olumlu"><CheckCircle2 /> Tamamlandı</span> : null}
         </div>
         <h2>{baslik}</h2>

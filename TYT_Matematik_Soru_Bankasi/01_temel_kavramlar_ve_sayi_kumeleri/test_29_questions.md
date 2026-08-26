@@ -28,11 +28,11 @@ E) Tektir.
 
 `K01-T29-Q02`
 
-$r\in\mathbb{Q}$ ve $t\notin\mathbb{Q}$ kullanılarak iki kayıt üretiliyor:
+$r\in\mathbb{Q}$ ve $t\notin\mathbb{Q}$ olmak üzere
 
 $$x=t+2r,\qquad y=2t-r$$
 
-Kayıtlardaki $t$ bileşenini yok edip her durumda rasyonel sonuç veren işlem hangisidir?
+$t$ içeren terimleri yok edip her durumda rasyonel sonuç veren işlem hangisidir?
 
 A) $x+y$
 
@@ -138,9 +138,9 @@ E) $\sqrt5$ ve $\sqrt{10}$
 
 `K01-T29-Q08`
 
-Bir parite denetleyicisi, tam sayı olan $m$ ve $n$ girdileri için $m^2-n^2$ çıktısını tek buluyor.
+$m$ ve $n$ tam sayıları için $m^2-n^2$ tektir.
 
-Bu girdilerin çarpımı hakkında hangi sonuca kesin olarak ulaşılır?
+Buna göre $m\cdot n$ çarpımı hakkında hangi sonuca kesin olarak ulaşılır?
 
 A) $m+n$ çifttir.
 

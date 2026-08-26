@@ -62,9 +62,7 @@ E) Tek
 
 `K01-T25-Q04`
 
-Bir karşılaştırma ekranında $a=\sqrt5$, $b=9/4$ ve $c=2,24$ değerleri yer alıyor.
-
-Ekranın küçükten büyüğe göstermesi gereken sıra hangisidir?
+$a=\sqrt5$, $b=9/4$ ve $c=2,24$ olduğuna göre bu sayıların küçükten büyüğe doğru sıralanışı hangisidir?
 
 A) $c<a<b$
 
@@ -116,9 +114,9 @@ E) $6$
 
 `K01-T25-Q07`
 
-Bir işaret makinesine negatif $a$ ve pozitif $b$ giriliyor.
+$a$ negatif, $b$ pozitif gerçek sayıdır.
 
-Makinenin hangi çıktısı kesinlikle negatiftir?
+Aşağıdaki ifadelerden hangisi kesinlikle negatiftir?
 
 A) $a^2$
 
@@ -134,9 +132,9 @@ E) $b^2$
 
 `K01-T25-Q08`
 
-Bir araştırmacı iki irrasyonel girdinin çarpımının daima irrasyonel kaldığını savunuyor.
+Bir öğrenci iki irrasyonel sayının çarpımının daima irrasyonel kaldığını savunuyor.
 
-Hangi deney sonucu bu savı geçersiz kılar?
+Hangi işlem bu savı geçersiz kılar?
 
 A) $\sqrt2\cdot\sqrt3=\sqrt6$
 
@@ -170,9 +168,7 @@ E) $8$
 
 `K01-T25-Q10`
 
-Bir özel işlem $a\mathbin{\odot}b=a+b+ab$ kuralını kullanıyor. İşlemin sağ etkisiz elemanı $e$, her gerçek $a$ için çıktıyı değiştirmiyor.
-
-Buna göre $e$ kaçtır?
+Gerçek sayılarda $a\mathbin{\odot}b=a+b+ab$ işlemi tanımlanıyor. Her gerçek $a$ için $a\mathbin{\odot}e=a$ olduğuna göre sağ etkisiz eleman $e$ kaçtır?
 
 A) $0$
 

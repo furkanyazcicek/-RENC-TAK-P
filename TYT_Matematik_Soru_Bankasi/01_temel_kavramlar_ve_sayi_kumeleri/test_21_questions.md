@@ -10,9 +10,7 @@
 
 `K01-T21-Q01`
 
-Bir hesaplama ekranının ilk hücresinde $-2^4$, ikinci hücresinde $(-2)^4$ yazıyor. Ekran bu iki hücreyi topluyor.
-
-Ekranın gösterdiği sonuç kaçtır?
+$(-5)^2+(-25)$ işleminin sonucu kaçtır?
 
 A) $-32$
 
@@ -152,9 +150,7 @@ E) $7\div1=7$
 
 `K01-T21-Q09`
 
-Bir aralık ekranı $-\sqrt{13}$ ile $\pi$ arasında kalan tam sayıları gösteriyor.
-
-Ekranda kaç farklı tam sayı görünür?
+$-\sqrt{13}$ ile $\pi$ arasında kaç farklı tam sayı vardır?
 
 A) $3$
 

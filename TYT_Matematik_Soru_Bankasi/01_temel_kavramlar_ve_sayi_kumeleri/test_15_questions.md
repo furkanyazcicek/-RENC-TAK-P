@@ -28,9 +28,7 @@ E) $b<c<a$
 
 `K01-T15-Q02`
 
-Bir aralık tarayıcısı $-\sqrt{26}$ değerinden büyük, -1,2 değerine eşit veya küçük tam sayıları listeliyor.
-
-Tarayıcının listesinde kaç sayı bulunur?
+$-\sqrt{26}$ değerinden büyük, -1,2 değerine eşit veya daha küçük kaç tam sayı vardır?
 
 A) $2$
 
@@ -144,9 +142,7 @@ E) $\dfrac74$
 
 `K01-T15-Q09`
 
-Bir sayı ekranında virgülden sonra 45 bloğu sonsuza kadar tekrar ederek $0,454545\ldots$ sayısını oluşturuyor.
-
-Ekrandaki sayıyı gösteren kesir hangisidir?
+$0,454545\ldots$ devirli ondalık gösteriminin kesir biçimi hangisidir?
 
 A) $\dfrac4{11}$
 
@@ -162,9 +158,7 @@ E) $\dfrac{11}{5}$
 
 `K01-T15-Q10`
 
-Bir karşılaştırma ekranında $\sqrt{17}$ ve $\dfrac{33}{8}$ sayıları gösteriliyor.
-
-Ekrandaki sayılardan daha küçük olan hangisidir?
+$\sqrt{17}$ ile $\dfrac{33}{8}$ sayılarından daha küçük olan hangisidir?
 
 A) $\sqrt{17}$
 

@@ -26,9 +26,7 @@ E) $-1$ ile $0$
 
 `K01-T12-Q02`
 
-Bir dijital filtre, -2,4'e eşit veya ondan büyük; 3'ten küçük olan tam sayı etiketlerini seçiyor.
-
-Filtre kaç farklı etiket seçer?
+$-2{,}4$'e eşit veya ondan büyük, 3'ten küçük kaç farklı tam sayı vardır?
 
 A) $5$
 

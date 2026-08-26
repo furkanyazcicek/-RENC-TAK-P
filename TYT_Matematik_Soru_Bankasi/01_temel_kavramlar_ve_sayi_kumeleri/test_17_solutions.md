@@ -126,7 +126,7 @@ $$\sqrt2\div\sqrt2=1$$
 
 rasyonel sonucu elde edilir.
 
-**Neden doğru?** İki irrasyonel girdi rasyonel sonuç verdiği için “her zaman irrasyonel” iddiası çürür.
+**Neden doğru?** İki irrasyonel sayı rasyonel sonuç verdiği için “her zaman irrasyonel” iddiası çürür.
 
 **Çeldirici notu:** İddiayı çürütmek için yalnız bir rasyonel sonuç veren geçerli örnek yeterlidir.
 
@@ -186,4 +186,4 @@ olur. Her iki sonuç da rasyoneldir.
 
 **Neden doğru?** Sayılar birbirinin toplamaya göre tersidir ve aynı kökü içerir.
 
-**Çeldirici notu:** İrrasyonel girdilerle yapılan işlemin sonucu her zaman irrasyonel değildir.
+**Çeldirici notu:** İrrasyonel sayılarla yapılan işlemin sonucu her zaman irrasyonel değildir.

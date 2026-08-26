@@ -106,7 +106,7 @@ $$\left(\sqrt5\right)^2=5$$
 
 rasyonel sonuç verir.
 
-**Neden doğru?** Tek bir irrasyonel girdi ve rasyonel kare sonucu, “her zaman” iddiasını çürütür.
+**Neden doğru?** Tek bir irrasyonel sayı ve rasyonel kare sonucu, “her zaman” iddiasını çürütür.
 
 **Çeldirici notu:** İrrasyonel bir sayının karesi bazen irrasyonel olabilir; iddia bütün irrasyoneller için genelleme yaptığı için yanlıştır.
 
@@ -162,7 +162,7 @@ $$\frac12$$
 
 olup tam sayı değildir.
 
-**Neden doğru?** Girdi tam sayı olduğu hâlde ters eleman tam sayılar kümesinin dışına çıkmıştır.
+**Neden doğru?** Sayı tam sayı olduğu hâlde çarpmaya göre tersi tam sayılar kümesinin dışındadır.
 
 **Çeldirici notu:** 1 ve -1'in tersleri tam sayıdır; özel örnekler genel kapalılık sağlamaz.
 
@@ -170,7 +170,7 @@ olup tam sayı değildir.
 
 **Doğru cevap:** D
 
-**Kazanım:** İrrasyonel sayıların toplam ve çarpımlarında farklı sonuç türlerini birlikte inceleme.
+**Kazanım:** Verilen iki irrasyonel sayının toplam ve çarpımının sayı kümelerini belirleme.
 
 **Çözüm:**
 
@@ -184,6 +184,6 @@ $$\sqrt2\cdot\sqrt8=\sqrt{16}=4$$
 
 rasyoneldir.
 
-**Neden doğru?** Aynı kök türündeki terimler toplamda köklü kalırken çarpımda tam kare oluşturur.
+**Neden doğru?** $x+y=3\sqrt2$ irrasyonel, $x\cdot y=4$ rasyoneldir.
 
-**Çeldirici notu:** Birbirinin ters işaretlisi olan çiftlerin toplamı 0 olduğundan A, B ve E koşulu sağlamaz.
+**Çeldirici notu:** İki sayı da irrasyonel olsa da çarpımları rasyonel olabilir.

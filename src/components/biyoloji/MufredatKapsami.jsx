@@ -1,8 +1,66 @@
 import { CheckCircle2, Circle, ExternalLink } from 'lucide-react'
-import { KAPSAM_MANIFESTI } from '../../data/biyoloji/kapsam.js'
+import {
+  biyolojiKapsamdaMi,
+  biyolojiKapsamEtiketi,
+  KAPSAM_MANIFESTI,
+} from '../../data/biyoloji/kapsam.js'
 
 export default function MufredatKapsami({ kapsam, ilerleme, onSec }) {
-  const uniteler = KAPSAM_MANIFESTI.filter((u) => kapsam === 'tum' || u.kapsam === kapsam)
-  return <div className="ba-bolge"><div className="ba-bolge-hero kapsam"><span className="ba-etiket">Canlı kapsam matrisi</span><h1>Müfredat kapsamı</h1><p>Her alt başlık bir etkileşim, girdiye özel geri bildirim ve transfer göreviyle eşleşir. Sayfayı açmak değil, kontrol noktasını bitirmek tamamlanma sayılır.</p></div><div className="ba-mufredat">{uniteler.map((unite) => { const biten = unite.altBasliklar.filter((k) => ilerleme.tamamlananlar[k.etkilesimId]).length; return <section key={unite.id}><header><div><span className="ba-etiket">{unite.kapsam === 'tymm' ? 'Yeni program / Enerji' : 'TYT sınav çekirdeği'} · {unite.sinif}. sınıf</span><h2>{unite.baslik}</h2><p>{unite.kazanim}</p></div><b>{biten}/{unite.altBasliklar.length}</b></header><div>{unite.altBasliklar.map((k) => { const tamam = Boolean(ilerleme.tamamlananlar[k.etkilesimId]); return <button key={k.id} onClick={() => onSec({ bolge: unite.bolge, id: k.etkilesimId })}>{tamam ? <CheckCircle2/> : <Circle/>}<span><b>{k.baslik}</b><small>{k.kazanim}</small></span><em>{k.kapsam === 'tymm' ? 'TYMM' : 'TYT'}</em><ExternalLink/></button> })}</div></section> })}</div></div>
-}
+  const uniteler = KAPSAM_MANIFESTI.filter((unite) => biyolojiKapsamdaMi(unite, kapsam))
 
+  return (
+    <div className="ba-bolge">
+      <div className="ba-bolge-hero kapsam">
+        <span className="ba-etiket">TYT + 2026 TYMM kapsam matrisi</span>
+        <h1>Her başlık bir kanıt görevine bağlı.</h1>
+        <p>
+          Güncel TYT çekirdeği ile 2026 programındaki Yaşam, Organizasyon, Enerji ve
+          Ekoloji temaları aynı öğrenme rotasında gösterilir. Bir sayfayı açmak değil;
+          modeli kurup kontrol noktasını bitirmek tamamlanma sayılır.
+        </p>
+      </div>
+
+      <div className="ba-mufredat">
+        {uniteler.map((unite) => {
+          const biten = unite.altBasliklar.filter((konu) => (
+            ilerleme.tamamlananlar[konu.etkilesimId]
+          )).length
+          return (
+            <section key={unite.id}>
+              <header>
+                <div>
+                  <span className="ba-etiket">
+                    {biyolojiKapsamEtiketi(unite)} · {unite.sinif}. sınıf · {unite.tema}
+                  </span>
+                  <h2>{unite.baslik}</h2>
+                  <p>{unite.kazanim}</p>
+                </div>
+                <b>{biten}/{unite.altBasliklar.length}</b>
+              </header>
+              <div>
+                {unite.altBasliklar.map((konu) => {
+                  const tamam = Boolean(ilerleme.tamamlananlar[konu.etkilesimId])
+                  return (
+                    <button
+                      key={konu.id}
+                      type="button"
+                      onClick={() => onSec({ bolge: unite.bolge, id: konu.etkilesimId })}
+                    >
+                      {tamam ? <CheckCircle2 aria-hidden="true" /> : <Circle aria-hidden="true" />}
+                      <span>
+                        <b>{konu.baslik}</b>
+                        <small>{konu.kazanim}</small>
+                      </span>
+                      <em>{biyolojiKapsamEtiketi({ ...konu, uniteId: unite.id })}</em>
+                      <ExternalLink aria-hidden="true" />
+                    </button>
+                  )
+                })}
+              </div>
+            </section>
+          )
+        })}
+      </div>
+    </div>
+  )
+}

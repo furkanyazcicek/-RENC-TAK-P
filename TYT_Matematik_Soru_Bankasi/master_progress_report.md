@@ -6,11 +6,11 @@
 
 | Ölçüt | Hedef | Mevcut | Doğrulanan | Kalan |
 |---|---:|---:|---:|---:|
-| Konu | 32 | 1 başlatıldı | 0 tamamlandı | 32 tamamlanacak |
-| Test | 1.600 | 30 | 30 | 1.570 |
-| Soru | 16.000 | 300 | 300 | 15.700 |
-| Çözüm | 16.000 | 300 | 300 | 15.700 |
-| SVG görsel | ihtiyaca göre | 0 | 0 | konu planlarına göre |
+| Konu | 32 | 2 tamamlandı | 2 tamamlandı | 30 tamamlanacak |
+| Test | 1.600 | 100 | 100 | 1.500 |
+| Soru | 16.000 | 1.000 | 1.000 | 15.000 |
+| Çözüm | 16.000 | 1.000 | 1.000 | 15.000 |
+| SVG görsel | ihtiyaca göre | 4 | 4 | konu planlarına göre |
 
 ## Araştırma ve altyapı
 
@@ -27,25 +27,28 @@
 | Test aralığı | Düzey | Hedef | Tamamlanan | Durum |
 |---|---|---:|---:|---|
 | 01–25 | Temel | 25 test / 250 soru | 25 test / 250 soru | Tamamlandı |
-| 26–40 | Gelişim | 15 test / 150 soru | 5 test / 50 soru | Üretimde |
-| 41–50 | İleri | 10 test / 100 soru | 0 | Bekliyor |
+| 26–40 | Gelişim | 15 test / 150 soru | 15 test / 150 soru | Tamamlandı |
+| 41–50 | İleri | 10 test / 100 soru | 10 test / 100 soru | Tamamlandı |
 
 ## Son doğrulama
 
-- Komut: `node scripts/validate_bank.mjs`
-- Sonuç: 30 test, 300 soru, 300 çözüm; 0 hata, 0 uyarı.
-- Matematiksel editör kontrolü: Test 01–30 için tamamlandı.
-- Cevap dağılımı: A=60, B=60, C=60, D=60, E=60.
+- Komut: `node scripts/validate_bank.mjs --strict`
+- Konu 01 sıkı sonucu: 50 test, 500 soru, 500 çözüm; 0 hata, 0 uyarı.
+- Konu 02 sıkı sonucu: 50 test, 500 soru, 500 çözüm; 0 hata, 0 uyarı.
+- Güncel normal ve sıkı sonuç: 100 test, 1.000 soru, 1.000 çözüm; 0 hata, 0 uyarı.
+- Matematiksel editör kontrolü: Konu 01 ve Konu 02 Test 01–50 için tamamlandı.
+- Genel cevap dağılımı: A=200, B=200, C=200, D=200, E=200.
 
 ## Kesin devam noktası
 
 Bir sonraki oluşturulacak dosyalar:
 
-1. `01_temel_kavramlar_ve_sayi_kumeleri/test_31_questions.md`
-2. `01_temel_kavramlar_ve_sayi_kumeleri/test_31_solutions.md`
+1. `03_bolme_bolunebilme_ve_kalan/topic_analysis.md`
+2. `03_bolme_bolunebilme_ve_kalan/test_01_questions.md`
+3. `03_bolme_bolunebilme_ve_kalan/test_01_solutions.md`
 
-Sonraki test **Gelişim ve Pekiştirme — Test 31** olacak; çok adımlı muhakeme ve alışılmadık sunumların ağırlığı kademeli olarak artırılacaktır. Konu 01'in Test 01–50'si tamamlanmadan Konu 02 üretimine geçilmeyecektir.
+Konu 01 ve **Konu 02 — Sayı Basamakları** tamamlandı. Sıradaki üretim **Konu 03 — Bölme, Bölünebilme ve Kalan** konu analizi ve Test 01'dir.
 
 ## Dürüst tamamlanma notu
 
-Proje tamamlanmış değildir. Bu rapor yalnız dosyada gerçekten bulunan ve denetimden geçen içeriği sayar; hedef sayıları tamamlanmış gibi göstermez.
+Konu 01 ve Konu 02 tamamlanmıştır; 32 konuluk genel proje henüz tamamlanmamıştır. Bu rapor yalnız dosyada gerçekten bulunan ve denetimden geçen içeriği sayar; kalan konuları tamamlanmış gibi göstermez.

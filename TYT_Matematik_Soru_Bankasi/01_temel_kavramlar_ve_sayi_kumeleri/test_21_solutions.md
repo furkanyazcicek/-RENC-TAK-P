@@ -6,19 +6,19 @@
 
 **Doğru cevap:** B
 
-**Kazanım:** Negatif işaret ile üs alma sırasını ayırt etme.
+**Kazanım:** Negatif bir sayının çift kuvvetini hesaplayıp işlem önceliğini uygulama.
 
 **Çözüm:**
 
-Üs, ilk terimde eksi işaretinden önce uygulanır:
+$(-5)^2=25$ olduğundan
 
-$$-2^4=-(2^4)=-16$$
+$$25+(-25)=0$$
 
-Parantezli ikinci terim ise $(-2)^4=16$ olur. Toplam $-16+16=0$'dır.
+bulunur.
 
-**Neden doğru?** Parantez, negatif işaretin tabana ait olup olmadığını belirler.
+**Neden doğru?** 25 ile toplamaya göre tersi olan -25'in toplamı 0'dır.
 
-**Çeldirici notu:** $-2^4$ ile $(-2)^4$ aynı ifade değildir.
+**Çeldirici notu:** $(-5)^2$ pozitiftir; parantez içindeki negatif sayı tabanın tamamıdır.
 
 ## Soru 2
 
@@ -150,7 +150,7 @@ olur. Sonuçlar eşit değildir.
 
 **Çözüm:**
 
-$-\sqrt{13}\approx-3,61$ ve $\pi\approx3,14$ olduğundan ekrandaki tam sayılar
+$-\sqrt{13}\approx-3,61$ ve $\pi\approx3,14$ olduğundan aralıktaki tam sayılar
 
 $$-3,-2,-1,0,1,2,3$$
 
@@ -164,7 +164,7 @@ olmak üzere yedi tanedir.
 
 **Doğru cevap:** B
 
-**Kazanım:** Tanımlı işlemi negatif ikinci girdiye doğru uygulama.
+**Kazanım:** Tanımlı işlemi negatif ikinci terimle doğru uygulama.
 
 **Çözüm:**
 
@@ -172,6 +172,6 @@ $$5\mathbin{\#}(-3)=5-2(-3)=5+6=11$$
 
 olur.
 
-**Neden doğru?** Negatif ikinci girdi -2 ile çarpıldığında pozitif 6 verir.
+**Neden doğru?** Negatif ikinci terim -2 ile çarpıldığında pozitif 6 verir.
 
 **Çeldirici notu:** İşlem sembolü alışılmış bir işlem değildir; yalnız verilen $a-2b$ kuralı uygulanır.

@@ -26,9 +26,7 @@ E) $\sqrt5-2$
 
 `K01-T13-Q02`
 
-Bir ölçüm sistemi, -3,6'dan büyük ve 1,2'ye eşit veya daha küçük olan tam sayı değerlerini kaydediyor.
-
-Sistem kaç farklı tam sayı değeri kaydeder?
+-3,6'dan büyük ve 1,2'ye eşit veya daha küçük kaç farklı tam sayı vardır?
 
 A) $5$
 
@@ -160,19 +158,17 @@ E) $\sqrt{10}\cdot\dfrac{19}{6}=1$
 
 `K01-T13-Q09`
 
-Bir sayı doğrusu sensörü, $-\pi$ noktasının sağında ve $\sqrt{10}$ noktasının solunda kalan tam sayı etiketlerini algılıyor.
+$-\pi<n<\sqrt{10}$ eşitsizliğini sağlayan tam sayı $n$ değerlerinin toplamı kaçtır?
 
-Sensör kaç farklı etiket algılar?
+A) $0$
 
-A) $7$
+B) $-3$
 
-B) $6$
+C) $3$
 
-C) $5$
+D) $6$
 
-D) $8$
-
-E) $9$
+E) $7$
 
 ## Soru 10
 

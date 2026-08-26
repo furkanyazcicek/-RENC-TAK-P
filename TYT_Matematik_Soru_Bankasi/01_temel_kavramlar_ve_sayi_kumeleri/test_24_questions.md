@@ -26,7 +26,7 @@ E) Tam sayılar
 
 `K01-T24-Q02`
 
-$$18-2[3+(-4)]$$
+$$2[7-(-3)]$$
 
 işleminin sonucu kaçtır?
 
@@ -44,9 +44,7 @@ E) $24$
 
 `K01-T24-Q03`
 
-Bir parite panosuna iki tek tam sayı $x$ ve $y$ giriliyor; pano $x^2-y^2$ çıktısını üretiyor.
-
-Bu çıktı için hangi özellik zorunludur?
+$x$ ve $y$ tek tam sayılar olduğuna göre $x^2-y^2$ ifadesi için hangi özellik zorunludur?
 
 A) Tek sayıdır.
 
@@ -80,9 +78,9 @@ E) $b<c<a$
 
 `K01-T24-Q05`
 
-Bir tür denetleyicisi rasyonel $r$ ve irrasyonel $t$ ile oluşturulan beş ifadeyi inceliyor.
+$r$ rasyonel ve $t$ irrasyonel sayıdır.
 
-Hangi ifade her seçimde irrasyonel etiketi alır?
+Aşağıdaki ifadelerden hangisi her zaman irrasyoneldir?
 
 A) $t-t+r$
 
@@ -132,9 +130,9 @@ E) $a+b$
 
 `K01-T24-Q08`
 
-Bir hesap makinesi bölme işlemlerinde parantezin yerini değiştirmenin sonucu etkilemediğini öne sürüyor.
+Bir öğrenci, bölme işleminde parantezin yerini değiştirmenin sonucu etkilemediğini öne sürüyor.
 
-Hangi iki hesap bu kuralın yanlış olduğunu gösterir?
+Hangi iki işlem bu iddianın yanlış olduğunu gösterir?
 
 A) $12\div1=12$
 
@@ -150,19 +148,17 @@ E) $5-0=5$
 
 `K01-T24-Q09`
 
-Bir tarayıcı $-\sqrt{20}$ ile 2,1 arasında kalan tam sayıları seçiyor.
+$-\sqrt{20}<n<2,1$ eşitsizliğini sağlayan tam sayı $n$ değerlerinin toplamı kaçtır?
 
-Tarayıcı kaç sayı seçer?
+A) $-10$
 
-A) $5$
+B) $-8$
 
-B) $6$
+C) $-7$
 
-C) $7$
+D) $-6$
 
-D) $8$
-
-E) $9$
+E) $-5$
 
 ## Soru 10
 

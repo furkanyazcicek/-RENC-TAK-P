@@ -116,19 +116,19 @@ E) $(12,24)$
 
 `K01-T27-Q07`
 
-Bir tasarımcı iki irrasyonel sayı seçerek toplama ekranında rasyonel, çarpma ekranında irrasyonel sonuç üretmek istiyor.
+$x=\sqrt3$ ve $y=2-\sqrt3$ olarak veriliyor.
 
-Hangi çift bu iki hedefi birlikte karşılar?
+$x+y$ ile $xy$ sayılarının türü sırasıyla hangisidir?
 
-A) $\sqrt2$ ve $-\sqrt2$
+A) İrrasyonel — İrrasyonel
 
-B) $\sqrt3$ ve $2-\sqrt3$
+B) Rasyonel — İrrasyonel
 
-C) $\sqrt5$ ve $-\sqrt5$
+C) Rasyonel — Rasyonel
 
-D) $\pi$ ve $-\pi$
+D) İrrasyonel — Rasyonel
 
-E) $\sqrt7$ ve $-\sqrt7$
+E) Tam sayı — Tam sayı
 
 ## Soru 8
 
@@ -150,9 +150,7 @@ E) $mn$ çifttir.
 
 `K01-T27-Q09`
 
-Bir geçiş kapısı, $-\pi-1$ noktasının sağındaki ve $\sqrt{20}$ noktasının solundaki tam sayı kodlarına izin veriyor.
-
-Kapı kaç farklı koda izin verir?
+$-\pi-1$ ile $\sqrt{20}$ arasında kaç farklı tam sayı vardır?
 
 A) $9$
 

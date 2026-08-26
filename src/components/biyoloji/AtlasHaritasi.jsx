@@ -20,9 +20,21 @@ const IKONLAR = {
   kamp: BookOpenCheck,
 }
 
+const kapsamdaMi = (bolge, kapsam) => (
+  kapsam === 'tum' || bolge.kapsamlar?.includes(kapsam) || bolge.kapsam === kapsam
+)
+
+const kapsamEtiketi = (bolge) => {
+  const kapsamlar = bolge.kapsamlar ?? [bolge.kapsam]
+  if (kapsamlar.includes('tyt') && kapsamlar.includes('tymm')) return 'TYT + 2026 TYMM'
+  if (kapsamlar.includes('tymm')) return '2026 TYMM'
+  if (kapsamlar.includes('tyt')) return 'TYT sınav çekirdeği'
+  return 'Tüm konular'
+}
+
 export default function AtlasHaritasi({ kapsam, yuzdeler = {}, onBolgeSec }) {
   const gorunenler = useMemo(
-    () => BOLGELER.filter((b) => kapsam === 'tum' || b.kapsam === kapsam || b.kapsam === 'tum'),
+    () => BOLGELER.filter((b) => kapsamdaMi(b, kapsam)),
     [kapsam],
   )
   const [odak, setOdak] = useState(() => gorunenler[0]?.kod ?? 'yasam')
@@ -87,7 +99,7 @@ export default function AtlasHaritasi({ kapsam, yuzdeler = {}, onBolgeSec }) {
 
           {secili ? (
             <aside className="ba-atlas-bilgi" style={{ '--bolge': secili.renk }} aria-live="polite">
-              <div className="ba-atlas-bilgi-baslik"><span><SeciliIkon /></span><div><small>{secili.kapsam === 'tymm' ? '2026 TYMM · Enerji' : secili.kapsam === 'tum' ? 'Tüm konular' : 'TYT sınav çekirdeği'}</small><h2>{secili.ad}</h2></div></div>
+              <div className="ba-atlas-bilgi-baslik"><span><SeciliIkon /></span><div><small>{kapsamEtiketi(secili)}</small><h2>{secili.ad}</h2></div></div>
               <p className="ba-atlas-soru">“{secili.soru}”</p>
               <div className="ba-atlas-bilgi-satir"><FlaskConical /><span><b>Yap:</b> {secili.eylem}</span></div>
               <div className="ba-atlas-bilgi-satir"><CheckCircle2 /><span><b>Kanıt:</b> {secili.kanit}</span></div>

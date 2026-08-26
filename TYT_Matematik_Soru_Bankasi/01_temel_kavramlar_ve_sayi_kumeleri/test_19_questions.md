@@ -42,9 +42,9 @@ E) $a=-1,\ b=2$
 
 `K01-T19-Q03`
 
-Bir gösterge panelinde $x+y$ işlemi rasyonel, $x-y$ işlemi irrasyonel çıktı veriyor.
+$x+y$ rasyonel ve $x-y$ irrasyonel sayıdır.
 
-Bu iki çıktıya göre $x$ ve $y$ için hangi sonuç zorunludur?
+Buna göre $x$ ve $y$ için hangi sonuç zorunludur?
 
 A) İkisi de rasyoneldir.
 
