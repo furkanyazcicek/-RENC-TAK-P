@@ -263,11 +263,13 @@
 /* --- Keşif rotası: düğümler yeniden haritaya oturuyor --- */
 .ca-atlas-alan{position:relative;padding:0;min-height:0;aspect-ratio:16/7.6;overflow:visible}
 .ca-atlas-alan>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.ca-atlas-alan line{
-  stroke:color-mix(in srgb,var(--ca-soluk) 52%,transparent);
-  stroke-width:1.1;stroke-dasharray:4 4;vector-effect:non-scaling-stroke;
+.ca-atlas-alan .ca-bag{
+  fill:none;
+  stroke:color-mix(in srgb,var(--ca-soluk) 46%,transparent);
+  stroke-width:1.2;stroke-linecap:round;stroke-dasharray:3.5 4;
+  vector-effect:non-scaling-stroke;
 }
-.ca-atlas-alan marker path{fill:color-mix(in srgb,var(--ca-soluk) 62%,transparent)}
+.ca-atlas-alan marker path{fill:color-mix(in srgb,var(--ca-soluk) 58%,transparent)}
 .ca-atlas-alan>div{display:block}
 .ca-atlas-alan>i{display:flex}
 .ca-atlas-dugum{
@@ -551,4 +553,10 @@
 }
 .cografya-atlasi[data-tema="acik"] .ca-galeri-rozetler b.ayri{
   color:#725310;border-color:#c4a25a;background:rgba(213,180,111,.22);
+}
+
+/* Rota şeridi: kutu genişliği bölgenin müfredat ağırlığını gösterir
+   (Padişah kronolojisinde kutu genişliği hükümdarlık süresiydi). */
+.ca-rota-ray .ca-rota-oge[style*="--rota-agirlik"]{
+  min-width:calc(86px + var(--rota-agirlik,3) * 9px);
 }

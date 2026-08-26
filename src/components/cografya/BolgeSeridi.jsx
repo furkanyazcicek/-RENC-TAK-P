@@ -1,12 +1,12 @@
 import { BookOpenCheck, Map, Trash2 } from 'lucide-react'
 import { BOLGELER } from '../../data/cografya/bolgeler.js'
-import { bolgeEtkilesimleri } from '../../data/cografya/kapsam.js'
+import { bolgeEtkilesimleri, bolgeKonulari } from '../../data/cografya/kapsam.js'
 
 export default function BolgeSeridi({ bolge, genel, yuzdeler, onSec, onSifirla }) {
   return (
     <nav className="ca-rota-seridi" aria-label="Coğrafya Atlası konu rotası">
       <div className="ca-rota-ust">
-        <div><strong>Coğrafya rotası</strong><small>Kutu sırası = önerilen öğrenme akışı</small></div>
+        <div><strong>Coğrafya rotası</strong><small>Kutu sırası = önerilen akış · kutu genişliği = müfredat ağırlığı</small></div>
         <div className="ca-rota-araclar">
           <span className="ca-rota-genel"><i><b style={{ width: `${genel}%` }} /></i><em>%{genel}</em></span>
           <select aria-label="Coğrafya bölgesi seç" value={bolge} onChange={(event) => onSec(event.target.value)}>
@@ -22,7 +22,12 @@ export default function BolgeSeridi({ bolge, genel, yuzdeler, onSec, onSifirla }
         <button type="button" className={`ca-rota-oge kapsam ${bolge === 'mufredat' ? 'etkin' : ''}`} aria-current={bolge === 'mufredat' ? 'page' : undefined} onClick={() => onSec('mufredat')}><BookOpenCheck/><span><small>K</small><strong>Müfredat</strong><em>2026 kapsamı</em></span></button>
         {BOLGELER.map((b, index) => {
           const izleniyor = bolgeEtkilesimleri(b.kod).length > 0
-          return <button type="button" key={b.kod} className={`ca-rota-oge ${bolge === b.kod ? 'etkin' : ''}`} style={{ '--rota-renk': b.renk }} aria-current={bolge === b.kod ? 'page' : undefined} onClick={() => onSec(b.kod)}><i/><span><small>{String(index + 1).padStart(2, '0')}</small><strong>{b.kisaAd}</strong><em>{izleniyor ? `%${yuzdeler[b.kod]} tamamlandı` : 'Pekiştirme'}</em></span></button>
+          /* Padişah kronolojisinde kutu genişliği hükümdarlık süresini
+             gösteriyordu; burada bölgenin müfredatta kapladığı başlık
+             sayısını gösterir. Şerit böylece sıralı bir liste değil,
+             ağırlığı da okunabilen bir ölçek olur. */
+          const agirlik = bolgeKonulari(b.kod).length
+          return <button type="button" key={b.kod} className={`ca-rota-oge ${bolge === b.kod ? 'etkin' : ''}`} style={{ '--rota-renk': b.renk, '--rota-agirlik': agirlik || 2 }} aria-current={bolge === b.kod ? 'page' : undefined} onClick={() => onSec(b.kod)}><i/><span><small>{String(index + 1).padStart(2, '0')}</small><strong>{b.kisaAd}</strong><em>{izleniyor ? `%${yuzdeler[b.kod]} tamamlandı` : 'Pekiştirme'}</em></span></button>
         })}
       </div>
     </nav>

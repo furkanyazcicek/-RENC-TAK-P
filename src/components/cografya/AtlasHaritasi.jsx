@@ -22,6 +22,38 @@ import CografiMercek from './CografiMercek.jsx'
 
 const KAPSAM_ETIKETI = { tymm: '2026 TYMM', tyt: 'TYT kampı', tum: 'Onarım alanı' }
 
+/* Harita alanı 16/7.6 oranında. viewBox bu oranla aynı tutulunca koordinat
+   sistemi eş ölçekli kalır: ok başları ezilmez, yaylar düzgün çizilir. */
+const HARITA_ORANI = 7.6 / 16
+
+/**
+ * İki bölge arasındaki ön koşul yayı.
+ *
+ * Uçlar düğüm dairesini boş bırakacak kadar geri çekilir (düz çizgi
+ * düğümün altından geçiyordu) ve hafif bir yay verilir; on üç düğüm
+ * arasındaki on dokuz bağlantı düz çizgiyle çizilince ağ gibi görünüyordu.
+ */
+function baglantiYolu(a, b) {
+  const x1 = a.konum[0]
+  const y1 = a.konum[1] * HARITA_ORANI
+  const x2 = b.konum[0]
+  const y2 = b.konum[1] * HARITA_ORANI
+  const dx = x2 - x1
+  const dy = y2 - y1
+  const boy = Math.hypot(dx, dy) || 1
+  const ux = dx / boy
+  const uy = dy / boy
+  const gerile = Math.min(2.6, boy * 0.3)
+  const bx1 = x1 + ux * gerile
+  const by1 = y1 + uy * gerile
+  const bx2 = x2 - ux * gerile
+  const by2 = y2 - uy * gerile
+  const yay = boy * 0.07
+  const ox = (bx1 + bx2) / 2 - uy * yay
+  const oy = (by1 + by2) / 2 + ux * yay
+  return `M ${bx1.toFixed(2)} ${by1.toFixed(2)} Q ${ox.toFixed(2)} ${oy.toFixed(2)} ${bx2.toFixed(2)} ${by2.toFixed(2)}`
+}
+
 /** Kapsam filtresine göre görünen bölgeler. */
 function gorunenBolgeler(kapsam) {
   return BOLGELER.filter((b) => kapsam === 'tum' || b.kapsam === 'ortak' || b.kapsam === 'tum' || b.kapsam === kapsam)
@@ -102,17 +134,17 @@ export default function AtlasHaritasi({ kapsam, yuzdeler, onBolgeSec }) {
           <p>Oklar ön koşul ilişkisini gösterir; kilit değildir.</p>
         </div>
         <div className="ca-atlas-alan">
-          <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <svg viewBox={`0 0 100 ${100 * HARITA_ORANI}`} aria-hidden="true">
             <defs>
-              <marker id="ca-ok" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                <path d="M0 0L6 3 0 6z" />
+              <marker id="ca-ok" markerWidth="1.2" markerHeight="1.2" refX="1.05" refY="0.6" orient="auto" markerUnits="userSpaceOnUse">
+                <path d="M0 0L1.2 0.6 0 1.2z" />
               </marker>
             </defs>
             {BAGLANTILAR.map(([a, b]) => {
               const x = BOLGELER.find((v) => v.kod === a)
               const y = BOLGELER.find((v) => v.kod === b)
               if (!x || !y || !gorunenler.includes(x) || !gorunenler.includes(y)) return null
-              return <line key={`${a}-${b}`} x1={x.konum[0]} y1={x.konum[1]} x2={y.konum[0]} y2={y.konum[1]} markerEnd="url(#ca-ok)" />
+              return <path key={`${a}-${b}`} className="ca-bag" d={baglantiYolu(x, y)} markerEnd="url(#ca-ok)" />
             })}
           </svg>
           <div>

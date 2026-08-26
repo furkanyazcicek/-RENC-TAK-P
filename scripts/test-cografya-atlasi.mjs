@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { BOLGELER, TYT_KONULARI } from '../src/data/cografya/bolgeler.js'
 import { ETKILESIM_REGISTRY, KAPSAM } from '../src/data/cografya/kapsam.js'
 import { MERCEK_NOKTALARI } from '../src/data/cografya/haritaNoktalari.js'
+import { BOLGE_SAHNELERI, ZEMINLER, bolgeSahnesi } from '../src/data/cografya/gorseller.js'
 import { YANILGILAR } from '../src/data/cografya/yanilgilar.js'
 import { iklimOzeti, bagilNemOzeti } from '../src/lib/cografya/iklim.js'
 import { profilUret, ortalamaEgimYuzde } from '../src/lib/cografya/izohips.js'
@@ -64,6 +65,26 @@ dogrula('tamamlanma yalnız görevle açılmaz', !tamamlanabilirMi({gorev:true,k
 dogrula('tamamlanma yalnız kontrolle açılmaz', !tamamlanabilirMi({gorev:false,kontrol:true}))
 dogrula('tamamlanma model görevi + kontrol ister', tamamlanabilirMi({gorev:true,kontrol:true}))
 dogrula('her bölge dosyası ayrı yüklenebilir', BOLGELER.every((b) => b.kod === 'pusula' || b.kod === 'kamp' || kaynak.includes(`bolge=\"${b.kod}\"`)))
+
+bolum('4) Görsel katman: çizimler ve sahne kadrajı')
+const cizimKaynagi = fs.readFileSync(path.join(kok, 'BolgeCizimi.jsx'), 'utf8')
+dogrula('13 bölgenin de kendi çizimi var', BOLGELER.every((b) => cizimKaynagi.includes(`  '${b.kod}': {`) || cizimKaynagi.includes(`\n  ${b.kod}: {`)), BOLGELER.filter((b) => !(cizimKaynagi.includes(`  '${b.kod}': {`) || cizimKaynagi.includes(`\n  ${b.kod}: {`))).map((b) => b.kod).join(', '))
+dogrula('13 bölgenin de kendi sahnesi var', BOLGELER.every((b) => BOLGE_SAHNELERI[b.kod]))
+dogrula('her sahne var olan bir zemine bağlı', Object.values(BOLGE_SAHNELERI).every((s) => ZEMINLER[s.zemin]))
+dogrula('her sahnenin üç kanıt katmanı var', Object.values(BOLGE_SAHNELERI).every((s) => s.katmanlar.length === 3))
+dogrula('her katmanda en az iki kanıt noktası var', Object.values(BOLGE_SAHNELERI).every((s) => s.katmanlar.every((k) => s.odaklar.filter((o) => o.katman === k.id).length >= 2)))
+dogrula('kanıt noktaları var olmayan katmana bağlanmıyor', Object.values(BOLGE_SAHNELERI).every((s) => s.odaklar.every((o) => s.katmanlar.some((k) => k.id === o.katman))))
+/* Fotoğraf `object-fit: cover` ile kırpıldığı için kenarlara çok yakın
+   noktalar ekranda görünmez. Güvenli kadraj: x 6–94, y 12–88. */
+const kadrajDisi = Object.entries(BOLGE_SAHNELERI).flatMap(([kod, s]) => s.odaklar.filter((o) => o.x < 6 || o.x > 94 || o.y < 12 || o.y > 88).map((o) => `${kod}/${o.id}`))
+dogrula('kanıt noktaları güvenli kadrajın içinde', kadrajDisi.length === 0, kadrajDisi.join(', '))
+dogrula('kanıt kimlikleri sahne içinde benzersiz', Object.values(BOLGE_SAHNELERI).every((s) => new Set(s.odaklar.map((o) => o.id)).size === s.odaklar.length))
+dogrula('bolgeSahnesi bilinmeyen kodda da çalışır', Boolean(bolgeSahnesi('olmayan-bolge')?.src))
+/* Bölge adı ve rengi tek kaynaktan gelmeli; sayfada elle yazılırsa
+   şeritteki adla sayfadaki ad birbirinden ayrışıyor. */
+const elleYazilanKunye = dosyalar.filter((p) => p.includes('/bolgeler/')).filter((p) => /<BolgeBasligi[^/]*(baslik=|renk=)/.test(fs.readFileSync(p, 'utf8'))).map((p) => path.basename(p))
+dogrula('bölge künyesi ad ve rengi elle yazmıyor', elleYazilanKunye.length === 0, elleYazilanKunye.join(', '))
+dogrula('her bölgenin sınav künyesi var', BOLGELER.every((b) => b.sinavNotu?.siklik && b.sinavNotu?.tarz && b.ozet))
 
 console.log(`\n${'─'.repeat(62)}`)
 if (!hatalar.length) { console.log(`✅ Coğrafya Atlası denetimleri geçti (${gecen} kontrol).`); process.exit(0) }
