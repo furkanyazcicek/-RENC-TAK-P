@@ -114,6 +114,7 @@ import kimyaHerYerde from './kimya/kimya-her-yerde.js'
 import dogaVeInsan from './cografya/doga-ve-insan.js'
 import dunyaninSekliVeHareketleri from './cografya/dunyanin-sekli-ve-hareketleri.js'
 import { TYT_GEOGRAPHY_LESSONS } from './cografya/topics.js'
+import { TYT_MATH_LESSONS } from './matematik/index.js'
 
 export const LESSONS = [
   ...philosophyLessons,
@@ -144,6 +145,7 @@ export const LESSONS = [
   dogaVeInsan,
   dunyaninSekliVeHareketleri,
   ...TYT_GEOGRAPHY_LESSONS,
+  ...TYT_MATH_LESSONS,
   canlilarinOrtakOzellikleriTemel,
   canlilarinOrtakOzellikleri,
   canlilarinTemelBilesenleriTemel,

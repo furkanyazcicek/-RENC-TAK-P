@@ -4,11 +4,11 @@
 
 ## Test yapısı
 
-2026-YKS Kılavuzu'na göre Temel Matematik Testi 40 sorudur. ÖSYM “30 matematik + 10 geometri” biçiminde ayrı bir resmî kota açıklamaz. Bununla birlikte editöryal sınıflandırmada 2019-2026 kitapçıklarının her birinde 30 cebir/sayı/problem/veri ve 10 geometri baskın soru; 2018'de 29 + 11 görünmektedir.
+2026-YKS Kılavuzu'na göre Temel Matematik Testi 40 sorudur. ÖSYM “30 matematik + 10 geometri” biçiminde ayrı bir resmî kota açıklamaz. Bununla birlikte kitapçık sırası ve baskın beceriye dayalı editöryal sınıflandırmada incelenen bütün yıllarda ilk 30 soru cebir/sayı/problem/veri, son 10 soru geometri baskın görünmektedir.
 
 | Yıl | Matematik baskın | Geometri baskın | Toplam | Not |
 |---:|---:|---:|---:|---|
-| 2018 | 29 | 11 | 40 | İlk TYT; doğrudan polinom ve daha fazla çember/analitik görünümü |
+| 2018 | 30 | 10 | 40 | İlk TYT; doğrudan polinom ve daha fazla çember/analitik görünümü |
 | 2019 | 30 | 10 | 40 | 7. matematik sorusu iptal; biçim analizinde tutuldu, geçerli frekansta dışlandı |
 | 2020 | 30 | 10 | 40 | Problem ve günlük yaşam modeli belirgin |
 | 2021 | 30 | 10 | 40 | Mantık, bölünebilme ve çok adımlı problem birlikte |
@@ -24,7 +24,7 @@
 
 | Baskın konu | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 9 yıl |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Temel kavramlar | 4 | 1 | 1 | 3 | 3 | 2 | 1 | 3 | 3 | 21 |
+| Temel kavramlar | 4 | 3 | 1 | 3 | 3 | 2 | 1 | 3 | 3 | 23 |
 | Sayı basamakları | 1 | 2 | 1 | 2 | 1 | 1 | 2 | 1 | 2 | 13 |
 | Bölünebilme | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 | 6 |
 | EBOB-EKOK / asal-bölen | 0 | 0 | 2 | 0 | 0 | 0 | 1 | 0 | 1 | 4 |
@@ -50,7 +50,7 @@
 | Baskın konu | 2018 | 2019 | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | 2026 | 9 yıl |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | Açılar ve üçgenler | 3 | 1 | 2 | 4 | 4 | 5 | 5 | 4 | 5 | 33 |
-| Dikdörtgen / kare | 3 | 3 | 3 | 1 | 1 | 1 | 1 | 2 | 1 | 16 |
+| Dikdörtgen / kare | 2 | 3 | 3 | 1 | 1 | 1 | 1 | 2 | 1 | 15 |
 | Yamuk / özel dörtgen | 1 | 0 | 2 | 1 | 1 | 1 | 1 | 1 | 1 | 9 |
 | Çokgenler | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 1 | 9 |
 | Çember-daire | 1 | 2 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 3 |

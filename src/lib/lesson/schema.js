@@ -937,6 +937,16 @@ const DEPTH_RULES = {
   ],
 }
 
+// Matematikte derinlik, uzun paragraftan çok çözümlü örnek, görünür işlem
+// basamağı ve yardımsız transfer sorusuyla oluşur. Genel profilin bölüm başına
+// 180 kelime eşiği matematik notlarını gereksiz açıklama yazmaya itiyordu.
+const MATH_DEPTH_RULES = {
+  minWords: 1000,
+  minWordsPerSection: 60,
+  minSections: 7,
+  requiredRoles: DEPTH_RULES.requiredRoles,
+}
+
 // Tarih dersleri kronoloji, neden-sonuc, alt kazanim ve kanit okumayi birlikte
 // tasir. Esik, kisa ozetlerin "tam ders" gibi yayinlanmasini engeller; genel
 // profile gore bir miktar dusuktur cunku tablo ve zaman seritleri yogundur.
@@ -992,16 +1002,32 @@ function blockWords(block) {
 
 export function auditLessonDepth(value, { profile = 'default' } = {}) {
   const document = normalizeLessonDocument(value)
-  const rules = profile === 'history' ? HISTORY_DEPTH_RULES : DEPTH_RULES
+  const rules = profile === 'history'
+    ? HISTORY_DEPTH_RULES
+    : profile === 'math'
+      ? MATH_DEPTH_RULES
+      : DEPTH_RULES
   const roles = new Set()
   let words = 0
   const thinSections = []
+  let workedExamples = 0
+  let workedSteps = 0
+  let independentQuestions = 0
+  let hasBeginnerExample = false
+  let hasSelectiveExample = false
 
   document.sections.forEach((section) => {
     let sectionWords = countWords(section.lead)
     section.blocks.forEach((block) => {
       const spec = BLOCK_SPECS[block.type]
       if (spec?.weight > 0) roles.add(spec.role)
+      if (block.type === 'worked_example') {
+        workedExamples += 1
+        workedSteps += Array.isArray(block.steps) ? block.steps.length : 0
+        hasBeginnerExample ||= String(block.title || '').includes('Seviye 1')
+        hasSelectiveExample ||= String(block.title || '').includes('Seviye 5')
+      }
+      if (block.type === 'quiz') independentQuestions += 1
       sectionWords += blockWords(block)
     })
     words += sectionWords
@@ -1028,6 +1054,14 @@ export function auditLessonDepth(value, { profile = 'default' } = {}) {
   }
   if (!document.outcomes.length) {
     warnings.push('“Bu dersin sonunda yapabileceklerin” tanımlı değil; öğrenci kendini kontrol edemez.')
+  }
+
+  if (profile === 'math') {
+    if (workedExamples < 5) warnings.push('Matematik dersi en az 5 çözümlü örnek içermeli.')
+    if (workedSteps < 9) warnings.push('Çözümlü örneklerde işlem akışı yeterince görünür değil; en az 9 işlem basamağı gerekli.')
+    if (!hasBeginnerExample) warnings.push('Matematiğe sıfırdan başlayan öğrenci için Seviye 1 örneği yok.')
+    if (!hasSelectiveExample) warnings.push('İleri öğrenci için rehberli Seviye 5 seçici örneği yok.')
+    if (independentQuestions < 3) warnings.push('Rehberli örneklerden farklı en az 3 yardımsız matematik sorusu gerekli.')
   }
 
   return {

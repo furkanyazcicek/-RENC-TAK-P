@@ -1,3 +1,5 @@
+import { MATH_MASTERY_EXAMPLES } from './mastery-examples.js'
+
 const slugify = (value) => value
   .toLocaleLowerCase('tr-TR')
   .replaceAll('ı', 'i')
@@ -43,16 +45,89 @@ function formulaBlocks(topic, formulas = []) {
   }))
 }
 
+const LEVEL_LABELS = {
+  1: 'Seviye 1 · Sıfırdan',
+  2: 'Seviye 2 · Temel işlem',
+  3: 'Seviye 3 · Orta düzey',
+  4: 'Seviye 4 · İleri',
+}
+
+function exampleLevel(index, total) {
+  if (total <= 1) return 1
+  return Math.round((index * 3) / (total - 1)) + 1
+}
+
 function exampleBlocks(topic, examples) {
   return examples.map((example, index) => ({
     id: idOf(topic, `ornek-${index + 1}`),
     type: 'worked_example',
-    title: example.title,
+    title: `${LEVEL_LABELS[exampleLevel(index, examples.length)]} · ${example.title}`,
     prompt: example.prompt,
     steps: example.steps,
     answer: example.answer,
-    takeaway: `${example.takeaway}\n\n**Sonuç kontrolü:** ${example.check}`,
+    takeaway: `**Bu örneğin taktiği:** ${example.takeaway}\n\n**Sonuç kontrolü:** ${example.check}`,
   }))
+}
+
+function selectGuidedQuestion(questions) {
+  const priority = { Karma: 4, İleri: 3, Orta: 2, Temel: 1 }
+  return questions.reduce((selected, question, index) => {
+    const score = priority[question.level] || 0
+    return score >= selected.score ? { question, index, score } : selected
+  }, { question: questions.at(-1), index: questions.length - 1, score: -1 })
+}
+
+function guidedChallengeBlock(topic, question, tactic) {
+  const letters = ['A', 'B', 'C', 'D', 'E']
+  const options = question.options
+    .map((option, index) => `${letters[index]}) ${option}`)
+    .join('\n')
+  const answerLetter = letters[question.answer] || String(question.answer + 1)
+
+  return {
+    id: idOf(topic, 'ornek-rehberli-secici'),
+    type: 'worked_example',
+    title: 'Seviye 5 · Rehberli seçici TYT örneği',
+    prompt: `${question.question}\n\n${options}`,
+    steps: [
+      {
+        title: '1. Soruyu tanı — hemen işleme başlama',
+        body: question.idea,
+      },
+      {
+        title: '2. İlk hamleyi ana taktikle ilişkilendir',
+        body: tactic.logic,
+      },
+      {
+        title: '3. İşlemi görünür basamaklarla tamamla',
+        body: question.solution,
+      },
+      {
+        title: '4. Tuzak yolu ayır',
+        body: `${question.wrong} Bu hata, doğru işlemin hangi koşula dayandığını gösterir.`,
+      },
+      {
+        title: '5. Sonucu bağımsız biçimde kontrol et',
+        body: question.check,
+      },
+    ],
+    answer: `${answerLetter}) ${question.options[question.answer]}`,
+    takeaway: `**Bu örneğin taktiği:** ${question.idea}\n\n**Başka soruya aktar:** ${tactic.works}\n\n**Dikkat sınırı:** ${tactic.risk}`,
+  }
+}
+
+function masteryChallengeBlock(topic, mastery, fallbackQuestion, tactic) {
+  if (!mastery) return guidedChallengeBlock(topic, fallbackQuestion, tactic)
+
+  return {
+    id: idOf(topic, 'ornek-rehberli-secici'),
+    type: 'worked_example',
+    title: 'Seviye 5 · Rehberli seçici TYT örneği',
+    prompt: mastery.prompt,
+    steps: mastery.steps,
+    answer: mastery.answer,
+    takeaway: `**Bu örneğin taktiği:** ${mastery.tactic}\n\n**Başka soruya aktar:** ${mastery.transfer}\n\n**Dikkat sınırı:** ${mastery.trap}`,
+  }
 }
 
 function trapBlocks(topic, traps) {
@@ -89,6 +164,11 @@ function practiceBlocks(topic, questions) {
 export function createMathLesson(spec, order) {
   const topic = spec.topic
   const lessonId = idOf(topic, 'ders')
+  const guidedQuestion = selectGuidedQuestion(spec.questions)
+  const masteryExample = MATH_MASTERY_EXAMPLES[topic]
+  const independentQuestions = masteryExample
+    ? spec.questions
+    : spec.questions.filter((_, index) => index !== guidedQuestion.index)
   const mapNodes = [
     ...spec.prerequisites.map((item, index) => ({ id: `pre-${index}`, label: item.topic, detail: item.why })),
     { id: 'core', label: topic, detail: spec.mapCore },
@@ -103,10 +183,10 @@ export function createMathLesson(spec, order) {
     slug: `tyt-${spec.subject === 'Geometri' ? 'geometri' : 'matematik'}-${slugify(topic)}`,
     placement: { examType: 'TYT', subject: spec.subject || 'Matematik', topic },
     order,
-    partLabel: `${order}. Konu · TYT Matematik`,
+    partLabel: `${order}. Konu · TYT ${spec.subject === 'Geometri' ? 'Geometri' : 'Matematik'}`,
     learningMode: 'interactive',
     goldStandard: true,
-    qualityProfile: 'default',
+    qualityProfile: 'math',
     title: spec.title,
     subtitle: spec.subtitle,
     contentMeta: {
@@ -157,14 +237,14 @@ export function createMathLesson(spec, order) {
           id: `${lessonId}-hazirlik`,
           kind: 'build',
           title: 'Hazır bulunuşluk kontrolü',
-          lead: 'Soruları önce yardım almadan cevapla. Yanlış, bu ders için bir etiket değil; hangi basamağın onarılacağını gösteren veridir.',
+          lead: 'Önce üç kısa soruyu dene. Yapamıyorsan cevap yönlendirmesini kullan; yapabiliyorsan doğrudan kendi seviyendeki işlem örneklerine geç.',
           blocks: readinessBlocks(topic, spec.readiness),
         },
         {
           id: `${lessonId}-temel`,
           kind: 'build',
-          title: 'Kesin bilgi, anlam ve kullanım şartları',
-          lead: 'Kuralı yalnız yazmak yetmez. Ne anlattığını, neden çalıştığını ve hangi koşulda bozulduğunu birlikte kur.',
+          title: 'Sıfırdan kuralı kur',
+          lead: 'Matematiğe yeniysen kavram ve formül kartlarını sırayla oku. Konuyu biliyorsan yalnız kullanım şartlarını ve uyarıları tarayıp örneklere geç.',
           blocks: [
             ...conceptBlocks(topic, spec.concepts),
             {
@@ -185,15 +265,25 @@ export function createMathLesson(spec, order) {
         {
           id: `${lessonId}-ornekler`,
           kind: 'deepen',
-          title: 'Kolaydan seçiciye çözümlü örnekler',
-          lead: 'Her çözümde verilen, istenen, yöntem seçimi ve kontrol ayrı görünür. İşlem kısaldıkça gerekçe kaybolmaz.',
-          blocks: exampleBlocks(topic, spec.examples),
+          title: 'İşlem laboratuvarı: sıfırdan seçiciye',
+          lead: 'Yeni başlıyorsan Seviye 1’den ilerle. Temelin varsa Seviye 3’ten, çok iyiysen Seviye 4–5’ten başla; her örnekte işlemi, taktiği ve kontrolü birlikte izle.',
+          blocks: [
+            {
+              id: idOf(topic, 'taktik'),
+              type: 'process',
+              title: `İşleme başlamadan: ${spec.tactic.title}`,
+              intro: `${spec.tactic.logic}\n\n**Ne zaman kullanılır?** ${spec.tactic.works}\n\n**Hangi durumda dikkat?** ${spec.tactic.risk}`,
+              steps: spec.tactic.steps,
+            },
+            ...exampleBlocks(topic, spec.examples),
+            masteryChallengeBlock(topic, masteryExample, guidedQuestion.question, spec.tactic),
+          ],
         },
         {
           id: `${lessonId}-tanima`,
           kind: 'deepen',
-          title: 'Soru tanıma rehberi ve DRKOÇ taktiği',
-          lead: 'Soru tipi ezberlemek yerine verilenlerin hangi ilişkiyi kurduğunu fark et. Karar ağacı yöntemi seçtirir; sonucu garanti eden yine koşulları doğru uygulamandır.',
+          title: 'Soru tanıma ve hata ayıklama',
+          lead: 'Şimdi çözümlerde gördüğün yöntemi yeni soru biçimlerine taşı ve hangi hatanın hangi adımda oluştuğunu ayır.',
           blocks: [
             {
               id: idOf(topic, 'karar-agaci'),
@@ -202,13 +292,6 @@ export function createMathLesson(spec, order) {
               intro: spec.recognitionIntro,
               checks: spec.decisionTree,
               takeaway: spec.recognitionTakeaway,
-            },
-            {
-              id: idOf(topic, 'taktik'),
-              type: 'process',
-              title: `DRKOÇ taktiği: ${spec.tactic.title}`,
-              intro: `${spec.tactic.logic}\n\n**İşe yarar:** ${spec.tactic.works}\n\n**Riskli veya işe yaramaz:** ${spec.tactic.risk}`,
-              steps: spec.tactic.steps,
             },
             {
               id: idOf(topic, 'sinav-bicimi'),
@@ -223,10 +306,10 @@ export function createMathLesson(spec, order) {
         {
           id: `${lessonId}-alistirma`,
           kind: 'practice',
-          title: 'Konu alıştırmaları',
-          lead: 'Seçeneği işaretlemeden önce yöntemi bir cümleyle adlandır. Çözüm ve hata analizi, cevabını verdikten sonra açılır.',
+          title: 'Yardım kapalı yeni sorular',
+          lead: 'Bunlar ders notundaki rehberli örneğin tekrarı değildir. Önce yöntemi seç, sonra işlemi yap; çözüm ve hata analizi cevabından sonra açılır.',
           blocks: [
-            ...practiceBlocks(topic, spec.questions),
+            ...practiceBlocks(topic, independentQuestions),
             {
               id: idOf(topic, 'osym-simulasyon'),
               type: 'osym_simulation',
@@ -245,7 +328,7 @@ export function createMathLesson(spec, order) {
           id: `${lessonId}-kapanis`,
           kind: 'close',
           title: 'Hızlı tekrar ve öz değerlendirme',
-          lead: 'Kapanışın amacı yeni bilgi eklemek değil, soru görünce hangi düşünme sırasını çalıştıracağını sabitlemektir.',
+          lead: 'Özeti kapatıp ana kuralı, ilk hamleyi ve en tehlikeli hatayı söyle. Sonra seviyene uygun bir soruyu yardımsız yeniden çöz.',
           blocks: [
             {
               id: idOf(topic, 'ozet'),
