@@ -1,14 +1,51 @@
 import { useState } from 'react'
-import { CheckCircle2, Compass, Lightbulb, TriangleAlert } from 'lucide-react'
+import { CheckCircle2, Compass, Lightbulb, Target, TriangleAlert } from 'lucide-react'
+import { bolgeBul } from '../../../data/cografya/bolgeler.js'
+import { bolgeEtkilesimleri, bolgeKonulari } from '../../../data/cografya/kapsam.js'
 import { kaynakBul } from '../../../data/cografya/kaynaklar.js'
 import { yanilgiBul } from '../../../data/cografya/yanilgilar.js'
 import { etkilesimTamamla, hataKaydet } from '../../../lib/cografya/ilerleme.js'
+import BolgeCizimi from '../BolgeCizimi.jsx'
 
-export function BolgeBasligi({ etiket = 'TYT Coğrafya', baslik, aciklama, renk, sayi }) {
+/**
+ * Bölge künyesi.
+ *
+ * Ad, renk, konu ve sınav notu tek kaynaktan — `bolgeler.js` — gelir.
+ * Daha önce her bölge kendi adını ve rengini elle yazıyordu; altı bölgede
+ * ad ve renk atlasın geri kalanıyla tutmuyordu (şeritte "Nüfus Merceği",
+ * sayfada "Nüfus Laboratuvarı" gibi). Artık tek yerden okunur.
+ */
+export function BolgeBasligi({ bolge, etiket, baslik, aciklama, renk, sayi }) {
+  const veri = bolgeBul(bolge)
+  const ad = baslik ?? veri?.ad ?? ''
+  const bolgeRengi = renk ?? veri?.renk
+  const durak = sayi ?? (bolge ? String(bolgeEtkilesimleri(bolge).length) : null)
+  const baslikSayisi = bolge ? bolgeKonulari(bolge).length : 0
+  const sinav = veri?.sinavNotu
   return (
-    <section className="ca-bolge-baslik" style={{ '--bolge-renk': renk }}>
-      <div><span>{etiket}</span><h1>{baslik}</h1><p>{aciklama}</p></div>
-      {sayi ? <div className="ca-bolge-sayac"><strong>{sayi}</strong><small>etkileşimli durak</small></div> : null}
+    <section className="ca-bolge-baslik" style={{ '--bolge-renk': bolgeRengi }}>
+      <div className="ca-kunye-metin">
+        <span>{etiket ?? veri?.konu ?? 'TYT Coğrafya'}</span>
+        <h1>{ad}</h1>
+        <p>{aciklama ?? veri?.ozet}</p>
+        {sinav ? (
+          <div className="ca-kunye-sinav">
+            <b><Target size={13} /> {sinav.siklik}</b>
+            <small>{sinav.tarz}</small>
+          </div>
+        ) : null}
+      </div>
+      {bolge ? (
+        <figure className="ca-kunye-cizim">
+          <BolgeCizimi kod={bolge} renk={bolgeRengi} />
+          <figcaption>
+            {durak && durak !== '0' ? <b>{durak} etkileşimli durak</b> : <b>pekiştirme alanı</b>}
+            {baslikSayisi ? <span>{baslikSayisi} müfredat başlığı</span> : null}
+          </figcaption>
+        </figure>
+      ) : durak ? (
+        <div className="ca-bolge-sayac"><strong>{durak}</strong><small>etkileşimli durak</small></div>
+      ) : null}
     </section>
   )
 }

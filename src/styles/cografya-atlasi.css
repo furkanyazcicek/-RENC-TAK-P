@@ -237,13 +237,27 @@
 }
 .ca-hero-merkez>small{margin-top:14px;display:block;color:var(--ca-soluk);font-size:9.5px;letter-spacing:.08em}
 
-/* Dar ekran: halka küçülür, etiketler düşer */
+/* Dar ekran: halka büyür, ortadaki blok küçülür.
+   Telefonda yarıçapı küçültmek kartları başlığın üstüne bindiriyordu;
+   doğrusu halkayı ekran genişliğine yaymak, içerideki bloğu daraltmak. */
 @media (max-width:700px){
-  .ca-hero{--ca-halka-r:clamp(122px,31vw,170px);--ca-halka-kart:clamp(50px,12.5vw,70px);min-height:min(104vw,470px)}
+  .ca-hero{
+    --ca-halka-r:clamp(118px,37vw,168px);
+    --ca-halka-kart:clamp(52px,14vw,64px);
+    min-height:calc(var(--ca-halka-r) * 2 + var(--ca-halka-kart) + 44px);
+  }
+  /* Eski mobil düzende halkanın yarısı gizleniyordu; on konunun onu da kalsın. */
+  .ca-konu-halkasi button{min-height:0}
+  .ca-konu-halkasi button:nth-child(even){display:block}
+  /* Kart küçük ama dokunma alanı 44 px'in altına düşmesin. */
+  .ca-konu-halkasi button::after{content:"";position:absolute;inset:-10px}
   .ca-konu-halkasi small{display:none}
-  .cografya-atlasi .ca-hero>.ca-hero-merkez{width:min(calc(var(--ca-halka-r) * 1.22),68vw)}
-  .ca-hero-merkez h1{letter-spacing:.04em;font-size:clamp(1.35rem,6.4vw,1.85rem)}
-  .ca-hero-merkez p{font-size:.8rem}
+  .ca-konu-halkasi b{top:2px;left:2px;min-width:13px;height:13px;font-size:7px}
+  .cografya-atlasi .ca-hero>.ca-hero-merkez{width:min(calc(var(--ca-halka-r) * 1.15),64vw);padding:6px}
+  .ca-hero-merkez h1{letter-spacing:.03em;font-size:clamp(1.2rem,5.6vw,1.7rem)}
+  .ca-hero-merkez p{margin-top:10px;font-size:.78rem;line-height:1.4}
+  .ca-hero-merkez>button{margin-top:14px;padding:8px 15px;font-size:11px}
+  .ca-hero-merkez>small{display:none}
 }
 
 /* --- Keşif rotası: düğümler yeniden haritaya oturuyor --- */
@@ -367,3 +381,174 @@
   color:var(--ca-soluk);font-size:9.5px;line-height:1.5;
 }
 .ca-galeri-not svg{flex:none;margin-top:1px}
+
+/* ==================================================================
+   BÖLGE KÜNYESİ VE SAHNE YERLEŞİMİ
+   ================================================================== */
+
+/* --- Künye: metin + bölgenin kendi çizimi --- */
+.cografya-atlasi .ca-bolge-baslik{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,340px);
+  align-items:center;gap:clamp(16px,3vw,34px);
+  padding:clamp(18px,2.6vw,30px) clamp(18px,3vw,34px);
+}
+.ca-kunye-metin{min-width:0}
+.ca-kunye-metin>span{
+  color:var(--bolge-renk);
+  font:800 9px/1.2 'DM Sans',sans-serif;letter-spacing:.18em;text-transform:uppercase;
+}
+.ca-kunye-metin>p{margin:9px 0 0;max-width:56ch;color:var(--ca-soluk);font-size:12.5px;line-height:1.55}
+.ca-kunye-sinav{
+  margin-top:14px;padding-top:12px;
+  border-top:1px dashed color-mix(in srgb,var(--bolge-renk) 34%,var(--ca-cizgi));
+  max-width:62ch;
+}
+.ca-kunye-sinav b{
+  display:inline-flex;align-items:center;gap:6px;
+  color:var(--bolge-renk);font-size:10.5px;font-weight:750;letter-spacing:.02em;
+}
+.ca-kunye-sinav small{margin-top:5px;display:block;color:var(--ca-soluk);font-size:10.5px;line-height:1.55}
+.ca-kunye-cizim{
+  position:relative;z-index:1;margin:0;
+  border:1px solid color-mix(in srgb,var(--bolge-renk) 30%,var(--ca-cizgi));
+  border-radius:12px;overflow:hidden;
+  background:color-mix(in srgb,var(--ca-yuzey2) 86%,transparent);
+  box-shadow:0 26px 54px -44px rgba(0,0,0,.95);
+}
+.ca-kunye-cizim figcaption{
+  display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;
+  padding:8px 11px;
+  border-top:1px solid color-mix(in srgb,var(--bolge-renk) 18%,var(--ca-cizgi));
+  background:color-mix(in srgb,var(--ca-yuzey) 80%,transparent);
+}
+.ca-kunye-cizim figcaption b{color:var(--bolge-renk);font-size:9.5px;font-weight:750}
+.ca-kunye-cizim figcaption span{color:var(--ca-soluk);font-size:9.5px}
+@media (max-width:860px){
+  .cografya-atlasi .ca-bolge-baslik{grid-template-columns:minmax(0,1fr);gap:16px}
+  .ca-kunye-cizim{max-width:420px}
+}
+
+/* --- Sahne: bilgi kartı seçili noktanın karşı köşesine --- */
+.ca-sahne-tuval>.ca-sahne-bilgi{
+  top:auto;right:auto;bottom:auto;left:auto;
+  width:min(370px,calc(100% - 32px));
+  transition:inset .28s ease;
+}
+.ca-sahne-tuval[data-kart^="ust"]>.ca-sahne-bilgi{top:18px}
+.ca-sahne-tuval[data-kart^="alt"]>.ca-sahne-bilgi{bottom:18px}
+.ca-sahne-tuval[data-kart$="sol"]>.ca-sahne-bilgi{left:18px}
+.ca-sahne-tuval[data-kart$="sag"]>.ca-sahne-bilgi{right:18px}
+
+.ca-sahne-gezinme{display:flex;align-items:center;gap:9px;margin-top:11px}
+.ca-sahne-gezinme button{
+  width:27px;height:27px;display:grid;place-items:center;
+  border:1px solid rgba(213,180,111,.4);border-radius:50%;
+  color:#e6ddc6;background:rgba(255,255,255,.05);cursor:pointer;
+  transition:background-color .18s,border-color .18s;
+}
+.ca-sahne-gezinme button:hover{background:rgba(213,180,111,.2);border-color:rgba(213,180,111,.75)}
+.ca-sahne-gezinme button svg{width:14px}
+.ca-sahne-gezinme em{
+  color:#c2b48c;font-size:9px;font-style:normal;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+}
+.ca-sahne-ipucu{
+  position:absolute;z-index:2;right:16px;bottom:16px;
+  margin:0;padding:8px 13px;
+  display:flex;align-items:center;gap:7px;
+  border:1px solid rgba(213,180,111,.28);border-radius:999px;
+  color:#dfe6e3;background:rgba(7,17,29,.76);backdrop-filter:blur(8px);
+  font-size:9.5px;font-weight:650;
+}
+.ca-sahne-ipucu svg{width:13px;color:#d5b46f}
+
+/* Telefonda kart fotoğrafın altına, altyazı şeridi gibi iner. */
+.ca-bolge-sahne>.ca-sahne-bilgi{
+  position:static;width:auto;
+  border-width:1px 0 0;border-radius:0;
+  background:linear-gradient(180deg,color-mix(in srgb,var(--ca-yuzey) 96%,transparent),color-mix(in srgb,var(--ca-zemin) 45%,var(--ca-yuzey)));
+  box-shadow:none;backdrop-filter:none;
+}
+@media (max-width:700px){
+  .ca-sahne-ipucu{right:10px;bottom:10px;left:10px;justify-content:center}
+}
+
+/* --- Sahne kadrajı: görsel ve kanıt noktaları aynı katmanda --- */
+.cografya-atlasi .ca-sahne-tuval{
+  min-height:0;aspect-ratio:16/9;max-height:min(66vh,600px);
+}
+.ca-sahne-kadraj{
+  position:absolute;inset:0;z-index:0;
+  transform:translate(var(--sahne-x),var(--sahne-y)) scale(1.035);
+  transition:transform .22s ease-out;
+}
+.cografya-atlasi .ca-sahne-kadraj>img{
+  position:absolute;z-index:-3;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center;
+  transform:none;
+}
+.ca-sahne-kadraj>.ca-sahne-renk{position:absolute;inset:0}
+@media (prefers-reduced-motion:reduce){
+  .ca-sahne-kadraj{transform:none;transition:none}
+}
+@media (max-width:700px){
+  .cografya-atlasi .ca-sahne-tuval{aspect-ratio:4/3;max-height:none}
+}
+
+/* ==================================================================
+   AÇIK TEMA DÜZELTMELERİ
+   ------------------------------------------------------------------
+   Açılış bloğu iki temada da sinematik kalır: altındaki fotoğraf koyu
+   olduğu için perde ve yazı rengi temayla değişmez. Fotoğrafın altına
+   inen bilgi kartı ise sayfa akışına girdiği için temayı izler.
+   ================================================================== */
+.ca-hero{background:radial-gradient(circle at 50% 46%,#12222c,#08111a 70%)}
+.ca-hero-perde{
+  background:
+    radial-gradient(circle at 50% 47%,rgba(6,14,20,.9) 0 21%,rgba(6,14,20,.58) 44%,transparent 72%),
+    linear-gradient(180deg,rgba(6,14,20,.6),transparent 34%,rgba(6,14,20,.86));
+}
+.cografya-atlasi .ca-hero-merkez>span{color:rgba(214,226,220,.74)}
+.cografya-atlasi .ca-hero-merkez h1{color:#f3f7f4;text-shadow:0 0 60px rgba(87,201,167,.22)}
+.cografya-atlasi .ca-hero-merkez p{color:rgba(238,244,240,.8)}
+.cografya-atlasi .ca-hero-merkez>small{color:rgba(214,226,220,.66)}
+.cografya-atlasi .ca-konu-halkasi small{color:#eef4f0}
+
+/* Altyazıya inen kart sayfa akışının parçası — rengini temadan alır. */
+.cografya-atlasi .ca-bolge-sahne>.ca-sahne-bilgi{color:var(--ca-yazi)}
+.cografya-atlasi .ca-bolge-sahne>.ca-sahne-bilgi small{color:var(--bolge-renk,var(--ca-vurgu))}
+.cografya-atlasi .ca-bolge-sahne>.ca-sahne-bilgi p{color:var(--ca-soluk)}
+.cografya-atlasi .ca-bolge-sahne>.ca-sahne-bilgi .ca-sahne-gezinme button{
+  border-color:var(--ca-cizgi);color:var(--ca-soluk);background:transparent;
+}
+.cografya-atlasi .ca-bolge-sahne>.ca-sahne-bilgi .ca-sahne-gezinme button:hover{
+  border-color:color-mix(in srgb,var(--ca-vurgu) 60%,transparent);color:var(--ca-yazi);
+  background:color-mix(in srgb,var(--ca-vurgu) 14%,transparent);
+}
+.cografya-atlasi .ca-bolge-sahne>.ca-sahne-bilgi .ca-sahne-gezinme em{color:var(--ca-soluk)}
+.cografya-atlasi .ca-konu-halkasi small{
+  background:linear-gradient(180deg,transparent,rgba(7,15,21,.88) 52%);
+}
+
+/* --- Açık temada okunabilirlik --- */
+/* Bölge renkleri koyu zeminde parlak olsun diye seçildi; açık zeminde
+   yazı olarak kullanıldıklarında kontrast 4.5'in altına düşüyordu.
+   Açık temada yazı rengi koyulaştırılır, dolgu rengi olduğu gibi kalır. */
+.cografya-atlasi[data-tema="acik"]{--ca-soluk:#55646a}
+.cografya-atlasi[data-tema="acik"] .ca-etiket{color:color-mix(in srgb,var(--ca-ana) 40%,#062a23)}
+.cografya-atlasi[data-tema="acik"] .ca-sahne-katmanlar button{color:var(--ca-soluk)}
+.cografya-atlasi[data-tema="acik"] .ca-sahne-katmanlar button[aria-pressed="true"]{
+  color:#77590f;border-color:#c4a25a;background:rgba(213,180,111,.24);
+}
+.cografya-atlasi[data-tema="acik"] .ca-kunye-metin>span,
+.cografya-atlasi[data-tema="acik"] .ca-kunye-sinav b,
+.cografya-atlasi[data-tema="acik"] .ca-kunye-cizim figcaption b{
+  color:color-mix(in srgb,var(--bolge-renk) 42%,#132026);
+}
+.cografya-atlasi[data-tema="acik"] .ca-galeri-ust i,
+.cografya-atlasi[data-tema="acik"] .ca-galeri-eylem,
+.cografya-atlasi[data-tema="acik"] .ca-atlas-dugum>i{
+  color:color-mix(in srgb,var(--renk) 42%,#132026);
+}
+.cografya-atlasi[data-tema="acik"] .ca-galeri-rozetler b.ayri{
+  color:#725310;border-color:#c4a25a;background:rgba(213,180,111,.22);
+}

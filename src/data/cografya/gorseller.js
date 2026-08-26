@@ -53,7 +53,7 @@ export const BOLGE_SAHNELERI = {
       { id: 'insan', ad: 'İnsan', aciklama: 'İnsan bu sistemin dışında değil içindedir; kararı sisteme girer ve geri döner.' },
     ],
     odaklar: [
-      { id: 'limb', katman: 'kureler', x: 48, y: 9, baslik: 'Atmosferin kalınlığı', metin: 'Gezegenin kenarındaki mavi şerit atmosferin tamamıdır. Yarıçapa göre çok incedir; hava olayları ve yaşam bu dar kuşakta olur.' },
+      { id: 'limb', katman: 'kureler', x: 48, y: 13, baslik: 'Atmosferin kalınlığı', metin: 'Gezegenin kenarındaki mavi şerit atmosferin tamamıdır. Yarıçapa göre çok incedir; hava olayları ve yaşam bu dar kuşakta olur.' },
       { id: 'akdeniz-havza', katman: 'kureler', x: 47, y: 60, baslik: 'Kara ve deniz birlikte', metin: 'Akdeniz havzasında kara, deniz ve bitki örtüsü aynı karede. Bir kürenin özelliği diğerinin sınırını belirler.' },
       { id: 'siklon', katman: 'dolasim', x: 19, y: 40, baslik: 'Alçak basınç girdabı', metin: 'Okyanus üzerindeki bulut sarmalı, ısınan havanın yükselip dönerek dolaşım kurduğunu gösterir.' },
       { id: 'sahra', katman: 'dolasim', x: 40, y: 84, baslik: 'Bulutsuz kuşak', metin: 'Sahra’nın bulutsuz oluşu tesadüf değil; alçalan hava kuşağı yağışı engeller. Dolaşımın izi çölde okunur.' },
@@ -71,7 +71,7 @@ export const BOLGE_SAHNELERI = {
       { id: 'mevsim', ad: 'Mevsim', aciklama: 'Eksen eğikliği, ışın açısını yıl boyunca değiştirir; mevsim buradan doğar.' },
     ],
     odaklar: [
-      { id: 'kavis', katman: 'sekil', x: 50, y: 7, baslik: 'Ufkun kavisi', metin: 'Kenardaki eğrilik Dünya’nın geoit biçimini gösterir. Bu biçim yüzünden ışın ekvatorda dik, kutupta yatık gelir.' },
+      { id: 'kavis', katman: 'sekil', x: 50, y: 13, baslik: 'Ufkun kavisi', metin: 'Kenardaki eğrilik Dünya’nın geoit biçimini gösterir. Bu biçim yüzünden ışın ekvatorda dik, kutupta yatık gelir.' },
       { id: 'kutup-yon', katman: 'sekil', x: 72, y: 14, baslik: 'Kuzeye doğru daralma', metin: 'Yüksek enlemlerde aynı alan görüntüde daralır. Küreyi düzleme aktarınca bozulma da buradan başlar.' },
       { id: 'terminator', katman: 'aydinlanma', x: 88, y: 30, baslik: 'Aydınlanma çemberi', metin: 'Sağdaki parlak kenar, gündüzden geceye geçiş çizgisidir. Bu çizgi durmaz; dünya döndükçe batıya doğru ilerler.' },
       { id: 'golge-yon', katman: 'aydinlanma', x: 78, y: 62, baslik: 'Aynı anda farklı saat', metin: 'Aynı karede bir yerde öğle, bir yerde akşam vardır. Yerel saat farkının nedeni budur.' },
@@ -89,7 +89,7 @@ export const BOLGE_SAHNELERI = {
       { id: 'saat', ad: 'Yerel saat', aciklama: 'Boylam farkı doğrudan saat farkı demektir; enlemin saatle ilgisi yoktur.' },
     ],
     odaklar: [
-      { id: 'ekvator-uzak', katman: 'matematik', x: 44, y: 92, baslik: 'Enlem: ışın açısı', metin: 'Ekvatora yaklaştıkça ışın dikleşir. Enlem, bir yerin sıcaklık ve iklim çerçevesini belirleyen matematik veridir.' },
+      { id: 'ekvator-uzak', katman: 'matematik', x: 44, y: 87, baslik: 'Enlem: ışın açısı', metin: 'Ekvatora yaklaştıkça ışın dikleşir. Enlem, bir yerin sıcaklık ve iklim çerçevesini belirleyen matematik veridir.' },
       { id: 'anadolu-koordinat', katman: 'matematik', x: 63, y: 60, baslik: 'Türkiye’nin çerçevesi', metin: 'Türkiye orta kuşakta, 36°–42° kuzey enlemleri arasındadır. Dört mevsimin görülmesi bu matematik konumun sonucudur.' },
       { id: 'bogazlar', katman: 'goreceli', x: 58, y: 55, baslik: 'Geçiş noktası olmak', metin: 'Boğazlar iki denizi ve iki kıtayı bağlar. Bu bir koordinat değil, komşuluğun ürettiği göreceli konum avantajıdır.' },
       { id: 'denizellik', katman: 'goreceli', x: 33, y: 55, baslik: 'Denize kıyısı olmak', metin: 'Aynı enlemdeki iki yerden denize yakın olanın yıllık sıcaklık farkı daha azdır. Enlem aynı, sonuç farklı.' },
@@ -107,7 +107,7 @@ export const BOLGE_SAHNELERI = {
       { id: 'olcek', ad: 'Ölçek', aciklama: 'Küçültme oranı büyüdükçe alan büyür, ayrıntı azalır.' },
     ],
     odaklar: [
-      { id: 'dik-yamac', katman: 'egim', x: 13, y: 12, baslik: 'İzohipsler burada sıklaşır', metin: 'Karlı zirvelerin yamacı çok diktir. Bu arazi haritaya geçtiğinde eğri çizgiler burada üst üste binecek kadar sıklaşır.' },
+      { id: 'dik-yamac', katman: 'egim', x: 14, y: 14, baslik: 'İzohipsler burada sıklaşır', metin: 'Karlı zirvelerin yamacı çok diktir. Bu arazi haritaya geçtiğinde eğri çizgiler burada üst üste binecek kadar sıklaşır.' },
       { id: 'yatik-yamac', katman: 'egim', x: 84, y: 14, baslik: 'İzohipsler burada seyrekleşir', metin: 'Sağdaki geniş plato neredeyse düzdür. Aynı yükselti farkı çok uzun bir mesafeye yayıldığı için çizgiler seyrek olur.' },
       { id: 'kesit-hatti', katman: 'kesit', x: 45, y: 45, baslik: 'Kesit hattı seçimi', metin: 'Vadi tabanından zirveye çizilecek bir A–B hattı, profilde önce hızlı bir yükseliş sonra düzlük verir.' },
       { id: 'kabuk-kesiti', katman: 'kesit', x: 18, y: 78, baslik: 'Gerçek bir kesit', metin: 'Öndeki kesilmiş kütle, tabakaların yandan görünüşüdür. Topoğrafik profil de arazinin böyle bir yan görünüşüdür.' },
@@ -125,7 +125,7 @@ export const BOLGE_SAHNELERI = {
       { id: 'yagis', ad: 'Yağış', aciklama: 'Yükselen havanın soğuması yağış üretir; dağın iki yamacı bu yüzden farklıdır.' },
     ],
     odaklar: [
-      { id: 'gunes', katman: 'enerji', x: 4, y: 57, baslik: 'Enerji kaynağı', metin: 'Ufuktaki Güneş, ışınları çok yatık gönderiyor. Aynı enerji geniş alana yayıldığı için birim alana düşen ısı azalır.' },
+      { id: 'gunes', katman: 'enerji', x: 8, y: 57, baslik: 'Enerji kaynağı', metin: 'Ufuktaki Güneş, ışınları çok yatık gönderiyor. Aynı enerji geniş alana yayıldığı için birim alana düşen ısı azalır.' },
       { id: 'baki', katman: 'enerji', x: 62, y: 60, baslik: 'Yeşil yamaç', metin: 'Denize bakan yamaç hem daha nemli hem daha serin. Bakı ve nem birlikte bitki örtüsünü belirliyor.' },
       { id: 'buharlasma', katman: 'nem', x: 18, y: 63, baslik: 'Buharlaşma sütunları', metin: 'Deniz yüzeyinden yükselen buhar sütunları, havanın mutlak nemini artıran kaynağı doğrudan gösteriyor.' },
       { id: 'bulut-gelisimi', katman: 'nem', x: 36, y: 45, baslik: 'Bulut nasıl büyür', metin: 'Nemli hava yükselip soğudukça doygunluğa ulaşır; kümülüsler kıyıdan dağa doğru sıralanarak büyür.' },
@@ -144,7 +144,7 @@ export const BOLGE_SAHNELERI = {
     ],
     odaklar: [
       { id: 'kivrim', katman: 'ic', x: 58, y: 30, baslik: 'Kıvrılmış tabakalar', metin: 'Sırtlardaki dalgalı desen, tabakaların yatay sıkışmayla kıvrıldığını gösterir. Bu bir dış kuvvet işi değildir.' },
-      { id: 'yukselme', katman: 'ic', x: 13, y: 10, baslik: 'Yükselmiş kütle', metin: 'Karlı zirveler tektonik yükselmenin ürünüdür. Yükselti arttıkça akarsuyun aşındırma gücü de artar.' },
+      { id: 'yukselme', katman: 'ic', x: 14, y: 13, baslik: 'Yükselmiş kütle', metin: 'Karlı zirveler tektonik yükselmenin ürünüdür. Yükselti arttıkça akarsuyun aşındırma gücü de artar.' },
       { id: 'vadi', katman: 'asinim', x: 33, y: 22, baslik: 'Aşındırma koridoru', metin: 'Akarsu yüksek alanda derine aşındırır; vadi burada dar ve keskindir.' },
       { id: 'menderes', katman: 'asinim', x: 45, y: 45, baslik: 'Eğim azalıyor', metin: 'Eğim düşünce akarsu kıvrılmaya başlar. Dış kıyıda aşındırır, iç kıyıda biriktirir; menderes böyle büyür.' },
       { id: 'delta', katman: 'birikim', x: 70, y: 62, baslik: 'Delta', metin: 'Denize ulaşan akarsu hızını kaybeder; taşıdığı ince malzemeyi bırakır ve kıyıda yeni kara üretir.' },
@@ -183,7 +183,7 @@ export const BOLGE_SAHNELERI = {
       { id: 'kirsal', katman: 'yogunluk', x: 14, y: 45, baslik: 'Kırsal seyreklik', metin: 'Aynı büyüklükteki tarım alanında birkaç ışık var. Alan eşit, insan sayısı değil: yoğunluk farkı budur.' },
       { id: 'duzluk', katman: 'etken', x: 45, y: 62, baslik: 'Düzlük ve su', metin: 'Yerleşme akarsuyun iki yakasındaki düzlüğü izliyor. Eğim arttığı yerde yapı seyrekleşiyor.' },
       { id: 'is', katman: 'etken', x: 90, y: 50, baslik: 'İş olanağı', metin: 'Liman ve sanayi alanı çevresinde konut dokusu sıklaşır. Nüfusu çeken şey yalnız doğa değil, iştir.' },
-      { id: 'dag-arka', katman: 'sinir', x: 18, y: 8, baslik: 'Kanıtın bittiği yer', metin: 'Arkadaki dağlarda ışık yok; “burada kimse yaşamıyor” denemez. Görünmeyen, yok demek değildir.' },
+      { id: 'dag-arka', katman: 'sinir', x: 18, y: 13, baslik: 'Kanıtın bittiği yer', metin: 'Arkadaki dağlarda ışık yok; “burada kimse yaşamıyor” denemez. Görünmeyen, yok demek değildir.' },
       { id: 'yas-yapisi', katman: 'sinir', x: 56, y: 30, baslik: 'Fotoğrafın söylemediği', metin: 'Bu görüntü yoğunluğu verir; doğum oranını, yaş yapısını ve göç yönünü vermez. Onlar için piramit ve tablo gerekir.' },
     ],
   },
