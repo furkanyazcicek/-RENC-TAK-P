@@ -6,10 +6,10 @@
 
 | Ölçüt | Hedef | Mevcut | Doğrulanan | Kalan |
 |---|---:|---:|---:|---:|
-| Konu | 32 | 2 tamamlandı | 2 tamamlandı | 30 tamamlanacak |
-| Test | 1.600 | 100 | 100 | 1.500 |
-| Soru | 16.000 | 1.000 | 1.000 | 15.000 |
-| Çözüm | 16.000 | 1.000 | 1.000 | 15.000 |
+| Konu | 32 | 2 tamamlandı, 1 üretimde | 2 tamamlandı | 30 tamamlanacak |
+| Test | 1.600 | 105 | 105 | 1.495 |
+| Soru | 16.000 | 1.050 | 1.050 | 14.950 |
+| Çözüm | 16.000 | 1.050 | 1.050 | 14.950 |
 | SVG görsel | ihtiyaca göre | 4 | 4 | konu planlarına göre |
 
 ## Araştırma ve altyapı
@@ -35,7 +35,8 @@
 - Komut: `node scripts/validate_bank.mjs --strict`
 - Konu 01 sıkı sonucu: 50 test, 500 soru, 500 çözüm; 0 hata, 0 uyarı.
 - Konu 02 sıkı sonucu: 50 test, 500 soru, 500 çözüm; 0 hata, 0 uyarı.
-- Güncel normal ve sıkı sonuç: 100 test, 1.000 soru, 1.000 çözüm; 0 hata, 0 uyarı.
+- Güncel normal sonuç: 105 test, 1.050 soru, 1.050 çözüm; 0 hata, 0 uyarı.
+- Sıkı sonuç: Tamamlanan Konu 01–02 için 100 test ve 1.000 soru; 0 hata, 0 uyarı. Konu 03 üretimde olduğu için genel sıkı kapı henüz uygulanmaz.
 - Matematiksel editör kontrolü: Konu 01 ve Konu 02 Test 01–50 için tamamlandı.
 - Genel cevap dağılımı: A=200, B=200, C=200, D=200, E=200.
 
@@ -43,11 +44,10 @@
 
 Bir sonraki oluşturulacak dosyalar:
 
-1. `03_bolme_bolunebilme_ve_kalan/topic_analysis.md`
-2. `03_bolme_bolunebilme_ve_kalan/test_01_questions.md`
-3. `03_bolme_bolunebilme_ve_kalan/test_01_solutions.md`
+1. `03_bolme_bolunebilme_ve_kalan/test_06_questions.md`
+2. `03_bolme_bolunebilme_ve_kalan/test_06_solutions.md`
 
-Konu 01 ve **Konu 02 — Sayı Basamakları** tamamlandı. Sıradaki üretim **Konu 03 — Bölme, Bölünebilme ve Kalan** konu analizi ve Test 01'dir.
+Konu 01 ve Konu 02 tamamlandı. **Konu 03 — Bölme, Bölünebilme ve Kalan** için Test 01–05 tamamlandı; sıradaki üretim Test 06'dır.
 
 ## Dürüst tamamlanma notu
 
