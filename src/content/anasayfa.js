@@ -149,24 +149,39 @@ export const ANASAYFA_ICERIGI = {
     baslik: 'Öğrenci çalışır. Öğretmen yön verir. Veli süreci sakin biçimde görür.',
     aciklama:
       'Herkes aynı veriye değil, kendi sorumluluğu için gerekli görünüme ulaşır. Teknoloji öğrencinin yerine karar vermez; doğru soruyu, doğru zamanda görünür kılar.',
+    onizlemeEtiketi: 'Etkileşimli rol görünümü',
+    onizlemeYardimi: 'Bir rol seç; aynı öğrenme sürecinin o kullanıcı için nasıl sadeleştiğini gör.',
+    veriNotu: 'Önizlemedeki kişi adları ve sayılar yalnızca tanıtım amaçlı örnek veridir.',
     roller: [
       {
         id: 'ogrenci',
         etiket: 'Öğrenci',
         baslik: 'Bugünkü işine odaklanır.',
         aciklama: 'Not, atlas, soru çözümü, ödev ve kişisel ilerleme tek çalışma alanında.',
+        ozellikler: [
+          'Deneme ve çalışma gelişimini aynı bağlamda izler.',
+          'Takıldığı sorudan ilgili öğrenme aracına geçer.',
+        ],
       },
       {
         id: 'ogretmen',
         etiket: 'Öğretmen',
         baslik: 'Kayıttan anlam çıkarır.',
         aciklama: 'Ödev, mesaj ve öğrenci gelişimi bağlamı kopmadan birlikte okunur.',
+        ozellikler: [
+          'Öğrenci listesi ve eğilimleri birlikte değerlendirir.',
+          'Soru, ödev ve geri bildirimi aynı akışta yönetir.',
+        ],
       },
       {
         id: 'veli',
         etiket: 'Veli',
         baslik: 'Süreci baskı kurmadan izler.',
         aciklama: 'Çalışma ve deneme görünümü, ayrı gözlemci panelinde sade biçimde sunulur.',
+        ozellikler: [
+          'Salt okunur görünümle ilerlemeyi takip eder.',
+          'Çalışma düzeni ve hedefe yakınlığı sakin biçimde görür.',
+        ],
       },
     ],
     kurucuEtiket: 'Kurucu yaklaşımı',

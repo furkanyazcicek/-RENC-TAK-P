@@ -4,14 +4,18 @@ import {
   ArrowRight,
   Check,
   ChevronRight,
+  Eye,
+  GraduationCap,
   Mail,
   Menu,
   MessageCircle,
   ShieldCheck,
   UserRound,
+  Users,
   X,
 } from 'lucide-react'
 
+import PanelPreview from '../components/landing/PanelPreview'
 import InteractiveLearningStage from '../components/landing/editorial/InteractiveLearningStage'
 import LandingInfoDialogs from '../components/landing/product/LandingInfoDialogs'
 import { Logo } from '../components/ui'
@@ -236,6 +240,31 @@ function FlowSection() {
 
 function TrustSection({ onAbout }) {
   const { guven } = ANASAYFA_ICERIGI
+  const [aktifRolId, setAktifRolId] = useState(guven.roller[0]?.id)
+  const rolSekmeleri = useRef([])
+  const aktifRol = guven.roller.find((rol) => rol.id === aktifRolId) ?? guven.roller[0]
+  const rolAyarlari = {
+    ogrenci: { ikon: GraduationCap, panel: 'student' },
+    ogretmen: { ikon: Users, panel: 'teacher' },
+    veli: { ikon: Eye, panel: 'parent' },
+  }
+  const aktifAyar = rolAyarlari[aktifRol.id] ?? rolAyarlari.ogrenci
+
+  function rolKlavyeSecimi(event, index) {
+    const tuslar = ['ArrowLeft', 'ArrowRight', 'Home', 'End']
+    if (!tuslar.includes(event.key)) return
+    event.preventDefault()
+
+    let yeniIndex = index
+    if (event.key === 'ArrowRight') yeniIndex = (index + 1) % guven.roller.length
+    if (event.key === 'ArrowLeft') yeniIndex = (index - 1 + guven.roller.length) % guven.roller.length
+    if (event.key === 'Home') yeniIndex = 0
+    if (event.key === 'End') yeniIndex = guven.roller.length - 1
+
+    const yeniRol = guven.roller[yeniIndex]
+    setAktifRolId(yeniRol.id)
+    rolSekmeleri.current[yeniIndex]?.focus()
+  }
 
   return (
     <section id="guven" className="editorial-trust" aria-labelledby="guven-basligi">
@@ -245,15 +274,65 @@ function TrustSection({ onAbout }) {
         <p>{guven.aciklama}</p>
       </div>
 
-      <div className="editorial-roles">
-        {guven.roller.map((rol, index) => (
-          <article key={rol.id}>
-            <span>0{index + 1}</span>
-            <small>{rol.etiket}</small>
-            <h3>{rol.baslik}</h3>
-            <p>{rol.aciklama}</p>
-          </article>
-        ))}
+      <div className="editorial-role-showcase">
+        <div className="editorial-role-showcase__bar">
+          <div>
+            <span><i aria-hidden="true" />{guven.onizlemeEtiketi}</span>
+            <p>{guven.onizlemeYardimi}</p>
+          </div>
+
+          <div className="editorial-role-tabs" role="tablist" aria-label="Rol görünümü seç">
+            {guven.roller.map((rol, index) => {
+              const secili = rol.id === aktifRol.id
+              const Icon = rolAyarlari[rol.id]?.ikon ?? UserRound
+
+              return (
+                <button
+                  key={rol.id}
+                  ref={(element) => { rolSekmeleri.current[index] = element }}
+                  id={`rol-sekmesi-${rol.id}`}
+                  type="button"
+                  role="tab"
+                  aria-selected={secili}
+                  aria-controls="rol-onizleme-paneli"
+                  tabIndex={secili ? 0 : -1}
+                  onClick={() => setAktifRolId(rol.id)}
+                  onKeyDown={(event) => rolKlavyeSecimi(event, index)}
+                  className="focus-ring"
+                >
+                  <Icon aria-hidden="true" />
+                  {rol.etiket}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        <div
+          id="rol-onizleme-paneli"
+          role="tabpanel"
+          aria-labelledby={`rol-sekmesi-${aktifRol.id}`}
+          className="editorial-role-showcase__body"
+        >
+          <div className="editorial-role-copy" key={`copy-${aktifRol.id}`}>
+            <span>{aktifRol.etiket} görünümü</span>
+            <h3>{aktifRol.baslik}</h3>
+            <p>{aktifRol.aciklama}</p>
+            <ul>
+              {aktifRol.ozellikler.map((ozellik) => (
+                <li key={ozellik}>
+                  <Check aria-hidden="true" />
+                  {ozellik}
+                </li>
+              ))}
+            </ul>
+            <small>{guven.veriNotu}</small>
+          </div>
+
+          <div className="editorial-role-preview" key={`panel-${aktifRol.id}`}>
+            <PanelPreview variant={aktifAyar.panel} />
+          </div>
+        </div>
       </div>
 
       <div className="editorial-founder">
