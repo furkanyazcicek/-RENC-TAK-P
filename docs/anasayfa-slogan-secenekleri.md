@@ -16,7 +16,7 @@ varsayılan seçilmiştir.
 
 ## 2. Öğrenci merkezli ve ilham verici — varsayılan
 
-- **Ana slogan:** Konuyu yalnız okuma. Değiştir, gör, gerçekten anla.
+- **Ana slogan:** Konuyu değiştir. Sonucu gör. Gerçekten anla.
 - **Alt açıklama:** Atlasları keşfet, zorlandığın soruyu adım adım çöz ve bugünkü çalışmanı
   kendi verine göre şekillendir. DRKOÇ, öğrenmeyi ekrandan çıkan bir deneyime dönüştürür.
 - **Birincil CTA:** Öğrenmeye Başla
