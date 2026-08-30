@@ -244,9 +244,18 @@ const TYT = {
       alias: ['Paragraf', 'Paragrafta Anlam'],
     }),
     t('Paragrafta Düşünceyi Geliştirme Yolları', ['Paragrafta Anlam ve Yapı'], 3, 3, { d: 2 }),
+    t('Sözcük Türleri', ['Sözcükte Anlam'], 5, 6, {
+      d: 3,
+      alias: ['İsim', 'Sıfat', 'Zamir', 'Zarf', 'Edat', 'Bağlaç', 'Ünlem'],
+    }),
+    t('Fiiller', ['Sözcük Türleri'], 4, 5, {
+      d: 3,
+      alias: ['Fiilde Yapı', 'Fiilde Çatı', 'Ek Fiil'],
+    }),
     t('Ses Bilgisi', [], 3, 3, { d: 2 }),
     t('Yapı Bilgisi', ['Ses Bilgisi'], 3, 4, { d: 3, alias: ['Sözcükte Yapı'] }),
-    t('Fiilimsi', ['Yapı Bilgisi'], 4, 3, { d: 3, alias: ['Fiilimsiler'] }),
+    t('Tamlamalar', ['Sözcük Türleri', 'Yapı Bilgisi'], 3, 3, { d: 2 }),
+    t('Fiilimsi', ['Yapı Bilgisi', 'Fiiller'], 4, 3, { d: 3, alias: ['Fiilimsiler'] }),
     t('Cümlenin Öğeleri', ['Fiilimsi'], 4, 4, { d: 3 }),
     t('Cümle Türleri', ['Cümlenin Öğeleri'], 3, 3, { d: 3 }),
     t('Anlatım Bozuklukları', ['Cümlenin Öğeleri'], 4, 4, { d: 3, rep: 'yüksek' }),
@@ -367,6 +376,7 @@ const TYT = {
 
   Felsefe: [
     t('Felsefenin Konusu', [], 3, 2, { d: 2, alias: ['Felsefeye Giriş'] }),
+    t('Felsefi Düşüncenin Özellikleri', ['Felsefenin Konusu'], 4, 3, { d: 2 }),
     t('Bilgi Felsefesi', ['Felsefenin Konusu'], 4, 3, { d: 3 }),
     t('Varlık Felsefesi', ['Bilgi Felsefesi'], 3, 3, { d: 3 }),
     t('Ahlak Felsefesi', ['Felsefenin Konusu'], 3, 3, { d: 2 }),
@@ -374,6 +384,8 @@ const TYT = {
     t('Din Felsefesi', ['Felsefenin Konusu'], 3, 2, { d: 2 }),
     t('Siyaset Felsefesi', ['Felsefenin Konusu'], 3, 2, { d: 2 }),
     t('Bilim Felsefesi', ['Bilgi Felsefesi'], 3, 2, { d: 3 }),
+    t('Felsefi Akımlar', ['Bilgi Felsefesi', 'Varlık Felsefesi', 'Ahlak Felsefesi'], 5, 4, { d: 4, rep: 'yüksek' }),
+    t('Temel Filozof-Görüş İlişkileri', ['Felsefi Akımlar'], 5, 4, { d: 4, rep: 'yüksek' }),
   ],
 
   'Din Kültürü ve Ahlak Bilgisi': [

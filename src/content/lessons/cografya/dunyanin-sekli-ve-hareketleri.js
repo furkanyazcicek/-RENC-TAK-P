@@ -1,0 +1,373 @@
+/**
+ * TYT COĞRAFYA · GÖRSEL ATLAS · 2. KONU
+ *
+ * Gold Standard pilotunun içerik gramerini izler: önce görsel model,
+ * sonra mekanizma, karşılaştırma, aktif öğrenme ve sınav çıkarımı.
+ */
+const dunyaninSekliVeHareketleri = {
+  slug: 'dunyanin-sekli-ve-hareketleri',
+  placement: { examType: 'TYT', subject: 'Coğrafya', topic: "Dünya'nın Şekli ve Hareketleri" },
+  order: 1,
+  learningMode: 'interactive',
+  partLabel: 'Görsel Atlas · 2. Konu',
+  title: 'Dünya’nın Şekli ve Hareketleri',
+  subtitle: 'Geoit biçimden gece–gündüze, eksen eğikliğinden mevsimlere uzanan göksel düzeni ezberlemeden oku.',
+  document: {
+    version: 2,
+    estimated_minutes: 48,
+    prerequisites: [
+      { topic: 'Doğa ve İnsan', why: 'Coğrafi bir sonucu neden–sonuç zinciriyle açıklama ve görsel kanıttan çıkarım yapma alışkanlığını kullanacağız.' },
+      { topic: 'Temel yön bilgisi', why: 'Doğu–batı yönü, dönüş hareketini ve Güneş’in görünür hareketini ayırt ederken gereklidir.' },
+    ],
+    outcomes: [
+      'Dünya’nın geoit biçimini ve bu biçimin paralel uzunluğu, yer çekimi ve aydınlanma üzerindeki temel sonuçlarını açıklayabileceksin.',
+      'Günlük hareketin yönünü ve gece–gündüz, yerel saat, günlük sıcaklık farkı gibi sonuçlarını ilişkilendirebileceksin.',
+      'Yıllık hareket ile eksen eğikliğinin birlikte mevsimleri, Güneş ışınlarının geliş açısını ve gece–gündüz sürelerini nasıl değiştirdiğini kurabileceksin.',
+      'Ekinoks ve gündönümü tarihlerinde yarım küreleri karşılaştırabilecek, mutlak ezber yerine işleyen kuralı kullanabileceksin.',
+      'TYT sorularında mevsimlerin nedeni, gölge boyu ve aydınlanma süresiyle ilgili sık çeldiricileri eleyebileceksin.',
+    ],
+    sections: [
+      {
+        id: 'dsh-buyuk-resim',
+        kind: 'opening',
+        title: 'Büyük resim: biçim ve hareket aynı düzeni kurar',
+        lead: 'Dünya yalnızca uzayda duran bir küre değildir. Kendine özgü biçimi, kendi ekseni çevresindeki dönüşü ve Güneş çevresindeki dolanımı; yeryüzünde zamanın, sıcaklığın ve aydınlanmanın dağılışını birlikte şekillendirir.',
+        blocks: [
+          {
+            id: 'dsh-ana-atlas',
+            type: 'figure',
+            kind: 'cografya-etkilesimli-atlas',
+            width: 'full',
+            title: 'Dünya’nın göksel hareket atlası',
+            caption: 'Büyük kürede geoit biçim, eksen, Ekvator ve gece–gündüz sınırı; küçük konumlarda yıllık dolanım okunur. Noktalara dokunarak sonucu oluşturan parçaları sırayla keşfet.',
+            purpose: 'Dersin bütün kavramlarını tek bir mekânsal modelde toplamak ve biçim–hareket–sonuç ilişkisini görünür kılmak.',
+            data: {
+              label: 'Dünya’nın biçim ve hareket bileşenlerini keşfet',
+              image: '/lesson-assets/cografya/dunyanin-sekli-ve-hareketleri/earth-shape-motion-atlas.jpg',
+              imageAlt: 'Eğik eksenli büyük Dünya küresi, gece gündüz sınırı, Güneş ve yörünge üzerindeki farklı Dünya konumlarını gösteren bilimsel atlas illüstrasyonu',
+              hotspots: [
+                { id: 'geoit', x: 24, y: 47, tone: 'earth', kicker: 'Biçim', title: 'Geoit Dünya', body: 'Dünya tam bir küre değildir; kutuplardan hafif basık, Ekvator çevresinde şişkindir. Bu kendine özgü biçime geoit denir.', tyt: '“Küre” genel modeldir; “geoit” Dünya’ya özgü gerçek biçim vurgusudur.' },
+                { id: 'eksen', x: 27, y: 18, tone: 'air', kicker: '23° 27′ eğiklik', title: 'Eğik dönme ekseni', body: 'Kuzey ve Güney kutuplarını birleştiren hayalî eksen, yörünge düzlemine dik değildir. Eksen eğikliği yıllık hareketle birlikte mevsim düzenini kurar.', tyt: 'Yalnız dolanım mevsim oluşturmaz; eksen eğikliği de gereklidir.' },
+                { id: 'ekvator', x: 22, y: 51, tone: 'water', kicker: 'En büyük paralel', title: 'Ekvator çevresi', body: 'Dünya’nın en geniş çevresi Ekvator’dadır. Paralel boyları Ekvator’dan kutuplara gidildikçe küçülür.', tyt: 'Enlem arttıkça paralel çevresi azalır; meridyen boyları eşittir.' },
+                { id: 'aydinlik', x: 34, y: 41, tone: 'water', kicker: 'Aydınlık yarım küre', title: 'Güneş’e dönük yüz', body: 'Güneş ışınlarını alan yarım kürede gündüz yaşanır. Dünya döndükçe yerler aydınlık ve karanlık bölge arasında geçiş yapar.', tyt: 'Gece–gündüzün oluşma nedeni Dünya’nın günlük hareketidir.' },
+                { id: 'karanlik', x: 13, y: 43, tone: 'risk', kicker: 'Karanlık yarım küre', title: 'Güneş’ten uzak yüz', body: 'Işık almayan tarafta gece yaşanır. Aydınlanma çemberi bu iki yarım küreyi ayıran sınırdır.', tyt: 'Aydınlanma çemberi sabit bir meridyen değildir; mevsime ve zamana göre yer değiştirir.' },
+                { id: 'yorunge', x: 68, y: 70, tone: 'human', kicker: '365 gün 6 saat', title: 'Güneş çevresinde dolanım', body: 'Dünya elips biçimli yörüngede Güneş çevresinde dolanırken ekseninin uzaydaki yönü büyük ölçüde aynı kalır.', tyt: 'Yıllık hareket + eksen eğikliği → mevsimler ve gece–gündüz süresi değişimi.' },
+              ],
+              tyt: 'Soruda sonucu görür görmez tek bir nedene atlama: gece–gündüz için günlük hareket; mevsimler için yıllık hareket ile eksen eğikliğini birlikte ara.',
+            },
+          },
+          {
+            id: 'dsh-acilis-prose',
+            type: 'prose',
+            body: `Dersin ana ayrımı şudur: **Dünya’nın şekli**, yeryüzündeki büyüklüklerin ve ışın açılarının enleme göre değişmesine bir temel oluşturur; **Dünya’nın hareketleri** ise gün ve yıl boyunca oluşan zaman değişimini açıklar. Bu iki başlığı birbirine karıştırmadan, fakat aralarındaki bağı koparmadan okumak gerekir.
+
+Bir olayın sonucunu bulurken üç soru sor: Dünya’nın biçiminden mi kaynaklanıyor, günlük dönüşten mi kaynaklanıyor, yoksa yıllık dolanım ile eksen eğikliğinin ortak sonucu mu? Örneğin Güneş’in doğudan doğup batıdan batıyor gibi görünmesi günlük hareketle; öğle vakti ışınların yere düşme açısının Ekvator’dan kutuplara doğru küçülmesi küresel biçimle; aynı yerde bu açının yıl içinde değişmesi ise eksen eğikliği ve yıllık hareketle açıklanır.`,
+          },
+          {
+            id: 'dsh-acilis-note',
+            type: 'teacher_note',
+            tone: 'exam',
+            body: 'Bir soruda “her yerde”, “her zaman” veya “yalnızca” sözcüklerini gördüğünde dikkat et. Eksen eğikliği, enlem ve tarih değiştikçe sonuç da değişebilir; coğrafi kuralın hangi koşulda geçerli olduğunu kontrol et.',
+          },
+        ],
+      },
+      {
+        id: 'dsh-geoit',
+        kind: 'build',
+        title: 'Geoit biçim: tam küreden küçük ama önemli fark',
+        lead: 'Dünya’nın gerçek biçimi gözle fark edilemeyecek kadar küçük bir basıklık taşır; buna rağmen TYT, bu biçimin ölçülebilir sonuçlarını ve küreselliğin kanıtlarını birbirinden ayırmanı ister.',
+        blocks: [
+          {
+            id: 'dsh-geoit-concept',
+            type: 'concept',
+            term: 'Geoit',
+            body: 'Dünya’nın kutuplardan basık, Ekvator’dan şişkin kendine özgü biçimidir. Geoit sözcüğü yalnız “yuvarlak” demek değildir; dönmenin oluşturduğu merkezkaç etkisiyle Ekvator çevresinin daha geniş olmasını anlatır. Bu yüzden Ekvator yarıçapı kutup yarıçapından biraz büyüktür.',
+          },
+          {
+            id: 'dsh-geoit-why',
+            type: 'why',
+            question: 'Dünya neden Ekvator’dan şişkin, kutuplardan basıktır?',
+            body: 'Dünya kendi ekseni çevresinde dönerken dönüş hızının çizgisel etkisi Ekvator çevresinde en büyük, kutup noktalarında sıfırdır. Bu fark, çok uzun jeolojik zaman boyunca kütlenin Ekvator çevresinde bir miktar dışa doğru dağılmasına katkı sağlar. Sonuç tam bir küre değil, geoit biçimdir. Burada “merkezkaç etkisi” ifadesi yönü açıklayan anahtar kavramdır.',
+          },
+          {
+            id: 'dsh-geoit-flow',
+            type: 'figure',
+            kind: 'cografya-neden-sonuc-akisi',
+            width: 'full',
+            title: 'Dönüşten geoit biçime',
+            caption: 'Ekvator ve kutup arasındaki dönüş farkı, biçim ve yer çekimi sonuçlarına uzanan bir zincir kurar.',
+            purpose: 'Geoit biçimi ezber tanım olmaktan çıkarıp oluşum ve sonuç zinciriyle açıklamak.',
+            data: {
+              steps: [
+                { role: 'Hareket', title: 'Dünya batıdan doğuya döner', body: 'Her nokta aynı açısal sürede bir turu tamamlar.', tone: 'natural' },
+                { role: 'Mekânsal fark', title: 'Ekvator daha geniş çember çizer', body: 'Çizgisel hız Ekvator’da büyük, kutuplarda sıfırdır.', tone: 'human' },
+                { role: 'Biçim sonucu', title: 'Ekvator şişkinleşir', body: 'Kutup yarıçapı Ekvator yarıçapından küçük kalır.', tone: 'result' },
+                { role: 'Ölçülebilir etki', title: 'Yer çekimi kutuplarda daha fazladır', body: 'Merkeze uzaklık ve merkezkaç etkisi birlikte rol oynar.', tone: 'effect' },
+              ],
+              inference: 'Kutuplarda yer çekiminin daha fazla olması yalnız sıcaklıkla açıklanmaz; merkeze yakınlık ve dönüş etkisi temel belirleyicilerdir.',
+            },
+          },
+          {
+            id: 'dsh-kuresellik-compare',
+            type: 'compare',
+            title: 'Küresel biçimin sonucu mu, geoit ayrıntısı mı?',
+            columns: ['Küreselliğin genel sonucu', 'Geoit biçimin özel sonucu'],
+            rows: [
+              { label: 'Işın açısı', values: ['Güneş ışınlarının yere düşme açısı Ekvator’dan kutuplara küçülür.', 'Doğrudan geoit ayrıntısının değil, küresel yüzeyin sonucudur.'] },
+              { label: 'Paraleller', values: ['Paralel çevreleri kutuplara doğru küçülür.', 'En büyük çevrenin Ekvator’da olması şişkinlikle uyumludur.'] },
+              { label: 'Yer çekimi', values: ['Yüzeyde her yerde merkeze yönelir.', 'Kutuplarda daha fazla, Ekvator’da daha az ölçülür.'] },
+              { label: 'Gölge', values: ['Aynı anda farklı enlemlerde farklı olabilir.', 'Temel neden ışın açısıdır; geoit basıklığı değildir.'] },
+            ],
+            insight: 'TYT’de büyük sonuçların çoğu Dünya’nın küreselliğiyle; kutup–Ekvator yarıçap ve yer çekimi farkları geoit ayrıntısıyla ilişkilendirilir.',
+          },
+        ],
+      },
+      {
+        id: 'dsh-gunluk',
+        kind: 'deepen',
+        title: 'Günlük hareket: 24 saatte değişen görünüm',
+        lead: 'Dünya kendi ekseni çevresinde batıdan doğuya döner. Biz hareket eden yüzeyde bulunduğumuz için Güneş, Ay ve yıldızlar gökyüzünde doğudan batıya ilerliyormuş gibi görünür.',
+        blocks: [
+          {
+            id: 'dsh-gunluk-process',
+            type: 'figure',
+            kind: 'cografya-surec-seridi',
+            width: 'full',
+            title: 'Bir noktanın bir günlük aydınlanma yolculuğu',
+            caption: 'Aynı yer karanlıktan aydınlığa, öğle yüksekliğine ve yeniden karanlığa geçerken ışın açısı ile sıcaklık birlikte fakat gecikmeli değişir.',
+            purpose: 'Günlük hareketin gözlenebilir sonuçlarını gün içindeki sıraya bağlamak.',
+            data: {
+              title: 'Güneş’in görünür hareketini gerçek dönüş yönüyle birlikte oku',
+              intro: 'Dünya batıdan doğuya döndüğü için gök cisimleri doğudan batıya hareket ediyormuş gibi görünür. Aşağıdaki sıra bir yerin aydınlanma çemberinden geçişidir.',
+              steps: [
+                { icon: 'mekan', title: 'Gün doğumu', body: 'Yer aydınlanma çemberinin karanlıktan aydınlığa geçen kenarına ulaşır; ışın açısı küçüktür.' },
+                { icon: 'olanak', title: 'Öğle', body: 'Güneş ufuk üzerindeki en yüksek konumuna yaklaşır; gölge genellikle günün en kısa hâlindedir.' },
+                { icon: 'zincir', title: 'Öğleden sonra', body: 'Zemin bir süre daha enerji verdiği için en yüksek sıcaklık çoğu yerde tam öğleden sonra ölçülür.' },
+                { icon: 'alternatif', title: 'Gün batımı ve gece', body: 'Yer aydınlık yarım küreden çıkar; yüzey enerji kaybetmeye başlar ve sıcaklık düşer.' },
+              ],
+              tyt: 'Güneş’in en yüksekte olduğu an ile günlük en yüksek sıcaklık aynı an değildir; yüzeyin ısınma gecikmesini unutma.',
+            },
+          },
+          {
+            id: 'dsh-gunluk-mechanism',
+            type: 'mechanism',
+            title: 'Günlük hareket hangi sonuçları doğurur?',
+            body: 'Bir tam dönüş yaklaşık 24 saat sürer. Dönüş yalnız gece ve gündüzü oluşturmaz; yerel saat farklarının, günlük sıcaklık değişiminin ve hareketli hava ile su kütlelerindeki sapmanın da temelidir.',
+            steps: [
+              { title: 'Gece ve gündüz birbirini izler', body: 'Bir yer sırayla Güneş’e dönük ve Güneş’ten uzak yarım küreye geçer.' },
+              { title: 'Yerel saat doğuya gidildikçe ilerler', body: 'Doğudaki meridyenler Güneş’in karşısına daha önce gelir. Her 1° boylam farkı 4 dakika yerel saat farkı oluşturur.' },
+              { title: 'Günlük sıcaklık farkı oluşur', body: 'Işın açısı ve alınan enerji gün içinde değişir; ısınma ve soğuma yüzeyin özelliklerine göre gecikmeli gerçekleşir.' },
+              { title: 'Dinamik sapma ortaya çıkar', body: 'Rüzgâr ve okyanus akıntıları Kuzey Yarım Küre’de sağa, Güney Yarım Küre’de sola sapma eğilimi gösterir.' },
+            ],
+          },
+          {
+            id: 'dsh-gunluk-trap',
+            type: 'trap',
+            title: 'Güneş doğudan batıya dönmez',
+            wrong: '“Güneş gökyüzünde doğudan batıya ilerlediğine göre Dünya doğuya doğru değil, batıya doğru dönmektedir.”',
+            right: 'Görünen hareket ile gerçek hareket ters yönlüdür. Dünya batıdan doğuya döner; bu nedenle Güneş ve yıldızlar doğudan batıya gidiyor gibi görünür.',
+            body: 'Soruda gerçek dönüş yönü soruluyorsa batıdan doğuya; günlük görünür hareket soruluyorsa doğudan batıya cevabını kullan. Bu ayrım yerel saat sorularının da temelidir.',
+          },
+          {
+            id: 'dsh-gunluk-check',
+            type: 'checkpoint',
+            prompt: 'Aynı anda 30° Doğu ve 45° Doğu meridyenlerindeki iki merkezden hangisinde yerel saat ileridir ve aralarında kaç dakika fark vardır?',
+            hint: 'Önce doğudaki merkezi bul. Sonra 15° boylam farkını her derece için 4 dakika ile çarp.',
+            answer: '45° Doğu daha doğudadır ve Güneş’in karşısına daha önce gelir. Boylam farkı 15° olduğuna göre yerel saat farkı 15 × 4 = 60 dakikadır; 45° Doğu’daki merkez bir saat ileridir.',
+          },
+        ],
+      },
+      {
+        id: 'dsh-yillik',
+        kind: 'deepen',
+        title: 'Yıllık hareket ve eksen eğikliği: mevsim düzeninin iki ortağı',
+        lead: 'Dünya’nın Güneş çevresinde dolanması yaklaşık 365 gün 6 saat sürer. Fakat mevsimlerin oluşması için yalnız dolanım yetmez; 23° 27′ eksen eğikliği ve eksenin uzaydaki yönünü koruması gerekir.',
+        blocks: [
+          {
+            id: 'dsh-yillik-why',
+            type: 'why',
+            question: 'Mevsimler neden Dünya’nın Güneş’e yaklaşıp uzaklaşmasıyla oluşmaz?',
+            body: 'Dünya Güneş’e yaklaştığında iki yarım küre de aynı anda yaklaşır; oysa aynı tarihte Kuzey ve Güney Yarım Küre karşıt mevsimleri yaşar. Bu tek gözlem uzaklık açıklamasını çürütür. Mevsimleri oluşturan temel mekanizma, eksen eğikliği nedeniyle Güneş ışınlarının geliş açısının ve aydınlanma süresinin yıl içinde yarım kürelere göre değişmesidir.',
+          },
+          {
+            id: 'dsh-yillik-process',
+            type: 'figure',
+            kind: 'cografya-surec-seridi',
+            width: 'full',
+            title: 'Eksen eğikliğinden mevsim sonucuna',
+            caption: 'Işın açısı ile gündüz süresi aynı yönde değiştiğinde birim yüzeye ulaşan enerji miktarı ve mevsim koşulları farklılaşır.',
+            purpose: 'Mevsimleri dört ayrı ezber cümlesi yerine ortak bir fiziksel zincirle öğretmek.',
+            data: {
+              title: 'Bir yarım küre Güneş’e dönük olduğunda ne değişir?',
+              intro: 'Eksen eğikliği, yılın bir bölümünde bir yarım küreyi Güneş’e daha dönük hâle getirir. Aynı zincir karşı yarım kürede ters yönde işler.',
+              steps: [
+                { icon: 'mekan', title: 'Işın açısı büyür', body: 'Enerji daha dar bir yüzeye yayılır ve atmosferde izlediği yol kısalır.' },
+                { icon: 'olanak', title: 'Gündüz süresi uzar', body: 'Yüzey daha uzun süre enerji alır; gece süresi kısalır.' },
+                { icon: 'zincir', title: 'Isı birikimi artar', body: 'Günlük enerji bütçesi büyür; mevsimsel sıcaklıklar yükselme eğilimi gösterir.' },
+                { icon: 'alternatif', title: 'Karşı yarım kürede tersi olur', body: 'Işın açısı küçülür, gündüz kısalır ve kış koşulları belirginleşir.' },
+              ],
+              tyt: 'Sıcaklık yalnız ışın açısına bağlı değildir; gündüz süresi de enerji birikimini etkiler. Yerel koşullar sonucu değiştirebilir.',
+            },
+          },
+          {
+            id: 'dsh-yillik-prose',
+            type: 'prose',
+            body: `Eksen eğikliği olmasaydı Güneş ışınlarının dik geldiği alan yıl boyunca Ekvator çevresinde kalır, gece–gündüz süreleri mevsimsel olarak belirgin değişmez ve bugünkü anlamıyla mevsimler oluşmazdı. Yıllık hareket, eksen eğikliğinin etkisini yörünge boyunca farklı konumlarda görünür hâle getirir.
+
+Bir yarım kürede yaz yaşanırken Güneş’e daha yakın olunması gerekmez. Asıl ölçüt, ışınların yüzeye düşme açısı ve aydınlık kalma süresidir. Ayrıca mevsimlerin başlamasıyla en sıcak veya en soğuk günlerin aynı tarihe denk gelmemesi normaldir; kara, deniz ve atmosferin ısınıp soğuması zaman alır. Bu gecikme, “21 Haziran yılın kesin en sıcak günüdür” gibi yargıları yanlış yapar.`,
+          },
+          {
+            id: 'dsh-yarimkure-compare',
+            type: 'compare',
+            title: 'Aynı tarih, karşıt yarım küreler',
+            columns: ['Kuzey Yarım Küre', 'Güney Yarım Küre'],
+            rows: [
+              { label: '21 Haziran', values: ['Yaz başlar; yılın en uzun gündüzü yaşanır.', 'Kış başlar; yılın en uzun gecesi yaşanır.'] },
+              { label: '21 Aralık', values: ['Kış başlar; yılın en uzun gecesi yaşanır.', 'Yaz başlar; yılın en uzun gündüzü yaşanır.'] },
+              { label: '21 Mart', values: ['İlkbahar başlar; gece ve gündüz eşittir.', 'Sonbahar başlar; gece ve gündüz eşittir.'] },
+              { label: '23 Eylül', values: ['Sonbahar başlar; gece ve gündüz eşittir.', 'İlkbahar başlar; gece ve gündüz eşittir.'] },
+            ],
+            insight: 'Mevsim adı yarım küreye göre değişir; ekinoks günlerinde gece–gündüz eşitliği iki yarım küre için ortaktır.',
+          },
+        ],
+      },
+      {
+        id: 'dsh-ozel-tarihler',
+        kind: 'deepen',
+        title: 'Özel tarihler: tabloyu ezberleme, değişimin yönünü izle',
+        lead: 'Ekinoks ve gündönümü tarihleri tek başına dört ayrı ezber paketi değildir. Güneş ışınlarının dik geldiği enlem, aydınlanma çemberinin konumu ve gündüz süresinin hangi yöne değiştiği ortak kuralla bulunabilir.',
+        blocks: [
+          {
+            id: 'dsh-tarihler-compare',
+            type: 'compare',
+            title: 'Dört kritik tarihte temel gözlemler',
+            columns: ['Güneş ışınları ve aydınlanma', 'Kuzey Yarım Küre’de değişim'],
+            rows: [
+              { label: '21 Mart', values: ['Ekvator’a dik gelir; aydınlanma çemberi kutup noktalarından geçer.', 'İlkbahar başlar; bu tarihten sonra gündüzler gecelerden uzun olmaya başlar.'] },
+              { label: '21 Haziran', values: ['Yengeç Dönencesi’ne dik gelir; Kuzey Kutup Dairesi içinde 24 saat gündüz görülebilir.', 'En uzun gündüz yaşanır; bu tarihten sonra gündüzler kısalmaya başlar.'] },
+              { label: '23 Eylül', values: ['Ekvator’a dik gelir; gece ve gündüz yaklaşık eşittir.', 'Sonbahar başlar; bu tarihten sonra geceler gündüzlerden uzun olur.'] },
+              { label: '21 Aralık', values: ['Oğlak Dönencesi’ne dik gelir; Güney Kutup Dairesi içinde 24 saat gündüz görülebilir.', 'En uzun gece yaşanır; bu tarihten sonra gündüzler uzamaya başlar.'] },
+            ],
+            insight: '“En uzun gündüz” ile “gündüzlerin uzamaya devam ettiği gün” aynı değildir. 21 Haziran maksimumdur; ertesi günden itibaren Kuzey Yarım Küre’de gündüzler kısalır.',
+          },
+          {
+            id: 'dsh-golge-why',
+            type: 'why',
+            question: 'Öğle vakti gölge boyu neden yıl içinde değişir?',
+            body: 'Güneş’in ufuk üzerindeki yükseltisi eksen eğikliği ve yıllık hareket nedeniyle değişir. Işınların geliş açısı büyüdükçe aynı cismin gölgesi kısalır; açı küçüldükçe gölge uzar. Dönenceler arasında kalan yerlerde Güneş bazı tarihlerde tam dik gelebilir ve öğle gölgesi sıfıra yaklaşabilir. Dönenceler dışında Güneş hiçbir zaman tam dik gelmez.',
+          },
+          {
+            id: 'dsh-tarihler-check',
+            type: 'checkpoint',
+            prompt: 'Kuzey Yarım Küre’de 10 Temmuz tarihinde gündüzler gecelerden uzundur. Buna rağmen “gündüzler uzamaktadır” denebilir mi?',
+            hint: '21 Haziran’ın hem maksimum gündüz hem de değişim yönünün döndüğü tarih olduğunu hatırla.',
+            answer: 'Hayır. 10 Temmuz’da gündüz süresi hâlâ geceden uzundur; fakat 21 Haziran’dan sonra gündüzler kısalmaya başlamıştır. “Gündüz uzun” ile “gündüz uzuyor” farklı yargılardır.',
+          },
+          {
+            id: 'dsh-tarihler-note',
+            type: 'teacher_note',
+            tone: 'warning',
+            body: 'Güneş ışınları 21 Haziran’da Yengeç Dönencesi’nin kuzeyine, 21 Aralık’ta Oğlak Dönencesi’nin güneyine hiçbir zaman dik gelmez. Dik ışınların yıl içindeki sınırı iki dönence arasındadır.',
+          },
+        ],
+      },
+      {
+        id: 'dsh-uygulama',
+        kind: 'practice',
+        title: 'Görselden soruya: ışın açısı, gölge ve gündüz süresi',
+        lead: 'TYT bu konuyu çoğu zaman bir tarih tablosu olarak değil; gölge çizimi, farklı enlemlerde gündüz grafiği veya iki yarım küreyi karşılaştıran kısa bir deney üzerinden sorar.',
+        blocks: [
+          {
+            id: 'dsh-golge-example',
+            type: 'worked_example',
+            title: 'Aynı direğin iki tarihteki gölgesi',
+            prompt: 'Kuzey Yarım Küre orta kuşakta bulunan bir merkezde aynı dik direğin öğle gölgesi 21 Aralık’ta 21 Haziran’dan daha uzundur. Bu gözlem hangi zincirle açıklanır?',
+            steps: [
+              { title: 'Tarihi yarım küreyle eşleştir', body: '21 Aralık Kuzey Yarım Küre’de kış başlangıcı, 21 Haziran yaz başlangıcıdır.' },
+              { title: 'Işın açısını karşılaştır', body: '21 Aralık’ta Güneş ufuk üzerinde daha alçaktır; ışınların yüzeye geliş açısı daha küçüktür.' },
+              { title: 'Gölge kuralını uygula', body: 'Işın açısı küçüldükçe aynı yükseklikteki cismin gölgesi uzar.' },
+              { title: 'Verilmeyen sonucu ekleme', body: 'Bu gözlem tek başına o günün kesin sıcaklığını vermez; bulutluluk, yükselti ve yüzey özellikleri sıcaklığı etkileyebilir.' },
+            ],
+            answer: 'Eksen eğikliği ve yıllık hareket, 21 Aralık’ta Kuzey Yarım Küre’ye gelen ışın açısını küçültür; küçük açı daha uzun öğle gölgesi oluşturur.',
+            takeaway: 'Gölge sorusunda yön: ışın açısı büyürse gölge kısalır; ışın açısı küçülürse gölge uzar.',
+          },
+          {
+            id: 'dsh-uygulama-exam',
+            type: 'exam',
+            title: 'Grafik sorusunda önce neye bakmalısın?',
+            body: 'Bir merkezin yıl içindeki gündüz süresi grafiğinde en uzun gündüzün hangi tarihe yakın olduğuna bak. Tepe 21 Haziran çevresindeyse merkez Kuzey, 21 Aralık çevresindeyse Güney Yarım Küre’dedir. Eğrinin yıl boyunca 12 saate çok yakın olması Ekvator’a yakınlığı; farkın büyümesi daha yüksek enlemleri düşündürür.',
+            patterns: ['Tepe tarihi → yarım küre', 'Dalgalanma büyüklüğü → enlem', '12 saat çevresi → Ekvator’a yakınlık', 'Maksimumdan sonra → değişim yönü tersine döner'],
+          },
+          {
+            id: 'dsh-uygulama-trap',
+            type: 'trap',
+            title: 'Takvim mevsimi ile sıcaklık aynı gün dönmez',
+            wrong: '“21 Haziran en uzun gündüz olduğuna göre Kuzey Yarım Küre’de yılın her yerinde kesinlikle en sıcak gündür.”',
+            right: '21 Haziran astronomik yaz başlangıcı ve en uzun gündüzdür; yüzey ve atmosferin ısı biriktirmesi sürdüğü için en yüksek sıcaklıklar çoğu yerde daha sonra görülebilir.',
+            body: 'Ayrıca yükselti, denizellik, akıntılar ve bulutluluk yerel sıcaklığı değiştirir. Astronomik tarih genel enerji düzenini verir; her merkezin gerçek hava sıcaklığını tek başına belirlemez.',
+          },
+          {
+            id: 'dsh-uygulama-check',
+            type: 'checkpoint',
+            prompt: 'Yıl boyunca gece–gündüz süresinin en az değiştiği ve öğle vakti Güneş’in iki kez dik gelebileceği bir merkez için hangi enlem kuşağı düşünülmelidir?',
+            hint: 'Gece–gündüz farkının en az olduğu yeri ve dik ışınların hangi sınırlar arasında dolaştığını birlikte kullan.',
+            answer: 'Merkez Ekvator çevresinde ve dönenceler arasında olmalıdır. Ekvator’a yaklaştıkça gece–gündüz süre farkı azalır; dönenceler arasında Güneş yıl içinde belirli tarihlerde dik gelebilir.',
+          },
+        ],
+      },
+      {
+        id: 'dsh-sinav',
+        kind: 'close',
+        title: 'Sınav refleksi: sonucu doğru nedene bağla',
+        lead: 'Bu konuda güçlü öğrenci, dört tarihi yalnız ezberleyen değil; bir gözlemi biçim, günlük hareket veya eksen eğikliği–yıllık hareket ortaklığından hangisinin açıkladığını ayıran öğrencidir.',
+        blocks: [
+          {
+            id: 'dsh-quiz',
+            type: 'quiz',
+            question: 'Aşağıdakilerden hangisi Dünya’nın yıllık hareketi ve eksen eğikliğinin ortak sonucudur?',
+            options: [
+              'Gece ve gündüzün birbirini izlemesi',
+              'Doğudaki merkezlerde yerel saatin ileri olması',
+              'Güneş ışınlarının bir merkeze geliş açısının yıl içinde değişmesi',
+              'Rüzgârların Kuzey Yarım Küre’de sağa sapması',
+            ],
+            answer_index: 2,
+            explanation: 'Bir merkeze gelen ışın açısının yıl içindeki değişimi, Dünya yörüngede ilerlerken eğik eksenin Güneş’e göre konumunun değişmesiyle oluşur. Diğer üç seçenek günlük hareketin sonuçlarıdır.',
+            purpose: 'apply',
+          },
+          {
+            id: 'dsh-osym',
+            type: 'osym_insight',
+            title: 'ÖSYM bu konuda neyi ölçer?',
+            body: 'Soruda verilen tarih, yarım küre, gölge, ışın açısı veya gündüz süresi bilgisinden hangi hareketin sorumlu olduğunu bulmanı ölçer. Çeldiriciler çoğunlukla görünür hareket ile gerçek hareketi, “uzun” ile “uzuyor” yargısını ve mevsim ile Dünya–Güneş uzaklığını birbirine karıştırır.',
+            measures: ['Sonucu günlük ve yıllık harekete ayırma', 'Yarım küreleri ters mevsimle karşılaştırma', 'Gölge boyundan ışın açısı çıkarma', 'Gündüz grafiğinden enlem ve yarım küre yorumlama'],
+          },
+          {
+            id: 'dsh-summary',
+            type: 'summary',
+            title: 'Bir dakikalık zihinsel harita',
+            points: [
+              'Geoit: kutuplardan basık, Ekvator’dan şişkin Dünya biçimi.',
+              'Küresellik → ışın açısı ve paralel çevresi enleme göre değişir.',
+              'Günlük hareket batıdan doğuya, görünür gök hareketi doğudan batıyadır.',
+              'Günlük hareket → gece–gündüz, yerel saat farkı, günlük sıcaklık değişimi ve dinamik sapma.',
+              'Yıllık hareket + 23° 27′ eksen eğikliği → mevsimler, ışın açısı ve gece–gündüz süre değişimi.',
+              '21 Mart ve 23 Eylül ekinoks; 21 Haziran ve 21 Aralık gündönümüdür.',
+              'Işın açısı büyürse öğle gölgesi kısalır; küçülürse uzar.',
+              'Mevsimlerin nedeni Dünya–Güneş uzaklığı değildir.',
+            ],
+            body: 'Soruyu çözerken önce değişimin günlük mi yıllık mı olduğunu bul; sonra yarım küreyi ve tarihi yerleştir. Bu iki adım çoğu ayrıntıyı ezberlemeden doğru sonuca götürür.',
+          },
+          {
+            id: 'dsh-next',
+            type: 'next_step',
+            body: 'Sıradaki müfredat konusu **Coğrafi Konum**. Dünya’nın şekli, paralel–meridyen düzeni ve yerel saat mantığını; matematik konum ile göreceli konumu okumak için kullanacaksın.',
+            topics: ['Enlem ve boylam', 'Matematik konum', 'Göreceli konum', 'Türkiye’nin konumu'],
+          },
+        ],
+      },
+    ],
+  },
+}
+
+export default dunyaninSekliVeHareketleri

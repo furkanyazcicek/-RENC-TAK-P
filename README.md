@@ -403,6 +403,55 @@ kurallarını sınar.
 
 ---
 
+## 4.6) Ders Notları — Yapılandırılmış Ders Sistemi
+
+Kütüphanedeki PDF/metin notlarının yanında, öğretmen kalitesinde
+**yapılandırılmış dersler** bulunur. Bunlar "not" değil, öğrencinin tek
+başına konuyu öğrenebileceği ders materyalidir.
+
+### Kaynak dosyalar
+
+| Yol | İş |
+| --- | --- |
+| `src/lib/lesson/schema.js` | Ders belgesinin tek tanımı: blok tipleri, doğrulama, derinlik denetimi, editör alanları |
+| `src/components/lessons/reader/` | Sunum katmanı — her blok tipinin kendi görsel çözümü |
+| `src/components/lessons/figures/` | Bilimsel şemalar (gerçek SVG, tema uyumlu, bölge vurgulu) |
+| `src/components/lessons/editor/` | Öğretmen editörünün alan bileşenleri |
+| `src/lib/lesson/personalize.js` | Kişiselleştirme katmanı (model çağrısı yok, kural tabanlı) |
+| `src/content/lessons/` | Gold standard referans dersleri |
+
+### İki kural
+
+1. **İçerik sunumu seçmez.** Ders belgesi yalnızca anlam üretir
+   (`type: 'trap'`, `type: 'why'`…). Rengi, kutusu, yerleşimi
+   `src/components/lessons/reader/LessonBlock.jsx` seçer. AI da bu yüzden
+   "şunu mor kart yap" diyemez.
+2. **Görsel derinliğin yerine geçmez.** `auditLessonDepth()` her kaydetmede
+   çalışır ve ders yüzeyselse öğretmene uyarı verir (kelime sayısı, eksik
+   pedagojik katman, ön koşul/kazanım eksikliği). Yayını engellemez; karar
+   öğretmenindir.
+
+### Tasarım önizlemesi
+
+Giriş yapmadan `/ders-notu-onizleme` adresi açılır. Gerçek gold standard
+dersi ve altında içerik denetimi künyesi görünür.
+
+### Komutlar
+
+```bash
+node scripts/test-lesson-document.mjs   # şema + derinlik denetimi testleri
+node scripts/seed-showcase-lesson.mjs   # gold standard dersi veritabanına yazar
+```
+
+### Sesli anlatım (Hocayla Çalış)
+
+Ses sağlayıcısı `TTS_PROVIDER=none` olduğu sürece ders normal çalışır;
+"Hocayla Çalış" ve "Görseli Hocayla İncele" öğretmen anlatımını **metin
+olarak** gösterir. Sağlayıcı bağlandığında aynı metin seslendirilir ve
+`lesson_audio_assets` üzerinden cache'lenir — aynı ses ikinci kez üretilmez.
+
+---
+
 ## 5) Sık Sorulan Sorular
 
 **"npm install" hata verdi, ne yapmalıyım?**

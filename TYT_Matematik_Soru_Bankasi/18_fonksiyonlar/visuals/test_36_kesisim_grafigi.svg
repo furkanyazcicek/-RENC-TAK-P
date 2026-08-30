@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470" role="img" aria-labelledby="title desc">
+  <title id="title">Parabol ve yatay doğru grafikleri</title>
+  <desc id="desc">Yukarı açılan f parabolü ile g yatay doğrusu iki farklı noktada kesişmektedir.</desc>
+  <defs>
+    <marker id="axisArrow36" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="758" height="468" rx="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <g stroke="#e2e8f0" stroke-width="1">
+    <path d="M110 55V420 M200 55V420 M290 55V420 M380 55V420 M470 55V420 M560 55V420 M650 55V420"/>
+    <path d="M70 90H690 M70 160H690 M70 230H690 M70 300H690 M70 370H690"/>
+  </g>
+  <g stroke="#334155" stroke-width="3" marker-end="url(#axisArrow36)">
+    <path d="M60 300H710"/>
+    <path d="M380 430V40"/>
+  </g>
+  <g fill="#475569" font-family="Arial, sans-serif" font-size="17">
+    <text x="695" y="328">x</text>
+    <text x="397" y="52">y</text>
+    <text x="359" y="326">0</text>
+    <text x="190" y="326">−2</text>
+    <text x="552" y="326">2</text>
+    <text x="407" y="145">2</text>
+    <text x="328" y="451">−2</text>
+  </g>
+  <polyline points="155,2 178,86 200,160 223,226 245,283 268,331 290,370 313,401 335,423 358,436 380,440 403,436 425,423 448,401 470,370 493,331 515,283 538,226 560,160 583,86 605,2" fill="none" stroke="#2563eb" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M90 160H670" fill="none" stroke="#ea580c" stroke-width="6" stroke-linecap="round"/>
+  <g fill="#7c3aed" stroke="#ffffff" stroke-width="4">
+    <circle cx="200" cy="160" r="9"/>
+    <circle cx="560" cy="160" r="9"/>
+  </g>
+  <g font-family="Georgia, serif" font-size="28" font-style="italic">
+    <text x="598" y="78" fill="#1d4ed8">f</text>
+    <text x="625" y="147" fill="#c2410c">g</text>
+  </g>
+</svg>

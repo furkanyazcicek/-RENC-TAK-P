@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470" role="img" aria-labelledby="title desc">
+  <title id="title">Basamaklı fonksiyon grafiği</title>
+  <desc id="desc">Fonksiyon eksi üçten eksi bire kadar iki, eksi birden ikiye kadar eksi bir, ikiden dörde kadar üç değerini alır. Aralık uçları açık ve kapalı noktalarla gösterilmiştir.</desc>
+  <defs>
+    <marker id="axisArrow32" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="758" height="468" rx="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <g stroke="#e2e8f0" stroke-width="1">
+    <path d="M80 90H690 M80 160H690 M80 230H690 M80 300H690 M80 370H690"/>
+    <path d="M150 55V410 M220 55V410 M290 55V410 M360 55V410 M430 55V410 M500 55V410 M570 55V410 M640 55V410"/>
+  </g>
+  <g stroke="#334155" stroke-width="3" marker-end="url(#axisArrow32)">
+    <path d="M65 300H710"/>
+    <path d="M360 425V40"/>
+  </g>
+  <g fill="#475569" font-family="Arial, sans-serif" font-size="17">
+    <text x="695" y="328">x</text>
+    <text x="377" y="52">y</text>
+    <text x="339" y="326">0</text>
+    <text x="139" y="326">−3</text>
+    <text x="279" y="326">−1</text>
+    <text x="494" y="326">2</text>
+    <text x="634" y="326">4</text>
+    <text x="378" y="166">2</text>
+    <text x="378" y="96">3</text>
+    <text x="378" y="400">−1</text>
+  </g>
+  <path d="M150 160H290" fill="none" stroke="#2563eb" stroke-width="8" stroke-linecap="round"/>
+  <path d="M290 370H500" fill="none" stroke="#0f766e" stroke-width="8" stroke-linecap="round"/>
+  <path d="M500 90H640" fill="none" stroke="#7c3aed" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="150" cy="160" r="10" fill="#2563eb" stroke="#ffffff" stroke-width="4"/>
+  <circle cx="290" cy="160" r="11" fill="#ffffff" stroke="#2563eb" stroke-width="6"/>
+  <circle cx="290" cy="370" r="10" fill="#0f766e" stroke="#ffffff" stroke-width="4"/>
+  <circle cx="500" cy="370" r="11" fill="#ffffff" stroke="#0f766e" stroke-width="6"/>
+  <circle cx="500" cy="90" r="10" fill="#7c3aed" stroke="#ffffff" stroke-width="4"/>
+  <circle cx="640" cy="90" r="10" fill="#7c3aed" stroke="#ffffff" stroke-width="4"/>
+  <text x="650" y="82" fill="#6d28d9" font-family="Georgia, serif" font-size="29" font-style="italic">f</text>
+</svg>

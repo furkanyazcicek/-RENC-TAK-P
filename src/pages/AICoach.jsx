@@ -22,6 +22,7 @@ import { AppShell, Badge, Button, Card, EmptyState, IconButton, Modal, Spinner, 
 import ChatMessage, { CoachAvatar } from '../components/ai/ChatMessage'
 import QuickActions from '../components/ai/QuickActions'
 import { cn } from '../lib/cn'
+import { captureStudentProfile, isProductCapture } from '../lib/productCapture'
 
 /**
  * AICoach — /ai-koc
@@ -42,14 +43,67 @@ const CHAT_HEIGHT = cn(
   'min-h-[26rem]'
 )
 
+const CAPTURE_MESSAGES = [
+  {
+    id: 'capture-user-1',
+    role: 'user',
+    content: 'Son TYT denememde matematik netim neden düştü?',
+  },
+  {
+    id: 'capture-ai-1',
+    role: 'assistant',
+    content:
+      'Son iki haftadaki kayıtlarına göre en belirgin kayıp **problemler** ve **fonksiyonlar** konularında. Süren yeterli; asıl farkı yanlış yaptığın soru tiplerini tekrar ederek kapatabilirsin.',
+    actions: [],
+  },
+  {
+    id: 'capture-user-2',
+    role: 'user',
+    content: 'Bu hafta için kısa bir plan çıkar.',
+  },
+  {
+    id: 'capture-ai-2',
+    role: 'assistant',
+    content:
+      '**3 günlük odak planın**\n\n1. Fonksiyonlar: 25 soru + yanlış analizi\n2. Problemler: 30 soru + süre tutma\n3. Karma mini deneme + eksik tekrarı',
+    actions: [],
+  },
+  {
+    id: 'capture-user-3',
+    role: 'user',
+    content: 'Bugün ilk olarak ne yapayım?',
+  },
+  {
+    id: 'capture-ai-3',
+    role: 'assistant',
+    content:
+      '**Fonksiyonlar** ile başla: 15 soruyu 25 dakikada çöz. Ardından yalnızca yanlış ve boşlarını incele; yeni teste geçmeden önce hata nedenini tek cümleyle yaz.',
+    actions: [],
+  },
+  {
+    id: 'capture-user-4',
+    role: 'user',
+    content: 'Planı bitirince gelişimimi görebilecek miyim?',
+  },
+  {
+    id: 'capture-ai-4',
+    role: 'assistant',
+    content:
+      'Evet. Yeni sonuçları analiz ekranında önceki denemenle karşılaştırıp net değişimini ve konu bazlı isabet oranını birlikte izleyeceğiz.',
+    actions: [],
+  },
+]
+
 export default function AICoach() {
   const { profile } = useAuth()
+  const captureMode = isProductCapture()
+  const visibleProfile = profile ?? (captureMode ? captureStudentProfile() : null)
   const navigate = useNavigate()
   const location = useLocation()
   const toast = useToast()
 
   const [conversationId, setConversationId] = useState(null)
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState(() => (captureMode ? CAPTURE_MESSAGES : []))
   const [input, setInput] = useState('')
   const [streaming, setStreaming] = useState(false)
   const [status, setStatus] = useState(null)
@@ -319,14 +373,14 @@ export default function AICoach() {
               <Spinner />
             </div>
           ) : isEmpty ? (
-            <WelcomeScreen name={profile?.full_name?.split(' ')[0]} onSelect={submit} />
+            <WelcomeScreen name={visibleProfile?.full_name?.split(' ')[0]} onSelect={submit} />
           ) : (
             <div className="flex flex-col gap-5">
               {messages.map((message, i) => (
                 <ChatMessage
                   key={message.id ?? i}
                   message={message}
-                  studentName={profile?.full_name}
+                  studentName={visibleProfile?.full_name}
                   streaming={streaming && i === messages.length - 1 && message.role === 'assistant'}
                   onRetry={
                     message.error && !streaming && lastPromptRef.current

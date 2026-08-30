@@ -236,7 +236,7 @@ export default function Home() {
     { to: '/denemeler', label: 'Deneme Gir', description: 'Net ve ders dökümü', icon: Target },
     { to: '/sorular', label: 'Soru Sor', description: 'Öğretmenine gönder', icon: HelpCircle },
     { to: '/ai-koc', label: 'AI Koç', description: 'Plan ve öneri al', icon: Sparkles },
-    { to: '/notlar', label: 'Ders Notları', description: 'Konu anlatımları', icon: Library },
+    { to: '/kutuphane', label: 'Ders Kütüphanesi', description: 'Not veya test seç', icon: Library },
     { to: '/mesajlar', label: 'Mesajlar', description: 'Öğretmeninle konuş', icon: MessageCircle },
   ]
 

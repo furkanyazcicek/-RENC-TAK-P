@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="360" viewBox="0 0 760 360" role="img" aria-labelledby="title desc">
+  <title id="title">Üç satır ve dört sütunlu tablo</title>
+  <desc id="desc">On iki eş hücreden oluşan üç satırlı ve dört sütunlu tablo.</desc>
+  <rect width="760" height="360" rx="24" fill="#f8fafc"/>
+  <g fill="#ffffff" stroke="#334155" stroke-width="4">
+    <rect x="140" y="60" width="120" height="80"/><rect x="260" y="60" width="120" height="80"/><rect x="380" y="60" width="120" height="80"/><rect x="500" y="60" width="120" height="80"/>
+    <rect x="140" y="140" width="120" height="80"/><rect x="260" y="140" width="120" height="80"/><rect x="380" y="140" width="120" height="80"/><rect x="500" y="140" width="120" height="80"/>
+    <rect x="140" y="220" width="120" height="80"/><rect x="260" y="220" width="120" height="80"/><rect x="380" y="220" width="120" height="80"/><rect x="500" y="220" width="120" height="80"/>
+  </g>
+</svg>

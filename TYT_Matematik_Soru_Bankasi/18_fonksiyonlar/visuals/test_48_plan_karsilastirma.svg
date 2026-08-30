@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470" role="img" aria-labelledby="title desc">
+  <title id="title">İki ücret fonksiyonunun karşılaştırma grafiği</title>
+  <desc id="desc">L fonksiyonu 80 liradan başlayıp giriş başına 4 lira, M fonksiyonu 20 liradan başlayıp giriş başına 7 lira artar. Doğrular 20 giriş ve 160 lira noktasında kesişir.</desc>
+  <defs>
+    <marker id="axisArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#394052"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="758" height="468" rx="24" fill="#fbfbff" stroke="#ddddea" stroke-width="2"/>
+  <g stroke="#e7e8f0" stroke-width="1">
+    <path d="M 90 80 H 690 M 90 144 H 690 M 90 208 H 690 M 90 272 H 690 M 90 336 H 690"/>
+    <path d="M 210 70 V 400 M 330 70 V 400 M 450 70 V 400 M 570 70 V 400 M 690 70 V 400"/>
+  </g>
+  <g fill="none" stroke="#394052" stroke-width="2.5" marker-end="url(#axisArrow)">
+    <path d="M 75 400 H 705"/>
+    <path d="M 90 415 V 55"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-size="16" fill="#5b6170">
+    <text x="600" y="447">Giriş sayısı</text>
+    <text x="25" y="53">Ücret (TL)</text>
+    <text x="82" y="421">0</text>
+    <text x="322" y="421">10</text>
+    <text x="562" y="421">20</text>
+    <text x="668" y="421">25</text>
+    <text x="55" y="342">40</text>
+    <text x="55" y="278">80</text>
+    <text x="47" y="214">120</text>
+    <text x="47" y="150">160</text>
+    <text x="47" y="86">200</text>
+  </g>
+  <path d="M 90 272 L 690 112" fill="none" stroke="#3969d8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 90 368 L 690 88" fill="none" stroke="#d45b78" stroke-width="5" stroke-linecap="round"/>
+  <g font-family="Inter, Arial, sans-serif" font-size="19" font-weight="700">
+    <text x="655" y="128" fill="#3969d8">L</text>
+    <text x="655" y="78" fill="#d45b78">M</text>
+  </g>
+  <g stroke="#8c93a3" stroke-width="2" stroke-dasharray="7 7">
+    <path d="M 570 144 V 400"/>
+    <path d="M 90 144 H 570"/>
+  </g>
+  <circle cx="570" cy="144" r="8" fill="#6e45cf" stroke="#ffffff" stroke-width="3"/>
+</svg>

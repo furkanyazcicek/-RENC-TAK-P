@@ -199,10 +199,16 @@ export async function streamChat({ messages, tools, onText, signal }) {
  * Akışsız, tek seferlik kısa çağrı (sohbet başlığı üretmek gibi işler için).
  * Başarısız olursa `null` döner — çağıran taraf akışı bozmadan devam eder.
  */
-export async function quickCompletion({ system, user, maxTokens = 24 }) {
+export async function quickCompletion({ system, user, maxTokens = 24, model, temperature = 0.3 }) {
   try {
+    // `model` verilmezse davranış eskisiyle birebir aynıdır. Parametre,
+    // ders içeriği üretimi gibi daha güçlü model isteyen işler için var:
+    // sohbet başlığı üretmekle bir biyoloji bölümü yazmak aynı modeli
+    // hak etmiyor ve ikisini tek değişkene bağlamak ya kaliteyi ya
+    // maliyeti feda ediyordu.
+    const selectedModel = model || config.utilityModel
     const body = {
-      model: config.utilityModel,
+      model: selectedModel,
       messages: [
         { role: 'system', content: system },
         { role: 'user', content: user },
@@ -210,11 +216,11 @@ export async function quickCompletion({ system, user, maxTokens = 24 }) {
     }
 
     // streamChat ile aynı ayrım — yardımcı model de değiştirilebilir olmalı.
-    if (isNextGenModel(config.utilityModel)) {
+    if (isNextGenModel(selectedModel)) {
       body.max_completion_tokens = maxTokens
     } else {
       body.max_tokens = maxTokens
-      body.temperature = 0.3
+      body.temperature = temperature
     }
 
     const response = await callOpenAI(body)

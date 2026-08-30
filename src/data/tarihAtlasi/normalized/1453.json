@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 3,
+  "sliceId": "constantinople-1453",
+  "sliceYear": 1453,
+  "title": "1453 İstanbul'un Fethi kanıt dilimi",
+  "publicationStatus": "reviewed-slice",
+  "scopeNote": "Bu paket 1453 siyasî sınırı üretmez. Fetih olayını ve olay yerini kaynaklı bir nokta katmanı olarak sunar; haritadaki siyasî polygon en yakın genel kaynak snapshot'ıdır.",
+  "validFrom": 1453,
+  "validTo": 1454,
+  "sourceIds": [
+    "loc-turkey-country-study-1995",
+    "wikidata-cc0"
+  ],
+  "administrativeRegions": [],
+  "settlements": [
+    {
+      "id": "settlement:constantinople-1453",
+      "nameTr": "Konstantinopolis / İstanbul",
+      "sourceName": "Constantinople",
+      "nameVariants": [
+        { "name": "Konstantinopolis", "validFrom": 330, "validTo": 1453 },
+        { "name": "İstanbul", "validFrom": 1453, "validTo": 1961 }
+      ],
+      "validFrom": 1453,
+      "validTo": 1454,
+      "type": "settlement",
+      "subtype": "capital-transition",
+      "parentPolityId": "polity:osmanli-devleti",
+      "parentRegionId": null,
+      "importance": 3,
+      "minZoom": 2.8,
+      "sourceIds": [
+        "loc-turkey-country-study-1995",
+        "wikidata-cc0"
+      ],
+      "sourceEntityId": "Q406",
+      "geometryMethod": "external-cc0-point-with-institutional-history-reference",
+      "confidence": "high",
+      "boundaryCertainty": "not-applicable-point",
+      "coverageStatus": "mapped-point-only",
+      "certainty": "location-continuity-noted",
+      "publicationStatus": "published",
+      "reviewStatus": "reviewed",
+      "summary": "29 Mayıs 1453'te Osmanlıların aldığı Bizans başkenti; fetih sonrasında Osmanlı başkenti oldu.",
+      "learningGoal": "Bir şehirdeki egemenlik değişimi ile imparatorluğun bütün sınırlarının aynı şey olmadığını ayırt etmek.",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [28.96, 41.01]
+      }
+    }
+  ],
+  "events": [
+    {
+      "id": "event:constantinople-fall-1453",
+      "nameTr": "İstanbul'un Fethi",
+      "sourceName": "Fall of Constantinople",
+      "validFrom": 1453,
+      "validTo": 1454,
+      "eventDate": {
+        "from": "1453-05-29",
+        "to": "1453-05-29",
+        "precision": "day"
+      },
+      "type": "event",
+      "subtype": "conquest",
+      "parentPolityId": "polity:osmanli-devleti",
+      "relatedEntityIds": [
+        "settlement:constantinople-1453"
+      ],
+      "importance": 3,
+      "minZoom": 2.8,
+      "sourceIds": [
+        "loc-turkey-country-study-1995",
+        "wikidata-cc0"
+      ],
+      "sourceEntityId": "Q160077",
+      "geometryMethod": "external-cc0-event-point",
+      "confidence": "high",
+      "boundaryCertainty": "not-applicable-point",
+      "coverageStatus": "mapped-point-only",
+      "certainty": "documented-event-point",
+      "publicationStatus": "published",
+      "reviewStatus": "reviewed",
+      "summary": "Osmanlı kuvvetleri 29 Mayıs 1453'te Konstantinopolis'i aldı; Bizans İmparatorluğu sona erdi.",
+      "cause": "Osmanlıların başkent çevresindeki hâkimiyeti tamamlamak ve stratejik Boğaz geçişini denetlemek istemesi.",
+      "development": "Yaklaşık elli günlük kuşatma 29 Mayıs'taki son saldırıyla sonuçlandı.",
+      "result": "Konstantinopolis Osmanlı yönetimine geçti ve Osmanlı başkenti oldu.",
+      "historicalImportance": "Orta Çağ Akdeniz ve Balkan siyasetindeki başlıca egemenlik dönüşümlerinden biridir.",
+      "sides": [
+        "Osmanlı Devleti",
+        "Bizans İmparatorluğu"
+      ],
+      "people": [
+        "II. Mehmed",
+        "XI. Konstantinos"
+      ],
+      "warning": "Bu nokta olay yerini gösterir; 1453 öncesi veya sonrası siyasî sınırı kanıtlamaz.",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [28.935, 41.03]
+      }
+    }
+  ],
+  "routes": []
+}

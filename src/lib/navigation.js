@@ -48,7 +48,7 @@ export const STUDENT_NAV = [
   },
   { to: '/denemeler', label: 'Denemeler', short: 'Deneme', Icon: Target },
   { to: '/odevler', label: 'Ödevler', short: 'Ödev', Icon: ClipboardList },
-  { to: '/notlar', label: 'Ders Notları Kütüphanesi', short: 'Notlar', Icon: Library },
+  { to: '/kutuphane', label: 'Ders Kütüphanesi', short: 'Kütüphane', Icon: Library },
   { to: '/sorular', label: 'Sorunlu Sorular', short: 'Sorular', Icon: HelpCircle },
   { to: '/mesajlar', label: 'Mesajlar', short: 'Mesaj', Icon: MessageCircle },
 ]
@@ -58,7 +58,7 @@ export const TEACHER_NAV = [
   { to: '/odevler', label: 'Ödevler', short: 'Ödev', Icon: ClipboardList, primary: true },
   { to: '/sorular', label: 'Sorunlu Sorular', short: 'Sorular', Icon: HelpCircle, primary: true },
   { to: '/mesajlar', label: 'Mesajlar', short: 'Mesaj', Icon: MessageCircle, primary: true },
-  { to: '/notlar', label: 'Ders Notları Kütüphanesi', short: 'Notlar', Icon: Library },
+  { to: '/kutuphane', label: 'Ders Kütüphanesi', short: 'Kütüphane', Icon: Library },
 ]
 
 export const PARENT_NAV = [

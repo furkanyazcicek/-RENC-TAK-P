@@ -49,6 +49,11 @@ import {
 } from '../lib/topicHelpers'
 import { buildSubjectPerformance } from '../lib/examHelpers'
 import {
+  buildAnalyticsCaptureData,
+  captureStudentProfile,
+  isProductCapture,
+} from '../lib/productCapture'
+import {
   accuracy,
   buildInsights,
   combineStudyEntries,
@@ -76,6 +81,8 @@ import {
  */
 export default function Analytics() {
   const { user, profile } = useAuth()
+  const captureMode = isProductCapture()
+  const visibleProfile = profile ?? (captureMode ? captureStudentProfile() : null)
   const [dailyLogs, setDailyLogs] = useState([])
   const [mockExams, setMockExams] = useState([]) // genel denemeler (LGS/TYT/AYT/KPSS)
   const [branchExams, setBranchExams] = useState([]) // branş denemeleri (`exams` tablosu)
@@ -94,6 +101,14 @@ export default function Analytics() {
   const [trendTopic, setTrendTopic] = useState(null)
 
   const loadData = useCallback(async () => {
+    if (captureMode) {
+      const captureData = buildAnalyticsCaptureData()
+      setDailyLogs(captureData.dailyLogs)
+      setMockExams(captureData.mockExams)
+      setBranchExams(captureData.branchExams)
+      setLoading(false)
+      return
+    }
     if (!user) return
     const [logsRes, mockRes, branchRes] = await Promise.all([
       supabase
@@ -116,7 +131,7 @@ export default function Analytics() {
     setMockExams(mockRes.data ?? [])
     setBranchExams(branchRes.data ?? [])
     setLoading(false)
-  }, [user])
+  }, [captureMode, user])
 
   useEffect(() => {
     loadData()
@@ -264,7 +279,7 @@ export default function Analytics() {
       })
     : ''
 
-  const firstName = profile?.full_name?.split(' ')[0] ?? ''
+  const firstName = visibleProfile?.full_name?.split(' ')[0] ?? ''
   const netTrendSpark = examsForType
     .slice(0, 8)
     .map((e) => e.mock_exam_subjects?.reduce((s, x) => s + Number(x.net || 0), 0) ?? 0)
@@ -287,7 +302,7 @@ export default function Analytics() {
         title={firstName ? `${firstName}, gelişim tablon` : 'Gelişim tablon'}
         subtitle="Aşağıdaki her kart tıklanabilir — detayına inebilirsin."
         avatar={
-          profile?.full_name
+          visibleProfile?.full_name
             ?.split(' ')
             .map((p) => p[0])
             .slice(0, 2)

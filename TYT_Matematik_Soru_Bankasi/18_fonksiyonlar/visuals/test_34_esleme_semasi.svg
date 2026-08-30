@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470" role="img" aria-labelledby="title desc">
+  <title id="title">A kümesinden B kümesine eşleme şeması</title>
+  <desc id="desc">A kümesindeki 1 elemanı a'ya, 2 ve 3 elemanları b'ye, 4 elemanı c'ye eşlenmektedir.</desc>
+  <defs>
+    <marker id="arrow34" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9 Z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="758" height="468" rx="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="218" y="55" text-anchor="middle" fill="#1e293b" font-family="Arial, sans-serif" font-size="25" font-weight="700">A</text>
+  <text x="542" y="55" text-anchor="middle" fill="#1e293b" font-family="Arial, sans-serif" font-size="25" font-weight="700">B</text>
+  <ellipse cx="218" cy="245" rx="105" ry="175" fill="#eff6ff" stroke="#93c5fd" stroke-width="3"/>
+  <ellipse cx="542" cy="245" rx="105" ry="175" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="3"/>
+  <g fill="none" stroke="#64748b" stroke-width="3.5" marker-end="url(#arrow34)">
+    <path d="M244 105 C350 105 408 120 510 120"/>
+    <path d="M244 190 C350 190 410 225 510 230"/>
+    <path d="M244 280 C350 280 410 245 510 235"/>
+    <path d="M244 365 C350 365 408 350 510 350"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="22" font-weight="700" text-anchor="middle">
+    <g fill="#ffffff" stroke="#2563eb" stroke-width="4">
+      <circle cx="218" cy="105" r="25"/><circle cx="218" cy="190" r="25"/><circle cx="218" cy="280" r="25"/><circle cx="218" cy="365" r="25"/>
+    </g>
+    <g fill="#ffffff" stroke="#7c3aed" stroke-width="4">
+      <circle cx="542" cy="120" r="25"/><circle cx="542" cy="235" r="25"/><circle cx="542" cy="350" r="25"/>
+    </g>
+    <g fill="#1e3a8a">
+      <text x="218" y="113">1</text><text x="218" y="198">2</text><text x="218" y="288">3</text><text x="218" y="373">4</text>
+    </g>
+    <g fill="#5b21b6">
+      <text x="542" y="128">a</text><text x="542" y="243">b</text><text x="542" y="358">c</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 3,
+  "sliceId": "central-asia-552-840",
+  "sliceYear": 700,
+  "title": "552–840 Orhun Vadisi Türk devletleri bağlamı",
+  "publicationStatus": "reviewed-slice",
+  "scopeNote": "Bu paket Göktürk veya Uygur siyasî sınırı çizmez. UNESCO tarafından belgelenmiş tarihsel peyzaj ve merkez noktalarını, genel siyasi polygonlardan ayrı bir kanıt katmanı olarak sunar.",
+  "validFrom": 552,
+  "validTo": 841,
+  "sourceIds": [
+    "unesco-orkhon-valley-1081",
+    "iranica-gozz-2001",
+    "wikidata-cc0"
+  ],
+  "administrativeRegions": [],
+  "settlements": [
+    {
+      "id": "settlement:orkhon-valley-context",
+      "nameTr": "Orhun Vadisi tarihsel çekirdeği",
+      "sourceName": "Orkhon Valley Cultural Landscape",
+      "nameVariants": [
+        { "name": "Orhun Vadisi", "validFrom": 552, "validTo": 841 }
+      ],
+      "validFrom": 552,
+      "validTo": 841,
+      "type": "settlement",
+      "subtype": "historical-landscape-anchor",
+      "parentPolityId": null,
+      "parentRegionId": null,
+      "importance": 3,
+      "minZoom": 2.8,
+      "sourceIds": [
+        "unesco-orkhon-valley-1081",
+        "wikidata-cc0"
+      ],
+      "sourceEntityId": "Q1453235",
+      "geometryMethod": "external-institutional-and-cc0-reference-point",
+      "confidence": "high",
+      "boundaryCertainty": "not-applicable-point",
+      "coverageStatus": "mapped-point-only",
+      "certainty": "source-location-context-not-polity-boundary",
+      "publicationStatus": "published",
+      "reviewStatus": "reviewed",
+      "summary": "UNESCO'nun belgelediği Orhun Vadisi; 6.–7. yüzyıl Türk anıtları ile 8.–9. yüzyıl Uygur başkenti Khar Balgas'ın bulunduğu tarihsel peyzajdır.",
+      "learningGoal": "Bozkır devletlerini modern çizgisel sınırlar yerine tarihsel çekirdek, merkez ve nüfuz kavramlarıyla okumak.",
+      "warning": "Nokta UNESCO miras alanının referans konumudur; Göktürk veya Uygur Kağanlığı'nın başkenti ya da siyasî sınırı değildir.",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [102.83138888889, 47.556666666667]
+      }
+    },
+    {
+      "id": "settlement:ordu-baliq",
+      "nameTr": "Ordu-Balık (Khar Balgas)",
+      "sourceName": "Ordu-Baliq / Khar Balgas",
+      "nameVariants": [
+        { "name": "Karabalgasun", "validFrom": 757, "validTo": 841 },
+        { "name": "Khar Balgas", "validFrom": 757, "validTo": 841 }
+      ],
+      "validFrom": 757,
+      "validTo": 841,
+      "type": "settlement",
+      "subtype": "capital-archaeological-site",
+      "parentPolityId": "polity:uygur-kaganligi",
+      "parentRegionId": null,
+      "importance": 3,
+      "minZoom": 3.4,
+      "sourceIds": [
+        "unesco-orkhon-valley-1081",
+        "wikidata-cc0"
+      ],
+      "sourceEntityId": "Q2475401",
+      "geometryMethod": "external-institutional-and-cc0-point",
+      "confidence": "high",
+      "boundaryCertainty": "not-applicable-point",
+      "coverageStatus": "mapped-point-only",
+      "certainty": "source-coordinates-with-period-context",
+      "publicationStatus": "published",
+      "reviewStatus": "reviewed",
+      "summary": "UNESCO'nun Khar Balgas adıyla belgelediği 8.–9. yüzyıl Uygur başkentinin arkeolojik alanı.",
+      "learningGoal": "Uygur Kağanlığı'nın kalıcı şehir ve yönetim merkezi kurma biçimini coğrafî bağlamda görmek.",
+      "warning": "Arkeolojik alan noktası siyasî hâkimiyet alanını veya sınırı göstermez.",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [102.659444, 47.431111]
+      }
+    }
+  ],
+  "events": [],
+  "routes": []
+}

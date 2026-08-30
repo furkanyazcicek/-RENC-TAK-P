@@ -55,7 +55,11 @@ export default function Login() {
   };
 
   return (
-    <AuthLayout title="Tekrar hoş geldin" subtitle="Öğrenci & Öğretmen Girişi">
+    <AuthLayout
+      title="Tekrar hoş geldin"
+      subtitle="Öğrenci & Öğretmen Girişi"
+      showInfoPanel
+    >
       <AuthTabs active="login" />
 
       {error && (

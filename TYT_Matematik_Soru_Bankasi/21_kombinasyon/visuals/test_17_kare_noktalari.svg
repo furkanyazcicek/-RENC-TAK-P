@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="380" viewBox="0 0 760 380" role="img" aria-labelledby="title desc">
+  <title id="title">Kare üzerinde dokuz işaretli nokta</title>
+  <desc id="desc">Karenin dört köşesi, dört kenar orta noktası ve merkezi işaretlidir.</desc>
+  <rect width="760" height="380" rx="24" fill="#f8fafc"/>
+  <rect x="240" y="50" width="280" height="280" fill="none" stroke="#334155" stroke-width="5"/>
+  <line x1="240" y1="50" x2="520" y2="330" stroke="#94a3b8" stroke-width="3"/>
+  <line x1="520" y1="50" x2="240" y2="330" stroke="#94a3b8" stroke-width="3"/>
+  <g fill="#2563eb" stroke="#ffffff" stroke-width="3">
+    <circle cx="240" cy="50" r="10"/><circle cx="380" cy="50" r="10"/><circle cx="520" cy="50" r="10"/>
+    <circle cx="240" cy="190" r="10"/><circle cx="380" cy="190" r="10"/><circle cx="520" cy="190" r="10"/>
+    <circle cx="240" cy="330" r="10"/><circle cx="380" cy="330" r="10"/><circle cx="520" cy="330" r="10"/>
+  </g>
+</svg>

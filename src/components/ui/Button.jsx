@@ -7,7 +7,7 @@ import Spinner from './Spinner'
  *
  * <Button variant="primary" size="md" icon={Plus} loading={saving}>Kaydet</Button>
  *
- * variant: primary | secondary | glass | subtle | ghost | danger | success | link
+ * variant: primary | accent | secondary | glass | subtle | ghost | danger | success | link
  * size:    xs | sm | md | lg
  *
  * Aurora kuralı: gradient yalnızca `primary` üzerindedir. Bir ekranda birden
@@ -24,6 +24,9 @@ const VARIANTS = {
   primary:
     'bg-aurora-gradient text-white shadow-aurora hover:shadow-aurora-lg hover:-translate-y-0.5 ' +
     'hover:brightness-110 focus-visible:ring-brand-500',
+  accent:
+    'bg-aurora-pink text-white shadow-card hover:-translate-y-0.5 hover:brightness-110 ' +
+    'hover:shadow-card-hover focus-visible:ring-accent-500',
   secondary:
     'bg-surface text-ink border border-line shadow-xs hover:border-brand-300 hover:bg-brand-50/50 ' +
     'hover:-translate-y-0.5 hover:shadow-card focus-visible:ring-brand-400',

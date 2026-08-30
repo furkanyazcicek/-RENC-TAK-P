@@ -1,0 +1,219 @@
+{
+  "meta": {
+    "schemaVersion": 3,
+    "kind": "historical-detail-slice",
+    "sliceId": "central-asia-552-840",
+    "sliceYear": 700,
+    "title": "552–840 Orhun Vadisi Türk devletleri bağlamı",
+    "publicationStatus": "reviewed-slice",
+    "scopeNote": "Bu paket Göktürk veya Uygur siyasî sınırı çizmez. UNESCO tarafından belgelenmiş tarihsel peyzaj ve merkez noktalarını, genel siyasi polygonlardan ayrı bir kanıt katmanı olarak sunar.",
+    "validFrom": 552,
+    "validTo": 841,
+    "sourceIds": [
+      "unesco-orkhon-valley-1081",
+      "iranica-gozz-2001",
+      "wikidata-cc0"
+    ],
+    "geometryPolicy": "Ayrıntı dilimleri siyasi sınır üretmez. Her geometri kendi yöntem, kesinlik, kapsam ve uyarı alanını taşır.",
+    "coverage": {
+      "administrative": "not-published",
+      "settlements": "2 kaynaklı yer/merkez",
+      "events": "not-published",
+      "routes": "not-published"
+    },
+    "sources": [
+      {
+        "id": "unesco-orkhon-valley-1081",
+        "title": "Orkhon Valley Cultural Landscape",
+        "creatorOrInstitution": "UNESCO World Heritage Centre",
+        "publicationDate": 2004,
+        "representedYears": "6.–14. yüzyıl arkeolojik ve kültürel peyzaj bağlamı",
+        "url": "https://whc.unesco.org/en/list/1081",
+        "accessedAt": "2026-08-27",
+        "referenceLocation": "World Heritage List 1081 ve adaylık dosyası",
+        "geographicCoverage": "Orhun Vadisi, Moğolistan",
+        "scaleOrResolution": "Miras alanı ve bileşen sahaları",
+        "sourceType": "institutional-vector-and-reference",
+        "license": {
+          "name": "CC-BY-SA 3.0 IGO",
+          "url": "https://creativecommons.org/licenses/by-sa/3.0/igo/",
+          "status": "open",
+          "commercialUse": true,
+          "redistribution": "conditional",
+          "notes": "Atıf ve aynı lisans koşulları korunmalıdır."
+        },
+        "useStatus": "production",
+        "geometryEligible": true,
+        "proves": "Orhun Vadisi'ndeki 6.–7. yüzyıl Türk anıtlarını ve 8.–9. yüzyıl Uygur başkenti Khar Balgas'ı, ayrıca yayımlanmış konum/koruma alanı koordinatlarını destekler.",
+        "limitations": "Miras alanı sınırı Göktürk veya Uygur siyasî hâkimiyet sınırı değildir.",
+        "confidence": "high"
+      },
+      {
+        "id": "iranica-gozz-2001",
+        "title": "ḠOZZ",
+        "creatorOrInstitution": "Encyclopaedia Iranica",
+        "publicationDate": 2001,
+        "representedYears": "552–744 Türk kağanlıkları bağlamı",
+        "url": "https://www.iranicaonline.org/articles/gozz/",
+        "accessedAt": "2026-08-27",
+        "referenceLocation": "ḠOZZ maddesi",
+        "geographicCoverage": "İç Asya ve Oğuz/Türk siyasî bağlamı",
+        "scaleOrResolution": "Tarihsel anlatı",
+        "sourceType": "academic-reference",
+        "license": {
+          "name": "Telifli akademik başvuru kaynağı",
+          "url": "https://www.iranicaonline.org/about/",
+          "status": "reference-only",
+          "commercialUse": null,
+          "redistribution": "not-used",
+          "notes": "Metin veya görsel yeniden dağıtılmaz."
+        },
+        "useStatus": "reference-only",
+        "geometryEligible": false,
+        "proves": "Doğu Türk Kağanlığı'nın 552–630 ve 687–741 dönemlerini ve 744'te Uygur Kağanlığı'nın kuruluş bağlamını destekler.",
+        "limitations": "Kesin siyasî sınır geometrisi sağlamaz.",
+        "confidence": "high"
+      },
+      {
+        "id": "wikidata-cc0",
+        "title": "Wikidata koordinat kayıtları",
+        "creatorOrInstitution": "Wikimedia Foundation ve Wikidata katkıcıları",
+        "publicationDate": null,
+        "representedYears": "Kayıt bazında",
+        "url": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "accessedAt": "2026-08-27",
+        "referenceLocation": "Feature içindeki sourceEntityId",
+        "geographicCoverage": "Küresel",
+        "scaleOrResolution": "Nokta kaydına göre değişir",
+        "sourceType": "external-vector-point",
+        "license": {
+          "name": "CC0 1.0",
+          "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "status": "open",
+          "commercialUse": true,
+          "redistribution": "allowed",
+          "notes": "Her noktanın tarihsel yorum ve sürekliliği ayrı akademik kaynak gerektirir."
+        },
+        "useStatus": "production",
+        "geometryEligible": true,
+        "proves": "Yerleşim veya olay kaydının WGS84 nokta konumunu sağlar; siyasî sınır kanıtı değildir.",
+        "limitations": "Topluluk üretimidir; tarihsel kimlik ve tarihlendirme tek başına bu kaynağa bırakılamaz.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "administrativeRegions": {
+    "type": "FeatureCollection",
+    "features": []
+  },
+  "settlements": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "id": "settlement:orkhon-valley-context",
+        "properties": {
+          "id": "settlement:orkhon-valley-context",
+          "nameTr": "Orhun Vadisi tarihsel çekirdeği",
+          "sourceName": "Orkhon Valley Cultural Landscape",
+          "nameVariants": [
+            {
+              "name": "Orhun Vadisi",
+              "validFrom": 552,
+              "validTo": 841
+            }
+          ],
+          "validFrom": 552,
+          "validTo": 841,
+          "type": "settlement",
+          "subtype": "historical-landscape-anchor",
+          "parentPolityId": null,
+          "parentRegionId": null,
+          "importance": 3,
+          "minZoom": 2.8,
+          "sourceIds": [
+            "unesco-orkhon-valley-1081",
+            "wikidata-cc0"
+          ],
+          "sourceEntityId": "Q1453235",
+          "geometryMethod": "external-institutional-and-cc0-reference-point",
+          "confidence": "high",
+          "boundaryCertainty": "not-applicable-point",
+          "coverageStatus": "mapped-point-only",
+          "certainty": "source-location-context-not-polity-boundary",
+          "publicationStatus": "published",
+          "reviewStatus": "reviewed",
+          "summary": "UNESCO'nun belgelediği Orhun Vadisi; 6.–7. yüzyıl Türk anıtları ile 8.–9. yüzyıl Uygur başkenti Khar Balgas'ın bulunduğu tarihsel peyzajdır.",
+          "learningGoal": "Bozkır devletlerini modern çizgisel sınırlar yerine tarihsel çekirdek, merkez ve nüfuz kavramlarıyla okumak.",
+          "warning": "Nokta UNESCO miras alanının referans konumudur; Göktürk veya Uygur Kağanlığı'nın başkenti ya da siyasî sınırı değildir."
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            102.83138888889,
+            47.556666666667
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "id": "settlement:ordu-baliq",
+        "properties": {
+          "id": "settlement:ordu-baliq",
+          "nameTr": "Ordu-Balık (Khar Balgas)",
+          "sourceName": "Ordu-Baliq / Khar Balgas",
+          "nameVariants": [
+            {
+              "name": "Karabalgasun",
+              "validFrom": 757,
+              "validTo": 841
+            },
+            {
+              "name": "Khar Balgas",
+              "validFrom": 757,
+              "validTo": 841
+            }
+          ],
+          "validFrom": 757,
+          "validTo": 841,
+          "type": "settlement",
+          "subtype": "capital-archaeological-site",
+          "parentPolityId": "polity:uygur-kaganligi",
+          "parentRegionId": null,
+          "importance": 3,
+          "minZoom": 3.4,
+          "sourceIds": [
+            "unesco-orkhon-valley-1081",
+            "wikidata-cc0"
+          ],
+          "sourceEntityId": "Q2475401",
+          "geometryMethod": "external-institutional-and-cc0-point",
+          "confidence": "high",
+          "boundaryCertainty": "not-applicable-point",
+          "coverageStatus": "mapped-point-only",
+          "certainty": "source-coordinates-with-period-context",
+          "publicationStatus": "published",
+          "reviewStatus": "reviewed",
+          "summary": "UNESCO'nun Khar Balgas adıyla belgelediği 8.–9. yüzyıl Uygur başkentinin arkeolojik alanı.",
+          "learningGoal": "Uygur Kağanlığı'nın kalıcı şehir ve yönetim merkezi kurma biçimini coğrafî bağlamda görmek.",
+          "warning": "Arkeolojik alan noktası siyasî hâkimiyet alanını veya sınırı göstermez."
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            102.659444,
+            47.431111
+          ]
+        }
+      }
+    ]
+  },
+  "events": {
+    "type": "FeatureCollection",
+    "features": []
+  },
+  "routes": {
+    "type": "FeatureCollection",
+    "features": []
+  }
+}

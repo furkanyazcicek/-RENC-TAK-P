@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470" role="img" aria-labelledby="title desc">
+  <title id="title">Fonksiyon grafiği ile y eşittir 1 doğrusu</title>
+  <desc id="desc">Koordinat düzlemindeki fonksiyon grafiği, y eşittir 1 yatay doğrusunu üç farklı noktada kesmektedir.</desc>
+  <defs>
+    <marker id="axisArrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="758" height="468" rx="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <g stroke="#e2e8f0" stroke-width="1">
+    <path d="M90 70V405 M150 70V405 M210 70V405 M270 70V405 M330 70V405 M390 70V405 M450 70V405 M510 70V405 M570 70V405 M630 70V405"/>
+    <path d="M70 80H680 M70 135H680 M70 190H680 M70 245H680 M70 300H680 M70 355H680 M70 410H680"/>
+  </g>
+  <g stroke="#334155" stroke-width="3" marker-end="url(#axisArrow)">
+    <path d="M60 300H700"/>
+    <path d="M330 425V48"/>
+  </g>
+  <g fill="#475569" font-family="Arial, sans-serif" font-size="18">
+    <text x="684" y="329">x</text>
+    <text x="346" y="61">y</text>
+    <text x="307" y="326">0</text>
+    <text x="302" y="251">1</text>
+  </g>
+  <path d="M70 245H680" fill="none" stroke="#f59e0b" stroke-width="3" stroke-dasharray="10 8"/>
+  <text x="586" y="230" fill="#b45309" font-family="Arial, sans-serif" font-size="20" font-weight="700">y = 1</text>
+  <polyline points="90,355 150,245 210,135 330,135 390,245 450,355 510,355 570,245 630,135" fill="none" stroke="#2563eb" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#2563eb" stroke="#ffffff" stroke-width="4">
+    <circle cx="150" cy="245" r="8"/>
+    <circle cx="390" cy="245" r="8"/>
+    <circle cx="570" cy="245" r="8"/>
+  </g>
+  <text x="625" y="123" fill="#1d4ed8" font-family="Georgia, serif" font-size="30" font-style="italic">f</text>
+</svg>

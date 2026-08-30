@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="440" viewBox="0 0 760 440" role="img" aria-labelledby="title desc">
+  <title id="title">On noktalı çemberde yan yana olmayan seçim</title>
+  <desc id="desc">Çember üzerinde eşit aralıklı on noktadan yan yana olmayan dört örnek nokta mor renkle vurgulanmıştır.</desc>
+  <rect width="760" height="440" rx="24" fill="#f8fafc"/>
+  <circle cx="380" cy="220" r="160" fill="none" stroke="#64748b" stroke-width="4"/>
+  <g fill="#334155" stroke="#ffffff" stroke-width="3">
+    <circle cx="380" cy="60" r="11"/><circle cx="474" cy="91" r="11"/><circle cx="532" cy="171" r="11"/><circle cx="532" cy="269" r="11"/>
+    <circle cx="474" cy="349" r="11"/><circle cx="380" cy="380" r="11"/><circle cx="286" cy="349" r="11"/><circle cx="228" cy="269" r="11"/>
+    <circle cx="228" cy="171" r="11"/><circle cx="286" cy="91" r="11"/>
+  </g>
+  <g fill="#7c3aed" stroke="#ffffff" stroke-width="3">
+    <circle cx="380" cy="60" r="13"/><circle cx="532" cy="171" r="13"/><circle cx="474" cy="349" r="13"/><circle cx="228" cy="269" r="13"/>
+  </g>
+</svg>

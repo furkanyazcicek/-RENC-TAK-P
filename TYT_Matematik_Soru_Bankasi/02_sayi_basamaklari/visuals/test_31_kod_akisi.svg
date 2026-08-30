@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="220" viewBox="0 0 900 220" role="img" aria-labelledby="title desc">
+  <title id="title">Sayı dönüştürme adımları</title>
+  <desc id="desc">347 sayısının dış rakamları yer değiştiriliyor ve sonuca 20 ekleniyor.</desc>
+  <defs>
+    <style>
+      .box{fill:#f8fafc;stroke:#172554;stroke-width:3;rx:18}
+      .label{font:700 24px system-ui,sans-serif;fill:#172554;text-anchor:middle}
+      .value{font:800 38px system-ui,sans-serif;fill:#e85d3f;text-anchor:middle}
+      .arrow{stroke:#64748b;stroke-width:4;fill:none;marker-end:url(#m)}
+    </style>
+    <marker id="m" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#64748b"/></marker>
+  </defs>
+  <rect class="box" x="35" y="45" width="210" height="130"/>
+  <text class="label" x="140" y="85">Başlangıç</text>
+  <text class="value" x="140" y="140">347</text>
+  <path class="arrow" d="M255 110 H355"/>
+  <text class="label" x="305" y="88">Dış rakamları</text>
+  <text class="label" x="305" y="120">değiştir</text>
+  <rect class="box" x="365" y="45" width="170" height="130"/>
+  <text class="label" x="450" y="85">Ara sayı</text>
+  <text class="value" x="450" y="140">?</text>
+  <path class="arrow" d="M545 110 H655"/>
+  <text class="label" x="600" y="95">20 ekle</text>
+  <rect class="box" x="665" y="45" width="200" height="130"/>
+  <text class="label" x="765" y="85">Sonuç</text>
+  <text class="value" x="765" y="140">?</text>
+</svg>

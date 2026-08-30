@@ -1,0 +1,261 @@
+.ria-onizleme {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 16px;
+  padding: 18px;
+  overflow: hidden;
+  color: white;
+  background:
+    radial-gradient(circle at 20% 12%, rgb(124 58 237 / 0.13), transparent 34%),
+    #060712;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.ria-cerceve {
+  height: min(82dvh, 960px);
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  border-radius: 22px;
+  box-shadow: 0 42px 110px rgb(0 0 0 / 0.56), 0 0 0 1px rgb(255 255 255 / 0.1);
+  background: #090b1a;
+}
+
+.ria-cerceve > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.ria-temiz {
+  padding: 0;
+  background: #090b1a;
+}
+
+.ria-temiz .ria-cerceve {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Kare kare video dışa aktarımında SVG'yi hedef çözünürlükte rasterleştirir. */
+.ria-render {
+  display: block;
+  width: 1080px;
+  height: 1920px;
+  min-height: 1920px;
+}
+
+.ria-render .ria-cerceve {
+  width: 1080px;
+  height: 1920px;
+}
+
+.ria-marka-adi,
+.ria-kanca,
+.ria-baslik,
+.ria-kapanis,
+.ria-kapanis-alt {
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+}
+
+.ria-marka-adi {
+  fill: white;
+  font-size: 47px;
+  font-weight: 800;
+  letter-spacing: -1.2px;
+}
+
+.ria-marka-seri {
+  fill: rgb(255 255 255 / 0.48);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.ria-kanca-kucuk {
+  fill: #a9b0c9;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.ria-kanca {
+  fill: white;
+  font-size: 73px;
+  font-weight: 760;
+  letter-spacing: -2.6px;
+}
+
+.ria-baslik {
+  fill: white;
+  font-size: 72px;
+  font-weight: 750;
+  letter-spacing: -2.4px;
+}
+
+.ria-cisim-etiketi {
+  fill: #c4b5fd;
+  font-size: 21px;
+  font-weight: 750;
+  letter-spacing: 2.4px;
+}
+
+.ria-cisim-etiketi.mavi { fill: #67e8f9; }
+
+.ria-zemin-cizgisi {
+  stroke: rgb(255 255 255 / 0.32);
+  stroke-width: 4;
+}
+
+.ria-zaman {
+  fill: white;
+  font-size: 34px;
+  font-weight: 720;
+  font-variant-numeric: tabular-nums;
+}
+
+.ria-ayni-anda {
+  fill: white;
+  font-size: 51px;
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+
+.ria-nokta-zamani {
+  fill: white;
+  font-size: 23px;
+  font-weight: 730;
+  font-variant-numeric: tabular-nums;
+}
+
+.ria-metre {
+  fill: #67e8f9;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.ria-aciklama {
+  fill: white;
+  font-size: 27px;
+  font-weight: 680;
+}
+
+.ria-aciklama-alt {
+  fill: rgb(255 255 255 / 0.52);
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.ria-ok-etiketi {
+  font-size: 28px;
+  font-weight: 750;
+}
+
+.ria-kart-baslik {
+  fill: rgb(255 255 255 / 0.55);
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.ria-kart-formul {
+  fill: white;
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 29px;
+  font-weight: 700;
+}
+
+.ria-arti {
+  fill: rgb(255 255 255 / 0.5);
+  font-size: 42px;
+  font-weight: 500;
+}
+
+.ria-kapanis-ust {
+  fill: #a9b0c9;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 6px;
+}
+
+.ria-kapanis {
+  fill: white;
+  font-size: 83px;
+  font-weight: 800;
+  letter-spacing: -3px;
+}
+
+.ria-kapanis-alt {
+  fill: #d7daf0;
+  font-size: 47px;
+  font-weight: 650;
+  letter-spacing: -1.1px;
+}
+
+.ria-imza {
+  fill: white;
+  font-size: 31px;
+  font-weight: 750;
+}
+
+.ria-varsayim {
+  fill: rgb(255 255 255 / 0.38);
+  font-size: 20px;
+  font-weight: 520;
+}
+
+.ria-bolum {
+  fill: rgb(255 255 255 / 0.44);
+  font-size: 19px;
+  font-weight: 760;
+  letter-spacing: 2.7px;
+}
+
+.ria-kontroller {
+  width: min(92vw, 650px);
+  display: grid;
+  grid-template-columns: 42px 46px minmax(120px, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 13px;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  border-radius: 18px;
+  color: rgb(255 255 255 / 0.7);
+  background: rgb(19 22 43 / 0.9);
+  box-shadow: 0 18px 50px rgb(0 0 0 / 0.35);
+  backdrop-filter: blur(18px);
+}
+
+.ria-kontroller button {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 12px;
+  color: white;
+  background: rgb(255 255 255 / 0.08);
+  cursor: pointer;
+}
+
+.ria-kontroller button:hover { background: rgb(255 255 255 / 0.14); }
+.ria-kontroller button:focus-visible { outline: 3px solid rgb(34 211 238 / 0.72); outline-offset: 2px; }
+.ria-kontroller .ria-oynat { background: linear-gradient(135deg, #7c3aed, #2563eb); }
+.ria-kontroller input { min-width: 0; accent-color: #8b5cf6; }
+.ria-kontroller span { min-width: 94px; font-size: 13px; font-variant-numeric: tabular-nums; text-align: right; }
+
+@media (max-width: 640px) {
+  .ria-onizleme { padding: 8px; gap: 9px; }
+  .ria-cerceve { height: min(87dvh, 820px); border-radius: 16px; }
+  .ria-kontroller { grid-template-columns: 40px 42px minmax(70px, 1fr); width: 100%; padding: 7px 9px; }
+  .ria-kontroller span { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ria-kontroller *,
+  .ria-cerceve * { scroll-behavior: auto !important; }
+}

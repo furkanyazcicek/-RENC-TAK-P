@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="450" viewBox="0 0 760 450" role="img" aria-labelledby="title desc">
+  <title id="title">Sekizgende tam bir ortak kenarlı üçgen</title>
+  <desc id="desc">Düzgün sekizgenin bir kenarı üçgenle ortaktır; üçüncü köşe ikinci bir ortak kenar oluşturmaz.</desc>
+  <rect width="760" height="450" rx="24" fill="#f8fafc"/>
+  <polygon points="315,55 445,55 565,175 565,305 445,395 315,395 195,305 195,175" fill="#eff6ff" stroke="#334155" stroke-width="5"/>
+  <polygon points="315,55 445,55 565,305" fill="rgba(37,99,235,0.12)" stroke="#2563eb" stroke-width="6" stroke-linejoin="round"/>
+  <line x1="315" y1="55" x2="445" y2="55" stroke="#dc2626" stroke-width="9" stroke-linecap="round"/>
+  <g fill="#334155" stroke="#ffffff" stroke-width="3">
+    <circle cx="315" cy="55" r="11"/><circle cx="445" cy="55" r="11"/><circle cx="565" cy="175" r="11"/><circle cx="565" cy="305" r="11"/>
+    <circle cx="445" cy="395" r="11"/><circle cx="315" cy="395" r="11"/><circle cx="195" cy="305" r="11"/><circle cx="195" cy="175" r="11"/>
+  </g>
+</svg>

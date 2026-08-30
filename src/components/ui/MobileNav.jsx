@@ -8,6 +8,7 @@ import { cn } from '../../lib/cn'
 import Avatar from './Avatar'
 import Badge from './Badge'
 import Logo from './Logo'
+import { captureStudentProfile, isProductCapture } from '../../lib/productCapture'
 
 /**
  * MobileNav — mobil/tablette alt gezinme çubuğu + tam liste çekmecesi.
@@ -25,9 +26,10 @@ import Logo from './Logo'
 export default function MobileNav() {
   const { profile, signOut } = useAuth()
   const { pathname } = useLocation()
+  const visibleProfile = profile ?? (isProductCapture() ? captureStudentProfile() : null)
   const [drawerOpen, setDrawerOpen] = useState(false)
 
-  const role = profile?.role ?? 'student'
+  const role = visibleProfile?.role ?? 'student'
   const items = navForRole(role)
   const primary = items.filter((i) => i.primary).slice(0, 4)
   const hasMore = items.length > primary.length
@@ -115,7 +117,7 @@ export default function MobileNav() {
         </ul>
       </nav>
 
-      {drawerOpen && <NavDrawer items={items} pathname={pathname} onClose={() => setDrawerOpen(false)} profile={profile} role={role} onSignOut={signOut} />}
+      {drawerOpen && <NavDrawer items={items} pathname={pathname} onClose={() => setDrawerOpen(false)} profile={visibleProfile} role={role} onSignOut={signOut} />}
     </>
   )
 }

@@ -90,9 +90,11 @@ select s.id, t.name, t.ord from s, (values
   ('Sözcükte Anlam', 1), ('Cümlede Anlam', 2),
   ('Paragrafta Anlam ve Yapı', 3),
   ('Paragrafta Düşünceyi Geliştirme Yolları', 4),
-  ('Cümlenin Öğeleri', 5), ('Fiilimsi', 6), ('Cümle Türleri', 7),
-  ('Anlatım Bozuklukları', 8), ('Yazım Kuralları', 9),
-  ('Noktalama İşaretleri', 10), ('Ses Bilgisi', 11), ('Yapı Bilgisi', 12)
+  ('Sözcük Türleri', 5), ('Fiiller', 6), ('Fiilimsi', 7),
+  ('Cümlenin Öğeleri', 8), ('Cümle Türleri', 9),
+  ('Anlatım Bozuklukları', 10), ('Ses Bilgisi', 11),
+  ('Yapı Bilgisi', 12), ('Tamlamalar', 13),
+  ('Yazım Kuralları', 14), ('Noktalama İşaretleri', 15)
 ) as t(name, ord);
 
 with s as (
@@ -161,9 +163,11 @@ with s as (
 )
 insert into library_topics (subject_id, name, order_index)
 select s.id, t.name, t.ord from s, (values
-  ('Felsefenin Konusu', 1), ('Bilgi Felsefesi', 2), ('Varlık Felsefesi', 3),
-  ('Ahlak Felsefesi', 4), ('Sanat Felsefesi', 5), ('Din Felsefesi', 6),
-  ('Siyaset Felsefesi', 7), ('Bilim Felsefesi', 8)
+  ('Felsefenin Konusu', 1), ('Felsefi Düşüncenin Özellikleri', 2),
+  ('Bilgi Felsefesi', 3), ('Varlık Felsefesi', 4), ('Ahlak Felsefesi', 5),
+  ('Sanat Felsefesi', 6), ('Din Felsefesi', 7), ('Siyaset Felsefesi', 8),
+  ('Bilim Felsefesi', 9), ('Felsefi Akımlar', 10),
+  ('Temel Filozof-Görüş İlişkileri', 11)
 ) as t(name, ord);
 
 with s as (
@@ -171,9 +175,17 @@ with s as (
 )
 insert into library_topics (subject_id, name, order_index)
 select s.id, t.name, t.ord from s, (values
-  ('Bilgi ve İnanç', 1), ('İslam ve İbadet', 2), ('Gençlik ve Değerler', 3),
-  ('Din ve Hayat', 4), ('Ahlaki Tutum ve Davranışlar', 5),
-  ('Din, Kültür ve Sanat', 6)
+  ('Allah-İnsan İlişkisi', 1), ('İslam''da İnanç Esasları', 2),
+  ('İslam''da İbadetler', 3), ('İslam''da Ahlak İlkeleri', 4),
+  ('Kur''an''a Göre Hz. Muhammed', 5), ('İslam''da Varlık ve Bilgi', 6),
+  ('Allah''ı Tanımak', 7), ('İslam''ın Evrensel Mesajları', 8),
+  ('Din, Çevre ve Teknoloji', 9),
+  ('İslam Düşüncesinde İtikadi-Siyasi ve Fıkhi Yorumlar', 10),
+  ('Kader, İrade ve Sorumluluk', 11), ('Din, Felsefe, Bilim ve Sanat', 12),
+  ('İslam Medeniyeti ve Gönül Coğrafyamız', 13),
+  ('İnançla İlgili Meseleler', 14), ('Yahudilik ve Hristiyanlık', 15),
+  ('Kur’an-ı Kerim', 16), ('Din ve Aile', 17), ('Güncel Dinî Meseleler', 18),
+  ('İslam Düşüncesinde Tasavvufi Yorumlar', 19), ('Hint ve Çin Dinleri', 20)
 ) as t(name, ord);
 
 -- ================= AYT =================

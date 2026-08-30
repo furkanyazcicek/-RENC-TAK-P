@@ -1,6 +1,8 @@
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import { Navigate, Route, Routes, useParams } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
 import { homePathForRole } from './lib/navigation'
+import { isProductCapture } from './lib/productCapture'
 import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
 import Register from './pages/Register';
@@ -18,9 +20,54 @@ import MockExams from './pages/MockExams'
 import Questions from './pages/Questions'
 import Messages from './pages/Messages'
 import Library from './pages/Library'
+import LibraryGateway from './pages/LibraryGateway'
+import QuestionLibrary from './pages/QuestionLibrary'
 import AICoach from './pages/AICoach'
 import AISolve from './pages/AISolve'
+import LessonReader from './components/lessons/LessonReader'
+import LessonPreview from './pages/LessonPreview'
+import TopicTestSolve from './pages/TopicTestSolve'
+import TopicTestResult from './pages/TopicTestResult'
+import TarihAtlasi from './pages/TarihAtlasi'
+
 import { PageLoader } from './components/ui'
+
+/**
+ * Padişah Geçiş Gösterisi ayrı bir pakete alındı: 36 padişahın verisi,
+ * dönem haritaları ve sahne bileşenleri ana pakete girdiğinde bu sayfayı
+ * hiç açmayan öğrenci de hepsini indiriyordu. Artık yalnızca adrese
+ * girildiğinde yükleniyor.
+ */
+const PadisahGecidi = lazy(() => import('./pages/PadisahGecidi'))
+
+/**
+ * Kimya Atlası da ayrı pakete alındı: 118 elementin verisi, molekül yapı
+ * veri tabanı ve etkileşimli görselleştiriciler ana pakete girmesin diye
+ * yalnızca /kimya-atlasi adresine girildiğinde yükleniyor.
+ */
+const KimyaAtlasi = lazy(() => import('./pages/KimyaAtlasi'))
+
+/**
+ * Fizik Atlası da ayrı pakete alındı: 13 bölgenin simülasyonları, fizik
+ * hesap motorları ve etkileşimli sahneler ana pakete girmesin diye
+ * yalnızca /fizik-atlasi adresine girildiğinde yükleniyor. Bölge
+ * modülleri de kendi içinde ayrıca bölünüyor.
+ */
+const FizikAtlasi = lazy(() => import('./pages/FizikAtlasi'))
+
+/** Biyoloji Atlası ana uygulamadan ayrı, bölgeleri de kendi içinde parçalı yüklenir. */
+const BiyolojiAtlasi = lazy(() => import('./pages/BiyolojiAtlasi'))
+
+/** Coğrafya Atlası; harita laboratuvarlarını ana uygulama paketinden ayrı yükler. */
+const CografyaAtlasi = lazy(() => import('./pages/CografyaAtlasi'))
+
+/** Sosyal içerik üretimi için giriş gerektirmeyen, 9:16 fizik Reels önizlemesi. */
+const ReelsSabitIvmeliAtis = lazy(() => import('./pages/ReelsSabitIvmeliAtis'))
+const ReelsSabitIvmeliHareket = lazy(() => import('./pages/ReelsSabitIvmeliHareket'))
+const ReelsDrkocUygulamaTanitim = lazy(() => import('./pages/ReelsDrkocUygulamaTanitim'))
+
+/** Yerel soru bankasını dosyalardan salt okunur incelemek için editör ekranı. */
+const QuestionBankReview = lazy(() => import('./pages/QuestionBankReview'))
 
 /** Route geçişlerinde gösterilen tam sayfa yükleyici (tasarım sisteminden). */
 function FullPageLoader() {
@@ -29,13 +76,27 @@ function FullPageLoader() {
 
 function ProtectedRoute({ children, allow }) {
   const { session, role, loading } = useAuth()
+  if (isProductCapture()) return children
   if (loading) return <FullPageLoader />
   if (!session) return <Navigate to="/login" replace />
-  if (allow && role !== allow) {
+  if (allow && !(Array.isArray(allow) ? allow.includes(role) : role === allow)) {
     // Rolün açılış sayfası tek kaynaktan gelir (src/lib/navigation.js)
     return <Navigate to={homePathForRole(role)} replace />
   }
   return children
+}
+
+// Eski paylaşılmış bağlantılar not/test içeriğini kaybetmeden yeni, ayrışmış
+// adreslerine taşınır. Bu yalnızca geçiş uyumluluğudur; yeni bağlantılar
+// doğrudan `/kutuphane/*` altında üretilir.
+function LegacyNoteRedirect() {
+  const { lessonId } = useParams()
+  return <Navigate to={`/kutuphane/notlar/ders/${lessonId}`} replace />
+}
+
+function LegacyTestRedirect() {
+  const { topicSlug, testId } = useParams()
+  return <Navigate to={`/kutuphane/sorular/test/${topicSlug}/${testId}`} replace />
 }
 
 export default function App() {
@@ -88,6 +149,48 @@ export default function App() {
           koyulamaz. Google Play ve App Store inceleme ekipleri bu adrese
           hesapsız bakıyor ve erişemezlerse başvuru reddediliyor. */}
       <Route path="/gizlilik" element={<PrivacyPolicy />} />
+      <Route path="/ders-notu-onizleme" element={<LessonPreview />} />
+      <Route
+        path="/soru-bankasi-onizleme"
+        element={
+          import.meta.env.DEV
+            ? <Suspense fallback={<FullPageLoader />}><QuestionBankReview /></Suspense>
+            : <Navigate to="/" replace />
+        }
+      />
+      <Route
+        path="/sosyal/reels/sabit-ivmeli-atis"
+        element={<Suspense fallback={<FullPageLoader />}><ReelsSabitIvmeliAtis /></Suspense>}
+      />
+      <Route
+        path="/sosyal/reels/sabit-ivmeli-hareket"
+        element={<Suspense fallback={<FullPageLoader />}><ReelsSabitIvmeliHareket /></Suspense>}
+      />
+      <Route
+        path="/sosyal/reels/drkoc-uygulama-tanitimi"
+        element={<Suspense fallback={<FullPageLoader />}><ReelsDrkocUygulamaTanitim /></Suspense>}
+      />
+      <Route path="/tarih-atlasi" element={<TarihAtlasi />} />
+      <Route
+        path="/kimya-atlasi"
+        element={<Suspense fallback={<FullPageLoader />}><KimyaAtlasi /></Suspense>}
+      />
+      <Route
+        path="/fizik-atlasi"
+        element={<Suspense fallback={<FullPageLoader />}><FizikAtlasi /></Suspense>}
+      />
+      <Route
+        path="/biyoloji-atlasi"
+        element={<Suspense fallback={<FullPageLoader />}><BiyolojiAtlasi /></Suspense>}
+      />
+      <Route
+        path="/cografya-atlasi"
+        element={<Suspense fallback={<FullPageLoader />}><CografyaAtlasi /></Suspense>}
+      />
+      <Route
+        path="/osmanli-padisahlari"
+        element={<Suspense fallback={<FullPageLoader />}><PadisahGecidi /></Suspense>}
+      />
       
       <Route
         path="/veli"
@@ -211,13 +314,74 @@ export default function App() {
         }
       />
       <Route
-        path="/notlar"
+        path="/kutuphane"
         element={
           <ProtectedRoute>
-            <Library />
+            <LibraryGateway />
           </ProtectedRoute>
         }
       />
+      <Route
+        path="/kutuphane/notlar"
+        element={<ProtectedRoute><Library /></ProtectedRoute>}
+      />
+      <Route
+        path="/kutuphane/notlar/:examType"
+        element={<ProtectedRoute><Library /></ProtectedRoute>}
+      />
+      <Route
+        path="/kutuphane/notlar/:examType/:subjectSlug"
+        element={<ProtectedRoute><Library /></ProtectedRoute>}
+      />
+      <Route
+        path="/kutuphane/notlar/:examType/:subjectSlug/:topicSlug"
+        element={<ProtectedRoute><Library /></ProtectedRoute>}
+      />
+      <Route
+        path="/kutuphane/sorular"
+        element={<ProtectedRoute><QuestionLibrary /></ProtectedRoute>}
+      />
+      <Route
+        path="/kutuphane/sorular/:examType"
+        element={<ProtectedRoute><QuestionLibrary /></ProtectedRoute>}
+      />
+      <Route
+        path="/kutuphane/sorular/:examType/:subjectSlug"
+        element={<ProtectedRoute><QuestionLibrary /></ProtectedRoute>}
+      />
+      <Route
+        path="/kutuphane/sorular/:examType/:subjectSlug/:topicSlug"
+        element={<ProtectedRoute><QuestionLibrary /></ProtectedRoute>}
+      />
+      <Route
+        path="/kutuphane/notlar/ders/:lessonId"
+        element={
+          <ProtectedRoute allow={['student', 'teacher']}>
+            <LessonReader />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/kutuphane/sorular/test/:topicSlug/:testId"
+        element={
+          <ProtectedRoute allow={['student', 'teacher']}>
+            <TopicTestSolve />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/kutuphane/sorular/test/:topicSlug/:testId/result"
+        element={
+          <ProtectedRoute allow={['student', 'teacher']}>
+            <TopicTestResult />
+          </ProtectedRoute>
+        }
+      />
+      {/* Eski yer imleri kütüphane seçimine düşer; eski not/test içerikleri
+          yeni ayrılmış rotalara taşındı. */}
+      <Route path="/notlar" element={<Navigate to="/kutuphane/notlar" replace />} />
+      <Route path="/notlar/ders/:lessonId" element={<LegacyNoteRedirect />} />
+      <Route path="/notlar/test/:topicSlug/:testId" element={<LegacyTestRedirect />} />
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

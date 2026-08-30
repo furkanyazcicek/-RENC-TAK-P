@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 3,
+  "sliceId": "karlofca-1699",
+  "sliceYear": 1699,
+  "title": "1699 Karlofça Antlaşması kanıt dilimi",
+  "publicationStatus": "reviewed-slice",
+  "scopeNote": "Bu paket görüşme/antlaşma yerini sunar; 1699–1701 sınır komisyonu çalışmalarını hazır kesin çizgiye dönüştürmez.",
+  "validFrom": 1699, "validTo": 1700,
+  "sourceIds": ["tdv-karlofca", "wikidata-cc0"],
+  "administrativeRegions": [], "settlements": [],
+  "events": [{
+    "id": "event:karlofca-1699", "nameTr": "Karlofça Antlaşması", "sourceName": "Treaty of Karlowitz",
+    "validFrom": 1699, "validTo": 1700, "type": "event", "subtype": "treaty", "importance": 3, "minZoom": 3.2,
+    "sourceIds": ["tdv-karlofca", "wikidata-cc0"], "sourceEntityId": "Q192303",
+    "geometryMethod": "external-cc0-event-point-with-academic-reference", "confidence": "medium", "boundaryCertainty": "not-applicable-point", "coverageStatus": "mapped-point-only", "reviewStatus": "reviewed",
+    "eventDate": { "from": "1699-01-20", "to": "1699-01-26", "precision": "treaty-sequence" },
+    "summary": "Osmanlı Devleti ile Avrupa devletleri arasındaki savaşları sonlandıran antlaşmalar dizisi.",
+    "warning": "Antlaşma noktası sınır çizgisi değildir; sınır tayin komisyonlarının çalışmaları 1701'e kadar sürmüştür.",
+    "geometry": { "type": "Point", "coordinates": [19.93, 45.2] }
+  }], "routes": []
+}

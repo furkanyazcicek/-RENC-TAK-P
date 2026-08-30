@@ -1,0 +1,3826 @@
+{
+  "schemaVersion": 3,
+  "title": "DRKOÇ Tarih Atlası yayın manifesti",
+  "generatedAt": "2026-08-27T14:36:33.346Z",
+  "supportedYears": {
+    "from": 0,
+    "to": 1960
+  },
+  "defaultYear": 1453,
+  "chronology": {
+    "uiEpoch": 0,
+    "sourceAtEpoch": -1,
+    "temporalMethod": "nearest-source-snapshot-no-interpolation",
+    "maximumDistanceYears": 50,
+    "rule": "Seçili yıl en yakın kaynak anlık görüntüsüne bağlanır; eşit uzaklıkta önceki kaynak seçilir. Geometri interpolasyonu yapılmaz.",
+    "note": "Tarih yazımında yıl sıfır yoktur; arayüzdeki 0, MÖ 1 ile MS 1 arasındaki geçişi ve world_bc1 kaynak görüntüsünü temsil eder."
+  },
+  "decadeStops": [
+    {
+      "year": 0,
+      "evidenceYear": 0,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 10,
+      "evidenceYear": 0,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 20,
+      "evidenceYear": 0,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 30,
+      "evidenceYear": 0,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 40,
+      "evidenceYear": 0,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 50,
+      "evidenceYear": 0,
+      "sourceGapYears": 50,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 60,
+      "evidenceYear": 100,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 70,
+      "evidenceYear": 100,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 80,
+      "evidenceYear": 100,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 90,
+      "evidenceYear": 100,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 100,
+      "evidenceYear": 100,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 110,
+      "evidenceYear": 100,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 120,
+      "evidenceYear": 100,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 130,
+      "evidenceYear": 100,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 140,
+      "evidenceYear": 100,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 150,
+      "evidenceYear": 100,
+      "sourceGapYears": 50,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 160,
+      "evidenceYear": 200,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 170,
+      "evidenceYear": 200,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 180,
+      "evidenceYear": 200,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 190,
+      "evidenceYear": 200,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 200,
+      "evidenceYear": 200,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 210,
+      "evidenceYear": 200,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 220,
+      "evidenceYear": 200,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 230,
+      "evidenceYear": 200,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 240,
+      "evidenceYear": 200,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 250,
+      "evidenceYear": 200,
+      "sourceGapYears": 50,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 260,
+      "evidenceYear": 300,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 270,
+      "evidenceYear": 300,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 280,
+      "evidenceYear": 300,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 290,
+      "evidenceYear": 300,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 300,
+      "evidenceYear": 300,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 310,
+      "evidenceYear": 300,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 320,
+      "evidenceYear": 300,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 330,
+      "evidenceYear": 300,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 340,
+      "evidenceYear": 300,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 350,
+      "evidenceYear": 300,
+      "sourceGapYears": 50,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 360,
+      "evidenceYear": 400,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 370,
+      "evidenceYear": 400,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 380,
+      "evidenceYear": 400,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 390,
+      "evidenceYear": 400,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 400,
+      "evidenceYear": 400,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 410,
+      "evidenceYear": 400,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 420,
+      "evidenceYear": 400,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 430,
+      "evidenceYear": 400,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 440,
+      "evidenceYear": 400,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 450,
+      "evidenceYear": 400,
+      "sourceGapYears": 50,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 460,
+      "evidenceYear": 500,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 470,
+      "evidenceYear": 500,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 480,
+      "evidenceYear": 500,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 490,
+      "evidenceYear": 500,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 500,
+      "evidenceYear": 500,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 510,
+      "evidenceYear": 500,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 520,
+      "evidenceYear": 500,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 530,
+      "evidenceYear": 500,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 540,
+      "evidenceYear": 500,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 550,
+      "evidenceYear": 500,
+      "sourceGapYears": 50,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 560,
+      "evidenceYear": 600,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 570,
+      "evidenceYear": 600,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 580,
+      "evidenceYear": 600,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 590,
+      "evidenceYear": 600,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 600,
+      "evidenceYear": 600,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 610,
+      "evidenceYear": 600,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 620,
+      "evidenceYear": 600,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 630,
+      "evidenceYear": 600,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 640,
+      "evidenceYear": 600,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 650,
+      "evidenceYear": 600,
+      "sourceGapYears": 50,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 660,
+      "evidenceYear": 700,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 670,
+      "evidenceYear": 700,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 680,
+      "evidenceYear": 700,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 690,
+      "evidenceYear": 700,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 700,
+      "evidenceYear": 700,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 710,
+      "evidenceYear": 700,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 720,
+      "evidenceYear": 700,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 730,
+      "evidenceYear": 700,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 740,
+      "evidenceYear": 700,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 750,
+      "evidenceYear": 700,
+      "sourceGapYears": 50,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 760,
+      "evidenceYear": 800,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 770,
+      "evidenceYear": 800,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 780,
+      "evidenceYear": 800,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 790,
+      "evidenceYear": 800,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 800,
+      "evidenceYear": 800,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 810,
+      "evidenceYear": 800,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 820,
+      "evidenceYear": 800,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 830,
+      "evidenceYear": 800,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 840,
+      "evidenceYear": 800,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "nearest-general-source",
+      "detailStatus": "context-points-ready"
+    },
+    {
+      "year": 850,
+      "evidenceYear": 800,
+      "sourceGapYears": 50,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 860,
+      "evidenceYear": 900,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 870,
+      "evidenceYear": 900,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 880,
+      "evidenceYear": 900,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 890,
+      "evidenceYear": 900,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 900,
+      "evidenceYear": 900,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 910,
+      "evidenceYear": 900,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 920,
+      "evidenceYear": 900,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 930,
+      "evidenceYear": 900,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 940,
+      "evidenceYear": 900,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 950,
+      "evidenceYear": 900,
+      "sourceGapYears": 50,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 960,
+      "evidenceYear": 1000,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 970,
+      "evidenceYear": 1000,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 980,
+      "evidenceYear": 1000,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 990,
+      "evidenceYear": 1000,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1000,
+      "evidenceYear": 1000,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1010,
+      "evidenceYear": 1000,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1020,
+      "evidenceYear": 1000,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1030,
+      "evidenceYear": 1000,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1040,
+      "evidenceYear": 1000,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "nearest-general-source",
+      "detailStatus": "researching"
+    },
+    {
+      "year": 1050,
+      "evidenceYear": 1000,
+      "sourceGapYears": 50,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1060,
+      "evidenceYear": 1100,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1070,
+      "evidenceYear": 1100,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1080,
+      "evidenceYear": 1100,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1090,
+      "evidenceYear": 1100,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1100,
+      "evidenceYear": 1100,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1110,
+      "evidenceYear": 1100,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1120,
+      "evidenceYear": 1100,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1130,
+      "evidenceYear": 1100,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1140,
+      "evidenceYear": 1100,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1150,
+      "evidenceYear": 1100,
+      "sourceGapYears": 50,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1160,
+      "evidenceYear": 1200,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1170,
+      "evidenceYear": 1200,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1180,
+      "evidenceYear": 1200,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1190,
+      "evidenceYear": 1200,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1200,
+      "evidenceYear": 1200,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1210,
+      "evidenceYear": 1200,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1220,
+      "evidenceYear": 1200,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1230,
+      "evidenceYear": 1200,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1240,
+      "evidenceYear": 1279,
+      "sourceGapYears": 39,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1250,
+      "evidenceYear": 1279,
+      "sourceGapYears": 29,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1260,
+      "evidenceYear": 1279,
+      "sourceGapYears": 19,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1270,
+      "evidenceYear": 1279,
+      "sourceGapYears": 9,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1280,
+      "evidenceYear": 1279,
+      "sourceGapYears": 1,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1290,
+      "evidenceYear": 1300,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1300,
+      "evidenceYear": 1300,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1310,
+      "evidenceYear": 1300,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1320,
+      "evidenceYear": 1300,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1330,
+      "evidenceYear": 1300,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1340,
+      "evidenceYear": 1300,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1350,
+      "evidenceYear": 1300,
+      "sourceGapYears": 50,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1360,
+      "evidenceYear": 1400,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1370,
+      "evidenceYear": 1400,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1380,
+      "evidenceYear": 1400,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1390,
+      "evidenceYear": 1400,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1400,
+      "evidenceYear": 1400,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1410,
+      "evidenceYear": 1400,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1420,
+      "evidenceYear": 1400,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1430,
+      "evidenceYear": 1400,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1440,
+      "evidenceYear": 1400,
+      "sourceGapYears": 40,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1450,
+      "evidenceYear": 1492,
+      "sourceGapYears": 42,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1460,
+      "evidenceYear": 1492,
+      "sourceGapYears": 32,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1470,
+      "evidenceYear": 1492,
+      "sourceGapYears": 22,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1480,
+      "evidenceYear": 1492,
+      "sourceGapYears": 12,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1490,
+      "evidenceYear": 1492,
+      "sourceGapYears": 2,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1500,
+      "evidenceYear": 1500,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1510,
+      "evidenceYear": 1500,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1520,
+      "evidenceYear": 1530,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1530,
+      "evidenceYear": 1530,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1540,
+      "evidenceYear": 1530,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1550,
+      "evidenceYear": 1530,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1560,
+      "evidenceYear": 1530,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1570,
+      "evidenceYear": 1600,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1580,
+      "evidenceYear": 1600,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1590,
+      "evidenceYear": 1600,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1600,
+      "evidenceYear": 1600,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1610,
+      "evidenceYear": 1600,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1620,
+      "evidenceYear": 1600,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1630,
+      "evidenceYear": 1650,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1640,
+      "evidenceYear": 1650,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1650,
+      "evidenceYear": 1650,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1660,
+      "evidenceYear": 1650,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1670,
+      "evidenceYear": 1650,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1680,
+      "evidenceYear": 1700,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1690,
+      "evidenceYear": 1700,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1700,
+      "evidenceYear": 1700,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1710,
+      "evidenceYear": 1715,
+      "sourceGapYears": 5,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1720,
+      "evidenceYear": 1715,
+      "sourceGapYears": 5,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1730,
+      "evidenceYear": 1715,
+      "sourceGapYears": 15,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1740,
+      "evidenceYear": 1715,
+      "sourceGapYears": 25,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1750,
+      "evidenceYear": 1783,
+      "sourceGapYears": 33,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1760,
+      "evidenceYear": 1783,
+      "sourceGapYears": 23,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1770,
+      "evidenceYear": 1783,
+      "sourceGapYears": 13,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1780,
+      "evidenceYear": 1783,
+      "sourceGapYears": 3,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1790,
+      "evidenceYear": 1783,
+      "sourceGapYears": 7,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1800,
+      "evidenceYear": 1800,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1810,
+      "evidenceYear": 1815,
+      "sourceGapYears": 5,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1820,
+      "evidenceYear": 1815,
+      "sourceGapYears": 5,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1830,
+      "evidenceYear": 1815,
+      "sourceGapYears": 15,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1840,
+      "evidenceYear": 1815,
+      "sourceGapYears": 25,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1850,
+      "evidenceYear": 1880,
+      "sourceGapYears": 30,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1860,
+      "evidenceYear": 1880,
+      "sourceGapYears": 20,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1870,
+      "evidenceYear": 1880,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1880,
+      "evidenceYear": 1880,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1890,
+      "evidenceYear": 1880,
+      "sourceGapYears": 10,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1900,
+      "evidenceYear": 1900,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1910,
+      "evidenceYear": 1914,
+      "sourceGapYears": 4,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1920,
+      "evidenceYear": 1920,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "exact-general-source-known-limitation",
+      "detailStatus": "researching"
+    },
+    {
+      "year": 1930,
+      "evidenceYear": 1930,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1940,
+      "evidenceYear": 1938,
+      "sourceGapYears": 2,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1950,
+      "evidenceYear": 1945,
+      "sourceGapYears": 5,
+      "representation": "nearest-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    },
+    {
+      "year": 1960,
+      "evidenceYear": 1960,
+      "sourceGapYears": 0,
+      "representation": "exact-source-snapshot",
+      "politicalStatus": "general-source-only",
+      "detailStatus": "not-prioritized"
+    }
+  ],
+  "architecture": "period-lazy-geojson-with-layer-specific-detail-packages",
+  "cartography": {
+    "colorPolicy": "global-stable-adjacency-v1",
+    "rule": "Siyasî kimlikler tüm dönemlerin birleşik komşuluk grafiğinde deterministik boyanır; aynı renkli ortak sınır yayınlanmaz."
+  },
+  "landSemantics": [
+    {
+      "id": "polity",
+      "label": "Kaynakta siyasi sahiplik"
+    },
+    {
+      "id": "subject",
+      "label": "Bağlı / tâbi yapı"
+    },
+    {
+      "id": "contested",
+      "label": "Tartışmalı alan"
+    },
+    {
+      "id": "unclaimed",
+      "label": "Merkezî denetim dışı / sahipsiz"
+    },
+    {
+      "id": "no-data",
+      "label": "Kaynakta siyasi kayıt yok"
+    },
+    {
+      "id": "quarantined",
+      "label": "Üretime kapalı"
+    }
+  ],
+  "detailPackages": {
+    "700": "/atlas/v3/details/central-asia-552-840.json",
+    "1071": "/atlas/v3/details/malazgirt-1071.json",
+    "1402": "/atlas/v3/details/ankara-savasi-1402.json",
+    "1453": "/atlas/v3/details/constantinople-1453.json",
+    "1514": "/atlas/v3/details/caldiran-1514.json",
+    "1526": "/atlas/v3/details/mohac-1526.json",
+    "1600": "/atlas/v3/details/1600.json",
+    "1699": "/atlas/v3/details/karlofca-1699.json",
+    "1774": "/atlas/v3/details/kucuk-kaynarca-1774.json",
+    "1923": "/atlas/v3/details/cumhuriyet-1923.json"
+  },
+  "detailSlices": [
+    {
+      "id": "central-asia-552-840",
+      "sliceYear": 700,
+      "title": "552–840 Orhun Vadisi Türk devletleri bağlamı",
+      "validFrom": 552,
+      "validTo": 841,
+      "url": "/atlas/v3/details/central-asia-552-840.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "unesco-orkhon-valley-1081",
+        "iranica-gozz-2001",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 2,
+        "events": 0,
+        "routes": 0
+      }
+    },
+    {
+      "id": "malazgirt-1071",
+      "sliceYear": 1071,
+      "title": "1071 Malazgirt Muharebesi kanıt dilimi",
+      "validFrom": 1071,
+      "validTo": 1072,
+      "url": "/atlas/v3/details/malazgirt-1071.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "tdv-malazgirt-2003",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 0,
+        "events": 1,
+        "routes": 0
+      }
+    },
+    {
+      "id": "ankara-savasi-1402",
+      "sliceYear": 1402,
+      "title": "1402 Ankara Savaşı kanıt dilimi",
+      "validFrom": 1402,
+      "validTo": 1403,
+      "url": "/atlas/v3/details/ankara-savasi-1402.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "tdv-ankara-savasi",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 0,
+        "events": 1,
+        "routes": 0
+      }
+    },
+    {
+      "id": "constantinople-1453",
+      "sliceYear": 1453,
+      "title": "1453 İstanbul'un Fethi kanıt dilimi",
+      "validFrom": 1453,
+      "validTo": 1454,
+      "url": "/atlas/v3/details/constantinople-1453.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "loc-turkey-country-study-1995",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 1,
+        "events": 1,
+        "routes": 0
+      }
+    },
+    {
+      "id": "caldiran-1514",
+      "sliceYear": 1514,
+      "title": "1514 Çaldıran Savaşı kanıt dilimi",
+      "validFrom": 1514,
+      "validTo": 1515,
+      "url": "/atlas/v3/details/caldiran-1514.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "tdv-caldiran-1993",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 0,
+        "events": 1,
+        "routes": 0
+      }
+    },
+    {
+      "id": "mohac-1526",
+      "sliceYear": 1526,
+      "title": "1526 Mohaç Muharebesi kanıt dilimi",
+      "validFrom": 1526,
+      "validTo": 1527,
+      "url": "/atlas/v3/details/mohac-1526.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "tdv-mohac-2020",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 0,
+        "events": 1,
+        "routes": 0
+      }
+    },
+    {
+      "id": "1600",
+      "sliceYear": 1600,
+      "title": "1600 Osmanlı–Habsburg sınır dünyası",
+      "validFrom": 1590,
+      "validTo": 1700,
+      "url": "/atlas/v3/details/1600.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "tdv-hacova",
+        "tdv-osmanlilar-tasra",
+        "kunt-sultans-servants-1983",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 35,
+        "administrativeRegions": 35,
+        "settlements": 4,
+        "events": 1,
+        "routes": 1
+      }
+    },
+    {
+      "id": "karlofca-1699",
+      "sliceYear": 1699,
+      "title": "1699 Karlofça Antlaşması kanıt dilimi",
+      "validFrom": 1699,
+      "validTo": 1700,
+      "url": "/atlas/v3/details/karlofca-1699.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "tdv-karlofca",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 0,
+        "events": 1,
+        "routes": 0
+      }
+    },
+    {
+      "id": "kucuk-kaynarca-1774",
+      "sliceYear": 1774,
+      "title": "1774 Küçük Kaynarca Antlaşması kanıt dilimi",
+      "validFrom": 1774,
+      "validTo": 1775,
+      "url": "/atlas/v3/details/kucuk-kaynarca-1774.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "tdv-kucuk-kaynarca-2002",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 1,
+        "events": 1,
+        "routes": 0
+      }
+    },
+    {
+      "id": "cumhuriyet-1923",
+      "sliceYear": 1923,
+      "title": "1923 Cumhuriyet'in ilanı kanıt dilimi",
+      "validFrom": 1923,
+      "validTo": 1924,
+      "url": "/atlas/v3/details/cumhuriyet-1923.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "tbmm-cumhuriyet-1923",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 1,
+        "events": 1,
+        "routes": 0
+      }
+    }
+  ],
+  "sourceCatalog": {
+    "schemaVersion": 1,
+    "lastReviewedAt": "2026-08-27",
+    "policy": {
+      "geometryRule": "Siyasi geometri yalnız lisanslı vektörden, kontrol noktaları belgeli sayısallaştırmadan veya kaynak geometriye uygulanan deterministik GIS dönüşümünden üretilebilir.",
+      "unknownRule": "Kaynak veya yeniden kullanım hakkı belirsizse veri üretime alınmaz.",
+      "commercialAssumption": "DRKOÇ kullanım biçimi ayrıca doğrulanana kadar yalnız ticari kullanıma da izin veren kaynaklar üretim geometrisi için uygun kabul edilir."
+    }
+  },
+  "researchSnapshots": [
+    {
+      "year": 552,
+      "label": "I. Göktürk Kağanlığı",
+      "group": "central-asia",
+      "priority": "critical",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 600,
+      "detailStatus": "context-points-ready",
+      "sourceIds": [
+        "iranica-gozz-2001",
+        "unesco-orkhon-valley-1081",
+        "wikidata-cc0"
+      ],
+      "representation": "Çekirdek merkez ve tarihsel peyzaj noktaları; kağanlık sınırı için nüfuz/çekirdek alan ayrımı gerekir.",
+      "publicationBlocker": "Ticari kullanıma uygun, georeferanslı ve bağımsızca incelenmiş 552 sınır vektörü bulunmadı."
+    },
+    {
+      "year": 682,
+      "label": "II. Göktürk Kağanlığı",
+      "group": "central-asia",
+      "priority": "critical",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 700,
+      "detailStatus": "context-points-ready",
+      "sourceIds": [
+        "iranica-gozz-2001",
+        "unesco-orkhon-valley-1081",
+        "wikidata-cc0"
+      ],
+      "representation": "Orhun çekirdeği bağlamı; çizgisel modern sınır dili kullanılmamalı.",
+      "publicationBlocker": "Doğrulanmış özel sınır geometrisi bulunmadı."
+    },
+    {
+      "year": 744,
+      "label": "Uygur Kağanlığı'nın kuruluşu",
+      "group": "central-asia",
+      "priority": "critical",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 700,
+      "detailStatus": "context-points-ready",
+      "sourceIds": [
+        "iranica-gozz-2001",
+        "unesco-orkhon-valley-1081",
+        "wikidata-cc0"
+      ],
+      "representation": "Kuruluş olayı ve daha sonra kurulan Ordu-Balık merkezi ayrı zaman kapsamlarıyla gösterilir.",
+      "publicationBlocker": "744 sınır snapshot'ı için yayımlanabilir kaynak geometri yok."
+    },
+    {
+      "year": 840,
+      "label": "Uygur Kağanlığı'nın son dönemi",
+      "group": "central-asia",
+      "priority": "critical",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 800,
+      "detailStatus": "context-points-ready",
+      "sourceIds": [
+        "unesco-orkhon-valley-1081",
+        "wikidata-cc0"
+      ],
+      "representation": "Başkent/arkeolojik alan noktası ve yaklaşık siyasî kapsam birbirinden ayrılmalı.",
+      "publicationBlocker": "840 için bağımsızca incelenmiş sınır vektörü bulunmadı."
+    },
+    {
+      "year": 1040,
+      "label": "Dandanakan",
+      "group": "turkic-islamic",
+      "priority": "high",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 1000,
+      "detailStatus": "researching",
+      "sourceIds": [],
+      "representation": "Olay noktası ve Selçuklu siyasî değişimi ayrı kanıtlanmalı.",
+      "publicationBlocker": "Özel GIS ve olay konumu araştırması tamamlanmadı."
+    },
+    {
+      "year": 1071,
+      "label": "Malazgirt",
+      "group": "anatolia",
+      "priority": "critical",
+      "politicalGeometryStatus": "nearest-general-source-known-inaccurate",
+      "currentEvidenceYear": 1100,
+      "detailStatus": "ready-reviewed-event-point",
+      "sourceIds": [
+        "tdv-malazgirt-2003",
+        "wikidata-cc0"
+      ],
+      "representation": "Kaynaklı olay noktası yayımlanır; özel sınır bulunana kadar 1100 paketindeki Anadolu uyarısı korunur.",
+      "publicationBlocker": "Mevcut genel kaynak Anadolu Selçuklu varlığını eksik gösteriyor."
+    },
+    {
+      "year": 1243,
+      "label": "Kösedağ",
+      "group": "anatolia",
+      "priority": "high",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 1279,
+      "detailStatus": "researching",
+      "sourceIds": [],
+      "representation": "Savaş noktası ve bağlılık değişimi araştırılmalı.",
+      "publicationBlocker": "1243 özel sınır geometrisi yok."
+    },
+    {
+      "year": 1299,
+      "label": "Osmanlı kuruluş bağlamı",
+      "group": "ottoman",
+      "priority": "critical",
+      "politicalGeometryStatus": "nearest-general-source-known-omission",
+      "currentEvidenceYear": 1300,
+      "detailStatus": "researching",
+      "sourceIds": [],
+      "representation": "Kuruluş olayı, merkezler ve tartışmalı erken alan; kesin devlet polygonu gibi sunulmamalı.",
+      "publicationBlocker": "1300 genel kaynağı Osmanlı Beyliği'ni göstermiyor."
+    },
+    {
+      "year": 1402,
+      "label": "Ankara Savaşı",
+      "group": "ottoman",
+      "priority": "high",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 1400,
+      "detailStatus": "ready-reviewed-event-point",
+      "sourceIds": [
+        "tdv-ankara-savasi",
+        "wikidata-cc0"
+      ],
+      "representation": "Kaynaklı savaş noktası yayımlanır; savaş öncesi ve Fetret Devri ayrı snapshot semantiği gerektirir.",
+      "publicationBlocker": "1402 sonrası parçalanma geometrisi kaynaklandırılmadı."
+    },
+    {
+      "year": 1453,
+      "label": "İstanbul'un Fethi",
+      "group": "ottoman",
+      "priority": "critical",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 1492,
+      "detailStatus": "event-ready",
+      "sourceIds": [
+        "loc-turkey-country-study-1995",
+        "wikidata-cc0"
+      ],
+      "representation": "29 Mayıs öncesi ve sonrası iki farklı tarihsel durumdur; olay noktası yayımlanır, özel polygon henüz yayımlanmaz.",
+      "publicationBlocker": "1453'e ait lisanslı/georeferanslı siyasî sınır vektörü bulunmadı."
+    },
+    {
+      "year": 1514,
+      "label": "Çaldıran",
+      "group": "ottoman",
+      "priority": "high",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 1500,
+      "detailStatus": "ready-reviewed-event-point",
+      "sourceIds": [
+        "tdv-caldiran-1993",
+        "wikidata-cc0"
+      ],
+      "representation": "Kaynaklı savaş noktası yayımlanır; savaş sonrası nüfuz/egemenlik değişimi ayrı kalır.",
+      "publicationBlocker": "1514 özel siyasî geometri araştırılmadı."
+    },
+    {
+      "year": 1517,
+      "label": "Mısır'ın Fethi",
+      "group": "ottoman",
+      "priority": "critical",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 1530,
+      "detailStatus": "researching",
+      "sourceIds": [],
+      "representation": "Fetih sonrası idarî statü ve bağlı bölgeler ayrıca modellenmeli.",
+      "publicationBlocker": "1517 özel geometri araştırılmadı."
+    },
+    {
+      "year": 1526,
+      "label": "Mohaç",
+      "group": "ottoman",
+      "priority": "critical",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 1530,
+      "detailStatus": "ready-reviewed-event-point; unreferenced polygon quarantined",
+      "sourceIds": [
+        "tdv-mohac-2020",
+        "wikidata-cc0"
+      ],
+      "representation": "Kaynaklı savaş noktası ayrı yayımlanır; elle çizilmiş mevcut siyasî prototip yayınlanmaz.",
+      "publicationBlocker": "1526 prototipinde georeferans ve kontrol noktaları yok."
+    },
+    {
+      "year": 1571,
+      "label": "İnebahtı",
+      "group": "ottoman",
+      "priority": "high",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 1600,
+      "detailStatus": "researching",
+      "sourceIds": [],
+      "representation": "Deniz savaşı noktası ve siyasî sınır değişimi olmayan olay ayrılmalı.",
+      "publicationBlocker": "Olay ve deniz bağlamı henüz paketlenmedi."
+    },
+    {
+      "year": 1683,
+      "label": "II. Viyana Kuşatması",
+      "group": "ottoman",
+      "priority": "critical",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 1700,
+      "detailStatus": "researching",
+      "sourceIds": [],
+      "representation": "Kuşatma noktası; 1683 öncesi ve 1699 sonrası sınırlar ayrılmalı.",
+      "publicationBlocker": "1683 özel sınır snapshot'ı yok."
+    },
+    {
+      "year": 1699,
+      "label": "Karlofça Antlaşması",
+      "group": "ottoman",
+      "priority": "critical",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 1700,
+      "detailStatus": "ready-reviewed-event-point",
+      "sourceIds": [
+        "tdv-karlofca",
+        "wikidata-cc0"
+      ],
+      "representation": "Kaynaklı antlaşma noktası yayımlanır; toprak devri ve 1701'e uzanan sınır tayini ayrıca modellenmelidir.",
+      "publicationBlocker": "Antlaşma maddeleri sınır vektörüne dönüştürülmedi."
+    },
+    {
+      "year": 1774,
+      "label": "Küçük Kaynarca Antlaşması",
+      "group": "ottoman",
+      "priority": "critical",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 1783,
+      "detailStatus": "event-ready",
+      "sourceIds": [
+        "tdv-kucuk-kaynarca-2002",
+        "wikidata-cc0"
+      ],
+      "representation": "21/26 Temmuz tarih semantiği görünür olmalı; Kırım bağımsız statüde, Rusya'ya bırakılan kaleler ayrı kanıtlanmalı.",
+      "publicationBlocker": "1774 sonrası kesintisiz sınır koordinatları için georeferanslı vektör/sayısallaştırma tamamlanmadı."
+    },
+    {
+      "year": 1783,
+      "label": "Kırım'ın Rusya tarafından ilhakı",
+      "group": "ottoman",
+      "priority": "critical",
+      "politicalGeometryStatus": "exact-general-source",
+      "currentEvidenceYear": 1783,
+      "detailStatus": "researching",
+      "sourceIds": [
+        "aourednik-historical-basemaps"
+      ],
+      "representation": "Genel kaynak snapshot'ı; Kırım statüsü feature bazında ayrıca incelenmeli.",
+      "publicationBlocker": "Akademik ikinci sınır kaynağı ve yerel ayrıntı eksik."
+    },
+    {
+      "year": 1815,
+      "label": "Viyana Kongresi sonrası",
+      "group": "global",
+      "priority": "high",
+      "politicalGeometryStatus": "exact-general-source",
+      "currentEvidenceYear": 1815,
+      "detailStatus": "researching",
+      "sourceIds": [
+        "aourednik-historical-basemaps"
+      ],
+      "representation": "Genel kaynak snapshot'ı.",
+      "publicationBlocker": "Yerel/idarî ayrıntı ve ikinci kaynak incelemesi eksik."
+    },
+    {
+      "year": 1878,
+      "label": "Berlin Antlaşması sonrası",
+      "group": "ottoman",
+      "priority": "critical",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 1880,
+      "detailStatus": "researching",
+      "sourceIds": [
+        "cshapes-2-eth"
+      ],
+      "representation": "1880 genel kaynak; 1878 özel sınırı antlaşma ve georeferanslı haritayla kurulmalı.",
+      "publicationBlocker": "CShapes 1886'da başlar ve NC lisanslıdır; 1878 için uygun değildir."
+    },
+    {
+      "year": 1913,
+      "label": "Balkan Savaşları sonrası",
+      "group": "ottoman",
+      "priority": "critical",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 1914,
+      "detailStatus": "researching",
+      "sourceIds": [
+        "cshapes-2-eth"
+      ],
+      "representation": "1913 antlaşmaları sonrası sınırlar ayrı snapshot olmalı.",
+      "publicationBlocker": "CShapes adayının NC lisansı ürün kullanımıyla doğrulanmadı."
+    },
+    {
+      "year": 1914,
+      "label": "I. Dünya Savaşı başlangıcı",
+      "group": "global",
+      "priority": "critical",
+      "politicalGeometryStatus": "exact-general-source",
+      "currentEvidenceYear": 1914,
+      "detailStatus": "researching",
+      "sourceIds": [
+        "aourednik-historical-basemaps",
+        "cshapes-2-eth"
+      ],
+      "representation": "Genel kaynak snapshot'ı; CShapes yalnız lisans uygunluğu doğrulanırsa ikinci kaynak olabilir.",
+      "publicationBlocker": "Feature bazında bağımsız karşılaştırma yapılmadı."
+    },
+    {
+      "year": 1918,
+      "label": "I. Dünya Savaşı sonu",
+      "group": "global",
+      "priority": "critical",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 1920,
+      "detailStatus": "researching",
+      "sourceIds": [
+        "cshapes-2-eth"
+      ],
+      "representation": "Savaş sonu, mütareke ve barış antlaşmaları için tarih gün/ay düzeyinde ayrılmalı.",
+      "publicationBlocker": "1918 özel paket yok; CShapes lisansı kısıtlı."
+    },
+    {
+      "year": 1920,
+      "label": "Millî Mücadele ve Sevr dönemi",
+      "group": "turkey",
+      "priority": "critical",
+      "politicalGeometryStatus": "exact-general-source-known-limitation",
+      "currentEvidenceYear": 1920,
+      "detailStatus": "researching",
+      "sourceIds": [
+        "aourednik-historical-basemaps",
+        "cshapes-2-eth"
+      ],
+      "representation": "Hukukî iddia, işgal ve fiilî denetim ayrı katmanlar gerektirir.",
+      "publicationBlocker": "Mevcut genel kaynak Sevr/fiilî denetim ayrımını yeterince modellemiyor."
+    },
+    {
+      "year": 1923,
+      "label": "Lozan ve Cumhuriyet",
+      "group": "turkey",
+      "priority": "critical",
+      "politicalGeometryStatus": "nearest-general-source",
+      "currentEvidenceYear": 1920,
+      "detailStatus": "ready-reviewed-event-and-building-point",
+      "sourceIds": [
+        "tbmm-cumhuriyet-1923",
+        "wikidata-cc0",
+        "cshapes-2-eth"
+      ],
+      "representation": "Cumhuriyet'in ilanı ve Birinci Meclis noktası yayımlanır; Lozan sınırları ve yürürlük tarihleri ayrı tutulur.",
+      "publicationBlocker": "`1923.json` adlı eski dosya 1930 kaynaklıdır ve kanıt değildir; gerçek 1923 siyasî paketi üretilmedi. CShapes lisansı kısıtlıdır."
+    }
+  ],
+  "sources": [
+    {
+      "id": "aourednik-historical-basemaps",
+      "title": "Historical Basemaps",
+      "creatorOrInstitution": "Alexander Ourednik ve katkıcılar",
+      "publicationDate": null,
+      "representedYears": "MÖ 2000–1994 arasında seçili dünya anlık görüntüleri",
+      "url": "https://github.com/aourednik/historical-basemaps",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "GeoJSON/world_*.geojson",
+      "geographicCoverage": "Küresel; kapsam ve ayrıntı anlık görüntüye göre değişir",
+      "scaleOrResolution": "Kıtasal/küresel öğretim ölçeği; yerel sınır hassasiyeti sağlamaz",
+      "sourceType": "external-vector",
+      "license": {
+        "name": "GPL-3.0",
+        "url": "https://github.com/aourednik/historical-basemaps/blob/master/LICENSE",
+        "status": "conditional",
+        "commercialUse": true,
+        "redistribution": "conditional",
+        "notes": "Türetilmiş ve yeniden dağıtılan veri için GPL yükümlülükleri ayrıca korunmalıdır."
+      },
+      "useStatus": "production",
+      "geometryEligible": true,
+      "proves": "Kaynağın kendi anlık görüntü yıllarında küresel ölçekte siyasî polygon geometrisi sağlar.",
+      "limitations": "Kaynak akademik kesinlik iddia etmez; feature bazında bibliyografik kanıt zinciri ve yerel sınır hassasiyeti yoktur.",
+      "confidence": "low"
+    },
+    {
+      "id": "natural-earth-land-50m",
+      "title": "Natural Earth 1:50m Land",
+      "creatorOrInstitution": "Natural Earth",
+      "publicationDate": null,
+      "representedYears": "Modern fizikî kara/kıyı tabanı",
+      "url": "https://www.naturalearthdata.com/downloads/50m-physical-vectors/50m-land/",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "1:50m Physical Vectors / Land",
+      "geographicCoverage": "Küresel",
+      "scaleOrResolution": "1:50.000.000",
+      "sourceType": "external-vector",
+      "license": {
+        "name": "Public domain",
+        "url": "https://www.naturalearthdata.com/about/terms-of-use/",
+        "status": "open",
+        "commercialUse": true,
+        "redistribution": "allowed",
+        "notes": "Yalnız modern kara/kıyı maskesi olarak kullanılır."
+      },
+      "useStatus": "production",
+      "geometryEligible": true,
+      "proves": "Kıyı kesimi ve nötr kara maskesi sağlar; iç tarihsel siyasî sınır kanıtı değildir.",
+      "limitations": "Tarihsel kıyı değişimini veya siyasî egemenliği kanıtlamaz.",
+      "confidence": "high"
+    },
+    {
+      "id": "wikidata-cc0",
+      "title": "Wikidata koordinat kayıtları",
+      "creatorOrInstitution": "Wikimedia Foundation ve Wikidata katkıcıları",
+      "publicationDate": null,
+      "representedYears": "Kayıt bazında",
+      "url": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "Feature içindeki sourceEntityId",
+      "geographicCoverage": "Küresel",
+      "scaleOrResolution": "Nokta kaydına göre değişir",
+      "sourceType": "external-vector-point",
+      "license": {
+        "name": "CC0 1.0",
+        "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "status": "open",
+        "commercialUse": true,
+        "redistribution": "allowed",
+        "notes": "Her noktanın tarihsel yorum ve sürekliliği ayrı akademik kaynak gerektirir."
+      },
+      "useStatus": "production",
+      "geometryEligible": true,
+      "proves": "Yerleşim veya olay kaydının WGS84 nokta konumunu sağlar; siyasî sınır kanıtı değildir.",
+      "limitations": "Topluluk üretimidir; tarihsel kimlik ve tarihlendirme tek başına bu kaynağa bırakılamaz.",
+      "confidence": "medium"
+    },
+    {
+      "id": "tdv-hacova",
+      "title": "Haçova Meydan Savaşı",
+      "creatorOrInstitution": "Feridun Emecen / TDV İslâm Araştırmaları Merkezi",
+      "publicationDate": 1996,
+      "representedYears": "1593–1606; özellikle 1596",
+      "url": "https://islamansiklopedisi.org.tr/hacova-meydan-savasi",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "cilt 14, s. 546–547",
+      "geographicCoverage": "Osmanlı–Habsburg savaş sahası",
+      "scaleOrResolution": "Olay ve sefer bağlamı",
+      "sourceType": "academic-reference",
+      "license": {
+        "name": "Telifli başvuru kaynağı",
+        "url": "https://islamansiklopedisi.org.tr/telif-haklari",
+        "status": "reference-only",
+        "commercialUse": null,
+        "redistribution": "not-used",
+        "notes": "Metin veya harita yeniden dağıtılmaz; yalnız kısa bibliyografik kanıt kaydı tutulur."
+      },
+      "useStatus": "reference-only",
+      "geometryEligible": false,
+      "proves": "1596 seferinin tarih, taraf, menzil ve sonuç bağlamını destekler.",
+      "limitations": "Sınır veya güzergâh koordinatı sağlamaz.",
+      "confidence": "high"
+    },
+    {
+      "id": "tdv-osmanlilar-tasra",
+      "title": "Osmanlılar — Taşra Teşkilâtı",
+      "creatorOrInstitution": "TDV İslâm Araştırmaları Merkezi",
+      "publicationDate": null,
+      "representedYears": "Osmanlı taşra teşkilâtı",
+      "url": "https://islamansiklopedisi.org.tr/osmanlilar",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "Taşra teşkilâtı bölümü",
+      "geographicCoverage": "Osmanlı Devleti",
+      "scaleOrResolution": "İdarî hiyerarşi",
+      "sourceType": "academic-reference",
+      "license": {
+        "name": "Telifli başvuru kaynağı",
+        "url": "https://islamansiklopedisi.org.tr/telif-haklari",
+        "status": "reference-only",
+        "commercialUse": null,
+        "redistribution": "not-used",
+        "notes": "Metin yeniden dağıtılmaz."
+      },
+      "useStatus": "reference-only",
+      "geometryEligible": false,
+      "proves": "Eyalet–sancak–kaza–nahiye hiyerarşisi ve taşra teşkilâtı bağlamını destekler.",
+      "limitations": "Kesin idarî sınır koordinatı sağlamaz.",
+      "confidence": "high"
+    },
+    {
+      "id": "kunt-sultans-servants-1983",
+      "title": "The Sultan's Servants: The Transformation of Ottoman Provincial Government, 1550–1650",
+      "creatorOrInstitution": "İ. Metin Kunt / Columbia University Press",
+      "publicationDate": 1983,
+      "representedYears": "1550–1650",
+      "url": "https://search.worldcat.org/title/8476410",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "ISBN 9780231055780",
+      "geographicCoverage": "Osmanlı taşra yönetimi",
+      "scaleOrResolution": "İdarî tarih",
+      "sourceType": "academic-reference",
+      "license": {
+        "name": "Telifli kitap",
+        "url": "https://cup.columbia.edu/",
+        "status": "reference-only",
+        "commercialUse": null,
+        "redistribution": "not-used",
+        "notes": "Eser içeriği projeye kopyalanmaz."
+      },
+      "useStatus": "reference-only",
+      "geometryEligible": false,
+      "proves": "1550–1650 Osmanlı eyalet yönetiminin tarihsel bağlamını destekler.",
+      "limitations": "Kesin sınır koordinatı sağlamaz.",
+      "confidence": "high"
+    },
+    {
+      "id": "tdv-kucuk-kaynarca-2002",
+      "title": "Küçük Kaynarca Antlaşması",
+      "creatorOrInstitution": "Kemal Beydilli / TDV İslâm Araştırmaları Merkezi",
+      "publicationDate": 2002,
+      "representedYears": "1768–1774; özellikle 1774 antlaşma sonrası statüler",
+      "url": "https://islamansiklopedisi.org.tr/kucuk-kaynarca-antlasmasi",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "cilt 26, s. 524–527",
+      "geographicCoverage": "Osmanlı–Rusya, Kırım ve kuzey Karadeniz",
+      "scaleOrResolution": "Antlaşma maddeleri ve siyasî statü",
+      "sourceType": "academic-reference",
+      "license": {
+        "name": "Telifli başvuru kaynağı",
+        "url": "https://islamansiklopedisi.org.tr/telif-haklari",
+        "status": "reference-only",
+        "commercialUse": null,
+        "redistribution": "not-used",
+        "notes": "Metin veya görseller yeniden dağıtılmaz."
+      },
+      "useStatus": "reference-only",
+      "geometryEligible": false,
+      "proves": "Antlaşmanın tarihi, Kırım'ın bağımsız statüsü ile Kerç, Yenikale, Kılburun ve ilgili egemenlik değişikliklerini destekler.",
+      "limitations": "Tek başına kesintisiz sınır koordinatı sağlamaz.",
+      "confidence": "high"
+    },
+    {
+      "id": "loc-turkey-country-study-1995",
+      "title": "Turkey: A Country Study — Historical Setting",
+      "creatorOrInstitution": "Library of Congress, Federal Research Division",
+      "publicationDate": 1995,
+      "representedYears": "Osmanlı ve Türkiye tarihinin genel özeti; 1453 olayı",
+      "url": "https://www.loc.gov/item/95049612/",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "Historical Setting / Ottoman Empire",
+      "geographicCoverage": "Türkiye ve Osmanlı coğrafyası",
+      "scaleOrResolution": "Tarihsel olay bağlamı",
+      "sourceType": "institutional-reference",
+      "license": {
+        "name": "Library of Congress kullanım koşulları",
+        "url": "https://www.loc.gov/legal/",
+        "status": "reference-only",
+        "commercialUse": null,
+        "redistribution": "not-used",
+        "notes": "Yalnız bibliyografik kanıt ve kısa olgusal özet kullanılır."
+      },
+      "useStatus": "reference-only",
+      "geometryEligible": false,
+      "proves": "29 Mayıs 1453'te Konstantinopolis'in Osmanlılar tarafından alınması ve Bizans'ın sona erişi bağlamını destekler.",
+      "limitations": "1453 siyasî sınır koordinatı sağlamaz.",
+      "confidence": "high"
+    },
+    {
+      "id": "unesco-orkhon-valley-1081",
+      "title": "Orkhon Valley Cultural Landscape",
+      "creatorOrInstitution": "UNESCO World Heritage Centre",
+      "publicationDate": 2004,
+      "representedYears": "6.–14. yüzyıl arkeolojik ve kültürel peyzaj bağlamı",
+      "url": "https://whc.unesco.org/en/list/1081",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "World Heritage List 1081 ve adaylık dosyası",
+      "geographicCoverage": "Orhun Vadisi, Moğolistan",
+      "scaleOrResolution": "Miras alanı ve bileşen sahaları",
+      "sourceType": "institutional-vector-and-reference",
+      "license": {
+        "name": "CC-BY-SA 3.0 IGO",
+        "url": "https://creativecommons.org/licenses/by-sa/3.0/igo/",
+        "status": "open",
+        "commercialUse": true,
+        "redistribution": "conditional",
+        "notes": "Atıf ve aynı lisans koşulları korunmalıdır."
+      },
+      "useStatus": "production",
+      "geometryEligible": true,
+      "proves": "Orhun Vadisi'ndeki 6.–7. yüzyıl Türk anıtlarını ve 8.–9. yüzyıl Uygur başkenti Khar Balgas'ı, ayrıca yayımlanmış konum/koruma alanı koordinatlarını destekler.",
+      "limitations": "Miras alanı sınırı Göktürk veya Uygur siyasî hâkimiyet sınırı değildir.",
+      "confidence": "high"
+    },
+    {
+      "id": "iranica-gozz-2001",
+      "title": "ḠOZZ",
+      "creatorOrInstitution": "Encyclopaedia Iranica",
+      "publicationDate": 2001,
+      "representedYears": "552–744 Türk kağanlıkları bağlamı",
+      "url": "https://www.iranicaonline.org/articles/gozz/",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "ḠOZZ maddesi",
+      "geographicCoverage": "İç Asya ve Oğuz/Türk siyasî bağlamı",
+      "scaleOrResolution": "Tarihsel anlatı",
+      "sourceType": "academic-reference",
+      "license": {
+        "name": "Telifli akademik başvuru kaynağı",
+        "url": "https://www.iranicaonline.org/about/",
+        "status": "reference-only",
+        "commercialUse": null,
+        "redistribution": "not-used",
+        "notes": "Metin veya görsel yeniden dağıtılmaz."
+      },
+      "useStatus": "reference-only",
+      "geometryEligible": false,
+      "proves": "Doğu Türk Kağanlığı'nın 552–630 ve 687–741 dönemlerini ve 744'te Uygur Kağanlığı'nın kuruluş bağlamını destekler.",
+      "limitations": "Kesin siyasî sınır geometrisi sağlamaz.",
+      "confidence": "high"
+    },
+    {
+      "id": "tdv-malazgirt-2003",
+      "title": "Malazgirt Muharebesi",
+      "creatorOrInstitution": "Ali Sevim / TDV İslâm Araştırmaları Merkezi",
+      "publicationDate": 2003,
+      "representedYears": "1071; savaş öncesi ve sonrası Anadolu bağlamı",
+      "url": "https://islamansiklopedisi.org.tr/malazgirt-muharebesi",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "cilt 27, Malazgirt Muharebesi maddesi",
+      "geographicCoverage": "Malazgirt–Ahlat ve Anadolu",
+      "scaleOrResolution": "Olay ve bölgesel tarih bağlamı",
+      "sourceType": "academic-reference",
+      "license": {
+        "name": "Telifli başvuru kaynağı",
+        "url": "https://islamansiklopedisi.org.tr/telif-haklari",
+        "status": "reference-only",
+        "commercialUse": null,
+        "redistribution": "not-used",
+        "notes": "Metin veya harita yeniden dağıtılmaz."
+      },
+      "useStatus": "reference-only",
+      "geometryEligible": false,
+      "proves": "26 Ağustos 1071 Malazgirt Muharebesi'nin tarihsel bağlamını ve sonuçlarını destekler.",
+      "limitations": "Savaş alanının kesin çevresini veya siyasî sınır koordinatı sağlamaz.",
+      "confidence": "high"
+    },
+    {
+      "id": "tdv-ankara-savasi",
+      "title": "Ankara Savaşı",
+      "creatorOrInstitution": "Mücteba İlgürel / TDV İslâm Araştırmaları Merkezi",
+      "publicationDate": null,
+      "representedYears": "1402",
+      "url": "https://islamansiklopedisi.org.tr/ankara-savasi",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "Ankara Savaşı maddesi",
+      "geographicCoverage": "Ankara ve Anadolu",
+      "scaleOrResolution": "Olay ve siyasî sonuç bağlamı",
+      "sourceType": "academic-reference",
+      "license": {
+        "name": "Telifli başvuru kaynağı",
+        "url": "https://islamansiklopedisi.org.tr/telif-haklari",
+        "status": "reference-only",
+        "commercialUse": null,
+        "redistribution": "not-used",
+        "notes": "Metin veya harita yeniden dağıtılmaz."
+      },
+      "useStatus": "reference-only",
+      "geometryEligible": false,
+      "proves": "1402 Ankara Savaşı'nın taraflarını, gelişimini ve tarih tartışmasını destekler.",
+      "limitations": "Kesin savaş alanı poligonu sağlamaz; gün konusunda kaynaklar ayrışır.",
+      "confidence": "high"
+    },
+    {
+      "id": "tdv-caldiran-1993",
+      "title": "Çaldıran Savaşı",
+      "creatorOrInstitution": "Mustafa Çetin Varlık / TDV İslâm Araştırmaları Merkezi",
+      "publicationDate": 1993,
+      "representedYears": "1514",
+      "url": "https://islamansiklopedisi.org.tr/caldiran-savasi",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "cilt 8, s. 193–195",
+      "geographicCoverage": "Çaldıran ovası ve Osmanlı–Safevî bağlamı",
+      "scaleOrResolution": "Olay bağlamı",
+      "sourceType": "academic-reference",
+      "license": {
+        "name": "Telifli başvuru kaynağı",
+        "url": "https://islamansiklopedisi.org.tr/telif-haklari",
+        "status": "reference-only",
+        "commercialUse": null,
+        "redistribution": "not-used",
+        "notes": "Metin veya harita yeniden dağıtılmaz."
+      },
+      "useStatus": "reference-only",
+      "geometryEligible": false,
+      "proves": "23 Ağustos 1514 Çaldıran Savaşı'nın tarihini, taraflarını ve sonuç bağlamını destekler.",
+      "limitations": "Kesin savaş alanı poligonu veya siyasî sınır sağlamaz.",
+      "confidence": "high"
+    },
+    {
+      "id": "tdv-mohac-2020",
+      "title": "Mohaç Muharebesi",
+      "creatorOrInstitution": "Feridun Emecen / TDV İslâm Araştırmaları Merkezi",
+      "publicationDate": 2020,
+      "representedYears": "1526",
+      "url": "https://islamansiklopedisi.org.tr/mohac-muharebesi",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "Mohaç Muharebesi maddesi",
+      "geographicCoverage": "Mohaç ovası ve Orta Avrupa",
+      "scaleOrResolution": "Olay ve sefer bağlamı",
+      "sourceType": "academic-reference",
+      "license": {
+        "name": "Telifli başvuru kaynağı",
+        "url": "https://islamansiklopedisi.org.tr/telif-haklari",
+        "status": "reference-only",
+        "commercialUse": null,
+        "redistribution": "not-used",
+        "notes": "Metin veya harita yeniden dağıtılmaz."
+      },
+      "useStatus": "reference-only",
+      "geometryEligible": false,
+      "proves": "29 Ağustos 1526 Mohaç Muharebesi'nin yer, tarih ve siyasî sonuç bağlamını destekler.",
+      "limitations": "Kesin savaş alanı poligonu veya yeni sınır hattı sağlamaz.",
+      "confidence": "high"
+    },
+    {
+      "id": "tdv-karlofca",
+      "title": "Karlofça",
+      "creatorOrInstitution": "TDV İslâm Araştırmaları Merkezi",
+      "publicationDate": null,
+      "representedYears": "1698–1699 konferans ve antlaşmalar",
+      "url": "https://islamansiklopedisi.org.tr/karlofca",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "Karlofça maddesi",
+      "geographicCoverage": "Karlofça ve Osmanlı–Avrupa antlaşma bağlamı",
+      "scaleOrResolution": "Antlaşma ve diplomasi bağlamı",
+      "sourceType": "academic-reference",
+      "license": {
+        "name": "Telifli başvuru kaynağı",
+        "url": "https://islamansiklopedisi.org.tr/telif-haklari",
+        "status": "reference-only",
+        "commercialUse": null,
+        "redistribution": "not-used",
+        "notes": "Metin veya harita yeniden dağıtılmaz."
+      },
+      "useStatus": "reference-only",
+      "geometryEligible": false,
+      "proves": "1699 Karlofça görüşmelerini ve antlaşmanın bölgesel siyasî sonuçlarını destekler.",
+      "limitations": "Sınır komisyonlarının daha sonra belirlediği hatların kesintisiz koordinatını sağlamaz.",
+      "confidence": "high"
+    },
+    {
+      "id": "tbmm-cumhuriyet-1923",
+      "title": "1924 Teşkilât-ı Esasiye Kanunu — genel bilgiler",
+      "creatorOrInstitution": "Türkiye Büyük Millet Meclisi",
+      "publicationDate": null,
+      "representedYears": "1923–1924; özellikle 29 Ekim 1923",
+      "url": "https://www.tbmm.gov.tr/anayasa/yirmi-dort-teskilati-esasiye-kanunu",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "29 Ekim 1923 tarihli 364 sayılı Kanun açıklaması",
+      "geographicCoverage": "Ankara / Türkiye",
+      "scaleOrResolution": "Kurumsal ve anayasal olay bağlamı",
+      "sourceType": "official-reference",
+      "license": {
+        "name": "Resmî kurum başvuru kaynağı",
+        "url": "https://www.tbmm.gov.tr/",
+        "status": "reference-only",
+        "commercialUse": null,
+        "redistribution": "not-used",
+        "notes": "Yalnız olgusal kanıt ve bağlantı kaydı kullanılır."
+      },
+      "useStatus": "reference-only",
+      "geometryEligible": false,
+      "proves": "29 Ekim 1923'te 364 sayılı Kanunla yönetim şeklinin cumhuriyet olarak ilan edildiğini destekler.",
+      "limitations": "1923 siyasî sınır geometrisi sağlamaz.",
+      "confidence": "high"
+    },
+    {
+      "id": "cshapes-2-eth",
+      "title": "CShapes 2.0",
+      "creatorOrInstitution": "ETH Zürich International Conflict Research",
+      "publicationDate": 2021,
+      "representedYears": "1886–2019; CShapes-Europe için 1816 sonrası",
+      "url": "https://icr.ethz.ch/data/cshapes/",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "CShapes-2.0.geojson ve codebook",
+      "geographicCoverage": "Bağımsız devletler ve bağımlı bölgeler; küresel 1886 sonrası",
+      "scaleOrResolution": "Devlet sınırları, günlük tarih aralıkları",
+      "sourceType": "external-vector",
+      "license": {
+        "name": "CC-BY-NC-SA 4.0",
+        "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "status": "restricted",
+        "commercialUse": false,
+        "redistribution": "conditional",
+        "notes": "DRKOÇ'un kullanım biçimi doğrulanmadan üretime alınamaz."
+      },
+      "useStatus": "candidate",
+      "geometryEligible": true,
+      "proves": "1886 sonrası devlet ve bağımlı bölge sınırlarını akademik bir veri modeliyle sağlar.",
+      "limitations": "Ticari kullanıma izin vermez; bütün tarihsel/siyasî yapıları kapsamaz.",
+      "confidence": "high"
+    },
+    {
+      "id": "pleiades-4-1",
+      "title": "Pleiades 4.1",
+      "creatorOrInstitution": "Ancient World Mapping Center ve ISAW/NYU",
+      "publicationDate": "2025-05-28",
+      "representedYears": "Antik dünya yer kayıtları; kayıt bazında zaman aralığı",
+      "url": "https://pleiades.stoa.org/downloads",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "Quarterly release 4.1",
+      "geographicCoverage": "Antik dünya",
+      "scaleOrResolution": "Yer, ad, konum ve bazı çizgi/polygon kayıtları",
+      "sourceType": "external-vector-gazetteer",
+      "license": {
+        "name": "CC-BY 3.0",
+        "url": "https://creativecommons.org/licenses/by/3.0/",
+        "status": "open",
+        "commercialUse": true,
+        "redistribution": "allowed",
+        "notes": "Atıf ve sürüm bilgisi korunmalıdır."
+      },
+      "useStatus": "candidate",
+      "geometryEligible": true,
+      "proves": "Antik yerlerin editoryal kayıtlarını, adlarını ve konumlarını sağlar.",
+      "limitations": "Modern dönem siyasî sınır verisi değildir; her kayıt ayrı incelenmelidir.",
+      "confidence": "high"
+    },
+    {
+      "id": "openhistoricalmap",
+      "title": "OpenHistoricalMap",
+      "creatorOrInstitution": "OpenHistoricalMap katkıcıları",
+      "publicationDate": null,
+      "representedYears": "Feature bazında başlangıç/bitiş tarihleri",
+      "url": "https://www.openhistoricalmap.org/copyright",
+      "accessedAt": "2026-08-27",
+      "referenceLocation": "Feature kimliği ve license=* etiketi zorunlu",
+      "geographicCoverage": "Küresel; kapsama göre değişir",
+      "scaleOrResolution": "Topluluk üretimi vektör veri",
+      "sourceType": "external-vector-mixed-license",
+      "license": {
+        "name": "Feature bazında değişken açık lisans",
+        "url": "https://www.openhistoricalmap.org/copyright",
+        "status": "mixed",
+        "commercialUse": null,
+        "redistribution": "conditional",
+        "notes": "Her feature'ın kaynak ve lisans etiketi ayrı denetlenmeden üretime alınamaz."
+      },
+      "useStatus": "candidate",
+      "geometryEligible": true,
+      "proves": "Tarih etiketli yer ve sınır kayıtları için aday kaynak sağlar.",
+      "limitations": "Kapsam, doğruluk ve lisans feature bazında değişir; tek başına akademik doğrulama değildir.",
+      "confidence": "medium"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "file": "world_bc1.geojson",
+      "sourceYear": -1,
+      "evidenceYear": 0,
+      "sha256": "0099bac4e9d74dce953c63802252d3021d7cc1ec54bc9ae2ba48e93c6c442e9a"
+    },
+    {
+      "file": "world_100.geojson",
+      "sourceYear": 100,
+      "evidenceYear": 100,
+      "sha256": "20265dc221c92f070f88d0a2ab6459b6942a86c2b865524131c9a1f546e03e86"
+    },
+    {
+      "file": "world_200.geojson",
+      "sourceYear": 200,
+      "evidenceYear": 200,
+      "sha256": "11f3ef1c24a6a43b69cbbd7eeec831b6c9610a539d5b028ae5898c7a5a9f7a4c"
+    },
+    {
+      "file": "world_300.geojson",
+      "sourceYear": 300,
+      "evidenceYear": 300,
+      "sha256": "4ec1f9d170f1b92725da0a6043a201fdc56207cad74366d6817b9432306f1b1f"
+    },
+    {
+      "file": "world_400.geojson",
+      "sourceYear": 400,
+      "evidenceYear": 400,
+      "sha256": "940cb6473f4e7f511d79f96b34aeecc1e44657e42a9e70538eb49291f24bf024"
+    },
+    {
+      "file": "world_500.geojson",
+      "sourceYear": 500,
+      "evidenceYear": 500,
+      "sha256": "5b70765b35918dd6da38b6b775f2d27c047ed8f30d427486ee14d1d46354bd51"
+    },
+    {
+      "file": "world_600.geojson",
+      "sourceYear": 600,
+      "evidenceYear": 600,
+      "sha256": "4995058c02023bfa7e3fd7674311c73772e5a967b43de1efe0dd4a7996dd86f5"
+    },
+    {
+      "file": "world_700.geojson",
+      "sourceYear": 700,
+      "evidenceYear": 700,
+      "sha256": "31b42c6efc118c855db3c18f3b5cb4fba9d2f1b5112ded77c6ddc364037f08fe"
+    },
+    {
+      "file": "world_800.geojson",
+      "sourceYear": 800,
+      "evidenceYear": 800,
+      "sha256": "60dd804d688240b7ff77dd1d9b4f6a5f2310848d7b990ba19a630d1643b77af5"
+    },
+    {
+      "file": "world_900.geojson",
+      "sourceYear": 900,
+      "evidenceYear": 900,
+      "sha256": "e315a86ee63be6e1781decf63a2f6ce4c005a195cf653b35062bb37a46ceb73c"
+    },
+    {
+      "file": "world_1000.geojson",
+      "sourceYear": 1000,
+      "evidenceYear": 1000,
+      "sha256": "b0dc4795658e505ccbd23a8dd5277c8115bcd844912a738c9111c41fd1535cd3"
+    },
+    {
+      "file": "world_1100.geojson",
+      "sourceYear": 1100,
+      "evidenceYear": 1100,
+      "sha256": "0fca96ef7c2b5beb0ad26d514f0ab4c4921d4156b58dd8f757671cbd6e4e054a"
+    },
+    {
+      "file": "world_1200.geojson",
+      "sourceYear": 1200,
+      "evidenceYear": 1200,
+      "sha256": "83489587ee19a4eecf80565197511315441a804b8245cf0337b11b193d414beb"
+    },
+    {
+      "file": "world_1279.geojson",
+      "sourceYear": 1279,
+      "evidenceYear": 1279,
+      "sha256": "bf5f4efce436448bb4627384e0a1a46890789356b654c4dedf55993ede603de9"
+    },
+    {
+      "file": "world_1300.geojson",
+      "sourceYear": 1300,
+      "evidenceYear": 1300,
+      "sha256": "ba66ea1ab75b5b31405a9e8668cbcd7bf054e658357163d0ead95ef2d0b1ecec"
+    },
+    {
+      "file": "world_1400.geojson",
+      "sourceYear": 1400,
+      "evidenceYear": 1400,
+      "sha256": "9349daa1afe05e4b73c56e31735bf8c13625bd35b7a23f17aa2f3a4bc672a20f"
+    },
+    {
+      "file": "world_1492.geojson",
+      "sourceYear": 1492,
+      "evidenceYear": 1492,
+      "sha256": "b952a7804cc4ed6c14aaebcb78e2e087c34ee5b1ffa1b659325cdfb45a806af3"
+    },
+    {
+      "file": "world_1500.geojson",
+      "sourceYear": 1500,
+      "evidenceYear": 1500,
+      "sha256": "e59ac978dc15844089ecd4ef9e10d8f07b059197aa50505d2759fb14c08bb9d0"
+    },
+    {
+      "file": "world_1530.geojson",
+      "sourceYear": 1530,
+      "evidenceYear": 1530,
+      "sha256": "c377bf8f034ed210af0eed07c608e58d4868e19f316a8e99fd115ed71e113a60"
+    },
+    {
+      "file": "world_1600.geojson",
+      "sourceYear": 1600,
+      "evidenceYear": 1600,
+      "sha256": "b7861a585b36ee1b03521b169f782a6430c54359d055b9c120174c24596d6e54"
+    },
+    {
+      "file": "world_1650.geojson",
+      "sourceYear": 1650,
+      "evidenceYear": 1650,
+      "sha256": "89a02480ed0287cfa0be46fde05a52423d7f277291a300f27eb5b63b8762926e"
+    },
+    {
+      "file": "world_1700.geojson",
+      "sourceYear": 1700,
+      "evidenceYear": 1700,
+      "sha256": "aec58dce0cd6dc084299bce973ec115b65b96822ad27d9cbc39fd5baa7627ec0"
+    },
+    {
+      "file": "world_1715.geojson",
+      "sourceYear": 1715,
+      "evidenceYear": 1715,
+      "sha256": "837eac1956364a5f18e53255d4f9df10d7eb91dd6bec0678a7ff49dc38e68861"
+    },
+    {
+      "file": "world_1783.geojson",
+      "sourceYear": 1783,
+      "evidenceYear": 1783,
+      "sha256": "ad4fafe9bdc4ddd690bd009ac92fb6c10a7f6658e7709b4478ab9e710ca37bc1"
+    },
+    {
+      "file": "world_1800.geojson",
+      "sourceYear": 1800,
+      "evidenceYear": 1800,
+      "sha256": "6360f3eb2773a8065848215d390566d2c32862c5b5d35c0ca736db4aeaf0723f"
+    },
+    {
+      "file": "world_1815.geojson",
+      "sourceYear": 1815,
+      "evidenceYear": 1815,
+      "sha256": "62afcd6e3f1f598a05e42550a358083bbb75e63e122ebb5a4383f019632115e9"
+    },
+    {
+      "file": "world_1880.geojson",
+      "sourceYear": 1880,
+      "evidenceYear": 1880,
+      "sha256": "af5cbc211a19cb7cad1ed65dc7669658dbda8d92acf0b9c16e8dc0c57de3b06b"
+    },
+    {
+      "file": "world_1900.geojson",
+      "sourceYear": 1900,
+      "evidenceYear": 1900,
+      "sha256": "bf39176daf7ac2a3ba374a58f98d3f3d07401fd265d353576952233f8e2f63aa"
+    },
+    {
+      "file": "world_1914.geojson",
+      "sourceYear": 1914,
+      "evidenceYear": 1914,
+      "sha256": "3909ac0c6e089efbb35919e6929f9f8936ed7a92ff99334e7b361156ef1ffe68"
+    },
+    {
+      "file": "world_1920.geojson",
+      "sourceYear": 1920,
+      "evidenceYear": 1920,
+      "sha256": "415d19849f57b41eeffdbcbab35e69520e91f9d431e7ebef8033c2718ed8e010"
+    },
+    {
+      "file": "world_1930.geojson",
+      "sourceYear": 1930,
+      "evidenceYear": 1930,
+      "sha256": "f5a62db4a21f563c5274f0ff884fe3b323039c60beed5352d7162f7f839a3275"
+    },
+    {
+      "file": "world_1938.geojson",
+      "sourceYear": 1938,
+      "evidenceYear": 1938,
+      "sha256": "ba7689bec824144806049030be3d67132bff77562a71684ad892a4c808273870"
+    },
+    {
+      "file": "world_1945.geojson",
+      "sourceYear": 1945,
+      "evidenceYear": 1945,
+      "sha256": "4fefbc8f613b700f86e8ff74ce09288b6698d22ff29f225a5ff1cc8137e7fb2e"
+    },
+    {
+      "file": "world_1960.geojson",
+      "sourceYear": 1960,
+      "evidenceYear": 1960,
+      "sha256": "e51fe415a22632b10c61eb136697ba8a045822e069e1256eea308952357955b6"
+    }
+  ],
+  "periods": [
+    {
+      "year": 0,
+      "sourceYear": -1,
+      "evidenceYear": 0,
+      "validFrom": 0,
+      "validTo": 51,
+      "previousEvidenceYear": null,
+      "nextEvidenceYear": 100,
+      "maximumDistanceYears": 50,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/0.json",
+      "featureCount": 79,
+      "bytes": 2084525,
+      "gzipBytes": 786894,
+      "colorAdjacencyPairs": 81,
+      "colorConflictCount": 0,
+      "warning": "Uygulamadaki 0 yılı, tarih yazımında yıl sıfır bulunmadığı için kaynağın MÖ 1 anlık görüntüsünü temsil eder.",
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 100,
+      "sourceYear": 100,
+      "evidenceYear": 100,
+      "validFrom": 51,
+      "validTo": 151,
+      "previousEvidenceYear": 0,
+      "nextEvidenceYear": 200,
+      "maximumDistanceYears": 50,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/100.json",
+      "featureCount": 83,
+      "bytes": 2138004,
+      "gzipBytes": 807615,
+      "colorAdjacencyPairs": 87,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 200,
+      "sourceYear": 200,
+      "evidenceYear": 200,
+      "validFrom": 151,
+      "validTo": 251,
+      "previousEvidenceYear": 100,
+      "nextEvidenceYear": 300,
+      "maximumDistanceYears": 50,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/200.json",
+      "featureCount": 69,
+      "bytes": 2007544,
+      "gzipBytes": 763918,
+      "colorAdjacencyPairs": 63,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 300,
+      "sourceYear": 300,
+      "evidenceYear": 300,
+      "validFrom": 251,
+      "validTo": 351,
+      "previousEvidenceYear": 200,
+      "nextEvidenceYear": 400,
+      "maximumDistanceYears": 50,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/300.json",
+      "featureCount": 71,
+      "bytes": 2024750,
+      "gzipBytes": 768236,
+      "colorAdjacencyPairs": 66,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 400,
+      "sourceYear": 400,
+      "evidenceYear": 400,
+      "validFrom": 351,
+      "validTo": 451,
+      "previousEvidenceYear": 300,
+      "nextEvidenceYear": 500,
+      "maximumDistanceYears": 50,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/400.json",
+      "featureCount": 79,
+      "bytes": 2048178,
+      "gzipBytes": 776264,
+      "colorAdjacencyPairs": 73,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 500,
+      "sourceYear": 500,
+      "evidenceYear": 500,
+      "validFrom": 451,
+      "validTo": 551,
+      "previousEvidenceYear": 400,
+      "nextEvidenceYear": 600,
+      "maximumDistanceYears": 50,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/500.json",
+      "featureCount": 87,
+      "bytes": 2268735,
+      "gzipBytes": 856194,
+      "colorAdjacencyPairs": 103,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 600,
+      "sourceYear": 600,
+      "evidenceYear": 600,
+      "validFrom": 551,
+      "validTo": 651,
+      "previousEvidenceYear": 500,
+      "nextEvidenceYear": 700,
+      "maximumDistanceYears": 50,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/600.json",
+      "featureCount": 83,
+      "bytes": 2303429,
+      "gzipBytes": 868937,
+      "colorAdjacencyPairs": 78,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [
+        "central-asia-552-840"
+      ],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "ready-reviewed-slice",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 700,
+      "sourceYear": 700,
+      "evidenceYear": 700,
+      "validFrom": 651,
+      "validTo": 751,
+      "previousEvidenceYear": 600,
+      "nextEvidenceYear": 800,
+      "maximumDistanceYears": 50,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/700.json",
+      "featureCount": 126,
+      "bytes": 2534462,
+      "gzipBytes": 944464,
+      "colorAdjacencyPairs": 183,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [
+        "central-asia-552-840"
+      ],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "ready-reviewed-slice",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 800,
+      "sourceYear": 800,
+      "evidenceYear": 800,
+      "validFrom": 751,
+      "validTo": 851,
+      "previousEvidenceYear": 700,
+      "nextEvidenceYear": 900,
+      "maximumDistanceYears": 50,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/800.json",
+      "featureCount": 117,
+      "bytes": 2907534,
+      "gzipBytes": 1092126,
+      "colorAdjacencyPairs": 150,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [
+        "central-asia-552-840"
+      ],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "ready-reviewed-slice",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 900,
+      "sourceYear": 900,
+      "evidenceYear": 900,
+      "validFrom": 851,
+      "validTo": 951,
+      "previousEvidenceYear": 800,
+      "nextEvidenceYear": 1000,
+      "maximumDistanceYears": 50,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/900.json",
+      "featureCount": 135,
+      "bytes": 3095650,
+      "gzipBytes": 1154363,
+      "colorAdjacencyPairs": 204,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1000,
+      "sourceYear": 1000,
+      "evidenceYear": 1000,
+      "validFrom": 951,
+      "validTo": 1051,
+      "previousEvidenceYear": 900,
+      "nextEvidenceYear": 1100,
+      "maximumDistanceYears": 50,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1000.json",
+      "featureCount": 128,
+      "bytes": 2905205,
+      "gzipBytes": 1084343,
+      "colorAdjacencyPairs": 176,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1100,
+      "sourceYear": 1100,
+      "evidenceYear": 1100,
+      "validFrom": 1051,
+      "validTo": 1151,
+      "previousEvidenceYear": 1000,
+      "nextEvidenceYear": 1200,
+      "maximumDistanceYears": 50,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1100.json",
+      "featureCount": 138,
+      "bytes": 2871671,
+      "gzipBytes": 1061058,
+      "colorAdjacencyPairs": 217,
+      "colorConflictCount": 0,
+      "warning": "Kaynak Anadolu’yu Bizans olarak gösteriyor; 1075 sonrası Anadolu Selçuklu varlığı bu anık görüntüde eksik.",
+      "detailSliceIds": [
+        "malazgirt-1071"
+      ],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "ready-reviewed-slice",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1200,
+      "sourceYear": 1200,
+      "evidenceYear": 1200,
+      "validFrom": 1151,
+      "validTo": 1240,
+      "previousEvidenceYear": 1100,
+      "nextEvidenceYear": 1279,
+      "maximumDistanceYears": 49,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1200.json",
+      "featureCount": 129,
+      "bytes": 2923583,
+      "gzipBytes": 1090014,
+      "colorAdjacencyPairs": 198,
+      "colorConflictCount": 0,
+      "warning": "Kaynak Fatımî ve Büveyhî adlarını anakronik biçimde sürdürüyor ve Anadolu Selçuklu’yu göstermiyor.",
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1279,
+      "sourceYear": 1279,
+      "evidenceYear": 1279,
+      "validFrom": 1240,
+      "validTo": 1290,
+      "previousEvidenceYear": 1200,
+      "nextEvidenceYear": 1300,
+      "maximumDistanceYears": 39,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1279.json",
+      "featureCount": 113,
+      "bytes": 2718849,
+      "gzipBytes": 1022338,
+      "colorAdjacencyPairs": 140,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1300,
+      "sourceYear": 1300,
+      "evidenceYear": 1300,
+      "validFrom": 1290,
+      "validTo": 1351,
+      "previousEvidenceYear": 1279,
+      "nextEvidenceYear": 1400,
+      "maximumDistanceYears": 50,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1300.json",
+      "featureCount": 113,
+      "bytes": 2692012,
+      "gzipBytes": 1011703,
+      "colorAdjacencyPairs": 131,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1400,
+      "sourceYear": 1400,
+      "evidenceYear": 1400,
+      "validFrom": 1351,
+      "validTo": 1447,
+      "previousEvidenceYear": 1300,
+      "nextEvidenceYear": 1492,
+      "maximumDistanceYears": 49,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1400.json",
+      "featureCount": 115,
+      "bytes": 2908299,
+      "gzipBytes": 1092247,
+      "colorAdjacencyPairs": 133,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [
+        "ankara-savasi-1402"
+      ],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "ready-reviewed-slice",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1492,
+      "sourceYear": 1492,
+      "evidenceYear": 1492,
+      "validFrom": 1447,
+      "validTo": 1497,
+      "previousEvidenceYear": 1400,
+      "nextEvidenceYear": 1500,
+      "maximumDistanceYears": 45,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1492.json",
+      "featureCount": 1305,
+      "bytes": 9559459,
+      "gzipBytes": 3228554,
+      "colorAdjacencyPairs": 789,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [
+        "constantinople-1453"
+      ],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "ready-reviewed-slice",
+        "events": "ready-reviewed-slice",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1500,
+      "sourceYear": 1500,
+      "evidenceYear": 1500,
+      "validFrom": 1497,
+      "validTo": 1516,
+      "previousEvidenceYear": 1492,
+      "nextEvidenceYear": 1530,
+      "maximumDistanceYears": 15,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1500.json",
+      "featureCount": 139,
+      "bytes": 3165392,
+      "gzipBytes": 1186580,
+      "colorAdjacencyPairs": 201,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [
+        "caldiran-1514"
+      ],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "ready-reviewed-slice",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1530,
+      "sourceYear": 1530,
+      "evidenceYear": 1530,
+      "validFrom": 1516,
+      "validTo": 1566,
+      "previousEvidenceYear": 1500,
+      "nextEvidenceYear": 1600,
+      "maximumDistanceYears": 35,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1530.json",
+      "featureCount": 269,
+      "bytes": 3235754,
+      "gzipBytes": 1158873,
+      "colorAdjacencyPairs": 448,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [
+        "mohac-1526"
+      ],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "ready-reviewed-slice",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1600,
+      "sourceYear": 1600,
+      "evidenceYear": 1600,
+      "validFrom": 1566,
+      "validTo": 1626,
+      "previousEvidenceYear": 1530,
+      "nextEvidenceYear": 1650,
+      "maximumDistanceYears": 34,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1600.json",
+      "featureCount": 638,
+      "bytes": 4430445,
+      "gzipBytes": 1473305,
+      "colorAdjacencyPairs": 543,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [
+        "1600"
+      ],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "ready-modelled-slice",
+        "settlements": "ready-reviewed-slice",
+        "events": "ready-reviewed-slice",
+        "routes": "ready-modelled-slice"
+      }
+    },
+    {
+      "year": 1650,
+      "sourceYear": 1650,
+      "evidenceYear": 1650,
+      "validFrom": 1626,
+      "validTo": 1676,
+      "previousEvidenceYear": 1600,
+      "nextEvidenceYear": 1700,
+      "maximumDistanceYears": 25,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1650.json",
+      "featureCount": 593,
+      "bytes": 4451322,
+      "gzipBytes": 1498378,
+      "colorAdjacencyPairs": 394,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [
+        "1600"
+      ],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "ready-modelled-slice",
+        "settlements": "ready-reviewed-slice",
+        "events": "ready-reviewed-slice",
+        "routes": "ready-modelled-slice"
+      }
+    },
+    {
+      "year": 1700,
+      "sourceYear": 1700,
+      "evidenceYear": 1700,
+      "validFrom": 1676,
+      "validTo": 1708,
+      "previousEvidenceYear": 1650,
+      "nextEvidenceYear": 1715,
+      "maximumDistanceYears": 24,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1700.json",
+      "featureCount": 584,
+      "bytes": 4364437,
+      "gzipBytes": 1472858,
+      "colorAdjacencyPairs": 382,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [
+        "1600",
+        "karlofca-1699"
+      ],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "ready-modelled-slice",
+        "settlements": "ready-reviewed-slice",
+        "events": "ready-reviewed-slice",
+        "routes": "ready-modelled-slice"
+      }
+    },
+    {
+      "year": 1715,
+      "sourceYear": 1715,
+      "evidenceYear": 1715,
+      "validFrom": 1708,
+      "validTo": 1750,
+      "previousEvidenceYear": 1700,
+      "nextEvidenceYear": 1783,
+      "maximumDistanceYears": 34,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1715.json",
+      "featureCount": 600,
+      "bytes": 4482308,
+      "gzipBytes": 1516065,
+      "colorAdjacencyPairs": 377,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1783,
+      "sourceYear": 1783,
+      "evidenceYear": 1783,
+      "validFrom": 1750,
+      "validTo": 1792,
+      "previousEvidenceYear": 1715,
+      "nextEvidenceYear": 1800,
+      "maximumDistanceYears": 33,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1783.json",
+      "featureCount": 549,
+      "bytes": 4873393,
+      "gzipBytes": 1690140,
+      "colorAdjacencyPairs": 342,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [
+        "kucuk-kaynarca-1774"
+      ],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "ready-reviewed-slice",
+        "events": "ready-reviewed-slice",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1800,
+      "sourceYear": 1800,
+      "evidenceYear": 1800,
+      "validFrom": 1792,
+      "validTo": 1808,
+      "previousEvidenceYear": 1783,
+      "nextEvidenceYear": 1815,
+      "maximumDistanceYears": 8,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1800.json",
+      "featureCount": 546,
+      "bytes": 4815573,
+      "gzipBytes": 1671652,
+      "colorAdjacencyPairs": 329,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1815,
+      "sourceYear": 1815,
+      "evidenceYear": 1815,
+      "validFrom": 1808,
+      "validTo": 1848,
+      "previousEvidenceYear": 1800,
+      "nextEvidenceYear": 1880,
+      "maximumDistanceYears": 32,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1815.json",
+      "featureCount": 312,
+      "bytes": 5691127,
+      "gzipBytes": 2027853,
+      "colorAdjacencyPairs": 264,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1880,
+      "sourceYear": 1880,
+      "evidenceYear": 1880,
+      "validFrom": 1848,
+      "validTo": 1891,
+      "previousEvidenceYear": 1815,
+      "nextEvidenceYear": 1900,
+      "maximumDistanceYears": 32,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1880.json",
+      "featureCount": 169,
+      "bytes": 3988678,
+      "gzipBytes": 1508412,
+      "colorAdjacencyPairs": 172,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1900,
+      "sourceYear": 1900,
+      "evidenceYear": 1900,
+      "validFrom": 1891,
+      "validTo": 1908,
+      "previousEvidenceYear": 1880,
+      "nextEvidenceYear": 1914,
+      "maximumDistanceYears": 9,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1900.json",
+      "featureCount": 165,
+      "bytes": 3923884,
+      "gzipBytes": 1486861,
+      "colorAdjacencyPairs": 164,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1914,
+      "sourceYear": 1914,
+      "evidenceYear": 1914,
+      "validFrom": 1908,
+      "validTo": 1918,
+      "previousEvidenceYear": 1900,
+      "nextEvidenceYear": 1920,
+      "maximumDistanceYears": 6,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1914.json",
+      "featureCount": 142,
+      "bytes": 4039234,
+      "gzipBytes": 1552174,
+      "colorAdjacencyPairs": 199,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1920,
+      "sourceYear": 1920,
+      "evidenceYear": 1920,
+      "validFrom": 1918,
+      "validTo": 1926,
+      "previousEvidenceYear": 1914,
+      "nextEvidenceYear": 1930,
+      "maximumDistanceYears": 5,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1920.json",
+      "featureCount": 163,
+      "bytes": 4287771,
+      "gzipBytes": 1639680,
+      "colorAdjacencyPairs": 247,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [
+        "cumhuriyet-1923"
+      ],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "ready-reviewed-slice",
+        "events": "ready-reviewed-slice",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1930,
+      "sourceYear": 1930,
+      "evidenceYear": 1930,
+      "validFrom": 1926,
+      "validTo": 1935,
+      "previousEvidenceYear": 1920,
+      "nextEvidenceYear": 1938,
+      "maximumDistanceYears": 4,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1930.json",
+      "featureCount": 161,
+      "bytes": 4086010,
+      "gzipBytes": 1565764,
+      "colorAdjacencyPairs": 243,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1938,
+      "sourceYear": 1938,
+      "evidenceYear": 1938,
+      "validFrom": 1935,
+      "validTo": 1942,
+      "previousEvidenceYear": 1930,
+      "nextEvidenceYear": 1945,
+      "maximumDistanceYears": 3,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1938.json",
+      "featureCount": 171,
+      "bytes": 4226701,
+      "gzipBytes": 1615440,
+      "colorAdjacencyPairs": 269,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1945,
+      "sourceYear": 1945,
+      "evidenceYear": 1945,
+      "validFrom": 1942,
+      "validTo": 1953,
+      "previousEvidenceYear": 1938,
+      "nextEvidenceYear": 1960,
+      "maximumDistanceYears": 7,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1945.json",
+      "featureCount": 183,
+      "bytes": 4291096,
+      "gzipBytes": 1631446,
+      "colorAdjacencyPairs": 285,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    },
+    {
+      "year": 1960,
+      "sourceYear": 1960,
+      "evidenceYear": 1960,
+      "validFrom": 1953,
+      "validTo": 1961,
+      "previousEvidenceYear": 1945,
+      "nextEvidenceYear": null,
+      "maximumDistanceYears": 7,
+      "temporalMethod": "nearest-source-snapshot-no-interpolation",
+      "politicalUrl": "/atlas/v3/political/1960.json",
+      "featureCount": 157,
+      "bytes": 4221195,
+      "gzipBytes": 1612815,
+      "colorAdjacencyPairs": 256,
+      "colorConflictCount": 0,
+      "warning": null,
+      "detailSliceIds": [],
+      "coverage": {
+        "political": "ready-global-source-derived",
+        "administrative": "not-published",
+        "settlements": "researching",
+        "events": "researching",
+        "routes": "not-published"
+      }
+    }
+  ]
+}

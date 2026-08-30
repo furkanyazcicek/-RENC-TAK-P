@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="420" viewBox="0 0 760 420" role="img" aria-labelledby="title desc">
+  <title id="title">Dördü aynı doğru üzerinde bulunan on bir nokta</title>
+  <desc id="desc">Dört mavi nokta aynı yatay doğru üzerinde, diğer yedi turuncu nokta düzlemde dağınıktır.</desc>
+  <rect width="760" height="420" rx="24" fill="#f8fafc"/>
+  <line x1="95" y1="225" x2="665" y2="225" stroke="#64748b" stroke-width="4"/>
+  <g fill="#2563eb" stroke="#ffffff" stroke-width="3">
+    <circle cx="165" cy="225" r="11"/><circle cx="315" cy="225" r="11"/><circle cx="465" cy="225" r="11"/><circle cx="615" cy="225" r="11"/>
+  </g>
+  <g fill="#ea580c" stroke="#ffffff" stroke-width="3">
+    <circle cx="125" cy="90" r="11"/><circle cx="270" cy="70" r="11"/><circle cx="430" cy="105" r="11"/><circle cx="610" cy="75" r="11"/>
+    <circle cx="205" cy="345" r="11"/><circle cx="390" cy="325" r="11"/><circle cx="575" cy="350" r="11"/>
+  </g>
+</svg>

@@ -1,0 +1,479 @@
+import { kronolojiKaydi } from './kronoloji.js'
+import { tarih } from './tipler.js'
+import { ANLATIMLAR } from './anlatimlar.js'
+
+/**
+ * 4–36. padişahlar için öğretim odaklı özet kayıtlar.
+ * İlk üç padişahın ayrıntılı dosyaları korunur; bu kayıtlar aynı veri
+ * sözleşmesini izleyerek hanedanın geri kalanını eksiksiz tamamlar.
+ */
+const PROFILLER = [
+  {
+    id: 'yildirim-bayezid', order: 4, name: 'I. Bayezid', epithet: 'Yıldırım', father: 'I. Murad', period: 'Kuruluş Dönemi',
+    headline: 'Hızlı Yükseliş, Büyük Kırılma',
+    summary: 'Rumeli’de Niğbolu zaferiyle gücünü pekiştiren, Anadolu beyliklerini merkezî yönetimde toplamaya çalışan I. Bayezid’in hızlı genişlemesi 1402 Ankara Savaşı’nda Timur karşısında kesildi.',
+    map: 'bayezid-1402', startMap: 'murad-1389',
+    events: [
+      [1390, 'Anadolu beyliklerinin bağlanması', 'Batı ve Orta Anadolu’daki birçok beylik Osmanlı yönetimine alındı.', 'conquest'],
+      [1396, 'Niğbolu Savaşı', 'Avrupa’dan gelen Haçlı ordusu yenildi; Osmanlı’nın Balkan üstünlüğü güçlendi.', 'battle'],
+      [1402, 'Ankara Savaşı', 'Timur’a yenilen Osmanlı ordusu dağıldı; Bayezid esir düştü ve Fetret Devri başladı.', 'battle'],
+    ],
+    reforms: ['Anadolu ve Rumeli’de merkezî otoriteyi hızla genişletmeye çalıştı.', 'İstanbul’u kuşatmak için Anadolu Hisarı’nı yaptırdı.'],
+    osym: ['Niğbolu Savaşı (1396), Osmanlı’nın Haçlılara karşı önemli zaferidir.', 'Anadolu Hisarı İstanbul kuşatmaları için yaptırıldı.', 'Ankara Savaşı (1402) Fetret Devri’ni başlattı.'],
+    transition: { transitionType: 'kesinti', year: '1402–1413', headline: 'Fetret Devri Başlıyor', body: 'Bayezid’in oğulları arasındaki on bir yıllık taht mücadelesi, Çelebi Mehmed’in devleti yeniden birleştirmesiyle sona erdi.' },
+  },
+  {
+    id: 'celebi-mehmed', order: 5, name: 'I. Mehmed', epithet: 'Çelebi · İkinci Kurucu', father: 'I. Bayezid', period: 'Kuruluş Dönemi',
+    headline: 'Devlet Yeniden Birleşiyor',
+    summary: 'Fetret Devri’ndeki kardeş mücadelesini kazanarak Anadolu ve Rumeli’de parçalanan Osmanlı siyasi birliğini yeniden kurdu; bu nedenle “ikinci kurucu” kabul edilir.',
+    map: 'mehmed-1421', startMap: 'bayezid-1402',
+    events: [
+      [1413, 'Fetret Devri’nin sona ermesi', 'Musa Çelebi’yi yenerek Osmanlı ülkesini yeniden tek hükümdar altında birleştirdi.'],
+      [1416, 'Şeyh Bedreddin İsyanı', 'Siyasi ve toplumsal boyutları olan isyan bastırıldı.'],
+      [1416, 'İlk Osmanlı–Venedik deniz savaşı', 'Gelibolu önlerindeki mücadele Osmanlı donanmasının henüz Venedik karşısında zayıf olduğunu gösterdi.', 'battle'],
+    ],
+    reforms: ['Fetret’in dağıttığı merkezî kurumları ve vergi düzenini yeniden işler hâle getirdi.'],
+    osym: ['Fetret Devri’ni sona erdirdiği için “Osmanlı’nın ikinci kurucusu” denir.', 'İlk Osmanlı–Venedik deniz savaşı onun dönemindedir.', 'Şeyh Bedreddin İsyanı bu dönemde bastırıldı.'],
+  },
+  {
+    id: 'ikinci-murad', order: 6, name: 'II. Murad', father: 'I. Mehmed', period: 'Kuruluş Dönemi', duration: 'yaklaşık 28 yıl (iki saltanat)',
+    capitals: ['Edirne'], selef: 'I. Mehmed (Çelebi)', halef: 'II. Mehmed (Fatih)',
+    headline: 'Balkan Hâkimiyeti Kesinleşiyor',
+    summary: 'İç isyanlar ve Haçlı ittifaklarıyla mücadele eden II. Murad, Varna ve II. Kosova zaferleriyle Balkanlarda kalıcı Osmanlı üstünlüğünün temelini attı.',
+    map: 'murad-1451', startMap: 'mehmed-1421',
+    events: [
+      [1422, 'Düzmece Mustafa İsyanı', 'Bizans’ın da desteklediği taht iddiası bastırıldı.'],
+      [1444, 'Varna Savaşı', 'Tahta yeniden dönen II. Murad Haçlı ordusunu kesin yenilgiye uğrattı.', 'battle'],
+      [1448, 'II. Kosova Savaşı', 'Balkanlardan Osmanlı’yı çıkarma girişimi başarısız oldu.', 'battle'],
+    ],
+    reforms: ['Edirne’yi bilim ve kültür merkezi hâline getiren medrese ve imar faaliyetlerini destekledi.'],
+    osym: ['Varna (1444) ve II. Kosova (1448) Balkan hâkimiyetini kesinleştirdi.', 'Tahtı iki kez II. Mehmed’e bıraktı.', 'II. Kosova’dan sonra Avrupalılar uzun süre savunmaya çekildi.'],
+  },
+  {
+    id: 'fatih-sultan-mehmed', order: 7, name: 'II. Mehmed', epithet: 'Fatih', father: 'II. Murad', period: 'Yükselme Dönemi', duration: 'yaklaşık 32 yıl (iki saltanat)',
+    capitals: ['Edirne (1451–1453)', 'İstanbul (1453’ten itibaren)'], selef: 'II. Murad', halef: 'II. Bayezid',
+    headline: 'Bir Çağ Kapanıyor, İmparatorluk Doğuyor',
+    summary: 'İstanbul’u fethederek Osmanlı’yı dünya imparatorluğuna dönüştürdü; Balkanlar, Anadolu ve Karadeniz’de merkezî hâkimiyeti genişletti.',
+    map: 'fatih-1481', startMap: 'murad-1451',
+    events: [
+      [1453, 'İstanbul’un Fethi', 'Konstantinopolis fethedildi ve Osmanlı Devleti’nin yeni başkenti oldu.', 'conquest'],
+      [1461, 'Trabzon Rum İmparatorluğu’nun sonu', 'Karadeniz’in doğusundaki Bizans ardılı devlet ortadan kaldırıldı.', 'conquest'],
+      [1473, 'Otlukbeli Savaşı', 'Akkoyunlu hükümdarı Uzun Hasan yenildi; Doğu Anadolu siyaseti Osmanlı lehine değişti.', 'battle'],
+    ],
+    reforms: ['Fatih Kanunnamesi ile merkezî yönetim ve saray teşkilatı düzenlendi.', 'Sahn-ı Seman medreseleri kurularak yüksek öğretim güçlendirildi.'],
+    osym: ['İstanbul’un Fethi 1453’te gerçekleşti.', 'Karadeniz’i Türk gölü hâline getirme siyaseti Fatih döneminde hızlandı.', 'Merkezî otoriteyi güçlendiren Fatih Kanunnamesi önemlidir.'],
+  },
+  {
+    id: 'ikinci-bayezid', order: 8, name: 'II. Bayezid', epithet: 'Velî', father: 'Fatih Sultan Mehmed', period: 'Yükselme Dönemi',
+    headline: 'Taht Mücadelesi ve Deniz Rekabeti',
+    summary: 'Cem Sultan meselesinin dış politikayı etkilediği II. Bayezid devrinde Osmanlı, Venedik’le deniz mücadelesi yürüttü ve doğuda Safevî baskısıyla karşılaştı.',
+    map: 'bayezid-1512', startMap: 'fatih-1481',
+    events: [
+      [1481, 'Cem Sultan Olayı', 'Taht mücadelesini kaybeden Cem Sultan Avrupa’ya sığındı; mesele uluslararası baskı aracına dönüştü.'],
+      [1492, 'İspanya’dan gelen Yahudilerin kabulü', 'Sefarad Yahudilerinin bir bölümü Osmanlı şehirlerine yerleşti.'],
+      [1499, 'Osmanlı–Venedik savaşları', 'İnebahtı, Modon ve Koron Osmanlı denetimine girdi.', 'battle'],
+    ],
+    reforms: ['Donanmayı güçlendiren tersane ve gemi yapım faaliyetleri desteklendi.'],
+    osym: ['Cem Sultan Olayı iç sorunken dış soruna dönüşmüştür.', 'İspanya’dan çıkarılan Yahudiler Osmanlı ülkesine kabul edildi.', 'Safevî propagandası bu dönemde önemli tehdit hâline geldi.'],
+  },
+  {
+    id: 'yavuz-sultan-selim', order: 9, name: 'I. Selim', epithet: 'Yavuz', father: 'II. Bayezid', period: 'Yükselme Dönemi',
+    headline: 'Sekiz Yılda Doğu ve Güney',
+    summary: 'Kısa saltanatında Safevî ve Memlük güçlerini yenerek Doğu Anadolu, Suriye, Filistin ve Mısır’ı Osmanlı yönetimine kattı.',
+    map: 'selim-1520', startMap: 'bayezid-1512',
+    events: [
+      [1514, 'Çaldıran Savaşı', 'Safevî hükümdarı Şah İsmail yenildi; Doğu Anadolu’da Osmanlı üstünlüğü kuruldu.', 'battle'],
+      [1516, 'Mercidâbık Savaşı', 'Memlük ordusu yenildi; Suriye ve Filistin yolu açıldı.', 'battle'],
+      [1517, 'Ridaniye ve Mısır’ın fethi', 'Memlük Devleti sona erdi; Mısır Osmanlı yönetimine girdi.', 'conquest'],
+    ],
+    reforms: ['Doğu ve güney eyaletlerinin idari ve mali düzeni Osmanlı sistemine bağlandı.'],
+    osym: ['Çaldıran Safevîlere, Mercidâbık ve Ridaniye Memlüklere karşı kazanıldı.', 'Mısır’ın fethiyle Baharat Yolu’nun önemli bölümü denetlendi.', 'Kutsal şehirlerin hizmet ve koruma sorumluluğu Osmanlılara geçti.'],
+  },
+  {
+    id: 'kanuni-sultan-suleyman', order: 10, name: 'I. Süleyman', epithet: 'Kanuni · Muhteşem', father: 'I. Selim', period: 'Yükselme Dönemi',
+    headline: 'Kanun, Sefer ve Dünya Gücü',
+    summary: 'Kırk altı yıllık saltanatında Osmanlı askerî, siyasi, hukuki ve kültürel bakımdan klasik çağının zirvesine ulaştı.',
+    map: 'kanuni-1566', startMap: 'selim-1520',
+    events: [
+      [1521, 'Belgrad’ın fethi', 'Orta Avrupa seferleri için stratejik kapı açıldı.', 'conquest'],
+      [1526, 'Mohaç Savaşı', 'Macar ordusu kısa sürede yenildi; Orta Avrupa dengesi değişti.', 'battle'],
+      [1538, 'Preveze Deniz Zaferi', 'Barbaros Hayreddin Paşa komutasındaki donanma Akdeniz üstünlüğünü güçlendirdi.', 'battle'],
+      [1566, 'Zigetvar Seferi', 'Kanuni son seferi sırasında hayatını kaybetti.', 'battle'],
+    ],
+    reforms: ['Örfî hukuk düzenlemeleri sistemleştirilerek “Kanuni” unvanı yerleşti.', 'Mimar Sinan’ın eserleriyle klasik Osmanlı mimarisi zirveye ulaştı.'],
+    osym: ['En uzun süre tahtta kalan Osmanlı padişahıdır: 46 yıl.', 'Mohaç, Preveze ve Irakeyn Seferi bu dönemin temel olaylarıdır.', 'Fransa’ya verilen kapitülasyonlar 1536 çerçevesinde anılır.'],
+  },
+  {
+    id: 'ikinci-selim', order: 11, name: 'II. Selim', father: 'I. Süleyman', period: 'Klasik Düzenin Dönüşümü',
+    headline: 'Sokollu Devri ve Akdeniz Mücadelesi',
+    summary: 'II. Selim döneminde yönetimde Sokollu Mehmed Paşa belirleyici oldu; Kıbrıs fethedildi, İnebahtı yenilgisine rağmen donanma kısa sürede yeniden kuruldu.',
+    map: 'kanuni-1566', startMap: 'kanuni-1566',
+    events: [[1571, 'Kıbrıs’ın fethi', 'Doğu Akdeniz güvenliği için ada Venedik’ten alındı.', 'conquest'], [1571, 'İnebahtı Deniz Savaşı', 'Osmanlı donanması Haçlı filosuna yenildi; donanma ertesi yıl yeniden kuruldu.', 'battle'], [1574, 'Tunus’un alınması', 'Kuzey Afrika’daki Osmanlı hâkimiyeti güçlendi.', 'conquest']],
+    reforms: ['Sokollu Mehmed Paşa döneminde Don–Volga ve Süveyş kanal projeleri gündeme geldi.'],
+    osym: ['Kıbrıs’ın fethi İnebahtı Savaşı’na yol açtı.', 'İnebahtı Osmanlı donanmasının büyük yenilgisidir; Tunus daha sonra geri alındı.', 'Sokollu Mehmed Paşa bu dönemin belirleyici devlet adamıdır.'],
+  },
+  {
+    id: 'ucuncu-murad', order: 12, name: 'III. Murad', father: 'II. Selim', period: 'Klasik Düzenin Dönüşümü',
+    headline: 'Uzayan Cepheler, Büyüyen Saray',
+    summary: 'Safevî ve Habsburg cephelerinin genişlediği, saray ve bürokrasinin büyüdüğü bu dönemde Osmanlı toprakları doğuda en geniş sınırlarından birine ulaştı.',
+    map: 'klasik-1648', startMap: 'kanuni-1566',
+    events: [[1578, 'Osmanlı–Safevî Savaşı', 'Kafkasya ve Azerbaycan yönünde uzun seferler başladı.', 'battle'], [1590, 'Ferhat Paşa Antlaşması', 'Osmanlı doğuda en geniş sınırlarına ulaştı.', 'treaty'], [1583, 'Meşale Savaşı', 'Özdemiroğlu Osman Paşa Safevî kuvvetlerini yendi.', 'battle']],
+    reforms: ['Maliye artan savaş giderleri ve fiyat devriminin etkileriyle yeni vergi arayışlarına yöneldi.'],
+    osym: ['Ferhat Paşa Antlaşması’yla doğuda en geniş sınırlara ulaşıldı.', 'İngiltere’ye kapitülasyon verilmesi bu dönemdedir.', 'Uzun savaşlar ve enflasyon klasik düzeni zorladı.'],
+  },
+  {
+    id: 'ucuncu-mehmed', order: 13, name: 'III. Mehmed', father: 'III. Murad', period: 'Klasik Düzenin Dönüşümü',
+    headline: 'Haçova’dan Celâli Krizine',
+    summary: 'Avusturya cephesinde Haçova zaferi kazanılırken Anadolu’da Celâli isyanları büyüdü; savaş ve mali kriz merkezî düzeni zorladı.',
+    map: 'klasik-1648', startMap: 'klasik-1648',
+    events: [[1596, 'Haçova Savaşı', 'Osmanlı ordusu Avusturya kuvvetlerini yendi; III. Mehmed sefere katıldı.', 'battle'], [1596, 'Eğri’nin fethi', 'Orta Avrupa cephesinde önemli bir kale alındı.', 'conquest'], [1603, 'Celâli isyanlarının büyümesi', 'Anadolu’da güvenlik, üretim ve vergi düzeni ağır biçimde sarsıldı.']],
+    reforms: ['Merkez, savaş finansmanı ve Anadolu’daki güvenlik krizi için olağanüstü tedbirler aldı.'],
+    osym: ['Haçova (Mezőkeresztes) Savaşı 1596’da Avusturya’ya karşı kazanıldı.', 'III. Mehmed sefere çıkan son padişahlardan biridir.', 'Celâli isyanları bu dönemde genişledi.'],
+  },
+  {
+    id: 'birinci-ahmed', order: 14, name: 'I. Ahmed', father: 'III. Mehmed', period: 'Klasik Düzenin Dönüşümü',
+    headline: 'Hanedan Usulü Değişiyor',
+    summary: 'Zitvatorok Antlaşması’nın diplomatik dengeyi değiştirdiği I. Ahmed döneminde veraset anlayışı hanedanın en yaşlı ve uygun üyesine doğru evrildi.',
+    map: 'klasik-1648', startMap: 'klasik-1648',
+    events: [[1606, 'Zitvatorok Antlaşması', 'Avusturya hükümdarının Osmanlı padişahına denk sayılması yönünde diplomatik değişim yaşandı.', 'treaty'], [1609, 'Sultanahmet Camii’nin inşası', 'Klasik Osmanlı mimarisinin son büyük külliyelerinden biri yükseldi.'], [1617, 'Veraset usulünde değişim', 'Tahta hanedanın en yaşlı erkek üyesinin geçmesi yönündeki ekberiyet uygulaması belirginleşti.']],
+    reforms: ['Ekber ve erşed anlayışının yerleşmesi kardeş katli uygulamasının yerini kafes sistemine bırakmasına zemin hazırladı.'],
+    osym: ['Zitvatorok Antlaşması Avusturya karşısındaki diplomatik üstünlüğün zayıflamasıyla ilişkilendirilir.', 'Ekber ve erşed sistemi I. Ahmed dönemiyle anılır.', 'Sultanahmet Camii bu dönemin simge eseridir.'],
+  },
+  {
+    id: 'birinci-mustafa', order: 15, name: 'I. Mustafa', father: 'III. Murad', period: 'Klasik Düzenin Dönüşümü', duration: 'iki saltanat toplamı yaklaşık 2 yıl',
+    selef: 'I. Ahmed (ilk saltanat) · II. Osman (ikinci saltanat)', halef: 'II. Osman (ilk saltanat) · IV. Murad (ikinci saltanat)',
+    headline: 'İki Kısa Saltanat',
+    summary: 'I. Mustafa, hanedanın kardeşten kardeşe geçen ilk taht örneği oldu; iki kısa saltanatı saray grupları ve askerî çevrelerin etkisini görünür kıldı.',
+    map: 'klasik-1648', startMap: 'klasik-1648',
+    events: [[1617, 'İlk kez tahta çıkışı', 'I. Ahmed’in kardeşi olarak ekberiyet anlayışıyla tahta çıktı.'], [1618, 'İlk tahttan indirilme', 'Devlet işlerini yürütemediği gerekçesiyle yerini II. Osman’a bıraktı.'], [1622, 'İkinci saltanat', 'II. Osman’ın öldürülmesinden sonra yeniden tahta çıkarıldı; 1623’te indirildi.']],
+    reforms: ['Bu dönem kurumsal yenilikten çok veraset ve saray dengelerindeki kırılmayla önemlidir.'],
+    osym: ['İki kez tahta çıkan padişahlardandır.', 'Kardeşten kardeşe verasetin ilk belirgin örneğidir.', 'Saltanatları 1617–1618 ve 1622–1623 aralıklarındadır.'],
+  },
+  {
+    id: 'genc-osman', order: 16, name: 'II. Osman', epithet: 'Genç Osman', father: 'I. Ahmed', period: 'Klasik Düzenin Dönüşümü',
+    selef: 'I. Mustafa', halef: 'I. Mustafa (ikinci kez tahta çıktı)',
+    headline: 'Reform Arayışı ve Saray Darbesi',
+    summary: 'Hotin Seferi sonrasında askerî sistemi yenilemek isteyen Genç Osman, yeniçeri ayaklanmasıyla tahttan indirilip öldürülen ilk Osmanlı padişahı oldu.',
+    map: 'klasik-1648', startMap: 'klasik-1648',
+    events: [[1621, 'Hotin Seferi', 'Lehistan seferi ordudaki disiplin sorunlarını görünür kıldı.', 'battle'], [1622, 'Islahat girişimi', 'Yeni ve merkeze bağlı bir askerî güç kurma düşüncesi yeniçerilerin tepkisini çekti.'], [1622, 'Yeniçeri ayaklanması', 'II. Osman tahttan indirildi ve Yedikule’de öldürüldü.']],
+    reforms: ['Yeniçeri Ocağı dışındaki unsurlara dayanan yeni bir ordu kurmayı tasarladı.'],
+    osym: ['Yeniçeriler tarafından öldürülen ilk Osmanlı padişahıdır.', 'Hotin Seferi reform düşüncesini hızlandırdı.', 'Başkent dışından yeni ordu kurma girişimiyle anılır.'],
+  },
+  {
+    id: 'dorduncu-murad', order: 17, name: 'IV. Murad', father: 'I. Ahmed', period: 'Klasik Düzenin Dönüşümü',
+    headline: 'Merkezî Otoritenin Sert Dönüşü',
+    summary: 'Çocuk yaşta tahta çıkan IV. Murad, yönetimi ele aldıktan sonra sert tedbirlerle asayişi sağlamaya çalıştı; Revan ve Bağdat seferleriyle doğu sınırını güçlendirdi.',
+    map: 'klasik-1648', startMap: 'klasik-1648',
+    events: [[1635, 'Revan Seferi', 'Revan kısa süre için Osmanlı yönetimine alındı.', 'conquest'], [1638, 'Bağdat’ın geri alınması', 'Safevîlerden Bağdat yeniden fethedildi.', 'conquest'], [1639, 'Kasr-ı Şirin Antlaşması', 'Osmanlı–İran sınırının ana çizgileri belirlendi.', 'treaty']],
+    reforms: ['Asayişi ve merkezî otoriteyi yeniden kurmak için sert denetim uyguladı.', 'Koçi Bey’in risaleleri devlet düzenindeki bozulmaları teşhis etti.'],
+    osym: ['Bağdat Fatihi olarak anılır.', 'Kasr-ı Şirin Antlaşması bugünkü Türkiye–İran sınırının temelini oluşturur.', 'Koçi Bey Risalesi bu dönemdedir.'],
+  },
+  {
+    id: 'sultan-ibrahim', order: 18, name: 'İbrahim', father: 'I. Ahmed', period: 'Klasik Düzenin Dönüşümü',
+    headline: 'Saray Krizi ve Girit Savaşı',
+    summary: 'İbrahim döneminde saray hizipleri ve mali sorunlar arttı; Venedik’e karşı başlayan Girit Savaşı yirmi dört yıl sürdü.',
+    map: 'klasik-1648', startMap: 'klasik-1648',
+    events: [[1645, 'Girit Savaşı’nın başlaması', 'Venedik’in elindeki Girit’e sefer açıldı.', 'battle'], [1645, 'Hanya’nın alınması', 'Girit seferinin ilk önemli merkezi ele geçirildi.', 'conquest'], [1648, 'Tahttan indirilme', 'Saray, ulema ve askerî çevrelerin ittifakıyla tahttan indirildi.']],
+    reforms: ['Mali bunalımı hafifletme girişimleri saray harcamaları ve savaş giderleri karşısında yetersiz kaldı.'],
+    osym: ['Girit Savaşı bu dönemde başladı, IV. Mehmed döneminde bitti.', '1648’de tahttan indirildi.', 'Dönem saray ve maliye krizleriyle anılır.'],
+  },
+  {
+    id: 'dorduncu-mehmed', order: 19, name: 'IV. Mehmed', epithet: 'Avcı', father: 'İbrahim', period: 'Klasik Düzenin Dönüşümü',
+    headline: 'Köprülülerden Viyana’ya',
+    summary: 'Uzun saltanatında Köprülü sadrazamlar merkezî otoriteyi toparladı, Girit fethedildi; 1683 II. Viyana Kuşatması’nın başarısızlığı büyük savaşlar dönemini başlattı.',
+    map: 'koprulu-1687', startMap: 'klasik-1648',
+    events: [[1656, 'Köprülü Mehmed Paşa’nın sadrazamlığı', 'Geniş yetkilerle devlet düzenini ve maliyeyi toparlamaya başladı.'], [1669, 'Girit’in fethinin tamamlanması', 'Kandiye’nin alınmasıyla uzun Girit Savaşı sona erdi.', 'conquest'], [1683, 'II. Viyana Kuşatması', 'Kuşatma başarısız oldu ve Kutsal İttifak savaşları başladı.', 'battle']],
+    reforms: ['Köprülü sadrazamlar maliye, ordu ve taşra yönetiminde disiplin sağladı.'],
+    osym: ['Köprülüler Devri IV. Mehmed dönemindedir.', 'Girit’in fethi 1669’da tamamlandı.', 'II. Viyana Kuşatması 1683’te başarısız oldu.'],
+  },
+  {
+    id: 'ikinci-suleyman', order: 20, name: 'II. Süleyman', father: 'İbrahim', period: 'Gerileme ve Diplomasi Dönemi',
+    headline: 'Kutsal İttifak Karşısında Savunma',
+    summary: 'II. Süleyman, Kutsal İttifak savaşlarının ağır kayıpları sırasında tahta çıktı; Köprülü Fazıl Mustafa Paşa’nın reformları cephede geçici toparlanma sağladı.',
+    map: 'karlofca-1703', startMap: 'koprulu-1687',
+    events: [[1688, 'Belgrad’ın kaybı', 'Kutsal İttifak kuvvetleri Balkanlarda ilerledi.', 'battle'], [1689, 'Fazıl Mustafa Paşa’nın sadrazamlığı', 'Mali ve askerî düzenlemelerle savunma toparlandı.'], [1690, 'Belgrad’ın geri alınması', 'Karşı taarruzla stratejik şehir yeniden Osmanlı denetimine girdi.', 'conquest']],
+    reforms: ['Fazıl Mustafa Paşa vergi yükünü hafifletip askerî disiplini güçlendirmeye çalıştı.'],
+    osym: ['Kutsal İttifak savaşlarının savunma dönemidir.', 'Köprülü Fazıl Mustafa Paşa’nın ıslahatları önemlidir.', 'Belgrad 1690’da geri alındı.'],
+  },
+  {
+    id: 'ikinci-ahmed', order: 21, name: 'II. Ahmed', father: 'İbrahim', period: 'Gerileme ve Diplomasi Dönemi',
+    headline: 'Uzun Savaşın Kısa Saltanatı',
+    summary: 'Dört yıllık saltanatı Kutsal İttifak savaşlarıyla geçti; Salankamen yenilgisi Osmanlı savunmasını daha da zorlaştırdı.',
+    map: 'karlofca-1703', startMap: 'karlofca-1703',
+    events: [[1691, 'Salankamen Savaşı', 'Fazıl Mustafa Paşa şehit oldu ve Osmanlı ordusu ağır kayıp verdi.', 'battle'], [1692, 'Erdel ve Macaristan cephesindeki kayıplar', 'Habsburg baskısı devam etti.'], [1695, 'Saltanatın sona ermesi', 'Savaş sonuçlanmadan II. Ahmed hayatını kaybetti.']],
+    reforms: ['Savaş koşullarında maliye ve asker toplama düzenini sürdürmeye odaklandı.'],
+    osym: ['Salankamen Savaşı bu dönemdedir.', 'Kutsal İttifak savaşları saltanatın tamamını belirledi.', 'Fazıl Mustafa Paşa savaşta hayatını kaybetti.'],
+  },
+  {
+    id: 'ikinci-mustafa', order: 22, name: 'II. Mustafa', father: 'IV. Mehmed', period: 'Gerileme ve Diplomasi Dönemi',
+    headline: 'Karlofça ile Yeni Denge',
+    summary: 'Ordunun başında sefere çıkan II. Mustafa, Zenta yenilgisinin ardından Karlofça Antlaşması’nı kabul etti; Edirne Vakası’yla tahttan indirildi.',
+    map: 'karlofca-1703', startMap: 'koprulu-1687',
+    events: [[1697, 'Zenta Savaşı', 'Osmanlı ordusu Savoy Prensi Eugen karşısında ağır yenilgi aldı.', 'battle'], [1699, 'Karlofça Antlaşması', 'Macaristan’ın büyük bölümü ve başka Avrupa toprakları kaybedildi.', 'treaty'], [1703, 'Edirne Vakası', 'Askerî ve toplumsal ayaklanma sonucunda tahttan indirildi.']],
+    reforms: ['Mali ve askerî düzenlemeler savaşın ağır yükünü taşımaya yöneldi.'],
+    osym: ['Karlofça, Osmanlı’nın büyük çaplı toprak kaybettiği ilk antlaşma olarak öğretilir.', 'Zenta yenilgisi Karlofça’ya giden yolu açtı.', 'Edirne Vakası ile tahttan indirildi.'],
+  },
+  {
+    id: 'ucuncu-ahmed', order: 23, name: 'III. Ahmed', father: 'IV. Mehmed', period: 'Gerileme ve Diplomasi Dönemi',
+    headline: 'Lale Devri: Diplomasi ve Yenilik',
+    summary: 'Prut zaferi ve Pasarofça Antlaşması arasında değişen dış siyaset, Lale Devri’nde Avrupa’yı izleyen kültürel ve teknik yeniliklere dönüştü.',
+    map: 'lale-1757', startMap: 'karlofca-1703',
+    events: [[1711, 'Prut Savaşı', 'Rus ordusu kuşatıldı; Azak Osmanlı’ya geri verildi.', 'battle'], [1718, 'Pasarofça Antlaşması', 'Batıda barış dönemi başladı ve Avrupa’yı tanıma siyaseti hızlandı.', 'treaty'], [1730, 'Patrona Halil İsyanı', 'Lale Devri sona erdi ve III. Ahmed tahttan indirildi.']],
+    reforms: ['İbrahim Müteferrika matbaası 1727’de Türkçe eser basmaya başladı.', 'Avrupa başkentlerine geçici elçilikler gönderildi; Yirmisekiz Çelebi Mehmed’in Paris gözlemleri etkili oldu.'],
+    osym: ['Lale Devri 1718 Pasarofça ile başlatılır, 1730 Patrona Halil İsyanı ile biter.', 'İlk Türk matbaası İbrahim Müteferrika ve Sait Efendi ile anılır.', 'Avrupa’ya geçici elçilikler gönderildi.'],
+  },
+  {
+    id: 'birinci-mahmud', order: 24, name: 'I. Mahmud', father: 'II. Mustafa', period: 'Gerileme ve Diplomasi Dönemi',
+    headline: 'İsyan Sonrası Toparlanma',
+    summary: 'Patrona Halil İsyanı’nın ardından tahta çıkan I. Mahmud, askerî teknik yenilikleri destekledi ve 1739 Belgrad Antlaşması’yla diplomatik başarı kazandı.',
+    map: 'lale-1757', startMap: 'lale-1757',
+    events: [[1730, 'Patrona Halil İsyanı’nın bastırılması', 'Başkentte devlet otoritesi yeniden kuruldu.'], [1736, 'Rusya ve Avusturya savaşları', 'İki cepheli mücadele Osmanlı lehine sonuçlandı.', 'battle'], [1739, 'Belgrad Antlaşması', 'Belgrad geri alındı; Osmanlı batıda son büyük kazançlı antlaşmasını yaptı.', 'treaty']],
+    reforms: ['Humbaracı Ahmed Paşa topçu ve humbaracı birliklerini Avrupa usulüyle düzenledi.', 'Hendesehane askerî teknik eğitim için açıldı.'],
+    osym: ['Belgrad Antlaşması Osmanlı’nın batıda son kazançlı antlaşması sayılır.', 'Humbaracı Ahmed Paşa’nın askerî ıslahatları önemlidir.', 'Fransa Belgrad görüşmelerindeki arabuluculukla kapitülasyonlarını sürekli hâle getirdi.'],
+  },
+  {
+    id: 'ucuncu-osman', order: 25, name: 'III. Osman', father: 'II. Mustafa', period: 'Gerileme ve Diplomasi Dönemi',
+    headline: 'Üç Yıllık Ara Dönem',
+    summary: 'Kısa saltanatı büyük bir dış savaş olmadan geçti; İstanbul yangınları, saray düzenlemeleri ve mali tedbirler dönemin gündemini oluşturdu.',
+    map: 'lale-1757', startMap: 'lale-1757',
+    events: [[1755, 'İstanbul yangınları', 'Büyük yangınlar başkentin mahallelerini ve ekonomik hayatını etkiledi.'], [1755, 'Nuruosmaniye Camii’nin açılışı', 'I. Mahmud döneminde başlayan külliye tamamlandı.'], [1757, 'Saltanatın sona ermesi', 'III. Osman’ın ölümüyle tahta III. Mustafa çıktı.']],
+    reforms: ['Mali harcamaları sınırlama ve saray düzenini yeniden kurma tedbirleri aldı.'],
+    osym: ['Saltanatı yaklaşık üç yıl sürmüştür.', 'Nuruosmaniye Camii bu dönemde tamamlandı.', 'Büyük bir dış savaş yaşanmayan kısa geçiş dönemidir.'],
+  },
+  {
+    id: 'ucuncu-mustafa', order: 26, name: 'III. Mustafa', father: 'III. Ahmed', period: 'Gerileme ve Diplomasi Dönemi',
+    headline: 'Askerî Yenilenme Arayışı',
+    summary: 'Mali ve askerî yenilikler yapmaya çalışan III. Mustafa’nın son yılları 1768’de başlayan ağır Osmanlı–Rus savaşıyla geçti.',
+    map: 'nizam-1807', startMap: 'lale-1757',
+    events: [[1768, 'Osmanlı–Rus Savaşı', 'Lehistan meselesi üzerinden başlayan savaş birçok cephede sürdü.', 'battle'], [1770, 'Çeşme Baskını', 'Osmanlı donanması Rus filosu tarafından yakıldı.', 'battle'], [1773, 'Mühendishane hazırlıkları', 'Deniz ve topçu teknik eğitimi için yeni kurumlaşma adımları atıldı.']],
+    reforms: ['Baron de Tott’un katkısıyla topçu birlikleri ve Boğaz savunması yenilendi.', 'Sürat Topçuları Ocağı kuruldu.'],
+    osym: ['Çeşme’de Osmanlı donanması yakıldı.', 'Baron de Tott askerî ıslahatlarda rol oynadı.', '1768–1774 Osmanlı–Rus Savaşı onun döneminde başladı.'],
+  },
+  {
+    id: 'birinci-abdulhamid', order: 27, name: 'I. Abdülhamid', father: 'III. Ahmed', period: 'Gerileme ve Diplomasi Dönemi',
+    headline: 'Küçük Kaynarca’nın Ağır Mirası',
+    summary: 'Tahta çıktığında Küçük Kaynarca Antlaşması’nı imzalamak zorunda kaldı; Kırım’ın Rusya tarafından ilhakı ve yeni savaşlar dönemi belirledi.',
+    map: 'nizam-1807', startMap: 'lale-1757',
+    events: [[1774, 'Küçük Kaynarca Antlaşması', 'Kırım bağımsız sayıldı; Rusya önemli siyasi ve ticari ayrıcalıklar elde etti.', 'treaty'], [1783, 'Kırım’ın Rusya tarafından ilhakı', 'Karadeniz dengesi Osmanlı aleyhine değişti.'], [1787, 'Yeni Osmanlı–Rus ve Avusturya savaşı', 'İki cepheli savaş saltanatın sonuna kadar sürdü.', 'battle']],
+    reforms: ['Halil Hamid Paşa ile askerî ve mali yenilikler yürütüldü.', 'İstihkâm ve topçu eğitimine ağırlık verildi.'],
+    osym: ['Küçük Kaynarca Antlaşması 1774’te imzalandı.', 'Kırım 1783’te Rusya tarafından ilhak edildi.', 'Halil Hamid Paşa ıslahatları bu dönemdedir.'],
+  },
+  {
+    id: 'ucuncu-selim', order: 28, name: 'III. Selim', father: 'III. Mustafa', period: 'Dağılma ve Modernleşme Dönemi',
+    headline: 'Nizam-ı Cedid',
+    summary: 'III. Selim, Avrupa’daki askerî ve diplomatik değişime Nizam-ı Cedid ordusu, yeni mali kaynaklar ve daimî elçiliklerle cevap vermeye çalıştı.',
+    map: 'nizam-1807', startMap: 'nizam-1807',
+    events: [[1792, 'Yaş Antlaşması', 'Kırım’ın Rusya’ya ait olduğu kabul edildi ve savaş sona erdi.', 'treaty'], [1793, 'Nizam-ı Cedid’in kurulması', 'Avrupa usulünde eğitim gören yeni ordu oluşturuldu.'], [1807, 'Kabakçı Mustafa İsyanı', 'Nizam-ı Cedid karşıtları III. Selim’i tahttan indirdi.']],
+    reforms: ['Londra başta olmak üzere Avrupa başkentlerinde daimî elçilikler açıldı.', 'İrad-ı Cedid Hazinesi yeni ordunun finansmanı için kuruldu.'],
+    osym: ['Nizam-ı Cedid hem yeni orduyu hem daha geniş reform programını ifade eder.', 'Avrupa’da daimî elçilikler açıldı.', 'Kabakçı Mustafa İsyanı ile tahttan indirildi.'],
+  },
+  {
+    id: 'dorduncu-mustafa', order: 29, name: 'IV. Mustafa', father: 'I. Abdülhamid', period: 'Dağılma ve Modernleşme Dönemi',
+    headline: 'Reform Karşıtı Kısa Saltanat',
+    summary: 'Kabakçı Mustafa İsyanı sonrasında tahta çıkan IV. Mustafa’nın kısa saltanatı, Nizam-ı Cedid düzeninin tasfiyesi ve Alemdar Mustafa Paşa müdahalesiyle sona erdi.',
+    map: 'mahmud-1839', startMap: 'nizam-1807',
+    events: [[1807, 'Nizam-ı Cedid’in kaldırılması', 'Yeni ordu dağıtıldı ve reform kadroları tasfiye edildi.'], [1808, 'Alemdar Mustafa Paşa’nın İstanbul’a gelişi', 'III. Selim’i yeniden tahta çıkarma girişimi başladı.'], [1808, 'Tahttan indirilme', 'III. Selim’in öldürülmesinin ardından II. Mahmud tahta çıkarıldı.']],
+    reforms: ['Saltanatı yenilik üretmekten çok III. Selim reformlarının geri çevrilmesiyle tanımlanır.'],
+    osym: ['Kabakçı Mustafa İsyanı sonrasında tahta çıktı.', 'Nizam-ı Cedid kaldırıldı.', 'Alemdar Mustafa Paşa tarafından tahttan indirildi.'],
+  },
+  {
+    id: 'ikinci-mahmud', order: 30, name: 'II. Mahmud', father: 'I. Abdülhamid', period: 'Dağılma ve Modernleşme Dönemi',
+    headline: 'Merkezî Devlet Yeniden Kuruluyor',
+    summary: 'II. Mahmud, ayanlar ve yeniçeriler karşısında merkezî otoriteyi yeniden kurdu; modern bakanlıklar, ordu, eğitim ve haberleşme kurumlarıyla Tanzimat’ın zeminini hazırladı.',
+    map: 'mahmud-1839', startMap: 'nizam-1807',
+    events: [[1808, 'Sened-i İttifak', 'Merkez ile ayanlar arasında yetki ve yükümlülükleri düzenleyen belge imzalandı.'], [1826, 'Vak‘a-i Hayriye', 'Yeniçeri Ocağı kaldırıldı ve Asâkir-i Mansûre kuruldu.'], [1829, 'Edirne Antlaşması', 'Yunanistan’ın bağımsızlığına giden süreç ve Rus kazanımları kabul edildi.', 'treaty']],
+    reforms: ['Divan örgütü yerine modern nezaretler kuruldu; memurluk ve posta teşkilatı yenilendi.', 'Takvim-i Vekayi ilk resmî gazete olarak yayımlandı.', 'Müsadere uygulaması kaldırıldı ve devlet görevlilerinin mülkiyet güvencesi artırıldı.'],
+    osym: ['Yeniçeri Ocağı 1826 Vak‘a-i Hayriye ile kaldırıldı.', 'Takvim-i Vekayi ilk resmî gazetedir.', 'Tanzimat’ın idarî altyapısını hazırlayan padişahtır.'],
+  },
+  {
+    id: 'abdulmecid', order: 31, name: 'Abdülmecid', father: 'II. Mahmud', period: 'Dağılma ve Modernleşme Dönemi',
+    headline: 'Tanzimat ve Yeni Vatandaşlık',
+    summary: 'Tanzimat ve Islahat fermanlarıyla can, mal ve namus güvenliği; hukuk önünde eşitlik ve merkezî idare hedefleri ilan edildi. Kırım Savaşı imparatorluğu Avrupa diplomasisinin merkezine taşıdı.',
+    map: 'tanzimat-1876', startMap: 'mahmud-1839',
+    events: [[1839, 'Tanzimat Fermanı', 'Vergi, askerlik ve yargıda kanun güvencesi ilan edildi.'], [1853, 'Kırım Savaşı', 'Osmanlı, İngiltere ve Fransa ile Rusya’ya karşı savaştı.', 'battle'], [1856, 'Islahat Fermanı', 'Gayrimüslim tebaanın haklarını genişleten düzenlemeler ilan edildi.']],
+    reforms: ['İlk kâğıt para kaime çıkarıldı; modern banka ve maliye kurumlarının temelleri atıldı.', 'Telgraf ve demiryolu yatırımları başladı.', 'Meclisler ve yeni hukuk kurumları Tanzimat yönetimini taşraya yaydı.'],
+    osym: ['Tanzimat Fermanı 1839’da, Islahat Fermanı 1856’da ilan edildi.', 'İlk dış borç Kırım Savaşı sırasında 1854’te alındı.', 'Paris Antlaşması’yla Osmanlı Avrupa devleti sayıldı.'],
+  },
+  {
+    id: 'abdulaziz', order: 32, name: 'Abdülaziz', father: 'II. Mahmud', period: 'Dağılma ve Modernleşme Dönemi',
+    headline: 'Altyapı, Donanma ve Borç Krizi',
+    summary: 'Demiryolu, eğitim ve donanma yatırımlarının hızlandığı Abdülaziz döneminde dış borç yükü ağırlaştı; Balkan krizleri ve 1875 mali iflası tahttan indirilmesine giden süreci hazırladı.',
+    map: 'tanzimat-1876', startMap: 'tanzimat-1876',
+    events: [[1867, 'Avrupa seyahati', 'Abdülaziz barış zamanında Avrupa’yı ziyaret eden ilk Osmanlı padişahı oldu.'], [1868, 'Şûrâ-yı Devlet ve Galatasaray Sultanisi', 'İdare ve eğitim alanında yeni kurumlar açıldı.'], [1875, 'Mali iflas', 'Devlet dış borç ödemelerini sürdüremediğini ilan etti.']],
+    reforms: ['Donanma genişletildi; demiryolu ve liman yatırımları hızlandı.', 'Vilayet Nizamnamesi ile taşra idaresi yeniden düzenlendi.', 'Darülfünun ve modern eğitim kurumlarını geliştirme girişimleri sürdü.'],
+    osym: ['Avrupa’ya seyahat eden ilk Osmanlı padişahıdır.', 'Şûrâ-yı Devlet günümüz Danıştay’ının köküdür.', '1875 mali iflası dış borç krizini görünür kıldı.'],
+  },
+  {
+    id: 'besinci-murad', order: 33, name: 'V. Murad', father: 'Abdülmecid', period: 'Meşrutiyet ve Dağılma Dönemi', duration: '93 gün',
+    headline: 'Doksan Üç Günlük Saltanat',
+    summary: 'Meşrutiyet yanlılarının beklentileriyle tahta çıkarılan V. Murad, sağlık sorunları nedeniyle doksan üç gün sonra tahttan indirildi; Osmanlı tarihinin en kısa saltanatıdır.',
+    map: 'tanzimat-1876', startMap: 'tanzimat-1876',
+    events: [[1876, 'Tahta çıkış', 'Abdülaziz’in indirilmesinin ardından meşrutiyet beklentileriyle padişah oldu.'], [1876, 'Sağlık krizinin derinleşmesi', 'Devlet işlerini sürdürememesi taht değişikliğini gündeme getirdi.'], [1876, 'Tahttan indirilme', '93 gün sonra yerini II. Abdülhamid’e bıraktı.']],
+    reforms: ['Kısa saltanat nedeniyle planlanan anayasal düzenlemeleri uygulayamadı.'],
+    osym: ['Osmanlı tarihinin en kısa süre tahtta kalan padişahıdır: 93 gün.', 'Meşrutiyet yanlısı çevrelerin desteğiyle tahta çıktı.', 'Yerine II. Abdülhamid geçti.'],
+  },
+  {
+    id: 'ikinci-abdulhamid', order: 34, name: 'II. Abdülhamid', father: 'Abdülmecid', period: 'Meşrutiyet ve Dağılma Dönemi',
+    headline: 'Anayasa, Merkezileşme ve Eğitim Ağı',
+    summary: 'Kanun-ı Esasi’yi ilan eden II. Abdülhamid, 1877–1878 savaşından sonra Meclisi kapattı; merkeziyetçi yönetim, eğitim kurumları, demiryolları ve haberleşme ağlarını genişletti.',
+    map: 'mesrutiyet-1909', startMap: 'tanzimat-1876',
+    events: [[1876, 'I. Meşrutiyet ve Kanun-ı Esasi', 'Osmanlı’nın ilk anayasası ilan edildi ve Meclis-i Mebusan açıldı.'], [1877, '93 Harbi', 'Rusya karşısındaki ağır yenilgi büyük toprak ve nüfus kayıplarına yol açtı.', 'battle'], [1908, 'II. Meşrutiyet', 'Kanun-ı Esasi yeniden yürürlüğe kondu ve Meclis açıldı.']],
+    reforms: ['Rüştiye, idadi ve yüksek okullarla eğitim ağı taşraya yayıldı.', 'Hicaz Demiryolu ve telgraf hatları merkezî yönetimi güçlendirdi.', 'Düyun-ı Umumiye 1881’de dış borç gelirlerini denetlemek üzere kuruldu.'],
+    osym: ['Kanun-ı Esasi 1876’da ilan edildi.', '93 Harbi sonrasında Berlin Antlaşması imzalandı.', 'II. Meşrutiyet 1908’de yeniden ilan edildi.'],
+  },
+  {
+    id: 'besinci-mehmed', order: 35, name: 'V. Mehmed', epithet: 'Reşad', father: 'Abdülmecid', period: 'Meşrutiyet ve Dağılma Dönemi',
+    headline: 'Sembolik Taht, Büyük Savaşlar',
+    summary: 'Meşrutiyet rejiminde yetkileri sınırlı olan V. Mehmed döneminde Trablusgarp, Balkan ve Birinci Dünya savaşları yaşandı; devlet siyasetine İttihat ve Terakki yön verdi.',
+    map: 'resad-1918', startMap: 'mesrutiyet-1909',
+    events: [[1911, 'Trablusgarp Savaşı', 'İtalya Trablusgarp’ı işgal etti; Uşi Antlaşması’yla Osmanlı Kuzey Afrika’daki son toprağını kaybetti.', 'battle'], [1912, 'Balkan Savaşları', 'Osmanlı Avrupa topraklarının büyük bölümünü kaybetti.', 'battle'], [1914, 'Birinci Dünya Savaşı', 'Osmanlı Devleti İttifak Devletleri yanında savaşa girdi.', 'battle']],
+    reforms: ['Meşrutiyet düzeninde padişahın yürütme üzerindeki rolü sınırlı, hükümet ve Meclis daha belirleyiciydi.'],
+    osym: ['Trablusgarp, Balkan ve I. Dünya savaşları bu dönemdedir.', 'Çanakkale Zaferi V. Mehmed döneminde kazanıldı.', 'İttihat ve Terakki yönetimde belirleyiciydi.'],
+  },
+  {
+    id: 'altinci-mehmed', order: 36, name: 'VI. Mehmed', epithet: 'Vahdeddin · Son Osmanlı Padişahı', father: 'Abdülmecid', period: 'Meşrutiyet ve Dağılma Dönemi',
+    headline: 'İmparatorluğun Son Perdesi',
+    summary: 'Mondros Mütarekesi ve işgaller altında tahta bulunan VI. Mehmed döneminde İstanbul hükümetleri ile Ankara’daki Millî Mücadele hareketi karşı karşıya geldi; saltanat 1 Kasım 1922’de kaldırıldı.',
+    map: 'vahdeddin-1922', startMap: 'resad-1918',
+    events: [[1918, 'Mondros Mütarekesi', 'Osmanlı orduları terhis edildi ve İtilaf Devletleri işgaller için geniş yetki elde etti.', 'treaty'], [1920, 'Sevr Antlaşması', 'Osmanlı heyetinin imzaladığı fakat yürürlüğe girmeyen antlaşma ülkeyi parçalamayı öngörüyordu.', 'treaty'], [1922, 'Saltanatın kaldırılması', 'TBMM 1 Kasım 1922’de saltanatı kaldırdı; Osmanlı padişahlığı sona erdi.']],
+    reforms: ['İşgal ve ikili iktidar koşulları, düzenli bir reform programı uygulanmasına imkân vermedi.'],
+    osym: ['Son Osmanlı padişahıdır.', 'Mondros Mütarekesi 30 Ekim 1918’de imzalandı.', 'Saltanat 1 Kasım 1922’de TBMM tarafından kaldırıldı; halifelik 1924’e kadar ayrı kurum olarak sürdü.'],
+  },
+]
+
+const ADLAR = [
+  'Osman Gazi', 'Orhan Gazi', 'I. Murad', ...PROFILLER.map((profil) => profil.name),
+]
+
+const olayKaydi = (padisahId, kayit, sira) => {
+  const [year, title, summary, kind = 'event'] = kayit
+  return {
+    id: `${padisahId}-${sira + 1}`,
+    title,
+    date: tarih(year),
+    eventType: sira === 0 ? 'major' : 'normal',
+    summary,
+    detail: summary,
+    significance: summary,
+    osym: summary,
+    kind,
+  }
+}
+
+function padisahOlustur(profil) {
+  const kronoloji = kronolojiKaydi(profil.id)
+  const olaylar = profil.events.map((kayit, sira) => olayKaydi(profil.id, kayit, sira))
+  /**
+   * Selef/halef sırayla türetilir; fakat İKİ KEZ tahta çıkan padişahlarda
+   * (I. Mustafa, II. Murad, II. Mehmed) sıra numarası doğru cevabı
+   * vermez. Örneğin II. Osman'dan sonra sıradaki numara IV. Murad'dır,
+   * oysa tahta ikinci kez I. Mustafa geçmiştir. Bu yüzden profil kendi
+   * değerini yazabilir; yazmazsa sıra kullanılır.
+   */
+  const siradakiAd = profil.halef ?? ADLAR[profil.order] ?? null
+  const oncekiAd = profil.selef ?? ADLAR[profil.order - 2] ?? null
+  const basMetin = kronoloji.basMetin ?? String(kronoloji.bas)
+  const bitMetin = kronoloji.bitMetin ?? (kronoloji.kisaSaltanat ? `${kronoloji.bit} (${kronoloji.kisaSaltanat})` : String(kronoloji.bit))
+  const olayOzeti = olaylar.map((olay) => `${olay.date.value}: ${olay.title}`).join(' · ')
+  /**
+   * SESLENDİRME EKRANI OKUMAZ. Elle yazılan metin varsa otomatik
+   * taslağın yerine geçer; yoksa taslak çalışmayı sürdürür, böylece
+   * hiçbir padişah sessiz kalmaz.
+   */
+  const elleYazilanAnlatim = ANLATIMLAR[profil.id] ?? null
+
+  return {
+    id: profil.id,
+    order: profil.order,
+    /**
+     * Bu kayıtlar elle yazılmadı; profil satırlarından üretildi.
+     * İlk üç padişahtaki gibi ayrıntılı savaş/fetih/kişi anlatımı ve
+     * delilli nitelik değerlendirmesi İÇERMEZ. Arayüz bunu öğrenciye
+     * açıkça söyler — eksik içeriğin "tam" gibi görünmesi en tehlikeli
+     * durumdur.
+     *
+     * 'anlatimli' ara kademesi: ekran kayıtları hâlâ özet, ama sesli
+     * anlatımı elle yazılmış. Uyarı metni buna göre değişir; öğrenciye
+     * "seslendirme sonra eklenecek" denmez, çünkü eklenmiştir.
+     */
+    detaySeviyesi: elleYazilanAnlatim ? 'anlatimli' : 'ozet',
+    name: profil.name,
+    epithet: profil.epithet,
+    reignStart: tarih(kronoloji.bas, basMetin),
+    reignEnd: tarih(kronoloji.bit, bitMetin),
+    reignDuration: profil.duration,
+    father: profil.father,
+    predecessor: oncekiAd,
+    successor: siradakiAd,
+    dynastyPeriod: profil.period,
+    openingHeadline: profil.headline,
+    summary: profil.summary,
+    /**
+     * Başkent, TAHTA ÇIKIŞ yılından değil dönemin sonundan okunur.
+     * Önceki kural "tahta çıkış < 1453" olduğu için Fatih 1444'te tahta
+     * çıktığından başkenti "Edirne · Bursa" görünüyordu — en çok sorulan
+     * padişahta yanlış bilgi. Fatih gibi geçiş dönemleri profilinde
+     * açıkça yazılır.
+     */
+    capitals: profil.capitals ?? (kronoloji.bit <= 1453 ? ['Edirne'] : ['İstanbul']),
+    traits: [
+      {
+        field: olaylar.some((olay) => olay.kind === 'battle' || olay.kind === 'conquest') ? 'askeri' : 'diplomasi',
+        level: 'belirgin',
+        label: olaylar.some((olay) => olay.kind === 'battle' || olay.kind === 'conquest') ? 'Siyasi ve askerî yön' : 'Siyasi dönüşüm',
+        evidence: olayOzeti,
+      },
+      {
+        field: 'devletlesme',
+        level: 'belirgin',
+        label: 'Kurumlar ve yönetim',
+        evidence: profil.reforms.join(' '),
+      },
+    ],
+    keyEvents: olaylar.filter((olay) => !['battle', 'conquest', 'treaty'].includes(olay.kind)),
+    battles: olaylar.filter((olay) => olay.kind === 'battle'),
+    conquests: olaylar.filter((olay) => olay.kind === 'conquest'),
+    treaties: olaylar.filter((olay) => olay.kind === 'treaty'),
+    reforms: profil.reforms.map((summary, sira) => ({
+      id: `${profil.id}-reform-${sira + 1}`,
+      title: sira === 0 ? 'Dönemin yönetim yönü' : 'Kurumsal gelişme',
+      field: 'yonetim',
+      summary,
+      why: 'Değişen askerî, mali ve siyasi ihtiyaçlara cevap vermek.',
+    })),
+    importantFigures: [],
+    osymHighlights: profil.osym,
+    mapState: {
+      id: profil.map,
+      startMapId: profil.startMap,
+      startCaption: 'Dönemin başlangıcında devralınan siyasi coğrafya.',
+      caption: `${profil.name} döneminin sonunda Anadolu–Balkan çekirdeğinin şematik görünümü. Haritadaki alanlara dokunarak açıklamalarını inceleyebilirsin.`,
+      highlight: kronoloji.bas < 1453 ? ['edirne', 'bursa'] : ['istanbul'],
+    },
+    portrait: {
+      kind: 'image',
+      src: `/lesson-assets/tarih/osmanli-padisahlari/${profil.id}.jpg`,
+      alt: `${profil.name} döneminin kıyafet ve üslup özelliklerinden esinlenen eğitim amaçlı temsili illüstrasyon; tarihî portre değildir.`,
+      tugra: String(profil.order),
+      isim: profil.name,
+    },
+    transitionOut: profil.transition ?? (siradakiAd ? {
+      transitionType: 'devir',
+      year: bitMetin,
+      headline: `Taht ${siradakiAd}’a Geçiyor`,
+      body: `${profil.name} döneminin ardından Osmanlı tahtının bir sonraki halkası ${siradakiAd} oldu.`,
+    } : undefined),
+    narration: elleYazilanAnlatim ?? [
+      { id: `${profil.id}-intro`, kind: 'intro', seconds: 18, text: profil.summary },
+      { id: `${profil.id}-reign`, kind: 'reign', seconds: 22, text: `${profil.name} döneminin ana akışı: ${olayOzeti}.` },
+      { id: `${profil.id}-transition`, kind: 'transition', seconds: 14, text: siradakiAd ? `Bu dönemin ardından Osmanlı tahtına ${siradakiAd} geçti.` : '1 Kasım 1922’de saltanatın kaldırılmasıyla Osmanlı padişahlığı sona erdi.' },
+    ],
+    sources: [
+      { label: 'TDV İslâm Ansiklopedisi', note: 'Padişah biyografileri ve dönem olayları için akademik başvuru kaynağı.', url: 'https://islamansiklopedisi.org.tr/' },
+      { label: 'MEB Tarih öğretim programı', note: 'Kavram, kronoloji ve sınav odağı için.', url: 'https://tymm.meb.gov.tr/tarih-dersi' },
+      { label: 'T.C. Kültür ve Turizm Bakanlığı', note: 'Osmanlı kültür ve kronoloji kaynakları için.', url: 'https://www.ktb.gov.tr/' },
+    ],
+  }
+}
+
+export const TAM_HANEDAN_PADISAHLARI = PROFILLER.map(padisahOlustur)

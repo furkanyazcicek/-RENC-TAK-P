@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 3,
+  "sliceId": "kucuk-kaynarca-1774",
+  "sliceYear": 1774,
+  "title": "1774 Küçük Kaynarca Antlaşması kanıt dilimi",
+  "publicationStatus": "reviewed-slice",
+  "scopeNote": "Bu paket 1774 sınırını çizmez. Antlaşma yerini, tarih tartışmasını ve Kırım'ın statü değişimini kaynaklı olay noktası olarak açıklar; siyasî polygon 1783 genel kaynak snapshot'ıdır.",
+  "validFrom": 1774,
+  "validTo": 1775,
+  "sourceIds": [
+    "tdv-kucuk-kaynarca-2002",
+    "wikidata-cc0"
+  ],
+  "administrativeRegions": [],
+  "settlements": [
+    {
+      "id": "settlement:kucuk-kaynarca",
+      "nameTr": "Küçük Kaynarca",
+      "sourceName": "Kaynardzha",
+      "nameVariants": [
+        { "name": "Küçük Kaynarca", "validFrom": 1774, "validTo": 1775 },
+        { "name": "Kaynardzha", "validFrom": 1878, "validTo": 1961 }
+      ],
+      "validFrom": 1774,
+      "validTo": 1775,
+      "type": "settlement",
+      "subtype": "treaty-site",
+      "parentPolityId": "polity:osmanli-devleti",
+      "parentRegionId": null,
+      "importance": 3,
+      "minZoom": 4,
+      "sourceIds": [
+        "tdv-kucuk-kaynarca-2002",
+        "wikidata-cc0"
+      ],
+      "sourceEntityId": "Q2346358",
+      "geometryMethod": "external-cc0-point-with-academic-history-reference",
+      "confidence": "high",
+      "boundaryCertainty": "not-applicable-point",
+      "coverageStatus": "mapped-point-only",
+      "certainty": "documented-treaty-site",
+      "publicationStatus": "published",
+      "reviewStatus": "reviewed",
+      "summary": "1768–1774 Osmanlı–Rus Savaşı'nı sona erdiren antlaşmanın imzalandığı Dobruca yerleşimi.",
+      "learningGoal": "Antlaşma yerini, değişen siyasî statülerden ve sınır geometrisinden ayırmak.",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [27.506482, 43.992962]
+      }
+    }
+  ],
+  "events": [
+    {
+      "id": "event:kucuk-kaynarca-1774",
+      "nameTr": "Küçük Kaynarca Antlaşması",
+      "sourceName": "Treaty of Küçük Kaynarca",
+      "validFrom": 1774,
+      "validTo": 1775,
+      "eventDate": {
+        "from": "1774-07-21",
+        "to": "1774-07-26",
+        "precision": "disputed-day-range"
+      },
+      "type": "event",
+      "subtype": "treaty",
+      "parentPolityId": "polity:osmanli-devleti",
+      "relatedEntityIds": [
+        "settlement:kucuk-kaynarca"
+      ],
+      "importance": 3,
+      "minZoom": 3.4,
+      "sourceIds": [
+        "tdv-kucuk-kaynarca-2002",
+        "wikidata-cc0"
+      ],
+      "sourceEntityId": "Q123227",
+      "geometryMethod": "external-cc0-event-point",
+      "confidence": "high",
+      "boundaryCertainty": "not-applicable-point",
+      "coverageStatus": "mapped-point-only",
+      "certainty": "documented-event-date-disputed-within-days",
+      "publicationStatus": "published",
+      "reviewStatus": "reviewed",
+      "summary": "Osmanlı Devleti ile Rusya arasındaki savaş sona erdi; Kırım Osmanlı'ya bağlı statüsünden çıkarılarak bağımsız hanlık kabul edildi.",
+      "cause": "1768–1774 Osmanlı–Rus Savaşı ve Osmanlı askerî yenilgileri.",
+      "development": "Metin 21 Temmuz'da imzalandı; farklı çağdaş kayıtlar ve teâti tarihi nedeniyle 21–26 Temmuz tarihlendirmesi birlikte açıklanır.",
+      "result": "Kırım'ın siyasî bağımsızlığı tanındı; Kerç, Yenikale ve Kılburun dâhil bazı noktalar Rusya'ya bırakıldı.",
+      "historicalImportance": "Rusya'nın Karadeniz siyasetindeki yükselişini ve Osmanlı–Kırım bağlılık ilişkisinin değişimini gösterir.",
+      "sides": [
+        "Osmanlı Devleti",
+        "Rus İmparatorluğu"
+      ],
+      "warning": "Olay noktası ve antlaşma hükümleri kaynaklıdır; haritadaki 1783 siyasî polygonu 1774 sınırının kanıtı değildir.",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [27.506482, 43.992962]
+      }
+    }
+  ],
+  "routes": []
+}

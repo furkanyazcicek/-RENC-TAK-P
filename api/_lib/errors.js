@@ -15,6 +15,7 @@ const MESSAGES = {
   unauthenticated: 'Oturumun sona ermiş görünüyor. Sayfayı yenileyip tekrar giriş yapar mısın?',
   profile_missing: 'Profilin bulunamadı. Sayfayı yenileyip tekrar dener misin?',
   student_only: 'AI Koç şu an yalnızca öğrenci hesaplarında kullanılabiliyor.',
+  teacher_only: 'Bu ders düzenleme işlemi yalnızca öğretmen hesabıyla yapılabilir.',
   not_configured: 'AI Koç henüz yapılandırılmamış. Öğretmeninle iletişime geçebilirsin.',
   rate_limited: 'Bugünlük AI Koç kullanım sınırına ulaştın. Biraz sonra tekrar deneyebilirsin.',
   rate_limited_hour: 'Kısa sürede çok fazla soru sordun. Birkaç dakika sonra tekrar deneyebilirsin.',

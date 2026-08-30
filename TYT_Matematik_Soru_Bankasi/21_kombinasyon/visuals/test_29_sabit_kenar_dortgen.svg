@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="440" viewBox="0 0 760 440" role="img" aria-labelledby="title desc">
+  <title id="title">Sabit kenarlı dörtgen</title>
+  <desc id="desc">Sekiz noktalı çemberde ardışık iki nokta kırmızı kenar olarak vurgulanmıştır.</desc>
+  <rect width="760" height="440" rx="24" fill="#f8fafc"/>
+  <circle cx="380" cy="220" r="160" fill="none" stroke="#64748b" stroke-width="4"/>
+  <polygon points="380,60 493,107 538,220 493,333 380,380 267,333 222,220 267,107" fill="none" stroke="#cbd5e1" stroke-width="3"/>
+  <line x1="380" y1="60" x2="493" y2="107" stroke="#dc2626" stroke-width="9" stroke-linecap="round"/>
+  <g fill="#334155" stroke="#ffffff" stroke-width="3">
+    <circle cx="380" cy="60" r="11"/><circle cx="493" cy="107" r="11"/><circle cx="538" cy="220" r="11"/><circle cx="493" cy="333" r="11"/>
+    <circle cx="380" cy="380" r="11"/><circle cx="267" cy="333" r="11"/><circle cx="222" cy="220" r="11"/><circle cx="267" cy="107" r="11"/>
+  </g>
+</svg>

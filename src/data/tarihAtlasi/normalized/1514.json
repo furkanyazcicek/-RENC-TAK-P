@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 3,
+  "sliceId": "caldiran-1514",
+  "sliceYear": 1514,
+  "title": "1514 Çaldıran Savaşı kanıt dilimi",
+  "publicationStatus": "reviewed-slice",
+  "scopeNote": "Bu paket olay konumunu sunar; savaş sonrası sınır değişimini poligon olarak türetmez.",
+  "validFrom": 1514, "validTo": 1515,
+  "sourceIds": ["tdv-caldiran-1993", "wikidata-cc0"],
+  "administrativeRegions": [], "settlements": [],
+  "events": [{
+    "id": "event:caldiran-1514", "nameTr": "Çaldıran Savaşı", "sourceName": "Battle of Chaldiran",
+    "validFrom": 1514, "validTo": 1515, "type": "event", "subtype": "battle", "importance": 3, "minZoom": 3.2,
+    "sourceIds": ["tdv-caldiran-1993", "wikidata-cc0"], "sourceEntityId": "Q745110",
+    "geometryMethod": "external-cc0-event-point-with-academic-reference", "confidence": "medium", "boundaryCertainty": "not-applicable-point", "coverageStatus": "mapped-point-only", "reviewStatus": "reviewed",
+    "eventDate": { "from": "1514-08-23", "to": "1514-08-23", "precision": "day" },
+    "summary": "Yavuz Sultan Selim ile Şah İsmail kuvvetlerinin karşılaştığı Osmanlı–Safevî savaşı.",
+    "sides": ["Osmanlı Devleti", "Safevî Devleti"],
+    "warning": "Nokta yaklaşık olay bağlamıdır; savaş alanı veya 1514 siyasî sınırı değildir.",
+    "geometry": { "type": "Point", "coordinates": [44.326997222222, 39.088852777778] }
+  }], "routes": []
+}

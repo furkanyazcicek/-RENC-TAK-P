@@ -1,14 +1,27 @@
-# Dr. Koç — Aurora Gradient Design System
+# DRKOÇ Tasarım Sistemi
 
-Bu doküman, arayüzün **neden** böyle göründüğünü ve yeni bir ekran eklerken
-neyi nereden çağıracağınızı anlatır. Amaç: her sayfanın kendi stilini
-uydurması yerine tek bir görsel dili paylaşması.
+Bu doküman, DRKOÇ ana ürününün ve bütün etkileşimli eğitim atlaslarının
+uygulamaya dönük görsel standardıdır. Arayüzün **neden** böyle göründüğünü,
+hangi değerin nereden çağrılacağını ve ortak dilin derslere göre nasıl
+uyarlanacağını anlatır.
 
-Görsel kimlik:
-**Aurora Gradient × Premium SaaS × Subtle Glass × Bento**
+Ürün yönü:
+**Premium eğitim ortamı × sakin kesinlik × öğrenme nesnesi merkezli etkileşim**
+
+Aurora gradyanı mevcut marka mirasıdır; kimliğin tamamı değildir. Ana üründe
+ölçülü vurgu olarak kullanılır. Atlaslarda konuya özgü semantik renk ve sahne
+dili kullanılabilir. Ürün ailesi; tipografi, boşluk ritmi, kontrol kalitesi,
+durum davranışı, erişilebilirlik ve görsel ölçülülük üzerinden birleşir.
+
+DRKOÇ zeki, sofistike, modern, sakin, tutarlı ve yüksek etkileşimli
+hissetmelidir. Genel SaaS gösterge paneli, yönetim paneli, Bootstrap şablonu,
+rastgele kart koleksiyonu veya jenerik yapay zekâ sitesi gibi görünmemelidir.
 
 > Kısa kural: **Renk, ölçü veya gölge değeri yazmadan önce burada karşılığı
 > var mı diye bakın.** Yoksa token ekleyin, satır içine hex yazmayın.
+
+> Atlas kuralı: **Öğrenme nesnesi kahramandır.** Arayüz, öğrencinin anlaması
+> gereken nesneye, sürece veya ilişkiye alan açar; onunla yarışmaz.
 
 ---
 
@@ -19,14 +32,21 @@ tailwind.config.js      → token tanımları (renk, tipografi, gölge, animasyo
 src/index.css           → CSS değişkenleri + temel stiller + .card/.input-base gibi kalıplar
 src/lib/navigation.js   → gezinme haritası (sidebar, alt çubuk, profil menüsü tek kaynaktan)
 src/lib/chartTheme.js   → grafik paleti ve Recharts ortak ayarları
-src/components/ui/*     → yeniden kullanılabilir bileşenler (Button, Card, Modal…)
+src/components/ui/*     → yeniden kullanılabilir ürün bileşenleri (Button, Card, Modal…)
 src/components/*        → uygulamaya özel bileşenler (bunlar ui/ üzerine kurulur)
-src/pages/*             → ekranlar (bunlar AppShell + ui/ üzerine kurulur)
+src/pages/*             → standart ekranlar AppShell + ui/; atlaslar içerik odaklı özel kabuk kullanabilir
+src/styles/*-atlasi.css → konuya özgü ve kök sınıf altında kapsamlı atlas sahneleri
+src/styles/atlas-ortak.css → yalnızca gerçekten ortak olan atlas kabuk davranışı
 ```
 
-Bir değişikliğin doğru yeri hep en üst katmandır: bir rengi düzeltmek
+Bir değişikliğin doğru yeri mümkün olan en ortak katmandır: bir rengi düzeltmek
 gerekiyorsa `src/index.css` içindeki değişken, bir düğmenin görünümünü
 değiştirmek gerekiyorsa `ui/Button.jsx`.
+
+Atlaslarda konu semantiğini genel ürün belirtecine zorla taşıma. Örneğin vektör,
+enerji, molekül türü veya tarihsel katman rengi yalnız o atlasın kapsamlı
+değişkeni olabilir. Ortak kontrol davranışı ise atlas dosyaları arasında kopya
+değerlerle değil, ortak kabuk veya aynı rol ölçeğiyle kurulmalıdır.
 
 ---
 
@@ -156,11 +176,11 @@ import { Button, Card, GlassCard, Field, Input, Badge, EmptyState } from '../com
 
 | Bileşen | Ne zaman |
 |---|---|
-| `AppShell` | **Her iç sayfa.** Aurora zemin + sidebar + üst şerit + mobil alt gezinme + genişlik + yüklenme durumunu tek yerde çözer |
+| `AppShell` | **Standart ürün iç sayfaları.** Aurora zemin + sidebar + üst şerit + mobil alt gezinme + genişlik + yüklenme durumunu tek yerde çözer. Tam ekran/deneysel atlas kabuğu için zorunlu değildir |
 | `AuroraBackground` | Sayfa/hero/panel arka plan ışığı |
 | `Sidebar` / `MobileNav` | Gezinme (lg+ sidebar, altında alt çubuk + çekmece). İkisi de `lib/navigation.js`'ten beslenir |
 | `PageSection` | Sayfa içi başlıklı bölüm |
-| `Card` + `CardHeader/Body/Footer` | Her panel, form, liste kutusu |
+| `Card` + `CardHeader/Body/Footer` | Gerçekten bağımsız yüzey isteyen panel, form veya liste grubu; her içerik parçasının varsayılanı değildir |
 | `GlassCard` / `GradientCard` / `OutlineCard` / `HighlightCard` | Kart hiyerarşisinin diğer kademeleri (aşağıya bakın) |
 | `Button` / `IconButton` | Tüm aksiyonlar. `variant`: primary / secondary / glass / subtle / ghost / danger / success / link |
 | `Field` + `Input` / `Textarea` / `Select` | Tüm form alanları (etiket, ipucu, hata tek düzende) |
@@ -179,7 +199,12 @@ import { Button, Card, GlassCard, Field, Input, Badge, EmptyState } from '../com
 | `ProgressBar` | Tamamlama/hedef oranları |
 | `Logo` | Marka işareti + kelime markası |
 
-### Kart hiyerarşisi — her kartı cam yapmayın
+### Yüzey ve kart hiyerarşisi
+
+Kart varsayılan düzen aracı değildir. Önce boşluk, yakınlık, başlık, hizalama ve
+tipografiyle grupla. İçerik bağımsız bir zemin, sınır, seçilebilir bütün veya
+katman gerektiriyorsa kart kullan. Kart içinde kart kullanma; iç bölümleri
+ayraç, boşluk veya zemin tonu ile ayır.
 
 | Varyant | Görünüm | Ne zaman |
 |---|---|---|
@@ -191,7 +216,10 @@ import { Button, Card, GlassCard, Field, Input, Badge, EmptyState } from '../com
 
 Hiyerarşi buradan doğar. Hepsi cam olursa hiçbiri öne çıkmaz.
 
-### Yeni bir sayfa iskeleti
+### Yeni bir standart ürün sayfası iskeleti
+
+Bu iskelet panel, kütüphane ve form gibi standart ürün sayfaları içindir.
+Atlas, harita, simülasyon, zaman çizelgesi veya 3B sahneye otomatik uygulanmaz.
 
 ```jsx
 import { AppShell, PageSection, Card, CardBody, EmptyState } from '../components/ui'
@@ -239,7 +267,7 @@ Kurallar:
 
 ## 9) Erişilebilirlik ve mobil
 
-Altyapıya gömülü olanlar — ayrıca uğraşmanız gerekmez:
+Altyapıda karşılığı bulunanlar — yeni veya özel bileşende çalıştığını yine de doğrulayın:
 
 - Klavye odağı her yerde görünür (`:focus-visible` global halka)
 - `prefers-reduced-motion` açıksa animasyonlar kapanır (Aurora dahil)
@@ -268,8 +296,244 @@ tablo olan kart, sütununu zorla genişletip sayfayı yatay kaydırır ve
 - Yeni gölge/köşe değeri uydurmak — `shadow-card`, `rounded-card` var
 - Gradienti her elemente uygulamak (bkz. bölüm 3)
 - Her kartı cam yapmak (bkz. kart hiyerarşisi)
+- Her bilgi grubunu karta dönüştürmek veya kart içinde kart kullanmak
+- Öğrenme aracını genel bir SaaS paneli iskeletine zorlamak
+- Bütün atlaslara sol kenar çubuğu + merkez + sağ panel düzeni dayatmak
+- Kontrol panellerini öğrenme nesnesinden daha büyük veya daha yüksek kontrastlı yapmak
+- Gereksiz dekoratif blob, blur, gölge, kenarlık ve yuvarlak kap yığmak
+- Konuya özgü deney dilini yalnız renk değiştirerek üretmeye çalışmak
 - Durum renklerini seri rengi olarak kullanmak
 - `alert()` ile geri bildirim vermek — `useToast()` var
 - Sayfa iskeletine `transform` / `filter` uygulamak: içindeki
   `position: fixed` öğeler (Modal, Toast, ImageLightbox) ekrana değil o
   öğeye göre konumlanır ve erişilemez hâle gelir
+
+---
+
+## 11) Hiyerarşi standardı
+
+Her önemli ekran veya atlas durumu için dört seviye belirleyin:
+
+| Seviye | Rol | Tipik örnek |
+|---|---|---|
+| **Birincil** | İlk fark edilecek ve üzerinde çalışılacak şey | Öğrenme nesnesi, ana görev, kritik sonuç |
+| **İkincil** | Birincil işi değiştiren veya açıklayan şey | Temel kontrol, ölçüm, kısa bağlamsal açıklama |
+| **Üçüncül** | Gerektiğinde çağrılan ayrıntı | Kaynak, gelişmiş ayar, karşılaştırma, açıklama paneli |
+| **Yardımcı** | Sistem ve gezinme işlevi | Geri dön, tema, sıfırla, paylaş, yardım |
+
+Hiyerarşiyi şu sırayla çözün:
+
+1. Konum ve kullanılan alan.
+2. Ölçek ve tipografi.
+3. Boşluk, yakınlık ve hizalama.
+4. Kontrast ve renk.
+5. Gerekliyse yüzey, kenarlık veya gölge.
+
+Birincil içerik küçük bir kartta kalırken yardımcı kontroller ekranı çevreliyorsa
+hiyerarşi ters kurulmuştur. Çok sayıda eşit büyüklükte kutu, öğrencinin neye
+bakacağını seçmesini zorlaştırır.
+
+## 12) Boşluk, yoğunluk ve oran
+
+Tailwind'in 4 px tabanlı ölçeğini kullanın. Yeni keyfî değer üretmeden önce
+mevcut ölçeğin optik olarak yeterli olup olmadığını kontrol edin.
+
+- Aynı mikro grubun öğeleri çoğunlukla 4–8 px aralıkla bağlanır.
+- Bir kontrol grubu veya kart içi bölümler çoğunlukla 12–20 px aralıkla ayrılır.
+- Bağımsız sayfa bölümleri çoğunlukla 24–48 px nefes ister.
+- Başlık ile açıklaması, açıklama ile sonraki bölüm arasından daha yakın olmalıdır.
+- Değişen sayılar `tabular-nums` kullanır; güncellenirken yerleşim zıplamaz.
+- Türkçe başlık ve düğmeler için sabit tek satır yüksekliği varsaymayın. Metin
+  sarılmalı, kısalmalı veya dar ekranda simge + erişilebilir ada dönüşmelidir.
+
+Atlaslarda oranı öğrenme nesnesinden başlatın. Kontroller genişliğin çoğunu
+kaplıyorsa kalıcı görünmeleri gerekip gerekmediğini yeniden değerlendirin.
+
+## 13) Kontroller, paneller ve gezinme
+
+### Kontroller
+
+- Temel dokunma alanı en az 40×40 px, dokunma ağırlıklı ana eylemlerde tercihen
+  44×44 px'tir.
+- Simge düğmesi görünür ipucu veya erişilebilir ad taşır.
+- Birincil eylem sayısı aynı bağlamda mümkünse birdir. İkincil eylemler sakin
+  yüzey veya hayalet varyant kullanır.
+- Seçim denetimi seçili durumunu yalnız renkle değil dolgu, işaret, konum veya
+  metinle de bildirir.
+- Sürgü, zaman çizelgesi ve sürükleme alanı anlık değeri ve sınırları gösterir.
+- Tehlikeli sıfırlama/silme işlemi yanlış dokunmaya karşı korunur; ancak sürekli
+  kırmızı bir görsel alarm olarak sahneyi domine etmez.
+
+### Paneller
+
+Panel; içerik gerçekten ayrı bir çalışma alanı, denetçi, seçim listesi veya
+geçici bağlam gerektiriyorsa kullanılır. Her olası ayarı sürekli açık tutmayın.
+Bağlamsal denetçi, açılır ayrıntı, çekmece, alt sayfa ve aşamalı açılımı
+değerlendirin.
+
+### Gezinme
+
+- Standart ürün sayfaları `AppShell` ve `src/lib/navigation.js` kaynağını kullanır.
+- Atlas içinde gezinme, konu haritası, bölüm listesi, rota, arama veya zaman
+  çizelgesi olabilir. İçeriğin yapısını yansıtmayan genel menü eklemeyin.
+- Öğrenci atlasın içinde sıkışmamalı; platforma veya kütüphaneye dönüş her cihazda
+  erişilebilir olmalıdır.
+- Tarayıcı geri/ileri davranışı ve paylaşılabilir URL parametreleri görünür atlas
+  durumuyla senkron kalmalıdır.
+
+## 14) Etkileşim durumları
+
+İlgili durumları tasarım, uygulama ve QA sırasında açıkça kontrol edin:
+
+| Durum | Görsel/işitsel beklenti |
+|---|---|
+| Hover | Tıklanabilirliği destekler; tek bilgi kanalı değildir |
+| Klavye odağı | Yüksek görünürlükte, kesilmeyen odak halkası |
+| Basılı/aktif | Kısa dokunsal geri bildirim; yerleşim sıçraması yok |
+| Seçili | Kalıcı ve renk dışı bir işaret |
+| Yükleniyor | Ne hazırlandığını söyleyen sakin durum; sahte ilerleme yok |
+| Devre dışı | Neden kullanılamadığını bağlam gerektiğinde açıklar |
+| Hata | Sorunu, etkisini ve sonraki adımı Türkçe anlatır |
+| Boş | Kullanıcıyı anlamlı ilk eyleme yönlendirir |
+| Sürükleniyor | Tutulan nesne, hedef ve geçersiz alan okunur |
+| Yakınlaştırılıyor | Ölçek/konum kaybını önleyen bağlam korunur |
+| Oynatılıyor | Oynat/duraklat, zaman, hız ve bitiş durumu görünür |
+
+Animasyon 150–300 ms kontrol geçişleri için mevcut ölçeği kullanır. Bilimsel veya
+mekânsal süreç animasyonu gerçek kavram süresiyle birebir olmak zorunda değildir;
+ölçeklendirme yapılıyorsa öğrenciye yanlış zaman algısı vermemelidir.
+
+## 15) Atlas deney türü seçimi
+
+Atlas tasarımından önce ders, düzey, öğrenme hedefi, birincil öğrenme nesnesi,
+ana kullanıcı eylemi, neden-sonuç, mekânsal gereksinim, bilgi yoğunluğu ve keşif
+modeli belirlenir.
+
+| Öğrenme ihtiyacı | Uygun başlangıç düzenleri | Kaçınılacak refleks |
+|---|---|---|
+| Parametre → sonuç | Simülasyon çalışma alanı, alt/bağlamsal kontroller | Her değişkeni kalıcı yan panele yığmak |
+| Mekânsal konum/katman | Tam ekran harita veya 3B sahne, açılır katmanlar | Haritayı küçük karta hapsetmek |
+| Zaman içinde değişim | Zaman çizelgesi + sahne/harita, oynatma | Olayları yalnız kart listesi yapmak |
+| İki model arasındaki fark | Bölünmüş karşılaştırma, senkron kontroller | Ayrı sayfalarda hafızaya dayalı karşılaştırma |
+| Yapı–işlev ilişkisi | Katmanlı diyagram, mercek, kesit | Uzun statik açıklama |
+| Matematiksel ilişki | Grafik + ifade + doğrudan manipülasyon | Sonucu yalnız sayı olarak göstermek |
+| İnşa ve kısıt | Geniş tuval, bağlamsal araçlar, ölçüm | Sabit form ve “hesapla” düğmesine indirgemek |
+| Yanlış kavrama düzeltme | Tahmin → dene → gözle → açıkla → aktar | İlk anda bütün cevabı göstermek |
+
+Bu tablo başlangıç noktasıdır. İçerik başka bir deney modeli gerektiriyorsa onu
+seçin. Ürün tutarlılığı, bütün atlasların aynı kabuğa sahip olması demek değildir.
+
+## 16) Derslere göre uyarlama
+
+Konuya özgü tasarım, dekoratif tema değil öğrenme semantiğidir:
+
+- **Fizik:** deney, hareket, kuvvet, dalga, alan ve ölçüm. Vektör, enerji ve
+  ölçüm renkleri anlam taşır; sahneyle grafik aynı zamanı paylaşır.
+- **Kimya:** atom, molekül, bağ, orbital, tanecik ve tepkime. Makro gözlem ile
+  mikro model arasındaki geçiş açık olmalıdır.
+- **Biyoloji:** hücre, canlı, sistem, süreç ve ölçek. Yapı, işlev ve sistemler
+  arası etkileşim birlikte görünür.
+- **Anatomi:** organ, komşuluk, yön, katman, kesit ve 3B mekân. İzole etme,
+  döndürme ve görünürlük kontrolleri sahneye yakın olmalıdır.
+- **Matematik:** grafik, fonksiyon, değişken, dönüşüm ve problem. Sembolik,
+  sayısal ve görsel temsiller senkron güncellenir.
+- **Geometri:** şekil, inşa, ölçü, dönüşüm ve değişmezler. Doğrudan sürükleme
+  hangi kısıtın korunduğunu gösterir.
+- **Coğrafya:** harita, arazi, ölçek, katman, dağılış ve ilişki. Seçim ile kanıt
+  arasındaki coğrafi bağ kaybolmaz.
+- **Astronomi:** gök cismi, yörünge, ölçek, zaman ve bakış noktası. Gerçek dışı
+  ölçek sıkıştırması açıkça belirtilir.
+- **Tarih:** zaman, harita, kişi, olay, neden-sonuç ve kaynak. Zaman seçimi ile
+  mekânsal katmanlar birbirini günceller.
+- **Yer bilimleri:** katman, kesit, döngü ve uzun zaman ölçeği. Görünmeyen süreç
+  kontrollü kesit ve aşamalı animasyonla açıklanır.
+
+Yeni bir ders için önce öğrencinin zihninde kurulması gereken modeli belirleyin;
+sonra bu bölümdeki mantıkla ona özgü deney dilini çıkarın.
+
+## 17) Görselleştirme teknolojileri
+
+Depodaki mevcut tercihleri ve sınırları koruyun:
+
+- React 18 + Vite ana çalışma yapısıdır.
+- Tailwind ve `src/index.css` genel ürün stil katmanıdır.
+- Atlasa özgü stiller kök sınıf altında kapsamlı CSS dosyalarında tutulur.
+- SVG, fizik/kimya/biyoloji/coğrafya deneylerinde sınırlı sayıda etkileşimli
+  öğe için mevcut güçlü varsayımdır.
+- MapLibre, tarih atlasındaki kaydırma/yakınlaştırma, katman ve tarih süzgeci için kullanılır.
+- Tarih atlasındaki siyasî dolgular `src/lib/tarihAtlasi/siyasiRenkler.js`
+  paletinden gelir. `ton` tematik aileyi, paketleyicinin ürettiği
+  `renkIndeksi` ise ortak sınırlı yapıları ayıran sunum rengini belirler;
+  ülke bazında satır içi renk eklenmez.
+- Recharts ve `src/lib/chartTheme.js`, standart ürün grafiklerinin ortak yoludur.
+- Canvas çizim yoğunluğu gerektirdiğinde uygundur; erişilebilir kontrol ve sonuç
+  katmanı ayrıca sağlanmalıdır.
+- WebGL veya yeni 3B kütüphane yalnızca gerçek derinlik, kesit, döndürme veya
+  sahne yoğunluğu öğrenme hedefi için gerekliyse eklenir; görsel süs için değil.
+
+Yüksek frekanslı simülasyonlarda gereksiz React yeniden çizimini, dev SVG DOM'unu,
+sürekli yerleşim ölçümünü, görünmeyen sahnede çalışan kare döngüsünü, pahalı blur ve
+filtreleri, büyük başlangıç paketlerini sınırlayın. Konu modüllerini mevcut atlaslar
+gibi gerektiğinde tembel yükleyin.
+
+## 18) Responsive atlas davranışı
+
+Atlası masaüstünden telefona orantılı küçültmeyin:
+
+- **Masaüstü:** geniş öğrenme sahnesi ve aynı anda görünen temel bağlam.
+- **Tablet:** katlanabilir denetçi, sadeleştirilmiş araçlar, sahne çevresi veya alt
+  kontrol şeridi.
+- **Telefon:** tek odak modu, çekmece/alt sayfa, büyük dokunma hedefleri ve az
+  kalıcı arayüz kromu.
+
+Temel öğrenme eylemi her boyutta yapılabilmelidir. Hover'a bağımlı açıklama
+kullanmayın. Harita/sahne sürükleme ile sayfa kaydırma çatışmasını çözün. Alt
+gezinmede güvenli alanı, sanal klavyeyi, yatay taşmayı ve cihaz yönünü kontrol edin.
+
+Önerilen görsel QA boyutları, göreve göre uyarlanmak üzere 375 px telefon,
+768 px tablet ve 1440 px masaüstüdür. Bunlar sabit destek matrisi değil, yaygın
+kırılmaları yakalayan kontrol noktalarıdır.
+
+## 19) Eğitimsel erişilebilirlik
+
+Genel WCAG ilkelerine ek olarak:
+
+- Karmaşık sahnenin güncel sonucunu kısa metin veya ölçümle de sunun.
+- Renk kodunu şekil, desen, etiket veya konumla destekleyin.
+- Temel sürükleme eylemine klavye veya eşdeğer denetim sağlayın.
+- Açılan denetçi/çekmece odağı yönetir ve kapanınca başlatana geri verir.
+- Sahne açıklaması durum değiştikçe anlamlı biçimde güncellenir; her animasyon
+  karesini ekran okuyucuya duyurmayın.
+- Ölçek, model varsayımı, veri belirsizliği ve tarihsel/bilimsel kaynak sınırı
+  öğrenme için önemliyse görünür olmalıdır.
+- Görsel güzellik, kavram doğruluğu veya okunabilirlik pahasına kurulmaz.
+
+## 20) Görsel geliştirme ve kabul
+
+Önemli ön yüz veya atlas görevinde, ortam desteklediğinde:
+
+1. İlgili uygulamayı çalıştırın ve gerçek rotayı açın.
+2. Değişiklik öncesi render'i inceleyin; en büyük hiyerarşi, oran, etkileşim ve
+   eğitimsel netlik sorunlarını belirleyin.
+3. Yapıyı ve hiyerarşiyi uygulayın.
+4. Yeniden yükleyin; ana kullanıcı/öğrenme eylemini gerçekten yapın.
+5. Render'i hedefle karşılaştırın; jenerik, kalabalık, oransız veya tesadüfi
+   görünen alanları düzeltin.
+6. Gerektiğinde görsel inceltme, etkileşim ve responsive/erişilebilirlik
+   geçişleri yapın.
+7. Derleme ve ilgili testlere ek olarak son ekranı tekrar görsel olarak kabul edin.
+
+Kaynak kod incelemesi, TypeScript/derleme başarısı ve testler gereklidir; ancak
+görsel kabulün yerine geçmez. Tarayıcı veya ekran görüntüsü aracı yoksa bu
+sınırlamayı raporlayın ve görsel sonucu doğrulanmış gibi sunmayın.
+
+Son kabulte şu soruların yanıtı olumlu olmalıdır:
+
+- İlk bakışta doğru nesne veya görev öne çıkıyor mu?
+- Kontroller keşfedilebilir ama geri planda mı?
+- Neden-sonuç ve durum değişimi okunuyor mu?
+- Türkçe metinler taşmadan ve hiyerarşiyi bozmadan yerleşiyor mu?
+- Mobil deney gerçekten kullanılabilir mi?
+- Klavye, odak, kontrast, dokunma ve azaltılmış hareket korunuyor mu?
+- Ekran DRKOÇ ailesine ait ama konuya özgü mü?
+- Gereksiz kart, cam, gradyan, kenarlık, gölge ve dekorasyon ayıklandı mı?

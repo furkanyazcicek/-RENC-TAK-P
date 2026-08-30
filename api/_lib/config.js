@@ -40,6 +40,23 @@ export const config = {
   /** Sohbet başlığı üretmek gibi ucuz işler için kullanılan küçük model. */
   utilityModel: process.env.AI_UTILITY_MODEL || process.env.AI_MODEL || 'gpt-4o-mini',
 
+  /**
+   * Ders içeriği üretimi için kullanılan model.
+   *
+   * Bilinçli olarak `utilityModel`'den AYRI: bir ders bölümü yazmak,
+   * sohbete başlık koymakla aynı iş değil. Küçük model burada yüzeysel,
+   * madde madde ve "AI özeti" tadında metin üretiyor — projede en çok
+   * kaçınmak istediğimiz şey tam olarak bu (bkz. DrKoç spesifikasyonu §54).
+   *
+   * Ders üretimi öğrenci başına değil, konu başına BİR KEZ yapılır ve
+   * sonuç cache'lenir; bu yüzden burada güçlü model kullanmanın toplam
+   * maliyeti düşüktür.
+   */
+  lessonModel: process.env.AI_LESSON_MODEL || process.env.AI_MODEL || 'gpt-4o',
+
+  /** Tek bir ders bölümü üretimi için token tavanı. */
+  lessonMaxOutputTokens: num(process.env.AI_LESSON_MAX_OUTPUT_TOKENS, 5000),
+
   temperature: Number(process.env.AI_TEMPERATURE ?? 0.6),
 
   /** Tek bir cevabın üretebileceği azami token — maliyet tavanı. */

@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "schemaVersion": 3,
+    "kind": "historical-detail-slice",
+    "sliceId": "caldiran-1514",
+    "sliceYear": 1514,
+    "title": "1514 Çaldıran Savaşı kanıt dilimi",
+    "publicationStatus": "reviewed-slice",
+    "scopeNote": "Bu paket olay konumunu sunar; savaş sonrası sınır değişimini poligon olarak türetmez.",
+    "validFrom": 1514,
+    "validTo": 1515,
+    "sourceIds": [
+      "tdv-caldiran-1993",
+      "wikidata-cc0"
+    ],
+    "geometryPolicy": "Ayrıntı dilimleri siyasi sınır üretmez. Her geometri kendi yöntem, kesinlik, kapsam ve uyarı alanını taşır.",
+    "coverage": {
+      "administrative": "not-published",
+      "settlements": "not-published",
+      "events": "1 kaynaklı olay",
+      "routes": "not-published"
+    },
+    "sources": [
+      {
+        "id": "tdv-caldiran-1993",
+        "title": "Çaldıran Savaşı",
+        "creatorOrInstitution": "Mustafa Çetin Varlık / TDV İslâm Araştırmaları Merkezi",
+        "publicationDate": 1993,
+        "representedYears": "1514",
+        "url": "https://islamansiklopedisi.org.tr/caldiran-savasi",
+        "accessedAt": "2026-08-27",
+        "referenceLocation": "cilt 8, s. 193–195",
+        "geographicCoverage": "Çaldıran ovası ve Osmanlı–Safevî bağlamı",
+        "scaleOrResolution": "Olay bağlamı",
+        "sourceType": "academic-reference",
+        "license": {
+          "name": "Telifli başvuru kaynağı",
+          "url": "https://islamansiklopedisi.org.tr/telif-haklari",
+          "status": "reference-only",
+          "commercialUse": null,
+          "redistribution": "not-used",
+          "notes": "Metin veya harita yeniden dağıtılmaz."
+        },
+        "useStatus": "reference-only",
+        "geometryEligible": false,
+        "proves": "23 Ağustos 1514 Çaldıran Savaşı'nın tarihini, taraflarını ve sonuç bağlamını destekler.",
+        "limitations": "Kesin savaş alanı poligonu veya siyasî sınır sağlamaz.",
+        "confidence": "high"
+      },
+      {
+        "id": "wikidata-cc0",
+        "title": "Wikidata koordinat kayıtları",
+        "creatorOrInstitution": "Wikimedia Foundation ve Wikidata katkıcıları",
+        "publicationDate": null,
+        "representedYears": "Kayıt bazında",
+        "url": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "accessedAt": "2026-08-27",
+        "referenceLocation": "Feature içindeki sourceEntityId",
+        "geographicCoverage": "Küresel",
+        "scaleOrResolution": "Nokta kaydına göre değişir",
+        "sourceType": "external-vector-point",
+        "license": {
+          "name": "CC0 1.0",
+          "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "status": "open",
+          "commercialUse": true,
+          "redistribution": "allowed",
+          "notes": "Her noktanın tarihsel yorum ve sürekliliği ayrı akademik kaynak gerektirir."
+        },
+        "useStatus": "production",
+        "geometryEligible": true,
+        "proves": "Yerleşim veya olay kaydının WGS84 nokta konumunu sağlar; siyasî sınır kanıtı değildir.",
+        "limitations": "Topluluk üretimidir; tarihsel kimlik ve tarihlendirme tek başına bu kaynağa bırakılamaz.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "administrativeRegions": {
+    "type": "FeatureCollection",
+    "features": []
+  },
+  "settlements": {
+    "type": "FeatureCollection",
+    "features": []
+  },
+  "events": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "id": "event:caldiran-1514",
+        "properties": {
+          "id": "event:caldiran-1514",
+          "nameTr": "Çaldıran Savaşı",
+          "sourceName": "Battle of Chaldiran",
+          "validFrom": 1514,
+          "validTo": 1515,
+          "type": "event",
+          "subtype": "battle",
+          "importance": 3,
+          "minZoom": 3.2,
+          "sourceIds": [
+            "tdv-caldiran-1993",
+            "wikidata-cc0"
+          ],
+          "sourceEntityId": "Q745110",
+          "geometryMethod": "external-cc0-event-point-with-academic-reference",
+          "confidence": "medium",
+          "boundaryCertainty": "not-applicable-point",
+          "coverageStatus": "mapped-point-only",
+          "reviewStatus": "reviewed",
+          "eventDate": {
+            "from": "1514-08-23",
+            "to": "1514-08-23",
+            "precision": "day"
+          },
+          "summary": "Yavuz Sultan Selim ile Şah İsmail kuvvetlerinin karşılaştığı Osmanlı–Safevî savaşı.",
+          "sides": [
+            "Osmanlı Devleti",
+            "Safevî Devleti"
+          ],
+          "warning": "Nokta yaklaşık olay bağlamıdır; savaş alanı veya 1514 siyasî sınırı değildir."
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            44.326997222222,
+            39.088852777778
+          ]
+        }
+      }
+    ]
+  },
+  "routes": {
+    "type": "FeatureCollection",
+    "features": []
+  }
+}

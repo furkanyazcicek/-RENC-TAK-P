@@ -74,3 +74,30 @@ export async function authenticate(req) {
 
   return { ok: true, user, profile, supabase }
 }
+
+/**
+ * Öğretmene özel, içerik üretim uç noktaları için kimlik doğrulama.
+ * AI Koç'un öğrenci-only davranışını değiştirmez; yeni lesson API'leri
+ * yanlışlıkla öğrenci JWT'siyle çağrılamaz.
+ */
+export async function authenticateTeacher(req) {
+  const token = readBearerToken(req)
+  if (!token) return { ok: false, status: 401, code: 'unauthenticated' }
+
+  const supabase = createClient(config.supabaseUrl, config.supabaseAnonKey, {
+    global: { headers: { Authorization: `Bearer ${token}` } },
+    auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
+  })
+  const { data, error } = await supabase.auth.getUser(token)
+  if (error || !data?.user) return { ok: false, status: 401, code: 'unauthenticated' }
+
+  const { data: profile, error: profileError } = await supabase
+    .from('profiles')
+    .select('id, full_name, role, created_at')
+    .eq('id', data.user.id)
+    .single()
+  if (profileError || !profile) return { ok: false, status: 403, code: 'profile_missing' }
+  if (profile.role !== 'teacher') return { ok: false, status: 403, code: 'teacher_only' }
+
+  return { ok: true, user: data.user, profile, supabase }
+}

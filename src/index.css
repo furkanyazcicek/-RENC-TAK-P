@@ -529,6 +529,1779 @@
   }
 }
 
+/* ==================================================================
+   COĞRAFYA ÖĞRENME GÖRSELLERİ
+   ------------------------------------------------------------------
+   Coğrafya içeriği aynı ders levhasında kalır; bu katman yalnızca
+   mekânsal ilişki, harita noktası ve kesit karşılaştırması ekler.
+   Renkler içerikten değil DrKoç tema tokenlarından gelir.
+   ================================================================== */
+@layer components {
+  .geo-systems {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .geo-systems__stage {
+    position: relative;
+    min-height: 23rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.7rem;
+    background:
+      radial-gradient(circle at 50% 48%, rgb(var(--c-aqua-100) / 0.6), transparent 27%),
+      linear-gradient(145deg, rgb(var(--c-surface)), rgb(var(--c-surface-sunken)));
+  }
+
+  .geo-systems__stage > svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .geo-systems__core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    width: 9.5rem;
+    min-height: 6rem;
+    place-content: center;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .geo-systems__core strong {
+    color: rgb(var(--c-brand-800));
+    font-family: theme('fontFamily.display');
+    font-size: 1.45rem;
+  }
+
+  .geo-systems__core span {
+    margin-top: 0.2rem;
+    color: rgb(var(--c-ink) / 0.55);
+    font-size: 0.66rem;
+    font-weight: 700;
+  }
+
+  .geo-systems__node {
+    position: absolute;
+    display: grid;
+    min-width: 7.8rem;
+    min-height: 3.8rem;
+    align-content: center;
+    border: 1px solid rgb(var(--c-line-strong));
+    border-radius: 0.6rem;
+    background: rgb(var(--c-surface) / 0.92);
+    padding: 0.65rem 0.8rem;
+    color: rgb(var(--c-ink));
+    text-align: start;
+    box-shadow: 0 8px 24px -18px rgb(var(--c-shadow) / 0.35);
+    transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+  }
+
+  .geo-systems__node:hover,
+  .geo-systems__node.is-active {
+    border-color: rgb(var(--c-brand-400));
+    background: rgb(var(--c-brand-50) / 0.96);
+    transform: translateY(-2px);
+  }
+
+  .geo-systems__node:focus-visible,
+  .geo-map__marker:focus-visible,
+  .geo-map__mobile-nav button:focus-visible {
+    outline: 3px solid rgb(var(--c-brand-500) / 0.62);
+    outline-offset: 3px;
+  }
+
+  .geo-systems__node > span,
+  .geo-systems__detail > span,
+  .geo-compare__body > span {
+    color: rgb(var(--c-ink) / 0.45);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .geo-systems__node > strong { font-size: 0.86rem; }
+  .geo-systems__node.is-1 { top: 9%; left: 5%; }
+  .geo-systems__node.is-2 { top: 9%; right: 5%; }
+  .geo-systems__node.is-3 { bottom: 9%; left: 5%; }
+  .geo-systems__node.is-4 { right: 5%; bottom: 9%; }
+  .geo-systems__node.is-5 { bottom: 3%; left: 50%; transform: translateX(-50%); }
+
+  .geo-systems__detail {
+    border-inline-start: 3px solid rgb(var(--c-aqua-500));
+    background: rgb(var(--c-surface-muted));
+    padding: 0.9rem 1rem;
+  }
+
+  .geo-systems__detail > strong { display: block; margin-top: 0.12rem; color: rgb(var(--c-ink)); font-family: theme('fontFamily.display'); }
+  .geo-systems__detail p { margin: 0.25rem 0 0; color: rgb(var(--c-ink) / 0.72); font-size: 0.9rem; line-height: 1.65; }
+  .geo-systems__detail small { display: block; margin-top: 0.45rem; color: rgb(var(--c-aqua-700)); font-weight: 700; }
+
+  .geo-map {
+    border-block: 1px solid rgb(var(--c-line-strong));
+    padding-block: 1.1rem;
+  }
+
+  .geo-map__heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .geo-map__heading strong { display: block; margin-top: 0.2rem; color: rgb(var(--c-ink)); font-family: theme('fontFamily.display'); font-size: 1.1rem; }
+  .geo-map__heading > span { color: rgb(var(--c-ink) / 0.42); font-size: 0.72rem; font-weight: 700; }
+
+  .geo-map__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(15rem, 0.78fr);
+    gap: 0.9rem;
+    align-items: start;
+  }
+
+  .geo-map__canvas {
+    position: relative;
+    min-height: 0;
+    aspect-ratio: 1000 / 520;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.7rem;
+    background: rgb(var(--c-aqua-50));
+  }
+
+  .geo-map__canvas > svg { display: block; width: 100%; height: 100%; min-height: 0; }
+  .geo-map__generated-base { opacity: .9; }
+  .geo-map__ocean { fill: rgb(var(--c-aqua-50) / .16); }
+  .geo-map__grid path { fill: none; stroke: rgb(255 255 255 / 0.2); stroke-dasharray: 3 8; }
+  .geo-map__land path { fill: rgb(var(--c-brand-100) / 0.68); stroke: rgb(255 255 255 / 0.64); stroke-width: 2; }
+
+  .geo-map__marker {
+    position: absolute;
+    display: grid;
+    width: 2.85rem;
+    height: 2.85rem;
+    place-items: center;
+    transform: translate(-50%, -50%);
+    border: 0;
+    border-radius: 9999px;
+    background: transparent;
+  }
+
+  .geo-map__marker > span {
+    display: grid;
+    width: 1.55rem;
+    height: 1.55rem;
+    place-items: center;
+    border: 2px solid rgb(var(--c-surface));
+    border-radius: 9999px;
+    background: rgb(var(--c-brand-700));
+    color: white;
+    font-size: 0.66rem;
+    font-weight: 800;
+    box-shadow: 0 0 0 3px rgb(var(--c-brand-500) / 0.2), 0 5px 10px rgb(var(--c-shadow) / 0.18);
+    transform: scale(1);
+    transition: transform 150ms ease, background-color 150ms ease;
+  }
+
+  .geo-map__marker.is-active > span { background: rgb(var(--c-aqua-700)); box-shadow: 0 0 0 5px rgb(var(--c-aqua-500) / 0.24); transform: scale(1.15); }
+
+  .geo-map__schematic {
+    position: absolute;
+    right: 0.6rem;
+    bottom: 0.5rem;
+    color: rgb(var(--c-ink) / 0.4);
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .geo-map__card {
+    position: relative;
+    min-height: 22rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.7rem;
+    background: rgb(var(--c-surface-muted));
+    padding: 1rem;
+  }
+
+  .geo-map__card-index {
+    position: absolute;
+    top: -1.8rem;
+    right: -0.5rem;
+    color: rgb(var(--c-brand-500) / 0.08);
+    font-family: theme('fontFamily.display');
+    font-size: 8rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .geo-map__card > div:last-child { position: relative; }
+  .geo-map__card > div > span { color: rgb(var(--c-aqua-700)); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+  .geo-map__card h3 { margin: 0.25rem 0 0; color: rgb(var(--c-ink)); font-family: theme('fontFamily.display'); font-size: 1.25rem; line-height: 1.2; }
+  .geo-map__card p { margin: 0.55rem 0 0; color: rgb(var(--c-ink) / 0.68); font-size: 0.86rem; line-height: 1.62; }
+  .geo-map__card dl { margin: 0.75rem 0 0; border-top: 1px solid rgb(var(--c-line)); padding-top: 0.65rem; }
+  .geo-map__card dt { color: rgb(var(--c-ink) / 0.45); font-size: 0.63rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  .geo-map__card dd { margin: 0.18rem 0 0; color: rgb(var(--c-ink) / 0.72); font-size: 0.8rem; line-height: 1.55; }
+
+  .geo-map__exam {
+    margin-top: 0.8rem;
+    border-inline-start: 2px solid rgb(var(--c-warning-500));
+    padding-inline-start: 0.65rem;
+    color: rgb(var(--c-ink) / 0.7);
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .geo-map__exam strong { display: block; color: rgb(var(--c-warning-700)); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .geo-map__mobile-nav { display: none; }
+
+  .geo-compare {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .geo-compare > article {
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.7rem;
+    background: rgb(var(--c-surface));
+  }
+
+  .geo-compare__visual { border-bottom: 1px solid rgb(var(--c-line)); background: rgb(var(--c-surface-sunken)); }
+  .geo-compare__visual svg { display: block; width: 100%; height: auto; }
+  .geo-compare__sky { fill: rgb(var(--c-aqua-50)); }
+  .geo-compare__back { fill: rgb(var(--c-brand-200) / 0.55); stroke: rgb(var(--c-brand-600) / 0.25); }
+  .geo-compare__front { fill: rgb(var(--c-success-500) / 0.3); }
+  .geo-compare__road { fill: none; stroke: rgb(var(--c-ink) / 0.42); stroke-dasharray: 6 5; stroke-width: 4; }
+  .geo-compare__sea { fill: rgb(var(--c-aqua-300) / 0.42); }
+  .geo-compare__plain { fill: rgb(var(--c-success-500) / 0.28); }
+  .geo-compare__river { fill: none; stroke: rgb(var(--c-aqua-600)); stroke-width: 8; }
+  .geo-compare__settlement { fill: rgb(var(--c-brand-600) / 0.48); }
+  .geo-compare__body { padding: 0.9rem 1rem 1rem; }
+  .geo-compare__body h3 { margin: 0.2rem 0 0; color: rgb(var(--c-ink)); font-family: theme('fontFamily.display'); font-size: 1.05rem; }
+  .geo-compare__body p { margin: 0.4rem 0 0; color: rgb(var(--c-ink) / 0.62); font-size: 0.82rem; line-height: 1.6; }
+  .geo-compare__body dl { display: grid; grid-template-columns: 6.8rem 1fr; gap: 0.45rem 0.65rem; margin: 0.8rem 0 0; border-top: 1px solid rgb(var(--c-line)); padding-top: 0.7rem; }
+  .geo-compare__body dt { color: rgb(var(--c-ink) / 0.44); font-size: 0.64rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; }
+  .geo-compare__body dd { margin: 0; color: rgb(var(--c-ink) / 0.72); font-size: 0.76rem; line-height: 1.5; }
+
+  @media (max-width: 900px) {
+    .geo-map__layout { grid-template-columns: 1fr; }
+    .geo-map__canvas, .geo-map__canvas > svg { min-height: 18rem; }
+    .geo-map__card { min-height: auto; }
+    .geo-map__mobile-nav { display: flex; gap: 0.45rem; overflow-x: auto; margin-top: 0.75rem; padding-bottom: 0.3rem; }
+    .geo-map__mobile-nav button { display: inline-flex; min-height: 2.75rem; flex: 0 0 auto; align-items: center; gap: 0.4rem; border: 1px solid rgb(var(--c-line-strong)); border-radius: 9999px; background: rgb(var(--c-surface)); padding: 0.45rem 0.7rem; color: rgb(var(--c-ink) / 0.66); font-size: 0.72rem; font-weight: 700; }
+    .geo-map__mobile-nav button[aria-pressed='true'] { border-color: rgb(var(--c-brand-400)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-800)); }
+    .geo-map__mobile-nav button span { display: grid; width: 1.2rem; height: 1.2rem; place-items: center; border-radius: 9999px; background: rgb(var(--c-brand-600)); color: white; font-size: 0.58rem; }
+    .geo-compare { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 540px) {
+    .geo-systems__stage { min-height: 28rem; }
+    .geo-systems__stage > svg { opacity: 0.45; }
+    .geo-systems__core { width: 8rem; }
+    .geo-systems__node { min-width: 6.8rem; padding-inline: 0.6rem; }
+    .geo-systems__node.is-1, .geo-systems__node.is-3 { left: 0.5rem; }
+    .geo-systems__node.is-2, .geo-systems__node.is-4 { right: 0.5rem; }
+    .geo-map__heading { align-items: start; }
+    .geo-map__heading > span { display: none; }
+    .geo-map__canvas, .geo-map__canvas > svg { min-height: 16rem; }
+    .geo-map__marker { width: 2.75rem; height: 2.75rem; }
+    .geo-compare__body dl { grid-template-columns: 1fr; gap: 0.12rem; }
+    .geo-compare__body dd + dt { margin-top: 0.45rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .geo-systems__node,
+    .geo-map__marker > span { transition: none; }
+  }
+}
+
+/* Coğrafya atlası v2: görsel önce, açıklama sonra. Yüzeyler kart değil
+   ders kitabı levhası gibi; renk yalnız coğrafi anlam taşıdığı yerde kullanılır. */
+@layer components {
+  .geo-systems,
+  .geo-reading-route,
+  .geo-environment,
+  .geo-cause-flow,
+  .geo-process {
+    color: rgb(var(--c-ink));
+  }
+
+  .geo-image-lab { width: 100%; min-width: 0; border-block: 1px solid rgb(var(--c-line-strong)); }
+  .geo-systems > * { min-width: 0; }
+  .geo-image-lab__topline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .65rem .15rem; }
+  .geo-image-lab__topline span { color: rgb(var(--c-ink) / .72); font-size: .76rem; font-weight: 800; }
+  .geo-image-lab__topline small { color: rgb(var(--c-ink) / .4); font-size: .62rem; font-weight: 750; letter-spacing: .07em; text-transform: uppercase; }
+  .geo-image-lab__stage { position: relative; isolation: isolate; overflow: hidden; border-radius: .42rem; background: rgb(var(--c-surface-sunken)); aspect-ratio: 16 / 9; }
+  .geo-image-lab__stage::after { content: ''; position: absolute; z-index: 1; inset: 0; background: linear-gradient(180deg, rgb(var(--c-ink) / .04), transparent 30%, transparent 72%, rgb(var(--c-ink) / .22)); pointer-events: none; }
+  .geo-image-lab__stage > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .geo-image-lab__credit { position: absolute; z-index: 2; right: .55rem; bottom: .4rem; color: white; font-size: .54rem; font-weight: 700; letter-spacing: .04em; text-shadow: 0 1px 4px rgb(0 0 0 / .75); }
+
+  .geo-image-lab__hotspot { position: absolute; z-index: 3; display: grid; width: 2.9rem; height: 2.9rem; place-items: center; transform: translate(-50%, -50%); border: 0; border-radius: 999px; background: transparent; }
+  .geo-image-lab__hotspot > span { display: grid; width: 1.6rem; height: 1.6rem; place-items: center; border: 2px solid white; border-radius: 999px; background: rgb(var(--c-success-600)); color: white; font-size: .66rem; font-weight: 850; box-shadow: 0 0 0 4px rgb(var(--c-success-500) / .3), 0 3px 12px rgb(0 0 0 / .35); transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease; }
+  .geo-image-lab__hotspot.tone-air > span,
+  .geo-image-lab__hotspot.tone-water > span { background: rgb(var(--c-aqua-700)); box-shadow: 0 0 0 4px rgb(var(--c-aqua-500) / .32), 0 3px 12px rgb(0 0 0 / .35); }
+  .geo-image-lab__hotspot.tone-earth > span { background: rgb(var(--c-warning-700)); box-shadow: 0 0 0 4px rgb(var(--c-warning-500) / .3), 0 3px 12px rgb(0 0 0 / .35); }
+  .geo-image-lab__hotspot.tone-human > span { background: rgb(var(--c-accent-700)); box-shadow: 0 0 0 4px rgb(var(--c-accent-500) / .3), 0 3px 12px rgb(0 0 0 / .35); }
+  .geo-image-lab__hotspot.tone-risk > span { background: rgb(var(--c-danger-600)); box-shadow: 0 0 0 4px rgb(var(--c-danger-500) / .3), 0 3px 12px rgb(0 0 0 / .35); }
+  .geo-image-lab__hotspot:hover > span,
+  .geo-image-lab__hotspot.is-active > span { transform: scale(1.2); box-shadow: 0 0 0 7px rgb(var(--c-surface) / .6), 0 5px 16px rgb(0 0 0 / .42); }
+  .geo-image-lab__hotspot:focus-visible { outline: 3px solid white; outline-offset: 1px; }
+
+  .geo-image-lab__detail { display: grid; grid-template-columns: 3.2rem minmax(0, 1fr) minmax(13rem, .7fr); gap: .85rem; align-items: center; border-bottom: 1px solid rgb(var(--c-line-strong)); border-inline-start: 3px solid rgb(var(--c-success-500)); padding: .85rem .9rem; }
+  .geo-image-lab__detail.tone-air,
+  .geo-image-lab__detail.tone-water { border-inline-start-color: rgb(var(--c-aqua-600)); }
+  .geo-image-lab__detail.tone-earth { border-inline-start-color: rgb(var(--c-warning-600)); }
+  .geo-image-lab__detail.tone-human { border-inline-start-color: rgb(var(--c-accent-600)); }
+  .geo-image-lab__detail.tone-risk { border-inline-start-color: rgb(var(--c-danger-600)); }
+  .geo-image-lab__detail-index { color: rgb(var(--c-ink) / .14); font-family: theme('fontFamily.display'); font-size: 2rem; font-weight: 850; }
+  .geo-image-lab__detail small { color: rgb(var(--c-ink) / .42); font-size: .58rem; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
+  .geo-image-lab__detail strong { display: block; margin-top: .12rem; font-family: theme('fontFamily.display'); font-size: .98rem; }
+  .geo-image-lab__detail p { margin: .24rem 0 0; color: rgb(var(--c-ink) / .64); font-size: .76rem; line-height: 1.55; }
+  .geo-image-lab__detail aside { border-inline-start: 2px solid rgb(var(--c-warning-500)); padding-inline-start: .7rem; }
+  .geo-image-lab__detail aside span { display: block; color: rgb(var(--c-warning-800)); font-size: .56rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+  .geo-image-lab__detail aside b { display: block; margin-top: .18rem; color: rgb(var(--c-ink) / .7); font-size: .72rem; line-height: 1.5; }
+  .geo-image-lab__nav { display: none; }
+
+  /* ImageGen tabanı görünürken önceki deterministik yedek çizim DOM'da kalır,
+     fakat çift anlatım oluşturmaması için görsel olarak gizlenir. */
+  .geo-environment__scene,
+  .geo-reading-route__scene { display: none; }
+  .geo-compare-shell > .geo-image-lab { margin-bottom: .85rem; }
+
+  .geo-systems__visual-scroll,
+  .geo-environment__scene,
+  .geo-cause-flow > svg {
+    overflow-x: auto;
+    border: 1px solid rgb(var(--c-line-strong));
+    border-radius: 0.45rem;
+    background: rgb(var(--c-surface-sunken));
+  }
+
+  .geo-systems__visual,
+  .geo-environment__scene svg,
+  .geo-cause-flow > svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .geo-systems__cloud path:first-child { fill: rgb(var(--c-surface)); stroke: rgb(var(--c-aqua-500) / .35); }
+  .geo-systems__cloud path:last-child { fill: none; stroke: rgb(var(--c-aqua-600)); stroke-width: 3; }
+  .geo-systems__mountain path:first-child { fill: rgb(var(--c-brand-300) / .75); stroke: rgb(var(--c-brand-700) / .35); }
+  .geo-systems__mountain path:last-child { fill: rgb(var(--c-surface)); }
+  .geo-systems__forest { fill: rgb(var(--c-success-700) / .72); }
+  .geo-systems__human { fill: rgb(var(--c-ink) / .58); stroke: rgb(var(--c-ink) / .7); stroke-width: 1; }
+  .geo-systems__farm { fill: none; stroke: rgb(var(--c-warning-700) / .75); stroke-width: 3; }
+  .geo-systems__svg-label { fill: rgb(var(--c-ink) / .68); font-size: 13px; font-weight: 750; }
+  .geo-systems__svg-label.is-feedback { fill: rgb(var(--c-warning-800)); }
+  .geo-systems__legend text { fill: rgb(var(--c-ink) / .42); font-size: 10px; font-weight: 850; letter-spacing: 1.5px; }
+  .geo-systems__legend line { stroke: rgb(var(--c-line-strong)); }
+
+  .geo-systems__tabs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-block: 1px solid rgb(var(--c-line-strong));
+  }
+
+  .geo-systems__tabs button {
+    display: flex;
+    min-height: 4.5rem;
+    align-items: center;
+    gap: 0.65rem;
+    border: 0;
+    border-inline-end: 1px solid rgb(var(--c-line));
+    background: transparent;
+    padding: 0.72rem;
+    color: rgb(var(--c-ink) / .55);
+    text-align: start;
+    transition: color 160ms ease, background-color 160ms ease;
+  }
+
+  .geo-systems__tabs button:last-child { border-inline-end: 0; }
+  .geo-systems__tabs button:hover,
+  .geo-systems__tabs button.is-active { background: rgb(var(--c-surface-sunken)); color: rgb(var(--c-ink)); }
+  .geo-systems__tabs button.tone-atmosfer.is-active { color: rgb(var(--c-aqua-700)); }
+  .geo-systems__tabs button.tone-hidrosfer.is-active { color: rgb(var(--c-aqua-800)); }
+  .geo-systems__tabs button.tone-litosfer.is-active { color: rgb(var(--c-warning-800)); }
+  .geo-systems__tabs button.tone-biyosfer.is-active { color: rgb(var(--c-success-700)); }
+  .geo-systems__tabs button small { display: block; font-size: .58rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+  .geo-systems__tabs button strong { display: block; margin-top: .12rem; color: currentColor; font-family: theme('fontFamily.display'); font-size: .9rem; }
+
+  .geo-systems__detail {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(13rem, .8fr) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: center;
+    border-inline-start: 0;
+    border-bottom: 1px solid rgb(var(--c-line-strong));
+    background: transparent;
+    padding: .95rem 0;
+  }
+
+  .geo-systems__detail > div > span,
+  .geo-process__heading > span,
+  .geo-tyt-insight > span,
+  .geo-cause-flow__inference > span {
+    display: block;
+    color: rgb(var(--c-ink) / .42);
+    font-size: .61rem;
+    font-weight: 850;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .geo-systems__detail > div > strong { display: block; margin-top: .25rem; color: rgb(var(--c-ink) / .72); font-size: .8rem; line-height: 1.55; }
+  .geo-systems__relation { display: flex; align-items: center; justify-content: center; gap: .45rem; color: rgb(var(--c-aqua-700)); text-align: center; }
+  .geo-systems__relation b { font-size: .75rem; }
+  .geo-systems__relation i { font-size: 1.2rem; font-style: normal; }
+  .geo-systems__feedback { border-inline-start: 2px solid rgb(var(--c-warning-500)); padding-inline-start: .75rem; }
+
+  .geo-reading-route__scene {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line-strong));
+    border-radius: .45rem .45rem 0 0;
+    background: rgb(var(--c-aqua-50));
+  }
+  .geo-reading-route__scene > svg { display: block; width: 100%; height: auto; }
+  .geo-reading-route__labels text,
+  .geo-environment__labels text,
+  .geo-cause-flow__labels text,
+  .geo-compare__labels text { fill: rgb(var(--c-ink) / .72); font-size: 13px; font-weight: 750; paint-order: stroke; stroke: rgb(var(--c-surface) / .9); stroke-width: 3px; }
+  .geo-reading-route__case { position: absolute; right: 1rem; top: 1rem; width: min(18rem, 40%); border-inline-start: 3px solid rgb(var(--c-brand-500)); background: rgb(var(--c-surface) / .88); padding: .72rem .8rem; backdrop-filter: blur(8px); }
+  .geo-reading-route__case span { color: rgb(var(--c-brand-700)); font-size: .58rem; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
+  .geo-reading-route__case strong { display: block; margin-top: .18rem; font-family: theme('fontFamily.display'); font-size: .88rem; line-height: 1.3; }
+  .geo-reading-route__case p { margin: .3rem 0 0; color: rgb(var(--c-ink) / .62); font-size: .7rem; line-height: 1.5; }
+
+  .geo-reading-route__steps,
+  .geo-cause-flow ol,
+  .geo-process ol {
+    display: grid;
+    margin: 0;
+    list-style: none;
+    padding: 0;
+  }
+  .geo-reading-route__steps { grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid rgb(var(--c-line-strong)); border-top: 0; }
+  .geo-reading-route__steps li { position: relative; min-height: 9rem; border-inline-end: 1px solid rgb(var(--c-line)); padding: .9rem 1rem; }
+  .geo-reading-route__steps li:last-child { border-inline-end: 0; }
+  .geo-reading-route__steps li:not(:last-child)::after,
+  .geo-cause-flow li:not(:last-child)::after,
+  .geo-process li:not(:last-child)::after { content: '→'; position: absolute; z-index: 2; top: 50%; right: -.58rem; display: grid; width: 1.2rem; height: 1.2rem; place-items: center; border-radius: 999px; background: rgb(var(--c-surface)); color: rgb(var(--c-ink) / .38); font-weight: 800; transform: translateY(-50%); }
+  .geo-reading-route__steps li > span { display: flex; align-items: center; justify-content: space-between; color: rgb(var(--c-brand-700)); }
+  .geo-reading-route__steps li > span b { color: rgb(var(--c-ink) / .18); font-family: theme('fontFamily.display'); font-size: 1.6rem; }
+  .geo-reading-route__steps small { display: block; margin-top: .5rem; color: rgb(var(--c-ink) / .42); font-size: .62rem; font-weight: 800; text-transform: uppercase; }
+  .geo-reading-route__steps strong { display: block; margin-top: .2rem; font-family: theme('fontFamily.display'); font-size: .94rem; }
+  .geo-reading-route__steps p { margin: .35rem 0 0; color: rgb(var(--c-ink) / .62); font-size: .76rem; line-height: 1.55; }
+
+  .geo-tyt-insight {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 1rem;
+    align-items: center;
+    margin-top: .85rem;
+    border-block: 1px solid rgb(var(--c-warning-500) / .55);
+    background: rgb(var(--c-warning-50) / .45);
+    padding: .82rem .9rem;
+  }
+  .geo-tyt-insight > span { color: rgb(var(--c-warning-800)); }
+  .geo-tyt-insight > strong { color: rgb(var(--c-ink) / .74); font-size: .8rem; line-height: 1.58; }
+
+  .geo-environment__bridge-label { fill: rgb(var(--c-ink) / .44); font-size: 11px; font-weight: 750; }
+  .geo-environment__pairs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid rgb(var(--c-line-strong)); }
+  .geo-environment__pairs > div { display: grid; min-height: 5.6rem; align-content: center; border-inline-end: 1px solid rgb(var(--c-line)); padding: .7rem .8rem; }
+  .geo-environment__pairs > div:last-child { border-inline-end: 0; }
+  .geo-environment__pairs span { color: rgb(var(--c-success-700)); font-size: .72rem; font-weight: 800; }
+  .geo-environment__pairs i { margin-block: .2rem; color: rgb(var(--c-ink) / .34); font-size: .58rem; font-style: normal; font-weight: 750; text-transform: uppercase; }
+  .geo-environment__pairs strong { color: rgb(var(--c-ink) / .75); font-size: .76rem; }
+
+  .geo-cause-flow { border-bottom: 1px solid rgb(var(--c-line-strong)); padding-bottom: .9rem; }
+  .geo-annotated-atlas > .geo-tyt-insight { border-inline: 1px solid rgb(var(--c-line-strong)); border-bottom: 1px solid rgb(var(--c-line-strong)); }
+  .geo-cause-flow > .geo-image-lab { margin-bottom: 0; border-end-start-radius: 0; border-end-end-radius: 0; }
+  .geo-cause-flow > svg { border-radius: .45rem .45rem 0 0; }
+  .geo-cause-flow ol { grid-template-columns: repeat(4, minmax(0, 1fr)); border-inline: 1px solid rgb(var(--c-line-strong)); }
+  .geo-cause-flow li { position: relative; min-height: 9.4rem; border-inline-end: 1px solid rgb(var(--c-line)); border-top: 3px solid rgb(var(--c-brand-400)); padding: .78rem .85rem; }
+  .geo-cause-flow li:last-child { border-inline-end: 0; }
+  .geo-cause-flow li.tone-natural { border-top-color: rgb(var(--c-success-500)); }
+  .geo-cause-flow li.tone-human { border-top-color: rgb(var(--c-accent-500)); }
+  .geo-cause-flow li.tone-result { border-top-color: rgb(var(--c-brand-500)); }
+  .geo-cause-flow li.tone-effect { border-top-color: rgb(var(--c-warning-600)); }
+  .geo-cause-flow li > span { color: rgb(var(--c-ink) / .14); font-family: theme('fontFamily.display'); font-size: 2.2rem; font-weight: 800; line-height: 1; }
+  .geo-cause-flow li small { display: block; color: rgb(var(--c-ink) / .42); font-size: .58rem; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+  .geo-cause-flow li strong { display: block; margin-top: .24rem; font-size: .82rem; line-height: 1.35; }
+  .geo-cause-flow li p { margin: .35rem 0 0; color: rgb(var(--c-ink) / .6); font-size: .72rem; line-height: 1.5; }
+  .geo-cause-flow__inference { display: grid; grid-template-columns: 8rem 1fr; gap: .8rem; align-items: center; border-inline: 1px solid rgb(var(--c-line-strong)); border-top: 1px solid rgb(var(--c-line)); padding: .78rem .9rem; }
+  .geo-cause-flow__inference strong { color: rgb(var(--c-ink) / .74); font-size: .78rem; line-height: 1.55; }
+
+  .geo-process { border-block: 1px solid rgb(var(--c-line-strong)); padding-block: 1rem; }
+  .geo-process__heading { display: grid; grid-template-columns: 8rem minmax(12rem, .7fr) 1fr; gap: 1rem; align-items: start; margin-bottom: .9rem; }
+  .geo-process__heading strong { font-family: theme('fontFamily.display'); font-size: 1rem; line-height: 1.35; }
+  .geo-process__heading p { margin: 0; color: rgb(var(--c-ink) / .62); font-size: .78rem; line-height: 1.58; }
+  .geo-process ol { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .geo-process li { position: relative; min-height: 9.5rem; border-inline-end: 1px solid rgb(var(--c-line)); background: rgb(var(--c-surface-sunken) / .65); padding: .85rem; }
+  .geo-process li:last-child { border-inline-end: 0; }
+  .geo-process li > span { display: flex; align-items: center; justify-content: space-between; color: rgb(var(--c-brand-700)); }
+  .geo-process li > span b { color: rgb(var(--c-ink) / .2); font-family: theme('fontFamily.display'); font-size: 1.2rem; }
+  .geo-process li > strong { display: block; margin-top: .65rem; font-size: .82rem; }
+  .geo-process li > p { margin: .35rem 0 0; color: rgb(var(--c-ink) / .62); font-size: .72rem; line-height: 1.5; }
+
+  .geo-map { padding-block: 1rem; }
+  .geo-map__legend { display: flex; flex-wrap: wrap; gap: .8rem; margin: -.35rem 0 .75rem; color: rgb(var(--c-ink) / .48); font-size: .64rem; font-weight: 750; }
+  .geo-map__legend span { display: inline-flex; align-items: center; gap: .32rem; }
+  .geo-map__legend i { width: .55rem; height: .55rem; border-radius: 999px; background: rgb(var(--c-brand-500)); }
+  .geo-map__legend i.is-natural { background: rgb(var(--c-success-500)); }
+  .geo-map__legend i.is-human { background: rgb(var(--c-accent-500)); }
+  .geo-map__legend i.is-effect { background: rgb(var(--c-warning-500)); }
+  .geo-map__canvas,
+  .geo-map__card { border-radius: .45rem; }
+  .geo-map__card { background: rgb(var(--c-surface)); }
+  .geo-map__card dl { border-inline-start: 2px solid rgb(var(--c-success-500)); border-top: 0; padding: .1rem 0 .1rem .65rem; }
+  .geo-map__card dl.is-human { border-inline-start-color: rgb(var(--c-accent-500)); }
+
+  .geo-compare { gap: 0; border-block: 1px solid rgb(var(--c-line-strong)); }
+  .geo-compare > article { border: 0; border-inline-end: 1px solid rgb(var(--c-line-strong)); border-radius: 0; }
+  .geo-compare > article:last-child { border-inline-end: 0; }
+  .geo-compare__visual { background: rgb(var(--c-aqua-50)); }
+
+  @media (max-width: 760px) {
+    .geo-systems__visual,
+    .geo-environment__scene svg,
+    .geo-cause-flow > svg { min-width: 43rem; }
+    .geo-systems__tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .geo-systems__tabs button:nth-child(2) { border-inline-end: 0; }
+    .geo-systems__tabs button:nth-child(-n+2) { border-bottom: 1px solid rgb(var(--c-line)); }
+    .geo-systems__detail { grid-template-columns: 1fr; gap: .7rem; }
+    .geo-systems__relation { justify-content: start; }
+    .geo-reading-route__case { position: static; width: auto; border-top: 1px solid rgb(var(--c-line)); }
+    .geo-reading-route__steps,
+    .geo-cause-flow ol,
+    .geo-process ol { grid-template-columns: 1fr; }
+    .geo-reading-route__steps li,
+    .geo-cause-flow li,
+    .geo-process li { min-height: 0; border-inline-end: 0; border-bottom: 1px solid rgb(var(--c-line)); }
+    .geo-reading-route__steps li:not(:last-child)::after,
+    .geo-cause-flow li:not(:last-child)::after,
+    .geo-process li:not(:last-child)::after { top: auto; right: 1rem; bottom: -.62rem; transform: rotate(90deg); }
+    .geo-environment__pairs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .geo-environment__pairs > div:nth-child(2) { border-inline-end: 0; }
+    .geo-environment__pairs > div:nth-child(-n+2) { border-bottom: 1px solid rgb(var(--c-line)); }
+    .geo-process__heading { grid-template-columns: 1fr; gap: .25rem; }
+    .geo-process li { background: transparent; }
+    .geo-image-lab__detail { grid-template-columns: 2.5rem 1fr; align-items: start; }
+    .geo-image-lab__detail aside { grid-column: 2; }
+    .geo-image-lab__nav { display: flex; gap: .42rem; overflow-x: auto; padding: .7rem 0 .2rem; scrollbar-width: thin; }
+    .geo-image-lab__nav button { display: inline-flex; min-height: 2.75rem; flex: 0 0 auto; align-items: center; gap: .4rem; border: 1px solid rgb(var(--c-line-strong)); border-radius: 999px; background: rgb(var(--c-surface)); padding: .4rem .65rem; color: rgb(var(--c-ink) / .65); font-size: .68rem; font-weight: 750; }
+    .geo-image-lab__nav button[aria-pressed='true'] { border-color: rgb(var(--c-brand-500)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-800)); }
+    .geo-image-lab__nav button span { display: grid; width: 1.25rem; height: 1.25rem; place-items: center; border-radius: 999px; background: rgb(var(--c-brand-700)); color: white; font-size: .58rem; }
+    .geo-tyt-insight,
+    .geo-cause-flow__inference { grid-template-columns: 1fr; gap: .3rem; }
+  }
+
+  @media (max-width: 540px) {
+    .geo-reading-route__scene > svg { min-width: 34rem; }
+    .geo-reading-route__scene { overflow-x: auto; }
+    .geo-map__legend { gap: .55rem; }
+    .geo-compare > article { border-inline-end: 0; border-bottom: 1px solid rgb(var(--c-line-strong)); }
+    .geo-compare > article:last-child { border-bottom: 0; }
+    .geo-image-lab__topline small { display: none; }
+    .geo-image-lab__detail { grid-template-columns: 1fr; }
+    .geo-image-lab__detail-index { display: none; }
+    .geo-image-lab__detail aside { grid-column: auto; }
+    .geo-image-lab__credit { max-width: 70%; text-align: end; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .geo-systems__tabs button { transition: none; }
+  }
+}
+
+/* ==================================================================
+   FİZİK KEŞİF LABORATUVARI
+   Ortak kabuk; içerik yalnız deney modeli ve değişken verisini seçer.
+   Kontroller dokunmatik kullanım için en az 44 px, görsel hareketler ise
+   hafif CSS dönüşümleridir. Dark/light renkleri ana tokenlardan gelir.
+   ================================================================== */
+@layer components {
+  .physics-lab {
+    color: rgb(var(--c-ink) / 0.86);
+  }
+
+  .physics-lab__header {
+    border-bottom: 1px solid rgb(var(--c-line));
+    padding-bottom: 0.9rem;
+  }
+
+  .physics-lab__body {
+    padding-top: 1rem;
+  }
+
+  .physics-lab__status {
+    margin-top: 1rem;
+    border-inline-start: 3px solid rgb(var(--c-aqua-500));
+    background: rgb(var(--c-aqua-50) / 0.62);
+    padding: 0.8rem 0.9rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.65;
+  }
+
+  .physics-control {
+    display: block;
+    min-width: 0;
+  }
+
+  .physics-control__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: rgb(var(--c-ink) / 0.58);
+  }
+
+  .physics-control__row output {
+    color: rgb(var(--c-brand-700));
+    font-variant-numeric: tabular-nums;
+  }
+
+  .physics-control input[type='range'] {
+    width: 100%;
+    height: 2.75rem;
+    accent-color: rgb(var(--c-brand-600));
+    cursor: pointer;
+    touch-action: pan-y;
+  }
+
+  .physics-control input[type='range']:focus-visible {
+    outline: 2px solid rgb(var(--c-brand-500));
+    outline-offset: 2px;
+  }
+
+  .physics-controls-grid {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .physics-controls-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  .physics-scale-explorer {
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line-strong));
+    border-radius: 0.9rem;
+    background: rgb(var(--c-surface));
+    box-shadow: 0 18px 48px rgb(var(--c-shadow) / 0.08);
+  }
+
+  .physics-scale-explorer__topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid rgb(var(--c-line));
+    background: rgb(var(--c-surface-sunken) / 0.72);
+    padding: 0.8rem 1rem;
+  }
+
+  .physics-scale-explorer__topline > div {
+    min-width: 0;
+  }
+
+  .physics-scale-explorer__topline span,
+  .physics-scale-explorer__insight > span {
+    display: block;
+    margin-bottom: 0.12rem;
+    color: rgb(var(--c-ink) / 0.4);
+    font-size: 0.625rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .physics-scale-explorer__topline strong {
+    display: block;
+    overflow: hidden;
+    color: rgb(var(--c-ink));
+    font-size: 0.875rem;
+    font-weight: 800;
+    line-height: 1.35;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .physics-scale-explorer__branch {
+    text-align: end;
+  }
+
+  .physics-scale-explorer__branch strong {
+    color: rgb(var(--c-brand-700));
+  }
+
+  .physics-scale-explorer__viewport {
+    position: relative;
+    min-height: 22rem;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 44%, rgb(var(--c-brand-500) / 0.16), transparent 36%),
+      linear-gradient(145deg, #07111f 0%, #0b1a2a 48%, #071421 100%);
+    isolation: isolate;
+  }
+
+  .physics-scale-scene {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 21rem;
+    overflow: hidden;
+    color: rgb(var(--c-aqua-400));
+    animation: physics-scale-enter 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .physics-scale-scene > svg {
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .physics-scale-scene__image {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    filter: saturate(0.98) contrast(1.015);
+  }
+
+  .physics-scale-explorer__viewport.has-raster {
+    background: #fbf5e8;
+  }
+
+  .physics-scale-scene.has-raster .physics-scale-object,
+  .physics-scale-scene.has-raster .physics-scale-scene__glow {
+    display: none;
+  }
+
+  .physics-scale-scene.has-raster .physics-scale-scene__grid path {
+    stroke: rgb(35 50 72 / 0.055);
+  }
+
+  .physics-scale-scene.has-raster .physics-scale-scene__reticle {
+    stroke: rgb(35 50 72 / 0.28);
+    opacity: 0.16;
+  }
+
+  .physics-scale-scene.has-raster .physics-scale-scene__scan {
+    stroke: rgb(44 118 139 / 0.6);
+    opacity: 0.1;
+  }
+
+  .physics-scale-scene.has-raster .physics-scale-scene__measure {
+    stroke: rgb(35 50 72 / 0.38);
+  }
+
+  .physics-scale-scene.has-raster .physics-scale-scene__measure text {
+    fill: rgb(35 50 72 / 0.54);
+  }
+
+  .physics-scale-explorer__viewport.has-raster .physics-scale-explorer__scale {
+    color: rgb(var(--c-aqua-700));
+  }
+
+  .physics-scale-explorer__viewport.has-raster .physics-scale-explorer__scale span,
+  .physics-scale-explorer__viewport.has-raster .physics-scale-explorer__model-note {
+    color: rgb(35 50 72 / 0.52);
+  }
+
+  .physics-scale-explorer__viewport.has-raster .physics-scale-explorer__scale strong {
+    color: rgb(26 38 58);
+  }
+
+  .physics-scale-explorer__viewport.has-raster .physics-scale-explorer__nav {
+    color: rgb(35 50 72 / 0.6);
+  }
+
+  .physics-scale-explorer__viewport.has-raster .physics-scale-explorer__nav button {
+    border-color: rgb(35 50 72 / 0.2);
+    background: rgb(255 252 245 / 0.82);
+    box-shadow: 0 6px 18px rgb(67 48 24 / 0.1);
+    color: rgb(26 38 58);
+    backdrop-filter: blur(7px);
+  }
+
+  .physics-scale-explorer__viewport.has-raster .physics-scale-explorer__nav button:hover {
+    border-color: rgb(var(--c-aqua-600) / 0.65);
+    background: rgb(255 252 245 / 0.96);
+  }
+
+  .physics-scale-scene.is-nucleus { color: #f4a261; }
+  .physics-scale-scene.is-atom { color: #68d8e8; }
+  .physics-scale-scene.is-nano { color: #65d6a5; }
+  .physics-scale-scene.is-mechanics { color: #8ea7ff; }
+  .physics-scale-scene.is-earth { color: #51b9ff; }
+  .physics-scale-scene.is-star { color: #ffc857; }
+
+  .physics-scale-scene__grid path {
+    fill: none;
+    stroke: rgb(255 255 255 / 0.055);
+    stroke-width: 1;
+  }
+
+  .physics-scale-scene__reticle {
+    fill: none;
+    stroke: currentColor;
+    stroke-dasharray: 3 7;
+    stroke-width: 1;
+    opacity: 0.25;
+  }
+
+  .physics-scale-scene__scan {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1;
+    opacity: 0.12;
+    filter: drop-shadow(0 0 5px currentColor);
+    animation: physics-scale-scan 4.8s ease-in-out infinite;
+  }
+
+  .physics-scale-scene__measure {
+    fill: none;
+    stroke: rgb(255 255 255 / 0.36);
+    stroke-width: 1;
+  }
+
+  .physics-scale-scene__measure text {
+    fill: rgb(255 255 255 / 0.52);
+    stroke: none;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .physics-scale-object {
+    transform-origin: 280px 165px;
+  }
+
+  .physics-scale-object--nucleus .is-orbit {
+    fill: none;
+    stroke: currentColor;
+    stroke-dasharray: 4 8;
+    opacity: 0.34;
+  }
+
+  .physics-scale-object--nucleus .is-field {
+    fill: currentColor;
+    opacity: 0.055;
+    filter: drop-shadow(0 0 28px currentColor);
+  }
+
+  .physics-scale-object--nucleus .is-binding {
+    fill: none;
+    stroke: rgb(255 255 255 / 0.22);
+    stroke-width: 1.4;
+  }
+
+  .physics-scale-object--nucleus .is-particle {
+    stroke: rgb(255 255 255 / 0.35);
+    stroke-width: 1.5;
+    filter: drop-shadow(0 6px 10px rgb(0 0 0 / 0.34));
+  }
+
+  .physics-scale-object--nucleus .is-particle-labels text {
+    fill: rgb(255 255 255 / 0.72);
+    font-size: 13px;
+    font-weight: 850;
+    text-anchor: middle;
+  }
+
+  .physics-scale-object--atom .is-orbit-system ellipse {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    opacity: 0.48;
+    filter: drop-shadow(0 0 5px currentColor);
+  }
+
+  .physics-scale-object--atom .is-core-glow { fill: currentColor; opacity: 0.1; }
+
+  .physics-scale-object--atom .is-core {
+    filter: drop-shadow(0 0 18px currentColor);
+    stroke: rgb(255 255 255 / 0.65);
+    stroke-width: 1;
+  }
+
+  .physics-scale-object--atom .is-core-detail { fill: none; stroke: rgb(255 255 255 / 0.45); stroke-width: 2; }
+
+  .physics-scale-object--atom .is-electron {
+    fill: #fff;
+    stroke: currentColor;
+    stroke-width: 3;
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+
+  .physics-scale-object--atom .is-trail { fill: none; stroke: currentColor; stroke-width: 1; opacity: 0.2; }
+
+  .physics-scale-object--nano .is-board-shadow { fill: rgb(0 0 0 / 0.28); transform: translateY(6px); }
+  .physics-scale-object--nano .is-board {
+    fill: rgb(101 214 165 / 0.075);
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+
+  .physics-scale-object--nano .is-pins path { fill: none; stroke: currentColor; stroke-width: 5; stroke-linecap: round; opacity: 0.72; }
+  .physics-scale-object--nano .is-chip-shadow { fill: rgb(0 0 0 / 0.38); transform: translateY(7px); }
+  .physics-scale-object--nano .is-chip {
+    stroke: rgb(255 255 255 / 0.52);
+    stroke-width: 1.5;
+    filter: drop-shadow(0 10px 18px rgb(0 0 0 / 0.34));
+  }
+
+  .physics-scale-object--nano circle { fill: rgb(4 21 30 / 0.76); stroke: rgb(255 255 255 / 0.24); stroke-width: 0.7; }
+  .physics-scale-object--nano .is-circuit { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; }
+  .physics-scale-object--nano .is-nodes circle { fill: currentColor; stroke: rgb(255 255 255 / 0.7); stroke-width: 1.3; filter: drop-shadow(0 0 7px currentColor); }
+  .physics-scale-object--nano .is-chip-label { fill: rgb(255 255 255 / 0.9); font-family: var(--font-display); font-size: 24px; font-weight: 850; letter-spacing: -0.03em; }
+
+  .physics-scale-object--mechanics .is-wheel > circle:first-child {
+    fill: rgb(142 167 255 / 0.04);
+    stroke: currentColor;
+    stroke-width: 5;
+    filter: drop-shadow(0 5px 8px rgb(0 0 0 / 0.28));
+  }
+
+  .physics-scale-object--mechanics .is-wheel line { stroke: rgb(255 255 255 / 0.24); stroke-width: 1; }
+  .physics-scale-object--mechanics .is-hub { fill: currentColor; stroke: rgb(255 255 255 / 0.62); stroke-width: 2; }
+
+  .physics-scale-object--mechanics .is-frame {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 9;
+    filter: drop-shadow(0 7px 8px rgb(0 0 0 / 0.34));
+  }
+
+  .physics-scale-object--mechanics .is-frame-shadow { stroke: rgb(0 0 0 / 0.35); stroke-width: 13; transform: translateY(4px); }
+  .physics-scale-object--mechanics .is-detail { fill: none; stroke: rgb(255 255 255 / 0.8); stroke-linecap: round; stroke-width: 5; }
+  .physics-scale-object--mechanics .is-crank { fill: rgb(8 20 37); stroke: currentColor; stroke-width: 4; }
+  .physics-scale-object--mechanics .is-chain { fill: none; stroke: rgb(255 255 255 / 0.35); stroke-width: 1.5; }
+  .physics-scale-object--mechanics .is-ground { fill: none; stroke: rgb(255 255 255 / 0.18); stroke-width: 2; }
+
+  .physics-scale-object--earth .is-orbit { fill: none; stroke: currentColor; stroke-dasharray: 5 8; opacity: 0.45; }
+  .physics-scale-object--earth .is-atmosphere { fill: none; stroke: currentColor; stroke-width: 7; opacity: 0.2; filter: drop-shadow(0 0 14px currentColor); }
+  .physics-scale-object--earth .is-planet { stroke: currentColor; stroke-width: 2; filter: drop-shadow(0 10px 22px rgb(0 0 0 / 0.38)); }
+  .physics-scale-object--earth .is-longitude { fill: none; stroke: currentColor; stroke-width: 1.2; opacity: 0.4; }
+  .physics-scale-object--earth .is-land { fill: #69d3a4; stroke: rgb(218 255 239 / 0.42); stroke-width: 1; opacity: 0.88; }
+  .physics-scale-object--earth .is-cloud { fill: none; stroke: rgb(255 255 255 / 0.52); stroke-linecap: round; stroke-width: 5; opacity: 0.65; }
+  .physics-scale-object--earth .is-night { fill: rgb(2 7 18 / 0.48); }
+  .physics-scale-object--earth .is-satellite circle { fill: #fff; stroke: currentColor; stroke-width: 3; filter: drop-shadow(0 0 7px currentColor); }
+  .physics-scale-object--earth .is-satellite path { fill: none; stroke: rgb(255 255 255 / 0.65); stroke-width: 3; }
+
+  .physics-scale-object--star .is-corona { fill: currentColor; }
+  .physics-scale-object--star .is-outer { opacity: 0.07; filter: drop-shadow(0 0 22px currentColor); }
+  .physics-scale-object--star .is-inner { opacity: 0.15; }
+  .physics-scale-object--star .is-star { filter: drop-shadow(0 0 30px rgb(255 200 87 / 0.7)); }
+  .physics-scale-object--star .is-rays line { stroke: currentColor; stroke-linecap: round; stroke-width: 2.2; opacity: 0.42; }
+  .physics-scale-object--star .is-texture { fill: none; stroke: rgb(255 255 255 / 0.5); stroke-linecap: round; stroke-width: 4; opacity: 0.48; }
+  .physics-scale-object--star .is-spot { fill: rgb(101 33 36 / 0.34); }
+  .physics-scale-object--star .is-flare { fill: none; stroke: currentColor; stroke-linecap: round; stroke-width: 5; opacity: 0.68; }
+  .physics-scale-object--star .is-speck { fill: #fff; opacity: 0.8; }
+
+  .physics-scale-explorer__scale {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 2;
+    border-left: 2px solid currentColor;
+    color: rgb(var(--c-aqua-400));
+    padding-left: 0.65rem;
+  }
+
+  .physics-scale-explorer__scale span,
+  .physics-scale-explorer__model-note {
+    display: block;
+    color: rgb(255 255 255 / 0.42);
+    font-size: 0.625rem;
+    font-weight: 750;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .physics-scale-explorer__scale strong {
+    display: block;
+    margin-top: 0.1rem;
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .physics-scale-explorer__model-note {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: rgb(255 255 255 / 0.3);
+  }
+
+  .physics-scale-explorer__nav {
+    position: absolute;
+    right: 0.9rem;
+    bottom: 0.8rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: rgb(255 255 255 / 0.52);
+    font-size: 0.6875rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .physics-scale-explorer__nav button {
+    display: grid;
+    width: 2.75rem;
+    height: 2.75rem;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 0.18);
+    border-radius: 50%;
+    background: rgb(4 13 24 / 0.62);
+    color: #fff;
+    font-size: 1.05rem;
+    transition: border-color 150ms ease, background-color 150ms ease, transform 150ms ease;
+  }
+
+  .physics-scale-explorer__nav button:hover {
+    border-color: rgb(var(--c-aqua-400) / 0.8);
+    background: rgb(var(--c-aqua-500) / 0.14);
+    transform: translateY(-1px);
+  }
+
+  .physics-scale-explorer__nav button:focus-visible,
+  .physics-scale-explorer__track button:focus-visible {
+    outline: 2px solid rgb(var(--c-aqua-400));
+    outline-offset: 3px;
+  }
+
+  .physics-scale-explorer__timeline {
+    border-top: 1px solid rgb(var(--c-line));
+    padding: 0.9rem 1rem 1rem;
+  }
+
+  .physics-scale-explorer__zones {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 0.55rem;
+    color: rgb(var(--c-ink) / 0.34);
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .physics-scale-explorer__zones span:nth-child(2) { text-align: center; }
+  .physics-scale-explorer__zones span:last-child { text-align: end; }
+
+  .physics-scale-explorer__track {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(var(--scale-count, 6), minmax(0, 1fr));
+    min-height: 4.5rem;
+  }
+
+  .physics-scale-explorer__track > i {
+    position: absolute;
+    left: 8.3%;
+    right: 8.3%;
+    top: 0.52rem;
+    height: 2px;
+    overflow: hidden;
+    background: rgb(var(--c-line-strong));
+  }
+
+  .physics-scale-explorer__track > i::after {
+    display: block;
+    width: var(--scale-progress);
+    height: 100%;
+    background: linear-gradient(90deg, rgb(var(--c-brand-500)), rgb(var(--c-aqua-500)));
+    content: '';
+    transition: width 260ms ease;
+  }
+
+  .physics-scale-explorer__track button {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    min-width: 0;
+    justify-items: center;
+    border: 0;
+    background: transparent;
+    color: rgb(var(--c-ink) / 0.5);
+    text-align: center;
+  }
+
+  .physics-scale-explorer__dot {
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 3px solid rgb(var(--c-surface));
+    border-radius: 50%;
+    background: rgb(var(--c-line-strong));
+    box-shadow: 0 0 0 1px rgb(var(--c-line-strong));
+    transition: background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  }
+
+  .physics-scale-explorer__track button[aria-current='true'] .physics-scale-explorer__dot {
+    background: rgb(var(--c-aqua-500));
+    box-shadow: 0 0 0 1px rgb(var(--c-aqua-500)), 0 0 0 5px rgb(var(--c-aqua-400) / 0.16);
+    transform: scale(1.06);
+  }
+
+  .physics-scale-explorer__track strong {
+    margin-top: 0.55rem;
+    color: rgb(var(--c-ink) / 0.72);
+    font-size: 0.68rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .physics-scale-explorer__track button[aria-current='true'] strong { color: rgb(var(--c-brand-700)); }
+
+  .physics-scale-explorer__track small {
+    margin-top: 0.12rem;
+    overflow: hidden;
+    max-width: 100%;
+    color: rgb(var(--c-ink) / 0.4);
+    font-size: 0.6rem;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .physics-scale-explorer__insight {
+    display: grid;
+    gap: 0.25rem 1rem;
+    border-top: 1px solid rgb(var(--c-line));
+    background: rgb(var(--c-brand-50) / 0.38);
+    padding: 0.9rem 1rem 1rem;
+  }
+
+  .physics-scale-explorer__insight p {
+    margin: 0;
+    color: rgb(var(--c-ink) / 0.7);
+    font-size: 0.84rem;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  @keyframes physics-scale-enter {
+    from { opacity: 0; transform: scale(0.965); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes physics-scale-scan {
+    0%, 100% { opacity: 0; transform: translateY(0); }
+    18% { opacity: 0.15; }
+    82% { opacity: 0.08; }
+    90% { opacity: 0; transform: translateY(186px); }
+  }
+
+  @media (max-width: 520px) {
+    .physics-scale-explorer__viewport { min-height: 18rem; }
+    .physics-scale-scene { min-height: 18rem; }
+    .physics-scale-explorer__model-note { display: none; }
+    .physics-scale-explorer__topline { align-items: flex-start; }
+    .physics-scale-explorer__topline strong { white-space: normal; }
+    .physics-scale-explorer__track strong { visibility: hidden; }
+    .physics-scale-explorer__track button[aria-current='true'] strong { visibility: visible; }
+    .physics-scale-explorer__track small { display: none; }
+  }
+
+  .physics-readout-grid {
+    display: grid;
+    gap: 1px;
+    margin-top: 1rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.5rem;
+    background: rgb(var(--c-line));
+  }
+
+  @media (min-width: 520px) {
+    .physics-readout-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  .physics-readout-grid > div {
+    min-width: 0;
+    background: rgb(var(--c-surface));
+    padding: 0.75rem 0.85rem;
+  }
+
+  .physics-readout-grid span { display: block; font-size: 0.6875rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: rgb(var(--c-ink) / 0.38); }
+  .physics-readout-grid strong { display: block; margin-top: 0.2rem; font-size: 0.875rem; line-height: 1.35; color: rgb(var(--c-ink)); }
+  .physics-readout-grid.is-compact strong { font-variant-numeric: tabular-nums; }
+
+  .physics-case {
+    min-height: 7.5rem;
+    border-inline-start: 3px solid rgb(var(--c-brand-400));
+    background: rgb(var(--c-surface-sunken));
+    padding: 1rem;
+  }
+
+  .physics-choice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .physics-choice-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  .physics-choice-grid button,
+  .physics-prediction button,
+  .physics-resolution button {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    border: 1px solid rgb(var(--c-line-strong));
+    border-radius: 0.45rem;
+    background: rgb(var(--c-surface));
+    padding: 0.55rem 0.7rem;
+    color: rgb(var(--c-ink) / 0.72);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.3;
+    text-align: center;
+    transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease;
+  }
+
+  .physics-choice-grid button:hover,
+  .physics-prediction button:hover,
+  .physics-resolution button:hover { border-color: rgb(var(--c-brand-400)); color: rgb(var(--c-brand-700)); }
+  .physics-choice-grid button:focus-visible,
+  .physics-prediction button:focus-visible,
+  .physics-resolution button:focus-visible { outline: 2px solid rgb(var(--c-brand-500)); outline-offset: 2px; }
+  .physics-choice-grid button svg { width: 1rem; height: 1rem; }
+  .physics-choice-grid button.is-active,
+  .physics-prediction button[aria-pressed='true'],
+  .physics-resolution button[aria-pressed='true'] { border-color: rgb(var(--c-brand-500)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-800)); }
+  .physics-choice-grid button.is-correct { border-color: rgb(var(--c-success-500)); background: rgb(var(--c-success-50)); color: rgb(var(--c-success-700)); }
+  .physics-choice-grid button.is-wrong { border-color: rgb(var(--c-danger-500)); background: rgb(var(--c-danger-50)); color: rgb(var(--c-danger-600)); }
+
+  .physics-lab__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+
+  .physics-lab__actions > button {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border-radius: 0.45rem;
+    background: var(--g-aurora);
+    padding: 0.62rem 1rem;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 750;
+  }
+
+  .physics-lab__actions > button:hover { filter: brightness(1.04); }
+  .physics-lab__actions > button:focus-visible { outline: 2px solid rgb(var(--c-brand-500)); outline-offset: 2px; }
+  .physics-lab__actions > button:disabled { cursor: not-allowed; opacity: 0.42; }
+  .physics-lab__actions > button.is-secondary { border: 1px solid rgb(var(--c-line-strong)); background: rgb(var(--c-surface)); color: rgb(var(--c-ink) / 0.68); }
+  .physics-lab__actions > button svg { width: 1rem; height: 1rem; }
+
+  .physics-ruler {
+    position: relative;
+    height: 9.5rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.5rem;
+    background: rgb(var(--c-surface-sunken));
+    padding: 1.25rem 1rem 0.75rem;
+  }
+
+  .physics-ruler__object {
+    height: 1.4rem;
+    max-width: 94%;
+    border-radius: 0.3rem 999px 999px 0.3rem;
+    background: linear-gradient(90deg, rgb(var(--c-brand-700)), rgb(var(--c-aqua-500)));
+    box-shadow: 0 3px 0 rgb(var(--c-shadow) / 0.08);
+    transition: width 120ms linear;
+  }
+
+  .physics-ruler__ticks { display: flex; height: 3.1rem; align-items: flex-end; justify-content: space-between; border-bottom: 2px solid rgb(var(--c-ink) / 0.55); }
+  .physics-ruler__ticks i { width: 1px; height: 0.6rem; background: rgb(var(--c-ink) / 0.5); }
+  .physics-ruler__ticks i.is-major { height: 1.1rem; }
+  .physics-ruler__numbers { display: flex; justify-content: space-between; padding-top: 0.25rem; font-size: 0.6875rem; font-variant-numeric: tabular-nums; color: rgb(var(--c-ink) / 0.48); }
+
+  .physics-resolution,
+  .physics-prediction { margin: 0; border: 0; padding: 0; }
+  .physics-resolution legend,
+  .physics-prediction legend { margin-bottom: 0.45rem; font-size: 0.8125rem; font-weight: 700; line-height: 1.45; color: rgb(var(--c-ink) / 0.58); }
+  .physics-resolution button,
+  .physics-prediction button { margin: 0 0.4rem 0.4rem 0; }
+  .physics-prediction { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgb(var(--c-line)); }
+
+  .physics-vector-stage {
+    position: relative;
+    height: 15rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.5rem;
+    background:
+      radial-gradient(circle at center, rgb(var(--c-brand-400) / 0.08), transparent 45%),
+      rgb(var(--c-surface-sunken));
+  }
+
+  .physics-vector-stage__axis { position: absolute; background: rgb(var(--c-ink) / 0.22); }
+  .physics-vector-stage__axis.is-x { top: 62%; left: 8%; right: 8%; height: 1px; }
+  .physics-vector-stage__axis.is-y { top: 10%; bottom: 8%; left: 28%; width: 1px; }
+  .physics-vector-stage__arrow { position: absolute; left: 28%; top: calc(62% - 2px); height: 4px; transform-origin: left center; border-radius: 999px; background: rgb(var(--c-brand-600)); transition: width 160ms ease, transform 160ms ease; }
+  .physics-vector-stage__arrow i { position: absolute; right: -1px; top: 50%; width: 0; height: 0; border-top: 8px solid transparent; border-bottom: 8px solid transparent; border-left: 13px solid rgb(var(--c-brand-600)); transform: translateY(-50%); }
+  .physics-vector-stage__x,
+  .physics-vector-stage__y { position: absolute; font-size: 0.75rem; font-weight: 700; color: rgb(var(--c-ink) / 0.42); }
+  .physics-vector-stage__x { right: 7%; top: 63%; }
+  .physics-vector-stage__y { left: 26%; top: 5%; }
+  .physics-vector-stage > strong { position: absolute; right: 0.75rem; top: 0.65rem; font-size: 0.8125rem; color: rgb(var(--c-brand-700)); }
+
+  .physics-density-stage {
+    display: grid;
+    min-height: 15rem;
+    grid-template-columns: minmax(0, 1fr) minmax(9rem, 0.72fr);
+    align-items: center;
+    gap: 1rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.65rem;
+    background:
+      radial-gradient(circle at 28% 46%, rgb(var(--c-aqua-400) / 0.12), transparent 34%),
+      linear-gradient(rgb(var(--c-line) / 0.35) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--c-line) / 0.35) 1px, transparent 1px),
+      rgb(var(--c-surface-sunken));
+    background-size: auto, 2rem 2rem, 2rem 2rem, auto;
+    padding: 1.25rem;
+  }
+
+  .physics-density-stage__object {
+    position: relative;
+    justify-self: center;
+    overflow: hidden;
+    border: 2px solid rgb(var(--c-aqua-500) / 0.62);
+    border-radius: 0.7rem;
+    background: linear-gradient(145deg, rgb(var(--c-aqua-400) / 0.18), rgb(var(--c-brand-500) / 0.08));
+    box-shadow: inset -12px -14px 24px rgb(var(--c-brand-700) / 0.1), 0 14px 26px rgb(var(--c-shadow) / 0.1);
+    transition: width 180ms ease, height 180ms ease;
+  }
+
+  .physics-density-stage__object::before {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgb(255 255 255 / 0.4), transparent 38%);
+    content: '';
+  }
+
+  .physics-density-stage__object i {
+    position: absolute;
+    border-radius: 50%;
+    background: rgb(var(--c-brand-600));
+    box-shadow: 0 0 0 1px rgb(var(--c-surface) / 0.65);
+  }
+
+  .physics-density-stage__readout {
+    border-inline-start: 2px solid rgb(var(--c-aqua-500));
+    padding-inline-start: 0.85rem;
+  }
+
+  .physics-density-stage__readout span,
+  .physics-density-stage__readout small,
+  .physics-liquid-stage__legend span { display: block; color: rgb(var(--c-ink) / 0.42); font-size: 0.65rem; font-weight: 750; letter-spacing: 0.07em; text-transform: uppercase; }
+  .physics-density-stage__readout strong { display: block; margin: 0.25rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.45rem; font-variant-numeric: tabular-nums; }
+
+  .physics-liquid-stage {
+    position: relative;
+    min-height: 17rem;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.65rem;
+    background: linear-gradient(180deg, rgb(var(--c-surface-sunken)), rgb(var(--c-aqua-50) / 0.45));
+  }
+
+  .physics-liquid-stage svg { display: block; width: 100%; height: 16rem; }
+  .physics-liquid-stage .is-tube { fill: rgb(255 255 255 / 0.42); stroke: rgb(var(--c-ink) / 0.35); stroke-linecap: round; stroke-width: 4; }
+  .physics-liquid-stage .is-liquid { fill: rgb(var(--c-aqua-500) / 0.56); transition: y 200ms ease, height 200ms ease, width 200ms ease, x 200ms ease; }
+  .physics-liquid-stage .is-meniscus { fill: none; stroke: rgb(var(--c-aqua-700)); stroke-width: 2.5; transition: transform 200ms ease; }
+  .physics-liquid-stage .is-surface { fill: none; stroke: rgb(var(--c-aqua-600) / 0.72); stroke-width: 2; }
+  .physics-liquid-stage__legend { position: absolute; left: 1rem; top: 1rem; border-inline-start: 2px solid rgb(var(--c-aqua-500)); padding-inline-start: 0.7rem; }
+  .physics-liquid-stage__legend strong { display: block; margin-top: 0.2rem; color: rgb(var(--c-ink)); font-size: 0.85rem; }
+
+  .physics-buoyancy-stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(11rem, 0.8fr);
+    gap: 1rem;
+    align-items: center;
+    padding: clamp(1rem, 3vw, 1.7rem);
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.65rem;
+    background: linear-gradient(145deg, rgb(var(--c-surface)), rgb(var(--c-aqua-50) / 0.6));
+  }
+  .physics-buoyancy-stage__vessel { position: relative; min-height: 290px; overflow: hidden; border: 3px solid rgb(var(--c-ink) / 0.22); border-top: 0; border-radius: 0.35rem 0.35rem 1.5rem 1.5rem; background: linear-gradient(to bottom, transparent 17%, rgb(var(--c-aqua-100) / 0.72) 17%, rgb(var(--c-aqua-300) / 0.5)); }
+  .physics-buoyancy-stage__liquid { position: absolute; inset: 17% 0 0; background: repeating-linear-gradient(165deg, transparent 0 14px, rgb(var(--c-aqua-700) / 0.05) 15px 17px); }
+  .physics-buoyancy-stage__surface { position: absolute; z-index: 2; top: 17%; right: 0; left: 0; height: 5px; background: rgb(var(--c-aqua-700) / 0.42); box-shadow: 0 2px 14px rgb(var(--c-aqua-700) / 0.16); }
+  .physics-buoyancy-stage__object { position: absolute; z-index: 4; left: 50%; display: grid; place-content: center; transform: translateX(-50%); border: 2px solid rgb(var(--c-brand-700) / 0.68); border-radius: 0.85rem; color: rgb(var(--c-brand-700)); text-align: center; background: linear-gradient(145deg, rgb(var(--c-surface) / 0.96), rgb(var(--c-brand-100) / 0.9)); box-shadow: 0 14px 30px rgb(var(--c-shadow) / 0.14); transition: top 420ms cubic-bezier(.2,.8,.2,1), width 240ms ease, height 240ms ease; }
+  .physics-buoyancy-stage__object span { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; }
+  .physics-buoyancy-stage__object small { font-size: 0.62rem; font-weight: 700; opacity: 0.64; }
+  .physics-buoyancy-stage__arrow { position: absolute; z-index: 5; left: calc(50% + 68px); width: 2px; background: currentColor; transition: height 260ms ease; }
+  .physics-buoyancy-stage__arrow::before { position: absolute; left: -5px; width: 10px; height: 10px; content: ''; transform: rotate(45deg); border-color: currentColor; }
+  .physics-buoyancy-stage__arrow b { position: absolute; left: 10px; font-family: var(--font-display); font-size: 0.78rem; white-space: nowrap; }
+  .physics-buoyancy-stage__arrow.is-up { bottom: 48%; color: rgb(var(--c-aqua-700)); }
+  .physics-buoyancy-stage__arrow.is-up::before { top: 0; border-top: 2px solid; border-left: 2px solid; }
+  .physics-buoyancy-stage__arrow.is-up b { top: 0; }
+  .physics-buoyancy-stage__arrow.is-down { top: 48%; color: rgb(var(--c-coral-700)); }
+  .physics-buoyancy-stage__arrow.is-down::before { bottom: 0; border-right: 2px solid; border-bottom: 2px solid; }
+  .physics-buoyancy-stage__arrow.is-down b { bottom: 0; }
+  .physics-buoyancy-stage__decision { padding: 1rem; border-inline-start: 3px solid rgb(var(--c-aqua-700)); }
+  .physics-buoyancy-stage__decision span, .physics-buoyancy-stage__decision small { display: block; color: rgb(var(--c-ink) / 0.55); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; }
+  .physics-buoyancy-stage__decision strong { display: block; margin: 0.35rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: clamp(1.35rem, 3vw, 2rem); }
+
+  .physics-pressure-stage { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; min-height: 18rem; padding: 1rem; border: 1px solid rgb(var(--c-line)); border-radius: 0.65rem; background: linear-gradient(145deg, rgb(var(--c-surface-sunken)), rgb(var(--c-aqua-50) / 0.48)); }
+  .physics-pressure-stage__solid, .physics-pressure-stage__liquid { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; overflow: hidden; border-radius: 0.55rem; background: rgb(var(--c-surface) / 0.7); padding: 1rem; }
+  .physics-pressure-stage__force { display: grid; width: 2px; place-items: start center; color: rgb(var(--c-coral-700)); background: currentColor; font-family: var(--font-display); font-weight: 800; transition: height 220ms ease; }
+  .physics-pressure-stage__force::after { width: 10px; height: 10px; margin-top: auto; content: ''; transform: rotate(45deg); border-right: 2px solid; border-bottom: 2px solid; }
+  .physics-pressure-stage__block { width: 82px; height: 54px; border: 2px solid rgb(var(--c-brand-700) / 0.6); border-radius: 0.45rem 0.45rem 0 0; background: linear-gradient(145deg, rgb(var(--c-brand-100)), rgb(var(--c-brand-400) / 0.3)); }
+  .physics-pressure-stage__plate { height: 8px; border-radius: 999px; background: rgb(var(--c-ink) / 0.42); transition: width 220ms ease; }
+  .physics-pressure-stage small, .physics-pressure-stage span { margin-top: 0.55rem; color: rgb(var(--c-ink) / 0.52); font-size: 0.72rem; font-weight: 700; }
+  .physics-pressure-stage strong { margin-top: 0.25rem; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.35rem; }
+  .physics-pressure-stage__column { position: relative; width: 108px; overflow: hidden; border: 3px solid rgb(var(--c-ink) / 0.25); border-top: 0; border-radius: 0 0 1rem 1rem; background: linear-gradient(180deg, rgb(var(--c-aqua-100) / 0.55), rgb(var(--c-aqua-500) / 0.62)); transition: height 220ms ease; }
+  .physics-pressure-stage__column i { position: absolute; right: 0; left: 0; height: 3px; background: rgb(var(--c-coral-600)); box-shadow: 0 0 0 4px rgb(var(--c-coral-500) / 0.12); transition: top 220ms ease; }
+
+  .physics-thermal-stage { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) minmax(10rem, 1.15fr); gap: 0.8rem; min-height: 19rem; padding: 1rem; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: linear-gradient(145deg, rgb(var(--c-surface-sunken)), rgb(var(--c-brand-50) / 0.46)); }
+  .physics-thermal-stage__sample, .physics-thermal-stage__equilibrium { position: relative; display: flex; min-width: 0; flex-direction: column; align-items: center; justify-content: flex-end; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.65rem; background: rgb(var(--c-surface) / 0.76); padding: 1rem 0.7rem; }
+  .physics-thermal-stage__sample > span, .physics-thermal-stage__equilibrium > span { margin-bottom: auto; color: rgb(var(--c-ink) / 0.48); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.07em; text-transform: uppercase; }
+  .physics-thermal-stage__sample strong, .physics-thermal-stage__equilibrium strong { margin-top: 0.55rem; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: clamp(1.1rem, 2.8vw, 1.6rem); }
+  .physics-thermal-stage__sample small, .physics-thermal-stage__equilibrium small { margin-top: 0.2rem; color: rgb(var(--c-ink) / 0.48); font-size: 0.68rem; font-weight: 700; line-height: 1.45; text-align: center; }
+  .physics-thermal-stage__thermometer { position: relative; width: 2rem; height: 9rem; overflow: hidden; border: 3px solid rgb(var(--c-ink) / 0.2); border-radius: 999px; background: rgb(var(--c-surface)); box-shadow: inset 0 0 0 4px rgb(var(--c-surface-sunken)); }
+  .physics-thermal-stage__thermometer::after { position: absolute; bottom: 0.22rem; left: 50%; width: 1.15rem; height: 1.15rem; content: ''; transform: translateX(-50%); border-radius: 999px; background: currentColor; }
+  .physics-thermal-stage__thermometer i { position: absolute; right: 0.65rem; bottom: 0.7rem; left: 0.65rem; border-radius: 999px; background: currentColor; transition: height 240ms ease; }
+  .physics-thermal-stage__sample.is-hot { color: rgb(var(--c-coral-600)); }
+  .physics-thermal-stage__sample.is-cold { color: rgb(var(--c-aqua-700)); }
+  .physics-thermal-stage__flow { display: flex; width: 3.2rem; flex-direction: column; align-items: center; justify-content: center; color: rgb(var(--c-coral-600)); }
+  .physics-thermal-stage__flow b { font-family: var(--font-display); font-size: 1.15rem; }
+  .physics-thermal-stage__flow i { position: relative; width: 100%; height: 3px; margin-top: 0.5rem; border-radius: 999px; background: linear-gradient(90deg, rgb(var(--c-coral-600)), rgb(var(--c-aqua-600))); }
+  .physics-thermal-stage__flow i::after { position: absolute; top: 50%; right: 0; width: 0.7rem; height: 0.7rem; content: ''; transform: translateY(-50%) rotate(45deg); border-top: 3px solid rgb(var(--c-aqua-600)); border-right: 3px solid rgb(var(--c-aqua-600)); }
+  .physics-thermal-stage__mix { position: relative; width: 5.8rem; height: 9rem; overflow: hidden; border: 3px solid rgb(var(--c-ink) / 0.22); border-top-width: 1px; border-radius: 0.35rem 0.35rem 1rem 1rem; background: rgb(var(--c-surface)); }
+  .physics-thermal-stage__mix i { position: absolute; inset: auto 0 0; height: var(--thermal-level); background: linear-gradient(160deg, rgb(var(--c-coral-400) / 0.66), rgb(var(--c-aqua-500) / 0.7)); transition: height 240ms ease; }
+
+  .physics-expansion-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.65rem; margin-bottom: 0.9rem; }
+  .physics-expansion-tabs button { min-height: 3.5rem; border: 1px solid rgb(var(--c-line-strong)); border-radius: 0.6rem; background: rgb(var(--c-surface)); color: rgb(var(--c-ink) / 0.66); font-weight: 800; cursor: pointer; }
+  .physics-expansion-tabs button small { display: block; margin-top: 0.18rem; color: rgb(var(--c-ink) / 0.42); font-size: 0.65rem; }
+  .physics-expansion-tabs button.is-active { border-color: rgb(var(--c-brand-500)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-700)); box-shadow: 0 0 0 2px rgb(var(--c-brand-500) / 0.1); }
+  .physics-expansion-tabs button:focus-visible { outline: 2px solid rgb(var(--c-brand-500)); outline-offset: 2px; }
+  .physics-expansion-stage { position: relative; min-height: 18rem; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: linear-gradient(180deg, rgb(var(--c-surface-sunken)), rgb(var(--c-brand-50) / 0.32)); padding: 1rem; }
+  .physics-expansion-stage__scale { display: flex; justify-content: space-between; gap: 1rem; color: rgb(var(--c-ink) / 0.48); font-size: 0.7rem; font-weight: 750; }
+  .physics-expansion-stage__rail { position: absolute; top: 5.1rem; right: calc(50% + 1.4rem); left: 2rem; height: 3.3rem; transform-origin: left center; border: 2px solid rgb(var(--c-ink) / 0.38); border-radius: 0.4rem 0.1rem 0.1rem 0.4rem; background: linear-gradient(180deg, #edf0f2 0%, #69747e 48%, #d7dde1 54%, #48525b 100%); box-shadow: 0 12px 22px rgb(var(--c-shadow) / 0.15); transition: right 260ms ease; }
+  .physics-expansion-stage__rail::after { position: absolute; inset: 0 calc(-1 * var(--growth)) 0 0; content: ''; border-radius: inherit; background: inherit; transition: right 260ms ease; }
+  .physics-expansion-stage__rail.is-brass, .physics-expansion-stage__rail.is-brass::after { background: linear-gradient(180deg, #f2dfa7 0%, #9b7026 48%, #e1c174 54%, #795218 100%); }
+  .physics-expansion-stage__rail.is-aluminum, .physics-expansion-stage__rail.is-aluminum::after { background: linear-gradient(180deg, #f7f8f8 0%, #9fa9af 48%, #e5e8ea 54%, #79858d 100%); }
+  .physics-expansion-stage__rail i, .physics-expansion-stage__rail b { position: absolute; z-index: 2; bottom: -2rem; width: 0.85rem; height: 2rem; border-radius: 0.15rem; background: rgb(var(--c-ink) / 0.5); }
+  .physics-expansion-stage__rail i { left: 18%; }
+  .physics-expansion-stage__rail b { right: calc(-1 * var(--growth) + 14%); transition: right 260ms ease; }
+  .physics-expansion-stage__gap { position: absolute; top: 5.1rem; left: calc(50% - 1.15rem); width: 2.3rem; height: 3.3rem; border-right: 2px dashed rgb(var(--c-coral-600) / 0.7); border-left: 2px dashed rgb(var(--c-coral-600) / 0.7); }
+  .physics-expansion-stage__gap span { position: absolute; top: -1.8rem; left: 50%; width: 7rem; transform: translateX(-50%); color: rgb(var(--c-coral-700)); font-size: 0.65rem; font-weight: 800; text-align: center; }
+  .physics-expansion-stage__reading { position: absolute; right: 1.2rem; bottom: 1.2rem; left: 1.2rem; border-inline-start: 3px solid rgb(var(--c-coral-500)); background: rgb(var(--c-surface) / 0.78); padding: 0.8rem 1rem; backdrop-filter: blur(8px); }
+  .physics-expansion-stage__reading span, .physics-expansion-stage__reading small { display: block; color: rgb(var(--c-ink) / 0.48); font-size: 0.68rem; font-weight: 700; }
+  .physics-expansion-stage__reading strong { display: block; margin: 0.15rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.4rem; }
+
+  .physics-motion-stage { position: relative; min-height: 18rem; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: linear-gradient(180deg, rgb(var(--c-aqua-50) / 0.46), rgb(var(--c-surface-sunken))); }
+  .physics-motion-stage__track { position: absolute; right: 5%; bottom: 5.2rem; left: 5%; height: 4px; border-radius: 999px; background: rgb(var(--c-ink) / 0.38); }
+  .physics-motion-stage__track::before { position: absolute; right: 0; bottom: -0.9rem; left: 0; height: 0.8rem; content: ''; background: repeating-linear-gradient(90deg, rgb(var(--c-ink) / 0.14) 0 1px, transparent 1px 8%); }
+  .physics-motion-stage__origin { position: absolute; bottom: 3.8rem; left: 50%; color: rgb(var(--c-ink) / 0.42); font-size: 0.7rem; font-weight: 800; transform: translateX(-50%); }
+  .physics-motion-stage__block { position: absolute; bottom: 5.35rem; width: 6.2rem; height: 4rem; display: grid; place-items: center; transform: translateX(-50%); border: 2px solid rgb(var(--c-brand-700) / 0.58); border-radius: 0.7rem 0.7rem 0.35rem 0.35rem; background: linear-gradient(145deg, rgb(var(--c-brand-100)), rgb(var(--c-brand-400) / 0.48)); box-shadow: 0 12px 24px rgb(var(--c-shadow) / 0.14); transition: left 260ms cubic-bezier(.2,.8,.2,1); }
+  .physics-motion-stage__block > span { color: rgb(var(--c-brand-800)); font-family: var(--font-display); font-size: 0.82rem; font-weight: 850; }
+  .physics-motion-stage__block > i { position: absolute; top: 50%; height: 4px; color: rgb(var(--c-coral-600)); background: currentColor; transform: translateY(-50%); transition: width 220ms ease; }
+  .physics-motion-stage__block > i::after { position: absolute; top: 50%; width: 0.7rem; height: 0.7rem; content: ''; transform: translateY(-50%) rotate(45deg); border-color: currentColor; }
+  .physics-motion-stage__block > i b { position: absolute; top: -1.55rem; color: currentColor; font-size: 0.65rem; font-style: normal; white-space: nowrap; }
+  .physics-motion-stage__block > i.is-right { left: 100%; }
+  .physics-motion-stage__block > i.is-right::after { right: 0; border-top: 3px solid; border-right: 3px solid; }
+  .physics-motion-stage__block > i.is-right b { right: 0; }
+  .physics-motion-stage__block > i.is-left { right: 100%; color: rgb(var(--c-aqua-700)); }
+  .physics-motion-stage__block > i.is-left::after { left: 0; border-bottom: 3px solid; border-left: 3px solid; }
+  .physics-motion-stage__block > i.is-left b { left: 0; }
+  .physics-motion-stage__readout { position: absolute; top: 1rem; right: 1rem; min-width: 13rem; border-inline-start: 3px solid rgb(var(--c-brand-500)); background: rgb(var(--c-surface) / 0.82); padding: 0.7rem 0.85rem; backdrop-filter: blur(8px); }
+  .physics-motion-stage__readout span, .physics-motion-stage__readout small { display: block; color: rgb(var(--c-ink) / 0.48); font-size: 0.68rem; font-weight: 700; }
+  .physics-motion-stage__readout strong { display: block; margin: 0.15rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.25rem; }
+  .physics-motion-graphs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; margin-top: 0.8rem; }
+  .physics-motion-graphs > div { position: relative; min-width: 0; border: 1px solid rgb(var(--c-line)); border-radius: 0.6rem; background: rgb(var(--c-surface)); padding: 0.45rem; }
+  .physics-motion-graphs span { position: absolute; z-index: 2; top: 0.65rem; left: 0.8rem; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 0.72rem; font-weight: 850; }
+  .physics-motion-graphs svg { display: block; width: 100%; height: auto; }
+  .physics-motion-graphs .is-axis { fill: none; stroke: rgb(var(--c-ink) / 0.34); stroke-width: 2; }
+  .physics-motion-graphs .is-grid { fill: none; stroke: rgb(var(--c-ink) / 0.1); stroke-width: 1; stroke-dasharray: 3 5; }
+  .physics-motion-graphs .is-data { fill: none; stroke: rgb(var(--c-aqua-700)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; transition: d 240ms ease; }
+
+  .physics-energy-stage { position: relative; display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(15rem, 0.9fr); min-height: 22rem; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: linear-gradient(145deg, rgb(var(--c-aqua-50) / 0.42), rgb(var(--c-surface-sunken))); }
+  .physics-energy-track { position: relative; min-height: 22rem; overflow: hidden; }
+  .physics-energy-track::before { position: absolute; inset: 2.2rem 8% 3rem; content: ''; border-left: 4px solid rgb(var(--c-brand-700) / 0.62); border-bottom: 4px solid rgb(var(--c-brand-700) / 0.62); border-radius: 0 0 0 75%; transform: skewY(-22deg); transform-origin: left bottom; box-shadow: 0 10px 20px rgb(var(--c-shadow) / 0.1); }
+  .physics-energy-track::after { position: absolute; right: 8%; bottom: 2.45rem; left: 8%; height: 0.65rem; content: ''; background: repeating-linear-gradient(90deg, rgb(var(--c-ink) / 0.16) 0 2px, transparent 2px 9%); }
+  .physics-energy-cart { position: absolute; z-index: 2; display: grid; width: 4.7rem; height: 3.1rem; place-items: center; border: 2px solid rgb(var(--c-brand-700) / 0.64); border-radius: 0.6rem 0.6rem 0.25rem 0.25rem; background: linear-gradient(145deg, rgb(var(--c-brand-100)), rgb(var(--c-brand-500) / 0.56)); box-shadow: 0 10px 20px rgb(var(--c-shadow) / 0.18); transition: top 240ms ease, left 240ms ease, transform 240ms ease; }
+  .physics-energy-cart::before, .physics-energy-cart::after { position: absolute; bottom: -0.55rem; width: 0.85rem; height: 0.85rem; content: ''; border: 3px solid rgb(var(--c-ink) / 0.66); border-radius: 999px; background: rgb(var(--c-surface)); }
+  .physics-energy-cart::before { left: 0.55rem; }
+  .physics-energy-cart::after { right: 0.55rem; }
+  .physics-energy-cart span { color: rgb(var(--c-brand-800)); font-family: var(--font-display); font-size: 0.7rem; font-weight: 850; }
+  .physics-energy-height { position: absolute; top: 2rem; bottom: 3rem; left: 3%; width: 2.5rem; border-left: 1px dashed rgb(var(--c-ink) / 0.3); }
+  .physics-energy-height span { position: absolute; top: 0; left: 0.4rem; color: rgb(var(--c-ink) / 0.52); font-size: 0.68rem; font-weight: 800; white-space: nowrap; }
+  .physics-energy-bars { display: flex; min-width: 0; flex-direction: column; justify-content: center; gap: 0.72rem; border-inline-start: 1px solid rgb(var(--c-line)); background: rgb(var(--c-surface) / 0.72); padding: 1.2rem; backdrop-filter: blur(8px); }
+  .physics-energy-bars > div { display: grid; grid-template-columns: 5.4rem minmax(0, 1fr) 4.2rem; align-items: center; gap: 0.55rem; }
+  .physics-energy-bars span { color: rgb(var(--c-ink) / 0.58); font-size: 0.7rem; font-weight: 800; }
+  .physics-energy-bars > div > i { position: relative; height: 1.15rem; overflow: hidden; border-radius: 999px; background: rgb(var(--c-ink) / 0.08); }
+  .physics-energy-bars > div > i::after { position: absolute; inset: 0 auto 0 0; width: var(--share); content: ''; border-radius: inherit; background: rgb(var(--c-brand-600)); transition: width 240ms ease; }
+  .physics-energy-bars > div > i.is-kinetic::after { background: rgb(var(--c-aqua-600)); }
+  .physics-energy-bars > div > i.is-thermal::after { background: rgb(var(--c-coral-500)); }
+  .physics-energy-bars strong { color: rgb(var(--c-ink) / 0.76); font-size: 0.72rem; font-variant-numeric: tabular-nums; text-align: right; }
+  .physics-energy-bars p { display: flex; justify-content: space-between; margin: 0.4rem 0 0; border-top: 1px solid rgb(var(--c-line)); padding-top: 0.75rem; }
+  .physics-energy-bars p strong { color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1rem; }
+
+  .physics-electrostatic-stage { position: relative; min-height: 21rem; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: radial-gradient(circle at 50% 42%, rgb(var(--c-brand-50) / 0.8), transparent 40%), linear-gradient(180deg, rgb(var(--c-surface-sunken)), rgb(var(--c-aqua-50) / 0.28)); }
+  .physics-electrostatic-presets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.55rem; margin-bottom: 0.75rem; }
+  .physics-electrostatic-presets button { min-height: 2.8rem; border: 1px solid rgb(var(--c-line-strong)); border-radius: 0.55rem; background: rgb(var(--c-surface)); padding: 0.55rem 0.7rem; color: rgb(var(--c-ink) / 0.72); font-size: 0.72rem; font-weight: 800; transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease; }
+  .physics-electrostatic-presets button:hover { border-color: rgb(var(--c-brand-400)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-700)); }
+  .physics-electrostatic-presets button:focus-visible { outline: 2px solid rgb(var(--c-brand-500)); outline-offset: 2px; }
+  .physics-electrostatic-stage__axis { position: absolute; top: 45%; left: 50%; height: 2px; transform: translate(-50%, -50%); border-top: 2px dashed rgb(var(--c-ink) / 0.26); transition: width 240ms ease; }
+  .physics-electrostatic-stage__axis::before, .physics-electrostatic-stage__axis::after { position: absolute; top: -0.45rem; width: 1px; height: 0.8rem; content: ''; background: rgb(var(--c-ink) / 0.42); }
+  .physics-electrostatic-stage__axis::before { left: 0; }
+  .physics-electrostatic-stage__axis::after { right: 0; }
+  .physics-electrostatic-stage__axis span { position: absolute; top: -1.65rem; left: 50%; transform: translateX(-50%); color: rgb(var(--c-ink) / 0.52); font-size: 0.7rem; font-weight: 800; white-space: nowrap; }
+  .physics-electrostatic-charge { position: absolute; z-index: 2; top: 45%; display: grid; width: 5.6rem; height: 5.6rem; place-content: center; transform: translate(-50%, -50%); border: 3px solid rgb(var(--c-surface)); border-radius: 999px; background: radial-gradient(circle at 32% 28%, #fff6dc, #a68a54 58%, #4e422e); box-shadow: 0 0 0 2px rgb(var(--c-ink) / 0.18), 0 14px 28px rgb(var(--c-shadow) / 0.18); color: white; text-align: center; transition: left 240ms ease, background 200ms ease; }
+  .physics-electrostatic-charge.is-positive { background: radial-gradient(circle at 32% 28%, #fff2e7, #e8664d 55%, #8f2632); }
+  .physics-electrostatic-charge.is-negative { background: radial-gradient(circle at 32% 28%, #e9fbff, #3995ad 55%, #184d71); }
+  .physics-electrostatic-charge strong { font-family: var(--font-display); font-size: 1.4rem; line-height: 1; }
+  .physics-electrostatic-charge small { margin-top: 0.15rem; font-size: 0.6rem; font-weight: 800; opacity: 0.82; }
+  .physics-electrostatic-charge > i { position: absolute; top: 50%; height: 4px; color: rgb(var(--c-coral-600)); background: currentColor; transition: width 220ms ease; }
+  .physics-electrostatic-charge.is-two > i { color: rgb(var(--c-aqua-700)); }
+  .physics-electrostatic-charge > i::after { position: absolute; top: 50%; width: 0.7rem; height: 0.7rem; content: ''; transform: translateY(-50%) rotate(45deg); border-color: currentColor; }
+  .physics-electrostatic-charge > i b { position: absolute; top: -1.5rem; color: currentColor; font-size: 0.7rem; font-style: normal; }
+  .physics-electrostatic-charge.is-one > i { left: 100%; }
+  .physics-electrostatic-charge.is-one > i.is-outward { right: 100%; left: auto; }
+  .physics-electrostatic-charge.is-two > i { right: 100%; }
+  .physics-electrostatic-charge.is-two > i.is-outward { right: auto; left: 100%; }
+  .physics-electrostatic-charge.is-one > i.is-inward::after, .physics-electrostatic-charge.is-two > i.is-outward::after { right: 0; border-top: 3px solid; border-right: 3px solid; }
+  .physics-electrostatic-charge.is-two > i.is-inward::after, .physics-electrostatic-charge.is-one > i.is-outward::after { left: 0; border-bottom: 3px solid; border-left: 3px solid; }
+  .physics-electrostatic-charge.is-one > i b { right: 0; }
+  .physics-electrostatic-charge.is-one > i.is-outward b { right: auto; left: 0; }
+  .physics-electrostatic-charge.is-two > i b { left: 0; }
+  .physics-electrostatic-charge.is-two > i.is-outward b { right: 0; left: auto; }
+  .physics-electrostatic-stage__readout { position: absolute; right: 1rem; bottom: 1rem; left: 1rem; border-inline-start: 3px solid rgb(var(--c-brand-500)); background: rgb(var(--c-surface) / 0.84); padding: 0.7rem 0.9rem; backdrop-filter: blur(8px); }
+  .physics-electrostatic-stage__readout span, .physics-electrostatic-stage__readout small { display: block; color: rgb(var(--c-ink) / 0.52); font-size: 0.68rem; font-weight: 750; }
+  .physics-electrostatic-stage__readout strong { display: block; margin: 0.12rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.35rem; }
+  .physics-electrostatic-ratio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.8rem; }
+  .physics-electrostatic-ratio > div { display: grid; grid-template-columns: 2rem minmax(0, 1fr) 2.4rem; align-items: center; gap: 0.45rem; border: 1px solid rgb(var(--c-line)); border-radius: 0.6rem; background: rgb(var(--c-surface)); padding: 0.65rem; }
+  .physics-electrostatic-ratio span, .physics-electrostatic-ratio strong { color: rgb(var(--c-ink) / 0.6); font-size: 0.7rem; font-weight: 850; }
+  .physics-electrostatic-ratio i { position: relative; height: 0.65rem; overflow: hidden; border-radius: 999px; background: rgb(var(--c-ink) / 0.08); }
+  .physics-electrostatic-ratio i::after { position: absolute; inset: 0 auto 0 0; width: var(--force-share); content: ''; border-radius: inherit; background: linear-gradient(90deg, rgb(var(--c-coral-500)), rgb(var(--c-brand-500))); }
+
+  .physics-circuit-presets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.55rem; margin-bottom: 0.75rem; }
+  .physics-circuit-presets button { min-height: 2.8rem; border: 1px solid rgb(var(--c-line-strong)); border-radius: 0.55rem; background: rgb(var(--c-surface)); padding: 0.55rem 0.7rem; color: rgb(var(--c-ink) / 0.7); font-size: 0.72rem; font-weight: 800; }
+  .physics-circuit-presets button.is-active { border-color: rgb(var(--c-brand-500)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-700)); box-shadow: 0 0 0 2px rgb(var(--c-brand-500) / 0.1); }
+  .physics-circuit-presets button:focus-visible { outline: 2px solid rgb(var(--c-brand-500)); outline-offset: 2px; }
+  .physics-circuit-stage { position: relative; min-height: 22rem; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: radial-gradient(circle at 50% 45%, rgb(var(--c-brand-50) / 0.72), transparent 42%), linear-gradient(145deg, rgb(var(--c-surface-sunken)), rgb(var(--c-aqua-50) / 0.3)); }
+  .physics-circuit-stage svg { display: block; width: 100%; height: auto; min-height: 20rem; }
+  .physics-circuit-stage .is-wire { fill: none; stroke: rgb(var(--c-ink) / 0.64); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+  .physics-circuit-stage .is-battery-long, .physics-circuit-stage .is-battery-short { stroke: rgb(var(--c-ink) / 0.8); stroke-linecap: round; }
+  .physics-circuit-stage .is-battery-long { stroke-width: 8; }
+  .physics-circuit-stage .is-battery-short { stroke-width: 5; }
+  .physics-circuit-stage .is-resistor { fill: rgb(var(--c-brand-100)); stroke: rgb(var(--c-brand-700) / 0.62); stroke-width: 3; }
+  .physics-circuit-stage .is-zigzag { fill: none; stroke: rgb(var(--c-coral-600)); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+  .physics-circuit-stage .is-junction { fill: rgb(var(--c-brand-700)); stroke: rgb(var(--c-surface)); stroke-width: 3; }
+  .physics-circuit-stage .is-current { fill: none; stroke: rgb(var(--c-coral-600)); stroke-width: 5; stroke-linecap: round; marker-end: none; }
+  .physics-circuit-stage .is-current::after { content: ''; }
+  .physics-circuit-stage .is-current.is-second { stroke: rgb(var(--c-aqua-700)); }
+  .physics-circuit-stage .is-component-label, .physics-circuit-stage .is-source-label { fill: rgb(var(--c-ink) / 0.7); font-family: var(--font-display); font-size: 20px; font-weight: 850; }
+  .physics-circuit-stage .is-source-label { fill: rgb(var(--c-brand-700)); font-size: 22px; }
+  .physics-circuit-stage__meter { position: absolute; right: 1rem; bottom: 1rem; min-width: 11rem; border-inline-start: 3px solid rgb(var(--c-brand-500)); background: rgb(var(--c-surface) / 0.86); padding: 0.72rem 0.9rem; backdrop-filter: blur(8px); }
+  .physics-circuit-stage__meter span, .physics-circuit-stage__meter small { display: block; color: rgb(var(--c-ink) / 0.52); font-size: 0.68rem; font-weight: 750; }
+  .physics-circuit-stage__meter strong { display: block; margin: 0.12rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.3rem; }
+  .physics-circuit-readings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.8rem; }
+  .physics-circuit-readings > div { border: 1px solid rgb(var(--c-line)); border-radius: 0.6rem; background: rgb(var(--c-surface)); padding: 0.75rem; }
+  .physics-circuit-readings span, .physics-circuit-readings small { display: block; color: rgb(var(--c-ink) / 0.5); font-size: 0.68rem; font-weight: 750; }
+  .physics-circuit-readings strong { display: block; margin: 0.16rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.05rem; }
+
+  .physics-magnetism-presets, .physics-magnetism-direction { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.55rem; margin-bottom: 0.7rem; }
+  .physics-magnetism-presets button, .physics-magnetism-direction button { min-height: 2.75rem; border: 1px solid rgb(var(--c-line-strong)); border-radius: 0.55rem; background: rgb(var(--c-surface)); padding: 0.5rem 0.65rem; color: rgb(var(--c-ink) / 0.7); font-size: 0.7rem; font-weight: 800; }
+  .physics-magnetism-presets button:hover, .physics-magnetism-direction button:hover { border-color: rgb(var(--c-brand-400)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-700)); }
+  .physics-magnetism-presets button:focus-visible, .physics-magnetism-direction button:focus-visible { outline: 2px solid rgb(var(--c-brand-500)); outline-offset: 2px; }
+  .physics-magnetism-direction button.is-active { border-color: rgb(var(--c-brand-500)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-700)); box-shadow: 0 0 0 2px rgb(var(--c-brand-500) / 0.1); }
+  .physics-magnetism-stage { position: relative; min-height: 24rem; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: radial-gradient(circle at 50% 44%, rgb(var(--c-aqua-50) / 0.75), transparent 43%), linear-gradient(145deg, rgb(var(--c-surface-sunken)), rgb(var(--c-brand-50) / 0.32)); }
+  .physics-magnetism-stage::before { position: absolute; inset: 0; content: ''; opacity: 0.32; background-image: linear-gradient(rgb(var(--c-brand-500) / 0.12) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--c-brand-500) / 0.12) 1px, transparent 1px); background-size: 2.5rem 2.5rem; }
+  .physics-magnetism-pole { position: absolute; z-index: 2; top: 4.4rem; bottom: 4.4rem; display: grid; width: 7.2rem; place-content: center; border: 3px solid rgb(var(--c-surface) / 0.88); box-shadow: 0 16px 35px rgb(var(--c-shadow) / 0.22); color: white; text-align: center; }
+  .physics-magnetism-pole strong { font-family: var(--font-display); font-size: 3.2rem; line-height: 1; }
+  .physics-magnetism-pole small { margin-top: 0.4rem; font-size: 0.65rem; font-weight: 800; opacity: 0.76; }
+  .physics-magnetism-pole.is-north { left: 2rem; border-radius: 1.2rem 0.3rem 0.3rem 1.2rem; background: linear-gradient(145deg, #f07a57, #9b2b38 70%); }
+  .physics-magnetism-pole.is-south { right: 2rem; border-radius: 0.3rem 1.2rem 1.2rem 0.3rem; background: linear-gradient(145deg, #4bb8d0, #164f7b 70%); }
+  .physics-magnetism-field { position: absolute; z-index: 1; inset: 5rem 9.3rem; display: flex; flex-direction: column; justify-content: space-around; }
+  .physics-magnetism-field i { position: relative; display: block; height: 2px; background: linear-gradient(90deg, rgb(var(--c-aqua-500) / 0.22), rgb(var(--c-aqua-600) / 0.86), rgb(var(--c-aqua-500) / 0.22)); }
+  .physics-magnetism-field i span { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -54%); color: rgb(var(--c-aqua-700)); font-size: 1.55rem; font-style: normal; font-weight: 900; }
+  .physics-magnetism-field.is-reversed i span { transform: translate(-50%, -46%) rotate(180deg); }
+  .physics-magnetism-wire { position: absolute; z-index: 3; top: 47%; left: 50%; width: 15rem; height: 1.25rem; border: 2px solid rgb(var(--c-surface)); border-radius: 999px; background: linear-gradient(180deg, #fff1c9, #cf7b35 45%, #6b331e); box-shadow: 0 7px 18px rgb(var(--c-shadow) / 0.3); transform-origin: center; transition: transform 220ms ease; }
+  .physics-magnetism-wire > i { position: absolute; top: -2.2rem; right: 2rem; color: rgb(var(--c-coral-600)); font-size: 2rem; font-style: normal; font-weight: 900; line-height: 1; }
+  .physics-magnetism-wire > i.is-reversed { transform: rotate(180deg); }
+  .physics-magnetism-wire > span { position: absolute; top: 1.65rem; left: 50%; transform: translateX(-50%); color: rgb(var(--c-coral-700)); font-size: 0.72rem; font-weight: 900; white-space: nowrap; }
+  .physics-magnetism-force { position: absolute; z-index: 4; top: 50%; left: 50%; display: grid; min-width: 8rem; justify-items: center; transform: translate(-50%, -132%); color: rgb(var(--c-brand-700)); text-align: center; }
+  .physics-magnetism-force.is-down { transform: translate(-50%, 28%); }
+  .physics-magnetism-force.is-zero { top: 50%; transform: translate(-50%, -50%); color: rgb(var(--c-ink) / 0.52); }
+  .physics-magnetism-force i { font-size: 4.3rem; font-style: normal; font-weight: 900; line-height: 0.8; text-shadow: 0 4px 12px rgb(var(--c-brand-500) / 0.24); }
+  .physics-magnetism-force.is-down i { transform: rotate(180deg); }
+  .physics-magnetism-force strong { margin-top: 0.45rem; border-radius: 999px; background: rgb(var(--c-surface) / 0.88); padding: 0.25rem 0.55rem; font-size: 0.72rem; }
+  .physics-magnetism-force small { margin-top: 0.2rem; color: rgb(var(--c-ink) / 0.52); font-size: 0.62rem; font-weight: 750; }
+  .physics-magnetism-formula { position: absolute; z-index: 5; right: 0.8rem; bottom: 0.8rem; border-inline-start: 3px solid rgb(var(--c-brand-500)); background: rgb(var(--c-surface) / 0.88); padding: 0.65rem 0.8rem; backdrop-filter: blur(8px); }
+  .physics-magnetism-formula span, .physics-magnetism-formula strong { display: block; }
+  .physics-magnetism-formula span { color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 0.92rem; font-weight: 850; }
+  .physics-magnetism-formula strong { margin-top: 0.12rem; color: rgb(var(--c-ink) / 0.52); font-size: 0.65rem; }
+  .physics-magnetism-readings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.8rem; }
+  .physics-magnetism-readings > div { border: 1px solid rgb(var(--c-line)); border-radius: 0.6rem; background: rgb(var(--c-surface)); padding: 0.75rem; }
+  .physics-magnetism-readings span, .physics-magnetism-readings small { display: block; color: rgb(var(--c-ink) / 0.5); font-size: 0.68rem; font-weight: 750; }
+  .physics-magnetism-readings strong { display: block; margin: 0.16rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.05rem; text-transform: capitalize; }
+
+  .physics-wave-presets { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.55rem; margin-bottom: 0.75rem; }
+  .physics-wave-presets button { min-height: 2.8rem; border: 1px solid rgb(var(--c-line-strong)); border-radius: 0.55rem; background: rgb(var(--c-surface)); padding: 0.55rem 0.65rem; color: rgb(var(--c-ink) / 0.7); font-size: 0.7rem; font-weight: 800; }
+  .physics-wave-presets button:hover { border-color: rgb(var(--c-brand-400)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-700)); }
+  .physics-wave-presets button:focus-visible { outline: 2px solid rgb(var(--c-brand-500)); outline-offset: 2px; }
+  .physics-wave-stage { position: relative; min-height: 20rem; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: radial-gradient(circle at 48% 48%, rgb(var(--c-aqua-50) / 0.8), transparent 48%), linear-gradient(145deg, rgb(var(--c-surface-sunken)), rgb(var(--c-brand-50) / 0.3)); }
+  .physics-wave-stage svg { display: block; width: 100%; height: auto; min-height: 19rem; }
+  .physics-wave-stage .is-grid { fill: none; stroke: rgb(var(--c-brand-500) / 0.1); stroke-width: 1; }
+  .physics-wave-stage .is-equilibrium { fill: none; stroke: rgb(var(--c-ink) / 0.34); stroke-width: 2; stroke-dasharray: 7 7; }
+  .physics-wave-stage .is-wave { fill: none; stroke: rgb(var(--c-aqua-700)); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 5px 8px rgb(var(--c-aqua-500) / 0.25)); transition: d 220ms ease; }
+  .physics-wave-stage .is-amplitude { fill: none; stroke: rgb(var(--c-coral-600)); stroke-width: 4; stroke-linecap: round; }
+  .physics-wave-stage .is-direction { fill: none; stroke: rgb(var(--c-brand-700)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+  .physics-wave-stage text { fill: rgb(var(--c-ink) / 0.58); font-family: var(--font-display); font-size: 17px; font-weight: 800; }
+  .physics-wave-stage__formula { position: absolute; right: 0.8rem; bottom: 0.8rem; border-inline-start: 3px solid rgb(var(--c-brand-500)); background: rgb(var(--c-surface) / 0.88); padding: 0.65rem 0.8rem; backdrop-filter: blur(8px); }
+  .physics-wave-stage__formula span, .physics-wave-stage__formula strong { display: block; }
+  .physics-wave-stage__formula span { color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1rem; font-weight: 850; }
+  .physics-wave-stage__formula strong { margin-top: 0.12rem; color: rgb(var(--c-ink) / 0.52); font-size: 0.68rem; }
+  .physics-wave-readings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.8rem; }
+  .physics-wave-readings > div { border: 1px solid rgb(var(--c-line)); border-radius: 0.6rem; background: rgb(var(--c-surface)); padding: 0.75rem; }
+  .physics-wave-readings span, .physics-wave-readings small { display: block; color: rgb(var(--c-ink) / 0.5); font-size: 0.68rem; font-weight: 750; }
+  .physics-wave-readings strong { display: block; margin: 0.16rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1.05rem; }
+
+  .physics-optics-presets { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.55rem; margin-bottom: 0.75rem; }
+  .physics-optics-presets button { min-height: 2.8rem; border: 1px solid rgb(var(--c-line-strong)); border-radius: 0.55rem; background: rgb(var(--c-surface)); padding: 0.5rem 0.55rem; color: rgb(var(--c-ink) / 0.7); font-size: 0.68rem; font-weight: 800; }
+  .physics-optics-presets button:hover { border-color: rgb(var(--c-brand-400)); background: rgb(var(--c-brand-50)); color: rgb(var(--c-brand-700)); }
+  .physics-optics-presets button:focus-visible { outline: 2px solid rgb(var(--c-brand-500)); outline-offset: 2px; }
+  .physics-optics-stage { position: relative; min-height: 21rem; overflow: hidden; border: 1px solid rgb(var(--c-line)); border-radius: 0.7rem; background: radial-gradient(circle at 50% 48%, rgb(var(--c-aqua-50) / 0.86), transparent 45%), linear-gradient(145deg, rgb(var(--c-surface-sunken)), rgb(var(--c-brand-50) / 0.32)); }
+  .physics-optics-stage svg { display: block; width: 100%; height: auto; min-height: 20rem; }
+  .physics-optics-stage .is-axis { fill: none; stroke: rgb(var(--c-ink) / 0.4); stroke-width: 2; stroke-dasharray: 7 6; }
+  .physics-optics-stage .is-lens { fill: rgb(var(--c-aqua-100) / 0.7); stroke: rgb(var(--c-aqua-700)); stroke-width: 4; filter: drop-shadow(0 5px 10px rgb(var(--c-aqua-500) / 0.2)); }
+  .physics-optics-stage .is-focus { fill: rgb(var(--c-coral-500)); stroke: rgb(var(--c-surface)); stroke-width: 2; }
+  .physics-optics-stage .is-focus.is-double { fill: rgb(var(--c-brand-600)); }
+  .physics-optics-stage .is-object, .physics-optics-stage .is-image { fill: none; stroke: rgb(var(--c-coral-600)); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+  .physics-optics-stage .is-image { stroke: rgb(var(--c-brand-700)); }
+  .physics-optics-stage.is-virtual .is-image { stroke-dasharray: 7 5; }
+  .physics-optics-stage .is-ray { fill: none; stroke: rgb(var(--c-aqua-700)); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+  .physics-optics-stage .is-ray-two { stroke: rgb(var(--c-coral-500)); }
+  .physics-optics-stage .is-virtual-extension { fill: none; stroke: rgb(var(--c-brand-700) / 0.65); stroke-width: 2.5; stroke-dasharray: 7 6; }
+  .physics-optics-stage text { fill: rgb(var(--c-ink) / 0.58); font-family: var(--font-display); font-size: 17px; font-weight: 850; }
+  .physics-optics-stage .is-lens-label { fill: rgb(var(--c-aqua-700)); font-size: 15px; }
+  .physics-optics-stage__formula { position: absolute; right: 0.8rem; bottom: 0.8rem; border-inline-start: 3px solid rgb(var(--c-brand-500)); background: rgb(var(--c-surface) / 0.88); padding: 0.65rem 0.8rem; backdrop-filter: blur(8px); }
+  .physics-optics-stage__formula span, .physics-optics-stage__formula strong { display: block; }
+  .physics-optics-stage__formula span { color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 0.92rem; font-weight: 850; }
+  .physics-optics-stage__formula strong { margin-top: 0.12rem; color: rgb(var(--c-ink) / 0.52); font-size: 0.66rem; }
+  .physics-optics-readings { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.7rem; margin-top: 0.8rem; }
+  .physics-optics-readings > div { min-width: 0; border: 1px solid rgb(var(--c-line)); border-radius: 0.6rem; background: rgb(var(--c-surface)); padding: 0.75rem; }
+  .physics-optics-readings span, .physics-optics-readings small { display: block; color: rgb(var(--c-ink) / 0.5); font-size: 0.68rem; font-weight: 750; }
+  .physics-optics-readings strong { display: block; margin: 0.16rem 0; color: rgb(var(--c-brand-700)); font-family: var(--font-display); font-size: 1rem; }
+
+  @media (max-width: 900px) {
+    .physics-electrostatic-presets,
+    .physics-electrostatic-ratio,
+    .physics-circuit-presets,
+    .physics-circuit-readings,
+    .physics-magnetism-presets,
+    .physics-magnetism-direction,
+    .physics-magnetism-readings { grid-template-columns: 1fr; }
+    .physics-wave-presets,
+    .physics-wave-readings { grid-template-columns: 1fr; }
+    .physics-optics-presets,
+    .physics-optics-readings { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 520px) {
+    .physics-density-stage { grid-template-columns: 1fr; }
+    .physics-density-stage__readout { justify-self: stretch; }
+    .physics-buoyancy-stage { grid-template-columns: 1fr; }
+    .physics-buoyancy-stage__decision { border-top: 3px solid rgb(var(--c-aqua-700)); border-inline-start: 0; }
+    .physics-pressure-stage { grid-template-columns: 1fr; }
+    .physics-thermal-stage { grid-template-columns: 1fr 2.8rem 1fr; }
+    .physics-thermal-stage__equilibrium { grid-column: 1 / -1; min-height: 13rem; }
+    .physics-expansion-tabs { grid-template-columns: 1fr; }
+    .physics-motion-graphs { grid-template-columns: 1fr; }
+    .physics-motion-stage__readout { right: 0.7rem; left: 0.7rem; min-width: 0; }
+    .physics-energy-stage { grid-template-columns: 1fr; }
+    .physics-energy-bars { border-top: 1px solid rgb(var(--c-line)); border-inline-start: 0; }
+    .physics-electrostatic-ratio { grid-template-columns: 1fr; }
+    .physics-electrostatic-presets { grid-template-columns: 1fr; }
+    .physics-circuit-stage__meter { right: 0.7rem; bottom: 0.7rem; left: 0.7rem; min-width: 0; }
+    .physics-magnetism-pole { width: 4.6rem; }
+    .physics-magnetism-pole.is-north { left: 0.5rem; }
+    .physics-magnetism-pole.is-south { right: 0.5rem; }
+    .physics-magnetism-field { right: 5rem; left: 5rem; }
+    .physics-magnetism-wire { width: 10rem; }
+    .physics-magnetism-formula { right: 0.7rem; bottom: 0.7rem; left: 0.7rem; }
+    .physics-wave-stage__formula { right: 0.7rem; bottom: 0.7rem; left: 0.7rem; }
+    .physics-optics-stage__formula { right: 0.7rem; bottom: 0.7rem; left: 0.7rem; }
+    .physics-electrostatic-charge { width: 4.5rem; height: 4.5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .physics-scale-scene,
+    .physics-scale-scene__scan,
+    .physics-ruler__object,
+    .physics-density-stage__object,
+    .physics-liquid-stage .is-liquid,
+    .physics-liquid-stage .is-meniscus,
+    .physics-buoyancy-stage__object,
+    .physics-buoyancy-stage__arrow,
+    .physics-pressure-stage__force,
+    .physics-pressure-stage__plate,
+    .physics-pressure-stage__column,
+    .physics-pressure-stage__column i,
+    .physics-thermal-stage__thermometer i,
+    .physics-thermal-stage__mix i,
+    .physics-expansion-stage__rail,
+    .physics-expansion-stage__rail::after,
+    .physics-expansion-stage__rail b,
+    .physics-motion-stage__block,
+    .physics-motion-stage__block > i,
+    .physics-motion-graphs .is-data,
+    .physics-energy-cart,
+    .physics-energy-bars > div > i::after,
+    .physics-electrostatic-stage__axis,
+    .physics-electrostatic-charge,
+    .physics-electrostatic-charge > i,
+    .physics-circuit-stage .is-current,
+    .physics-magnetism-wire,
+    .physics-wave-stage .is-wave,
+    .physics-optics-stage .is-ray,
+    .physics-vector-stage__arrow { animation: none; transition: none; }
+  }
+}
+
 /* ------------------------------------------------------------------
    Aurora arka plan katmanı
    ------------------------------------------------------------------
@@ -626,3 +2399,834 @@
    dekoratif, mutlak konumlu bir çocuk öğedir — sayfa iskeletine veya
    içerik sarmalayıcısına transform/filter uygulanmaz.
    ------------------------------------------------------------------ */
+
+/* ==================================================================
+   DRKOÇ DERS OKUYUCUSU — EDITORIAL LEARNING LAYER
+   ------------------------------------------------------------------
+   Bu katman uygulamanın geri kalanından BİLİNÇLİ OLARAK AYRILIR.
+
+   Uygulamanın geri kalanı bir panel (dashboard): kart, gradient, cam,
+   istatistik. Ders notu ise bir BELGEDİR. Panel dilini derse taşırsak
+   ortaya "AI tarafından üretilmiş eğitim sitesi" çıkar (§9, §55). Bu
+   yüzden ders gövdesinde gradient, glow, glassmorphism, blok başına kart
+   ve başlık emojisi YOKTUR. Yerine tipografi, beyaz alan, saç teli çizgi
+   ve kenar notu vardır.
+
+   Aurora kimliği dersin ÇEVRESİNDE yaşar (üst şerit, ilerleme, kütüphane);
+   okuma alanında sessizleşir.
+
+   ------------------------------------------------------------------
+   SAYFA DÜZENİ — üç şeritli belge
+   ------------------------------------------------------------------
+   Geniş ekranda:
+
+     │  kenar notları  │ ╎ │        anlatım metni            │
+     │   (12rem)       │ ╎ │        (34rem ≈ 68 karakter)    │
+                         ↑
+                    omurga çizgisi
+
+   Omurga (spine) DrKoç'un görsel imzasıdır: kart kenarlıklarının yaptığı
+   gruplama işini tek bir sürekli çizgiyle yapar, böylece sayfa kutulara
+   parçalanmaz ve ders tek bir anlatım olarak okunur.
+
+   Kenar notu için CSS grid DEĞİL float kullanılır. Grid'de her öğe kendi
+   satırını açar; not, açıkladığı paragrafın hizasından kayar. Negatif
+   kenar boşluklu float ise notu tam da metinde geçtiği yere,
+   paragrafın hizasına yerleştirir (klasik kitap dizgisi).
+   ================================================================== */
+
+@layer components {
+  .lesson-doc {
+    /* Kap sorgusu (container query) — ekran genişliği DEĞİL, dersin
+       gerçekte sahip olduğu genişlik ölçülür.
+
+       Sebebi somut: ders okuyucusu uygulamanın içinde 264 px'lik kenar
+       çubuğunun sağında yaşıyor, `/ders-notu-onizleme` sayfasında ise tam
+       genişlikte. Tek bir `@media` eşiği ikisinden birinde her zaman yanlış
+       oluyordu: ya önizlemede kenar notu sütunu gereksiz yere kapalı
+       kalıyor, ya uygulamada yeri olmadığı hâlde açılıp metni eziyordu.
+
+       Destekleyemeyen eski tarayıcıda tek sütunlu okuma düzeni geçerli
+       kalır — kenar notları satır içine iner, ders yine okunur (§50). */
+    container-type: inline-size;
+    container-name: lesson;
+
+    --lesson-measure: 34rem;
+    --lesson-wide: 40rem;
+    --lesson-margin: 12rem;
+    --lesson-gap: 2.5rem;
+    color: rgb(var(--c-ink) / 0.88);
+    font-size: 1.0625rem;
+    line-height: 1.85;
+  }
+
+  .lesson-body {
+    width: 100%;
+    max-width: var(--lesson-wide);
+    margin-inline: auto;
+  }
+
+  /* Normal içerik okuma ölçüsünde kalır; görseller ve tablolar taşar. */
+  .lesson-flow > * {
+    max-width: var(--lesson-measure);
+  }
+
+  .lesson-flow > .lesson-wide {
+    max-width: var(--lesson-wide);
+  }
+
+  .lesson-flow > .lesson-full {
+    max-width: 100%;
+  }
+
+  @container lesson (min-width: 56rem) {
+    .lesson-body {
+      max-width: calc(var(--lesson-margin) + var(--lesson-gap) + var(--lesson-wide));
+      padding-inline-start: calc(var(--lesson-margin) + var(--lesson-gap));
+    }
+
+    /* Tam genişlikteki şekil kenar sütununu da kullanır; bu yüzden orada
+       duran bir hoca notunun ÜSTÜNE binmemeli. `clear` onu notun altına
+       indirir — kitapta da tam sayfa bir şekil, kenar notunun hizasından
+       sonra başlar. */
+    .lesson-flow > .lesson-full {
+      width: calc(var(--lesson-margin) + var(--lesson-gap) + var(--lesson-wide));
+      max-width: none;
+      margin-inline-start: calc(-1 * (var(--lesson-margin) + var(--lesson-gap)));
+      clear: left;
+    }
+
+    /* Kenar notu: metnin solundaki şeride çekilir, sağa yaslanır. */
+    .lesson-flow > .lesson-margin-item {
+      float: left;
+      clear: left;
+      width: var(--lesson-margin);
+      max-width: var(--lesson-margin);
+      margin-inline-start: calc(-1 * (var(--lesson-margin) + var(--lesson-gap)));
+      margin-block: 0.35rem 1.25rem;
+      text-align: right;
+    }
+  }
+
+  /* --- Omurga -----------------------------------------------------
+     Dar ekranda metnin solunda içeride, geniş ekranda kenar notlarıyla
+     metin arasındaki boşlukta durur. */
+  .lesson-spine {
+    position: relative;
+    padding-inline-start: 1.25rem;
+  }
+
+  .lesson-spine::before {
+    content: '';
+    position: absolute;
+    /* z-index: -1 — omurga, tam genişlikteki şekil levhalarının ALTINDA
+       kalmalı. Konumlanmış bir ::before varsayılan olarak kardeşlerinin
+       arka planının üstüne boyanır ve çizgi levhanın içinden geçiyordu. */
+    z-index: -1;
+    inset-block: 0.4rem 0;
+    inset-inline-start: 0;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      rgb(var(--c-brand-400) / 0.6),
+      rgb(var(--c-line-strong)) 10%,
+      rgb(var(--c-line-strong)) 90%,
+      transparent
+    );
+  }
+
+  /* Düğüm omurga çizgisinin ÜZERİNDE ortalanır. Çizgi, bölümün kenar
+     kutusunun sol ucundadır (inset-inline-start: 0); düğüm de oradan
+     kendi yarıçapı kadar geri çekilir. Dar ekranda -1.25rem verilirse
+     düğüm sayfanın dışına taşıp yarım daire olarak görünüyordu. */
+  .lesson-spine-node {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0.55rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-inline-start: -0.219rem;
+    border-radius: 9999px;
+    background: rgb(var(--c-surface));
+    box-shadow: 0 0 0 2px rgb(var(--c-brand-500) / 0.85);
+  }
+
+  @container lesson (min-width: 56rem) {
+    .lesson-spine {
+      padding-inline-start: 0;
+    }
+
+    .lesson-spine::before {
+      inset-inline-start: calc(-1 * var(--lesson-gap) / 2);
+    }
+
+    .lesson-spine-node {
+      inset-inline-start: calc(-1 * var(--lesson-gap) / 2);
+    }
+  }
+
+  /* --- Anlatım metni ---------------------------------------------- */
+  .lesson-prose p {
+    margin: 0;
+  }
+
+  .lesson-prose p + p {
+    margin-top: 1.15em;
+  }
+
+  .lesson-prose strong {
+    font-weight: 650;
+    color: rgb(var(--c-ink));
+  }
+
+  /* Vurgu: fosforlu kalem taraması değil, ince alt bant. Tarama ekranda
+     "AI özet çıkarmış" hissi veriyor. */
+  .lesson-prose mark {
+    background: none;
+    color: rgb(var(--c-ink));
+    font-weight: 600;
+    box-shadow: inset 0 -0.4em 0 rgb(var(--c-brand-200) / 0.65);
+  }
+
+  .lesson-prose em {
+    font-style: italic;
+    color: rgb(var(--c-ink) / 0.82);
+  }
+
+  /* Ses oynarken yalnızca anlatılan içerik bloğu görünür biçimde öne çıkar.
+     Çerçeve/kart eklemek yerine mevcut kitap akışına ince bir vurgu bırakır. */
+  .lesson-narration-active {
+    position: relative;
+    border-radius: 0.55rem;
+    background: rgb(var(--c-brand-50) / 0.72);
+    box-shadow: 0 0 0 0.45rem rgb(var(--c-brand-50) / 0.72);
+    transition: background-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .lesson-narration-active::before {
+    content: '';
+    position: absolute;
+    inset-block: 0.1rem;
+    inset-inline-start: -0.75rem;
+    width: 3px;
+    border-radius: 9999px;
+    background: rgb(var(--c-brand-500));
+  }
+
+  /* --- Tanımlanan terim: kutu değil, sözlük girdisi ---------------- */
+  .lesson-term {
+    display: inline-block;
+    font-family: theme('fontFamily.display');
+    font-weight: 700;
+    font-size: 1.15em;
+    letter-spacing: -0.012em;
+    color: rgb(var(--c-ink));
+    padding-bottom: 0.12rem;
+    border-bottom: 2px solid rgb(var(--c-brand-400) / 0.6);
+  }
+
+  .lesson-why-question {
+    font-family: theme('fontFamily.display');
+    font-size: 1.1875rem;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.5;
+    letter-spacing: -0.015em;
+    color: rgb(var(--c-ink) / 0.92);
+  }
+
+  /* --- Kenar notu (hoca notu) -------------------------------------- */
+  .lesson-note {
+    border-inline-start: 2px solid rgb(var(--c-brand-400) / 0.55);
+    padding-inline-start: 0.9rem;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: rgb(var(--c-ink) / 0.74);
+  }
+
+  @container lesson (min-width: 56rem) {
+    .lesson-margin-item .lesson-note {
+      border-inline-start: 0;
+      border-inline-end: 2px solid rgb(var(--c-brand-400) / 0.55);
+      padding-inline-start: 0;
+      padding-inline-end: 0.9rem;
+      font-size: 0.875rem;
+      line-height: 1.6;
+    }
+  }
+
+  .lesson-note-warning {
+    border-color: rgb(var(--c-warning-500) / 0.65);
+  }
+
+  .lesson-note-exam {
+    border-color: rgb(var(--c-aqua-500) / 0.7);
+  }
+
+  .lesson-note-connection {
+    border-color: rgb(var(--c-info-500) / 0.6);
+  }
+
+  .lesson-eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgb(var(--c-ink) / 0.45);
+  }
+
+  /* --- Şekil: kart değil LEVHA ------------------------------------- */
+  .lesson-figure {
+    margin: 0;
+  }
+
+  .lesson-figure-plate {
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.5rem;
+    background: rgb(var(--c-surface));
+    padding: 1rem;
+    /* Etiketli bilimsel şema telefonda okunur kalsın diye çizim kendi
+       kabında yatay kayar; sayfa gövdesi asla yatay kaymaz (§40). */
+    overflow-x: auto;
+  }
+
+  @media (min-width: 640px) {
+    .lesson-figure-plate {
+      padding: 1.5rem;
+    }
+  }
+
+  .lesson-figure figcaption {
+    margin-top: 0.75rem;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: rgb(var(--c-ink) / 0.68);
+  }
+
+  /* --- Kavram haritası: ilişkileri görünür kılan sakin şerit ------ */
+  .lesson-concept-map {
+    border-block: 1px solid rgb(var(--c-line));
+    padding-block: 1.1rem;
+  }
+
+  .lesson-concept-map-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+  }
+
+  .lesson-concept-map-item {
+    display: flex;
+    align-items: center;
+    flex: 1 0 9.5rem;
+    gap: 0.5rem;
+  }
+
+  .lesson-concept-map-node {
+    display: block;
+    width: 100%;
+    min-height: 5.5rem;
+    border: 1px solid rgb(var(--c-line-strong));
+    border-radius: 0.5rem;
+    background: rgb(var(--c-surface-muted));
+    padding: 0.8rem;
+    transition: border-color 160ms ease, background-color 160ms ease;
+  }
+
+  .lesson-concept-map-node:hover,
+  .lesson-concept-map-node.is-active {
+    border-color: rgb(var(--c-brand-400));
+    background: rgb(var(--c-brand-50) / 0.7);
+  }
+
+  .lesson-concept-map-arrow {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: rgb(var(--c-brand-700));
+    font-size: 0.6875rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .lesson-concept-map-arrow::after {
+    content: '→';
+    font-size: 1.125rem;
+  }
+
+  .lesson-concept-map figcaption {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: rgb(var(--c-ink) / 0.6);
+  }
+
+  /* --- Tarih: kronoloji ve neden-sonuç omurgaları ---------------- */
+  .lesson-history-rail {
+    border-block: 1px solid rgb(var(--c-line));
+    padding-block: 1.1rem;
+  }
+
+  .lesson-history-event {
+    position: relative;
+    padding: 0 0 1.15rem 1.5rem;
+  }
+
+  .lesson-history-event:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    inset-inline-start: 0.28rem;
+    inset-block: 0.55rem -0.55rem;
+    width: 1px;
+    background: rgb(var(--c-line-strong));
+  }
+
+  .lesson-history-dot {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0.38rem;
+    width: 0.58rem;
+    height: 0.58rem;
+    border: 2px solid rgb(var(--c-brand-500));
+    border-radius: 9999px;
+    background: rgb(var(--c-surface));
+  }
+
+  .lesson-cause-effect-flow {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  @media (min-width: 640px) {
+    .lesson-cause-effect-flow {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .lesson-cause-effect-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.7rem;
+    border-top: 2px solid rgb(var(--c-brand-300));
+    padding-top: 0.75rem;
+  }
+
+  .lesson-cause-effect-index {
+    display: grid;
+    width: 1.4rem;
+    height: 1.4rem;
+    place-items: center;
+    border-radius: 9999px;
+    background: rgb(var(--c-brand-50));
+    color: rgb(var(--c-brand-700));
+    font-size: 0.6875rem;
+    font-weight: 800;
+  }
+
+  .lesson-period-summary {
+    border: 1px solid rgb(var(--c-line-strong));
+    border-inline-start: 3px solid rgb(var(--c-brand-500) / 0.75);
+    border-radius: 0.5rem;
+    background: rgb(var(--c-surface-muted));
+    padding: 1rem;
+  }
+
+  /* --- Tarih: etkileşimli şematik atlas --------------------------- */
+  .lesson-historical-map {
+    border-block: 1px solid rgb(var(--c-line-strong));
+    padding-block: 1.25rem;
+  }
+
+  .lesson-map-schematic-label {
+    border: 1px solid rgb(var(--c-accent-400) / 0.6);
+    border-radius: 9999px;
+    background: rgb(var(--c-accent-50) / 0.65);
+    padding: 0.3rem 0.65rem;
+    color: rgb(var(--c-accent-700));
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lesson-map-layer-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .lesson-map-layer-button {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 0.45rem;
+    border: 1px solid rgb(var(--c-line-strong));
+    border-radius: 9999px;
+    background: rgb(var(--c-surface));
+    padding: 0.55rem 0.8rem;
+    color: rgb(var(--c-ink) / 0.64);
+    font-size: 0.78rem;
+    font-weight: 750;
+  }
+
+  .lesson-map-layer-button > span {
+    width: 0.55rem;
+    height: 0.55rem;
+    border: 2px solid currentColor;
+    border-radius: 9999px;
+  }
+
+  .lesson-map-layer-button[aria-pressed='true'] {
+    border-color: rgb(var(--c-brand-400));
+    background: rgb(var(--c-brand-50));
+    color: rgb(var(--c-brand-700));
+  }
+
+  .lesson-map-layer-button[aria-pressed='true'] > span {
+    background: currentColor;
+  }
+
+  .lesson-map-scroll {
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    padding-bottom: 0.35rem;
+  }
+
+  .lesson-map-canvas {
+    position: relative;
+    width: 100%;
+    min-width: 44rem;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border: 1px solid rgb(var(--c-line-strong));
+    border-radius: 0.65rem;
+    background:
+      radial-gradient(circle at 78% 66%, rgb(var(--c-accent-100) / 0.44), transparent 31%),
+      linear-gradient(155deg, rgb(var(--c-surface-muted)), rgb(var(--c-aqua-50) / 0.55));
+  }
+
+  .lesson-map-canvas::before,
+  .lesson-map-canvas::after {
+    content: '';
+    position: absolute;
+    border: 1px solid rgb(var(--c-ink) / 0.08);
+    background: rgb(var(--c-accent-100) / 0.4);
+  }
+
+  .lesson-map-canvas::before {
+    inset: -22% 52% 57% -12%;
+    border-radius: 40% 48% 56% 30%;
+    transform: rotate(-8deg);
+  }
+
+  .lesson-map-canvas::after {
+    inset: 44% -12% -28% 35%;
+    border-radius: 48% 32% 30% 52%;
+    transform: rotate(-5deg);
+  }
+
+  .lesson-map-region {
+    position: absolute;
+    z-index: 1;
+    color: rgb(var(--c-ink) / 0.24);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+  }
+
+  .lesson-map-region.tone-water { color: rgb(var(--c-aqua-700) / 0.46); }
+  .lesson-map-region.tone-land { color: rgb(var(--c-accent-700) / 0.34); }
+
+  .lesson-map-route {
+    position: absolute;
+    z-index: 2;
+    height: 2px;
+    transform-origin: left center;
+    background: rgb(var(--c-brand-500) / 0.68);
+  }
+
+  .lesson-map-route::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -1px;
+    width: 0.48rem;
+    height: 0.48rem;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    color: inherit;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  .lesson-map-route.tone-aqua { background: rgb(var(--c-aqua-600) / 0.75); color: rgb(var(--c-aqua-700)); }
+  .lesson-map-route.tone-accent { background: rgb(var(--c-accent-500) / 0.75); color: rgb(var(--c-accent-700)); }
+  .lesson-map-route.tone-danger { background: rgb(var(--c-danger-500) / 0.74); color: rgb(var(--c-danger-600)); }
+
+  .lesson-map-point {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    align-items: center;
+    gap: 0.35rem;
+    border: 0;
+    background: transparent;
+    color: rgb(var(--c-brand-800));
+    font-size: 0.72rem;
+    line-height: 1.2;
+    transform: translate(-0.75rem, -50%);
+  }
+
+  .lesson-map-point > span {
+    width: 0.72rem;
+    height: 0.72rem;
+    flex: 0 0 auto;
+    border: 2px solid rgb(var(--c-surface));
+    border-radius: 9999px;
+    background: rgb(var(--c-brand-600));
+    box-shadow: 0 0 0 2px rgb(var(--c-brand-500) / 0.28);
+  }
+
+  .lesson-map-point > strong {
+    border-radius: 0.25rem;
+    background: rgb(var(--c-surface) / 0.88);
+    padding: 0.18rem 0.3rem;
+    white-space: nowrap;
+  }
+
+  .lesson-map-point:hover > strong,
+  .lesson-map-point.is-active > strong {
+    background: rgb(var(--c-brand-700));
+    color: white;
+  }
+
+  .lesson-map-point.tone-aqua > span { background: rgb(var(--c-aqua-600)); box-shadow: 0 0 0 2px rgb(var(--c-aqua-500) / 0.28); }
+  .lesson-map-point.tone-accent > span { background: rgb(var(--c-accent-600)); box-shadow: 0 0 0 2px rgb(var(--c-accent-500) / 0.28); }
+  .lesson-map-point.tone-danger > span { background: rgb(var(--c-danger-600)); box-shadow: 0 0 0 2px rgb(var(--c-danger-500) / 0.28); }
+
+  .lesson-map-detail {
+    margin-top: 0.75rem;
+    border-inline-start: 3px solid rgb(var(--c-brand-500));
+    background: rgb(var(--c-brand-50) / 0.5);
+    padding: 0.75rem 0.9rem;
+  }
+
+  .lesson-map-insight {
+    margin-top: 0.9rem;
+    border-inline-start: 2px solid rgb(var(--c-aqua-500));
+    padding-inline-start: 0.9rem;
+    color: rgb(var(--c-ink) / 0.72);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .lesson-map-source {
+    margin: 0.65rem 0 0;
+    color: rgb(var(--c-ink) / 0.44);
+    font-size: 0.7rem;
+    line-height: 1.55;
+  }
+
+  /* --- Tarih: hükümdar ve önemli şahsiyet kayıtları --------------- */
+  .lesson-historical-figures {
+    border-block: 1px solid rgb(var(--c-line-strong));
+    padding-block: 1.2rem;
+  }
+
+  .lesson-figure-grid {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  @media (min-width: 720px) {
+    .lesson-figure-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  .lesson-person-record {
+    border: 1px solid rgb(var(--c-line-strong));
+    border-inline-start: 3px solid rgb(var(--c-brand-300));
+    border-radius: 0.5rem;
+    background: rgb(var(--c-surface-muted));
+    padding: 0.9rem;
+    transition: border-color 160ms ease, background-color 160ms ease;
+  }
+
+  .lesson-person-record:hover,
+  .lesson-person-record.is-active {
+    border-color: rgb(var(--c-brand-400));
+    border-inline-start-color: rgb(var(--c-brand-600));
+    background: rgb(var(--c-brand-50) / 0.48);
+  }
+
+  @media (max-width: 639px) {
+    .lesson-map-scroll {
+      margin-inline: -0.5rem;
+      padding-inline: 0.5rem;
+    }
+
+    .lesson-map-canvas { min-width: 39rem; }
+  }
+
+  /* --- Sınav bandı: kutu yerine üstte/altta saç teli çizgi ---------- */
+  .lesson-band {
+    border-top: 1px solid rgb(var(--c-line-strong));
+    border-bottom: 1px solid rgb(var(--c-line-strong));
+    padding-block: 1.15rem;
+  }
+
+  /* --- Durak: öğrencinin bir şey YAPTIĞI yer ------------------------
+     Bunlar gerçekten ayrı birer nesnedir, bu yüzden yüzeyleri vardır.
+     Ama yüzey gömüktür: gölge yok, büyük yuvarlaklık yok, gradient yok. */
+  .lesson-stop {
+    background: rgb(var(--c-surface-sunken));
+    border: 1px solid rgb(var(--c-line));
+    border-radius: 0.625rem;
+    padding: 1.15rem;
+  }
+
+  @media (min-width: 640px) {
+    .lesson-stop {
+      padding: 1.5rem;
+    }
+  }
+
+  /* --- Adım rayı (süreç / çözümlü örnek) --------------------------- */
+  .lesson-steps {
+    position: relative;
+    padding-inline-start: 2.25rem;
+  }
+
+  .lesson-steps::before {
+    content: '';
+    position: absolute;
+    inset-block: 0.9rem;
+    inset-inline-start: 0.6875rem;
+    width: 1px;
+    background: rgb(var(--c-line-strong));
+  }
+
+  /* Numara, rayın ÜZERİNDE durur — yani `.lesson-steps` girintisinin içinde.
+     `inset-inline-start: 0` verilirse numara adım metninin kendi sol
+     kenarına oturur ve başlığın ilk harflerini örter. Bu yüzden liste
+     öğesinin dışına, girinti kadar geriye çekilir. */
+  .lesson-step-marker {
+    position: absolute;
+    inset-inline-start: -2.25rem;
+    top: 0.1rem;
+    display: grid;
+    place-items: center;
+    width: 1.375rem;
+    height: 1.375rem;
+    border-radius: 9999px;
+    background: rgb(var(--c-surface));
+    border: 1px solid rgb(var(--c-line-strong));
+    font-size: 0.6875rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: rgb(var(--c-ink) / 0.6);
+  }
+
+  /* --- Formül ------------------------------------------------------ */
+  .lesson-formula {
+    background: rgb(var(--c-surface-sunken));
+    border-radius: 0.5rem;
+    padding: 1.1rem 1.25rem;
+    text-align: center;
+    overflow-x: auto;
+  }
+
+  /* --- Tuzak: yanlış / doğru karşılaştırması ----------------------- */
+  .lesson-wrong {
+    border-inline-start: 3px solid rgb(var(--c-danger-500) / 0.6);
+    padding-inline-start: 0.9rem;
+  }
+
+  .lesson-right {
+    border-inline-start: 3px solid rgb(var(--c-success-500) / 0.65);
+    padding-inline-start: 0.9rem;
+  }
+
+  /* --- Bölüm başlığı ----------------------------------------------- */
+  .lesson-section-title {
+    font-family: theme('fontFamily.display');
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    color: rgb(var(--c-ink));
+  }
+
+  @media (min-width: 640px) {
+    .lesson-section-title {
+      font-size: 1.9rem;
+    }
+  }
+
+  .lesson-lead {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: rgb(var(--c-ink) / 0.7);
+  }
+
+  @media (min-width: 640px) {
+    .lesson-lead {
+      font-size: 1.125rem;
+    }
+  }
+
+  /* --- Ders içi tablo: zebra yok, saç teli çizgi var ---------------- */
+  .lesson-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375rem;
+  }
+
+  .lesson-table th {
+    text-align: start;
+    font-weight: 700;
+    color: rgb(var(--c-ink) / 0.55);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0 0.85rem 0.55rem 0;
+    border-bottom: 1px solid rgb(var(--c-line-strong));
+    white-space: nowrap;
+  }
+
+  .lesson-table td {
+    padding: 0.7rem 0.85rem 0.7rem 0;
+    border-bottom: 1px solid rgb(var(--c-line));
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  .lesson-table tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .lesson-table td:first-child {
+    font-weight: 650;
+    color: rgb(var(--c-ink) / 0.9);
+  }
+}
+
+@layer utilities {
+  .lesson-link {
+    color: rgb(var(--c-brand-700));
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+  }
+
+  .lesson-link:hover {
+    color: rgb(var(--c-brand-800));
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 3,
+  "sliceId": "cumhuriyet-1923",
+  "sliceYear": 1923,
+  "title": "1923 Cumhuriyet'in ilanı kanıt dilimi",
+  "publicationStatus": "reviewed-slice",
+  "scopeNote": "Bu paket Ankara'daki olay yerini sunar. Mevcut 1930 genel kaynak poligonu 1923 sınır kanıtı olarak yeniden adlandırılmaz.",
+  "validFrom": 1923, "validTo": 1924,
+  "sourceIds": ["tbmm-cumhuriyet-1923", "wikidata-cc0"],
+  "administrativeRegions": [],
+  "settlements": [{
+    "id": "settlement:birinci-meclis-ankara", "nameTr": "Birinci Türkiye Büyük Millet Meclisi Binası", "sourceName": "War of Independence Museum",
+    "validFrom": 1920, "validTo": 1925, "type": "settlement", "subtype": "parliament-building", "importance": 3, "minZoom": 4,
+    "sourceIds": ["tbmm-cumhuriyet-1923", "wikidata-cc0"], "sourceEntityId": "Q7968654",
+    "geometryMethod": "external-cc0-point-with-official-reference", "confidence": "high", "boundaryCertainty": "not-applicable-point", "coverageStatus": "mapped-point-only", "reviewStatus": "reviewed",
+    "summary": "Cumhuriyet'in ilanına ilişkin anayasa değişikliğinin kabul edildiği Birinci Meclis binası.",
+    "warning": "Yapı noktasıdır; Ankara kent sınırı veya Türkiye'nin 1923 siyasî sınırı değildir.",
+    "geometry": { "type": "Point", "coordinates": [32.854002, 39.941956] }
+  }],
+  "events": [{
+    "id": "event:cumhuriyet-ilani-1923", "nameTr": "Cumhuriyet'in İlanı", "sourceName": "Proclamation of the Republic of Turkey",
+    "validFrom": 1923, "validTo": 1924, "type": "event", "subtype": "constitutional-change", "importance": 3, "minZoom": 3.2,
+    "sourceIds": ["tbmm-cumhuriyet-1923", "wikidata-cc0"], "relatedEntityIds": ["settlement:birinci-meclis-ankara"],
+    "geometryMethod": "official-event-at-external-cc0-building-point", "confidence": "high", "boundaryCertainty": "not-applicable-point", "coverageStatus": "mapped-point-only", "reviewStatus": "reviewed",
+    "eventDate": { "from": "1923-10-29", "to": "1923-10-29", "precision": "day" },
+    "summary": "29 Ekim 1923 tarihli 364 sayılı Kanunla devletin yönetim şekli cumhuriyet olarak ilan edildi.",
+    "warning": "Olay noktasıdır; 1923 sınır poligonu değildir.",
+    "geometry": { "type": "Point", "coordinates": [32.854002, 39.941956] }
+  }], "routes": []
+}

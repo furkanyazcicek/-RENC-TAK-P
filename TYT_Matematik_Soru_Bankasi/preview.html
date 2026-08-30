@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TYT Matematik Soru Bankası — Önizleme</title>
+  <script>
+    // Markdown dosyaları tarayıcı güvenliği nedeniyle file:// sayfasından okunamaz.
+    // Kullanıcı preview.html dosyasını çift tıklarsa çalışan yerel sunucuya geçir.
+    if (window.location.protocol === 'file:') {
+      window.location.replace('http://127.0.0.1:4174/TYT_Matematik_Soru_Bankasi/preview.html');
+    }
+  </script>
+  <link rel="stylesheet" href="/node_modules/katex/dist/katex.min.css" />
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #14213d;
+      --muted: #64748b;
+      --paper: #fffdf8;
+      --surface: #ffffff;
+      --line: #e5e7eb;
+      --accent: #e85d3f;
+      --accent-soft: #fff0eb;
+      --navy: #172554;
+      --success: #16794b;
+      --shadow: 0 18px 45px rgba(30, 41, 59, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(232, 93, 63, 0.09), transparent 26rem),
+        linear-gradient(180deg, #f8fafc 0, var(--paper) 22rem);
+    }
+
+    button { font: inherit; }
+    .shell { max-width: 1220px; margin: 0 auto; padding: 28px 24px 64px; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: end;
+      padding: 34px;
+      border-radius: 28px;
+      color: white;
+      background: linear-gradient(135deg, var(--navy), #263d77 68%, #344f91);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -70px;
+      top: -120px;
+      border: 45px solid rgba(255,255,255,.07);
+      border-radius: 50%;
+    }
+    .eyebrow { margin: 0 0 10px; color: #fbbf9e; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .hero h1 { margin: 0; max-width: 760px; font-size: clamp(30px, 5vw, 54px); line-height: 1.02; letter-spacing: -.045em; }
+    .hero p { margin: 16px 0 0; max-width: 700px; color: #dce6ff; line-height: 1.65; }
+    .progress { min-width: 190px; padding: 20px; border: 1px solid rgba(255,255,255,.15); border-radius: 20px; background: rgba(255,255,255,.08); backdrop-filter: blur(10px); z-index: 1; }
+    .progress strong { display: block; font-size: 34px; }
+    .progress span { color: #dce6ff; font-size: 13px; }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px 18px;
+      align-items: start;
+      margin: 28px 0 22px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 8px 24px rgba(30,41,59,.05);
+      position: sticky;
+      top: 12px;
+      z-index: 10;
+      backdrop-filter: blur(15px);
+    }
+    .tests, .mode-switch, .topic-switch { display: flex; flex-wrap: wrap; gap: 8px; }
+    .topic-switch {
+      grid-column: 1 / -1;
+      max-height: 64px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      align-content: flex-start;
+      padding: 0 4px 10px 0;
+      border-bottom: 1px solid var(--line);
+      scrollbar-width: thin;
+    }
+    .topic-switch .chip { min-width: max-content; white-space: nowrap; font-weight: 800; }
+    .tests {
+      max-height: 64px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      align-content: flex-start;
+      padding-right: 4px;
+      scrollbar-width: thin;
+    }
+    .mode-switch { justify-self: end; }
+    .topic-switch .chip.active { border-color: var(--navy); background: var(--navy); box-shadow: none; }
+    .chip {
+      min-width: 44px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 13px;
+      color: var(--ink);
+      background: white;
+      cursor: pointer;
+      transition: .18s ease;
+    }
+    .chip:hover { transform: translateY(-1px); border-color: #cbd5e1; }
+    .chip.active { color: white; border-color: var(--accent); background: var(--accent); box-shadow: 0 6px 15px rgba(232,93,63,.25); }
+    .mode-switch .chip.active { border-color: var(--navy); background: var(--navy); box-shadow: none; }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .badge { padding: 8px 12px; border-radius: 999px; color: var(--muted); background: #f1f5f9; font-size: 13px; font-weight: 700; }
+    .badge.level { color: #9a3412; background: var(--accent-soft); }
+
+    #content { display: grid; gap: 18px; scroll-margin-top: 220px; }
+    .document-title { padding: 6px 4px 10px; }
+    .document-title h1 { display: none; }
+    .document-title h2 { margin: 0; font-size: 27px; letter-spacing: -.025em; }
+    .question-card {
+      padding: 28px 30px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--surface);
+      box-shadow: 0 10px 30px rgba(30,41,59,.055);
+    }
+    .question-card h2 { margin: 0 0 8px; color: var(--navy); font-size: 21px; }
+    .question-card figure { margin: 18px 0; }
+    .question-card img { display: block; width: 100%; max-height: 320px; object-fit: contain; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+    .question-card code { display: inline-flex; margin-bottom: 16px; padding: 5px 9px; border-radius: 7px; color: var(--muted); background: #f1f5f9; font-size: 11px; font-weight: 700; letter-spacing: .06em; }
+    .question-card p { margin: 10px 0; line-height: 1.72; }
+    .question-card .data-table { width: 100%; margin: 16px 0; border-collapse: separate; border-spacing: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; }
+    .question-card .data-table th, .question-card .data-table td { padding: 11px 14px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; }
+    .question-card .data-table th { color: var(--navy); background: #f1f5f9; font-weight: 800; }
+    .question-card .data-table tr:last-child td { border-bottom: 0; }
+    .question-card .data-table th:last-child, .question-card .data-table td:last-child { border-right: 0; }
+    .question-card .option { display: block; width: 100%; margin: 9px 0; padding: 12px 14px; border: 1px solid #e5e9f0; border-radius: 12px; color: var(--ink); background: #fbfcfe; text-align: left; line-height: 1.55; }
+    button.option { cursor: pointer; transition: border-color .16s ease, background .16s ease, transform .16s ease; }
+    button.option:hover { transform: translateY(-1px); border-color: #a9b7cd; background: #f7f9fd; }
+    button.option.selected { border-color: var(--navy); background: #edf2ff; box-shadow: inset 0 0 0 1px var(--navy); }
+    .question-card.correct { border-color: #89cfad; background: #fcfffd; }
+    .question-card.wrong { border-color: #f1a28e; background: #fffdfc; }
+    .question-card.blank { border-color: #e8c878; }
+    .question-card .option.correct-choice { border-color: var(--success); color: #0f5f3a; background: #eaf8f1; box-shadow: inset 0 0 0 1px var(--success); }
+    .question-card .option.incorrect-choice { border-color: #c2412d; color: #9f2f1e; background: #fff0eb; box-shadow: inset 0 0 0 1px #c2412d; }
+    .question-card .answer { display: inline-flex; margin: 3px 0 14px; padding: 8px 12px; border-radius: 10px; color: var(--success); background: #eaf8f1; font-weight: 800; }
+    .question-card .label { color: var(--navy); font-weight: 800; }
+    .feedback { margin: 16px 0 0; padding: 12px 14px; border-radius: 11px; font-size: 14px; font-weight: 800; }
+    .feedback.correct { color: #0f5f3a; background: #eaf8f1; }
+    .feedback.wrong { color: #9f2f1e; background: #fff0eb; }
+    .feedback.blank { color: #805b00; background: #fff8dc; }
+    .math-block { margin: 18px 0; padding: 13px; overflow-x: auto; text-align: center; border-radius: 12px; background: #f8fafc; }
+    .test-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin-top: 22px; padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: white; box-shadow: 0 10px 30px rgba(30,41,59,.055); }
+    .test-actions[hidden], .result-panel[hidden] { display: none; }
+    .answer-progress { color: var(--muted); font-weight: 750; }
+    .action-buttons { display: flex; flex-wrap: wrap; gap: 10px; }
+    .action-button { border: 1px solid var(--line); border-radius: 12px; padding: 12px 17px; cursor: pointer; font-weight: 800; }
+    .action-button.secondary { color: var(--ink); background: #f8fafc; }
+    .action-button.primary { color: white; border-color: var(--accent); background: var(--accent); box-shadow: 0 7px 18px rgba(232,93,63,.22); }
+    .result-panel { margin-top: 18px; padding: 26px; border-radius: 20px; color: white; background: linear-gradient(135deg, var(--navy), #2f4a8e); box-shadow: var(--shadow); }
+    .result-panel h2 { margin: 0 0 18px; font-size: 25px; }
+    .result-grid { display: grid; grid-template-columns: repeat(5, minmax(90px, 1fr)); gap: 10px; }
+    .result-stat { padding: 15px; border: 1px solid rgba(255,255,255,.13); border-radius: 13px; background: rgba(255,255,255,.08); }
+    .result-stat strong { display: block; font-size: 25px; }
+    .result-stat span { color: #dce6ff; font-size: 12px; }
+    .empty { padding: 60px; text-align: center; color: var(--muted); }
+    .footer { margin-top: 34px; color: var(--muted); text-align: center; font-size: 13px; }
+
+    @media (max-width: 760px) {
+      .shell { padding: 14px 12px 40px; }
+      .hero { grid-template-columns: 1fr; padding: 26px 22px; border-radius: 22px; }
+      .progress { min-width: 0; }
+      .toolbar { top: 6px; grid-template-columns: 1fr; }
+      .topic-switch { max-height: 58px; }
+      .tests { max-height: 58px; }
+      .mode-switch { justify-self: start; }
+      #content { scroll-margin-top: 250px; }
+      .question-card { padding: 22px 18px; }
+      .result-grid { grid-template-columns: repeat(2, minmax(110px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">DRKOÇ · TYT Matematik</p>
+        <h1 id="topic-title">Temel Kavramlar ve Sayı Kümeleri</h1>
+        <p>Yayın projesi önizlemesi · Tamamlanan testler, işaretlenebilir şıklar ve adım adım çözümler.</p>
+      </div>
+      <div class="progress">
+        <strong id="topic-progress">0 / 500</strong>
+        <span id="topic-progress-label">Konu 01 doğrulanan soru</span>
+      </div>
+    </section>
+
+    <section class="toolbar" aria-label="Önizleme kontrolleri">
+      <div class="topic-switch" id="topics"></div>
+      <div class="tests" id="tests"></div>
+      <div class="mode-switch">
+        <button class="chip active" data-mode="questions">Sorular</button>
+        <button class="chip" data-mode="solutions">Çözümler</button>
+      </div>
+    </section>
+
+    <div class="meta">
+      <span class="badge level" id="level-label">Temel Düzey</span>
+      <span class="badge" id="test-label">Test 01</span>
+      <span class="badge">10 soru</span>
+      <span class="badge" id="time-label">Önerilen süre: 15 dakika</span>
+    </div>
+
+    <section id="content"><div class="empty">İçerik yükleniyor…</div></section>
+    <section class="test-actions" id="test-actions">
+      <div class="answer-progress" id="answer-progress">0 / 10 soru işaretlendi</div>
+      <div class="action-buttons">
+        <button class="action-button secondary" id="reset-test" type="button">İşaretleri Temizle</button>
+        <button class="action-button primary" id="check-test" type="button">Testi Kontrol Et</button>
+      </div>
+    </section>
+    <section class="result-panel" id="result-panel" hidden aria-live="polite"></section>
+    <p class="footer">Yerel yayın önizlemesi · Kaynak Markdown dosyaları değişmeden görüntülenir.</p>
+  </main>
+
+  <script src="/node_modules/katex/dist/katex.min.js"></script>
+  <script>
+    const topics = [
+      {
+        id: '01',
+        title: 'Temel Kavramlar ve Sayı Kümeleri',
+        folder: '01_temel_kavramlar_ve_sayi_kumeleri'
+      },
+      {
+        id: '02',
+        title: 'Sayı Basamakları',
+        folder: '02_sayi_basamaklari'
+      },
+      {
+        id: '03',
+        title: 'Bölme, Bölünebilme ve Kalan',
+        folder: '03_bolme_bolunebilme_ve_kalan'
+      },
+      {
+        id: '04',
+        title: 'Asal Sayılar, Çarpanlar ve Bölen Sayısı',
+        folder: '04_asal_sayilar_carpanlar_ve_bolen_sayisi'
+      },
+      {
+        id: '05',
+        title: 'EBOB–EKOK ve Periyodik Durumlar',
+        folder: '05_ebob_ekok_ve_periyodik_durumlar'
+      },
+      {
+        id: '06',
+        title: 'Rasyonel Sayılar ve Ondalık Gösterimler',
+        folder: '06_rasyonel_sayilar_ve_ondalik_gosterimler'
+      },
+      {
+        id: '07',
+        title: 'Denklemler ve Denklem Sistemleri',
+        folder: '07_denklemler_ve_denklem_sistemleri'
+      },
+      {
+        id: '08',
+        title: 'Eşitsizlikler ve Aralıklar',
+        folder: '08_esitsizlikler_ve_araliklar'
+      },
+      {
+        id: '09',
+        title: 'Mutlak Değer',
+        folder: '09_mutlak_deger'
+      },
+      {
+        id: '10',
+        title: 'Üslü İfadeler ve Bilimsel Gösterim',
+        folder: '10_uslu_ifadeler_ve_bilimsel_gosterim'
+      },
+      {
+        id: '11',
+        title: 'Köklü İfadeler ve İrrasyonel Sayılar',
+        folder: '11_koklu_ifadeler_ve_irrasyonel_sayilar'
+      },
+      {
+        id: '12',
+        title: 'Özdeşlikler ve Çarpanlara Ayırma',
+        folder: '12_ozdeslikler_ve_carpanlara_ayirma'
+      },
+      {
+        id: '13',
+        title: 'Oran, Orantı ve Ölçek',
+        folder: '13_oran_oranti_ve_olcek'
+      },
+      {
+        id: '14',
+        title: 'Problem Modelleme',
+        folder: '14_problem_modelleme'
+      },
+      {
+        id: '15',
+        title: 'Kümeler',
+        folder: '15_kumeler'
+      },
+      {
+        id: '16',
+        title: 'Kartezyen Çarpım ve Bağıntı',
+        folder: '16_kartezyen_carpim_ve_baginti'
+      },
+      {
+        id: '17',
+        title: 'Mantık ve Algoritmik Akıl Yürütme',
+        folder: '17_mantik_ve_algoritmik_akil_yurutme'
+      },
+      {
+        id: '18',
+        title: 'Fonksiyonlar',
+        folder: '18_fonksiyonlar'
+      },
+      {
+        id: '19',
+        title: 'Polinomlar ve İkinci Dereceye Giriş',
+        folder: '19_polinomlar_ve_ikinci_dereceye_giris'
+      },
+      {
+        id: '20',
+        title: 'Sayma Yöntemleri ve Permütasyon',
+        folder: '20_sayma_yontemleri_ve_permutasyon'
+      },
+      {
+        id: '21',
+        title: 'Kombinasyon',
+        folder: '21_kombinasyon'
+      },
+      {
+        id: '22',
+        title: 'Olasılık',
+        folder: '22_olasilik'
+      },
+      {
+        id: '23',
+        title: 'Veri ve İstatistik',
+        folder: '23_veri_ve_istatistik'
+      },
+      {
+        id: '24',
+        title: 'Geometri Temelleri ve Açılar',
+        folder: '24_geometri_temelleri_ve_acilar'
+      },
+      {
+        id: '25',
+        title: 'Üçgenler',
+        folder: '25_ucgenler'
+      },
+      {
+        id: '26',
+        title: 'Üçgende Yardımcı Elemanlar ve Alan',
+        folder: '26_ucgende_yardimci_elemanlar_ve_alan'
+      },
+      {
+        id: '27',
+        title: 'Eşlik ve Benzerlik',
+        folder: '27_eslik_ve_benzerlik'
+      },
+      {
+        id: '28',
+        title: 'Çokgenler',
+        folder: '28_cokgenler'
+      },
+      {
+        id: '29',
+        title: 'Dörtgenler',
+        folder: '29_dortgenler'
+      },
+      {
+        id: '30',
+        title: 'Çember ve Daire',
+        folder: '30_cember_ve_daire'
+      },
+      {
+        id: '31',
+        title: 'Analitik Geometri',
+        folder: '31_analitik_geometri'
+      },
+      {
+        id: '32',
+        title: 'Katı Cisimler',
+        folder: '32_kati_cisimler'
+      }
+    ];
+    let currentTopic = topics[0];
+    let base = `/TYT_Matematik_Soru_Bankasi/${currentTopic.folder}`;
+    let currentTest = 1;
+    let currentMode = 'questions';
+    const answerKeys = {};
+    const selectedAnswers = {};
+    let loadToken = 0;
+
+    const escapeHtml = (value) => value
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    function inlineFormat(value) {
+      const mathSegments = [];
+      const protectedValue = value.replace(/\$([^$]+)\$/g, (_, math) => {
+        const index = mathSegments.push(math) - 1;
+        return `@@MATH_${index}@@`;
+      });
+      let output = escapeHtml(protectedValue);
+      output = output.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+      output = output.replace(/`([^`]+)`/g, '<code>$1</code>');
+      output = output.replace(/@@MATH_(\d+)@@/g, (_, index) => {
+        const math = mathSegments[Number(index)];
+        try { return katex.renderToString(math, { throwOnError: false }); }
+        catch { return `<span>${math}</span>`; }
+      });
+      return output;
+    }
+
+    function renderMarkdown(markdown) {
+      const tableBlocks = [];
+      const preparedMarkdown = markdown.replace(/(?:^\|[^\n]*\|\s*(?:\r?\n|$)){2,}/gm, (block) => {
+        const rows = block.trim().split(/\r?\n/).map((line) => line.split('|').slice(1, -1).map((cell) => cell.trim()));
+        const isDivider = rows[1]?.every((cell) => /^:?-{2,}:?$/.test(cell));
+        if (!isDivider) return block;
+        const head = `<thead><tr>${rows[0].map((cell) => `<th>${inlineFormat(cell)}</th>`).join('')}</tr></thead>`;
+        const body = `<tbody>${rows.slice(2).map((row) => `<tr>${row.map((cell) => `<td>${inlineFormat(cell)}</td>`).join('')}</tr>`).join('')}</tbody>`;
+        const index = tableBlocks.push(`<table class="data-table">${head}${body}</table>`) - 1;
+        return `@@TABLE_${index}@@\n`;
+      });
+      const lines = preparedMarkdown.split(/\r?\n/);
+      const cards = [];
+      let header = [];
+      let card = null;
+      let inMath = false;
+      let mathLines = [];
+
+      const flushMath = () => {
+        if (!card || !mathLines.length) return;
+        const math = mathLines.join('\n');
+        card.push(`<div class="math-block">${katex.renderToString(math, { displayMode: true, throwOnError: false })}</div>`);
+        mathLines = [];
+      };
+
+      for (const raw of lines) {
+        const line = raw.trim();
+        if (line.startsWith('$$') && line.endsWith('$$') && line.length > 4) {
+          if (card) {
+            const math = line.slice(2, -2).trim();
+            card.push(`<div class="math-block">${katex.renderToString(math, { displayMode: true, throwOnError: false })}</div>`);
+          }
+          continue;
+        }
+        if (line === '$$') {
+          if (inMath) flushMath();
+          inMath = !inMath;
+          continue;
+        }
+        if (inMath) { mathLines.push(raw); continue; }
+        if (line.startsWith('## Soru ')) {
+          if (card) cards.push(card.join(''));
+          card = [`<article class="question-card" data-question-index="${cards.length}"><h2>${escapeHtml(line.slice(3))}</h2>`];
+          continue;
+        }
+        if (!card) {
+          if (line.startsWith('## ')) header.push(`<h2>${inlineFormat(line.slice(3))}</h2>`);
+          continue;
+        }
+        if (!line || line.startsWith('- Soru sayısı') || line.startsWith('- Her soruda') || line.startsWith('- Önerilen')) continue;
+        if (/^`K\d{2}-T\d{2}-Q\d{2}`$/.test(line)) continue;
+        const tableMatch = line.match(/^@@TABLE_(\d+)@@$/);
+        if (tableMatch) { card.push(tableBlocks[Number(tableMatch[1])]); continue; }
+        const imageMatch = line.match(/^!\[([^\]]*)\]\((?:\.\/)?visuals\/([^)]+)\)$/);
+        if (imageMatch) {
+          card.push(`<figure><img src="${base}/visuals/${escapeHtml(imageMatch[2])}" alt="${escapeHtml(imageMatch[1])}"></figure>`);
+          continue;
+        }
+        if (/^[A-E]\) /.test(line)) {
+          const choice = line[0];
+          card.push(currentMode === 'questions'
+            ? `<button type="button" class="option" data-choice="${choice}">${inlineFormat(line)}</button>`
+            : `<p class="option">${inlineFormat(line)}</p>`);
+          continue;
+        }
+        if (line.startsWith('**Doğru cevap:**')) { card.push(`<div class="answer">${inlineFormat(line)}</div>`); continue; }
+        if (/^\*\*(Kazanım|Çözüm|Neden doğru\?|Çeldirici notu):\*\*/.test(line)) {
+          card.push(`<p class="label">${inlineFormat(line)}</p>`);
+          continue;
+        }
+        if (line.startsWith('- ')) { card.push(`<p>• ${inlineFormat(line.slice(2))}</p>`); continue; }
+        if (line.startsWith('# ')) continue;
+        card.push(`<p>${inlineFormat(line)}</p>`);
+      }
+      flushMath();
+      if (card) cards.push(card.join(''));
+      return `<div class="document-title">${header.join('')}</div>${cards.map((item) => `${item}</article>`).join('')}`;
+    }
+
+    async function loadAnswerKeys() {
+      Object.keys(answerKeys).forEach((key) => delete answerKeys[key]);
+      const response = await fetch(`${base}/answer_keys.md`);
+      if (!response.ok) throw new Error('Cevap anahtarı okunamadı');
+      const text = await response.text();
+      for (const line of text.split(/\r?\n/)) {
+        const cells = line.split('|').slice(1, -1).map((cell) => cell.trim());
+        if (!/^\d{2}$/.test(cells[0] || '') || cells.length !== 11) continue;
+        const choices = cells.slice(1);
+        if (choices.every((choice) => /^[A-E]$/.test(choice))) answerKeys[Number(cells[0])] = choices;
+      }
+    }
+
+    function buildTestButtons() {
+      const testNumbers = Object.keys(answerKeys).map(Number).sort((a, b) => a - b);
+      const tests = document.querySelector('#tests');
+      tests.innerHTML = '';
+      currentTest = testNumbers[0] || 1;
+      document.querySelector('#topic-progress').textContent = `${testNumbers.length * 10} / 500`;
+
+      for (const test of testNumbers) {
+        const button = document.createElement('button');
+        button.className = `chip${test === currentTest ? ' active' : ''}`;
+        button.textContent = `Test ${String(test).padStart(2, '0')}`;
+        button.addEventListener('click', () => {
+          currentTest = test;
+          tests.querySelectorAll('.chip').forEach((item) => item.classList.toggle('active', item === button));
+          load();
+        });
+        tests.appendChild(button);
+      }
+    }
+
+    function buildTopicButtons() {
+      const container = document.querySelector('#topics');
+      container.innerHTML = '';
+      for (const topic of topics) {
+        const button = document.createElement('button');
+        button.className = `chip${topic.id === currentTopic.id ? ' active' : ''}`;
+        button.textContent = `Konu ${topic.id} · ${topic.title}`;
+        button.addEventListener('click', async () => {
+          if (topic.id === currentTopic.id) return;
+          currentTopic = topic;
+          base = `/TYT_Matematik_Soru_Bankasi/${currentTopic.folder}`;
+          container.querySelectorAll('.chip').forEach((item) => item.classList.toggle('active', item === button));
+          document.querySelector('#topic-title').textContent = currentTopic.title;
+          document.querySelector('#topic-progress-label').textContent = `Konu ${currentTopic.id} doğrulanan soru`;
+          document.querySelector('#content').innerHTML = '<div class="empty">İçerik yükleniyor…</div>';
+          await loadAnswerKeys();
+          buildTestButtons();
+          await load();
+        });
+        container.appendChild(button);
+      }
+    }
+
+    function answersForCurrentTest() {
+      const key = `${currentTopic.id}:${currentTest}`;
+      if (!selectedAnswers[key]) selectedAnswers[key] = Array(10).fill(null);
+      return selectedAnswers[key];
+    }
+
+    function updateTestMeta() {
+      const level = currentTest <= 25
+        ? 'Temel Düzey'
+        : currentTest <= 40
+          ? 'Gelişim ve Pekiştirme'
+          : 'İleri ve Yeni Nesil';
+      const minutes = currentTest <= 25 ? 15 : currentTest <= 40 ? 18 : 25;
+      document.querySelector('#level-label').textContent = level;
+      document.querySelector('#time-label').textContent = `Önerilen süre: ${minutes} dakika`;
+    }
+
+    function clearEvaluation() {
+      document.querySelectorAll('.question-card').forEach((card) => {
+        card.classList.remove('correct', 'wrong', 'blank');
+        card.querySelector('.feedback')?.remove();
+        card.querySelectorAll('.option').forEach((option) => option.classList.remove('correct-choice', 'incorrect-choice'));
+      });
+      document.querySelector('#result-panel').hidden = true;
+    }
+
+    function updateAnswerProgress() {
+      const marked = answersForCurrentTest().filter(Boolean).length;
+      document.querySelector('#answer-progress').textContent = `${marked} / 10 soru işaretlendi`;
+    }
+
+    function wireQuestionInteractions() {
+      const answers = answersForCurrentTest();
+      document.querySelectorAll('.question-card').forEach((card, questionIndex) => {
+        card.querySelectorAll('button.option').forEach((option) => {
+          option.addEventListener('click', () => window.selectOption(option));
+          option.classList.toggle('selected', option.dataset.choice === answers[questionIndex]);
+        });
+      });
+      updateAnswerProgress();
+    }
+
+    window.selectOption = function selectOption(option) {
+      if (!option || currentMode !== 'questions') return;
+      const card = option.closest('.question-card');
+      const questionIndex = Number(card?.dataset.questionIndex);
+      if (!card || !Number.isInteger(questionIndex)) return;
+      answersForCurrentTest()[questionIndex] = option.dataset.choice;
+      card.querySelectorAll('button.option').forEach((item) => item.classList.toggle('selected', item === option));
+      clearEvaluation();
+      updateAnswerProgress();
+    };
+
+    function checkTest() {
+      const selected = answersForCurrentTest();
+      const key = answerKeys[currentTest];
+      if (!key) return;
+
+      let correct = 0;
+      let wrong = 0;
+      let blank = 0;
+
+      document.querySelectorAll('.question-card').forEach((card, index) => {
+        const choice = selected[index];
+        const correctChoice = key[index];
+        card.querySelector(`[data-choice="${correctChoice}"]`)?.classList.add('correct-choice');
+        let feedbackClass;
+        let feedbackText;
+
+        if (!choice) {
+          blank += 1;
+          card.classList.add('blank');
+          feedbackClass = 'blank';
+          feedbackText = `Boş bırakıldı · Doğru cevap: ${correctChoice}`;
+        } else if (choice === correctChoice) {
+          correct += 1;
+          card.classList.add('correct');
+          feedbackClass = 'correct';
+          feedbackText = 'Doğru cevap';
+        } else {
+          wrong += 1;
+          card.classList.add('wrong');
+          card.querySelector(`[data-choice="${choice}"]`)?.classList.add('incorrect-choice');
+          feedbackClass = 'wrong';
+          feedbackText = `Yanlış · Doğru cevap: ${correctChoice}`;
+        }
+
+        card.insertAdjacentHTML('beforeend', `<div class="feedback ${feedbackClass}">${feedbackText}</div>`);
+      });
+
+      const net = correct - wrong / 4;
+      const resultPanel = document.querySelector('#result-panel');
+      resultPanel.innerHTML = `
+        <h2>Test ${String(currentTest).padStart(2, '0')} Sonucu</h2>
+        <div class="result-grid">
+          <div class="result-stat"><strong>${correct}</strong><span>Doğru</span></div>
+          <div class="result-stat"><strong>${wrong}</strong><span>Yanlış</span></div>
+          <div class="result-stat"><strong>${blank}</strong><span>Boş</span></div>
+          <div class="result-stat"><strong>${net.toFixed(2).replace('.', ',')}</strong><span>Net</span></div>
+          <div class="result-stat"><strong>${correct * 10}</strong><span>100 üzerinden</span></div>
+        </div>`;
+      resultPanel.hidden = false;
+      resultPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function resetTest() {
+      answersForCurrentTest().fill(null);
+      clearEvaluation();
+      document.querySelectorAll('button.option').forEach((option) => option.classList.remove('selected'));
+      updateAnswerProgress();
+    }
+
+    async function load() {
+      const token = ++loadToken;
+      const suffix = currentMode === 'questions' ? 'questions' : 'solutions';
+      const test = String(currentTest).padStart(2, '0');
+      document.querySelector('#test-label').textContent = `Test ${test}`;
+      updateTestMeta();
+      document.querySelector('#content').innerHTML = '<div class="empty">İçerik yükleniyor…</div>';
+      document.querySelector('#test-actions').hidden = currentMode !== 'questions';
+      document.querySelector('#result-panel').hidden = true;
+      try {
+        const response = await fetch(`${base}/test_${test}_${suffix}.md`);
+        if (!response.ok) throw new Error('Dosya okunamadı');
+        const markdown = await response.text();
+        if (token !== loadToken) return;
+        document.querySelector('#content').innerHTML = renderMarkdown(markdown);
+        if (currentMode === 'questions') wireQuestionInteractions();
+        requestAnimationFrame(() => document.querySelector('#content')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+      } catch (error) {
+        if (token !== loadToken) return;
+        document.querySelector('#content').innerHTML = `<div class="empty">${escapeHtml(error.message)}</div>`;
+      }
+    }
+
+    document.querySelectorAll('[data-mode]').forEach((button) => {
+      button.addEventListener('click', () => {
+        currentMode = button.dataset.mode;
+        document.querySelectorAll('[data-mode]').forEach((item) => item.classList.toggle('active', item === button));
+        load();
+      });
+    });
+
+    document.querySelector('#check-test').addEventListener('click', checkTest);
+    document.querySelector('#reset-test').addEventListener('click', resetTest);
+
+    async function init() {
+      try {
+        buildTopicButtons();
+        await loadAnswerKeys();
+        buildTestButtons();
+        await load();
+      } catch (error) {
+        document.querySelector('#content').innerHTML = `<div class="empty">${escapeHtml(error.message)}</div>`;
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>

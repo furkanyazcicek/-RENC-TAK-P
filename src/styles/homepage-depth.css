@@ -1,0 +1,439 @@
+/* ==================================================================
+   Ana sayfa derinlik sistemi
+   ------------------------------------------------------------------
+   Yalnızca geliştirilmiş ana sayfada yüklenir. Renklerin tamamı mevcut
+   Aurora değişkenlerinden gelir; transform dışındaki yerleşim özellikleri
+   kaydırma sırasında değiştirilmez.
+   ================================================================== */
+
+.homepage-depth {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 8% 18%, rgb(var(--c-aurora-purple) / 0.08), transparent 30rem),
+    radial-gradient(circle at 92% 42%, rgb(var(--c-aurora-blue) / 0.07), transparent 34rem),
+    rgb(var(--c-paper));
+}
+
+.homepage-depth::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  pointer-events: none;
+  content: '';
+  opacity: 0.2;
+  background-image:
+    linear-gradient(rgb(var(--c-brand-500) / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--c-info-500) / 0.03) 1px, transparent 1px);
+  background-size: 68px 68px;
+  mask-image: linear-gradient(to bottom, transparent, black 12%, black 86%, transparent);
+}
+
+.homepage-depth > * {
+  position: relative;
+  z-index: 1;
+}
+
+.depth-scene {
+  --depth-bg-y: 0px;
+  --depth-content-y: 0px;
+  --depth-fg-y: 0px;
+  --depth-pointer-x: 0px;
+  --depth-pointer-y: 0px;
+  --depth-bg-pointer-x: 0px;
+  --depth-bg-pointer-y: 0px;
+  --depth-content-pointer-x: 0px;
+  --depth-content-pointer-y: 0px;
+  --depth-scale: 1;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Bölümler kendi Aurora karakterini taşır; geçişler aynı paletin
+   farklı durakları arasında ilerler. */
+.depth-scene--hero {
+  background: linear-gradient(
+    180deg,
+    rgb(var(--c-brand-50) / 0.16),
+    transparent 72%,
+    rgb(var(--c-surface) / 0.5)
+  );
+}
+
+.depth-scene--notes {
+  background: linear-gradient(
+    150deg,
+    rgb(var(--c-aurora-purple) / 0.06),
+    rgb(var(--c-aurora-pink) / 0.045) 48%,
+    rgb(var(--c-aurora-blue) / 0.055)
+  );
+}
+
+.depth-scene--questions {
+  background: linear-gradient(
+    145deg,
+    rgb(var(--c-aurora-blue) / 0.055),
+    transparent 46%,
+    rgb(var(--c-aurora-pink) / 0.05)
+  );
+}
+
+.depth-scene__background {
+  position: absolute;
+  z-index: 0;
+  inset: -4rem 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translate3d(
+    var(--depth-bg-pointer-x),
+    calc(var(--depth-bg-y) + var(--depth-bg-pointer-y)),
+    0
+  );
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.depth-scene__content {
+  position: relative;
+  z-index: 1;
+  transform: translate3d(
+    var(--depth-content-pointer-x),
+    calc(var(--depth-content-y) + var(--depth-content-pointer-y)),
+    0
+  ) scale(var(--depth-scale));
+  transform-origin: center;
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.depth-scene__foreground {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  transform: translate3d(
+    var(--depth-pointer-x),
+    calc(var(--depth-fg-y) + var(--depth-pointer-y)),
+    0
+  );
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.depth-orb {
+  position: absolute;
+  display: block;
+  border-radius: 999px;
+  opacity: 0.62;
+  will-change: transform, opacity;
+}
+
+.depth-orb--one {
+  top: 8%;
+  left: -8rem;
+  width: 30rem;
+  height: 30rem;
+  background: radial-gradient(circle, rgb(var(--c-aurora-purple) / 0.22), transparent 68%);
+  filter: blur(54px);
+  animation: depth-orb-flow-one 16s ease-in-out infinite alternate;
+}
+
+.depth-orb--two {
+  right: -8rem;
+  bottom: 0;
+  width: 34rem;
+  height: 34rem;
+  background: radial-gradient(circle, rgb(var(--c-aurora-cyan) / 0.18), transparent 70%);
+  filter: blur(64px);
+  animation: depth-orb-flow-two 20s ease-in-out -7s infinite alternate;
+}
+
+.depth-scene--notes .depth-orb--one {
+  background: radial-gradient(circle, rgb(var(--c-aurora-pink) / 0.2), transparent 68%);
+}
+
+.depth-scene--notes .depth-orb--two {
+  background: radial-gradient(circle, rgb(var(--c-aurora-purple) / 0.2), transparent 70%);
+}
+
+.depth-scene--questions .depth-orb--one {
+  background: radial-gradient(circle, rgb(var(--c-aurora-blue) / 0.2), transparent 68%);
+}
+
+.depth-scene--questions .depth-orb--two {
+  background: radial-gradient(circle, rgb(var(--c-aurora-pink) / 0.15), transparent 70%);
+}
+
+@keyframes depth-orb-flow-one {
+  0% { transform: translate3d(-4%, -2%, 0) scale(0.94); opacity: 0.48; }
+  52% { transform: translate3d(11%, 7%, 0) scale(1.05); opacity: 0.68; }
+  100% { transform: translate3d(5%, -5%, 0) scale(1); opacity: 0.56; }
+}
+
+@keyframes depth-orb-flow-two {
+  0% { transform: translate3d(6%, 5%, 0) scale(1.04); opacity: 0.46; }
+  48% { transform: translate3d(-10%, -6%, 0) scale(0.95); opacity: 0.64; }
+  100% { transform: translate3d(-3%, 8%, 0) scale(1.02); opacity: 0.54; }
+}
+
+/* Açık ana sayfa ile koyu keşif alanı arasındaki sert çizgiyi kaldırır. */
+.landing-interactive-section {
+  background:
+    radial-gradient(circle at 78% 22%, rgb(var(--c-aurora-purple) / 0.24), transparent 34rem),
+    radial-gradient(circle at 18% 76%, rgb(var(--c-aurora-blue) / 0.16), transparent 30rem),
+    rgb(var(--c-ink));
+}
+
+.landing-interactive-section::before,
+.landing-interactive-section::after {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  left: 0;
+  height: 5.5rem;
+  pointer-events: none;
+  content: '';
+}
+
+.landing-interactive-section::before {
+  top: 0;
+  background: linear-gradient(
+    to bottom,
+    rgb(var(--c-paper)),
+    rgb(var(--c-brand-200) / 0.44) 48%,
+    transparent
+  );
+}
+
+.landing-interactive-section::after {
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgb(var(--c-paper)),
+    rgb(var(--c-info-100) / 0.42) 46%,
+    transparent
+  );
+}
+
+.landing-interactive-section > .relative {
+  z-index: 2;
+}
+
+.landing-interactive-orb {
+  animation: landing-interactive-orb-flow 18s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+@keyframes landing-interactive-orb-flow {
+  0% { transform: translate3d(0, -6%, 0) scale(0.92); opacity: 0.58; }
+  55% { transform: translate3d(-18%, 14%, 0) scale(1.08); opacity: 0.88; }
+  100% { transform: translate3d(-8%, 24%, 0) scale(1); opacity: 0.68; }
+}
+
+/* Eski bölümlerde düz beyaz yerine çok hafif Aurora yönü korunur. */
+.homepage-depth #nasil-calisir {
+  background-image: linear-gradient(145deg, rgb(var(--c-aurora-purple) / 0.035), transparent 42%, rgb(var(--c-aurora-cyan) / 0.035));
+}
+
+.homepage-depth #platform {
+  background-image: linear-gradient(155deg, rgb(var(--c-aurora-blue) / 0.045), transparent 44%, rgb(var(--c-aurora-pink) / 0.035));
+}
+
+.homepage-depth #veri {
+  background-image: linear-gradient(145deg, rgb(var(--c-aurora-cyan) / 0.04), transparent 40%, rgb(var(--c-aurora-purple) / 0.04));
+}
+
+.depth-grid {
+  position: absolute;
+  inset: 12% 8%;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(rgb(var(--c-brand-500) / 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--c-info-500) / 0.08) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(circle, black, transparent 72%);
+}
+
+/* Cam yüzeyler: yalnızca ürünün odak noktalarında. */
+.homepage-depth .landing-navbar-glass {
+  border-color: rgb(var(--c-line) / 0.7);
+  background: rgb(var(--c-surface) / 0.68);
+  box-shadow: 0 12px 40px -30px rgb(var(--c-shadow) / 0.48);
+  backdrop-filter: blur(22px) saturate(1.25);
+  -webkit-backdrop-filter: blur(22px) saturate(1.25);
+}
+
+.homepage-depth .landing-hero-preview-panel,
+.homepage-depth .landing-note-glass,
+.homepage-depth .landing-question-glass {
+  border-color: rgb(255 255 255 / 0.68);
+  background: linear-gradient(
+    145deg,
+    rgb(var(--c-surface) / 0.86),
+    rgb(var(--c-surface) / 0.62)
+  );
+  box-shadow:
+    0 36px 90px -48px rgb(var(--c-shadow) / 0.62),
+    inset 0 1px 0 rgb(255 255 255 / 0.76);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+}
+
+.homepage-depth .landing-interactive-glass {
+  border-color: rgb(255 255 255 / 0.2);
+  background: linear-gradient(145deg, rgb(255 255 255 / 0.1), rgb(255 255 255 / 0.045));
+  box-shadow:
+    0 36px 100px -48px rgb(0 0 0 / 0.72),
+    inset 0 1px 0 rgb(255 255 255 / 0.12);
+  backdrop-filter: blur(22px) saturate(1.18);
+  -webkit-backdrop-filter: blur(22px) saturate(1.18);
+}
+
+.homepage-depth .landing-closing-panel {
+  box-shadow:
+    0 36px 100px -42px rgb(var(--c-brand-900) / 0.72),
+    inset 0 1px 0 rgb(255 255 255 / 0.24);
+}
+
+.depth-scene--hero .landing-hero-preview-panel {
+  transform: perspective(1200px) rotateY(-1.8deg) rotateX(0.8deg);
+  transition-property: transform, box-shadow, border-color;
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.depth-scene--hero:hover .landing-hero-preview-panel {
+  transform: perspective(1200px) rotateY(0deg) rotateX(0deg) translateY(-3px);
+}
+
+.depth-float {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  max-width: 15rem;
+  padding: 10px 13px;
+  border: 1px solid rgb(255 255 255 / 0.64);
+  border-radius: 15px;
+  background: rgb(var(--c-surface) / 0.7);
+  color: rgb(var(--c-ink) / 0.72);
+  box-shadow:
+    0 18px 50px -30px rgb(var(--c-shadow) / 0.62),
+    inset 0 1px 0 rgb(255 255 255 / 0.82);
+  backdrop-filter: blur(18px) saturate(1.2);
+  -webkit-backdrop-filter: blur(18px) saturate(1.2);
+  font-size: 11px;
+  font-weight: 750;
+  line-height: 1.3;
+}
+
+.depth-float svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  color: rgb(var(--c-brand-600));
+}
+
+.depth-float--hero-top {
+  top: 24%;
+  right: max(1rem, calc((100vw - 80rem) / 2 - 2rem));
+}
+
+.depth-float--hero-bottom {
+  right: max(2rem, calc((100vw - 74rem) / 2));
+  bottom: 15%;
+}
+
+.depth-float--note {
+  top: 36%;
+  right: 3%;
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .homepage-depth .landing-navbar-glass,
+  .homepage-depth .landing-hero-preview-panel,
+  .homepage-depth .landing-note-glass,
+  .homepage-depth .landing-question-glass,
+  .depth-float {
+    background: rgb(var(--c-surface) / 0.96);
+  }
+}
+
+@media (max-width: 1023px) {
+  .depth-scene__content {
+    transform: translate3d(0, clamp(-6px, var(--depth-content-y), 6px), 0);
+  }
+
+  .depth-scene__background {
+    transform: translate3d(0, clamp(-18px, var(--depth-bg-y), 18px), 0);
+  }
+
+  .depth-scene__foreground {
+    display: none;
+  }
+
+  .depth-orb--one,
+  .depth-orb--two {
+    filter: blur(44px);
+    opacity: 0.45;
+  }
+
+  .depth-scene--hero .landing-hero-preview-panel,
+  .depth-scene--hero:hover .landing-hero-preview-panel {
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .depth-scene__content {
+    transform: none;
+  }
+
+  .depth-scene__background {
+    transform: translate3d(0, clamp(-12px, var(--depth-bg-y), 12px), 0);
+  }
+
+  .homepage-depth::before,
+  .depth-grid {
+    display: none;
+  }
+
+  .depth-orb,
+  .landing-interactive-orb {
+    animation: none;
+    will-change: auto;
+  }
+
+  .homepage-depth .landing-navbar-glass {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .homepage-depth .landing-hero-preview-panel,
+  .homepage-depth .landing-note-glass,
+  .homepage-depth .landing-question-glass,
+  .homepage-depth .landing-interactive-glass {
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .depth-scene,
+  .depth-scene *,
+  .depth-scene *::before,
+  .depth-scene *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .depth-scene__content,
+  .depth-scene__background,
+  .depth-scene__foreground,
+  .depth-scene--hero .landing-hero-preview-panel,
+  .depth-scene--hero:hover .landing-hero-preview-panel {
+    transform: none !important;
+    transition: none !important;
+  }
+}

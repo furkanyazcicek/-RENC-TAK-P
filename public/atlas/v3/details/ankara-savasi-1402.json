@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "schemaVersion": 3,
+    "kind": "historical-detail-slice",
+    "sliceId": "ankara-savasi-1402",
+    "sliceYear": 1402,
+    "title": "1402 Ankara Savaşı kanıt dilimi",
+    "publicationStatus": "reviewed-slice",
+    "scopeNote": "Bu paket 1402 siyasî sınırı çizmez; tarih konusunda kaynak ayrışmasını koruyarak olay noktasını sunar.",
+    "validFrom": 1402,
+    "validTo": 1403,
+    "sourceIds": [
+      "tdv-ankara-savasi",
+      "wikidata-cc0"
+    ],
+    "geometryPolicy": "Ayrıntı dilimleri siyasi sınır üretmez. Her geometri kendi yöntem, kesinlik, kapsam ve uyarı alanını taşır.",
+    "coverage": {
+      "administrative": "not-published",
+      "settlements": "not-published",
+      "events": "1 kaynaklı olay",
+      "routes": "not-published"
+    },
+    "sources": [
+      {
+        "id": "tdv-ankara-savasi",
+        "title": "Ankara Savaşı",
+        "creatorOrInstitution": "Mücteba İlgürel / TDV İslâm Araştırmaları Merkezi",
+        "publicationDate": null,
+        "representedYears": "1402",
+        "url": "https://islamansiklopedisi.org.tr/ankara-savasi",
+        "accessedAt": "2026-08-27",
+        "referenceLocation": "Ankara Savaşı maddesi",
+        "geographicCoverage": "Ankara ve Anadolu",
+        "scaleOrResolution": "Olay ve siyasî sonuç bağlamı",
+        "sourceType": "academic-reference",
+        "license": {
+          "name": "Telifli başvuru kaynağı",
+          "url": "https://islamansiklopedisi.org.tr/telif-haklari",
+          "status": "reference-only",
+          "commercialUse": null,
+          "redistribution": "not-used",
+          "notes": "Metin veya harita yeniden dağıtılmaz."
+        },
+        "useStatus": "reference-only",
+        "geometryEligible": false,
+        "proves": "1402 Ankara Savaşı'nın taraflarını, gelişimini ve tarih tartışmasını destekler.",
+        "limitations": "Kesin savaş alanı poligonu sağlamaz; gün konusunda kaynaklar ayrışır.",
+        "confidence": "high"
+      },
+      {
+        "id": "wikidata-cc0",
+        "title": "Wikidata koordinat kayıtları",
+        "creatorOrInstitution": "Wikimedia Foundation ve Wikidata katkıcıları",
+        "publicationDate": null,
+        "representedYears": "Kayıt bazında",
+        "url": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "accessedAt": "2026-08-27",
+        "referenceLocation": "Feature içindeki sourceEntityId",
+        "geographicCoverage": "Küresel",
+        "scaleOrResolution": "Nokta kaydına göre değişir",
+        "sourceType": "external-vector-point",
+        "license": {
+          "name": "CC0 1.0",
+          "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "status": "open",
+          "commercialUse": true,
+          "redistribution": "allowed",
+          "notes": "Her noktanın tarihsel yorum ve sürekliliği ayrı akademik kaynak gerektirir."
+        },
+        "useStatus": "production",
+        "geometryEligible": true,
+        "proves": "Yerleşim veya olay kaydının WGS84 nokta konumunu sağlar; siyasî sınır kanıtı değildir.",
+        "limitations": "Topluluk üretimidir; tarihsel kimlik ve tarihlendirme tek başına bu kaynağa bırakılamaz.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "administrativeRegions": {
+    "type": "FeatureCollection",
+    "features": []
+  },
+  "settlements": {
+    "type": "FeatureCollection",
+    "features": []
+  },
+  "events": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "id": "event:ankara-savasi-1402",
+        "properties": {
+          "id": "event:ankara-savasi-1402",
+          "nameTr": "Ankara Savaşı",
+          "sourceName": "Battle of Ankara",
+          "validFrom": 1402,
+          "validTo": 1403,
+          "type": "event",
+          "subtype": "battle",
+          "importance": 3,
+          "minZoom": 3.2,
+          "sourceIds": [
+            "tdv-ankara-savasi",
+            "wikidata-cc0"
+          ],
+          "sourceEntityId": "Q209387",
+          "geometryMethod": "external-cc0-event-point-with-academic-reference",
+          "confidence": "medium",
+          "boundaryCertainty": "not-applicable-point",
+          "coverageStatus": "mapped-point-only",
+          "reviewStatus": "reviewed",
+          "eventDate": {
+            "from": "1402-07-20",
+            "to": "1402-07-28",
+            "precision": "disputed-day-range"
+          },
+          "summary": "Timur ile Yıldırım Bayezid kuvvetleri Ankara yakınlarında karşılaştı; Osmanlı Fetret Devri başladı.",
+          "sides": [
+            "Timur İmparatorluğu",
+            "Osmanlı Devleti"
+          ],
+          "warning": "TDV maddesi 28 Temmuz'u kuvvetli olasılık sayarken açık koordinat kaydı 20 Temmuz kullanır; tarih aralığı özellikle korunmuştur."
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            32.95,
+            40.15
+          ]
+        }
+      }
+    ]
+  },
+  "routes": {
+    "type": "FeatureCollection",
+    "features": []
+  }
+}

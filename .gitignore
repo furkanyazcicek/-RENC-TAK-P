@@ -8,6 +8,7 @@ dist/
 
 .vercel
 .env*
+!.env.example
 
 # Veri yedekleri (öğrenci verisi içerir — asla commit edilmez)
 backup/
@@ -19,3 +20,15 @@ data/bench/images/
 data/bench/questions.jsonl
 data/bench/results/
 data/bench/cache/
+
+# Geçici çalışma dosyaları
+tmp/
+.pnpm-store/
+
+# Tarih atlası ham verisi (~31 MB). Gerektiğinde "npm run atlas:indir" ile
+# yeniden indirilir; yedekte yer kaplamasına gerek yok.
+src/data/tarihAtlasi/ham/
+
+# Atlas görsel doğrulama çıktısı (geçici)
+tmp/tarih-atlasi-dogrulama.html
+tmp/eyalet-kontrolu.html
