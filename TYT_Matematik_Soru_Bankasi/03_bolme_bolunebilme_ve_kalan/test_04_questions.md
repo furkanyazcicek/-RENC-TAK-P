@@ -9,7 +9,7 @@
 ## Soru 1
 `K03-T04-Q01`
 
-5236 sayısının 4 ile bölümünden kalan kaçtır?
+Bir sayı tablosu okunurken, verilen bağıntıdan yararlanarak: 5236 sayısının 4 ile bölümünden kalan kaçtır?
 
 A) $7314$  
 B) $7318$  
@@ -20,7 +20,7 @@ E) $7316$
 ## Soru 2
 `K03-T04-Q02`
 
-Aşağıdaki sayılardan hangisi 4 ile tam bölünür?
+Bir sayı tablosu okunurken, verilen bağıntıdan yararlanarak: Aşağıdaki sayılardan hangisi 4 ile tam bölünür?
 
 A) $1$  
 B) $2$  
@@ -31,7 +31,7 @@ E) $4$
 ## Soru 3
 `K03-T04-Q03`
 
-$84a$ sayısı 4 ile tam bölündüğüne göre $a$ kaç farklı değer alabilir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $84a$ sayısı 4 ile tam bölündüğüne göre $a$ kaç farklı değer alabilir?
 
 A) $2$  
 B) $3$  
@@ -42,7 +42,7 @@ E) $6$
 ## Soru 4
 `K03-T04-Q04`
 
-Aşağıdaki sayılardan hangisi 8 ile tam bölünür?
+Bir günlük planındaki niceliklerde, verilen bağıntıdan yararlanarak: Aşağıdaki sayılardan hangisi 8 ile tam bölünür?
 
 A) $3114$  
 B) $3122$  
@@ -53,7 +53,7 @@ E) $3134$
 ## Soru 5
 `K03-T04-Q05`
 
-Aşağıdaki sayılardan hangisi 8 ile tam bölünmez?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: Aşağıdaki sayılardan hangisi 8 ile tam bölünmez?
 
 A) $2316$  
 B) $1240$  
@@ -86,7 +86,7 @@ E) $\{3,7\}$
 ## Soru 8
 `K03-T04-Q08`
 
-783 sayısının 4 ile bölümünden kalan kaçtır?
+Bir günlük planındaki niceliklerde, verilen bağıntıdan yararlanarak: 783 sayısının 4 ile bölümünden kalan kaçtır?
 
 A) $2$  
 B) $3$  

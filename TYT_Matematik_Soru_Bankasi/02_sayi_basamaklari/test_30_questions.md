@@ -10,7 +10,7 @@
 
 `K02-T30-Q01`
 
-Rakamları toplamı 14, farkı 2 olan iki basamaklı sayıda onlar basamağı daha büyüktür. Sayı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: Rakamları toplamı 14, farkı 2 olan iki basamaklı sayıda onlar basamağı daha büyüktür. Sayı kaçtır?
 
 A) $86$
 
@@ -138,7 +138,7 @@ E) $390$
 
 `K02-T30-Q09`
 
-İki basamaklı bir sayıdan rakamları toplamı çıkarıldığında 54 kalıyor. Rakamlar toplamı 11 ise sayı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: Rakamlar toplamı 11 ise sayı kaçtır?
 
 A) $56$
 

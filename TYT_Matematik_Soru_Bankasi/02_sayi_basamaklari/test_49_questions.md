@@ -9,7 +9,7 @@
 ## Soru 1
 `K02-T49-Q01`
 
-0, 2, 3, 5, 7 ve 9 rakamları birer kez kullanılarak yazılabilecek en büyük altı basamaklı çift sayı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: 0, 2, 3, 5, 7 ve 9 rakamları birer kez kullanılarak yazılabilecek en büyük altı basamaklı çift sayı kaçtır?
 
 A) $975302$  
 B) $973520$  
@@ -64,7 +64,7 @@ E) $7447$
 ## Soru 6
 `K02-T49-Q06`
 
-5 yüzlük, 7 onluk ve 2 birlikten oluşan doğal sayı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: 5 yüzlük, 7 onluk ve 2 birlikten oluşan doğal sayı kaçtır?
 
 A) $552$  
 B) $562$  
@@ -86,7 +86,7 @@ E) $834$
 ## Soru 8
 `K02-T49-Q08`
 
-1038 sayısının basamak değerleri toplamı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: 1038 sayısının basamak değerleri toplamı kaçtır?
 
 A) $1083$  
 B) $1209$  
@@ -97,7 +97,7 @@ E) $1065$
 ## Soru 9
 `K02-T49-Q09`
 
-Onlar basamağı 5 olan üç basamaklı bir sayı, rakamları ters çevrilerek elde edilen sayıdan 594 fazladır. Rakamları toplamı 15 olduğuna göre sayı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: Onlar basamağı 5 olan üç basamaklı bir sayı, rakamları ters çevrilerek elde edilen sayıdan 594 fazladır. Rakamları toplamı 15 olduğuna göre sayı kaçtır?
 
 A) $852$  
 B) $753$  

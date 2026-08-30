@@ -10,7 +10,7 @@
 
 `K02-T35-Q01`
 
-526 sayısının ilk ve son rakamı yer değiştirildikten sonra sonuçtan 25 çıkarılıyor. Elde edilen sayı kaçtır?
+Elde edilen sayı kaçtır?
 
 A) $600$
 
@@ -58,7 +58,7 @@ E) $965$
 
 `K02-T35-Q04`
 
-483 sayısının son iki rakamı yer değiştiriliyor ve elde edilen sayıya 62 ekleniyor. Sonuç kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: 483 sayısının son iki rakamı yer değiştiriliyor ve elde edilen sayıya 62 ekleniyor. Sonuç kaçtır?
 
 A) $438$
 
@@ -74,7 +74,7 @@ E) $500$
 
 `K02-T35-Q05`
 
-59'un rakamları ters çevriliyor ve elde edilen sayıdan 59'un rakamları çarpımı çıkarılıyor. Sonuç kaçtır?
+Bir sayı doğrusu incelemesinde, koşulu bir eşitlik olarak yazdığımızda: Sonuç kaçtır?
 
 A) $45$
 
@@ -154,7 +154,7 @@ E) $3006$
 
 `K02-T35-Q10`
 
-826 sayısının rakamları ters çevriliyor ve elde edilen sayıya 72 ekleniyor. Sonuç kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: 826 sayısının rakamları ters çevriliyor ve elde edilen sayıya 72 ekleniyor. Sonuç kaçtır?
 
 A) $700$
 

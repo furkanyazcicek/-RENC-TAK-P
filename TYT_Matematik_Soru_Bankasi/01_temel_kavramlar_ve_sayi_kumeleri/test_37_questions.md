@@ -58,9 +58,7 @@ E) $20$
 
 `K01-T37-Q04`
 
-$$a=\sqrt{19}-3,\qquad b=\frac{34}{25},\qquad c=1,359$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $$a=\sqrt{19}-3,\qquad b=\frac{34}{25},\qquad c=1,359$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $c<a<b$
 
@@ -76,9 +74,7 @@ E) $c<b<a$
 
 `K01-T37-Q05`
 
-Bir hesapta negatif bakiyeyi gösteren $x$ ile pozitif ödemeyi gösteren $y$ toplanacaktır. Borcun büyüklüğü ödeme tutarından fazladır.
-
-İşlem sonunda hangi durum kesinleşir?
+Bir hesapta negatif bakiyeyi gösteren $x$ ile pozitif ödemeyi gösteren $y$ toplanacaktır. Borcun büyüklüğü ödeme tutarından fazladır. İşlem sonunda hangi durum kesinleşir?
 
 A) $xy>0$
 
@@ -142,7 +138,7 @@ E) $\dfrac{n^2-1}{4}$
 
 `K01-T37-Q09`
 
-$-\sqrt{70}$ ile $\sqrt{38}$ arasında kaç tam sayı vardır?
+Bir sayı tablosu okunurken, verilen bağıntıdan yararlanarak: $-\sqrt{70}$ ile $\sqrt{38}$ arasında kaç tam sayı vardır?
 
 A) $15$
 

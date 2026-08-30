@@ -10,7 +10,7 @@
 
 `K02-T21-Q01`
 
-0, 4 ve 7 rakamları birer kez kullanılarak yazılabilecek en küçük üç basamaklı sayı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: 0, 4 ve 7 rakamları birer kez kullanılarak yazılabilecek en küçük üç basamaklı sayı kaçtır?
 
 A) $047$
 
@@ -58,7 +58,7 @@ E) $7125$
 
 `K02-T21-Q04`
 
-0, 4, 6 ve 9 rakamları birer kez kullanılarak yazılabilecek en büyük tek sayı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: 0, 4, 6 ve 9 rakamları birer kez kullanılarak yazılabilecek en büyük tek sayı kaçtır?
 
 A) $9460$
 
@@ -138,7 +138,7 @@ E) $105$
 
 `K02-T21-Q09`
 
-405, 450, 504 ve 540 sayılarının küçükten büyüğe doğru sıralanışı hangisidir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: 405, 450, 504 ve 540 sayılarının küçükten büyüğe doğru sıralanışı hangisidir?
 
 A) $405<504<450<540$
 

@@ -26,9 +26,7 @@ E) Tam sayılar
 
 `K01-T24-Q02`
 
-$$2[7-(-3)]$$
-
-işleminin sonucu kaçtır?
+$$2[7-(-3)]$$ işleminin sonucu kaçtır?
 
 A) $14$
 
@@ -60,9 +58,7 @@ E) Sıfırdır.
 
 `K01-T24-Q04`
 
-$$a=-\frac{22}{7},\qquad b=-\pi,\qquad c=-3,14$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+$$a=-\frac{22}{7},\qquad b=-\pi,\qquad c=-3,14$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $a<b<c$
 
@@ -78,9 +74,7 @@ E) $b<c<a$
 
 `K01-T24-Q05`
 
-$r$ rasyonel ve $t$ irrasyonel sayıdır.
-
-Aşağıdaki ifadelerden hangisi her zaman irrasyoneldir?
+$r$ rasyonel ve $t$ irrasyonel sayıdır. Aşağıdaki ifadelerden hangisi her zaman irrasyoneldir?
 
 A) $t-t+r$
 
@@ -96,9 +90,7 @@ E) $(t+r)(t-r)$
 
 `K01-T24-Q06`
 
-Ardışık altı pozitif çift tam sayının toplamı 150'dir.
-
-En büyük sayı kaçtır?
+Ardışık altı pozitif çift tam sayının toplamı 150'dir. En büyük sayı kaçtır?
 
 A) $24$
 
@@ -130,9 +122,7 @@ E) $a+b$
 
 `K01-T24-Q08`
 
-Bir öğrenci, bölme işleminde parantezin yerini değiştirmenin sonucu etkilemediğini öne sürüyor.
-
-Hangi iki işlem bu iddianın yanlış olduğunu gösterir?
+Bir öğrenci, bölme işleminde parantezin yerini değiştirmenin sonucu etkilemediğini öne sürüyor. Hangi iki işlem bu iddianın yanlış olduğunu gösterir?
 
 A) $12\div1=12$
 
@@ -164,9 +154,7 @@ E) $-5$
 
 `K01-T24-Q10`
 
-Gerçek sayılarda $a\mathbin{\diamond}b=a+b-ab$ tanımlanıyor.
-
-$2\mathbin{\diamond}3$ kaçtır?
+Gerçek sayılarda $a\mathbin{\diamond}b=a+b-ab$ tanımlanıyor. $2\mathbin{\diamond}3$ kaçtır?
 
 A) $5$
 

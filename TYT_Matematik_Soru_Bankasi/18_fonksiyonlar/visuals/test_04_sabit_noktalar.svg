@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="450" viewBox="0 0 760 450" role="img" aria-labelledby="title desc">
+  <title id="title">f fonksiyonu ile y eşittir x doğrusunun grafikleri</title>
+  <desc id="desc">Parabol biçimindeki f grafiği y eşittir x doğrusunu iki farklı noktada kesiyor.</desc>
+  <defs>
+    <marker id="axisArrow" markerWidth="9" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8 Z" fill="#334155"/>
+    </marker>
+    <style>
+      .grid { stroke: #e2e8f0; stroke-width: 1; }
+      .axis { stroke: #334155; stroke-width: 2; marker-end: url(#axisArrow); }
+      .axis-label { fill: #0f172a; font: 700 20px system-ui, sans-serif; }
+      .f-line { fill: none; stroke: #2563eb; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+      .identity { fill: none; stroke: #ea580c; stroke-width: 4; }
+      .intersection { fill: #7c3aed; stroke: #ffffff; stroke-width: 3; }
+      .f-name { fill: #1d4ed8; font: italic 700 23px Georgia, serif; }
+      .line-name { fill: #c2410c; font: italic 700 21px Georgia, serif; }
+    </style>
+  </defs>
+  <rect x="1" y="1" width="758" height="448" rx="18" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <g aria-hidden="true">
+    <line class="grid" x1="160" y1="60" x2="160" y2="410"/>
+    <line class="grid" x1="260" y1="60" x2="260" y2="410"/>
+    <line class="grid" x1="360" y1="60" x2="360" y2="410"/>
+    <line class="grid" x1="460" y1="60" x2="460" y2="410"/>
+    <line class="grid" x1="560" y1="60" x2="560" y2="410"/>
+    <line class="grid" x1="100" y1="60" x2="620" y2="60"/>
+    <line class="grid" x1="100" y1="160" x2="620" y2="160"/>
+    <line class="grid" x1="100" y1="260" x2="620" y2="260"/>
+    <line class="grid" x1="100" y1="360" x2="620" y2="360"/>
+  </g>
+  <line class="axis" x1="82" y1="260" x2="688" y2="260"/>
+  <line class="axis" x1="360" y1="414" x2="360" y2="40"/>
+  <text class="axis-label" x="694" y="286">x</text>
+  <text class="axis-label" x="377" y="47">y</text>
+  <line class="identity" x1="235" y1="385" x2="535" y2="85"/>
+  <polyline class="f-line" points="235,48 260,160 285,248 310,310 335,348 360,360 385,348 410,310 435,248 460,160 485,48"/>
+  <circle class="intersection" cx="310" cy="310" r="8"/>
+  <circle class="intersection" cx="460" cy="160" r="8"/>
+  <text class="f-name" x="495" y="70">f</text>
+  <text class="line-name" x="515" y="112">y=x</text>
+</svg>

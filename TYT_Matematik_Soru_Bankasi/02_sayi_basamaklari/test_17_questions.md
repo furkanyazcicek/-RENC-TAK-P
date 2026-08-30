@@ -154,7 +154,7 @@ E) $77$
 
 `K02-T17-Q10`
 
-$8b2$ sayısının rakamları tersten yazılıyor. İlk sayı ile yeni sayı arasındaki fark kaçtır?
+İlk sayı ile yeni sayı arasındaki fark kaçtır?
 
 A) $396$
 

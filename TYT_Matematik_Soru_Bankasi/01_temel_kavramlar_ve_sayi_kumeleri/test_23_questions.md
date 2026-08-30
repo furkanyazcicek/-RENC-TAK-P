@@ -58,9 +58,7 @@ E) 4'ün katı
 
 `K01-T23-Q04`
 
-$$x=\sqrt{10},\qquad y=\frac{19}{6},\qquad z=3,16$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $$x=\sqrt{10},\qquad y=\frac{19}{6},\qquad z=3,16$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $x<z<y$
 
@@ -92,9 +90,7 @@ E) Negatif tam sayı
 
 `K01-T23-Q06`
 
-Ardışık üç pozitif tek tam sayının toplamı 87'dir.
-
-Ortanca sayı kaçtır?
+Ardışık üç pozitif tek tam sayının toplamı 87'dir. Ortanca sayı kaçtır?
 
 A) $29$
 
@@ -110,11 +106,7 @@ E) $25$
 
 `K01-T23-Q07`
 
-$a$ ve $b$ negatif gerçek sayılar olduğuna göre
-
-$$\frac{a+b}{ab}$$
-
-ifadesinin işareti nedir?
+$a$ ve $b$ negatif gerçek sayılar olduğuna göre $$\frac{a+b}{ab}$$ ifadesinin işareti nedir?
 
 A) Her zaman pozitiftir.
 
@@ -130,9 +122,7 @@ E) Her zaman negatiftir.
 
 `K01-T23-Q08`
 
-Bir öğrenci çıkarma işleminin birleşme özelliği olduğunu söylüyor.
-
-Hangi hesap bu iddiayı çürütür?
+Bir öğrenci çıkarma işleminin birleşme özelliği olduğunu söylüyor. Hangi hesap bu iddiayı çürütür?
 
 A) $8-0=8$
 
@@ -148,9 +138,7 @@ E) $4\cdot3=3\cdot4$
 
 `K01-T23-Q09`
 
-Bir aralık seçici -2,2'ye eşit veya büyük ve $\sqrt7$'den küçük tam sayıları işaretliyor.
-
-Kaç tam sayı işaretlenir?
+Bir aralık seçici -2,2'ye eşit veya büyük ve $\sqrt7$'den küçük tam sayıları işaretliyor. Kaç tam sayı işaretlenir?
 
 A) $4$
 
@@ -166,13 +154,7 @@ E) $8$
 
 `K01-T23-Q10`
 
-Gerçek sayılarda
-
-$$a\mathbin{\triangle}b=ab-a$$
-
-olarak tanımlanıyor.
-
-Buna göre $4\mathbin{\triangle}(-2)$ kaçtır?
+Gerçek sayılarda $$a\mathbin{\triangle}b=ab-a$$ olarak tanımlanıyor. Buna göre $4\mathbin{\triangle}(-2)$ kaçtır?
 
 A) $12$
 

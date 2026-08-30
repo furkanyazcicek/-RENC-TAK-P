@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="460" viewBox="0 0 760 460" role="img" aria-labelledby="title desc">
+  <title id="title">Bir kenarı çap olan üçgen</title>
+  <desc id="desc">Düzgün ongenin karşılıklı iki köşesini birleştiren kırmızı çap ve üçüncü bir köşeyle oluşan üçgen.</desc>
+  <rect width="760" height="460" rx="24" fill="#f8fafc"/>
+  <circle cx="380" cy="230" r="170" fill="none" stroke="#94a3b8" stroke-width="3"/>
+  <polygon points="380,60 480,92 542,177 542,283 480,368 380,400 280,368 218,283 218,177 280,92" fill="#eff6ff" stroke="#334155" stroke-width="5"/>
+  <line x1="380" y1="60" x2="380" y2="400" stroke="#dc2626" stroke-width="8" stroke-linecap="round"/>
+  <line x1="380" y1="60" x2="542" y2="283" stroke="#2563eb" stroke-width="6" stroke-linecap="round"/>
+  <line x1="380" y1="400" x2="542" y2="283" stroke="#2563eb" stroke-width="6" stroke-linecap="round"/>
+  <g fill="#334155" stroke="#ffffff" stroke-width="3">
+    <circle cx="380" cy="60" r="11"/><circle cx="480" cy="92" r="11"/><circle cx="542" cy="177" r="11"/><circle cx="542" cy="283" r="11"/>
+    <circle cx="480" cy="368" r="11"/><circle cx="380" cy="400" r="11"/><circle cx="280" cy="368" r="11"/><circle cx="218" cy="283" r="11"/>
+    <circle cx="218" cy="177" r="11"/><circle cx="280" cy="92" r="11"/>
+  </g>
+</svg>

@@ -26,9 +26,7 @@ E) 4'ün katıdır.
 
 `K01-T33-Q02`
 
-$$x=\sqrt2+\sqrt3,\qquad y=\sqrt2-\sqrt3$$
-
-olduğuna göre $xy$ kaçtır?
+$$x=\sqrt2+\sqrt3,\qquad y=\sqrt2-\sqrt3$$ olduğuna göre $xy$ kaçtır?
 
 A) $1$
 
@@ -60,9 +58,7 @@ E) $21$
 
 `K01-T33-Q04`
 
-$$a=\sqrt{17}-3,\qquad b=\frac98,\qquad c=1,124$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $$a=\sqrt{17}-3,\qquad b=\frac98,\qquad c=1,124$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $c<a<b$
 
@@ -142,9 +138,7 @@ E) $\dfrac{n-1}{4}$
 
 `K01-T33-Q09`
 
-Bir tam sayı seçicisi, sayı doğrusunda $-2\pi$ noktasının sağında ve $\sqrt{45}$ noktasının solunda kalan etiketleri alıyor.
-
-Seçici kaç etiket alır?
+Bir tam sayı seçicisi, sayı doğrusunda $-2\pi$ noktasının sağında ve $\sqrt{45}$ noktasının solunda kalan etiketleri alıyor. Seçici kaç etiket alır?
 
 A) $12$
 

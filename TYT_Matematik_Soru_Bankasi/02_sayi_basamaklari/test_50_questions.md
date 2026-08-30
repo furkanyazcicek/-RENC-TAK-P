@@ -9,7 +9,7 @@
 ## Soru 1
 `K02-T50-Q01`
 
-0, 1, 2, 5 ve 8 rakamları birer kez kullanılarak 30000'den büyük en küçük tek sayı yazılıyor. Bu sayı kaçtır?
+Bir sayı doğrusu incelemesinde, koşulu bir eşitlik olarak yazdığımızda: Bu sayı kaçtır?
 
 A) $50281$  
 B) $50821$  
@@ -42,7 +42,7 @@ E) $6433$
 ## Soru 4
 `K02-T50-Q04`
 
-Onlar basamağı 0 olan üç basamaklı bir sayı, rakamları ters çevrilerek elde edilen sayıdan 792 fazladır. Rakamları toplamı 10 olduğuna göre sayı kaçtır?
+Bir sınıf etkinliğinde, verilen bağıntıdan yararlanarak: Onlar basamağı 0 olan üç basamaklı bir sayı, rakamları ters çevrilerek elde edilen sayıdan 792 fazladır. Rakamları toplamı 10 olduğuna göre sayı kaçtır?
 
 A) $109$  
 B) $901$  
@@ -75,7 +75,7 @@ E) $8822$
 ## Soru 7
 `K02-T50-Q07`
 
-1, 3, 4, 6, 8 ve 9 rakamları birer kez kullanılarak yazılabilecek en büyük altı basamaklı çift sayı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: 1, 3, 4, 6, 8 ve 9 rakamları birer kez kullanılarak yazılabilecek en büyük altı basamaklı çift sayı kaçtır?
 
 A) $986134$  
 B) $986341$  
@@ -108,7 +108,7 @@ E) $287$
 ## Soru 10
 `K02-T50-Q10`
 
-4682 sayısının rakamları sağdan sola doğru okunarak yeni bir sayı yazılıyor. Bu sayı kaçtır?
+Bir ölçü listesi hazırlanırken, koşulu bir eşitlik olarak yazdığımızda: Bu sayı kaçtır?
 
 A) $2864$  
 B) $2648$  

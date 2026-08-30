@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const strict = process.argv.includes('--strict');
+const skipSimilarity = process.argv.includes('--skip-similarity');
 const errors = [];
 const warnings = [];
 const ids = new Set();
@@ -205,15 +206,17 @@ for (const topicDir of topicDirs) {
   }
 }
 
-for (let i = 0; i < allQuestions.length; i += 1) {
-  for (let j = i + 1; j < allQuestions.length; j += 1) {
-    if (allQuestions[i].exact === allQuestions[j].exact) {
-      errors.push(`${allQuestions[i].id} ile ${allQuestions[j].id}: aynı normalize soru kökü.`);
-      continue;
-    }
-    const score = jaccard(allQuestions[i].stem, allQuestions[j].stem);
-    if (score >= 0.78) {
-      warnings.push(`${allQuestions[i].id} ile ${allQuestions[j].id}: yüksek metinsel benzerlik (${score.toFixed(2)}).`);
+if (!skipSimilarity) {
+  for (let i = 0; i < allQuestions.length; i += 1) {
+    for (let j = i + 1; j < allQuestions.length; j += 1) {
+      if (allQuestions[i].exact === allQuestions[j].exact) {
+        errors.push(`${allQuestions[i].id} ile ${allQuestions[j].id}: aynı normalize soru kökü.`);
+        continue;
+      }
+      const score = jaccard(allQuestions[i].stem, allQuestions[j].stem);
+      if (score >= 0.78) {
+        warnings.push(`${allQuestions[i].id} ile ${allQuestions[j].id}: yüksek metinsel benzerlik (${score.toFixed(2)}).`);
+      }
     }
   }
 }
@@ -227,6 +230,7 @@ const summary = {
   errors: errors.length,
   warnings: warnings.length,
   strict,
+  skipSimilarity,
 };
 
 console.log(JSON.stringify(summary, null, 2));

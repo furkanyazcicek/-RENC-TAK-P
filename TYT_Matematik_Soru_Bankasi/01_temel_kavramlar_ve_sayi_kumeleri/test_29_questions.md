@@ -10,9 +10,7 @@
 
 `K01-T29-Q01`
 
-Tam sayılarda $a\mathbin{\triangle}b=a-b+ab$ işlemi tanımlanıyor.
-
-$a$ çift, $b$ tek tam sayı olduğuna göre $a\mathbin{\triangle}b$ için hangisi kesindir?
+Tam sayılarda $a\mathbin{\triangle}b=a-b+ab$ işlemi tanımlanıyor. $a$ çift, $b$ tek tam sayı olduğuna göre $a\mathbin{\triangle}b$ için hangisi kesindir?
 
 A) Pozitiftir.
 
@@ -28,11 +26,7 @@ E) Tektir.
 
 `K01-T29-Q02`
 
-$r\in\mathbb{Q}$ ve $t\notin\mathbb{Q}$ olmak üzere
-
-$$x=t+2r,\qquad y=2t-r$$
-
-$t$ içeren terimleri yok edip her durumda rasyonel sonuç veren işlem hangisidir?
+$r\in\mathbb{Q}$ ve $t\notin\mathbb{Q}$ olmak üzere $$x=t+2r,\qquad y=2t-r$$ $t$ içeren terimleri yok edip her durumda rasyonel sonuç veren işlem hangisidir?
 
 A) $x+y$
 
@@ -48,9 +42,7 @@ E) $x^2+y^2$
 
 `K01-T29-Q03`
 
-Bir sayı şeridinde yan yana yazılan yedi ardışık tam sayının aritmetik ortalaması 8'dir.
-
-Şeridin en sağındaki sayı kaçtır?
+Bir sayı şeridinde yan yana yazılan yedi ardışık tam sayının aritmetik ortalaması 8'dir. Şeridin en sağındaki sayı kaçtır?
 
 A) $10$
 
@@ -66,9 +58,7 @@ E) $14$
 
 `K01-T29-Q04`
 
-$$a=\sqrt5-1,\qquad b=\frac54,\qquad c=1,24$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+$$a=\sqrt5-1,\qquad b=\frac54,\qquad c=1,24$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $a<c<b$
 
@@ -84,11 +74,7 @@ E) $c<b<a$
 
 `K01-T29-Q05`
 
-$x<0<y$ olduğuna göre
-
-$$\frac{x-y}{xy}$$
-
-ifadesinin işareti nedir?
+$x<0<y$ olduğuna göre $$\frac{x-y}{xy}$$ ifadesinin işareti nedir?
 
 A) Sıfırdır.
 
@@ -104,9 +90,7 @@ E) Tam sayıdır.
 
 `K01-T29-Q06`
 
-$S$, 10'un tam sayı katlarından oluşuyor ve $a\circ b=(a+b)/5$ tanımlanıyor.
-
-Hangi $(a,b)$ çifti işlemin $S$ kümesinde kapalı olmadığını gösterir?
+$S$, 10'un tam sayı katlarından oluşuyor ve $a\circ b=(a+b)/5$ tanımlanıyor. Hangi $(a,b)$ çifti işlemin $S$ kümesinde kapalı olmadığını gösterir?
 
 A) $(0,0)$
 
@@ -138,9 +122,7 @@ E) $\sqrt5$ ve $\sqrt{10}$
 
 `K01-T29-Q08`
 
-$m$ ve $n$ tam sayıları için $m^2-n^2$ tektir.
-
-Buna göre $m\cdot n$ çarpımı hakkında hangi sonuca kesin olarak ulaşılır?
+$m$ ve $n$ tam sayıları için $m^2-n^2$ tektir. Buna göre $m\cdot n$ çarpımı hakkında hangi sonuca kesin olarak ulaşılır?
 
 A) $m+n$ çifttir.
 
@@ -156,7 +138,7 @@ E) $mn$ tektir.
 
 `K01-T29-Q09`
 
-$-\sqrt{30}$ ile $\pi+3$ arasında kaç tam sayı vardır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $-\sqrt{30}$ ile $\pi+3$ arasında kaç tam sayı vardır?
 
 A) $10$
 

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470" role="img" aria-labelledby="title desc">
+  <title id="title">İki mutlak değer fonksiyonunun öteleme grafiği</title>
+  <desc id="desc">Gri f grafiğinin tepe noktası sıfır sıfırdadır. Mavi g grafiğinin tepe noktası iki birdedir.</desc>
+  <defs>
+    <marker id="axisArrow28" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="758" height="468" rx="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <g stroke="#e2e8f0" stroke-width="1">
+    <path d="M110 50V410 M200 50V410 M290 50V410 M380 50V410 M470 50V410 M560 50V410 M650 50V410"/>
+    <path d="M70 80H690 M70 170H690 M70 260H690 M70 350H690"/>
+  </g>
+  <g stroke="#334155" stroke-width="3" marker-end="url(#axisArrow28)">
+    <path d="M60 350H710"/>
+    <path d="M290 425V40"/>
+  </g>
+  <g fill="#475569" font-family="Arial, sans-serif" font-size="17">
+    <text x="695" y="378">x</text>
+    <text x="307" y="52">y</text>
+    <text x="269" y="376">0</text>
+    <text x="463" y="376">2</text>
+    <text x="307" y="265">1</text>
+  </g>
+  <path d="M110 170L290 350L650 -10" fill="none" stroke="#94a3b8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M200 -10L470 260L650 80" fill="none" stroke="#2563eb" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="290" cy="350" r="8" fill="#64748b" stroke="#ffffff" stroke-width="3"/>
+  <circle cx="470" cy="260" r="9" fill="#2563eb" stroke="#ffffff" stroke-width="3"/>
+  <g font-family="Georgia, serif" font-size="28" font-style="italic">
+    <text x="570" y="88" fill="#64748b">f</text>
+    <text x="593" y="133" fill="#1d4ed8">g</text>
+  </g>
+</svg>

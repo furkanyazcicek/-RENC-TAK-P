@@ -50,6 +50,7 @@ import {
   WrongChoicesCard,
 } from '../components/aiSolve/SolutionPanels'
 import { MathText } from '../components/aiSolve/MathRenderer'
+import { buildAISolveCaptureResult, isProductCapture } from '../lib/productCapture'
 
 /**
  * AISolve — /soru-coz
@@ -68,11 +69,14 @@ import { MathText } from '../components/aiSolve/MathRenderer'
 export default function AISolve() {
   const { user } = useAuth()
   const toast = useToast()
+  const captureMode = isProductCapture()
 
-  const [phase, setPhase] = useState('idle') // idle | solving | result
+  const [phase, setPhase] = useState(() => (captureMode ? 'result' : 'idle')) // idle | solving | result
   const [stages, setStages] = useState([])
   const [currentStage, setCurrentStage] = useState(null)
-  const [result, setResult] = useState(null)
+  const [result, setResult] = useState(() =>
+    captureMode ? buildAISolveCaptureResult() : null
+  )
   const [error, setError] = useState(null)
   const [imageUrl, setImageUrl] = useState(null)
 

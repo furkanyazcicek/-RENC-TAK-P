@@ -10,7 +10,7 @@
 
 `K02-T32-Q01`
 
-684 sayısının son iki rakamı yer değiştiriliyor ve elde edilen sayıdan 8 çıkarılıyor. Sonuç kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: Sonuç kaçtır?
 
 A) $632$
 
@@ -74,7 +74,7 @@ E) $275$
 
 `K02-T32-Q05`
 
-58'in rakamları ters çevriliyor ve oluşan sayıdan 58'in rakamları toplamı çıkarılıyor. Sonuç kaçtır?
+Bir sınıf etkinliğinde, verilen bağıntıdan yararlanarak: Sonuç kaçtır?
 
 A) $58$
 

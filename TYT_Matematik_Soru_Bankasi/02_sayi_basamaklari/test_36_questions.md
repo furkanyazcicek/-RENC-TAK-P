@@ -106,7 +106,7 @@ E) $624$
 
 `K02-T36-Q07`
 
-İki haneli etiketlerin rakam toplamı 7 olarak belirleniyor. Soldaki hanesi sağdaki hanesinden büyük olan kaç etiket üretilebilir?
+Soldaki hanesi sağdaki hanesinden büyük olan kaç etiket üretilebilir?
 
 A) $1$
 

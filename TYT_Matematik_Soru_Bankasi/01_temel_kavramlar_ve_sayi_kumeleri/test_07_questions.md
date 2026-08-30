@@ -10,13 +10,7 @@
 
 `K01-T07-Q01`
 
-Gerçek sayılarda bir işlem
-
-$$a\mathbin{\circ}b=a+b+2$$
-
-biçiminde tanımlanıyor.
-
-Her gerçek sayı $a$ için $a\mathbin{\circ}e=a$ olduğuna göre $e$ kaçtır?
+Gerçek sayılarda bir işlem $$a\mathbin{\circ}b=a+b+2$$ biçiminde tanımlanıyor. Her gerçek sayı $a$ için $a\mathbin{\circ}e=a$ olduğuna göre $e$ kaçtır?
 
 A) $-4$
 
@@ -32,9 +26,7 @@ E) $2$
 
 `K01-T07-Q02`
 
-$$-\frac35\cdot t=1$$
-
-olduğuna göre $t$ kaçtır?
+$$-\frac35\cdot t=1$$ olduğuna göre $t$ kaçtır?
 
 A) $-\dfrac53$
 
@@ -50,11 +42,7 @@ E) $1$
 
 `K01-T07-Q03`
 
-$x$ bir gerçek sayı olmak üzere
-
-$$8+[x+(-8)]$$
-
-ifadesinin en sade biçimi aşağıdakilerden hangisidir?
+$x$ bir gerçek sayı olmak üzere $$8+[x+(-8)]$$ ifadesinin en sade biçimi aşağıdakilerden hangisidir?
 
 A) $x-16$
 
@@ -70,9 +58,7 @@ E) $x$
 
 `K01-T07-Q04`
 
-Bir sayı kartında $x$'in negatif, $y$'nin pozitif olduğu yazıyor.
-
-Aşağıdaki işlemlerden hangisinin sonucu, karttaki sayıların büyüklükleri ne olursa olsun sayı doğrusunda sıfırın solunda yer alır?
+Bir sayı kartında $x$'in negatif, $y$'nin pozitif olduğu yazıyor. Aşağıdaki işlemlerden hangisinin sonucu, karttaki sayıların büyüklükleri ne olursa olsun sayı doğrusunda sıfırın solunda yer alır?
 
 A) $x^2y$
 
@@ -88,11 +74,7 @@ E) $-xy$
 
 `K01-T07-Q05`
 
-$a$ ve $b$ gerçek sayılar olmak üzere
-
-$$4(a+b)-4a$$
-
-ifadesi aşağıdakilerden hangisine eşittir?
+$a$ ve $b$ gerçek sayılar olmak üzere $$4(a+b)-4a$$ ifadesi aşağıdakilerden hangisine eşittir?
 
 A) $a+4b$
 
@@ -108,9 +90,7 @@ E) $0$
 
 `K01-T07-Q06`
 
-$$\left(-\frac14\right)\cdot16\cdot(-8)$$
-
-işleminin sonucu kaçtır?
+$$\left(-\frac14\right)\cdot16\cdot(-8)$$ işleminin sonucu kaçtır?
 
 A) $-128$
 
@@ -174,11 +154,7 @@ E) $pq^2$
 
 `K01-T07-Q10`
 
-$m$ bir gerçek sayı olmak üzere
-
-$$3(m+2)-3m$$
-
-ifadesinin değeri kaçtır?
+$m$ bir gerçek sayı olmak üzere $$3(m+2)-3m$$ ifadesinin değeri kaçtır?
 
 A) $2$
 

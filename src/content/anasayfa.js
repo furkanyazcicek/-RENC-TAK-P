@@ -28,7 +28,7 @@ export const ANASAYFA_ICERIGI = {
       'Tanıtım sahnesi hiçbir veriyi kaydetmez',
     ],
     sahneBasligi: 'Etkileşimli öğrenme gösterimi',
-    sahneYardim: 'Bir alan seç; öğrenme nesnesinin nasıl değiştiğini gör.',
+    sahneYardim: '1 · Alan seç  2 · Değişkeni değiştir  3 · Sonucu karşılaştır',
   },
 
   sahneler: [

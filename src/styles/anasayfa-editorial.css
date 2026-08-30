@@ -417,11 +417,11 @@
 
 .editorial-stage__titlebar {
   display: flex;
-  min-height: 4rem;
+  min-height: 3.6rem;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.8rem 1rem;
+  padding: 0.65rem 1rem;
   border-bottom: 1px solid rgb(var(--c-line));
   background: rgb(var(--c-surface-muted));
 }
@@ -465,9 +465,9 @@
 }
 
 .editorial-stage__help {
-  max-width: 16rem;
+  max-width: 23rem;
   color: rgb(var(--c-ink) / 0.5);
-  font-size: 0.66rem;
+  font-size: 0.62rem;
   font-weight: 600;
   line-height: 1.45;
   text-align: right;
@@ -490,7 +490,7 @@
   position: relative;
   display: inline-flex;
   min-width: max-content;
-  min-height: 3.35rem;
+  min-height: 3.15rem;
   flex: 1 0 auto;
   align-items: center;
   justify-content: center;
@@ -555,8 +555,9 @@
 
 .editorial-stage__summary {
   display: grid;
-  padding: 1.2rem;
-  gap: 1.25rem;
+  padding: 1rem 1.1rem;
+  grid-template-columns: minmax(0, 1.35fr) minmax(12rem, 0.65fr);
+  gap: 1rem;
 }
 
 .editorial-stage__summary > div:first-child > span,
@@ -595,8 +596,8 @@
   min-width: 0;
   flex-direction: column;
   justify-content: center;
-  padding-top: 0.85rem;
-  border-top: 1px solid rgb(var(--c-line));
+  padding-left: 1rem;
+  border-left: 1px solid rgb(var(--c-line));
 }
 
 .editorial-stage__proof > span {
@@ -665,7 +666,7 @@
 .editorial-demo-chip {
   display: inline-flex;
   min-width: max-content;
-  min-height: 2.6rem;
+  min-height: 2.75rem;
   align-items: center;
   gap: 0.4rem;
   padding: 0 0.7rem;
@@ -767,6 +768,10 @@
   stroke-linecap: round;
 }
 
+.editorial-projectile marker path {
+  fill: rgb(var(--c-accent-300));
+}
+
 .editorial-projectile__point {
   fill: rgb(var(--c-aqua-300));
   filter: drop-shadow(0 0 8px rgb(var(--c-aqua-400) / 0.65));
@@ -776,6 +781,15 @@
   fill: none;
   stroke: rgb(255 255 255 / 0.35);
   stroke-width: 2;
+}
+
+.editorial-projectile__range {
+  fill: none;
+  stroke: rgb(var(--c-warning-500) / 0.72);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 3 5;
+  transition: d 220ms ease-out;
 }
 
 @keyframes editorial-dash {
@@ -968,6 +982,140 @@
   justify-content: center;
   padding: 1.2rem;
   background: rgb(var(--c-surface));
+}
+
+.editorial-atlas-copy--physics {
+  justify-content: flex-start;
+}
+
+.editorial-physics-control {
+  margin-top: 0.85rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgb(var(--c-line));
+}
+
+.editorial-physics-control__heading {
+  display: flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.editorial-physics-control__heading label {
+  color: rgb(var(--c-ink) / 0.58);
+  font-size: 0.66rem;
+  font-weight: 800;
+}
+
+.editorial-physics-control__heading > div {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.editorial-physics-control output {
+  color: rgb(var(--c-brand-700));
+  font-family: 'Inter Tight', 'Inter', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 850;
+}
+
+.editorial-physics-control__heading button {
+  display: grid;
+  width: 2.75rem;
+  min-height: 2.75rem;
+  place-items: center;
+  border: 1px solid rgb(var(--c-line));
+  border-radius: 0.65rem;
+  color: rgb(var(--c-ink) / 0.5);
+  transition-property: color, background-color, opacity;
+  transition-duration: 180ms;
+}
+
+.editorial-physics-control__heading button:hover:not(:disabled) {
+  background: rgb(var(--c-surface-sunken));
+  color: rgb(var(--c-brand-700));
+}
+
+.editorial-physics-control__heading button:disabled {
+  cursor: default;
+  opacity: 0.32;
+}
+
+.editorial-physics-control__heading svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.editorial-physics-control input[type='range'] {
+  width: 100%;
+  min-height: 2.75rem;
+  margin-top: 0.1rem;
+  accent-color: rgb(var(--c-brand-600));
+  cursor: ew-resize;
+}
+
+.editorial-physics-control__limits {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: rgb(var(--c-ink) / 0.38);
+  font-size: 0.5rem;
+  font-weight: 700;
+}
+
+.editorial-physics-results {
+  display: grid;
+  margin-top: 0.9rem;
+  padding: 0.8rem 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid rgb(var(--c-line));
+  border-bottom: 1px solid rgb(var(--c-line));
+}
+
+.editorial-physics-results > div {
+  min-width: 0;
+  padding: 0 0.55rem;
+  border-left: 1px solid rgb(var(--c-line));
+}
+
+.editorial-physics-results > div:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.editorial-physics-results dt {
+  color: rgb(var(--c-ink) / 0.42);
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.editorial-physics-results dd {
+  margin-top: 0.22rem;
+  color: rgb(var(--c-ink));
+  font-family: 'Inter Tight', 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.editorial-physics-insight {
+  margin-top: 0.75rem;
+  color: rgb(var(--c-ink) / 0.68);
+  font-size: 0.64rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.editorial-physics-assumption {
+  display: block;
+  margin-top: 0.5rem;
+  color: rgb(var(--c-ink) / 0.4);
+  font-size: 0.51rem;
+  line-height: 1.45;
 }
 
 .editorial-atlas-copy h3,
@@ -2073,7 +2221,7 @@
   }
 
   .editorial-atlas-layout {
-    grid-template-columns: minmax(0, 1.5fr) minmax(11rem, 0.5fr);
+    grid-template-columns: minmax(0, 1.35fr) minmax(13rem, 0.65fr);
   }
 
   .editorial-note-layout {
@@ -2235,9 +2383,18 @@
 
   .editorial-stage__summary {
     padding: 1rem;
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
   }
 
   .editorial-stage__summary h2 { font-size: 1.45rem; }
+
+  .editorial-stage__proof {
+    padding-top: 0.75rem;
+    padding-left: 0;
+    border-top: 1px solid rgb(var(--c-line));
+    border-left: 0;
+  }
 
   .editorial-stage__proof a { min-height: 2.85rem; }
 

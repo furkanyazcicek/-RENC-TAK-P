@@ -10,11 +10,7 @@
 
 `K01-T45-Q01`
 
-$a$ ve $b$ tek tam sayılar olmak üzere
-
-$$ab+a+b+1$$
-
-ifadesi için hangisi kesindir?
+$a$ ve $b$ tek tam sayılar olmak üzere $$ab+a+b+1$$ ifadesi için hangisi kesindir?
 
 A) 4'ün katıdır.
 
@@ -46,9 +42,7 @@ E) $x$
 
 `K01-T45-Q03`
 
-Bir parkurdaki dokuz istasyonun numaraları ardışık pozitif tek sayılardır. Numaraların toplamı 225'tir.
-
-En büyük istasyon numarası kaçtır?
+Bir parkurdaki dokuz istasyonun numaraları ardışık pozitif tek sayılardır. Numaraların toplamı 225'tir. En büyük istasyon numarası kaçtır?
 
 A) $29$
 
@@ -64,9 +58,7 @@ E) $37$
 
 `K01-T45-Q04`
 
-$a=\sqrt{29}-4$, $b=\dfrac{97}{70}$ ve $c=1{,}385$ olduğuna göre
-
-Değerlerin küçükten büyüğe sıralaması hangisidir?
+$a=\sqrt{29}-4$, $b=\dfrac{97}{70}$ ve $c=1{,}385$ olduğuna göre Değerlerin küçükten büyüğe sıralaması hangisidir?
 
 A) $a<c<b$
 
@@ -82,11 +74,7 @@ E) $a<b<c$
 
 `K01-T45-Q05`
 
-Zıt işaretli $x,y$ sayılarında $x<0<y$ ve $|x|=2y$ olduğu biliniyor.
-
-$$\frac{x+y}{x-y}$$
-
-oranı kaçtır?
+Zıt işaretli $x,y$ sayılarında $x<0<y$ ve $|x|=2y$ olduğu biliniyor. $$\frac{x+y}{x-y}$$ oranı kaçtır?
 
 A) $-3$
 
@@ -166,9 +154,7 @@ E) $27$
 
 `K01-T45-Q10`
 
-Bir öğrenci “İki gerçek sayının toplamı pozitifse çarpımları da pozitiftir.” diyor.
-
-Hangi çift öğrencinin ifadesini çürütür?
+Bir öğrenci “İki gerçek sayının toplamı pozitifse çarpımları da pozitiftir.” diyor. Hangi çift öğrencinin ifadesini çürütür?
 
 A) $(-1,2)$
 

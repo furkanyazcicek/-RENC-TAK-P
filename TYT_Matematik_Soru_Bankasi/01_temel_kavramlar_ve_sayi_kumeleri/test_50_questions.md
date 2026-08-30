@@ -26,11 +26,7 @@ E) Sıfırdır.
 
 `K01-T50-Q02`
 
-$t$ irrasyonel, $r$ rasyonel sayıdır. $u$ ve $v$ sayıları
-
-$$u-t=r,\qquad v-2t=-r$$
-
-eşitliklerini sağladığına göre $2u-v$ aşağıdakilerden hangisine eşittir?
+$t$ irrasyonel, $r$ rasyonel sayıdır. $u$ ve $v$ sayıları $$u-t=r,\qquad v-2t=-r$$ eşitliklerini sağladığına göre $2u-v$ aşağıdakilerden hangisine eşittir?
 
 A) $t$
 
@@ -78,9 +74,7 @@ E) $c<b<a$
 
 `K01-T50-Q05`
 
-Bir sıcaklık modelinde sıfırın altındaki $x$ değerinin sıfıra uzaklığı, sıfırın üstündeki $y$ değerinin $\dfrac52$ katıdır.
-
-Modelde kullanılan $\dfrac{x+y}{x-y}$ oranı kaçtır?
+Bir sıcaklık modelinde sıfırın altındaki $x$ değerinin sıfıra uzaklığı, sıfırın üstündeki $y$ değerinin $\dfrac52$ katıdır. Modelde kullanılan $\dfrac{x+y}{x-y}$ oranı kaçtır?
 
 A) $-\dfrac37$
 
@@ -96,7 +90,7 @@ E) $\dfrac37$
 
 `K01-T50-Q06`
 
-$a$ ve $b$ tam sayılarının her biri 15 ile bölündüğünde 11 kalanını veriyor. Aşağıdakilerden hangisi 15 ile bölündüğünde yine 11 kalanını verir?
+Bir sayı tablosu okunurken, verilen bağıntıdan yararlanarak: $a$ ve $b$ tam sayılarının her biri 15 ile bölündüğünde 11 kalanını veriyor. Aşağıdakilerden hangisi 15 ile bölündüğünde yine 11 kalanını verir?
 
 A) $a+b$
 
@@ -144,7 +138,7 @@ E) $2m+2n$
 
 `K01-T50-Q09`
 
-$-7\pi<n<\sqrt{500}$ eşitsizliğini sağlayan tam sayı $n$ değerlerinin toplamı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $-7\pi<n<\sqrt{500}$ eşitsizliğini sağlayan tam sayı $n$ değerlerinin toplamı kaçtır?
 
 A) $20$
 

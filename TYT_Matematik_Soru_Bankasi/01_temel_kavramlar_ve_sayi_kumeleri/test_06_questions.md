@@ -10,13 +10,7 @@
 
 `K01-T06-Q01`
 
-Gerçek sayılarda yeni bir işlem
-
-$$a\mathbin{\square}b=a+b-6$$
-
-biçiminde tanımlanıyor.
-
-Her gerçek sayı $a$ için $a\mathbin{\square}e=a$ olduğuna göre $e$ kaçtır?
+Gerçek sayılarda yeni bir işlem $$a\mathbin{\square}b=a+b-6$$ biçiminde tanımlanıyor. Her gerçek sayı $a$ için $a\mathbin{\square}e=a$ olduğuna göre $e$ kaçtır?
 
 A) $-6$
 
@@ -32,9 +26,7 @@ E) $a$
 
 `K01-T06-Q02`
 
-$x$ sıfırdan farklı bir gerçek sayıdır.
-
-$x$'in toplamaya göre tersi ile çarpmaya göre tersinin çarpımı kaçtır?
+$x$ sıfırdan farklı bir gerçek sayıdır. $x$'in toplamaya göre tersi ile çarpmaya göre tersinin çarpımı kaçtır?
 
 A) $x^2$
 
@@ -66,9 +58,7 @@ E) $abc$
 
 `K01-T06-Q04`
 
-$$11x-11y=11(x-y)$$
-
-eşitliği çarpma işleminin hangi özelliği kullanılarak elde edilmiştir?
+$$11x-11y=11(x-y)$$ eşitliği çarpma işleminin hangi özelliği kullanılarak elde edilmiştir?
 
 A) Değişme
 
@@ -84,11 +74,7 @@ E) Birleşme
 
 `K01-T06-Q05`
 
-$m$ bir gerçek sayı olmak üzere
-
-$$(m-7)+k=0$$
-
-eşitliğini sağlayan $k$ aşağıdakilerden hangisidir?
+$m$ bir gerçek sayı olmak üzere $$(m-7)+k=0$$ eşitliğini sağlayan $k$ aşağıdakilerden hangisidir?
 
 A) $m-7$
 
@@ -104,9 +90,7 @@ E) $\dfrac{1}{m-7}$
 
 `K01-T06-Q06`
 
-$$(-3)\,[4-2(-5)]+6$$
-
-işleminin sonucu kaçtır?
+$$(-3)\,[4-2(-5)]+6$$ işleminin sonucu kaçtır?
 
 A) $-48$
 
@@ -122,11 +106,7 @@ E) $48$
 
 `K01-T06-Q07`
 
-$a$, $b$ ve $c$ gerçek sayıları için
-
-$$ab<0\qquad\text{ve}\qquad bc>0$$
-
-olduğuna göre $ac$ için hangisi kesinlikle doğrudur?
+$a$, $b$ ve $c$ gerçek sayıları için $$ab<0\qquad\text{ve}\qquad bc>0$$ olduğuna göre $ac$ için hangisi kesinlikle doğrudur?
 
 A) Negatiftir.
 
@@ -158,15 +138,7 @@ E) $a\cdot\dfrac1a=1\quad(a\ne0)$
 
 `K01-T06-Q09`
 
-$p<0<q$ olduğuna göre
-
-I. $p-q<0$
-
-II. $pq<0$
-
-III. $p+q<0$
-
-ifadelerinden hangileri kesinlikle doğrudur?
+$p<0<q$ olduğuna göre I. $p-q<0$ II. $pq<0$ III. $p+q<0$ ifadelerinden hangileri kesinlikle doğrudur?
 
 A) Yalnız I
 
@@ -182,17 +154,7 @@ E) I ve II
 
 `K01-T06-Q10`
 
-Bir öğrenci
-
-$$(-4)\cdot18+(-4)\cdot(-8)$$
-
-işlemini, ortak çarpan kullanarak
-
-$$(-4)\,[18+(-8)]$$
-
-biçiminde hesaplıyor.
-
-Buna göre işlemin sonucu kaçtır?
+Bir öğrenci $$(-4)\cdot18+(-4)\cdot(-8)$$ işlemini, ortak çarpan kullanarak $$(-4)\,[18+(-8)]$$ biçiminde hesaplıyor. Buna göre işlemin sonucu kaçtır?
 
 A) $-104$
 

@@ -10,9 +10,7 @@
 
 `K01-T11-Q01`
 
-$$a=\sqrt6,\qquad b=2,4,\qquad c=\frac52$$
-
-olduğuna göre bu sayıların küçükten büyüğe sıralanışı hangisidir?
+$$a=\sqrt6,\qquad b=2,4,\qquad c=\frac52$$ olduğuna göre bu sayıların küçükten büyüğe sıralanışı hangisidir?
 
 A) $a<b<c$
 
@@ -28,9 +26,7 @@ E) $a<c<b$
 
 `K01-T11-Q02`
 
-$$-\sqrt{17}<n\le3,2$$
-
-eşitsizliğini sağlayan kaç farklı tam sayı $n$ vardır?
+$$-\sqrt{17}<n\le3,2$$ eşitsizliğini sağlayan kaç farklı tam sayı $n$ vardır?
 
 A) $4$
 
@@ -46,11 +42,7 @@ E) $8$
 
 `K01-T11-Q03`
 
-Aşağıdaki sayılardan hangisi
-
-$$1,4<x<\sqrt2$$
-
-eşitsizliğini sağlar?
+Aşağıdaki sayılardan hangisi $$1,4<x<\sqrt2$$ eşitsizliğini sağlar?
 
 A) $\dfrac75$
 
@@ -82,9 +74,7 @@ E) $0,125$
 
 `K01-T11-Q05`
 
-$$p=-\sqrt7,\qquad q=-2,65,\qquad r=-\frac83$$
-
-olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
+$$p=-\sqrt7,\qquad q=-2,65,\qquad r=-\frac83$$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
 
 A) $p<q<r$
 
@@ -132,9 +122,7 @@ E) $7$ ile $8$
 
 `K01-T11-Q08`
 
-$$x=\sqrt5-2,\qquad y=\frac14,\qquad z=0,24$$
-
-olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
+$$x=\sqrt5-2,\qquad y=\frac14,\qquad z=0,24$$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
 
 A) $y<z<x$
 
@@ -150,9 +138,7 @@ E) $x<y<z$
 
 `K01-T11-Q09`
 
-$$a=-\frac34,\qquad b=-0,7,\qquad c=-\frac58$$
-
-olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
+$$a=-\frac34,\qquad b=-0,7,\qquad c=-\frac58$$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
 
 A) $c<b<a$
 
@@ -168,9 +154,7 @@ E) $a<b<c$
 
 `K01-T11-Q10`
 
-$$x=0,121212\ldots,\qquad y=\sqrt2,\qquad z=\pi-3$$
-
-olduğuna göre bu sayılardan hangileri irrasyoneldir?
+$$x=0,121212\ldots,\qquad y=\sqrt2,\qquad z=\pi-3$$ olduğuna göre bu sayılardan hangileri irrasyoneldir?
 
 A) Yalnız $x$
 

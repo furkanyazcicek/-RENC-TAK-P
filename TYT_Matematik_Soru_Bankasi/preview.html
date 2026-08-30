@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TYT Matematik Soru Bankası — Önizleme</title>
+  <script>
+    // Markdown dosyaları tarayıcı güvenliği nedeniyle file:// sayfasından okunamaz.
+    // Kullanıcı preview.html dosyasını çift tıklarsa çalışan yerel sunucuya geçir.
+    if (window.location.protocol === 'file:') {
+      window.location.replace('http://127.0.0.1:4174/TYT_Matematik_Soru_Bankasi/preview.html');
+    }
+  </script>
   <link rel="stylesheet" href="/node_modules/katex/dist/katex.min.css" />
   <style>
     :root {
@@ -63,11 +70,10 @@
     .progress span { color: #dce6ff; font-size: 13px; }
 
     .toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: center;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px 18px;
+      align-items: start;
       margin: 28px 0 22px;
       padding: 16px;
       border: 1px solid var(--line);
@@ -80,8 +86,28 @@
       backdrop-filter: blur(15px);
     }
     .tests, .mode-switch, .topic-switch { display: flex; flex-wrap: wrap; gap: 8px; }
-    .topic-switch { flex-basis: 100%; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
-    .topic-switch .chip { min-width: 190px; font-weight: 800; }
+    .topic-switch {
+      grid-column: 1 / -1;
+      max-height: 64px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      align-content: flex-start;
+      padding: 0 4px 10px 0;
+      border-bottom: 1px solid var(--line);
+      scrollbar-width: thin;
+    }
+    .topic-switch .chip { min-width: max-content; white-space: nowrap; font-weight: 800; }
+    .tests {
+      max-height: 64px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overflow-y: hidden;
+      align-content: flex-start;
+      padding-right: 4px;
+      scrollbar-width: thin;
+    }
+    .mode-switch { justify-self: end; }
     .topic-switch .chip.active { border-color: var(--navy); background: var(--navy); box-shadow: none; }
     .chip {
       min-width: 44px;
@@ -106,7 +132,7 @@
     .badge { padding: 8px 12px; border-radius: 999px; color: var(--muted); background: #f1f5f9; font-size: 13px; font-weight: 700; }
     .badge.level { color: #9a3412; background: var(--accent-soft); }
 
-    #content { display: grid; gap: 18px; }
+    #content { display: grid; gap: 18px; scroll-margin-top: 220px; }
     .document-title { padding: 6px 4px 10px; }
     .document-title h1 { display: none; }
     .document-title h2 { margin: 0; font-size: 27px; letter-spacing: -.025em; }
@@ -122,6 +148,11 @@
     .question-card img { display: block; width: 100%; max-height: 320px; object-fit: contain; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
     .question-card code { display: inline-flex; margin-bottom: 16px; padding: 5px 9px; border-radius: 7px; color: var(--muted); background: #f1f5f9; font-size: 11px; font-weight: 700; letter-spacing: .06em; }
     .question-card p { margin: 10px 0; line-height: 1.72; }
+    .question-card .data-table { width: 100%; margin: 16px 0; border-collapse: separate; border-spacing: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; }
+    .question-card .data-table th, .question-card .data-table td { padding: 11px 14px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; }
+    .question-card .data-table th { color: var(--navy); background: #f1f5f9; font-weight: 800; }
+    .question-card .data-table tr:last-child td { border-bottom: 0; }
+    .question-card .data-table th:last-child, .question-card .data-table td:last-child { border-right: 0; }
     .question-card .option { display: block; width: 100%; margin: 9px 0; padding: 12px 14px; border: 1px solid #e5e9f0; border-radius: 12px; color: var(--ink); background: #fbfcfe; text-align: left; line-height: 1.55; }
     button.option { cursor: pointer; transition: border-color .16s ease, background .16s ease, transform .16s ease; }
     button.option:hover { transform: translateY(-1px); border-color: #a9b7cd; background: #f7f9fd; }
@@ -158,7 +189,11 @@
       .shell { padding: 14px 12px 40px; }
       .hero { grid-template-columns: 1fr; padding: 26px 22px; border-radius: 22px; }
       .progress { min-width: 0; }
-      .toolbar { top: 6px; }
+      .toolbar { top: 6px; grid-template-columns: 1fr; }
+      .topic-switch { max-height: 58px; }
+      .tests { max-height: 58px; }
+      .mode-switch { justify-self: start; }
+      #content { scroll-margin-top: 250px; }
       .question-card { padding: 22px 18px; }
       .result-grid { grid-template-columns: repeat(2, minmax(110px, 1fr)); }
     }
@@ -223,6 +258,151 @@
         id: '03',
         title: 'Bölme, Bölünebilme ve Kalan',
         folder: '03_bolme_bolunebilme_ve_kalan'
+      },
+      {
+        id: '04',
+        title: 'Asal Sayılar, Çarpanlar ve Bölen Sayısı',
+        folder: '04_asal_sayilar_carpanlar_ve_bolen_sayisi'
+      },
+      {
+        id: '05',
+        title: 'EBOB–EKOK ve Periyodik Durumlar',
+        folder: '05_ebob_ekok_ve_periyodik_durumlar'
+      },
+      {
+        id: '06',
+        title: 'Rasyonel Sayılar ve Ondalık Gösterimler',
+        folder: '06_rasyonel_sayilar_ve_ondalik_gosterimler'
+      },
+      {
+        id: '07',
+        title: 'Denklemler ve Denklem Sistemleri',
+        folder: '07_denklemler_ve_denklem_sistemleri'
+      },
+      {
+        id: '08',
+        title: 'Eşitsizlikler ve Aralıklar',
+        folder: '08_esitsizlikler_ve_araliklar'
+      },
+      {
+        id: '09',
+        title: 'Mutlak Değer',
+        folder: '09_mutlak_deger'
+      },
+      {
+        id: '10',
+        title: 'Üslü İfadeler ve Bilimsel Gösterim',
+        folder: '10_uslu_ifadeler_ve_bilimsel_gosterim'
+      },
+      {
+        id: '11',
+        title: 'Köklü İfadeler ve İrrasyonel Sayılar',
+        folder: '11_koklu_ifadeler_ve_irrasyonel_sayilar'
+      },
+      {
+        id: '12',
+        title: 'Özdeşlikler ve Çarpanlara Ayırma',
+        folder: '12_ozdeslikler_ve_carpanlara_ayirma'
+      },
+      {
+        id: '13',
+        title: 'Oran, Orantı ve Ölçek',
+        folder: '13_oran_oranti_ve_olcek'
+      },
+      {
+        id: '14',
+        title: 'Problem Modelleme',
+        folder: '14_problem_modelleme'
+      },
+      {
+        id: '15',
+        title: 'Kümeler',
+        folder: '15_kumeler'
+      },
+      {
+        id: '16',
+        title: 'Kartezyen Çarpım ve Bağıntı',
+        folder: '16_kartezyen_carpim_ve_baginti'
+      },
+      {
+        id: '17',
+        title: 'Mantık ve Algoritmik Akıl Yürütme',
+        folder: '17_mantik_ve_algoritmik_akil_yurutme'
+      },
+      {
+        id: '18',
+        title: 'Fonksiyonlar',
+        folder: '18_fonksiyonlar'
+      },
+      {
+        id: '19',
+        title: 'Polinomlar ve İkinci Dereceye Giriş',
+        folder: '19_polinomlar_ve_ikinci_dereceye_giris'
+      },
+      {
+        id: '20',
+        title: 'Sayma Yöntemleri ve Permütasyon',
+        folder: '20_sayma_yontemleri_ve_permutasyon'
+      },
+      {
+        id: '21',
+        title: 'Kombinasyon',
+        folder: '21_kombinasyon'
+      },
+      {
+        id: '22',
+        title: 'Olasılık',
+        folder: '22_olasilik'
+      },
+      {
+        id: '23',
+        title: 'Veri ve İstatistik',
+        folder: '23_veri_ve_istatistik'
+      },
+      {
+        id: '24',
+        title: 'Geometri Temelleri ve Açılar',
+        folder: '24_geometri_temelleri_ve_acilar'
+      },
+      {
+        id: '25',
+        title: 'Üçgenler',
+        folder: '25_ucgenler'
+      },
+      {
+        id: '26',
+        title: 'Üçgende Yardımcı Elemanlar ve Alan',
+        folder: '26_ucgende_yardimci_elemanlar_ve_alan'
+      },
+      {
+        id: '27',
+        title: 'Eşlik ve Benzerlik',
+        folder: '27_eslik_ve_benzerlik'
+      },
+      {
+        id: '28',
+        title: 'Çokgenler',
+        folder: '28_cokgenler'
+      },
+      {
+        id: '29',
+        title: 'Dörtgenler',
+        folder: '29_dortgenler'
+      },
+      {
+        id: '30',
+        title: 'Çember ve Daire',
+        folder: '30_cember_ve_daire'
+      },
+      {
+        id: '31',
+        title: 'Analitik Geometri',
+        folder: '31_analitik_geometri'
+      },
+      {
+        id: '32',
+        title: 'Katı Cisimler',
+        folder: '32_kati_cisimler'
       }
     ];
     let currentTopic = topics[0];
@@ -231,6 +411,7 @@
     let currentMode = 'questions';
     const answerKeys = {};
     const selectedAnswers = {};
+    let loadToken = 0;
 
     const escapeHtml = (value) => value
       .replace(/&/g, '&amp;')
@@ -255,7 +436,17 @@
     }
 
     function renderMarkdown(markdown) {
-      const lines = markdown.split(/\r?\n/);
+      const tableBlocks = [];
+      const preparedMarkdown = markdown.replace(/(?:^\|[^\n]*\|\s*(?:\r?\n|$)){2,}/gm, (block) => {
+        const rows = block.trim().split(/\r?\n/).map((line) => line.split('|').slice(1, -1).map((cell) => cell.trim()));
+        const isDivider = rows[1]?.every((cell) => /^:?-{2,}:?$/.test(cell));
+        if (!isDivider) return block;
+        const head = `<thead><tr>${rows[0].map((cell) => `<th>${inlineFormat(cell)}</th>`).join('')}</tr></thead>`;
+        const body = `<tbody>${rows.slice(2).map((row) => `<tr>${row.map((cell) => `<td>${inlineFormat(cell)}</td>`).join('')}</tr>`).join('')}</tbody>`;
+        const index = tableBlocks.push(`<table class="data-table">${head}${body}</table>`) - 1;
+        return `@@TABLE_${index}@@\n`;
+      });
+      const lines = preparedMarkdown.split(/\r?\n/);
       const cards = [];
       let header = [];
       let card = null;
@@ -295,6 +486,8 @@
         }
         if (!line || line.startsWith('- Soru sayısı') || line.startsWith('- Her soruda') || line.startsWith('- Önerilen')) continue;
         if (/^`K\d{2}-T\d{2}-Q\d{2}`$/.test(line)) continue;
+        const tableMatch = line.match(/^@@TABLE_(\d+)@@$/);
+        if (tableMatch) { card.push(tableBlocks[Number(tableMatch[1])]); continue; }
         const imageMatch = line.match(/^!\[([^\]]*)\]\((?:\.\/)?visuals\/([^)]+)\)$/);
         if (imageMatch) {
           card.push(`<figure><img src="${base}/visuals/${escapeHtml(imageMatch[2])}" alt="${escapeHtml(imageMatch[1])}"></figure>`);
@@ -412,17 +605,23 @@
       const answers = answersForCurrentTest();
       document.querySelectorAll('.question-card').forEach((card, questionIndex) => {
         card.querySelectorAll('button.option').forEach((option) => {
+          option.addEventListener('click', () => window.selectOption(option));
           option.classList.toggle('selected', option.dataset.choice === answers[questionIndex]);
-          option.addEventListener('click', () => {
-            answers[questionIndex] = option.dataset.choice;
-            card.querySelectorAll('button.option').forEach((item) => item.classList.toggle('selected', item === option));
-            clearEvaluation();
-            updateAnswerProgress();
-          });
         });
       });
       updateAnswerProgress();
     }
+
+    window.selectOption = function selectOption(option) {
+      if (!option || currentMode !== 'questions') return;
+      const card = option.closest('.question-card');
+      const questionIndex = Number(card?.dataset.questionIndex);
+      if (!card || !Number.isInteger(questionIndex)) return;
+      answersForCurrentTest()[questionIndex] = option.dataset.choice;
+      card.querySelectorAll('button.option').forEach((item) => item.classList.toggle('selected', item === option));
+      clearEvaluation();
+      updateAnswerProgress();
+    };
 
     function checkTest() {
       const selected = answersForCurrentTest();
@@ -484,6 +683,7 @@
     }
 
     async function load() {
+      const token = ++loadToken;
       const suffix = currentMode === 'questions' ? 'questions' : 'solutions';
       const test = String(currentTest).padStart(2, '0');
       document.querySelector('#test-label').textContent = `Test ${test}`;
@@ -494,10 +694,13 @@
       try {
         const response = await fetch(`${base}/test_${test}_${suffix}.md`);
         if (!response.ok) throw new Error('Dosya okunamadı');
-        document.querySelector('#content').innerHTML = renderMarkdown(await response.text());
+        const markdown = await response.text();
+        if (token !== loadToken) return;
+        document.querySelector('#content').innerHTML = renderMarkdown(markdown);
         if (currentMode === 'questions') wireQuestionInteractions();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        requestAnimationFrame(() => document.querySelector('#content')?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
       } catch (error) {
+        if (token !== loadToken) return;
         document.querySelector('#content').innerHTML = `<div class="empty">${escapeHtml(error.message)}</div>`;
       }
     }

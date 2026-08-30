@@ -10,11 +10,7 @@
 
 `K01-T47-Q01`
 
-Tam sayı $n$'ye aşağıdaki işlemler sırasıyla uygulanıyor.
-
-![Tam sayı işlem akışı](visuals/test_47_islem_akisi.svg)
-
-Elde edilen sonuç için hangisi her zaman doğrudur?
+![Tam sayı işlem akışı](visuals/test_47_islem_akisi.svg) Elde edilen sonuç için hangisi her zaman doğrudur?
 
 A) Pozitiftir.
 
@@ -62,7 +58,7 @@ E) $37$
 
 `K01-T47-Q04`
 
-$a=\sqrt{47}-5$, $b=\dfrac{13}{7}$ ve $c=1,856$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $a=\sqrt{47}-5$, $b=\dfrac{13}{7}$ ve $c=1,856$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
 
 A) $c<a<b$
 
@@ -94,7 +90,7 @@ E) $3$
 
 `K01-T47-Q06`
 
-$a$ ve $b$ tam sayılarının her biri 12 ile bölündüğünde 5 kalanını veriyor. Aşağıdakilerden hangisi 12 ile bölündüğünde yine 5 kalanını verir?
+Bir sınıf etkinliğinde, verilen bağıntıdan yararlanarak: $a$ ve $b$ tam sayılarının her biri 12 ile bölündüğünde 5 kalanını veriyor. Aşağıdakilerden hangisi 12 ile bölündüğünde yine 5 kalanını verir?
 
 A) $a+b$
 
@@ -110,7 +106,7 @@ E) $ab+1$
 
 `K01-T47-Q07`
 
-Kenarları $\sqrt{21}+\sqrt{13}$ ve $\sqrt{21}-\sqrt{13}$ birim olan dikdörtgenin alanı kaç birimkaredir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: Kenarları $\sqrt{21}+\sqrt{13}$ ve $\sqrt{21}-\sqrt{13}$ birim olan dikdörtgenin alanı kaç birimkaredir?
 
 A) $7$
 
@@ -158,9 +154,7 @@ E) $34$
 
 `K01-T47-Q10`
 
-Bir öğrenci, toplamı rasyonel olan iki sayının ayrı ayrı da rasyonel olduğunu iddia ediyor.
-
-Hangi sayı çifti bu iddianın yanlış olduğunu gösterir?
+Bir öğrenci, toplamı rasyonel olan iki sayının ayrı ayrı da rasyonel olduğunu iddia ediyor. Hangi sayı çifti bu iddianın yanlış olduğunu gösterir?
 
 A) $(1,2)$
 

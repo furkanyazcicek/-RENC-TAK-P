@@ -138,7 +138,7 @@ E) $5$
 
 `K02-T20-Q09`
 
-$1b1$ sayısı rakamları ters sırada yazılarak yeniden oluşturuluyor. Yeni sayı ile ilk sayının farkı kaçtır?
+Yeni sayı ile ilk sayının farkı kaçtır?
 
 A) $1$
 

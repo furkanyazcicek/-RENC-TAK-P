@@ -7,8 +7,14 @@
 /data
 /TYT_Turkce_Soru_Kutuphanesi
 /.claude
+/.codex
+/AGENTS.md
 /supabase
 /scripts
+/docs
+/exports
+/TYT_Kimya_Soru_Bankasi
+/Sozcukte_Yapi_Notlari.*
 /*.png
 /sekme-onizleme.html
 /vercel.json.txt

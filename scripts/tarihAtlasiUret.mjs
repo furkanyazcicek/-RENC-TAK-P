@@ -15,14 +15,26 @@
  */
 
 import { readFile, writeFile, mkdir } from 'node:fs/promises'
+import { createHash } from 'node:crypto'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { feature as topojsonOzellik } from 'topojson-client'
+import { topology } from 'topojson-server'
+import { presimplify, simplify, sphericalTriangleArea } from 'topojson-simplify'
 import { DEVLET_SOZLUGU, VARSAYILAN_KAYIT } from '../src/data/tarihAtlasi/devletSozlugu.js'
 import { karaMaskesiHazirla, kiyiyaOturt, maskeyiIndeksle } from './lib/kiyiHizalama.mjs'
+import {
+  TOPOLOJI_ESIKLERI,
+  cakismalariOlc,
+  kucukParcalariOlc,
+  mikroBosluklariOlc,
+} from './lib/tarihAtlasiTopoloji.mjs'
 
 const kok = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const hamKlasor = resolve(kok, 'src/data/tarihAtlasi/ham')
 const cikisDosya = resolve(kok, 'src/data/tarihAtlasi/donemler.json')
+const KAYNAK_ID = 'aourednik-historical-basemaps'
+const KAYNAK_TEMEL_URL = 'https://github.com/aourednik/historical-basemaps'
 
 /** İşlenecek anlık görüntü yılları — Türk-İslam ve Osmanlı tarihini kapsar. */
 const YILLAR = [1000, 1100, 1200, 1279, 1300, 1400, 1492, 1500, 1530, 1600, 1650, 1700, 1715, 1783, 1800, 1815, 1880, 1900, 1914, 1920, 1930, 1938, 1945]
@@ -55,8 +67,22 @@ const SUPHELI_DONEMLER = {
 /** İlgi alanı: [batı, güney, doğu, kuzey] */
 const ALAN = [-13, 8, 66, 58]
 
-/** Koordinat hassasiyeti — 2 basamak ≈ 1 km. Sadeleştirme toleransı zaten bundan kaba. */
-const BASAMAK = 2
+/**
+ * Ortak kenarlar TopoJSON topolojisi içinde tek kez sadeleştirilir.
+ * 10.000.000 kademeli kuantizasyon, bu kapsamda en fazla yaklaşık 1 m'lik
+ * koordinat ızgarası demektir; zoom 4,2–7 hedefinde piksel altında kalır.
+ */
+const TOPOLOJI_KUANTIZASYONU = 10_000_000
+
+/**
+ * Visvalingam etkili alan eşiği (steradyan). Yaklaşık 0,01 km²'lik üçgen
+ * alanına karşılık gelir. Ortak yay bir kez sadeleştirildiği için komşu
+ * devletler aynı kenarı kullanmaya devam eder.
+ */
+const TOPOLOJIK_SADELESTIRME_ESIGI = 2.5e-10
+
+/** Kuantizasyon sonrası JSON'u kararlı tutan koordinat hassasiyeti (≈ 0,1 m). */
+const BASAMAK = 6
 
 /**
  * "Şu devlete bağlı" bilgisi kaynak veride İngilizce ve tutarsız yazılmış.
@@ -94,28 +120,11 @@ const YILA_OZEL_DUZELTME = {
 }
 
 /**
- * Sadeleştirme toleransı (derece cinsinden) — önem derecesine göre.
- * Önemli devletlerin sınırı ayrıntılı kalır, bağlam devletleri kabalaşır.
+ * Kıyı hizalama büyütme mesafesi (derece). Sıfır bilinçli bir karardır:
+ * Natural Earth kara maskesi denize taşmayı keser; devletleri ayrı ayrı
+ * büyütmek ise iç siyasi sınırlarda çakışma ve çift kontur üretiyordu.
  */
-const TOLERANS = { 3: 0.02, 2: 0.04, 1: 0.07, 0: 0.12 }
-
-/**
- * Kıyı hizalama büyütme mesafesi (derece).
- *
- * Kaynak verinin kıyı çizgisi kabadır; harita altlığının karası daha
- * ayrıntılıdır. Poligon önce bu kadar dışa büyütülür, sonra gerçek kara
- * maskesiyle kesilir. Sonuç: dolgu kıyıya tam oturur, arada beyaz şerit
- * kalmaz. 0.08 derece ≈ 8 km — kaynak verinin sapmasını kapatmaya yeter.
- */
-const KIYI_BUYUTME = 0.08
-
-/**
- * Kıyıya oturtma, kara maskesinin bütün girinti çıkıntısını poligona taşır ve
- * dosyayı beş katına çıkarıyor. Bu tolerans, kıyı çizgisini gözle görülür
- * biçimde bozmadan fazla ayrıntıyı törpüler. Atlas zoom 4–8 arasında
- * okunduğu için bu ölçekte fark edilmez.
- */
-const KIYI_SONRASI_TOLERANS = { 3: 0.012, 2: 0.018, 1: 0.03, 0: 0.05 }
+const KIYI_BUYUTME = 0
 
 // ————————————————————————————————————————————————————————————
 // Geometri yardımcıları
@@ -173,76 +182,46 @@ function tekrarlariAt(halka) {
   return temiz
 }
 
-/**
- * Douglas-Peucker sadeleştirmesi: bir çizgiyi, şeklini bozmadan
- * daha az noktayla temsil eder. Dosya boyutunu belirgin biçimde düşürür.
- */
-function noktaCizgiUzakligi(nokta, bas, son) {
-  const [x, y] = nokta
-  const [x1, y1] = bas
-  const [x2, y2] = son
-  const dx = x2 - x1
-  const dy = y2 - y1
-  if (dx === 0 && dy === 0) return Math.hypot(x - x1, y - y1)
-  const t = Math.max(0, Math.min(1, ((x - x1) * dx + (y - y1) * dy) / (dx * dx + dy * dy)))
-  return Math.hypot(x - (x1 + t * dx), y - (y1 + t * dy))
-}
-
-function douglasPeucker(noktalar, tolerans) {
-  if (noktalar.length <= 2) return noktalar
-  let enUzak = 0
-  let indeks = 0
-  for (let i = 1; i < noktalar.length - 1; i += 1) {
-    const uzaklik = noktaCizgiUzakligi(noktalar[i], noktalar[0], noktalar[noktalar.length - 1])
-    if (uzaklik > enUzak) { enUzak = uzaklik; indeks = i }
-  }
-  if (enUzak <= tolerans) return [noktalar[0], noktalar[noktalar.length - 1]]
-  const sol = douglasPeucker(noktalar.slice(0, indeks + 1), tolerans)
-  const sag = douglasPeucker(noktalar.slice(indeks), tolerans)
-  return [...sol.slice(0, -1), ...sag]
-}
-
-/** Kapalı halkayı sadeleştirir; kapalılığı korur. */
-function halkaSadelestir(halka, tolerans) {
-  if (halka.length <= 4) return halka
-  const sade = douglasPeucker(halka, tolerans)
-  if (sade.length < 4) return null
-  const ilk = sade[0]
-  const son = sade[sade.length - 1]
-  if (ilk[0] !== son[0] || ilk[1] !== son[1]) sade.push([ilk[0], ilk[1]])
-  return sade
-}
-
-/** Poligonu sadeleştirir: yuvarlar, tekrarları atar, çok küçük parçaları eler. */
-function poligonSadelestir(poligon, tolerans) {
+/** Topolojik sadeleştirme sonrası koordinatları kararlılaştırır. */
+function poligonTemizle(poligon) {
   const halkalar = []
   for (let i = 0; i < poligon.length; i += 1) {
     const temiz = tekrarlariAt(yuvarla(poligon[i]))
     if (temiz.length < 4) continue
-    const sade = halkaSadelestir(temiz, tolerans)
-    if (!sade) continue
-    // Dış halka çok küçükse poligonun tamamını at (küçük adacık)
-    if (i === 0 && halkaAlani(sade) < 0.03) return null
-    // İç halka (delik) çok küçükse yalnızca onu at
-    if (i > 0 && halkaAlani(sade) < 0.05) continue
-    halkalar.push(sade)
+    halkalar.push(temiz)
   }
   return halkalar.length ? halkalar : null
 }
 
-function geometriSadelestir(geometri, tolerans) {
+function geometriTemizle(geometri) {
   if (geometri.type === 'Polygon') {
-    const p = poligonSadelestir(geometri.coordinates, tolerans)
+    const p = poligonTemizle(geometri.coordinates)
     return p ? { type: 'Polygon', coordinates: p } : null
   }
   if (geometri.type === 'MultiPolygon') {
-    const parcalar = geometri.coordinates.map((p) => poligonSadelestir(p, tolerans)).filter(Boolean)
+    const parcalar = geometri.coordinates.map((p) => poligonTemizle(p)).filter(Boolean)
     if (!parcalar.length) return null
     return parcalar.length === 1
       ? { type: 'Polygon', coordinates: parcalar[0] }
       : { type: 'MultiPolygon', coordinates: parcalar }
   }
   return null
+}
+
+/**
+ * Bütün dönem devletlerini tek topoloji içinde sadeleştirir. Aynı yayı
+ * paylaşan komşu devletler böylece farklı koordinat dizilerine ayrılmaz.
+ */
+function topolojikSadelestir(ozellikler) {
+  const topoloji = topology({
+    devletler: { type: 'FeatureCollection', features: ozellikler },
+  }, TOPOLOJI_KUANTIZASYONU)
+  const agirlikli = presimplify(topoloji, sphericalTriangleArea)
+  const sadelestirilmis = simplify(agirlikli, TOPOLOJIK_SADELESTIRME_ESIGI)
+  const geojson = topojsonOzellik(sadelestirilmis, sadelestirilmis.objects.devletler)
+  return geojson.features
+    .map((ozellik) => ({ ...ozellik, geometry: geometriTemizle(ozellik.geometry) }))
+    .filter((ozellik) => ozellik.geometry)
 }
 
 /** İki geometriyi tek MultiPolygon'da toplar (birleştirme değil, bir araya getirme). */
@@ -286,6 +265,7 @@ console.log(`Kara maskesi hazır: ${indeksliKaraMaskesi.length} parça\n`)
 const eksikAdlar = new Set()
 const ozellikler = []
 const donemOzeti = []
+const kaynakDosyalari = []
 
 /**
  * Bağlılık bilgisini Türkçeleştirir; anlamsız değerleri eler.
@@ -320,7 +300,14 @@ for (let i = 0; i < YILLAR.length; i += 1) {
   const yil = gecerlilikBaslangici(anlikGoruntu)
   const bitis = i + 1 < YILLAR.length ? gecerlilikBaslangici(YILLAR[i + 1]) : SON_YIL
 
-  const ham = JSON.parse(await readFile(resolve(hamKlasor, `world_${anlikGoruntu}.geojson`), 'utf8'))
+  const hamDosyaAdi = `world_${anlikGoruntu}.geojson`
+  const hamMetin = await readFile(resolve(hamKlasor, hamDosyaAdi), 'utf8')
+  const ham = JSON.parse(hamMetin)
+  kaynakDosyalari.push({
+    dosya: hamDosyaAdi,
+    kaynakYili: anlikGoruntu,
+    sha256: createHash('sha256').update(hamMetin).digest('hex'),
+  })
   // Aynı devletin parçaları tek kayıtta toplanır: ad → { bilgi, geometriler }
   const donemDevletleri = new Map()
   let elenen = 0
@@ -341,12 +328,9 @@ for (let i = 0; i < YILLAR.length; i += 1) {
     const { tr, onem, ton } = kayit || { tr: ingilizceAd, ...VARSAYILAN_KAYIT }
     if (onem < ASGARI_ONEM) { elenen += 1; continue }
 
-    const geometri = geometriSadelestir(oz.geometry, TOLERANS[onem] ?? TOLERANS[0])
-    if (!geometri) { elenen += 1; continue }
-
     const mevcut = donemDevletleri.get(tr)
     if (mevcut) {
-      mevcut.geometriler.push(geometri)
+      mevcut.geometriler.push(oz.geometry)
       // Sınır kesinliği: en kötümser değeri koru
       if (oz.properties.BORDERPRECISION != null) {
         mevcut.kesinlik = Math.max(mevcut.kesinlik ?? 0, oz.properties.BORDERPRECISION)
@@ -361,24 +345,17 @@ for (let i = 0; i < YILLAR.length; i += 1) {
       ton,
       kesinlik: oz.properties.BORDERPRECISION ?? null,
       bagli: bagliliktanTurkce(oz.properties.SUBJECTO, ingilizceAd, tr),
-      geometriler: [geometri],
+      geometriler: [oz.geometry],
     })
   }
 
+  const donemOzellikleri = []
   for (const devlet of donemDevletleri.values()) {
     const toplanmis = poligonlariTopla(devlet.geometriler)
-    // Sadeleştirmeden sonra kıyıya oturtulur: iç sınırlar kabalaşmış olsa da
-    // kıyı çizgisi gerçek kara maskesinden geldiği için keskin kalır.
-    const oturtulmus = kiyiyaOturt(toplanmis, indeksliKaraMaskesi, KIYI_BUYUTME)
-    // Kara maskesinden gelen aşırı ayrıntıyı törpüle
-    const geometri = geometriSadelestir(
-      oturtulmus,
-      KIYI_SONRASI_TOLERANS[devlet.onem] ?? KIYI_SONRASI_TOLERANS[0],
-    ) || oturtulmus
-    const etiket = etiketNoktasi(geometri)
-    if (!etiket) { elenen += 1; continue }
-
-    ozellikler.push({
+    // Kıyı kesimi sadeleştirmeden önce yapılır. İç siyasi kenarları
+    // birbirinden bağımsız daraltmamak için büyütme uygulanmaz.
+    const geometri = kiyiyaOturt(toplanmis, indeksliKaraMaskesi, KIYI_BUYUTME)
+    donemOzellikleri.push({
       type: 'Feature',
       properties: {
         ad: devlet.ad,
@@ -387,36 +364,103 @@ for (let i = 0; i < YILLAR.length; i += 1) {
         ton: devlet.ton,
         baslangic: yil,
         bitis,
+        kaynakId: KAYNAK_ID,
+        kaynakYili: anlikGoruntu,
+        geometriYontemi: 'kaynak-poligonu-topolojik-sadelestirme-kiyi-kesisimi',
         // Sınır kesinliği: kaynak veride 1 = güvenilir, büyük sayı = tahmini
         kesinlik: devlet.kesinlik,
         // Bağlı olduğu üst devlet (örn. Osmanlı'ya bağlı Eflak)
         bagli: devlet.bagli,
-        etiketX: etiket[0],
-        etiketY: etiket[1],
       },
       geometry: geometri,
     })
   }
 
+  const topolojikAday = topolojikSadelestir(donemOzellikleri)
+  const kaynakCakismaKm2 = cakismalariOlc(donemOzellikleri).toplamKm2
+  const adayCakismaKm2 = cakismalariOlc(topolojikAday).toplamKm2
+  const topolojiUygulandi = adayCakismaKm2 <= kaynakCakismaKm2 + TOPOLOJI_ESIKLERI.yeniCakismaKm2
+  const topolojikOzellikler = topolojiUygulandi
+    ? topolojikAday
+    : donemOzellikleri.map((ozellik) => ({
+      ...ozellik,
+      properties: {
+        ...ozellik.properties,
+        geometriYontemi: 'kaynak-poligonu-kiyi-kesisimi',
+      },
+    }))
+  const uretimCakismaKm2 = cakismalariOlc(topolojikOzellikler).toplamKm2
+  const kaynakParcalari = kucukParcalariOlc(donemOzellikleri)
+  const uretimParcalari = kucukParcalariOlc(topolojikOzellikler)
+  const kaynakMikroBoslukKm2 = mikroBosluklariOlc(donemOzellikleri).toplamKm2
+  const uretimMikroBoslukKm2 = mikroBosluklariOlc(topolojikOzellikler).toplamKm2
+  for (const ozellik of topolojikOzellikler) {
+    const etiket = etiketNoktasi(ozellik.geometry)
+    if (!etiket) { elenen += 1; continue }
+    ozellik.properties.etiketX = etiket[0]
+    ozellik.properties.etiketY = etiket[1]
+    ozellikler.push(ozellik)
+  }
+
   donemOzeti.push({
     yil,
+    kaynakYili: anlikGoruntu,
     bitis,
-    devletSayisi: donemDevletleri.size,
+    devletSayisi: topolojikOzellikler.length,
+    topolojiUygulandi,
+    kaynakCakismaKm2: Math.round(kaynakCakismaKm2 * 1000) / 1000,
+    uretimCakismaKm2: Math.round(uretimCakismaKm2 * 1000) / 1000,
+    kaynakMikroBoslukKm2: Math.round(kaynakMikroBoslukKm2 * 1000) / 1000,
+    uretimMikroBoslukKm2: Math.round(uretimMikroBoslukKm2 * 1000) / 1000,
+    kaynakSliverSayisi: kaynakParcalari.sliverSayisi,
+    uretimSliverSayisi: uretimParcalari.sliverSayisi,
+    kaynakCokKucukParcaSayisi: kaynakParcalari.cokKucukSayisi,
+    uretimCokKucukParcaSayisi: uretimParcalari.cokKucukSayisi,
     ...(SUPHELI_DONEMLER[anlikGoruntu] ? { uyari: SUPHELI_DONEMLER[anlikGoruntu] } : {}),
   })
   const isaret = SUPHELI_DONEMLER[anlikGoruntu] ? '  ⚠ kaynak verisi tartışmalı' : ''
-  console.log(`${yil}–${bitis}: ${String(donemDevletleri.size).padStart(3)} devlet, ${elenen} elendi${isaret}`)
+  console.log(`${yil}–${bitis}: ${String(topolojikOzellikler.length).padStart(3)} devlet, ${elenen} elendi${isaret}`)
 }
 
 const cikti = {
   meta: {
+    schemaSurumu: 2,
     ad: 'Dr. Koç Tarih Atlası — dönem verisi',
     uretim: new Date().toISOString().slice(0, 10),
+    yayimDurumu: 'kaynak-turevi',
+    uretimHatti: 'scripts/tarihAtlasiUret.mjs',
+    geometriKaynakTuru: 'harici-vektor-veri-seti',
+    zamansalCozunurluk: 'Anlık görüntü; ara yıllar en yakın önceki kaynak görüntüsünü kullanır.',
+    uygunOlcek: 'Kıtasal ve geniş bölgesel görünüm; yerel veya kadastro ölçeği için uygun değildir.',
+    geometriParametreleri: {
+      topolojiKuantizasyonu: TOPOLOJI_KUANTIZASYONU,
+      topolojikSadelestirmeEsigiSteradyan: TOPOLOJIK_SADELESTIRME_ESIGI,
+      koordinatBasamagi: BASAMAK,
+      kiyiBuyutmeDerece: KIYI_BUYUTME,
+      aciklama: 'Ortak siyasi kenarlar tek TopoJSON yayı olarak sadeleştirilir; kıyıda yalnızca Natural Earth kara kesimi uygulanır.',
+    },
     alan: ALAN,
     ilkYil: YILLAR[0],
     sonYil: SON_YIL,
     donemler: donemOzeti,
     kaynak: 'aourednik/historical-basemaps (GPL-3.0) üzerinden derlendi; adlar Türkçeleştirildi, müfredat önem derecesi eklendi',
+    kaynaklar: [
+      {
+        id: KAYNAK_ID,
+        baslik: 'Historical Basemaps',
+        url: KAYNAK_TEMEL_URL,
+        lisans: 'GPL-3.0',
+        kullanim: 'Tarihsel siyasi poligonların kaynak geometrisi',
+      },
+      {
+        id: 'natural-earth-land-10m',
+        baslik: 'Natural Earth 1:10m land (world-atlas paketi)',
+        url: 'https://www.naturalearthdata.com/downloads/10m-physical-vectors/10m-land/',
+        lisans: 'Public domain',
+        kullanim: 'Yalnızca kıyı hizalama ve kara maskesi',
+      },
+    ],
+    kaynakDosyalari,
     uyari: 'Tarihsel sınırlar yaklaşıktır. Kaynaklar arasında farklılık gösterir; akademik veya kadastro hassasiyeti iddia edilmez.',
   },
   type: 'FeatureCollection',

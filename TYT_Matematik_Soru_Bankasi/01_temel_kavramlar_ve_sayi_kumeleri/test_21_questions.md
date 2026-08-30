@@ -26,9 +26,7 @@ E) $32$
 
 `K01-T21-Q02`
 
-$$\frac{\sqrt{64}}4$$
-
-sayısının ait olduğu en dar sayı kümesi hangisidir?
+$$\frac{\sqrt{64}}4$$ sayısının ait olduğu en dar sayı kümesi hangisidir?
 
 A) İrrasyonel sayılar
 
@@ -60,9 +58,7 @@ E) Sıfırdır.
 
 `K01-T21-Q04`
 
-$$x=-\sqrt6,\qquad y=-2,45,\qquad z=-\frac52$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+$$x=-\sqrt6,\qquad y=-2,45,\qquad z=-\frac52$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $x<y<z$
 
@@ -77,8 +73,6 @@ E) $y<z<x$
 ## Soru 5
 
 `K01-T21-Q05`
-
-Bir sayı türü panosunda rasyonel $r$ ile irrasyonel $t$ kullanılıyor.
 
 Panodaki hangi ifade her seçimde irrasyonel kalır?
 
@@ -96,9 +90,7 @@ E) $r-r$
 
 `K01-T21-Q06`
 
-Ardışık dört tam sayının toplamı 46'dır.
-
-Buna göre bu sayıların en büyüğü kaçtır?
+Ardışık dört tam sayının toplamı 46'dır. Buna göre bu sayıların en büyüğü kaçtır?
 
 A) $10$
 
@@ -114,9 +106,7 @@ E) $15$
 
 `K01-T21-Q07`
 
-Bir işaret kartında $a$'nın negatif, $b$'nin pozitif olduğu belirtiliyor.
-
-Karttaki hangi işlemin sonucu sayıların büyüklüklerinden bağımsız olarak pozitiftir?
+Bir işaret kartında $a$'nın negatif, $b$'nin pozitif olduğu belirtiliyor. Karttaki hangi işlemin sonucu sayıların büyüklüklerinden bağımsız olarak pozitiftir?
 
 A) $a-b$
 
@@ -132,9 +122,7 @@ E) $a^3b$
 
 `K01-T21-Q08`
 
-Bir öğrenci bölme işleminin değişme özelliği olduğunu iddia ediyor.
-
-Hangi hesap bu iddiayı çürütür?
+Bir öğrenci bölme işleminin değişme özelliği olduğunu iddia ediyor. Hangi hesap bu iddiayı çürütür?
 
 A) $6\div2=3$ iken $2\div6=\dfrac13$'tür.
 
@@ -166,13 +154,7 @@ E) $7$
 
 `K01-T21-Q10`
 
-Gerçek sayılarda
-
-$$a\mathbin{\#}b=a-2b$$
-
-işlemi tanımlanıyor.
-
-Buna göre $5\mathbin{\#}(-3)$ kaçtır?
+Gerçek sayılarda $$a\mathbin{\#}b=a-2b$$ işlemi tanımlanıyor. Buna göre $5\mathbin{\#}(-3)$ kaçtır?
 
 A) $-11$
 

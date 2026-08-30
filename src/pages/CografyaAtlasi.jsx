@@ -5,7 +5,7 @@ import {
 } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router-dom'
 import AtlasHaritasi from '../components/cografya/AtlasHaritasi.jsx'
-import BolgeSahnesi from '../components/cografya/BolgeSahnesi.jsx'
+import BolgeKesifYuzeyi from '../components/cografya/BolgeKesifYuzeyi.jsx'
 import BolgeSeridi from '../components/cografya/BolgeSeridi.jsx'
 import GlobalArama from '../components/cografya/GlobalArama.jsx'
 import MufredatKapsami from '../components/cografya/MufredatKapsami.jsx'
@@ -13,6 +13,7 @@ import { BOLGELER, bolgeBul } from '../data/cografya/bolgeler.js'
 import { bolgeEtkilesimleri } from '../data/cografya/kapsam.js'
 import { ilerlemeOku, ilerlemeyiSil } from '../lib/cografya/ilerleme.js'
 import '../styles/cografya-atlasi.css'
+import '../styles/cografya-atlasi-2026.css'
 import '../styles/atlas-ortak.css'
 
 const MODULLER = {
@@ -347,7 +348,7 @@ export default function CografyaAtlasi() {
               />
             ) : AktifModul ? (
               <>
-                <BolgeSahnesi bolgeKod={bolge} />
+                <BolgeKesifYuzeyi bolgeKod={bolge} onEtkilesimSec={(id) => bolgeAc(bolge, id)} />
                 <Suspense fallback={<Yukleniyor />}>
                   <AktifModul />
                 </Suspense>

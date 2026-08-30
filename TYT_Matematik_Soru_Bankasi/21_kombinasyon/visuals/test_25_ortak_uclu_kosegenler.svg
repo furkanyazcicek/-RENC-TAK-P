@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="440" viewBox="0 0 760 440" role="img" aria-labelledby="title desc">
+  <title id="title">Altıgende ortak uçlu köşegenler</title>
+  <desc id="desc">Düzgün altıgenin bir köşesinden çıkan iki farklı köşegen vurgulanmıştır.</desc>
+  <rect width="760" height="440" rx="24" fill="#f8fafc"/>
+  <polygon points="380,50 550,145 550,295 380,390 210,295 210,145" fill="#eff6ff" stroke="#334155" stroke-width="5"/>
+  <line x1="380" y1="50" x2="550" y2="295" stroke="#2563eb" stroke-width="7" stroke-linecap="round"/>
+  <line x1="380" y1="50" x2="210" y2="295" stroke="#ea580c" stroke-width="7" stroke-linecap="round"/>
+  <g fill="#334155" stroke="#ffffff" stroke-width="3">
+    <circle cx="380" cy="50" r="11"/><circle cx="550" cy="145" r="11"/><circle cx="550" cy="295" r="11"/>
+    <circle cx="380" cy="390" r="11"/><circle cx="210" cy="295" r="11"/><circle cx="210" cy="145" r="11"/>
+  </g>
+</svg>

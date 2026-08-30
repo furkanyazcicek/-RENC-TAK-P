@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=1080, initial-scale=1" />
+  <title>DRKOÇ — Fizik Kimya Biyoloji</title>
+  <style>
+    html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #080a16; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Helvetica Neue", Arial, sans-serif; }
+    .frame, svg { width: 1080px; height: 1920px; display: block; }
+    text { font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Helvetica Neue", Arial, sans-serif; }
+    .eyebrow { fill: #aeb4d1; font-size: 23px; font-weight: 700; letter-spacing: 5.5px; }
+    .title { fill: #f8faff; font-size: 63px; font-weight: 800; letter-spacing: -1.5px; }
+    .title-sm { fill: #f8faff; font-size: 52px; font-weight: 800; letter-spacing: -1px; }
+    .body { fill: #e8ebff; font-size: 30px; font-weight: 600; }
+    .small { fill: #b7bddc; font-size: 24px; font-weight: 700; letter-spacing: .6px; }
+    .tiny { fill: #858cac; font-size: 19px; font-weight: 700; letter-spacing: 1.5px; }
+    .cyan { fill: #67e8f9; }
+    .violet { fill: #c4b5fd; }
+    .card { fill: #0d142a; stroke: #fff; stroke-opacity: .1; stroke-width: 2; }
+  </style>
+</head>
+<body>
+<div class="frame">
+<svg id="art" viewBox="0 0 1080 1920" role="img" aria-label="Fizik, kimya ve biyolojinin etkileşimlerle bağlantısını anlatan DRKOÇ dikey eğitim videosu">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#080a18"/><stop offset=".52" stop-color="#11142d"/><stop offset="1" stop-color="#07101b"/></linearGradient>
+    <linearGradient id="aurora" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#a78bfa"/><stop offset=".5" stop-color="#7c3aed"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+    <radialGradient id="violetGlow"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".28"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>
+    <radialGradient id="cyanGlow"><stop offset="0" stop-color="#22d3ee" stop-opacity=".18"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/></radialGradient>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="22"/></filter>
+    <filter id="drop" x="-100%" y="-100%" width="300%" height="300%"><feDropShadow dx="0" dy="14" stdDeviation="15" flood-color="#000" flood-opacity=".48"/></filter>
+    <marker id="arrCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#67e8f9"/></marker>
+    <marker id="arrViolet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10Z" fill="#c4b5fd"/></marker>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+  <circle cx="115" cy="430" r="470" fill="url(#violetGlow)"/>
+  <circle cx="1000" cy="1030" r="560" fill="url(#cyanGlow)"/>
+  <path d="M0 1700 C300 1585 700 1815 1080 1640 V1920 H0Z" fill="#11152d" opacity=".7"/>
+
+  <g id="header">
+    <path d="M103 119 148 96l45 23-45 23-45-23Zm13 12v29c0 17 64 17 64 0v-29" fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+    <text x="216" y="135" fill="#fff" font-size="36" font-weight="800">DRKOÇ</text>
+    <text x="216" y="172" fill="#aeb4d1" font-size="18" font-weight="700" letter-spacing="3">FİZİK · KİMYA · BİYOLOJİ</text>
+    <rect x="96" y="66" width="888" height="5" rx="3" fill="#fff" opacity=".12"/>
+    <rect id="progress" x="96" y="66" width="0" height="5" rx="3" fill="url(#aurora)"/>
+  </g>
+
+  <g id="s1">
+    <text x="540" y="315" text-anchor="middle" class="eyebrow">ÜÇ DERS · TEK HİKÂYE</text>
+    <text x="540" y="430" text-anchor="middle" class="title">Fizik, kimya ve</text><text x="540" y="505" text-anchor="middle" class="title">biyoloji…</text>
+    <text x="540" y="615" text-anchor="middle" class="body">Sandığımız kadar uzak değiller.</text>
+    <g id="s1nodes"><circle cx="250" cy="920" r="76" fill="#a78bfa" opacity=".15" filter="url(#glow)"/><circle cx="250" cy="920" r="37" fill="#a78bfa"/><circle cx="540" cy="920" r="76" fill="#22d3ee" opacity=".15" filter="url(#glow)"/><circle cx="540" cy="920" r="37" fill="#22d3ee"/><circle cx="830" cy="920" r="76" fill="#c4b5fd" opacity=".15" filter="url(#glow)"/><circle cx="830" cy="920" r="37" fill="#c4b5fd"/><circle cx="238" cy="908" r="8" fill="#fff" opacity=".75"/><circle cx="528" cy="908" r="8" fill="#fff" opacity=".75"/><circle cx="818" cy="908" r="8" fill="#fff" opacity=".75"/></g>
+    <g id="s1links" stroke="url(#aurora)" stroke-width="5" stroke-dasharray="12 15" fill="none"><path d="M292 920H498"/><path d="M582 920H788"/></g>
+    <text x="250" y="1045" text-anchor="middle" class="small violet">FİZİK</text><text x="540" y="1045" text-anchor="middle" class="small cyan">KİMYA</text><text x="830" y="1045" text-anchor="middle" class="small violet">BİYOLOJİ</text>
+    <text x="540" y="1320" text-anchor="middle" class="tiny">BAĞLANTI NOKTASI: ETKİLEŞİM</text>
+  </g>
+
+  <g id="s2">
+    <text x="540" y="285" text-anchor="middle" class="eyebrow">FİZİK · YÜKLERİN DİLİ</text><text x="540" y="395" text-anchor="middle" class="title-sm">Her şey etkileşimle</text><text x="540" y="462" text-anchor="middle" class="title-sm">başlar.</text>
+    <g id="samePair"><text x="170" y="635" class="small violet">AYNI İŞARET</text><circle cx="300" cy="755" r="48" fill="#a78bfa" filter="url(#drop)"/><text x="300" y="774" text-anchor="middle" fill="#fff" font-size="54" font-weight="800">+</text><circle cx="780" cy="755" r="48" fill="#a78bfa" filter="url(#drop)"/><text x="780" y="774" text-anchor="middle" fill="#fff" font-size="54" font-weight="800">+</text><line x1="242" y1="755" x2="145" y2="755" stroke="#c4b5fd" stroke-width="7" marker-end="url(#arrViolet)"/><line x1="838" y1="755" x2="935" y2="755" stroke="#c4b5fd" stroke-width="7" marker-end="url(#arrViolet)"/><text x="540" y="770" text-anchor="middle" class="body">itme</text></g>
+    <g id="oppositePair"><text x="170" y="950" class="small cyan">ZIT İŞARET</text><circle cx="300" cy="1070" r="48" fill="#22d3ee" filter="url(#drop)"/><text x="300" y="1089" text-anchor="middle" fill="#fff" font-size="54" font-weight="800">+</text><circle cx="780" cy="1070" r="48" fill="#c4b5fd" filter="url(#drop)"/><text x="780" y="1089" text-anchor="middle" fill="#07101b" font-size="54" font-weight="800">−</text><line x1="358" y1="1070" x2="470" y2="1070" stroke="#67e8f9" stroke-width="7" marker-end="url(#arrCyan)"/><line x1="722" y1="1070" x2="610" y2="1070" stroke="#67e8f9" stroke-width="7" marker-end="url(#arrCyan)"/><text x="540" y="1085" text-anchor="middle" class="body">çekim</text></g>
+    <rect x="142" y="1380" width="796" height="190" rx="36" class="card"/><text x="540" y="1450" text-anchor="middle" class="tiny">KUVVETİN YÖNÜ</text><text x="540" y="1527" text-anchor="middle" fill="#fff" font-size="41" font-weight="800">Yüklerin işaretine ve konumuna bağlıdır.</text>
+  </g>
+
+  <g id="s3">
+    <text x="540" y="285" text-anchor="middle" class="eyebrow">KUVVETİN YÖNÜ · DOĞRULTU</text><text x="540" y="402" text-anchor="middle" class="title-sm">Kuvvet rastgele yönlenmez.</text><text x="540" y="480" text-anchor="middle" class="body">Yükleri birleştiren doğru boyunca ilerler.</text>
+    <g id="forceModel"><line x1="220" y1="820" x2="860" y2="820" stroke="#fff" stroke-opacity=".16" stroke-width="3" stroke-dasharray="12 15"/><circle cx="270" cy="820" r="58" fill="#22d3ee" filter="url(#drop)"/><text x="270" y="842" text-anchor="middle" fill="#07101b" font-size="62" font-weight="800">+</text><circle cx="810" cy="820" r="58" fill="#c4b5fd" filter="url(#drop)"/><text x="810" y="842" text-anchor="middle" fill="#07101b" font-size="62" font-weight="800">−</text><line id="forceArrow" x1="345" y1="820" x2="735" y2="820" stroke="#67e8f9" stroke-width="9" marker-end="url(#arrCyan)"/><text x="540" y="760" text-anchor="middle" class="small cyan">ÇEKİM KUVVETİ</text></g>
+    <rect x="160" y="1110" width="760" height="190" rx="36" class="card"/><text x="540" y="1180" text-anchor="middle" class="tiny">COULOMB İLİŞKİSİ</text><text x="540" y="1252" text-anchor="middle" fill="#fff" font-size="50" font-weight="800">F = k · |q₁q₂| / r²</text><text x="540" y="1480" text-anchor="middle" class="body">Uzaklık arttıkça etkileşim zayıflar.</text>
+  </g>
+
+  <g id="s4">
+    <text x="540" y="285" text-anchor="middle" class="eyebrow">KİMYA · AYNI DÜNYA</text><text x="540" y="398" text-anchor="middle" class="title-sm">Kimyasal türler de</text><text x="540" y="468" text-anchor="middle" class="title-sm">etkileşir.</text>
+    <g id="species"><circle cx="270" cy="770" r="60" fill="#22d3ee" filter="url(#drop)"/><text x="270" y="792" text-anchor="middle" fill="#07101b" font-size="42" font-weight="800">Na⁺</text><circle cx="810" cy="770" r="60" fill="#c4b5fd" filter="url(#drop)"/><text x="810" y="792" text-anchor="middle" fill="#07101b" font-size="42" font-weight="800">Cl⁻</text><line x1="345" y1="770" x2="735" y2="770" stroke="#67e8f9" stroke-width="8" stroke-dasharray="16 16"/><text x="540" y="700" text-anchor="middle" class="small cyan">İYONİK ÇEKİM</text><circle cx="270" cy="1070" r="56" fill="#c4b5fd" filter="url(#drop)"/><text x="270" y="1092" text-anchor="middle" fill="#07101b" font-size="44" font-weight="800">δ⁺</text><circle cx="810" cy="1070" r="56" fill="#22d3ee" filter="url(#drop)"/><text x="810" y="1092" text-anchor="middle" fill="#07101b" font-size="44" font-weight="800">δ⁻</text><line x1="342" y1="1070" x2="738" y2="1070" stroke="#c4b5fd" stroke-width="8" stroke-dasharray="16 16"/><text x="540" y="1000" text-anchor="middle" class="small violet">KISMİ YÜKLER</text></g>
+    <text x="540" y="1360" text-anchor="middle" class="body">Elektron dağılımı, bağın ve yönelimin temelini kurar.</text><rect x="170" y="1450" width="740" height="124" rx="42" fill="#111933" stroke="#fff" stroke-opacity=".1" stroke-width="2"/><text x="540" y="1527" text-anchor="middle" class="small">FİZİKTEKİ ETKİLEŞİM → KİMYADAKİ BAĞ</text>
+  </g>
+
+  <g id="s5">
+    <text x="540" y="285" text-anchor="middle" class="eyebrow">ÖLÇEK BÜYÜR · İLİŞKİ KORUNUR</text><text x="540" y="398" text-anchor="middle" class="title-sm">Etkileşimler, yapıyı</text><text x="540" y="468" text-anchor="middle" class="title-sm">belirler.</text>
+    <g id="scaleChain"><g transform="translate(120 770)"><circle cx="85" cy="0" r="52" fill="#a78bfa"/><circle cx="165" cy="0" r="52" fill="#c4b5fd"/><text x="125" y="112" text-anchor="middle" class="small violet">ATOMLAR</text></g><path d="M350 770H470" stroke="url(#aurora)" stroke-width="7" marker-end="url(#arrViolet)"/><g transform="translate(520 710)"><circle cx="70" cy="60" r="58" fill="#a78bfa"/><circle cx="155" cy="60" r="58" fill="#22d3ee"/><circle cx="112" cy="132" r="58" fill="#c4b5fd"/><text x="112" y="244" text-anchor="middle" class="small cyan">MOLEKÜL</text></g><path d="M720 770H840" stroke="url(#aurora)" stroke-width="7" marker-end="url(#arrCyan)"/><path d="M870 660 C925 570 1010 710 950 800 S850 950 900 1025" fill="none" stroke="#c4b5fd" stroke-width="18" stroke-linecap="round"/><circle cx="870" cy="660" r="24" fill="#a78bfa"/><circle cx="950" cy="800" r="24" fill="#22d3ee"/><circle cx="900" cy="1025" r="24" fill="#c4b5fd"/><text x="935" y="1140" text-anchor="middle" class="small violet">PROTEİN</text></g>
+    <text x="540" y="1370" text-anchor="middle" class="body">Daha büyük yapı, daha çok düzenlenmiş etkileşim demektir.</text><rect x="150" y="1450" width="780" height="128" rx="42" class="card"/><text x="540" y="1527" text-anchor="middle" class="small">ATOM → MOLEKÜL → PROTEİN</text>
+  </g>
+
+  <g id="s6">
+    <text x="540" y="280" text-anchor="middle" class="eyebrow">BİYOLOJİ · ENZİMLER</text><text x="540" y="392" text-anchor="middle" class="title-sm">Enzimler de kimyasal</text><text x="540" y="462" text-anchor="middle" class="title-sm">yapılardır.</text>
+    <g id="enzyme"><path d="M150 820 C250 650 330 965 440 780 S615 650 720 820 S850 950 930 750" fill="none" stroke="#a78bfa" stroke-width="42" stroke-linecap="round" opacity=".2" filter="url(#glow)"/><path d="M150 820 C250 650 330 965 440 780 S615 650 720 820 S850 950 930 750" fill="none" stroke="#c4b5fd" stroke-width="18" stroke-linecap="round"/><circle cx="150" cy="820" r="24" fill="#a78bfa"/><circle cx="280" cy="810" r="24" fill="#a78bfa"/><circle cx="440" cy="780" r="24" fill="#a78bfa"/><circle cx="580" cy="705" r="24" fill="#a78bfa"/><circle cx="720" cy="820" r="24" fill="#a78bfa"/><circle cx="850" cy="890" r="24" fill="#a78bfa"/><path d="M535 745 Q610 820 685 755" fill="none" stroke="#67e8f9" stroke-width="8" stroke-dasharray="14 14"/><g id="substrate" transform="translate(0 0)"><circle cx="955" cy="605" r="40" fill="#22d3ee" filter="url(#drop)"/><circle cx="942" cy="592" r="10" fill="#fff" opacity=".7"/></g><text x="610" y="1020" text-anchor="middle" class="small cyan">AKTİF BÖLGE</text></g>
+    <text x="540" y="1190" text-anchor="middle" class="body">Amino asitler → üç boyutlu protein yapısı</text><text x="540" y="1255" text-anchor="middle" class="body violet">Doğru yönelim → seçici etkileşim</text><rect x="150" y="1400" width="780" height="180" rx="36" class="card"/><text x="540" y="1470" text-anchor="middle" class="tiny">ENZİMİN GÖREVİ</text><text x="540" y="1540" text-anchor="middle" fill="#fff" font-size="42" font-weight="800">Tepkimeyi kolaylaştırmak.</text>
+  </g>
+
+  <g id="s7">
+    <text x="540" y="285" text-anchor="middle" class="eyebrow">ETKİLEŞİMİN SONUCU · ENERJİ</text><text x="540" y="398" text-anchor="middle" class="title-sm">Enzim neyi değiştirir?</text><text x="540" y="468" text-anchor="middle" class="body">Tepkimenin yolunu kısaltır.</text>
+    <g id="energyGraph"><line x1="180" y1="1120" x2="900" y2="1120" stroke="#fff" stroke-opacity=".22" stroke-width="3"/><line x1="220" y1="1120" x2="220" y2="650" stroke="#fff" stroke-opacity=".22" stroke-width="3"/><path d="M220 1120 C350 1120 360 720 520 720 S650 1120 900 1120" fill="none" stroke="#a78bfa" stroke-width="9"/><path d="M220 1120 C360 1120 415 900 535 900 S680 1120 900 1120" fill="none" stroke="#67e8f9" stroke-width="9"/><text x="260" y="685" class="small violet">ENZİMSİZ</text><text x="700" y="890" class="small cyan">ENZİMLİ</text><line x1="520" y1="1120" x2="520" y2="720" stroke="#c4b5fd" stroke-width="4" stroke-dasharray="12 14"/><line x1="535" y1="1120" x2="535" y2="900" stroke="#67e8f9" stroke-width="4" stroke-dasharray="12 14"/><text x="565" y="790" class="tiny">DAHA YÜKSEK</text><text x="565" y="820" class="tiny">AKTİVASYON ENERJİSİ</text><text x="565" y="970" class="tiny cyan">DAHA DÜŞÜK</text><text x="565" y="1000" class="tiny cyan">AKTİVASYON ENERJİSİ</text></g>
+    <rect x="145" y="1330" width="790" height="200" rx="36" class="card"/><text x="540" y="1400" text-anchor="middle" class="tiny">ÖNEMLİ AYRIM</text><text x="540" y="1470" text-anchor="middle" fill="#fff" font-size="39" font-weight="800">Enzim dengeyi değil, yolu değiştirir.</text>
+  </g>
+
+  <g id="s8">
+    <text x="540" y="405" text-anchor="middle" class="eyebrow">BAĞLANTIYI KUR</text><g id="summaryNodes"><circle cx="280" cy="760" r="96" fill="#a78bfa" opacity=".16" filter="url(#glow)"/><circle cx="280" cy="760" r="45" fill="#a78bfa"/><circle cx="540" cy="760" r="96" fill="#22d3ee" opacity=".14" filter="url(#glow)"/><circle cx="540" cy="760" r="45" fill="#22d3ee"/><circle cx="800" cy="760" r="96" fill="#c4b5fd" opacity=".16" filter="url(#glow)"/><circle cx="800" cy="760" r="45" fill="#c4b5fd"/><line x1="330" y1="760" x2="490" y2="760" stroke="url(#aurora)" stroke-width="6" stroke-dasharray="13 14"/><line x1="590" y1="760" x2="750" y2="760" stroke="url(#aurora)" stroke-width="6" stroke-dasharray="13 14"/></g><text x="540" y="1030" text-anchor="middle" class="title-sm">Fizik → Kimya → Biyoloji</text><text x="540" y="1150" text-anchor="middle" class="title-sm">Ayrı dersler.</text><text x="540" y="1225" text-anchor="middle" class="title-sm">Aynı etkileşim dünyası.</text><rect x="154" y="1410" width="772" height="112" rx="56" fill="url(#aurora)"/><text x="540" y="1482" text-anchor="middle" fill="#080a18" font-size="36" font-weight="800">Kaydır, kavra, bağlantıyı kur.</text><g id="endLogo" opacity="0"><text x="540" y="1685" text-anchor="middle" fill="#fff" font-size="42" font-weight="800">DRKOÇ</text><text x="540" y="1728" text-anchor="middle" class="tiny">FİZİK · KİMYA · BİYOLOJİ</text></g>
+  </g>
+</svg>
+</div>
+<script>
+  const clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n)); const ease=(n)=>{const t=clamp(n);return t*t*(3-2*t)}; const show=(t,start,end,fade=.35)=>ease((t-start)/fade)*ease((end-t)/fade); const setOpacity=(id,v)=>document.getElementById(id).setAttribute('opacity',String(clamp(v))); const setTransform=(id,v)=>document.getElementById(id).setAttribute('transform',v)
+  window.setTime=(t)=>{
+    document.getElementById('progress').setAttribute('width',String(888*clamp(t/75)))
+    setOpacity('s1',show(t,0,7.2)); setOpacity('s2',show(t,7.6,18)); setOpacity('s3',show(t,18.4,27)); setOpacity('s4',show(t,27.4,37)); setOpacity('s5',show(t,37.4,46.5)); setOpacity('s6',show(t,46.9,58.5)); setOpacity('s7',show(t,58.9,68.2)); setOpacity('s8',show(t,68.6,75.1))
+    const nodeIn=ease((t-.35)/1.1); setTransform('s1nodes',`translate(${(1-nodeIn)*24} 0)`); setOpacity('s1links',.12+.8*ease((t-1)/1.2)); setOpacity('samePair',show(t,8.0,12.1,.4)); setOpacity('oppositePair',show(t,11.8,17.7,.4)); setTransform('forceModel',`translate(${(1-ease((t-19)/1.2))*45} 0)`); document.getElementById('forceArrow').setAttribute('stroke-dasharray',`${clamp((t-20.3)/1.4)*390} 390`); setTransform('species',`translate(${(1-ease((t-28.2)/1.4))*44} 0)`); setTransform('scaleChain',`translate(${(1-ease((t-38.2)/1.3))*55} 0)`); const sub=ease((t-49.3)/2.5); setTransform('substrate',`translate(${-270*sub} ${110*sub})`); setOpacity('energyGraph',.25+.75*ease((t-60)/1.1)); setOpacity('endLogo',ease((t-72.8)/1.0))
+  }
+  window.setTime(0)
+</script>
+</body>
+</html>

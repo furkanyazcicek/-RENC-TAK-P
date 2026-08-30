@@ -1,0 +1,330 @@
+{
+  "profile_version": "2026-08-29",
+  "purpose": "Türkçe lise matematiği soru üretimini kaynaklardaki yapı ve çeşitlilik ilkeleriyle yönlendirmek. Bu profil soru metni, sayı veya seçenek kopyalamaz.",
+  "sources": [
+    {
+      "id": "matematigin-ilaci-10-sb",
+      "title": "10. Sınıf Matematiğin İlacı Soru Bankası",
+      "level": "10",
+      "observed_architecture": [
+        "Tema Öncesi Ön Değerlendirme Testi",
+        "Çıktı Uygulaması",
+        "Senin Sıran",
+        "Çıktı Değerlendirme Testleri",
+        "Tema Değerlendirme Testleri"
+      ],
+      "topic_families": [
+        "Geometrik Şekiller",
+        "İstatistiksel Araştırma Süreci",
+        "Sayılar",
+        "Nicelikler ve Değişimler",
+        "Sayma, Algoritma ve Bilişim",
+        "Analitik İnceleme",
+        "Veriden Olasılığa"
+      ],
+      "style_consequences": [
+        "Kavramı kısa bir durum veya görselle kur, ardından akıl yürütme iste.",
+        "Ön koşul bilgiyi yoklamadan ileri kazanıma atlama.",
+        "Günlük yaşam bağlamı matematiksel ilişkiyi görünür kılıyorsa kullan; süs olsun diye teknoloji ekleme."
+      ]
+    },
+    {
+      "id": "ayt-twins-2026",
+      "title": "2026 AYT Matematik Twins Soru Bankası",
+      "level": "AYT",
+      "observed_architecture": [
+        "Analiz: son yıllardaki konu ve soru türü dağılımını izleme",
+        "İkiz Sorular: aynı kazanımı farklı temsil, ilişki veya istekle yoklama",
+        "Henüz Sorulmayan Sorular: müfredatta olup yakın yıllarda daha az görülen yapıları deneme"
+      ],
+      "units": [
+        "Sayılar",
+        "Fonksiyon-Denklem",
+        "Sayma-Olasılık",
+        "Logaritma-Dizi",
+        "Trigonometri",
+        "Limit-Türev-İntegral"
+      ],
+      "style_consequences": [
+        "İkiz soru üretirken yalnız sayıları veya harfleri değiştirme; ikinci sorunun temsili ve karar noktası değişsin.",
+        "Aynı konuda doğrudan işlem, grafik, tablo, koşul analizi ve sözel modelleme ailelerini dengeli dağıt.",
+        "Yakın yıllar iddiası veya gerçek sınav garantisi verme; profil yalnız soru çeşitliliği rehberidir."
+      ]
+    },
+    {
+      "id": "ayt-ders-notlari",
+      "title": "AYT Ders Notları",
+      "level": "AYT",
+      "observed_architecture": [
+        "Tanım ve gösterim",
+        "Özellikler ve koşullar",
+        "Çözümlü örnek",
+        "Adım adım bağımsız uygulama"
+      ],
+      "topic_families": [
+        "Polinomlar",
+        "Fonksiyonlar",
+        "İkinci Dereceden Denklemler",
+        "Parabol"
+      ],
+      "style_consequences": [
+        "Soruda kullanılan tanım ve koşulları açıkça yaz.",
+        "Çözüm açıklaması sonucu değil, kritik adımları ve nedenlerini göstermeli.",
+        "Tanım kümesi, diskriminant, kök ve tepe noktası gibi yerleşik terimleri doğru kullan."
+      ]
+    },
+    {
+      "id": "bilgi-sarmal-ilk-asama",
+      "title": "Bilgi Sarmal Maarif Model İlk Aşama Matematik Soru Bankası",
+      "level": "10",
+      "observed_architecture": [
+        "Kazanım testleri: kolaydan zora ilerleyen kısa basamaklar",
+        "Beceri Odaklı Test: ortak bağlam, tablo veya görsel üzerinden birden çok ilişki",
+        "Tema ve ünite değerlendirmesi",
+        "Konular arasında ön koşul gözeten sarmal ilerleme"
+      ],
+      "style_consequences": [
+        "Bir test içinde beceriyi değiştiren en az iki temsil kullan.",
+        "Henüz işlenmemiş konuyu soruya gizlice katma.",
+        "Kolaydan zora geçişi işlem sayısını artırarak değil, koşul ve temsil derinliğiyle kur."
+      ]
+    },
+    {
+      "id": "original-tyt-ilk-12",
+      "title": "Orijinal TYT İlk 12 Denemetre",
+      "level": "TYT",
+      "observed_architecture": [
+        "30 adet 12 soruluk konu denemesi",
+        "Her denemede karma sayı konuları",
+        "Konu-kazanım, doğru-yanlış-boş, süre ve net takibi"
+      ],
+      "topic_families": [
+        "Rasyonel Sayılar",
+        "Dört İşlem",
+        "Tek-Çift Sayılar",
+        "Ondalık Sayılar",
+        "Üslü Sayılar",
+        "Köklü Sayılar",
+        "Sıralama",
+        "Mutlak Değer",
+        "Basamak Analizi",
+        "Özel Sayı Tanımlama",
+        "Bölünebilme Kuralları",
+        "Sayısal Mantık"
+      ],
+      "style_consequences": [
+        "TYT denemesinde konu çeşitliliği ve kısa sürede doğru karar verme önceliklidir.",
+        "İsteğe bağlı deneme düzeninde soru başına süre ve kazanım etiketi üret; öğrenciye görünen köke ölçme formu ekleme.",
+        "Tek bir fasikül konusunu bütün sette aynı kalıpla tekrarlama."
+      ]
+    },
+    {
+      "id": "acil-ucgenler",
+      "title": "Acil Üçgenler Fasikülü",
+      "level": "TYT/AYT",
+      "observed_architecture": [
+        "Tanım, temel bağıntı ve formül",
+        "Yeni nesil çözümlü örnek",
+        "Kolaydan zora testler",
+        "Bazı bağıntıların gerekçesi veya ispatı",
+        "Öteleme, katlama, dönme, kesme ve yansıma gibi dönüşümler"
+      ],
+      "topic_families": [
+        "Doğruda ve üçgende açılar",
+        "Yardımcı elemanlar",
+        "Eşlik ve Pisagor",
+        "Dik üçgende trigonometrik oranlar",
+        "Özel, ikizkenar ve eşkenar üçgenler",
+        "Açıortay ve kenarortay",
+        "Benzerlik",
+        "Üçgende alan",
+        "Açı-kenar bağıntıları",
+        "Sözel geometri"
+      ],
+      "style_consequences": [
+        "Geometri sorusunda noktaları, doğruları ve verilen ilişkileri açıkça adlandır.",
+        "Şekil ölçekli değilse ölçü çıkarımı yaptırma; verilen açı/uzunluk bağıntısını kullandır.",
+        "Aynı kazanımı çizim, yardımcı eleman, alan oranı ve dönüşüm temsilleriyle çeşitlendir."
+      ]
+    }
+  ],
+  "global_rules": {
+    "originality": [
+      "Kaynaklardan yalnızca soyut yapı ve pedagojik yaklaşım alınır; soru cümlesi, sayı dizisi, seçenek veya çözüm kopyalanmaz.",
+      "Aynı kökün yalnız sayıları/değişkenleri değişmiş sürümü yeni soru sayılmaz.",
+      "Her üretim turunda önce farklı soru aileleri planlanır."
+    ],
+    "assessment": [
+      "Tam olarak beş seçenek (A-E) ve tek doğru seçenek üret.",
+      "Çeldiriciler rastgele değil, gerçek öğrenci yanılgılarından türetilir.",
+      "Değişken koşulları, tanım kümeleri, payda ve kök/logaritma koşulları açıkça belirtilir.",
+      "Çözüm açıklaması kritik ara adımları ve gerekçeyi içerir."
+    ],
+    "language": [
+      "Türkiye lise matematiğinin yerleşik MEB/ÖSYM terminolojisini kullan.",
+      "Kod, yazılım, API, veritabanı, sensör, kalibrasyon, panel, arayüz, sunucu ve benzeri teknik ürün dilini matematik bağlamına taşıma.",
+      "Algoritma ve Bilişim konusu seçilirse bile öğrenciye dönük matematiksel algoritma/işlem akışı anlat; yazılım ürünü veya kod isteme.",
+      "Soruyu gerçek ÖSYM sorusuymuş gibi sunma; özgün deneme sorusu olduğunu koru."
+    ],
+    "context": [
+      "Günlük yaşam, tablo, grafik veya şekil ancak çözüm için matematiksel bir rolü varsa kullanılmalı.",
+      "Bağlam, sayıları değiştirerek aynı şablonu yinelemek yerine sorunun temsilini veya kararını değiştirmeli."
+    ]
+  },
+  "topic_blueprints": {
+    "Temel Kavramlar": {
+      "skills": ["sayı kümeleri", "işlem önceliği", "tanım ve koşul yorumlama"],
+      "representations": ["sayı doğrusu", "eşitlik", "tablo", "sözel durum"],
+      "task_families": ["koşullu sıralama", "işlem özelliği seçme", "tanıma göre değer bulma"],
+      "canonical_terms": ["doğal sayı", "tam sayı", "rasyonel sayı", "gerçek sayı"],
+      "avoid": ["yalnızca uzun dört işlem", "tanımsız değişken koşulu"]
+    },
+    "Sayı Basamakları": {
+      "skills": ["basamak değeri", "rakam kısıtları", "sayı oluşturma"],
+      "representations": ["basamak tablosu", "eşitsizlik", "bölünebilme", "sözel model"],
+      "task_families": ["rakam yerleştirme", "koşullu sayı sayma", "basamak toplamı ve kalan"],
+      "canonical_terms": ["rakam", "basamak değeri", "doğal sayı"],
+      "avoid": ["belirsiz özel sayı tanımı", "yalnız rakam değişimi"]
+    },
+    "Üslü Sayılar": {
+      "skills": ["üs kuralları", "bilimsel gösterim", "karşılaştırma"],
+      "representations": ["üstel ifade", "bilimsel gösterim", "grafik", "sözel bağlam"],
+      "task_families": ["eşit üs kurma", "ölçek karşılaştırma", "koşullu sadeleştirme"],
+      "canonical_terms": ["üs", "taban", "bilimsel gösterim"],
+      "avoid": ["salt kural ezberi", "hesap makinesi veya yazılım bağlamı"]
+    },
+    "Köklü Sayılar": {
+      "skills": ["köklü ifade sadeleştirme", "payda rasyonelleştirme", "sıralama"],
+      "representations": ["sayı doğrusu", "alan/uzunluk şekli", "eşitsizlik", "ifade"],
+      "task_families": ["köklü karşılaştırma", "geometrik uzunluk", "işlem ve koşul analizi"],
+      "canonical_terms": ["karekök", "köklü ifade", "rasyonelleştirme"],
+      "avoid": ["tanımsız kök içi", "yalnız mekanik sadeleştirme"]
+    },
+    "Mutlak Değer": {
+      "skills": ["uzaklık yorumu", "parçalı çözüm", "eşitsizlik"],
+      "representations": ["sayı doğrusu", "grafik", "eşitsizlik", "sözel durum"],
+      "task_families": ["uzaklık aralığı", "parametreli mutlak değer", "grafik alanı"],
+      "canonical_terms": ["mutlak değer", "uzaklık", "aralık"],
+      "avoid": ["durumları gerekçesiz listeleme"]
+    },
+    "Fonksiyonlar": {
+      "skills": ["tanım/değer/görüntü kümeleri", "bileşke", "ters", "bire bir ve örten"],
+      "representations": ["eşleme şeması", "grafik", "tablo", "cebirsel ifade"],
+      "task_families": ["tanım kümesi bulma", "bileşke ve ters ilişki", "grafikten özellik okuma"],
+      "canonical_terms": ["tanım kümesi", "değer kümesi", "görüntü kümesi", "bileşke", "ters fonksiyon"],
+      "avoid": ["tanım kümesi belirtilmeden işlem", "kod veya arayüz dili"]
+    },
+    "Polinomlar": {
+      "skills": ["derece ve katsayı", "bölme", "kalan", "kök"],
+      "representations": ["polinom eşitliği", "kalan tablosu", "grafik", "çarpanlar"],
+      "task_families": ["kalan teoremi", "kök-katsayı koşulu", "bölme algoritması"],
+      "canonical_terms": ["derece", "baş katsayı", "sabit terim", "kök", "kalan teoremi"],
+      "avoid": ["rastgele katsayı değiştirme", "yazılım/algoritmik sistem bağlamı"]
+    },
+    "İkinci Dereceden Denklemler": {
+      "skills": ["diskriminant", "kökler", "Vieta bağıntıları", "parametre"],
+      "representations": ["denklem", "kök tablosu", "grafik", "sözel koşul"],
+      "task_families": ["köklerin konumu", "parametre aralığı", "kök-katsayı ilişkisi"],
+      "canonical_terms": ["diskriminant", "kök", "çakışık kök", "Vieta bağıntıları"],
+      "avoid": ["koşulsuz formül uygulaması"]
+    },
+    "Parabol": {
+      "skills": ["tepe noktası", "eksen", "kök-grafik ilişkisi", "odak/doğrultman"],
+      "representations": ["grafik", "cebirsel ifade", "geometrik tanım", "eşitsizlik"],
+      "task_families": ["tepe ve kesişim", "alan/konum", "parametreli grafik"],
+      "canonical_terms": ["tepe noktası", "simetri ekseni", "odak", "doğrultman"],
+      "avoid": ["ölçeksiz grafikten sayı okuma", "salt katsayı değiştirme"]
+    },
+    "Diziler": {
+      "skills": ["genel terim", "aritmetik/geometrik dizi", "toplam", "örüntü"],
+      "representations": ["terim tablosu", "grafik", "rekürsif tanım", "sözel örüntü"],
+      "task_families": ["eksik terim", "iki dizi karşılaştırma", "koşullu toplam"],
+      "canonical_terms": ["genel terim", "ortak fark", "ortak çarpan", "ilk n terim"],
+      "avoid": ["örüntüyü gerekçesiz tahmin ettirme"]
+    },
+    "Logaritma": {
+      "skills": ["tanım koşulları", "logaritma kuralları", "eşitsizlik", "grafik"],
+      "representations": ["üstel-logaritmik eşitlik", "grafik", "sayı doğrusu", "sözel ölçek"],
+      "task_families": ["taban karşılaştırma", "tanım kümesi", "parametreli eşitsizlik"],
+      "canonical_terms": ["taban", "argüman", "logaritma", "tanım koşulu"],
+      "avoid": ["taban koşulunu atlama", "hesap makinesi bağlamı"]
+    },
+    "Trigonometri": {
+      "skills": ["oranlar", "özdeşlik", "periyot", "trigonometrik denklem"],
+      "representations": ["birim çember", "dik üçgen", "grafik", "denklem"],
+      "task_families": ["açı aralığı", "özdeşlik dönüşümü", "grafikten periyot"],
+      "canonical_terms": ["sinüs", "kosinüs", "tanjant", "periyot", "birim çember"],
+      "avoid": ["açı birimi belirsizliği", "salt değer ezberi"]
+    },
+    "Limit ve Süreklilik": {
+      "skills": ["tek/çift taraflı limit", "süreklilik", "belirsizlik", "grafik yorumu"],
+      "representations": ["grafik", "tablo", "cebirsel ifade", "parçalı fonksiyon"],
+      "task_families": ["yaklaşım değeri", "parametreli süreklilik", "delik/sıçrama analizi"],
+      "canonical_terms": ["limit", "süreklilik", "sağdan limit", "soldan limit"],
+      "avoid": ["değer ile limiti özdeş sanma"]
+    },
+    "Türev": {
+      "skills": ["türev tanımı", "teğet eğimi", "artan-azalan", "ekstremum", "optimizasyon"],
+      "representations": ["grafik", "cebirsel ifade", "hareket tablosu", "sözel model"],
+      "task_families": ["teğet/doğru", "kritik nokta", "maksimum-minimum", "hız"],
+      "canonical_terms": ["türev", "teğet", "kritik nokta", "yerel maksimum", "yerel minimum"],
+      "avoid": ["fiziksel birimlerin eksikliği", "sadece türev alma"]
+    },
+    "İntegral": {
+      "skills": ["belirsiz/belirli integral", "alan", "temel teorem", "işaret"],
+      "representations": ["grafik alanı", "cebirsel ifade", "tablo", "sözel birikim"],
+      "task_families": ["işaretli alan", "parametreli alan", "türev-integral bağlantısı"],
+      "canonical_terms": ["belirli integral", "ilkel fonksiyon", "işaretli alan", "temel teorem"],
+      "avoid": ["alanı mutlak değerle otomatik alma", "sınırları belirsiz integral"]
+    },
+    "Olasılık": {
+      "skills": ["örnek uzay", "koşullu olasılık", "bağımsızlık", "Bayes"],
+      "representations": ["ağaç şeması", "tablo", "kümeler", "sözel deney"],
+      "task_families": ["koşullu seçim", "geri koymalı/koymasız", "bağımsızlık testi"],
+      "canonical_terms": ["örnek uzay", "olay", "koşullu olasılık", "bağımsız olay"],
+      "avoid": ["olasılık uzayını belirtmeden oran"]
+    },
+    "Sayma": {
+      "skills": ["toplama/çarpma ilkesi", "permütasyon", "kombinasyon", "dağılım"],
+      "representations": ["ağaç", "tablo", "sıralı seçim", "sözel kısıt"],
+      "task_families": ["koşullu diziliş", "tekrarlı seçim", "tamamlayıcı sayma"],
+      "canonical_terms": ["permütasyon", "kombinasyon", "çarpma ilkesi", "tekrarlı seçim"],
+      "avoid": ["aynı nesneyi farklı sayma", "programlama/kod bağlamı"]
+    },
+    "Üçgenler": {
+      "skills": ["açı ilişkileri", "eşlik/benzerlik", "Pisagor", "trigonometrik oran"],
+      "representations": ["şekil", "tablo", "alan oranı", "sözel geometri"],
+      "task_families": ["yardımcı eleman", "açı-kenar bağıntısı", "dönüşüm/katlama"],
+      "canonical_terms": ["yükseklik", "kenarortay", "açıortay", "hipotenüs", "benzerlik"],
+      "avoid": ["şekli ölçekli varsayma", "adı verilmeyen noktalar"]
+    },
+    "Üçgende Yardımcı Elemanlar": {
+      "skills": ["yükseklik", "kenarortay", "açıortay", "orta dikme"],
+      "representations": ["yardımcı çizim", "oran", "alan", "açı"],
+      "task_families": ["kesişim noktası", "oran ve uzaklık", "simetri"],
+      "canonical_terms": ["yükseklik", "kenarortay", "açıortay", "orta dikme"],
+      "avoid": ["yardımcı elemanı çizmeden sonuç atlama"]
+    },
+    "Üçgende Alan": {
+      "skills": ["taban-yükseklik", "alan oranı", "sinüsle alan", "bölme"],
+      "representations": ["şekil", "oran tablosu", "koordinat", "sözel durum"],
+      "task_families": ["ortak yükseklik", "alan bölüşümü", "parametreli alan"],
+      "canonical_terms": ["taban", "yükseklik", "alan", "ortak yükseklik"],
+      "avoid": ["şekilde gösterilmeyen diklik", "ölçeksiz görsel tahmini"]
+    },
+    "Benzerlik": {
+      "skills": ["benzerlik oranı", "uzunluk/alan oranı", "paralel doğrular"],
+      "representations": ["şekil", "oran", "tablo", "koordinat"],
+      "task_families": ["iç bölme", "alan ölçekleme", "benzer üçgen kurma"],
+      "canonical_terms": ["benzerlik oranı", "karşılıklı kenarlar", "paralel"],
+      "avoid": ["eşlik ile benzerliği karıştırma"]
+    },
+    "Analitik Geometri": {
+      "skills": ["uzaklık", "orta nokta", "doğru denklemi", "eğim"],
+      "representations": ["koordinat düzlemi", "grafik", "denklem", "geometrik yer"],
+      "task_families": ["iki nokta arası", "doğruların konumu", "bölme noktası"],
+      "canonical_terms": ["eğim", "doğru denklemi", "orta nokta", "koordinat"],
+      "avoid": ["grafikten ölçek varsayımı", "tanımsız koordinat sistemi"]
+    }
+  }
+}

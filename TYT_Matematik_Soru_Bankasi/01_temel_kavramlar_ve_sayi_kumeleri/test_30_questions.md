@@ -10,9 +10,7 @@
 
 `K01-T30-Q01`
 
-Tam sayılarda $a\mathbin{\square}b=3a+2b$ işlemi tanımlanıyor.
-
-$a$ çift, $b$ tek tam sayı ise sonuç için hangisi kesindir?
+Tam sayılarda $a\mathbin{\square}b=3a+2b$ işlemi tanımlanıyor. $a$ çift, $b$ tek tam sayı ise sonuç için hangisi kesindir?
 
 A) Çifttir.
 
@@ -28,11 +26,7 @@ E) Negatiftir.
 
 `K01-T30-Q02`
 
-$r$ rasyonel, $t$ irrasyonel olmak üzere
-
-$$u=2t+r,\qquad v=3t-r$$
-
-tanımlanıyor. Hangi ifade kesinlikle rasyoneldir?
+$r$ rasyonel, $t$ irrasyonel olmak üzere $$u=2t+r,\qquad v=3t-r$$ tanımlanıyor. Hangi ifade kesinlikle rasyoneldir?
 
 A) $u+v$
 
@@ -48,9 +42,7 @@ E) $u^2+v^2$
 
 `K01-T30-Q03`
 
-Ardışık dört pozitif çift tam sayının toplamı 52'dir.
-
-Bu sayıların en büyüğü kaçtır?
+Ardışık dört pozitif çift tam sayının toplamı 52'dir. Bu sayıların en büyüğü kaçtır?
 
 A) $12$
 
@@ -66,9 +58,7 @@ E) $20$
 
 `K01-T30-Q04`
 
-$$a=\sqrt{11}-2,\qquad b=\frac43,\qquad c=1,32$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+$$a=\sqrt{11}-2,\qquad b=\frac43,\qquad c=1,32$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $c<a<b$
 
@@ -84,11 +74,7 @@ E) $c<b<a$
 
 `K01-T30-Q05`
 
-$x<y<0$ olduğuna göre
-
-$$\frac{x-y}{xy}$$
-
-ifadesi için hangisi kesindir?
+$x<y<0$ olduğuna göre $$\frac{x-y}{xy}$$ ifadesi için hangisi kesindir?
 
 A) Pozitiftir.
 
@@ -120,9 +106,7 @@ E) $ab+a+b$
 
 `K01-T30-Q07`
 
-$$x=\sqrt2+\sqrt3,\qquad y=\sqrt3-\sqrt2$$
-
-olduğuna göre aşağıdaki ifadelerden hangisi irrasyoneldir?
+$$x=\sqrt2+\sqrt3,\qquad y=\sqrt3-\sqrt2$$ olduğuna göre aşağıdaki ifadelerden hangisi irrasyoneldir?
 
 A) $xy$
 

@@ -58,9 +58,7 @@ E) $21$
 
 `K01-T36-Q04`
 
-$$a=\sqrt{15}-2,\qquad b=\frac{15}{8},\qquad c=1,874$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $$a=\sqrt{15}-2,\qquad b=\frac{15}{8},\qquad c=1,874$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $c<a<b$
 
@@ -76,11 +74,7 @@ E) $c<b<a$
 
 `K01-T36-Q05`
 
-$x<0<y$ ve $|x|=2y$ olduğuna göre
-
-$$\frac{x+y}{xy}$$
-
-ifadesinin işareti nedir?
+$x<0<y$ ve $|x|=2y$ olduğuna göre $$\frac{x+y}{xy}$$ ifadesinin işareti nedir?
 
 A) Negatif
 
@@ -144,7 +138,7 @@ E) $n^2-n+1$
 
 `K01-T36-Q09`
 
-$-\sqrt{61}$ ile $\pi+4$ arasında kaç tam sayı vardır?
+Bir sayı tablosu okunurken, verilen bağıntıdan yararlanarak: $-\sqrt{61}$ ile $\pi+4$ arasında kaç tam sayı vardır?
 
 A) $11$
 

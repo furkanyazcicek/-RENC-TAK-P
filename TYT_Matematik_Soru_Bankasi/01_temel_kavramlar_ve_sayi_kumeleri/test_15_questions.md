@@ -10,9 +10,7 @@
 
 `K01-T15-Q01`
 
-$$a=\frac{\sqrt2}{2},\qquad b=0,71,\qquad c=\frac57$$
-
-olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
+$$a=\frac{\sqrt2}{2},\qquad b=0,71,\qquad c=\frac57$$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
 
 A) $a<b<c$
 
@@ -76,9 +74,7 @@ E) $x-x$
 
 `K01-T15-Q05`
 
-$$p=3-\pi,\qquad q=-\frac17,\qquad r=-0,14$$
-
-olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
+$$p=3-\pi,\qquad q=-\frac17,\qquad r=-0,14$$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
 
 A) $p<q<r$
 

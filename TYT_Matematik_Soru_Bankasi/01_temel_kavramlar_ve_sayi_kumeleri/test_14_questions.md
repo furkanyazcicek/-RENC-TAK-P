@@ -10,9 +10,7 @@
 
 `K01-T14-Q01`
 
-$$a=2,23,\qquad b=\frac{\sqrt{20}}2,\qquad c=\frac94$$
-
-olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
+$$a=2,23,\qquad b=\frac{\sqrt{20}}2,\qquad c=\frac94$$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
 
 A) $b<a<c$
 
@@ -28,9 +26,7 @@ E) $a<b<c$
 
 `K01-T14-Q02`
 
-$$-\frac52<n\le\sqrt7$$
-
-eşitsizliğini sağlayan kaç farklı tam sayı $n$ vardır?
+$$-\frac52<n\le\sqrt7$$ eşitsizliğini sağlayan kaç farklı tam sayı $n$ vardır?
 
 A) $4$
 
@@ -62,8 +58,6 @@ E) $\pi-3$
 
 `K01-T14-Q04`
 
-Bir öğrenci sayı türleri ve ondalık gösterimler hakkında beş not hazırlıyor.
-
 Bu notlardan hangisinin düzeltilmesi gerekir?
 
 A) İki rasyonel sayının toplamı rasyoneldir.
@@ -80,9 +74,7 @@ E) Tam kare pozitif bir tam sayının karekökü rasyoneldir.
 
 `K01-T14-Q05`
 
-$$p=-\frac1{\sqrt2},\qquad q=-0,7,\qquad r=-\frac57$$
-
-olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
+$$p=-\frac1{\sqrt2},\qquad q=-0,7,\qquad r=-\frac57$$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
 
 A) $p<r<q$
 
@@ -114,7 +106,7 @@ E) $\sqrt5$
 
 `K01-T14-Q07`
 
-$\sqrt{15}$ ile $\dfrac{31}{8}$ sayıları arasındaki doğru ilişki hangisidir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $\sqrt{15}$ ile $\dfrac{31}{8}$ sayıları arasındaki doğru ilişki hangisidir?
 
 A) $\sqrt{15}>\dfrac{31}{8}$
 
@@ -130,11 +122,7 @@ E) $\sqrt{15}\cdot\dfrac{31}{8}=1$
 
 `K01-T14-Q08`
 
-$a$ irrasyonel, $b$ rasyonel sayı olmak üzere
-
-$$a+b-(a-b)$$
-
-ifadesinin değeri kesinlikle hangi tür sayıdır?
+$a$ irrasyonel, $b$ rasyonel sayı olmak üzere $$a+b-(a-b)$$ ifadesinin değeri kesinlikle hangi tür sayıdır?
 
 A) Rasyonel
 
@@ -166,9 +154,7 @@ E) $-3$ ile $-2$
 
 `K01-T14-Q10`
 
-$$0,272727\ldots$$
-
-devirli ondalık gösteriminin kesir biçimi aşağıdakilerden hangisidir?
+$$0,272727\ldots$$ devirli ondalık gösteriminin kesir biçimi aşağıdakilerden hangisidir?
 
 A) $\dfrac2{11}$
 

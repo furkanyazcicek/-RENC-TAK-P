@@ -24,9 +24,10 @@ export default function TopicTestResult() {
   let emptyCount = 0
 
   test.questions.forEach((q) => {
+    const correct = q.correctOptionId || q.correctAnswer
     if (!answers[q.id]) {
       emptyCount++
-    } else if (answers[q.id] === q.correctOptionId) {
+    } else if (answers[q.id] === correct) {
       correctCount++
     } else {
       wrongCount++
@@ -80,11 +81,11 @@ export default function TopicTestResult() {
           )}
           
           <div className="flex justify-center gap-4">
-            <Button variant="secondary" size="lg" onClick={() => navigate(`/kutuphane/sorular`)}>
+            <Button variant="secondary" size="lg" onClick={() => navigate(returnTo)}>
               Konu Sayfasına Dön
             </Button>
             <Button variant="primary" size="lg" icon={ArrowRight} iconPosition="right" onClick={() => {
-              navigate(`/kutuphane/sorular`)
+              navigate(returnTo)
             }}>
               Sonraki Teste Geç
             </Button>
@@ -103,8 +104,8 @@ export default function TopicTestResult() {
                 selectedOptionId={answers[question.id]}
                 disabled={true}
                 showCorrect={true}
-                correctOptionId={question.correctOptionId}
-                explanation={question.explanation}
+                correctOptionId={question.correctOptionId || question.correctAnswer}
+                explanation={question.explanation || question.solution}
               />
             ))}
           </div>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="330" viewBox="0 0 760 330" role="img" aria-labelledby="title desc">
+  <title id="title">Paralel doğrular üzerinde işaretli noktalar</title>
+  <desc id="desc">Üst doğru üzerinde altı, alt doğru üzerinde dört nokta işaretlidir.</desc>
+  <rect width="760" height="330" rx="24" fill="#f8fafc"/>
+  <line x1="80" y1="105" x2="680" y2="105" stroke="#334155" stroke-width="5" stroke-linecap="round"/>
+  <line x1="80" y1="230" x2="680" y2="230" stroke="#334155" stroke-width="5" stroke-linecap="round"/>
+  <g fill="#2563eb" stroke="#ffffff" stroke-width="3">
+    <circle cx="110" cy="105" r="10"/><circle cx="218" cy="105" r="10"/><circle cx="326" cy="105" r="10"/>
+    <circle cx="434" cy="105" r="10"/><circle cx="542" cy="105" r="10"/><circle cx="650" cy="105" r="10"/>
+  </g>
+  <g fill="#ea580c" stroke="#ffffff" stroke-width="3">
+    <circle cx="145" cy="230" r="10"/><circle cx="302" cy="230" r="10"/><circle cx="458" cy="230" r="10"/><circle cx="615" cy="230" r="10"/>
+  </g>
+</svg>

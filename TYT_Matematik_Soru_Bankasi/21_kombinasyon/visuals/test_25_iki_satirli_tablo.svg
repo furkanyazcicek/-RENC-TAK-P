@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="300" viewBox="0 0 760 300" role="img" aria-labelledby="title desc">
+  <title id="title">İki satır ve beş sütunlu tablo</title>
+  <desc id="desc">On eş hücreden oluşan iki satırlı ve beş sütunlu tablo.</desc>
+  <rect width="760" height="300" rx="24" fill="#f8fafc"/>
+  <g fill="#ffffff" stroke="#334155" stroke-width="4">
+    <rect x="80" y="55" width="120" height="90"/><rect x="200" y="55" width="120" height="90"/><rect x="320" y="55" width="120" height="90"/><rect x="440" y="55" width="120" height="90"/><rect x="560" y="55" width="120" height="90"/>
+    <rect x="80" y="145" width="120" height="90"/><rect x="200" y="145" width="120" height="90"/><rect x="320" y="145" width="120" height="90"/><rect x="440" y="145" width="120" height="90"/><rect x="560" y="145" width="120" height="90"/>
+  </g>
+</svg>

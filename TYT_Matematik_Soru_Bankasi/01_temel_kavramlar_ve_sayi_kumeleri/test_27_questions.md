@@ -10,9 +10,7 @@
 
 `K01-T27-Q01`
 
-Tam sayılarda $a\mathbin{\oplus}b=a+b-1$ tanımlanıyor.
-
-$a$ ve $b$ tek tam sayılar olduğuna göre $a\mathbin{\oplus}b$ için hangisi kesindir?
+Tam sayılarda $a\mathbin{\oplus}b=a+b-1$ tanımlanıyor. $a$ ve $b$ tek tam sayılar olduğuna göre $a\mathbin{\oplus}b$ için hangisi kesindir?
 
 A) Çifttir.
 
@@ -28,9 +26,7 @@ E) Negatiftir.
 
 `K01-T27-Q02`
 
-$r$ rasyonel, $t$ irrasyonel olmak üzere $x=t+r$ ve $y=r-t$ tanımlanıyor.
-
-$x+y$ kesinlikle hangi tür sayıdır?
+$r$ rasyonel, $t$ irrasyonel olmak üzere $x=t+r$ ve $y=r-t$ tanımlanıyor. $x+y$ kesinlikle hangi tür sayıdır?
 
 A) Rasyonel
 
@@ -46,9 +42,7 @@ E) Negatif tam sayı
 
 `K01-T27-Q03`
 
-Ardışık beş tam sayının en küçüğü ile en büyüğünün toplamı 18'dir.
-
-Bu beş sayının toplamı kaçtır?
+Ardışık beş tam sayının en küçüğü ile en büyüğünün toplamı 18'dir. Bu beş sayının toplamı kaçtır?
 
 A) $25$
 
@@ -64,9 +58,7 @@ E) $45$
 
 `K01-T27-Q04`
 
-$$a=\sqrt8-1,\qquad b=\frac{11}{6},\qquad c=1,83$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+$$a=\sqrt8-1,\qquad b=\frac{11}{6},\qquad c=1,83$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $c<a<b$
 
@@ -98,9 +90,7 @@ E) $z=y$
 
 `K01-T27-Q06`
 
-$S$ kümesi 6'nın tam sayı katlarından oluşuyor ve $a\mathbin{\circ}b=(a+b)/3$ tanımlanıyor.
-
-Hangi $(a,b)$ çifti işlemin $S$'de kapalı olmadığını gösterir?
+$S$ kümesi 6'nın tam sayı katlarından oluşuyor ve $a\mathbin{\circ}b=(a+b)/3$ tanımlanıyor. Hangi $(a,b)$ çifti işlemin $S$'de kapalı olmadığını gösterir?
 
 A) $(0,0)$
 
@@ -116,9 +106,7 @@ E) $(12,24)$
 
 `K01-T27-Q07`
 
-$x=\sqrt3$ ve $y=2-\sqrt3$ olarak veriliyor.
-
-$x+y$ ile $xy$ sayılarının türü sırasıyla hangisidir?
+$x=\sqrt3$ ve $y=2-\sqrt3$ olarak veriliyor. $x+y$ ile $xy$ sayılarının türü sırasıyla hangisidir?
 
 A) İrrasyonel — İrrasyonel
 

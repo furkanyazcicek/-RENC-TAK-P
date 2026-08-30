@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 3,
+  "sliceId": "ankara-savasi-1402",
+  "sliceYear": 1402,
+  "title": "1402 Ankara Savaşı kanıt dilimi",
+  "publicationStatus": "reviewed-slice",
+  "scopeNote": "Bu paket 1402 siyasî sınırı çizmez; tarih konusunda kaynak ayrışmasını koruyarak olay noktasını sunar.",
+  "validFrom": 1402,
+  "validTo": 1403,
+  "sourceIds": ["tdv-ankara-savasi", "wikidata-cc0"],
+  "administrativeRegions": [], "settlements": [],
+  "events": [{
+    "id": "event:ankara-savasi-1402", "nameTr": "Ankara Savaşı", "sourceName": "Battle of Ankara",
+    "validFrom": 1402, "validTo": 1403, "type": "event", "subtype": "battle", "importance": 3, "minZoom": 3.2,
+    "sourceIds": ["tdv-ankara-savasi", "wikidata-cc0"], "sourceEntityId": "Q209387",
+    "geometryMethod": "external-cc0-event-point-with-academic-reference", "confidence": "medium", "boundaryCertainty": "not-applicable-point", "coverageStatus": "mapped-point-only", "reviewStatus": "reviewed",
+    "eventDate": { "from": "1402-07-20", "to": "1402-07-28", "precision": "disputed-day-range" },
+    "summary": "Timur ile Yıldırım Bayezid kuvvetleri Ankara yakınlarında karşılaştı; Osmanlı Fetret Devri başladı.",
+    "sides": ["Timur İmparatorluğu", "Osmanlı Devleti"],
+    "warning": "TDV maddesi 28 Temmuz'u kuvvetli olasılık sayarken açık koordinat kaydı 20 Temmuz kullanır; tarih aralığı özellikle korunmuştur.",
+    "geometry": { "type": "Point", "coordinates": [32.95, 40.15] }
+  }],
+  "routes": []
+}

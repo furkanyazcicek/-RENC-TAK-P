@@ -10,7 +10,7 @@
 
 `K02-T34-Q01`
 
-438 sayısının ilk ve son rakamı değiştiriliyor, ardından 34 çıkarılıyor. Elde edilen sonuç kaçtır?
+Elde edilen sonuç kaçtır?
 
 A) $734$
 
@@ -42,7 +42,7 @@ E) $5813$
 
 `K02-T34-Q03`
 
-487 değerindeki bir üretim sayacı 63 kez ilerliyor. Sayaç hangi değere ulaşır?
+487 değerindeki bir hazırlama sayacı 63 kez ilerliyor. Sayaç hangi değere ulaşır?
 
 A) $550$
 
@@ -74,7 +74,7 @@ E) $927$
 
 `K02-T34-Q05`
 
-47'nin rakamları ters çevriliyor ve elde edilen sayıdan 47'nin rakamları çarpımı çıkarılıyor. Sonuç kaçtır?
+Bir günlük planındaki niceliklerde, verilen bağıntıdan yararlanarak: Sonuç kaçtır?
 
 A) $42$
 
@@ -154,7 +154,7 @@ E) $2007$
 
 `K02-T34-Q10`
 
-704 sayısının rakamları ters çevriliyor ve elde edilen sayıya 93 ekleniyor. Sonuç kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: 704 sayısının rakamları ters çevriliyor ve elde edilen sayıya 93 ekleniyor. Sonuç kaçtır?
 
 A) $407$
 

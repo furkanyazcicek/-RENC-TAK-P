@@ -10,15 +10,7 @@
 
 `K01-T48-Q01`
 
-$a$ ve $b$ zıt pariteli tam sayılardır.
-
-I. $a^2+b^2$ tektir.
-
-II. $3ab$ çifttir.
-
-III. $a^2+3ab+b^2$ tektir.
-
-Buna göre yukarıdaki ifadelerden hangileri her zaman doğrudur?
+$a$ ve $b$ zıt pariteli tam sayılardır. I. $a^2+b^2$ tektir. II. $3ab$ çifttir. III. $a^2+3ab+b^2$ tektir. Buna göre yukarıdaki ifadelerden hangileri her zaman doğrudur?
 
 A) Yalnız I
 
@@ -98,7 +90,7 @@ E) Tam sayı
 
 `K01-T48-Q06`
 
-$a$ ve $b$ tam sayıları 13 ile bölündüğünde 9 kalanını vermektedir. Aşağıdakilerden hangisi 13 ile bölündüğünde yine 9 kalanını verir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $a$ ve $b$ tam sayıları 13 ile bölündüğünde 9 kalanını vermektedir. Aşağıdakilerden hangisi 13 ile bölündüğünde yine 9 kalanını verir?
 
 A) $a+b$
 
@@ -162,9 +154,7 @@ E) $38$
 
 `K01-T48-Q10`
 
-Bir öğrenci, ikinci sayısı sıfırdan farklı olan bir bölme işleminin sonucu rasyonelse iki sayının da rasyonel olduğunu iddia ediyor.
-
-Hangi sayı çifti bu iddianın yanlış olduğunu gösterir?
+Bir öğrenci, ikinci sayısı sıfırdan farklı olan bir bölme işleminin sonucu rasyonelse iki sayının da rasyonel olduğunu iddia ediyor. Hangi sayı çifti bu iddianın yanlış olduğunu gösterir?
 
 A) $(1,2)$
 

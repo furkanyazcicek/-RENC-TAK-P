@@ -10,9 +10,7 @@
 
 `K01-T09-Q01`
 
-Bir asansör başlangıçta $-3$. kattadır. Önce $h$ katlık, ardından bunun toplamaya göre tersi olan $-h$ katlık hareket yapıyor.
-
-Asansör son durumda kaçıncı katta olur?
+Bir asansör başlangıçta $-3$. kattadır. Önce $h$ katlık, ardından bunun toplamaya göre tersi olan $-h$ katlık hareket yapıyor. Asansör son durumda kaçıncı katta olur?
 
 A) $-3+h$
 
@@ -28,13 +26,7 @@ E) $-3$
 
 `K01-T09-Q02`
 
-$a$ ve $b$ gerçek sayıları için
-
-$$a\mathbin{\star}b=\frac{a+b}{2}$$
-
-biçiminde bir işlem tanımlanıyor.
-
-Buna göre $6\mathbin{\star}(-2)$ kaçtır?
+$a$ ve $b$ gerçek sayıları için $$a\mathbin{\star}b=\frac{a+b}{2}$$ biçiminde bir işlem tanımlanıyor. Buna göre $6\mathbin{\star}(-2)$ kaçtır?
 
 A) $-4$
 
@@ -50,9 +42,7 @@ E) $8$
 
 `K01-T09-Q03`
 
-Bir gerçek sayının çarpmaya göre tersi $-2$'dir.
-
-Bu sayının toplamaya göre tersi kaçtır?
+Bir gerçek sayının çarpmaya göre tersi $-2$'dir. Bu sayının toplamaya göre tersi kaçtır?
 
 A) $-2$
 
@@ -68,9 +58,7 @@ E) $4$
 
 `K01-T09-Q04`
 
-$$-5(a-2)$$
-
-ifadesinin parantezi doğru açılmış biçimi aşağıdakilerden hangisidir?
+$$-5(a-2)$$ ifadesinin parantezi doğru açılmış biçimi aşağıdakilerden hangisidir?
 
 A) $-5a+10$
 
@@ -86,9 +74,7 @@ E) $5a+10$
 
 `K01-T09-Q05`
 
-Bir işlem zincirinde kullanılan $a$, $b$ ve $c$ sayılarından ilki negatif, ikincisi pozitif, üçüncüsü negatiftir.
-
-Aşağıdaki sonuçlardan hangisinin pozitif olması zorunludur?
+Bir işlem zincirinde kullanılan $a$, $b$ ve $c$ sayılarından ilki negatif, ikincisi pozitif, üçüncüsü negatiftir. Aşağıdaki sonuçlardan hangisinin pozitif olması zorunludur?
 
 A) $ab$
 
@@ -104,11 +90,7 @@ E) $a-c$
 
 `K01-T09-Q06`
 
-$z$ sıfırdan farklı bir gerçek sayı olmak üzere
-
-$$z\cdot\frac1z+(-1)$$
-
-işleminin sonucu kaçtır?
+$z$ sıfırdan farklı bir gerçek sayı olmak üzere $$z\cdot\frac1z+(-1)$$ işleminin sonucu kaçtır?
 
 A) $0$
 
@@ -140,11 +122,7 @@ E) $r\cdot\dfrac1r=1\quad(r\ne0)$
 
 `K01-T09-Q08`
 
-$p>0$ ve
-
-$$\frac pq<0$$
-
-olduğuna göre $q$ için hangisi kesinlikle doğrudur?
+$p>0$ ve $$\frac pq<0$$ olduğuna göre $q$ için hangisi kesinlikle doğrudur?
 
 A) Sıfırdır.
 
@@ -160,9 +138,7 @@ E) $p$'den büyüktür.
 
 `K01-T09-Q09`
 
-Önce 3'ten -4 çıkarılıyor. Bulunan değer -2 ile çarpılıyor ve sonuca 5 ekleniyor.
-
-Sonuç kaçtır?
+Bulunan değer -2 ile çarpılıyor ve sonuca 5 ekleniyor. Sonuç kaçtır?
 
 A) $-19$
 
@@ -177,8 +153,6 @@ E) $19$
 ## Soru 10
 
 `K01-T09-Q10`
-
-$n$ sayısına sırasıyla 12 ve $-12$ ekleniyor; elde edilen sonuç 1 ile çarpılıyor.
 
 Sonuç aşağıdakilerden hangisidir?
 

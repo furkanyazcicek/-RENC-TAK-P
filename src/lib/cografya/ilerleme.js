@@ -1,7 +1,7 @@
 const ANAHTAR = 'drkoc-cografya-v1'
 const TEMA_ANAHTARI = 'drkoc-cografya-tema'
 
-export const BOS_ILERLEME = { surum: 1, tamamlananlar: {}, hataDefteri: [], sonBolge: null, tani: null }
+export const BOS_ILERLEME = { surum: 1, tamamlananlar: {}, hataDefteri: [], tytDenemeleri: [], sonBolge: null, tani: null }
 const kopya = () => JSON.parse(JSON.stringify(BOS_ILERLEME))
 
 export function ilerlemeOku() {
@@ -35,6 +35,21 @@ export function etkilesimTamamla(id, bolge, kanit = {}) {
 export function hataKaydet(soruId, secim, atlananKanit) {
   const eski = ilerlemeOku()
   return ilerlemeYaz({ hataDefteri: [...eski.hataDefteri.filter((h) => h.soruId !== soruId), { soruId, secim, atlananKanit, tarih: new Date().toISOString() }] })
+}
+
+export function tytDenemeKaydet(deneme) {
+  const eski = ilerlemeOku()
+  const kayit = {
+    id: deneme.id ?? `tyt-${Date.now()}`,
+    tarih: new Date().toISOString(),
+    soruSayisi: Number(deneme.soruSayisi ?? 0),
+    cevaplanan: Number(deneme.cevaplanan ?? 0),
+    dogru: Number(deneme.dogru ?? 0),
+    yanlis: Number(deneme.yanlis ?? 0),
+    zamanli: Boolean(deneme.zamanli),
+    kalanSaniye: Number(deneme.kalanSaniye ?? 0),
+  }
+  return ilerlemeYaz({ tytDenemeleri: [...eski.tytDenemeleri, kayit].slice(-20) })
 }
 
 export function ilerlemeyiSil(onay) {

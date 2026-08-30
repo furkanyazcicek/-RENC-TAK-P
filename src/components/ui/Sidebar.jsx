@@ -6,6 +6,7 @@ import { cn } from '../../lib/cn'
 import Avatar from './Avatar'
 import Badge from './Badge'
 import Logo from './Logo'
+import { captureStudentProfile, isProductCapture } from '../../lib/productCapture'
 
 /**
  * Sidebar — masaüstü (lg+) gezinme sütunu.
@@ -20,8 +21,9 @@ import Logo from './Logo'
 export default function Sidebar() {
   const { profile, signOut } = useAuth()
   const { pathname } = useLocation()
+  const visibleProfile = profile ?? (isProductCapture() ? captureStudentProfile() : null)
 
-  const role = profile?.role ?? 'student'
+  const role = visibleProfile?.role ?? 'student'
   const items = navForRole(role)
   const homePath = items[0]?.to ?? '/'
 
@@ -86,9 +88,9 @@ export default function Sidebar() {
       {/* Kullanıcı */}
       <div className="shrink-0 border-t border-line p-3">
         <div className="flex items-center gap-3 rounded-btn px-2 py-2">
-          <Avatar name={profile?.full_name} size="sm" />
+          <Avatar name={visibleProfile?.full_name} size="sm" />
           <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-semibold text-ink">{profile?.full_name}</p>
+            <p className="truncate text-sm font-semibold text-ink">{visibleProfile?.full_name}</p>
             <Badge tone={ROLE_TONES[role] ?? 'brand'} size="sm" className="mt-1">
               {ROLE_LABELS[role] ?? 'Öğrenci'}
             </Badge>

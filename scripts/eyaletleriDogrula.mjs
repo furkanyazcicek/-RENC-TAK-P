@@ -6,7 +6,7 @@
 import { readFile, writeFile } from 'node:fs/promises'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { DEVLETSIZ_KARA } from '../src/data/tarihAtlasi/devletSozlugu.js'
+import { DEVLETSIZ_KARA } from '../src/lib/tarihAtlasi/haritaSunumu.js'
 import { karaMaskesiHazirla } from './lib/kiyiHizalama.mjs'
 
 const kok = resolve(dirname(fileURLToPath(import.meta.url)), '..')

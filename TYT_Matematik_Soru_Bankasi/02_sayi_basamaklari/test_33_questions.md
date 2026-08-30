@@ -10,7 +10,7 @@
 
 `K02-T33-Q01`
 
-275 sayısının dış rakamları yer değiştiriliyor ve elde edilen sayıdan 32 çıkarılıyor. Sonuç kaçtır?
+Bir sayı tablosu okunurken, verilen bağıntıdan yararlanarak: Sonuç kaçtır?
 
 A) $243$
 
@@ -58,7 +58,7 @@ E) $1015$
 
 `K02-T33-Q04`
 
-351 sayısının son iki rakamı yer değiştiriliyor ve elde edilen sayıya 29 ekleniyor. Sonuç kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: 351 sayısının son iki rakamı yer değiştiriliyor ve elde edilen sayıya 29 ekleniyor. Sonuç kaçtır?
 
 A) $315$
 

@@ -9,7 +9,7 @@
 ## Soru 1
 `K03-T01-Q01`
 
-157 sayısının 12 ile bölümünden kalan kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: 157 sayısının 12 ile bölümünden kalan kaçtır?
 
 A) $0$  
 B) $1$  
@@ -86,7 +86,7 @@ E) $116$
 ## Soru 8
 `K03-T01-Q08`
 
-0 sayısının 9 ile bölümünden kalan kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: 0 sayısının 9 ile bölümünden kalan kaçtır?
 
 A) $0$  
 B) $1$  

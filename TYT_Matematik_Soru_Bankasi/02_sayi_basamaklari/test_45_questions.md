@@ -20,7 +20,7 @@ E) $387$
 ## Soru 2
 `K02-T45-Q02`
 
-Dört haneli bir etiket iki haneli iki bölüme ayrılıyor. Bölümlerin toplamı 121, farkı 33 ve ilk bölüm daha büyüktür. Etiket hangisidir?
+Bölümlerin toplamı 121, farkı 33 ve ilk bölüm daha büyüktür. Etiket hangisidir?
 
 A) $4477$  
 B) $7447$  
@@ -31,7 +31,7 @@ E) $8855$
 ## Soru 3
 `K02-T45-Q03`
 
-0, 1, 2 ve 3 rakamları birer kez kullanılarak 2000'den büyük kaç farklı çift sayı yazılabilir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: 0, 1, 2 ve 3 rakamları birer kez kullanılarak 2000'den büyük kaç farklı çift sayı yazılabilir?
 
 A) $2$  
 B) $3$  

@@ -74,9 +74,7 @@ E) $850$
 
 `K02-T07-Q05`
 
-Bir kilidin üç haneli numarasında ilk rakam 3'tür. İkinci rakam ilkinin iki katı, son rakam ise ikinci rakamdan 1 fazladır.
-
-Kilidin numarası kaçtır?
+Bir kilidin üç haneli numarasında ilk rakam 3'tür. İkinci rakam ilkinin iki katı, son rakam ise ikinci rakamdan 1 fazladır. Kilidin numarası kaçtır?
 
 A) $673$
 

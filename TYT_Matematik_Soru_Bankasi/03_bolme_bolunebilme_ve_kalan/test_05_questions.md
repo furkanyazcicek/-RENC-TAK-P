@@ -9,7 +9,7 @@
 ## Soru 1
 `K03-T05-Q01`
 
-Aşağıdaki sayılardan hangisi 6 ile tam bölünür?
+Bir sayı doğrusu incelemesinde, koşulu bir eşitlik olarak yazdığımızda: Aşağıdaki sayılardan hangisi 6 ile tam bölünür?
 
 A) $234$  
 B) $242$  
@@ -20,7 +20,7 @@ E) $278$
 ## Soru 2
 `K03-T05-Q02`
 
-$42a$ sayısı 6 ile tam bölündüğüne göre bu sayının alabileceği en büyük değer kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $42a$ sayısı 6 ile tam bölündüğüne göre bu sayının alabileceği en büyük değer kaçtır?
 
 A) $420$  
 B) $422$  
@@ -31,7 +31,7 @@ E) $428$
 ## Soru 3
 `K03-T05-Q03`
 
-Aşağıdaki sayılardan hangisi 15 ile tam bölünür?
+Bir ölçü listesi hazırlanırken, koşulu bir eşitlik olarak yazdığımızda: Aşağıdaki sayılardan hangisi 15 ile tam bölünür?
 
 A) $625$  
 B) $710$  
@@ -42,7 +42,7 @@ E) $735$
 ## Soru 4
 `K03-T05-Q04`
 
-518 sayısına en az kaç eklenirse elde edilen sayı 10 ile tam bölünür?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: 518 sayısına en az kaç eklenirse elde edilen sayı 10 ile tam bölünür?
 
 A) $1$  
 B) $5$  
@@ -53,7 +53,7 @@ E) $10$
 ## Soru 5
 `K03-T05-Q05`
 
-Aşağıdaki sayılardan hangisi 18 ile tam bölünür?
+Bir sınıf etkinliğinde, koşulu bir eşitlik olarak yazdığımızda: Aşağıdaki sayılardan hangisi 18 ile tam bölünür?
 
 A) $1232$  
 B) $1242$  
@@ -75,7 +75,7 @@ E) $754$
 ## Soru 7
 `K03-T05-Q07`
 
-1'den 60'a kadar olan doğal sayılardan kaç tanesi hem 2 hem 5 ile tam bölünür?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: 1'den 60'a kadar olan doğal sayılardan kaç tanesi hem 2 hem 5 ile tam bölünür?
 
 A) $4$  
 B) $5$  
@@ -86,7 +86,7 @@ E) $12$
 ## Soru 8
 `K03-T05-Q08`
 
-9876 sayısının 9 ile bölümünden kalan kaçtır?
+Bir sayı doğrusu incelemesinde, koşulu bir eşitlik olarak yazdığımızda: 9876 sayısının 9 ile bölümünden kalan kaçtır?
 
 A) $0$  
 B) $1$  

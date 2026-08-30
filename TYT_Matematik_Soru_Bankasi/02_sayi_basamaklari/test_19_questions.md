@@ -58,7 +58,7 @@ E) $57$
 
 `K02-T19-Q04`
 
-902 sayısı bir rapora 209 olarak ters sırada yazılıyor. Doğru değer ile rapordaki değerin farkı kaçtır?
+Doğru değer ile rapordaki değerin farkı kaçtır?
 
 A) $594$
 
@@ -138,7 +138,7 @@ E) $8$
 
 `K02-T19-Q09`
 
-$6b6$ biçimindeki sayının rakamları ters çevriliyor. Sayıdaki değişim kaçtır?
+Sayıdaki değişim kaçtır?
 
 A) $0$
 

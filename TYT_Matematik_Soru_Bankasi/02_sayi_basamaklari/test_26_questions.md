@@ -138,7 +138,7 @@ E) $381$
 
 `K02-T26-Q09`
 
-İki haneli bir sayaç değerinden rakamları toplamı çıkarıldığında 72 kalıyor. Sayaçtaki rakamların toplamı 14 olduğuna göre değer kaçtır?
+Sayaçtaki rakamların toplamı 14 olduğuna göre değer kaçtır?
 
 A) $77$
 

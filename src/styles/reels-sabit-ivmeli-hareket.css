@@ -1,0 +1,250 @@
+.rih-sahne-basligi,
+.rih-kapanis {
+  fill: white;
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 60px;
+  font-weight: 760;
+  letter-spacing: -1.8px;
+}
+
+.rih-zaman {
+  fill: white;
+  font-size: 23px;
+  font-weight: 760;
+  font-variant-numeric: tabular-nums;
+}
+
+.rih-konum {
+  fill: #67e8f9;
+  font-size: 25px;
+  font-weight: 760;
+  font-variant-numeric: tabular-nums;
+}
+
+.rih-konum.mor { fill: #c4b5fd; }
+
+.rih-ivme {
+  fill: #67e8f9;
+  font-size: 27px;
+  font-weight: 760;
+}
+
+.rih-ivme.mor { fill: #c4b5fd; }
+
+.rih-oruntu {
+  fill: white;
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.rih-oruntu.dusey {
+  fill: rgb(255 255 255 / 0.56);
+  font-size: 27px;
+  font-weight: 620;
+}
+
+.rih-oruntu-alt {
+  fill: rgb(255 255 255 / 0.5);
+  font-size: 24px;
+  font-weight: 580;
+}
+
+.rih-donusum {
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 42px;
+  font-weight: 780;
+}
+
+.rih-denklem-etiketi {
+  fill: rgb(255 255 255 / 0.48);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.rih-denklem {
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 38px;
+  font-weight: 720;
+}
+
+.rih-neden {
+  fill: white;
+  font-size: 23px;
+  font-weight: 660;
+}
+
+.rih-kapanis {
+  font-size: 77px;
+  font-weight: 800;
+  letter-spacing: -2.8px;
+}
+
+.rih-kapanis-ilk {
+  fill: rgb(255 255 255 / 0.78);
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 72px;
+  font-weight: 680;
+  letter-spacing: -2.2px;
+}
+
+.rih-kapanis-vurgu {
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 94px;
+  font-weight: 860;
+  letter-spacing: -4px;
+}
+
+.rih-kapanis-oz {
+  fill: rgb(255 255 255 / 0.62);
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 29px;
+  font-weight: 650;
+  letter-spacing: 0.2px;
+}
+
+.rih-kapanis-alt {
+  fill: #d7daf0;
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 45px;
+  font-weight: 660;
+  letter-spacing: -0.8px;
+}
+
+.rih-imza {
+  fill: white;
+  font-size: 32px;
+  font-weight: 760;
+}
+
+.rih-son-not {
+  fill: rgb(255 255 255 / 0.55);
+  font-size: 27px;
+  font-weight: 580;
+}
+
+.rih-yon-etiketi {
+  fill: rgb(255 255 255 / 0.48);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 3px;
+}
+
+.rih-turetim-alt {
+  fill: rgb(255 255 255 / 0.54);
+  font-size: 27px;
+  font-weight: 600;
+}
+
+.rih-baglanti-ust {
+  fill: white;
+  font-size: 28px;
+  font-weight: 680;
+}
+
+.rih-baglanti-denklem {
+  fill: #c4b5fd;
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 39px;
+  font-weight: 780;
+}
+
+.rih-turetim-denklem {
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 53px;
+  font-weight: 760;
+  letter-spacing: -1px;
+}
+
+.rih-turetim-deger {
+  fill: #67e8f9;
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 38px;
+  font-weight: 760;
+}
+
+.rih-turetim-deger.mor { fill: #c4b5fd; }
+
+.rih-turetim-yerine {
+  fill: white;
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 48px;
+  font-weight: 750;
+}
+
+.rih-turetim-sonuc {
+  fill: white;
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 68px;
+  font-weight: 820;
+  letter-spacing: -2px;
+}
+
+.rih-turetim-rozet {
+  fill: white;
+  font-size: 23px;
+  font-weight: 680;
+}
+
+.rih-turetim-not {
+  fill: rgb(255 255 255 / 0.52);
+  font-size: 24px;
+  font-weight: 580;
+}
+
+.rih-turetim-kapsam {
+  fill: #a5f3fc;
+  font-size: 20px;
+  font-weight: 650;
+}
+
+.rih-kapak-ust {
+  fill: rgb(255 255 255 / 0.58);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+
+.rih-kapak-baslik {
+  fill: white;
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 76px;
+  font-weight: 820;
+  letter-spacing: -2.8px;
+}
+
+.rih-kapak-yon {
+  fill: rgb(255 255 255 / 0.52);
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 2.6px;
+}
+
+.rih-kapak-denklem {
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 50px;
+  font-weight: 780;
+  letter-spacing: -1px;
+}
+
+.rih-kapak-imza {
+  fill: white;
+  font-size: 28px;
+  font-weight: 760;
+}
+
+.rih-logo-final {
+  fill: white;
+  font-family: "Inter Tight", Inter, system-ui, sans-serif;
+  font-size: 82px;
+  font-weight: 840;
+  letter-spacing: -2px;
+}
+
+.rih-logo-final-alt {
+  fill: rgb(255 255 255 / 0.56);
+  font-size: 20px;
+  font-weight: 760;
+  letter-spacing: 4px;
+}

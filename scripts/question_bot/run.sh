@@ -1,6 +1,9 @@
 #!/bin/bash
 # Kurulum ve Çalıştırma Betiği
 
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR" || exit 1
+
 echo "1. Gerekli Python kütüphaneleri yükleniyor..."
 pip install -r requirements.txt
 
@@ -14,8 +17,11 @@ if [ -z "$API_KEY" ]; then
 fi
 
 echo ""
-echo "Hangi konudan soru üretmek istiyorsunuz? (Örn: Paragrafta Anlam)"
+echo "Hangi matematik konusundan soru üretmek istiyorsunuz? (Örn: Fonksiyonlar)"
 read -r KONU
+
+echo "Sınav veya sınıf düzeyi nedir? (TYT / AYT / 10)"
+read -r SINAV
 
 echo ""
 echo "Zorluk seviyesi nedir? (easy / medium / hard)"
@@ -27,4 +33,5 @@ read -r ADET
 
 echo ""
 echo "Bot çalıştırılıyor..."
-python bot.py --ders "Turkce" --konu "$KONU" --seviye "$SEVIYE" --adet $ADET --api_key "$API_KEY"
+export GEMINI_API_KEY="$API_KEY"
+python bot.py --ders "Matematik" --konu "$KONU" --sinav "${SINAV:-TYT}" --seviye "$SEVIYE" --adet "$ADET" --kaynak-profil "$SCRIPT_DIR/source_profile.json"

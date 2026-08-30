@@ -3,8 +3,11 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { BOLGELER, TYT_KONULARI } from '../src/data/cografya/bolgeler.js'
 import { ETKILESIM_REGISTRY, KAPSAM } from '../src/data/cografya/kapsam.js'
+import { MEB_CIKTILARI, MEB_COGRAFYA_2026, MUFREDAT_OZETI } from '../src/data/cografya/mufredat2026.js'
+import { TYT_AYARLARI, TYT_KAPSAM_MATRISI, TYT_SORU_BANKASI } from '../src/data/cografya/tyt.js'
+import { KAYNAKLAR } from '../src/data/cografya/kaynaklar.js'
 import { MERCEK_NOKTALARI } from '../src/data/cografya/haritaNoktalari.js'
-import { BOLGE_SAHNELERI, ZEMINLER, bolgeSahnesi } from '../src/data/cografya/gorseller.js'
+import { BOLGE_SAHNELERI, IMAGEGEN_VARLIKLARI, ZEMINLER, bolgeSahnesi } from '../src/data/cografya/gorseller.js'
 import { YANILGILAR } from '../src/data/cografya/yanilgilar.js'
 import { iklimOzeti, bagilNemOzeti } from '../src/lib/cografya/iklim.js'
 import { profilUret, ortalamaEgimYuzde } from '../src/lib/cografya/izohips.js'
@@ -24,7 +27,7 @@ bolum('1) Müfredat ve veri sözleşmeleri')
 const kayitlar = Object.values(ETKILESIM_REGISTRY)
 dogrula('10 TYT ana konusu var', TYT_KONULARI.length === 10, TYT_KONULARI.length)
 dogrula('13 atlas bölgesi var', BOLGELER.length === 13, BOLGELER.length)
-dogrula('20 ana etkileşim kayıtlı', kayitlar.length === 20, kayitlar.length)
+dogrula('21 ana etkileşim kayıtlı', kayitlar.length === 21, kayitlar.length)
 dogrula('etkileşim kimlikleri benzersiz', new Set(kayitlar.map((x) => x.id)).size === kayitlar.length)
 dogrula('her etkileşim gerçek bir bölgeye bağlı', kayitlar.every((x) => BOLGELER.some((b) => b.kod === x.bolge)))
 dogrula('her etkileşim transfer ve motor kimliği taşıyor', kayitlar.every((x) => x.transferGoreviId && x.motorId))
@@ -33,6 +36,16 @@ dogrula('14 kavram yanılgısı benzersiz', YANILGILAR.length === 14 && new Set(
 const alanlar = ['id','x','y','region','title','summary','significance','result','examTip']
 dogrula('harita noktaları tam veri sözleşmesine uyuyor', MERCEK_NOKTALARI.length >= 5 && MERCEK_NOKTALARI.every((n) => alanlar.every((a) => n[a] !== undefined)))
 dogrula('harita koordinatları normalize aralıkta', MERCEK_NOKTALARI.every((n) => n.x >= 0 && n.x <= 100 && n.y >= 0 && n.y <= 100))
+dogrula('MEB modeli 28 resmî üniteyi kapsıyor', MEB_COGRAFYA_2026.length === 28, MEB_COGRAFYA_2026.length)
+dogrula('MEB modeli 73 benzersiz öğrenme çıktısı taşıyor', MEB_CIKTILARI.length === 73 && new Set(MEB_CIKTILARI.map((x) => x.id)).size === 73, MEB_CIKTILARI.length)
+dogrula('sınıf çıktı sayıları 18/17/19/19', [9,10,11,12].map((sinif) => MEB_CIKTILARI.filter((x) => x.sinif === sinif).length).join('/') === '18/17/19/19')
+dogrula('her MEB çıktısı öğrenme zincirini taşıyor', MEB_CIKTILARI.every((x) => x.gorselTemsil && x.etkilesim && x.uygulamaSorusu && x.olcmeKaniti))
+dogrula('müfredat özeti veriyle tutarlı', MUFREDAT_OZETI.ciktiSayisi === MEB_CIKTILARI.length && MUFREDAT_OZETI.uniteSayisi === MEB_COGRAFYA_2026.length)
+dogrula('TYT kampı varsayılan 5 sorudur', TYT_AYARLARI.soruSayisi === 5, TYT_AYARLARI.soruSayisi)
+dogrula('TYT kapsam matrisi 23 konudur', TYT_KAPSAM_MATRISI.length === 23, TYT_KAPSAM_MATRISI.length)
+dogrula('TYT soruları ipucu, yanılgı ve ayrı transfer taşır', TYT_SORU_BANKASI.length >= 5 && TYT_SORU_BANKASI.every((x) => x.ipucu && x.yanilgi && x.transfer?.soru && x.transfer?.aciklama))
+dogrula('kaynak kataloğunda kullanılan ve aday statüleri ayrıdır', Object.values(KAYNAKLAR).some((x) => x.durum === 'kullaniliyor') && Object.values(KAYNAKLAR).some((x) => x.durum === 'aday'))
+dogrula('AFAD tehlike kaydı risk olmadığını açıklar', KAYNAKLAR['afad-deprem-tehlike'].sinirlar.includes('risk haritası değildir'))
 
 bolum('2) Saf hesap motorları')
 dogrula('15° doğu yerel saati 60 dakika ilerletir', yerelSaatFarki(30,45).isaretliDakika === 60)
@@ -85,6 +98,10 @@ dogrula('bolgeSahnesi bilinmeyen kodda da çalışır', Boolean(bolgeSahnesi('ol
 const elleYazilanKunye = dosyalar.filter((p) => p.includes('/bolgeler/')).filter((p) => /<BolgeBasligi[^/]*(baslik=|renk=)/.test(fs.readFileSync(p, 'utf8'))).map((p) => path.basename(p))
 dogrula('bölge künyesi ad ve rengi elle yazmıyor', elleYazilanKunye.length === 0, elleYazilanKunye.join(', '))
 dogrula('her bölgenin sınav künyesi var', BOLGELER.every((b) => b.sinavNotu?.siklik && b.sinavNotu?.tarz && b.ozet))
+const imagegenDosyalari = Object.values(IMAGEGEN_VARLIKLARI).map((varlik) => path.join(root, 'public', varlik.src.replace(/^\//, '')))
+dogrula('ImageGen varlıklarının dosyaları mevcut', imagegenDosyalari.every((p) => fs.existsSync(p)), imagegenDosyalari.filter((p) => !fs.existsSync(p)).join(', '))
+dogrula('ImageGen varlıkları öğretim modeli sınırını taşıyor', Object.values(IMAGEGEN_VARLIKLARI).every((varlik) => varlik.statu && varlik.sinir && varlik.odaklar?.length >= 3))
+dogrula('Harita Bilgisi ve Yerküre katmanları özgün zeminlere bağlı', Boolean(BOLGE_SAHNELERI['harita-bilgisi'].gorselKatmanlari?.kesit && BOLGE_SAHNELERI.yerkure.gorselKatmanlari?.asinim))
 
 console.log(`\n${'─'.repeat(62)}`)
 if (!hatalar.length) { console.log(`✅ Coğrafya Atlası denetimleri geçti (${gecen} kontrol).`); process.exit(0) }

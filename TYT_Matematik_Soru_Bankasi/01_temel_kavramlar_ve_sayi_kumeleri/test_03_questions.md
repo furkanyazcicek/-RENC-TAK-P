@@ -10,9 +10,7 @@
 
 `K01-T03-Q01`
 
-$$(-2)^4-(-2^4)$$
-
-işleminin sonucu kaçtır?
+$$(-2)^4-(-2^4)$$ işleminin sonucu kaçtır?
 
 A) $-32$
 
@@ -44,9 +42,7 @@ E) $a+b$
 
 `K01-T03-Q03`
 
-Ardışık üç tek tam sayının toplamı 69'dur.
-
-Buna göre ortanca sayı kaçtır?
+Ardışık üç tek tam sayının toplamı 69'dur. Buna göre ortanca sayı kaçtır?
 
 A) $19$
 
@@ -78,9 +74,7 @@ E) $(a+b)^2$
 
 `K01-T03-Q05`
 
-$$u=\sqrt8,\qquad v=2,8,\qquad w=\frac{17}{6}$$
-
-olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
+$$u=\sqrt8,\qquad v=2,8,\qquad w=\frac{17}{6}$$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
 
 A) $v<u<w$
 
@@ -96,9 +90,7 @@ E) $u<w<v$
 
 `K01-T03-Q06`
 
-$$4(2+7)=4\cdot2+4\cdot7$$
-
-eşitliği çarpma işleminin hangi özelliğine örnektir?
+$$4(2+7)=4\cdot2+4\cdot7$$ eşitliği çarpma işleminin hangi özelliğine örnektir?
 
 A) Değişme
 
@@ -146,9 +138,7 @@ E) $r-r+t-t$
 
 `K01-T03-Q09`
 
-Sıfırdan farklı bir gerçek sayının çarpmaya göre tersi, aynı sayının toplamaya göre tersine eşittir.
-
-Bu koşulu sağlayan gerçek sayı için aşağıdakilerden hangisi doğrudur?
+Sıfırdan farklı bir gerçek sayının çarpmaya göre tersi, aynı sayının toplamaya göre tersine eşittir. Bu koşulu sağlayan gerçek sayı için aşağıdakilerden hangisi doğrudur?
 
 A) Yalnız $1$'dir.
 
@@ -164,9 +154,7 @@ E) Böyle bir gerçek sayı yoktur.
 
 `K01-T03-Q10`
 
-$$-\frac{11}{5}<n<\frac{11}{5}$$
-
-eşitsizliğini sağlayan kaç farklı tam sayı $n$ vardır?
+$$-\frac{11}{5}<n<\frac{11}{5}$$ eşitsizliğini sağlayan kaç farklı tam sayı $n$ vardır?
 
 A) $5$
 

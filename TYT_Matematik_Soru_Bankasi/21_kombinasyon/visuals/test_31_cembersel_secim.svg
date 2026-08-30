@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="440" viewBox="0 0 760 440" role="img" aria-labelledby="title desc">
+  <title id="title">Sekiz noktalı çemberde yan yana olmayan dört nokta</title>
+  <desc id="desc">Çember üzerindeki sekiz noktadan dönüşümlü olarak seçilen dört nokta mor renkle vurgulanmıştır.</desc>
+  <rect width="760" height="440" rx="24" fill="#f8fafc"/>
+  <circle cx="380" cy="220" r="160" fill="none" stroke="#64748b" stroke-width="4"/>
+  <g fill="#334155" stroke="#ffffff" stroke-width="3">
+    <circle cx="380" cy="60" r="11"/><circle cx="493" cy="107" r="11"/><circle cx="540" cy="220" r="11"/><circle cx="493" cy="333" r="11"/>
+    <circle cx="380" cy="380" r="11"/><circle cx="267" cy="333" r="11"/><circle cx="220" cy="220" r="11"/><circle cx="267" cy="107" r="11"/>
+  </g>
+  <g fill="#7c3aed" stroke="#ffffff" stroke-width="3">
+    <circle cx="380" cy="60" r="13"/><circle cx="540" cy="220" r="13"/><circle cx="380" cy="380" r="13"/><circle cx="220" cy="220" r="13"/>
+  </g>
+</svg>

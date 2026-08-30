@@ -10,7 +10,7 @@
 
 `K02-T10-Q01`
 
-$604$ sayısının rakamları toplamı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $604$ sayısının rakamları toplamı kaçtır?
 
 A) $10$
 
@@ -90,7 +90,7 @@ E) $124$
 
 `K02-T10-Q06`
 
-3, 0 ve 8 rakamları birer kez kullanılarak yazılabilecek en küçük üç basamaklı sayı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: 3, 0 ve 8 rakamları birer kez kullanılarak yazılabilecek en küçük üç basamaklı sayı kaçtır?
 
 A) $038$
 
@@ -106,7 +106,7 @@ E) $830$
 
 `K02-T10-Q07`
 
-1, 2, 5 ve 8 rakamları birer kez kullanılarak yazılabilecek en büyük çift sayı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: 1, 2, 5 ve 8 rakamları birer kez kullanılarak yazılabilecek en büyük çift sayı kaçtır?
 
 A) $8521$
 

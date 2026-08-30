@@ -58,9 +58,7 @@ E) $\dfrac32$
 
 `K01-T12-Q04`
 
-$$a=\sqrt{11},\qquad b=\frac{10}{3},\qquad c=3,4$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $$a=\sqrt{11},\qquad b=\frac{10}{3},\qquad c=3,4$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $b<a<c$
 
@@ -76,9 +74,7 @@ E) $b<c<a$
 
 `K01-T12-Q05`
 
-Sayı doğrusunda $x=-\dfrac74$ ve $y=\dfrac12$ noktaları veriliyor.
-
-Buna göre $y-x$ kaçtır?
+Sayı doğrusunda $x=-\dfrac74$ ve $y=\dfrac12$ noktaları veriliyor. Buna göre $y-x$ kaçtır?
 
 A) $\dfrac54$
 
@@ -94,9 +90,7 @@ E) $\dfrac{11}{4}$
 
 `K01-T12-Q06`
 
-$$x=0,3333\ldots\qquad\text{ve}\qquad y=\frac13$$
-
-olduğuna göre aşağıdaki ilişkilerden hangisi doğrudur?
+$$x=0,3333\ldots\qquad\text{ve}\qquad y=\frac13$$ olduğuna göre aşağıdaki ilişkilerden hangisi doğrudur?
 
 A) $x<y$
 
@@ -112,9 +106,7 @@ E) $xy=1$
 
 `K01-T12-Q07`
 
-$$\sqrt8<n<\sqrt{50}$$
-
-eşitsizliğini sağlayan kaç farklı tam sayı $n$ vardır?
+$$\sqrt8<n<\sqrt{50}$$ eşitsizliğini sağlayan kaç farklı tam sayı $n$ vardır?
 
 A) $4$
 
@@ -130,9 +122,7 @@ E) $8$
 
 `K01-T12-Q08`
 
-$$a=-\frac12,\qquad b=-\sqrt{0,3},\qquad c=-0,55$$
-
-olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
+$$a=-\frac12,\qquad b=-\sqrt{0,3},\qquad c=-0,55$$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
 
 A) $a<b<c$
 
@@ -164,13 +154,7 @@ E) $\dfrac{19}{24}$
 
 `K01-T12-Q10`
 
-I. Her tam sayı rasyonel sayıdır.
-
-II. Her irrasyonel sayı gerçek sayıdır.
-
-III. İki rasyonel sayı arasında yalnız rasyonel sayılar bulunur.
-
-Yukarıdaki ifadelerden hangileri doğrudur?
+I. Her tam sayı rasyonel sayıdır. II. Her irrasyonel sayı gerçek sayıdır. III. İki rasyonel sayı arasında yalnız rasyonel sayılar bulunur. Yukarıdaki ifadelerden hangileri doğrudur?
 
 A) Yalnız I
 

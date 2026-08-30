@@ -10,11 +10,7 @@
 
 `K02-T31-Q01`
 
-Aşağıdaki işlemler soldan sağa uygulanıyor.
-
-![Sayı dönüştürme adımları](visuals/test_31_kod_akisi.svg)
-
-Elde edilen sonuç kaçtır?
+![Sayı dönüştürme adımları](visuals/test_31_kod_akisi.svg) Elde edilen sonuç kaçtır?
 
 A) $743$
 
@@ -158,7 +154,7 @@ E) $102$
 
 `K02-T31-Q10`
 
-731 sayısının rakamları ters çevriliyor, ardından elde edilen sayıdan 100 çıkarılıyor. Sonuç kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: Sonuç kaçtır?
 
 A) $31$
 

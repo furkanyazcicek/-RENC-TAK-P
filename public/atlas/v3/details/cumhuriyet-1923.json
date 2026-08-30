@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "schemaVersion": 3,
+    "kind": "historical-detail-slice",
+    "sliceId": "cumhuriyet-1923",
+    "sliceYear": 1923,
+    "title": "1923 Cumhuriyet'in ilanı kanıt dilimi",
+    "publicationStatus": "reviewed-slice",
+    "scopeNote": "Bu paket Ankara'daki olay yerini sunar. Mevcut 1930 genel kaynak poligonu 1923 sınır kanıtı olarak yeniden adlandırılmaz.",
+    "validFrom": 1923,
+    "validTo": 1924,
+    "sourceIds": [
+      "tbmm-cumhuriyet-1923",
+      "wikidata-cc0"
+    ],
+    "geometryPolicy": "Ayrıntı dilimleri siyasi sınır üretmez. Her geometri kendi yöntem, kesinlik, kapsam ve uyarı alanını taşır.",
+    "coverage": {
+      "administrative": "not-published",
+      "settlements": "1 kaynaklı yer/merkez",
+      "events": "1 kaynaklı olay",
+      "routes": "not-published"
+    },
+    "sources": [
+      {
+        "id": "tbmm-cumhuriyet-1923",
+        "title": "1924 Teşkilât-ı Esasiye Kanunu — genel bilgiler",
+        "creatorOrInstitution": "Türkiye Büyük Millet Meclisi",
+        "publicationDate": null,
+        "representedYears": "1923–1924; özellikle 29 Ekim 1923",
+        "url": "https://www.tbmm.gov.tr/anayasa/yirmi-dort-teskilati-esasiye-kanunu",
+        "accessedAt": "2026-08-27",
+        "referenceLocation": "29 Ekim 1923 tarihli 364 sayılı Kanun açıklaması",
+        "geographicCoverage": "Ankara / Türkiye",
+        "scaleOrResolution": "Kurumsal ve anayasal olay bağlamı",
+        "sourceType": "official-reference",
+        "license": {
+          "name": "Resmî kurum başvuru kaynağı",
+          "url": "https://www.tbmm.gov.tr/",
+          "status": "reference-only",
+          "commercialUse": null,
+          "redistribution": "not-used",
+          "notes": "Yalnız olgusal kanıt ve bağlantı kaydı kullanılır."
+        },
+        "useStatus": "reference-only",
+        "geometryEligible": false,
+        "proves": "29 Ekim 1923'te 364 sayılı Kanunla yönetim şeklinin cumhuriyet olarak ilan edildiğini destekler.",
+        "limitations": "1923 siyasî sınır geometrisi sağlamaz.",
+        "confidence": "high"
+      },
+      {
+        "id": "wikidata-cc0",
+        "title": "Wikidata koordinat kayıtları",
+        "creatorOrInstitution": "Wikimedia Foundation ve Wikidata katkıcıları",
+        "publicationDate": null,
+        "representedYears": "Kayıt bazında",
+        "url": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+        "accessedAt": "2026-08-27",
+        "referenceLocation": "Feature içindeki sourceEntityId",
+        "geographicCoverage": "Küresel",
+        "scaleOrResolution": "Nokta kaydına göre değişir",
+        "sourceType": "external-vector-point",
+        "license": {
+          "name": "CC0 1.0",
+          "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+          "status": "open",
+          "commercialUse": true,
+          "redistribution": "allowed",
+          "notes": "Her noktanın tarihsel yorum ve sürekliliği ayrı akademik kaynak gerektirir."
+        },
+        "useStatus": "production",
+        "geometryEligible": true,
+        "proves": "Yerleşim veya olay kaydının WGS84 nokta konumunu sağlar; siyasî sınır kanıtı değildir.",
+        "limitations": "Topluluk üretimidir; tarihsel kimlik ve tarihlendirme tek başına bu kaynağa bırakılamaz.",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "administrativeRegions": {
+    "type": "FeatureCollection",
+    "features": []
+  },
+  "settlements": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "id": "settlement:birinci-meclis-ankara",
+        "properties": {
+          "id": "settlement:birinci-meclis-ankara",
+          "nameTr": "Birinci Türkiye Büyük Millet Meclisi Binası",
+          "sourceName": "War of Independence Museum",
+          "validFrom": 1920,
+          "validTo": 1925,
+          "type": "settlement",
+          "subtype": "parliament-building",
+          "importance": 3,
+          "minZoom": 4,
+          "sourceIds": [
+            "tbmm-cumhuriyet-1923",
+            "wikidata-cc0"
+          ],
+          "sourceEntityId": "Q7968654",
+          "geometryMethod": "external-cc0-point-with-official-reference",
+          "confidence": "high",
+          "boundaryCertainty": "not-applicable-point",
+          "coverageStatus": "mapped-point-only",
+          "reviewStatus": "reviewed",
+          "summary": "Cumhuriyet'in ilanına ilişkin anayasa değişikliğinin kabul edildiği Birinci Meclis binası.",
+          "warning": "Yapı noktasıdır; Ankara kent sınırı veya Türkiye'nin 1923 siyasî sınırı değildir."
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            32.854002,
+            39.941956
+          ]
+        }
+      }
+    ]
+  },
+  "events": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "id": "event:cumhuriyet-ilani-1923",
+        "properties": {
+          "id": "event:cumhuriyet-ilani-1923",
+          "nameTr": "Cumhuriyet'in İlanı",
+          "sourceName": "Proclamation of the Republic of Turkey",
+          "validFrom": 1923,
+          "validTo": 1924,
+          "type": "event",
+          "subtype": "constitutional-change",
+          "importance": 3,
+          "minZoom": 3.2,
+          "sourceIds": [
+            "tbmm-cumhuriyet-1923",
+            "wikidata-cc0"
+          ],
+          "relatedEntityIds": [
+            "settlement:birinci-meclis-ankara"
+          ],
+          "geometryMethod": "official-event-at-external-cc0-building-point",
+          "confidence": "high",
+          "boundaryCertainty": "not-applicable-point",
+          "coverageStatus": "mapped-point-only",
+          "reviewStatus": "reviewed",
+          "eventDate": {
+            "from": "1923-10-29",
+            "to": "1923-10-29",
+            "precision": "day"
+          },
+          "summary": "29 Ekim 1923 tarihli 364 sayılı Kanunla devletin yönetim şekli cumhuriyet olarak ilan edildi.",
+          "warning": "Olay noktasıdır; 1923 sınır poligonu değildir."
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            32.854002,
+            39.941956
+          ]
+        }
+      }
+    ]
+  },
+  "routes": {
+    "type": "FeatureCollection",
+    "features": []
+  }
+}

@@ -10,7 +10,7 @@
 
 `K02-T06-Q01`
 
-Onlar basamağı 4, birler basamağı 7 olan iki basamaklı sayı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: Onlar basamağı 4, birler basamağı 7 olan iki basamaklı sayı kaçtır?
 
 A) $74$
 
@@ -154,7 +154,7 @@ E) $20$
 
 `K02-T06-Q10`
 
-$407$ sayısının rakamları toplamı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $407$ sayısının rakamları toplamı kaçtır?
 
 A) $7$
 

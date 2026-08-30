@@ -1,44 +1,44 @@
+/**
+ * Coğrafya Atlası kaynak kayıt defteri.
+ *
+ * `durum: kullaniliyor` yalnız üründe gerçekten kullanılan veri/çerçeve için
+ * verilir. `aday` kayıtlar lisans, çözünürlük ve indirme yöntemi doğrulanmadan
+ * üretim verisi sayılmaz.
+ */
+
+const kaynak = ({
+  sourceId, ad, kurum, tur, url = null, erisim = '2026-08-29', donem = 'güncel değil / açıklamada belirtilir',
+  mekansalCozunurluk = 'uygulanamaz', guncelleme = 'kaynak yayımlandıkça', lisans, birim = 'uygulanamaz',
+  sozluk = 'kaynakla birlikte', yontem, guven = 'yüksek', sinirlar, moduller = [], durum = 'aday',
+}) => ({
+  sourceId, ad, kurum, tur, url, erisim, donem, mekansalCozunurluk, guncelleme,
+  lisans, birim, sozluk, yontem, guven, sinirlar, moduller, durum,
+  // ModulKabugu ile geriye dönük alan.
+  not: sinirlar,
+})
+
 export const KAYNAKLAR = {
-  'drkoc-mufredat': {
-    ad: 'Dr. Koç TYT Coğrafya konu sırası',
-    tur: 'proje-içi',
-    url: 'supabase/seed_library_curriculum_v2.sql',
-    erisim: '2026-08-25',
-    lisans: 'Proje içi içerik',
-    not: 'Atlas bölge sırası bu kayıtla aynıdır.',
-  },
-  'meb-2026': {
-    ad: 'MEB 2026 Coğrafya Dersi Öğretim Programı',
-    tur: 'resmî-program',
-    url: 'https://tymm.meb.gov.tr/assets/pdf/cografya-dersi_20260819_142604_415.pdf',
-    erisim: '2026-08-25',
-    lisans: 'T.C. Millî Eğitim Bakanlığı',
-    not: 'TYMM ünite ve beceri eşlemesi için kullanılır.',
-  },
-  'osym-2026': {
-    ad: '2026 TYT Temel Soru Kitapçığı',
-    tur: 'resmî-sınav',
-    url: 'https://www.osym.gov.tr/2026yks-tyt-ayt-ve-ydt-temel-soru-kitapciklari-ve-cevap-anahtarlari',
-    erisim: '2026-08-25',
-    lisans: 'ÖSYM — soru metinleri kopyalanmaz',
-    not: 'Yalnızca harita, grafik ve kanıt yorumlama beceri deseni referans alınır.',
-  },
-  'world-atlas': {
-    ad: 'Natural Earth tabanlı world-atlas',
-    tur: 'yerel-topojson',
-    url: 'https://www.npmjs.com/package/world-atlas',
-    erisim: '2026-08-25',
-    lisans: 'Public domain kaynaklı veri',
-    not: 'Küresel bağlam için genelleştirilmiş kıyı çizgileri.',
-  },
-  'sematik-model': {
-    ad: 'Dr. Koç şematik coğrafya modelleri',
-    tur: 'öğretim-modeli',
-    url: null,
-    erisim: '2026-08-25',
-    lisans: 'Proje içi içerik',
-    not: 'Mesafe, sınır, yükseklik ve açılar gerçek ölçek iddiası taşımaz.',
-  },
+  'drkoc-mufredat': kaynak({ sourceId: 'drkoc-mufredat', ad: 'Dr. Koç TYT Coğrafya konu sırası', kurum: 'DRKOÇ', tur: 'proje-içi', url: 'supabase/seed_library_curriculum_v2.sql', lisans: 'Proje içi içerik', yontem: 'Konu sırası ve atlas bölgesi eşlemesi', sinirlar: 'Resmî program yerine geçmez; ürün içi gezinme omurgasıdır.', moduller: ['tümü'], durum: 'kullaniliyor' }),
+  'meb-cografya-2026': kaynak({ sourceId: 'meb-cografya-2026', ad: '2026 Coğrafya Dersi Öğretim Programı', kurum: 'T.C. Millî Eğitim Bakanlığı', tur: 'resmî-program', url: 'https://mufredat.meb.gov.tr/Dosyalar/2026518151120283-cogd%C3%B6p.pdf', donem: '2026 öğretim programı', lisans: 'T.C. Millî Eğitim Bakanlığı; atıf amacıyla', yontem: 'Ünite ve öğrenme çıktıları resmî programdan elle doğrulandı; 9–12 sınıfları için 73 çıktı kodlandı.', sinirlar: 'Program çıktısıdır; ölçme örnekleri öğrenci düzeyine göre özgünleştirilir.', moduller: ['müfredat', 'tümü'], durum: 'kullaniliyor' }),
+  // Eski kimlik mevcut modülleri kırmamak için aynı kayda yönlenir.
+  'meb-2026': kaynak({ sourceId: 'meb-2026', ad: '2026 Coğrafya Dersi Öğretim Programı', kurum: 'T.C. Millî Eğitim Bakanlığı', tur: 'resmî-program', url: 'https://mufredat.meb.gov.tr/Dosyalar/2026518151120283-cogd%C3%B6p.pdf', donem: '2026 öğretim programı', lisans: 'T.C. Millî Eğitim Bakanlığı; atıf amacıyla', yontem: 'Öğrenme çıktısı ve süreç bileşeni eşlemesi', sinirlar: 'Programın güncel sürümü yayımlandığında yeniden doğrulanmalıdır.', moduller: ['tümü'], durum: 'kullaniliyor' }),
+  'osym-2026-tyt': kaynak({ sourceId: 'osym-2026-tyt', ad: '2026 TYT Temel Soru Kitapçığı ve Cevap Anahtarı', kurum: 'ÖSYM', tur: 'resmî-sınav', url: 'https://www.osym.gov.tr/2026yks-tyt-ayt-ve-ydt-temel-soru-kitapciklari-ve-cevap-anahtarlari', donem: '2026 YKS', lisans: 'ÖSYM telifli; soru metinleri kopyalanmaz', yontem: 'Yalnız soru sayısı ve beceri deseni incelenir; DRKOÇ soruları özgün yazılır.', sinirlar: 'Tek bir yıl konu sıklığı için genellenemez; soru metinleri yeniden yayımlanamaz.', moduller: ['kamp', 'tyt-matris'], durum: 'kullaniliyor' }),
+  'osym-2026': kaynak({ sourceId: 'osym-2026', ad: '2026 TYT Temel Soru Kitapçığı', kurum: 'ÖSYM', tur: 'resmî-sınav', url: 'https://www.osym.gov.tr/2026yks-tyt-ayt-ve-ydt-temel-soru-kitapciklari-ve-cevap-anahtarlari', donem: '2026 YKS', lisans: 'ÖSYM telifli; soru metinleri kopyalanmaz', yontem: 'Harita, grafik ve kanıt yorumlama beceri deseni', sinirlar: 'Soruların tamamı özgün DRKOÇ içeriğidir.', moduller: ['kamp'], durum: 'kullaniliyor' }),
+  'mgm-iklim': kaynak({ sourceId: 'mgm-iklim', ad: 'İl ve İlçeler İstatistikleri', kurum: 'Meteoroloji Genel Müdürlüğü', tur: 'resmî-istatistik', url: 'https://www.mgm.gov.tr/Veridegerlendirme/il-ve-ilceler-istatistik.aspx?k=D', donem: 'istasyon normalleri; istasyona göre değişir', mekansalCozunurluk: 'meteoroloji istasyonu', lisans: 'Kurum kullanım koşulları doğrulanmalı', birim: '°C, mm, gün', yontem: 'İstasyon serisi ve dönem bilgisi korunarak klimografa dönüştürme', sinirlar: 'İstasyon verisi bütün ili temsil etmez; dönemler karıştırılmaz.', moduller: ['iklim'] }),
+  'tuik-nufus': kaynak({ sourceId: 'tuik-nufus', ad: 'Adrese Dayalı Nüfus Kayıt Sistemi', kurum: 'TÜİK', tur: 'resmî-istatistik', url: 'https://data.tuik.gov.tr/', donem: 'yıllık', mekansalCozunurluk: 'il/ilçe', guncelleme: 'yıllık', lisans: 'TÜİK kullanım koşulları', birim: 'kişi, oran', yontem: 'Yıl, idarî birim ve gösterge kimliğiyle sürümlü tablo', sinirlar: 'İdarî sınır değişiklikleri zaman serisi karşılaştırmasını etkileyebilir.', moduller: ['nufus', 'yerlesme'] }),
+  'afad-deprem-tehlike': kaynak({ sourceId: 'afad-deprem-tehlike', ad: 'Türkiye Deprem Tehlike Haritası', kurum: 'AFAD', tur: 'resmî-tehlike', url: 'https://tdth.afad.gov.tr/TDTH/', donem: '2018 yürürlük / güncel servis', mekansalCozunurluk: 'koordinata bağlı tehlike değeri', lisans: 'AFAD kullanım koşulları', birim: 'yer ivmesi parametreleri', yontem: 'Tehlike katmanı yalnız açıklayıcı bağlamda; risk bileşenlerinden ayrı gösterilir.', sinirlar: 'Bu bir risk haritası değildir; bina, nüfus ve hazırlık verisi içermez.', moduller: ['afet'] }),
+  'mta-aktif-fay': kaynak({ sourceId: 'mta-aktif-fay', ad: 'Türkiye Diri Fay Haritası', kurum: 'Maden Tetkik ve Arama Genel Müdürlüğü', tur: 'resmî-jeoloji', url: 'https://tdfh.mta.gov.tr/', donem: '2026 yayımlanan sürüm', mekansalCozunurluk: 'fay segmenti', lisans: 'MTA kullanım koşulları', birim: 'çizgisel jeometri', yontem: 'Kaynak sürümü ve genelleştirme düzeyi korunarak görselleştirme', sinirlar: 'Faya yakınlık tek başına deprem riski veya oluş zamanı göstermez.', moduller: ['yerkure', 'afet'] }),
+  'dsi-su': kaynak({ sourceId: 'dsi-su', ad: 'Su kaynakları ve havza verileri', kurum: 'Devlet Su İşleri', tur: 'resmî-hidroloji', url: 'https://www.dsi.gov.tr/', mekansalCozunurluk: 'havza/istasyon', lisans: 'Veri setine göre doğrulanmalı', birim: 'm³/s, hm³', yontem: 'İstasyon ve ölçüm dönemiyle birlikte sürümlü kullanım', sinirlar: 'Model verisi ile ölçüm verisi birbirine karıştırılmaz.', moduller: ['yasam-kusaklari'] }),
+  'tarim-arazi': kaynak({ sourceId: 'tarim-arazi', ad: 'Tarım ve arazi kullanımı göstergeleri', kurum: 'Tarım ve Orman Bakanlığı', tur: 'resmî-arazi', url: 'https://www.tarimorman.gov.tr/', mekansalCozunurluk: 'veri setine göre il/parsel', lisans: 'Veri setine göre doğrulanmalı', birim: 'ha, ton', yontem: 'Gösterge sözlüğü ve yıl bilgisiyle tematik katman', sinirlar: 'Parsel düzeyi veri açık değilse il düzeyi genelleme olarak sunulur.', moduller: ['ekonomi'] }),
+  'copernicus-land': kaynak({ sourceId: 'copernicus-land', ad: 'Copernicus Land Monitoring Service', kurum: 'Avrupa Birliği / Copernicus', tur: 'açık-uydu', url: 'https://land.copernicus.eu/', donem: 'ürüne göre', mekansalCozunurluk: 'ürüne göre 10 m–1 km', lisans: 'Copernicus free and open data policy', birim: 'sınıf/raster değer', yontem: 'Ürün kimliği, tarih ve çözünürlükle deterministik yeniden örnekleme', sinirlar: 'Arazi örtüsü sınıfı doğrudan arazi kullanımı niyetini göstermez.', moduller: ['yasam-kusaklari', 'ekonomi', 'afet'] }),
+  'nasa-earthdata': kaynak({ sourceId: 'nasa-earthdata', ad: 'NASA Earthdata', kurum: 'NASA', tur: 'açık-uydu', url: 'https://earthdata.nasa.gov/', donem: 'ürüne göre', mekansalCozunurluk: 'ürüne göre', lisans: 'NASA Earthdata veri politikasına göre', birim: 'ürüne göre', yontem: 'Ürün, sürüm, tarih aralığı ve işleme zinciri kaydedilir.', sinirlar: 'Uzaktan algılama ürünü ölçüm belirsizliği ve bulut etkisi taşıyabilir.', moduller: ['iklim', 'yasam-kusaklari', 'afet'] }),
+  'natural-earth': kaynak({ sourceId: 'natural-earth', ad: 'Natural Earth', kurum: 'Natural Earth', tur: 'açık-vektör', url: 'https://www.naturalearthdata.com/', donem: 'sürümle birlikte', mekansalCozunurluk: '1:10m / 1:50m / 1:110m', lisans: 'Public domain', birim: 'vektör geometri', yontem: 'Sürüm ve ölçek seçilerek sadeleştirilmiş bağlam haritası', sinirlar: 'Küçük ölçekli genelleştirme idarî veya kıyı ayrıntısı kanıtı değildir.', moduller: ['harita-bilgisi', 'konum'], durum: 'kullaniliyor' }),
+  'world-atlas': kaynak({ sourceId: 'world-atlas', ad: 'Natural Earth tabanlı world-atlas', kurum: 'world-atlas / Natural Earth', tur: 'yerel-topojson', url: 'https://www.npmjs.com/package/world-atlas', donem: 'paket sürümü', mekansalCozunurluk: 'genelleştirilmiş dünya', lisans: 'Public domain kaynaklı veri', birim: 'TopoJSON geometri', yontem: 'Küresel bağlam için istemci tarafında projeksiyon', sinirlar: 'Genelleştirilmiş kıyı çizgileri yerel ölçekte kullanılmaz.', moduller: ['konum', 'harita-bilgisi'], durum: 'kullaniliyor' }),
+  'worldbank-un': kaynak({ sourceId: 'worldbank-un', ad: 'Küresel kalkınma ve nüfus göstergeleri', kurum: 'World Bank / United Nations', tur: 'açık-istatistik', url: 'https://data.worldbank.org/', donem: 'göstergeye göre yıllık', mekansalCozunurluk: 'ülke/bölge', guncelleme: 'göstergeye göre', lisans: 'CC BY 4.0 veya gösterge koşulu', birim: 'göstergeye göre', yontem: 'Gösterge kodu ve yıl aralığıyla sürümlü veri', sinirlar: 'Ülke ortalaması ülke içi eşitsizliği göstermez.', moduller: ['nufus', 'ekonomi'] }),
+  'fao-unesco': kaynak({ sourceId: 'fao-unesco', ad: 'Tarım, gıda ve miras veri kümeleri', kurum: 'FAO / UNESCO', tur: 'uluslararası-açık-veri', url: 'https://www.fao.org/faostat/', donem: 'veri setine göre', mekansalCozunurluk: 'ülke/alan', lisans: 'Veri setine göre açık lisans', birim: 'göstergeye göre', yontem: 'Kaynak kurum, gösterge, yıl ve revizyonla eşleme', sinirlar: 'Farklı kurumların sınıflandırmaları doğrudan birleştirilmez.', moduller: ['ekonomi', 'yerlesme'] }),
+  'osm': kaynak({ sourceId: 'osm', ad: 'OpenStreetMap', kurum: 'OpenStreetMap katkıcıları', tur: 'açık-vektör', url: 'https://www.openstreetmap.org/copyright', donem: 'anlık döküm tarihi', mekansalCozunurluk: 'nesne düzeyi; bölgeye göre değişir', guncelleme: 'sürekli', lisans: 'ODbL 1.0; gerekli atıf ve paylaşımlı veri koşulları', birim: 'vektör nesne', yontem: 'Kesit tarihi ve kullanılan etiketler kayıt altına alınır.', sinirlar: 'Katkı yoğunluğu mekâna göre değişir; eksiksizlik varsayılmaz.', moduller: ['yerlesme', 'ekonomi'] }),
+  'sematik-model': kaynak({ sourceId: 'sematik-model', ad: 'DRKOÇ şematik coğrafya modelleri', kurum: 'DRKOÇ', tur: 'öğretim-modeli', lisans: 'Proje içi içerik', yontem: 'Neden–sonuç ilişkisini görünür kılan, gerçek coğrafi sınır iddiası taşımayan model', sinirlar: 'Mesafe, sınır, yükseklik ve açılar gerçek ölçek iddiası taşımaz.', moduller: ['tümü'], durum: 'kullaniliyor' }),
 }
 
 export const kaynakBul = (id) => KAYNAKLAR[id] ?? null
+export const kaynakListesi = () => Object.values(KAYNAKLAR)

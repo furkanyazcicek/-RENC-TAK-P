@@ -42,9 +42,7 @@ E) $6\sqrt2$
 
 `K01-T44-Q03`
 
-Ardışık sekiz tam sayıdan ikinci ile yedincinin toplamı 31'dir.
-
-Bu sekiz tam sayının toplamı kaçtır?
+Ardışık sekiz tam sayıdan ikinci ile yedincinin toplamı 31'dir. Bu sekiz tam sayının toplamı kaçtır?
 
 A) $120$
 
@@ -60,9 +58,7 @@ E) $136$
 
 `K01-T44-Q04`
 
-Üç ölçüm sonucu $a=\sqrt{41}-5$, $b=\dfrac75$ ve $c=1,402$ olarak kaydediliyor.
-
-Sonuçların küçükten büyüğe sıralaması hangisidir?
+Üç ölçüm sonucu $a=\sqrt{41}-5$, $b=\dfrac75$ ve $c=1,402$ olarak kaydediliyor. Sonuçların küçükten büyüğe sıralaması hangisidir?
 
 A) $b<c<a$
 
@@ -78,11 +74,7 @@ E) $c<a<b$
 
 `K01-T44-Q05`
 
-Sıfırın solundaki iki noktadan $x$, $y$'nin de solundadır. Buna göre
-
-$$\frac{x-y}{xy}$$
-
-ifadesinin işareti nedir?
+Sıfırın solundaki iki noktadan $x$, $y$'nin de solundadır. Buna göre $$\frac{x-y}{xy}$$ ifadesinin işareti nedir?
 
 A) Pozitif
 
@@ -98,7 +90,7 @@ E) Doğal sayı
 
 `K01-T44-Q06`
 
-$a$ ve $b$ tam sayılarının her biri 7 ile bölündüğünde 6 kalanını veriyor. Aşağıdakilerden hangisi 7 ile bölündüğünde yine 6 kalanını verir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $a$ ve $b$ tam sayılarının her biri 7 ile bölündüğünde 6 kalanını veriyor. Aşağıdakilerden hangisi 7 ile bölündüğünde yine 6 kalanını verir?
 
 A) $a+b$
 
@@ -114,9 +106,7 @@ E) $ab+1$
 
 `K01-T44-Q07`
 
-Bir dikdörtgen levhanın kenarları $\sqrt{15}+\sqrt7$ ve $\sqrt{15}-\sqrt7$ santimetredir.
-
-Levhanın alanı kaç santimetrekaredir?
+Bir dikdörtgen levhanın kenarları $\sqrt{15}+\sqrt7$ ve $\sqrt{15}-\sqrt7$ santimetredir. Levhanın alanı kaç santimetrekaredir?
 
 A) $8$
 
@@ -148,7 +138,7 @@ E) Negatiftir.
 
 `K01-T44-Q09`
 
-$-\sqrt{150}$ ile $4\pi$ arasında kaç tam sayı vardır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $-\sqrt{150}$ ile $4\pi$ arasında kaç tam sayı vardır?
 
 A) $23$
 
@@ -164,9 +154,7 @@ E) $27$
 
 `K01-T44-Q10`
 
-Bir öğrenci tüm gerçek sayılar için $|a+b|=|a|+|b|$ olduğunu iddia ediyor.
-
-Hangi değer çifti iddiayı çürütür?
+Bir öğrenci tüm gerçek sayılar için $|a+b|=|a|+|b|$ olduğunu iddia ediyor. Hangi değer çifti iddiayı çürütür?
 
 A) $a=2,\ b=3$
 

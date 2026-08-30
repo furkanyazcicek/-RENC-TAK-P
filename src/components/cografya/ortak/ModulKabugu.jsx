@@ -15,7 +15,16 @@ import BolgeCizimi from '../BolgeCizimi.jsx'
  * ad ve renk atlasın geri kalanıyla tutmuyordu (şeritte "Nüfus Merceği",
  * sayfada "Nüfus Laboratuvarı" gibi). Artık tek yerden okunur.
  */
-export function BolgeBasligi({ bolge, etiket, baslik, aciklama, renk, sayi }) {
+export function BolgeBasligi({
+  bolge,
+  etiket,
+  baslik,
+  aciklama,
+  renk,
+  sayi,
+  gorselSrc,
+  gorselAlt,
+}) {
   const veri = bolgeBul(bolge)
   const ad = baslik ?? veri?.ad ?? ''
   const bolgeRengi = renk ?? veri?.renk
@@ -36,8 +45,12 @@ export function BolgeBasligi({ bolge, etiket, baslik, aciklama, renk, sayi }) {
         ) : null}
       </div>
       {bolge ? (
-        <figure className="ca-kunye-cizim">
-          <BolgeCizimi kod={bolge} renk={bolgeRengi} />
+        <figure className={`ca-kunye-cizim ${gorselSrc ? 'gorselli' : ''}`}>
+          {gorselSrc ? (
+            <img src={gorselSrc} alt={gorselAlt ?? `${ad} için fotogerçekçi öğretim sahnesi`} />
+          ) : (
+            <BolgeCizimi kod={bolge} renk={bolgeRengi} />
+          )}
           <figcaption>
             {durak && durak !== '0' ? <b>{durak} etkileşimli durak</b> : <b>pekiştirme alanı</b>}
             {baslikSayisi ? <span>{baslikSayisi} müfredat başlığı</span> : null}

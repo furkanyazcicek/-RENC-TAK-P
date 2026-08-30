@@ -10,7 +10,13 @@ import { Alert, Button, Field, Input, Textarea } from './ui'
  * Modal içinde açıldığı için kendi kart çerçevesini çizmez; başlık ve kapatma
  * düğmesi Modal tarafından sağlanır.
  */
-export default function LibraryNoteForm({ topicId, onAdded }) {
+export default function LibraryNoteForm({
+  topicId,
+  subjectId,
+  topicName,
+  topicOrderIndex,
+  onAdded,
+}) {
   const { user } = useAuth()
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
@@ -25,21 +31,61 @@ export default function LibraryNoteForm({ topicId, onAdded }) {
     setSaving(true)
     setError(null)
 
+    let uploadedPath = null
+
     try {
+      let persistedTopicId = topicId
       let fileUrl = null
       let fileType = null
 
+      // Uygulama paketinde dersi bulunan fakat veritabanında henüz karşılığı
+      // olmayan konular, kütüphanede `bundled-topic-*` kimliğiyle görünür.
+      // Dosya notu kalıcı bir `library_topics.id` UUID'sine bağlanmak zorunda:
+      // öğretmen ilk notu eklediğinde mevcut kaydı bul veya konuyu bir kez oluştur.
+      if (String(topicId).startsWith('bundled-topic-')) {
+        if (!subjectId || !topicName) {
+          throw new Error('Bu konu henüz not yüklemeye hazır değil. Lütfen sayfayı yenileyip tekrar deneyin.')
+        }
+
+        const { data: existingTopic, error: lookupError } = await supabase
+          .from('library_topics')
+          .select('id')
+          .eq('subject_id', subjectId)
+          .eq('name', topicName)
+          .order('created_at', { ascending: true })
+          .limit(1)
+          .maybeSingle()
+        if (lookupError) throw lookupError
+
+        if (existingTopic?.id) {
+          persistedTopicId = existingTopic.id
+        } else {
+          const { data: createdTopic, error: createTopicError } = await supabase
+            .from('library_topics')
+            .insert({
+              subject_id: subjectId,
+              name: topicName,
+              order_index: Number.isFinite(topicOrderIndex) ? topicOrderIndex : 0,
+            })
+            .select('id')
+            .single()
+          if (createTopicError) throw createTopicError
+          persistedTopicId = createdTopic.id
+        }
+      }
+
       if (file) {
         fileType = file.type === 'application/pdf' ? 'pdf' : 'image'
-        const path = `${topicId}/${Date.now()}-${file.name}`
+        const path = `${persistedTopicId}/${Date.now()}-${file.name}`
         const { error: uploadError } = await supabase.storage.from('library-files').upload(path, file)
         if (uploadError) throw uploadError
+        uploadedPath = path
         const { data: publicUrlData } = supabase.storage.from('library-files').getPublicUrl(path)
         fileUrl = publicUrlData.publicUrl
       }
 
       const { error: insertError } = await supabase.from('library_notes').insert({
-        topic_id: topicId,
+        topic_id: persistedTopicId,
         teacher_id: user.id,
         title: title.trim(),
         content: content.trim() || null,
@@ -51,8 +97,14 @@ export default function LibraryNoteForm({ topicId, onAdded }) {
       setTitle('')
       setContent('')
       setFile(null)
-      onAdded?.()
+      onAdded?.(persistedTopicId)
     } catch (err) {
+      if (uploadedPath) {
+        const { error: cleanupError } = await supabase.storage
+          .from('library-files')
+          .remove([uploadedPath])
+        if (cleanupError) console.error('Kaydedilemeyen kütüphane dosyası temizlenemedi:', cleanupError.message)
+      }
       setError(err.message ?? 'Bir şeyler ters gitti, tekrar deneyin.')
     } finally {
       setSaving(false)

@@ -9,7 +9,7 @@
 ## Soru 1
 `K02-T47-Q01`
 
-0, 1, 4, 6 ve 9 rakamları birer kez kullanılarak 70000'den küçük en büyük tek sayı yazılıyor. Bu sayı kaçtır?
+Bir sayı tablosu okunurken, verilen bağıntıdan yararlanarak: Bu sayı kaçtır?
 
 A) $69104$  
 B) $69410$  
@@ -53,7 +53,7 @@ E) $120378$
 ## Soru 5
 `K02-T47-Q05`
 
-705 sayısından rakamları toplamı çıkarılırsa kaç elde edilir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: 705 sayısından rakamları toplamı çıkarılırsa kaç elde edilir?
 
 A) $693$  
 B) $695$  
@@ -86,7 +86,7 @@ E) $80$
 ## Soru 8
 `K02-T47-Q08`
 
-1, 2, 3 ve 4 rakamları birer kez kullanılarak 3000'den büyük kaç farklı çift sayı yazılabilir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: 1, 2, 3 ve 4 rakamları birer kez kullanılarak 3000'den büyük kaç farklı çift sayı yazılabilir?
 
 A) $4$  
 B) $6$  

@@ -42,9 +42,7 @@ E) $a=-1,\ b=2$
 
 `K01-T19-Q03`
 
-$x+y$ rasyonel ve $x-y$ irrasyonel sayıdır.
-
-Buna göre $x$ ve $y$ için hangi sonuç zorunludur?
+$x+y$ rasyonel ve $x-y$ irrasyonel sayıdır. Buna göre $x$ ve $y$ için hangi sonuç zorunludur?
 
 A) İkisi de rasyoneldir.
 
@@ -75,8 +73,6 @@ E) $m$'ye eşittir.
 ## Soru 5
 
 `K01-T19-Q05`
-
-Bir sadeleştirme panosunda rasyonel $r$ ve irrasyonel $t$ kullanılıyor.
 
 Panodaki hangi ifade, değerler ne olursa olsun rasyonel bir sonuca sadeleşir?
 
@@ -142,8 +138,6 @@ E) $\sqrt5$ ve $-\sqrt5$
 
 `K01-T19-Q09`
 
-Bir öğrenci sayı kümelerinin kapalılığıyla ilgili beş kart hazırlıyor.
-
 Kartlardan hangisinde doğru bilgi vardır?
 
 A) Sıfırdan farklı rasyonel sayılar bölme işlemine göre kapalıdır.
@@ -160,9 +154,7 @@ E) Tek tam sayılar toplama işlemine göre kapalıdır.
 
 `K01-T19-Q10`
 
-Bir öğrenci, “İki tam sayının toplamı çiftse bu sayıların ikisi de çifttir.” diyor.
-
-Hangi sayı çifti bu genellemeyi çürütür?
+Bir öğrenci, “İki tam sayının toplamı çiftse bu sayıların ikisi de çifttir.” diyor. Hangi sayı çifti bu genellemeyi çürütür?
 
 A) $2$ ve $4$
 

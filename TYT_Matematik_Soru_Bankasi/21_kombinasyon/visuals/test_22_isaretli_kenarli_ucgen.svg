@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="430" viewBox="0 0 760 430" role="img" aria-labelledby="title desc">
+  <title id="title">Bir kenarı işaretli üçgen</title>
+  <desc id="desc">Çember üzerindeki yedi noktadan seçilen üçü üçgen oluşturur ve bir kenar kırmızı renkle belirtilmiştir.</desc>
+  <rect width="760" height="430" rx="24" fill="#f8fafc"/>
+  <circle cx="380" cy="215" r="155" fill="none" stroke="#64748b" stroke-width="4"/>
+  <g stroke="#2563eb" stroke-width="5" stroke-linecap="round">
+    <line x1="380" y1="60" x2="531" y2="249"/>
+    <line x1="531" y1="249" x2="229" y2="249"/>
+  </g>
+  <line x1="229" y1="249" x2="380" y2="60" stroke="#dc2626" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#334155" stroke="#ffffff" stroke-width="3">
+    <circle cx="380" cy="60" r="11"/><circle cx="501" cy="118" r="11"/><circle cx="531" cy="249" r="11"/>
+    <circle cx="447" cy="355" r="11"/><circle cx="313" cy="355" r="11"/><circle cx="229" cy="249" r="11"/><circle cx="259" cy="118" r="11"/>
+  </g>
+</svg>

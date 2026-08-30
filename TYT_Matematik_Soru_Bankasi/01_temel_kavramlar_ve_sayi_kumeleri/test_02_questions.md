@@ -26,9 +26,7 @@ E) $\dfrac{\sqrt{12}}{2}$
 
 `K01-T02-Q02`
 
-$$-3^2+(-3)^2$$
-
-işleminin sonucu kaçtır?
+$$-3^2+(-3)^2$$ işleminin sonucu kaçtır?
 
 A) $0$
 
@@ -44,9 +42,7 @@ E) $-18$
 
 `K01-T02-Q03`
 
-$m$ ve $n$ tam sayılarının toplamı tek sayıdır.
-
-Aşağıdakilerden hangisi kesinlikle doğrudur?
+$m$ ve $n$ tam sayılarının toplamı tek sayıdır. Aşağıdakilerden hangisi kesinlikle doğrudur?
 
 A) $m$ ve $n$ çifttir.
 
@@ -62,9 +58,7 @@ E) $m$ ile $n$'den biri tek, diğeri çifttir.
 
 `K01-T02-Q04`
 
-Ardışık beş tam sayının toplamı 65'tir.
-
-Buna göre bu sayıların en büyüğü kaçtır?
+Ardışık beş tam sayının toplamı 65'tir. Buna göre bu sayıların en büyüğü kaçtır?
 
 A) $14$
 
@@ -80,11 +74,7 @@ E) $18$
 
 `K01-T02-Q05`
 
-Gerçek sayılar için
-
-$$a+(b+c)=(a+b)+c$$
-
-eşitliği toplama işleminin hangi özelliğini gösterir?
+Gerçek sayılar için $$a+(b+c)=(a+b)+c$$ eşitliği toplama işleminin hangi özelliğini gösterir?
 
 A) Değişme
 
@@ -100,9 +90,7 @@ E) Etkisiz eleman
 
 `K01-T02-Q06`
 
-$$\sqrt5<n<\sqrt{30}$$
-
-eşitsizliğini sağlayan kaç farklı tam sayı $n$ vardır?
+$$\sqrt5<n<\sqrt{30}$$ eşitsizliğini sağlayan kaç farklı tam sayı $n$ vardır?
 
 A) $1$
 
@@ -166,9 +154,7 @@ E) $\mathbb R\subset\mathbb Q\subset\mathbb Z\subset\mathbb N$
 
 `K01-T02-Q10`
 
-Arda, “İrrasyonel iki sayı çarpıldığında sonuç mutlaka irrasyonel olur.” kuralını yazıyor.
-
-Arda'nın bu kuralı genelleyemeyeceğini gösteren işlem aşağıdakilerden hangisidir?
+Arda, “İrrasyonel iki sayı çarpıldığında sonuç mutlaka irrasyonel olur.” kuralını yazıyor. Arda'nın bu kuralı genelleyemeyeceğini gösteren işlem aşağıdakilerden hangisidir?
 
 A) $\sqrt2\cdot\sqrt3=\sqrt6$
 

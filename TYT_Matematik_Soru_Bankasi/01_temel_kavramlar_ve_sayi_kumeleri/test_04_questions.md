@@ -10,11 +10,7 @@
 
 `K01-T04-Q01`
 
-Pozitif çift tam sayı $x$ ile pozitif tek tam sayı $y$ için
-
-$$2x+3y$$
-
-ifadesinin değeri hakkında hangisi kesinlikle doğrudur?
+Pozitif çift tam sayı $x$ ile pozitif tek tam sayı $y$ için $$2x+3y$$ ifadesinin değeri hakkında hangisi kesinlikle doğrudur?
 
 A) Negatif çifttir.
 
@@ -30,9 +26,7 @@ E) Pozitif tektir.
 
 `K01-T04-Q02`
 
-Ardışık altı tam sayının toplamı 75'tir.
-
-Buna göre bu sayıların en büyüğü kaçtır?
+Ardışık altı tam sayının toplamı 75'tir. Buna göre bu sayıların en büyüğü kaçtır?
 
 A) $13$
 
@@ -48,13 +42,7 @@ E) $17$
 
 `K01-T04-Q03`
 
-Gerçek sayılarda yeni bir işlem
-
-$$a\mathbin{\triangle}b=a-b+ab$$
-
-biçiminde tanımlanıyor.
-
-Buna göre $2\mathbin{\triangle}(-3)$ kaçtır?
+Gerçek sayılarda yeni bir işlem $$a\mathbin{\triangle}b=a-b+ab$$ biçiminde tanımlanıyor. Buna göre $2\mathbin{\triangle}(-3)$ kaçtır?
 
 A) $-3$
 
@@ -86,9 +74,7 @@ E) $\dfrac aa=1$
 
 `K01-T04-Q05`
 
-$$(-1)^1+(-1)^2+(-1)^3+\cdots+(-1)^{10}$$
-
-toplamı kaçtır?
+$$(-1)^1+(-1)^2+(-1)^3+\cdots+(-1)^{10}$$ toplamı kaçtır?
 
 A) $0$
 
@@ -104,9 +90,7 @@ E) $-10$
 
 `K01-T04-Q06`
 
-$$s=-0,45,\qquad t=-\frac49,\qquad u=-\sqrt{0,2}$$
-
-olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
+$$s=-0,45,\qquad t=-\frac49,\qquad u=-\sqrt{0,2}$$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
 
 A) $t<u<s$
 
@@ -122,9 +106,7 @@ E) $s<u<t$
 
 `K01-T04-Q07`
 
-İki tam sayının çarpımı tek sayıdır.
-
-Buna göre bu iki tam sayı için hangisi kesinlikle doğrudur?
+İki tam sayının çarpımı tek sayıdır. Buna göre bu iki tam sayı için hangisi kesinlikle doğrudur?
 
 A) İkisi de çifttir.
 
@@ -172,9 +154,7 @@ E) $(a-b)+(b-a)=1$
 
 `K01-T04-Q10`
 
-Ardışık iki pozitif tam sayının çarpımı 72'dir.
-
-Buna göre bu iki sayının toplamı kaçtır?
+Ardışık iki pozitif tam sayının çarpımı 72'dir. Buna göre bu iki sayının toplamı kaçtır?
 
 A) $17$
 

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="430" viewBox="0 0 720 430" role="img" aria-labelledby="title desc">
+  <title id="title">A kümesinden B kümesine fonksiyon şeması</title>
+  <desc id="desc">A kümesindeki 1 a'ya, 2 b'ye, 3 ve 4 ise c'ye gönderilmektedir.</desc>
+  <defs>
+    <marker id="mapArrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+      <path d="M0 0 L9 4.5 L0 9 Z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="718" height="428" rx="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="203" y="55" text-anchor="middle" fill="#0f172a" font-family="Arial, sans-serif" font-size="26" font-weight="700">A</text>
+  <text x="517" y="55" text-anchor="middle" fill="#0f172a" font-family="Arial, sans-serif" font-size="26" font-weight="700">B</text>
+  <ellipse cx="205" cy="235" rx="105" ry="160" fill="#eff6ff" stroke="#60a5fa" stroke-width="3"/>
+  <ellipse cx="515" cy="235" rx="105" ry="160" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="3"/>
+  <g fill="#ffffff" stroke="#2563eb" stroke-width="3">
+    <circle cx="205" cy="125" r="21"/>
+    <circle cx="205" cy="198" r="21"/>
+    <circle cx="205" cy="271" r="21"/>
+    <circle cx="205" cy="344" r="21"/>
+  </g>
+  <g fill="#ffffff" stroke="#7c3aed" stroke-width="3">
+    <circle cx="515" cy="145" r="21"/>
+    <circle cx="515" cy="235" r="21"/>
+    <circle cx="515" cy="325" r="21"/>
+  </g>
+  <g fill="none" stroke="#2563eb" stroke-width="4" marker-end="url(#mapArrow)">
+    <path d="M228 125 C325 115 395 120 486 142"/>
+    <path d="M228 198 C330 195 395 205 486 231"/>
+    <path d="M228 271 C330 274 400 294 486 319"/>
+    <path d="M228 344 C330 352 402 345 486 328"/>
+  </g>
+  <g fill="#0f172a" font-family="Arial, sans-serif" font-size="20" font-weight="700" text-anchor="middle" dominant-baseline="middle">
+    <text x="205" y="125">1</text>
+    <text x="205" y="198">2</text>
+    <text x="205" y="271">3</text>
+    <text x="205" y="344">4</text>
+    <text x="515" y="145">a</text>
+    <text x="515" y="235">b</text>
+    <text x="515" y="325">c</text>
+  </g>
+</svg>

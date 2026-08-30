@@ -26,13 +26,7 @@ E) $a\div(b+c)=a\div b+a\div c$
 
 `K01-T10-Q02`
 
-Gerçek sayılarda
-
-$$a\mathbin{\diamond}b=ab+a+b$$
-
-işlemi tanımlanıyor.
-
-Her gerçek sayı $a$ için $a\mathbin{\diamond}e=a$ olduğuna göre $e$ kaçtır?
+Gerçek sayılarda $$a\mathbin{\diamond}b=ab+a+b$$ işlemi tanımlanıyor. Her gerçek sayı $a$ için $a\mathbin{\diamond}e=a$ olduğuna göre $e$ kaçtır?
 
 A) $-1$
 
@@ -48,9 +42,7 @@ E) $\dfrac1a$
 
 `K01-T10-Q03`
 
-Bir “ters kartı” 2 sayısının toplamaya göre tersini, başka bir “ters kartı” ise aynı sayının çarpmaya göre tersini üretiyor.
-
-Kartların ürettiği sayıların toplamı kaçtır?
+Bir “ters kartı” 2 sayısının toplamaya göre tersini, başka bir “ters kartı” ise aynı sayının çarpmaya göre tersini üretiyor. Kartların ürettiği sayıların toplamı kaçtır?
 
 A) $-\dfrac52$
 
@@ -66,9 +58,7 @@ E) $-\dfrac32$
 
 `K01-T10-Q04`
 
-Bir kesir kartının payında $a$, paydasında negatif bir gerçek sayı bulunuyor. Kartın gösterdiği kesrin değeri pozitiftir.
-
-Buna göre paydaki $a$ sayısı için hangisi kesinlikle doğrudur?
+Kartın gösterdiği kesrin değeri pozitiftir. Buna göre paydaki $a$ sayısı için hangisi kesinlikle doğrudur?
 
 A) Sıfırdır.
 
@@ -84,11 +74,7 @@ E) İşareti belirlenemez.
 
 `K01-T10-Q05`
 
-$m$ ve $n$ gerçek sayıları için
-
-$$m+n=0\qquad\text{ve}\qquad m^2+n^2=18$$
-
-olduğuna göre $mn$ kaçtır?
+$m$ ve $n$ gerçek sayıları için $$m+n=0\qquad\text{ve}\qquad m^2+n^2=18$$ olduğuna göre $mn$ kaçtır?
 
 A) $-18$
 
@@ -120,9 +106,7 @@ E) $0$ ile $1$
 
 `K01-T10-Q07`
 
-$$x<y<0$$
-
-olduğuna göre aşağıdakilerden hangisi doğrudur?
+$$x<y<0$$ olduğuna göre aşağıdakilerden hangisi doğrudur?
 
 A) $\dfrac1x<\dfrac1y$
 
@@ -138,11 +122,7 @@ E) $\dfrac1y>0$
 
 `K01-T10-Q08`
 
-$a$ bir gerçek sayı olmak üzere
-
-$$[(a+3)\cdot0]+7$$
-
-ifadesinin değeri kaçtır?
+$a$ bir gerçek sayı olmak üzere $$[(a+3)\cdot0]+7$$ ifadesinin değeri kaçtır?
 
 A) $-7$
 
@@ -158,9 +138,7 @@ E) $7$
 
 `K01-T10-Q09`
 
-Bir öğrenci, “Çıkarma işleminde sayıların yeri değiştirilebilir.” iddiasında bulunuyor.
-
-Aşağıdakilerden hangisi bu iddiayı çürüten bir karşı örnektir?
+Bir öğrenci, “Çıkarma işleminde sayıların yeri değiştirilebilir.” iddiasında bulunuyor. Aşağıdakilerden hangisi bu iddiayı çürüten bir karşı örnektir?
 
 A) $4+1=1+4$
 
@@ -176,11 +154,7 @@ E) $6\div2=3$
 
 `K01-T10-Q10`
 
-$t$ ve $u$ gerçek sayılar olmak üzere
-
-$$[t+(-t)]\cdot u+0$$
-
-ifadesi aşağıdakilerden hangisine eşittir?
+$t$ ve $u$ gerçek sayılar olmak üzere $$[t+(-t)]\cdot u+0$$ ifadesi aşağıdakilerden hangisine eşittir?
 
 A) $0$
 

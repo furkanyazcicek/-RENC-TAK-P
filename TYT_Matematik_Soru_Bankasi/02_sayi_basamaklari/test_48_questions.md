@@ -9,7 +9,7 @@
 ## Soru 1
 `K02-T48-Q01`
 
-0, 3, 7 ve 8 rakamları birer kez kullanılarak 5000'den büyük en küçük çift sayı yazılıyor. Bu sayı kaçtır?
+Bir günlük planındaki niceliklerde, verilen bağıntıdan yararlanarak: Bu sayı kaçtır?
 
 A) $7083$  
 B) $7308$  
@@ -20,7 +20,7 @@ E) $7803$
 ## Soru 2
 `K02-T48-Q02`
 
-4 yüzlük, 6 onluk ve 2 birlikten oluşan doğal sayı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: 4 yüzlük, 6 onluk ve 2 birlikten oluşan doğal sayı kaçtır?
 
 A) $462$  
 B) $426$  
@@ -64,7 +64,7 @@ E) $8844$
 ## Soru 6
 `K02-T48-Q06`
 
-Dört haneli bir etiket 86 ve 39 biçiminde iki haneli bölümlere ayrılıyor. Bu bölümlerin sayısal değerleri arasındaki fark kaçtır?
+Bu bölümlerin sayısal değerleri arasındaki fark kaçtır?
 
 A) $37$  
 B) $47$  

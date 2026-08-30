@@ -26,7 +26,7 @@ E) $7$
 
 `K02-T03-Q02`
 
-$352\,861$ sayısındaki 5 rakamının basamak değeri kaçtır?
+Bir sınıf etkinliğinde, verilen bağıntıdan yararlanarak: $352\,861$ sayısındaki 5 rakamının basamak değeri kaçtır?
 
 A) $5000$
 
@@ -42,9 +42,7 @@ E) $50$
 
 `K02-T03-Q03`
 
-$$3\cdot10^4+8\cdot10^2+7\cdot10+1$$
-
-çözümlemesi hangi sayıyı gösterir?
+$$3\cdot10^4+8\cdot10^2+7\cdot10+1$$ çözümlemesi hangi sayıyı gösterir?
 
 A) $38\,071$
 
@@ -60,7 +58,7 @@ E) $30\,781$
 
 `K02-T03-Q04`
 
-Onlar basamağı 8, birler basamağı 6 olan iki basamaklı sayı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: Onlar basamağı 8, birler basamağı 6 olan iki basamaklı sayı kaçtır?
 
 A) $14$
 
@@ -124,7 +122,7 @@ E) $624$
 
 `K02-T03-Q08`
 
-$98\,345$ sayısında basamak değeri $40$ olan rakam hangisidir?
+Bir sınıf etkinliğinde, verilen bağıntıdan yararlanarak: $98\,345$ sayısında basamak değeri $40$ olan rakam hangisidir?
 
 A) $3$
 
@@ -156,7 +154,7 @@ E) $10\,000$
 
 `K02-T03-Q10`
 
-$70\,528$ sayısının rakamları toplamı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $70\,528$ sayısının rakamları toplamı kaçtır?
 
 A) $22$
 

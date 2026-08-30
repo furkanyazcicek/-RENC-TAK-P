@@ -106,7 +106,7 @@ E) $95$
 
 `K02-T28-Q07`
 
-Toplamı 10, çarpımı 24 olan iki rakamdan büyük olan onlar basamağına yazılıyor. Oluşan sayı kaçtır?
+Oluşan sayı kaçtır?
 
 A) $46$
 
@@ -138,7 +138,7 @@ E) $583$
 
 `K02-T28-Q09`
 
-İki basamaklı bir sayıdan rakamları toplamı çıkarılınca 63 kalıyor. Rakamlar toplamı 12 ise sayı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: Rakamlar toplamı 12 ise sayı kaçtır?
 
 A) $75$
 

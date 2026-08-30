@@ -26,9 +26,7 @@ E) Her irrasyonel sayı bir doğal sayıdır.
 
 `K01-T05-Q02`
 
-$$24\div[3\cdot(5-3)]+2$$
-
-işleminin sonucu kaçtır?
+$$24\div[3\cdot(5-3)]+2$$ işleminin sonucu kaçtır?
 
 A) $2$
 
@@ -60,9 +58,7 @@ E) $n(n+1)$
 
 `K01-T05-Q04`
 
-Ardışık dört pozitif çift tam sayının toplamı 68'dir.
-
-Buna göre bu sayıların en büyüğü kaçtır?
+Ardışık dört pozitif çift tam sayının toplamı 68'dir. Buna göre bu sayıların en büyüğü kaçtır?
 
 A) $16$
 
@@ -94,9 +90,7 @@ E) $r-r$
 
 `K01-T05-Q06`
 
-$$x=-\sqrt5,\qquad y=-2,3,\qquad z=-\frac94$$
-
-olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
+$$x=-\sqrt5,\qquad y=-2,3,\qquad z=-\frac94$$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
 
 A) $y<z<x$
 
@@ -144,9 +138,7 @@ E) Her negatif gerçek sayının karesi negatiftir.
 
 `K01-T05-Q09`
 
-$$-\sqrt{10}<n<\sqrt5$$
-
-eşitsizliğini sağlayan kaç farklı tam sayı $n$ vardır?
+$$-\sqrt{10}<n<\sqrt5$$ eşitsizliğini sağlayan kaç farklı tam sayı $n$ vardır?
 
 A) $4$
 
@@ -162,13 +154,7 @@ E) $8$
 
 `K01-T05-Q10`
 
-$x$ ve $y$ birbirinden farklı gerçek sayılar olmak üzere
-
-$$x+y=0$$
-
-eşitliği veriliyor.
-
-Buna göre $x$ ve $y$ için hangisi kesinlikle doğrudur?
+$x$ ve $y$ birbirinden farklı gerçek sayılar olmak üzere $$x+y=0$$ eşitliği veriliyor. Buna göre $x$ ve $y$ için hangisi kesinlikle doğrudur?
 
 A) İkisi de pozitiftir.
 

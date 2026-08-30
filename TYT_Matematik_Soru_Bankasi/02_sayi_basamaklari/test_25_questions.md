@@ -58,7 +58,7 @@ E) $1036$
 
 `K02-T25-Q04`
 
-0, 4 ve 9 rakamları tekrar kullanılabilir. Bu rakamlarla yazılabilecek en büyük üç basamaklı sayı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: 0, 4 ve 9 rakamları tekrar kullanılabilir. Bu rakamlarla yazılabilecek en büyük üç basamaklı sayı kaçtır?
 
 A) $949$
 
@@ -74,7 +74,7 @@ E) $944$
 
 `K02-T25-Q05`
 
-0, 2, 7 ve 8 rakamları birer kez kullanılarak yazılabilecek en küçük dört basamaklı sayı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: 0, 2, 7 ve 8 rakamları birer kez kullanılarak yazılabilecek en küçük dört basamaklı sayı kaçtır?
 
 A) $2087$
 
@@ -138,7 +138,7 @@ E) $305$
 
 `K02-T25-Q09`
 
-407, 470, 704 ve 740 sayılarının küçükten büyüğe doğru sıralanışı hangisidir?
+Bir sınıf etkinliğinde, verilen bağıntıdan yararlanarak: 407, 470, 704 ve 740 sayılarının küçükten büyüğe doğru sıralanışı hangisidir?
 
 A) $470<407<704<740$
 

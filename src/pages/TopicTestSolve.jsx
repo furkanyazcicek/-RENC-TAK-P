@@ -36,7 +36,7 @@ export default function TopicTestSolve() {
   const handleFinish = () => {
     setIsFinishing(true)
     setTimeout(() => {
-      navigate(`/kutuphane/sorular/test/${topicSlug}/${testId}/result`, { state: { answers, test } })
+      navigate(`/kutuphane/sorular/test/${topicSlug}/${testId}/result`, { state: { answers, test, returnTo } })
     }, 400)
   }
 
@@ -57,7 +57,7 @@ export default function TopicTestSolve() {
         {/* Test Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
           <div>
-            <div className="text-sm text-muted mb-1">Biyoloji · {topicSlug}</div>
+            <div className="text-sm text-muted mb-1">{test.subject ?? 'Soru Kütüphanesi'} · {test.topic ?? topicSlug}</div>
             <div className="text-3xl font-bold text-foreground">{test.title}</div>
             <div className="text-muted mt-1">{test.description}</div>
           </div>

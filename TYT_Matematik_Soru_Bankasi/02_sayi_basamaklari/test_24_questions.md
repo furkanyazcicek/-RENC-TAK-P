@@ -26,7 +26,7 @@ E) $209$
 
 `K02-T24-Q02`
 
-1, 3, 7 ve 8 rakamları birer kez kullanılarak yazılabilecek en büyük çift sayı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: 1, 3, 7 ve 8 rakamları birer kez kullanılarak yazılabilecek en büyük çift sayı kaçtır?
 
 A) $7138$
 

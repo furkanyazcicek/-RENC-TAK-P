@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 3,
+  "sliceId": "malazgirt-1071",
+  "sliceYear": 1071,
+  "title": "1071 Malazgirt Muharebesi kanıt dilimi",
+  "publicationStatus": "reviewed-slice",
+  "scopeNote": "Bu paket 1071 siyasî sınırı çizmez; muharebe konumunu ve tarihsel bağlamını ayrı olay katmanı olarak sunar.",
+  "validFrom": 1071,
+  "validTo": 1072,
+  "sourceIds": ["tdv-malazgirt-2003", "wikidata-cc0"],
+  "administrativeRegions": [],
+  "settlements": [],
+  "events": [{
+    "id": "event:malazgirt-1071", "nameTr": "Malazgirt Muharebesi", "sourceName": "Battle of Manzikert",
+    "validFrom": 1071, "validTo": 1072, "type": "event", "subtype": "battle", "importance": 3, "minZoom": 3.2,
+    "sourceIds": ["tdv-malazgirt-2003", "wikidata-cc0"], "sourceEntityId": "Q200032",
+    "geometryMethod": "external-cc0-event-point-with-academic-reference", "confidence": "medium", "boundaryCertainty": "not-applicable-point", "coverageStatus": "mapped-point-only", "reviewStatus": "reviewed",
+    "eventDate": { "from": "1071-08-26", "to": "1071-08-26", "precision": "day" },
+    "summary": "Büyük Selçuklu Sultanı Alparslan'ın Bizans İmparatoru Romanos Diogenes'e karşı kazandığı muharebe.",
+    "historicalImportance": "Anadolu'daki Türk siyasî yerleşiminin hızlanmasında belirleyici bir dönüm noktasıdır.",
+    "sides": ["Büyük Selçuklu Devleti", "Bizans İmparatorluğu"],
+    "warning": "Nokta olay bağlamını gösterir; savaş alanının kesin çevresi veya 1071 devlet sınırı değildir.",
+    "geometry": { "type": "Point", "coordinates": [42.59, 39.1] }
+  }],
+  "routes": []
+}

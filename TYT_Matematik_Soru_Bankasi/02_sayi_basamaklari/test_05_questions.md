@@ -26,7 +26,7 @@ E) $9$
 
 `K02-T05-Q02`
 
-$532\,718$ sayısındaki 3 rakamının basamak değeri kaçtır?
+Bir günlük planındaki niceliklerde, verilen bağıntıdan yararlanarak: $532\,718$ sayısındaki 3 rakamının basamak değeri kaçtır?
 
 A) $300$
 
@@ -42,9 +42,7 @@ E) $30$
 
 `K02-T05-Q03`
 
-$$6\cdot10^5+4\cdot10^3+9$$
-
-çözümlemesi hangi sayıyı gösterir?
+$$6\cdot10^5+4\cdot10^3+9$$ çözümlemesi hangi sayıyı gösterir?
 
 A) $640\,009$
 
@@ -60,7 +58,7 @@ E) $604\,009$
 
 `K02-T05-Q04`
 
-Yüzler basamağı 9, onlar basamağı 1 ve birler basamağı 5 olan sayı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: Yüzler basamağı 9, onlar basamağı 1 ve birler basamağı 5 olan sayı kaçtır?
 
 A) $951$
 
@@ -124,7 +122,7 @@ E) $91$
 
 `K02-T05-Q08`
 
-$39\,604$ sayısında basamak değeri $9000$ olan rakam hangisidir?
+Bir günlük planındaki niceliklerde, verilen bağıntıdan yararlanarak: $39\,604$ sayısında basamak değeri $9000$ olan rakam hangisidir?
 
 A) $3$
 
@@ -156,7 +154,7 @@ E) $520$
 
 `K02-T05-Q10`
 
-$83\,042$ sayısının rakamları toplamı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $83\,042$ sayısının rakamları toplamı kaçtır?
 
 A) $15$
 

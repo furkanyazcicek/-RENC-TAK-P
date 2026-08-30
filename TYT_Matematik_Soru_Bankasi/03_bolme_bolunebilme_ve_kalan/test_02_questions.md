@@ -9,7 +9,7 @@
 ## Soru 1
 `K03-T02-Q01`
 
-Aşağıdaki sayılardan hangisi 2 ile tam bölünür?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: Aşağıdaki sayılardan hangisi 2 ile tam bölünür?
 
 A) $315$  
 B) $427$  
@@ -20,7 +20,7 @@ E) $693$
 ## Soru 2
 `K03-T02-Q02`
 
-Aşağıdaki sayılardan hangisi 5 ile tam bölünür?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: Aşağıdaki sayılardan hangisi 5 ile tam bölünür?
 
 A) $715$  
 B) $722$  
@@ -42,7 +42,7 @@ E) $0$
 ## Soru 4
 `K03-T02-Q04`
 
-$48a$ sayısı 10 ile tam bölündüğüne göre $a$ kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $48a$ sayısı 10 ile tam bölündüğüne göre $a$ kaçtır?
 
 A) $5$  
 B) $0$  

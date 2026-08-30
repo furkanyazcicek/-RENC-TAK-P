@@ -138,7 +138,7 @@ E) $403$
 
 `K02-T23-Q09`
 
-318, 381, 813 ve 831 sayılarının küçükten büyüğe doğru sıralanışı hangisidir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: 318, 381, 813 ve 831 sayılarının küçükten büyüğe doğru sıralanışı hangisidir?
 
 A) $318<381<813<831$
 

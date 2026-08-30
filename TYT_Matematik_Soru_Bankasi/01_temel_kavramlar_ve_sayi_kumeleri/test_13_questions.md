@@ -42,9 +42,7 @@ E) $8$
 
 `K01-T13-Q03`
 
-$$a=1,72,\qquad b=\sqrt3,\qquad c=\frac74$$
-
-olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
+$$a=1,72,\qquad b=\sqrt3,\qquad c=\frac74$$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
 
 A) $b<a<c$
 
@@ -60,11 +58,7 @@ E) $b<c<a$
 
 `K01-T13-Q04`
 
-Aşağıdaki sayılardan hangisi
-
-$$-\sqrt3<x<-1,7$$
-
-eşitsizliğini sağlar?
+Aşağıdaki sayılardan hangisi $$-\sqrt3<x<-1,7$$ eşitsizliğini sağlar?
 
 A) $-1,8$
 
@@ -80,13 +74,7 @@ E) $-1,72$
 
 `K01-T13-Q05`
 
-$r$ rasyonel, $t$ irrasyonel sayı olmak üzere
-
-$$u=t+r\qquad\text{ve}\qquad v=t-r$$
-
-olarak tanımlanıyor.
-
-Buna göre $u-v$ aşağıdakilerden hangisine eşittir?
+$r$ rasyonel, $t$ irrasyonel sayı olmak üzere $$u=t+r\qquad\text{ve}\qquad v=t-r$$ olarak tanımlanıyor. Buna göre $u-v$ aşağıdakilerden hangisine eşittir?
 
 A) $2t$
 
@@ -102,13 +90,7 @@ E) $0$
 
 `K01-T13-Q06`
 
-Sayı doğrusunda
-
-$$x=\sqrt2\qquad\text{ve}\qquad y=2-\sqrt2$$
-
-noktaları veriliyor.
-
-$x$ ile $y$ noktalarının orta noktası kaçtır?
+Sayı doğrusunda $$x=\sqrt2\qquad\text{ve}\qquad y=2-\sqrt2$$ noktaları veriliyor. $x$ ile $y$ noktalarının orta noktası kaçtır?
 
 A) $\dfrac12$
 
@@ -124,9 +106,7 @@ E) $2\sqrt2$
 
 `K01-T13-Q07`
 
-$$p=-\sqrt{11},\qquad q=-\frac{10}{3},\qquad r=-3,32$$
-
-olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
+$$p=-\sqrt{11},\qquad q=-\frac{10}{3},\qquad r=-3,32$$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
 
 A) $p<q<r$
 
@@ -142,7 +122,7 @@ E) $q<r<p$
 
 `K01-T13-Q08`
 
-$\sqrt{10}$ ile $\dfrac{19}{6}$ sayıları arasındaki doğru ilişki hangisidir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $\sqrt{10}$ ile $\dfrac{19}{6}$ sayıları arasındaki doğru ilişki hangisidir?
 
 A) $\sqrt{10}>\dfrac{19}{6}$
 

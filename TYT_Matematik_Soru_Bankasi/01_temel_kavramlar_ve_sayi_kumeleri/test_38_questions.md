@@ -10,11 +10,7 @@
 
 `K01-T38-Q01`
 
-$a$ ve $b$ zıt pariteli tam sayılardır. Buna göre
-
-$$a^2+ab+b^2$$
-
-ifadesi için hangisi kesindir?
+$a$ ve $b$ zıt pariteli tam sayılardır. Buna göre $$a^2+ab+b^2$$ ifadesi için hangisi kesindir?
 
 A) Çifttir.
 
@@ -30,9 +26,7 @@ E) Sıfırdır.
 
 `K01-T38-Q02`
 
-$$(\sqrt3+\sqrt2)^2+(\sqrt3-\sqrt2)^2$$
-
-işleminin sonucu kaçtır?
+$$(\sqrt3+\sqrt2)^2+(\sqrt3-\sqrt2)^2$$ işleminin sonucu kaçtır?
 
 A) $8$
 
@@ -64,9 +58,7 @@ E) $27$
 
 `K01-T38-Q04`
 
-$$a=\sqrt{23}-3,\qquad b=\frac95,\qquad c=1,798$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $$a=\sqrt{23}-3,\qquad b=\frac95,\qquad c=1,798$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $c<a<b$
 
@@ -82,9 +74,7 @@ E) $a<c<b$
 
 `K01-T38-Q05`
 
-Sıfırın altındaki $x$ sıcaklığı ile sıfırın üstündeki $y$ sıcaklığı toplandığında sonuç negatiftir.
-
-Bu iki sıcaklığın sıfıra uzaklıklarının kareleri için hangi karşılaştırma doğrudur?
+Sıfırın altındaki $x$ sıcaklığı ile sıfırın üstündeki $y$ sıcaklığı toplandığında sonuç negatiftir. Bu iki sıcaklığın sıfıra uzaklıklarının kareleri için hangi karşılaştırma doğrudur?
 
 A) $xy>0$
 
@@ -164,9 +154,7 @@ E) $15$
 
 `K01-T38-Q10`
 
-Bir öğrenci, $ab>a^2$ eşitsizliğini gördüğünde her koşulda $b>a$ sonucuna ulaşıyor.
-
-Hangi değer çifti öğrencinin çıkarımını geçersiz kılar?
+Bir öğrenci, $ab>a^2$ eşitsizliğini gördüğünde her koşulda $b>a$ sonucuna ulaşıyor. Hangi değer çifti öğrencinin çıkarımını geçersiz kılar?
 
 A) $a=1,\ b=2$
 

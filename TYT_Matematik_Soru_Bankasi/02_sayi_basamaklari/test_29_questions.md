@@ -10,7 +10,7 @@
 
 `K02-T29-Q01`
 
-Rakamları toplamı 12, farkı 4 olan iki basamaklı sayıda onlar basamağı daha büyüktür. Sayı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: Rakamları toplamı 12, farkı 4 olan iki basamaklı sayıda onlar basamağı daha büyüktür. Sayı kaçtır?
 
 A) $57$
 

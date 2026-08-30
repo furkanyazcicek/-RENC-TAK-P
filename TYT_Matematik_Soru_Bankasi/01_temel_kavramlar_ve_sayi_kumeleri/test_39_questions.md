@@ -26,11 +26,7 @@ E) Tektir.
 
 `K01-T39-Q02`
 
-$x=2+\sqrt3$ olduğuna göre
-
-$$x+\frac1x$$
-
-kaçtır?
+$x=2+\sqrt3$ olduğuna göre $$x+\frac1x$$ kaçtır?
 
 A) $2$
 
@@ -62,9 +58,7 @@ E) $208$
 
 `K01-T39-Q04`
 
-$$a=\sqrt{22}-3,\qquad b=\frac{169}{100},\qquad c=1,691$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+Bir sınıf etkinliğinde, verilen bağıntıdan yararlanarak: $$a=\sqrt{22}-3,\qquad b=\frac{169}{100},\qquad c=1,691$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $b<a<c$
 
@@ -96,7 +90,7 @@ E) $x^2<y^2$
 
 `K01-T39-Q06`
 
-$a$ ve $b$ tam sayılarının her biri 7 ile bölündüğünde 2 kalanını veriyor. Aşağıdaki ifadelerden hangisi 7 ile bölündüğünde yine 2 kalanını verir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $a$ ve $b$ tam sayılarının her biri 7 ile bölündüğünde 2 kalanını veriyor. Aşağıdaki ifadelerden hangisi 7 ile bölündüğünde yine 2 kalanını verir?
 
 A) $a+b$
 
@@ -144,7 +138,7 @@ E) $n^2+2n+1$
 
 `K01-T39-Q09`
 
-$-\sqrt{90}$ ile $\sqrt{51}$ arasında kaç tam sayı vardır?
+Bir günlük planındaki niceliklerde, verilen bağıntıdan yararlanarak: $-\sqrt{90}$ ile $\sqrt{51}$ arasında kaç tam sayı vardır?
 
 A) $15$
 

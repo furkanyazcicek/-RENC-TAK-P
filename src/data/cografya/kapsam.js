@@ -1,5 +1,6 @@
 const ETKILESIMLER = [
   ['sistem-katmanlari', 'sistemler', 'Dünya sistemleri ve geri etki', 'ortak', ['Atmosfer, hidrosfer, litosfer ve biyosfer', 'Doğal koşul–insan cevabı–geri etki', 'Teknoloji, ekonomi, kültür ve politika'], 'determinist'],
+  ['bolge-olustur', 'sistemler', 'Kriter tabanlı bölge oluşturma', 'tymm', ['Şekilsel ve işlevsel bölge', 'Ölçüt, benzerlik ve süreklilik', 'Bölge sınırının değişkenliği'], 'determinist'],
   ['gunes-modeli', 'gezegen', 'Dünya–Güneş ve mevsim modeli', 'ortak', ['Eksen eğikliği ve yıllık hareket', 'Gece–gündüz süresi ve ışın açısı', 'Yarım kürelerde mevsim karşılaştırması'], 'yakinlik-mevsim'],
   ['koordinat-saati', 'konum', 'Koordinat ve yerel saat laboratuvarı', 'ortak', ['Enlem ve boylam', 'Yerel saat ve yön', 'Türkiye’nin matematik konumu'], 'boylam-iklim'],
   ['goreceli-konum', 'konum', 'Matematik ve göreceli konum kanıtı', 'ortak', ['Matematik–göreceli konum', 'Nokta, çizgi, alan ve yakınlık', 'Aynı enlemde yerel farklar'], 'ayni-enlem'],

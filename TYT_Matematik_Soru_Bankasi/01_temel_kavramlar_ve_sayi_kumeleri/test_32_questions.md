@@ -26,11 +26,7 @@ E) $16$
 
 `K01-T32-Q02`
 
-$t$ irrasyonel, sıfırdan farklı $r$ rasyonel sayı olmak üzere
-
-$$x=t+r,\qquad y=t-r$$
-
-tanımlanıyor. $x^2-y^2$ hangi tür sayıdır?
+$t$ irrasyonel, sıfırdan farklı $r$ rasyonel sayı olmak üzere $$x=t+r,\qquad y=t-r$$ tanımlanıyor. $x^2-y^2$ hangi tür sayıdır?
 
 A) İrrasyonel
 
@@ -46,9 +42,7 @@ E) Sıfır
 
 `K01-T32-Q03`
 
-Ardışık altı çift tam sayının ilk ve son terimlerinin toplamı 34'tür.
-
-Altı sayının toplamı kaçtır?
+Ardışık altı çift tam sayının ilk ve son terimlerinin toplamı 34'tür. Altı sayının toplamı kaçtır?
 
 A) $84$
 
@@ -64,9 +58,7 @@ E) $102$
 
 `K01-T32-Q04`
 
-$$a=\sqrt6-1,\qquad b=\frac{29}{20},\qquad c=1,449$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+$$a=\sqrt6-1,\qquad b=\frac{29}{20},\qquad c=1,449$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $a<c<b$
 
@@ -81,8 +73,6 @@ E) $a<b<c$
 ## Soru 5
 
 `K01-T32-Q05`
-
-Sayı doğrusunda negatif $x$ ve $y$ noktalarından $x$, $y$'nin solunda bulunuyor.
 
 Bu iki sayının kareleri karşılaştırıldığında hangi sonuç elde edilir?
 
@@ -148,7 +138,7 @@ E) $n(n+1)$
 
 `K01-T32-Q09`
 
-$-\sqrt{15}$ ile $\sqrt{26}$ arasında kaç tam sayı vardır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $-\sqrt{15}$ ile $\sqrt{26}$ arasında kaç tam sayı vardır?
 
 A) $9$
 

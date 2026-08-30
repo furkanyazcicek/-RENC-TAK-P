@@ -29,6 +29,10 @@ export default function BolgeSahnesi({ bolgeKod }) {
     ? window.matchMedia('(max-width: 700px)').matches
     : false))
   const bolge = bolgeBul(bolgeKod)
+  const gorsel = useMemo(() => sahne.gorselKatmanlari?.[katman] ?? {
+    src: sahne.src,
+    alt: sahne.alt,
+  }, [sahne, katman])
 
   /* Telefonda bilgi kartı fotoğrafın üstünde durunca kanıt noktalarının
      çoğunu örtüyordu; orada kart fotoğrafın altına, altyazı gibi iner. */
@@ -65,7 +69,7 @@ export default function BolgeSahnesi({ bolgeKod }) {
     gozlemci.observe(tuval)
     gorsel.addEventListener('load', hesapla)
     return () => { gozlemci.disconnect(); gorsel.removeEventListener('load', hesapla) }
-  }, [sahne.src])
+  }, [gorsel.src])
 
   const odakYeri = useCallback((odak) => (kadraj
     ? { left: `${kadraj.sol + (odak.x / 100) * kadraj.gen}px`, top: `${kadraj.ust + (odak.y / 100) * kadraj.yuk}px` }
@@ -148,7 +152,7 @@ export default function BolgeSahnesi({ bolgeKod }) {
       onPointerLeave={derinlikSifirla}
     >
       <div className="ca-sahne-kadraj">
-        <img ref={gorselRef} src={sahne.src} alt={sahne.alt} draggable="false" />
+        <img ref={gorselRef} src={gorsel.src} alt={gorsel.alt} draggable="false" />
         <div className="ca-sahne-renk" aria-hidden="true" />
         {odaklar.map((odak, index) => (
           <button
@@ -174,7 +178,7 @@ export default function BolgeSahnesi({ bolgeKod }) {
     <footer className="ca-sahne-alt">
       <span>{seciliKatman.ad} katmanı</span>
       <p>{seciliKatman.aciklama}</p>
-      <em>{odaklar.length} kanıt noktası</em>
+      <em>{odaklar.length} kanıt noktası · fotogerçekçi öğretim zemini</em>
     </footer>
   </section>
 }

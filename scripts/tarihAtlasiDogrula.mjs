@@ -1,125 +1,103 @@
 /**
- * Tarih Atlası görsel doğrulama betiği.
+ * Tarih Atlası v3 görsel doğrulama betiği.
  *
- * Üretilen dönem verisini seçilen yıllar için SVG haritaya çizer.
- * Amaç: sınırların şeklinin bozulup bozulmadığını, zaman süzgecinin
- * doğru çalışıp çalışmadığını gözle görmek.
+ * Seçili yılların gerçekten kullandığı tembel dönem paketlerini ve yerel
+ * dünya altlığını SVG panolara çizer. Böylece dünya kapsamı, kaynak yılı
+ * farkı ve eski dikdörtgen kırpmanın geri dönmediği tarayıcıdan bağımsız
+ * olarak da denetlenebilir.
  *
- * Çalıştırma: node scripts/tarihAtlasiDogrula.mjs 1100 1530 1700 1920
+ * Çalıştırma: node scripts/tarihAtlasiDogrula.mjs 1282 1453 1526 1683 1923
  */
 
-import { readFile, writeFile } from 'node:fs/promises'
+import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { DEVLETSIZ_KARA, TON_RENKLERI } from '../src/data/tarihAtlasi/devletSozlugu.js'
-import { karaMaskesiHazirla } from './lib/kiyiHizalama.mjs'
+import { DEVLETSIZ_KARA, TON_RENKLERI } from '../src/lib/tarihAtlasi/haritaSunumu.js'
+import { kaynakDonemiBul } from '../src/lib/tarihAtlasi/veriModeli.js'
 
 const kok = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const veri = JSON.parse(await readFile(resolve(kok, 'src/data/tarihAtlasi/donemler.json'), 'utf8'))
+const manifest = JSON.parse(await readFile(resolve(kok, 'public/atlas/v3/manifest.json'), 'utf8'))
+const kara = JSON.parse(await readFile(resolve(kok, 'public/atlas/v3/base/land-50m.json'), 'utf8'))
 
-/**
- * Kullanım:
- *   node scripts/tarihAtlasiDogrula.mjs 1453 1530
- *   node scripts/tarihAtlasiDogrula.mjs 1530 --alan=25,30,38,42   (kıyı yakınlaştırma)
- *
- * --alan verildiğinde harita o dörtgene kırpılır; kıyı hizalamasını yakından
- * kontrol etmek için kullanılır.
- */
 const argumanlar = process.argv.slice(2)
 const alanArg = argumanlar.find((a) => a.startsWith('--alan='))
-const yillar = argumanlar.filter((a) => !a.startsWith('--')).map(Number).filter(Boolean)
-const SECILI = yillar.length ? yillar : [1100, 1530, 1700, 1920]
-
-// Gösterim alanı: Avrupa + Ortadoğu + Kuzey Afrika
+const yillar = argumanlar.filter((a) => !a.startsWith('--')).map(Number).filter(Number.isFinite)
+const SECILI = yillar.length ? yillar : [1282, 1453, 1526, 1683, 1923]
 const [BATI, GUNEY, DOGU, KUZEY] = alanArg
   ? alanArg.slice(7).split(',').map(Number)
-  : [-13, 12, 60, 56]
+  : [-180, -60, 180, 85]
 
-const enBoyOran = (DOGU - BATI) / (KUZEY - GUNEY)
-const GENISLIK = 620
-const YUKSEKLIK = Math.round(GENISLIK / enBoyOran)
+const GENISLIK = 920
+const YUKSEKLIK = Math.round(GENISLIK / ((DOGU - BATI) / (KUZEY - GUNEY)))
 
-// Karayı da çizeriz: devlet dolgusunun kaplamadığı yerler bu renkte görünür,
-// böylece kıyıda ya da devletler arasında boşluk kalıp kalmadığı anlaşılır.
-const karaMaskesi = karaMaskesiHazirla([BATI, GUNEY, DOGU, KUZEY])
-
-/** Basit eşdikdörtgen izdüşüm — atlas önizlemesi için yeterli. */
 function izdusum([lng, lat]) {
-  const x = ((lng - BATI) / (DOGU - BATI)) * GENISLIK
-  const y = ((KUZEY - lat) / (KUZEY - GUNEY)) * YUKSEKLIK
-  return [Math.round(x * 10) / 10, Math.round(y * 10) / 10]
+  return [
+    Math.round((((lng - BATI) / (DOGU - BATI)) * GENISLIK) * 10) / 10,
+    Math.round((((KUZEY - lat) / (KUZEY - GUNEY)) * YUKSEKLIK) * 10) / 10,
+  ]
 }
 
 function halkaYolu(halka) {
-  return halka.map((n, i) => (i === 0 ? 'M' : 'L') + izdusum(n).join(' ')).join('') + 'Z'
+  return halka.map((nokta, sira) => `${sira ? 'L' : 'M'}${izdusum(nokta).join(' ')}`).join('') + 'Z'
 }
 
 function geometriYolu(geometri) {
   const poligonlar = geometri.type === 'Polygon' ? [geometri.coordinates] : geometri.coordinates
-  return poligonlar.map((p) => p.map(halkaYolu).join('')).join('')
+  return poligonlar.map((poligon) => poligon.map(halkaYolu).join('')).join('')
 }
 
-/** Zaman süzgeci — uygulamadaki kuralın aynısı. */
-function yildaGecerliMi(ozellik, yil) {
-  const { baslangic, bitis } = ozellik.properties
-  return baslangic <= yil && yil < bitis
-}
+const karaYolu = (kara.features || [kara]).map((ozellik) => geometriYolu(ozellik.geometry)).join('')
+const panolar = []
 
-const panolar = SECILI.map((yil) => {
-  const gecerli = veri.features.filter((f) => yildaGecerliMi(f, yil))
-  const siralı = [...gecerli].sort((a, b) => a.properties.onem - b.properties.onem)
-
-  const yollar = siralı.map((f) => {
-    const { ton, onem } = f.properties
-    const renk = TON_RENKLERI[ton] || TON_RENKLERI.diger
-    const saydamlik = onem >= 2 ? 0.85 : onem === 1 ? 0.6 : 0.38
-    return `<path d="${geometriYolu(f.geometry)}" fill="${renk}" fill-opacity="${saydamlik}" stroke="#2a2419" stroke-width=".4" stroke-opacity=".55"/>`
+for (const yil of SECILI) {
+  const donem = kaynakDonemiBul(manifest, yil)
+  if (!donem) throw new Error(`${yil} için kaynak dönemi bulunamadı.`)
+  const siyasi = JSON.parse(await readFile(resolve(kok, `public${donem.politicalUrl}`), 'utf8'))
+  const sirali = [...siyasi.features].sort((a, b) => a.properties.onem - b.properties.onem)
+  const yollar = sirali.map((ozellik) => {
+    const oz = ozellik.properties
+    const renk = TON_RENKLERI[oz.ton] || TON_RENKLERI.diger
+    const saydamlik = oz.onem >= 2 ? 0.86 : oz.onem === 1 ? 0.64 : 0.45
+    const kesik = oz.kesinlikSinifi === 'uncertain' ? '2 1.5' : 'none'
+    return `<path d="${geometriYolu(ozellik.geometry)}" fill="${renk}" fill-opacity="${saydamlik}" stroke="#201d17" stroke-width=".32" stroke-dasharray="${kesik}"/>`
   }).join('\n')
-
-  // Yalnızca müfredatın merkezindeki devletler etiketlenir
-  const etiketler = siralı.filter((f) => f.properties.onem === 3).map((f) => {
-    const [x, y] = izdusum([f.properties.etiketX, f.properties.etiketY])
+  const etiketler = sirali.filter((ozellik) => ozellik.properties.onem >= 2).map((ozellik) => {
+    const [x, y] = izdusum([ozellik.properties.etiketX, ozellik.properties.etiketY])
     if (x < 0 || x > GENISLIK || y < 0 || y > YUKSEKLIK) return ''
-    return `<text x="${x}" y="${y}" text-anchor="middle" font-size="8.5" font-family="system-ui,sans-serif" fill="#1a1509" stroke="#f2ecdc" stroke-width="2.4" paint-order="stroke" >${f.properties.ad}</text>`
+    return `<text x="${x}" y="${y}" text-anchor="middle" font-size="6.8" font-family="system-ui,sans-serif" fill="#17140d" stroke="#f4efe0" stroke-width="1.8" paint-order="stroke">${ozellik.properties.ad}</text>`
   }).join('\n')
-
-  const karaYolu = karaMaskesi
-    .map((poligon) => poligon.map(halkaYolu).join(''))
-    .join('')
-
-  return `
-  <section>
-    <h2>${yil} <small>${gecerli.length} devlet</small></h2>
-    <svg viewBox="0 0 ${GENISLIK} ${YUKSEKLIK}" xmlns="http://www.w3.org/2000/svg">
-      <rect width="${GENISLIK}" height="${YUKSEKLIK}" fill="#b9e4e4"/>
+  const fark = yil - donem.sourceYear
+  panolar.push(`<section>
+    <h2>${yil} <small>kaynak ${donem.sourceYear}${fark ? ` · ${fark > 0 ? '+' : ''}${fark} yıl · kaynak anlık görüntüsü` : ''} · ${siyasi.features.length} yapı</small></h2>
+    <svg viewBox="0 0 ${GENISLIK} ${YUKSEKLIK}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${yil} dünya siyasi haritası">
+      <rect width="${GENISLIK}" height="${YUKSEKLIK}" fill="#b8dadd"/>
       <path d="${karaYolu}" fill="${DEVLETSIZ_KARA}" fill-rule="evenodd"/>
       ${yollar}
       ${etiketler}
     </svg>
-  </section>`
-}).join('\n')
+  </section>`)
+}
 
 const html = `<!doctype html>
 <meta charset="utf-8">
-<title>Tarih Atlası — veri doğrulama</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tarih Atlası v3 — veri doğrulama</title>
 <style>
-  body{margin:0;padding:24px;background:#1b211f;color:#e8ece9;font:15px/1.5 system-ui,sans-serif}
-  h1{font-size:20px;margin:0 0 4px}
-  p.alt{margin:0 0 24px;color:#93a19c;font-size:13px}
-  section{margin:0 0 28px}
-  h2{font-size:15px;margin:0 0 8px;font-weight:600}
-  h2 small{font-weight:400;color:#93a19c;margin-left:8px}
-  svg{width:100%;max-width:920px;height:auto;display:block;border-radius:8px;border:1px solid #2f3a37}
+  body{margin:0;padding:24px;background:#151a19;color:#edf1ee;font:15px/1.5 ui-sans-serif,system-ui,sans-serif}
+  main{max-width:980px;margin:auto} h1{font-size:21px;margin:0 0 4px} p{margin:0 0 24px;color:#aeb9b5}
+  section{margin:0 0 30px} h2{font-size:15px;margin:0 0 8px;font-weight:650} h2 small{font-weight:400;color:#9facaa;margin-left:8px}
+  svg{width:100%;height:auto;display:block;border-radius:10px;border:1px solid #34403d;background:#b8dadd}
 </style>
-<h1>Tarih Atlası — veri doğrulama</h1>
-<p class="alt">Üretilen dönem verisi, uygulamadaki zaman süzgecinin aynısıyla filtrelenip çizildi. Etiketler yalnızca müfredatın merkezindeki devletlere konuldu.</p>
-${panolar}
-`
+<main><h1>Tarih Atlası v3 — dünya kapsamı doğrulaması</h1>
+<p>Her pano uygulamanın seçili yılda tembel yüklediği gerçek dönem paketinden üretildi. Tarih ile kaynak yılı farkı başlıkta açıkça gösterilir.</p>
+${panolar.join('\n')}</main>`
 
-const cikis = resolve(kok, 'tmp/tarih-atlasi-dogrulama.html')
+const cikisKlasoru = resolve(kok, 'tmp')
+await mkdir(cikisKlasoru, { recursive: true })
+const cikis = resolve(cikisKlasoru, 'tarih-atlasi-dogrulama.html')
 await writeFile(cikis, html)
 console.log('Doğrulama sayfası yazıldı:', cikis)
 SECILI.forEach((yil) => {
-  const sayi = veri.features.filter((f) => yildaGecerliMi(f, yil)).length
-  console.log(`  ${yil}: ${sayi} devlet çizildi`)
+  const donem = kaynakDonemiBul(manifest, yil)
+  console.log(`  ${yil}: kaynak ${donem.sourceYear}, paket ${donem.politicalUrl}`)
 })

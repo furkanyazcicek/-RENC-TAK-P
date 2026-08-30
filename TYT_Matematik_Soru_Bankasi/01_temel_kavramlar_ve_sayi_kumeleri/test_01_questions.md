@@ -26,9 +26,7 @@ E) $3,2$
 
 `K01-T01-Q02`
 
-$$18-3\cdot\left[2+\frac{4}{-2}\right]$$
-
-işleminin sonucu kaçtır?
+$$18-3\cdot\left[2+\frac{4}{-2}\right]$$ işleminin sonucu kaçtır?
 
 A) $0$
 
@@ -60,9 +58,7 @@ E) $x(y+1)$
 
 `K01-T01-Q04`
 
-Ardışık dört tam sayının toplamı 74'tür.
-
-Buna göre bu sayıların en büyüğü kaçtır?
+Ardışık dört tam sayının toplamı 74'tür. Buna göre bu sayıların en büyüğü kaçtır?
 
 A) $18$
 
@@ -94,9 +90,7 @@ E) $\dfrac{a-3b}{b}$
 
 `K01-T01-Q06`
 
-$$p=-\frac{7}{4},\qquad q=-\sqrt{3},\qquad r=-\frac{5}{3}$$
-
-olduğuna göre bu sayıların küçükten büyüğe doğru sıralanışı hangisidir?
+$$p=-\frac{7}{4},\qquad q=-\sqrt{3},\qquad r=-\frac{5}{3}$$ olduğuna göre bu sayıların küçükten büyüğe doğru sıralanışı hangisidir?
 
 A) $q<p<r$
 
@@ -160,9 +154,7 @@ E) $2+\sqrt{3}$ ile $\sqrt{3}$
 
 `K01-T01-Q10`
 
-$$-\frac{3}{2}<n\le\frac{7}{2}$$
-
-eşitsizliğini sağlayan kaç farklı tam sayı $n$ vardır?
+$$-\frac{3}{2}<n\le\frac{7}{2}$$ eşitsizliğini sağlayan kaç farklı tam sayı $n$ vardır?
 
 A) $1$
 

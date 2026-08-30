@@ -42,7 +42,7 @@ E) $8642$
 
 `K02-T41-Q03`
 
-2, 5, 7 ve 8 rakamlarından üçü, rakam tekrarı olmadan kullanılıyor. Yazılabilecek 800'den küçük en büyük tek sayı kaçtır?
+Yazılabilecek 800'den küçük en büyük tek sayı kaçtır?
 
 A) $785$
 
@@ -74,7 +74,7 @@ E) $7557$
 
 `K02-T41-Q05`
 
-0, 2, 5 ve 7 rakamlarından üçü, rakam tekrarı olmadan kullanılarak 500'den büyük tek sayılar yazılıyor. Kaç farklı sayı yazılabilir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: Kaç farklı sayı yazılabilir?
 
 A) $2$
 
@@ -106,7 +106,7 @@ E) $764$
 
 `K02-T41-Q07`
 
-Onlar basamağı 2 olan üç basamaklı bir sayı, rakamları ters çevrilerek elde edilen sayıdan 495 fazladır. Rakamları toplamı 13 olduğuna göre sayı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: Onlar basamağı 2 olan üç basamaklı bir sayı, rakamları ters çevrilerek elde edilen sayıdan 495 fazladır. Rakamları toplamı 13 olduğuna göre sayı kaçtır?
 
 A) $823$
 
@@ -122,7 +122,7 @@ E) $328$
 
 `K02-T41-Q08`
 
-0, 3, 6 ve 9 rakamlarının her biri bir kez kullanılarak 7000'den küçük en büyük dört basamaklı sayı yazılıyor. Bu sayı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: Bu sayı kaçtır?
 
 A) $6390$
 

@@ -17,6 +17,19 @@ export const DEVLET_SOZLUGU = {
   'Ottoman Sultanate': { tr: 'Osmanlı Devleti', onem: 3, ton: 'osmanli' },
 
   // ————— Türk ve Türk-İslam devletleri —————
+  'Xiongnu': { tr: 'Asya Hun Devleti (Hiung-nu)', onem: 3, ton: 'turk' },
+  'Southern Xiongnu': { tr: 'Güney Hiung-nu', onem: 3, ton: 'turk' },
+  'Hunnic Empire': { tr: 'Avrupa Hun Devleti', onem: 3, ton: 'turk' },
+  'Huns': { tr: 'Hun Toplulukları', onem: 2, ton: 'turk' },
+  'Göktürks': { tr: 'Göktürk Kağanlığı', onem: 3, ton: 'turk' },
+  'Western Gokturk Khaganate': { tr: 'Batı Göktürk Kağanlığı', onem: 3, ton: 'turk' },
+  'Uyghurs': { tr: 'Uygur Kağanlığı', onem: 3, ton: 'turk' },
+  'Ouighurs': { tr: 'Uygur Kağanlığı', onem: 3, ton: 'turk' },
+  'Karluks': { tr: 'Karluklar', onem: 3, ton: 'turk' },
+  'Oghuz Turks': { tr: 'Oğuz Türkleri', onem: 3, ton: 'turk' },
+  'Avars': { tr: 'Avar Kağanlığı', onem: 3, ton: 'turk' },
+  'Bulgars': { tr: 'Bulgar Toplulukları', onem: 2, ton: 'turk' },
+  'Danube Bulgars': { tr: 'Tuna Bulgar Devleti', onem: 3, ton: 'turk' },
   'Seljuk Empire': { tr: 'Büyük Selçuklu Devleti', onem: 3, ton: 'turk' },
   'Seljuk Caliphate': { tr: 'Anadolu Selçuklu Devleti', onem: 3, ton: 'turk' },
   'Ghaznavid Emirate': { tr: 'Gazneli Devleti', onem: 3, ton: 'turk' },
@@ -399,6 +412,39 @@ export const DEVLET_SOZLUGU = {
   'French Equatorial Africa': { tr: 'Fransız Ekvator Afrikası', onem: 0, ton: 'avrupa' },
   'West African cereal farmers': { tr: 'Batı Afrika Çiftçileri', onem: 0, ton: 'afrika' },
 
+  // ————— Dünya ölçeğinde görünen kaynak adları —————
+  'Australian aboriginal hunter-gatherers': { tr: 'Avustralya Aborjin Avcı-Toplayıcıları', onem: 0, ton: 'diger' },
+  'Bantou': { tr: 'Bantu Toplulukları', onem: 0, ton: 'afrika' },
+  'Khoiasan': { tr: 'Khoisan Toplulukları', onem: 0, ton: 'afrika' },
+  'Tuʻi Tonga Empire': { tr: 'Tuʻi Tonga İmparatorluğu', onem: 0, ton: 'diger' },
+  'Thule': { tr: 'Thule Kültürü', onem: 0, ton: 'diger' },
+  'Polynesians': { tr: 'Polinezya Toplulukları', onem: 0, ton: 'diger' },
+  'minor Hindu kingdoms': { tr: 'Küçük Hindu Krallıkları', onem: 0, ton: 'asya' },
+  'Malaysian Islamic states': { tr: 'Malay İslam Devletleri', onem: 0, ton: 'islam' },
+  'Great Khanate': { tr: 'Büyük Hanlık', onem: 1, ton: 'turk' },
+  'Ming Chinese Empire': { tr: 'Ming İmparatorluğu', onem: 1, ton: 'asya' },
+  'Manchu Empire': { tr: 'Mançu İmparatorluğu', onem: 1, ton: 'asya' },
+  'Vice-Royalty of New Spain': { tr: 'Yeni İspanya Genel Valiliği', onem: 1, ton: 'avrupa' },
+  'Vice Royalty of Peru': { tr: 'Peru Genel Valiliği', onem: 1, ton: 'avrupa' },
+  'Dutch East Indies': { tr: 'Hollanda Doğu Hint Adaları', onem: 1, ton: 'avrupa' },
+  'Brazil': { tr: 'Brezilya', onem: 1, ton: 'amerika' },
+  'Australia': { tr: 'Avustralya', onem: 1, ton: 'ingiltere' },
+  'Canada': { tr: 'Kanada', onem: 1, ton: 'ingiltere' },
+  'Chinese Warlords': { tr: 'Çinli Savaş Ağaları', onem: 1, ton: 'asya' },
+  'Chinese warlords': { tr: 'Çinli Savaş Ağaları', onem: 1, ton: 'asya' },
+  'United States': { tr: 'Amerika Birleşik Devletleri', onem: 1, ton: 'amerika' },
+  'United States of America': { tr: 'Amerika Birleşik Devletleri', onem: 1, ton: 'amerika' },
+  'Empire of Japan': { tr: 'Japon İmparatorluğu', onem: 1, ton: 'asya' },
+  'Fiji': { tr: 'Fiji', onem: 0, ton: 'diger' },
+  'Antarctica': { tr: 'Antarktika', onem: 0, ton: 'diger' },
+  'China': { tr: 'Çin', onem: 1, ton: 'asya' },
+  'Japan': { tr: 'Japonya', onem: 1, ton: 'asya' },
+  'Indonesia': { tr: 'Endonezya', onem: 1, ton: 'asya' },
+  'Awá': { tr: 'Awá', onem: 0, ton: 'amerika' },
+  'Ãwa': { tr: 'Awá', onem: 0, ton: 'amerika' },
+  'Wari’': { tr: 'Wari', onem: 0, ton: 'amerika' },
+  'Wari': { tr: 'Wari', onem: 0, ton: 'amerika' },
+
   // ————— Cumhuriyet dönemi ve İkinci Dünya Savaşı sonrası —————
   'Turkey': { tr: 'Türkiye Cumhuriyeti', onem: 3, ton: 'osmanli' },
   'Iraq': { tr: 'Irak', onem: 2, ton: 'islam' },
@@ -439,44 +485,3 @@ export const DEVLET_SOZLUGU = {
 
 /** Sözlükte olmayan bir ad geldiğinde kullanılacak varsayılan kayıt. */
 export const VARSAYILAN_KAYIT = { onem: 0, ton: 'diger' }
-
-/**
- * Renk grupları.
- *
- * İki kural gözetildi:
- *   1. Akrabalık renkte görünsün — Türk devletleri Osmanlı'nın yeşil ailesinden,
- *      böylece öğrenci "bunlar aynı soydan" bağını haritaya bakarken kurar.
- *   2. Komşu devletler birbirinden ayrılsın — eski palette bağlam devletlerinin
- *      hepsi birbirine yakın bejdi ve harita tek renk gibi görünüyordu.
- *
- * Doygunluk bilinçli olarak düşük tutuldu: öğrenci bu ekrana uzun süre bakacak.
- */
-export const TON_RENKLERI = {
-  // Merkez: en doygun ton, haritada ilk göze çarpan
-  osmanli: '#3f8257',
-  // Akraba Türk devletleri — aynı yeşil ailesi, daha açık
-  turk: '#87b47b',
-  // İslam dünyası — hardal
-  islam: '#b3a85c',
-  // Doğu Roma ve ardılları — mor
-  bizans: '#8265a6',
-  // İran hattı — mora komşu ama pembeye çalan, Bizans'tan ayrılsın diye
-  iran: '#b57ba4',
-  // Macaristan — sarı, Habsburg kiremitinin yanında net durur
-  macar: '#d8c274',
-  habsburg: '#ab6250',
-  // Denizci cumhuriyetler
-  venedik: '#4790ab',
-  fransa: '#5673b3',
-  ingiltere: '#8398cc',
-  ispanya: '#cf9f55',
-  rus: '#83899a',
-  // Bağlam devletleri — düşük doygunluk ama birbirinden ayrık
-  avrupa: '#aca287',
-  afrika: '#c69a66',
-  asya: '#89a186',
-  diger: '#a7a49b',
-}
-
-/** Haritada devletsiz kalan karanın rengi — altlığın beyazı yerine kullanılır. */
-export const DEVLETSIZ_KARA = '#e7e2d3'

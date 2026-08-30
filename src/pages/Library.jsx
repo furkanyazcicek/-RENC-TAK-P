@@ -673,9 +673,13 @@ export default function Library() {
         >
           <LibraryNoteForm
             topicId={topicId}
-            onAdded={() => {
+            subjectId={selectedTopic?.subject_id}
+            topicName={selectedTopic?.name}
+            topicOrderIndex={selectedTopic?.order_index}
+            onAdded={(persistedTopicId) => {
               setNoteFormOpen(false)
-              loadNotesForTopic(topicId)
+              if (persistedTopicId !== topicId) load()
+              else loadNotesForTopic(topicId)
             }}
           />
         </Modal>

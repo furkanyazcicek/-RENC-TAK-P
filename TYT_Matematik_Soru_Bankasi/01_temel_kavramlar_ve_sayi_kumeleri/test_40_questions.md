@@ -26,11 +26,7 @@ E) Negatiftir.
 
 `K01-T40-Q02`
 
-$t$ irrasyonel, sıfırdan farklı $r$ rasyonel sayı olmak üzere
-
-$$x=t+r,\qquad y=rt$$
-
-tanımlanıyor. Aşağıdakilerden hangisi kesinlikle rasyoneldir?
+$t$ irrasyonel, sıfırdan farklı $r$ rasyonel sayı olmak üzere $$x=t+r,\qquad y=rt$$ tanımlanıyor. Aşağıdakilerden hangisi kesinlikle rasyoneldir?
 
 A) $x+y$
 
@@ -62,9 +58,7 @@ E) $150$
 
 `K01-T40-Q04`
 
-$$a=\sqrt{27}-3,\qquad b=\frac{11}{5},\qquad c=2,198$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+Bir sayı tablosu okunurken, verilen bağıntıdan yararlanarak: $$a=\sqrt{27}-3,\qquad b=\frac{11}{5},\qquad c=2,198$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $c<a<b$
 
@@ -80,11 +74,7 @@ E) $c<b<a$
 
 `K01-T40-Q05`
 
-Zıt işaretli ve sıfırdan farklı $x,y$ sayılarıyla aşağıdaki oran toplamı oluşturuluyor:
-
-$$\frac{x}{y}+\frac{y}{x}$$
-
-Bu toplamın işareti nedir?
+Zıt işaretli ve sıfırdan farklı $x,y$ sayılarıyla aşağıdaki oran toplamı oluşturuluyor: $$\frac{x}{y}+\frac{y}{x}$$ Bu toplamın işareti nedir?
 
 A) Pozitif
 
@@ -148,9 +138,7 @@ E) $2m+2n$
 
 `K01-T40-Q09`
 
-Bir işaretleyici sayı doğrusunda $-\sqrt{99}$ noktasının sağında, $3\pi$ noktasının solunda bulunan tam sayı noktalarını boyuyor.
-
-Kaç nokta boyanır?
+Bir işaretleyici sayı doğrusunda $-\sqrt{99}$ noktasının sağında, $3\pi$ noktasının solunda bulunan tam sayı noktalarını boyuyor. Kaç nokta boyanır?
 
 A) $16$
 
@@ -166,9 +154,7 @@ E) $20$
 
 `K01-T40-Q10`
 
-Bir öğrenci $a^2<ab$ eşitsizliğinden her durumda $a<b$ sonucunun çıkacağını ileri sürüyor.
-
-Hangi $(a,b)$ ikilisi bu iddianın yanlış olduğunu gösterir?
+Bir öğrenci $a^2<ab$ eşitsizliğinden her durumda $a<b$ sonucunun çıkacağını ileri sürüyor. Hangi $(a,b)$ ikilisi bu iddianın yanlış olduğunu gösterir?
 
 A) $a=-2,\ b=-3$
 

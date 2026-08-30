@@ -90,9 +90,7 @@ E) $t+(-t)$
 
 `K01-T17-Q06`
 
-Bir “tek sayılar kulübü” yalnız tek tam sayıları kabul ediyor. Kulüpten seçilen $a$ ve $b$ sayılarıyla aşağıdaki işlemler yapılıyor.
-
-Hangi işlemin sonucu kulübe kesinlikle yeniden kabul edilir?
+Bir “tek sayılar kulübü” yalnız tek tam sayıları kabul ediyor. Kulüpten seçilen $a$ ve $b$ sayılarıyla aşağıdaki işlemler yapılıyor. Hangi işlemin sonucu kulübe kesinlikle yeniden kabul edilir?
 
 A) $a+b$
 
@@ -124,9 +122,7 @@ E) $\sqrt5\div\sqrt7=\dfrac{\sqrt{35}}7$
 
 `K01-T17-Q08`
 
-$x$ ve $y$ tam sayıları için $x+y$ çift sayıdır.
-
-Buna göre aşağıdakilerden hangisi kesinlikle çifttir?
+$x$ ve $y$ tam sayıları için $x+y$ çift sayıdır. Buna göre aşağıdakilerden hangisi kesinlikle çifttir?
 
 A) $x+y+1$
 
@@ -142,9 +138,7 @@ E) $x+y+3$
 
 `K01-T17-Q09`
 
-Bir öğrenci, “İki gerçek sayının çarpımı 0 ise iki sayı da 0'dır.” diyor.
-
-Hangi sayı çifti öğrencinin yanıldığını gösterir?
+Bir öğrenci, “İki gerçek sayının çarpımı 0 ise iki sayı da 0'dır.” diyor. Hangi sayı çifti öğrencinin yanıldığını gösterir?
 
 A) $1$ ve $1$
 

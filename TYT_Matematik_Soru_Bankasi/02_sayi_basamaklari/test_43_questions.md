@@ -122,7 +122,7 @@ E) $25352$
 
 `K02-T43-Q08`
 
-0, 2, 5 ve 8 rakamlarından üçü, rakam tekrarı olmadan kullanılarak üç basamaklı çift sayılar yazılıyor. Kaç farklı sayı yazılabilir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: Kaç farklı sayı yazılabilir?
 
 A) $10$
 

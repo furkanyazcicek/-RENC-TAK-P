@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "slices": [
+    {
+      "id": "central-asia-552-840",
+      "sliceYear": 700,
+      "title": "552–840 Orhun Vadisi Türk devletleri bağlamı",
+      "validFrom": 552,
+      "validTo": 841,
+      "url": "/atlas/v3/details/central-asia-552-840.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "unesco-orkhon-valley-1081",
+        "iranica-gozz-2001",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 2,
+        "events": 0,
+        "routes": 0
+      }
+    },
+    {
+      "id": "malazgirt-1071",
+      "sliceYear": 1071,
+      "title": "1071 Malazgirt Muharebesi kanıt dilimi",
+      "validFrom": 1071,
+      "validTo": 1072,
+      "url": "/atlas/v3/details/malazgirt-1071.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "tdv-malazgirt-2003",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 0,
+        "events": 1,
+        "routes": 0
+      }
+    },
+    {
+      "id": "ankara-savasi-1402",
+      "sliceYear": 1402,
+      "title": "1402 Ankara Savaşı kanıt dilimi",
+      "validFrom": 1402,
+      "validTo": 1403,
+      "url": "/atlas/v3/details/ankara-savasi-1402.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "tdv-ankara-savasi",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 0,
+        "events": 1,
+        "routes": 0
+      }
+    },
+    {
+      "id": "constantinople-1453",
+      "sliceYear": 1453,
+      "title": "1453 İstanbul'un Fethi kanıt dilimi",
+      "validFrom": 1453,
+      "validTo": 1454,
+      "url": "/atlas/v3/details/constantinople-1453.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "loc-turkey-country-study-1995",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 1,
+        "events": 1,
+        "routes": 0
+      }
+    },
+    {
+      "id": "caldiran-1514",
+      "sliceYear": 1514,
+      "title": "1514 Çaldıran Savaşı kanıt dilimi",
+      "validFrom": 1514,
+      "validTo": 1515,
+      "url": "/atlas/v3/details/caldiran-1514.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "tdv-caldiran-1993",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 0,
+        "events": 1,
+        "routes": 0
+      }
+    },
+    {
+      "id": "mohac-1526",
+      "sliceYear": 1526,
+      "title": "1526 Mohaç Muharebesi kanıt dilimi",
+      "validFrom": 1526,
+      "validTo": 1527,
+      "url": "/atlas/v3/details/mohac-1526.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "tdv-mohac-2020",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 0,
+        "events": 1,
+        "routes": 0
+      }
+    },
+    {
+      "id": "1600",
+      "sliceYear": 1600,
+      "title": "1600 Osmanlı–Habsburg sınır dünyası",
+      "validFrom": 1590,
+      "validTo": 1700,
+      "url": "/atlas/v3/details/1600.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "tdv-hacova",
+        "tdv-osmanlilar-tasra",
+        "kunt-sultans-servants-1983",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 35,
+        "administrativeRegions": 35,
+        "settlements": 4,
+        "events": 1,
+        "routes": 1
+      }
+    },
+    {
+      "id": "karlofca-1699",
+      "sliceYear": 1699,
+      "title": "1699 Karlofça Antlaşması kanıt dilimi",
+      "validFrom": 1699,
+      "validTo": 1700,
+      "url": "/atlas/v3/details/karlofca-1699.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "tdv-karlofca",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 0,
+        "events": 1,
+        "routes": 0
+      }
+    },
+    {
+      "id": "kucuk-kaynarca-1774",
+      "sliceYear": 1774,
+      "title": "1774 Küçük Kaynarca Antlaşması kanıt dilimi",
+      "validFrom": 1774,
+      "validTo": 1775,
+      "url": "/atlas/v3/details/kucuk-kaynarca-1774.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "tdv-kucuk-kaynarca-2002",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 1,
+        "events": 1,
+        "routes": 0
+      }
+    },
+    {
+      "id": "cumhuriyet-1923",
+      "sliceYear": 1923,
+      "title": "1923 Cumhuriyet'in ilanı kanıt dilimi",
+      "validFrom": 1923,
+      "validTo": 1924,
+      "url": "/atlas/v3/details/cumhuriyet-1923.json",
+      "publicationStatus": "reviewed-slice",
+      "sourceIds": [
+        "tbmm-cumhuriyet-1923",
+        "wikidata-cc0"
+      ],
+      "counts": {
+        "administrative": 0,
+        "administrativeRegions": 0,
+        "settlements": 1,
+        "events": 1,
+        "routes": 0
+      }
+    }
+  ]
+}

@@ -26,9 +26,7 @@ E) Bir tam sayının küpünü alma
 
 `K01-T16-Q02`
 
-Bir öğrenci, “İki doğal sayının farkı her zaman doğal sayıdır.” iddiasını yazıyor.
-
-Aşağıdakilerden hangisi bu iddiayı çürütür?
+Bir öğrenci, “İki doğal sayının farkı her zaman doğal sayıdır.” iddiasını yazıyor. Aşağıdakilerden hangisi bu iddiayı çürütür?
 
 A) $8-3=5$
 
@@ -60,9 +58,7 @@ E) $a+b$ sayısının doğal sayı olması
 
 `K01-T16-Q04`
 
-$x$ ve $y$ tam sayılarının çarpımı tek sayıdır.
-
-Buna göre $x+y$ toplamı için hangisi kesinlikle doğrudur?
+$x$ ve $y$ tam sayılarının çarpımı tek sayıdır. Buna göre $x+y$ toplamı için hangisi kesinlikle doğrudur?
 
 A) Negatiftir.
 

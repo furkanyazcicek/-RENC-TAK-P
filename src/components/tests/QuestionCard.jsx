@@ -1,8 +1,11 @@
 import React from 'react'
 import { Button } from '../ui'
+import { MathText } from '../aiSolve/MathRenderer'
 
 export default function QuestionCard({ question, index, selectedOptionId, onSelectOption, disabled, showCorrect, correctOptionId, explanation }) {
   if (!question) return null
+
+  const questionText = question.questionText || question.question || ''
 
   return (
     <div className="flex flex-col gap-6 p-6 bg-surface border border-line rounded-2xl">
@@ -13,8 +16,8 @@ export default function QuestionCard({ question, index, selectedOptionId, onSele
             {index + 1}
           </div>
         )}
-        <div className="text-lg font-medium text-foreground pt-1.5">
-          {question.questionText}
+        <div className="text-lg font-medium text-foreground pt-1.5 whitespace-pre-line">
+          <MathText text={questionText} />
         </div>
       </div>
 
@@ -54,7 +57,7 @@ export default function QuestionCard({ question, index, selectedOptionId, onSele
                 {option.id}
               </div>
               <div className="pt-1 text-foreground leading-relaxed">
-                {option.text}
+                <MathText text={option.text} />
               </div>
             </button>
           )
@@ -66,7 +69,7 @@ export default function QuestionCard({ question, index, selectedOptionId, onSele
         <div className="mt-4 pl-0 sm:pl-14">
           <div className="p-4 bg-brand/5 border border-brand/10 rounded-xl text-sm leading-relaxed text-foreground">
             <div className="font-semibold text-brand mb-1">Çözüm:</div>
-            {explanation}
+            <MathText text={typeof explanation === 'string' ? explanation : ''} />
           </div>
         </div>
       )}

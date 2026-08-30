@@ -9,7 +9,7 @@
 ## Soru 1
 `K03-T03-Q01`
 
-Aşağıdaki sayılardan hangisi 9 ile tam bölünür?
+Bir sınıf etkinliğinde, verilen bağıntıdan yararlanarak: Aşağıdaki sayılardan hangisi 9 ile tam bölünür?
 
 A) $5714$  
 B) $5722$  
@@ -20,7 +20,7 @@ E) $5743$
 ## Soru 2
 `K03-T03-Q02`
 
-$43a$ sayısı 3 ile tam bölündüğüne göre $a$ kaç farklı değer alabilir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $43a$ sayısı 3 ile tam bölündüğüne göre $a$ kaç farklı değer alabilir?
 
 A) $2$  
 B) $3$  
@@ -31,7 +31,7 @@ E) $6$
 ## Soru 3
 `K03-T03-Q03`
 
-$7a2$ sayısı 9 ile tam bölündüğüne göre $a$ kaç farklı değer alabilir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $7a2$ sayısı 9 ile tam bölündüğüne göre $a$ kaç farklı değer alabilir?
 
 A) $1$  
 B) $3$  
@@ -42,7 +42,7 @@ E) $5$
 ## Soru 4
 `K03-T03-Q04`
 
-$84a$ sayısı 3 ile tam bölündüğüne göre bu sayının alabileceği en büyük değer kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $84a$ sayısı 3 ile tam bölündüğüne göre bu sayının alabileceği en büyük değer kaçtır?
 
 A) $840$  
 B) $843$  
@@ -53,7 +53,7 @@ E) $849$
 ## Soru 5
 `K03-T03-Q05`
 
-Aşağıdaki sayılardan hangisi 3 ile tam bölünmez?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: Aşağıdaki sayılardan hangisi 3 ile tam bölünmez?
 
 A) $742$  
 B) $615$  
@@ -75,7 +75,7 @@ E) $597$
 ## Soru 7
 `K03-T03-Q07`
 
-12347 sayısının 3 ile bölümünden kalan kaçtır?
+Bir sınıf etkinliğinde, verilen bağıntıdan yararlanarak: 12347 sayısının 3 ile bölümünden kalan kaçtır?
 
 A) $0$  
 B) $2$  

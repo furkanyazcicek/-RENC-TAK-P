@@ -10,9 +10,7 @@
 
 `K01-T26-Q01`
 
-Tam sayılarda $a\mathbin{\star}b=a+2b$ işlemi tanımlanıyor.
-
-$a$ tek tam sayı olduğuna göre $a\mathbin{\star}b$ için hangisi her $b$ tam sayısında doğrudur?
+Tam sayılarda $a\mathbin{\star}b=a+2b$ işlemi tanımlanıyor. $a$ tek tam sayı olduğuna göre $a\mathbin{\star}b$ için hangisi her $b$ tam sayısında doğrudur?
 
 A) Çifttir.
 
@@ -28,13 +26,7 @@ E) 4'ün katıdır.
 
 `K01-T26-Q02`
 
-$r$ rasyonel, $t$ irrasyonel olmak üzere
-
-$$x=t+r,\qquad y=t-r$$
-
-tanımlanıyor.
-
-Aşağıdakilerden hangisi kesinlikle doğrudur?
+$r$ rasyonel, $t$ irrasyonel olmak üzere $$x=t+r,\qquad y=t-r$$ tanımlanıyor. Aşağıdakilerden hangisi kesinlikle doğrudur?
 
 A) $x+y$ rasyoneldir.
 
@@ -50,9 +42,7 @@ E) $x+y$ irrasyonel, $x-y$ rasyoneldir.
 
 `K01-T26-Q03`
 
-Ardışık dört tam sayının toplamı, en küçük sayının 6 katından 2 fazladır.
-
-Buna göre en büyük sayı kaçtır?
+Ardışık dört tam sayının toplamı, en küçük sayının 6 katından 2 fazladır. Buna göre en büyük sayı kaçtır?
 
 A) $3$
 
@@ -68,9 +58,7 @@ E) $7$
 
 `K01-T26-Q04`
 
-$$a=\sqrt{12}-1,\qquad b=\frac52,\qquad c=2,48$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+$$a=\sqrt{12}-1,\qquad b=\frac52,\qquad c=2,48$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $a<c<b$
 
@@ -102,11 +90,7 @@ E) $x+y>0$
 
 `K01-T26-Q06`
 
-$S$ kümesi 4'ün bütün tam sayı katlarından oluşuyor. $a,b\in S$ için tanımlanan
-
-$$a\mathbin{\circ}b=\frac{a+b}{2}$$
-
-işleminin $S$ kümesinde kapalı olmadığını gösteren çift hangisidir?
+$S$ kümesi 4'ün bütün tam sayı katlarından oluşuyor. $a,b\in S$ için tanımlanan $$a\mathbin{\circ}b=\frac{a+b}{2}$$ işleminin $S$ kümesinde kapalı olmadığını gösteren çift hangisidir?
 
 A) $a=0,\ b=8$
 
@@ -122,9 +106,7 @@ E) $a=8,\ b=16$
 
 `K01-T26-Q07`
 
-$u$ irrasyonel ve $r$ rasyonel sayıdır.
-
-Aşağıdaki ifadelerden hangisi her değer seçiminde irrasyoneldir?
+$u$ irrasyonel ve $r$ rasyonel sayıdır. Aşağıdaki ifadelerden hangisi her değer seçiminde irrasyoneldir?
 
 A) $2u-r$
 
@@ -156,7 +138,7 @@ E) $m$ ve $n$ aynı paritededir.
 
 `K01-T26-Q09`
 
-$-\sqrt{19}$ ile $\pi+1$ arasında kaç tam sayı vardır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $-\sqrt{19}$ ile $\pi+1$ arasında kaç tam sayı vardır?
 
 A) $5$
 

@@ -10,11 +10,7 @@
 
 `K01-T31-Q01`
 
-Tam sayılarda $a\star b=2a-b$ işlemi tanımlanıyor. $a+b$ tek sayı olduğuna göre
-
-$$(a\star b)+(b\star a)$$
-
-ifadesi için hangisi kesindir?
+Tam sayılarda $a\star b=2a-b$ işlemi tanımlanıyor. $a+b$ tek sayı olduğuna göre $$(a\star b)+(b\star a)$$ ifadesi için hangisi kesindir?
 
 A) Çifttir.
 
@@ -30,9 +26,7 @@ E) 4'ün katıdır.
 
 `K01-T31-Q02`
 
-$$x=\sqrt{18}+\sqrt8$$
-
-sayısı aşağıdaki sayı kümelerinden hangisine aittir?
+$$x=\sqrt{18}+\sqrt8$$ sayısı aşağıdaki sayı kümelerinden hangisine aittir?
 
 A) Doğal sayılar
 
@@ -47,8 +41,6 @@ E) İrrasyonel sayılar
 ## Soru 3
 
 `K01-T31-Q03`
-
-Ardışık beş tam sayının en küçüğü ile en büyüğünün toplamından ortadaki sayı çıkarıldığında 14 kalıyor.
 
 En büyük sayı kaçtır?
 
@@ -66,9 +58,7 @@ E) $17$
 
 `K01-T31-Q04`
 
-$$a=\sqrt{13}-2,\qquad b=\frac85,\qquad c=1,61$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+$$a=\sqrt{13}-2,\qquad b=\frac85,\qquad c=1,61$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $a<b<c$
 
@@ -116,9 +106,7 @@ E) $ab+1$
 
 `K01-T31-Q07`
 
-$$x=\sqrt5+2,\qquad y=\sqrt5-2$$
-
-olduğuna göre hangisi irrasyoneldir?
+$$x=\sqrt5+2,\qquad y=\sqrt5-2$$ olduğuna göre hangisi irrasyoneldir?
 
 A) $xy$
 
@@ -150,7 +138,7 @@ E) $2m+n+1$
 
 `K01-T31-Q09`
 
-$-\sqrt{40}$ ile $2\pi$ arasında kaç tam sayı vardır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $-\sqrt{40}$ ile $2\pi$ arasında kaç tam sayı vardır?
 
 A) $9$
 

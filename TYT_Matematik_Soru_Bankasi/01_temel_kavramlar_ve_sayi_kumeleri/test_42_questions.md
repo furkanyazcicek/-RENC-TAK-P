@@ -26,8 +26,6 @@ E) Negatiftir.
 
 `K01-T42-Q02`
 
-İrrasyonel $t$ ile sıfırdan farklı rasyonel $r$ kullanılarak $u=t+r$ ve $v=rt$ ölçümleri oluşturuluyor.
-
 Hangi işlem ölçümlerdeki irrasyonel bileşeni yok eder?
 
 A) $u-\dfrac vr$
@@ -44,9 +42,7 @@ E) $u^2+v^2$
 
 `K01-T42-Q03`
 
-Ardışık altı tam sayının ikinci ve beşinci terimlerinin toplamı 41'dir.
-
-Bu altı tam sayının toplamı kaçtır?
+Ardışık altı tam sayının ikinci ve beşinci terimlerinin toplamı 41'dir. Bu altı tam sayının toplamı kaçtır?
 
 A) $108$
 
@@ -62,9 +58,7 @@ E) $123$
 
 `K01-T42-Q04`
 
-Bir üretim hattının üç tolerans değeri $a=\sqrt{37}-4$, $b=\dfrac{25}{12}$ ve $c=2,083$ olarak kaydediliyor.
-
-Bu değerlerin küçükten büyüğe sırası hangisidir?
+Bir hazırlama hattının üç tolerans değeri $a=\sqrt{37}-4$, $b=\dfrac{25}{12}$ ve $c=2,083$ olarak kaydediliyor. Bu değerlerin küçükten büyüğe sırası hangisidir?
 
 A) $c<a<b$
 
@@ -80,9 +74,7 @@ E) $c<b<a$
 
 `K01-T42-Q05`
 
-Negatif bakiyesi $x$ olan bir hesaba $y>0$ TL yatırıldığında yeni bakiye pozitif oluyor.
-
-Buna göre hangi karşılaştırma kesinlikle doğrudur?
+Negatif bakiyesi $x$ olan bir hesaba $y>0$ TL yatırıldığında yeni bakiye pozitif oluyor. Buna göre hangi karşılaştırma kesinlikle doğrudur?
 
 A) $x^2>y^2$
 
@@ -98,7 +90,7 @@ E) $x-y>0$
 
 `K01-T42-Q06`
 
-$a$ ve $b$ tam sayılarının her biri 8 ile bölündüğünde 3 kalanını veriyor. Aşağıdakilerden hangisi 8 ile bölündüğünde yine 3 kalanını verir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $a$ ve $b$ tam sayılarının her biri 8 ile bölündüğünde 3 kalanını veriyor. Aşağıdakilerden hangisi 8 ile bölündüğünde yine 3 kalanını verir?
 
 A) $a+b$
 
@@ -114,9 +106,7 @@ E) $ab+1$
 
 `K01-T42-Q07`
 
-Bir dikdörtgen panonun kenarları $\sqrt{13}+\sqrt5$ ve $\sqrt{13}-\sqrt5$ desimetredir.
-
-Panonun alanı kaç desimetrekaredir?
+Bir dikdörtgen panonun kenarları $\sqrt{13}+\sqrt5$ ve $\sqrt{13}-\sqrt5$ desimetredir. Panonun alanı kaç desimetrekaredir?
 
 A) $5$
 
@@ -148,7 +138,7 @@ E) $\dfrac{m^2+n^2}{2}$
 
 `K01-T42-Q09`
 
-$-3\pi<n<\sqrt{83}$ eşitsizliğini sağlayan tam sayı $n$ değerlerinin toplamı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $-3\pi<n<\sqrt{83}$ eşitsizliğini sağlayan tam sayı $n$ değerlerinin toplamı kaçtır?
 
 A) $0$
 
@@ -164,9 +154,7 @@ E) $19$
 
 `K01-T42-Q10`
 
-Bir raporda “İki gerçek sayının çarpımı pozitifse iki sayı da pozitiftir.” ifadesi yer alıyor.
-
-Hangi çift rapordaki genellemeyi çürütür?
+Bir raporda “İki gerçek sayının çarpımı pozitifse iki sayı da pozitiftir.” ifadesi yer alıyor. Hangi çift rapordaki genellemeyi çürütür?
 
 A) $(2,3)$
 

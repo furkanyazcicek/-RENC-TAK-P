@@ -26,9 +26,7 @@ E) $\mathbb N\subset\mathbb Q\subset\mathbb Z\subset\mathbb R$
 
 `K01-T22-Q02`
 
-$$30\div[2(4+1)]-1$$
-
-işleminin sonucu kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $$30\div[2(4+1)]-1$$ işleminin sonucu kaçtır?
 
 A) $2$
 
@@ -76,9 +74,7 @@ E) $\sqrt7$ ve $\sqrt2$
 
 `K01-T22-Q05`
 
-Ardışık beş pozitif çift tam sayının toplamı 110'dur.
-
-Buna göre bu sayıların en küçüğü kaçtır?
+Ardışık beş pozitif çift tam sayının toplamı 110'dur. Buna göre bu sayıların en küçüğü kaçtır?
 
 A) $14$
 
@@ -94,9 +90,7 @@ E) $22$
 
 `K01-T22-Q06`
 
-$$a=\sqrt{15},\qquad b=\frac{31}{8},\qquad c=3,88$$
-
-olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
+$$a=\sqrt{15},\qquad b=\frac{31}{8},\qquad c=3,88$$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
 
 A) $b<a<c$
 

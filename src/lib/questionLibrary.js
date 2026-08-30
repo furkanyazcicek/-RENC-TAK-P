@@ -19,12 +19,15 @@ import fotosentezKemosentez from "../content/tests/biyoloji/fotosentez-kemosente
 import endokrinSistem from '../content/tests/biyoloji/endokrin-sistem.js'
 import { slugifyLibraryValue } from './libraryRoutes'
 import { turkceTests } from '../content/tests/turkce/index.js'
+import { kimyaTests } from '../content/tests/kimya/index.js'
+import { loadMathQuestionSet, mathQuestionSetsForTopic } from '../content/tests/matematik/question-bank.js'
 
 // Geçiş döneminde mevcut kod tabanındaki testler kaybolmasın. Yeni testler
 // `library_question_sets` tablosuna yazılır; bu sabit kaynak yalnızca eski
 // pilot içeriğin uyumluluk köprüsüdür.
 const BUNDLED_SETS = {
   ...Object.fromEntries(Object.entries(turkceTests).map(([k, v]) => [k, { tests: v }])),
+  ...Object.fromEntries(Object.entries(kimyaTests).map(([k, v]) => [k, { tests: v }])),
   'yapi-bilgisi': { tests: turkceTests['sozcuk-yapisi'] || [] },
   'sozcuk-turleri': { tests: [...(turkceTests['isimler']||[]), ...(turkceTests['sifatlar']||[]), ...(turkceTests['zarflar']||[]), ...(turkceTests['zamirler']||[]), ...(turkceTests['edat-baglac-unlem']||[])] },
   'fiilimsi': { tests: turkceTests['fiilimsiler'] || [] },
@@ -50,11 +53,17 @@ const BUNDLED_SETS = {
   'fotosentez-kemosentez': { tests: fotosentezKemosentez },
 }
 
-export function bundledQuestionSetsForTopic(topicName) {
-  return BUNDLED_SETS[slugifyLibraryValue(topicName)]?.tests ?? []
+export function bundledQuestionSetsForTopic(topicName, context = {}) {
+  return [
+    ...(BUNDLED_SETS[slugifyLibraryValue(topicName)]?.tests ?? []),
+    ...mathQuestionSetsForTopic(topicName, context),
+  ]
 }
 
 export async function loadQuestionSet(testId, topicSlug) {
+  const mathSet = await loadMathQuestionSet(testId)
+  if (mathSet) return mathSet
+
   const bundled = BUNDLED_SETS[topicSlug]?.tests?.find((test) => test.id === testId)
   if (bundled) return bundled
 

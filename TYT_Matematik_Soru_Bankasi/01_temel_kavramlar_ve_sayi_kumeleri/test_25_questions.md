@@ -10,9 +10,7 @@
 
 `K01-T25-Q01`
 
-$$48\div[3(2+2)]+1$$
-
-işleminin sonucu kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $$48\div[3(2+2)]+1$$ işleminin sonucu kaçtır?
 
 A) $5$
 
@@ -28,9 +26,7 @@ E) $13$
 
 `K01-T25-Q02`
 
-$$\frac{\sqrt{18}}{\sqrt2}$$
-
-sayısının ait olduğu en dar sayı kümesi hangisidir?
+$$\frac{\sqrt{18}}{\sqrt2}$$ sayısının ait olduğu en dar sayı kümesi hangisidir?
 
 A) İrrasyonel sayılar
 
@@ -78,9 +74,7 @@ E) $c<b<a$
 
 `K01-T25-Q05`
 
-Bir sadeleştirme panosu rasyonel $r$ ve irrasyonel $t$ ile kurulmuş ifadeleri inceliyor.
-
-Hangi ifade panoda kesinlikle rasyonel etiketi alır?
+Bir sadeleştirme panosu rasyonel $r$ ve irrasyonel $t$ ile kurulmuş ifadeleri inceliyor. Hangi ifade panoda kesinlikle rasyonel etiketi alır?
 
 A) $r+t$
 
@@ -96,9 +90,7 @@ E) $t-r$
 
 `K01-T25-Q06`
 
-Ardışık yedi tam sayının toplamı 0'dır.
-
-Bu sayıların en büyüğü kaçtır?
+Ardışık yedi tam sayının toplamı 0'dır. Bu sayıların en büyüğü kaçtır?
 
 A) $2$
 
@@ -114,9 +106,7 @@ E) $6$
 
 `K01-T25-Q07`
 
-$a$ negatif, $b$ pozitif gerçek sayıdır.
-
-Aşağıdaki ifadelerden hangisi kesinlikle negatiftir?
+$a$ negatif, $b$ pozitif gerçek sayıdır. Aşağıdaki ifadelerden hangisi kesinlikle negatiftir?
 
 A) $a^2$
 
@@ -132,9 +122,7 @@ E) $b^2$
 
 `K01-T25-Q08`
 
-Bir öğrenci iki irrasyonel sayının çarpımının daima irrasyonel kaldığını savunuyor.
-
-Hangi işlem bu savı geçersiz kılar?
+Bir öğrenci iki irrasyonel sayının çarpımının daima irrasyonel kaldığını savunuyor. Hangi işlem bu savı geçersiz kılar?
 
 A) $\sqrt2\cdot\sqrt3=\sqrt6$
 
@@ -150,9 +138,7 @@ E) $\sqrt7\cdot\sqrt7=7$
 
 `K01-T25-Q09`
 
-Bir aralık panosu $-\sqrt8$'den büyük ve $\sqrt{17}$'ye eşit veya küçük tam sayıları gösteriyor.
-
-Panoda kaç sayı görünür?
+Bir aralık panosu $-\sqrt8$'den büyük ve $\sqrt{17}$'ye eşit veya küçük tam sayıları gösteriyor. Panoda kaç sayı görünür?
 
 A) $4$
 

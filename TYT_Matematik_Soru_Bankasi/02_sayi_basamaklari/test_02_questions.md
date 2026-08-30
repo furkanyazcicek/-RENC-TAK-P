@@ -26,7 +26,7 @@ E) $6$
 
 `K02-T02-Q02`
 
-$29\,147$ sayısındaki 9 rakamının basamak değeri kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $29\,147$ sayısındaki 9 rakamının basamak değeri kaçtır?
 
 A) $9000$
 
@@ -42,9 +42,7 @@ E) $90\,000$
 
 `K02-T02-Q03`
 
-$$7\cdot10\,000+2\cdot100+5$$
-
-çözümlemesi hangi sayıya eşittir?
+$$7\cdot10\,000+2\cdot100+5$$ çözümlemesi hangi sayıya eşittir?
 
 A) $72\,005$
 
@@ -60,7 +58,7 @@ E) $70\,205$
 
 `K02-T02-Q04`
 
-Üç basamaklı $abc$ sayısında $a=4$, $b=0$ ve $c=9$ olduğuna göre sayı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: Üç basamaklı $abc$ sayısında $a=4$, $b=0$ ve $c=9$ olduğuna göre sayı kaçtır?
 
 A) $49$
 
@@ -76,7 +74,7 @@ E) $940$
 
 `K02-T02-Q05`
 
-$100\,000$ doğal sayısı kaç basamaklıdır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $100\,000$ doğal sayısı kaç basamaklıdır?
 
 A) $3$
 
@@ -92,11 +90,7 @@ E) $7$
 
 `K02-T02-Q06`
 
-$a$ bir rakam olmak üzere
-
-$$8000+100a+30+4$$
-
-ifadesi hangi sayıyı gösterir?
+$a$ bir rakam olmak üzere $$8000+100a+30+4$$ ifadesi hangi sayıyı gösterir?
 
 A) $8a304$
 
@@ -128,7 +122,7 @@ E) $506$
 
 `K02-T02-Q08`
 
-$17\,642$ sayısında basamak değeri $600$ olan rakam hangisidir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $17\,642$ sayısında basamak değeri $600$ olan rakam hangisidir?
 
 A) $1$
 
@@ -160,7 +154,7 @@ E) $800\,007$
 
 `K02-T02-Q10`
 
-$60\,409$ sayısının basamak değerleri toplamı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $60\,409$ sayısının basamak değerleri toplamı kaçtır?
 
 A) $19$
 

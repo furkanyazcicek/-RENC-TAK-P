@@ -42,7 +42,7 @@ E) $59$
 ## Soru 4
 `K02-T46-Q04`
 
-1, 2, 5, 7 ve 8 rakamları birer kez kullanılarak 80000'den küçük en büyük çift sayı yazılıyor. Bu sayı kaçtır?
+Bir sınıf etkinliğinde, verilen bağıntıdan yararlanarak: Bu sayı kaçtır?
 
 A) $78251$  
 B) $78521$  
@@ -86,7 +86,7 @@ E) $936$
 ## Soru 8
 `K02-T46-Q08`
 
-805 sayısından rakamları toplamı çıkarılırsa kaç elde edilir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: 805 sayısından rakamları toplamı çıkarılırsa kaç elde edilir?
 
 A) $785$  
 B) $790$  

@@ -42,7 +42,7 @@ E) $843$
 ## Soru 4
 `K02-T44-Q04`
 
-0, 2, 4, 7 ve 9 rakamları birer kez kullanılarak 50000'den büyük en küçük tek sayı yazılıyor. Bu sayı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: Bu sayı kaçtır?
 
 A) $70429$  
 B) $70294$  
@@ -97,7 +97,7 @@ E) $872$
 ## Soru 9
 `K02-T44-Q09`
 
-1, 4, 5 ve 8 rakamları birer kez kullanılarak yazılabilecek en büyük tek sayı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: 1, 4, 5 ve 8 rakamları birer kez kullanılarak yazılabilecek en büyük tek sayı kaçtır?
 
 A) $8514$  
 B) $8541$  

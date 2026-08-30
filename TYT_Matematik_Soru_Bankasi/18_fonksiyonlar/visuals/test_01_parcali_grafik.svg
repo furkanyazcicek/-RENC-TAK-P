@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" role="img" aria-labelledby="title desc">
+  <title id="title">Parçalı doğrusal f fonksiyonunun grafiği</title>
+  <desc id="desc">Grafik eksi 3 virgül 1, eksi 1 virgül 3, 2 virgül 0 ve 4 virgül 2 noktalarından geçen doğru parçalarından oluşur.</desc>
+  <rect width="640" height="380" rx="20" fill="#ffffff"/>
+  <g stroke="#e2e8f0" stroke-width="1">
+    <path d="M80 40V320M140 40V320M200 40V320M260 40V320M320 40V320M380 40V320M440 40V320M500 40V320"/>
+    <path d="M60 60H540M60 120H540M60 180H540M60 240H540M60 300H540"/>
+  </g>
+  <g stroke="#1f2937" stroke-width="2.5" stroke-linecap="round">
+    <path d="M50 300H560"/>
+    <path d="M260 330V28"/>
+    <path d="m560 300-10-6v12z" fill="#1f2937"/>
+    <path d="m260 28-6 10h12z" fill="#1f2937"/>
+  </g>
+  <path d="M60 180H540" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="7 7"/>
+  <polyline points="80,240 200,120 380,300 500,180" fill="none" stroke="#7c3aed" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#7c3aed" stroke="#ffffff" stroke-width="3">
+    <circle cx="80" cy="240" r="7"/><circle cx="200" cy="120" r="7"/><circle cx="380" cy="300" r="7"/><circle cx="500" cy="180" r="7"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-size="18" fill="#1f2937">
+    <text x="566" y="306">x</text>
+    <text x="268" y="32">y</text>
+    <text x="244" y="322">O</text>
+    <text x="53" y="322">-3</text>
+    <text x="189" y="322">-1</text>
+    <text x="373" y="322">2</text>
+    <text x="493" y="322">4</text>
+    <text x="238" y="186">2</text>
+    <text x="503" y="164" fill="#7c3aed" font-weight="700">f</text>
+  </g>
+</svg>

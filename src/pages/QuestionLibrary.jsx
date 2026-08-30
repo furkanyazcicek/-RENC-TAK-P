@@ -15,6 +15,7 @@ import {
 import { supabase } from '../lib/supabaseClient'
 import { colorForKey } from '../lib/chartTheme'
 import { bundledQuestionSetsForTopic } from '../lib/questionLibrary'
+import { withMathQuestionBankTopics } from '../content/tests/matematik/question-bank.js'
 import { emekliKonuMu } from '../content/emekliKonular'
 import { libraryPath, slugifyLibraryValue } from '../lib/libraryRoutes'
 import {
@@ -60,7 +61,7 @@ export default function QuestionLibrary() {
     const grouped = {}
     ;(setsRes.data ?? []).forEach((set) => { (grouped[set.topic_id] ??= []).push(set) })
     const remoteSubjects = subjectsRes.data ?? []
-    const remoteTopics = topicsRes.data ?? []
+    const remoteTopics = withMathQuestionBankTopics(remoteSubjects, topicsRes.data ?? [])
     const gradeData = createGradeLibraryData(remoteSubjects, remoteTopics)
     setSubjects([...remoteSubjects, ...gradeData.subjects])
     setTopics([...remoteTopics, ...gradeData.topics])
@@ -81,10 +82,14 @@ export default function QuestionLibrary() {
     const bundledIds = new Set()
     sourceIds.forEach((id) => {
       const sourceTopic = topics.find((candidate) => candidate.id === id)
-      bundledQuestionSetsForTopic(sourceTopic?.name ?? topic.name).forEach((set) => bundledIds.add(set.id))
+      const sourceSubject = subjects.find((subject) => subject.id === (sourceTopic?.subject_id ?? topic.subject_id))
+      bundledQuestionSetsForTopic(sourceTopic?.name ?? topic.name, {
+        examType: sourceSubject?.exam_type,
+        subjectName: sourceSubject?.name,
+      }).forEach((set) => bundledIds.add(set.id))
     })
     return remoteCount + bundledIds.size
-  }, [setsByTopic, topics])
+  }, [setsByTopic, subjects, topics])
 
   // Müfredattan düşmüş eski başlıklar listede yer kaplamasın; içinde soru
   // seti varsa yine görünür (bkz. src/content/emekliKonular.js).
@@ -111,12 +116,15 @@ export default function QuestionLibrary() {
     const knownIds = new Set(remote.map((set) => set.id))
     const bundled = sourceIds.flatMap((id) => {
       const sourceTopic = topics.find((candidate) => candidate.id === id)
-      return bundledQuestionSetsForTopic(sourceTopic?.name ?? selectedTopic.name)
+      return bundledQuestionSetsForTopic(sourceTopic?.name ?? selectedTopic.name, {
+        examType,
+        subjectName: selectedSubject?.name,
+      })
     })
     return [...remote, ...bundled.filter((set) => !knownIds.has(set.id))].filter(
       (set, index, list) => list.findIndex((candidate) => candidate.id === set.id) === index
     )
-  }, [selectedTopic, setsByTopic, topics])
+  }, [selectedTopic, setsByTopic, topics, examType, selectedSubject])
 
   const q = search.trim().toLocaleLowerCase('tr-TR')
   const visibleSubjects = q ? subjectsForExam.filter((subject) => subject.name.toLocaleLowerCase('tr-TR').includes(q)) : subjectsForExam

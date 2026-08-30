@@ -5,6 +5,9 @@
     "ruler": "Kanuni Sultan Süleyman",
     "bounds": [-12, 18, 61, 57],
     "projection": "Equirectangular regional atlas",
+    "publicationStatus": "quarantined",
+    "geometryMethod": "manual-unreferenced-prototype",
+    "geometryWarning": "Siyasi sınır köşeleri kaynak görsellere coğrafi kontrol noktalarıyla bağlanmadan elle çizildi. Üretim atlasında kullanılamaz.",
     "sources": [
       {
         "title": "Natural Earth 1:50m Physical Vectors",

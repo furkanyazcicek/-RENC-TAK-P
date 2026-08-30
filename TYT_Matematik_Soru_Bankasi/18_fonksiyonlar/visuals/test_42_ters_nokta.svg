@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470" role="img" aria-labelledby="title desc">
+  <title id="title">Fonksiyon grafiği ve y eşittir x doğrusu</title>
+  <desc id="desc">Doğrusal f grafiği üzerinde iki virgül beş noktası işaretlidir. Kesikli y eşittir x doğrusu ters fonksiyon simetrisini göstermektedir.</desc>
+  <defs>
+    <marker id="axisArrow42" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#334155"/>
+    </marker>
+  </defs>
+  <rect x="1" y="1" width="758" height="468" rx="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <g stroke="#e2e8f0" stroke-width="1">
+    <path d="M140 40V430 M195 40V430 M250 40V430 M305 40V430 M360 40V430 M415 40V430 M470 40V430 M525 40V430 M580 40V430"/>
+    <path d="M100 65H650 M100 120H650 M100 175H650 M100 230H650 M100 285H650 M100 340H650 M100 395H650"/>
+  </g>
+  <g stroke="#334155" stroke-width="3" marker-end="url(#axisArrow42)">
+    <path d="M85 340H690"/>
+    <path d="M250 435V30"/>
+  </g>
+  <g fill="#475569" font-family="Arial, sans-serif" font-size="17">
+    <text x="678" y="368">x</text>
+    <text x="267" y="43">y</text>
+    <text x="258" y="366">0</text>
+    <text x="353" y="366">2</text>
+    <text x="267" y="70">5</text>
+  </g>
+  <path d="M140 450L600 -10" fill="none" stroke="#94a3b8" stroke-width="3" stroke-dasharray="10 8"/>
+  <text x="515" y="60" fill="#64748b" font-family="Arial, sans-serif" font-size="19">y = x</text>
+  <path d="M140 285L415 10" fill="none" stroke="#2563eb" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="360" cy="65" r="10" fill="#7c3aed" stroke="#ffffff" stroke-width="4"/>
+  <text x="378" y="55" fill="#5b21b6" font-family="Arial, sans-serif" font-size="18" font-weight="700">(2, 5)</text>
+  <text x="395" y="42" fill="#1d4ed8" font-family="Georgia, serif" font-size="28" font-style="italic">f</text>
+</svg>

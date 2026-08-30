@@ -26,9 +26,7 @@ E) Çift
 
 `K01-T49-Q02`
 
-Bir sinyal ayrıştırıcısı, irrasyonel $t$ bileşenini ve rasyonel $r$ düzeltmesini kullanarak $u=3t+r$ ile $v=t-r$ kanallarını oluşturuyor.
-
-Hangi kanal birleşiminde $t$ bileşeni tamamen silinir?
+Bir sinyal ayrıştırıcısı, irrasyonel $t$ bileşenini ve rasyonel $r$ düzeltmesini kullanarak $u=3t+r$ ile $v=t-r$ kanallarını oluşturuyor. Hangi kanal birleşiminde $t$ bileşeni tamamen silinir?
 
 A) $u+v$
 
@@ -76,9 +74,7 @@ E) $c<b<a$
 
 `K01-T49-Q05`
 
-Bir denge modelinde $x$ negatif yükü, $y$ pozitif desteği gösteriyor. Negatif yükün büyüklüğü desteğin dört katıdır.
-
-Modelin $\dfrac{x+2y}{x-y}$ göstergesi kaçtır?
+Bir denge modelinde $x$ negatif yükü, $y$ pozitif desteği gösteriyor. Negatif yükün büyüklüğü desteğin dört katıdır. Modelin $\dfrac{x+2y}{x-y}$ göstergesi kaçtır?
 
 A) $-\dfrac25$
 
@@ -94,7 +90,7 @@ E) $\dfrac12$
 
 `K01-T49-Q06`
 
-$a$ ve $b$ tam sayıları 14 ile bölündüğünde 11 kalanını vermektedir. Aşağıdakilerden hangisi 14 ile bölündüğünde yine 11 kalanını verir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $a$ ve $b$ tam sayıları 14 ile bölündüğünde 11 kalanını vermektedir. Aşağıdakilerden hangisi 14 ile bölündüğünde yine 11 kalanını verir?
 
 A) $a+b$
 
@@ -110,7 +106,7 @@ E) $ab+1$
 
 `K01-T49-Q07`
 
-Kenarları $\sqrt{23}+\sqrt{14}$ ve $\sqrt{23}-\sqrt{14}$ birim olan dikdörtgenin alanı kaç birimkaredir?
+Bir sınıf etkinliğinde, verilen bağıntıdan yararlanarak: Kenarları $\sqrt{23}+\sqrt{14}$ ve $\sqrt{23}-\sqrt{14}$ birim olan dikdörtgenin alanı kaç birimkaredir?
 
 A) $9$
 
@@ -142,7 +138,7 @@ E) Negatiftir.
 
 `K01-T49-Q09`
 
-$-\sqrt{400}$ ile $7\pi$ arasında kaç tam sayı vardır?
+Bir sınıf etkinliğinde, verilen bağıntıdan yararlanarak: $-\sqrt{400}$ ile $7\pi$ arasında kaç tam sayı vardır?
 
 A) $39$
 

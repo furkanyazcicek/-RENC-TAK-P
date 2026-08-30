@@ -12,6 +12,7 @@ import {
   FlaskConical,
   Landmark,
   Map,
+  RotateCcw,
   ScanText,
   Sparkles,
 } from 'lucide-react'
@@ -129,7 +130,75 @@ const KOC_ODAKLARI = [
   },
 ]
 
-function AtlasModel({ ders }) {
+const FIZIK_MODELI = {
+  hiz: 20,
+  yercekimi: 10,
+}
+
+function fizikDegerleriniHesapla(aci) {
+  const radyan = (aci * Math.PI) / 180
+  const { hiz, yercekimi } = FIZIK_MODELI
+  const menzil = (hiz ** 2 * Math.sin(2 * radyan)) / yercekimi
+  const tepe = (hiz ** 2 * Math.sin(radyan) ** 2) / (2 * yercekimi)
+  const sure = (2 * hiz * Math.sin(radyan)) / yercekimi
+
+  return {
+    menzil,
+    tepe,
+    sure,
+  }
+}
+
+function ondalik(deger) {
+  return deger.toLocaleString('tr-TR', {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  })
+}
+
+function ProjectileModel({ aci }) {
+  const sonuc = fizikDegerleriniHesapla(aci)
+  const baslangicX = 34
+  const zeminY = 177
+  const bitisX = baslangicX + (sonuc.menzil / 40) * 292
+  const tepeX = (baslangicX + bitisX) / 2
+  const tepeY = zeminY - (sonuc.tepe / 15) * 90
+  const kontrolY = 2 * tepeY - zeminY
+  const radyan = (aci * Math.PI) / 180
+  const vektorX = baslangicX + Math.cos(radyan) * 72
+  const vektorY = zeminY - Math.sin(radyan) * 72
+  const aciklama = `${aci} derece atışta menzil ${ondalik(sonuc.menzil)} metre, tepe yüksekliği ${ondalik(sonuc.tepe)} metre ve uçuş süresi ${ondalik(sonuc.sure)} saniye.`
+
+  return (
+    <svg
+      className="editorial-projectile"
+      viewBox="0 0 360 220"
+      role="img"
+      aria-label={aciklama}
+    >
+      <defs>
+        <marker id="editorial-projectile-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+          <path d="M0 0L8 4L0 8Z" />
+        </marker>
+      </defs>
+      <path className="editorial-projectile__grid" d="M22 184H338M22 136H338M22 88H338M22 40H338M70 24V194M134 24V194M198 24V194M262 24V194M326 24V194" />
+      <path
+        className="editorial-projectile__curve"
+        d={`M${baslangicX} ${zeminY}Q${tepeX} ${kontrolY} ${bitisX} ${zeminY}`}
+      />
+      <path
+        className="editorial-projectile__vector"
+        d={`M${baslangicX} ${zeminY}L${vektorX} ${vektorY}`}
+        markerEnd="url(#editorial-projectile-arrow)"
+      />
+      <circle className="editorial-projectile__point" cx={tepeX} cy={tepeY} r="8" />
+      <path className="editorial-projectile__range" d={`M${baslangicX} 196H${bitisX}`} />
+      <path className="editorial-projectile__ground" d="M22 184H338" />
+    </svg>
+  )
+}
+
+function AtlasModel({ ders, aci }) {
   if (ders.id === 'kimya') {
     return (
       <div className="editorial-molecule" aria-hidden="true">
@@ -179,21 +248,20 @@ function AtlasModel({ ders }) {
     )
   }
 
-  return (
-    <svg className="editorial-projectile" viewBox="0 0 360 220" aria-hidden="true">
-      <path className="editorial-projectile__grid" d="M22 184H338M22 136H338M22 88H338M22 40H338M70 24V194M134 24V194M198 24V194M262 24V194M326 24V194" />
-      <path className="editorial-projectile__curve" d="M34 177C105 43 226 39 326 177" />
-      <path className="editorial-projectile__vector" d="M35 176L92 107" />
-      <path className="editorial-projectile__arrow" d="M92 107l-4 17M92 107l-17 2" />
-      <circle className="editorial-projectile__point" cx="182" cy="76" r="8" />
-      <path className="editorial-projectile__ground" d="M22 184H338" />
-    </svg>
-  )
+  return <ProjectileModel aci={aci} />
 }
 
 function AtlasScene() {
   const [dersId, setDersId] = useState('fizik')
+  const [atisAcisi, setAtisAcisi] = useState(45)
   const ders = ATLAS_DERSLERI.find((item) => item.id === dersId) ?? ATLAS_DERSLERI[0]
+  const fizikSecili = ders.id === 'fizik'
+  const fizikSonucu = fizikDegerleriniHesapla(atisAcisi)
+  const fizikCikarimi = atisAcisi < 43
+    ? 'Daha yatık atışta tepe ve uçuş süresi azalır; açı 45°’ye yaklaştıkça menzil uzar.'
+    : atisAcisi > 47
+      ? 'Daha dik atışta tepe ve uçuş süresi artar; 45°’ten uzaklaştıkça menzil kısalır.'
+      : 'Bu modelde 45°, aynı ilk hız için en büyük yatay menzili verir.'
 
   return (
     <div className="editorial-demo editorial-demo--atlas">
@@ -216,21 +284,74 @@ function AtlasScene() {
         <div className={`editorial-atlas-canvas editorial-atlas-canvas--${ders.id}`}>
           <div className="editorial-atlas-canvas__meta">
             <span>{ders.ust}</span>
-            <strong className="tabular-nums">{ders.deger}</strong>
+            <strong className="tabular-nums">{fizikSecili ? `${atisAcisi}°` : ders.deger}</strong>
           </div>
-          <AtlasModel ders={ders} />
+          <AtlasModel ders={ders} aci={atisAcisi} />
           <span className="editorial-atlas-canvas__gesture">
-            <span aria-hidden="true">↔</span> Seçimi değiştir
+            <span aria-hidden="true">↔</span> {fizikSecili ? 'Açıyı değiştir' : 'Dersi değiştir'}
           </span>
         </div>
-        <div className="editorial-atlas-copy" aria-live="polite">
+        <div
+          className={`editorial-atlas-copy${fizikSecili ? ' editorial-atlas-copy--physics' : ''}`}
+          aria-live={fizikSecili ? undefined : 'polite'}
+        >
           <span className="editorial-demo-kicker">{ders.etiket} Atlası</span>
           <h3>{ders.ust}</h3>
-          <p>{ders.aciklama}</p>
-          <div className="editorial-model-status">
-            <Check aria-hidden="true" />
-            Eylem ve sonuç aynı sahnede
-          </div>
+          {fizikSecili ? (
+            <>
+              <div className="editorial-physics-control">
+                <div className="editorial-physics-control__heading">
+                  <label htmlFor="atlas-atis-acisi">Atış açısı</label>
+                  <div>
+                    <output htmlFor="atlas-atis-acisi" className="tabular-nums">{atisAcisi}°</output>
+                    <button
+                      type="button"
+                      aria-label="Atış açısını 45 dereceye sıfırla"
+                      disabled={atisAcisi === 45}
+                      onClick={() => setAtisAcisi(45)}
+                      className="focus-ring"
+                    >
+                      <RotateCcw aria-hidden="true" />
+                    </button>
+                  </div>
+                </div>
+                <input
+                  id="atlas-atis-acisi"
+                  type="range"
+                  min="25"
+                  max="65"
+                  step="1"
+                  value={atisAcisi}
+                  aria-describedby="atlas-fizik-varsayimi"
+                  onInput={(event) => setAtisAcisi(Number(event.currentTarget.value))}
+                />
+                <div className="editorial-physics-control__limits" aria-hidden="true">
+                  <span>25° · yatık</span>
+                  <span>45° · menzil</span>
+                  <span>65° · dik</span>
+                </div>
+              </div>
+
+              <dl className="editorial-physics-results" aria-live="polite">
+                <div><dt>Menzil</dt><dd className="tabular-nums">{ondalik(fizikSonucu.menzil)} m</dd></div>
+                <div><dt>Tepe</dt><dd className="tabular-nums">{ondalik(fizikSonucu.tepe)} m</dd></div>
+                <div><dt>Süre</dt><dd className="tabular-nums">{ondalik(fizikSonucu.sure)} sn</dd></div>
+              </dl>
+
+              <p className="editorial-physics-insight">{fizikCikarimi}</p>
+              <small id="atlas-fizik-varsayimi" className="editorial-physics-assumption">
+                Model: v₀ = 20 m/sn · g = 10 m/sn² · hava direnci yok
+              </small>
+            </>
+          ) : (
+            <>
+              <p>{ders.aciklama}</p>
+              <div className="editorial-model-status">
+                <Check aria-hidden="true" />
+                Eylem ve sonuç aynı sahnede
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

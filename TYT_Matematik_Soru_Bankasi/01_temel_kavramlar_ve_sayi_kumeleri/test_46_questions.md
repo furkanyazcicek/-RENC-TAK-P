@@ -42,9 +42,7 @@ E) $\dfrac{u-2v}{5}$
 
 `K01-T46-Q03`
 
-Ardışık on tam sayıdan oluşan bir etiket dizisinde üçüncü ve sekizinci etiketlerin toplamı 47'dir.
-
-On etiketin toplamı kaçtır?
+Ardışık on tam sayıdan oluşan bir etiket dizisinde üçüncü ve sekizinci etiketlerin toplamı 47'dir. On etiketin toplamı kaçtır?
 
 A) $215$
 
@@ -60,7 +58,7 @@ E) $255$
 
 `K01-T46-Q04`
 
-$a=\sqrt{43}-5$, $b=\dfrac{14}{9}$ ve $c=1,556$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $a=\sqrt{43}-5$, $b=\dfrac{14}{9}$ ve $c=1,556$ olduğuna göre küçükten büyüğe doğru sıralama hangisidir?
 
 A) $b<c<a$
 
@@ -108,7 +106,7 @@ E) $9$
 
 `K01-T46-Q07`
 
-Kenarları $\sqrt{19}+\sqrt{11}$ ve $\sqrt{19}-\sqrt{11}$ birim olan dikdörtgenin alanı kaç birimkaredir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: Kenarları $\sqrt{19}+\sqrt{11}$ ve $\sqrt{19}-\sqrt{11}$ birim olan dikdörtgenin alanı kaç birimkaredir?
 
 A) $8$
 

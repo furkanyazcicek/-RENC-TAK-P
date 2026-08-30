@@ -10,7 +10,7 @@
 
 `K02-T04-Q01`
 
-$302\,594$ sayısının yüzler basamağındaki rakam hangisidir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $302\,594$ sayısının yüzler basamağındaki rakam hangisidir?
 
 A) $9$
 
@@ -26,7 +26,7 @@ E) $5$
 
 `K02-T04-Q02`
 
-$846\,213$ sayısındaki 4 rakamının basamak değeri kaçtır?
+Bir sayı tablosu okunurken, verilen bağıntıdan yararlanarak: $846\,213$ sayısındaki 4 rakamının basamak değeri kaçtır?
 
 A) $400$
 
@@ -42,9 +42,7 @@ E) $40$
 
 `K02-T04-Q03`
 
-$$9\cdot1000+6\cdot10+2$$
-
-çözümlemesi hangi sayıyı gösterir?
+$$9\cdot1000+6\cdot10+2$$ çözümlemesi hangi sayıyı gösterir?
 
 A) $9620$
 
@@ -60,7 +58,7 @@ E) $9260$
 
 `K02-T04-Q04`
 
-Yüzler basamağı 3, onlar basamağı 7 ve birler basamağı 0 olan sayı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: Yüzler basamağı 3, onlar basamağı 7 ve birler basamağı 0 olan sayı kaçtır?
 
 A) $307$
 
@@ -76,7 +74,7 @@ E) $37$
 
 `K02-T04-Q05`
 
-$99\,999$ doğal sayısı kaç basamaklıdır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $99\,999$ doğal sayısı kaç basamaklıdır?
 
 A) $5$
 
@@ -124,7 +122,7 @@ E) $54$
 
 `K02-T04-Q08`
 
-$58\,130$ sayısında basamak değeri $100$ olan rakam hangisidir?
+Bir sayı tablosu okunurken, verilen bağıntıdan yararlanarak: $58\,130$ sayısında basamak değeri $100$ olan rakam hangisidir?
 
 A) $3$
 
@@ -156,7 +154,7 @@ E) $507$
 
 `K02-T04-Q10`
 
-$47\,006$ sayısının basamak değerleri toplamı kaçtır?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $47\,006$ sayısının basamak değerleri toplamı kaçtır?
 
 A) $47\,006$
 

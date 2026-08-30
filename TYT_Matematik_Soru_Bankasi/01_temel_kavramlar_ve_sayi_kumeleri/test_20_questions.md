@@ -26,9 +26,7 @@ E) $-a-b$
 
 `K01-T20-Q02`
 
-Bir öğrenci, “İki gerçek sayının çarpımı pozitifse iki sayı da pozitiftir.” diyor.
-
-Hangi sayı çifti bu iddiayı çürütür?
+Bir öğrenci, “İki gerçek sayının çarpımı pozitifse iki sayı da pozitiftir.” diyor. Hangi sayı çifti bu iddiayı çürütür?
 
 A) $1$ ve $2$
 
@@ -44,9 +42,7 @@ E) $-2$ ve $-3$
 
 `K01-T20-Q03`
 
-İki tam sayının toplamı tektir.
-
-Buna göre bu sayıların çarpımı için hangi özellik zorunludur?
+İki tam sayının toplamı tektir. Buna göre bu sayıların çarpımı için hangi özellik zorunludur?
 
 A) $x$ ve $y$ tektir.
 
@@ -62,9 +58,7 @@ E) $xy$ tektir.
 
 `K01-T20-Q04`
 
-$a=\sqrt2$ ve $ab=2$ olarak veriliyor.
-
-Buna göre $b$ hangi sayı kümesine aittir?
+$a=\sqrt2$ ve $ab=2$ olarak veriliyor. Buna göre $b$ hangi sayı kümesine aittir?
 
 A) Doğal sayıdır.
 
@@ -80,9 +74,7 @@ E) Pozitif rasyoneldir.
 
 `K01-T20-Q05`
 
-$x=\sqrt2$ ve $y=\sqrt3$ olarak veriliyor.
-
-$x+y$ ile $xy$ sayılarının türü sırasıyla hangisidir?
+$x=\sqrt2$ ve $y=\sqrt3$ olarak veriliyor. $x+y$ ile $xy$ sayılarının türü sırasıyla hangisidir?
 
 A) Rasyonel — Rasyonel
 
@@ -130,9 +122,7 @@ E) $x=-4,\ y=-2$
 
 `K01-T20-Q08`
 
-$m$ bir tam sayı ve $m^2$ çift sayıdır.
-
-Buna göre $m$ için hangisi kesinlikle doğrudur?
+$m$ bir tam sayı ve $m^2$ çift sayıdır. Buna göre $m$ için hangisi kesinlikle doğrudur?
 
 A) Tek sayıdır.
 
@@ -148,9 +138,7 @@ E) Sıfırdan farklıdır.
 
 `K01-T20-Q09`
 
-Bir öğrenci, iki irrasyonel sayının farkının daima irrasyonel kaldığını öne sürüyor.
-
-Hangi işlem bu iddiayı geçersiz kılar?
+Bir öğrenci, iki irrasyonel sayının farkının daima irrasyonel kaldığını öne sürüyor. Hangi işlem bu iddiayı geçersiz kılar?
 
 A) $\sqrt3-\sqrt2$
 

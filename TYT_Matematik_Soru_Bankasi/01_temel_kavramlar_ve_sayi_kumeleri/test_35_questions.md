@@ -26,9 +26,7 @@ E) 4'ün katıdır.
 
 `K01-T35-Q02`
 
-$$x=\sqrt3+1,\qquad y=\sqrt3-1$$
-
-olduğuna göre $x^2-y^2$ hangi tür sayıdır?
+$$x=\sqrt3+1,\qquad y=\sqrt3-1$$ olduğuna göre $x^2-y^2$ hangi tür sayıdır?
 
 A) Doğal
 
@@ -60,9 +58,7 @@ E) $36$
 
 `K01-T35-Q04`
 
-$$a=\sqrt{14}-2,\qquad b=\frac74,\qquad c=1,745$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $$a=\sqrt{14}-2,\qquad b=\frac74,\qquad c=1,745$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $c<a<b$
 
@@ -110,7 +106,7 @@ E) $\dfrac{ab}{2}$
 
 `K01-T35-Q07`
 
-Beş karttaki köklü işlemler sadeleştiriliyor. Sonucu tam sayıya dönüşmeyen kart hangisidir?
+Sonucu tam sayıya dönüşmeyen kart hangisidir?
 
 A) $\sqrt{27}\cdot\sqrt3$
 
@@ -142,7 +138,7 @@ E) $12$
 
 `K01-T35-Q09`
 
-$-\sqrt{52}$ ile $\sqrt{29}$ arasında kaç tam sayı vardır?
+Bir sınıf etkinliğinde, verilen bağıntıdan yararlanarak: $-\sqrt{52}$ ile $\sqrt{29}$ arasında kaç tam sayı vardır?
 
 A) $10$
 

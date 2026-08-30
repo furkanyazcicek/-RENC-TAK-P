@@ -26,8 +26,6 @@ E) Sıfır
 
 `K01-T43-Q02`
 
-Bir tasarımda $x=\sqrt5+\sqrt2$ ve $y=\sqrt5-\sqrt2$ uzunlukları kullanılıyor.
-
 $x^2+y^2$ toplamı kaçtır?
 
 A) $12$
@@ -44,9 +42,7 @@ E) $7$
 
 `K01-T43-Q03`
 
-Bir üretim bandında ardışık yedi pozitif 4 katı etiket bulunuyor. Etiketlerin toplamı 196'dır.
-
-En küçük etiket kaçtır?
+Etiketlerin toplamı 196'dır. En küçük etiket kaçtır?
 
 A) $16$
 
@@ -62,13 +58,7 @@ E) $32$
 
 `K01-T43-Q04`
 
-$$a=\sqrt2,\qquad b=\frac{99}{70},\qquad c=1,414$$
-
-Bu üç sayı aşağıdaki sayı doğrusunda $P,Q,R$ noktalarına yerleştirilecektir.
-
-![P Q R sayı doğrusu](visuals/test_43_sayi_dogrusu.svg)
-
-Doğru eşleştirme hangisidir?
+$$a=\sqrt2,\qquad b=\frac{99}{70},\qquad c=1,414$$ Bu üç sayı aşağıdaki sayı doğrusunda $P,Q,R$ noktalarına yerleştirilecektir.![P Q R sayı doğrusu](visuals/test_43_sayi_dogrusu.svg) Doğru eşleştirme hangisidir?
 
 A) $P=a,\ Q=b,\ R=c$
 
@@ -100,7 +90,7 @@ E) Tam sayı
 
 `K01-T43-Q06`
 
-$a$ ve $b$ tam sayılarının her biri 9 ile bölündüğünde 4 kalanını veriyor. Aşağıdaki ifadelerden hangisi 9 ile bölündüğünde yine 4 kalanını verir?
+Bir ölçü listesi hazırlanırken, verilen bağıntıdan yararlanarak: $a$ ve $b$ tam sayılarının her biri 9 ile bölündüğünde 4 kalanını veriyor. Aşağıdaki ifadelerden hangisi 9 ile bölündüğünde yine 4 kalanını verir?
 
 A) $a+b$
 
@@ -132,11 +122,7 @@ E) $\sqrt{72}-\sqrt{18}+\sqrt8$
 
 `K01-T43-Q08`
 
-$n$ tam sayı olmak üzere
-
-$$\frac{n(n+1)(n+2)}{6}$$
-
-ifadesi için hangisi kesinlikle doğrudur?
+$n$ tam sayı olmak üzere $$\frac{n(n+1)(n+2)}{6}$$ ifadesi için hangisi kesinlikle doğrudur?
 
 A) Tam sayıdır.
 
@@ -152,7 +138,7 @@ E) Negatiftir.
 
 `K01-T43-Q09`
 
-$-\sqrt{130}$ ile $\pi+8$ arasında kaç tam sayı vardır?
+Bir günlük planındaki niceliklerde, verilen bağıntıdan yararlanarak: $-\sqrt{130}$ ile $\pi+8$ arasında kaç tam sayı vardır?
 
 A) $22$
 

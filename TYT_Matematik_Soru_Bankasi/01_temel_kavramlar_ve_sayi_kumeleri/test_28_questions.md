@@ -46,9 +46,7 @@ E) $57$
 
 `K01-T28-Q04`
 
-$$a=\sqrt7-1,\qquad b=\frac53,\qquad c=1,65$$
-
-Küçükten büyüğe sıralama hangisidir?
+$$a=\sqrt7-1,\qquad b=\frac53,\qquad c=1,65$$ Küçükten büyüğe sıralama hangisidir?
 
 A) $c<a<b$  
 B) $b<c<a$  
@@ -108,7 +106,7 @@ E) $m^2+n^2$ çifttir.
 
 `K01-T28-Q09`
 
-$-\sqrt{23}$ ile $\sqrt{33}$ arasında kaç tam sayı vardır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $-\sqrt{23}$ ile $\sqrt{33}$ arasında kaç tam sayı vardır?
 
 A) $9$  
 B) $10$  

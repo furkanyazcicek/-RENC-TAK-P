@@ -58,7 +58,7 @@ E) $6401$
 
 `K02-T22-Q04`
 
-1, 4 ve 8 rakamları tekrar kullanılabilir. Bu rakamlarla yazılabilecek en büyük üç basamaklı sayı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: 1, 4 ve 8 rakamları tekrar kullanılabilir. Bu rakamlarla yazılabilecek en büyük üç basamaklı sayı kaçtır?
 
 A) $888$
 
@@ -74,7 +74,7 @@ E) $814$
 
 `K02-T22-Q05`
 
-0, 2, 3 ve 5 rakamları birer kez kullanılarak yazılabilecek en küçük dört basamaklı sayı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: 0, 2, 3 ve 5 rakamları birer kez kullanılarak yazılabilecek en küçük dört basamaklı sayı kaçtır?
 
 A) $0235$
 

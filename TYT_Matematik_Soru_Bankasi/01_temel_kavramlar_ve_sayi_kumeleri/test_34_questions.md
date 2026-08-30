@@ -26,9 +26,7 @@ E) Çifttir.
 
 `K01-T34-Q02`
 
-$t$ irrasyonel ve $r$ rasyonel sayı olmak üzere $x=t+r$ ve $y=r-t$ olarak tanımlanıyor.
-
-$x+y$ toplamı hangi sayı kümesinde kesinlikle yer alır?
+$t$ irrasyonel ve $r$ rasyonel sayı olmak üzere $x=t+r$ ve $y=r-t$ olarak tanımlanıyor. $x+y$ toplamı hangi sayı kümesinde kesinlikle yer alır?
 
 A) İrrasyonel
 
@@ -60,9 +58,7 @@ E) $112$
 
 `K01-T34-Q04`
 
-$$a=\sqrt{10}-2,\qquad b=\frac76,\qquad c=1,165$$
-
-olduğuna göre küçükten büyüğe sıralama hangisidir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $$a=\sqrt{10}-2,\qquad b=\frac76,\qquad c=1,165$$ olduğuna göre küçükten büyüğe sıralama hangisidir?
 
 A) $a<c<b$
 
@@ -94,9 +90,7 @@ E) $|x|>|y|$
 
 `K01-T34-Q06`
 
-$a$ ve $b$ tam sayılarının her biri 4 ile bölündüğünde 3 kalanını veriyor.
-
-Buna göre $2a+b$ sayısının 4 ile bölümünden kalan kaçtır?
+$a$ ve $b$ tam sayılarının her biri 4 ile bölündüğünde 3 kalanını veriyor. Buna göre $2a+b$ sayısının 4 ile bölümünden kalan kaçtır?
 
 A) $0$
 
@@ -144,7 +138,7 @@ E) $2m+2n$
 
 `K01-T34-Q09`
 
-$-\sqrt{35}$ ile $\pi+2$ arasında kaç tam sayı vardır?
+Bir sınıf etkinliğinde, verilen bağıntıdan yararlanarak: $-\sqrt{35}$ ile $\pi+2$ arasında kaç tam sayı vardır?
 
 A) $9$
 

@@ -42,7 +42,7 @@ E) $8$
 
 `K02-T14-Q03`
 
-$a24$ sayısından 400 çıkarılınca 324 kalıyor. $a$ kaçtır?
+$a$ kaçtır?
 
 A) $7$
 

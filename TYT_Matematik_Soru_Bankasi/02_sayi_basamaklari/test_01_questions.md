@@ -10,7 +10,7 @@
 
 `K02-T01-Q01`
 
-$58\,472$ sayısının yüzler basamağındaki rakam hangisidir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $58\,472$ sayısının yüzler basamağındaki rakam hangisidir?
 
 A) $7$
 
@@ -26,7 +26,7 @@ E) $2$
 
 `K02-T01-Q02`
 
-$73\,526$ sayısındaki 7 rakamının basamak değeri kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $73\,526$ sayısındaki 7 rakamının basamak değeri kaçtır?
 
 A) $7$
 
@@ -42,9 +42,7 @@ E) $700\,000$
 
 `K02-T01-Q03`
 
-$$4\cdot1000+3\cdot100+0\cdot10+8$$
-
-çözümlemesi hangi sayıyı gösterir?
+$$4\cdot1000+3\cdot100+0\cdot10+8$$ çözümlemesi hangi sayıyı gösterir?
 
 A) $4308$
 
@@ -60,7 +58,7 @@ E) $3408$
 
 `K02-T01-Q04`
 
-Üç basamaklı $abc$ sayısında $a=5$, $b=2$ ve $c=7$ olduğuna göre sayı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: Üç basamaklı $abc$ sayısında $a=5$, $b=2$ ve $c=7$ olduğuna göre sayı kaçtır?
 
 A) $257$
 
@@ -124,7 +122,7 @@ E) $103$
 
 `K02-T01-Q08`
 
-$42\,615$ sayısında basamak değeri $2000$ olan rakam hangisidir?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $42\,615$ sayısında basamak değeri $2000$ olan rakam hangisidir?
 
 A) $2$
 
@@ -156,7 +154,7 @@ E) $1000$
 
 `K02-T01-Q10`
 
-$8304$ sayısının basamak değerleri toplamı kaçtır?
+Bir sayı doğrusu incelemesinde, verilen bağıntıdan yararlanarak: $8304$ sayısının basamak değerleri toplamı kaçtır?
 
 A) $15$
 

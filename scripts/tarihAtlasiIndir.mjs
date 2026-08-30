@@ -16,15 +16,19 @@ const kok = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const hedefKlasor = resolve(kok, 'src/data/tarihAtlasi/ham')
 const KAYNAK = 'https://raw.githubusercontent.com/aourednik/historical-basemaps/master/geojson'
 
-const YILLAR = [1000, 1100, 1200, 1279, 1300, 1400, 1492, 1500, 1530, 1600, 1650, 1700, 1715, 1783, 1800, 1815, 1880, 1900, 1914, 1920, 1930, 1938, 1945]
+const DOSYALAR = [
+  'world_bc1.geojson',
+  ...[100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1279, 1300, 1400, 1492, 1500, 1530, 1600, 1650, 1700, 1715, 1783, 1800, 1815, 1880, 1900, 1914, 1920, 1930, 1938, 1945, 1960]
+    .map((yil) => `world_${yil}.geojson`),
+]
 
 await mkdir(hedefKlasor, { recursive: true })
 
 let indirilen = 0
 let atlanan = 0
 
-for (const yil of YILLAR) {
-  const hedef = resolve(hedefKlasor, `world_${yil}.geojson`)
+for (const dosya of DOSYALAR) {
+  const hedef = resolve(hedefKlasor, dosya)
 
   try {
     await access(hedef)
@@ -34,16 +38,16 @@ for (const yil of YILLAR) {
     // Dosya yok, indirilecek
   }
 
-  const yanit = await fetch(`${KAYNAK}/world_${yil}.geojson`)
+  const yanit = await fetch(`${KAYNAK}/${dosya}`)
   if (!yanit.ok) {
-    console.error(`${yil} indirilemedi: HTTP ${yanit.status}`)
+    console.error(`${dosya} indirilemedi: HTTP ${yanit.status}`)
     continue
   }
 
   const icerik = await yanit.text()
   await writeFile(hedef, icerik)
   indirilen += 1
-  console.log(`${yil} indirildi (${Math.round(icerik.length / 1024)} KB)`)
+  console.log(`${dosya} indirildi (${Math.round(icerik.length / 1024)} KB)`)
 }
 
 console.log(`\n${indirilen} dosya indirildi, ${atlanan} dosya zaten mevcuttu.`)

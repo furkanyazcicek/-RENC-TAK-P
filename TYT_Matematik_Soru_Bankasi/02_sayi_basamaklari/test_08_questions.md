@@ -58,9 +58,7 @@ E) $346$
 
 `K02-T08-Q04`
 
-Üç basamaklı bir sayının yüzler basamağı 2 azaltılıyor, onlar basamağı 1 ve birler basamağı 3 artırılıyor.
-
-Sayıdaki toplam değişim kaçtır?
+Üç basamaklı bir sayının yüzler basamağı 2 azaltılıyor, onlar basamağı 1 ve birler basamağı 3 artırılıyor. Sayıdaki toplam değişim kaçtır?
 
 A) $213$ azalır.
 

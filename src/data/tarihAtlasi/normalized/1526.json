@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 3,
+  "sliceId": "mohac-1526",
+  "sliceYear": 1526,
+  "title": "1526 Mohaç Muharebesi kanıt dilimi",
+  "publicationStatus": "reviewed-slice",
+  "scopeNote": "Bu paket olay konumunu sunar; Macaristan'ın parçalanma sürecini tek bir kesin sınır poligonuna indirgemez.",
+  "validFrom": 1526, "validTo": 1527,
+  "sourceIds": ["tdv-mohac-2020", "wikidata-cc0"],
+  "administrativeRegions": [], "settlements": [],
+  "events": [{
+    "id": "event:mohac-1526", "nameTr": "Mohaç Muharebesi", "sourceName": "Battle of Mohács",
+    "validFrom": 1526, "validTo": 1527, "type": "event", "subtype": "battle", "importance": 3, "minZoom": 3.2,
+    "sourceIds": ["tdv-mohac-2020", "wikidata-cc0"], "sourceEntityId": "Q178510",
+    "geometryMethod": "external-cc0-event-point-with-academic-reference", "confidence": "medium", "boundaryCertainty": "not-applicable-point", "coverageStatus": "mapped-point-only", "reviewStatus": "reviewed",
+    "eventDate": { "from": "1526-08-29", "to": "1526-08-29", "precision": "day" },
+    "summary": "Osmanlı kuvvetlerinin Macar ordusunu yenmesi, tarihî Macar Krallığı'nın parçalanma sürecini başlattı.",
+    "sides": ["Osmanlı Devleti", "Macaristan Krallığı"],
+    "warning": "Nokta olay bağlamıdır; muharebe alanının tamamı veya 1526 sonrası sınır hattı değildir.",
+    "geometry": { "type": "Point", "coordinates": [18.647222222222, 45.941388888889] }
+  }], "routes": []
+}

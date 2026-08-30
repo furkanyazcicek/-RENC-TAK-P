@@ -1,7 +1,7 @@
 /**
  * Coğrafya Atlası — Sahne kütüphanesi
  * ==================================================================
- * Beş fotogerçekçi manzara (imagegen) atlasın **zemini**; on üç bölgenin
+ * Fotogerçekçi manzara ailesi (imagegen) atlasın **zemini**; on üç bölgenin
  * her biri bu zeminlerden birini kullanır ama **kendi kanıt noktalarıyla**.
  *
  * Önceki sürümde kanıt noktaları fotoğrafa bağlıydı: Harita Atölyesi'ne
@@ -14,6 +14,75 @@
  */
 
 const GORSEL_KOKU = '/atlas-assets/cografya/imagegen'
+
+/** ImageGen varlık künyesi — raster yalnızca sahne zemini; veri katmanı değildir. */
+export const IMAGEGEN_VARLIKLARI = {
+  'afet-risk-karsilastirma-v2': {
+    src: `${GORSEL_KOKU}/afet-risk-karsilastirma-v2.jpg`,
+    aciklama: 'Aynı fay tehlikesinde gevşek zemindeki yoğun ve kırılgan yapılaşma ile sağlam zemindeki hazırlıklı yerleşimi tek havzada karşılaştırır.',
+    kadraj: '16:9 eğik hava perspektifi; kırılgan yerleşim solda, fay izi merkezde, dirençli yerleşim sağda.',
+    odaklar: ['fay izi', 'gevşek zemin', 'yoğun yapılaşma', 'sağlam zemin', 'toplanma alanı', 'erişim yolu'],
+    statu: 'fotogerçekçi üretken görsel / öğretim modeli',
+    sinir: 'Gerçek bir kentin olay kaydı, hasar tespiti, zemin etüdü veya risk haritası değildir.',
+  },
+  'afet-yonetim-dongusu-v2': {
+    src: `${GORSEL_KOKU}/afet-yonetim-dongusu-v2.jpg`,
+    aciklama: 'Risk azaltma, hazırlık, müdahale ve daha dirençli iyileştirme eylemlerini aynı vadi yerleşiminde birleştirir.',
+    kadraj: '16:9 panoramik hava perspektifi; okul güçlendirmesi solda, hazırlık ve müdahale merkezde, iyileştirme sağda.',
+    odaklar: ['okul güçlendirmesi', 'toplanma alanı', 'geçici barınma', 'acil ulaşım', 'güvenli yeniden yapılanma'],
+    statu: 'fotogerçekçi üretken görsel / öğretim modeli',
+    sinir: 'Tek bir afetin zaman sıralı belgeseli veya belirli bir kurumun operasyon kaydı değildir.',
+  },
+  'topografya-hero-v2': {
+    src: `${GORSEL_KOKU}/topografya-hero-v2.jpg`,
+    aciklama: 'Karlı yüksek dağlardan plato, menderesli akarsu, taşkın ovası ve deltaya uzanan tek havza.',
+    kadraj: '16:9 eğik hava perspektifi; zirve sol üstte, akış alt sağa ilerler.',
+    odaklar: ['kar çizgisi', 'dar vadi', 'plato', 'menderes', 'delta'],
+    statu: 'fotogerçekçi görsel / öğretim modeli',
+    sinir: 'Kesin koordinat, DEM veya gerçek yükseklik verisi iddiası taşımaz.',
+  },
+  'jeolojik-kesit-v1': {
+    src: `${GORSEL_KOKU}/jeolojik-kesit-v1.jpg`,
+    aciklama: 'Dağlık bir havzanın yüzeyini, tabakalı kayaçları, akifer merceğini, fay düzlemini ve ısı etkisini aynı kesitte gösteren görsel model.',
+    kadraj: '16:9 yüzey-kesit birleşimi; yüzey üstte, katmanlar alt yarıda, fay sağ merkeze yakın.',
+    odaklar: ['yüzey', 'sediman', 'akifer', 'fay düzlemi', 'ısı etkisi'],
+    statu: 'fotogerçekçi görsel / öğretim modeli',
+    sinir: 'Jeolojik ölçüm, gerçek tabaka yaşı veya yerel fay geometrisi iddiası taşımaz.',
+  },
+  'akarsu-asinim-v1': {
+    src: `${GORSEL_KOKU}/akarsu-asinim-v1.jpg`,
+    aciklama: 'Yüksek vadiden menderesli orta çığır ve örgülü delta kıyısına ilerleyen akarsuyun aşınım-taşıma-birikim sürekliliği.',
+    kadraj: '16:9 eğik hava perspektifi; kaynak üst sol, menderes merkezde, delta alt sağda.',
+    odaklar: ['dar vadi', 'taraça', 'menderes', 'örgülü kanal', 'delta'],
+    statu: 'fotogerçekçi görsel / öğretim modeli',
+    sinir: 'Belirli bir akarsuya, debiye veya ölçülmüş sediment bütçesine ait değildir.',
+  },
+  'yer-sekilleri-havza-v2': {
+    src: `${GORSEL_KOKU}/yer-sekilleri-havza-v2.jpg`,
+    aciklama: 'Kar çizgisinden derin vadiye, menderesli akarsuya, taşkın ovasına ve deltaya uzanan kurgusal havza; farklı kayaç ve bitki örtüsü dokuları aynı sahnede görünür.',
+    kadraj: '16:9 eğik hava perspektifi; yüksek kesim sol üstte, menderesler merkezde, delta alt sağda.',
+    odaklar: ['zirve', 'dar vadi', 'menderes', 'taşkın ovası', 'delta', 'kayaç katmanı', 'bitki örtüsü'],
+    statu: 'ImageGen ile üretilmiş fotogerçekçi görsel / deterministik öğretim modeli',
+    sinir: 'Gerçek bir havzaya, koordinata, DEM’e, akarsu debisine veya ölçülmüş sediment bütçesine ait değildir.',
+    imagegenIstem: 'Fictional mountain-to-sea watershed, photorealistic documentary aerial oblique view; snowline, steep gorge, meanders, floodplain, delta, stratified rock, sparse and dense vegetation; no labels, logos, watermark, coordinates or embedded graphics.',
+  },
+  'yerkure-dinamikleri-v1': {
+    src: `${GORSEL_KOKU}/yerkure-dinamikleri-v1.jpg`,
+    aciklama: 'Kıvrılmış tabakalar, yükselmiş blok ve fay sarplığı ile iç kuvvetlerin yüzeyde bıraktığı izleri gösteren havza.',
+    kadraj: '16:9 geniş havza; kıvrımlı sırtlar sol-orta, fay sarplığı sağ orta.',
+    odaklar: ['kıvrım', 'yükselme', 'fay sarplığı', 'aşınım yüzeyi'],
+    statu: 'fotogerçekçi görsel / öğretim modeli',
+    sinir: 'Gerçek bir tektonik bölgenin sınırı, yaşı veya deformasyon ölçüsü değildir.',
+  },
+  'arazi-karsilastirma-v1': {
+    src: `${GORSEL_KOKU}/arazi-karsilastirma-v1.jpg`,
+    aciklama: 'Dağ, plato, ova, karstik yüzey ve kıyı deltası arasında tek havza boyunca kurulan karşılaştırma sahnesi.',
+    kadraj: '16:9 soldan sağa süreklilik; dağ sol kenarda, karstik yüzey sağ-orta, delta ve deniz sağda.',
+    odaklar: ['dağ', 'plato', 'ova', 'karst', 'delta'],
+    statu: 'fotogerçekçi görsel / öğretim modeli',
+    sinir: 'Beş arazi tipini aynı öğrenme yüzeyinde karşılaştırır; gerçek topoğrafik mozaik değildir.',
+  },
+}
 
 /** Zeminler — yalnızca görsel ve künye. */
 export const ZEMINLER = {
@@ -101,6 +170,20 @@ export const BOLGE_SAHNELERI = {
   'harita-bilgisi': {
     zemin: 'yeryuzu',
     baslik: 'Aynı arazi, üç ayrı gösterim',
+    gorselKatmanlari: {
+      egim: {
+        src: `${GORSEL_KOKU}/topografya-hero-v2.jpg`,
+        alt: 'Dağ, plato, vadi ve deltayı aynı havzada gösteren fotogerçekçi topografya sahnesi',
+      },
+      kesit: {
+        src: `${GORSEL_KOKU}/jeolojik-kesit-v1.jpg`,
+        alt: 'Dağlık yüzeyin altında tabakalı kayaç, akifer ve fay düzlemini gösteren jeolojik kesit modeli',
+      },
+      olcek: {
+        src: `${GORSEL_KOKU}/arazi-karsilastirma-v1.jpg`,
+        alt: 'Dağdan plato, ovadan karstik yüzeye ve kıyı deltasına uzanan arazi karşılaştırma sahnesi',
+      },
+    },
     katmanlar: [
       { id: 'egim', ad: 'Eğim', aciklama: 'Haritada izohipslerin sıklığı, arazide yamacın dikliğine karşılık gelir.' },
       { id: 'kesit', ad: 'Kesit', aciklama: 'İki nokta arasına çizilen hat, arazinin yandan görünüşünü verir.' },
@@ -137,6 +220,20 @@ export const BOLGE_SAHNELERI = {
   yerkure: {
     zemin: 'yeryuzu',
     baslik: 'İç kuvvet yapar, dış kuvvet bozar',
+    gorselKatmanlari: {
+      ic: {
+        src: `${GORSEL_KOKU}/yerkure-dinamikleri-v1.jpg`,
+        alt: 'Kıvrılmış tabakalar ve yükselmiş bloklarla iç kuvvetlerin yüzey izlerini gösteren havza',
+      },
+      asinim: {
+        src: `${GORSEL_KOKU}/yer-sekilleri-havza-v2.jpg`,
+        alt: 'Kar çizgisinden dar vadiye, menderesli akarsuya ve deltaya uzanan fotogerçekçi kurgusal havza',
+      },
+      birikim: {
+        src: `${GORSEL_KOKU}/yer-sekilleri-havza-v2.jpg`,
+        alt: 'Taşkın ovası ve delta kıyısında akarsu birikimini gösteren fotogerçekçi kurgusal sahne',
+      },
+    },
     katmanlar: [
       { id: 'ic', ad: 'İç kuvvet', aciklama: 'Kıvrılma, kırılma ve yükselme yeryüzünün ana iskeletini kurar.' },
       { id: 'asinim', ad: 'Aşınım', aciklama: 'Akarsu, buzul ve rüzgâr yüksek alanı keser; malzemeyi eğim boyunca taşır.' },
@@ -293,6 +390,7 @@ export function bolgeSahnesi(kod) {
     zeminKodu: sahne.zemin,
     src: zemin.src,
     alt: zemin.alt,
+    gorselKatmanlari: sahne.gorselKatmanlari ?? null,
     baslik: sahne.baslik,
     katmanlar: sahne.katmanlar,
     odaklar: sahne.odaklar,

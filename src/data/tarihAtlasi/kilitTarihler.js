@@ -8,6 +8,11 @@
  */
 
 export const KILIT_TARIHLER = [
+  { yil: 552, ad: 'I. Göktürk Kağanlığı', ozet: 'Bumin Kağan önderliğinde Göktürk siyasî birliği kuruldu.', kademe: 0 },
+  { yil: 682, ad: 'II. Göktürk Kağanlığı', ozet: 'Kutluk Kağan döneminde Göktürk egemenliği yeniden kuruldu.', kademe: 1 },
+  { yil: 744, ad: 'Uygur Kağanlığı', ozet: 'Uygur Kağanlığı Orhun havzasında yükseldi.', kademe: 0 },
+  { yil: 840, ad: 'Uygur Kağanlığı’nın sonu', ozet: 'Orhun merkezli kağanlık dağıldı; Uygur toplulukları farklı bölgelere yöneldi.', kademe: 1 },
+  { yil: 1040, ad: 'Dandanakan Savaşı', ozet: 'Büyük Selçuklu Devleti bağımsız siyasî güç olarak yükseldi.', kademe: 0 },
   { yil: 1071, ad: 'Malazgirt Savaşı', ozet: 'Anadolu\'nun kapıları Türklere açıldı.', kademe: 0 },
   { yil: 1176, ad: 'Miryokefalon Savaşı', ozet: 'Anadolu\'nun Türk yurdu olduğu kesinleşti.', kademe: 1 },
   { yil: 1243, ad: 'Kösedağ Savaşı', ozet: 'Anadolu Selçuklu, İlhanlı egemenliğine girdi.', kademe: 0 },

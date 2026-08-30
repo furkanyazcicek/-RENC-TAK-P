@@ -1,0 +1,35 @@
+{
+  "project_name": "DRKOÇ TYT Kimya Soru Bankası",
+  "target_exam": "2027 TYT",
+  "total_questions": 2700,
+  "difficulty_distribution": {
+    "kolay": "Test 01-10",
+    "orta": "Test 11-20",
+    "zor": "Test 21-30"
+  },
+  "answer_distribution_per_100_questions": {
+    "A": 20,
+    "B": 20,
+    "C": 20,
+    "D": 20,
+    "E": 20
+  },
+  "question_rules": [
+    "5 seçenekli, tek doğru cevaplı.",
+    "Bütün seçenekler yapısal/uzunluk olarak dengeli olacak.",
+    "Olumsuz soru kökü zorunlu olmadıkça kullanılmayacak.",
+    "'Hepsi', 'hiçbiri' gibi seçenekler kullanılmayacak.",
+    "Günlük yaşam senaryoları sırf hikaye olsun diye değil, soruya hizmet ediyorsa kullanılacak.",
+    "Soru metinlerinde özgünlük aranacak, sadece sayı/madde adı değiştirilerek soru üretilmeyecek.",
+    "AYT bilgisi TYT testinde kullanılmayacak."
+  ],
+  "solution_rules": [
+    "Doğru seçenek.",
+    "Ana konu ve alt konu adı.",
+    "Kazanım.",
+    "Zorluk seviyesi.",
+    "Soru türü.",
+    "Adım adım açıklama.",
+    "Olası öğrenci yanılgıları."
+  ]
+}

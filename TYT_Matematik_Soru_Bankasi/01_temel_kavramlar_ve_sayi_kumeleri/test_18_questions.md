@@ -10,8 +10,6 @@
 
 `K01-T18-Q01`
 
-Bir kümeden seçilen herhangi iki sayının aritmetik ortalaması yine aynı kümede kalıyor.
-
 Aşağıdaki kümelerden hangisi bu özelliği kesinlikle taşır?
 
 A) Tek tam sayılar
@@ -28,9 +26,7 @@ E) Pozitif tek tam sayılar
 
 `K01-T18-Q02`
 
-Bir öğrenci her gerçek sayı $x$ için $\sqrt{x^2}=x$ olduğunu söylüyor.
-
-Hangi değer öğrencinin iddiasını çürütür?
+Bir öğrenci her gerçek sayı $x$ için $\sqrt{x^2}=x$ olduğunu söylüyor. Hangi değer öğrencinin iddiasını çürütür?
 
 A) $x=3$
 
@@ -110,9 +106,7 @@ E) $2+\sqrt5$
 
 `K01-T18-Q07`
 
-$x$ ve $y$ tam sayıları için $x-y$ tek sayıdır.
-
-Buna göre aşağıdakilerden hangisi kesinlikle doğrudur?
+$x$ ve $y$ tam sayıları için $x-y$ tek sayıdır. Buna göre aşağıdakilerden hangisi kesinlikle doğrudur?
 
 A) $x$ ve $y$ tektir.
 
@@ -128,9 +122,7 @@ E) $xy$ tektir.
 
 `K01-T18-Q08`
 
-$r$ rasyonel, $t$ irrasyonel sayıdır.
-
-Aşağıdaki ifadelerden hangisinin sonucu, seçilen $r$ değerine göre rasyonel veya irrasyonel olabilir?
+$r$ rasyonel, $t$ irrasyonel sayıdır. Aşağıdaki ifadelerden hangisinin sonucu, seçilen $r$ değerine göre rasyonel veya irrasyonel olabilir?
 
 A) $t+r$
 
@@ -162,9 +154,7 @@ E) $(-1)\cdot(-1)=1$'dir.
 
 `K01-T18-Q10`
 
-$x=\sqrt2$ ve $y=\sqrt8$ olarak veriliyor.
-
-Buna göre $x+y$ ile $x\cdot y$ sayılarının türü sırasıyla hangisidir?
+$x=\sqrt2$ ve $y=\sqrt8$ olarak veriliyor. Buna göre $x+y$ ile $x\cdot y$ sayılarının türü sırasıyla hangisidir?
 
 A) Rasyonel — Rasyonel
 

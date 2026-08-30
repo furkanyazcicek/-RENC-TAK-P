@@ -10,11 +10,7 @@
 
 `K01-T41-Q01`
 
-Aşağıdaki işlem şemasında tam sayı $n$ için adımlar soldan sağa uygulanıyor.
-
-![İşlem şeması](visuals/test_41_islem_makinesi.svg)
-
-Şemanın sonunda tek sayı elde edildiğine göre $n$ için hangisi kesindir?
+![İşlem şeması](visuals/test_41_islem_makinesi.svg) Şemanın sonunda tek sayı elde edildiğine göre $n$ için hangisi kesindir?
 
 A) Çifttir.
 
@@ -30,9 +26,7 @@ E) 3'ün katıdır.
 
 `K01-T41-Q02`
 
-İrrasyonel $t$ ve rasyonel $r$ sayıları için $x=t+r$ ve $y=2t-r$ tanımlanıyor.
-
-Aşağıdaki ifadelerden hangisi kesinlikle rasyoneldir?
+İrrasyonel $t$ ve rasyonel $r$ sayıları için $x=t+r$ ve $y=2t-r$ tanımlanıyor. Aşağıdaki ifadelerden hangisi kesinlikle rasyoneldir?
 
 A) $x+y$
 
@@ -48,9 +42,7 @@ E) $2x-y$
 
 `K01-T41-Q03`
 
-Bir koridordaki beş dolabın numaraları ardışık tam sayılardır. Bu numaraların toplamı, en büyük dolap numarasının 3 katından 34 fazladır.
-
-En büyük dolabın numarası kaçtır?
+Bir koridordaki beş dolabın numaraları ardışık tam sayılardır. Bu numaraların toplamı, en büyük dolap numarasının 3 katından 34 fazladır. En büyük dolabın numarası kaçtır?
 
 A) $19$
 
@@ -82,9 +74,7 @@ E) $c<b<a$
 
 `K01-T41-Q05`
 
-Bir hesabın başlangıç bakiyesi $x<0$ TL, hesaba yatırılan para $y>0$ TL'dir. Borcun büyüklüğü yatırılan paranın $\dfrac32$ katıdır.
-
-İşlem sonrası $x+y$ bakiyesi için hangisi kesindir?
+Bir hesabın başlangıç bakiyesi $x<0$ TL, hesaba yatırılan para $y>0$ TL'dir. Borcun büyüklüğü yatırılan paranın $\dfrac32$ katıdır. İşlem sonrası $x+y$ bakiyesi için hangisi kesindir?
 
 A) Negatiftir.
 
@@ -164,9 +154,7 @@ E) $22$
 
 `K01-T41-Q10`
 
-Bir öğrenci “İki gerçek sayının toplamı negatifse iki sayı da negatiftir.” sonucuna ulaşıyor.
-
-Hangi sayı çifti öğrencinin sonucunun her zaman doğru olmadığını gösterir?
+Bir öğrenci “İki gerçek sayının toplamı negatifse iki sayı da negatiftir.” sonucuna ulaşıyor. Hangi sayı çifti öğrencinin sonucunun her zaman doğru olmadığını gösterir?
 
 A) $(-3,-2)$
 

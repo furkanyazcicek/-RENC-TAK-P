@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes, useParams } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
 import { homePathForRole } from './lib/navigation'
+import { isProductCapture } from './lib/productCapture'
 import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
 import Register from './pages/Register';
@@ -60,6 +61,14 @@ const BiyolojiAtlasi = lazy(() => import('./pages/BiyolojiAtlasi'))
 /** Coğrafya Atlası; harita laboratuvarlarını ana uygulama paketinden ayrı yükler. */
 const CografyaAtlasi = lazy(() => import('./pages/CografyaAtlasi'))
 
+/** Sosyal içerik üretimi için giriş gerektirmeyen, 9:16 fizik Reels önizlemesi. */
+const ReelsSabitIvmeliAtis = lazy(() => import('./pages/ReelsSabitIvmeliAtis'))
+const ReelsSabitIvmeliHareket = lazy(() => import('./pages/ReelsSabitIvmeliHareket'))
+const ReelsDrkocUygulamaTanitim = lazy(() => import('./pages/ReelsDrkocUygulamaTanitim'))
+
+/** Yerel soru bankasını dosyalardan salt okunur incelemek için editör ekranı. */
+const QuestionBankReview = lazy(() => import('./pages/QuestionBankReview'))
+
 /** Route geçişlerinde gösterilen tam sayfa yükleyici (tasarım sisteminden). */
 function FullPageLoader() {
   return <PageLoader />
@@ -67,6 +76,7 @@ function FullPageLoader() {
 
 function ProtectedRoute({ children, allow }) {
   const { session, role, loading } = useAuth()
+  if (isProductCapture()) return children
   if (loading) return <FullPageLoader />
   if (!session) return <Navigate to="/login" replace />
   if (allow && !(Array.isArray(allow) ? allow.includes(role) : role === allow)) {
@@ -140,6 +150,26 @@ export default function App() {
           hesapsız bakıyor ve erişemezlerse başvuru reddediliyor. */}
       <Route path="/gizlilik" element={<PrivacyPolicy />} />
       <Route path="/ders-notu-onizleme" element={<LessonPreview />} />
+      <Route
+        path="/soru-bankasi-onizleme"
+        element={
+          import.meta.env.DEV
+            ? <Suspense fallback={<FullPageLoader />}><QuestionBankReview /></Suspense>
+            : <Navigate to="/" replace />
+        }
+      />
+      <Route
+        path="/sosyal/reels/sabit-ivmeli-atis"
+        element={<Suspense fallback={<FullPageLoader />}><ReelsSabitIvmeliAtis /></Suspense>}
+      />
+      <Route
+        path="/sosyal/reels/sabit-ivmeli-hareket"
+        element={<Suspense fallback={<FullPageLoader />}><ReelsSabitIvmeliHareket /></Suspense>}
+      />
+      <Route
+        path="/sosyal/reels/drkoc-uygulama-tanitimi"
+        element={<Suspense fallback={<FullPageLoader />}><ReelsDrkocUygulamaTanitim /></Suspense>}
+      />
       <Route path="/tarih-atlasi" element={<TarihAtlasi />} />
       <Route
         path="/kimya-atlasi"
