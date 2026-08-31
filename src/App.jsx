@@ -62,6 +62,9 @@ const BiyolojiAtlasi = lazy(() => import('./pages/BiyolojiAtlasi'))
 /** Coğrafya Atlası; harita laboratuvarlarını ana uygulama paketinden ayrı yükler. */
 const CografyaAtlasi = lazy(() => import('./pages/CografyaAtlasi'))
 
+/** Geometri Pilot Testi */
+const GeometriPilot = lazy(() => import('./pages/GeometriPilot'))
+
 /** Sosyal içerik üretimi için giriş gerektirmeyen, 9:16 fizik Reels önizlemesi. */
 const ReelsSabitIvmeliAtis = lazy(() => import('./pages/ReelsSabitIvmeliAtis'))
 const ReelsSabitIvmeliHareket = lazy(() => import('./pages/ReelsSabitIvmeliHareket'))
@@ -188,6 +191,10 @@ export default function App() {
         element={<Suspense fallback={<FullPageLoader />}><ReelsDrkocUygulamaTanitim /></Suspense>}
       />
       <Route path="/tarih-atlasi" element={<TarihAtlasi />} />
+      <Route
+        path="/geometri-pilot"
+        element={<Suspense fallback={<FullPageLoader />}><GeometriPilot /></Suspense>}
+      />
       <Route
         path="/kimya-atlasi"
         element={<Suspense fallback={<FullPageLoader />}><KimyaAtlasi /></Suspense>}

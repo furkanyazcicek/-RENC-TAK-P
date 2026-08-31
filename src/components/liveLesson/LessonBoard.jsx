@@ -60,6 +60,18 @@ import { MAX_SCALE, MIN_SCALE } from '../../lib/solutionCanvas'
  */
 
 const PALM_GUARD_MS = 350
+/**
+ * SİSTEM KESİNTİSİNİ İNSAN HAREKETİNDEN AYIRAN EŞİKLER.
+ *
+ * iPad çizimi kendi kararıyla kestiğinde yeni çizim ANINDA ve kalemin
+ * bulunduğu noktanın DİBİNDE başlar. İnsan ise kalemi kaldırıp yeni bir
+ * kelimeye geçerken hem daha uzun sürer hem de gözle görülür bir mesafe
+ * kateder. Eşikler önce cömert tutulmuştu; o yüzden yeni kelimeye
+ * başlarken tahta ilk anları "kesinti" sanıp yutuyor, yazmak için
+ * beklemek gerekiyordu. Artık dar: yalnızca gerçek kesintiyi yakalar.
+ */
+const KESINTI_SURESI_MS = 150
+const KESINTI_MESAFE_PX = 40
 const MIN_SAMPLE_PX = 1.1
 const SIMPLIFY_TOLERANCE = 0.7
 
@@ -792,7 +804,10 @@ export default function LessonBoard({
       const nokta = toBoard(e.clientX, e.clientY)
       const n = surdur.item.p.length
       const uzaklik = Math.hypot(nokta.x - surdur.item.p[n - 3], nokta.y - surdur.item.p[n - 2])
-      if (performance.now() - surdur.at < 450 && uzaklik < 140 / viewRef.current.scale) {
+      if (
+        performance.now() - surdur.at < KESINTI_SURESI_MS &&
+        uzaklik < KESINTI_MESAFE_PX / viewRef.current.scale
+      ) {
         iptalSurdurRef.current = null
         window.clearTimeout(iptalZamanRef.current)
         activePointerIdRef.current = e.pointerId
@@ -1039,7 +1054,7 @@ export default function LessonBoard({
         iptalSurdurRef.current = null
         activePointerIdRef.current = null
         if (activeRef.current === askidaki) endStroke()
-      }, 450)
+      }, KESINTI_SURESI_MS)
       return
     }
 
