@@ -8,6 +8,7 @@ import {
   Library,
   MessageCircle,
   ScanText,
+  Video,
   Sparkles,
   Target,
   Users,
@@ -46,6 +47,12 @@ export const STUDENT_NAV = [
     short: 'Takip',
     Icon: CalendarDays,
   },
+  // Canlı Dersler bilinçli olarak `primary` DEĞİL: mobil alt çubuk yalnız
+  // ilk dört primary öğeyi gösteriyor ve oradaki dördü (Anasayfa, Soru Çöz,
+  // AI Koç, Analiz) günlük kullanımda daha sık. Yaklaşan veya devam eden
+  // ders olduğunda katılım düğmesi Anasayfa'nın en üstünde görünür, yani
+  // öğrenci dersi menüde aramak zorunda kalmaz.
+  { to: '/canli-dersler', label: 'Canlı Derslerim', short: 'Canlı Ders', Icon: Video },
   { to: '/denemeler', label: 'Denemeler', short: 'Deneme', Icon: Target },
   { to: '/odevler', label: 'Ödevler', short: 'Ödev', Icon: ClipboardList },
   { to: '/kutuphane', label: 'Ders Kütüphanesi', short: 'Kütüphane', Icon: Library },
@@ -58,6 +65,10 @@ export const TEACHER_NAV = [
   { to: '/odevler', label: 'Ödevler', short: 'Ödev', Icon: ClipboardList, primary: true },
   { to: '/sorular', label: 'Sorunlu Sorular', short: 'Sorular', Icon: HelpCircle, primary: true },
   { to: '/mesajlar', label: 'Mesajlar', short: 'Mesaj', Icon: MessageCircle, primary: true },
+  // Öğretmenin dört primary öğesi zaten dolu; Canlı Dersler "Menü"
+  // çekmecesine düşüyor. Sıradaki ders öğretmen panelinin en üstünde
+  // katılım düğmesiyle birlikte durduğu için akış bozulmuyor.
+  { to: '/ogretmen/canli-dersler', label: 'Canlı Dersler', short: 'Canlı Ders', Icon: Video },
   { to: '/kutuphane', label: 'Ders Kütüphanesi', short: 'Kütüphane', Icon: Library },
 ]
 

@@ -15,6 +15,7 @@
     "bench:review": "node scripts/bench/review.mjs",
     "bench:report": "node scripts/bench/report.mjs",
     "test:parent-rls": "node scripts/test-parent-rls.mjs",
+    "test:live-lessons": "node scripts/test-live-lessons-rls.mjs",
     "test:ai-solve": "node scripts/test-ai-solve.mjs",
     "test:lesson-document": "node scripts/test-lesson-document.mjs",
     "test:tts-cache": "node scripts/test-tts-cache.mjs",

@@ -1,30 +1,57 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
-import { Clock, HelpCircle, Inbox, TrendingUp, Users } from 'lucide-react'
+import { CalendarPlus, Clock, HelpCircle, Inbox, TrendingUp, UserPlus, Users } from 'lucide-react'
 
 import StudentList from '../components/StudentList'
 import QuestionInbox from '../components/QuestionInbox'
-import { AppShell, Badge, PageSection } from '../components/ui'
+import NextLessonPanel from '../components/liveLesson/NextLessonPanel'
+import InviteStudentsPanel from '../components/liveLesson/InviteStudentsPanel'
+import { AppShell, Badge, Button, Modal, PageSection } from '../components/ui'
 import { DashboardHero, MetricTile, Panel } from '../components/dashboard'
 import { formatMinutes } from '../lib/insights'
+import { fetchMyStudents, fetchTeacherLessons } from '../lib/liveLesson/api'
+import { isActiveStatus } from '../lib/liveLesson/status'
 
 export default function TeacherDashboard() {
   const { profile } = useAuth()
   const [students, setStudents] = useState([])
   const [questions, setQuestions] = useState([])
   const [dailyLogs, setDailyLogs] = useState([])
+  const [nextLesson, setNextLesson] = useState(null)
+  const [inviteOpen, setInviteOpen] = useState(false)
   const [loading, setLoading] = useState(true)
 
   const loadData = useCallback(async () => {
+    // Öğrenci listesi ARTIK "tüm öğrenciler" değil, öğretmenin kendi
+    // öğrencileridir (teacher_students bağı). Göç henüz uygulanmadıysa
+    // RPC bulunamaz; o durumda eski davranışa düşerek panel çalışmaya
+    // devam eder — kurulum yapılmadan ekran boşalmasın.
+    const ownStudents = await fetchMyStudents().catch(() => null)
+
     const [profilesRes, dailyLogsRes, questionsRes] = await Promise.all([
-      supabase.from('profiles').select('*').eq('role', 'student'),
+      ownStudents
+        ? Promise.resolve({
+            data: ownStudents.map((s) => ({ id: s.student_id, full_name: s.student_name, role: 'student' })),
+          })
+        : supabase.from('profiles').select('*').eq('role', 'student'),
       supabase.from('daily_logs').select('*'),
       supabase
         .from('questions')
         .select('*, profiles!questions_student_id_fkey(full_name)')
         .order('created_at', { ascending: false }),
     ])
+
+    // Sıradaki canlı ders — panelin en üstündeki eylem bloğu için.
+    fetchTeacherLessons({ from: new Date(Date.now() - 2 * 3600_000).toISOString(), limit: 20 })
+      .then((lessons) => {
+        const active = lessons
+          .filter((l) => isActiveStatus(l.status))
+          .sort((a, b) => new Date(a.scheduled_start) - new Date(b.scheduled_start))
+        setNextLesson(active.find((l) => l.status === 'live' || l.status === 'lobby_open') ?? active[0] ?? null)
+      })
+      .catch(() => setNextLesson(null))
 
     const logs = dailyLogsRes.data ?? []
 
@@ -125,6 +152,16 @@ export default function TeacherDashboard() {
         ]}
       />
 
+      {/* Sıradaki canlı ders — öğretmenin panele girer girmez göreceği
+          birincil eylem. Ders yoksa planlama yönlendirmesi gösterilir. */}
+      <NextLessonPanel
+        session={nextLesson}
+        role="teacher"
+        counterpartName={nextLesson?.student?.full_name}
+        createHref="/ogretmen/canli-dersler/yeni"
+        studentProfileHref={nextLesson ? `/ogretmen/ogrenci/${nextLesson.student_id}` : null}
+      />
+
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         <MetricTile label="Toplam Öğrenci" value={students.length} icon={Users} tone="brand" hint="sisteme kayıtlı" />
         <MetricTile
@@ -162,7 +199,20 @@ export default function TeacherDashboard() {
         </Panel>
       )}
 
-      <PageSection title="Öğrencilerim" description="Detaylı analiz için bir öğrenciye tıkla">
+      <PageSection
+        title="Öğrencilerim"
+        description="Detaylı analiz için bir öğrenciye tıkla"
+        action={
+          <div className="flex flex-wrap gap-2">
+            <Button variant="secondary" size="sm" icon={UserPlus} onClick={() => setInviteOpen(true)}>
+              Öğrenci Davet Et
+            </Button>
+            <Button as={Link} to="/ogretmen/canli-dersler/yeni" size="sm" icon={CalendarPlus}>
+              Ders Planla
+            </Button>
+          </div>
+        }
+      >
         <StudentList students={students} />
       </PageSection>
 
@@ -178,6 +228,16 @@ export default function TeacherDashboard() {
       >
         <QuestionInbox questions={questions} onChanged={loadData} />
       </PageSection>
+
+      <Modal
+        open={inviteOpen}
+        onClose={() => setInviteOpen(false)}
+        title="Öğrencilerin"
+        description="Davet bağlantısı oluştur, bekleyen davetleri yönet"
+        maxWidth="max-w-2xl"
+      >
+        <InviteStudentsPanel onChanged={loadData} />
+      </Modal>
     </AppShell>
   )
 }

@@ -3,6 +3,7 @@ import { Navigate, Route, Routes, useParams } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
 import { homePathForRole } from './lib/navigation'
 import { isProductCapture } from './lib/productCapture'
+import { isLessonPreview } from './lib/liveLesson/preview'
 import LandingPage from './pages/LandingPage'
 import Login from './pages/Login'
 import Register from './pages/Register';
@@ -66,6 +67,20 @@ const ReelsSabitIvmeliAtis = lazy(() => import('./pages/ReelsSabitIvmeliAtis'))
 const ReelsSabitIvmeliHareket = lazy(() => import('./pages/ReelsSabitIvmeliHareket'))
 const ReelsDrkocUygulamaTanitim = lazy(() => import('./pages/ReelsDrkocUygulamaTanitim'))
 
+/**
+ * Canlı Ders Stüdyosu ayrı pakete alındı: tahta motoru, canlı bağlantı
+ * katmanı ve materyal görüntüleyicisi ana uygulama paketine girmesin diye
+ * yalnızca canlı ders adreslerine girildiğinde yükleniyor. Dersi hiç
+ * kullanmayan öğrenci bu kodu indirmez.
+ */
+const TeacherLessons = lazy(() => import('./pages/liveLesson/TeacherLessons'))
+const LessonForm = lazy(() => import('./pages/liveLesson/LessonForm'))
+const StudentLessons = lazy(() => import('./pages/liveLesson/StudentLessons'))
+const LessonLobby = lazy(() => import('./pages/liveLesson/LessonLobby'))
+const LessonStudio = lazy(() => import('./pages/liveLesson/LessonStudio'))
+const LessonSummaryPage = lazy(() => import('./pages/liveLesson/LessonSummaryPage'))
+const TeacherInvitePage = lazy(() => import('./pages/liveLesson/TeacherInvitePage'))
+
 /** Yerel soru bankasını dosyalardan salt okunur incelemek için editör ekranı. */
 const QuestionBankReview = lazy(() => import('./pages/QuestionBankReview'))
 
@@ -76,7 +91,9 @@ function FullPageLoader() {
 
 function ProtectedRoute({ children, allow }) {
   const { session, role, loading } = useAuth()
-  if (isProductCapture()) return children
+  // Geliştirici önizlemeleri (yalnız `npm run dev`) rota korumasını atlar;
+  // üretim paketinde her ikisi de sabit `false` olur.
+  if (isProductCapture() || isLessonPreview()) return children
   if (loading) return <FullPageLoader />
   if (!session) return <Navigate to="/login" replace />
   if (allow && !(Array.isArray(allow) ? allow.includes(role) : role === allow)) {
@@ -231,6 +248,74 @@ export default function App() {
             <StudentDetail />
           </ProtectedRoute>
         }
+      />
+
+      {/* ---------------- CANLI DERS STÜDYOSU ----------------
+          Öğretmen ve öğrenci yetkileri ayrı: planlama ekranları yalnız
+          öğretmene açık, ders odası ve özeti iki tarafa da. Odanın içine
+          kimin gireceğini son olarak Supabase RLS belirler; buradaki rol
+          koruması yalnızca yanlış ekranı açmayı engeller. */}
+      <Route
+        path="/ogretmen/canli-dersler"
+        element={
+          <ProtectedRoute allow="teacher">
+            <Suspense fallback={<FullPageLoader />}><TeacherLessons /></Suspense>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/ogretmen/canli-dersler/yeni"
+        element={
+          <ProtectedRoute allow="teacher">
+            <Suspense fallback={<FullPageLoader />}><LessonForm /></Suspense>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/ogretmen/canli-dersler/:sessionId/duzenle"
+        element={
+          <ProtectedRoute allow="teacher">
+            <Suspense fallback={<FullPageLoader />}><LessonForm /></Suspense>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/canli-dersler"
+        element={
+          <ProtectedRoute allow="student">
+            <Suspense fallback={<FullPageLoader />}><StudentLessons /></Suspense>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/canli-ders/:sessionId"
+        element={
+          <ProtectedRoute allow={['student', 'teacher']}>
+            <Suspense fallback={<FullPageLoader />}><LessonLobby /></Suspense>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/canli-ders/:sessionId/studyo"
+        element={
+          <ProtectedRoute allow={['student', 'teacher']}>
+            <Suspense fallback={<FullPageLoader />}><LessonStudio /></Suspense>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/canli-ders/:sessionId/ozet"
+        element={
+          <ProtectedRoute allow={['student', 'teacher']}>
+            <Suspense fallback={<FullPageLoader />}><LessonSummaryPage /></Suspense>
+          </ProtectedRoute>
+        }
+      />
+      {/* Davet ekranı giriş yapılmadan da AÇILIR: öğrenci bağlantıyı
+          görebilmeli, girişe yönlendirmeyi sayfanın kendisi yapar. */}
+      <Route
+        path="/davet/ogretmen/:token"
+        element={<Suspense fallback={<FullPageLoader />}><TeacherInvitePage /></Suspense>}
       />
 
       {/* Sadece öğrenciye özel sekmeler */}

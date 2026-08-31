@@ -286,6 +286,11 @@ export default {
           from: { opacity: '0', transform: 'translateX(16px)' },
           to: { opacity: '1', transform: 'translateX(0)' },
         },
+        /* Soldan açılan çekmece (Drawer side="left") */
+        slideInLeft: {
+          from: { opacity: '0', transform: 'translateX(-16px)' },
+          to: { opacity: '1', transform: 'translateX(0)' },
+        },
         shimmer: {
           '100%': { transform: 'translateX(100%)' },
         },
@@ -311,6 +316,7 @@ export default {
         'scale-in': 'scaleIn 200ms cubic-bezier(0.34, 1.56, 0.64, 1) both',
         'slide-down': 'slideDown 200ms cubic-bezier(0.4, 0, 0.2, 1) both',
         'slide-in-right': 'slideInRight 260ms cubic-bezier(0.16, 1, 0.3, 1) both',
+        'slide-in-left': 'slideInLeft 260ms cubic-bezier(0.16, 1, 0.3, 1) both',
         shimmer: 'shimmer 1.8s infinite',
         'pulse-soft': 'pulseSoft 1.8s ease-in-out infinite',
         'aurora-pulse': 'auroraPulse 6s ease-in-out infinite',
