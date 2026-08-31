@@ -18,7 +18,7 @@ import { CHANNEL_EVENTS } from '../../lib/liveLesson/channel'
  * başarısız olursa mesaj GÖNDERİLMEDİ olarak işaretlenir — sessizce
  * kaybolmaz.
  */
-export default function LessonChatPanel({ userId, peerId, peerName, channel, onRead }) {
+export default function LessonChatPanel({ userId, deviceId, peerId, peerName, channel, onRead }) {
   const [messages, setMessages] = useState([])
   const [draft, setDraft] = useState('')
   const [loading, setLoading] = useState(true)
@@ -50,14 +50,16 @@ export default function LessonChatPanel({ userId, peerId, peerName, channel, onR
   useEffect(() => {
     if (!channel?.subscribe) return undefined
     return channel.subscribe(CHANNEL_EVENTS.CHAT, (payload) => {
-      if (!payload || payload.by === userId) return
+      // Yankı engelleme cihaza bakar: aynı hesabın ikinci cihazından
+      // gelen mesaj da ekranda görünmeli.
+      if (!payload || payload.from === deviceId) return
       setMessages((prev) =>
         prev.some((m) => m.id === payload.id)
           ? prev
           : [...prev, { id: payload.id, sender_id: payload.by, receiver_id: userId, content: payload.text, created_at: payload.at }]
       )
     })
-  }, [channel, userId])
+  }, [channel, userId, deviceId])
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ block: 'end' })

@@ -1,6 +1,17 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { BookOpen, Loader2, MonitorUp, PenLine, ShieldAlert, Video as VideoIcon } from 'lucide-react'
+import {
+  BookOpen,
+  Check,
+  Copy,
+  Laptop,
+  RefreshCw,
+  Loader2,
+  MonitorUp,
+  PenLine,
+  ShieldAlert,
+  Video as VideoIcon,
+} from 'lucide-react'
 import { cn } from '../../lib/cn'
 import { Alert, Badge, Button, Drawer, EmptyState, Modal, Textarea, Field, useToast } from '../../components/ui'
 import CallControls from '../../components/liveLesson/CallControls'
@@ -82,6 +93,9 @@ export default function LessonStudio() {
 
   const boardApiRef = useRef(null)
   const joinedAtRef = useRef(Date.now())
+  const myJoinedAtRef = useRef(new Date().toISOString())
+  const [autoMuted, setAutoMuted] = useState(false)
+  const [linkCopied, setLinkCopied] = useState(false)
   const leftRef = useRef(false)
 
   const isTeacher = role === 'teacher'
@@ -204,13 +218,17 @@ export default function LessonStudio() {
   useEffect(() => {
     if (!channel?.subscribe) return undefined
     return channel.subscribe(CHANNEL_EVENTS.CHAT, (payload) => {
-      if (payload?.by === user?.id) return
+      if (payload?.from === channel.deviceId) return
       setUnreadChat((n) => (drawer === DRAWERS.CHAT ? 0 : n + 1))
     })
-  }, [channel, drawer, user?.id])
+  }, [channel, drawer])
 
   /* Karşı tarafın gelişi/gidişi — aşırı bildirim üretmeden tek cümle */
-  const peerPresent = channel.peers.length > 0
+  // "Karşı taraf" yalnızca DİĞER kişidir. Kendi ikinci cihazın
+  // (bilgisayar + tablet) katılımcı sayılmaz, yoksa öğretmen kendini
+  // öğrenci sanır ve ders kendiliğinden "başladı" olurdu.
+  const peerPresent = channel.remotePeers.length > 0
+  const otherOwnDevices = channel.ownDevices
   const counterpart = isTeacher ? session?.student : session?.teacher
   useEffect(() => {
     if (!counterpart?.full_name) return
@@ -218,6 +236,24 @@ export default function LessonStudio() {
       peerPresent ? `${counterpart.full_name} derse katıldı.` : `${counterpart.full_name} odadan ayrıldı.`
     )
   }, [peerPresent, counterpart?.full_name])
+
+  /**
+   * İKİ CİHAZDAN BAĞLANMA — YANKI ÖNLEME
+   *
+   * Öğretmen bilgisayardan kamerayı açıp tabletten tahtaya yazabiliyor.
+   * İki cihaz aynı odadaysa ve ikisinin de mikrofonu açıksa biri
+   * diğerinin hoparlörünü duyar; ortaya çığlık gibi bir yankı çıkar.
+   * Bu yüzden SONRA katılan cihaz mikrofonunu kendiliğinden kapatır.
+   * Karar tarafsız: iki cihaz da aynı katılım zamanlarına bakıp aynı
+   * sonuca varır, ikisi birden susmaz. Öğretmen isterse elle açar.
+   */
+  useEffect(() => {
+    if (autoMuted || !media.micOn || otherOwnDevices.length === 0) return
+    const iAmLater = otherOwnDevices.some((d) => d.joinedAt && d.joinedAt < myJoinedAtRef.current)
+    if (!iAmLater) return
+    setAutoMuted(true)
+    media.toggleMic(false)
+  }, [otherOwnDevices, media, autoMuted])
 
   /**
    * Öğrenci odaya girdiğinde ders kendiliğinden "Devam ediyor" olur.
@@ -263,7 +299,7 @@ export default function LessonStudio() {
   useEffect(() => {
     if (!channel?.subscribe) return undefined
     return channel.subscribe(CHANNEL_EVENTS.FOCUS, (payload) => {
-      if (!payload || payload.by === user?.id) return
+      if (!payload || payload.from === channel.deviceId) return
       if (payload.materialId === null) {
         setOpenMaterial(null)
         setMobileView('board')
@@ -275,7 +311,7 @@ export default function LessonStudio() {
         setMobileView('material')
       }
     })
-  }, [channel, materials, user?.id, isTeacher])
+  }, [channel, materials, isTeacher])
 
   const sendToBoard = useCallback(
     (material) => {
@@ -292,6 +328,20 @@ export default function LessonStudio() {
     },
     [channel, toast, user?.id]
   )
+
+  /** Öğrenciye gönderilecek ders bağlantısı. */
+  async function copyLessonLink() {
+    try {
+      await navigator.clipboard.writeText(`${window.location.origin}/canli-ders/${sessionId}`)
+      setLinkCopied(true)
+      toast.success('Ders bağlantısı kopyalandı')
+      window.setTimeout(() => setLinkCopied(false), 2500)
+    } catch {
+      toast.error('Bağlantı kopyalanamadı', {
+        description: 'Adres çubuğundaki bağlantıyı elle kopyalayabilirsin.',
+      })
+    }
+  }
 
   /* ---------------- Ayrılma ve bitirme ---------------- */
   async function handleLeave() {
@@ -390,7 +440,7 @@ export default function LessonStudio() {
     )
   }
 
-  const peerState = channel.peers[0] ?? null
+  const peerState = channel.remotePeers[0] ?? null
   const showMaterial = Boolean(openMaterial) && (mobileView === 'material' || window.innerWidth >= 768)
 
   /**
@@ -443,6 +493,23 @@ export default function LessonStudio() {
           </p>
         </div>
 
+        {isTeacher && (
+          <button
+            type="button"
+            onClick={copyLessonLink}
+            aria-label="Ders bağlantısını kopyala"
+            title="Ders bağlantısını kopyala — öğrenciye gönder"
+            className="focus-ring inline-flex h-9 items-center gap-1.5 rounded-btn px-2.5 text-2xs font-semibold text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+          >
+            {linkCopied ? (
+              <Check className="h-4 w-4" strokeWidth={2.2} aria-hidden="true" />
+            ) : (
+              <Copy className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+            )}
+            <span className="hidden md:inline">{linkCopied ? 'Kopyalandı' : 'Bağlantı'}</span>
+          </button>
+        )}
+
         <span className="hidden sm:block">
           <LessonStatusBadge status={session.status} size="sm" />
         </span>
@@ -469,6 +536,19 @@ export default function LessonStudio() {
           />
           {CONNECTION_LABELS[channel.status] ?? 'Bağlantı'}
         </span>
+
+        {/* Bağlantı toparlanmadıysa elle deneme yolu AÇIK olmalı —
+            "sayfayı yenile" ders ortasında kabul edilebilir bir çözüm değil. */}
+        {(channel.status === 'failed' || channel.status === 'reconnecting') && (
+          <button
+            type="button"
+            onClick={() => channel.reconnect()}
+            className="focus-ring inline-flex h-9 items-center gap-1.5 rounded-btn bg-warning-500/20 px-2.5 text-2xs font-semibold text-warning-500 transition-colors hover:bg-warning-500/30"
+          >
+            <RefreshCw className="h-3.5 w-3.5" strokeWidth={2.2} aria-hidden="true" />
+            Yeniden bağlan
+          </button>
+        )}
       </header>
 
       {/* Ekran okuyucu duyuruları — tek, sakin bölge */}
@@ -547,6 +627,7 @@ export default function LessonStudio() {
               <LessonBoard
                 sessionId={sessionId}
                 userId={user?.id}
+                deviceId={channel.deviceId}
                 canEdit
                 channel={channel}
                 boardApiRef={boardApiRef}
@@ -617,6 +698,23 @@ export default function LessonStudio() {
       </main>
 
       {/* Kontrol şeridi */}
+      {/* İkinci cihaz bilgisi — öğretmen bilgisayar + tablet kullanırken */}
+      {otherOwnDevices.length > 0 && (
+        <div className="shrink-0 px-2.5 pb-1.5 sm:px-3">
+          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-btn bg-white/[0.07] px-3 py-2 text-2xs text-white/70">
+            <Laptop className="h-3.5 w-3.5 shrink-0" strokeWidth={2} aria-hidden="true" />
+            <span className="font-semibold text-white/85">
+              Bu derse {otherOwnDevices.length + 1} cihazından bağlısın.
+            </span>
+            <span>
+              {autoMuted
+                ? 'Yankı olmasın diye bu cihazın mikrofonu kapatıldı — anlatımı diğer cihazdan yap.'
+                : 'İki cihazın mikrofonu birden açıksa yankı olur; birini kapalı tut.'}
+            </span>
+          </p>
+        </div>
+      )}
+
       <footer className="shrink-0 px-2.5 pb-2 sm:px-3">
         <CallControls
           role={role}
@@ -703,6 +801,7 @@ export default function LessonStudio() {
         <div className="h-[60vh] sm:h-[calc(100vh-11rem)]">
           <LessonChatPanel
             userId={user?.id}
+            deviceId={channel.deviceId}
             peerId={isTeacher ? session.student_id : session.teacher_id}
             peerName={counterpart?.full_name ?? ''}
             channel={channel}

@@ -90,7 +90,11 @@ function makeLesson(overrides = {}) {
     agenda: '1. Geçen haftanın ödevi\n2. Zincir kuralı\n3. Karma sorular',
     prep_note: 'Defterini ve son deneme sonucunu yanına al.',
     provider: 'local_preview',
-    provider_room_id: 'drk-onizleme-oda',
+    // Önizleme odası adı SABİT olmalı ki iki sekme aynı odada buluşsun;
+    // ama art arda bağlan-kopar denemesi yapılırsa Supabase Realtime o
+    // konuyu geçici olarak kısıtlıyor. Sıkışırsan sonuna bir sayı ekle.
+    // (Gerçek derslerde oda adı sunucuda benzersiz üretilir, bu sorun olmaz.)
+    provider_room_id: 'drk-onizleme-oda-3',
     started_at: null,
     ended_at: null,
     cancel_reason: null,

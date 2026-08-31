@@ -66,6 +66,7 @@ const SIMPLIFY_TOLERANCE = 0.7
 export default function LessonBoard({
   sessionId,
   userId,
+  deviceId,
   canEdit = true,
   channel,
   boardApiRef,
@@ -874,7 +875,10 @@ export default function LessonBoard({
     if (!channel?.subscribe) return undefined
 
     const offStroke = channel.subscribe(CHANNEL_EVENTS.BOARD_STROKE, (payload) => {
-      if (!payload || payload.by === userId) return
+      // YANKI ENGELLEME CİHAZA BAKAR, KULLANICIYA DEĞİL.
+      // Öğretmen tabletten çizip bilgisayardan izleyebiliyor; kullanıcıya
+      // baksaydı kendi tabletinden gelen çizgiyi eleyip hiç göstermezdi.
+      if (!payload || payload.from === deviceId) return
       if (payload.phase === 'draw') {
         if (payload.page !== pageIndexRef.current) return
         let item = remoteLiveRef.current.get(payload.id)
@@ -900,7 +904,10 @@ export default function LessonBoard({
     })
 
     const offPatch = channel.subscribe(CHANNEL_EVENTS.BOARD_PATCH, (payload) => {
-      if (!payload || payload.by === userId) return
+      // YANKI ENGELLEME CİHAZA BAKAR, KULLANICIYA DEĞİL.
+      // Öğretmen tabletten çizip bilgisayardan izleyebiliyor; kullanıcıya
+      // baksaydı kendi tabletinden gelen çizgiyi eleyip hiç göstermezdi.
+      if (!payload || payload.from === deviceId) return
       const page = pagesRef.current[payload.page]
       if (!page) return
       const removed = new Set(payload.remove ?? [])
@@ -913,7 +920,10 @@ export default function LessonBoard({
     })
 
     const offClear = channel.subscribe(CHANNEL_EVENTS.BOARD_CLEAR, (payload) => {
-      if (!payload || payload.by === userId) return
+      // YANKI ENGELLEME CİHAZA BAKAR, KULLANICIYA DEĞİL.
+      // Öğretmen tabletten çizip bilgisayardan izleyebiliyor; kullanıcıya
+      // baksaydı kendi tabletinden gelen çizgiyi eleyip hiç göstermezdi.
+      if (!payload || payload.from === deviceId) return
       const page = pagesRef.current[payload.page]
       if (!page) return
       page.items = []
@@ -922,7 +932,10 @@ export default function LessonBoard({
     })
 
     const offPage = channel.subscribe(CHANNEL_EVENTS.BOARD_PAGE, (payload) => {
-      if (!payload || payload.by === userId) return
+      // YANKI ENGELLEME CİHAZA BAKAR, KULLANICIYA DEĞİL.
+      // Öğretmen tabletten çizip bilgisayardan izleyebiliyor; kullanıcıya
+      // baksaydı kendi tabletinden gelen çizgiyi eleyip hiç göstermezdi.
+      if (!payload || payload.from === deviceId) return
       // Karşı taraf yeni sayfa açtıysa bizde de oluşsun; sayfa DEĞİŞTİRMEK
       // zorla yapılmaz — öğrenci kendi baktığı sayfadan koparılmamalı.
       while (pagesRef.current.length < (payload.count ?? 1)) {
@@ -937,7 +950,7 @@ export default function LessonBoard({
       offClear()
       offPage()
     }
-  }, [channel, schedulePaint, scheduleLive, userId])
+  }, [channel, schedulePaint, scheduleLive, deviceId])
 
   /* Klavye kısayolları — tahta araçlarının klavye alternatifi */
   useEffect(() => {

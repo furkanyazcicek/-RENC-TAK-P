@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { CalendarPlus, CalendarX2, UserPlus, Video } from 'lucide-react'
+import { CalendarPlus, CalendarX2, Radio, UserPlus, Video } from 'lucide-react'
 import { AppShell, Alert, Button, Card, CardBody, EmptyState, Modal, PageSection, Tabs } from '../../components/ui'
 import LessonRow from '../../components/liveLesson/LessonRow'
 import NextLessonPanel from '../../components/liveLesson/NextLessonPanel'
 import InviteStudentsPanel from '../../components/liveLesson/InviteStudentsPanel'
+import InstantLessonDialog from '../../components/liveLesson/InstantLessonDialog'
 import SchemaMissingNotice from '../../components/liveLesson/SchemaMissingNotice'
 import { useLessonAuth } from '../../lib/liveLesson/preview'
 import { fetchTeacherLessons, isSchemaMissing } from '../../lib/liveLesson/api'
@@ -27,6 +28,7 @@ export default function TeacherLessons() {
   const [error, setError] = useState(null)
   const [tab, setTab] = useState('upcoming')
   const [inviteOpen, setInviteOpen] = useState(false)
+  const [instantOpen, setInstantOpen] = useState(false)
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -78,11 +80,24 @@ export default function TeacherLessons() {
       loading={loading}
       loadingLabel="Dersler yükleniyor…"
       headerAction={
-        <Button as={Link} to="/ogretmen/canli-dersler/yeni" icon={CalendarPlus} size="sm">
-          {/* Dar ekranda kısalır: uzun etiket sayfa başlığını kırpıyordu */}
-          <span className="hidden sm:inline">Ders Planla</span>
-          <span className="sm:hidden">Planla</span>
-        </Button>
+        <div className="flex items-center gap-2">
+          {/* Birincil eylem ANLIK ders: "şimdi bağlanalım" günlük iş,
+              ileri tarihe planlama haftada bir yapılır. */}
+          <Button icon={Radio} size="sm" onClick={() => setInstantOpen(true)}>
+            <span className="hidden sm:inline">Hemen Başlat</span>
+            <span className="sm:hidden">Başlat</span>
+          </Button>
+          <Button
+            as={Link}
+            to="/ogretmen/canli-dersler/yeni"
+            icon={CalendarPlus}
+            size="sm"
+            variant="secondary"
+          >
+            <span className="hidden sm:inline">Ders Planla</span>
+            <span className="sm:hidden">Planla</span>
+          </Button>
+        </div>
       }
     >
       {schemaMissing ? (
@@ -128,9 +143,14 @@ export default function TeacherLessons() {
               }
               action={
                 tab === 'upcoming' ? (
-                  <Button as={Link} to="/ogretmen/canli-dersler/yeni" icon={CalendarPlus}>
-                    İlk Dersini Planla
-                  </Button>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    <Button icon={Radio} onClick={() => setInstantOpen(true)}>
+                      Hemen Ders Başlat
+                    </Button>
+                    <Button as={Link} to="/ogretmen/canli-dersler/yeni" variant="secondary" icon={CalendarPlus}>
+                      İleri Tarihe Planla
+                    </Button>
+                  </div>
                 ) : null
               }
             />
@@ -165,6 +185,13 @@ export default function TeacherLessons() {
       >
         <InviteStudentsPanel onChanged={load} />
       </Modal>
+
+      <InstantLessonDialog
+        open={instantOpen}
+        onClose={() => setInstantOpen(false)}
+        teacherId={user?.id}
+        onCreated={load}
+      />
     </AppShell>
   )
 }

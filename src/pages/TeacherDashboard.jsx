@@ -2,12 +2,13 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
-import { CalendarPlus, Clock, HelpCircle, Inbox, TrendingUp, UserPlus, Users } from 'lucide-react'
+import { CalendarPlus, Clock, HelpCircle, Inbox, Radio, TrendingUp, UserPlus, Users } from 'lucide-react'
 
 import StudentList from '../components/StudentList'
 import QuestionInbox from '../components/QuestionInbox'
 import NextLessonPanel from '../components/liveLesson/NextLessonPanel'
 import InviteStudentsPanel from '../components/liveLesson/InviteStudentsPanel'
+import InstantLessonDialog from '../components/liveLesson/InstantLessonDialog'
 import { AppShell, Badge, Button, Modal, PageSection } from '../components/ui'
 import { DashboardHero, MetricTile, Panel } from '../components/dashboard'
 import { formatMinutes } from '../lib/insights'
@@ -15,12 +16,13 @@ import { fetchMyStudents, fetchTeacherLessons } from '../lib/liveLesson/api'
 import { isActiveStatus } from '../lib/liveLesson/status'
 
 export default function TeacherDashboard() {
-  const { profile } = useAuth()
+  const { profile, user } = useAuth()
   const [students, setStudents] = useState([])
   const [questions, setQuestions] = useState([])
   const [dailyLogs, setDailyLogs] = useState([])
   const [nextLesson, setNextLesson] = useState(null)
   const [inviteOpen, setInviteOpen] = useState(false)
+  const [instantOpen, setInstantOpen] = useState(false)
   const [loading, setLoading] = useState(true)
 
   const loadData = useCallback(async () => {
@@ -207,7 +209,10 @@ export default function TeacherDashboard() {
             <Button variant="secondary" size="sm" icon={UserPlus} onClick={() => setInviteOpen(true)}>
               Öğrenci Davet Et
             </Button>
-            <Button as={Link} to="/ogretmen/canli-dersler/yeni" size="sm" icon={CalendarPlus}>
+            <Button size="sm" icon={Radio} onClick={() => setInstantOpen(true)}>
+              Hemen Ders Başlat
+            </Button>
+            <Button as={Link} to="/ogretmen/canli-dersler/yeni" size="sm" variant="secondary" icon={CalendarPlus}>
               Ders Planla
             </Button>
           </div>
@@ -238,6 +243,13 @@ export default function TeacherDashboard() {
       >
         <InviteStudentsPanel onChanged={loadData} />
       </Modal>
+
+      <InstantLessonDialog
+        open={instantOpen}
+        onClose={() => setInstantOpen(false)}
+        teacherId={user?.id}
+        onCreated={loadData}
+      />
     </AppShell>
   )
 }

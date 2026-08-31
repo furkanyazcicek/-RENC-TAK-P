@@ -52,7 +52,27 @@ export const CHANNEL_EVENTS = {
  * saniyede onlarca kez geldiği için bunları React state'ine yazmak bütün
  * ağacı yeniden render ederdi. Abone bileşenler kendi ref'lerine yazar.
  */
-export function createLessonChannel({ roomId, user, role, displayName }) {
+export function newDeviceId() {
+  return (
+    (typeof crypto !== 'undefined' && crypto.randomUUID?.()) ||
+    `cihaz-${Math.random().toString(36).slice(2)}-${Date.now().toString(36)}`
+  )
+}
+
+export function createLessonChannel({ roomId, user, role, displayName, deviceId: givenDeviceId }) {
+  /**
+   * CİHAZ KİMLİĞİ — aynı kişinin iki cihazı için şart.
+   *
+   * Öğretmen bilgisayardan kamerayı açıp tabletten tahtaya yazmak
+   * isteyebiliyor. Kimlik olarak yalnızca kullanıcı numarası kullanılsaydı:
+   *   • iki cihaz "varlık" (presence) listesinde birbirinin üstüne yazardı,
+   *   • tabletten çizilen çizgi bilgisayarda "kendi çizimim" sanılıp
+   *     YOK SAYILIRDI — yani öğretmen kendi yazdığını göremezdi.
+   * Bu yüzden her sekme/cihaz kendi kimliğini üretir; yankı engelleme
+   * kullanıcıya değil CİHAZA bakar.
+   */
+  const deviceId = givenDeviceId ?? newDeviceId()
+
   const handlers = new Map()
   const peerListeners = new Set()
   const statusListeners = new Set()
@@ -63,6 +83,7 @@ export function createLessonChannel({ roomId, user, role, displayName }) {
   let status = 'idle' // idle | connecting | connected | reconnecting | failed | closed
   let peers = []
   let selfState = {
+    deviceId,
     userId: user?.id ?? null,
     role: role ?? 'student',
     name: displayName ?? '',
@@ -79,11 +100,22 @@ export function createLessonChannel({ roomId, user, role, displayName }) {
     for (const fn of statusListeners) fn(next)
   }
 
-  /** Artan gecikmeyle yeniden bağlanma (en fazla 5 deneme). */
+  /**
+   * Artan gecikmeyle yeniden bağlanma.
+   *
+   * Deneme hakkı bitince durum 'failed' olur — 'reconnecting'de bırakmak
+   * yalan olurdu: hiçbir şey denenmiyorken kullanıcıya "bağlanılıyor"
+   * demek, sayfayı yenilemekten başka çaresi olmadığını gizler. 'failed'
+   * durumunda arayüz elle "Yeniden bağlan" düğmesi gösterir.
+   */
+  const MAX_RECONNECT_ATTEMPTS = 6
   let reconnectAttempts = 0
   function scheduleReconnect() {
     if (disposed || reconnectTimer) return
-    if (reconnectAttempts >= 5) return
+    if (reconnectAttempts >= MAX_RECONNECT_ATTEMPTS) {
+      setStatus('failed')
+      return
+    }
     const delay = Math.min(15_000, 1500 * 2 ** reconnectAttempts)
     reconnectAttempts += 1
     reconnectTimer = window.setTimeout(async () => {
@@ -108,13 +140,19 @@ export function createLessonChannel({ roomId, user, role, displayName }) {
     const list = []
     for (const key of Object.keys(state)) {
       const entry = state[key]?.[0]
-      if (entry && entry.userId !== selfState.userId) list.push(entry)
+      // Kendi cihazımız hariç HERKES listeye girer — karşı taraf da,
+      // kendi ikinci cihazımız da. Ayrımı `ownDevice` bayrağı taşır.
+      if (entry && entry.deviceId !== deviceId) {
+        list.push({ ...entry, ownDevice: entry.userId === selfState.userId })
+      }
     }
     peers = list
     for (const fn of peerListeners) fn(list)
   }
 
   const api = {
+    /** Bu sekmenin/cihazın kimliği. Yankı engelleme bunu kullanır. */
+    deviceId,
     get status() {
       return status
     },
@@ -156,16 +194,31 @@ export function createLessonChannel({ roomId, user, role, displayName }) {
       }
       if (disposed) return
 
-      channel = supabase.channel(roomId, {
+      /**
+       * KANALIN KENDİ KİMLİĞİ — eski kanalın olayları yenisini ezmesin.
+       *
+       * `removeChannel(eski)` çağrıldığında ESKİ kanalın abone geri
+       * çağrısı 'CLOSED' ile bir kez daha tetikleniyor. O geri çağrı hâlâ
+       * bu kapanışın "bağlantı koptu" demek olduğunu sanıyor ve yeni,
+       * sapasağlam bağlanmış kanalın durumunu "yeniden bağlanılıyor"a
+       * çeviriyordu: kanal aslında bağlıyken arayüz sürekli kopuk
+       * görünüyordu. Aşağıdaki karşılaştırma, artık geçerli olmayan bir
+       * kanaldan gelen olayları sessizce eler.
+       */
+      const myChannel = supabase.channel(roomId, {
         config: {
-          presence: { key: selfState.userId ?? crypto.randomUUID() },
+          // Anahtar CİHAZ kimliği: aynı kullanıcının iki cihazı listede
+          // ayrı ayrı görünsün, biri diğerini silmesin.
+          presence: { key: deviceId },
           broadcast: { self: false, ack: false },
           ...(USE_PRIVATE_CHANNELS ? { private: true } : {}),
         },
       })
+      channel = myChannel
 
       for (const event of Object.values(CHANNEL_EVENTS)) {
-        channel.on('broadcast', { event }, ({ payload }) => {
+        myChannel.on('broadcast', { event }, ({ payload }) => {
+          if (channel !== myChannel) return
           for (const fn of handlers.get(event) ?? []) {
             try {
               fn(payload)
@@ -176,16 +229,16 @@ export function createLessonChannel({ roomId, user, role, displayName }) {
         })
       }
 
-      channel
-        .on('presence', { event: 'sync' }, readPeers)
-        .on('presence', { event: 'join' }, readPeers)
-        .on('presence', { event: 'leave' }, readPeers)
+      myChannel
+        .on('presence', { event: 'sync' }, () => channel === myChannel && readPeers())
+        .on('presence', { event: 'join' }, () => channel === myChannel && readPeers())
+        .on('presence', { event: 'leave' }, () => channel === myChannel && readPeers())
         .subscribe(async (state) => {
-          if (disposed) return
+          if (disposed || channel !== myChannel) return
           if (state === 'SUBSCRIBED') {
             reconnectAttempts = 0
             setStatus('connected')
-            await channel.track(selfState)
+            await myChannel.track(selfState)
             readPeers()
           } else if (state === 'CHANNEL_ERROR' || state === 'TIMED_OUT' || state === 'CLOSED') {
             // Ders ortasında bağlantı kopması normaldir (tünelden geçmek,
@@ -275,13 +328,24 @@ export function createLessonChannel({ roomId, user, role, displayName }) {
  */
 export function useLessonChannel({ roomId, user, role, displayName, enabled = true }) {
   const channelRef = useRef(null)
+  // Bileşenin ömrü boyunca DEĞİŞMEYEN cihaz kimliği. Kanal yeniden
+  // kurulsa da aynı kalır; yoksa her yeniden bağlanmada karşı taraf
+  // bizi "yeni bir cihaz" sanardı.
+  const deviceIdRef = useRef(null)
+  if (!deviceIdRef.current) deviceIdRef.current = newDeviceId()
   const [status, setStatus] = useState('idle')
   const [peers, setPeers] = useState([])
 
   useEffect(() => {
     if (!enabled || !roomId || !user?.id) return undefined
 
-    const instance = createLessonChannel({ roomId, user, role, displayName })
+    const instance = createLessonChannel({
+      roomId,
+      user,
+      role,
+      displayName,
+      deviceId: deviceIdRef.current,
+    })
     channelRef.current = instance
 
     const offStatus = instance.onStatus(setStatus)
@@ -300,7 +364,26 @@ export function useLessonChannel({ roomId, user, role, displayName, enabled = tr
      */
     const timer = window.setTimeout(() => instance.connect(), 250)
 
+    /**
+     * SEKMEYE GERİ DÖNÜNCE YENİDEN BAĞLAN.
+     *
+     * Tarayıcılar arka plandaki sekmenin zamanlayıcılarını kısar ve
+     * bağlantı sessizce düşebilir; telefon uykuya daldığında da aynısı
+     * olur. Öğretmen sekmeye döndüğünde bağlantının kendiliğinden
+     * toparlanması gerekir — "sayfayı yenile" bir çözüm değil, dersin
+     * ortasında tahtayı kaybetmek demek.
+     */
+    function onVisible() {
+      if (document.visibilityState !== 'visible') return
+      if (instance.status === 'connected' || instance.status === 'connecting') return
+      instance.reconnect()
+    }
+    document.addEventListener('visibilitychange', onVisible)
+    window.addEventListener('online', onVisible)
+
     return () => {
+      document.removeEventListener('visibilitychange', onVisible)
+      window.removeEventListener('online', onVisible)
       window.clearTimeout(timer)
       offStatus()
       offPeers()
@@ -312,10 +395,27 @@ export function useLessonChannel({ roomId, user, role, displayName, enabled = tr
     }
   }, [roomId, user?.id, role, displayName, enabled])
 
-  const send = useCallback((event, payload) => channelRef.current?.send(event, payload) ?? false, [])
+  const send = useCallback(
+    // Her yayına gönderen CİHAZ eklenir; alıcı yankıyı buna göre eler.
+    (event, payload) => channelRef.current?.send(event, { ...payload, from: deviceIdRef.current }) ?? false,
+    []
+  )
   const subscribe = useCallback((event, handler) => channelRef.current?.on(event, handler) ?? (() => {}), [])
   const updateState = useCallback((patch) => channelRef.current?.updateState(patch), [])
   const reconnect = useCallback(() => channelRef.current?.reconnect(), [])
 
-  return { status, peers, send, subscribe, updateState, reconnect, channelRef }
+  return {
+    status,
+    peers,
+    send,
+    subscribe,
+    updateState,
+    reconnect,
+    channelRef,
+    deviceId: deviceIdRef.current,
+    /** Karşı taraftaki kişiler (kendi ikinci cihazın hariç). */
+    remotePeers: peers.filter((p) => !p.ownDevice),
+    /** Aynı hesapla bağlı diğer cihazların. */
+    ownDevices: peers.filter((p) => p.ownDevice),
+  }
 }

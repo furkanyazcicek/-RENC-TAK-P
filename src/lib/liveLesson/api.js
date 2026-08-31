@@ -208,6 +208,29 @@ export async function createLesson(payload) {
   return data
 }
 
+/**
+ * "Hemen ders başlat" — Zoom'daki anlık toplantının karşılığı.
+ *
+ * Planlama formundan geçmez: dersi ŞİMDİ başlatır ve odayı doğrudan
+ * açar (`lobby_open`). Öğrenci bağlantıya dokunduğu anda girebilsin
+ * diye durum `scheduled` bırakılmaz — aksi hâlde öğrenci "oda henüz
+ * açılmadı" duvarına çarpardı.
+ */
+export async function createInstantLesson({ teacherId, studentId, title, minutes = 60, subject = null }) {
+  if (isLessonPreview()) return previewLesson('onizleme')
+  const start = new Date()
+  const end = new Date(start.getTime() + Math.max(15, minutes) * 60000)
+  return createLesson({
+    teacher_id: teacherId,
+    student_id: studentId,
+    title: title?.trim() || 'Hızlı ders',
+    subject,
+    scheduled_start: start.toISOString(),
+    scheduled_end: end.toISOString(),
+    status: 'lobby_open',
+  })
+}
+
 export async function updateLesson(sessionId, patch) {
   return unwrap(
     await supabase.from('lesson_sessions').update(patch).eq('id', sessionId).select(SESSION_COLUMNS).single(),
