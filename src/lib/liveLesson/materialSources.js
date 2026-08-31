@@ -107,14 +107,51 @@ export function atlasMaterials(search = '') {
  * yükleyebilir, herkes okuyabilir). Canlı ders dosyaları kendi klasörüne
  * konur ki soru fotoğraflarıyla karışmasın.
  */
+/**
+ * Yükleme sınırı.
+ *
+ * Supabase'in ücretsiz planında dosya başına üst sınır 50 MB'dır; bunun
+ * üzerini istemcide engellemek, kullanıcıyı 40 MB yükledikten sonra
+ * sunucudan gelen İngilizce bir hatayla karşılaşmaktan kurtarır.
+ * Plan yükseltilir veya kovaya ayrı bir sınır tanımlanırsa bu sayı da
+ * güncellenmelidir (bkz. docs/canli-ders.md).
+ */
+export const MAX_UPLOAD_MB = 50
+
+export function formatFileSize(bytes) {
+  const mb = bytes / (1024 * 1024)
+  if (mb >= 1) return `${mb.toFixed(1)} MB`
+  return `${Math.max(1, Math.round(bytes / 1024))} KB`
+}
+
 export async function uploadLessonFile(sessionId, file) {
   const extension = (file.name.split('.').pop() ?? 'bin').toLowerCase()
   const path = `canli-ders/${sessionId}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${extension}`
   const { error } = await supabase.storage.from('question-images').upload(path, file, {
     cacheControl: '3600',
     upsert: false,
+    contentType: file.type || undefined,
   })
-  if (error) throw error
+
+  if (error) {
+    // Sunucunun İngilizce hatası kullanıcıya gösterilmez; ne olduğunu ve
+    // ne yapması gerektiğini Türkçe söyleyen bir hata fırlatılır.
+    const raw = `${error.message ?? ''} ${error.statusCode ?? ''}`
+    if (/413|exceeded the maximum|too large/i.test(raw)) {
+      throw new Error(
+        `Dosya sunucunun kabul ettiği boyutu aşıyor (üst sınır ${MAX_UPLOAD_MB} MB). ` +
+          'PDF’i sıkıştırıp tekrar deneyin.'
+      )
+    }
+    if (/Bucket not found|NoSuchBucket/i.test(raw)) {
+      throw new Error('Dosya deposu bulunamadı. Bu bir kurulum eksiği; geliştiriciye bildirin.')
+    }
+    if (/row-level security|Unauthorized|403/i.test(raw)) {
+      throw new Error('Dosya yükleme yetkiniz yok. Oturumunuz düşmüş olabilir, sayfayı yenileyin.')
+    }
+    throw new Error('Dosya yüklenemedi. Bağlantınızı kontrol edip tekrar deneyin.')
+  }
+
   const { data } = supabase.storage.from('question-images').getPublicUrl(path)
   return data.publicUrl
 }

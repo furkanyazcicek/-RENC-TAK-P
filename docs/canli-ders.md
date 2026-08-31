@@ -149,6 +149,21 @@ kontrolünden gelir, kimlik dizesinden değil. İstemci karşı tarafı `#`
 öncesindeki numaradan eşleştirir ve karşı taraf iki cihazdan bağlıysa
 **kamerası açık olanı** gösterir.
 
+### Dosya yükleme sınırı
+
+İstemci sınırı `MAX_UPLOAD_MB` (`src/lib/liveLesson/materialSources.js`),
+şu an **50 MB**. Bu, Supabase Ücretsiz planının dosya başına üst sınırıyla
+hizalıdır; daha yükseğe çekmek istemcide işe yaramaz, sunucu 413 döner.
+
+Daha büyük dosya gerekirse iki şey birden yapılmalı:
+
+1. Kovanın kendi sınırını yükselt (SQL Editor):
+   `update storage.buckets set file_size_limit = 104857600 where id = 'question-images';`
+2. `MAX_UPLOAD_MB` değerini aynı sayıya çek.
+
+Planın global sınırı bunların ikisini de ezer; Ücretsiz planda 50 MB'ın
+üstüne çıkılamaz.
+
 ## 5) Tahta
 
 `src/lib/solutionCanvas.js` içindeki mevcut vektör çizim motoru yeniden

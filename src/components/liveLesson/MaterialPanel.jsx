@@ -27,6 +27,8 @@ import {
   fetchLibraryNotes,
   fetchStudentMistakes,
   fetchStudentQuestions,
+  formatFileSize,
+  MAX_UPLOAD_MB,
   uploadLessonFile,
 } from '../../lib/liveLesson/materialSources'
 import {
@@ -84,6 +86,7 @@ export default function MaterialPanel({
   const [linkUrl, setLinkUrl] = useState('')
   const [linkTitle, setLinkTitle] = useState('')
   const [uploading, setUploading] = useState(false)
+  const [uploadInfo, setUploadInfo] = useState(null)
   const fileRef = useRef(null)
 
   const load = useCallback(async () => {
@@ -137,11 +140,15 @@ export default function MaterialPanel({
     const file = event.target.files?.[0]
     event.target.value = ''
     if (!file) return
-    if (file.size > 12 * 1024 * 1024) {
-      setError('Dosya 12 MB sınırını aşıyor. Daha küçük bir dosya seçin.')
+    if (file.size > MAX_UPLOAD_MB * 1024 * 1024) {
+      setError(
+        `Bu dosya ${formatFileSize(file.size)} — üst sınır ${MAX_UPLOAD_MB} MB. ` +
+          'PDF’i sıkıştırıp (örneğin Önizleme > Dışa Aktar > Quartz filtresi) tekrar deneyin.'
+      )
       return
     }
     setUploading(true)
+    setUploadInfo({ name: file.name, size: formatFileSize(file.size) })
     setError(null)
     try {
       const url = await uploadLessonFile(sessionId, file)
@@ -165,9 +172,11 @@ export default function MaterialPanel({
       }
       setTab('added')
     } catch (err) {
-      setError('Dosya yüklenemedi. Bağlantınızı kontrol edip tekrar deneyin.')
+      // uploadLessonFile zaten Türkçe ve eyleme dönük mesaj üretiyor.
+      setError(err?.message || 'Dosya yüklenemedi. Bağlantınızı kontrol edip tekrar deneyin.')
     } finally {
       setUploading(false)
+      setUploadInfo(null)
     }
   }
 
@@ -390,6 +399,17 @@ export default function MaterialPanel({
             >
               PDF veya görsel yükle
             </Button>
+            {uploading && uploadInfo ? (
+              <p className="text-xs leading-relaxed text-ink/60">
+                <strong className="text-ink/75">{uploadInfo.name}</strong> yükleniyor (
+                {uploadInfo.size}). Büyük dosyalarda bu bir-iki dakika sürebilir; sayfayı kapatma.
+              </p>
+            ) : (
+              <p className="text-xs text-ink/55">
+                PDF veya görsel, en fazla {MAX_UPLOAD_MB} MB. Yüklediğin dosya kitaplığına da
+                kaydedilir.
+              </p>
+            )}
 
             <div className="flex flex-col gap-2">
               <Field label="Bağlantı adresi">
