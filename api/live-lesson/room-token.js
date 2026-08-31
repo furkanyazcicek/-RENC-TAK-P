@@ -134,11 +134,28 @@ export default async function handler(req, res) {
     .eq('id', userId)
     .maybeSingle()
 
+  /**
+   * KİMLİK HER BAĞLANTIDA BENZERSİZ OLMALI.
+   *
+   * Öğretmen bilgisayardan kamerayı açıp tabletten tahtaya yazıyor. LiveKit
+   * ise aynı kimlikle ikinci bir bağlantı geldiğinde İLKİNİ odadan atar
+   * (DUPLICATE_IDENTITY). Kimlik olarak yalnız kullanıcı numarası
+   * kullanılsaydı tablet bağlanır bağlanmaz bilgisayarın görüntüsü düşerdi.
+   *
+   * Bu yüzden kimliğe sunucuda üretilen rastgele bir son ek eklenir.
+   * Yetkilendirme bundan ETKİLENMEZ: odaya girme hakkı yukarıdaki
+   * veritabanı kontrolünden gelir, kimlik dizesinden değil. Karşı tarafın
+   * kim olduğu ise '#' öncesindeki kullanıcı numarasından okunur.
+   */
+  const connectionSuffix = Math.random().toString(36).slice(2, 10)
+
   try {
     const at = new AccessToken(apiKey, apiSecret, {
-      // Kimlik DAİMA sunucudaki kullanıcı numarasıdır.
-      identity: userId,
+      identity: `${userId}#${connectionSuffix}`,
       name: profile?.full_name || (role === 'teacher' ? 'Öğretmen' : 'Öğrenci'),
+      // Kullanıcı numarası ayrıca meta veride: kimlik biçimi değişse bile
+      // eşleştirme bozulmaz.
+      metadata: JSON.stringify({ userId, role }),
       // Belirteç kısa ömürlüdür. Ders uzarsa istemci yenisini ister;
       // uzun ömürlü belirteç, ders bittikten sonra da odaya girilebilmesi
       // demek olurdu.
@@ -164,7 +181,8 @@ export default async function handler(req, res) {
       token,
       url,
       roomId: lesson.provider_room_id,
-      identity: userId,
+      identity: `${userId}#${connectionSuffix}`,
+      userId,
       role,
       expiresAt: new Date(Date.now() + TOKEN_TTL_SECONDS * 1000).toISOString(),
     })

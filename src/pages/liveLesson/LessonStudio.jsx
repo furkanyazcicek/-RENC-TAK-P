@@ -465,7 +465,14 @@ export default function LessonStudio() {
   // Karşı tarafın GERÇEK görüntüsü: LiveKit katılımcıları kimlik olarak
   // Supabase kullanıcı numarasını taşır, bu yüzden eşleştirme kesindir.
   const counterpartId = isTeacher ? session?.student_id : session?.teacher_id
-  const remote = media.remoteParticipants.find((p) => p.identity === counterpartId) ?? null
+  /**
+   * Karşı taraf iki cihazdan bağlanmış olabilir (öğretmenin bilgisayarı +
+   * tableti). Kamerası açık olanı tercih ediyoruz; hiçbiri açık değilse
+   * ilkini alıyoruz. Aksi hâlde öğrenci, öğretmenin kamerasız tabletine
+   * bakıp "hocam görünmüyor" derdi.
+   */
+  const counterpartDevices = media.remoteParticipants.filter((p) => p.userId === counterpartId)
+  const remote = counterpartDevices.find((p) => p.camOn || p.screenOn) ?? counterpartDevices[0] ?? null
   const showMaterial = Boolean(openMaterial) && (mobileView === 'material' || window.innerWidth >= 768)
 
   /**

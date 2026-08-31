@@ -74,9 +74,23 @@ function describeParticipant(participant) {
     }
   }
 
+  /**
+   * Kimlik `<kullaniciNo>#<baglantiEki>` biçimindedir (aynı kişinin iki
+   * cihazı aynı odada durabilsin diye). Eşleştirme '#' öncesine bakar;
+   * meta veri varsa o önceliklidir.
+   */
+  let userId = String(participant.identity ?? '').split('#')[0]
+  try {
+    const meta = participant.metadata ? JSON.parse(participant.metadata) : null
+    if (meta?.userId) userId = meta.userId
+  } catch {
+    /* meta veri okunamadıysa kimlik ön eki yeterli */
+  }
+
   return {
     identity: participant.identity,
-    name: participant.name || participant.identity,
+    userId,
+    name: participant.name || userId,
     stream: stream.getTracks().length ? stream : null,
     micOn: Boolean(micPub && !micPub.isMuted),
     camOn: Boolean(camPub?.track && !camPub.isMuted),
