@@ -1034,6 +1034,8 @@ export default function LessonBoard({
   useEffect(() => {
     const sync = createBoardSync({
       sessionId,
+      // Kalıcı kaydı YALNIZCA öğretmen yazar; gerekçesi sync.js başında.
+      canPersist: isTeacher,
       getPage: (index) => pagesRef.current[index],
       onState: (state) => {
         setSaveState(state)
@@ -1047,7 +1049,7 @@ export default function LessonBoard({
       sync.flushNow().finally(() => sync.destroy())
       syncRef.current = null
     }
-  }, [sessionId, onSaveStateChange])
+  }, [sessionId, onSaveStateChange, isTeacher])
 
   useEffect(() => {
     const wrap = wrapRef.current
@@ -1320,7 +1322,7 @@ export default function LessonBoard({
 
         {/* Ekran okuyucuya tahtanın içeriğini metinle bildir */}
         <p className="sr-only" aria-live="polite">
-          {`Tahta, sayfa ${pageIndex + 1} / ${pageCount}. ${currentPage()?.items.length ?? 0} nesne. ${saveLabel.text}`}
+          {`Tahta, sayfa ${pageIndex + 1} / ${pageCount}. ${currentPage()?.items.length ?? 0} nesne.${isTeacher ? ` ${saveLabel.text}` : ''}`}
         </p>
 
         {/* Yüzen video kutuları tuvalin İÇİNE basılır: sahnenin köşesine
@@ -1389,9 +1391,15 @@ export default function LessonBoard({
           )}
         </div>
 
+        {/* Kayıt durumu yalnız öğretmende: tahtayı kaydeden odur. Öğrenciye
+            "Kaydedildi" yazmak, kaydı onun yaptığını sandırırdı. */}
         <p className={cn('flex items-center gap-1.5 text-xs', saveLabel.tone)}>
-          <saveLabel.Icon className={cn('h-3.5 w-3.5', saveLabel.spin && 'animate-spin')} aria-hidden="true" />
-          <span className="hidden sm:inline">{saveLabel.text}</span>
+          {isTeacher && (
+            <>
+              <saveLabel.Icon className={cn('h-3.5 w-3.5', saveLabel.spin && 'animate-spin')} aria-hidden="true" />
+              <span className="hidden sm:inline">{saveLabel.text}</span>
+            </>
+          )}
           <span className="tabular-nums text-ink/40">%{Math.round(zoom * 100)}</span>
         </p>
       </div>

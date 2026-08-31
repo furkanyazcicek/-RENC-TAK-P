@@ -25,7 +25,20 @@ const SAVE_DELAY_MS = 4000
 /** Çizim sırasında "ucun konumu" yayını — saniyede ~12 kare. */
 export const LIVE_POINT_INTERVAL_MS = 80
 
-export function createBoardSync({ sessionId, getPage, onState }) {
+/**
+ * KALICI KAYDIN TEK SAHİBİ VARDIR.
+ *
+ * Tahtayı hem öğretmen hem öğrenci kaydediyordu. İkisinin tahtası aynı
+ * olduğu sürece bu zararsızdı; ama öğrencinin bağlantısı koptuğu sırada
+ * öğretmen çizmeye devam ederse öğrenci o çizimleri hiç almıyor ve geri
+ * geldiğinde KENDİ ESKİ HÂLİNİ veri tabanına yazıp öğretmenin aradaki
+ * bütün çizimlerini siliyordu. Kalıcı kaydı tek tarafa — dersin sahibi
+ * olan öğretmene — bağlamak bu yarışı tamamen ortadan kaldırır.
+ *
+ * Öğrencinin çizdikleri kaybolmaz: onlar anlık kanaldan öğretmene gider
+ * ve kaydı öğretmen yapar.
+ */
+export function createBoardSync({ sessionId, getPage, onState, canPersist = true }) {
   const timers = new Map()
   const pending = new Set()
   let destroyed = false
@@ -55,7 +68,7 @@ export function createBoardSync({ sessionId, getPage, onState }) {
   return {
     /** Sayfa değişti — yakın zamanda kaydet. */
     markDirty(pageIndex) {
-      if (destroyed) return
+      if (destroyed || !canPersist) return
       pending.add(pageIndex)
       setState('dirty')
       if (timers.has(pageIndex)) window.clearTimeout(timers.get(pageIndex))
@@ -70,6 +83,7 @@ export function createBoardSync({ sessionId, getPage, onState }) {
 
     /** Bekleyen her şeyi hemen yaz (ders bitişi, sayfadan ayrılma). */
     async flushNow() {
+      if (!canPersist) return
       for (const timer of timers.values()) window.clearTimeout(timer)
       timers.clear()
       const indexes = [...pending]
