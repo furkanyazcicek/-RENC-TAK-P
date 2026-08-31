@@ -21,6 +21,8 @@ import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
 import { splitSubjectTopic } from '../lib/topicHelpers'
 import { needsExamSetup, resolveExamCountdown } from '../lib/examProfile'
+import { fetchStudentLessons } from '../lib/liveLesson/api'
+import { isActiveStatus } from '../lib/liveLesson/status'
 import {
   accuracy,
   buildInsights,
@@ -39,6 +41,7 @@ import {
 } from '../lib/insights'
 
 import AICoachCard from '../components/ai/AICoachCard'
+import NextLessonPanel from '../components/liveLesson/NextLessonPanel'
 import ExamSetupCard, { isExamSetupSnoozed } from '../components/ExamSetupCard'
 import QuestionFeed from '../components/QuestionFeed'
 import { AppShell, Badge, Button, EmptyState } from '../components/ui'
@@ -73,6 +76,7 @@ export default function Home() {
   const [branchExams, setBranchExams] = useState([])
   const [homeworks, setHomeworks] = useState([])
   const [questions, setQuestions] = useState([])
+  const [nextLesson, setNextLesson] = useState(null)
   const [loading, setLoading] = useState(true)
   // "Sonra" denince kart bu oturumda gizlenir (kalıcısı localStorage'da).
   const [setupSnoozed, setSetupSnoozed] = useState(() => isExamSetupSnoozed())
@@ -116,6 +120,18 @@ export default function Home() {
     setHomeworks(homeworkRes.data ?? [])
     setQuestions(questionRes.data ?? [])
     setLoading(false)
+
+    // Yaklaşan canlı ders — anasayfanın en üstündeki katılım eylemi.
+    // Anasayfanın açılışını bekletmesin diye ayrı ve sessizce yüklenir;
+    // canlı ders altyapısı kurulmamışsa panel görünmez.
+    fetchStudentLessons({ from: new Date(Date.now() - 2 * 3600_000).toISOString(), limit: 20 })
+      .then((lessons) => {
+        const active = lessons
+          .filter((l) => isActiveStatus(l.status))
+          .sort((a, b) => new Date(a.scheduled_start) - new Date(b.scheduled_start))
+        setNextLesson(active.find((l) => l.status === 'live' || l.status === 'lobby_open') ?? active[0] ?? null)
+      })
+      .catch(() => setNextLesson(null))
   }, [user])
 
   useEffect(() => {
@@ -270,6 +286,18 @@ export default function Home() {
           { label: 'İsabet', value: overallAccuracy != null ? `%${overallAccuracy}` : '—' },
         ]}
       />
+
+      {/* ---------- YAKLAŞAN CANLI DERS ----------
+          Kasten hero'nun HEMEN ALTINDA: ders katılım düğmesi metrik
+          kartlarının arasında kaybolmamalı. Ders yoksa hiç render edilmez —
+          anasayfanın sakinliği korunur (grafik yok kuralıyla aynı gerekçe). */}
+      {nextLesson && (
+        <NextLessonPanel
+          session={nextLesson}
+          role="student"
+          counterpartName={nextLesson.teacher?.full_name}
+        />
+      )}
 
       {/* ---------- SINAV ANKETİ ----------
           Yalnızca sınav bilgisi hiç girilmemiş öğrencilere görünür. */}

@@ -1,0 +1,122 @@
+/* ==================================================================
+   CANLI DERS STÜDYOSU — kapsamlı sahne stilleri
+   ------------------------------------------------------------------
+   Bu dosya YALNIZCA `.ders-studyo` kökü altında geçerlidir; genel
+   ürün sayfalarına sızmaz. Sebebi: stüdyo standart `AppShell`
+   kullanmaz — tam ekran, kaydırmasız, kendi güvenli alan yönetimi olan
+   bir kabuktur. Bu davranışı genel sayfalara taşımak Modal, Toast ve
+   sidebar'ı bozar.
+
+   Renkler tasarım belirteçlerinden gelir; burada yeni renk TANIMLANMAZ.
+   ================================================================== */
+
+.ders-studyo {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: rgb(var(--c-ink));
+  /* Çentikli ekranlarda üst şerit ve alt kontroller kesilmesin */
+  padding-top: var(--safe-area-inset-top);
+  padding-bottom: var(--safe-area-inset-bottom);
+  /* 100dvh yerine inset: mobil tarayıcı çubuğu açılıp kapanırken
+     yükseklik zıplamasın ve tahta yeniden ölçeklenmesin. */
+}
+
+/* Sahne (tahta / materyal) — açık zeminde, koyu kabuğun içinde bir levha */
+.ders-studyo__sahne {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  flex: 1;
+  border-radius: theme('borderRadius.card');
+  background: rgb(var(--c-surface));
+  padding: 0.625rem;
+}
+
+@media (min-width: 1024px) {
+  .ders-studyo__sahne {
+    padding: 0.75rem;
+  }
+}
+
+/* Video şeridi — masaüstünde sağda dar bir sütun.
+   Genişlik bilinçli olarak sabit: yüzdeyle verilseydi geniş ekranda
+   videolar büyüyüp tahtayla yarışırdı. */
+.ders-studyo__seritler {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .ders-studyo__seritler {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    width: 15rem;
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .ders-studyo__seritler {
+    width: 17rem;
+  }
+}
+
+/* Tablet: video şeridi yerini sahnenin sağ üstünde yüzen küçük
+   kutulara bırakır. Tahta tam genişlikte kalır. */
+.ders-studyo__yuzen {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 9rem;
+}
+
+@media (min-width: 1024px) {
+  .ders-studyo__yuzen {
+    display: none;
+  }
+}
+
+/* Telefon: tek odak.
+   Yüzen kamera kutusu BURADA GİZLENİR — telefonda tahtanın hemen altında
+   tam boy katılımcı şeridi var, ikisi birden gösterilirse hem tahtanın
+   üstü kapanıyor hem de aynı görüntü iki kez çıkıyor.
+   (Gizleme Tailwind sınıfıyla değil burada yapılıyor: bu dosya Tailwind
+   yardımcı katmanından sonra yükleniyor ve aynı ağırlıktaki `.hidden`
+   sınıfını eziyordu.) */
+@media (max-width: 767px) {
+  .ders-studyo__yuzen {
+    display: none;
+  }
+
+  /* Sahne telefonda İÇERİĞİ KADAR yer kaplar. `flex: 1` bırakılırsa
+     tahtanın altında kocaman boş beyaz bir alan oluşuyordu. */
+  .ders-studyo__sahne {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+  }
+}
+
+/* Uzun Türkçe başlıklar üst şeridi zıplatmasın */
+.ders-studyo__baslik {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Hareket azaltma tercihi: canlı göstergelerin nabzı durur, bilgi
+   metinle taşınmaya devam eder. */
+@media (prefers-reduced-motion: reduce) {
+  .ders-studyo .animate-pulse-soft,
+  .ders-studyo .animate-spin {
+    animation: none;
+  }
+}
