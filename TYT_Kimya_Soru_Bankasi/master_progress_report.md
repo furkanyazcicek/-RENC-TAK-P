@@ -15,5 +15,5 @@
 | 05 | Doğa ve Kimya | 30 | 300 | 30/30 Tamamlandı |
 | 06 | Kimyanın Temel Kanunları ve Kimyasal Hesaplamalar | 30 | 300 | 30/30 Tamamlandı |
 | 07 | Karışımlar | 30 | 300 | 30/30 Tamamlandı |
-| 08 | Asitler, Bazlar ve Tuzlar | 6 | 60 | 6/30 Test Üretildi |
-| 09 | Kimya Her Yerde | 0 | 0 | Bekliyor |
+| 08 | Asitler, Bazlar ve Tuzlar | 30 | 300 | 30/30 Tamamlandı |
+| 09 | Kimya Her Yerde | 30 | 300 | 30/30 Tamamlandı |

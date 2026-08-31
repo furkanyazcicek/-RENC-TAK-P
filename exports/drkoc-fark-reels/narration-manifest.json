@@ -1,0 +1,52 @@
+{
+  "voice": {
+    "name": "Cillian",
+    "voice_id": "d8ba9f14-8a24-44db-932b-99e16c45bd32",
+    "voice_type": "preset"
+  },
+  "delivery": "Tok, kendinden emin, meydan okuyan Türkçe reklam anlatıcısı; nötr İstanbul Türkçesi; temiz kuru tını; akıcı tempo.",
+  "takes": [
+    {
+      "index": 1,
+      "window": "00:00-00:03",
+      "text": "Herkes çalışıyor; masa başında, aynı hedefin peşinde.",
+      "job_id": "027ec575-29db-4ff8-acc6-d3fab95afb65",
+      "file": "voices/voice01.wav"
+    },
+    {
+      "index": 2,
+      "window": "00:03-00:06",
+      "text": "Peki sen neyi farklı yapıyorsun da kazanacaksın?",
+      "job_id": "d5a6b3de-01f6-4b91-abc1-b553e9dacb82",
+      "file": "voices/voice02.wav"
+    },
+    {
+      "index": 3,
+      "window": "00:06-00:10",
+      "text": "Aynı notlar, aynı videolar, aynı ezber; hep aynı döngü.",
+      "job_id": "e840dbfc-0d3d-45ae-a2ac-d4d6d2346d21",
+      "file": "voices/voice03.wav"
+    },
+    {
+      "index": 4,
+      "window": "00:10-00:14",
+      "text": "Hâlâ aynı yöntemle farklı bir sonuç mu bekliyorsun?",
+      "job_id": "18c255c3-7661-4fbf-94c7-54185517ae99",
+      "file": "voices/voice04.wav"
+    },
+    {
+      "index": 5,
+      "window": "00:14-00:20",
+      "text": "Fark kaç saat çalıştığında değil; konuyu ne kadar derinden gördüğünde, denediğinde ve gerçekten anladığında ortaya çıkar.",
+      "job_id": "cc7fd9b6-09ca-4ce3-b415-ff6a3b01859c",
+      "file": "voices/voice05.wav"
+    },
+    {
+      "index": 6,
+      "window": "00:20-00:25",
+      "text": "Herkes çalışıyor; sen öğrenmeyi farklı yap. DRKOÇ, öğrenmeyi görünür kılar.",
+      "job_id": "82b6e0cd-63fb-4f53-8464-009388e4cc09",
+      "file": "voices/voice06.wav"
+    }
+  ]
+}

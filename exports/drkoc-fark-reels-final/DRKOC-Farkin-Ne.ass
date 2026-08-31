@@ -1,0 +1,21 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+ScaledBorderAndShadow: yes
+WrapStyle: 2
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Reels,Arial,62,&H00FFFFFF,&H00FFFFFF,&H0010182D,&HB0091020,-1,0,0,0,100,100,0,0,3,18,2,2,92,92,270,1
+Style: Impact,Arial,68,&H00FFFFFF,&H00FFFFFF,&H0010182D,&HBC091020,-1,0,0,0,100,100,0.5,0,3,20,3,2,84,84,270,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:01.16,Impact,,0,0,0,,HERKES ÇALIŞIYOR.
+Dialogue: 0,0:00:01.37,0:00:04.21,Impact,,0,0,0,,SEN NEYİ FARKLI YAPIYORSUN DA\NKAZANACAKSIN?
+Dialogue: 0,0:00:04.85,0:00:09.31,Reels,,0,0,0,,AYNI NOTLAR. AYNI VİDEOLAR.\NAYNI EZBER.
+Dialogue: 0,0:00:10.04,0:00:13.07,Impact,,0,0,0,,HÂLÂ AYNI YÖNTEMLE\NFARKLI BİR SONUÇ MU\NBEKLİYORSUN?
+Dialogue: 0,0:00:13.78,0:00:18.59,Reels,,0,0,0,,FARK, KAÇ SAAT ÇALIŞTIĞINDA\NDEĞİL… KONUYU NE KADAR\NGERÇEKTEN ANLADIĞINDA.
+Dialogue: 0,0:00:18.83,0:00:21.94,Impact,,0,0,0,,İZLEME. KEŞFET. DENE. ANLA.
+Dialogue: 0,0:00:22.54,0:00:25.48,Reels,,0,0,0,,HERKES ÇALIŞIYOR.\NSEN ÖĞRENMEYİ FARKLI YAP.
