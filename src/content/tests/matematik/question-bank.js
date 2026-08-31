@@ -41,11 +41,18 @@ const BANK_TOPICS = [
   libraryTopic,
 }))
 
-const EXTRA_LIBRARY_TOPICS = [
-  ['Matematik', 'Kartezyen Çarpım ve Bağıntı'],
-  ['Matematik', 'Mantık ve Akıl Yürütme'],
-  ['Matematik', 'Polinomlar ve İkinci Dereceye Giriş'],
+const BUNDLED_MATH_SUBJECTS = [
+  { id: 'bundled-tyt-matematik', exam_type: 'TYT', name: 'Matematik', order_index: 1 },
+  { id: 'bundled-tyt-geometri', exam_type: 'TYT', name: 'Geometri', order_index: 2 },
 ]
+
+const BUNDLED_LIBRARY_TOPICS = BANK_TOPICS.reduce((catalog, topic) => {
+  const key = `${topic.subject}:${topic.libraryTopic}`
+  if (!catalog.some((item) => item.key === key)) {
+    catalog.push({ key, subjectName: topic.subject, topicName: topic.libraryTopic })
+  }
+  return catalog
+}, [])
 
 function testNumber(value) {
   return String(value).padStart(2, '0')
@@ -102,19 +109,34 @@ function parseSolutionFile(source) {
   return solutions
 }
 
+export function withMathQuestionBankSubjects(subjects) {
+  const nextSubjects = [...subjects]
+
+  BUNDLED_MATH_SUBJECTS.forEach((subject) => {
+    const exists = nextSubjects.some(
+      (item) => item.exam_type === subject.exam_type && item.name === subject.name
+    )
+    if (!exists) nextSubjects.push(subject)
+  })
+
+  return nextSubjects
+}
+
 export function withMathQuestionBankTopics(subjects, topics) {
   const nextTopics = [...topics]
 
-  EXTRA_LIBRARY_TOPICS.forEach(([subjectName, topicName], index) => {
-    const subject = subjects.find((item) => item.exam_type === 'TYT' && item.name === subjectName)
+  BUNDLED_LIBRARY_TOPICS.forEach(({ subjectName, topicName }, index) => {
+    const subject = subjects.find(
+      (item) => item.exam_type === 'TYT' && item.name === subjectName
+    )
     if (!subject) return
     const exists = nextTopics.some((item) => item.subject_id === subject.id && item.name === topicName)
     if (exists) return
     nextTopics.push({
-      id: `bundled-math-topic-${subjectName.toLocaleLowerCase('tr-TR')}-${index + 1}`,
+      id: `bundled-math-topic-${subjectName === 'Matematik' ? 'matematik' : 'geometri'}-${index + 1}`,
       subject_id: subject.id,
       name: topicName,
-      order_index: 90 + index,
+      order_index: index + 1,
       is_bundled: true,
     })
   })
@@ -185,4 +207,3 @@ export async function loadMathQuestionSet(testId) {
     question_count: questions.length,
   }
 }
-

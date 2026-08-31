@@ -15,7 +15,10 @@ import {
 import { supabase } from '../lib/supabaseClient'
 import { colorForKey } from '../lib/chartTheme'
 import { bundledQuestionSetsForTopic } from '../lib/questionLibrary'
-import { withMathQuestionBankTopics } from '../content/tests/matematik/question-bank.js'
+import {
+  withMathQuestionBankSubjects,
+  withMathQuestionBankTopics,
+} from '../content/tests/matematik/question-bank.js'
 import { emekliKonuMu } from '../content/emekliKonular'
 import { libraryPath, slugifyLibraryValue } from '../lib/libraryRoutes'
 import {
@@ -61,9 +64,10 @@ export default function QuestionLibrary() {
     const grouped = {}
     ;(setsRes.data ?? []).forEach((set) => { (grouped[set.topic_id] ??= []).push(set) })
     const remoteSubjects = subjectsRes.data ?? []
-    const remoteTopics = withMathQuestionBankTopics(remoteSubjects, topicsRes.data ?? [])
-    const gradeData = createGradeLibraryData(remoteSubjects, remoteTopics)
-    setSubjects([...remoteSubjects, ...gradeData.subjects])
+    const catalogSubjects = withMathQuestionBankSubjects(remoteSubjects)
+    const remoteTopics = withMathQuestionBankTopics(catalogSubjects, topicsRes.data ?? [])
+    const gradeData = createGradeLibraryData(catalogSubjects, remoteTopics)
+    setSubjects([...catalogSubjects, ...gradeData.subjects])
     setTopics([...remoteTopics, ...gradeData.topics])
     setSetsByTopic(grouped)
     setLoading(false)

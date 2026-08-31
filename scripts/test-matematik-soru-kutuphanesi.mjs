@@ -4,19 +4,45 @@ import { join } from 'node:path'
 import {
   loadMathQuestionSet,
   mathQuestionSetsForTopic,
+  withMathQuestionBankSubjects,
   withMathQuestionBankTopics,
 } from '../src/content/tests/matematik/question-bank.js'
 
-const subjects = [
+const emptyCatalogSubjects = withMathQuestionBankSubjects([])
+assert.deepEqual(
+  emptyCatalogSubjects.map(({ exam_type, name }) => ({ exam_type, name })),
+  [
+    { exam_type: 'TYT', name: 'Matematik' },
+    { exam_type: 'TYT', name: 'Geometri' },
+  ],
+  'Veritabanı boş olsa da TYT Matematik ve Geometri dersleri görünmeli.'
+)
+
+const subjects = withMathQuestionBankSubjects([
   { id: 'tyt-matematik', exam_type: 'TYT', name: 'Matematik' },
-  { id: 'tyt-geometri', exam_type: 'TYT', name: 'Geometri' },
-]
+])
+
+assert.equal(
+  subjects.filter((subject) => subject.name === 'Matematik').length,
+  1,
+  'Uzak Matematik dersi varsa paketlenmiş ders kopya oluşturmamalı.'
+)
 
 const topics = withMathQuestionBankTopics(subjects, [
   { id: 'temel', subject_id: 'tyt-matematik', name: 'Temel Kavramlar' },
 ])
 
-assert.equal(topics.length, 4, 'Eksik matematik konuları görünüm katmanına eklenmeli.')
+assert.equal(topics.length, 28, 'Eksik Matematik ve Geometri konuları görünüm katmanına eklenmeli.')
+assert.equal(
+  topics.filter((topic) => topic.subject_id === 'tyt-matematik').length,
+  20,
+  'TYT Matematik kataloğu eksiksiz olmalı.'
+)
+assert.equal(
+  topics.filter((topic) => topic.subject_id === 'bundled-tyt-geometri').length,
+  8,
+  'TYT Geometri kataloğu eksiksiz olmalı.'
+)
 assert.equal(
   mathQuestionSetsForTopic('Temel Kavramlar', { examType: 'TYT', subjectName: 'Matematik' }).length,
   50,
