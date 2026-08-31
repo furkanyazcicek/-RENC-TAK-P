@@ -29,14 +29,49 @@ import { useAuth } from '../../context/AuthContext'
 
 const PREVIEW_VALUE = 'canli-ders'
 
+const SESSION_KEY = 'drk-canli-ders-onizleme'
+
+/**
+ * Önizleme, adres çubuğundaki parametreyle AÇILIR ve sekme boyunca AÇIK
+ * KALIR.
+ *
+ * Sadece parametreye bakılsaydı, uygulama içindeki her yönlendirme
+ * (ör. "Dersi Başlat" sonrası stüdyoya geçiş) önizlemeyi düşürür ve
+ * giriş ekranına atardı — akışlar uçtan uca denenemezdi.
+ *
+ * Yalnızca `npm run dev` altında çalışır; üretim paketinde
+ * `import.meta.env.DEV` sabit `false` olduğu için tamamı ölü koddur.
+ */
 export function isLessonPreview() {
   if (!import.meta.env.DEV || typeof window === 'undefined') return false
-  return new URLSearchParams(window.location.search).get('onizleme') === PREVIEW_VALUE
+  const param = new URLSearchParams(window.location.search).get('onizleme')
+  try {
+    if (param === PREVIEW_VALUE) {
+      window.sessionStorage.setItem(SESSION_KEY, previewRoleFromUrl())
+      return true
+    }
+    if (param === 'kapat') {
+      window.sessionStorage.removeItem(SESSION_KEY)
+      return false
+    }
+    return window.sessionStorage.getItem(SESSION_KEY) !== null
+  } catch {
+    return param === PREVIEW_VALUE
+  }
+}
+
+function previewRoleFromUrl() {
+  return new URLSearchParams(window.location.search).get('rol') === 'student' ? 'student' : 'teacher'
 }
 
 export function previewRole() {
   if (typeof window === 'undefined') return 'teacher'
-  return new URLSearchParams(window.location.search).get('rol') === 'student' ? 'student' : 'teacher'
+  if (new URLSearchParams(window.location.search).has('rol')) return previewRoleFromUrl()
+  try {
+    return window.sessionStorage.getItem(SESSION_KEY) === 'student' ? 'student' : 'teacher'
+  } catch {
+    return 'teacher'
+  }
 }
 
 const TEACHER = { id: 'onizleme-ogretmen', full_name: 'Furkan Talha Yazçiçek', role: 'teacher' }

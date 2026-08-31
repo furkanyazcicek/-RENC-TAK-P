@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Check, Copy, Loader2, Radio, Video } from 'lucide-react'
+import { Loader2, Radio } from 'lucide-react'
 import { Alert, Button, Field, Input, Modal, Select, useToast } from '../ui'
 import { createInstantLesson, fetchMyStudents } from '../../lib/liveLesson/api'
 
@@ -29,14 +29,10 @@ export default function InstantLessonDialog({ open, onClose, teacherId, onCreate
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState(null)
-  const [created, setCreated] = useState(null)
-  const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     if (!open) return
     setError(null)
-    setCreated(null)
-    setCopied(false)
     setLoading(true)
     fetchMyStudents()
       .then((list) => {
@@ -47,43 +43,46 @@ export default function InstantLessonDialog({ open, onClose, teacherId, onCreate
       .finally(() => setLoading(false))
   }, [open])
 
-  const lessonUrl = created ? `${window.location.origin}/canli-ders/${created.id}` : ''
-
+  /**
+   * DERS OLUŞUNCA DOĞRUDAN STÜDYOYA GİRİLİR.
+   *
+   * Önce bağlantıyı gösteren bir ara adım vardı; "Dersi Başlat"a basan
+   * öğretmen derse girdiğini sanıp ekranın değişmemesine takılıyordu.
+   * Beklenti net: başlat = derse gir. Bağlantı arka planda panoya
+   * kopyalanır, stüdyonun üst şeridinde de "Bağlantı" düğmesi durur.
+   */
   async function start() {
     if (!studentId) {
-      setError('Ders başlatmak için bir öğrenci seç.')
+      setError('Ders başlatmak için önce bir öğrenci seç.')
       return
     }
     setSaving(true)
     setError(null)
     try {
       const lesson = await createInstantLesson({ teacherId, studentId, title, minutes })
-      setCreated(lesson)
       onCreated?.()
-      // Bağlantıyı hemen panoya al: öğretmenin ilk yapacağı şey bu.
+
+      let panoyaAlindi = false
       try {
         await navigator.clipboard.writeText(`${window.location.origin}/canli-ders/${lesson.id}`)
-        setCopied(true)
+        panoyaAlindi = true
       } catch {
-        /* pano izni yoksa kullanıcı elle kopyalar */
+        /* pano izni yoksa öğretmen stüdyodaki düğmeden kopyalar */
       }
+
+      toast.success(
+        panoyaAlindi
+          ? 'Ders açıldı — bağlantı kopyalandı, öğrencine gönderebilirsin'
+          : 'Ders açıldı — bağlantıyı üstteki "Bağlantı" düğmesinden kopyalayabilirsin'
+      )
+      onClose?.()
+      navigate(`/canli-ders/${lesson.id}/studyo`)
     } catch (err) {
       setError(err.message)
-    } finally {
       setSaving(false)
     }
   }
 
-  async function copyLink() {
-    try {
-      await navigator.clipboard.writeText(lessonUrl)
-      setCopied(true)
-      toast.success('Bağlantı kopyalandı')
-      window.setTimeout(() => setCopied(false), 2500)
-    } catch {
-      setError('Bağlantı kopyalanamadı. Aşağıdaki adresi elle seçip kopyalayabilirsin.')
-    }
-  }
 
   const studentName = students.find((s) => s.student_id === studentId)?.student_name
 
@@ -91,32 +90,28 @@ export default function InstantLessonDialog({ open, onClose, teacherId, onCreate
     <Modal
       open={open}
       onClose={onClose}
-      title={created ? 'Ders odası açıldı' : 'Hemen ders başlat'}
+      title="Hemen ders başlat"
       description={
-        created
-          ? `${studentName ?? 'Öğrencin'} bağlantıya dokunduğu anda derse girebilir.`
+        studentName
+          ? `${studentName} bağlantıya dokunduğu anda derse girebilir.`
           : 'Tarih ve saat sorulmaz — ders şimdi başlar.'
       }
       footer={
-        created ? (
-          <>
-            <Button variant="ghost" onClick={onClose}>
-              Kapat
-            </Button>
-            <Button icon={Video} onClick={() => navigate(`/canli-ders/${created.id}/studyo`)}>
-              Stüdyoya Gir
-            </Button>
-          </>
-        ) : (
-          <>
-            <Button variant="ghost" onClick={onClose}>
-              Vazgeç
-            </Button>
-            <Button icon={Radio} loading={saving} disabled={loading || !students.length} onClick={start}>
-              Dersi Başlat
-            </Button>
-          </>
-        )
+        <>
+          <Button variant="ghost" onClick={onClose}>
+            Vazgeç
+          </Button>
+          <Button
+            icon={Radio}
+            loading={saving}
+            /* Öğrenci seçilmeden düğme AKTİF OLMAZ: aksi hâlde basılıyor,
+               hata çıkıyor ve "hiçbir şey olmadı" gibi görünüyordu. */
+            disabled={loading || !students.length || !studentId}
+            onClick={start}
+          >
+            Dersi Başlat
+          </Button>
+        </>
       }
     >
       {error && (
@@ -125,25 +120,8 @@ export default function InstantLessonDialog({ open, onClose, teacherId, onCreate
         </Alert>
       )}
 
-      {created ? (
-        <div className="flex flex-col gap-3">
-          <Field label="Öğrenciye gönderilecek bağlantı">
-            <p className="break-all rounded-input border border-line bg-surface-muted px-3.5 py-2.5 text-sm text-ink/80">
-              {lessonUrl}
-            </p>
-          </Field>
-          <div>
-            <Button variant="secondary" icon={copied ? Check : Copy} onClick={copyLink}>
-              {copied ? 'Kopyalandı' : 'Bağlantıyı Kopyala'}
-            </Button>
-          </div>
-          <p className="text-sm leading-relaxed text-ink/60">
-            Öğrencin bu bağlantıyı açmasa bile dersi kendi <strong>Canlı Derslerim</strong>{' '}
-            sayfasında görür. Bağlantı yalnızca işi kısaltmak içindir; başkasının eline geçse de
-            derse giremez — odaya yalnızca dersin iki tarafı alınır.
-          </p>
-        </div>
-      ) : loading ? (
+      {loading ? (
+
         <p className="flex items-center gap-2 py-4 text-sm text-ink/55">
           <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
           Öğrencilerin yükleniyor…
@@ -154,7 +132,11 @@ export default function InstantLessonDialog({ open, onClose, teacherId, onCreate
         </Alert>
       ) : (
         <div className="flex flex-col gap-4">
-          <Field label="Öğrenci" required>
+          <Field
+            label="Öğrenci"
+            required
+            hint={studentId ? undefined : 'Dersi başlatmak için listeden bir öğrenci seç.'}
+          >
             {({ id }) => (
               <Select id={id} value={studentId} onChange={(e) => setStudentId(e.target.value)}>
                 <option value="">Öğrenci seç</option>
