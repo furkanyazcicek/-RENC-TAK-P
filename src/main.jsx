@@ -6,6 +6,24 @@ import { AuthProvider } from './context/AuthContext.jsx'
 import { ToastProvider } from './components/ui/Toast.jsx'
 import './index.css'
 
+// Kurulu PWA veya uzun süre açık kalan sekme eski uygulama kabuğunda
+// takılı kalmasın. Yeni service worker kontrolü devraldığında sayfayı yalnız
+// bir kez yeniler; ilk kurulumda gereksiz yenileme yapmaz.
+if ('serviceWorker' in navigator) {
+  const hadController = Boolean(navigator.serviceWorker.controller)
+  let reloading = false
+
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!hadController || reloading) return
+    reloading = true
+    window.location.reload()
+  })
+
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.getRegistration().then((registration) => registration?.update()).catch(() => {})
+  })
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
