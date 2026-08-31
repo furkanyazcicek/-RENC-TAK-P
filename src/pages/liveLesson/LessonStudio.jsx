@@ -340,17 +340,86 @@ export default function LessonStudio() {
     })
   }, [channel, materials, isTeacher])
 
+  /**
+   * BELGEYİ TAHTAYA AÇ — dersin asıl çalışma biçimi.
+   *
+   * PDF'in her sayfası, o sayfayı zemin alan bir tahta sayfasına dönüşür;
+   * öğretmen üstüne kalemle yazar. Görselde ise tek sayfa açılır.
+   * Materyal aynı zamanda derse eklenir ve öğrenciyle paylaşılır — yoksa
+   * öğrenci belgeyi kendi tarafında çizemez.
+   */
+  const openOnBoard = useCallback(
+    async (item) => {
+      const url = item.meta?.imageUrl ?? item.url
+      if (!url) return { ok: false }
+
+      /**
+       * ÖNCE TAHTAYA DÖN.
+       *
+       * Merkez alanda bir materyal açıkken tahta bileşeni SÖKÜLÜ olur ve
+       * `boardApiRef.current` boştur. Sıra ters olsaydı "Tahtada aç"
+       * materyal görüntüleyicisi açıkken hiçbir şey yapmazdı.
+       */
+      setOpenMaterial(null)
+      setMobileView('board')
+      setDrawer(DRAWERS.NONE)
+      channel.send(CHANNEL_EVENTS.FOCUS, { materialId: null, by: user?.id })
+      // Tahtanın monte olup kendini ölçmesi için bir kare bekle.
+      await new Promise((resolve) => window.setTimeout(resolve, 80))
+      if (!boardApiRef.current) return { ok: false }
+
+      const isPdf = item.kind === 'pdf' || /\.pdf($|\?)/i.test(url)
+      let result
+      if (isPdf) {
+        result = await boardApiRef.current.openPdf(url, { title: item.title })
+      } else {
+        boardApiRef.current.placeImage(url, item.title)
+        result = { ok: true }
+      }
+
+      if (result?.ok) {
+
+        // Öğrencinin de belgeyi görebilmesi için derse ekli ve paylaşılmış olmalı.
+        const existing = materials.find((m) => m.url === url)
+        try {
+          if (!existing) {
+            await addMaterial(sessionId, user.id, {
+              kind: isPdf ? 'pdf' : 'image',
+              title: item.title,
+              url,
+              visible_to_student: true,
+              order_index: materials.length,
+            })
+            await reloadMaterials()
+          } else if (!existing.visible_to_student) {
+            await updateMaterial(existing.id, { visible_to_student: true })
+            await reloadMaterials()
+          }
+        } catch {
+          // Paylaşım yazılamadıysa ders durmaz; öğretmen çekmeceden elle paylaşabilir.
+        }
+        toast.success(
+          isPdf && result.count > 1 ? `${result.count} sayfa tahtaya açıldı` : 'Tahtaya açıldı'
+        )
+      }
+      return result ?? { ok: false }
+    },
+    [channel, materials, reloadMaterials, sessionId, toast, user?.id]
+  )
+
   const sendToBoard = useCallback(
-    (material) => {
+    async (material) => {
       const url = material.meta?.imageUrl ?? material.url
       if (!url) {
         toast.error('Bu materyalin tahtaya aktarılabilir bir görseli yok.')
         return
       }
-      boardApiRef.current?.placeImage(url, material.title)
+      // Tahta sökülüyse önce geri getir (bkz. openOnBoard'daki aynı not).
       setOpenMaterial(null)
       setMobileView('board')
       channel.send(CHANNEL_EVENTS.FOCUS, { materialId: null, by: user?.id })
+      await new Promise((resolve) => window.setTimeout(resolve, 80))
+      boardApiRef.current?.placeImage(url, material.title)
       toast.success('Görsel tahtaya eklendi')
     },
     [channel, toast, user?.id]
@@ -810,6 +879,7 @@ export default function LessonStudio() {
       >
         <MaterialPanel
           sessionId={sessionId}
+          teacherId={isTeacher ? user?.id : null}
           studentId={session.student_id}
           materials={isTeacher ? materials : materials.filter((m) => m.visible_to_student)}
           onAdd={async (material) => {
@@ -826,6 +896,7 @@ export default function LessonStudio() {
           }}
           onOpen={handleOpenMaterial}
           onSendToBoard={sendToBoard}
+          onOpenOnBoard={openOnBoard}
         />
       </Drawer>
 

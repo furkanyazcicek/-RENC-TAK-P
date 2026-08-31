@@ -479,6 +479,7 @@ export default function LessonForm() {
             <CardBody>
               <MaterialPanel
                 sessionId={sessionId}
+                teacherId={user?.id}
                 studentId={session.student_id}
                 materials={materials}
                 onAdd={async (material) => {

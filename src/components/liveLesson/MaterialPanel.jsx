@@ -1,8 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import {
+  BookMarked,
   Eye,
   EyeOff,
   FileText,
+  PenLine,
+  Pin,
+  PinOff,
   Image as ImageIcon,
   Link2,
   Loader2,
@@ -25,6 +29,13 @@ import {
   fetchStudentQuestions,
   uploadLessonFile,
 } from '../../lib/liveLesson/materialSources'
+import {
+  addToTeacherLibrary,
+  fetchTeacherLibrary,
+  removeLibraryMaterial,
+  touchLibraryMaterial,
+  updateLibraryMaterial,
+} from '../../lib/liveLesson/api'
 
 /**
  * Materyal merkezi — canlı derste "şimdi şuna bakalım" anının aracı.
@@ -35,6 +46,9 @@ import {
  */
 
 const SOURCES = [
+  // Kitaplık BAŞTA: öğretmen dersi çoğunlukla kendi hazırladığı PDF
+  // üzerinden anlatıyor, en sık buraya bakacak.
+  { value: 'kitaplik', label: 'Kitaplığım', Icon: BookMarked },
   { value: 'question', label: 'Sorular', Icon: TriangleAlert },
   { value: 'exam_mistake', label: 'Yanlışlar', Icon: TriangleAlert },
   { value: 'library', label: 'Kütüphane', Icon: FileText },
@@ -49,6 +63,7 @@ function KindIcon({ kind, className }) {
 
 export default function MaterialPanel({
   sessionId,
+  teacherId,
   studentId,
   materials,
   onAdd,
@@ -56,10 +71,12 @@ export default function MaterialPanel({
   onToggleVisible,
   onOpen,
   onSendToBoard,
+  onOpenOnBoard,
   busy,
 }) {
   const [tab, setTab] = useState('added')
-  const [source, setSource] = useState('question')
+  const [source, setSource] = useState('kitaplik')
+  const [library, setLibrary] = useState([])
   const [search, setSearch] = useState('')
   const [results, setResults] = useState([])
   const [loading, setLoading] = useState(false)
@@ -73,7 +90,23 @@ export default function MaterialPanel({
     setLoading(true)
     setError(null)
     try {
-      if (source === 'question') setResults(await fetchStudentQuestions(studentId))
+      if (source === 'kitaplik') {
+        const rows = await fetchTeacherLibrary({ search })
+        setLibrary(rows)
+        setResults(
+          rows.map((m) => ({
+            key: `kitaplik:${m.id}`,
+            libraryId: m.id,
+            kind: m.kind,
+            title: m.title,
+            subtitle: [m.subject, m.topic].filter(Boolean).join(' · ') || 'Kitaplığım',
+            badge: m.meta?.pages ? `${m.meta.pages} sayfa` : null,
+            url: m.url,
+            pinned: m.pinned,
+            imageUrl: m.kind === 'image' ? m.url : null,
+          }))
+        )
+      } else if (source === 'question') setResults(await fetchStudentQuestions(studentId))
       else if (source === 'exam_mistake') setResults(await fetchStudentMistakes(studentId))
       else if (source === 'library') setResults(await fetchLibraryNotes({ search }))
       else setResults(atlasMaterials(search))
@@ -83,7 +116,7 @@ export default function MaterialPanel({
     } finally {
       setLoading(false)
     }
-  }, [source, studentId, search])
+  }, [source, studentId, search, teacherId])
 
   useEffect(() => {
     if (tab !== 'find') return undefined
@@ -92,7 +125,7 @@ export default function MaterialPanel({
   }, [tab, load])
 
   const filtered =
-    source === 'library' || source === 'atlas'
+    source === 'library' || source === 'atlas' || source === 'kitaplik'
       ? results
       : results.filter((r) => {
           const q = search.trim().toLocaleLowerCase('tr-TR')
@@ -113,17 +146,41 @@ export default function MaterialPanel({
     try {
       const url = await uploadLessonFile(sessionId, file)
       const isImage = /^image\//.test(file.type)
-      await onAdd({
-        kind: isImage ? 'image' : 'pdf',
-        title: file.name.replace(/\.[^.]+$/, ''),
-        url,
-        visible_to_student: true,
-      })
+      const title = file.name.replace(/\.[^.]+$/, '')
+
+      // Dosya HEM bu derse eklenir HEM de kalıcı kitaplığa kaydedilir.
+      // Öğretmen aynı ders notunu her hafta yeniden yüklemesin diye.
+      await onAdd({ kind: isImage ? 'image' : 'pdf', title, url, visible_to_student: true })
+      if (teacherId) {
+        try {
+          await addToTeacherLibrary(teacherId, {
+            kind: isImage ? 'image' : 'pdf',
+            title,
+            url,
+            last_used_at: new Date().toISOString(),
+          })
+        } catch {
+          // Kitaplığa yazılamazsa ders yine de devam etsin; dosya derste var.
+        }
+      }
       setTab('added')
     } catch (err) {
       setError('Dosya yüklenemedi. Bağlantınızı kontrol edip tekrar deneyin.')
     } finally {
       setUploading(false)
+    }
+  }
+
+  /** PDF/görseli tahtanın ZEMİNİ yapar — üstüne kalemle yazılır. */
+  async function openOnBoard(item) {
+    if (!item.url) {
+      setError('Bu materyalin açılabilir bir dosyası yok.')
+      return
+    }
+    if (item.libraryId) touchLibraryMaterial(item.libraryId)
+    const result = await onOpenOnBoard?.(item)
+    if (result && result.ok === false) {
+      setError('Belge tahtaya açılamadı. Dosya bozuk olabilir ya da bağlantı koptu.')
     }
   }
 
@@ -180,6 +237,11 @@ export default function MaterialPanel({
                     )}
                   </p>
                   <div className="mt-2 flex flex-wrap items-center gap-1.5">
+                    {(m.kind === 'pdf' || m.kind === 'image') && m.url && onOpenOnBoard && (
+                      <Button size="xs" icon={PenLine} onClick={() => openOnBoard(m)}>
+                        Tahtada aç
+                      </Button>
+                    )}
                     <Button size="xs" variant="secondary" onClick={() => onOpen(m)}>
                       Aç
                     </Button>
@@ -241,33 +303,69 @@ export default function MaterialPanel({
           ) : (
             <ul className="flex flex-col divide-y divide-line">
               {filtered.map((r) => (
-                <li key={r.key} className="flex items-center gap-3 py-2.5">
+                <li key={r.key} className="flex items-start gap-3 py-2.5">
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-medium text-ink">{r.title}</p>
                     <p className="truncate text-xs text-ink/55">
                       {r.subtitle}
                       {r.badge ? ` · ${r.badge}` : ''}
                     </p>
+                    <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+                      {/* ASIL EYLEM: belgeyi tahtaya açmak. Ders bunun
+                          üzerinden anlatılıyor, "listeye ekle" ikincil. */}
+                      {(r.kind === 'pdf' || r.kind === 'image') && r.url && onOpenOnBoard && (
+                        <Button size="xs" icon={PenLine} disabled={busy} onClick={() => openOnBoard(r)}>
+                          Tahtada aç
+                        </Button>
+                      )}
+                      <Button
+                        size="xs"
+                        variant="secondary"
+                        icon={Plus}
+                        disabled={busy}
+                        onClick={() =>
+                          onAdd({
+                            kind: r.kind,
+                            title: r.title,
+                            ref_id: r.refId ?? null,
+                            ref_slug: r.refSlug ?? null,
+                            url: r.url ?? null,
+                            meta: r.meta ?? (r.imageUrl ? { imageUrl: r.imageUrl } : {}),
+                            visible_to_student: r.kind === 'question' || r.kind === 'atlas',
+                          })
+                        }
+                      >
+                        Derse ekle
+                      </Button>
+                      {r.libraryId && (
+                        <>
+                          <Button
+                            size="xs"
+                            variant="ghost"
+                            icon={r.pinned ? PinOff : Pin}
+                            onClick={async () => {
+                              await updateLibraryMaterial(r.libraryId, { pinned: !r.pinned })
+                              load()
+                            }}
+                          >
+                            {r.pinned ? 'Sabiti kaldır' : 'Sabitle'}
+                          </Button>
+                          <Button
+                            size="xs"
+                            variant="ghost"
+                            className="text-danger-600 hover:bg-danger-500/[0.08]"
+                            onClick={async () => {
+                              if (!window.confirm(`"${r.title}" kitaplığından silinsin mi? Geçmiş derslerdeki kopyası kalır.`)) return
+                              await removeLibraryMaterial(r.libraryId)
+                              load()
+                            }}
+                          >
+                            Sil
+                          </Button>
+                        </>
+                      )}
+                    </div>
                   </div>
-                  <Button
-                    size="xs"
-                    variant="secondary"
-                    icon={Plus}
-                    disabled={busy}
-                    onClick={() =>
-                      onAdd({
-                        kind: r.kind,
-                        title: r.title,
-                        ref_id: r.refId ?? null,
-                        ref_slug: r.refSlug ?? null,
-                        url: r.url ?? null,
-                        meta: r.meta ?? (r.imageUrl ? { imageUrl: r.imageUrl } : {}),
-                        visible_to_student: r.kind === 'question' || r.kind === 'atlas',
-                      })
-                    }
-                  >
-                    Ekle
-                  </Button>
                 </li>
               ))}
             </ul>

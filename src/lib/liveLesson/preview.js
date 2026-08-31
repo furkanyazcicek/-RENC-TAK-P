@@ -294,6 +294,66 @@ export function previewHomeworks(sessionId) {
   ]
 }
 
-export function previewBoardPages() {
-  return []
+export function previewLibrary() {
+  return [
+    {
+      id: 'lib1',
+      kind: 'pdf',
+      title: 'Türev — Konu Anlatımı ve Örnekler',
+      url: null,
+      subject: 'Matematik',
+      topic: 'Türev',
+      meta: { pages: 14 },
+      pinned: true,
+      last_used_at: at(-2000),
+      created_at: at(-50000),
+    },
+    {
+      id: 'lib2',
+      kind: 'pdf',
+      title: 'Limit — Karma Soru Föyü',
+      url: null,
+      subject: 'Matematik',
+      topic: 'Limit',
+      meta: { pages: 6 },
+      pinned: false,
+      last_used_at: at(-9000),
+      created_at: at(-60000),
+    },
+    {
+      id: 'lib3',
+      kind: 'image',
+      title: 'Birim Çember Şeması',
+      url: null,
+      subject: 'Matematik',
+      topic: 'Trigonometri',
+      meta: {},
+      pinned: false,
+      last_used_at: null,
+      created_at: at(-70000),
+    },
+  ]
+}
+
+/**
+ * Önizlemede tahta sayfaları BELLEKTE tutulur.
+ *
+ * Sıfır dönseydi "PDF'i tahtaya aç" akışı denenebilir olmazdı: yeniden
+ * bağlanma tazelemesi sayfaları silerdi. Bu, üretimdeki veritabanı
+ * davranışının hafif bir taklidi.
+ */
+const boardPages = new Map()
+
+export function previewBoardPages(sessionId) {
+  return [...(boardPages.get(sessionId)?.values() ?? [])].sort((a, b) => a.page_index - b.page_index)
+}
+
+export function previewSaveBoardPage(sessionId, pageIndex, content, background) {
+  if (!boardPages.has(sessionId)) boardPages.set(sessionId, new Map())
+  boardPages.get(sessionId).set(pageIndex, {
+    page_index: pageIndex,
+    content,
+    background,
+    updated_at: new Date().toISOString(),
+  })
 }

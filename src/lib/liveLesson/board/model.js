@@ -23,6 +23,7 @@
  * üretilir; yakınlaştırma yalnızca bir görüntüleme dönüşümüdür. Bu,
  * iki cihazın aynı tahtayı görmesinin ön şartıdır.
  */
+import { getPdfPageCanvas, isPdfPageFailed } from './pdfBackground'
 import {
   HIGHLIGHT_ALPHA,
   createStroke,
@@ -109,11 +110,29 @@ export function createPage(index = 0, background = null) {
   }
 }
 
+/**
+ * Sayfanın gerçek ölçüsü.
+ *
+ * GENİŞLİK HER ZAMAN SABİT (1600); yükseklik zemin PDF'inin en-boy
+ * oranından gelir. Genişliği sabit tutmak iki şeyi garanti eder:
+ *   • kalem kalınlığı boş tahtadakiyle aynı hissedilir,
+ *   • A4 dikey bir not, aşağı doğru uzayan tek bir sayfa olur.
+ * Oranı iki taraf da AYNI dosyadan okuduğu için koordinatlar eşleşir.
+ */
+export function pageSize(page) {
+  const bg = page?.background
+  if (bg?.kind === 'pdf' && Number.isFinite(bg.aspect) && bg.aspect > 0) {
+    return { w: PAGE_WIDTH, h: Math.round(PAGE_WIDTH / bg.aspect) }
+  }
+  return { w: PAGE_WIDTH, h: PAGE_HEIGHT }
+}
+
 export function serializePage(page) {
+  const size = pageSize(page)
   return {
     v: BOARD_SCHEMA_VERSION,
-    w: PAGE_WIDTH,
-    h: PAGE_HEIGHT,
+    w: size.w,
+    h: size.h,
     items: page.items,
   }
 }
@@ -172,24 +191,52 @@ export function makeImageItem({ url, x, y, w, h, userId, title }) {
 /*  Çizim                                                              */
 /* ------------------------------------------------------------------ */
 
-/** Beyaz sayfa + isteğe bağlı ince kılavuz. Kılavuz dışa aktarılmaz. */
-export function drawBoardBackground(ctx, { grid = true } = {}) {
+/**
+ * Sayfa zemini: beyaz kâğıt, PDF sayfası veya boş tahta kılavuzu.
+ *
+ * PDF zemin NESNE DEĞİLDİR: silgi ona dokunamaz, geri al onu geri
+ * getirmez, veri tabanına görsel olarak yazılmaz. Yalnızca "şu adresin
+ * şu sayfası" bilgisi saklanır.
+ */
+export function drawBoardBackground(ctx, page, { grid = true, onPdfReady } = {}) {
+  const size = pageSize(page)
+  const bg = page?.background
+
   ctx.save()
   ctx.fillStyle = '#FFFFFF'
-  ctx.fillRect(0, 0, PAGE_WIDTH, PAGE_HEIGHT)
+  ctx.fillRect(0, 0, size.w, size.h)
+
+  if (bg?.kind === 'pdf') {
+    const rendered = getPdfPageCanvas(bg.url, bg.page ?? 1, onPdfReady)
+    if (rendered) {
+      ctx.drawImage(rendered, 0, 0, size.w, size.h)
+    } else if (isPdfPageFailed(bg.url, bg.page ?? 1)) {
+      ctx.fillStyle = 'rgba(19, 19, 41, 0.45)'
+      ctx.font = '600 34px "Inter", system-ui, sans-serif'
+      ctx.textAlign = 'center'
+      ctx.fillText('Bu sayfa açılamadı', size.w / 2, size.h / 2)
+    } else {
+      ctx.fillStyle = 'rgba(19, 19, 41, 0.35)'
+      ctx.font = '600 30px "Inter", system-ui, sans-serif'
+      ctx.textAlign = 'center'
+      ctx.fillText('Sayfa yükleniyor…', size.w / 2, size.h / 2)
+    }
+    ctx.restore()
+    return
+  }
 
   if (grid) {
     ctx.strokeStyle = 'rgba(19, 19, 41, 0.05)'
     ctx.lineWidth = 1
     ctx.beginPath()
     const step = 50
-    for (let x = step; x < PAGE_WIDTH; x += step) {
+    for (let x = step; x < size.w; x += step) {
       ctx.moveTo(x, 0)
-      ctx.lineTo(x, PAGE_HEIGHT)
+      ctx.lineTo(x, size.h)
     }
-    for (let y = step; y < PAGE_HEIGHT; y += step) {
+    for (let y = step; y < size.h; y += step) {
       ctx.moveTo(0, y)
-      ctx.lineTo(PAGE_WIDTH, y)
+      ctx.lineTo(size.w, y)
     }
     ctx.stroke()
   }
@@ -360,12 +407,13 @@ export function itemHitsEraser(item, cx, cy, radius) {
  * çıktısı" budur. Kılavuz çizgileri çıktıya girmez.
  */
 export function renderPageToCanvas(page, { scale = 1 } = {}) {
+  const size = pageSize(page)
   const canvas = document.createElement('canvas')
-  canvas.width = Math.round(PAGE_WIDTH * scale)
-  canvas.height = Math.round(PAGE_HEIGHT * scale)
+  canvas.width = Math.round(size.w * scale)
+  canvas.height = Math.round(size.h * scale)
   const ctx = canvas.getContext('2d')
   ctx.setTransform(scale, 0, 0, scale, 0, 0)
-  drawBoardBackground(ctx, { grid: false })
+  drawBoardBackground(ctx, page, { grid: false })
   drawPageItems(ctx, page)
   return canvas
 }

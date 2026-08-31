@@ -10,8 +10,6 @@ import {
   BOARD_COLORS,
   BOARD_TOOLS,
   HIGHLIGHT_COLORS,
-  PAGE_HEIGHT,
-  PAGE_WIDTH,
   appendStrokePoint,
   beginStrokeItem,
   createPage,
@@ -25,9 +23,11 @@ import {
   makeShapeItem,
   makeTextItem,
   makeImageItem,
+  pageSize,
   renderPageToCanvas,
   widthSpec,
 } from '../../lib/liveLesson/board/model'
+import { readPdfPages } from '../../lib/liveLesson/board/pdfBackground'
 import { MAX_SCALE, MIN_SCALE } from '../../lib/solutionCanvas'
 
 /**
@@ -119,6 +119,9 @@ export default function LessonBoard({
   const panRef = useRef(null)
 
   const baseRafRef = useRef(0)
+  // paintBase, repaintSoon'dan önce tanımlanıyor; döngüsel bağımlılık
+  // olmasın diye geç bağlanan bir referans üzerinden çağrılır.
+  const repaintSoonRef = useRef(null)
   const liveRafRef = useRef(0)
   const lastSentRef = useRef(0)
   const syncRef = useRef(null)
@@ -164,15 +167,18 @@ export default function LessonBoard({
     const { scale, tx, ty } = viewRef.current
     ctx.setTransform(dpr * scale, 0, 0, dpr * scale, dpr * tx, dpr * ty)
 
-    drawBoardBackground(ctx, { grid: true })
+    const current = pagesRef.current[pageIndexRef.current] ?? createPage(0)
+    const size = pageSize(current)
+
+    drawBoardBackground(ctx, current, { grid: true, onPdfReady: () => repaintSoonRef.current?.() })
     // Sayfa kenarı: koyu stüdyo zemininde beyaz sayfanın sınırı belli olsun.
     ctx.save()
     ctx.strokeStyle = 'rgba(19, 19, 41, 0.22)'
     ctx.lineWidth = 1 / viewRef.current.scale
-    ctx.strokeRect(0, 0, PAGE_WIDTH, PAGE_HEIGHT)
+    ctx.strokeRect(0, 0, size.w, size.h)
     ctx.restore()
 
-    drawPageItems(ctx, pagesRef.current[pageIndexRef.current] ?? createPage(0), () => schedulePaint())
+    drawPageItems(ctx, current, () => repaintSoonRef.current?.())
   }, [])
 
   const schedulePaint = useCallback(() => {
@@ -182,6 +188,18 @@ export default function LessonBoard({
       paintBase()
     })
   }, [paintBase])
+
+  /**
+   * Geç gelen kaynak (PDF sayfası, görsel) hazır olduğunda HEMEN boya.
+   *
+   * `requestAnimationFrame` sekme arka plandayken ya da tarayıcı kareleri
+   * kıstığında tetiklenmeyebiliyor; o zaman belge yüklendiği hâlde ekranda
+   * boş sayfa kalıyor. Zamanlayıcı bu duruma bağışık.
+   */
+  const repaintSoon = useCallback(() => {
+    window.setTimeout(() => paintBase(), 0)
+  }, [paintBase])
+  repaintSoonRef.current = repaintSoon
 
   const paintLive = useCallback(() => {
     const canvas = liveRef.current
@@ -236,12 +254,16 @@ export default function LessonBoard({
     // yeniden sığdır. Bu yapılmazsa telefonda/tablette sayfa kabın dışında
     // kalıyor ve öğrenci tahtanın yarısını göremiyordu.
     if (!userAdjustedRef.current) {
+      const size = pageSize(pagesRef.current[pageIndexRef.current])
       const pad = 12
-      const scale = Math.min((rect.width - pad * 2) / PAGE_WIDTH, (rect.height - pad * 2) / PAGE_HEIGHT)
+      const tall = size.h / size.w > (rect.height - pad * 2) / (rect.width - pad * 2)
+      const scale = tall
+        ? (rect.width - pad * 2) / size.w
+        : Math.min((rect.width - pad * 2) / size.w, (rect.height - pad * 2) / size.h)
       viewRef.current = {
         scale,
-        tx: (rect.width - PAGE_WIDTH * scale) / 2,
-        ty: (rect.height - PAGE_HEIGHT * scale) / 2,
+        tx: (rect.width - size.w * scale) / 2,
+        ty: tall ? pad : (rect.height - size.h * scale) / 2,
       }
       setZoom(scale)
     }
@@ -257,9 +279,10 @@ export default function LessonBoard({
     (next) => {
       const rect = boardRect()
       if (!rect) return
+      const size = pageSize(pagesRef.current[pageIndexRef.current])
       const scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, next.scale))
-      const w = PAGE_WIDTH * scale
-      const h = PAGE_HEIGHT * scale
+      const w = size.w * scale
+      const h = size.h * scale
       viewRef.current = {
         scale,
         tx: Math.min(rect.width * 0.85, Math.max(rect.width * 0.15 - w, next.tx)),
@@ -276,12 +299,19 @@ export default function LessonBoard({
     const rect = boardRect()
     if (!rect) return
     userAdjustedRef.current = false
+    const size = pageSize(pagesRef.current[pageIndexRef.current])
     const pad = 12
-    const scale = Math.min((rect.width - pad * 2) / PAGE_WIDTH, (rect.height - pad * 2) / PAGE_HEIGHT)
+    // PDF sayfaları dikey ve uzun olabiliyor. Yüksekliğe sığdırmak yazıyı
+    // okunamaz hâle getirdiği için GENİŞLİĞE sığdırıp üstten başlıyoruz —
+    // öğretmen aşağı kaydırarak ilerler, defter gibi.
+    const tall = size.h / size.w > (rect.height - pad * 2) / (rect.width - pad * 2)
+    const scale = tall
+      ? (rect.width - pad * 2) / size.w
+      : Math.min((rect.width - pad * 2) / size.w, (rect.height - pad * 2) / size.h)
     setView({
       scale,
-      tx: (rect.width - PAGE_WIDTH * scale) / 2,
-      ty: (rect.height - PAGE_HEIGHT * scale) / 2,
+      tx: (rect.width - size.w * scale) / 2,
+      ty: tall ? pad : (rect.height - size.h * scale) / 2,
     })
   }, [boardRect, setView])
 
@@ -441,14 +471,67 @@ export default function LessonBoard({
     [applyItems]
   )
 
+  /**
+   * PDF'İ TAHTAYA AÇAR — dersin asıl çalışma biçimi.
+   *
+   * Her PDF sayfası, o sayfayı ZEMİN alan bir tahta sayfasına dönüşür.
+   * Üstüne kalemle yazılır; silgi belgeye dokunamaz. Veri tabanına yalnız
+   * "şu adresin şu sayfası" bilgisi gider, görsel değil.
+   *
+   * Sayfalar hemen kaydedilir ve karşı tarafa bildirilir; öğrenci aynı
+   * belgeyi kendi tarafında çizer.
+   */
+  const openPdf = useCallback(
+    async (url, { replace = true, title } = {}) => {
+      if (!url) return { ok: false }
+      try {
+        const { pages: pdfPages } = await readPdfPages(url)
+        if (!pdfPages.length) return { ok: false }
+
+        const startIndex = replace ? 0 : pagesRef.current.length
+        const created = pdfPages.map((p, i) =>
+          createPage(startIndex + i, { kind: 'pdf', url, page: p.page, aspect: p.aspect, title: title ?? null })
+        )
+
+        pagesRef.current = replace ? created : [...pagesRef.current, ...created]
+        historyRef.current = new Map()
+        setPageCount(pagesRef.current.length)
+
+        // Kalıcı kayda hemen yaz: öğrenci ders ortasında katılsa bile
+        // belgeyi veri tabanından bulur.
+        for (const page of pagesRef.current) syncRef.current?.markDirty(page.index)
+        await syncRef.current?.flushNow()
+
+        pageIndexRef.current = startIndex
+        setPageIndex(startIndex)
+        refreshHistoryFlags(startIndex)
+        userAdjustedRef.current = false
+        fitBoard()
+        schedulePaint()
+
+        channel?.send?.(CHANNEL_EVENTS.BOARD_PAGE, {
+          page: startIndex,
+          count: pagesRef.current.length,
+          reload: true,
+        })
+        return { ok: true, count: created.length }
+      } catch (err) {
+        console.warn('PDF tahtaya açılamadı:', err?.message)
+        return { ok: false, error: err }
+      }
+    },
+    [channel, fitBoard, refreshHistoryFlags, schedulePaint]
+  )
+
   /** Materyalden veya dosyadan tahtaya görsel yerleştirir. */
   const placeImage = useCallback(
     (url, title) => {
       const img = new Image()
       img.crossOrigin = 'anonymous'
       img.onload = () => {
-        const maxW = PAGE_WIDTH * 0.62
-        const maxH = PAGE_HEIGHT * 0.72
+        const size = pageSize(pagesRef.current[pageIndexRef.current])
+        const maxW = size.w * 0.62
+        const maxH = size.h * 0.72
         const ratio = Math.min(maxW / img.naturalWidth, maxH / img.naturalHeight, 1)
         const w = Math.round(img.naturalWidth * ratio)
         const h = Math.round(img.naturalHeight * ratio)
@@ -780,11 +863,20 @@ export default function LessonBoard({
     async ({ keepView = false } = {}) => {
       try {
         const rows = await fetchBoardPages(sessionId)
-        // VERİ KAYBI KORUMASI: yeniden bağlanma tazelemesinde sunucu boş
-        // dönüyorsa (kayıt henüz yazılmamış olabilir) ekrandaki çizimi
-        // silmiyoruz. Öğretmenin son iki dakikası bir bağlantı hıçkırığı
-        // yüzünden kaybolmamalı.
-        if (keepView && rows.length === 0 && pagesRef.current.some((p) => p.items.length)) return
+        /**
+         * VERİ KAYBI KORUMASI
+         *
+         * Yeniden bağlanma tazelemesinde sunucu elimizdekinden AZ sayfa
+         * döndürüyorsa yereli silmiyoruz. İki gerçek durum var:
+         *   • çizimler henüz kaydedilmemiş olabilir,
+         *   • açılan PDF'in sayfaları henüz yazılmamış olabilir — bu
+         *     sayfalarda hiç çizim yoktur, yalnız "items" bakan bir
+         *     kontrol onları boş sanıp 14 sayfalık belgeyi silerdi.
+         */
+        const localMeaningful = pagesRef.current.some(
+          (page) => page.items.length > 0 || page.background?.kind === 'pdf'
+        )
+        if (keepView && localMeaningful && rows.length < pagesRef.current.length) return
         const pages = rows.length ? rows.map((row) => deserializePage(row.page_index, row)) : [createPage(0)]
         pagesRef.current = pages
         historyRef.current = new Map()
@@ -950,7 +1042,7 @@ export default function LessonBoard({
       offClear()
       offPage()
     }
-  }, [channel, schedulePaint, scheduleLive, deviceId])
+  }, [channel, schedulePaint, scheduleLive, deviceId, reloadPages])
 
   /* Klavye kısayolları — tahta araçlarının klavye alternatifi */
   useEffect(() => {
@@ -983,8 +1075,9 @@ export default function LessonBoard({
       hasContent: () => pagesRef.current.some((p) => p.items.length > 0),
       flush: () => syncRef.current?.flushNow() ?? Promise.resolve(),
       placeImage,
+      openPdf,
     }),
-    [placeImage]
+    [placeImage, openPdf]
   )
 
   const saveLabel = useMemo(() => {

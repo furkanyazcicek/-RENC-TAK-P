@@ -22,7 +22,9 @@ import {
   previewHomeworks,
   previewInvites,
   previewLesson,
+  previewLibrary,
   previewMaterials,
+  previewSaveBoardPage,
   previewParticipants,
   previewStudentLessons,
   previewStudents,
@@ -362,11 +364,58 @@ export async function removeMaterial(materialId) {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Öğretmen materyal kitaplığı (kalıcı, derse bağlı değil)            */
+/* ------------------------------------------------------------------ */
+
+const LIBRARY_COLUMNS = 'id, kind, title, url, subject, topic, meta, pinned, last_used_at, created_at'
+
+export async function fetchTeacherLibrary({ search = '', limit = 60 } = {}) {
+  if (isLessonPreview()) return previewLibrary()
+  let query = supabase
+    .from('teacher_materials')
+    .select(LIBRARY_COLUMNS)
+    .order('pinned', { ascending: false })
+    .order('last_used_at', { ascending: false, nullsFirst: false })
+    .order('created_at', { ascending: false })
+    .limit(limit)
+  if (search.trim()) query = query.ilike('title', `%${search.trim()}%`)
+  return unwrap(await query, 'Kitaplık alınamadı.') ?? []
+}
+
+export async function addToTeacherLibrary(teacherId, material) {
+  return unwrap(
+    await supabase
+      .from('teacher_materials')
+      .insert({ teacher_id: teacherId, ...material })
+      .select(LIBRARY_COLUMNS)
+      .single(),
+    'Materyal kitaplığa eklenemedi.'
+  )
+}
+
+export async function updateLibraryMaterial(id, patch) {
+  unwrap(await supabase.from('teacher_materials').update(patch).eq('id', id), 'Materyal güncellenemedi.')
+}
+
+export async function removeLibraryMaterial(id) {
+  unwrap(await supabase.from('teacher_materials').delete().eq('id', id), 'Materyal silinemedi.')
+}
+
+/** Derste kullanılınca listenin başına gelsin. */
+export async function touchLibraryMaterial(id) {
+  const { error } = await supabase
+    .from('teacher_materials')
+    .update({ last_used_at: new Date().toISOString() })
+    .eq('id', id)
+  if (error) console.warn('Kitaplık kullanım zamanı yazılamadı:', error.message)
+}
+
+/* ------------------------------------------------------------------ */
 /*  Tahta                                                              */
 /* ------------------------------------------------------------------ */
 
 export async function fetchBoardPages(sessionId) {
-  if (isLessonPreview()) return previewBoardPages()
+  if (isLessonPreview()) return previewBoardPages(sessionId)
   const data = unwrap(
     await supabase
       .from('lesson_board_pages')
@@ -379,7 +428,7 @@ export async function fetchBoardPages(sessionId) {
 }
 
 export async function saveBoardPage(sessionId, pageIndex, content, background = {}) {
-  if (isLessonPreview()) return
+  if (isLessonPreview()) return previewSaveBoardPage(sessionId, pageIndex, content, background)
   unwrap(
     await supabase.rpc('lesson_board_save', {
       p_session: sessionId,
