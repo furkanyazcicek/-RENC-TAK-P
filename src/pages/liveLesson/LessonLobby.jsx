@@ -10,7 +10,6 @@ import { useLessonAuth } from '../../lib/liveLesson/preview'
 import { fetchLesson, isSchemaMissing, joinLesson } from '../../lib/liveLesson/api'
 import { useLessonMedia } from '../../lib/liveLesson/useLessonMedia'
 import { useLessonChannel } from '../../lib/liveLesson/channel'
-import { REMOTE_MEDIA_AVAILABLE } from '../../lib/liveLesson/rtc/provider'
 import { canJoin, joinBlockReason } from '../../lib/liveLesson/status'
 import { countdownLabel, durationMinutes, formatLessonDateTime } from '../../lib/liveLesson/time'
 
@@ -65,7 +64,13 @@ export default function LessonLobby() {
     return () => window.clearInterval(timer)
   }, [session?.id, load])
 
-  const media = useLessonMedia({ session, user, role, autoStart: Boolean(session) })
+  const media = useLessonMedia({
+    session,
+    user,
+    role,
+    displayName: profile?.full_name,
+    autoStart: Boolean(session),
+  })
 
   const channel = useLessonChannel({
     roomId: session?.provider_room_id,
@@ -266,7 +271,7 @@ export default function LessonLobby() {
             </CardBody>
           </Card>
 
-          {!REMOTE_MEDIA_AVAILABLE && (
+          {!media.remoteMediaAvailable && (
             <Alert tone="info" icon={Wifi} title="Yerel önizleme">
               Görüntülü görüşme sağlayıcısı henüz bağlanmadı. Kameran ve mikrofonun gerçekten
               çalışıyor, tahta ve mesajlar canlı olarak karşılıklı gidiyor; ancak karşı tarafın

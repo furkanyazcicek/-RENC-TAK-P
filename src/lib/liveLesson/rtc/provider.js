@@ -54,22 +54,38 @@
  */
 
 import { createLocalPreviewProvider } from './localPreview'
+import { createLiveKitProvider } from './livekit'
 
 /** Kayıtlı sağlayıcılar. Yeni sağlayıcı buraya bir satırla eklenir. */
 const REGISTRY = {
   local_preview: createLocalPreviewProvider,
+  livekit: createLiveKitProvider,
 }
 
 /**
- * Gerçek görüntülü görüşme sağlayıcısı henüz seçilmedi.
- * Bu değer `true` olduğunda arayüz "Yerel önizleme" etiketini gösterir ve
- * uzak görüntünün gelmeyeceğini açıkça söyler. Sahte katılımcı, sahte
- * video veya sahte bağlantı durumu ÜRETİLMEZ.
+ * LiveKit yapılandırıldı mı?
+ *
+ * `VITE_LIVEKIT_URL` GİZLİ DEĞİLDİR — yalnızca sunucunun adresidir,
+ * tıpkı Supabase adresi gibi. Erişimi açan şey adres değil, sunucuda
+ * üretilen kısa ömürlü belirteçtir. API anahtarı ve gizli anahtar
+ * `VITE_` öneki OLMADAN saklanır ve tarayıcıya hiç inmez.
+ *
+ * Adres tanımlı değilse ürün "Yerel önizleme" moduna düşer: kamera,
+ * mikrofon, tahta ve mesajlar çalışır, uzak görüntü aktarılmaz. Sahte
+ * katılımcı veya sahte bağlantı durumu ÜRETİLMEZ.
  */
-export const REMOTE_MEDIA_AVAILABLE = false
+export const LIVEKIT_URL = import.meta.env?.VITE_LIVEKIT_URL || ''
 
-export const DEFAULT_PROVIDER = 'local_preview'
+export const REMOTE_MEDIA_AVAILABLE = Boolean(LIVEKIT_URL)
 
+export const DEFAULT_PROVIDER = REMOTE_MEDIA_AVAILABLE ? 'livekit' : 'local_preview'
+
+/**
+ * Sağlayıcı seçimi ORTAM yapılandırmasından gelir, dersin kayıtlı
+ * `provider` sütunundan değil. O sütun "bu ders hangi altyapıyla
+ * yapıldı" kaydıdır; anahtar değildir. Aksi hâlde LiveKit bağlandıktan
+ * sonra eski dersler yerel önizlemede takılı kalırdı.
+ */
 export function createProvider(name, options) {
   const factory = REGISTRY[name] ?? REGISTRY[DEFAULT_PROVIDER]
   return factory(options)
@@ -77,6 +93,7 @@ export function createProvider(name, options) {
 
 export function providerLabel(name) {
   if (name === 'local_preview') return 'Yerel önizleme'
+  if (name === 'livekit') return 'LiveKit'
   return name
 }
 

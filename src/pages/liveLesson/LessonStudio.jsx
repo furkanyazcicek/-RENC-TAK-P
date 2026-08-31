@@ -40,7 +40,7 @@ import {
 } from '../../lib/liveLesson/api'
 import { CHANNEL_EVENTS, useLessonChannel } from '../../lib/liveLesson/channel'
 import { useLessonMedia } from '../../lib/liveLesson/useLessonMedia'
-import { CONNECTION_LABELS, REMOTE_MEDIA_AVAILABLE } from '../../lib/liveLesson/rtc/provider'
+import { CONNECTION_LABELS } from '../../lib/liveLesson/rtc/provider'
 import { canJoin } from '../../lib/liveLesson/status'
 import { formatClock } from '../../lib/liveLesson/time'
 import '../../styles/canli-ders.css'
@@ -164,7 +164,13 @@ export default function LessonStudio() {
   }, [sessionId, load, isTeacher])
 
   /* ---------------- Medya ve kanal ---------------- */
-  const media = useLessonMedia({ session, user, role, autoStart: Boolean(session) })
+  const media = useLessonMedia({
+    session,
+    user,
+    role,
+    displayName: profile?.full_name,
+    autoStart: Boolean(session),
+  })
   const channel = useLessonChannel({
     roomId: session?.provider_room_id,
     user,
@@ -181,6 +187,21 @@ export default function LessonStudio() {
       connection: channel.status,
     })
   }, [media.micOn, media.camOn, media.screenOn, channel])
+
+  /**
+   * GERÇEK GÖRÜŞME ODASINA KATIL.
+   *
+   * Bekleme odası yalnızca yerel önizleme yapar; sesin ve görüntünün
+   * karşı tarafa gitmesi buradan başlar. Sağlayıcı yapılandırılmamışsa
+   * bu çağrı sessizce "yerel önizleme" modunda kalır — hata gösterip
+   * öğretmeni korkutmaz, arayüz zaten durumu açıkça yazar.
+   */
+  const joinedRoomRef = useRef(false)
+  useEffect(() => {
+    if (!session || !media.remoteMediaAvailable || joinedRoomRef.current) return
+    joinedRoomRef.current = true
+    media.join()
+  }, [session, media])
 
   /* Süre sayacı */
   useEffect(() => {
@@ -441,6 +462,10 @@ export default function LessonStudio() {
   }
 
   const peerState = channel.remotePeers[0] ?? null
+  // Karşı tarafın GERÇEK görüntüsü: LiveKit katılımcıları kimlik olarak
+  // Supabase kullanıcı numarasını taşır, bu yüzden eşleştirme kesindir.
+  const counterpartId = isTeacher ? session?.student_id : session?.teacher_id
+  const remote = media.remoteParticipants.find((p) => p.identity === counterpartId) ?? null
   const showMaterial = Boolean(openMaterial) && (mobileView === 'material' || window.innerWidth >= 768)
 
   /**
@@ -463,17 +488,20 @@ export default function LessonStudio() {
         className={tileClass}
       />
       <VideoTile
-        stream={null}
+        stream={remote?.stream ?? null}
         name={counterpart?.full_name ?? (isTeacher ? 'Öğrenci' : 'Öğretmen')}
-        cameraOn={false}
-        micOn={peerState?.micOn ?? false}
-        connection={peerPresent ? 'connected' : 'closed'}
+        cameraOn={remote?.camOn ?? false}
+        micOn={remote?.micOn ?? peerState?.micOn ?? false}
+        speaking={remote?.speaking ?? false}
+        connection={remote || peerPresent ? 'connected' : 'closed'}
         placeholder={
-          peerPresent
-            ? REMOTE_MEDIA_AVAILABLE
-              ? 'Görüntü bekleniyor…'
-              : 'Odada — görüntü bu sürümde aktarılmıyor'
-            : 'Henüz katılmadı'
+          remote
+            ? 'Kamerası kapalı'
+            : peerPresent
+              ? media.remoteMediaAvailable
+                ? 'Görüntü bekleniyor…'
+                : 'Odada — görüntü bu sürümde aktarılmıyor'
+              : 'Henüz katılmadı'
         }
         className={tileClass}
       />
@@ -675,7 +703,7 @@ export default function LessonStudio() {
           {mobileView === 'video' && (
             <div className="flex min-h-0 flex-1 flex-col gap-2.5 md:hidden">
               {renderTiles('aspect-video w-full')}
-              {!REMOTE_MEDIA_AVAILABLE && (
+              {!media.remoteMediaAvailable && (
                 <Alert tone="info" title="Yerel önizleme">
                   Karşı tarafın görüntüsü bu sürümde aktarılmıyor. Sesli anlatım için telefonla
                   arama, tahta ve mesajlar için bu ekran kullanılabilir.
@@ -688,7 +716,7 @@ export default function LessonStudio() {
         {/* Masaüstü video şeridi */}
         <aside className="ders-studyo__seritler" aria-label="Katılımcılar">
           {renderTiles('aspect-video w-full')}
-          {!REMOTE_MEDIA_AVAILABLE && (
+          {!media.remoteMediaAvailable && (
             <p className="rounded-card bg-white/[0.06] px-3 py-2 text-2xs leading-relaxed text-white/60">
               Görüntülü görüşme sağlayıcısı bağlanmadı. Tahta, materyaller ve mesajlar canlı
               çalışıyor; karşı tarafın görüntüsü ve sesi aktarılmıyor.

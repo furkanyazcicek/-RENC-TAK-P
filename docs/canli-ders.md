@@ -77,48 +77,46 @@ PostgreSQL ile; üretim veritabanına dokunmaz).
 
 ---
 
-## 4) Görüşme sağlayıcısı — KULLANICI KARARI BEKLİYOR
+## 4) Görüşme sağlayıcısı — LiveKit
 
-Ham WebRTC sıfırdan yazılmadı. NAT geçişi, TURN sunucusu, yeniden bağlanma,
-cihaz uyumluluğu, ekran paylaşımı ve bağlantı kalitesi kendi başına bir
-üründür; bunun için olgun bir sağlayıcı gerekir. Sağlayıcı seçimi **ücretli
-servis kararıdır ve kullanıcıya aittir.**
+Ham WebRTC sıfırdan yazılmadı: NAT geçişi, TURN sunucusu, yeniden bağlanma,
+cihaz uyumluluğu ve bağlantı kalitesi kendi başına bir üründür. Kullanıcı
+**LiveKit**'i seçti ve entegrasyon tamamlandı.
 
-O karar verilene kadar mimari hazır:
+| Katman | Dosya | Ne yapar |
+|---|---|---|
+| Sözleşme | `src/lib/liveLesson/rtc/provider.js` | Sağlayıcıdan bağımsız arayüz; ekranlar yalnız bunu tanır |
+| LiveKit | `src/lib/liveLesson/rtc/livekit.js` | Gerçek görüşme; SDK'yı `import()` ile GEÇ yükler |
+| Yerel önizleme | `src/lib/liveLesson/rtc/localPreview.js` | LiveKit yapılandırılmadığında devreye girer |
+| Belirteç | `api/live-lesson/room-token.js` | Oda izninin ÜRETİLDİĞİ tek yer |
 
-- `src/lib/liveLesson/rtc/provider.js` — sağlayıcıdan bağımsız sözleşme
-  (`prepareRoom`, `joinRoom`, `leaveRoom`, `toggleMicrophone`, `toggleCamera`,
-  `startScreenShare`, `stopScreenShare`, `switchCamera`, `getDevices`,
-  `selectMicrophone`, `selectCamera`, `getConnectionState`, `getParticipants`,
-  `reconnect`)
-- `src/lib/liveLesson/rtc/localPreview.js` — tarayıcı API'siyle çalışan
-  "Yerel önizleme" sağlayıcısı
-- `api/live-lesson/room-token.js` — belirteç üretiminin **tek** yeri;
-  sağlayıcı tanımlı değilken `provider_not_configured` döner
+### Güvenlik sınırı
 
-**Şu an gerçekten çalışan:** kamera/mikrofon izinleri ve önizleme, cihaz
-seçimi, mikrofon seviye ölçümü, ekran paylaşımı (yerel), ortak tahta,
-materyaller, ders içi mesajlaşma, katılım/süre kaydı, ders sonu özeti.
+- Gizli anahtar (`LIVEKIT_API_SECRET`) yalnızca sunucuda okunur; `VITE_`
+  önekiyle **yazılamaz** — Vite onu build çıktısına gömerdi.
+- Belirteç isteyen kişinin gerçekten dersin tarafı olduğu **veritabanına
+  sorularak** doğrulanır. İstemcinin gönderdiği rol veya kimlik dikkate
+  alınmaz; sorgu kullanıcının kendi yetkisiyle çalışır, RLS ikinci kez
+  bağımsız olarak sınırlar.
+- Belirtecin `identity` alanı daima sunucudaki kullanıcı numarasıdır,
+  görünen ad da veritabanından okunur — kimse başkasının adıyla giremez.
+- Belirteç kısa ömürlüdür (1 saat). Ders bittiğinde/iptal edildiğinde
+  belirteç **hiç üretilmez**; bağlantıyı saklayıp sonra girmek mümkün değil.
+- Odayı yönetme yetkisi (`roomAdmin`) yalnız öğretmende.
 
-**Şu an çalışmayan:** karşı tarafın görüntüsü ve sesi. Arayüz bunu gizlemez;
-"Yerel önizleme" etiketiyle açıkça söyler. Sahte katılımcı, sahte video veya
-sahte bağlantı durumu üretilmez.
+### Paket boyutu
 
-### Sağlayıcı seçenekleri (karar notu)
+`livekit-client` yaklaşık 582 KB (gzip 152 KB). Statik içe aktarılsaydı
+canlı ders paketine girer ve dersi hiç açmayan kullanıcı da indirirdi. Bu
+yüzden SDK **oda gerçekten hazırlanırken** `import()` ile yüklenir; ana
+uygulama paketinde tek satırı yoktur.
 
-| Sağlayıcı | Ücretsiz kota | Sonrası | Not |
-|---|---|---|---|
-| LiveKit Cloud | ~50 GB/ay bant genişliği | Kullanım başına | Açık kaynak sunucu; istenirse kendi sunucunda barındırılır |
-| Daily.co | ~10.000 katılımcı-dakika/ay | Dakika başına | En hızlı entegrasyon, hazır arayüz bileşenleri |
-| 100ms | ~10.000 dakika/ay | Dakika başına | Eğitim odaklı özellikler |
+### Yapılandırılmadığında ne olur
 
-Birebir ders için aylık kullanım tahmini: 1 öğretmen × 5 öğrenci × haftada
-2 ders × 60 dk ≈ **2.400 katılımcı-dakika/ay** — üçünün de ücretsiz
-kotasının içinde kalır. Karar verildiğinde yapılacak tek iş:
-`REGISTRY` içine bir sağlayıcı dosyası eklemek ve `room-token.js` içindeki
-belirteç üretimini doldurmak. **Ekranların hiçbiri değişmez.**
-
----
+`VITE_LIVEKIT_URL` tanımlı değilse ürün "Yerel önizleme" moduna düşer:
+kamera/mikrofon testi, ortak tahta, materyaller, mesajlar ve katılım kaydı
+çalışır; karşı tarafın görüntüsü ve sesi aktarılmaz. Arayüz bunu gizlemez,
+açıkça yazar. Sahte katılımcı veya sahte bağlantı durumu üretilmez.
 
 ## 5) Tahta
 
@@ -179,8 +177,12 @@ yaklaşık 5 KB büyüdü.
    npm run test:live-lessons
    ```
 3. Öğretmen panelinden **Öğrenci Davet Et** → bağlantıyı öğrenciye gönder.
-4. (İsteğe bağlı) Görüşme sağlayıcısı seçildiğinde `.env` değişkenlerini
-   ekle ve `room-token.js` içindeki belirteç üretimini doldur.
+4. LiveKit Cloud'da proje aç (https://cloud.livekit.io) ve **Settings →
+   Keys** altından üç değeri al.
+5. Vercel > Settings > Environment Variables altına ekle:
+   `VITE_LIVEKIT_URL`, `LIVEKIT_URL`, `LIVEKIT_API_KEY`, `LIVEKIT_API_SECRET`.
+   Sonra yeniden yayına al — `VITE_` önekli değişken build sırasında gömülür,
+   var olan dağıtım kendiliğinden güncellenmez.
 
 ---
 
@@ -192,7 +194,7 @@ yaklaşık 5 KB büyüdü.
   seçimi gerekirdi ve yanlış seçilen bir seçenek öğrencinin takvimini
   sessizce siler. Kural tek ve tahmin edilebilir tutuldu.
 - **Kalıcı video/ses kaydı.** Varsayılan olarak kapalı; açık izin olmadan
-  kayıt başlatılmaz. Sağlayıcı seçildikten sonra değerlendirilebilir.
+  kayıt başlatılmaz. LiveKit Egress ile eklenebilir, ilk sürüme alınmadı.
 - **Grup dersi**, ders paketi satışı, otomatik transkript.
 - **Öğrencinin tahtayı düzenleme yetkisinin öğretmence kısıtlanması**
   (şu an ders açıkken iki taraf da yazabilir).

@@ -27,6 +27,7 @@
  */
 
 import { createClient } from '@supabase/supabase-js'
+import { AccessToken } from 'livekit-server-sdk'
 import { config } from '../_lib/config.js'
 
 /** Belirtecin geçerlilik süresi — ders uzasa bile yenilenerek alınır. */
@@ -111,30 +112,71 @@ export default async function handler(req, res) {
     )
   }
 
-  const providerSecret = process.env.LIVE_LESSON_PROVIDER_SECRET
-  const providerKey = process.env.LIVE_LESSON_PROVIDER_KEY
-  const providerName = process.env.LIVE_LESSON_PROVIDER
+  const apiKey = process.env.LIVEKIT_API_KEY
+  const apiSecret = process.env.LIVEKIT_API_SECRET
+  const url = process.env.LIVEKIT_URL || process.env.VITE_LIVEKIT_URL
 
-  if (!providerName || !providerSecret || !providerKey) {
+  if (!apiKey || !apiSecret || !url) {
     return fail(
       res,
       501,
       'provider_not_configured',
-      'Görüntülü görüşme sağlayıcısı henüz bağlanmadı. Ders tahtası, materyaller ve mesajlar çalışmaya devam ediyor.'
+      'Görüntülü görüşme henüz yapılandırılmadı. Ders tahtası, materyaller ve mesajlar çalışmaya devam ediyor.'
     )
   }
 
-  // ── Sağlayıcı seçildiğinde belirteç üretimi BURAYA gelir. ──
-  // Beklenen biçim (sağlayıcıdan bağımsız):
-  //   { token, url, roomId, expiresAt, identity, canPublish }
-  // `identity` DAİMA `userId` olmalı; istemciden gelen hiçbir kimlik
-  // bilgisi belirtece yazılmaz.
-  return fail(
-    res,
-    501,
-    'provider_not_implemented',
-    'Sağlayıcı tanımlı ama entegrasyonu tamamlanmadı. Ayrıntı için docs/canli-ders.md dosyasına bakın.'
-  )
+  // Katılımcının görünen adı — belirtecin içine yazılır ki karşı taraf
+  // ekranda kim olduğunu görsün. İSTEMCİDEN ALINMAZ: kullanıcı kendini
+  // başkasının adıyla tanıtamasın diye veritabanından okunur.
+  const { data: profile } = await supabase
+    .from('profiles')
+    .select('full_name')
+    .eq('id', userId)
+    .maybeSingle()
+
+  try {
+    const at = new AccessToken(apiKey, apiSecret, {
+      // Kimlik DAİMA sunucudaki kullanıcı numarasıdır.
+      identity: userId,
+      name: profile?.full_name || (role === 'teacher' ? 'Öğretmen' : 'Öğrenci'),
+      // Belirteç kısa ömürlüdür. Ders uzarsa istemci yenisini ister;
+      // uzun ömürlü belirteç, ders bittikten sonra da odaya girilebilmesi
+      // demek olurdu.
+      ttl: TOKEN_TTL_SECONDS,
+    })
+
+    at.addGrant({
+      room: lesson.provider_room_id,
+      roomJoin: true,
+      // Oda adı tahmin edilse bile bu belirteç OLMADAN girilemez; belirteci
+      // de yalnızca dersin tarafları alabilir (yukarıdaki kontroller).
+      canPublish: true,
+      canSubscribe: true,
+      canPublishData: true,
+      // Odayı yönetme yetkisi yalnız öğretmende: öğrenci dersi bitiremez
+      // veya başkasını odadan atamaz.
+      roomAdmin: role === 'teacher',
+    })
+
+    const token = await at.toJwt()
+
+    return res.status(200).json({
+      token,
+      url,
+      roomId: lesson.provider_room_id,
+      identity: userId,
+      role,
+      expiresAt: new Date(Date.now() + TOKEN_TTL_SECONDS * 1000).toISOString(),
+    })
+  } catch (err) {
+    console.error('LiveKit belirteci üretilemedi:', err?.message)
+    return fail(
+      res,
+      500,
+      'token_failed',
+      'Görüşme izni oluşturulamadı. Birkaç saniye sonra tekrar deneyin.'
+    )
+  }
 }
 
 export { TOKEN_TTL_SECONDS }

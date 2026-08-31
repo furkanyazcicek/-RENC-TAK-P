@@ -10,9 +10,10 @@
  * Bunu unutmak, dersten çıktıktan sonra kameranın açık kalması demek.
  */
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { createProvider, DEFAULT_PROVIDER } from './rtc/provider'
+import { supabase } from '../supabaseClient'
+import { createProvider, DEFAULT_PROVIDER, REMOTE_MEDIA_AVAILABLE } from './rtc/provider'
 
-export function useLessonMedia({ session, user, role, autoStart = true } = {}) {
+export function useLessonMedia({ session, user, role, displayName, autoStart = true } = {}) {
   const providerRef = useRef(null)
   const [stream, setStream] = useState(null)
   const [screenStream, setScreenStream] = useState(null)
@@ -23,9 +24,26 @@ export function useLessonMedia({ session, user, role, autoStart = true } = {}) {
   const [problems, setProblems] = useState([])
   const [connection, setConnection] = useState('idle')
   const [starting, setStarting] = useState(false)
+  const [remoteParticipants, setRemoteParticipants] = useState([])
+  const [joined, setJoined] = useState(false)
 
   useEffect(() => {
-    const provider = createProvider(session?.provider ?? DEFAULT_PROVIDER, { session, user, role })
+    const provider = createProvider(DEFAULT_PROVIDER, {
+      session,
+      user,
+      role,
+      displayName,
+      /**
+       * Oda belirteci sunucudan İSTENİR ve istek kullanıcının kendi
+       * oturum jetonuyla imzalanır. Sunucu, isteyenin gerçekten dersin
+       * tarafı olduğunu veritabanına sorarak doğrular; istemcinin
+       * gönderdiği hiçbir kimlik bilgisine güvenilmez.
+       */
+      getAccessToken: async () => {
+        const { data } = await supabase.auth.getSession()
+        return data?.session?.access_token ?? null
+      },
+    })
     providerRef.current = provider
 
     const offs = [
@@ -37,6 +55,7 @@ export function useLessonMedia({ session, user, role, autoStart = true } = {}) {
       provider.on('screen-stream', setScreenStream),
       provider.on('devices', setDevices),
       provider.on('connection', setConnection),
+      provider.on('participants', setRemoteParticipants),
       provider.on('permission', (info) =>
         setProblems((list) => (list.some((p) => p.code === info.code) ? list : [...list, info]))
       ),
@@ -52,7 +71,7 @@ export function useLessonMedia({ session, user, role, autoStart = true } = {}) {
       setStream(null)
       setScreenStream(null)
     }
-  }, [session?.id, session?.provider, user?.id, role])
+  }, [session?.id, user?.id, role, displayName])
 
   const start = useCallback(async (options) => {
     const provider = providerRef.current
@@ -106,7 +125,16 @@ export function useLessonMedia({ session, user, role, autoStart = true } = {}) {
     await providerRef.current?.reconnect()
   }, [])
 
+  /** Gerçek görüşme odasına katıl (LiveKit). Yerel önizlemede işlevsizdir. */
+  const join = useCallback(async () => {
+    const result = await providerRef.current?.joinRoom()
+    setJoined(Boolean(result?.ok))
+    return result
+  }, [])
+
   const leave = useCallback(async () => {
+    setJoined(false)
+    setRemoteParticipants([])
     await providerRef.current?.leaveRoom()
   }, [])
 
@@ -122,6 +150,9 @@ export function useLessonMedia({ session, user, role, autoStart = true } = {}) {
     problems,
     connection,
     starting,
+    joined,
+    remoteParticipants,
+    remoteMediaAvailable: REMOTE_MEDIA_AVAILABLE,
     hasVideo: Boolean(stream?.getVideoTracks?.().length),
     hasAudio: Boolean(stream?.getAudioTracks?.().length),
     start,
@@ -133,6 +164,7 @@ export function useLessonMedia({ session, user, role, autoStart = true } = {}) {
     selectMicrophone,
     switchCamera,
     retry,
+    join,
     leave,
   }
 }
