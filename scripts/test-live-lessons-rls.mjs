@@ -197,7 +197,12 @@ await db.exec(`
   grant select, insert, update, delete on all tables in schema public to authenticated;
   grant usage, select on all sequences in schema public to authenticated;
   grant select on auth.users to authenticated;
-  grant execute on all functions in schema public to authenticated;
+  -- DİKKAT: burada "butun fonksiyonlara yetki ver" YAPILMAZ.
+  -- Oyle yapilinca gocun kendi revoke satirlari geri alinir ve yalnizca
+  -- sunucunun cagirmasi gereken fonksiyonlar (oda kimligi uretici gibi)
+  -- istemciye acik sanilir. Gercek hatayi tam olarak bu maskeledi:
+  -- ders olusturma uretimde "yetkiniz yok" veriyordu, test geciyordu.
+  -- Goc kendi grantlarini zaten veriyor; buradan fazladan yetki verilmez.
   grant execute on function auth.uid() to authenticated;
 `)
 for (const t of [

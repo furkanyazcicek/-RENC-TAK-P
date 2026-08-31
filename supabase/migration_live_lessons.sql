@@ -899,9 +899,18 @@ $$;
 
 -- Oda kimliği her zaman sunucuda üretilir: istemci INSERT gövdesine kendi
 -- seçtiği bir oda adı yazamasın diye tetikleyiciyle üzerine yazılır.
+--
+-- SECURITY DEFINER ŞART: bu tetikleyici, istemcinin (authenticated)
+-- yetkisiyle çalışır ve içeriden `generate_room_id()` çağırır. O fonksiyon
+-- ise bilerek istemciye KAPALIDIR (oda kimliğini kimse kendi seçemesin
+-- diye). Tanımlayıcı yetkisiyle çalışmazsa her ders oluşturma
+-- "permission denied for function generate_room_id" ile reddedilir.
+--
 create or replace function public.lesson_sessions_force_room_id()
 returns trigger
 language plpgsql
+security definer
+set search_path = public
 as $$
 begin
   if tg_op = 'INSERT' then
