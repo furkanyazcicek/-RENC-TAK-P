@@ -30,6 +30,7 @@ import {
   previewStudents,
   previewSummary,
   previewTeacherLessons,
+  previewUnlinkedStudents,
 } from './preview'
 
 /**
@@ -88,6 +89,38 @@ export async function fetchMyStudents() {
 
 export async function fetchMyTeachers() {
   return unwrap(await supabase.rpc('student_teacher_list'), 'Öğretmen listesi alınamadı.') ?? []
+}
+
+/**
+ * ONAY KUYRUĞU — henüz hiçbir bağı olmayan öğrenciler.
+ *
+ * Kayıt sayfasından kaydolan bir öğrenci davet bağlantısı kullanmadıysa
+ * `teacher_students` tablosunda satırı olmaz ve öğretmen panelinde hiç
+ * görünmezdi. Bu liste onları "yeni kayıt" olarak yüzeye çıkarır;
+ * öğretmen onaylayana kadar öğrencinin hiçbir verisi açılmaz.
+ * Bkz. supabase/migration_yeni_ogrenci_onayi.sql
+ */
+export async function fetchUnlinkedStudents() {
+  if (isLessonPreview()) return previewUnlinkedStudents()
+  return unwrap(await supabase.rpc('teacher_unlinked_students'), 'Yeni kayıtlar alınamadı.') ?? []
+}
+
+/** Kuyruktaki öğrenciyi listeye al — bağ anında aktifleşir. */
+export async function addStudent(studentId) {
+  if (isLessonPreview()) return
+  unwrap(
+    await supabase.rpc('teacher_add_student', { p_student_id: studentId }),
+    'Öğrenci listene eklenemedi.'
+  )
+}
+
+/** "Bana ait değil" — kayıt kuyruktan düşer, veri açılmaz. */
+export async function dismissStudent(studentId) {
+  if (isLessonPreview()) return
+  unwrap(
+    await supabase.rpc('teacher_dismiss_student', { p_student_id: studentId }),
+    'Kayıt gizlenemedi.'
+  )
 }
 
 export async function fetchOpenInvites() {

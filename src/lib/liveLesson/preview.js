@@ -201,6 +201,33 @@ export function previewStudentLessons() {
   return previewTeacherLessons()
 }
 
+/**
+ * Onay kuyruğu — kaydolmuş ama henüz hiçbir öğretmene bağlanmamış
+ * öğrenciler. Gerçek veride bu liste `teacher_unlinked_students()`
+ * RPC'sinden gelir; burada yalnızca ekranın görsel doğrulaması için
+ * iki örnek satır var.
+ */
+export function previewUnlinkedStudents() {
+  return [
+    {
+      student_id: 'onizleme-yeni-1',
+      student_name: 'Zeynep Kara',
+      email_hint: 'ze***@gmail.com',
+      grade: 8,
+      target_exam: 'LGS',
+      registered_at: at(-2000),
+    },
+    {
+      student_id: 'onizleme-yeni-2',
+      student_name: 'Mert Aydın',
+      email_hint: 'me***@hotmail.com',
+      grade: 12,
+      target_exam: 'AYT',
+      registered_at: at(-9000),
+    },
+  ]
+}
+
 export function previewStudents() {
   return [
     {

@@ -8,6 +8,7 @@ import StudentList from '../components/StudentList'
 import QuestionInbox from '../components/QuestionInbox'
 import NextLessonPanel from '../components/liveLesson/NextLessonPanel'
 import InviteStudentsPanel from '../components/liveLesson/InviteStudentsPanel'
+import PendingStudentsPanel from '../components/liveLesson/PendingStudentsPanel'
 import InstantLessonDialog from '../components/liveLesson/InstantLessonDialog'
 import { AppShell, Badge, Button, Modal, PageSection } from '../components/ui'
 import { DashboardHero, MetricTile, Panel } from '../components/dashboard'
@@ -182,6 +183,10 @@ export default function TeacherDashboard() {
           hint={summary.idle.length > 0 ? 'öğrenci kayıt girmedi' : 'herkes aktif'}
         />
       </div>
+
+      {/* Yeni kaydolmuş ama henüz listeye alınmamış öğrenciler.
+          Kuyruk boşsa bileşen hiçbir şey çizmez. */}
+      <PendingStudentsPanel onChanged={loadData} />
 
       {/* Sessiz kalan öğrenciler — öğretmenin en çok ihtiyacı olan uyarı */}
       {summary.idle.length > 0 && (
