@@ -118,6 +118,37 @@ kamera/mikrofon testi, ortak tahta, materyaller, mesajlar ve katılım kaydı
 çalışır; karşı tarafın görüntüsü ve sesi aktarılmaz. Arayüz bunu gizlemez,
 açıkça yazar. Sahte katılımcı veya sahte bağlantı durumu üretilmez.
 
+## 4b) Cihaz rolü — aynı derse iki cihazdan girmek
+
+Öğretmen tabletten kalemle anlatıp telefonunu/bilgisayarını kamera olarak
+kullanabiliyor. Bu iki cihazın işi farklı olduğu için rol **tahmin
+edilmez, sorulur** (`src/lib/liveLesson/deviceRole.js`):
+
+| Rol | Mikrofon | Kamera | Ses çıkışı |
+|---|---|---|---|
+| Tek cihazdan (varsayılan) | açık | açık | açık |
+| Tablet — anlatım ve tahta | açık | kapalı | açık |
+| Telefon/bilgisayar — kamera | **kapalı** | açık | **kapalı** |
+
+Seçim bekleme odasında yapılır, cihazda hatırlanır ve ders sırasında
+cihaz çekmecesinden değiştirilebilir.
+
+### Ses çıkışı neden kapatılıyor
+
+Yankıyı önlemenin tek kesin yolu bu. Kamera cihazının hoparlörü açık
+kalırsa tabletin sesi oradan çıkar, tabletin mikrofonuna geri girer ve
+çığlık gibi bir geri besleme oluşur. Yalnız mikrofonu kapatmak yetmez.
+
+### LiveKit kimlik çakışması
+
+LiveKit, odaya **aynı kimlikle** ikinci bir bağlantı geldiğinde
+ilkini atar (`DUPLICATE_IDENTITY`). Bu yüzden belirteçteki kimlik
+`<kullaniciNo>#<baglantiEki>` biçimindedir; son ek sunucuda üretilir.
+Yetkilendirme bundan etkilenmez — odaya girme hakkı veritabanı
+kontrolünden gelir, kimlik dizesinden değil. İstemci karşı tarafı `#`
+öncesindeki numaradan eşleştirir ve karşı taraf iki cihazdan bağlıysa
+**kamerası açık olanı** gösterir.
+
 ## 5) Tahta
 
 `src/lib/solutionCanvas.js` içindeki mevcut vektör çizim motoru yeniden

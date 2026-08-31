@@ -16,6 +16,7 @@ import { cn } from '../../lib/cn'
 import { Alert, Badge, Button, Drawer, EmptyState, Modal, Textarea, Field, useToast } from '../../components/ui'
 import CallControls from '../../components/liveLesson/CallControls'
 import DeviceSetup from '../../components/liveLesson/DeviceSetup'
+import DeviceRolePicker from '../../components/liveLesson/DeviceRolePicker'
 import LessonBoard from '../../components/liveLesson/LessonBoard'
 import LessonChatPanel from '../../components/liveLesson/LessonChatPanel'
 import LessonStatusBadge from '../../components/liveLesson/LessonStatusBadge'
@@ -40,6 +41,7 @@ import {
 } from '../../lib/liveLesson/api'
 import { CHANNEL_EVENTS, useLessonChannel } from '../../lib/liveLesson/channel'
 import { useLessonMedia } from '../../lib/liveLesson/useLessonMedia'
+import { DEVICE_ROLES, deviceRoleInfo, loadDeviceRole, saveDeviceRole } from '../../lib/liveLesson/deviceRole'
 import { CONNECTION_LABELS } from '../../lib/liveLesson/rtc/provider'
 import { canJoin } from '../../lib/liveLesson/status'
 import { formatClock } from '../../lib/liveLesson/time'
@@ -96,6 +98,7 @@ export default function LessonStudio() {
   const myJoinedAtRef = useRef(new Date().toISOString())
   const [autoMuted, setAutoMuted] = useState(false)
   const [linkCopied, setLinkCopied] = useState(false)
+  const [deviceRole, setDeviceRole] = useState(() => loadDeviceRole())
   const leftRef = useRef(false)
 
   const isTeacher = role === 'teacher'
@@ -169,6 +172,7 @@ export default function LessonStudio() {
     user,
     role,
     displayName: profile?.full_name,
+    deviceRole,
     autoStart: Boolean(session),
   })
   const channel = useLessonChannel({
@@ -269,12 +273,14 @@ export default function LessonStudio() {
    * sonuca varır, ikisi birden susmaz. Öğretmen isterse elle açar.
    */
   useEffect(() => {
+    // Rol açıkça seçildiyse karışma: kullanıcı ne istediğini söylemiş.
+    if (deviceRole !== DEVICE_ROLES.SOLO) return
     if (autoMuted || !media.micOn || otherOwnDevices.length === 0) return
     const iAmLater = otherOwnDevices.some((d) => d.joinedAt && d.joinedAt < myJoinedAtRef.current)
     if (!iAmLater) return
     setAutoMuted(true)
     media.toggleMic(false)
-  }, [otherOwnDevices, media, autoMuted])
+  }, [otherOwnDevices, media, autoMuted, deviceRole])
 
   /**
    * Öğrenci odaya girdiğinde ders kendiliğinden "Devam ediyor" olur.
@@ -496,6 +502,9 @@ export default function LessonStudio() {
       />
       <VideoTile
         stream={remote?.stream ?? null}
+        /* Kamera cihazında uzak ses ÇALINMAZ: tabletin sesi buradan
+           çıkıp tabletin mikrofonuna geri girer ve yankı olurdu. */
+        muted={!media.audioOutputEnabled}
         name={counterpart?.full_name ?? (isTeacher ? 'Öğrenci' : 'Öğretmen')}
         cameraOn={remote?.camOn ?? false}
         micOn={remote?.micOn ?? peerState?.micOn ?? false}
@@ -542,6 +551,18 @@ export default function LessonStudio() {
               <Copy className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
             )}
             <span className="hidden md:inline">{linkCopied ? 'Kopyalandı' : 'Bağlantı'}</span>
+          </button>
+        )}
+
+        {/* Bu cihazın rolü — yanlış cihazdan girildiyse hemen görülsün */}
+        {deviceRole !== DEVICE_ROLES.SOLO && (
+          <button
+            type="button"
+            onClick={() => setDrawer(DRAWERS.DEVICES)}
+            title="Cihaz rolünü değiştir"
+            className="focus-ring hidden h-9 items-center gap-1.5 rounded-full bg-white/10 px-2.5 text-2xs font-semibold text-white/80 transition-colors hover:bg-white/[0.16] sm:inline-flex"
+          >
+            {deviceRoleInfo(deviceRole).short}
           </button>
         )}
 
@@ -849,10 +870,28 @@ export default function LessonStudio() {
         open={drawer === DRAWERS.DEVICES}
         onClose={() => setDrawer(DRAWERS.NONE)}
         title="Kamera ve mikrofon"
-        description="Cihaz seçimi ve test"
+        description="Cihaz rolü, seçim ve test"
         width="md"
       >
-        <DeviceSetup media={media} name={profile?.full_name} />
+        <div className="flex flex-col gap-5">
+          <div>
+            <p className="label-base">Bu cihazın rolü</p>
+            <DeviceRolePicker
+              value={deviceRole}
+              onChange={(next) => {
+                setDeviceRole(next)
+                saveDeviceRole(next)
+              }}
+            />
+            {deviceRole === DEVICE_ROLES.CAMERA && (
+              <p className="mt-2 rounded-input bg-surface-muted px-3.5 py-2.5 text-sm leading-relaxed text-ink/70">
+                Bu cihaz sessiz: mikrofonu ve hoparlörü kapalı. Anlatımı ve sesi diğer cihazdan
+                yapıyorsun.
+              </p>
+            )}
+          </div>
+          <DeviceSetup media={media} name={profile?.full_name} />
+        </div>
       </Drawer>
 
       {isTeacher && (

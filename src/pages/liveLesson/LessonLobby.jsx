@@ -4,11 +4,13 @@ import { ArrowLeft, CheckCircle2, Loader2, LogIn, ShieldAlert, Users, Wifi } fro
 import { cn } from '../../lib/cn'
 import { Alert, AppShell, Badge, Button, Card, CardBody, EmptyState } from '../../components/ui'
 import DeviceSetup from '../../components/liveLesson/DeviceSetup'
+import DeviceRolePicker from '../../components/liveLesson/DeviceRolePicker'
 import LessonStatusBadge from '../../components/liveLesson/LessonStatusBadge'
 import SchemaMissingNotice from '../../components/liveLesson/SchemaMissingNotice'
 import { useLessonAuth } from '../../lib/liveLesson/preview'
 import { fetchLesson, isSchemaMissing, joinLesson } from '../../lib/liveLesson/api'
 import { useLessonMedia } from '../../lib/liveLesson/useLessonMedia'
+import { DEVICE_ROLES, deviceRoleInfo, loadDeviceRole, saveDeviceRole } from '../../lib/liveLesson/deviceRole'
 import { useLessonChannel } from '../../lib/liveLesson/channel'
 import { canJoin, joinBlockReason } from '../../lib/liveLesson/status'
 import { countdownLabel, durationMinutes, formatLessonDateTime } from '../../lib/liveLesson/time'
@@ -37,6 +39,8 @@ export default function LessonLobby() {
   const [error, setError] = useState(null)
   const [schemaMissing, setSchemaMissing] = useState(false)
   const [joining, setJoining] = useState(false)
+  // Bu cihazın rolü (tek cihaz / tablet / kamera). Cihazda hatırlanır.
+  const [deviceRole, setDeviceRole] = useState(() => loadDeviceRole())
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -69,6 +73,7 @@ export default function LessonLobby() {
     user,
     role,
     displayName: profile?.full_name,
+    deviceRole,
     autoStart: Boolean(session),
   })
 
@@ -125,7 +130,13 @@ export default function LessonLobby() {
     [media.hasVideo, media.hasAudio, media.micOn, media.camOn, channel.status]
   )
 
+  function chooseRole(next) {
+    setDeviceRole(next)
+    saveDeviceRole(next)
+  }
+
   async function handleJoin() {
+    saveDeviceRole(deviceRole)
     setJoining(true)
     setError(null)
     try {
@@ -235,6 +246,27 @@ export default function LessonLobby() {
               )}
             </Alert>
           ) : null}
+
+          {/* Bu cihazın rolü — kamera/mikrofon testinden ÖNCE, çünkü
+              hangi cihazın neyi açacağını bu belirliyor. */}
+          <Card>
+            <CardBody className="flex flex-col gap-3">
+              <div>
+                <h2 className="section-title">Bu cihazı ne olarak kullanacaksın?</h2>
+                <p className="mt-0.5 text-sm text-ink/60">
+                  Tabletten anlatıp telefonunu kamera olarak kullanabilirsin. Seçimin bu cihazda
+                  hatırlanır.
+                </p>
+              </div>
+              <DeviceRolePicker value={deviceRole} onChange={chooseRole} />
+              {deviceRole === DEVICE_ROLES.CAMERA && (
+                <p className="rounded-input bg-surface-muted px-3.5 py-2.5 text-sm leading-relaxed text-ink/70">
+                  Bu cihaz <strong>sessiz</strong> katılır: mikrofonu ve hoparlörü kapalı olur.
+                  Yankıyı önleyen şey budur — anlatımı ve sesi tabletten yaparsın.
+                </p>
+              )}
+            </CardBody>
+          </Card>
 
           {/* Cihaz testi */}
           <Card>

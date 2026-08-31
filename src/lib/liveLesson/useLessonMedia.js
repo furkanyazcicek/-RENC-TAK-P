@@ -12,15 +12,24 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { supabase } from '../supabaseClient'
 import { createProvider, DEFAULT_PROVIDER, REMOTE_MEDIA_AVAILABLE } from './rtc/provider'
+import { DEVICE_ROLES, deviceRoleInfo } from './deviceRole'
 
-export function useLessonMedia({ session, user, role, displayName, autoStart = true } = {}) {
+export function useLessonMedia({
+  session,
+  user,
+  role,
+  displayName,
+  deviceRole = DEVICE_ROLES.SOLO,
+  autoStart = true,
+} = {}) {
+  const roleSpec = deviceRoleInfo(deviceRole)
   const providerRef = useRef(null)
   const [stream, setStream] = useState(null)
   const [screenStream, setScreenStream] = useState(null)
   const [devices, setDevices] = useState({ cameras: [], microphones: [], speakers: [] })
   const [selected, setSelected] = useState({ camera: null, microphone: null, speaker: null })
-  const [micOn, setMicOn] = useState(true)
-  const [camOn, setCamOn] = useState(true)
+  const [micOn, setMicOn] = useState(roleSpec.mic)
+  const [camOn, setCamOn] = useState(roleSpec.camera)
   const [problems, setProblems] = useState([])
   const [connection, setConnection] = useState('idle')
   const [starting, setStarting] = useState(false)
@@ -33,6 +42,8 @@ export function useLessonMedia({ session, user, role, displayName, autoStart = t
       user,
       role,
       displayName,
+      initialMic: roleSpec.mic,
+      initialCamera: roleSpec.camera,
       /**
        * Oda belirteci sunucudan İSTENİR ve istek kullanıcının kendi
        * oturum jetonuyla imzalanır. Sunucu, isteyenin gerçekten dersin
@@ -71,7 +82,19 @@ export function useLessonMedia({ session, user, role, displayName, autoStart = t
       setStream(null)
       setScreenStream(null)
     }
-  }, [session?.id, user?.id, role, displayName])
+  }, [session?.id, user?.id, role, displayName, deviceRole])
+
+  /**
+   * Rol değişince açık/kapalı durumları da değişmeli.
+   *
+   * `useState` yalnızca ilk render'da başlangıç değerini alır; rol
+   * sonradan "kamera"ya çevrildiğinde mikrofon düğmesi eski hâlinde
+   * kalıyor ve kullanıcı mikrofonunun kapandığını göremiyordu.
+   */
+  useEffect(() => {
+    setMicOn(roleSpec.mic)
+    setCamOn(roleSpec.camera)
+  }, [roleSpec.mic, roleSpec.camera])
 
   const start = useCallback(async (options) => {
     const provider = providerRef.current
@@ -152,6 +175,13 @@ export function useLessonMedia({ session, user, role, displayName, autoStart = t
     starting,
     joined,
     remoteParticipants,
+    deviceRole,
+    /**
+     * Kamera cihazında uzak SES ÇALINMAZ. Çalsaydı, tabletin sesi
+     * kameranın hoparlöründen çıkıp tabletin mikrofonuna geri girer ve
+     * yankı olurdu. Yankıyı önlemenin tek kesin yolu bu.
+     */
+    audioOutputEnabled: roleSpec.audioOut,
     remoteMediaAvailable: REMOTE_MEDIA_AVAILABLE,
     hasVideo: Boolean(stream?.getVideoTracks?.().length),
     hasAudio: Boolean(stream?.getAudioTracks?.().length),

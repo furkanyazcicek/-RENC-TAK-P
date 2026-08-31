@@ -75,14 +75,16 @@ export function describeMediaError(error, kind = 'kamera') {
   }
 }
 
-export function createLocalPreviewProvider({ session, user, role } = {}) {
+export function createLocalPreviewProvider({ session, user, role, initialMic = true, initialCamera = true } = {}) {
   const listeners = new Map(EVENTS.map((e) => [e, new Set()]))
 
   let localStream = null
   let screenStream = null
   let connectionState = 'idle'
-  let micEnabled = true
-  let cameraEnabled = true
+  // Başlangıç durumu CİHAZ ROLÜNDEN gelir: kamera cihazının mikrofonu
+  // hiç açılmaz, tabletin kamerası hiç açılmaz.
+  let micEnabled = initialMic
+  let cameraEnabled = initialCamera
   let facingMode = 'user'
   let selected = { camera: null, microphone: null, speaker: null }
   let devices = { cameras: [], microphones: [], speakers: [] }
