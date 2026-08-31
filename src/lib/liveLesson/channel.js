@@ -146,6 +146,17 @@ export function createLessonChannel({ roomId, user, role, displayName, deviceId:
         list.push({ ...entry, ownDevice: entry.userId === selfState.userId })
       }
     }
+    /**
+     * LİSTE GERÇEKTEN DEĞİŞTİYSE HABER VER.
+     *
+     * Eşitleme olayı saniyede birkaç kez gelir ve içerik çoğu zaman
+     * aynıdır. Her seferinde yeni bir dizi yayınlamak arayüzü boşuna
+     * yeniden çizdiriyor, bu da yeni bildirimler doğurup kanalı
+     * gereksiz mesajla dolduruyordu.
+     */
+    const oncekiOzet = JSON.stringify(peers)
+    const yeniOzet = JSON.stringify(list)
+    if (oncekiOzet === yeniOzet) return
     peers = list
     for (const fn of peerListeners) fn(list)
   }

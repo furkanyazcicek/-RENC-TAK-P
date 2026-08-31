@@ -25,4 +25,15 @@ const FALLBACK_SUPABASE_ANON_KEY = 'sb_publishable_Jo5hJ5JDfbdVgdgfKQutow_HhmFJ_
 const supabaseUrl = import.meta.env?.VITE_SUPABASE_URL || FALLBACK_SUPABASE_URL
 const supabaseAnonKey = import.meta.env?.VITE_SUPABASE_ANON_KEY || FALLBACK_SUPABASE_ANON_KEY
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+/**
+ * ANLIK KANALIN SANİYELİK MESAJ HAKKI.
+ *
+ * Varsayılan sınır saniyede 10 mesaj. Canlı derste tahtaya hızlı
+ * yazarken bu sınır kolayca aşılıyor; sınır aşılınca mesajlar düşüyor,
+ * karşı taraf çizimin bir kısmını hiç görmüyor ve bağlantı "yeniden
+ * bağlanılıyor" durumuna düşüyordu. Ders tahtası için 40 rahat bir
+ * paydır; sohbet ve bildirimler bu sınırın çok altında kalır.
+ */
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  realtime: { params: { eventsPerSecond: 40 } },
+})

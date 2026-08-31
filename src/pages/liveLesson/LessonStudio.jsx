@@ -183,14 +183,28 @@ export default function LessonStudio() {
     enabled: Boolean(session?.provider_room_id),
   })
 
+  /**
+   * DURUM BİLDİRİMİ — SONSUZ DÖNGÜYE DİKKAT.
+   *
+   * Bağımlılıkta `channel` NESNESİ vardı; o nesne her karede yeniden
+   * üretildiği için bu etki her karede çalışıyor, her çalışmasında
+   * "buradayım" bildirimi gönderiyordu. Bildirim karşı tarafta bir
+   * eşitleme olayı doğuruyor, o olay yeni bir kare çizdiriyor ve etki
+   * yeniden çalışıyordu: saniyede onlarca gereksiz bildirim. Anlık
+   * kanalın saniyelik mesaj hakkı bununla dolup taşıyor, sunucu kanalı
+   * kapatıyor ve ekranda sürekli "Yeniden bağlanılıyor" yazıyordu.
+   * Artık yalnızca GERÇEKTEN değişen bilgiler bildirimi tetikler.
+   */
+  const bildirDurum = channel.updateState
+  const kanalDurumu = channel.status
   useEffect(() => {
-    channel.updateState({
+    bildirDurum({
       micOn: media.micOn,
       camOn: media.camOn,
       screenOn: media.screenOn,
-      connection: channel.status,
+      connection: kanalDurumu,
     })
-  }, [media.micOn, media.camOn, media.screenOn, channel])
+  }, [media.micOn, media.camOn, media.screenOn, bildirDurum, kanalDurumu])
 
   /**
    * GERÇEK GÖRÜŞME ODASINA KATIL.

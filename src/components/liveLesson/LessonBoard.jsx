@@ -119,6 +119,17 @@ export default function LessonBoard({
   const pinchRef = useRef(null)
   const panRef = useRef(null)
   const pointerUpRef = useRef(null)
+  /**
+   * ÇİZİMİ BAŞLATAN İŞARETÇİNİN KİMLİĞİ.
+   *
+   * iPad kalemle yazarken avucun temaslarını kendi avuç reddiyle
+   * ANINDA İPTAL EDİYOR ve her iptal için bir "işaretçi bitti" olayı
+   * gönderiyor. Tahta bu olayın hangi işaretçiden geldiğine bakmadığı
+   * için, avuçtan gelen her iptal KALEMİN çizgisini bitiriyordu: yazı
+   * yazılamıyor, ekranda yalnızca birkaç piksellik kopuk parçalar
+   * kalıyordu. Çizgiyi artık yalnızca onu başlatan işaretçi bitirebilir.
+   */
+  const activePointerIdRef = useRef(null)
 
   const baseRafRef = useRef(0)
   // paintBase, repaintSoon'dan önce tanımlanıyor; döngüsel bağımlılık
@@ -474,10 +485,10 @@ export default function LessonBoard({
   /* ================================================================ */
 
   const addItem = useCallback(
-    (item) => {
+    (item, options) => {
       const index = pageIndexRef.current
       const page = pagesRef.current[index]
-      applyItems(index, [...page.items, item], { previous: page.items })
+      applyItems(index, [...page.items, item], { previous: page.items, ...options })
     },
     [applyItems]
   )
@@ -664,7 +675,16 @@ export default function LessonBoard({
     }
     delete active._lastSend
     finishStrokeItem(active, SIMPLIFY_TOLERANCE / viewRef.current.scale)
-    addItem(active)
+    /**
+     * BİTEN ÇİZGİ KANALA TEK KEZ GİRER.
+     *
+     * `addItem` kendi başına bir "sayfa değişti" yayını da yapıyordu;
+     * hemen altındaki "çizgi bitti" yayınıyla birlikte her çizgi kanala
+     * İKİ KEZ gidiyordu. Anlık kanalın saniyelik mesaj hakkı sınırlı:
+     * gereksiz ikinci mesaj, hızlı yazarken haktan taşıp bağlantının
+     * kopmasına ve "Yeniden bağlanılıyor" uyarısına yol açıyordu.
+     */
+    addItem(active, { broadcast: false })
     scheduleLive()
     channel?.send?.(CHANNEL_EVENTS.BOARD_STROKE, {
       phase: 'end',
@@ -786,7 +806,7 @@ export default function LessonBoard({
       // Kaydırmayı KİM başlattı: kalem indiğinde yalnızca dokunmayla
       // açılmış kaydırma iptal edilir, kalemle "el" aracı kullanmak
       // çalışmaya devam eder.
-      panRef.current = { x: e.clientX, y: e.clientY, view: { ...viewRef.current }, type: e.pointerType }
+      panRef.current = { x: e.clientX, y: e.clientY, view: { ...viewRef.current }, type: e.pointerType, pointerId: e.pointerId }
       return
     }
 
@@ -795,6 +815,7 @@ export default function LessonBoard({
     const point = toBoard(e.clientX, e.clientY)
     const pressure = e.pressure > 0 && e.pointerType === 'pen' ? e.pressure : 0.5
 
+    activePointerIdRef.current = e.pointerId
     if (activeTool === BOARD_TOOLS.ERASER) beginErase(point)
     else if (activeTool === BOARD_TOOLS.TEXT) {
       setTextDraft({ x: point.x, y: point.y, clientX: e.clientX, clientY: e.clientY, value: '' })
@@ -907,10 +928,14 @@ export default function LessonBoard({
       pinchRef.current = null
       return
     }
-    if (panRef.current) {
+    if (panRef.current && (panRef.current.pointerId === e.pointerId || panRef.current.pointerId == null)) {
       panRef.current = null
       return
     }
+
+    // Başka bir işaretçinin (avuç, ikinci parmak) bitmesi çizgiyi kesmez.
+    if (activePointerIdRef.current !== null && e.pointerId !== activePointerIdRef.current) return
+    activePointerIdRef.current = null
 
     if (eraseRef.current) endErase()
     else if (shapeRef.current) endShape()
