@@ -5,6 +5,8 @@ import maddeninHalleri from './maddenin-halleri.js';
 import dogaVeKimya from './doga-ve-kimya.js';
 import kimyaninTemelKanunlariVeKimyasalHesaplamalar from './kimyanin-temel-kanunlari-ve-kimyasal-hesaplamalar.js';
 import karisimlar from './karisimlar.js';
+import asitlerBazlarVeTuzlar from './asitler-bazlar-ve-tuzlar.js';
+import kimyaHerYerde from './kimya-her-yerde.js';
 
 export const kimyaTests = {
   'kimya-bilimi': kimyaBilimi,
@@ -14,4 +16,6 @@ export const kimyaTests = {
   'doga-ve-kimya': dogaVeKimya,
   'kimyanin-temel-kanunlari-ve-kimyasal-hesaplamalar': kimyaninTemelKanunlariVeKimyasalHesaplamalar,
   'karisimlar': karisimlar,
+  'asitler-bazlar-ve-tuzlar': asitlerBazlarVeTuzlar,
+  'kimya-her-yerde': kimyaHerYerde,
 };

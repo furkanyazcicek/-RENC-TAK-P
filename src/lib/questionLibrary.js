@@ -28,6 +28,9 @@ import { loadMathQuestionSet, mathQuestionSetsForTopic } from '../content/tests/
 const BUNDLED_SETS = {
   ...Object.fromEntries(Object.entries(turkceTests).map(([k, v]) => [k, { tests: v }])),
   ...Object.fromEntries(Object.entries(kimyaTests).map(([k, v]) => [k, { tests: v }])),
+  'kimyanin-temel-kanunlari': { tests: (kimyaTests['kimyanin-temel-kanunlari-ve-kimyasal-hesaplamalar'] || []).slice(0, 15) },
+  'mol-kavrami': { tests: (kimyaTests['kimyanin-temel-kanunlari-ve-kimyasal-hesaplamalar'] || []).slice(15, 30) },
+  'asit-baz-ve-tuz': { tests: kimyaTests['asitler-bazlar-ve-tuzlar'] || [] },
   'yapi-bilgisi': { tests: turkceTests['sozcuk-yapisi'] || [] },
   'sozcuk-turleri': { tests: [...(turkceTests['isimler']||[]), ...(turkceTests['sifatlar']||[]), ...(turkceTests['zarflar']||[]), ...(turkceTests['zamirler']||[]), ...(turkceTests['edat-baglac-unlem']||[])] },
   'fiilimsi': { tests: turkceTests['fiilimsiler'] || [] },
