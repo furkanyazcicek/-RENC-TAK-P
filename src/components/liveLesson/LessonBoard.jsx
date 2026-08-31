@@ -68,6 +68,7 @@ export default function LessonBoard({
   userId,
   deviceId,
   canEdit = true,
+  isTeacher = false,
   channel,
   boardApiRef,
   onSaveStateChange,
@@ -117,6 +118,7 @@ export default function LessonBoard({
   const palmGuardRef = useRef(0)
   const pinchRef = useRef(null)
   const panRef = useRef(null)
+  const pointerUpRef = useRef(null)
 
   const baseRafRef = useRef(0)
   // paintBase, repaintSoon'dan önce tanımlanıyor; döngüsel bağımlılık
@@ -434,7 +436,7 @@ export default function LessonBoard({
   )
 
   const goToPage = useCallback(
-    (index) => {
+    (index, { broadcast = true } = {}) => {
       const clamped = Math.max(0, Math.min(index, pagesRef.current.length - 1))
       pageIndexRef.current = clamped
       setPageIndex(clamped)
@@ -445,9 +447,18 @@ export default function LessonBoard({
       fitBoard()
       schedulePaint()
       scheduleLive()
-      channel?.send?.(CHANNEL_EVENTS.BOARD_PAGE, { page: clamped, count: pagesRef.current.length, by: userId })
+      // `broadcast: false` = karşı tarafı TAKİP ederken kullanılır; yoksa
+      // iki taraf birbirinin sayfa değişimini sonsuza kadar yankılardı.
+      if (broadcast) {
+        channel?.send?.(CHANNEL_EVENTS.BOARD_PAGE, {
+          page: clamped,
+          count: pagesRef.current.length,
+          by: userId,
+          teacher: isTeacher,
+        })
+      }
     },
-    [channel, fitBoard, refreshHistoryFlags, schedulePaint, scheduleLive, userId]
+    [channel, fitBoard, refreshHistoryFlags, schedulePaint, scheduleLive, userId, isTeacher]
   )
 
   const addPage = useCallback(() => {
@@ -513,6 +524,7 @@ export default function LessonBoard({
           page: startIndex,
           count: pagesRef.current.length,
           reload: true,
+          teacher: isTeacher,
         })
         return { ok: true, count: created.length }
       } catch (err) {
@@ -520,7 +532,7 @@ export default function LessonBoard({
         return { ok: false, error: err }
       }
     },
-    [channel, fitBoard, refreshHistoryFlags, schedulePaint]
+    [channel, fitBoard, refreshHistoryFlags, schedulePaint, isTeacher]
   )
 
   /** Materyalden veya dosyadan tahtaya görsel yerleştirir. */
@@ -616,8 +628,8 @@ export default function LessonBoard({
     const now = performance.now()
     if (channel?.send && now - (active._lastSend ?? 0) > LIVE_POINT_INTERVAL_MS) {
       active._lastSend = now
-      const from = lastSentRef.current
-      const points = active.p.slice(from)
+      const offset = lastSentRef.current
+      const points = active.p.slice(offset)
       lastSentRef.current = active.p.length
       channel.send(CHANNEL_EVENTS.BOARD_STROKE, {
         phase: 'draw',
@@ -626,7 +638,16 @@ export default function LessonBoard({
         t: active.t,
         c: active.c,
         w: active.w,
-        from,
+        /**
+         * BU ALAN `from` OLAMAZ.
+         *
+         * Kanal sarmalayıcısı her yayına gönderen CİHAZIN kimliğini
+         * `from` alanıyla ekliyor ve buradaki sayısal ofseti eziyordu.
+         * Alıcı taraf ofset yerine bir metin görünce hiçbir noktayı
+         * eklemiyor, karşı taraf çizgiyi ancak kalem kaldırıldığında
+         * görüyordu — canlı çizim eşitlemesi baştan sona ölüydü.
+         */
+        off: offset,
         pts: points,
         by: userId,
       })
@@ -686,6 +707,49 @@ export default function LessonBoard({
   function handlePointerDown(e) {
     const wrap = wrapRef.current
     if (!wrap) return
+
+    /**
+     * ═════════════════════════════════════════════════════════════
+     * KALEM HER ŞEYDEN ÖNCE GELİR — iPad'de yazamamanın sebebi buydu
+     * ═════════════════════════════════════════════════════════════
+     * Kalemle yazarken avuç kaçınılmaz olarak ekrana dayanır ve iPad
+     * avucu ÇOĞU ZAMAN İKİ AYRI DOKUNUŞ olarak bildirir. Eski sırada
+     * avuç dokunuşları önce haritaya yazılıyor, "iki parmak" sayılıp
+     * tahtayı yakınlaştırma kipine sokuyordu. Yakınlaştırma kipi
+     * açıkken kalemden gelen bütün hareketler yok sayıldığı için
+     * Apple Pencil ile TEK BİR ÇİZGİ BİLE atılamıyordu.
+     *
+     * Artık kalem ekrana değdiği anda bekleyen dokunuşlar silinir,
+     * yakınlaştırma ve kaydırma iptal edilir. Kalem varken avuç yok.
+     */
+    if (e.pointerType === 'pen') {
+      penDownRef.current = true
+      pinchRef.current = null
+      if (panRef.current?.type === 'touch') panRef.current = null
+      for (const [id, tracked] of pointersRef.current) {
+        if (tracked.type === 'touch') pointersRef.current.delete(id)
+      }
+    }
+
+    // Avuç reddi: kalem ekrandayken (ya da kalkalı çok olmamışken) dokunma
+    // HARİTAYA BİLE GİRMEZ — girseydi az sonraki "iki parmak" sayımına
+    // dahil olur ve yakınlaştırmayı yeniden tetiklerdi.
+    if (e.pointerType === 'touch' && (penDownRef.current || performance.now() - palmGuardRef.current < PALM_GUARD_MS)) {
+      return
+    }
+
+    /**
+     * iOS'UN VARSAYILAN DAVRANIŞI KESİLİR.
+     *
+     * `touch-action: none` yalnızca kaydırmayı durdurur; Safari'nin
+     * metin seçme ve büyüteç davranışını durdurmaz. Kalem ekranda bir
+     * an sabit kaldığında Safari seçim kipine geçip çizimi `pointercancel`
+     * ile yarıda kesiyordu. Metin kutusu ve düğmeler bunun dışında.
+     */
+    if (e.cancelable && !(e.target instanceof HTMLElement && e.target.closest('textarea, input, button'))) {
+      e.preventDefault()
+    }
+
     // Yakalama başarısız olabilir (işaretçi artık etkin değilse tarayıcı
     // hata atar). Hata yakalanmazsa buradan sonraki HİÇBİR satır çalışmaz
     // ve çizim sessizce başlamaz.
@@ -696,15 +760,9 @@ export default function LessonBoard({
     }
     pointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY, type: e.pointerType })
 
-    if (e.pointerType === 'pen') penDownRef.current = true
-    // Avuç reddi: kalem ekrandayken dokunma tamamen yok sayılır.
-    if (e.pointerType === 'touch' && (penDownRef.current || performance.now() - palmGuardRef.current < PALM_GUARD_MS)) {
-      return
-    }
-
-    // İki parmak → yakınlaştır/kaydır
+    // İki parmak → yakınlaştır/kaydır. Kalem ekrandayken ASLA.
     const touches = [...pointersRef.current.values()].filter((p) => p.type === 'touch')
-    if (touches.length === 2) {
+    if (touches.length === 2 && !penDownRef.current) {
       activeRef.current = null
       shapeRef.current = null
       const [a, b] = touches
@@ -725,7 +783,10 @@ export default function LessonBoard({
 
     if (panning) {
       userAdjustedRef.current = true
-      panRef.current = { x: e.clientX, y: e.clientY, view: { ...viewRef.current } }
+      // Kaydırmayı KİM başlattı: kalem indiğinde yalnızca dokunmayla
+      // açılmış kaydırma iptal edilir, kalemle "el" aracı kullanmak
+      // çalışmaya devam eder.
+      panRef.current = { x: e.clientX, y: e.clientY, view: { ...viewRef.current }, type: e.pointerType }
       return
     }
 
@@ -742,6 +803,31 @@ export default function LessonBoard({
   }
 
   function handlePointerMove(e) {
+    /**
+     * HAVADA GEZEN KALEM ÇİZMEZ.
+     *
+     * Apple Pencil ekrana değmeden de hareket olayı üretir (hover).
+     * Bunlar hiçbir şey yapmamalı; aşağıdaki hesapların hepsi boşuna
+     * çalışırdı.
+     */
+    if (
+      e.pointerType === 'pen' &&
+      e.buttons === 0 &&
+      !activeRef.current &&
+      !shapeRef.current &&
+      !eraseRef.current
+    ) {
+      return
+    }
+
+    // Kalem indiyse avuçtan açılmış yakınlaştırma/kaydırma kipi biter.
+    // `buttons` bilgisine tek başına güvenilmez: bazı tarayıcılar kalem
+    // çizerken de 0 bildiriyor. Devam eden bir çizgi varsa kalem inmiştir.
+    if (e.pointerType === 'pen' && (e.buttons !== 0 || activeRef.current)) {
+      pinchRef.current = null
+      if (panRef.current?.type === 'touch') panRef.current = null
+    }
+
     const tracked = pointersRef.current.get(e.pointerId)
     if (tracked) {
       tracked.x = e.clientX
@@ -809,6 +895,12 @@ export default function LessonBoard({
     if (e.pointerType === 'pen') {
       penDownRef.current = false
       palmGuardRef.current = performance.now()
+      // Avuç hâlâ ekranda olabilir ve `pointerup` göndermeyebilir. Kalıntı
+      // dokunuşlar haritada kalırsa bir sonraki kalem inişinde yine "iki
+      // parmak" sanılırdı.
+      for (const [id, tracked] of pointersRef.current) {
+        if (tracked.type === 'touch') pointersRef.current.delete(id)
+      }
     }
 
     if (pinchRef.current && [...pointersRef.current.values()].filter((p) => p.type === 'touch').length < 2) {
@@ -824,6 +916,9 @@ export default function LessonBoard({
     else if (shapeRef.current) endShape()
     else if (activeRef.current) endStroke()
   }
+
+  // Pencere düzeyindeki yedek dinleyici bu referans üzerinden çağırır.
+  pointerUpRef.current = handlePointerUp
 
   function handleWheel(e) {
     if (e.ctrlKey || e.metaKey) {
@@ -962,6 +1057,49 @@ export default function LessonBoard({
     return () => observer.disconnect()
   }, [resizeCanvases])
 
+  /**
+   * SON GÜVENLİK AĞI — çizgi havada asılı kalmasın.
+   *
+   * İşaretçi yakalama kurulamadığında ya da sistem işaretçiyi iptal
+   * ettiğinde (iPad'de bildirim merkezini açan kenar hareketi, dört
+   * parmakla uygulama değiştirme) tahta "parmak kalktı" olayını hiç
+   * almıyor; çizgi bitmiyor ve o andan sonra hiçbir şey yazılamıyordu.
+   */
+  useEffect(() => {
+    function finishOutside(e) {
+      if (!activeRef.current && !shapeRef.current && !eraseRef.current && pointersRef.current.size === 0) return
+      pointerUpRef.current?.(e)
+    }
+    window.addEventListener('pointerup', finishOutside)
+    window.addEventListener('pointercancel', finishOutside)
+    return () => {
+      window.removeEventListener('pointerup', finishOutside)
+      window.removeEventListener('pointercancel', finishOutside)
+    }
+  }, [])
+
+  /**
+   * KARŞI TARAFTAN YARIM KALAN ÇİZGİLERİ TEMİZLE.
+   *
+   * Çizginin "bitti" mesajı yolda kaybolursa (bağlantı düştü, sekme
+   * kapandı) o çizgi canlı katmanda sonsuza kadar duruyor ve tahtada
+   * silinemeyen bir hayalet iz bırakıyordu.
+   */
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      const now = performance.now()
+      let changed = false
+      for (const [id, item] of remoteLiveRef.current) {
+        if (now - (item.seenAt ?? 0) > 8000) {
+          remoteLiveRef.current.delete(id)
+          changed = true
+        }
+      }
+      if (changed) scheduleLive()
+    }, 4000)
+    return () => window.clearInterval(timer)
+  }, [scheduleLive])
+
   /* Karşı taraftan gelen çizimler */
   useEffect(() => {
     if (!channel?.subscribe) return undefined
@@ -978,11 +1116,21 @@ export default function LessonBoard({
           item = { id: payload.id, kind: 'stroke', t: payload.t, c: payload.c, w: payload.w, p: [], by: payload.by }
           remoteLiveRef.current.set(payload.id, item)
         }
-        if (payload.from === item.p.length) item.p.push(...payload.pts)
-        else if (payload.from > item.p.length) item.p.push(...payload.pts) // kayıp paket: yine de çiz
+        // Ofset elimizdekinden geriyse paket tekrarıdır: aynı noktaları
+        // ikinci kez eklemek çizgiyi kendi üzerine katlıyordu.
+        const offset = typeof payload.off === 'number' ? payload.off : item.p.length
+        if (offset >= item.p.length) item.p.push(...payload.pts)
+        item.seenAt = performance.now()
         scheduleLive()
       } else if (payload.phase === 'end' && payload.item) {
         remoteLiveRef.current.delete(payload.item.id)
+        // Karşı taraf bizde HENÜZ OLMAYAN bir sayfaya çizmiş olabilir
+        // (yeni sayfa açıp hemen yazmak en sık yaptığı şey). Sayfa yoksa
+        // çizim sessizce kaybolurdu; şimdi eksik sayfalar tamamlanıyor.
+        while (pagesRef.current.length <= payload.page) {
+          pagesRef.current = [...pagesRef.current, createPage(pagesRef.current.length)]
+        }
+        setPageCount(pagesRef.current.length)
         const page = pagesRef.current[payload.page]
         if (page) {
           page.items = [...page.items, payload.item]
@@ -1028,12 +1176,40 @@ export default function LessonBoard({
       // Öğretmen tabletten çizip bilgisayardan izleyebiliyor; kullanıcıya
       // baksaydı kendi tabletinden gelen çizgiyi eleyip hiç göstermezdi.
       if (!payload || payload.from === deviceId) return
-      // Karşı taraf yeni sayfa açtıysa bizde de oluşsun; sayfa DEĞİŞTİRMEK
-      // zorla yapılmaz — öğrenci kendi baktığı sayfadan koparılmamalı.
+      /**
+       * BELGE AÇILDIĞINDA TAHTAYI YENİDEN OKU.
+       *
+       * Öğretmen PDF açtığında `reload` bayrağı geliyordu ama hiç
+       * kullanılmıyordu: öğrencide yalnızca BOŞ sayfalar oluşuyor, belgenin
+       * zemini hiç görünmüyordu. Öğretmen sayfanın üstüne yazarken öğrenci
+       * bomboş beyaz sayfaya bakıyordu. Zemin bilgisi veri tabanında olduğu
+       * için tahtayı tazelemek yetiyor.
+       */
+      if (payload.reload) {
+        reloadPages({ keepView: false }).then(() => {
+          if (typeof payload.page === 'number') goToPage(payload.page, { broadcast: false })
+        })
+        return
+      }
+
+      // Karşı taraf yeni sayfa açtıysa bizde de oluşsun.
       while (pagesRef.current.length < (payload.count ?? 1)) {
         pagesRef.current = [...pagesRef.current, createPage(pagesRef.current.length)]
       }
       setPageCount(pagesRef.current.length)
+
+      /**
+       * ÖĞRENCİ ÖĞRETMENİN SAYFASINI TAKİP EDER.
+       *
+       * Eskiden sayfa değişimi hiç aktarılmıyordu: öğretmen yeni sayfaya
+       * geçip anlatmaya devam ederken öğrenci bir önceki sayfada kalıyor
+       * ve dersin geri kalanında hiçbir şey görmüyordu — "ekranlarımız
+       * tutmuyor" şikâyetinin kaynağı buydu. Takip TEK YÖNLÜ: öğrencinin
+       * sayfa gezinmesi öğretmeni sürüklemez.
+       */
+      if (!isTeacher && payload.teacher && typeof payload.page === 'number') {
+        if (payload.page !== pageIndexRef.current) goToPage(payload.page, { broadcast: false })
+      }
     })
 
     return () => {
@@ -1042,7 +1218,7 @@ export default function LessonBoard({
       offClear()
       offPage()
     }
-  }, [channel, schedulePaint, scheduleLive, deviceId, reloadPages])
+  }, [channel, schedulePaint, scheduleLive, deviceId, reloadPages, goToPage, isTeacher])
 
   /* Klavye kısayolları — tahta araçlarının klavye alternatifi */
   useEffect(() => {
@@ -1110,16 +1286,25 @@ export default function LessonBoard({
       <div
         ref={wrapRef}
         className={cn(
-          'relative min-h-0 flex-1 touch-none overflow-hidden rounded-card bg-surface-sunken',
+          'relative min-h-0 flex-1 touch-none select-none overflow-hidden rounded-card bg-surface-sunken',
           wrapperClassName
         )}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
-        onPointerLeave={handlePointerUp}
+        /* onPointerLeave BİLEREK YOK: Apple Pencil ekrandan birkaç
+           milimetre uzaklaşınca da "ayrıldı" olayı gönderiyor ve çizgi
+           tam ortasında kesiliyordu. Çizginin bitişini artık pencere
+           düzeyindeki yedek dinleyici garantiliyor. */
         onWheel={handleWheel}
-        style={{ cursor: tool === BOARD_TOOLS.PAN ? 'grab' : canEdit ? 'crosshair' : 'default' }}
+        style={{
+          cursor: tool === BOARD_TOOLS.PAN ? 'grab' : canEdit ? 'crosshair' : 'default',
+          // iPad'de kalemle basılı tutunca çıkan seçim/büyüteç davranışı
+          // çizimi kesiyordu.
+          WebkitUserSelect: 'none',
+          WebkitTouchCallout: 'none',
+        }}
       >
         <canvas ref={baseRef} className="absolute inset-0" aria-hidden="true" />
         <canvas ref={liveRef} className="pointer-events-none absolute inset-0" aria-hidden="true" />

@@ -754,6 +754,7 @@ export default function LessonStudio() {
                 userId={user?.id}
                 deviceId={channel.deviceId}
                 canEdit
+                isTeacher={isTeacher}
                 channel={channel}
                 boardApiRef={boardApiRef}
                 /* TELEFONDA TAHTA EN-BOY ORANINA SABİTLENİR.
