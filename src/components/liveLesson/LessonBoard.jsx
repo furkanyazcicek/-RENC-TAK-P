@@ -63,6 +63,23 @@ const PALM_GUARD_MS = 350
 const MIN_SAMPLE_PX = 1.1
 const SIMPLIFY_TOLERANCE = 0.7
 
+/**
+ * TEŞHİS KİPİ — yalnızca adresin sonuna `?tahta-teshis=1` eklenince açılır.
+ *
+ * Kalem sorunlarının kaynağı cihazdan cihaza değişiyor ve tahmin yürütmek
+ * zaman kaybı. Bu kip açıkken tahtanın üstünde küçük bir kutu, tarayıcının
+ * GERÇEKTE gönderdiği işaretçi olaylarını sayar. Bir ekran görüntüsü,
+ * sorunun kalemin verisinde mi yoksa tahtanın işleyişinde mi olduğunu
+ * kesin olarak söyler.
+ */
+function teshisAcikMi() {
+  try {
+    return new URLSearchParams(window.location.search).get('tahta-teshis') === '1'
+  } catch {
+    return false
+  }
+}
+
 export default function LessonBoard({
   sessionId,
   userId,
@@ -95,6 +112,11 @@ export default function LessonBoard({
   const [zoom, setZoom] = useState(1)
   const [textDraft, setTextDraft] = useState(null) // { x, y, screenX, screenY, value }
   const [clearAsk, setClearAsk] = useState(false)
+  const [teshis, setTeshis] = useState(() =>
+    teshisAcikMi()
+      ? { indi: 0, hareket: 0, kalkti: 0, iptal: 0, tur: '—', nokta: 0, cizgi: 0, yakalama: '—' }
+      : null
+  )
 
   /* ---------------- Referanslar ---------------- */
   const wrapRef = useRef(null)
@@ -130,6 +152,19 @@ export default function LessonBoard({
    * kalıyordu. Çizgiyi artık yalnızca onu başlatan işaretçi bitirebilir.
    */
   const activePointerIdRef = useRef(null)
+  /**
+   * SİSTEM İPTALİNDEN SONRA ÇİZGİYİ SÜRDÜRME.
+   *
+   * iPad, kalem ekrandan kalkmadığı hâlde çizimi "iptal edildi" diye
+   * kesebiliyor (avuç, sistem hareketi, tarayıcının kaydırma tahmini).
+   * İptal geldiğinde çizgiyi hemen bitirmek yerine kısa bir süre açık
+   * tutuyoruz: kalem yazmaya devam ediyorsa aynı çizgi kaldığı yerden
+   * sürer, gerçekten kalktıysa süre dolunca normal biçimde biter.
+   */
+  const iptalSurdurRef = useRef(null)
+  const iptalZamanRef = useRef(0)
+  const teshisRef = useRef(null)
+  const pointerMoveRef = useRef(null)
 
   const baseRafRef = useRef(0)
   // paintBase, repaintSoon'dan önce tanımlanıyor; döngüsel bağımlılık
@@ -574,6 +609,20 @@ export default function LessonBoard({
   /*  İşaretçi olayları                                                */
   /* ================================================================ */
 
+  /**
+   * Teşhis sayacı. Kapalıyken hiçbir iş yapmaz; açıkken sayımlar bir
+   * referansta birikir ve saniyede birkaç kez ekrana yansır — her olayda
+   * arayüzü yeniden çizmek çizimin kendisini yavaşlatırdı.
+   */
+  function teshisSay(alan, ek) {
+    const sayac = teshisRef.current
+    if (!sayac) return
+    sayac[alan] = (sayac[alan] ?? 0) + 1
+    if (ek) Object.assign(sayac, ek)
+    sayac.cizgi = activeRef.current ? 1 : 0
+    sayac.nokta = activeRef.current ? activeRef.current.p.length / 3 : 0
+  }
+
   function beginErase(point) {
     eraseRef.current = { x: point.x, y: point.y, r: spec.eraser / viewRef.current.scale, removed: new Set(), before: currentPage().items }
     scheduleLive()
@@ -727,6 +776,38 @@ export default function LessonBoard({
   function handlePointerDown(e) {
     const wrap = wrapRef.current
     if (!wrap) return
+    teshisSay('indi', { tur: `${e.pointerType} b:${e.buttons} p:${(e.pressure ?? 0).toFixed(2)}` })
+
+    /**
+     * SİSTEM ÇİZİMİ KESTİYSE AYNI ÇİZGİYE DEVAM ET.
+     *
+     * iPad kalem ekrandan kalkmadığı hâlde çizimi iptal edip hemen yeni
+     * bir çizim başlatabiliyor. Bu durumda tahta her seferinde YENİ bir
+     * çizgi açtığı için ekranda birkaç piksellik kopuk parçalar kalıyordu.
+     * İptalden hemen sonra, aynı yerin yakınına inen kalem eski çizgiyi
+     * sürdürür.
+     */
+    const surdur = iptalSurdurRef.current
+    if (surdur && e.pointerType === 'pen' && activeRef.current && activeRef.current === surdur.item) {
+      const nokta = toBoard(e.clientX, e.clientY)
+      const n = surdur.item.p.length
+      const uzaklik = Math.hypot(nokta.x - surdur.item.p[n - 3], nokta.y - surdur.item.p[n - 2])
+      if (performance.now() - surdur.at < 450 && uzaklik < 140 / viewRef.current.scale) {
+        iptalSurdurRef.current = null
+        window.clearTimeout(iptalZamanRef.current)
+        activePointerIdRef.current = e.pointerId
+        penDownRef.current = true
+        pointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY, type: e.pointerType })
+        continueStroke(nokta, e.pressure > 0 ? e.pressure : 0.5)
+        if (e.cancelable) e.preventDefault()
+        return
+      }
+      // Uzağa inildi: askıdaki çizgi normal biçimde kapansın.
+      iptalSurdurRef.current = null
+      window.clearTimeout(iptalZamanRef.current)
+      activePointerIdRef.current = null
+      endStroke()
+    }
 
     /**
      * ═════════════════════════════════════════════════════════════
@@ -824,6 +905,7 @@ export default function LessonBoard({
   }
 
   function handlePointerMove(e) {
+    teshisSay('hareket')
     /**
      * HAVADA GEZEN KALEM ÇİZMEZ.
      *
@@ -893,7 +975,9 @@ export default function LessonBoard({
     else if (activeRef.current) {
       const pressure = e.pressure > 0 && e.pointerType === 'pen' ? e.pressure : 0.5
       // Birleştirilmiş olaylar: tabletlerde tek harekette 10+ nokta gelir.
-      const events = e.nativeEvent.getCoalescedEvents?.() ?? []
+      // Pencere düzeyinden gelen olayda `nativeEvent` sarmalayıcısı yoktur.
+      const ham = e.nativeEvent ?? e
+      const events = ham.getCoalescedEvents?.() ?? []
       if (events.length > 1) {
         for (const ev of events) {
           const p = toBoard(ev.clientX, ev.clientY)
@@ -906,6 +990,8 @@ export default function LessonBoard({
   }
 
   function handlePointerUp(e) {
+    const iptalMi = e.type === 'pointercancel'
+    teshisSay(iptalMi ? 'iptal' : 'kalkti', { tur: `${e.pointerType} ${e.type}` })
     pointersRef.current.delete(e.pointerId)
     try {
       wrapRef.current?.releasePointerCapture?.(e.pointerId)
@@ -935,15 +1021,37 @@ export default function LessonBoard({
 
     // Başka bir işaretçinin (avuç, ikinci parmak) bitmesi çizgiyi kesmez.
     if (activePointerIdRef.current !== null && e.pointerId !== activePointerIdRef.current) return
-    activePointerIdRef.current = null
 
+    /**
+     * SİSTEM İPTALİ ÇİZGİYİ HEMEN BİTİRMEZ.
+     *
+     * "İptal" olayı, kalemin kalktığı anlamına GELMEZ; tarayıcı kendi
+     * kararıyla da gönderebiliyor. Çizgiyi kısa bir süre açık tutuyoruz:
+     * kalem yazmaya devam ederse kaldığı yerden sürer, gerçekten
+     * kalktıysa süre dolunca normal biçimde kapanır.
+     */
+    if (iptalMi && activeRef.current && e.pointerType !== 'touch') {
+      const askidaki = activeRef.current
+      iptalSurdurRef.current = { item: askidaki, at: performance.now() }
+      window.clearTimeout(iptalZamanRef.current)
+      iptalZamanRef.current = window.setTimeout(() => {
+        if (iptalSurdurRef.current?.item !== askidaki) return
+        iptalSurdurRef.current = null
+        activePointerIdRef.current = null
+        if (activeRef.current === askidaki) endStroke()
+      }, 450)
+      return
+    }
+
+    activePointerIdRef.current = null
     if (eraseRef.current) endErase()
     else if (shapeRef.current) endShape()
     else if (activeRef.current) endStroke()
   }
 
-  // Pencere düzeyindeki yedek dinleyici bu referans üzerinden çağırır.
+  // Pencere düzeyindeki yedek dinleyiciler bu referanslar üzerinden çağırır.
   pointerUpRef.current = handlePointerUp
+  pointerMoveRef.current = handlePointerMove
 
   function handleWheel(e) {
     if (e.ctrlKey || e.metaKey) {
@@ -1095,15 +1203,54 @@ export default function LessonBoard({
   useEffect(() => {
     function finishOutside(e) {
       if (!activeRef.current && !shapeRef.current && !eraseRef.current && pointersRef.current.size === 0) return
+      // Tuvalin İÇİNDEKİ olayı React zaten işledi; ikinci kez işlemek
+      // teşhis sayımlarını da ikiye katlıyordu.
+      if (e.target instanceof Node && wrapRef.current?.contains(e.target)) return
       pointerUpRef.current?.(e)
+    }
+    /**
+     * TUVALİN DIŞINA TAŞAN HAREKET DE ÇİZGİYE YAZILIR.
+     *
+     * İşaretçi yakalama Safari'de kimi zaman sessizce düşüyor; o anda
+     * hareket olayları tuvale değil sayfanın başka bir yerine gidiyor ve
+     * çizgi olduğu yerde donuyordu. Tuvalin dışında kalan hareketleri de
+     * dinleyerek çizginin kopmasını engelliyoruz. Tuvalin İÇİNDEKİ
+     * olaylar burada atlanır — onları React zaten işledi.
+     */
+    function moveOutside(e) {
+      if (!activeRef.current && !shapeRef.current && !eraseRef.current && !panRef.current && !pinchRef.current) return
+      if (e.target instanceof Node && wrapRef.current?.contains(e.target)) return
+      pointerMoveRef.current?.(e)
     }
     window.addEventListener('pointerup', finishOutside)
     window.addEventListener('pointercancel', finishOutside)
+    window.addEventListener('pointermove', moveOutside)
     return () => {
       window.removeEventListener('pointerup', finishOutside)
       window.removeEventListener('pointercancel', finishOutside)
+      window.removeEventListener('pointermove', moveOutside)
     }
   }, [])
+
+  /* Teşhis kipi: sayımları saniyede birkaç kez ekrana yansıt */
+  useEffect(() => {
+    if (!teshis) return undefined
+    teshisRef.current = { indi: 0, hareket: 0, kalkti: 0, iptal: 0, tur: '—', nokta: 0, cizgi: 0, yakalama: '—' }
+    const timer = window.setInterval(() => {
+      const sayac = teshisRef.current
+      if (!sayac) return
+      sayac.yakalama = wrapRef.current?.hasPointerCapture?.(activePointerIdRef.current ?? -1) ? 'var' : 'yok'
+      sayac.cizgi = activeRef.current ? 1 : 0
+      sayac.nokta = activeRef.current ? activeRef.current.p.length / 3 : 0
+      setTeshis({ ...sayac })
+    }, 300)
+    return () => {
+      window.clearInterval(timer)
+      teshisRef.current = null
+    }
+    // `teshis` yalnızca açık/kapalı bilgisi için okunur; sayımlar referansta.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [Boolean(teshis)])
 
   /**
    * KARŞI TARAFTAN YARIM KALAN ÇİZGİLERİ TEMİZLE.
@@ -1335,6 +1482,17 @@ export default function LessonBoard({
       >
         <canvas ref={baseRef} className="absolute inset-0" aria-hidden="true" />
         <canvas ref={liveRef} className="pointer-events-none absolute inset-0" aria-hidden="true" />
+
+        {teshis && (
+          <div className="pointer-events-none absolute left-2 top-2 z-20 rounded-card bg-ink/85 px-3 py-2 font-mono text-2xs leading-relaxed text-white shadow-elevated">
+            <div className="font-semibold">Tahta teşhis</div>
+            <div>indi: {teshis.indi} · hareket: {teshis.hareket}</div>
+            <div>kalktı: {teshis.kalkti} · iptal: {teshis.iptal}</div>
+            <div>son: {teshis.tur}</div>
+            <div>çizgi: {teshis.cizgi ? 'açık' : 'yok'} · nokta: {teshis.nokta}</div>
+            <div>yakalama: {teshis.yakalama}</div>
+          </div>
+        )}
 
         {loading && (
           <div className="absolute inset-0 grid place-items-center bg-surface-sunken">
