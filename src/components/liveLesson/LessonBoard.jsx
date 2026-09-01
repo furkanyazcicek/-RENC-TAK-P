@@ -80,13 +80,21 @@ const PALM_GUARD_MS = 350
  *
  * iPad çizimi kendi kararıyla kestiğinde yeni çizim ANINDA ve kalemin
  * bulunduğu noktanın DİBİNDE başlar. İnsan ise kalemi kaldırıp yeni bir
- * kelimeye geçerken hem daha uzun sürer hem de gözle görülür bir mesafe
- * kateder. Eşikler önce cömert tutulmuştu; o yüzden yeni kelimeye
- * başlarken tahta ilk anları "kesinti" sanıp yutuyor, yazmak için
- * beklemek gerekiyordu. Artık dar: yalnızca gerçek kesintiyi yakalar.
+ * çizgiye geçerken hem zaman kaybeder hem de mesafe kateder.
+ *
+ * ESKİ EŞİKLER (150 ms / 40 piksel) EL YAZISINI BOZUYORDU: hızlı yazılan
+ * bir "F" harfinin üç çizgisi hem 150 milisaniyeden kısa aralıklarla hem
+ * de 40 pikselden yakın başlıyor. Tahta bunları "kesinti" sanıp hepsini
+ * TEK çizgiye bağlıyor, aralarına da birleştirici çizgiler atıyordu.
+ * Kalemle hızlı yazınca harflerin çıkmamasının sebebi buydu; parmak ve
+ * fare bu yola hiç girmediği için orada sorun görünmüyordu.
+ *
+ * Yeni eşikler çok dar. Tercih bilinçli: kesintiyi kaçırırsak sonuç
+ * neredeyse aynı görünür (aynı noktada iki çizgi ≈ tek çizgi), ama
+ * yanlışlıkla birleştirirsek iki ayrı harf birbirine yapışır.
  */
-const KESINTI_SURESI_MS = 150
-const KESINTI_MESAFE_PX = 40
+const KESINTI_SURESI_MS = 40
+const KESINTI_MESAFE_PX = 6
 const MIN_SAMPLE_PX = 0.65
 const SIMPLIFY_TOLERANCE = 0.7
 
@@ -1121,11 +1129,18 @@ export default function LessonBoard({
         if (e.cancelable) e.preventDefault()
         return
       }
-      // Uzağa inildi: askıdaki çizgi normal biçimde kapansın.
+      /**
+       * Uzağa inildi: askıdaki çizgi normal biçimde kapansın.
+       *
+       * Buraya KALKIŞ NOKTASI GEÇİLMEZ. `nokta` kalemin YENİDEN indiği
+       * yerdir, eski çizginin bittiği yer değil. Geçilseydi eski
+       * çizginin sonuna, yeni harfin başladığı yere kadar uzanan bir
+       * birleştirme çizgisi eklenirdi.
+       */
       iptalSurdurRef.current = null
       window.clearTimeout(iptalZamanRef.current)
       activePointerIdRef.current = null
-      endStroke(nokta)
+      endStroke(null)
     }
 
     /**
@@ -1369,6 +1384,22 @@ export default function LessonBoard({
      */
     if (iptalMi && activeRef.current && e.pointerType !== 'touch') {
       const askidaki = activeRef.current
+      /**
+       * İPTAL OLAYININ KONUMU DA ÇİZGİYE AİTTİR.
+       *
+       * iPad, kalem kalktığında çoğu zaman "kalktı" değil "iptal"
+       * bildiriyor. Bu konum eskiden yok sayıldığı için HER çizginin
+       * son parçası düşüyordu: "F" harfinin gövdesi kısa kalıyor,
+       * kolları yarım çıkıyordu. Hızlı yazınca kayıp büyüyor, çünkü
+       * son hareket örneğiyle kalkış arasındaki mesafe açılıyor.
+       *
+       * Konum son örnekle aynıysa zaten eklenmez.
+       */
+      const kalkisNoktasi = toBoard(e.clientX, e.clientY)
+      if (shouldAppendLiftPoint(askidaki.p, kalkisNoktasi.x, kalkisNoktasi.y)) {
+        appendStrokePoint(askidaki, kalkisNoktasi.x, kalkisNoktasi.y, askidaki._smoothPressure ?? DEFAULT_PRESSURE)
+        scheduleLive()
+      }
       iptalSurdurRef.current = { item: askidaki, at: performance.now() }
       window.clearTimeout(iptalZamanRef.current)
       iptalZamanRef.current = window.setTimeout(() => {
@@ -1385,10 +1416,9 @@ export default function LessonBoard({
     else if (lassoRef.current) endLasso()
     else if (shapeRef.current) endShape()
     else if (activeRef.current) {
-      // Kalkış konumu çizginin son noktasıdır. `pointercancel` gerçek bir
-      // konum taşımayabilir; o durumda son örnekte bırakılır.
-      const kalkis = iptalMi ? null : toBoard(e.clientX, e.clientY)
-      endStroke(kalkis)
+      // Kalkış konumu çizginin son noktasıdır — olay ister "kalktı"
+      // ister "iptal" olsun. Konum son örnekle aynıysa eklenmez.
+      endStroke(toBoard(e.clientX, e.clientY))
     }
   }
 
