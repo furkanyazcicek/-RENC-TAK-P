@@ -33,6 +33,16 @@ import {
   widthSpec,
 } from '../../lib/liveLesson/board/model'
 import { readPdfPages } from '../../lib/liveLesson/board/pdfBackground'
+import {
+  DEFAULT_PRESSURE,
+  applyRemotePoints,
+  boostFaintStroke,
+  isStaleRemoteStroke,
+  normalizePressure,
+  shouldAcceptSample,
+  shouldAppendLiftPoint,
+  smoothPressure,
+} from '../../lib/liveLesson/board/inkStroke'
 import { MAX_SCALE, MIN_SCALE } from '../../lib/solutionCanvas'
 
 /**
@@ -160,6 +170,8 @@ export default function LessonBoard({
   const activeRef = useRef(null) // devam eden kendi çizgimiz
   const shapeRef = useRef(null) // devam eden şekil önizlemesi
   const remoteLiveRef = useRef(new Map()) // karşı tarafın devam eden çizgileri
+  // Karşı tarafta BİTMİŞ çizgilerin kimlikleri: geç gelen parçaları eler.
+  const bitmisCizgilerRef = useRef(new Map())
   const eraseRef = useRef(null)
   const lassoRef = useRef(null)
   const selectionRef = useRef(new Set())
@@ -167,6 +179,9 @@ export default function LessonBoard({
   const pointersRef = useRef(new Map())
   const penDownRef = useRef(false)
   const palmGuardRef = useRef(0)
+  // Çizgi boyunca son GEÇERLİ basınç. Kalem, çizginin sonunda 0 bildirdiğinde
+  // buradaki değer sürdürülür; nokta atılmaz, uç birden şişmez.
+  const sonBasincRef = useRef(null)
   const pinchRef = useRef(null)
   const panRef = useRef(null)
   const pointerUpRef = useRef(null)
@@ -265,6 +280,29 @@ export default function LessonBoard({
       paintBase()
     })
   }, [paintBase])
+
+  /**
+   * BİTEN ÇİZGİYİ ZEMİNE DAMGALA.
+   *
+   * Kalem her kalktığında sayfanın tamamını yeniden çizmek, PDF zemini ve
+   * yüzlerce çizgi varken iPad'de her harften sonra gözle görülür bir
+   * takılma yaratıyordu. Hızlı yazarken bu takılma el yazısını kopuk
+   * gösteriyordu. Yeni çizgi, var olan görüntünün ÜSTÜNE tek başına
+   * çizilir — zemin ve eski çizgiler olduğu yerde kalır.
+   *
+   * Tam yeniden çizim yalnız gerçekten gerektiğinde yapılır: silgi,
+   * geri al, sayfa değişimi, yakınlaştırma.
+   */
+  const stampToBase = useCallback((item) => {
+    const canvas = baseRef.current
+    if (!canvas || !item) return false
+    const ctx = canvas.getContext('2d')
+    const dpr = dprRef.current
+    const { scale, tx, ty } = viewRef.current
+    ctx.setTransform(dpr * scale, 0, 0, dpr * scale, dpr * tx, dpr * ty)
+    drawItem(ctx, item)
+    return true
+  }, [])
 
   /**
    * Geç gelen kaynak (PDF sayfası, görsel) hazır olduğunda HEMEN boya.
@@ -489,7 +527,7 @@ export default function LessonBoard({
    * koyar ve gerekiyorsa karşı tarafa FARKI gönderir (tüm sayfayı değil).
    */
   const applyItems = useCallback(
-    (index, nextItems, { broadcast = true, previous = null } = {}) => {
+    (index, nextItems, { broadcast = true, previous = null, stamp = null } = {}) => {
       const page = pagesRef.current[index]
       if (!page) return
       const before = previous ?? page.items
@@ -503,7 +541,22 @@ export default function LessonBoard({
       refreshHistoryFlags(index)
 
       syncRef.current?.markDirty(index)
-      if (index === pageIndexRef.current) schedulePaint()
+      if (index === pageIndexRef.current) {
+        /**
+         * KALEM HER KALKTIĞINDA SAYFANIN TAMAMINI ÇİZMEK EL YAZISINI KOPARIR.
+         *
+         * PDF zemini ve yüzlerce çizgi varken tam yeniden çizim iPad'de
+         * 30-80 ms sürüyor. Hızlı yazarken harf başına bir kez yaşanan bu
+         * duraklama, bekleyen kalem olaylarını biriktirip yazının kopuk
+         * görünmesine yol açıyordu. Yeni biten çizgi tek başına zemine
+         * damgalanır; geri kalan görüntüye dokunulmaz.
+         */
+        if (stamp && !baseRafRef.current && stampToBase(stamp)) {
+          /* zemin damgalandı, tam yeniden çizime gerek yok */
+        } else {
+          schedulePaint()
+        }
+      }
 
       if (broadcast && channel?.send) {
         const beforeIds = new Set(before.map((i) => i.id))
@@ -524,7 +577,7 @@ export default function LessonBoard({
         }
       }
     },
-    [channel, refreshHistoryFlags, schedulePaint, userId]
+    [channel, refreshHistoryFlags, schedulePaint, stampToBase, userId]
   )
 
   const travelHistory = useCallback(
@@ -815,15 +868,11 @@ export default function LessonBoard({
   function continueStroke(point, pressure) {
     const active = activeRef.current
     if (!active) return
-    const n = active.p.length
-    const lastX = active.p[n - 3]
-    const lastY = active.p[n - 2]
-    const minStep = MIN_SAMPLE_PX / viewRef.current.scale
-    if (Math.hypot(point.x - lastX, point.y - lastY) < minStep) return
+    if (!shouldAcceptSample(active.p, point.x, point.y, MIN_SAMPLE_PX / viewRef.current.scale)) return
     // Apple Pencil basıncı milisaniyelik sıçramalar yapabilir. Düşük
     // gecikmeli yumuşatma, harf kenarlarındaki titreşimi azaltır fakat
     // kalemin doğal incelip kalınlaşmasını korur.
-    const smoothed = active._smoothPressure == null ? pressure : active._smoothPressure * 0.72 + pressure * 0.28
+    const smoothed = smoothPressure(active._smoothPressure, pressure)
     active._smoothPressure = smoothed
     appendStrokePoint(active, point.x, point.y, smoothed)
     scheduleLive()
@@ -858,14 +907,32 @@ export default function LessonBoard({
     }
   }
 
-  function endStroke() {
+  /**
+   * @param {{x:number,y:number}|null} kalkis  Kalemin ekrandan AYRILDIĞI nokta.
+   */
+  function endStroke(kalkis = null) {
     const active = activeRef.current
     activeRef.current = null
     if (!active) return
+
+    /**
+     * KALEMİN KALKTIĞI NOKTA ÇİZGİYE DAHİLDİR.
+     *
+     * `pointerup` olayı, son `pointermove` örneğinden birkaç piksel
+     * ötede gelebiliyor — hızlı yazarken bu mesafe bir harfin kuyruğu
+     * kadar oluyordu. Kalkış noktası eklenmediği için "l", "t", "i"
+     * gibi harflerin bitişi kırpık çıkıyordu.
+     */
+    if (kalkis && shouldAppendLiftPoint(active.p, kalkis.x, kalkis.y)) {
+      appendStrokePoint(active, kalkis.x, kalkis.y, active._smoothPressure ?? DEFAULT_PRESSURE)
+    }
+
     if (active.p.length < 3) {
       scheduleLive()
       return
     }
+    // Kalem hiç basınç bildirmediyse iz görünür kalınlığa çekilir.
+    boostFaintStroke(active)
     delete active._lastSend
     delete active._smoothPressure
     finishStrokeItem(active, SIMPLIFY_TOLERANCE / viewRef.current.scale)
@@ -878,7 +945,7 @@ export default function LessonBoard({
      * gereksiz ikinci mesaj, hızlı yazarken haktan taşıp bağlantının
      * kopmasına ve "Yeniden bağlanılıyor" uyarısına yol açıyordu.
      */
-    addItem(active, { broadcast: false })
+    addItem(active, { broadcast: false, stamp: active })
     scheduleLive()
     channel?.send?.(CHANNEL_EVENTS.BOARD_STROKE, {
       phase: 'end',
@@ -1003,6 +1070,25 @@ export default function LessonBoard({
     scheduleLive()
   }, [applyItems, scheduleLive, userId])
 
+  /**
+   * BASINCI TEK BİR YERDEN OKU.
+   *
+   * Apple Pencil çizginin İLK ve SON örneğinde çoğu zaman 0 basınç
+   * bildiriyor. Eski kod bu değeri 0.5'e çeviriyordu: çizginin başı ve
+   * sonu birden kalınlaşıyor, kısa harflerde bütün çizgi tek kalın leke
+   * gibi görünüyordu. Artık başlangıç ince, bitiş ise son geçerli
+   * basıncı sürdürür — hiçbir nokta basınç yüzünden atılmaz.
+   */
+  function okuBasinc(e, tur = e.pointerType) {
+    const deger = normalizePressure(e.pressure, {
+      pointerType: tur,
+      previous: sonBasincRef.current,
+      enabled: pressureEnabled,
+    })
+    if (tur === 'pen') sonBasincRef.current = deger
+    return deger
+  }
+
   function handlePointerDown(e) {
     const wrap = wrapRef.current
     if (!wrap) return
@@ -1031,7 +1117,7 @@ export default function LessonBoard({
         activePointerIdRef.current = e.pointerId
         penDownRef.current = true
         pointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY, type: e.pointerType })
-        continueStroke(nokta, pressureEnabled && e.pressure > 0 ? e.pressure : 0.5)
+        continueStroke(nokta, okuBasinc(e))
         if (e.cancelable) e.preventDefault()
         return
       }
@@ -1039,7 +1125,7 @@ export default function LessonBoard({
       iptalSurdurRef.current = null
       window.clearTimeout(iptalZamanRef.current)
       activePointerIdRef.current = null
-      endStroke()
+      endStroke(nokta)
     }
 
     /**
@@ -1129,7 +1215,10 @@ export default function LessonBoard({
     if (!canEdit) return
 
     const point = toBoard(e.clientX, e.clientY)
-    const pressure = pressureEnabled && e.pressure > 0 && e.pointerType === 'pen' ? e.pressure : 0.5
+    // Yeni çizgi: önceki çizginin basınç hatırası taşınmaz, aksi hâlde
+    // yeni harf bir öncekinin kalınlığıyla başlardı.
+    sonBasincRef.current = null
+    const pressure = okuBasinc(e)
 
     activePointerIdRef.current = e.pointerId
     if (activeTool === BOARD_TOOLS.ERASER) beginErase(point)
@@ -1210,7 +1299,6 @@ export default function LessonBoard({
     else if (lassoRef.current) continueLasso(point)
     else if (shapeRef.current) continueShape(point)
     else if (activeRef.current) {
-      const pressure = pressureEnabled && e.pressure > 0 && e.pointerType === 'pen' ? e.pressure : 0.5
       // Birleştirilmiş olaylar: tabletlerde tek harekette 10+ nokta gelir.
       // Pencere düzeyinden gelen olayda `nativeEvent` sarmalayıcısı yoktur.
       const ham = e.nativeEvent ?? e
@@ -1218,10 +1306,10 @@ export default function LessonBoard({
       if (events.length > 1) {
         for (const ev of events) {
           const p = toBoard(ev.clientX, ev.clientY)
-          continueStroke(p, pressureEnabled && ev.pressure > 0 ? ev.pressure : pressure)
+          continueStroke(p, okuBasinc(ev, e.pointerType))
         }
       } else {
-        continueStroke(point, pressure)
+        continueStroke(point, okuBasinc(e))
       }
     }
   }
@@ -1275,7 +1363,7 @@ export default function LessonBoard({
         if (iptalSurdurRef.current?.item !== askidaki) return
         iptalSurdurRef.current = null
         activePointerIdRef.current = null
-        if (activeRef.current === askidaki) endStroke()
+        if (activeRef.current === askidaki) endStroke(null)
       }, KESINTI_SURESI_MS)
       return
     }
@@ -1284,7 +1372,35 @@ export default function LessonBoard({
     if (eraseRef.current) endErase()
     else if (lassoRef.current) endLasso()
     else if (shapeRef.current) endShape()
-    else if (activeRef.current) endStroke()
+    else if (activeRef.current) {
+      // Kalkış konumu çizginin son noktasıdır. `pointercancel` gerçek bir
+      // konum taşımayabilir; o durumda son örnekte bırakılır.
+      const kalkis = iptalMi ? null : toBoard(e.clientX, e.clientY)
+      endStroke(kalkis)
+    }
+  }
+
+  /**
+   * YAKALAMA ELDEN GİDERSE ÇİZGİ AÇIKTA KALMASIN.
+   *
+   * Safari, kalem ekrandayken işaretçi yakalamasını sessizce bırakabiliyor
+   * (sekme değişimi, sistem uyarısı, tarayıcı jesti). Bu durumda ne
+   * `pointerup` ne de `pointercancel` gelir: çizgi sonsuza kadar "devam
+   * ediyor" sayılır, sonraki kalem inişi onu sürdürür ve iki ayrı harf
+   * birbirine bağlanmış görünürdü. Artık çizgi burada düzgünce kapanır.
+   */
+  function handleLostPointerCapture(e) {
+    if (activePointerIdRef.current !== e.pointerId) return
+    if (!activeRef.current && !shapeRef.current && !eraseRef.current) return
+    teshisSay('yakalama-koptu', { tur: e.pointerType })
+    pointersRef.current.delete(e.pointerId)
+    activePointerIdRef.current = null
+    iptalSurdurRef.current = null
+    window.clearTimeout(iptalZamanRef.current)
+    if (eraseRef.current) endErase()
+    else if (lassoRef.current) endLasso()
+    else if (shapeRef.current) endShape()
+    else if (activeRef.current) endStroke(null)
   }
 
   // Pencere düzeyindeki yedek dinleyiciler bu referanslar üzerinden çağırır.
@@ -1502,10 +1618,15 @@ export default function LessonBoard({
       const now = performance.now()
       let changed = false
       for (const [id, item] of remoteLiveRef.current) {
-        if (now - (item.seenAt ?? 0) > 8000) {
+        if (isStaleRemoteStroke(item, now)) {
           remoteLiveRef.current.delete(id)
           changed = true
         }
+      }
+      // Bitmiş çizgi kimliklerini de sonsuza kadar tutmayalım; gecikmiş
+      // paketler bu süreden sonra zaten gelmez.
+      for (const [id, at] of bitmisCizgilerRef.current) {
+        if (now - at > 30000) bitmisCizgilerRef.current.delete(id)
       }
       if (changed) scheduleLive()
     }, 4000)
@@ -1523,6 +1644,7 @@ export default function LessonBoard({
       if (!payload || payload.from === deviceId) return
       if (payload.phase === 'draw') {
         if (payload.page !== pageIndexRef.current) return
+        if (bitmisCizgilerRef.current.has(payload.id)) return
         let item = remoteLiveRef.current.get(payload.id)
         if (!item) {
           item = { id: payload.id, kind: 'stroke', t: payload.t, c: payload.c, w: payload.w, p: [], by: payload.by }
@@ -1530,12 +1652,20 @@ export default function LessonBoard({
         }
         // Ofset elimizdekinden geriyse paket tekrarıdır: aynı noktaları
         // ikinci kez eklemek çizgiyi kendi üzerine katlıyordu.
-        const offset = typeof payload.off === 'number' ? payload.off : item.p.length
-        if (offset >= item.p.length) item.p.push(...payload.pts)
+        applyRemotePoints(item, payload.off, payload.pts)
         item.seenAt = performance.now()
         scheduleLive()
       } else if (payload.phase === 'end' && payload.item) {
         remoteLiveRef.current.delete(payload.item.id)
+        /**
+         * BİTMİŞ ÇİZGİ BİR DAHA CANLANMAZ.
+         *
+         * Ağda sıra bozulabiliyor: "çizgi bitti" mesajından SONRA o
+         * çizginin eski bir parçası gelirse, tamamlanmış çizgi canlı
+         * katmanda yeniden doğuyor ve ekranda aynı harfin yarısı
+         * hayalet gibi duruyordu.
+         */
+        bitmisCizgilerRef.current.set(payload.item.id, performance.now())
         // Karşı taraf bizde HENÜZ OLMAYAN bir sayfaya çizmiş olabilir
         // (yeni sayfa açıp hemen yazmak en sık yaptığı şey). Sayfa yoksa
         // çizim sessizce kaybolurdu; şimdi eksik sayfalar tamamlanıyor.
@@ -1544,7 +1674,7 @@ export default function LessonBoard({
         }
         setPageCount(pagesRef.current.length)
         const page = pagesRef.current[payload.page]
-        if (page) {
+        if (page && !page.items.some((i) => i.id === payload.item.id)) {
           page.items = [...page.items, payload.item]
           syncRef.current?.markDirty(payload.page)
           if (payload.page === pageIndexRef.current) {
@@ -1680,6 +1810,12 @@ export default function LessonBoard({
       flush: () => syncRef.current?.flushNow() ?? Promise.resolve(),
       placeImage,
       openPdf,
+      /**
+       * TEŞHİS: sayfalardaki ham çizgi verisi. Yalnız geliştirme kipinde
+       * açıktır; yayındaki pakette `null` döner. El yazısının kopuk çıkıp
+       * çıkmadığını cihaz olmadan ölçebilmek için duruyor.
+       */
+      debugPages: () => (import.meta.env.DEV ? pagesRef.current : null),
     }),
     [placeImage, openPdf]
   )
@@ -1758,6 +1894,7 @@ export default function LessonBoard({
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
+        onLostPointerCapture={handleLostPointerCapture}
         /* onPointerLeave BİLEREK YOK: Apple Pencil ekrandan birkaç
            milimetre uzaklaşınca da "ayrıldı" olayı gönderiyor ve çizgi
            tam ortasında kesiliyordu. Çizginin bitişini artık pencere
