@@ -117,9 +117,25 @@ const SIMPLIFY_TOLERANCE = 0.7
  * sorunun kalemin verisinde mi yoksa tahtanın işleyişinde mi olduğunu
  * kesin olarak söyler.
  */
+/**
+ * Teşhis kipi üç yoldan açılır — hangisi elin altındaysa:
+ *   1. adresin sonuna `#teshis` yazmak (tablette en kolayı)
+ *   2. adrese `?tahta-teshis=1` eklemek
+ * Bir kez açıldığında sekme kapanana kadar açık kalır; ders içinde
+ * sayfa değiştirmek kipi düşürmez. `#teshis-kapat` ile kapanır.
+ */
 function teshisAcikMi() {
   try {
-    return new URLSearchParams(window.location.search).get('tahta-teshis') === '1'
+    const hash = (window.location.hash || '').toLowerCase()
+    if (hash.includes('teshis-kapat')) {
+      window.sessionStorage.removeItem('tahta-teshis')
+      return false
+    }
+    const acik =
+      hash.includes('teshis') ||
+      new URLSearchParams(window.location.search).get('tahta-teshis') === '1'
+    if (acik) window.sessionStorage.setItem('tahta-teshis', '1')
+    return acik || window.sessionStorage.getItem('tahta-teshis') === '1'
   } catch {
     return false
   }
@@ -226,6 +242,7 @@ export default function LessonBoard({
   const iptalSurdurRef = useRef(null)
   const iptalZamanRef = useRef(0)
   const teshisRef = useRef(null)
+  const kayitRef = useRef([])
   const pointerMoveRef = useRef(null)
 
   const baseRafRef = useRef(0)
@@ -810,6 +827,20 @@ export default function LessonBoard({
    * referansta birikir ve saniyede birkaç kez ekrana yansır — her olayda
    * arayüzü yeniden çizmek çizimin kendisini yavaşlatırdı.
    */
+  /**
+   * OLAY KAYDI — kalemin gönderdiği her sinyal ve tahtanın verdiği karar.
+   *
+   * Kalemle hızlı yazarken çizginin neden oluşmadığını cihazın kendisinde
+   * görebilmek için var. Kapalıyken hiçbir iş yapmaz. Açıkken son satırlar
+   * tahtanın üstünde görünür; ekran görüntüsü tek başına yeterli veridir.
+   */
+  function kayit(satir) {
+    if (!teshisRef.current) return
+    const liste = kayitRef.current
+    liste.push(satir)
+    if (liste.length > 26) liste.shift()
+  }
+
   function teshisSay(alan, ek) {
     const sayac = teshisRef.current
     if (!sayac) return
@@ -966,6 +997,7 @@ export default function LessonBoard({
      * gereksiz ikinci mesaj, hızlı yazarken haktan taşıp bağlantının
      * kopmasına ve "Yeniden bağlanılıyor" uyarısına yol açıyordu.
      */
+    kayit(`  ● ÇİZGİ BİTTİ — ${active.p.length / 3} nokta`)
     addItem(active, { broadcast: false, stamp: active })
     scheduleLive()
     channel?.send?.(CHANNEL_EVENTS.BOARD_STROKE, {
@@ -1114,6 +1146,7 @@ export default function LessonBoard({
     const wrap = wrapRef.current
     if (!wrap) return
     teshisSay('indi', { tur: `${e.pointerType} b:${e.buttons} p:${(e.pressure ?? 0).toFixed(2)}` })
+    kayit(`▼ İNDİ ${e.pointerType} id:${e.pointerId} b:${e.buttons} p:${(e.pressure ?? 0).toFixed(2)}`)
 
     /**
      * SİSTEM ÇİZİMİ KESTİYSE AYNI ÇİZGİYE DEVAM ET.
@@ -1133,6 +1166,7 @@ export default function LessonBoard({
         performance.now() - surdur.at < KESINTI_SURESI_MS &&
         uzaklik < KESINTI_MESAFE_PX / viewRef.current.scale
       ) {
+        kayit('  ↻ ESKİ ÇİZGİYE DEVAM (kesinti sürdürüldü)')
         iptalSurdurRef.current = null
         window.clearTimeout(iptalZamanRef.current)
         activePointerIdRef.current = e.pointerId
@@ -1195,6 +1229,7 @@ export default function LessonBoard({
     // HARİTAYA BİLE GİRMEZ — girseydi az sonraki "iki parmak" sayımına
     // dahil olur ve yakınlaştırmayı yeniden tetiklerdi.
     if (e.pointerType === 'touch' && (penDownRef.current || performance.now() - palmGuardRef.current < PALM_GUARD_MS)) {
+      kayit('  ✗ avuç reddedildi')
       return
     }
 
@@ -1223,6 +1258,7 @@ export default function LessonBoard({
     // İki parmak → yakınlaştır/kaydır. Kalem ekrandayken ASLA.
     const touches = [...pointersRef.current.values()].filter((p) => p.type === 'touch')
     if (touches.length === 2 && !penDownRef.current) {
+      kayit('  ✗ İKİ PARMAK → yakınlaştırma kipi')
       activeRef.current = null
       shapeRef.current = null
       lassoRef.current = null
@@ -1244,6 +1280,7 @@ export default function LessonBoard({
       (e.pointerType === 'touch' && !fingerDraw)
 
     if (panning) {
+      kayit(`  ✗ KAYDIRMA kipi (${e.pointerType})`)
       userAdjustedRef.current = true
       // Kaydırmayı KİM başlattı: kalem indiğinde yalnızca dokunmayla
       // açılmış kaydırma iptal edilir, kalemle "el" aracı kullanmak
@@ -1261,6 +1298,7 @@ export default function LessonBoard({
     const pressure = okuBasinc(e)
 
     activePointerIdRef.current = e.pointerId
+    kayit(`  ✔ ÇİZGİ BAŞLADI (${activeTool}) id:${e.pointerId}`)
     if (activeTool === BOARD_TOOLS.ERASER) beginErase(point)
     else if (activeTool === BOARD_TOOLS.LASSO) beginLasso(point)
     else if (activeTool === BOARD_TOOLS.TEXT) {
@@ -1335,7 +1373,7 @@ export default function LessonBoard({
     }
 
     if (e.pointerType === 'touch' && penDownRef.current) return
-    if (!canEdit) return
+    if (!canEdit) { kayit('  ✗ düzenleme kapalı'); return }
 
     const point = toBoard(e.clientX, e.clientY)
 
@@ -1355,7 +1393,7 @@ export default function LessonBoard({
      * Artık askıdaki çizgiyi yalnızca ekrana değdiği KANITLANMIŞ kalem
      * sürdürebilir.
      */
-    if (askidaMi && !kalemDeger) return
+    if (askidaMi && !kalemDeger) { kayit(`  ✗ askıda+temas yok (${e.pointerType} b:${e.buttons} p:${(e.pressure ?? 0).toFixed(2)})`); return }
 
     /**
      * Askıdaki çizgi dururken BAŞKA bir işaretçi gerçekten yazmaya
@@ -1380,6 +1418,7 @@ export default function LessonBoard({
       e.pointerId !== activePointerIdRef.current &&
       (activeRef.current || shapeRef.current || eraseRef.current || lassoRef.current)
     ) {
+      kayit(`  ✗ başka işaretçi (gelen:${e.pointerId} sahip:${activePointerIdRef.current})`)
       return
     }
 
@@ -1416,6 +1455,7 @@ export default function LessonBoard({
       !textDraft
     ) {
       teshisSay('kurtarildi', { tur: `${e.pointerType} p:${(e.pressure ?? 0).toFixed(2)}` })
+      kayit(`  ⚑ KURTARILDI — çizgi hareketten başlatıldı id:${e.pointerId}`)
       activePointerIdRef.current = e.pointerId
       sonBasincRef.current = null
       beginStroke(point, okuBasinc(e))
@@ -1444,6 +1484,7 @@ export default function LessonBoard({
   function handlePointerUp(e) {
     const iptalMi = e.type === 'pointercancel'
     teshisSay(iptalMi ? 'iptal' : 'kalkti', { tur: `${e.pointerType} ${e.type}` })
+    kayit(`▲ ${iptalMi ? 'İPTAL' : 'KALKTI'} ${e.pointerType} id:${e.pointerId}`)
     pointersRef.current.delete(e.pointerId)
     try {
       wrapRef.current?.releasePointerCapture?.(e.pointerId)
@@ -1552,6 +1593,7 @@ export default function LessonBoard({
     if (activePointerIdRef.current !== e.pointerId) return
     if (!activeRef.current && !shapeRef.current && !eraseRef.current) return
     teshisSay('yakalama-koptu', { tur: e.pointerType })
+    kayit(`✂ YAKALAMA KOPTU id:${e.pointerId}`)
     pointersRef.current.delete(e.pointerId)
     activePointerIdRef.current = null
     iptalSurdurRef.current = null
@@ -1769,13 +1811,14 @@ export default function LessonBoard({
   useEffect(() => {
     if (!teshis) return undefined
     teshisRef.current = { indi: 0, hareket: 0, kalkti: 0, iptal: 0, tur: '—', nokta: 0, cizgi: 0, yakalama: '—' }
+    kayitRef.current = []
     const timer = window.setInterval(() => {
       const sayac = teshisRef.current
       if (!sayac) return
       sayac.yakalama = wrapRef.current?.hasPointerCapture?.(activePointerIdRef.current ?? -1) ? 'var' : 'yok'
       sayac.cizgi = activeRef.current ? 1 : 0
       sayac.nokta = activeRef.current ? activeRef.current.p.length / 3 : 0
-      setTeshis({ ...sayac })
+      setTeshis({ ...sayac, kayit: [...kayitRef.current] })
     }, 300)
     return () => {
       window.clearInterval(timer)
@@ -2111,6 +2154,11 @@ export default function LessonBoard({
             <div>son: {teshis.tur}</div>
             <div>çizgi: {teshis.cizgi ? 'açık' : 'yok'} · nokta: {teshis.nokta}</div>
             <div>yakalama: {teshis.yakalama}</div>
+            <div className="mt-1 max-h-[48vh] overflow-hidden border-t border-white/25 pt-1">
+              {(teshis.kayit ?? []).map((satir, i) => (
+                <div key={i} className="whitespace-pre">{satir}</div>
+              ))}
+            </div>
           </div>
         )}
 
