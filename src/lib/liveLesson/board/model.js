@@ -27,12 +27,12 @@ import { getPdfPageCanvas, isPdfPageFailed } from './pdfBackground'
 import {
   HIGHLIGHT_ALPHA,
   createStroke,
-  drawStroke,
   pushPoint,
   pointCount,
   simplifyStroke,
   strokeHitsCircle,
 } from '../../solutionCanvas'
+import { clearInkCache, drawInkStroke } from './freehandInk'
 
 export const BOARD_SCHEMA_VERSION = 1
 
@@ -262,7 +262,11 @@ export function translateItem(item, dx, dy) {
       p[i] += dx
       p[i + 1] += dy
     }
-    return { ...item, p }
+    // Saklanan çizim şekli ESKİ konuma aitti; kopyaya taşınırsa nesne
+    // taşındığı hâlde eski yerinde görünür.
+    const tasinan = { ...item, p }
+    clearInkCache(tasinan)
+    return tasinan
   }
   if (item.kind === 'shape') {
     return { ...item, x1: item.x1 + dx, y1: item.y1 + dy, x2: item.x2 + dx, y2: item.y2 + dy }
@@ -425,11 +429,17 @@ function drawImageItem(ctx, item, onReady) {
   ctx.restore()
 }
 
-export function drawItem(ctx, item, onImageReady) {
+/**
+ * @param {boolean} canli  Çizgi hâlâ çiziliyorsa true — ucu kapatılmaz,
+ *                         kalemin ucunu takip eder.
+ */
+export function drawItem(ctx, item, onImageReady, canli = false) {
   if (!item) return
   switch (item.kind) {
     case 'stroke':
-      drawStroke(ctx, item)
+      // El yazısı `perfect-freehand` ile çizilir; ayrıntı için
+      // `board/freehandInk.js` dosyasının başındaki açıklamaya bak.
+      drawInkStroke(ctx, item, !canli)
       break
     case 'text':
       drawTextItem(ctx, item)

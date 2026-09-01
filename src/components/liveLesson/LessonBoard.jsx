@@ -379,9 +379,9 @@ export default function LessonBoard({
     const { scale, tx, ty } = viewRef.current
     ctx.setTransform(dpr * scale, 0, 0, dpr * scale, dpr * tx, dpr * ty)
 
-    if (activeRef.current) drawItem(ctx, activeRef.current)
+    if (activeRef.current) drawItem(ctx, activeRef.current, undefined, true)
     if (shapeRef.current) drawItem(ctx, shapeRef.current)
-    for (const item of remoteLiveRef.current.values()) drawItem(ctx, item)
+    for (const item of remoteLiveRef.current.values()) drawItem(ctx, item, undefined, true)
     drawSelectionGuide(ctx)
 
     // Silgi halkası — nereyi sileceğini görsün.
