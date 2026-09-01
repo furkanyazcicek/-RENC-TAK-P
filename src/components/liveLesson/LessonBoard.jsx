@@ -1143,6 +1143,18 @@ export default function LessonBoard({
      * yakınlaştırma ve kaydırma iptal edilir. Kalem varken avuç yok.
      */
     if (e.pointerType === 'pen') {
+      /**
+       * AÇIK METİN SEÇME MENÜSÜNÜ DAĞIT.
+       *
+       * iPadOS, hızlı kalem dokunuşlarını çift dokunuş sanıp
+       * "Kopyala / Araştır / Çeviri" çubuğunu açabiliyor. Çubuk
+       * açıkken kalemin bir sonraki hareketi tahtaya ulaşmıyor ve
+       * yazı yarıda kesiliyordu. Kalem her indiğinde varsa seçim
+       * temizlenir; çubuk da onunla birlikte kapanır.
+       */
+      const secim = window.getSelection?.()
+      if (secim && !secim.isCollapsed) secim.removeAllRanges()
+
       penDownRef.current = true
       pinchRef.current = null
       if (panRef.current?.type === 'touch') panRef.current = null
@@ -1547,6 +1559,26 @@ export default function LessonBoard({
   }, [resizeCanvases])
 
   /**
+   * TAHTA ÜSTÜNDE METİN SEÇİMİ HİÇ BAŞLAMASIN.
+   *
+   * iPadOS, hızlı kalem dokunuşlarını çift dokunuş sanıp seçim
+   * başlatıyor ve "Kopyala / Seçimi Bul / Araştır / Çeviri" çubuğunu
+   * tahtanın üstüne açıyordu. Seçim başladığı anda kalem çizmeyi
+   * bırakıyor, yazı ortasında kesiliyordu.
+   *
+   * React'in `selectstart` diye bir olayı YOK; JSX'e yazılan
+   * `onSelectStart` hiçbir zaman çağrılmaz. Bu yüzden dinleyici
+   * doğrudan tarayıcı düzeyinde bağlanıyor.
+   */
+  useEffect(() => {
+    const wrap = wrapRef.current
+    if (!wrap) return undefined
+    const engelle = (e) => e.preventDefault()
+    wrap.addEventListener('selectstart', engelle)
+    return () => wrap.removeEventListener('selectstart', engelle)
+  }, [])
+
+  /**
    * SON GÜVENLİK AĞI — çizgi havada asılı kalmasın.
    *
    * İşaretçi yakalama kurulamadığında ya da sistem işaretçiyi iptal
@@ -1895,12 +1927,20 @@ export default function LessonBoard({
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
         onLostPointerCapture={handleLostPointerCapture}
+        /* Metin seçiminin başlaması aşağıdaki yerel dinleyiciyle
+           engelleniyor — React'in `selectstart` olayı yok. */
+        onContextMenu={(e) => e.preventDefault()}
         /* onPointerLeave BİLEREK YOK: Apple Pencil ekrandan birkaç
            milimetre uzaklaşınca da "ayrıldı" olayı gönderiyor ve çizgi
            tam ortasında kesiliyordu. Çizginin bitişini artık pencere
            düzeyindeki yedek dinleyici garantiliyor. */
         onWheel={handleWheel}
         style={{
+          // Tailwind'in `select-none` sınıfı iOS'un dokunma menüsünü
+          // KAPATMIYOR; anahtar bu özellik.
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none',
+          userSelect: 'none',
           cursor:
             tool === BOARD_TOOLS.PAN
               ? 'grab'

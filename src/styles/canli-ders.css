@@ -24,6 +24,36 @@
   padding-bottom: var(--safe-area-inset-bottom);
   /* 100dvh yerine inset: mobil tarayıcı çubuğu açılıp kapanırken
      yükseklik zıplamasın ve tahta yeniden ölçeklenmesin. */
+
+  /* ══════════════════════════════════════════════════════════════
+     iOS METİN SEÇME ÇUBUĞU DERSİN ORTASINDA AÇILMASIN
+     ══════════════════════════════════════════════════════════════
+     Apple Pencil ile hızlı yazarken kalem aynı bölgeye saniyede
+     birkaç kez iniyor. iPadOS bunu ÇİFT DOKUNUŞ sanıp metin seçme
+     kipine geçiyor ve "Kopyala / Seçimi Bul / Araştır / Çeviri"
+     çubuğunu tahtanın üstüne açıyordu. Çubuk açıkken kalemin bir
+     sonraki hareketi tahtaya değil o menüye gidiyor, yazı kesiliyor.
+
+     `touch-action: none` bunu durdurmuyor — seçme davranışı ayrı bir
+     yoldan geliyor. Doğru anahtar `-webkit-touch-callout`.
+
+     Yazı yazılan alanlar (sohbet, not kutusu) aşağıda ayrıca
+     serbest bırakılıyor; oralarda kopyala-yapıştır çalışmaya devam
+     eder. */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Metin girilen ve okunan yerlerde seçim SERBEST kalır: öğretmen
+   sohbetten bir bağlantıyı ya da öğrencinin sorusunu kopyalayabilsin. */
+.ders-studyo input,
+.ders-studyo textarea,
+.ders-studyo [contenteditable='true'],
+.ders-studyo [data-secilebilir='evet'] {
+  -webkit-touch-callout: default;
+  -webkit-user-select: text;
+  user-select: text;
 }
 
 /* Üst durum alanı: dersin adı, davet ve bağlantı bilgisi aynı sakin

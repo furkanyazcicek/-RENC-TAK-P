@@ -117,7 +117,7 @@ export default function LessonChatPanel({ userId, deviceId, peerId, peerName, ch
                       mine ? 'bg-brand-600 text-white' : 'bg-surface-muted text-ink'
                     )}
                   >
-                    <p className="whitespace-pre-wrap break-words">{m.content}</p>
+                    <p className="whitespace-pre-wrap break-words" data-secilebilir="evet">{m.content}</p>
                     {m.failed && (
                       <p className="mt-1 text-2xs font-semibold text-white/85">
                         Gönderilemedi — bağlantını kontrol et
