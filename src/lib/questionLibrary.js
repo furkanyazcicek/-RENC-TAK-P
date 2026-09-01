@@ -22,6 +22,7 @@ import { turkceTests } from '../content/tests/turkce/index.js'
 import { kimyaTests } from '../content/tests/kimya/index.js'
 import { loadMathQuestionSet, mathQuestionSetsForTopic } from '../content/tests/matematik/question-bank.js'
 import { loadPhilosophyQuestionSet, philosophyQuestionSetsForTopic } from '../content/tests/felsefe/question-bank.js'
+import { loadHistoryQuestionSet, historyQuestionSetsForTopic } from '../content/tests/tarih/question-bank.js'
 
 // Geçiş döneminde mevcut kod tabanındaki testler kaybolmasın. Yeni testler
 // `library_question_sets` tablosuna yazılır; bu sabit kaynak yalnızca eski
@@ -62,6 +63,7 @@ export function bundledQuestionSetsForTopic(topicName, context = {}) {
     ...(BUNDLED_SETS[slugifyLibraryValue(topicName)]?.tests ?? []),
     ...mathQuestionSetsForTopic(topicName, context),
     ...philosophyQuestionSetsForTopic(topicName, context),
+    ...historyQuestionSetsForTopic(topicName, context),
   ]
 }
 
@@ -71,6 +73,9 @@ export async function loadQuestionSet(testId, topicSlug) {
 
   const philosophySet = await loadPhilosophyQuestionSet(testId)
   if (philosophySet) return philosophySet
+
+  const historySet = await loadHistoryQuestionSet(testId)
+  if (historySet) return historySet
 
   const bundled = BUNDLED_SETS[topicSlug]?.tests?.find((test) => test.id === testId)
   if (bundled) return bundled

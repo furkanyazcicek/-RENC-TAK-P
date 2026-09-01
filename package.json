@@ -35,6 +35,7 @@
     "test:library-curriculum": "node scripts/test-library-curriculum.mjs",
     "test:matematik-soru-kutuphanesi": "node scripts/test-matematik-soru-kutuphanesi.mjs",
     "test:felsefe-soru-kutuphanesi": "node scripts/test-felsefe-soru-kutuphanesi.mjs",
+    "test:tarih-soru-kutuphanesi": "node scripts/test-tarih-soru-kutuphanesi.mjs",
     "seed:lessons": "node scripts/seed-lessons.mjs",
     "atlas:indir": "node scripts/tarihAtlasiIndir.mjs",
     "atlas:uret": "node scripts/tarihAtlasiUret.mjs",
