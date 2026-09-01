@@ -24,7 +24,7 @@
  * dört boyuta birden bakar.
  */
 
-import { DURUMLAR } from './ilerleme'
+import { DURUMLAR } from './ilerleme.js'
 
 /** Aşamaya karşılık gelen tekrar aralığı (gün). */
 export const ARALIKLAR = [0, 1, 2, 4, 8, 16, 32, 64]

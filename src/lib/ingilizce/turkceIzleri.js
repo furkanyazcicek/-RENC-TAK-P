@@ -66,7 +66,9 @@ export const TURKCE_IZLERI = [
   {
     kod: 'do-eksik-soru',
     baslik: 'Soruda yardımcı fiil yok',
-    desen: /^(you|he|she|it|we|they|i)\s+\w+\?$/i,
+    /* Yardımcı fiil olmadan, doğrudan ana fiille kurulmuş soru:
+       "You like coffee?" — be fiiliyle kurulanlar buraya girmez. */
+    desen: /^(you|he|she|it|we|they|i)\s+(like|want|have|need|know|speak|play|work|live|study|go|come|think|understand)\b[^?]*\?\s*$/i,
     aciklama:
       'Türkçede soru "mu/mü" ekiyle kurulur, kelime sırası değişmez. İngilizcede geniş zaman sorusu do/does ile başlar.',
     dogru: 'Do you like coffee? / Does he work here?',
@@ -79,7 +81,10 @@ export const TURKCE_IZLERI = [
   {
     kod: 'does-cekim',
     baslik: 'does ile fiil çekimi',
-    desen: /\bdoes\s+(not\s+)?\w+s\b/i,
+    /* "Does she works?" en yaygın biçimdir; desen özneyi de atlayabilmeli.
+       Fiil listesi bilinçli olarak açık: "does she like books" gibi doğru
+       cümlelerde sondaki çoğul isim yanlışlıkla fiil sanılmasın. */
+    desen: /\bdoes(n't|\s+not)?\s+(he|she|it|the\s+\w+|my\s+\w+|your\s+\w+|his\s+\w+|her\s+\w+)?\s*(works|goes|plays|studies|likes|loves|has|watches|lives|gets|comes|makes|wants|needs|speaks|reads|writes|eats|drinks|starts|finishes|knows|takes|gives)\b/i,
     aciklama:
       '"does" zaten üçüncü tekil işaretini taşır; ana fiil yalın kalır. Türkçede iki kere işaretlemek gerekmediği için bu fark gözden kaçar.',
     dogru: 'He does not work here. (work, works değil)',
@@ -326,7 +331,9 @@ export const TURKCE_IZLERI = [
   {
     kod: 'gecmis-cift-isaret',
     baslik: 'Geçmiş zaman iki kez işaretlenmiş',
-    desen: /\bdid\s+(not\s+)?\w+ed\b|\bdid\s+(not\s+)?(went|saw|came|took|made|gave|got)\b/i,
+    /* "didn't went" kısaltmalı biçimi de yakalanmalı — öğrenci bu hatayı
+       en çok konuşma dilindeki kısaltmayla yapıyor. */
+    desen: /\bdid(n't|\s+not)?\s+(\w+ed|went|saw|came|took|made|gave|got|ate|said|knew|wrote|read)\b/i,
     aciklama:
       '"did" zaten geçmişi taşır; ana fiil yalın kalır. Türkçede geçmiş eki tek bir yere geldiği için bu ikili yapı sezgiye ters gelir.',
     dogru: "I didn't go. (didn't went değil)",

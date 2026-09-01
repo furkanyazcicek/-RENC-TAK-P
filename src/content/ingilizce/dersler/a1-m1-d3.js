@@ -195,6 +195,7 @@ export default {
         { id: 'c4', metin: 'I am a student.' },
       ],
       eslesme: { s1: 'c1', s2: 'c2', s3: 'c3', s4: 'c4' },
+      aciklama: 'Soru sözcüğü cevabın türünü belirler: What → şey, Where → yer, How old → yaş.',
     },
     {
       id: 'a1-m1-d3-a6',
@@ -210,6 +211,7 @@ export default {
       siraSerbest: false,
       ornekCevap: 'I live in Ankara.',
       ipucu: 'Şehir adı için "in" kullanılır: I live IN …',
+      aciklama: '"Where do you live?" sorusunda be fiili yok, ana fiil (live) var. Bu yüzden soru "do" ile kuruldu.',
       tuzaklar: [
         {
           kod: 'edat-cevirisi',
@@ -262,6 +264,7 @@ export default {
         { id: 'c', metin: 'It' },
       ],
       dogruId: 'b',
+      aciklama: 'Kız kardeş bir kadın olduğu için "She". Türkçede tek bir "o" olduğundan bu ayrım özellikle çalışılmalı.',
     },
     {
       id: 'a1-m1-d3-s2',
@@ -271,6 +274,7 @@ export default {
       yonerge: 'Doğru sıraya diz.',
       parcalar: ['is', 'What', 'name', 'your'],
       dogruSira: [1, 0, 3, 2],
+      aciklama: 'Soru sözcüğü başta, be fiili hemen arkasında.',
     },
     {
       id: 'a1-m1-d3-s3',
@@ -282,11 +286,12 @@ export default {
       hataliParca: 'you are',
       dogruParca: 'are you',
       kabul: ['Where are you from', 'Where are you from?'],
+      aciklama: 'Soru sözcüğünden sonra yardımcı fiil MUTLAKA öne geçer. Türkçedeki sıra korunmaz.',
     },
   ],
 
   kartlar: ['k-where', 'k-what', 'k-friend', 'k-live'],
-  not: 'not-a1-m1-d3',
+  not: null,
   sonraki: 'a1-m1-d4',
   kaynak: { tur: 'ozgun', aciklama: 'DRKOÇ için özgün üretilmiştir.' },
 }

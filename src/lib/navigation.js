@@ -5,6 +5,7 @@ import {
   HelpCircle,
   Home,
   LayoutDashboard,
+  Languages,
   Library,
   MessageCircle,
   ScanText,
@@ -56,6 +57,10 @@ export const STUDENT_NAV = [
   { to: '/denemeler', label: 'Denemeler', short: 'Deneme', Icon: Target },
   { to: '/odevler', label: 'Ödevler', short: 'Ödev', Icon: ClipboardList },
   { to: '/kutuphane', label: 'Ders Kütüphanesi', short: 'Kütüphane', Icon: Library },
+  // İngilizce kendi başına bir öğrenme sistemi (seviye tespiti, yol
+  // haritası, tekrar, telaffuz). Kütüphanenin içinde de bağlantısı var
+  // ama günlük çalışılan bir yer olduğu için menüde kendi satırı olsun.
+  { to: '/ingilizce', label: 'İngilizce', short: 'İngilizce', Icon: Languages },
   { to: '/sorular', label: 'Sorunlu Sorular', short: 'Sorular', Icon: HelpCircle },
   { to: '/mesajlar', label: 'Mesajlar', short: 'Mesaj', Icon: MessageCircle },
 ]

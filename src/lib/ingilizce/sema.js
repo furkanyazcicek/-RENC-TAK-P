@@ -92,7 +92,7 @@
  *     cevapAnahtari:[…], kontrolListesi:[] }
  */
 
-import { BECERI_ANAHTARLARI, SEVIYE_SIRASI } from './seviyeler'
+import { BECERI_ANAHTARLARI, SEVIYE_SIRASI } from './seviyeler.js'
 
 export const ALISTIRMA_TURLERI = [
   'coktan-secmeli',

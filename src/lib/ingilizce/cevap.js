@@ -18,7 +18,7 @@
  * öğrenciye aynı kalıbı tekrar kullanacağı bir mikro alıştırma verilir.
  */
 
-import { izTeshis } from './turkceIzleri'
+import { izTeshis } from './turkceIzleri.js'
 
 /** Kesme işareti ve tırnak çeşitlerini düz karşılıklarına indirger. */
 function tirnaklariDuzelt(metin) {
@@ -42,7 +42,9 @@ const KISALTMALAR = [
   [/\bcan't\b/g, 'cannot'],
   [/\bwon't\b/g, 'will not'],
   [/\bshan't\b/g, 'shall not'],
-  [/\bn't\b/g, ' not'],
+  /* "don't" içinde n'den önce sözcük sınırı YOKTUR (do+n bitişik), bu
+     yüzden \bn't değil doğrudan n't aranır: don't → do not, isn't → is not. */
+  [/n't\b/g, ' not'],
   [/\blet's\b/g, 'let us'],
 ]
 
@@ -75,28 +77,81 @@ function sikiNormalize(metin) {
   return normalize(metin).replace(/[^a-z0-9' ]/g, '').replace(/\s+/g, ' ').trim()
 }
 
-/** İki dizge arasındaki Levenshtein uzaklığı (kısa cevaplar için yeterli). */
+/**
+ * İki kelime arasındaki uzaklık (Damerau-Levenshtein / OSA).
+ *
+ * Düz Levenshtein'dan farkı: iki harfin YER DEĞİŞTİRMESİ tek hata sayılır.
+ * Bu önemli çünkü klavyede en sık yapılan yazım hatası budur —
+ * "morning" yerine "mornign" yazan öğrenci iki hata yapmış sayılırsa
+ * cevabı yanlışa düşer ve bu adil değildir.
+ */
 export function uzaklik(a, b) {
   if (a === b) return 0
   if (!a.length) return b.length
   if (!b.length) return a.length
-  let onceki = Array.from({ length: b.length + 1 }, (_, i) => i)
+
+  const satirlar = [
+    Array.from({ length: b.length + 1 }, (_, i) => i),
+  ]
   for (let i = 1; i <= a.length; i += 1) {
     const simdiki = [i]
+    const onceki = satirlar[satirlar.length - 1]
+    const oncekiOnceki = satirlar[satirlar.length - 2]
     for (let j = 1; j <= b.length; j += 1) {
       const bedel = a[i - 1] === b[j - 1] ? 0 : 1
-      simdiki[j] = Math.min(onceki[j] + 1, simdiki[j - 1] + 1, onceki[j - 1] + bedel)
+      let deger = Math.min(onceki[j] + 1, simdiki[j - 1] + 1, onceki[j - 1] + bedel)
+      // Yer değiştirme (transpozisyon)
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
+        deger = Math.min(deger, oncekiOnceki[j - 2] + 1)
+      }
+      simdiki[j] = deger
     }
-    onceki = simdiki
+    satirlar.push(simdiki)
+    if (satirlar.length > 3) satirlar.shift()
   }
-  return onceki[b.length]
+  return satirlar[satirlar.length - 1][b.length]
 }
 
-/** Yazım hatası toleransı: kısa cevapta 1, uzun cevapta 2 karakter. */
-function tolerans(dogru) {
-  if (dogru.length <= 4) return 0
-  if (dogru.length <= 12) return 1
+/**
+ * Yazım hatası toleransı — KELİME bazında. Çok kısa kelimelerde sıfır,
+ * çünkü orada bir harf farkı çoğu zaman BAŞKA bir kelimedir (bad/bed,
+ * ship/sheep). Uzun kelimede iki karaktere kadar tolerans tanınır; harf
+ * yer değiştirmesi (morning → mornign) tek başına iki fark üretir.
+ */
+function tolerans(kelime) {
+  if (kelime.length <= 4) return 0
+  if (kelime.length <= 8) return 1
   return 2
+}
+
+/**
+ * Cevap ile hedef arasındaki fark yalnızca YAZIM hatası mı?
+ *
+ * ÖNEMLİ AYRIM: bütün cümleyi tek bir dizge olarak karşılaştırıp harf
+ * farkına bakmak yanlıştır. "Am a student" ile "I am a student" arasında
+ * yalnız iki karakter fark var; bu ölçüte göre yazım hatası sayılırdı.
+ * Oysa eksik olan şey bir HARF değil, cümlenin ÖZNESİ — yani dersin tam
+ * olarak öğretmeye çalıştığı şey. Bir kelimeyi affetmek, öğrenciye
+ * "olmayan bir şeyi yapmışsın" demektir.
+ *
+ * Bu yüzden kural şu: kelime sayısı aynı olmalı ve en fazla BİR kelime,
+ * o kelimenin uzunluğuna göre belirlenen tolerans içinde farklı olmalı.
+ * Kelime eksik ya da fazlaysa cevap yanlıştır.
+ */
+function yazimHatasiMi(ogrenci, hedef) {
+  if (!ogrenci || !hedef || ogrenci === hedef) return false
+  const a = ogrenci.split(' ').filter(Boolean)
+  const b = hedef.split(' ').filter(Boolean)
+  if (a.length !== b.length) return false
+
+  let farkliKelime = 0
+  for (let i = 0; i < a.length; i += 1) {
+    if (a[i] === b[i]) continue
+    farkliKelime += 1
+    if (farkliKelime > 1) return false
+    if (uzaklik(a[i], b[i]) > tolerans(b[i])) return false
+  }
+  return farkliKelime === 1
 }
 
 export const DURUM = {
@@ -154,9 +209,7 @@ export function metinKontrol(cevap, kabul = [], secenek = {}) {
 
   // 4) Yazım hatası — "neredeyse doğru".
   for (const d of liste) {
-    const hedef = normalize(d)
-    const fark = uzaklik(ogrenci, hedef)
-    if (fark > 0 && fark <= tolerans(hedef)) {
+    if (yazimHatasiMi(ogrenci, normalize(d))) {
       return {
         durum: DURUM.YAKIN,
         eslesen: d,

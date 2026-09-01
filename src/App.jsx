@@ -62,6 +62,13 @@ const BiyolojiAtlasi = lazy(() => import('./pages/BiyolojiAtlasi'))
 /** Coğrafya Atlası; harita laboratuvarlarını ana uygulama paketinden ayrı yükler. */
 const CografyaAtlasi = lazy(() => import('./pages/CografyaAtlasi'))
 
+/**
+ * İngilizce Öğrenme Kütüphanesi — on üç ekranı, ders içeriği, kelime
+ * havuzu ve seviye tespit madde bankası ana pakete girmesin diye ayrı
+ * tembel pakette. İngilizce çalışmayan öğrenci bu kodu hiç indirmez.
+ */
+const Ingilizce = lazy(() => import('./pages/Ingilizce'))
+
 /** Geometri Pilot Testi */
 const GeometriPilot = lazy(() => import('./pages/GeometriPilot'))
 
@@ -410,6 +417,16 @@ export default function App() {
         element={
           <ProtectedRoute>
             <LibraryGateway />
+          </ProtectedRoute>
+        }
+      />
+      {/* İngilizce Öğrenme Kütüphanesi — bölümün kendi iç yönlendirmesi
+          var (bkz. pages/Ingilizce.jsx), bu yüzden `/*` ile devredilir. */}
+      <Route
+        path="/ingilizce/*"
+        element={
+          <ProtectedRoute>
+            <Suspense fallback={<FullPageLoader />}><Ingilizce /></Suspense>
           </ProtectedRoute>
         }
       />

@@ -122,6 +122,7 @@ export default {
       kabul: ['Good morning', 'Good morning teacher', 'Good morning, teacher', 'Hello'],
       ornekCevap: 'Good morning!',
       yaklasimNotu: 'Bu alıştırmada Türkçe cümle yok. Amaç, durumu görüp doğrudan İngilizce kalıba gitmek.',
+      aciklama: 'Saat 12:00\'den önce "Good morning". "Hello" da her saatte doğrudur ama günün saatini bilerek seçmek daha doğal durur.',
     },
     {
       id: 'a1-m1-d1-a2',
@@ -132,6 +133,7 @@ export default {
       durum: 'Saat 19:00. Bir kafeye girdin, garson seni karşıladı. Ona ne dersin?',
       kabul: ['Good evening', 'Hello', 'Hi'],
       ornekCevap: 'Good evening.',
+      aciklama: 'Akşam KARŞILAŞMA selamı "Good evening". "Good night" ise yalnızca ayrılırken kullanılır.',
       tuzaklar: [
         {
           kod: 'good-night-selam',
@@ -152,6 +154,7 @@ export default {
       durum: 'Sokakta birine yol soracaksın. Henüz hiçbir şey sormadın, önce dikkatini çekmen gerekiyor.',
       kabul: ['Excuse me'],
       ornekCevap: 'Excuse me…',
+      aciklama: 'Bir şey YAPMADAN ÖNCE dikkat çekmek için "Excuse me"; bir şey OLDUKTAN SONRA özür dilemek için "Sorry".',
       tuzaklar: [
         {
           kod: 'sorry-excuse',
@@ -232,6 +235,7 @@ export default {
         { id: 'i4', metin: 'Good night.' },
       ],
       eslesme: { d1: 'i1', d2: 'i2', d3: 'i3', d4: 'i4' },
+      aciklama: 'Kalıpları durumla birlikte ezberle. "Hangi kelime?" değil, "hangi durumda?" diye düşün.',
     },
     {
       id: 'a1-m1-d1-a7',
@@ -249,7 +253,7 @@ export default {
       id: 'a1-m1-d1-a8',
       tur: 'soru-cevap',
       beceri: 'dusunme',
-      zorluk: 'orta',
+      zorluk: 'zor',
       yonerge: 'İngilizce soruya İngilizce cevap ver. Önce Türkçe kurma, doğrudan cevabı yaz.',
       soru: 'How are you?',
       kabul: [
@@ -258,6 +262,7 @@ export default {
         'Very well thank you', 'Not bad thanks', 'Not bad, thanks',
       ],
       ornekCevap: 'I am fine, thank you. And you?',
+      aciklama: '"How are you?" gerçek bir sağlık sorusu değil, bir nezaket kalıbıdır. Kısa cevap verip "And you?" ile topu geri atmak en doğal karşılıktır.',
     },
   ],
 
@@ -297,6 +302,7 @@ export default {
         a: 'Sorry bir şey olduktan sonra kullanılır; henüz bir şey olmadı.',
         c: 'Please tek başına dikkat çekmek için kullanılmaz.',
       },
+      aciklama: 'Yol sorarken cümlenin ilk kelimesi neredeyse her zaman "Excuse me" olur.',
     },
     {
       id: 'a1-m1-d1-s3',

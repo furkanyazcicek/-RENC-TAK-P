@@ -24,12 +24,12 @@
  *   kaçırdın" cümlesi doğrudan sonuca dönüşür.
  */
 
-import { alistirmaKontrol, DURUM, yazmaGeriBildirim } from './cevap'
+import { alistirmaKontrol, DURUM, yazmaGeriBildirim } from './cevap.js'
 import {
   BECERI_ANAHTARLARI,
   SEVIYE_SIRASI,
   seviyeIndeksi,
-} from './seviyeler'
+} from './seviyeler.js'
 
 /** Sınavda sorulacak azami soru sayısı (yazma görevi hariç). */
 export const SORU_BUTCESI = 18
@@ -138,12 +138,21 @@ export function yazmaEkle(oturum, gorev, metin) {
   return { ...oturum, yazma: { gorev: gorev.id, metin, analiz: yazmaGeriBildirim(metin, gorev) } }
 }
 
-/** Yetenek tahmini → seviye indeksi (ondalıklı). */
+/**
+ * Yetenek tahmini → seviye indeksi (ondalıklı).
+ *
+ * Ağırlıklar bilinçli olarak SİMETRİK DEĞİL: doğru cevap +0.6, yanlış
+ * cevap −1.2. Sebebi şu — bir soruyu doğru yapmak "en az bu seviyedeyim"
+ * demektir, ama yanlış yapmak "bu seviyenin altındayım" demektir ve bu
+ * daha güçlü bir kanıttır. Simetrik ağırlıkta, hiçbir soruyu doğru
+ * yapamayan öğrenci bile A1 çıkabiliyordu; öğrenciye olmadığı bir seviye
+ * söylemek, sistemin verebileceği en zararlı yanlıştır.
+ */
 function yetenekTahmini(kayitlar) {
   if (!kayitlar.length) return null
   const toplam = kayitlar.reduce((acc, k) => {
     const taban = seviyeIndeksi(k.seviye)
-    return acc + taban + (k.dogruMu ? 0.6 : -0.6)
+    return acc + taban + (k.dogruMu ? 0.6 : -1.2)
   }, 0)
   return toplam / kayitlar.length
 }
@@ -155,7 +164,7 @@ function indeksToSeviye(deger) {
 
 /** 0–100 arası okunabilir puan (yalnız görselleştirme için). */
 function puanaCevir(deger) {
-  const oran = (deger + 0.6) / (SEVIYE_SIRASI.length - 1 + 0.6)
+  const oran = (deger + 1.2) / (SEVIYE_SIRASI.length - 1 + 1.2)
   return Math.max(0, Math.min(100, Math.round(oran * 100)))
 }
 

@@ -21,9 +21,9 @@
  * "kaldığın yer şurası" denir.
  */
 
-import { DURUMLAR } from './ilerleme'
-import { BECERILER, SEVIYE_SIRASI, seviyeIndeksi } from './seviyeler'
-import { bekleyenSayisi } from './tekrar'
+import { DURUMLAR } from './ilerleme.js'
+import { BECERILER, SEVIYE_SIRASI, seviyeIndeksi } from './seviyeler.js'
+import { bekleyenSayisi } from './tekrar.js'
 
 /** Haftalık süre seçeneği → günlük hedef dakika ve haftada kaç gün. */
 export const YOGUNLUKLAR = {
@@ -100,10 +100,12 @@ export function sonrakiDers(ilerleme, dersler) {
     return d === DURUMLAR.TAMAMLANDI || d === DURUMLAR.GUCLENIYOR || d === DURUMLAR.USTALASILDI
   }
 
-  const sirali = [...dersler].sort((a, b) => {
-    const fark = seviyeIndeksi(a.seviye) - seviyeIndeksi(b.seviye)
-    return fark !== 0 ? fark : (a.sira ?? 0) - (b.sira ?? 0)
-  })
+  /* Gelen liste zaten müfredat sırasındadır (bkz. content/ingilizce/index.js).
+     Burada yalnız seviyeye göre kararlı bir sıralama yapılır; ders `sira`sına
+     göre yeniden sıralamak modülleri iç içe geçirirdi. */
+  const sirali = [...dersler].sort(
+    (a, b) => seviyeIndeksi(a.seviye) - seviyeIndeksi(b.seviye)
+  )
 
   // Önce öğrencinin seviyesinden başla; orada bitmişse bir üste geç.
   const uygun = sirali.filter((d) => seviyeIndeksi(d.seviye) >= Math.max(0, hedefIndeks - 1))
@@ -247,6 +249,9 @@ export function haftalikPlan(ilerleme) {
 
   const gunler = ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar']
   const plan = []
+  /* Ders günleri arasında dönen sayaç: `i % 3` kullanılırsa tekrar
+     günleri araya girdiği için üçüncü odak becerisi hiç görünmüyordu. */
+  let dersGunuSayaci = 0
 
   for (let i = 0; i < 7; i += 1) {
     const calismaGunu = i < yogunluk.gun
@@ -264,7 +269,8 @@ export function haftalikPlan(ilerleme) {
       })
       continue
     }
-    const odak = oncelikli[i % 3]
+    const odak = oncelikli[dersGunuSayaci % 3]
+    dersGunuSayaci += 1
     plan.push({
       gun: gunler[i],
       tur: 'ders',
@@ -284,15 +290,24 @@ export function haftalikPlan(ilerleme) {
 export function otuzGunHedefi(ilerleme, dersler) {
   const seviye = baslangicSeviyesi(ilerleme)
   const yogunluk = YOGUNLUKLAR[ilerleme?.profil?.yogunluk] ?? YOGUNLUKLAR.duzenli
-  const seviyeDersleri = dersler.filter((d) => d.seviye === seviye)
-  const dersHedefi = Math.min(seviyeDersleri.length, Math.max(4, yogunluk.gun * 2))
+  /* Hedef yalnız mevcut seviyenin dersleriyle sınırlı değil: bir seviyede
+     az sayıda ders varsa öğrenci ayı boş geçirmesin diye bir üst seviyenin
+     dersleri de hedefe dâhil edilir. */
+  const hedefIndeks = seviyeIndeksi(seviye)
+  const ulasilabilir = dersler.filter((d) => {
+    const i = seviyeIndeksi(d.seviye)
+    return i >= hedefIndeks && i <= hedefIndeks + 1
+  })
+  const dersHedefi = Math.max(1, Math.min(ulasilabilir.length, yogunluk.gun * 2))
   const kelimeHedefi = yogunluk.gun * 4 * 4 // hafta × gün × yeni kelime
 
   return {
     seviye,
     maddeler: [
       {
-        baslik: `${dersHedefi} dersi "tamamlandı" durumuna getir`,
+        baslik: dersHedefi === 1
+          ? 'Sıradaki dersi "tamamlandı" durumuna getir'
+          : `${dersHedefi} dersi "tamamlandı" durumuna getir`,
         olcut: 'Bir ders, alıştırmalarının en az %70\'i doğru olduğunda tamamlanmış sayılır.',
       },
       {

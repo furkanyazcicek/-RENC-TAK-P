@@ -18,7 +18,7 @@
  * öğrencinin ilerlemesi kaybolmaz.
  */
 
-import { BECERI_ANAHTARLARI } from './seviyeler'
+import { BECERI_ANAHTARLARI } from './seviyeler.js'
 
 const ANAHTAR = 'drkoc-ingilizce-v1'
 const SURUM = 1

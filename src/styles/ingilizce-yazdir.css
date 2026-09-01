@@ -1,0 +1,252 @@
+/**
+ * DRKOÇ — İNGİLİZCE YAZDIRILABİLİR NOT STİLİ
+ * ==================================================================
+ *
+ * NEDEN CSS İLE YAZDIRMA, PDF KÜTÜPHANESİ DEĞİL:
+ *
+ *  1. Türkçe karakter sorunu yok. jsPDF gibi kütüphaneler Latin-1 dışı
+ *     karakterler için ayrı bir yazı tipi gömmeyi gerektirir; ğ, ş, ı, İ
+ *     eksik ya da bozuk çıkar. Tarayıcının yazdırma motoru sayfadaki
+ *     yazı tipini olduğu gibi kullanır.
+ *  2. Metin gerçek metindir — seçilebilir, aranabilir, ekran okuyucu
+ *     tarafından okunur. Görüntü olarak basılmış bir PDF erişilebilir
+ *     değildir.
+ *  3. Yeni ağır bağımlılık eklenmez.
+ *
+ * Öğrenci "PDF olarak kaydet" derse tarayıcının yazdırma penceresinden
+ * gerçek, metin tabanlı bir PDF çıkar.
+ *
+ * Bütün kurallar `.en-yazdir` kökü altında kapsanmıştır; uygulamanın geri
+ * kalanına sızmaz.
+ */
+
+/* A4 sayfa ve kenar boşlukları. 18mm, hem delgeç payı bırakır hem de
+   satır uzunluğunu okunabilir sınırda tutar. */
+@page {
+  size: A4 portrait;
+  margin: 18mm 16mm;
+}
+
+.en-yazdir {
+  /* Ekranda da A4 oranında görünsün ki öğretmen basmadan önce sayfanın
+     nasıl bölüneceğini görebilsin. */
+  max-width: 190mm;
+  margin: 0 auto;
+  background: rgb(var(--c-surface));
+  color: rgb(var(--c-ink));
+  font-family: theme('fontFamily.body');
+  font-size: 10.5pt;
+  line-height: 1.55;
+}
+
+.en-yazdir h1 {
+  font-family: theme('fontFamily.display');
+  font-size: 18pt;
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.en-yazdir .en-yazdir__ust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  border-bottom: 1.5pt solid rgb(var(--c-ink) / 0.85);
+  padding-bottom: 6pt;
+  margin-bottom: 12pt;
+}
+
+.en-yazdir .en-yazdir__marka {
+  font-family: theme('fontFamily.display');
+  font-size: 9pt;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(var(--c-ink) / 0.55);
+}
+
+.en-yazdir .en-yazdir__altbaslik {
+  font-size: 9.5pt;
+  color: rgb(var(--c-ink) / 0.6);
+  margin: 3pt 0 0;
+}
+
+/* Bölüm — sayfa ortasından bölünmemeli */
+.en-yazdir section {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-top: 12pt;
+}
+
+.en-yazdir h2 {
+  font-family: theme('fontFamily.display');
+  font-size: 12pt;
+  font-weight: 800;
+  margin: 0 0 5pt;
+  padding-bottom: 3pt;
+  border-bottom: 0.75pt solid rgb(var(--c-ink) / 0.25);
+}
+
+.en-yazdir h3 {
+  font-family: theme('fontFamily.display');
+  font-size: 10.5pt;
+  font-weight: 700;
+  margin: 8pt 0 3pt;
+}
+
+.en-yazdir p { margin: 0 0 5pt; }
+
+.en-yazdir ul,
+.en-yazdir ol {
+  margin: 0 0 6pt;
+  padding-left: 16pt;
+}
+
+.en-yazdir li { margin-bottom: 3pt; }
+
+/* Tablolar — kenarlıklar ince, satırlar bölünmez */
+.en-yazdir table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5pt;
+  margin: 4pt 0 8pt;
+}
+
+.en-yazdir th,
+.en-yazdir td {
+  border: 0.5pt solid rgb(var(--c-ink) / 0.28);
+  padding: 3.5pt 5pt;
+  text-align: left;
+  vertical-align: top;
+}
+
+.en-yazdir th {
+  background: rgb(var(--c-ink) / 0.06);
+  font-weight: 700;
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.en-yazdir tr {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* Kural / uyarı kutuları — dolgu yerine ince çerçeve ve sol şerit:
+   yazıcıda dolgu mürekkep yer, sol şerit yeterli ayrım sağlar. */
+.en-yazdir .en-kutu {
+  border: 0.5pt solid rgb(var(--c-ink) / 0.25);
+  border-left: 2.5pt solid rgb(var(--c-ink) / 0.55);
+  padding: 6pt 8pt;
+  margin: 5pt 0 8pt;
+}
+
+.en-yazdir .en-kutu--hata { border-left-color: rgb(var(--c-danger-600)); }
+.en-yazdir .en-kutu--dogru { border-left-color: rgb(var(--c-success-600)); }
+.en-yazdir .en-kutu--dusunme { border-left-color: rgb(var(--c-accent-600)); }
+
+.en-yazdir .en-etiket {
+  font-size: 8pt;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(var(--c-ink) / 0.5);
+  display: block;
+  margin-bottom: 2pt;
+}
+
+/* İngilizce örnekler biraz farklı görünsün */
+.en-yazdir .en-ingilizce {
+  font-weight: 600;
+}
+
+/* Alıştırma soruları */
+.en-yazdir .en-soru {
+  display: flex;
+  gap: 6pt;
+  margin-bottom: 4pt;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.en-yazdir .en-soru__no {
+  flex: 0 0 auto;
+  min-width: 16pt;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.en-yazdir .en-soru__govde { flex: 1 1 auto; min-width: 0; }
+
+/* Yazma satırları — öğrencinin elle dolduracağı boşluklar */
+.en-yazdir .en-satir {
+  border-bottom: 0.5pt solid rgb(var(--c-ink) / 0.3);
+  height: 9mm;
+  margin-top: 3mm;
+}
+
+/* Not alanı ve kontrol listesi */
+.en-yazdir .en-kutucuk {
+  display: inline-block;
+  width: 9pt;
+  height: 9pt;
+  border: 0.75pt solid rgb(var(--c-ink) / 0.5);
+  margin-right: 5pt;
+  vertical-align: -1pt;
+}
+
+/* Cevap anahtarı yeni sayfada başlar — öğretmen sürümünü ayırıp
+   öğrenciye vermek kolay olsun. */
+.en-yazdir .en-cevap-anahtari {
+  break-before: page;
+  page-break-before: always;
+  border-top: 1.5pt solid rgb(var(--c-ink) / 0.85);
+  padding-top: 8pt;
+  margin-top: 16pt;
+}
+
+.en-yazdir .en-altbilgi {
+  margin-top: 14pt;
+  padding-top: 5pt;
+  border-top: 0.5pt solid rgb(var(--c-ink) / 0.25);
+  font-size: 8.5pt;
+  color: rgb(var(--c-ink) / 0.5);
+  display: flex;
+  justify-content: space-between;
+  gap: 8pt;
+}
+
+/* ------------------------------------------------------------------ */
+/* Yazdırma anı                                                        */
+/* ------------------------------------------------------------------ */
+
+@media print {
+  /* Uygulama kabuğu (sidebar, üst çubuk, alt gezinme, butonlar) basılmaz. */
+  .en-yazdir-gizle { display: none !important; }
+
+  html, body {
+    background: #fff !important;
+  }
+
+  .en-yazdir {
+    max-width: none;
+    margin: 0;
+    font-size: 10.5pt;
+    color: #000;
+  }
+
+  /* Yazıcıda zemin dolgusu mürekkep yer ve okunurluğu düşürür. */
+  .en-yazdir th { background: #f0f0f0 !important; }
+
+  /* Bağlantı adresleri basılı kâğıtta işe yaramaz. */
+  .en-yazdir a { text-decoration: none; color: inherit; }
+
+  /* Sayfa sonlarında başlık yalnız kalmasın. */
+  .en-yazdir h1, .en-yazdir h2, .en-yazdir h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+}

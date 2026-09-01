@@ -286,7 +286,7 @@ export default {
   ],
 
   kartlar: ['k-country', 'k-turkish', 'k-from', 'k-number', 'k-year'],
-  not: 'not-a1-m1-d4',
+  not: null,
   sonraki: 'a1-m1-d5',
   kaynak: { tur: 'ozgun', aciklama: 'DRKOÇ için özgün üretilmiştir.' },
 }

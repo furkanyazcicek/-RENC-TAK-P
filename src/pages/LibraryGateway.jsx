@@ -1,4 +1,4 @@
-import { Atom, BookOpen, ClipboardList, Crown, Dna, Earth, FlaskConical, Library as LibraryIcon } from 'lucide-react'
+import { Atom, BookOpen, ClipboardList, Crown, Dna, Earth, FlaskConical, Languages, Library as LibraryIcon } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { AppShell, Button } from '../components/ui'
 import { DashboardHero, Panel } from '../components/dashboard'
@@ -21,6 +21,21 @@ const libraries = [
     tone: 'accent',
   },
 ]
+
+/**
+ * Dil öğrenme, konu anlatımı ve soru çözmeden ayrı bir iştir: seviye
+ * tespiti, kişisel yol haritası, tekrar sistemi ve telaffuz laboratuvarı
+ * kendi içinde bir bütün. Bu yüzden kütüphane kartlarının yanına değil,
+ * kendi şeridine konuldu.
+ */
+const dilOgrenme = {
+  title: 'İngilizce Öğrenme Kütüphanesi',
+  description:
+    'Seviyeni ölç, sana özel bir yol kur ve sıfırdan ileri düzeye çalış. Dersler, kelime tekrarı, telaffuz laboratuvarı ve İngilizce düşünme antrenmanları bir arada.',
+  to: '/ingilizce',
+  action: 'İngilizceye Git',
+  Icon: Languages,
+}
 
 /**
  * Etkileşimli deneyimler — kütüphanenin metin içeriğinden ayrı duran,
@@ -102,6 +117,31 @@ export default function LibraryGateway() {
           </Panel>
         ))}
       </div>
+
+      <section className="mt-6">
+        <h2 className="font-display text-sm font-bold uppercase tracking-[0.14em] text-ink/55">
+          Dil öğrenme
+        </h2>
+        <Link
+          to={dilOgrenme.to}
+          className="focus-ring group mt-3 flex items-start gap-4 rounded-card border border-line bg-surface p-5 shadow-card transition hover:border-brand-500/30 hover:shadow-card-hover sm:p-6"
+        >
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-aurora-gradient text-white shadow-aurora">
+            <dilOgrenme.Icon className="h-6 w-6" aria-hidden="true" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="flex flex-wrap items-center gap-2">
+              <span className="font-display text-lg font-bold text-ink">{dilOgrenme.title}</span>
+              <span className="rounded-full bg-accent/10 px-2 py-0.5 text-2xs font-bold uppercase tracking-wide text-accent ring-1 ring-inset ring-accent/20">
+                Yeni
+              </span>
+            </span>
+            <span className="mt-1.5 block max-w-2xl text-sm leading-6 text-ink/60">
+              {dilOgrenme.description}
+            </span>
+          </span>
+        </Link>
+      </section>
 
       <section className="mt-6">
         <h2 className="font-display text-sm font-bold uppercase tracking-[0.14em] text-ink/55">
