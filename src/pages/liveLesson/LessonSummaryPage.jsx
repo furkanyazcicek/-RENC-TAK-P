@@ -227,12 +227,16 @@ export default function LessonSummaryPage() {
       {session && (
         <>
           {/* Ders künyesi */}
-          <Card>
-            <CardBody className="flex flex-col gap-3">
+          <Card variant="highlight" className="overflow-hidden">
+            <CardBody className="flex flex-col gap-4 p-5 sm:p-6">
+              <div className="flex items-center gap-2 text-2xs font-bold uppercase tracking-[0.08em] text-brand-700">
+                <CheckCircle2 className="h-4 w-4" strokeWidth={2.2} aria-hidden="true" />
+                Ders kaydı
+              </div>
               <div className="flex flex-wrap items-start justify-between gap-3">
                 <div className="min-w-0">
-                  <h1 className="font-display text-xl font-bold text-ink">{session.title}</h1>
-                  <p className="mt-1 text-sm text-ink/65">
+                  <h1 className="text-balance font-display text-2xl font-bold tracking-tight text-ink">{session.title}</h1>
+                  <p className="mt-1.5 text-pretty text-sm text-ink/65">
                     {counterpart?.full_name}
                     {session.subject ? ` · ${session.subject}` : ''}
                     {session.topic ? ` · ${session.topic}` : ''}
@@ -241,17 +245,18 @@ export default function LessonSummaryPage() {
                 <LessonStatusBadge status={session.status} />
               </div>
 
-              <p className="text-sm tabular-nums text-ink/70">
+              <p className="flex items-center gap-1.5 text-sm tabular-nums text-ink/65">
+                <Clock className="h-4 w-4 text-ink/40" aria-hidden="true" />
                 {formatLessonDateTime(session.scheduled_start)}
               </p>
 
-              <div className="grid grid-cols-3 gap-3">
-                <div className="rounded-input bg-surface-muted px-3 py-2.5">
+              <div className="grid overflow-hidden rounded-card border border-line bg-surface-muted/65 sm:grid-cols-3 sm:divide-x sm:divide-line">
+                <div className="px-4 py-3.5">
                   <p className="flex items-center gap-1.5 text-2xs text-ink/55">
                     <Clock className="h-3.5 w-3.5" aria-hidden="true" />
                     Gerçek süre
                   </p>
-                  <p className="mt-1 font-display text-lg font-bold tabular-nums leading-none text-ink">
+                  <p className="mt-1.5 font-display text-xl font-bold tabular-nums leading-none text-ink">
                     {realDuration ? formatDuration(realDuration) : '—'}
                   </p>
                 </div>
@@ -259,12 +264,12 @@ export default function LessonSummaryPage() {
                   { key: 'teacher', label: 'Öğretmen', data: attendance.teacher },
                   { key: 'student', label: 'Öğrenci', data: attendance.student },
                 ].map((row) => (
-                  <div key={row.key} className="rounded-input bg-surface-muted px-3 py-2.5">
+                  <div key={row.key} className="border-t border-line px-4 py-3.5 sm:border-t-0">
                     <p className="flex items-center gap-1.5 text-2xs text-ink/55">
                       <Users className="h-3.5 w-3.5" aria-hidden="true" />
                       {row.label}
                     </p>
-                    <p className="mt-1 text-sm font-semibold leading-tight text-ink">
+                    <p className="mt-1.5 font-display text-lg font-bold tabular-nums leading-tight text-ink">
                       {row.data?.attended ? formatDuration(row.data.total_seconds) : 'Katılmadı'}
                     </p>
                     {row.data?.reconnect_count > 1 && (
@@ -299,13 +304,16 @@ export default function LessonSummaryPage() {
 
           {/* Kullanılan materyaller */}
           {materials.length > 0 && (
-            <PageSection title="Kullanılan materyaller">
+            <PageSection title="Kullanılan materyaller" description={`${materials.length} kaynak ders akışında kullanıldı`}>
               <Card>
                 <CardBody padding="none" className="divide-y divide-line px-5">
                   {(isTeacher ? materials : materials.filter((m) => m.visible_to_student)).map((m) => (
-                    <div key={m.id} className="flex items-center gap-3 py-3">
+                    <div key={m.id} className="flex items-center gap-3 py-3.5">
+                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-btn bg-brand-500/10 text-brand-700 ring-1 ring-inset ring-brand-500/15">
+                        <ClipboardList className="h-[18px] w-[18px]" strokeWidth={2} aria-hidden="true" />
+                      </span>
                       <div className="min-w-0 flex-1">
-                        <p className="truncate text-sm font-medium text-ink">{m.title}</p>
+                        <p className="truncate text-sm font-semibold text-ink">{m.title}</p>
                         <p className="text-xs text-ink/55">{materialKindLabel(m.kind)}</p>
                       </div>
                       {m.url && (
@@ -323,8 +331,8 @@ export default function LessonSummaryPage() {
           {isTeacher ? (
             /* ---------------- ÖĞRETMEN GÖRÜNÜMÜ ---------------- */
             <>
-              <PageSection title="Ders özeti" description="Öğrenciye paylaştığın bölüm">
-                <Card>
+              <PageSection title="Ders özeti" description="Dersin sonucunu öğrenci için net ve uygulanabilir hâle getir">
+                <Card variant="highlight">
                   <CardBody className="flex flex-col gap-4">
                     <Field label="İşlenen konular">
                       {({ id }) => (
@@ -380,7 +388,7 @@ export default function LessonSummaryPage() {
                       )}
                     </Field>
 
-                    <div className="flex flex-wrap items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-2 border-t border-line pt-4">
                       <Button loading={saving} onClick={() => handleSave(undefined)} variant="secondary">
                         Kaydet
                       </Button>
@@ -403,8 +411,8 @@ export default function LessonSummaryPage() {
                 </Card>
               </PageSection>
 
-              <PageSection title="Ödev" description="Bu derse bağlı ödev ver">
-                <Card>
+              <PageSection title="Ödev" description="Dersin devamını tek bir somut görevle bağla">
+                <Card variant="outline">
                   <CardBody className="flex flex-col gap-4">
                     {homeworks.length > 0 && (
                       <ul className="flex flex-col divide-y divide-line">
@@ -465,7 +473,7 @@ export default function LessonSummaryPage() {
                 </Card>
               </PageSection>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap items-center gap-2 border-t border-line pt-5">
                 <Button as={Link} to="/ogretmen/canli-dersler/yeni" variant="secondary" icon={CalendarPlus}>
                   Sonraki Dersi Planla
                 </Button>

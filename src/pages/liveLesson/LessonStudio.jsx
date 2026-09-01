@@ -3,13 +3,16 @@ import { useNavigate, useParams } from 'react-router-dom'
 import {
   BookOpen,
   Check,
+  Clock3,
   Copy,
   Laptop,
+  Radio,
   RefreshCw,
   Loader2,
   MonitorUp,
   PenLine,
   ShieldAlert,
+  UsersRound,
   Video as VideoIcon,
 } from 'lucide-react'
 import { cn } from '../../lib/cn'
@@ -641,9 +644,16 @@ export default function LessonStudio() {
 
   return (
     <div className="ders-studyo">
-      {/* Üst şerit */}
-      <header className="flex shrink-0 items-center gap-3 px-3 py-2 text-white sm:px-4">
-        <div className="ders-studyo__baslik flex-1">
+      {/* Üst şerit — ders kimliği solda, teknik durumlar sağda. */}
+      <header className="ders-studyo__ust text-white">
+        <div className="ders-studyo__kimlik min-w-0 flex-1">
+          <div className="mb-0.5 flex items-center gap-2">
+            <span className="ders-studyo__canli-etiket">
+              <Radio className="h-3 w-3" strokeWidth={2.2} aria-hidden="true" />
+              Ders stüdyosu
+            </span>
+            <span className="hidden text-2xs font-medium text-white/35 sm:inline">DRKOÇ</span>
+          </div>
           <p className="ders-studyo__baslik font-display text-sm font-bold sm:text-base">{session.title}</p>
           <p className="ders-studyo__baslik text-2xs text-white/55">
             {counterpart?.full_name}
@@ -652,74 +662,68 @@ export default function LessonStudio() {
           </p>
         </div>
 
-        {isTeacher && (
-          <button
-            type="button"
-            onClick={copyLessonLink}
-            aria-label="Ders bağlantısını kopyala"
-            title="Ders bağlantısını kopyala — öğrenciye gönder"
-            className="focus-ring inline-flex h-9 items-center gap-1.5 rounded-btn px-2.5 text-2xs font-semibold text-white/70 transition-colors hover:bg-white/10 hover:text-white"
-          >
-            {linkCopied ? (
-              <Check className="h-4 w-4" strokeWidth={2.2} aria-hidden="true" />
-            ) : (
-              <Copy className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-            )}
-            <span className="hidden md:inline">{linkCopied ? 'Kopyalandı' : 'Bağlantı'}</span>
-          </button>
-        )}
-
-        {/* Bu cihazın rolü — yanlış cihazdan girildiyse hemen görülsün */}
-        {deviceRole !== DEVICE_ROLES.SOLO && (
-          <button
-            type="button"
-            onClick={() => setDrawer(DRAWERS.DEVICES)}
-            title="Cihaz rolünü değiştir"
-            className="focus-ring hidden h-9 items-center gap-1.5 rounded-full bg-white/10 px-2.5 text-2xs font-semibold text-white/80 transition-colors hover:bg-white/[0.16] sm:inline-flex"
-          >
-            {deviceRoleInfo(deviceRole).short}
-          </button>
-        )}
-
-        <span className="hidden sm:block">
-          <LessonStatusBadge status={session.status} size="sm" />
-        </span>
-
-        <span
-          className="rounded-full bg-white/10 px-2.5 py-1 text-xs font-semibold tabular-nums text-white/85"
-          aria-label={`Ders süresi ${formatClock(elapsed)}`}
-        >
-          {formatClock(elapsed)}
-        </span>
-
-        <span
-          className={cn(
-            'hidden items-center gap-1.5 rounded-full px-2.5 py-1 text-2xs font-semibold sm:inline-flex',
-            channel.status === 'connected' ? 'bg-success-500/20 text-success-500' : 'bg-warning-500/20 text-warning-500'
+        <div className="ders-studyo__durumlar">
+          {isTeacher && (
+            <button
+              type="button"
+              onClick={copyLessonLink}
+              aria-label="Ders bağlantısını kopyala"
+              title="Ders bağlantısını kopyala — öğrenciye gönder"
+              className="ders-studyo__ust-dugme focus-ring"
+            >
+              {linkCopied ? (
+                <Check className="h-4 w-4" strokeWidth={2.2} aria-hidden="true" />
+              ) : (
+                <Copy className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+              )}
+              <span className="hidden lg:inline">{linkCopied ? 'Kopyalandı' : 'Davet bağlantısı'}</span>
+            </button>
           )}
-        >
+
+          {/* Bu cihazın rolü — yanlış cihazdan girildiyse hemen görülsün */}
+          {deviceRole !== DEVICE_ROLES.SOLO && (
+            <button
+              type="button"
+              onClick={() => setDrawer(DRAWERS.DEVICES)}
+              title="Cihaz rolünü değiştir"
+              className="ders-studyo__ust-dugme focus-ring hidden sm:inline-flex"
+            >
+              {deviceRoleInfo(deviceRole).short}
+            </button>
+          )}
+
+          <span className="hidden sm:block">
+            <LessonStatusBadge status={session.status} size="sm" />
+          </span>
+
+          <span className="ders-studyo__sure" aria-label={`Ders süresi ${formatClock(elapsed)}`}>
+            <Clock3 className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />
+            {formatClock(elapsed)}
+          </span>
+
           <span
             className={cn(
-              'h-1.5 w-1.5 rounded-full',
-              channel.status === 'connected' ? 'bg-success-500' : 'bg-warning-500 animate-pulse-soft'
+              'ders-studyo__baglanti hidden sm:inline-flex',
+              channel.status === 'connected' ? 'is-connected' : 'is-warning'
             )}
-            aria-hidden="true"
-          />
-          {CONNECTION_LABELS[channel.status] ?? 'Bağlantı'}
-        </span>
-
-        {/* Bağlantı toparlanmadıysa elle deneme yolu AÇIK olmalı —
-            "sayfayı yenile" ders ortasında kabul edilebilir bir çözüm değil. */}
-        {(channel.status === 'failed' || channel.status === 'reconnecting') && (
-          <button
-            type="button"
-            onClick={() => channel.reconnect()}
-            className="focus-ring inline-flex h-9 items-center gap-1.5 rounded-btn bg-warning-500/20 px-2.5 text-2xs font-semibold text-warning-500 transition-colors hover:bg-warning-500/30"
           >
-            <RefreshCw className="h-3.5 w-3.5" strokeWidth={2.2} aria-hidden="true" />
-            Yeniden bağlan
-          </button>
-        )}
+            <span className="ders-studyo__baglanti-nokta" aria-hidden="true" />
+            {CONNECTION_LABELS[channel.status] ?? 'Bağlantı'}
+          </span>
+
+          {/* Bağlantı toparlanmadıysa elle deneme yolu AÇIK olmalı —
+              "sayfayı yenile" ders ortasında kabul edilebilir bir çözüm değil. */}
+          {(channel.status === 'failed' || channel.status === 'reconnecting') && (
+            <button
+              type="button"
+              onClick={() => channel.reconnect()}
+              className="focus-ring inline-flex h-9 items-center gap-1.5 rounded-btn bg-warning-500/20 px-2.5 text-2xs font-semibold text-warning-500 transition-colors hover:bg-warning-500/30"
+            >
+              <RefreshCw className="h-3.5 w-3.5" strokeWidth={2.2} aria-hidden="true" />
+              Yeniden bağlan
+            </button>
+          )}
+        </div>
       </header>
 
       {/* Ekran okuyucu duyuruları — tek, sakin bölge */}
@@ -728,7 +732,7 @@ export default function LessonStudio() {
       </p>
 
       {/* Mobil odak seçici */}
-      <div className="flex shrink-0 gap-1 px-3 pb-2 md:hidden">
+      <div className="ders-studyo__odak md:hidden">
         {[
           { key: 'board', label: 'Tahta', Icon: PenLine },
           { key: 'material', label: 'Materyal', Icon: BookOpen, disabled: !openMaterial },
@@ -741,9 +745,9 @@ export default function LessonStudio() {
             onClick={() => setMobileView(item.key)}
             aria-pressed={mobileView === item.key}
             className={cn(
-              'focus-ring flex min-h-[2.5rem] flex-1 items-center justify-center gap-1.5 rounded-btn px-2 text-xs font-semibold transition-colors',
+              'focus-ring flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-btn px-2 text-xs font-semibold transition-[background-color,color,box-shadow] duration-150',
               'disabled:opacity-35',
-              mobileView === item.key ? 'bg-white/15 text-white' : 'text-white/60 hover:bg-white/10'
+              mobileView === item.key ? 'bg-white/[0.14] text-white shadow-xs' : 'text-white/55 hover:bg-white/[0.07] hover:text-white/80'
             )}
           >
             <item.Icon className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
@@ -753,7 +757,7 @@ export default function LessonStudio() {
       </div>
 
       {/* Ana alan */}
-      <main className="flex min-h-0 flex-1 gap-2.5 px-2.5 pb-2 sm:px-3">
+      <main className="ders-studyo__ana">
         <section className="relative flex min-h-0 min-w-0 flex-1 flex-col">
           <div
             className={cn(
@@ -825,7 +829,7 @@ export default function LessonStudio() {
                       cameraOn={media.camOn}
                       micOn={media.micOn}
                       connection="connected"
-                      className="aspect-video w-full shadow-elevated"
+                      className="ders-studyo__yuzen-video aspect-video w-full shadow-elevated"
                     />
                   </div>
                 }
@@ -860,6 +864,13 @@ export default function LessonStudio() {
 
         {/* Masaüstü video şeridi */}
         <aside className="ders-studyo__seritler" aria-label="Katılımcılar">
+          <div className="ders-studyo__serit-baslik">
+            <span className="inline-flex items-center gap-1.5">
+              <UsersRound className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />
+              Katılımcılar
+            </span>
+            <span className="tabular-nums">2</span>
+          </div>
           {renderTiles('aspect-video w-full')}
           {!media.remoteMediaAvailable && (
             <p className="rounded-card bg-white/[0.06] px-3 py-2 text-2xs leading-relaxed text-white/60">
@@ -888,8 +899,9 @@ export default function LessonStudio() {
         </div>
       )}
 
-      <footer className="shrink-0 px-2.5 pb-2 sm:px-3">
+      <footer className="ders-studyo__alt">
         <CallControls
+          className="ders-studyo__kontroller"
           role={role}
           micOn={media.micOn}
           camOn={media.camOn}

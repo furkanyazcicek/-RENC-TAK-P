@@ -59,11 +59,11 @@ function ToolButton({ active, label, Icon, onClick, disabled }) {
       aria-pressed={active}
       title={label}
       className={cn(
-        'focus-ring grid h-11 w-11 shrink-0 place-items-center rounded-btn transition-colors duration-150 active:scale-[0.96]',
+        'focus-ring relative grid h-11 w-11 shrink-0 place-items-center rounded-btn transition-[transform,background-color,color,box-shadow] duration-150 active:scale-[0.96]',
         'disabled:cursor-not-allowed disabled:opacity-40',
         active
-          ? 'bg-brand-600 text-white shadow-xs'
-          : 'text-ink/70 hover:bg-ink/[0.06] hover:text-ink'
+          ? 'bg-brand-600 text-white shadow-xs ring-1 ring-inset ring-brand-400/30'
+          : 'text-ink/62 hover:bg-surface-muted hover:text-ink'
       )}
     >
       <Icon className="h-[18px] w-[18px]" strokeWidth={2} aria-hidden="true" />
@@ -108,7 +108,11 @@ export default function BoardToolbar({
 
   return (
     <div className={cn('flex flex-col gap-1.5', className)}>
-      <div className="glass hide-scrollbar flex items-center gap-1 overflow-x-auto rounded-card border border-line px-1.5 py-1.5 shadow-card">
+      <div
+        className="tahta-araclari__ana hide-scrollbar flex items-center gap-1 overflow-x-auto rounded-card border border-line px-1.5 py-1.5 shadow-card"
+        role="toolbar"
+        aria-label="Tahta araçları"
+      >
         {/* SIRALAMA BİLİNÇLİ: dar ekranda çubuk yatay kayıyor, bu yüzden
             en sık kullanılanlar (kalem, silgi, geri al) başa alındı.
             Şekil ve yakınlaştırma sonda; onlara ulaşmak için kaydırmak
@@ -117,7 +121,7 @@ export default function BoardToolbar({
           <>
             {/* Ana not alma araçları yatay kaydırmada bile sabit kalır.
                 iPad'de şekil/zoom ararken kalemin ekrandan kaybolması akışı kesiyordu. */}
-            <div className="sticky left-0 z-10 flex shrink-0 items-center gap-1 bg-surface/95 pr-1 backdrop-blur-xl">
+            <div className="sticky left-0 z-10 flex shrink-0 items-center gap-1 rounded-btn bg-surface/95 pr-1 backdrop-blur-xl">
               {TOOLS.map((t) => (
                 <ToolButton key={t.key} active={tool === t.key} label={t.label} Icon={t.Icon} onClick={() => onTool(t.key)} />
               ))}
@@ -129,7 +133,7 @@ export default function BoardToolbar({
                   type="button"
                   onClick={onImportPdf}
                   disabled={importingPdf}
-                  className="focus-ring inline-flex h-11 shrink-0 items-center gap-2 rounded-btn bg-brand-600 px-3 text-xs font-semibold text-white shadow-xs transition-[transform,background-color] duration-150 active:scale-[0.98] disabled:cursor-wait disabled:opacity-60"
+                  className="focus-ring inline-flex h-11 shrink-0 items-center gap-2 rounded-btn bg-brand-500/10 px-3 text-xs font-semibold text-brand-700 ring-1 ring-inset ring-brand-500/15 transition-[transform,background-color,color] duration-150 hover:bg-brand-500/15 active:scale-[0.98] disabled:cursor-wait disabled:opacity-60"
                 >
                   <FileUp className={cn('h-[18px] w-[18px]', importingPdf && 'animate-pulse')} strokeWidth={2} aria-hidden="true" />
                   <span>{importingPdf ? 'Açılıyor…' : 'PDF aç'}</span>
@@ -182,7 +186,11 @@ export default function BoardToolbar({
 
       {/* Renk ve kalınlık — yalnızca gerektiğinde */}
       {!readOnly && (drawing || erasing || shaping || tool === BOARD_TOOLS.TEXT || tool === BOARD_TOOLS.LASSO) && (
-        <div className="glass flex min-h-11 flex-wrap items-center gap-2.5 rounded-card border border-line px-2.5 py-2 shadow-card">
+        <div className="tahta-araclari__ayar flex min-h-11 flex-wrap items-center gap-2.5 rounded-card border border-line px-2.5 py-2 shadow-card">
+          <span className="hidden shrink-0 pl-1 text-2xs font-bold uppercase tracking-[0.08em] text-ink/40 lg:inline">
+            {tool === BOARD_TOOLS.LASSO ? 'Seçim' : erasing ? 'Silgi' : shaping ? 'Şekil' : 'Kalem ayarları'}
+          </span>
+          <span className="hidden h-5 w-px bg-line lg:block" aria-hidden="true" />
           {(drawing || shaping || tool === BOARD_TOOLS.TEXT) && (
             <div className="flex items-center gap-1.5" role="radiogroup" aria-label="Kalem rengi">
             {palette.map((c) => (

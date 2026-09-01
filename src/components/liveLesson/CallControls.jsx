@@ -50,13 +50,13 @@ function ControlButton({ active, danger, label, Icon, onClick, badge, disabled, 
       aria-pressed={active !== undefined ? active : undefined}
       title={label}
       className={cn(
-        'focus-ring relative grid h-11 w-11 shrink-0 place-items-center rounded-btn transition-colors duration-150',
+        'focus-ring relative grid h-11 w-11 shrink-0 place-items-center rounded-btn border border-transparent transition-[transform,background-color,border-color,color] duration-150 active:scale-[0.96]',
         'disabled:cursor-not-allowed disabled:opacity-40',
         danger
-          ? 'bg-danger-500 text-white hover:bg-danger-600'
+          ? 'border-danger-400/20 bg-danger-500 text-white hover:bg-danger-600'
           : active
-            ? 'bg-white/[0.14] text-white'
-            : 'text-white/70 hover:bg-white/[0.1] hover:text-white',
+            ? 'border-white/[0.08] bg-white/[0.14] text-white'
+            : 'text-white/65 hover:border-white/[0.06] hover:bg-white/[0.09] hover:text-white',
         className
       )}
     >
@@ -124,7 +124,7 @@ export default function CallControls({
     <>
       <div
         className={cn(
-          'flex items-center gap-1.5 rounded-panel bg-ink/[0.92] px-2 py-2 shadow-overlay',
+          'flex items-center gap-1.5 rounded-card bg-ink/[0.92] px-2 py-2 shadow-overlay',
           className
         )}
       >
