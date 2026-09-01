@@ -169,9 +169,13 @@ Planın global sınırı bunların ikisini de ezer; Ücretsiz planda 50 MB'ın
 `src/lib/solutionCanvas.js` içindeki mevcut vektör çizim motoru yeniden
 yazılmadı; canlı ders tahtası onun üzerine kuruldu
 (`src/lib/liveLesson/board/model.js`). Motorun getirdikleri: basınca duyarlı
-kalem, fosforlu, çizgi silgisi, nokta seyreltme, yakınlaştırmadan bağımsız
+kalem, fosforlu, nokta seyreltme ve yakınlaştırmadan bağımsız
 koordinat uzayı. Canlı dersin eklediği: çok sayfa, metin, şekil, görsel ve
-çok kullanıcı.
+çok kullanıcı. Tablet kullanımında kalem çizime, parmak kaydırma ve
+iki parmakla yakınlaştırmaya ayrılır. Basınç yumuşatma, parça/çizgi
+silgisi, serbest lasso seçimi, seçimi taşıma-kopyalama-silme ve tahtadan
+doğrudan PDF açma desteklenir. PDF sayfaları silinemeyen zemin olarak kalır;
+notlar ayrı vektör katmanında tutulur.
 
 > `src/components/aiSolve/Whiteboard.jsx` **kullanılmadı.** O bileşen yapay
 > zekânın ürettiği çözüm adımlarını *gösteren* bir oynatıcıdır; kullanıcı
@@ -181,7 +185,7 @@ koordinat uzayı. Canlı dersin eklediği: çok sayfa, metin, şekil, görsel ve
 
 | Kanal | Ne taşır | Sıklık |
 |---|---|---|
-| Realtime **broadcast** | Çizilmekte olan çizginin YENİ noktaları, biten çizgi, nesne farkı (ekle/sil), sohbet, materyal odağı | ≈12/sn (yalnız delta) |
+| Realtime **broadcast** | Çizilmekte olan çizginin YENİ noktaları, biten çizgi, nesne farkı (ekle/sil/güncelle), sohbet, materyal odağı | ≈12/sn (yalnız delta) |
 | **Veritabanı** | Tamamlanmış sayfa içeriği | Sayfa başına ≈4 sn'de bir, yalnız değiştiyse |
 
 Her pointer hareketi veritabanına yazılmaz; tüm sayfa da yayınlanmaz. Bir

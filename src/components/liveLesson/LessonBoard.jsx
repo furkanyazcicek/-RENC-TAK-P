@@ -17,7 +17,11 @@ import {
   drawBoardBackground,
   drawItem,
   drawPageItems,
+  duplicateItems,
+  eraseStrokeParts,
   finishStrokeItem,
+  itemBounds,
+  itemsInsideLasso,
   isShapeTool,
   itemHitsEraser,
   makeShapeItem,
@@ -25,6 +29,7 @@ import {
   makeImageItem,
   pageSize,
   renderPageToCanvas,
+  translateItem,
   widthSpec,
 } from '../../lib/liveLesson/board/model'
 import { readPdfPages } from '../../lib/liveLesson/board/pdfBackground'
@@ -72,7 +77,7 @@ const PALM_GUARD_MS = 350
  */
 const KESINTI_SURESI_MS = 150
 const KESINTI_MESAFE_PX = 40
-const MIN_SAMPLE_PX = 1.1
+const MIN_SAMPLE_PX = 0.65
 const SIMPLIFY_TOLERANCE = 0.7
 
 /**
@@ -101,6 +106,7 @@ export default function LessonBoard({
   channel,
   boardApiRef,
   onSaveStateChange,
+  onImportPdf,
   overlay,
   className,
   wrapperClassName,
@@ -115,6 +121,14 @@ export default function LessonBoard({
   const [penColor, setPenColor] = useState(BOARD_COLORS[0].value)
   const [highlightColor, setHighlightColor] = useState(HIGHLIGHT_COLORS[0].value)
   const [widthKey, setWidthKey] = useState('orta')
+  const [eraserMode, setEraserMode] = useState('partial')
+  const [pressureEnabled, setPressureEnabled] = useState(true)
+  // Not uygulamalarındaki varsayılan: kalem yazar, parmak sayfayı taşır.
+  // Kalemi olmayan kullanıcı isterse araç ayarından parmakla çizimi açar.
+  const [fingerDraw, setFingerDraw] = useState(false)
+  const [selectionIds, setSelectionIds] = useState([])
+  const [importingPdf, setImportingPdf] = useState(false)
+  const [importNotice, setImportNotice] = useState(null)
   const [pageIndex, setPageIndex] = useState(0)
   const [pageCount, setPageCount] = useState(1)
   const [canUndo, setCanUndo] = useState(false)
@@ -132,6 +146,7 @@ export default function LessonBoard({
 
   /* ---------------- Referanslar ---------------- */
   const wrapRef = useRef(null)
+  const pdfInputRef = useRef(null)
   const baseRef = useRef(null)
   const liveRef = useRef(null)
   const rectRef = useRef(null)
@@ -146,6 +161,8 @@ export default function LessonBoard({
   const shapeRef = useRef(null) // devam eden şekil önizlemesi
   const remoteLiveRef = useRef(new Map()) // karşı tarafın devam eden çizgileri
   const eraseRef = useRef(null)
+  const lassoRef = useRef(null)
+  const selectionRef = useRef(new Set())
 
   const pointersRef = useRef(new Map())
   const penDownRef = useRef(false)
@@ -261,6 +278,41 @@ export default function LessonBoard({
   }, [paintBase])
   repaintSoonRef.current = repaintSoon
 
+  function drawSelectionGuide(ctx) {
+    const lasso = lassoRef.current
+    if (lasso?.points?.length > 1 && !lasso.moving) {
+      ctx.save()
+      ctx.strokeStyle = 'rgba(124, 58, 237, 0.9)'
+      ctx.fillStyle = 'rgba(124, 58, 237, 0.06)'
+      ctx.lineWidth = 2 / viewRef.current.scale
+      ctx.setLineDash([9 / viewRef.current.scale, 7 / viewRef.current.scale])
+      ctx.beginPath()
+      ctx.moveTo(lasso.points[0].x, lasso.points[0].y)
+      for (let i = 1; i < lasso.points.length; i++) ctx.lineTo(lasso.points[i].x, lasso.points[i].y)
+      ctx.stroke()
+      ctx.fill()
+      ctx.restore()
+    }
+
+    const ids = selectionRef.current
+    if (!ids.size) return
+    const boxes = currentPage().items.map((item) => (ids.has(item.id) ? itemBounds(item) : null)).filter(Boolean)
+    if (!boxes.length) return
+    const minX = Math.min(...boxes.map((box) => box.x))
+    const minY = Math.min(...boxes.map((box) => box.y))
+    const maxX = Math.max(...boxes.map((box) => box.x + box.w))
+    const maxY = Math.max(...boxes.map((box) => box.y + box.h))
+    const pad = 10 / viewRef.current.scale
+    ctx.save()
+    ctx.strokeStyle = 'rgba(124, 58, 237, 0.95)'
+    ctx.fillStyle = 'rgba(124, 58, 237, 0.05)'
+    ctx.lineWidth = 2 / viewRef.current.scale
+    ctx.setLineDash([8 / viewRef.current.scale, 6 / viewRef.current.scale])
+    ctx.fillRect(minX - pad, minY - pad, maxX - minX + pad * 2, maxY - minY + pad * 2)
+    ctx.strokeRect(minX - pad, minY - pad, maxX - minX + pad * 2, maxY - minY + pad * 2)
+    ctx.restore()
+  }
+
   const paintLive = useCallback(() => {
     const canvas = liveRef.current
     if (!canvas) return
@@ -274,6 +326,7 @@ export default function LessonBoard({
     if (activeRef.current) drawItem(ctx, activeRef.current)
     if (shapeRef.current) drawItem(ctx, shapeRef.current)
     for (const item of remoteLiveRef.current.values()) drawItem(ctx, item)
+    drawSelectionGuide(ctx)
 
     // Silgi halkası — nereyi sileceğini görsün.
     if (eraseRef.current) {
@@ -457,8 +510,17 @@ export default function LessonBoard({
         const afterIds = new Set(nextItems.map((i) => i.id))
         const removed = before.filter((i) => !afterIds.has(i.id)).map((i) => i.id)
         const added = nextItems.filter((i) => !beforeIds.has(i.id))
-        if (removed.length || added.length) {
-          channel.send(CHANNEL_EVENTS.BOARD_PATCH, { page: index, remove: removed, add: added, by: userId })
+        const beforeById = new Map(before.map((item) => [item.id, item]))
+        // Lasso ile taşınan nesnelerin kimliği değişmez. Yalnızca ekle/sil
+        // farkına bakmak karşı tarafta taşımayı görünmez yapıyordu.
+        const updated = nextItems.filter(
+          (item) =>
+            beforeById.has(item.id) &&
+            beforeById.get(item.id) !== item &&
+            JSON.stringify(beforeById.get(item.id)) !== JSON.stringify(item)
+        )
+        if (removed.length || added.length || updated.length) {
+          channel.send(CHANNEL_EVENTS.BOARD_PATCH, { page: index, remove: removed, add: added, update: updated, by: userId })
         }
       }
     },
@@ -475,6 +537,9 @@ export default function LessonBoard({
       h.cursor = next
       const items = h.stack[next]
       pagesRef.current[index].items = items
+      selectionRef.current = new Set()
+      setSelectionIds([])
+      lassoRef.current = null
       refreshHistoryFlags(index)
       syncRef.current?.markDirty(index)
       schedulePaint()
@@ -482,10 +547,17 @@ export default function LessonBoard({
       if (channel?.send) {
         const beforeIds = new Set(before.map((i) => i.id))
         const afterIds = new Set(items.map((i) => i.id))
+        const beforeById = new Map(before.map((item) => [item.id, item]))
         channel.send(CHANNEL_EVENTS.BOARD_PATCH, {
           page: index,
           remove: before.filter((i) => !afterIds.has(i.id)).map((i) => i.id),
           add: items.filter((i) => !beforeIds.has(i.id)),
+          update: items.filter(
+            (item) =>
+              beforeById.has(item.id) &&
+              beforeById.get(item.id) !== item &&
+              JSON.stringify(beforeById.get(item.id)) !== JSON.stringify(item)
+          ),
           by: userId,
         })
       }
@@ -502,6 +574,9 @@ export default function LessonBoard({
       remoteLiveRef.current.clear()
       activeRef.current = null
       shapeRef.current = null
+      lassoRef.current = null
+      selectionRef.current = new Set()
+      setSelectionIds([])
       fitBoard()
       schedulePaint()
       scheduleLive()
@@ -593,6 +668,44 @@ export default function LessonBoard({
     [channel, fitBoard, refreshHistoryFlags, schedulePaint, isTeacher]
   )
 
+  const importPdfFile = useCallback(
+    async (event) => {
+      const file = event.target.files?.[0]
+      event.target.value = ''
+      if (!file) return
+      if (file.type !== 'application/pdf' && !/\.pdf$/i.test(file.name)) {
+        setImportNotice({ tone: 'error', text: 'Yalnızca PDF dosyası açabilirsin.' })
+        return
+      }
+      setImportingPdf(true)
+      setImportNotice({ tone: 'info', text: 'PDF yükleniyor ve sayfalar hazırlanıyor…' })
+      try {
+        const source = await onImportPdf?.(file)
+        if (!source?.url) throw new Error('PDF yüklenemedi.')
+        const meaningful = pagesRef.current.some(
+          (page) => page.items.length > 0 || page.background?.kind === 'pdf'
+        )
+        // Boş ilk tahtayı belgeyle değiştir; derste yazılmış bir şey varsa
+        // onu kaybetmeden belgeyi sona ekle.
+        const result = await openPdf(source.url, {
+          title: source.title ?? file.name.replace(/\.pdf$/i, ''),
+          replace: !meaningful,
+        })
+        if (!result?.ok) throw new Error('PDF sayfaları okunamadı.')
+        setImportNotice({
+          tone: 'success',
+          text: `${result.count} sayfa tahtaya açıldı. Kalemle doğrudan üzerine yazabilirsin.`,
+        })
+        window.setTimeout(() => setImportNotice(null), 5000)
+      } catch (error) {
+        setImportNotice({ tone: 'error', text: error?.message || 'PDF açılamadı. Bağlantını kontrol edip tekrar dene.' })
+      } finally {
+        setImportingPdf(false)
+      }
+    },
+    [onImportPdf, openPdf]
+  )
+
   /** Materyalden veya dosyadan tahtaya görsel yerleştirir. */
   const placeImage = useCallback(
     (url, title) => {
@@ -636,8 +749,16 @@ export default function LessonBoard({
   }
 
   function beginErase(point) {
-    eraseRef.current = { x: point.x, y: point.y, r: spec.eraser / viewRef.current.scale, removed: new Set(), before: currentPage().items }
-    scheduleLive()
+    eraseRef.current = {
+      x: point.x,
+      y: point.y,
+      r: spec.eraser / viewRef.current.scale,
+      removed: new Set(),
+      before: currentPage().items,
+      changed: false,
+    }
+    // Not uygulamalarındaki gibi tek dokunuş da siler; hareket beklenmez.
+    continueErase(point)
   }
 
   function continueErase(point) {
@@ -649,7 +770,11 @@ export default function LessonBoard({
     const survivors = []
     let changed = false
     for (const item of page.items) {
-      if (itemHitsEraser(item, point.x, point.y, state.r)) {
+      if (eraserMode === 'partial' && item.kind === 'stroke') {
+        const parts = eraseStrokeParts(item, point.x, point.y, state.r, userId)
+        if (parts.length !== 1 || parts[0] !== item) changed = true
+        survivors.push(...parts)
+      } else if (itemHitsEraser(item, point.x, point.y, state.r)) {
         state.removed.add(item.id)
         changed = true
       } else {
@@ -657,6 +782,7 @@ export default function LessonBoard({
       }
     }
     if (changed) {
+      state.changed = true
       page.items = survivors
       schedulePaint()
     }
@@ -667,7 +793,7 @@ export default function LessonBoard({
     const state = eraseRef.current
     eraseRef.current = null
     scheduleLive()
-    if (!state || state.removed.size === 0) return
+    if (!state || !state.changed) return
     applyItems(pageIndexRef.current, currentPage().items, { previous: state.before })
   }
 
@@ -680,6 +806,7 @@ export default function LessonBoard({
       userId,
     })
     appendStrokePoint(active, point.x, point.y, pressure)
+    active._smoothPressure = pressure
     activeRef.current = active
     lastSentRef.current = 0
     scheduleLive()
@@ -693,7 +820,12 @@ export default function LessonBoard({
     const lastY = active.p[n - 2]
     const minStep = MIN_SAMPLE_PX / viewRef.current.scale
     if (Math.hypot(point.x - lastX, point.y - lastY) < minStep) return
-    appendStrokePoint(active, point.x, point.y, pressure)
+    // Apple Pencil basıncı milisaniyelik sıçramalar yapabilir. Düşük
+    // gecikmeli yumuşatma, harf kenarlarındaki titreşimi azaltır fakat
+    // kalemin doğal incelip kalınlaşmasını korur.
+    const smoothed = active._smoothPressure == null ? pressure : active._smoothPressure * 0.72 + pressure * 0.28
+    active._smoothPressure = smoothed
+    appendStrokePoint(active, point.x, point.y, smoothed)
     scheduleLive()
 
     // Karşı tarafa YALNIZCA yeni noktaları gönder — tüm çizgiyi değil.
@@ -735,6 +867,7 @@ export default function LessonBoard({
       return
     }
     delete active._lastSend
+    delete active._smoothPressure
     finishStrokeItem(active, SIMPLIFY_TOLERANCE / viewRef.current.scale)
     /**
      * BİTEN ÇİZGİ KANALA TEK KEZ GİRER.
@@ -785,6 +918,91 @@ export default function LessonBoard({
     addItem(shape)
   }
 
+  function selectionBounds() {
+    const ids = selectionRef.current
+    const boxes = currentPage().items.map((item) => (ids.has(item.id) ? itemBounds(item) : null)).filter(Boolean)
+    if (!boxes.length) return null
+    const x = Math.min(...boxes.map((box) => box.x))
+    const y = Math.min(...boxes.map((box) => box.y))
+    const right = Math.max(...boxes.map((box) => box.x + box.w))
+    const bottom = Math.max(...boxes.map((box) => box.y + box.h))
+    return { x, y, w: right - x, h: bottom - y }
+  }
+
+  function beginLasso(point) {
+    const box = selectionBounds()
+    const pad = 18 / viewRef.current.scale
+    const insideSelection =
+      box && point.x >= box.x - pad && point.x <= box.x + box.w + pad && point.y >= box.y - pad && point.y <= box.y + box.h + pad
+    if (insideSelection) {
+      lassoRef.current = {
+        moving: true,
+        start: point,
+        before: currentPage().items,
+      }
+    } else {
+      selectionRef.current = new Set()
+      setSelectionIds([])
+      lassoRef.current = { moving: false, points: [point] }
+    }
+    scheduleLive()
+  }
+
+  function continueLasso(point) {
+    const lasso = lassoRef.current
+    if (!lasso) return
+    if (lasso.moving) {
+      const dx = point.x - lasso.start.x
+      const dy = point.y - lasso.start.y
+      const ids = selectionRef.current
+      currentPage().items = lasso.before.map((item) => (ids.has(item.id) ? translateItem(item, dx, dy) : item))
+      schedulePaint()
+    } else {
+      const previous = lasso.points[lasso.points.length - 1]
+      if (!previous || Math.hypot(point.x - previous.x, point.y - previous.y) > 2 / viewRef.current.scale) {
+        lasso.points.push(point)
+      }
+    }
+    scheduleLive()
+  }
+
+  function endLasso() {
+    const lasso = lassoRef.current
+    lassoRef.current = null
+    if (!lasso) return
+    if (lasso.moving) {
+      applyItems(pageIndexRef.current, currentPage().items, { previous: lasso.before })
+    } else {
+      const selected = itemsInsideLasso(currentPage().items, lasso.points ?? [])
+      const ids = selected.map((item) => item.id)
+      selectionRef.current = new Set(ids)
+      setSelectionIds(ids)
+    }
+    scheduleLive()
+  }
+
+  const deleteSelection = useCallback(() => {
+    const ids = selectionRef.current
+    if (!ids.size) return
+    const page = currentPage()
+    applyItems(pageIndexRef.current, page.items.filter((item) => !ids.has(item.id)), { previous: page.items })
+    selectionRef.current = new Set()
+    setSelectionIds([])
+    scheduleLive()
+  }, [applyItems, scheduleLive])
+
+  const duplicateSelection = useCallback(() => {
+    const ids = selectionRef.current
+    if (!ids.size) return
+    const page = currentPage()
+    const copies = duplicateItems(page.items, ids, userId, 28 / viewRef.current.scale)
+    applyItems(pageIndexRef.current, [...page.items, ...copies], { previous: page.items })
+    const nextIds = copies.map((item) => item.id)
+    selectionRef.current = new Set(nextIds)
+    setSelectionIds(nextIds)
+    scheduleLive()
+  }, [applyItems, scheduleLive, userId])
+
   function handlePointerDown(e) {
     const wrap = wrapRef.current
     if (!wrap) return
@@ -813,7 +1031,7 @@ export default function LessonBoard({
         activePointerIdRef.current = e.pointerId
         penDownRef.current = true
         pointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY, type: e.pointerType })
-        continueStroke(nokta, e.pressure > 0 ? e.pressure : 0.5)
+        continueStroke(nokta, pressureEnabled && e.pressure > 0 ? e.pressure : 0.5)
         if (e.cancelable) e.preventDefault()
         return
       }
@@ -881,6 +1099,8 @@ export default function LessonBoard({
     if (touches.length === 2 && !penDownRef.current) {
       activeRef.current = null
       shapeRef.current = null
+      lassoRef.current = null
+      panRef.current = null
       const [a, b] = touches
       userAdjustedRef.current = true
       pinchRef.current = {
@@ -895,7 +1115,7 @@ export default function LessonBoard({
     const panning =
       activeTool === BOARD_TOOLS.PAN ||
       e.button === 1 ||
-      (e.pointerType === 'touch' && activeTool === BOARD_TOOLS.PAN)
+      (e.pointerType === 'touch' && !fingerDraw)
 
     if (panning) {
       userAdjustedRef.current = true
@@ -909,10 +1129,11 @@ export default function LessonBoard({
     if (!canEdit) return
 
     const point = toBoard(e.clientX, e.clientY)
-    const pressure = e.pressure > 0 && e.pointerType === 'pen' ? e.pressure : 0.5
+    const pressure = pressureEnabled && e.pressure > 0 && e.pointerType === 'pen' ? e.pressure : 0.5
 
     activePointerIdRef.current = e.pointerId
     if (activeTool === BOARD_TOOLS.ERASER) beginErase(point)
+    else if (activeTool === BOARD_TOOLS.LASSO) beginLasso(point)
     else if (activeTool === BOARD_TOOLS.TEXT) {
       setTextDraft({ x: point.x, y: point.y, clientX: e.clientX, clientY: e.clientY, value: '' })
     } else if (isShapeTool(activeTool)) beginShape(point)
@@ -986,9 +1207,10 @@ export default function LessonBoard({
 
     const point = toBoard(e.clientX, e.clientY)
     if (eraseRef.current) continueErase(point)
+    else if (lassoRef.current) continueLasso(point)
     else if (shapeRef.current) continueShape(point)
     else if (activeRef.current) {
-      const pressure = e.pressure > 0 && e.pointerType === 'pen' ? e.pressure : 0.5
+      const pressure = pressureEnabled && e.pressure > 0 && e.pointerType === 'pen' ? e.pressure : 0.5
       // Birleştirilmiş olaylar: tabletlerde tek harekette 10+ nokta gelir.
       // Pencere düzeyinden gelen olayda `nativeEvent` sarmalayıcısı yoktur.
       const ham = e.nativeEvent ?? e
@@ -996,7 +1218,7 @@ export default function LessonBoard({
       if (events.length > 1) {
         for (const ev of events) {
           const p = toBoard(ev.clientX, ev.clientY)
-          continueStroke(p, ev.pressure > 0 ? ev.pressure : pressure)
+          continueStroke(p, pressureEnabled && ev.pressure > 0 ? ev.pressure : pressure)
         }
       } else {
         continueStroke(point, pressure)
@@ -1060,6 +1282,7 @@ export default function LessonBoard({
 
     activePointerIdRef.current = null
     if (eraseRef.current) endErase()
+    else if (lassoRef.current) endLasso()
     else if (shapeRef.current) endShape()
     else if (activeRef.current) endStroke()
   }
@@ -1217,7 +1440,7 @@ export default function LessonBoard({
    */
   useEffect(() => {
     function finishOutside(e) {
-      if (!activeRef.current && !shapeRef.current && !eraseRef.current && pointersRef.current.size === 0) return
+      if (!activeRef.current && !shapeRef.current && !eraseRef.current && !lassoRef.current && pointersRef.current.size === 0) return
       // Tuvalin İÇİNDEKİ olayı React zaten işledi; ikinci kez işlemek
       // teşhis sayımlarını da ikiye katlıyordu.
       if (e.target instanceof Node && wrapRef.current?.contains(e.target)) return
@@ -1233,7 +1456,7 @@ export default function LessonBoard({
      * olaylar burada atlanır — onları React zaten işledi.
      */
     function moveOutside(e) {
-      if (!activeRef.current && !shapeRef.current && !eraseRef.current && !panRef.current && !pinchRef.current) return
+      if (!activeRef.current && !shapeRef.current && !eraseRef.current && !lassoRef.current && !panRef.current && !pinchRef.current) return
       if (e.target instanceof Node && wrapRef.current?.contains(e.target)) return
       pointerMoveRef.current?.(e)
     }
@@ -1340,7 +1563,8 @@ export default function LessonBoard({
       const page = pagesRef.current[payload.page]
       if (!page) return
       const removed = new Set(payload.remove ?? [])
-      const kept = page.items.filter((i) => !removed.has(i.id))
+      const updates = new Map((payload.update ?? []).map((item) => [item.id, item]))
+      const kept = page.items.filter((i) => !removed.has(i.id)).map((item) => updates.get(item.id) ?? item)
       const existing = new Set(kept.map((i) => i.id))
       const added = (payload.add ?? []).filter((i) => !existing.has(i.id))
       page.items = [...kept, ...added]
@@ -1419,7 +1643,14 @@ export default function LessonBoard({
         return
       }
       if (!canEdit) return
-      const map = { k: BOARD_TOOLS.PEN, f: BOARD_TOOLS.HIGHLIGHT, s: BOARD_TOOLS.ERASER, m: BOARD_TOOLS.TEXT, h: BOARD_TOOLS.PAN }
+      const map = {
+        k: BOARD_TOOLS.PEN,
+        f: BOARD_TOOLS.HIGHLIGHT,
+        s: BOARD_TOOLS.ERASER,
+        l: BOARD_TOOLS.LASSO,
+        m: BOARD_TOOLS.TEXT,
+        h: BOARD_TOOLS.PAN,
+      }
       const next = map[e.key.toLowerCase()]
       if (next) {
         e.preventDefault()
@@ -1429,6 +1660,14 @@ export default function LessonBoard({
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [canEdit, travelHistory])
+
+  useEffect(() => {
+    if (tool === BOARD_TOOLS.LASSO) return
+    selectionRef.current = new Set()
+    lassoRef.current = null
+    setSelectionIds([])
+    scheduleLive()
+  }, [tool, scheduleLive])
 
   /* Dışarıya açılan tahta API'si (ders sonu özeti için) */
   useImperativeHandle(
@@ -1469,8 +1708,45 @@ export default function LessonBoard({
         onZoomIn={() => zoomCenter(1.2)}
         onZoomOut={() => zoomCenter(1 / 1.2)}
         onFit={fitBoard}
+        onImportPdf={isTeacher && onImportPdf ? () => pdfInputRef.current?.click() : undefined}
+        importingPdf={importingPdf}
+        eraserMode={eraserMode}
+        onEraserMode={setEraserMode}
+        pressureEnabled={pressureEnabled}
+        onPressureEnabled={setPressureEnabled}
+        fingerDraw={fingerDraw}
+        onFingerDraw={setFingerDraw}
+        selectionCount={selectionIds.length}
+        onDeleteSelection={deleteSelection}
+        onDuplicateSelection={duplicateSelection}
         readOnly={!canEdit}
       />
+
+      {isTeacher && onImportPdf && (
+        <input
+          ref={pdfInputRef}
+          type="file"
+          accept="application/pdf,.pdf"
+          className="sr-only"
+          onChange={importPdfFile}
+        />
+      )}
+
+      {importNotice && (
+        <p
+          role="status"
+          className={cn(
+            'rounded-btn border px-3 py-2 text-xs font-medium',
+            importNotice.tone === 'error'
+              ? 'border-danger-500/20 bg-danger-500/[0.08] text-danger-700'
+              : importNotice.tone === 'success'
+                ? 'border-success-500/20 bg-success-500/[0.08] text-ink/75'
+                : 'border-info-500/20 bg-info-500/[0.08] text-ink/70'
+          )}
+        >
+          {importNotice.text}
+        </p>
+      )}
 
       <div
         ref={wrapRef}
@@ -1488,7 +1764,12 @@ export default function LessonBoard({
            düzeyindeki yedek dinleyici garantiliyor. */
         onWheel={handleWheel}
         style={{
-          cursor: tool === BOARD_TOOLS.PAN ? 'grab' : canEdit ? 'crosshair' : 'default',
+          cursor:
+            tool === BOARD_TOOLS.PAN
+              ? 'grab'
+              : tool === BOARD_TOOLS.LASSO
+                ? selectionIds.length ? 'move' : 'crosshair'
+                : canEdit ? 'crosshair' : 'default',
           // iPad'de kalemle basılı tutunca çıkan seçim/büyüteç davranışı
           // çizimi kesiyordu.
           WebkitUserSelect: 'none',
@@ -1617,6 +1898,8 @@ export default function LessonBoard({
               onClick={() => {
                 const index = pageIndexRef.current
                 applyItems(index, [], { previous: pagesRef.current[index].items, broadcast: false })
+                selectionRef.current = new Set()
+                setSelectionIds([])
                 channel?.send?.(CHANNEL_EVENTS.BOARD_CLEAR, { page: index, by: userId })
                 setClearAsk(false)
               }}

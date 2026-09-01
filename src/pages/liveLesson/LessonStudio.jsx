@@ -24,7 +24,7 @@ import MaterialPanel from '../../components/liveLesson/MaterialPanel'
 import MaterialViewer from '../../components/liveLesson/MaterialViewer'
 import StudentContextPanel from '../../components/liveLesson/StudentContextPanel'
 import VideoTile from '../../components/liveLesson/VideoTile'
-import { useLessonAuth } from '../../lib/liveLesson/preview'
+import { isLessonPreview, useLessonAuth } from '../../lib/liveLesson/preview'
 import {
   addMaterial,
   fetchLesson,
@@ -45,6 +45,7 @@ import { DEVICE_ROLES, deviceRoleInfo, loadDeviceRole, saveDeviceRole } from '..
 import { CONNECTION_LABELS } from '../../lib/liveLesson/rtc/provider'
 import { canJoin } from '../../lib/liveLesson/status'
 import { formatClock } from '../../lib/liveLesson/time'
+import { formatFileSize, MAX_UPLOAD_MB, uploadLessonFile } from '../../lib/liveLesson/materialSources'
 import '../../styles/canli-ders.css'
 
 /**
@@ -325,6 +326,37 @@ export default function LessonStudio() {
       /* yoksay */
     }
   }, [sessionId])
+
+  /**
+   * Tahtadaki "PDF aç" düğmesi için kısa yol.
+   * Dosya önce ortak depoya gider; böylece öğrenci de aynı PDF sayfasını
+   * kendi cihazında çizer. Yalnızca yerel bir dosya adresi kullanmak,
+   * öğrenci tarafında boş sayfa gösterirdi.
+   */
+  const importPdfToBoard = useCallback(
+    async (file) => {
+      if (file.size > MAX_UPLOAD_MB * 1024 * 1024) {
+        throw new Error(
+          `Bu PDF ${formatFileSize(file.size)}. Üst sınır ${MAX_UPLOAD_MB} MB; dosyayı sıkıştırıp tekrar dene.`
+        )
+      }
+      const title = file.name.replace(/\.pdf$/i, '')
+      // Geliştirici önizlemesinde canlı depoya dosya yazmayız.
+      if (isLessonPreview()) return { url: URL.createObjectURL(file), title }
+
+      const url = await uploadLessonFile(sessionId, file)
+      await addMaterial(sessionId, user.id, {
+        kind: 'pdf',
+        title,
+        url,
+        visible_to_student: true,
+        order_index: materials.length,
+      })
+      await reloadMaterials()
+      return { url, title }
+    },
+    [materials.length, reloadMaterials, sessionId, user?.id]
+  )
 
   const handleOpenMaterial = useCallback(
     (material) => {
@@ -771,6 +803,7 @@ export default function LessonStudio() {
                 isTeacher={isTeacher}
                 channel={channel}
                 boardApiRef={boardApiRef}
+                onImportPdf={isTeacher ? importPdfToBoard : undefined}
                 /* TELEFONDA TAHTA EN-BOY ORANINA SABİTLENİR.
                    Sayfa 16:10 yatay, telefon ekranı ise dikey. Tahtayı
                    kalan bütün yüksekliğe yaymak, sayfayı ortada küçük

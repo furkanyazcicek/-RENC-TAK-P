@@ -49,6 +49,7 @@ export const BOARD_TOOLS = {
   RECT: 'rect',
   ELLIPSE: 'ellipse',
   ARROW: 'arrow',
+  LASSO: 'lasso',
   PAN: 'pan',
 }
 
@@ -185,6 +186,95 @@ export function makeShapeItem({ shape, x1, y1, x2, y2, color, width, userId }) {
 
 export function makeImageItem({ url, x, y, w, h, userId, title }) {
   return { id: newItemId(userId), kind: 'image', by: userId, url, x, y, w, h, title: title ?? null }
+}
+
+/* ------------------------------------------------------------------ */
+/*  Seçim ve dönüştürme                                             */
+/* ------------------------------------------------------------------ */
+
+/** Bir tahta nesnesinin seçim kutusu. Lasso ve taşıma aynı hesabı kullanır. */
+export function itemBounds(item) {
+  if (item?.kind === 'stroke') {
+    if (!Array.isArray(item.p) || item.p.length < 3) return null
+    let minX = Infinity
+    let minY = Infinity
+    let maxX = -Infinity
+    let maxY = -Infinity
+    for (let i = 0; i < item.p.length; i += 3) {
+      minX = Math.min(minX, item.p[i])
+      minY = Math.min(minY, item.p[i + 1])
+      maxX = Math.max(maxX, item.p[i])
+      maxY = Math.max(maxY, item.p[i + 1])
+    }
+    const pad = (item.w ?? 4) / 2
+    return { x: minX - pad, y: minY - pad, w: maxX - minX + pad * 2, h: maxY - minY + pad * 2 }
+  }
+  if (item?.kind === 'text') return textBounds(item)
+  if (item?.kind === 'image') return { x: item.x, y: item.y, w: item.w, h: item.h }
+  if (item?.kind === 'shape') {
+    const pad = (item.w ?? 4) / 2
+    return {
+      x: Math.min(item.x1, item.x2) - pad,
+      y: Math.min(item.y1, item.y2) - pad,
+      w: Math.abs(item.x2 - item.x1) + pad * 2,
+      h: Math.abs(item.y2 - item.y1) + pad * 2,
+    }
+  }
+  return null
+}
+
+function pointInPolygon(x, y, polygon) {
+  let inside = false
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const a = polygon[i]
+    const b = polygon[j]
+    const crosses = a.y > y !== b.y > y && x < ((b.x - a.x) * (y - a.y)) / ((b.y - a.y) || 0.0001) + a.x
+    if (crosses) inside = !inside
+  }
+  return inside
+}
+
+/** Serbest lasso içinde kalan nesneleri bulur; PDF zemini seçilemez. */
+export function itemsInsideLasso(items, polygon) {
+  if (!Array.isArray(polygon) || polygon.length < 3) return []
+  return items.filter((item) => {
+    const box = itemBounds(item)
+    if (!box) return false
+    const probes = [
+      [box.x + box.w / 2, box.y + box.h / 2],
+      [box.x, box.y],
+      [box.x + box.w, box.y],
+      [box.x, box.y + box.h],
+      [box.x + box.w, box.y + box.h],
+    ]
+    if (item.kind === 'stroke') {
+      for (let i = 0; i < item.p.length; i += 6) probes.push([item.p[i], item.p[i + 1]])
+    }
+    return probes.some(([x, y]) => pointInPolygon(x, y, polygon))
+  })
+}
+
+/** Nesneyi veri modelini bozmadan taşır. */
+export function translateItem(item, dx, dy) {
+  if (item.kind === 'stroke') {
+    const p = [...item.p]
+    for (let i = 0; i < p.length; i += 3) {
+      p[i] += dx
+      p[i + 1] += dy
+    }
+    return { ...item, p }
+  }
+  if (item.kind === 'shape') {
+    return { ...item, x1: item.x1 + dx, y1: item.y1 + dy, x2: item.x2 + dx, y2: item.y2 + dy }
+  }
+  return { ...item, x: item.x + dx, y: item.y + dy }
+}
+
+export function duplicateItems(items, ids, userId, offset = 28) {
+  const selected = new Set(ids)
+  return items
+    .filter((item) => selected.has(item.id))
+    .map((item) => ({ ...translateItem(item, offset, offset), id: newItemId(userId), by: userId }))
 }
 
 /* ------------------------------------------------------------------ */
@@ -396,6 +486,64 @@ export function itemHitsEraser(item, cx, cy, radius) {
     return boxHitsCircle(box, cx, cy, radius)
   }
   return false
+}
+
+/**
+ * Piksel silgisi için bir el yazısı çizgisini parçalara ayırır.
+ * Canvas piksellerini gerçekten kazımak yerine vektör noktalarını
+ * böldüğümüz için yakınlaştırma, geri alma ve canlı eşitleme temiz kalır.
+ */
+export function eraseStrokeParts(stroke, cx, cy, radius, userId) {
+  if (stroke?.kind !== 'stroke' || !Array.isArray(stroke.p)) return [stroke]
+  const points = []
+  for (let i = 0; i < stroke.p.length; i += 3) {
+    points.push({ x: stroke.p[i], y: stroke.p[i + 1], pressure: stroke.p[i + 2] })
+  }
+  if (!points.length) return []
+
+  const effectiveRadius = radius + (stroke.w ?? 4) / 2
+  // Seyrek örneklenmiş hızlı bir kalemde iki nokta arası onlarca piksel
+  // olabilir. Yalnızca kayıtlı noktalara bakmak, silginin değdiği tek
+  // parça yerine iki komşu parçayı da yok ederdi. Çizgiyi geçici olarak
+  // sıklaştırıp daire içindeki bölümü kesiyoruz.
+  const dense = [points[0]]
+  const sampleStep = Math.max(2, Math.min(10, effectiveRadius / 4))
+  for (let i = 1; i < points.length; i++) {
+    const a = points[i - 1]
+    const b = points[i]
+    const steps = Math.max(1, Math.ceil(Math.hypot(b.x - a.x, b.y - a.y) / sampleStep))
+    for (let step = 1; step <= steps; step++) {
+      const t = step / steps
+      dense.push({
+        x: a.x + (b.x - a.x) * t,
+        y: a.y + (b.y - a.y) * t,
+        pressure: a.pressure + (b.pressure - a.pressure) * t,
+      })
+    }
+  }
+
+  const chunks = []
+  let chunk = []
+  let erased = false
+  for (let i = 0; i < dense.length; i++) {
+    const point = dense[i]
+    const hitPoint = Math.hypot(point.x - cx, point.y - cy) <= effectiveRadius
+    if (hitPoint) {
+      erased = true
+      if (chunk.length) chunks.push(chunk)
+      chunk = []
+    } else {
+      chunk.push(point)
+    }
+  }
+  if (chunk.length) chunks.push(chunk)
+
+  if (!erased) return [stroke]
+  return chunks.filter((part) => part.length >= 2 || points.length === 1).map((part, index) => ({
+    ...stroke,
+    id: index === 0 ? stroke.id : newItemId(userId),
+    p: part.flatMap((point) => [point.x, point.y, point.pressure]),
+  }))
 }
 
 /* ------------------------------------------------------------------ */
