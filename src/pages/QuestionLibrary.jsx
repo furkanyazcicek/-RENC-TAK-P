@@ -19,6 +19,10 @@ import {
   withMathQuestionBankSubjects,
   withMathQuestionBankTopics,
 } from '../content/tests/matematik/question-bank.js'
+import {
+  withPhilosophyQuestionBankSubjects,
+  withPhilosophyQuestionBankTopics,
+} from '../content/tests/felsefe/question-bank.js'
 import { emekliKonuMu } from '../content/emekliKonular'
 import { libraryPath, slugifyLibraryValue } from '../lib/libraryRoutes'
 import {
@@ -64,8 +68,10 @@ export default function QuestionLibrary() {
     const grouped = {}
     ;(setsRes.data ?? []).forEach((set) => { (grouped[set.topic_id] ??= []).push(set) })
     const remoteSubjects = subjectsRes.data ?? []
-    const catalogSubjects = withMathQuestionBankSubjects(remoteSubjects)
-    const remoteTopics = withMathQuestionBankTopics(catalogSubjects, topicsRes.data ?? [])
+    const mathSubjects = withMathQuestionBankSubjects(remoteSubjects)
+    const catalogSubjects = withPhilosophyQuestionBankSubjects(mathSubjects)
+    const mathTopics = withMathQuestionBankTopics(catalogSubjects, topicsRes.data ?? [])
+    const remoteTopics = withPhilosophyQuestionBankTopics(catalogSubjects, mathTopics)
     const gradeData = createGradeLibraryData(catalogSubjects, remoteTopics)
     setSubjects([...catalogSubjects, ...gradeData.subjects])
     setTopics([...remoteTopics, ...gradeData.topics])

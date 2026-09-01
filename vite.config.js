@@ -33,6 +33,32 @@ function matematikSoruBankasiAssets() {
   }
 }
 
+function felsefeSoruBankasiAssets() {
+  return {
+    name: 'felsefe-soru-bankasi-assets',
+    closeBundle() {
+      const sourceRoot = join(process.cwd(), 'TYT_Felsefe_Soru_Kutuphanesi')
+      const targetRoot = join(process.cwd(), 'dist', 'TYT_Felsefe_Soru_Kutuphanesi')
+      if (!existsSync(sourceRoot)) throw new Error('TYT Felsefe soru kütüphanesi klasörü bulunamadı.')
+
+      const copyEligibleFiles = (sourceDir, targetDir) => {
+        mkdirSync(targetDir, { recursive: true })
+        readdirSync(sourceDir, { withFileTypes: true }).forEach((entry) => {
+          const source = join(sourceDir, entry.name)
+          const target = join(targetDir, entry.name)
+          if (entry.isDirectory()) {
+            copyEligibleFiles(source, target)
+            return
+          }
+          if (/^Test_\d{2}\.md$/.test(basename(entry.name))) cpSync(source, target)
+        })
+      }
+
+      copyEligibleFiles(sourceRoot, targetRoot)
+    },
+  }
+}
+
 export default defineConfig({
   // Yeni bir paket kurulduğunda Vite bağımlılık önbelleğini yeniler. Sunucu
   // o sırada açıksa React'in iki ayrı kopyası yüklenebiliyor ve site
@@ -47,6 +73,7 @@ export default defineConfig({
   plugins: [
     react(),
     matematikSoruBankasiAssets(),
+    felsefeSoruBankasiAssets(),
     VitePWA({
       // 'injectManifest' → kendi src/sw.js dosyamızı kullanırız (push event'leri
       // işlemek için gerekli). Varsayılan 'generateSW' stratejisi bunu desteklemez.
