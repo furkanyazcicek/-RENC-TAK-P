@@ -95,6 +95,16 @@ const PALM_GUARD_MS = 350
  */
 const KESINTI_SURESI_MS = 40
 const KESINTI_MESAFE_PX = 6
+/**
+ * İptalden sonra çizginin kapatılması için beklenen HAREKETSİZLİK süresi.
+ *
+ * Eskiden bu bir geri sayımdı: iptalden N milisaniye sonra çizgi
+ * kapanıyordu — kalem hâlâ ekranda yazıyor olsa bile. Sistem çizimi
+ * ortasında iptal ettiğinde çizginin geri kalanı sessizce çöpe gidiyordu.
+ * Artık sayaç her harekette sıfırlanır: kalem yazdığı sürece çizgi
+ * kapanmaz, gerçekten durunca kapanır.
+ */
+const KESINTI_BOSTA_MS = 120
 const MIN_SAMPLE_PX = 0.65
 const SIMPLIFY_TOLERANCE = 0.7
 
@@ -882,6 +892,8 @@ export default function LessonBoard({
     // kalemin doğal incelip kalınlaşmasını korur.
     const smoothed = smoothPressure(active._smoothPressure, pressure)
     active._smoothPressure = smoothed
+    // İptal sonrası "hâlâ yazıyor mu?" kontrolü bu damgayı okur.
+    active._sonHareket = performance.now()
     appendStrokePoint(active, point.x, point.y, smoothed)
     scheduleLive()
 
@@ -943,6 +955,7 @@ export default function LessonBoard({
     boostFaintStroke(active)
     delete active._lastSend
     delete active._smoothPressure
+    delete active._sonHareket
     finishStrokeItem(active, SIMPLIFY_TOLERANCE / viewRef.current.scale)
     /**
      * BİTEN ÇİZGİ KANALA TEK KEZ GİRER.
@@ -1268,6 +1281,9 @@ export default function LessonBoard({
     if (
       e.pointerType === 'pen' &&
       e.buttons === 0 &&
+      // `buttons` TEK BAŞINA YETMİYOR: Safari, kalem ekrana basılıyken
+      // de 0 bildirebiliyor. Basınç varsa kalem havada değil, ekrandadır.
+      !(e.pressure > 0) &&
       !activeRef.current &&
       !shapeRef.current &&
       !eraseRef.current
@@ -1322,6 +1338,90 @@ export default function LessonBoard({
     if (!canEdit) return
 
     const point = toBoard(e.clientX, e.clientY)
+
+    // Kalemin ekrana GERÇEKTEN değdiğine dair kanıt. `buttons` tek başına
+    // güvenilmez, basınç tek başına güvenilmez; ikisinden biri yeter.
+    const kalemDeger = e.pointerType === 'pen' && (e.buttons !== 0 || e.pressure > 0)
+    const askidaMi = Boolean(activeRef.current) && iptalSurdurRef.current?.item === activeRef.current
+
+    /**
+     * ASKIDAKİ ÇİZGİYE BAŞKASI YAZAMAZ.
+     *
+     * Sistem çizimi iptal ettiğinde çizgi bir süre açık bekliyor. Bu
+     * sırada gelen HER hareket ona ekleniyordu:
+     *   - kalem ekrandan kalkıp havada gezerken (basınç yok) çizgi
+     *     kalemi takip ediyor, tahtaya alakasız çizgiler atılıyordu,
+     *   - ekrandaki avuç kendi hareketini aynı çizgiye yazıyordu.
+     * Artık askıdaki çizgiyi yalnızca ekrana değdiği KANITLANMIŞ kalem
+     * sürdürebilir.
+     */
+    if (askidaMi && !kalemDeger) return
+
+    /**
+     * Askıdaki çizgi dururken BAŞKA bir işaretçi gerçekten yazmaya
+     * başladıysa (Safari yeni dokunuşun `pointerdown`ını düşürmüş
+     * olabilir), eskisi kapanır ve yeni çizgi aşağıdaki emniyet ağında
+     * açılır. Eskiden bu durumda yeni çizgi hiç oluşmuyordu.
+     */
+    if (askidaMi && activePointerIdRef.current != null && e.pointerId !== activePointerIdRef.current) {
+      iptalSurdurRef.current = null
+      window.clearTimeout(iptalZamanRef.current)
+      activePointerIdRef.current = null
+      endStroke(null)
+    }
+
+    /**
+     * DEVAM EDEN BİR ÇİZİMİ YALNIZ KENDİ İŞARETÇİSİ SÜRDÜRÜR.
+     *
+     * Avuç ya da ikinci parmak, kalemin çizgisine nokta ekleyemez.
+     */
+    if (
+      activePointerIdRef.current != null &&
+      e.pointerId !== activePointerIdRef.current &&
+      (activeRef.current || shapeRef.current || eraseRef.current || lassoRef.current)
+    ) {
+      return
+    }
+
+    /**
+     * ═══════════════════════════════════════════════════════════════
+     * EMNİYET AĞI — KALEM EKRANDA HAREKET EDİYORSA ÇİZGİ MUTLAKA BAŞLAR
+     * ═══════════════════════════════════════════════════════════════
+     * Şikâyet tam olarak şuydu: kalem kaldırılıp yeniden dokundurulup
+     * HEMEN hızlı hareket edildiğinde çizgi hiç oluşmuyor.
+     *
+     * Sebebi, "çizgi ancak `pointerdown` ile başlar" varsayımıydı.
+     * Safari bu varsayımı birkaç şekilde bozuyor:
+     *   - hızlı ardışık dokunuşlarda `pointerdown` geç geliyor ya da
+     *     sistem hareketi sanılıp iptal ediliyor,
+     *   - iptalden sonra kalem ekranda kaldığı hâlde açık çizgi
+     *     kalmıyor.
+     * Bu durumlarda ekrana sürülen kalem hiçbir iz bırakmıyordu:
+     * hareket olayları geliyor ama yazacak bir çizgi yok.
+     *
+     * Artık varsayım şu: KALEM EKRANDAYSA VE HAREKET EDİYORSA YAZIYOR
+     * demektir. Açık çizgi yoksa burada açılır. Hangi olayın kaybolduğu
+     * önemli değil; iz kaybolmuyor.
+     */
+    const cizenArac = toolRef.current === BOARD_TOOLS.PEN || toolRef.current === BOARD_TOOLS.HIGHLIGHT
+    if (
+      cizenArac &&
+      kalemDeger &&
+      !activeRef.current &&
+      !shapeRef.current &&
+      !eraseRef.current &&
+      !lassoRef.current &&
+      !panRef.current &&
+      !pinchRef.current &&
+      !textDraft
+    ) {
+      teshisSay('kurtarildi', { tur: `${e.pointerType} p:${(e.pressure ?? 0).toFixed(2)}` })
+      activePointerIdRef.current = e.pointerId
+      sonBasincRef.current = null
+      beginStroke(point, okuBasinc(e))
+      return
+    }
+
     if (eraseRef.current) continueErase(point)
     else if (lassoRef.current) continueLasso(point)
     else if (shapeRef.current) continueShape(point)
@@ -1400,14 +1500,31 @@ export default function LessonBoard({
         appendStrokePoint(askidaki, kalkisNoktasi.x, kalkisNoktasi.y, askidaki._smoothPressure ?? DEFAULT_PRESSURE)
         scheduleLive()
       }
-      iptalSurdurRef.current = { item: askidaki, at: performance.now() }
+      const iptalAni = performance.now()
+      askidaki._sonHareket = iptalAni
+      iptalSurdurRef.current = { item: askidaki, at: iptalAni }
       window.clearTimeout(iptalZamanRef.current)
-      iptalZamanRef.current = window.setTimeout(() => {
+
+      /**
+       * ÇİZGİYİ ANCAK KALEM GERÇEKTEN DURUNCA KAPAT.
+       *
+       * Kalem ekranda kaldığı hâlde sistem çizimi iptal edebiliyor.
+       * Sabit bir geri sayım, o sırada hâlâ yazılmakta olan çizgiyi
+       * ortasından kesiyordu. Bu kontrol, her hareket sonrası kendini
+       * erteler: yazma sürdükçe çizgi yaşar.
+       */
+      const kapatmayiDene = () => {
         if (iptalSurdurRef.current?.item !== askidaki) return
+        const bosta = performance.now() - (askidaki._sonHareket ?? iptalAni)
+        if (bosta < KESINTI_BOSTA_MS) {
+          iptalZamanRef.current = window.setTimeout(kapatmayiDene, KESINTI_BOSTA_MS - bosta)
+          return
+        }
         iptalSurdurRef.current = null
         activePointerIdRef.current = null
         if (activeRef.current === askidaki) endStroke(null)
-      }, KESINTI_SURESI_MS)
+      }
+      iptalZamanRef.current = window.setTimeout(kapatmayiDene, KESINTI_BOSTA_MS)
       return
     }
 
