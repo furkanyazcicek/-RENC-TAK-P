@@ -23,6 +23,13 @@ import {
   boostFaintStroke,
 } from '../src/lib/liveLesson/board/inkStroke.js'
 import { drawInkStroke } from '../src/lib/liveLesson/board/freehandInk.js'
+import {
+  findIosStylusTouch,
+  findTouchById,
+  iosTouchKind,
+  rawIosTouchPressure,
+  shouldUseIosTouchInput,
+} from '../src/lib/liveLesson/board/iosTouchInput.js'
 
 let pass = 0
 let fail = 0
@@ -211,6 +218,36 @@ console.log('\n=== 10) MERKEZ YOL MOTORU: HAM NOKTALAR KAYBOLMAZ ===')
   calls.length = 0
   drawInkStroke(ctx, { t: 'pen', c: '#131329', w: 4, p: [30, 40, 0.24] }, true)
   check('i noktası dolu daire olarak çiziliyor', calls.some((c) => c[0] === 'arc') && calls.some((c) => c[0] === 'fill'))
+}
+
+console.log('\n=== 11) iPadOS TOUCH MOTORU: PENCIL AYRI YOLDAN GELİR ===')
+{
+  check(
+    'gerçek iPad Touch motorunu açıyor',
+    shouldUseIosTouchInput({ userAgent: 'Mozilla/5.0 (iPad)', platform: 'iPad', maxTouchPoints: 5 }, true)
+  )
+  check(
+    'masaüstü site kipindeki iPad de tanınıyor',
+    shouldUseIosTouchInput({ userAgent: 'Mozilla/5.0 (Macintosh)', platform: 'MacIntel', maxTouchPoints: 5 }, true)
+  )
+  check(
+    'MacBook Pointer motorunda kalıyor',
+    shouldUseIosTouchInput({ userAgent: 'Mozilla/5.0 (Macintosh)', platform: 'MacIntel', maxTouchPoints: 0 }, true) === false
+  )
+  check(
+    'Touch Events yoksa iPad bile Pointer yedeğinde kalıyor',
+    shouldUseIosTouchInput({ userAgent: 'Mozilla/5.0 (iPad)', platform: 'iPad', maxTouchPoints: 5 }, false) === false
+  )
+
+  const pencil = { identifier: 17, touchType: 'stylus', force: 0.42, radiusX: 1, radiusY: 1 }
+  const finger = { identifier: 18, touchType: 'direct', force: 0.5, radiusX: 15, radiusY: 14 }
+  check('Pencil stylus olarak sınıflanıyor', iosTouchKind(pencil) === 'stylus')
+  check('parmak stylus sanılmıyor', iosTouchKind(finger) === 'finger')
+  check('karışık temaslardan yalnız Pencil seçiliyor', findIosStylusTouch([finger, pencil]) === pencil)
+  check('yalnız parmak varsa çizim teması seçilmiyor', findIosStylusTouch([finger]) === null)
+  check('aktif Touch kimliği doğru bulunuyor', findTouchById([finger, pencil], 17) === pencil)
+  check('Touch basıncı mevcut basınç motoruna aktarılıyor', rawIosTouchPressure(pencil) === 0.42)
+  check('eski WebKit basınç alanı destekleniyor', rawIosTouchPressure({ webkitForce: 0.36 }) === 0.36)
 }
 
 console.log(`\n=== SONUÇ: ${pass} geçti, ${fail} kaldı ===\n`)

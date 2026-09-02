@@ -43,6 +43,13 @@ import {
   shouldAppendLiftPoint,
   smoothPressure,
 } from '../../lib/liveLesson/board/inkStroke'
+import {
+  findIosStylusTouch,
+  findTouchById,
+  iosTouchKind,
+  rawIosTouchPressure,
+  shouldUseIosTouchInput,
+} from '../../lib/liveLesson/board/iosTouchInput'
 import { MAX_SCALE, MIN_SCALE } from '../../lib/solutionCanvas'
 
 /**
@@ -155,6 +162,19 @@ export default function LessonBoard({
   className,
   wrapperClassName,
 }) {
+  /**
+   * Gerçek iPad testi Pointer Events yolunun hızlı Pencil temaslarını
+   * kestiğini, aynı Canvas'ın doğrudan Touch Events ile akıcı çalıştığını
+   * gösterdi. Bu karar bir kez verilir; masaüstü ve Android mevcut
+   * Pointer motorunda kalır.
+   */
+  const iosTouchInput = useMemo(
+    () =>
+      typeof window !== 'undefined' &&
+      shouldUseIosTouchInput(window.navigator, 'ontouchstart' in window),
+    []
+  )
+
   /* ---------------- Arayüz durumu ---------------- */
   const [tool, setTool] = useState(canEdit ? BOARD_TOOLS.PEN : BOARD_TOOLS.PAN)
   /**
@@ -234,6 +254,10 @@ export default function LessonBoard({
   const pinchRef = useRef(null)
   const panRef = useRef(null)
   const pointerUpRef = useRef(null)
+  const touchStartRef = useRef(null)
+  const touchMoveRef = useRef(null)
+  const touchEndRef = useRef(null)
+  const activeTouchIdRef = useRef(null)
   /**
    * ÇİZİMİ BAŞLATAN İŞARETÇİNİN KİMLİĞİ.
    *
@@ -1177,7 +1201,172 @@ export default function LessonBoard({
     return deger
   }
 
+  /** Apple Pencil'in Touch nesnesindeki basıncı mevcut kalem kuralına uyarlar. */
+  function okuIosBasinc(touch) {
+    const deger = normalizePressure(rawIosTouchPressure(touch), {
+      pointerType: 'pen',
+      previous: sonBasincRef.current,
+      enabled: pressureEnabled,
+    })
+    sonBasincRef.current = deger
+    return deger
+  }
+
+  /**
+   * iPadOS APPLE PENCIL — DOĞRUDAN TOUCH EVENTS MOTORU
+   *
+   * Burada React'in sentetik olayı ya da Pointer Events kullanılmaz.
+   * Laboratuvar A/B testinde akıcı çalışan yol aynen mevcut tahta
+   * komutlarına bağlanır. Parmak teması seçilmez; mevcut parmakla
+   * kaydırma/yakınlaştırma davranışı Pointer yolunda kalır.
+   */
+  function handleIosTouchStart(event) {
+    if (!iosTouchInput || activeTouchIdRef.current !== null) return
+    const touch = findIosStylusTouch(event.changedTouches)
+    if (!touch) return
+    if (event.cancelable) event.preventDefault()
+
+    // Önceki temasın bitiş olayı sistem tarafından kaybedildiyse yeni
+    // Pencil inişi onu ezmez; normal biçimde kapatıp ayrı bir iz açar.
+    if (eraseRef.current) endErase()
+    else if (lassoRef.current) endLasso()
+    else if (shapeRef.current) endShape()
+    else if (activeRef.current) endStroke(null)
+
+    iptalSurdurRef.current = null
+    window.clearTimeout(iptalZamanRef.current)
+
+    const secim = window.getSelection?.()
+    if (secim && !secim.isCollapsed) secim.removeAllRanges()
+
+    const sahip = `ios-touch:${touch.identifier}`
+    activeTouchIdRef.current = touch.identifier
+    activePointerIdRef.current = sahip
+    penDownRef.current = true
+    pinchRef.current = null
+    if (panRef.current?.type === 'touch') panRef.current = null
+    for (const [id, tracked] of pointersRef.current) {
+      if (tracked.type === 'touch') pointersRef.current.delete(id)
+    }
+
+    const hamBasinc = rawIosTouchPressure(touch)
+    const tur = iosTouchKind(touch)
+    teshisSay('indi', {
+      tur: `ios-touch ${tur} p:${hamBasinc.toFixed(2)}`,
+      baslangic: 'kapsayıcı · doğrudan',
+      giris: 'iOS Touch',
+      yakalama: 'gerekmiyor',
+    })
+    kayit(`▼ İNDİ ios-touch ${tur} id:${touch.identifier} p:${hamBasinc.toFixed(2)}`)
+
+    const activeTool = toolRef.current
+    if (activeTool === BOARD_TOOLS.PAN) {
+      userAdjustedRef.current = true
+      panRef.current = {
+        x: touch.clientX,
+        y: touch.clientY,
+        view: { ...viewRef.current },
+        type: 'ios-touch',
+        pointerId: sahip,
+      }
+      return
+    }
+
+    if (!canEdit) return
+
+    const point = toBoard(touch.clientX, touch.clientY)
+    sonBasincRef.current = null
+    const pressure = okuIosBasinc(touch)
+    kayit(`  ✔ ÇİZGİ BAŞLADI (${activeTool}) iOS Touch id:${touch.identifier}`)
+    if (activeTool === BOARD_TOOLS.ERASER) beginErase(point)
+    else if (activeTool === BOARD_TOOLS.LASSO) beginLasso(point)
+    else if (activeTool === BOARD_TOOLS.TEXT) {
+      setTextDraft({
+        x: point.x,
+        y: point.y,
+        clientX: touch.clientX,
+        clientY: touch.clientY,
+        value: '',
+      })
+    } else if (isShapeTool(activeTool)) beginShape(point)
+    else beginStroke(point, pressure)
+  }
+
+  function handleIosTouchMove(event) {
+    if (!iosTouchInput || activeTouchIdRef.current === null) return
+    const touch = findTouchById(event.changedTouches, activeTouchIdRef.current)
+    if (!touch) return
+    if (event.cancelable) event.preventDefault()
+
+    teshisSay('hareket', {
+      tur: `ios-touch move p:${rawIosTouchPressure(touch).toFixed(2)}`,
+      giris: 'iOS Touch',
+    })
+
+    if (panRef.current?.type === 'ios-touch') {
+      const start = panRef.current
+      setView({
+        scale: start.view.scale,
+        tx: start.view.tx + (touch.clientX - start.x),
+        ty: start.view.ty + (touch.clientY - start.y),
+      })
+      return
+    }
+
+    if (!canEdit) return
+    const point = toBoard(touch.clientX, touch.clientY)
+    if (eraseRef.current) continueErase(point)
+    else if (lassoRef.current) continueLasso(point)
+    else if (shapeRef.current) continueShape(point)
+    else if (activeRef.current) continueStroke(point, okuIosBasinc(touch))
+  }
+
+  function handleIosTouchEnd(event) {
+    if (!iosTouchInput || activeTouchIdRef.current === null) return
+    const touchId = activeTouchIdRef.current
+    const touch = findTouchById(event.changedTouches, touchId)
+    if (!touch && findTouchById(event.touches, touchId)) return
+    if (event.cancelable) event.preventDefault()
+
+    const iptalMi = event.type === 'touchcancel'
+    teshisSay(iptalMi ? 'iptal' : 'kalkti', {
+      tur: `ios-touch ${event.type}`,
+      giris: 'iOS Touch',
+    })
+    kayit(`▲ ${iptalMi ? 'İPTAL' : 'KALKTI'} ios-touch id:${touchId}`)
+
+    activeTouchIdRef.current = null
+    activePointerIdRef.current = null
+    penDownRef.current = false
+    palmGuardRef.current = performance.now()
+    iptalSurdurRef.current = null
+    window.clearTimeout(iptalZamanRef.current)
+    for (const [id, tracked] of pointersRef.current) {
+      if (tracked.type === 'touch') pointersRef.current.delete(id)
+    }
+
+    if (panRef.current?.type === 'ios-touch') {
+      panRef.current = null
+      return
+    }
+
+    if (eraseRef.current) endErase()
+    else if (lassoRef.current) endLasso()
+    else if (shapeRef.current) endShape()
+    else if (activeRef.current) {
+      // Touch Events yolunda iptal de eldeki tüm örnekleri hemen
+      // tamamlar. Pointer yolundaki askı/bekleme hilesine gerek yoktur.
+      endStroke(touch ? toBoard(touch.clientX, touch.clientY) : null)
+    }
+  }
+
   function handlePointerDown(e) {
+    // iPad'de Pencil'in sahibi doğrudan Touch motorudur. Aynı fiziksel
+    // temasın ardından gelen uyumluluk Pointer olayı ikinci kez işlenmez.
+    if (iosTouchInput && (e.pointerType === 'pen' || activeTouchIdRef.current !== null)) {
+      if (e.cancelable) e.preventDefault()
+      return
+    }
     const wrap = wrapRef.current
     if (!wrap) return
     teshisSay('indi', { tur: `${e.pointerType} b:${e.buttons} p:${(e.pressure ?? 0).toFixed(2)}` })
@@ -1368,6 +1557,10 @@ export default function LessonBoard({
   }
 
   function handlePointerMove(e) {
+    if (iosTouchInput && (e.pointerType === 'pen' || activeTouchIdRef.current !== null)) {
+      if (e.cancelable) e.preventDefault()
+      return
+    }
     teshisSay('hareket')
     /**
      * HAVADA GEZEN KALEM ÇİZMEZ.
@@ -1542,6 +1735,10 @@ export default function LessonBoard({
   }
 
   function handlePointerUp(e) {
+    if (iosTouchInput && (e.pointerType === 'pen' || activeTouchIdRef.current !== null)) {
+      if (e.cancelable) e.preventDefault()
+      return
+    }
     const iptalMi = e.type === 'pointercancel'
     teshisSay(iptalMi ? 'iptal' : 'kalkti', { tur: `${e.pointerType} ${e.type}` })
     kayit(`▲ ${iptalMi ? 'İPTAL' : 'KALKTI'} ${e.pointerType} id:${e.pointerId}`)
@@ -1659,6 +1856,7 @@ export default function LessonBoard({
    * `pointerdown` tarafından yapılır.
    */
   function handleLostPointerCapture(e) {
+    if (iosTouchInput && e.pointerType === 'pen') return
     if (activePointerIdRef.current !== e.pointerId) return
     if (!activeRef.current && !shapeRef.current && !eraseRef.current) return
     teshisSay('yakalama-koptu', { tur: e.pointerType })
@@ -1668,6 +1866,9 @@ export default function LessonBoard({
   // Pencere düzeyindeki yedek dinleyiciler bu referanslar üzerinden çağırır.
   pointerUpRef.current = handlePointerUp
   pointerMoveRef.current = handlePointerMove
+  touchStartRef.current = handleIosTouchStart
+  touchMoveRef.current = handleIosTouchMove
+  touchEndRef.current = handleIosTouchEnd
 
   function handleWheel(e) {
     if (e.ctrlKey || e.metaKey) {
@@ -1829,6 +2030,30 @@ export default function LessonBoard({
   }, [])
 
   /**
+   * React'in sentetik Touch sarmalına girmeden, laboratuvarda doğrulanan
+   * pasif olmayan yerel dinleyicileri doğrudan tahta kapsayıcısına bağla.
+   */
+  useEffect(() => {
+    if (!iosTouchInput) return undefined
+    const wrap = wrapRef.current
+    if (!wrap) return undefined
+    const options = { passive: false }
+    const start = (event) => touchStartRef.current?.(event)
+    const move = (event) => touchMoveRef.current?.(event)
+    const end = (event) => touchEndRef.current?.(event)
+    wrap.addEventListener('touchstart', start, options)
+    wrap.addEventListener('touchmove', move, options)
+    wrap.addEventListener('touchend', end, options)
+    wrap.addEventListener('touchcancel', end, options)
+    return () => {
+      wrap.removeEventListener('touchstart', start, options)
+      wrap.removeEventListener('touchmove', move, options)
+      wrap.removeEventListener('touchend', end, options)
+      wrap.removeEventListener('touchcancel', end, options)
+    }
+  }, [iosTouchInput])
+
+  /**
    * SON GÜVENLİK AĞI — çizgi havada asılı kalmasın.
    *
    * İşaretçi yakalama kurulamadığında ya da sistem işaretçiyi iptal
@@ -1886,12 +2111,15 @@ export default function LessonBoard({
       islem: '—',
       basinc: '—',
       yakalama: '—',
+      giris: iosTouchInput ? 'iOS Touch' : 'Pointer',
     }
     kayitRef.current = []
     const timer = window.setInterval(() => {
       const sayac = teshisRef.current
       if (!sayac) return
-      sayac.yakalama = wrapRef.current?.hasPointerCapture?.(activePointerIdRef.current ?? -1) ? 'var' : 'yok'
+      sayac.yakalama = iosTouchInput
+        ? 'gerekmiyor'
+        : wrapRef.current?.hasPointerCapture?.(activePointerIdRef.current ?? -1) ? 'var' : 'yok'
       sayac.cizgi = activeRef.current ? 1 : 0
       sayac.nokta = activeRef.current ? activeRef.current.p.length / 3 : 0
       setTeshis({ ...sayac, kayit: [...kayitRef.current] })
@@ -1902,7 +2130,7 @@ export default function LessonBoard({
     }
     // `teshis` yalnızca açık/kapalı bilgisi için okunur; sayımlar referansta.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [Boolean(teshis)])
+  }, [Boolean(teshis), iosTouchInput])
 
   /**
    * KARŞI TARAFTAN YARIM KALAN ÇİZGİLERİ TEMİZLE.
@@ -2226,7 +2454,8 @@ export default function LessonBoard({
         {teshis && (
           <div className="pointer-events-none absolute left-2 top-2 z-20 rounded-card bg-ink/85 px-3 py-2 font-mono text-2xs leading-relaxed text-white shadow-elevated">
             <div className="font-semibold">Tahta teşhis</div>
-            <div>motor: merkez yol v2</div>
+            <div>motor: merkez yol v3</div>
+            <div>giriş: {teshis.giris ?? (iosTouchInput ? 'iOS Touch' : 'Pointer')}</div>
             <div>indi: {teshis.indi} · hareket: {teshis.hareket}</div>
             <div>kalktı: {teshis.kalkti} · iptal: {teshis.iptal}</div>
             <div>bitti: {teshis.bitti} · sayfada: {teshis.sayfada}</div>
