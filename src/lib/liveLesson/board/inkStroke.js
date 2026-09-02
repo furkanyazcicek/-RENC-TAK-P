@@ -34,7 +34,11 @@ export function normalizePressure(raw, { pointerType = 'pen', previous = null, e
   if (pointerType !== 'pen') return DEFAULT_PRESSURE
 
   const value = Number.isFinite(raw) ? raw : 0
-  if (value > 0) return Math.min(1, value)
+  // Pozitif olması tek başına görünür olduğu anlamına gelmez. Pencil yeni
+  // temasta 0 ile 0.06 arasında çok küçük değerler bildirebiliyor; özellikle
+  // i noktası ve A/F kolları gibi kısa izler, çizgi boyunca bir kez daha
+  // yüksek basınç gelmediyse gözle seçilemeyecek kadar inceliyordu.
+  if (value > 0) return Math.min(1, Math.max(PEN_MIN_VISUAL_PRESSURE, value))
   // Basınç 0 geldi: önce bu çizgideki son geçerli değere, o da yoksa
   // görsel alt sınıra düş. Noktayı ASLA reddetme.
   if (previous != null && previous > 0) return previous

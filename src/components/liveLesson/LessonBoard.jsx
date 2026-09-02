@@ -184,7 +184,22 @@ export default function LessonBoard({
   const [clearAsk, setClearAsk] = useState(false)
   const [teshis, setTeshis] = useState(() =>
     teshisAcikMi()
-      ? { indi: 0, hareket: 0, kalkti: 0, iptal: 0, tur: '—', nokta: 0, cizgi: 0, yakalama: '—' }
+      ? {
+          indi: 0,
+          hareket: 0,
+          kalkti: 0,
+          iptal: 0,
+          bitti: 0,
+          tur: '—',
+          nokta: 0,
+          cizgi: 0,
+          sayfada: 0,
+          zemin: '—',
+          baslangic: '—',
+          islem: '—',
+          basinc: '—',
+          yakalama: '—',
+        }
       : null
   )
 
@@ -306,6 +321,10 @@ export default function LessonBoard({
     ctx.restore()
 
     drawPageItems(ctx, current, () => repaintSoonRef.current?.())
+    if (teshisRef.current) {
+      teshisRef.current.sayfada = current.items.length
+      teshisRef.current.zemin = 'tam boya'
+    }
   }, [])
 
   const schedulePaint = useCallback(() => {
@@ -336,6 +355,7 @@ export default function LessonBoard({
     const { scale, tx, ty } = viewRef.current
     ctx.setTransform(dpr * scale, 0, 0, dpr * scale, dpr * tx, dpr * ty)
     drawItem(ctx, item)
+    if (teshisRef.current) teshisRef.current.zemin = 'tek damga'
     return true
   }, [])
 
@@ -962,6 +982,7 @@ export default function LessonBoard({
    * @param {{x:number,y:number}|null} kalkis  Kalemin ekrandan AYRILDIĞI nokta.
    */
   function endStroke(kalkis = null) {
+    const islemBaslangici = performance.now()
     const active = activeRef.current
     activeRef.current = null
     if (!active) return
@@ -984,6 +1005,12 @@ export default function LessonBoard({
     }
     // Kalem hiç basınç bildirmediyse iz görünür kalınlığa çekilir.
     boostFaintStroke(active)
+    let enDusukBasinc = 1
+    let enYuksekBasinc = 0
+    for (let i = 2; i < active.p.length; i += 3) {
+      enDusukBasinc = Math.min(enDusukBasinc, active.p[i])
+      enYuksekBasinc = Math.max(enYuksekBasinc, active.p[i])
+    }
     delete active._lastSend
     delete active._smoothPressure
     delete active._sonHareket
@@ -997,8 +1024,16 @@ export default function LessonBoard({
      * gereksiz ikinci mesaj, hızlı yazarken haktan taşıp bağlantının
      * kopmasına ve "Yeniden bağlanılıyor" uyarısına yol açıyordu.
      */
-    kayit(`  ● ÇİZGİ BİTTİ — ${active.p.length / 3} nokta`)
     addItem(active, { broadcast: false, stamp: active })
+    const islemSuresi = performance.now() - islemBaslangici
+    teshisSay('bitti', {
+      sayfada: currentPage().items.length,
+      islem: `${islemSuresi.toFixed(1)} ms`,
+      basinc: `${enDusukBasinc.toFixed(2)}–${enYuksekBasinc.toFixed(2)}`,
+    })
+    kayit(
+      `  ● BİTTİ #${teshisRef.current?.bitti ?? '—'} · ${active.p.length / 3} nokta · ${islemSuresi.toFixed(1)}ms`
+    )
     scheduleLive()
     channel?.send?.(CHANNEL_EVENTS.BOARD_STROKE, {
       phase: 'end',
@@ -1272,6 +1307,11 @@ export default function LessonBoard({
       wrap.setPointerCapture?.(e.pointerId)
     } catch {
       /* yakalama olmadan da çizim çalışır */
+    }
+    if (teshisRef.current) {
+      const hedef = e.target === wrap ? 'kapsayıcı' : (e.target?.tagName?.toLowerCase?.() ?? '?')
+      const yakalandi = wrap.hasPointerCapture?.(e.pointerId) ? 'yakalandı' : 'yakalanmadı'
+      teshisRef.current.baslangic = `${hedef} · ${yakalandi}`
     }
     pointersRef.current.set(e.pointerId, { x: e.clientX, y: e.clientY, type: e.pointerType })
 
@@ -1831,7 +1871,22 @@ export default function LessonBoard({
   /* Teşhis kipi: sayımları saniyede birkaç kez ekrana yansıt */
   useEffect(() => {
     if (!teshis) return undefined
-    teshisRef.current = { indi: 0, hareket: 0, kalkti: 0, iptal: 0, tur: '—', nokta: 0, cizgi: 0, yakalama: '—' }
+    teshisRef.current = {
+      indi: 0,
+      hareket: 0,
+      kalkti: 0,
+      iptal: 0,
+      bitti: 0,
+      tur: '—',
+      nokta: 0,
+      cizgi: 0,
+      sayfada: currentPage().items.length,
+      zemin: '—',
+      baslangic: '—',
+      islem: '—',
+      basinc: '—',
+      yakalama: '—',
+    }
     kayitRef.current = []
     const timer = window.setInterval(() => {
       const sayac = teshisRef.current
@@ -2151,6 +2206,8 @@ export default function LessonBoard({
           // KAPATMIYOR; anahtar bu özellik.
           WebkitTouchCallout: 'none',
           WebkitUserSelect: 'none',
+          WebkitTapHighlightColor: 'transparent',
+          touchAction: 'none',
           userSelect: 'none',
           cursor:
             tool === BOARD_TOOLS.PAN
@@ -2160,7 +2217,10 @@ export default function LessonBoard({
                 : canEdit ? 'crosshair' : 'default',
         }}
       >
-        <canvas ref={baseRef} className="absolute inset-0" aria-hidden="true" />
+        {/* Tuval olay hedefi değil, yalnızca görüntüdür. Pencil olayı
+            doğrudan kapsayıcıda başlar; iPad/WebKit'teki çocuk tuvalden
+            ata öğeye işaretçi yakalama belirsizliği böylece ortadan kalkar. */}
+        <canvas ref={baseRef} className="pointer-events-none absolute inset-0" aria-hidden="true" />
         <canvas ref={liveRef} className="pointer-events-none absolute inset-0" aria-hidden="true" />
 
         {teshis && (
@@ -2168,8 +2228,12 @@ export default function LessonBoard({
             <div className="font-semibold">Tahta teşhis</div>
             <div>indi: {teshis.indi} · hareket: {teshis.hareket}</div>
             <div>kalktı: {teshis.kalkti} · iptal: {teshis.iptal}</div>
+            <div>bitti: {teshis.bitti} · sayfada: {teshis.sayfada}</div>
             <div>son: {teshis.tur}</div>
             <div>çizgi: {teshis.cizgi ? 'açık' : 'yok'} · nokta: {teshis.nokta}</div>
+            <div>başlangıç: {teshis.baslangic}</div>
+            <div>zemin: {teshis.zemin} · işlem: {teshis.islem}</div>
+            <div>basınç: {teshis.basinc}</div>
             <div>yakalama: {teshis.yakalama}</div>
             <div className="mt-1 max-h-[48vh] overflow-hidden border-t border-white/25 pt-1">
               {(teshis.kayit ?? []).map((satir, i) => (

@@ -45,6 +45,10 @@ console.log('\n=== 1) BASINÇ: düşük değer noktayı ASLA düşürmez ===')
   check('çizgi sonundaki 0 basınç son geçerli değeri koruyor', son === 0.62, `son=${son}`)
 
   check('gerçek basınç olduğu gibi geçiyor', normalizePressure(0.43, { pointerType: 'pen' }) === 0.43)
+  check(
+    'pozitif ama görünmez basınç alt sınıra çekiliyor',
+    normalizePressure(0.01, { pointerType: 'pen' }) === PEN_MIN_VISUAL_PRESSURE
+  )
   check('1 üstü basınç kırpılıyor', normalizePressure(3, { pointerType: 'pen' }) === 1)
   check('fare için orta değer', normalizePressure(0, { pointerType: 'mouse' }) === DEFAULT_PRESSURE)
   check('parmak için orta değer', normalizePressure(0, { pointerType: 'touch' }) === DEFAULT_PRESSURE)
