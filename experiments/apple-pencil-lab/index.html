@@ -81,6 +81,13 @@
 
         <div class="tool-divider" aria-hidden="true"></div>
 
+        <div class="input-mode-switch" role="group" aria-label="Kalem giriş motoru">
+          <button class="is-selected" type="button" data-input-mode="ios-touch" aria-pressed="true">iOS Touch</button>
+          <button type="button" data-input-mode="pointer" aria-pressed="false">Pointer</button>
+        </div>
+
+        <div class="tool-divider" aria-hidden="true"></div>
+
         <div class="history-actions" role="group" aria-label="Geçmiş işlemleri">
           <button class="icon-button" id="undoButton" type="button" aria-label="Geri al" title="Geri al" disabled>
             <svg viewBox="0 0 24 24"><path d="m9 14-5-5 5-5"/><path d="M4 9h10a6 6 0 0 1 6 6v1"/></svg>
@@ -125,7 +132,7 @@
         <div class="engine-summary" id="engineSummary" role="status">
           <span class="status-dot"></span>
           <span>Yerel kayıt hazır</span>
-          <span class="engine-version">Pencil Core 0.1</span>
+          <span class="engine-version">Pencil Core 0.2</span>
         </div>
       </footer>
     </main>
@@ -149,6 +156,8 @@
           <div><span>Birleşik örnek</span><strong id="metricCoalesced">0</strong></div>
           <div><span>İptal</span><strong id="metricCancelled">0</strong></div>
           <div><span>En uzun olay aralığı</span><strong id="metricGap">0 ms</strong></div>
+          <div><span>Giriş motoru</span><strong id="metricMode">iOS Touch</strong></div>
+          <div><span>Touch olayı</span><strong id="metricTouchEvents">0</strong></div>
         </div>
         <div class="diagnostics-copy" id="diagnosticsCopy">
           Henüz Apple Pencil teması alınmadı. Birkaç kelime yazdıktan sonra bu paneli yeniden aç.

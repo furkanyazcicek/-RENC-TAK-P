@@ -1,5 +1,5 @@
 const STORAGE_KEY = 'drkoc-pencil-lab-v1'
-const ENGINE_VERSION = 'Pencil Core 0.1.0'
+const ENGINE_VERSION = 'Pencil Core 0.2.0'
 const DEFAULT_COLOR = '#17172d'
 const MAX_HISTORY = 80
 const PALM_REJECTION_MS = 650
@@ -46,8 +46,10 @@ class PencilEngine {
     this.color = DEFAULT_COLOR
     this.size = 3.2
     this.pressureEnabled = true
+    this.inputMode = 'ios-touch'
     this.activeStroke = null
     this.activePointerId = null
+    this.activeTouchId = null
     this.erasing = null
     this.touches = new Map()
     this.gesture = null
@@ -81,6 +83,9 @@ class PencilEngine {
       maxEventGap: 0,
       lastEventAt: 0,
       lastPointerType: '—',
+      touchEvents: 0,
+      pointerBypassed: 0,
+      lastTouchKind: '—',
       lastPressureMin: null,
       lastPressureMax: null,
     }
@@ -97,6 +102,10 @@ class PencilEngine {
     this.inputCanvas.addEventListener('pointerup', (event) => this.pointerUp(event), options)
     this.inputCanvas.addEventListener('pointercancel', (event) => this.pointerCancel(event), options)
     this.inputCanvas.addEventListener('contextmenu', (event) => event.preventDefault())
+    this.inputCanvas.addEventListener('touchstart', (event) => this.touchStart(event), options)
+    this.inputCanvas.addEventListener('touchmove', (event) => this.touchMove(event), options)
+    this.inputCanvas.addEventListener('touchend', (event) => this.touchEnd(event), options)
+    this.inputCanvas.addEventListener('touchcancel', (event) => this.touchCancel(event), options)
 
     // Destekleyen tarayıcılarda pointerrawupdate, ekran yenilemesini beklemeden
     // en yeni donanım örneğini getirir. Koordinat tekilleştirme iki olayın aynı
@@ -139,6 +148,16 @@ class PencilEngine {
 
   setColor(color) { this.color = color }
   setSize(size) { this.size = Number(size) }
+
+  setInputMode(mode) {
+    if (!['ios-touch', 'pointer'].includes(mode) || this.inputMode === mode) return
+    if (this.activePointerId !== null) this.finishStroke(true)
+    this.inputMode = mode
+    this.resetMetrics()
+    const status = $('#inputStatus')
+    status.classList.remove('is-pen')
+    status.querySelector('span:last-child').textContent = mode === 'ios-touch' ? 'iOS Touch hazır' : 'Pointer hazır'
+  }
 
   clearContext(context) {
     context.setTransform(1, 0, 0, 1, 0, 0)
@@ -287,6 +306,16 @@ class PencilEngine {
 
   pointerDown(event) {
     const pointerType = event.pointerType || 'mouse'
+
+    // iPad A/B testinin yeni kolunda kalem ve parmak Pointer Events'e hiç
+    // girmez. Aynı fiziksel teması yalnızca Touch Events motoru işler.
+    if (this.inputMode === 'ios-touch' && (pointerType === 'pen' || pointerType === 'touch')) {
+      if (pointerType === 'pen') {
+        this.lastPenAt = performance.now()
+        this.metrics.pointerBypassed += 1
+      }
+      return
+    }
     this.metrics.lastPointerType = pointerType
 
     if (pointerType === 'pen') {
@@ -336,6 +365,7 @@ class PencilEngine {
   }
 
   pointerMove(event, isRawUpdate = false) {
+    if (this.inputMode === 'ios-touch' && (event.pointerType === 'pen' || event.pointerType === 'touch')) return
     if (this.touches.has(event.pointerId)) {
       if (isRawUpdate) return
       this.moveGesture(event)
@@ -356,6 +386,7 @@ class PencilEngine {
   }
 
   pointerUp(event) {
+    if (this.inputMode === 'ios-touch' && (event.pointerType === 'pen' || event.pointerType === 'touch')) return
     if (this.touches.has(event.pointerId)) {
       this.endGesture(event)
       return
@@ -375,6 +406,7 @@ class PencilEngine {
   }
 
   pointerCancel(event) {
+    if (this.inputMode === 'ios-touch' && (event.pointerType === 'pen' || event.pointerType === 'touch')) return
     if (this.touches.has(event.pointerId)) {
       this.endGesture(event)
       return
@@ -395,6 +427,7 @@ class PencilEngine {
     const stroke = this.activeStroke
     this.activeStroke = null
     this.activePointerId = null
+    this.activeTouchId = null
     this.metrics.lastEventAt = 0
     this.clearInput()
     if (commit && stroke?.points.length) {
@@ -497,6 +530,7 @@ class PencilEngine {
     const erasing = this.erasing
     this.erasing = null
     this.activePointerId = null
+    this.activeTouchId = null
     if (erasing?.changed) {
       this.pushHistory(erasing.before, copyStrokes(this.page.strokes))
       this.persist()
@@ -576,6 +610,180 @@ class PencilEngine {
   resetMetrics() {
     this.metrics = this.newMetrics()
     this.onMetrics(this.metrics)
+  }
+
+  touchKind(touch) {
+    const declared = String(touch.touchType ?? touch.webkitTouchType ?? '').toLowerCase()
+    if (declared.includes('stylus') || declared.includes('pen') || declared.includes('pencil') || declared === '2') return 'stylus'
+    if (declared.includes('direct') || declared.includes('finger') || declared.includes('touch')) return 'finger'
+
+    const radiusX = Number(touch.radiusX ?? touch.webkitRadiusX)
+    const radiusY = Number(touch.radiusY ?? touch.webkitRadiusY)
+    const force = Number(touch.force ?? touch.webkitForce)
+    if (Number.isFinite(force) && force > 0 && Number.isFinite(radiusX) && Number.isFinite(radiusY) && Math.max(radiusX, radiusY) <= 5) {
+      return 'stylus-olasi'
+    }
+    return 'belirsiz'
+  }
+
+  chooseDrawingTouch(event) {
+    const changed = [...event.changedTouches]
+    const exact = changed.find((touch) => this.touchKind(touch) === 'stylus')
+    if (exact) return exact
+    const likely = changed.find((touch) => this.touchKind(touch) === 'stylus-olasi')
+    if (likely) return likely
+    // WebKit sürümü touchType bilgisini JS'e açmıyorsa tek temasa
+    // izin ver. Bu A/B testinde kalem yolunu yine Pointer Events'ten ayırır.
+    if (event.touches.length === 1 && changed.length === 1) return changed[0]
+    return null
+  }
+
+  findChangedTouch(event, identifier) {
+    return [...event.changedTouches].find((touch) => touch.identifier === identifier) || null
+  }
+
+  touchPoint(touch, timeStamp) {
+    const position = this.clientToWorld(touch.clientX, touch.clientY)
+    const rawPressure = Number(touch.force ?? touch.webkitForce)
+    const previous = this.activeStroke?.points[this.activeStroke.points.length - 1]
+    return {
+      x: position.x,
+      y: position.y,
+      pressure: rawPressure > 0 ? clamp(rawPressure, 0.05, 1) : (previous?.pressure ?? 0.5),
+      time: Number(timeStamp) || performance.now(),
+      tiltX: 0,
+      tiltY: 0,
+    }
+  }
+
+  appendTouch(touch, timeStamp) {
+    if (!this.activeStroke) return
+    const point = this.touchPoint(touch, timeStamp)
+    const previous = this.activeStroke.points[this.activeStroke.points.length - 1]
+    if (previous && Math.abs(previous.x - point.x) < 0.01 && Math.abs(previous.y - point.y) < 0.01) {
+      this.metrics.duplicateSamples += 1
+      return
+    }
+
+    this.activeStroke.points.push(point)
+    this.metrics.samples += 1
+    this.metrics.lastPressureMin = this.metrics.lastPressureMin === null ? point.pressure : Math.min(this.metrics.lastPressureMin, point.pressure)
+    this.metrics.lastPressureMax = this.metrics.lastPressureMax === null ? point.pressure : Math.max(this.metrics.lastPressureMax, point.pressure)
+    this.prepareWorldContext(this.inputContext)
+    this.inputContext.save()
+    this.inputContext.strokeStyle = this.activeStroke.color
+    this.inputContext.fillStyle = this.activeStroke.color
+    this.inputContext.globalAlpha = this.activeStroke.tool === 'highlighter' ? 0.25 : 1
+    this.inputContext.lineCap = 'round'
+    this.inputContext.lineJoin = 'round'
+    if (!previous) {
+      const radius = this.strokeWidth(this.activeStroke, point.pressure) / 2
+      this.inputContext.beginPath()
+      this.inputContext.arc(point.x, point.y, radius, 0, Math.PI * 2)
+      this.inputContext.fill()
+    } else {
+      this.drawSegment(this.inputContext, this.activeStroke, previous, point)
+    }
+    this.inputContext.restore()
+    this.onMetrics(this.metrics, true)
+  }
+
+  touchStart(event) {
+    if (this.inputMode !== 'ios-touch') return
+    event.preventDefault()
+    this.metrics.touchEvents += 1
+    if (this.activeTouchId !== null) return
+    const touch = this.chooseDrawingTouch(event)
+    if (!touch) {
+      this.onMetrics(this.metrics)
+      return
+    }
+
+    const kind = this.touchKind(touch)
+    this.metrics.lastTouchKind = kind
+    this.metrics.lastPointerType = `touch:${kind}`
+    this.metrics.downs += 1
+    this.metrics.lastPressureMin = null
+    this.metrics.lastPressureMax = null
+    this.metrics.lastEventAt = performance.now()
+    this.lastPenAt = performance.now()
+    this.activeTouchId = touch.identifier
+    this.activePointerId = `touch:${touch.identifier}`
+
+    if (this.tool === 'eraser') {
+      this.erasing = { before: copyStrokes(this.page.strokes), changed: false }
+      this.eraseAtTouch(touch, event.timeStamp)
+      this.onMetrics(this.metrics, true)
+      return
+    }
+
+    this.activeStroke = {
+      id: uid(),
+      tool: this.tool === 'highlighter' ? 'highlighter' : 'pen',
+      color: this.color,
+      size: this.size,
+      pressureEnabled: this.pressureEnabled,
+      points: [],
+    }
+    this.appendTouch(touch, event.timeStamp)
+  }
+
+  touchMove(event) {
+    if (this.inputMode !== 'ios-touch') return
+    event.preventDefault()
+    this.metrics.touchEvents += 1
+    if (this.activeTouchId === null) return
+    const touch = this.findChangedTouch(event, this.activeTouchId)
+    if (!touch) return
+    const now = performance.now()
+    if (this.metrics.lastEventAt) this.metrics.maxEventGap = Math.max(this.metrics.maxEventGap, now - this.metrics.lastEventAt)
+    this.metrics.lastEventAt = now
+    this.lastPenAt = now
+    if (this.erasing) this.eraseAtTouch(touch, event.timeStamp)
+    else this.appendTouch(touch, event.timeStamp)
+  }
+
+  touchEnd(event) {
+    if (this.inputMode !== 'ios-touch') return
+    event.preventDefault()
+    this.metrics.touchEvents += 1
+    if (this.activeTouchId === null) return
+    const touch = this.findChangedTouch(event, this.activeTouchId)
+    this.metrics.ups += 1
+    if (this.erasing) {
+      if (touch) this.eraseAtTouch(touch, event.timeStamp)
+      this.finishErasing()
+    } else {
+      if (touch) this.appendTouch(touch, event.timeStamp)
+      this.finishStroke(true)
+    }
+    this.onMetrics(this.metrics, true)
+  }
+
+  touchCancel(event) {
+    if (this.inputMode !== 'ios-touch') return
+    event.preventDefault()
+    this.metrics.touchEvents += 1
+    if (this.activeTouchId === null) return
+    const touch = this.findChangedTouch(event, this.activeTouchId)
+    this.metrics.cancelled += 1
+    if (this.erasing) this.finishErasing()
+    else {
+      if (touch) this.appendTouch(touch, event.timeStamp)
+      this.finishStroke(true)
+    }
+    this.onMetrics(this.metrics, true)
+  }
+
+  eraseAtTouch(touch, timeStamp) {
+    const point = this.touchPoint(touch, timeStamp)
+    const radius = Math.max(10, this.size * 3.5) / this.view.zoom
+    const filtered = this.page.strokes.filter((stroke) => !strokeHitsCircle(stroke, point, radius))
+    if (filtered.length !== this.page.strokes.length) {
+      this.erasing.changed = true
+      this.page.strokes = filtered
+      this.renderPage()
+    }
   }
 
   exportPng() {
@@ -664,6 +872,8 @@ function renderMetrics(metrics, penDetected = false) {
   $('#metricCoalesced').textContent = metrics.coalesced
   $('#metricCancelled').textContent = metrics.cancelled
   $('#metricGap').textContent = `${Math.round(metrics.maxEventGap)} ms`
+  $('#metricMode').textContent = engine.inputMode === 'ios-touch' ? 'iOS Touch' : 'Pointer'
+  $('#metricTouchEvents').textContent = metrics.touchEvents
   $('#diagnosticsCopy').textContent = diagnosticsText(metrics)
 }
 
@@ -673,7 +883,10 @@ function diagnosticsText(metrics) {
     : `${metrics.lastPressureMin.toFixed(2)}–${metrics.lastPressureMax.toFixed(2)}`
   return [
     `motor: ${ENGINE_VERSION}`,
+    `giriş motoru: ${engine.inputMode === 'ios-touch' ? 'iOS Touch Events' : 'Pointer Events'}`,
     `girdi: ${metrics.lastPointerType}`,
+    `touch türü: ${metrics.lastTouchKind} · touch olayı: ${metrics.touchEvents}`,
+    `atlanılan pointer başlangıcı: ${metrics.pointerBypassed}`,
     `temas: ${metrics.downs} · bitiş: ${metrics.ups} · iz: ${metrics.strokes}`,
     `ham örnek: ${metrics.samples} · birleşik: ${metrics.coalesced}`,
     `iptal: ${metrics.cancelled} · yinelenen: ${metrics.duplicateSamples}`,
@@ -736,6 +949,18 @@ $('#pressureButton').addEventListener('click', () => {
   button.setAttribute('aria-pressed', String(engine.pressureEnabled))
   button.querySelector('span:last-child').textContent = engine.pressureEnabled ? 'Basınç açık' : 'Basınç kapalı'
   renderMetrics(engine.metrics)
+})
+
+$$('[data-input-mode]').forEach((button) => {
+  button.addEventListener('click', () => {
+    $$('[data-input-mode]').forEach((item) => {
+      const selected = item === button
+      item.classList.toggle('is-selected', selected)
+      item.setAttribute('aria-pressed', String(selected))
+    })
+    engine.setInputMode(button.dataset.inputMode)
+    toast(button.dataset.inputMode === 'ios-touch' ? 'iOS Touch motoru etkin' : 'Pointer motoru etkin')
+  })
 })
 
 $('#undoButton').addEventListener('click', () => engine.undo())
