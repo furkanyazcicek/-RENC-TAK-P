@@ -1191,6 +1191,26 @@ export default function LessonBoard({
     }
 
     /**
+     * YENİ KALEM TEMASI, ÖNCEKİ TEMASTAN KALAN ÇİZGİYİ DEVRALMAZ.
+     *
+     * Apple Pencil hover desteklediği için art arda temaslarda aynı
+     * `pointerId` değerini kullanabiliyor. Önceki temastan `pointerup` /
+     * `pointercancel` kaçmışsa açık çizgiyi burada kapatmadan yeni
+     * çizgiye başlamak `activeRef`'i ezer ve ilk çizgiyi kaybettirir.
+     *
+     * Askıdaki sistem iptali yukarıda ayrıca ele alındı. Buraya kalan
+     * açık çizgi gerçekten eski temasa aittir; yeni temas için bekleme
+     * koymadan bitirilir.
+     */
+    if (e.pointerType === 'pen' && activeRef.current) {
+      kayit('  ■ ESKİ TEMAS KAPATILDI — yeni kalem inişi ayrı çizgi')
+      activePointerIdRef.current = null
+      iptalSurdurRef.current = null
+      window.clearTimeout(iptalZamanRef.current)
+      endStroke(null)
+    }
+
+    /**
      * ═════════════════════════════════════════════════════════════
      * KALEM HER ŞEYDEN ÖNCE GELİR — iPad'de yazamamanın sebebi buydu
      * ═════════════════════════════════════════════════════════════
@@ -1486,11 +1506,15 @@ export default function LessonBoard({
     teshisSay(iptalMi ? 'iptal' : 'kalkti', { tur: `${e.pointerType} ${e.type}` })
     kayit(`▲ ${iptalMi ? 'İPTAL' : 'KALKTI'} ${e.pointerType} id:${e.pointerId}`)
     pointersRef.current.delete(e.pointerId)
-    try {
-      wrapRef.current?.releasePointerCapture?.(e.pointerId)
-    } catch {
-      /* yakalama zaten bırakılmış olabilir */
-    }
+
+    /**
+     * `releasePointerCapture` burada elle çağrılmaz. Tarayıcı
+     * `pointerup` / `pointercancel` sonrası yakalamayı zaten kendisi
+     * bırakır. Elle bırakmak ayrı bir `lostpointercapture` olayı
+     * üretiyordu. Pencil hızlıca yeniden indiğinde ve aynı pointerId'yi
+     * kullandığında, önceki temasın gecikmiş kayıp olayı YENİ A/F
+     * kolunu kapatabiliyordu.
+     */
 
     if (e.pointerType === 'pen') {
       penDownRef.current = false
@@ -1581,27 +1605,24 @@ export default function LessonBoard({
   }
 
   /**
-   * YAKALAMA ELDEN GİDERSE ÇİZGİ AÇIKTA KALMASIN.
+   * YAKALAMA KAYBI, KALEMİN KALKTIĞI ANLAMINA GELMEZ.
    *
-   * Safari, kalem ekrandayken işaretçi yakalamasını sessizce bırakabiliyor
-   * (sekme değişimi, sistem uyarısı, tarayıcı jesti). Bu durumda ne
-   * `pointerup` ne de `pointercancel` gelir: çizgi sonsuza kadar "devam
-   * ediyor" sayılır, sonraki kalem inişi onu sürdürür ve iki ayrı harf
-   * birbirine bağlanmış görünürdü. Artık çizgi burada düzgünce kapanır.
+   * `lostpointercapture` hem normal `pointerup` sonrasında hem Safari'nin
+   * kendi yakalamayı bıraktığı durumlarda gelebilir. Daha önemlisi Apple
+   * Pencil, sonraki temasta aynı `pointerId`'yi tekrar kullanır. Önceki
+   * temasın gecikmiş kayıp olayını "çizgiyi bitir" diye yorumlamak yeni
+   * başlayan kısa çizgiyi — A'nın ortasını, F'nin kollarını, t'nin
+   * çizgisini — daha ilk örnekte kapatıyordu.
+   *
+   * Bu olay artık yalnızca teşhis bilgisidir. Gerçek bitirme
+   * `pointerup`/`pointercancel`, pencere yedeği veya bir sonraki
+   * `pointerdown` tarafından yapılır.
    */
   function handleLostPointerCapture(e) {
     if (activePointerIdRef.current !== e.pointerId) return
     if (!activeRef.current && !shapeRef.current && !eraseRef.current) return
     teshisSay('yakalama-koptu', { tur: e.pointerType })
-    kayit(`✂ YAKALAMA KOPTU id:${e.pointerId}`)
-    pointersRef.current.delete(e.pointerId)
-    activePointerIdRef.current = null
-    iptalSurdurRef.current = null
-    window.clearTimeout(iptalZamanRef.current)
-    if (eraseRef.current) endErase()
-    else if (lassoRef.current) endLasso()
-    else if (shapeRef.current) endShape()
-    else if (activeRef.current) endStroke(null)
+    kayit(`≈ YAKALAMA KOPTU id:${e.pointerId} — temas bitirilmedi`)
   }
 
   // Pencere düzeyindeki yedek dinleyiciler bu referanslar üzerinden çağırır.
@@ -2137,10 +2158,6 @@ export default function LessonBoard({
               : tool === BOARD_TOOLS.LASSO
                 ? selectionIds.length ? 'move' : 'crosshair'
                 : canEdit ? 'crosshair' : 'default',
-          // iPad'de kalemle basılı tutunca çıkan seçim/büyüteç davranışı
-          // çizimi kesiyordu.
-          WebkitUserSelect: 'none',
-          WebkitTouchCallout: 'none',
         }}
       >
         <canvas ref={baseRef} className="absolute inset-0" aria-hidden="true" />
