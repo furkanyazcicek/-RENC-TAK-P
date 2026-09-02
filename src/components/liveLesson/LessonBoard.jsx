@@ -2226,6 +2226,7 @@ export default function LessonBoard({
         {teshis && (
           <div className="pointer-events-none absolute left-2 top-2 z-20 rounded-card bg-ink/85 px-3 py-2 font-mono text-2xs leading-relaxed text-white shadow-elevated">
             <div className="font-semibold">Tahta teşhis</div>
+            <div>motor: merkez yol v2</div>
             <div>indi: {teshis.indi} · hareket: {teshis.hareket}</div>
             <div>kalktı: {teshis.kalkti} · iptal: {teshis.iptal}</div>
             <div>bitti: {teshis.bitti} · sayfada: {teshis.sayfada}</div>

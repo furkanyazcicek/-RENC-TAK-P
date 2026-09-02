@@ -22,6 +22,7 @@ import {
   strokeReport,
   boostFaintStroke,
 } from '../src/lib/liveLesson/board/inkStroke.js'
+import { drawInkStroke } from '../src/lib/liveLesson/board/freehandInk.js'
 
 let pass = 0
 let fail = 0
@@ -179,6 +180,37 @@ console.log('\n=== 9) GERÇEK EL YAZISI SENARYOSU ===')
   check('gövdenin SON noktası kalkış konumunda', govde.p[govde.p.length - 3] === 50 && govde.p[govde.p.length - 2] === 40)
   check('üstteki nokta ayrı bir çizgi', ustNokta.id !== govde.id && ustNokta.p.length / 3 === 1)
   check('iki çizgi birbirine bağlanmıyor', govde.p.at(-2) !== ustNokta.p[1])
+}
+
+console.log('\n=== 10) MERKEZ YOL MOTORU: HAM NOKTALAR KAYBOLMAZ ===')
+{
+  const calls = []
+  const ctx = {
+    save: () => calls.push(['save']),
+    restore: () => calls.push(['restore']),
+    beginPath: () => calls.push(['begin']),
+    moveTo: (x, y) => calls.push(['move', x, y]),
+    quadraticCurveTo: (...args) => calls.push(['quad', ...args]),
+    lineTo: (x, y) => calls.push(['line', x, y]),
+    arc: (...args) => calls.push(['arc', ...args]),
+    fill: () => calls.push(['fill']),
+    stroke: () => calls.push(['stroke']),
+  }
+  const hizli = {
+    t: 'pen',
+    c: '#131329',
+    w: 4,
+    p: [0, 0, 0.24, 5, 8, 0.24, 10, 3, 0.24, 15, 12, 0.24, 20, 4, 0.24],
+  }
+  drawInkStroke(ctx, hizli, true)
+  check('hızlı çizgi tek Canvas vuruşuyla çiziliyor', calls.filter((c) => c[0] === 'stroke').length === 1)
+  check('ilk ham nokta yolun başlangıcı', calls.some((c) => c[0] === 'move' && c[1] === 0 && c[2] === 0))
+  check('son ham nokta yolun sonu', calls.some((c) => c[0] === 'line' && c[1] === 20 && c[2] === 4))
+  check('ara noktalar yumuşak yola katılıyor', calls.filter((c) => c[0] === 'quad').length === 3)
+
+  calls.length = 0
+  drawInkStroke(ctx, { t: 'pen', c: '#131329', w: 4, p: [30, 40, 0.24] }, true)
+  check('i noktası dolu daire olarak çiziliyor', calls.some((c) => c[0] === 'arc') && calls.some((c) => c[0] === 'fill'))
 }
 
 console.log(`\n=== SONUÇ: ${pass} geçti, ${fail} kaldı ===\n`)

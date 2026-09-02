@@ -1,23 +1,20 @@
 /**
- * EL YAZISI MÜREKKEBİ — perfect-freehand motoru
+ * EL YAZISI MÜREKKEBİ — Pencil için kayıpsız merkez yol
  * ══════════════════════════════════════════════
- * Kendi yazdığımız çizim motoru, çizgiyi küçük parçalara bölüp her
- * parçayı ayrı kalınlıkta çiziyordu. Bu yöntem hızlı el yazısında
- * parçaların eklerini belli ediyor, kısa çizgileri cılız gösteriyor ve
- * kalem basıncındaki sıçramaları olduğu gibi ekrana yansıtıyordu.
+ * Fosforlu çizginin şeklini `perfect-freehand` üretir. Kalem ise ham
+ * Pencil yolunu tek, yuvarlak uçlu Canvas merkez çizgisiyle çizer.
  *
- * Artık çizginin şeklini `perfect-freehand` üretiyor: aynı motoru
- * tldraw ve Excalidraw da kullanıyor, haftada milyonlarca kez indiriliyor
- * ve MIT lisanslı (ücretsiz). Çizgiyi parça parça değil, kalemin bıraktığı
- * izin DIŞ HATTI olarak tek bir kapalı şekil hâlinde üretir. Sonuç:
+ * Kalemde neden dış hat motoru kullanılmıyor?
+ * -----------------------------------------------
+ * Gerçek iPad teşhisi her kalem olayının geldiğini ve her tamamlanan
+ * çizginin sayfaya eklendiğini gösterdi. Buna rağmen bazı hızlı/kısa
+ * izler görünmüyordu. Kayıp girdi veya kayıtta değil, noktaları kapalı
+ * bir dış hatta çeviren aşamada oluşuyordu. Merkez çizgisi ham noktaları
+ * doğrudan izler; i noktası, A/F kolu veya hızlı harf dönüşümde yutulmaz.
  *
- *   - ek yerleri yok, çizgi tek parça görünür
- *   - tek dokunuş bile dolu bir nokta olur
- *   - basınç sıçramaları yumuşatılır, kalem doğal incelip kalınlaşır
- *   - hızlı yazıda titreme kaybolur (`streamline`)
- *
- * Hesaplanan şekil çizginin ÜSTÜNDE saklanır; nokta sayısı değişmedikçe
- * yeniden hesaplanmaz. Yüzlerce çizgili bir sayfada bu şart.
+ * Tek dokunuş dolu bir nokta, hareketli temas tek bir yumuşak yol olur.
+ * Fosforlu kalemin geniş ve saydam dış hattı için perfect-freehand
+ * kullanılmaya devam eder; onun hesaplanan yolu çizgide önbelleklenir.
  */
 import { getStroke } from 'perfect-freehand'
 
@@ -32,7 +29,7 @@ export const HIGHLIGHT_INK_ALPHA = 0.32
  * `streamline` elin titremesinin süzülmesi — hızlı yazıda en çok işe
  *              yarayan ayar; fazlası çizgiyi kalemin gerisinde bırakır
  */
-const KALEM = {
+const DIS_HAT = {
   thinning: 0.55,
   smoothing: 0.45,
   streamline: 0.38,
@@ -44,7 +41,7 @@ const KALEM = {
 
 /** Fosforlu: sabit kalınlık, basınç etkisi yok. */
 const FOSFORLU = {
-  ...KALEM,
+  ...DIS_HAT,
   thinning: 0,
   streamline: 0.3,
 }
@@ -91,7 +88,7 @@ export function inkPath(stroke, bitti = true) {
   const imza = `${p.length}|${bitti ? 1 : 0}`
   if (stroke._inkImza === imza && stroke._inkPath) return stroke._inkPath
 
-  const ayar = stroke.t === 'hl' ? FOSFORLU : KALEM
+  const ayar = FOSFORLU
   const dis = getStroke(noktalariCikar(stroke), {
     ...ayar,
     size: stroke.w ?? 4,
@@ -119,8 +116,68 @@ export function clearInkCache(stroke) {
   delete stroke._inkPath
 }
 
+/**
+ * Kalemin ekrandaki kalınlığı. Basınç bütün çizgi boyunca
+ * ortalanır; tek bir Canvas yolu çizmek yüzlerce parça çizmekten daha
+ * hızlıdır ve parça eklerinde boşluk oluşturmaz.
+ */
+function kalemGenisligi(stroke) {
+  const p = stroke.p
+  let toplam = 0
+  let adet = 0
+  for (let i = 2; i < p.length; i += 3) {
+    if (!Number.isFinite(p[i])) continue
+    toplam += Math.min(1, Math.max(0, p[i]))
+    adet += 1
+  }
+  const basinc = adet ? toplam / adet : 0.5
+  const taban = stroke.w ?? 4
+  // 0.5 basınçta seçilen kalınlık aynen korunur. Hafif temas da
+  // okunabilir kalır; kuvvetli basınç doğal olarak kalınlaşır.
+  return Math.max(taban * 0.62, taban * (0.72 + 0.56 * basinc))
+}
+
+function drawReliablePen(ctx, stroke) {
+  const p = stroke.p
+  const n = p.length / 3
+  if (!n) return
+
+  const genislik = kalemGenisligi(stroke)
+  ctx.save()
+  ctx.fillStyle = stroke.c
+  ctx.strokeStyle = stroke.c
+  ctx.lineWidth = genislik
+  ctx.lineCap = 'round'
+  ctx.lineJoin = 'round'
+
+  if (n === 1) {
+    ctx.beginPath()
+    ctx.arc(p[0], p[1], genislik / 2, 0, Math.PI * 2)
+    ctx.fill()
+    ctx.restore()
+    return
+  }
+
+  ctx.beginPath()
+  ctx.moveTo(p[0], p[1])
+  for (let i = 1; i < n - 1; i++) {
+    const x = p[i * 3]
+    const y = p[i * 3 + 1]
+    const sonrakiX = p[(i + 1) * 3]
+    const sonrakiY = p[(i + 1) * 3 + 1]
+    ctx.quadraticCurveTo(x, y, (x + sonrakiX) / 2, (y + sonrakiY) / 2)
+  }
+  ctx.lineTo(p[(n - 1) * 3], p[(n - 1) * 3 + 1])
+  ctx.stroke()
+  ctx.restore()
+}
+
 /** Çizgiyi tuvale basar. */
 export function drawInkStroke(ctx, stroke, bitti = true) {
+  if (stroke?.t !== 'hl') {
+    drawReliablePen(ctx, stroke)
+    return
+  }
   const path = inkPath(stroke, bitti)
   if (!path) return
   ctx.save()

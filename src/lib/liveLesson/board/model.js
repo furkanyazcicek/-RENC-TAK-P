@@ -437,8 +437,8 @@ export function drawItem(ctx, item, onImageReady, canli = false) {
   if (!item) return
   switch (item.kind) {
     case 'stroke':
-      // El yazısı `perfect-freehand` ile çizilir; ayrıntı için
-      // `board/freehandInk.js` dosyasının başındaki açıklamaya bak.
+      // Kalem ham noktaları izleyen merkez yolu, fosforlu ise kapalı dış
+      // hattı kullanır; ayrıntı için `board/freehandInk.js`.
       drawInkStroke(ctx, item, !canli)
       break
     case 'text':
