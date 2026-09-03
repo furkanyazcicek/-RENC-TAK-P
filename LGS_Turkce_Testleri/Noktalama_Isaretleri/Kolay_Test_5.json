@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "\"1453( )te İstanbul fethedildi.\"\nBu cümlede yay ayraçla belirtilen yere aşağıdakilerden hangisi gelmelidir?",
+    "secenekler": {
+      "A": "Tırnak işareti",
+      "B": "Eğik çizgi",
+      "C": "Kesme işareti",
+      "D": "Nokta"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru": "\"Atatürk, 19.05.1919'da Samsun'a çıktı.\"\nBu cümlede noktanın (.) kullanım amacı hangisidir?",
+    "secenekler": {
+      "A": "Tarihlerde gün, ay ve yılı gösteren sayıları birbirinden ayırmak",
+      "B": "Kısaltmaların sonuna konmak",
+      "C": "Sıra bildiren sayıların sonuna konmak",
+      "D": "Saat ve dakika gösteren sayıları ayırmak"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru": "\"Sabah erkenden kalktık, müzeye gittik, bol bol fotoğraf çektik.\"\nBu cümlede virgül (,) hangi görevde kullanılmıştır?",
+    "secenekler": {
+      "A": "Eş görevli kelimeleri ayırmak",
+      "B": "Uzun cümlelerde özneyi belirtmek",
+      "C": "Hitap için kullanılan kelimelerden sonra",
+      "D": "Sıralı cümleleri birbirinden ayırmak"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru": "\"Eyvah, tarihi vazo yere düştü( )\"\nBu cümlenin sonuna hangi noktalama işareti konmalıdır?",
+    "secenekler": {
+      "A": "Nokta (.)",
+      "B": "Ünlem işareti (!)",
+      "C": "Soru işareti (?)",
+      "D": "Üç nokta (...)"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Aşağıdaki cümlelerin hangisinin sonuna soru işareti (?) konmalıdır?",
+    "secenekler": {
+      "A": "Oraya nasıl gideceğimizi bana anlatmadı",
+      "B": "Saat kulesini görünce çok şaşırdım",
+      "C": "Rehberimiz bizi nerede bekliyor olacak",
+      "D": "Gezimiz yarın sabah başlayacak"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Eski çağlardan kalan birçok eşya buldular: ok uçları, çömlekler, sikkeler( )\nBu cümlenin sonuna aşağıdakilerden hangisi gelmelidir?",
+    "secenekler": {
+      "A": "Üç nokta (...)",
+      "B": "Nokta (.)",
+      "C": "İki nokta (:)",
+      "D": "Ünlem işareti (!)"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru": "\"Ankara( )İstanbul arası hızlı trenle oldukça kısa sürüyor.\"\nBu cümlede yay ayraç içine hangi noktalama işareti konmalıdır?",
+    "secenekler": {
+      "A": "Virgül (,)",
+      "B": "Kısa çizgi (-)",
+      "C": "Eğik çizgi (/)",
+      "D": "Tırnak işareti (\")"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru": "En sevdiğim tarihi mekanlar şunlardır( ) Efes, Göbeklitepe, Zeugma.\nBu cümlede yay ayraçla belirtilen yere hangisi gelmelidir?",
+    "secenekler": {
+      "A": "Noktalı virgül (;)",
+      "B": "Virgül (,)",
+      "C": "Nokta (.)",
+      "D": "İki nokta (:)"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru": "\"Fatih Sultan Mehmet (1432-1481) Osmanlı'nın önemli padişahlarındandır.\"\nBu cümlede yay ayraç ( ) hangi amaçla kullanılmıştır?",
+    "secenekler": {
+      "A": "Cümle içindeki ek bilgileri, doğum ve ölüm tarihlerini göstermek",
+      "B": "Alıntı yapılan eseri belirtmek",
+      "C": "Yabancı bir kelimenin okunuşunu göstermek",
+      "D": "Tiyatro eserlerinde hareketleri açıklamak"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Tur rehberi ( )Topkapı Sarayı( ) hakkında çok detaylı bilgiler verdi.\nBu cümlede yay ayraçlarla belirtilen yerlere hangi noktalama işareti gelmelidir?",
+    "secenekler": {
+      "A": "Kesme işareti (')",
+      "B": "Kısa çizgi (-)",
+      "C": "Tırnak işareti (\")",
+      "D": "Virgül (,)"
+    },
+    "dogru_cevap": "C"
+  }
+]

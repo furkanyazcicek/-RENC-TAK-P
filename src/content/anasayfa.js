@@ -3,6 +3,23 @@
  * Yeni bir slogan veya CTA denemesi için bileşen dosyalarını değiştirmek gerekmez.
  */
 export const ANASAYFA_ICERIGI = {
+  kitap: {
+    baslik: ['Bir sayfa aç.', 'Bir fikri değiştir.'],
+    ustYazi: 'MERAKLA BAŞLAR. SENİNLE İLERLER.',
+    aciklama: 'Atlaslardan ders notlarına, sorulardan kendi çalışma rotana. Öğrenmenin bütün sayfaları bir arada.',
+    kaydir: 'Kaydırarak kitabı keşfet',
+    ac: 'Kitabı aç',
+    gec: 'Deneyime geç',
+    sonBaslik: 'Merak et, keşfet, öğren.',
+    sonAciklama: 'Artık sayfaya sen yön ver. Bir alan seç, değişkeni değiştir ve sonucu kendi gözlerinle gör.',
+    bolumler: [
+      { id: 'atlaslar', ad: 'Atlaslar', eylem: 'Keşfet', baslik: 'Soyut olanı\ngörünür kıl.', aciklama: 'Bir değişkeni değiştir. Modelin nasıl\ndavrandığını kendi gözlerinle gör.', alt: 'Fizik · Kimya · Biyoloji · Coğrafya · Tarih' },
+      { id: 'notlar', ad: 'Ders Notu', eylem: 'Bağlantı kur', baslik: 'Bilgi, bağlantı\nkurunca kalır.', aciklama: 'Kısa anlatımı görsel modelle birleştir.\nOkuduğun kavramı adım adım keşfet.', alt: 'Görsel anlatım · etkileşimli ders okuyucu' },
+      { id: 'soru-coz', ad: 'Soru Çöz', eylem: 'Yöntemi anla', baslik: 'Cevaptan önce,\ndüşünme yolu.', aciklama: 'Verileni ayır. Yöntemi seç.\nHer adımın nedenini anlayarak ilerle.', alt: 'Verilenler → Yöntem → Kontrol' },
+      { id: 'ai-koc', ad: 'AI Koç', eylem: 'Rotanı kur', baslik: 'Büyük hedefler.\nKüçük adımlar.', aciklama: 'Çalışma kayıtlarından yola çık.\nBugün için uygulanabilir bir rota kur.', alt: 'Kişisel bağlam · günlük çalışma rotası' },
+      { id: 'analiz', ad: 'Analiz', eylem: 'İlerlemeni gör', baslik: 'Yalnız sonucunu değil,\ngelişimini gör.', aciklama: 'Denemelerini birlikte değerlendir.\nBir sonraki adımın için ipuçlarını bul.', alt: 'Örnek veri · kişisel sonuç veya başarı vaadi değildir' },
+    ],
+  },
   navigasyon: {
     baglantilar: [
       { href: '#deneyim', etiket: 'Deneyim' },

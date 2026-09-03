@@ -1,0 +1,85 @@
+{
+  "test_adi": "Yazım Kuralları Orta Seviye Test 2",
+  "sorular": [
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde 'de/da'nın yazımıyla ilgili bir yanlışlık yapılmıştır?",
+      "A": "Bahar gelince de içimizde bir sevinç uyanır.",
+      "B": "Bu kitap da yazarın çocukluk anıları anlatılıyor.",
+      "C": "Onu görsen de tanıyamazsın artık.",
+      "D": "Toplantıda alınan kararlar herkese duyuruldu.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde 'ki'nin yazımında bir yanlışlık vardır?",
+      "A": "Anladım ki bu işin sonu hiç iyi yerlere varmayacak.",
+      "B": "Akşamki maçta takımımız çok iyi mücadele etti.",
+      "C": "O kadar yorgunumki gözlerimi açık tutamıyorum.",
+      "D": "Bizimki yine erkenden yola çıkmış.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Soru eki 'mi'nin yazımıyla ilgili aşağıdakilerin hangisinde bir hata yapılmıştır?",
+      "A": "Bu konuyu onunla detaylıca görüştün mü?",
+      "B": "Güzelmi güzel bir kasabada yaşamak istiyorum.",
+      "C": "Bahar geldi mi buraların havası bir başka olur.",
+      "D": "Sen de bizimle sinemaya gelecek misin?",
+      "cevap": "B"
+    },
+    {
+      "soru": "Akrabalık bildiren sözcükler büyük harfle başlamazken, unvan ve lakap olarak kullanılanlar büyük harfle başlar. Buna göre aşağıdakilerin hangisinde yazım yanlışı vardır?",
+      "A": "Dün Ayşe Teyzemlere oturmaya gittik.",
+      "B": "Nene Hatun, Kurtuluş Savaşı'nın önemli kahramanlarındandır.",
+      "C": "Mahallemizin sevilen ismi Bakkal Hasan amcadır.",
+      "D": "Gül Baba türbesi ziyaretçilerle dolup taştı.",
+      "cevap": "A"
+    },
+    {
+      "soru": "Sayıların yazımıyla ilgili aşağıdaki cümlelerin hangisinde yanlışlık yapılmıştır?",
+      "A": "Cumhuriyet, 1923'te ilan edilmiştir.",
+      "B": "Yarışmada 2'inci olduğunu öğrenince çok sevindi.",
+      "C": "Sınavımız sabah 09.30'da başlayacak.",
+      "D": "Çocuklara üçer ceviz dağıttı.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Kısaltmalara getirilen eklerin yazımıyla ilgili hangisinde bir yanlışlık vardır?",
+      "A": "TDK'nin yeni yayınlarını inceledim.",
+      "B": "THY'nin uçaklarında yeni bir hizmet başladı.",
+      "C": "TBMM'ne sunulan yasa tasarısı kabul edildi.",
+      "D": "MEB'in düzenlediği yarışma haftaya yapılacak.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Tarihlerin yazılışı ile ilgili aşağıdaki cümlelerin hangisinde bir yazım yanlışı vardır?",
+      "A": "Okullar 15 Eylül 2023 tarihinde açılacak.",
+      "B": "Kardeşim 24 Mayıs Salı günü doğdu.",
+      "C": "Her yıl Ekim ayında buraya gelirim.",
+      "D": "29 Ekim 1923, tarihimizin dönüm noktasıdır.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Yön adları özel isimden önce gelirse büyük, sonra gelirse küçük harfle başlar. Buna göre hangisinde yazım yanlışı vardır?",
+      "A": "Kuzey Anadolu Dağları, Karadeniz'e paralel uzanır.",
+      "B": "Amerika'nın Güneyi son yıllarda büyük fırtınalar yaşıyor.",
+      "C": "Pusulanın kuzeybatıyı gösterdiğine emin misin?",
+      "D": "Batı Karadeniz, yağış bakımından oldukça zengindir.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Birleşik sözcüklerin yazımı ile ilgili aşağıdakilerin hangisinde yanlışlık yapılmıştır?",
+      "A": "Akşamüzeri parkta buluşmaya karar verdik.",
+      "B": "Bülbül yuvası, en sevdiğim tatlılar arasındadır.",
+      "C": "Deniz altı araştırmaları son hızla devam ediyor.",
+      "D": "Bu ayakkabılar gerçekten çok su geçirmezmiş.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Kurum, kuruluş ve kurul adlarına getirilen ekler kesme işaretiyle ayrılmaz. Buna göre hangisinde bu kurala uyulmamasından kaynaklanan bir yazım yanlışı vardır?",
+      "A": "Bakanlar Kurulunun kararı Resmi Gazete'de yayımlandı.",
+      "B": "Türkiye Büyük Millet Meclisi'ne yeni vekiller katıldı.",
+      "C": "Türk Dil Kurumunun çalışmaları hız kesmeden sürüyor.",
+      "D": "Gazi Üniversitesinden mezun olalı on yıl oldu.",
+      "cevap": "B"
+    }
+  ]
+}

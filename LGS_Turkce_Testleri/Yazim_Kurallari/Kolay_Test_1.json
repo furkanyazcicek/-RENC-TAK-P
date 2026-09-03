@@ -1,0 +1,115 @@
+{
+  "test_adi": "Yazım Kuralları - Kolay Seviye",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde 'ki'nin yazımı ile ilgili bir yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Bilmemki sana nasıl anlatsam derdimi.",
+        "B": "Evdeki hesap çarşıya uymadı.",
+        "C": "Duydum ki unutmuşsun gözlerimin rengini.",
+        "D": "Mademki gelmeyecektin, neden haber vermedin?"
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde 'de/da'nın yazımı doğrudur?",
+      "secenekler": {
+        "A": "Bugün bende seninle geleceğim.",
+        "B": "Kitabımı okulda unutmuşum.",
+        "C": "Sende mi bizimle geleceksin?",
+        "D": "Oda bizimle sinemaya gelecekmiş."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Aşağıdakilerin hangisinde soru eki 'mi'nin yazımı yanlıştır?",
+      "secenekler": {
+        "A": "Beni gerçekten anlıyor musun?",
+        "B": "Güzel mi güzel bir arabası var.",
+        "C": "Bu akşam bize geliyormu sun?",
+        "D": "O da mı bizimle gelecek?"
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Aşağıdakilerin hangisinde büyük harflerin yazımıyla ilgili bir yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Ayşe Hanım bugün çok yorgun görünüyordu.",
+        "B": "Yarın Ankara Kalesi'ni gezeceğiz.",
+        "C": "Kardeşim Atatürk Ortaokulunda okuyor.",
+        "D": "Köpeğimiz Karabaş Çok havlıyor."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde tarihlerin yazımı yanlıştır?",
+      "secenekler": {
+        "A": "Sınavımız 15 mayıs çarşamba günü yapılacak.",
+        "B": "29 Ekim 1923'te Cumhuriyet ilan edildi.",
+        "C": "Okullar eylül ayında açılacak.",
+        "D": "Onu en son 14 Şubat'ta gördüm."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Kısaltmalara getirilen ekler, kısaltmanın okunuşuna göre belirlenir. Buna göre aşağıdakilerin hangisinde bir yazım yanlışı vardır?",
+      "secenekler": {
+        "A": "TRT'nin yeni dizisi çok beğenildi.",
+        "B": "MEB'in duyurusunu okudunuz mu?",
+        "C": "TDK'nin yeni sözlüğünü sipariş ettim.",
+        "D": "THY'dan bilet almak çok kolaylaştı."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Sayıların yazımı ile ilgili aşağıdakilerin hangisinde yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Bu kitabı on beş günde okudum.",
+        "B": "Sınava yüz yirmi beş öğrenci katıldı.",
+        "C": "Binada 12'nci katta oturuyoruz.",
+        "D": "Sınavda herkese 2'şer kalem dağıtıldı."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Yön adları bir yer adından önce gelirse büyük, sonra gelirse küçük harfle başlar. Buna göre aşağıdakilerin hangisinde yön adının yazımı yanlıştır?",
+      "secenekler": {
+        "A": "Türkiye'nin doğusu kışın oldukça soğuktur.",
+        "B": "Bu yıl tatilde güney Ege'ye gideceğiz.",
+        "C": "Batı Karadeniz'de sel uyarısı yapıldı.",
+        "D": "Avrupa'nın kuzeyine doğru yola çıktılar."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Gezegen ve yıldız adları terim anlamda kullanıldığında büyük, günlük hayatta kullanıldığında küçük harfle başlar. Buna göre aşağıdakilerin hangisinde yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Bugün Dünya kadar işim var, dışarı çıkamam.",
+        "B": "Ay, Dünya'nın tek doğal uydusudur.",
+        "C": "Güneş tutulması yarın Türkiye'den izlenebilecek.",
+        "D": "Bilim insanları Mars'ta su izlerine rastladı."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde birleşik kelimelerin yazımıyla ilgili bir yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Gözyaşlarına hâkim olamadı.",
+        "B": "Sivri sinekler yazın herkesi rahatsız eder.",
+        "C": "Ayakkabı almak için çarşıya indik.",
+        "D": "Bu sorunu çözmek için biraz düşünmeliyiz."
+      },
+      "dogru_cevap": "B"
+    }
+  ]
+}

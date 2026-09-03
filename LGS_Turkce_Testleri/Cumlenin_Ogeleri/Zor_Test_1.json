@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "\"Mı/mi\" soru edatı hangi ögeden sonra gelmişse o ögeyi buldurur.\nAşağıdaki cümlelerin hangisinde soru edatı nesneyi buldurmaya yöneliktir?",
+    "secenekler": {
+      "A": "Yarınki geziye sen de mi katılacaksın?",
+      "B": "Bu güzel çiçekleri sana Ali mi aldı?",
+      "C": "Okul kütüphanesinden o tarihi romanı mı ödünç aldın?",
+      "D": "Dün akşam işten eve geç mi geldin?"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Tamlamalar ve deyimler cümlenin ögeleri bulunurken bölünemez.\nAşağıdaki cümlelerin hangisinde bu kurala uyulmadığı için ögelere ayırmada YANLIŞLIK yapılmıştır? (Eğik çizgiler öge sınırlarını göstermektedir.)",
+    "secenekler": {
+      "A": "Eski ahşap evlerin bulunduğu bu sokak / hepimize / geçmişi / hatırlatıyordu.",
+      "B": "Bahar mevsimi / doğanın yeniden uyanışını / müjdeliyor.",
+      "C": "Çocuklar / sokağın başındaki boş arsada / akşama kadar / oynadılar.",
+      "D": "Adamın üzerindeki / yırtık palto / soğuk havadan / onu / korumuyordu."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Bazı cümlelerde öge olmayan, ancak cümlenin anlamına katkıda bulunan ara sözler bulunabilir. Ara sözler genellikle bir ögenin açıklayıcısı olarak kullanılır.\nAşağıdaki cümlelerin hangisinde ara söz, öznenin açıklayıcısı olarak kullanılmıştır?",
+    "secenekler": {
+      "A": "Geçen yaz gittiğimiz tatil beldesini, Marmaris'i, çok sevmiştim.",
+      "B": "Dün arayan kişiyi, eski sınıf arkadaşını, hemen tanıdı.",
+      "C": "O şirin kasaba, doğup büyüdüğüm yer, beni her zaman kendine çeker.",
+      "D": "Babamla en sevdiğimiz yere, balık tuttuğumuz göle, pazar günü gideceğiz."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru": "(I) Kapının önündeki yaşlı çınar ağacı, mahalleye ayrı bir güzellik katıyordu. (II) Sonbahar gelince ağacın yaprakları dökülürdü. (III) Çocuklar onun kocaman gövdesinin arkasına saklanarak oyunlar oynardı. (IV) Mahalleli, yazın kavurucu sıcağında gölgesine sığınırdı bu ağacın.\nNumaralanmış cümlelerden hangisinin öge dizilişi \"Zarf tamlayıcısı - Özne - Yüklem\" şeklindedir?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Aşağıdaki cümlelerden hangisi yalnızca temel ögelerden (özne ve yüklem) oluşmuştur?",
+    "secenekler": {
+      "A": "Göz alabildiğine uzanan yeşil ovalar, herkesi büyülüyordu.",
+      "B": "Gecenin karanlığını yırtan çığlık sesi, hepimizi korkuttu.",
+      "C": "Uzun zamandır görmediği arkadaşıyla karşılaşmak, ona iyi geldi.",
+      "D": "Başarının en büyük sırrı, hiçbir zaman pes etmemektir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru": "\"Sıralı cümlelerde bazı ögeler ortak kullanılabilir.\"\nAşağıdaki cümlelerin hangisinde nesne ortaklığı söz konusudur?",
+    "secenekler": {
+      "A": "Bulaşıkları özenle yıkadı, kuruması için rafa dizdi.",
+      "B": "Kar yağışı şiddetini artırdı, yollar ulaşıma kapandı.",
+      "C": "Öğretmen tahtaya bir soru yazdı, öğrencilerden çözmelerini istedi.",
+      "D": "Akşam erken uyudum, sabah çok dinç uyandım."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru": "\"Güneş yavaş yavaş ufka doğru alçalırken denizin suları altın sarısı bir renge bürünmüştü.\" cümlesinde aşağıda verilen ögelerden hangisi bulunmamaktadır?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Belirtisiz Nesne",
+      "C": "Zarf Tümleci",
+      "D": "Dolaylı Tümleç"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru": "\"Aşağı, yukarı, içeri, dışarı, ileri, geri, öte, beri\" gibi yön bildiren sözcükler ek almadan kullanıldığında zarf tamlayıcısı, yönelme hâl eki (-a/-e) aldığında ise yer tamlayıcısı (dolaylı tümleç) olur.\nBuna göre aşağıdaki cümlelerin hangisinde yön bildiren sözcük YER TAMLAYICISI görevindedir?",
+    "secenekler": {
+      "A": "Soğuktan üşüyünce hemen içeri girdi.",
+      "B": "Arabayı biraz daha ileri park etmelisin.",
+      "C": "Çocuklar büyük bir gürültüyle aşağıya indiler.",
+      "D": "Kapıyı açıp usulca dışarı baktı."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Aşağıdaki devrik cümlelerin hangisinde yer tamlayıcısı (dolaylı tümleç) kullanılmamıştır?",
+    "secenekler": {
+      "A": "Gözlerindeki sevinç gözyaşlarını sildi usulca.",
+      "B": "Bütün gün bekledi kapının önünde sessizce.",
+      "C": "Yeni aldıkları koltukları taşıdılar salona.",
+      "D": "Eski dostunu görünce sarıldı boynuna."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Devrik cümlelerde yüklem sonda bulunmaz.\nAşağıdaki devrik cümlelerden hangisinde öge dizilişi \"Nesne - Yüklem - Özne - Zarf Tamlayıcısı\" şeklindedir?",
+    "secenekler": {
+      "A": "Bu zorlu görevi başarıyla tamamladı kahraman askerler.",
+      "B": "Soğuk kış gecelerinde dinlerdik dedemin anlattığı masalları.",
+      "C": "Yeni aldığı kitabı gösterdi heyecanla bana.",
+      "D": "Bu mutlu haberi verdi babam dün akşam."
+    },
+    "dogru_cevap": "D"
+  }
+]

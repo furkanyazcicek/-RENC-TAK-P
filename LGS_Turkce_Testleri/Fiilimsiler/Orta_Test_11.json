@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Sonbahar gelince yaprakların sararması, doğanın kış uykusuna hazırlanışını gösterir. Bu cümlede altı çizili fiilimsilerin türleri sırasıyla aşağıdakilerden hangisinde verilmiştir? (Altı çizili kelimeler: gelince, sararması, hazırlanışını)",
+    "secenekler": {
+      "A": "Zarf-fiil - İsim-fiil - İsim-fiil",
+      "B": "Zarf-fiil - Sıfat-fiil - İsim-fiil",
+      "C": "Sıfat-fiil - İsim-fiil - Zarf-fiil",
+      "D": "İsim-fiil - İsim-fiil - Zarf-fiil"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde sıfat-fiil, bir ismi niteleme görevinde kullanılmamıştır (adlaşmış sıfat-fiildir)?",
+    "secenekler": {
+      "A": "Çevreyi kirleten fabrikalara büyük cezalar kesildi.",
+      "B": "Ormana dikilenleri düzenli olarak sulamak gerekiyordu.",
+      "C": "Kuruyan göllerin yerinde tuz tabakaları oluşmuştu.",
+      "D": "Geri dönüştürülecek atıklar ayrı kutularda toplanmalıdır."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Kuşların göç yollarını izlemek(I), onların yaşama tutunma çabasını anlamamızı(II) sağlar. Gökyüzünde süzülerek(III) yol alan bu canlılar, mevsimleri(IV) takip eder. Numaralanmış sözcüklerden hangisi fiilimsi değildir?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "IV",
+      "D": "III"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Zarf-fiiller cümleye zaman veya durum anlamı katar. Buna göre aşağıdaki cümlelerin hangisinde zarf-fiil cümleye zaman anlamı katmıştır?",
+    "secenekler": {
+      "A": "Güneş doğarken ormandaki tüm kuşlar şakımaya başladı.",
+      "B": "Dere kenarında hiç durmadan koşarak ilerliyorduk.",
+      "C": "Kuruyan ağaçların dallarını kesip yakacak yaptılar.",
+      "D": "Yağmur bardaktan boşanırcasına yağdığı için içeri girdik."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde üç farklı fiilimsi türüne de (isim-fiil, sıfat-fiil, zarf-fiil) örnek vardır?",
+    "secenekler": {
+      "A": "Rüzgâr esince dökülen yaprakları temizlemek oldukça zordu.",
+      "B": "Kampa gidip ormanda yürüyüş yapmak bize çok iyi gelmişti.",
+      "C": "Denizi kirleten gemilere ceza yazılması için rapor tutuldu.",
+      "D": "Ağaçların gölgesinde oturup kitap okumayı hep sevmişimdir."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "İsim-fiil eklerinden birini (-ma / -me, -ış / -iş, -mak / -mek) aldığı hâlde kalıplaşarak bir varlığın veya kavramın adı olan sözcüklere kalıcı isim denir. Aşağıdaki cümlelerin hangisinde bu duruma uygun bir örnek vardır?",
+    "secenekler": {
+      "A": "Bahçedeki otları yolmak için sabah erkenden uyandık.",
+      "B": "Kamp alanına giderken yanımıza kavurma almayı unutmadık.",
+      "C": "Karın yağışını izlemek bana huzur veriyor.",
+      "D": "Tohumların filizlenmesini sabırsızlıkla bekliyorduk."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "'-acak / -ecek' eki hem sıfat-fiil eki hem de gelecek zaman kipi eki olarak kullanılabilir. Buna göre aşağıdaki cümlelerin hangisinde bu ek farklı bir görevde kullanılmıştır?",
+    "secenekler": {
+      "A": "Gelecek yaz bu bölgeye çok sayıda fidan dikeceğiz.",
+      "B": "Doğayı koruyacak projeler üretmeliyiz hep birlikte.",
+      "C": "Bu gidişle kuraklık daha da artacak gibi görünüyor.",
+      "D": "Yakacak odunları kış gelmeden depoya taşıdık."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "'Doğayı korumak, sadece ağaç dikmekle olmaz; aynı zamanda çevreye zarar veren alışkanlıklarımızdan kurtulmamız gerekir.' Bu cümlede kaç tane fiilimsi kullanılmıştır?",
+    "secenekler": {
+      "A": "2",
+      "B": "3",
+      "C": "4",
+      "D": "5"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki dizelerin hangisinde fiilimsi yoktur?",
+    "secenekler": {
+      "A": "Dağların ardında batan güneşi izledim.",
+      "B": "Kuşlar geçer gökyüzünden sürüler halinde.",
+      "C": "Yıkılmış ağaçların hüznü çöktü ormana.",
+      "D": "Rüzgâr esip geçince serinledi ortalık."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde '-dan / -den' eki alan sözcük fiilimsi grubu içinde yer almamaktadır?",
+    "secenekler": {
+      "A": "Uzaktan gelen köpek havlamaları sessizliği bozdu.",
+      "B": "Çiçeklerden süzülen bal damlaları kovanı doldurmuştu.",
+      "C": "Köyden ayrılıp büyük şehre göç etmek onu üzdü.",
+      "D": "Sabah erkenden kalktık, güneşi selamladık."
+    },
+    "dogru_cevap": "D"
+  }
+]

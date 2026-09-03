@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "(I) Şiir, kelimelerin ruhumuzda bıraktığı derin izlerdir. (II) Bir şairin kelimelerle kurduğu dünyada kaybolmamak elde değildir. (III) Her dize, bizi farklı bir maceraya sürükler sessizce. (IV) O eşsiz imgelerin ardında yatan gerçekleri keşfetmek, okurun en büyük ödülüdür.\nNumaralanmış cümlelerle ilgili aşağıda verilenlerden hangisi yanlıştır?",
+    "secenekler": {
+      "A": "I. cümle, kurallı bir isim cümlesidir.",
+      "B": "II. cümle, içinde fiilimsi bulunan olumsuz bir cümledir.",
+      "C": "III. cümle, devrik bir fiil cümlesidir.",
+      "D": "IV. cümle, birden çok yüklemli cümledir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki tabloda cümleler ve özellikleri eşleştirilmiştir.\nI. Bu zorlukları aşarak hedefine ulaştı. -> İçinde fiilimsi bulunan cümle\nII. Yağmur dindi, güneş yüzünü gösterdi. -> Bağlacı olan cümle\nIII. İşleyen demir pas tutmaz. -> Kurallı fiil cümlesi\nIV. Dün buralarda hiç kimse yoktu. -> İsim cümlesi\nBuna göre kaç numaralı eşleştirmede yanlışlık yapılmıştır?",
+    "secenekler": {
+      "A": "I",
+      "B": "III",
+      "C": "II",
+      "D": "IV"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "\"Sokaktayım, kimsesiz bir sokak ortasında;\nYürüyorum, arkama bakmadan yürüyorum.\nYolumun karanlığa karışan noktasında,\nSanki beni bekleyen bir hayal görüyorum.\"\nNecip Fazıl Kısakürek'in \"Kaldırımlar\" şiirinden alınan bu dörtlükle ilgili hangisi söylenemez?",
+    "secenekler": {
+      "A": "İlk dize, eksiltili cümle özelliği göstermez, çünkü yüklemi vardır.",
+      "B": "İkinci dize, yapısına göre birden çok yüklemli cümledir ve yüklemleri isimdir.",
+      "C": "Üçüncü ve dördüncü dize birlikte düşünüldüğünde içinde fiilimsi bulunan bir cümledir.",
+      "D": "Dörtlükte birden fazla kurallı fiil cümlesi bulunmaktadır."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "\"Ne kadar zengin olursa olsun, paylaşmayı bilmeyen bir insanın kalbi aslında fakirdir.\"\nBu cümlenin nitelikleri aşağıdakilerin hangisinde doğru verilmiştir?",
+    "secenekler": {
+      "A": "Kurallı - Olumlu - İsim cümlesi - İçinde fiilimsi bulunan cümle",
+      "B": "Kurallı - Olumsuz - İsim cümlesi - İçinde fiilimsi bulunan cümle",
+      "C": "Devrik - Olumlu - Fiil cümlesi - Tek yüklemli cümle",
+      "D": "Kurallı - Olumlu - İsim cümlesi - Birden çok yüklemli cümle"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Bazı cümlelerde yüklem olumsuzluk eki veya olumsuzluk bildiren sözcük aldığı hâlde, cümleden çıkarılan anlam olumlu olabilir. Buna \"biçimce olumsuz, anlamca olumlu\" cümle denir.\nAşağıdakilerin hangisi biçimce olumsuz, anlamca olumlu bir cümle değildir?",
+    "secenekler": {
+      "A": "Bu güzel manzarayı görmez olur muyum hiç?",
+      "B": "O anlattığın olayı ben hiç bilmez miyim?",
+      "C": "Marketten alacaklarımızı unutmuş değilim.",
+      "D": "Onun bu sözlerine hiçbir zaman inanmadım."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde yan cümlecik özne görevindedir?",
+    "secenekler": {
+      "A": "Kitabın son bölümünü okuduğunu söyledi.",
+      "B": "Arkadaşlarına yardım etmeyi her şeyden çok severdi.",
+      "C": "Erken uyanmak, güne zinde başlamamızı sağlar.",
+      "D": "Sorunları konuşarak çözmeliyiz."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi \"bağımsız sıralı\" bir cümledir?",
+    "secenekler": {
+      "A": "Adam hızla ayağa kalktı, kalabalığa doğru yürüdü.",
+      "B": "Kar şiddetini artırdı, yollar tamamen kapandı.",
+      "C": "Çocuklar bahçeye çıktılar, doyasıya oynadılar.",
+      "D": "Kitabını aldı, sayfalarını dikkatle çevirdi."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi yapısı bakımından diğerlerinden farklıdır?",
+    "secenekler": {
+      "A": "Hava karardı ve sokak lambaları birer birer yandı.",
+      "B": "Şiir okumayı çocukluğundan beri çok sever.",
+      "C": "Geçmişten günümüze uzanan bu köprü tarihe meydan okuyor.",
+      "D": "Yaşadıklarını anlattıkça hepimizin gözleri doluyordu."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Bir yazarın üslubunu değerlendiren şu cümlelere göz atalım:\nI. Yazar, son eserinde betimlemelere ağırlık vermiş.\nII. Olayları anlatırken okuyucuyu sıkmamak için kısa cümleler kurmuş.\nIII. Dilinin yalınlığı, her yaştan insanın onu okumasını sağlıyor.\nIV. Ayrıca konuları özenle seçiyor, titizlikle işliyor.\nBu cümlelerle ilgili hangisi söylenemez?",
+    "secenekler": {
+      "A": "I. cümle tek yüklemli cümledir.",
+      "B": "II. cümle içinde fiilimsi bulunan cümledir.",
+      "C": "III. cümle kurallı bir fiil cümlesidir.",
+      "D": "IV. cümle bağlı cümledir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde \"ki\" bağlacı, cümleye \"birden çok yüklemli cümle / bağlı cümle\" özelliği kazandırmamıştır?",
+    "secenekler": {
+      "A": "Tam kapıdan çıkıyordum ki telefon acı acı çaldı.",
+      "B": "Görüyorum ki derslerine düzenli bir şekilde çalışmıyorsun.",
+      "C": "Sendeki bu özgüven her zaman dikkat çekiyor.",
+      "D": "O kadar çok güldük ki gözlerimizden yaş geldi."
+    },
+    "dogru_cevap": "C"
+  }
+]

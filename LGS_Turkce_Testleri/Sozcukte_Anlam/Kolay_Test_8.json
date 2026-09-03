@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Hangi cümlede 'sıcak' sözcüğü mecaz anlamda kullanılmıştır?",
+    "secenekler": {
+      "A": "Bana çok sıcak davrandı.",
+      "B": "Sıcak suyu döktü.",
+      "C": "Bugün hava çok sıcak.",
+      "D": "Sıcak çay içti."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "'Ozan' kelimesinin eş anlamlısı hangisidir?",
+    "secenekler": {
+      "A": "Yazar",
+      "B": "Şair",
+      "C": "Ressam",
+      "D": "Müzisyen"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "'Ucuz' kelimesinin zıt anlamlısı nedir?",
+    "secenekler": {
+      "A": "Kaliteli",
+      "B": "Kötü",
+      "C": "Pahalı",
+      "D": "Bedava"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdakilerden hangisi deyimdir?",
+    "secenekler": {
+      "A": "Göz atmak",
+      "B": "Ağaç dikmek",
+      "C": "Kitap okumak",
+      "D": "Eve gitmek"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Hangisi bir atasözüdür?",
+    "secenekler": {
+      "A": "Küplere binmek",
+      "B": "Sakla samanı, gelir zamanı",
+      "C": "Etekleri zil çalmak",
+      "D": "Göz yummak"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdakilerden hangisi terim anlamlı bir sözcüktür?",
+    "secenekler": {
+      "A": "Pencere",
+      "B": "Sevgi",
+      "C": "Nota",
+      "D": "Bardak"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Hangisi somut bir kavramdır?",
+    "secenekler": {
+      "A": "Heyecan",
+      "B": "Özlem",
+      "C": "Cesaret",
+      "D": "Işık"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Hangi seçenekte ikileme vardır?",
+    "secenekler": {
+      "A": "Doğru dürüst bir iş buldu.",
+      "B": "Çok çalıştı.",
+      "C": "Okula gitti.",
+      "D": "Kitap okudu."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Hangisi eş sesli bir kelimedir?",
+    "secenekler": {
+      "A": "Güzel",
+      "B": "Yaz",
+      "C": "Hızlı",
+      "D": "Mavi"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Hangisi yansıma bir sözcüktür?",
+    "secenekler": {
+      "A": "Konuşma",
+      "B": "Gülümseme",
+      "C": "Uykulu",
+      "D": "Çıtırtı"
+    },
+    "dogru_cevap": "D"
+  }
+]

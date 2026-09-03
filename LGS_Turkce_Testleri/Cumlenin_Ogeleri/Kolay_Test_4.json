@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Sporcular antrenmana sabah erkenden başladı.\" cümlesinde 'sabah erkenden' söz grubu hangi ögedir?",
+    "secenekler": {
+      "A": "Zarf Tamlayıcısı",
+      "B": "Nesne",
+      "C": "Özne",
+      "D": "Yer Tamlayıcısı"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "\"Sağlıklı beslenmek vücudumuzu korur.\" cümlesindeki belirtili nesne hangisidir?",
+    "secenekler": {
+      "A": "Sağlıklı",
+      "B": "beslenmek",
+      "C": "korur",
+      "D": "vücudumuzu"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi sadece yüklemden oluşmuştur?",
+    "secenekler": {
+      "A": "Koşuyorum.",
+      "B": "Çok yorulmuştum.",
+      "C": "Topu attı.",
+      "D": "Hızlıydı yüzücü."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "\"Basketbol maçı yarın akşam oynanacak.\" cümlesinde hangi öge yoktur?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Zarf Tamlayıcısı",
+      "C": "Yer Tamlayıcısı",
+      "D": "Yüklem"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "\"Hakem düdüğünü şiddetle çaldı.\" cümlesinde 'şiddetle' sözcüğü cümlenin hangi ögesidir?",
+    "secenekler": {
+      "A": "Yer Tamlayıcısı",
+      "B": "Zarf Tamlayıcısı",
+      "C": "Nesne",
+      "D": "Özne"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "\"Düzenli yürüyüş kalp sağlığına iyi gelir.\" cümlesindeki yer tamlayıcısı hangisidir?",
+    "secenekler": {
+      "A": "Düzenli yürüyüş",
+      "B": "kalp",
+      "C": "kalp sağlığına",
+      "D": "iyi"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Hangi cümlede özne, bir kelime grubundan oluşmuştur?",
+    "secenekler": {
+      "A": "O, her gün spor yapar.",
+      "B": "Ali, yüzmeyi çok seviyor.",
+      "C": "Spor, disiplin kazandırır.",
+      "D": "Genç yetenek, yarışmayı birincilikle bitirdi."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "\"Doktor hastasına ilaç yazdı.\" cümlesinde 'ilaç' sözcüğü hangi ögedir?",
+    "secenekler": {
+      "A": "Belirtili Nesne",
+      "B": "Belirtisiz Nesne",
+      "C": "Yer Tamlayıcısı",
+      "D": "Özne"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerden hangisinde 'ne zaman' sorusunun cevabı vardır?",
+    "secenekler": {
+      "A": "Maç akşam saatlerinde bitecek.",
+      "B": "Seyirciler takımı destekledi.",
+      "C": "Topu kaleye sert vurdu.",
+      "D": "Antrenör yeni taktik verdi."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "\"Tenis oynamak onu çok mutlu ediyordu.\" cümlesinin öznesi nedir?",
+    "secenekler": {
+      "A": "onu",
+      "B": "çok",
+      "C": "mutlu ediyordu",
+      "D": "Tenis oynamak"
+    },
+    "dogru_cevap": "D"
+  }
+]

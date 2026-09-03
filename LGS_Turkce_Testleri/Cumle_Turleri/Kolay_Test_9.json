@@ -1,0 +1,82 @@
+[
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde birden çok yüklem (sıralı cümle) vardır?",
+    "A": "Dağların zirvesine ulaştığımızda harika bir manzara bizi bekliyordu.",
+    "B": "Otobüse bindik, cam kenarına geçip etrafı seyrettik.",
+    "C": "Farklı ülkeleri gezip yeni kültürler tanımayı çok seviyorum.",
+    "D": "Haritada gitmek istediğimiz rotayı kırmızı kalemle işaretledik.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Hangi cümle yükleminin türüne göre isim cümlesidir?",
+    "A": "Venedik'in kanallarında gondol ile gezmek çok keyifliydi.",
+    "B": "Yolculuk sırasında okumak için yanıma birkaç dergi aldım.",
+    "C": "Kapadokya'ya vardığımızda gün henüz yeni ağarıyordu.",
+    "D": "En büyük hayali dünya turuna çıkmaktı.",
+    "cevap": "D"
+  },
+  {
+    "soru": "'Yemyeşil vadiler, masmavi göller, heybetli dağlar...' cümlesi yükleminin yerine göre nasıl bir cümledir?",
+    "A": "Kurallı cümle",
+    "B": "Devrik cümle",
+    "C": "Eksiltili cümle",
+    "D": "Bağlı cümle",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdakilerden hangisi devrik bir eylem (fiil) cümlesidir?",
+    "A": "Çok uzundu bu köye giden ince ve kıvrımlı yol.",
+    "B": "Seyrettik güneşin batışını denizin kenarından.",
+    "C": "Oldukça serindi dağ evinin akşam rüzgarı.",
+    "D": "Biletleri aylar öncesinden almıştık ucuza.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi yapısına göre tek yüklemli (basit) bir cümledir?",
+    "A": "Rehberimiz bize antik kentin tarihini anlattı.",
+    "B": "Fotoğraf makinesini aldı ve çekim yapmaya başladı.",
+    "C": "Tatilde gezeceğimiz yerlerin listesini hazırladık.",
+    "D": "Kamp alanına çadırları kurduk, ateşi yaktık.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Hangi cümle anlamca olumsuz bir sorudur?",
+    "A": "Pasaport süreni yeniletmeyi unuttun mu?",
+    "B": "Bu kadar güzel bir yere bir daha gelinmez mi?",
+    "C": "Uçağın kalkmasına ne kadar süre kaldı?",
+    "D": "Valizini hazırlarken sana yardım edeyim mi?",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdakilerden hangisinde fiilimsi kullanılmıştır?",
+    "A": "Gemi limana yaklaştığında bütün yolcular güverteye çıktı.",
+    "B": "Yaz tatilinde Antalya'ya gideceğiz.",
+    "C": "Haritayı unuttuğumuz için yolu kaybettik.",
+    "D": "Şehirler arası yolculuklarda mola vermeyi severim.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi bağlacı olan cümledir?",
+    "A": "Trenin düdüğü çaldı, yolcular aceleyle vagonlara bindi.",
+    "B": "Uçak biletleri pahalıydı ancak biz otobüsle gitmeyi tercih ettik.",
+    "C": "Yolculuk boyunca pencereden akıp giden manzarayı izledi.",
+    "D": "Dağcılık kulübü pazar günü doğa yürüyüşü yapacak.",
+    "cevap": "B"
+  },
+  {
+    "soru": "'Çölde safari yapmak gerçekten çok heyecan vericiydi.' cümlesinin özellikleri aşağıdakilerin hangisinde verilmiştir?",
+    "A": "İsim cümlesi - Kurallı - Olumlu",
+    "B": "Fiil cümlesi - Kurallı - Olumlu",
+    "C": "İsim cümlesi - Devrik - Olumlu",
+    "D": "Fiil cümlesi - Kurallı - Olumsuz",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdakilerden hangisi biçimce olumlu, anlamca olumsuz bir cümledir?",
+    "A": "Gezi planı beklediğimiz gibi ilerlemedi.",
+    "B": "Oraya gidip de o meşhur yemeği yemez olur muyuz!",
+    "C": "Ne rehberi dinledi ne de grubun yanından ayrılmadı.",
+    "D": "Ne harita almış yanına ne de pusula.",
+    "cevap": "D"
+  }
+]

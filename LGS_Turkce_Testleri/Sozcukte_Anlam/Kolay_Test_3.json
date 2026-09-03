@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'boş' sözcüğü mecaz anlamda kullanılmıştır?",
+    "secenekler": {
+      "A": "Boş laflara karnım tok.",
+      "B": "Şişe tamamen boş.",
+      "C": "Sınıf bugün çok boş.",
+      "D": "Çantamın içi boş."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'koyu' sözcüğü mecaz anlamda kullanılmıştır?",
+    "secenekler": {
+      "A": "Koyu renk elbise giymiş.",
+      "B": "Koyu bir sohbete daldılar.",
+      "C": "Çay çok koyu olmuş.",
+      "D": "Oda oldukça koyu boyanmış."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Hangi cümlede terim anlamlı bir sözcük kullanılmıştır?",
+    "secenekler": {
+      "A": "Ağaçların yaprakları döküldü.",
+      "B": "Gökyüzü bulutlarla kaplı.",
+      "C": "Üçgenin iç açıları toplamı 180 derecedir.",
+      "D": "Sabahları yürüyüş yaparım."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdakilerin hangisinde gerçek anlamlı bir kelime kullanılmıştır?",
+    "secenekler": {
+      "A": "Bana çok soğuk davrandı.",
+      "B": "Keskin bakışları vardı.",
+      "C": "Ağır sözlerle beni kırdı.",
+      "D": "Sıcak çorba içmek iyi geldi."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Hangi cümlede 'acı' kelimesi mecazdır?",
+    "secenekler": {
+      "A": "Acı haberi alınca yıkıldı.",
+      "B": "Yemek çok acı olmuş.",
+      "C": "Biberin acısı dilimi yaktı.",
+      "D": "Acı bir tat aldım."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Hangisi terim anlamlı bir sözcüktür?",
+    "secenekler": {
+      "A": "Kalem",
+      "B": "Ofsayt",
+      "C": "Masa",
+      "D": "Kapı"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdakilerin hangisinde 'kırmak' sözcüğü mecaz anlamdadır?",
+    "secenekler": {
+      "A": "Camı kırdı.",
+      "B": "Dal kırıldı.",
+      "C": "Onun kalbini çok kırdı.",
+      "D": "Ceviz kırdı."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Hangisinde tüm kelimeler gerçek anlamlıdır?",
+    "secenekler": {
+      "A": "Sıcak kanlı biriydi.",
+      "B": "Taş kalpli adam.",
+      "C": "Gözü yükseklerde.",
+      "D": "İnce bir dilim ekmek yedi."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Hangisinde 'keskin' mecaz anlamda kullanılmıştır?",
+    "secenekler": {
+      "A": "Keskin zekasıyla öne çıktı.",
+      "B": "Keskin bir bıçak aldı.",
+      "C": "Makas çok keskindi.",
+      "D": "Keskin kılıç."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Hangi cümlede 'derin' kelimesi mecazdır?",
+    "secenekler": {
+      "A": "Kuyu çok derindi.",
+      "B": "Derin düşüncelere daldı.",
+      "C": "Gölün derinliği arttı.",
+      "D": "Derin bir çukur kazdılar."
+    },
+    "dogru_cevap": "B"
+  }
+]

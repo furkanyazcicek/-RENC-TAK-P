@@ -1,0 +1,127 @@
+{
+  "konu": "Fiilde Çatı",
+  "seviye": "Kolay",
+  "test_no": 2,
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinin yüklemi etken çatılı bir fiildir?",
+      "secenekler": {
+        "A": "Bütün odalar özenle temizlendi.",
+        "B": "Sokaktaki çöpler belediye tarafından toplandı.",
+        "C": "Çocuk, bahçedeki kediyi saatlerce sevdi.",
+        "D": "Tören için bayraklar asıldı."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Edilgen çatılı fiillerin bulunduğu cümlelerde işi yapan (gerçek özne) belli değildir. \nBuna göre aşağıdaki cümlelerin hangisinde edilgen çatılı bir fiil kullanılmıştır?",
+      "secenekler": {
+        "A": "Rüzgar şiddetli esince pencereler kapandı.",
+        "B": "Yarınki gezi için yeni bir otobüs kiralandı.",
+        "C": "Kardeşim erkenden uyudu.",
+        "D": "Adam, hızlı adımlarla uzaklaştı."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Hangi cümlenin yüklemi geçişli bir fiildir? (Geçişli fiiller nesne alabilen fiillerdir. \"Onu\" kelimesini başlarına getirebiliriz.)",
+      "secenekler": {
+        "A": "Bütün gün parkta oturdu.",
+        "B": "Kitabını masanın üzerinde unuttu.",
+        "C": "Bebek beşiğinde mışıl mışıl uyuyor.",
+        "D": "Haberi duyunca çok sevindi."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Aşağıdaki fiillerden hangisi nesnesine göre diğerlerinden farklıdır?",
+      "secenekler": {
+        "A": "İzlemek",
+        "B": "Okumak",
+        "C": "Kırmak",
+        "D": "Uyumak"
+      },
+      "dogru_cevap": "D",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "\"Boya\" kelimesi aşağıdaki cümlelerin hangisinde etken çatılı bir fiil olarak kullanılmıştır?",
+      "secenekler": {
+        "A": "Evin duvarları beyaza boyandı.",
+        "B": "Ressam, tuvalini maviye boyadı.",
+        "C": "Okulun demirleri haftasonu boyatıldı.",
+        "D": "Banklar yeşile boyanmış."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde çatı özelliği aranmaz? (Çatı özelliği sadece yüklemi fiil olan cümlelerde aranır.)",
+      "secenekler": {
+        "A": "Güneş yavaş yavaş batıyordu.",
+        "B": "En sevdiği mevsim ilkbahardı.",
+        "C": "Soruları hızlıca çözdü.",
+        "D": "Yağmur bardaktan boşanırcasına yağıyor."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Aşağıdaki cümlelerden hangisinin yüklemi geçişsiz bir fiildir?",
+      "secenekler": {
+        "A": "Bardağı elinden düşürdü.",
+        "B": "Televizyonu hemen kapattı.",
+        "C": "Akşam erken saatlerde yattı.",
+        "D": "Meyveleri tek tek yıkadı."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "\"Yıkandı\" fiili aşağıdaki cümlelerin hangisinde dönüşlü çatılıdır? (İşi yapan ve yapılan işten etkilenen aynıdır.)",
+      "secenekler": {
+        "A": "Bulaşıklar yemekten hemen sonra yıkandı.",
+        "B": "Arabalar oto yıkamacıda yıkandı.",
+        "C": "Çocuklar denizden çıkınca duşta yıkandı.",
+        "D": "Çamaşırlar sıcak suda yıkandı."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Aşağıdaki eşleştirmelerden hangisi yanlıştır?",
+      "secenekler": {
+        "A": "Cam kırıldı. (Edilgen)",
+        "B": "Ali camı kırdı. (Etken)",
+        "C": "Ali mektup yazdı. (Geçişsiz)",
+        "D": "Bebek ağladı. (Geçişsiz)"
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "\"Görünmek\" fiili aşağıdaki cümlelerin hangisinde farklı bir çatı özelliğine sahiptir?",
+      "secenekler": {
+        "A": "Dağların ardında bir köy göründü.",
+        "B": "Uzaklardan bir gemi göründü.",
+        "C": "Aynanın karşısında saatlerce süslenip püslenip göründü.",
+        "D": "Ufukta kara göründü."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    }
+  ]
+}

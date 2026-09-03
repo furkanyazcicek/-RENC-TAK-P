@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "[Görselde beyaz, kalın bir koruyucu kıyafet giymiş, başında yansıtıcılı bir kask olan kişi, yer çekimi olmayan bir ortamda (Ay yüzeyinde) adım atmaktadır.]\n\nBu görseldeki kişinin mesleği aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Dalgıç",
+      "B": "Astronot",
+      "C": "Pilot",
+      "D": "İtfaiyeci"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "[Görselde devrilmiş bir çöp kovası, etrafa saçılmış ambalaj atıkları ve üzerinde uçuşan sinekler resmedilmiştir. Bir sokak köpeği çöpleri karıştırmaktadır.]\n\nBu görsel aşağıdakilerden hangisini eleştirmek için kullanılmış olabilir?",
+    "secenekler": {
+      "A": "Sokak hayvanlarının beslenmesini",
+      "B": "Çevre temizliğine özen gösterilmemesini",
+      "C": "Geri dönüşüm kutularının yetersizliğini",
+      "D": "Sineklerin çoğalmasını"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "[Görselde açık duran deri bir cüzdanın içinden kağıt paralar ve çok sayıda kredi kartı görünmektedir. Cüzdanın hemen yanında 'Alışveriş' kelimesi yazmaktadır.]\n\nBu görselin teması aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Eğitim",
+      "B": "Sağlık",
+      "C": "Ekonomi ve Tüketim",
+      "D": "Doğa sevgisi"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "[Görselde yeşil bir yaprağın üzerinde yürüyen, kırmızı renkli ve siyah benekli küçük bir böcek çizilmiştir.]\n\nGörselde yer alan canlı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Uğur böceği",
+      "B": "Kelebek",
+      "C": "Karınca",
+      "D": "Arı"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "[Görselde bir çocuk bisiklete binmektedir. Çocuğun başında kask, dizlerinde dizlik ve dirseklerinde koruyucu yastıkçıklar takılıdır.]\n\nBu görselden yola çıkarak çocuk hakkında ne söylenebilir?",
+    "secenekler": {
+      "A": "Bisiklet sürmeyi hiç bilmemektedir.",
+      "B": "Güvenlik önlemlerine dikkat etmektedir.",
+      "C": "Yarışmalara hazırlanmaktadır.",
+      "D": "Kurallara uymayı sevmemektedir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "[Görselde koyu renkli gözlük takan bir kişi, elindeki beyaz renkli ve katlanabilir bastonu yeri kontrol ederek yürümek için kullanmaktadır.]\n\nBu bastonu kullanan kişi için aşağıdakilerden hangisi söylenebilir?",
+    "secenekler": {
+      "A": "İşitme engellidir.",
+      "B": "Fiziksel yürüme engellidir.",
+      "C": "Görme engellidir.",
+      "D": "Sadece yaşlı olduğu için kullanmaktadır."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "[Görselde açık bir mektup zarfı ve içinden yarı yarıya çıkmış, üzerinde el yazısıyla yazılar olan bir kağıt yer almaktadır. Zarfın üzerinde bir posta pulu vardır.]\n\nBu görselin günümüzdeki teknolojik karşılığı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "E-posta (Elektronik posta)",
+      "B": "Televizyon",
+      "C": "Radyo",
+      "D": "Hesap makinesi"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "[Görselde bir evin çatısına yerleştirilmiş, güneşe doğru dönük olan mavi renkli büyük güneş panelleri çizilmiştir.]\n\nBu panellerin eve sağladığı fayda nedir?",
+    "secenekler": {
+      "A": "Evin yağmur almasını engellemek",
+      "B": "Güneş enerjisinden elektrik üretmek",
+      "C": "Evde sıcaklık oluşmasını önlemek",
+      "D": "Evin daha güzel görünmesini sağlamak"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "[Görselde arkası büyük, tüplü, ekranı küçük, üzerinde çevirmeli düğmeler bulunan ve üstünde çift anteni olan eski model bir televizyon çizilmiştir.]\n\nBu görsele bakarak televizyon hakkında ne söylenebilir?",
+    "secenekler": {
+      "A": "Son model bir teknoloji ürünü olduğu",
+      "B": "Geçmişte kullanılan eski bir eşya olduğu",
+      "C": "İnternete bağlanabildiği",
+      "D": "Dokunmatik ekrana sahip olduğu"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "[Görselde kendi ekseni etrafında dönmesine yarayan bir demir çubuğa tutturulmuş, üzerinde ülkelerin, denizlerin ve kıtaların yer aldığı maket bir küre bulunmaktadır.]\n\nBu eşya en çok hangi alanda veya derste kullanılır?",
+    "secenekler": {
+      "A": "Matematik",
+      "B": "Coğrafya",
+      "C": "Müzik",
+      "D": "Beden Eğitimi"
+    },
+    "dogru_cevap": "B"
+  }
+]

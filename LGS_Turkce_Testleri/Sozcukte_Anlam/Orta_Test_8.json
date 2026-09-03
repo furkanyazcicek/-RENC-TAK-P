@@ -1,0 +1,117 @@
+{
+  "testId": "Orta_Test_8",
+  "subject": "Sözcükte Anlam",
+  "difficulty": "Orta",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'kaldırmak' sözcüğü 'dayanmak, katlanmak' anlamında kullanılmıştır?",
+      "options": {
+        "A": "İçinde kitap dolu olan ağır kutuyu bütün gücüyle yerinden kaldırdı.",
+        "B": "Misafirler gittikten sonra masadaki boş tabakları mutfağa kaldırdı.",
+        "C": "Bana söylenen bu haksız ve ağır sözleri yüreğim artık kaldırmıyor.",
+        "D": "Parkta koşarken yere düşen küçük çocuğu usulca elinden tutup kaldırdı."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'yemek' sözcüğü 'tüketmek, bitirmek, harcamak' anlamında mecaz olarak kullanılmıştır?",
+      "options": {
+        "A": "Akşam yemeğinde misafirlerle birlikte güzelce pişmiş et yedik.",
+        "B": "Yemeğin ardından ikram edilen sütlü tatlıyı afiyetle yedi.",
+        "C": "Sabah balkon demirine konan kuşlar dünden kalan kırıntıları yemiş.",
+        "D": "Babasından kalan o büyük mirası hiç çalışmayarak birkaç yılda yedi."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "Aşağıdaki deyimlerden hangisi 'yardımcı olmak, yardımda bulunmak' anlamındadır?",
+      "options": {
+        "A": "El atmak",
+        "B": "El uzatmak",
+        "C": "Elden çıkarmak",
+        "D": "Ele vermek"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "Aşağıdaki atasözlerinden hangisi 'herkesin kendi sıkıntısının ve derdinin sadece kendisine büyük geldiğini' vurgular?",
+      "options": {
+        "A": "Ateş düştüğü yeri yakar.",
+        "B": "Mum dibine ışık vermez.",
+        "C": "Meyveli ağacı taşlarlar.",
+        "D": "Gülü seven dikenine katlanır."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'yatmak' sözcüğü 'hapse girmek, cezaevinde kalmak' anlamındadır?",
+      "options": {
+        "A": "Bütün gün tarlada çalışıp yorulunca akşam yemeğinden sonra erkenden yattı.",
+        "B": "Küçük çocuk sıcak yatağında oyuncak ayısına sarılıp mışıl mışıl yatıyor.",
+        "C": "Gençliğinde işlediği o büyük suçtan dolayı tam üç yıl içerde yattı.",
+        "D": "Hastalanan dedem, ilaçlarını alıp günlerce halsiz bir şekilde yatakta yattı."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'uçmak' sözcüğü 'çok sevinmek' anlamında mecaz olarak kullanılmıştır?",
+      "options": {
+        "A": "Havalar soğumaya başlayınca göçmen kuşlar sürüler halinde güneye uçtu.",
+        "B": "Yolcu uçağı masmavi gökyüzünde beyaz bulutların arasından süzülerek uçuyordu.",
+        "C": "Sonbaharda kuruyan yapraklar şiddetli esen rüzgarda sağa sola uçuştu.",
+        "D": "İstediği üniversiteyi dereceyle kazandığını duyunca sevincinden adeta göklere uçtu."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'taşımak' sözcüğü 'üzerinde bulundurmak, içermek' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Şairin yazdığı bu son mektup, satır aralarında çok derin anlamlar taşıyor.",
+        "B": "Nakliye şirketinin işçileri ağır kolileri dikkatlice üst kata taşıdılar.",
+        "C": "Okul servisi gelene kadar kardeşinin ağır çantasını akşama kadar o taşıdı.",
+        "D": "Hafta sonu bütün eski eşyaları paketleyip mahalledeki yeni eve taşıdık."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "Aşağıdaki kelimelerden hangisinin sesteşi (eş seslisi) yoktur?",
+      "options": {
+        "A": "Kaz",
+        "B": "Masa",
+        "C": "Yüz",
+        "D": "Bin"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'vurmak' sözcüğü 'yansımak, aydınlatmak' anlamında kullanılmıştır?",
+      "options": {
+        "A": "İçeri girmek için büyük ahşap kapıya öfkeyle ve sertçe vurdu.",
+        "B": "Usta, elindeki ağır çekici tahtaya çakmak istediği çiviye hızla vurdu.",
+        "C": "Maçın son dakikalarında ceza sahası dışından topa çok sert vurdu.",
+        "D": "Sabah güneşinin pırıl pırıl ışıkları perdesi açık olan pencereye vuruyor."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 10,
+      "questionText": "Aşağıdakilerin hangisinde altı çizili kelime nicel (sayılabilen, ölçülebilen) bir anlam taşımaktadır?",
+      "options": {
+        "A": "Çok *güzel* bir tablo yapmış.",
+        "B": "Sokaktaki *kötü* koku herkesi rahatsız etti.",
+        "C": "Bahçenin etrafına çok *uzun* bir duvar örmüşler.",
+        "D": "Kasabanın en *cimri* adamı olarak bilinirdi."
+      },
+      "correctAnswer": "C"
+    }
+  ]
+}

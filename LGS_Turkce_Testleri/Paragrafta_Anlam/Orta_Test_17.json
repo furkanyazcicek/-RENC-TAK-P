@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Spor yapmak, sadece kasları geliştirmek veya zayıflamak amacıyla yapılmamalıdır. Düzenli egzersiz, kan dolaşımını hızlandırarak kalp sağlığını korur, aynı zamanda mutluluk hormonu salgılatarak stresi azaltır. Gerçek anlamda sağlıklı bir yaşamın sırrı, sporu geçici bir heves değil, bir yaşam tarzı haline getirmektir.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "a": "Sadece kilo vermek isteyenler düzenli spor yapmalıdır.",
+    "b": "Spor, fiziksel ve ruhsal sağlığa bütüncül katkı sağlayan bir yaşam biçimi olmalıdır.",
+    "c": "Kalp sağlığını korumanın tek yolu profesyonel spor yapmaktır.",
+    "d": "Mutluluk hormonu sadece ağır egzersizler sonrasında salgılanır.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Beslenme alışkanlıklarımız sağlığımızın aynasıdır. Hızlı tüketilen işlenmiş gıdalar enerji verse de vücuda gerekli olan vitamin ve mineralleri sağlamaz. Uzun vadede yorgunluk, odaklanma sorunları ve çeşitli hastalıklar kapıyı çalar. Doğal ve dengeli beslenmek, vücudun yakıtını doğru seçmek demektir.\n\nBu parçadan aşağıdaki yargıların hangisi çıkarılamaz?",
+    "a": "İşlenmiş gıdaların vücudun ihtiyaç duyduğu besin değerlerini karşılamadığı",
+    "b": "Yanlış beslenmenin zihinsel performansı olumsuz etkileyebildiği",
+    "c": "Doğal beslenen insanların hiçbir zaman hasta olmadığı",
+    "d": "Sağlıklı bir yaşam için doğru besin seçiminin önemli olduğu",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Olimpiyat oyunları, sadece ülkelerin madalya yarışına girdiği bir etkinlik değildir. Binlerce yıl önce barış ve kardeşlik amacıyla başlayan bu oyunlar, bugün de farklı dilden, dinden ve ırktan sporcuyu aynı kurallar çerçevesinde bir araya getirerek sporun evrensel birleştirici gücünü sergiler.\n\nBu metinde olimpiyatlarla ilgili aşağıdakilerden hangisine değinilmemiştir?",
+    "a": "Oyunların ilk çıkış amacının ne olduğuna",
+    "b": "Farklı kültürlerden insanları birleştirdiğine",
+    "c": "Olimpiyatlarda en çok madalya kazanan ülkelere",
+    "d": "Sporun evrensel bir yapıya sahip olduğunu gösterdiğine",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Su tüketimi sağlıklı bir vücut için hayati önem taşır. Ancak susamayı bekleyerek su içmek büyük bir hatadır. Vücut susuzluk hissi verdiğinde aslında hücreler çoktan su kaybetmeye başlamıştır. Bu yüzden suyu gün içine yayarak düzenli tüketmek, metabolizmanın doğru çalışması için şarttır.\n\nBu parçada asıl anlatılmak istenen aşağıdakilerden hangisidir?",
+    "a": "Günde en az üç litre su tüketilmesi gerektiği",
+    "b": "Suyun metabolizma üzerinde hiçbir etkisinin olmadığı",
+    "c": "Susamayı beklemeden, suyu düzenli aralıklarla içmenin gerekli olduğu",
+    "d": "Suyun içine meyve atılarak içilmesinin daha sağlıklı olduğu",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Takım sporları, çocuklara sadece fiziksel yetenek kazandırmakla kalmaz; aynı zamanda birlikte çalışma, liderlik, yenilgiyi kabullenme ve kurallara uyma gibi önemli sosyal beceriler aşılar. Sahada takım arkadaşlarıyla paslaşmayı öğrenen çocuk, hayatta da paylaşmayı ve dayanışmayı öğrenir.\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "a": "Takım sporlarının çocukların sosyal ve kişisel gelişimine katkısı",
+    "b": "Çocukların hangi takım sporunda daha başarılı olduğu",
+    "c": "Bireysel sporların takım sporlarına göre dezavantajları",
+    "d": "Spor kurallarının nasıl belirlendiği",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Yürüyüş, en masrafsız ve en doğal sporlardan biridir. Ekipman gerektirmez, yaş sınırı yoktur. Her gün yapılan tempolu bir yürüyüş, kasları güçlendirirken zihni de berraklaştırır. Özellikle doğada yapılan yürüyüşler, şehrin gürültüsünden ve stresinden kaçmak için birebirdir.\n\nBu metin için en uygun başlık aşağıdakilerden hangisidir?",
+    "a": "Orman Yürüyüşünün Tehlikeleri",
+    "b": "Pahalı Spor Ekipmanları",
+    "c": "Yürüyüşün Sağlığa Çok Yönlü Faydaları",
+    "d": "Yaşlılar İçin Tehlikeli Egzersizler",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Güne kahvaltı yaparak başlamak, arabanın deposunu doldurup yola çıkmaya benzer. Gece boyunca aç kalan vücut, güne başlamak için enerjiye ihtiyaç duyar. Kahvaltıyı atlayan kişilerde gün içinde şeker düşmesi, asabiyet ve dikkatsizlik sıkça görülür.\n\nBu metne göre aşağıdakilerden hangisi çıkarılabilir?",
+    "a": "Kahvaltıda sadece protein ağırlıklı beslenmek gerekir.",
+    "b": "Kahvaltı yapmak, güne enerjik ve dengeli başlamak için gereklidir.",
+    "c": "Kahvaltıyı atlayanlar gün boyunca hiç acıkmazlar.",
+    "d": "Akşam yemekleri kahvaltıdan daha önemlidir.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Profesyonel sporcuların başarılarının arkasında sadece yetenek değil, demir gibi bir disiplin yatar. Çoğu insan sporcuların madalya aldığı o parlak anı görür; oysa o madalyanın ardında yıllar süren erken kalkmalar, yorucu antrenmanlar, sosyal hayattan fedakarlıklar ve katı bir beslenme programı vardır.\n\nBu metinde vurgulanan düşünce aşağıdakilerden hangisidir?",
+    "a": "Yetenekli olmayan hiç kimsenin sporda başarılı olamayacağı",
+    "b": "Profesyonel sporun insanı mutsuz eden bir süreç olduğu",
+    "c": "Başarının asıl temelinin zorluklara göğüs geren bir disiplin olduğu",
+    "d": "Madalya kazanmanın şans işi olduğu",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Obezite, modern çağın hızla yayılan ve önlem alınması gereken sağlık sorunlarının başında geliyor. Ekran başında geçirilen uzun saatler, hareketsizlik ve şekerli gıdaların artışı bu durumu tetikliyor. Çözüm ise yasaklayıcı şok diyetlerde değil, sürdürülebilir aktif bir yaşam alışkanlığındadır.\n\nBu parçada asıl anlatılmak istenen aşağıdakilerden hangisidir?",
+    "a": "Şok diyetlerin obeziteyi hızla çözdüğü",
+    "b": "Obezitenin teknolojik aletlerden bulaşan bir virüs olduğu",
+    "c": "Hareketsizlik ve kötü beslenmeyle artan obezitenin kalıcı yaşam tarzı değişiklikleriyle önlenebileceği",
+    "d": "Sadece yetişkinlerin obezite riski taşıdığı",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Yoga ve nefes egzersizleri, zihni yavaşlatarak bedeni dinlendirmeyi amaçlar. Günümüzün koşturmacasında sürekli uyarılara maruz kalan beynimiz, bu egzersizler sayesinde dinlenme moduna geçer. Doğru nefes almak, sadece akciğerleri doldurmak değil, sinir sistemini yatıştırarak iç huzuru sağlamaktır.\n\nBu metne göre aşağıdakilerden hangisi nefes egzersizlerinin sonuçlarından biri değildir?",
+    "a": "Zihni koşturmacadan uzaklaştırıp yavaşlatması",
+    "b": "Kas kütlesini hızla artırması",
+    "c": "Sinir sistemini rahatlatması",
+    "d": "Bedeni ve zihni dinlendirmesi",
+    "cevap": "B"
+  }
+]

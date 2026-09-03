@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Bir su tasarrufu afişinde 'Damlayan bir musluk yılda 10.000 litre su israfına yol açar.' yazmaktadır ve görselde bir kum saati içinde su damlaları gösterilmektedir. Bu afişin vermek istediği asıl mesaj aşağıdakilerden hangisidir?",
+    "A": "Su kaynaklarının her geçen gün giderek azaldığı",
+    "B": "Küçük gibi görünen kayıpların zamanla büyük israflara dönüştüğü",
+    "C": "Suların tamamen tükenmesinin kum saati gibi geri sayılamayacağı",
+    "D": "Su israfını önlemek için sadece muslukların tamir edilmesi gerektiği",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Bir ülkedeki atık türlerinin geri dönüşüm oranlarını gösteren grafikte; kâğıt %50, cam %25, plastik %15 ve metal %10 olarak verilmiştir. Bu grafikten hareketle aşağıdakilerden hangisine kesin olarak ulaşılır?",
+    "A": "En çok kullanılan malzeme kâğıttır.",
+    "B": "Plastik ve metal geri dönüşümü doğaya daha fazla zarar vermektedir.",
+    "C": "Geri dönüşüm tesislerinin çoğu cam üzerine kuruludur.",
+    "D": "Kâğıdın geri dönüşüm oranı, diğer üç malzemenin toplam oranına eşittir.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Bir infografikte nesli tükenme tehlikesi altındaki hayvanların kıtalara göre dağılımı verilmiştir: Asya %40, Afrika %30, Güney Amerika %20, Diğer %10. Buna göre çıkarılabilecek en doğru sonuç nedir?",
+    "A": "Tehlike altındaki türlerin yarısından fazlası Asya ve Afrika'da bulunmaktadır.",
+    "B": "Güney Amerika'daki hayvanların nesli tükenmek üzeredir.",
+    "C": "Afrika, vahşi yaşamın en iyi korunduğu kıtadır.",
+    "D": "Diğer kıtalarda hiçbir hayvanın nesli tükenme tehlikesi yoktur.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Doğada yok olma süreleri tablosuna göre: Cam şişe 4000 yıl, plastik şişe 1000 yıl, teneke kutu 50 yıl, kâğıt havlu 1 aydır. Tabloya göre hangisi söylenemez?",
+    "A": "Camın doğada kaybolması plastikten daha uzun sürer.",
+    "B": "Kâğıt havlu en hızlı çözünen maddedir.",
+    "C": "Metal ürünlerin doğaya hiçbir zararı yoktur.",
+    "D": "Plastik şişenin yok olması teneke kutudan yavaş gerçekleşir.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Orman yangınlarının nedenlerini gösteren dairesel grafikte %60 İnsan İhmali, %20 Doğal Nedenler, %15 Kundaklama, %5 Bilinmeyen Nedenler yer almaktadır. Bu grafiğe göre hangisi en büyük sorundur?",
+    "A": "İnsanların doğaya karşı dikkatsiz ve tedbirsiz davranması",
+    "B": "Kundaklama vakalarının her yıl artış göstermesi",
+    "C": "Doğal nedenlerin engellenemez düzeyde olması",
+    "D": "Bilinmeyen nedenlerin araştırılmaması",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Yıllara göre ağaçlandırma oranlarını gösteren bir sütun grafiğinde 2018'den 2022'ye kadar sürekli bir artış eğilimi, 2023'te ise ani bir düşüş görülmektedir. Bu grafikten hangi sonuç çıkarılabilir?",
+    "A": "2023 yılında ülkenin ormanlık alanları tamamen yok olmuştur.",
+    "B": "2022 yılına kadar ağaçlandırma çalışmalarına giderek daha fazla önem verilmiştir.",
+    "C": "Orman yangınları en çok 2023 yılında yaşanmıştır.",
+    "D": "2018 yılı, en çok fidan dikilen yıl olmuştur.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Göçmen kuşların Türkiye üzerindeki rotasını gösteren haritada, ilkbaharda Kuzey'e, sonbaharda Güney'e doğru yoğun ok işaretleri vardır. Buna göre aşağıdakilerden hangisi söylenebilir?",
+    "A": "Kuşlar sadece Türkiye üzerinde göç etmektedir.",
+    "B": "Türkiye'deki kuş türü sayısı diğer ülkelerden fazladır.",
+    "C": "Göçmen kuşlar kış aylarında Kuzey'de yaşar.",
+    "D": "Kuşların göç yönü mevsimsel değişikliklere göre farklılık gösterir.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Okyanus kirliliğiyle ilgili bir görselde, dev bir buzdağının suyun altındaki kısmının tamamen plastik atıklardan oluştuğu çizilmiştir. Bu görselin ana fikri nedir?",
+    "A": "Buzullar eridikçe okyanus seviyelerinin yükseleceği",
+    "B": "Plastik atıkların okyanus yüzeyinde birikerek adalar oluşturduğu",
+    "C": "Kirliliğin görünen kısmının buzdağının sadece ucu olduğu ve sorunun çok daha büyük olduğu",
+    "D": "Buzdağlarının tamamen plastik atıklardan beslendiği",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Karbon ayak izini küçültme yollarını anlatan bir broşürde bisiklete binmek, toplu taşıma kullanmak ve ağaç dikmek vurgulanmıştır. Buna göre broşürün asıl hedefi nedir?",
+    "A": "İnsanları sadece spor yapmaya yönlendirmek",
+    "B": "Bireysel ulaşım ve yaşam alışkanlıklarını doğa dostu hale getirmek",
+    "C": "Şehir içi trafik sorununu çözmek",
+    "D": "Sadece ormanlık alanları artırmak",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Çevre dostu enerji konulu bir afişte, rüzgâr gülleri ve güneş panelleri bir ağacın meyveleri gibi çizilmiştir. Bu çizimle anlatılmak istenen nedir?",
+    "A": "Rüzgâr güllerinin ağaçlardan daha fazla olduğu",
+    "B": "Güneş panellerinin doğaya zarar verdiği",
+    "C": "Ağaçların elektrik üretebilen bir yapıya sahip olduğu",
+    "D": "Yenilenebilir enerjinin doğanın kendi döngüsünden elde edildiği",
+    "cevap": "D"
+  }
+]

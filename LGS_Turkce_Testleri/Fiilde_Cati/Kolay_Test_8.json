@@ -1,0 +1,125 @@
+{
+  "test_adi": "Fiilde Çatı - Kolay Test 8",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde çatı özelliği aranmaz?",
+      "secenekler": {
+        "A": "Astronotlar uzay mekiğine dikkatlice bindi.",
+        "B": "Bilim insanları yeni bir gezegen keşfetti.",
+        "C": "Teleskoptan görünen yıldızlar çok parlaktı.",
+        "D": "Mars'a gönderilen uzay aracı başarıyla indi."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğindeki yüklem 'parlaktı' isim soyludur, bu sebeple çatı özelliği aranmaz."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde fiil geçişli olduğu hâlde nesne kullanılmamıştır?",
+      "secenekler": {
+        "A": "Teleskopla Ay'ın yüzeyini inceledi.",
+        "B": "Uzay kampındaki öğrenciler not tuttu.",
+        "C": "Bilim fuarında saatlerce heyecanla izledik.",
+        "D": "Laboratuvardaki deney sonuçlarını açıkladı."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde 'izledik' yüklemi geçişli bir eylemdir ancak cümlede neyi izlediğimiz belirtilmediği için nesne kullanılmamıştır."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Hangi cümlenin yüklemi etken çatılıdır?",
+      "secenekler": {
+        "A": "Uzay istasyonunun güneş panelleri onarıldı.",
+        "B": "Yeni galaksilerin fotoğrafları çekildi.",
+        "C": "Araştırmacılar laboratuvarda sabahladı.",
+        "D": "Dünya'nın etrafındaki uydular yenilendi."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde eylemi gerçekleştiren özne (Araştırmacılar) bellidir. Diğerleri edilgen çatılıdır."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "'Gezegenlerin hareketleri bilim insanları tarafından gözlemlendi.' cümlesindeki çatı özelliği aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Etken - Geçişsiz",
+        "B": "Edilgen - Geçişli",
+        "C": "Etken - Geçişli",
+        "D": "Edilgen - Geçişsiz"
+      },
+      "dogru_cevap": "D",
+      "cozum": "'gözlemlendi' eyleminin '-l' veya '-n' edilgenlik ekini aldığı ve işin başkası tarafından yapıldığı anlamını taşıdığı görülmektedir. Edilgen çatılı fiiller nesne alamadıkları için her zaman geçişsizdir."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Hangisinde geçişsiz bir eylem kullanılmıştır?",
+      "secenekler": {
+        "A": "Astronot, roket fırlatılmadan önce uyudu.",
+        "B": "Uzay aracının yakıt tankını doldurdular.",
+        "C": "Bilimsel makaleyi dergide yayımladı.",
+        "D": "Teleskobun merceğini özenle temizledi."
+      },
+      "dogru_cevap": "A",
+      "cozum": "A seçeneğindeki 'uyudu' eylemi nesne alamaz (onu uyudu olmaz), bu yüzden geçişsizdir."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "'Bulmak' fiili hangisinde etken-geçişli çatılıdır?",
+      "secenekler": {
+        "A": "Aranan fosiller kazı alanında bulundu.",
+        "B": "Bilim insanları kara deliğin izlerini buldu.",
+        "C": "Uzayda yaşam izi henüz bulunamadı.",
+        "D": "Yeni icatlar sergide sunuldu."
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğinde eylemi yapan 'Bilim insanları' bellidir (etken). Ayrıca nesne alabilen (onu buldu) geçişli bir eylemdir."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Edilgen çatılı eylemler nesne alamadıkları için her zaman geçişsizdirler. Aşağıdakilerin hangisinde bu duruma örnek bir fiil vardır?",
+      "secenekler": {
+        "A": "Uzay mekiği sabah fırlatıldı.",
+        "B": "Öğrenciler uzay müzesini gezdi.",
+        "C": "Fizik öğretmeni konuyu anlattı.",
+        "D": "Bilim dergilerini düzenli okurum."
+      },
+      "dogru_cevap": "A",
+      "cozum": "A seçeneğindeki 'fırlatıldı' fiili edilgen olduğu için aynı zamanda geçişsizdir."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Aşağıdaki cümlelerden hangisinin yüklemi etken ve geçişsizdir?",
+      "secenekler": {
+        "A": "Gök taşının dünyaya yaklaşacağı açıklandı.",
+        "B": "Deney tüpleri sıcak suyla yıkandı.",
+        "C": "Astronot yerçekimsiz ortamda süzüldü.",
+        "D": "Uzay hakkında birçok kitap okudu."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde eylemi yapan astronottur (etken), ancak süzülmek eylemi nesne alamaz (onu süzüldü olmaz - geçişsiz)."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Hangisinin yüklemi isimdir, bu nedenle çatı özelliği aranmaz?",
+      "secenekler": {
+        "A": "Uzay giysileri özel malzemelerden yapılır.",
+        "B": "Bilimsel araştırmalar her zaman önemlidir.",
+        "C": "Mars'ta su izlerine rastlandı.",
+        "D": "Roket hızla gökyüzüne fırladı."
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğindeki 'önemlidir' yüklemi isim soyludur, çatı özelliği sadece fiil cümlelerinde aranır."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Aşağıdakilerin hangisinde altı çizili eylemin nesne-yüklem ilişkisi yay ayraç içinde YANLIŞ verilmiştir?",
+      "secenekler": {
+        "A": "Yıldızları izledi. (Geçişli)",
+        "B": "Düştü. (Geçişsiz)",
+        "C": "Buluşu tanıttı. (Geçişli)",
+        "D": "Gezegen döndü. (Geçişli)"
+      },
+      "dogru_cevap": "D",
+      "cozum": "'döndü' fiili nesne alamaz, geçişsizdir. Bu nedenle D seçeneğindeki eşleştirme yanlıştır."
+    }
+  ]
+}

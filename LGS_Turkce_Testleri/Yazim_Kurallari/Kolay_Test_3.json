@@ -1,0 +1,122 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde büyük harflerin kullanımıyla ilgili bir yanlışlık yapılmıştır?",
+    "secenekler": {
+      "A": "Dün akşam Ahmet Bey bize geldi.",
+      "B": "Yarın Ankara'ya gideceğiz.",
+      "C": "Kardeşim pamuk adlı kedisini çok sever.",
+      "D": "Türkiye'nin başkenti Ankara'dır."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Hayvanlara verilen özel adlar büyük harfle başlar. 'Pamuk' olmalıydı."
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdakilerin hangisinde yön bildiren sözcüğün yazımı yanlıştır?",
+    "secenekler": {
+      "A": "Rüzgâr Kuzeyden esiyor.",
+      "B": "Türkiye'nin güneyi daha sıcaktır.",
+      "C": "Kuzey Anadolu Dağları uzundur.",
+      "D": "Köyün batısına ağaç diktik."
+    },
+    "dogru_cevap": "A",
+    "cozum": "Yön adları tek başına veya özel addan sonra kullanıldığında küçük harfle başlar. 'kuzeyden' olmalıydı."
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde yazım yanlışı yoktur?",
+    "secenekler": {
+      "A": "Sınıfımıza Ayşe Hanım yeni geldi.",
+      "B": "Bakkal ahmet amca çok iyi biridir.",
+      "C": "Dün avukat Canan hanım aradı.",
+      "D": "Yarın vali beyle görüşeceğiz."
+    },
+    "dogru_cevap": "A",
+    "cozum": "Saygı sözleri ve unvanlar büyük harfle başlar. A şıkkı doğrudur."
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde ay ve gün adlarının yazımı ile ilgili yanlışlık yapılmıştır?",
+    "secenekler": {
+      "A": "Okullar eylül ayında açılıyor.",
+      "B": "Sınavımız 15 Haziran'da yapılacak.",
+      "C": "Her Pazar ailece kahvaltı yaparız.",
+      "D": "O, 19 Mayıs 1919'da Samsun'a çıktı."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Belirli bir tarih bildirmeyen gün adları küçük harfle başlar. 'pazar' olmalıydı."
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdakilerin hangisinde kurum veya kuruluş adlarının yazımı yanlıştır?",
+    "secenekler": {
+      "A": "Türk Dil Kurumu yeni bir sözlük çıkardı.",
+      "B": "Milli eğitim bakanlığı bir açıklama yaptı.",
+      "C": "Sağlık Bakanlığı hastaneleri denetledi.",
+      "D": "Türkiye Büyük Millet Meclisi bugün toplanıyor."
+    },
+    "dogru_cevap": "B",
+    "cozum": "Kurum, kuruluş ve kurul adlarının her kelimesi büyük harfle başlar. 'Millî Eğitim Bakanlığı' olmalıydı."
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde coğrafi bir terimin yazımı ile ilgili hata vardır?",
+    "secenekler": {
+      "A": "Van Gölü ülkemizin en büyük gölüdür.",
+      "B": "Erciyes Dağı kışın karla kaplıdır.",
+      "C": "Bugün Ağrı dağının eteklerine gittik.",
+      "D": "Konya Ovası Türkiye'nin tahıl ambarıdır."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Dağ, nehir, göl, deniz adları büyük harfle başlar. 'Ağrı Dağı'nın' olmalıydı."
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde gazete veya dergi adlarının yazımı doğrudur?",
+    "secenekler": {
+      "A": "Her gün Hürriyet Gazetesi okurum.",
+      "B": "Resmî Gazete'de yeni kararlar yayımlandı.",
+      "C": "Türk dili Dergisi'ni çok beğeniyorum.",
+      "D": "Milliyet dergisi bu ay güzel bir ek verdi."
+    },
+    "dogru_cevap": "B",
+    "cozum": "Özel ada dâhil olmayan gazete, dergi vb. sözler küçük harfle başlar. Sadece 'Resmî Gazete' özel ada dâhildir."
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde kitap isimlerinin yazımıyla ilgili yanlışlık vardır?",
+    "secenekler": {
+      "A": "Çalıkuşu romanını bir solukta okudum.",
+      "B": "Sefiller, dünya klasikleri arasındadır.",
+      "C": "Suç Ve Ceza adlı eseri okumalısın.",
+      "D": "Nutuk, tarihimizi aydınlatan bir eserdir."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Kitap adlarındaki 've, ile, ya da' gibi bağlaçlar, eser adının tamamı büyük yazılmamışsa küçük harfle yazılır. 'Suç ve Ceza' olmalıydı."
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde mahalle, meydan, bulvar vb. yer adlarının yazımı yanlıştır?",
+    "secenekler": {
+      "A": "Atatürk Bulvarı'nda kaza olmuş.",
+      "B": "Cumhuriyet mahallesi muhtarlığına gittik.",
+      "C": "Taksim Meydanı'nda buluşacağız.",
+      "D": "Gül Sokak'ta yeni bir ev kiraladık."
+    },
+    "dogru_cevap": "B",
+    "cozum": "Mahalle, meydan, bulvar, cadde, sokak adlarında geçen kelimeler büyük harfle başlar. 'Mahallesi' olmalıydı."
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde tarihi olay, çağ ve dönem adlarının yazımı doğrudur?",
+    "secenekler": {
+      "A": "tarihte ilk yazıyı Sümerler bulmuştur.",
+      "B": "Kurtuluş savaşı milletimizin destanıdır.",
+      "C": "Cilalı Taş Devri'nde tarım başlamıştır.",
+      "D": "Lale devri Osmanlı'da yenilik dönemidir."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Tarihî olay, çağ ve dönem adları büyük harfle başlar. C şıkkı doğru yazılmıştır."
+  }
+]

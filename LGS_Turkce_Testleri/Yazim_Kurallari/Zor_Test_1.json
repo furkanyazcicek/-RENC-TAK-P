@@ -1,0 +1,115 @@
+{
+  "test_adi": "Yazım Kuralları - Zor Seviye",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde kurallı birleşik fiillerin yazımıyla ilgili yanlışlık vardır?",
+      "secenekler": {
+        "A": "O gidince biz buralarda kalakaldık.",
+        "B": "Sen bu dosyaları inceleyedur, ben birazdan geliyorum.",
+        "C": "Sokağın köşesini dönerken onu birden karşımda görüverdim.",
+        "D": "Bu kadar kısa sürede onca işi nasıl yapa bildi, aklım almıyor."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde 'ki'nin yazımı yanlıştır?",
+      "secenekler": {
+        "A": "Oysaki biz ona her zaman güvenmiştik.",
+        "B": "Mademki gelmeyeceksin, neden söz veriyorsun?",
+        "C": "Meğer ki onca zaman bizi kandırmış.",
+        "D": "Halbuki onun için ne fedakârlıklar yapmıştık."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde kısaltmalara getirilen eklerin yazımıyla ilgili bir yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "KYK'nın yurt başvuruları haftaya başlayacak.",
+        "B": "RTÜK'ün verdiği cezalar tartışma konusu oldu.",
+        "C": "TFF'nin aldığı karar tüm kulüplere bildirildi.",
+        "D": "ASELSAN'ın yeni projesi büyük yankı uyandırdı."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Yer bildiren özel isimlerde, kıta, bölge, il, ilçe vb. sözcükler küçük harfle başlarken; dağ, deniz, nehir, göl, boğaz vb. sözcükler büyük harfle başlar. Buna göre aşağıdakilerin hangisinde yazım yanlışı vardır?",
+      "secenekler": {
+        "A": "Ağrı Dağı, Türkiye'nin en yüksek noktasıdır.",
+        "B": "Bugün Van gölü çevresinde kamp yapmayı planlıyoruz.",
+        "C": "Çanakkale Boğazı'ndan geçen gemileri izledik.",
+        "D": "Konya Ovası, ülkemizin tahıl ambarı olarak bilinir."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde büyük harflerin kullanımı ile ilgili bir yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Tarihi yapıları korumak için 2863 Sayılı kanun çıkarılmıştır.",
+        "B": "Resmî Gazete'de yayımlanan karar yürürlüğe girdi.",
+        "C": "Geçen yıl Türk Dil Kurumunun yayınlarını inceledim.",
+        "D": "Bakanlar Kurulu yeni kararları açıklamak için toplandı."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde mahalle, meydan, bulvar, cadde ve sokak adlarının yazımıyla ilgili yazım yanlışı vardır?",
+      "secenekler": {
+        "A": "Turgut Özal Bulvarı'nda trafik kazası meydana geldi.",
+        "B": "Karanfil Sokak'ta yeni bir kitapçı açılmış.",
+        "C": "Zafer Meydanı'nda toplanan kalabalık coşkuluydu.",
+        "D": "Bizim ev, Cumhuriyet mahallesi, Lale sokakta bulunuyor."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde sayıların yazımı ile ilgili yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Öğrencilere 3'er kitap dağıtıldı.",
+        "B": "Yarışmada 2'nci olan sporcu ödülünü aldı.",
+        "C": "Maaşının yüzde on beşini biriktiriyor.",
+        "D": "Oyun, XVII. yüzyılın sonlarında geçiyor."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "İkilemeler ve pekiştirmeli sözcüklerin yazımıyla ilgili aşağıdakilerin hangisinde bir yazım yanlışı vardır?",
+      "secenekler": {
+        "A": "Kıpkırmızı bir elma koparıp bana uzattı.",
+        "B": "Eş dost kim varsa herkesi düğününe davet etmişti.",
+        "C": "Onunla başbaşa verip bu sorunu çözeceğiz.",
+        "D": "Yağmurda sırılsıklam olmuş bir hâlde eve döndük."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Aşağıdakilerin hangisinde kesme işaretinin kullanımıyla ilgili bir yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Türk Dil Kurumuna bu konuyla ilgili dilekçe yazdık.",
+        "B": "Bakanlar Kurulu'nun aldığı son kararlar uygulandı.",
+        "C": "Boğaziçi Üniversitesinden mezun olunca iş bulması kolaylaştı.",
+        "D": "Türkiye Büyük Millet Meclisinde yeni yasa görüşülüyor."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde birleşik kelimelerin yazımıyla ilgili bir yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Bu kadar vurdumduymaz bir insanla çalışmak çok zor.",
+        "B": "Eski eşyaları bir antikacıya devretti.",
+        "C": "Son yıllarda denizaltı teknolojisinde büyük ilerlemeler yaşandı.",
+        "D": "Kuş burnu çayı içerek soğuk kış günlerinde hastalıktan korunabilirsiniz."
+      },
+      "dogru_cevap": "D"
+    }
+  ]
+}

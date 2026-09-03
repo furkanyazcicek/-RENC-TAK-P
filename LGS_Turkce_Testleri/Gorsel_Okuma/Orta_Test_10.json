@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Güneş sistemi gezegenleri büyüklük sıralaması görselinde Jüpiter en büyük, Merkür ise en küçük olarak çizilmiştir. Dünya, Venüs'ten biraz daha büyüktür. Görsele göre hangisi yanlıştır?",
+    "A": "Merkür sistemdeki en küçük gezegendir.",
+    "B": "Venüs, Dünya'dan daha büyüktür.",
+    "C": "Jüpiter tüm gezegenlerden hacimce fazladır.",
+    "D": "Gezegenlerin büyüklükleri birbirinden farklıdır.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Ay'ın evrelerini gösteren bir takvimde, karanlık yüzü Yeni Ay, tamamen aydınlık yüzü ise Dolunay olarak isimlendirilmiştir. Bu takvimden hareketle Ay hakkında hangi sonuca ulaşılır?",
+    "A": "Ay'ın dünyadan görünen yüzü zamanla değişiklik gösterir.",
+    "B": "Ay kendi ışığını üreten bir yıldızdır.",
+    "C": "Dolunay evresinde Ay tamamen görünmez olur.",
+    "D": "Ay evreleri hava durumuna göre değişir.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Uzay çöpleri dağılım haritasında Dünya'nın yörüngesinde binlerce işlevsiz uydu ve roket parçasının yoğun bir bulut oluşturduğu resmedilmiştir. Bu haritanın temel vurgusu nedir?",
+    "A": "Dünya yörüngesi uzay araştırmaları için tamamen güvenlidir.",
+    "B": "Uzay araçları çöp toplamak için tasarlanmıştır.",
+    "C": "İnsan yapımı atıklar uzay kirliliğine neden olmaktadır.",
+    "D": "Uzay çöpleri dünyaya düşerek doğal afetler yaratır.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Teleskop türleri tablosunda aynalı teleskobun derin uzayı, mercekli teleskobun ise gezegenleri gözlemlemek için daha uygun olduğu belirtilmiştir. Jüpiter'in halkalarını incelemek isteyen bir astronom hangi teleskobu tercih etmelidir?",
+    "A": "Radyo teleskobu",
+    "B": "Sadece aynalı teleskop",
+    "C": "Kızılötesi teleskop",
+    "D": "Mercekli teleskop",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Bilim insanları zaman çizelgesinde Newton yerçekimi (17. yy), Einstein görelilik (20. yy), Hawking kara delikler (21. yy) ile eşleştirilmiştir. Çizelgeye göre hangisi söylenebilir?",
+    "A": "Tüm bilim insanları aynı yüzyılda yaşamıştır.",
+    "B": "Bilimsel keşifler farklı dönemlerde birbirini takip etmiştir.",
+    "C": "Hawking, Newton'dan önce bilimsel çalışmalar yapmıştır.",
+    "D": "Einstein yerçekimini ilk bulan kişidir.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Mars görevlerinin başarı oranı grafiğinde, 1970'lerde gönderilen araçların başarı oranı %30 iken, 2020'lerde bu oran %90'a çıkmıştır. Grafiğe göre teknoloji ve uzay görevleri hakkında ne söylenebilir?",
+    "A": "Mars'a gitmek her geçen yıl daha da imkansız hale gelmiştir.",
+    "B": "1970'lerde teknoloji günümüzden daha ileridedir.",
+    "C": "Gelişen teknoloji sayesinde uzay görevlerinin başarı oranı artmıştır.",
+    "D": "Mars görevleri tamamen sonlandırılmıştır.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Laboratuvar güvenlik işaretleri afişinde kuru kafa 'zehirli', alev 'yanıcı', el üzerine damlayan sıvı ise 'aşındırıcı' olarak ifade edilmiştir. Asit şişesinin üzerinde hangi işaretin olması beklenir?",
+    "A": "El üzerine damlayan sıvı",
+    "B": "Kuru kafa",
+    "C": "Alev",
+    "D": "Radyoaktif sembolü",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Su döngüsü şemasında güneşin suları buharlaştırdığı, bulutların oluştuğu ve yağış olarak tekrar yeryüzüne döndüğü oklarla birbirine bağlanmıştır. Bu şemaya göre su döngüsünü başlatan temel enerji kaynağı hangisidir?",
+    "A": "Yağmur",
+    "B": "Bulutlar",
+    "C": "Denizler",
+    "D": "Güneş",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "DNA yapısı infografiğinde sarmal yapıdaki merdiven basamaklarında Adenin-Timin, Guanin-Sitozin eşleşmeleri renklerle gösterilmiştir. İnfografiğe göre DNA'nın yapısı hakkında hangisi kesinlikle doğrudur?",
+    "A": "Belirli yapı taşları kendi aralarında düzenli eşleşmeler yapar.",
+    "B": "DNA sadece tek bir iplikten oluşur.",
+    "C": "Adenin her zaman Guanin ile eşleşir.",
+    "D": "DNA sarmalında basamaklar rastgele dizilmiştir.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Yenilenebilir enerji teknolojilerine ait patent sayılarının grafiğinde ülkelerin yıllara göre inovasyonları verilmiştir. Çin ve ABD'nin yükselen çizgileri, Avrupa'nın sabit çizgisini geçmiştir. Grafikten çıkarılacak sonuç nedir?",
+    "A": "Avrupa yenilenebilir enerjiden tamamen vazgeçmiştir.",
+    "B": "Dünyada en az patent üreten ülke ABD'dir.",
+    "C": "Çin ve ABD bu alanda teknoloji geliştirmede öne çıkmıştır.",
+    "D": "Patent sayıları çevre kirliliğini artırmıştır.",
+    "cevap": "C"
+  }
+]

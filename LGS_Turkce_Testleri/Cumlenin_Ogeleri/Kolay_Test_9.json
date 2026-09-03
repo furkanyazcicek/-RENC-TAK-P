@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Gezginler yeni yerler keşfetmeyi sever.\" cümlesinin nesnesi hangisidir?",
+    "secenekler": {
+      "A": "Gezginler",
+      "B": "yeni yerler keşfetmeyi",
+      "C": "yeni yerler",
+      "D": "sever"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "\"Tren istasyona zamanında vardı.\" cümlesinde 'istasyona' sözcüğü hangi ögedir?",
+    "secenekler": {
+      "A": "Yer Tamlayıcısı",
+      "B": "Nesne",
+      "C": "Zarf Tamlayıcısı",
+      "D": "Özne"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde zarf tamlayıcısı kullanılmıştır?",
+    "secenekler": {
+      "A": "Haritayı masaya serdi.",
+      "B": "Çadırımızı göl kenarına kurduk.",
+      "C": "Pasaportunu evde unutmuş.",
+      "D": "Yolculuğumuz yarın başlayacak."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "\"Rehberimiz bize tarihi anıtları anlattı.\" cümlesinde 'bize' sözcüğü cümlenin hangi ögesidir?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Belirtili Nesne",
+      "C": "Yer Tamlayıcısı",
+      "D": "Belirtisiz Nesne"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "\"Dağcılar zirveye tırmandı.\" cümlesinde hangi ögeler yer almaktadır?",
+    "secenekler": {
+      "A": "Özne - Yer Tamlayıcısı - Yüklem",
+      "B": "Özne - Nesne - Yüklem",
+      "C": "Özne - Yüklem",
+      "D": "Yer Tamlayıcısı - Yüklem"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "\"Uçak biletlerini önceden almıştık.\" cümlesinde 'uçak biletlerini' söz grubu hangi ögedir?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Belirtili Nesne",
+      "C": "Belirtisiz Nesne",
+      "D": "Yer Tamlayıcısı"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Hangi cümlede özne bir isim tamlamasından oluşmuştur?",
+    "secenekler": {
+      "A": "Turistler ardı ardına fotoğraf çekti.",
+      "B": "Yolcular otobüse bindi.",
+      "C": "Valizler arabaya yerleştirildi.",
+      "D": "Ormanın derinlikleri gizemlerle doluydu."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "\"Gemi limandan yavaşça ayrıldı.\" cümlesinde 'yavaşça' sözcüğü hangi ögedir?",
+    "secenekler": {
+      "A": "Yer Tamlayıcısı",
+      "B": "Belirtili Nesne",
+      "C": "Zarf Tamlayıcısı",
+      "D": "Özne"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "\"Kamp ateşi etrafımızı ısıttı.\" cümlesinin yüklemi hangisidir?",
+    "secenekler": {
+      "A": "Kamp",
+      "B": "ısıttı",
+      "C": "etrafımızı",
+      "D": "ateşi"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi 'Özne - Belirtisiz Nesne - Yüklem' dizilişine uygundur?",
+    "secenekler": {
+      "A": "Ali güzel bir kitap aldı.",
+      "B": "Ahmet kırmızı çantayı getirdi.",
+      "C": "Ayşe eve döndü.",
+      "D": "Biz yarın gideceğiz."
+    },
+    "dogru_cevap": "A"
+  }
+]

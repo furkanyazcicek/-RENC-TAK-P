@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Kimi insanlar kitap okumayı sadece boş zamanlarını değerlendirecekleri bir hobi olarak görür. Oysa okumak, zihni besleyen, insanın dünyayı anlama kapasitesini artıran ve empati duygusunu geliştiren temel bir eylemdir. Bir kitabı kapağını araladığınızda sadece yeni bir hikâyeye değil, başka bir insanın zihnine ve hislerine de adım atarsınız. Bu yüzden okumak boş zamanı doldurmak değil, zamanı anlamlandırmaktır.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Kitap okumak boş zamanlarda yapılması gereken en yararlı etkinliktir.",
+      "B": "Okumak, insan zihnini geliştiren ve hayata anlam katan önemli bir eylemdir.",
+      "C": "Her kitap, okuyucusuna farklı bir dünyanın kapılarını aralar.",
+      "D": "Empati duygusunu geliştirmek için bol bol farklı türde kitap okunmalıdır."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Şehirlerin betonlaşması sadece estetik bir sorun değildir; aynı zamanda insanların ruh sağlığını da derinden etkiler. Yeşile hasret kalan, toprak kokusunu unutmuş şehir insanı, farkında olmadan içine kapanır ve stresle daha zor başa çıkar. Ağaçların, parkların, doğal yaşamın olmadığı bir çevrede büyüyen çocukların hayal güçleri bile bu tekdüzelikten olumsuz etkilenir.\n\nBu metinde aşağıdakilerin hangisine değinilmemiştir?",
+    "secenekler": {
+      "A": "Betonlaşmanın şehirlerin güzelliğini bozduğuna",
+      "B": "Doğadan uzaklaşmanın insan psikolojisi üzerinde olumsuz etkileri olduğuna",
+      "C": "Çocukların doğal ortamlarda daha hızlı büyüdüklerine",
+      "D": "Doğal çevrenin çocukların hayal gücü üzerinde etkili olduğuna"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "(I) Fotoğrafçılık, anı dondurma sanatıdır. (II) İyi bir fotoğrafçı, sadece deklanşöre basan kişi değil, aynı zamanda ışığı ve gölgeyi okuyan kişidir. (III) Her fotoğraf makinesinin farklı teknik özellikleri vardır. (IV) O, sıradan bir sokak köşesinde bile başkalarının göremediği o eşsiz anı yakalamayı bilir.\n\nBu metindeki numaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Tiyatro, seyirciyle oyuncunun aynı mekânda ve aynı anda nefes aldığı eşsiz bir sanattır. Sinemada olduğu gibi sahneleri tekrar çekme, hataları kurgu masasında düzeltme lüksünüz yoktur. O an sahnede ne oluyorsa, seyirci bunu çıplak gözle izler ve hisseder. Bu canlılık, tiyatroyu diğer görsel sanatlardan ayıran en büyük özelliktir.\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Tiyatronun tarihsel gelişimi",
+      "B": "Tiyatro oyuncularının zorlukları",
+      "C": "Sinema ve tiyatronun benzer yönleri",
+      "D": "Tiyatronun kendine has doğası ve canlılığı"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Eski çağlarda bilgiye ulaşmak bir ayrıcalıktı. Kütüphaneler kralların, soyluların ya da din adamlarının kontrolündeydi. Matbaanın icadıyla kitaplar çoğaldı ve bilgi daha geniş kitlelere ulaştı. Günümüzde ise internet sayesinde bilgi, parmaklarımızın ucunda. Ancak bu kez de doğru bilgiye ulaşmak ve bilgi kirliliğinden korunmak gibi yeni bir sorunla karşı karşıyayız.\n\nBu metinden çıkarılabilecek en kapsamlı yargı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Matbaanın icadı insanlık tarihinin en önemli dönüm noktasıdır.",
+      "B": "Bilgiye ulaşma yöntemleri zamanla değişse de her dönemin kendine özgü zorlukları vardır.",
+      "C": "İnternet, eski çağlardaki kütüphanelerin yerini alarak bilgi kirliliğine neden olmuştur.",
+      "D": "Günümüzde bilgiye ulaşmak eskiye göre çok daha güvenilir hale gelmiştir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Suni zekâ teknolojileri her geçen gün hayatımıza daha fazla dahil oluyor. Eskiden sadece bilim kurgu filmlerinde gördüğümüz konuşan asistanlar, sürücüsüz araçlar artık sıradanlaştı. Ancak bazı uzmanlar, bu hızlı gelişimin insanlık için tehlikeli olabileceği konusunda uyarıyor. Makinelerin insan karar alma mekanizmalarını ele geçirmesi, gelecekte etik sorunlara yol açabilir.\n\nBu paragraf aşağıdaki sorulardan hangisine karşılık olarak yazılmış olabilir?",
+    "secenekler": {
+      "A": "Suni zekâ teknolojileri hangi alanlarda kullanılıyor?",
+      "B": "Bilim kurgu filmlerinin teknolojik gelişmelere etkisi nedir?",
+      "C": "Yapay zekânın hayatımıza girmesinin doğurabileceği sonuçlar hakkında ne düşünüyorsunuz?",
+      "D": "Sürücüsüz araçların trafik kazalarını azaltacağı doğru mu?"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "(I) Çocukluğumun geçtiği kasabada yazlar hep uzun ve sıcak olurdu. (II) Akşamüzeri güneşin yakıcılığı azaldığında, sokaklar aniden çocuk sesleriyle dolardı. (III) Bizim kasabanın en meşhur yiyeceği, sokak satıcılarının sattığı buz gibi limonataydı. (IV) Bütün gün saklambaç, körebe oynar; ancak annelerimiz bizi yemeğe çağırdığında eve dönerdik. (V) Akşam yemekleri de her zaman kalabalık ve neşeli geçerdi.\n\nBu metin iki paragrafa bölünmek istense ikinci paragraf numaralanmış cümlelerin hangisiyle başlar?",
+    "secenekler": {
+      "A": "II",
+      "B": "III",
+      "C": "IV",
+      "D": "V"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Güneş yavaş yavaş dağların ardında kaybolurken, gökyüzü turuncunun ve kızılın her tonuna büründü. Yaşlı balıkçı, teknesini iskeleye bağlarken günün yorgunluğunu omuzlarında hissediyordu. Martıların çığlıkları yavaş yavaş kesilmiş, yerini denizin hafif ve ritmik dalga seslerine bırakmıştı. Kasaba, derin bir sessizliğe gömülmeye hazırlanıyordu.\n\nBu parçanın anlatımında aşağıdakilerden hangisi ağır basmaktadır?",
+    "secenekler": {
+      "A": "Öyküleme - Betimleme",
+      "B": "Açıklama - Tartışma",
+      "C": "Betimleme - Açıklama",
+      "D": "Tartışma - Öyküleme"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Bir yazarın üslubu, onun parmak izi gibidir. Nasıl ki dünyada iki insanın parmak izi aynı değilse, iki yazarın olayları, durumları ya da karakterleri kelimelerle ifade ediş biçimi de asla aynı olamaz. Yazarın seçtiği sözcükler, kurduğu cümlelerin uzunluğu, hatta kullandığı noktalama işaretleri bile onun edebi kimliğini ele verir.\n\nBu metinde asıl anlatılmak istenen nedir?",
+    "secenekler": {
+      "A": "Yazarların kullandığı kelimelerin eserlerin başarısını belirlediği.",
+      "B": "Üslubun, bir yazarın sadece kendine özgü olan ve onu diğerlerinden ayıran bir özellik olduğu.",
+      "C": "İyi bir yazarın anlaşılır ve kısa cümleler kurması gerektiği.",
+      "D": "Yazarların eserlerinde kendi hayatlarından izler taşımasının kaçınılmaz olduğu."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Günümüzde başarılı olmak genellikle çok para kazanmak ve yüksek bir statüye sahip olmakla eş tutuluyor. Fakat başarı tanımı kişiden kişiye değişmelidir. Bir doktor için başarı, kurtardığı bir hayattır; bir öğretmen için, öğrencilerinin gözündeki ışıltıdır. Bir sanatçı içinse içindekileri tuvale ya da notalara dökebilmektir. Başarıyı sadece maddi ölçütlerle sınırlamak, insan potansiyeline yapılmış en büyük haksızlıktır.\n\nBu parçadan hareketle başarı ile ilgili aşağıdakilerden hangisine ulaşılamaz?",
+    "secenekler": {
+      "A": "Günümüzde çoğunlukla maddi kazançla özdeşleştirildiğine.",
+      "B": "Her meslek grubunda farklı şekillerde kendini gösterebildiğine.",
+      "C": "Yalnızca toplumsal statü kazanıldığında gerçek anlamına kavuştuğuna.",
+      "D": "Kişisel tatmin ve üretimin de bir başarı göstergesi olabileceğine."
+    },
+    "dogru_cevap": "C"
+  }
+]

@@ -27,6 +27,19 @@ import {
   withHistoryQuestionBankSubjects,
   withHistoryQuestionBankTopics,
 } from '../content/tests/tarih/question-bank.js'
+import {
+  withDinKulturuQuestionBankSubjects,
+  withDinKulturuQuestionBankTopics,
+} from '../content/tests/din_kulturu/question-bank.js'
+import {
+  withCografyaQuestionBankSubjects,
+  withCografyaQuestionBankTopics,
+} from '../content/tests/cografya/question-bank.js'
+import {
+  withLgsTurkceQuestionBankSubjects,
+  withLgsTurkceQuestionBankTopics,
+} from '../content/tests/lgs_turkce/question-bank.js'
+
 import { emekliKonuMu } from '../content/emekliKonular'
 import { libraryPath, slugifyLibraryValue } from '../lib/libraryRoutes'
 import {
@@ -75,12 +88,18 @@ export default function QuestionLibrary() {
     const mathSubjects = withMathQuestionBankSubjects(remoteSubjects)
     const philosophySubjects = withPhilosophyQuestionBankSubjects(mathSubjects)
     const catalogSubjects = withHistoryQuestionBankSubjects(philosophySubjects)
-    const mathTopics = withMathQuestionBankTopics(catalogSubjects, topicsRes.data ?? [])
-    const philosophyTopics = withPhilosophyQuestionBankTopics(catalogSubjects, mathTopics)
-    const remoteTopics = withHistoryQuestionBankTopics(catalogSubjects, philosophyTopics)
-    const gradeData = createGradeLibraryData(catalogSubjects, remoteTopics)
-    setSubjects([...catalogSubjects, ...gradeData.subjects])
-    setTopics([...remoteTopics, ...gradeData.topics])
+    const cografyaSubjects = withCografyaQuestionBankSubjects(catalogSubjects)
+    const dinKulturuSubjects = withDinKulturuQuestionBankSubjects(cografyaSubjects)
+    const finalSubjects = withLgsTurkceQuestionBankSubjects(dinKulturuSubjects)
+    const mathTopics = withMathQuestionBankTopics(finalSubjects, topicsRes.data ?? [])
+    const philosophyTopics = withPhilosophyQuestionBankTopics(finalSubjects, mathTopics)
+    const historyTopics = withHistoryQuestionBankTopics(finalSubjects, philosophyTopics)
+    const cografyaTopics = withCografyaQuestionBankTopics(finalSubjects, historyTopics)
+    const dinKulturuTopics = withDinKulturuQuestionBankTopics(finalSubjects, cografyaTopics)
+    const finalTopics = withLgsTurkceQuestionBankTopics(finalSubjects, dinKulturuTopics)
+    const gradeData = createGradeLibraryData(finalSubjects, finalTopics)
+    setSubjects([...finalSubjects, ...gradeData.subjects])
+    setTopics([...finalTopics, ...gradeData.topics])
     setSetsByTopic(grouped)
     setLoading(false)
   }, [])

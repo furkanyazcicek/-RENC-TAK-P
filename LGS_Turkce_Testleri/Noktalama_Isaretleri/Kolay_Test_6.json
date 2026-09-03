@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "\"Ömer Seyfettin( )in hikayelerini okumayı çok seviyorum.\"\nBu cümlede yay ayraçla belirtilen yere hangi noktalama işareti konmalıdır?",
+    "secenekler": {
+      "A": "Kısa çizgi (-)",
+      "B": "Kesme işareti (')",
+      "C": "Nokta (.)",
+      "D": "Virgül (,)"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Aşağıdaki cümlelerin hangisinde noktanın (.) kullanımı yanlıştır?",
+    "secenekler": {
+      "A": "Kitabın 3. baskısı yakında çıkacak.",
+      "B": "Yazar, imza gününe 14.30'da katılacak.",
+      "C": "Prof. Dr. Mehmet Bey yeni bir roman yazmış.",
+      "D": "Şiir yarışmasında 1'inci. oldu."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Şair, \"yalnızlık\" temasını şiirlerinde çok sık kullanır.\nCümlesinde tırnak işareti hangi amaçla kullanılmıştır?",
+    "secenekler": {
+      "A": "Özel olarak vurgulanmak istenen sözleri belirtmek",
+      "B": "Eser adlarını belirtmek",
+      "C": "Alıntı sözleri göstermek",
+      "D": "Yabancı kelimeleri ayırmak"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Aşağıdaki cümlelerin hangisinin sonuna soru işareti (?) konmaz?",
+    "secenekler": {
+      "A": "Hangi romanı daha çok beğendin",
+      "B": "Yazarın son kitabını okudun mu",
+      "C": "Bu şiiri nasıl yorumlayacağımı bilemiyorum",
+      "D": "Kitap fuarı ne zaman açılacak"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru": "\"Şiir, roman, hikaye( ) dergi, gazete, makale.\"\nBu cümlede yay ayraçla belirtilen yere hangi noktalama işareti gelmelidir?",
+    "secenekler": {
+      "A": "Virgül (,)",
+      "B": "İki nokta (:)",
+      "C": "Nokta (.)",
+      "D": "Noktalı virgül (;)"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru": "\"Aaa, bu kitabı daha önce okumuştum( )\"\nBu cümlenin sonuna hangi noktalama işareti konmalıdır?",
+    "secenekler": {
+      "A": "Nokta (.)",
+      "B": "Ünlem işareti (!)",
+      "C": "Soru işareti (?)",
+      "D": "Üç nokta (...)"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Romanda üç ana karakter ön plana çıkıyor( ) Ali, Veli, Selami.\nBu cümlede yay ayraçla belirtilen yere hangi noktalama işareti gelmelidir?",
+    "secenekler": {
+      "A": "İki nokta (:)",
+      "B": "Noktalı virgül (;)",
+      "C": "Nokta (.)",
+      "D": "Virgül (,)"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru": "\"Genç, yazarın anlattıklarını büyük bir dikkatle dinledi.\"\nBu cümlede virgülün (,) kullanım amacı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Eş görevli kelimeleri ayırmak",
+      "B": "Sıralı cümleleri ayırmak",
+      "C": "Anlam karışıklığını önlemek",
+      "D": "Hitap bildiren kelimelerden sonra kullanmak"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Kitabın son sayfası yırtıktı, sadece şu kelimeler okunuyordu: ( )ve sonsuza dek( )\nBu cümlede yay ayraçların içine hangi noktalama işareti gelmelidir?",
+    "secenekler": {
+      "A": "Virgül (,)",
+      "B": "Nokta (.)",
+      "C": "Ünlem (!)",
+      "D": "Üç nokta (...)"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 10,
+    "soru": "\"Korkma, sönmez bu şafaklarda yüzen al sancak ( ) Sönmeden yurdumun üstünde tüten en son ocak.\"\nYan yana yazılan bu mısraların arasına hangi noktalama işareti konmalıdır?",
+    "secenekler": {
+      "A": "Eğik çizgi (/)",
+      "B": "Kısa çizgi (-)",
+      "C": "Virgül (,)",
+      "D": "Noktalı virgül (;)"
+    },
+    "dogru_cevap": "A"
+  }
+]

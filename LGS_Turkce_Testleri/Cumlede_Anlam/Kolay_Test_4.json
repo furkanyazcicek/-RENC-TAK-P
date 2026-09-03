@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Hangi cümlede eylemin yapılış amacı belirtilmiştir?",
+    "secenekler": {
+      "A": "Gözlüklerini evde unuttuğu için tahtadaki yazıları okuyamıyor.",
+      "B": "Yeni bir araba almak hayaliyle aylardır para biriktiriyor.",
+      "C": "Hava kirliliği, büyük şehirlerde insan sağlığını olumsuz etkiliyor.",
+      "D": "Düzenli ve sağlıklı beslenirsen gün içinde daha dinç olursun."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde koşula (şarta) bağlılık söz konusudur?",
+    "secenekler": {
+      "A": "Biletleri şimdiden almazsak hafta sonu konsere gidemeyiz.",
+      "B": "Kardeşim misafirliğe geldiği için sinemaya gitmekten vazgeçtik.",
+      "C": "Evi hızlıca temizlemek üzere annesine yardım etmeye başladı.",
+      "D": "Şiir okumayı roman okumaktan her zaman daha çok severim."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde neden-sonuç ilişkisi vardır?",
+    "secenekler": {
+      "A": "Yabancı misafirleri karşılamak için sabah erkenden havalimanına gitti.",
+      "B": "Sahnede çok heyecanlandığından ne söyleyeceğini bir an için unuttu.",
+      "C": "Akşamları erken yatarsan sabahları okula giderken zinde uyanırsın.",
+      "D": "Hafta sonu hava güzel olursa ailece göl kenarına pikniğe gideceğiz."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde karşılaştırma yapılmıştır?",
+    "secenekler": {
+      "A": "Dünkü sağanak yağmur, geçen haftakinden çok daha şiddetliydi.",
+      "B": "Odanın tüm pencerelerini ardına kadar açıp odayı havalandırdı.",
+      "C": "Annem her akşam uyumadan önce bize keyifli bir masal okur.",
+      "D": "Ormandaki kuşların cıvıltısı bana her zaman büyük bir huzur veriyor."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi öznel bir yargı bildirmektedir?",
+    "secenekler": {
+      "A": "Şair, bu şiirinde yalnızlık ve gurbet temalarını ustaca işlemiş.",
+      "B": "Kitaptaki olayların büyük bir kısmı İstanbul'un eski semtlerinde geçiyor.",
+      "C": "Filmdeki duygu yüklü müzikler insanı derinden etkilemeyi başarıyor.",
+      "D": "Romanın ana karakteri yirmili yaşlarda, üniversite öğrencisi bir genç."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi nesnel bir anlatıma sahiptir?",
+    "secenekler": {
+      "A": "Yazarın dili oldukça sade, anlaşılır ve okuyucuyu yormayan bir yapıya sahip.",
+      "B": "Kitabın kapağı raflarda çok dikkat çekici ve estetik bir şekilde tasarlanmış.",
+      "C": "Romanın konusu okuyan herkesi derinden sarsacak kadar duyguluydu.",
+      "D": "Yazar, bu romanı ile geçen yıl prestijli bir edebiyat ödülüne layık görüldü."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'şikayet (yakınma)' anlamı vardır?",
+    "secenekler": {
+      "A": "Keşke akşam yemeğinde bu kadar çok tatlı yemeseydim.",
+      "B": "Bence vitrindeki bu kırmızı elbise sana çok yakışmış.",
+      "C": "Odasına ne zaman girsem her tarafı darmadağınık buluyorum.",
+      "D": "Yarınki önemli matematik sınavına daha çok çalışmalısın."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "'Artık bizimle eskisi kadar ilgilenmiyor.' cümlesinden aşağıdaki yargılardan hangisi kesin olarak çıkarılır?",
+    "secenekler": {
+      "A": "Her zaman bizimle en yakından ilgilenen kişi o olmuştur.",
+      "B": "Bizimle geçmişte hiçbir zaman yeterince ilgilenmedi.",
+      "C": "Başkalarıyla da ilgilenmeye başladığı için bize vakit ayıramıyor.",
+      "D": "Eskiden bizimle şimdikinden daha fazla ilgileniyordu."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'varsayım' anlamı vardır?",
+    "secenekler": {
+      "A": "Mutlaka o da yarınki gezide bizimle gelmek isteyecektir.",
+      "B": "Belki bu hafta sonu arkadaşlarla toplanıp sinemaya gideriz.",
+      "C": "Düşün ki bu yılki sınavı kazanamadın, hedeflerin değişir mi?",
+      "D": "Umarım yeni işinde çok başarılı olur ve iyi yerlere gelirsin."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'doğrudan anlatım' yapılmıştır?",
+    "secenekler": {
+      "A": "Babam, yarın sabah erkenden kalkmamız gerektiğini hepimize söyledi.",
+      "B": "Öğretmenimiz, bu konunun sınavlarda çok önemli olduğunu belirtti.",
+      "C": "Annem, ödevlerimi tamamen bitirmeden dışarı çıkamayacağımı ifade etti.",
+      "D": "Arkadaşım bana dönerek, 'Akşam size ders çalışmaya geleceğim.' dedi."
+    },
+    "dogru_cevap": "D"
+  }
+]

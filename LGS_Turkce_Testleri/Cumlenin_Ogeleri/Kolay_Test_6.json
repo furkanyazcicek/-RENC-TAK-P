@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Bilim insanları laboratuvarda yeni bir deney yapıyor.\" cümlesinde yer tamlayıcısı hangisidir?",
+    "secenekler": {
+      "A": "Bilim insanları",
+      "B": "laboratuvarda",
+      "C": "yeni bir deney",
+      "D": "yapıyor"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "\"Teleskop, gökyüzünü inceler.\" cümlesinde belirtili nesne hangisidir?",
+    "secenekler": {
+      "A": "gökyüzünü",
+      "B": "inceler",
+      "C": "Teleskop",
+      "D": "dikkatlice"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi yalnızca özne ve yüklemden oluşmaktadır?",
+    "secenekler": {
+      "A": "Teknoloji hızla gelişiyor.",
+      "B": "Telefonumu masada unuttum.",
+      "C": "Bilgisayar ekranı kırıldı dün.",
+      "D": "Yapay zeka geleceğin teknolojisidir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "\"Uzay araçları Mars'a başarıyla indi.\" cümlesinde 'başarıyla' sözcüğü hangi ögedir?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Yer Tamlayıcısı",
+      "C": "Zarf Tamlayıcısı",
+      "D": "Nesne"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "\"Yeni icatlar hayatımızı kolaylaştırır.\" cümlesinin öznesi nedir?",
+    "secenekler": {
+      "A": "Yeni",
+      "B": "icatlar",
+      "C": "hayatımızı",
+      "D": "Yeni icatlar"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "\"Robotlar fabrikalarda insanların yerini alıyor.\" cümlesinde hangi öge yoktur?",
+    "secenekler": {
+      "A": "Zarf Tamlayıcısı",
+      "B": "Yer Tamlayıcısı",
+      "C": "Özne",
+      "D": "Belirtili Nesne"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Hangi cümlenin yüklemi isim soylu bir sözcüktür?",
+    "secenekler": {
+      "A": "Astronotlar uzaya fırlatıldı.",
+      "B": "Deney tüpleri masadaydı.",
+      "C": "Mikroskopla hücreleri dikkatle inceledik.",
+      "D": "Verileri bilgisayara girdim."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "\"Bilgisayar programcısı kodları dikkatlice yazdı.\" cümlesinde belirtili nesne hangisidir?",
+    "secenekler": {
+      "A": "kodları",
+      "B": "Bilgisayar programcısı",
+      "C": "dikkatlice",
+      "D": "yazdı"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "\"Güneş panelleri enerji üretiyor.\" cümlesinde 'enerji' kelimesi hangi ögedir?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Belirtili Nesne",
+      "C": "Belirtisiz Nesne",
+      "D": "Yüklem"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "\"İnternet, bilgiye erişimi hızlandırdı.\" cümlesinde ögelerin dizilişi nasıldır?",
+    "secenekler": {
+      "A": "Özne - Nesne - Zarf Tamlayıcısı - Yüklem",
+      "B": "Özne - Yer Tamlayıcısı - Yüklem",
+      "C": "Özne - Zarf Tamlayıcısı - Yüklem",
+      "D": "Özne - Belirtili Nesne - Yüklem"
+    },
+    "dogru_cevap": "D"
+  }
+]

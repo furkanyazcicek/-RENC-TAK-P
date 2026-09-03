@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde eylemin gerçekleşmesi bir şarta bağlanmıştır?",
+    "secenekler": {
+      "A": "Yağmur dinerse dışarı çıkıp yürüyüş yaparız.",
+      "B": "Seni görmek maksadıyla ta buralara kadar geldim.",
+      "C": "Çok yorulduğu için gölgede mola vermek istedi.",
+      "D": "Kitap okumak insanın hayal dünyasını zenginleştirir."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde neden-sonuç (sebep-sonuç) ilişkisi vardır?",
+    "secenekler": {
+      "A": "Hedeflerine ulaşmak için planlı ve programlı çalışıyor.",
+      "B": "Gece boyunca uykusuz kaldığından gözleri kızarmıştı.",
+      "C": "Düzenli egzersiz yaparsan sağlığını uzun süre korursun.",
+      "D": "Akşamüzeri parkta buluşup uzun uzun sohbet ettik."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Hangi cümlede eylemin yapılış amacı belirtilmiştir?",
+    "secenekler": {
+      "A": "Elektrikler kesildiği için dünkü ödevini bitirememiş.",
+      "B": "Babası ona kızdığı için eve herkesten erken döndü.",
+      "C": "Yeni bir yabancı dil öğrenmek üzere kursa yazıldı.",
+      "D": "Havalar ısındıkça hepimizin neşesi yerine geliyor."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi nesnel bir yargıdır?",
+    "secenekler": {
+      "A": "Kitabın konusu okuyucuyu derinden etkiliyor.",
+      "B": "Yazar, eserinde harika ve akıcı bir dil kullanmış.",
+      "C": "Bu roman toplamda iki yüz elli sayfadan oluşuyor.",
+      "D": "Hikayedeki ana karakter çok sevimli bir çocuk."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi öznel bir anlatıma sahiptir?",
+    "secenekler": {
+      "A": "Bahçedeki çınar ağacının boyu üç metreyi geçiyordu.",
+      "B": "Dünkü veli toplantısına toplam on beş kişi katıldı.",
+      "C": "Duvarlardaki sarı renk, bu odaya ferahlık katmış.",
+      "D": "Yazar, doğup büyüdüğü köyü anlatmış son eserinde."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde karşılaştırma yapılmıştır?",
+    "secenekler": {
+      "A": "O, abisi gibi sporla ve müzikle hiç ilgilenmiyor.",
+      "B": "Bugün hava sıcaklığı dünkü sıcaklıktan daha yüksek.",
+      "C": "Her gün düzenli olarak en az otuz sayfa kitap okur.",
+      "D": "Masanın üzerinde duran dağınık kitapları rafa dizdi."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'olasılık (ihtimal)' anlamı vardır?",
+    "secenekler": {
+      "A": "Bu saatte çoktan İzmir'deki evine varmış olmalı.",
+      "B": "Yarın akşam biz de sizinle tiyatroya gelebiliriz.",
+      "C": "Kesinlikle bu zor soruyu da tek seferde doğru çözecek.",
+      "D": "Ne yazık ki beklediğimiz maçı son dakikada kaybettik."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi bir 'öneri (tavsiye)' içermektedir?",
+    "secenekler": {
+      "A": "Keşke toplantıda o kırıcı sözleri söylemeseydim.",
+      "B": "Farz edelim ki otobüsü kaçırdın, o zaman ne yaparsın?",
+      "C": "Seninle bu konuda aynı fikirde olduğumu söyleyemem.",
+      "D": "Ders çalışırken önemli yerlerin altını renkli kalemle çizmelisin."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "'Başkalarının hatalarından ders alacak kadar akıllı olmalıyız.' cümlesine anlamca en yakın cümle aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "İnsan sadece kendi yaptığı hatalardan ders çıkarmalıdır.",
+      "B": "Hata yapmak sadece insanlara mahsus doğal bir durumdur.",
+      "C": "Her hatanın bir bedeli olduğunu hiçbir zaman unutmamalıyız.",
+      "D": "Zeki insanlar, çevrelerindekilerin tecrübelerinden de faydalanmasını bilir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'ön yargı' söz konusudur?",
+    "secenekler": {
+      "A": "Bu çocuk ileride çok büyük bir bilim insanı olacak, göreceksiniz.",
+      "B": "Matematik sınavının sonuçları haftaya cuma açıklanabilir.",
+      "C": "Dün gece çıkan fırtınada parktaki bazı yaşlı ağaçlar devrilmiş.",
+      "D": "Tenceredeki yemek hem kokusuyla hem görünüşüyle çok lezzetli duruyordu."
+    },
+    "dogru_cevap": "A"
+  }
+]

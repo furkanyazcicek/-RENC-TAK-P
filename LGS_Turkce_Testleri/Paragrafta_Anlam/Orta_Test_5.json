@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Geleneksel el sanatlarımızdan olan çini, toprağın ateşle dansının ve insanın sabrının bir ürünüdür. Bir çini ustası, fırçasıyla tabaklara ya da vazolara şekil verirken aslında yüzyıllar öncesinin motiflerini günümüze taşır. Ancak fabrikasyon üretimin artmasıyla bu eşsiz el emeği eserler değerini yitirmeye başlamıştır. Oysa hiçbir makine, bir ustanın eserine kattığı ruhu taklit edemez.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Çini sanatı, geçmişten günümüze ulaşan en zor el sanatıdır.",
+      "B": "Fabrikasyon üretim, el sanatlarına göre daha ucuz ve hızlıdır.",
+      "C": "El emeği eserler, makine üretimine kurban edilmemesi gereken ruhani ve sanatsal bir değere sahiptir.",
+      "D": "Çini motifleri genellikle doğadan ilham alınarak oluşturulur."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Hafıza, beynimizin sadece geçmişi depoladığı bir kütüphane değildir; aynı zamanda geleceği nasıl inşa edeceğimize karar veren bir rehberdir. Geçmişte yaptığımız hataları, yaşadığımız acıları veya mutlulukları hatırlayarak yeni kararlar alırız. Eğer geçmişi unutursak, aynı hataları tekrar yapmak zorunda kalır ve asla ilerleyemeyiz.\n\nBu metinde yazarın hafızayla ilgili asıl vurgulamak istediği aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "İnsanın yaşlandıkça hafızasının zayıfladığı",
+      "B": "Hafızanın, sadece anıları saklamakla kalmayıp hayatımıza yön veren bir güç olduğu",
+      "C": "Mutlu anıların hafızada daha uzun süre yer edindiği",
+      "D": "İnsan beyninin kapasitesinin sınırsız olduğu"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "(I) Zaman, hiç kimsenin satın alamayacağı veya durduramayacağı tek şeydir. (II) Gençlikte zaman hiç bitmeyecekmiş gibi harcanır. (III) Saatin icadı, insanın zamanı kontrol altına alma çabasının bir sonucudur. (IV) Ancak yaş ilerledikçe zamanın değeri anlaşılır ve her saniyenin kıymeti bilinir.\n\nBu metindeki numaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Mutluluk, ulaşılması gereken bir zirve değil, o zirveye doğru çıkarken yaşanan yolculuğun ta kendisidir. Çoğu insan mutluluğu sadece büyük başarılara, alınan ödüllere ya da kavuşulan hedeflere bağlar. Oysa yağmurlu bir günde içilen sıcak bir çay, sevilen biriyle edilen beş dakikalık bir sohbet bile mutluluğun yapı taşlarıdır. Mutluluk büyük olaylarda değil, küçük anların içinde saklıdır.\n\nBu parçadan çıkarılacak en genel yargı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "İnsanlar sadece hedeflerine ulaştıklarında gerçek mutluluğu yakalayabilir.",
+      "B": "Mutluluk, hayattaki küçük ve sıradan gibi görünen anların değerini bilmektir.",
+      "C": "Mutluluk yolculuğunda her zaman zorluklarla karşılaşılır.",
+      "D": "Büyük başarılar kazanmadan mutlu olmak mümkün değildir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Mars'a yapılacak insanlı yolculuklar son yılların en büyük bilimsel hedeflerinden biri. Gelişmiş teleskoplar ve gönderilen insansız uzay araçları, Kızıl Gezegen'in bir zamanlar sularla kaplı olabileceğini gösteriyor. Ancak Mars'ın atmosferi çok ince ve radyasyon seviyesi insan yaşamı için tehlikeli boyutta. Bilim insanları şimdi bu zorlukları aşmak için özel koruyucu giysiler ve yaşam kapsülleri tasarlıyor.\n\nBu metinde aşağıdakilerin hangisinden söz edilmemiştir?",
+    "secenekler": {
+      "A": "Mars'ın geçmişte su barındırma ihtimalinden",
+      "B": "Mars'ın atmosferik özelliklerinin insanlar için tehlike arz ettiğinden",
+      "C": "Bilim insanlarının bu tehlikelere karşı aldığı önlemlerden",
+      "D": "Mars yolculuğunun diğer gezegenlere kıyasla daha masraflı olduğundan"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Eski şehirler, labirenti andıran dar sokakları ve birbirine yaslanmış taş evleriyle birer hikâye kitabıdır. Bu şehirlerde yürürken her köşe başında bir tarihi dokuyla karşılaşırsınız. Yeni ve modern şehirler ise cetvelle çizilmiş gibi düzgün ama bir o kadar da ruhsuzdur. Cam binaların soğukluğu, insanın içine işler ve o şehirde geçmişe dair hiçbir iz bulamazsınız.\n\nBu metinde aşağıdaki anlatım tekniklerinden veya düşünceyi geliştirme yollarından hangisi ağır basmaktadır?",
+    "secenekler": {
+      "A": "Karşılaştırma",
+      "B": "Tanımlama",
+      "C": "Örneklendirme",
+      "D": "Tanık Gösterme"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "(I) Sinema, edebiyatla her zaman yakın bir ilişki içinde olmuştur. (II) Pek çok unutulmaz film, aslında usta yazarların kaleminden çıkan romanların beyaz perdeye uyarlamasıdır. (III) Roman uyarlaması olan filmler genellikle gişede daha çok hasılat yapar. (IV) Ancak bir okur için sevdiği kitabı film olarak izlemek her zaman tatmin edici olmayabilir. (V) Çünkü okurun hayalindeki karakterle perdedeki oyuncu çoğu zaman örtüşmez.\n\nBu metindeki numaralanmış cümlelerden hangisi kendinden sonraki cümlenin nedenidir?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "IV",
+      "D": "V"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Düşüncelerinizi başkalarına kabul ettirmek için bağırıp çağırmanıza gerek yoktur. Fikirleriniz ne kadar sağlamsa, sesinizin o kadar kısık olması bile yeterlidir. Güneşin doğuşu ne kadar sessizse, insanlara verdiği ısı ve ışık da o kadar güçlüdür. Fikirler de böyledir; gücünü sesin yüksekliğinden değil, mantığın ve doğruluğun temelinden alır.\n\nBu parçanın yazarı, düşüncelerini etkili bir biçimde aktarmak için aşağıdakilerden hangisinden yararlanmıştır?",
+    "secenekler": {
+      "A": "Fikirlerin gücünü güneşin doğuşuyla örneklendirmesinden",
+      "B": "Düşüncenin gücünü doğadaki sessiz ama etkili bir olaya (güneşe) benzetmesinden",
+      "C": "Kendi fikrini kanıtlamak için ünlü bir düşünürden alıntı yapmasından",
+      "D": "Karşıt fikirleri birbiriyle kıyaslayarak bir sonuca ulaşmasından"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Son yıllarda popülerleşen elektronik kitap okuyucular, binlerce kitabı yanınızda taşıma imkânı sunuyor. Hafif olmaları ve şarjlarının uzun süre dayanması büyük bir avantaj. Ancak geleneksel kitap tutkunları için kâğıdın kokusu, sayfaları çevirirken çıkan o hışırtı ve kitabın kapağına dokunma hissinin yerini hiçbir teknolojik alet tutamaz.\n\nBu metinde anlatılmak istenen temel durum aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Elektronik kitapların basılı kitapların yerini tamamen aldığı",
+      "B": "E-kitap okuyucuların sağladığı kolaylıklara rağmen, bazı okurların fiziksel kitabın hissini tercih ettiği",
+      "C": "Geleneksel kitapların basım maliyetlerinin e-kitaplara göre daha yüksek olduğu",
+      "D": "Teknolojinin, insanların kitap okuma alışkanlıklarını tamamen yok ettiği"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Büyük yazar Tolstoy, iyi bir romanı 'İnsanın kendi iç dünyasında yaptığı bir yolculuk' olarak tanımlar. Gerçekten de sağlam kurgulanmış bir edebi eser okuduğumuzda, sadece karakterlerin maceralarını takip etmeyiz; aynı zamanda kendi korkularımız, sevinçlerimiz ve umutlarımızla da yüzleşiriz. Kitabın son sayfasını kapattığımızda, aslında başladığımız noktadaki kişi değilizdir artık.\n\nBu parçadan iyi bir romanla ilgili olarak aşağıdakilerden hangisine ulaşılabilir?",
+    "secenekler": {
+      "A": "Sadece gerçeğe dayalı olayları anlatması gerektiğine",
+      "B": "Okurun iç dünyasını etkileyip onda bir değişim yarattığına",
+      "C": "Yazarın hayatından mutlaka izler taşıması gerektiğine",
+      "D": "Her okurun kitaptan aynı dersi çıkarması gerektiğine"
+    },
+    "dogru_cevap": "B"
+  }
+]

@@ -1,0 +1,117 @@
+{
+  "test_adi": "Fiilimsiler Orta Test 1",
+  "konu": "Fiilimsiler",
+  "zorluk": "Orta",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "İsim-fiiller, bazen isim tamlamalarında tamlayan veya tamlanan görevinde kullanılabilir.\nAşağıdakilerin hangisinde isim-fiil, isim tamlamasının tamlayanı görevindedir?",
+      "secenekler": {
+        "A": "Suyun akışı hepimizi büyülemişti.",
+        "B": "Kitap okuma saati birazdan başlayacak.",
+        "C": "Bahar yağmurlarının sesi dinlendiricidir.",
+        "D": "Çalışmanın önemi hiçbir zaman tartışılamaz."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Sıfat-fiiller niteledikleri isim düştüğünde onun yerine geçerek 'adlaşmış sıfat-fiil' olurlar.\nBuna göre hangisinde adlaşmış sıfat-fiil vardır?",
+      "secenekler": {
+        "A": "Bekleyen yolcuları salona aldılar.",
+        "B": "Geleneksel kıyafetler giyenler sahneye çıktı.",
+        "C": "Yapılacak işleri bir listeye yazdım.",
+        "D": "Yıkanmış bulaşıkları dolaba dizdi."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Zarf-fiiller cümleye zaman veya durum anlamı katabilir. 'Nasıl' sorusu durum, 'ne zaman' sorusu zaman anlamı verir.\nHangi cümlede zarf-fiil cümleye diğerlerinden farklı bir anlam katmıştır?",
+      "secenekler": {
+        "A": "Haberi duyunca çok sevindi.",
+        "B": "Koşa koşa eve gitti.",
+        "C": "Soruları düşünerek çözmelisin.",
+        "D": "Gözlerimin içine bakıp gerçeği söyledi."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "'-mış/-miş' eki hem duyulan geçmiş zaman eki hem de sıfat-fiil eki olarak kullanılabilir.\nAşağıdaki cümlelerin hangisinde '-mış/-miş' eki sıfat-fiil görevinde kullanılmıştır?",
+      "secenekler": {
+        "A": "Buralara kadar bizi görmek için gelmiş.",
+        "B": "Sararmış yapraklar yolları kaplamıştı.",
+        "C": "Sınavdan yüksek not aldığını söylemiş.",
+        "D": "Dün gece İstanbul'a epeyce kar yağmış."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde fiilimsi ekini alan sözcük kalıcı isim olmamıştır?",
+      "secenekler": {
+        "A": "Akşam yemeği için sarma yapmış.",
+        "B": "Kışlık yakacak ihtiyacımızı karşıladık.",
+        "C": "Elindeki çakmak ile ateşi yaktı.",
+        "D": "Kitapları kaplamak için kırtasiyeye gitti."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "'Görünmez kaza diye buna derler.' cümlesindeki '-mez / -maz' ekinin göreviyle aynı olan ek hangisinde vardır?",
+      "secenekler": {
+        "A": "O, hiçbir zaman yalan söylemez.",
+        "B": "Artık buralara pek uğramaz.",
+        "C": "Çıkmaz sokağa girdiğimizi fark ettik.",
+        "D": "Söylenenleri hiç dikkate almaz."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Aşağıdakilerin hangisinde üç farklı fiilimsi türüne de örnek vardır?",
+      "secenekler": {
+        "A": "Koşarken düşen çocuk çok ağladı.",
+        "B": "Kitap okurken uyuyakalanları nazikçe uyandırdı.",
+        "C": "Sevdiği insanlarla vakit geçirmek güzeldir.",
+        "D": "Ağlayarak giden çocuğu durdurmak istedi."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "'İçeri girip etrafı süzünce yerine oturdu.'\nBu cümlede geçen fiilimsilerin türleri sırasıyla aşağıdakilerin hangisinde verilmiştir?",
+      "secenekler": {
+        "A": "Zarf-fiil - Sıfat-fiil",
+        "B": "Zarf-fiil - Zarf-fiil",
+        "C": "İsim-fiil - Sıfat-fiil",
+        "D": "İsim-fiil - Zarf-fiil"
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde isim-fiil, cümlenin öznesi görevindedir?",
+      "secenekler": {
+        "A": "Yüzmeyi çok küçük yaşlarda öğrenmiştim.",
+        "B": "Arkadaşının anlattıklarını dikkatlice dinledi.",
+        "C": "Beklemek, insanın sabrını zorlayan bir süreçtir.",
+        "D": "Akşamları kitap okumaya özen gösteririm."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Hangisinde zarf-fiil cümleye durum anlamı katmıştır?",
+      "secenekler": {
+        "A": "Soruları hiç zorlanmadan çözdü.",
+        "B": "Güneş doğarken yola çıkmalıyız.",
+        "C": "Zil çalar çalmaz herkes dışarı fırladı.",
+        "D": "Kar yağınca yollar hemen kapandı."
+      },
+      "dogru_cevap": "A"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Şair, duygularını dizelere dökerken kelimelerle dans eder adeta. Bu cümlede yer alan zarf-fiilin türce özdeşi aşağıdakilerin hangisinde kullanılmıştır?",
+    "secenekler": {
+      "A": "Ressamın çizdiği tablolar sergide büyük ilgi gördü.",
+      "B": "Romanı okuyunca yazarın ne demek istediğini daha iyi anladım.",
+      "C": "Tiyatro oynamak, insana farklı hayatları deneyimleme şansı verir.",
+      "D": "Müzik, ruhun gıdasıdır derler büyüklerimiz."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki dizelerin hangisinde sıfat-fiil kullanılmıştır?",
+    "secenekler": {
+      "A": "Solmuş yapraklar gibi savrulduk rüzgârda.",
+      "B": "Gecenin karanlığı çöktü usulca şehre.",
+      "C": "Yarınlar umut dolu, bekleyelim sabırla.",
+      "D": "Gözlerim yollarda, gelirsin diye."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "'Kitap okumak(I), insanın zihinsel sınırlarını genişleten(II) en etkili yöntemdir.' cümlesindeki numaralanmış fiilimsilerin türü aşağıdakilerin hangisinde sırasıyla verilmiştir?",
+    "secenekler": {
+      "A": "İsim-fiil - Zarf-fiil",
+      "B": "Sıfat-fiil - İsim-fiil",
+      "C": "İsim-fiil - Sıfat-fiil",
+      "D": "Zarf-fiil - Sıfat-fiil"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde adlaşmış sıfat-fiil örneği yoktur?",
+    "secenekler": {
+      "A": "Yarışmaya katılanlara başarı belgesi verildi.",
+      "B": "Bilenlerle bilmeyenler bir olur mu hiç?",
+      "C": "Geleneksel sanatları yaşatan usta saygıyı hak ediyor.",
+      "D": "Okuyacaklar listeme yepyeni klasikler ekledim."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Yazar, karakterlerini yaratırken(I) gözlem gücünden yararlanmayı(II) ihmal etmemiştir. Yaşanmış(III) olayları kurgulayarak(IV) eserini oluşturmuştur. Bu parçada numaralanmış sözcüklerden hangisi isim-fiildir?",
+    "secenekler": {
+      "A": "II",
+      "B": "III",
+      "C": "I",
+      "D": "IV"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde zarf-fiil cümleye 'durum' anlamı katmıştır?",
+    "secenekler": {
+      "A": "Güneş batarken ressam fırçasını elinden bıraktı.",
+      "B": "Tiyatro biletleri satışa çıkar çıkmaz tükendi.",
+      "C": "Şiirlerini ağlayarak okuyordu sahnede.",
+      "D": "Sergi salonuna girince büyüleyici bir atmosferle karşılaştı."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "'-mış / -miş' eki hem duyulan geçmiş zaman hem de sıfat-fiil eki olarak kullanılabilir. Aşağıdakilerin hangisinde bu ek sıfat-fiil eki görevinde kullanılmıştır?",
+    "secenekler": {
+      "A": "Yazar, son kitabında oldukça farklı bir üslup denemiş.",
+      "B": "Eskimiş düşüncelerle yenilikçi sanat yapılamaz.",
+      "C": "Ressamın tüm tabloları kısa sürede satılmış.",
+      "D": "Tiyatro oyununun dekorları çok önceden hazırlanmış."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde kalıcı isim vardır?",
+    "secenekler": {
+      "A": "Kitaptaki yazım yanlışlarını düzeltmek editörün işidir.",
+      "B": "Danışmaya gidip yazarın imza saati ne zaman soracağım.",
+      "C": "Şiir okuyuşu o kadar etkileyiciydi ki herkes sustu.",
+      "D": "Gitar çalmayı öğrenmek için çok fazla pratik yapıyor."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "'Bir tablonun güzelliği, ona bakan gözlerin derinliğinde saklıdır.' cümlesinde altı çizili sözcük ('bakan') ile aynı türde bir fiilimsi aşağıdakilerin hangisinde vardır?",
+    "secenekler": {
+      "A": "Yazıyı yazmadan önce bolca araştırma yaptı.",
+      "B": "Müzedeki tarihi eserleri görmek beni heyecanlandırdı.",
+      "C": "Anlaşılmaz kelimelerle dolu bir metindi bu.",
+      "D": "Konuşmasını bitirip sahneden yavaşça indi."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdakilerin hangisinde üç eylemsi türü (isim-fiil, sıfat-fiil, zarf-fiil) de kullanılmıştır?",
+    "secenekler": {
+      "A": "Kitap fuarını gezip yeni eserler almayı çok seviyorum.",
+      "B": "Sanatçı, yaşadığı zorlukları anlatırken sesi titriyordu.",
+      "C": "Sergide gördüğüm eserleri değerlendirmek için bir yazı yazacağım.",
+      "D": "Roman okuyan insan, farklı dünyalara yolculuk ederek kendini geliştirir."
+    },
+    "dogru_cevap": "D"
+  }
+]

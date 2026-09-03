@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Dil, canlı bir varlık gibidir; doğar, büyür, gelişir ve bazen de değişir. Tarih boyunca başka kültürlerle etkileşime giren diller, yeni kelimeler almış ya da vermişlerdir. Ancak bir dilin yabancı kelimelerin istilasına uğraması, zamanla o dilin öz benliğini kaybetmesine yol açar. Bu yüzden dildeki değişimi kontrol etmek ve ana dilin zenginliklerini korumak çok önemlidir.\n\nBu metinden dil ile ilgili olarak aşağıdakilerin hangisine ulaşılamaz?",
+    "secenekler": {
+      "A": "Kültürel etkileşimler sonucunda dilde değişimler yaşanabileceğine.",
+      "B": "Dilin statik (durağan) değil, dinamik bir yapıya sahip olduğuna.",
+      "C": "Yabancı kelimelerin dile girişinin tamamen yasaklanması gerektiğine.",
+      "D": "Aşırı yabancı kelime kullanımının dilin yapısına zarar verebileceğine."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Masallar, çocukların sadece hayal dünyasını zenginleştirmekle kalmaz; onlara iyinin ve kötünün, doğrunun ve yanlışın ne olduğunu öğretir. Kötü kalpli bir cadı her zaman kaybeder, dürüst ve yardımsever kahraman mutlaka ödüllendirilir. Çocuğun zihnine bu mesajları eğlenceli ve sihirli bir yolla eken masallar, aslında ilk ahlak dersleridir.\n\nBu metnin ana fikri aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Masallar, çocuklara hayatın zorluklarından kaçmayı öğretir.",
+      "B": "Çocuklar masallardaki kahramanları kendilerine idol olarak seçerler.",
+      "C": "Masallar, eğlenceli kurguları aracılığıyla çocuklara temel ahlaki değerleri aşılar.",
+      "D": "Kötü karakterler masallarda daha çok dikkat çeker."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "(I) Sorunlarla karşılaştığımızda genellikle panikleyip durumu olduğundan daha karmaşık hale getiririz. (II) Oysa soğukkanlılıkla sorunun temeline inmek, çözümü bulmanın yarısıdır. (III) Bir sorunu çözerken başkalarından fikir almak bizi zayıf değil, bilge kılar. (IV) Matematik problemleri öğrencilerin en çok zorlandığı sorulardır.\n\nBu metindeki numaralanmış cümlelerden hangisi anlam bütünlüğünü bozmaktadır?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Tren yolculuğu benim için her zaman uçak yolculuğundan daha cazip olmuştur. Uçak sizi bir noktadan diğerine hızla fırlatır; aradaki dağları, köyleri, nehirleri göremezsiniz. Oysa tren, size yavaş yavaş dünyanın değiştiğini gösterir. Pencereden akan manzaralar, her istasyonda binen yeni yüzler size aslında bir 'yolda olma' hissi verir.\n\nBu metinde yazarın tren yolculuğunu uçak yolculuğuna tercih etmesinin asıl nedeni nedir?",
+    "secenekler": {
+      "A": "Tren yolculuğunun çok daha güvenli ve ucuz olması",
+      "B": "Trenin, yolculuğun kendisine ve coğrafyanın değişimine şahit olma fırsatı sunması",
+      "C": "Uçak yolculuğunda insanların birbiriyle sohbet etmemesi",
+      "D": "Tren istasyonlarının havaalanlarına göre daha merkezi yerlerde bulunması"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Bir yazarın masaya oturduğunda ilham perilerinin gelmesini beklemesi, büyük bir yanılgıdır. İlham, sadece siz çalışırken kapınızı çalar. Boş bir sayfanın karşısında beklemek yerine, ilk kelimeyi yazarak eyleme geçmek gerekir. Yazmak eyleminin yüzde onu yetenekse, yüzde doksanı disiplin ve terlemektir.\n\nBu metinde yazarın vurgulamak istediği düşünce aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "İlham perilerinin sadece geceleri geldiği.",
+      "B": "Yazarlığın yetenekten çok sürekli bir çaba ve çalışma gerektirdiği.",
+      "C": "Boş bir sayfaya bakmanın yazarları motive ettiği.",
+      "D": "İyi yazarların her zaman doğuştan gelen büyük bir yeteneğe sahip olduğu."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Düşler, insan beyninin gece mesaisidir. Gün içinde yaşadığımız korkular, umutlar ya da çözülmemiş sorunlar rüyalarımızda farklı sembollerle karşımıza çıkar. Bilinçaltımız bir film yönetmeni gibi davranarak, bastırdığımız duyguları rüya ekranına yansıtır. Bu yüzden rüyalar, insanın kendi iç dünyasını okuyabilmesi için birer mektup gibidir.\n\nBu parçanın anlatımında aşağıdakilerden hangisinden yararlanılmamıştır?",
+    "secenekler": {
+      "A": "Benzetme",
+      "B": "Açıklama",
+      "C": "Tanık gösterme",
+      "D": "Kişileştirme"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "(I) Saygı, insan ilişkilerini ayakta tutan çimentodur. (II) Ancak saygı sadece büyüklere gösterilmesi gereken bir durum olarak düşünülmemelidir. (III) Aynı şekilde doğaya, hayvanlara ve hatta kendimize karşı da saygılı olmalıyız. (IV) Kendine saygısı olmayan birinin başkasına gerçek anlamda değer vermesi beklenemez. (V) Çocuklara saygıyı öğretmek ailelerin temel görevlerindendir.\n\nBu metin iki paragrafa bölünmek istense ikinci paragraf hangi cümleyle başlar?",
+    "secenekler": {
+      "A": "II",
+      "B": "III",
+      "C": "IV",
+      "D": "V"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Her mevsimin kendine has bir karakteri vardır ama kış mevsimi diğerlerinden farklıdır. İlkbahar neşeli bir çocuğu, yaz sıcakkanlı bir genci, sonbahar hüznü yaşayan bir yetişkini anımsatır. Kış ise bilge ve sessiz bir yaşlı gibidir. Her yeri beyaz bir örtüyle örterek doğaya dinlenme ve kendini yenileme fırsatı sunar.\n\nBu metinde kış mevsimi ile ilgili aşağıdakilerden hangisi söylenebilir?",
+    "secenekler": {
+      "A": "Doğayı dinlendirip yenileyen sessiz ve bilge bir karakteri andırdığı.",
+      "B": "Diğer mevsimlere göre insanların daha çok ilgisini çektiği.",
+      "C": "Sıcakkanlı olduğu için insanlar tarafından çok sevildiği.",
+      "D": "Sadece kar yağdığı zamanlarda güzel göründüğü."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Sağlıklı yaşam sadece ne yediğimizle değil, ne düşündüğümüzle de ilgilidir. İsterseniz dünyanın en organik yiyeceklerini tüketin, her gün spor yapın; eğer zihniniz sürekli stres, kaygı ve öfkeyle doluysa bedeninizin hastalanması kaçınılmazdır. Beden bir araçsa, zihin onun direksiyonudur.\n\nBu parçaya göre sağlıklı olmanın koşulu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Düzenli olarak spor yapmak ve organik beslenmek.",
+      "B": "Sürekli seyahat ederek zihni boşaltmak.",
+      "C": "Fiziksel sağlığın yanı sıra zihinsel olarak da huzurlu ve stresten uzak olmak.",
+      "D": "Tüm hastalıklara karşı önceden ilaç kullanmak."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Müzik, farklı dilleri konuşan insanların tek bir ritim etrafında birleşebilmesini sağlayan evrensel bir bağdır. Afrikalı bir ritim ustasının çaldığı davul, Asya'da yankı bulabilir ve Avrupa'da dinleyen birine gözyaşı döktürebilir. Müzik notaları, kelimelerin bittiği yerde devreye giren sihirli birer anahtardır.\n\nBu metnin başlığı aşağıdakilerden hangisi olmaya en uygundur?",
+    "secenekler": {
+      "A": "Müziğin Tarihsel Gelişimi",
+      "B": "Farklı Dillerin Zorlukları",
+      "C": "Afrika Müzik Kültürü",
+      "D": "Müziğin Evrensel Dili"
+    },
+    "dogru_cevap": "D"
+  }
+]

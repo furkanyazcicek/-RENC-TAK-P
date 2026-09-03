@@ -1,0 +1,115 @@
+{
+  "test_adi": "Fiilde Çatı - Zor Test 1",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Türkçede '-l, -n' çatı eklerini alan bazı fiillerde işi yapan (gerçek özne) belli olduğu için bu fiiller etken çatılı kabul edilir (dönüşlülük anlamı taşır). Ancak aynı ekleri alıp işi yapanın belli olmadığı fiiller edilgendir.\nBuna göre aşağıdakilerden hangisinde '-n' ekini alan fiil edilgen çatılıdır?",
+      "secenekler": {
+        "A": "Sınavı kazandığını öğrenince çok sevindi.",
+        "B": "Yaşlı adam otobüs durağında saatlerce söylendi.",
+        "C": "Törene katılmak için en güzel elbiselerini giyinmiş.",
+        "D": "Bu konu toplantıda uzun uzun tartışılıp karara bağlandı."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "(I) Köyün ortasından geçen dere yıllar önce kurumuştu. (II) Susuzluk yüzünden ağaçların yaprakları sararmıştı. (III) Köylüler, yağmur duasına çıkmak için meydanda toplandı. (IV) O gün edilen tüm dualar kabul edilmiş gibi akşamına şiddetli bir yağmur başladı.\nBu metindeki numaralanmış cümlelerle ilgili aşağıdakilerden hangisi söylenemez?",
+      "secenekler": {
+        "A": "I. cümlenin yüklemi etken ve geçişsizdir.",
+        "B": "II. cümlede çatı özelliği aranır.",
+        "C": "III. cümlenin yüklemi edilgen çatılıdır.",
+        "D": "IV. cümlenin yüklemi geçişsiz bir fiildir."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Bir metinde isim cümlelerinin varlığı çatı analizini etkilemez çünkü onlarda çatı aranmaz. Ancak fiil cümlelerinin nesne alıp alamaması cümlenin bağlamına göre değişebilir.\n'Öğretmen, tahtaya yazdığı soruyu öğrencilere sordu.' cümlesindeki çatı özellikleriyle tamamen aynı özelliklere sahip cümle aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Gözlerimi açtığımda güneş çoktan doğmuştu.",
+        "B": "Babam, bahçedeki çiçekleri her sabah özenle sular.",
+        "C": "Yeni alınan kitaplar kütüphane raflarına dizildi.",
+        "D": "Bugün hava dünden daha soğuk ve rüzgârlıydı."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Bazı fiiller nesne almadıkları hâlde, dolaylı tümleç ya da zarf tümleci aldıklarında öğrenciler tarafından yanlışlıkla geçişli zannedilebilir.\nAşağıdaki cümlelerin hangisinde nesne sanılabilecek başka bir öge kullanıldığı hâlde fiil geçişsizdir?",
+      "secenekler": {
+        "A": "Adam, karşıdan gelen otobüse hızla bindi.",
+        "B": "Kitaplıktaki eski kitapları bir bir ayıkladı.",
+        "C": "Annesinin ona verdiği görevi başarıyla tamamladı.",
+        "D": "Öğretmenin anlattıklarını defterine not aldı."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "İçinde 'tarafından, -ca, -ce, yüzünden' gibi ifadelerle işi yapanın dolaylı olarak belirtildiği cümlelere 'örtülü özneli cümleler' denir ve bu cümlelerin yüklemleri de edilgen kabul edilir.\nAşağıdaki cümlelerin hangisinde örtülü özne kullanılmıştır?",
+      "secenekler": {
+        "A": "Hırsızlar, polis ekipleri mahalleye gelmeden kaçmış.",
+        "B": "Yeni kararlar belediye meclisince onaylandı.",
+        "C": "Fırtına yüzünden bütün gece gözümü kırpmadım.",
+        "D": "Çocuklar parktaki oyuncakları neşeyle kullanıyor."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Birden fazla yüklemi olan (sıralı veya bağlı) cümlelerde her yüklem kendi içinde çatı bakımından incelenir.\nAşağıdaki cümlelerin hangisinde etken ve edilgen çatılı fiiller bir arada kullanılmıştır?",
+      "secenekler": {
+        "A": "Kitaplarını çantasına koydu ve hızla evden çıktı.",
+        "B": "Sorular hazırlandı, kitapçıklar özenle basıldı.",
+        "C": "Yemekler yendi, ardından sofradaki bulaşıklar yıkandı.",
+        "D": "Güneş doğdu, herkes uykusundan uyandı."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Edilgen çatılı fiillerde cümlede nesne bulunmaz, çünkü nesne sözde özne görevini üstlenmiştir. Ancak geçişsiz fiiller edilgen yapıldığında cümlede sözde özne de bulunmaz.\nAşağıdaki cümlelerin hangisinde edilgen çatılı olduğu hâlde sözde öznesi bulunmayan bir kullanım vardır?",
+      "secenekler": {
+        "A": "Bu sıcak havada o kadar uzun yol yürünmez.",
+        "B": "Okulun tüm pencereleri dün öğleden sonra silindi.",
+        "C": "Kazada yaralananlar hemen hastaneye kaldırıldı.",
+        "D": "Masadaki tüm yemekler bir çırpıda yendi."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Sözde özne, bazen cümlede açıkça yazılmaz ve 'gizli sözde özne' durumunda bulunabilir.\nAşağıdaki cümlelerin hangisinde 'gizli sözde özne' kullanılmıştır?",
+      "secenekler": {
+        "A": "Kar yağışından dolayı yollar kapandı.",
+        "B": "Çocuklar sokağa çıkma yasağına uydu.",
+        "C": "Dün akşam büyük bir coşkuyla karşılandı.",
+        "D": "Evdeki eski eşyalar hurdacıya verildi."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Aşağıdaki altı çizili fiillerden hangisi nesnesine göre diğerlerinden farklı bir çatıya sahiptir?",
+      "secenekler": {
+        "A": "Dün akşam uzun bir aradan sonra rahatça _uyudu_.",
+        "B": "Elindeki ağır bardağı masaya yavaşça _koydu_.",
+        "C": "Sabahları erkenden kalkıp parkta biraz _koşar_.",
+        "D": "Yorucu bir yolculuğun ardından koltuğa _yığıldı_."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "I. Geçişli fiiller cümlede nesne almasa da geçişlilik özelliğini korur.\nII. İsim cümlelerinde çatı özelliği kesinlikle aranmaz.\nIII. -l veya -n eki alan her fiil mutlaka edilgendir.\nIV. Edilgen çatılı cümlelerde gerçek özne bulunmaz.\nNumaralanmış çatı kurallarından hangisi yanlıştır?",
+      "secenekler": {
+        "A": "I",
+        "B": "II",
+        "C": "IV",
+        "D": "III"
+      },
+      "dogru_cevap": "D"
+    }
+  ]
+}

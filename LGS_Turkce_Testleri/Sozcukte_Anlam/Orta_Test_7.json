@@ -1,0 +1,117 @@
+{
+  "testId": "Orta_Test_7",
+  "subject": "Sözcükte Anlam",
+  "difficulty": "Orta",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'parlamak' sözcüğü mecaz (öfkelenmek, sinirlenmek) anlamda kullanılmıştır?",
+      "options": {
+        "A": "Karanlık gecede yıldızlar gökyüzünde ışıl ışıl parlıyordu.",
+        "B": "Toplantıda kendisine haksızlık yapılınca birden bire parladı.",
+        "C": "Yeni yıkanan arabanın boyası yaz güneşinde pırıl pırıl parlıyor.",
+        "D": "Vitrandeki yeni ayakkabılar vitrin ışıkları altında parlıyordu."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'sıcak' sözcüğü 'samimi, içten' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Uzun yoldan geldiğimizde bizi köyde çok sıcak bir şekilde karşıladılar.",
+        "B": "Üşüyen ellerini ısıtmak için bardağındaki sıcak çayı yavaş yavaş yudumladı.",
+        "C": "Meteorolojinin raporuna göre bugün hava dünden çok daha sıcak olacak.",
+        "D": "Yazın kavurucu sıcağından bunalınca ulu bir çınarın gölgesine geçtik."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "Aşağıdaki deyimlerden hangisi 'yapılan bir hatayı görmezden gelmek, ses çıkarmamak' anlamındadır?",
+      "options": {
+        "A": "Gözden düşmek",
+        "B": "Göz gezdirmek",
+        "C": "Göze gelmek",
+        "D": "Göz yummak"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'batmak' sözcüğü 'iflas etmek, ticari yönden tamamen çökmek' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Güneş, dağların ardında akşam saatlerinde kızıl bir renkle battı.",
+        "B": "Büyük yük gemisi çıkan şiddetli fırtınada sulara gömülüp battı.",
+        "C": "Büyük umutlarla kurduğu o şirket ekonomik krizde ne yazık ki tamamen battı.",
+        "D": "Bahçede çıplak ayakla koşarken toprağın içindeki çivi ayağına battı."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'görmek' sözcüğü 'anlamak, sezmek, farkına varmak' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Parkta neşe içinde top oynayan küçük çocukları uzaktan gördüm.",
+        "B": "Atılan bu yanlış adımlarla işin sonunun kötü olacağını şimdiden görüyorum.",
+        "C": "Dün öğleden sonra çarşıda yürürken yıllardır aramadığım eski arkadaşımı gördüm.",
+        "D": "Deniz manzaralı bu yüksek tepeden bütün şehri görmek gerçekten çok güzel."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "'Ucuz' kelimesinin zıt anlamlısı aşağıdakilerden hangisidir?",
+      "options": {
+        "A": "Pahalı",
+        "B": "Değerli",
+        "C": "Kaliteli",
+        "D": "Eski"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "'Kabiliyet' kelimesinin eş anlamlısı aşağıdakilerden hangisidir?",
+      "options": {
+        "A": "Çalışkanlık",
+        "B": "Akıl",
+        "C": "Yetenek",
+        "D": "Başarı"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "Aşağıdaki ikilemelerden hangisi zıt anlamlı sözcüklerden oluşmuştur?",
+      "options": {
+        "A": "Yavaş yavaş",
+        "B": "Doğru dürüst",
+        "C": "Eski püskü",
+        "D": "Aşağı yukarı"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "Aşağıdaki kelimelerden hangisi doğadaki seslerin taklit edilmesiyle oluşan bir 'yansıma' sözcüktür?",
+      "options": {
+        "A": "Masmavi",
+        "B": "Sapsarı",
+        "C": "Şırıltı",
+        "D": "Dümdüz"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 10,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'dökmek' sözcüğü 'söylemek, açığa vurmak, sırrını paylaşmak' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Yanlışlıkla dirseği çarpınca masadaki bardakta bulunan suyu lavaboya döktü.",
+        "B": "Yıllardır içinde biriken tüm dertleri, üzüntüleri en yakın arkadaşına döktü.",
+        "C": "Bahçemizdeki ihtiyar ağaçlar sonbahar rüzgarlarıyla kurumuş yapraklarını döker.",
+        "D": "Mutfakta biriken çöpleri poşetleyip akşamüzeri dışarıdaki çöp kutusuna döktü."
+      },
+      "correctAnswer": "B"
+    }
+  ]
+}

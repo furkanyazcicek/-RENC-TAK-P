@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Yüklemi fiil olan cümlelere \"fiil cümlesi\" denir. Buna göre aşağıdakilerden hangisi bir fiil cümlesidir?",
+    "secenekler": {
+      "A": "Dün akşam bize geldi.",
+      "B": "En sevdiğim meyve elmadır.",
+      "C": "Havanın çok sıcak olduğu bir gündü.",
+      "D": "Bu kitabın konusu oldukça ilginçmiş."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Yüklemi sonda olmayan cümlelere \"devrik cümle\" denir. Aşağıdaki cümlelerin hangisi devriktir?",
+    "secenekler": {
+      "A": "Bahçedeki çiçekleri suladım.",
+      "B": "Koşarak uzaklaştı hemen oradan.",
+      "C": "Sabah erkenden yola çıktık.",
+      "D": "Evin önündeki kedi çok tatlıydı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Eylemin gerçekleşmediğini veya isim cümlesinde bahsedilen durumun olmadığını bildiren cümlelere \"olumsuz cümle\" denir. Buna göre hangisi olumsuz bir cümledir?",
+    "secenekler": {
+      "A": "Yarın sinemaya gideceğiz.",
+      "B": "Soruların hepsini çözdü.",
+      "C": "Bu konu hakkında hiçbir fikrim yok.",
+      "D": "Havalar artık ısınmaya başladı."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "İçinde fiilimsi bulunan cümleler yapıca birleşik kabul edilir. Aşağıdaki cümlelerin hangisinde fiilimsi bulunan bir cümle örneklendirilmiştir?",
+    "secenekler": {
+      "A": "Karşı sokağa yeni bir bakkal açıldı.",
+      "B": "Arkadaşımla uzun süre sohbet ettik.",
+      "C": "Yarın okulda önemli bir sınavımız var.",
+      "D": "Gülümseyen yüzüyle herkese neşe saçıyordu."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Yüklemi isim veya isim soylu bir sözcük olan cümlelere \"isim cümlesi\" denir. Buna göre hangisi isim cümlesidir?",
+    "secenekler": {
+      "A": "Benim en büyük hayalim doktor olmaktır.",
+      "B": "Kitap okumayı çok seviyorum.",
+      "C": "Tatilde bol bol dinleneceğiz.",
+      "D": "Dışarıda lapa lapa kar yağıyor."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi kurallı bir cümledir?",
+    "secenekler": {
+      "A": "Gördüm seni dün akşam parkta.",
+      "B": "Bütün çocuklar neşeyle oyun oynuyordu.",
+      "C": "Bırakıp gitti beni bu ıssız sokakta.",
+      "D": "Güzelmiş senin anlattığın o hikâye."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "İçinde yalnızca bir yüklem bulunan ve fiilimsi almayan cümleler \"tek yüklemli (basit)\" cümledir. Buna göre hangisi tek yüklemli cümledir?",
+    "secenekler": {
+      "A": "Konuşarak sorunlarımızı çözebiliriz.",
+      "B": "Geldi ve hemen odasına çekildi.",
+      "C": "Masanın üzerindeki kitapları dolaba yerleştirdi.",
+      "D": "Kitap okurken uyuya kalmış."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Birden fazla cümlenin virgül veya noktalı virgülle birbirine bağlanmasıyla oluşan cümlelere \"birden çok yüklemli (sıralı)\" cümle denir. Buna göre hangisi sıralı cümledir?",
+    "secenekler": {
+      "A": "Yağmur yağınca herkes içeri kaçtı.",
+      "B": "Bize geldiğinde çok mutluydu.",
+      "C": "Ne gelen var ne giden.",
+      "D": "Kapıyı açtı, hızlıca dışarı çıktı."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi anlamına göre olumlu, yükleminin türüne göre isim cümlesidir?",
+    "secenekler": {
+      "A": "Bugün hava çok güzeldi.",
+      "B": "O gün okula gitmemişti.",
+      "C": "Arkadaşlarına her zaman yardım eder.",
+      "D": "Bu film hiç de korkutucu değildi."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "İki cümlenin bağlaçla birbirine bağlandığı cümlelere \"bağlacı olan (bağlı)\" cümle denir. Aşağıdakilerden hangisi bağlı bir cümledir?",
+    "secenekler": {
+      "A": "Eve geldi, hemen uyudu.",
+      "B": "Çok çalıştı ama sınavı kazanamadı.",
+      "C": "Giderken kapıyı kapatmayı unutma.",
+      "D": "Yeni aldığı elbise çok güzelmiş."
+    },
+    "dogru_cevap": "B"
+  }
+]

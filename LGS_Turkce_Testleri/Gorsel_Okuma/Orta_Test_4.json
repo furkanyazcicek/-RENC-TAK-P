@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "İnternet kullanım amaçları grafiğine göre; araştırma yapma %40, video izleme %30, oyun oynama %20, e-posta gönderme %10'luk bir dilime sahiptir. Bu grafikten hareketle hangisi söylenebilir?",
+    "A": "İnternet en çok bilgi edinmek amacıyla kullanılmaktadır.",
+    "B": "Kullanıcılar oyun oynamayı video izlemekten daha çok sevmektedir.",
+    "C": "E-posta göndermek internetin temel amacıdır.",
+    "D": "Kullanıcıların yarısından fazlası sadece oyun oynamaktadır.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Akıllı telefon bağımlılığına dikkat çeken bir afişte, insanların ellerinde telefonla bir ağa yakalanmış balıklar gibi resmedildiği görülmektedir. Bu afişin vermek istediği ana mesaj nedir?",
+    "A": "Akıllı telefonlar balıkçılık sektöründe devrim yaratmıştır.",
+    "B": "Teknoloji insanları esir alan bir bağımlılığa dönüşebilir.",
+    "C": "İnsanlar teknolojiyi kullanarak birbirleriyle ağ kurabilirler.",
+    "D": "Ağ bağlantısı olmayan yerlerde telefon kullanılamaz.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Sosyal medya kullanım saatlerini gösteren bir tabloda A uygulaması günlük 3 saat, B uygulaması 2 saat, C uygulaması 1 saat kullanılmaktadır. B ve C uygulamalarının kullanım süreleri toplamı A uygulamasına eşittir. Bu tablodan hangi sonuca ulaşılır?",
+    "A": "C uygulaması B uygulamasından daha eğlencelidir.",
+    "B": "A uygulaması diğer tüm uygulamalardan daha az kullanılmıştır.",
+    "C": "A uygulamasının kullanım süresi, B ve C'nin toplamı kadardır.",
+    "D": "Kullanıcılar en çok C uygulamasını tercih etmiştir.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Siber güvenlik kurallarını anlatan bir görselde şifrelerin '123456' veya 'isim123' şeklinde olmaması gerektiği, içinde harf, rakam ve sembol barındırması gerektiği vurgulanmıştır. Buna göre aşağıdakilerden hangisi güvenli bir şifredir?",
+    "A": "ahmet1990",
+    "B": "12345678",
+    "C": "galatasaray",
+    "D": "Klm!7#bT",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Oyun türlerine göre oyuncu sayısını gösteren sütun grafiğinde Strateji 50 bin, Aksiyon 80 bin, Spor 40 bin, Bulmaca 20 bin kişidir. Grafiğe göre aşağıdaki ifadelerden hangisi yanlıştır?",
+    "A": "Strateji oyunları, spor oyunlarından daha az oynanmaktadır.",
+    "B": "En popüler oyun türü aksiyondur.",
+    "C": "Bulmaca oyunlarını oynayan kişi sayısı en düşüktür.",
+    "D": "Spor ve bulmaca oynayanların toplamı, aksiyon oynayanlara eşit değildir.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Yapay zekâ gelişim kronolojisinde 1997'de satranç şampiyonunu yenen sistem, 2011'de bilgi yarışmasını kazanan sistem ve 2022'de metin üreten model gösterilmiştir. Bu kronolojiye bakarak yapay zekâ için ne söylenebilir?",
+    "A": "Gelişimi sadece satranç üzerine olmuştur.",
+    "B": "2022'den sonra gelişimi tamamen durmuştur.",
+    "C": "Zamanla farklı alanlarda problem çözme yeteneği kazanmıştır.",
+    "D": "Metin üretimi ilk keşfedilen yapay zekâ türüdür.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "E-ticaret alışveriş kategorileri pasta grafiğinde Giyim %45, Elektronik %35, Gıda %15, Kozmetik %5 yer tutmaktadır. Bu veriler incelendiğinde aşağıdakilerden hangisine ulaşılır?",
+    "A": "İnternetten en çok elektronik eşya sipariş edilmektedir.",
+    "B": "Giyim alışverişi, en çok tercih edilen alışveriş kategorisidir.",
+    "C": "Gıda alışverişi elektronikten daha fazla yapılmaktadır.",
+    "D": "Kozmetik ürünlerine olan ilgi her yıl giderek artmaktadır.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Elektronik atıkları konu alan bir infografikte, geri dönüştürülmeyen bir cep telefonunun toprağı ve suyu ağır metallerle kirlettiği şekillerle açıklanmıştır. İnfografiğin amacı aşağıdakilerden hangisi olabilir?",
+    "A": "Cep telefonu kullanımının faydalarını anlatmak",
+    "B": "Elektronik eşyaların daha sık değiştirilmesini sağlamak",
+    "C": "Toprak ve suyun kimyasal yapısını öğretmek",
+    "D": "E-atıkların çevreye verdiği zarara karşı bilinç oluşturmak",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Akıllı saat, sanal gerçeklik gözlüğü ve akıllı bileklik kullanım oranlarının yer aldığı tabloda akıllı saatin en çok, gözlüğün ise en az kullanıldığı belirtilmiştir. Tabloya göre hangisi kesinlikle doğrudur?",
+    "A": "Sanal gerçeklik gözlüğünün kullanım oranı akıllı saatten düşüktür.",
+    "B": "Akıllı bileklikler sağlık takibi için üretilmiştir.",
+    "C": "Giyilebilir teknoloji ürünleri fiyat olarak çok pahalıdır.",
+    "D": "Tüm ürünlerin kullanım oranı birbirine çok yakındır.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "İnternet hızlarını gösteren bir dünya haritasında Güney Kore ve Japonya koyu yeşil (çok hızlı), Avrupa ülkeleri açık yeşil (hızlı), bazı Afrika ülkeleri ise sarı (yavaş) renktedir. Haritadan çıkarılacak sonuç hangisidir?",
+    "A": "Afrika ülkelerinde internet kullanımı tamamen yasaktır.",
+    "B": "Avrupa ülkeleri dünyanın en hızlı internetine sahiptir.",
+    "C": "İnternet altyapısı ve hızları bölgelere göre farklılık göstermektedir.",
+    "D": "Asya kıtasında sadece iki ülkede internet bulunmaktadır.",
+    "cevap": "C"
+  }
+]

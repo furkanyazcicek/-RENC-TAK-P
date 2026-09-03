@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'neden-sonuç' ilişkisi vardır?",
+    "secenekler": {
+      "A": "Dünyayı gezmek için yıllardır para biriktiriyorum.",
+      "B": "Yolculuk sırasında bol bol fotoğraf çekeceğim.",
+      "C": "Yeni kültürler tanırsan hayata bakış açın zenginleşir.",
+      "D": "Kar yağışı yolları kapattığından otobüsümüz hareket edemedi."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Hangi cümlede 'amaç-sonuç' ilişkisi kurulmuştur?",
+    "secenekler": {
+      "A": "Uçağı kaçırdığı için tatil planları suya düştü.",
+      "B": "Deniz havası insana her zaman huzur verir.",
+      "C": "Köyümüzün yöresel lezzetlerini tanıtmak maksadıyla bir festival düzenledik.",
+      "D": "Dağcılık zor bir spordur, bu yüzden herkes yapamaz."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'koşul' anlamı vardır?",
+    "secenekler": {
+      "A": "Kapadokya'ya gidip de balon turu yapmamak olmaz.",
+      "B": "Biletleri erken alırsak çok daha uygun fiyata seyahat ederiz.",
+      "C": "Karadeniz'in yemyeşil yaylaları insanı adeta büyülüyor.",
+      "D": "Gezi yazıları, okuyucuyu oturduğu yerden dünyayı gezdirir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Aşağıdakilerin hangisinde bir 'değerlendirme' söz konusudur?",
+    "secenekler": {
+      "A": "Yazarın gezi notları oldukça sıradan ve bilgi vermekten uzak bir üslupla yazılmış.",
+      "B": "Tren yolculuğumuz yaklaşık yedi saat sürdü.",
+      "C": "Mardin sokaklarında taş evlerin fotoğraflarını çektik.",
+      "D": "Rehber bizi sabah erkenden otelin lobisinde bekliyordu."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru": "'Çok okuyan değil, çok gezen bilir.' atasözüyle anlatılmak istenen aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Okumak insanı yorar, gezmek ise eğlendirir.",
+      "B": "Sadece kitap okumak insanı bilge yapmaya yeter.",
+      "C": "Herkesin öğrenme yöntemi farklıdır.",
+      "D": "Gezerek, görerek elde edilen tecrübeler, teorik bilgiden daha öğreticidir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Hangi cümlede 'karşılaştırma' yapılmıştır?",
+    "secenekler": {
+      "A": "Ege'nin koyları bu yıl Akdeniz sahillerinden daha sakindi.",
+      "B": "Seyahat etmek insanın ufkunu genişletir, yepyeni şeyler öğretir.",
+      "C": "Haritada rotamızı çizerken çok heyecanlıydık.",
+      "D": "Venedik, kanalları ve gondollarıyla meşhur bir şehirdir."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Aşağıdakilerin hangisinde 'hayıflanma' anlamı vardır?",
+    "secenekler": {
+      "A": "Ah, şu manzaraya karşı bir yorgunluk kahvesi içmek vardı!",
+      "B": "Keşke geçen yılki Karadeniz turuna ben de katılsaydım.",
+      "C": "Valizimi hazırlarken en sevdiğim kazağımı da yanıma aldım.",
+      "D": "Belki seneye hep birlikte bir Avrupa turu yaparız."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Hangi cümlede 'tasarı (plan)' dile getirilmiştir?",
+    "secenekler": {
+      "A": "Otel rezervasyonumuzu haftalar öncesinden yaptırmıştık.",
+      "B": "Yolculuk boyunca pencereden akıp giden manzarayı izledim.",
+      "C": "Önümüzdeki yaz Karavan alıp tüm Ege'yi dolaşmayı düşünüyorum.",
+      "D": "Çöl sıcağında yürümek bizi oldukça yormuştu."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Aşağıdaki cümlelerin hangisi kanıtlanabilirlik açısından diğerlerinden farklıdır?",
+    "secenekler": {
+      "A": "Doğu Ekspresi, Ankara'dan başlayıp Kars'ta sona eren bir tren seferidir.",
+      "B": "Peri Bacaları'nın büyüleyici güzelliği karşısında dilim tutuldu.",
+      "C": "Yurt dışına çıkmak için pasaport ve vize işlemlerini tamamlamak gerekir.",
+      "D": "Türkiye'de turizm gelirleri her geçen yıl artış göstermektedir."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'doğrudan anlatım' yapılmıştır?",
+    "secenekler": {
+      "A": "Kaptan, hava muhalefeti nedeniyle geminin limana yanaşamayacağını duyurdu.",
+      "B": "Tur rehberimiz: 'Saat onda otobüsün önünde buluşalım.' dedi.",
+      "C": "Yolcular otobüsün geç kalmasından dolayı şoföre şikayette bulundular.",
+      "D": "Arkadaşım, Paris'in sonbaharda çok daha güzel olduğunu söyledi."
+    },
+    "dogru_cevap": "B"
+  }
+]

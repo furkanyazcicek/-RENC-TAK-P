@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Mimar Sinan, Edirne'deki Selimiye Camisi'ni ustalık eseri olarak nitelendirmiştir.\" cümlesinde hangi öge yer almamaktadır?",
+    "A": "Özne",
+    "B": "Yer Tamlayıcısı",
+    "C": "Zarf Tümleci",
+    "D": "Belirtili Nesne",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde yer tamlayıcısı (dolaylı tümleç) yoktur?",
+    "A": "Müzeye yeni tarihi eserler getirildi.",
+    "B": "Eski çağlardan kalan bu kılıç çok değerliydi.",
+    "C": "Arkeologlar kazı alanında sabırla çalışıyorlar.",
+    "D": "Rehber, turistlere antik kentin tarihini anlattı.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "\"Tarihi yarımadayı dolaşırken eski İstanbul'un ruhunu derinden hissettim.\" cümlesinde \"derinden\" sözcüğü aşağıdakilerden hangisidir?",
+    "A": "Yer Tamlayıcısı",
+    "B": "Belirtili Nesne",
+    "C": "Zarf Tümleci",
+    "D": "Özne",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde soru, özneyi buldurmaya yöneliktir?",
+    "A": "Bu muhteşem sarayı kim yaptırmış?",
+    "B": "Kazılarda ne buldunuz?",
+    "C": "Müzeyi ne zaman ziyaret edeceğiz?",
+    "D": "Tarihi heykelleri nereye taşıyacaklar?",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerden hangisinin öge dizilişi \"Yer Tamlayıcısı - Özne - Yüklem\" şeklindedir?",
+    "A": "Duvardaki freskler zamanla silinmişti.",
+    "B": "Müzenin bahçesinde mermer sütunlar duruyordu.",
+    "C": "Eski Roma mimarisi hep ilgimi çekmiştir.",
+    "D": "Tarihçiler kütüphanede araştırmalarına devam ediyor.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "\"Kültür mirasını korumak, gelecek nesillere karşı en büyük sorumluluğumuzdur.\" cümlesinin yüklemi aşağıdakilerden hangisidir?",
+    "A": "sorumluluğumuzdur",
+    "B": "büyük sorumluluğumuzdur",
+    "C": "gelecek nesillere karşı en büyük sorumluluğumuzdur",
+    "D": "korumak",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "\"Göbeklitepe, insanlık tarihinin bilinen en eski tapınak merkezidir.\" cümlesi hangi ögelerden oluşmaktadır?",
+    "A": "Özne - Nesne - Yüklem",
+    "B": "Özne - Yüklem",
+    "C": "Yer Tamlayıcısı - Özne - Yüklem",
+    "D": "Belirtili Nesne - Yüklem",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Hangi seçenekte yükleme sorulan \"Ne zaman?\" sorusunun cevabı (zarf tümleci) vardır?",
+    "A": "Rehberin anlattıkları hepimizi çok etkiledi.",
+    "B": "Arkeolojik kazılar yaz aylarında hız kazanır.",
+    "C": "Müzeye giriş için bilet almak gerekiyor.",
+    "D": "Osmanlı mimarisinin özelliklerini araştırıyorum.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde cümle dışı unsur kullanılmıştır?",
+    "A": "Arkadaşlar, lütfen eserlere dokunmayınız.",
+    "B": "Tarihi surların çevresi düzenlenmiş.",
+    "C": "Antik tiyatroda binlerce kişi gösteri izlermiş.",
+    "D": "Mimarinin inceliklerini usta çırağına öğretti.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "\"Sergideki paha biçilmez vazoyu, o eşsiz sanat eserini, hayranlıkla inceledim.\" cümlesindeki ara söz hangi ögeyi açıklamaktadır?",
+    "A": "Özne",
+    "B": "Yer Tamlayıcısı",
+    "C": "Belirtisiz Nesne",
+    "D": "Belirtili Nesne",
+    "dogru_cevap": "D"
+  }
+]

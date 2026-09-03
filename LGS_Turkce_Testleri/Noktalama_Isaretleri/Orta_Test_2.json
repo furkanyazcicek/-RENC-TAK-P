@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Aşağıdaki cümlelerin hangisinde virgül (,) eş görevli kelime veya kelime gruplarını ayırmak için kullanılmıştır?",
+    "secenekler": {
+      "A": "Sessiz, sakin ve huzurlu bir kasabada yaşamak en büyük hayaliydi.",
+      "B": "Genç, adama dönerek ona bir şeyler söylemek istediğini belirtti.",
+      "C": "Evet, bu konuyu daha önce de seninle uzun uzun konuşmuştuk.",
+      "D": "Fırtına dindi, gökyüzünde parlak bir güneş belirdi."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Pazardan elma, armut, muz; lahana, pırasa, ıspanak aldım.\nBu cümlede noktalı virgülün (;) kullanım amacı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Ögeleri arasında virgül bulunan sıralı cümleleri birbirinden ayırmak.",
+      "B": "Cümle içinde virgülle ayrılmış tür veya takımları birbirinden ayırmak.",
+      "C": "İkiden fazla eş değer ögeler arasında virgül bulunan cümlede özneden sonra kullanmak.",
+      "D": "Kendinden sonraki cümleye bağlı olarak ret veya kabul bildiren kelimelerden sonra kullanmak."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Aşağıdaki cümlelerin hangisinin sonuna iki nokta (:) konulmalıdır?",
+    "secenekler": {
+      "A": "Onunla görüştükten sonra içimde garip bir his belirdi",
+      "B": "Baharın gelmesiyle doğa uyanır, her yer yeşile bürünür",
+      "C": "Size başarının sırrını söyleyeyim: Asla pes etmemek",
+      "D": "Köyün girişindeki o eski köprü yıllara meydan okuyordu"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Aşağıdaki cümlelerin hangisinde kesme işaretinin (') kullanımıyla ilgili bir yanlışlık yapılmıştır?",
+    "secenekler": {
+      "A": "Yarın Ankara'ya gideceğimizi kimseye söylemedim.",
+      "B": "1999'da yaşanan o büyük felaketi unutmak mümkün mü?",
+      "C": "TDK'nin yeni yayımladığı sözlüğü inceleme fırsatım oldu.",
+      "D": "Türkçe'nin zenginliğini anlatan harika bir makale okudum."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Yunus Emre (1240 ? - 1320), Türk tasavvuf şiirinin en önemli temsilcilerindendir.\nBu cümlede ayraç içinde kullanılan soru işareti (?) hangi amaçla kullanılmıştır?",
+    "secenekler": {
+      "A": "Bilinmeyen, kesin olmayan veya şüpheyle karşılanan yer, tarih vb. durumları belirtmek için.",
+      "B": "Soru bildiren ancak soru eki veya sözü içermeyen cümlelerin sonuna konmak için.",
+      "C": "Alay, kinaye veya küçümseme anlamı kazandırılmak istenen sözden hemen sonra kullanılmak için.",
+      "D": "Sıralı ve bağlı cümlelerde soru anlamını pekiştirmek için."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Aşağıdaki cümlelerin hangisinin sonuna üç nokta (...) konulmalıdır?",
+    "secenekler": {
+      "A": "Gökyüzünde süzülen martılar, denizin hafif esintisi",
+      "B": "Dün akşam bize anlattığı hikaye oldukça ilginçti",
+      "C": "Seni görmek için buralara kadar geldim, dedi",
+      "D": "Neden bana daha önce haber vermedin"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Aşağıdakilerin hangisinde tırnak işareti (\"\") başka bir kimseden veya yazıdan olduğu gibi aktarılan sözleri belirtmek amacıyla kullanılmıştır?",
+    "secenekler": {
+      "A": "Yeni yazdığı şiirinde \"yalnızlık\" temasını çok etkili işlemiş.",
+      "B": "Öğretmenimiz, \"Başarı, düzenli çalışmanın ürünüdür.\" diyerek derse başladı.",
+      "C": "Bugün derste \"Yaban\" romanının tahlilini yapacağız.",
+      "D": "İnsanın \"en iyi dostu\" kendi vicdanıdır, derler hep."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Aşağıdaki cümlelerin hangisinde kısa çizgi (-) ara sözü veya ara cümleyi ayırmak için kullanılmıştır?",
+    "secenekler": {
+      "A": "Türkçe-İngilizce sözlüğünü okulda unutmuşum.",
+      "B": "1914-1918 yılları arasında dünya büyük bir felaket yaşadı.",
+      "C": "Bu kelimenin kökü \"göz-le-\" şeklinde ayrılmalıdır.",
+      "D": "O şirin kasabayı -çocukluğumun geçtiği yeri- asla unutamam."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Aşağıdaki kısaltmaların hangisinin sonuna nokta (.) konması yanlıştır?",
+    "secenekler": {
+      "A": "Prof.",
+      "B": "İng.",
+      "C": "TBMM.",
+      "D": "Alm."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Eyvah, anahtarı evde unuttum ( )\nBu cümlede yay ayraçla ( ) belirtilen yere aşağıdaki noktalama işaretlerinden hangisi getirilmelidir?",
+    "secenekler": {
+      "A": "(.)",
+      "B": "(!)",
+      "C": "(...)",
+      "D": "(?)"
+    },
+    "dogru_cevap": "B"
+  }
+]

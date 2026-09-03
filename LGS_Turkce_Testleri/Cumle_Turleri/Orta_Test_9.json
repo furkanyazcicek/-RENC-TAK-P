@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi yüklemin türüne göre isim cümlesidir?",
+    "A": "Yolculuk boyunca otobüste hep beraber en sevdiğimiz şarkıları söyledik.",
+    "B": "Uzun süren keyifli gezimizin son durağı masalsı Kapadokya'ydı.",
+    "C": "Dünyadaki yeni yerleri keşfetmek için sabahın erken saatlerinde yola çıktık.",
+    "D": "Eski buharlı tren büyük bir gürültüyle yavaşça istasyona yaklaştı.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi yüklemin yerine göre devrik cümledir?",
+    "A": "Çok güzeldi yüksek dağların arasından süzülerek akan coşkun nehir.",
+    "B": "Yaz tatili için tüm bavullarımızı akşamdan hazırlayıp erkenden yola çıktık.",
+    "C": "Yeni yerlere seyahat etmek insanın hayata bakış açısını ve ufkunu genişletir.",
+    "D": "Bizi Avrupa'ya götürecek olan uçağımız tam vaktinde pistten havalandı.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdakilerden hangisi yapısına göre içinde fiilimsi bulunan cümledir?",
+    "A": "Memleketimize yaptığımız otobüs yolculuğu beklediğimizden çok uzun sürdü.",
+    "B": "Bizi gezdirecek olan tecrübeli rehberimiz otelin lobisinde bizi bekliyordu.",
+    "C": "Gezdiğimiz tarihi ve turistik yerlerin bol bol hatıra fotoğraflarını çektik.",
+    "D": "Gece yarısı şoför yorulduğu için otobüs büyük bir dinlenme tesisinde mola verdi.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdakilerden hangisi birden çok yüklemli (sıralı) cümledir?",
+    "A": "Gittiğimiz ülkelerde yeni ve farklı kültürler tanımak benim için çok keyifli.",
+    "B": "Yaz sıcağında seyahat etmek yerine serin havada gece yolculuğu yapmayı severim.",
+    "C": "Bu yaz tatile çıkmadan önce ailemle oturup bütçemize göre detaylı bir plan yaptık.",
+    "D": "Sabah erkenden arabaya bindik, güvenliğimiz için emniyet kemerlerimizi taktık.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdakilerden hangisi bağlacı olan (bağlı) cümledir?",
+    "A": "İnternetten bileti günler öncesinden aldım fakat trafiğe takılınca treni kaçırdım.",
+    "B": "Hiç bitmeyecekmiş gibi gelen uzun ve virajlı yollar insanı bedenen yorar.",
+    "C": "Geçen ay gittiğimiz Ege tatilinde bütün stresimizi atıp çok güzel dinlendik.",
+    "D": "Bilinmeyen bir yere ilk defa yolculuk yapmak insan için her zaman heyecan vericidir.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi anlamına göre olumsuz bir cümledir?",
+    "A": "Karadeniz turunda otobüs camından izlediğimiz yol manzarası harikaydı.",
+    "B": "Geçen hafta kaldığımız her şey dahil lüks otelimiz tam denize sıfırdı.",
+    "C": "Sınavlara hazırlandığımız için ailece bu yaz uzun bir tatile gidemedik.",
+    "D": "Yaz sezonu açılınca yurt içi ve yurt dışı uçak bileti fiyatları hızla arttı.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdakilerden hangisi kurallı bir fiil cümlesidir?",
+    "A": "Farklı şehirlere ve ülkelere seyahat etmenin en güzel yanı işte budur.",
+    "B": "Telefonun çekmediği ormanda haritaya bakarak kamp alanına yönümüzü bulduk.",
+    "C": "Yorucuydu bütün gün sırtımızda ağır çantalarla o dik yokuşları yürümek.",
+    "D": "Rehberin bize verdiği İstanbul'da gezilecek yerler listesi oldukça uzundu.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi eksiltili (tamamlanmamış) cümledir?",
+    "A": "Hafta sonu arkadaşlarla şehirden uzak ahşap bir dağ evinde kamp yaptık.",
+    "B": "Eski ve tarihi tren istasyonunda heyecanla gelecek olan yolcumuzu bekliyoruz.",
+    "C": "Yolun hemen sağında mavinin her tonunu barındıran uçsuz bucaksız bir deniz...",
+    "D": "Tatil için hazırladığı ağır valizleri zorlanarak arabanın bagajına yerleştirdi.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdakilerden hangisi bir soru cümlesidir?",
+    "A": "Önümüzdeki yaz tatilinde hangi macera kitabını okuyacaksın?",
+    "B": "Yaz tatilinde ailece nereye gideceğimizi henüz kesin olarak karar vermedik.",
+    "C": "Tur şirketinin ayarladığı nasıl bir otelde kalacağımızı şu an hiç bilmiyorum.",
+    "D": "Bize bu tren yolculuğunun yaklaşık olarak ne kadar süreceğini detaylıca anlattı.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi biçimce olumsuz olduğu hâlde anlamca olumludur?",
+    "A": "Gideceğimiz köye ulaşmak için geçeceğimiz dağ yolu çok uzun ve yorucu.",
+    "B": "Karşımıza çıkan bu eşsiz güzellikteki manzarayı fotoğraflamamak elde değil.",
+    "C": "Rehberin bizi götürdüğü yerleri ve yemek yediğimiz restoranı hiç beğenmedim.",
+    "D": "Tatil için kısıtlı zamanımız olduğundan detaylı bir seyahat planı yapmadık.",
+    "dogru_cevap": "B"
+  }
+]

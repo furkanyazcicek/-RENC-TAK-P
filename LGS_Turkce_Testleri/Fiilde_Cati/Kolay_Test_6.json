@@ -1,0 +1,125 @@
+{
+  "test_adi": "Fiilde Çatı - Kolay Test 6",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "İsim cümlelerinde çatı aranmaz kuralına göre hangi cümlede çatı özelliği aranmaz?",
+      "secenekler": {
+        "A": "Oyuncular sahnede çok başarılıydı.",
+        "B": "Tiyatro perdesi alkışlarla açıldı.",
+        "C": "Seyirciler oyunu ayakta izledi.",
+        "D": "Yönetmen oyunculara son uyarıları yaptı."
+      },
+      "dogru_cevap": "A",
+      "cozum": "A seçeneğindeki yüklem 'başarılıydı' isim soylu bir sözcük olduğundan isim cümlesidir ve çatı özelliği aranmaz."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Hangi cümlede işi yapan kişi (özne) belli değildir?",
+      "secenekler": {
+        "A": "Sanatçı, yeni sergisini dün açtı.",
+        "B": "Tiyatro biletleri bir saat içinde satıldı.",
+        "C": "Eleştirmenler son oyunu çok beğendi.",
+        "D": "Genç oyuncu repliklerini ezberledi."
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğinde biletlerin kim tarafından satıldığı belli değildir, bu yüzden yüklem edilgen çatılıdır ve işi yapan belli değildir."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Geçişsiz fiiller nesne alamayan fiillerdir. Hangi cümlede geçişsiz bir fiil kullanılmıştır?",
+      "secenekler": {
+        "A": "Tabloları duvarlara astı.",
+        "B": "Oyunun senaryosunu baştan sona okudu.",
+        "C": "Komedi oyununda izleyiciler çok güldü.",
+        "D": "Şarkıcı sahneye çıkmadan önce mikrofonu denedi."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğindeki 'güldü' fiilinin başına 'onu' kelimesi getirilemez. Nesne alamadığı için geçişsizdir."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "'Oynamak' fiili hangi cümlede geçişli olarak kullanılmıştır?",
+      "secenekler": {
+        "A": "Çocuklar parkta sabahtan akşama kadar oynadı.",
+        "B": "Sanatçı bu filmde başrolü oynadı.",
+        "C": "Kardeşim suyla oynamayı çok sever.",
+        "D": "Rüzgar estikçe ağaçların yaprakları oynuyordu."
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğinde eylem 'başrolü' nesnesini almıştır. (Neyi oynadı? Başrolü - geçişli). A, C ve D seçeneklerinde fiil geçişsiz kullanılmıştır."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Aşağıdakilerin hangisinde sözde özne yoktur?",
+      "secenekler": {
+        "A": "Şiir yarışmasının sonuçları açıklandı.",
+        "B": "Tiyatro salonu gösteri için temizlendi.",
+        "C": "Ünlü ressam tablosunu sergiledi.",
+        "D": "Sahne dekorları özenle kuruldu."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde eylemi yapan (Ünlü ressam) bellidir. Gerçek öznesi vardır. A, B ve D seçeneklerinde işi yapan belli olmadığı için sözde özne vardır."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Hangi cümlenin yüklemi etken ve geçişli bir fiildir?",
+      "secenekler": {
+        "A": "Seyirciler salondaki yerlerini aldı.",
+        "B": "Oyun saat sekizde başladı.",
+        "C": "Sanat galerisi hafta sonu kapalıydı.",
+        "D": "Gösteriden sonra herkes dağıldı."
+      },
+      "dogru_cevap": "A",
+      "cozum": "A seçeneğinde alan 'Seyirciler' bellidir (etken). Neyi aldı? 'yerlerini' (nesne alabiliyor - geçişli)."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "'Sanatçı, uzun yıllar sonra yeni bir albüm ...' cümlesi hangisiyle tamamlanırsa edilgen çatılı olur?",
+      "secenekler": {
+        "A": "çıkardı",
+        "B": "yayımladı",
+        "C": "hazırladı",
+        "D": "çıkarıldı"
+      },
+      "dogru_cevap": "D",
+      "cozum": "'çıkarıldı' eylemi edilgen çatılıdır çünkü '-l' edilgenlik eki almıştır ve işin kim tarafından yapıldığını belirsizleştirir. Fakat özne 'Sanatçı' olduğu için cümlenin mantıksal uyumu biraz zordur; burada doğru cevap D şıkkı olarak edilgen yapan tek ekli fiildir."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Aşağıdaki fiillerden hangisi nesne alamadığı için her zaman geçişsizdir?",
+      "secenekler": {
+        "A": "yazmak",
+        "B": "çizmek",
+        "C": "uyumak",
+        "D": "anlatmak"
+      },
+      "dogru_cevap": "C",
+      "cozum": "A, B ve D seçeneklerindeki fiiller nesne alabilir (onu yazmak, onu çizmek). 'Uyumak' eylemi nesne alamaz."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde fiil çatısı aranır?",
+      "secenekler": {
+        "A": "Tiyatro, insanın kendisini tanımasını sağlayan bir sanattır.",
+        "B": "Resim sergisindeki eserlerin tümü muazzamdı.",
+        "C": "Sanatçının son kitabı oldukça kalındı.",
+        "D": "Müzisyen, konserinde en sevilen şarkılarını söyledi."
+      },
+      "dogru_cevap": "D",
+      "cozum": "A, B ve C seçeneklerindeki cümleler isim cümlesidir. D seçeneği ise yüklemi fiil (söyledi) olduğu için fiil cümlesidir ve çatı özelliği aranır."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "'Gösteri sonunda sanatçılar ayakta alkışlandı.' cümlesinin çatı özellikleri aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Etken - Geçişli",
+        "B": "Edilgen - Geçişsiz",
+        "C": "Etken - Geçişsiz",
+        "D": "Edilgen - Geçişli"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Alkışlayanlar belli olmadığı için edilgendir. Edilgen çatılı eylemlerin hepsi aynı zamanda geçişsizdir."
+    }
+  ]
+}

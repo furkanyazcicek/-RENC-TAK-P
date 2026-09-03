@@ -1,0 +1,125 @@
+{
+  "test_adi": "Söz Sanatları - Kolay Test 4",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Tenefüs zili bir bülbül gibi şakıdı ve herkes bahçeye koştu.\n\nBu cümlede okul ziliyle ilgili hangi sanat yapılmıştır?",
+      "secenekler": {
+        "A": "Konuşturma",
+        "B": "Kişileştirme",
+        "C": "Abartma",
+        "D": "Benzetme"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Zilin sesi, şakıyan bir bülbüle benzetilmiştir. (Benzetme)"
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Tatil dönüşü sınıftaki sıralar bizi hasretle bekliyordu.\n\nBu cümlede boş sıralar için hangi söz sanatı kullanılmıştır?",
+      "secenekler": {
+        "A": "Benzetme",
+        "B": "Abartma",
+        "C": "Kişileştirme",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Sıralara 'hasretle beklemek' gibi insani bir duygu ve davranış verilerek kişileştirme yapılmıştır."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Çantamdaki kitapların ağırlığından kollarım koptu.\n\nBu cümlede şikayet dile getirilirken hangi söz sanatı tercih edilmiştir?",
+      "secenekler": {
+        "A": "Abartma",
+        "B": "Kişileştirme",
+        "C": "Konuşturma",
+        "D": "Benzetme"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Çantanın ağırlığı 'kolların kopması' ifadesiyle gerçekten uzak bir şekilde abartılmıştır (mübalağa)."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Kara tahta öğretmenin elindeki tebeşire sinirlenerek bağırdı: 'Canımı acıtıyorsun, yavaş yaz!'\n\nBu cümlede yazı tahtası için hangi sanat yapılmıştır?",
+      "secenekler": {
+        "A": "Benzetme",
+        "B": "Konuşturma",
+        "C": "Abartma",
+        "D": "Kişileştirme"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Tahtanın konuşup bir cümle kurması söz konusu olduğu için konuşturma (intak) vardır."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Ders çalışmaktan masamdaki kalemler bile yorgun düştü.\n\nBu cümlede kalemler üzerinden yapılan söz sanatı aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Kişileştirme",
+        "B": "Benzetme",
+        "C": "Abartma",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Yorulmak insana özgü bir durumdur, bu özellik cansız olan kalemlere verilerek kişileştirme yapılmıştır."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Sınıftaki uğultu öyle yüksekti ki, içerisi bir arı kovanı gibiydi.\n\nBu cümlede gürültü ortamı neye benzetilmiştir ve hangi sanat kullanılmıştır?",
+      "secenekler": {
+        "A": "Abartma",
+        "B": "Kişileştirme",
+        "C": "Benzetme",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Sınıftaki ses kalabalığı ve hareketlilik bir 'arı kovanına' benzetilmiştir."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Öğretmenimiz o kadar tekrar etti ki aynı konuyu bin defa dinlemişizdir.\n\nBu cümlede öğretmenin çok tekrar yapması hangi sanatla anlatılmıştır?",
+      "secenekler": {
+        "A": "Konuşturma",
+        "B": "Benzetme",
+        "C": "Kişileştirme",
+        "D": "Abartma"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Aynı konuyu kelimenin tam anlamıyla bin kere dinlemek mümkün olmadığından durum abartılarak ifade edilmiştir."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Silgi kağıda dönüp şikayet etti: 'Senin tüm hatalarını ben temizliyorum, biraz dikkatli ol!'\n\nBu parçadaki altı çizili veya vurgulanan ifadede hangi sanat yer almaktadır?",
+      "secenekler": {
+        "A": "Benzetme",
+        "B": "Konuşturma",
+        "C": "Kişileştirme",
+        "D": "Abartma"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Silginin dile gelerek cümle kurması intak, yani konuşturma sanatıdır."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "İyi bir öğretmen, etrafını aydınlatan parlak bir güneş gibidir.\n\nBu cümlede öğretmenle ilgili hangi söz sanatı vardır?",
+      "secenekler": {
+        "A": "Abartma",
+        "B": "Kişileştirme",
+        "C": "Benzetme",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Öğretmenin etrafını bilgiyle aydınlatması, güneşin ışık yaymasına benzetilmiştir."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Okul kütüphanesindeki sessiz kitaplar, öğrencilerin en yakın sırdaşıdır.\n\nBu cümlede kitaplar için hangi söz sanatı kullanılmıştır?",
+      "secenekler": {
+        "A": "Konuşturma",
+        "B": "Abartma",
+        "C": "Benzetme",
+        "D": "Kişileştirme"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Sırdaş olmak insani bir özelliktir. Kitaplara sırdaşlık görevi yüklenerek teşhis (kişileştirme) yapılmıştır."
+    }
+  ]
+}

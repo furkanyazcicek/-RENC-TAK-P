@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Türkiye geneli 3 günlük hava tahmini haritasında Doğu Anadolu bölgesinde ardı ardına 3 gün boyunca kar tanesi ikonları vardır. Buna göre bölge halkının ne yapması beklenir?",
+    "A": "Yazlık giysilerini hazırlaması",
+    "B": "Tarlalarını sulamaya başlaması",
+    "C": "Kış koşullarına ve don olayına karşı tedbir alması",
+    "D": "Deniz turizmine çıkması",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Bir ilin yıllık sıcaklık ve yağış grafiğinde, yağış sütunları kış aylarında en yüksek, sıcaklık çizgisi ise yaz aylarında en yüksektedir. Bu ilin iklim özelliği için hangisi söylenebilir?",
+    "A": "Yazlar yağışlı ve serin geçer.",
+    "B": "Yazlar sıcak, kışlar ise yağışlı geçer.",
+    "C": "Her mevsim eşit yağış alır.",
+    "D": "Kış ayları kurak ve çok sıcak geçer.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Küresel ısınmanın etkilerini anlatan bir infografikte, kutup ayıları eriyen küçük bir buz kütlesi üzerinde çaresizce durmaktadır. Verilmek istenen mesaj nedir?",
+    "A": "Kutup ayılarının yüzmeyi sevdiği",
+    "B": "Buzulların altındaki madenlerin ortaya çıktığı",
+    "C": "Kutuplarda havanın her zaman güneşli olduğu",
+    "D": "İklim değişikliğinin hayvanların yaşam alanlarını yok ettiği",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Su döngüsü görselinde oklar denizden bulutlara (buharlaşma), bulutlardan dağa (yağış) ve dağdan denize (akarsu) doğru çizilmiştir. Bu görsel neyi kanıtlar?",
+    "A": "Doğadaki su miktarının sürekli bir döngü içinde korunduğunu",
+    "B": "Bulutların sadece dağlarda oluştuğunu",
+    "C": "Suların giderek tükendiğini",
+    "D": "Buharlaşmanın sadece yazın gerçekleştiğini",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru": "İklim tiplerine göre yetişen tarım ürünleri tablosunda Karadeniz İklimi - Çay, Akdeniz İklimi - Narenciye, Karasal İklim - Buğday yer almaktadır. Buradan hangi sonuç çıkarılabilir?",
+    "A": "Buğday çok fazla su isteyen bir bitkidir.",
+    "B": "Narenciye soğuk iklimlerde daha iyi yetişir.",
+    "C": "Bir bölgenin iklim özellikleri, orada yetişecek tarım ürünlerini belirler.",
+    "D": "Çay üretimi her iklim bölgesinde rahatlıkla yapılabilir.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Kuraklıkla mücadele afişinde çatlamış bir toprak zeminin içinden yeşeren tek bir umut fidanı çizilmiştir. 'Suyu Koru, Geleceği Yeşert' yazısı ile ne amaçlanmıştır?",
+    "A": "Ağaçların su olmadan da büyüyebileceği",
+    "B": "Su tasarrufu ile doğanın kuraklıktan kurtarılabileceği",
+    "C": "Sadece saksı bitkilerinin sulanması gerektiği",
+    "D": "Toprağın çatlamasının tarım için faydalı olduğu",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Sera etkisi infografiklerinde Dünya'nın etrafında kalın bir gaz tabakası çizilmiş ve Güneş ışınlarının bu tabakadan çıkamayıp geri yansıdığı gösterilmiştir. Bu durumun sonucu nedir?",
+    "A": "Gezegenin ortalama sıcaklığının giderek artması",
+    "B": "Dünya'nın Güneş etrafında daha hızlı dönmesi",
+    "C": "Oksijen miktarının artması",
+    "D": "Buzulların genişleyerek yayılması",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Yenilenebilir enerji grafiğinde Rüzgar %40, Güneş %35, Jeotermal %15, Biyokütle %10 yer tutmaktadır. Buna göre en yaygın iki kaynak hangisidir?",
+    "A": "Jeotermal ve Güneş",
+    "B": "Biyokütle ve Rüzgar",
+    "C": "Rüzgar ve Jeotermal",
+    "D": "Rüzgar ve Güneş",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Deprem risk bölgeleri haritasında birinci derece bölgeler kırmızı, az riskli bölgeler beyaz renkle gösterilmiştir. Kırmızı renkli bir şehirde yaşayanların ne yapması beklenir?",
+    "A": "Hava durumunu sık sık kontrol etmesi",
+    "B": "Ziraatla daha çok uğraşması",
+    "C": "Yapılarını depreme dayanıklı inşa etmeleri",
+    "D": "Deniz ulaşımını tercih etmeleri",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Bofor rüzgar ölçeği tablosunda 'Şiddet 12: Kasırga - Ağaçları kökünden söker, binalara zarar verir' bilgisi yer almaktadır. Bu tablo ne için kullanılır?",
+    "A": "Rüzgarın hızına göre yapacağı yıkıcı etkinin boyutunu öngörmek için",
+    "B": "Deprem büyüklüğünü ölçmek için",
+    "C": "Yağmur miktarını hesaplamak için",
+    "D": "Güneşin UV ışınlarını engellemek için",
+    "cevap": "A"
+  }
+]

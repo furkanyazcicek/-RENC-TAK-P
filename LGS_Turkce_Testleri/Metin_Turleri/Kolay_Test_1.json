@@ -1,0 +1,125 @@
+{
+  "test_adi": "Metin Türleri - Kolay Test 1",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Yazarın herhangi bir konu üzerinde kesin sonuçlara varmadan, kendi kendisiyle konuşuyormuş gibi bir üslupla yazdığı, kişisel görüş ve düşüncelerini anlattığı yazı türüdür.\nBu parçada özellikleri verilen metin türü aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Makale",
+        "B": "Deneme",
+        "C": "Fıkra (Köşe Yazısı)",
+        "D": "Söyleşi (Sohbet)"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Yazarın kendisiyle konuşuyormuş gibi yazdığı, kesin hükümlere varmayan ve kişisel düşünceleri barındıran metin türü 'deneme'dir."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Bir yazarın, bilimsel gerçekleri veya toplumsal bir konuyu bilgi vermek, kanıtlamak ve okuyucuyu ikna etmek amacıyla nesnel bir dille yazdığı metinlere ne ad verilir?",
+      "secenekler": {
+        "A": "Makale",
+        "B": "Eleştiri",
+        "C": "Deneme",
+        "D": "Hikâye"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Düşünceleri kanıtlama amacı güden, nesnel ve bilimsel bir dil kullanan bilgilendirici metin türü makaledir."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Aşağıdakilerden hangisi 'masal' türünün özelliklerinden biri değildir?",
+      "secenekler": {
+        "A": "Olayların belirli bir zaman ve mekânda geçmesi",
+        "B": "Genellikle tekerleme ile başlaması",
+        "C": "Kahramanlarının dev, peri, cin gibi olağanüstü varlıklar olabilmesi",
+        "D": "Sonunda iyilerin kazanıp kötülerin cezalandırılması"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Masallarda olayların geçtiği zaman ve mekân belirsizdir ('Bir varmış, bir yokmuş', 'Kafdağı'nın ardında' vb.). Bu nedenle A seçeneği yanlıştır."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Tanınmış, bilim, sanat veya siyaset alanında başarı göstermiş kişilerin hayatının, başka bir yazar tarafından araştırılarak nesnel bir dille anlatıldığı yazı türüdür.\nBu cümlede tanımı yapılan metin türü aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Otobiyografi",
+        "B": "Biyografi",
+        "C": "Anı (Hatıra)",
+        "D": "Günlük (Günce)"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Bir kişinin hayatının BAŞKA bir yazar tarafından anlatıldığı eserlere biyografi (yaşam öyküsü) denir. Kişi kendi hayatını anlatsaydı otobiyografi olurdu."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Olayların yaşandığı gün, sıcağı sıcağına, tarih atılarak yazılmasıyla oluşan metin türü aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Anı",
+        "B": "Gezi Yazısı",
+        "C": "Günlük",
+        "D": "Biyografi"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Olayların yaşandığı gün, tarih atılarak günü gününe yazıldığı eserlere günlük (günce) adı verilir."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "İnsan dışındaki canlı veya cansız varlıkların konuşturulduğu, sonunda mutlaka bir ahlak dersi (öğüt) veren, şiir veya düz yazı şeklinde olabilen kısa öykülere ne ad verilir?",
+      "secenekler": {
+        "A": "Masal",
+        "B": "Destan",
+        "C": "Fabl",
+        "D": "Efsane"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Hayvanların veya bitkilerin kişileştirilip konuşturulduğu, ders verme amacı güden öykülere fabl denir."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Bir yazarın gezip gördüğü yerlerin tarihi, coğrafi, kültürel ve sosyal özelliklerini edebi bir dille anlattığı yazılardır. Yazar, sadece gördüklerini anlatmakla kalmaz, kendi yorumlarını da katar.\nBu parçada özellikleri verilen metin türü aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Anı",
+        "B": "Röportaj",
+        "C": "Gezi Yazısı",
+        "D": "Haber Metni"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Gezilip görülen yerlerin edebi bir dille, yazarın yorumları da katılarak anlatıldığı yazılara gezi yazısı (seyahatname) denir."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Toplumu ilgilendiren güncel bir olayın gazeteci tarafından 5N1K kuralına uyularak, tarafsız ve nesnel bir şekilde halka duyurulması amacıyla yazılan metinlere ne denir?",
+      "secenekler": {
+        "A": "Fıkra",
+        "B": "Röportaj",
+        "C": "Makale",
+        "D": "Haber Metni"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Güncel olayların 5N1K kuralına göre tarafsız bir şekilde aktarıldığı kısa metinlere haber metni denir."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Yaşanmış ya da yaşanması mümkün olan olayların yer, zaman ve kişilere bağlı olarak kurgulanıp anlatıldığı, romana göre daha kısa olan edebi tür aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Hikâye (Öykü)",
+        "B": "Tiyatro",
+        "C": "Deneme",
+        "D": "Masal"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Gerçek veya gerçeğe uygun olayların anlatıldığı, romana göre daha kısa ve kişi kadrosu daha dar olan türe hikâye (öykü) denir."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Söyleşi (sohbet) ile deneme türünü birbirinden ayıran en belirgin fark aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Denemenin bilgilendirici, söyleşinin ise kurgusal olması",
+        "B": "Söyleşide yazarın okuyucuyla konuşuyormuş gibi yazması, denemede ise yazarın kendi kendisiyle konuşuyormuş gibi yazması",
+        "C": "Denemenin olay yazısı, söyleşinin düşünce yazısı olması",
+        "D": "Denemede kanıtlama amacı varken söyleşide olmaması"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Denemede yazar 'kendi kendisiyle konuşuyormuş gibi', söyleşide (sohbette) ise yazar karşısında biri varmış da 'okuyucuyla konuşuyormuş gibi' yazar."
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde sayıların yazımı ile ilgili bir yanlışlık yapılmıştır?",
+    "secenekler": {
+      "A": "Bu binanın 5. katında oturuyoruz.",
+      "B": "Sınavda yirmi iki soru vardı.",
+      "C": "Yarışmayı 2'inci sırada tamamladı.",
+      "D": "On beş gün sonra tatil başlıyor."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Sıra sayıları ekle gösterilirken kesme işareti ve ekin kendisi kullanılır ancak '2' rakamı zaten ünlü ile bittiği için '-inci' değil '-nci' gelmelidir. Ayrıca hem nokta hem ek kullanılmaz. Doğrusu '2'nci' veya '2.' şeklindedir."
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde tarihlerin yazımıyla ilgili bir hata vardır?",
+    "secenekler": {
+      "A": "Atatürk 10 Kasım 1938'de vefat etti.",
+      "B": "Toplantı 15 haziran çarşamba günü yapılacak.",
+      "C": "29 Ekim 1923'te Cumhuriyet ilan edildi.",
+      "D": "Sınavımız 05.06.2023 tarihinde olacak."
+    },
+    "dogru_cevap": "B",
+    "cozum": "Belli bir tarihi belirten ay ve gün adları büyük harfle başlar. '15 Haziran Çarşamba' olmalıdır."
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Üleştirme sayılarının yazımı hangi seçenekte doğrudur?",
+    "secenekler": {
+      "A": "Öğrencilere 3'er kalem dağıtıldı.",
+      "B": "Öğrencilere üçer kalem dağıtıldı.",
+      "C": "Öğrencilere 3 er kalem dağıtıldı.",
+      "D": "Öğrencilere üç'er kalem dağıtıldı."
+    },
+    "dogru_cevap": "B",
+    "cozum": "Üleştirme sayıları her zaman yazıyla yazılır, rakamla yazılmaz."
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde yazım yanlışı vardır?",
+    "secenekler": {
+      "A": "Kardeşim henüz iki yaşında.",
+      "B": "Saat 15.30'da toplantı başlayacak.",
+      "C": "Oniki gün sonra döneceğini söyledi.",
+      "D": "Bin iki yüz seksen lira hesabı var."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Birden fazla kelimeden oluşan sayılar ayrı yazılır. 'On iki' olmalı."
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdakilerin hangisinde saatlerin yazımı yanlıştır?",
+    "secenekler": {
+      "A": "Film 20:00'da başlayacak.",
+      "B": "Sabah 08.15'te evden çıktım.",
+      "C": "Saat 13.00'te öğle yemeği yiyeceğiz.",
+      "D": "Tren 19.45'te hareket ediyor."
+    },
+    "dogru_cevap": "A",
+    "cozum": "Saat ve dakika arasına iki nokta değil, tek nokta konur. Ayrıca '20.00'da' değil, '20.00'de' olmalıdır."
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdakilerin hangisinde tarih yazımı doğrudur?",
+    "secenekler": {
+      "A": "23/Nisan/1920",
+      "B": "19.05.1919",
+      "C": "29-Ekim-1923",
+      "D": "10.Kasım.1938"
+    },
+    "dogru_cevap": "B",
+    "cozum": "Tarihlerde gün, ay ve yıl arasına nokta veya eğik çizgi konur ancak ay adı yazıyla yazılmışsa araya işaret konmaz."
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Çek, senet vb. ticari evraklarda sayılar nasıl yazılır?",
+    "secenekler": {
+      "A": "Ayrı ayrı yazılır.",
+      "B": "Rakamla yazılır.",
+      "C": "Bitişik yazılır.",
+      "D": "Büyük harflerle yazılır."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Çek, senet vb. ticari evraklarda araya sahte rakam veya yazı girmemesi için sayılar bitişik yazılır (Örn: Beşyüzelli)."
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde sayıların yazımı ile ilgili hata yapılmıştır?",
+    "secenekler": {
+      "A": "İki yüz elli lira ödedim.",
+      "B": "Yüzde elli indirim varmış.",
+      "C": "Pazardan 5'şer kilo elma aldık.",
+      "D": "Binada yedi kat var."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Üleştirme sayıları rakamla değil yazıyla yazılmalıdır. 'beşer' olmalı."
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde sıra sayı bildiren ek yanlış kullanılmıştır?",
+    "secenekler": {
+      "A": "Binanın 7'nci katına çıkacağız.",
+      "B": "Yarışmada 6. oldu.",
+      "C": "Türkiye 2.'inci Dünya Savaşı'na katılmadı.",
+      "D": "Sınıfta 15'inci sırada oturuyor."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Hem nokta hem de kesme işareti ile ek yan yana kullanılmaz."
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde yazım yanlışı vardır?",
+    "secenekler": {
+      "A": "Oyun oynayan beş çocuk gördüm.",
+      "B": "Kitabın yüz on üçüncü sayfasındayım.",
+      "C": "Tatilde onbeş gün köyde kalacağız.",
+      "D": "Yılın 365 günü çalışıyor."
+    },
+    "dogru_cevap": "C",
+    "cozum": "'on beş' şeklinde ayrı yazılmalıdır."
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "[Görselde dizek (beş çizgi) üzerinde sol anahtarı ve çeşitli müzik notaları çizilmiştir. Notaların etrafında uçuşan küçük kalpler vardır.]\n\nBu görselin temel konusu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Matematik",
+      "B": "Müzik sevgisi",
+      "C": "Doğa sesleri",
+      "D": "Resim sanatı"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "[Görselde cam bir akvaryumun içinde yüzen iki japon balığı, dibinde renkli çakıl taşları ve küçük bir su bitkisi yer almaktadır.]\n\nBu görsel, aşağıdaki canlı gruplarından hangisine örnek olabilir?",
+    "secenekler": {
+      "A": "Vahşi doğa hayvanları",
+      "B": "Kümes hayvanları",
+      "C": "Evcil hayvanlar",
+      "D": "Kutup hayvanları"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "[Görselde kırmızı renkli bir yangın söndürme tüpü duvarda asılı durmaktadır. Üzerinde 'Ateşe Doğru Püskürtün' talimatı yer alır.]\n\nBu aletin bulundurulmasının temel amacı nedir?",
+    "secenekler": {
+      "A": "Odayı ısıtmak",
+      "B": "Temizlik yapmak",
+      "C": "Olası bir yangına müdahale etmek",
+      "D": "Duvarı süslemek"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "[Görselde bir karınca yuvası ve karıncaların kendilerinden büyük buğday tanelerini yuvalarına taşıma çabası resmedilmiştir.]\n\nKarıncaların bu durumu hangi özelliğe vurgu yapar?",
+    "secenekler": {
+      "A": "Çalışkanlık ve yardımlaşma",
+      "B": "Tembellik ve umursamazlık",
+      "C": "Hız ve acelecilik",
+      "D": "Yalnızlık ve keder"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "[Görselde tekerlekli bir market sepetinin içi tamamen abur cubur, cips ve şekerlemelerle doldurulmuştur.]\n\nBu alışveriş sepetini hazırlayan kişi için aşağıdakilerden hangisi söylenebilir?",
+    "secenekler": {
+      "A": "Sağlıksız gıdalar tüketmektedir.",
+      "B": "Sadece temel ihtiyaçlarını almıştır.",
+      "C": "Sebze ağırlıklı beslenmektedir.",
+      "D": "Çok tutumlu bir insandır."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "[Görselde saplı bir büyüteç ile eski bir haritanın üzerindeki çok küçük yazılar okunmaya çalışılmaktadır.]\n\nBüyütecin bu görseldeki kullanım amacı nedir?",
+    "secenekler": {
+      "A": "Haritayı yakmak",
+      "B": "Yazıları daha büyük ve net görebilmek",
+      "C": "Pusula görevi görmek",
+      "D": "Uzak mesafeleri yakınlaştırmak"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "[Görselde beyaz bir güvercin, gagasında yeşil bir zeytin dalı tutarak gökyüzünde süzülmektedir.]\n\nBu simge dünya genelinde neyi ifade etmek için kullanılır?",
+    "secenekler": {
+      "A": "Savaş",
+      "B": "Eğitim",
+      "C": "Barış",
+      "D": "Sağlık"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "[Görselde ahşap çerçeveli bir kum saati çizilmiştir. Üst camdaki kumların neredeyse tamamı alt cama dökülmüş, çok az kum kalmıştır.]\n\nBu görselin ifade ettiği anlam aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Zamanın giderek tükenmekte olduğu",
+      "B": "İşlerin yeni başladığı",
+      "C": "Zamanın hiç geçmediği",
+      "D": "Çöl ortamının sıcaklığı"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "[Görselde eski ve ucu yırtılmış bir ayakkabının üzerine, dikkatli bir şekilde deri bir yama dikilmiştir.]\n\nBu görseldeki davranış aşağıdakilerden hangisiyle açıklanabilir?",
+    "secenekler": {
+      "A": "İsraf etmekle",
+      "B": "Tasarruflu olmakla ve eşyaları değerlendirmekle",
+      "C": "Modayı yakından takip etmekle",
+      "D": "Eşyalara zarar vermekle"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "[Görselde bir çocuk ağacın gövdesine yüzünü dönmüş, kollarını kavuşturarak sayarken arkasında üç çocuk ağaçların arkasına saklanmaya çalışmaktadır.]\n\nGörselde oynanan geleneksel çocuk oyunu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Seksek",
+      "B": "Yakan top",
+      "C": "Saklambaç",
+      "D": "Birdirbir"
+    },
+    "dogru_cevap": "C"
+  }
+]

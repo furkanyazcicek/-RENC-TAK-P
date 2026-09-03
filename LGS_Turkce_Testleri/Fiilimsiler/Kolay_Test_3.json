@@ -1,0 +1,82 @@
+[
+  {
+    "soru": "\"Uzaya gitmek, insanlık için her zaman büyük bir hedefti.\" cümlesinde kullanılan fiilimsinin türü aşağıdakilerden hangisidir?",
+    "A": "Sıfat-fiil",
+    "B": "İsim-fiil",
+    "C": "Zarf-fiil",
+    "D": "Çekimli fiil",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde sıfat-fiil kullanılmıştır?",
+    "A": "Gökbilimciler gökyüzünü detaylıca inceliyor.",
+    "B": "Roket fırlatılmadan önce tüm hazırlıklar tamamlandı.",
+    "C": "Astronot olmak için çok çalışması gerekiyordu.",
+    "D": "Dünya'ya yaklaşan meteor herkesi heyecanlandırdı.",
+    "cevap": "D"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil kullanılmıştır?",
+    "A": "Teleskopla yıldızlara bakarak yeni galaksiler arıyorlar.",
+    "B": "Uzay istasyonundaki yaşam şartları oldukça zordur.",
+    "C": "Bilim insanları kara delikleri anlamaya çalışıyor.",
+    "D": "Mars'a gönderilen uzay aracı başarıyla iniş yaptı.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde fiilimsi yoktur?",
+    "A": "Ay'ın yüzeyindeki kraterleri görmek muazzamdı.",
+    "B": "Uzay yürüyüşü yapan astronotlar çok dikkatliydi.",
+    "C": "Dünya, Güneş'in etrafındaki dönüşünü bir yılda tamamlar.",
+    "D": "Gezegenleri keşfedip yeni bilgiler edindiler.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde diğerlerinden farklı türde bir fiilimsi kullanılmıştır?",
+    "A": "Galaksileri izlemek ona büyük keyif veriyordu.",
+    "B": "Bilimkurgu romanları okumak ufkunu genişletti.",
+    "C": "Roketin fırlatılış anını saniye saniye kaydettiler.",
+    "D": "Uyduyu yörüngeye yerleştirip geri döndüler.",
+    "cevap": "D"
+  },
+  {
+    "soru": "Bazı sözcükler fiilimsi eki almasına rağmen kalıplaşarak bir varlığın adı olur. Aşağıdaki cümlelerin hangisinde bu duruma örnek vardır?",
+    "A": "Uzay aracı hızla atmosfere giriş yaptı.",
+    "B": "Yeni keşfedilen yıldıza isim vermek istiyorlar.",
+    "C": "Uzay kampında çocuklar roket uçurtma uçurdular.",
+    "D": "Astronotların giysileri özel olarak tasarlanır.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde adlaşmış sıfat-fiil kullanılmıştır?",
+    "A": "Ay'a ayak basan ilk insan Neil Armstrong'dur.",
+    "B": "Uzay hakkında bilinenler henüz buz dağının görünen kısmıdır.",
+    "C": "Dönen pervaneler roketin kalkışını destekledi.",
+    "D": "Gökyüzüne bakınca milyonlarca yıldız görebilirsin.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil cümleye durum anlamı katmıştır?",
+    "A": "Güneş tutulması olurken hava aniden karardı.",
+    "B": "Bilim insanları durmaksızın uzayın sırlarını araştırıyor.",
+    "C": "Teleskobu kurunca bütün gezegenleri gördük.",
+    "D": "Uzay mekiği Dünya'ya dönmeden yakıt ikmali yaptı.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde isim-fiil eklerinden biri (-ma, -ış, -mak) kullanılmamıştır?",
+    "A": "Göktaşının dünyaya çarpma ihtimali hesaplandı.",
+    "B": "Yıldızların kayışını izlemek için tepeye çıktık.",
+    "C": "Uluslararası Uzay İstasyonu'nda yaşamak çok ilginç.",
+    "D": "Gezegenler hakkında yeni belgeseller yayımlandı.",
+    "cevap": "D"
+  },
+  {
+    "soru": "\"Teleskopla bakarken aniden kayan yıldızı görmek onu çok heyecanlandırdı.\" cümlesinde toplam kaç tane fiilimsi vardır?",
+    "A": "1",
+    "B": "2",
+    "C": "3",
+    "D": "4",
+    "cevap": "C"
+  }
+]

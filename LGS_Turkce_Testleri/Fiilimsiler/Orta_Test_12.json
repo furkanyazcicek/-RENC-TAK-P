@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Gök bilimciler, yeni gezegenleri keşfetmek için durmaksızın uzayı gözlemliyorlar. Bu cümlede yer alan fiilimsiler aşağıdakilerin hangisinde doğru verilmiştir?",
+    "secenekler": {
+      "A": "gözlemliyorlar - yeni",
+      "B": "gezegenleri - keşfetmek",
+      "C": "gök bilimciler - durmaksızın",
+      "D": "keşfetmek - durmaksızın"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Teknolojinin gelişmesiyle yapay zekâ uygulamaları, hayatımızın vazgeçilmez bir parçası oldu. Altı çizili 'vazgeçilmez' sözcüğü ile aynı türde fiilimsi aşağıdaki cümlelerin hangisinde kullanılmıştır?",
+    "secenekler": {
+      "A": "Bilgisayarın ekranı aniden kapanınca hepimiz telaşlandık.",
+      "B": "Uzay araçlarının Mars'a inişi tüm dünyada canlı yayınlandı.",
+      "C": "Görünmez kaza dedikleri bu olsa gerek, robot aniden durdu.",
+      "D": "Kodonları yazmak için saatlerce masa başında bekledi."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Roketin fırlatılış (I) anını izlerken (II) kalbimin atışını (III) duyabiliyordum. Astronotlar, daha önce hiç ayak basılmamış (IV) bölgeleri keşfedecekler. Bu parçadaki numaralanmış sözcüklerden hangisi farklı türde bir fiilimsidir?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "'-dık / -dik' eki ile türetilen sıfat-fiillerden sonra ünlü ile başlayan bir ek gelirse, 'k' ünsüzü yumuşayarak 'ğ'ye dönüşebilir. Aşağıdakilerin hangisinde bu kurala örnek olabilecek bir sıfat-fiil vardır?",
+    "secenekler": {
+      "A": "Laboratuvarda yaptığımız deney sonunda başarılı oldu.",
+      "B": "Yazılım güncellemesini tamamladık ve sistemi açtık.",
+      "C": "Teleskopla gözlemledik yıldızları bütün gece.",
+      "D": "Bu cihazın kullanım kılavuzunu okuduktan sonra çalıştırın."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde zarf-fiil kullanılmıştır?",
+    "secenekler": {
+      "A": "Bilgisayardaki verileri yedeklemeyi sakın unutma.",
+      "B": "Uydu fırlatılalı tam on yıl olmuştu.",
+      "C": "Bu robotlar insan hayatını epey kolaylaştıracak.",
+      "D": "Geçmişten gelen bir sinyal tespit edildi."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Zarf-fiiller cümleye farklı anlamlar (zaman, durum, sebep vb.) katabilir. 'İnternet bağlantısı koptuğunda veri aktarımı durdu.' cümlesindeki zarf-fiilin cümleye kattığı anlam aşağıdakilerin hangisinde vardır?",
+    "secenekler": {
+      "A": "Sistem hata verince hemen teknik servisi aradım.",
+      "B": "Sorunları konuşarak çözmemiz gerektiğine inanıyorum.",
+      "C": "Robot, engelleri aşarak hedefine ulaşmayı başardı.",
+      "D": "Durmaksızın çalışan motor aşırı derecede ısınmıştı."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdakilerin hangisinde isim-fiil bir isim tamlamasında tamlayan görevindedir?",
+    "secenekler": {
+      "A": "Uzay gemisinin tasarımı aylar süren bir çalışmaydı.",
+      "B": "Kod yazmanın zorluklarını deneyimleyerek öğrendi.",
+      "C": "Yeni gezegenler bulmak herkesin hayalidir.",
+      "D": "Deney tüplerini temizlemeyi unuttuğu için uyarı aldı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "'Akıllı telefonlar, günümüzde haberleşmeyi sağlayan en önemli araçlardır.' cümlesindeki fiilimsinin türce özdeşi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Verileri işlemek için yeni bir algoritma geliştirildi.",
+      "B": "Uzay istasyonunda yaşamak fiziksel olarak çok zorludur.",
+      "C": "Gökyüzüne bakan herkes yıldızların büyüleyici yapısını görür.",
+      "D": "Astronotlar uzay mekiğine binip yola çıktılar."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Bazı sözcükler isim-fiil eki aldığı hâlde zamanla eylem anlamını yitirip kalıcı isim olurlar. Aşağıdakilerin hangisinde bu açıklamaya uygun bir örnek yoktur?",
+    "secenekler": {
+      "A": "Bu bilgisayarın donanımı çok güçlü.",
+      "B": "Kışın en çok sevdiğim yiyecek dondurmadır.",
+      "C": "Uzay çöpünü temizlemek için yeni projeler üretiliyor.",
+      "D": "Annemin yaptığı dolma harika olmuştu."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde hem adlaşmış sıfat-fiil hem de zarf-fiil kullanılmıştır?",
+    "secenekler": {
+      "A": "Bekleyenler sırayla içeriye alınmaya başlandı.",
+      "B": "Çözülen soruları kontrol edip notlarını aldı.",
+      "C": "Teleskopla gözlem yaparken yeni bir yıldız keşfetti.",
+      "D": "Bilinenleri unutup tamamen yeni bir sistem tasarlamalıyız."
+    },
+    "dogru_cevap": "D"
+  }
+]

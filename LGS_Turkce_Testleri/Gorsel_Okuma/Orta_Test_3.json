@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Bir okuldaki öğrencilerin kitap okuma alışkanlıklarını gösteren sütun grafiğinde roman %45, hikâye %30, şiir %15 ve deneme %10 olarak verilmiştir. Grafiğe göre aşağıdakilerden hangisine ulaşılabilir?",
+    "A": "Öğrencilerin çoğu şiir okumayı tercih etmektedir.",
+    "B": "Roman okuma oranı, hikâye ve deneme oranlarının toplamından fazladır.",
+    "C": "Şiir okuyanların sayısı deneme okuyanlardan azdır.",
+    "D": "Hikâye en çok tercih edilen edebi türdür.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "LGS hazırlık öğrencisi Ali'nin haftalık çalışma çizelgesinde; Pazartesi Türkçe, Salı Matematik, Çarşamba Fen Bilimleri, Perşembe İnkılap Tarihi, Cuma yine Türkçe çalıştığı görülmektedir. Hafta sonu ise deneme sınavı çözmektedir. Bu çizelgeye göre Ali için hangisi söylenemez?",
+    "A": "Haftanın iki günü Türkçe çalışmaktadır.",
+    "B": "Hafta sonları konu çalışması yapmamaktadır.",
+    "C": "Fen Bilimleri dersine Matematik'ten daha çok zaman ayırmaktadır.",
+    "D": "Cuma günü sayısal bir ders çalışmamaktadır.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Bir halk kütüphanesinin yıllık kullanım oranları tablosuna göre kütüphaneyi en çok lise öğrencileri, en az ise ilkokul öğrencileri kullanmıştır. Üniversite öğrencilerinin kullanım oranı emeklilerden fazladır. Buna göre aşağıdakilerden hangisi kesinlikle doğrudur?",
+    "A": "Kütüphanede sadece ders çalışılmaktadır.",
+    "B": "İlkokul öğrencileri kitap okumayı sevmemektedir.",
+    "C": "Emekliler kütüphaneyi hiç kullanmamıştır.",
+    "D": "Lise öğrencileri diğer tüm gruplardan daha çok kütüphaneye gitmiştir.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Dünya haritası üzerinde en çok öğrenilen yabancı diller renklendirilmiştir. İngilizce kırmızı, İspanyolca mavi, Fransızca yeşil renkle gösterilmiştir. Kırmızı renk haritanın tamamına yakınında varken diğerleri belirli bölgelerdedir. Haritadan çıkarılacak sonuç nedir?",
+    "A": "İngilizce, küresel çapta en yaygın öğrenilen yabancı dildir.",
+    "B": "İspanyolca öğrenenlerin sayısı her geçen yıl azalmaktadır.",
+    "C": "Fransızca sadece Avrupa kıtasında öğrenilmektedir.",
+    "D": "En zor öğrenilen dil yeşil renkle gösterilmiştir.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Okul kulüplerine katılımı gösteren pasta grafiğinde %35 Spor, %25 Sanat, %25 Bilim, %15 Çevre kulüpleri yer almaktadır. Grafiğe göre aşağıdaki yargılardan hangisi doğrudur?",
+    "A": "Öğrencilerin yarısından fazlası bilim kulübündedir.",
+    "B": "Sanat ve Bilim kulüplerine katılım oranları eşittir.",
+    "C": "Spor kulübüne katılım her sene artmaktadır.",
+    "D": "Çevre kulübüne kimse ilgi göstermemiştir.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Uzaktan eğitim sürecinde öğrencilerin kullandıkları teknolojik aletlerin infografiğinde: Tablet (%40), Bilgisayar (%35), Akıllı Telefon (%25) şeklinde bir dağılım vardır. İnfografiğe göre en doğru ifade hangisidir?",
+    "A": "Öğrenciler uzaktan eğitimde en çok tableti tercih etmiştir.",
+    "B": "Akıllı telefon eğitim için en uygun araçtır.",
+    "C": "Bilgisayar kullanan öğrenci sayısı her okulda aynıdır.",
+    "D": "Öğrencilerin %50'den fazlası sadece bilgisayar kullanmıştır.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Proje ödevleri konu dağılım grafiğinde; Yenilenebilir Enerji (40 kişi), Kültürel Miras (30 kişi), Geri Dönüşüm (20 kişi), Uzay Araştırmaları (10 kişi) olarak belirtilmiştir. Grafikten hareketle aşağıdakilerden hangisine ulaşılır?",
+    "A": "Uzay araştırmaları projesi alanlar en yüksek notu almıştır.",
+    "B": "Kültürel miras, geri dönüşümden daha az tercih edilmiştir.",
+    "C": "Yenilenebilir enerji, en çok tercih edilen proje konusudur.",
+    "D": "Geri dönüşüm projesi alanların sayısı, uzay araştırmalarından azdır.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Okul başarısını etkileyen faktörler şemasında okların kalınlığı etkinin büyüklüğünü göstermektedir. 'Düzenli Çalışma'dan çıkan ok en kalın, 'Şans'tan çıkan ok en incedir. Şemaya göre asıl anlatılmak istenen nedir?",
+    "A": "Şans faktörü okul başarısında hiç etkili değildir.",
+    "B": "Çok çalışan öğrenciler her zaman şanslıdır.",
+    "C": "Başarılı olmak için sadece zeki olmak yeterlidir.",
+    "D": "Okul başarısında en belirleyici unsur düzenli çalışmaktır.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Bir ders çalışma odasının krokisinde; çalışma masası pencere kenarında, kitaplık masanın sağında, yatak ise kapının hemen karşısında yer almaktadır. Krokideki yerleşime göre hangisi doğrudur?",
+    "A": "Yatak, çalışma masasının hemen solundadır.",
+    "B": "Kitaplık, çalışma masasının sağ tarafına yerleştirilmiştir.",
+    "C": "Pencere, kapının hemen yanındadır.",
+    "D": "Odadaki en büyük eşya kitaplıktır.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Bir okulun son üç yılındaki mezun sayıları tablosuna göre: 2021 (120 kişi), 2022 (150 kişi), 2023 (130 kişi) mezun vermiştir. Buna göre aşağıdakilerden hangisi yanlıştır?",
+    "A": "En fazla mezun 2022 yılında verilmiştir.",
+    "B": "2023 yılındaki mezun sayısı 2021 yılından fazladır.",
+    "C": "Mezun sayısı her yıl sürekli olarak artış göstermiştir.",
+    "D": "2021 yılı, verilen yıllar arasında en az mezun verilen yıldır.",
+    "cevap": "C"
+  }
+]

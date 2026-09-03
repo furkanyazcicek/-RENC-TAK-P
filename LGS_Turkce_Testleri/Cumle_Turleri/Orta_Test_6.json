@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdakilerden hangisi yüklemin türüne göre fiil cümlesidir?",
+    "A": "Güneş sistemimizin bilinen en büyük gezegeni Jüpiter'dir.",
+    "B": "Mars'ta geçmişten kalan yaşam izleri aranıyor.",
+    "C": "Ay, Dünya'nın sahip olduğu tek doğal uydusudur.",
+    "D": "Yıldızlar gece gökyüzünde ışıl ışıl ve çok parlaktı.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi yüklemin yerine göre devrik cümledir?",
+    "A": "Sonsuz, karanlık ve gizemli bir boşluktur uzay.",
+    "B": "Astronotlar aylar süren yolculukla uzay istasyonuna ulaştı.",
+    "C": "Dev teleskopla milyarlarca ışık yılı uzaklıktaki yıldızları gözlemledik.",
+    "D": "Karadelikler, etrafındaki her şeyi ve ışığı bile yutabilir.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdakilerden hangisi yapısına göre içinde fiilimsi bulunan cümledir?",
+    "A": "Gezegenler Güneş'in etrafında belirli bir yörüngede döner.",
+    "B": "Ağustos ayında beklenen meteor yağmuru dün gece başladı.",
+    "C": "Uzaya çıkan ilk insan Sovyet kozmonot Yuri Gagarin'dir.",
+    "D": "Yeni geliştirilen teleskop farklı bir galakside yeni bir yıldız keşfetti.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdakilerden hangisi birden çok yüklemli (sıralı) cümledir?",
+    "A": "Astronot olmak için çok çalışmalı ve eğitimden geçmelisin.",
+    "B": "Ay'a ayak basmak insanlık tarihi için büyük bir başarıdır.",
+    "C": "Yakın gelecekte Mars'a insanlı uçuşlar yapılması planlanıyor.",
+    "D": "Geri sayım bitti roket fırlatıldı, uzay aracı yörüngeye sorunsuz oturdu.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdakilerden hangisi bağlacı olan (bağlı) cümledir?",
+    "A": "Uzay araştırmaları teknolojinin gelişmesiyle hız kesmeden devam ediyor.",
+    "B": "Güneş tutulması, meydanda toplanan izleyenleri adeta büyüledi.",
+    "C": "Teleskoptan uzun süre baktım ama o sönük gezegeni göremedim.",
+    "D": "Yıldızların ve gök cisimlerinin yapısını araştıran bilime astronomi denir.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdakilerden hangisi anlamına göre olumsuz bir cümledir?",
+    "A": "Kara deliklerin gizemi günümüz fiziğiyle çözülmeye çalışılıyor.",
+    "B": "Uzaylıların varlığı bugüne kadar kesin olarak kanıtlanamadı.",
+    "C": "Yeni haberleşme uydumuz başarılı bir törenle uzaya gönderildi.",
+    "D": "Galaksimizde bizim güneşimiz gibi milyarlarca yıldız var.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdakilerden hangisi kurallı bir isim cümlesidir?",
+    "A": "Yıldızlar gaz bulutlarından doğar, yaşar ve sonunda ölür.",
+    "B": "Bilim insanı, güçlü teleskopla gezegenlerin hareketlerini inceledi.",
+    "C": "Görevini tamamlayan uzay mekiği dünyaya başarılı bir iniş yaptı.",
+    "D": "Uçsuz bucaksız Samanyolu galaksisi, evrendeki bizim evimizdir.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi eksiltili (tamamlanmamış) cümledir?",
+    "A": "Geceleri gökyüzünde pırlanta gibi parlayan binlerce yıldız...",
+    "B": "Astronotlar yerçekimsiz ortamda kas kaybı yaşadıkları için zorlanıyor.",
+    "C": "İçinde bulunduğumuz Güneş sistemimizde tam sekiz gezegen bulunur.",
+    "D": "Uzay araştırmaları ülkelerin bütçeleri için çok maliyetlidir.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi bir soru cümlesidir?",
+    "A": "Güneş'in yüzey sıcaklığı yaklaşık olarak kaç derecedir?",
+    "B": "Hangi gezegenin etrafında gazdan halkaları olduğunu biliyorum.",
+    "C": "Neden Mars'a gidip orada koloniler kurmak istediğimizi anlattım.",
+    "D": "Geniş evrende bizden başka hayat olup olmadığını her zaman merak ediyoruz.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi biçimce olumlu, anlamca olumsuzdur?",
+    "A": "Uzayda oksijen olmadığı için korumasız nefes alınmaz.",
+    "B": "Kütle çekimi çok güçlü olan kara delikler her şeyi yutar.",
+    "C": "Astronotların aldığı zorlu hayatta kalma eğitimi kolay değildir.",
+    "D": "Bu kadar uzak bir yıldıza mevcut teknolojiyle gidilir mi hiç?",
+    "dogru_cevap": "D"
+  }
+]

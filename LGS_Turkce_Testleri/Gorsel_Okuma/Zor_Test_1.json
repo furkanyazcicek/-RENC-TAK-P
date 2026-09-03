@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Ali, Buse, Cem, Derya, Efe ve Funda adlı kişiler; K, L, M marka araçlardan birini almıştır. Araçlar Kırmızı veya Beyaz renklidir.\n- Her markadan tam ikişer kişi araç almıştır.\n- Sadece 2 kişi beyaz renk araç almıştır ve bu iki kişi aynı marka aracı almamıştır.\n- Ali ve Efe aynı marka aracı almışlardır.\n- Buse ve Funda farklı marka araç almıştır fakat araçlarının renkleri aynıdır.\n- Cem beyaz renkli M marka araç almıştır.\nBuna göre aşağıdaki bilgilerden hangisi kesinlikle doğrudur?",
+    "secenekler": {
+      "A": "Buse ve Funda beyaz renk araç almışlardır.",
+      "B": "Derya kırmızı renkli bir araç almıştır.",
+      "C": "Cem ve Derya aynı marka araç almışlardır.",
+      "D": "Buse ve Funda kırmızı renk araç almışlardır."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Üç farklı bitkinin (X, Y, Z) özellikleri tabloda verilmiştir:\n- X bitkisi: Mart-Nisan ayları arasında en çok büyür, gelişmek için çok su ister.\n- Y bitkisi: Mayıs-Haziran ayları arasında en çok büyür, gelişmek için az su ister.\n- Z bitkisi: Temmuz-Ağustos ayları arasında en çok büyür, gelişmek için orta derecede su ister.\nİlkbahar aylarında şiddetli kuraklık yaşanan ancak yaz aylarında düzenli sağanak yağış alan bir bölgeye hangi bitkilerin dikilmesi en uygundur?",
+    "secenekler": {
+      "A": "Sadece X",
+      "B": "Sadece Z",
+      "C": "X ve Y",
+      "D": "Y ve Z"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Bir hastanede Aslı, Banu, Can, Doğa ve Ege adlı beş doktor hafta içi günlerde (Pazartesi-Cuma) birer gün nöbet tutmaktadır.\n- Aslı'nın nöbeti Can'ın nöbetinden hemen sonradır.\n- Banu, nöbetini Salı ya da Perşembe günü tutmaktadır.\n- Ege, nöbetini haftanın ilk ya da son günü tutmamaktadır.\n- Doğa'nın nöbet günü, Banu'nun nöbet gününden öncedir.\nBuna göre Ege hangi gün nöbet tutmaktadır?",
+    "secenekler": {
+      "A": "Pazartesi",
+      "B": "Salı",
+      "C": "Çarşamba",
+      "D": "Perşembe"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Bir okulda 120 öğrencinin katıldığı bir kültür-sanat anketinde öğrencilerin %50'si Tiyatro, %25'i Sinema, %25'i Konser etkinliğini tercih etmiştir.\nBu verilerin 'öğrenci sayısını' gösteren bir sütun grafiğine aktarılmış hâli aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Tiyatro sütunu 60, Sinema sütunu 30, Konser sütunu 30 seviyesindedir.",
+      "B": "Tiyatro sütunu 50, Sinema sütunu 25, Konser sütunu 25 seviyesindedir.",
+      "C": "Tiyatro sütunu 60, Sinema sütunu 40, Konser sütunu 20 seviyesindedir.",
+      "D": "Tiyatro sütunu 120, Sinema sütunu 60, Konser sütunu 30 seviyesindedir."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aykut, Burçin, Ceyhun ve Demet bir restoranda Pizza, Makarna, Köfte veya Tavuk yemişlerdir. İçecek olarak Su, Ayran, Kola veya Meyve Suyu içmişlerdir. (Her biri farklı yemek ve içecek sipariş etmiştir.)\n- Aykut Makarna yemiş ancak Su içmemiştir.\n- Burçin Köfte yememiş, Ayran içmiştir.\n- Köfte yiyen kişi Kola içmiştir.\n- Ceyhun Pizza yemiştir.\nBuna göre Demet'in yediği yemek ve içtiği içecek hangisinde doğru verilmiştir?",
+    "secenekler": {
+      "A": "Makarna - Meyve Suyu",
+      "B": "Köfte - Kola",
+      "C": "Pizza - Su",
+      "D": "Tavuk - Ayran"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Bir kargo takip akış şemasında şu adımlar vardır:\nSipariş Alındı -> Ürün Hazırlanıyor -> Kargoya Verildi -> (Eğer adres doğruysa) Dağıtıma Çıktı -> Teslim Edildi.\n(Eğer adres yanlışsa) Şubeye Geri Döndü -> Müşteri Aranıyor -> Teslim Edildi.\nAkış şemasına göre kargosu 'Şubeye Geri Döndü' durumunda olan bir müşteri için aşağıdakilerden hangisi kesinlikle söylenebilir?",
+    "secenekler": {
+      "A": "Kargo ücretini ödememiştir.",
+      "B": "Kargo şirketi ürünü kaybetmiştir.",
+      "C": "Adres bilgisi hatalı girilmiş veya kurye tarafından bulunamamıştır.",
+      "D": "Ürün stoklarda kalmamıştır."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Bir apartmanın zemin katında kapıcı dairesi, üstündeki 4 katta ise (1, 2, 3, 4) her katta tek daire olmak üzere toplam 4 daire vardır. Zeynep, Yasin, Veli ve Uğur bu dairelerde oturmaktadır.\n- Zeynep'in oturduğu katın numarası çift sayıdır.\n- Veli ve Uğur'un oturduğu katlar arasında sadece bir kat vardır.\n- Yasin en üst katta oturmamaktadır.\nBu bilgilere göre Yasin kaçıncı katta oturmaktadır?",
+    "secenekler": {
+      "A": "1",
+      "B": "2",
+      "C": "3",
+      "D": "4"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Bir sosyal sorumluluk afişinde, zifiri karanlık bir odada tek bir mum yanmakta ve mumun hemen altında 'Karanlığa küfredeceğine bir mum yak!' sözü yer almaktadır.\nBu görsel ve metin ilişkisinden çıkarılamayacak, ancak afişin temel mesajı olan en kapsamlı yargı nedir? (Afişin vermek istediği asıl mesaj sorulmaktadır.)",
+    "secenekler": {
+      "A": "Elektrik kesintilerine karşı her zaman önlem alınmalıdır.",
+      "B": "Karamsarlığa kapılıp şikayet etmek yerine, çözüm üretmek için küçük de olsa bir adım atılmalıdır.",
+      "C": "Karanlık ortamlar insan psikolojisini olumsuz yönde etkilemektedir.",
+      "D": "Çevremizi aydınlatmak için teknolojik araçlardan ziyade doğal kaynakları kullanmalıyız."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Bir yarışmaya katılan A, B, C, D, E ve F isimli yarışmacıların performans puanlarına göre sıralamaları (1'den 6'ya doğru) şu şekildedir:\n- A, C'den daha yüksek ancak F'den daha düşük puan almıştır.\n- E, yarışmayı D'nin hemen ardında bitirmiştir.\n- B yarışmada 2. olmuştur.\n- C sonuncu (6.) olmamıştır.\nBuna göre yarışmayı 1. bitiren yarışmacı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "F",
+      "B": "D",
+      "C": "A",
+      "D": "C"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Bir kütüphanenin yıllık rapor infografiğinde şu bilgilere yer verilmiştir:\n- Yılın en çok okunan yazarı X kişisidir.\n- Kütüphaneye en çok bağışlanan kitap türü 'Tarih' olmuştur.\n- Ödünç alınan kitapların %60'ı edebiyat, %40'ı bilim-teknik alanındadır.\n- Kütüphane üyelerinin çoğunluğu 18-25 yaş aralığındadır.\nBuna göre bu infografikten aşağıdakilerden hangisine kesinlikle ulaşılamaz?",
+    "secenekler": {
+      "A": "X yazarı edebiyat alanında eserler vermiştir.",
+      "B": "En fazla ödünç alınan kitap türü edebiyattır.",
+      "C": "Genç yetişkinler kütüphaneye diğer yaş gruplarına göre daha fazla ilgi göstermiştir.",
+      "D": "Tarih kitapları, bağışlanan kitaplar arasında ilk sıradadır."
+    },
+    "dogru_cevap": "A"
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "[Görselde siyah ve beyaz karelerden oluşan bir satranç tahtası üzerinde şah, vezir ve piyon taşları bulunmaktadır. İki kişi dikkatlice düşünerek hamle yapmaktadır.]\n\nGörsele göre bu kişilerle ilgili aşağıdakilerden hangisi söylenebilir?",
+    "secenekler": {
+      "A": "Şans oyunları oynamaktadırlar.",
+      "B": "Açık havada spor yapmaktadırlar.",
+      "C": "Zeka gerektiren bir oyun oynamaktadırlar.",
+      "D": "Müzikle ilgilenmektedirler."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "[Görselde beyaz bir çantanın üzerinde kırmızı bir hilal bulunmaktadır. Çantanın içinden sargı bezi, yara bandı ve tentürdiyot görünmektedir.]\n\nBu görselde yer alan nesne aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Sırt çantası",
+      "B": "Seyahat valizi",
+      "C": "Okul çantası",
+      "D": "İlk yardım çantası"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "[Görselde bir buzdolabının üzerinde, A harfinden G harfine kadar sıralanmış enerji sınıfı etiketi bulunmaktadır. Etikette A sınıfı yeşil renkle vurgulanmıştır.]\n\nBu görsele bakarak yeşil renkle vurgulanan 'A' sınıfı neyi ifade eder?",
+    "secenekler": {
+      "A": "Buzdolabının en az enerji harcayan sınıfta olduğunu",
+      "B": "Buzdolabının çok ses çıkardığını",
+      "C": "Cihazın sadece elektrikle çalışmadığını",
+      "D": "Cihazın kısa sürede bozulabileceğini"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "[Görselde bir akıllı telefon ekranında 'Fotoğraflar', 'Harita', 'Mesajlar' ve 'Müzik' yazılı simgeler bulunmaktadır. Ekranda 'Pil: %10' uyarısı belirmektedir.]\n\nBu görsele göre telefonun durumuyla ilgili aşağıdakilerden hangisi kesin olarak söylenir?",
+    "secenekler": {
+      "A": "Telefonun internet bağlantısı yoktur.",
+      "B": "Telefonun şarjı azalmıştır.",
+      "C": "Telefonda en çok müzik dinlenmektedir.",
+      "D": "Telefonun hafızası dolmuştur."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "[Görselde mavi zemin üzerinde beyaz bir bisiklet simgesi olan yuvarlak bir tabela görülmektedir. Arka planda kask takmış bir çocuk bisiklet sürmektedir.]\n\nBu tabelanın bulunduğu yol ile ilgili aşağıdakilerden hangisi doğrudur?",
+    "secenekler": {
+      "A": "Araç trafiğine açık ana yoldur.",
+      "B": "Sadece yayaların kullanımına ayrılmıştır.",
+      "C": "Bisiklet sürücüleri için ayrılmış özel yoldur.",
+      "D": "Motorsiklet sürücülerinin eğitim alanıdır."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "[Görselde bir poster üzerinde diş fırçalamanın adımları sıralanmıştır: 1. Fırçaya nohut büyüklüğünde macun sür. 2. Dişlerini yukarıdan aşağıya fırçala. 3. Ağzını çalkala.]\n\nBu görselin amacı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Diş macunu satmak",
+      "B": "Diş ağrılarını tedavi etmek",
+      "C": "En iyi diş fırçası markasını tanıtmak",
+      "D": "Doğru diş fırçalama tekniğini göstermek"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "[Görselde açık bir sırt çantasının içinde el feneri, düdük, bir şişe su, konserve yiyecek ve battaniye görülmektedir. Çantanın üzerinde 'Hazır Ol' yazmaktadır.]\n\nGörselde içeriği verilen bu çanta aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Deprem çantası",
+      "B": "Okul çantası",
+      "C": "Spor çantası",
+      "D": "Piknik sepeti"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "[Görselde bir otobüsün içi çizilmiştir. Genç bir yolcu, elinde baston olan yaşlı bir amcaya yer vermektedir. Yukarıda 'Büyüklere Saygı' afişi asılıdır.]\n\nGörselde anlatılan asıl erdem aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Adalet",
+      "B": "Saygı",
+      "C": "Dürüstlük",
+      "D": "Çalışkanlık"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "[Görselde yuvarlak bir duvar saati vardır. Saatin üzerinde akrep 3'ü, yelkovan ise 12'yi göstermektedir. Saatin yanında 'Vakit nakittir' yazmaktadır.]\n\nBu görselde zamanla ilgili vurgulanmak istenen nedir?",
+    "secenekler": {
+      "A": "Günlerin çok yavaş geçtiği",
+      "B": "Sadece gündüz saatlerinin önemli olduğu",
+      "C": "Zamanın çok değerli bir kavram olduğu",
+      "D": "Saatlerin her zaman doğruyu göstermediği"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "[Görselde bir göz doktoru muayenehanesinde harflerin büyükten küçüğe sıralandığı bir okuma panosu yer almaktadır. Bir çocuk tek gözünü kapatmış harfleri okumaya çalışmaktadır.]\n\nBu görselden yola çıkarak çocuk hakkında ne söylenebilir?",
+    "secenekler": {
+      "A": "Göz muayenesi olmaktadır.",
+      "B": "Okuma yazma öğrenmektedir.",
+      "C": "Ezber yapmaktadır.",
+      "D": "Şarkı söylemektedir."
+    },
+    "dogru_cevap": "A"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Ünlü yazar, son romanında Anadolu insanının yaşam mücadelesini etkileyici bir dille anlatmış.\" cümlesinin yer tamlayıcısı (dolaylı tümleç) hangisidir?",
+    "A": "son romanında",
+    "B": "Anadolu insanının yaşam mücadelesini",
+    "C": "etkileyici bir dille",
+    "D": "Ünlü yazar",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "\"Kitaplar, zihnimizin sınırlarını genişleten en sadık dostlarımızdır.\" cümlesi hangi ögelerden oluşmuştur?",
+    "A": "Özne - Nesne - Yüklem",
+    "B": "Özne - Yüklem",
+    "C": "Belirtisiz Nesne - Yüklem",
+    "D": "Özne - Zarf Tümleci - Yüklem",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde \"ne zaman\" sorusunun cevabı yoktur?",
+    "A": "Akşamları odamda şiir okurum.",
+    "B": "Yeni kitabı yarın raflardaki yerini alacak.",
+    "C": "Okurlar yazarla fuarda buluştular.",
+    "D": "Dergideki yazımı geçen hafta tamamladım.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Hangi cümlede özne vurgulanmıştır?",
+    "A": "Bu güzel şiiri bana okur musun?",
+    "B": "Romanın kahramanı zorluklarla tek başına mücadele etti.",
+    "C": "Kütüphanede aradığım kitabı uzun süre bulamadım.",
+    "D": "Bana bu masalı büyükannem anlatmıştı.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde belirtisiz nesne kullanılmıştır?",
+    "A": "Şair, duygularını mısralara döktü.",
+    "B": "Yayınevi genç yazarlara büyük destek veriyor.",
+    "C": "Dün kütüphaneden kalın bir roman ödünç aldım.",
+    "D": "Edebiyat dergilerini her ay düzenli takip ederim.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "\"Ömer Seyfettin'in hikâyeleri, okuyucuyu derinden etkileyen güçlü bir kurguya sahiptir.\" cümlesinin öznesi aşağıdakilerden hangisidir?",
+    "A": "okuyucuyu",
+    "B": "Ömer Seyfettin'in hikâyeleri",
+    "C": "güçlü bir kurguya",
+    "D": "derinden",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "\"Büyük bir heyecanla beklediğim şiir kitabı nihayet basıldı.\" cümlesinde aşağıdaki ögelerden hangisi bulunmamaktadır?",
+    "A": "Zarf Tümleci",
+    "B": "Özne",
+    "C": "Nesne",
+    "D": "Yüklem",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde ara söz öznenin açıklayıcısı durumundadır?",
+    "A": "Cengiz Aytmatov, Bozkırın Bilgesi, eserlerinde tabiatı ustaca işler.",
+    "B": "İstanbul'a, o taşı toprağı altın şehre, şiirler yazılmış.",
+    "C": "Bu kitabı, masamda duran kırmızı kapaklı romanı, sana hediye ediyorum.",
+    "D": "Yaz aylarında, sıcakların en bunaltıcı olduğu günlerde, çok fazla okuyamam.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "\"Eleştirmenler yazarın son oyununu acımasızca eleştirdiler.\" cümlesinin öge dizilişi hangisinde doğru verilmiştir?",
+    "A": "Özne - Belirtili Nesne - Zarf Tümleci - Yüklem",
+    "B": "Özne - Zarf Tümleci - Belirtili Nesne - Yüklem",
+    "C": "Özne - Zarf Tümleci - Belirtisiz Nesne - Yüklem",
+    "D": "Özne - Yer Tamlayıcısı - Zarf Tümleci - Yüklem",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Hangi cümlede eylemi yapan belli değildir? (Sözde özne/Edilgen çatı)",
+    "A": "Yeni okuduğum kitapta pek çok yazım hatası buldum.",
+    "B": "Kitap fuarı her yıl binlerce ziyaretçiyi ağırlar.",
+    "C": "Yazar, imza gününde okurlarıyla sohbet etti.",
+    "D": "Edebiyat yarışmasının sonuçları dün açıklandı.",
+    "dogru_cevap": "D"
+  }
+]

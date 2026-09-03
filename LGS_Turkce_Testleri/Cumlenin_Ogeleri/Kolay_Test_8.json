@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Yıldızlar geceleyin gökyüzünü aydınlatır.\" cümlesinin öznesi hangisidir?",
+    "secenekler": {
+      "A": "geceleyin",
+      "B": "Yıldızlar",
+      "C": "gökyüzünü",
+      "D": "aydınlatır"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "\"Gezegenler Güneş'in etrafında döner.\" cümlesinde yer tamlayıcısı hangisidir?",
+    "secenekler": {
+      "A": "Güneş'in etrafında",
+      "B": "Gezegenler",
+      "C": "Güneş'in",
+      "D": "döner"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde zarf tamlayıcısı yoktur?",
+    "secenekler": {
+      "A": "Ay, geceleri parlar.",
+      "B": "Meteorlar hızla düşer.",
+      "C": "Bulutlar güneşi kapattı.",
+      "D": "Güneş sabahları doğar."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "\"Uzay mekiği Dünya'ya güvenle döndü.\" cümlesinde 'güvenle' sözcüğü hangi ögedir?",
+    "secenekler": {
+      "A": "Yer Tamlayıcısı",
+      "B": "Özne",
+      "C": "Nesne",
+      "D": "Zarf Tamlayıcısı"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "\"Astronotlar uzay istasyonunda deneyler yaptı.\" cümlesinde 'deneyler' sözcüğü hangi ögedir?",
+    "secenekler": {
+      "A": "Belirtili Nesne",
+      "B": "Özne",
+      "C": "Belirtisiz Nesne",
+      "D": "Yer Tamlayıcısı"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "\"Kuyruklu yıldız gökyüzünde bir iz bıraktı.\" cümlesinde hangi öge yoktur?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Zarf Tamlayıcısı",
+      "C": "Belirtisiz Nesne",
+      "D": "Yer Tamlayıcısı"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Hangi cümlede yüklem isimdir?",
+    "secenekler": {
+      "A": "Teleskopla yıldızlara baktık.",
+      "B": "Uzay araçları Mars'ı inceliyor.",
+      "C": "Yıldızlar pırıl pırıl parlıyor.",
+      "D": "Gökyüzü bugün çok berraktı."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "\"Samanyolu Galaksisi evrendeki sayısız galaksiden biridir.\" cümlesinin öznesi nedir?",
+    "secenekler": {
+      "A": "Samanyolu Galaksisi",
+      "B": "evrendeki",
+      "C": "sayısız galaksiden",
+      "D": "biridir"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "\"Güneş tutulmasını heyecanla izledik.\" cümlesinde gizli özne nedir?",
+    "secenekler": {
+      "A": "Ben",
+      "B": "Sen",
+      "C": "O",
+      "D": "Biz"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "\"Kara delikler ışığı bile yutar.\" cümlesindeki 'ışığı bile' söz grubu cümlenin hangi ögesidir?",
+    "secenekler": {
+      "A": "Belirtili Nesne",
+      "B": "Belirtisiz Nesne",
+      "C": "Yer Tamlayıcısı",
+      "D": "Zarf Tamlayıcısı"
+    },
+    "dogru_cevap": "A"
+  }
+]

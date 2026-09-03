@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Ali, Ayşe, Can ve Deniz bir yarışmayı ilk dörtte bitirmiştir.\n- Ali 1. olmamıştır.\n- Can yarışmayı Ayşe'den hemen sonra bitirmiştir.\n- Deniz yarışmayı 3. sırada bitirmiştir.\nBuna göre 1. olan kimdir?",
+    "secenekler": {
+      "A": "Ali",
+      "B": "Ayşe",
+      "C": "Can",
+      "D": "Deniz"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Bir kitaplıktaki türlerin dağılımı şu şekildedir: Roman 40 adet, Hikâye 30 adet, Şiir 10 adet, Masal 20 adet.\nBu bilgilere göre kitaplıkla ilgili aşağıdakilerden hangisi yanlıştır?",
+    "secenekler": {
+      "A": "En çok roman bulunmaktadır.",
+      "B": "Hikâye sayısı, masal sayısından fazladır.",
+      "C": "Roman ve şiir kitaplarının toplamı 50'dir.",
+      "D": "Şiir kitaplarının sayısı, diğer tüm kitapların toplamından fazladır."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Kırmızı, mavi, sarı ve yeşil renkli 4 kutu vardır. İçlerinde elma, armut, muz ve çilek bulunmaktadır.\n- Kırmızı kutuda muz yoktur.\n- Sarı kutuda çilek vardır.\n- Mavi kutuda armut bulunmaktadır.\nBuna göre (her meyvenin bir kutuda olduğu bilindiğine göre) yeşil kutuda hangi meyve vardır?",
+    "secenekler": {
+      "A": "Elma",
+      "B": "Armut",
+      "C": "Muz",
+      "D": "Çilek"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Bir krokide okul, hastanenin doğusunda; park, okulun güneyindedir. Kütüphane ise hastanenin kuzeyindedir.\nBuna göre kütüphaneden çıkıp parka gitmek isteyen biri sırasıyla hangi yönlere gitmelidir?",
+    "secenekler": {
+      "A": "Önce güneye, sonra doğuya ve tekrar güneye",
+      "B": "Önce doğuya, sonra güneye",
+      "C": "Önce kuzeye, sonra batıya",
+      "D": "Önce batıya, sonra güneye"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Pazartesi, Salı ve Çarşamba günleri Türkçe, Matematik ve Fen dersleri çalışılacaktır.\n- Her gün sadece bir ders çalışılacaktır.\n- Matematik dersi, Fen dersinden önceki bir gün çalışılacaktır.\n- Salı günü Fen çalışılmaktadır.\nBuna göre Çarşamba günü hangi ders çalışılmıştır?",
+    "secenekler": {
+      "A": "Matematik",
+      "B": "Fen Bilimleri",
+      "C": "Yabancı Dil",
+      "D": "Türkçe"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Geri dönüşüm sembolü üç oktan oluşur ve her bir ok toplama, işleme, yeniden üretim aşamalarını temsil eder. Sadece 'çöp kutusuna atınız' anlamına gelen figürler geri dönüşüm demek değildir.\nAşağıdakilerden hangisi bir ambalajın geri dönüştürülebilir olduğunu ifade eder?",
+    "secenekler": {
+      "A": "Üç oklu döngü sembolü",
+      "B": "Sadece çöp adam ve çöp kutusu resmi",
+      "C": "Alev işareti",
+      "D": "Şemsiye işareti"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Efe, Gaye, Hakan ve Işıl isimli dört arkadaş sinemada yan yana 4 koltuğa (1, 2, 3, 4) oturacaklardır.\n- Efe ve Hakan yan yana oturmaktadır.\n- Gaye 4 numaralı koltukta oturmaktadır.\n- Işıl, Efe'nin hemen solundaki (numara olarak bir eksiği) koltuktadır.\nBuna göre 3 numaralı koltukta kim oturmaktadır?",
+    "secenekler": {
+      "A": "Efe",
+      "B": "Gaye",
+      "C": "Hakan",
+      "D": "Işıl"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "'Emniyet Kemeri Hayat Kurtarır' başlıklı bir afişte, arka planda kazada hurdaya dönmüş bir araç, ön planda ise emniyet kemeri takılı sapasağlam bir koltuk gösterilmektedir.\nBu afişten çıkarılacak en temel mesaj aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Trafik kurallarına uymak yolculuğu uzatır.",
+      "B": "Emniyet kemeri takmak olası bir kazada hayatta kalma şansını artırır.",
+      "C": "Araçların bakımı düzenli yapılmalıdır.",
+      "D": "Yeni model araçlar her zaman daha güvenlidir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Bir kelime oyununda 'KİTAP' kelimesi '12345' olarak, 'TİP' kelimesi '325' olarak şifrelenmiştir.\nBuna göre 'PATİK' kelimesinin şifresi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "12345",
+      "B": "54321",
+      "C": "32541",
+      "D": "45312"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Televizyonda bir film başlamadan önce ekranda '7+' ve 'Şiddet/Korku' ikonları belirmiştir.\nBuna göre bu filmle ilgili aşağıdakilerden hangisi kesinlikle söylenebilir?",
+    "secenekler": {
+      "A": "7 yaşından küçüklerin izlemesi tavsiye edilmez ve filmde korku ögeleri bulunur.",
+      "B": "Film sadece yetişkinler içindir.",
+      "C": "Film tamamen bilim kurgu konusunu işlemektedir.",
+      "D": "Filmin süresi 7 saattir."
+    },
+    "dogru_cevap": "A"
+  }
+]

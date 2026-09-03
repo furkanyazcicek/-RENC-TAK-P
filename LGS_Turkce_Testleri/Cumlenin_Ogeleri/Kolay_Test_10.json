@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Annem akşam yemeğini özenle hazırladı.\" cümlesinde 'akşam yemeğini' söz grubu hangi ögedir?",
+    "secenekler": {
+      "A": "Belirtili Nesne",
+      "B": "Özne",
+      "C": "Yer Tamlayıcısı",
+      "D": "Zarf Tamlayıcısı"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "\"Dostluk zor zamanlarda belli olur.\" cümlesinin öznesi nedir?",
+    "secenekler": {
+      "A": "zor",
+      "B": "Dostluk",
+      "C": "zamanlarda",
+      "D": "belli olur"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde yer tamlayıcısı yoktur?",
+    "secenekler": {
+      "A": "Kardeşim parkta oynuyor.",
+      "B": "Babam işten geç döndü.",
+      "C": "Ailemiz her yaz köye gider.",
+      "D": "Dedem masal anlatmayı çok sever."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "\"Arkadaşlarımızla piknikte çok eğlendik.\" cümlesinde 'çok' sözcüğü hangi ögedir?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Nesne",
+      "C": "Zarf Tamlayıcısı",
+      "D": "Yer Tamlayıcısı"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "\"Ablam bana doğum günümde kazak hediye etti.\" cümlesinde 'kazak' kelimesi hangi ögedir?",
+    "secenekler": {
+      "A": "Belirtili Nesne",
+      "B": "Özne",
+      "C": "Yer Tamlayıcısı",
+      "D": "Belirtisiz Nesne"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Hangi cümlede 'ne zaman' sorusunun cevabı vardır?",
+    "secenekler": {
+      "A": "Küçük kardeşim dün ağladı.",
+      "B": "Ailem beni hep destekler.",
+      "C": "Dayım bize tatlı getirmiş.",
+      "D": "Teyzem mutfakta kek yapıyor."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "\"Eski dostlar yıllar sonra buluştu.\" cümlesinin öznesi hangisidir?",
+    "secenekler": {
+      "A": "Eski",
+      "B": "yıllar",
+      "C": "Eski dostlar",
+      "D": "yıllar sonra"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "\"Büyükbabam bahçedeki çiçekleri suluyor.\" cümlesinde nesne görevindeki söz grubu hangisidir?",
+    "secenekler": {
+      "A": "Büyükbabam",
+      "B": "bahçedeki çiçekleri",
+      "C": "çiçekleri",
+      "D": "suluyor"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinin yüklemi bir deyimdir?",
+    "secenekler": {
+      "A": "Onun söylediklerine kulak asmadım.",
+      "B": "Bebek mışıl mışıl uyuyor.",
+      "C": "Annem bugün çok yorulmuştu.",
+      "D": "Babam elindeki gazeteyi okudu."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "\"Sevgi, insanların kalbini yumuşatır.\" cümlesindeki 'insanların kalbini' söz grubu cümlenin hangi ögesidir?",
+    "secenekler": {
+      "A": "Belirtisiz Nesne",
+      "B": "Yer Tamlayıcısı",
+      "C": "Özne",
+      "D": "Belirtili Nesne"
+    },
+    "dogru_cevap": "D"
+  }
+]

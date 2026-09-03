@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "'Sağlıklı Tabak' modelini gösteren bir görselde tabağın yarısını sebze ve meyveler, çeyreğini proteinler, diğer çeyreğini ise tahıllar oluşturmaktadır. Bu görsele göre dengeli beslenmek isteyen biri nasıl beslenmelidir?",
+    "A": "Tabağın tamamını et ve süt ürünleriyle doldurmalıdır.",
+    "B": "Sadece tahıl ürünleri tüketerek enerji almalıdır.",
+    "C": "Meyve ve sebzeyi hiç tüketmeden beslenmelidir.",
+    "D": "Öğünlerinin büyük bir kısmında sebze ve meyveye yer vermelidir.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Yaş gruplarına göre günlük uyku ihtiyacı tablosunda; Bebekler 14-17 saat, İlkokul çocukları 9-11 saat, Yetişkinler 7-9 saat olarak verilmiştir. Tabloya göre hangisi kesinlikle söylenebilir?",
+    "A": "Yetişkinler bebeklerden daha fazla uykuya ihtiyaç duyar.",
+    "B": "İlkokul çocuklarının uyku ihtiyacı zamanla artmaktadır.",
+    "C": "İnsan büyüdükçe günlük uyku ihtiyacı azalmaktadır.",
+    "D": "Tüm yaş grupları günde en az 10 saat uyumalıdır.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Günlük su tüketimi grafiğinde, kişinin kilosu arttıkça içmesi gereken su miktarının da düzenli olarak arttığı çizgisel olarak ifade edilmiştir. Grafikten çıkarılabilecek en doğru yargı nedir?",
+    "A": "Herkes günde tam olarak 2 litre su içmelidir.",
+    "B": "Vücut ağırlığı ile su ihtiyacı arasında doğru orantı vardır.",
+    "C": "Zayıf insanlar daha fazla su tüketmek zorundadır.",
+    "D": "Su tüketimi sadece yaz aylarında artış gösterir.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Bir saatlik egzersizde yakılan kaloriler şu şekildedir: Koşu (600 kalori), Yüzme (500 kalori), Bisiklet (400 kalori), Yürüyüş (250 kalori). Zayıflamak isteyen ve en çok kaloriyi yakmak isteyen biri hangi sporu seçmelidir?",
+    "A": "Koşu",
+    "B": "Yüzme",
+    "C": "Bisiklet",
+    "D": "Yürüyüş",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Bulaşıcı hastalıklardan korunma yolları afişinde elleri yıkamak, maske takmak ve mesafeyi korumak görsellerle anlatılmıştır. Bu afişin ana amacı nedir?",
+    "A": "Hastane kurallarını hastalara ezberletmek",
+    "B": "Toplumda hijyen ve sağlık bilincini artırmak",
+    "C": "İlaç kullanımını azaltarak doğal yolları önermek",
+    "D": "İnsanların kalabalık ortamlara girmesini yasaklamak",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Bir infografikte C vitamini için portakal ve limon, A vitamini için havuç, D vitamini için ise güneş görseli kullanılmıştır. Bu infografikten hareketle hangisi söylenemez?",
+    "A": "Portakal ve limon C vitamini açısından zengindir.",
+    "B": "Havuç tüketmek A vitamini ihtiyacını karşılar.",
+    "C": "D vitamini sadece besinler yoluyla alınabilir.",
+    "D": "Güneş, D vitamini kaynağı olarak gösterilmiştir.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "İlk yardım şemasında ilk adım 'Güvenliği sağla', ikinci adım 'Bilinç kontrolü yap', üçüncü adım '112'yi ara' olarak sıralanmıştır. Şemaya göre acil bir durumda ilk yapılması gereken nedir?",
+    "A": "Hemen 112'yi arayarak ambulans çağırmak",
+    "B": "Hastaya suni teneffüs uygulamak",
+    "C": "Hastanın bilincinin açık olup olmadığını kontrol etmek",
+    "D": "Çevrenin ve hastanın güvenliğini sağlamak",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Diş fırçalama teknikleri görselinde fırçanın diş etinden dişe doğru dairesel hareketlerle kullanılması gerektiği oklarla çizilmiştir. Görselin vermek istediği mesaj nedir?",
+    "A": "Diş fırçalamada doğru hareket yöntemi önemlidir.",
+    "B": "Günde en az üç kez diş fırçalanmalıdır.",
+    "C": "Diş macunu fırçanın tamamını kaplamalıdır.",
+    "D": "Sert fırçalar diş etlerine zarar vermez.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Dünya obezite oranları haritasında kırmızı renkli ülkelerde oranın %30'un üzerinde, sarı renkli ülkelerde ise %10 civarında olduğu belirtilmiştir. Haritadan çıkarılacak sonuç hangisidir?",
+    "A": "Obezite sadece kırmızı renkli ülkelerde görülen bir sorundur.",
+    "B": "Farklı ülkelerde obezite oranları değişiklik göstermektedir.",
+    "C": "Sarı renkli ülkeler sağlık harcamalarını azaltmıştır.",
+    "D": "Dünya genelinde obezite tamamen kontrol altındadır.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Göz sağlığı için bilgisayar kullanımı şemasında, göz ile ekran arasındaki mesafenin en az 50 cm olması gerektiği ve ekranın göz hizasının hafif aşağısında bulunması gerektiği belirtilmiştir. Buna göre hangisi yanlış bir oturma pozisyonudur?",
+    "A": "Ekrana 60 cm uzaktan bakmak",
+    "B": "Ekranı göz seviyesinin biraz altında tutmak",
+    "C": "Dik bir şekilde sandalyede oturmak",
+    "D": "Ekrana 30 cm mesafeden çok yakından bakmak",
+    "cevap": "D"
+  }
+]

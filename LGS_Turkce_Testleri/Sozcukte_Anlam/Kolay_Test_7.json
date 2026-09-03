@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "'Çıkmak' kelimesi hangisinde 'ayrılmak' anlamında kullanılmıştır?",
+    "secenekler": {
+      "A": "Evden erken çıktı.",
+      "B": "Dağa çıktı.",
+      "C": "Piyangodan para çıktı.",
+      "D": "Lekesi çıktı."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "'Açmak' sözcüğü hangisinde 'kapalı durumu açık hale getirmek' anlamındadır?",
+    "secenekler": {
+      "A": "Bu renk seni açtı.",
+      "B": "Kapıyı açtı.",
+      "C": "Havalar açtı.",
+      "D": "Yolu açtı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "'Düşmek' sözcüğü hangisinde 'devrilmek, yere serilmek' anlamındadır?",
+    "secenekler": {
+      "A": "Değeri düştü.",
+      "B": "Ateşi düştü.",
+      "C": "Çocuk yere düştü.",
+      "D": "Aklıma düştü."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "'Tutmak' kelimesi hangisinde 'avlamak' anlamında kullanılmıştır?",
+    "secenekler": {
+      "A": "Oruç tutmak.",
+      "B": "Sözünü tutmak.",
+      "C": "Alkış tutmak.",
+      "D": "Balık tutmak."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "'Girmek' sözcüğü hangisinde 'başlamak' anlamındadır?",
+    "secenekler": {
+      "A": "İşe girmek.",
+      "B": "Odaya girmek.",
+      "C": "Sıraya girmek.",
+      "D": "Denize girmek."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "'Bırakmak' sözcüğü hangisinde 'vazgeçmek' anlamında kullanılmıştır?",
+    "secenekler": {
+      "A": "Çantayı masaya bıraktı.",
+      "B": "Sigarayı bıraktı.",
+      "C": "Saçlarını uzatmaya bıraktı.",
+      "D": "Beni yalnız bıraktı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "'Atmak' kelimesi hangisinde 'fırlatmak' anlamındadır?",
+    "secenekler": {
+      "A": "İftira atmak.",
+      "B": "Kalp atmak.",
+      "C": "Topu bana attı.",
+      "D": "Adım atmak."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "'Çekmek' sözcüğü hangisinde 'görüntülemek' anlamındadır?",
+    "secenekler": {
+      "A": "Diş çekmek.",
+      "B": "Sıkıntı çekmek.",
+      "C": "İp çekmek.",
+      "D": "Fotoğraf çekmek."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "'Görmek' sözcüğü hangisinde 'fark etmek' anlamındadır?",
+    "secenekler": {
+      "A": "Yanımdaki tehlikeyi yeni gördüm.",
+      "B": "Gözleri iyi görüyor.",
+      "C": "Dün onu yolda gördüm.",
+      "D": "Rüya görmek."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "'Oynamak' kelimesi hangisinde 'spor yapmak' anlamındadır?",
+    "secenekler": {
+      "A": "Rol oynamak.",
+      "B": "Futbol oynamak.",
+      "C": "Taş yerinden oynadı.",
+      "D": "Çocuklar oynuyor."
+    },
+    "dogru_cevap": "B"
+  }
+]

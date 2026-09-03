@@ -1,0 +1,127 @@
+{
+  "konu": "Cümle Türleri",
+  "seviye": "Kolay",
+  "test_no": 2,
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Aşağıdaki cümlelerin hangisi yükleminin türüne göre diğerlerinden farklıdır?",
+      "secenekler": {
+        "A": "Sokaktaki kedi çok sevimliydi.",
+        "B": "Yarınki sınav için çok çalıştı.",
+        "C": "En sevdiği renk mavidir.",
+        "D": "Bu evin odaları oldukça geniş."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.12. Cümle türlerini tanır."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Aşağıdaki cümlelerin hangisi kurallı bir cümledir?",
+      "secenekler": {
+        "A": "Gidiyorum gündüz gece.",
+        "B": "Çok güzeldi izlediğimiz son film.",
+        "C": "Sabah erkenden kalkıp spor yaptı.",
+        "D": "Ağır ağır çıkacaksın bu merdivenlerden."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.12. Cümle türlerini tanır (Yüklemin yerine göre cümleler)."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Hangi cümle anlamına göre olumsuzdur?",
+      "secenekler": {
+        "A": "Bu konuyu seninle konuşmak istemiyorum.",
+        "B": "Sınavdan yüksek not alınca çok mutlu oldu.",
+        "C": "Dışarıda lapa lapa kar yağıyor.",
+        "D": "Yarın hep birlikte pikniğe gideceğiz."
+      },
+      "dogru_cevap": "A",
+      "kazanim": "T.8.3.12. Cümle türlerini tanır (Anlamlarına göre cümleler)."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Aşağıdaki cümlelerin hangisi isim cümlesidir?",
+      "secenekler": {
+        "A": "Bütün gün evde kitap okudu.",
+        "B": "Onun en büyük hayali yazar olmaktı.",
+        "C": "Hafta sonu arkadaşlarıyla buluşacak.",
+        "D": "Hızlı adımlarla okula doğru yürüdü."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.12. Cümle türlerini tanır (Yüklemin türüne göre)."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Hangi cümle yapısına göre basit bir cümledir?",
+      "secenekler": {
+        "A": "Çok çalışarak sınavı kazandı.",
+        "B": "Güneş doğdu ve her yer aydınlandı.",
+        "C": "Yarın sabah erkenden yola çıkacağız.",
+        "D": "Beni anlayan tek kişi sensin."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.12. Cümle türlerini tanır (Yapısına göre cümleler)."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Aşağıdaki cümlelerden hangisi devrik bir cümledir?",
+      "secenekler": {
+        "A": "Kardeşim her akşam süt içer.",
+        "B": "Kitap okumayı çok seviyorum.",
+        "C": "Yeni bir araba almış babası.",
+        "D": "Hava bugün oldukça sıcak."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.12. Cümle türlerini tanır (Yüklemin yerine göre)."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde birden fazla yargı (yüklem veya fiilimsi) vardır?",
+      "secenekler": {
+        "A": "Kırmızı elmayı afiyetle yedi.",
+        "B": "Okula gidip arkadaşlarıyla buluştu.",
+        "C": "Baharın gelişi herkesi sevindirdi.",
+        "D": "Büyük ağacın gölgesinde oturduk."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.12. Cümle türlerini tanır (Birleşik cümle)."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "\"Hava karardı, herkes evine döndü.\" cümlesi yapısına göre ne tür bir cümledir?",
+      "secenekler": {
+        "A": "Basit Cümle",
+        "B": "Sıralı Cümle",
+        "C": "Fiilimsili Cümle",
+        "D": "İsim Cümlesi"
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.12. Cümle türlerini tanır (Sıralı cümle)."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Aşağıdaki cümlelerin hangisi soru cümlesidir?",
+      "secenekler": {
+        "A": "Ne kadar güzel bir gün",
+        "B": "Keşke ben de sizinle gelebilsem",
+        "C": "Bu kitabı daha önce okudun mu",
+        "D": "Sınavı kazanınca dünyalar onun oldu"
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.12. Cümle türlerini tanır (Anlamına göre)."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Hangi cümle biçimce olumsuz, anlamca olumludur?",
+      "secenekler": {
+        "A": "Senin ne kadar iyi biri olduğunu bilmez miyim?",
+        "B": "Bugün hava ne sıcak ne soğuk.",
+        "C": "Bu yemeği hiç beğenmedim.",
+        "D": "Olanları kimseye anlatmamış."
+      },
+      "dogru_cevap": "A",
+      "kazanim": "T.8.3.12. Cümle türlerini tanır (Anlamına göre)."
+    }
+  ]
+}

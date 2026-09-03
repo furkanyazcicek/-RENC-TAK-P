@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Genç, doktorun odasına girip şikayetlerini anlattı.\nBu cümlede virgülün (,) kullanım amacı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Eş görevli kelimeleri ayırmak.",
+      "B": "Sıralı cümleleri birbirinden ayırmak.",
+      "C": "Anlam belirsizliğini ortadan kaldırmak.",
+      "D": "Hitap sözcüğünü belirtmek."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Cümle içinde virgülle ayrılmış tür veya takımları birbirinden ayırmak için noktalı virgül (;) kullanılır.\nAşağıdaki cümlelerin hangisinde noktalı virgül bu görevde kullanılmıştır?",
+    "secenekler": {
+      "A": "Manavdan elma, muz, çilek; kasaptan et, tavuk, kıyma aldım.",
+      "B": "Çok yoruldum; biraz dinlenmek, uyumak istiyorum.",
+      "C": "Okan; Ayşe, Fatma ve Zeynep'ten daha yüksek not aldı.",
+      "D": "Kel ölür, sırma saçlı olur; kör ölür, badem gözlü olur."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Aşağıdaki cümlelerin hangisinde iki nokta (:) genel ağ (internet) adreslerinde kullanılmıştır?",
+    "secenekler": {
+      "A": "Başarının sırrı şudur: Çok okumak.",
+      "B": "Müdür: \"Yarın tatil olacak.\" dedi.",
+      "C": "Bölme işlemi: 12 : 4 = 3.",
+      "D": "Detaylı bilgiyi http://www.meb.gov.tr adresinde bulabilirsiniz."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Sayılara getirilen ekleri ayırmak için kesme işareti (') kullanılır.\nAşağıdaki cümlelerin hangisinde bu kurala uygun bir kullanım vardır?",
+    "secenekler": {
+      "A": "O kadar çok yoruldum ki saatlerce uyusam yetmez.",
+      "B": "Sınavımız sabah saat 10.30'da başlayacak.",
+      "C": "TBMM'nin açılış yıl dönümü kutlamaları yapıldı.",
+      "D": "Ahmet Bey'in dünkü toplantıya katılamayacağı söylendi."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Aşağıdaki cümlelerin hangisinin sonuna soru işareti (?) konulması YANLIŞTIR?",
+    "secenekler": {
+      "A": "Bana neden bu kadar soğuk davrandığını açıklar mısın?",
+      "B": "Dolaptaki yiyecekleri kimin yediğini bulabildin mi?",
+      "C": "Bu işin içinden nasıl çıkacağımı hiç bilmiyorum?",
+      "D": "Akşamki sinema keyfine siz de katılacak mısınız?"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Kaba sayıldığı için veya başka bir sebepten dolayı açık yazılmak istenmeyen kelime ve bölümlerin yerine üç nokta (...) konur.\nAşağıdakilerin hangisinde üç nokta bu işlevde kullanılmıştır?",
+    "secenekler": {
+      "A": "Olayın asıl sorumlusu olan B... Bey ortalıkta görünmüyordu.",
+      "B": "Dışarıda hafif bir rüzgar, gökyüzünde parlak yıldızlar...",
+      "C": "Sana söyleyecek o kadar çok şeyim var ki...",
+      "D": "İçeri giren adam şunları söyledi: ..."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Cümle içerisinde eserlerin ve yazıların adları ile bölüm başlıkları tırnak işareti (\"\") içine alınır.\nAşağıdakilerin hangisinde bu kurala uygun bir kullanım vardır?",
+    "secenekler": {
+      "A": "Benim için \"dürüstlük\" her şeyden daha önemlidir.",
+      "B": "Yahya Kemal'in \"Sessiz Gemi\" şiiri çok etkileyicidir.",
+      "C": "Öğretmen, \"Dersinize iyi çalışın.\" diyerek sınıftan çıktı.",
+      "D": "Bu olayın \"arka yüzü\"nü henüz kimse bilmiyor."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Aşağıdaki cümlelerin hangisinde kısa çizgi (-) sıfırdan küçük değerleri (eksi işareti) göstermek için kullanılmıştır?",
+    "secenekler": {
+      "A": "Ankara-İzmir uçak seferleri iptal edildi.",
+      "B": "Bu yörede 10-15 yaşlarında çocuklar tarlada çalışıyor.",
+      "C": "Hava sıcaklığının -10 derece olacağı tahmin ediliyor.",
+      "D": "Olanları -sana ne kadar anlatsam da- anlamayacaksın."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Tiyatro eserlerinde ve senaryolarda konuşanın hareketlerini, durumunu açıklamak ve göstermek için yay ayraç ( ) kullanılır.\nAşağıdakilerin hangisinde yay ayraç bu görevde kullanılmıştır?",
+    "secenekler": {
+      "A": "Anadolu'nun o güzel köyleri (çocukluğumun geçtiği yerler) burnumda tütüyor.",
+      "B": "Fuzuli (1496-1556) Divan edebiyatının usta şairlerindendir.",
+      "C": "Yunus Emre'nin Risaletü'n-Nushiyye (Öğütler Kitabı) adlı eseri çok meşhurdur.",
+      "D": "Yaşlı Adam (Yerinden yavaşça kalkarak): Bana biraz su verir misin evladım?"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Aşağıdaki cümlelerin hangisinde nokta (.) tarihlerin yazılışında gün, ay ve yılı ayırmak için kullanılmıştır?",
+    "secenekler": {
+      "A": "Atatürk 19.05.1919'da Samsun'a çıkarak Milli Mücadele'yi başlattı.",
+      "B": "Dr. Ayşe Hanım hastalarıyla çok ilgili bir hekimdir.",
+      "C": "Dünkü yarışta 3. olarak madalya almaya hak kazandı.",
+      "D": "Her sabah tam 07.30'da kalkıp spora giderim."
+    },
+    "dogru_cevap": "A"
+  }
+]

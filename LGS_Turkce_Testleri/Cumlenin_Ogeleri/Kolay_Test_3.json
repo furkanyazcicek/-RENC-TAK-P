@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Öğretmenimiz, yeni konuyu tahtada anlattı.\" cümlesinde yer tamlayıcısı hangisidir?",
+    "secenekler": {
+      "A": "Öğretmenimiz",
+      "B": "yeni konuyu",
+      "C": "tahtada",
+      "D": "anlattı"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "\"Öğrenciler sınav sonuçlarını heyecanla bekliyor.\" cümlesinde zarf tamlayıcısı olan sözcük hangisidir?",
+    "secenekler": {
+      "A": "Öğrenciler",
+      "B": "sınav sonuçlarını",
+      "C": "heyecanla",
+      "D": "bekliyor"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerden hangisinde özne gizlidir?",
+    "secenekler": {
+      "A": "Kitaplar raflara dizildi.",
+      "B": "Okul zili çaldı.",
+      "C": "Ders notlarını defterine dikkatlice yazdı.",
+      "D": "Müdür öğrencilere konuşma yaptı."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "\"Kütüphane, bilginin kaynağıdır.\" cümlesinin yüklemi hangisidir?",
+    "secenekler": {
+      "A": "Kütüphane",
+      "B": "bilginin",
+      "C": "kaynağıdır",
+      "D": "bilginin kaynağıdır"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "\"Zil çalınca herkes sınıflara koştu.\" cümlesindeki 'herkes' sözcüğü hangi ögedir?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Zarf Tamlayıcısı",
+      "C": "Yer Tamlayıcısı",
+      "D": "Yüklem"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Hangi cümlede belirtili nesne kullanılmıştır?",
+    "secenekler": {
+      "A": "Ali çok güzel kitap okuyor.",
+      "B": "Ayşe en sevdiği kalemini düşürdü.",
+      "C": "Öğrenciler bahçede oynuyor.",
+      "D": "Dün okula yarım saat geç kaldım."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "\"Başarılı olmak için düzenli çalışmalısın.\" cümlesinde 'düzenli' sözcüğü cümlenin hangi ögesidir?",
+    "secenekler": {
+      "A": "Zarf Tamlayıcısı",
+      "B": "Belirtisiz Nesne",
+      "C": "Yer Tamlayıcısı",
+      "D": "Özne"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde yer tamlayıcısı (dolaylı tümleç) yoktur?",
+    "secenekler": {
+      "A": "Kitabını çalışma masasına bıraktı.",
+      "B": "Anlamadığı soruyu öğretmene sordu.",
+      "C": "Okuldan arkadaşlarıyla neşeli ayrıldık.",
+      "D": "Yarın çok önemli bir sınavımız var."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "\"Arkadaşlarım bana sürpriz yapmış.\" cümlesindeki ögelerin doğru sıralanışı nasıldır?",
+    "secenekler": {
+      "A": "Özne - Zarf Tamlayıcısı - Yüklem",
+      "B": "Özne - Yer Tamlayıcısı - Belirtisiz Nesne - Yüklem",
+      "C": "Özne - Belirtili Nesne - Yüklem",
+      "D": "Nesne - Yer Tamlayıcısı - Yüklem"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "\"Okumak, insanın ufkunu genişletir.\" cümlesinin öznesi hangisidir?",
+    "secenekler": {
+      "A": "insanın",
+      "B": "ufkunu",
+      "C": "insanın ufkunu",
+      "D": "Okumak"
+    },
+    "dogru_cevap": "D"
+  }
+]

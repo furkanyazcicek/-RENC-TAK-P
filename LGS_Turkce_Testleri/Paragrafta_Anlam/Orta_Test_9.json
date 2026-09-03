@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Halk oyunlarımız, sadece müzik eşliğinde yapılan ritmik hareketler değildir. Zeybekteki o ağır ve mağrur duruş, efenin kahramanlığını ve dağların heybetini anlatır. Horondaki hızlı ve hırçın figürler ise Karadeniz'in dalgalarını ve o bölge insanının tez canlılığını yansıtır. Yani halk oyunları, bir milletin karakterinin bedensel dilidir.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Zeybek ve horon Türkiye'nin en sevilen halk oyunlarıdır.",
+      "B": "Halk oyunları, ait olduğu coğrafyanın ve toplumun karakteristik özelliklerini yansıtır.",
+      "C": "Oyunlardaki ritmik hareketler müzikle uyumlu olmak zorundadır.",
+      "D": "Karadeniz insanı her zaman neşeli ve hızlı hareket etmeyi sever."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Zamanın izafiyeti (göreceliği), aslında hepimizin her gün deneyimlediği bir durumdur. Sıkıcı bir toplantıda ya da kuyrukta beklerken akrep ile yelkovan adeta olduğu yere çakılır, zaman bir türlü geçmek bilmez. Ancak çok sevdiğimiz arkadaşımızla sohbet ederken ya da heyecanlı bir film izlerken saatler su gibi akıp gider. Zamanı ölçen saattir ama zamanı hisseden beynimizdir.\n\nBu parçada zamanla ilgili olarak asıl anlatılmak istenen nedir?",
+    "secenekler": {
+      "A": "Saatlerin her zaman doğruyu göstermediği.",
+      "B": "İnsanın yaşlandıkça zamanın daha hızlı geçtiğini hissettiği.",
+      "C": "Zamanın algılanış biçiminin, içinde bulunulan duruma ve duygulara göre değiştiği.",
+      "D": "Zamanı verimli kullanmanın mutluluğu artırdığı."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "(I) Hızlı yemek (fast food) kültürü hayatımızı ele geçirdi. (II) Sadece yemeğimizi değil, ayaküstü yaşamayı da hızlandırdı. (III) Geleneksel yemeklerimizi hazırlamak genellikle saatler alır. (IV) Oysa eskiden sofra etrafında toplanmak, yemeği yavaş yavaş ve sohbet ederek yemek aileyi bir arada tutan en önemli ritüeldi.\n\nBu metindeki numaralanmış cümlelerden hangisi anlam bütünlüğünü bozmaktadır?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Şiir okumak sadece sessizce gözlerle kelimeleri takip etmek değildir. Gerçek bir şiir sever, şiiri sesli okur. Çünkü şiirin, kelimelerin dizilişinden doğan kendine has bir musikisi vardır. Sesli okunduğunda kelimeler adeta kanatlanır, vurucu heceler, vurgular ve duraklar şiirin ruhunu ortaya çıkarır. Sessiz okunan bir şiir, sesi kapatılmış bir şarkı klibi gibidir.\n\nBu metinde şiirle ilgili vurgulanmak istenen aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Anlaşılması için kelime anlamlarının iyi bilinmesi gerektiği",
+      "B": "Okullarda şiir ezberletilmesinin faydalı olduğu",
+      "C": "Kelimelerinin günlük hayatta kullanılmayan sözcüklerden seçildiği",
+      "D": "Gerçek etkisini ve müzikalitesini ancak sesli okunduğunda gösterdiği"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Cesaret, korkmamak demek değildir. Asıl cesaret, korkuya rağmen adım atabilmektir. Sahneye çıkmadan önce kalbi yerinden fırlayacakmış gibi çarpan ama yine de o sahneye çıkıp rolünü mükemmel oynayan tiyatrocu cesurdur. Korku bizi tehlikelerden koruyan doğal bir kalkandır; cesaret ise o kalkanın arkasına saklanmadan yürümeye devam etmektir.\n\nBu parçaya göre cesur bir insanın özelliği aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Hiçbir şeyden asla korkmaması ve endişe duymaması.",
+      "B": "Tehlikeleri görmezden gelerek her zaman risk alması.",
+      "C": "İçindeki korkuyu hissedip onu aşarak eyleme geçebilmesi.",
+      "D": "Başkalarının korktuğu şeylerle alay etmesi."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Suni aydınlatmalar gecelerimizi gündüze çevirdi ama bunun bedelini doğa ödüyor. Sokak lambaları ve gökdelenlerin parlak ışıkları, göçmen kuşların yönlerini şaşırmasına, deniz kaplumbağası yavrularının denizi bulamayıp karada telef olmasına yol açıyor. Işık kirliliği dediğimiz bu durum, doğal yaşamın dengesini sinsice bozuyor.\n\nBu metinde ışık kirliliğinin hangi olumsuz sonucuna değinilmiştir?",
+    "secenekler": {
+      "A": "Gökyüzündeki yıldızların görülmesini engellemesine",
+      "B": "Hayvanların yön bulma duyularını yanıltarak yaşamlarını tehlikeye atmasına",
+      "C": "İnsanlarda uyku bozukluklarına ve strese neden olmasına",
+      "D": "Enerji israfına yol açarak ekonomik zararlar yaratmasına"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "(I) Soru sormak, insanın merak duygusunun en somut göstergesidir. (II) Çocukken 'Bu neden böyle?' diyerek dünyayı anlamaya çalışırız. (III) Ancak büyüdükçe soru sormayı bırakıp bize sunulanları olduğu gibi kabul etmeye başlarız. (IV) Bütün bilimsel icatlar, doğru yerde sorulmuş bir soru ile başlamıştır. (V) Sorgulamayan bir zihin, paslanmaya yüz tutmuş bir demir gibidir.\n\nBu metin iki paragrafa bölünmek istense, ikinci paragraf hangi cümleyle başlamalıdır?",
+    "secenekler": {
+      "A": "II",
+      "B": "III",
+      "C": "IV",
+      "D": "V"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Doğa fotoğrafçılığı sabır işidir. Bazen o eşsiz kareyi, mesela bir kartalın avını yakalama anını fotoğraflayabilmek için saatlerce, hatta günlerce aynı noktada hareketsiz beklemeniz gerekir. Soğuk, sıcak veya yağmur demeden, doğanın ritmine ayak uydurmalısınız. O an geldiğinde ise deklanşöre basmak için sadece birkaç saniyeniz vardır.\n\nBu metinden doğa fotoğrafçılığı ile ilgili aşağıdakilerden hangisi çıkarılamaz?",
+    "secenekler": {
+      "A": "Büyük bir sabır ve bekleyiş gerektirdiği.",
+      "B": "Hava koşullarının zorluklarına göğüs germeyi gerektirdiği.",
+      "C": "Çok pahalı fotoğraf makinelerine ihtiyaç duyulduğu.",
+      "D": "Fırsat anının çok kısa bir zaman diliminde gerçekleştiği."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Evrende yalnız mıyız sorusu insanlığın en eski meraklarından biridir. Astronomlar, yıllardır gelişmiş teleskoplarla uzak galaksileri tarıyor ve 'ötegezegenler' keşfediyorlar. Ancak bir gezegenin yaşanabilir olması için yıldıza olan uzaklığının suyun sıvı halde kalmasına izin verecek mesafede olması gerekir. Bu altın orana 'yaşanabilir bölge' denir ve şu ana kadar keşfedilen gezegenlerin çok azı bu bölgededir.\n\nBu parçaya göre bir gezegenin yaşanabilir olması aşağıdakilerden hangisine bağlıdır?",
+    "secenekler": {
+      "A": "Atmosferindeki oksijen oranının yüksek olmasına",
+      "B": "Etrafında döndüğü yıldıza olan mesafesinin suyun sıvı kalmasını sağlamasına",
+      "C": "Dünyamıza çok yakın bir galakside yer almasına",
+      "D": "Gezegenin yüzeyinde bitki örtüsünün bulunmasına"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Herkesin hayatında 'İyi ki bu hatayı yapmışım' dediği anlar vardır. Çünkü bizi olgunlaştıran, güçlendiren ve daha iyi kararlar almamızı sağlayan şeyler genellikle başarılarımız değil, o utandığımız hatalarımızdır. Başarı insana sadece özgüven verir ama hata, insana bilgelik katar.\n\nBu metinde asıl anlatılmak istenen düşünce aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Sürekli başarılı olan insanların genellikle kibirli oldukları.",
+      "B": "Başarıların hayatımızda hatalardan daha az yer tuttuğu.",
+      "C": "Hataların, insanın olgunlaşmasını ve tecrübe kazanmasını sağlayan değerli dersler olduğu.",
+      "D": "Hata yapmaktan korkan insanların hiçbir zaman başarılı olamayacağı."
+    },
+    "dogru_cevap": "C"
+  }
+]

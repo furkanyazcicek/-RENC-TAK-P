@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Günlük hayatta iletişim kurarken (I) beden dilini kullanmak (II), anlattıklarımızı (III) destekler. Numaralanmış sözcüklerin fiilimsi türleri sırasıyla hangi seçenekte verilmiştir?",
+    "secenekler": {
+      "A": "Sıfat-fiil - İsim-fiil - Zarf-fiil",
+      "B": "Zarf-fiil - İsim-fiil - İsim-fiil",
+      "C": "Zarf-fiil - İsim-fiil - Sıfat-fiil",
+      "D": "İsim-fiil - Sıfat-fiil - Zarf-fiil"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "İsim-fiil eki almış kimi sözcükler kalıcı isim olabilir. Aşağıdakilerin hangisinde bu kuralı örneklendiren bir sözcük vardır?",
+    "secenekler": {
+      "A": "Danışmadan geçerken adres bilgilerini teyit ettim.",
+      "B": "Seninle sorunlarımızı konuşmayı çok isterim.",
+      "C": "Onun bakışlarında samimi bir ifade vardı.",
+      "D": "Yanlış anlaşılan meseleyi açıklamak bana düştü."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde adlaşmış sıfat-fiil vardır?",
+    "secenekler": {
+      "A": "İyi iletişim kuran insanlar çevrelerinde sevilir.",
+      "B": "Gülümseyen yüzler her zaman pozitif enerji verir.",
+      "C": "Sorulan zor sorulara rahatça cevap verdi.",
+      "D": "Söylenenleri yanlış anlayınca aramızda tartışma çıktı."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Zarf-fiil, aşağıdaki cümlelerin hangisinde 'zaman' bildirmektedir?",
+    "secenekler": {
+      "A": "Onunla yüz yüze konuşarak meseleyi hallettik.",
+      "B": "Mesajı okur okumaz hemen bana geri dönüş yaptı.",
+      "C": "Hiç durmadan konuşarak bizi adeta yordu.",
+      "D": "Elindeki telefonu bırakıp gözlerimin içine baktı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdakilerin hangisinde isim-fiil, bir ismin yerini tutan belgisiz zamirle (biri, hepsi vb.) birlikte tamlama oluşturmuştur?",
+    "secenekler": {
+      "A": "Beni dinlemesi en büyük isteğimdi.",
+      "B": "Soruları çözme telaşı herkesi sarmıştı.",
+      "C": "Onların gelmesini sabırsızlıkla bekliyordum.",
+      "D": "Sözlerin etkisi hepimizi derinden etkiledi."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdakilerin hangisinde '-mez / -maz' eki, sıfat-fiil görevinde kullanılmamıştır?",
+    "secenekler": {
+      "A": "O, her zaman görünmez kazalardan korkardı.",
+      "B": "Olayları hiçbir zaman tek taraflı dinlemez.",
+      "C": "Aşılmaz dağları aşıp bize ulaştı mesajı.",
+      "D": "Tükenmez bir enerjiyle konuşmaya devam etti."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Empati kurmak, karşımızdakini anlamanın en kestirme yoludur. Bu cümlede altı çizili fiilimsinin türce özdeşi aşağıdakilerin hangisinde vardır?",
+    "secenekler": {
+      "A": "Duygularını ifade etme konusunda biraz çekingen.",
+      "B": "Beni görünce sevinçten havalara uçtu.",
+      "C": "Söylenmemiş sözler bazen daha ağırdır.",
+      "D": "Koşarak yanımıza geldi ve müjdeyi verdi."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki atasözlerinden hangisinde farklı türde bir fiilimsi kullanılmıştır?",
+    "secenekler": {
+      "A": "İşleyen demir ışıldar.",
+      "B": "Akacak kan damarda durmaz.",
+      "C": "Gülme komşuna, gelir başına.",
+      "D": "Minareyi çalan kılıfını hazırlar."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Hangi cümlede fiilimsi bir ikileme (yineleme) içinde yer almaktadır?",
+    "secenekler": {
+      "A": "Ağır ağır çıkacaksın bu merdivenlerden.",
+      "B": "Yavaş yavaş yürüdük o upuzun yolda.",
+      "C": "Konuşa konuşa tüm anlaşmazlıkları giderdik.",
+      "D": "İri iri gözleriyle etrafı süzüyordu."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdakilerin hangisinde bütün eylemsi türlerine yer verilmiştir?",
+    "secenekler": {
+      "A": "Göz temasını sürdürmek, etkili iletişim için gereklidir.",
+      "B": "Sesini yükselterek konuşan insanları dinlemek hiç hoşuma gitmez.",
+      "C": "Sorulan sorulara yanıt vermek istemiyordu.",
+      "D": "Telefona bakarken yürümek kaza yapmanıza sebep olabilir."
+    },
+    "dogru_cevap": "B"
+  }
+]

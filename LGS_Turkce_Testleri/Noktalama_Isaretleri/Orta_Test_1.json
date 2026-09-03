@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde virgülün kaldırılması cümlenin anlamında değişikliğe yol açar?",
+    "secenekler": {
+      "A": "Genç, doktorun söylediklerini dikkatle dinledi.",
+      "B": "Dün, bütün gün evde kitap okudum.",
+      "C": "Bahçedeki ağaçlar, baharın müjdecisidir.",
+      "D": "Yarın, arkadaşlarla sinemaya gideceğiz."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "\"Sevinçten, heyecandan içim içime sığmıyor( ) bağırmak, ağlamak istiyorum.\" cümlesinde yay ayraçla gösterilen yere hangi noktalama işareti getirilmelidir?",
+    "secenekler": {
+      "A": "İki nokta",
+      "B": "Noktalı virgül",
+      "C": "Virgül",
+      "D": "Üç nokta"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinin sonuna üç nokta (...) konulmalıdır?",
+    "secenekler": {
+      "A": "Gökyüzünde parlayan yıldızları izledik bütün gece",
+      "B": "Rüzgârın uğultusu beni daldığım uykudan uyandırdı",
+      "C": "Karşımızda alabildiğine uzanan yemyeşil bir ova",
+      "D": "Bugün hava çok güzel, biraz yürüyüş yapalım"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "\"Mustafa Kemal Atatürk( ) 1881( )de Selanik( )te doğdu( )\" cümlesinde parantezle belirtilen yerlere sırasıyla hangi noktalama işaretleri getirilmelidir?",
+    "secenekler": {
+      "A": "(;) (') (') (.)",
+      "B": "(,) (-) (') (.)",
+      "C": "(,) (') (,) (.)",
+      "D": "(,) (') (') (.)"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "\"Atatürk şöyle demiştir( ) ( )Hayatta en hakiki mürşit ilimdir( )( )\" Bu cümlede yay ayraçlara sırasıyla hangileri getirilmelidir?",
+    "secenekler": {
+      "A": "(:) (\") (.) (\")",
+      "B": "(;) (\") (.) (\")",
+      "C": "(:) (-) (.) (-)",
+      "D": "(,) (\") (.) (\")"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde kısa çizgi (-) yanlış kullanılmıştır?",
+    "secenekler": {
+      "A": "Türkçe-İngilizce sözlüğümü kaybettim.",
+      "B": "-Gidecek misin? diye sordu.",
+      "C": "1990-1995 yılları arasında burada çalıştım.",
+      "D": "Ankara-İstanbul yolu trafiğe kapatıldı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "\"Kardeşim ( ) en sevdiğim varlık ( ) yarın askerden dönüyor.\" cümlesinde yay ayraçla gösterilen yerlere virgül (,) yerine aşağıdakilerden hangisi getirilebilir?",
+    "secenekler": {
+      "A": "Köşeli ayraç",
+      "B": "Eğik çizgi",
+      "C": "Kısa çizgi",
+      "D": "Noktalı virgül"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde kesme işareti yanlış kullanılmıştır?",
+    "secenekler": {
+      "A": "TDK'nin yeni yayınlarını inceledin mi?",
+      "B": "Zeynep Hanım'a bu dosyaları iletiniz.",
+      "C": "1999'da yaşananları kimse unutamadı.",
+      "D": "Türkçe'nin kurallarını öğrenmek çok keyifli."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Şiir dizeleri yan yana yazıldığında aralarına hangi noktalama işareti konur?",
+    "secenekler": {
+      "A": "Eğik çizgi",
+      "B": "Dik çizgi",
+      "C": "Kısa çizgi",
+      "D": "Virgül"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde tırnak işareti (\") gereksiz kullanılmıştır?",
+    "secenekler": {
+      "A": "Yazarın \"Çalıkuşu\" adlı eserini okudum.",
+      "B": "Öğretmenimiz: \"Yarın sınav olacaksınız.\" dedi.",
+      "C": "Dışarı çıktığımda hava \"çok\" güzeldi.",
+      "D": "Atatürk'ün \"Ne mutlu Türk'üm diyene!\" sözü çok anlamlıdır."
+    },
+    "dogru_cevap": "C"
+  }
+]

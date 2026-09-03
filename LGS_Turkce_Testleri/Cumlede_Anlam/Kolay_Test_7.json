@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde eylemin yapılış amacı verilmiştir?",
+    "secenekler": {
+      "A": "Çok yorulduğu için koltukta uyuyakaldı.",
+      "B": "Misafirleri karşılamak üzere havaalanına doğru yola çıktı.",
+      "C": "Güneş açarsa bahçedeki çiçekleri güzelce sularız.",
+      "D": "Trafik kazası nedeniyle yol uzun süre trafiğe kapandı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde koşula bağlılık vardır?",
+    "secenekler": {
+      "A": "Uykusunu alamadığı için sabah çok huysuzdu.",
+      "B": "Yeni bir telefon almak hayaliyle para biriktiriyor.",
+      "C": "Sınavı kazandığından dolayı hepimiz çok sevindik.",
+      "D": "Erken kalkarsan benimle sabah yürüyüşüne gelebilirsin."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Hangi cümlede neden-sonuç (sebep-sonuç) ilişkisi vardır?",
+    "secenekler": {
+      "A": "Kardeşini okuldan almak maksadıyla evden ayrıldı.",
+      "B": "Soruları dikkatli okursan hata yapma payın azalır.",
+      "C": "Çok üşüdüğünden kalın paltosunu üzerine geçirdi.",
+      "D": "Bu sene yaz tatilini memleketinde geçirmeyi planlıyor."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde karşılaştırma yapılmıştır?",
+    "secenekler": {
+      "A": "Roman okumak bana şiir okumaktan çok daha keyifli geliyor.",
+      "B": "Kuşların cıvıltısı sabahın erken saatlerinde yankılandı.",
+      "C": "Baharın gelmesiyle doğa yeniden yeşermeye başladı.",
+      "D": "Akşam yemeklerini genellikle hafif yiyeceklerle geçiştirir."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi öznel bir yargı bildirmektedir?",
+    "secenekler": {
+      "A": "İstiklal Marşı'mızın şairi Mehmet Akif Ersoy'dur.",
+      "B": "Bu tablodaki renk uyumu insanın ruhunu dinlendiriyor.",
+      "C": "Yazarın son kitabı yüz seksen sayfadan oluşuyor.",
+      "D": "Filmdeki olaylar on dokuzuncu yüzyılda geçmektedir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi nesnel bir anlatıma sahiptir?",
+    "secenekler": {
+      "A": "Yazarın akıcı üslubu sayesinde kitabı bir çırpıda okudum.",
+      "B": "Dünyanın en güzel şehri hiç şüphesiz ki İstanbul'dur.",
+      "C": "Şiirlerindeki duygu yoğunluğu okuyucuyu adeta büyülüyor.",
+      "D": "Dünya, kendi ekseni etrafındaki dönüşünü yirmi dört saatte tamamlar."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'varsayım' anlamı vardır?",
+    "secenekler": {
+      "A": "Diyelim ki uçağı kaçırdın, o zaman ne yapmayı düşünüyorsun?",
+      "B": "Keşke ben de sizinle tiyatroya gelebilseydim.",
+      "C": "Umarım yeni işinde çok başarılı olur ve mutlu olursun.",
+      "D": "Eminim o da bu konudaki hatasını en kısa sürede fark edecektir."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'azımsama (miktar olarak yetersiz bulma)' anlamı vardır?",
+    "secenekler": {
+      "A": "Bu kadar zor bir soruyu sadece sen çözebilirsin.",
+      "B": "Bütün gün çalışıp sadece iki sayfa mı yazı yazabildin?",
+      "C": "Bana verdiğin bu kadarcık parayla ay sonu nasıl gelir?",
+      "D": "Sen de kendini çok zeki sanıyorsun herhalde!"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "'Sınavı kazananlar arasında Ayşe de vardı.' cümlesinden aşağıdaki yargılardan hangisi çıkarılabilir?",
+    "secenekler": {
+      "A": "Ayşe sınavı birincilikle kazanmıştır.",
+      "B": "Ayşe dışında sınavı kazanan başka kişiler de vardır.",
+      "C": "Sınavı sadece Ayşe kazanabilmiştir.",
+      "D": "Ayşe bu sınava ilk defa girmiştir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde doğrudan anlatım kullanılmıştır?",
+    "secenekler": {
+      "A": "Öğretmenimiz yarın sınav yapacağını bize önceden duyurdu.",
+      "B": "Babam, akşam erken gelmemiz gerektiğini sıkı sıkı tembihledi.",
+      "C": "Arkadaşım, hafta sonu sinemaya gidebileceğimizi söyledi.",
+      "D": "Müdürümüz kürsüye çıkıp, 'Yarın okullar tatil edildi.' dedi."
+    },
+    "dogru_cevap": "D"
+  }
+]

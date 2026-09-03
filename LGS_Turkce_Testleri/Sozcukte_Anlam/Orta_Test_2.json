@@ -1,0 +1,117 @@
+{
+  "testId": "Orta_Test_2",
+  "subject": "Sözcükte Anlam",
+  "difficulty": "Orta",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'kurumak' sözcüğü mecaz anlamda kullanılmıştır?",
+      "options": {
+        "A": "Onun bu vefasızlığı karşısında içimdeki tüm sevgi kurudu.",
+        "B": "Balkona astığı çamaşırlar rüzgârın etkisiyle çabucak kurumuş.",
+        "C": "Bahçedeki yaşlı ağacın dalları susuzluktan kurudu.",
+        "D": "Güneşin altında kalan göl birkaç hafta içinde kurudu."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'sarmak' sözcüğü 'kuşatmak, çevresini çevirmek' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Yarayı temiz ve steril bir bezle sardı.",
+        "B": "Düşman askerleri sabahın erken saatlerinde kalenin etrafını sardı.",
+        "C": "Bu kitap beni o kadar sardı ki elimden bırakamıyorum.",
+        "D": "Soğuktan üşümesin diye bebeği kalın bir battaniyeye sardı."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "Aşağıdaki sözcük çiftlerinden hangisi zıt anlamlıdır?",
+      "options": {
+        "A": "Neşeli - Mutlu",
+        "B": "Siyah - Kara",
+        "C": "İleri - Geri",
+        "D": "Gitmek - Gelmemek"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'yaşlı' kelimesinin eş anlamlısı kullanılmıştır?",
+      "options": {
+        "A": "Gençler her zaman enerjik ve heyecanlıdır.",
+        "B": "Çocuklar parkta neşeyle oynuyor.",
+        "C": "Yetişkinler bu konuda çok daha dikkatli olmalı.",
+        "D": "İhtiyar adam bastonuna dayanarak yavaşça yürüyordu."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "Aşağıdaki cümlelerin hangisinde sesteş sözcükler bir arada kullanılmıştır?",
+      "options": {
+        "A": "Sınavdan yüz alınca çok mutlu oldu, sevinçle denizde yüzdü.",
+        "B": "Yüzünde tatlı bir tebessüm vardı ve aynada kendi yüzüne baktı.",
+        "C": "Bu kumaşın yüzü çok yumuşak, yastığın yüzünü de değiştirdi.",
+        "D": "Suyun yüzünde yapraklar birikmiş, gölün yüzü buz tutmuştu."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "Aşağıdaki deyimlerden hangisi 'söylenenleri hiç dikkate almamak, umursamamak' anlamındadır?",
+      "options": {
+        "A": "Kulak kabartmak",
+        "B": "Kulak asmamak",
+        "C": "Kulağına küpe olmak",
+        "D": "Kulak vermek"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "Aşağıdaki atasözlerinden hangisi 'bir işi zamanında yapmanın önemini' vurgular?",
+      "options": {
+        "A": "Damlaya damlaya göl olur.",
+        "B": "Ağaç yaşken eğilir.",
+        "C": "Demir tavında dövülür.",
+        "D": "Sakla samanı, gelir zamanı."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "Aşağıdaki cümlelerin hangisinde terim anlamlı bir sözcük kullanılmamıştır?",
+      "options": {
+        "A": "Üçgenin iç açıları toplamı 180 derecedir.",
+        "B": "Şiirin son kıtası okuyan herkesi çok duygulandırdı.",
+        "C": "Maçta hakem tereddütsüz penaltı noktasını gösterdi.",
+        "D": "Bugün hava çok güneşli ve oldukça sıcaktı."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'ağır' sözcüğü 'yavaş' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Elindeki ağır çantayı yorulunca yere bıraktı.",
+        "B": "Dedem ağır adımlarla merdivenlerden yukarı çıkıyordu.",
+        "C": "Fabrikada insanı rahatsız eden ağır bir koku hakimdi.",
+        "D": "İşçiler çok ağır şartlar altında çalışmak zorunda kalıyor."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 10,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'düşmek' sözcüğü 'eksilmek, azalmak' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Çocuk koşarken ayağı takılınca yere düştü.",
+        "B": "Ağaçtan sararan yapraklar bir bir düştü.",
+        "C": "Bu yıl ülkedeki enflasyon oranı nihayet biraz düştü.",
+        "D": "Miras paylaşımında benim payıma sadece bir araba düştü."
+      },
+      "correctAnswer": "C"
+    }
+  ]
+}

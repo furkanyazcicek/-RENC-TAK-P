@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde neden-sonuç (sebep-sonuç) ilişkisi vardır?",
+    "secenekler": {
+      "A": "Okula yetişmek için adımlarını hızlandırdı.",
+      "B": "Düzenli beslenirsen daha sağlıklı bir hayata sahip olursun.",
+      "C": "Bu hafta sonu müzeye gitmeyi çok istiyordum.",
+      "D": "Hastalandığı için dünkü önemli toplantıya katılamadı."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde eylemin yapılış amacı verilmiştir?",
+    "secenekler": {
+      "A": "Zayıflamak maksadıyla haftalardır sıkı bir diyet yapıyor.",
+      "B": "Soğuk su içtiğinden bademcikleri hemen şişti.",
+      "C": "Güneş açarsa bahçedeki çiçekleri sularız.",
+      "D": "Trafik sıkışık olduğu için eve geç ulaştık."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde koşula (şarta) bağlılık söz konusudur?",
+    "secenekler": {
+      "A": "Çok yorulduğu için koltuğa oturur oturmaz uyuyakaldı.",
+      "B": "Düzenli kitap okursan kelime dağarcığın hızla gelişir.",
+      "C": "Yurt dışına gitmek için pasaport başvurusu yaptı.",
+      "D": "Yeni aldığı bilgisayarın özellikleri oldukça iyiydi."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde karşılaştırma yapılmıştır?",
+    "secenekler": {
+      "A": "Bu yıl kış mevsimi oldukça çetin geçecek gibi görünüyor.",
+      "B": "Yazarın anlattığı hikayeler herkesin ilgisini çekiyor.",
+      "C": "Bu roman, yazarın diğer eserlerinden daha sürükleyici.",
+      "D": "Akşam rüzgarı denizden serin serin esiyordu."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi öznel bir yargı bildirmektedir?",
+    "secenekler": {
+      "A": "Türkiye Büyük Millet Meclisi 23 Nisan 1920'de açıldı.",
+      "B": "Bu kitapta toplam on iki farklı kısa öykü yer alıyor.",
+      "C": "Film, gişede bir milyon izleyici barajını aştı.",
+      "D": "Gün batımını izlemek bana tarif edilmez bir huzur veriyor."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi nesnel bir anlatıma sahiptir?",
+    "secenekler": {
+      "A": "Yazarın son şiir kitabı yüz yirmi sayfadan oluşuyor.",
+      "B": "Şiirlerindeki duygu yoğunluğu okuru adeta büyülüyor.",
+      "C": "En güzel tatil, deniz kenarında yapılan tatildir.",
+      "D": "Bu tablo, ressamın ruh halini çok iyi yansıtıyor."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "'Toplantıya Ahmet de katılacakmış.' cümlesinden aşağıdaki yargılardan hangisi kesin olarak çıkarılabilir?",
+    "secenekler": {
+      "A": "Ahmet toplantıya katılmayı çok istemektedir.",
+      "B": "Toplantıya Ahmet dışında başkaları da katılacaktır.",
+      "C": "Toplantı sadece Ahmet'in katılımıyla gerçekleşecektir.",
+      "D": "Ahmet, toplantıya ilk defa katılacaktır."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'olasılık (ihtimal)' anlamı vardır?",
+    "secenekler": {
+      "A": "Bu soruyu sadece sen çözebilirsin, sana güveniyorum.",
+      "B": "Keşke ben de sizinle o kampa katılabilseydim.",
+      "C": "Yarın hava güneşli olursa pikniğe gidebiliriz.",
+      "D": "Düşün ki tüm paranı kaybettin, ne yapardın?"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'öneri' söz konusudur?",
+    "secenekler": {
+      "A": "O kadar çok yorulmuştu ki adım atacak hali kalmamıştı.",
+      "B": "Sanki bu olayların sorumlusu benmişim gibi davranıyor.",
+      "C": "Belki yarınki sınav düşündüğümüzden daha kolay olur.",
+      "D": "Soruları çözerken önemli anahtar kelimelerin altını çizmeni tavsiye ederim."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'hayıflanma (kendi kendine üzülme)' anlamı vardır?",
+    "secenekler": {
+      "A": "Keşke gençliğimde vakit varken bir yabancı dil daha öğrenseydim.",
+      "B": "Sana bu sırrımı vermemem gerektiğini şimdi daha iyi anlıyorum.",
+      "C": "Eminim o da bu konudaki hatasını kısa sürede fark edecektir.",
+      "D": "Nasıl olur da benim gibi tecrübeli birini takıma almazlar!"
+    },
+    "dogru_cevap": "A"
+  }
+]

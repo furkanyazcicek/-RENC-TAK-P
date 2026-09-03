@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Tarihi kazılar yapıldıkça(I) geçmişin gizemleri aydınlanıyor, unutulmuş(II) medeniyetler yeniden gün yüzüne çıkıyor. Bu parçadaki numaralanmış fiilimsilerin türleri sırasıyla aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Zarf-fiil - Zarf-fiil",
+      "B": "Sıfat-fiil - İsim-fiil",
+      "C": "Zarf-fiil - Sıfat-fiil",
+      "D": "İsim-fiil - Sıfat-fiil"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Müzeler, toplumların kültürel mirasını koruyan en önemli kurumlardır. Aşağıdaki cümlelerin hangisinde bu cümledeki ile aynı türde bir fiilimsi vardır?",
+    "secenekler": {
+      "A": "Eski çağlardan kalma heykelleri büyük bir özenle taşıdılar.",
+      "B": "Kazı alanında buldukları çömlekleri inceliyorlar.",
+      "C": "Hititlerden kalan tabletler çok değerli bilgiler sunuyor.",
+      "D": "Arkeologlar yıllarca bıkıp usanmadan çalıştılar."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde isim-fiil ekini alan bir sözcük eylem anlamını yitirip kalıcı isim olmuştur?",
+    "secenekler": {
+      "A": "Geçmişi araştırmak için sabırlı olmak gerekir.",
+      "B": "Eski yazıtları okuma işi uzmanlık ister.",
+      "C": "Müzeye giriş ücretini ödedikten sonra tura katıldık.",
+      "D": "Kazıda çıkarılan kazmayı sergilemek üzere ayırdılar."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "'-dık / -dik' eki ile oluşturulan sıfat-fiil aşağıdaki cümlelerin hangisinde bir ismin yerini tutarak adlaşmış sıfat-fiil olmuştur?",
+    "secenekler": {
+      "A": "Gördüklerini not defterine dikkatlice yazıyordu.",
+      "B": "Okuduğu tarihi kitaplardan çok etkilendi.",
+      "C": "Gezdiğimiz antik kentlerin hikâyesi büyüleyiciydi.",
+      "D": "Bilinen gerçekler ışığında tarihi yeniden yorumlamalıyız."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Zarf-fiiller, cümleyi zaman ve durum yönünden tamamlar. Buna göre aşağıdakilerin hangisinde zarf-fiil cümleye diğerlerinden farklı bir anlam katmıştır?",
+    "secenekler": {
+      "A": "Kazı başkanı gelince tüm ekip toplantı çadırına geçti.",
+      "B": "Bölgeyi köşe bucak arayarak yeni kalıntılara ulaştılar.",
+      "C": "Güneş doğarken kazı çalışmalarına yeniden başladık.",
+      "D": "Turistler müzeye girdiğinde kapılar henüz yeni açılmıştı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdakilerin hangisinde fiilimsi kullanılmamıştır?",
+    "secenekler": {
+      "A": "Tarihi İpek Yolu, tüccarların en önemli güzergâhıydı.",
+      "B": "Anadolu'da kurulmuş birçok uygarlık vardır.",
+      "C": "Göbeklitepe, tarihin sıfır noktası olarak bilinir.",
+      "D": "Bu kılıcı yapan usta gerçekten büyük bir zanaatkârmış."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "'Tarihi öğrenmek(I), bugünü anlamamızı(II) ve geleceğe güvenle bakmamızı(III) sağlar.' cümlesindeki numaralanmış sözcüklerden hangileri isim-fiildir?",
+    "secenekler": {
+      "A": "Yalnız I",
+      "B": "I ve II",
+      "C": "II ve III",
+      "D": "I, II ve III"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki dizelerin veya cümlelerin hangisinde bağ-fiil (zarf-fiil) vardır?",
+    "secenekler": {
+      "A": "Antik tiyatroda yankılanan sesler tüylerimi ürpertti.",
+      "B": "Müze müdürü bizlere nadide eserleri tek tek tanıttı.",
+      "C": "Tarihi çeşmeden su içip yolumuza devam ettik.",
+      "D": "Yıkılmış sütunlar eski Roma mimarisinin izlerini taşıyordu."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Hangi seçenekteki cümlede birden fazla fiilimsi kullanılmıştır?",
+    "secenekler": {
+      "A": "Mimar Sinan, yaptığı eserlerle ölümsüzleşmiş bir dahidir.",
+      "B": "Tarihi köprünün restorasyonu önümüzdeki yıl tamamlanacak.",
+      "C": "Kültürel değerlerimize sahip çıkmalıyız.",
+      "D": "Padişahın fermanı tüm Anadolu'ya ulaştı."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "'Yapılacak kazılarla' söz öbeğindeki altı çizili sıfat-fiilin (yapılacak) eki, aşağıdakilerin hangisinde çekimli fiil (gelecek zaman) olarak kullanılmıştır?",
+    "secenekler": {
+      "A": "Bu bölgede gün yüzüne çıkarılacak çok eser var.",
+      "B": "Gidilecek yolların haritası rehberimizde mevcuttu.",
+      "C": "Yarın sabah kazı ekibi müzeye doğru hareket edecek.",
+      "D": "Görülecek tarihi mekânların bir listesini yaptık."
+    },
+    "dogru_cevap": "C"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Olimpiyatlarda kazanılan madalyalar tablosunda X ülkesi 10 Altın, 5 Gümüş, 2 Bronz; Y ülkesi 5 Altın, 10 Gümüş, 10 Bronz almıştır. Sıralamanın altın sayısına göre yapıldığı kuralına göre kim birinci olur?",
+    "A": "X ülkesi",
+    "B": "Y ülkesi",
+    "C": "İkisi berabere kalır",
+    "D": "En çok bronz alan kazanır",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Gençlerin ilgi duyduğu sporlar pasta grafiğinde Futbol %45, Basketbol %25, Voleybol %20, Yüzme %10'dur. Grafiğe göre aşağıdaki yargılardan hangisine ulaşılabilir?",
+    "A": "Yüzme sporu çok tehlikelidir.",
+    "B": "Voleybol ve basketbolun toplamı futbolu geçmektedir.",
+    "C": "Futbol en popüler spor dalıdır.",
+    "D": "Gençlerin çoğu hiçbir sporla ilgilenmemektedir.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Futbol sahası krokisinde kaleye en yakın alan 'Altıpas', ceza sahası çizgisi dışında kalan geniş bölge 'Orta Saha'dır. Bir oyuncunun uzaktan şut atması için nerede olması gerekir?",
+    "A": "Altıpas içinde",
+    "B": "Ceza sahası dışında",
+    "C": "Kale çizgisinde",
+    "D": "Yedek kulübesinde",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Okçuluk kuralları infografiklerinde hedef tahtasının merkezi sarı (10 puan), dışı kırmızı (8 puan), en dışı beyaz (1 puan) olarak renklendirilmiştir. Kazanmak isteyen bir okçunun nereyi hedeflemesi mantıklıdır?",
+    "A": "Beyaz",
+    "B": "Kırmızı",
+    "C": "Siyah",
+    "D": "Sarı",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Yüzme stilleri görselinde kelebek stilde kollar iki yandan aynı anda atılırken, serbest stilde kollar sırayla atılmaktadır. Görsele göre stiller arasındaki temel fark nedir?",
+    "A": "Kol ve vücut hareketlerinin mekaniği",
+    "B": "Havuzun uzunluğu",
+    "C": "Suyun sıcaklık derecesi",
+    "D": "Giyilen mayonun rengi",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Dünya kupası tarihi zaman çizelgesinde turnuvanın 4 yılda bir yapıldığı gösterilmektedir. 2018'deki kupadan sonra 2020'de kupa yapılmamasının sebebi çizgideki hangi kurala bağlıdır?",
+    "A": "Savaş çıkması",
+    "B": "Ülkelerin katılmaması",
+    "C": "Periyodik olarak 4 yılda bir düzenlenmesi",
+    "D": "Futbol toplarının patlaması",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Spor dallarına göre harcanan kalori tablosunda 1 saat koşu 600 kcal, bisiklet 450 kcal, yürüyüş 250 kcal yaktırmaktadır. Kilo vermek isteyen birine en çok hangisi önerilir?",
+    "A": "Yürüyüş",
+    "B": "Koşu",
+    "C": "Bisiklet",
+    "D": "Masa tenisi",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Voleybol turnuvası afişinde bir filenin üzerinden topa yükselen bir sporcu silüeti ve 'Smaçlarla Zafere!' sloganı vardır. Bu afişin amacı nedir?",
+    "A": "Voleybolun çok zor olduğunu anlatmak",
+    "B": "Futbol maçlarına seyirci toplamak",
+    "C": "Smaç vurmanın yasak olduğunu belirtmek",
+    "D": "Etkinliğin heyecanlı ve rekabetçi olacağını vurgulamak",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Düzenli egzersizin kaslara etkisi infografiklerinde kas liflerinin kalınlaştığı ve güçlendiği mikroskobik çizimlerle gösterilmiştir. Bu görsele göre egzersiz ne işe yarar?",
+    "A": "Vücudun fiziksel direncini ve kuvvetini artırır.",
+    "B": "Kasların zayıflayıp erimesine neden olur.",
+    "C": "Sadece kemikleri güçlendirir.",
+    "D": "Uyku düzenini bozar.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Milli takımın son 10 yıldaki başarı grafiğinde çizgiler bazen zirveye çıkıp bazen çok aşağı inmiştir. Grafiğin başlığı 'İstikrarsız Başarı'dır. Bu başlığın kullanılma nedeni nedir?",
+    "A": "Takımın her zaman şampiyon olması",
+    "B": "Başarı seviyesinin sürekli bir dalgalanma içinde olması",
+    "C": "Hiç madalya kazanılamaması",
+    "D": "Antrenörlerin sürekli değişmesi",
+    "cevap": "B"
+  }
+]

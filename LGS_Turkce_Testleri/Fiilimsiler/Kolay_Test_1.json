@@ -1,0 +1,117 @@
+{
+  "test_adi": "Fiilimsiler Kolay Test 1",
+  "konu": "Fiilimsiler",
+  "zorluk": "Kolay",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Fiilimsiler (eylemsiler), fiillere getirilen birtakım eklerle oluşturulan; cümlede isim, sıfat ve zarf görevinde kullanılan sözcüklerdir.\nBuna göre aşağıdakilerin hangisinde fiilimsi yoktur?",
+      "secenekler": {
+        "A": "Ağaçtaki kuşlar neşeyle ötüyordu.",
+        "B": "Kitap okumak insanın ufkunu genişletir.",
+        "C": "Beklenen misafirler nihayet geldi.",
+        "D": "Koşarak yanıma kadar geldi."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "İsim-fiiller, fiil kök veya gövdelerine '-ma, -ış, -mak' eklerinin getirilmesiyle oluşur.\nAşağıdaki cümlelerin hangisinde isim-fiil kullanılmıştır?",
+      "secenekler": {
+        "A": "Olanları duyunca çok üzüldü.",
+        "B": "Dışarıda dondurucu bir soğuk var.",
+        "C": "Yüzmek en sevdiğim spordur.",
+        "D": "Sınavdan yüksek not alınca sevindi."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Sıfat-fiiller, fiillere getirilen '-an, -ası, -mez, -ar, -dik, -ecek, -miş' ekleriyle yapılır.\nHangi seçenekte sıfat-fiil vardır?",
+      "secenekler": {
+        "A": "Akşam olunca eve döndük.",
+        "B": "Kırılan vazoyu çöpe attım.",
+        "C": "Bahçede biraz yürüdük.",
+        "D": "Şiir okumayı çok seviyor."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Zarf-fiiller cümleye zaman veya durum anlamı katar.\n'Sınıfa girer girmez yerine oturdu.' cümlesindeki zarf-fiil cümleye hangi anlamı katmıştır?",
+      "secenekler": {
+        "A": "Sebep",
+        "B": "Durum",
+        "C": "Miktar",
+        "D": "Zaman"
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Bazı sözcükler fiilimsi eklerini almasına rağmen kalıplaşarak kalıcı isim olur.\nAşağıdakilerden hangisinde bu duruma örnek vardır?",
+      "secenekler": {
+        "A": "Dolmuş durağında bekliyoruz.",
+        "B": "Bütün gün evde oturduk.",
+        "C": "Ders çalışmak için kütüphaneye gitti.",
+        "D": "Yıkanmış çamaşırları astı."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "'Tanıdık yüzler görmek insanı mutlu eder.' cümlesinde kaç tane fiilimsi vardır?",
+      "secenekler": {
+        "A": "2",
+        "B": "1",
+        "C": "3",
+        "D": "4"
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde '-ecek, -acak' eki farklı bir görevde kullanılmıştır?",
+      "secenekler": {
+        "A": "Gelecek yıl liseye başlayacağım.",
+        "B": "Akacak kan damarda durmaz.",
+        "C": "Yapacak işimiz çok bugün.",
+        "D": "Babam yarın Ankara'ya gidecek."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "'Gülerek yanımıza geldi ve olanları anlattı.' cümlesindeki fiilimsinin türü nedir?",
+      "secenekler": {
+        "A": "İsim-fiil",
+        "B": "Sıfat-fiil",
+        "C": "Zarf-fiil",
+        "D": "Çekimli fiil"
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Aşağıdakilerin hangisinde farklı türde fiilimsiler bir arada kullanılmıştır?",
+      "secenekler": {
+        "A": "Okumak ve yazmak onun en büyük tutkusuydu.",
+        "B": "Konuşan adamı dinlerken uyuya kalmış.",
+        "C": "Gülerek içeri girdi, ağlayarak çıktı.",
+        "D": "Gidilesi yerleri bir bir not etti."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "'Onunla tanışmayı çok istiyordum.' cümlesindeki altı çizili sözcük (tanışmayı) hangi tür fiilimsidir?",
+      "secenekler": {
+        "A": "Sıfat-fiil",
+        "B": "Zarf-fiil",
+        "C": "İsim-fiil",
+        "D": "Adlaşmış sıfat-fiil"
+      },
+      "dogru_cevap": "C"
+    }
+  ]
+}

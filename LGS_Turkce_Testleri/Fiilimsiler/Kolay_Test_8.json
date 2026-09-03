@@ -1,0 +1,82 @@
+[
+  {
+    "soru": "\"Sabah erkenden yola çıkmak en sevdiğim alışkanlıktır.\" cümlesindeki altı çizili sözcüğün türü aşağıdakilerden hangisidir?",
+    "A": "Sıfat-fiil",
+    "B": "İsim-fiil",
+    "C": "Zarf-fiil",
+    "D": "Çekimli fiil",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde sıfat-fiil kullanılmıştır?",
+    "A": "Şehri gezerken yerel halkla sohbet ettik.",
+    "B": "Çadır kurmak için düz bir alan aradık.",
+    "C": "Gidilecek yerler listesini önceden hazırlamıştı.",
+    "D": "Tren garına varınca biletleri kontrol etti.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil kullanılmıştır?",
+    "A": "Bilinmeyen kültürleri keşfetmek harika bir duygu.",
+    "B": "Yolculuk esnasında okuyacağı kitabı çantasına koydu.",
+    "C": "Gezginler sırt çantalarını alıp tura başladılar.",
+    "D": "Haritaya bakarak gideceğimiz yönü bulduk.",
+    "cevap": "D"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde fiilimsi yoktur?",
+    "A": "Turistler büyük bir heyecanla otobüse bindi.",
+    "B": "Müzeleri gezmek bütün günümüzü aldı.",
+    "C": "Rehberin anlattığı hikayeler herkesi etkiledi.",
+    "D": "Köye yaklaşırken yemyeşil manzaralar gördük.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde farklı türde bir fiilimsi vardır?",
+    "A": "Farklı ülkeleri gezen insanlar yeni şeyler öğrenir.",
+    "B": "Gidilmedik sokak bırakmamak için çok yürüdük.",
+    "C": "Bir ağaç gölgesinde dinlenip yolumuza devam ettik.",
+    "D": "Gökyüzünde uçan kuşları izleyerek hayallere daldı.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde fiilimsi eklerinden birini aldığı hâlde kalıplaşarak bir varlığın adı olan (kalıcı isim) sözcük vardır?",
+    "A": "Yolcular, saat ondaki dolmuşa yetişmek için koştu.",
+    "B": "Tarihi yerleri gezmek insana ufuk katar.",
+    "C": "Pusula kullanarak yönlerini kolayca buldular.",
+    "D": "Kamp alanında ateş yakmak kesinlikle yasaktı.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Sıfat-fiillerin nitelediği isim düştüğünde sıfat-fiil adlaşır. Aşağıdaki cümlelerin hangisinde adlaşmış sıfat-fiil vardır?",
+    "A": "Dar sokaklarda yürüyüş yapmayı çok severim.",
+    "B": "Dünyada yeni yerler keşfedenler her zaman mutlu olur.",
+    "C": "Bileti iptal edilen yolcular firmaya şikayette bulundu.",
+    "D": "Valizini hazırlamadan önce hava durumuna baktı.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil cümleye durum anlamı katmıştır?",
+    "A": "Güneş doğunca yola çıkmak için sözleştik.",
+    "B": "Uçak inmeden önce kemerlerinizi bağlayınız.",
+    "C": "Tüm şehri yürüyerek büyük bir keyifle gezdik.",
+    "D": "Otobüs mola verdiğinde herkes aşağıya indi.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil cümleye zaman anlamı katmıştır?",
+    "A": "Fotoğraf çekerek o güzel anları ölümsüzleştirdi.",
+    "B": "Dağa tırmanıp zirveden manzarayı seyrettik.",
+    "C": "Hiç durmaksızın yedi kilometre boyunca yürüdüler.",
+    "D": "Güneş batarken kente vardığımız için şanslıydık.",
+    "cevap": "D"
+  },
+  {
+    "soru": "\"Şehri keşfetmek için elindeki haritaya bakan turist, yolunu kaybetti.\" cümlesinde kaç tane fiilimsi kullanılmıştır?",
+    "A": "1",
+    "B": "2",
+    "C": "3",
+    "D": "4",
+    "cevap": "B"
+  }
+]

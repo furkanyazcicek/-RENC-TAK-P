@@ -1,0 +1,117 @@
+{
+  "testId": "Orta_Test_10",
+  "subject": "Sözcükte Anlam",
+  "difficulty": "Orta",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'aydınlık' sözcüğü mecaz (ileri, çağdaş, güzel) anlamda kullanılmıştır?",
+      "options": {
+        "A": "O, tüm ömrü boyunca ülkesinin aydınlık geleceği için durmadan çalıştı.",
+        "B": "Yeni boyanan ve ışıklandırılan geniş oda artık çok daha aydınlık görünüyordu.",
+        "C": "Bahar mevsiminin serin ve aydınlık bir sabahında yola koyulduk.",
+        "D": "Sabah güneşi doğup bulutlar dağılınca etraf tamamen aydınlık oldu."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'pişmek' sözcüğü 'deneyim kazanmak, zorluklar içinde olgunlaşmak' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Akşam misafirler için hazırlanan yemek ocakta yavaş yavaş pişiyor.",
+        "B": "Piknikte ateşin üzerindeki mangalda etler tam kıvamında ve çok güzel pişti.",
+        "C": "Annemin fırına koyduğu çikolatalı kek beklediğimizden çok daha çabuk pişti.",
+        "D": "O da bu mesleğin zorluklarını görerek zamanla bu işte iyice pişecek."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "Aşağıdaki deyimlerden hangisi 'bir mesele üzerinde çokça düşünmek, çözüm aramak' anlamındadır?",
+      "options": {
+        "A": "Kafaya takmak",
+        "B": "Kafası karışmak",
+        "C": "Kafa yormak",
+        "D": "Kafası şişmek"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'beslemek' sözcüğü 'içinde yaşatmak, duyguyu büyütmek' anlamında (mecaz) kullanılmıştır?",
+      "options": {
+        "A": "Soğuk kış günlerinde mahalledeki sokak kedilerini her gün elleriyle beslerdi.",
+        "B": "Hayallerini gerçekleştirebileceğine dair içinde her zaman büyük bir umut besliyordu.",
+        "C": "Hasta olan çocuğunu iyileşmesi için sağlıklı ve vitaminli gıdalarla besledi.",
+        "D": "Aldığı sevimli yavru köpeği evin geniş ve güvenli bahçesinde özenle besliyor."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'düşünmek' sözcüğü 'tasarlamak, niyet etmek, planlamak' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Bu yaz, yorucu bir yılın ardından uzun bir tatile gitmeyi düşünüyorum.",
+        "B": "Oturduğu koltuktan hiç kalkmadan eski anılara dalarak saatlerce düşündü.",
+        "C": "Bana sunduğun bu cazip iş teklifini karara bağlamak için biraz düşünmem gerek.",
+        "D": "Pencereden dışarı bakarken çocukluğundaki o güzel geçmiş günleri düşünüp durdu."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "Aşağıdaki atasözlerinden hangisi 'yardımlaşma ve dayanışma' temasını işlemektedir?",
+      "options": {
+        "A": "Ayağını yorganına göre uzat.",
+        "B": "Ak akçe kara gün içindir.",
+        "C": "Keskin sirke küpüne zarar.",
+        "D": "Bir elin nesi var, iki elin sesi var."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'kavuşmak' sözcüğü 'erişmek, arzulanan bir şeye sahip olmak' anlamındadır?",
+      "options": {
+        "A": "Ayrı şehirlere giden iki lise arkadaşı yıllar sonra aynı üniversitede kavuştu.",
+        "B": "Yıllarca süren uzun uğraşlar ve fedakârlıklar sonucu nihayet hayallerine kavuştu.",
+        "C": "Memleketteki ailesine yakında kavuşacağı için içi içine sığmıyor, çok mutluydu.",
+        "D": "Vatani görevini bitirip askerden dönen oğluna gözyaşları içinde hasretle kavuştu."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'bağlanmak' sözcüğü 'gönül bağı kurmak, çok sevmek' anlamında mecaz olarak kullanılmıştır?",
+      "options": {
+        "A": "Fırtına çıkma ihtimaline karşı kayık, kalın bir halatla iskeleye sıkıca bağlandı.",
+        "B": "Küçük çocuk yeni ayakkabısının bağcıkları çözülünce annesi tarafından yeniden bağlandı.",
+        "C": "Bu şirin Ege kasabasına ilk geldiği günden beri yürekten, kopmaz bir sevgiyle bağlandı.",
+        "D": "Taşınma sırasında eşyaların zarar görmemesi için paketler kalın bir iple sağlamca bağlandı."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'aramak' sözcüğü 'özlemek, bir şeyin eksikliğini hissetmek' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Okulda kaybettiği uğurlu kalemini eve gelince her yerde köşe bucak aradı.",
+        "B": "İnsan yaşlandıkça gençliğindeki o neşeli ve tasasız, eski güzel günleri çok arıyor.",
+        "C": "Ödevini hazırlamak için internette bu konuyu çeşitli ansiklopedik kaynaklardan aradı.",
+        "D": "Akşam işten çıkınca liseden eski arkadaşını telefonla arayıp halini hatırını sordu."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 10,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'vermek' sözcüğü 'ödemek, bedelini karşılamak' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Ağlayan küçük çocuğun eline susması için renkli ve güzel bir oyuncak verdi.",
+        "B": "Geçen hafta okumak için ödünç aldığı kalın kitabı bugün kütüphaneye geri verdi.",
+        "C": "Galeride gördüğü bu kırmızı spor arabaya peşin olarak yüz bin lira verdim.",
+        "D": "Yemek yerken boğazına bir şey takılınca kardeşine 'Bana biraz su verir misin?' dedi."
+      },
+      "correctAnswer": "C"
+    }
+  ]
+}

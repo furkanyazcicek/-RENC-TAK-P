@@ -1,0 +1,117 @@
+{
+  "testId": "Orta_Test_3",
+  "subject": "Sözcükte Anlam",
+  "difficulty": "Orta",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'bozulmak' sözcüğü mecaz anlamda kullanılmıştır?",
+      "options": {
+        "A": "Yaz sıcağında dışarıda kalan etler hemen bozulmuş.",
+        "B": "Arabanın motoru ıssız bir yolda aniden bozuldu.",
+        "C": "Sınavdan düşük not aldığını öğrenince morali çok bozuldu.",
+        "D": "Dolaptaki sebzeler uzun süre beklediği için bozulmuş."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'ışık' sözcüğü mecaz anlamda kullanılmıştır?",
+      "options": {
+        "A": "Güneşin sabah ışıkları tüm odayı aydınlattı.",
+        "B": "Elindeki fenerin zayıf ışığı yolu zor gösteriyordu.",
+        "C": "Ay ışığında sahilde uzun bir yürüyüş yaptık.",
+        "D": "O, fikirleriyle geleceğimize ışık tutan büyük bir insandı."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "Aşağıdaki cümlelerin hangisinde sesteş olan 'gül' sözcüğünün iki farklı anlamı (isim ve fiil) aynı seçenekte verilmiştir?",
+      "options": {
+        "A": "Bana her zaman içtenlikle gülerdi. / Bahçedeki kırmızı güller ne güzel açmış.",
+        "B": "Gülü seven dikenine katlanır. / Bu vazodaki gül çok güzel kokuyor.",
+        "C": "Yüzü hep güleçti, etrafına neşe saçardı. / Gülmek onun yüzüne çok yakışıyor.",
+        "D": "Anneme sarı güller aldım. / Kırlardan beyaz güller kopardım."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'yakın' sözcüğü 'mesafe olarak az olan' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Yakın bir zamanda seninle tekrar görüşüp konuşalım.",
+        "B": "Okulumuz evimize oldukça yakın olduğu için yürüyerek gidiyorum.",
+        "C": "Onunla çocukluktan beri çok yakın arkadaşız.",
+        "D": "Bu üzücü olaya çok yakın bir şahidim var."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "Aşağıdaki deyimlerden hangisi 'yetenekleri ve davranışlarıyla çevresindekilerin sevgisini, takdirini kazanmak' anlamındadır?",
+      "options": {
+        "A": "Göze batmak",
+        "B": "Gözden düşmek",
+        "C": "Göze girmek",
+        "D": "Göz yummak"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "Aşağıdaki ikilemelerden hangisi yansıma sözcüklerden oluşmamıştır?",
+      "options": {
+        "A": "Şırıl şırıl",
+        "B": "Patır kütür",
+        "C": "Gürül gürül",
+        "D": "Pırıl pırıl"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "Aşağıdaki ikilemelerden hangisi zıt anlamlı sözcüklerin bir araya gelmesiyle oluşmuştur?",
+      "options": {
+        "A": "İrili ufaklı",
+        "B": "Yalan yanlış",
+        "C": "Eş dost",
+        "D": "Akıl fikir"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "Aşağıdaki altı çizili kelimelerden hangisi soyut anlamlıdır?",
+      "options": {
+        "A": "Hafif bir rüzgar saçlarını savuruyordu.",
+        "B": "Sınavı kazanınca içini büyük bir sevinç kapladı.",
+        "C": "Odanın ortasındaki loş ışık gözlerini yoruyordu.",
+        "D": "Uzaklardan gelen trenin sesini duyduk."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'kırmak' sözcüğü 'gücendirmek, incitmek' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Çay bardağını elinden düşürüp parçalara ayırarak kırdı.",
+        "B": "Kışlık odunları sobaya atmak için baltayla kırdı.",
+        "C": "Gece yağan kar ve soğuk hava ağaçtaki cevizleri kırmış.",
+        "D": "Dün akşam bana söylediği sert sözlerle kalbimi çok kırdı."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 10,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'çekmek' sözcüğü 'katlanmak, dayanmak' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Bütün bu zorlukları ve acıları yıllarca tek başına çekti.",
+        "B": "Arızalanan arabayı dikkatlice yolun kenarına çekti.",
+        "C": "Tatil masrafları için bankadan bir miktar nakit para çekti.",
+        "D": "Manzara o kadar güzeldi ki peş peşe onlarca fotoğraf çekti."
+      },
+      "correctAnswer": "A"
+    }
+  ]
+}

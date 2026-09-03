@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'neden-sonuç' ilişkisi vardır?",
+    "secenekler": {
+      "A": "Öğrenciler dersi dikkatli dinlemedikleri için konuyu anlayamadılar.",
+      "B": "Başarılı olmak adına gecesini gündüzüne katarak çalışıyor.",
+      "C": "Düzenli kitap okursan kelime dağarcığın hızla gelişir.",
+      "D": "Sınavda heyecanını kontrol edebilenler her zaman bir adım öndedir."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Hangi cümlede 'amaç-sonuç' ilişkisi bulunmaktadır?",
+    "secenekler": {
+      "A": "Yorgunluktan gözleri kapandığından kitabı yarım bıraktı.",
+      "B": "Araştırma ödevini bitirmek üzere kütüphaneye gitti.",
+      "C": "Okullar açılınca kırtasiyelerdeki yoğunluk arttı.",
+      "D": "Zamanını iyi planlamazsan sınav yetiştirmekte zorlanırsın."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'varsayım' yapılmıştır?",
+    "secenekler": {
+      "A": "Sanırım bu yılki matematik soruları biraz daha zorlayıcı olacak.",
+      "B": "Bence eğitim, ailede başlar ve okulda şekillenerek devam eder.",
+      "C": "Tut ki sınavı kazandın, hangi şehre gitmeyi düşünüyorsun?",
+      "D": "Keşke ilkokul öğretmenimi yıllar sonra tekrar görebilsem."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Hangi cümlede bir 'öneri (tavsiye)' dile getirilmiştir?",
+    "secenekler": {
+      "A": "Ders çalışırken müzik dinlemek bazılarının odaklanmasını zorlaştırır.",
+      "B": "Paragraf sorularını çözerken önce soru kökünü okumalısınız.",
+      "C": "Herkesin öğrenme stili ve hızı birbirinden farklıdır.",
+      "D": "Okuma alışkanlığı kazanmak küçük yaşlarda daha kolaydır."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Aşağıdakilerin hangisinde 'ön yargı' anlamı vardır?",
+    "secenekler": {
+      "A": "Bu tempoyla çalışmaya devam edersen sınavı rahatlıkla geçersin.",
+      "B": "Ben eminim, bu çocuk o okulda da tutunamayıp geri dönecek.",
+      "C": "Dershaneye gitmektense kendi evimde çalışmayı tercih ederim.",
+      "D": "Eğitimde ezberci sistemin yerine analitik düşünme gelmelidir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru": "'Eğitim, meyvesi en geç toplanan ağaçtır.' cümlesiyle anlatılmak istenen aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Eğitim sürecinde çok çabuk pes edilmemelidir.",
+      "B": "Sadece iyi tohumlar güzel meyveler verir.",
+      "C": "Eğitimin birey üzerindeki olumlu sonuçları zamanla ortaya çıkar.",
+      "D": "Eğitim, doğa ile iç içe yapıldığında kalıcı olur."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Hangi cümlede 'koşul-sonuç' ilgisi vardır?",
+    "secenekler": {
+      "A": "Okuldaki tören yağmur yağdığı için iptal edildi.",
+      "B": "Öğretmenimiz konuları bitirmek maksadıyla ek ders yaptı.",
+      "C": "Son deneme sınavında istediği puanı alamayınca çok üzüldü.",
+      "D": "Yeni nesil soruları ancak okuma anlama becerin iyiyse çözebilirsin."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Aşağıdakilerin hangisinde 'pişmanlık' duygusu ağır basmaktadır?",
+    "secenekler": {
+      "A": "Yaz tatilinde eksik konularımı tamamlamam büyük bir hataydı, keşke biraz dinlenseydim.",
+      "B": "Bu kadar uzun süre ekran başında kalman gözlerine zarar verebilir.",
+      "C": "Sınav başvurularını zamanında yapmayı unutmayalım.",
+      "D": "Bugünkü aklım olsaydı, o kitabı daha dikkatli okurdum."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'tanım' yapılmıştır?",
+    "secenekler": {
+      "A": "Okumak, insanın ufkunu açan eşsiz bir eylemdir.",
+      "B": "Bazı öğrenciler görsel, bazıları ise işitsel öğrenmeye yatkındır.",
+      "C": "Başarı, belirlenen hedeflere ulaşmak için gösterilen çabanın sonucudur.",
+      "D": "Lise yılları, karakterin tam anlamıyla oturduğu en önemli dönemdir."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Aşağıdaki cümlelerin hangisinde dolaylı anlatım kullanılmıştır?",
+    "secenekler": {
+      "A": "Öğretmenimiz: 'Yarınki derse herkes hazırlıklı gelsin.' dedi.",
+      "B": "Atatürk, 'Hayatta en hakiki mürşit ilimdir.' demiştir.",
+      "C": "Müdür Bey törende uzun bir konuşma yaptı.",
+      "D": "Rehber öğretmen, planlı çalışmanın başarının anahtarı olduğunu söyledi."
+    },
+    "dogru_cevap": "D"
+  }
+]

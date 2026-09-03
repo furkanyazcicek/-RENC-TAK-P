@@ -1,0 +1,82 @@
+[
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi yükleminin türüne göre diğerlerinden farklıdır?",
+    "A": "Sabah erkenden kalkıp kahvaltısını yaptı.",
+    "B": "En sevdiği şey hafta sonları bisiklete binmekti.",
+    "C": "Bütün gün evde kitap okuyarak dinlendi.",
+    "D": "Arkadaşlarıyla buluşmak için hemen dışarı çıktı.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi kurallı bir cümledir?",
+    "A": "Çok güzeldi bugün okuduğum o roman.",
+    "B": "Gelmedi dünden beri beklediğim misafirler.",
+    "C": "Sıcak bir çay içmek içimi ısıttı hemen.",
+    "D": "Her gün düzenli olarak yürüyüş yaparım.",
+    "cevap": "D"
+  },
+  {
+    "soru": "Hangi seçenekteki cümle anlamına göre olumsuzdur?",
+    "A": "Buraların havası her zaman çok temizdir.",
+    "B": "Dün akşam izlediğimiz film hiç sıkıcı değildi.",
+    "C": "Yeni aldığı ayakkabıları çok beğendi.",
+    "D": "Zamanında yola çıkarsan otobüse yetişirsin.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde fiilimsi yoktur?",
+    "A": "Gülerek yanımıza kadar geldi.",
+    "B": "Akşam olunca herkes evine döner.",
+    "C": "Sınavı kazanmak için çok çalışıyor.",
+    "D": "Bugün hava oldukça güneşli ve sıcaktı.",
+    "cevap": "D"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi devrik bir isim cümlesidir?",
+    "A": "Soğuktu bugünlerde buraların havası.",
+    "B": "Yavaşça açtı odasının kapısını.",
+    "C": "Herkes neşeyle şarkı söylüyordu.",
+    "D": "Hızlı adımlarla yürüdü okula doğru.",
+    "cevap": "A"
+  },
+  {
+    "soru": "'Pazardan elma, armut ve üzüm aldım.' cümlesinin yapısı aşağıdakilerden hangisidir?",
+    "A": "Tek yüklemli cümle",
+    "B": "Fiilimsi bulunan cümle",
+    "C": "Birden çok yüklemli cümle",
+    "D": "Bağlacı olan cümle",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi anlamca olumlu, biçimce olumsuzdur?",
+    "A": "Bu konuyu seninle konuşmayacak değilim.",
+    "B": "Hiçbir zaman yalan söylemeyi sevmem.",
+    "C": "Böyle güzel bir havada evde oturulur mu?",
+    "D": "Ne kitap okudu ne de ders çalıştı.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki sıralı cümlelerin hangisinde özne ortaklığı vardır?",
+    "A": "Yağmur yağdı, yollar çamur oldu.",
+    "B": "Kapı çaldı, hemen gidip açtım.",
+    "C": "Çocuk düştü, annesi onu hemen kaldırdı.",
+    "D": "Güneş doğdu, etraf aydınlandı.",
+    "cevap": "B"
+  },
+  {
+    "soru": "'Kitap okumayı çok seviyorum çünkü bana yeni dünyalar sunuyor.' cümlesi yapısına göre nasıldır?",
+    "A": "Tek yüklemli cümle",
+    "B": "Fiilimsi bulunan cümle",
+    "C": "Birden çok yüklemli cümle",
+    "D": "Bağlacı olan cümle",
+    "cevap": "D"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi bir ünlem cümlesidir?",
+    "A": "Yarın sabah erkenden yola çıkacağız.",
+    "B": "Eyvah, anahtarımı evde unuttum!",
+    "C": "Bize ne zaman geleceksiniz?",
+    "D": "Çok yorucu bir günün ardından uyuyakaldı.",
+    "cevap": "B"
+  }
+]

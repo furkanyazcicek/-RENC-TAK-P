@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi yüklemin türüne göre diğerlerinden farklıdır?",
+    "A": "Yağmur dindi.",
+    "B": "Toprak kokusu yayıldı.",
+    "C": "Doğa harikaydı.",
+    "D": "Çiçekler açtı.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi kurallı bir cümle değildir?",
+    "A": "Güneş doğdu.",
+    "B": "Coşkuyla akıyordu nehir.",
+    "C": "Dağlar karlıydı.",
+    "D": "Kuşlar ötüşüyordu.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "'Rüzgâr esince yapraklar döküldü.' cümlesi yapısına göre içinde fiilimsi bulunan (birleşik) bir cümledir. Buna göre aşağıdakilerden hangisi yapısına göre diğerlerinden farklıdır?",
+    "A": "Bulutlar dağılınca seviniriz.",
+    "B": "Kış gelmeden hazırlık yaptık.",
+    "C": "Yağmur yağan yerler yeşerdi.",
+    "D": "Güneş açtı, hava ısındı.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi biçimce olumlu olduğu hâlde anlamca olumsuzdur?",
+    "A": "Ormanda ne ağaç kaldı ne yeşillik.",
+    "B": "Bu soğukta dışarı çıkılmaz.",
+    "C": "Doğa hiç zarar görmemiş.",
+    "D": "Çevre kirliliği artıyor.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "'İlkbahar, doğanın uyanışını müjdeler.' cümlesi kurallı bir cümledir. Buna göre aşağıdakilerden hangisi öge dizilişine göre diğerlerinden farklıdır?",
+    "A": "Karlar erimeye başladı.",
+    "B": "Çayırlar yeşerdi.",
+    "C": "Dereler taştı dün gece.",
+    "D": "Papatyalar açtı.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdakilerden hangisi bir isim cümlesidir?",
+    "A": "Yapraklar sarardı.",
+    "B": "En sevdiğim mevsim sonbahardır.",
+    "C": "Göçmen kuşlar uçtu.",
+    "D": "Rüzgar sert esti.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi yapısına göre bağlı cümledir?",
+    "A": "Güneş doğunca uyandık.",
+    "B": "Doğa çok güzeldi.",
+    "C": "Ağaçlar çiçek açarken arılar geldi.",
+    "D": "Yağmur yağdı ve toprak ıslandı.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi eksiltili cümledir?",
+    "A": "Orman çok sessizdi.",
+    "B": "Çevreyi temiz tutmalıyız.",
+    "C": "Dağların ardında şirin bir köy...",
+    "D": "Sular berrak akıyor.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdakilerden hangisi tek yüklemli (basit) cümledir?",
+    "A": "Gök gürledi.",
+    "B": "Yağmur yağarken ıslandık.",
+    "C": "Gökkuşağı çıkınca sevindik.",
+    "D": "Rüzgar esip geçti.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdakilerden hangisi kurallı bir isim cümlesidir?",
+    "A": "Ağaçları korumalıyız her zaman.",
+    "B": "Su kaynakları giderek azalıyor.",
+    "C": "Kuşlar gökyüzünde süzülüyor.",
+    "D": "Doğa bizim evimizdir.",
+    "dogru_cevap": "D"
+  }
+]

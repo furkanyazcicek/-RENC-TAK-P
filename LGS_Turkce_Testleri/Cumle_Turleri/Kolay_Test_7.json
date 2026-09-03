@@ -1,0 +1,82 @@
+[
+  {
+    "soru": "Aşağıdakilerden hangisi yükleminin türüne göre fiil (eylem) cümlesidir?",
+    "A": "İstanbul'un tarihi güzellikleri herkesi büyüler.",
+    "B": "Müzeler, geçmişi geleceğe taşıyan köprülerdir.",
+    "C": "Anadolu, medeniyetlerin beşiği olan bir coğrafyadır.",
+    "D": "Bu kervansarayın mimarisi oldukça etkileyiciydi.",
+    "cevap": "A"
+  },
+  {
+    "soru": "'Eski evlerin ahşap kapıları yıllara meydan okuyordu.' cümlesinin özellikleri aşağıdakilerin hangisinde doğru verilmiştir?",
+    "A": "İsim cümlesi, devrik, olumlu, basit",
+    "B": "Fiil cümlesi, kurallı, olumlu, basit",
+    "C": "Fiil cümlesi, kurallı, olumsuz, birleşik",
+    "D": "İsim cümlesi, kurallı, olumlu, basit",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi eksiltili cümle örneğidir?",
+    "A": "Karagöz ve Hacivat oyunları eskiden çok sevilirdi.",
+    "B": "Kültürel mirasımızı korumak en büyük vazifemizdir.",
+    "C": "Düğünlerde çalınan davul, zurna sesleri...",
+    "D": "Eski adetlerimizi yaşatmak için çaba gösteriyoruz.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki devrik cümlelerin hangisi isim cümlesidir?",
+    "A": "Anlatılırdı destanlar uzun kış gecelerinde.",
+    "B": "Geziyorduk tarihi yarımadayı adım adım.",
+    "C": "Görülmeye değerdir Kapadokya'nın peribacaları.",
+    "D": "Unutmadık atalarımızdan kalan mirasları.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Hangi cümlede fiilimsi kullanılmıştır?",
+    "A": "Eski çarşıda gezerken bakırcı dükkanlarını inceledik.",
+    "B": "Ebru sanatı, su ve boyanın mükemmel uyumudur.",
+    "C": "Topkapı Sarayı'nı her yıl binlerce turist ziyaret eder.",
+    "D": "Tarihi çeşmenin suyu buz gibi soğuktu.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdakilerin hangisi birden çok yüklemli (sıralı) bir cümledir?",
+    "A": "Çinilerle süslü camiyi ziyaret ettik, bol bol fotoğraf çektik.",
+    "B": "Geleneksel kıyafetler festivalde sergilendi.",
+    "C": "Tarihi kitaplar kütüphanenin özel bölümünde korunuyor.",
+    "D": "Çini ustası fırçasını eline alarak deseni çizmeye başladı.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisi bağlacı olan cümledir?",
+    "A": "Tarihi surların etrafında yürüyüş yaptık.",
+    "B": "Kültür turizmi ülkemizde çok gelişti ve yaygınlaştı.",
+    "C": "Müzeye giriş saatini kaçırınca geri döndük.",
+    "D": "Geçmişini bilmeyen milletlerin geleceği karanlıktır.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Hangi cümle anlamına göre soru cümlesi olarak kabul edilmez?",
+    "A": "Bu halıların hangi yöreye ait olduğunu biliyor musun?",
+    "B": "Göbeklitepe ne zaman keşfedildi?",
+    "C": "Bu türküleri dinleyip de hüzünlenmemek elde mi?",
+    "D": "Efes Antik Kenti'ne nasıl gidebileceğimi sordu.",
+    "cevap": "D"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi biçimce olumlu, anlamca olumsuz bir cümledir?",
+    "A": "Tarihi eserlere zarar vermek hiç kimsenin haddi değildir.",
+    "B": "Ne o müzeyi gezdi ne de bize eşlik etti.",
+    "C": "Eski günlerdeki komşuluk ilişkilerini unutmadık.",
+    "D": "Böyle güzel bir kültürü yaşatmamak olur mu hiç?",
+    "cevap": "B"
+  },
+  {
+    "soru": "'Osmanlı döneminden kalma bu han restore edildi.' cümlesi yapısına göre nasıl bir cümledir?",
+    "A": "Tek yüklemli",
+    "B": "Fiilimsi bulunan",
+    "C": "Sıralı cümle",
+    "D": "Bağlacı olan",
+    "cevap": "B"
+  }
+]

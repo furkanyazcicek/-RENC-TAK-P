@@ -1,5 +1,6 @@
-import { useRef, useState } from 'react'
+import { lazy, Suspense, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import '../../../styles/anasayfa-atlas-onizlemeleri.css'
 import {
   ArrowRight,
   Atom,
@@ -12,10 +13,18 @@ import {
   FlaskConical,
   Landmark,
   Map,
-  RotateCcw,
   ScanText,
   Sparkles,
 } from 'lucide-react'
+
+const HistoryMapPreview = lazy(() => import('./HistoryMapPreview'))
+const ATLAS_ONIZLEMELERI = {
+  fizik: lazy(() => import('./FizikOnizleme')),
+  kimya: lazy(() => import('./KimyaOnizleme')),
+  cografya: lazy(() => import('./CografyaOnizleme')),
+  biyoloji: lazy(() => import('./BiyolojiOnizleme')),
+  tarih: HistoryMapPreview,
+}
 
 const SAHNE_IKONLARI = {
   atlaslar: Map,
@@ -29,41 +38,26 @@ const ATLAS_DERSLERI = [
     id: 'fizik',
     etiket: 'Fizik',
     Icon: Atom,
-    ust: 'Sabit ivmeli atış',
-    deger: '45°',
-    aciklama: 'Atış açısı değişince yörünge, vektör ve menzil birlikte güncellenir.',
   },
   {
     id: 'kimya',
     etiket: 'Kimya',
     Icon: FlaskConical,
-    ust: 'Molekül geometrisi',
-    deger: 'H₂O',
-    aciklama: 'Bağlar ve elektron çiftleri seçildikçe molekülün uzaydaki biçimi görünür.',
   },
   {
     id: 'biyoloji',
     etiket: 'Biyoloji',
     Icon: Dna,
-    ust: 'Yapı–işlev ilişkisi',
-    deger: 'ATP',
-    aciklama: 'Mitokondri katmanları açıldıkça enerji üretiminin nerede gerçekleştiği anlaşılır.',
   },
   {
     id: 'cografya',
     etiket: 'Coğrafya',
     Icon: Earth,
-    ust: 'Araziyi okuma',
-    deger: '1:100K',
-    aciklama: 'Ölçek ve yükselti katmanları değiştikçe arazi ile harita arasındaki bağ kurulur.',
   },
   {
     id: 'tarih',
     etiket: 'Tarih',
     Icon: Landmark,
-    ust: 'Zaman ve kaynak',
-    deger: '1453',
-    aciklama: 'Seçili yıl, kaynak yılı ve belirsizlik aynı bağlamda görünür kalır.',
   },
 ]
 
@@ -130,232 +124,17 @@ const KOC_ODAKLARI = [
   },
 ]
 
-const FIZIK_MODELI = {
-  hiz: 20,
-  yercekimi: 10,
-}
-
-function fizikDegerleriniHesapla(aci) {
-  const radyan = (aci * Math.PI) / 180
-  const { hiz, yercekimi } = FIZIK_MODELI
-  const menzil = (hiz ** 2 * Math.sin(2 * radyan)) / yercekimi
-  const tepe = (hiz ** 2 * Math.sin(radyan) ** 2) / (2 * yercekimi)
-  const sure = (2 * hiz * Math.sin(radyan)) / yercekimi
-
-  return {
-    menzil,
-    tepe,
-    sure,
-  }
-}
-
-function ondalik(deger) {
-  return deger.toLocaleString('tr-TR', {
-    minimumFractionDigits: 1,
-    maximumFractionDigits: 1,
-  })
-}
-
-function ProjectileModel({ aci }) {
-  const sonuc = fizikDegerleriniHesapla(aci)
-  const baslangicX = 34
-  const zeminY = 177
-  const bitisX = baslangicX + (sonuc.menzil / 40) * 292
-  const tepeX = (baslangicX + bitisX) / 2
-  const tepeY = zeminY - (sonuc.tepe / 15) * 90
-  const kontrolY = 2 * tepeY - zeminY
-  const radyan = (aci * Math.PI) / 180
-  const vektorX = baslangicX + Math.cos(radyan) * 72
-  const vektorY = zeminY - Math.sin(radyan) * 72
-  const aciklama = `${aci} derece atışta menzil ${ondalik(sonuc.menzil)} metre, tepe yüksekliği ${ondalik(sonuc.tepe)} metre ve uçuş süresi ${ondalik(sonuc.sure)} saniye.`
-
-  return (
-    <svg
-      className="editorial-projectile"
-      viewBox="0 0 360 220"
-      role="img"
-      aria-label={aciklama}
-    >
-      <defs>
-        <marker id="editorial-projectile-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-          <path d="M0 0L8 4L0 8Z" />
-        </marker>
-      </defs>
-      <path className="editorial-projectile__grid" d="M22 184H338M22 136H338M22 88H338M22 40H338M70 24V194M134 24V194M198 24V194M262 24V194M326 24V194" />
-      <path
-        className="editorial-projectile__curve"
-        d={`M${baslangicX} ${zeminY}Q${tepeX} ${kontrolY} ${bitisX} ${zeminY}`}
-      />
-      <path
-        className="editorial-projectile__vector"
-        d={`M${baslangicX} ${zeminY}L${vektorX} ${vektorY}`}
-        markerEnd="url(#editorial-projectile-arrow)"
-      />
-      <circle className="editorial-projectile__point" cx={tepeX} cy={tepeY} r="8" />
-      <path className="editorial-projectile__range" d={`M${baslangicX} 196H${bitisX}`} />
-      <path className="editorial-projectile__ground" d="M22 184H338" />
-    </svg>
-  )
-}
-
-function AtlasModel({ ders, aci }) {
-  if (ders.id === 'kimya') {
-    return (
-      <div className="editorial-molecule" aria-hidden="true">
-        <span className="editorial-atom editorial-atom--oxygen">O</span>
-        <span className="editorial-bond editorial-bond--left" />
-        <span className="editorial-bond editorial-bond--right" />
-        <span className="editorial-atom editorial-atom--hydrogen editorial-atom--left">H</span>
-        <span className="editorial-atom editorial-atom--hydrogen editorial-atom--right">H</span>
-        <span className="editorial-electron editorial-electron--one" />
-        <span className="editorial-electron editorial-electron--two" />
-      </div>
-    )
-  }
-
-  if (ders.id === 'biyoloji') {
-    return (
-      <div className="editorial-mito" aria-hidden="true">
-        <span className="editorial-mito__fold editorial-mito__fold--one" />
-        <span className="editorial-mito__fold editorial-mito__fold--two" />
-        <span className="editorial-mito__fold editorial-mito__fold--three" />
-        <span className="editorial-mito__pulse">ATP</span>
-      </div>
-    )
-  }
-
-  if (ders.id === 'cografya') {
-    return (
-      <svg className="editorial-contours" viewBox="0 0 320 200" aria-hidden="true">
-        <path d="M18 145C55 98 83 126 118 83S190 36 224 70s58 20 78-12" />
-        <path d="M20 166c45-40 73-18 112-60s70-56 102-23 49 28 70 5" />
-        <path d="M34 186c38-24 73-7 112-46s65-42 96-12 43 31 64 17" />
-        <circle cx="188" cy="79" r="9" />
-        <path className="editorial-contours__route" d="M58 157c40-37 70-42 101-57 34-17 69-1 102-34" />
-      </svg>
-    )
-  }
-
-  if (ders.id === 'tarih') {
-    return (
-      <div className="editorial-timeline-model" aria-hidden="true">
-        <span className="editorial-timeline-model__line" />
-        <span className="editorial-timeline-model__point editorial-timeline-model__point--past">1451</span>
-        <span className="editorial-timeline-model__point editorial-timeline-model__point--active">1453</span>
-        <span className="editorial-timeline-model__point editorial-timeline-model__point--future">1456</span>
-        <span className="editorial-timeline-model__source">Kaynak yılı görünür</span>
-      </div>
-    )
-  }
-
-  return <ProjectileModel aci={aci} />
-}
-
 function AtlasScene() {
   const [dersId, setDersId] = useState('fizik')
-  const [atisAcisi, setAtisAcisi] = useState(45)
-  const ders = ATLAS_DERSLERI.find((item) => item.id === dersId) ?? ATLAS_DERSLERI[0]
-  const fizikSecili = ders.id === 'fizik'
-  const fizikSonucu = fizikDegerleriniHesapla(atisAcisi)
-  const fizikCikarimi = atisAcisi < 43
-    ? 'Daha yatık atışta tepe ve uçuş süresi azalır; açı 45°’ye yaklaştıkça menzil uzar.'
-    : atisAcisi > 47
-      ? 'Daha dik atışta tepe ve uçuş süresi artar; 45°’ten uzaklaştıkça menzil kısalır.'
-      : 'Bu modelde 45°, aynı ilk hız için en büyük yatay menzili verir.'
-
-  return (
-    <div className="editorial-demo editorial-demo--atlas">
-      <div className="editorial-demo__toolbar" aria-label="Atlas dersi seç">
-        {ATLAS_DERSLERI.map(({ id, etiket, Icon }) => (
-          <button
-            key={id}
-            type="button"
-            aria-pressed={dersId === id}
-            onClick={() => setDersId(id)}
-            className="editorial-demo-chip focus-ring"
-          >
-            <Icon aria-hidden="true" />
-            {etiket}
-          </button>
-        ))}
-      </div>
-
-      <div className="editorial-atlas-layout">
-        <div className={`editorial-atlas-canvas editorial-atlas-canvas--${ders.id}`}>
-          <div className="editorial-atlas-canvas__meta">
-            <span>{ders.ust}</span>
-            <strong className="tabular-nums">{fizikSecili ? `${atisAcisi}°` : ders.deger}</strong>
-          </div>
-          <AtlasModel ders={ders} aci={atisAcisi} />
-          <span className="editorial-atlas-canvas__gesture">
-            <span aria-hidden="true">↔</span> {fizikSecili ? 'Açıyı değiştir' : 'Dersi değiştir'}
-          </span>
-        </div>
-        <div
-          className={`editorial-atlas-copy${fizikSecili ? ' editorial-atlas-copy--physics' : ''}`}
-          aria-live={fizikSecili ? undefined : 'polite'}
-        >
-          <span className="editorial-demo-kicker">{ders.etiket} Atlası</span>
-          <h3>{ders.ust}</h3>
-          {fizikSecili ? (
-            <>
-              <div className="editorial-physics-control">
-                <div className="editorial-physics-control__heading">
-                  <label htmlFor="atlas-atis-acisi">Atış açısı</label>
-                  <div>
-                    <output htmlFor="atlas-atis-acisi" className="tabular-nums">{atisAcisi}°</output>
-                    <button
-                      type="button"
-                      aria-label="Atış açısını 45 dereceye sıfırla"
-                      disabled={atisAcisi === 45}
-                      onClick={() => setAtisAcisi(45)}
-                      className="focus-ring"
-                    >
-                      <RotateCcw aria-hidden="true" />
-                    </button>
-                  </div>
-                </div>
-                <input
-                  id="atlas-atis-acisi"
-                  type="range"
-                  min="25"
-                  max="65"
-                  step="1"
-                  value={atisAcisi}
-                  aria-describedby="atlas-fizik-varsayimi"
-                  onInput={(event) => setAtisAcisi(Number(event.currentTarget.value))}
-                />
-                <div className="editorial-physics-control__limits" aria-hidden="true">
-                  <span>25° · yatık</span>
-                  <span>45° · menzil</span>
-                  <span>65° · dik</span>
-                </div>
-              </div>
-
-              <dl className="editorial-physics-results" aria-live="polite">
-                <div><dt>Menzil</dt><dd className="tabular-nums">{ondalik(fizikSonucu.menzil)} m</dd></div>
-                <div><dt>Tepe</dt><dd className="tabular-nums">{ondalik(fizikSonucu.tepe)} m</dd></div>
-                <div><dt>Süre</dt><dd className="tabular-nums">{ondalik(fizikSonucu.sure)} sn</dd></div>
-              </dl>
-
-              <p className="editorial-physics-insight">{fizikCikarimi}</p>
-              <small id="atlas-fizik-varsayimi" className="editorial-physics-assumption">
-                Model: v₀ = 20 m/sn · g = 10 m/sn² · hava direnci yok
-              </small>
-            </>
-          ) : (
-            <>
-              <p>{ders.aciklama}</p>
-              <div className="editorial-model-status">
-                <Check aria-hidden="true" />
-                Eylem ve sonuç aynı sahnede
-              </div>
-            </>
-          )}
-        </div>
-      </div>
+  const Onizleme = ATLAS_ONIZLEMELERI[dersId]
+  return <div className="editorial-demo editorial-demo--atlas">
+    <div className="editorial-demo__toolbar" aria-label="Atlas dersi seç">
+      {ATLAS_DERSLERI.map(({ id, etiket, Icon }) => <button key={id} type="button" aria-pressed={dersId === id} onClick={() => setDersId(id)} className="editorial-demo-chip focus-ring"><Icon aria-hidden="true" />{etiket}</button>)}
     </div>
-  )
+    <Suspense fallback={<p className="atlas-sample__loading" role="status">{ATLAS_DERSLERI.find((d) => d.id === dersId)?.etiket} deneyi hazırlanıyor…</p>}>
+      <Onizleme />
+    </Suspense>
+  </div>
 }
 
 function NoteScene() {
@@ -592,10 +371,10 @@ export default function InteractiveLearningStage({ sahneler, baslik, yardim }) {
           <div className="editorial-stage__proof">
             <span>{aktifSahne.erisimNotu}</span>
             <p>{aktifSahne.kanit}</p>
-            <Link to={aktifSahne.hedef} className="focus-ring">
+            {aktifSahne.id !== 'atlaslar' && <Link to={aktifSahne.hedef} className="focus-ring">
               {aktifSahne.cta}
               <ArrowRight aria-hidden="true" />
-            </Link>
+            </Link>}
           </div>
         </div>
 

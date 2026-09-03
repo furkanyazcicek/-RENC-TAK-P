@@ -1,0 +1,127 @@
+{
+  "konu": "Sözcükte Anlam",
+  "seviye": "Kolay",
+  "test_no": 2,
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "\"Kesmek\" sözcüğü aşağıdaki cümlelerin hangisinde \"son vermek, gidermek\" anlamında kullanılmıştır?",
+      "secenekler": {
+        "A": "Rüzgar aniden kesince denizin dalgası da duruldu.",
+        "B": "Ağlayan çocuğun sesini kesmek için ona oyuncak verdi.",
+        "C": "Terzi, kumaşı makasla özenle kesti.",
+        "D": "Aldığım bu ilaç baş ağrımı hemen kesti."
+      },
+      "dogru_cevap": "D",
+      "kazanim": "T.8.3.5. Sözcüklerin çok anlamlılığını kavrar."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde zıt anlamlı sözcükler bir arada kullanılmıştır?",
+      "secenekler": {
+        "A": "Eski ve yeni kitaplarını aynı rafa özenle dizdi.",
+        "B": "Akşam karanlığında yürümek onu her zaman korkuturdu.",
+        "C": "Büyük ağaçların gölgesinde piknik yaptık.",
+        "D": "Sınıftaki tüm öğrenciler sessizce öğretmeni dinliyordu."
+      },
+      "dogru_cevap": "A",
+      "kazanim": "T.8.3.6. Kelimelerin eş anlamlılarını, zıt anlamlılarını bulur."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Aşağıdaki altı çizili sözcüklerden hangisi terim anlamlıdır?",
+      "secenekler": {
+        "A": "Olaylara farklı bir *açıdan* bakmayı öğrenmelisin.",
+        "B": "Oyunun ikinci *perdesi* oldukça heyecanlıydı.",
+        "C": "Bahar gelince *doğa* uyanmaya başladı.",
+        "D": "Karanlık *oda*da bir süre sessizce bekledi."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.6. Terim anlamlı kelimeleri belirler."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "\"Burnundan solumak\" deyimi cümleye hangi anlamı katmıştır?\n\n'Haberi aldığında öfkeyle odaya girdi, adeta burnundan soluyordu.'",
+      "secenekler": {
+        "A": "Çok mutlu olmak",
+        "B": "Çok sinirli olmak",
+        "C": "Yorulup nefes nefese kalmak",
+        "D": "Bir şeye çok şaşırmak"
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.7. Deyimlerin metne katkısını belirler."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Hangi cümlede sesteş (eş sesli) bir sözcük kullanılmamıştır?",
+      "secenekler": {
+        "A": "Yüz lira vererek bu kitabı satın aldım.",
+        "B": "Kırlarda dolaşmayı, temiz hava almayı severim.",
+        "C": "Bütün gün çalışmaktan kollarım ağrıdı.",
+        "D": "Gülümseyerek yanıma geldi ve oturdu."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.6. Sesteş kelimelerin anlamlarını ayırt eder."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "\"Sıcak\" sözcüğü aşağıdakilerin hangisinde mecaz anlamıyla kullanılmıştır?",
+      "secenekler": {
+        "A": "Yazın sıcak günlerinde denize girmeyi çok severdi.",
+        "B": "Misafirleri kapıda çok sıcak bir şekilde karşıladı.",
+        "C": "Sıcak çayı yudumlarken manzarayı izliyordu.",
+        "D": "Fırından yeni çıkmış sıcak ekmek kokusu yayıldı."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.5. Sözcüklerin gerçek ve mecaz anlamlarını ayırt eder."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Aşağıdaki cümlelerde geçen ikilemelerden hangisinin oluşum şekli diğerlerinden farklıdır?",
+      "secenekler": {
+        "A": "İleri geri konuşarak herkesin canını sıktı.",
+        "B": "Aşağı yukarı bir saattir seni burada bekliyoruz.",
+        "C": "Gece gündüz demeden sınavına hazırlanıyordu.",
+        "D": "Pırıl pırıl bir güneş gökyüzünü aydınlatıyordu."
+      },
+      "dogru_cevap": "D",
+      "kazanim": "T.8.3.9. İkilemelerin anlam özelliklerini kavrar."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "\"Dokunmak\" kelimesi hangi cümlede \"sağlığına zarar vermek\" anlamındadır?",
+      "secenekler": {
+        "A": "Raftaki vazolardan hiçbirine dokunmadı.",
+        "B": "Bu sözlerin bana ne kadar dokunduğunu bilemezsin.",
+        "C": "Akşam yediği baharatlı yemek midesine dokundu.",
+        "D": "Hafifçe omzuna dokunup onu uyardı."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.5. Bağlamdan yararlanarak kelimenin anlamını tahmin eder."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Hangi seçenekteki atasözü \"Tasarruflu olmanın önemi\"ni vurgulamaktadır?",
+      "secenekler": {
+        "A": "Damla damla göl olur.",
+        "B": "Tatlı dil yılanı deliğinden çıkarır.",
+        "C": "Keskin sirke küpüne zarar.",
+        "D": "Gülü seven dikenine katlanır."
+      },
+      "dogru_cevap": "A",
+      "kazanim": "T.8.3.7. Atasözlerinin anlamlarını bilir."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde altı çizili sözcük yansıma kökenlidir?",
+      "secenekler": {
+        "A": "Camın *kırılmasıyla* herkes irkildi.",
+        "B": "Suyun *şırıltısı* insanı dinlendiriyordu.",
+        "C": "Rüzgar ağaçların yapraklarını *savuruyordu*.",
+        "D": "Kuşlar gökyüzünde özgürce *uçuyordu*."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.5. Yansıma sözcükleri belirler."
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "soruNo": 1,
+    "soruMetni": "Başarıya giden yol hiçbir zaman pürüzsüz değildir. Bu yolda karşımıza pek çok engel çıkabilir, bazen düşebiliriz. Ancak önemli olan düştüğümüz yerden daha güçlü bir şekilde kalkabilmektir. Hatalarımızdan ders çıkarıp pes etmeden çalışmaya devam edersek, eninde sonunda hedefimize ulaşırız.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Hata yapmamak için çok dikkatli olmalıyız.",
+      "B": "Başarılı insanların hiç zorluk yaşamadığı bilinmektedir.",
+      "C": "Karşılaşılan zorluklar karşısında pes etmeden çalışmak başarıyı getirir.",
+      "D": "Hedeflerimize ulaşmak için başkalarından yardım almalıyız."
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 2,
+    "soruMetni": "Gerçek dostluk, fırtınalı günlerde sığınılacak güvenli bir liman gibidir. İyi günlerde yanımızda çok insan olabilir ama zor zamanlarda sadece gerçek dostlar ellerini uzatır. Onlar sırlarımızı paylaşabileceğimiz, hatalarımızı yüzümüze kırmadan söyleyebilen yegane insanlardır.\n\nBu metinde aşağıdakilerin hangisinden söz edilmektedir?",
+    "secenekler": {
+      "A": "Gerçek dostluğun özellikleri ve değerinden",
+      "B": "İnsanların nasıl arkadaş edindiğinden",
+      "C": "Denizcilerin fırtınalı günlerde ne yaptığından",
+      "D": "Dostların birlikte vakit geçirmesinin öneminden"
+    },
+    "dogruCevap": "A"
+  },
+  {
+    "soruNo": 3,
+    "soruMetni": "(I) Güneş sistemi, merkezinde Güneş olan ve onun etrafında dönen gezegenlerden oluşur. (II) Bu gezegenlerden biri de üzerinde yaşadığımız Dünya'dır. (III) Astronotların uzay kıyafetleri oldukça ağır ve pahalıdır. (IV) Dünya, yaşam için gerekli olan su ve oksijene sahip bilinen tek gezegendir.\n\nBu metinde numaralanmış cümlelerden hangisi anlam bütünlüğünü bozmaktadır?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 4,
+    "soruMetni": "Sağlıklı beslenmek, vücudumuzun ihtiyaç duyduğu vitamin ve mineralleri doğru şekilde almak demektir. Abur cubur yerine taze meyve ve sebze tüketmek, bağışıklık sistemimizi güçlendirir. Aynı zamanda yeterince su içmek de cildimizin parlak görünmesini ve iç organlarımızın düzenli çalışmasını sağlar. Her besinden dengeli miktarda yemeliyiz.\n\nBu parçada sağlıklı beslenmeyle ilgili aşağıdakilerden hangisine değinilmemiştir?",
+    "secenekler": {
+      "A": "Bağışıklık sistemine faydası olduğuna",
+      "B": "Su içmenin cilt sağlığını etkilediğine",
+      "C": "Taze sebze ve meyve tüketiminin önemine",
+      "D": "Hangi saatlerde yemek yenmesi gerektiğine"
+    },
+    "dogruCevap": "D"
+  },
+  {
+    "soruNo": 5,
+    "soruMetni": "Sadece konuşmak iletişim kurmak için yeterli değildir. Karşımızdaki kişiyi gerçekten dinlemek, onun duygularını anlamaya çalışmak da iletişimin temel bir parçasıdır. Göz teması kurmak ve beden dilimizi doğru kullanmak, kelimelerin ifade edemediği pek çok mesajı karşı tarafa iletir.\n\nBu metnin başlığı aşağıdakilerden hangisi olmaya en uygundur?",
+    "secenekler": {
+      "A": "Etkili İletişimin Sırları",
+      "B": "Konuşmanın Faydaları",
+      "C": "Göz Hastalıkları",
+      "D": "Kelimelerin Gücü"
+    },
+    "dogruCevap": "A"
+  },
+  {
+    "soruNo": 6,
+    "soruMetni": "- - - -? \nGelenekler, bir toplumun geçmişten günümüze taşıdığı kültürel miraslardır. Bizleri birbirimize bağlar, ortak bir kimlik oluşturmamızı sağlar. Bayramlarda büyüklerimizi ziyaret etmek, düğünlerde halay çekmek gibi adetler sayesinde birlik ve beraberlik duygumuz güçlenir.\n\nBu metin, aşağıdaki sorulardan hangisine verilmiş bir cevap olabilir?",
+    "secenekler": {
+      "A": "Bayramlarda kimleri ziyaret edersiniz?",
+      "B": "Geçmişte oynanan çocuk oyunları nelerdir?",
+      "C": "Toplumda geleneklerin önemi nedir?",
+      "D": "Düğün hazırlıkları ne kadar sürer?"
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 7,
+    "soruMetni": "İnsanların iş ve okul dışındaki zamanlarını değerlendirmek için yaptıkları uğraşlara hobi denir. Resim yapmak, pul biriktirmek veya müzik aleti çalmak yaygın hobilerdendir. Hobiler, zihnimizi dinlendirir ve günlük hayatın stresinden uzaklaşmamızı sağlar. Bu nedenle herkesin - - - -.\n\nDüşüncenin akışına göre bu metnin sonuna aşağıdakilerden hangisi getirilmelidir?",
+    "secenekler": {
+      "A": "boş zamanı hiç olmamalıdır",
+      "B": "sadece çalışması gerekir",
+      "C": "pahalı eşyalar satın alması lazımdır",
+      "D": "kendine uygun bir hobi edinmesi faydalıdır"
+    },
+    "dogruCevap": "D"
+  },
+  {
+    "soruNo": 8,
+    "soruMetni": "Sahilde yürürken dalgaların kıyıya çarpma sesi insana büyük bir huzur veriyordu. Martıların çığlıkları birbirine karışıyor, denizden esen rüzgâr yüzümüze tuzlu bir tat bırakıyordu. Göz alabildiğine uzanan masmavi deniz, gökyüzüyle adeta birleşmiş gibi görünüyordu.\n\nBu parçada aşağıdaki duyulardan hangisinden yararlanılmamıştır?",
+    "secenekler": {
+      "A": "Görme",
+      "B": "Koklama",
+      "C": "Tat alma",
+      "D": "İşitme"
+    },
+    "dogruCevap": "B"
+  },
+  {
+    "soruNo": 9,
+    "soruMetni": "Ali, pencere kenarına oturmuş dışarıyı izliyordu. Trenin ritmik sesi eşliğinde yeşil tarlalar, küçük evler hızla geride kalıyordu. Uzun zamandır görmediği dedesinin köyüne gideceği için kalbi heyecanla çarpıyordu. Yolculuk uzun sürse de Ali'nin gözlerinden uyku değil, sevinç okunuyordu.\n\nBu metnin hikâye unsurlarıyla ilgili hangisi yanlıştır?",
+    "secenekler": {
+      "A": "Olay: Ali'nin dedesinin köyüne gitmek için trene binmesi.",
+      "B": "Kahraman: Ali.",
+      "C": "Mekân: Bir otobüs terminali.",
+      "D": "Duygu: Heyecan ve sevinç."
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 10,
+    "soruMetni": "Zaman, elimizdeki en değerli ve geri döndürülemez kaynaktır. Çoğu zaman \"Vaktim yok!\" diye şikayet ederiz ama aslında vaktimizi nasıl yöneteceğimizi bilemeyiz. Planlı yaşamak, günümüzü saatlere bölmek ve önceliklerimizi belirlemek, zamanın yetmediği hissinden kurtulmamızı sağlar.\n\nBu metne göre zamanla ilgili en önemli sorun aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Zamanı doğru planlayamamak ve yönetememek",
+      "B": "Günün çok hızlı geçmesi",
+      "C": "Sadece saat kullanarak zamanı ölçmek",
+      "D": "Boş zamanlarda hiçbir şey yapmamak"
+    },
+    "dogruCevap": "A"
+  }
+]

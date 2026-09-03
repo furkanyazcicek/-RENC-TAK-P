@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Metin I: Teknoloji, yaşamı kolaylaştıran bir araç olmaktan çıkıp insanı kendine bağımlı kılan bir efendiye dönüşüyor. Gözlerimizi ekranlardan ayıramaz olduk, yanı başımızdaki dostumuzla sohbet etmek yerine kilometrelerce uzaktaki sanal dünyalarda vakit harcıyoruz.\n\nMetin II: Geleneksel çocuk oyunları sokakları terk edeli çok oldu. Artık çocuklar tabletlerin başından kalkmıyor, doğayı sadece dijital oyunlardaki grafiklerden tanıyor. Gerçek arkadaşlıkların yerini, hiç yüzünü görmedikleri çevrimiçi oyun arkadaşları aldı.\n\nBu iki metnin ortak vurgusu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Teknolojinin, insanları sosyal hayattan ve gerçeklikten koparması",
+      "B": "Çocukların oyun alanlarının giderek azalması",
+      "C": "Geleneksel yaşam tarzının tamamen unutulması",
+      "D": "Dijital oyunların çocukların zihinsel gelişimini hızlandırması"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "(I) Bir sanatçının üslubu, onun parmak izi gibidir; eşsiz ve sadece ona aittir. (II) Cümleleri kuruş biçimi, sözcük seçimi ve konuya yaklaşımı sanatçıyı diğerlerinden ayırır. (III) Edebiyat eleştirmenleri eserleri değerlendirirken genellikle yazarın yaşam öyküsüne odaklanırlar. (IV) Okur, bir eserin sadece birkaç sayfasını okuyarak o yazarın kim olduğunu üslubundan anlayabilir.\n\nBu metinde anlatımın akışını bozan cümle hangisidir?",
+    "secenekler": {
+      "A": "I",
+      "B": "III",
+      "C": "II",
+      "D": "IV"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Bir yazar düşünün ki, kelimeleri bir sarraf titizliğiyle tartıyor; hiçbir cümlesinde fazladan bir sözcüğe yer vermiyor. Anlattıkları, okuyucunun zihninde bir kıvılcım çakmasına yetiyor. Okuyucu, metnin içinde kendi dünyasını kurmak için yazarın bıraktığı ipuçlarını takip etmek zorunda kalıyor.\n\nBu parçada yazarın eserleriyle ilgili vurgulanmak istenen asıl özellik aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Kelimeleri seçerken eski dilden yararlandığı",
+      "B": "Olayları okuyucuya doğrudan ve net bir şekilde anlattığı",
+      "C": "Az sözle çok şey anlatan, okuyucunun yorumuna açık bir anlatımı olduğu",
+      "D": "Sadece belirli bir okuyucu kitlesine hitap ettiği"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "I. Bu kökler, derinlere indikçe ağacın fırtınalara karşı direnci artar.\nII. İnsanın edindiği değerler ve kültür de tıpkı bu kökler gibidir.\nIII. Kökleri sığ olan ağaçlar ise ilk şiddetli rüzgârda devrilmeye mahkûmdur.\nIV. Büyük bir çınarın ihtişamı, sadece gövdesinde değil, toprağın altındaki görünmez köklerindedir.\n\nYukarıdaki numaralanmış cümleler mantıksal bir bütünlük oluşturacak biçimde sıralandığında, baştan üçüncü cümle hangisi olur?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "IV",
+      "D": "III"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Son dönemlerde yayımlanan bazı romanlara bakıyorum; hepsi birbirinin kopyası sanki. Karakterler derinliksiz, olay örgüleri tahmin edilebilir ve dil son derece yavan. Yazarlar, yeni bir şey üretmektense tutmuş bir formülü tekrar edip kolaya kaçıyorlar. Edebiyat, gişe kaygısıyla üretilen seri üretim bir mal değildir.\n\nBu metnin yazarı, sözünü ettiği romanlarla ilgili olarak aşağıdakilerden hangisini eleştirmemektedir?",
+    "secenekler": {
+      "A": "Okuyucu kitlesinin az olmasını",
+      "B": "Özgünlükten uzak olmalarını",
+      "C": "Ticari amaçlarla yazılmalarını",
+      "D": "Kullanılan dilin ve kurgunun zayıflığını"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Mimari, sadece taşların, betonun ve demirin bir araya gelmesi değildir. Bir yapı, içinde yaşayacak insanların ruhuna dokunmalı, çevresiyle uyum içinde nefes almalıdır. Soğuk ve ruhsuz gökdelenlerin arasında kaybolan insan, aidiyet duygusunu yitirir. Geleneksel mimarimizde ise her avlu, her cumba, komşuluk ilişkilerini ve sıcaklığı destekleyecek şekilde tasarlanmıştır.\n\nBu parçadan hareketle mimari ile ilgili aşağıdakilerden hangisine ulaşılamaz?",
+    "secenekler": {
+      "A": "Binaların sadece fiziksel değil, duygusal bir boyutu da olması gerektiğine",
+      "B": "Geleneksel mimarinin sadece dayanıklılık üzerine inşa edildiğine",
+      "C": "Ruhsuz yapıların insanın mekana bağlılığını zedelediğine",
+      "D": "Geçmiş mimari anlayışımızın sosyal ilişkileri güçlendirecek nitelikte olduğuna"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "(I) İklim değişikliği, günümüzün en büyük küresel krizlerinden biridir. (II) Buzulların erimesi ve deniz seviyelerinin yükselmesi, kıyı şeritlerini tehdit etmektedir. (III) Uzmanlar, sıcaklık artışını sınırlandırmak için acil önlemler alınması gerektiğini belirtiyor. (IV) Geri dönüşüm yöntemleri, evsel atıkların çevreye zarar vermeden yeniden kullanılmasına olanak sağlar. (V) Plastik atıkların dönüştürülmesi sayesinde doğada yüzyıllarca süren kirlilik engellenebilir.\n\nBu metin iki paragrafa bölünmek istense ikinci paragraf numaralanmış cümlelerin hangisiyle başlar?",
+    "secenekler": {
+      "A": "II",
+      "B": "III",
+      "C": "IV",
+      "D": "V"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Zaman bir nehir gibidir; geriye akmaz ve içine girdiğiniz su, bir saniye sonraki suyla aynı değildir. Yaşadığımız anın değerini bilmek yerine sürekli geçmişin hatalarına ya da geleceğin kaygılarına odaklanıyoruz. Oysa elimizde olan tek gerçek sermaye, 'şu an'dır.\n\nBu paragrafta asıl anlatılmak istenen aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Geçmişte yapılan hataların tekrarlanmaması gerektiği",
+      "B": "İnsanın geleceği planlayarak hareket etmesi gerektiği",
+      "C": "Zamanın çok hızlı geçtiği ve insanların yaşlandığı",
+      "D": "Geçmişi ve geleceği bırakıp içinde bulunulan anın kıymetinin bilinmesi gerektiği"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Bir fotoğraf, bin kelimeye bedeldir derler. Bazen bir savaşın yıkımını, bir çocuğun gözlerindeki çaresizliği veya bir annenin kucaklayışındaki sevgiyi anlatmak için sayfalarca yazı yetmezken, tek bir kare fotoğraf her şeyi tüm çıplaklığıyla gözler önüne serer. Fotoğraf, anı dondurarak tarihi bir belgeye dönüşür.\n\nBu metne göre fotoğrafın en güçlü yönü aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Duyguları ve olayları çok etkili ve doğrudan yansıtma gücü",
+      "B": "İnsanlara fotoğraf çekme becerisi kazandırması",
+      "C": "Zaman içinde renklerinin solmadan saklanabilmesi",
+      "D": "Sadece savaş ve acı gibi konuları belgelendirmesi"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Yapay zekânın hızla gelişmesi, birçok meslek grubunu tedirgin etmektedir. Rutin ve tekrar eden işlerin makineler tarafından yapılacak olması, işsizlik kaygısını artırıyor. Ancak tarih boyunca yaşanan her teknolojik devrim, bazı meslekleri yok ederken yeni meslek dallarının da doğmasını sağlamıştır. Asıl mesele, insanların bu yeni döneme nasıl uyum sağlayacağıdır.\n\nBu metinden yapay zekâ ve iş hayatı ile ilgili aşağıdakilerden hangisi çıkarılamaz?",
+    "secenekler": {
+      "A": "Teknolojik gelişmelerin istihdam üzerinde değişimler yarattığı",
+      "B": "Yapay zekânın, yaratıcılık gerektiren tüm meslekleri tamamen yok edeceği",
+      "C": "Rutin işlerin gelecekte makinelerce yapılma ihtimalinin yüksek olduğu",
+      "D": "Yeni döneme uyum sağlama becerisinin önemli olduğu"
+    },
+    "dogru_cevap": "B"
+  }
+]

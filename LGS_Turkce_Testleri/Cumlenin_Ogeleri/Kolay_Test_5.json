@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Ressam, tuvaline canlı renkler sürdü.\" cümlesinde belirtisiz nesne hangisidir?",
+    "secenekler": {
+      "A": "Ressam",
+      "B": "canlı renkler",
+      "C": "tuvaline",
+      "D": "sürdü"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "\"Şiir okumak ruhu dinlendirir.\" cümlesinin yüklemi hangisidir?",
+    "secenekler": {
+      "A": "Şiir",
+      "B": "okumak",
+      "C": "ruhu",
+      "D": "dinlendirir"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde zarf tamlayıcısı kullanılmıştır?",
+    "secenekler": {
+      "A": "Tiyatro oyununu ilgiyle izledik.",
+      "B": "Kitabın sayfaları epey yıpranmıştı.",
+      "C": "Sanatçı yeni eserini tanıttı.",
+      "D": "Müzik ruhun tek gıdasıdır."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "\"Ünlü yazar, ödülünü törende aldı.\" cümlesinde 'törende' sözcüğü hangi ögedir?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Belirtili Nesne",
+      "C": "Yer Tamlayıcısı",
+      "D": "Zarf Tamlayıcısı"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "\"Sergideki tablolar herkesi büyüledi.\" cümlesinin öznesi nedir?",
+    "secenekler": {
+      "A": "Sergideki",
+      "B": "tablolar",
+      "C": "herkesi",
+      "D": "Sergideki tablolar"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Hangi cümlede nesne yoktur?",
+    "secenekler": {
+      "A": "Heykeltıraş sabaha kadar çalıştı.",
+      "B": "Müzisyen gitarını akort etti.",
+      "C": "Şair, son şiirini heyecanla okudu.",
+      "D": "Edebiyat dergisini severek okurum."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "\"Sanat, topluma ayna tutar.\" cümlesindeki 'topluma' sözcüğü cümlenin hangi ögesidir?",
+    "secenekler": {
+      "A": "Zarf Tamlayıcısı",
+      "B": "Yer Tamlayıcısı",
+      "C": "Belirtili Nesne",
+      "D": "Özne"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "\"Yazarın son romanı büyük ilgi gördü.\" cümlesinde yüklem hangisidir?",
+    "secenekler": {
+      "A": "ilgi",
+      "B": "gördü",
+      "C": "son romanı",
+      "D": "büyük ilgi gördü"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'kim' sorusunun cevabı vardır?",
+    "secenekler": {
+      "A": "Resim çizmek çok eğlencelidir.",
+      "B": "Konser akşam saatlerinde başlayacak.",
+      "C": "Tiyatrocular sahneye hızlıca çıktı.",
+      "D": "Gitarın telleri kopmuştu."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "\"Roman, yazarın hayal dünyasını yansıtır.\" cümlesinde 'yazarın hayal dünyasını' söz grubu hangi ögedir?",
+    "secenekler": {
+      "A": "Belirtili Nesne",
+      "B": "Belirtisiz Nesne",
+      "C": "Yer Tamlayıcısı",
+      "D": "Özne"
+    },
+    "dogru_cevap": "A"
+  }
+]

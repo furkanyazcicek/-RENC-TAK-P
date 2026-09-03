@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde neden-sonuç ilişkisi vardır?",
+    "secenekler": {
+      "A": "Yağmur yağdığı için pikniği erteledik.",
+      "B": "Sınavı kazanmak için çok çalışıyor.",
+      "C": "Erken kalkarsan güneşin doğuşunu izlersin.",
+      "D": "Bu kitap, yazarın çocukluk anılarını anlatıyor."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Hangi cümlede eylemin yapılış amacı belirtilmiştir?",
+    "secenekler": {
+      "A": "Kardeşim hastalandığından okula gelemedi.",
+      "B": "Kuşlara yem vermek üzere balkona çıktı.",
+      "C": "Hava soğuk olunca herkes içeri girdi.",
+      "D": "Yorgunluktan gözleri kapanıyordu."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde koşula (şarta) bağlılık söz konusudur?",
+    "secenekler": {
+      "A": "Soruları dikkatli okuduğu için hata yapmadı.",
+      "B": "Yaz tatilinde dedesinin yanına köye gidecek.",
+      "C": "Ödevlerini bitirirsen dışarı çıkıp oynayabilirsin.",
+      "D": "Onu görmek maksadıyla ta buralara kadar geldim."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi öznel bir yargı bildirmektedir?",
+    "secenekler": {
+      "A": "Mavi renkli elbiseler herkese çok yakışır.",
+      "B": "Kitabın ilk baskısı 2015 yılında yapılmış.",
+      "C": "Su, deniz seviyesinde yüz derecede kaynar.",
+      "D": "Türkiye'nin başkenti Ankara'dır."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi nesnel (kişiden kişiye değişmeyen) bir anlatıma sahiptir?",
+    "secenekler": {
+      "A": "En güzel mevsim kesinlikle sonbahardır.",
+      "B": "Film o kadar sıkıcıydı ki yarısında uyudum.",
+      "C": "Yazar, son romanında Kurtuluş Savaşı'nı anlatmış.",
+      "D": "Bu şiir insanı alıp uzaklara, hayallere götürüyor."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde karşılaştırma yapılmıştır?",
+    "secenekler": {
+      "A": "Kış aylarında buralara çok kar yağar.",
+      "B": "Sabahları ormanda yürüyüş yapmayı çok severim.",
+      "C": "Bahar gelince ağaçlar rengarenk çiçek açtı.",
+      "D": "Sınıfın en çalışkan öğrencisi tartışmasız Ali'dir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "'Bu yıl da tarladan bereketli ürün aldık.' cümlesinden çıkarılabilecek kesin yargı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Geçen yıl tarladan hiç ürün alınamamıştır.",
+      "B": "Daha önceki yıllarda da tarladan bereketli ürün alınmıştır.",
+      "C": "Tarlaya yeni ve farklı tohumlar ekilmiştir.",
+      "D": "Tarladan alınan ürünler çok pahalıya satılmıştır."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'varsayım' anlamı vardır?",
+    "secenekler": {
+      "A": "Keşke ben de sizinle o güzel filme gelseydim.",
+      "B": "Eminim o da bu zor konuyu çok iyi biliyordur.",
+      "C": "Belki yarın akşam teyzemler bize misafirliğe gelir.",
+      "D": "Diyelim ki sınavı birincilikle kazandın, ne yaparsın?"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde eylem gerekçesiyle (nedeniyle) birlikte verilmemiştir?",
+    "secenekler": {
+      "A": "Geç uyuduğundan sabah uyanmakta çok zorlandı.",
+      "B": "Yarınki önemli toplantı için sunum hazırlıyorum.",
+      "C": "Kardeşimle aynı odayı paylaştığımız için çok mutluyum.",
+      "D": "Kar şiddetli yağdığı için yollar ulaşıma kapandı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'pişmanlık' duygusu ağır basmaktadır?",
+    "secenekler": {
+      "A": "Onun kalbini kırmamalıydım, şimdi çok üzülüyorum.",
+      "B": "Gelecek yaz tatilinde Karadeniz turuna çıkmayı planlıyoruz.",
+      "C": "Sınav kağıdını teslim etmeden önce cevaplarımı kontrol etmeliyim.",
+      "D": "Bence bu yılki okul şenlikleri daha sönük geçti."
+    },
+    "dogru_cevap": "A"
+  }
+]

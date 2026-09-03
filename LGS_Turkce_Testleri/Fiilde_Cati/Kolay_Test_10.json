@@ -1,0 +1,125 @@
+{
+  "test_adi": "Fiilde Çatı - Kolay Test 10",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde yüklem, edilgen çatılı bir eylemdir?",
+      "secenekler": {
+        "A": "Yazılımcı yeni bir uygulama geliştirdi.",
+        "B": "Akıllı telefonların özellikleri tanıtıldı.",
+        "C": "Genç mucit robotik yarışmasına katıldı.",
+        "D": "Öğrenciler kodlama dersini çok sevdi."
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğinde tanıtma işini kimin yaptığı belli değildir. Bu yüzden edilgen çatılıdır."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Hangi cümlede çatı özelliği aranmaz?",
+      "secenekler": {
+        "A": "Gelecekte uçan arabalar kullanılacak.",
+        "B": "Sanal gerçeklik gözlükleri çok eğlenceliydi.",
+        "C": "Yapay zeka hayatımızı kolaylaştırdı.",
+        "D": "Bilgisayarın hafızası tamamen doldu."
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğindeki 'eğlenceliydi' sözcüğü isim olduğu için bu cümlede çatı aranmaz."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "'Okumak' fiili aşağıdaki cümlelerin hangisinde geçişli eylem olarak kullanılmıştır?",
+      "secenekler": {
+        "A": "Akıllı saatinin ekranına uzun süre baktı.",
+        "B": "Yeni tabletinin kullanım kılavuzunu okudu.",
+        "C": "Teknoloji fuarında saatlerce gezdi.",
+        "D": "Yapay zeka ile satranç oynarken yenildi."
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğinde eylem nesne almıştır (neyi okudu? - kullanım kılavuzunu), bu yüzden geçişli eylem olarak kullanılmıştır."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Hangi cümlede eylemi yapan kişi belli değildir (sözde özne vardır)?",
+      "secenekler": {
+        "A": "Yeni nesil bilgisayarlar mağazalara dağıtıldı.",
+        "B": "Kardeşim oyun konsolunu televizyona bağladı.",
+        "C": "Mühendis, dronun pervanesini tamir etti.",
+        "D": "Şirket CEO'su yeni projelerini anlattı."
+      },
+      "dogru_cevap": "A",
+      "cozum": "A seçeneğinde dağıtma işini kimin yaptığı belirsizdir ve 'Yeni nesil bilgisayarlar' işten etkilenen sözde öznedir."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Aşağıdakilerden hangisi geçişsiz bir eylemdir?",
+      "secenekler": {
+        "A": "yüklemek",
+        "B": "kopyalamak",
+        "C": "dinlenmek",
+        "D": "silmek"
+      },
+      "dogru_cevap": "C",
+      "cozum": "'Dinlenmek' eyleminin başına 'onu' kelimesi getirilemez (onu dinlenmek olmaz), dolayısıyla nesne alamaz ve geçişsizdir."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "'Onu' sözcüğünü alan fiiller geçişlidir. Hangisinde fiil geçişli olduğu halde cümlede nesne kullanılmamıştır?",
+      "secenekler": {
+        "A": "Bilgisayarını virüslerden temizledi.",
+        "B": "Saatlerce ekrana bakmaktan gözleri yoruldu.",
+        "C": "Programı indirirken merakla bekledi.",
+        "D": "İnternet bağlantısı koptuğu için sinirlendi."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğindeki 'bekledi' fiili nesne alabilen bir fiildir (onu bekledi). Ancak cümlede neyi beklediği yazılmamıştır (nesne kullanılmamıştır)."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Hangi cümlede eylemin çatısı etken ve geçişsizdir?",
+      "secenekler": {
+        "A": "Telefonun şarjı bitince kapandı.",
+        "B": "Fotoğrafları bulut sistemine aktardı.",
+        "C": "Hatalı kodları satır satır düzeltti.",
+        "D": "Yeni yazılımı kullanıcılara sundu."
+      },
+      "dogru_cevap": "A",
+      "cozum": "A seçeneğinde eylemi gerçekleştiren 'telefon'dur (etken) ve nesne alamaz (onu kapandı olmaz - geçişsiz)."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Aşağıdaki eşleştirmelerden hangisi yanlıştır?",
+      "secenekler": {
+        "A": "Dosyalar silindi. -> Edilgen",
+        "B": "Oyunu kazandım. -> Etken",
+        "C": "Şifreyi unuttum. -> Geçişsiz",
+        "D": "Mesaj gönderildi. -> Edilgen"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Unutmak fiili nesne alabilmektedir (onu unuttum). Bu yüzden geçişlidir. C seçeneğindeki eşleştirme yanlıştır."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "'Gizli özneli cümleler etken çatılıdır.' kuralına göre hangisi etken çatılıdır?",
+      "secenekler": {
+        "A": "Yeni şifreler oluşturuldu.",
+        "B": "Sunucular gece yarısı kapatıldı.",
+        "C": "Klavye tuşlarına hızla bastı.",
+        "D": "Eski bilgisayarlar geri dönüşüme gönderildi."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde eylemi gerçekleştiren kişi 'o' (gizli özne) olduğu için etken çatılıdır. Diğerleri edilgendir."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "'Yapay zeka robotu, sorulan soruları doğru cevapladı.' cümlesinin çatı özellikleri aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Etken - Geçişsiz",
+        "B": "Etken - Geçişli",
+        "C": "Edilgen - Geçişsiz",
+        "D": "Edilgen - Geçişli"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Eylemi yapan 'Yapay zeka robotu'dur (Etken). Eylem nesne (sorulan soruları) almıştır (Geçişli)."
+    }
+  ]
+}

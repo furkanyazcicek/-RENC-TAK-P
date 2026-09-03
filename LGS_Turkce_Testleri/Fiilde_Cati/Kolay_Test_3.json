@@ -1,0 +1,127 @@
+{
+  "konu": "Fiilde Çatı",
+  "seviye": "Kolay",
+  "test_no": 3,
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Aşağıdaki cümlelerden hangisinin yüklemi öznesine göre etken çatılıdır?",
+      "secenekler": {
+        "A": "Okuldaki tüm sıralar tatilde yenilendi.",
+        "B": "Sınav sonuçları dün internette açıklandı.",
+        "C": "Öğrenciler, öğretmenlerini dikkatle dinledi.",
+        "D": "Bahçedeki kuru yapraklar süpürüldü."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Aşağıdakilerin hangisinde yüklem geçişli bir fiil olduğu hâlde cümlede nesne kullanılmamıştır?",
+      "secenekler": {
+        "A": "Sabahtan beri durmadan çalışıyor.",
+        "B": "Yolun karşısına geçmek için uzun süre bekledi.",
+        "C": "Saatlerce yürüdükten sonra çimlere uzandı.",
+        "D": "Kardeşim erkenden uyudu."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "\"Kitaplar kütüphanedeki raflara özenle dizildi.\" cümlesindeki çatı özelliği aşağıdakilerin hangisinde vardır?",
+      "secenekler": {
+        "A": "Annem misafirler için harika yemekler yaptı.",
+        "B": "Arabanın lastikleri yola çıkmadan önce kontrol edildi.",
+        "C": "Kuşlar sıcak ülkelere doğru göç ediyor.",
+        "D": "Hızlı adımlarla merdivenleri çıktı."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Hangi cümlenin yüklemi nesnesine göre geçişsizdir?",
+      "secenekler": {
+        "A": "Yemeğini bitirince masayı topladı.",
+        "B": "Bu kitabı bir solukta okudum.",
+        "C": "Sonbahar gelince ağaçların yaprakları sarardı.",
+        "D": "Duvardaki eski tabloyu indirdi."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde \"-l\" eki fiile edilgenlik anlamı katmıştır?",
+      "secenekler": {
+        "A": "Aynanın karşısında saatlerce süslendi.",
+        "B": "Yeni aldığı elbiseyle çok güzel görünüyordu.",
+        "C": "Toplantı salonu toplantı için temizlendi.",
+        "D": "Duyduğu kötü sözler yüzünden çok üzüldü."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "İşteş çatılı fiiller işin karşılıklı ya da birlikte yapıldığını bildirir. \nBuna göre aşağıdaki cümlelerin hangisinde işteş çatılı bir fiil vardır?",
+      "secenekler": {
+        "A": "Güneşin doğuşunu izlemek için erkenden kalktı.",
+        "B": "Çocuklar bahçede neşeyle gülüştüler.",
+        "C": "Hafta sonu bütün evi tek başına temizledi.",
+        "D": "Yeni aldığı ayakkabıları arkadaşına gösterdi."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde özne, eylemi bizzat kendisi yapmıştır?",
+      "secenekler": {
+        "A": "Eski binalar belediye tarafından yıkıldı.",
+        "B": "Yarışmanın birincisi büyük bir törenle açıklandı.",
+        "C": "Rüzgarın etkisiyle bütün yapraklar döküldü.",
+        "D": "Adam, şemsiyesini alarak evden çıktı."
+      },
+      "dogru_cevap": "D",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "\"Oturmak\" fiili aşağıdakilerin hangisinde farklı bir özne-yüklem ilişkisiyle (çatı) kullanılmıştır?",
+      "secenekler": {
+        "A": "Bütün gün bilgisayarın başında oturdu.",
+        "B": "Misafirler salondaki rahat koltuklara oturdu.",
+        "C": "Yorulunca yol kenarındaki banka oturdu.",
+        "D": "Bu eve taşınalı on yıl oldu."
+      },
+      "dogru_cevap": "D",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Hangi seçenekte etken-geçişli bir fiil kullanılmıştır?",
+      "secenekler": {
+        "A": "Bebek, annesinin kucağında uyudu.",
+        "B": "Yazar, son romanını kısa sürede bitirdi.",
+        "C": "Sokak lambaları akşam olunca yandı.",
+        "D": "Çamaşırlar balkonda kurudu."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Aşağıdaki fiillerden hangisi her zaman geçişsizdir?",
+      "secenekler": {
+        "A": "Ağlamak",
+        "B": "İçmek",
+        "C": "Yazmak",
+        "D": "Kırmak"
+      },
+      "dogru_cevap": "A",
+      "kazanim": "T.8.3.11. Fiillerin çatı özelliklerinin anlama olan katkısını kavrar."
+    }
+  ]
+}

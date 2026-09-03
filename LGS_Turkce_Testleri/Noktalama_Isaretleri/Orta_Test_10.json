@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Tırnak içinde olmayan alıntı cümlelerden sonra virgül (,) konur.\nAşağıdakilerin hangisinde virgül bu kurala uygun kullanılmıştır?",
+    "secenekler": {
+      "A": "Uzun, ince ve karanlık bir yoldan geçtik.",
+      "B": "Yarın sabah mutlaka erkenden yola çıkalım, dedi.",
+      "C": "Seninle konuşmak, dertleşmek bana çok iyi geldi.",
+      "D": "Evet, bu konuyu seninle daha önce de görüşmüştük."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru": "İkiden fazla eş değer ögeler arasında virgül bulunan cümlelerde özneden sonra noktalı virgül (;) konabilir.\nAşağıdakilerin hangisinde noktalı virgül bu görevde kullanılmıştır?",
+    "secenekler": {
+      "A": "At ölür, meydan kalır; yiğit ölür, şan kalır.",
+      "B": "Sayısal derslerden matematiği, fiziği; sözel derslerden Türkçeyi, tarihi severim.",
+      "C": "Hava çok karardı; birazdan şiddetli bir yağmur başlayabilir.",
+      "D": "Türkiye; İngiltere, Fransa ve Almanya'dan daha sıcak bir iklime sahiptir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Karşılıklı konuşmalarda, konuşan kişiyi belirten sözlerden sonra iki nokta (:) konur.\nAşağıdakilerin hangisinde bu kurala uygun bir örnek vardır?",
+    "secenekler": {
+      "A": "Hacivat: Hoş geldin sevgili Karagöz'üm!\nKaragöz: Hoş bulduk kel kafalı kara üzüm!",
+      "B": "Kendimi kısaca tanıtayım: Sınıfın yeni matematik öğretmeni.",
+      "C": "Bunun için üç şeye ihtiyacımız var: un, şeker ve yağ.",
+      "D": "Saat tam 14:30'da toplantı odasında buluşacağız."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Aşağıdaki cümlelerin hangisinde kesme işaretinin (') kullanımıyla ilgili BİR YANLIŞLIK yapılmıştır?",
+    "secenekler": {
+      "A": "Dün akşam Ali'ler bize çaya geldi.",
+      "B": "Avrupa Birliği'ne üye ülkeler zirvede buluştu.",
+      "C": "Bakanlar Kurulu'nun yeni kararları açıklandı.",
+      "D": "2023'te Cumhuriyetimizin 100. yılını kutladık."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Bilinmeyen, kesin olmayan veya şüpheyle karşılanan yer, tarih vb. durumlar için yay ayraç içinde soru işareti (?) kullanılır.\nAşağıdakilerin hangisinde bu duruma uygun bir örnek vardır?",
+    "secenekler": {
+      "A": "Ankara'dan İstanbul'a arabayla 3 (?) saatte gitmiş.",
+      "B": "Dün akşam neden bizi aramadın?",
+      "C": "Sınavın ne zaman yapılacağı henüz belli değil mi?",
+      "D": "Bu kadar güzel yemekleri sen mi hazırladın?"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Anlatım olarak tamamlanmamış cümlelerin sonuna üç nokta (...) konur.\nAşağıdakilerin hangisinde üç noktanın kullanımı bu kurala uygundur?",
+    "secenekler": {
+      "A": "Çarşıdan o kadar çok şey aldım ki: elma, portakal, havuç...",
+      "B": "Kılavuzu karga olanın burnu b...tan çıkmaz.",
+      "C": "Denizin sonsuz maviliği, kuşların cıvıltısı, ılık esen rüzgar...",
+      "D": "O kadar sinirliydi ki (...) adeta gözlerinden ateş fışkırıyordu."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Aşağıdaki cümlelerin hangisinde tırnak işareti (\"\") eser adlarını belirtmek için kullanılmıştır?",
+    "secenekler": {
+      "A": "Bu aralar herkes \"yapay zeka\" kelimesini diline doladı.",
+      "B": "Sınıfta \"Küçük Prens\" üzerine uzun bir tartışma yaptık.",
+      "C": "Annem, \"Sıkı giyinmeden dışarı çıkma.\" diye tembihledi.",
+      "D": "Olayın en \"can alıcı\" noktası henüz anlatılmamıştı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Kısa çizgi (-) fiil kök ve gövdelerini göstermek için kullanılır.\nAşağıdakilerin hangisinde kısa çizginin kullanımı bu kurala uygundur?",
+    "secenekler": {
+      "A": "Bu yaz 15-20 gün memlekette kalmayı planlıyoruz.",
+      "B": "Eski-yeni bütün eşyaları kapının önüne yığmış.",
+      "C": "Fenerbahçe-Galatasaray maçı Pazar günü oynanacak.",
+      "D": "Türkçede \"yaz-\" sözcüğü hem isim hem fiil köküdür."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Aşağıdaki cümlelerin hangisinde nokta (.) sıra bildiren sayıların ( -ıncı, -inci) yerine kullanılmıştır?",
+    "secenekler": {
+      "A": "Bugün saat 18.00'de kütüphanede buluşalım.",
+      "B": "Bu eseri yazan Prof. Dr. Mehmet Kaplan'dır.",
+      "C": "Kardeşim 14.10.2015 tarihinde dünyaya geldi.",
+      "D": "Yarışmada 1. olan öğrenciye bilgisayar hediye edildi."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Yazıda satır başına alınan konuşmaları göstermek için uzun çizgi (—) kullanılır.\nAşağıdakilerin hangisinde uzun çizgi bu görevde kullanılmıştır?",
+    "secenekler": {
+      "A": "Ankara — İzmir arası yolculuk çok keyifli geçti.",
+      "B": "— Buraya gelir misin, diye sordu babam sert bir sesle.",
+      "C": "O şirin kasaba —benim doğduğum yer— şimdi ne haldedir?",
+      "D": "İngilizce — Türkçe sözlük almam gerekiyor."
+    },
+    "dogru_cevap": "B"
+  }
+]

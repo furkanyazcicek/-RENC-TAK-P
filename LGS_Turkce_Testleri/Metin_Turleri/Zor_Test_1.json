@@ -1,0 +1,125 @@
+{
+  "test_adi": "Metin Türleri - Zor Test 1",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Vapurun güvertesinde martılara simit atarken, yanıma yaşlı bir adam yaklaştı. Yüzündeki derin çizgiler yılların yorgunluğunu taşıyordu. Denize daldı gözleri. 'Rüzgar bugün poyrazdan esiyor, balık çıkmaz' dedi yavaşça. Sadece başımı salladım. Bir süre öylece, konuşmadan İstanbul'un silüetini izledik.\n\nBu metinle ilgili olarak,\nI. Serim, düğüm, çözüm bölümleri belirgin değildir.\nII. Merak unsuru ön plandadır.\nIII. Bir durum kesiti sunulmuştur.\nyargılarından hangileri doğrudur?",
+      "secenekler": {
+        "A": "Yalnız I",
+        "B": "Yalnız II",
+        "C": "I ve III",
+        "D": "II ve III"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Verilen metin bir 'durum (Çehov tarzı) hikâyesi' örneğidir. Durum hikâyelerinde olaydan çok hayatın belli bir kesiti verilir, serim-düğüm-çözüm planına pek uyulmaz ve merak unsuru geri plandadır. Bu yüzden I ve III doğrudur."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Gazeteciliğin gelişmesiyle edebiyatımıza giren metin türleri, kitleleri bilgilendirme ve yönlendirme işlevi üstlenmiştir.\n\nAşağıdaki metin türlerinden hangisi gazetecilik çevresinde gelişen, güncel bir sorunun kalıcı olmadan, yazarın kendi görüşüyle kanıtlama çabası içine girmeden işlendiği türdür?",
+      "secenekler": {
+        "A": "Fıkra (Köşe Yazısı)",
+        "B": "Makale",
+        "C": "Eleştiri",
+        "D": "Deneme"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Güncel olayların kanıtlama amacı olmadan, kişisel görüşlerle kısa bir şekilde işlendiği, gazete ve dergilerde yayımlanan tür fıkra (köşe yazısı)dır. Makale kanıt gerektirir, deneme ise illa güncel bir konu olmak zorunda değildir."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Okuduğum metinde yazar; 'Sizce de günümüz insanı teknolojiye fazla esir olmadı mı? Sabah kalkar kalkmaz telefona sarılmamız bunun en büyük göstergesi değil mi?' diyerek sanki benimle karşılıklı oturmuş konuşuyormuş gibi bir üslup kullanmıştı.\n\nBu açıklamalara göre yazarın okuduğu metin türü aşağıdakilerden hangisi olamaz?",
+      "secenekler": {
+        "A": "Söyleşi (Sohbet)",
+        "B": "Makale",
+        "C": "Deneme",
+        "D": "Fıkra"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Metinde 'senli benli', okuyucuyla konuşuyormuş gibi bir üslup (sohbet havası) vardır ve öznellik hakimdir. Makale ise ciddi, bilimsel ve kanıtlayıcı bir üslupla nesnel olarak yazıldığı için bu metin makale olamaz."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "I. Yazar, kendi hayatını kendisi anlatır.\nII. Tanınmış kişilerin hayatı başkası tarafından anlatılır.\nIII. Hafızada kalan, geçmişte yaşanmış olaylar anlatılır.\nIV. Kişi sadece kendi alanındaki başarılarını değil, ailesini ve çevresini de anlatabilir.\n\nYukarıda verilen özelliklerden hangileri 'otobiyografi' (öz yaşam öyküsü) türüne aittir?",
+      "secenekler": {
+        "A": "I ve II",
+        "B": "II ve III",
+        "C": "I, II ve IV",
+        "D": "I ve IV"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Otobiyografi yazarın kendi hayatını anlatmasıdır (I). Bu anlatımda yazar doğduğu yeri, ailesini, çevresini ve yaşamını şekillendiren unsurları da aktarır (IV). II numara biyografinin, III numara ise anının özelliğidir."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Bir sanat eserinin veya sanatçının olumlu ve olumsuz yönlerini belirli kriterlere dayanarak ortaya koyan, amacı o eserin gerçek değerini okura göstermek olan öğretici metinlere ---- denir.\n\nBu cümlede boş bırakılan yere aşağıdakilerden hangisi getirilmelidir?",
+      "secenekler": {
+        "A": "Eleştiri",
+        "B": "Makale",
+        "C": "Röportaj",
+        "D": "Deneme"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Bir eseri, kişiyi ya da konuyu olumlu ve olumsuz yönleriyle değerlendirerek onun gerçek değerini ortaya koymayı amaçlayan metin türü eleştiri (tenkit)dir."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Gençlik yıllarımın o heyecanlı günlerinde, edebiyat mahfillerine katılırdık. Yahya Kemal'i, Ahmet Haşim'i o masalarda tanıdım. Onların sohbetlerinden feyzaldık. Şimdi geriye dönüp baktığımda, o günlerin edebiyatımız için nasıl altın bir çağ olduğunu daha iyi anlıyorum.\n\nBu metnin anı (hatıra) türünde yazılmış olduğunun en güçlü kanıtı aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Öznel bir dil kullanılması.",
+        "B": "Yaşanmış bir olayın üzerinden zaman geçtikten sonra, bellekten süzülerek aktarılması.",
+        "C": "Edebiyat dünyasından tanınmış kişilere yer verilmesi.",
+        "D": "Birinci tekil kişi ağzıyla anlatılması."
+      },
+      "dogru_cevap": "B",
+      "cozum": "Anıyı diğer kişisel hayatı konu alan metinlerden ayıran temel özellik; yaşanmış veya tanık olunmuş bir durumun üzerinden belli bir süre geçtikten sonra hafızada kalanlarla ve o günkü değerlendirmeyle yazılmasıdır. Diğer şıklar günlük veya otobiyografi için de geçerli olabilir."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Olay, yer, zaman ve kişi unsurlarının bulunduğu metinlere kurgusal (olay çevresinde gelişen) metinler denir.\n\nBuna göre aşağıdakilerden hangisi kurgusal bir metin türü değildir?",
+      "secenekler": {
+        "A": "Destan",
+        "B": "Roman",
+        "C": "Günlük",
+        "D": "Hikâye"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Hikâye, roman ve destan; olay, yer, zaman ve kişi çerçevesinde kurgulanan sanatsal metinlerdir. Ancak günlük, kurgusal değil kişisel hayatı konu alan öğretici/gerçekçi bir metin türüdür."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "5N1K kuralı (Kim, Ne, Nerede, Ne zaman, Nasıl, Neden) aşağıdaki metin türlerinin hangisinde temel bir gerekliliktir?",
+      "secenekler": {
+        "A": "Makale",
+        "B": "Haber Yazısı",
+        "C": "Gezi Yazısı",
+        "D": "Röportaj"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Bir olayın eksiksiz ve doğru bir şekilde okuyucuya aktarılabilmesi için haber yazılarında 5N1K sorularına cevap bulunması zorunludur."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Yazar, araştırma yapmak için köye gider. Sadece yetkililerle soru-cevap yapmaz; aynı zamanda köyün doğasını, insanların yaşayışını fotoğraflarla, belgelerle destekleyerek kendi izlenimlerini de katarak geniş bir yazı dizisi hazırlar.\n\nBu araştırmacının oluşturduğu metin türü aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Mülakat",
+        "B": "Makale",
+        "C": "Röportaj",
+        "D": "Haber yazısı"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Sadece karşılıklı soru-cevap değil; yazarın kendi izlenimlerini, fotoğrafları ve belgeleri katarak oluşturduğu, mekanı ve insanları detaylı anlatan geniş kapsamlı tür röportajdır. Mülakat sadece soru-cevaptır."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Milletlerin hayatında derin izler bırakan savaş, göç, afet gibi olayların hayal gücüyle zenginleştirilerek nesilden nesile aktarıldığı, olağanüstü özellikler taşıyan uzun manzum eserlere ---- denir.\n\nTanımı yapılan metin türü aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Efsane",
+        "B": "Destan",
+        "C": "Masal",
+        "D": "Halk Hikâyesi"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Toplumu derinden etkileyen olayların (savaş, göç vb.) olağanüstü ögelerle bezenerek anlatıldığı, çoğunlukla manzum (şiirsel) yapıdaki anonim ürünler destandır."
+    }
+  ]
+}

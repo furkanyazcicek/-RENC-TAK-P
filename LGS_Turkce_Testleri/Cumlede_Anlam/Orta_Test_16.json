@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'öznel' bir değerlendirme vardır?",
+    "secenekler": {
+      "A": "İki kişi arasındaki anlaşmazlığı çözmek için arabulucu atandı.",
+      "B": "Dostluk, insanın kalbini ısıtan ve hayata bağlayan en güçlü bağdır.",
+      "C": "Sosyologlar, insan ilişkilerini incelerken anket yönteminden yararlanır.",
+      "D": "Karşılıklı saygı, sağlıklı bir iletişimin temel unsurlarından biridir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru": "'Empati, başkasının ayakkabılarını giyerek onun yürüdüğü yolda yürümektir.' cümlesinde empati ile ilgili asıl anlatılmak istenen nedir?",
+    "secenekler": {
+      "A": "Olaylara karşımızdaki kişinin bakış açısıyla yaklaşmak",
+      "B": "Başkalarının fiziksel acılarını kendi bedenimizde hissetmek",
+      "C": "İnsanlara her zaman yardım eli uzatmaya hazır olmak",
+      "D": "İletişimde her zaman nazik ve kibar kelimeler seçmek"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Aşağıdakilerin hangisinde 'sitem' anlamı vardır?",
+    "secenekler": {
+      "A": "Keşke onu o kadar kalabalığın içinde eleştirmeseydim.",
+      "B": "Ona bir türlü ulaşamıyorum, telefonu hep meşgul çalıyor.",
+      "C": "Belki bir gün o da hatalarını anlar ve bizden özür diler.",
+      "D": "O kadar hastalandım, insan bir kere olsun arayıp sormaz mı?"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Hangi cümlede 'neden-sonuç' ilgisi vardır?",
+    "secenekler": {
+      "A": "Seni anlamak için elimden gelen her şeyi yapıyorum.",
+      "B": "Kırıcı sözler kullanırsan çevrendeki herkesi kendinden uzaklaştırırsın.",
+      "C": "Yalan söylediğini fark ettiği için onunla arasına mesafe koydu.",
+      "D": "Eski dostlarla buluşmak üzere pazar günü kafede toplanacağız."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'karşılaştırma' yapılmıştır?",
+    "secenekler": {
+      "A": "Yeni tanıştığım bu insan, eskilerine göre çok daha anlayışlı.",
+      "B": "Güven, bir kere yıkıldı mı bir daha kolay kolay inşa edilemez.",
+      "C": "İnsanlarla iletişim kurarken göz teması kurmak önemlidir.",
+      "D": "Bazen susmak, en etkili cevaplardan biri olabilir."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Aşağıdakilerin hangisinde bir 'varsayım' dile getirilmiştir?",
+    "secenekler": {
+      "A": "Dün akşamki tartışmada maalesef ben de çok fevri davrandım.",
+      "B": "Düşün ki seni en yakın arkadaşın haksız yere suçluyor.",
+      "C": "İlişkilerde dürüstlük yoksa o ilişkinin ömrü kısa olur.",
+      "D": "Görünüşe bakılırsa bu küslük daha uzun süre devam edecek."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Hangi cümlede 'amaç-sonuç' ilişkisi vardır?",
+    "secenekler": {
+      "A": "Ortamdaki gerginlik arttığından toplantıyı erken bitirdik.",
+      "B": "Kalp kırmamak için kelimelerini özenle seçiyordu.",
+      "C": "Güler yüzlü olursan etrafına pozitif enerji yayarsın.",
+      "D": "Çevresindekilere yardım etmeyi her şeyden çok severdi."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru": "'Gerçek dost, sen kendine inanmadığında bile sana inanan kişidir.' cümlesine anlamca en yakın ifade hangisidir?",
+    "secenekler": {
+      "A": "Dostlar, zor zamanlarda sadece yanımızda durarak bize destek olurlar.",
+      "B": "Gerçek dostlar, hatalarımızı yüzümüze çekinmeden söyleyenlerdir.",
+      "C": "Dost, bizim kendimizden şüphe duyduğumuz anlarda dahi bize güvenendir.",
+      "D": "İyi günde herkes yanındadır, önemli olan kötü günde dost bulmaktır."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'yakınma' anlamı vardır?",
+    "secenekler": {
+      "A": "Onun bu bencil tavırları artık hepimizi canından bezdirdi.",
+      "B": "Keşke o tartışmada ben de susmayı tercih etseydim.",
+      "C": "Beni düğününe davet etmediği için ona çok kırgınım.",
+      "D": "Belki de onu anlamak için biraz daha zaman tanımalıydım."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'dolaylı anlatım' yapılmıştır?",
+    "secenekler": {
+      "A": "Kardeşim sinirle: 'Beni yalnız bırakın!' diye bağırdı.",
+      "B": "Uzmanlar, aile içi iletişimin çocuk gelişimindeki önemini vurguluyor.",
+      "C": "Bana dönüp yarınki buluşmaya gelemeyeceğini söyledi.",
+      "D": "Babam her zaman 'Tatlı dil yılanı deliğinden çıkarır.' derdi."
+    },
+    "dogru_cevap": "C"
+  }
+]

@@ -1,0 +1,85 @@
+{
+  "test_adi": "Yazım Kuralları Orta Seviye Test 7",
+  "sorular": [
+    {
+      "soru": "Kurultay, bilgi şöleni, çalıştay, açık oturum vb. toplantıların adlarında her kelimenin ilk harfi büyük yazılır. Hangi cümlede bu kurala aykırı bir yazım vardır?",
+      "A": "Uluslararası Türk Dili Kurultayı bu yıl Ankara'da yapılacak.",
+      "B": "Küresel Isınma ve İklim Değişikliği Sempozyumu başladı.",
+      "C": "Edebiyat Ve Toplum konulu bilgi şöleni çok verimli geçti.",
+      "D": "Milli Eğitim Şurası'nda alınan kararlar açıklandı.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Kanun, tüzük, yönetmelik, yönerge, genelge adlarının her kelimesi büyük harfle başlar. Hangisinde yazım yanlışı vardır?",
+      "A": "Medeni Kanun, toplum hayatımızda köklü değişiklikler yaptı.",
+      "B": "Telif hakkı yayın ve satış yönetmeliği yeniden düzenlendi.",
+      "C": "Yeni Tüketiciyi Koruma Kanunu meclisten geçti.",
+      "D": "Bakanlık, Okul Öncesi Eğitim Yönetmeliği'ni yayımladı.",
+      "cevap": "B"
+    },
+    {
+      "soru": "'İç, dış, sıra' sözcükleriyle oluşturulan birleşik kelime ve terimler ayrı yazılır. Aşağıdaki cümlelerin hangisinde bu kurala uyulmamıştır?",
+      "A": "Haftasonu arkadaşlarla birlikte sinemaya gitmeyi planlıyoruz.",
+      "B": "Olayın perde arkası yavaş yavaş ortaya çıkmaya başladı.",
+      "C": "Ders çalışmanın yanı sıra düzenli kitap da okumalısın.",
+      "D": "Şirketimiz yurt dışı yatırımlarını artırma kararı aldı.",
+      "cevap": "A"
+    },
+    {
+      "soru": "Tarihi yapı, köprü, kule, anıt vb. adların bütün kelimeleri büyük harfle başlar. Buna göre hangisinde yazım yanlışı vardır?",
+      "A": "Galata Kulesi, İstanbul'un en önemli simgelerindendir.",
+      "B": "Boğaziçi köprüsü'nün manzarası gece bir başka güzeldir.",
+      "C": "Çanakkale Şehitleri Anıtı, ziyaretçilerine duygu dolu anlar yaşatır.",
+      "D": "Bilge Kağan Anıtı, Türk tarihine ışık tutan önemli bir eserdir.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Kesme işaretinin kullanımıyla ilgili aşağıdaki cümlelerin hangisinde bir yanlışlık yapılmıştır?",
+      "A": "Ahmet Bey'in yeni ofisine tebrik ziyaretine gittik.",
+      "B": "Türkçe'nin zenginliğini anlatan bir kompozisyon yazdı.",
+      "C": "TBMM'nin açılış yıl dönümü coşkuyla kutlandı.",
+      "D": "2023'te tamamlanacak projeler tanıtıldı.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Ses düşmesine uğrayan birleşik kelimeler bitişik yazılır. Aşağıdakilerin hangisinde bu kurala uymamaktan kaynaklanan bir yazım yanlışı vardır?",
+      "A": "Bu kaza nasıl oldu, biri bana açıklayabilir mi?",
+      "B": "Kahvaltıda sıcak bir çay içmeden güne başlayamam.",
+      "C": "Ne asıl bir insan olduğunu zamanla hepimiz anladık.",
+      "D": "Pazartesi günü şirketin genel kurulu toplanacak.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Saat ve dakikaların yazımıyla ilgili aşağıdakilerin hangisinde bir hata yapılmıştır?",
+      "A": "Sınavımız sabah saat 10.00'da başlayacak.",
+      "B": "Akşam 20:30'daki otobüsle yola çıkacağım.",
+      "C": "Randevum 14.15'te olduğu için acele etmeliyim.",
+      "D": "Gecenin 02.00'sinde çalan telefon hepimizi korkuttu.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde 'de/da'nın yazımı ile ilgili bir yanlışlık vardır?",
+      "A": "Tatilde bol bol yüzüp güneşte güneşleneceğiz.",
+      "B": "Benim de söyleyecek iki çift lafım var elbette.",
+      "C": "Masadaki kitapları toplayıp rafta yerine dizdi.",
+      "D": "Ayakta durmaktan yoruldum, birazda sen bekle.",
+      "cevap": "D"
+    },
+    {
+      "soru": "Akrabalık adı olup lakap veya unvan olarak kullanılan kelimeler büyük harfle başlar. Hangisinde yazım yanlışı vardır?",
+      "A": "Müslüm Baba, arabesk müziğin efsane isimlerindendir.",
+      "B": "Dayı Kemal, mahallede herkesin yardımına koşar.",
+      "C": "Bugün Ayşe teyzem bize akşam yemeğine gelecek.",
+      "D": "Susuz dede türbesini ziyaret etmek isteyenler sıraya girdi.",
+      "cevap": "D"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde kısaltmalara getirilen ekin yazımında bir yanlışlık yapılmıştır?",
+      "A": "İTÜ'den mezun olduktan sonra yurt dışına gitti.",
+      "B": "BOTAŞ'ın yeni projesi enerji ihtiyacını karşılayacak.",
+      "C": "DSİ'nin başlattığı sulama kanalı inşaatı bitti.",
+      "D": "SGK'na olan prim borcunu dün internetten ödedi.",
+      "cevap": "D"
+    }
+  ]
+}

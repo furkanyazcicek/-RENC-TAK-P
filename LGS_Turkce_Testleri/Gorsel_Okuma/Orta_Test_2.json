@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Bir belediyenin 'Atık Türleri ve Geri Dönüşüm Süreleri' tablosunda camın 4000 yıl, plastiğin 1000 yıl, alüminyumun 200 yıl ve kâğıdın 3 ay doğada yok olmadığı gösterilmiştir. Tabloya göre aşağıdakilerden hangisi söylenebilir?",
+    "A": "Tüm atıklar aynı sürede doğaya karışmaktadır.",
+    "B": "En kısa sürede yok olan atık alüminyumdur.",
+    "C": "Cam atıkların doğada kalma süresi plastikten daha uzundur.",
+    "D": "Kâğıt atıkların geri dönüşümü diğerlerinden daha zordur.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Bir afişte, 'Musluğu açık bırakma, geleceğini kurutma!' yazısı ve altında damlayan bir musluk ile kurumuş bir toprak görseli bulunmaktadır. Bu afişin asıl vurgulamak istediği düşünce nedir?",
+    "A": "Tarımsal sulamada yeni yöntemler geliştirilmelidir.",
+    "B": "Suyun gereksiz kullanımı toprağın verimini artırır.",
+    "C": "Suyu israf etmek, gelecekte kuraklığa yol açacaktır.",
+    "D": "Bozuk muslukların tamiri ev ekonomisine katkı sağlar.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Dört farklı şehrin (K, L, M, N) hava kirliliği oranlarının verildiği bir grafikte M şehri en yüksek kirliliğe, N şehri ise en düşük kirliliğe sahiptir. K şehrinin kirlilik oranı L'den azdır. Buna göre şehirlerin kirlilik oranlarının azdan çoğa doğru sıralanışı hangisidir?",
+    "A": "N - K - L - M",
+    "B": "M - L - K - N",
+    "C": "N - L - K - M",
+    "D": "K - N - M - L",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Bir küresel ısınma şemasında artan karbon salınımının sera etkisine, sera etkisinin buzulların erimesine, bunun da deniz seviyesinin yükselmesine yol açtığı oklarla gösterilmiştir. Şemaya göre deniz seviyesinin yükselmesinin en temel nedeni nedir?",
+    "A": "Buzulların yapısının değişmesi",
+    "B": "Deniz suyunun ısınması",
+    "C": "Sera gazlarının atmosferden çıkması",
+    "D": "Karbon salınımının artması",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Bir ülkenin enerji üretim kaynakları pasta grafiğiyle verilmiştir: %40 Kömür, %30 Rüzgâr, %20 Güneş, %10 Doğal gaz. Bu grafiğe göre aşağıdakilerden hangisi kesinlikle doğrudur?",
+    "A": "Güneş enerjisi üretimi rüzgâr enerjisinden fazladır.",
+    "B": "Yenilenebilir enerji kaynaklarının toplam oranı %50'dir.",
+    "C": "En az kullanılan enerji kaynağı kömürdür.",
+    "D": "Doğal gaz kullanımı geçen yıla göre azalmıştır.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Dünya haritası üzerinde nesli tükenmekte olan hayvanlar işaretlenmiştir. Kutup ayıları Kuzey Kutbu'nda, pandalar Doğu Asya'da, koalalar ise Avustralya'da gösterilmiştir. Haritadan hareketle hangi bilgiye ulaşılabilir?",
+    "A": "Hayvanların yaşam alanları coğrafi olarak birbirinden farklıdır.",
+    "B": "En çok nesli tükenen hayvan türü pandalardır.",
+    "C": "Kutup ayıları sadece soğuk denizlerde yaşar.",
+    "D": "Avustralya'da koala dışında nesli tükenen hayvan yoktur.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Bir tabloda yıllara göre üretilen plastik poşet sayıları (milyar adet) verilmiştir: 2018 (30), 2019 (25), 2020 (15), 2021 (10). Bu tablodan çıkarılabilecek en kapsamlı yargı aşağıdakilerden hangisidir?",
+    "A": "Plastik poşetler 2021 yılında tamamen yasaklanmıştır.",
+    "B": "2018 yılında çevre bilinci en üst seviyededir.",
+    "C": "2020'deki üretim bir önceki yıla göre artmıştır.",
+    "D": "Yıllar geçtikçe plastik poşet üretiminde düzenli bir azalma olmuştur.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Bir infografikte toprak kirliliğine neden olan faktörler şu şekilde sıralanmıştır: %45 Zirai ilaçlar, %30 Sanayi atıkları, %25 Evsel atıklar. Verilenlere göre hangisi söylenemez?",
+    "A": "Tarımda kullanılan kimyasallar toprak kirliliğinde en büyük paya sahiptir.",
+    "B": "Sanayi atıkları ile evsel atıkların toplamı zirai ilaçlardan daha azdır.",
+    "C": "Evsel atıkların toprak kirliliğindeki etkisi diğerlerinden daha düşüktür.",
+    "D": "Kirliliği önlemek için sadece sanayi tesisleri denetlenmelidir.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Karbon ayak izi hesaplama görselinde, toplu taşıma kullananların izinin, özel araç kullananlara göre daha küçük olduğu çizimlerle ifade edilmiştir. Bu görselin mesajı nedir?",
+    "A": "Toplu taşıma kullanmak bireysel karbon salınımını azaltır.",
+    "B": "Özel araçlar sadece uzun yollarda kullanılmalıdır.",
+    "C": "Karbon ayak izi büyüdükçe sağlıklı yaşam artar.",
+    "D": "Toplu taşıma araçları havayı daha fazla kirletir.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Bisiklet, elektrikli scooter ve benzinli motosikletin çevreye zararlarının karşılaştırıldığı bir tabloda bisiklet '0 zarar', scooter 'Düşük', motosiklet 'Yüksek' olarak derecelendirilmiştir. Bu tabloya göre hangisine ulaşılamaz?",
+    "A": "Elektrikli araçlar çevreye hiçbir zarar vermez.",
+    "B": "Bisiklet en çevre dostu ulaşım aracıdır.",
+    "C": "Benzinli motosikletin doğaya etkisi diğerlerinden fazladır.",
+    "D": "Motor gücü olmayan araçlar çevreyi daha az kirletir.",
+    "cevap": "A"
+  }
+]

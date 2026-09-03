@@ -1,0 +1,112 @@
+[
+  {
+    "soruNo": 1,
+    "soruMetni": "Sevgi, paylaştıkça çoğalan tek duygudur. Birine gülümsediğinizde, ona içten bir şekilde yardım ettiğinizde bu sevgi dalga dalga yayılır. İnsanları birbirine yaklaştıran, buzları eriten en sıcak güçtür. Kısacası sevgiyle dokunulan her şey güzelleşir ve anlam kazanır.\n\nBu metnin ana fikri aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "İnsanlara yardım etmek her zaman kolay değildir.",
+      "B": "Sevgi, sadece tanıdığımız insanlara gösterilmelidir.",
+      "C": "Gülümsemek için mutlu bir haber beklemeliyiz.",
+      "D": "Sevgi, paylaşıldıkça büyüyen ve hayatı güzelleştiren bir güçtür."
+    },
+    "dogruCevap": "D"
+  },
+  {
+    "soruNo": 2,
+    "soruMetni": "Tiyatro, sahne üzerinde canlandırılan hayatın ta kendisidir. Oyuncular, kimi zaman bir kahramanı, kimi zaman sıradan bir vatandaşı izleyiciye aktarır. İzleyiciler ise koltuklarında otururken sahnede yaşanan sevinçleri, hüzünleri ve çatışmaları oyuncularla birlikte hisseder. Tiyatro, izleyicisine empati kurmayı öğretir.\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Sinemanın tiyatrodan farkı",
+      "B": "Tiyatronun ne olduğu ve izleyiciye kattıkları",
+      "C": "Ünlü tiyatro oyuncularının hayatları",
+      "D": "Tiyatro biletlerinin nasıl alınacağı"
+    },
+    "dogruCevap": "B"
+  },
+  {
+    "soruNo": 3,
+    "soruMetni": "(I) Tarihi binaların mimari yapısı, o dönemin yaşam tarzını yansıtır. (II) Geniş avlular, kalın taş duvarlar hep belli bir amaca hizmet etmiştir. (III) Günümüzde yüksek katlı binalar inşa etmek çok popüler. (IV) Geçmişin izlerini taşıyan bu tarihi yapılar, kültürümüzün sessiz şahitleridir.\n\nBu metinde numaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 4,
+    "soruMetni": "İklim değişikliği, gezegenimizi tehdit eden en büyük tehlikelerden biridir. Buzullar eriyor, deniz seviyeleri yükseliyor ve mevsim normallerinin dışında hava olayları yaşanıyor. Bu durum, bazı hayvan türlerinin neslinin tükenmesine yol açarken, tarımsal üretimi de olumsuz etkiliyor. Önlem alınmazsa sonuçlar daha da ağırlaşacaktır.\n\nBu parçadan iklim değişikliğiyle ilgili aşağıdakilerden hangisi çıkarılamaz?",
+    "secenekler": {
+      "A": "Sadece belirli ülkeleri etkilediği",
+      "B": "Bazı canlı türleri için tehlike oluşturduğu",
+      "C": "Hava olaylarında anormalliklere sebep olduğu",
+      "D": "Tarımsal faaliyetlere zarar verdiği"
+    },
+    "dogruCevap": "A"
+  },
+  {
+    "soruNo": 5,
+    "soruMetni": "Çocukluk dönemi, insanın hayal dünyasının en zengin olduğu zaman dilimidir. O yaşlarda bir karton kutu uzay gemisine, bir ağaç dalı ise sihirli bir değneğe dönüşebilir. Kurallar henüz hayatı sıkıcı hale getirmemiştir. Her şey oyunun bir parçasıdır ve dünyayı keşfetmek çok eğlencelidir.\n\nBu metne getirilebilecek en uygun başlık aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Uzay Gemileri ve Gezegenler",
+      "B": "Karton Kutudan Yapılanlar",
+      "C": "Oyun Kuralları",
+      "D": "Çocukluğun Renkli Dünyası"
+    },
+    "dogruCevap": "D"
+  },
+  {
+    "soruNo": 6,
+    "soruMetni": "- - - -? \nFotoğraf çekmek sadece deklanşöre basmak değildir. İyi bir fotoğraf için ışığı doğru ayarlamak, doğru açıyı bulmak ve en önemlisi o anın duygusunu yakalayabilmek gerekir. Teknik bilginin yanı sıra estetik bir bakış açısı da şarttır.\n\nBu metin aşağıdaki sorulardan hangisine verilmiş bir cevap olabilir?",
+    "secenekler": {
+      "A": "Fotoğraf makineleri ne zaman icat edildi?",
+      "B": "İyi bir fotoğraf çekmek için nelere dikkat etmek gerekir?",
+      "C": "Siyah beyaz fotoğraflar mı daha güzeldir, renkliler mi?",
+      "D": "Hangi fotoğraf makinesi markasını önerirsiniz?"
+    },
+    "dogruCevap": "B"
+  },
+  {
+    "soruNo": 7,
+    "soruMetni": "Gönüllülük, hiçbir karşılık beklemeden toplum için faydalı bir şeyler yapmaktır. Çevre temizliğine katılmak, sokak hayvanlarını beslemek veya bir huzurevini ziyaret etmek gönüllülük esasına dayanır. Bu tür çalışmalara katılan kişiler, - - - -.\n\nBu metnin sonuna anlam akışına göre aşağıdakilerden hangisi getirilmelidir?",
+    "secenekler": {
+      "A": "yaptıkları işten çok fazla para kazanırlar",
+      "B": "sadece kendi çıkarlarını düşünürler",
+      "C": "hem topluma fayda sağlar hem de manevi huzur bulurlar",
+      "D": "zamanlarını tamamen boşa harcamış olurlar"
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 8,
+    "soruMetni": "Ormanın derinliklerine doğru ilerledikçe çam ağaçlarının keskin kokusu ciğerlerime doldu. Göz kamaştırıcı güneş ışıkları, sık yaprakların arasından süzülerek toprağı aydınlatıyordu. Uzaklardan gelen şelale sesi, kuş cıvıltılarına karışarak adeta bir senfoni oluşturuyordu.\n\nBu parçada aşağıdaki duyuların hangisiyle ilgili bir ayrıntı yoktur?",
+    "secenekler": {
+      "A": "Tat alma",
+      "B": "Görme",
+      "C": "İşitme",
+      "D": "Koklama"
+    },
+    "dogruCevap": "A"
+  },
+  {
+    "soruNo": 9,
+    "soruMetni": "Kütüphanenin sessizliği içinde, ahşap kokan eski kitapların arasında dolaşıyordu Elif. Aradığı o nadir kitabı bulduğunda tozlu kapağını nazikçe sildi. Kitabın ilk sayfasını açtığında, dedesinin el yazısıyla yazılmış o küçük notu gördü. Gözleri doldu, saatlerdir süren yorgunluğunu bir anda unutmuştu.\n\nBu metinle ilgili hangisi yanlıştır?",
+    "secenekler": {
+      "A": "Olay, Elif'in kütüphanede aradığı kitabı ve içindeki notu bulmasıdır.",
+      "B": "Mekân bir okuldur.",
+      "C": "Kişi kadrosunda Elif bulunmaktadır.",
+      "D": "Anlatımda görme ve koklama duyularından yararlanılmıştır."
+    },
+    "dogruCevap": "B"
+  },
+  {
+    "soruNo": 10,
+    "soruMetni": "Kaliteli bir uyku, güne zinde başlamanın en önemli anahtarıdır. Yetişkin bir insanın günde ortalama 7-8 saat uyuması gerekir. Uykusuzluk, dikkat eksikliğine, hafıza problemlerine ve sinirliliğe yol açabilir. Ayrıca, yatmadan önce teknolojik aletlerden uzak durmak uykuya dalmayı kolaylaştırır.\n\nBu metinden uyku ile ilgili aşağıdakilerden hangisi çıkarılamaz?",
+    "secenekler": {
+      "A": "Yetişkinler için belli bir süre uyumak gereklidir.",
+      "B": "Yetersiz uyku zihinsel ve duygusal sorunlara yol açabilir.",
+      "C": "Uyku öncesi ekranlardan uzak durmak faydalıdır.",
+      "D": "Çocuklar yetişkinlerden daha az uyumalıdır."
+    },
+    "dogruCevap": "D"
+  }
+]

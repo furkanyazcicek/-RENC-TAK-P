@@ -1,0 +1,85 @@
+{
+  "test_adi": "Yazım Kuralları Orta Seviye Test 10",
+  "sorular": [
+    {
+      "soru": "Renk adlarıyla kurulan bitişik kelimeler bitişik yazılırken, renk adlarının yanında bir nesne adı varsa ayrı yazılır (ör. ateş kırmızısı). Aşağıdakilerin hangisinde yazım yanlışı yapılmıştır?",
+      "A": "Denizin rengi bugün tam bir camgöbeği gibiydi.",
+      "B": "Yeni aldığı elbise gülkurusu rengindeydi.",
+      "C": "Vişne Çürüğü koltuklar odaya ayrı bir hava katmış.",
+      "D": "Balkondaki saksıya kavuniçi çiçekler ektik.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Küçük harflerle yapılan kısaltmalara getirilen eklerde kelimenin okunuşu esas alınır. Aşağıdaki cümlelerin hangisinde bu kurala uyulmamıştır?",
+      "A": "Terzi, kumaştan 50 cm'yi dikkatlice kesti.",
+      "B": "Bagaj ağırlığı 20 kg'dan fazla olanlardan ücret alınır.",
+      "C": "Yarışçı, 100 mm'lik farkla birinci oldu.",
+      "D": "Bu koli tam 5 kg'lık bir ağırlığa sahip.",
+      "cevap": "B"
+    },
+    {
+      "soru": "İki noktadan sonra gelen kısım tam bir cümle değilse ve örnekler sıralanıyorsa küçük harfle başlar. Hangisinde bu kurala aykırı bir durum söz konusudur?",
+      "A": "Marketten alınacaklar şunlardı: Peynir, zeytin, ekmek.",
+      "B": "Çantanda ne ararsan var: kalem, silgi, ayna, mendil...",
+      "C": "Masanın üzerindeki eşyalar şunlardı: defterler ve kitaplar.",
+      "D": "Sevdiğim bazı meyveler şunlardır: elma, armut, muz.",
+      "cevap": "A"
+    },
+    {
+      "soru": "Yer adlarında (kıta, bölge, il, ilçe vb.) ilk isimden sonra gelen ve deniz, nehir, göl, dağ, boğaz vb. tür bildiren ikinci isimler büyük harfle başlar. Hangisinde yazım yanlışı vardır?",
+      "A": "Ağrı Dağı, Türkiye'nin en yüksek noktasıdır.",
+      "B": "Van gölü canavarı efsanesi yıllarca konuşuldu.",
+      "C": "İstanbul Boğazı, Asya ile Avrupa'yı birbirine bağlar.",
+      "D": "Fırat Nehri'nin suları bu mevsimde çok coşkun akar.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Müzikte kullanılan makam ve tür adları küçük harfle başlar. Aşağıdaki cümlelerin hangisinde buna uymamaktan kaynaklı bir hata yapılmıştır?",
+      "A": "Konserde hüzzam makamında şarkılar söylendi.",
+      "B": "Bozlak türündeki türküler dinleyenleri çok etkiledi.",
+      "C": "Radyoda çalan Kürdilihicazkar makamı beni eskilere götürdü.",
+      "D": "Bu yörenin oyun havaları çok hareketlidir.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Belli bir tarihi belirtmeyen ay ve gün adları küçük harfle başlar. Hangi cümlede yazım yanlışı yapılmıştır?",
+      "A": "Her yıl Eylül ayında buralara göçmen kuşlar gelir.",
+      "B": "Haftaya çarşamba günü arkadaşlarla buluşacağız.",
+      "C": "Yaz tatilinde temmuz ayının başını bekliyorum.",
+      "D": "Pazar günleri genellikle evde kitap okuyarak dinlenirim.",
+      "cevap": "A"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde 'ki'nin yazımı ile ilgili bir yanlışlık vardır?",
+      "A": "Akşamki yemeğin tadı hala damağımda kaldı.",
+      "B": "Anladım ki bu işi seninle çözmek mümkün değil.",
+      "C": "Masada ki kitapları toplayıp hemen rafa kaldırdı.",
+      "D": "Mademki gelmeyecektin, bizi neden beklettin?",
+      "cevap": "C"
+    },
+    {
+      "soru": "Soru ekinin (mi) yazımıyla ilgili aşağıdakilerin hangisinde bir hata yapılmıştır?",
+      "A": "Bu kazağın kırmızı rengi sizde bulunur mu?",
+      "B": "Bahar geldimi buraların doğası bir harika olur.",
+      "C": "Beni gerçekten bu kadar çok seviyor musun?",
+      "D": "Olanları duydu mu hemen buraya gelecektir.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde 'de/da'nın yazımı ile ilgili bir yanlışlık yoktur?",
+      "A": "Bu kitapta aradığın tüm bilgileri bulabilirsin.",
+      "B": "Bugün okul da yapılan tören çok güzeldi.",
+      "C": "Sende bizimle gelmek istersen hazırlan.",
+      "D": "İçinde ki sıkıntıyı kimseyle paylaşmak istemiyordu.",
+      "cevap": "A"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde birleşik kelimelerin yazımıyla ilgili bir yanlışlık vardır?",
+      "A": "Kuşburnu çayı kış aylarında hastalıklara iyi gelir.",
+      "B": "Bugün gökyüzünde çok fazla bulut var.",
+      "C": "Yeni aldığı ayakkabıları su geçirmiyormuş.",
+      "D": "Aşcıbaşı yemeğe biraz daha tuz katılması gerektiğini söyledi.",
+      "cevap": "D"
+    }
+  ]
+}

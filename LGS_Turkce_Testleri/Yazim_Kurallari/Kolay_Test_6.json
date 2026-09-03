@@ -1,0 +1,122 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki kısaltmalardan hangisinin yazımı ve okunuşu yanlıştır?",
+    "secenekler": {
+      "A": "TDK'nin yeni yayınlarını aldım.",
+      "B": "TBMM'de bugün oylama yapılacak.",
+      "C": "THY'ndan bilet ayırttım.",
+      "D": "TRT'nin belgeselleri çok güzel."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Büyük harflerle yapılan kısaltmalara getirilen ekler kısaltmanın okunuşuna göre getirilir. 'THY'den' olmalıdır."
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde kısaltmalara getirilen eklerle ilgili bir yanlışlık yapılmıştır?",
+    "secenekler": {
+      "A": "MEB'in sınav takvimi belli oldu.",
+      "B": "ABD'nin başkenti Washington'dır.",
+      "C": "PTT'ye gidip kargo vereceğim.",
+      "D": "TDK'ya dilekçe yazdım."
+    },
+    "dogru_cevap": "D",
+    "cozum": "Türkçede 'K' sesi 'ka' şeklinde değil 'ke' şeklinde okunur. Bu yüzden 'TDK'ye' olmalıdır."
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Küçük harflerle yapılan kısaltmalara getirilen ekler nasıl olmalıdır?",
+    "secenekler": {
+      "A": "Kısaltmanın okunuşuna göre gelir.",
+      "B": "Kelimenin uzun okunuşuna göre gelir.",
+      "C": "Her zaman sert ünsüzle başlar.",
+      "D": "Kesme işareti kullanılmadan yazılır."
+    },
+    "dogru_cevap": "B",
+    "cozum": "Küçük harflerle yapılan kısaltmalara getirilen eklerde kelimenin okunuşu esas alınır. (Örn: kg'dan)"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki kısaltmalardan hangisine getirilen ek yanlıştır?",
+    "secenekler": {
+      "A": "kg'dan",
+      "B": "cm'yi",
+      "C": "mm'de",
+      "D": "kr'un"
+    },
+    "dogru_cevap": "D",
+    "cozum": "'kr.' (kuruş) kelimesinin okunuşuna göre ek getirilmelidir. 'kr.un' veya 'kuruşun' şeklinde olmalı, noktalı kısaltmalarda kesme işareti kullanılmaz."
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde yazım yanlışı vardır?",
+    "secenekler": {
+      "A": "Prof. Dr. Ahmet Bey konferans verdi.",
+      "B": "Mah. muhtarı yeni seçildi.",
+      "C": "Bu cad.'de çok kaza oluyor.",
+      "D": "Av. Ayşe Hanım duruşmaya katıldı."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Sonunda nokta bulunan kısaltmalara getirilen ekler kesme işaretiyle ayrılmaz."
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki kısaltmalardan hangisi yanlış yazılmıştır?",
+    "secenekler": {
+      "A": "T.C.",
+      "B": "T.",
+      "C": "A.B.D.",
+      "D": "Prof."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Büyük harflerle yapılan kısaltmalarda T.C. ve T. dışında nokta kullanılmaz. 'ABD' olmalıdır."
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdakilerin hangisinde kısaltmanın yazımı doğrudur?",
+    "secenekler": {
+      "A": "TÜBİTAK'ın projeleri sergilendi.",
+      "B": "TÜBİTAK'nın projeleri sergilendi.",
+      "C": "TÜBİTAK'in projeleri sergilendi.",
+      "D": "TÜBİTAK'tan projeler bekleniyor."
+    },
+    "dogru_cevap": "A",
+    "cozum": "Kelime gibi okunan kısaltmalara ekler okunuşa göre getirilir. 'Tübitak'ın' doğrudur."
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde ölçü birimlerinin yazımıyla ilgili bir yanlışlık vardır?",
+    "secenekler": {
+      "A": "10 kg elma aldık.",
+      "B": "Kumaşın boyu 2 m'den fazlaydı.",
+      "C": "Bu bidon 5 lt. su alıyor.",
+      "D": "Araba 100 km hızla gidiyordu."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Uluslararası ölçü birimi kısaltmalarında nokta kullanılmaz. 'lt' şeklinde yazılmalıdır."
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde kısaltmalara gelen eklerin yazımı yanlıştır?",
+    "secenekler": {
+      "A": "RTÜK'e yeni üyeler seçildi.",
+      "B": "KYK'dan burs kazandım.",
+      "C": "İTÜ'den mezun oldu.",
+      "D": "TEMA'nın kampanyasına katıldık."
+    },
+    "dogru_cevap": "B",
+    "cozum": "K'nin okunuşu 'ke' olduğundan 'KYK'den' olmalıdır."
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde kısaltmaların yazımı ile ilgili kural hatası vardır?",
+    "secenekler": {
+      "A": "İng.yi çok iyi konuşuyor.",
+      "B": "Alm.dan çeviriler yapıyor.",
+      "C": "Prof.un anlattıkları çok etkileyiciydi.",
+      "D": "Dr.'un yazdığı ilacı aldım."
+    },
+    "dogru_cevap": "D",
+    "cozum": "Sonunda nokta olan kısaltmalara gelen ekler kesme işaretiyle ayrılmaz. 'Dr.un' şeklinde yazılmalıdır."
+  }
+]

@@ -1,0 +1,115 @@
+{
+  "test_adi": "Cümlede Anlam - Zor Test 1",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "(I) Şairin ilk kitabı edebiyat çevrelerinde büyük yankı uyandırmıştı. (II) Ancak şiirlerin çoğunda imgelerin fazlalığı okurun anlamı çözmesini zorlaştırıyordu. (III) Buna rağmen genç şair, ikinci kitabında daha sade bir dil tercih etmişti. (IV) Eleştirmenler, onun bu yeni tavrının şiirinin kalitesini düşürdüğünü söylüyor.\n\nNumaralanmış cümlelerle ilgili aşağıda verilenlerden hangisi yanlıştır?",
+      "secenekler": {
+        "A": "I. cümlede bir tespit yapılmıştır.",
+        "B": "II. cümlede eserin üslubuyla ilgili olumsuz bir eleştiri vardır.",
+        "C": "III. cümlede şairin önceki eserleriyle karşılaştırma yapılmamıştır.",
+        "D": "IV. cümlede başkalarının görüşüne yer verilmiştir."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "1. Bilim insanları Mars'ta geçmişte su bulunduğuna dair kanıtlar elde etti.\n2. Bu buluş, Mars'ta yaşam izlerinin aranması için yeni uzay görevlerinin planlanmasını sağladı.\n\nBu iki cümlenin anlamca doğru biçimde birleştirilmiş hâli aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Mars'ta yaşam izlerinin aranması için planlanan yeni uzay görevleri sayesinde, bilim insanları gezegende geçmişte su olduğuna dair kanıtlar buldu.",
+        "B": "Bilim insanları Mars'ta yaşam izlerini ararken uzay görevleri sayesinde geçmişte orada su bulunduğuna dair önemli kanıtlar elde etti.",
+        "C": "Yeni uzay görevlerinin planlanması, bilim insanlarının Mars'ta geçmişte su bulunduğunu ispatlayarak yaşam izleri aramasını sağladı.",
+        "D": "Bilim insanlarının Mars'ta geçmişte su bulunduğuna dair kanıtlar elde etmesi, orada yaşam izlerinin aranması için yeni uzay görevlerinin planlanmasını sağladı."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "'1960'larda çocukluğunu yaşamış olan yazarlar, o dönemin sokak oyunlarını eserlerine daha canlı bir şekilde aktarmışlardır.'\nBu cümleden hareketle aşağıdakilerden hangisine kesin olarak ulaşılabilir?",
+      "secenekler": {
+        "A": "Yazarların eserlerinde kendi yaşam deneyimlerinin izleri görülebilir.",
+        "B": "1960'lardan sonra doğan yazarlar sokak oyunlarını bilmemektedir.",
+        "C": "Edebiyatta en başarılı tasvirler her zaman çocukluk anılarından çıkar.",
+        "D": "Dönemin sokak oyunları sadece edebiyat eserlerinde yaşatılmıştır."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "I. başarıya ulaşmanın\nII. en önemli adımıdır\nIII. hatalardan ders\nIV. kendi eksikliklerini görüp\nV. çıkarmak\nVI. hayatta\n\nNumaralanmış sözcük gruplarıyla anlamlı ve kurallı bir cümle oluşturulduğunda baştan üçüncü sözcük grubu hangisi olur?",
+      "secenekler": {
+        "A": "I",
+        "B": "III",
+        "C": "IV",
+        "D": "V"
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde, cümlenin içinde açıkça söylenmediği hâlde cümlenin anlamından çıkarılabilen başka bir anlam (örtülü anlam) yoktur?",
+      "secenekler": {
+        "A": "Bu yıl da ürünlerimiz beklediğimiz gibi kaliteli oldu.",
+        "B": "Kardeşim artık odasını düzenli olarak temizliyor.",
+        "C": "Akşam yemeğinden sonra odama çekilip biraz kitap okudum.",
+        "D": "Yarışmanın sadece birinci aşamasını başarıyla geçebildik."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Amaç-sonuç cümlelerinde, eylemin hangi amaca yönelik yapıldığı belirtilir ancak eylemin sonuca ulaşıp ulaşmadığı kesin değildir. Neden-sonuç cümlelerinde ise eylemin yapılması bir nedene dayanır ve eylem gerçekleşmiştir. Buna göre aşağıdakilerden hangisi diğerlerinden farklı bir anlam ilişkisi taşır?",
+      "secenekler": {
+        "A": "İstediği liseyi kazanabilmek için yaz tatilinde bile ders çalıştı.",
+        "B": "Misafirlerine ikram etmek üzere sabah erkenden fırına gidip taze simit aldı.",
+        "C": "Ailesiyle daha fazla vakit geçirebilmek maksadıyla işten erken çıktı.",
+        "D": "Yorgunluktan gözleri kapanıyordu, bu yüzden kitabı elinden bıraktı."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Bazen koşul gerçekleşse bile istenen sonucun ortaya çıkmayacağı anlamı veren cümleler kurulabilir. Aşağıdakilerin hangisinde böyle bir durum söz konusudur?",
+      "secenekler": {
+        "A": "Ne kadar çalışırsa çalışsın, bu kısa sürede o projeyi tamamlayamaz.",
+        "B": "Düzenli bir şekilde antrenman yaparsa takımda kendine yer bulabilir.",
+        "C": "Havalar ısınır ısınmaz arkadaşlarla birlikte yaylaya çıkacağız.",
+        "D": "Benimle açık açık konuşmadıkça ona yardımcı olmam mümkün değil."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Tahmin cümleleri akla, mantığa veya birtakım verilere dayanarak gelecekteki bir durumu kestirme iken; ihtimal cümleleri bir durumun olabilme veya olamama olasılığını ifade eder. Buna göre aşağıdakilerden hangisi bir tahmin cümlesidir?",
+      "secenekler": {
+        "A": "Tatil için Antalya'ya gitmek yerine memlekete gidebiliriz.",
+        "B": "Gökyüzündeki kara bulutlara bakılırsa akşama doğru şiddetli yağmur yağacak.",
+        "C": "Anahtarı içeride unuttuğum için belki akşam dışarıda kalabilirim.",
+        "D": "Okullar kapandığında muhtemelen bir işte çalışıp para biriktiririm."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "'Bir insanın gerçek karakteri, gücü eline geçirdiğinde ortaya çıkar.' cümlesine anlamca en uzak yargı aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Makam ve mevki sahibi olmak, kişilerin sakladıkları özelliklerini gün yüzüne çıkarır.",
+        "B": "İnsanın özünü anlamak istiyorsanız ona yetki ve sorumluluk vermelisiniz.",
+        "C": "Karakterli insanlar her türlü zorluk karşısında duruşlarını bozmayanlardır.",
+        "D": "Kişinin gerçek yüzü, başkaları üzerinde otorite kurma imkânı bulduğunda belli olur."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "'Eserlerinde kendi döneminin aydınlarını eleştiren yazar, bu kişilerin halktan kopuk yaşadıklarını ironik bir dille yansıtmıştır.'\nBu cümleden söz konusu yazarla ilgili olarak aşağıdakilerden hangisi çıkarılamaz?",
+      "secenekler": {
+        "A": "Aydınların halkla iç içe olmasını sağlayacak projeler geliştirmiştir.",
+        "B": "Eleştirdiği kitle, yaşadığı dönemdeki okumuş kesimdir.",
+        "C": "Anlatımında alaycı ve ince bir mizah (ironi) kullanmıştır.",
+        "D": "Aydınların, sıradan insanların yaşamlarına uzak kaldığını düşünmektedir."
+      },
+      "dogru_cevap": "A"
+    }
+  ]
+}

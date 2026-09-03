@@ -1,0 +1,117 @@
+{
+  "testId": "Orta_Test_5",
+  "subject": "Sözcükte Anlam",
+  "difficulty": "Orta",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'kök' sözcüğü terim anlamda kullanılmıştır?",
+      "options": {
+        "A": "Bu üzücü olayın köküne inip sebebini araştırmalıyız.",
+        "B": "Bu köklü ailenin tarihi çok eskilere dayanır.",
+        "C": "Soğuk su içtiği için dişinin kökü çok ağrıyordu.",
+        "D": "Türkçe dersinde tahtadaki kelimenin kökünü bulduk."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'yıkılmak' sözcüğü 'hayal kırıklığına uğramak, çok üzülmek' anlamındadır?",
+      "options": {
+        "A": "Sınavı kazanamadığını öğrenince adeta yıkıldı.",
+        "B": "Mahalledeki eski ve terkedilmiş bina depremde yıkıldı.",
+        "C": "Şiddetli esen lodos yüzünden sokaktaki ağaçlar yıkıldı.",
+        "D": "Sahilde kumdan yaptığı kale dalgaların çarpmasıyla yıkıldı."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "Aşağıdaki deyimlerden hangisi 'korku, sevinç veya şaşkınlık sonrası tekrar konuşmaya başlamak' anlamındadır?",
+      "options": {
+        "A": "Dili tutulmak",
+        "B": "Dili çözülmek",
+        "C": "Dilinde tüy bitmek",
+        "D": "Dil uzatmak"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'sönmek' sözcüğü mecaz anlamda kullanılmıştır?",
+      "options": {
+        "A": "Pencereden giren ani rüzgarla masadaki mum söndü.",
+        "B": "Günlerdir süren orman yangını sabaha karşı nihayet söndü.",
+        "C": "Arka arkaya aldığı yenilgilerle içindeki umut ışığı söndü.",
+        "D": "Kış gecesi sobadaki ateş tamamen sönünce oda buz gibi oldu."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "Aşağıdaki sözcüklerden hangisi sesteş (eş sesli) bir sözcük değildir?",
+      "options": {
+        "A": "Yüz",
+        "B": "Gül",
+        "C": "Yaz",
+        "D": "Kitap"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'açık' sözcüğü 'gizli olmayan, net, samimi' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Bana karşı her zaman açık sözlü oldu ve yalan söylemedi.",
+        "B": "Açık pencereden içeriye serin bir sonbahar rüzgarı esiyor.",
+        "C": "Hafta sonu açık havada bol bol yürüyüş yaptık.",
+        "D": "Gittiğimizde dükkanın kapısı ardına kadar açıktı."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "'Fayda' kelimesinin eş anlamlısı aşağıdakilerden hangisidir?",
+      "options": {
+        "A": "Zarar",
+        "B": "Yarar",
+        "C": "Engel",
+        "D": "Destek"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "Aşağıdaki altı çizili sözcüklerden hangisi somut anlamlıdır?",
+      "options": {
+        "A": "Kafasındaki karmaşık *düşünceler* onu gün boyu yordu.",
+        "B": "Gecenin karanlığında içinde büyük bir *korku* vardı.",
+        "C": "Çalışma masasının üzerindeki kalın *kitabı* eline aldı.",
+        "D": "Yaşadığı bu olumsuz olay ona büyük bir *üzüntü* verdi."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'sürmek' sözcüğü 'zaman almak, devam etmek' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Şirketteki yönetim kurulu toplantısı yaklaşık iki saat sürdü.",
+        "B": "Çiftçi erkenden kalkıp tarlayı traktörle güzelce sürdü.",
+        "C": "Kahvaltıda kızarmış ekmeğinin üzerine tereyağı sürdü.",
+        "D": "Yeni aldığı arabasını dar sokaklarda çok dikkatlice sürdü."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 10,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'kalkmak' sözcüğü 'uyanmak, uykudan uyanıp yataktan çıkmak' anlamındadır?",
+      "options": {
+        "A": "Beklediğimiz yolcu uçağı saatinde havalimanından kalktı.",
+        "B": "Biz durağa varmadan az önce otobüs duraktan kalktı.",
+        "C": "Yemekten hemen sonra masadaki bütün boş tabaklar kalktı.",
+        "D": "Yola erken çıkmak için sabah güneş doğmadan kalktı."
+      },
+      "correctAnswer": "D"
+    }
+  ]
+}

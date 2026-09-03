@@ -1,0 +1,125 @@
+{
+  "test_adi": "Fiilde Çatı - Kolay Test 5",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "İsim cümlelerinde çatı özelliği aranmaz. Buna göre aşağıdaki cümlelerin hangisinde çatı özelliği aranmaz?",
+      "secenekler": {
+        "A": "Öğretmenimiz tahtaya yeni konuyu yazdı.",
+        "B": "Sınav sonuçları nihayet bugün açıklandı.",
+        "C": "Kütüphanedeki kitapların hepsi çok eskiydi.",
+        "D": "Öğrenciler teneffüste bahçeye koştu."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğindeki 'eskiydi' sözcüğü isim olduğu için bu cümlede çatı özelliği aranmaz."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde yüklem etken çatılıdır?",
+      "secenekler": {
+        "A": "Sınıfın panosu güzelce süslendi.",
+        "B": "Okul bahçesindeki çöpler toplandı.",
+        "C": "Müdür Bey öğrencilere ödüllerini verdi.",
+        "D": "Koridorların zeminleri her sabah yıkanır."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde ödül verme işini yapan (Müdür Bey) belli olduğu için yüklem etken çatılıdır. Diğerleri edilgendir."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Nesne alabilen fiillere geçişli fiil denir. Buna göre hangisinin yüklemi geçişli bir fiildir?",
+      "secenekler": {
+        "A": "Öğrenciler zil çalınca hemen oturdu.",
+        "B": "Ali dünkü sınavda çok heyecanlandı.",
+        "C": "Ayşe okuduğu şiirle herkesi duygulandırdı.",
+        "D": "Okul çıkışında servisi beklerken üşüdük."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğindeki 'duygulandırdı' fiili nesne alabilir (onu duygulandırdı/herkesi duygulandırdı). Bu nedenle geçişlidir."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Edilgen fiiller '-l' veya '-n' eklerini alır ve cümlede sözde özne bulunur. Hangisinde bu kurala uygun bir örnek vardır?",
+      "secenekler": {
+        "A": "Öğretmen yoklamayı henüz almadı.",
+        "B": "Tüm sınıflar tatilde boyandı.",
+        "C": "Zeynep defterine güzel bir resim çizdi.",
+        "D": "Okul takımı dünkü maçı kazandı."
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğinde sınıfların kim tarafından boyandığı belli değildir. 'boyandı' fiili edilgendir ve 'Tüm sınıflar' sözde öznedir."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Aşağıdakilerin hangisinde nesne - yüklem ilişkisi (geçişli-geçişsiz) bakımından farklı bir fiil kullanılmıştır?",
+      "secenekler": {
+        "A": "Soruyu bir kez daha okudu.",
+        "B": "Kalemini arkadaşına verdi.",
+        "C": "Öğretmenin anlattıklarını dinledi.",
+        "D": "Teneffüste sırasından kalktı."
+      },
+      "dogru_cevap": "D",
+      "cozum": "A, B ve C seçeneklerindeki eylemler nesne alabilen geçişli eylemlerdir (okudu, verdi, dinledi). D seçeneğindeki 'kalktı' fiili ise nesne alamayan geçişsiz bir eylemdir."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "'Onu' kelimesini yüklemin başına getirdiğimizde anlamlı oluyorsa fiil geçişlidir. Buna göre aşağıdakilerden hangisi geçişsizdir?",
+      "secenekler": {
+        "A": "çözdü",
+        "B": "yazdı",
+        "C": "uyudu",
+        "D": "sildi"
+      },
+      "dogru_cevap": "C",
+      "cozum": "'Onu uyudu' anlamsız olduğu için 'uyumak' fiili geçişsizdir."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Hangi cümlenin yüklemi etken ve geçişlidir?",
+      "secenekler": {
+        "A": "Öğrenciler okul bahçesinde güldü.",
+        "B": "Okul müdürü törende konuşma yaptı.",
+        "C": "Sınav kağıtları özenle dağıtıldı.",
+        "D": "Sınıfın camları temizlik görevlisince silindi."
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğinde işi yapan 'Okul müdürü' bellidir (etken). Ayrıca eylem nesne alabilir (onu yaptı - geçişli). C ve D edilgen, A ise etken-geçişsizdir."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Aşağıdaki cümlelerden hangisinin çatısı özelliklerine göre doğru verilmiştir?",
+      "secenekler": {
+        "A": "'Okullar eylül ayında açıldı.' - Etken / Geçişli",
+        "B": "'Ahmet tahtayı sildi.' - Etken / Geçişli",
+        "C": "'Zil çaldı.' - Edilgen / Geçişsiz",
+        "D": "'Kitaplar dağıtıldı.' - Etken / Geçişsiz"
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğinde özne (Ahmet) belli olduğu için etken, nesne (tahtayı) aldığı için geçişlidir."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde fiil geçişli olduğu halde cümlede nesne kullanılmamıştır?",
+      "secenekler": {
+        "A": "Ağlaya ağlaya gözleri şişti.",
+        "B": "Sınavdan sonra derin bir nefes aldı.",
+        "C": "Çok çalışmasına rağmen başaramadı.",
+        "D": "Öğretmenini dikkatlice dinledi."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde 'başaramadı' eylemi geçişlidir (onu başaramadı). Ancak cümlede neyi başaramadığı belirtilmemiştir, nesne yoktur."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "'Ödevlerimi akşamdan ...' cümlesi aşağıdakilerden hangisiyle tamamlanırsa etken çatılı olur?",
+      "secenekler": {
+        "A": "hazırlandı",
+        "B": "bitirildi",
+        "C": "yapıldı",
+        "D": "tamamladım"
+      },
+      "dogru_cevap": "D",
+      "cozum": "'tamamladım' eylemini yapan bellidir (ben - gizli özne), bu yüzden etken çatılı olur. Diğer seçenekler edilgen yapar."
+    }
+  ]
+}

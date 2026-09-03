@@ -1,0 +1,112 @@
+[
+  {
+    "soruNo": 1,
+    "soruMetni": "Yalan, üzerine inşa edilen hiçbir binanın sağlam kalmasına izin vermez. Belki anlık olarak işleri yoluna koymuş gibi görünürüz ama yalan bir gün mutlaka ortaya çıkar. Doğruluk ise sarsılmaz bir temeldir. İnsanlar dürüst kişilere her zaman güvenirler. Zor zamanlarda bile doğrudan şaşmamak, onurlu bir hayatın anahtarıdır.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Binaların sağlam yapılması depremlere karşı korur.",
+      "B": "Zor zamanlarda insanlar birbirine destek olmalıdır.",
+      "C": "Hayatta her zaman dürüst olmak ve doğrudan şaşmamak gerekir.",
+      "D": "Yalan söyleyen insanların hiç arkadaşı kalmaz."
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 2,
+    "soruMetni": "Dünya üzerindeki farklı iklim tipleri, bitki örtüsünü ve hayvan çeşitliliğini doğrudan etkiler. Örneğin, Ekvator çevresindeki sıcak ve yağışlı iklim gür ormanların oluşmasını sağlarken, kutuplardaki soğuk iklim sadece belirli hayvanların yaşamasına izin verir. İklim, aynı zamanda o bölgedeki insanların yaşam şeklini de belirler.\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "İklimin canlılar ve doğa üzerindeki etkileri",
+      "B": "Ekvator bölgesinin genel özellikleri",
+      "C": "Kutup ayılarının nasıl beslendiği",
+      "D": "İklim değişikliğinin zararları"
+    },
+    "dogruCevap": "A"
+  },
+  {
+    "soruNo": 3,
+    "soruMetni": "(I) Basketbol, beşer kişilik iki takımla oynanan tempolu bir spordur. (II) Son yıllarda futbol maçlarına olan ilgi daha da artmıştır. (III) Oyuncular topu potadan geçirerek takımlarına sayı kazandırmaya çalışırlar. (IV) Oyun süresi boyunca çok hızlı koşmak ve çevik olmak gerekir.\n\nBu metinde numaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogruCevap": "B"
+  },
+  {
+    "soruNo": 4,
+    "soruMetni": "Meyveler, içerdikleri vitamin ve minerallerle vücudumuzun koruyucu kalkanıdır. Elma, sindirim sistemini düzenlerken; portakal ve mandalina C vitamini deposu olup bizi soğuk algınlığına karşı korur. Muz ise potasyum açısından zengin olduğu için kas kasılmalarını önler. Meyveleri mevsiminde ve taze tüketmek en doğrusudur.\n\nBu parçada meyvelerle ilgili aşağıdakilerden hangisine değinilmemiştir?",
+    "secenekler": {
+      "A": "Elmanın sindirim sistemine faydalı olduğuna",
+      "B": "Muzun kaslar için yararlı potasyum içerdiğine",
+      "C": "Portakalın soğuk algınlığına karşı koruduğuna",
+      "D": "Hangi saatlerde meyve yemenin daha doğru olduğuna"
+    },
+    "dogruCevap": "D"
+  },
+  {
+    "soruNo": 5,
+    "soruMetni": "Elimizdeki bir dilim ekmeği ikiye bölüp yanımızdakiyle paylaşmak, o ekmeğin lezzetini iki katına çıkarır. Sadece yiyecek değil; bilgiyi, sevgiyi ve tecrübeyi de başkalarıyla bölüşmek insanı zenginleştirir. Bencilce saklanan her şey zamanla çürümeye mahkûmken, paylaşılan her şey büyür ve güzelleşir.\n\nBu metne getirilebilecek en uygun başlık aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Ekmek Yapımı",
+      "B": "Tasarrufun Önemi",
+      "C": "Paylaşmanın Güzelliği",
+      "D": "Bencillik"
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 6,
+    "soruMetni": "- - - -? \nSinemanın tarihi 19. yüzyılın sonlarına kadar uzanır. Lumiere Kardeşler'in 1895 yılında Paris'te yaptıkları ilk film gösterimi, sinemanın doğuşu olarak kabul edilir. O dönemde filmler siyah beyaz ve sessizdi. İzleyiciler perdedeki hareketli görüntüleri gördüklerinde büyük bir şaşkınlık yaşamışlardı.\n\nBu metin aşağıdaki sorulardan hangisine verilmiş bir cevap olabilir?",
+    "secenekler": {
+      "A": "Sinema ne zaman ve nasıl ortaya çıkmıştır?",
+      "B": "Sessiz filmler neden daha çok izleniyordu?",
+      "C": "Lumiere Kardeşler hangi filmleri çekmiştir?",
+      "D": "Bugünkü sinema salonları nasıldır?"
+    },
+    "dogruCevap": "A"
+  },
+  {
+    "soruNo": 7,
+    "soruMetni": "Şehrin stresinden kurtulmak isteyenler için doğa yürüyüşleri harika bir seçenektir. Ormanın temiz havasını solumak, kuş sesleri eşliğinde yürümek zihni dinlendirir. Ancak doğa yürüyüşüne çıkarken dikkat edilmesi gereken bazı kurallar vardır. Bunların en önemlisi, yanımıza yeterince su almak ve - - - -.\n\nBu metnin sonuna anlam akışına göre aşağıdakilerden hangisi getirilmelidir?",
+    "secenekler": {
+      "A": "müzik dinlemek için büyük bir hoparlör taşımaktır",
+      "B": "ormanlık alanda hemen ateş yakmaktır",
+      "C": "bütün ağaçların yapraklarını koparmaktır",
+      "D": "doğayı kirletmemek için çöplerimizi yanımızda geri götürmektir"
+    },
+    "dogruCevap": "D"
+  },
+  {
+    "soruNo": 8,
+    "soruMetni": "Ilık bir yaz akşamında, terasta otururken hafif bir rüzgar esiyordu. Gökyüzünde parlayan yıldızlar adeta birer pırlanta gibiydi. Komşunun bahçesinden gelen hanımeli kokusu etrafı sarmıştı. Uzaklardan geçen bir arabanın motor sesi sessizliği anlık olarak bozup kayboldu.\n\nBu parçada aşağıdaki duyulardan hangisinden yararlanılmamıştır?",
+    "secenekler": {
+      "A": "Görme",
+      "B": "Tat alma",
+      "C": "Koklama",
+      "D": "İşitme"
+    },
+    "dogruCevap": "B"
+  },
+  {
+    "soruNo": 9,
+    "soruMetni": "Sınav salonuna girdiğinde kalbi yerinden çıkacak gibi atıyordu. Selim, aylardır bu sınava hazırlanmıştı ama yine de ellerinin titremesine engel olamıyordu. Gözetmen öğretmen güler yüzle evrakları dağıtmaya başladığında Selim derin bir nefes aldı ve kitapçığına odaklandı.\n\nBu metnin hikâye unsurlarıyla ilgili hangisi söylenemez?",
+    "secenekler": {
+      "A": "Kişi kadrosunda Selim ve gözetmen öğretmen vardır.",
+      "B": "Mekân sınav salonudur.",
+      "C": "Olay, Selim'in sınavda kopya çekerken yakalanmasıdır.",
+      "D": "Duygu olarak heyecan ağır basmaktadır."
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 10,
+    "soruMetni": "Karıncalar, boyutlarına göre dünyanın en güçlü canlılarından biridir. Kendi ağırlıklarının katlarca fazlasını taşıyabilirler. Ayrıca mükemmel bir işbirliği içinde çalışırlar. Yuva yapımından yiyecek bulmaya kadar her işi organize bir şekilde hallederler. Asla yorulmak bilmez ve sürekli bir telaş içinde çalışırlar.\n\nBu parçadan karıncalarla ilgili aşağıdakilerden hangisi çıkarılabilir?",
+    "secenekler": {
+      "A": "Dayanışma içinde ve çok çalışkan hayvanlardır.",
+      "B": "Geceleri hiç uyumadan çalışırlar.",
+      "C": "Kendi ağırlıklarından hafif şeyleri taşıyamazlar.",
+      "D": "Sadece yaz aylarında yiyecek toplarlar."
+    },
+    "dogruCevap": "A"
+  }
+]

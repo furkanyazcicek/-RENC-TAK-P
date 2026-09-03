@@ -1,0 +1,125 @@
+{
+  "test_adi": "Söz Sanatları - Kolay Test 5",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Çiftçi hasat zamanı tarlada arı gibi çalışkan olmak zorundadır.\n\nBu cümlede çiftçinin çalışkanlığı anlatılırken hangi sanat kullanılmıştır?",
+      "secenekler": {
+        "A": "Benzetme",
+        "B": "Kişileştirme",
+        "C": "Abartma",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Çiftçinin çalışkanlığı arının çalışkanlığına 'gibi' edatıyla benzetilmiştir (Teşbih)."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Köy meydanındaki düğün o kadar kalabalıktı ki iğne atsan yere düşmezdi.\n\nBu cümlede deyim aracılığıyla hangi söz sanatına başvurulmuştur?",
+      "secenekler": {
+        "A": "Kişileştirme",
+        "B": "Abartma",
+        "C": "Benzetme",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "B",
+      "cozum": "İğnenin yere düşmeyecek kadar kalabalık olması durumu abartılı (mübalağalı) bir ifadedir."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Bulutlar çekilip yağmur yağmayınca koca dağlar küstü ovaya.\n\nBu cümlede dağlar üzerinden hangi sanat yapılmıştır?",
+      "secenekler": {
+        "A": "Benzetme",
+        "B": "Abartma",
+        "C": "Kişileştirme",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Küsmek insanlara ait bir özelliktir. Dağlara bu özellik verilerek kişileştirme (teşhis) yapılmıştır."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Garip bülbül dikenin üstünde güle sitem etti: 'Neden vaktinde açmadın yapraklarını?'\n\nBu dizelerde hangi söz sanatı vardır?",
+      "secenekler": {
+        "A": "Abartma",
+        "B": "Kişileştirme",
+        "C": "Benzetme",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Bülbülün konuşarak güle soru sorması, bülbülün konuşturulduğu (intak) anlamına gelir."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Eski zamanlarda güzellerin dişleri inci gibi parıldardı derler.\n\nBu cümlede dişlerin görünümü anlatılırken hangi sanat tercih edilmiştir?",
+      "secenekler": {
+        "A": "Kişileştirme",
+        "B": "Abartma",
+        "C": "Konuşturma",
+        "D": "Benzetme"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Dişler parlaklığı ve güzelliği bakımından inciye benzetilmiştir."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Ayrılık acısıyla döktüğü gözyaşları Ceyhun nehri oldu taştı.\n\nBu cümlede ağlamanın şiddeti hangi sanatla vurgulanmıştır?",
+      "secenekler": {
+        "A": "Konuşturma",
+        "B": "Kişileştirme",
+        "C": "Abartma",
+        "D": "Benzetme"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Gözyaşlarının bir nehir kadar çok olması imkansız bir durumdur, acı abartılarak (mübalağa) ifade edilmiştir."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Bahar güneşi vurunca dağların tepesindeki karlar eriyip sessizce ağlamaya başladı.\n\nBu dizelerde eriyen karlar için hangi sanat kullanılmıştır?",
+      "secenekler": {
+        "A": "Benzetme",
+        "B": "Kişileştirme",
+        "C": "Abartma",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Karların erimesi bir insanın 'ağlaması' gibi düşünülüp onlara insani özellik yüklenmiştir (kişileştirme)."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Bülbülü altın kafese koymuşlar, yine de 'Ah vatanım!' demiş.\n\nAtasözü niteliği taşıyan bu ifadede bülbül üzerinden hangi sanat yapılmıştır?",
+      "secenekler": {
+        "A": "Konuşturma",
+        "B": "Benzetme",
+        "C": "Abartma",
+        "D": "Kişileştirme"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Bülbülün bizzat kendi ağzıyla 'Ah vatanım!' cümlesini kurması intak (konuşturma) sanatıdır."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Tilki gibi kurnaz düşmanlardan uzak durmak, atasözlerinin bize bir öğüdüdür.\n\nBu ifadede kurnazlık neye benzetilmiştir ve hangi sanat kullanılmıştır?",
+      "secenekler": {
+        "A": "Abartma",
+        "B": "Konuşturma",
+        "C": "Kişileştirme",
+        "D": "Benzetme"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Düşman, kurnazlık yönünden tilkiye benzetilmiştir, teşbih sanatı vardır."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Kavak ağaçları rüzgarla fısıldaşırken bizim derdimizi dinleyip hüzünlendi.\n\nBu cümlede kavak ağaçlarına yönelik hangi sanat dikkat çekmektedir?",
+      "secenekler": {
+        "A": "Benzetme",
+        "B": "Abartma",
+        "C": "Kişileştirme",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Kavak ağaçlarının derdi dinleyip hüzünlenmesi insana özgü bir durumdur, dolayısıyla kişileştirme yapılmıştır."
+    }
+  ]
+}

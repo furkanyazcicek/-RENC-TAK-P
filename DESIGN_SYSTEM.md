@@ -537,3 +537,69 @@ Son kabulte şu soruların yanıtı olumlu olmalıdır:
 - Klavye, odak, kontrast, dokunma ve azaltılmış hareket korunuyor mu?
 - Ekran DRKOÇ ailesine ait ama konuya özgü mü?
 - Gereksiz kart, cam, gradyan, kenarlık, gölge ve dekorasyon ayıklandı mı?
+
+## 21) Ana sayfa kitap sahnesi
+
+Kullanıcının onayladığı fotoğraf referansı için `editorial-home--book` kapsamında
+ayrı malzeme belirteçleri kullanılır: `--book-desk` (9 15 25), `--book-cloth`
+(24 37 56), `--book-paper` (245 240 230), `--book-print` (32 43 58),
+`--book-muted` (105 111 112), `--book-rule` (205 200 187). Bunlar genel ürünün
+tema belirteçlerini değiştirmez. Georgia (`--book-serif`) yalnız kitap içi
+basılı başlıklarda ve bu ana sayfanın editoryal başlıklarında kullanılır;
+kontroller ve ürün içeriği Inter ailesinde kalır.
+
+Cilt dokusu `public/images/landing/book-cloth-navy.jpg` dosyasıdır; ağır 3B
+bağımlılık olmadan Canvas üzerinde eğrilen sayfalara içerik basılır. Geometri
+dekoratiftir. Öğrenme araçları semantik React/HTML olarak korunur. Analiz ve
+günlük plan örnekleri gerçek öğrenci verisi veya başarı vaadi gibi sunulmaz.
+Kaydırma yakalanmaz; bölümler düğmeyle de gezilir ve deneyime geçiş odağı taşır.
+Azaltılmış hareket tercihinde uzun kaydırma ve sayfa animasyonu kaldırılır.
+
+Kitabın üstünden süzülen loş ışık `--book-light-warm` (211 197 171), iki
+yandaki zayıf dolgu ışığı `--book-light-cool` (133 160 191) ile tanımlanır.
+Bu ışıklar yalnız kitap sahnesinde, statik ve düşük saydamlıklı radyal
+gradyanlardır; kâğıt açıldığında yoğunluk azalır. Etkileşimleri engellemez,
+yeni bir animasyon veya pahalı bulanıklık filtresi eklemez.
+
+### Kitap içindeki tarih haritası önizlemesi
+
+Tarih sekmesi, dekoratif zaman çizelgesi yerine atlasın mevcut v3 siyasi
+paketlerini ve MapLibre sunum katmanlarını kullanır. Harita tüm sahne genişliğini
+alır; yıl seçimi ve kaynak yılı haritanın hemen altında bulunur. Seçili yıl ile
+kaynak yılı farklıysa fark ve kesinlik uyarısı açıkça yazılır. Yeni tarihsel
+geometri üretilmez. Kaynak atıfları ve kıtasal ölçek sınırlaması görünür kalır.
+
+Önizleme yalnız Tarih sekmesinde yüklenir. Telefonda daha geniş bir coğrafi
+kadraj kullanılır; harita kaydırması iki parmakla, yakınlaştırma en az 44 px
+düğmelerle yapılır. Sayfanın olağan kaydırması yakalanmaz. Tam atlas bağlantısı
+seçili yılı taşır. Ağ/harita hatasında yeniden deneme sunulur; önceki yılın
+haritası yeni yılın kesin görünümü gibi gösterilmez. Stiller yalnız
+`.history-preview` kapsamında tutulur.
+
+### Diğer atlasların ana sayfa önizlemeleri
+
+Her ders ayrı ve gerektiğinde yüklenen bir deneydir. `.atlas-sample` kâğıt,
+başlık, kontrol ve ölçüm ritmini paylaşır; sahne biçimini ortaklaştırmaz.
+Fizik, hareket atlasının analitik hesaplarını ve zaman döngüsünü, uygulamanın
+ortak araç çizimiyle kullanır. Otomatik başlamaz; sahne görünmez olduğunda
+durur. Telefon kadrajı ayrıca düzenlenir; araç görünür alanın dışına taşmaz.
+
+Kimya 118 elementin gerçek 18 sütunlu cetvel yerleşimini, atlasın element
+hücrelerini ve Bohr gösterimini kullanır. Telefonlarda cetvel yatay kayar,
+element düğmeleri küçültülmez; seçili elementin özeti cetvelin dışında da
+görünür. Coğrafya, mevcut kurgusal havzanın görselini, öğretim katmanlarını
+ve hesaplama modelini kullanır; indeksler ölçülmüş gerçek arazi verisi gibi
+sunulmaz. Biyoloji aynı hücre karşılaştırma bileşenini, ilerleme kaydı ve sınav
+kabuğu olmadan açar. Tam atlas bağlantıları ilgili bölüme yönlendirir.
+
+Biyoloji ve coğrafya önizlemeleri aynı kâğıt, mor seçim vurgusu, 44 px
+kontrol ve serif açıklama hiyerarşisini paylaşır. Biyolojinin hücre çizimi,
+fizikteki koyu mürekkep sahnesi üzerinde ince, konuya özgü renklerle sunulur;
+tam atlasın yeşil tema kabuğu ana sayfaya taşınmaz. Hücre modeli ve seçim
+mantığı ortak bileşende kalır, önizleme yalnız sunumunu değiştirir.
+
+Coğrafyanın kurgusal havza görseli kırpılmaz; katman ve nokta hizası korunur.
+Nokta işaretlerinin görünen dairesi 30 px, dokunma hedefi 44 px'tir; aynı
+bölgeler adlandırılmış düğmelerle de seçilir. İnce katman lejantı ve bağlamsal
+açıklama sahneye eşlik eder. Dar ekranda hücre açıklaması ve havza kontrolleri
+sahnenin altına geçer; değişkenler ve sonuçlar aynı sırada okunur.

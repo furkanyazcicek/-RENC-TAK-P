@@ -97,7 +97,7 @@ const EVIDENCE = [
 const PROFILE = [94, 88, 76, 59, 45, 54, 70, 76, 67, 53, 42, 32, 28]
 const clamp = (value, min = 0, max = 100) => Math.max(min, Math.min(max, value))
 
-function modelHesapla(values) {
+export function modelHesapla(values) {
   const discharge = Math.round(clamp(24 + values.yagis * .72 + values.akis * .13))
   const surfaceFlow = Math.round(clamp(values.yagis * .58 + values.egim * .26 + values.akis * .2 - values.bitki * .38))
   const erosion = Math.round(clamp(values.egim * .33 + values.yagis * .26 + values.akis * .3 + (100 - values.kayac) * .26 + (100 - values.bitki) * .12 + values.zaman * .12))
@@ -141,7 +141,7 @@ function EvidencePanel({ item, stats }) {
   </article>
 }
 
-function SceneOverlay({ values, model, layers, profile, draggable, onDragStart, evidence, comparison = false }) {
+export function SceneOverlay({ values, model, layers, profile, draggable, onDragStart, evidence, comparison = false }) {
   const particles = Array.from({ length: Math.max(4, Math.round(model.transport / 8)) }, (_, index) => ({
     cx: 42 + ((index * 9) % 43),
     cy: 47 + ((index * 13) % 32),

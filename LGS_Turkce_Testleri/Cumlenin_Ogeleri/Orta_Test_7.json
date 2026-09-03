@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Ünlü piyanist, konser salonundaki dinleyicilere unutulmaz bir gece yaşattı.\" cümlesinde hangi öge yoktur?",
+    "A": "Zarf Tümleci",
+    "B": "Yer Tamlayıcısı",
+    "C": "Belirtisiz Nesne",
+    "D": "Özne",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde nesne kullanılmamıştır?",
+    "A": "Ressam fırçasını yavaşça tuvale dokundurdu.",
+    "B": "Tiyatro oyuncuları kuliste son provalarını yapıyor.",
+    "C": "Sergideki soyut tablolar çok dikkat çekiyordu.",
+    "D": "Şair yeni yazdığı şiiri seyircilere okudu.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "\"Müzikal tiyatronun renkli dünyası, izleyenleri büyülemeye devam ediyor.\" cümlesinin öge dizilişi hangisidir?",
+    "A": "Özne - Belirtili Nesne - Yüklem",
+    "B": "Özne - Yer Tamlayıcısı - Yüklem",
+    "C": "Nesne - Zarf Tümleci - Yüklem",
+    "D": "Belirtili Nesne - Özne - Yüklem",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Hangi cümlede zarf tümleci cümleye \"zaman\" anlamı katmıştır?",
+    "A": "Sanatçı şarkılarını büyük bir coşkuyla söyledi.",
+    "B": "Yarın akşam yeni bir tiyatro oyunu sahnelenecek.",
+    "C": "Balerinler sahnede kuğu gibi süzülüyordu.",
+    "D": "Heykeltıraş mermeri ustalıkla yonttu.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "\"Bu eşsiz tablo, sanatçının duygu dünyasının bir yansımasıdır.\" cümlesi hangi ögelerden oluşmaktadır?",
+    "A": "Özne - Nesne - Yüklem",
+    "B": "Nesne - Yüklem",
+    "C": "Özne - Yer Tamlayıcısı - Yüklem",
+    "D": "Özne - Yüklem",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde soru yer tamlayıcısını (dolaylı tümleci) buldurmaya yöneliktir?",
+    "A": "Konser biletlerini kimden aldın?",
+    "B": "Sergi ne zaman açılacak?",
+    "C": "Bu şarkıyı nasıl buldun?",
+    "D": "Ressam kimi çizmiş?",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "\"Sanat, insanın içindeki güzellikleri ortaya çıkaran bir araçtır.\" cümlesinin öznesi hangisidir?",
+    "A": "insanın içindeki güzellikleri",
+    "B": "ortaya çıkaran",
+    "C": "bir araçtır",
+    "D": "Sanat",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Hangi cümlede vurgu özne üzerindedir?",
+    "A": "Gitarın tellerine sevgiyle dokundu.",
+    "B": "Oyunun son perdesini ayakta alkışladık.",
+    "C": "Bu muhteşem şarkıyı Sezen Aksu yazmış.",
+    "D": "Sanat galerisinde saatlerce dolaştım.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "\"Oyuncuların kostümleri özenle tasarlanmıştı.\" cümlesinde \"özenle\" kelimesi hangi ögedir?",
+    "A": "Belirtisiz Nesne",
+    "B": "Belirtili Nesne",
+    "C": "Zarf Tümleci",
+    "D": "Özne",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde cümle dışı unsur (ünlem, hitap vb.) kullanılmıştır?",
+    "A": "Eserin aslı müzede sergileniyor.",
+    "B": "Sayın seyirciler, oyunumuz birazdan başlayacaktır.",
+    "C": "Koro şefi sahneye alkışlarla çıktı.",
+    "D": "Müzik ruhun gıdasıdır derler.",
+    "dogru_cevap": "B"
+  }
+]

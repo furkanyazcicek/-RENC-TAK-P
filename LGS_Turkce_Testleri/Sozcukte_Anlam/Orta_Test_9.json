@@ -1,0 +1,117 @@
+{
+  "testId": "Orta_Test_9",
+  "subject": "Sözcükte Anlam",
+  "difficulty": "Orta",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'çevirmek' sözcüğü 'tercüme etmek, bir dilden başka bir dile aktarmak' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Okuduğu kalın romanın sayfalarını merakla ve yavaşça çevirdi.",
+        "B": "Dar sokaktan çıkabilmek için arabanın direksiyonunu hızla sağa çevirdi.",
+        "C": "Sabah serinliğinde yürürken yönümüzü parlayan güneşe doğru çevirdik.",
+        "D": "Bu meşhur ve duygusal şiiri İngilizceden Türkçeye başarıyla çevirmiş."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'kavramak' sözcüğü 'anlamak, algılamak' anlamında (mecaz) kullanılmıştır?",
+      "options": {
+        "A": "Kalabalıkta kaybolmasın diye küçük çocuğun elini sıkıca kavradı.",
+        "B": "Viraja girerken arabanın direksiyonunu iki eliyle birden kavradı.",
+        "C": "Öğretmenin anlattığı o zor konuyu çok iyi kavradığı halinden belliydi.",
+        "D": "Gemide fırtına çıkınca düşmemek için kalın halatı var gücüyle kavradı."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "Aşağıdaki deyimlerden hangisi 'çok şaşırmak, hayretler içinde kalmak' anlamındadır?",
+      "options": {
+        "A": "Ağzı açık kalmak",
+        "B": "Ağzını bıçak açmamak",
+        "C": "Ağzı kulaklarına varmak",
+        "D": "Ağzından bal damlamak"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'yol' sözcüğü 'yöntem, çare, metot' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Köyden kasabadaki eve giden toprak yol hem çok bozuk hem uzundu.",
+        "B": "Bu karmaşık matematik problemini çözmenin kesinlikle daha kısa bir yolu olmalı.",
+        "C": "Akşam işten çıkıp yolda yürürken liseden eski arkadaşımla karşılaştım.",
+        "D": "Şehir merkezindeki bitmek bilmeyen yol çalışması nedeniyle trafik sıkıştı."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'tutmak' sözcüğü 'kiralamak' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Karşıdan karşıya geçerken küçük kardeşinin elinden sevgiyle tuttu.",
+        "B": "Kalenin köşesine doğru atılan sert topu havada harika bir uzanışla tuttu.",
+        "C": "Verdiği sözü mutlaka tutarak buluşma yerine tam zamanında geldi.",
+        "D": "Yazın ailece tatilde rahatça kalmak için deniz kenarında güzel bir ev tuttuk."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "Aşağıdaki atasözlerinden hangisi 'yapılan bir yanlıştan ne kadar erken dönülürse o kadar iyidir' anlamındadır?",
+      "options": {
+        "A": "Sabrın sonu selamettir.",
+        "B": "Acele işe şeytan karışır.",
+        "C": "Zararın neresinden dönülse kârdır.",
+        "D": "Vakit nakittir."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'bakmak' sözcüğü 'ilgilenmek, beslemek, geçindirmek' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Canı sıkılınca ayağa kalkıp saatlerce pencereden dışarıya baktı.",
+        "B": "Babasını kaybettikten sonra yaşlı annesine ve kardeşlerine yıllarca o baktı.",
+        "C": "Sergideki o tarihi ve büyüleyici tabloya dakikalarca hayranlıkla bakıyordu.",
+        "D": "Kolundaki saatine bakıp geç kaldığını anlayınca aceleyle evden çıktı."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "'Vatan' sözcüğünün eş anlamlısı aşağıdakilerden hangisidir?",
+      "options": {
+        "A": "Yurt",
+        "B": "Millet",
+        "C": "Devlet",
+        "D": "Bayrak"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "'Gülmek' kelimesinin zıt anlamlısı aşağıdakilerden hangisidir?",
+      "options": {
+        "A": "Ağlamak",
+        "B": "Tebessüm etmek",
+        "C": "Kahkaha atmak",
+        "D": "Sırıtmak"
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 10,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'açmak' sözcüğü 'yakışmak, ferah göstermek' anlamında kullanılmıştır?",
+      "options": {
+        "A": "İçeri girmek için kilitli olan kapıyı yavaşça anahtarla açtı.",
+        "B": "Süpriz hediyenin olduğu ahşap kutunun kapağını heyecanla açtı.",
+        "C": "Odadaki ağır havayı dağıtmak için büyük pencereyi açıp içeriyi havalandırdı.",
+        "D": "Üzerine giydiğin bu açık mavi renk elbise gerçekten seni çok açmış."
+      },
+      "correctAnswer": "D"
+    }
+  ]
+}

@@ -23,6 +23,9 @@ import { kimyaTests } from '../content/tests/kimya/index.js'
 import { loadMathQuestionSet, mathQuestionSetsForTopic } from '../content/tests/matematik/question-bank.js'
 import { loadPhilosophyQuestionSet, philosophyQuestionSetsForTopic } from '../content/tests/felsefe/question-bank.js'
 import { loadHistoryQuestionSet, historyQuestionSetsForTopic } from '../content/tests/tarih/question-bank.js'
+import { loadDinKulturuQuestionSet, dinKulturuQuestionSetsForTopic } from '../content/tests/din_kulturu/question-bank.js'
+import { loadCografyaQuestionSet, cografyaQuestionSetsForTopic } from '../content/tests/cografya/question-bank.js'
+import { loadLgsTurkceQuestionSet, lgsTurkceQuestionSetsForTopic } from '../content/tests/lgs_turkce/question-bank.js'
 
 // Geçiş döneminde mevcut kod tabanındaki testler kaybolmasın. Yeni testler
 // `library_question_sets` tablosuna yazılır; bu sabit kaynak yalnızca eski
@@ -64,6 +67,9 @@ export function bundledQuestionSetsForTopic(topicName, context = {}) {
     ...mathQuestionSetsForTopic(topicName, context),
     ...philosophyQuestionSetsForTopic(topicName, context),
     ...historyQuestionSetsForTopic(topicName, context),
+    ...dinKulturuQuestionSetsForTopic(topicName, context),
+    ...cografyaQuestionSetsForTopic(topicName, context),
+    ...lgsTurkceQuestionSetsForTopic(topicName, context),
   ]
 }
 
@@ -76,6 +82,15 @@ export async function loadQuestionSet(testId, topicSlug) {
 
   const historySet = await loadHistoryQuestionSet(testId)
   if (historySet) return historySet
+
+  const dinKulturuSet = await loadDinKulturuQuestionSet(testId)
+  if (dinKulturuSet) return dinKulturuSet
+
+  const cografyaSet = await loadCografyaQuestionSet(testId)
+  if (cografyaSet) return cografyaSet
+
+  const lgsTurkceSet = await loadLgsTurkceQuestionSet(testId)
+  if (lgsTurkceSet) return lgsTurkceSet
 
   const bundled = BUNDLED_SETS[topicSlug]?.tests?.find((test) => test.id === testId)
   if (bundled) return bundled

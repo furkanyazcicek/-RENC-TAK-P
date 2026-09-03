@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi yüklemin türüne göre fiil cümlesidir?",
+    "A": "Şiir, ruhun en önemli gıdasıdır.",
+    "B": "En sevdiğim yazar Sait Faik'tir.",
+    "C": "Resim sergisi bugün çok kalabalıktı.",
+    "D": "Kitabın son bölümünü dün gece okudum.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi yükleminin yerine göre devrik cümledir?",
+    "A": "Etkileyiciydi yazarın son romanı.",
+    "B": "Tiyatro izlemeyi çok severim.",
+    "C": "Renklerin uyumu tabloda şahaneydi.",
+    "D": "Müzik dinlemek insanı her zaman dinlendirir.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdakilerden hangisi yapısına göre içinde fiilimsi bulunan (birleşik) cümledir?",
+    "A": "Ressam fırçasını eline dikkatlice aldı.",
+    "B": "Roman okumak insanın ufkumuzu genişletir.",
+    "C": "Şair yeni bir şiir kitabı yazdı.",
+    "D": "Şehirdeki yeni sergi yarın açılacak.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi anlamına göre olumsuz bir cümledir?",
+    "A": "Bu muhteşem tabloyu herkes beğendi.",
+    "B": "Şiirin dili beklediğimden oldukça ağırdı.",
+    "C": "Yazarın dili hiç de akıcı değildi.",
+    "D": "Dün izlediğimiz tiyatro oyunu çok başarılıydı.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdakilerden hangisi kurallı bir isim cümlesidir?",
+    "A": "Heykeltıraş mermeri yavaşça ve özenle yonttu.",
+    "B": "Kitap okudukça insanın bilgi birikimi artar.",
+    "C": "Müzik, herkesin anlayabileceği evrensel bir dildir.",
+    "D": "Sanatçı büyük bir alkışla sahneye çıktı.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdakilerden hangisi birden çok yüklemli (sıralı) cümledir?",
+    "A": "Şiir okumayı ve yazmayı çok seviyor.",
+    "B": "Resim yapmak doğuştan gelen bir yetenek ister.",
+    "C": "Hafta sonu yeni bir tiyatroya gidecekmiş.",
+    "D": "Romanı eline aldı, bir çırpıda okuyup bitirdi.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi bağlacı olan (bağlı) cümledir?",
+    "A": "Kitabı çok beğendim ama sonu kötüydü.",
+    "B": "Çok okuyan insan çok şey bilir.",
+    "C": "Sanat, içinde bulunduğu toplumu aydınlatır.",
+    "D": "Yazar yeni çıkan kitabını okurları için imzaladı.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi tamamlanmamış (eksiltili) cümledir?",
+    "A": "Müzik yorulan ruhumu dinlendirdi.",
+    "B": "Sergide birbirinden güzel ve renkli tablolar...",
+    "C": "Şiirlerini kalın kapaklı bir kitapta topladı.",
+    "D": "Şehir tiyatrosunda yeni bir oyun sahneleniyor.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "'Akıcı bir üslubu var yazarın.' cümlesi yükleminin türüne göre isim, yerine göre devrik cümledir. Aşağıdakilerden hangisi bu özellikle özdeştir?",
+    "A": "Çok güzeldi okuduğum son kitabın kapağı.",
+    "B": "Şiirlerini geleneksel hece ölçüsüyle yazmış.",
+    "C": "Sanatçının sesi salonda çok gür çıkıyordu.",
+    "D": "Çizdiği tabloyu salonun duvarına dikkatlice astı.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi soru cümlesidir?",
+    "A": "Hangi kitabı okuduğunu gerçekten çok merak ettim.",
+    "B": "Ne kadar güzel bir tablo olduğunu ona söyledim.",
+    "C": "Neden tiyatroya bizimle gitmediğini bir türlü anlamadım.",
+    "D": "Bu etkileyici şiiri kimin yazdığını biliyor musun?",
+    "dogru_cevap": "D"
+  }
+]

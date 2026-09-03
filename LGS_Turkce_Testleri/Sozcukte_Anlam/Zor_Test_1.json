@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Türkçede sözcükler kullanıldıkları bağlama göre çok farklı anlamlar kazanabilir.\n'Bırakmak' sözcüğü aşağıdaki cümlelerin hangisinde 'engel olmamak, serbest kalmasını sağlamak' anlamında kullanılmıştır?",
+    "secenekler": {
+      "A": "Çocuğu bırakın da parkta istediği gibi oynasın, gönlünce koşsun.",
+      "B": "Uzun süredir taşıdığı ağır bavulu yavaşça yere bıraktı.",
+      "C": "Sağlığına zarar veren bu kötü alışkanlıklarını artık bırakmalısın.",
+      "D": "Toplantı uzayınca yarım kalan işini mecburen yarına bıraktı."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Doğadaki varlıklara ait özelliklerin insanlara aktarılmasına 'doğadan insana aktarma' denir. Bu, anlam aktarmasının bir türüdür.\nAşağıdakilerin hangisinde bu duruma örnek olabilecek bir kullanım vardır?",
+    "secenekler": {
+      "A": "Sert esen rüzgâr, kış gecelerinde acı acı uğulduyordu.",
+      "B": "Ahşap masanın ayağı aniden kırılınca üzerindekiler yere devrildi.",
+      "C": "Bulutsuz gecelerde gökyüzündeki yıldızlar bize adeta göz kırpıyordu.",
+      "D": "Çok sert ve anlayışsız bir insan olduğu için kimse onunla kolayca konuşamazdı."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Sözcük dağarcığı güçlü olan kişiler, kelimelerin nüanslarını daha iyi ayırt ederler.\nAşağıdaki cümlelerde altı çizili sözcüklerden hangisinin anlamca karşılığı yay ayraç içinde YANLIŞ verilmiştir?",
+    "secenekler": {
+      "A": "Bu usta yazar, eserlerinde oldukça *yalın* bir üslup kullanır. (Sade, gösterişsiz)",
+      "B": "*Özgün* eserler ortaya koyan sanatçılar her zaman geleceğe kalmayı başarır. (Başkasına benzemeyen, orijinal)",
+      "C": "Yazarın eserlerinde *çağdaş* sorunları ele alması genç okurları etkilemiş. (Eskiye ait, geleneksel)",
+      "D": "Eleştirmenin değerlendirme yaparkenki tutumu oldukça *nesnel* görünüyordu. (Tarafsız, objektif)"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Atasözleri ve deyimler kalıplaşmış sözlerdir; sözcüklerin yeri değiştirilemez ve yerlerine eş veya yakın anlamlıları getirilemez. Bu kuralın ihlali anlatım bozukluğuna yol açar.\nAşağıdakilerin hangisinde bu kurala uymamaktan kaynaklanan bir hata yapılmıştır?",
+    "secenekler": {
+      "A": "Ayıkla pirincin taşını, şimdi bu işin içinden nasıl çıkacağız?",
+      "B": "Bugünün işini yarına bırakma, diye boşuna söylememiş atalarımız.",
+      "C": "İnsan ne ekerse onu biçer, her şeyin bir karşılığı vardır hayatta.",
+      "D": "Sütten ağzı yanan, ayranı üfleyerek içer misali artık daha dikkatli davranıyor."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Tek bir sözcükle anlatılabilecek bir kavramı, anlatımı daha etkili kılmak amacıyla birden fazla sözcükle anlatmaya 'dolaylama' denir.\nAşağıdaki cümlelerin hangisinde dolaylamaya başvurulmamıştır?",
+    "secenekler": {
+      "A": "Hafta sonu kafa dinlemek ve balık tutmak için göle gittik.",
+      "B": "Yavru vatan, coğrafi konumuyla her zaman bizim için özel bir yere sahiptir.",
+      "C": "Ormanların kralı, çekilen son belgeselde avlanırken çok heybetli görünüyordu.",
+      "D": "Meşin yuvarlak ağlarla buluştuğunda stadyum adeta sevinçten yıkılıyordu."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Bir sözcüğün benzetme amacı güdülmeden, aralarındaki bir ilgiden dolayı başka bir sözcüğün yerine kullanılmasına ad aktarması (mecazımürsel) denir.\nAşağıdaki cümlelerin hangisinde ad aktarması vardır?",
+    "secenekler": {
+      "A": "Havalar iyice ısınınca kalın kazakları ve montları dolaba kaldırdık.",
+      "B": "Uçurtmasını masmavi gökyüzüne doğru salarken gözleri parlıyordu.",
+      "C": "Köy evinde soba yanınca içerisi bir anda sıcacık oldu, hepimiz ısındık.",
+      "D": "Kütüphanesindeki kitapları oldukça düzenli bir şekilde raflara dizmişti."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Bir sözcüğün zıt anlamlısı, cümlede kazandığı anlama göre değişiklik gösterebilir.\nBuna göre 'taze' sözcüğü aşağıdaki cümlelerin hangisinde 'bayat' sözcüğünün zıddı olarak KULLANILMAMIŞTIR?",
+    "secenekler": {
+      "A": "Fırından henüz çıkmış taze ekmeklerin kokusu bütün mahalleyi sardı.",
+      "B": "Köşedeki manavdan aldığımız meyve ve sebzelerin hepsi çok tazeydi.",
+      "C": "Sabah kahvaltısında masada taze demlenmiş çay ve çıtır simit vardı.",
+      "D": "Gençlerin o taze zihinleri bu karmaşık projeyi kolayca anlayıp kavrayacaktır."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "'Nitel' ve 'nicel' anlamlı sözcükler kavramların ölçülebilme durumuna göre ayrılır. Sayılabilen, ölçülebilen kavramlar nicel; sayılamayan, özellik bildirenler ise nitel anlamlıdır.\nBuna göre 'büyük' sözcüğü aşağıdakilerin hangisinde nicel anlamda KULLANILMAMIŞTIR?",
+    "secenekler": {
+      "A": "Evin arka bahçesinde asırlık, çok büyük bir ceviz ağacı vardı.",
+      "B": "Bu küçük kasabaya okumak için büyük hayallerle ve umutlarla gelmişti.",
+      "C": "Yeni taşındıkları evin gerçekten geniş ve büyük bir salonu bulunuyordu.",
+      "D": "Dün gece şehrin tam merkezinde kontrol edilmesi zor, büyük bir yangın çıktı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Yazılışları aynı, anlamları farklı sözcüklere sesteş denir. Ancak her sözcüğün sesteşi yoktur.\nAşağıdaki altı çizili sözcüklerden hangisi sesteş (eş sesli) özelliğe sahip DEĞİLDİR?",
+    "secenekler": {
+      "A": "Her sabah uyandığında sağlıklı olmak için mutlaka bir bardak *süt* içerdi.",
+      "B": "Nehri geçmek için derme çatma, küçük bir *sal* yapıp karşıya geçtiler.",
+      "C": "Küçük çocuğun sol yanağında doğuştan gelen belirgin bir *ben* vardı.",
+      "D": "Fırtına şiddetlenince yaşlı ağacın en kalın *dal*ı büyük bir gürültüyle kırıldı."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Deyimler genellikle bir durumu veya kavramı bildiren söz kalıplarıyken, atasözleri topluma genel bir kuralı hatırlatan ve öğüt veren sözlerdir.\nAşağıdakilerden hangisi bir durum bildirmekten çok öğüt veren bir söz (atasözü) DEĞİLDİR?",
+    "secenekler": {
+      "A": "Harcamalarını yaparken her zaman ayağını yorganına göre uzatmalısın.",
+      "B": "Ona ne söylersen söyle, her zaman burnunun dikine gitmekten vazgeçmez.",
+      "C": "Zaman çok kıymetlidir, bugünün işini sakın ola ki yarına bırakma.",
+      "D": "Rüzgâr eken fırtına biçer, kötülük yapanın sonu da kötü olur."
+    },
+    "dogru_cevap": "B"
+  }
+]

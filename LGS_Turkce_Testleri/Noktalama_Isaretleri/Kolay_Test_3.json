@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Aşağıdaki cümlelerin hangisinin sonuna nokta (.) konmalıdır?",
+    "secenekler": {
+      "A": "Yarın pikniğe gidecek miyiz",
+      "B": "Eyvah, yağmur başladı",
+      "C": "Ormandaki ağaçların yaprakları sarardı",
+      "D": "Hangi hayvanlar kış uykusuna yatar"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru": "\"Ormanda kuşlar, böcekler, kelebekler uçuşuyordu.\"\nBu cümlede virgül (,) hangi amaçla kullanılmıştır?",
+    "secenekler": {
+      "A": "Birbiri ardınca sıralanan eş görevli kelimeleri ayırmak için",
+      "B": "Sıralı cümleleri birbirinden ayırmak için",
+      "C": "Yüklemden uzak düşmüş özneyi belirtmek için",
+      "D": "Tırnak içinde olmayan alıntı cümleleri belirtmek için"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Aşağıdaki cümlelerin hangisinin sonuna soru işareti (?) konmaz?",
+    "secenekler": {
+      "A": "Bu yavru kediyi nereden buldunuz",
+      "B": "Hangi ağaçların yaprakları dökülmez",
+      "C": "Hayvanları korumak için neler yapabiliriz",
+      "D": "Neden böyle davrandığını bir türlü anlayamadım"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru": "\"Eyvah, orman yanıyor( )\"\nBu cümlede yay ayraçla belirtilen yere hangi noktalama işareti gelmelidir?",
+    "secenekler": {
+      "A": "Nokta (.)",
+      "B": "Ünlem işareti (!)",
+      "C": "Soru işareti (?)",
+      "D": "Virgül (,)"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru": "\"Karabaş( )a yeni bir kulübe yaptık.\"\nBu cümlede yay ayraçla belirtilen yere hangi işaret gelmelidir?",
+    "secenekler": {
+      "A": "Kısa çizgi (-)",
+      "B": "Tırnak işareti (\")",
+      "C": "Kesme işareti (')",
+      "D": "Eğik çizgi (/)"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru": "\"Ormanın en bilinen hayvanları şunlardır( ) aslan, kaplan, fil.\"\nBu cümlede yay ayraçla belirtilen yere hangi noktalama işareti konmalıdır?",
+    "secenekler": {
+      "A": "İki nokta (:)",
+      "B": "Noktalı virgül (;)",
+      "C": "Nokta (.)",
+      "D": "Üç nokta (...)"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru": "\"Yemyeşil bir vadi, şırıl şırıl akan bir dere...\"\nBu cümlenin sonuna üç nokta (...) konmasının nedeni aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Alıntı olduğunu göstermek",
+      "B": "Sözün bir yerde kesildiğini belirtmek",
+      "C": "Benzer örneklerin devam ettiğini göstermek",
+      "D": "Yüklemi olmayan, tamamlanmamış bir cümle olduğunu göstermek"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Rehberimiz: \"Bu bitki sadece bu yörede yetişir.\" dedi.\nBu cümlede tırnak işareti (\" \") hangi amaçla kullanılmıştır?",
+    "secenekler": {
+      "A": "Özel olarak vurgulanmak istenen sözleri belirtmek",
+      "B": "Başka bir kimseden olduğu gibi aktarılan sözleri belirtmek",
+      "C": "Eser ve yazı adlarını belirtmek",
+      "D": "Yabancı sözcükleri göstermek"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru": "\"Kuş-lar\" kelimesi hecelerine ayrılırken kullanılan kısa çizgi (-) için aşağıdakilerden hangisi doğrudur?",
+    "secenekler": {
+      "A": "Heceleri birbirinden ayırmak için kullanılmıştır.",
+      "B": "Kelimeler arasında bağlantı kurmak için kullanılmıştır.",
+      "C": "Matematikte çıkarma işlemi olarak kullanılmıştır.",
+      "D": "Satıra sığmayan kelimeleri bölmek için kullanılmıştır."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru": "\"Aslan (Ormanların Kralı) bütün gücüyle kükredi.\"\nBu cümlede yay ayraç ( ) hangi amaçla kullanılmıştır?",
+    "secenekler": {
+      "A": "Alıntıların kime ait olduğunu göstermek",
+      "B": "Tiyatro eserlerinde hareketleri açıklamak",
+      "C": "Cümledeki anlamı tamamlayan ek bir bilgi vermek",
+      "D": "Bir söze alay anlamı katmak"
+    },
+    "dogru_cevap": "C"
+  }
+]

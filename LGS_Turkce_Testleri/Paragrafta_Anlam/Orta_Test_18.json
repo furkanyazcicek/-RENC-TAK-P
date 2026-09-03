@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Yolculuk yapmak, sadece bir yerden başka bir yere fiziksel olarak yer değiştirmek değildir. Görülen yeni şehirler, tanışılan farklı insanlar ve tadılan bilmedik lezzetler, insanın dünyaya bakış açısını genişletir. Kişi, her yolculuktan yola çıktığı andaki kişiden farklı, biraz daha olgunlaşmış olarak döner.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "a": "En iyi yolculuklar tek başına yapılanlardır.",
+    "b": "Yolculuk, insanı değiştiren ve ruhunu zenginleştiren içsel bir deneyimdir.",
+    "c": "Yolculuk yapmayan insanlar kitap okuyarak da aynı olgunluğa ulaşabilir.",
+    "d": "Gidilecek yerin uzaklığı, yolculuğun değerini artırır.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "İstanbul, bir şehirden çok zaman makinesi gibidir. Bir sokakta yürürken yüzlerce yıllık bir Bizans sarnıcıyla karşılaşır, köşe başında bir Osmanlı camisinin gölgesinde dinlenir, sokağın sonunda ise modern gökdelenlerin yükseldiğini görürsünüz. Geçmiş ve gelecek, bu şehirde iç içe nefes alır.\n\nBu parçadan aşağıdaki yargıların hangisi çıkarılamaz?",
+    "a": "İstanbul'un tarihi yapılarla dolu bir şehir olduğu",
+    "b": "Şehirde farklı dönemlere ait eserlerin bir arada bulunduğu",
+    "c": "Tarihi yapıların modern binalardan daha fazla korunduğu",
+    "d": "İstanbul'un eski ile yeniyi sentezleyen bir yapıya sahip olduğu",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Her şehrin kendine has bir kokusu ve ritmi vardır. Paris taze kruvasan ve yağmur kokarken, Mardin taş sokaklarında baharat ve tarih kokar. Bir şehri gerçekten tanımak istiyorsanız turist otobüslerinden inip o şehrin pazar yerlerinde kaybolmalı, ara sokaklarının ritmine ayak uydurmalısınız.\n\nBu metinde şehirleri tanımakla ilgili aşağıdakilerden hangisine değinilmemiştir?",
+    "a": "Her şehrin farklı duyusal özelliklere sahip olduğuna",
+    "b": "Şehirleri tanımanın ancak yürüyerek sokaklarına karışmakla mümkün olacağına",
+    "c": "Turistik turların şehri derinlemesine tanımak için yetersiz kaldığına",
+    "d": "Tarihi eserleri rehber eşliğinde gezmenin daha verimli olduğuna",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Tren yolculukları, uçağın hızına inat zamanın tadını çıkarmaktır. Uçak sizi hedefe bir an önce ulaştırır, ama tren, yolun kendisini bir görsel şölene dönüştürür. Pencereden kayıp giden köyleri, nehirleri ve dağları izlerken aslında kendi iç dünyanıza doğru uzun bir seyahate çıkarsınız.\n\nBu parçada asıl anlatılmak istenen aşağıdakilerden hangisidir?",
+    "a": "Tren biletlerinin uçak biletlerinden daha uygun olduğu",
+    "b": "Tren yolculuklarının yavaşlığının, insana yolu ve düşünmeyi hissettiren keyifli bir deneyim sunduğu",
+    "c": "Uçak yolculuklarının tren yolculuklarından daha tehlikeli olduğu",
+    "d": "Tüm gezginlerin genellikle tren kullanmayı tercih ettiği",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Köyden kente göç, sadece demografik bir değişim değil, kültürel bir sarsıntıdır. Şehrin hızına ve kalabalığına karışan insan, toprakla olan bağını kaybeder. Komşuluk ilişkileri zayıflar, beton binaların arasında kendini yalnız hisseder. Ancak geri dönmek istese de artık köyüne ait hissedemez; arafta kalır.\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "a": "Şehirlerdeki konut sorunları",
+    "b": "Kırsal kesimde tarımın azalması",
+    "c": "Göçün insan psikolojisi ve sosyal hayatı üzerindeki etkileri",
+    "d": "Şehir içi ulaşım problemleri",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Venedik, suyun üzerine inşa edilmiş masalsı bir şehirdir. Araba gürültüsünün olmadığı, ulaşımın kanallarda süzülen gondol ve teknelerle sağlandığı bu şehir, insana zamanın durduğu hissini verir. Ancak küresel ısınma nedeniyle suların yükselmesi, bu masal şehrini yavaş yavaş yutma tehlikesiyle karşı karşıya bırakıyor.\n\nBu metin için en uygun başlık aşağıdakilerden hangisidir?",
+    "a": "Gondol Yapımının İncelikleri",
+    "b": "Sular Şehri Venedik ve Karşılaştığı Tehlike",
+    "c": "Avrupa'da Ulaşım Araçları",
+    "d": "Küresel Isınmanın Nedenleri",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Gezgin ile turist arasında ince bir çizgi vardır. Turist, elinde haritasıyla sadece popüler yerleri gezer, fotoğraf çeker ve oteline döner. Gezgin ise bilmediği sokaklara sapar, yerel halkla sohbet eder, onların ne yediğini yer; kaybolmaktan korkmaz, çünkü bilir ki en güzel keşifler kaybolduğunda yapılır.\n\nBu metne göre 'gezgin' ile ilgili aşağıdakilerden hangisi söylenebilir?",
+    "a": "Sadece rehber kitaplarda yazan yerleri ziyaret eder.",
+    "b": "Gittiği yerin kültürünü deneyimlemeye ve derinlemesine keşfetmeye odaklanır.",
+    "c": "Lüks otellerde konaklamayı tercih eder.",
+    "d": "Seyahatlerinde fotoğraf çekmeyi reddeder.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Büyükşehirlerde yaşamak, insana sayısız imkan sunar; tiyatrolar, konserler, iyi okullar ve iş fırsatları. Ancak bu imkanların bir bedeli vardır: Gürültü kirliliği, saatlerce süren trafik ve stres. Şehir insanı, bu hız döngüsüne o kadar kapılır ki bazen gökyüzüne bakmayı bile unutur.\n\nBu metinde vurgulanan düşünce aşağıdakilerden hangisidir?",
+    "a": "Büyükşehirlerin sunduğu avantajların yanında insanı tüketen dezavantajlarının da bulunduğu",
+    "b": "Şehirlerde kültür sanat etkinliklerinin ücretsiz olması gerektiği",
+    "c": "İnsanların küçük kasabalara taşındıklarında çok sıkıldıkları",
+    "d": "Trafik sorununun sadece yeni yollar yapılarak çözülebileceği",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Seyahatnamenin ustası Evliya Çelebi, gördüğü şehirleri sadece coğrafi özellikleriyle değil, insanlarının inanışları, yemekleri ve efsaneleriyle de anlatmıştır. O dönemin şehirlerini okurken, sokak satıcılarının seslerini duyar gibi oluruz. Onun kalemi, geçmişi donduran bir fotoğraf makinesi gibidir.\n\nBu parçada asıl anlatılmak istenen aşağıdakilerden hangisidir?",
+    "a": "Evliya Çelebi'nin dünyada en çok gezen insan olduğu",
+    "b": "Seyahatnamelerin sadece tarihi bilgi vermek amacıyla yazıldığı",
+    "c": "Evliya Çelebi'nin eserlerinin, döneminin şehirlerini ve sosyal yaşamını çok canlı bir şekilde aktardığı",
+    "d": "Seyahatnamenin fotoğrafçılık sanatının temelini oluşturduğu",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Kapadokya, doğa ile insanın uyum içinde çalıştığı eşsiz bir coğrafyadır. Milyonlarca yıl önce volkanik patlamalarla oluşan tüfleri rüzgar ve su şekillendirmiş, peri bacalarını yaratmıştır. Daha sonra insanlar bu yumuşak kayaları oyarak içlerine evler, kiliseler ve hatta koca yeraltı şehirleri inşa etmişlerdir.\n\nBu metne göre Kapadokya ile ilgili aşağıdakilerden hangisine ulaşılamaz?",
+    "a": "Doğal oluşumların volkanik faaliyetlere dayandığına",
+    "b": "İnsanların doğanın şekillendirdiği yapılara kendi eserlerini eklediğine",
+    "c": "Yeraltı şehirlerinin savaşlardan korunmak için yapıldığına",
+    "d": "Peri bacalarının oluşumunda su ve rüzgarın etkili olduğuna",
+    "cevap": "C"
+  }
+]

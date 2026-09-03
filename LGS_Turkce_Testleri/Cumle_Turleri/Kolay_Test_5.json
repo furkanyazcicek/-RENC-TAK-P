@@ -1,0 +1,82 @@
+[
+  {
+    "soru": "Aşağıdaki cümlelerin hangisi yüklemin türü bakımından isim cümlesidir?",
+    "A": "Yazarın son kitabını bir çırpıda okudum.",
+    "B": "Şiir, duyguların en yoğun yaşandığı edebi türdür.",
+    "C": "Tiyatro oyuncuları sahneye büyük bir heyecanla çıktı.",
+    "D": "Resim sergisindeki tabloları dikkatle inceledik.",
+    "cevap": "B"
+  },
+  {
+    "soru": "'Bu romanın karakterleri o kadar gerçekçiydi ki...' cümlesi yükleminin yerine göre nasıl bir cümledir?",
+    "A": "Kurallı cümle",
+    "B": "Devrik cümle",
+    "C": "Eksiltili cümle",
+    "D": "Soru cümlesi",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerden hangisinde içinde fiilimsi bulunan (birleşik) cümle örneği vardır?",
+    "A": "Yazar, masasını düzenledi ve yazmaya başladı.",
+    "B": "Okuduğum bu masal bana çocukluğumu hatırlattı.",
+    "C": "Sanatçı, eserlerinde her zaman toplumsal konuları işler.",
+    "D": "Müzik ruhun gıdasıdır derler eski bilgeler.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdakilerden hangisi anlamca olumsuz bir cümledir?",
+    "A": "Bu tabloyu beğenmediğimi kim söyledi?",
+    "B": "Tiyatro bileti almak için erkenden sıraya girdim.",
+    "C": "Şairin yeni çıkan şiir kitabını henüz bulamadım.",
+    "D": "Sergideki fotoğrafların hepsi birbirinden güzeldi.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi birden çok yüklemli (sıralı) bir cümledir?",
+    "A": "Romanın son sayfasını kapattı, derin bir nefes aldı.",
+    "B": "Sanat sokağında yürürken eski dostumu gördüm.",
+    "C": "Okumak insanı geliştirir ve ufkunuzu genişletir.",
+    "D": "Ressamın kullandığı renkler oldukça canlı ve parlaktı.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdakilerden hangisi bir ünlem cümlesidir?",
+    "A": "Yarınki konser için biletler tükenmiş.",
+    "B": "Ne kadar da etkileyici bir filmdi böyle!",
+    "C": "Bu şarkının sözlerini kimin yazdığını biliyor musun?",
+    "D": "Sanatçı sahnede çok heyecanlı görünüyordu.",
+    "cevap": "B"
+  },
+  {
+    "soru": "'Keman sesi uzaktan duyuluyordu.' cümlesinin özellikleri sırasıyla hangi seçenekte doğru verilmiştir?",
+    "A": "İsim cümlesi - Kurallı - Olumlu",
+    "B": "Fiil cümlesi - Kurallı - Olumlu",
+    "C": "Fiil cümlesi - Devrik - Olumlu",
+    "D": "İsim cümlesi - Devrik - Olumsuz",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki devrik cümlelerden hangisi isim cümlesidir?",
+    "A": "Anlatıyordu hikayeyi dedem bize her akşam.",
+    "B": "Okudum senin bana tavsiye ettiğin kitabı.",
+    "C": "Çok başarılıydı yazarın ilk hikaye denemesi.",
+    "D": "Dinledim o eski türküleri radyodan.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Hangi seçenekte bağlacı olan (bağlı) cümle bulunmaktadır?",
+    "A": "Şarkı bitti ve seyirciler ayağa kalkıp alkışladı.",
+    "B": "Ressam fırçasını eline alıp tuvale dokundu.",
+    "C": "Gün boyu kitap okudu, müzik dinledi.",
+    "D": "En sevdiği şairin kitabını hediye ettik.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdakilerin hangisinde tek yüklemli (basit) bir cümle kullanılmıştır?",
+    "A": "Tiyatroya gitmek için hazırlandı ama geç kaldı.",
+    "B": "Ozan, sazınıeline aldı, türkü söylemeye başladı.",
+    "C": "Sergilenen heykeller ziyaretçilerin büyük ilgisini çekti.",
+    "D": "Sinemadan çıkınca yağmurun yağdığını fark ettik.",
+    "cevap": "C"
+  }
+]

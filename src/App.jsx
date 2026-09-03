@@ -94,6 +94,9 @@ const TeacherInvitePage = lazy(() => import('./pages/liveLesson/TeacherInvitePag
 /** Yerel soru bankasını dosyalardan salt okunur incelemek için editör ekranı. */
 const QuestionBankReview = lazy(() => import('./pages/QuestionBankReview'))
 
+/** Kitap tabanlı ana sayfa geçişi için yalnızca geliştirme ortamında açılan önizleme. */
+const KitapGecisOnizleme = lazy(() => import('./pages/KitapGecisOnizleme'))
+
 /** Route geçişlerinde gösterilen tam sayfa yükleyici (tasarım sisteminden). */
 function FullPageLoader() {
   return <PageLoader />
@@ -177,6 +180,14 @@ export default function App() {
           hesapsız bakıyor ve erişemezlerse başvuru reddediliyor. */}
       <Route path="/gizlilik" element={<PrivacyPolicy />} />
       <Route path="/ders-notu-onizleme" element={<LessonPreview />} />
+      <Route
+        path="/kitap-gecis-onizleme"
+        element={
+          import.meta.env.DEV
+            ? <Suspense fallback={<FullPageLoader />}><KitapGecisOnizleme /></Suspense>
+            : <Navigate to="/" replace />
+        }
+      />
       <Route
         path="/soru-bankasi-onizleme"
         element={

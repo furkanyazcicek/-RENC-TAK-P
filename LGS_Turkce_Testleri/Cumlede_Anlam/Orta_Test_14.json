@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'koşul-sonuç' ilgisi vardır?",
+    "secenekler": {
+      "A": "Spor yapmak, insanın hem bedensel hem de ruhsal sağlığını olumlu etkiler.",
+      "B": "Turnuvaya katılmak amacıyla aylardır aralıksız antrenman yapıyor.",
+      "C": "Sakatlandığı için dünkü önemli maça çıkamadı.",
+      "D": "Düzenli beslenmezsen yaptığın sporun vücuduna bir faydası olmaz."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Hangi cümlede 'amaç-sonuç' ilişkisi kurulmuştur?",
+    "secenekler": {
+      "A": "Kilo vermek maksadıyla diyetisyenin verdiği programa harfiyen uyuyor.",
+      "B": "Maçın son dakikalarında yenilen gol, taraftarı çok üzdü.",
+      "C": "Sabahları koşu yaparsan güne daha zinde başlarsın.",
+      "D": "Olimpiyatlara iyi hazırlanamadığı için madalya kazanamadı."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'karşılaştırma' yapılmıştır?",
+    "secenekler": {
+      "A": "Yüzme sporu, tüm kas gruplarını çalıştıran nadir sporlardandır.",
+      "B": "Bu sezon takımın savunması geçen sezona göre çok daha başarılıydı.",
+      "C": "Basketbolcular genellikle uzun boylu ve çevik olurlar.",
+      "D": "Sağlıklı bir yaşam için günde en az iki litre su içmek gerekir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru": "'Bu genç sporcu, disiplinli çalışmasıyla ileride adından çok söz ettirecek.' cümlesi aşağıdaki anlam özelliklerinden hangisini taşır?",
+    "secenekler": {
+      "A": "Varsayım",
+      "B": "Sitem",
+      "C": "Ön yargı / Tahmin",
+      "D": "Yakınma"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Hangi cümlede 'neden-sonuç' ilişkisi vardır?",
+    "secenekler": {
+      "A": "Spor salonuna yazılmak üzere evden erkenden çıktı.",
+      "B": "Doğa yürüyüşleri yapmak stresi azaltır.",
+      "C": "Kaslarının güçlenmesini istiyorsan protein ağırlıklı beslenmelisin.",
+      "D": "Hava çok sıcak olduğundan maça verilen mola sayısı artırıldı."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Aşağıdakilerin hangisinde 'hayıflanma' anlamı bulunmaktadır?",
+    "secenekler": {
+      "A": "Keşke gençliğimde profesyonel bir spor dalıyla ilgilenseydim.",
+      "B": "Bu kadar yağlı yiyecekler tüketirsen kalp sağlığını tehlikeye atarsın.",
+      "C": "Hakem, son düdüğü çaldığında tribünlerde büyük bir sessizlik oldu.",
+      "D": "Belki bu akşamki idmana ben de katılırım."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Aşağıdaki cümlelerin hangisi 'nesnel' bir yargı içermektedir?",
+    "secenekler": {
+      "A": "Tenis maçlarını izlemek bence dünyanın en sıkıcı işidir.",
+      "B": "Futbol maçlarında her takım sahada on bir oyuncu ile yer alır.",
+      "C": "Güne sabah sporuyla başlamak insanı inanılmaz mutlu hissettiriyor.",
+      "D": "Bu stadyumun atmosferi diğerlerine göre çok daha büyüleyici."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Hangi cümlede 'öneri' vardır?",
+    "secenekler": {
+      "A": "Milli okçumuz son atışında hedefi tam on ikiden vurdu.",
+      "B": "Dengeli beslenmeyi alışkanlık haline getirmesi gerektiğini ona söyledim.",
+      "C": "Antrenmandan önce kaslarınızı mutlaka ısındırmanızı tavsiye ederim.",
+      "D": "Geçen yılki maratonda dereceye girince çok sevinmişti."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Aşağıdakilerin hangisinde 'yakınma (şikâyet)' söz konusudur?",
+    "secenekler": {
+      "A": "Keşke final maçında o hatalı pası atmasaydım.",
+      "B": "Diyelim ki bu yıl şampiyon olduk, peki ya seneye?",
+      "C": "Şampiyon olmak istiyorsan çok çalışmalısın.",
+      "D": "Oyuncularımız sahada yeterince mücadele etmiyor ki maç kazanalım."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 10,
+    "soru": "'Sağlam kafa sağlam vücutta bulunur.' atasözüyle anlatılmak istenen düşünceye en yakın cümle hangisidir?",
+    "secenekler": {
+      "A": "Bedensel sağlığı yerinde olan insanların zihinsel fonksiyonları da daha sağlıklı çalışır.",
+      "B": "Zeki insanlar genellikle spor yapmaya daha fazla vakit ayırırlar.",
+      "C": "Bedeni yorgun olan bir insanın sağlam kararlar alması imkansızdır.",
+      "D": "Sadece spor yaparak zihinsel zekamızı geliştirebiliriz."
+    },
+    "dogru_cevap": "A"
+  }
+]

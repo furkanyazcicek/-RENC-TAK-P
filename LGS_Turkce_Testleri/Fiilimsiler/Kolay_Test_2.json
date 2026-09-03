@@ -1,0 +1,82 @@
+[
+  {
+    "soru": "\"Ormanın derinliklerinde kamp yapmak en büyük hayalimdi.\" cümlesindeki altı çizili fiilimsinin türü aşağıdakilerden hangisidir?",
+    "A": "İsim-fiil",
+    "B": "Sıfat-fiil",
+    "C": "Zarf-fiil",
+    "D": "Çekimli fiil",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde sıfat-fiil kullanılmıştır?",
+    "A": "Sabah erkenden kalkıp yürüyüşe başladık.",
+    "B": "Kuruyan dalları toplayarak ateş yaktık.",
+    "C": "Ormanda sessizce dinlenmek bana iyi geliyor.",
+    "D": "Çadırımızı göl kenarına kurduk.",
+    "cevap": "B"
+  },
+  {
+    "soru": "\"Çadırı kurup hemen etrafı keşfetmeye koyulduk.\" cümlesindeki 'kurup' sözcüğünün türce özdeşi aşağıdakilerin hangisinde vardır?",
+    "A": "Yanan ateşe biraz daha odun attı.",
+    "B": "Yıldızları izlemek insana huzur veriyor.",
+    "C": "Güneş doğunca kuşlar ötmeye başladı.",
+    "D": "Kamp alanına varmak çok uzun sürdü.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde fiilimsi yoktur?",
+    "A": "Dereden su doldurmaya gittiler.",
+    "B": "Uyku tulumuna girince hemen uyudu.",
+    "C": "Kamp eşyalarını arabaya dikkatlice yerleştirdik.",
+    "D": "Bizimle gelecek arkadaşları bekliyoruz.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Fiil kök veya gövdelerine gelerek onlardan isim yapan, ancak eylem anlamını yitirerek bir varlığa kalıcı isim olan sözcüklere kalıcı isim denir. Buna göre, aşağıdaki cümlelerin hangisinde kalıcı isim vardır?",
+    "A": "Ocağı yakmak için çakmak arıyordu.",
+    "B": "Odun kırmak oldukça yorucu bir işti.",
+    "C": "Ağaçların arasında koşan sincapları izledik.",
+    "D": "Çay demleyip hep beraber içtik.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Sıfat-fiillerin nitelediği isim düştüğünde sıfat-fiil adlaşır. Aşağıdaki cümlelerin hangisinde adlaşmış sıfat-fiil vardır?",
+    "A": "Kamp alanındaki çöpleri dikkatlice topladık.",
+    "B": "Dün kampa katılanlar bu sabah çok mutluydu.",
+    "C": "Gece boyunca esen rüzgar çadırı salladı.",
+    "D": "Yeni aldığım mat çok rahattı.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Zarf-fiiller cümleye zaman ya da durum anlamı katar. Aşağıdaki cümlelerin hangisinde zarf-fiil cümleye zaman anlamı katmıştır?",
+    "A": "Dağa doğru koşarak ilerledik.",
+    "B": "Buz gibi suyu içe içe rahatladı.",
+    "C": "Yağmur dinmeden çadırdan çıkmamalıyız.",
+    "D": "Akşam olunca ateşin etrafında toplandık.",
+    "cevap": "D"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil cümleye durum anlamı katmıştır?",
+    "A": "Güneş batarken manzarayı seyrettik.",
+    "B": "Kamp kuracağımız alanı yürüyerek bulduk.",
+    "C": "Sabah uyanır uyanmaz göle girdiler.",
+    "D": "Arkadaşlarımız gelince kahvaltıya başladık.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdakilerin hangisinde isim-fiil, sıfat-fiil ve zarf-fiil bir arada kullanılmıştır?",
+    "A": "Ormana gidip ağaçların altında oturmak gibisi yoktur.",
+    "B": "Düşen yaprakları toplayıp defterinin arasına koydu.",
+    "C": "Kuşların şarkı söylemesini dinleyerek uyanan insanlar ne şanslı!",
+    "D": "Dağcılar tırmanışa geçmeden önce malzemelerini kontrol etti.",
+    "cevap": "C"
+  },
+  {
+    "soru": "\"Çadırı kurmak için uygun yer arayan babam, sonunda dere kenarını seçti.\" cümlesinde kaç tane fiilimsi kullanılmıştır?",
+    "A": "1",
+    "B": "2",
+    "C": "3",
+    "D": "4",
+    "cevap": "B"
+  }
+]

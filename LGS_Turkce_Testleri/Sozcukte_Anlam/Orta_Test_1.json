@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "'Düşmek' sözcüğü aşağıdaki cümlelerin hangisinde 'aşırı ilgi göstermek, üzerine titremek' anlamında kullanılmıştır?",
+    "secenekler": {
+      "A": "Çocuk okul bahçesinde koşarken birden yere düştü.",
+      "B": "Bu yıl pazardaki meyve ve sebze fiyatları oldukça düştü.",
+      "C": "Annesi, hastalanan çocuğunun üstüne o günlerde çok düşerdi.",
+      "D": "Miras paylaşımında benim payıma da bu küçük ve karanlık oda düştü."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Bir sözcüğün gerçek anlamı dışında kullanılmasına mecaz anlam denir.\n'Boş' sözcüğü aşağıdaki cümlelerin hangisinde mecaz anlamda kullanılmıştır?",
+    "secenekler": {
+      "A": "Su şişesi boş olduğu için marketten yenisini aldık.",
+      "B": "Bana böyle boş sözlerle gelme lütfen, biraz icraat görelim.",
+      "C": "Evin hemen yanındaki boş arsada çocuklar top oynuyordu.",
+      "D": "Masanın gözlerini açtığımda çekmecelerin hepsi tamamen boştu."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Bilim, sanat ve meslek dallarıyla ilgili özel kavramlara 'terim' denir.\nTerim anlamlı sözcüklerle ilgili aşağıda verilen bilgilerden hangisi yanlıştır?",
+    "secenekler": {
+      "A": "Terim anlamlı sözcükler aynı zamanda daima mecaz anlam taşırlar.",
+      "B": "Bilim, sanat veya spor dalıyla ilgili özel kavramları karşılarlar.",
+      "C": "'Perde' sözcüğü bir tiyatro metninde kullanılırsa terim anlamlı olur.",
+      "D": "Bir sözcük kullanıldığı cümleye göre birden fazla alanda terim olabilir."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Deyimler dilimizin anlatım gücünü zenginleştiren söz öbekleridir.\n'Onun her zaman kendi bildiğini okuduğunu, kimsenin sözünü dinlemediğini biliriz. O tam anlamıyla .......... biridir.'\nBu parçada boş bırakılan yere aşağıdaki deyimlerden hangisi getirilmelidir?",
+    "secenekler": {
+      "A": "eli açık",
+      "B": "gözü pek",
+      "C": "içi tez",
+      "D": "dik başlı"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Atasözleri, ait olduğu toplumun düşünce yapısını ve tecrübelerini yansıtır.\nAşağıdaki atasözlerinden hangisi 'fırsatların zamanında değerlendirilmesi gerektiği' ile ilgilidir?",
+    "secenekler": {
+      "A": "Demir tavında dövülür.",
+      "B": "Gülü seven dikenine katlanır.",
+      "C": "Keskin sirke küpüne zarar.",
+      "D": "Sakla samanı, gelir zamanı."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Doğadaki canlı ve cansız varlıkların çıkardığı seslerin taklit edilmesiyle oluşan sözcüklere 'yansıma sözcük' denir.\nAşağıdaki cümlelerin hangisinde yansıma bir sözcük kullanılmıştır?",
+    "secenekler": {
+      "A": "Kuşlar sabahın ilk ışıklarıyla gökyüzünde neşeyle ötüşüyordu.",
+      "B": "Köyün ortasındaki dere şırıl şırıl akarak denize ulaşıyordu.",
+      "C": "Gökyüzündeki yıldızlar gece karanlığında adeta parlıyordu.",
+      "D": "Şiddetli esen rüzgâr, ağaçların kurumuş yapraklarını savuruyordu."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "İkilemeler, anlatımı pekiştirmek için aynı sözcüğün tekrarı, zıt veya yakın anlamlı sözcüklerin yan yana kullanılmasıyla oluşur.\nAşağıdaki ikilemelerden hangisi oluşum şekli bakımından diğerlerinden farklıdır?",
+    "secenekler": {
+      "A": "İleri geri konuşarak herkesin canını sıktı.",
+      "B": "Aşağı yukarı iki yıldır bu mahallede oturuyoruz.",
+      "C": "Bize yalan yanlış şeyler anlatıp aklımızı karıştırdı.",
+      "D": "Az çok demeden bu kış gününde herkese yardım ettiler."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "'Uçak - Havaalanı' sözcükleri arasındaki anlam ilişkisinin benzeri aşağıdakilerin hangisinde vardır?",
+    "secenekler": {
+      "A": "Gemi - Kaptan",
+      "B": "Tren - Yolcu",
+      "C": "Otobüs - Bilet",
+      "D": "Gemi - Liman"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Beş duyu organımızdan herhangi biriyle algılayabildiğimiz kavramlar somut, algılayamadıklarımız soyuttur.\n'Gölge' sözcüğü normalde somut anlamlıdır. Ancak aşağıdaki cümlelerin hangisinde 'gölge' sözcüğü soyut bir durumu ifade etmek için kullanılmıştır?",
+    "secenekler": {
+      "A": "Babasının gölgesinde yaşamaktan, kendi başına bir şey yapamamaktan çok sıkılmıştı.",
+      "B": "Yolculuk çok yorucu geçince, ulu bir ağacın gölgesinde biraz dinlenmek istedik.",
+      "C": "Gece vakti duvara yansıyan devasa gölge, küçük çocuğu fazlasıyla korkuttu.",
+      "D": "Güneş yavaş yavaş batarken binaların gölgeleri de giderek uzamaya başladı."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "'Göz' sözcüğü birçok deyimde yer alır ve bunlara farklı anlamlar katar.\nAşağıdakilerden hangisi 'gözden düşmek' deyiminin anlamıdır?",
+    "secenekler": {
+      "A": "Bir yeri veya kişiyi çok iyi incelemek, dikkatle süzmek",
+      "B": "Önemli bir detayı fark edememek, kaçırmak",
+      "C": "Kendisine duyulan sevgiyi, güveni ve saygınlığını yitirmek",
+      "D": "Çok yorulup uykusuz kalmak, gözleri kapanmak"
+    },
+    "dogru_cevap": "C"
+  }
+]

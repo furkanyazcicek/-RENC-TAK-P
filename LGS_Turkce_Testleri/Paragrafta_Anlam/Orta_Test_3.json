@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Arılar olmasaydı dünyadaki yaşamın büyük bir kısmı yok olurdu. Çünkü arılar sadece bal yapmakla kalmaz; aynı zamanda bitkilerin üremesini sağlayan tozlaşma işleminin en büyük yardımcılarıdır. Yediğimiz meyvelerin, sebzelerin ve kuruyemişlerin üçte biri arıların bu sessiz çalışmasına bağlıdır. Bu nedenle arıları korumak, sadece doğayı değil, insanlığın geleceğini de korumak demektir.\n\nBu metnin ana fikri aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Arıların yaptığı bal, insan sağlığı için çok faydalıdır.",
+      "B": "Arılar, bitkilerin tozlaşmasında görev alan tek canlıdır.",
+      "C": "Ekosistemin ve insanlığın devamı, arıların varlığına ve korunmasına bağlıdır.",
+      "D": "Dünyadaki tarım üretiminin büyük bir kısmı böcekler tarafından sağlanır."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Geri dönüşüm, sadece çöplerimizi ayrı kutulara atmaktan ibaret bir kavram değildir. Aynı zamanda kullandığımız ürünlerin yaşam döngüsünü uzatmak, tüketim çılgınlığına karşı durmak ve doğal kaynakların tükenmesini yavaşlatmaktır. Bir plastik şişeyi çöpe atmadan önce ondan nasıl başka bir şekilde faydalanabileceğimizi düşünmek, asıl geri dönüşüm bilincidir.\n\nBu metinde vurgulanmak istenen düşünce aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Çöplerin ayrı kutularda toplanması doğayı korumanın tek yoludur.",
+      "B": "Geri dönüşüm, malzemeleri ayrıştırmanın ötesinde bir tüketim bilinci gerektirir.",
+      "C": "Plastik ürünlerin doğada kaybolması yüzyıllar sürdüğü için kullanılmamalıdır.",
+      "D": "İnsanlar tüketim alışkanlıklarını değiştirmezse doğal kaynaklar kısa sürede tükenecektir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "(I) Eski zamanlarda yolculuk yapmak aylar sürerdi. (II) Bugün ise uçağa binip dünyanın öbür ucuna birkaç saatte ulaşabiliyoruz. (III) Havalimanlarındaki güvenlik önlemleri son yıllarda daha da artırıldı. (IV) Bu hız, kültürler arasındaki mesafeyi kısaltırken aynı zamanda dünyanın küçüldüğü hissini veriyor.\n\nBu metinde numaralanmış cümlelerden hangisi anlam bütünlüğünü bozmaktadır?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Her yazarın etkilendiği, ilham aldığı bir usta mutlaka vardır. Edebiyat tarihi, ustasının izinden giderek kendi yolunu çizen yazarlarla doludur. Ancak önemli olan, o izden giderken yepyeni bir ayak izi bırakabilmektir. Bir ustanın kopyası olmak, yazarın edebi ölümüdür. Gerçek sanatçı, aldığı ilhamı kendi potasında eriterek ona yeni bir ruh üfleyen kişidir.\n\nBu parçadan çıkarılacak sonuç aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Yazarlar her zaman bir usta yazarın rehberliğine ihtiyaç duyarlar.",
+      "B": "Etkilenilen yazarı taklit etmeden özgün eserler ortaya koyabilmek gerçek başarıdır.",
+      "C": "Edebiyat tarihi sadece başarılı ve özgün eserler veren yazarları hatırlar.",
+      "D": "Ustaların izinden giden yazarların özgün bir tarz oluşturması imkânsızdır."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Dağcılık, dışarıdan bakıldığında sadece yüksek zirvelere ulaşma çabası gibi görünse de aslında insanın kendi sınırlarıyla yüzleşmesidir. Zirveye tırmanırken karşılaşılan zorluklar, soğuk, yorgunluk ve oksijensizlik, dağcıya pes etme isteğini fısıldar. Ancak zirveye ulaşan kişi sadece dağı değil, kendi içindeki korkuları ve zayıflıkları da yenmiş olur.\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Dağcılığın insan psikolojisi ve iradesi üzerindeki etkisi",
+      "B": "Dağcılık sporunun diğer sporlardan farkı",
+      "C": "Yüksek dağlara tırmanırken dikkat edilmesi gerekenler",
+      "D": "Oksijensiz ortamlarda dağcıların yaşadığı zorluklar"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Bazı kelimeler vardır, ait oldukları dilden başka bir dile çevrildiklerinde ruhlarını kaybederler. Mesela bizim dilimizdeki 'yakomoz' kelimesi sadece ay ışığının suya yansıması değil, aynı zamanda romantizmin, huzurun, yaz akşamlarının sembolüdür. Bu kelimeyi başka bir dildeki 'ay yansıması' ifadesiyle karşılamak, o büyüleyici anlamını eksik bırakır.\n\nBu metne göre çevirilerde kelimelerin ruhunu kaybetmesinin nedeni aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Çevirmenlerin kelimelerin anlamlarını tam bilmemesi",
+      "B": "Kelimelerin, ait oldukları kültürün hissini ve derinliğini içinde barındırması",
+      "C": "Türkçenin diğer dillerden çok daha zengin bir kelime dağarcığına sahip olması",
+      "D": "Bazı kelimelerin diğer dillerde karşılığının bulunmaması"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Gökyüzündeki yıldızları izlemek insana kendi küçüklüğünü hatırlatır. O devasa evrenin içinde nokta kadar bile yer kaplamadığımızı düşünmek, günlük hayattaki dertlerimizi bir anlığına önemsiz kılar. Belki de bu yüzden, insanlar tarihin ilk çağlarından beri gökyüzüne bakıp hayal kurmuş ve yıldızlarda kendi hikâyelerini aramışlardır.\n\nBu metne göre insanların yıldızları izlemesinin asıl nedeni aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Evrenin sırlarını bilimsel olarak çözmeye çalışmak",
+      "B": "Hayatın karmaşasından ve dertlerinden kısa bir süreliğine uzaklaşabilmek",
+      "C": "Yıldızların parlaklığı ve güzelliğinden etkilenmek",
+      "D": "Tarihi ve mitolojik hikâyelerin kökenini gökyüzünde aramak"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "(I) Müzik, insanın ruh halini değiştiren en güçlü araçlardan biridir. (II) Dinlenen müziğin türü ne olursa olsun, beynimizde farklı duygusal tepkiler uyandırır. (III) Yapılan araştırmalar, hızlı tempolu müziklerin kalp atışını hızlandırdığını gösteriyor. (IV) Ayrıca konsere gitmek sosyalleşmek için harika bir yoldur. (V) Yavaş tempolu müzikler ise bedeni rahatlatıp stresi azaltır.\n\nBu metinde düşüncenin akışını sağlamak için hangi cümleler yer değiştirmelidir?",
+    "secenekler": {
+      "A": "I ve II",
+      "B": "II ve III",
+      "C": "III ve IV",
+      "D": "IV ve V"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "İklim değişikliği, gezegenimizin karşılaştığı en büyük krizlerden biridir. Kutuplardaki buzullar eriyor, deniz seviyeleri yükseliyor ve aşırı hava olayları daha sık yaşanıyor. Eğer karbon emisyonlarını azaltmak için acil önlemler alınmazsa, birçok bitki ve hayvan türü yok olma tehlikesiyle karşı karşıya kalacak. Bu sorunla mücadele etmek sadece devletlerin değil, her bireyin sorumluluğundadır.\n\nBu metinden iklim değişikliği ile ilgili aşağıdakilerden hangisi çıkarılamaz?",
+    "secenekler": {
+      "A": "Dünya üzerindeki doğal yaşamı tehdit ettiği",
+      "B": "Bireylerin ve devletlerin ortak çabasıyla çözülebileceği",
+      "C": "Sadece belirli coğrafi bölgeleri olumsuz etkilediği",
+      "D": "Doğa olaylarının seyrini değiştirdiği ve tehlikeli hale getirdiği"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Deneme türü, yazarın kendi kendisiyle sohbet etmesi gibidir. Yazar; düşüncelerini kanıtlama çabasına girmeden, samimi bir dille okura aktarır. Montaigne'in de dediği gibi denemelerde asıl konu yazarın kendisidir. Bu türde kesin kurallar, katı sınırlar yoktur; sadece özgür düşüncenin kâğıda dökülmüş hali vardır.\n\nBu parçada deneme türü ile ilgili vurgulanan asıl özellik aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Toplumsal sorunlara çözüm üretmesi",
+      "B": "Yazarın kişisel görüşlerini samimi ve özgürce ifade etmesi",
+      "C": "Okuru ikna etmeyi ve doğruları öğretmeyi amaçlaması",
+      "D": "Edebiyat dünyasındaki en eski türlerden biri olması"
+    },
+    "dogru_cevap": "B"
+  }
+]

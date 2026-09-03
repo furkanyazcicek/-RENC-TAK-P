@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Korkma, sönmez bu şafaklarda yüzen al sancak / Sönmeden yurdumun üstünde tüten en son ocak\nYukarıdaki şiir dizeleri yan yana yazıldığında aralarına konulan noktalama işareti aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Kısa çizgi",
+      "B": "Virgül",
+      "C": "Noktalı virgül",
+      "D": "Eğik çizgi"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Anadolu kentlerini, köylerini (Köy sözünü de çekinerek yazıyorum.) gezsek bile görmek için değil, kendimizi göstermek için geziyoruz.\nBu cümlede yay ayracın ( ) kullanılma amacı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Cümlenin yapısıyla doğrudan doğruya ilgili olmayan açıklamaları göstermek.",
+      "B": "Alıntıların aktarıldığı eseri veya yazarı göstermek.",
+      "C": "Tiyatro eserlerinde konuşanın hareketlerini, durumunu açıklamak.",
+      "D": "Alay, kinaye veya küçümseme anlamı kazandırmak."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Uzun cümlelerde yüklemden uzak düşmüş olan özneyi belirtmek için virgül kullanılır.\nAşağıdaki cümlelerin hangisinde virgül bu işlevde kullanılmıştır?",
+    "secenekler": {
+      "A": "Kırmızı, mavi, sarı renkli balonlar gökyüzünü kapladı.",
+      "B": "Ahmet Bey, sabahın erken saatlerinde başladığı işini bitirmek için hiç durmadan çalışıyordu.",
+      "C": "Ankara'ya yarın gideceğiz, dedi aceleyle.",
+      "D": "Seni çok iyi anlıyorum, ancak elimden bir şey gelmiyor."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Aşağıdaki cümlelerin hangisinde noktalı virgül (;) ögeleri arasında virgül bulunan sıralı cümleleri birbirinden ayırmak için kullanılmıştır?",
+    "secenekler": {
+      "A": "Erkek çocuklara Doğan, Tuğrul, Aslan; kız çocuklara ise İnci, Çiçek, Gönül adları verilir.",
+      "B": "Türkiye, İngiltere, Azerbaycan; Ankara, Londra, Bakü eşleşmesi yapılabilir.",
+      "C": "Sevinçten, heyecandan içim içime sığmıyor; bağırmak, kahkaha atmak istiyorum.",
+      "D": "Roman, hikaye ve tiyatro okumayı; resim, müzik ve heykelle ilgilenmeyi severim."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Kendisiyle ilgili örnek verilecek cümlenin sonuna konur.\nAşağıdakilerden hangisi bu kurala uygun bir kullanımdır?",
+    "secenekler": {
+      "A": "Kendimi takdim edeyim: Sınıfın yeni başkanı.",
+      "B": "Sonunda beklediğimiz haber geldi: Sınavı kazanmışsın.",
+      "C": "İçimde tek bir istek var: Bir an önce köye dönmek.",
+      "D": "Milli Edebiyat akımının temsilcilerinden bazıları şunlardır: Ömer Seyfettin, Ziya Gökalp, Ali Canip Yöntem."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Aşağıdaki cümlelerin hangisinde kesme işaretinin (') kullanımı doğrudur?",
+    "secenekler": {
+      "A": "Ahmet'ler yarın akşam bize yemeğe gelecekmiş.",
+      "B": "Ağrı Dağı'nın eteklerinde eşsiz bir manzara var.",
+      "C": "Kardeşim yarışmada 2'inci olarak büyük bir başarı elde etti.",
+      "D": "Avrupa Birliği'ne üye ülkeler yeni bir karar aldı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Nokta (.) aşağıdaki cümlelerin hangisinde tarihlerin yazılışında gün, ay ve yılı gösteren sayıları birbirinden ayırmak için kullanılmıştır?",
+    "secenekler": {
+      "A": "Cumhuriyet 29.10.1923 tarihinde büyük bir coşkuyla ilan edildi.",
+      "B": "Toplantımız saat 14.30'da başlayacaktır.",
+      "C": "Dr. Ayşe Hanım hastalarıyla çok yakından ilgileniyor.",
+      "D": "Kitabın 2. baskısı önümüzdeki ay piyasaya çıkacak."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Aşağıdaki cümlelerin hangisinde soru işareti (?) farklı bir amaçla kullanılmıştır?",
+    "secenekler": {
+      "A": "Bana neden bu kadar kızgın olduğunu anlatacak mısın?",
+      "B": "Ankara'dan Antalya'ya arabayla 3 (?) saatte gitmiş.",
+      "C": "Bu kadar zor bir soruyu nasıl çözdün?",
+      "D": "Akşamki toplantıya kimlerin katılacağı belli mi?"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Fiil kök ve gövdelerini göstermek için kısa çizgi (-) kullanılır.\nAşağıdakilerin hangisinde bu kurala örnek bir kullanım vardır?",
+    "secenekler": {
+      "A": "Eski-yeni ne varsa hepsini bir kutuya doldurdu.",
+      "B": "Bu sokağın sonundaki 10-15 yıllık binalar yıkılacak.",
+      "C": "Kelimenin \"oku-\" kökünden türediğini hepimiz biliyoruz.",
+      "D": "Fenerbahçe-Galatasaray derbisi için nefesler tutuldu."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Kılavuzu karga olanın burnu b...tan çıkmaz.\nBu cümlede üç noktanın (...) kullanım amacı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Kaba sayıldığı için veya başka bir sebepten dolayı açık yazılmak istenmeyen kelime ve bölümlerin yerine konmak.",
+      "B": "Anlatım olarak tamamlanmamış cümlelerin sonuna konmak.",
+      "C": "Sözün bir yerde kesilerek geri kalan bölümün okuyucunun hayal dünyasına bırakıldığını göstermek.",
+      "D": "Alıntılarda başta, ortada ve sonda alınmayan kelime veya bölümlerin yerine konmak."
+    },
+    "dogru_cevap": "A"
+  }
+]

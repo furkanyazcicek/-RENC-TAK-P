@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Bir ailenin aylık giderlerini gösteren pasta grafiğinde Kira %35, Mutfak %30, Faturalar %20, Eğitim %15 olarak belirlenmiştir. Bu grafiğe göre aşağıdakilerden hangisi doğrudur?",
+    "A": "Eğitim giderleri faturalardan daha fazladır.",
+    "B": "Ailenin en az harcama yaptığı alan mutfaktır.",
+    "C": "Kira ve eğitim masrafları birbirine eşittir.",
+    "D": "Kira, ailenin bütçesinde en büyük paya sahiptir.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Yıllara göre enflasyon oranlarının sütun grafiğinde 2020'de %10, 2021'de %15, 2022'de %20, 2023'te %18 olduğu görülmektedir. Grafiğe bakarak ulaşılabilecek en kesin yargı nedir?",
+    "A": "Fiyatlar en çok 2020 yılında yükselmiştir.",
+    "B": "2023 yılında enflasyon sıfırlanmıştır.",
+    "C": "Enflasyon oranı 2023 yılında bir önceki yıla göre düşmüştür.",
+    "D": "Enflasyon her yıl sürekli olarak artmıştır.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Online alışverişte en çok satın alınan ürünler tablosunda 1. sırada kıyafet, 2. sırada teknolojik aletler, 3. sırada kitaplar yer almaktadır. Buna göre e-ticaret sektörüyle ilgili ne söylenebilir?",
+    "A": "Tüketiciler internetten en çok giyim ürünleri almayı tercih etmiştir.",
+    "B": "Kitap satışları kıyafet satışlarını geçmiştir.",
+    "C": "Teknolojik aletler kimse tarafından satın alınmamıştır.",
+    "D": "İnternetten alışveriş sadece teknoloji için yapılır.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Bir marketin indirim broşüründe '2 Al 1 Öde' kampanyası temizlik ürünlerinde, '%50 İndirim' ise meyve reyonunda görselleştirilmiştir. Bu broşüre göre hangisi yanlıştır?",
+    "A": "Temizlik ürünlerinde bedava ürün kampanyası vardır.",
+    "B": "Meyve reyonundaki tüm ürünler bedavadır.",
+    "C": "Kampanyalar farklı reyonlarda farklı şekildedir.",
+    "D": "Meyvelerde yarı yarıya fiyat avantajı sunulmuştur.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Bir ülkenin ihracat rakamları grafiğinde Otomotiv 20 milyar dolar, Tekstil 15 milyar dolar, Tarım 10 milyar dolar olarak sıralanmıştır. Grafikten hareketle hangi sonuca ulaşılır?",
+    "A": "Tarım ürünleri ihracatı tekstili geride bırakmıştır.",
+    "B": "Ülke sadece bu üç alanda ihracat yapmaktadır.",
+    "C": "Otomotiv sektörü ülkenin ihracatında ilk sıradadır.",
+    "D": "Tekstil sektörü günden güne değer kaybetmektedir.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Bir elektrik faturasında kullanım bedeli 300 TL, vergiler 100 TL, dağıtım bedeli 50 TL olarak belirtilmiştir. Toplam tutar 450 TL'dir. Fatura detaylarına göre hangisine ulaşılamaz?",
+    "A": "Faturanın en büyük kısmını kullanım bedeli oluşturur.",
+    "B": "Vergiler, dağıtım bedelinden daha yüksektir.",
+    "C": "Fatura toplamı, kalemlerin toplanmasıyla elde edilmiştir.",
+    "D": "Kullanım bedelini düşürmek için vergilerin kalkması gerekir.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Altın fiyatlarının altı aylık değişim grafiğinde, çizginin sürekli zikzak çizerek (inişli çıkışlı) ilerlediği görülmektedir. Bu grafiğe göre altının durumu nasıl özetlenir?",
+    "A": "Altın fiyatlarında dalgalı bir seyir izlenmiştir.",
+    "B": "Altın sürekli olarak değer kaybetmiştir.",
+    "C": "Yatırımcılar altına hiç ilgi göstermemiştir.",
+    "D": "Altın fiyatı altı ay boyunca sabit kalmıştır.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Geri dönüşümün ekonomiye katkısını anlatan infografikte, geri dönüştürülen kağıtların ormanları kurtardığı gibi ülke bütçesine de milyonlarca lira kazandırdığı vurgulanmıştır. İnfografiğin ana fikri nedir?",
+    "A": "Geri dönüşüm sadece ağaçları kurtarır.",
+    "B": "Geri dönüşüm hem doğaya hem de ekonomiye fayda sağlar.",
+    "C": "Ülke bütçesini artırmanın tek yolu kağıt satmaktır.",
+    "D": "Ekonomik kazanç için ormanlar yok edilmelidir.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Tüketici hakları şemasında, kusurlu (ayıplı) bir ürün alan müşterinin 'İade', 'Değişim' veya 'Tamir' talep etme hakkı olduğu oklarla gösterilmiştir. Buna göre bozuk bir ürün alan kişi ne yapamaz?",
+    "A": "Ürünü mağazada gizlice yenisiyle değiştirebilir.",
+    "B": "Ürünün ücretsiz tamir edilmesini isteyebilir.",
+    "C": "Parasının iade edilmesini talep edebilir.",
+    "D": "Aynı ürünün sağlamıyla değişimini isteyebilir.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Kredi kartı kullanım istatistiklerinde temassız ödemelerin %70, şifreli ödemelerin %30 olduğu görülmektedir. Bu istatistiğe göre ulaşılabilecek en doğru sonuç nedir?",
+    "A": "Şifreli ödeme yöntemi tamamen kaldırılmıştır.",
+    "B": "Temassız ödemeler güvenli olmadığı için tercih edilmez.",
+    "C": "Kullanıcılar kredi kartı kullanmayı bırakmıştır.",
+    "D": "İnsanlar büyük oranda pratik olan temassız ödemeyi tercih etmiştir.",
+    "cevap": "D"
+  }
+]

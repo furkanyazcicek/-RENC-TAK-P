@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Ormanlar, sadece ağaç topluluklarından ibaret değildir; aynı zamanda milyonlarca canlıya ev sahipliği yapan karmaşık ekosistemlerdir. Bir orman yok olduğunda, sadece oksijen kaynağımızı değil, orada yaşayan sayısız bitki ve hayvan türünün yuvasını da kaybederiz. Bu yüzden ormanları korumak, aslında gezegenimizin geleceğini korumaktır.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "a": "Ormanlar dünyanın en önemli oksijen kaynağıdır.",
+    "b": "Ormanların korunması, tüm dünyanın geleceği ve canlıların yaşamı için gereklidir.",
+    "c": "Ağaçların kesilmesi sadece o bölgedeki hayvanları olumsuz etkiler.",
+    "d": "Orman yangınlarının en büyük nedeni insan ihmalidir.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Küresel ısınma nedeniyle kutuplardaki buzullar her geçen gün eriyor. Bu durum sadece kutup ayılarını değil, tüm dünyayı etkiliyor. Deniz seviyelerinin yükselmesiyle birlikte kıyı şehirleri sular altında kalma tehlikesi yaşarken, mevsim normalleri dışında seyreden hava olayları tarımsal üretimi ciddi şekilde tehdit ediyor.\n\nBu metinden aşağıdakilerin hangisine ulaşılamaz?",
+    "a": "Küresel ısınmanın dünya genelinde farklı etkilere yol açtığına",
+    "b": "Buzulların erimesinin deniz seviyelerinde artışa neden olduğuna",
+    "c": "İklimdeki değişikliklerin tarım ürünlerine zarar verebileceğine",
+    "d": "Sadece kıyı bölgelerinde yaşayan hayvanların yok olma tehlikesiyle karşı karşıya kaldığına",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Geri dönüşüm, atıkların çeşitli işlemlerden geçerek tekrar üretime dâhil edilmesidir. Cam, kâğıt, plastik ve metal gibi maddeler geri dönüştürüldüğünde, doğadan yeni ham madde çıkarma ihtiyacı azalır. Bu da hem enerji tasarrufu sağlar hem de doğal kaynakların tükenmesini yavaşlatır.\n\nBu metinde aşağıdakilerden hangisine değinilmemiştir?",
+    "a": "Hangi maddelerin geri dönüştürülebildiğine",
+    "b": "Geri dönüşümün doğal kaynakların korunmasına katkısına",
+    "c": "Geri dönüştürülmeyen atıkların doğada ne kadar sürede yok olduğuna",
+    "d": "Geri dönüşüm sayesinde daha az enerji harcandığına",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Sulak alanlar, yeryüzünün en verimli ekosistemleridir. Taşkınları önleme, suyu temizleme ve yer altı sularını besleme gibi kritik işlevleri vardır. Ayrıca göçmen kuşlar için vazgeçilmez dinlenme ve beslenme alanlarıdır. Ancak ne yazık ki bilinçsiz tarım politikaları ve yapılaşma nedeniyle hızla kurutulmaktadır.\n\nBu parçada asıl anlatılmak istenen aşağıdakilerden hangisidir?",
+    "a": "Göçmen kuşların sadece sulak alanlarda yaşayabildiği",
+    "b": "Çok yönlü faydaları olan sulak alanların insan eliyle yok edildiği",
+    "c": "Sulak alanların yeryüzündeki tek temiz su kaynağı olduğu",
+    "d": "Bilinçsiz tarımın doğaya zarar veren en büyük etken olduğu",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Çevre bilinci, insanın doğaya saygı duyması ve kendi ihtiyaçlarını karşılarken doğanın dengesini bozmamaya özen göstermesidir. Bu bilince sahip bireyler, suyu israf etmez, çöplerini ayrıştırır ve gereksiz tüketimden kaçınır. Unutulmamalıdır ki dünya, çocuklarımızdan bize kalan bir emanettir.\n\nBu metin için en uygun başlık aşağıdakilerden hangisidir?",
+    "a": "Gelecek Nesiller ve Tüketim",
+    "b": "İnsanın Doğayla Mücadelesi",
+    "c": "Çevre Bilinci ve Sorumluluk",
+    "d": "Geri Dönüşümün Önemi",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Bir bölgede yaşayan bitki ve hayvan türlerinin zenginliğine biyoçeşitlilik denir. Biyoçeşitlilik ne kadar fazlaysa o ekosistem o kadar dirençli olur. Doğal afetler veya hastalıklar karşısında zengin biyoçeşitliliğe sahip alanlar kendini çok daha çabuk toparlar. Fakat türlerin azalması, doğanın kendini iyileştirme gücünü de zayıflatır.\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "a": "Doğal afetlerin hayvanlar üzerindeki etkisi",
+    "b": "Biyoçeşitliliğin doğanın direnci üzerindeki rolü",
+    "c": "Bitki hastalıklarının ormanlara verdiği zarar",
+    "d": "İnsanların biyoçeşitlilik üzerinde yarattığı tahribat",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Denizlerdeki plastik kirliliği her yıl milyonlarca deniz canlısının yaşamına mal oluyor. Poşet, şişe ve balık ağları gibi plastik atıklar akıntılarla tüm okyanuslara yayılıyor. Kaplumbağalar şeffaf poşetleri denizanası sanıp yutuyor ve hayatlarını kaybediyor. Bu durum deniz ekosistemindeki besin zincirini geri döndürülemez şekilde bozuyor.\n\nBu parçadan aşağıdaki yargıların hangisi çıkarılamaz?",
+    "a": "Plastik atıkların denizlerde hızla geniş alanlara yayıldığı",
+    "b": "Deniz kirliliğinin en çok kaplumbağaları etkilediği",
+    "c": "Canlıların plastikleri besin zannederek tüketebildiği",
+    "d": "Deniz kirliliğinin doğal yaşamın dengesini altüst ettiği",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Şehirlerin büyümesiyle birlikte vahşi hayvanların doğal yaşam alanları giderek daralıyor. Yiyecek bulamayan ayılar ve yaban domuzları şehirlere inmek zorunda kalıyor. Bizler onların evini işgal ettikçe, onlar da hayatta kalabilmek için bizim alanlarımıza girmek durumunda bırakılıyor.\n\nBu metinde vurgulanan düşünce aşağıdakilerden hangisidir?",
+    "a": "Yabani hayvanların şehre inmesi insanlar için büyük tehlike oluşturur.",
+    "b": "Hayvanlar, yeterli besin bulamadıkları için ormanları terk ederler.",
+    "c": "İnsanların doğayı işgal etmesi, yaban hayatını şehir sınırlarına itmektedir.",
+    "d": "Şehirlerin büyümesi doğal yaşamın zenginleşmesini sağlamaktadır.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Yenilenebilir enerji kaynakları; rüzgâr, güneş, su gibi doğada sürekli var olan ve asla tükenmeyen kaynaklardır. Fosil yakıtların aksine atmosfere zararlı gazlar salmazlar. Temiz bir gelecek için tüm dünyanın hızla bu enerji sistemlerine geçiş yapması şarttır.\n\nBu paragrafta yenilenebilir enerji kaynakları ile ilgili aşağıdakilerden hangisine değinilmemiştir?",
+    "a": "Çevre dostu bir yapıya sahip olduklarına",
+    "b": "Tükenme riski taşımayan kaynaklar olduğuna",
+    "c": "Kurulum maliyetlerinin yüksek olduğuna",
+    "d": "Gelecek için vazgeçilmez bir ihtiyaç olduğuna",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Uzun süren kuraklıklar toprağın verimliliğini düşürürken yeraltı sularının da tükenmesine yol açar. Susuzluk, tarımsal üretimi durma noktasına getirir. Bunun sonucunda ise gıda fiyatları artar ve kıtlık tehlikesi baş gösterir. Yani suyun bitmesi, sadece susuzluk değil, aynı zamanda açlık demektir.\n\nBu metinde asıl anlatılmak istenen aşağıdakilerden hangisidir?",
+    "a": "Kuraklığın doğrudan ve dolaylı olarak insan yaşamını temelden tehdit ettiği",
+    "b": "Yeraltı sularının tüketilmesinin sadece tarım sektörünü etkilediği",
+    "c": "Gıda fiyatlarındaki artışın en büyük sebebinin ekonomik krizler olduğu",
+    "d": "Suyun tasarruflu kullanımının her vatandaşın temel görevi olduğu",
+    "cevap": "A"
+  }
+]

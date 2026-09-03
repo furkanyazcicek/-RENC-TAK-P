@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "[Görselde reflektörlü yelek giymiş, şapkalı bir trafik polisi elindeki 'Dur' yazılı tabelayı havaya kaldırmıştır. Araçlar ise polisin işaretini beklemektedir.]\n\nBu görseldeki trafik polisinin amacı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Araçların hız yapmasını sağlamak",
+      "B": "Trafik düzenini ve güvenliğini sağlamak",
+      "C": "Yayaların yola çıkmasını engellemek",
+      "D": "Sürücülere ceza kesmek için bahane aramak"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "[Görselde bir pazar tezgahında kasalar dolusu taze elma, portakal ve muz yer almaktadır. Pazarcı terazide meyve tartmaktadır.]\n\nGörselde yer alan mekan aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Kırtasiye",
+      "B": "Manav veya semt pazarı",
+      "C": "Fırın",
+      "D": "Giyim mağazası"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "[Görselde kalın gövdeli bir ağacın dalları arasına yapılmış, tahtadan küçük bir kulübe (ağaç ev) vardır. Eve tırmanmak için ağacın gövdesine bir ip merdiven sarkıtılmıştır.]\n\nBu görsel, aşağıdaki kavramlardan hangisini daha çok çağrıştırır?",
+    "secenekler": {
+      "A": "Modern mimari",
+      "B": "Şehir yaşamı",
+      "C": "Çocukluk ve oyun",
+      "D": "Tehlike ve korku"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "[Görselde yan yana duran iki maske çizilmiştir. Maskelerden biri gülerken diğeri ağlamaktadır.]\n\nBu maskeler genellikle hangi sanat dalının simgesi olarak kullanılır?",
+    "secenekler": {
+      "A": "Heykel",
+      "B": "Tiyatro",
+      "C": "Resim",
+      "D": "Fotoğrafçılık"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "[Görselde bir mikroskop, cam tüpler, içinde renkli sıvılar bulunan beherglaslar ve koruyucu gözlük yer almaktadır.]\n\nBu eşyalar hangi ortamda kullanılmaktadır?",
+    "secenekler": {
+      "A": "Bilim laboratuvarında",
+      "B": "Mutfakta",
+      "C": "Marangoz atölyesinde",
+      "D": "Oto tamircisinde"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "[Görselde mavi bir Dünya küresinin etrafını saran beyaz sinyal dalgaları çizilmiş ve altında büyük bir 'www' yazısı yer almaktadır.]\n\nBu görsel neyi temsil etmektedir?",
+    "secenekler": {
+      "A": "Uzay araçlarını",
+      "B": "Radyo yayınlarını",
+      "C": "İnternet ağını",
+      "D": "Okyanus dalgalarını"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "[Görselde üzeri renkli kağıtla kaplanmış ve büyük kırmızı bir kurdeleyle bağlanmış kare şeklinde bir kutu yer almaktadır.]\n\nBu kutunun ifade ettiği kavram aşağıdakilerden hangisi olabilir?",
+    "secenekler": {
+      "A": "Tasarruf",
+      "B": "Eğitim",
+      "C": "Hediye",
+      "D": "Spor"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "[Görselde yoğun trafiğin olduğu bir otoyolun üzerine inşa edilmiş merdivenli bir köprü (üst geçit) ve köprüden güvenle karşıya geçen insanlar çizilmiştir.]\n\nBu görselin temel amacı nedir?",
+    "secenekler": {
+      "A": "Üst geçit kullanmanın yayalar için güvenli olduğunu göstermek",
+      "B": "Araçların çok hızlı gittiğini vurgulamak",
+      "C": "Köprü inşa etmenin zorluklarını anlatmak",
+      "D": "Yayaların spor yapmasını teşvik etmek"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "[Görselde üzerinde 'Atık Pil Kutusu' yazan kırmızı bir kutu bulunmakta ve bir kişi kullanılmış kalem pillerini bu kutunun içine atmaktadır.]\n\nBu kişinin davranışının en önemli nedeni aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Pilleri biriktirerek koleksiyon yapmak",
+      "B": "Pillerin çevreye ve toprağa zarar vermesini önlemek",
+      "C": "Eski pilleri yenileriyle takas etmek",
+      "D": "Pilleri çöpe atmanın yasak olmadığını düşünmek"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "[Görselde ahşap bir boya paleti, üzerinde farklı renkte boyalar ve iki adet fırça çizilmiştir. Arka planda boş bir tuval durmaktadır.]\n\nBu eşyaları kullanan birinin hangi mesleği veya hobiyi yapması beklenir?",
+    "secenekler": {
+      "A": "Müzisyenlik",
+      "B": "Ressamlık",
+      "C": "Yazarlık",
+      "D": "Mimarlık"
+    },
+    "dogru_cevap": "B"
+  }
+]

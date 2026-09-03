@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Bilim insanları(I), bilinmeyenleri(II) aydınlatmak(III) için durmaksızın(IV) çalışıyorlar. Numaralanmış sözcüklerden hangisi fiilimsi değildir?",
+    "secenekler": {
+      "A": "II",
+      "B": "I",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde zarf-fiil eylemin yapılış nedenini (sebep) bildirmektedir?",
+    "secenekler": {
+      "A": "Deney tüpünü ısıtınca içindeki sıvı renk değiştirdi.",
+      "B": "Laboratuvardan çıkarken ışıkları kapatmayı unutma.",
+      "C": "Verileri bilgisayara girerek raporu tamamladı.",
+      "D": "Gerekli formülü unuttuğundan deneyi baştan yapmak zorunda kaldı."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "'Geliştirilen bu yeni aşı, pek çok hastalığı tarihe gömecek.' cümlesindeki altı çizili sözcüğün (geliştirilen) fiilimsi türü aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Sıfat-fiil",
+      "B": "İsim-fiil",
+      "C": "Zarf-fiil",
+      "D": "Çekimli fiil"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdakilerin hangisinde kalıcı isim kullanılmıştır?",
+    "secenekler": {
+      "A": "Uçağın icat edilmesi ulaşımda devrim yarattı.",
+      "B": "Bu sorunu çözmek için farklı bir bakış açısı gerekiyor.",
+      "C": "Bilimsel araştırma dergisinde makalesi yayımlandı.",
+      "D": "Mikroskopla inceleme yaparken çok dikkatliydi."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "'-mış / -miş' eki alan sözcük, aşağıdaki cümlelerin hangisinde eylemsi (fiilimsi) olarak kullanılmıştır?",
+    "secenekler": {
+      "A": "Paslanmış metalleri asitle temizlemeyi denedik.",
+      "B": "Kimya laboratuvarındaki tüm mikroskoplar yenilenmiş.",
+      "C": "Yeni keşfedilen yıldız hakkında makale yazmış.",
+      "D": "Newton, yer çekimi kanununu tesadüfen bulmuş."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde sıfat-fiil, adlaşmış sıfat-fiil görevindedir?",
+    "secenekler": {
+      "A": "Bulunan fosiller müzeye büyük bir titizlikle taşındı.",
+      "B": "Deneye katılan öğrencilere katılım belgesi verildi.",
+      "C": "Görünen köy kılavuz istemez, bu deney hatalı.",
+      "D": "Okunan kitapların özeti çıkarılacak."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Hangi cümlede fiilimsi kullanılmıştır?",
+    "secenekler": {
+      "A": "Dünya, Güneş'in etrafındaki dönüşünü 365 günde tamamlar.",
+      "B": "Suyun kaynama noktası 100 santigrat derecedir.",
+      "C": "Albert Einstein, görelilik kuramını ortaya attı.",
+      "D": "Evreni anlamak insanoğlunun en büyük tutkusudur."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdakilerin hangisinde isim-fiil, zarf-fiil ve sıfat-fiil bir arada kullanılmıştır?",
+    "secenekler": {
+      "A": "Bilgiyi arayan bilim insanları, laboratuvarda uzun saatler harcar.",
+      "B": "Gördüğü hataları düzelterek deneyi başarıyla sonlandırmayı bildi.",
+      "C": "Aşıyı bulan ekip tüm dünyada takdirle karşılandı.",
+      "D": "Sonuçları analiz edip grafikleri çizerken çok yorulduk."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "İsim-fiiller, cümlenin öznesi veya nesnesi olabilirler. Buna göre aşağıdakilerin hangisinde isim-fiil özne görevindedir?",
+    "secenekler": {
+      "A": "Bakterilerin çoğalmasını engellemek için antibiyotik geliştirildi.",
+      "B": "Araştırma yapmak onun için bir yaşam biçimiydi.",
+      "C": "Genetik bilimi, DNA'nın şifresini çözmeyi başardı.",
+      "D": "Sistemin çalışmasını kontrol etmeleri gerekiyor."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "'Yaprakların dökülmesiyle birlikte fotosentez süreci yavaşlar.' cümlesindeki isim-fiille aynı türde bir fiilimsi aşağıdakilerin hangisinde vardır?",
+    "secenekler": {
+      "A": "Hücre bölünüşü hakkında kapsamlı bir sunum yaptı.",
+      "B": "Işığı kıran prizmaları kutuya yerleştirdik.",
+      "C": "Görünmez ışınlar kullanılarak tarama gerçekleştirildi.",
+      "D": "Güneş tutulmasını izleyince hepimiz çok heyecanlandık."
+    },
+    "dogru_cevap": "A"
+  }
+]

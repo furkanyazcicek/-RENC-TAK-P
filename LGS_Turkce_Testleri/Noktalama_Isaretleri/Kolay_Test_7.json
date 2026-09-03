@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "\"Maç bu akşam 19( )30'da başlayacak.\"\nBu cümlede yay ayraçla belirtilen yere hangi noktalama işareti gelmelidir?",
+    "secenekler": {
+      "A": "İki nokta (:)",
+      "B": "Virgül (,)",
+      "C": "Nokta (.)",
+      "D": "Noktalı virgül (;)"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru": "\"Evet( ) her gün düzenli olarak spor yapmalıyız.\"\nBu cümlede yay ayraçla belirtilen yere hangi noktalama işareti konmalıdır?",
+    "secenekler": {
+      "A": "Nokta (.)",
+      "B": "Virgül (,)",
+      "C": "Noktalı virgül (;)",
+      "D": "İki nokta (:)"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Aşağıdaki cümlelerin hangisinin sonuna soru işareti (?) konmalıdır?",
+    "secenekler": {
+      "A": "Yüzmeyi çok sevdiğini herkes bilir",
+      "B": "Antrenman bittiğinde çok yorulmuştu",
+      "C": "Koşu bandında ne kadar süre kalacağını bilmiyorum",
+      "D": "Hangi spor dalıyla ilgilenmek istersin"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru": "\"Yaşasın, takımımız şampiyon oldu( )\"\nBu cümlenin sonuna hangi noktalama işareti gelmelidir?",
+    "secenekler": {
+      "A": "Ünlem işareti (!)",
+      "B": "Nokta (.)",
+      "C": "Soru işareti (?)",
+      "D": "Üç nokta (...)"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru": "\"TFF( )nin aldığı yeni kararlar bugün açıklandı.\"\nBu cümlede yay ayraçla belirtilen yere hangi işaret gelmelidir?",
+    "secenekler": {
+      "A": "Kısa çizgi (-)",
+      "B": "Eğik çizgi (/)",
+      "C": "Kesme işareti (')",
+      "D": "Virgül (,)"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru": "\"Futbol, basketbol topla( ) yüzme, koşu bedenen yapılan sporlardır.\"\nBu cümlede yay ayraçla belirtilen yere hangi noktalama işareti konmalıdır?",
+    "secenekler": {
+      "A": "Virgül (,)",
+      "B": "Noktalı virgül (;)",
+      "C": "İki nokta (:)",
+      "D": "Nokta (.)"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru": "\"Galatasaray( )Fenerbahçe derbisi çok heyecanlıydı.\"\nBu cümlede yay ayraçla belirtilen yere hangi noktalama işareti gelmelidir?",
+    "secenekler": {
+      "A": "Kısa çizgi (-)",
+      "B": "Virgül (,)",
+      "C": "Noktalı virgül (;)",
+      "D": "Eğik çizgi (/)"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Doktor sağlıklı yaşamın sırrını şöyle açıkladı( ) Düzenli uyku ve dengeli beslenme.\nBu cümlede yay ayraçla belirtilen yere hangi noktalama işareti gelmelidir?",
+    "secenekler": {
+      "A": "Nokta (.)",
+      "B": "Virgül (,)",
+      "C": "Noktalı virgül (;)",
+      "D": "İki nokta (:)"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Spor salonunda neler yoktu ki: ağırlıklar, atlama ipleri, koşu bantları( )\nBu cümlenin sonuna hangi noktalama işareti konmalıdır?",
+    "secenekler": {
+      "A": "Nokta (.)",
+      "B": "İki nokta (:)",
+      "C": "Üç nokta (...)",
+      "D": "Ünlem işareti (!)"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru": "\"Basketbol ( )basketbol topuyla oynanır( ) beşer kişilik takımlarla oynanan bir spordur.\"\nBu cümlede yay ayraçla belirtilen yerlere ara sözü belirtmek için hangi noktalama işareti getirilmelidir?",
+    "secenekler": {
+      "A": "Kısa çizgi (-)",
+      "B": "Tırnak işareti (\")",
+      "C": "Kesme işareti (')",
+      "D": "Nokta (.)"
+    },
+    "dogru_cevap": "A"
+  }
+]

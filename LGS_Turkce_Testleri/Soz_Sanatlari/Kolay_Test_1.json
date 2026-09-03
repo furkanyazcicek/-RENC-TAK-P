@@ -1,0 +1,125 @@
+{
+  "test_adi": "Söz Sanatları - Kolay Test 1",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Aşağıdaki dizelerin hangisinde insana ait bir özellik doğadaki bir varlığa aktarılmıştır?",
+      "secenekler": {
+        "A": "Rüzgâr, dalların arasında hüzünlü bir şarkı mırıldanıyordu.",
+        "B": "Güneşin ilk ışıkları odama süzülünce hemen uyandım.",
+        "C": "Gökyüzünde pamuk gibi bembeyaz bulutlar kümelenmişti.",
+        "D": "Kış gelince bütün yapraklar sararıp döküldü."
+      },
+      "dogru_cevap": "A",
+      "cozum": "A seçeneğinde 'rüzgâr'ın hüzünlü bir şarkı mırıldanması insana ait bir özelliğin doğaya (rüzgâra) aktarılmasıdır, yani kişileştirme (teşhis) yapılmıştır."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "'Bir ah çeksem dağı taşı eritir / Gözüm yaşı değirmeni yürütür'\nBu dizelerde kullanılan söz sanatı aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Benzetme (Teşbih)",
+        "B": "Kişileştirme (Teşhis)",
+        "C": "Abartma (Mübalağa)",
+        "D": "Konuşturma (İntak)"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Şair, üzüntüsünün büyüklüğünü 'dağı taşı eritmesi' ve 'gözyaşının değirmen döndürmesi' ile anlatarak durumu olduğundan çok daha büyük göstermiş, yani abartma (mübalağa) yapmıştır."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde benzetme (teşbih) yapılmıştır?",
+      "secenekler": {
+        "A": "Akşamüzeri sahil boyunca uzun uzun yürüdük.",
+        "B": "Olayı duyunca küplere bindi, etrafa bağırmaya başladı.",
+        "C": "Cennet gibi vatanımızın her köşesi ayrı bir güzellik taşıyor.",
+        "D": "Kuşlar sıcak ülkelere doğru göç etmeye başladı."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde vatan, güzelliği yönüyle 'cennet'e benzetilmiştir. 'Gibi' edatı benzetme ilgisi kurmuştur."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Menekşe boynunu büktü,\nGüle 'Neden erken soldu yaprakların?' diye sordu.\nBu dizelerde aşağıdaki söz sanatlarından hangilerine başvurulmuştur?",
+      "secenekler": {
+        "A": "Kişileştirme - Konuşturma",
+        "B": "Benzetme - Abartma",
+        "C": "Konuşturma - Abartma",
+        "D": "Kişileştirme - Benzetme"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Menekşenin boynunu bükmesi insana ait bir özelliktir (Kişileştirme). Ardından güle soru sorması, yani konuşması ise konuşturma (intak) sanatıdır."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde herhangi bir söz sanatı yoktur?",
+      "secenekler": {
+        "A": "Adamın o kadar çok borcu vardı ki, dağları aşardı.",
+        "B": "Aslan gibi cesur askerlerimiz cepheye koştu.",
+        "C": "Baharın gelişiyle papatyalar neşeyle dans etmeye başladı.",
+        "D": "Yoğun kar yağışı nedeniyle yollar trafiğe kapandı."
+      },
+      "dogru_cevap": "D",
+      "cozum": "A'da abartma, B'de benzetme, C'de kişileştirme vardır. D seçeneği ise gerçek anlamlı kelimelerle kurulmuş, söz sanatı barındırmayan bir cümledir."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Aşağıdakilerin hangisinde doğrudan bir 'abartma' söz konusudur?",
+      "secenekler": {
+        "A": "Bir fırça darbesiyle dünyam aydınlandı.",
+        "B": "İğne atsan yere düşmeyecek kadar kalabalık bir salondu.",
+        "C": "Sırma saçları rüzgârda dalgalanıyordu.",
+        "D": "Gecenin karanlığı umutlarımızı örtemedi."
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğinde kalabalığı ifade etmek için kullanılan 'iğne atsan yere düşmemek' ifadesi durumu abartarak anlatan kalıplaşmış bir söz grubudur ve abartma (mübalağa) sanatına örnektir."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Konuşturma (İntak) sanatı olan her yerde mutlaka ................. sanatı da vardır.\nBu cümlede boş bırakılan yere aşağıdakilerden hangisi getirilmelidir?",
+      "secenekler": {
+        "A": "Abartma",
+        "B": "Benzetme",
+        "C": "Kişileştirme",
+        "D": "Karşıtlık"
+      },
+      "dogru_cevap": "C",
+      "cozum": "İnsan dışındaki varlıkların konuşturulmasına intak denir. Konuşma insana ait bir özellik olduğu için konuşturulan her varlık aynı zamanda kişileştirilmiş (teşhis) olur."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "1. Kar taneleri camda sessizce ağlıyordu.\n2. Yılan gibi kıvrılan yollardan geçtik.\n3. Çantasını taşımaktan kollarım koptu.\nNumaralanmış cümlelerdeki söz sanatları sırasıyla aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Kişileştirme - Benzetme - Abartma",
+        "B": "Benzetme - Kişileştirme - Abartma",
+        "C": "Kişileştirme - Abartma - Benzetme",
+        "D": "Abartma - Benzetme - Kişileştirme"
+      },
+      "dogru_cevap": "A",
+      "cozum": "1. cümlede kar taneleri ağlıyor (Kişileştirme), 2. cümlede yollar yılana benzetilmiş (Benzetme), 3. cümlede yorgunluk çok büyütülmüş (Abartma)."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "'Ben ki toz kanatlı bir kelebeğim / Minicik gövdeme yüklü Kafdağı.'\nŞair bu dizelerde hangi söz sanatını belirgin bir şekilde kullanmıştır?",
+      "secenekler": {
+        "A": "Kişileştirme",
+        "B": "Konuşturma",
+        "C": "Abartma",
+        "D": "Benzetme"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Toz kanatlı bir kelebeğin gövdesine Kafdağı'nın yüklenmesi durumu mantıken imkansızdır ve şair yükünün ağırlığını göstermek için abartma yapmıştır."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Aşağıdaki altı çizili sözcük gruplarından hangisinde farklı bir söz sanatı kullanılmıştır?",
+      "secenekler": {
+        "A": "İnci gibi dişleriyle gülümsedi.",
+        "B": "Buz gibi bir su içip serinledi.",
+        "C": "Melek gibi bir kalbi vardı.",
+        "D": "Nehir ağlaya ağlaya denize kavuştu."
+      },
+      "dogru_cevap": "D",
+      "cozum": "A, B ve C seçeneklerinde 'gibi' edatıyla benzetme yapılırken, D seçeneğinde nehrin 'ağlaya ağlaya' akması ile kişileştirme (teşhis) yapılmıştır."
+    }
+  ]
+}

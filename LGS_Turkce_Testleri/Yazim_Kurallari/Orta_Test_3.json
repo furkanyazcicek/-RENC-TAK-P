@@ -1,0 +1,85 @@
+{
+  "test_adi": "Yazım Kuralları Orta Seviye Test 3",
+  "sorular": [
+    {
+      "soru": "Gezegen ve yıldız adları terim anlamda kullanıldığında büyük, günlük dilde kullanıldığında küçük harfle başlar. Buna göre aşağıdakilerin hangisinde yazım yanlışı vardır?",
+      "A": "Güneş, sistemimizdeki en büyük enerji kaynağıdır.",
+      "B": "Dün akşam Dünya kadar işim vardı, bitiremedim.",
+      "C": "Ay'ın Dünya'ya olan uzaklığı sürekli değişir.",
+      "D": "Sen benim güneşim oldun bu karanlık günlerde.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Yardımcı eylemlerle (etmek, olmak vs.) kurulan birleşik fiillerde ses düşmesi veya türemesi yoksa fiil ayrı, varsa bitişik yazılır. Hangi cümlede bu kurala uyulmamıştır?",
+      "A": "Bana yaptığı bu büyük iyiliği asla red edemezdim.",
+      "B": "Olayları seyreden kalabalık giderek artıyordu.",
+      "C": "Bütün gün seni bekledik, bizi çok merak ettirdin.",
+      "D": "Bu antika vazo yıllar geçtikçe değer kaybediyor.",
+      "cevap": "A"
+    },
+    {
+      "soru": "İkilemelerin ve pekiştirmelerin yazımıyla ilgili aşağıdakilerin hangisinde bir hata vardır?",
+      "A": "Sapsarı başaklar rüzgarda usulca dalgalanıyordu.",
+      "B": "Yavaş yavaş bu yeni hayata alışmaya başlamıştı.",
+      "C": "Görüşmeyeli karmakarışık duygular içine girmiştim.",
+      "D": "Çocuklar el_ele tutuşup şarkı söylemeye başladılar.",
+      "cevap": "D"
+    },
+    {
+      "soru": "Tarihi olay, çağ ve dönem adları büyük harfle başlar ve gelen ekler kesme işaretiyle ayrılır. Hangisinde yazım yanlışı yapılmıştır?",
+      "A": "Kurtuluş Savaşı'nın izleri hala bu topraklarda duruyor.",
+      "B": "İlk Çağ'da insanlar mağaralarda yaşıyordu.",
+      "C": "Lale Devri'nde edebiyatımızda önemli yenilikler olmuştur.",
+      "D": "Cilalı taş devri, insanlık tarihi için büyük bir adımdır.",
+      "cevap": "D"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde 'de/da'nın yazımıyla ilgili bir yanlışlık yapılmıştır?",
+      "A": "Dün okulda yapılan törene veliler de katıldı.",
+      "B": "Bence bu sınavda başarılı olmak senin elinde.",
+      "C": "Gözümde tütüyor eski günlerde ki mutlu anılarımız.",
+      "D": "Sen de biliyorsun ki bu işin sonu yok.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Mahalle, meydan, bulvar, cadde ve sokak adlarında geçen kelimeler büyük harfle başlar. Hangisinde bu kurala aykırı bir durum vardır?",
+      "A": "Cumhuriyet Meydanı'nda büyük bir kalabalık toplandı.",
+      "B": "Bizim ev Gül sokakta, hemen köşede bulunuyor.",
+      "C": "Gazi Mustafa Kemal Bulvarı trafiğe kapatılmış.",
+      "D": "Yıldız Mahallesi'nin muhtarı yeniden seçildi.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Bağlaç olan 'ki' ayrı yazılır, ancak bazı sözcüklerde kalıplaştığı için bitişik yazılır (SOMBAHÇEMİ). Hangisinde 'ki'nin yazımı yanlıştır?",
+      "A": "Halbuki ben ona bütün gerçekleri anlatmıştım.",
+      "B": "Mademki gelmeyecektin, neden baştan söylemedin?",
+      "C": "Oysaki onun ne kadar haklı olduğunu yeni anladık.",
+      "D": "Öyle çok çalıştıki sonunda sınavı kazandı.",
+      "cevap": "D"
+    },
+    {
+      "soru": "'mi' edatı soru anlamı dışında da kullanılabilir, her durumda kendinden önceki sözcükten ayrı yazılır. Hangi cümlede 'mi'nin yazımı yanlıştır?",
+      "A": "Tatlı mı tatlı bir yavru kedi sahiplendik.",
+      "B": "Yağmur yağdımı buraları bir hüzün kaplar.",
+      "C": "Oraya gittiniz mi mutlaka müzeyi de gezin.",
+      "D": "İçeriye girdi mi herkes onu dinlemek isterdi.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Sayıların yazımıyla ilgili aşağıdakilerin hangisinde bir hata vardır?",
+      "A": "Otelimizin 5'inci katından deniz harika görünüyor.",
+      "B": "Bankadaki işlemimiz 14.30'da ancak bitebildi.",
+      "C": "Yazarın bu kitabı da onbinlerce adet sattı.",
+      "D": "Sınıftaki öğrencilere ikişer kalem dağıtıldı.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Özel adlara getirilen yapım ekleri kesme işaretiyle ayrılmaz, bu eklerden sonra gelen diğer ekler de kesme işaretiyle ayrılmaz. Buna göre hangisi yanlıştır?",
+      "A": "Türkçenin kurallarını öğrenmek oldukça önemlidir.",
+      "B": "Ankaralılar bu soğuk havaya alışkındır.",
+      "C": "Avrupalı'nın yaşam tarzı bize farklı gelebilir.",
+      "D": "İzmirli arkadaşlarımızla hafta sonu buluşacağız.",
+      "cevap": "C"
+    }
+  ]
+}

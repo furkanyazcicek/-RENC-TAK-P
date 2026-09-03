@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Türkiye'de internet kullanım amaçlarını gösteren grafikte Sosyal Medya %45, Haber Okuma %25, Online Alışveriş %20 ve Eğitim %10 oranındadır. Bu grafiğe göre ulaşılabilecek en genel yargı hangisidir?",
+    "A": "Kullanıcılar interneti en çok eğlence ve iletişim odaklı kullanmaktadır.",
+    "B": "Eğitim amaçlı kullanım giderek artmaktadır.",
+    "C": "Online alışveriş sosyal medyadan daha popülerdir.",
+    "D": "Haber okuyanların hepsi internetten alışveriş de yapmaktadır.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Yaş gruplarına göre e-kitap okuma tablosunda: 15-24 yaş (%40), 25-34 yaş (%35), 35-50 yaş (%15), 50+ yaş (%10) yer almaktadır. Hangi yorum kesinlikle doğrudur?",
+    "A": "50 yaş üstü kişiler kitap okumayı sevmemektedir.",
+    "B": "E-kitap sadece gençler için üretilmiştir.",
+    "C": "Yaş ilerledikçe e-kitap tercih etme oranı düşmektedir.",
+    "D": "25-34 yaş grubu, basılı kitap hiç okumamaktadır.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Sosyal medya platformlarının logolarının boyutlandırıldığı bir infografikte, Logo A en büyük, Logo B orta, Logo C en küçük boyuttadır. Bu durum neyi ifade ediyor olabilir?",
+    "A": "Logoların tasarım yılı sıralamasını",
+    "B": "Platformların kullanıcı sayısı büyüklüğünü",
+    "C": "Uygulamaların indirme hızlarını",
+    "D": "Logolarda kullanılan renk sayısını",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Akıllı telefon bağımlılığını anlatan bir karikatürde, insanlar telefonun ekranından sarkan iplerle kukla gibi oynatılmaktadır. Bu karikatürün mesajı nedir?",
+    "A": "Telefonların insanları daha yetenekli hale getirdiği",
+    "B": "Teknolojinin tiyatro sanatını geliştirdiği",
+    "C": "Kukla sanatının teknolojiye uyarlandığı",
+    "D": "Teknolojinin insanları kontrol altına alarak özgürlüğünü kısıtladığı",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Kütüphaneye gitme sıklığını gösteren grafikte 'Haftada bir' %15, 'Ayda bir' %25, 'Yılda bir' %40, 'Hiç' %20 oranındadır. Bu grafiğe bakılarak ne söylenebilir?",
+    "A": "Kütüphaneler sadece araştırma için kullanılmaktadır.",
+    "B": "İnsanlar kütüphaneleri en çok hafta sonu ziyaret etmektedir.",
+    "C": "Kütüphaneyi düzenli ziyaret etme alışkanlığı oldukça düşüktür.",
+    "D": "Hiç gitmeyenler evde kitap okumaktadır.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Basılı kitap ve e-kitap satışlarını karşılaştıran çizgi grafiğinde, yıllar ilerledikçe e-kitap çizgisi yukarı, basılı kitap çizgisi aşağı yönlüdür. Buna göre;",
+    "A": "Zamanla okuyucuların tercihleri dijital formatlara kaymaktadır.",
+    "B": "Basılı kitap okumak tamamen yasaklanmıştır.",
+    "C": "E-kitapların fiyatları her geçen gün ucuzlamaktadır.",
+    "D": "İnsanlar artık eskisinden daha fazla kitap okumaktadır.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Güvenli internet kullanımı infografiklerinde şifrelerin kırılmaz kilitler olarak resmedilmesi neyi vurgulamaktadır?",
+    "A": "İnternete bağlanmak için kapı kilidi kullanılması gerektiğini",
+    "B": "Şifrelerin mutlaka sayılardan oluşması gerektiğini",
+    "C": "Hesapların sadece bilgisayarlardan açılabileceğini",
+    "D": "Kişisel verileri korumanın sağlam parolalardan geçtiğini",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Teknoloji fuarı afişinde 'Gelecek Bugünden Başlıyor!' sloganı ile uçan arabalar ve robotlar çizilmiştir. Bu afişin amacı nedir?",
+    "A": "Robotların geçmişini öğretmek",
+    "B": "Yeni nesil teknolojilerin hayatımıza yön vereceğini duyurmak",
+    "C": "Uçan arabaların satış fiyatlarını açıklamak",
+    "D": "Sadece çocukların fuara katılımını sağlamak",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Bilgisayar oyunlarına ayrılan süre grafiğinde hafta sonu sütunları hafta içi sütunlarından belirgin şekilde uzundur. Bu durumun en mantıklı açıklaması nedir?",
+    "A": "İnsanların boş vakitlerinin hafta sonu daha fazla olması",
+    "B": "Oyunların hafta içi çalışmaması",
+    "C": "Hafta sonları internet hızının daha yüksek olması",
+    "D": "Oyun şirketlerinin hafta içi turnuva düzenlememesi",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Bilgisayar başında doğru oturma pozisyonunu gösteren bir görselde; ekran göz hizasında, sırt dik, ayaklar yere tam basıyor şeklindedir. Buna uymayan biri hangi sorunu yaşamaz?",
+    "A": "Bel ağrısı",
+    "B": "Boyun fıtığı",
+    "C": "Odaklanma artışı",
+    "D": "Göz yorgunluğu",
+    "cevap": "C"
+  }
+]

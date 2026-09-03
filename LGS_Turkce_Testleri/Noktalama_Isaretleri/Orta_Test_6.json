@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Aşağıdaki cümlelerin hangisinde noktalı virgül (;) gereksiz kullanılmıştır?",
+    "secenekler": {
+      "A": "Erkek çocuklara Doğan, Aslan; kız çocuklara İnci, Çiçek adları verilir.",
+      "B": "Sevinçten, heyecandan içim içime sığmıyor; bağırmak, ağlamak istiyorum.",
+      "C": "Ahmet; Hasan, Mehmet ve Ali'den daha başarılıdır.",
+      "D": "Akşam erken uyudum; çünkü sabah çok erken kalkmam gerekiyordu."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Aşağıdakilerin hangisinde nokta (.) kısaltmaların sonuna konma göreviyle kullanılmıştır?",
+    "secenekler": {
+      "A": "Sınav sonuçları 15.06.2023 tarihinde açıklanacak.",
+      "B": "Yarınki panele Dr. Ayşe Yılmaz da katılacakmış.",
+      "C": "Saat 14.30'da okulun önünde buluşalım.",
+      "D": "Bu apartmanın 4. katında teyzemler oturuyor."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Yaşlı, adama doğru yavaşça yaklaştı ve ona bir şeyler fısıldadı.\nBu cümlede virgülün (,) kullanım amacı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Anlam karışıklığını önlemek.",
+      "B": "Yüklemden uzak düşmüş özneyi ayırmak.",
+      "C": "Eş görevli kelimeleri birbirinden ayırmak.",
+      "D": "Sıralı cümleleri birbirinden ayırmak."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Aşağıdaki cümlelerin hangisinde soru işareti (?) şüphe duyulan, kesin olmayan bir bilgiyi göstermek için kullanılmıştır?",
+    "secenekler": {
+      "A": "Bana neden bu kadar öfkeli davrandığını öğrenebilir miyim?",
+      "B": "Dolaptaki çikolataların hepsini sen mi yedin?",
+      "C": "Ankara'da 1496 (?) yılında yapılmış eski bir han varmış.",
+      "D": "Hangi rüzgar attı seni bu uzak diyarlara?"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru": "İki nokta (:), matematikte bölme işareti olarak da kullanılır.\nAşağıdakilerin hangisi bu açıklamaya örnek oluşturur?",
+    "secenekler": {
+      "A": "40 : 8 = 5 işlemini zihinden hesapladı.",
+      "B": "Sınıfın mevcudu: 24 kişi.",
+      "C": "Şunu unutmayın: Başarı tesadüf değildir.",
+      "D": "http://tdk.gov.tr adresinden kuralı kontrol ettim."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Kurum, kuruluş, kurul ve iş yeri adlarına gelen ekler kesme işaretiyle ayrılmaz.\nAşağıdaki cümlelerin hangisinde bu kurala uyulmadığı için bir yazım ve noktalama yanlışı yapılmıştır?",
+    "secenekler": {
+      "A": "Türk Dil Kurumuna dün bir dilekçe yazdım.",
+      "B": "Bakanlar Kurulu'nun aldığı yeni kararlar açıklandı.",
+      "C": "Marmara Üniversitesinde düzenlenen sempozyuma katıldık.",
+      "D": "Yeşilay Derneğine bağışta bulunmayı ihmal etmez."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Aşağıdakilerin hangisinde kısa çizgi (-) sıfırdan küçük değerleri (eksi işareti) göstermek için kullanılmıştır?",
+    "secenekler": {
+      "A": "Ural-Altay dil ailesi hakkında kapsamlı bir araştırma yaptı.",
+      "B": "Türkçe-İngilizce sözlüğü her zaman yanındaydı.",
+      "C": "Bu gece hava sıcaklığı -5 dereceye kadar düşecekmiş.",
+      "D": "Kelimeleri hecelerine ayırırken \"ge-le-cek\" şeklinde yazarız."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Aşağıdaki cümlelerin hangisinde tırnak işaretinin (\"\") kullanımı başka bir kimseden veya yazıdan olduğu gibi aktarılan sözleri belirtmek içindir?",
+    "secenekler": {
+      "A": "Bugün derste \"Sessiz Gemi\" şiirini okuduk.",
+      "B": "İnsanlar artık \"empati\" kurmayı unuttu sanki.",
+      "C": "Son yayımlanan \"Makaleler\" adlı eseri çok sattı.",
+      "D": "Mevlana, \"Ne olursan ol yine gel.\" diyerek hoşgörüyü vurgulamıştır."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Aşağıdaki cümlelerin hangisinde ünlem (!) işareti alay, kinaye veya küçümseme anlamı kazandırmak için kullanılmıştır?",
+    "secenekler": {
+      "A": "O kadar zeki (!) bir çocuk ki iki kere ikiye beş diyor.",
+      "B": "Eyvah, akşam yemeği ocakta tamamen yandı!",
+      "C": "İmdat! Kimse yok mu sesimi duyan?",
+      "D": "Ne kadar da güzel bir manzara, harika!"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Eğik çizgi (/) aşağıdaki kullanımların hangisinde tarihlerin yazılışında gün, ay ve yılı gösteren sayıları ayırmak için kullanılmıştır?",
+    "secenekler": {
+      "A": "Şiir dizeleri yan yana yazıldığında aralarına eğik çizgi konur: Korkma / Sönmez bu şafaklarda...",
+      "B": "İnternet adreslerinde http://meb.gov.tr şeklinde yer alır.",
+      "C": "Bölme işlemi olarak 15/3=5 şeklinde de gösterilebilir.",
+      "D": "Sınav başvuruları 15/09/2023 tarihine kadar devam edecekmiş."
+    },
+    "dogru_cevap": "D"
+  }
+]

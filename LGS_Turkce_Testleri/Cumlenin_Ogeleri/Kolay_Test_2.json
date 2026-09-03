@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"İlkbahar sabahı, güneş usulca doğdu.\" cümlesinde 'usulca' sözcüğü cümlenin hangi ögesidir?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Zarf Tamlayıcısı",
+      "C": "Yer Tamlayıcısı",
+      "D": "Nesne"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde yüklem yanlış gösterilmiştir? (Yüklem parantez içine alınmıştır.)",
+    "secenekler": {
+      "A": "Kuşlar ağaçlarda (şarkı söylüyor).",
+      "B": "Yağmur toprağı (ıslattı).",
+      "C": "Kar taneleri (dans).",
+      "D": "Rüzgar sertçe (esti)."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "\"Sonbahar rüzgarı sararmış yaprakları döktü.\" cümlesinin öznesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Sonbahar",
+      "B": "Rüzgarı",
+      "C": "Sonbahar rüzgarı",
+      "D": "Sararmış yaprakları"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "\"Çocuklar parkta neşeyle oynuyorlar.\" cümlesinde yer tamlayıcısı hangi kelimedir?",
+    "secenekler": {
+      "A": "Çocuklar",
+      "B": "parkta",
+      "C": "neşeyle",
+      "D": "oynuyorlar"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi sadece özne ve yüklemden oluşmuştur?",
+    "secenekler": {
+      "A": "Güneşli günler geldi.",
+      "B": "Ağaçlar ilkbaharda yeşerdi.",
+      "C": "Kuşlar gökyüzünde uçuyor.",
+      "D": "Doğa uyandı birdenbire."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "\"Ağaçlar, baharın gelişini müjdeliyor.\" cümlesinde nesne görevindeki sözcük grubu hangisidir?",
+    "secenekler": {
+      "A": "Ağaçlar",
+      "B": "baharın",
+      "C": "müjdeliyor",
+      "D": "baharın gelişini"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinin yüklemi isim soylu bir sözcüktür?",
+    "secenekler": {
+      "A": "Hava bugün çok güzeldi.",
+      "B": "Rüzgar aniden durdu.",
+      "C": "Güneş bulutların arkasına saklandı.",
+      "D": "Yağmur damlaları cama vurdu."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "\"Karlı dağların ardında güneş batıyor.\" cümlesinde 'karlı dağların ardında' söz grubu hangi ögedir?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Zarf Tamlayıcısı",
+      "C": "Yer Tamlayıcısı",
+      "D": "Belirtili Nesne"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde zarf tamlayıcısı yoktur?",
+    "secenekler": {
+      "A": "Dün yağmur yağdı.",
+      "B": "Rüzgar sertçe esiyor.",
+      "C": "Çocuklar dışarı çıktı.",
+      "D": "Kitapları rafa dizdi."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "\"Gökyüzü, yıldızlarla süslenmişti.\" cümlesinde 'yıldızlarla' sözcüğü hangi ögedir?",
+    "secenekler": {
+      "A": "Zarf Tamlayıcısı",
+      "B": "Yer Tamlayıcısı",
+      "C": "Özne",
+      "D": "Belirtisiz Nesne"
+    },
+    "dogru_cevap": "A"
+  }
+]

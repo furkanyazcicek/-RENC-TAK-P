@@ -1,0 +1,122 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde birleşik kelimelerin yazımıyla ilgili yanlışlık vardır?",
+    "secenekler": {
+      "A": "Bugün hiçbir şey yemedim.",
+      "B": "Biraz daha sabretmelisin.",
+      "C": "Birtakım insanlar bu duruma tepki gösterdi.",
+      "D": "Herkez bu kuralı biliyor."
+    },
+    "dogru_cevap": "D",
+    "cozum": "'Herkez' değil 'Herkes' şeklinde yazılmalıdır."
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki kelimelerden hangisinin yazımı yanlıştır?",
+    "secenekler": {
+      "A": "Hoşça kal",
+      "B": "Hoşgeldin",
+      "C": "Sağ ol",
+      "D": "Güya"
+    },
+    "dogru_cevap": "B",
+    "cozum": "'Hoş geldin' ayrı yazılır."
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde altı çizili kelimenin yazımı doğrudur? (Kelimeler koyu yazılmıştır)",
+    "secenekler": {
+      "A": "Bana **yardımetmek** ister misin?",
+      "B": "Seni gördüğüme **memnunoldum**.",
+      "C": "Olanları bana **fark ettirmeden** anlattı.",
+      "D": "Bunu **kabuletmek** zorundayız."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Etmek, olmak yardımcı fiilleriyle kurulan birleşik fiiller ses düşmesi veya türemesi yoksa ayrı yazılır. 'Fark etmek' ayrı yazılır."
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki birleşik kelimelerden hangisi bitişik yazılmalıdır?",
+    "secenekler": {
+      "A": "Terk etmek",
+      "B": "Seyir etmek",
+      "C": "Arz etmek",
+      "D": "Fark etmek"
+    },
+    "dogru_cevap": "B",
+    "cozum": "Ses düşmesi olduğu için 'Seyretmek' şeklinde bitişik yazılmalıdır."
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde yazım yanlışı vardır?",
+    "secenekler": {
+      "A": "Akşamüstü sahilde yürüyüş yaptık.",
+      "B": "Suçüstü yakalanan hırsız tutuklandı.",
+      "C": "Öğle üzeri yola çıkacağız.",
+      "D": "Ayak altı yerlerde dolaşma."
+    },
+    "dogru_cevap": "D",
+    "cozum": "Alt, üst, üzeri sözlerinin sona getirilmesiyle kurulan birleşik kelimeler somut yer bildirmiyorsa bitişik yazılır. 'Ayakaltı' olmalı."
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Hangi seçenekte 'şey' kelimesinin yazımı doğrudur?",
+    "secenekler": {
+      "A": "Herşey yolunda gidecek.",
+      "B": "Birşey söylemek ister misin?",
+      "C": "Hiçbir şey beni korkutamaz.",
+      "D": "Çokşey öğrendim bugün."
+    },
+    "dogru_cevap": "C",
+    "cozum": "'Şey' kelimesi her zaman ayrı yazılır."
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'ki' ile kalıplaşmış birleşik kelimelerden biri yanlış yazılmıştır?",
+    "secenekler": {
+      "A": "Sanki bizi duymadı.",
+      "B": "Meğer ki her şeyi biliyormuş.",
+      "C": "Mademki geldin, bizimle otur.",
+      "D": "Oysaki ona çok güvenmiştim."
+    },
+    "dogru_cevap": "B",
+    "cozum": "'Meğerki' kalıplaşmıştır ve bitişik yazılır."
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdakilerden hangisinde ikilemelerin yazımı ile ilgili bir hata vardır?",
+    "secenekler": {
+      "A": "Yavaş yavaş yürüyorduk.",
+      "B": "Eciş-bücüş bir yazısı var.",
+      "C": "Gide gide yorulduk.",
+      "D": "El ele tutuştular."
+    },
+    "dogru_cevap": "B",
+    "cozum": "İkilemeler ayrı yazılır ve aralarına hiçbir noktalama işareti konmaz."
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdakilerden hangisi daima bitişik yazılır?",
+    "secenekler": {
+      "A": "Art niyet",
+      "B": "Öz geçmiş",
+      "C": "Gök kuşağı",
+      "D": "Gökyüzü"
+    },
+    "dogru_cevap": "D",
+    "cozum": "'Gökyüzü' kalıplaşmış birleşik isimdir ve daima bitişik yazılır."
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki altı çizili sözcüklerden hangisinin yazımı yanlıştır? (Kelimeler koyu yazılmıştır)",
+    "secenekler": {
+      "A": "**Gözyaşı** dökmene dayanamam.",
+      "B": "**Kuşburnu** çayı çok şifalıdır.",
+      "C": "**Köpekbalığı** çok tehlikeli bir türdür.",
+      "D": "**Aslanağzı** çiçekleri bahçeyi süsledi."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Hayvan türlerinden biriyle kurulan birleşik kelimelerde ikinci kelime gerçek anlamını koruyorsa ayrı yazılır. 'Köpek balığı' ayrı yazılmalıdır."
+  }
+]

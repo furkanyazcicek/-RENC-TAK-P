@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Güneş sistemi infografiklerinde gezegenler Güneş'e olan uzaklıklarına göre sıralanmıştır. Dünya 3. sırada, Mars 4. sırada, Jüpiter 5. sıradadır. Buna göre hangisi doğrudur?",
+    "A": "Mars, Güneş'e en yakın gezegendir.",
+    "B": "Jüpiter, Dünya'dan Güneş'e daha yakındır.",
+    "C": "Bütün gezegenlerin büyüklükleri aynıdır.",
+    "D": "Dünya, Mars ile Venüs (veya Güneş yönünde başka gezegen) arasındadır.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Astronotların günlük programı tablosunda 'Spor: 2 saat', 'Bilimsel Deney: 8 saat', 'Uyku: 8 saat' yer almaktadır. Uzayda kas kaybını önlemek için yapıldığı bilinen aktivite hangisidir?",
+    "A": "Spor",
+    "B": "Uyku",
+    "C": "Deney",
+    "D": "Yemek molası",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Uzay araştırmalarına ayrılan bütçe sütun grafiğinde son 5 yılda devlet katkısı sabit kalırken, özel şirket yatırımları sütunu hızla yükselmiştir. Ne söylenebilir?",
+    "A": "Devletler artık uzayla ilgilenmemektedir.",
+    "B": "Uzay araçlarının boyutu küçülmüştür.",
+    "C": "Özel sektörün uzay araştırmalarındaki payı giderek artmaktadır.",
+    "D": "Uzaya giden insan sayısı azalmıştır.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Ay'ın evreleri görselinde 'Yeni Ay' evresinde Ay tamamen karanlık, 'Dolunay' evresinde tamamen aydınlıktır. Bu değişimin sebebi nedir?",
+    "A": "Ay'ın Güneş'ten uzaklaşıp soğuması",
+    "B": "Ay'ın Dünya etrafındaki hareketi sonucu Güneş'ten aldığı ışığın açısının değişmesi",
+    "C": "Ay'ın kendi etrafında dönmemesi",
+    "D": "Güneş lekelerinin büyümesi",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Kara deliklerin yapısını anlatan bir görselde merkez siyah bir nokta, etrafı ise girdap gibi dönen parlak halkalarla çizilmiştir. Siyah noktanın içinden ışığın bile kaçamadığı bilgisi verilmiştir. Buna göre;",
+    "A": "Kara deliğin merkez çekimi son derece güçlüdür.",
+    "B": "Kara delikler aslında çok parlak yıldızlardır.",
+    "C": "İçine giren cisimler daha hızlı çıkar.",
+    "D": "Kara deliğin merkezi ayna görevi görür.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru": "İnsanlığın uzay macerası zaman çizelgesinde; 1957 ilk yapay uydu, 1961 ilk insan, 1969 Ay'a ilk ayak basma gösterilmektedir. Bu çizelgeden hangi çıkarım yapılır?",
+    "A": "Uzay yarışını her zaman tek bir ülke kazanmıştır.",
+    "B": "Ay'a gidildikten sonra uzay çalışmaları sona ermiştir.",
+    "C": "İlk uydu, insandan çok daha sonra fırlatılmıştır.",
+    "D": "Uzay çalışmaları kısa sürede büyük aşamalar kaydetmiştir.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Gökyüzü olayları takviminde '12 Ağustos: Perseid Meteor Yağmuru', '28 Eylül: Kanlı Ay Tutulması' yazmaktadır. Takvimin kullanım amacı nedir?",
+    "A": "Hava durumunu tahmin etmek",
+    "B": "Uçak biletlerini ucuza almak",
+    "C": "Gök olaylarını gözlemlemek isteyenlere tarih vermek",
+    "D": "Astrolojik burç yorumları yapmak",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Bilim şenliği afişinde deney tüpleri, mikroskoplar ve teleskoplar sevimli karakterler şeklinde çizilmiş; 'Keşfetmeye Hazır Mısın?' sloganı yazılmıştır. Hedef kitle kimdir?",
+    "A": "Sadece üniversite profesörleri",
+    "B": "Çocuklar ve gençler",
+    "C": "Sporcular",
+    "D": "Sağlık personelleri",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Teleskop parçaları görselinde 'mercek' (ışığı toplar), 'odak düğmesi' (netlik ayarlar) gösterilmiştir. Gökyüzündeki bir yıldızı bulanık gören birinin hangi parçayı kullanması gerekir?",
+    "A": "Tripod ayağını",
+    "B": "Lens kapağını",
+    "C": "Gövde tüpünü",
+    "D": "Odak düğmesini",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Yıllara göre fırlatılan uydu sayısını gösteren pasta grafiğinde %60 İletişim, %25 Gözlem, %15 Askeri uydulardır. En büyük dilimin iletişim olması neyi kanıtlar?",
+    "A": "Uzay teknolojilerinin en çok haberleşme alanında kullanıldığını",
+    "B": "Askeri uydulara ihtiyaç kalmadığını",
+    "C": "Gözlem uydularının çok ucuz olduğunu",
+    "D": "İnternetin uydular olmadan da hızlı çalıştığını",
+    "cevap": "A"
+  }
+]

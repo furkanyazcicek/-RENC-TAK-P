@@ -1,0 +1,115 @@
+{
+  "test_adi": "Fiilde Çatı - Kolay Test 1",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Yüklemi isim soylu sözcük olan cümlelerde çatı özelliği aranmaz.\nBuna göre aşağıdaki cümlelerin hangisinde çatı özelliği aranmaz?",
+      "secenekler": {
+        "A": "Bütün gün odasını temizledi.",
+        "B": "Yarın sabah erkenden yola çıkacağız.",
+        "C": "Onun en sevdiği renk mavidir.",
+        "D": "Kardeşim erkenden uyudu."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Yüklemde bildirilen işi yapanın açıkça belli olduğu fiiller 'etken' çatılıdır.\nBuna göre aşağıdaki cümlelerin hangisinin yüklemi etken çatılıdır?",
+      "secenekler": {
+        "A": "Sınıfların hepsi özenle süslendi.",
+        "B": "Öğretmenimiz bize yeni bir konu anlattı.",
+        "C": "Duvarlar güzelce boyandı.",
+        "D": "Bozulan arabamız dün tamir edildi."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Nesne alabilen fiillere 'geçişli fiil' denir. Fiilin başına 'onu' kelimesini getirdiğimizde anlamlı oluyorsa fiil geçişlidir.\nAşağıdaki altı çizili fiillerden hangisi geçişlidir?",
+      "secenekler": {
+        "A": "Bütün gece mışıl mışıl _uyudu_.",
+        "B": "Kuşlar gökyüzünde özgürce _uçuyor_.",
+        "C": "Güneş yavaş yavaş _doğdu_.",
+        "D": "Aldığı son kitabı dün _bitirdi_."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde fiil çatı özelliği aranmaz?",
+      "secenekler": {
+        "A": "En büyük hayali iyi bir doktor olmaktı.",
+        "B": "Yağmur yağınca herkes saçak altlarına kaçıştı.",
+        "C": "Yarışmayı kazandığını duyunca çok sevindi.",
+        "D": "Olayın aslı daha sonra anlaşıldı."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Edilgen çatılı fiillerde işi yapan belli değildir, işten etkilenen varlık (nesne) özne görevindedir. Buna 'sözde özne' denir.\nAşağıdaki cümlelerin hangisinde sözde özne kullanılmıştır?",
+      "secenekler": {
+        "A": "Çocuklar parkta neşeyle oynuyorlar.",
+        "B": "Annem akşam için güzel yemekler pişirdi.",
+        "C": "Kedimiz sobanın yanında kıvrılıp uyumuş.",
+        "D": "Sokaklar belediye ekiplerince temizlendi."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Bir fiil geçişli olduğu hâlde cümlede nesne bulunmayabilir.\nAşağıdaki cümlelerin hangisinde bu duruma örnek olabilecek bir kullanım vardır?",
+      "secenekler": {
+        "A": "Dün akşam arkadaşlarıyla sinemaya gitti.",
+        "B": "Sabahtan beri durakta bekliyor.",
+        "C": "Yeni aldığı elbiseyi dolabına astı.",
+        "D": "Gürültüden dolayı bebek birden ağladı."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinin yüklemi etken ve geçişli bir fiildir?",
+      "secenekler": {
+        "A": "Havalar soğuyunca sobalar kuruldu.",
+        "B": "Küçük çocuk saatlerce ağladı.",
+        "C": "Babam bahçedeki ağaçları budadı.",
+        "D": "Konu herkes tarafından anlaşıldı."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinin yüklemi öznesine göre edilgen çatılıdır?",
+      "secenekler": {
+        "A": "Okullar pazartesi günü tatil edildi.",
+        "B": "Yaşlı adam banka oturdu.",
+        "C": "Öğrenciler teneffüse çıktı.",
+        "D": "Bahar gelince ağaçlar çiçek açtı."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Nesne alamayan, 'neyi, kimi' sorularına cevap vermeyen fiillere geçişsiz fiil denir.\nAşağıdaki cümlelerden hangisinin yüklemi geçişsiz bir fiildir?",
+      "secenekler": {
+        "A": "Soruların hepsini doğru cevapladı.",
+        "B": "Yorucu bir günün ardından hemen uyudu.",
+        "C": "Masadaki kitapları özenle topladı.",
+        "D": "Dün akşam bize güzel bir hikaye anlattı."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde fiilin çatı özelliği yay ayraç içinde yanlış verilmiştir?",
+      "secenekler": {
+        "A": "Misafirler için çay demlendi. (Edilgen)",
+        "B": "Kardeşim bana su getirdi. (Geçişli)",
+        "C": "Bebek beşiğinde mışıl mışıl uyuyor. (Geçişli)",
+        "D": "Sabahtan beri aralıksız kar yağıyor. (Etken)"
+      },
+      "dogru_cevap": "C"
+    }
+  ]
+}

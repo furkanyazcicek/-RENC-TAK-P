@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi yapısına göre diğerlerinden farklıdır?",
+    "secenekler": {
+      "A": "Yağmur yağdığı için pikniği iptal ettik.",
+      "B": "Kitabını alıp sessizce köşesine çekildi.",
+      "C": "Rüzgâr şiddetini artırdı, fırtına koptu.",
+      "D": "Öğretmenini dinleyen öğrenciler başarılı olur."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "(I) Sonbahar, doğanın altın sarısına boyandığı mevsimdir. (II) Ağaçlardan dökülen yapraklar, yolları kaplar. (III) Kuşlar sıcak ülkelere göç eder usulca. (IV) Rüzgârın serinliği, insanın içine işler.\nBu metindeki numaralanmış cümlelerle ilgili aşağıdakilerden hangisi yanlıştır?",
+    "secenekler": {
+      "A": "I. cümle, kurallı bir isim cümlesidir.",
+      "B": "III. cümle, kurallı bir fiil cümlesidir.",
+      "C": "II. cümle, içinde fiilimsi bulunan bir cümledir.",
+      "D": "IV. cümle, tek yüklemli cümledir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki dizelerin hangisinde devrik bir isim cümlesi vardır?",
+    "secenekler": {
+      "A": "Seni bekliyorum bu ıssız limanda.",
+      "B": "Gözlerin bir denizdir benim için.",
+      "C": "Soldu bütün çiçekler bahçemizde.",
+      "D": "Bir masal kahramanıydı o benim gözümde."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Bazı cümleler yapıca olumlu olduğu hâlde anlamca olumsuz olabilir. Aşağıdakilerden hangisi bu duruma örnektir?",
+    "secenekler": {
+      "A": "Ne seni ne de onu dinleyeceğim.",
+      "B": "Beni hiç anlamıyor değilsin.",
+      "C": "Bu kadar işi tek başıma yapamam.",
+      "D": "Onunla bir daha asla konuşmayacağım."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Birden çok yüklemli (sıralı) cümlelerde, cümleler arasında öge ortaklığı varsa buna \"bağımlı sıralı cümle\", öge ortaklığı yoksa \"bağımsız sıralı cümle\" denir.\nBuna göre aşağıdakilerin hangisinde bağımlı sıralı cümle kullanılmıştır?",
+    "secenekler": {
+      "A": "Yağmur yağıyordu, herkes şemsiyesini açtı.",
+      "B": "Çocuklar bahçede oynuyor, neşeyle gülüşüyorlardı.",
+      "C": "Güneş battı, hava aniden soğudu.",
+      "D": "Zil çaldı, öğrenciler sınıftan çıktı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Cümlelerde anlam tamamlanmamışsa veya yüklem söylenmemişse bu tür cümlelere \"eksiltili cümle\" denir. Eksiltili cümlelerin sonuna üç nokta konur.\nAşağıdakilerin hangisinde eksiltili cümle örneği vardır?",
+    "secenekler": {
+      "A": "Karşımızda masmavi, uçsuz bucaksız bir deniz duruyordu.",
+      "B": "Karşımızda uzayıp giden, ağaçlarla dolu yemyeşil bir yol...",
+      "C": "Seni gördüğümde içimi bir sevinç kapladı.",
+      "D": "Ne kadar uğraşsa da başarılı olamadı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi yükleminin yerine göre diğerlerinden farklıdır?",
+    "secenekler": {
+      "A": "Koşarak yanıma geldi o küçük çocuk.",
+      "B": "Eski günleri hatırlamak beni hüzünlendirir.",
+      "C": "Bu sorunun cevabını kimse bilemedi.",
+      "D": "Yarınki toplantı için hazırlıklarımızı tamamladık."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Bağlacı olan (bağlı) cümleler ile birden çok yüklemli (sıralı) cümleler zaman zaman birbirine karıştırılabilir. Bağlı cümlelerde cümleler birbirine bağlaçlarla bağlanırken sıralı cümlelerde virgül veya noktalı virgül kullanılır.\nBuna göre aşağıdakilerden hangisi bağlı cümledir?",
+    "secenekler": {
+      "A": "Sabah erken kalktı, hemen yola koyuldu.",
+      "B": "Ne kadar uğraştıysa da onu ikna edemedi.",
+      "C": "Bahar geldi, ağaçlar çiçek açmaya başladı.",
+      "D": "Bizimle gelmek istedi fakat işleri bitmemişti."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdakilerden hangisi yapısına göre \"içinde fiilimsi bulunan cümle\" değildir?",
+    "secenekler": {
+      "A": "Ağlayarak yanımızdan uzaklaştığını gördüm.",
+      "B": "Dün akşam sinemaya gitmekten vazgeçtik.",
+      "C": "Her sabah erkenden uyanır, spora giderdi.",
+      "D": "Konuşanları sessizce dinlemeye devam etti."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Birleşik cümleler, temel cümlenin yargısını tamamlayan yan cümleciklerden oluşur. Buna göre aşağıdakilerin hangisinde yan cümlecik temel cümlenin zarf tümleci görevindedir?",
+    "secenekler": {
+      "A": "Söylediklerini hiç kimse anlamadı.",
+      "B": "Kitap okumak insanın ufkunu açar.",
+      "C": "Güneş doğduğunda hepimiz uyanmıştık.",
+      "D": "En sevdiği şey müzik dinlemekti."
+    },
+    "dogru_cevap": "C"
+  }
+]

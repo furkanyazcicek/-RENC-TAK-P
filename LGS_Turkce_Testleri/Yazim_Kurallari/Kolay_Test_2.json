@@ -1,0 +1,127 @@
+{
+  "konu": "Yazım Kuralları",
+  "seviye": "Kolay",
+  "test_no": 2,
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde büyük harflerin yazımıyla ilgili bir yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Bahar gelince Erciyes Dağı'nın karları erimeye başlar.",
+        "B": "Yarın sabah Ankara'ya doğru yola çıkacağız.",
+        "C": "Bu yaz tatilinde Ege denizi kıyılarında gezeceğiz.",
+        "D": "Tören, Cumhuriyet Meydanı'nda yapılacak."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.16. Yazım kurallarını kavrayarak uygular."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Aşağıdakilerin hangisinde \"de/da\" nın yazımıyla ilgili bir yanlışlık vardır?",
+      "secenekler": {
+        "A": "Sen de bizimle sinemaya gelecek misin?",
+        "B": "Evde kimse olmadığı için kapıdan döndüm.",
+        "C": "Kitabını ev de unutmuş, okula öyle gelmiş.",
+        "D": "O da bu konuyu senin gibi düşünüyor."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.16. Yazım kurallarını kavrayarak uygular (Bağlaç olan da/de'nin yazımı)."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde sayıların yazımıyla ilgili yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Sınava yüz yirmi beş öğrenci katıldı.",
+        "B": "Okullar 15 Eylül'de açılacakmış.",
+        "C": "Yarışmayı 2'inci sırada tamamlamayı başardı.",
+        "D": "Kardeşim henüz beş yaşındadır."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.16. Yazım kurallarını kavrayarak uygular (Sayıların yazımı)."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Hangi cümlede kısaltmaların yazımıyla ilgili bir hata yapılmıştır?",
+      "secenekler": {
+        "A": "TBMM'nin yeni yasama yılı törenle başladı.",
+        "B": "THY'dan aldığımız biletleri kontrol etmeliyiz.",
+        "C": "TDK'nin yeni sözlüğünü hemen sipariş verdim.",
+        "D": "MEB'in düzenlediği yarışmaya biz de katıldık."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.16. Yazım kurallarını kavrayarak uygular (Kısaltmaların yazımı)."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde \"ki\" nin yazımı yanlıştır?",
+      "secenekler": {
+        "A": "Anladım ki bu iş düşündüğümden daha zormuş.",
+        "B": "Masadaki kitapları dikkatlice çantasına yerleştirdi.",
+        "C": "Seninki yine ortalıklarda görünmüyor.",
+        "D": "O kadar yorulmuş ki; hemen uykuya daldı."
+      },
+      "dogru_cevap": "D",
+      "kazanim": "T.8.3.16. Yazım kurallarını kavrayarak uygular (Bağlaç ve ek olan ki'nin yazımı)."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde bir yazım yanlışı yoktur?",
+      "secenekler": {
+        "A": "Hiç bir zaman pes etmemeliyiz.",
+        "B": "Herşeyin bir zamanı olduğunu unutma.",
+        "C": "Birkaç kişi dışında herkes toplantıya katıldı.",
+        "D": "Herkez bu kurala uymak zorundadır."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.16. Yazım kurallarını kavrayarak uygular (Belgisiz sözcüklerin yazımı)."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Tarihlerin yazımıyla ilgili aşağıdaki cümlelerin hangisinde yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "19 Mayıs 1919, Türk tarihi için çok önemlidir.",
+        "B": "Kardeşim 25 haziran 2010 tarihinde doğdu.",
+        "C": "Gelecek yıl Temmuz ayında köye gideceğiz.",
+        "D": "12.05.2023 tarihinde vizyona girecek."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.16. Yazım kurallarını kavrayarak uygular (Tarihlerin yazımı)."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Aşağıdaki sözcüklerden hangisinin yazımı yanlıştır?",
+      "secenekler": {
+        "A": "Kılavuz",
+        "B": "Süpriz",
+        "C": "Tıraş",
+        "D": "Orijinal"
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.16. Yazım kurallarını kavrayarak uygular."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Aşağıdakilerin hangisinde yön bildiren sözcüklerin yazımıyla ilgili bir yanlışlık vardır?",
+      "secenekler": {
+        "A": "Türkiye'nin Kuzey'inde ormanlar geniş yer kaplar.",
+        "B": "Rüzgar güneybatıdan şiddetli esiyor.",
+        "C": "Avrupa'nın doğusunda havalar soğumaya başladı.",
+        "D": "Kuzey Amerika kıtası çok büyüktür."
+      },
+      "dogru_cevap": "A",
+      "kazanim": "T.8.3.16. Yazım kurallarını kavrayarak uygular (Yön adlarının yazımı)."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde \"mi\" nin yazımıyla ilgili bir yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Bahar geldi mi her yer yeşile bürünür.",
+        "B": "Güzel mi güzel bir elbise almış kendine.",
+        "C": "Yarın akşam siz de bize gelicekmisiniz?",
+        "D": "Bunu neden daha önce bana söylemedin mi?"
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.16. Yazım kurallarını kavrayarak uygular (Soru ekinin yazımı)."
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Seyahat etmek (I), yeni kültürler tanıyıp (II) dünyaya farklı pencerelerden bakmamızı (III) sağlar. Bu cümledeki fiilimsilerin türleri aşağıdakilerin hangisinde sırasıyla verilmiştir?",
+    "secenekler": {
+      "A": "İsim-fiil - Zarf-fiil - İsim-fiil",
+      "B": "İsim-fiil - İsim-fiil - Sıfat-fiil",
+      "C": "Sıfat-fiil - Zarf-fiil - İsim-fiil",
+      "D": "Zarf-fiil - Sıfat-fiil - Zarf-fiil"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdakilerin hangisinde adlaşmış sıfat-fiil yoktur?",
+    "secenekler": {
+      "A": "Gelenleri havaalanında karşılayıp otele götürdük.",
+      "B": "Gezilecekleri listeledik ve haritada işaretledik.",
+      "C": "Dökülen yapraklar arasında yürümek huzur vericiydi.",
+      "D": "Yurtdışına çıkanlar mutlaka pasaport kontrolünden geçer."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde zarf-fiil zaman anlamı taşımaktadır?",
+    "secenekler": {
+      "A": "Dağlara doğru tırmanarak harika bir manzaraya ulaştık.",
+      "B": "Şehri gezerken rehberimizin anlattıklarını not aldım.",
+      "C": "Valizlerimizi taşıya taşıya kollarımız koptu.",
+      "D": "Otelden ayrılmadan önce faturaları kontrol etti."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Hangi seçenekteki cümlede birden fazla isim-fiil vardır?",
+    "secenekler": {
+      "A": "Bilet almak için gişede uzun bir sıraya girdik.",
+      "B": "Trene binişi ve pencereden el sallayışı gözümün önünden gitmiyor.",
+      "C": "Pasaportunu unuttuğu için uçağı kaçırdı.",
+      "D": "Yolculuk esnasında müzik dinlemeyi ihmal etmedim."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "'-dik / -dık' eki aşağıdaki cümlelerin hangisinde sıfat-fiil eki olarak kullanılmamıştır?",
+    "secenekler": {
+      "A": "Gittiğimiz şehirlerde hep yöresel yemekler yedik.",
+      "B": "Kaldığımız otel denize sıfır bir konumdaydı.",
+      "C": "Bildiğim kadarıyla bu müze pazartesi günleri kapalı.",
+      "D": "Tatil planlarımızı aylar öncesinden yaptık."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Kalıcı isimler, eylem anlamını tamamen yitirmiş sözcüklerdir. Aşağıdakilerin hangisinde kalıcı isim (isim-fiil kökenli) vardır?",
+    "secenekler": {
+      "A": "Terminaldeki danışmaya gidip otobüs saatini sordum.",
+      "B": "Yeni yerler görmek ufkumu inanılmaz derecede açtı.",
+      "C": "Fotoğraf çekmeyi o kadar çok seviyor ki makinesi elinden düşmüyor.",
+      "D": "Dağın zirvesine ulaşmak saatlerimizi aldı."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde zarf-fiil cümleye durum anlamı katmıştır?",
+    "secenekler": {
+      "A": "Mola verince herkes dinlenmek için çimlere uzandı.",
+      "B": "Koşa koşa tren garına yetişmeye çalıştık.",
+      "C": "Kar yağdığında yollar kapanmış, mahsur kalmıştık.",
+      "D": "Uçak tekerleklerini yere değdirir değdirmez alkış koptu."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "'Rehber eşliğinde gezilen antik kent, hepimizi büyüledi.' cümlesindeki 'gezilen' sözcüğünün türü ve görevi nedir?",
+    "secenekler": {
+      "A": "İsim-fiil / İsim tamlamasında tamlanan",
+      "B": "Zarf-fiil / Zarf tümleci",
+      "C": "Sıfat-fiil / Sıfat tamlamasında tamlayan (sıfat)",
+      "D": "Çekimli fiil / Yüklem"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Hangi cümlede fiilimsi kullanılmıştır?",
+    "secenekler": {
+      "A": "Kamp çadırımızı nehrin kenarına kurduk.",
+      "B": "Tatilimiz bu yıl çok güzel geçti.",
+      "C": "Gezginler heyecanla bir sonraki durağa geçtiler.",
+      "D": "Doğayla iç içe uyanmak paha biçilemezdi."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde hem sıfat-fiil hem isim-fiil vardır?",
+    "secenekler": {
+      "A": "Manzarayı seyredip bol bol fotoğraf çektik.",
+      "B": "Haritaya bakarak gideceğimiz yönü bulmaya çalıştık.",
+      "C": "Otelden ayrılırken resepsiyona anahtarı teslim ettim.",
+      "D": "Gezilecek yerlerin listesini yapmayı sana bırakıyorum."
+    },
+    "dogru_cevap": "D"
+  }
+]

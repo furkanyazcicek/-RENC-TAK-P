@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'neden-sonuç' ilişkisi vardır?",
+    "secenekler": {
+      "A": "Fabrika atıkları nehirlere karıştığından bölgedeki su yaşamı tehlikeye girdi.",
+      "B": "Çevre dostu enerji kaynaklarına yatırım yapmak için bütçe ayrıldı.",
+      "C": "Daha yeşil bir şehir istiyorsak herkes kapısının önünü temiz tutmalı.",
+      "D": "Bu yıl dikilen fidanlar, gelecek nesillere umut vadeden bir adımdır."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Numaralanmış cümlelerden hangisi 'amaç-sonuç' bildirmektedir?\nI. Kutuplardaki buzulların erimesiyle deniz seviyeleri yükseliyor.\nII. Karbon ayak izimizi küçültmek maksadıyla toplu taşımayı tercih etmeliyiz.\nIII. Hava kirliliği bu seviyede devam ederse birçok hastalık ortaya çıkacaktır.\nIV. Doğa, kendisine verilen zararı yıllar sonra acı bir şekilde onarır.",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Aşağıdaki cümlelerin hangisinde koşula bağlılık söz konusu değildir?",
+    "secenekler": {
+      "A": "Geri dönüşüm kutularını aktif kullanırsan doğaya büyük bir katkı sağlarsın.",
+      "B": "Sularımızı tasarruflu harcadıkça gelecekteki kuraklık riskini azaltırız.",
+      "C": "Sonbaharın gelmesiyle sararan yapraklar parklara ayrı bir güzellik kattı.",
+      "D": "Naylon poşet kullanımını bırakmak üzere söz verirseniz doğa size minnettar kalır."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru": "'Sıfır Atık Projesi, ülkemizde bugüne kadar çevre adına atılmış en kapsamlı adımdır.' cümlesinde ağır basan anlam özelliği aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Varsayım",
+      "B": "Ön yargı",
+      "C": "Eleştiri",
+      "D": "Karşılaştırma"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Aşağıdakilerin hangisinde varsayım anlamı bulunmaktadır?",
+    "secenekler": {
+      "A": "Diyelim ki yarın tüm dünya plastik kullanımını aniden yasakladı.",
+      "B": "Keşke o ağaçları kesmeden önce biraz olsun düşünselerdi.",
+      "C": "Belki de ilerleyen yıllarda yenilenebilir enerji her eve ulaşacak.",
+      "D": "Görünen o ki, bu çevre felaketinin etkileri on yıl sürecek."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru": "'Biliyorum, bu çevre koruma derneği de diğerleri gibi birkaç aya kapanıp gidecek.' diyen biri için hangisi söylenebilir?",
+    "secenekler": {
+      "A": "Kararlıdır",
+      "B": "Ön yargılıdır",
+      "C": "Hayıflanmaktadır",
+      "D": "Öz eleştiri yapmaktadır"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Aşağıdaki cümlelerin hangisi kanıtlanabilirlik açısından diğerlerinden farklıdır?",
+    "secenekler": {
+      "A": "Türkiye'deki orman varlığı son on yılda yüzde beş oranında artış göstermiştir.",
+      "B": "Dünya genelinde geri dönüştürülebilir atıkların sadece %9'u geri dönüştürülüyor.",
+      "C": "İlkbaharda doğanın uyanışını izlemek, insanın ruhuna huzur veren en güzel terapidir.",
+      "D": "Okyanuslardaki plastik kirliliği her yıl milyonlarca deniz canlısının ölümüne yol açıyor."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru": "'Gençliğimde bu doğa yürüyüşlerine daha sık katılmalıydım.' cümlesinde hangi anlam vurgulanmıştır?",
+    "secenekler": {
+      "A": "Yakınma",
+      "B": "Pişmanlık",
+      "C": "Özlem",
+      "D": "Hayıflanma"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru": "'Doğa, insanların tüm ihanetlerine rağmen onlara kucak açmaya devam ediyor.' cümlesine anlamca en yakın ifade aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Tabiat, insanoğlunun verdiği zararları göz ardı ederek ona cömertliğini sunmayı sürdürüyor.",
+      "B": "İnsan, doğaya zarar verdikçe kendi geleceğini karanlığa sürüklediğinin farkında değil.",
+      "C": "Doğanın sunduğu nimetler, insanların ona gösterdiği saygı ölçüsünde artmaktadır.",
+      "D": "İnsanlar doğayı korumadıkça, doğa da zamanla insanlara olan faydasını yitirecektir."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'dolaylı anlatım' vardır?",
+    "secenekler": {
+      "A": "Uzman, 'Su kaynaklarımız hızla tükeniyor, önlem almalıyız.' dedi.",
+      "B": "Belediye başkanı, park alanlarının iki katına çıkarılacağını ifade etti.",
+      "C": "Öğretmenimiz çevre haftasında ağaç dikmemizi önerdi.",
+      "D": "Çevreci gençler 'Geleceğimizi Karartmayın!' yazılı pankart taşıdılar."
+    },
+    "dogru_cevap": "B"
+  }
+]

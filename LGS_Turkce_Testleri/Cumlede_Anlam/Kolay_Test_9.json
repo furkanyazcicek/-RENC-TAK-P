@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde koşula bağlılık (şart) vardır?",
+    "secenekler": {
+      "A": "Zamanını iyi değerlendiremediği için projeyi zamanında teslim edemedi.",
+      "B": "Sınavı kazanmak maksadıyla gece gündüz demeden çalışıyor.",
+      "C": "Yeni bir dil öğrenmek insanın dünyasını ve ufkunu genişletir.",
+      "D": "Düzenli kitap okursan okuduğunu anlama hızın oldukça artar."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Hangi cümlede neden-sonuç ilişkisi söz konusudur?",
+    "secenekler": {
+      "A": "Evi boyamak üzere usta çağırmaya gitti.",
+      "B": "Güneşte fazla kaldığından yüzü tamamen kızarmıştı.",
+      "C": "Erken uyursan sabah zinde bir şekilde uyanırsın.",
+      "D": "Hafta sonu arkadaşlarımla sinemaya gitmeyi planlıyorum."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde eylemin yapılış amacı verilmiştir?",
+    "secenekler": {
+      "A": "Babasını görebilmek için otogara kadar koşarak gitti.",
+      "B": "Yağmur yağdığı için planladığımız pikniği erteledik.",
+      "C": "Sınavdan yüksek not alırsan sana güzel bir hediye alacağım.",
+      "D": "Çok çalıştığından dolayı gözaltlarında morluklar oluştu."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde karşılaştırma yapılmıştır?",
+    "secenekler": {
+      "A": "Baharın gelmesiyle doğa bütün güzelliğini gözler önüne serdi.",
+      "B": "Akşam rüzgarı denizden doğru tatlı tatlı esiyordu.",
+      "C": "Bugünkü Türkçe sınavı dünkü matematik sınavından daha kolaydı.",
+      "D": "Her sabah mutlaka bir saat yürüyüş yapmayı ihmal etmez."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi öznel bir yargı bildirmektedir?",
+    "secenekler": {
+      "A": "Suyun kaynama noktası deniz seviyesinde 100 derecedir.",
+      "B": "Türkiye'nin üç tarafı çeşitli denizlerle çevrilidir.",
+      "C": "Kitabın ilk baskısı 2020 yılında yayınevi tarafından yapılmış.",
+      "D": "Mavi renge boyanan bu oda insana büyük bir huzur veriyor."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi nesnel bir anlatıma sahiptir?",
+    "secenekler": {
+      "A": "Yazarın kullandığı dil, okuyucunun içini ısıtan bir samimiyete sahip.",
+      "B": "İstiklal Marşı, 12 Mart 1921 tarihinde TBMM'de kabul edilmiştir.",
+      "C": "En güzel tatil bence aileyle birlikte sessiz bir koyda yapılan tatildir.",
+      "D": "Şiirin ahengi o kadar güzel ki okurken adeta büyüleniyorsunuz."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'sitem' anlamı vardır?",
+    "secenekler": {
+      "A": "O kadar hastalandım da bir kere bile arayıp durumumu sormadın.",
+      "B": "Keşke buraya gelirken anneme de haber verseydik.",
+      "C": "Belki yarın akşam teyzemler bize misafirliğe gelebilir.",
+      "D": "Diyelim ki sınavı kazandın, hangi şehre gitmek istersin?"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'tahmin' söz konusudur?",
+    "secenekler": {
+      "A": "Keşke ben de sizinle o güzel tiyatro oyununa gelseydim.",
+      "B": "Bana göre bu olayın sorumlusu sadece ve sadece sensin.",
+      "C": "Gökyüzündeki kara bulutlara bakılırsa birazdan yağmur yağacak.",
+      "D": "Eğer ödevlerini bitirirsen dışarı çıkıp arkadaşlarınla oynayabilirsin."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "'Toplantıya sadece yöneticiler katılacakmış.' cümlesinden aşağıdaki yargılardan hangisi kesin olarak çıkarılabilir?",
+    "secenekler": {
+      "A": "Toplantıda çok önemli kararlar alınacaktır.",
+      "B": "Toplantı çok uzun saatler sürecektir.",
+      "C": "Yöneticiler dışındaki çalışanlar toplantıya alınmayacaktır.",
+      "D": "Toplantı şirketin en büyük salonunda yapılacaktır."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'yakınma (şikayet)' anlamı vardır?",
+    "secenekler": {
+      "A": "Bu kazağımı alırken keşke sana da bir sorsaydım.",
+      "B": "Odasını ne zaman görsem her taraf darmadağınık duruyor.",
+      "C": "Bence bu seneki şenlikler geçen senekilere göre daha sönüktü.",
+      "D": "Gelecek yıl yurt dışında yüksek lisans yapmayı planlıyorum."
+    },
+    "dogru_cevap": "B"
+  }
+]

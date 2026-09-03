@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi yüklemin türüne göre isim cümlesidir?",
+    "A": "Eski mahalle arkadaşımla saatlerce oturup uzun uzun dertleştik.",
+    "B": "İletişim kurduğumuz insanlara her zaman güleryüz göstermeliyiz.",
+    "C": "Toplantıda aklındaki tüm düşüncelerini çekinmeden açıkça ifade etti.",
+    "D": "Karşılıklı ilişkilerde en iyi iletişim yolu şüphesiz empati kurmaktır.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi öge dizilişine göre devrik cümledir?",
+    "A": "Etkili bir iletişimde konuşmak kadar beden dili de önemlidir.",
+    "B": "Karşımızdakini sözünü kesmeden, sabırla dinlemeyi bilmeliyiz.",
+    "C": "Kırdı beni tartışma sırasında yüzüme karşı söylediği o ağır sözler.",
+    "D": "Büyüklere saygı ve küçüklere sevgi, insan ilişkilerinin temelidir.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdakilerden hangisi yapısına göre içinde fiilimsi bulunan cümledir?",
+    "A": "Eski dostların bir araya gelmesiyle sohbet aniden koyulaştı.",
+    "B": "Sabah etrafına gülümseyen yüzler herkesi bir anda mutlu eder.",
+    "C": "Dün akşam onu aradığımda telefonu saatlerce meşguldü.",
+    "D": "Bana gönderdiği önemli mesaja vakit kaybetmeden hemen cevap yazdım.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdakilerden hangisi birden çok yüklemli (sıralı) cümledir?",
+    "A": "Odadan çıkmadan kapıyı çaldı, yavaşça içeri girdi, herkese gülümsedi.",
+    "B": "Farklı karakterdeki insanlarla iyi geçinmek gerçekten bir sanattır.",
+    "C": "Eskilerin dediği gibi konuşmak gümüşse sükut altındır.",
+    "D": "Karşımızdakiyle iletişim kurarken samimi bir göz teması önemlidir.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdakilerden hangisi bağlacı olan (bağlı) cümledir?",
+    "A": "Empati kurmak, ikili ilişkilerde yaşanan pek çok sorunu çözer.",
+    "B": "Atasözünde de belirtildiği gibi güzel söz yılanı deliğinden çıkarır.",
+    "C": "Tatil günlerinde yakın arkadaşlarımla birlikte vakit geçirmeyi seviyoruz.",
+    "D": "Dün akşam onu defalarca aradım ama telefonunu bir türlü açmadı.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi anlamına göre olumsuz bir cümledir?",
+    "A": "Dün yaşadığımız tartışmadan sonra bugün onunla hiç konuşmadım.",
+    "B": "Farklı düşüncelere sahip insanları tam olarak anlamak çok zor.",
+    "C": "Güzel ve tatlı dil günlük hayatta açılamaz denilen her kapıyı açar.",
+    "D": "İş hayatında kurulan etkili iletişim, kişiye zamanla başarıyı getirir.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdakilerden hangisi kurallı bir fiil cümlesidir?",
+    "A": "İletişimin kalitesini belirleyen en önemli unsur karşılıklı saygıdır.",
+    "B": "İnatçı olduğu için çok zordu onunla herhangi bir konuda anlaşmak.",
+    "C": "Güvene dayalı gerçek dostluklar aradan geçen zamanla daha da güçlenir.",
+    "D": "Zor zamanlarımda yanımda olan en yakın ve güvenilir arkadaşım sensin.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi eksiltili (tamamlanmamış) cümledir?",
+    "A": "Aramızdaki ufak tefek sorunları kavga etmeden, konuşarak çözebiliriz.",
+    "B": "Gergin anlarda edilen içten bir tebessüm, sıcak ve samimi bir bakış...",
+    "C": "Hata yapan insanları büyüklük gösterip affetmek büyük bir erdemdir.",
+    "D": "Sadece konuşan değil, yeri geldiğinde iyi bir dinleyici olmak gerekir.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdakilerden hangisi bir soru cümlesidir?",
+    "A": "Bana attığı uzun mesajla aslında ne söylemek istediğini anladım.",
+    "B": "Dün yaşanan olayda neden birdenbire sustuğunu merak ediyorum.",
+    "C": "Kırgın olduğum o arkadaşımla tekrardan nasıl iletişim kurmalıyım?",
+    "D": "Telefonda bu kadar uzun süre kiminle gizlice konuştuğunu bana söylemedi.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi biçimce olumlu, anlamca olumsuzdur?",
+    "A": "Söylediği bu yalanlardan sonra onun ipiyle kuyuya inilir mi hiç?",
+    "B": "Bana kendini haklı çıkarmak için söylediklerine hiç inanmadım.",
+    "C": "Ben konuşmalarımla etrafımdaki kimseyi isteyerek kırmak istemem.",
+    "D": "Aile içindeki şiddetli iletişim kopukluğu zamanla büyük sorun yaratır.",
+    "dogru_cevap": "A"
+  }
+]

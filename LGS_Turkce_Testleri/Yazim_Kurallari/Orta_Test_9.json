@@ -1,0 +1,85 @@
+{
+  "test_adi": "Yazım Kuralları Orta Seviye Test 9",
+  "sorular": [
+    {
+      "soru": "Büyük harflerin kullanımıyla ilgili aşağıdakilerden hangisinde yanlışlık yapılmıştır?",
+      "A": "Uzak Doğu'dan gelen misafirleri havaalanında karşıladık.",
+      "B": "Bu yıl Kurban Bayramı temmuz ayına denk geliyor.",
+      "C": "Hukuk Fakültesi'ni birincilikle bitirdiğini duyduk.",
+      "D": "Köpeğimiz karabaş dün gece çok havladı.",
+      "cevap": "D"
+    },
+    {
+      "soru": "Kalıplaşmış olan 'ki' bağlacı bitişik yazılır (sanki, illaki, mademki vb.). Aşağıdakilerin hangisinde bu kurala uyulmamıştır?",
+      "A": "Oysaki ben ona her zaman güvenir, inanırdım.",
+      "B": "Belki bu akşam size uğrayıp çayınızı içeriz.",
+      "C": "Meğer ki onca zamandır beni kandırıyormuş.",
+      "D": "Halbuki onunla ne güzel planlar yapmıştık.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Yön bildiren kelimeler (doğu, batı, güney, kuzey) düşünce, hayat tarzı, siyaset vb. anlamlar bildirdiğinde büyük harfle başlar. Hangisinde yazım yanlışı vardır?",
+      "A": "Tanzimat Dönemi'nde Batı medeniyetine yönelme başlamıştır.",
+      "B": "Bu konudaki fikirler Doğu felsefesinin temelini oluşturur.",
+      "C": "Edebiyatımızda batıdan gelen birçok yeni tür kullanılmıştır.",
+      "D": "Son yıllarda Doğu'nun mistik havası turistleri çekiyor.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Ulusal, resmî ve dinî bayramlarla anma ve kutlama günlerinin adları büyük harfle başlar. Hangisinde yazım yanlışı vardır?",
+      "A": "23 Nisan Ulusal Egemenlik ve Çocuk Bayramı coşkuyla kutlandı.",
+      "B": "Önümüzdeki ramazan bayramında dedemleri ziyaret edeceğiz.",
+      "C": "Öğretmenler Günü için özel bir etkinlik hazırladık.",
+      "D": "Cumhuriyet Bayramı törenlerine katılmak için erkenden kalktık.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Tarihî eser, köşk, saray, köprü, kale vb. yapı adlarının bütün kelimeleri büyük harfle başlar. Aşağıdakilerden hangisinde hata yapılmıştır?",
+      "A": "Topkapı Sarayı, Osmanlı padişahlarına yıllarca ev sahipliği yapmıştır.",
+      "B": "Ankara kalesi'nin etrafındaki eski evler restore ediliyor.",
+      "C": "Çankaya Köşkü'nde önemli bir resepsiyon düzenlendi.",
+      "D": "Kız Kulesi efsanesi, dilden dile günümüze kadar ulaşmıştır.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Yabancı dilden dilimize geçen bazı kelimelerin yazımıyla ilgili hangisinde bir yanlışlık vardır?",
+      "A": "Hafta sonu arkadaşlarımla stadyumda maç izledik.",
+      "B": "Şirketteki stajını başarıyla tamamlayıp işe girdi.",
+      "C": "Yenı açılan stüdyoda fotoğraf çekimleri yapılacak.",
+      "D": "Çocuklar sokakta pisklet sürerek eğleniyorlardı.",
+      "cevap": "D"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde 'de/da'nın yazımıyla ilgili bir yanlışlık vardır?",
+      "A": "Sokakta oynayan çocukların sesleri odama kadar geliyordu.",
+      "B": "Sen de mi bu akşam bizimle tiyatroya geliyorsun?",
+      "C": "Çekmecede ki dosyaları bulamayınca çok sinirlendi.",
+      "D": "Bunu bilse de söylemek istemediğini düşünüyorum.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Rakamla başlayan cümlelerde rakamdan sonra gelen kelime (özel ad değilse) küçük harfle başlar. Hangisinde bu kurala uyulmamıştır?",
+      "A": "1923 yılında Cumhuriyet ilan edildi.",
+      "B": "2005 Yılında doğan kardeşim liseye başladı.",
+      "C": "5. kattaki komşumuz bize aşure getirdi.",
+      "D": "15 gün sonra yaz tatiline çıkacağız.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Özel adlardan türetilen bütün kelimeler büyük harfle başlar. Ancak özel ad kendi anlamı dışında yeni bir anlam kazanmışsa küçük harfle başlar. Buna göre hangisinde yazım yanlışı vardır?",
+      "A": "Bu kuralı Türkçeleştirmek için çok çaba harcadık.",
+      "B": "Darvinizm, biyolojide tartışılan teorilerden biridir.",
+      "C": "Müzikte hicaz makamını dinlemek beni çok rahatlatır.",
+      "D": "Bursa Şeftalisi pazar tezgahlarında yerini aldı.",
+      "cevap": "D"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde bir yazım yanlışı vardır?",
+      "A": "Gitgide bu işin içinden çıkılmaz bir hale geldiğini anladı.",
+      "B": "Bu konuda onun da bir bildiği vardır elbet.",
+      "C": "Sınav başvuruları 15 şubat Cuma günü sona erecek.",
+      "D": "Mezuniyet balosuna o da katılmak istiyormuş.",
+      "cevap": "C"
+    }
+  ]
+}

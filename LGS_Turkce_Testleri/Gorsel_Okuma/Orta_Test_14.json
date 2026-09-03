@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Bir tiyatro festivali afişinde perde, maskeler ve alkışlayan eller bir arada çizilmiştir. Afişte 'Her Akşam Saat 20.00'de!' yazısı yer almaktadır. Bu görselden yola çıkarak festivalle ilgili hangisine ulaşılamaz?",
+    "A": "Oyunların bilet fiyatlarına",
+    "B": "Etkinliğin sanatla ilgili olduğuna",
+    "C": "Oyunların sahnelenme vaktine",
+    "D": "Seyircili bir etkinlik olduğuna",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Sinema bilet fiyatları tablosunda tam bilet 100 TL, öğrenci bileti 60 TL olarak belirtilmiştir. Ayrıca sabah seanslarında %20 indirim uygulanmaktadır. Buna göre sabah seansına giden bir öğrenci kaç TL öder?",
+    "A": "60",
+    "B": "48",
+    "C": "50",
+    "D": "80",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Türk halk oyunları haritasında Ege Bölgesi 'Zeybek', Karadeniz 'Horon', Doğu Anadolu 'Halay' görselleriyle süslenmiştir. Haritanın asıl mesajı nedir?",
+    "A": "Sadece üç bölgemizde oyun oynandığı",
+    "B": "Horonun zeybekten daha zor olduğu",
+    "C": "Ülkemizin kültürel ve folklorik bir zenginliğe sahip olduğu",
+    "D": "Oyunların oynanma sürelerinin farklı olduğu",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Ebru sanatının aşamalarını gösteren görseller sırasıyla: 1- Suya öd katılması, 2- Boyaların fırçayla serpilmesi, 3- Biz yardımıyla şekil verilmesi, 4- Kâğıdın tekneye yatırılması şeklindedir. Buna göre hangisi söylenemez?",
+    "A": "Kâğıt işleme en son aşamada dâhil olur.",
+    "B": "Suyun kıvamı için özel maddeler kullanılır.",
+    "C": "Şekil vermek için özel bir alet (biz) gereklidir.",
+    "D": "Ebru sanatı en kısa süren geleneksel sanattır.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Resim sergisi krokisinde 'Portreler' salonu sağda, 'Manzaralar' solda, 'Soyut Eserler' tam karşıda bulunmaktadır. Giriş kapısından giren birinin doğrudan 'Portreler'e gitmesi için hangi yönü seçmesi gerekir?",
+    "A": "Sol",
+    "B": "Sağ",
+    "C": "İleri",
+    "D": "Geri",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Yıllara göre vizyona giren yerli film sayısını gösteren grafikte 2010'dan 2019'a kadar artış varken 2020'de sert bir düşüş olmuştur. Bunun en olası nedeni, grafiğe eklenecek hangi ikonla açıklanabilir?",
+    "A": "Kapalı sinema salonu ve maske ikonu",
+    "B": "Televizyon ve mısır ikonu",
+    "C": "Kamera ve yönetmen ikonu",
+    "D": "Kırmızı halı ve ödül ikonu",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Kitap fuarı afişinde ünlü bir yazarın fotoğrafı yer almakta, 'İmza Günü: Pazar 14.00' yazmaktadır. Afişe bakan biri aşağıdakilerden hangisini kesin olarak öğrenir?",
+    "A": "Yazarın en çok satan kitabının adını",
+    "B": "Fuarın hangi ay düzenlendiğini",
+    "C": "Etkinliğin yapılacağı günü ve saati",
+    "D": "İmza için kaç kitap sınırı olduğunu",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Enstrüman kursu tablosuna göre Piyano (Pazartesi, Çarşamba), Gitar (Salı, Perşembe), Keman (Cuma, Cumartesi) günleri yapılmaktadır. Sadece hafta sonu boş vakti olan biri hangisini seçebilir?",
+    "A": "Piyano",
+    "B": "Gitar",
+    "C": "Ney",
+    "D": "Keman",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Geleneksel Türk tiyatrosu karakterlerini anlatan infografikte Karagöz 'eğitimsiz ama zeki', Hacivat 'eğitimli ama kuralcı' olarak resmedilmiştir. Bu görsel zıtlık neyi sembolize eder?",
+    "A": "Oyunun tek kişilik olduğunu",
+    "B": "Toplumdaki farklı insan tiplerinin çatışmasını ve uyumunu",
+    "C": "Karakterlerin aynı memleketten olduğunu",
+    "D": "Gölge oyununun gece oynandığını",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Konser alanı oturma planında sahneye en yakın yer VİP, ortalar A blok, en arka B blok olarak gösterilmiştir. Bilet fiyatlarının sahneye yakınlığa göre değiştiği biliniyorsa, en ucuz bileti alan nerede oturur?",
+    "A": "VİP",
+    "B": "A blok",
+    "C": "B blok",
+    "D": "Sahne arkası",
+    "cevap": "C"
+  }
+]

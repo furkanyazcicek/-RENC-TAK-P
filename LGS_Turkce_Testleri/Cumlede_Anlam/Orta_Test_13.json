@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "'Sanatçı, eserlerinde sadece kendi acılarını değil, toplumun kanayan yaralarını da işlemelidir.' cümlesine anlamca en yakın ifade hangisidir?",
+    "secenekler": {
+      "A": "Sanatçı, kişisel hislerinden sıyrılıp tamamen toplumsal sorunlara odaklanmalıdır.",
+      "B": "Sanat eseri, yaratıcısının bireysel dertleriyle beraber halkın sıkıntılarını da yansıtmalıdır.",
+      "C": "Toplumun sorunlarını dile getirmeyen bir sanatçının kalıcı olması beklenemez.",
+      "D": "Sanatçı, eserlerini oluştururken sadece kendi hayatından ilham almalıdır."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'amaç-sonuç' ilişkisi vardır?",
+    "secenekler": {
+      "A": "Yazarın dili çok ağır olduğu için kitabı bitirmekte zorlandım.",
+      "B": "Tiyatro bileti bulursam bu akşamki prömiyere katılacağım.",
+      "C": "Genç yetenekleri keşfetmek üzere ülke çapında bir resim yarışması düzenlendi.",
+      "D": "Şiir okumayı çok sevdiği halinden ve ses tonundan belli oluyordu."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Hangi cümlede 'öneri' söz konusudur?",
+    "secenekler": {
+      "A": "Bu romanın son bölümünde olaylar çok hızlı bir şekilde çözüme kavuşuyor.",
+      "B": "Ressam, tablolarında genellikle sıcak renkleri kullanmayı tercih etmiş.",
+      "C": "Müzik aleti çalmak insanı dinlendirir ve odaklanmayı artırır.",
+      "D": "Hikâyenizin kurgusunu biraz daha derinleştirmek için betimlemeleri artırmalısınız."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru": "'Bu kadar kısa sürede böyle bir başyapıt ortaya koyması doğrusu inanılmaz!' cümlesinde aşağıdaki duygulardan hangisi hâkimdir?",
+    "secenekler": {
+      "A": "Şaşırma",
+      "B": "Endişe",
+      "C": "Beklenti",
+      "D": "Kıskançlık"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Aşağıdakilerin hangisinde 'koşul-sonuç' ilgisi vardır?",
+    "secenekler": {
+      "A": "Sergideki fotoğraflara bakınca çocukluk anılarım gözümde canlandı.",
+      "B": "Düzenli pratik yaparsan keman çalmayı çok daha hızlı öğrenirsin.",
+      "C": "Edebiyat dergilerini takip etmek amacıyla kütüphaneye abone oldu.",
+      "D": "Tiyatro salonu dolduğundan birçok kişi oyunu ayakta izlemek zorunda kaldı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'içerik (konu)' ile ilgili bir bilgi verilmiştir?",
+    "secenekler": {
+      "A": "Yazar, cümlelerini kurarken son derece süslü ve mecazlı bir söyleyiş benimsemiş.",
+      "B": "Şairin sözcük seçimi onun ne kadar zengin bir kelime dağarcığına sahip olduğunu gösteriyor.",
+      "C": "Filmde, İkinci Dünya Savaşı yıllarında ailesini kaybeden küçük bir çocuğun hayatta kalma mücadelesi anlatılıyor.",
+      "D": "Eserdeki akıcı üslup, okuyucunun kitabı bir solukta bitirmesini sağlıyor."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Hangi cümlede 'doğrudan anlatım' yapılmıştır?",
+    "secenekler": {
+      "A": "Eleştirmen, yazarın son romanını oldukça başarılı bulduğunu belirtti.",
+      "B": "Oyuncular, provaların çok yorucu geçtiğinden şikayet ettiler.",
+      "C": "Yönetmen, filmin çekimlerine haftaya başlayacaklarını ifade etti.",
+      "D": "Şair, 'Şiir, kelimelerle çizilen bir tablodur.' diyerek sanat anlayışını özetledi."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru": "'Üslup' ile ilgili yargı içeren cümle aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Yazar bu kitabında kısa, devrik cümleler kullanarak oldukça canlı bir anlatım yakalamış.",
+      "B": "Romanın kahramanı Anadolu'nun ücra bir köyünde doğmuş, zeki bir gençtir.",
+      "C": "Tiyatro oyununun ana teması, kuşak çatışmasının aile içindeki yıkıcı etkileridir.",
+      "D": "Bu destanda, eski Türk boylarının göç yollarında yaşadığı zorluklar ele alınmış."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'benzetme' yoktur?",
+    "secenekler": {
+      "A": "Sahnedeki balerin, bir kuğu gibi zarifçe süzülüyordu.",
+      "B": "Eserin asıl güzelliği, okura farklı kapılar aralamasında gizli.",
+      "C": "O yazarın kelimeleri, insanın kalbine saplanan birer ok gibidir.",
+      "D": "Gecenin karanlığı, siyah bir örtü misali şehrin üzerine çöktü."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Aşağıdakilerin hangisinde 'kesinlik' anlamı vardır?",
+    "secenekler": {
+      "A": "Sanırım yazarın bir sonraki kitabı polisiye türünde olacak.",
+      "B": "Bu tablonun o ünlü İtalyan ressama ait olma ihtimali yüksek.",
+      "C": "Müzik tarihindeki ilk opera eseri 1597 yılında Floransa'da sahnelenmiştir.",
+      "D": "Belki de tiyatro biletleri çoktan tükenmiştir, acele edelim."
+    },
+    "dogru_cevap": "C"
+  }
+]

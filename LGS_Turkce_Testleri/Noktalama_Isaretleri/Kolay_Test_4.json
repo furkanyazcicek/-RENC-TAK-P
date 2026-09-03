@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "\"Mars, Venüs ve Dünya Güneş sistemindeki gezegenlerdir.\"\nBu cümlede virgül (,) hangi görevde kullanılmıştır?",
+    "secenekler": {
+      "A": "Eş görevli kelimeleri ayırmak",
+      "B": "Sıralı cümleleri ayırmak",
+      "C": "Hitap kelimelerinden sonra kullanılmak",
+      "D": "Uzun cümlelerde özneyi belirtmek"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Aşağıdakilerin hangisinde noktanın (.) kullanımı yanlıştır?",
+    "secenekler": {
+      "A": "Yarışmada 1. oldu.",
+      "B": "Toplantı 14:30'da başlayacak.",
+      "C": "Dr. Ahmet Bey uzay hakkında bilgi verdi.",
+      "D": "Roket 25.04.2023 tarihinde fırlatılacak."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru": "\"İnanılmaz( ) roket ne kadar da hızlı fırlatıldı!\"\nBu cümlede yay ayraçla belirtilen yere hangi noktalama işareti gelmelidir?",
+    "secenekler": {
+      "A": "Nokta (.)",
+      "B": "Soru işareti (?)",
+      "C": "Virgül (,)",
+      "D": "İki nokta (:)"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Aşağıdaki cümlelerin hangisinin sonuna soru işareti (?) konmalıdır?",
+    "secenekler": {
+      "A": "Astronotlar Dünya'ya ne zaman dönecek",
+      "B": "Uzaylıların olup olmadığını çok merak ediyorum",
+      "C": "Teknoloji o kadar hızlı gelişiyor ki",
+      "D": "Teleskopla yıldızları izlemek çok keyifli"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru": "\"Ay( )a ilk ayak basan insan kimdir?\"\nBu cümlede yay ayraçla belirtilen yere hangi işaret gelmelidir?",
+    "secenekler": {
+      "A": "Kısa çizgi (-)",
+      "B": "Kesme işareti (')",
+      "C": "Tırnak işareti (\")",
+      "D": "Nokta (.)"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Bilim insanı şöyle dedi( ) \"Evren her geçen gün genişliyor.\"\nBu cümlede yay ayraç içine hangi noktalama işareti gelmelidir?",
+    "secenekler": {
+      "A": "Noktalı virgül (;)",
+      "B": "Üç nokta (...)",
+      "C": "Virgül (,)",
+      "D": "İki nokta (:)"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru": "\"Teleskop, mikroskop; gezegen, hücre.\"\nBu cümlede noktalı virgül (;) hangi amaçla kullanılmıştır?",
+    "secenekler": {
+      "A": "Sıralı cümleleri ayırmak",
+      "B": "Özneden sonra virgül kullanıldığı için özneyi belirtmek",
+      "C": "Cümle içinde virgülle ayrılmış tür veya takımları birbirinden ayırmak",
+      "D": "Alıntı cümleleri ayırmak"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Bugün dergide \"Kara Delikler\" isimli bir makale okudum.\nBu cümlede tırnak işareti hangi amaçla kullanılmıştır?",
+    "secenekler": {
+      "A": "Eser veya yazı adlarını belirtmek",
+      "B": "Alıntı sözleri göstermek",
+      "C": "Özel olarak vurgulanmak istenen sözleri belirtmek",
+      "D": "Cümle içindeki yabancı kelimeleri ayırmak"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Gökyüzünde binlerce parlak yıldız, uydular, meteorlar( )\nBu cümlenin sonuna hangi noktalama işareti konmalıdır?",
+    "secenekler": {
+      "A": "Nokta (.)",
+      "B": "Üç nokta (...)",
+      "C": "Ünlem işareti (!)",
+      "D": "Soru işareti (?)"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru": "\"http:( )/uzaybilim.com adresinden son gelişmeleri takip edebilirsiniz.\"\nBu cümlede yay ayraçla belirtilen yere (yan yana iki adet olacak şekilde) hangi noktalama işareti gelmelidir?",
+    "secenekler": {
+      "A": "Kısa çizgi (-)",
+      "B": "Nokta (.)",
+      "C": "Noktalı virgül (;)",
+      "D": "Eğik çizgi (/)"
+    },
+    "dogru_cevap": "D"
+  }
+]

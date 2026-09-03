@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Milli sporcumuz, uluslararası turnuvada ülkemizi gururla temsil etti.\" cümlesindeki \"gururla\" sözcüğü hangi ögedir?",
+    "A": "Yer Tamlayıcısı",
+    "B": "Belirtili Nesne",
+    "C": "Zarf Tümleci",
+    "D": "Özne",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde öge dizilişi \"Özne - Yer Tamlayıcısı - Yüklem\" şeklindedir?",
+    "A": "Dengeli beslenme sağlıklı yaşamın temelidir.",
+    "B": "Sporcular antrenman sahasında toplanıyor.",
+    "C": "Her sabah sahilde koşmayı severim.",
+    "D": "Taze sebzeler vücudumuza enerji verir.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "\"Vitamin deposu meyveler, kış aylarında bağışıklık sistemimizi güçlendirir.\" cümlesinde vurgulanan öge aşağıdakilerden hangisidir?",
+    "A": "Özne",
+    "B": "Zarf Tümleci",
+    "C": "Yer Tamlayıcısı",
+    "D": "Belirtili Nesne",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Hangi seçenekteki cümlede nesne yoktur?",
+    "A": "Doktor reçeteye yeni ilaçlar yazdı.",
+    "B": "Düzenli uyku, zihinsel gelişimi destekler.",
+    "C": "Yarışmanın galibi büyük bir sevinç yaşadı.",
+    "D": "Maraton koşucuları bitiş çizgisine yaklaşıyor.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "\"Sağlıklı bir yaşam için her gün en az on bin adım atmalısınız.\" cümlesinin yüklemi aşağıdakilerden hangisidir?",
+    "A": "atmalısınız",
+    "B": "adım atmalısınız",
+    "C": "en az on bin adım atmalısınız",
+    "D": "on bin adım atmalısınız",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde gizli özne vardır?",
+    "A": "Lifli gıdalar sindirime yardımcı olur.",
+    "B": "Spor salonu hafta sonları çok kalabalıktır.",
+    "C": "Egzersiz programıma harfiyen uyuyorum.",
+    "D": "Antrenör yeni taktikleri oyunculara anlattı.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "\"Basketbol maçı, son saniyede atılan üçlükle sona erdi.\" cümlesindeki \"son saniyede atılan üçlükle\" bölümü cümlenin hangi ögesidir?",
+    "A": "Özne",
+    "B": "Zarf Tümleci",
+    "C": "Yer Tamlayıcısı",
+    "D": "Nesne",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Hangi cümlenin öge sayısı diğerlerinden farklıdır?",
+    "A": "Hakem düdüğünü hızla çaldı.",
+    "B": "Yüzme sporu bütün kasları çalıştırır.",
+    "C": "Takım kaptanı kupa töreninde ağladı.",
+    "D": "Sağlıklı beslenen insanlar hastalıklara dirençlidir.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "\"Bol su içmek, böbrek sağlığını korumanın en kolay yoludur.\" cümlesinin öznesi aşağıdakilerden hangisidir?",
+    "A": "böbrek sağlığını korumanın",
+    "B": "Bol su içmek",
+    "C": "en kolay yoludur",
+    "D": "su içmek",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde yer tamlayıcısı (dolaylı tümleç) kullanılmamıştır?",
+    "A": "Stadyuma binlerce taraftar akın etti.",
+    "B": "Sağlık merkezinde ücretsiz tarama yapılıyor.",
+    "C": "Bisiklet sürmek insana büyük bir mutluluk verir.",
+    "D": "Dengeli beslenme programı uzmanlarca hazırlandı.",
+    "dogru_cevap": "D"
+  }
+]

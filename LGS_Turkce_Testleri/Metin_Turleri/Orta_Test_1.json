@@ -1,0 +1,125 @@
+{
+  "test_adi": "Metin Türleri - Orta Test 1",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Her sabah aynı saatte uyanır, pencerenin kenarındaki o eski koltuğuna otururdu. Dışarıda akan hayata inat, onun dünyası bu odadan ve anılarından ibaretti. Bir gün kapı çalındı, yıllardır beklediği o mektup nihayet gelmişti. Ellerinin titremesine engel olamayarak zarfı açtı...\n\nBu metnin türü aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Deneme",
+        "B": "Hikâye",
+        "C": "Makale",
+        "D": "Fıkra"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Metinde yaşanmış veya yaşanması mümkün bir olay, kişi ve zaman unsurlarıyla anlatılmıştır. Bu özellikler hikâye türüne aittir."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Bence şiir, insanın iç dünyasına açılan bir penceredir. Kimileri şiiri sadece kelime oyunu olarak görse de ben her dizesinde şairin kalp atışlarını duyarım. İnsan, kendi duygularını kelimelere dökerken aslında evrenle sessiz bir anlaşma yapar.\n\nYazarın kendi kişisel görüşlerini, kanıtlama amacı gütmeden samimi bir dille anlattığı bu metnin türü nedir?",
+      "secenekler": {
+        "A": "Deneme",
+        "B": "Makale",
+        "C": "Eleştiri",
+        "D": "Biyografi"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Yazar 'bence' diyerek kendi kişisel düşüncelerini öznel bir dille ve kanıtlama amacı gütmeden kaleme aldığı için metin deneme türündedir."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "I. Denemede yazar öznelliği tercih ederken, makalede nesnellik ön plandadır.\nII. Makalede yazarın öne sürdüğü düşünceyi kanıtlama zorunluluğu varken denemede böyle bir kural yoktur.\nIII. Her ikisi de sadece edebiyat konularında yazılır.\n\nYukarıda deneme ve makale türlerinin karşılaştırılması ile ilgili verilen bilgilerden hangisi veya hangileri yanlıştır?",
+      "secenekler": {
+        "A": "Yalnız I",
+        "B": "Yalnız II",
+        "C": "Yalnız III",
+        "D": "I ve III"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Deneme ve makale her konuda (bilim, sanat, siyaset vb.) yazılabilir. Sadece edebiyatla sınırlı değildir. Bu yüzden III numaralı yargı yanlıştır."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Çocukluğumun geçtiği o küçük kasabayı hiç unutamam. Babamın tayini nedeniyle oraya taşındığımızda henüz sekiz yaşındaydım. İlk okulum, ilk arkadaşlarım ve mahalledeki o yaşlı ceviz ağacı... Üzerinden yıllar geçmesine rağmen o günleri düşündükçe içimi garip bir hüzün kaplar.\n\nBu metnin ait olduğu tür aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Otobiyografi",
+        "B": "Günlük",
+        "C": "Hikâye",
+        "D": "Anı (Hatıra)"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Yazar, geçmişte yaşadığı ve üzerinden zaman geçmiş olayları kendi ağzından anlatmaktadır. Bu özellik anı türüne aittir."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Günlük (günce) ve anı (hatıra) türleri birbirine çok karıştırılır. Ancak aralarında belirgin bir fark vardır.\n\nAşağıdakilerden hangisi bu iki türü ayıran en temel özelliktir?",
+      "secenekler": {
+        "A": "Günlük olayların yaşandığı gün, anı ise üzerinden belli bir zaman geçtikten sonra yazılır.",
+        "B": "Günlükler nesnel, anılar ise tamamen özneldir.",
+        "C": "Günlükler üçüncü kişi ağzından, anılar birinci kişi ağzından anlatılır.",
+        "D": "Günlük sadece tanınmış kişilerce yazılır, anıyı ise herkes yazabilir."
+      },
+      "dogru_cevap": "A",
+      "cozum": "Günlükler günü gününe tarih atılarak, anılar ise olayların üzerinden belli bir zaman geçtikten sonra hafızada kalanlarla yazılır."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "1881'de Selanik'te doğan Mustafa Kemal, Türk milletinin kaderini değiştiren büyük bir liderdir. Askeri dehası ve ileri görüşlülüğü sayesinde Kurtuluş Savaşı'nı zafere taşımış, Türkiye Cumhuriyeti'ni kurmuştur. Hayatı boyunca sayısız yeniliğe imza atan Atatürk, 1938'de aramızdan ayrılmıştır.\n\nBu parça aşağıdaki metin türlerinin hangisinden alınmış olabilir?",
+      "secenekler": {
+        "A": "Otobiyografi",
+        "B": "Anı",
+        "C": "Biyografi",
+        "D": "Deneme"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Tanınmış bir kişinin hayatının, başkası tarafından (üçüncü kişi ağzından) anlatıldığı metinlere biyografi (yaşam öyküsü) denir."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Mardin'in dar sokaklarında yürürken tarihin kokusunu içinize çekiyorsunuz. Taş evlerin muazzam işçiliği, gün batımında Mezopotamya ovasına vuran o kızıl ışık... Burası gerçekten de farklı kültürlerin bir arada barış içinde yaşadığı büyülü bir şehir. Gitmeyen herkese burayı görmesini tavsiye ederim.\n\nBu metin hangi türün özelliklerini taşımaktadır?",
+      "secenekler": {
+        "A": "Röportaj",
+        "B": "Haber Yazısı",
+        "C": "Fıkra",
+        "D": "Gezi Yazısı"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Yazarın gezip gördüğü yerlerin tarihi, coğrafi ve kültürel özelliklerini kendi izlenimlerini katarak anlattığı yazılara gezi yazısı (seyahatname) denir."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Bir varmış, bir yokmuş. Evvel zaman içinde, kalbur saman içinde, develer tellal iken, pireler berber iken... Kafdağı'nın ardında zümrüdüanka kuşunun koruduğu bir saray varmış. Bu sarayda güzeller güzeli bir prenses yaşarmış.\n\nBu parça aşağıdaki metin türlerinden hangisine ait bir örnektir?",
+      "secenekler": {
+        "A": "Destan",
+        "B": "Masal",
+        "C": "Fabl",
+        "D": "Efsane"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Metin tekerleme ile başlamış, olağanüstü olaylar ve kahramanlar (Kafdağı, zümrüdüanka kuşu) içeriyor. Bu unsurlar masal türünün özellikleridir."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Karga, ağzında kocaman bir peynir parçasıyla bir dala konmuş. Oradan geçen kurnaz tilki peynirin kokusunu almış ve hemen kargaya seslenmiş: 'Ey karga kardeş, sesin ne kadar da güzelmiş, bana bir şarkı söyler misin?' Karga bu övgü karşısında gururlanmış ve şarkı söylemek için ağzını açtığı an peynir yere düşmüş. Tilki de peyniri alıp kaçmış.\n\nKişileştirme ve konuşturma sanatlarının kullanıldığı, sonunda bir ders verme amacı güden bu metin türü hangisidir?",
+      "secenekler": {
+        "A": "Hikâye",
+        "B": "Masal",
+        "C": "Fabl",
+        "D": "Destan"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Kahramanları genellikle hayvanlar ve bitkiler olan, sonunda ahlaki bir ders veren ve intak (konuşturma) sanatının sıkça kullanıldığı tür fabldır."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "ALİ: (Sinirli bir şekilde ayağa kalkar) Bu kadar yeter! Artık yalan dinlemek istemiyorum.\nAYŞE: (Gözyaşlarını silerek) Sana yalan söylemedim, sadece gerçekleri biraz sakladım.\nALİ: Kapıya doğru yürür ve arkasına bakmadan çıkar.\n\nKarşılıklı konuşmalar ve sahne yönergeleri içeren bu metnin türü aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Tiyatro",
+        "B": "Mülakat",
+        "C": "Röportaj",
+        "D": "Hikâye"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Metinde karakterlerin karşılıklı konuşmalarına (diyalog) ve sahnedeki hareketleri belirten yay ayraç içindeki yönergelere yer verilmiştir. Bu, tiyatro metninin en belirgin özelliğidir."
+    }
+  ]
+}

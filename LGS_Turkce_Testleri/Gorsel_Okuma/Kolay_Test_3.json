@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "[Görselde, bir fabrikanın bacalarından siyah dumanlar çıkmakta, etraftaki ağaçlar kurumuş ve göldeki balıklar suyun yüzeyinde hareketsiz durmaktadır. Resmin altında kocaman harflerle 'Dünyamız Yok Olmasın!' yazmaktadır.]\n\nBu görselin konusu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Doğal güzellikler",
+      "B": "Çevre kirliliği",
+      "C": "Sanayileşmenin faydaları",
+      "D": "Orman yangınları"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "[Görselde bir müze giriş bileti bulunmaktadır. Biletin üzerinde 'Anadolu Medeniyetleri Müzesi', 'Tam Bilet', 'Giriş Saati: 10.15' bilgileri yer almaktadır.]\n\nBilete bakılarak aşağıdaki sorulardan hangisi cevaplanamaz?",
+    "secenekler": {
+      "A": "Bilet hangi müzeye aittir?",
+      "B": "Müze girişi saat kaçta yapılmıştır?",
+      "C": "Müzenin bilet fiyatı ne kadardır?",
+      "D": "Biletin türü nedir?"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "[Görselde bir tiyatro salonunun oturma planı vardır. Sahneye en yakın yer 'Ön Sıralar' (Kırmızı), ortalar 'Orta Sıralar' (Mavi), en arka ise 'Arka Sıralar' (Yeşil) olarak gösterilmiştir.]\n\nSahneyi en yakından izlemek isteyen birinin biletini hangi renk sıradan alması gerekir?",
+    "secenekler": {
+      "A": "Mavi",
+      "B": "Yeşil",
+      "C": "Sarı",
+      "D": "Kırmızı"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "[Görselde bir basketbol topu, file, yüzücü gözlüğü ve tenis raketi yan yana çizilmiştir.]\n\nBu görsel aşağıdaki konulardan hangisiyle ilişkilendirilebilir?",
+    "secenekler": {
+      "A": "Spor dalları",
+      "B": "Okul eşyaları",
+      "C": "Müzik aletleri",
+      "D": "Ev aletleri"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "[Görselde bir barınağın önünde kuyruk sallayan köpekler ve onlara mama veren gönüllüler çizilmiştir. Duvarda 'Satın Alma, Sahiplen!' yazısı bulunmaktadır.]\n\nBu görselin iletmek istediği asıl mesaj nedir?",
+    "secenekler": {
+      "A": "Evcil hayvanların bakımı zordur.",
+      "B": "Sokak hayvanları barınaklardan sahiplenilmelidir.",
+      "C": "Köpekler en sadık hayvanlardır.",
+      "D": "Gönüllü olmak herkese göre değildir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "[Görselde çini ustası, bir tabağın üzerine ince detaylarla lale motifleri çizmektedir. Masada farklı renklerde boyalar bulunmaktadır.]\n\nGörsele göre ustanın ilgilendiği alan aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Heykeltıraşlık",
+      "B": "Dokumacılık",
+      "C": "Geleneksel el sanatları",
+      "D": "Marangozluk"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "[Görselde bir uzay mekiği Dünya'nın yörüngesinde ilerlemekte, arka planda Ay ve parlayan yıldızlar yer almaktadır.]\n\nBu görselde aşağıdakilerden hangisine yer verilmemiştir?",
+    "secenekler": {
+      "A": "Dünya'ya",
+      "B": "Uzay mekiğine",
+      "C": "Yıldızlara",
+      "D": "Güneş'e"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "[Görselde çöpe atılmış bütün halinde ekmekler görünmektedir. Resmin altında 'Ekmeğini İsraf Etme, Nimeti Çöpe Dökme!' yazmaktadır.]\n\nAşağıdaki davranışlardan hangisi görselin mesajına uygun düşer?",
+    "secenekler": {
+      "A": "Sadece tüketilebilecek kadar ekmek satın almak",
+      "B": "Taze ekmek bulamayınca ekmek yememek",
+      "C": "Artan yemekleri çöpe atmak",
+      "D": "Alışverişe her gün çıkmak"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "[Görselde yan yana duran bir piyano, bir flüt ve bir keman yer almaktadır.]\n\nBu görselin başlığı aşağıdakilerden hangisi olabilir?",
+    "secenekler": {
+      "A": "Geleneksel Türk Çalgıları",
+      "B": "Müzik Aletleri",
+      "C": "Kablolu Aletler",
+      "D": "Senfoni Orkestrası"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "[Görselde bir sağlık ocağının girişindeki bilgi panosunda 'Maskeni Tak', 'Ellerini Yıka' ve 'Mesafeni Koru' yazan üç simge yan yana çizilmiştir.]\n\nBu bilgi panosunun temel amacı nedir?",
+    "secenekler": {
+      "A": "Çocukları eğlendirmek",
+      "B": "Hastane kurallarını değiştirmek",
+      "C": "Doktorların çalışma saatlerini göstermek",
+      "D": "Bulaşıcı hastalıklardan korunma konusunda uyarmak"
+    },
+    "dogru_cevap": "D"
+  }
+]

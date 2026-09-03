@@ -1,0 +1,125 @@
+{
+  "test_adi": "Söz Sanatları - Kolay Test 2",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "İlkbahar geldiğinde ağaçlar sevinçle dallarını sallıyordu.\n\nBu cümlede aşağıdaki söz sanatlarından hangisi kullanılmıştır?",
+      "secenekler": {
+        "A": "Benzetme",
+        "B": "Kişileştirme",
+        "C": "Abartma",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Ağaçlara insana özgü bir duygu olan 'sevinç' yüklenmiştir. Bu yüzden kişileştirme (teşhis) sanatı vardır."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Sonbahar yağmurları öylesine yağdı ki her yer göl oldu.\n\nBu cümledeki altı çizili ifadede veya cümlenin bütününde hangi söz sanatına başvurulmuştur?",
+      "secenekler": {
+        "A": "Konuşturma",
+        "B": "Kişileştirme",
+        "C": "Abartma",
+        "D": "Benzetme"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Yağmur sularının her yeri 'göl' yapacak kadar çok yağması ifadesinde bir olayın olduğundan büyük gösterilmesi (mübalağa) vardır."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Kış mevsimi kapıyı çalınca, gökyüzünden pamuk gibi karlar süzülmeye başladı.\n\nBu cümlede kar neye benzetilmiştir ve hangi söz sanatı vardır?",
+      "secenekler": {
+        "A": "Benzetme",
+        "B": "Abartma",
+        "C": "Kişileştirme",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Karlar, görünüş itibarıyla pamuğa benzetilmiş ve 'gibi' edatı kullanılarak teşbih (benzetme) yapılmıştır."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Sert esen rüzgâr dallara çarparak şöyle fısıldıyordu: 'Geliyor artık soğuk kış günleri!'\n\nBu parçadaki altı çizili bölümde hangi sanat belirgindir?",
+      "secenekler": {
+        "A": "Benzetme",
+        "B": "Abartma",
+        "C": "Kişileştirme",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "D",
+      "cozum": "İnsan dışı bir varlık olan rüzgâr konuşturulduğu için intak (konuşturma) sanatı kullanılmıştır."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Sabah olunca güneş altın sarısı saçlarını etrafa yayarak gülümsedi.\n\nBu cümlede aşağıdaki sanatlardan hangisi yapılmıştır?",
+      "secenekler": {
+        "A": "Kişileştirme",
+        "B": "Benzetme",
+        "C": "Konuşturma",
+        "D": "Abartma"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Güneşin 'gülümsemesi' insana ait bir özelliğin güneşe verilmesi, yani kişileştirmedir."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Yaz sıcakları öyle kavurucuydu ki asfaltta yürürken ayaklarımız alev aldı.\n\nCümlede yer alan söz sanatı aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Kişileştirme",
+        "B": "Konuşturma",
+        "C": "Abartma",
+        "D": "Benzetme"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Sıcaklığın etkisi ayakların alev alması şeklinde mantık sınırları zorlanarak abartılmış, mübalağa yapılmıştır."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Deniz, çarşaf gibi dümdüz bir şekilde uzanıyordu sahil boyunca.\n\nBu cümlede denizin durgunluğu hangi sanatla anlatılmıştır?",
+      "secenekler": {
+        "A": "Kişileştirme",
+        "B": "Abartma",
+        "C": "Konuşturma",
+        "D": "Benzetme"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Deniz durgunluğu yönüyle çarşafa benzetilerek teşbih sanatı kullanılmıştır."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Ufak bir papatya başını kaldırıp güneşe sordu: 'Bugün de dünkü kadar ısıtacak mısın beni?'\n\nBu metinde ağır basan söz sanatı aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Abartma",
+        "B": "Konuşturma",
+        "C": "Benzetme",
+        "D": "Kişileştirme"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Papatyanın konuşarak güneşe soru sorması, konuşturma (intak) sanatına örnektir."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Gece yağan dondurucu karın ardından sokaklar adeta bir buzullar diyarıydı.\n\nBu cümlede aşağıdaki söz sanatlarından hangisi görülür?",
+      "secenekler": {
+        "A": "Kişileştirme",
+        "B": "Konuşturma",
+        "C": "Benzetme",
+        "D": "Abartma"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Sokaklar dondurucu soğuğundan dolayı buzullar diyarına benzetilmiştir."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Hırçın lodos etrafı birbirine katarken ağaçlar korkuyla titriyordu.\n\nBu cümlede lodos ve ağaçlarla ilgili hangi sanat kullanılmıştır?",
+      "secenekler": {
+        "A": "Benzetme",
+        "B": "Abartma",
+        "C": "Konuşturma",
+        "D": "Kişileştirme"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Lodosun 'hırçın' olması ve ağaçların 'korkuyla titremesi' insani özelliklerdir, kişileştirme yapılmıştır."
+    }
+  ]
+}

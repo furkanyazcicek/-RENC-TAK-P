@@ -1,0 +1,85 @@
+{
+  "test_adi": "Yazım Kuralları Orta Seviye Test 6",
+  "sorular": [
+    {
+      "soru": "Din ve mezhep adları ile bunların mensuplarını bildiren sözcükler büyük harfle başlar. Aşağıdakilerin hangisinde bu kurala uyulmamıştır?",
+      "A": "Anadolu'da İslamiyet çok hızlı bir şekilde yayılmıştır.",
+      "B": "Hristiyanlık inancına göre bazı günler kutsal sayılır.",
+      "C": "Semavi dinler arasında musevilik de önemli bir yer tutar.",
+      "D": "Budizm, Asya'nın pek çok ülkesinde yaygın bir inançtır.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Kişi adlarından önce ve sonra gelen unvanlar, saygı sözleri, rütbe adları ve lakaplar büyük harfle başlar. Buna göre hangisinde yazım yanlışı vardır?",
+      "A": "Kaymakam Erol Bey dün ilçemizi ziyaret etti.",
+      "B": "Mahallemizin doktoru kemal bey herkese yardımcı olurdu.",
+      "C": "Avukat Ayşe Hanım, davayı kazanmak için çok çalıştı.",
+      "D": "Yüzbaşı Cemil, ordumuzun gurur kaynağıdır.",
+      "cevap": "B"
+    },
+    {
+      "soru": "İki noktadan sonra gelen bölüm cümle niteliğindeyse büyük harfle, değilse (örnekler sıralanıyorsa) küçük harfle başlar. Hangi seçenekte yazım yanlışı yapılmıştır?",
+      "A": "Sana tek bir tavsiyem var: Her zaman dürüst ol.",
+      "B": "Masada şunlar vardı: kitaplar, kalemler ve defterler.",
+      "C": "Bunu hiç unutma: Çalışmadan başarıya ulaşılamaz.",
+      "D": "Pazardan şunları al: Elma, armut, muz.",
+      "cevap": "D"
+    },
+    {
+      "soru": "Tırnak içine alınan cümleler büyük harfle başlar ve sonuna uygun noktalama işareti konur. Hangisinde bir yanlışlık vardır?",
+      "A": "Öğretmenimiz, \"Yarın sınav yapacağım.\" dedi.",
+      "B": "Atatürk'ün \"Hayatta en hakiki mürşit ilimdir\" sözünü unutmayalım.",
+      "C": "Bana dönüp \"bu konuyu sonra konuşuruz.\" diyerek gitti.",
+      "D": "Şair, \"Söz gümüşse sükut altındır.\" dizesini vurgulamış.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Somut olarak yer bildirmeyen 'alt, üst ve üzeri' sözlerinin sona getirilmesiyle kurulan birleşik kelimeler bitişik yazılır. Hangi cümlede bu kurala uyulmamıştır?",
+      "A": "Bilinçaltı, insanın kararlarını etkileyen gizli bir güçtür.",
+      "B": "Göz altı torbalarından kurtulmak için krem almıştı.",
+      "C": "Akşamüzeri balkonda çay içmeyi çok severiz.",
+      "D": "Suçüstü yakalanan hırsız ne yapacağını şaşırdı.",
+      "cevap": "B"
+    },
+    {
+      "soru": "'Ev, hane, name, zade' kelimeleriyle kurulan birleşik kelimeler bitişik yazılır. Hangisinde yazım yanlışı vardır?",
+      "A": "Hasta hanenin acil servisi bugün çok kalabalıktı.",
+      "B": "Okulun kütüphanesinde aradığım kitabı bulamadım.",
+      "C": "Babasının çalıştığı basımevine gidip ona yardım etti.",
+      "D": "Eski padişahlardan kalan siyasetnameler ilgi çekiyor.",
+      "cevap": "A"
+    },
+    {
+      "soru": "İkilemeler daima ayrı yazılır ve aralarına herhangi bir noktalama işareti konmaz. Aşağıdakilerden hangisinde hata vardır?",
+      "A": "Çamurlara bata çıka köyün yolunu tuttuk.",
+      "B": "Gideli beri ondan yalan-yanlış haberler alıyoruz.",
+      "C": "Dolabında ufak tefek eşyalarından başka bir şey yoktu.",
+      "D": "Aşağı yukarı on yıldır bu mahallede oturuyoruz.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Soru eki 'mı, mi, mu, mü' özel isimlere geldiğinde kesme işaretiyle ayrılmaz, ayrı yazılır. Hangi seçenekte yazım yanlışı yapılmıştır?",
+      "A": "Bu kargoyu Ahmet'e mi teslim edeceğim?",
+      "B": "Yaz tatilinde İzmir'e mi gideceksiniz?",
+      "C": "Bugün toplantıya Ayşe'mi katılacak?",
+      "D": "Seninle Ankara'da mı buluşalım?",
+      "cevap": "C"
+    },
+    {
+      "soru": "Sıkça yanlış yazılan sözcüklerin kullanımıyla ilgili aşağıdakilerin hangisinde bir hata vardır?",
+      "A": "Sürpriz kutuyu açtığında gözlerine inanamadı.",
+      "B": "Sınavda sorulan soruların birçoğunu doğru cevapladı.",
+      "C": "Bu projenin eşşiz bir başarı elde edeceğine inanıyor.",
+      "D": "Makine mühendisliği bölümünden birincilikle mezun oldu.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde yazım yanlışı yoktur?",
+      "A": "İddaa ediyorum ki bu maçı biz kazanacağız.",
+      "B": "Klavuz olmadan bu dağa tırmanmak çok tehlikelidir.",
+      "C": "Eşofmanlarını giyip sabah koşusuna çıktı.",
+      "D": "Laboratuvara girmeden önce beyaz önlüğünü giydi.",
+      "cevap": "D"
+    }
+  ]
+}

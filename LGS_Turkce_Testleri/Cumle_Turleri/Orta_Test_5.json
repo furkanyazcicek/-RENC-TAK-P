@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi yüklemin türüne göre isim cümlesidir?",
+    "A": "Fatih Sultan Mehmet, İstanbul'u genç yaşta fethetti.",
+    "B": "Kazılarda yeni tarihi eserler gün yüzüne çıkarıldı.",
+    "C": "Truva Atı dilden dile dolaşan efsanevi bir hikayedir.",
+    "D": "Yeni açılan arkeoloji müzesini dün keyifle gezdik.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi kurallı bir cümle özelliği gösterir?",
+    "A": "Destanlar nesilden nesile anlatır kahramanlıkları.",
+    "B": "Geçmişi bilmek, geleceğe her zaman ışık tutar.",
+    "C": "Büyüleyiciydi antik kentin günümüze ulaşan kalıntıları.",
+    "D": "Unutulmazdır şanlı tarihimizin o altın sayfaları.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdakilerden hangisi yapısına göre içinde fiilimsi bulunan cümledir?",
+    "A": "Yıllar süren zorlu savaş sonunda erdi.",
+    "B": "İki devlet arasında barış antlaşması imzalandı.",
+    "C": "Eski dönemlere ait altın paralar sergileniyor.",
+    "D": "Tarih okumak bize geçmişi doğru şekilde öğretir.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi anlamına göre olumlu bir cümledir?",
+    "A": "Kültürel mirasımıza sahip çıkmalıyız.",
+    "B": "O dönemde matbaa maalesef henüz yoktu.",
+    "C": "Bu asırlık tarihi bina henüz restore edilmemiş.",
+    "D": "Savaşlar hiçbir millete kalıcı fayda sağlamaz.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdakilerden hangisi birden çok yüklemli (sıralı) cümledir?",
+    "A": "Müzeye gittik, tarihi eserleri tek tek inceledik.",
+    "B": "Tarihi romanları okumayı çocukluğumdan beri çok severim.",
+    "C": "Geçmişten günümüze Anadolu'da birçok medeniyet kurulmuş.",
+    "D": "Antik kentler yerli ve yabancı turistlerin ilgisini çekiyor.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi bağlacı olan (bağlı) cümledir?",
+    "A": "Hititler Anadolu'da güçlü ve büyük bir devlet kurdu.",
+    "B": "Kazı çalışmaları başladı ve topraktan ilk buluntular çıkarıldı.",
+    "C": "Tarih kitapları bize geçmişteki olaylardan tarafsızca bahseder.",
+    "D": "Eski medeniyetlerin izlerini araştırmak çok zevkli bir iştir.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi eksiltili (tamamlanmamış) cümledir?",
+    "A": "Tarihini bilmeyen milletler tarih sahnesinden yok olmaya mahkumdur.",
+    "B": "Göbeklitepe insanlık tarihi hakkındaki bilinenleri tamamen değiştirdi.",
+    "C": "Eski kültürleri ve kaybolmuş dilleri büyük bir ilgiyle araştırıyoruz.",
+    "D": "Müzede sergilenen o ihtişamlı kılıçlar, demirden kalkanlar...",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi soru cümlesidir?",
+    "A": "Bu tarihi eserin hangi döneme ve kime ait olduğunu bilmiyorum.",
+    "B": "Müzeyi ne zaman ziyaret edeceğimizi henüz kendi aramızda kararlaştırmadık.",
+    "C": "İstanbul'un fethi tarihin tam olarak hangi döneminde gerçekleşti?",
+    "D": "Bize, neden tarih okumamız ve geçmişi bilmemiz gerektiğini anlattı.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi biçimce olumsuz olduğu hâlde anlamca olumludur?",
+    "A": "O dönemde halk için yaşama şartları çok ağırdı.",
+    "B": "Bize emanet edilen tarihi eserleri korumamak olur mu?",
+    "C": "Bu uzun savaşın sonuçları iki taraf için de hiç iyi olmadı.",
+    "D": "Eski kültürel değerlerimiz günümüzde unutulmaya yüz tuttu.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdakilerden hangisi kurallı, olumlu bir fiil cümlesidir?",
+    "A": "Taştan yapılmış tarihi evler mimari açıdan çok güzeldi.",
+    "B": "Kullanmadığı eski eşyaları çatı katına kaldırmamış.",
+    "C": "Atatürk, halkın egemenliğine dayanan Cumhuriyet'i ilan etti.",
+    "D": "Büyük müzeyi gezerken hepimiz ayaklarımıza kara sular inene kadar yorulduk mu?",
+    "dogru_cevap": "C"
+  }
+]

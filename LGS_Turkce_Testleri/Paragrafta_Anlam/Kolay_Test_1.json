@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Kitaplar, insanlara yepyeni dünyaların kapılarını açar. Bir roman okurken kendinizi okyanusun ortasında bir gemide bulabilir ya da yüz yıllar öncesindeki bir savaşın ortasında hissedebilirsiniz. Okumak, zaman ve mekân sınırlarını ortadan kaldıran eşsiz bir eylemdir.\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Kitap okumanın insana kazandırdığı hayal gücü ve sınır tanımazlık",
+      "B": "Tarihi romanların insanlara geçmişi öğretmesi",
+      "C": "Deniz yolculuklarının heyecanı",
+      "D": "Kitapların yazılma süreçlerindeki zorluklar"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Başarıya ulaşmak, sadece şansla açıklanamaz. Her başarılı insanın arkasında uzun uykusuz geceler, bitmek bilmeyen denemeler ve asla pes etmeyen bir ruh yatar. Kolay elde edilen hiçbir şey kalıcı başarı getirmez.\n\nBu paragrafın ana düşüncesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Başarılı insanlar genellikle şanslı doğarlar.",
+      "B": "Gerçek ve kalıcı başarı ancak büyük çaba ve azimle elde edilir.",
+      "C": "Kalıcı başarıya ulaşmak için erken yaşta çalışmaya başlamak gerekir.",
+      "D": "Sürekli denemek insanı psikolojik olarak yorar."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Suyun hayatımızdaki önemi tartışılmaz. Vücudumuzun büyük bir kısmı sudan oluşur. Su içmek cildimizi yeniler, organlarımızın düzenli çalışmasını sağlar ve hastalıklara karşı vücudumuzu korur.\n\nBu metne en uygun başlık aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Hastalıklar ve Korunma Yolları",
+      "B": "Cilt Bakımının Önemi",
+      "C": "Suyun Faydaları ve Önemi",
+      "D": "Organlarımızın İşleyişi"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Kedi bakımı, sorumluluk gerektiren bir iştir. Öncelikle onların beslenmesine dikkat edilmeli, suları her gün tazelenmelidir. Ayrıca kediler oyun oynamayı çok severler, onlara zaman ayırmak psikolojileri için faydalıdır. Kedilerin veteriner kontrolleri de aksatılmamalıdır.\n\nBu metinde kedilerle ilgili aşağıdakilerden hangisine değinilmemiştir?",
+    "secenekler": {
+      "A": "Veteriner kontrollerinin yapılması gerektiğine",
+      "B": "Oyun oynamaya ihtiyaç duyduklarına",
+      "C": "Sularının günlük olarak yenilenmesi gerektiğine",
+      "D": "Sadece ev içinde bakılabilecek canlılar olduklarına"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Ormanlar, dünyanın akciğerleridir. Havayı temizler, erozyonu önler ve binlerce canlıya ev sahipliği yapar. Ancak son yıllarda artan orman yangınları ve bilinçsiz ağaç kesimleri yüzünden ormanlık alanlar hızla azalmaktadır. Bu gidişata dur demezsek, ----.\n\nBu metnin sonuna düşüncenin akışına göre aşağıdakilerden hangisi getirilmelidir?",
+    "secenekler": {
+      "A": "gelecek nesillere yaşanabilir bir dünya bırakamayız",
+      "B": "yeni orman alanları keşfetmeliyiz",
+      "C": "hayvan türlerinin sayısı hızla artacaktır",
+      "D": "ağaç kesimleri sadece belirli bölgelerde yapılmalıdır"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "(I) Şiir okumak insanın ruhunu dinlendirir. (II) Kelimelerin ahengi, okuyucuyu alıp başka diyarlara götürür. (III) Roman türü, edebiyatımızın en çok okunan türüdür. (IV) İyi bir şair, duygularını en kısa yoldan en etkili şekilde anlatan kişidir.\n\nNumaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?",
+    "secenekler": {
+      "A": "I",
+      "B": "III",
+      "C": "IV",
+      "D": "II"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "(I) Sabahın erken saatlerinde köy sessizliğe bürünmüştü. (II) Güneşin ilk ışıkları tepelerin ardından yavaşça yükseliyordu. (III) Bizim buralarda kışlar çok sert ve kar yağışlı geçer. (IV) Horoz sesleri, uyanan köyün ilk belirtileriydi.\n\nBu metinde numaralanmış cümlelerden hangisi anlatımın akışını bozmaktadır?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Küçük çocuk, vitrindeki kırmızı bisiklete gözlerini ayırmadan bakıyordu. Gözlerinde kocaman bir umut, yüzünde ise hafif bir gülümseme vardı. Belki de babasının doğum gününde ona bu bisikleti alacağını hayal ediyordu.\n\nBu metinde aşağıdaki duygulardan hangisi ağır basmaktadır?",
+    "secenekler": {
+      "A": "Korku",
+      "B": "Şaşkınlık",
+      "C": "Üzüntü",
+      "D": "Umut ve Beklenti"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Güneş sistemi, merkezinde Güneş ve onun etrafında belirli yörüngelerde dönen gezegenler, uydular ve kuyruklu yıldızlardan oluşur. Dünyamız da Güneş sistemindeki sekiz gezegenden biridir ve yaşama elverişli bilinen tek gezegendir.\n\nBu paragrafın anlatım biçimi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Açıklama",
+      "B": "Öyküleme",
+      "C": "Tartışma",
+      "D": "Betimleme"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Bir dost, zor zamanında yanında olandır. Sadece sevinçleri değil, hüzünleri de paylaşabilendir. Gerçek bir dost bulduğunda, onu kaybetmemek için elinden geleni yapmalısın.\n\nBu metnin anahtar kelimesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Zaman",
+      "B": "Dostluk",
+      "C": "Hüzün",
+      "D": "Sevinç"
+    },
+    "dogru_cevap": "B"
+  }
+]

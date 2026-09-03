@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Geri dönüşüm tesisleri, atıkların doğaya karışmasını büyük ölçüde engelliyor.\" cümlesinde \"atıkların doğaya karışmasını\" söz grubu aşağıdakilerden hangisidir?",
+    "A": "Özne",
+    "B": "Belirtili Nesne",
+    "C": "Yer Tamlayıcısı",
+    "D": "Zarf Tümleci",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde zarf tümleci kullanılmamıştır?",
+    "A": "Buzullar küresel ısınma nedeniyle hızla eriyor.",
+    "B": "Çevre dostu ürünler son zamanlarda çok popüler oldu.",
+    "C": "Güneş enerjisi panelleri çevreye zarar vermez.",
+    "D": "Rüzgar türbinleri şiddetli fırtınada durduruldu.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "\"Okyanuslardaki plastik kirliliği deniz canlılarının yaşamını tehdit ediyor.\" cümlesinin öznesi hangisidir?",
+    "A": "deniz canlılarının yaşamını",
+    "B": "Okyanuslardaki",
+    "C": "plastik kirliliği",
+    "D": "Okyanuslardaki plastik kirliliği",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Hangi cümlede vurgu yer tamlayıcısı (dolaylı tümleç) üzerindedir?",
+    "A": "Fabrika atıkları nehre dökülmüş.",
+    "B": "Ağaç dikme kampanyası yarın başlıyor.",
+    "C": "İklim krizine karşı acil önlemler almalıyız.",
+    "D": "Sıfır atık projesini okulumuzda uyguluyoruz.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "\"Dünyamız, hepimizin ortak evidir.\" cümlesi hangi ögelerden oluşmaktadır?",
+    "A": "Özne - Yüklem",
+    "B": "Özne - Nesne - Yüklem",
+    "C": "Yer Tamlayıcısı - Yüklem",
+    "D": "Özne - Zarf Tümleci - Yüklem",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde belirtisiz nesne vardır?",
+    "A": "Doğayı korumak her bireyin görevidir.",
+    "B": "Gönüllüler sahilde çöp topladılar.",
+    "C": "Karbon ayak izimizi azaltmamız gerekiyor.",
+    "D": "Yağmur sularını bahçe sulamasında kullanıyoruz.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "\"Uzmanlar uyarıyor: Su kaynaklarımız hızla tükeniyor.\" cümlesinde \"hızla\" sözcüğü yükleme sorulan hangi sorunun cevabıdır?",
+    "A": "Ne zaman?",
+    "B": "Nasıl?",
+    "C": "Nereye?",
+    "D": "Ne kadar?",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Hangi cümlenin yüklemi bir isim tamlamasından oluşmuştur?",
+    "A": "Orman yangınları biyoçeşitliliği ciddi şekilde azaltıyor.",
+    "B": "Doğal yaşamı korumak için milli parklar oluşturuldu.",
+    "C": "En büyük sorunumuz içme suyu kıtlığıdır.",
+    "D": "Yenilenebilir enerji kaynakları daha fazla desteklenmeli.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi \"Özne - Yer Tamlayıcısı - Zarf Tümleci - Yüklem\" dizilişine sahiptir?",
+    "A": "Sokak hayvanları soğuk havalarda çok zorlanıyor.",
+    "B": "Belediye ekipleri parklara geri dönüşüm kutuları koydu.",
+    "C": "Nesli tükenmekte olan kuşlar koruma altına alındı.",
+    "D": "Çevreciler meydanda sessizce toplandılar.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "\"Sürdürülebilir tarım uygulamaları, toprağın verimliliğini artırır.\" cümlesinde aşağıdaki ögelerden hangisi yoktur?",
+    "A": "Belirtili Nesne",
+    "B": "Özne",
+    "C": "Zarf Tümleci",
+    "D": "Yüklem",
+    "dogru_cevap": "C"
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde koşul-sonuç ilişkisi vardır?",
+    "secenekler": {
+      "A": "Oyuncağı kırıldığı için bütün gün ağladı.",
+      "B": "Ekmek almak üzere koşarak bakkala gitti.",
+      "C": "Sütünü bitirirsen sana çikolata verebilirim.",
+      "D": "Bütün zorluklara rağmen hedefine ulaştı."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Hangi cümlede eylemin nedeni belirtilmiştir?",
+    "secenekler": {
+      "A": "Çok kar yağdığından okullar bir gün tatil edildi.",
+      "B": "Sınavda başarılı olmak maksadıyla test çözüyor.",
+      "C": "Yarın sabah erkenden yola çıkmayı planlıyoruz.",
+      "D": "Çiçekleri sularsan daha canlı ve parlak olurlar."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde amaç-sonuç ilişkisi söz konusudur?",
+    "secenekler": {
+      "A": "Havalar soğuduğu için kışlık kıyafetlerini çıkardı.",
+      "B": "Dişlerini düzenli fırçalarsan çürük oluşumunu önlersin.",
+      "C": "Arkadaşı ona yalan söylediğinden onunla konuşmuyor.",
+      "D": "Borçlarını ödeyebilmek için ek iş yapmaya başladı."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde karşılaştırma yapılmıştır?",
+    "secenekler": {
+      "A": "Gökyüzündeki bulutlar yavaş yavaş dağılıyor.",
+      "B": "Kardeşim matematikte benden çok daha yetenekli.",
+      "C": "Pazardan taze meyve ve sebzeler aldık.",
+      "D": "Yaz tatilinde bol bol kitap okumayı düşünüyorum."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi öznel bir yargı bildirmektedir?",
+    "secenekler": {
+      "A": "Yazarın kullandığı masalsı dil okuyucuyu büyülüyor.",
+      "B": "Kitabın sonunda bir kaynakça bölümü yer alıyor.",
+      "C": "Bu tiyatro oyunu iki perdeden oluşmaktadır.",
+      "D": "Yazar, eserini 1998 yılında kaleme almıştır."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi nesnel bir anlatıma sahiptir?",
+    "secenekler": {
+      "A": "Şehrin en büyüleyici manzarası bu tepeden izlenir.",
+      "B": "Yönetmenin son filmi gerçekten harika bir başyapıttı.",
+      "C": "Türkiye'nin en kalabalık nüfuslu şehri İstanbul'dur.",
+      "D": "Bu şarkının sözleri insanın içine derinden işliyor."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'uyarı' anlamı vardır?",
+    "secenekler": {
+      "A": "Keşke buraya gelirken ona da haber verseydik.",
+      "B": "Belki de bu iş sandığımızdan çok daha kolaydır.",
+      "C": "Farz edelim ki sınavı kazandın, hangi bölüme gidersin?",
+      "D": "Islak zeminlerde koşarken düşmemek için dikkatli olun."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'beklenti' söz konusudur?",
+    "secenekler": {
+      "A": "Ne yazık ki bu sefer de yarışmada dereceye giremedi.",
+      "B": "Doğum günümde bana sürpriz bir hediye alacağını umuyorum.",
+      "C": "Keşke o gün o kadar sinirli bir şekilde konuşmasaydım.",
+      "D": "Olanlardan sonra benden özür dilese de onu affetmem."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "'Bu mahallede artık sessiz bir hayat yok.' cümlesinden aşağıdaki yargılardan hangisi çıkarılabilir?",
+    "secenekler": {
+      "A": "Eskiden bu mahallede daha sessiz bir hayat vardı.",
+      "B": "Bu mahalle her zaman gürültülü ve kalabalıktı.",
+      "C": "Mahalleye yeni taşınanlar çok fazla ses yapmaktadır.",
+      "D": "Mahallede sessiz bir hayat yaşamak tamamen imkansızdır."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'yakınma' anlamı vardır?",
+    "secenekler": {
+      "A": "Keşke gençliğimde spor yapmaya daha fazla vakit ayırsaydım.",
+      "B": "Yarınki toplantının iptal olabileceğini düşünüyorum.",
+      "C": "Bunca yıldır aynı mahalledeyiz ama bir kere bile selam vermedi.",
+      "D": "Bu elbiseyi almadan önce keşke sana da sorsaydım."
+    },
+    "dogru_cevap": "C"
+  }
+]

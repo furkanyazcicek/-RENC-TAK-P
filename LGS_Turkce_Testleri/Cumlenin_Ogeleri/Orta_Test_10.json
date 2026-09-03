@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Turistler, Kapadokya'nın eşsiz peribacalarını hayranlıkla izlediler.\" cümlesinde \"Kapadokya'nın eşsiz peribacalarını\" söz grubu hangi ögedir?",
+    "A": "Yer Tamlayıcısı",
+    "B": "Zarf Tümleci",
+    "C": "Özne",
+    "D": "Belirtili Nesne",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde öge dizilişi \"Zarf Tümleci - Özne - Yer Tamlayıcısı - Yüklem\" şeklindedir?",
+    "A": "Güneş batarken kervanımız çölde ilerliyordu.",
+    "B": "Uçağımız yarın sabah Paris'e inecek.",
+    "C": "Rehberimiz haritayı masanın üzerine serdi.",
+    "D": "Yolculuk boyunca pencereden manzarayı seyrettim.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "\"Eski medeniyetlerin izleri Anadolu'nun her köşesinde görülür.\" cümlesinin öznesi aşağıdakilerden hangisidir?",
+    "A": "Anadolu'nun her köşesinde",
+    "B": "Eski medeniyetlerin",
+    "C": "Eski medeniyetlerin izleri",
+    "D": "izleri",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Hangi cümlede vurgu zarf tümleci üzerindedir?",
+    "A": "Kültür turizmi ülkemize büyük gelir sağlıyor.",
+    "B": "Yöresel yemekleri tatmak için lokantaya gittik.",
+    "C": "Japonya'da kiraz çiçekleri baharda açar.",
+    "D": "Dağcılar zirveye ulaşmak üzere yola çıktılar.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "\"Gezgin, sırt çantasını alıp yeni ufuklara doğru yelken açtı.\" cümlesinde aşağıdakilerden hangisi yoktur?",
+    "A": "Zarf Tümleci",
+    "B": "Özne",
+    "C": "Belirtili Nesne",
+    "D": "Yer Tamlayıcısı",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi sadece isim tamlamasından oluşan bir özne ve yüklemden meydana gelmiştir?",
+    "A": "Türkiye'nin başkenti Ankara'dır.",
+    "B": "Mısır piramitleri dünyanın yedi harikasından biridir.",
+    "C": "Akdeniz iklimi yazları sıcak ve kurak geçer.",
+    "D": "Karadeniz ormanları yeşilin her tonunu barındırır.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "\"Festivaller, farklı kültürlerin birbiriyle kaynaşmasını sağlar.\" cümlesinde nesneyi bulmak için hangi soru sorulmalıdır?",
+    "A": "Ne?",
+    "B": "Kim?",
+    "C": "Neyi?",
+    "D": "Nerede?",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Hangi cümlede ara söz, yer tamlayıcısını (dolaylı tümleç) açıklamaktadır?",
+    "A": "Erzurum'a, o dadaşlar diyarına, kışın gitmek cesaret ister.",
+    "B": "Bizim kafile, yirmi kişilik grup, otelden ayrıldı.",
+    "C": "Köyümüzün muhtarını, o tonton amcayı, herkes sever.",
+    "D": "Yaz tatilinde, temmuzun ortasında, Karadeniz turuna çıkacağız.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde gizli özne kullanılmıştır?",
+    "A": "Geleneksel el sanatları giderek unutuluyor.",
+    "B": "Pasaport kontrolünden sonra uçağa bindik.",
+    "C": "Turist rehberleri yabancı dilleri akıcı konuşur.",
+    "D": "Tarihi İpek Yolu birçok şehirden geçer.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "\"Denizin tuzlu kokusunu içime çektim.\" cümlesinde \"Denizin tuzlu kokusunu\" ifadesi cümlenin hangi ögesidir?",
+    "A": "Belirtili Nesne",
+    "B": "Belirtisiz Nesne",
+    "C": "Özne",
+    "D": "Yer Tamlayıcısı",
+    "dogru_cevap": "A"
+  }
+]

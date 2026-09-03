@@ -1,0 +1,125 @@
+{
+  "test_adi": "Fiilde Çatı - Kolay Test 7",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde yüklem geçişli bir fiildir?",
+      "secenekler": {
+        "A": "Maç sonunda taraftarlar çok sevindi.",
+        "B": "Kaleci topu son anda tuttu.",
+        "C": "Hakemin düdüğüyle maç bitti.",
+        "D": "Sporcular ısınmak için sahada koştu."
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğinde eylem 'topu' nesnesini almıştır (neyi tuttu? - topu), bu yüzden geçişlidir."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde etken çatılı bir eylem kullanılmıştır?",
+      "secenekler": {
+        "A": "Final maçı için biletler hemen satıldı.",
+        "B": "Stadyumun çimleri maçtan önce sulandı.",
+        "C": "Kaptan takımı motive edici bir konuşma yaptı.",
+        "D": "Yaralanan futbolcu sedyeyle taşındı."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde konuşma yapma eylemini gerçekleştiren (kaptan) bellidir, dolayısıyla eylem etken çatılıdır."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Hangi cümlede edilgen çatı yoktur?",
+      "secenekler": {
+        "A": "Basketbol sahasının çizgileri yenilendi.",
+        "B": "Voleybolcular kampa alındı.",
+        "C": "Yüzücüler havuzda antrenman yaptı.",
+        "D": "Şampiyon takıma madalyaları verildi."
+      },
+      "dogru_cevap": "C",
+      "cozum": "A, B ve D seçeneklerinde eylemi yapan kişi belli değildir (edilgen). C seçeneğinde antrenman yapanlar (yüzücüler) bellidir (etken)."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Aşağıdakilerden hangisi isim cümlesi olduğu için çatı özelliği aranmaz?",
+      "secenekler": {
+        "A": "Maraton koşucuları hızla ilerledi.",
+        "B": "Spor yapmanın faydaları saymakla bitmez.",
+        "C": "Dünkü maçın hakemi çok başarılıydı.",
+        "D": "Rakip takımın oyuncularını tebrik ettik."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde yüklem 'başarılıydı' isimdir. İsim cümlelerinde çatı aranmaz."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Aşağıdaki fiillerin hangisinin başına 'onu' kelimesi getirilemez?",
+      "secenekler": {
+        "A": "atmak",
+        "B": "fırlatmak",
+        "C": "tutmak",
+        "D": "uzanmak"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Uzanmak eyleminin başına 'onu' kelimesi getirilemez (onu uzanmak olmaz), dolayısıyla geçişsiz bir eylemdir."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "'Sporcular madalyalarını kürsüde aldı.' cümlesinin çatı özellikleri aşağıdakilerin hangisinde doğru verilmiştir?",
+      "secenekler": {
+        "A": "Etken / Geçişli",
+        "B": "Edilgen / Geçişsiz",
+        "C": "Etken / Geçişsiz",
+        "D": "Edilgen / Geçişli"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Alan kim? Sporcular (Etken). Neyi aldı? Madalyalarını (Nesne almış - Geçişli)."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Hangi cümlede eylemi yapan kişi kesin olarak bilinmektedir (Etken çatı)?",
+      "secenekler": {
+        "A": "Olimpiyat meşalesi törenle yakıldı.",
+        "B": "Turnuva kuralları herkese duyuruldu.",
+        "C": "Teknik direktör oyuncu değişikliği yaptı.",
+        "D": "Maç saatleri yeniden düzenlendi."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde eylemi yapan 'Teknik direktör' açıkça bellidir."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "'Koşmak' fiili aşağıdaki cümlelerin hangisinde etken-geçişsiz bir yüklemdir?",
+      "secenekler": {
+        "A": "Atlet, bitiş çizgisine kadar durmadan koştu.",
+        "B": "Maç öncesi stadyum temizlendi.",
+        "C": "Oyuncular sahaya çıktı.",
+        "D": "Antrenör taktikleri anlattı."
+      },
+      "dogru_cevap": "A",
+      "cozum": "A seçeneğinde 'koştu' yüklemi eylemi yapan belli olduğu için etken, nesne alamadığı için (onu koştu olmaz) geçişsizdir."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde özne, işi yapan değil işten etkilenen durumundadır (sözde özne)?",
+      "secenekler": {
+        "A": "Hakem kural hatası nedeniyle maçı durdurdu.",
+        "B": "Şampiyonluk kupası takım kaptanına verildi.",
+        "C": "Taraftarlar statta tezahürat yaptı.",
+        "D": "Spor spikeri heyecanla maçı anlattı."
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğinde eylemi kimin yaptığı belli değildir. Verilen şey olan 'şampiyonluk kupası' sözde öznedir."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "'Kazanmak' fiili aşağıdaki cümlelerin hangisinde nesne almamıştır?",
+      "secenekler": {
+        "A": "Zorlu maçı son dakika golüyle kazandılar.",
+        "B": "Çalışmalarının karşılığını nihayet kazandı.",
+        "C": "Turnuvanın birincilik ödülünü kazandı.",
+        "D": "Takımımız tüm zorluklara rağmen kazandı."
+      },
+      "dogru_cevap": "D",
+      "cozum": "D seçeneğinde 'kazandı' yüklemi neyi kazandığı belli olmadığı için cümlede nesne almamıştır. A, B ve C seçeneklerinde nesne kullanılmıştır."
+    }
+  ]
+}

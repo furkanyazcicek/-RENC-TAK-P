@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Yazarlık, sadece iyi cümleler kurmak değildir. Aynı zamanda toplumun sorunlarına ayna tutmak, görülmeyeni görünür kılmaktır. Kendi fildişi kulesine çekilip sadece kendi dertlerini yazan biri, gerçek anlamda bir yazar sayılmaz.\n\nBu metinden yazarla ilgili olarak aşağıdaki yargıların hangisi çıkarılabilir?",
+    "secenekler": {
+      "A": "Sadece dil bilgisini kusursuz kullanmalıdır.",
+      "B": "Yalnızca kendi iç dünyasını ve hislerini aktarmalıdır.",
+      "C": "Toplumsal gerçeklere duyarlı olmalı ve bunları eserlerine yansıtmalıdır.",
+      "D": "Toplumdan uzak, kendi halinde bir yaşam sürmelidir."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Çocukluk yılları, insanın karakterinin temelinin atıldığı en kritik dönemdir. Bu dönemde çocuğa gösterilen sevgi, ilgi ve güven; onun ileride nasıl bir birey olacağını belirler. Sağlıklı bir toplum ancak çocukluğunu mutlu geçirmiş bireylerle inşa edilebilir.\n\nBu paragrafın ana düşüncesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Çocuklara erken yaşta sorumluluk verilmesi gerekir.",
+      "B": "Okul eğitimi, aile eğitiminden daha önemlidir.",
+      "C": "Çocukların beslenmesi fiziksel gelişimleri için hayati önem taşır.",
+      "D": "Sağlam karakterli bireyler ve sağlıklı toplumlar için mutlu bir çocukluk dönemi şarttır."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "I. Ancak bu çalışma, doğru bir yöntemle yapılmazsa verimsiz olabilir.\nII. Sınavlara hazırlık süreci, öğrenciler için oldukça yoğun bir çalışma gerektirir.\nIII. Bu nedenle öğrencilerin kendilerine uygun bir çalışma programı hazırlamaları önemlidir.\nIV. Programlı çalışan bir öğrenci, hem daha az yorulur hem de daha başarılı olur.\n\nNumaralanmış cümlelerle anlamlı bir paragraf oluşturulduğunda doğru sıralama aşağıdakilerden hangisi olur?",
+    "secenekler": {
+      "A": "II - I - III - IV",
+      "B": "III - I - IV - II",
+      "C": "II - III - I - IV",
+      "D": "I - III - II - IV"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Geri dönüşüm, doğal kaynakların korunması adına atılabilecek en büyük adımdır. Kâğıt, cam ve plastik gibi atıkların yeniden işlenmesi sayesinde hem enerji tasarrufu sağlanır hem de doğaya verilen zarar en aza indirilir. Bununla birlikte, çöp miktarındaki azalma, depolama alanlarının da daha verimli kullanılmasını sağlar.\n\nBu metne göre geri dönüşümle ilgili aşağıdakilerden hangisine ulaşılamaz?",
+    "secenekler": {
+      "A": "Enerji tasarrufuna katkıda bulunduğuna",
+      "B": "Ekonomik krizleri tamamen ortadan kaldırdığına",
+      "C": "Doğal kaynakların korunmasını sağladığına",
+      "D": "Atık depolama alanlarının kullanımına olumlu etki ettiğine"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Eskiden mektuplar, insanların sevinçlerini ve hüzünlerini paylaştıkları en önemli iletişim aracıydı. Ancak günümüzde teknolojinin gelişmesiyle birlikte e-postalar ve anlık mesajlaşma uygulamaları mektubun yerini aldı. Artık bir mesajın saniyeler içinde karşı tarafa iletilmesi, mektubun o yavaş ama heyecanlı bekleme sürecini yok etti.\n\nBu metin için aşağıdakilerden hangisi söylenemez?",
+    "secenekler": {
+      "A": "Geçmiş ile günümüz arasında bir karşılaştırma yapılmıştır.",
+      "B": "Mektubun yerini teknolojik iletişim araçlarının aldığı belirtilmiştir.",
+      "C": "Yazar, anlık mesajlaşma uygulamalarının mektuptan daha samimi olduğunu düşünmektedir.",
+      "D": "Teknolojinin iletişim hızını artırdığı ifade edilmiştir."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Müzik, sadece eğlenmek veya dans etmek için değildir. ----. Yapılan araştırmalar, klasik müziğin odaklanmayı artırdığını ve stresi azalttığını ortaya koymuştur. Bu nedenle ders çalışırken ya da yoğun tempoda çalışırken müzik dinlemek faydalı olabilir.\n\nBu paragrafta boş bırakılan yere düşüncenin akışına göre aşağıdakilerden hangisi getirilmelidir?",
+    "secenekler": {
+      "A": "Günümüzde popüler müzik daha çok tercih edilmektedir",
+      "B": "Müzisyenler genellikle hassas bir ruha sahiptir",
+      "C": "Eğitim sisteminde müzik derslerine daha çok ağırlık verilmelidir",
+      "D": "Aynı zamanda insan zihnini dinlendiren, terapi işlevi gören bir araçtır"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Yeni taşındığımız bu mahalle, sessizliği ve yeşil alanlarıyla bizi cezbetmişti. Akşamları yürüyüşe çıkıyor, doğanın tadını çıkarıyorduk. ----, son zamanlarda mahalleye yapılan devasa inşaatlar bu huzuru yavaş yavaş bozmaya başladı.\n\nBu metinde boş bırakılan yere aşağıdaki geçiş ve bağlantı ifadelerinden hangisi getirilmelidir?",
+    "secenekler": {
+      "A": "Ne yazık ki",
+      "B": "Özellikle",
+      "C": "Çünkü",
+      "D": "Böylece"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Dışarıda bardaktan boşanırcasına yağan yağmur, evin pencerelerine vurarak kendine has bir ritim oluşturuyordu. Soba yavaş yavaş geçiyor, üzerinde kaynayan çaydanlığın fokurtusu odanın sessizliğini bölüyordu. Kedimiz Tarçın ise sobanın yanına kıvrılmış, tatlı tatlı mırıldanıyordu.\n\nBu metnin dil ve anlatımıyla ilgili aşağıdakilerden hangisi yanlıştır?",
+    "secenekler": {
+      "A": "Betimleyici ögelere yer verilmiştir.",
+      "B": "Tanımlamalardan yararlanılmıştır.",
+      "C": "İşitme duyusuna hitap eden ayrıntılar vardır.",
+      "D": "Görme duyusuyla ilgili detaylar kullanılmıştır."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi bir paragrafın giriş cümlesi olmaya en uygundur?",
+    "secenekler": {
+      "A": "Bunun yanı sıra sanat, insanı güzelliklere yönlendirir.",
+      "B": "Çünkü yazarın son eseri, öncekilere göre daha çok satmıştır.",
+      "C": "Edebiyat, toplumların kültürel hafızasını geleceğe taşıyan bir köprüdür.",
+      "D": "Bu durum, gençlerin spora olan ilgisini daha da artırmaktadır."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Gazeteci: (I) ----\nYazar: Romanlarımda karakterleri oluştururken önce çevremdeki insanları gözlemlerim. Onların tepkilerini, sevinçlerini ve hüzünlerini analiz ederim. Ardından bu gerçek özellikleri, kurgusal bir dünyada yeniden yoğururum.\nGazeteci: (II) ----\nYazar: Elbette. Yeni kitabım, bir kasabada geçen ve sıradan insanların sıra dışı hikâyelerini anlatan bir eser olacak.\n\nBu konuşmada boş bırakılan yerlere sırasıyla aşağıdakilerin hangisinde verilenler getirilmelidir?",
+    "secenekler": {
+      "A": "(I) Roman okumayı sever misiniz?\n(II) Son kitabınızın kapağını kim tasarladı?",
+      "B": "(I) Karakterlerinizi gerçek hayattan mı alırsınız?\n(II) Yazar olmak isteyen gençlere ne önerirsiniz?",
+      "C": "(I) Yazmaya ne zaman başladınız?\n(II) Eleştirmenlerin yorumlarını dikkate alır mısınız?",
+      "D": "(I) Eserlerinizdeki kahramanları nasıl kurguluyorsunuz?\n(II) Yeni projeniz hakkında bize biraz bilgi verebilir misiniz?"
+    },
+    "dogru_cevap": "D"
+  }
+]

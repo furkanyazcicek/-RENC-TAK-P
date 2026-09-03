@@ -1,0 +1,112 @@
+[
+  {
+    "soruNo": 1,
+    "soruMetni": "Kitap okumak, zihnimizi besleyen en önemli etkinliklerden biridir. Bir yazarın dünyasına adım atmak, yeni ufuklara yelken açmak demektir. Okuduğumuz her kitap, hayatımıza yeni bir pencere açar ve olaylara farklı açılardan bakmamızı sağlar. Bazen kendimizi bir masal diyarında, bazen de tarihi bir olayın tam ortasında buluruz.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Kitaplar sayesinde tarihi olayları ve masalları öğreniriz.",
+      "B": "Kitap okumak, düşünce dünyamızı zenginleştirir ve ufkumuzu açar.",
+      "C": "Sürekli masal okumak çocukların hayal gücünü geliştirir.",
+      "D": "İnsanlar için en keyifli boş zaman etkinliği kitap okumaktır."
+    },
+    "dogruCevap": "B"
+  },
+  {
+    "soruNo": 2,
+    "soruMetni": "Ormanlar, gezegenimizin akciğerleridir. Ağaçlar havayı temizler, erozyonu önler ve binlerce canlıya ev sahipliği yapar. Ancak son yıllarda artan orman yangınları ve bilinçsiz ağaç kesimi, bu doğal yaşam alanlarını tehdit etmektedir. Gelecek nesillere yaşanabilir bir dünya bırakmak için ormanlarımızı korumak zorundayız.\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Orman yangınlarının sebepleri",
+      "B": "Ağaçların nasıl dikileceği",
+      "C": "Ormanların önemi ve korunması",
+      "D": "Gelecek nesillerin çevre bilinci"
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 3,
+    "soruMetni": "(I) Gelişen teknolojiyle birlikte iletişim alışkanlıklarımız da değişti. (II) Artık mektup yazmak yerine anlık mesajlaşma uygulamalarını kullanıyoruz. (III) Mektup zarflarının üzerine yapıştırılan pullar çok renkli olurdu. (IV) Bu uygulamalar sayesinde sevdiklerimizle saniyeler içinde haberleşebiliyoruz.\n\nBu metinde numaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 4,
+    "soruMetni": "Düzenli spor yapmak, bedensel sağlığımız için olduğu kadar ruh sağlığımız için de oldukça faydalıdır. Spor yaparken vücudumuz mutluluk hormonları salgılar, bu da stres seviyemizi düşürür. Aynı zamanda uyku kalitemiz artar. Kalp rahatsızlıkları gibi hastalıklara yakalanma riskimiz de azalır.\n\nBu metinden sporla ilgili olarak aşağıdakilerden hangisi çıkarılamaz?",
+    "secenekler": {
+      "A": "Sadece profesyonel sporcular için gereklidir.",
+      "B": "Hastalıklara karşı koruyucu bir etkisi vardır.",
+      "C": "Stresi azaltarak ruh sağlığına iyi gelir.",
+      "D": "Uyku düzenimizi olumlu yönde etkiler."
+    },
+    "dogruCevap": "A"
+  },
+  {
+    "soruNo": 5,
+    "soruMetni": "Müzik, evrensel bir dildir. Hangi ülkede yaşarsanız yaşayın, hareketli bir melodi sizi neşelendirebilir, hüzünlü bir parça ise duygulandırabilir. Müzik, kelimelerin yetersiz kaldığı yerde duyguları en saf haliyle ifade etmemizi sağlar. İnsanları ortak bir paydada buluşturan eşsiz bir güçtür.\n\nBu metne getirilebilecek en uygun başlık aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Dillerin Gelişimi",
+      "B": "Hareketli Melodiler",
+      "C": "Evrensel Dil: Müzik",
+      "D": "Kelime Dağarcığı"
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 6,
+    "soruMetni": "- - - -? \nSanat, insanın iç dünyasını dışa vurma şeklidir bence. Bir ressam tuvaliyle, bir şair kelimeleriyle, bir heykeltıraş çamurla konuşur. Hepsinin amacı aynıdır: Kendi hissettiklerini, hayallerini ve düşüncelerini başka insanlara aktarmak.\n\nBu metin aşağıdaki sorulardan hangisine verilmiş bir yanıt olabilir?",
+    "secenekler": {
+      "A": "Sizce sanat nedir ve ne işe yarar?",
+      "B": "Ressamlar ne tür boyalar kullanır?",
+      "C": "Şiir mi daha etkilidir, resim mi?",
+      "D": "Sanatçı olmak için eğitim şart mıdır?"
+    },
+    "dogruCevap": "A"
+  },
+  {
+    "soruNo": 7,
+    "soruMetni": "Öğrenmek, doğduğumuz andan itibaren başlayan ve ömür boyu süren bir yolculuktur. Okul, bu yolculuğun sadece bir durağıdır. Gerçek öğrenme, insanın merak duygusunu hiç kaybetmemesiyle mümkündür. Eğer merak etmeyi bırakırsak, - - - -.\n\nBu metnin sonuna anlam akışına göre aşağıdakilerden hangisi getirilmelidir?",
+    "secenekler": {
+      "A": "her zaman yeni bir okula başlamalıyız",
+      "B": "öğrenme serüvenimiz de orada sona erer",
+      "C": "daha çok kitap okumaya vakit ayırırız",
+      "D": "hayatımızdaki zorluklar tamamen biter"
+    },
+    "dogruCevap": "B"
+  },
+  {
+    "soruNo": 8,
+    "soruMetni": "Sonbahar geldiğinde park bambaşka bir havaya bürünür. Ağaçlardan dökülen sararmış yapraklar, yürüdükçe ayaklarımızın altında çıtırdayarak ezilir. Hafiften esen rüzgâr, kavrulmuş kestane kokusunu burnumuza kadar getirir. Gökyüzündeki gri bulutlar ise yağmurun habercisidir.\n\nBu metinde aşağıdaki duyulardan hangisine ait bir ayrıntı yoktur?",
+    "secenekler": {
+      "A": "Görme",
+      "B": "İşitme",
+      "C": "Koklama",
+      "D": "Tat alma"
+    },
+    "dogruCevap": "D"
+  },
+  {
+    "soruNo": 9,
+    "soruMetni": "Güneş yavaş yavaş dağların arkasında kaybolurken, köy meydanında derin bir sessizlik hakimdi. Ahmet, elindeki eski radyoyu tamir etmeye çalışıyor, bir yandan da radyodan gelecek sesi bekliyordu. Sonunda radyodan cılız bir türkü sesi yükseldiğinde yüzünde kocaman bir gülümseme belirdi.\n\nBu metinle ilgili olarak aşağıdakilerden hangisi söylenemez?",
+    "secenekler": {
+      "A": "Olay bir büyükşehirde geçmektedir.",
+      "B": "Ahmet, metnin kahramanlarından biridir.",
+      "C": "Zaman olarak akşamüstü veya akşam vaktidir.",
+      "D": "Anlatım üçüncü kişi ağzından yapılmıştır."
+    },
+    "dogruCevap": "A"
+  },
+  {
+    "soruNo": 10,
+    "soruMetni": "Kediler, bağımsızlıklarına düşkün hayvanlardır. Köpekler gibi sahiplerine her an itaat etmek yerine kendi kurallarına göre yaşamayı severler. Buna rağmen evcil kediler, sahipleriyle güçlü duygusal bağlar kurabilirler. Sadece sevgilerini gösterme şekilleri farklıdır; bazen sessizce yanınıza kıvrılırlar, bazen de mırıldarlar.\n\nBu parçadan hareketle kedilerle ilgili hangisi söylenebilir?",
+    "secenekler": {
+      "A": "Köpeklerden daha akıllı hayvanlardır.",
+      "B": "Bağımsız olmalarına rağmen sahiplerini severler.",
+      "C": "Kurallara uymayı çok seven evcil canlılardır.",
+      "D": "Sahipleriyle hiçbir zaman duygusal bağ kuramazlar."
+    },
+    "dogruCevap": "B"
+  }
+]

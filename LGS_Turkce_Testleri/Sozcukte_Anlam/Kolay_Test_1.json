@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Bir sözcüğün gerçek anlamından tamamen uzaklaşarak kazandığı yeni anlama 'mecaz anlam' denir.\nBuna göre 'ağır' sözcüğü aşağıdaki cümlelerin hangisinde mecaz anlamda kullanılmıştır?",
+    "secenekler": {
+      "A": "Elindeki çanta taşıyamayacağı kadar ağırdı.",
+      "B": "Merdivenleri ağır adımlarla, yavaşça çıktı.",
+      "C": "Bana herkesin içinde çok ağır sözler söyledi.",
+      "D": "Bu masa gerçekten çok ağır, yardım eder misin?"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Sözcüğün akla gelen ilk anlamına gerçek (temel) anlam denir.\nAşağıdaki cümlelerin hangisinde altı çizili sözcük gerçek (temel) anlamındadır?",
+    "secenekler": {
+      "A": "Çorba çok *sıcak* olduğu için hemen içemedim.",
+      "B": "Misafirlerimizi kapıda çok *sıcak* karşıladılar.",
+      "C": "Aralarına soğukluk girince *sıcak* bir gülümsemeye hasret kaldı.",
+      "D": "Resim yaparken *sıcak* renkleri kullanmayı çok sever."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Yazılışları ve okunuşları farklı, anlamları aynı olan sözcüklere eş anlamlı (anlamdaş) sözcükler denir.\nBuna göre 'yıl' sözcüğünün eş anlamlısı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Asır",
+      "B": "Sene",
+      "C": "Ay",
+      "D": "Gün"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Anlamca birbirinin karşıtı olan sözcüklere zıt (karşıt) anlamlı sözcükler denir.\nBuna göre 'tembel' sözcüğünün zıt anlamlısı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Uyuşuk",
+      "B": "Yavaş",
+      "C": "Akıllı",
+      "D": "Çalışkan"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Bilim, sanat, spor ya da çeşitli meslek dallarıyla ilgili özel bir kavramı karşılayan sözcüklere terim anlamlı sözcükler denir.\nAşağıdaki cümlelerin hangisinde terim anlamlı bir sözcük kullanılmıştır?",
+    "secenekler": {
+      "A": "Üçgenin iç açıları toplamı her zaman 180 derecedir.",
+      "B": "Bugün hava çok güzeldi, parka gittik.",
+      "C": "Bahçedeki rengârenk çiçekleri özenle suladık.",
+      "D": "Sabah erkenden kalkıp okula doğru yola çıktı."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Bir sözcüğün birden fazla anlama gelecek şekilde kullanılmasına 'çok anlamlılık' denir.\nBuna göre 'açmak' sözcüğü aşağıdaki cümlelerin hangisinde 'ferahlatmak' anlamında kullanılmıştır?",
+    "secenekler": {
+      "A": "Odanın kapısını açıp dışarı doğru baktı.",
+      "B": "Duvara sürdüğün bu açık renk, odayı çok açmış.",
+      "C": "Mahallemizin köşesine yeni bir dükkan açmayı düşünüyor.",
+      "D": "En sevdiği şarkı çıkınca radyonun sesini sonuna kadar açtı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Deyimler, genellikle gerçek anlamından uzaklaşarak yeni bir kavramı veya durumu karşılayan kalıplaşmış söz öbekleridir.\n'Küplere binmek' deyiminin anlamı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Bir habere çok sevinmek",
+      "B": "Beklenmedik bir durum karşısında çok şaşırmak",
+      "C": "Elindekini kaybettiği için çok üzülmek",
+      "D": "Olanlar karşısında çok sinirlenmek, öfkelenmek"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Yazılışları ve okunuşları aynı, anlamları tamamen farklı olan sözcüklere sesteş (eş sesli) sözcükler denir.\nAşağıdaki sözcüklerden hangisinin sesteşi (eş seslisi) yoktur?",
+    "secenekler": {
+      "A": "Yüz",
+      "B": "Gül",
+      "C": "Masa",
+      "D": "Çay"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Atasözleri, uzun gözlem ve deneyimler sonucu ortaya çıkmış, öğüt veren kalıplaşmış sözlerdir.\n'Damlaya damlaya göl olur.' atasözünün vurguladığı asıl düşünce (konu) aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Tasarruf",
+      "B": "Çalışkanlık",
+      "C": "Sabır",
+      "D": "Yardımlaşma"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Anlamdaş (eş anlamlı) olmadıkları hâlde anlamca birbirine çok yakın olan sözcüklere 'yakın anlamlı sözcükler' denir.\nAşağıdaki sözcük çiftlerinden hangisi yakın anlamlıdır?",
+    "secenekler": {
+      "A": "İleri - Geri",
+      "B": "Doğru - Dürüst",
+      "C": "Gece - Gündüz",
+      "D": "Siyah - Beyaz"
+    },
+    "dogru_cevap": "B"
+  }
+]

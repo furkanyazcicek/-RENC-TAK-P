@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi yüklemin türüne göre isim cümlesidir?",
+    "A": "Güne zinde başlamak için sabahları herkesten önce erken uyanırım.",
+    "B": "Doktorun tavsiyesi üzerine güne başlarken kahvaltımı hiç aksatmam.",
+    "C": "Boş zamanlarımda evde yapmayı en sevdiğim hobim kitap okumaktır.",
+    "D": "Yemeklerden sonra hazmı kolaylaştırmak için akşamları yürüyüş yaparım.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi öge dizilişine göre devrik cümledir?",
+    "A": "Vücudumuzun dinlenmesi için düzenli uyku, sağlığımız için çok önemlidir.",
+    "B": "Günlük plan yaparak yaşamak birikmiş olan yoğun işleri daima kolaylaştırır.",
+    "C": "Başarılı insanların ortak özelliklerinden biri de etkili zaman yönetimidir.",
+    "D": "Güne başlarken içtiğim o bir fincan şekersiz sabah kahvesinden vazgeçemem asla.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdakilerden hangisi yapısına göre içinde fiilimsi bulunan cümledir?",
+    "A": "Atalarımızın dediği gibi hayatta sabahları erken kalkan yol alır.",
+    "B": "Günlük planıma uyarak bana verilen işleri her zaman vaktinde bitiririm.",
+    "C": "Her akşam uyumadan önce gün içinde yaşadıklarımı günlüğüme yazarım.",
+    "D": "Sağlığıma dikkat ettiğim için kahvaltıda çayımı her zaman şekersiz içerim.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdakilerden hangisi birden çok yüklemli (sıralı) cümledir?",
+    "A": "Yıllardır süregelen kemikleşmiş alışkanlıklarımızı değiştirmek sanıldığından zordur.",
+    "B": "Sabah çalar saatin sesiyle kalktı, banyoya gidip elini yüzünü yıkadı.",
+    "C": "Hedeflerine ulaşmak için planlı ve düzenli çalışmak kişiye başarıyı getirir.",
+    "D": "Ev işlerinden arta kalan boş zamanlarında genellikle klasik müzik dinler.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdakilerden hangisi bağlacı olan (bağlı) cümledir?",
+    "A": "Vücut direncini yüksek tutmak için her yaşta sağlıklı beslenmek önemlidir.",
+    "B": "Başarılı bir iş insanı olan amcam her gününü saati saatine planlayarak yaşar.",
+    "C": "Hafta sonu mahalledeki yeni açılan spor salonuna yazıldı ve yüzmeye başladı.",
+    "D": "Günlük hayatın yoğun stresiyle başa çıkmak için hobilerine zaman ayırmalısın.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi anlamına göre olumsuz bir cümledir?",
+    "A": "Hafta sonları ailece vakit geçirmek için genellikle vizyondaki filmlere gideriz.",
+    "B": "Uzun ve kaliteli bir yaşam için mutlaka spor gibi sağlıklı alışkanlıklar edinmeliyiz.",
+    "C": "Benim herkesin bildiği ve dışına çıkmaktan hoşlanmadığım günlük rutinlerim var.",
+    "D": "Vaktimi boşa harcadığını düşündüğüm için akşamları asla televizyon izlemem.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdakilerden hangisi kurallı bir fiil cümlesidir?",
+    "A": "Gereksiz harcama yapmamak için alışverişe gitmeden önce ihtiyaç listesi hazırlarım.",
+    "B": "Duyguları ve yaşanılanları unutmamak için günlük tutmak oldukça iyi bir alışkanlıktır.",
+    "C": "Bahar temizliği yaptığımız için çok yorucuydu bugünkü bitmek bilmeyen ev işleri.",
+    "D": "Uzmanların her fırsatta dile getirdiği gibi kahvaltı günün en önemli öğünüdür.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi eksiltili (tamamlanmamış) cümledir?",
+    "A": "Sağlıklı kalabilmek için havalar soğuk olsa bile her gün parkta bir saat yürürüm.",
+    "B": "Çalışma masasının üzerinde okunmayı bekleyen kalın ciltli, yepyeni kitaplar...",
+    "C": "Güne zinde başlamak için sabahları güneş doğarken erken kalkmak bana iyi geliyor.",
+    "D": "Yaşıtlarıma göre çok daha enerjik olmak için sağlıklı ve düzenli yaşamaya dikkat ediyorum.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdakilerden hangisi bir soru cümlesidir?",
+    "A": "Bana yıllardır süregelen hangi kötü alışkanlıklarından vazgeçmek istersin, dedi.",
+    "B": "Geçen gün yolda karşılaştığımızda boş zamanlarında genellikle ne yaptığını sordu.",
+    "C": "Sabahları uyanmakta zorlanan kardeşimin neden bu kadar geç uyuduğunu bilmiyorum.",
+    "D": "Akşam yemeğinde masada otururken bize okulda gününün nasıl geçtiğini uzun uzun anlattı.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi biçimce olumlu olduğu hâlde anlamca olumsuzdur?",
+    "A": "Tüm uyarılarımıza rağmen kendisine zarar veren o kötü alışkanlıklarından vazgeçmiyor.",
+    "B": "Sabahtan akşama kadar süren bu iş yoğunluğunda kitap okumaya veya hobilere vakit mi kalır?",
+    "C": "Dünyada olup bitenleri yakından takip etmek için her sabah düzenli olarak gazete okur.",
+    "D": "Çok disiplinli bir insan olduğu için kendisine verilen sorumlulukları ve işlerini hiç aksatmaz.",
+    "dogru_cevap": "B"
+  }
+]

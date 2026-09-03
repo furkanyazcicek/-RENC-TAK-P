@@ -1,0 +1,82 @@
+[
+  {
+    "soru": "\"Boş zamanlarımda kitap okumak bana büyük bir keyif veriyor.\" cümlesindeki altı çizili fiilimsinin türü aşağıdakilerden hangisidir?",
+    "A": "İsim-fiil",
+    "B": "Sıfat-fiil",
+    "C": "Zarf-fiil",
+    "D": "Çekimli fiil",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde sıfat-fiil kullanılmıştır?",
+    "A": "Tiyatro izlemeyi çok sevdiğini söylüyordu.",
+    "B": "Dergide yayımlanan şiirler çok beğenildi.",
+    "C": "Senaryoyu yazarken dış dünyayla bağlantısını kopardı.",
+    "D": "Sanatçı yeni bir albüm çıkarmak için stüdyoya girdi.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil kullanılmıştır?",
+    "A": "Edebiyat, toplumun aynasıdır.",
+    "B": "Okunacak kitaplar listesini masaya bıraktı.",
+    "C": "Ressam manzarayı incelerken ilham perisi geldi.",
+    "D": "En sevdiği yazarın son romanını satın aldı.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde fiilimsi yoktur?",
+    "A": "Öykü yazmak göründüğü kadar kolay değildir.",
+    "B": "Sahnede ezberlediği replikleri sırasıyla okudu.",
+    "C": "Şiir dinletisi için biletleri önceden ayırttık.",
+    "D": "Ressam yıllar önce aldığı bir tabloyu bağışladı.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde farklı türde bir fiilimsi vardır?",
+    "A": "Güzel resim çizen çocuklar sergiye katıldı.",
+    "B": "Tarihi roman yazan edebiyatçılar bir araya geldi.",
+    "C": "Bütün kitapları okuyup kütüphaneye geri verdi.",
+    "D": "Duygusal türküler söyleyen sanatçı çok alkışlandı.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde fiilimsi eki almasına rağmen kalıplaşarak kalıcı isim olmuş bir sözcük vardır?",
+    "A": "Yazarın son çıkan denemesi çok satanlar listesine girdi.",
+    "B": "Şiir okumak insanın ruhunu dinlendirir.",
+    "C": "Sahnede oynayan oyuncuların performansı harikaydı.",
+    "D": "Resim sergisini gezip sanatçılarla sohbet ettik.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Sıfat-fiillerin nitelediği isim düştüğünde sıfat-fiil adlaşır. Aşağıdaki cümlelerin hangisinde adlaşmış sıfat-fiil kullanılmıştır?",
+    "A": "Sergideki tabloları büyük bir ilgiyle inceledik.",
+    "B": "Tiyatroya gelenler oyun bitiminde oyuncuları tebrik etti.",
+    "C": "Okuduğu masal kitabını kardeşine hediye etti.",
+    "D": "Yeni yazılan öyküleri değerlendirmek üzere toplandılar.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil cümleye durum anlamı katmıştır?",
+    "A": "Perde kapanınca seyirciler ayağa kalktı.",
+    "B": "Konser bittiğinde herkes evin yolunu tuttu.",
+    "C": "Şarkıyı gözlerini kapatıp hissederek söyledi.",
+    "D": "Oyun başlamadan önce telefonlarımızı sessize aldık.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil cümleye zaman anlamı katmıştır?",
+    "A": "Oyun başlayınca salona derin bir sessizlik çöktü.",
+    "B": "Yazar, karakterleri betimleyerek okuyucuyu etkiledi.",
+    "C": "Rolüne çalışarak hazırlandığı için çok başarılı oldu.",
+    "D": "Şiiri ağlayarak okuması herkesi çok duygulandırdı.",
+    "cevap": "A"
+  },
+  {
+    "soru": "\"Roman yazmak için sessiz bir yer arayan yazar, saatlerce düşündü.\" cümlesinde kaç tane fiilimsi kullanılmıştır?",
+    "A": "1",
+    "B": "2",
+    "C": "3",
+    "D": "4",
+    "cevap": "B"
+  }
+]

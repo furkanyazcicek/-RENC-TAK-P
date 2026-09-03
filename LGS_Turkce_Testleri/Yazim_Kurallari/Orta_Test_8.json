@@ -1,0 +1,85 @@
+{
+  "test_adi": "Yazım Kuralları Orta Seviye Test 8",
+  "sorular": [
+    {
+      "soru": "'Baş' sözcüğü ile oluşturulan sıfat tamlaması yapısındaki birleşik kelimeler bitişik yazılır. Aşağıdaki cümlelerin hangisinde bu kurala uyulmamıştır?",
+      "A": "Hastanemize yeni bir başhekim atandı.",
+      "B": "Olayın baş rolünde kimin olduğunu hala bulamadık.",
+      "C": "Yeni başbakan, mecliste önemli bir konuşma yaptı.",
+      "D": "Ordumuzun başkomutanı cepheye gitmek için yola çıktı.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Birleşik fiillerde kelimelerden hiçbiri veya ikinci kelimesi anlam değişikliğine uğramamışsa bu kelimeler ayrı yazılır. Hangisinde yazım yanlışı vardır?",
+      "A": "Köpekbalığı belgeselini soluksuz izledik.",
+      "B": "Dolaptaki çalıkuşu romanını bir solukta okudum.",
+      "C": "Gökyüzünde bir ateş böceği sürüsü belirdi.",
+      "D": "Kılıçbalığı avlamak için erkenden denize açıldılar.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Yardımcı eylemlerle kurulan birleşik fiillerde ses olayı yoksa ayrı yazılır. Aşağıdakilerin hangisinde bu kurala uymamaktan kaynaklanan bir hata vardır?",
+      "A": "Bu işi kabul etmeyeceğini bana arz etti.",
+      "B": "Onun bu tavırlarını artık farketmek istemiyorum.",
+      "C": "Şehri terk edip köye yerleşmeye karar verdi.",
+      "D": "Sabredersen mutlaka başaracağına inanıyorum.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Soru eki olan 'mi' kendinden önceki sözcükten ayrı yazılırken, kendinden sonra gelen şahıs ekleriyle bitişik yazılır. Hangi seçenekte yanlışlık yapılmıştır?",
+      "A": "Bugün benimle kütüphaneye gelir misin?",
+      "B": "Bu kadar yolu tek başına yürüyebilecekmisin?",
+      "C": "Akşamki yemeğe kimlerin katılacağını biliyor musun?",
+      "D": "Söylediklerimi hiç mi hiç dikkate almıyor.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Tabela, levha ve levha niteliğindeki yazılarda geçen kelimeler büyük harfle başlar. Hangisinde bu kurala aykırı bir durum vardır?",
+      "A": "Hastanenin girişinde 'Acil Servis' yazıyordu.",
+      "B": "Okulun kapısına 'Giriş' tabelası asılmış.",
+      "C": "Otobüs durağında 'şehirler arası Terminal' yazısı vardı.",
+      "D": "Veznenin üzerinde 'Danışma' yazılı bir levha bulunuyordu.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde 'de/da'nın yazımı ile ilgili bir yanlışlık vardır?",
+      "A": "Sınavda sorulan soruların hepsi de çok zordu.",
+      "B": "Ben de seninle aynı fikirdeyim bu konuda.",
+      "C": "Bunu söylesen de kimse sana inanmaz artık.",
+      "D": "Kitabın sayfaların da bazı yırtıklar tespit ettim.",
+      "cevap": "D"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde kısaltmalara getirilen ekin yazımında bir yanlışlık yapılmıştır?",
+      "A": "TDK'nin sözlüğünden kelimenin anlamına baktım.",
+      "B": "BM'ye üye ülkelerin temsilcileri bir araya geldi.",
+      "C": "TÜBİTAK'ın düzenlediği bilim fuarına katıldık.",
+      "D": "THY'ndan bilet almak için internet sitesine girdim.",
+      "cevap": "D"
+    },
+    {
+      "soru": "Özel isme dâhil olmayıp tamlama kuran şehir, il, ilçe, belde, köy vb. sözler küçük harfle başlar. Hangisinde yazım yanlışı vardır?",
+      "A": "Tatilimizi Muğla ilinde geçirmeyi planlıyoruz.",
+      "B": "Uzungöl Beldesi, doğal güzellikleriyle meşhurdur.",
+      "C": "Geçen yıl Taflan köyüne ziyarete gitmiştik.",
+      "D": "Çankaya ilçesi, Ankara'nın en kalabalık yerlerindendir.",
+      "cevap": "B"
+    },
+    {
+      "soru": "m ünsüzü ile yapılan ikilemeler daima ayrı yazılır. Aşağıdaki cümlelerin hangisinde bu kurala uyulmamıştır?",
+      "A": "Kitap mitap okumak istemiyorum bugün.",
+      "B": "Dolapta yiyecek miyecek kalmamış, alışveriş yapalım.",
+      "C": "Çocuk mocuk dinlemez, herkese bağırırdı.",
+      "D": "Eşyam eşyamı toplayıp buradan hemen gidiyorum.",
+      "cevap": "D"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde yazım yanlışı yoktur?",
+      "A": "Bu aralar üzerimde büyük bir yorgunluk var.",
+      "B": "O kadar yalnış şeyler söylediki herkes şaşırdı.",
+      "C": "Herkez kendi işine bakarsa sorun kalmaz.",
+      "D": "Eğlenmek için parkta bir kaç el oyun oynadık.",
+      "cevap": "A"
+    }
+  ]
+}

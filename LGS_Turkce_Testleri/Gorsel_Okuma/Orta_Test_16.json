@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Besin piramidi görselinde en geniş olan en alt katta tahıllar, en dar olan en üst katta tatlı ve yağlar bulunmaktadır. Bu görselin temel mesajı nedir?",
+    "A": "Tatlıların tahıllardan daha sağlıklı olduğu",
+    "B": "Tahılların çok, tatlı ve yağların az tüketilmesi gerektiği",
+    "C": "Sadece tahıl ürünleriyle beslenmenin şart olduğu",
+    "D": "Yağlı yiyeceklerin piramidin zirvesinde olduğu için çok kıymetli olduğu",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Günlük kalori ihtiyacı tablosunda 14-18 yaş erkekler için 2200-3200, kızlar için 1800-2400 kalori belirtilmiştir. Bu farkın sebebi ne olabilir?",
+    "A": "Kızların erkeklerden daha fazla kitap okuması",
+    "B": "Erkeklerin spor yapmaya daha fazla vakit ayırması",
+    "C": "Cinsiyete ve fiziksel gelişime bağlı bazal metabolizma farkları",
+    "D": "Besinlerin kalori değerlerinin kadın ve erkekte farklı ölçülmesi",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Obezite oranlarındaki artışı gösteren çizgi grafiğinde yıllara göre dik bir tırmanış vardır. Grafiğin yanına eklenen 'Fast food tüketimi' grafiği de aynı dik tırmanışa sahiptir. İki grafik birleşince hangi sonuca varılır?",
+    "A": "Fast food tüketiminin obezite artışıyla doğrudan ilişkili olabileceği",
+    "B": "Obezitenin çaresinin fast food yemek olduğu",
+    "C": "Sağlıklı yaşamın yıllar geçtikçe arttığı",
+    "D": "Obezite arttıkça fast food restoranlarının kapandığı",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru": "El yıkama adımlarını gösteren 6 aşamalı bir görselde, ellerin sadece avuç içi değil, parmak araları ve tırnak uçlarının da yıkanması gerektiği çizilmiştir. Neden?",
+    "A": "Sabunun daha çabuk bitmesi için",
+    "B": "Suyun tasarruflu kullanılması için",
+    "C": "Ellerin daha güzel kokması için",
+    "D": "Mikropların sadece avuç içinde değil her yerde barınabileceği için",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Kızılay kan bağışı afişinde 'Bir Damla Kan, Üç Can!' sloganı ve kollardan uzanan damlaların insan silüetlerine dönüştüğü bir çizim vardır. Bu afişin amacı nedir?",
+    "A": "Kan grubunun nasıl öğrenileceğini göstermek",
+    "B": "Kan bağışının acılı bir işlem olduğunu anlatmak",
+    "C": "Kan bağışının hayat kurtarıcı önemini vurgulayarak insanları teşvik etmek",
+    "D": "Hastanelerin adreslerini tarif etmek",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Vitamin tablosunda C vitamini hizasında portakal ve limon, A vitamini hizasında havuç, D vitamini hizasında güneş resmi vardır. Kış aylarında hastalıklardan korunmak isteyen biri hangisini daha çok tüketmelidir?",
+    "A": "Güneş banyosu",
+    "B": "Portakal ve limon",
+    "C": "Sadece havuç",
+    "D": "Tuz",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Su içmenin vücuda faydaları infografiklerinde beyin için 'odaklanma', kalp için 'kan dolaşımı', cilt için 'parlaklık' ikonları kullanılmıştır. Suyun insan bedenine etkisi için ne denebilir?",
+    "A": "Birden çok sistemi ve organı olumlu yönde etkiler.",
+    "B": "Sadece cilt güzelliği için gereklidir.",
+    "C": "Susuzluk hissini bastırmaktan başka işe yaramaz.",
+    "D": "En çok kalp hastaları tarafından tüketilmelidir.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Düzenli spor yapanların yaşlara dağılımı grafiğinde %50 genç (15-25), %30 yetişkin (26-50), %20 yaşlı (50+) yer almaktadır. Hangi bilgiye ulaşılamaz?",
+    "A": "Gençlerin spor yapma oranı diğerlerinden yüksektir.",
+    "B": "Yaş ilerledikçe düzenli spor yapma oranı azalmıştır.",
+    "C": "Düzenli spor yapanların yarısı 15-25 yaş arasındadır.",
+    "D": "En çok futbol ve yüzme sporları yapılmaktadır.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Bir ilkyardım çantası görselinde sargı bezi, makas, antiseptik solüsyon ve yara bandı gösterilmiştir. Bu malzemeler ne için gereklidir?",
+    "A": "Rutin sağlık kontrolleri yapmak için",
+    "B": "Hastalara ağır ameliyatlar yapmak için",
+    "C": "Acil durumlarda hafif yaralanmalara müdahale edebilmek için",
+    "D": "Eczanede satışa sunmak için",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Uyku düzeninin önemini anlatan bir afişte, saat 23.00 ile 03.00 arası bir büyüteçle büyütülmüş ve 'Onarım Saati' yazılmıştır. Bununla ne kastedilmektedir?",
+    "A": "Bütün insanların o saatte uyanık kalması gerektiği",
+    "B": "O saatler arasındaki uykunun vücut hücrelerinin yenilenmesinde kritik olduğu",
+    "C": "Saat 03.00'ten sonra uyumanın yasak olduğu",
+    "D": "O saatlerde ders çalışmanın daha verimli olacağı",
+    "cevap": "B"
+  }
+]

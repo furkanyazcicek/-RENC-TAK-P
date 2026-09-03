@@ -1,0 +1,115 @@
+{
+  "test_adi": "Cümlede Anlam - Orta Test 1",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "I. zenginliği\nII. kelime\nIII. sınırlarını\nIV. insanın\nV. belirler\nVI. düşünce\n\nNumaralanmış sözcüklerle anlamlı ve kurallı bir cümle oluşturulduğunda sıralama nasıl olmalıdır?",
+      "secenekler": {
+        "A": "VI - III - V - IV - II - I",
+        "B": "IV - II - I - VI - III - V",
+        "C": "II - I - IV - VI - III - V",
+        "D": "IV - I - II - VI - V - III"
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "'Yazı yazmak, insanın sadece kendiyle konuştuğu sessiz bir diyalogdur.'\nAşağıdakilerden hangisi bu cümleye anlamca en yakındır?",
+      "secenekler": {
+        "A": "Yazar, eserlerinde her zaman toplumsal meselelere değinmelidir.",
+        "B": "Kaleme alınan her düşünce, okuyucunun zihninde yeni bir yankı bulur.",
+        "C": "Yazarın eylemi, iç dünyasında kendisiyle girdiği iletişimin bir yansımasıdır.",
+        "D": "Sessizliği sevmeyen insanlar hiçbir zaman iyi bir yazar olamazlar."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "I. Teknolojik gelişmeler insanların yaşam standartlarını her geçen gün yükseltmektedir.\nII. İnsanlar doğadan koptukça gerçek mutluluğu bulmakta daha çok zorlanıyorlar.\nIII. Modern yaşamın getirdiği kolaylıklar, insanı tembelleştirerek fiziksel sağlığını bozmaktadır.\nIV. Bilgisayar ve telefonlar sayesinde bilgiye ulaşmak artık çok daha hızlı ve basittir.\n\nYukarıdaki numaralanmış cümlelerden hangileri anlamca birbiriyle çelişmektedir?",
+      "secenekler": {
+        "A": "I ve II",
+        "B": "II ve IV",
+        "C": "III ve IV",
+        "D": "I ve III"
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "'Usta yazarın, farklı dillere çevrilen bu son romanı, önceki eserlerine göre daha geniş bir okur kitlesine ulaştı.'\nBu cümleden kesin olarak çıkarılabilecek yargı aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Yazarın birden fazla eseri bulunmaktadır.",
+        "B": "Son romanı yazarın en çok gelir elde ettiği kitaptır.",
+        "C": "Önceki romanları hiçbir yabancı dile çevrilmemiştir.",
+        "D": "Yazar sadece roman türünde eserler vermektedir."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde örtülü bir anlam söz konusu değildir?",
+      "secenekler": {
+        "A": "Artık akşamları yürüyüş yaparken müzik dinlemiyorum.",
+        "B": "Masadaki kitapları ve defterleri düzgünce rafa yerleştirdi.",
+        "C": "Bu yaz da tatilimizi aynı sahil kasabasında geçireceğiz.",
+        "D": "Sınıftaki öğrencilerden yalnız Ali bu soruyu çözebildi."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Bir eserin olumlu veya olumsuz yönlerini inceleyen cümlelere 'değerlendirme cümlesi' denir. Buna göre aşağıdakilerden hangisi değerlendirme cümlesi değildir?",
+      "secenekler": {
+        "A": "Yazar, karakter tahlillerinde oldukça başarılı bir çizgi yakalamış.",
+        "B": "Olay örgüsündeki kopukluklar okuyucunun kitaptan soğumasına neden oluyor.",
+        "C": "Son yayımladığı roman yüz elli sayfadan oluşuyor ve dört bölüm içeriyor.",
+        "D": "Dizelerindeki ahenk, şairin ne kadar usta bir kelime işçisi olduğunu gösteriyor."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Bir olay ya da durum gerçekleşmeden önce, o durumla ilgili kesin bir yargıya varmaya 'ön yargı' denir. Hangisinde ön yargı bulunmaktadır?",
+      "secenekler": {
+        "A": "Projeyi zamanında bitiremediği için müdürden azar işitti.",
+        "B": "Umarım yeni gelen öğretmenimiz dersi hep böyle eğlenceli işler.",
+        "C": "Ne yazık ki bu filmin gişede beklenen başarıyı gösteremediği anlaşıldı.",
+        "D": "Göreceksiniz, bu kadar çalışmasına rağmen o sınavı yine kazanamayacak."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Yazarın 'ne anlattığı' konuyu, 'nasıl anlattığı' ise üslubu (biçemi) verir. Buna göre aşağıdaki cümlelerin hangisinde eserin üslubuyla ilgili bir bilgi verilmiştir?",
+      "secenekler": {
+        "A": "Kısa ve devrik cümleler kullanarak okura çok hareketli bir metin sunmuş.",
+        "B": "Romanında Anadolu'nun küçük bir köyünde geçen bir aşk hikayesini anlatıyor.",
+        "C": "Kitabın başkahramanı, hayallerinin peşinden koşmak için evden ayrılan bir gençtir.",
+        "D": "Son kitabında yazar, göçmenlerin şehirde yaşadığı uyum sorunlarını ele alıyor."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde bir durumun aşamalı olarak gerçekleştiği ifade edilmektedir?",
+      "secenekler": {
+        "A": "Akşam saatlerinde aniden bastıran fırtına çatıları uçurdu.",
+        "B": "Hastamızın sağlık durumu uygulanan tedaviyle günden güne iyiye gidiyor.",
+        "C": "Saatlerce süren toplantının ardından nihayet ortak bir karar alındı.",
+        "D": "Güneşin doğuşunu izlemek için sabahın erken saatlerinde dağa tırmandılar."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Başkasına ait bir sözün hiç değiştirilmeden, olduğu gibi aktarılmasına 'doğrudan anlatım' denir. Buna göre aşağıdakilerden hangisinde doğrudan anlatım yapılmıştır?",
+      "secenekler": {
+        "A": "Öğretmenimiz, sınavın haftaya cuma günü yapılacağını söyledi.",
+        "B": "Annem, hava soğuk olduğu için kalın giyinmemiz gerektiğini tembihledi.",
+        "C": "Atatürk, 'Hayatta en hakiki mürşit ilimdir.' diyerek eğitimin önemini vurgular.",
+        "D": "Doktor, ilaçlarımı düzenli kullanmazsam iyileşemeyeceğimi belirtti."
+      },
+      "dogru_cevap": "C"
+    }
+  ]
+}

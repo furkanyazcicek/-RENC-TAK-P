@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Metin içinde art arda gelen zarf-fiil eki almış kelimelerden sonra virgül (,) konur.\nAşağıdaki cümlelerin hangisinde bu kurala uygun bir kullanım vardır?",
+    "secenekler": {
+      "A": "Onu görünce çok sevindim, hemen yanına koştum.",
+      "B": "Kitabını alıp dışarı çıktı, bir daha dönmedi.",
+      "C": "Gülerek, oynayarak parkta zaman geçiriyorlardı.",
+      "D": "Çocuk durmaksızın koşarak, nefes nefese kalarak bitiş çizgisine ulaştı."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Aşağıdaki cümlelerin hangisinde noktalı virgül (;) yanlış kullanılmıştır?",
+    "secenekler": {
+      "A": "Ona çok yardım ettim; fakat o bunun değerini hiç bilmedi.",
+      "B": "Şiir, hikaye ve roman okumayı; resim, müzik ve tiyatro ile ilgilenmeyi çok sever.",
+      "C": "Murat; Hasan, Ali ve Veli'den daha uzun boyludur.",
+      "D": "At ölür, meydan kalır; yiğit ölür, şan kalır."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Kendisinden sonra açıklama yapılacak cümlenin sonuna iki nokta (:) konur.\nAşağıdaki cümlelerin hangisinde iki nokta bu işleviyle kullanılmıştır?",
+    "secenekler": {
+      "A": "Milli Edebiyat akımının en önemli isimleri şunlardır: Ömer Seyfettin, Ziya Gökalp.",
+      "B": "Bu sorunun tek bir çözümü var: Planlı ve düzenli çalışmak.",
+      "C": "Öğretmenimiz: \"Yarın hepiniz ödevlerinizi getirin.\" dedi.",
+      "D": "Bilgi için http://tdk.gov.tr adresine bakabilirsiniz."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Kısaltmalara getirilen ekler, kısaltmanın okunuşuna göre kesme işareti (') ile ayrılır. Büyük harflerle yapılan kısaltmalarda son harfin okunuşu esas alınır.\nAşağıdaki cümlelerin hangisinde bu kurala uyulmadığı için bir yanlışlık yapılmıştır?",
+    "secenekler": {
+      "A": "TRT'nin yeni belgesel serisi çok beğenildi.",
+      "B": "TBMM'de bugün önemli konular görüşülecek.",
+      "C": "TDK'ya yapılan başvuruların sonuçları açıklandı.",
+      "D": "TÜBİTAK'ın düzenlediği bilim fuarına katıldık."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Soru işareti (?), sıralı ve bağlı cümlelerde en sona konur.\nAşağıdakilerin hangisinde bu kurala uygun bir kullanım vardır?",
+    "secenekler": {
+      "A": "Yemekleri sen mi yaptın, yoksa dışarıdan mı sipariş ettin?",
+      "B": "Bana neden kızdığını, niçin böyle davrandığını anlamıyorum?",
+      "C": "Hangi yoldan gideceğimize karar veremedik?",
+      "D": "Nasıl böyle bir hata yaptın, inanamıyorum!"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Nokta (.) matematikte çarpma işareti yerine kullanılır.\nAşağıdakilerin hangisinde nokta bu görevde kullanılmıştır?",
+    "secenekler": {
+      "A": "Sınıftaki 15. öğrenci de sınav kağıdını teslim etti.",
+      "B": "Öğretmen tahtaya 4 . 5 = 20 işlemini yazdı.",
+      "C": "Toplantı saat 14.30'da başlayacak.",
+      "D": "Tarih 23.04.1920'yi gösteriyordu."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Tırnak içinde verilen cümlenin içinde yeniden tırnağa alınması gereken bir sözü, ibareyi belirtmek için tek tırnak işareti (' ') kullanılır.\nAşağıdaki cümlelerin hangisinde tek tırnak işareti doğru kullanılmıştır?",
+    "secenekler": {
+      "A": "Şair 'yalnızlık' konusunu çok güzel işlemiş.",
+      "B": "Bu kitaptaki 'En Güzel Şiirler' bölümünü okumalısın.",
+      "C": "Eleştirmen, \"Yazarın 'Sokak' adlı öyküsü tam bir başyapıt.\" diyerek sözlerini bitirdi.",
+      "D": "Bana 'Yarın görüşürüz' diyerek hızla uzaklaştı."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Aşağıdaki cümlelerin hangisinde kısa çizgi (-) kelimeleri hecelerine ayırmak için kullanılmıştır?",
+    "secenekler": {
+      "A": "Ankara-İstanbul otobanı bugün çok kalabalıktı.",
+      "B": "Türkçe-Fransızca sözlüğümü evde unutmuşum.",
+      "C": "Kışın Erzurum'da sıcaklık -20 dereceyi buluyor.",
+      "D": "İlkokul kelimesi \"il-ko-kul\" şeklinde hecelenir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Alay, kinaye veya küçümseme anlamı kazandırılmak istenen sözden hemen sonra yay ayraç içinde ünlem (!) kullanılır.\nAşağıdakilerin hangisinde bu kurala uygun bir örnek vardır?",
+    "secenekler": {
+      "A": "Adam, o kadar çalışkan (!) ki bütün gün uyuyor.",
+      "B": "Eyvah, cüzdanımı evde unuttum!",
+      "C": "Dikkat et, yerler çok kaygan!",
+      "D": "Ne kadar da güzel bir tablo bu böyle!"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Alıntıların aktarıldığı eseri, yazarı veya künye bilgilerini göstermek için yay ayraç ( ) kullanılır.\nAşağıdakilerin hangisinde yay ayraç bu görevde kullanılmıştır?",
+    "secenekler": {
+      "A": "İhtiyar, (gözlüklerini silerek) elindeki kağıdı okumaya başladı.",
+      "B": "Ne hasta bekler sabahı / Ne taze ölüyü mezar (Necip Fazıl Kısakürek)",
+      "C": "Reşat Nuri (Çalıkuşu'nun yazarı) Anadolu'yu karış karış gezmiştir.",
+      "D": "1919 (?) yılında buralara kadar geldiği söyleniyor."
+    },
+    "dogru_cevap": "B"
+  }
+]

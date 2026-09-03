@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Tiyatro oyunculuğu ile sinema oyunculuğu birbirinden çok farklı dinamiklere sahiptir. Tiyatroda oyuncu abartılı jest ve mimikler kullanmak zorundadır, çünkü en arka sıradaki seyirciye bile duygusunu geçirmelidir. Oysa sinemada kamera oyuncunun yüzüne o kadar yaklaşır ki, gözdeki ufacık bir titreme bile seyirci tarafından algılanır. Bu yüzden sinema oyunculuğu 'az ile çok şey anlatma' sanatıdır.\n\nBu metne göre sinema ve tiyatro oyunculuğunun farklı olmasının temel nedeni aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Sinema filmlerinin tiyatroya göre daha uzun sürmesi.",
+      "B": "Tiyatro oyuncularının sinema oyuncularından daha yetenekli olması.",
+      "C": "Seyirci ile oyuncu arasındaki mesafenin ve teknik imkânların farklı olması.",
+      "D": "Sinema yönetmenlerinin oyunculara daha çok müdahale etmesi."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Zekâ dendiğinde genellikle problem çözme, analitik düşünme veya matematiksel beceriler akla gelir. Oysa günümüzde 'Duygusal Zekâ' (EQ) kavramı çok daha ön plana çıkmıştır. İnsanın kendi duygularını tanıması, başkalarıyla empati kurabilmesi ve zorluklar karşısında öfkesini kontrol edebilmesi duygusal zekânın göstergesidir. İş hayatında yüksek IQ sizi işe aldırır ama yüksek EQ sizi terfi ettirir.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Matematiksel zekâya sahip olmayanlar iş hayatında başarılı olamazlar.",
+      "B": "Duygusal zekâ, kişinin sosyal ilişkilerinde ve genel başarısında analitik zekâ kadar, hatta daha fazla etkilidir.",
+      "C": "Öfke kontrolü problemi yaşayan insanların IQ seviyeleri genellikle düşüktür.",
+      "D": "Okullarda analitik zekâdan çok duygusal zekâ eğitimine ağırlık verilmelidir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "(I) Zaman yönetimi, yoğun tempoda çalışan insanların en büyük sorunudur. (II) İşleri önem ve aciliyet sırasına koymak, zaman yönetiminin ilk kuralıdır. (III) Müzik dinleyerek çalışmak bazı insanların odaklanmasını kolaylaştırır. (IV) Öncelikleri belirledikten sonra gereksiz işleri iptal etmek ya da başkasına devretmek, bize asıl önemli olanlar için zaman kazandırır.\n\nBu metindeki numaralanmış cümlelerden hangisi anlamın akışını bozmaktadır?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Gülümsemek, bulaşıcı bir hastalıktır; ama insanı iyileştiren türden! Asık suratlı bir insanın yanına gittiğinizde onun negatif enerjisi size de geçer. Ancak içten bir gülümseme, etraftaki buzları eriten sıcacık bir güneş gibidir. Hem gülümseyen kişinin stresini azaltır hem de karşısındakine 'Seninle iletişim kurmaya hazırım.' mesajını verir.\n\nBu parçada gülümsemek ile ilgili aşağıdakilerden hangisine değinilmemiştir?",
+    "secenekler": {
+      "A": "İnsanlar arasında iletişimi kolaylaştıran bir işaret olduğuna",
+      "B": "Karşıdaki insana da geçebilen olumlu bir etkiye sahip olduğuna",
+      "C": "Kişinin sağlığını doğrudan fiziksel olarak iyileştirdiğine",
+      "D": "İnsanın stres seviyesini düşürdüğüne"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Klasik eserler, üzerinden yüzyıllar geçse bile değerinden hiçbir şey kaybetmeyen kitaplardır. Onları klasik yapan şey, sadece yazıldıkları dönemin özelliklerini değil, insan doğasının değişmez gerçeklerini anlatmalarıdır. Aşk, kıskançlık, hırs veya fedakârlık... Dostoyevski'nin bir romanında hissettiğiniz duyguyu bugün aynı tazelikle yaşamanızın sebebi budur.\n\nBu metne göre bir eseri klasik yapan asıl unsur aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Kitabın dilinin çok ağır ve süslü olması",
+      "B": "İnsanlığın evrensel duygularına ve değişmez doğasına hitap etmesi",
+      "C": "Sadece eski yüzyıllarda kaleme alınmış olması",
+      "D": "Yazarının döneminde çok ünlü bir kişi olması"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Köy hayatında zaman, güneşin doğuşu ve batışıyla ölçülür. Acele yoktur, toprak sabırla beklenir. Şehirde ise zaman saatlere, dakikalara bölünmüştür. İnsanlar sürekli bir yerlere yetişmek için koşuşturur. Köyde komşunuzun kapısını çalmak için bir nedene ihtiyacınız yoktur; şehirde ise aynı apartmanda yaşadığınız kişinin adını bile bilmezsiniz.\n\nBu metnin anlatımında aşağıdaki düşünceyi geliştirme yollarından hangisi ağır basmaktadır?",
+    "secenekler": {
+      "A": "Tanımlama",
+      "B": "Sayısal verilerden yararlanma",
+      "C": "Karşılaştırma",
+      "D": "Tanık gösterme"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "(I) Okyanusların derinlikleri, uzayın karanlığından çok daha fazla sır barındırır. (II) Bilim insanları Ay'ın yüzeyini haritalandırdı ancak kendi gezegenimizdeki okyanus tabanlarının sadece çok küçük bir kısmını keşfedebildi. (III) Işığın ulaşmadığı bu derinliklerde, basınca dayanıklı ve çok tuhaf görünümlü deniz canlıları yaşar. (IV) Deniz seviyesinin yükselmesi kıyı şehirlerini tehdit ediyor. (V) Belki de kansere veya diğer hastalıklara çare olacak biyolojik sırlar bu karanlık sularda saklıdır.\n\nBu metindeki numaralanmış cümlelerden hangisi parçanın konusuyla çelişmekte veya akışı bozmaktadır?",
+    "secenekler": {
+      "A": "II",
+      "B": "III",
+      "C": "IV",
+      "D": "V"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Geri dönüşüm alışkanlığı küçük yaşlarda evde başlar. Bir kâğıdın çöp değil de yeniden kullanılabilecek bir hammadde olduğunu çocuğa anlatmak, dünyanın geleceğine yapılan en büyük yatırımdır. Sadece okullardaki seminerlerle bu bilinci oluşturmak zordur; ebeveynlerin bizzat uygulayarak örnek olması gerekir.\n\nBu parçadan çıkarılacak asıl sonuç aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Geri dönüşümle ilgili okul eğitimleri tamamen yetersizdir.",
+      "B": "Geri dönüşüm fabrikaları sayısının artırılması gerekmektedir.",
+      "C": "Çocuklara çevre bilincini kazandırmada en büyük rol yaşayarak örnek olan aileye düşer.",
+      "D": "Sadece kâğıt ürünleri geri dönüştürülerek doğa korunabilir."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Yazının icadı, insanlık tarihinin en büyük devrimidir. Çünkü yazıdan önce edinilen tecrübeler, nesilden nesile sözlü olarak aktarılırken eksiliyor veya değişiyordu. Yazı sayesinde bilgi kalıcı hale geldi, tarihin kaydı tutulmaya başlandı. Eğer Sümerler kil tabletlere o ilk işaretleri kazımasaydı, bugün ulaştığımız medeniyet seviyesi belki de hayal olurdu.\n\nBu metne göre yazının icadının en önemli sonucu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Sümerlerin tarihteki en güçlü imparatorluk olmasını sağlaması",
+      "B": "Kil tabletlerin sanatsal eserlere dönüşmesi",
+      "C": "İnsanların birbiriyle daha kolay haberleşmesi",
+      "D": "Bilginin ve tecrübenin kaybolmadan gelecek nesillere aktarılmasını sağlaması"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Özgüven, kişinin her şeyi mükemmel yapabileceğine inanması demek değildir; hata yaptığında, düştüğünde yeniden ayağa kalkabileceğine olan inancıdır. 'Ben hiç başarısız olmam' demek kibirdir. Ancak 'Başarısız olursam bundan ders çıkarır ve tekrar denerim' demek gerçek özgüvendir. Özgüven, mükemmellik değil, dayanıklılıktır.\n\nBu parçaya göre gerçek özgüvenin tanımı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Kişinin hiçbir işte başarısızlık yaşamayacağını düşünmesi",
+      "B": "Hata yapıldığında pes etmeyip bundan ders çıkararak yeniden deneyebilme gücü",
+      "C": "Başkalarının eleştirilerini dikkate almadan kendi bildiğini okuması",
+      "D": "Bir işe başlamadan önce tüm riskleri ortadan kaldırması"
+    },
+    "dogru_cevap": "B"
+  }
+]

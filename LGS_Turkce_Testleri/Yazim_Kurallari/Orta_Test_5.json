@@ -1,0 +1,85 @@
+{
+  "test_adi": "Yazım Kuralları Orta Seviye Test 5",
+  "sorular": [
+    {
+      "soru": "'Şey' sözcüğü daima ayrı yazılır. Aşağıdaki cümlelerin hangisinde bu kurala uyulmamıştır?",
+      "A": "Bana söylemek istediğin bir şey mi var?",
+      "B": "Hayatta herşey istediğimiz gibi gitmeyebilir.",
+      "C": "O kadar çok şey anlattı ki hangisini aklımda tutayım?",
+      "D": "Böyle şeylere zaman ayırmak insanı rahatlatır.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Belgisiz sözcüklerin yazımıyla ilgili aşağıdakilerin hangisinde bir yanlışlık vardır?",
+      "A": "Hiçbir zaman umudunu kaybetmemen gerekir.",
+      "B": "Bana herhangi bir kitap okumamı tavsiye edebilir misin?",
+      "C": "Dışarıda bir kaç kişi seni bekliyor.",
+      "D": "Yemeğe biraz daha tuz katarsan daha lezzetli olur.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Belli bir tarih bildiren ay ve gün adları büyük harfle başlar. Hangisinde yazım yanlışı vardır?",
+      "A": "Önümüzdeki Nisan ayında taşınmayı planlıyoruz.",
+      "B": "Atatürk, 19 Mayıs 1919'da Samsun'a çıktı.",
+      "C": "Toplantımız 12 Haziran Çarşamba günü yapılacak.",
+      "D": "Kardeşim kasım ayının ilk haftası askere gidecek.",
+      "cevap": "A"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde anlamca kaynaşmış birleşik fiillerin yazımıyla ilgili bir hata yapılmıştır?",
+      "A": "Sorunlarını çözmek için hemen yetkililere başvurdu.",
+      "B": "Bu kadar çabuk vaz geçeceğini hiç tahmin etmemiştim.",
+      "C": "Şirketin kâr edeceğini çok önceden öngörmüştü.",
+      "D": "Olayların böyle gelişeceğini varsayalım, ne yapacağız?",
+      "cevap": "B"
+    },
+    {
+      "soru": "Yabancı kökenli sözcüklerin yazımıyla ilgili aşağıdakilerin hangisinde yazım yanlışı vardır?",
+      "A": "Şoför, otobüsü çok dikkatli kullanıyordu.",
+      "B": "Yeni aldığı kıravat takım elbisesine çok yakışmış.",
+      "C": "Hafta sonu yapılacak antrenmana mutlaka katılmalısın.",
+      "D": "Sürpriz bir doğum günü partisi hazırlamışlar.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Satır sonuna sığmayan sözcüklerin bölünmesiyle ilgili hangisinde bir yanlışlık yapılmıştır?",
+      "A": "....................................................... ilk-\nokul",
+      "B": "....................................................... baş-\nöğretmen",
+      "C": "....................................................... müda-\nfaa",
+      "D": "....................................................... Hanım-\neli",
+      "cevap": "A"
+    },
+    {
+      "soru": "Kurum, kuruluş adlarına getirilen eklerin yazımıyla ilgili hangisinde bir hata vardır?",
+      "A": "Türk Dil Kurumunun yeni başkanı görevine başladı.",
+      "B": "Ziraat Bankası'ndan kredi çekmeyi düşünüyorum.",
+      "C": "Gazi Üniversitesi Rektörlüğüne yeni bir atama yapıldı.",
+      "D": "Yeşilay Derneğinin düzenlediği seminere katıldım.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde 'ki' bağlacı yanlış yazılmıştır?",
+      "A": "Duydum ki unutmuşsun gözlerimin rengini.",
+      "B": "Evdeki hesap hiçbir zaman çarşıya uymadı.",
+      "C": "Görüyorumki bu işten sen de pek memnun değilsin.",
+      "D": "O kadar akıllı ki soruların hepsini hemen çözdü.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Kısaltmaların yazımı ile ilgili aşağıdakilerin hangisinde bir hata yapılmıştır?",
+      "A": "TCDD'nin yeni sefer saatleri belli oldu.",
+      "B": "Prof. Dr. İlber Ortaylı konferans verecek.",
+      "C": "Bu elmaların kg'ı kaç liradan satılıyor?",
+      "D": "ASELSAN'da çalışan mühendisler yeni proje üretti.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde bir yazım yanlışı yoktur?",
+      "A": "Kirpikleri o kadar uzunduki herkesin dikkatini çekiyordu.",
+      "B": "Kibrit kutusunu masanın üzerinde unutmuşum.",
+      "C": "Sınav kağıdında pek çok yalnış soru vardı.",
+      "D": "Orjinal bir tablo almak için müzayedeye katıldı.",
+      "cevap": "B"
+    }
+  ]
+}

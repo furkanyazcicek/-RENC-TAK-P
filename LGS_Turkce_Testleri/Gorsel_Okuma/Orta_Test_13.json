@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Kapadokya'yı gezecek bir turist için hazırlanan haritada sıcak hava balonu, peri bacaları ve yeraltı şehirleri farklı ikonlarla gösterilmiştir. Haritanın sağ alt köşesinde bir ölçek bulunmaktadır. Buna göre harita ne işe yarar?",
+    "A": "Bölgedeki sadece otelleri bulmaya",
+    "B": "Turistik noktaların yerini ve birbirine olan mesafesini kavramaya",
+    "C": "Kapadokya'nın yüzölçümünü kesin olarak hesaplamaya",
+    "D": "Bölgenin ekonomik kaynaklarını öğrenmeye",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Göbeklitepe'nin keşfini anlatan bir zaman çizelgesinde (infografik) oklar T biçimli dikilitaşlardan başlayarak bugüne kadar gelmektedir. Bu çizelge okuyucuya en çok neyi hissettirir?",
+    "A": "Türkiye'nin en kalabalık şehrinin Şanlıurfa olduğunu",
+    "B": "Göbeklitepe'nin turizm geliri açısından en değerli yer olduğunu",
+    "C": "Tarihi kazıların durdurulduğunu",
+    "D": "İnsanlık tarihinin köklerinin çok eskiye dayandığını",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Türkiye'nin UNESCO miras listesi tablosunda Marmara'da 4, Ege'de 5, İç Anadolu'da 4 yer bulunmaktadır. Buna göre ulaşılabilecek en doğru yargı nedir?",
+    "A": "En az miras Karadeniz Bölgesi'ndedir.",
+    "B": "İç Anadolu ve Marmara'daki eserler aynı tarihte yapılmıştır.",
+    "C": "Ülkemizin farklı bölgeleri evrensel kültürel değerlere sahiptir.",
+    "D": "Ege Bölgesi'ndeki mirasların tamamı antik kenttir.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Efes Antik Kenti krokisinde Celsus Kütüphanesi tam merkezde, Büyük Tiyatro sağda, Agora ise solda gösterilmektedir. Krokiye bakan biri için hangisi söylenebilir?",
+    "A": "Ziyaret edeceği yerlerin konumunu zihninde canlandırabilir.",
+    "B": "Hangi eserin daha önce yapıldığını tespit edebilir.",
+    "C": "Bölgedeki tüm rehberlerin adını öğrenebilir.",
+    "D": "Antik kentteki giriş ücretlerini hesaplayabilir.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru": "İstanbul'un tarihi yarımada haritasında Topkapı Sarayı, Ayasofya ve Sultanahmet Camii birbirine yürüme mesafesinde ve çok yakın çizilmiştir. Bu durum turistler için nasıl bir avantaj sağlar?",
+    "A": "Trafik kurallarını daha iyi öğrenirler.",
+    "B": "Toplu taşımayı zorunlu olarak kullanırlar.",
+    "C": "Farklı kıtalara daha hızlı geçerler.",
+    "D": "Kısa sürede birçok önemli tarihi yapıyı gezebilirler.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Mimar Sinan'ın eserlerini gösteren infografikte 'Çıraklık: Şehzade, Kalfalık: Süleymaniye, Ustalık: Selimiye' vurgusu vardır. Bu görsele göre Sinan'ın mimari serüveni nasıldır?",
+    "A": "Bütün eserlerini aynı yıl içinde yapmıştır.",
+    "B": "Sadece cami mimarisiyle ilgilenmiştir.",
+    "C": "Zaman içinde mesleki tecrübesi ve becerisi gelişmiştir.",
+    "D": "En çok takdir edilen eseri Şehzade Camii'dir.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Müzekart kullanım grafiğinde, okulların açık olduğu aylarda öğrenci kullanım oranı çok yüksekken, yaz aylarında yetişkin turist oranı artmaktadır. Buna göre ne söylenebilir?",
+    "A": "Müzeler yazın öğrencilere kapalıdır.",
+    "B": "Mevsimlere ve eğitim dönemine göre ziyaretçi profili değişmektedir.",
+    "C": "Müzekart sadece yetişkinler için geçerlidir.",
+    "D": "Yetişkin turistler okulların açılmasını beklemektedir.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Zeugma Mozaik Müzesi afişinde ünlü 'Çingene Kızı' mozaiğinin sadece gözleri vurgulanarak gizemli bir hava oluşturulmuştur. Afişin bu tasarımı neyi amaçlamaktadır?",
+    "A": "Ziyaretçide merak uyandırarak müzeye çekmeyi",
+    "B": "Müzenin bilet fiyatlarının pahalı olduğunu göstermeyi",
+    "C": "Mozaiklerin eksik parçalarının bulunamadığını belirtmeyi",
+    "D": "Sadece sanat eleştirmenlerini davet etmeyi",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Anadolu medeniyetleri sergisi krokisinde oklar girişten başlayarak sırasıyla Hitit, Frig, Urartu ve Lidyalılar salonunu göstermektedir. Bu yönlendirmenin amacı nedir?",
+    "A": "İnsanların yorulmadan müzeyi terk etmesini sağlamak",
+    "B": "Eserlerin kaybolmasını önlemek",
+    "C": "Ziyaretçilerin tarihsel sıralamaya uygun, planlı bir gezi yapmasını sağlamak",
+    "D": "Sadece Hitit eserlerinin görülmesini sağlamak",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Turistlerin ziyaret ettiği bölgeler pasta grafiğinde %40 Tarihi Mekanlar, %30 Deniz/Kumsal, %20 Doğa, %10 Alışveriş şeklindedir. Grafikten elde edilecek kesin sonuç hangisidir?",
+    "A": "Ülkeye gelen turist sayısı azalmıştır.",
+    "B": "Doğa turizmi her yıl gelişmektedir.",
+    "C": "Turistler sadece tarihi mekanlara ilgi duymaktadır.",
+    "D": "Kültürel turizm, diğer alanlara göre daha fazla tercih edilmektedir.",
+    "cevap": "D"
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "\"İhtiyar adam, yıllardır görmediği torununa sımsıkı sarıldı.\" cümlesindeki ögelerin dizilişi hangi seçenekte doğru verilmiştir?",
+    "secenekler": {
+      "A": "Özne - Yer Tamlayıcısı - Zarf Tümleci - Yüklem",
+      "B": "Özne - Zarf Tümleci - Yer Tamlayıcısı - Yüklem",
+      "C": "Nesne - Yer Tamlayıcısı - Zarf Tümleci - Yüklem",
+      "D": "Özne - Yer Tamlayıcısı - Nesne - Yüklem"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Aşağıdaki cümlelerin hangisinde altı çizili bölüm cümlenin öznesi değildir?",
+    "secenekler": {
+      "A": "(Güneşin ilk ışıkları) odamı aydınlatıyordu.",
+      "B": "(Şiir okumak), insanın ruhunu dinlendirir.",
+      "C": "(Sonbahar rüzgârları) ağaçların yapraklarını döktü.",
+      "D": "(Eski günleri) hepimiz büyük bir özlemle anıyoruz."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru": "\"Çocukların neşeli sesleri, bütün mahalleyi sarmıştı.\" cümlesiyle öge dizilişi aynı olan cümle aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Bahar yağmurları ekinlere can suyu oldu.",
+      "B": "Öğretmenin sözleri sınıfın sessizliğini bozdu.",
+      "C": "Yaşlı ağacın dalları gökyüzüne uzanıyordu.",
+      "D": "Yeni aldığı arabayı özenle yıkadı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Cümle dışı unsurlar (CDU), cümlenin kuruluşuna katılmayan, öge olmayan söz veya sözcük gruplarıdır. Hitaplar, bağlaçlar ve ünlemler cümle dışı unsurdur.\nBuna göre aşağıdakilerin hangisinde cümle dışı unsur kullanılmıştır?",
+    "secenekler": {
+      "A": "Sınava iyi hazırlanmasına rağmen istediği puanı alamadı.",
+      "B": "Sabahları erken uyanmak bana her zaman zor gelmiştir.",
+      "C": "Arabanın bozulan parçasını sonunda değiştirebildik.",
+      "D": "Arkadaşlar, lütfen biraz daha sessiz olalım!"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru": "\"Öğle vakti, sabahın erken saatlerinde yola çıkan kafile kamp alanına ulaştı.\"\nBu cümlenin öge dizilişi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Özne - Zarf Tümleci - Yer Tamlayıcısı - Yüklem",
+      "B": "Zarf Tümleci - Yer Tamlayıcısı - Özne - Yüklem",
+      "C": "Zarf Tümleci - Özne - Yer Tamlayıcısı - Yüklem",
+      "D": "Özne - Yer Tamlayıcısı - Zarf Tümleci - Yüklem"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Aşağıdaki cümlelerin hangisinde yer tamlayıcısı (dolaylı tümleç) vurgulanmıştır?",
+    "secenekler": {
+      "A": "Ankara'dan gelirken bize meşhur elmaları getirdi.",
+      "B": "Yeni projenin detaylarını uzun uzun tartıştık.",
+      "C": "Yarınki toplantıyı şirketimizin en üst katında yapacağız.",
+      "D": "Kardeşim üniversite sınavını bu sene kazandı."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru": "\"Gözlerindeki ışıltı, onun ne kadar heyecanlı olduğunu ele veriyordu.\" cümlesinde nesne görevindeki söz grubu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "onun ne kadar heyecanlı olduğunu",
+      "B": "gözlerindeki ışıltı",
+      "C": "ele veriyordu",
+      "D": "ne kadar heyecanlı"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru": "\"Bu eski ve tarihi konak, ailenin geçmişteki tüm anılarını sessizce saklıyordu.\" cümlesinde aşağıdaki ögelerden hangisi yoktur?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Yer Tamlayıcısı",
+      "C": "Belirtili Nesne",
+      "D": "Zarf Tümleci"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Aşağıdaki cümlelerin hangisinde yüklem bir isim tamlamasından oluşmuştur?",
+    "secenekler": {
+      "A": "Bizi en çok mutlu eden şey, başarının kendisidir.",
+      "B": "Odanın köşesindeki lamba, çok eskiydi.",
+      "C": "Hayat, beklemediğimiz sürprizlerle doludur.",
+      "D": "Dün gece okuduğum kitap sürükleyiciydi."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru": "\"Rüzgârın şiddetini artırmasıyla birlikte denizin hırçın dalgaları sahili dövmeye başladı.\" cümlesinin öznesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Rüzgârın şiddetini artırmasıyla birlikte",
+      "B": "Sahili",
+      "C": "Dövmeye",
+      "D": "Denizin hırçın dalgaları"
+    },
+    "dogru_cevap": "D"
+  }
+]

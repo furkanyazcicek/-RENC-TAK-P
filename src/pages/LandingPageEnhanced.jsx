@@ -17,10 +17,12 @@ import {
 
 import PanelPreview from '../components/landing/PanelPreview'
 import InteractiveLearningStage from '../components/landing/editorial/InteractiveLearningStage'
+import BookHomeHero, { BookExperience } from '../components/landing/book/BookHomeHero'
 import LandingInfoDialogs from '../components/landing/product/LandingInfoDialogs'
 import { Logo } from '../components/ui'
 import ANASAYFA_ICERIGI from '../content/anasayfa'
 import '../styles/anasayfa-editorial.css'
+import '../styles/anasayfa-kitap.css'
 
 function EditorialNavbar({ onAbout, onContact }) {
   const [menuAcik, setMenuAcik] = useState(false)
@@ -52,7 +54,7 @@ function EditorialNavbar({ onAbout, onContact }) {
   return (
     <header className="editorial-navbar">
       <div className="editorial-navbar__inner">
-        <a href="#top" className="focus-ring rounded-xl" aria-label="Dr. Koç ana sayfa başlangıcı">
+        <a href="#top" onClick={(event) => { event.preventDefault(); window.scrollTo({ top: 0, behavior: 'instant' }) }} className="focus-ring rounded-xl" aria-label="Dr. Koç ana sayfa başlangıcı">
           <Logo tone="light" />
         </a>
 
@@ -123,57 +125,16 @@ function HeroSection() {
   const { hero, sahneler } = ANASAYFA_ICERIGI
 
   return (
-    <section id="top" className="editorial-hero">
-      <div className="editorial-hero__atmosphere" aria-hidden="true">
-        <span className="editorial-hero__orb editorial-hero__orb--one" />
-        <span className="editorial-hero__orb editorial-hero__orb--two" />
-        <span className="editorial-hero__grid" />
-      </div>
-
-      <div className="editorial-hero__inner">
-        <div className="editorial-hero__copy">
-          <span className="editorial-eyebrow">
-            <i aria-hidden="true" />
-            {hero.etiket}
-          </span>
-          <h1>{hero.slogan}</h1>
-          <p>{hero.aciklama}</p>
-
-          <div className="editorial-hero__ctas">
-            <Link to={hero.birincilCta.hedef} className="editorial-primary-cta focus-ring">
-              {hero.birincilCta.etiket}
-              <ArrowRight aria-hidden="true" />
-            </Link>
-            <a href={hero.ikincilCta.hedef} className="editorial-secondary-cta focus-ring">
-              {hero.ikincilCta.etiket}
-              <span aria-hidden="true">↓</span>
-            </a>
-          </div>
-
-          <ul className="editorial-hero__notes">
-            {hero.guvenNotlari.map((not) => (
-              <li key={not}>
-                <Check aria-hidden="true" />
-                {not}
-              </li>
-            ))}
-          </ul>
-        </div>
-
+    <>
+      <BookHomeHero />
+      <BookExperience>
         <InteractiveLearningStage
           sahneler={sahneler}
           baslik={hero.sahneBasligi}
           yardim={hero.sahneYardim}
         />
-      </div>
-
-      <noscript>
-        <div className="editorial-noscript">
-          <strong>DRKOÇ öğrenme araçları</strong>
-          <p>Atlaslar, etkileşimli ders notları, soru çözümü ve kişisel çalışma rotası aynı platformda buluşur.</p>
-        </div>
-      </noscript>
-    </section>
+      </BookExperience>
+    </>
   )
 }
 
@@ -407,7 +368,7 @@ export default function LandingPageEnhanced() {
   const [aktifBilgi, setAktifBilgi] = useState(null)
 
   return (
-    <div className="editorial-home">
+    <div className="editorial-home editorial-home--book">
       <a href="#ana-icerik" className="editorial-skip-link focus-ring">Ana içeriğe geç</a>
       <EditorialNavbar
         onAbout={() => setAktifBilgi('about')}

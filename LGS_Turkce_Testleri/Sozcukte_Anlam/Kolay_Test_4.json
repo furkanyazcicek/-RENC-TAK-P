@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki kelime çiftlerinden hangisi eş anlamlıdır?",
+    "secenekler": {
+      "A": "Siyah - Beyaz",
+      "B": "İyi - Kötü",
+      "C": "Kıymet - Değer",
+      "D": "Alt - Üst"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Hangi kelime çifti zıt anlamlıdır?",
+    "secenekler": {
+      "A": "Ulu - Yüce",
+      "B": "Güzel - Çirkin",
+      "C": "Yetenek - Kabiliyet",
+      "D": "Cevap - Yanıt"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Hangisi sesteş (eş sesli) bir kelimedir?",
+    "secenekler": {
+      "A": "Yüz",
+      "B": "Kitap",
+      "C": "Ağaç",
+      "D": "Deniz"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "'Cevap' kelimesinin eş anlamlısı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Soru",
+      "B": "Neden",
+      "C": "Sorun",
+      "D": "Yanıt"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "'Çalışkan' kelimesinin zıt anlamlısı hangisidir?",
+    "secenekler": {
+      "A": "Tembel",
+      "B": "Zeki",
+      "C": "Akıllı",
+      "D": "Hızlı"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Hangi sözcüğün eş seslisi vardır?",
+    "secenekler": {
+      "A": "Sandalye",
+      "B": "Gül",
+      "C": "Pencere",
+      "D": "Kalem"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki eşleştirmelerden hangisi yanlıştır (Eş anlamlı değildir)?",
+    "secenekler": {
+      "A": "Fakir - Yoksul",
+      "B": "Hasret - Özlem",
+      "C": "Güz - Sonbahar",
+      "D": "Genç - İhtiyar"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "'Doğal' kelimesinin zıt anlamlısı hangisidir?",
+    "secenekler": {
+      "A": "Gerçek",
+      "B": "Samimi",
+      "C": "Yapay",
+      "D": "Saf"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Hangisinde eş sesli bir kelime kullanılmıştır?",
+    "secenekler": {
+      "A": "Su çok soğuktu.",
+      "B": "Kuşlar ötüyordu.",
+      "C": "Bugün hava güzel.",
+      "D": "Kazları kümese koydu."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "'Hediye' kelimesinin eş anlamlısı nedir?",
+    "secenekler": {
+      "A": "Armağan",
+      "B": "Kutu",
+      "C": "Sürpriz",
+      "D": "Eşya"
+    },
+    "dogru_cevap": "A"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Yapay zeka, günlük hayatımızdaki birçok zor problemi saniyeler içinde çözebiliyor.\" cümlesinin öge dizilişi aşağıdakilerden hangisidir?",
+    "A": "Özne - Belirtili Nesne - Zarf Tümleci - Yüklem",
+    "B": "Özne - Yer Tamlayıcısı - Belirtisiz Nesne - Yüklem",
+    "C": "Özne - Zarf Tümleci - Nesne - Yüklem",
+    "D": "Nesne - Özne - Zarf Tümleci - Yüklem",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "\"Mühendisler yeni tasarladıkları otonom aracı fuarda tanıttılar.\" cümlesinde aşağıdaki ögelerden hangisi yoktur?",
+    "A": "Özne",
+    "B": "Zarf Tümleci",
+    "C": "Yer Tamlayıcısı",
+    "D": "Belirtili Nesne",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde özne, isim tamlamasından oluşmuştur?",
+    "A": "Geleceğin şehirleri daha akıllı olacak.",
+    "B": "Giyilebilir teknolojiler hızla yaygınlaşıyor.",
+    "C": "Akıllı telefonumu dün servise bıraktım.",
+    "D": "Programcılar gece gündüz demeden kod yazıyor.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Hangi cümlede vurgu nesne üzerindedir?",
+    "A": "Şirket, yeni yazılım güncellemesini yarın yayınlayacak.",
+    "B": "İnternet bağlantımız sabahtan beri çok yavaş.",
+    "C": "Robotik kodlama dersleri haftaya başlayacak.",
+    "D": "Arkadaşıma sanal gerçeklik gözlüğünü hediye ettim.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "\"Uzmanlar, teknolojik gelişmelerin hızına yetişmenin zor olduğunu söylüyor.\" cümlesinde nesne görevindeki sözcük grubu aşağıdakilerden hangisidir?",
+    "A": "Uzmanlar",
+    "B": "teknolojik gelişmelerin",
+    "C": "teknolojik gelişmelerin hızına yetişmenin zor olduğunu",
+    "D": "zor olduğunu",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi yalnızca özne ve yüklemden oluşmuştur?",
+    "A": "Dronlar laboratuvarda tasarlandı.",
+    "B": "Bilgisayar oyunları çocukların dikkatini çekiyor.",
+    "C": "Veri güvenliği çağımızın en büyük sorunudur.",
+    "D": "Elektrikli araçlar çevre kirliliğini azaltır.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "\"Teknoloji bağımlılığı gün geçtikçe daha fazla insanı etkiliyor.\" cümlesinde \"gün geçtikçe\" kelime grubu hangi öge görevindedir?",
+    "A": "Belirtisiz Nesne",
+    "B": "Zarf Tümleci",
+    "C": "Yer Tamlayıcısı",
+    "D": "Özne",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde eylemin nerede yapıldığını bildiren bir öge (yer tamlayıcısı) vardır?",
+    "A": "Algoritmalar sayesinde hayatımız kolaylaştı.",
+    "B": "Bulut bilişim sistemleri tüm verileri korur.",
+    "C": "Laboratuvarda yeni nesil piller üzerine çalışıyoruz.",
+    "D": "Üç boyutlu yazıcılar tıpta da kullanılmaya başlanacak.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Hangi cümlede gizli özne bulunmaktadır?",
+    "A": "Hologram teknolojisi toplantılara yeni bir boyut kazandırdı.",
+    "B": "İnternet ağları dünyayı küçük bir köye çevirdi.",
+    "C": "Yazılım şirketleri büyük bir rekabet içinde.",
+    "D": "Yeni uygulamayı telefonuma hemen indirdim.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "\"İnternet, bilgiye erişimi sınırsız bir şekilde kolaylaştıran muazzam bir ağdır.\" cümlesinin yüklemi aşağıdakilerden hangisidir?",
+    "A": "muazzam bir ağdır",
+    "B": "ağdır",
+    "C": "kolaylaştıran muazzam bir ağdır",
+    "D": "bilgiye erişimi sınırsız bir şekilde kolaylaştıran muazzam bir ağdır",
+    "dogru_cevap": "D"
+  }
+]

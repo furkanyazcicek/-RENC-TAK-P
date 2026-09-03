@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "\"Ahmet, Ayşe ve Fatma bugün bize geldi.\"\nBu cümlede virgül (,) hangi amaçla kullanılmıştır?",
+    "secenekler": {
+      "A": "Birbiri ardınca sıralanan eş görevli kelimeleri ayırmak",
+      "B": "Sıralı cümleleri ayırmak",
+      "C": "Ara sözleri belirtmek",
+      "D": "Alıntı cümleleri göstermek"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Aşağıdaki cümlelerin hangisinin sonuna soru işareti (?) konmalıdır?",
+    "secenekler": {
+      "A": "Dostluğun değerini zamanla anlarsın",
+      "B": "Dün akşam sinemaya gittik",
+      "C": "Neden benimle parka gelmiyorsun",
+      "D": "Hediye almak için alışverişe çıktı"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru": "\"Arkadaşım Dr( ) Selim Bey bizi kapıda karşıladı.\"\nBu cümlede yay ayraçla belirtilen yere hangi noktalama işareti konmalıdır?",
+    "secenekler": {
+      "A": "Virgül (,)",
+      "B": "Nokta (.)",
+      "C": "Noktalı virgül (;)",
+      "D": "İki nokta (:)"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru": "\"Aman dikkat et, çay eline dökülecek( )\"\nBu cümlenin sonuna hangi noktalama işareti konmalıdır?",
+    "secenekler": {
+      "A": "Soru işareti (?)",
+      "B": "Nokta (.)",
+      "C": "Üç nokta (...)",
+      "D": "Ünlem işareti (!)"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru": "\"Yarın en yakın arkadaşımla Ankara( )da buluşacağız.\"\nBu cümlede yay ayraçla belirtilen yere hangi işaret gelmelidir?",
+    "secenekler": {
+      "A": "Tırnak işareti (\")",
+      "B": "Kesme işareti (')",
+      "C": "Kısa çizgi (-)",
+      "D": "Eğik çizgi (/)"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru": "\"Dostluk çaba, emek ister( ) arkadaşlık zamanla, sabırla gelişir.\"\nBu cümlede yay ayraçla belirtilen yere hangi noktalama işareti gelmelidir?",
+    "secenekler": {
+      "A": "Noktalı virgül (;)",
+      "B": "Virgül (,)",
+      "C": "İki nokta (:)",
+      "D": "Nokta (.)"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Bana dönüp büyük bir tebessümle şöyle dedi( ) \"Yarın görüşürüz.\"\nBu cümlede yay ayraçla belirtilen yere hangi noktalama işareti konmalıdır?",
+    "secenekler": {
+      "A": "Nokta (.)",
+      "B": "Virgül (,)",
+      "C": "İki nokta (:)",
+      "D": "Noktalı virgül (;)"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Arkadaşımın bana her zaman ( )vefa( ) kelimesini hatırlatması çok hoşuma gidiyor.\nBu cümlede yay ayraçlarla belirtilen yerlere hangi noktalama işareti gelmelidir?",
+    "secenekler": {
+      "A": "Kesme işareti (')",
+      "B": "Kısa çizgi (-)",
+      "C": "Yay ayraç ( )",
+      "D": "Tırnak işareti (\")"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Pazardan taze sebzeler, meyveler, yeşillikler( )\nBu cümlenin sonuna hangi noktalama işareti konmalıdır?",
+    "secenekler": {
+      "A": "Nokta (.)",
+      "B": "Üç nokta (...)",
+      "C": "Ünlem işareti (!)",
+      "D": "Soru işareti (?)"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru": "\"En yakın arkadaşım ( )Ali( ) yarın başka bir şehre taşınıyor.\"\nBu cümlede yay ayraçla belirtilen yerlere cümleye ek bir açıklama getirmek amacıyla aşağıdakilerden hangisi konmalıdır?",
+    "secenekler": {
+      "A": "Yay ayraç ( )",
+      "B": "Tırnak işareti (\")",
+      "C": "Eğik çizgi (/)",
+      "D": "Kısa çizgi (-)"
+    },
+    "dogru_cevap": "A"
+  }
+]

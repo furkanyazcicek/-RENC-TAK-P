@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="420" viewBox="0 0 1080 420" role="img" aria-label="DRKOÇ beyaz logo">
+  <g fill="none" stroke="#fff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" transform="translate(42 74)">
+    <path d="M0 90 110 32l110 58-110 58L0 90Z"/>
+    <path d="M34 124v72c0 46 152 46 152 0v-72"/>
+  </g>
+  <text x="310" y="202" fill="#fff" font-family="Inter Tight, Inter, Arial, sans-serif" font-size="132" font-weight="800" letter-spacing="-5">DRKOÇ</text>
+  <text x="316" y="268" fill="#fff" fill-opacity=".55" font-family="Inter, Arial, sans-serif" font-size="31" font-weight="700" letter-spacing="10">ÖĞRENME DÖNGÜSÜ</text>
+</svg>

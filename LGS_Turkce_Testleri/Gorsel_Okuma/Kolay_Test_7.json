@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "[Görselde bir otopark alanında yere mavi boyayla çizilmiş tekerlekli sandalye simgesi yer almaktadır. Ancak bu alana normal bir otomobil park etmiş, tekerlekli sandalyeli bir vatandaş ise geçemeyerek beklemektedir.]\n\nBu görsel aşağıdaki kavramlardan hangisinin ihlal edildiğini gösterir?",
+    "secenekler": {
+      "A": "Geri dönüşüm bilinci",
+      "B": "Trafik hızı",
+      "C": "Engelli haklarına saygı",
+      "D": "Toplu taşıma kullanımı"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "[Görselde birbirini takip eden üç yeşil oktan oluşan dairesel bir logo yer almaktadır. Logonun ortasında bir yaprak resmi vardır.]\n\nÜrünlerin ambalajlarında sıkça görülen bu logo neyi ifade etmektedir?",
+    "secenekler": {
+      "A": "Ürünün pahalı olduğunu",
+      "B": "Ambalajın geri dönüştürülebilir olduğunu",
+      "C": "Ürünün çok tehlikeli kimyasallar içerdiğini",
+      "D": "Ambalajın sadece plastikten üretildiğini"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "[Görselde Güneş, merkezde büyük ve parlak olarak yer alırken; etrafındaki eliptik yörüngelerde Dünya, Mars, Jüpiter gibi gezegenler dönmektedir.]\n\nBu görsel aşağıdaki derslerden hangisiyle daha çok ilişkilidir?",
+    "secenekler": {
+      "A": "Türkçe",
+      "B": "Müzik",
+      "C": "Fen Bilimleri",
+      "D": "Beden Eğitimi"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "[Görselde açık bir kırmızı takım çantasının içinde pense, çekiç, tornavida, İngiliz anahtarı ve çiviler yer almaktadır.]\n\nBu çanta genellikle hangi amaçla kullanılır?",
+    "secenekler": {
+      "A": "Yemek yapmak",
+      "B": "İlk yardım müdahalesi yapmak",
+      "C": "Bozuk eşyaları tamir etmek",
+      "D": "Resim çizmek"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "[Görselde Efe kıyafeti giymiş, zeybek oynayan bir kişi ve yanında bindallı giymiş, elinde kına tepsisi tutan bir kadın çizilmiştir.]\n\nBu görsel aşağıdaki kavramlardan hangisini yansıtır?",
+    "secenekler": {
+      "A": "Kültürel değerlerimiz",
+      "B": "Modern sanat",
+      "C": "Eğitim sistemi",
+      "D": "Spor etkinlikleri"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "[Görselde kırmızı cıvalı bir termometre çizilmiştir. Termometrenin üzerindeki cıva çizgisi 35 dereceyi göstermekte, arka planda terleyen bir güneş resmi yer almaktadır.]\n\nGörsele göre havanın durumu hakkında ne söylenebilir?",
+    "secenekler": {
+      "A": "Hava çok soğuk ve karlı",
+      "B": "Hava oldukça sıcak",
+      "C": "Sürekli yağmur yağıyor",
+      "D": "Rüzgarlı bir fırtına var"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "[Görselde büyük bir dağcı sırt çantası yer almaktadır. Çantaya bağlı bir mat yatak ve uyku tulumu asılıdır. Çantanın yan ceplerinden matara ve küçük bir kamp ocağı görünmektedir.]\n\nBu çantanın sahibi muhtemelen nereye gitmektedir?",
+    "secenekler": {
+      "A": "Kütüphaneye",
+      "B": "Sinemaya",
+      "C": "Okula",
+      "D": "Doğa kampına"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "[Görselde bir mikroskobun merceğinden bakan bir öğrenci ve mikroskobun altında incelenen bir yaprak hücresi çizilmiştir.]\n\nBu görselde öğrencinin yaptığı etkinlik aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Gökyüzündeki yıldızları izlemek",
+      "B": "Gözle görülemeyecek kadar küçük yapıları incelemek",
+      "C": "Kitap okumak",
+      "D": "Uzaktaki nesneleri yakınlaştırmak"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "[Görselde büyük bir sergi salonunun duvarlarında çeşitli yağlı boya tablolar asılıdır. İnsanlar sessizce tabloları incelemekte ve bazılarının fotoğrafını çekmektedir.]\n\nBu mekanın işlevi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Alışveriş yapmak",
+      "B": "Sanat eserlerini sergilemek",
+      "C": "Spor müsabakaları düzenlemek",
+      "D": "Film izletmek"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "[Görselde bir elinde süt bardağı tutan, yüzü gülümseyen ve kol kaslarını gösteren sağlıklı bir çocuk çizilmiştir. Resmin üstünde 'Süt İç, Güçlü Ol!' yazmaktadır.]\n\nBu görselin temel mesajı nedir?",
+    "secenekler": {
+      "A": "Süt içmenin çocukların sağlığı ve gelişimi için faydalı olduğu",
+      "B": "Sadece spor yapan çocukların süt içmesi gerektiği",
+      "C": "Sütün sadece sabahları içilebileceği",
+      "D": "Güçlü olmak için sütün yetersiz kaldığı"
+    },
+    "dogru_cevap": "A"
+  }
+]

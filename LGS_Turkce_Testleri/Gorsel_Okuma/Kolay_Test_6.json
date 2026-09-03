@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "[Görselde bir çocuk yemek masasında, parkta ve yatakta sürekli cep telefonunun ekranına bakmaktadır. Etrafındaki ailesini ve arkadaşlarını fark etmemektedir.]\n\nBu görselin temel eleştirisi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Teknolojinin hayatı kolaylaştırması",
+      "B": "Telefonların pahalı olması",
+      "C": "Teknoloji bağımlılığı ve iletişimsizlik",
+      "D": "Oyun oynamanın faydaları"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "[Görselde bir uçak bileti yer almaktadır. Bilette 'Kalkış: İstanbul', 'Varış: Ankara', 'Uçuş Saati: 08.45', 'Kapı: 104' yazılıdır.]\n\nBileti elinde bulunduran yolcu saat kaçta uçağa binecektir?",
+    "secenekler": {
+      "A": "Akşam saatlerinde",
+      "B": "Öğlen 12.00'de",
+      "C": "Sabah 08.45'te",
+      "D": "Gece yarısı"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "[Görselde eski usul bir duvar takvimi yaprağı yer almaktadır. Büyük rakamla '23', üstte 'Nisan', altta ise 'Cuma' yazmaktadır. Yaprağın arkasında kısa bir şiir vardır.]\n\nBu takvim yaprağına göre aşağıdaki bilgilerden hangisine ulaşılamaz?",
+    "secenekler": {
+      "A": "Ayın kaçıncı günü olduğuna",
+      "B": "Haftanın hangi günü olduğuna",
+      "C": "Hangi ayda bulunulduğuna",
+      "D": "O gün havanın nasıl olacağına"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "[Görselde beyaz bir perdeye yansımış olan Karagöz ve Hacivat gölge oyunu figürleri yer almaktadır. Perdenin arkasında bu figürleri sopalarla oynatan bir hayali (oynatıcı) bulunmaktadır.]\n\nBu görsel, kültürümüzün hangi unsurunu yansıtmaktadır?",
+    "secenekler": {
+      "A": "Geleneksel Türk Tiyatrosu",
+      "B": "Modern sinema",
+      "C": "Halk oyunları",
+      "D": "Çocuk edebiyatı"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "[Görselde kırmızı çatılı büyük bir ahır, ahırın önünde otlayan inekler, yem yiyen tavuklar ve bir at çizilmiştir. Arka planda yemyeşil dağlar vardır.]\n\nBu görselin teması aşağıdakilerden hangisi olabilir?",
+    "secenekler": {
+      "A": "Şehir hayatı",
+      "B": "Uzay yolculuğu",
+      "C": "Çiftlik hayatı ve doğa",
+      "D": "Tarihi eserler"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "[Görselde büyük bir Türkiye fiziki haritası bulunmaktadır. Haritada dağlar kahverengi, denizler ve göller mavi, ovalar yeşil renkle gösterilmiştir.]\n\nBu haritada ormanlık veya düz alanları bulmak isteyen biri hangi renge dikkat etmelidir?",
+    "secenekler": {
+      "A": "Kahverengi",
+      "B": "Yeşil",
+      "C": "Mavi",
+      "D": "Kırmızı"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "[Görselde yuvarlak, cepte taşınabilen klasik bir pusula yer almaktadır. Pusulanın kırmızı ibresi 'N' harfini, diğer ibresi 'S' harfini göstermektedir.]\n\nKırmızı ibrenin gösterdiği 'N' harfi hangi yönü ifade eder?",
+    "secenekler": {
+      "A": "Kuzey",
+      "B": "Güney",
+      "C": "Doğu",
+      "D": "Batı"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "[Görselde suyun altında oksijen tüpüyle yüzen bir dalgıç ve etrafında rengarenk mercanlar, denizyıldızları ve balıklar yer almaktadır.]\n\nBu görsele en uygun başlık aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Kutup Hayvanları",
+      "B": "Çöl Kumları",
+      "C": "Gökyüzü Gizemi",
+      "D": "Su Altı Dünyası"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "[Görselde üzerinde 'İlçe Halk Kütüphanesi Üye Kartı' yazan plastik bir kart görülmektedir. Kartta bir fotoğraf, üye numarası ve okurun adı-soyadı yer almaktadır.]\n\nBu kartın sahibiyle ilgili olarak aşağıdakilerden hangisi söylenebilir?",
+    "secenekler": {
+      "A": "Otobüse ücretsiz binebilir.",
+      "B": "Kütüphaneden ödünç kitap alabilir.",
+      "C": "Kütüphanede çalışmaktadır.",
+      "D": "Kitap yazarıdır."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "[Görselde bir ağacın dallarından çeşitli sosyal medya platformlarının simgeleri sarkmaktadır. Ağacın köklerinde ise 'İletişim' yazısı bulunmaktadır.]\n\nBu görselin vermek istediği mesaj aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Sosyal medyanın doğaya zarar verdiği",
+      "B": "Ağaçların internet ağlarını güçlendirdiği",
+      "C": "Sosyal medya platformlarının birer iletişim aracı olduğu",
+      "D": "İletişimin sadece yüz yüze yapılabileceği"
+    },
+    "dogru_cevap": "C"
+  }
+]

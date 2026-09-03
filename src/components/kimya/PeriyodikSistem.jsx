@@ -36,7 +36,7 @@ function DegerlikNoktalari({ element }) {
   )
 }
 
-function ElementHucre({ element, secili, sonuk, onSec, degerlikGoster }) {
+export function ElementHucre({ element, secili, sonuk, onSec, degerlikGoster }) {
   const kategori = KATEGORI_SOZLUGU[element.kategori]
   return (
     <button
@@ -51,6 +51,7 @@ function ElementHucre({ element, secili, sonuk, onSec, degerlikGoster }) {
         color: kategori.metin,
       }}
       onClick={() => onSec(element)}
+      aria-pressed={secili}
       title={`${element.ad} — ${kategori.ad}`}
       aria-label={`${element.sembol}, ${element.ad}, atom numarası ${element.atomNo}`}
     >

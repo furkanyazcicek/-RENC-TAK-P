@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Edebiyat, sadece kelimelerin güzel bir araya getirilmesi değildir; o, insanın iç dünyasına tutulmuş bir aynadır. Okuduğumuz her iyi roman veya şiir, bize başka insanların mutluluklarını, acılarını, korkularını hissettirir. Bu sayede sadece kendimiz olmaktan çıkar, bütün insanlığın duygularını içimizde taşımaya başlarız.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "a": "Edebiyat eserleri yazarlarının hayatını yansıtır.",
+    "b": "Kelimeleri ustaca kullanan herkes iyi bir edebiyatçı olabilir.",
+    "c": "Edebiyat, empati kurmamızı sağlayarak bizi diğer insanlarla bütünleştirir.",
+    "d": "Şiir yazmak, roman yazmaktan çok daha zor bir süreçtir.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Tiyatro sahnesi, toplumun aynasıdır. Bir oyunu izlerken sahnede kendi hatalarımızı, toplumumuzun eksikliklerini veya güzelliklerini görürüz. Oyuncuların performansıyla canlanan karakterler, aslında sokakta her gün yanından geçip gittiğimiz, ancak fark etmediğimiz insanların ta kendisidir.\n\nBu parçadan aşağıdaki yargıların hangisi çıkarılamaz?",
+    "a": "Tiyatronun toplumsal gerçeklikten beslendiği",
+    "b": "Tiyatroda sergilenen karakterlerin hayattan alındığı",
+    "c": "Tiyatronun insanlara kendi eksiklerini fark ettirebildiği",
+    "d": "Sinemanın tiyatroya göre daha geniş kitlelere ulaştığı",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Şiir, düzyazıdan farklı olarak az kelimeyle çok şey anlatma sanatıdır. Bir şair, sayfalarca yazılacak bir duyguyu bir mısraya, bir kelimenin tınısına sığdırabilir. Şiir okumak, o birkaç kelimenin ardındaki koca bir dünyayı keşfetmek için kelimelerle dans etmektir.\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "a": "Şiirin kendine özgü yoğun anlatımı",
+    "b": "Düzyazının şiire göre daha kalıcı olması",
+    "c": "Günümüzde şiire olan ilginin azalması",
+    "d": "Şairlerin kelime dağarcığının genişliği",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Müzik evrensel bir dildir. Bir şarkının sözlerini hiç anlamasanız bile, içindeki hüzün veya coşku sizi doğrudan etkiler. Aynı melodi eşliğinde dünyanın bir ucundaki bir insan ağlarken, diğer ucundaki insan aynı hüznü kalbinde hissedebilir. Notalar, tüm sınırları ortadan kaldırır.\n\nBu parçada asıl anlatılmak istenen aşağıdakilerden hangisidir?",
+    "a": "Farklı kültürlerin farklı müzik aletleri kullandığı",
+    "b": "Müziğin söz olmadan da tüm insanları ortak duygularda birleştirdiği",
+    "c": "Şarkı sözlerinin melodiden daha az önemli olduğu",
+    "d": "Klasik müziğin popüler müzikten daha evrensel olduğu",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Resim sanatı zaman içinde büyük değişimler geçirdi. Rönesans döneminde gerçeği birebir yansıtmak ustalığın zirvesiyken, fotoğraf makinesinin icadıyla ressamlar gerçeği kopyalamak yerine iç dünyalarını yansıtmaya yöneldiler. Böylece izlenimcilik ve soyut sanat gibi yeni akımlar doğdu.\n\nBu metinde aşağıdakilerden hangisine değinilmemiştir?",
+    "a": "Fotoğraf makinesinin resim sanatını nasıl etkilediğine",
+    "b": "Rönesans dönemi resimlerinin genel özelliğine",
+    "c": "Soyut sanatın halk tarafından anlaşılamadığına",
+    "d": "Ressamların zamanla dış dünyadan çok iç dünyalarına odaklandığına",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Bir yazarın üslubu, onun parmak izi gibidir. Konu aynı bile olsa, her yazar o konuyu farklı kelimelerle, farklı bir ritimle işler. Bir aşk hikayesini okurken yazarın seçtiği kelimelerden ve kurduğu uzun veya kısa cümlelerden eserin kime ait olduğunu tahmin edebilirsiniz.\n\nBu metne göre 'üslup' ile ilgili hangisi söylenebilir?",
+    "a": "Bir eserin sadece ne anlattığıyla ilgilidir.",
+    "b": "Yazara özgü anlatım tarzı ve dil kullanımıdır.",
+    "c": "Eserin çok satmasını sağlayan en önemli unsurdur.",
+    "d": "Yazarın başkalarından etkilendiği bölümlerdir.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Klasik eserler, yazıldıkları dönemin sınırlarını aşıp yüzyıllar sonra bile okuyucuyla bağ kurabilen yapıtlardır. Suç ve Ceza veya Sefiller gibi eserler, insan doğasının değişmez gerçeklerini işledikleri için bugün de taptaze bir ruhla okunabilmektedir.\n\nBu metne göre bir eseri 'klasik' yapan asıl özellik aşağıdakilerden hangisidir?",
+    "a": "Çok karmaşık bir olay örgüsüne sahip olması",
+    "b": "Sadece döneminin siyasi olaylarını anlatması",
+    "c": "İnsanlığın evrensel ve kalıcı özelliklerini yansıtması",
+    "d": "Yazarının kendi döneminde tanınmış olması",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Sanatın temel amacı doğayı kopyalamak değil, ona yeni bir yorum katmaktır. Bir ressam gün batımını aynen gördüğü gibi çizmek istese fotoğrafını çekerdi; ancak o, gün batımının kendisinde uyandırdığı coşkuyu fırça darbelerine yansıtarak doğayı yeniden inşa eder.\n\nBu parçada vurgulanan düşünce aşağıdakilerden hangisidir?",
+    "a": "Fotoğraf sanatının resim sanatından daha gerçekçi olduğu",
+    "b": "Sanatçının, gerçeği kendi duygu ve düşünceleriyle harmanlayarak sunduğu",
+    "c": "Doğa resimlerinin diğer türlere göre daha zor çizildiği",
+    "d": "Sanatçıların dış dünyayı tamamen göz ardı ettiği",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Sinema hem görsel hem işitsel gücü kullanarak izleyiciyi çok kısa sürede hikayenin içine çeker. Işık, müzik, oyunculuk ve kurgu birleşerek bizi bambaşka bir zamana ve mekana götürür. Karanlık bir salonda iki saatliğine kendi dertlerimizi unutup perdedeki karakterlerin kaderine ortak oluruz.\n\nBu metin için en uygun başlık aşağıdakilerden hangisidir?",
+    "a": "Sinemanın Büyülü Dünyası",
+    "b": "Tiyatro ve Sinema Karşılaştırması",
+    "c": "Müziğin Sinemadaki Rolü",
+    "d": "Sinema Sektörünün Ekonomik Yönü",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Kitap okuma alışkanlığı, insan zihnini besleyen en zengin kaynaktır. Okuyan insan, olaylara çok yönlü bakmayı öğrenir, kelime dağarcığı zenginleştiği için kendini daha iyi ifade eder ve karşılaştığı sorunlar karşısında pratik çözümler üretebilir. Okumamak ise zihnin paslanmasına neden olur.\n\nBu parçaya göre aşağıdakilerden hangisi kitap okumanın sağladığı faydalardan biri değildir?",
+    "a": "İfade gücünü artırması",
+    "b": "Farklı bakış açıları kazandırması",
+    "c": "Sorun çözme becerisini geliştirmesi",
+    "d": "İnsanı gerçek dünyadan tamamen koparması",
+    "cevap": "D"
+  }
+]

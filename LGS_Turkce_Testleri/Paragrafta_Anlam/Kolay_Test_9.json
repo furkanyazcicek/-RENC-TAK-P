@@ -1,0 +1,112 @@
+[
+  {
+    "soruNo": 1,
+    "soruMetni": "Vefa, sadece bir semt adı değil, insanın yüreğinde taşıması gereken en asil duygudur. Bize emeği geçen, zor günümüzde yanımızda olan insanları unutmamak vefasızlıktan uzak olmaktır. Yaşlı bir öğretmenimizi yıllar sonra ziyaret etmek ya da eski bir dostu arayıp halini sormak bu duygunun en güzel örneklerindendir.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Öğretmenlerimizi sadece bayramlarda ziyaret etmeliyiz.",
+      "B": "Arkadaşlarımızla sürekli telefonla konuşmalıyız.",
+      "C": "Vefa semtinde yaşayan insanlar çok sıcakkanlıdır.",
+      "D": "İnsan, kendisine yapılan iyilikleri ve eski dostlukları unutmamalıdır."
+    },
+    "dogruCevap": "D"
+  },
+  {
+    "soruNo": 2,
+    "soruMetni": "İyi bir yazar olmanın yolu, iyi bir gözlemci olmaktan geçer. Sokakta yürürken insanların yüz ifadelerine dikkat etmek, doğadaki değişimi fark etmek yazarın malzeme deposunu doldurur. Gözlem yapmayan bir yazar, anlattığı olayları inandırıcı kılamaz, karakterleri ise cansız kalır.\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Sokakta yürüyüş yapmanın faydaları",
+      "B": "Kitapların nasıl basıldığı ve satıldığı",
+      "C": "Yazarlıkta gözlem yapmanın önemi",
+      "D": "Roman karakterlerinin nasıl olması gerektiği"
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 3,
+    "soruMetni": "(I) Yeni nesil bilgisayar oyunları çocukların bütün vaktini alıyor. (II) Sürekli ekran karşısında olmak göz sağlığını da olumsuz etkiliyor. (III) Geleneksel sokak oyunları çocukların fiziksel gelişimini desteklerdi. (IV) Oyun başından kalkmayan çocuklar sosyalleşme konusunda da sıkıntı yaşıyor.\n\nBu metinde numaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?",
+    "secenekler": {
+      "A": "III",
+      "B": "I",
+      "C": "II",
+      "D": "IV"
+    },
+    "dogruCevap": "A"
+  },
+  {
+    "soruNo": 4,
+    "soruMetni": "Müzik aleti çalmak, beynin her iki yarım küresini aynı anda çalıştıran mucizevi bir eylemdir. Piyano veya keman çalarken hem nota okumak hem de parmakları doğru kullanmak gerekir. Bu da dikkat ve odaklanma becerisini artırır. Ayrıca enstrüman çalan çocukların hafızalarının daha güçlü olduğu bilimsel olarak kanıtlanmıştır.\n\nBu parçada müzik aleti çalmakla ilgili aşağıdakilerden hangisine değinilmemiştir?",
+    "secenekler": {
+      "A": "Beynin iki bölümünü de çalıştırdığına",
+      "B": "Hangi enstrümanın öğrenilmesinin daha kolay olduğuna",
+      "C": "Dikkat ve odaklanma yeteneğini geliştirdiğine",
+      "D": "Çocukların hafızasını güçlendirdiğine"
+    },
+    "dogruCevap": "B"
+  },
+  {
+    "soruNo": 5,
+    "soruMetni": "Bir ağacın dalları gökyüzüne ne kadar uzanırsa uzansın, onu ayakta tutan şey kökleridir. İnsan da böyledir; ailesi onun kökleridir. Aile bağları güçlü olan bireyler, hayatta karşılaştıkları fırtınalarda kolay kolay yıkılmazlar. Sevgi ve güvenle birbirine bağlı bir aile, en sağlam sığınaktır.\n\nBu metne getirilebilecek en uygun başlık aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Ağaçların Büyümesi",
+      "B": "Fırtınalı Havalar",
+      "C": "Köklerin Önemi",
+      "D": "Aile Bağlarının Gücü"
+    },
+    "dogruCevap": "D"
+  },
+  {
+    "soruNo": 6,
+    "soruMetni": "- - - -? \nİlk yardım, herhangi bir kaza veya hayati tehlike anında, sağlık ekipleri gelene kadar yapılan ilk müdahaledir. Amacı, hastanın veya yaralının durumunun daha da kötüye gitmesini önlemek ve hayatta kalmasını sağlamaktır. Bu nedenle ilk yardım eğitimi almak hepimiz için hayati bir sorumluluktur.\n\nBu metin aşağıdaki sorulardan hangisine verilmiş bir cevap olabilir?",
+    "secenekler": {
+      "A": "İlk yardım nedir ve amacı nedir?",
+      "B": "Ambulanslar ne kadar sürede gelir?",
+      "C": "Doktor olmak için hangi okullara gitmek gerekir?",
+      "D": "Hastanelerde hangi bölümler bulunur?"
+    },
+    "dogruCevap": "A"
+  },
+  {
+    "soruNo": 7,
+    "soruMetni": "Kütüphaneler, insanlığın bilgi hazineleridir. Binlerce kitap, raflarda sessizce okuyucularını bekler. Her bir kitap, farklı bir dünyaya açılan kapı gibidir. Kütüphaneye adım attığınızda derin bir sessizlik sizi karşılar, çünkü orada - - - -.\n\nBu metnin sonuna anlam akışına göre aşağıdakilerden hangisi getirilmelidir?",
+    "secenekler": {
+      "A": "yüksek sesle müzik dinlenir",
+      "B": "sadece kitapların ve düşüncelerin fısıltısı vardır",
+      "C": "insanlar saatlerce uyurlar",
+      "D": "kitaplar hiçbir zaman okunmaz"
+    },
+    "dogruCevap": "B"
+  },
+  {
+    "soruNo": 8,
+    "soruMetni": "Sabahın erken saatlerinde şehrin gürültüsü çoktan başlamıştı. Araçların kornaları, işe yetişmeye çalışan insanların telaşlı adımlarına karışıyordu. Egzoz dumanından genzi yakan bir hava vardı. Karşıdaki simitçinin camından ise taze susamlı simitleri görebiliyordum.\n\nBu parçada aşağıdaki duyulardan hangisine yer verilmemiştir?",
+    "secenekler": {
+      "A": "Görme",
+      "B": "İşitme",
+      "C": "Tat alma",
+      "D": "Koklama"
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 9,
+    "soruMetni": "Yağmurun hızla yağdığı bir akşamüzeriydi. Zeynep, sokakta miyavlayan yavru bir kedi duydu. Kedicik sırılsıklam olmuş ve titriyordu. Zeynep hemen bir havlu alıp sokağa koştu, kediyi sarıp sarmalayarak eve getirdi. Ona sıcak bir süt verdiğinde kedinin mırıldanması tüm yorgunluğunu almıştı.\n\nBu metinle ilgili olarak hangisi söylenemez?",
+    "secenekler": {
+      "A": "Olay: Zeynep'in yağmurda ıslanan bir kediyi kurtarması.",
+      "B": "Zaman: Yağmurlu bir akşamüzeri.",
+      "C": "Kişi/Varlık: Zeynep ve yavru kedi.",
+      "D": "Mekân: Bir veteriner kliniği."
+    },
+    "dogruCevap": "D"
+  },
+  {
+    "soruNo": 10,
+    "soruMetni": "Arılar, doğanın en çalışkan işçileridir. Bir damla bal üretebilmek için binlerce çiçeği dolaşırlar. Ancak arıların tek görevi bal yapmak değildir; bitkilerin üremesini sağlayan tozlaşma işlemini de gerçekleştirirler. Eğer dünyada arılar yok olursa, pek çok bitki türü meyve veremez ve doğanın dengesi bozulur.\n\nBu parçadan arılarla ilgili aşağıdakilerden hangisine ulaşılabilir?",
+    "secenekler": {
+      "A": "Bal yapmanın dışında bitkilerin üremesinde de çok önemli bir role sahiptirler.",
+      "B": "Sadece kovanlarında kalarak bal üretirler.",
+      "C": "Arıların yok olması dünyadaki hayatı hiç etkilemez.",
+      "D": "Dünyadaki en tembel böcek türüdür."
+    },
+    "dogruCevap": "A"
+  }
+]

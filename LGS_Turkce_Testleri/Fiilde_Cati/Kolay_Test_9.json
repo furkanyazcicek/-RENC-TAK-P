@@ -1,0 +1,125 @@
+{
+  "test_adi": "Fiilde Çatı - Kolay Test 9",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde özne işi yapan kişidir?",
+      "secenekler": {
+        "A": "Tarihi eserler müzeye dikkatlice taşındı.",
+        "B": "Arkeolojik kazılar geçen ay tamamlandı.",
+        "C": "Rehber, turistlere antik kenti anlattı.",
+        "D": "Sergideki kılıçlar özel camlarda korundu."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde eylemi (anlatma işini) yapan kişi rehberdir ve bellidir. Diğer seçeneklerde eylemi kimin yaptığı belli değildir (edilgen)."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "İsim cümlelerinde çatı aranmaz. Hangisi bu kurala örnektir?",
+      "secenekler": {
+        "A": "Tarih dersini çok severim.",
+        "B": "Müzedeki heykeller oldukça eskiydi.",
+        "C": "Kazı ekibi yeni bir mozaik buldu.",
+        "D": "Padişahın fermanı yüksek sesle okundu."
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğindeki 'eskiydi' yüklemi isim soyludur. Bu yüzden çatı aranmaz."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Hangi cümlenin yüklemi geçişli bir eylemdir?",
+      "secenekler": {
+        "A": "Antik tiyatroda saatlerce oturduk.",
+        "B": "Turistler eski harabeleri fotoğrafladı.",
+        "C": "Geziden dönerken otobüste uyuduk.",
+        "D": "Tarihi kaleye çıkarken çok yorulduk."
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğindeki 'fotoğrafladı' fiili nesne alabilmektedir (neyi fotoğrafladı? - harabeleri). Bu nedenle geçişlidir."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde edilgen çatılı bir fiil vardır?",
+      "secenekler": {
+        "A": "Arkeologlar fırçayla toprağı temizledi.",
+        "B": "Kazı başkanı ekibine bilgi verdi.",
+        "C": "Toprak altındaki altın sikkeler çıkarıldı.",
+        "D": "Müze müdürü yeni sergiyi geziyor."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde sikkeleri çıkaran kişi belli değildir, bu yüzden yüklem edilgen çatılıdır."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Nesne alabilen fiillere geçişli denir. Hangi fiil nesne alabilir?",
+      "secenekler": {
+        "A": "durmak",
+        "B": "gitmek",
+        "C": "gezmek",
+        "D": "yatmak"
+      },
+      "dogru_cevap": "C",
+      "cozum": "'Gezmek' fiilinin başına 'onu' kelimesini getirdiğimizde anlamlı olur (onu gezmek), nesne alabilir. Diğerleri alamaz."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "'Gezi sırasında tarihi mekanları ...' cümlesi hangisiyle tamamlanırsa cümle etken-geçişli olur?",
+      "secenekler": {
+        "A": "dolaşıldı",
+        "B": "ziyaret edildi",
+        "C": "incelendi",
+        "D": "gezdik"
+      },
+      "dogru_cevap": "D",
+      "cozum": "'gezdik' eylemini yapan biz'iz (etken) ve nesne (tarihi mekanları) alabildiği için geçişlidir."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Hangi cümlede geçişsiz bir fiil kullanılmıştır?",
+      "secenekler": {
+        "A": "Öğrenciler müze kartlarını çıkardı.",
+        "B": "Rehber eski uygarlıkları anlattı.",
+        "C": "Turist grubu yorgunluktan duraksadı.",
+        "D": "Çiniden yapılmış vazoları inceledi."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde 'duraksadı' eylemi nesne alamaz (onu duraksadı anlamsızdır), bu nedenle geçişsizdir."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Aşağıdaki cümlelerden hangisinin çatı özelliği doğru verilmiştir?",
+      "secenekler": {
+        "A": "'Surların onarımı bitti.' - Edilgen / Geçişsiz",
+        "B": "'Tarihi kitaplar çevrildi.' - Etken / Geçişli",
+        "C": "'Padişah sefere çıktı.' - Etken / Geçişsiz",
+        "D": "'Anıt mezarlar bulundu.' - Etken / Geçişli"
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde eylemi gerçekleştiren bellidir (Etken) ve eylem nesne alamaz (Geçişsiz). Bu yüzden eşleştirme doğrudur."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "'Gizli öznesi olan cümleler etken çatılıdır.' Hangi cümlenin çatısı etkendir?",
+      "secenekler": {
+        "A": "Müzeye giriş biletleri kontrol edildi.",
+        "B": "Sarayın bahçesindeki lalelere bakıldı.",
+        "C": "Antik kentin girişinde uzun süre bekledik.",
+        "D": "Sergideki tarihi kıyafetler yenilendi."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde eylemi gerçekleştiren 'biz'dir ve gizli öznedir. Bu nedenle etken çatılıdır."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "'Müzedeki güvenlik görevlisi kapıyı açtı.' cümlesindeki çatı özellikleri sırasıyla hangisinde verilmiştir?",
+      "secenekler": {
+        "A": "Etken - Geçişli",
+        "B": "Edilgen - Geçişsiz",
+        "C": "Etken - Geçişsiz",
+        "D": "Edilgen - Geçişli"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Eylemi gerçekleştiren bellidir (güvenlik görevlisi - etken) ve nesne almıştır (kapıyı - geçişli)."
+    }
+  ]
+}

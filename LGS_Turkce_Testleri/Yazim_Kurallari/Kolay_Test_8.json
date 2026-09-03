@@ -1,0 +1,122 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde büyük harflerin yazımıyla ilgili bir yanlışlık vardır?",
+    "secenekler": {
+      "A": "Türkiye Büyük Millet Meclisi yarın toplanıyor.",
+      "B": "Doktor Ali bey hastalarını muayene etti.",
+      "C": "Kedimiz Tekir çok sevimli bir hayvandır.",
+      "D": "Dün akşam amcamlara gittik."
+    },
+    "dogru_cevap": "B",
+    "cozum": "Saygı bildiren sözler (bey, hanım) büyük harfle başlar. 'Ali Bey' olmalıdır."
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdakilerin hangisinde 'de/da'nın yazımı doğrudur?",
+    "secenekler": {
+      "A": "Bu kitap ben de kalmış.",
+      "B": "Sen de bizimle gelmelisin.",
+      "C": "Okul da büyük bir etkinlik var.",
+      "D": "Çanta da ne ararsan bulursun."
+    },
+    "dogru_cevap": "B",
+    "cozum": "Bağlaç olan 'de' ayrı, ek olan 'de' bitişik yazılır. A'da 'bende', C'de 'okulda', D'de 'Çantada' olmalıdır."
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki kelimelerden hangisinin yazımı yanlıştır?",
+    "secenekler": {
+      "A": "Tıraş",
+      "B": "Klavuz",
+      "C": "Sürpriz",
+      "D": "Antrenman"
+    },
+    "dogru_cevap": "B",
+    "cozum": "'Kılavuz' şeklinde aradaki ı harfi ile yazılmalıdır."
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'ki'nin yazımında hata yapılmıştır?",
+    "secenekler": {
+      "A": "Duydum ki unutmuşsun beni.",
+      "B": "Sınıftaki öğrenciler dışarı çıktı.",
+      "C": "Öyle üzgünümki anlatamam.",
+      "D": "Benimki yine gecikti."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Bağlaç olan 'ki' ayrı yazılmalıdır. 'üzgünüm ki' şeklinde olmalıdır."
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde sayıların yazımıyla ilgili bir yanlışlık vardır?",
+    "secenekler": {
+      "A": "Babam kırk beş yaşında.",
+      "B": "Sınava yüziki kişi katıldı.",
+      "C": "Kitabın ellinci sayfasını okuyorum.",
+      "D": "İkinci kattaki daireyi kiraladık."
+    },
+    "dogru_cevap": "B",
+    "cozum": "Birden fazla kelimeden oluşan sayılar ayrı yazılır. 'yüz iki' olmalıdır."
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde kısaltmalara getirilen ekin yazımı yanlıştır?",
+    "secenekler": {
+      "A": "TBMM'nin açılış töreni yapıldı.",
+      "B": "PTT'den kargom geldi.",
+      "C": "THY'nin uçak biletleri pahalandı.",
+      "D": "TDK'nun yeni sözlüğü çıktı."
+    },
+    "dogru_cevap": "D",
+    "cozum": "Büyük harfle yapılan kısaltmalara ekler kısaltmanın son harfinin okunuşuna göre gelir. 'TDK'nin' olmalıdır."
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde pekiştirmeli sözcüklerin yazımı yanlıştır?",
+    "secenekler": {
+      "A": "Gökyüzü mas maviydi.",
+      "B": "Sapsarı saçları rüzgarda dalgalanıyordu.",
+      "C": "Tertemiz bir oda bizi bekliyordu.",
+      "D": "Çocuklar çırılçıplak yüzüyordu."
+    },
+    "dogru_cevap": "A",
+    "cozum": "Pekiştirmeli sözcükler bitişik yazılır. 'Masmavi' olmalıdır."
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Hangi seçenekte soru ekinin (-mi) yazımı doğrudur?",
+    "secenekler": {
+      "A": "Bu akşam sinemaya gidiyormuyuz?",
+      "B": "Beni biraz dinler misiniz?",
+      "C": "Güzelmi güzel bir araba aldı.",
+      "D": "Oda bizimle gelecek mi?"
+    },
+    "dogru_cevap": "B",
+    "cozum": "Soru eki her zaman ayrı yazılır. A'da 'gidiyor muyuz?', C'de 'Güzel mi güzel' olmalıdır. D'de ise bağlaç olan 'de' ayrı yazılmamıştır, bu yüzden hatalıdır. B şıkkı tamamen doğrudur."
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde ay ve gün adlarının yazımında hata yapılmıştır?",
+    "secenekler": {
+      "A": "Kardeşim 12 mayıs'ta doğdu.",
+      "B": "Her pazar futbol oynarız.",
+      "C": "Okullar eylül ayında açılacak.",
+      "D": "29 Ekim Salı günü tören var."
+    },
+    "dogru_cevap": "A",
+    "cozum": "Belli bir tarih bildiren ay ve gün adları büyük harfle başlar. '12 Mayıs'ta' olmalıdır."
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'şey' kelimesinin yazımı yanlıştır?",
+    "secenekler": {
+      "A": "Hiçbir şey göründüğü gibi değildir.",
+      "B": "Her şey çok güzel olacak.",
+      "C": "Bana birşeyler anlatmak istiyordu.",
+      "D": "Olanlara çok şey borçluyuz."
+    },
+    "dogru_cevap": "C",
+    "cozum": "'Şey' kelimesi her zaman ayrı yazılır. 'bir şeyler' olmalıdır."
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Yapay zeka sistemleri her geçen gün hayatımızın daha çok içine giriyor. Ancak bu sistemler sadece matematiksel verilerle çalışır, vicdan veya ahlak gibi insani değerlere sahip değildirler. Kendi başlarına karar verebilen makinelerin insan hayatını doğrudan etkileyecek seçimler yapması, teknoloji dünyasında ciddi etik tartışmaları beraberinde getirmiştir.\n\nBu metnin ana fikri aşağıdakilerden hangisidir?",
+    "a": "Yapay zeka sadece matematik problemlerini çözmekte başarılıdır.",
+    "b": "Makinelerin vicdani değerlerden yoksun karar vermesi etik sorunlar doğurmaktadır.",
+    "c": "Gelecekte makineler insanlığı yönetecek zekaya ulaşacaktır.",
+    "d": "Yapay zekanın gelişimi durdurulması gereken tehlikeli bir süreçtir.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "İnternet, bilgiyi dünyanın her köşesine anında ulaştıran devasa bir ağdır. Eskiden aylarca kütüphanelerde aranarak ulaşılan bir bilgiye, bugün cep telefonumuzdan birkaç saniye içinde ulaşabiliyoruz. Fakat bu durum bilgi kirliliğini de artırmış, doğru bilgi ile yanlışı ayırt etmeyi zorlaştırmıştır.\n\nBu parçadan aşağıdaki yargıların hangisi çıkarılamaz?",
+    "a": "İnternetin bilgiye erişim hızını olağanüstü artırdığı",
+    "b": "İnternetteki her bilginin güvenilir ve doğru olmadığı",
+    "c": "Eskiden bilgiye ulaşmanın daha zahmetli olduğu",
+    "d": "Basılı kitapların internet karşısında tamamen yok olduğu",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Sosyal medya platformları, insanların dünyanın öbür ucundaki kişilerle iletişim kurmasını sağlarken tuhaf bir şekilde yüz yüze iletişimi de zayıflattı. Aynı odada oturan insanların birbirlerinin yüzüne bakmak yerine ekranlarına odaklandığını sıkça görüyoruz. Yani teknoloji bizi uzağa bağlarken yanımızdakinden uzaklaştırdı.\n\nBu metinde sosyal medya ile ilgili aşağıdakilerden hangisine değinilmemiştir?",
+    "a": "İletişimi küresel çapta kolaylaştırdığına",
+    "b": "Fiziksel ortamdaki iletişime zarar verdiğine",
+    "c": "İnsanları ekran bağımlısı yaptığına",
+    "d": "Sosyal medya şirketlerinin bundan çok gelir elde ettiğine",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Otonom (sürücüsüz) araçlar, insan hatasından kaynaklanan trafik kazalarını en aza indirmeyi hedefliyor. Radar, sensör ve yapay zeka ile donatılmış bu araçlar etrafını sürekli tarayarak tepki süresini kısaltıyor. Ancak sistem hacklenmeleri ve öngörülemeyen doğa olayları hala tam güvenliğin önündeki en büyük engellerdir.\n\nBu parçada asıl anlatılmak istenen aşağıdakilerden hangisidir?",
+    "a": "İnsanların sürücüsüz araçlara asla güvenmeyeceği",
+    "b": "Otonom araçların kazaları önleme potansiyeli olmasına rağmen aşılması gereken bazı güvenlik sorunlarının bulunduğu",
+    "c": "Sürücüsüz araçların sadece güneşli havalarda çalışabildiği",
+    "d": "Gelecekte tüm araçların zorunlu olarak otonom olacağı",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Teknolojinin gelişim hızı o kadar arttı ki, bugün aldığınız en son model bir bilgisayar veya telefon birkaç ay içinde 'eski' kabul ediliyor. Bu baş döndürücü hız, bizleri sürekli yeni bir şeyler satın almaya iterek tüketim çılgınlığını körüklüyor.\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "a": "Elektronik eşyaların giderek pahalılaşması",
+    "b": "Hızlı teknolojik değişimin insanları sürekli tüketime yönlendirmesi",
+    "c": "Yeni model telefonların donanımsal özellikleri",
+    "d": "İnsanların eskiye duyduğu özlem",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Sanal gerçeklik (VR) teknolojisi sadece oyun sektörünü değiştirmiyor; eğitimden sağlığa birçok alanda çığır açıyor. Örneğin cerrahlar, riskli ameliyatları önce sanal gerçeklik gözlükleriyle defalarca deneyimleyebiliyor veya öğrenciler tarihteki önemli bir olayın içine sanal olarak girerek o anı yaşayabiliyor.\n\nBu metin için en uygun başlık aşağıdakilerden hangisidir?",
+    "a": "Oyun Dünyasındaki Yeni Gelişmeler",
+    "b": "Sanal Gerçekliğin Çeşitli Alanlardaki Etkisi",
+    "c": "Doktorların Eğitim Süreci",
+    "d": "Tarihi Öğrenmenin Zorlukları",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Robotların fabrikalarda insan iş gücünün yerini alması üretimi hızlandırdı ve maliyetleri düşürdü. Ancak bu durum, milyonlarca insanın işsiz kalma korkusu yaşamasına neden oldu. Gelecekte kas gücüne dayalı işlerin tamamen robotlara geçeceği, insanların ise sadece zihinsel işlerde çalışacağı öngörülüyor.\n\nBu metinde vurgulanan düşünce aşağıdakilerden hangisidir?",
+    "a": "Robotların her işi insanlardan daha iyi yaptığı",
+    "b": "İnsanların zihinsel işleri yapmaktan hoşlanmadığı",
+    "c": "Robotlaşmanın, çalışma hayatının yapısını değiştirdiği ve insana dayalı bedensel iş gücünü azalttığı",
+    "d": "Fabrikaların üretim kalitesinin düştüğü",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Geleceğin dünyasında kodlama, tıpkı okuma yazma gibi temel bir beceri haline gelecek. Çünkü etrafımızdaki cihazların dili yazılımdır ve bu cihazları yönetebilmek, yeni fikirler üretebilmek için onların dilinden anlamak gerekecek. Kodlama bilmeyenler, dijital dünyanın sadece tüketicisi olmaya mahkumdur.\n\nBu metne göre aşağıdakilerden hangisine ulaşılabilir?",
+    "a": "Kodlama öğrenmek için matematik dehası olmak gerekir.",
+    "b": "Gelecekte kodlama bilmeyenler dijital dünyada söz sahibi ve üretken olamayacaktır.",
+    "c": "Teknolojik cihazların kullanımının gelecekte çok daha karmaşık olacağına",
+    "d": "Bugün kodlama bilenlerin her alanda başarılı olduğuna",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "E-kitap okuyucular, binlerce kitabı incecik bir ekrana sığdırarak taşıma kolaylığı sağladı. Işığı ayarlanabilir ekranlarıyla gece okumalarını da konforlu hale getirdiler. Ancak pek çok okur, kağıdın kokusunu duymak ve sayfaları çevirme hissini yaşamak için hala geleneksel basılı kitaplardan vazgeçemiyor.\n\nBu parçada e-kitaplar ve basılı kitaplar ile ilgili hangisine değinilmemiştir?",
+    "a": "E-kitap okuyucuların fiziksel olarak yer kaplamadığına",
+    "b": "Bazı insanların basılı kitaplardaki fiziksel hissi sevdiğine",
+    "c": "E-kitapların basılı kitaplardan daha ucuz olduğuna",
+    "d": "E-kitap ekranlarının okumayı kolaylaştıran özellikleri olduğuna",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Teknoloji, hayatımızı kolaylaştıran harika bir alettir; ancak kontrol edilmezse efendimiz haline gelebilir. Sabah uyanır uyanmaz ekrana bakan, gününü beğeniler üzerinden değerlendiren bir birey, aslında kullandığı cihazın esiri olmuştur. Teknolojiyi amaç değil, araç olarak görmeliyiz.\n\nBu metinde asıl anlatılmak istenen aşağıdakilerden hangisidir?",
+    "a": "İnsanların teknolojiye bilinçsizce bağlanmasının, onları özgürlükten uzaklaştırdığı",
+    "b": "Sosyal medya beğenilerinin insan psikolojisini iyileştirdiği",
+    "c": "Teknolojinin hiçbir fayda sağlamadan sadece vakit kaybettirdiği",
+    "d": "Günümüz cihazlarının kullanımının çok zor olduğu",
+    "cevap": "A"
+  }
+]

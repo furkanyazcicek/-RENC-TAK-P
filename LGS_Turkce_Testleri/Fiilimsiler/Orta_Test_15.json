@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Düzenli spor yapmak(I), sağlıklı kalmanın(II) en etkili yollarından biridir. Yürüyüş yaparak(III) ve dengeli beslenerek(IV) hastalıklardan korunabiliriz. Bu parçada numaralanmış sözcüklerden hangisi zarf-fiil değildir?",
+    "secenekler": {
+      "A": "I",
+      "B": "III",
+      "C": "IV",
+      "D": "II"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde kalıcı isim vardır?",
+    "secenekler": {
+      "A": "Spor salonuna gitmek ona kendini iyi hissettiriyor.",
+      "B": "Yüzme bilmeyenleri sığ havuza yönlendirdiler.",
+      "C": "Basketbol oynarken sakatlandığı için maça çıkamadı.",
+      "D": "Beslenme çantasındaki kavurmayı antrenmandan sonra yedi."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "'Biten maçın ardından oyuncular birbirini tebrik etti.' cümlesinde altı çizili sözcük ('biten') ile aynı türde bir fiilimsi aşağıdakilerin hangisinde vardır?",
+    "secenekler": {
+      "A": "Turnuvayı kazanmak için çok sıkı çalışmalıyız.",
+      "B": "Sakatlanan sporculara sağlık ekibi hemen müdahale etti.",
+      "C": "Hafta sonu koşuya çıkıp bol bol oksijen depoladı.",
+      "D": "Karşılaşma başlayınca herkes ekran başına kilitlendi."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdakilerin hangisinde hem isim-fiil hem zarf-fiil kullanılmıştır?",
+    "secenekler": {
+      "A": "Düzenli uyku, sporcuların performansını doğrudan etkiler.",
+      "B": "Sabahları koşmayı çok seviyor, her gün bir saat koşuyor.",
+      "C": "Terliyken soğuk su içmek hastalığa davetiye çıkarmaktır.",
+      "D": "Yarışa katılan sporcular büyük bir coşkuyla karşılandı."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Zarf-fiiller cümleye genellikle zaman ya da durum anlamı katar. Aşağıdakilerin hangisinde zarf-fiil cümleye durum anlamı katmıştır?",
+    "secenekler": {
+      "A": "Sporcular stadyuma girerken seyirciler onları alkışladı.",
+      "B": "Hakem düdüğünü çalınca maçın ilk yarısı bitti.",
+      "C": "Antrenör maçtan önce takıma taktik verdiğinde herkes pürdikkat dinledi.",
+      "D": "Rakibini omuzlarından iterek topu almaya çalıştı."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdakilerin hangisinde sıfat-fiil, adlaşmış sıfat-fiil görevinde kullanılmamıştır?",
+    "secenekler": {
+      "A": "Bozulmuş gıdaları tüketmek sağlığımızı ciddi tehlikeye sokar.",
+      "B": "Şampiyonaya katılanlar, madalyalarını gururla taşıdılar.",
+      "C": "Sakatlananların yerine yedek oyuncular maça dâhil oldu.",
+      "D": "Spor yapmayanlar, ileride sağlık sorunları yaşayabilir."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Sağlıklı bir yaşam için(I) sadece bedensel(II) egzersizler yapmak(III) yeterli değildir, aynı zamanda zihinsel(IV) olarak da dinlenmek gerekir. Bu cümlede numaralanmış sözcüklerden hangisi fiilimsidir?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdakilerin hangisinde '-ecek / -acak' eki, diğerlerinden farklı bir görevde kullanılmıştır?",
+    "secenekler": {
+      "A": "Gelecek hafta çok önemli bir turnuvamız var.",
+      "B": "Beslenme uzmanı yarın yeni bir program verecek.",
+      "C": "Hastaneden taburcu edilecek hastalar bekliyor.",
+      "D": "Atılacak adımları önceden planlamamız gerekiyor."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "'Bisiklete binmek beni her zaman rahatlatır.' cümlesindeki isim-fiilin aldığı ekle türce aynı olan eylemsi aşağıdakilerin hangisinde yer almaktadır?",
+    "secenekler": {
+      "A": "Sağlıklı yiyecekleri tercih edenler formunu korur.",
+      "B": "Koşarken nefes nefese kaldı.",
+      "C": "Onunla karşılıklı tenis oynayışı bile ayrı bir keyifti.",
+      "D": "Kurallara uymadığında hakemden sarı kart gördü."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde fiilimsi yoktur?",
+    "secenekler": {
+      "A": "Sabah erkenden kalkıp yürüyüşe çıktı.",
+      "B": "Güneşlenen sporcular bir süre sonra içeri geçti.",
+      "C": "Haftada iki gün ağırlık çalışmasını aksatmıyor.",
+      "D": "Antrenman sonrasında kas ağrıları hafifledi."
+    },
+    "dogru_cevap": "D"
+  }
+]

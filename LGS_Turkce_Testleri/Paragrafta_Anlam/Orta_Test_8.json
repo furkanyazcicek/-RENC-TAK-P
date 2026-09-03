@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Ressam, renkleri fırçasıyla tuvale sadece bir görüntü oluşturmak için sürmez; aynı zamanda ruh halini de o renklere yansıtır. Mavi, sadece gökyüzü değil, bir hüznün veya dinginliğin sembolü olabilir. Kırmızı ise öfkenin ya da tutkunun dilidir. Bu nedenle bir tabloya bakarken sadece ne çizildiğini değil, hangi renklerin nasıl bir duyguyla seçildiğini de okumak gerekir.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Ressamlar genellikle kırmızı ve mavi renkleri kullanmayı tercih ederler.",
+      "B": "Bir tablo sadece görsel bir eser değil, aynı zamanda renklerle örülmüş duygusal bir dışavurumdur.",
+      "C": "Gökyüzünün mavi, güneşin sarı çizilmesi resmin gerçekçiliğini artırır.",
+      "D": "Renklerin anlamını bilmeyen bir kişinin resim sanatını anlaması imkânsızdır."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Modern şehir hayatı bizi sürekli bir gürültünün içine hapsediyor. Arabaların kornaları, iş makinelerinin sesleri, kalabalığın uğultusu... Bu ses kirliliği içinde insan kendi iç sesini duyamaz hale geliyor. Ara sıra doğaya kaçıp sadece rüzgârın yapraklardaki hışırtısını ya da bir derenin şırıltısını dinlemek, insanın bozulan ruhsal akordunu yeniden ayarlar.\n\nBu parçada sessizliğin ve doğanın insan üzerindeki hangi etkisine vurgu yapılmıştır?",
+    "secenekler": {
+      "A": "Şehir hayatındaki sorunlara kalıcı çözümler üretmesine",
+      "B": "Kişinin doğada yeni hobiler edinmesine olanak sağlamasına",
+      "C": "Gürültünün yarattığı ruhsal yorgunluğu gidererek insanı içsel olarak dengelemesine",
+      "D": "Doğa seslerinin müzik aletlerinin akordunu yapmada kullanılmasına"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "(I) Hata yapmak, öğrenme sürecinin en doğal parçasıdır. (II) Ancak pek çok insan hata yapmaktan korktuğu için yeni bir şeyler denemeye cesaret edemez. (III) Hatalarımız, bize neyin işe yaramadığını gösteren en iyi öğretmenlerdir. (IV) Çocuklar okulda öğrendikleri bilgileri hızlıca unutabilirler. (V) Edison da ampulü icat edene kadar binlerce kez hata yapmış ama sonunda başarıya ulaşmıştır.\n\nBu metindeki numaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?",
+    "secenekler": {
+      "A": "II",
+      "B": "III",
+      "C": "IV",
+      "D": "V"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Geleneksel mimarimizde evler sadece barınma ihtiyacını karşılamak için değil, iklime ve komşuluk ilişkilerine uygun olarak yapılırdı. Geniş avlular, rüzgârı içeri alan cumbalar ve birbirinin güneşini kesmeyen çatılar vardı. Günümüzün modern apartmanları ise sadece daha fazla insanı küçük bir alana sığdırma mantığıyla, betondan kutular şeklinde inşa ediliyor.\n\nBu metinde geleneksel mimariyle modern mimari hangi açıdan karşılaştırılmıştır?",
+    "secenekler": {
+      "A": "İnşaat maliyetleri ve dayanıklılıkları",
+      "B": "Yapım süreleri ve kullanılan malzemeler",
+      "C": "Sadece tasarım amaçları ve insanı/doğayı merkeze alma durumları",
+      "D": "Şehir merkezine olan uzaklıkları"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Uzay çöpü, Dünya'nın yörüngesinde başıboş dolanan ve işlevini yitirmiş insan yapımı cisimlere verilen addır. Eski uydular, roket parçaları ve hatta uzay yürüyüşü sırasında düşürülen aletler bu çöplüğü oluşturur. Eğer bu kirlilik temizlenmezse, gelecekte yörünge o kadar dolacak ki yeni uydu göndermek veya uzay araştırmaları yapmak imkânsız hale gelecektir.\n\nBu parçadan uzay çöpüyle ilgili olarak aşağıdakilerden hangisi çıkarılamaz?",
+    "secenekler": {
+      "A": "İnsan faaliyetleri sonucunda oluştuğu.",
+      "B": "Dünya'nın atmosferini zehirli gazlarla doldurduğu.",
+      "C": "Gelecekte uzay araştırmalarına engel olma tehlikesi taşıdığı.",
+      "D": "İşlevini kaybetmiş çeşitli parçalardan meydana geldiği."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Bir yazar kitabı yazar ama onu okuyucuya hazır hale getiren editördür. Editör, metindeki fazlalıkları budayan, mantık hatalarını düzelten ve cümlenin akışını pürüzsüzleştiren görünmez bir kahramandır. İyi bir editör, yazarın sesini değiştirmeden o sesi daha net ve gür çıkmasını sağlar. Editörsüz bir kitap, cilalanmamış bir pırlanta gibidir.\n\nBu metinde yazar, editörün görevini anlatmak için aşağıdaki yollardan hangisine başvurmuştur?",
+    "secenekler": {
+      "A": "Tanık gösterme ve benzetme",
+      "B": "Açıklama ve benzetme",
+      "C": "Karşılaştırma ve sayısal verilerden yararlanma",
+      "D": "Örneklendirme ve tartışma"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "(I) Nostalji, geçmişteki güzel günlere duyulan özlem duygusudur. (II) İnsanlar genellikle yaşadıkları andan mutsuz olduklarında zihinlerini geçmişin güvenli limanına demirler. (III) Geçmişte çekilen siyah beyaz fotoğrafların estetik bir değeri vardır. (IV) Ancak sürekli nostaljiyle yaşamak, bugünün fırsatlarını kaçırmaya ve geleceğe umutsuz bakmaya neden olabilir.\n\nBu metin iki paragrafa bölünmek istense ikinci paragraf hangi cümleyle başlar?",
+    "secenekler": {
+      "A": "II",
+      "B": "III",
+      "C": "IV",
+      "D": "Böyle bir bölünme yapılamaz, çünkü III. cümle akışı bozan cümledir, yeni paragraf başlangıcı değildir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "(Yukarıdaki sorunun yerine yeni soru: I. Gönüllülük, karşılık beklemeden başkalarının hayatına dokunmaktır. II. Bir hayvan barınağında temizlik yapmak ya da bir çocuğa okuma öğretmek gönüllülüktür. III. Ancak günümüzde bazı insanlar bunu sadece sosyal medyada övgü toplamak için yapıyor. IV. Bu durum gönüllülüğün o saf ve fedakâr ruhunu ne yazık ki zedeliyor. \nYukarıdaki numaralanmış cümlelerden hangisi metnin ana fikridir?)\n\nBu metindeki cümlelerin hangisinde yazarın asıl yakınması (eleştirisi) dile getirilmiştir?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Harita okumak, sadece A noktasından B noktasına gitmek değildir. Bir haritaya baktığınızda dağların nasıl kıvrıldığını, nehirlerin hangi vadileri yardığını ve şehirlerin neden o noktalara kurulduğunu anlarsınız. Haritalar, bir coğrafyanın sessizce anlattığı tarih ve doğa hikâyeleridir.\n\nBu metinde haritalarla ilgili vurgulanmak istenen asıl özellik aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Yön bulmak için kullanılan en güvenilir araç olmaları.",
+      "B": "Geçmişten günümüze kadar büyük değişimler geçirmeleri.",
+      "C": "Sadece bir yol gösterici değil, coğrafyayı ve tarihi anlatan bir kaynak olmaları.",
+      "D": "Dağların ve nehirlerin yükseltilerini sayısal olarak göstermeleri."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Her kitabın bir kaderi vardır ve bu kader okuyucunun elinde şekillenir. Yazar kitabı bitirdiğinde işi biter; artık söz sırası okura geçmiştir. Bir kitap bazıları için sadece kâğıt israfı iken, bazıları için başucu rehberidir. Aynı cümle bir okuru ağlatırken, diğerine hiçbir şey hissettirmeyebilir. Çünkü her okur, kitaba kendi hayat tecrübesini de katarak okur.\n\nBu parçadan çıkarılacak en genel yargı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Bir kitabın değeri ve anlamı, onu okuyan kişinin algısına ve tecrübelerine göre değişir.",
+      "B": "Yazarlar her zaman okuyucuların beklentilerine uygun kitaplar yazmalıdır.",
+      "C": "Kitapların kaderini yayınevlerinin yaptığı reklam çalışmaları belirler.",
+      "D": "İyi kitaplar her okurda aynı derin ve yoğun duyguları uyandırır."
+    },
+    "dogru_cevap": "A"
+  }
+]

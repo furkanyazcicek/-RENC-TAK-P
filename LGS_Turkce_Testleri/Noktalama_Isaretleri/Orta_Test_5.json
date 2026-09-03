@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Değerli Misafirler, hoş geldiniz!\nBu cümlede virgülün (,) kullanım amacı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Hitap için kullanılan kelimelerden sonra konmak.",
+      "B": "Anlam karışıklığını önlemek.",
+      "C": "Eş görevli kelime gruplarını birbirinden ayırmak.",
+      "D": "Yüklemden uzak düşmüş özneyi belirtmek."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Aşağıdaki cümlelerin hangisinde noktalı virgül (;) doğru kullanılmıştır?",
+    "secenekler": {
+      "A": "Bu akşam; maça gideceğiz, dedi.",
+      "B": "Bahar geldi; çiçekler açtı.",
+      "C": "Ali; Hasan, Hüseyin ve Veli'den daha uzun boyludur.",
+      "D": "Sana söyleyeceklerim şunlardır; çalışmak ve başarmak."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru": "İki nokta (:) genel ağ adreslerinde kullanılır.\nAşağıdakilerden hangisi bu kurala uygun bir örnektir?",
+    "secenekler": {
+      "A": "www:meb:gov:tr",
+      "B": "http://tdk.gov.tr",
+      "C": "http//:www.meb.gov.tr",
+      "D": "www.tdk.gov.tr:"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Karac'oğlan der ki kondum göçülmez / Acıdır ecel şerbeti içilmez\nBu dizelerde kesme işaretinin (') kullanılma amacı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Özel isimlere getirilen çekim eklerini ayırmak.",
+      "B": "Kişi adlarından sonra gelen saygı sözlerine getirilen ekleri ayırmak.",
+      "C": "Kısaltmalara getirilen ekleri ayırmak.",
+      "D": "Seslerin ölçü ve söyleyiş gereği düştüğünü göstermek."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Ordular! İlk hedefiniz Akdeniz'dir, ileri!\nBu cümlede ünlem (!) işaretinin kullanım gerekçesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Seslenme, hitap ve uyarı bildiren bir sözden sonra kullanılması.",
+      "B": "Şaşkınlık ve korku ifade etmesi.",
+      "C": "Alay, kinaye veya küçümseme anlamı kazandırmak istenmesi.",
+      "D": "Emir kipinin cümleye kattığı anlamı pekiştirmesi."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Aşağıdaki cümlelerin hangisinde nokta (.) sıra bildirmek amacıyla kullanılmıştır?",
+    "secenekler": {
+      "A": "Sınav saat 10.15'te başlayacakmış.",
+      "B": "Bu konuyla ilgili Prof. Dr. Ahmet Bey konuştu.",
+      "C": "Apartmanın 5. katında oturuyorlar.",
+      "D": "Toplantı 12.05.2023 tarihinde yapılacak."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Eser ve yazı adları, bölüm başlıkları tırnak içine alınır.\nAşağıdaki cümlelerin hangisinde bu kurala uygun bir kullanım vardır?",
+    "secenekler": {
+      "A": "Ona \"akıllı\" bir telefon hediye etmişler.",
+      "B": "Yakup Kadri'nin \"Yaban\" romanını mutlaka okumalısın.",
+      "C": "Bugünlerde \"hoşgörü\" kelimesini ne kadar az kullanıyoruz.",
+      "D": "Babam, \"Her zaman dürüst olmalısın.\" derdi."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Aşağıdaki cümlelerin hangisinde kısa çizgi (-) ara sözleri veya ara cümleleri ayırmak için kullanılmıştır?",
+    "secenekler": {
+      "A": "Bu kış -3 derecede dışarıda bekledik.",
+      "B": "Türkçe-Almanca sözlüğümü okulda kaybettim.",
+      "C": "Kelime köklerini bulmak için \"yaz-\" fiiline bakalım.",
+      "D": "Küçük kız -o sessiz ve ürkek çocuk- birden konuşmaya başladı."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Soru işareti (?), soru ifade eden sıralı ve bağlı cümlelerde en sona konur.\nAşağıdakilerden hangisi bu kurala uygun bir örnektir?",
+    "secenekler": {
+      "A": "Çok yakından mı bu sesler, çok uzaklardan mı?",
+      "B": "Nasıl oldu da bu kadar kısa sürede geldin?",
+      "C": "Beni anlıyor mu, anlamıyor mu bilmiyorum.",
+      "D": "Buraya kadar gelip de beni görmeden mi gittin?"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Sözün bir yerde kesilerek geri kalan bölümün okuyucunun hayal dünyasına bırakıldığını göstermek için üç nokta (...) kullanılır.\nAşağıdakilerden hangisi bu kurala uygun bir kullanımdır?",
+    "secenekler": {
+      "A": "Pazardan şunları aldım: elma, armut, muz...",
+      "B": "Seni o kadar çok seviyorum ki...",
+      "C": "Karşımızda masmavi bir deniz, yemyeşil ormanlar...",
+      "D": "Kılavuzu karga olanın burnu b...tan çıkmaz."
+    },
+    "dogru_cevap": "B"
+  }
+]

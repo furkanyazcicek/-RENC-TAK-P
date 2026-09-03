@@ -1,0 +1,82 @@
+[
+  {
+    "soru": "\"Kışın sokaktaki kuşları beslemek hepimizin görevidir.\" cümlesindeki altı çizili fiilimsinin türü aşağıdakilerden hangisidir?",
+    "A": "İsim-fiil",
+    "B": "Sıfat-fiil",
+    "C": "Zarf-fiil",
+    "D": "Çekimli fiil",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde sıfat-fiil kullanılmıştır?",
+    "A": "Kedi, ağaca tırmanmak için fırladı.",
+    "B": "Aslan kükreyince bütün orman sessizliğe büründü.",
+    "C": "Zürafalar yaprakları yiyerek beslenirler.",
+    "D": "Belgeselde hızla koşan çitaları hayranlıkla izledik.",
+    "cevap": "D"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil kullanılmıştır?",
+    "A": "Kangurular yavrularını keselerinde taşırlar.",
+    "B": "Yaralı kuşu tedavi etmek için veterinere götürdü.",
+    "C": "Kartal, avını görünce hızla aşağı doğru süzüldü.",
+    "D": "Ormanda yaşayan canlıların yuvalarını korumalıyız.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde fiilimsi yoktur?",
+    "A": "Göçmen kuşların uçuşu gökyüzünde harika bir manzara oluşturdu.",
+    "B": "Gece olunca ormandaki bütün hayvanlar derin bir uykuya daldı.",
+    "C": "Ağaç kakanın gövdeyi oyan gagasını incelediler.",
+    "D": "Avlanıp karnını doyuran kurtlar yuvaya döndü.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde diğerlerinden farklı türde bir fiilimsi vardır?",
+    "A": "Daldan dala uçup şarkı söyleyen bülbül sustu.",
+    "B": "Akvaryumda yüzen balıklar çok renkliydi.",
+    "C": "Köpek kuyruğunu sallayarak yanımıza yaklaştı.",
+    "D": "Tavşan tehlikeyi sezince çalılıklara saklandı.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde kalıcı isim vardır?",
+    "A": "Kuşlar için pencere kenarına biraz yiyecek koyduk.",
+    "B": "Koyunları otlatmak için sabah erkenden meraya çıktı.",
+    "C": "Karıncalar kışlık erzak toplamak için durmadan çalışır.",
+    "D": "Ayılar kış uykusuna yatan memelilerdendir.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Sıfat-fiillerin nitelediği isim düştüğünde sıfat-fiil adlaşır. Aşağıdaki cümlelerin hangisinde adlaşmış sıfat-fiil kullanılmıştır?",
+    "A": "Kafesteki muhabbet kuşu sürekli ötüyordu.",
+    "B": "Karanlıkta parlayan kedi gözleri onu korkuttu.",
+    "C": "Sokak hayvanlarını koruyanlar, vicdanlı insanlardır.",
+    "D": "Deniz kaplumbağaları yumurtlamak için sahile çıkar.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil cümleye durum anlamı katmıştır?",
+    "A": "Sincaplar cevizleri toprağa gömüp saklarlar.",
+    "B": "Filler hortumlarıyla su içmek için göle geldi.",
+    "C": "Maymunlar ağaçların üzerinde zıplayarak ilerliyordu.",
+    "D": "Yılan sessizce sürünerek avına doğru yaklaştı.",
+    "cevap": "D"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil cümleye zaman anlamı katmıştır?",
+    "A": "Havalar soğuyunca göçmen kuşlar güneye uçar.",
+    "B": "Kanat çırparak gökyüzüne doğru süzüldü.",
+    "C": "Köpek heyecanla havlayıp sahibini karşıladı.",
+    "D": "Bal arıları çiçekten çiçeğe konarak polen toplar.",
+    "cevap": "A"
+  },
+  {
+    "soru": "\"Havlayan köpeği duyunca korkup kaçtı.\" cümlesinde kaç tane fiilimsi kullanılmıştır?",
+    "A": "1",
+    "B": "2",
+    "C": "3",
+    "D": "4",
+    "cevap": "C"
+  }
+]

@@ -1,0 +1,37 @@
+DRKOÇ MARKA ÖZETİ
+
+Ürün tanımı:
+Öğrencinin soru çözümü, analiz, kişisel çalışma planı, ders içeriği ve etkileşimli atlas deneyimini tek öğrenme döngüsünde birleştiren eğitim platformu.
+
+Ana vaat:
+Ezberlemek yerine nasıl çalıştığını gör. Sonucu bulmakla kalma; sıradaki adımı da bil.
+
+Görsel ton:
+Zeki, sofistike, çağdaş, sakin, güvenilir, kesin ve öğrenme odaklı.
+
+Ana renkler:
+- Mor: #7C3AED
+- Mavi: #2563EB
+- Camgöbeği vurgu: #43D9EE
+- Gece zemini: #080A18
+- Lacivert yüzey: #10142B
+- Açık yüzey: #F8FAFF
+
+Tipografi:
+- Başlıklar: Inter Tight veya benzer sıkı, çağdaş sans serif
+- Gövde: Inter veya benzer okunaklı sans serif
+
+Görsel ilkeler:
+- Öğrenme nesnesi kahramandır.
+- Hareket, neden-sonuç veya ilerleme anlatmalıdır.
+- Arayüz sakin kalmalı; birincil öğrenme nesnesiyle yarışmamalıdır.
+- Aurora mor-mavi geçişi yalnız vurgu olarak kullanılmalıdır.
+
+Kaçınılacaklar:
+- Neon siberpunk görünüm
+- Çocukça çizgi film estetiği
+- Jenerik yapay zekâ sitesi görünümü
+- Aşırı cam kart, parlama ve parçacık kullanımı
+- Sahte veya okunamayan uygulama arayüzleri
+- Yapay zekâ tarafından üretilmiş yazılar ve logolar
+- Hızlı, kaotik kamera hareketleri

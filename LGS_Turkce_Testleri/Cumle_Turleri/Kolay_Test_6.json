@@ -1,0 +1,82 @@
+[
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi yapıca fiilimsi bulunan bir cümledir?",
+    "A": "Yeni icat edilen makine çok hızlı çalışıyor.",
+    "B": "Bilim insanları uzayda yeni bir gezegen keşfetti.",
+    "C": "Teknoloji fuarına gideceğiz ama bilet bulamadık.",
+    "D": "Robotik kodlama dersinde çok eğlendik.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Hangi cümle yükleminin türüne göre isim cümlesidir?",
+    "A": "Akıllı telefonların şarjı çok çabuk bitiyor.",
+    "B": "Bilgisayar mühendisliği günümüzün en popüler mesleklerindendir.",
+    "C": "Güneş enerjisi panelleri elektrik üretimine katkı sağlar.",
+    "D": "Laboratuvarda yeni bir deney yapmaya başladılar.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisi devrik bir fiil cümlesidir?",
+    "A": "İnternet bağlantısı kesildi tam o sırada.",
+    "B": "Oldukça ilginçti fuarda sergilenen yeni buluşlar.",
+    "C": "Benim için çok önemlidir bilim kurgu filmleri.",
+    "D": "Yapay zeka teknolojisi hızla gelişiyor günümüzde.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi soru cümlesi değildir?",
+    "A": "Bu programı nasıl kuracağımı biliyor musun?",
+    "B": "Gelecekte uçan arabalar yaygınlaşacak mı?",
+    "C": "Yeni alınan bilgisayarın özelliklerini sordu.",
+    "D": "Mars'a yapılacak yolculuk ne zaman başlayacak?",
+    "cevap": "C"
+  },
+  {
+    "soru": "'Tabletini masaya bıraktı, hemen yemeğe koştu.' cümlesi yapısına göre ne tür bir cümledir?",
+    "A": "Tek yüklemli cümle",
+    "B": "Bağlacı olan cümle",
+    "C": "Fiilimsi bulunan cümle",
+    "D": "Birden çok yüklemli (sıralı) cümle",
+    "cevap": "D"
+  },
+  {
+    "soru": "Aşağıdakilerden hangisi olumsuz bir isim cümlesidir?",
+    "A": "Yeni aldığımız televizyon henüz kurulmadı.",
+    "B": "Bu problemin çözümü düşündüğümüz kadar kolay değildi.",
+    "C": "İnternette gördüğü her habere inanmaz.",
+    "D": "Bilimsel araştırmalar yapmak zor değildir.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerden hangisinin sonuna üç nokta (...) konulmalıdır?",
+    "A": "Teknolojinin hayatımıza kattığı o kadar çok kolaylık var ki",
+    "B": "Mikroskoptan bakınca hücrenin yapısını inceledim",
+    "C": "Dün akşam izlediğim belgesel uzay hakkındaydı",
+    "D": "Bilgisayarın ekranı aniden kapanıverdi",
+    "cevap": "A"
+  },
+  {
+    "soru": "Hangi cümlede birden çok yüklem bağlaçla birbirine bağlanmıştır?",
+    "A": "Deney tüplerini temizledi ve rafa kaldırdı.",
+    "B": "Yeni telefon aldı, bütün gün onunla oynadı.",
+    "C": "Teleskopla yıldızları izlemek çok keyifliydi.",
+    "D": "Okuduğu bilim dergisini arkadaşına verdi.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdakilerin hangisinde biçimce olumsuz, anlamca olumlu bir cümle vardır?",
+    "A": "Teknolojik aletleri kullanmayı hiç sevmiyor.",
+    "B": "Bu buluşun insanlığa faydası yok değil.",
+    "C": "Yeni projemizde ne yazık ki başarılı olamadık.",
+    "D": "Laboratuvardaki kurallara kimse uymadı.",
+    "cevap": "B"
+  },
+  {
+    "soru": "'Yazılım kursuna yazılmayı çok istiyorum.' cümlesi için aşağıdakilerden hangisi söylenemez?",
+    "A": "Anlamına göre olumludur.",
+    "B": "Yükleminin yerine göre kurallıdır.",
+    "C": "Yapısına göre fiilimsi bulunan cümledir.",
+    "D": "Yükleminin türüne göre isim cümlesidir.",
+    "cevap": "D"
+  }
+]

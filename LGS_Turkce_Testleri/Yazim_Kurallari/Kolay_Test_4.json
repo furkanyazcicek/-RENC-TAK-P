@@ -1,0 +1,122 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'de/da'nın yazımı yanlıştır?",
+    "secenekler": {
+      "A": "Yarınki geziye sen de gelecek misin?",
+      "B": "Kitabını evde unutmuş.",
+      "C": "Bu soruyu ben de çözemedim.",
+      "D": "Bakkal da aradığım peyniri bulamadım."
+    },
+    "dogru_cevap": "D",
+    "cozum": "Bulunma durumu eki olan -de/-da bitişik yazılır ve ünsüz benzeşmesine uğrar. 'Bakkalda' olmalıydı."
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'ki'nin yazımı doğrudur?",
+    "secenekler": {
+      "A": "Anladım ki bu iş böyle olmayacak.",
+      "B": "Evde ki hesap çarşıya uymadı.",
+      "C": "Öyle çok yoruldumki anlatamam.",
+      "D": "Seninki ler yine kapıda bekliyor."
+    },
+    "dogru_cevap": "A",
+    "cozum": "Bağlaç olan 'ki' ayrı yazılır. A şıkkı doğrudur."
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'mi'nin yazımı yanlıştır?",
+    "secenekler": {
+      "A": "Bana yardım eder misin?",
+      "B": "Güzelmi güzel bir araba almış.",
+      "C": "Akşam bize gelecek misiniz?",
+      "D": "Dün seni arayan Ali miydi?"
+    },
+    "dogru_cevap": "B",
+    "cozum": "Soru eki 'mi' her zaman ayrı yazılır. Pekiştirme anlamı katsa bile ayrı yazılmalıdır. 'Güzel mi güzel' olmalı."
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdakilerin hangisinde hem 'de' hem de 'ki'nin yazımı doğrudur?",
+    "secenekler": {
+      "A": "Odada ki eşyaları o da taşıdı.",
+      "B": "Masadaki kitapları sende okumalısın.",
+      "C": "Çantamdaki defteri sen de gördün mü?",
+      "D": "Okulda ki toplantıya o da katıldı."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Sıfat yapan '-ki' bitişik, bağlaç olan 'de' ayrı yazılır. C şıkkı doğru."
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Hangi cümlede 'ki' bağlaç olduğu hâlde kalıplaştığı için bitişik yazılan kelimelerden biri yoktur?",
+    "secenekler": {
+      "A": "Sanki bu işi o yapmadı.",
+      "B": "Oysaki ona çok güvenmiştim.",
+      "C": "Mademki gelmeyecektin neden söz verdin?",
+      "D": "Dün ki sınav çok zordu."
+    },
+    "dogru_cevap": "D",
+    "cozum": "D şıkkındaki 'ki' sıfat yapan -ki'dir ve bitişik yazılmalıdır ('dünkü' şeklinde). SOMBAhÇeM şifresindeki kelimeler bitişik yazılan bağlaçlardır."
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde yazım yanlışı vardır?",
+    "secenekler": {
+      "A": "Bahçede biraz oturalım.",
+      "B": "Şiir de okuyacak mısın?",
+      "C": "Sende mi Brütüs?",
+      "D": "Dolapta yiyecek bir şey kalmamış."
+    },
+    "dogru_cevap": "C",
+    "cozum": "C şıkkında 'Sen de mi' şeklinde bağlaç olan 'de' ayrı yazılmalıdır."
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdakilerin hangisinde soru ekinin yazımıyla ilgili bir yanlışlık yapılmıştır?",
+    "secenekler": {
+      "A": "Bunu sana omu söyledi?",
+      "B": "Yağmur yağıyor mu?",
+      "C": "Yarın sinemaya gidelim mi?",
+      "D": "Yeni kitabımı beğendin mi?"
+    },
+    "dogru_cevap": "A",
+    "cozum": "Soru eki '-mi' ayrı yazılmalıdır. 'o mu' olmalı."
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'de/da' bağlacı yanlış kullanılmıştır?",
+    "secenekler": {
+      "A": "Gelsen de gelmesen de biz gideceğiz.",
+      "B": "Kardeşim de bizimle oynamak istiyor.",
+      "C": "Bu saatten sonra gitsen de faydası yok.",
+      "D": "Yüzün de bir sivilce çıkmış."
+    },
+    "dogru_cevap": "D",
+    "cozum": "D şıkkındaki 'de' bulunma durum ekidir ve bitişik yazılmalıdır. 'Yüzünde' olmalı."
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Hangi cümlede 'ki'nin yazımında hata yapılmamıştır?",
+    "secenekler": {
+      "A": "Duydumki unutmuşsun gözlerimin rengini.",
+      "B": "Şu an ki durumumuz hiç iç açıcı değil.",
+      "C": "Bizim evimiz seninkinden daha geniş.",
+      "D": "Yoldaki çalışmalar trafiğ i felç etti."
+    },
+    "dogru_cevap": "C",
+    "cozum": "C şıkkında ilgi zamiri olan '-ki' bitişik yazılarak doğru kullanılmıştır."
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde tüm ek ve bağlaçların yazımı doğrudur?",
+    "secenekler": {
+      "A": "O kadar yorgunum ki hemen uyuyacağım.",
+      "B": "Kalemini bende unutmuşsun.",
+      "C": "Görüyorsun ki her şey yolunda da gidiyor.",
+      "D": "Akşamki filmi sen de izledinmi?"
+    },
+    "dogru_cevap": "A",
+    "cozum": "A şıkkında bağlaç olan 'ki' ayrı yazılmıştır ve doğrudur. B'de 'bende' bitişik olmalı, D'de 'izledin mi' ayrı olmalı."
+  }
+]

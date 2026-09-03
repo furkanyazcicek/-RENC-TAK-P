@@ -1,0 +1,122 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde yazım yanlışı vardır?",
+    "secenekler": {
+      "A": "Bugün Türkçe sınavımız var.",
+      "B": "Avukat Mehmet Bey geldi.",
+      "C": "Ankara kalesi restore ediliyor.",
+      "D": "Van Gölü ülkemizin doğusundadır."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Saray, köşk, han, kale, köprü, kule, anıt vb. yapı adlarının bütün kelimeleri büyük harfle başlar. 'Ankara Kalesi' olmalıdır."
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki ikilemelerden hangisinin yazımı yanlıştır?",
+    "secenekler": {
+      "A": "Abur cubur",
+      "B": "Aşağı-yukarı",
+      "C": "Eğri büğrü",
+      "D": "İrili ufaklı"
+    },
+    "dogru_cevap": "B",
+    "cozum": "İkilemelerin arasına hiçbir noktalama işareti girmez. Kısa çizgi kullanılamaz."
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdakilerden hangisinin yazımı yanlıştır?",
+    "secenekler": {
+      "A": "Art arda",
+      "B": "Gitgide",
+      "C": "Birebir (Etkili)",
+      "D": "Pekçok"
+    },
+    "dogru_cevap": "D",
+    "cozum": "'Pek çok' ayrı yazılır."
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde tarihlerin yazımıyla ilgili bir yanlışlık vardır?",
+    "secenekler": {
+      "A": "23 Nisan 1920'de meclis açıldı.",
+      "B": "Babam 15 Şubat'ta emekli olacak.",
+      "C": "Okullar Haziran'da kapanıyor.",
+      "D": "05.10.2023 tarihinde toplantı yapılacak."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Belirli bir tarih bildirmeyen ay adları küçük harfle başlar. 'haziranda' olmalıdır."
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki kelimelerden hangisinin yazımı doğrudur?",
+    "secenekler": {
+      "A": "Pardeşü",
+      "B": "Kirbit",
+      "C": "Pırlanta",
+      "D": "Fasülye"
+    },
+    "dogru_cevap": "C",
+    "cozum": "A) Pardösü, B) Kibrit, D) Fasulye olmalıdır. C şıkkı doğrudur."
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'ki' bağlacının yazımı yanlıştır?",
+    "secenekler": {
+      "A": "İnan ki çok yoruldum.",
+      "B": "Sanki her şeyi biliyormuş.",
+      "C": "Desemki vakitlerden bir nisan akşamıdır.",
+      "D": "Halbuki ona çok güvenmiştik."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Bağlaç olan 'ki' ayrı yazılır. 'Desem ki' olmalıdır."
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde bitişik yazılması gereken bir kelime ayrı yazılmıştır?",
+    "secenekler": {
+      "A": "Bu konuyu hiç kimse anlamadı.",
+      "B": "Yarın bir gün sen de anlarsın.",
+      "C": "Bana biraz müsaade eder misiniz?",
+      "D": "Olayı duyunca pür dikkat kesildi."
+    },
+    "dogru_cevap": "D",
+    "cozum": "'Pürdikkat' kelimesi bitişik yazılır."
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'mi'nin yazımı doğrudur?",
+    "secenekler": {
+      "A": "Yarın okula gidecekmiyiz?",
+      "B": "Güzelmi güzel bir film izledik.",
+      "C": "Sen de mi bizimle geliyorsun?",
+      "D": "Bunu onamı söyledin?"
+    },
+    "dogru_cevap": "C",
+    "cozum": "Soru eki ayrı yazılır. A, B ve D'de bitişik yazılmıştır. C'de doğru yazılmıştır."
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'de/da'nın yazımı ile ilgili bir yanlışlık yoktur?",
+    "secenekler": {
+      "A": "Sende benim kadar çalışmalısın.",
+      "B": "Sokakta ki kedileri besledik.",
+      "C": "Kitabı masada unutmuşum.",
+      "D": "Bunu ancak oda anlar."
+    },
+    "dogru_cevap": "C",
+    "cozum": "C'de 'masada' bulunma ekidir ve doğru yazılmıştır. A'da 'Sen de', B'de 'Sokaktaki', D'de 'o da' şeklinde olmalıdır."
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde büyük harflerin yazımıyla ilgili yanlışlık vardır?",
+    "secenekler": {
+      "A": "Tatilde Karadeniz Bölgesi'ne gideceğiz.",
+      "B": "Kardeşim İngilizce kursuna başladı.",
+      "C": "Bu yıl Ramazan Bayramı mayısa denk geliyor.",
+      "D": "Annem Zeynep Teyzeme oturmaya gitti."
+    },
+    "dogru_cevap": "D",
+    "cozum": "Akrabalık bildiren kelimeler küçük harfle başlar. 'Zeynep teyzeme' olmalıdır."
+  }
+]

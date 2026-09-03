@@ -1,0 +1,82 @@
+[
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi bir isim cümlesidir?",
+    "A": "Sağlıklı kalmak için düzenli olarak yürüyüş yapmalıyız.",
+    "B": "Basketbol maçında takımımız çok iyi mücadele etti.",
+    "C": "Sağlık, insanın sahip olduğu en büyük zenginliktir.",
+    "D": "Yarışmadan önce ısınma hareketleri yaptık.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde birden çok yüklem bulunmaktadır?",
+    "A": "Sabahları erken uyanıp yarım saat koşuyorum.",
+    "B": "Antrenman bitti, sporcular soyunma odasına yöneldi.",
+    "C": "Dengeli beslenmek vücut direncimizi artırır.",
+    "D": "Yarışmada birinci olan sporcuyu herkes tebrik etti.",
+    "cevap": "B"
+  },
+  {
+    "soru": "'Sağlıklı beslenmediği için çabuk yoruluyordu.' cümlesinin yapısı aşağıdakilerden hangisidir?",
+    "A": "Fiilimsi bulunan (Birleşik) cümle",
+    "B": "Tek yüklemli (Basit) cümle",
+    "C": "Birden çok yüklemli (Sıralı) cümle",
+    "D": "Bağlacı olan cümle",
+    "cevap": "A"
+  },
+  {
+    "soru": "Hangi seçenekte kurallı bir fiil cümlesi vardır?",
+    "A": "Tenis oynamayı çok severdi çocukluğundan beri.",
+    "B": "Vitamin deposuydu kışın tükettiğimiz portakallar.",
+    "C": "Spor yaparken bol bol su içmeyi ihmal etmeyin.",
+    "D": "Yorgundu dünkü yoğun antrenmandan sonra.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdakilerden hangisi devrik bir cümledir?",
+    "A": "Masa tenisi turnuvasında madalya kazandı.",
+    "B": "Günde en az sekiz bardak su içmeliyiz.",
+    "C": "Başladı büyük bir heyecanla beklenen futbol maçı.",
+    "D": "Olimpiyat oyunları dört yılda bir düzenlenir.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi anlamına göre olumsuzdur?",
+    "A": "Hastalığı atlatmak için ilaçlarını düzenli kullanmalısın.",
+    "B": "Bugünkü koşu parkuru hiç de zor değildi.",
+    "C": "Spor salonuna yazılmak için form doldurdum.",
+    "D": "Sağlıklı bir yaşam için spor şarttır.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde bağlaç, cümleleri bağlama görevinde kullanılmıştır?",
+    "A": "Sebze ve meyve tüketimine önem vermeliyiz.",
+    "B": "Çok çalıştı ama şampiyonluk maçını kaybetti.",
+    "C": "Doktorun verdiği reçeteyi ile ilaçları aldı.",
+    "D": "Bisiklet sürmek hem eğlenceli hem de faydalıdır.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Hangi cümle yükleminin türüne göre diğerlerinden farklıdır?",
+    "A": "Sonbaharda hastalıklardan korunmak için dikkatli olmalıyız.",
+    "B": "Onun için en iyi tedavi yöntemi dinlenmektir.",
+    "C": "Doktorlar her gün tempolu yürüyüşü tavsiye ediyor.",
+    "D": "Maçın son dakikalarında atılan gol takımı sevindirdi.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdakilerden hangisi bir ünlem cümlesidir?",
+    "A": "Voleybol takımımızın başarısı hepimizi gururlandırdı.",
+    "B": "Dikkat et, yerler kaygan olduğu için düşebilirsin!",
+    "C": "Günde kaç saat uyumaya özen gösteriyorsunuz?",
+    "D": "Düzenli egzersiz yapmak insanı zinde tutar.",
+    "cevap": "B"
+  },
+  {
+    "soru": "'Grip aşısı olmak için sağlık ocağına...' cümlesinin sonuna aşağıdakilerden hangisi getirilirse cümle eksiltili olmaktan çıkar?",
+    "A": "ve hastaneye",
+    "B": "gitti",
+    "C": "sabah erkenden",
+    "D": "kadar",
+    "cevap": "B"
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "[Görselde domuz şeklinde pembe bir kumbara ve kumbaranın içine bozuk para atan küçük bir çocuk yer almaktadır. Resmin altında 'Damlaya damlaya göl olur' atasözü yazmaktadır.]\n\nBu görselin temel teması aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Çalışkanlık",
+      "B": "Tasarruf",
+      "C": "Cömertlik",
+      "D": "Yardımlaşma"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "[Görselde sınıf tahtasına 'Orman Haftası' yazılmıştır. Öğretmen, elindeki çam fidanını öğrencilere göstererek anlatım yapmaktadır.]\n\nGörseldeki etkinliğin amacı aşağıdakilerden hangisi olabilir?",
+    "secenekler": {
+      "A": "Öğrencilere doğa ve ağaç sevgisi aşılamak",
+      "B": "Sınıf kurallarını öğretmek",
+      "C": "Matematik dersi işlemek",
+      "D": "Sınavlara hazırlık yapmak"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "[Görselde bir sınıf ortamı çizilmiş ve tebeşirli kara tahtanın yerinde büyük bir akıllı tahta (ekran) bulunmaktadır. Ekranda bir Türkiye haritası açıktır.]\n\nBu görselden yola çıkarak aşağıdakilerden hangisine ulaşılır?",
+    "secenekler": {
+      "A": "Eğitimde teknolojik araçlardan yararlanıldığına",
+      "B": "Öğrencilerin okulda sadece oyun oynadığına",
+      "C": "Kitapların tamamen ortadan kalktığına",
+      "D": "Tüm derslerin laboratuvarda işlendiğine"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "[Görselde kırmızı, sarı ve yeşil renkleri olan bir trafik lambası görülmektedir. Kırmızı ışık yanmaktadır ve yayalar araçların durmasını beklemektedir.]\n\nBuna göre yayalar hangi ışık yandığında karşıya geçmelidir?",
+    "secenekler": {
+      "A": "Kırmızı",
+      "B": "Sarı",
+      "C": "Yeşil",
+      "D": "Tüm ışıklarda"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "[Görselde yatağında huzurla uyuyan bir çocuk resmi vardır. Çocuğun başucundaki komodinin üzerinde saat 21.30'u göstermektedir. Pencereden ay ve yıldızlar görünmektedir.]\n\nBu görsel aşağıdaki konulardan hangisiyle doğrudan ilgilidir?",
+    "secenekler": {
+      "A": "Sağlıklı ve düzenli uyku",
+      "B": "Sabah sporu",
+      "C": "Astronomi ve uzay bilimi",
+      "D": "Oyun oynama saatleri"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "[Görselde yoldaki beyaz çizgilerle belirtilmiş bir yaya geçidi ve geçitten güvenle geçen bir aile çizilmiştir. Bir araba geçidin gerisinde durarak yayalara yol vermektedir.]\n\nBu görselden çıkarılacak en uygun yargı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Yayalar her yerden karşıya geçebilir.",
+      "B": "Sürücüler yaya geçitlerinde yayalara öncelik tanımalıdır.",
+      "C": "Araçlar yaya geçidinde hızlanmalıdır.",
+      "D": "Aileler sadece parklarda yürümelidir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "[Görselde bir doktor steteskopuyla, bir aşçı kepçesiyle, bir itfaiyeci hortumuyla ve bir polis düdüğüyle yan yana çizilmiştir.]\n\nGörselde anlatılan genel konu nedir?",
+    "secenekler": {
+      "A": "Spor dalları",
+      "B": "Hobiler",
+      "C": "Meslekler",
+      "D": "Taşıtlar"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "[Görselde yoğun egzoz dumanı çıkaran arabalar ve bacası tüten fabrikalar vardır. Sokakta yürüyen insanlar yüzlerine maske takmıştır.]\n\nİnsanların maske takmasının temel nedeni görselden yola çıkılarak nasıl açıklanabilir?",
+    "secenekler": {
+      "A": "Soğuktan korunmak istemeleri",
+      "B": "Hava kirliliğinin solunumlarını zorlaştırması",
+      "C": "Bulaşıcı hastalıklara karşı önlem almaları",
+      "D": "Moda amacıyla takmaları"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "[Görselde gözleri bir bezle bağlanmış bir çocuk, kollarını öne doğru uzatmış şekilde etrafındaki arkadaşlarını yakalamaya çalışmaktadır. Arkadaşları ise sessizce ondan kaçmaktadır.]\n\nGörselde oynanan geleneksel çocuk oyunu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Körebe",
+      "B": "Saklambaç",
+      "C": "İp atlama",
+      "D": "Yakan top"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "[Görselde bir bilgisayar ekranı ve ekranda açık olan bir e-posta sayfası bulunmaktadır. 'Kime' kısmına bir adres yazılmış, 'Konu' kısmına 'Ödev' notu düşülmüş ve sayfanın altında bir 'Gönder' butonu yer almaktadır.]\n\nBu görsel, aşağıdaki kavramlardan hangisiyle ilişkilidir?",
+    "secenekler": {
+      "A": "Ulaşım",
+      "B": "Dijital iletişim",
+      "C": "Sağlık",
+      "D": "Eğlence"
+    },
+    "dogru_cevap": "B"
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "soruNo": 1,
+    "soruMetni": "Sabır, acı bir bitkinin tatlı meyvesidir derler. İstediğimiz şeylere hemen ulaşmak isteriz ama hayatta kalıcı ve değerli olan her şey zaman ister. Bir tohumun ağaca dönüşmesi, bir öğrencinin meslek sahibi olması ancak sabretmekle mümkündür. Aceleyle atılan adımlar çoğunlukla hatayla sonuçlanırken, sabırla örülen başarılar kalıcı olur.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Bitkiler sadece uzun sürede büyür.",
+      "B": "Acele etmek başarıyı daha hızlı getirir.",
+      "C": "Değerli ve kalıcı başarılara ulaşmak için sabırlı olmak gerekir.",
+      "D": "Sadece öğrenciler sabırlı olmayı öğrenmelidir."
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 2,
+    "soruMetni": "İcatlar, insanların karşılaştıkları sorunları çözme ihtiyacından doğmuştur. Tekerlek, ağır yükleri daha kolay taşımak için; ampul, karanlığı aydınlatmak için bulunmuştur. Her yeni buluş, bir öncekinin üzerine inşa edilerek insanlık tarihini ileriye taşımıştır. Mucitlerin bitmek bilmeyen merakı sayesinde bugün konforlu bir hayat sürüyoruz.\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "İcatların ortaya çıkış sebebi ve önemi",
+      "B": "Tekerleğin icat edilme süreci",
+      "C": "Ampulün elektriği nasıl harcadığı",
+      "D": "İnsanların sorunlardan nasıl kaçtığı"
+    },
+    "dogruCevap": "A"
+  },
+  {
+    "soruNo": 3,
+    "soruMetni": "(I) Sağlıklı bir yaşam için düzenli egzersiz yapmak şarttır. (II) Her gün en az yarım saat yürüyüş yapmak kalbimizi korur. (III) Son yıllarda moda olan giyim tarzları gençleri çok etkiliyor. (IV) Ayrıca kaslarımızı güçlendirerek yaşlılık dönemini daha rahat geçirmemizi sağlar.\n\nBu metinde numaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 4,
+    "soruMetni": "Geri dönüşüm, kullanılmış ve atıl durumdaki maddelerin tekrar işlenerek üretime dâhil edilmesidir. Kâğıt, cam, plastik gibi atıklar çöpe gitmek yerine geri dönüştürüldüğünde hem çevre kirliliği önlenir hem de ülke ekonomisine katkı sağlanır. Özellikle bir ton kâğıdın geri dönüştürülmesiyle onlarca ağacın kesilmesi engellenmiş olur.\n\nBu parçadan geri dönüşümle ilgili olarak aşağıdakilerden hangisi çıkarılamaz?",
+    "secenekler": {
+      "A": "Çevre kirliliğinin azalmasına yardımcı olur.",
+      "B": "Bütün maddelerin geri dönüşümü aynı şekilde yapılır.",
+      "C": "Ülke ekonomisine olumlu katkıları vardır.",
+      "D": "Ağaçların kesilmesini engelleyerek doğayı korur."
+    },
+    "dogruCevap": "B"
+  },
+  {
+    "soruNo": 5,
+    "soruMetni": "Güler yüzlü insanlar, çevrelerine daima pozitif bir enerji yayarlar. Onların yanındayken dertlerinizi unutur, hayata daha umutla bakarsınız. Somurtkan bir insan ise en güneşli günde bile etrafına bulutlar taşır. Aslında tebessüm etmek bedavadır ama satın alamayacağınız kadar kıymetli kapılar açar.\n\nBu metne getirilebilecek en uygun başlık aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Güler Yüzün Gücü",
+      "B": "Havaların İnsanlara Etkisi",
+      "C": "Kapıların Anahtarı",
+      "D": "Tebessümün Maliyeti"
+    },
+    "dogruCevap": "A"
+  },
+  {
+    "soruNo": 6,
+    "soruMetni": "- - - -? \nKitap fuarları, yazarlarla okurların buluştuğu harika etkinliklerdir. İnsanlar yeni çıkan kitapları indirimli alabilir, sevdikleri yazarlara kitaplarını imzalatarak onlarla sohbet etme fırsatı bulurlar. Ayrıca bu fuarlar, toplumda okuma alışkanlığının artmasına da büyük katkı sağlar.\n\nBu metin aşağıdaki sorulardan hangisine verilmiş bir cevap olabilir?",
+    "secenekler": {
+      "A": "En sevdiğiniz yazar kimdir?",
+      "B": "Kitap okumanın zekâya etkileri nelerdir?",
+      "C": "Kitap fuarlarının insanlara faydaları nelerdir?",
+      "D": "Bir kitap yazmak ne kadar sürer?"
+    },
+    "dogruCevap": "C"
+  },
+  {
+    "soruNo": 7,
+    "soruMetni": "Empati, kendimizi karşımızdaki kişinin yerine koyarak onun duygularını ve düşüncelerini anlayabilme yeteneğidir. Empati kurabilen insanlar, çevreleriyle daha sağlıklı iletişim kurarlar. Karşısındakini yargılamadan önce \"Onun yerinde olsaydım ne hissederdim?\" diye sorarlar. Eğer dünyada empati duygusu yaygınlaşsaydı, - - - -.\n\nBu metnin sonuna anlam akışına göre aşağıdakilerden hangisi getirilmelidir?",
+    "secenekler": {
+      "A": "insanlar sadece kendilerini düşünürdü",
+      "B": "başarıya ulaşmak imkansız olurdu",
+      "C": "herkes çok fazla para kazanırdı",
+      "D": "tartışmalar azalır, barış ve anlayış artardı"
+    },
+    "dogruCevap": "D"
+  },
+  {
+    "soruNo": 8,
+    "soruMetni": "Kış mevsimi köye geldiğinde her yer bembeyaz bir örtüyle kaplanır. Sobanın üzerinde kaynayan ıhlamurun mis gibi kokusu odayı doldurur. Dışarıda dondurucu bir soğuk varken, odunların soba içindeki çıtırtısı insana ninni gibi gelir. Pencereler buğulanır, dışarıyı görmek zorlaşır.\n\nBu parçada aşağıdaki duyulardan hangisine ait bir ayrıntı yoktur?",
+    "secenekler": {
+      "A": "Görme",
+      "B": "Tat alma",
+      "C": "Koklama",
+      "D": "İşitme"
+    },
+    "dogruCevap": "B"
+  },
+  {
+    "soruNo": 9,
+    "soruMetni": "İhtiyar balıkçı, sabahın ilk ışıklarıyla birlikte küçük kayığına binip denize açıldı. Saatlerce beklemesine rağmen oltasına hiç balık vurmamıştı. Tam umudunu kesip geri dönmeye karar vermişti ki, misinası hızla gerildi. Yaşlı adam, var gücüyle oltayı çekmeye başladı.\n\nBu metnin hikâye unsurlarıyla ilgili hangisi yanlıştır?",
+    "secenekler": {
+      "A": "Zaman: Gece yarısı.",
+      "B": "Mekân: Deniz.",
+      "C": "Kahraman: İhtiyar balıkçı.",
+      "D": "Olay: Balıkçının uzun süre bekledikten sonra balık yakalaması."
+    },
+    "dogruCevap": "A"
+  },
+  {
+    "soruNo": 10,
+    "soruMetni": "Tarihi eserler, bizden önceki nesillerin nasıl yaşadığına dair izler taşıyan kıymetli varlıklardır. Bir antik kenti gezerken, yüzlerce yıl önce insanların yürüdüğü yollarda yürümek insana tuhaf bir duygu verir. Ne yazık ki define arayıcıları ve bilinçsiz kişiler bu eserlere zarar veriyor. Oysa bu eserler hepimizin ortak mirasıdır.\n\nBu parçadan tarihi eserlerle ilgili aşağıdakilerden hangisi söylenebilir?",
+    "secenekler": {
+      "A": "Tarihi eserler sadece turistlerin ilgisini çeker.",
+      "B": "Devletler tarihi eserleri tamamen yer altına saklamalıdır.",
+      "C": "Geçmişe ışık tutan ortak mirasımızdır ve zarar görmemelidir.",
+      "D": "Tarihi eserlerin tamamı müzelerde sergilenmektedir."
+    },
+    "dogruCevap": "C"
+  }
+]

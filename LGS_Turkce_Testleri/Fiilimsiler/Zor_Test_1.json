@@ -1,0 +1,117 @@
+{
+  "test_adi": "Fiilimsiler Zor Test 1",
+  "konu": "Fiilimsiler",
+  "zorluk": "Zor",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Fiilimsiler yan cümlecik kurarak temel cümlenin bir ögesi olurlar.\nAşağıdaki cümlelerin hangisinde fiilimsi grubu temel cümlenin nesnesi görevindedir?",
+      "secenekler": {
+        "A": "Babasının anlattığı hikayeleri büyük bir ilgiyle dinlerdi.",
+        "B": "Havalar soğuyunca sobayı kurduk.",
+        "C": "Köyden ayrılırken herkesle tek tek vedalaştı.",
+        "D": "Şehre inmek, onun en büyük hayaliydi."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "İsim-fiil ekini alan bazı sözcükler kalıcı isim olabildiği gibi, bazen de fiilimsi özelliğini korur.\nAşağıdakilerin hangisinde altı çizili kelimenin (belirtilen kelimenin) fiilimsi görevinde olduğu söylenebilir?",
+      "secenekler": {
+        "A": "Bu akşam yemekte 'dolma' ve 'sarma' var.",
+        "B": "'Uçurtma' şenliğine katılmak için tepeye tırmandık.",
+        "C": "Tarlayı 'kazma' işini yarına bıraktık.",
+        "D": "Elindeki 'kazma' ile toprağı eşeliyordu."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Sıfat-fiil ekleri eklendikleri fiilleri sıfat yapar. Ancak bazı durumlarda bu ekleri alan sözcükler sıfat tamlaması kurmaz ve adlaşmış sıfat-fiil olur.\nBuna göre, aşağıdakilerin hangisinde '-dık/-dik' ekiyle türetilmiş sözcük, bir ismin sıfatı görevinde değildir?",
+      "secenekler": {
+        "A": "Çözemedik soruları öğretmene sormalısın.",
+        "B": "Görmedik yer bırakmamak için çok uğraştık.",
+        "C": "Tanıdık insanlarla karşılaşmak onu rahatlattı.",
+        "D": "Bildiklerini herkese anlatmak için sabırsızlanıyordu."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Zarf-fiil eklerinden '-madan/-meden', eklendiği fiile durum veya zaman anlamı katabilir.\nHangi seçenekte '-madan/-meden' eki farklı bir anlam katmıştır?",
+      "secenekler": {
+        "A": "Arkasına bakmadan hızlıca uzaklaştı.",
+        "B": "Güneş doğmadan yola çıkmamız gerekiyor.",
+        "C": "Konuyu hiç düşünmeden cevap verdi.",
+        "D": "Kimseye haber vermeden evden ayrılmış."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "'-ecek/-acak' eki hem gelecek zaman kipi hem de sıfat-fiil eki olarak kullanılabilir.\nAşağıdaki cümlelerin hangisinde bu eki alan sözcük diğerlerinden farklı bir görevdedir?",
+      "secenekler": {
+        "A": "Bu kadar zorluğa elbette o da göğüs gerecek.",
+        "B": "Gelecek günlerin bize ne getireceğini bilemeyiz.",
+        "C": "Söylenecek söz kalmadı bu saatten sonra.",
+        "D": "Yapılacak işleri sırasıyla deftere not etti."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "'Ağaçların arasından süzülüp gelen güneş ışıkları, içimizi ısıtıyordu.'\nBu cümlede kaç tane yan cümlecik vardır?",
+      "secenekler": {
+        "A": "1",
+        "B": "4",
+        "C": "2",
+        "D": "3"
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde fiilimsi ekini alan sözcükler cümlenin sadece 'özne' bölümünde yer almıştır?",
+      "secenekler": {
+        "A": "Yaşlı adam, titreyen elleriyle mektubu açtı.",
+        "B": "Havlayan köpekler, gecenin karanlığında kayboldu.",
+        "C": "Kitap okumak, insanın ruhunu zenginleştiren bir eylemdir.",
+        "D": "Koşarak uzaklaşan çocukları izledim."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Aşağıdaki dizelerin hangisinde fiilimsi kullanılmamıştır?",
+      "secenekler": {
+        "A": "Açılan solgun dudaklarda kalan buse...",
+        "B": "Dönülmez akşamın ufkundayız, vakit çok geç.",
+        "C": "Gidiyorum gurbeti gönlümde duya duya.",
+        "D": "Ağır ağır çıkacaksın bu merdivenlerden."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "'Babasını karşısında görünce ne yapacağını şaşırdı.' cümlesindeki zarf-fiilin cümleye kattığı anlam, aşağıdakilerin hangisinde vardır?",
+      "secenekler": {
+        "A": "Sen gideli buraların tadı tuzu kalmadı.",
+        "B": "Çocuklar, düşe kalka büyürler.",
+        "C": "Durmadan yağan kar, yolları kapattı.",
+        "D": "Hiçbir şey söylemeden öylece bekledi."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde adlaşmış sıfat-fiil, bir isim tamlamasının tamlananı olmuştur?",
+      "secenekler": {
+        "A": "Yarışmada birinci olanları sahneye davet ettiler.",
+        "B": "Babamın söyledikleri hâlâ kulaklarımda çınlıyor.",
+        "C": "Okulun bahçesinde oynayanlara uyarıda bulundu.",
+        "D": "Yıkanmışları dolaba, kirlileri sepete attı."
+      },
+      "dogru_cevap": "B"
+    }
+  ]
+}

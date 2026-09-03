@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi yükleminin türüne göre isim cümlesidir?",
+    "A": "Robotlar hayatımızı kolaylaştıracak.",
+    "B": "En büyük icat tekerlektir.",
+    "C": "Uzaya yeni bir uydu fırlatıldı.",
+    "D": "Bilim insanları aralıksız çalışıyor.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi devrik bir cümledir?",
+    "A": "Teknoloji hızla gelişiyor.",
+    "B": "Yapay zeka hayatın her alanında var.",
+    "C": "Yeni bir gezegen keşfetti bilim insanları.",
+    "D": "İnternet bilgiye erişimi hızlandırdı.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdakilerden hangisi birden çok yüklemli (sıralı) cümledir?",
+    "A": "Mikroskopla hücreleri dikkatle inceledik.",
+    "B": "Kitap okumak zihni geliştirir.",
+    "C": "Başarılı olmak için daha çok çalışmalısın.",
+    "D": "Laboratuvarda deney yaptık, sonuçları kaydettik.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi soru cümlesidir?",
+    "A": "Bu telefonu ne zaman aldın?",
+    "B": "Hangi cihazın daha kullanışlı olduğunu bilmiyorum.",
+    "C": "Neden gelmediğini henüz anlamadım.",
+    "D": "Nasıl yapacağını bana uzun uzun anlattı.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdakilerden hangisi yapısına göre içinde fiilimsi bulunan bir cümledir?",
+    "A": "Deney başarılı oldu.",
+    "B": "Aşıyı bulan bilim insanı ödül aldı.",
+    "C": "Yeni yazılım aniden hata verdi.",
+    "D": "Bilgisayarım çalışırken kapandı.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi biçimce olumsuz olduğu hâlde anlamca olumludur?",
+    "A": "Bilimsel çalışmalar hiç bitmez.",
+    "B": "Deney sonuçları olumsuz çıktı.",
+    "C": "Bu önemli icadı bilmeyen mi var?",
+    "D": "Teknoloji insanlık için faydasız değildir.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi yüklemin türüne göre diğerlerinden farklıdır?",
+    "A": "Tabletin ekranı kırıktı.",
+    "B": "Telefon tamamen şarj oldu.",
+    "C": "Bilgisayar güncellemeden sonra hızlandı.",
+    "D": "Veriler güvenli bir şekilde kaydedildi.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdakilerden hangisi kurallı, olumlu bir fiil cümlesidir?",
+    "A": "Yapay zeka çok ilginçtir.",
+    "B": "Cihazın şarjı bittiği için çalışmıyor.",
+    "C": "Yeni buluşlar yapılmadı mı?",
+    "D": "Robotlar yavaşça hareket etti.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi eksiltili cümledir?",
+    "A": "Kod yazmayı ve yeni şeyler öğrenmeyi seviyorum.",
+    "B": "Sistem dün gece güncellendi.",
+    "C": "Laboratuvarın girişinde koca bir ekran...",
+    "D": "Veriler uzmanlar tarafından analiz ediliyor.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdakilerden hangisi bağlacı olan (bağlı) cümledir?",
+    "A": "Bilgisayarı açtı ve kod yazmaya başladı.",
+    "B": "Telefonu düşünce ekranı paramparça oldu.",
+    "C": "Hızlı çalışırsa projeyi vaktinde bitirir.",
+    "D": "Düşünen makineler geleceğimiz için tasarlandı.",
+    "dogru_cevap": "A"
+  }
+]

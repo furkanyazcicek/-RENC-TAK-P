@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde eylem bir gerekçesiyle verilmiştir (neden-sonuç)?",
+    "secenekler": {
+      "A": "Çok kar yağdığı için yollar bir süreliğine ulaşıma kapandı.",
+      "B": "Sınavda başarılı olmak maksadıyla her gün düzenli ders çalışıyor.",
+      "C": "Eğer sözümü dinlersen sana istediğin o güzel oyuncağı alırım.",
+      "D": "Akşam serinliğinde sahilde yürüyüş yapmayı çok seviyorum."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde amaç-sonuç ilişkisi söz konusudur?",
+    "secenekler": {
+      "A": "Otobüsü kaçırdığından dolayı toplantıya ne yazık ki yetişemedi.",
+      "B": "Düzenli beslenirsen çok daha sağlıklı ve dinç bir hayata sahip olursun.",
+      "C": "Eksiklerini kapatmak üzere hafta sonu kurslarına katılmaya başladı.",
+      "D": "Hava aniden soğuduğu için hepimiz kalın kazaklarımızı giydik."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Hangi cümlede koşula (şarta) bağlılık vardır?",
+    "secenekler": {
+      "A": "Yabancı dil öğrenmek hayaliyle aylardır para biriktiriyor.",
+      "B": "Odanı toplarsan arkadaşlarınla dışarı çıkıp oynayabilirsin.",
+      "C": "Sınavdan düşük not alınca bütün gün morali bozuk dolaştı.",
+      "D": "Güneşin doğuşunu izlemek bana her zaman büyük bir huzur verir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde karşılaştırma yapılmıştır?",
+    "secenekler": {
+      "A": "Dünkü fırtına nedeniyle ağaçların dalları etrafa kırılıp saçılmış.",
+      "B": "Her sabah mutlaka erkenden kalkar ve bir saat yürüyüş yapar.",
+      "C": "Bu akşam izlediğimiz tiyatro oyunu iki perdeden oluşuyordu.",
+      "D": "Sınıfın en uzun boylu öğrencisi tartışmasız arka sırada oturan Ahmet'tir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi öznel bir yargı bildirmektedir?",
+    "secenekler": {
+      "A": "Yazarın son romanı yayınevi tarafından beş bin adet basıldı.",
+      "B": "Dünya, Güneş etrafındaki tam turunu 365 gün 6 saatte tamamlar.",
+      "C": "Bu şiirdeki duygu yoğunluğu okuru alıp başka diyarlara götürüyor.",
+      "D": "Milli Eğitim Bakanlığı yeni müfredat programını dün açıkladı."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi nesnel bir anlatıma sahiptir?",
+    "secenekler": {
+      "A": "En güzel müzik türü bence kesinlikle klasik müziktir.",
+      "B": "Bu kitapta toplam on beş adet kısa hikaye yer almaktadır.",
+      "C": "Yazarın dili o kadar akıcı ki kitap elinizden bırakamıyorsunuz.",
+      "D": "Son izlediğim film hayatımda gördüğüm en etkileyici yapımdı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'küçümseme' anlamı vardır?",
+    "secenekler": {
+      "A": "Sen bu gidişle okuyup da büyük bir adam olacaksın öyle mi!",
+      "B": "Keşke buraya gelirken yolda ona da haber verseydik.",
+      "C": "Bunca zamandır bizimle aynı mahallede ama bir selam bile vermedi.",
+      "D": "Farz edelim ki sınavı kazandın, hangi bölüme gitmeyi düşünüyorsun?"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'tasarı (plan)' söz konusudur?",
+    "secenekler": {
+      "A": "Ne yazık ki bu sefer de beklediğimiz o büyük ihaleyi alamadık.",
+      "B": "Eminim o da bu konudaki hatasını kısa sürede anlayıp özür dileyecektir.",
+      "C": "Keşke o gün ona karşı o kadar sert ve kırıcı konuşmasaydım.",
+      "D": "Önümüzdeki yaz tatilinde Ege kıyılarını baştan sona gezmeyi düşünüyorum."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "'Bu sene de tarladan beklediğimiz verimi alamadık.' cümlesinden çıkarılabilecek kesin yargı hangisidir?",
+    "secenekler": {
+      "A": "Tarlaya bu sene farklı bir tohum türü ekilmiştir.",
+      "B": "Geçmiş yıllarda da tarladan beklenen verim alınamamıştır.",
+      "C": "Tarladan alınan ürünler her zaman çok ucuza satılmıştır.",
+      "D": "Tarlanın verimsiz olmasının nedeni kuraklıktır."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde dolaylı anlatım yapılmıştır?",
+    "secenekler": {
+      "A": "Öğretmenimiz, yarınki sınava çok iyi çalışmamız gerektiğini söyledi.",
+      "B": "Babam bana dönerek, 'Akşam yemeğine geç kalmayın.' dedi.",
+      "C": "Atatürk, 'Hayatta en hakiki mürşit ilimdir.' diyerek yolumuzu aydınlatmıştır.",
+      "D": "Arkadaşım heyecanla yanıma gelip, 'Yarın pikniğe gidiyoruz!' diye bağırdı."
+    },
+    "dogru_cevap": "A"
+  }
+]

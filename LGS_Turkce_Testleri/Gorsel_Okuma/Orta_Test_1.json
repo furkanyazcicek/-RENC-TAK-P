@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aslı, Burak, Cenk, Defne ve Emre bir bayrak yarışında aynı takımda arka arkaya (1'den 5'e) koşmuşlardır.\n- Cenk yarışa 3. sırada başlamıştır.\n- Aslı bayrağı Emre'den almıştır.\n- Defne yarışa ilk ya da son sırada başlamamıştır.\nBuna göre aşağıdakilerden hangisi kesinlikle doğrudur?",
+    "secenekler": {
+      "A": "Burak yarışa 1. sırada başlamıştır.",
+      "B": "Defne bayrağı Cenk'e devretmiştir.",
+      "C": "Aslı yarışta 2. ya da 5. sırada koşmuştur.",
+      "D": "Emre yarışı 4. sırada bitirmiştir."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Türkiye'nin bir yıllık ihracat verilerini gösteren infografikte, Sanayinin %70, Tarımın %15, Madenciliğin %15 paya sahip olduğu görülmektedir. Ayrıca en çok ihracat yapılan ülkeler sırasıyla Almanya, ABD ve İngiltere olarak listelenmiştir.\nBu görselden hareketle aşağıdakilerden hangisine ulaşılamaz?",
+    "secenekler": {
+      "A": "İhracatta en büyük pay sanayi sektörüne aittir.",
+      "B": "ABD'ye yapılan ihracat, İngiltere'ye yapılandan fazladır.",
+      "C": "Tarım ve madencilik sektörlerinin ihracattaki payları birbirine eşittir.",
+      "D": "Bir önceki yıla göre en çok artış sanayi sektöründe olmuştur."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Kemal, Lale, Mine, Nihat ve Osman yuvarlak bir masa etrafında oturmaktadır.\n- Nihat, Lale'nin hemen sağında oturmaktadır.\n- Mine, Osman ile yan yana değildir.\n- Kemal ve Mine yan yana oturmaktadır.\nBuna göre aşağıdakilerden hangisi kesinlikle yanlıştır?",
+    "secenekler": {
+      "A": "Kemal, Mine ile Osman'ın arasında oturmaktadır.",
+      "B": "Nihat ve Osman yan yana oturmaktadır.",
+      "C": "Lale ve Mine yan yana oturmaktadır.",
+      "D": "Kemal, Lale ile yan yana oturmaktadır."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Bir hava durumu uygulamasında Ankara için şu veriler yer almaktadır:\nPazartesi: Güneşli, 25°C\nSalı: Parçalı Bulutlu, 22°C\nÇarşamba: Sağanak Yağışlı, 18°C\nPerşembe: Yağmurlu, 15°C\nCuma: Çok Bulutlu, 17°C\nBu verilere göre oluşturulan aşağıdaki metinlerden hangisi doğrudur?",
+    "secenekler": {
+      "A": "Hafta başından itibaren hava sıcaklığı sürekli düşmüş ve güneş hiç yüzünü göstermemiştir.",
+      "B": "En düşük sıcaklık Perşembe günü ölçülmüş olup, yağışlı günlerde sıcaklık 20°C'nin altındadır.",
+      "C": "Salı ve Cuma günleri hava sıcaklıkları eşitken, gökyüzü durumu birbirinden farklıdır.",
+      "D": "Hafta sonuna yaklaştıkça sıcaklık sürekli artarak Cuma günü zirveye ulaşmıştır."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Ayça, Berk ve Cansu; gitar, piyano ve keman kurslarına gitmektedir. Kurslar Kadıköy, Beşiktaş ve Şişli'dedir.\n- Berk'in kursu Şişli'de değildir.\n- Ayça piyano çalmaktadır ve kursu Kadıköy'dedir.\n- Keman kursu Beşiktaş'tadır.\nBuna göre Berk hangi enstrümanı nerede öğrenmektedir?",
+    "secenekler": {
+      "A": "Gitar - Şişli",
+      "B": "Keman - Beşiktaş",
+      "C": "Piyano - Kadıköy",
+      "D": "Gitar - Beşiktaş"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Bir karikatürde, bir elinde kalın bir kitap, diğer elinde ise akıllı telefon tutan bir genç çizilmiştir. Gencin başının üzerindeki düşünce balonunda kitabın içi boş sayfalarla, telefonun ekranı ise rengarenk ve karmaşık bilgi ağlarıyla resmedilmiştir. Gencin yüzü büyülenmiş bir şekilde telefona dönüktür.\nBu karikatürün vermek istediği asıl mesaj aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Teknolojik araçlar, kitaplardan her zaman daha yararlı bilgiler sunar.",
+      "B": "Günümüz gençliği dijital dünyaya odaklanıp basılı eserlerden ve okumaktan uzaklaşmaktadır.",
+      "C": "Kitap okumak, teknolojiyi kullanmaktan daha fazla zihinsel çaba gerektirir.",
+      "D": "Geleneksel medya ile yeni medya araçları bir arada dengeli kullanılmalıdır."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Beş katlı bir binada (1, 2, 3, 4, 5) terzi, berber, manav, kasap ve fırın bulunmaktadır. Her katta sadece bir esnaf vardır.\n- Berber ve manav arasında sadece fırın vardır.\n- Kasap 2. kattadır.\n- Terzi en üst katta değildir.\nBuna göre aşağıdakilerden hangisi kesinlikle doğrudur?",
+    "secenekler": {
+      "A": "Fırın 4. kattadır.",
+      "B": "Terzi 5. kattadır.",
+      "C": "Berber 3. kattadır.",
+      "D": "Manav 1. kattadır."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Bir metro haritasında kırmızı, yeşil ve mavi hatlar bulunmaktadır.\n- Kırmızı hat A durağından başlayıp Doğu-Batı ekseninde C durağına kadar gider.\n- Yeşil hat, kırmızı hattı B durağında dik keserek Kuzey-Güney ekseninde ilerler.\n- Mavi hat, yeşil hat üzerindeki D durağından başlayıp Güneydoğu yönünde E durağına ulaşır.\nBu bilgilere göre A durağından binip E durağına gitmek isteyen bir yolcu sırasıyla hangi istasyonlarda aktarma yapmalıdır?",
+    "secenekler": {
+      "A": "C ve D",
+      "B": "B ve C",
+      "C": "B ve D",
+      "D": "C ve E"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Yüz metrelik bir koşu yarışına katılan dört atletle (Veli, Turgut, Selim, Rıza) ilgili bilinenler şunlardır:\n- Turgut yarışı Selim'in önünde, Rıza'nın arkasında bitirmiştir.\n- Veli, Turgut'tan daha yavaş koşmuştur.\n- Veli yarışı sonuncu bitirmemiştir.\nBuna göre yarışı birinci bitiren atlet kimdir?",
+    "secenekler": {
+      "A": "Rıza",
+      "B": "Turgut",
+      "C": "Veli",
+      "D": "Selim"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Bir okulda en çok sevilen meyveler elma, muz, çilek ve portakaldır. Yapılan piktogram grafiğinde her simge 10 öğrenciyi göstermektedir. Elma için 3, muz için 4, çilek için 2, portakal için 5 simge kullanılmıştır.\nGrafiğe göre aşağıdakilerden hangisi çıkarılamaz?",
+    "secenekler": {
+      "A": "Muz seven öğrenci sayısı, çilek sevenlerden 20 kişi fazladır.",
+      "B": "Okulda toplam 140 öğrenci bu ankete katılmıştır.",
+      "C": "Elma ve çilek sevenlerin toplam sayısı, portakal sevenlerin sayısına eşittir.",
+      "D": "En az sevilen meyve çilek, en sağlıklı ve faydalı meyve ise portakaldır."
+    },
+    "dogru_cevap": "D"
+  }
+]

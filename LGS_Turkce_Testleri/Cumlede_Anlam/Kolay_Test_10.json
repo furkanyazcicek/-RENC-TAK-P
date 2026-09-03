@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Hangi cümlede eylemin yapılış amacı verilmiştir?",
+    "secenekler": {
+      "A": "Kardeşi hastalandığı için bütün gece uyuyamadı.",
+      "B": "Çok yorulduğundan erkenden yatağa girip uyudu.",
+      "C": "Yabancı dilini geliştirmek maksadıyla yurt dışına çıktı.",
+      "D": "Kar yağarsa kardan adam yapmak için dışarı çıkarız."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde koşula (şarta) bağlılık vardır?",
+    "secenekler": {
+      "A": "Biletleri erken alırsak en ön sıradan maçı izleyebiliriz.",
+      "B": "Maaşını alır almaz birikim yapmak için bankaya gitti.",
+      "C": "Trafik kazası olduğu için yollar uzun süre kapalı kaldı.",
+      "D": "Kitap okumak insanın hayal dünyasını her zaman zenginleştirir."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde neden-sonuç (sebep-sonuç) ilişkisi vardır?",
+    "secenekler": {
+      "A": "Güzel bir tatil yapmak amacıyla Ege kıyılarına gittiler.",
+      "B": "Düzenli spor yaparsan daha sağlıklı bir vücuda sahip olursun.",
+      "C": "Akşam yemeğinde buluşmak üzere sözleşip ayrıldılar.",
+      "D": "Elektrikler aniden kesildiği için ödevini zamanında bitiremedi."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde karşılaştırma yapılmıştır?",
+    "secenekler": {
+      "A": "Dün akşam izlediğimiz film oldukça sürükleyici ve heyecanlıydı.",
+      "B": "Sınıfın en hızlı koşan öğrencisi şüphesiz ki Ali'dir.",
+      "C": "Her sabah mutlaka bir bardak taze sıkılmış portakal suyu içer.",
+      "D": "Bahar gelince tüm ağaçlar rengarenk çiçekler açtı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi öznel bir yargı bildirmektedir?",
+    "secenekler": {
+      "A": "Bu tablodaki renklerin uyumu insanın içini ısıtıyor.",
+      "B": "Yazarın son kitabı toplam iki yüz elli sayfadan oluşuyor.",
+      "C": "Türkiye'nin başkenti Ankara, İç Anadolu Bölgesi'ndedir.",
+      "D": "Su, normal şartlar altında yüz derecede kaynar."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi nesnel bir anlatıma sahiptir?",
+    "secenekler": {
+      "A": "En lezzetli yemek annemin yaptığı bol salçalı mantıdır.",
+      "B": "Şiir okumak ruhu dinlendiren en güzel eylemlerden biridir.",
+      "C": "Yazar, bu romanında Kurtuluş Savaşı yıllarını anlatmıştır.",
+      "D": "Film o kadar etkileyiciydi ki gözyaşlarıma hakim olamadım."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'beğenme' anlamı vardır?",
+    "secenekler": {
+      "A": "Bu kazağı almadan önce keşke sana da bir sorsaydım.",
+      "B": "Sanki bütün bu olanların tek sorumlusu benmişim gibi davranıyor.",
+      "C": "Odasına ne zaman girsem masasını darmadağınık buluyorum.",
+      "D": "Yazarın bu sade ve akıcı üslubu kitabın okunabilirliğini artırmış."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'ön yargı' söz konusudur?",
+    "secenekler": {
+      "A": "Yarınki toplantının iptal olabileceğini düşünüyorum.",
+      "B": "Bu proje kesinlikle başarısız olacak, göreceksiniz.",
+      "C": "Dün geceki şiddetli fırtınada çatıdaki bazı kiremitler uçmuş.",
+      "D": "Yeni aldığım arabanın rengi sokağa çok ayrı bir hava kattı."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "'Tiyatroya bugün de geç kaldık.' cümlesinden aşağıdaki yargılardan hangisi kesin olarak çıkarılabilir?",
+    "secenekler": {
+      "A": "Tiyatro oyunları genellikle çok geç saatlerde başlamaktadır.",
+      "B": "Tiyatro biletleri çok pahalı olduğu için alınamamıştır.",
+      "C": "Daha önce gidilen tiyatroya da geç kalınmıştır.",
+      "D": "Tiyatroya sadece hafta sonları gidilmektedir."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'kesinlik' anlamı vardır?",
+    "secenekler": {
+      "A": "Belki hafta sonu hep birlikte güzel bir pikniğe gideriz.",
+      "B": "Eminim o da bu konuyu senin kadar iyi biliyordur.",
+      "C": "Gökyüzündeki kara bulutlara bakılırsa yağmur yağabilir.",
+      "D": "Bu yolculuk burada sona ermiştir, herkes eşyalarını alsın."
+    },
+    "dogru_cevap": "D"
+  }
+]

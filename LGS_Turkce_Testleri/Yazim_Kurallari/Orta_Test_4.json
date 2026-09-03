@@ -1,0 +1,85 @@
+{
+  "test_adi": "Yazım Kuralları Orta Seviye Test 4",
+  "sorular": [
+    {
+      "soru": "Kurum, kuruluş ve kurul adlarına gelen ekler kesme işaretiyle ayrılmaz. Aşağıdakilerin hangisinde bu kurala aykırı bir yazım vardır?",
+      "A": "Milli Eğitim Bakanlığının yeni müfredatı yayımlandı.",
+      "B": "Okulumuzun Tiyatro Kulübüne yeni üyeler katıldı.",
+      "C": "Bakanlar Kurulu'nun toplantısı birazdan başlayacak.",
+      "D": "Kızılayın başlattığı kan bağışı kampanyası destek gördü.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Din ve mitoloji ile ilgili özel adlar büyük harfle başlar. Ancak bu adlar tür adı olarak kullanıldığında küçük harfle başlar. Hangi cümlede yazım yanlışı yapılmıştır?",
+      "A": "Eski Yunan'da Zeus, tanrıların kralı kabul edilirdi.",
+      "B": "Müslümanlar Ramazan ayında oruç tutarlar.",
+      "C": "Sanatçı, müzik dünyasının ilahı olarak anılıyordu.",
+      "D": "Bu zor günlerde Allah'ından umudunu hiç kesmedi.",
+      "cevap": "D"
+    },
+    {
+      "soru": "Kısaltmalara getirilen eklerin okunuşuyla ilgili aşağıdakilerin hangisinde bir yazım yanlışı vardır?",
+      "A": "PTT'nin kargo hizmetlerinden oldukça memnunuz.",
+      "B": "RTÜK'ün verdiği karar tartışmalara neden oldu.",
+      "C": "TÜBİTAK'tan gelen mektup onu çok heyecanlandırdı.",
+      "D": "TRT'dan yayınlanan belgeseli her akşam izlerim.",
+      "cevap": "D"
+    },
+    {
+      "soru": "Yön adlarının yazımıyla ilgili aşağıdaki cümlelerin hangisinde yanlışlık yapılmıştır?",
+      "A": "Avrupa'nın doğusu kış aylarında oldukça sert geçer.",
+      "B": "Yarın Doğu Anadolu'da kar yağışı bekleniyor.",
+      "C": "Yıllardır Kuzey doğu bölgesindeki köyleri geziyor.",
+      "D": "Ankara'nın batısında yer alan ilçeler daha ılımandır.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Birleşik kelimelerden her ikisi veya ikincisi birleşme sırasında anlam değişmesine uğrarsa kelime bitişik yazılır. Aşağıdakilerden hangisinde bu kurala uyulmamıştır?",
+      "A": "Bahçedeki aslanağzı çiçekleri rengarenk açmıştı.",
+      "B": "Yemekten sonra tatlı olarak vezir parmağı yedik.",
+      "C": "Baharın gelmesiyle gökyüzünü çalı kuşları sardı.",
+      "D": "Annemin ördüğü hanımeli desenli hırkayı çok severim.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde büyük harflerin kullanımıyla ilgili bir yanlışlık yapılmıştır?",
+      "A": "Şiirin ilk mısrası 'Güneş ufuktan şimdi doğar' şeklinde başlıyordu.",
+      "B": "Müdür Bey, toplantı odasının girişine 'Danışma' tabelası astırdı.",
+      "C": "Binanın girişinde 'Girilmez' yazısı kocaman harflerle yazılmıştı.",
+      "D": "Dün akşam izlediğimiz Leyla ile Mecnun dizisi çok duygusaldı.",
+      "cevap": "D"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde 'de/da'nın yazımıyla ilgili bir hata vardır?",
+      "A": "Şiirlerinde de doğa sevgisini sıkça işlemiş.",
+      "B": "Bugün evde oturup bütün gün kitap okuyacağım.",
+      "C": "Söylesende artık seni dinleyeceğimi sanmıyorum.",
+      "D": "Bavulunda sadece birkaç parça eşya kalmıştı.",
+      "cevap": "C"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde 'ki' bağlacının yazımıyla ilgili bir yanlışlık vardır?",
+      "A": "Belli ki bu akşam bizimle gelmek istemiyor.",
+      "B": "Şemsiyeni al ki yağmurda sırılsıklam olma.",
+      "C": "Odamda ki masayı pencerenin kenarına çektim.",
+      "D": "Tut ki bu sınavı kazanamadın, ne yapacaksın?",
+      "cevap": "C"
+    },
+    {
+      "soru": "Üleştirme sayıları rakamla değil, yazıyla belirtilir. Hangi cümlede bu kurala uyulmamıştır?",
+      "A": "Öğretmen, sınıfı dörderli gruplara ayırdı.",
+      "B": "Her öğrenciye 3'er kitap hediye edildi.",
+      "C": "Sınavda herkese ikişer sayfa kağıt dağıtıldı.",
+      "D": "Yedişer kişi olarak sahaya dizildiler.",
+      "cevap": "B"
+    },
+    {
+      "soru": "Aşağıdaki cümlelerin hangisinde yazım yanlışı yoktur?",
+      "A": "Art arda gelen sorunlar hepimizi yormuştu.",
+      "B": "Bugün hiç bir şey yapmak içimden gelmiyor.",
+      "C": "Herkez kendi işiyle meşgul olunca sorun çıkmaz.",
+      "D": "Yanlız kaldığında eski günleri hatırlayıp üzülürdü.",
+      "cevap": "A"
+    }
+  ]
+}

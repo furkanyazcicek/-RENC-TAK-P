@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdakilerden hangisi yansıma bir sözcüktür?",
+    "secenekler": {
+      "A": "Şırıl şırıl",
+      "B": "Güzel güzel",
+      "C": "Yavaş yavaş",
+      "D": "Hızlı hızlı"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Hangisinde zıt anlamlı kelimelerden oluşmuş bir ikileme vardır?",
+    "secenekler": {
+      "A": "Eş dost",
+      "B": "İyi kötü",
+      "C": "Yalan yanlış",
+      "D": "Doğru dürüst"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki kelimelerden hangisi soyut anlamlıdır?",
+    "secenekler": {
+      "A": "Masa",
+      "B": "Rüzgar",
+      "C": "Sevgi",
+      "D": "Güneş"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Hangisi somut bir kavramdır?",
+    "secenekler": {
+      "A": "Korku",
+      "B": "Sevinç",
+      "C": "Nefret",
+      "D": "Ses"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdakilerden hangisi yansıma sözcük değildir?",
+    "secenekler": {
+      "A": "Işıl ışıl",
+      "B": "Pat",
+      "C": "Güm",
+      "D": "Miyav"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Hangi cümlede ikileme kullanılmıştır?",
+    "secenekler": {
+      "A": "Akşam erken uyudu.",
+      "B": "Ağır ağır çıkacaksın bu merdivenlerden.",
+      "C": "Kitabını hemen okudu.",
+      "D": "Soruları hızlıca çözdü."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdakilerden hangisi soyut bir sözcüktür?",
+    "secenekler": {
+      "A": "Hava",
+      "B": "Toprak",
+      "C": "Umut",
+      "D": "Su"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Hangi cümlede somut bir kelime kullanılmıştır?",
+    "secenekler": {
+      "A": "Düşünceleri çok derindi.",
+      "B": "Kıskançlık kötü bir huydur.",
+      "C": "Korkudan titriyordu.",
+      "D": "Elindeki taşı yere bıraktı."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Hangisi eş anlamlı kelimelerle kurulmuş bir ikilemedir?",
+    "secenekler": {
+      "A": "Güç kuvvet",
+      "B": "Eğri büğrü",
+      "C": "Az çok",
+      "D": "Aşağı yukarı"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Hangi kelime yansımadan türemiştir?",
+    "secenekler": {
+      "A": "Uyku",
+      "B": "Şırıltı",
+      "C": "Görme",
+      "D": "Gülüş"
+    },
+    "dogru_cevap": "B"
+  }
+]

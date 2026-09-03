@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi yüklemin türüne göre isim cümlesidir?",
+    "A": "Spor yapmak hem bedensel hem ruhsal sağlığımız için gereklidir.",
+    "B": "Her sabah sahilde temiz havada yarım saat koşarım.",
+    "C": "Kıran kırana geçen şampiyonluk maçını bizim takım kazandı.",
+    "D": "Düzenli olarak yüzmek vücuttaki bütün kasları dengeli geliştirir.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi öge dizilişine göre devrik cümledir?",
+    "A": "Sağlıklı ve dengeli beslenmek vücudumuzu hastalıklardan korur.",
+    "B": "Doktor, yazdığı ilaçları saatinde ve düzenli kullanmamı söyledi.",
+    "C": "Yenildik ne yazık ki son dakikada yediğimiz golle bu maçta.",
+    "D": "Arkadaşlarımla okul çıkışında basketbol oynamayı çok severim.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdakilerden hangisi yapısına göre içinde fiilimsi bulunan cümledir?",
+    "A": "Oyuncular büyük bir alkış eşliğinde ısınmak için sahaya çıktı.",
+    "B": "Hakem düdüğünü çaldı ve heyecanla beklenen derbi başladı.",
+    "C": "Taraftarlar maç boyunca takımları için coşkuyla tezahürat yaptı.",
+    "D": "Beklenen maç başladığında tribündeki herkes aniden sustu.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdakilerden hangisi birden çok yüklemli (sıralı) cümledir?",
+    "A": "Sağlam kafa, her zaman sağlam vücutta bulunur.",
+    "B": "Sabah çok erken kalktı, eşofmanlarını giyip hemen yürüyüşe çıktı.",
+    "C": "Düzenli spor yapanlar günlük hayatta daha zinde olur.",
+    "D": "Kendi sağlığı için beslenmesine her zaman ekstra dikkat ederdi.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdakilerden hangisi bağlacı olan (bağlı) cümledir?",
+    "A": "Sağlıklı olmak ve hastalıklardan korunmak için bol su içmeliyiz.",
+    "B": "Antrenmana büyük bir istekle katıldı fakat günün sonunda çok yoruldu.",
+    "C": "Tüm dünyada ilgiyle izlenen olimpiyat oyunları dört yılda bir düzenlenir.",
+    "D": "Tempolu yüzmek kalp sağlığı için en faydalı sporlardan biridir.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi anlamına göre olumsuz bir cümledir?",
+    "A": "Ligin son haftasında oynadığımız maçta takımımız şampiyon oldu.",
+    "B": "Dereceye giren başarılı sporcular kürsüye çıkıp madalyalarını aldı.",
+    "C": "Uzmanlara göre evde yapılan düzenli egzersiz de çok faydalıdır.",
+    "D": "Doksan dakika boyunca iki takımın oynadığı maçta hiç gol atılmadı.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdakilerden hangisi kurallı bir fiil cümlesidir?",
+    "A": "Herkesin bildiği gibi uzun ve sağlıklı yaşamın sırrı spordur.",
+    "B": "Tribünleri tıklım tıklım dolduran bugünkü voleybol maçı çok heyecanlıydı.",
+    "C": "Hastalıklardan doğal yollarla korunmak için bolca vitamin almalıyız.",
+    "D": "Televizyonda izlemeyi en sevdiğim spor daldı şüphesiz tenistir.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi eksiltili (tamamlanmamış) cümledir?",
+    "A": "Sağlıklı, zinde ve uzun bir yaşam için düzenli uyku...",
+    "B": "Geçen hafta halı sahada spor yaparken ayağımdan sakatlandım.",
+    "C": "Dün akşam oynanan derbi maçının skoru herkesi çok şaşırttı.",
+    "D": "Muayene eden doktor ilaçlarla birlikte bol bol dinlenmemi tavsiye etti.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdakilerden hangisi bir soru cümlesidir?",
+    "A": "Bana neden dün yapılan zorlu antrenmana gelmediğini sordu.",
+    "B": "Yarınki kritik şampiyonluk maçına bizim sınıftan kimler gelecek?",
+    "C": "Okulda hangi spor dalını daha çok sevdiğini henüz bilmiyorum.",
+    "D": "Diyetisyen, sporculara antrenman öncesi sağlıklı beslenmenin önemini anlattı.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisi biçimce olumsuz olduğu hâlde anlamca olumludur?",
+    "A": "Sporun insan vücuduna olan sayısız faydalarını bilmeyen yok.",
+    "B": "Doktorun yazdığı bu yeni ilaç hiçbir şekilde yan etki yapmaz.",
+    "C": "Sağlığımız için aşırı yağlı ve sağlıksız gıdalardan uzak durmalıyız.",
+    "D": "Dün oynadığımız hazırlık maçını çok şükür kaybetmedik.",
+    "dogru_cevap": "A"
+  }
+]

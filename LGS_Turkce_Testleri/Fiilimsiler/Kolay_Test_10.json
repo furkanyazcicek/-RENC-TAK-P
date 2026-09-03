@@ -1,0 +1,82 @@
+[
+  {
+    "soru": "\"Derin sularda yüzmek cesaret ister.\" cümlesindeki altı çizili sözcüğün fiilimsi türü aşağıdakilerden hangisidir?",
+    "A": "Sıfat-fiil",
+    "B": "Zarf-fiil",
+    "C": "Çekimli fiil",
+    "D": "İsim-fiil",
+    "cevap": "D"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde sıfat-fiil kullanılmıştır?",
+    "A": "Dalgalanan deniz hepimize huzur veriyordu.",
+    "B": "Balık tutmak için sabah erkenden sahile gittik.",
+    "C": "Gemi limana yanaşınca yolcular inmeye başladı.",
+    "D": "Denizatı ilginç şekliyle dikkat çekiyordu.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil kullanılmıştır?",
+    "A": "Yelkenli tekneler rüzgarın etkisiyle hızlandı.",
+    "B": "Kıyıya ulaşıp teknelerini güvenle bağladılar.",
+    "C": "Denizaltındaki mercan resifleri büyüleyiciydi.",
+    "D": "Kaptan, tayfalarına güverteyi temizlemelerini söyledi.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde fiilimsi yoktur?",
+    "A": "Okyanustaki canlı türlerini araştırmak bilim insanlarının işidir.",
+    "B": "Yunuslar teknenin etrafında zıplayarak yüzüyordu.",
+    "C": "Kaptan gemiyi büyük bir ustalıkla limana demirledi.",
+    "D": "Ağlarını çeken balıkçılar bol miktarda hamsi yakaladı.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde farklı türde bir fiilimsi vardır?",
+    "A": "Denizde boğuşan gemiler zor anlar yaşıyordu.",
+    "B": "Kıyıya vuran deniz kabuklarını tek tek topladık.",
+    "C": "Okyanusta yüzen kaplumbağalar uzun mesafe kateder.",
+    "D": "Çocuklar sahilde saatlerce yürüyerek dolaştı.",
+    "cevap": "D"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde kalıcı isim kullanılmıştır?",
+    "A": "İstiridyenin içinden çıkan inci çok değerliydi.",
+    "B": "Deniz feneri gemilere yol göstermek için yanıyordu.",
+    "C": "Sahildeki büfeden hepimize dondurma aldı.",
+    "D": "Ahtapot avlamak uzmanlık isteyen bir işti.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Sıfat-fiiller niteledikleri isim düştüğünde adlaşır. Aşağıdaki cümlelerin hangisinde adlaşmış sıfat-fiil kullanılmıştır?",
+    "A": "Yırtık ağları onarmak saatlerini aldı.",
+    "B": "Yüzme bilmeyenler can yeleği takmalıdır.",
+    "C": "Batan geminin enkazına yıllar sonra ulaşıldı.",
+    "D": "Denizkızı efsanesini anlatan kitap çok satıldı.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil cümleye durum anlamı katmıştır?",
+    "A": "Dalgalar kayalara çarparak beyaz köpükler oluşturuyordu.",
+    "B": "Akşam olunca limandaki bütün gemiler ışıklarını yaktı.",
+    "C": "Fırtına dindiğinde tekneler yeniden denize açıldı.",
+    "D": "Denizanaları kıyıya yaklaşınca herkes sudan çıktı.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil cümleye zaman anlamı katmıştır?",
+    "A": "Fırtına kopunca tekneler hemen kıyıya yanaştı.",
+    "B": "Kaptan rotayı dikkatlice inceleyerek karar verdi.",
+    "C": "Balıklar sürü hâlinde yüzüp uzaklaştılar.",
+    "D": "Martılar simit kapmak için vapuru takip ediyordu.",
+    "cevap": "A"
+  },
+  {
+    "soru": "\"Ağlarını denize atan balıkçı, büyük bir sabırla beklemeye başladı.\" cümlesinde kaç tane fiilimsi kullanılmıştır?",
+    "A": "1",
+    "B": "2",
+    "C": "3",
+    "D": "4",
+    "cevap": "B"
+  }
+]

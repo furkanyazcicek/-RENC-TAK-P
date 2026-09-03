@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinin sonuna nokta (.) konulmalıdır?",
+    "secenekler": {
+      "A": "Baharın gelmesiyle ağaçlar çiçek açtı",
+      "B": "Neden bana gerçekleri söylemedin",
+      "C": "İnanmıyorum, bu harika bir haber",
+      "D": "Hangi kitabı okumamı tavsiye edersiniz"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "\"Ali( ) Ayşe ve Murat yarın bize gelecekmiş.\" cümlesinde yay ayraç içine hangi noktalama işareti gelmelidir?",
+    "secenekler": {
+      "A": "Noktalı virgül",
+      "B": "Virgül",
+      "C": "İki nokta",
+      "D": "Nokta"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "\"Eyvah( ) Yemek yandı( )\" Bu cümlede yay ayraçla gösterilen yerlere sırasıyla hangi noktalama işaretleri getirilmelidir?",
+    "secenekler": {
+      "A": "(,) (.)",
+      "B": "(!) (.)",
+      "C": "(,) (!)",
+      "D": "(!) (,)"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde kesme işareti (') yanlış kullanılmıştır?",
+    "secenekler": {
+      "A": "Ankara'nın havası soğuktur.",
+      "B": "Saat 14.30'da maç başlayacak.",
+      "C": "TBMM'nin açılışı yaklaşıyor.",
+      "D": "Ahmet'ler yarın bize gelecekmiş."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Kendisiyle ilgili örnek verilecek cümlenin sonuna hangi noktalama işareti konur?",
+    "secenekler": {
+      "A": "İki nokta",
+      "B": "Noktalı virgül",
+      "C": "Üç nokta",
+      "D": "Nokta"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdakilerin hangisinde soru işareti (?) yanlış kullanılmıştır?",
+    "secenekler": {
+      "A": "Ne zaman döneceksin?",
+      "B": "Neden böyle davrandığını anlamıyorum?",
+      "C": "Bu kitabı kim yazmış?",
+      "D": "Bana yardım eder misin?"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "\"Ankara( )Konya arası hızlı trenle oldukça kısa sürüyor.\" cümlesinde boş bırakılan yere hangi noktalama işareti getirilmelidir?",
+    "secenekler": {
+      "A": "Eğik çizgi",
+      "B": "Virgül",
+      "C": "Kısa çizgi",
+      "D": "Nokta"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Özel olarak vurgulanmak istenen sözler hangi noktalama işareti içine alınır?",
+    "secenekler": {
+      "A": "Parantez",
+      "B": "Köşeli ayraç",
+      "C": "Kısa çizgi",
+      "D": "Tırnak işareti"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "\"Bu akşam maç var mı( )\" cümlesinin sonuna hangi noktalama işareti konmalıdır?",
+    "secenekler": {
+      "A": "Nokta",
+      "B": "Soru işareti",
+      "C": "Ünlem",
+      "D": "Üç nokta"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde yay ayraç ( ) diğerlerinden farklı bir görevde kullanılmıştır?",
+    "secenekler": {
+      "A": "Cahit Sıtkı Tarancı (1910-1956) şiirleriyle tanınır.",
+      "B": "Mevlana (1207-1273) hoşgörüsüyle bilinir.",
+      "C": "O kadar akıllı (!) ki bütün soruları yanlış yapmış.",
+      "D": "Yunus Emre (1238-1320) Anadolu'da yaşamıştır."
+    },
+    "dogru_cevap": "C"
+  }
+]

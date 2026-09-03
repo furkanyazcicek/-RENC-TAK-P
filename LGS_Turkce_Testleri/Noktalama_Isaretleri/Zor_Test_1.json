@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde virgülün (,) kullanımıyla ilgili bir yanlışlık yapılmıştır?",
+    "secenekler": {
+      "A": "Fırtına dindi, gökyüzü yavaş yavaş açılmaya başladı.",
+      "B": "Kitabını okuyup, notlarını aldıktan sonra uyudu.",
+      "C": "Sayın Başkan, değerli misafirler, hepiniz hoş geldiniz.",
+      "D": "O, bu mahallenin en eski esnafıdır."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde noktalı virgül (;) yanlış kullanılmıştır?",
+    "secenekler": {
+      "A": "Manavdan elma, armut; marketten peynir, zeytin aldık.",
+      "B": "At ölür, meydan kalır; yiğit ölür, şan kalır.",
+      "C": "Dışarıda şiddetli bir rüzgâr esiyor; camlar zangır zangır titriyordu.",
+      "D": "Ahmet; şiir, roman ve hikaye okumayı çok sever."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde üç nokta (...) kullanımı yanlıştır?",
+    "secenekler": {
+      "A": "Karşımızda alabildiğine uzanan masmavi bir deniz...",
+      "B": "... derken şehrin ışıkları belirmeye başladı uzaklardan.",
+      "C": "Sana söyleyecek çok şeyim var ama...",
+      "D": "Dün gece seni çok bekledim... ancak sen gelmedin."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Kesme işareti (') aşağıdakilerin hangisinde doğru kullanılmıştır?",
+    "secenekler": {
+      "A": "Boğaz'ın serin suları hepimizi ferahlatmıştı.",
+      "B": "Türk Dil Kurumu'na yeni bir dilekçe verdik.",
+      "C": "Aydın'lı gençler projede büyük başarı gösterdi.",
+      "D": "Ahmet'ler bu yaz köye gitmeyecekmiş."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Soru ekinden veya sözünden sonra soru işareti (?) konulmaz. Aşağıdaki cümlelerin hangisinde bu kurala uyulmadığı için noktalama yanlışı yapılmıştır?",
+    "secenekler": {
+      "A": "Akşam oldu mu sürüler dönerdi köye.",
+      "B": "Bu işi nasıl başaracağımı, bilmiyorum?",
+      "C": "Neden böyle düşündüğünü ona sordum.",
+      "D": "Bahar geldi mi her yer yemyeşil olur."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde kesme işareti (') kullanılmalıdır?",
+    "secenekler": {
+      "A": "Konyalı öğrenciler yarışmada birinci oldu.",
+      "B": "Bakanlar Kurulu toplantısı yarın yapılacak.",
+      "C": "Türkçe kelimelerin yazılışına dikkat etmeliyiz.",
+      "D": "Bu yasa 1982 Anayasasının ilgili maddesine dayanıyor."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "\"Sınavda başarılı olmanın tek bir sırrı vardır( ) Düzenli ve planlı çalışmak( )\" cümlesinde parantezlerle belirtilen yerlere sırasıyla hangileri gelmelidir?",
+    "secenekler": {
+      "A": "(:) (.)",
+      "B": "(;) (.)",
+      "C": "(:) (...)",
+      "D": "(,) (.)"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Alıntılarda başta, ortada ve sonda alınmayan kelime veya bölümlerin yerine konan noktalama işareti aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Kısa çizgi",
+      "B": "Noktalı virgül",
+      "C": "Üç nokta",
+      "D": "İki nokta"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde tırnak işareti (\") kullanımıyla ilgili bir bilgi yanlışı vardır?",
+    "secenekler": {
+      "A": "Özel olarak belirtilmek istenen sözler tırnak içine alınır.",
+      "B": "Tırnak içindeki alıntının sonunda bulunan noktalama işareti tırnağın dışına konur.",
+      "C": "Eser ve yazı adları cümle içinde tırnak içine alınabilir.",
+      "D": "Başka bir kimseden veya yazıdan olduğu gibi aktarılan sözler tırnak içine alınır."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "\"Gözlerimi açtığımda saat 07( )30( )du( ) dışarıda( ) ağaçların dallarında kuşlar ötüyordu.\" Bu cümlede yay ayraçla belirtilen yerlere sırasıyla hangi noktalama işaretleri getirilmelidir?",
+    "secenekler": {
+      "A": "(:) (') (,) (,)",
+      "B": "(.) (-) (;) (,)",
+      "C": "(.) (') (,) (,)",
+      "D": "(.) (') (;) (,)"
+    },
+    "dogru_cevap": "D"
+  }
+]

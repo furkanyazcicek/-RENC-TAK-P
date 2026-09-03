@@ -1,0 +1,82 @@
+[
+  {
+    "soru": "Aşağıdakilerden hangisi bir isim cümlesidir?",
+    "A": "Ormanda yürüyüş yaparken kuş seslerini dinledik.",
+    "B": "Ağaçların yaprakları sonbaharda sararır.",
+    "C": "Doğanın en güzel hali ilkbahar mevsimidir.",
+    "D": "Piknik alanında çöplerimizi poşete koyduk.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki devrik cümlelerden hangisinin yüklemi fiildir?",
+    "A": "Çok güzeldir Karadeniz'in yaylaları.",
+    "B": "Koşarak uzaklaştı yavru ceylan ormanda.",
+    "C": "Sessizdi gece vakti dağların zirvesi.",
+    "D": "Maviydi gökyüzü bulutsuz bir günde.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi içinde fiilimsi bulunan bir cümledir?",
+    "A": "Güneş yavaş yavaş dağların arkasından kayboldu.",
+    "B": "Kuruyan ağaç dallarını toplayıp ateş yaktık.",
+    "C": "Rüzgar çok sert esiyor, fırtına yaklaşıyordu.",
+    "D": "Denizin dalgaları kıyıya şiddetle çarpıyordu.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Hangi cümle anlamına göre soru cümlesi değildir?",
+    "A": "Çevre temizliğine neden dikkat etmiyoruz?",
+    "B": "Hangi ağacın meyvesi daha lezzetlidir?",
+    "C": "Bu kadar çöpü kimin attığını bilmiyorum.",
+    "D": "Orman yangınlarını önlemek için neler yapabiliriz?",
+    "cevap": "C"
+  },
+  {
+    "soru": "'Kuşlar ötüyor, dereler şırıl şırıl akıyordu.' cümlesinin yapısı aşağıdakilerden hangisidir?",
+    "A": "Birden çok yüklemli (sıralı) cümle",
+    "B": "Tek yüklemli (basit) cümle",
+    "C": "Bağlacı olan cümle",
+    "D": "Fiilimsi bulunan cümle",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdakilerden hangisi kurallı bir eylem (fiil) cümlesidir?",
+    "A": "Şelalenin sesi hepimize huzur veriyordu.",
+    "B": "Harikaydı bugün ormanda yaptığımız yürüyüş.",
+    "C": "Tabiat, insanlara sunulmuş en büyük armağandır.",
+    "D": "Kuşlar kadar özgürdü bu geniş ovalarda.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi biçimce olumlu olduğu halde anlamca olumsuzdur?",
+    "A": "Bu kış havalar pek de soğuk geçmedi.",
+    "B": "Sanki çevreye hiç zarar vermemişiz gibi davranıyoruz.",
+    "C": "Bu kadar güzel bir manzarayı gel de izleme.",
+    "D": "Ne ağaç dikti ne de çiçekleri suladı.",
+    "cevap": "D"
+  },
+  {
+    "soru": "Hangi seçenekte tek yüklemli bir cümle kullanılmıştır?",
+    "A": "Çiçekleri topladı ve vazoya özenle yerleştirdi.",
+    "B": "Toprağın kokusu yağmurdan sonra her yeri sardı.",
+    "C": "Bahar geldiğinde doğa canlanır, her yer yeşillenir.",
+    "D": "Kamp çadırını kurduk ama uyumak mümkün olmadı.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdakilerden hangisi eksiltili cümle örneğidir?",
+    "A": "Dağların ardında batan güneşin kızıllığı...",
+    "B": "Göçmen kuşlar güneye doğru kanat çırpıyordu.",
+    "C": "Doğayı korumak hepimizin en büyük görevidir.",
+    "D": "Kar yağınca çocuklar hemen sokağa döküldü.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde bağlaç, cümleleri birbirine bağlamıştır?",
+    "A": "Gül ve lale bahçenin en güzel çiçekleridir.",
+    "B": "Hava karardı fakat biz yürüyüşümüze devam ettik.",
+    "C": "Dağlar ile tepeler kar altında kalmıştı.",
+    "D": "Kediler de köpekler de sevimli hayvanlardır.",
+    "cevap": "B"
+  }
+]

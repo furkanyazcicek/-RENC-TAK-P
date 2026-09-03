@@ -1,0 +1,82 @@
+[
+  {
+    "soru": "\"Müzeyi gezmek bana tarihi yaşatıyor gibi hissettirdi.\" cümlesinde altı çizili sözcük hangi tür fiilimsidir?",
+    "A": "Sıfat-fiil",
+    "B": "Zarf-fiil",
+    "C": "Çekimli fiil",
+    "D": "İsim-fiil",
+    "cevap": "D"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde sıfat-fiil kullanılmıştır?",
+    "A": "Müzedeki görevliler bize çok yardımcı oldu.",
+    "B": "Eski çağlardan kalan eserler herkesi büyüledi.",
+    "C": "Tarihi yerleri ziyaret etmek için plan yaptık.",
+    "D": "Rehberi dikkatle dinleyerek notlar aldı.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil kullanılmıştır?",
+    "A": "Tarihi olayları öğrenip geçmişimize sahip çıkmalıyız.",
+    "B": "Bu kılıçlar Osmanlı döneminden kalmıştır.",
+    "C": "Kazı çalışmalarında yeni bir antik kent bulundu.",
+    "D": "Müzeye giriş saatlerini internetten kontrol etti.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde fiilimsi yoktur?",
+    "A": "Müzedeki eski eşyaları hayranlıkla inceledik.",
+    "B": "Rehberin anlattığı efsaneler çok ilginçti.",
+    "C": "Kazı yapmak sabır ve dikkat gerektirir.",
+    "D": "Tarihi anıtı görünce fotoğraf çekmek istediler.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde farklı türde bir fiilimsi kullanılmıştır?",
+    "A": "Antik kenti yürüyerek baştan sona dolaştık.",
+    "B": "Eserlere yakından bakınca ince işçiliği fark ettik.",
+    "C": "Müzik eşliğinde tarih dinleyip hayallere daldık.",
+    "D": "Rehberin anlattığı destanlar aklımızdan hiç çıkmadı.",
+    "cevap": "D"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde kalıcı isim vardır?",
+    "A": "Taş tabletleri okumak için özel eğitim almış.",
+    "B": "Kazı alanında çalışan işçiler yorulmuştu.",
+    "C": "Müzenin danışmasından rehberli tur için bilet alabilirsiniz.",
+    "D": "Eski paraları sergileyen vitrin çok ışıklıydı.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde adlaşmış sıfat-fiil kullanılmıştır?",
+    "A": "Tarihe meraklı olanlar bu müzeyi mutlaka görmeli.",
+    "B": "Bulunan heykeller özel bir korumaya alındı.",
+    "C": "Gelecek nesillere aktarılacak kültürel mirasımız var.",
+    "D": "Kırık çömlekleri birleştirerek eski hâline getirdiler.",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil cümleye durum anlamı katmıştır?",
+    "A": "Tarihi köprüyü geçerken fotoğraf çektirdik.",
+    "B": "Arkeologlar buluntuları dikkatle inceleyerek tasnif etti.",
+    "C": "Hava kararırken müzeden ayrılmak zorunda kaldık.",
+    "D": "Müzeye varınca ilk olarak haritayı inceledi.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisinde zarf-fiil cümleye zaman anlamı katmıştır?",
+    "A": "Bölgeyi köşe bucak araştırarak tarihi bir han buldular.",
+    "B": "Minyatürleri büyüteçle inceleyip detayları not aldı.",
+    "C": "Rehber tarihi olayı anlatırken herkes pürdikkat dinliyordu.",
+    "D": "Bilet sırasında sessizce bekleyerek etrafı seyretti.",
+    "cevap": "C"
+  },
+  {
+    "soru": "\"Müzeyi gezerken gördüğü eserleri dikkatle inceledi.\" cümlesinde kaç tane fiilimsi vardır?",
+    "A": "1",
+    "B": "2",
+    "C": "3",
+    "D": "4",
+    "cevap": "B"
+  }
+]

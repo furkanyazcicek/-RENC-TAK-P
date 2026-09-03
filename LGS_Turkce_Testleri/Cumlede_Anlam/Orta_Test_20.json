@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'neden-sonuç' ilişkisi vardır?",
+    "secenekler": {
+      "A": "Bakırcılık sanatını yaşatmak için çırak yetiştirmeye çalışıyor.",
+      "B": "Fabrikasyon üretim arttığı için el dokuması halılara ilgi azaldı.",
+      "C": "Ahşap oymacılığı sabır ve ince bir işçilik gerektirir.",
+      "D": "Mesleğini aşkla yaparsan hiçbir zaman yorulmazsın."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Hangi cümlede 'amaç-sonuç' ilgisi kurulmuştur?",
+    "secenekler": {
+      "A": "Unutulmaya yüz tutmuş meslekleri canlandırmak maksadıyla kurslar açıldı.",
+      "B": "Çömlekçi ustası hastalandığından atölye bugün kapalıydı.",
+      "C": "Eski zanaatkarlar işlerini yaparken asla hileye başvurmazlardı.",
+      "D": "Kalaycı ustası körüğü çektikçe ateşi harlıyordu."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'koşul' anlamı vardır?",
+    "secenekler": {
+      "A": "Telkari sanatı gümüş tellerle yapılan çok zarif bir işçiliktir.",
+      "B": "Yorgancılık gibi meslekler teknolojiye yenik düşüyor.",
+      "C": "El emeği göz nuru bu eserlere gereken değer verilirse zanaatkarlar yok olmaz.",
+      "D": "Ustasından el alan çırak, kendi dükkanını açmaya hazırlanıyordu."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Aşağıdakilerin hangisinde 'karşılaştırma' yapılmıştır?",
+    "secenekler": {
+      "A": "Demirci ustası örsün üzerinde kızgın demiri şekillendiriyordu.",
+      "B": "Lüle taşı, çıkarılması ve işlenmesi çok zor olan bir taştır.",
+      "C": "Sepet örmeciliği günümüzde turistik bölgelerde daha çok rağbet görüyor.",
+      "D": "El yapımı ayakkabılar fabrikasyon ayakkabılara göre çok daha dayanıklıdır."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru": "'Alın teriyle ıslanan toprak, en bereketli hasadı verir.' cümlesinde vurgulanmak istenen aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Tarım, en önemli geçim kaynağıdır.",
+      "B": "Emek harcanarak elde edilen kazanç değerli ve bereketlidir.",
+      "C": "Toprağı sulamak hasadın verimini artırır.",
+      "D": "Geleneksel meslekler alın teri gerektirir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Hangi cümlede 'yakınma' anlamı vardır?",
+    "secenekler": {
+      "A": "Cam üfleme sanatı, ateşe nefes vermek olarak bilinir.",
+      "B": "Semercilik mesleğini sürdüren sadece birkaç usta kaldı.",
+      "C": "Gençler artık bu zahmetli ve az kazandıran mesleklere dönüp bakmıyorlar bile.",
+      "D": "Ahşap beşik yapımı Anadolu'da köklü bir geleneğe sahiptir."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Aşağıdakilerin hangisinde bir 'tanım' yapılmıştır?",
+    "secenekler": {
+      "A": "Ebru, kitreyle yoğunlaştırılmış su üzerine boyalarla desen oluşturma sanatıdır.",
+      "B": "Hat sanatı, İslam medeniyetinin görsel estetiğinde önemli bir yer tutar.",
+      "C": "Usta, tezgahının başında göz nuru dökerek kumaşı dokuyordu.",
+      "D": "Çini sanatında mavi ve turkuaz renkler sıklıkla tercih edilir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Hangi cümlede 'ön yargı' bulunmaktadır?",
+    "secenekler": {
+      "A": "Bu gidişle el sanatlarımız tamamen tarihe karışacak.",
+      "B": "Geleneksel motiflerin kullanıldığı seramikler fuarda sergilendi.",
+      "C": "Yılların yorgunluğu usta terzinin ellerindeki çatlaklardan okunuyordu.",
+      "D": "Yeni nesil tasarımcılar geleneksel dokunuşları modern çizgilerle buluşturuyor."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'varsayım' vardır?",
+    "secenekler": {
+      "A": "Oltu taşı işlemeciliği Erzurum yöresiyle özdeşleşmiştir.",
+      "B": "Tut ki bu mesleği seçtin, o zaman maddi zorluklara katlanabilecek misin?",
+      "C": "Çini ustası, fırından çıkan tabakların desenlerini dikkatle inceledi.",
+      "D": "Görünen o ki, saat tamirciliği de yakında unutulan meslekler arasına girecek."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'doğrudan anlatım' yapılmıştır?",
+    "secenekler": {
+      "A": "Bakırcı ustası, emeğinin karşılığını alamamaktan dert yandı.",
+      "B": "Belediye başkanı, el sanatları çarşısının haftaya açılacağını müjdeledi.",
+      "C": "İhtiyar kunduracı: 'Bu meslek bizimle birlikte toprağa girecek.' dedi.",
+      "D": "Çırak, ustasına tezgahı temizlediğini söyleyerek dükkandan ayrıldı."
+    },
+    "dogru_cevap": "C"
+  }
+]

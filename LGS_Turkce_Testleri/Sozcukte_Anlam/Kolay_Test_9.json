@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Hangi cümlede 'sert' kelimesi mecazdır?",
+    "secenekler": {
+      "A": "Sert bir yastıkta uyudu.",
+      "B": "Sert bakışlarıyla beni korkuttu.",
+      "C": "Ceviz kabuğu çok sertti.",
+      "D": "Sert bir zemine düştü."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "'Anı' sözcüğünün eş anlamlısı hangisidir?",
+    "secenekler": {
+      "A": "Düş",
+      "B": "Hayal",
+      "C": "Hatıra",
+      "D": "Geçmiş"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "'Açık' kelimesinin zıt anlamlısı nedir?",
+    "secenekler": {
+      "A": "Bozuk",
+      "B": "Eski",
+      "C": "Kötü",
+      "D": "Kapalı"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Hangi kelimenin eş seslisi vardır?",
+    "secenekler": {
+      "A": "Bin",
+      "B": "Araba",
+      "C": "Sokak",
+      "D": "Ev"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "'Gösteriş yaparak aldatmak' anlamındaki deyim hangisidir?",
+    "secenekler": {
+      "A": "Göze batmak",
+      "B": "Göz boyamak",
+      "C": "Göz yummak",
+      "D": "Göze girmek"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "'Harcamalarını gelirine uydurmak' anlamındaki atasözü hangisidir?",
+    "secenekler": {
+      "A": "Ağaç yaşken eğilir.",
+      "B": "Dost acı söyler.",
+      "C": "Ayağını yorganına göre uzat.",
+      "D": "Gülme komşuna gelir başına."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Hangisi bir coğrafya terimidir?",
+    "secenekler": {
+      "A": "Roman",
+      "B": "Ameliyat",
+      "C": "Nota",
+      "D": "Ekvator"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdakilerden hangisi soyut bir sözcüktür?",
+    "secenekler": {
+      "A": "Hüzün",
+      "B": "Rüzgar",
+      "C": "Güneş",
+      "D": "Bulut"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Hangisinde ikileme kullanılmıştır?",
+    "secenekler": {
+      "A": "Hızlıca koştu.",
+      "B": "Zar zor yetiştik.",
+      "C": "Güzel bir gün.",
+      "D": "Çok yoruldu."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Hangi kelime yansıma değildir?",
+    "secenekler": {
+      "A": "Güm",
+      "B": "Pat",
+      "C": "Masa",
+      "D": "Küt"
+    },
+    "dogru_cevap": "C"
+  }
+]

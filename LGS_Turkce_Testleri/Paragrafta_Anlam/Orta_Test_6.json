@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Şiir, düzyazının aksine kelimelerin en ekonomik ama en yoğun kullanıldığı türdür. Düzyazıda bir olayı anlatmak için sayfalarca cümle kurabilirsiniz. Ancak şiirde, birkaç kelimeyle bir okyanus hissi yaratmak zorundasınız. Bu yüzden şair, kelimeleri kuyumcu titizliğiyle işleyen, onların sadece sözlük anlamını değil, sesini ve çağrışımını da hesaplayan bir sanatçıdır.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Düzyazı yazmak, şiir yazmaktan çok daha zor ve zahmetlidir.",
+      "B": "Şiir, az kelimeyle derin anlamlar ifade etmeyi gerektiren, özen isteyen bir türdür.",
+      "C": "Şairlerin kullandığı kelimeler genellikle günlük dilde karşılığı olmayan kelimelerdir.",
+      "D": "Şiir okumak, okuyucunun kelime dağarcığını düzyazıdan daha fazla geliştirir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Sporun asıl amacı sadece rakipleri yenmek ya da madalyalar kazanmak olmamalıdır. Gerçek sporculuk; kurallara uymayı, rakibe saygı göstermeyi, yenilgide bile onurlu durabilmeyi gerektirir. Kazanmak uğruna her yolu mubah sayan, hile yapan ya da rakibini küçümseyen biri, belki şampiyon olabilir ama asla 'sporcu' olamaz.\n\nBu metinde gerçek bir sporcuda bulunması gereken özelliklerden hangisine değinilmemiştir?",
+    "secenekler": {
+      "A": "Rakiplerine karşı saygılı davranmasına",
+      "B": "Sadece kazanmaya odaklanmamasına",
+      "C": "Fiziksel gücünü en üst seviyede kullanmasına",
+      "D": "Kurallara bağlı kalarak dürüst mücadele etmesine"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "(I) Denizler, dünyamızın akciğerleridir. (II) Ancak ne yazık ki denizlerimiz her geçen gün daha fazla kirleniyor. (III) Fabrika atıkları, plastik şişeler ve kimyasallar deniz canlılarının yaşam alanını yok ediyor. (IV) Deniz tatili yapmak insanların stresini azaltan en önemli etkinliktir. (V) Eğer bu kirliliğin önüne geçilmezse, çok yakın bir gelecekte denizlerde yaşam tamamen sona erebilir.\n\nBu metindeki numaralanmış cümlelerden hangisi düşüncenin akışını bozmaktadır?",
+    "secenekler": {
+      "A": "II",
+      "B": "III",
+      "C": "IV",
+      "D": "V"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Sonbahar, doğanın kabuğuna çekilme ve sessizleşme mevsimidir. Ağaçların altın sarısına dönen yaprakları usulca yere dökülürken, hava hafiften serinlemeye başlar. Yazın o cıvıl cıvıl neşesi yerini hüzünlü ve dingin bir atmosfere bırakır. İnsanın içini ısıtan çayların demlendiği, pencere kenarında kitap okumanın en keyifli olduğu zamandır sonbahar.\n\nBu parçanın anlatımıyla ilgili olarak aşağıdakilerden hangisi söylenemez?",
+    "secenekler": {
+      "A": "Kişileştirme yapılmıştır.",
+      "B": "Betimleyici ögelere yer verilmiştir.",
+      "C": "Karşılaştırmadan yararlanılmıştır.",
+      "D": "Sayısal veriler kullanılarak kanıtlama yoluna gidilmiştir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Gerçek dostluk, güneşli günlerde yanınızda olan değil, fırtına koptuğunda şemsiyesini sizinle paylaşan kişidir. Başarılarınızı alkışlayan pek çok tanıdığınız olabilir ama ayağınız tökezlediğinde sizi kaldırmak için elini uzatanlar gerçek dostlarınızdır. Dostluk, zor zamanların turnusol kâğıdıdır.\n\nBu metinde 'turnusol kâğıdı' ifadesiyle dostlukla ilgili olarak anlatılmak istenen aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Dostluğun ancak zor ve sıkıntılı zamanlarda test edilip gerçeğinin anlaşılabileceği",
+      "B": "Kimyasal tepkimeler gibi dostluğun da zamanla şekil değiştirdiği",
+      "C": "Dostlukların zaman içinde rengini kaybedip silinebileceği",
+      "D": "Her insanın hayatında turnusol kâğıdı kadar ince dostlara ihtiyaç duyduğu"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "(I) Kütüphaneler sadece raflarında kitap barındıran sessiz binalar değildir. (II) Onlar, insanlığın kolektif hafızası, geçmişten geleceğe uzanan birer köprüdür. (III) Dijitalleşmeyle birlikte pek çok kütüphane e-kitap arşivlerini de okuyuculara sunuyor. (IV) Bir kütüphanenin koridorlarında yürürken, aslında yüzlerce farklı zihinle, farklı dünyayla yan yana olduğunuzu hissedersiniz.\n\nBu metin iki paragrafa bölünmek istense ikinci paragraf hangi cümleyle başlar?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Klasik müzik dinlemenin bebeklerin zihinsel gelişimini olumlu yönde etkilediği, uzun zamandır konuşulan bir konudur. 'Mozart Etkisi' adı verilen bu duruma göre, karmaşık müzikal yapılar beynin problem çözme yeteneğini geliştirir. Ancak son yapılan araştırmalar, sadece Mozart dinlemenin mucizeler yaratmadığını, çocuğa sevgiyle verilen herhangi bir etkileşimin ve iletişimin de benzer şekilde beyin gelişimini hızlandırdığını gösteriyor.\n\nBu parçaya göre son yapılan araştırmaların ortaya koyduğu sonuç aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Klasik müziğin bebeklerin zekâsı üzerinde hiçbir etkisinin olmadığı",
+      "B": "Zihinsel gelişimin sadece klasik müzikle değil, çocukla kurulan sıcak ve sevgi dolu iletişimle de sağlandığı",
+      "C": "Mozart dinleyen çocukların diğerlerine göre matematiğe daha yatkın olduğu",
+      "D": "Bebeklerin müzik dinlemekten çok oyun oynamaya ihtiyaç duyduğu"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Çocukluk anılarımız, hayatımızın temel taşlarıdır. Büyüyüp birer yetişkin olduğumuzda bile karakterimizin büyük bir kısmı o anıların gölgesinde şekillenir. Çocukluğunda bolca sevgi görmüş, değer verilmiş bir birey, yetişkinliğinde de etrafına sevgi saçar. Sevgisiz büyüyenler ise hayatları boyunca o boşluğu doldurmanın yollarını ararlar.\n\nBu parçadan aşağıdaki yargıların hangisi çıkarılamaz?",
+    "secenekler": {
+      "A": "Çocuklukta yaşananların insanın kişiliği üzerinde kalıcı etkileri vardır.",
+      "B": "Sevgiyle büyüyen insanlar, başkalarına karşı daha sevgi dolu olurlar.",
+      "C": "İnsanlar çocukluk anılarını yetişkin olduklarında tamamen unuturlar.",
+      "D": "Çocukluk dönemindeki eksiklikler, ileriki yaşlarda telafi edilmeye çalışılır."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Son zamanlarda çocuklar zamanlarının çoğunu tablet ve telefon ekranlarına bakarak geçiriyor. Sokakta oynanan oyunlar, çamurdan yapılan oyuncaklar yerini sanal dünyadaki rekabetçi oyunlara bıraktı. Bu durum, çocukların sadece fiziksel olarak hareketsiz kalmasına değil, aynı zamanda sosyalleşme becerilerinin de gerilemesine neden oluyor.\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Eski çocuk oyunlarının kuralları",
+      "B": "Teknolojinin çocukların fiziksel ve sosyal gelişimi üzerindeki olumsuz etkileri",
+      "C": "Tablet ve telefonların eğitimde nasıl kullanılması gerektiği",
+      "D": "Ailelerin çocuklarına yeterince zaman ayıramaması"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Mimar Sinan, yaptığı eserlerle yüzlerce yıl sonrasına meydan okuyan bir dehadır. Sadece estetik değil, aynı zamanda mühendislik açısından da kusursuz yapılar inşa etmiştir. Süleymaniye Camii'ni yaparken sadece taşları üst üste koymamış; akustiği, hava akımını ve depreme dayanıklılığı da en ince ayrıntısına kadar hesaplamıştır. Bu yüzden onun eserleri hâlâ ayaktadır.\n\nBu parçada Mimar Sinan'ın eserlerinin günümüze kadar ulaşabilmesinin temel nedeni olarak aşağıdakilerden hangisi gösterilmiştir?",
+    "secenekler": {
+      "A": "Eserlerinin çoğunun İstanbul gibi önemli bir şehirde yapılmış olması",
+      "B": "Estetiğin yanı sıra mükemmel bir mühendislik ve hesaplama kullanılması",
+      "C": "Yapılarında dönemin en pahalı ve dayanıklı taşlarını kullanması",
+      "D": "Çıraklarına iyi bir eğitim vererek mimariyi onlara miras bırakması"
+    },
+    "dogru_cevap": "B"
+  }
+]

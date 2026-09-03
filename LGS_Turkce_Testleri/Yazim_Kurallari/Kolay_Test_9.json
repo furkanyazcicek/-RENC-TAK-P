@@ -1,0 +1,122 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdaki kelimelerden hangisinin yazımı doğrudur?",
+    "secenekler": {
+      "A": "Herkez",
+      "B": "Yalnış",
+      "C": "Kirpik",
+      "D": "Şöför"
+    },
+    "dogru_cevap": "C",
+    "cozum": "A) Herkes, B) Yanlış, D) Şoför olmalıdır. 'Kirpik' doğru yazılmıştır."
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde büyük harflerin kullanımı ile ilgili bir hata yoktur?",
+    "secenekler": {
+      "A": "Bugün doğu Anadolu çok soğuk olacak.",
+      "B": "Karabaş kulübesinde uyuyor.",
+      "C": "Yarınki toplantı için ankara'ya gidecek.",
+      "D": "Türkçe dersini çok Seviyorum."
+    },
+    "dogru_cevap": "B",
+    "cozum": "Hayvanlara verilen özel adlar büyük harfle başlar. A'da 'Doğu', C'de 'Ankara'ya', D'de 'seviyorum' (küçük s) olmalıydı."
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Aşağıdaki birleşik fiillerden hangisi yanlış yazılmıştır?",
+    "secenekler": {
+      "A": "Kaybolmak",
+      "B": "Farketmek",
+      "C": "Hissetmek",
+      "D": "Zannetmek"
+    },
+    "dogru_cevap": "B",
+    "cozum": "Ses olayı olmayan yardımcı eylemler ayrı yazılır. 'Fark etmek' olmalıdır."
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdakilerin hangisinde 'ki'nin yazımıyla ilgili bir yanlışlık vardır?",
+    "secenekler": {
+      "A": "Anladım ki bu iş böyle gitmez.",
+      "B": "Evdeki hesap çarşıya uymaz.",
+      "C": "Yarın ki maça gidecek miyiz?",
+      "D": "Seninki daha güzel olmuş."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Zaman bildiren kelimelere gelen 'ki' bitişik yazılır. 'Yarınki' olmalıdır."
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde kısaltmaların yazımında hata yapılmıştır?",
+    "secenekler": {
+      "A": "BOTAŞ'ın çalışmaları sona erdi.",
+      "B": "TÜBİTAK'ın bilim dergisini aldım.",
+      "C": "ASELSAN'da mühendis olarak işe başladı.",
+      "D": "MEB'na dilekçe yazdık."
+    },
+    "dogru_cevap": "D",
+    "cozum": "Büyük harfli kısaltmalara getirilen ek, kısaltmanın okunuşuna uymalıdır. 'MEB'e' olmalıdır."
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'mi'nin yazımı yanlıştır?",
+    "secenekler": {
+      "A": "Kar yağdı mı yollar kapanır.",
+      "B": "Bu elbiseyi senmi aldın?",
+      "C": "Tatlı mı tatlı bir kedi gördük.",
+      "D": "Bize yardım eder misin?"
+    },
+    "dogru_cevap": "B",
+    "cozum": "Soru eki olan 'mi' kendinden önceki kelimeden her zaman ayrı yazılır. 'sen mi' olmalıdır."
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde yön adlarının yazımıyla ilgili bir yanlışlık yapılmıştır?",
+    "secenekler": {
+      "A": "Karadeniz'in doğusu çok yağış alır.",
+      "B": "Bizim ev Kuzeye bakıyor.",
+      "C": "Güney Amerika ormanları çok büyüktür.",
+      "D": "Batı medeniyeti farklı özelliklere sahiptir."
+    },
+    "dogru_cevap": "B",
+    "cozum": "Yön adları özel isimden önce gelirse büyük, tek başına veya özel isimden sonra gelirse küçük harfle başlar. 'kuzeye' olmalıdır."
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki kelimelerden hangisinin yazımı yanlıştır?",
+    "secenekler": {
+      "A": "Makine",
+      "B": "Eşofman",
+      "C": "Meyva",
+      "D": "Şefkat"
+    },
+    "dogru_cevap": "C",
+    "cozum": "'Meyve' şeklinde yazılmalıdır."
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde 'de/da'nın yazımı ile ilgili bir yanlışlık yoktur?",
+    "secenekler": {
+      "A": "Sende benim kadar çalışmalısın.",
+      "B": "Bahçe de çocuklar oyun oynuyor.",
+      "C": "Kitabı masada unutmuşum.",
+      "D": "Bunu ancak oda anlar."
+    },
+    "dogru_cevap": "C",
+    "cozum": "C'de 'masada' bulunma ekidir ve doğru yazılmıştır. A'da 'Sen de', B'de 'Bahçede', D'de 'o da' şeklinde olmalıdır."
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde sayıların yazımı doğrudur?",
+    "secenekler": {
+      "A": "Sınıfta ondokuz öğrenci var.",
+      "B": "Yarışmada 1'nci oldu.",
+      "C": "Herkese ikişer elma düştü.",
+      "D": "Saat oniki'de buluşalım."
+    },
+    "dogru_cevap": "C",
+    "cozum": "Üleştirme sayıları yazıyla yazılır (ikişer). A'da 'on dokuz', B'de '1'inci' veya '1.', D'de 'on ikide' olmalıdır."
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "[Görselde güneşli bir hava resmi ve altında 'Güneş kremini unutma!' uyarısı yer almaktadır. Diğer yanda yağmurlu bir hava resmi ve altında 'Şemsiyesiz çıkma!' uyarısı vardır.]\n\nBu görselden yola çıkarak aşağıdakilerden hangisi söylenebilir?",
+    "secenekler": {
+      "A": "Hava durumuna göre önlem alınması gerektiği vurgulanmıştır.",
+      "B": "Güneşli havaların yağmurlu havalardan daha sağlıklı olduğu belirtilmiştir.",
+      "C": "Hava durumu tahminlerinin her zaman doğru çıkmadığı anlatılmıştır.",
+      "D": "Sadece yağmurlu günlerde dışarı çıkarken dikkatli olunmalıdır."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "[Görselde mavi bir geri dönüşüm kutusunun üzerinde 'Kağıt', sarı kutunun üzerinde 'Plastik' ve yeşil kutunun üzerinde 'Cam' yazmaktadır. Bir çocuk elindeki plastik şişeyi mavi kutuya doğru uzatmaktadır.]\n\nGörseldeki çocuk ile ilgili olarak aşağıdakilerden hangisi doğrudur?",
+    "secenekler": {
+      "A": "Geri dönüşüm kurallarına tamamen uymaktadır.",
+      "B": "Plastik şişeyi yanlış geri dönüşüm kutusuna atmaktadır.",
+      "C": "Sadece cam atıkları geri dönüştürmektedir.",
+      "D": "Çevreyi koruma konusunda hiç bilgi sahibi değildir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "[Görselde, bir tabağın yarısında sebze ve meyveler, çeyreğinde tahıllar, diğer çeyreğinde ise protein kaynakları (et, yumurta vb.) bulunmaktadır. Tabağın yanında 'Sağlıklı Beslenme Tabağı' başlığı yer almaktadır.]\n\nBu görselden hareketle sağlıklı beslenmek isteyen birinin öğününde en çok neye yer vermesi beklenir?",
+    "secenekler": {
+      "A": "Protein ağırlıklı gıdalara",
+      "B": "Tahıl ürünlerine",
+      "C": "Sebze ve meyvelere",
+      "D": "Sadece et ürünlerine"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "[Görselde kırmızı, üçgen bir trafik levhasının içinde koşan öğrenciler bulunmaktadır. Levhanın altında 'Okul Geçidi' yazısı vardır.]\n\nBu tabelayı gören bir sürücünün aşağıdakilerden hangisini yapması beklenir?",
+    "secenekler": {
+      "A": "Aracının hızını artırarak bölgeden uzaklaşması",
+      "B": "Korna çalarak öğrencileri uyarması",
+      "C": "Yolunu değiştirip başka yöne gitmesi",
+      "D": "Hızını yavaşlatıp öğrencilerin geçişine dikkat etmesi"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "[Görselde, bir kütüphane afişinde şu simgeler yer almaktadır: 'Üzerine çarpı atılmış bir cep telefonu', 'Fısıldayarak konuşan iki insan' ve 'Kitap sayfalarını yavaşça çeviren bir el'.]\n\nAfişteki simgeler göz önüne alındığında kütüphane kuralları arasında aşağıdakilerden hangisi yoktur?",
+    "secenekler": {
+      "A": "Dışarıdan yiyecek ve içecek getirmemek",
+      "B": "Cep telefonuyla yüksek sesle konuşmamak",
+      "C": "Kütüphane içinde sessizliği korumak",
+      "D": "Kitaplara zarar vermeden kullanmak"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "[Görselde, damlatan bir musluk ve altında biriken su dolu bir kova çizilmiştir. Görselin üstünde 'Damlaya damlaya göl olur, suyumuz boşa gitmesin!' yazmaktadır.]\n\nBu görselin temel amacı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Su biriktirmenin sağlığa faydalarını göstermek",
+      "B": "Su tasarrufu konusunda bilinç oluşturmak",
+      "C": "Bozuk muslukların nasıl tamir edileceğini anlatmak",
+      "D": "Göllerin sularının nasıl azaldığını açıklamak"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "[Görselde bir sinema bileti bulunmaktadır. Bilette 'Film: Uzay Macerası', 'Salon: 4', 'Seans: 14.30', 'Koltuk No: 12B' bilgileri yazmaktadır.]\n\nBileti alan bir izleyici için aşağıdakilerden hangisi kesin olarak söylenebilir?",
+    "secenekler": {
+      "A": "Filme ailesiyle birlikte gidecektir.",
+      "B": "Film gösterimi sabah saatlerindedir.",
+      "C": "Hangi koltukta oturacağı bellidir.",
+      "D": "Biletin ücretini kredi kartıyla ödemiştir."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "[Görselde bir fidan dikme kampanyası afişi yer almaktadır. Afişte, toprağa fidan diken neşeli çocuklar çizilmiş, 'Geleceğe Nefes Ol' sloganı yazılmıştır.]\n\nBu afişte verilmek istenen mesaj aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Çocukların daha fazla parka ihtiyacı olduğu",
+      "B": "Fidan dikmenin sadece yetişkinlerin görevi olduğu",
+      "C": "Oyun oynamanın çocukların gelişimi için önemi",
+      "D": "Ağaç dikmenin geleceğimiz için faydalı olduğu"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "[Görselde bir ormanlık alanda kurulmuş çadır, yanan bir kamp ateşi ve ateşin etrafında oturan iki genç görülmektedir. Ateşin çevresi taşlarla çevrilmiştir.]\n\nGörsele göre bu gençler için aşağıdakilerden hangisi söylenebilir?",
+    "secenekler": {
+      "A": "Doğada vakit geçirmektedirler.",
+      "B": "Soğuk bir kış gecesi kamp yapmaktadırlar.",
+      "C": "Ormanda kaybolmuşlardır.",
+      "D": "Sadece ormanlık alanlarda yaşayabilirler."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "[Görselde bir kitap kapağı yer almaktadır. Kapağın üstünde yazar adı olarak 'Gülten Dayıoğlu', kitabın adı olarak 'Fadiş' yazmaktadır. Kapağın resminde ise oyuncak bebeğine sarılmış küçük bir kız çocuğu çizimi bulunmaktadır.]\n\nBu kitap kapağından aşağıdakilerden hangisine ulaşılamaz?",
+    "secenekler": {
+      "A": "Kitabın yazarına",
+      "B": "Kitabın adına",
+      "C": "Kitabın kaç sayfa olduğuna",
+      "D": "Kitabın ana karakterine dair bir ipucuna"
+    },
+    "dogru_cevap": "C"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Hızlı tren sefer saatleri tablosunda Ankara'dan İstanbul'a günde 6, Konya'ya 8 sefer bulunmaktadır. Tabloya göre hangisi doğrudur?",
+    "A": "İstanbul'a giden yolcu sayısı daha fazladır.",
+    "B": "Ankara-Konya arası biletler daha ucuzdur.",
+    "C": "Konya'ya yapılan sefer sıklığı İstanbul'dan daha fazladır.",
+    "D": "Trenler gece seyahat etmemektedir.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Havalimanı yön tabelalarında sağa dönen ok 'Dış Hatlar', dümdüz giden ok 'İç Hatlar', sola dönen ok 'Otopark'ı göstermektedir. Arabasını park edip yurt dışına uçacak biri sırasıyla hangi yönlere gitmelidir?",
+    "A": "Düz - Sağ",
+    "B": "Sağ - Sol",
+    "C": "Sol - Düz",
+    "D": "Sol - Sağ",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Uçak bagaj kuralları infografiklerinde kabin bagajı için en fazla 8 kg, uçak altı bagaj için en fazla 20 kg sınırı verilmiş; sıvılar için 100 ml uyarıları çizilmiştir. Bu görselin amacı nedir?",
+    "A": "Yolcuların güvenlik ve taşıma kurallarına uygun hazırlık yapmasını sağlamak",
+    "B": "Uçak biletlerinin neden pahalı olduğunu açıklamak",
+    "C": "Sadece uluslararası uçuşların tehlikeli olduğunu vurgulamak",
+    "D": "Bavul satışlarını artırmak",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Şehir içi metro hattı haritasında kırmızı çizgi (M1) ile mavi çizgi (M2) bir istasyonda kesişmektedir. Bu kesişim noktası (aktarma istasyonu) ne işe yarar?",
+    "A": "Trenlerin bakım yapılmasına",
+    "B": "Yolcuların farklı hatlara geçiş yapabilmesine",
+    "C": "İstasyonun kapanmasına",
+    "D": "Trenin hızlanmasına",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Bayram tatilinde tercih edilen ulaşım araçları grafiğinde Özel Araç %50, Otobüs %30, Uçak %15, Tren %5'tir. Buna göre en çok hangi sorun yaşanabilir?",
+    "A": "Uçak biletlerinin tamamen tükenmesi",
+    "B": "Tren garlarında aşırı izdiham olması",
+    "C": "Otobüs seferlerinin iptal edilmesi",
+    "D": "Karayolu trafiğinde büyük yoğunluklar oluşması",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Bir otobüs biletinde yolcu adı, koltuk numarası, kalkış saati (22:00) ve peron (14) yazılıdır. Bilette yer alan bu bilgiler ne sağlar?",
+    "A": "Şoförün kim olduğunu öğrenmeyi",
+    "B": "Yolculuk süresinin tam olarak bilinmesini",
+    "C": "Yolcunun doğru zamanda doğru araca binmesini",
+    "D": "Yolda verilecek molaların sayısını",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Trafik işaretlerinden kırmızı çerçeveli üçgen içindeki yaya resmi, 'yaya geçidi yaklaşımı' anlamına gelir. Bu tabelayı gören bir sürücüden ne beklenir?",
+    "A": "Hızını azaltıp dikkatli geçmesi",
+    "B": "Aracını sağa çekip park etmesi",
+    "C": "Kornaya uzun uzun basması",
+    "D": "Yayaları yoldan uzaklaştırması",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Bisiklet kullanmanın faydaları infografiklerinde bir kalp, bir para kesesi ve bir yaprak çizilmiştir. Bu semboller sırasıyla neleri ifade eder?",
+    "A": "Sağlık - Mutluluk - Güzellik",
+    "B": "Sağlık - Ekonomi - Çevre dostu",
+    "C": "Aşk - Alışveriş - Doğa",
+    "D": "Spor - Vergi - Ağaç",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Farklı araçların 100 km'deki yakıt tüketimlerini gösteren tabloda: Küçük otomobil 5 lt, SUV 9 lt, Minibüs 12 lt'dir. Çıkarılacak sonuç nedir?",
+    "A": "Aracın boyutu ve ağırlığı arttıkça yakıt tüketimi de genelde artar.",
+    "B": "En hızlı araç SUV'dir.",
+    "C": "Minibüsler uzun yolda kullanılmamalıdır.",
+    "D": "Küçük otomobiller elektrikle çalışır.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Güvenli sürüş afişinde emniyet kemeri takmış bir sürücü resmi altında 'Kemer Sizi Hayata Bağlar!' sloganı vardır. Slogan ile görsel uyumu hangi mesajı güçlendirir?",
+    "A": "Sadece uzun yolda kemer takılması gerektiğini",
+    "B": "Arabaların ancak kemer takılınca çalıştığını",
+    "C": "Kemerin boyun ağrılarını önlediğini",
+    "D": "Emniyet kemerinin hayati bir güvenlik önlemi olduğunu",
+    "cevap": "D"
+  }
+]

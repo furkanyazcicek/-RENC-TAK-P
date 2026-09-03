@@ -1,0 +1,115 @@
+{
+  "test_adi": "Yazım Kuralları - Orta Seviye",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde akrabalık bildiren kelimelerin yazımıyla ilgili bir yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Dün Ayşe teyzeme uğrayıp halini hatrını sordum.",
+        "B": "Dün akşam bize Nermin Halamlar geldi.",
+        "C": "Ahmet Bey, toplantıya biraz geç katılacak.",
+        "D": "Buraya her geldiğimizde Avukat Hasan'ı görürüz."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde 'de/da'nın yazımıyla ilgili yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Bu yıl da tatile gidemedik.",
+        "B": "Söylediklerini ben de hiç tasvip etmiyorum.",
+        "C": "Bunca yıl çalışıpta başaramamak onu çok üzdü.",
+        "D": "Bende hiç nakit para kalmamış, hepsi kartta."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde 'ki'nin yazımı doğrudur?",
+      "secenekler": {
+        "A": "Desemki vakitlerden bir nisan akşamıdır.",
+        "B": "Anladımki bu işte onun da parmağı var.",
+        "C": "Eskişehir'e öyle bir yağmur yağdıki anlatılamaz.",
+        "D": "Karşıdaki dağların zirvesi hâlâ karla kaplı."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Aşağıdakilerin hangisinde birleşik kelimelerin yazımıyla ilgili bir yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Çocuklar akşam üzeri bahçede oynamak için sözleştiler.",
+        "B": "Bu olaydan sonra onu tamamen terk etti.",
+        "C": "Birçok insan bu konuda seninle aynı fikirde.",
+        "D": "Hiçbir zaman umudunu kaybetmemelisin."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Kısaltmalara getirilen eklerle ilgili olarak aşağıdakilerin hangisinde yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "ODTÜ'de düzenlenen şenliklere katıldık.",
+        "B": "Bugün SGK'ya gidip işlemlerimi halledeceğim.",
+        "C": "TCDD'nin yeni tren hatları hizmete girdi.",
+        "D": "TDK'nin yeni sözlüğünü satın aldım."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Yön ve yer adlarının yazımıyla ilgili aşağıdakilerin hangisinde yazım yanlışı vardır?",
+      "secenekler": {
+        "A": "Doğu Anadolu kışın çok sert geçer.",
+        "B": "Bursa'nın güneyinde hava sıcaklığı artacak.",
+        "C": "Dün uzak doğu felsefesi üzerine bir kitap aldım.",
+        "D": "Anadolu'nun batısı tarihî eserlerle doludur."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde soru eki olan 'mi'nin yazımında yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Bahar geldi mi her yer yemyeşil olur.",
+        "B": "Bunca işin arasında bana da zaman ayırır mısın?",
+        "C": "Güzel mi güzel bir kasabada tatil yaptık.",
+        "D": "Bu konuyu onunla hiç konuştunmu?"
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Eser, dergi ve gazete adlarının yazımıyla ilgili aşağıdakilerin hangisinde yazım yanlışı vardır?",
+      "secenekler": {
+        "A": "Milliyet Gazetesi dünkü sayısında bu olaya geniş yer ayırmış.",
+        "B": "Türk Dili dergisi bu ay çok güzel konular işlemiş.",
+        "C": "Halit Ziya'nın Mai ve Siyah adlı romanını okuyorum.",
+        "D": "Kaplumbağa Terbiyecisi tablosu büyük ilgi görüyor."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde tarihlerin yazımı ile ilgili bir yanlışlık yapılmıştır?",
+      "secenekler": {
+        "A": "Kardeşim 12 Haziran 2010'da doğdu.",
+        "B": "Her yıl Mayıs ayının ikinci pazar günü Anneler Günü kutlanır.",
+        "C": "Önümüzdeki perşembe günü okullar tatil edilecekmiş.",
+        "D": "Sınav başvuruları 24 Eylül'e kadar devam edecek."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde yazım yanlışı yoktur?",
+      "secenekler": {
+        "A": "Herkez bu konuda kendi fikrini söyledi.",
+        "B": "Şeyler her zaman ayrı yazılır, bunuda unutma.",
+        "C": "Bugünki aklım olsaydı, o arabayı hiç almazdım.",
+        "D": "Birtakım sorunlarla karşılaşsak da yolumuza devam ettik."
+      },
+      "dogru_cevap": "D"
+    }
+  ]
+}

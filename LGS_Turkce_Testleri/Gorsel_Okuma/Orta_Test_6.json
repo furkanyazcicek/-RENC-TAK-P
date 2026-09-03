@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Bir şehrin müzelerine ait yıllık ziyaretçi grafiğinde Tarih Müzesi 100 bin, Arkeoloji Müzesi 80 bin, Oyuncak Müzesi 120 bin kişi ağırlamıştır. Grafiğe göre ulaşılabilecek doğru bilgi hangisidir?",
+    "A": "Arkeoloji Müzesi'ne sadece turistler gitmiştir.",
+    "B": "Tarih Müzesi en az ziyaret edilen yer olmuştur.",
+    "C": "Oyuncak Müzesi diğerlerinden daha fazla ilgi görmüştür.",
+    "D": "Ziyaretçi sayıları her mevsim aynı kalmıştır.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Bir tiyatro salonunun oturma planında sahnenin hemen önündeki A sırası 'VIP', orta bölümdeki B ve C sıraları 'Tam', en arkadaki D sırası ise 'Öğrenci' olarak adlandırılmıştır. Buna göre hangisi söylenemez?",
+    "A": "Sahneye en yakın olan seyirciler A sırasında oturur.",
+    "B": "Öğrenci biletleri her zaman en pahalı biletlerdir.",
+    "C": "Salon oturma düzenine göre farklı kategorilere ayrılmıştır.",
+    "D": "D sırası sahneye en uzak olan sıradır.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Sinema bilet fiyatları tablosunda; Tam Bilet 80 TL, Öğrenci 50 TL, Matine (Sabah) Gösterimi 40 TL olarak belirlenmiştir. Buna göre bilet fiyatlarıyla ilgili en kesin yargı nedir?",
+    "A": "Sabah gösterimlerinde biletler daha uygun fiyatlıdır.",
+    "B": "Öğrenciler sinemaya sadece akşamları gidebilir.",
+    "C": "Hafta sonu bilet fiyatları iki katına çıkmaktadır.",
+    "D": "Tam bilet alanlar her filme iki kez girebilir.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Kitap fuarında en çok satılan türlerin pasta grafiğinde Macera %40, Bilim Kurgu %30, Biyografi %20, Tarih %10 yer almaktadır. Grafiğe göre aşağıdakilerden hangisi yanlıştır?",
+    "A": "Macera türü kitaplar en çok ilgiyi görmüştür.",
+    "B": "Bilim kurgu kitapları tarihten daha fazla satılmıştır.",
+    "C": "Biyografi ve tarih kitaplarının toplamı, bilim kurguya eşittir.",
+    "D": "Tarih kitapları fuarın en çok okunan türüdür.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Türkiye haritasında geleneksel el sanatları bölgelere göre eşleştirilmiştir. Çini sanatı Kütahya'da, halıcılık Isparta'da, bakırcılık Gaziantep'te işaretlenmiştir. Haritadan hareketle hangi bilgiye ulaşılır?",
+    "A": "Halıcılık sadece yurt dışına ihraç edilmektedir.",
+    "B": "Kütahya, bakırcılık sanatının merkezidir.",
+    "C": "El sanatları belirli yörelerle özdeşleşmiştir.",
+    "D": "Gaziantep'te çini sanatı oldukça gelişmiştir.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Bir resim sergisinin kat planında, girişin sağında 'Manzara Resimleri', solunda 'Portreler', üst katta ise 'Modern Sanat' eserleri yer almaktadır. Sergiye giren ve portre görmek isteyen biri ne yapmalıdır?",
+    "A": "Girişten hemen sola dönmelidir.",
+    "B": "Doğrudan üst kata çıkmalıdır.",
+    "C": "Girişin sağındaki salona ilerlemelidir.",
+    "D": "Serginin en sonundaki odaya gitmelidir.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Enstrüman çalma oranlarını gösteren grafikte gitar %50, piyano %25, keman %15, flüt %10 şeklindedir. Grafiğe göre hangisi kesinlikle doğrudur?",
+    "A": "Keman çalmak piyanodan daha kolaydır.",
+    "B": "Gitar çalanların sayısı diğerlerinin toplamına eşittir.",
+    "C": "Flüt en çok tercih edilen ikinci enstrümandır.",
+    "D": "Öğrencilerin hiçbiri aynı anda iki alet çalamaz.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Kültür festivallerine katılımın yaş dağılımı sütun grafiğinde 15-25 yaş grubu en yüksek sütuna, 65+ yaş grubu ise en kısa sütuna sahiptir. Grafiğe bakarak ulaşılabilecek en mantıklı sonuç nedir?",
+    "A": "Yaşlılar festivallerin içeriğini beğenmemektedir.",
+    "B": "Festivaller sadece gençler için düzenlenmektedir.",
+    "C": "Orta yaş grubu festivallere hiç katılmamıştır.",
+    "D": "Gençlerin festivallere olan ilgisi daha fazladır.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Dünya mirasları infografiğinde UNESCO listesindeki doğal ve kültürel varlıklar tanıtılmış, korunmalarının önemi simgelerle belirtilmiştir. Bu infografiğin asıl amacı aşağıdakilerden hangisidir?",
+    "A": "Kültürel ve doğal mirası koruma bilinci aşılamak.",
+    "B": "Yeni turizm bölgeleri inşa etmeyi teşvik etmek.",
+    "C": "Müzelerin gelirlerini artırmak için reklam yapmak.",
+    "D": "Dünyadaki tüm eserleri tek bir ülkede toplamak.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Klasik müzik bestecilerinin yaşadığı dönemleri gösteren bir zaman çizelgesinde Vivaldi (1678-1741), Mozart (1756-1791), Beethoven (1770-1827) yer almaktadır. Bu çizelgeye göre hangisi söylenemez?",
+    "A": "Mozart, Beethoven'dan daha önce doğmuştur.",
+    "B": "Vivaldi, Mozart doğmadan önce hayatını kaybetmiştir.",
+    "C": "Beethoven en uzun yaşayan klasik müzik bestecisidir.",
+    "D": "Üç besteci de farklı yıllarda doğmuştur.",
+    "cevap": "C"
+  }
+]

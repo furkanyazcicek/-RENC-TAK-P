@@ -1,0 +1,117 @@
+{
+  "testId": "Orta_Test_6",
+  "subject": "Sözcükte Anlam",
+  "difficulty": "Orta",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'tatlı' sözcüğü mecaz anlamda kullanılmıştır?",
+      "options": {
+        "A": "Onun o tatlı dili ve güler yüzü herkesi kolayca etkilerdi.",
+        "B": "Ağır bir akşam yemeğinden sonra nefis bir tatlı yedik.",
+        "C": "Pazardan aldığı bu minik çilekler gerçekten çok tatlıymış.",
+        "D": "Manavdan aldığımız kırmızı elmalar hem sulu hem tatlıydı."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'koyu' sözcüğü mecaz anlamda kullanılmıştır?",
+      "options": {
+        "A": "Toplantıya giderken üzerine koyu renkli, şık bir ceket giymişti.",
+        "B": "Yıllar sonra karşılaşan iki eski dost koyu bir sohbete daldı.",
+        "C": "Misafirlere ikram edilen çayın rengi biraz fazla koyu olmuş.",
+        "D": "Duvardaki boyanın rengi zaman geçtikçe ve kurudukça koyulaştı."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "Aşağıdaki deyimlerden hangisi 'beğenmemek, küçümsemek' anlamındadır?",
+      "options": {
+        "A": "Burnunda tütmek",
+        "B": "Burnuna gelmek",
+        "C": "Burun kıvırmak",
+        "D": "Burnunu sokmak"
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'çıkmak' sözcüğü 'mal olmak, fiyata denk gelmek' anlamındadır?",
+      "options": {
+        "A": "Geç kaldığını fark edince aceleyle hazırlanıp evden çıktı.",
+        "B": "Elindeki ağır paketlerle beş kat merdiveni zorlukla çıktı.",
+        "C": "Günlerdir süren yağmurun ardından nihayet güneş çıktı.",
+        "D": "Eski arabanın motor tamiri beklediğimizden çok daha pahalıya çıktı."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "Aşağıdaki atasözlerinden hangisi 'emek verilmeden, zorluk çekilmeden elde edilen şeylerin değeri olmaz veya güzel sonuçlara ancak çalışarak ulaşılır' anlamındadır?",
+      "options": {
+        "A": "Hazıra dağ dayanmaz.",
+        "B": "Zahmetsiz rahmet olmaz.",
+        "C": "Ne doğrarsan aşına, o çıkar kaşığına.",
+        "D": "İşleyen demir ışıldar, pas tutmaz."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "Aşağıdaki cümlelerin hangisinde sesteş sözcükler bir arada kullanılmıştır?",
+      "options": {
+        "A": "Kardeşim kalemini ve silgisini masanın üzerine bıraktı.",
+        "B": "Bilgisayarın ekranı birdenbire karardı.",
+        "C": "Kitapları raflara dizdi, yere düşünce de dizi kanadı.",
+        "D": "Mutfaktaki masa ve sandalyeleri dün yeniledik."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "'Uzak' kelimesinin zıt anlamlısı aşağıdakilerden hangisidir?",
+      "options": {
+        "A": "Irak",
+        "B": "Mesafeli",
+        "C": "Beri",
+        "D": "Yakın"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'bırakmak' sözcüğü 'vazgeçmek, terk etmek' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Sağlığına zarar veren bu kötü alışkanlıklarını artık tamamen bırakmalısın.",
+        "B": "Okul çantasını gelir gelmez odasındaki masanın üzerine bıraktı.",
+        "C": "Sabah işe gitmeden önce küçük çocuğu okula o bıraktı.",
+        "D": "Elindeki kırılgan cam bardakları masaya yavaşça bıraktı."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'kesmek' sözcüğü 'ara vermek, son vermek, durmak' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Renkli el işi kağıdını keskin bir makasla ikiye kesti.",
+        "B": "Sabahtan beri şiddetle yağan yağmur öğleye doğru birden kesti.",
+        "C": "Fırından yeni çıkmış sıcak ekmeği kahvaltı için dilim dilim kesti.",
+        "D": "Terzi, dikeceği elbisenin kumaşını ölçülere göre ortadan ikiye kesti."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 10,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'girmek' sözcüğü 'içeri geçmek, dışarıdan içeriye adım atmak' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Çantasından anahtarını çıkarıp vakit kaybetmeden eve girdi.",
+        "B": "İstediği liseye girmek için yıl boyunca çok disiplinli çalıştı.",
+        "C": "Sermayesi olmadan böyle riskli bir işe girmek gerçekten büyük cesaret ister.",
+        "D": "Tartışan iki arkadaşın arasına girmek ve taraf olmak istemiyorum."
+      },
+      "correctAnswer": "A"
+    }
+  ]
+}

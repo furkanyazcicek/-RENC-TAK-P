@@ -1,0 +1,117 @@
+{
+  "testId": "Orta_Test_4",
+  "subject": "Sözcükte Anlam",
+  "difficulty": "Orta",
+  "questions": [
+    {
+      "questionNumber": 1,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'ince' sözcüğü mecaz anlamda kullanılmıştır?",
+      "options": {
+        "A": "Üzerine çok ince bir kazak giydiği için üşümüştü.",
+        "B": "Misafirlere karşı sergilediği bu ince davranış herkesi etkiledi.",
+        "C": "Kutuyu bağlamak için ince bir ip kullandı.",
+        "D": "Pastadan sadece ince bir dilim yiyebildi."
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 2,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'derin' sözcüğü mecaz anlamda kullanılmıştır?",
+      "options": {
+        "A": "Köydeki eski ve derin bir kuyudan su çekiyorduk.",
+        "B": "Yüzmek için derin bir göl bulup kamp kurdular.",
+        "C": "Saatlerdir derin düşüncelere dalmış, kimseyi duymuyordu.",
+        "D": "Düştüğünde dizinde oldukça derin bir yara açılmıştı."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 3,
+      "questionText": "Aşağıdaki deyimlerden hangisi 'çok sevinmek, mutluluktan ne yapacağını bilememek' anlamındadır?",
+      "options": {
+        "A": "Etekleri tutuşmak",
+        "B": "Burnundan solumak",
+        "C": "Gözdağı vermek",
+        "D": "Etekleri zil çalmak"
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 4,
+      "questionText": "Aşağıdaki atasözlerinden hangisi 'birlik ve beraberliğin önemi' konusunu işlemektedir?",
+      "options": {
+        "A": "Yalnız taş duvar olmaz.",
+        "B": "Keskin sirke küpüne zarar.",
+        "C": "Öfkeyle kalkan zararla oturur.",
+        "D": "Damlaya damlaya göl olur."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 5,
+      "questionText": "'Eser' sözcüğünün eş anlamlısı aşağıdakilerden hangisidir?",
+      "options": {
+        "A": "Sanatçı",
+        "B": "Yapıt",
+        "C": "Yazar",
+        "D": "Roman"
+      },
+      "correctAnswer": "B"
+    },
+    {
+      "questionNumber": 6,
+      "questionText": "Aşağıdaki cümlelerin hangisinde zıt anlamlı kelimeler bir arada kullanılmıştır?",
+      "options": {
+        "A": "Yaz boyunca tarlada hiç durmadan çalıştılar.",
+        "B": "Eşyalarını hızlıca toplayıp evden ayrıldı.",
+        "C": "İyi kötü günlerimiz oldu bu şehirde, unutamam.",
+        "D": "Güzel bir sabah uyanıp pencereyi açtı."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 7,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'geçmek' sözcüğü 'geride bırakmak' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Tatil günlerinde zaman ne kadar da hızlı geçiyor.",
+        "B": "Onun bu amansız hastalığı maalesef kardeşine de geçti.",
+        "C": "Dere üzerindeki eski köprüden dikkatlice geçtik.",
+        "D": "Yarışın son turunda gayret ederek tüm rakiplerini geçti."
+      },
+      "correctAnswer": "D"
+    },
+    {
+      "questionNumber": 8,
+      "questionText": "Aşağıdaki cümlelerin hangisinde 'atmak' sözcüğü 'göndermek, yollamak' anlamında kullanılmıştır?",
+      "options": {
+        "A": "Uzaktaki arkadaşına durumu anlatan uzun bir mesaj attı.",
+        "B": "Evdeki biriken çöpleri poşetleyip dışarı attı.",
+        "C": "Oyun oynarken elindeki topu aniden bana doğru attı.",
+        "D": "Dolaptaki kullanmadığı, eskiyen elbiseleri attı."
+      },
+      "correctAnswer": "A"
+    },
+    {
+      "questionNumber": 9,
+      "questionText": "Aşağıdakilerin hangisinde altı çizili sözcük nicel (ölçülebilir) bir anlam taşımaktadır?",
+      "options": {
+        "A": "Bugün çok *güzel* bir gün geçirdik.",
+        "B": "O, herkesin sevdiği *iyi* bir insandır.",
+        "C": "Şehrin merkezindeki *yüksek* bir binada çalışıyor.",
+        "D": "Çok *neşeli* bir çocuk, herkesi güldürüyor."
+      },
+      "correctAnswer": "C"
+    },
+    {
+      "questionNumber": 10,
+      "questionText": "Aşağıdaki cümlelerin hangisinde ad aktarması (mecazımürsel) yapılmıştır?",
+      "options": {
+        "A": "Bugün dışarıda dondurucu derecede soğuk bir hava var.",
+        "B": "Öğretmenin anlattığı fıkraya bütün sınıf aynı anda güldü.",
+        "C": "Baharın gelmesiyle bahçedeki ağaçlar çiçek açtı.",
+        "D": "Defterini ve kitabını çantasına koyup sınıftan çıktı."
+      },
+      "correctAnswer": "B"
+    }
+  ]
+}

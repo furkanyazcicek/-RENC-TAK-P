@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Öfke, genellikle kötü bir duygu olarak damgalansa da aslında insanın kendini koruma mekanizmalarından biridir. Sınırlarımız aşıldığında veya adaletsizlikle karşılaştığımızda hissettiğimiz öfke, bize harekete geçmemiz gerektiğini söyler. Asıl tehlikeli olan öfkeyi hissetmek değil, onu saldırganlığa dönüştürerek yanlış ifade etmektir.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "a": "Öfkelenen insanlar genellikle kendilerini kontrol edemezler.",
+    "b": "Öfke doğal ve işlevsel bir duygudur; sorun, bu duygunun yanlış yansıtılmasıdır.",
+    "c": "Duygularımızı her koşulda bastırmamız ruh sağlığımız için daha iyidir.",
+    "d": "Adaletsizlik karşısında sessiz kalmak öfkeyi artırır.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Stres, kısa vadede hayatta kalmamızı sağlayan bir tepkidir; bizi tehlikelere karşı uyarır ve odaklanmamızı sağlar. Ancak kronikleşen, yani sürekli hale gelen stres, bedenin sigorta sistemlerini çökerterek uykusuzluğa, bağışıklık sorunlarına ve tükenmişliğe yol açar.\n\nBu parçadan aşağıdaki yargıların hangisi çıkarılamaz?",
+    "a": "Stresin belirli durumlarda faydalı olabildiği",
+    "b": "Uzun süreli stresin fiziksel sağlığı olumsuz etkilediği",
+    "c": "Stresin odaklanmayı tamamen ortadan kaldırdığı",
+    "d": "Sürekli stresin insanı tükenmişliğe sürüklediği",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Empati, karşımızdaki kişinin ayakkabılarını giymek gibidir; olaylara onun bulunduğu yerden bakabilmeyi gerektirir. Ancak bunu yaparken kendi sınırlarımızı da korumalıyız. Karşımızdakinin acısını anlayıp destek olmak empatidir, fakat o acının içinde kaybolup kendimizi unutmak empati değil, duygusal bir yüklenmedir.\n\nBu metinde aşağıdakilerden hangisine değinilmemiştir?",
+    "a": "Empatinin ne anlama geldiğine",
+    "b": "Empati kurarken kişinin kendini kaybetmemesi gerektiğine",
+    "c": "Aşırı empati kuran kişilerin başarılı olduğuna",
+    "d": "Başkalarının acılarını anlamanın empatiyle ilişkisine",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Korku, aslında dostumuzdur. Eğer karanlık sokaklardan geçerken veya yüksek bir uçurumun kenarındayken korkmasaydık, hayatta kalma ihtimalimiz çok düşerdi. Korku bizi tedbirli olmaya çağırır. Psikolojik sorunlar yaratan şey, gerçekte tehlike olmayan durumlarda beynin yanlış alarm vererek sürekli panik üretmesidir.\n\nBu parçada asıl anlatılmak istenen aşağıdakilerden hangisidir?",
+    "a": "Korkunun sadece yükseklik ve karanlıkla ilgili olduğu",
+    "b": "Korkunun hayat kurtarıcı bir duygu olduğu ve sadece yersiz olduğunda sorun yarattığı",
+    "c": "İnsanların doğuştan hiçbir korkuya sahip olmadığı",
+    "d": "Korkusuz insanların daha mutlu bir yaşam sürdüğü",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Birçok insan mutluluğu sadece hedefe ulaşıldığında yaşanacak bir his zanneder. 'Şu sınavı geçeyim mutlu olacağım', 'Şu arabayı alayım mutlu olacağım' derler. Oysa mutluluk, ulaşılan durağın değil, yolculuğun kendisinde gizlidir. Anda kalmayı başaramayanlar için hedefler sadece yeni endişelerin başlangıcıdır.\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "a": "İnsanların hedeflerine ulaşmak için ne kadar çalıştığı",
+    "b": "Mutluluğun varılacak bir yer değil, sürecin kendisi olduğu",
+    "c": "Sınav stresinin insan psikolojisine etkileri",
+    "d": "Maddi zenginliğin mutluluk getirmeyeceği",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Kişisel sınırlarını çizmeyi bilmeyen insanlar, genellikle başkalarını kırmamak adına her isteğe 'evet' derler. Bu durum başlangıçta onları uyumlu biri gibi gösterse de, bir süre sonra kendi ihtiyaçlarını yok saydıkları için içsel bir öfke ve yorgunluk birikimine neden olur.\n\nBu metin için en uygun başlık aşağıdakilerden hangisidir?",
+    "a": "Uyumlu İnsanların Özellikleri",
+    "b": "Hayır Diyebilmenin Önemi ve Kişisel Sınırlar",
+    "c": "Arkadaşlık İlişkilerinde Saygı",
+    "d": "Sürekli Öfkeli Olmanın Nedenleri",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Çocukluk çağında yaşanan travmalar, yetişkinlikte karşılaşılan durumlara verilen tepkileri doğrudan şekillendirir. Örneğin, küçükken sürekli eleştirilen bir çocuk, büyüdüğünde en ufak bir geri bildirimde bile savunmaya geçebilir veya içine kapanabilir. Çünkü zihin, eski tehlikeyi yeniden yaşıyormuş gibi kodlar.\n\nBu metne göre aşağıdakilerden hangisi çıkarılabilir?",
+    "a": "Çocukluk dönemindeki deneyimler, gelecekteki davranış biçimlerini etkiler.",
+    "b": "Sürekli eleştirilen çocuklar yetişkinlikte çok başarılı olurlar.",
+    "c": "Travmalar sadece çocukluk döneminde ortaya çıkar.",
+    "d": "Bütün yetişkinlerin savunmaya geçmesinin tek sebebi çocukluğudur.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Modern çağın en yaygın rahatsızlıklarından biri olan mükemmeliyetçilik, hata yapma payı bırakmadığı için insanı sürekli bir yetersizlik hissiyle baş başa bırakır. Mükemmeliyetçi kişiler, işin iyi olmasını değil kusursuz olmasını isterler ve kusursuza ulaşılamayacağı için hiçbir zaman tatmin olamazlar.\n\nBu metinde vurgulanan düşünce aşağıdakilerden hangisidir?",
+    "a": "İyi işler sadece mükemmeliyetçi insanlar tarafından yapılır.",
+    "b": "Mükemmeliyetçilik, ulaşılamaz standartlar yüzünden kişiyi mutsuzluğa mahkum eder.",
+    "c": "Tatmin olmak için her işte kusur aramak gerekir.",
+    "d": "Modern çağ insanları hiçbir zaman işlerini tamamlayamazlar.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Kendine şefkat göstermek, başarısızlık anlarında kişinin kendi kendini sert bir dille yargılamak yerine, tıpkı en yakın arkadaşına destek olduğu gibi kendisine de anlayışla yaklaşmasıdır. 'Beceriksizim' demek yerine 'Bu sefer olmadı ama tekrar deneyebilirim' diyebilmektir.\n\nBu parçada asıl anlatılmak istenen aşağıdakilerden hangisidir?",
+    "a": "Öz şefkatin kişinin kendi hatalarına toleranslı ve destekleyici bir tavır geliştirmesi olduğu",
+    "b": "En yakın arkadaşlarla dertleşmenin başarısızlıkları sildiği",
+    "c": "Hata yapmamak için sürekli dikkatli olmak gerektiği",
+    "d": "Eleştirilerin insanı motive eden tek güç olduğu",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Uyku, beynin kendini yenilediği ve gün içinde toplanan bilgileri düzenlediği aktif bir süreçtir. Yetersiz uyuyan bir insan sadece yorgun hissetmez; karar verme becerisi zayıflar, duygu durum kontrolü zorlaşır ve hafızası teklemeye başlar. Uykudan kısmak, aslında hayattan kısmaktır.\n\nBu metne göre aşağıdakilerden hangisi uykusuzluğun sonuçlarından biri değildir?",
+    "a": "Hafıza problemlerinin ortaya çıkması",
+    "b": "Fiziksel gücün artması",
+    "c": "Duyguları kontrol etmede zorlanılması",
+    "d": "Sağlıklı kararlar almanın güçleşmesi",
+    "cevap": "B"
+  }
+]

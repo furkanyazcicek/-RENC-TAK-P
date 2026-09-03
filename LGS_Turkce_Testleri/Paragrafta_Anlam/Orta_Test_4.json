@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Karanlık bir odada sadece küçük bir pencere varsa, tüm dikkatiniz o pencereden sızan ışığa yönelir. Umut da işte o ışık gibidir. İnsan hayatında zorluklar ve sıkıntılar bir oda dolusu karanlık yaratabilir. Ancak kalbinizin bir köşesinde umut barındırıyorsanız, o küçücük ışık huzmesi bile size yol göstermeye, hayata tutunmanıza yeter.\n\nBu metinde umut aşağıdakilerin hangisine benzetilerek anlatılmıştır?",
+    "secenekler": {
+      "A": "Karanlık bir odaya",
+      "B": "Karanlığı aydınlatan küçük bir ışığa",
+      "C": "Hayattaki zorluklara ve sıkıntılara",
+      "D": "İnsanın içindeki çaresizlik duygusuna"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Teknoloji, bir bıçak gibidir. Cerrahın elinde hayat kurtarır, suçlunun elinde zarar verir. Bugün akıllı telefonlar sayesinde dünyanın bir ucundaki bilgiye anında ulaşabiliyor, sevdiklerimizle görüntülü konuşabiliyoruz. Ancak aynı telefonlar bizi saatlerce ekrana kilitleyerek yanı başımızdaki insanlara yabancılaşmamıza da neden olabiliyor. \n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Teknolojinin zararları, yararlarından çok daha fazladır.",
+      "B": "Akıllı telefonlar insan ilişkilerini geri dönülmez şekilde bozmaktadır.",
+      "C": "Teknolojinin olumlu ya da olumsuz etkileri, onu nasıl kullandığımıza bağlıdır.",
+      "D": "Bilgiye hızlı ulaşmak insanların günlük hayattaki sorunlarını çözmez."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "(I) Tarihi kalıntılar, geçmişin dilsiz şahitleridir. (II) Toprağın altından çıkan eski bir sikke ya da kırık bir testi, o dönemin ekonomisi ve günlük yaşamı hakkında bize fısıldar. (III) Arkeolojik kazılar çok masraflı ve uzun süren çalışmalardır. (IV) Bu nedenle bir müzeyi gezerken sadece vitrindeki eşyalara değil, onların anlattığı hikâyelere de kulak vermek gerekir.\n\nBu metinde numaralanmış cümlelerden hangisi anlam akışını bozmaktadır?",
+    "secenekler": {
+      "A": "I",
+      "B": "II",
+      "C": "III",
+      "D": "IV"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Empati, bir başkasının ayakkabılarını giyerek yürümek olarak tanımlanır sıkça. Ancak empati kurmak, sadece o ayakkabıları giymek değil, aynı zamanda o kişinin ayaklarındaki nasırları, yürürken çektiği acıyı hissetmeye çalışmaktır. Gerçek empati, 'Ben olsaydım ne yapardım?' demekten ziyade, 'O neden böyle hissediyor?' diye sorabilmektir.\n\nBu parçaya göre gerçek empatinin tanımı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Başkalarının hatalarını yargılamadan önce kendi hatalarımıza bakmak",
+      "B": "Kişinin olaylara sadece kendi bakış açısından yaklaşması",
+      "C": "Karşımızdaki kişinin duygularını ve yaşadıklarını onun penceresinden anlamaya çalışmak",
+      "D": "Başka insanların sorunlarına onlardan daha hızlı çözümler üretebilmek"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Kedi ve köpekler, evcil hayvanlar arasında en yaygın olanlarıdır ancak karakterleri birbirinden tamamen farklıdır. Köpekler sosyaldir; sahibine bağlanır, onunla sürekli etkileşimde olmak ister ve kurallara uymaya daha yatkındır. Kediler ise bağımsız ruhludur; sevgilerini gösterirler ama bunu genellikle kendi kurallarına göre ve kendi istedikleri zaman yaparlar. Köpek itaati, kedi ise özgürlüğü temsil eder.\n\nBu metnin anlatımında aşağıdaki düşünceyi geliştirme yollarından hangisi kullanılmıştır?",
+    "secenekler": {
+      "A": "Tanımlama",
+      "B": "Karşılaştırma",
+      "C": "Örneklendirme",
+      "D": "Tanık gösterme"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Çocuk kitapları yazmak, yetişkinlere yazmaktan çok daha zordur. Yetişkin bir okuru uzun betimlemelerle, karmaşık cümlelerle oyalayabilirsiniz. Fakat bir çocuğun dikkatini çekmek için kelimelerinizin hem çok sade hem de sihirli olması gerekir. Çocuğa sıkıcı gelen bir kitap, ikinci sayfada bir köşeye atılır. Bu yüzden çocuk edebiyatı, kelimelerle ip cambazlığı yapmak gibidir.\n\nBu metnin yazarının çocuk edebiyatı hakkında asıl anlatmak istediği nedir?",
+    "secenekler": {
+      "A": "Çocukların okuma alışkanlığı kazanmasının yetişkinlere göre daha kolay olduğu",
+      "B": "Çocuk kitaplarının kısa cümlelerle ve resimlerle desteklenmesi gerektiği",
+      "C": "Çocuklar için yazmanın sadelik, ustalık ve dikkat gerektiren zor bir iş olduğu",
+      "D": "Yetişkinlerin uzun ve karmaşık kitapları her zaman daha çok sevdiği"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "(I) Fotoğraf makinelerinin gelişimiyle birlikte dünyayı algılayış biçimimiz de değişti. (II) Artık her anı kaydedebilme lüksüne sahibiz. (III) İlk fotoğraf makineleri saatlerce poz vermeyi gerektiren hantal kutulardı. (IV) Oysa bugün cebimizdeki telefonlarla saniyeler içinde yüzlerce kare yakalayabiliyoruz. (V) Günümüzde fotoğrafçılık eğitimleri online platformlarda da veriliyor.\n\nBu metin iki paragrafa bölünmek istense, ikinci paragraf hangi cümleyle başlamalıdır?",
+    "secenekler": {
+      "A": "II",
+      "B": "III",
+      "C": "IV",
+      "D": "V"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Bir ressam, fırçasıyla tuvalde harikalar yaratırken renklerin uyumuna dikkat eder. Bir müzisyen, notaları yan yana dizerken ritmin ve ahengin kaybolmamasına özen gösterir. Yazar da kelimeleri seçerken tıpkı onlar gibi davranmalıdır. Her kelimenin cümlede bir rengi, bir sesi vardır. Yanlış seçilmiş bir kelime, güzel bir tablodaki mürekkep lekesi ya da bir melodideki detone ses gibidir.\n\nBu parçada yazarın kelime seçimi aşağıdakilerden hangisine benzetilmemiştir?",
+    "secenekler": {
+      "A": "Bir ressamın fırçasıyla tuvalde renk uyumu yaratmasına",
+      "B": "Bir müzisyenin notalarla ritim ve ahenk oluşturmasına",
+      "C": "Bir mimarın binaları tasarlarken gösterdiği matematiğe",
+      "D": "Güzel bir melodinin içindeki notaların düzenine"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Eğitimde ezberci bir sistemin uygulanması, çocukların hayal gücünü ve sorgulama yeteneğini köreltir. Bilgiyi sadece sınavı geçmek için öğrenen çocuk, sınav bittikten sonra o bilgiyi unutur. Gerçek öğrenme, bilginin nerede ve nasıl kullanılacağını bilmekle, merak etmekle başlar. Bir çocuğa 'Bu böyledir' demek yerine, 'Sence bu neden böyle olabilir?' diye sormak zihnin kapılarını açar.\n\nBu paragrafta eğitimle ilgili olarak asıl eleştirilen durum aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Okullarda sınav sayısının çok fazla olması",
+      "B": "Bilginin sorgulanmadan, sadece ezberletilmeye çalışılması",
+      "C": "Çocukların sorulara yanlış cevap vermekten korkması",
+      "D": "Öğretmenlerin teknolojik imkânları yeterince kullanamaması"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Göçmen kuşların her yıl binlerce kilometre yol kat ederek yollarını hiç şaşırmadan bulmaları bilimin hâlâ tam olarak çözemediği bir mucizedir. Bazı araştırmacılar, kuşların dünyanın manyetik alanını bir pusula gibi kullandıklarını iddia ediyor. Bazıları ise güneşin ve yıldızların konumundan faydalandıklarını söylüyor. Nedeni ne olursa olsun, bu minik canlıların içindeki bu muazzam yön bulma yeteneği insanı hayrete düşürüyor.\n\nBu metinden göçmen kuşlarla ilgili olarak aşağıdakilerden hangisi çıkarılabilir?",
+    "secenekler": {
+      "A": "Göç yollarını belirlerken sadece güneşi kullandıkları.",
+      "B": "Göç etme yeteneklerinin zamanla zayıfladığı.",
+      "C": "Nasıl yön buldukları konusunda farklı bilimsel görüşlerin olduğu.",
+      "D": "Dünyanın manyetik alanındaki değişimlerden olumsuz etkilendikleri."
+    },
+    "dogru_cevap": "C"
+  }
+]

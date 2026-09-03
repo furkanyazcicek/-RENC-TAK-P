@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Olimpiyat madalya tablosunda X ülkesinin 10 Altın, 5 Gümüş, 2 Bronz; Y ülkesinin ise 8 Altın, 12 Gümüş, 10 Bronz madalyası vardır. Olimpiyat sıralaması altın madalya sayısına göre yapıldığına göre hangisi doğrudur?",
+    "A": "Y ülkesi sıralamada X ülkesinin üzerindedir.",
+    "B": "X ülkesinin toplam madalya sayısı Y ülkesinden fazladır.",
+    "C": "X ülkesi altın madalya kuralına göre sıralamada Y'nin önündedir.",
+    "D": "Bronz madalyalar sıralamada en önemli ölçüttür.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Bir futbol sahası diziliş krokisinde takım '4-3-3' sistemiyle sahaya yayılmıştır: 4 defans, 3 orta saha, 3 forvet. Krokiden hareketle takımın oyun anlayışı için hangisi söylenebilir?",
+    "A": "Takım tamamen savunma yapmayı amaçlamaktadır.",
+    "B": "Hem savunma hem de hücuma yönelik dengeli bir diziliş vardır.",
+    "C": "Orta sahada forvetten daha fazla oyuncu bulunmaktadır.",
+    "D": "Kaleciyle birlikte toplam 10 kişi sahaya çıkmıştır.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Basketbol ligi puan durumunda ilk üç sıradaki takımların puanları aynıdır fakat A takımının averajı (attığı-yediği farkı) en yüksektir. Buna göre lider kimdir?",
+    "A": "A takımı",
+    "B": "İkinci sıradaki takım",
+    "C": "Üçüncü sıradaki takım",
+    "D": "Puanlar eşit olduğu için lider yoktur.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Spor dallarına göre sporcu sakatlanma oranları grafiğinde Kayak %25, Futbol %20, Tenis %10, Yüzme %5 şeklindedir. Grafiğe göre aşağıdakilerden hangisine ulaşılabilir?",
+    "A": "Futbol en tehlikeli spor dalıdır.",
+    "B": "Yüzme sporu yapanlar hiçbir zaman sakatlanmaz.",
+    "C": "Tenis oynayanların sakatlanma riski futboldan daha fazladır.",
+    "D": "Kayak, verilen sporlar arasında sakatlanma oranı en yüksek olanıdır.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "E-spor izleyici sayıları yıllara göre sütun grafiğinde düzenli bir şekilde artış göstermiş ve 2023 yılında en tepe noktaya ulaşmıştır. Bu grafikten çıkarılacak temel sonuç nedir?",
+    "A": "Geleneksel sporlar tamamen yok olmuştur.",
+    "B": "2023 yılında E-spor izleyici sayısı aniden düşmüştür.",
+    "C": "Elektronik sporlara olan ilgi yıllar geçtikçe büyümektedir.",
+    "D": "Sadece gençler E-spor müsabakalarını izlemektedir.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Satranç tahtası üzerinde atın 'L' şeklinde, filin ise çapraz hareket ettiği oklarla gösterilmiştir. Şemaya göre satranç taşları hakkında hangisi söylenebilir?",
+    "A": "Farklı taşların kendilerine özgü farklı hareket kuralları vardır.",
+    "B": "Bütün taşlar sadece ileri doğru gidebilir.",
+    "C": "At, filin gittiği tüm karelere gidebilir.",
+    "D": "En güçlü taş her zaman L şeklinde hareket edendir.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Tenis turnuvası fikstüründe 8 sporcu çeyrek finalden başlamış, yenilen elenerek kazananlar yarı finale ve finale çıkmıştır. Fikstüre göre şampiyon olan sporcu kaç maç kazanmıştır?",
+    "A": "2",
+    "B": "3",
+    "C": "4",
+    "D": "5",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Yüzme stilleri hız karşılaştırması tablosunda serbest stilin en hızlı, kurbağalamanın ise en yavaş stil olduğu belirtilmiştir. Sırtüstü ve kelebek ise orta hızdadır. Yarışı en kısa sürede bitirmek isteyen bir yüzücü hangi stili seçmelidir?",
+    "A": "Kurbağalama",
+    "B": "Sırtüstü",
+    "C": "Kelebek",
+    "D": "Serbest stil",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Geleneksel çocuk oyunları infografiğinde seksek oyunu yerde çizilen karelerle, körebe gözleri bağlı ebeyle, saklambaç ise duvara sayan çocukla betimlenmiştir. Bu infografiğin amacı ne olabilir?",
+    "A": "Çocuklara dijital oyunların zararlarını anlatmak.",
+    "B": "Geçmişten günümüze oynanan sokak oyunlarını tanıtmak.",
+    "C": "En zor çocuk oyununun kurallarını öğretmek.",
+    "D": "Oyun alanlarının eksikliğine dikkat çekmek.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Kış sporlarına katılım oranlarının pasta grafiğinde Kayak %50, Snowboard %30, Buz Pateni %20 olarak yer almaktadır. Grafiğe göre aşağıdaki yargılardan hangisi yanlıştır?",
+    "A": "Kayak, en popüler kış sporudur.",
+    "B": "Buz patenine ilgi, snowboarddan daha azdır.",
+    "C": "Snowboard yapanların sayısı kayak yapanları geçmiştir.",
+    "D": "Kış sporları içinde en az tercih edilen buz patenidir.",
+    "cevap": "C"
+  }
+]

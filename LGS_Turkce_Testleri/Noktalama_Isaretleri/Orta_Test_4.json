@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Aşağıdaki cümlelerin hangisinde tırnak işareti (\"\") özel olarak vurgulanmak istenen bir sözü belirtmek için kullanılmıştır?",
+    "secenekler": {
+      "A": "Atatürk'ün \"Hayatta en hakiki mürşit ilimdir.\" sözünü asla unutmam.",
+      "B": "Toplumda \"saygı\" kavramının giderek zayıfladığını görüyoruz.",
+      "C": "Bugün derste \"Kendi Gök Kubbemiz\" adlı şiir kitabını inceledik.",
+      "D": "Annem, \"Hava soğuk, kalın giyin.\" diye seslendi arkamdan."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Tırnak içinde verilen cümlenin içinde yeniden tırnağa alınması gereken bir sözü, ibareyi belirtmek için tek tırnak işareti (' ') kullanılır.\nAşağıdakilerin hangisinde bu kurala uygun bir kullanım vardır?",
+    "secenekler": {
+      "A": "Ahmet, 'Yarın sınavım var.' diyerek odasına kapandı.",
+      "B": "Hoca: 'Size şiir okumayı öğreteceğim.' dedi.",
+      "C": "Yazar, \"Edebiyatımızın 'mihenk taşı' olan bu eser hep yaşayacak.\" dedi.",
+      "D": "Kitabın 'Giriş' bölümünde çok önemli bilgiler bulunuyor."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Aşağıdaki cümlelerin hangisinde virgül (,) sıralı cümleleri birbirinden ayırmak için kullanılmıştır?",
+    "secenekler": {
+      "A": "Genç adam, elindeki kitabı dikkatle inceledi ve masaya bıraktı.",
+      "B": "Uzun, yorucu ve sıcak bir yaz gününün ardından köye vardık.",
+      "C": "Evet, bu projeyi zamanında bitireceğimize inanıyorum.",
+      "D": "Atları arabaya koştular, yola çıkmak için acele ediyorlardı."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Ahmet; Mehmet, Hasan ve Ali'den daha başarılı bir öğrencidir.\nBu cümlede noktalı virgülün (;) kullanım amacı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "İkiden fazla eş değer ögeler arasında virgül bulunan cümlede özneden sonra konmak.",
+      "B": "Ögeleri arasında virgül bulunan sıralı cümleleri ayırmak.",
+      "C": "Cümle içinde virgülle ayrılmış tür veya takımları birbirinden ayırmak.",
+      "D": "Kendinden sonraki cümleye bağlı olarak ret veya kabul bildiren kelimeleri ayırmak."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Aşağıdaki cümlelerin hangisinde uzun çizgi (—) doğru kullanılmıştır?",
+    "secenekler": {
+      "A": "Bu akşam 20.00—21.00 saatleri arasında toplantı var.",
+      "B": "Fenerbahçe—Galatasaray maçı çok heyecanlı geçti.",
+      "C": "O şirin köyü —çocukluğumun geçtiği yeri— asla unutamam.",
+      "D": "— Nereye gidiyorsun bu saatte, diye sordu babam."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Kısaltmalara getirilen ekleri ayırmak için kesme işareti (') kullanılır.\nAşağıdakilerden hangisinde bu kurala uyulmamasından kaynaklanan bir noktalama yanlışı vardır?",
+    "secenekler": {
+      "A": "Bu yıl THY'nin yeni seferleri başlayacakmış.",
+      "B": "DSİ'nin açtığı su kuyusu köylüleri çok sevindirdi.",
+      "C": "TÜBİTAK'ın düzenlediği yarışmaya biz de katılacağız.",
+      "D": "TDK'nun yayımladığı son kılavuzu dikkatle inceledik."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Adam o kadar çalışkan (!) ki üç ayda ancak bir konuyu bitirebildi.\nBu cümlede ayraç içindeki ünlem (!) işaretinin kullanılma amacı aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Korku, heyecan ve şaşma bildirmek.",
+      "B": "Seslenme, hitap ve uyarı bildirmek.",
+      "C": "Alay, kinaye veya küçümseme anlamı katmak.",
+      "D": "Cümledeki kesin olmayan bir bilgiyi belirtmek."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Saat ve dakika gösteren sayıları birbirinden ayırmak için nokta (.) kullanılır.\nAşağıdakilerin hangisinde nokta bu görevde kullanılmıştır?",
+    "secenekler": {
+      "A": "Tören tam 09.05'te siren sesleriyle birlikte başladı.",
+      "B": "Kitabın 1. baskısı büyük bir ilgi gördü.",
+      "C": "Bu konuyla ilgili Prof. Dr. İlber Ortaylı bir açıklama yaptı.",
+      "D": "Banka hesabına 15.000 TL yatırdığını söyledi."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Aşağıdaki cümlelerin hangisinin sonuna soru işareti (?) konulmasına gerek yoktur?",
+    "secenekler": {
+      "A": "Bu zorlu sınavdan nasıl yüksek bir not aldın",
+      "B": "Beni neden aramadığını bir türlü anlayamıyorum",
+      "C": "Hangi yoldan gidersek daha çabuk ulaşırız",
+      "D": "Akşam yemekte ne tür bir yemek yapmayı düşünüyorsun"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Tiyatro eserlerinde ve senaryolarda konuşanın hareketlerini, durumunu açıklamak ve göstermek için iki nokta (:) kullanılır. \nAşağıdakilerin hangisinde iki nokta karşılıklı konuşmalarda, konuşan kişiyi belirten sözlerden sonra kullanılmıştır?",
+    "secenekler": {
+      "A": "Şunları asla unutmayın: Dürüstlük, çalışkanlık ve sabır.",
+      "B": "Milli Edebiyat akımı temsilcileri: Ömer Seyfettin, Ziya Gökalp...",
+      "C": "Sıfatlar ikiye ayrılır: Niteleme sıfatları, belirtme sıfatları.",
+      "D": "Karagöz: Hacivat, sen ne söylersin bu sabah vakti!"
+    },
+    "dogru_cevap": "D"
+  }
+]

@@ -1,0 +1,125 @@
+{
+  "test_adi": "Fiilde Çatı - Kolay Test 4",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde yüklem, etken çatılı bir fiildir?",
+      "secenekler": {
+        "A": "Kamp ateşi hızla yakıldı.",
+        "B": "Çadırlar dere kenarına kuruldu.",
+        "C": "Çocuklar ormanda neşeyle koştu.",
+        "D": "Uyku tulumları dışarı çıkarıldı."
+      },
+      "dogru_cevap": "C",
+      "cozum": "A, B ve D seçeneklerinde eylemi yapan belli değildir, bu yüzden edilgen çatılıdır. C seçeneğinde koşma işini yapan 'çocuklar' belli olduğu için etken çatılıdır."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde fiil geçişli olduğu hâlde cümlede nesne kullanılmamıştır?",
+      "secenekler": {
+        "A": "Sabah erkenden uyandık.",
+        "B": "Dağın zirvesine doğru yürüdük.",
+        "C": "Kuş seslerini saatlerce dinledik.",
+        "D": "Çadırın önünde otururken sessizce izledik."
+      },
+      "dogru_cevap": "D",
+      "cozum": "D seçeneğinde 'izledik' fiili geçişlidir (onu izledik) fakat cümlede neyi izlediği belirtilmediği için nesne kullanılmamıştır."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "İsim cümlelerinde çatı özelliği aranmaz. Buna göre aşağıdaki cümlelerin hangisinde çatı özelliği aranmaz?",
+      "secenekler": {
+        "A": "Ormanın havası çok temizdi.",
+        "B": "Akşam olunca ateşin etrafında toplandık.",
+        "C": "Rehberimiz bize yolları anlattı.",
+        "D": "Kamp alanına varmak üzere yola çıktık."
+      },
+      "dogru_cevap": "A",
+      "cozum": "A seçeneğindeki 'temizdi' sözcüğü isim soylu bir yüklemdir. İsim cümlelerinde çatı özelliği aranmaz."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "'Onu' sözcüğünü getirebildiğimiz fiiller geçişli, getiremediğimiz fiiller geçişsizdir. Buna göre aşağıdakilerden hangisinin yüklemi geçişsiz bir fiildir?",
+      "secenekler": {
+        "A": "Ağaçların arasından güneş doğdu.",
+        "B": "Mataralarımızı buz gibi suyla doldurduk.",
+        "C": "Kamp çantasını özenle hazırladım.",
+        "D": "Yerdeki kuru dalları topladı."
+      },
+      "dogru_cevap": "A",
+      "cozum": "A seçeneğinde 'doğdu' fiilinin başına 'onu' kelimesi getirilemez (onu doğdu olmaz), bu yüzden geçişsizdir."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Edilgen çatılı fiillerde işi yapan belli değildir, işten etkilenen unsur sözde özne görevindedir. Aşağıdakilerin hangisinde sözde özne kullanılmıştır?",
+      "secenekler": {
+        "A": "Orman görevlileri bizi karşıladı.",
+        "B": "Ateş yakmak için odunlar kırıldı.",
+        "C": "Herkes kendi çadırını kurdu.",
+        "D": "Yıldızları izlemek için yere uzandık."
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğinde odunların kim tarafından kırıldığı belli değildir. 'Odunlar' sözcüğü işten etkilenen durumundayken sözde özne olmuştur."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Aşağıdaki cümlelerden hangisinin yüklemi etken ve geçişsiz bir fiildir?",
+      "secenekler": {
+        "A": "Kuşlar ağaç dallarına kondu.",
+        "B": "Ormandaki hayvanları gözlemledik.",
+        "C": "Akşam yemeği için konserveleri ısıttı.",
+        "D": "Kamp alanındaki çöpler toplandı."
+      },
+      "dogru_cevap": "A",
+      "cozum": "A seçeneğinde özne bellidir (Kuşlar - etken), eylem nesne alamaz (onu kondu olmaz - geçişsiz). B ve C etken-geçişli, D ise edilgendir."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Hangi cümlede eylemi yapan kişi (gerçek özne) açıkça belirtilmemiştir (edilgen çatı)?",
+      "secenekler": {
+        "A": "İzci grubu sabah erkenden yola çıktı.",
+        "B": "Kamp yerindeki çöpler poşetlere dolduruldu.",
+        "C": "Rehber, yürüyüş rotasını haritada gösterdi.",
+        "D": "Çocuklar nehrin buz gibi suyunda yüzdü."
+      },
+      "dogru_cevap": "B",
+      "cozum": "B seçeneğinde çöpleri kimin doldurduğu belli değildir, bu yüzden yüklem edilgen çatılıdır."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Aşağıdakilerin hangisinde altı çizili fiilin nesne-yüklem ilişkisi diğerlerinden farklıdır?",
+      "secenekler": {
+        "A": "Ağaçtaki elmaları dikkatlice kopardı.",
+        "B": "Yolda bulduğu ilginç taşları inceledi.",
+        "C": "Rüzgar çıkınca hemen çadıra girdik.",
+        "D": "Yanında getirdiği kitabı okudu."
+      },
+      "dogru_cevap": "C",
+      "cozum": "A, B ve D seçeneklerindeki fiiller geçişlidir (onu kopardı, onu inceledi, onu okudu). C seçeneğindeki 'girdik' fiili ise geçişsizdir (onu girdik anlamsızdır)."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "'Gizli öznesi olan cümleler de etken çatılıdır.' Buna göre aşağıdaki cümlelerden hangisi etken çatılıdır?",
+      "secenekler": {
+        "A": "Çadırın ipleri sıkıca bağlandı.",
+        "B": "Dağ evine giden yollar onarıldı.",
+        "C": "Ormanın derinliklerine doğru yürüdük.",
+        "D": "Kamp ateşi için kuru dallar getirildi."
+      },
+      "dogru_cevap": "C",
+      "cozum": "C seçeneğinde eylemi yapan gizli öznedir (Biz). Bu yüzden etkendir. Diğer seçenekler edilgendir."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "'Kamp ateşi sönmeden önce güzel bir masal ...' cümlesi aşağıdakilerden hangisiyle tamamlanırsa cümlenin çatısı edilgen olur?",
+      "secenekler": {
+        "A": "anlattı",
+        "B": "okudu",
+        "C": "dinledik",
+        "D": "anlatıldı"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Masal kendi kendine anlatılamayacağı, anlatma işini yapanın belirsiz kalacağı için 'anlatıldı' fiili edilgen çatı oluşturur."
+    }
+  ]
+}

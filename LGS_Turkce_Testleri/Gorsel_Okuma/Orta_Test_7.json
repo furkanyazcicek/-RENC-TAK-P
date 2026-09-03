@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Trafik işaretleri tablosunda kırmızı üçgen içindeki sembollerin 'tehlike uyarı', yuvarlak içindeki sembollerin 'yasaklama' anlattığı belirtilmiştir. Buna göre kırmızı üçgen içinde yaya resmi olan bir tabela ne anlama gelir?",
+    "A": "Yaya geçmek yasaktır.",
+    "B": "Yaya geçidi yaklaşmaktadır, tehlikeye karşı uyarır.",
+    "C": "Yayalar için özel dinlenme alanıdır.",
+    "D": "Sadece yayalar girebilir, araç giremez.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Toplu taşıma kullanım oranlarının yer aldığı pasta grafiğinde Otobüs %45, Metro %35, Tramvay %15, Vapur %5 olarak gösterilmiştir. Grafiğe göre aşağıdaki yargılardan hangisi yanlıştır?",
+    "A": "Otobüs en çok tercih edilen toplu taşıma aracıdır.",
+    "B": "Metroyu tercih edenler tramvaydan daha fazladır.",
+    "C": "Vapur en az kullanılan ulaşım aracıdır.",
+    "D": "Tramvay ve vapurun toplamı metroyu geçmektedir.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Şehirlerarası otobüs güzergâh haritasında A şehrinden D şehrine giden bir otobüsün sırasıyla B ve C şehirlerinden geçtiği çizgiyle gösterilmiştir. Haritadan çıkarılacak kesin sonuç nedir?",
+    "A": "Otobüs, D şehrine ulaşmadan önce iki farklı şehirde durabilir.",
+    "B": "A ile D şehirleri arasındaki yol çok bozuktur.",
+    "C": "C şehrine sadece A şehrinden gidilebilir.",
+    "D": "Otobüs B şehrine uğramadan C şehrine geçebilir.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Araç türlerine göre otoyol hız sınırları tablosunda Otomobil 130 km/s, Otobüs 100 km/s, Kamyon 90 km/s olarak belirlenmiştir. Bu tabloya göre hangi araç hız sınırını aşmıştır?",
+    "A": "120 km/s hızla giden otomobil",
+    "B": "95 km/s hızla giden otobüs",
+    "C": "100 km/s hızla giden kamyon",
+    "D": "80 km/s hızla giden kamyon",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Bisiklet yolu kurallarını anlatan afişte yayaların bisiklet yolunda yürümemesi ve bisikletlilerin kask takması gerektiği görsellerle anlatılmıştır. Afişin temel amacı nedir?",
+    "A": "Yayaları bisiklet sürmeye teşvik etmek",
+    "B": "Bisiklet yollarında güvenli ulaşımı sağlamak",
+    "C": "Motorlu araçların bisiklet yoluna girmesini sağlamak",
+    "D": "Kask satışlarını artırmak",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Bir havalimanının yıllara göre yolcu sayısı grafiğinde; 2019'da 5 milyon, 2020'de 2 milyon, 2021'de 4 milyon yolcu taşındığı görülmektedir. Grafiğe göre ulaşılabilecek en doğru ifade hangisidir?",
+    "A": "2020 yılında uçakla seyahat edenlerin sayısında belirgin bir düşüş olmuştur.",
+    "B": "Yolcu sayısı her yıl sürekli artmıştır.",
+    "C": "2021 yılı havalimanının en yoğun yılıdır.",
+    "D": "Bilet fiyatları arttığı için yolcu sayısı azalmıştır.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Metro hatları aktarma şemasında Kırmızı hat ile Mavi hattın 'Merkez İstasyonu'nda kesiştiği görülmektedir. Kırmızı hatta binen bir yolcu Mavi hatta geçmek için ne yapmalıdır?",
+    "A": "Yolculuğu ilk istasyonda bitirmelidir.",
+    "B": "Mavi hatta geçiş tamamen yasaktır.",
+    "C": "Hattın son durağına kadar gitmelidir.",
+    "D": "Merkez İstasyonu'nda inip aktarma yapmalıdır.",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Bir otoparkın ücret tarifesi şöyledir: 0-1 saat 20 TL, 1-3 saat 30 TL, 3-6 saat 40 TL. Otoparka aracını 4 saat bırakan biri ne kadar ödemelidir?",
+    "A": "20 TL",
+    "B": "30 TL",
+    "C": "40 TL",
+    "D": "50 TL",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Trafik kazalarının nedenlerini gösteren pasta grafiğinde %60 Sürücü Hatası, %20 Yol Durumu, %15 Araç Arızası, %5 İklim Şartları yer almaktadır. Grafiğe göre hangisine ulaşılabilir?",
+    "A": "Kazaların en büyük sebebi insan kaynaklı hatalardır.",
+    "B": "Kötü hava şartları kazaların yarısına sebep olmaktadır.",
+    "C": "Yol durumu kazalara en az neden olan faktördür.",
+    "D": "Araç arızaları kazaların temel sebebidir.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Yaya geçidi kullanımını gösteren bir görselde, araçların yaya geçidine yaklaşırken yavaşladığı ve yayalara yol verdiği bir an resmedilmiştir. Bu görselin mesajı nedir?",
+    "A": "Yaya geçidinde geçiş üstünlüğü araçlardadır.",
+    "B": "Sürücüler yaya geçitlerinde yayalara öncelik vermelidir.",
+    "C": "Yayalar geçitten koşarak geçmelidir.",
+    "D": "Araçlar yaya geçidinde hızlanarak trafiği rahatlatmalıdır.",
+    "cevap": "B"
+  }
+]

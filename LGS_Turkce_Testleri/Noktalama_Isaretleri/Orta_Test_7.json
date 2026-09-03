@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Aşağıdaki cümlelerin hangisinde virgül (,) ara sözü veya ara cümleyi ayırmak için kullanılmıştır?",
+    "secenekler": {
+      "A": "Kitaplarını, defterlerini ve kalemlerini çantasına özenle yerleştirdi.",
+      "B": "Eve geldi, üstünü değiştirdi, hemen dışarı çıktı.",
+      "C": "Dün gördüğüm o yaşlı adam, mahallenin muhtarı, bize doğru yaklaştı.",
+      "D": "Genç, kadına dönerek otobüsün ne zaman geleceğini sordu."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru": "At ölür, meydan kalır ( ) yiğit ölür, şan kalır.\nBu cümlede yay ayraçla belirtilen yere aşağıdaki noktalama işaretlerinden hangisi getirilmelidir?",
+    "secenekler": {
+      "A": "(,)",
+      "B": "(;)",
+      "C": "(:)",
+      "D": "(.)"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Yunus Emre (1240-1320), Türk edebiyatının en büyük mutasavvıf şairlerindendir.\nBu cümlede yay ayraç ( ) hangi amaçla kullanılmıştır?",
+    "secenekler": {
+      "A": "Bir kişinin doğum ve ölüm tarihlerini göstermek için.",
+      "B": "Cümle içindeki eş anlamlı sözcüğü belirtmek için.",
+      "C": "Alıntıların aktarıldığı eseri göstermek için.",
+      "D": "Bir bilginin şüpheyle karşılandığını belirtmek için."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Ayraç içinde ayraç kullanılması gereken durumlarda yay ayraçtan önce köşeli ayraç ( [ ] ) kullanılır.\nAşağıdakilerin hangisinde bu kurala uygun bir kullanım vardır?",
+    "secenekler": {
+      "A": "Halikarnas Balıkçısı [Cevat Şakir Kabaağaçlı] en güzel eserlerini Bodrum'da yazmıştır.",
+      "B": "[Türk Dil Kurumu] yeni bir sözlük yayımladı.",
+      "C": "Reşat Nuri [Çalıkuşu'nun yazarı] Anadolu'yu çok iyi anlatır.",
+      "D": "Cevat Şakir Kabaağaçlı [Halikarnas Balıkçısı (1890-1973)] Türk edebiyatının denizci yazarıdır."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Aşağıdaki cümlelerin hangisinde nokta (.) saat ve dakika bildiren sayıları ayırmak için kullanılmıştır?",
+    "secenekler": {
+      "A": "Film tam 2.5 saat sürdü, çok sıkıldım.",
+      "B": "Bu konuyla ilgili 1. maddede önemli bilgiler var.",
+      "C": "Tren saat 19.45'te gara giriş yaptı.",
+      "D": "12.03.2018 tarihinde buraya taşınmıştık."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Soru bildirmeyen ancak sözde soru cümlesi olan cümlelerin sonuna soru işareti (?) konur.\nAşağıdakilerden hangisi bu duruma örnektir?",
+    "secenekler": {
+      "A": "Yarınki pikniğe kimler gelecek?",
+      "B": "Bunca zorluğa nasıl katlandım, ben de bilmiyorum?",
+      "C": "Saat kaçta buluşacağımızı sana söylediler mi?",
+      "D": "Hangi kitabı okuyacağına karar verdin mi?"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Sayılara getirilen ekleri ayırmak için kesme işareti (') kullanılır.\nAşağıdaki cümlelerin hangisinde bu kurala uygun bir kullanım vardır?",
+    "secenekler": {
+      "A": "Kardeşim bu yıl 8'inci sınıfa geçti.",
+      "B": "TDK'nin yeni kurallarına mutlaka göz atın.",
+      "C": "Ankara'ya taşındığımızı henüz kimse bilmiyor.",
+      "D": "Boğaz'dan geçen gemileri seyretmek ne güzel!"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Aşağıdaki cümlelerin hangisinde iki nokta (:) kendisinden sonra örnek verilecek cümlenin sonunda kullanılmıştır?",
+    "secenekler": {
+      "A": "Bana dönüp şöyle dedi: Asla umutsuzluğa kapılma.",
+      "B": "Bunun tek bir açıklaması var: Çok çalışmak.",
+      "C": "Zarf fiil ekleri şunlardır: -ıp, -arak, -ınca, -dıkça...",
+      "D": "Pazardan birçok sebze aldım: domates, biber, patlıcan..."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Buralarda her şey vardı: yemyeşil ağaçlar, gürül gürül akan dereler, cıvıl cıvıl kuşlar ( )\nBu cümlenin sonuna yay ayraçla ( ) belirtilen yere hangi noktalama işareti getirilmelidir?",
+    "secenekler": {
+      "A": "Nokta (.)",
+      "B": "İki nokta (:)",
+      "C": "Üç nokta (...)",
+      "D": "Ünlem (!)"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Yazıda satır başına alınan konuşmaları göstermek için uzun çizgi (—) kullanılır.\nAşağıdakilerden hangisi bu kurala örnektir?",
+    "secenekler": {
+      "A": "— Bugün okulda neler yaptın, diye sordu annem.",
+      "B": "Ankara — İstanbul arası hızlı trenle çok daha kısa.",
+      "C": "O şirin kasabayı —çocukluğumun geçtiği yeri— özledim.",
+      "D": "Dilimizde -lar eki çoğul eki olarak kullanılır."
+    },
+    "dogru_cevap": "A"
+  }
+]

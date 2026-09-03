@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Aşağıdakilerden hangisi bir deyimdir?",
+    "secenekler": {
+      "A": "Göze girmek",
+      "B": "Çok çalışmak",
+      "C": "Erken kalkmak",
+      "D": "Yemek yemek"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Hangisi bir atasözüdür?",
+    "secenekler": {
+      "A": "Etekleri zil çalmak",
+      "B": "Damlaya damlaya göl olur",
+      "C": "Küplere binmek",
+      "D": "Göze batmak"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "'Çok sevinmek' anlamına gelen deyim hangisidir?",
+    "secenekler": {
+      "A": "Gözden düşmek",
+      "B": "Ateş püskürmek",
+      "C": "Etekleri zil çalmak",
+      "D": "Göz yummak"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "'Tasarruf etmek' konusuyla ilgili atasözü hangisidir?",
+    "secenekler": {
+      "A": "İşleyen demir ışıldar.",
+      "B": "Ak akçe kara gün içindir.",
+      "C": "Yalancının mumu yatsıya kadar yanar.",
+      "D": "Gülme komşuna gelir başına."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Hangisinin anlamı yanlış verilmiştir?",
+    "secenekler": {
+      "A": "Küplere binmek: Çok öfkelenmek",
+      "B": "Burnu havada olmak: Kibirli olmak",
+      "C": "Etekleri tutuşmak: Rahat olmak",
+      "D": "Göze girmek: Değer kazanmak"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "'Çok öfkelenmek' anlamındaki deyim hangisidir?",
+    "secenekler": {
+      "A": "Kulak asmamak",
+      "B": "Göz atmak",
+      "C": "Ağzını aramak",
+      "D": "Küplere binmek"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "'Çalışkanlık' temalı atasözü hangisidir?",
+    "secenekler": {
+      "A": "İşleyen demir ışıldar.",
+      "B": "Sakla samanı gelir zamanı.",
+      "C": "Vakit nakittir.",
+      "D": "Dost acı söyler."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "'Gözden düşmek' deyiminin anlamı nedir?",
+    "secenekler": {
+      "A": "Gözü bozulmak",
+      "B": "Değerini yitirmek",
+      "C": "Ağlamak",
+      "D": "Uyuyakalmak"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Yardımlaşma ve dayanışmayı anlatan atasözü hangisidir?",
+    "secenekler": {
+      "A": "Ağaç yaşken eğilir.",
+      "B": "Damlaya damlaya göl olur.",
+      "C": "Komşu komşunun külüne muhtaçtır.",
+      "D": "Zaman sana uymazsa sen zamana uy."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdakilerden hangisi kibirli, kendini beğenmiş kişiler için kullanılır?",
+    "secenekler": {
+      "A": "Alçakgönüllü",
+      "B": "Açıksözlü",
+      "C": "İnce ruhlu",
+      "D": "Burnu havada"
+    },
+    "dogru_cevap": "D"
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'neden-sonuç' ilişkisi vardır?",
+    "secenekler": {
+      "A": "Aşırı stresli olduğu için odaklanma problemi yaşıyordu.",
+      "B": "Öfkesini kontrol etmek amacıyla nefes egzersizleri yapıyor.",
+      "C": "Olumlu düşünürsen zorlukların üstesinden daha kolay gelirsin.",
+      "D": "Psikoloji, insan davranışlarını ve zihinsel süreçleri inceleyen bir bilimdir."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Hangi cümlede 'amaç-sonuç' ilgisi kurulmuştur?",
+    "secenekler": {
+      "A": "Çocukluk travmalarından dolayı insanlara güvenmekte zorlanıyor.",
+      "B": "Kişisel gelişim kitapları okudukça kendini daha iyi hissediyor.",
+      "C": "Karanlık korkusunu yenmek için psikolojik destek almaya başladı.",
+      "D": "Kişiliğin oluşumunda hem genetik hem de çevresel faktörler etkilidir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'koşul' anlamı vardır?",
+    "secenekler": {
+      "A": "Kaygı seviyesini düşürmek ancak kendi düşüncelerini değiştirmesiyle mümkündür.",
+      "B": "İçe dönük insanlar kalabalık ortamlarda çabuk yorulurlar.",
+      "C": "Kendini olduğun gibi kabul edersen çok daha mutlu bir insan olursun.",
+      "D": "Mutluluk, sahip olduklarımızın kıymetini bilmekle başlar."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Aşağıdakilerin hangisinde bir 'tanım' yapılmıştır?",
+    "secenekler": {
+      "A": "Öz güven, kişinin kendi yeteneklerine ve değerine olan inancıdır.",
+      "B": "Rüyalar, bilinçaltımızın bize mesaj gönderme yollarından biridir.",
+      "C": "Panik atak geçiren biri o an nefes alamadığını hisseder.",
+      "D": "Ergenlik dönemi, kimlik arayışının en yoğun yaşandığı evredir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru": "'Her insanın içinde, keşfedilmeyi bekleyen bir potansiyel vardır.' cümlesine anlamca en yakın ifade hangisidir?",
+    "secenekler": {
+      "A": "Bütün bireyler, ortaya çıkarılabilecek gizli yetenekler barındırır.",
+      "B": "İnsanlar sadece çok çalıştıklarında başarıya ulaşabilirler.",
+      "C": "Bazı yetenekler doğuştan gelir, sonradan kazanılamaz.",
+      "D": "Potansiyelini kullanamayan insanlar hayatta her zaman başarısız olur."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Hangi cümlede 'öz eleştiri' yapılmıştır?",
+    "secenekler": {
+      "A": "Onun ne kadar bencil bir insan olduğunu çok geç anladım.",
+      "B": "Sınav kaygısı, birçok öğrencinin başarısını olumsuz yönde etkiliyor.",
+      "C": "Karşılaştığım sorunlarda hep başkalarını suçlamam en büyük zayıflığımdı.",
+      "D": "İnsanlar genellikle ilk intibaya çok önem verirler."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Aşağıdakilerin hangisinde 'olasılık' ifade edilmektedir?",
+    "secenekler": {
+      "A": "Depresyon tedavisi kişiden kişiye farklılık gösterebilir.",
+      "B": "Grup terapileri insanlara yalnız olmadıklarını hissettirir.",
+      "C": "Bu kadar baskı altında kalarak karar vermen doğru değil.",
+      "D": "Son yaşadığı olaylar onda derin izler bırakmış olabilir."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Hangi cümlede 'karşılaştırma' yapılmıştır?",
+    "secenekler": {
+      "A": "Zeka oyunları oynamak zihinsel gelişimi destekler.",
+      "B": "Kız çocuklarının dil becerileri erkek çocuklarına göre daha erken gelişir.",
+      "C": "Zaman yönetimi, başarılı insanların en çok dikkat ettiği konudur.",
+      "D": "Motivasyon eksikliği, hedeflere ulaşmadaki en büyük engeldir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'varsayım' vardır?",
+    "secenekler": {
+      "A": "Umarım bu terapi seansları ona iyi gelir.",
+      "B": "Keşke duygularımı ona açıkça ifade edebilseydim.",
+      "C": "Diyelim ki korkularınla yüzleştin, o zaman ne hissedeceksin?",
+      "D": "Anlaşılan o ki, yaşadığı bu olay onu iyice içine kapatmış."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'dolaylı anlatım' yapılmıştır?",
+    "secenekler": {
+      "A": "Terapist, 'Duygularınızı bastırmaktan vazgeçmelisiniz.' dedi.",
+      "B": "Annem her zaman 'Önce kendini sevmelisin.' diyerek bana destek olur.",
+      "C": "Bana dönüp 'Seninle konuşmaya ihtiyacım var.' dedi usulca.",
+      "D": "Psikolog, geçmişe takılı kalmanın anı yaşamayı engellediğini belirtti."
+    },
+    "dogru_cevap": "D"
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Hangi cümlede 'ağır' sözcüğü mecazdır?",
+    "secenekler": {
+      "A": "Ağır bir yük taşıdı.",
+      "B": "Ağır bir koli getirdi.",
+      "C": "Ağır bir sorumluluk aldı.",
+      "D": "Çanta çok ağırdı."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "'Rehber' sözcüğünün eş anlamlısı hangisidir?",
+    "secenekler": {
+      "A": "Öğretmen",
+      "B": "Lider",
+      "C": "Önder",
+      "D": "Kılavuz"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "'İleri' kelimesinin zıt anlamlısı nedir?",
+    "secenekler": {
+      "A": "Geri",
+      "B": "Yukarı",
+      "C": "Aşağı",
+      "D": "Sağ"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Hangi sözcük eş seslidir?",
+    "secenekler": {
+      "A": "Meyve",
+      "B": "Çay",
+      "C": "Sebze",
+      "D": "Su"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "'İpe un sermek' deyiminin anlamı nedir?",
+    "secenekler": {
+      "A": "Çok çalışmak",
+      "B": "Hamur açmak",
+      "C": "Bahane uydurarak işi yapmamak",
+      "D": "İşleri kolaylaştırmak"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "'Başkasının kötü durumuna sevinme, senin de başına gelebilir' anlamındaki atasözü hangisidir?",
+    "secenekler": {
+      "A": "Ak akçe kara gün içindir.",
+      "B": "Taşıma su ile değirmen dönmez.",
+      "C": "İşleyen demir ışıldar.",
+      "D": "Gülme komşuna gelir başına."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Hangisi spor terimidir?",
+    "secenekler": {
+      "A": "Penaltı",
+      "B": "Üçgen",
+      "C": "Roman",
+      "D": "Sahne"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdakilerden hangisi somuttur?",
+    "secenekler": {
+      "A": "Korku",
+      "B": "Yağmur",
+      "C": "Rüya",
+      "D": "Umut"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Hangisi anlamsız iki kelimeden oluşan bir ikilemedir?",
+    "secenekler": {
+      "A": "İyi kötü",
+      "B": "Eş dost",
+      "C": "Abur cubur",
+      "D": "Yavaş yavaş"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdakilerden hangisi yansımadır?",
+    "secenekler": {
+      "A": "Görüntü",
+      "B": "Işık",
+      "C": "Koku",
+      "D": "Tıkırtı"
+    },
+    "dogru_cevap": "D"
+  }
+]

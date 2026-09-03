@@ -1,0 +1,82 @@
+[
+  {
+    "soru": "Aşağıdaki cümlelerden hangisi yapıca içinde fiilimsi bulunan bir cümledir?",
+    "A": "Gerçek dostluklar zor zamanlarda belli olur.",
+    "B": "Arkadaşlarımızla bahçede oyun oynadık.",
+    "C": "Güven duyulan insanlar her zaman sevilir.",
+    "D": "İyi insan olmak için sadece iyilik yapmalıyız.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Hangi cümle yükleminin türüne göre farklıdır?",
+    "A": "Saygı, insan ilişkilerinde en temel kuraldır.",
+    "B": "Dürüstlük her kapıyı açan sihirli bir anahtardır.",
+    "C": "Yardımlaşmak toplumları bir arada tutar.",
+    "D": "Sevgi, paylaştıkça çoğalan tek duygudur.",
+    "cevap": "C"
+  },
+  {
+    "soru": "'Dost kara günde belli olur.' atasözü yükleminin yerine göre nasıl bir cümledir?",
+    "A": "Kurallı cümle",
+    "B": "Devrik cümle",
+    "C": "Eksiltili cümle",
+    "D": "Soru cümlesi",
+    "cevap": "A"
+  },
+  {
+    "soru": "Aşağıdakilerden hangisi devrik bir isim cümlesidir?",
+    "A": "Unutmadım bana yaptığın o büyük iyiliği.",
+    "B": "Çok kıymetlidir vefalı bir dostun varlığı.",
+    "C": "Paylaştık elimizdeki ekmeği komşularımızla.",
+    "D": "Sarstı bizi güvendiğimiz insanların ihaneti.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerin hangisi birden çok yüklemli (sıralı) bir cümledir?",
+    "A": "Kardeşlik, birlikte gülüp birlikte ağlayabilmektir.",
+    "B": "Yalan söyleyen kimseye güvenilmez.",
+    "C": "Sırrını dostuna söyleme, o da söyler dostuna.",
+    "D": "Hoşgörü, hataları affetmek ve insanları anlamaktır.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Hangi cümle anlamca olumsuz bir cümledir?",
+    "A": "İnsanlara karşı her zaman kibar davranmalıyız.",
+    "B": "Dostlukların arasına mesafe girmemelidir.",
+    "C": "Yapılan iyilikler hiçbir zaman unutulmaz.",
+    "D": "Düşmanlıklar yerini barışa ve kardeşliğe bıraktı.",
+    "cevap": "C"
+  },
+  {
+    "soru": "Aşağıdakilerden hangisi eksiltili bir cümledir?",
+    "A": "Birlikten kuvvet doğar, derler atalarımız.",
+    "B": "Güler yüzlü insanların etrafına yaydığı o sıcaklık...",
+    "C": "Sabır, acı bir ağacın tatlı meyvesidir.",
+    "D": "Gerçek dost, hata yaptığımızda bizi uyarandır.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdaki cümlelerden hangisinde bağlaç, cümleleri bağlamıştır?",
+    "A": "Dostluk ve kardeşlik temalı şiirler okuduk.",
+    "B": "Bana söz verdi fakat sözünü tutmadı.",
+    "C": "Sevgi ile saygı birbiriyle ayrılmaz bir bütündür.",
+    "D": "İyilik yapan iyilik bulur, der büyüklerimiz.",
+    "cevap": "B"
+  },
+  {
+    "soru": "Aşağıdakilerden hangisi bir ünlem cümlesi değildir?",
+    "A": "Eyvah, kalbini kıracak sözler söyledim!",
+    "B": "Aman, kimse bu konuyu duymasın!",
+    "C": "Onun ne kadar dürüst bir insan olduğunu herkes bilir.",
+    "D": "Yazık, bunca yıllık dostluk bir hiç uğruna bitti!",
+    "cevap": "C"
+  },
+  {
+    "soru": "'Sorumluluklarını bilmeyen insanlardan başarı beklenmez.' cümlesi için aşağıdakilerden hangisi yanlıştır?",
+    "A": "Kurallı bir cümledir.",
+    "B": "Olumsuz bir cümledir.",
+    "C": "Fiil cümlesidir.",
+    "D": "Tek yüklemli basit bir cümledir.",
+    "cevap": "D"
+  }
+]

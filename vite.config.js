@@ -59,6 +59,84 @@ function felsefeSoruBankasiAssets() {
   }
 }
 
+function dinKulturuSoruBankasiAssets() {
+  return {
+    name: 'din-kulturu-soru-bankasi-assets',
+    closeBundle() {
+      const sourceRoot = join(process.cwd(), 'TYT_Din_Kulturu_Soru_Kutuphanesi')
+      const targetRoot = join(process.cwd(), 'dist', 'TYT_Din_Kulturu_Soru_Kutuphanesi')
+      if (!existsSync(sourceRoot)) return // Might not exist in some environments
+
+      const copyEligibleFiles = (sourceDir, targetDir) => {
+        mkdirSync(targetDir, { recursive: true })
+        readdirSync(sourceDir, { withFileTypes: true }).forEach((entry) => {
+          const source = join(sourceDir, entry.name)
+          const target = join(targetDir, entry.name)
+          if (entry.isDirectory()) {
+            copyEligibleFiles(source, target)
+            return
+          }
+          if (/^Test_\d{2}\.md$/.test(basename(entry.name))) cpSync(source, target)
+        })
+      }
+
+      copyEligibleFiles(sourceRoot, targetRoot)
+    },
+  }
+}
+
+function cografyaSoruBankasiAssets() {
+  return {
+    name: 'cografya-soru-bankasi-assets',
+    closeBundle() {
+      const sourceRoot = join(process.cwd(), 'TYT_Cografya_Soru_Kutuphanesi')
+      const targetRoot = join(process.cwd(), 'dist', 'TYT_Cografya_Soru_Kutuphanesi')
+      if (!existsSync(sourceRoot)) return
+
+      const copyEligibleFiles = (sourceDir, targetDir) => {
+        mkdirSync(targetDir, { recursive: true })
+        readdirSync(sourceDir, { withFileTypes: true }).forEach((entry) => {
+          const source = join(sourceDir, entry.name)
+          const target = join(targetDir, entry.name)
+          if (entry.isDirectory()) {
+            copyEligibleFiles(source, target)
+            return
+          }
+          if (/^Test_\d{2}\.md$/.test(basename(entry.name))) cpSync(source, target)
+        })
+      }
+
+      copyEligibleFiles(sourceRoot, targetRoot)
+    },
+  }
+}
+
+function lgsTurkceTestleriAssets() {
+  return {
+    name: 'lgs-turkce-testleri-assets',
+    closeBundle() {
+      const sourceRoot = join(process.cwd(), 'LGS_Turkce_Testleri')
+      const targetRoot = join(process.cwd(), 'dist', 'LGS_Turkce_Testleri')
+      if (!existsSync(sourceRoot)) return
+
+      const copyEligibleFiles = (sourceDir, targetDir) => {
+        mkdirSync(targetDir, { recursive: true })
+        readdirSync(sourceDir, { withFileTypes: true }).forEach((entry) => {
+          const source = join(sourceDir, entry.name)
+          const target = join(targetDir, entry.name)
+          if (entry.isDirectory()) {
+            copyEligibleFiles(source, target)
+            return
+          }
+          if (entry.name.endsWith('.json')) cpSync(source, target)
+        })
+      }
+
+      copyEligibleFiles(sourceRoot, targetRoot)
+    },
+  }
+}
+
 export default defineConfig({
   // Yeni bir paket kurulduğunda Vite bağımlılık önbelleğini yeniler. Sunucu
   // o sırada açıksa React'in iki ayrı kopyası yüklenebiliyor ve site
@@ -74,6 +152,9 @@ export default defineConfig({
     react(),
     matematikSoruBankasiAssets(),
     felsefeSoruBankasiAssets(),
+    dinKulturuSoruBankasiAssets(),
+    cografyaSoruBankasiAssets(),
+    lgsTurkceTestleriAssets(),
     VitePWA({
       // 'injectManifest' → kendi src/sw.js dosyamızı kullanırız (push event'leri
       // işlemek için gerekli). Varsayılan 'generateSW' stratejisi bunu desteklemez.

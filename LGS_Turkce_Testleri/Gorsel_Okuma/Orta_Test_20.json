@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Haftalık ders çalışma programı tablosunda Pazartesi Türkçe, Salı Matematik, Çarşamba Fen, Perşembe İngilizce, Cuma İnkılap Tarihi yazmaktadır. Hafta sonu ise 'Serbest Okuma ve Tekrar' olarak ayrılmıştır. Bu programın özelliği nedir?",
+    "A": "Sadece Matematik dersine ağırlık vermesi",
+    "B": "Hiç dinlenme vakti bırakmaması",
+    "C": "Hafta sonu yeni konular öğretilmesi",
+    "D": "Derslerin günlere dağıtılarak planlı bir süreç oluşturulması",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru": "LGS sınavında net ortalamaları grafiğinde Türkçe 12 net, Matematik 5 net, Fen 10 net olarak gösterilmiştir. Bu veriye göre öğrencilerin en çok zorlandığı ders hangisidir?",
+    "A": "Türkçe",
+    "B": "Fen Bilimleri",
+    "C": "Matematik",
+    "D": "İngilizce",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Verimli ders çalışma teknikleri infografiklerinde 'Pomodoro Tekniği: 25 dk çalışma + 5 dk mola' bir domates saatiyle sembolize edilmiştir. Bu tekniğin mantığı nedir?",
+    "A": "Mola vermeden saatlerce çalışmak",
+    "B": "Kısa ve odaklı çalışma periyotlarıyla zihni dinç tutmak",
+    "C": "Sadece domates yiyerek zihin açmak",
+    "D": "Sürekli mola vererek çalışmayı ertelemek",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Kütüphane kuralları tablosunda kırmızı çarpı işareti olanlar 'Yüksek sesle konuşmak', 'Yiyecek getirmek'; yeşil tik olanlar 'Kitapları sessiz okumak', 'Yerine koymak' şeklindedir. Kütüphanede ders çalışan biri neye dikkat etmelidir?",
+    "A": "Çevresindekileri rahatsız etmemeye",
+    "B": "Yanında sandviç getirmeye",
+    "C": "Sadece sesli okuma yapmaya",
+    "D": "Kitapları masada bırakıp gitmeye",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Okul öğrenci meclisi seçimleri afişinde bir oy sandığı, etrafında el ele tutuşmuş farklı öğrenciler çizilmiştir. Afişteki 'Senin Okulun, Senin Sesin!' sloganı neyi vurgular?",
+    "A": "Okul müdürünün yetkilerini",
+    "B": "Sadece başarılı öğrencilerin oy kullanabileceğini",
+    "C": "Okul şarkısının güzelliğini",
+    "D": "Öğrencilerin demokratik katılım hakkını",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Kulüp etkinlikleri tablosunda 'Robotik: Çarşamba', 'Tiyatro: Cuma' günleri yapılmaktadır. Robotik kulübüne katılmak isteyen ancak Çarşamba günleri kursu olan bir öğrenci ne yapmalıdır?",
+    "A": "Kursunu iptal edip gizlice katılmalıdır.",
+    "B": "Her iki faaliyete aynı anda gitmelidir.",
+    "C": "Programına uyan farklı bir kulüp (örneğin Tiyatro) seçmelidir.",
+    "D": "Kulüp saatlerinin değiştirilmesini emretmelidir.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Sınav kaygısı düzeyleri grafiğinde sınava 1 ay kala kaygı çizgisi düşükken, son hafta aniden zirve yapmaktadır. Bu durumun engellenmesi için infografikte 'düzenli tekrar' ikonu konmuştur. Çıkarılacak sonuç nedir?",
+    "A": "Son hafta ders çalışmak en iyisidir.",
+    "B": "Düzenli çalışanlar son hafta daha az kaygı yaşar.",
+    "C": "Kaygının tek nedeni uykusuzluktur.",
+    "D": "Sınavdan bir ay önce hiç çalışılmamalıdır.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Akran zorbalığı infografiklerinde alaycı kelimeler konuşma balonları içinde iğne şeklinde çizilmiştir. Bu görselin vermek istediği mesaj nedir?",
+    "A": "Kötü sözlerin karşı tarafa fiziksel zarar kadar acı verebileceği",
+    "B": "Zorbaların aslında şaka yaptığı",
+    "C": "İğne tedavisinin zorbalığı önlediği",
+    "D": "Konuşmanın iletişimde en iyi yol olduğu",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Eğitim öğretim yılı zaman çizelgesinde 1. dönem, ara tatil, sömestr, 2. dönem ve yaz tatili sırayla gösterilmektedir. Öğrencilerin dinlenme sürelerinin belirli aralıklara yayılmasının amacı nedir?",
+    "A": "Öğretmenlerin daha fazla maaş almasını sağlamak",
+    "B": "Okul binalarının temizliğini yapmak",
+    "C": "Eğitim sürecinde öğrencilerin yorgunluğunu alıp motivasyonunu yenilemek",
+    "D": "Kitapların daha yavaş okunmasını sağlamak",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Başarı merdiveni adımları görselinde 1. basamak 'Hayal et', 2. basamak 'Plan yap', 3. basamak 'Çalış', 4. basamak 'Asla pes etme', zirve 'Başarı'dır. Zirveye çıkmak için hangisi şarttır?",
+    "A": "Sadece hayal kurmak",
+    "B": "Başkalarının planlarını kopyalamak",
+    "C": "Çok yorulduğunda hemen bırakmak",
+    "D": "Süreci adım adım ve kararlılıkla uygulamak",
+    "cevap": "D"
+  }
+]

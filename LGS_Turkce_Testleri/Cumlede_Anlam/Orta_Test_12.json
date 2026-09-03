@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'tanım' yapılmıştır?",
+    "secenekler": {
+      "A": "Yapay zeka sistemleri gün geçtikçe daha da gelişiyor.",
+      "B": "Son yıllarda uzay araştırmalarına ayrılan bütçe katlanarak arttı.",
+      "C": "Kara delik, çekim alanı her türlü maddesel oluşumun ve ışınımın kaçmasına izin vermeyecek derecede güçlü olan gök cismidir.",
+      "D": "Bilim insanları, Mars'ta yaşam izleri bulmak umuduyla yeni araçlar gönderiyor."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'olasılık (ihtimal)' anlamı ağır basmaktadır?",
+    "secenekler": {
+      "A": "Önümüzdeki yıl bu laboratuvarda çalışmaya başlayacağım.",
+      "B": "Yeni geliştirilen aşı, virüsün yayılma hızını kesin olarak durduracak.",
+      "C": "Yapay zekanın kendi kendine öğrenme yeteneği hepimizi şaşırttı.",
+      "D": "Bu teknolojik gelişme, beklediğimizden daha erken hayatımıza girebilir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Hangi cümlede 'nesnel yargı' söz konusudur?",
+    "secenekler": {
+      "A": "Işık hızı, saniyede yaklaşık 300.000 kilometre olarak hesaplanmıştır.",
+      "B": "Uzayın derinliklerine bakmak insanda tarifsiz bir heyecan uyandırır.",
+      "C": "Teknolojinin geldiği bu nokta, gelecekle ilgili büyüleyici hayaller kurduruyor.",
+      "D": "Bilim kurgu filmleri, günümüz sinemasının en sürükleyici eserleridir."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru": "Aşağıdakilerin hangisinde bir 'değerlendirme' söz konusudur?",
+    "secenekler": {
+      "A": "Toplantıda sunulan projelerin çoğu uzay madenciliğiyle ilgiliydi.",
+      "B": "Yazarın son kitabındaki bilim kurgu unsurları oldukça zayıf ve kurgu kopuk ilerliyor.",
+      "C": "Bilgisayarın işlemcisi saniyede milyonlarca veriyi işleyebiliyor.",
+      "D": "Yarınki bilim fuarına katılmak için önceden kayıt yaptırmalısınız."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Hangi cümlede 'çıkarım' yapılmıştır?",
+    "secenekler": {
+      "A": "Sokaktaki robotik köpek, engelleri sensörleri yardımıyla aşıyor.",
+      "B": "Dün akşam izlediğim belgesel evrenin oluşumu hakkındaydı.",
+      "C": "Bu laboratuvarın ışıkları hiç sönmüyor, demek ki çok yoğun çalışıyorlar.",
+      "D": "Akıllı telefonların batarya ömrünü uzatmak için yeni malzemeler deneniyor."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'abartma' vardır?",
+    "secenekler": {
+      "A": "Güneş enerjisi panelleri sayesinde elektrik faturasından tasarruf etti.",
+      "B": "Yeni aldığım teleskopla Ay'ın kraterlerini çok net görebiliyorum.",
+      "C": "Bu yazılım projesi üzerine günlerce aralıksız çalıştık.",
+      "D": "Telefonum o kadar hızlı şarj oluyor ki, fişe takmamla dolması bir oluyor."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Aşağıdaki cümlelerin hangisi 'neden-sonuç' ilgisiyle birbirine bağlanmıştır?",
+    "secenekler": {
+      "A": "İnternet bağlantısı koptuğu için verileri merkeze aktaramadık.",
+      "B": "Yapay organ üretmek üzere yeni bir araştırma grubu kuruldu.",
+      "C": "Sistem güncellemesini yaparsan cihazın daha hızlı çalışır.",
+      "D": "Uzaya çıkan ilk Türk astronot olmak hepimizin gururudur."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Hangi cümlede bir 'tasarı (plan)' dile getirilmiştir?",
+    "secenekler": {
+      "A": "Eski dönemlerde insanlar yıldızlara bakarak yön bulurlarmış.",
+      "B": "Gelecek ay yapay zeka destekli yeni bir eğitim modülü yayınlamayı düşünüyoruz.",
+      "C": "Bilim insanlarının bitmek bilmeyen merakı, insanlığı ileriye taşıyor.",
+      "D": "Her yeni teknoloji, yanında birtakım güvenlik riskleri de getirebiliyor."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Aşağıdakilerin hangisinde 'yakınma' anlamı vardır?",
+    "secenekler": {
+      "A": "Keşke bu kodlamayı öğrenmeye çok daha erken yaşlarda başlasaydım.",
+      "B": "Belki de ileride uçan arabalar şehir içi ulaşımın tek yolu olacak.",
+      "C": "Çocuklar akıllı cihazların başından bir türlü kalkmıyor, sürekli ekrana bakıyorlar.",
+      "D": "Bilgisayar oyunları sanal gerçeklik gözlükleriyle bambaşka bir boyuta ulaştı."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'karşılaştırma' yapılmıştır?",
+    "secenekler": {
+      "A": "Mikroskopla incelediğimiz hücreler durmadan bölünüyor.",
+      "B": "Yeni keşfedilen gezegen, yıldızına çok yakın bir yörüngede dönüyor.",
+      "C": "Robotik kollar, sanayi üretiminde insan gücünün yerini almaya başladı.",
+      "D": "Kuantum bilgisayarlar, mevcut bilgisayarlardan çok daha karmaşık hesaplamalar yapabilir."
+    },
+    "dogru_cevap": "D"
+  }
+]

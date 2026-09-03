@@ -1,0 +1,115 @@
+{
+  "test_adi": "Fiilde Çatı - Orta Test 1",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "I. Olayın sorumluları sonunda bulundu.\nII. Akşamüzeri bütün aile balkonda oturduk.\nIII. Şiir okuma yarışmasında birinci seçildi.\nIV. Annem misafirlere börek ikram etti.\nNumaralanmış cümlelerden hangilerinin yüklemi özne-yüklem ilişkisine göre etken çatılıdır?",
+      "secenekler": {
+        "A": "I ve II",
+        "B": "II ve IV",
+        "C": "I ve III",
+        "D": "III ve IV"
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Geçişli fiiller cümlede nesne alabilen fiillerdir, geçişsiz fiiller ise nesne alamazlar.\nAşağıdaki cümlelerin hangisinde geçişli ve geçişsiz fiiller bir arada kullanılmıştır?",
+      "secenekler": {
+        "A": "Kitabını masaya bıraktı ve usulca odadan çıktı.",
+        "B": "Soruları çözdü, cevaplarını kontrol etti.",
+        "C": "Güneş doğdu, etraf yavaş yavaş aydınlandı.",
+        "D": "Çayını yudumladı, gazetesini okumaya devam etti."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Bazı fiiller kullanıldıkları cümleye göre geçişli ya da geçişsiz olabilir.\nAşağıdaki cümlelerin hangisinde 'geçmek' fiili geçişli olarak kullanılmıştır?",
+      "secenekler": {
+        "A": "Zaman çok hızlı geçiyor.",
+        "B": "Kuşlar gökyüzünden sürüler halinde geçti.",
+        "C": "Hastalık bana da ondan geçti.",
+        "D": "Koşucu, rakibini son düzlükte geçti."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Aşağıdaki cümlelerin hangisi özne-yüklem ilişkisi bakımından diğerlerinden farklıdır?",
+      "secenekler": {
+        "A": "Bütün gün sokaklarda başıboş dolaştı.",
+        "B": "Sınıfın duvarları rengarenk boyandı.",
+        "C": "Törende okunacak şiirler özenle seçildi.",
+        "D": "Toplantı tutanakları dün sekreterliğe teslim edildi."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Edilgen fiillerde işi yapan belli değildir ve yüklem '-l, -n' eklerinden birini alır.\nAşağıdakilerden hangisi edilgen çatılı bir fiil cümlesidir?",
+      "secenekler": {
+        "A": "Bugün hava çok güzeldi.",
+        "B": "Sınavdan yüksek not alınca çok sevindi.",
+        "C": "Bütün eşyalar kısa sürede kamyona yüklendi.",
+        "D": "Kardeşim erkenden kalkıp hazırlandı."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Aşağıdaki fiillerden hangisi nesne-yüklem ilişkisi bakımından diğerlerinden farklıdır?",
+      "secenekler": {
+        "A": "Almak",
+        "B": "Susmak",
+        "C": "Kırmak",
+        "D": "Silmek"
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "(I) Eski zamanlarda insanlar haberleşmek için güvercinleri kullanırdı. (II) Bu güvercinler özel olarak eğitilirdi. (III) Mesajlar küçük kağıtlara yazılıp kuşların ayağına bağlanırdı. (IV) O dönemlerde haberleşmek oldukça zahmetli bir işti.\nNumaralanmış cümlelerin hangisinde çatı özelliği aranmaz?",
+      "secenekler": {
+        "A": "I",
+        "B": "II",
+        "C": "III",
+        "D": "IV"
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Aşağıdaki cümlelerden hangisinin yüklemi nesnesine göre geçişlidir?",
+      "secenekler": {
+        "A": "Babam, bozulan radyoyu kısa sürede tamir etti.",
+        "B": "Küçük kız, annesini görünce koşarak yanına gitti.",
+        "C": "Yorulunca yol kenarındaki bir ağacın gölgesine oturdu.",
+        "D": "Sabah erkenden kalkıp sahilde bir saat yürüdü."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinin yüklemi etken ve geçişsizdir?",
+      "secenekler": {
+        "A": "Şehrin bütün sokakları sabaha kadar yıkandı.",
+        "B": "Bahçıvan, kurumuş dalları makasla kesti.",
+        "C": "Küçük çocuk korkudan saatlerce ağladı.",
+        "D": "Eski kıyafetler ihtiyaç sahiplerine dağıtıldı."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "I. Yollar kardan dolayı kapandı.\nII. Kar yağınca herkes evine çekildi.\nIII. Çöpler belediye ekiplerince toplandı.\nIV. Çocuklar bahçede saatlerce oynadı.\nBu cümlelerle ilgili aşağıda verilenlerden hangisi yanlıştır?",
+      "secenekler": {
+        "A": "I. cümlenin yüklemi edilgen çatılıdır.",
+        "B": "II. cümlenin yüklemi etken çatılıdır.",
+        "C": "III. cümlede sözde özne bulunmaktadır.",
+        "D": "IV. cümlenin yüklemi geçişli bir fiildir."
+      },
+      "dogru_cevap": "D"
+    }
+  ]
+}

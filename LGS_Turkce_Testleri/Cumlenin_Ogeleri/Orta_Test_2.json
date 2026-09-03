@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Güneşin ilk ışıkları ormanın derinliklerine süzüldü.\" cümlesinin öge dizilişi aşağıdakilerin hangisinde doğru verilmiştir?",
+    "A": "Özne - Yer Tamlayıcısı - Yüklem",
+    "B": "Nesne - Zarf Tümleci - Yüklem",
+    "C": "Özne - Belirtili Nesne - Yüklem",
+    "D": "Zarf Tümleci - Özne - Yüklem",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde belirtisiz nesne kullanılmıştır?",
+    "A": "Teleskopla uzak yıldızları inceledik.",
+    "B": "Yeni keşfedilen gezegen büyük bir okyanusa sahipmiş.",
+    "C": "Bilim insanları bu sabah yeni bir tür buldu.",
+    "D": "Dün gece Ay tutulmasını izledik.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "\"İlkbaharda kuşlar gökyüzünde neşeyle uçuşur.\" cümlesinde aşağıdaki ögelerden hangisi yoktur?",
+    "A": "Zarf Tümleci",
+    "B": "Yer Tamlayıcısı",
+    "C": "Özne",
+    "D": "Belirtili Nesne",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde zarf tümleci vurgulanmıştır?",
+    "A": "Sonbahar rüzgarları yaprakları hızla savurdu.",
+    "B": "Astronotlar Ay'a ilk kez 1969'da ayak bastı.",
+    "C": "Kuşlar sıcak ülkelere göç ediyor.",
+    "D": "Meteor yağmurunu izlemek için tepeye çıktık.",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "\"Bu eşsiz manzarayı, doğanın bize sunduğu bu mucizeyi, asla unutmayacağım.\" cümlesindeki ara söz hangi ögenin açıklayıcısıdır?",
+    "A": "Özne",
+    "B": "Yer Tamlayıcısı",
+    "C": "Belirtili Nesne",
+    "D": "Yüklem",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Hangi seçenekteki cümlenin öznesi, sözcük grubundan oluşmamıştır?",
+    "A": "Gürül gürül akan şelale hepimizi büyüledi.",
+    "B": "Küçük astronot kostümü çok sevimliydi.",
+    "C": "Bulutlar yavaşça dağıldı.",
+    "D": "Baharın müjdecisi olan çiçekler açtı.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "\"Mars'ta yaşam izleri arayan robotik araçlar, kızıl gezegenin yüzeyinden detaylı fotoğraflar gönderdi.\" cümlesinin yüklemi aşağıdakilerden hangisidir?",
+    "A": "fotoğraflar gönderdi",
+    "B": "gönderdi",
+    "C": "detaylı fotoğraflar gönderdi",
+    "D": "yüzeyinden detaylı fotoğraflar gönderdi",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerden hangisi sadece temel ögelerden (özne ve yüklem) oluşmuştur?",
+    "A": "Doğadaki tüm canlılar birbiriyle uyum içindedir.",
+    "B": "Yağmur ormanları dünyanın akciğerleridir.",
+    "C": "Güneş sistemi milyarlarca yıl önce oluşmuştur.",
+    "D": "Yıldızlar geceleyin parlar.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde gizli özne kullanılmıştır?",
+    "A": "Gök taşı krateri turistlerin ilgisini çekiyor.",
+    "B": "Doğa yürüyüşü sırasında ilginç bitkiler gördük.",
+    "C": "Sera etkisi küresel ısınmaya yol açar.",
+    "D": "Kış uykusuna yatan ayılar baharda uyanır.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "\"Kutup ışıkları, Dünya'nın manyetik alanı ile Güneş'ten gelen yüklü parçacıkların etkileşimi sonucu ortaya çıkar.\" cümlesinde \"ortaya çıkar\" yüklemini bulmak için hangi soru veya sorular sorulmaz?",
+    "A": "Nasıl?",
+    "B": "Kim?",
+    "C": "Nerede?",
+    "D": "Neyi?",
+    "dogru_cevap": "D"
+  }
+]

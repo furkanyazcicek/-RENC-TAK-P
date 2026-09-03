@@ -1,0 +1,125 @@
+{
+  "test_adi": "Söz Sanatları - Kolay Test 3",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Gurbette geçen onca yıldan sonra hasretten gözyaşları sel oldu aktı.\n\nBu cümlede özlem duygusu anlatılırken hangi söz sanatına başvurulmuştur?",
+      "secenekler": {
+        "A": "Abartma",
+        "B": "Benzetme",
+        "C": "Kişileştirme",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Gözyaşlarının miktar olarak sele dönüşmesi mantık dışı bir büyütmedir, bu yüzden abartma sanatı kullanılmıştır."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Yalnızlık, karanlık gecelerde en sadık yoldaşım oldu benim.\n\nBu cümlede yalnızlık kavramıyla ilgili yapılan sanat aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Konuşturma",
+        "B": "Kişileştirme",
+        "C": "Benzetme",
+        "D": "Abartma"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Soyut bir kavram olan yalnızlık, bir insan gibi sadık bir yoldaş olarak nitelendirilip kişileştirilmiştir."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Onun kalbi ayrılık acısından taş gibi sertleşmişti adeta.\n\nBu cümlede aşağıdaki söz sanatlarından hangisi kullanılmıştır?",
+      "secenekler": {
+        "A": "Kişileştirme",
+        "B": "Konuşturma",
+        "C": "Benzetme",
+        "D": "Abartma"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Kalbin sertleşmesi duygu olarak bir taşa benzetilmiştir, 'gibi' edatıyla teşbih sanatı yapılmıştır."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Eski mektuplar sandığın dibinden feryat edip: 'Bizi neden unuttun?' diye sordu.\n\nBu cümlede mektuplar üzerinden hangi söz sanatı yapılmıştır?",
+      "secenekler": {
+        "A": "Abartma",
+        "B": "Kişileştirme",
+        "C": "Benzetme",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Mektuplar insan gibi konuşturulmuş, doğrudan kendi ağızlarından bir cümle kurulduğu için konuşturma (intak) yapılmıştır."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "İçimdeki vatan sevgisi okyanuslar kadar engin ve derindir.\n\nBu cümlede sevginin büyüklüğünü anlatmak için hangi sanat tercih edilmiştir?",
+      "secenekler": {
+        "A": "Konuşturma",
+        "B": "Benzetme",
+        "C": "Kişileştirme",
+        "D": "Abartma"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Vatan sevgisi derinlik ve genişlik bakımından okyanuslara benzetilmiştir."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Bu hasret öyle yaktı ki içimi, bir ah çeksem karşıki dağlar yıkılır.\n\nBu dizelerde aşağıdaki söz sanatlarından hangisi kullanılmıştır?",
+      "secenekler": {
+        "A": "Abartma",
+        "B": "Konuşturma",
+        "C": "Kişileştirme",
+        "D": "Benzetme"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Bir ah çekmekle dağların yıkılması imkansızdır, acının şiddeti abartılarak (mübalağa) verilmiştir."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Hüzün her akşam gelip sessizce kapımı çalar ve yanıma otururdu.\n\nYukarıdaki cümlede hangi sanat belirgindir?",
+      "secenekler": {
+        "A": "Benzetme",
+        "B": "Abartma",
+        "C": "Konuşturma",
+        "D": "Kişileştirme"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Hüznün kapıyı çalması ve yanına oturması sadece insanlara özgü hareketlerdir, kişileştirme yapılmıştır."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Umudum, yorulduğum anlarda kulağıma eğilir: 'Biraz daha dayan!' derdi.\n\nBu cümlede umut duygusuna hangi sanat yapılmıştır?",
+      "secenekler": {
+        "A": "Kişileştirme",
+        "B": "Benzetme",
+        "C": "Konuşturma",
+        "D": "Abartma"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Umut kavramı dile gelmiş ve bir cümle söylemiştir, bu durum konuşturma (intak) sanatıdır."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Seni öyle özledim ki, dünyalar bir araya gelse hasretimi dindiremez.\n\nBu cümlede özlem duygusu ifade edilirken hangi sanata yer verilmiştir?",
+      "secenekler": {
+        "A": "Konuşturma",
+        "B": "Kişileştirme",
+        "C": "Abartma",
+        "D": "Benzetme"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Hasretin büyüklüğü 'dünyalar bir araya gelse dindiremez' sözleriyle gerçeğin dışında abartılmıştır."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Tren garından ayrılan dostunun ardından küçük bir çocuk gibi hıçkırarak ağladı.\n\nBu cümlede altı çizili bölümle yapılan sanat aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Benzetme",
+        "B": "Kişileştirme",
+        "C": "Abartma",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "A",
+      "cozum": "Yetişkin bir kişinin ağlaması, bir çocuğun ağlamasına benzetilerek (gibi) teşbih yapılmıştır."
+    }
+  ]
+}

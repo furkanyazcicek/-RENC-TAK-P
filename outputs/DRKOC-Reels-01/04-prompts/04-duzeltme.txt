@@ -1,0 +1,10 @@
+Önceki videonun ana kompozisyonunu, zamanlamasını ve DRKOÇ renk kimliğini koruyarak şu düzeltmeleri yap:
+
+- Üretilmiş bütün yazıları, harfleri, logoları ve okunamayan arayüz parçalarını kaldır.
+- Öğrenme nesnelerini bilimsel ve geometrik olarak daha temiz hâle getir.
+- Parlama, parçacık ve dekoratif hareket miktarını azalt.
+- Kamera hareketini yavaşlat ve daha kararlı yap.
+- Mor, mavi ve camgöbeği vurguları ölçülü kullan; neon görünümden kaçın.
+- Sahnenin orta-üst bölümündeki başlık güvenli alanını boş bırak.
+
+Yeni bir fikir üretme; yalnızca mevcut sahneyi bu yönergelerle düzelt.

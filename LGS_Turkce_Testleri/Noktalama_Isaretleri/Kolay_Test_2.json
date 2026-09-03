@@ -1,0 +1,127 @@
+{
+  "konu": "Noktalama İşaretleri",
+  "seviye": "Kolay",
+  "test_no": 2,
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinin sonuna nokta (.) konulmamalıdır?",
+      "secenekler": {
+        "A": "Akşam erken saatlerde eve döndük",
+        "B": "Ne zaman geleceğini bana da söylemedi",
+        "C": "Heyecanla içeri girdi ve konuşmaya başladı",
+        "D": "Neden benimle konuşmak istemiyorsun"
+      },
+      "dogru_cevap": "D",
+      "kazanim": "T.8.3.17. Noktalama işaretlerine dikkat ederek okur/yazar."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde virgül (,) eş görevli sözcükleri ayırmak için kullanılmıştır?",
+      "secenekler": {
+        "A": "Evet, yarın sabah erkenden yola çıkacağız.",
+        "B": "Pazardan elma, armut, muz ve üzüm aldım.",
+        "C": "Arkadaşım, canım dostum, seni çok özledim.",
+        "D": "Genç, adama doğru usulca yaklaştı."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.17. Virgülün kullanım alanlarını bilir."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde kesme işareti (') yanlış kullanılmıştır?",
+      "secenekler": {
+        "A": "TBMM'nin yeni yasama yılı başladı.",
+        "B": "Yarın Ankara'ya gideceğimizi söyledi.",
+        "C": "Ayşe'ler yarın akşam bize gelecekmiş.",
+        "D": "2023'te liseden mezun olacağım."
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.17. Kesme işaretinin kullanım alanlarını bilir."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "\"Korkma ( ) sönmez bu şafaklarda yüzen al sancak ( )\" dizesinde yay ayraçla ( ) belirtilen yerlere sırasıyla hangi noktalama işaretleri getirilmelidir?",
+      "secenekler": {
+        "A": "(,) (.)",
+        "B": "(!) (!)",
+        "C": "(,) (!)",
+        "D": "(!) (.)"
+      },
+      "dogru_cevap": "C",
+      "kazanim": "T.8.3.17. Noktalama işaretlerine dikkat ederek yazar."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinin sonuna soru işareti (?) getirilmelidir?",
+      "secenekler": {
+        "A": "Bana neden kızdığını bir türlü anlamıyorum",
+        "B": "Akşamki yemeğe kimlerin katılacağını biliyor musun",
+        "C": "Dışarı çıkıp çıkmayacağına henüz karar vermedi",
+        "D": "Nereden geldiğini kimseye söylememiş"
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.17. Soru işaretinin kullanım alanlarını bilir."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "\"Kitap ( ) insanın en iyi dostudur ( )\" cümlesinde boş bırakılan yerlere sırasıyla hangi noktalama işaretleri gelmelidir?",
+      "secenekler": {
+        "A": "(,) (.)",
+        "B": "(;) (.)",
+        "C": "(:) (!)",
+        "D": "(,) (...)"
+      },
+      "dogru_cevap": "A",
+      "kazanim": "T.8.3.17. Virgül ve noktanın kullanım alanlarını bilir."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde kısa çizgi (-) yanlış kullanılmıştır?",
+      "secenekler": {
+        "A": "Ankara-İstanbul arası yolculuk çok rahat geçti.",
+        "B": "Bu kelimenin kökü \"gel-\" fiilidir.",
+        "C": "1914-1918 yılları arasında Birinci Dünya Savaşı yaşandı.",
+        "D": "Bugün -hava- çok güzel olduğu için dışarı çıktık."
+      },
+      "dogru_cevap": "D",
+      "kazanim": "T.8.3.17. Kısa çizginin kullanım alanlarını bilir."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Sevinç, kıvanç, acı, korku, şaşma gibi duyguları anlatan cümle veya ibarelerin sonuna hangi noktalama işareti konur?",
+      "secenekler": {
+        "A": "Üç nokta",
+        "B": "Noktalı virgül",
+        "C": "Soru işareti",
+        "D": "Ünlem işareti"
+      },
+      "dogru_cevap": "D",
+      "kazanim": "T.8.3.17. Ünlem işaretinin kullanım alanlarını bilir."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde iki nokta (:) açıklamadan önce kullanılmıştır?",
+      "secenekler": {
+        "A": "Pazardan şunları al: Elma, armut, kiraz.",
+        "B": "Ona bir tek şey söyledim: Asla pes etme!",
+        "C": "Zarf fiil ekleri şunlardır: -ip, -arak, -ınca...",
+        "D": "Sınıftaki erkekler: Ali, Veli; kızlar: Ayşe, Fatma'dır."
+      },
+      "dogru_cevap": "B",
+      "kazanim": "T.8.3.17. İki noktanın kullanım alanlarını bilir."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinin sonuna üç nokta (...) konulmalıdır?",
+      "secenekler": {
+        "A": "Bahçede rengarenk çiçekler, yemyeşil ağaçlar, kuş sesleri",
+        "B": "Dün akşam bize geldiğini yeni öğrendim",
+        "C": "Karşıdan gelen adamı daha önce bir yerde görmüştüm",
+        "D": "Sabah erkenden kalkıp okula doğru yola koyuldu"
+      },
+      "dogru_cevap": "A",
+      "kazanim": "T.8.3.17. Üç noktanın kullanım alanlarını bilir."
+    }
+  ]
+}

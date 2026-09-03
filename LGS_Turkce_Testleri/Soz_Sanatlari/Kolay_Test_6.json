@@ -1,0 +1,125 @@
+{
+  "test_adi": "Söz Sanatları - Kolay Test 6",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "'Şu dağlar olmasaydı / Çıksam düzlüklere / Bir köprü kurardım / Yüreğimden yüreğine'\nBu dizelerde aşağıdaki söz sanatlarından hangisi vardır?",
+      "secenekler": {
+        "A": "Kişileştirme",
+        "B": "Abartma",
+        "C": "Benzetme",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Yürekten yüreğe köprü kurmak gerçekte mümkün değildir. Şair, duygusunun büyüklüğünü abartarak anlatmıştır."
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde kişileştirme sanatına örnek vardır?",
+      "secenekler": {
+        "A": "Küçük kız, ipek gibi saçlarını taradı.",
+        "B": "Bahçedeki güller utangaç bir bakışla açtı yapraklarını.",
+        "C": "O gece o kadar ağladı ki gözleri şişti.",
+        "D": "Kardeşim top gibi zıplayarak salona girdi."
+      },
+      "dogru_cevap": "B",
+      "cozum": "Güllerin 'utangaç bir bakışla' açması insana ait bir özelliğin çiçeğe aktarılmasıdır, yani kişileştirmedir."
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "'Vatanım! Sana canım feda, seni seven yürekler asla susmaz.'\nBu cümlede vatan, konuşulabilen bir varlık gibi seslenilmiştir. Burada hangi söz sanatı ağır basmaktadır?",
+      "secenekler": {
+        "A": "Abartma",
+        "B": "Benzetme",
+        "C": "Kişileştirme",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Vatana seslenilmesi, ona insan gibi hitap edilmesi kişileştirmedir. Konuşturma olabilmesi için vatanın kendisinin konuşması gerekirdi."
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Aşağıdaki dizelerin hangisinde benzetme (teşbih) sanatı kullanılmıştır?",
+      "secenekler": {
+        "A": "Dağlar, sırtındaki karı bir yük gibi taşıyordu.",
+        "B": "Yıldızlar geceyi aydınlatmaya çalışıyordu.",
+        "C": "Yapraklar ağaçlardan usulca süzüldü.",
+        "D": "Sabah olunca güneş doğdu."
+      },
+      "dogru_cevap": "A",
+      "cozum": "Karın yük gibi taşınması ifadesinde 'gibi' edatıyla benzetme yapılmıştır. Ayrıca dağların taşıması kişileştirme de içerir ama soru benzetme soruyor."
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Tilki, kargaya seslendi: 'Ey güzel sesli karga, bize bir şarkı söyle de ormanı şenlendir!'\nBu cümlede hangi söz sanatları bir arada kullanılmıştır?",
+      "secenekler": {
+        "A": "Benzetme ve Abartma",
+        "B": "Kişileştirme ve Konuşturma",
+        "C": "Konuşturma ve Abartma",
+        "D": "Benzetme ve Kişileştirme"
+      },
+      "dogru_cevap": "B",
+      "cozum": "Hayvanların (tilki ve karga) konuşması konuşturma (intak), konuşma insana ait bir özellik olduğu için aynı zamanda kişileştirme (teşhis) sanatıdır."
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "'Bir gülüşün bin güneşe bedeldir.' cümlesinde hangi söz sanatı vardır?",
+      "secenekler": {
+        "A": "Benzetme",
+        "B": "Kişileştirme",
+        "C": "Konuşturma",
+        "D": "Abartma"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Bir gülüşün bin güneşe bedel olması abartılı bir ifadedir, çünkü gerçekte böyle bir ölçü mümkün değildir."
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde söz sanatı yoktur?",
+      "secenekler": {
+        "A": "Bulutlar yavaşça ağladı, toprak suya kavuştu.",
+        "B": "Bahçedeki papatyaları özenle suladık.",
+        "C": "Ayın yüzü gümüş bir tepsi gibi parlıyordu.",
+        "D": "O kadar hızlı koştu ki rüzgârı bile geride bıraktı."
+      },
+      "dogru_cevap": "B",
+      "cozum": "A'da kişileştirme, C'de benzetme, D'de abartma vardır. B cümlesi gerçek anlamlı, söz sanatı içermeyen bir cümledir."
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "'Bayrak' şiirinde 'Al sancak sönmeden yurdumun üstünde' dizesinde bayrağa 'sönme' eylemi yüklenmiştir.\nBu kullanımda hangi söz sanatı ağır basmaktadır?",
+      "secenekler": {
+        "A": "Abartma",
+        "B": "Benzetme",
+        "C": "Kişileştirme",
+        "D": "Konuşturma"
+      },
+      "dogru_cevap": "C",
+      "cozum": "Bayrağa 'sönmek' gibi canlılara ait bir eylem yüklenmesi kişileştirmedir. Bayrak cansız bir nesne olmasına rağmen insani bir özellik kazanmıştır."
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "1. Pamuk gibi yumuşacık bir yastık almıştık.\n2. Taşları eritecek kadar güçlü bir sesi vardı.\n3. Dere şırıl şırıl bir ninni söylüyordu.\nNumaralanmış cümlelerdeki söz sanatları sırasıyla hangi seçenekte doğru verilmiştir?",
+      "secenekler": {
+        "A": "Benzetme - Kişileştirme - Abartma",
+        "B": "Abartma - Benzetme - Kişileştirme",
+        "C": "Benzetme - Abartma - Kişileştirme",
+        "D": "Kişileştirme - Abartma - Benzetme"
+      },
+      "dogru_cevap": "C",
+      "cozum": "1. cümlede 'gibi' ile benzetme, 2. cümlede taşları eritecek güç abartma, 3. cümlede derenin ninni söylemesi kişileştirmedir."
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "'Ağaç, dal budak salmış; köklerini toprağın derinliklerine salmış, göğsünü güneşe doğru kabartmış.' cümlesinde hangi söz sanatı vardır?",
+      "secenekler": {
+        "A": "Abartma",
+        "B": "Benzetme",
+        "C": "Konuşturma",
+        "D": "Kişileştirme"
+      },
+      "dogru_cevap": "D",
+      "cozum": "Ağacın 'göğsünü güneşe kabartması' insana ait bir davranıştır. Cansız bir varlığa insani özellik verilmiş, yani kişileştirme yapılmıştır."
+    }
+  ]
+}

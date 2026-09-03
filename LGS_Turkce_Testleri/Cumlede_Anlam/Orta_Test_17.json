@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'neden-sonuç' ilişkisi vardır?",
+    "secenekler": {
+      "A": "Göbeklitepe, insanlık tarihine dair bilinen birçok gerçeği değiştirdi.",
+      "B": "Tarihi eserleri korumak maksadıyla müzedeki güvenlik önlemleri artırıldı.",
+      "C": "Bölgede şiddetli depremler yaşandığı için antik kentin büyük bir kısmı yıkılmış.",
+      "D": "Geçmişi iyi okursak geleceği daha sağlam temeller üzerine inşa edebiliriz."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru": "Hangi cümlede 'amaç-sonuç' ilgisi kurulmuştur?",
+    "secenekler": {
+      "A": "Kültürel mirasımıza sahip çıkmadığımızdan geleneklerimiz unutulmaya yüz tuttu.",
+      "B": "Yeni bulunan tabletleri incelemek üzere yurt dışından uzmanlar geldi.",
+      "C": "Eski uygarlıklar genellikle su kenarlarına yerleşmeyi tercih etmişlerdir.",
+      "D": "Tarih, milletlerin hafızasıdır ve bu hafıza asla silinmemelidir."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'karşılaştırma' söz konusudur?",
+    "secenekler": {
+      "A": "Osmanlı mimarisinin en güzel örneklerinden biri olan Selimiye Camii, Edirne'dedir.",
+      "B": "Anadolu, tarih boyunca birçok farklı medeniyete ev sahipliği yapmıştır.",
+      "C": "Müzedeki rehber bize Hititler dönemi hakkında detaylı bilgiler verdi.",
+      "D": "Eski çağlarda insanlar haberleşmek için dumanı kullanırlarmış."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru": "'Tarihini bilmeyen milletler, pusulası olmayan bir gemi gibidir.' cümlesinde vurgulanmak istenen düşünce hangisidir?",
+    "secenekler": {
+      "A": "Tarih öğrenmek denizcilik kadar zor bir iştir.",
+      "B": "Geçmişini bilmeyen toplumlar geleceklerine doğru yön veremezler.",
+      "C": "Tarih kitapları, milletlerin ortak yol göstericisidir.",
+      "D": "Her milletin tarihi kahramanlıklarla doludur."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Hangi cümlede 'nesnel' bir yargı vardır?",
+    "secenekler": {
+      "A": "Tarihi yarımadanın gün batımındaki manzarası nefes kesicidir.",
+      "B": "Eski Roma sokaklarında dolaşmak insana zaman makinesindeymiş hissi veriyor.",
+      "C": "İstanbul, 1453 yılında Fatih Sultan Mehmet tarafından fethedilmiştir.",
+      "D": "Efes Antik Kenti'nin büyüleyici atmosferi herkesi derinden etkiler."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru": "Aşağıdakilerin hangisinde bir 'olasılık' ifade edilmektedir?",
+    "secenekler": {
+      "A": "Kazı çalışmalarında bulunan paraların Lidyalılara ait olduğu kesinleşti.",
+      "B": "Arkeologlar, kazı alanında çok eski bir tapınağın kalıntılarına ulaştı.",
+      "C": "Bu yazıları çözen dil bilimci geçen yıl emekli oldu.",
+      "D": "Toprağın altından çıkan bu kılıç, ünlü bir komutana ait olabilir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'koşul-sonuç' ilgisi vardır?",
+    "secenekler": {
+      "A": "Tarihi yapıları restore ederseniz turizme büyük katkı sağlarsınız.",
+      "B": "Mısır piramitlerinin sırrı günümüzde bile tam olarak çözülememiştir.",
+      "C": "Müzeye giriş ücretleri pahalı olduğu için ziyaretçi sayısı azaldı.",
+      "D": "Kültür Bakanlığı, kaçırılan eserleri geri getirmek maksadıyla çalışma başlattı."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru": "Hangi cümlede 'ön yargı' anlamı bulunmaktadır?",
+    "secenekler": {
+      "A": "Kazı ekibi bu yaz da güneşin altında ter dökmeye devam edecek.",
+      "B": "Bu belgesel eminim ki çok sıkıcı olacak, hiç izlemeyelim.",
+      "C": "Tarihi kaynakların farklı şeyler söylemesi kafaları karıştırıyor.",
+      "D": "Anadolu motiflerinin işlendiği kilimler yurt dışında büyük ilgi görüyor."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Aşağıdakilerin hangisinde bir 'tanım' yapılmıştır?",
+    "secenekler": {
+      "A": "Arkeoloji, toprak altında veya üstünde kalmış eski kültür kalıntılarını inceleyen bilim dalıdır.",
+      "B": "Geçmişi araştırırken tamamen tarafsız olmak oldukça zor bir iştir.",
+      "C": "Sümerler, yazıyı icat ederek tarih çağlarının başlamasını sağlamışlardır.",
+      "D": "Yüzyıllardır ayakta kalan bu köprü, Mimar Sinan'ın kalfalık eseridir."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 10,
+    "soru": "Aşağıdaki cümlelerin hangisinde 'dolaylı anlatım' vardır?",
+    "secenekler": {
+      "A": "Rehberimiz, 'Buradaki sütunların hepsi tek parça mermerden yapılmış.' dedi.",
+      "B": "Tarihçi, o dönemdeki savaşların genellikle ekonomik nedenlere dayandığını vurguladı.",
+      "C": "Yazar, 'Tarih tekerrürden ibarettir.' sözünü kitabının kapağına yazdırmış.",
+      "D": "Müzeye girmeden önce biletlerimizi hazırlamamız istendi."
+    },
+    "dogru_cevap": "A"
+  }
+]

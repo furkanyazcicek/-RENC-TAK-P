@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Eğitim, bir kovanı balla doldurmak değil, o kovanı kendi balını yapabilecek arılar yetiştirmektir. Öğrencilere bilgileri ezberletmek onları sadece birer depoya dönüştürür. Asıl amaç, onlara düşünmeyi, sorgulamayı ve bilgiye nasıl ulaşacaklarını öğretmek olmalıdır.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "a": "En iyi eğitim sadece ezber yaparak sağlanır.",
+    "b": "Eğitimin temel amacı bilgi yüklemek değil, öğrenciye öğrenme becerisi ve eleştirel düşünme kazandırmaktır.",
+    "c": "Öğretmenlerin görevi her konuyu eksiksiz anlatmaktır.",
+    "d": "Okullarda sadece yetenekli öğrencilere odaklanılmalıdır.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Hata yapmak, öğrenme sürecinin en doğal ve gerekli parçasıdır. İlk bisiklete binişinizi hatırlayın; düşmeden, diziniz kanamadan denge kurmayı öğrenebilir miydiniz? Sınıfta yanlış cevap vermekten korkan bir öğrenci, sınırlarını zorlayamaz. Hata, başarıya giden yolda ödenmesi gereken küçük bir vergi gibidir.\n\nBu parçadan aşağıdaki yargıların hangisi çıkarılamaz?",
+    "a": "Hata yapmanın yeni bir beceri kazanmanın doğal bir aşaması olduğu",
+    "b": "Yanlış yapma korkusunun öğrencinin gelişimini engellediği",
+    "c": "Hata yapmayan öğrencilerin sınavlarda daha başarılı olduğu",
+    "d": "Düşüp kalkmanın öğrenme sürecini güçlendirdiği",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Okul sadece matematik, fen veya tarih öğretilen bir yer değildir; aynı zamanda sosyalleşme alanıdır. Bir öğrenci sırada arkadaşıyla silgisini paylaşırken dayanışmayı, grup ödevlerinde iş birliğini, oyun oynarken kurallara uymayı öğrenir. Bu sosyal beceriler, akademik bilgi kadar hayata hazırlayıcıdır.\n\nBu metinde okulla ilgili aşağıdakilerden hangisine değinilmemiştir?",
+    "a": "Akademik eğitim dışında farklı misyonları da olduğuna",
+    "b": "Öğrencilere paylaşım ve iş birliğini öğrettiğine",
+    "c": "Toplumsal kuralların okul bahçesinde de deneyimlendiğine",
+    "d": "Okulların fiziksel koşullarının eğitimi doğrudan etkilediğine",
+    "cevap": "D"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Hayat boyu öğrenme, eğitimin sadece okul yıllarına sıkıştırılamayacağını savunan bir kavramdır. Diploma almak eğitimin bittiğini değil, kişinin artık kendi kendine öğrenebileceğini kanıtlar. Sürekli değişen dünyada ayakta kalabilmek için mezun olduktan sonra da okumaya, araştırmaya ve yeni yetenekler kazanmaya devam etmeliyiz.\n\nBu parçada asıl anlatılmak istenen aşağıdakilerden hangisidir?",
+    "a": "Üniversite diplomasının artık iş bulmada işe yaramadığı",
+    "b": "Gerçek öğrenmenin diploma alındıktan sonra başladığı ve ömür boyu sürmesi gerektiği",
+    "c": "Yaşlı insanların yeni şeyler öğrenmesinin çok zor olduğu",
+    "d": "Okullarda verilen eğitimin gereksiz olduğu",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Her çocuğun zeka türü ve öğrenme stili farklıdır. Kimi öğrenci görerek, kimi dinleyerek, kimi ise dokunarak ve deneyerek daha iyi öğrenir. Sınıftaki tüm öğrencilere aynı yöntemle ders anlatıp aynı düzeyde başarı beklemek, bir balıktan ağaca tırmanmasını istemek kadar mantıksızdır.\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "a": "Sınav sistemlerinin adaletsizliği",
+    "b": "Öğrencilerin bireysel farklılıklarına göre eğitim verilmesinin gerekliliği",
+    "c": "Hayvanların farklı yetenekleri",
+    "d": "Öğretmenlerin yaşadığı zorluklar",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Çocuklara küçük yaşlardan itibaren okuma alışkanlığı kazandırmanın en iyi yolu, onlara zorla kitap okutmak değil, evde onların görebileceği şekilde kitap okumaktır. Çocuklar söylenenleri değil, gördüklerini yaparlar. Elinden telefon düşmeyen bir ebeveynin çocuğuna 'Kitap oku' demesi hiçbir işe yaramaz.\n\nBu metin için en uygun başlık aşağıdakilerden hangisidir?",
+    "a": "Telefon Bağımlılığının Zararları",
+    "b": "Eğitimde Rol Model Olmanın Etkisi",
+    "c": "Okul Kütüphanelerinin Yetersizliği",
+    "d": "Çocuk Kitaplarının Seçimi",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Yabancı dil öğrenmek, sadece yeni kelimeler ezberlemek değil, dünyayı farklı bir pencereden görmektir. Her dil, onu konuşan toplumun kültürünü, espri anlayışını ve mantığını yansıtır. Bir dil öğrendiğinizde, aynı zamanda o dili konuşan milyonlarca insanın beyniyle düşünmeye başlarsınız.\n\nBu metne göre aşağıdakilerden hangisi çıkarılabilir?",
+    "a": "Dil öğrenmek sadece kelime bilgisiyle ilgili mekanik bir süreçtir.",
+    "b": "Yeni bir dil öğrenmek, insana yeni bir kültürel bakış açısı kazandırır.",
+    "c": "Dünyada en çok konuşulan dil İngilizcedir.",
+    "d": "Kendi ana dilini iyi bilmeyenler yabancı dil öğrenemez.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Merak duygusu, bilginin tohumudur. Çocuklar doğal olarak meraklı doğarlar ve sürekli 'Neden?' diye sorarlar. Eğer bu sorular bıkkınlıkla geçiştirilir veya susturulursa, çocuğun içindeki öğrenme ateşi söner. İyi bir eğitim, bu soruları cevaplamaktan ziyade, yeni sorular sordurmayı hedefler.\n\nBu metinde vurgulanan düşünce aşağıdakilerden hangisidir?",
+    "a": "Öğretmenler her soruya doğru cevap vermek zorundadır.",
+    "b": "Soru soran çocuklar genellikle dersi dinlemeyenlerdir.",
+    "c": "Öğrenmenin temel itici gücü meraktır ve eğitim bu merakı canlı tutmalıdır.",
+    "d": "Çocukların sorularına cevap vermek zaman kaybıdır.",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Teknolojinin eğitime entegre edilmesi, sadece sınıflara akıllı tahta takmak anlamına gelmez. Teknoloji, bilgiyi ezberlemek yerine projeler üretmek, uzaktaki kütüphanelere saniyeler içinde ulaşmak ve sanal laboratuvarlarda deney yapmak için kullanıldığında gerçek amacına ulaşır.\n\nBu parçada asıl anlatılmak istenen aşağıdakilerden hangisidir?",
+    "a": "Akıllı tahtaların eski tahtalardan daha pahalı olduğu",
+    "b": "Eğitimde teknolojinin sadece bir gösteriş aracı değil, üretime ve keşfe dayalı kullanılması gerektiği",
+    "c": "Öğretmenlerin teknoloji kullanımı konusunda yetersiz olduğu",
+    "d": "Kitapların yerini tamamen tabletlerin alması gerektiği",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Bir öğrencinin başarısı sadece zekasına değil, gösterdiği çabaya bağlıdır. Hatta araştırmalar, zeki ama tembel öğrencilerin, ortalama zekaya sahip ancak planlı ve azimli öğrencilerin gerisinde kaldığını gösteriyor. Zeka, size sadece kapıyı aralar; o kapıdan geçmek ise alın teri ve sabır gerektirir.\n\nBu metne göre başarı ile ilgili aşağıdakilerden hangisi söylenemez?",
+    "a": "Sadece doğuştan gelen zekanın başarı için yetersiz olduğu",
+    "b": "Planlı çalışmanın hedefe ulaşmada önemli bir etken olduğu",
+    "c": "Çalışmayan zeki kişilerin zamanla başarısızlığa uğrayabileceği",
+    "d": "Azimli insanların her zaman zeki insanlardan daha akıllı olduğu",
+    "cevap": "D"
+  }
+]

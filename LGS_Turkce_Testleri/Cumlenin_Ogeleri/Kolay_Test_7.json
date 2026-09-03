@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Köpekler, sahiplerine sadıktır.\" cümlesinin yüklemi hangisidir?",
+    "secenekler": {
+      "A": "Köpekler",
+      "B": "sahiplerine",
+      "C": "sadıktır",
+      "D": "sahiplerine sadıktır"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "\"Kuşlar gökyüzünde özgürce süzülüyor.\" cümlesinde 'özgürce' sözcüğü cümlenin hangi ögesidir?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Nesne",
+      "C": "Yer Tamlayıcısı",
+      "D": "Zarf Tamlayıcısı"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "\"Aslan, ormanın kralı olarak bilinir.\" cümlesinin öznesi nedir?",
+    "secenekler": {
+      "A": "Aslan",
+      "B": "ormanın kralı",
+      "C": "olarak",
+      "D": "bilinir"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Hangi cümlede yer tamlayıcısı (dolaylı tümleç) bulunmaktadır?",
+    "secenekler": {
+      "A": "Kedim sütünü iştahla içti.",
+      "B": "Koyunlar hızla koştu.",
+      "C": "Arılar durmadan bal yapar.",
+      "D": "Kelebekler çiçeklere kondu."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "\"Karıncalar kış için yiyecek toplar.\" cümlesinde 'yiyecek' sözcüğü hangi ögedir?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Belirtili Nesne",
+      "C": "Belirtisiz Nesne",
+      "D": "Yer Tamlayıcısı"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "\"Penguenler soğuk iklimlerde yaşar.\" cümlesinde 'soğuk iklimlerde' söz grubu hangi ögedir?",
+    "secenekler": {
+      "A": "Yer Tamlayıcısı",
+      "B": "Zarf Tamlayıcısı",
+      "C": "Özne",
+      "D": "Nesne"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde nesne yoktur?",
+    "secenekler": {
+      "A": "Tavşan taze havuç yiyor.",
+      "B": "Balıklar suda yüzüyor.",
+      "C": "Ayı ormanda bal yedi.",
+      "D": "Filler suyu püskürtür."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "\"Zürafa yüksek dallardaki yaprakları yer.\" cümlesinde 'yüksek dallardaki yaprakları' söz grubu hangi ögedir?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Belirtisiz Nesne",
+      "C": "Yer Tamlayıcısı",
+      "D": "Belirtili Nesne"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "\"Baykuşlar geceleyin avlanır.\" cümlesinde 'geceleyin' sözcüğü hangi ögedir?",
+    "secenekler": {
+      "A": "Yer Tamlayıcısı",
+      "B": "Belirtili Nesne",
+      "C": "Zarf Tamlayıcısı",
+      "D": "Özne"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde özne ve yüklem dışında bir öge yoktur?",
+    "secenekler": {
+      "A": "Bülbül ötüyor.",
+      "B": "Kaplanlar hızlı koşar.",
+      "C": "Yunuslar denizde zıplar.",
+      "D": "Kurtlar sürü halinde gezer."
+    },
+    "dogru_cevap": "A"
+  }
+]

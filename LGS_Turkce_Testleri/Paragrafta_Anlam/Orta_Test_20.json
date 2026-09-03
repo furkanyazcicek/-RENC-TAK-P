@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "Felsefe, cevaplardan çok sorularla ilgilenen bir alandır. 'Evren nasıl oluştu?', 'İyi ve kötü nedir?', 'Gerçeklik algımız ne kadar doğru?' gibi sorular felsefenin temelini oluşturur. Filozof, kesin doğruları bulduğunu iddia eden kişi değil, bilinenleri şüphe süzgecinden geçirerek gerçeği aramaya devam eden kişidir.\n\nBu metnin ana düşüncesi aşağıdakilerden hangisidir?",
+    "a": "Felsefede ulaşılan sonuçlar, sorulan sorulardan daha önemlidir.",
+    "b": "Felsefe, sürekli sorgulama ve gerçeği arama sürecine odaklanır.",
+    "c": "Filozoflar genellikle toplum tarafından anlaşılmazlar.",
+    "d": "Gerçekliğe dair tüm sorular bilimin alanına girer.",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Antik Yunan'da Sokrates, etrafındaki insanlara sürekli sorular sorarak, doğru bildiklerini sandıkları şeylerin aslında ne kadar temelsiz olduğunu onlara kanıtlardı. O, bilgiyi dışarıdan vermek yerine, 'doğurtma' adını verdiği bu yöntemle insanın içinde gizli olan doğruyu soru sorarak ortaya çıkarırdı.\n\nBu parçadan aşağıdaki yargıların hangisi çıkarılamaz?",
+    "a": "Sokrates'in öğretme yönteminin soru-cevap temelli olduğu",
+    "b": "İnsanların kendi inandıkları doğrulardan kolayca vazgeçtikleri",
+    "c": "Sokrates'e göre doğrunun insanın içinde zaten var olduğu",
+    "d": "Sokrates'in insanların önyargılarını kırmayı amaçladığı",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "Descartes'in ünlü 'Düşünüyorum, öyleyse varım' sözü felsefe tarihinin dönüm noktalarından biridir. Descartes, çevresindeki her şeyden, hatta kendi bedeninin gerçekliğinden bile şüphe eder. Ancak şüphe ettiği sırada 'şüphe eden bir zihnin' var olmak zorunda olduğunu fark eder. Bu da onun ilk kesin gerçeği olur.\n\nBu metinde aşağıdakilerden hangisine değinilmemiştir?",
+    "a": "Descartes'in hangi yöntemle kesin bilgiye ulaştığına",
+    "b": "Descartes'in kendi bedeninden bile şüphe ettiğine",
+    "c": "Descartes'in bu sözü hangi kitapta yazdığına",
+    "d": "Düşünmenin var olmanın kanıtı kabul edildiğine",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Zamanın doğası felsefenin en derin tartışmalarından biridir. Geçmiş artık yoktur, gelecek ise henüz gelmemiştir. Elimizde sadece kısacık bir 'şimdi' vardır. O halde zamanın, zihnimizin olayları sıralamak için uydurduğu bir kavram mı yoksa bizden bağımsız akan bir nehir mi olduğu sorusu yüzyıllardır yanıtsızdır.\n\nBu parçada asıl anlatılmak istenen aşağıdakilerden hangisidir?",
+    "a": "Geçmişe takılı kalan insanların şimdiki zamanı yaşayamadığı",
+    "b": "Zamanın sadece saatlerle ölçülen matematiksel bir değer olduğu",
+    "c": "Zamanın mahiyeti hakkında kesin ve tek bir açıklamanın bulunmadığı",
+    "d": "Geleceğin, geçmişte yaşanan olayların tekrarından ibaret olduğu",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "Özgür irade problemi, felsefede insanın kendi eylemlerini seçip seçemediğini tartışır. Eğer her olayın bir nedeni varsa ve biz de biyolojik varlıklar olarak doğanın kurallarına bağlıysak, verdiğimiz kararlar gerçekten 'bize' mi aittir? Yoksa sadece beynimizdeki kimyasal tepkimelerin bir sonucu muyuz?\n\nBu metnin konusu aşağıdakilerden hangisidir?",
+    "a": "Beynimizin kimyasal yapısının nasıl çalıştığı",
+    "b": "Doğadaki canlıların birbiriyle etkileşimi",
+    "c": "İnsan seçimlerinin ne kadar özgür ve bağımsız olduğu tartışması",
+    "d": "Hukuk sisteminde suçluların nasıl yargılandığı",
+    "cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Bir ağaç ormanda devrilse ve etrafta bunu duyacak hiç kimse olmasa, o ağaç yine de ses çıkarır mı? Bu ünlü felsefi soru, aslında 'Ses, fiziksel bir titreşim midir yoksa bir kulağın algılamasıyla mı sese dönüşür?' düşüncesini irdeler. Yani gerçeklik, bizim onu algılamamıza mı bağlıdır?\n\nBu metin için en uygun başlık aşağıdakilerden hangisidir?",
+    "a": "Ormanların Sesleri",
+    "b": "Algı ve Gerçeklik İlişkisi",
+    "c": "İşitme Duyusunun Önemi",
+    "d": "Doğanın Korunması",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "Platon'un 'Mağara Alegorisi'nde mağaraya zincirlenmiş insanlar sadece duvardaki gölgeleri görür ve bunları gerçek sanırlar. Biri kurtulup dışarı çıkarak güneşi ve gerçek nesneleri gördüğünde büyük bir şok yaşar. Geri dönüp diğerlerine gerçeği anlattığında ise ona inanmazlar. Platon bu hikayeyle, insanların inandıkları sahte dünyadan çıkmalarının ne kadar zor olduğunu anlatır.\n\nBu metne göre aşağıdakilerden hangisi çıkarılabilir?",
+    "a": "İnsanlar alıştıkları ve güvendikleri yanılgıları terk etmek istemezler.",
+    "b": "Mağaralarda yaşayan insanlar daha mutlu bir hayat sürerler.",
+    "c": "Gerçeği arayan herkes toplum tarafından lider olarak kabul edilir.",
+    "d": "Güneş ışığı insan gözü için zararlıdır.",
+    "cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Ahlak felsefesi (Etik), neyin doğru neyin yanlış olduğunu inceler. Örneğin, Kant'a göre bir davranışın ahlaki olabilmesi için sonucuna değil, niyetine bakılmalıdır. Eğer bir insan, sırf cennete gitmek veya takdir toplamak için yoksula yardım ediyorsa, bu çıkar amaçlı olduğu için ahlaki bir eylem sayılmaz.\n\nBu metinde vurgulanan düşünce aşağıdakilerden hangisidir?",
+    "a": "Yardım kuruluşlarının daha çok insana ulaşması gerektiği",
+    "b": "Kant'ın felsefesine göre davranışın ahlakiliğini belirleyen şeyin kişinin niyeti olduğu",
+    "c": "Ahlaki kuralların toplumdan topluma farklılık gösterdiği",
+    "d": "Herkesin kendi doğrusunun kendine ait olduğu",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "Stoacılık felsefesine göre insan, kontrol edemediği şeyler yüzünden üzülmemelidir. Trafikte sıkışmak, yağmurun yağması veya başkalarının bizim hakkımızda ne düşündüğü bizim elimizde değildir. Biz sadece bu olaylara nasıl tepki vereceğimizi seçebiliriz. İç huzura ancak elimizde olmayanları kabullenerek ulaşırız.\n\nBu parçada asıl anlatılmak istenen aşağıdakilerden hangisidir?",
+    "a": "Trafik sorunlarının insanları agresif yaptığı",
+    "b": "Kişinin, gücünün yetmediği dış etkenlere üzülmek yerine kendi içsel tepkilerini yönetmesi gerektiği",
+    "c": "Hayatta her olayın önceden planlanabileceği",
+    "d": "Diğer insanların fikirlerinin hayatta en önemli şey olduğu",
+    "cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Düşünce tarihi boyunca, mutluluğun tanımı sürekli değişmiştir. Bazıları için mutluluk acıdan kaçmak ve hazza yönelmekken; bazıları için erdemli bir hayat sürmek, bazıları içinse beklentileri en aza indirmektir. Ortak olan tek şey, insanın doğası gereği bu gizemli hissin peşinden koşmayı hiç bırakmamasıdır.\n\nBu metne göre aşağıdakilerden hangisi söylenemez?",
+    "a": "Mutluluğun tek bir evrensel tanımı olmadığı",
+    "b": "İnsanların sürekli olarak mutlu olmayı amaçladığı",
+    "c": "Bazı düşünürlerin mutluluğu beklentisizlik olarak gördüğü",
+    "d": "Günümüzde insanların eskiye göre çok daha mutlu olduğu",
+    "cevap": "D"
+  }
+]

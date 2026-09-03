@@ -1,0 +1,115 @@
+{
+  "test_adi": "Cümlede Anlam - Kolay Test 1",
+  "sorular": [
+    {
+      "soru_no": 1,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde amaç-sonuç ilişkisi vardır?",
+      "secenekler": {
+        "A": "Sınavı kazanmak için gece gündüz demeden çalıştı.",
+        "B": "Yağmur yağdığı için pikniği iptal etmek zorunda kaldık.",
+        "C": "Düzenli beslenirsen daha sağlıklı bir hayata kavuşursun.",
+        "D": "O kadar yorgundu ki gözlerini açık tutmakta zorlanıyordu."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 2,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde neden-sonuç (sebep-sonuç) ilişkisi bulunmaktadır?",
+      "secenekler": {
+        "A": "Onu görmek üzere erkenden otogara doğru yola çıktık.",
+        "B": "Trafiğe takıldığından toplantıya yirmi dakika geç kaldı.",
+        "C": "Biraz daha sabredersen her şeyin düzeleceğini göreceksin.",
+        "D": "Bu kitap, yazarın son dönemde çıkardığı en iyi eseridir."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 3,
+      "soru_metni": "Numaralanmış cümlelerin hangisinde bir eylemin gerçekleşmesi şarta (koşula) bağlanmıştır?",
+      "secenekler": {
+        "A": "Dün akşam izlediğim film bana çocukluk günlerimi hatırlattı.",
+        "B": "Onunla tekrar konuşmak için fırsat kolluyordu.",
+        "C": "Ödevlerini zamanında bitirirsen hafta sonu sinemaya gidebiliriz.",
+        "D": "Kardeşim hastalandığı için ailecek hastaneye gittik."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 4,
+      "soru_metni": "Aşağıdaki cümlelerin hangisinde karşılaştırma yapılmıştır?",
+      "secenekler": {
+        "A": "Yarın sabah erkenden köye doğru yola çıkmayı planlıyoruz.",
+        "B": "Bütün gün bilgisayar başında oturduğundan gözleri yorulmuştu.",
+        "C": "Akşam yemeğinde en sevdiğim yemekleri annem özenle hazırlamıştı.",
+        "D": "Kış mevsimi bu yıl geçen yıla göre daha soğuk ve yağışlı geçiyor."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 5,
+      "soru_metni": "Kişiden kişiye değişen, doğruluğu veya yanlışlığı kanıtlanamayan yargılara öznel yargı denir. Buna göre aşağıdakilerden hangisi öznel bir cümledir?",
+      "secenekler": {
+        "A": "Bu tablonun büyüleyici renkleri insana huzur veriyor.",
+        "B": "Türkiye'nin başkenti Ankara'dır ve İç Anadolu Bölgesi'nde yer alır.",
+        "C": "Kitabın yazarının bu yıl yayımladığı üçüncü romanı piyasaya çıktı.",
+        "D": "Erzurum, kış turizmi açısından Türkiye'nin önemli merkezlerindendir."
+      },
+      "dogru_cevap": "A"
+    },
+    {
+      "soru_no": 6,
+      "soru_metni": "Söyleyenin kişisel düşüncelerini içermeyen, doğruluğu kanıtlanabilir nitelikteki cümlelere nesnel cümle denir. Buna göre hangisinde nesnel bir anlatım vardır?",
+      "secenekler": {
+        "A": "Yazarın akıcı ve sürükleyici dili eseri bir çırpıda okutuyor.",
+        "B": "Son nüfus sayımına göre şehrin nüfusu bir milyonu geçmiştir.",
+        "C": "İlkbahar mevsiminde doğanın uyanışı insana müthiş bir enerji verir.",
+        "D": "Şairin son şiirleri eski eserlerine kıyasla çok daha duygusaldı."
+      },
+      "dogru_cevap": "B"
+    },
+    {
+      "soru_no": 7,
+      "soru_metni": "'Ahmet Bey yine toplantıya geç kaldı.' cümlesinden kesin olarak çıkarılabilecek örtülü anlam aşağıdakilerden hangisidir?",
+      "secenekler": {
+        "A": "Ahmet Bey toplantılara her zaman isteksiz katılmaktadır.",
+        "B": "Ahmet Bey iş yerine uzak bir evde oturmaktadır.",
+        "C": "Ahmet Bey daha önce de toplantılara geç kalmıştır.",
+        "D": "Toplantılar genellikle çok erken saatlerde yapılmaktadır."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 8,
+      "soru_metni": "Bir durumdan ya da kişiden duyulan rahatsızlığın dile getirildiği cümlelere 'yakınma cümlesi' denir. Buna göre hangisi bir yakınma cümlesidir?",
+      "secenekler": {
+        "A": "Eğer benim dediklerimi yapsaydın bugün bu durumda olmazdın.",
+        "B": "Keşke gençliğimde yabancı dil öğrenmek için daha çok çaba gösterseydim.",
+        "C": "Belki de beklediğimiz haber yarın sabahtan önce elimize ulaşır.",
+        "D": "Kaç defa söylememe rağmen odasını bir türlü temiz ve düzenli tutmuyor."
+      },
+      "dogru_cevap": "D"
+    },
+    {
+      "soru_no": 9,
+      "soru_metni": "Kişinin yaptığı ya da yapmadığı bir eylemden dolayı duyduğu üzüntüyü anlatan cümlelere 'hayıflanma' denir. Buna göre aşağıdakilerden hangisi bir hayıflanma cümlesidir?",
+      "secenekler": {
+        "A": "Ne yazık ki insanlar doğanın değerini gün geçtikçe unutuyor.",
+        "B": "Bu kadar parayı tek bir kıyafete vermekle büyük hata ettin.",
+        "C": "Fırsatım varken üniversite yıllarında yurt dışına çıksaydım iyi olurdu.",
+        "D": "Onun gibi yetenekli birinin bu kadar pasif kalması çok acı."
+      },
+      "dogru_cevap": "C"
+    },
+    {
+      "soru_no": 10,
+      "soru_metni": "Gerçekleşmemiş bir olayı gerçekleşmiş gibi ya da gerçekleşmiş bir olayı hiç olmamış gibi düşünerek kurulan cümlelere varsayım cümlesi denir. Buna göre aşağıdakilerden hangisinde varsayım anlamı vardır?",
+      "secenekler": {
+        "A": "Diyelim ki uçağı kaçırdın, o zaman toplantıya nasıl yetişeceksin?",
+        "B": "Sanıyorum ki yarın hava güneşli olacak ve pikniğe gidebileceğiz.",
+        "C": "Keşke bugünkü sınava biraz daha iyi hazırlansaydım.",
+        "D": "Eğer yağmur yağarsa dışarıdaki programı iptal edeceğiz."
+      },
+      "dogru_cevap": "A"
+    }
+  ]
+}

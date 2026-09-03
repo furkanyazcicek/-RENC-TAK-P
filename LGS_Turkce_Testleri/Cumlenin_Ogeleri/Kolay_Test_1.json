@@ -1,0 +1,112 @@
+[
+  {
+    "soru_no": 1,
+    "soru": "Aşağıdaki cümlelerin hangisinde yüklem yanlış gösterilmiştir?",
+    "secenekler": {
+      "A": "Dün akşam bize (gelen) sendin.",
+      "B": "Yarın sabah erkenden yola (çıkacağız).",
+      "C": "Bahçedeki çiçekler çok (güzel kokuyor).",
+      "D": "O, her zaman çok (çalışkandı)."
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 2,
+    "soru": "\"Küçük çocuk, annesini görünce koşarak yanına gitti.\" cümlesinin öznesi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Annesini",
+      "B": "Yanına",
+      "C": "Küçük çocuk",
+      "D": "Koşarak"
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 3,
+    "soru": "Aşağıdaki cümlelerin hangisinde belirtili nesne kullanılmıştır?",
+    "secenekler": {
+      "A": "Akşamüstü biraz kitap okudum.",
+      "B": "Öğretmenimiz, bu konuyu çok iyi anlattı.",
+      "C": "Sokakta usulca yürüyordu.",
+      "D": "Yarın yağmur yağacakmış."
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru": "\"Güneş yavaş yavaş dağların ardında kayboldu.\" cümlesinde hangi öge yoktur?",
+    "secenekler": {
+      "A": "Nesne",
+      "B": "Zarf Tümleci",
+      "C": "Yer Tamlayıcısı",
+      "D": "Özne"
+    },
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 5,
+    "soru": "Aşağıdaki cümlelerden hangisi sadece özne ve yüklemden oluşmuştur?",
+    "secenekler": {
+      "A": "Yaşlı adam, bankta sessizce oturuyordu.",
+      "B": "Dışarıda şiddetli bir rüzgâr esiyordu.",
+      "C": "Baharın gelişi, hepimizi sevindirdi.",
+      "D": "Masanın üzerindeki kitaplar, kardeşiminmiş."
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 6,
+    "soru": "\"Babam, bana doğum günümde kırmızı bir bisiklet aldı.\" cümlesinin öge dizilişi aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Özne - Dolaylı Tümleç - Zarf Tümleci - Nesne - Yüklem",
+      "B": "Özne - Yer Tamlayıcısı - Zarf Tümleci - Belirtisiz Nesne - Yüklem",
+      "C": "Özne - Belirtili Nesne - Zarf Tümleci - Yer Tamlayıcısı - Yüklem",
+      "D": "Özne - Yer Tamlayıcısı - Nesne - Zarf Tümleci - Yüklem"
+    },
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru": "Aşağıdakilerin hangisinde altı çizili bölüm zarf tamlayıcısı (zarf tümleci) değildir?",
+    "secenekler": {
+      "A": "(Akşama doğru) hava birden soğudu.",
+      "B": "Sınav sonuçları (haftaya) açıklanacak.",
+      "C": "(Bahar yağmurları) toprağa can verir.",
+      "D": "Haberi duyunca (sevinçle) ayağa fırladı."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 8,
+    "soru": "\"Kitaplıktaki romanları birer birer okudu.\" cümlesindeki \"kitaplıktaki romanları\" söz grubu cümlenin hangi ögesidir?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Yer Tamlayıcısı",
+      "C": "Zarf Tümleci",
+      "D": "Belirtili Nesne"
+    },
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 9,
+    "soru": "Hangi cümlede gizli özne kullanılmıştır?",
+    "secenekler": {
+      "A": "Kuşlar gökyüzünde özgürce uçuyor.",
+      "B": "Annem mutfakta yemek hazırlıyor.",
+      "C": "Dün akşam sinemaya gittik.",
+      "D": "Rüzgâr bütün gece hiç durmadı."
+    },
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 10,
+    "soru": "\"Dün akşam cüzdanını okulun bahçesinde Ali bulmuş.\" cümlesinde vurgulanan öge aşağıdakilerden hangisidir?",
+    "secenekler": {
+      "A": "Özne",
+      "B": "Zarf Tümleci",
+      "C": "Belirtili Nesne",
+      "D": "Yer Tamlayıcısı"
+    },
+    "dogru_cevap": "A"
+  }
+]

@@ -1,0 +1,92 @@
+[
+  {
+    "soru_no": 1,
+    "soru_metni": "\"Bilim insanları, laboratuvarda yaptıkları deneylerde yeni bir element keşfettiler.\" cümlesinin öge dizilişi aşağıdakilerden hangisidir?",
+    "A": "Özne - Zarf Tümleci - Nesne - Yüklem",
+    "B": "Özne - Belirtili Nesne - Zarf Tümleci - Yüklem",
+    "C": "Özne - Zarf Tümleci - Yer Tamlayıcısı - Yüklem",
+    "D": "Özne - Yer Tamlayıcısı - Belirtisiz Nesne - Yüklem",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 2,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde yer tamlayıcısı (dolaylı tümleç) vurgulanmıştır?",
+    "A": "Mikroskobun merceğini özenle temizledi.",
+    "B": "Kimyasal reaksiyon beklenenden daha hızlı gerçekleşti.",
+    "C": "Tüpteki karışımı yavaşça ısıtmalısın.",
+    "D": "Araştırmanın sonuçları bilim dergisinde yayımlandı.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 3,
+    "soru_metni": "\"Newton, yer çekimi kanununu uzun gözlemler sonucunda formüle etmiştir.\" cümlesinde \"uzun gözlemler sonucunda\" bölümü hangi ögedir?",
+    "A": "Yer Tamlayıcısı",
+    "B": "Zarf Tümleci",
+    "C": "Özne",
+    "D": "Belirtili Nesne",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 4,
+    "soru_metni": "Hangi cümlede sadece temel ögeler (özne ve yüklem) kullanılmıştır?",
+    "A": "Bilimsel araştırmalar insanlığa yol gösterir.",
+    "B": "Hücre bölünmesi mikroskop altında incelendi.",
+    "C": "Kuantum fiziği yeni teorilerle zenginleşiyor.",
+    "D": "DNA yapısı oldukça karmaşık bir sarmaldır.",
+    "dogru_cevap": "D"
+  },
+  {
+    "soru_no": 5,
+    "soru_metni": "\"Kara delikler etraflarındaki her şeyi büyük bir çekim gücüyle yutar.\" cümlesinde nesne görevindeki sözcük veya sözcük grubu hangisidir?",
+    "A": "Kara delikler",
+    "B": "büyük bir çekim gücüyle",
+    "C": "etraflarındaki her şeyi",
+    "D": "yutar",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 6,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde \"Niçin?\" sorusunun cevabı vardır?",
+    "A": "Gözlemevinde devasa bir teleskop bulunuyor.",
+    "B": "Gezegenlerin hareketlerini anlamak için simülasyonlar yaptık.",
+    "C": "Fosiller geçmiş çağlar hakkında bilgi verir.",
+    "D": "Marie Curie radyasyon üzerine önemli çalışmalar yapmıştır.",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 7,
+    "soru_metni": "\"Tıp alanındaki yeni buluşlar, birçok hastalığın tedavisini kolaylaştırıyor.\" cümlesinin yüklemi aşağıdakilerden hangisidir?",
+    "A": "kolaylaştırıyor",
+    "B": "tedavisini kolaylaştırıyor",
+    "C": "hastalığın tedavisini kolaylaştırıyor",
+    "D": "birçok hastalığın tedavisini kolaylaştırıyor",
+    "dogru_cevap": "A"
+  },
+  {
+    "soru_no": 8,
+    "soru_metni": "Aşağıdaki cümlelerin hangisinde gizli özne bulunmaktadır?",
+    "A": "Einstein'ın görelilik teorisi fiziği baştan aşağı değiştirdi.",
+    "B": "Güneş tutulması dünyanın pek çok yerinden izlendi.",
+    "C": "Laboratuvar kurallarına her zaman sıkı sıkıya uyarız.",
+    "D": "Bilimsel ilerlemeler zaman ve sabır gerektirir.",
+    "dogru_cevap": "C"
+  },
+  {
+    "soru_no": 9,
+    "soru_metni": "\"Deney tüplerini, şu cam raflarda duranları, dikkatlice yıkayıp yerine koydu.\" cümlesinde ara söz hangi ögenin açıklayıcısıdır?",
+    "A": "Belirtisiz Nesne",
+    "B": "Belirtili Nesne",
+    "C": "Özne",
+    "D": "Yer Tamlayıcısı",
+    "dogru_cevap": "B"
+  },
+  {
+    "soru_no": 10,
+    "soru_metni": "Hangi cümlenin öge sayısı en fazladır?",
+    "A": "Uzmanlar, dün sabah laboratuvarda basına yeni aşıyı tanıttılar.",
+    "B": "Genetik bilimi son yıllarda büyük bir ivme kazandı.",
+    "C": "Dünya hızla dönüyor.",
+    "D": "Bakteriler sıcak ortamlarda hızla ürer.",
+    "dogru_cevap": "A"
+  }
+]
