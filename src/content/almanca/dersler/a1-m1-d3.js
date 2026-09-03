@@ -300,7 +300,7 @@ export default {
   ],
 
   kartlar: ['de-land', 'de-sprache', 'de-sprechen', 'de-kommen', 'de-wohnen', 'de-stadt'],
-  not: 'not-a1-m1-d3',
+  not: null,
   sonraki: 'a1-m1-d4',
   kaynak: { tur: 'ozgun', aciklama: 'DRKOÇ için özgün üretilmiştir.' },
 }

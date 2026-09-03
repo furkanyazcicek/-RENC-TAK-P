@@ -311,7 +311,7 @@ export default {
   ],
 
   kartlar: ['de-buch', 'de-kind', 'de-haus', 'de-apfel', 'de-stadt', 'de-schueler'],
-  not: 'not-a1-m2-d4',
+  not: null,
   sonraki: 'a1-m2-d5',
   kaynak: { tur: 'ozgun', aciklama: 'DRKOÇ için özgün üretilmiştir.' },
 }

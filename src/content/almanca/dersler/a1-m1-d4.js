@@ -313,7 +313,7 @@ export default {
   ],
 
   kartlar: ['de-wohin', 'de-kommen', 'de-wohnen', 'de-heissen', 'de-sprechen'],
-  not: 'not-a1-m1-d4',
+  not: null,
   sonraki: 'a1-m1-d5',
   kaynak: { tur: 'ozgun', aciklama: 'DRKOÇ için özgün üretilmiştir.' },
 }

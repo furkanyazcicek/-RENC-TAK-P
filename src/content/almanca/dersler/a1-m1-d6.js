@@ -251,7 +251,7 @@ export default {
   ],
 
   kartlar: ['de-heissen', 'de-kommen', 'de-wohnen', 'de-jahr', 'de-schueler', 'de-sprache'],
-  not: 'not-a1-m1-d6',
+  not: null,
   sonraki: 'a1-m2-d1',
   kaynak: { tur: 'ozgun', aciklama: 'DRKOÇ için özgün üretilmiştir.' },
 }

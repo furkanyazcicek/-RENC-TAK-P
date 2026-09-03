@@ -285,7 +285,7 @@ export default {
   ],
 
   kartlar: ['de-mutter', 'de-vater', 'de-eltern', 'de-bruder', 'de-schwester', 'de-onkel', 'de-tante'],
-  not: 'not-a1-m2-d3',
+  not: null,
   sonraki: 'a1-m2-d4',
   kaynak: { tur: 'ozgun', aciklama: 'DRKOÇ için özgün üretilmiştir.' },
 }

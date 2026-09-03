@@ -322,7 +322,7 @@ export default {
   ],
 
   kartlar: ['de-zeit', 'de-hunger', 'de-durst', 'de-geschwister', 'de-katze'],
-  not: 'not-a1-m2-d5',
+  not: null,
   sonraki: 'a1-m2-d6',
   kaynak: { tur: 'ozgun', aciklama: 'DRKOÇ için özgün üretilmiştir.' },
 }

@@ -1,0 +1,320 @@
+/**
+ * DERS — A1 / Modül 5 / Ders 1
+ * "Yiyecekler, içecekler ve öğünler"
+ *
+ * Kelime dersi. Ama Almancada yemek kelimeleri iki ek yük taşır:
+ * artikel ve SAYILABİLİRLİK. "das Brot" sayılamaz gibi davranır,
+ * "das Brötchen" sayılır. Bu ayrım miktar ifadelerinde karşımıza çıkar.
+ *
+ * Ayrıca Alman öğün kültürü kısaca tanıtılır; "Abendbrot" gibi kelimeler
+ * ancak kültürüyle birlikte anlaşılır.
+ */
+
+export default {
+  id: 'a1-m5-d1',
+  surum: 1,
+  dil: 'de',
+  seviye: 'A1',
+  modul: 'a1-m5',
+  sira: 1,
+  baslik: 'Yiyecekler, içecekler ve öğünler',
+  altBaslik: 'Artikeliyle, çoğuluyla ve doğru fiiliyle',
+  odakBeceri: 'kelime',
+  beceriler: ['kelime', 'gramer', 'dusunme'],
+  amac: 'Bu dersin sonunda temel yiyecek ve içecekleri artikeliyle adlandırabilecek, öğünlerden söz edebilecek ve yeme-içme fiillerini doğru seçebileceksin.',
+  kazanim: 'Yiyecek ve içecekleri artikeliyle adlandırır; öğün adlarını kullanır; essen/trinken ayrımını Türkçeden gelen hatalara düşmeden yapar.',
+  onKosullar: ['a1-m4-d5'],
+  sure: 13,
+  baglam: {
+    durum: 'Alman arkadaşın "Was isst du zum Frühstück?" diye sordu.',
+    neden: 'Yemek, her kültürde en çok konuşulan konudur ve alışverişten restorana kadar her yerde gerekir.',
+  },
+
+  bloklar: [
+    {
+      tur: 'tablo',
+      baslik: 'Temel yiyecekler',
+      basliklar: ['Almanca', 'Türkçe', 'Çoğul'],
+      satirlar: [
+        ['das Brot', 'ekmek', 'die Brote'],
+        ['das Brötchen', 'küçük ekmek, sandviç ekmeği', 'die Brötchen'],
+        ['der Käse', 'peynir', 'die Käse'],
+        ['die Butter', 'tereyağı', '—'],
+        ['das Ei', 'yumurta', 'die Eier'],
+        ['die Wurst', 'sosis, salam', 'die Würste'],
+        ['der Apfel', 'elma', 'die Äpfel'],
+        ['die Tomate', 'domates', 'die Tomaten'],
+        ['die Kartoffel', 'patates', 'die Kartoffeln'],
+        ['der Reis', 'pirinç', '—'],
+        ['die Nudeln', 'makarna', '(çoğul kullanılır)'],
+        ['das Fleisch', 'et', '—'],
+        ['der Fisch', 'balık', 'die Fische'],
+        ['die Suppe', 'çorba', 'die Suppen'],
+        ['der Kuchen', 'kek, pasta', 'die Kuchen'],
+      ],
+    },
+    {
+      tur: 'tablo',
+      baslik: 'İçecekler',
+      basliklar: ['Almanca', 'Türkçe', 'Not'],
+      satirlar: [
+        ['das Wasser', 'su', 'sade su: stilles Wasser'],
+        ['der Tee', 'çay', '—'],
+        ['der Kaffee', 'kahve', 'vurgu: KA-ffee ya da ka-FFEE'],
+        ['die Milch', 'süt', 'çoğulu yok'],
+        ['der Saft', 'meyve suyu', 'der Orangensaft'],
+        ['die Limonade', 'gazoz', 'kısaca: die Limo'],
+        ['die Cola', 'kola', 'das Cola da denir'],
+      ],
+    },
+    {
+      tur: 'anlatim',
+      baslik: 'Öğünler',
+      metin:
+        'Almancada üç öğün vardır ve her birinin hem ismi hem fiili bulunur.',
+      maddeler: [
+        'das Frühstück (kahvaltı) → frühstücken',
+        'das Mittagessen (öğle yemeği) → zu Mittag essen',
+        'das Abendessen (akşam yemeği) → zu Abend essen',
+        'Almanya\'da akşam yemeği çoğu evde SOĞUKTUR (ekmek, peynir, salam) ve buna "Abendbrot" da denir.',
+        'Sıcak ana öğün genelde ÖĞLENDİR.',
+      ],
+    },
+    {
+      tur: 'tuzak',
+      baslik: 'Çorba içilmez, yenir',
+      yanlis: 'Ich trinke Suppe.',
+      dogru: 'Ich esse Suppe.',
+      neden:
+        'Türkçede çorba "içilir" çünkü sıvıdır. Almancada kaşıkla yenen her şey "essen" fiilini alır. Aynı şekilde "sigara içmek" de Almancada "rauchen"dır, "trinken" değil.',
+    },
+    {
+      tur: 'tablo',
+      baslik: 'Sayılabilir mi, sayılamaz mı?',
+      basliklar: ['Kelime', 'Durum', 'Nasıl söylenir?'],
+      satirlar: [
+        ['das Brötchen', 'sayılabilir', 'zwei Brötchen'],
+        ['das Brot', 'genelde sayılamaz', 'ein Stück Brot / ein Brot (somun)'],
+        ['das Wasser', 'sayılamaz', 'ein Glas Wasser'],
+        ['der Kaffee', 'sayılamaz ama sipariş sayılır', 'einen Kaffee, bitte'],
+        ['die Milch', 'sayılamaz', 'ein Liter Milch'],
+        ['der Apfel', 'sayılabilir', 'drei Äpfel'],
+      ],
+    },
+    {
+      tur: 'kalip',
+      baslik: 'Yemekten söz ederken',
+      kaliplar: [
+        { de: 'Was isst du zum Frühstück?', kullanim: 'Kahvaltı sorma', ornek: '— Was isst du zum Frühstück? — Brot mit Käse.' },
+        { de: 'Ich esse gern …', kullanim: 'Tercih', ornek: 'Ich esse gern Nudeln.' },
+        { de: 'Ich trinke morgens …', kullanim: 'İçecek alışkanlığı', ornek: 'Ich trinke morgens Tee.' },
+        { de: 'Ich mag kein(e/n) …', kullanim: 'Sevmediğin şey', ornek: 'Ich mag keinen Fisch.' },
+        { de: 'Das schmeckt (mir) gut.', kullanim: 'Beğenme', ornek: 'Der Kuchen schmeckt sehr gut.' },
+        { de: 'Guten Appetit!', kullanim: 'Afiyet olsun', ornek: '— Guten Appetit! — Danke, gleichfalls!' },
+      ],
+    },
+    {
+      tur: 'okuma',
+      baslik: 'Mein Essen',
+      metin:
+        'Zum Frühstück esse ich Brot mit Käse und ein Ei. Ich trinke Tee, aber keinen Kaffee. In der Schule esse ich in der Pause ein Brötchen. Zu Mittag essen wir zu Hause: oft Reis mit Fleisch oder Nudeln. Am Abend esse ich Suppe. Mein Lieblingsessen ist Pizza, aber wir essen sie nicht oft.',
+      sozluk: [
+        { de: 'zum Frühstück', tr: 'kahvaltıda' },
+        { de: 'zu Mittag essen', tr: 'öğle yemeği yemek' },
+        { de: 'das Lieblingsessen', tr: 'en sevilen yemek' },
+      ],
+    },
+  ],
+
+  alistirmalar: [
+    {
+      id: 'a1-m5-d1-a1',
+      aciklama: 'Yiyecek kelimelerini artikeliyle öğrenmek, alışverişte ve restoranda doğrudan işine yarar.',
+      tur: 'bosluk',
+      beceri: 'gramer',
+      zorluk: 'kolay',
+      yonerge: 'Doğru artikeli yaz.',
+      parcalar: [
+        { bosluk: 0 }, ' Brot · ', { bosluk: 1 }, ' Milch · ', { bosluk: 2 },
+        ' Apfel · ', { bosluk: 3 }, ' Suppe',
+      ],
+      cevaplar: [
+        { kabul: ['das'], ipucu: 'ekmek' },
+        { kabul: ['die'], ipucu: 'süt' },
+        { kabul: ['der'], ipucu: 'elma' },
+        { kabul: ['die'], ipucu: 'çorba' },
+      ],
+    },
+    {
+      id: 'a1-m5-d1-a2',
+      tur: 'coktan-secmeli',
+      beceri: 'dusunme',
+      zorluk: 'orta',
+      yonerge: 'Hangi fiil doğru?',
+      soru: 'Ich ____ gern Suppe.',
+      secenekler: [
+        { id: 'a', metin: 'esse' },
+        { id: 'b', metin: 'trinke' },
+        { id: 'c', metin: 'mache' },
+      ],
+      dogruId: 'a',
+      secenekNotu: {
+        b: 'Türkçedeki "çorba içmek" kalıbından geliyor; Almancada kaşıkla yenen her şey "essen" alır.',
+      },
+      aciklama: 'Almancada çorba yenir: Suppe essen.',
+      tuzaklar: [
+        {
+          kod: 'suppe-trinken',
+          desen: /\b(trinke|trinkt|trinken)\s+(die\s+)?Suppe\b/i,
+          baslik: 'Çorba "içilmiş"',
+          aciklama: 'Türkçede çorba içilir; Almancada kaşıkla yenen her şey essen fiilini alır.',
+          dogru: 'Ich esse Suppe.',
+          mikro: { yonerge: '"Çorba yiyorum." cümlesini yaz.', kabul: ['Ich esse Suppe'] },
+        },
+      ],
+    },
+    {
+      id: 'a1-m5-d1-a3',
+      aciklama: 'Öğün adları hem isim hem fiil olarak karşına çıkar: das Frühstück / frühstücken.',
+      tur: 'eslestirme',
+      beceri: 'kelime',
+      zorluk: 'orta',
+      yonerge: 'Öğünü Türkçe karşılığıyla eşleştir.',
+      sol: [
+        { id: 'o1', metin: 'das Frühstück' },
+        { id: 'o2', metin: 'das Mittagessen' },
+        { id: 'o3', metin: 'das Abendessen' },
+        { id: 'o4', metin: 'die Pause' },
+      ],
+      sag: [
+        { id: 't1', metin: 'kahvaltı' },
+        { id: 't2', metin: 'öğle yemeği' },
+        { id: 't3', metin: 'akşam yemeği' },
+        { id: 't4', metin: 'teneffüs / mola' },
+      ],
+      eslesme: { o1: 't1', o2: 't2', o3: 't3', o4: 't4' },
+    },
+    {
+      id: 'a1-m5-d1-a4',
+      aciklama: 'Yiyecek çoğulları üç ayrı gruptan geliyor: umlaut, -er ve -n.',
+      tur: 'bosluk',
+      beceri: 'kelime',
+      zorluk: 'orta',
+      yonerge: 'Çoğul biçimlerini yaz.',
+      parcalar: [
+        'der Apfel → die ', { bosluk: 0 }, '\ndas Ei → die ', { bosluk: 1 },
+        '\ndie Tomate → die ', { bosluk: 2 },
+      ],
+      cevaplar: [
+        { kabul: ['Äpfel', 'Aepfel'], ipucu: 'umlaut' },
+        { kabul: ['Eier'], ipucu: '-er' },
+        { kabul: ['Tomaten'], ipucu: '-n' },
+      ],
+    },
+    {
+      id: 'a1-m5-d1-a5',
+      tur: 'hata-bul',
+      beceri: 'gramer',
+      zorluk: 'orta',
+      yonerge: 'Hatayı bul ve düzelt.',
+      cumle: 'Ich mag nicht Fisch.',
+      hataliParca: 'nicht Fisch',
+      dogruParca: 'keinen Fisch',
+      kabul: ['Ich mag keinen Fisch', 'keinen Fisch'],
+      aciklama: 'İsim olumsuzlanıyor → kein. "der Fisch" eril ve nesne konumunda olduğu için "keinen".',
+    },
+    {
+      id: 'a1-m5-d1-a6',
+      tur: 'durum-ifade',
+      beceri: 'dusunme',
+      zorluk: 'orta',
+      yonerge: 'DURUM → İFADE.',
+      durum: 'Sofraya oturuldu. Yemeğe başlarken ne dersin?',
+      kabul: ['Guten Appetit', 'Guten Appetit!'],
+      ornekCevap: 'Guten Appetit!',
+      aciklama: 'Cevabı "Danke, gleichfalls!" (sana da) olur.',
+    },
+    {
+      id: 'a1-m5-d1-a7',
+      tur: 'coktan-secmeli',
+      beceri: 'kelime',
+      zorluk: 'zor',
+      yonerge: 'Alman yemek kültürü hakkında hangisi doğrudur?',
+      soru: 'Almanya\'da çoğu evde akşam yemeği nasıldır?',
+      secenekler: [
+        { id: 'a', metin: 'Genelde soğuktur: ekmek, peynir, salam ("Abendbrot").' },
+        { id: 'b', metin: 'Her zaman sıcak ve ana öğündür.' },
+        { id: 'c', metin: 'Akşam yemeği yenmez.' },
+      ],
+      dogruId: 'a',
+      aciklama: 'Sıcak ana öğün genelde öğlendir; akşam çoğu evde soğuk yenir ve buna "Abendbrot" denir.',
+    },
+    {
+      id: 'a1-m5-d1-a8',
+      aciklama: 'Kahvaltı sorusu Almanca sohbetin en sık sorularından biridir; cevabında "mit" ile ayrıntı ekleyebilirsin.',
+      tur: 'soru-cevap',
+      beceri: 'dusunme',
+      zorluk: 'orta',
+      yonerge: 'Soruya Almanca cevap ver.',
+      soru: 'Was isst du zum Frühstück?',
+      kabul: ['Ich esse', 'Zum Frühstück esse ich', 'Zum Fruehstueck esse ich'],
+      ornekCevap: 'Zum Frühstück esse ich Brot mit Käse und ein Ei.',
+    },
+  ],
+
+  ozet: [
+    'Yiyecekleri artikeli ve çoğuluyla öğren: der Apfel / die Äpfel.',
+    'Öğünler: das Frühstück, das Mittagessen, das Abendessen.',
+    'Almancada çorba YENİR: Suppe essen.',
+    'Sigara "içilmez", "rauchen" fiiliyle söylenir.',
+    'Sevmediğin yiyecek "kein" ile olumsuzlanır: Ich mag keinen Fisch.',
+    'Almanya\'da sıcak ana öğün genelde öğlendir.',
+  ],
+
+  miniSinav: [
+    {
+      id: 'a1-m5-d1-s1',
+      aciklama: '"das Ei" nötr, "die Kartoffel" dişildir; ikisi de mutfakta her gün geçer.',
+      tur: 'bosluk',
+      beceri: 'gramer',
+      zorluk: 'kolay',
+      yonerge: 'Doğru artikeli yaz.',
+      parcalar: [{ bosluk: 0 }, ' Ei · ', { bosluk: 1 }, ' Kartoffel'],
+      cevaplar: [
+        { kabul: ['das'], ipucu: 'yumurta' },
+        { kabul: ['die'], ipucu: 'patates' },
+      ],
+    },
+    {
+      id: 'a1-m5-d1-s2',
+      aciklama: 'Öğün "zum Frühstück" kalıbıyla söylenir; fiil "essen"dır.',
+      tur: 'coktan-secmeli',
+      beceri: 'kelime',
+      zorluk: 'orta',
+      yonerge: 'Hangisi doğru?',
+      soru: '"Kahvaltıda ne yersin?" nasıl sorulur?',
+      secenekler: [
+        { id: 'a', metin: 'Was isst du zum Frühstück?' },
+        { id: 'b', metin: 'Was trinkst du zum Frühstück?' },
+        { id: 'c', metin: 'Was machst du Frühstück?' },
+      ],
+      dogruId: 'a',
+    },
+    {
+      id: 'a1-m5-d1-s3',
+      aciklama: '"der Fisch" eril ve nesne konumunda olduğu için "keinen" alır.',
+      tur: 'durum-ifade',
+      beceri: 'dusunme',
+      zorluk: 'orta',
+      yonerge: 'DURUM → İFADE.',
+      durum: 'Balık sevmediğini söylüyorsun.',
+      kabul: ['Ich mag keinen Fisch', 'Ich esse keinen Fisch'],
+      ornekCevap: 'Ich mag keinen Fisch.',
+    },
+  ],
+
+  kartlar: ['de-brot', 'de-wasser', 'de-milch', 'de-kaese', 'de-apfel', 'de-suppe', 'de-fleisch'],
+  not: null,
+  sonraki: 'a1-m5-d2',
+  kaynak: { tur: 'ozgun', aciklama: 'DRKOÇ için özgün üretilmiştir.' },
+}

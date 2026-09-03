@@ -1,0 +1,338 @@
+/**
+ * DERS — A1 / Modül 6 / Ders 5
+ * "Ulaşım ve A1 kapanışı"
+ *
+ * Hem modülü hem A1 seviyesini kapatan ders. İki işi var:
+ *  1) Ulaşım kalıplarını vermek (mit dem Bus, umsteigen, die Fahrkarte),
+ *  2) Öğrenciye A1'de ne kazandığını göstermek ve A2'ye köprü kurmak.
+ *
+ * Kapanış dersi olduğu için yazma görevi bütün modülleri toplar.
+ */
+
+export default {
+  id: 'a1-m6-d5',
+  surum: 1,
+  dil: 'de',
+  seviye: 'A1',
+  modul: 'a1-m6',
+  sira: 5,
+  baslik: 'Ulaşım ve A1 kapanışı',
+  altBaslik: 'Otobüse bin, aktarma yap ve A1\'i tamamla',
+  odakBeceri: 'yazma',
+  beceriler: ['yazma', 'kelime', 'dinleme'],
+  amac: 'Bu dersin sonunda ulaşım araçlarından söz edebilecek, bilet alabilecek ve A1 seviyesinde öğrendiklerini tek metinde birleştirebileceksin.',
+  kazanim: 'Ulaşım araçlarını "mit dem/der" kalıbıyla söyler; bilet ve aktarma kalıplarını kullanır; A1 bilgisini bir metinde birleştirir.',
+  onKosullar: ['a1-m6-d4'],
+  sure: 17,
+  baglam: {
+    durum: 'Şehirde otobüs ve trenle dolaşıyorsun: bilet alıyorsun, aktarma yapıyorsun, ineceğin durağı soruyorsun.',
+    neden: 'Ulaşım, yol tarifinin tamamlayıcısıdır ve A1 seviyesinin son büyük pratik konusudur.',
+  },
+
+  bloklar: [
+    {
+      tur: 'anlatim',
+      baslik: 'Ulaşım aracı "mit + Dativ" ile söylenir',
+      metin:
+        'Bir araçla gitmek Almancada sabit bir kalıpla kurulur: "mit" + Dativ. "mit" her zaman Dativ ister, istisnası yoktur.',
+      maddeler: [
+        'mit dem Bus (otobüsle)',
+        'mit dem Auto (arabayla)',
+        'mit dem Fahrrad (bisikletle)',
+        'mit dem Zug (trenle)',
+        'mit der Bahn (trenle/hatla — die Bahn dişil)',
+        'mit der U-Bahn / mit der Straßenbahn (metroyla / tramvayla)',
+        'İSTİSNA: yürüyerek → zu Fuß (mit değil!)',
+      ],
+    },
+    {
+      tur: 'tablo',
+      baslik: 'Ulaşım kelimeleri',
+      basliklar: ['Almanca', 'Türkçe', 'Not'],
+      satirlar: [
+        ['der Bus', 'otobüs', 'die Busse'],
+        ['der Zug', 'tren', 'die Züge'],
+        ['die Bahn', 'demiryolu / tren', 'dişil'],
+        ['die U-Bahn', 'metro', 'Untergrundbahn'],
+        ['die Straßenbahn', 'tramvay', 'kısaca: die Tram'],
+        ['das Auto', 'araba', 'die Autos'],
+        ['das Fahrrad', 'bisiklet', 'İsviçre: das Velo'],
+        ['die Fahrkarte', 'bilet', 'das Ticket de denir'],
+        ['der Fahrplan', 'tarife', '—'],
+        ['das Gleis', 'peron', 'Gleis 5'],
+        ['die Verspätung', 'gecikme', 'die Bahn hat Verspätung'],
+      ],
+    },
+    {
+      tur: 'kalip',
+      baslik: 'Ulaşımda gereken kalıplar',
+      kaliplar: [
+        { de: 'Eine Fahrkarte nach …, bitte.', kullanim: 'Bilet alma', ornek: 'Eine Fahrkarte nach Köln, bitte.' },
+        { de: 'Wann fährt der nächste Zug?', kullanim: 'Sefer sorma', ornek: 'Wann fährt der nächste Zug nach Berlin?' },
+        { de: 'Von welchem Gleis fährt der Zug?', kullanim: 'Peron sorma', ornek: 'Von welchem Gleis fährt der Zug nach Hamburg?' },
+        { de: 'Muss ich umsteigen?', kullanim: 'Aktarma sorma', ornek: '— Muss ich umsteigen? — Ja, in Hannover.' },
+        { de: 'Wo muss ich aussteigen?', kullanim: 'İnme yeri sorma', ornek: 'Entschuldigung, wo muss ich aussteigen?' },
+        { de: 'Fährt dieser Bus zum Bahnhof?', kullanim: 'Doğru araç mı', ornek: 'Fährt dieser Bus zum Bahnhof?' },
+      ],
+    },
+    {
+      tur: 'anlatim',
+      baslik: 'Üç ayrılabilen fiil: ein-, aus-, um-steigen',
+      metin:
+        'Ulaşımın üç temel fiili de ayrılabilen fiildir; ana cümlede ön ek sona gider.',
+      maddeler: [
+        'einsteigen → binmek: Ich steige in den Bus ein.',
+        'aussteigen → inmek: Ich steige an der nächsten Haltestelle aus.',
+        'umsteigen → aktarma yapmak: Ich steige in Hannover um.',
+        'Modal fiille birlikte mastar bütün kalır: "Ich muss umsteigen."',
+      ],
+    },
+    {
+      tur: 'tuzak',
+      baslik: 'Yürüyerek "mit" almaz',
+      yanlis: 'Ich gehe mit dem Fuß.',
+      dogru: 'Ich gehe zu Fuß.',
+      neden:
+        '"zu Fuß" donmuş bir kalıptır ve artikel almaz. Ayrıca yürüyorsan fiil de "fahren" değil "gehen"dır: taşıtla gidiyorsan fahren, yürüyorsan gehen.',
+    },
+    {
+      tur: 'anlatim',
+      baslik: 'A1\'i tamamladın — neler yapabiliyorsun?',
+      metin:
+        'Bu, A1 seviyesinin son dersidir. Altı modülde şunları kazandın:',
+      maddeler: [
+        'Kendini tanıtabiliyor, soru sorabiliyor ve cevap verebiliyorsun.',
+        'Fiili ikinci sırada tutabiliyor, yan cümlede sona atabiliyorsun.',
+        'der/die/das ayrımını yapıyor, Akkusativ ve Dativ\'i tanıyorsun.',
+        'Günlük rutinini, ailen ve okulunu anlatabiliyorsun.',
+        'Alışveriş yapabiliyor, sipariş verebiliyor, yol sorabiliyorsun.',
+        'Yaklaşık 500 kelimeyi artikeli ve çoğuluyla biliyorsun.',
+        'SIRADA A2 VAR: geçmiş zaman (Perfekt), planlar, sağlık ve karşılaştırma.',
+      ],
+    },
+    {
+      tur: 'dinleme',
+      baslik: 'Gar anonsu',
+      metin:
+        'Der Zug nach Hamburg fährt heute von Gleis fünf ab. Der Zug hat ungefähr zehn Minuten Verspätung. Bitte steigen Sie in Hannover um.',
+      satirlar: [
+        { kisi: 'Anons', de: 'Der Zug nach Hamburg fährt heute von Gleis fünf ab.' },
+        { kisi: 'Anons', de: 'Der Zug hat ungefähr zehn Minuten Verspätung.' },
+        { kisi: 'Anons', de: 'Bitte steigen Sie in Hannover um.' },
+      ],
+    },
+  ],
+
+  alistirmalar: [
+    {
+      id: 'a1-m6-d5-a1',
+      tur: 'bosluk',
+      beceri: 'gramer',
+      zorluk: 'kolay',
+      yonerge: '"mit" kalıbını tamamla.',
+      parcalar: [
+        'Ich fahre mit ', { bosluk: 0 }, ' Bus. (der)\nWir fahren mit ',
+        { bosluk: 1 }, ' Bahn. (die)\nEr fährt mit ', { bosluk: 2 }, ' Fahrrad. (das)',
+      ],
+      cevaplar: [
+        { kabul: ['dem'], ipucu: 'eril → Dativ' },
+        { kabul: ['der'], ipucu: 'dişil → Dativ' },
+        { kabul: ['dem'], ipucu: 'nötr → Dativ' },
+      ],
+      aciklama: '"mit" her zaman Dativ ister.',
+    },
+    {
+      id: 'a1-m6-d5-a2',
+      tur: 'hata-bul',
+      beceri: 'dusunme',
+      zorluk: 'orta',
+      yonerge: 'Hatayı bul ve düzelt.',
+      cumle: 'Ich gehe mit dem Fuß zur Schule.',
+      hataliParca: 'mit dem Fuß',
+      dogruParca: 'zu Fuß',
+      kabul: ['Ich gehe zu Fuß zur Schule', 'zu Fuß'],
+      aciklama: '"zu Fuß" kalıptır ve artikel almaz.',
+    },
+    {
+      id: 'a1-m6-d5-a3',
+      aciklama: 'Üç fiil de ayrılabilen fiildir; ana cümlede ön ekleri sona gider.',
+      tur: 'eslestirme',
+      beceri: 'kelime',
+      zorluk: 'orta',
+      yonerge: 'Fiili anlamıyla eşleştir.',
+      sol: [
+        { id: 'f1', metin: 'einsteigen' },
+        { id: 'f2', metin: 'aussteigen' },
+        { id: 'f3', metin: 'umsteigen' },
+        { id: 'f4', metin: 'abfahren' },
+      ],
+      sag: [
+        { id: 'a1', metin: 'binmek' },
+        { id: 'a2', metin: 'inmek' },
+        { id: 'a3', metin: 'aktarma yapmak' },
+        { id: 'a4', metin: 'hareket etmek (kalkmak)' },
+      ],
+      eslesme: { f1: 'a1', f2: 'a2', f3: 'a3', f4: 'a4' },
+    },
+    {
+      id: 'a1-m6-d5-a4',
+      aciklama: 'Gar ve havalimanı anonsları A1 için hızlıdır; peron ve gecikme bilgisini yakalaman yeter.',
+      tur: 'dinle-sec',
+      beceri: 'dinleme',
+      zorluk: 'orta',
+      yonerge: 'Dinle ve doğru bilgiyi seç.',
+      seslendir: 'Der Zug nach Hamburg fährt von Gleis fünf ab und hat zehn Minuten Verspätung.',
+      secenekler: [
+        { id: 'a', metin: '5. perondan, 10 dakika gecikmeli' },
+        { id: 'b', metin: '10. perondan, 5 dakika gecikmeli' },
+        { id: 'c', metin: '5. perondan, gecikme yok' },
+      ],
+      dogruId: 'a',
+    },
+    {
+      id: 'a1-m6-d5-a5',
+      aciklama: 'Bilet isterken hedef "nach" ile verilir: eine Fahrkarte nach …',
+      tur: 'durum-ifade',
+      beceri: 'dusunme',
+      zorluk: 'orta',
+      yonerge: 'DURUM → İFADE.',
+      durum: 'Gişeden Köln\'e bir bilet istiyorsun.',
+      kabul: [
+        'Eine Fahrkarte nach Köln, bitte', 'Eine Fahrkarte nach Köln bitte',
+        'Ich hätte gern eine Fahrkarte nach Köln', 'Eine Fahrkarte nach Koeln, bitte',
+      ],
+      ornekCevap: 'Eine Fahrkarte nach Köln, bitte.',
+    },
+    {
+      id: 'a1-m6-d5-a6',
+      aciklama: 'Çekimli kısım ikinci sırada, ön ek en sonda; araya kalan bilgi çerçevenin içinde durur.',
+      tur: 'bosluk',
+      beceri: 'dizim',
+      zorluk: 'zor',
+      yonerge: 'Ayrılabilen fiili doğru kur.',
+      parcalar: [
+        'Ich ', { bosluk: 0 }, ' an der nächsten Haltestelle ', { bosluk: 1 },
+        '. (aussteigen)',
+      ],
+      cevaplar: [
+        { kabul: ['steige'], ipucu: 'çekimli kısım' },
+        { kabul: ['aus'], ipucu: 'ön ek sonda' },
+      ],
+    },
+    {
+      id: 'a1-m6-d5-a7',
+      aciklama: 'Taşıtla gidiyorsan "fahren", yürüyorsan "gehen" kullanılır.',
+      tur: 'soru-cevap',
+      beceri: 'dusunme',
+      zorluk: 'orta',
+      yonerge: 'Soruya Almanca cevap ver.',
+      soru: 'Wie kommst du zur Schule?',
+      kabul: ['Ich fahre mit dem', 'Ich gehe zu Fuß', 'Ich fahre mit der'],
+      ornekCevap: 'Ich fahre mit dem Bus zur Schule.',
+    },
+    {
+      id: 'a1-m6-d5-a8',
+      tur: 'yazma',
+      beceri: 'yazma',
+      zorluk: 'zor',
+      yonerge: 'A1 kapanış görevi: öğrendiğin her şeyi tek metinde birleştir.',
+      gorev: 'Schreib einen Text über dich und deinen Alltag: Wer bist du? Wo wohnst du? Wie ist dein Tag? Was gibt es in deinem Viertel? Wie kommst du zur Schule? Was machst du gern und warum lernst du Deutsch?',
+      ornekMetin:
+        'Hallo! Ich heiße Elif und ich bin fünfzehn Jahre alt. Ich komme aus der Türkei und wohne in Bursa. Ich bin Schülerin in der neunten Klasse. Mein Tag beginnt früh: Zuerst stehe ich um halb sieben auf, dann frühstücke ich mit meiner Familie. Ich fahre mit dem Bus zur Schule, weil die Schule nicht in der Nähe ist. In meinem Viertel gibt es einen Supermarkt, eine Apotheke und einen großen Park. Am Nachmittag mache ich meine Hausaufgaben und danach spiele ich gern Basketball. Mein Lieblingsfach ist Biologie. Ich lerne Deutsch, weil ich später in Deutschland studieren möchte.',
+      kaliplar: [
+        'Ich heiße … / Ich bin … Jahre alt.',
+        'Ich komme aus … / Ich wohne in …',
+        'Zuerst … , dann … , danach …',
+        'Ich fahre mit dem … zur Schule.',
+        'In meinem Viertel gibt es …',
+        'Ich … gern …',
+        'Ich lerne Deutsch, weil …',
+      ],
+      asamalar: [
+        { ad: 'Plan', aciklama: 'Altı başlığı Türkçe listele: kimlik, yer, gün, mahalle, ulaşım, sebep.' },
+        { ad: 'Taslak', aciklama: 'Her başlık için bir-iki Almanca cümle yaz. Şimdilik bağlaçsız.' },
+        { ad: 'Sıralama', aciklama: 'Gün anlatımını zuerst/dann/danach ile bağla; fiili ikinci sırada tut.' },
+        { ad: 'Gerekçe', aciklama: 'En az iki "weil" cümlesi ekle ve fiili SONA koy.' },
+        { ad: 'Kontrol', aciklama: 'Artikeller doğru mu? Ayrılabilen fiillerin ön eki sonda mı? İsimler büyük harf mi? weil cümlesinde fiil sonda mı?' },
+      ],
+      olcut: [
+        'Kendimi tanıttım (ad, yaş, köken, yer).',
+        'Günümü sıralama sözcükleriyle anlattım.',
+        'En az bir ayrılabilen fiil kullandım ve ön ekini sona koydum.',
+        'Ulaşımı "mit dem/der" ya da "zu Fuß" ile yazdım.',
+        'Mahallemde ne olduğunu "es gibt" ile anlattım.',
+        'En az iki "weil" cümlesi kurdum ve fiili sona koydum.',
+        'Bir tercihimi "gern" ya da "Lieblings-" ile yazdım.',
+        'Bütün isimleri büyük harfle yazdım.',
+      ],
+      enAzKelime: 80,
+      aranan: [
+        { etiket: 'kimlik cümlesi', desen: /\b(ich heiße|ich bin|ich komme aus|ich heisse)\b/i },
+        { etiket: 'sıralama sözcüğü', desen: /\b(zuerst|dann|danach|später)\b/i },
+        { etiket: 'ayrılabilen fiil', desen: /\b(stehe|steige|kaufe|rufe|sehe|fange)\b.*\b(auf|ein|aus|an|fern)\b/i },
+        { etiket: 'es gibt yapısı', desen: /\bgibt\s+es\b/i },
+        { etiket: 'ulaşım kalıbı', desen: /\b(mit dem|mit der|zu fuß|zu fuss)\b/i },
+        { etiket: 'weil cümlesi', desen: /\bweil\b/i },
+        { etiket: 'tercih bildirme', desen: /\b(gern|lieblings|mag)\b/i },
+      ],
+    },
+  ],
+
+  ozet: [
+    'Ulaşım aracı "mit + Dativ" ile söylenir: mit dem Bus, mit der Bahn.',
+    'Yürüyerek "zu Fuß"tur; "mit" almaz ve fiil "gehen" olur.',
+    'einsteigen / aussteigen / umsteigen — üçü de ayrılabilen fiildir.',
+    'Bilet: "Eine Fahrkarte nach …, bitte."',
+    'A1 tamamlandı: kendini tanıtıyor, günlük hayatını anlatıyor, alışveriş yapıyor ve yol soruyorsun.',
+    'Sırada A2 var: Perfekt ile geçmiş, planlar, sağlık ve karşılaştırma.',
+  ],
+
+  miniSinav: [
+    {
+      id: 'a1-m6-d5-s1',
+      tur: 'coktan-secmeli',
+      beceri: 'gramer',
+      zorluk: 'kolay',
+      yonerge: 'Hangisi doğru?',
+      soru: 'Ich fahre ____ Bus zur Schule.',
+      secenekler: [
+        { id: 'a', metin: 'mit dem' },
+        { id: 'b', metin: 'mit den' },
+        { id: 'c', metin: 'mit der' },
+      ],
+      dogruId: 'a',
+      aciklama: 'der Bus eril; "mit" Dativ ister → mit dem Bus.',
+    },
+    {
+      id: 'a1-m6-d5-s2',
+      aciklama: 'İnme yerini sormak, yabancı bir şehirde en çok işine yarayacak sorulardan biridir.',
+      tur: 'durum-ifade',
+      beceri: 'dusunme',
+      zorluk: 'orta',
+      yonerge: 'DURUM → İFADE.',
+      durum: 'Otobüste nerede ineceğini soruyorsun.',
+      kabul: [
+        'Wo muss ich aussteigen', 'Entschuldigung, wo muss ich aussteigen',
+        'Wo soll ich aussteigen',
+      ],
+      ornekCevap: 'Entschuldigung, wo muss ich aussteigen?',
+    },
+    {
+      id: 'a1-m6-d5-s3',
+      tur: 'hata-bul',
+      beceri: 'dizim',
+      zorluk: 'zor',
+      yonerge: 'Hatayı bul ve düzelt.',
+      cumle: 'Ich umsteige in Hannover.',
+      hataliParca: 'umsteige',
+      dogruParca: 'steige … um',
+      kabul: ['Ich steige in Hannover um', 'steige um'],
+      aciklama: 'umsteigen ayrılabilen fiildir; ön ek sona gider.',
+    },
+  ],
+
+  kartlar: ['de-bus', 'de-fahrrad', 'de-haltestelle', 'de-bahnhof', 'de-fahren', 'de-weg'],
+  not: null,
+  sonraki: null,
+  kaynak: { tur: 'ozgun', aciklama: 'DRKOÇ için özgün üretilmiştir.' },
+}

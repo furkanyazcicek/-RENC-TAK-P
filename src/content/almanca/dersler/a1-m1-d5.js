@@ -342,7 +342,7 @@ export default {
   ],
 
   kartlar: ['de-jahr', 'de-nummer', 'de-buchstabieren', 'de-adresse', 'de-name'],
-  not: 'not-a1-m1-d5',
+  not: null,
   sonraki: 'a1-m1-d6',
   kaynak: { tur: 'ozgun', aciklama: 'DRKOÇ için özgün üretilmiştir.' },
 }

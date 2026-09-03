@@ -277,7 +277,7 @@ export default {
       id: 'prea1-m1-d1-a7',
       tur: 'dinle-sec',
       beceri: 'dinleme',
-      zorluk: 'orta',
+      zorluk: 'zor',
       yonerge: 'Dinle ve duyduğun kelimeyi seç.',
       seslendir: 'Zeit',
       secenekler: [

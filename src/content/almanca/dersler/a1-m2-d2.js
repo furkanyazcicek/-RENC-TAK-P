@@ -313,7 +313,7 @@ export default {
   ],
 
   kartlar: ['de-bruder', 'de-schwester', 'de-hund', 'de-katze', 'de-handy', 'de-geschwister'],
-  not: 'not-a1-m2-d2',
+  not: null,
   sonraki: 'a1-m2-d3',
   kaynak: { tur: 'ozgun', aciklama: 'DRKOÇ için özgün üretilmiştir.' },
 }

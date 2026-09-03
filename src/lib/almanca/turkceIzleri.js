@@ -439,7 +439,9 @@ export const TURKCE_IZLERI = [
   {
     kod: 'yanlis-dost',
     baslik: 'Yanlış eşdeğer (falsche Freunde)',
-    desen: /\b(ich\s+bekomme\s+(gro(ß|ss)|alt|m(ü|ue)de)|der\s+Chef\s+kocht|ins\s+Gymnasium\s+trainieren|ich\s+will\s+ein\s+Handy\s+bekommen\s+lassen)\b/i,
+    /* Sonda \b YOK: "groß" gibi ß ile biten kelimelerde JS'in \w sınıfı
+       ß'yi harf saymaz ve sınır oluşmaz — desen boşuna kaçardı. */
+    desen: /\b(ich\s+bekomme\s+(gro(ß|ss)|alt|m(ü|ue)de)|der\s+Chef\s+kocht|ins\s+Gymnasium\s+trainieren|ich\s+will\s+ein\s+Handy\s+bekommen\s+lassen)/i,
     aciklama:
       'Kelime tanıdık geliyor diye aynı anlama gelmiyor: bekommen = "almak", "olmak" değil; Chef = "patron", aşçı değil; Gymnasium = "lise", spor salonu değil.',
     dogru: 'Ich werde groß. / Der Chef ist im Büro. / Ich gehe ins Fitnessstudio.',
