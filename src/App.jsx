@@ -69,6 +69,14 @@ const CografyaAtlasi = lazy(() => import('./pages/CografyaAtlasi'))
  */
 const Ingilizce = lazy(() => import('./pages/Ingilizce'))
 
+/**
+ * Almanca Öğrenme Kütüphanesi — İngilizce bölümüyle AYNI motoru kullanır
+ * ama kendi içeriği, kendi seslendirmesi ve kendi ilerleme kaydı vardır.
+ * O yüzden ayrı bir tembel pakettir: Almanca çalışmayan öğrenci Almanca
+ * derslerini, kelime havuzunu ve madde bankasını hiç indirmez.
+ */
+const Almanca = lazy(() => import('./pages/Almanca'))
+
 /** Geometri Pilot Testi */
 const GeometriPilot = lazy(() => import('./pages/GeometriPilot'))
 
@@ -438,6 +446,16 @@ export default function App() {
         element={
           <ProtectedRoute>
             <Suspense fallback={<FullPageLoader />}><Ingilizce /></Suspense>
+          </ProtectedRoute>
+        }
+      />
+      {/* Almanca Öğrenme Kütüphanesi — bölümün kendi iç yönlendirmesi
+          var (bkz. pages/Almanca.jsx), bu yüzden `/*` ile devredilir. */}
+      <Route
+        path="/almanca/*"
+        element={
+          <ProtectedRoute>
+            <Suspense fallback={<FullPageLoader />}><Almanca /></Suspense>
           </ProtectedRoute>
         }
       />

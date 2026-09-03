@@ -61,6 +61,7 @@ export const STUDENT_NAV = [
   // haritası, tekrar, telaffuz). Kütüphanenin içinde de bağlantısı var
   // ama günlük çalışılan bir yer olduğu için menüde kendi satırı olsun.
   { to: '/ingilizce', label: 'İngilizce', short: 'İngilizce', Icon: Languages },
+  { to: '/almanca', label: 'Almanca', short: 'Almanca', Icon: Languages },
   { to: '/sorular', label: 'Sorunlu Sorular', short: 'Sorular', Icon: HelpCircle },
   { to: '/mesajlar', label: 'Mesajlar', short: 'Mesaj', Icon: MessageCircle },
 ]
