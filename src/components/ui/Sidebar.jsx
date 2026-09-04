@@ -12,10 +12,9 @@ import { captureStudentProfile, isProductCapture } from '../../lib/productCaptur
 /**
  * Sidebar — masaüstü (lg+) gezinme sütunu.
  *
- * Minimal ve sakin: zemin cam, öğeler düz. Aurora yalnızca AKTİF öğede
- * görünür — yumuşak gradient zemin, sol kenarda ışıyan şerit ve renkli
- * ikon. Böylece kullanıcı "neredeyim" sorusunu tek bakışta yanıtlar,
- * gradient de sayfa başına bir kez kullanılmış olur.
+ * Minimal ve sakin: normal durumda düz kalan öğeler, üzerine gelindiğinde
+ * hafif cam derinliği kazanır. Aktif öğe kendi pastel tonuyla belirginleşir;
+ * böylece menü renkleri korunurken kullanıcı bulunduğu yeri tek bakışta görür.
  *
  * Mobilde gizlidir; orada `MobileNav` (alt çubuk + çekmece) devreye girer.
  */
@@ -64,27 +63,12 @@ export default function Sidebar() {
                     <Link
                       to={to}
                       aria-current={active ? 'page' : undefined}
+                      data-tone={tone}
                       className={cn(
-                        'focus-ring group relative flex items-center gap-3 rounded-2xl px-2.5 py-2',
-                        'text-[14px] transition-all duration-200 ease-smooth',
-                        active
-                          ? 'panel-nav-active font-extrabold text-ink'
-                          : 'font-bold text-ink/60 hover:bg-[#f4f6f2] hover:text-ink'
+                        'focus-ring panel-nav-link group relative flex items-center gap-3 px-2.5 py-2 text-[14px]',
+                        active ? 'panel-nav-active font-extrabold' : 'font-bold'
                       )}
-                      style={{
-                        color: active ? '#26332e' : '#5f6967',
-                        background: active ? '#f0f3ed' : 'transparent',
-                        boxShadow: active ? 'inset 3px 0 #ef654f' : 'none',
-                      }}
                     >
-                      <span
-                        className={cn(
-                          'panel-nav-indicator absolute -left-3 top-1/2 w-[3px] -translate-y-1/2 rounded-r-full',
-                          'transition-all duration-300 ease-out-expo',
-                          active ? 'h-7 opacity-100' : 'h-0 opacity-0'
-                        )}
-                        aria-hidden="true"
-                      />
                       <SoftIcon icon={Icon} tone={tone} size="sm" active={active} />
                       <span className="truncate">{label}</span>
                     </Link>
