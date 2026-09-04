@@ -1,0 +1,322 @@
+/**
+ * A1 — YEMEK, SİPARİŞ VE ALIŞVERİŞ
+ * ==================================================================
+ *
+ * Bu havuzun gizli konusu GUSTAR'dır. "Beğenmek" Türkçede özneli bir
+ * fiildir ("ben pizzayı severim"), İspanyolcada ise sevilen şey ÖZNE olur
+ * ("me gusta la pizza" = pizza bana hoş geliyor). Bu ters kuruluş bir kez
+ * anlaşılmazsa öğrenci her cümlede yeniden yanılır.
+ *
+ * İkinci gizli konu MUY / MUCHO ayrımıdır: ikisi de Türkçede "çok"tur ama
+ * biri sıfat önünde, öbürü fiilden sonra kullanılır.
+ *
+ * "el agua" bilinçli olarak eklendi: dişil bir isimdir ama tekilde "el"
+ * artikeli alır. Şemadaki ayrı `cins` alanının varlık sebebi tam olarak
+ * budur.
+ */
+
+export const KELIMELER = [
+  {
+    id: 'es-gustar', dil: 'es', kelime: 'gustar', tur: 'fiil', seviye: 'A1',
+    duzensiz: false, cekim: 'me gusta · te gusta · le gusta · nos gusta · os gusta · les gusta (çoğul nesnede: gustan)',
+    ispanyolcaTanim: 'Producir agrado o placer a alguien.',
+    turkceDestek: 'hoşuna gitmek, sevmek', ipa: '/ɡus.ˈtaɾ/', heceler: 'gus-tar',
+    ornekler: [
+      { es: 'Me gusta el chocolate.', tr: 'Çikolatayı severim.' },
+      { es: 'Me gustan las naranjas.', tr: 'Portakalları severim.' },
+    ],
+    esdizim: ['me gusta mucho', 'no me gusta nada'], aile: ['encantar', 'preferir'],
+    hata: 'Fiili kişiye göre çekmek: "Yo gusto el chocolate" YANLIŞTIR ve "ben hoşa gidiyorum" anlamına gelir. Doğrusu "ME GUSTA el chocolate".',
+    hatirlatma: 'Fiil sevilen ŞEYE uyar: tekil şey → gusta, çoğul şey → gustan. Kişi baştaki zamirde saklıdır.',
+    uretim: { yonerge: '"Portakalları severim." cümlesini yaz.', kabul: ['Me gustan las naranjas'] },
+  },
+  {
+    id: 'es-querer', dil: 'es', kelime: 'querer', tur: 'fiil', seviye: 'A1',
+    duzensiz: true, cekim: 'quiero · quieres · quiere · queremos · queréis · quieren',
+    ispanyolcaTanim: 'Desear algo o tener cariño a alguien.',
+    turkceDestek: 'istemek; sevmek (birini)', ipa: '/ke.ˈɾeɾ/', heceler: 'que-rer ("qu" → k)',
+    ornekler: [
+      { es: 'Quiero un café con leche.', tr: 'Sütlü kahve istiyorum.' },
+      { es: '¿Qué quieres comer?', tr: 'Ne yemek istiyorsun?' },
+    ],
+    esdizim: ['quiero un/una…', 'querer decir'], aile: ['quisiera', 'desear'],
+    hata: 'Restoranda doğrudan "Quiero" ile başlamak biraz sert durur. Kibar biçim "QUISIERA"dır: Quisiera un café.',
+    hatirlatma: '"querer + mastar" isteği anlatır: Quiero comer = Yemek istiyorum.',
+    uretim: { yonerge: '"Sütlü kahve istiyorum." cümlesini yaz.', kabul: ['Quiero un café con leche'] },
+  },
+  {
+    id: 'es-beber', dil: 'es', kelime: 'beber', tur: 'fiil', seviye: 'A1',
+    duzensiz: false, cekim: 'bebo · bebes · bebe · bebemos · bebéis · beben',
+    ispanyolcaTanim: 'Tomar un líquido.',
+    turkceDestek: 'içmek', ipa: '/be.ˈβeɾ/', heceler: 'be-ber',
+    ornekler: [
+      { es: 'Bebo mucha agua.', tr: 'Çok su içiyorum.' },
+      { es: '¿Qué quieres beber?', tr: 'Ne içmek istersin?' },
+    ],
+    esdizim: ['beber agua', 'algo de beber'], aile: ['comer', 'tomar'],
+    hata: '"Sigara içmek" için bu fiili kullanmak. Sigara içmek → fumar; sıvı içmek → beber.',
+    hatirlatma: 'Günlük dilde "tomar" da içmek anlamında çok kullanılır: tomar un café.',
+    uretim: { yonerge: '"Çok su içiyorum." cümlesini yaz.', kabul: ['Bebo mucha agua'] },
+  },
+  {
+    id: 'es-agua', dil: 'es', kelime: 'agua', artikel: 'el', cins: 'disil', cogul: 'las aguas',
+    tur: 'isim', seviye: 'A1',
+    ispanyolcaTanim: 'Líquido transparente que bebemos todos los días.',
+    turkceDestek: 'su', ipa: '/ˈa.ɣwa/', heceler: 'a-gua (vurgu: A)',
+    ornekler: [
+      { es: 'Una botella de agua, por favor.', tr: 'Bir şişe su, lütfen.' },
+      { es: 'El agua está fría.', tr: 'Su soğuk.' },
+    ],
+    esdizim: ['agua con gas', 'agua sin gas'], aile: ['la bebida', 'beber'],
+    hata: 'Artikele bakıp eril sanmak. Kelime DİŞİLDİR; yalnız tekilde "el" alır. Sıfat dişil gelir: "el agua FRÍA" (frío değil).',
+    hatirlatma: 'Bu kural vurgulu "a" ile başlayan dişil isimler içindir: el agua, el aula, el águila. Çoğulda "las" döner.',
+    uretim: { yonerge: '"Su soğuk." cümlesini yaz.', kabul: ['El agua está fría'] },
+  },
+  {
+    id: 'es-pan', dil: 'es', kelime: 'pan', artikel: 'el', cins: 'eril', cogul: 'los panes',
+    tur: 'isim', seviye: 'A1',
+    ispanyolcaTanim: 'Alimento hecho con harina que se come todos los días.',
+    turkceDestek: 'ekmek', ipa: '/pan/', heceler: 'pan (tek hece)',
+    ornekler: [
+      { es: 'Compro pan todas las mañanas.', tr: 'Her sabah ekmek alıyorum.' },
+      { es: 'No hay pan en casa.', tr: 'Evde ekmek yok.' },
+    ],
+    esdizim: ['pan con tomate', 'una barra de pan'], aile: ['la panadería', 'el queso'],
+    hata: 'Sayılamayan yiyecekte artikel kullanmak. "Compro EL pan" belirli bir ekmeği anlatır; genel anlamda "Compro pan" denir.',
+    hatirlatma: '"pan con tomate" Katalonya\'nın en bilinen kahvaltısıdır; kültür metinlerinde sık geçer.',
+    uretim: { yonerge: '"Evde ekmek yok." cümlesini yaz.', kabul: ['No hay pan en casa'] },
+  },
+  {
+    id: 'es-leche', dil: 'es', kelime: 'leche', artikel: 'la', cins: 'disil', cogul: 'las leches',
+    tur: 'isim', seviye: 'A1',
+    ispanyolcaTanim: 'Líquido blanco que dan las vacas y que se bebe.',
+    turkceDestek: 'süt', ipa: '/ˈle.tʃe/', heceler: 'le-che ("ch" → ç)',
+    ornekler: [
+      { es: 'Un café con leche, por favor.', tr: 'Bir sütlü kahve, lütfen.' },
+      { es: 'No me gusta la leche caliente.', tr: 'Sıcak sütü sevmiyorum.' },
+    ],
+    esdizim: ['café con leche', 'un vaso de leche'], aile: ['el café', 'el queso'],
+    hata: '-e ile bittiği için eril sanmak. "el leche" YANLIŞTIR; kelime dişildir: LA leche.',
+    hatirlatma: 'gustar cümlelerinde yiyecek adı artikel alır: "Me gusta LA leche" (leche değil).',
+    uretim: { yonerge: '"Bir sütlü kahve, lütfen." cümlesini yaz.', kabul: ['Un café con leche, por favor', 'Un café con leche por favor'] },
+  },
+  {
+    id: 'es-cafe', dil: 'es', kelime: 'café', artikel: 'el', cins: 'eril', cogul: 'los cafés',
+    tur: 'isim', seviye: 'A1',
+    ispanyolcaTanim: 'Bebida oscura y caliente; también el lugar donde se toma.',
+    turkceDestek: 'kahve; kafe', ipa: '/ka.ˈfe/', heceler: 'ca-fé (vurgu: FÉ, aksanla sabit)',
+    ornekler: [
+      { es: 'Tomo un café por la mañana.', tr: 'Sabahları bir kahve içerim.' },
+      { es: 'Quedamos en el café de la plaza.', tr: 'Meydandaki kafede buluşuyoruz.' },
+    ],
+    esdizim: ['café solo', 'café con leche', 'tomar un café'], aile: ['la leche', 'el té'],
+    hata: 'Aksanı yazmamak. "cafe" yazılırsa vurgu yanlış heceye kayar; aksan burada zorunludur.',
+    hatirlatma: '"café solo" sade espresso, "café con leche" sütlü kahve demektir.',
+    uretim: { yonerge: '"Sabahları bir kahve içerim." cümlesini yaz.', kabul: ['Tomo un café por la mañana'] },
+  },
+  {
+    id: 'es-queso', dil: 'es', kelime: 'queso', artikel: 'el', cins: 'eril', cogul: 'los quesos',
+    tur: 'isim', seviye: 'A1',
+    ispanyolcaTanim: 'Alimento sólido que se hace con leche.',
+    turkceDestek: 'peynir', ipa: '/ˈke.so/', heceler: 'que-so ("qu" → k)',
+    ornekler: [
+      { es: 'Me gusta el queso manchego.', tr: 'Manchego peynirini severim.' },
+      { es: 'Un bocadillo de queso, por favor.', tr: 'Bir peynirli sandviç, lütfen.' },
+    ],
+    esdizim: ['un bocadillo de queso', 'queso fresco'], aile: ['la leche', 'el pan'],
+    hata: '"queso" kelimesini "kueso" diye okumak. "qu" grubunda "u" hiç okunmaz: "keso".',
+    hatirlatma: 'İçindekiler "de" ile bağlanır: bocadillo DE queso, tortilla DE patatas.',
+    uretim: { yonerge: '"Peyniri severim." cümlesini yaz.', kabul: ['Me gusta el queso'] },
+  },
+  {
+    id: 'es-fruta', dil: 'es', kelime: 'fruta', artikel: 'la', cins: 'disil', cogul: 'las frutas',
+    tur: 'isim', seviye: 'A1',
+    ispanyolcaTanim: 'Alimento dulce que da un árbol, como la manzana o la naranja.',
+    turkceDestek: 'meyve', ipa: '/ˈfɾu.ta/', heceler: 'fru-ta',
+    ornekler: [
+      { es: 'Como fruta todos los días.', tr: 'Her gün meyve yiyorum.' },
+      { es: 'La fruta del mercado es más barata.', tr: 'Pazardaki meyve daha ucuz.' },
+    ],
+    esdizim: ['fruta fresca', 'zumo de fruta'], aile: ['la manzana', 'la naranja'],
+    hata: 'Çoğul kullanmak zorunda hissetmek. Genel anlamda TEKİL kullanılır: "Como fruta" (frutas değil).',
+    hatirlatma: 'Meyve suyu İspanya\'da "zumo", Latin Amerika\'da "jugo"dur.',
+    uretim: { yonerge: '"Her gün meyve yiyorum." cümlesini yaz.', kabul: ['Como fruta todos los días'] },
+  },
+  {
+    id: 'es-carne', dil: 'es', kelime: 'carne', artikel: 'la', cins: 'disil', cogul: 'las carnes',
+    tur: 'isim', seviye: 'A1',
+    ispanyolcaTanim: 'Alimento que viene de los animales.',
+    turkceDestek: 'et', ipa: '/ˈkaɾ.ne/', heceler: 'car-ne',
+    ornekler: [
+      { es: 'No como carne.', tr: 'Et yemiyorum.' },
+      { es: 'La carne está muy buena.', tr: 'Et çok güzel olmuş.' },
+    ],
+    esdizim: ['carne de pollo', 'carne roja'], aile: ['el pescado', 'el pollo'],
+    hata: '-e ile bittiği için eril sanmak: "el carne" YANLIŞ, doğrusu LA carne.',
+    hatirlatma: 'Yemeğin tadı için "estar" kullanılır: La carne ESTÁ buena (es buena değil).',
+    uretim: { yonerge: '"Et yemiyorum." cümlesini yaz.', kabul: ['No como carne'] },
+  },
+  {
+    id: 'es-pescado', dil: 'es', kelime: 'pescado', artikel: 'el', cins: 'eril', cogul: 'los pescados',
+    tur: 'isim', seviye: 'A1',
+    ispanyolcaTanim: 'Pez que se come como alimento.',
+    turkceDestek: 'balık (yiyecek olarak)', ipa: '/pes.ˈka.ðo/', heceler: 'pes-ca-do',
+    ornekler: [
+      { es: 'Los viernes comemos pescado.', tr: 'Cumaları balık yiyoruz.' },
+      { es: 'El pescado de aquí es muy fresco.', tr: 'Buranın balığı çok taze.' },
+    ],
+    esdizim: ['pescado fresco', 'pescado frito'], aile: ['la carne', 'el pez'],
+    hata: '"pez" ile karıştırmak. Denizde yüzen → el pez; tabaktaki → el pescado.',
+    hatirlatma: 'Bu ayrım Türkçede yoktur ve sınav sorularında sık ölçülür.',
+    uretim: { yonerge: '"Cumaları balık yiyoruz." cümlesini yaz.', kabul: ['Los viernes comemos pescado'] },
+  },
+  {
+    id: 'es-arroz', dil: 'es', kelime: 'arroz', artikel: 'el', cins: 'eril', cogul: 'los arroces',
+    tur: 'isim', seviye: 'A1',
+    ispanyolcaTanim: 'Grano blanco que se cocina con agua, base de la paella.',
+    turkceDestek: 'pirinç, pilav', ipa: '/a.ˈroθ/', heceler: 'a-rroz (çift "rr" titrek)',
+    ornekler: [
+      { es: 'La paella se hace con arroz.', tr: 'Paella pirinçle yapılır.' },
+      { es: 'Quiero arroz con pollo.', tr: 'Tavuklu pilav istiyorum.' },
+    ],
+    esdizim: ['arroz con pollo', 'arroz blanco'], aile: ['la paella', 'la comida'],
+    hata: 'Çoğulunu "arrozes" yapmak. Sondaki z, çoğulda c olur: arroz → arroces.',
+    hatirlatma: 'z ile biten bütün isimlerde aynı kural işler: lápiz → lápices.',
+    uretim: { yonerge: '"Tavuklu pilav istiyorum." cümlesini yaz.', kabul: ['Quiero arroz con pollo'] },
+  },
+  {
+    id: 'es-ensalada', dil: 'es', kelime: 'ensalada', artikel: 'la', cins: 'disil', cogul: 'las ensaladas',
+    tur: 'isim', seviye: 'A1',
+    ispanyolcaTanim: 'Plato frío de verduras, normalmente con aceite y sal.',
+    turkceDestek: 'salata', ipa: '/en.sa.ˈla.ða/', heceler: 'en-sa-la-da',
+    ornekler: [
+      { es: 'De primero, una ensalada.', tr: 'Başlangıç olarak bir salata.' },
+      { es: 'La ensalada lleva tomate y queso.', tr: 'Salatanın içinde domates ve peynir var.' },
+    ],
+    esdizim: ['ensalada mixta', 'de primero'], aile: ['el tomate', 'la verdura'],
+    hata: 'Menüdeki sırayı bilmemek: "de primero" (başlangıç), "de segundo" (ana yemek), "de postre" (tatlı).',
+    hatirlatma: 'Bir yemeğin içindekiler "llevar" fiiliyle söylenir: La ensalada LLEVA tomate.',
+    uretim: { yonerge: '"Başlangıç olarak bir salata." cümlesini yaz.', kabul: ['De primero, una ensalada', 'De primero una ensalada'] },
+  },
+  {
+    id: 'es-restaurante', dil: 'es', kelime: 'restaurante', artikel: 'el', cins: 'eril', cogul: 'los restaurantes',
+    tur: 'isim', seviye: 'A1',
+    ispanyolcaTanim: 'Lugar donde se paga por comer.',
+    turkceDestek: 'restoran, lokanta', ipa: '/res.tau̯.ˈɾan.te/', heceler: 'res-tau-ran-te',
+    ornekler: [
+      { es: 'Hay un restaurante nuevo en mi barrio.', tr: 'Mahallemde yeni bir restoran var.' },
+      { es: 'Comemos en un restaurante los domingos.', tr: 'Pazarları bir restoranda yemek yiyoruz.' },
+    ],
+    esdizim: ['un restaurante bueno', 'comer en un restaurante'], aile: ['el camarero', 'la cuenta'],
+    hata: 'Sonuna Türkçedeki gibi "-ta" eklemek: "restaurantta" değil, "EN el restaurante".',
+    hatirlatma: 'Garson "el camarero / la camarera"dır; sipariş diyaloglarında hep geçer.',
+    uretim: { yonerge: '"Mahallemde yeni bir restoran var." cümlesini yaz.', kabul: ['Hay un restaurante nuevo en mi barrio'] },
+  },
+  {
+    id: 'es-cuenta', dil: 'es', kelime: 'cuenta', artikel: 'la', cins: 'disil', cogul: 'las cuentas',
+    tur: 'isim', seviye: 'A1',
+    ispanyolcaTanim: 'Papel que dice cuánto hay que pagar en un restaurante.',
+    turkceDestek: 'hesap', ipa: '/ˈkwen.ta/', heceler: 'cuen-ta',
+    ornekler: [
+      { es: 'La cuenta, por favor.', tr: 'Hesap, lütfen.' },
+      { es: '¿Nos trae la cuenta?', tr: 'Hesabı getirir misiniz?' },
+    ],
+    esdizim: ['la cuenta, por favor', 'pagar la cuenta'], aile: ['pagar', 'el precio'],
+    hata: 'Hesap isterken "Quiero la cuenta" demek. En doğal ve kibar biçim "La cuenta, POR FAVOR"dur.',
+    hatirlatma: 'İspanya\'da bahşiş zorunlu değildir; "la propina" isteğe bağlıdır.',
+    uretim: { yonerge: '"Hesap, lütfen." cümlesini yaz.', kabul: ['La cuenta, por favor', 'La cuenta por favor'] },
+  },
+  {
+    id: 'es-precio', dil: 'es', kelime: 'precio', artikel: 'el', cins: 'eril', cogul: 'los precios',
+    tur: 'isim', seviye: 'A1',
+    ispanyolcaTanim: 'El dinero que cuesta una cosa.',
+    turkceDestek: 'fiyat', ipa: '/ˈpɾe.θjo/', heceler: 'pre-cio',
+    ornekler: [
+      { es: 'El precio es muy alto.', tr: 'Fiyat çok yüksek.' },
+      { es: '¿Cuál es el precio de este libro?', tr: 'Bu kitabın fiyatı ne?' },
+    ],
+    esdizim: ['un buen precio', 'el precio de'], aile: ['caro', 'barato', 'costar'],
+    hata: 'Fiyat sorarken "¿Qué es el precio?" demek. Doğrusu "¿CUÁL es el precio?" ya da daha doğal olarak "¿Cuánto cuesta?".',
+    hatirlatma: '"¿Cuánto cuesta?" tekil, "¿Cuánto cuestan?" çoğul nesne içindir.',
+    uretim: { yonerge: '"Bu ne kadar?" sorusunu yaz.', kabul: ['¿Cuánto cuesta?', 'Cuánto cuesta', '¿Cuánto cuesta esto?'] },
+  },
+  {
+    id: 'es-caro', dil: 'es', kelime: 'caro / cara', tur: 'sifat', seviye: 'A1',
+    ispanyolcaTanim: 'Que cuesta mucho dinero.',
+    turkceDestek: 'pahalı', ipa: '/ˈka.ɾo/', heceler: 'ca-ro (tek "r", titremez)',
+    ornekler: [
+      { es: 'Este restaurante es muy caro.', tr: 'Bu restoran çok pahalı.' },
+      { es: 'Las entradas son caras.', tr: 'Biletler pahalı.' },
+    ],
+    esdizim: ['muy caro', 'demasiado caro'], aile: ['barato', 'el precio'],
+    hata: 'Tek "r" ile çift "rr"yi karıştırmak. "caro" = pahalı, "carro" = araba (Latin Amerika). Titretmek anlamı değiştirir.',
+    hatirlatma: 'Sıfat isme uyar: un coche caro / una casa cara / unas casas caras.',
+    uretim: { yonerge: '"Bu restoran çok pahalı." cümlesini yaz.', kabul: ['Este restaurante es muy caro'] },
+  },
+  {
+    id: 'es-barato', dil: 'es', kelime: 'barato / barata', tur: 'sifat', seviye: 'A1',
+    ispanyolcaTanim: 'Que cuesta poco dinero.',
+    turkceDestek: 'ucuz', ipa: '/ba.ˈɾa.to/', heceler: 'ba-ra-to',
+    ornekler: [
+      { es: 'La fruta del mercado es barata.', tr: 'Pazardaki meyve ucuz.' },
+      { es: 'Busco un hotel barato.', tr: 'Ucuz bir otel arıyorum.' },
+    ],
+    esdizim: ['muy barato', 'más barato que'], aile: ['caro', 'el precio'],
+    hata: 'Dişile uydurmayı unutmak: "La fruta es barato" değil, "baraTA".',
+    hatirlatma: 'Karşılaştırma "más … que" ile kurulur: más barato QUE el otro.',
+    uretim: { yonerge: '"Ucuz bir otel arıyorum." cümlesini yaz.', kabul: ['Busco un hotel barato'] },
+  },
+  {
+    id: 'es-muy', dil: 'es', kelime: 'muy', tur: 'zarf', seviye: 'A1',
+    ispanyolcaTanim: 'Palabra que va delante de un adjetivo o un adverbio para aumentarlo.',
+    turkceDestek: 'çok (sıfat önünde)', ipa: '/mwi/', heceler: 'muy (tek hece)',
+    ornekler: [
+      { es: 'La comida está muy buena.', tr: 'Yemek çok güzel.' },
+      { es: 'Hablas muy bien español.', tr: 'Çok iyi İspanyolca konuşuyorsun.' },
+    ],
+    esdizim: ['muy bien', 'muy bueno', 'muy cerca'], aile: ['mucho', 'bastante'],
+    hata: '"muy" ile "mucho"yu karıştırmak. "muy" SIFAT ve ZARF önünde, "mucho" FİİLDEN sonra ya da isimle kullanılır.',
+    hatirlatma: 'Basit kural: muy + sıfat/zarf · fiil + mucho. "Muy gracias" yanlış, "muchas gracias" doğrudur.',
+    uretim: { yonerge: '"Yemek çok güzel." cümlesini yaz.', kabul: ['La comida está muy buena'] },
+  },
+  {
+    id: 'es-mucho', dil: 'es', kelime: 'mucho / mucha', tur: 'zarf', seviye: 'A1',
+    ispanyolcaTanim: 'En gran cantidad.',
+    turkceDestek: 'çok (miktar)', ipa: '/ˈmu.tʃo/', heceler: 'mu-cho ("ch" → ç)',
+    ornekler: [
+      { es: 'Estudio mucho.', tr: 'Çok çalışıyorum.' },
+      { es: 'Bebo mucha agua.', tr: 'Çok su içiyorum.' },
+    ],
+    esdizim: ['muchas gracias', 'mucho gusto', 'mucho tiempo'], aile: ['muy', 'poco'],
+    hata: 'İsimle kullanırken uydurmamak. İsimden önce gelirse cins ve sayıya uyar: mucho pan / mucha agua / muchos libros / muchas gracias.',
+    hatirlatma: 'Fiilden sonra geldiğinde hiç değişmez: Estudio mucho. Trabajamos mucho.',
+    uretim: { yonerge: '"Çok su içiyorum." cümlesini yaz.', kabul: ['Bebo mucha agua'] },
+  },
+  {
+    id: 'es-kilo', dil: 'es', kelime: 'kilo', artikel: 'el', cins: 'eril', cogul: 'los kilos',
+    tur: 'isim', seviye: 'A1',
+    ispanyolcaTanim: 'Medida de peso de mil gramos.',
+    turkceDestek: 'kilo', ipa: '/ˈki.lo/', heceler: 'ki-lo',
+    ornekler: [
+      { es: 'Un kilo de tomates, por favor.', tr: 'Bir kilo domates, lütfen.' },
+      { es: 'Quiero medio kilo de queso.', tr: 'Yarım kilo peynir istiyorum.' },
+    ],
+    esdizim: ['un kilo de', 'medio kilo de'], aile: ['el gramo', 'la botella'],
+    hata: 'Miktar ile ürünü doğrudan birleştirmek: "un kilo tomates" değil, "un kilo DE tomates".',
+    hatirlatma: 'Bütün miktar ifadeleri "de" ile bağlanır: una botella de agua, un poco de pan.',
+    uretim: { yonerge: '"Bir kilo domates, lütfen." cümlesini yaz.', kabul: ['Un kilo de tomates, por favor', 'Un kilo de tomates por favor'] },
+  },
+  {
+    id: 'es-delicioso', dil: 'es', kelime: 'delicioso / deliciosa', tur: 'sifat', seviye: 'A1',
+    ispanyolcaTanim: 'Que tiene muy buen sabor.',
+    turkceDestek: 'çok lezzetli', ipa: '/de.li.ˈθjo.so/', heceler: 'de-li-cio-so',
+    ornekler: [
+      { es: 'La paella está deliciosa.', tr: 'Paella çok lezzetli olmuş.' },
+      { es: 'Este pastel es delicioso.', tr: 'Bu pasta çok lezzetli.' },
+    ],
+    esdizim: ['está delicioso', 'muy delicioso'], aile: ['bueno', 'rico'],
+    hata: '"ser" ile "estar"ı karıştırmak. Tadına BAKIP söylüyorsan "está delicioso"; genel bir nitelik söylüyorsan "es delicioso".',
+    hatirlatma: 'Günlük dilde "está rico" da aynı anlamda ve daha sık kullanılır.',
+    uretim: { yonerge: '"Paella çok lezzetli." cümlesini yaz.', kabul: ['La paella está deliciosa'] },
+  },
+]

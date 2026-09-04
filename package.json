@@ -37,6 +37,7 @@
     "test:ingilizce": "node scripts/test-ingilizce.mjs",
     "test:almanca": "node scripts/test-almanca.mjs",
     "test:fransizca": "node scripts/test-fransizca.mjs",
+    "test:ispanyolca": "node scripts/test-ispanyolca.mjs",
     "test:matematik-soru-kutuphanesi": "node scripts/test-matematik-soru-kutuphanesi.mjs",
     "test:felsefe-soru-kutuphanesi": "node scripts/test-felsefe-soru-kutuphanesi.mjs",
     "test:tarih-soru-kutuphanesi": "node scripts/test-tarih-soru-kutuphanesi.mjs",

@@ -64,6 +64,7 @@ export const STUDENT_NAV = [
   { to: '/ingilizce', label: 'İngilizce', short: 'İngilizce', Icon: Languages, tone: 'peach' },
   { to: '/almanca', label: 'Almanca', short: 'Almanca', Icon: Languages, tone: 'sun' },
   { to: '/fransizca', label: 'Fransızca', short: 'Fransızca', Icon: Languages, tone: 'raspberry' },
+  { to: '/ispanyolca', label: 'İspanyolca', short: 'İspanyolca', Icon: Languages, tone: 'amber' },
   { to: '/sorular', label: 'Sorunlu Sorular', short: 'Sorular', Icon: HelpCircle, tone: 'raspberry' },
   { to: '/mesajlar', label: 'Mesajlar', short: 'Mesaj', Icon: MessageCircle, tone: 'aqua' },
 ]
@@ -105,7 +106,7 @@ export function groupNavItems(items, role) {
       ]
     : [
         { label: 'Öğrenme alanı', paths: ['/anasayfa', '/soru-coz', '/ai-koc', '/analiz', '/gunluk-takip'] },
-        { label: 'Kaynaklar', paths: ['/canli-dersler', '/denemeler', '/odevler', '/kutuphane', '/ingilizce', '/almanca', '/fransizca'] },
+        { label: 'Kaynaklar', paths: ['/canli-dersler', '/denemeler', '/odevler', '/kutuphane', '/ingilizce', '/almanca', '/fransizca', '/ispanyolca'] },
         { label: 'İletişim', paths: ['/sorular', '/mesajlar'] },
       ]
 
