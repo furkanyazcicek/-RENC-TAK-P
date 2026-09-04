@@ -2,11 +2,13 @@ import { cn } from '../../lib/cn'
 
 /**
  * Panel içindeki bütün işaretleri aynı sakin materyal dilinde toplar.
- * Lucide sembolü anlamı korur; ImageGen ile hazırlanan kâğıt dokusu ise
- * kare yüzeyi ana sayfadaki fiziksel kitap hissine yaklaştırır.
+ * Genel öğeler Lucide sembolü, diller ise birbirine karışmayan kısa bir
+ * tipografik işaret kullanır. Kâğıt dokusu yüzeyi ana sayfadaki fiziksel
+ * kitap hissine yaklaştırır.
  */
 export default function SoftIcon({
   icon: Icon,
+  mark,
   tone = 'sage',
   size = 'md',
   active = false,
@@ -14,7 +16,7 @@ export default function SoftIcon({
   iconClassName,
   strokeWidth = 2.15,
 }) {
-  if (!Icon) return null
+  if (!Icon && !mark) return null
 
   return (
     <span
@@ -22,7 +24,11 @@ export default function SoftIcon({
       data-tone={tone}
       aria-hidden="true"
     >
-      <Icon className={cn('soft-icon__glyph', iconClassName)} strokeWidth={strokeWidth} />
+      {mark ? (
+        <span className={cn('soft-icon__mark', iconClassName)}>{mark}</span>
+      ) : (
+        <Icon className={cn('soft-icon__glyph', iconClassName)} strokeWidth={strokeWidth} />
+      )}
     </span>
   )
 }

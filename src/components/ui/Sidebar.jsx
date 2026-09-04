@@ -56,7 +56,7 @@ export default function Sidebar() {
               {group.label}
             </p>
             <ul className="flex flex-col gap-0.5">
-              {group.items.map(({ to, label, Icon, tone }) => {
+              {group.items.map(({ to, label, Icon, mark, tone }) => {
                 const active = pathname === to
                 return (
                   <li key={to}>
@@ -69,7 +69,7 @@ export default function Sidebar() {
                         active ? 'panel-nav-active font-extrabold' : 'font-bold'
                       )}
                     >
-                      <SoftIcon icon={Icon} tone={tone} size="sm" active={active} />
+                      <SoftIcon icon={Icon} mark={mark} tone={tone} size="sm" active={active} />
                       <span className="truncate">{label}</span>
                     </Link>
                   </li>

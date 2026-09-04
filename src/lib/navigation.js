@@ -1,18 +1,17 @@
 import {
-  BarChart3,
-  CalendarDays,
-  ClipboardList,
-  HelpCircle,
-  Home,
+  BookOpenText,
+  CalendarCheck2,
+  ChartNoAxesCombined,
+  CircleHelp,
+  ClipboardCheck,
+  Crosshair,
+  House,
   LayoutDashboard,
-  Languages,
-  Library,
-  MessageCircle,
-  ScanText,
-  Video,
-  Sparkles,
-  Target,
+  MessageSquareText,
+  RadioTower,
+  ScanSearch,
   Users,
+  WandSparkles,
 } from 'lucide-react'
 
 /**
@@ -30,13 +29,13 @@ import {
 export const STUDENT_NAV = [
   // Anasayfa kasten ilk sırada: öğrenci girişte grafik duvarına değil,
   // "bugün ne yapmalıyım" sorusunun yanıtına düşer. Grafikler /analiz'de.
-  { to: '/anasayfa', label: 'Anasayfa', short: 'Anasayfa', Icon: Home, tone: 'coral', primary: true },
+  { to: '/anasayfa', label: 'Anasayfa', short: 'Anasayfa', Icon: House, tone: 'coral', primary: true },
   // Soru Çöz bilinçli olarak Analiz'den önce ve alt çubukta: öğrencinin
   // GÜN İÇİNDE en sık ihtiyaç duyduğu şey "şu soruda takıldım". Grafik
   // haftada bir bakılır, takıldığı soru her akşam vardır.
-  { to: '/soru-coz', label: 'AI Soru Çöz', short: 'Soru Çöz', Icon: ScanText, tone: 'sky', primary: true },
-  { to: '/ai-koc', label: 'AI Koç', short: 'AI Koç', Icon: Sparkles, tone: 'amber', primary: true },
-  { to: '/analiz', label: 'Analiz', short: 'Analiz', Icon: BarChart3, tone: 'teal', primary: true },
+  { to: '/soru-coz', label: 'AI Soru Çöz', short: 'Soru Çöz', Icon: ScanSearch, tone: 'sky', primary: true },
+  { to: '/ai-koc', label: 'AI Koç', short: 'AI Koç', Icon: WandSparkles, tone: 'amber', primary: true },
+  { to: '/analiz', label: 'Analiz', short: 'Analiz', Icon: ChartNoAxesCombined, tone: 'teal', primary: true },
   // NOT: Mobil alt çubuk yalnızca İLK 4 `primary` öğeyi gösterir (bkz.
   // MobileNav). Soru Çöz eklenince Günlük Takip çubuktan "Menü"
   // çekmecesine indi; Anasayfa'daki hızlı işlemler kartından tek
@@ -46,7 +45,7 @@ export const STUDENT_NAV = [
     to: '/gunluk-takip',
     label: 'Günlük Çalışma Takibi',
     short: 'Takip',
-    Icon: CalendarDays,
+    Icon: CalendarCheck2,
     tone: 'sage',
   },
   // Canlı Dersler bilinçli olarak `primary` DEĞİL: mobil alt çubuk yalnız
@@ -54,31 +53,33 @@ export const STUDENT_NAV = [
   // AI Koç, Analiz) günlük kullanımda daha sık. Yaklaşan veya devam eden
   // ders olduğunda katılım düğmesi Anasayfa'nın en üstünde görünür, yani
   // öğrenci dersi menüde aramak zorunda kalmaz.
-  { to: '/canli-dersler', label: 'Canlı Derslerim', short: 'Canlı Ders', Icon: Video, tone: 'rose' },
-  { to: '/denemeler', label: 'Denemeler', short: 'Deneme', Icon: Target, tone: 'orange' },
-  { to: '/odevler', label: 'Ödevler', short: 'Ödev', Icon: ClipboardList, tone: 'mint' },
-  { to: '/kutuphane', label: 'Ders Kütüphanesi', short: 'Kütüphane', Icon: Library, tone: 'indigo' },
+  { to: '/canli-dersler', label: 'Canlı Derslerim', short: 'Canlı Ders', Icon: RadioTower, tone: 'rose' },
+  { to: '/denemeler', label: 'Denemeler', short: 'Deneme', Icon: Crosshair, tone: 'orange' },
+  { to: '/odevler', label: 'Ödevler', short: 'Ödev', Icon: ClipboardCheck, tone: 'mint' },
+  { to: '/kutuphane', label: 'Ders Kütüphanesi', short: 'Kütüphane', Icon: BookOpenText, tone: 'indigo' },
   // İngilizce kendi başına bir öğrenme sistemi (seviye tespiti, yol
   // haritası, tekrar, telaffuz). Kütüphanenin içinde de bağlantısı var
   // ama günlük çalışılan bir yer olduğu için menüde kendi satırı olsun.
-  { to: '/ingilizce', label: 'İngilizce', short: 'İngilizce', Icon: Languages, tone: 'peach' },
-  { to: '/almanca', label: 'Almanca', short: 'Almanca', Icon: Languages, tone: 'sun' },
-  { to: '/fransizca', label: 'Fransızca', short: 'Fransızca', Icon: Languages, tone: 'raspberry' },
-  { to: '/ispanyolca', label: 'İspanyolca', short: 'İspanyolca', Icon: Languages, tone: 'amber' },
-  { to: '/sorular', label: 'Sorunlu Sorular', short: 'Sorular', Icon: HelpCircle, tone: 'raspberry' },
-  { to: '/mesajlar', label: 'Mesajlar', short: 'Mesaj', Icon: MessageCircle, tone: 'aqua' },
+  // Bayrak yerine dile özgü kısa işaretler kullanılır: dil tek bir ülkeye
+  // indirgenmez ve dört rota küçük ölçüde bile birbirinden ayrılır.
+  { to: '/ingilizce', label: 'İngilizce', short: 'İngilizce', mark: 'Hi', tone: 'peach' },
+  { to: '/almanca', label: 'Almanca', short: 'Almanca', mark: 'ß', tone: 'sun' },
+  { to: '/fransizca', label: 'Fransızca', short: 'Fransızca', mark: 'é', tone: 'raspberry' },
+  { to: '/ispanyolca', label: 'İspanyolca', short: 'İspanyolca', mark: 'ñ', tone: 'amber' },
+  { to: '/sorular', label: 'Sorunlu Sorular', short: 'Sorular', Icon: CircleHelp, tone: 'raspberry' },
+  { to: '/mesajlar', label: 'Mesajlar', short: 'Mesaj', Icon: MessageSquareText, tone: 'aqua' },
 ]
 
 export const TEACHER_NAV = [
   { to: '/ogretmen', label: 'Öğrencilerim', short: 'Öğrenci', Icon: Users, tone: 'teal', primary: true },
-  { to: '/odevler', label: 'Ödevler', short: 'Ödev', Icon: ClipboardList, tone: 'mint', primary: true },
-  { to: '/sorular', label: 'Sorunlu Sorular', short: 'Sorular', Icon: HelpCircle, tone: 'raspberry', primary: true },
-  { to: '/mesajlar', label: 'Mesajlar', short: 'Mesaj', Icon: MessageCircle, tone: 'aqua', primary: true },
+  { to: '/odevler', label: 'Ödevler', short: 'Ödev', Icon: ClipboardCheck, tone: 'mint', primary: true },
+  { to: '/sorular', label: 'Sorunlu Sorular', short: 'Sorular', Icon: CircleHelp, tone: 'raspberry', primary: true },
+  { to: '/mesajlar', label: 'Mesajlar', short: 'Mesaj', Icon: MessageSquareText, tone: 'aqua', primary: true },
   // Öğretmenin dört primary öğesi zaten dolu; Canlı Dersler "Menü"
   // çekmecesine düşüyor. Sıradaki ders öğretmen panelinin en üstünde
   // katılım düğmesiyle birlikte durduğu için akış bozulmuyor.
-  { to: '/ogretmen/canli-dersler', label: 'Canlı Dersler', short: 'Canlı Ders', Icon: Video, tone: 'rose' },
-  { to: '/kutuphane', label: 'Ders Kütüphanesi', short: 'Kütüphane', Icon: Library, tone: 'indigo' },
+  { to: '/ogretmen/canli-dersler', label: 'Canlı Dersler', short: 'Canlı Ders', Icon: RadioTower, tone: 'rose' },
+  { to: '/kutuphane', label: 'Ders Kütüphanesi', short: 'Kütüphane', Icon: BookOpenText, tone: 'indigo' },
 ]
 
 export const PARENT_NAV = [

@@ -62,7 +62,7 @@ export default function MobileNav() {
         className="fixed inset-x-0 bottom-0 z-sticky border-t border-line glass pb-safe-bottom lg:hidden"
       >
         <ul className="flex items-stretch justify-around px-1.5 pt-1.5 pb-1.5">
-          {primary.map(({ to, short, label, Icon, tone }) => {
+          {primary.map(({ to, short, label, Icon, mark, tone }) => {
             const active = pathname === to
             return (
               <li key={to} className="flex-1">
@@ -71,7 +71,7 @@ export default function MobileNav() {
                   aria-current={active ? 'page' : undefined}
                   className="focus-ring flex flex-col items-center gap-1 rounded-btn px-1 py-1.5"
                 >
-                  <SoftIcon icon={Icon} tone={tone} size="mobile" active={active} />
+                  <SoftIcon icon={Icon} mark={mark} tone={tone} size="mobile" active={active} />
                   <span
                     className={cn(
                       'text-[10px] leading-none transition-colors',
@@ -182,7 +182,7 @@ function NavDrawer({ items, pathname, onClose, profile, role, onSignOut }) {
                 <span className="h-px flex-1 bg-ink/[0.08]" aria-hidden="true" />
               </div>
               <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-                {group.items.map(({ to, label, Icon, tone }) => {
+                {group.items.map(({ to, label, Icon, mark, tone }) => {
                   const active = pathname === to
                   return (
                     <li key={to}>
@@ -196,7 +196,7 @@ function NavDrawer({ items, pathname, onClose, profile, role, onSignOut }) {
                           active ? 'is-active text-ink' : 'text-ink/74'
                         )}
                       >
-                        <SoftIcon icon={Icon} tone={tone} size="sm" active={active} />
+                        <SoftIcon icon={Icon} mark={mark} tone={tone} size="sm" active={active} />
                         <span className="line-clamp-2">{label}</span>
                       </Link>
                     </li>
