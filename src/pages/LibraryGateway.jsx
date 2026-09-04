@@ -119,7 +119,7 @@ export default function LibraryGateway() {
                   to={to}
                   className="w-full justify-center sm:w-auto"
                   icon={LibraryIcon}
-                  variant={tone === 'brand' ? 'primary' : 'accent'}
+                  variant="primary"
                 >
                   {action}
                 </Button>
