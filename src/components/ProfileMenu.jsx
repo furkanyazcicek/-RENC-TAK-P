@@ -104,7 +104,7 @@ export default function ProfileMenu() {
         aria-expanded={open}
         className={cn(
           'focus-ring flex items-center gap-2 rounded-full py-1 pl-1 pr-1.5 transition-all duration-200 sm:pr-2.5',
-          open ? 'bg-brand-500/10 ring-1 ring-brand-500/20' : 'hover:bg-ink/[0.05]'
+          open ? 'bg-[#dcebe5]/70 ring-1 ring-[#5f8c82]/20' : 'hover:bg-ink/[0.05]'
         )}
       >
         <span className="relative">
@@ -135,7 +135,7 @@ export default function ProfileMenu() {
           className="absolute right-0 z-dropdown mt-2 w-[17rem] max-w-[calc(100vw-2rem)] origin-top-right
                      overflow-hidden rounded-card border border-line bg-surface shadow-overlay animate-slide-down"
         >
-          <span className="absolute inset-x-0 top-0 h-[3px] bg-aurora-line" aria-hidden="true" />
+          <span className="absolute inset-x-0 top-0 h-[3px] bg-[#5f8c82]" aria-hidden="true" />
 
           {/* Kimlik — tıklanınca profil sayfası */}
           <Link

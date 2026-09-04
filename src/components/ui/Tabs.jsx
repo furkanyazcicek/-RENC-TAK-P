@@ -20,7 +20,7 @@ export default function Tabs({ items = [], value, onChange, variant = 'pill', cl
     return (
       <div
         role="tablist"
-        className={cn('flex gap-1 overflow-x-auto hide-scrollbar border-b border-line', className)}
+        className={cn('panel-tabs panel-tabs--underline flex gap-1 overflow-x-auto hide-scrollbar border-b', className)}
       >
         {items.map((item) => {
           const active = item.value === value
@@ -33,7 +33,7 @@ export default function Tabs({ items = [], value, onChange, variant = 'pill', cl
               onClick={() => onChange?.(item.value)}
               className={cn(
                 'focus-ring relative whitespace-nowrap px-4 py-3 text-sm font-semibold transition-colors duration-200',
-                active ? 'text-brand-700' : 'text-ink/65 hover:text-ink'
+                active ? 'text-[#426f66]' : 'text-ink/68 hover:text-ink'
               )}
             >
               {item.label}
@@ -42,7 +42,7 @@ export default function Tabs({ items = [], value, onChange, variant = 'pill', cl
               )}
               {active && (
                 <span
-                  className="absolute inset-x-3 -bottom-px h-[2px] rounded-full bg-aurora-line"
+                  className="absolute inset-x-3 -bottom-px h-[3px] rounded-full bg-[#5f8c82]"
                   aria-hidden="true"
                 />
               )}
@@ -57,8 +57,7 @@ export default function Tabs({ items = [], value, onChange, variant = 'pill', cl
     <div
       role="tablist"
       className={cn(
-        'inline-flex gap-1 rounded-input bg-surface-sunken p-1 overflow-x-auto hide-scrollbar max-w-full',
-        'ring-1 ring-inset ring-line',
+        'panel-tabs inline-flex max-w-full gap-1 overflow-x-auto rounded-xl p-1 hide-scrollbar',
         className
       )}
     >
@@ -74,8 +73,8 @@ export default function Tabs({ items = [], value, onChange, variant = 'pill', cl
             className={cn(
               'focus-ring whitespace-nowrap rounded-btn px-3.5 py-2 text-sm font-semibold transition-all duration-200 ease-smooth',
               active
-                ? 'bg-surface text-brand-700 shadow-xs ring-1 ring-brand-500/15'
-                : 'text-ink/65 hover:text-ink hover:bg-surface/70'
+                ? 'bg-[#fffdf8] text-[#426f66] shadow-xs ring-1 ring-[#5f8c82]/20'
+                : 'text-ink/68 hover:bg-white/55 hover:text-ink'
             )}
           >
             {item.label}
@@ -83,7 +82,7 @@ export default function Tabs({ items = [], value, onChange, variant = 'pill', cl
               <span
                 className={cn(
                   'ml-1.5 rounded-full px-1.5 py-0.5 text-2xs font-bold',
-                  active ? 'bg-brand-500/12 text-brand-700' : 'bg-ink/[0.06] text-ink/60'
+                  active ? 'bg-[#dcebe5] text-[#426f66]' : 'bg-ink/[0.06] text-ink/60'
                 )}
               >
                 {item.count}

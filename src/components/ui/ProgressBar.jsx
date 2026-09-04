@@ -5,21 +5,19 @@ import { cn } from '../../lib/cn'
  *
  *   <ProgressBar value={72} tone="aurora" label="Konu tamamlama" showValue />
  *
- * tone: aurora (varsayılan, gradient) | brand | aqua | success | warning | danger | accent
+ * tone: aurora (varsayılan, adaçayı) | brand | aqua | success | warning | danger | accent
  *
- * İlerleme, Aurora dilinde gradient taşıyan birkaç yerden biridir —
- * "hareket eden, büyüyen" şeyler gradient alır. Dolgu 500ms ile yumuşak
- * animasyonla yerine oturur.
+ * Dolgu tek ve yumuşak bir renktir; veri, neon gradientten daha okunaklıdır.
  */
 
 const TONES = {
-  aurora: 'bg-aurora-line',
-  brand: 'bg-brand-500',
-  aqua: 'bg-gradient-to-r from-aurora-blue to-aurora-cyan',
-  success: 'bg-success-500',
-  warning: 'bg-warning-500',
-  danger: 'bg-danger-500',
-  accent: 'bg-gradient-to-r from-aurora-pink to-aurora-purple',
+  aurora: 'bg-[#6f9b8f]',
+  brand: 'bg-[#8170a5]',
+  aqua: 'bg-[#5c9698]',
+  success: 'bg-[#6f9878]',
+  warning: 'bg-[#c09249]',
+  danger: 'bg-[#bd6a73]',
+  accent: 'bg-[#c97868]',
 }
 
 const SIZES = {
@@ -43,7 +41,7 @@ export default function ProgressBar({
     <div className={cn('w-full', className)}>
       {(label || showValue) && (
         <div className="mb-2 flex items-baseline justify-between gap-2">
-          {label && <span className="text-xs font-medium text-ink/60">{label}</span>}
+          {label && <span className="text-xs font-semibold text-ink/72">{label}</span>}
           {showValue && (
             <span className="text-xs font-bold text-ink/75 tabular">{Math.round(pct)}%</span>
           )}
@@ -56,7 +54,7 @@ export default function ProgressBar({
         aria-valuemax={100}
         aria-label={label}
         className={cn(
-          'w-full overflow-hidden rounded-full bg-surface-sunken ring-1 ring-inset ring-line',
+          'w-full overflow-hidden rounded-full bg-ink/[0.065] ring-1 ring-inset ring-ink/[0.06]',
           SIZES[size] ?? SIZES.md
         )}
       >

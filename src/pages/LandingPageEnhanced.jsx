@@ -18,6 +18,7 @@ import {
 import PanelPreview from '../components/landing/PanelPreview'
 import InteractiveLearningStage from '../components/landing/editorial/InteractiveLearningStage'
 import BookHomeHero, { BookExperience } from '../components/landing/book/BookHomeHero'
+import BookProductTour from '../components/landing/book/BookProductTour'
 import LandingInfoDialogs from '../components/landing/product/LandingInfoDialogs'
 import { Logo } from '../components/ui'
 import ANASAYFA_ICERIGI from '../content/anasayfa'
@@ -135,67 +136,6 @@ function HeroSection() {
         />
       </BookExperience>
     </>
-  )
-}
-
-function ValueSection() {
-  const { deger } = ANASAYFA_ICERIGI
-
-  return (
-    <section className="editorial-value" aria-labelledby="deger-basligi">
-      <div className="editorial-section-intro">
-        <span>{deger.etiket}</span>
-        <h2 id="deger-basligi">{deger.baslik}</h2>
-        <p>{deger.aciklama}</p>
-      </div>
-
-      <div className="editorial-matches">
-        <div className="editorial-matches__head" aria-hidden="true">
-          <span>İhtiyaç</span>
-          <span>Etkileşim</span>
-          <span>Kavrayış</span>
-        </div>
-        {deger.eslesmeler.map((item) => (
-          <article key={item.sira}>
-            <span className="editorial-match-number">{item.sira}</span>
-            <p>{item.ihtiyac}</p>
-            <div>
-              <ArrowRight aria-hidden="true" />
-              <p>{item.cozum}</p>
-            </div>
-            <strong>{item.sonuc}</strong>
-          </article>
-        ))}
-      </div>
-    </section>
-  )
-}
-
-function FlowSection() {
-  const { akis } = ANASAYFA_ICERIGI
-
-  return (
-    <section id="nasil-calisir" className="editorial-flow" aria-labelledby="akis-basligi">
-      <div className="editorial-flow__inner">
-        <div className="editorial-flow__heading">
-          <span>{akis.etiket}</span>
-          <h2 id="akis-basligi">{akis.baslik}</h2>
-        </div>
-
-        <ol className="editorial-flow__steps">
-          {akis.adimlar.map((adim) => (
-            <li key={adim.sira}>
-              <div>
-                <span>{adim.sira}</span>
-                <small>{adim.etiket}</small>
-              </div>
-              <h3>{adim.baslik}</h3>
-              <p>{adim.aciklama}</p>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
   )
 }
 
@@ -376,8 +316,7 @@ export default function LandingPageEnhanced() {
       />
       <main id="ana-icerik">
         <HeroSection />
-        <ValueSection />
-        <FlowSection />
+        <BookProductTour />
         <TrustSection onAbout={() => setAktifBilgi('about')} />
         <FinalSection />
       </main>

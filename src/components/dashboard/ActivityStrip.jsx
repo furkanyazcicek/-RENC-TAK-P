@@ -30,7 +30,7 @@ function levelFor(minutes, max) {
   return 1
 }
 
-export default function ActivityStrip({ days = [], className }) {
+export default function ActivityStrip({ days = [], periodLabel, activeUnitLabel = 'günde', className }) {
   const [hovered, setHovered] = useState(null)
   const max = Math.max(...days.map((d) => d.minutes), 0)
   const activeCount = days.filter((d) => d.minutes > 0).length
@@ -79,8 +79,8 @@ export default function ActivityStrip({ days = [], className }) {
 
       <div className="flex items-center justify-between gap-3 text-2xs text-ink/55">
         <span>
-          Son {days.length} günün <strong className="font-bold text-ink/60">{activeCount}</strong>{' '}
-          gününde çalışma kaydı var
+          {periodLabel ?? `Son ${days.length} gün`} içinde{' '}
+          <strong className="font-bold text-ink/60">{activeCount}</strong> {activeUnitLabel} çalışma kaydı var
         </span>
         <span className="hidden xs:flex items-center gap-1.5">
           az

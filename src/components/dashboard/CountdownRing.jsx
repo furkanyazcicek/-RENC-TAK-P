@@ -14,7 +14,7 @@ import { humanizeDays } from '../../lib/examProfile'
  * bir kesinlik hissi vermek, geri sayımın kendisinden daha zararlı olurdu
  * (bkz. src/lib/examProfile.js tarih politikası).
  */
-export default function CountdownRing({ countdown, size = 168, stroke = 12, className }) {
+export default function CountdownRing({ countdown, size = 168, stroke = 12, compact = false, className }) {
   const gradientId = useId()
   if (!countdown) return null
 
@@ -32,7 +32,7 @@ export default function CountdownRing({ countdown, size = 168, stroke = 12, clas
   const longRange = humanizeDays(daysLeft)
 
   return (
-    <div className={cn('flex flex-col items-center gap-3', className)}>
+    <div className={cn('flex flex-col items-center', compact ? 'gap-2' : 'gap-3', className)}>
       <div className="relative grid place-items-center">
         <svg width={size} height={size} className="-rotate-90" aria-hidden="true">
           <defs>
@@ -94,7 +94,7 @@ export default function CountdownRing({ countdown, size = 168, stroke = 12, clas
         </div>
       </div>
 
-      <div className="text-center">
+      <div className={cn('text-center', compact && 'max-w-[13rem]')}>
         <p className="font-display text-base font-bold text-ink">
           {label} {year}
         </p>
@@ -102,18 +102,19 @@ export default function CountdownRing({ countdown, size = 168, stroke = 12, clas
           <CalendarClock className="h-3.5 w-3.5 shrink-0" strokeWidth={2} aria-hidden="true" />
           {dateLabel}
         </p>
-        {longRange && !passed && (
+        {!compact && longRange && !passed && (
           <p className="mt-1 text-xs font-medium text-ink/55">yaklaşık {longRange}</p>
         )}
         {isEstimate && (
           <p className="mt-1.5 text-2xs leading-relaxed text-ink/50">
-            Tahmini tarih — ÖSYM takvimi açıklandığında Profil sayfasından kesin tarihi
-            girebilirsin.
+            {compact
+              ? 'Tahmini tarih · Profilden güncelleyebilirsin.'
+              : 'Tahmini tarih — ÖSYM takvimi açıklandığında Profil sayfasından kesin tarihi girebilirsin.'}
           </p>
         )}
         {/* Halka boşken sebebini söyle: öğretim yılı başlamadan doldurmak
             yanlış olurdu, ama açıklamasız boş halka "bozuk" görünüyor. */}
-        {farAway && !passed && (
+        {!compact && farAway && !passed && (
           <p className="mt-1 text-2xs text-ink/50">
             {daysLeft <= 400
               ? 'Halka, öğretim yılı 1 Eylül’de başlayınca dolmaya başlar.'

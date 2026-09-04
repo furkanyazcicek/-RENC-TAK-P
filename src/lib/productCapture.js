@@ -10,6 +10,9 @@ export function captureStudentProfile() {
     id: 'reels-student',
     role: 'student',
     full_name: 'Deniz Kaya',
+    grade: 12,
+    target_exam: 'YKS',
+    exam_year: 2027,
   }
 }
 

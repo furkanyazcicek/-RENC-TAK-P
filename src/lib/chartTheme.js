@@ -5,11 +5,8 @@
  * kaynağa toplamak. Böylece grafikler birbirinin aynı dili konuşur ve
  * tema değiştiğinde hepsi birlikte güncellenir.
  *
- * AURORA PALETİ — seçim gerekçesi:
- * Aurora ailesinin kendisi (mor → mavi → camgöbeği → pembe) doğrudan seri
- * paleti olamaz; komşu duraklar birbirine çok yakın olduğu için birkaç
- * seriden sonra ayırt edilemezler. Bu yüzden seri paleti Aurora'nın
- * uçlarından örneklenir ve araya iki bağımsız hue (yeşil, amber) girer.
+ * YUMUŞAK EDİTORYAL PALET — kitap kapağının lacivertiyle uyumlu, fakat
+ * her veri ailesine ayrı bir karakter veren düşük doygunluklu renkler.
  *
  * Sıra ÖNEMLİDİR — grafiklerin çoğu iki serilidir, bu yüzden ilk iki renk
  * (mor / camgöbeği) hem hue hem açıklık bakımından en uzak çift seçildi.
@@ -20,30 +17,31 @@
 
 /* Seri (kategori) renkleri — sabit sıra */
 export const CATEGORICAL = [
-  '#7C3AED', // mor — marka
-  '#0891B2', // camgöbeği
-  '#DB2777', // pembe
-  '#2563EB', // mavi
-  '#059669', // yeşil
-  '#D97706', // amber
+  '#5F8C82', // adaçayı / teal
+  '#C97868', // mercan
+  '#C3954F', // sıcak amber
+  '#6D8EAA', // puslu gök
+  '#8A76AA', // dumanlı menekşe
+  '#B86D82', // gül
+  '#7D9879', // yumuşak yeşil
 ]
 
 /* Durum renkleri — kategori renkleriyle asla karıştırılmaz */
 export const STATUS = {
-  good: '#059669',
-  warning: '#D97706',
-  danger: '#E11D48',
-  neutral: '#6B6B85',
+  good: '#5F8C72',
+  warning: '#B88542',
+  danger: '#B95F67',
+  neutral: '#727883',
 }
 
 /* Tek renkli (büyüklük) grafikler için açıktan koyuya tek hue — Aurora moru */
-export const SEQUENTIAL = ['#EDE9FE', '#DDD6FE', '#C4B5FD', '#A78BFA', '#8B5CF6', '#6D28D9']
+export const SEQUENTIAL = ['#E8F0ED', '#D4E4DE', '#B9D2C9', '#94B8AD', '#719B8F', '#4F7C72']
 
 export const CHART_INK = '#6B6B85'
 export const CHART_GRID = '#E7E7F2'
 export const CHART_SURFACE = '#FFFFFF'
-export const BRAND = '#7C3AED'
-export const HIGHLIGHT = '#EC4899'
+export const BRAND = '#7667A8'
+export const HIGHLIGHT = '#C97868'
 
 /** i. seriye sabit renk atar (döngü yok — 6'dan sonrası nötr griye düşer). */
 export function seriesColor(index) {
@@ -85,7 +83,7 @@ export const yAxisProps = {
 /* Tooltip kartı uygulamadaki kartlarla aynı dili konuşur:
    yumuşak köşe, ince çizgi, katmanlı ve violet'e çalan gölge. */
 export const tooltipProps = {
-  cursor: { fill: 'rgba(124, 58, 237, 0.06)' },
+  cursor: { fill: 'rgba(95, 140, 130, 0.09)' },
   contentStyle: {
     borderRadius: 14,
     border: `1px solid ${CHART_GRID}`,

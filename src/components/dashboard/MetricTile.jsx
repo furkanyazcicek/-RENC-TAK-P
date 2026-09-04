@@ -1,6 +1,7 @@
 import { ArrowRight, TrendingDown, TrendingUp } from 'lucide-react'
 import { cn } from '../../lib/cn'
 import Sparkline from './Sparkline'
+import SoftIcon from '../ui/SoftIcon'
 
 /**
  * MetricTile — panellerin üstündeki özet metrik kartı.
@@ -16,44 +17,36 @@ import Sparkline from './Sparkline'
  *   />
  */
 
-/* Semantik renk sistemi: mor birincil, mavi bilgi, camgöbeği ilerleme,
-   pembe vurgu; success/warning/danger yalnızca durum bildirir.
-   `bar` artık düz renk değil, kartın üstünde ince bir Aurora şeridi. */
+/* Her metrik kendi pastel ailesini alır. Renkler birbirinden ayrılır ama
+   düşük doygunluk sayesinde içerik ve rakamlar önde kalır. */
 const TONES = {
   brand: {
-    bar: 'from-aurora-purple to-aurora-violet',
-    chip: 'bg-brand-500/10 text-brand-600 ring-brand-500/15',
-    line: '#7C3AED',
+    softTone: 'indigo',
+    line: '#7667A8',
   },
   info: {
-    bar: 'from-aurora-violet to-aurora-blue',
-    chip: 'bg-info-500/10 text-info-600 ring-info-500/15',
-    line: '#2563EB',
+    softTone: 'sky',
+    line: '#5E88A7',
   },
   aqua: {
-    bar: 'from-aurora-blue to-aurora-cyan',
-    chip: 'bg-aqua-500/10 text-aqua-700 ring-aqua-500/15',
-    line: '#0891B2',
+    softTone: 'aqua',
+    line: '#438F91',
   },
   accent: {
-    bar: 'from-aurora-pink to-aurora-purple',
-    chip: 'bg-accent-500/10 text-accent-600 ring-accent-500/15',
-    line: '#DB2777',
+    softTone: 'coral',
+    line: '#BB7168',
   },
   success: {
-    bar: 'from-success-500 to-aqua-400',
-    chip: 'bg-success-500/10 text-success-600 ring-success-500/15',
-    line: '#059669',
+    softTone: 'sage',
+    line: '#638A6D',
   },
   warning: {
-    bar: 'from-warning-500 to-accent-400',
-    chip: 'bg-warning-500/12 text-warning-700 ring-warning-500/20',
-    line: '#D97706',
+    softTone: 'amber',
+    line: '#B5813E',
   },
   danger: {
-    bar: 'from-danger-500 to-accent-500',
-    chip: 'bg-danger-500/10 text-danger-600 ring-danger-500/15',
-    line: '#E11D48',
+    softTone: 'raspberry',
+    line: '#B45D78',
   },
 }
 
@@ -89,52 +82,33 @@ export default function MetricTile({
     <Component
       type={clickable ? 'button' : undefined}
       onClick={onClick}
+      data-tone={t.softTone}
       className={cn(
-        'group relative w-full overflow-hidden rounded-card border border-line bg-surface p-4 pt-[1.125rem] text-left shadow-card',
+        'metric-editorial group relative w-full overflow-hidden rounded-[1.35rem] p-5 text-left',
         'transition-all duration-200 ease-smooth',
         clickable &&
-          'focus-ring cursor-pointer hover:-translate-y-1 hover:shadow-card-hover hover:border-brand-200',
+          'focus-ring cursor-pointer hover:-translate-y-1',
         className
       )}
     >
-      {/* Üstteki Aurora şeridi — kartın kimliği. Hover'da tam genişler. */}
-      <span
-        className={cn(
-          'absolute left-4 right-4 top-0 h-[2px] rounded-full bg-gradient-to-r opacity-80',
-          'transition-all duration-300 ease-smooth group-hover:left-0 group-hover:right-0 group-hover:opacity-100',
-          t.bar
-        )}
-        aria-hidden="true"
-      />
-
-      <div>
-        <div className="flex items-start justify-between gap-2">
-          <span className="text-2xs font-bold uppercase tracking-wider text-ink/60">{label}</span>
-          {Icon && (
-            <span
-              className={cn(
-                'grid h-7 w-7 shrink-0 place-items-center rounded-lg ring-1 ring-inset transition-transform duration-200 group-hover:scale-110',
-                t.chip
-              )}
-            >
-              <Icon className="h-3.5 w-3.5" strokeWidth={2.3} aria-hidden="true" />
-            </span>
-          )}
-        </div>
+      <div className="flex items-start gap-3.5">
+        {Icon && <SoftIcon icon={Icon} tone={t.softTone} size="lg" className="group-hover:scale-105" />}
+        <div className="min-w-0 flex-1">
+          <span className="block text-xs font-extrabold leading-snug text-ink/54">{label}</span>
 
         {/* Değer ve eğilim çizgisi yan yana */}
-        <div className="mt-2 flex items-end justify-between gap-2">
-          <p className="font-display text-2xl sm:text-[1.75rem] font-bold tabular text-ink leading-none truncate min-w-0">
+        <div className="mt-1.5 flex items-end justify-between gap-2">
+          <p className="min-w-0 truncate font-display text-2xl font-extrabold leading-none tabular text-ink sm:text-[1.85rem]">
             {value}
           </p>
           {trend && trend.length > 1 && (
-            <Sparkline data={trend} width={72} color={t.line} className="shrink-0 opacity-80" />
+            <Sparkline data={trend} width={68} color={t.line} className="shrink-0 opacity-75" />
           )}
         </div>
 
         {/* Değişim ve açıklama kendi satırında — kırpılmasın */}
         {(delta || hint) && (
-          <div className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1">
+          <div className="mt-2.5 flex min-h-5 flex-wrap items-center gap-x-1.5 gap-y-1">
             {delta && (
               <span
                 className={cn(
@@ -151,6 +125,7 @@ export default function MetricTile({
             {hint && <span className="text-xs text-ink/60">{hint}</span>}
           </div>
         )}
+        </div>
       </div>
 
       {clickable && (

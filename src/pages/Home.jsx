@@ -44,7 +44,7 @@ import AICoachCard from '../components/ai/AICoachCard'
 import NextLessonPanel from '../components/liveLesson/NextLessonPanel'
 import ExamSetupCard, { isExamSetupSnoozed } from '../components/ExamSetupCard'
 import QuestionFeed from '../components/QuestionFeed'
-import { AppShell, Badge, Button, EmptyState } from '../components/ui'
+import { AppShell, Badge, Button, EmptyState, SoftIcon } from '../components/ui'
 import {
   CountdownRing,
   DashboardHero,
@@ -242,18 +242,19 @@ export default function Home() {
   // ve birbirini tekrar etmemeleri gerekiyor — "AI Soru Çöz" ile "Soru Sor"
   // aynı cümleyi taşıyınca hangisinin ne yaptığı kayboluyordu.
   const quickActions = [
-    { to: '/soru-coz', label: 'AI Soru Çöz', description: 'Fotoğraftan çözüm', icon: ScanText },
+    { to: '/soru-coz', label: 'AI Soru Çöz', description: 'Fotoğraftan çözüm', icon: ScanText, tone: 'sky' },
     {
       to: '/gunluk-takip',
       label: 'Çalışma Kaydet',
       description: 'Bugün ne çalıştın?',
       icon: CalendarDays,
+      tone: 'sage',
     },
-    { to: '/denemeler', label: 'Deneme Gir', description: 'Net ve ders dökümü', icon: Target },
-    { to: '/sorular', label: 'Soru Sor', description: 'Öğretmenine gönder', icon: HelpCircle },
-    { to: '/ai-koc', label: 'AI Koç', description: 'Plan ve öneri al', icon: Sparkles },
-    { to: '/kutuphane', label: 'Ders Kütüphanesi', description: 'Not veya test seç', icon: Library },
-    { to: '/mesajlar', label: 'Mesajlar', description: 'Öğretmeninle konuş', icon: MessageCircle },
+    { to: '/denemeler', label: 'Deneme Gir', description: 'Net ve ders dökümü', icon: Target, tone: 'orange' },
+    { to: '/sorular', label: 'Soru Sor', description: 'Öğretmenine gönder', icon: HelpCircle, tone: 'raspberry' },
+    { to: '/ai-koc', label: 'AI Koç', description: 'Plan ve öneri al', icon: Sparkles, tone: 'amber' },
+    { to: '/kutuphane', label: 'Ders Kütüphanesi', description: 'Not veya test seç', icon: Library, tone: 'indigo' },
+    { to: '/mesajlar', label: 'Mesajlar', description: 'Öğretmeninle konuş', icon: MessageCircle, tone: 'aqua' },
   ]
 
   return (
@@ -308,26 +309,28 @@ export default function Home() {
         />
       )}
 
-      {/* ---------- GERİ SAYIM + AI KOÇ ----------
-          Geri sayım solda sabit genişlikte durur, AI Koç kalan alanı alır;
-          mobilde alt alta geçerler. */}
+      {/* ---------- AI KOÇ + KOMPAKT GERİ SAYIM ----------
+          Günün ana aksiyonu soldaki geniş alanda kalır. Geri sayım sağda
+          kısa bir bilgi kartıdır; `items-start` iki kartın yüksekliğini
+          birbirine eşitleyip gereksiz boşluk oluşturmasını engeller. */}
       {countdown ? (
-        <div className="grid gap-5 lg:grid-cols-[20rem_minmax(0,1fr)]">
+        <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,1fr)_16rem]">
+          <AICoachCard />
+
           <Panel
             title="Sınava kalan süre"
             description={
               countdown.passed
                 ? 'Hedefini Profil sayfasından güncelle'
-                : 'Halka, öğretim yılının geçen kısmını gösterir'
+                : `${countdown.label} ${countdown.year}`
             }
             icon={CalendarDays}
             iconTone="#7C3AED"
-            bodyClassName="flex items-center justify-center pb-6"
+            className="self-start"
+            bodyClassName="flex items-center justify-center pb-5"
           >
-            <CountdownRing countdown={countdown} />
+            <CountdownRing countdown={countdown} size={108} stroke={8} compact />
           </Panel>
-
-          <AICoachCard />
         </div>
       ) : (
         <AICoachCard />
@@ -414,17 +417,11 @@ export default function Home() {
                              bg-surface-muted px-4 py-3 transition-all duration-200 ease-smooth
                              hover:-translate-y-0.5 hover:border-brand-200 hover:bg-surface"
                 >
-                  <span
-                    className={
-                      item.tone === 'danger'
-                        ? 'grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-danger-500/10 text-danger-600'
-                        : item.tone === 'warning'
-                          ? 'grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-warning-500/12 text-warning-700'
-                          : 'grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand-500/10 text-brand-600'
-                    }
-                  >
-                    <item.icon className="h-[18px] w-[18px]" strokeWidth={2.1} aria-hidden="true" />
-                  </span>
+                  <SoftIcon
+                    icon={item.icon}
+                    tone={item.tone === 'danger' ? 'rose' : item.tone === 'warning' ? 'amber' : 'sky'}
+                    size="md"
+                  />
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-sm font-semibold text-ink">
                       {item.title}
@@ -467,26 +464,27 @@ export default function Home() {
         icon={Sparkles}
         iconTone="#7C3AED"
       >
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-          {quickActions.map(({ to, label, description, icon: Icon }) => (
+        <div className="panel-action-grid grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+          {quickActions.map(({ to, label, description, icon: Icon, tone }, index) => (
             <Link
               key={to}
               to={to}
-              className="focus-ring group flex flex-col gap-2 rounded-card border border-line bg-surface
-                         p-4 shadow-card transition-all duration-200 ease-smooth
-                         hover:-translate-y-1 hover:border-brand-200 hover:shadow-card-hover"
+              data-tone={tone}
+              className="panel-quick-action focus-ring group relative flex min-h-[8.5rem] flex-col justify-between gap-4
+                         overflow-hidden rounded-[1.2rem] p-4 transition-all duration-200 ease-smooth hover:-translate-y-1"
             >
-              <span
-                className="grid h-9 w-9 place-items-center rounded-xl bg-brand-500/10 text-brand-600
-                           ring-1 ring-inset ring-brand-500/15 transition-transform duration-200 group-hover:scale-110"
-              >
-                <Icon className="h-[18px] w-[18px]" strokeWidth={2.1} aria-hidden="true" />
-              </span>
-              <span className="min-w-0">
-                <span className="block truncate font-display text-sm font-bold text-ink">
-                  {label}
+              <span className="flex items-start justify-between gap-3">
+                <SoftIcon icon={Icon} tone={tone} size="lg" className="group-hover:scale-105" />
+                <span className="font-display text-xs font-extrabold tabular text-ink/28">
+                  {String(index + 1).padStart(2, '0')}
                 </span>
-                <span className="mt-0.5 block truncate text-xs text-ink/60">{description}</span>
+              </span>
+              <span className="flex min-w-0 items-end justify-between gap-3">
+                <span className="min-w-0">
+                  <span className="block truncate font-display text-sm font-extrabold text-ink">{label}</span>
+                  <span className="mt-1 block truncate text-xs font-medium text-ink/62">{description}</span>
+                </span>
+                <ArrowRight className="h-4 w-4 shrink-0 text-ink/30 transition-transform group-hover:translate-x-1 group-hover:text-ink/60" />
               </span>
             </Link>
           ))}

@@ -27,7 +27,6 @@ import ExamTypeTabs from '../components/ExamTypeTabs'
 import DailyLogsList from '../components/DailyLogsList'
 import ParentCodeRedeemPanel from '../components/parent/ParentCodeRedeemPanel'
 import {
-  AuroraBackground,
   Badge,
   Button,
   EmptyState,
@@ -305,8 +304,8 @@ export default function ParentDashboard() {
   if (linksLoading) return <PageLoader label="Panel hazırlanıyor…" />
 
   const header = (
-    <header className="sticky top-0 z-sticky border-b border-line glass pt-safe-top">
-      <div className="mx-auto flex h-header max-w-content items-center justify-between gap-4 px-4 sm:px-6">
+    <header className="panel-topbar sticky top-0 z-sticky pt-safe-top">
+      <div className="mx-auto flex min-h-[5.25rem] max-w-content items-center justify-between gap-4 px-4 sm:px-6">
         <div className="flex min-w-0 items-center gap-2.5">
           <Logo size="sm" markOnly />
           <div className="min-w-0">
@@ -332,8 +331,8 @@ export default function ParentDashboard() {
   /* ---------- ONAYLI ÖĞRENCİ YOK ---------- */
   if (activeLinks.length === 0) {
     return (
-      <div className="relative min-h-screen">
-        <AuroraBackground variant="page" />
+      <div className="app-soft-panel-theme panel-workspace-bg relative min-h-screen">
+        <div className="panel-workspace-texture" aria-hidden="true" />
         {header}
 
         <main className="relative z-10 mx-auto flex w-full max-w-2xl flex-col gap-5 px-4 py-8 animate-fade-in sm:px-6">
@@ -390,8 +389,8 @@ export default function ParentDashboard() {
     /* Veli panelinin tek sayfası var; bu yüzden AppShell'in sidebar'ı yerine
        kendi ince üst şeridini taşır. Aurora zemini ve cam şerit sayesinde
        yine de uygulamanın geri kalanıyla aynı ürün gibi durur. */
-    <div className="relative min-h-screen">
-      <AuroraBackground variant="page" />
+    <div className="app-soft-panel-theme panel-workspace-bg relative min-h-screen">
+      <div className="panel-workspace-texture" aria-hidden="true" />
       {header}
 
       <main className="relative z-10 mx-auto flex w-full max-w-content flex-col gap-5 px-4 py-6 animate-fade-in sm:gap-6 sm:px-6 lg:px-8 lg:py-8">

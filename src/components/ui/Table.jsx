@@ -19,7 +19,7 @@ import { cn } from '../../lib/cn'
 export default function Table({ className, children, ...props }) {
   return (
     <div className="w-full overflow-x-auto overscroll-x-contain">
-      <table className={cn('w-full min-w-full text-sm tabular', className)} {...props}>
+      <table className={cn('panel-data-table w-full min-w-full text-sm tabular', className)} {...props}>
         {children}
       </table>
     </div>

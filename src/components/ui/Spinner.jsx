@@ -1,5 +1,5 @@
 import { cn } from '../../lib/cn'
-import AuroraBackground from './AuroraBackground'
+import Logo from './Logo'
 
 /** Küçük, her yerde kullanılabilen yükleniyor göstergesi. */
 export default function Spinner({ className, label = 'Yükleniyor' }) {
@@ -17,34 +17,43 @@ export default function Spinner({ className, label = 'Yükleniyor' }) {
 
 /**
  * PageLoader — tüm sayfayı kaplayan yükleme ekranı (route geçişleri, ilk veri).
- * Boş beyaz ekran yerine ürünün Aurora atmosferini gösterir; böylece
- * yüklenme anı da tasarımın parçası olur.
+ * Paneldeki krem kâğıt, lacivert mürekkep ve pastel vurgu dilini
+ * yüklenme anında da korur. Hareket bilinçli olarak küçük bir alanda
+ * kalır; sayfanın tamamı yanıp sönmez.
  */
 export function PageLoader({ label = 'Yükleniyor…' }) {
   return (
-    <div className="relative grid min-h-screen place-items-center overflow-hidden bg-paper">
-      <AuroraBackground variant="page" />
+    <div className="page-loader" role="status" aria-live="polite" aria-label={label}>
+      <span className="page-loader__glow page-loader__glow--sage" aria-hidden="true" />
+      <span className="page-loader__glow page-loader__glow--coral" aria-hidden="true" />
 
-      <div className="relative z-10 flex flex-col items-center gap-4 animate-fade-in">
-        {/* Halka: gradient conic bir maskeyle döner — tek renkli spinner'dan
-            daha "canlı" ama yine de sakin. */}
-        <span className="relative grid h-14 w-14 place-items-center">
-          <span
-            className="absolute inset-0 animate-spin rounded-full"
-            style={{
-              background:
-                'conic-gradient(from 0deg, transparent 0deg, rgb(var(--c-aurora-cyan)) 120deg, rgb(var(--c-aurora-violet)) 260deg, rgb(var(--c-aurora-purple)) 340deg, transparent 360deg)',
-              WebkitMask: 'radial-gradient(farthest-side, transparent calc(100% - 3px), #000 0)',
-              mask: 'radial-gradient(farthest-side, transparent calc(100% - 3px), #000 0)',
-              animationDuration: '1.1s',
-            }}
-            aria-hidden="true"
-          />
-          <span className="h-2 w-2 rounded-full bg-brand-500/50 animate-pulse-soft" aria-hidden="true" />
-        </span>
-        <span role="status" className="text-sm font-medium text-ink/60">
-          {label}
-        </span>
+      <div className="page-loader__card">
+        <div className="page-loader__brand">
+          <Logo variant="panel" size="lg" />
+          <span>Kişisel çalışma alanı</span>
+        </div>
+
+        <div className="page-loader__book" aria-hidden="true">
+          <span className="page-loader__cover page-loader__cover--left" />
+          <span className="page-loader__cover page-loader__cover--right" />
+          <span className="page-loader__page page-loader__page--one" />
+          <span className="page-loader__page page-loader__page--two" />
+          <span className="page-loader__spine" />
+        </div>
+
+        <div className="page-loader__copy">
+          <p>{label}</p>
+          <span>Notların ve çalışma verilerin düzenleniyor.</span>
+        </div>
+
+        <div className="page-loader__progress" aria-hidden="true">
+          <span />
+        </div>
+
+        <div className="page-loader__foot" aria-hidden="true">
+          <span><i /> Güvenli bağlantı</span>
+          <small>DRKOÇ</small>
+        </div>
       </div>
     </div>
   )

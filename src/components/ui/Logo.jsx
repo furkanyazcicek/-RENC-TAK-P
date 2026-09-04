@@ -18,8 +18,23 @@ const SIZES = {
   lg: { mark: 'h-11 w-11 rounded-2xl', icon: 'h-6 w-6', text: 'text-xl' },
 }
 
-export default function Logo({ size = 'md', markOnly = false, tone = 'default', className }) {
+export default function Logo({ size = 'md', markOnly = false, tone = 'default', variant = 'default', className }) {
   const s = SIZES[size] ?? SIZES.md
+
+  if (variant === 'panel') {
+    return (
+      <span className={cn('panel-brand inline-flex items-center gap-2.5 select-none', className)}>
+        <span className={cn('panel-brand-mark shrink-0', s.mark)} aria-hidden="true">
+          <img src="/icon-512x512-maskable.png" alt="" />
+        </span>
+        {!markOnly && (
+          <span className={cn('panel-brand-copy font-display font-extrabold tracking-tight', s.text)}>
+            Dr<span>Koç</span>
+          </span>
+        )}
+      </span>
+    )
+  }
 
   return (
     <span className={cn('inline-flex items-center gap-2.5 select-none', className)}>

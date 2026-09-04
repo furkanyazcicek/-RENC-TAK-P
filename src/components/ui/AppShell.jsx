@@ -1,6 +1,5 @@
 import { cn } from '../../lib/cn'
 import Navbar from '../Navbar'
-import AuroraBackground from './AuroraBackground'
 import MobileNav from './MobileNav'
 import Sidebar from './Sidebar'
 import { PageLoader } from './Spinner'
@@ -44,17 +43,15 @@ export default function AppShell({
   if (loading) return <PageLoader label={loadingLabel} />
 
   return (
-    <div className="relative min-h-screen">
-      <AuroraBackground variant="page" />
-
+    <div className="app-soft-panel-theme panel-workspace-bg relative min-h-screen">
       <Sidebar />
 
-      <div className="relative lg:pl-[16.5rem]">
+      <div className="relative lg:pl-[16.875rem]">
         <Navbar title={title} subtitle={subtitle} action={headerAction} />
 
         <main
           className={cn(
-            'relative z-10 mx-auto flex w-full flex-col gap-5 px-4 py-6 sm:gap-6 sm:px-6 lg:px-8 lg:py-8',
+            'relative z-10 mx-auto flex w-full flex-col gap-5 px-4 py-6 sm:gap-6 sm:px-6 lg:px-8 lg:py-9',
             /* Mobilde alt gezinme çubuğunun altında içerik kalmasın */
             'pb-28 lg:pb-12',
             'animate-fade-in',
@@ -62,6 +59,13 @@ export default function AppShell({
             className
           )}
         >
+          <div className="panel-page-intro flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <p className="panel-page-kicker">Çalışma alanı</p>
+              <h1>{title}</h1>
+              {subtitle && <p>{subtitle}</p>}
+            </div>
+          </div>
           {children}
         </main>
       </div>

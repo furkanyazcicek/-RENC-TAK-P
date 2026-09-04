@@ -85,6 +85,7 @@ const Button = forwardRef(function Button(
       type={isNativeButton ? type : undefined}
       disabled={isNativeButton ? disabled || loading : undefined}
       aria-busy={loading || undefined}
+      data-variant={variant}
       className={cn(
         'btn-base focus-ring',
         VARIANTS[variant] ?? VARIANTS.primary,
@@ -130,6 +131,7 @@ export const IconButton = forwardRef(function IconButton(
       type="button"
       aria-label={label}
       title={label}
+      data-variant={variant}
       className={cn(
         'btn-base focus-ring rounded-xl',
         VARIANTS[variant] ?? VARIANTS.ghost,

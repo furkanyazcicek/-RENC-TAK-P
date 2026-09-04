@@ -1,4 +1,15 @@
 import { cn } from '../../lib/cn'
+import SoftIcon from '../ui/SoftIcon'
+
+const ICON_TONES = {
+  '#7C3AED': 'indigo',
+  '#0891B2': 'aqua',
+  '#DB2777': 'raspberry',
+  '#D97706': 'amber',
+  '#F59E0B': 'amber',
+  '#059669': 'sage',
+  '#E11D48': 'rose',
+}
 
 /**
  * Panel — panellerdeki her grafik/tablo bloğunun ortak çerçevesi.
@@ -26,27 +37,21 @@ export default function Panel({
   bodyClassName,
   children,
 }) {
+  const tone = ICON_TONES[iconTone] ?? 'slate'
+
   return (
-    <section className={cn('card flex min-w-0 flex-col overflow-hidden', className)}>
+    <section
+      className={cn('panel-editorial-sheet flex min-w-0 flex-col overflow-hidden', className)}
+      data-tone={tone}
+    >
       {(title || action) && (
-        <header className="flex items-start justify-between gap-3 px-5 pb-4 pt-5">
+        <header className="panel-sheet-header relative flex items-start justify-between gap-3 px-5 pb-4 pt-5 sm:px-6 sm:pt-6">
           <div className="flex min-w-0 items-start gap-3">
-            {Icon && (
-              <span
-                className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl ring-1 ring-inset"
-                style={{
-                  background: `color-mix(in srgb, ${iconTone} 10%, transparent)`,
-                  color: iconTone,
-                  '--tw-ring-color': `color-mix(in srgb, ${iconTone} 16%, transparent)`,
-                }}
-              >
-                <Icon className="h-[18px] w-[18px]" strokeWidth={2.1} aria-hidden="true" />
-              </span>
-            )}
+            {Icon && <SoftIcon icon={Icon} tone={tone} size="md" className="mt-0.5" />}
             <div className="min-w-0">
-              {title && <h3 className="font-display font-bold leading-snug text-ink">{title}</h3>}
+              {title && <h3 className="font-display text-[1.05rem] font-extrabold leading-snug tracking-[-0.02em] text-ink">{title}</h3>}
               {description && (
-                <p className="mt-0.5 text-xs leading-relaxed text-ink/60">{description}</p>
+                <p className="mt-0.5 text-xs leading-relaxed text-ink/68">{description}</p>
               )}
             </div>
           </div>
@@ -54,10 +59,10 @@ export default function Panel({
         </header>
       )}
 
-      <div className={cn('flex-1', padding && 'px-5 pb-5', bodyClassName)}>{children}</div>
+      <div className={cn('relative flex-1', padding && 'px-5 pb-5 sm:px-6 sm:pb-6', bodyClassName)}>{children}</div>
 
       {footnote && (
-        <p className="border-t border-line bg-surface-muted px-5 py-3 text-2xs leading-relaxed text-ink/55">
+        <p className="panel-sheet-footnote border-t px-5 py-3 text-2xs font-medium leading-relaxed text-ink/58 sm:px-6">
           {footnote}
         </p>
       )}

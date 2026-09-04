@@ -1,6 +1,33 @@
 import { useState } from 'react'
+import {
+  Atom,
+  BookOpenText,
+  Brain,
+  Calculator,
+  Dna,
+  Earth,
+  FlaskConical,
+  Languages,
+  Landmark,
+  Library,
+} from 'lucide-react'
 import { cn } from '../../lib/cn'
 import { colorForKey } from '../../lib/chartTheme'
+import SoftIcon from '../ui/SoftIcon'
+
+function subjectVisual(subject = '') {
+  const key = subject.toLocaleLowerCase('tr-TR')
+  if (key.includes('matematik') || key.includes('geometri')) return { Icon: Calculator, tone: 'amber' }
+  if (key.includes('fizik')) return { Icon: Atom, tone: 'sky' }
+  if (key.includes('kimya')) return { Icon: FlaskConical, tone: 'aqua' }
+  if (key.includes('biyoloji') || key.includes('fen')) return { Icon: Dna, tone: 'sage' }
+  if (key.includes('coğraf')) return { Icon: Earth, tone: 'teal' }
+  if (key.includes('tarih')) return { Icon: Landmark, tone: 'coral' }
+  if (key.includes('ingiliz') || key.includes('almanca') || key.includes('dil')) return { Icon: Languages, tone: 'indigo' }
+  if (key.includes('felsefe') || key.includes('psikoloji')) return { Icon: Brain, tone: 'rose' }
+  if (key.includes('türk') || key.includes('edebiyat')) return { Icon: BookOpenText, tone: 'peach' }
+  return { Icon: Library, tone: 'slate' }
+}
 
 /**
  * SubjectBars — ders bazlı dağılım / başarı çubukları.
@@ -29,6 +56,7 @@ export default function SubjectBars({
         const pct = Math.max(0, Math.min(100, Number(d[valueKey]) || 0))
         const color = d.color ?? colorForKey(d.subject)
         const isHovered = hovered === i
+        const { Icon, tone } = subjectVisual(d.subject)
 
         return (
           <div
@@ -40,18 +68,14 @@ export default function SubjectBars({
               hovered != null && !isHovered ? 'opacity-45' : 'opacity-100'
             )}
           >
-            <div className="mb-1.5 flex items-baseline justify-between gap-3">
+            <div className="mb-2 flex items-center justify-between gap-3">
               <span
                 className={cn(
-                  'flex items-center gap-2 text-sm font-semibold transition-colors min-w-0',
-                  isHovered ? 'text-ink' : 'text-ink/70'
+                  'flex min-w-0 items-center gap-2.5 text-sm font-semibold transition-colors',
+                  isHovered ? 'text-ink' : 'text-ink/82'
                 )}
               >
-                <span
-                  className="h-2 w-2 shrink-0 rounded-full"
-                  style={{ background: color }}
-                  aria-hidden="true"
-                />
+                <SoftIcon icon={Icon} tone={tone} size="xs" />
                 <span className="truncate">{d.subject}</span>
               </span>
 
@@ -63,14 +87,14 @@ export default function SubjectBars({
               </span>
             </div>
 
-            <div className="h-2 w-full overflow-hidden rounded-full bg-surface-sunken">
+            <div className="subject-soft-track h-2.5 w-full overflow-hidden rounded-full">
               <div
-                className="h-full rounded-full transition-all duration-500 ease-smooth"
+                className="subject-soft-bar h-full rounded-full transition-all duration-500 ease-smooth"
                 style={{
                   width: `${pct}%`,
-                  background: color,
-                  transform: isHovered ? 'scaleY(1.4)' : 'scaleY(1)',
-                  boxShadow: isHovered ? `0 0 12px ${color}55` : 'none',
+                  '--subject-color': color,
+                  transform: isHovered ? 'scaleY(1.25)' : 'scaleY(1)',
+                  boxShadow: isHovered ? `0 4px 14px ${color}38` : 'none',
                 }}
               />
             </div>

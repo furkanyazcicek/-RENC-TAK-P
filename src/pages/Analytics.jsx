@@ -30,7 +30,7 @@ import DependentSubjectTopicSelect from '../components/DependentSubjectTopicSele
 import ExamTypeTabs from '../components/ExamTypeTabs'
 import DailyLogsList from '../components/DailyLogsList'
 
-import { AppShell, Badge, Button, Modal, PageLoader } from '../components/ui'
+import { AppShell, Badge, Button, Modal, PageLoader, TimeRangeTabs } from '../components/ui'
 import {
   ActivityStrip,
   DashboardHero,
@@ -55,15 +55,39 @@ import {
 } from '../lib/productCapture'
 import {
   accuracy,
-  buildInsights,
   combineStudyEntries,
   formatMinutes,
   lastNDays,
   splitBySource,
   studyStreak,
+  subjectBreakdown,
   totals,
-  weekOverWeek,
 } from '../lib/insights'
+
+const ANALYTICS_RANGES = [
+  { value: 'day', label: 'Günlük', description: 'Bugünün verileri', days: 1 },
+  { value: 'week', label: 'Haftalık', description: 'Son 7 gün', days: 7 },
+  { value: 'month', label: 'Aylık', description: 'Son 30 gün', days: 30 },
+  { value: 'year', label: 'Yıllık', description: 'Son 12 ay', days: 365 },
+]
+
+function parseAnalyticsDate(value) {
+  if (!value) return null
+  const text = String(value)
+  const date = /^\d{4}-\d{2}-\d{2}$/.test(text) ? new Date(`${text}T12:00:00`) : new Date(text)
+  return Number.isNaN(date.getTime()) ? null : date
+}
+
+function isWithinRange(value, days) {
+  const date = parseAnalyticsDate(value)
+  if (!date) return false
+  const today = new Date()
+  today.setHours(23, 59, 59, 999)
+  const start = new Date(today)
+  start.setDate(start.getDate() - (days - 1))
+  start.setHours(0, 0, 0, 0)
+  return date >= start && date <= today
+}
 
 /**
  * Analiz — grafiklerin ve tabloların tamamı.
@@ -99,6 +123,8 @@ export default function Analytics() {
   // 5) Gelişim grafiği için bağımlı Ders/Konu filtresi
   const [trendSubject, setTrendSubject] = useState(null)
   const [trendTopic, setTrendTopic] = useState(null)
+  // 6) Sayfanın tamamını süzen zaman aralığı — varsayılan mevcut haftalık görünüm.
+  const [timeRange, setTimeRange] = useState('week')
 
   const loadData = useCallback(async () => {
     if (captureMode) {
@@ -142,38 +168,55 @@ export default function Analytics() {
     if (examType === null && mockExams.length > 0) setExamType(mockExams[0].exam_type)
   }, [mockExams, examType])
 
+  const activeRange = ANALYTICS_RANGES.find((range) => range.value === timeRange) ?? ANALYTICS_RANGES[1]
+
+  const rangeDailyLogs = useMemo(
+    () => dailyLogs.filter((log) => isWithinRange(log.study_date, activeRange.days)),
+    [dailyLogs, activeRange.days]
+  )
+
+  const rangeMockExams = useMemo(
+    () => mockExams.filter((exam) => isWithinRange(exam.exam_date, activeRange.days)),
+    [mockExams, activeRange.days]
+  )
+
+  const rangeBranchExams = useMemo(
+    () => branchExams.filter((exam) => isWithinRange(exam.exam_date ?? exam.created_at, activeRange.days)),
+    [branchExams, activeRange.days]
+  )
+
   const examCountsByType = useMemo(() => {
     const counts = {}
-    mockExams.forEach((e) => {
+    rangeMockExams.forEach((e) => {
       counts[e.exam_type] = (counts[e.exam_type] ?? 0) + 1
     })
     return counts
-  }, [mockExams])
+  }, [rangeMockExams])
 
   const examsForType = useMemo(
-    () => mockExams.filter((e) => e.exam_type === (examType ?? mockExams[0]?.exam_type)),
-    [mockExams, examType]
+    () => rangeMockExams.filter((e) => e.exam_type === (examType ?? mockExams[0]?.exam_type)),
+    [rangeMockExams, mockExams, examType]
   )
 
   const selectedDayLogs = useMemo(
-    () => dailyLogs.filter((l) => l.study_date === selectedDay),
-    [dailyLogs, selectedDay]
+    () => rangeDailyLogs.filter((l) => l.study_date === selectedDay),
+    [rangeDailyLogs, selectedDay]
   )
 
   const distributionLogs = useMemo(
-    () => (distributionDate ? dailyLogs.filter((l) => l.study_date === distributionDate) : dailyLogs),
-    [dailyLogs, distributionDate]
+    () => (distributionDate ? rangeDailyLogs.filter((l) => l.study_date === distributionDate) : rangeDailyLogs),
+    [rangeDailyLogs, distributionDate]
   )
   const subjectDistribution = useMemo(
     () => buildSubjectDistribution(distributionLogs),
     [distributionLogs]
   )
 
-  const hierarchy = useMemo(() => buildSubjectTopicHierarchy(dailyLogs), [dailyLogs])
+  const hierarchy = useMemo(() => buildSubjectTopicHierarchy(rangeDailyLogs), [rangeDailyLogs])
 
   const filteredTrend = useMemo(
-    () => buildNetTrend(dailyLogs, trendSubject, trendTopic),
-    [dailyLogs, trendSubject, trendTopic]
+    () => buildNetTrend(rangeDailyLogs, trendSubject, trendTopic),
+    [rangeDailyLogs, trendSubject, trendTopic]
   )
 
   /* ---- Özet ve içgörü hesapları ---- */
@@ -181,20 +224,66 @@ export default function Analytics() {
      istatistiklere katılır. Denemeleri günlük kayıt biçimine çeviren tek
      yer lib/insights.js; burada yalnızca birleştirip veriyoruz. */
   const studyEntries = useMemo(
-    () => combineStudyEntries(dailyLogs, mockExams, branchExams),
-    [dailyLogs, mockExams, branchExams]
+    () => combineStudyEntries(rangeDailyLogs, rangeMockExams, rangeBranchExams),
+    [rangeDailyLogs, rangeMockExams, rangeBranchExams]
   )
   const sourceSplit = useMemo(() => splitBySource(studyEntries), [studyEntries])
 
-  const last14 = useMemo(() => lastNDays(studyEntries, 14), [studyEntries])
-  const wow = useMemo(() => weekOverWeek(studyEntries), [studyEntries])
+  const rangeDays = useMemo(
+    () => lastNDays(studyEntries, activeRange.days),
+    [studyEntries, activeRange.days]
+  )
+  const activityDays = useMemo(() => {
+    if (timeRange !== 'year') return rangeDays
+    const buckets = []
+    const today = new Date()
+    for (let offset = 11; offset >= 0; offset -= 1) {
+      const month = new Date(today.getFullYear(), today.getMonth() - offset, 1)
+      const key = `${month.getFullYear()}-${String(month.getMonth() + 1).padStart(2, '0')}`
+      const monthTotals = totals(studyEntries.filter((entry) => entry.study_date?.startsWith(key)))
+      buckets.push({
+        date: key,
+        label: month.toLocaleDateString('tr-TR', { month: 'short', year: '2-digit' }),
+        minutes: monthTotals.minutes,
+        solved: monthTotals.solved,
+        correct: monthTotals.correct,
+        incorrect: monthTotals.incorrect,
+      })
+    }
+    return buckets
+  }, [rangeDays, studyEntries, timeRange])
   const streak = useMemo(() => studyStreak(studyEntries), [studyEntries])
   const overall = useMemo(() => totals(studyEntries), [studyEntries])
   const overallAccuracy = useMemo(() => accuracy(studyEntries), [studyEntries])
-  const insights = useMemo(
-    () => buildInsights(studyEntries, { audience: 'student' }),
-    [studyEntries]
-  )
+  const rangeSubjects = useMemo(() => subjectBreakdown(studyEntries), [studyEntries])
+  const insights = useMemo(() => {
+    if (!studyEntries.length) return []
+
+    const periodText = timeRange === 'day' ? 'Bugün' : `${activeRange.description} içinde`
+    const topSubject = rangeSubjects[0]
+    const result = [
+      {
+        tone: 'success',
+        direction: 'up',
+        text: `${periodText} toplam ${formatMinutes(overall.minutes)} çalıştın.`,
+      },
+      {
+        tone: overallAccuracy >= 75 ? 'success' : 'brand',
+        direction: overallAccuracy >= 75 ? 'up' : 'flat',
+        text: `${overall.solved} soru çözdün; isabet oranın %${overallAccuracy}.`,
+      },
+    ]
+
+    if (topSubject?.solved > 0) {
+      result.push({
+        tone: 'info',
+        direction: 'flat',
+        text: `En çok ${topSubject.subject} dersinde çalıştın: ${topSubject.solved} soru.`,
+      })
+    }
+
+    return result
+  }, [activeRange.description, overall, overallAccuracy, rangeSubjects, studyEntries.length, timeRange])
 
   // Süre grafiği de denemeleri kapsar — yoksa üstteki "Toplam Çalışma"
   // kartıyla altındaki grafik farklı iki rakam gösterirdi.
@@ -208,29 +297,34 @@ export default function Analytics() {
       .sort((a, b) => new Date(b.date) - new Date(a.date))
   }, [studyEntries])
 
-  const weeklySolvedBreakdown = useMemo(
-    () =>
-      lastNDays(studyEntries, 7).map((d) => ({
-        date: d.date,
-        label: new Date(d.date).toLocaleDateString('tr-TR', {
-          weekday: 'long',
-          day: 'numeric',
-          month: 'long',
-        }),
-        count: d.solved,
-      })),
-    [studyEntries]
-  )
+  const rangeSolvedBreakdown = useMemo(() => {
+    if (timeRange === 'year') {
+      return activityDays.map((month) => ({
+        date: month.date,
+        label: month.label,
+        count: month.solved,
+      }))
+    }
+    return rangeDays.map((day) => ({
+      date: day.date,
+      label: new Date(`${day.date}T12:00:00`).toLocaleDateString('tr-TR', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long',
+      }),
+      count: day.solved,
+    }))
+  }, [activityDays, rangeDays, timeRange])
 
   const allExamsSorted = useMemo(() => {
-    const branch = branchExams.map((e) => ({
+    const branch = rangeBranchExams.map((e) => ({
       id: `exam-${e.id}`,
       type: 'Branş',
       label: e.exam_name || e.topic,
       date: e.exam_date ?? e.created_at,
       detail: e.net != null ? `${Number(e.net).toFixed(2)} net` : `%${e.score}`,
     }))
-    const general = mockExams.map((e) => ({
+    const general = rangeMockExams.map((e) => ({
       id: `mock-${e.id}`,
       type: 'Genel',
       label: `${e.exam_type}${e.exam_name ? ' — ' + e.exam_name : ''}`,
@@ -241,7 +335,7 @@ export default function Analytics() {
       } net`,
     }))
     return [...branch, ...general].sort((a, b) => new Date(b.date) - new Date(a.date))
-  }, [branchExams, mockExams])
+  }, [rangeBranchExams, rangeMockExams])
 
   if (loading) return <PageLoader label="Analizin hazırlanıyor…" />
 
@@ -264,11 +358,12 @@ export default function Analytics() {
   const netDelta = lastExamNet != null && prevExamNet != null ? lastExamNet - prevExamNet : null
 
   const subjectPerformance = buildSubjectPerformance(examsForType)
-  const topicStats = buildTopicStats(dailyLogs)
-  const dailyAccuracyTrend = buildDailyAccuracyTrend(dailyLogs)
+  const topicStats = buildTopicStats(rangeDailyLogs)
+  const dailyAccuracyTrend = buildDailyAccuracyTrend(rangeDailyLogs)
 
-  const totalExamCount = branchExams.length + mockExams.length
+  const totalExamCount = rangeBranchExams.length + rangeMockExams.length
   const activeExamType = examType ?? mockExams[0]?.exam_type ?? 'TYT'
+  const examJourneyLabel = ['TYT', 'AYT'].includes(activeExamType) ? 'YKS' : activeExamType
 
   const selectedDayLabel = selectedDay
     ? new Date(selectedDay).toLocaleDateString('tr-TR', {
@@ -284,6 +379,13 @@ export default function Analytics() {
     .slice(0, 8)
     .map((e) => e.mock_exam_subjects?.reduce((s, x) => s + Number(x.net || 0), 0) ?? 0)
     .reverse()
+
+  const rangeContextLabel = {
+    day: 'Bugün',
+    week: 'Son 7 Gün',
+    month: 'Son 30 Gün',
+    year: 'Son 12 Ay',
+  }[activeRange.value]
 
   return (
     <AppShell
@@ -309,12 +411,24 @@ export default function Analytics() {
             .join('')
             .toLocaleUpperCase('tr-TR') || '?'
         }
-        badge={mockExams.length ? { label: activeExamType, tone: 'glass' } : null}
+        badge={rangeMockExams.length ? { label: examJourneyLabel, tone: 'glass' } : null}
+        compact
         highlights={[
           { label: 'Kesintisiz seri', value: streak ? `${streak} gün` : '—' },
-          { label: 'Bu hafta', value: formatMinutes(wow.thisWeek.minutes) },
+          { label: `${rangeContextLabel} çalışma`, value: formatMinutes(overall.minutes) },
           { label: 'İsabet', value: overallAccuracy != null ? `%${overallAccuracy}` : '—' },
         ]}
+      />
+
+      <TimeRangeTabs
+        options={ANALYTICS_RANGES}
+        value={timeRange}
+        onChange={(nextRange) => {
+          setTimeRange(nextRange)
+          setSelectedDay(null)
+          setDistributionDate(null)
+          setDetailModal(null)
+        }}
       />
 
       {/* ---------- İÇGÖRÜLER ---------- */}
@@ -323,37 +437,21 @@ export default function Analytics() {
       {/* ---------- METRİKLER ---------- */}
       <div className="grid grid-cols-1 gap-4 xs:grid-cols-2 lg:grid-cols-4">
         <MetricTile
-          label="Bu Hafta Çalışma"
-          value={formatMinutes(wow.thisWeek.minutes)}
+          label={`${rangeContextLabel} Çalışma`}
+          value={formatMinutes(overall.minutes)}
           icon={Clock}
           tone="brand"
-          trend={last14.slice(-7).map((d) => d.minutes)}
-          delta={
-            wow.prevWeek.minutes > 0
-              ? {
-                  value: `${wow.minutesDelta >= 0 ? '+' : '−'}${formatMinutes(Math.abs(wow.minutesDelta))}`,
-                  direction: wow.minutesDelta > 0 ? 'up' : wow.minutesDelta < 0 ? 'down' : 'flat',
-                }
-              : null
-          }
-          hint={wow.prevWeek.minutes > 0 ? 'geçen haftaya göre' : 'ilk haftan'}
+          trend={rangeDays.map((d) => d.minutes)}
+          hint={activeRange.description}
           onClick={() => setDetailModal('study')}
         />
         <MetricTile
-          label="Bu Hafta Çözülen"
-          value={wow.thisWeek.solved}
+          label={`${rangeContextLabel} Çözülen`}
+          value={overall.solved}
           icon={CheckCircle2}
           tone="accent"
-          trend={last14.slice(-7).map((d) => d.solved)}
-          delta={
-            wow.prevWeek.solved > 0
-              ? {
-                  value: `${wow.solvedDelta >= 0 ? '+' : '−'}${Math.abs(wow.solvedDelta)}`,
-                  direction: wow.solvedDelta > 0 ? 'up' : wow.solvedDelta < 0 ? 'down' : 'flat',
-                }
-              : null
-          }
-          hint="soru"
+          trend={rangeDays.map((d) => d.solved)}
+          hint={`${activeRange.description.toLocaleLowerCase('tr-TR')} · soru`}
           onClick={() => setDetailModal('solved')}
         />
         <MetricTile
@@ -378,7 +476,7 @@ export default function Analytics() {
           value={totalExamCount}
           icon={ListChecks}
           tone="accent"
-          hint={`${branchExams.length} branş · ${mockExams.length} genel`}
+          hint={`${rangeBranchExams.length} branş · ${rangeMockExams.length} genel`}
           onClick={() => setDetailModal('allExams')}
         />
       </div>
@@ -388,12 +486,13 @@ export default function Analytics() {
       {/* ---------- ÇALIŞMA DÜZENİ ---------- */}
       <div className="grid lg:grid-cols-[1.35fr_1fr] gap-5">
         <Panel
-          title="Son 14 Günün Çalışma Süresi"
-          description="Bir sütuna tıklayarak o günün detayına inebilirsin"
+          title={`${activeRange.label} Çalışma Süresi`}
+          description={timeRange === 'year' ? 'Son 12 ay, aylık toplamlar halinde' : `${activeRange.description}, gün gün`}
           icon={Clock}
         >
           <StudyTimeChart
-            logs={dailyLogs}
+            logs={studyEntries}
+            range={timeRange}
             selectedDate={selectedDay}
             onBarClick={(bucket) => {
               if (bucket.minutes > 0) setSelectedDay(bucket.date)
@@ -403,7 +502,7 @@ export default function Analytics() {
 
         <Panel
           title="Çalışma Düzenin"
-          description="Koyu kareler daha uzun çalıştığın günler"
+          description={timeRange === 'year' ? 'Koyu kareler daha yoğun geçen ayları gösterir' : 'Koyu kareler daha uzun çalıştığın günleri gösterir'}
           icon={Flame}
           iconTone="#D97706"
           footnote={
@@ -412,7 +511,11 @@ export default function Analytics() {
               : 'Üst üste iki gün çalıştığında serin burada görünmeye başlar.'
           }
         >
-          <ActivityStrip days={last14} />
+          <ActivityStrip
+            days={activityDays}
+            periodLabel={activeRange.description}
+            activeUnitLabel={timeRange === 'year' ? 'ayda' : 'günde'}
+          />
 
           <div className="mt-5 grid grid-cols-3 gap-2 border-t border-line pt-4">
             <div>
@@ -457,7 +560,7 @@ export default function Analytics() {
                   month: 'long',
                   year: 'numeric',
                 })} tarihinde çözülen sorular`
-              : 'Tüm zamanlar'
+              : activeRange.description
           }
           icon={PieChart}
           iconTone="#DB2777"
@@ -491,7 +594,7 @@ export default function Analytics() {
         icon={LineChart}
         action={
           <DependentSubjectTopicSelect
-            logs={dailyLogs}
+            logs={rangeDailyLogs}
             subject={trendSubject}
             topic={trendTopic}
             onSubjectChange={(s) => {
@@ -545,7 +648,7 @@ export default function Analytics() {
         icon={Activity}
         iconTone="#E11D48"
       >
-        <BranchExamNetChart exams={branchExams} />
+        <BranchExamNetChart exams={rangeBranchExams} />
       </Panel>
 
       {/* ---------- KONU BAZLI GELİŞİM ---------- */}
@@ -572,7 +675,7 @@ export default function Analytics() {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <Badge tone="neutral">{dailyLogs.length} çalışma kaydı</Badge>
+          <Badge tone="neutral">{rangeDailyLogs.length} çalışma kaydı</Badge>
           <Button as={Link} to="/gunluk-takip" variant="secondary" size="sm" icon={Clock}>
             Çalışma kaydet
           </Button>
@@ -632,10 +735,10 @@ export default function Analytics() {
       <Modal
         open={detailModal === 'solved'}
         onClose={() => setDetailModal(null)}
-        title="Bu Haftanın Soru Dağılımı"
+        title={`${activeRange.label} Soru Dağılımı`}
       >
         <ul className="flex flex-col divide-y divide-line">
-          {weeklySolvedBreakdown.map((d) => (
+          {rangeSolvedBreakdown.map((d) => (
             <li key={d.date} className="flex items-center justify-between py-2.5 text-sm">
               <span className="capitalize text-ink/70">{d.label}</span>
               <span
@@ -696,7 +799,7 @@ export default function Analytics() {
             </p>
             <ul className="flex flex-col divide-y divide-line">
               {(lastExamOfType.mock_exam_subjects ?? []).map((s) => (
-                <li key={s.id} className="flex items-center justify-between py-2.5 text-sm">
+                <li key={s.id ?? s.subject} className="flex items-center justify-between py-2.5 text-sm">
                   <span className="text-ink/70">{s.subject}</span>
                   <span className="font-semibold tabular text-success-600">
                     {Number(s.net).toFixed(2)} net

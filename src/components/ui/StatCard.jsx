@@ -1,6 +1,6 @@
 import { TrendingUp, TrendingDown } from 'lucide-react'
 import { cn } from '../../lib/cn'
-import AuroraBackground from './AuroraBackground'
+import SoftIcon from './SoftIcon'
 
 /**
  * StatCard — panel üstlerindeki özet metrik kartı.
@@ -18,34 +18,13 @@ import AuroraBackground from './AuroraBackground'
  */
 
 const ACCENTS = {
-  brand: {
-    icon: 'bg-brand-500/10 text-brand-600 ring-brand-500/15',
-    line: 'from-aurora-purple to-aurora-violet',
-  },
-  info: {
-    icon: 'bg-info-500/10 text-info-600 ring-info-500/15',
-    line: 'from-aurora-violet to-aurora-blue',
-  },
-  aqua: {
-    icon: 'bg-aqua-500/10 text-aqua-700 ring-aqua-500/15',
-    line: 'from-aurora-blue to-aurora-cyan',
-  },
-  accent: {
-    icon: 'bg-accent-500/10 text-accent-600 ring-accent-500/15',
-    line: 'from-aurora-pink to-aurora-purple',
-  },
-  success: {
-    icon: 'bg-success-500/10 text-success-600 ring-success-500/15',
-    line: 'from-success-500 to-aqua-400',
-  },
-  warning: {
-    icon: 'bg-warning-500/10 text-warning-700 ring-warning-500/15',
-    line: 'from-warning-500 to-accent-400',
-  },
-  danger: {
-    icon: 'bg-danger-500/10 text-danger-600 ring-danger-500/15',
-    line: 'from-danger-500 to-accent-500',
-  },
+  brand: { softTone: 'indigo', line: '#8170A5' },
+  info: { softTone: 'sky', line: '#6D8EAA' },
+  aqua: { softTone: 'aqua', line: '#5C9698' },
+  accent: { softTone: 'coral', line: '#C97868' },
+  success: { softTone: 'sage', line: '#6F9878' },
+  warning: { softTone: 'amber', line: '#C09249' },
+  danger: { softTone: 'rose', line: '#BD6A73' },
 }
 
 // Eski isimlendirmeyle uyum
@@ -88,21 +67,16 @@ export default function StatCard({
       className={cn(
         'group relative overflow-hidden flex flex-col p-5 transition-all duration-200 ease-smooth hover:-translate-y-0.5',
         isGradient
-          ? 'card-gradient hover:shadow-aurora-lg'
+          ? 'panel-stat-featured text-white hover:shadow-card-hover'
           : 'card hover:shadow-card-hover hover:border-brand-200',
         className
       )}
     >
-      {isGradient ? (
-        <AuroraBackground variant="panel" />
-      ) : (
+      {!isGradient && (
         /* Üstte ince Aurora şeridi — hover'da tam genişliğe açılır */
         <span
-          className={cn(
-            'absolute left-5 right-5 top-0 h-[2px] rounded-full bg-gradient-to-r opacity-80',
-            'transition-all duration-300 ease-smooth group-hover:left-0 group-hover:right-0 group-hover:opacity-100',
-            tone.line
-          )}
+          className="metric-soft-line absolute left-5 right-5 top-0 h-[3px] rounded-full opacity-80 transition-all duration-300 ease-smooth group-hover:left-0 group-hover:right-0 group-hover:opacity-100"
+          style={{ '--metric-tone': tone.line }}
           aria-hidden="true"
         />
       )}
@@ -117,16 +91,7 @@ export default function StatCard({
           >
             {label}
           </span>
-          {Icon && (
-            <span
-              className={cn(
-                'grid h-8 w-8 shrink-0 place-items-center rounded-xl ring-1 ring-inset',
-                isGradient ? 'bg-white/15 text-white ring-white/20' : tone.icon
-              )}
-            >
-              <Icon className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-            </span>
-          )}
+          {Icon && <SoftIcon icon={Icon} tone={tone.softTone} size="md" />}
         </div>
 
         <span

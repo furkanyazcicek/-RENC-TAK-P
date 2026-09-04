@@ -113,6 +113,9 @@ const QuestionBankReview = lazy(() => import('./pages/QuestionBankReview'))
 /** Kitap tabanlı ana sayfa geçişi için yalnızca geliştirme ortamında açılan önizleme. */
 const KitapGecisOnizleme = lazy(() => import('./pages/KitapGecisOnizleme'))
 
+/** Ana sayfadaki kitap dilinden türetilen iç panel yönlerini karşılaştırma ekranı. */
+const PanelDesignPreview = lazy(() => import('./pages/PanelDesignPreview'))
+
 /** Route geçişlerinde gösterilen tam sayfa yükleyici (tasarım sisteminden). */
 function FullPageLoader() {
   return <PageLoader />
@@ -201,6 +204,14 @@ export default function App() {
         element={
           import.meta.env.DEV
             ? <Suspense fallback={<FullPageLoader />}><KitapGecisOnizleme /></Suspense>
+            : <Navigate to="/" replace />
+        }
+      />
+      <Route
+        path="/panel-tasarim-onizleme/:view?"
+        element={
+          import.meta.env.DEV
+            ? <Suspense fallback={<FullPageLoader />}><PanelDesignPreview /></Suspense>
             : <Navigate to="/" replace />
         }
       />

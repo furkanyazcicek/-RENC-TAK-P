@@ -1,5 +1,4 @@
 import { cn } from '../../lib/cn'
-import AuroraBackground from '../ui/AuroraBackground'
 
 /**
  * DashboardHero — panelin en üstündeki karşılama bandı.
@@ -22,11 +21,11 @@ import AuroraBackground from '../ui/AuroraBackground'
  */
 
 const BADGE_TONES = {
-  glass: 'bg-white/15 text-white border border-white/25 backdrop-blur-sm',
-  solid: 'bg-white text-brand-700',
+  glass: 'border border-[#b79252]/22 bg-[#efe3c9] text-[#76571f]',
+  solid: 'border border-ink/10 bg-white/70 text-ink',
   /* Eski çağrılarla uyum */
-  amber: 'bg-white text-brand-700',
-  brand: 'bg-white/15 text-white border border-white/25 backdrop-blur-sm',
+  amber: 'border border-[#b79252]/22 bg-[#efe3c9] text-[#76571f]',
+  brand: 'border border-[#7a6c9b]/20 bg-[#ebe7f1] text-[#63527f]',
 }
 
 export default function DashboardHero({
@@ -37,36 +36,29 @@ export default function DashboardHero({
   badge,
   highlights = [],
   action,
+  compact = false,
   className,
 }) {
   return (
     <section
       className={cn(
-        'relative overflow-hidden rounded-panel bg-aurora-gradient text-white shadow-aurora',
-        'px-5 py-6 sm:px-7 sm:py-7',
+        'panel-dashboard-hero relative overflow-hidden rounded-panel',
+        compact ? 'px-5 py-5 sm:px-6 sm:py-5' : 'px-5 py-6 sm:px-7 sm:py-7 lg:px-8',
+        compact && 'panel-dashboard-hero--compact',
         className
       )}
     >
-      {/* Zemin ışıkları — tanıtım sayfasıyla aynı dil */}
-      <AuroraBackground variant="panel" />
-
-      {/* İnce ızgara dokusu — düz gradient "yassı" durmasın */}
-      <span
-        className="pointer-events-none absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage:
-            'linear-gradient(rgba(255,255,255,.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.8) 1px, transparent 1px)',
-          backgroundSize: '32px 32px',
-        }}
-        aria-hidden="true"
-      />
-
-      <div className="relative z-10 flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex min-w-0 items-center gap-4">
+      <div
+        className={cn(
+          'relative z-10 grid',
+          compact ? 'gap-4 pr-[4.75rem] sm:pr-24' : 'gap-6 lg:grid-cols-[minmax(0,1fr)_17rem] lg:items-center'
+        )}
+      >
+        <div className="flex min-w-0 items-start gap-4 sm:gap-5">
           {avatar && (
             <span
-              className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl border border-white/25
-                         bg-white/15 font-display text-xl font-extrabold text-white backdrop-blur-sm"
+              className="panel-overview-avatar grid h-14 w-14 shrink-0 place-items-center rounded-2xl
+                         font-display text-xl font-extrabold sm:h-16 sm:w-16"
             >
               {avatar}
             </span>
@@ -75,14 +67,14 @@ export default function DashboardHero({
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
               {eyebrow && (
-                <span className="text-2xs font-bold uppercase tracking-[0.14em] text-white/70">
+                <span className="panel-focus-label rounded-lg px-3 py-1.5 text-2xs font-extrabold uppercase tracking-[0.16em]">
                   {eyebrow}
                 </span>
               )}
               {badge && (
                 <span
                   className={cn(
-                    'rounded-full px-2.5 py-0.5 text-2xs font-bold',
+                    'rounded-full px-2.5 py-0.5 text-2xs font-extrabold',
                     BADGE_TONES[badge.tone] ?? BADGE_TONES.glass
                   )}
                 >
@@ -91,29 +83,39 @@ export default function DashboardHero({
               )}
             </div>
 
-            <h1 className="mt-1.5 truncate font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
+            <h2 className={cn(
+              'font-display text-2xl font-extrabold tracking-[-0.03em] text-ink sm:text-3xl lg:text-[2rem]',
+              compact ? 'mt-3' : 'mt-4'
+            )}>
               {title}
-            </h1>
-            {subtitle && <p className="mt-1 text-sm text-white/70">{subtitle}</p>}
+            </h2>
+            {subtitle && <p className="mt-1.5 max-w-2xl text-sm font-medium leading-relaxed text-ink/62">{subtitle}</p>}
+
+            <div className={cn('flex flex-wrap items-center gap-2', compact ? 'mt-4' : 'mt-5')}>
+              {action}
+              {highlights.slice(1).map((h, index) => (
+                <div key={h.label} className="panel-focus-mini" data-stat-tone={['sage', 'sky'][index % 2]}>
+                  <span>{h.label}</span>
+                  <strong>{h.value}</strong>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 lg:justify-end">
-          {highlights.map((h) => (
-            <div
-              key={h.label}
-              className="min-w-[6.5rem] rounded-input border border-white/20 bg-white/10 px-4 py-2.5 backdrop-blur-sm"
-            >
-              <p className="text-2xs font-semibold uppercase tracking-wider text-white/65">
-                {h.label}
-              </p>
-              <p className="mt-0.5 font-display text-lg font-bold leading-none tabular text-white">
-                {h.value}
-              </p>
+        {highlights[0] && (
+          <div
+            className={cn('panel-focus-orbit', compact && 'panel-focus-orbit--compact')}
+            aria-label={`${highlights[0].label}: ${highlights[0].value}`}
+          >
+            <span className="panel-focus-orbit__outer" aria-hidden="true" />
+            <span className="panel-focus-orbit__ring" aria-hidden="true" />
+            <div className="panel-focus-orbit__value">
+              <strong>{highlights[0].value}</strong>
+              <span>{highlights[0].label}</span>
             </div>
-          ))}
-          {action}
-        </div>
+          </div>
+        )}
       </div>
     </section>
   )
