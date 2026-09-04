@@ -77,6 +77,14 @@ const Ingilizce = lazy(() => import('./pages/Ingilizce'))
  */
 const Almanca = lazy(() => import('./pages/Almanca'))
 
+/**
+ * Fransızca Öğrenme Kütüphanesi — İngilizce ve Almanca bölümleriyle AYNI
+ * motoru kullanır ama kendi içeriği, kendi seslendirmesi ve kendi ilerleme
+ * kaydı vardır. O yüzden ayrı bir tembel pakettir: Fransızca çalışmayan
+ * öğrenci bu kodu hiç indirmez.
+ */
+const Fransizca = lazy(() => import('./pages/Fransizca'))
+
 /** Geometri Pilot Testi */
 const GeometriPilot = lazy(() => import('./pages/GeometriPilot'))
 
@@ -456,6 +464,16 @@ export default function App() {
         element={
           <ProtectedRoute>
             <Suspense fallback={<FullPageLoader />}><Almanca /></Suspense>
+          </ProtectedRoute>
+        }
+      />
+      {/* Fransızca Öğrenme Kütüphanesi — bölümün kendi iç yönlendirmesi
+          var (bkz. pages/Fransizca.jsx), bu yüzden `/*` ile devredilir. */}
+      <Route
+        path="/fransizca/*"
+        element={
+          <ProtectedRoute>
+            <Suspense fallback={<FullPageLoader />}><Fransizca /></Suspense>
           </ProtectedRoute>
         }
       />

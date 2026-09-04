@@ -62,6 +62,7 @@ export const STUDENT_NAV = [
   // ama günlük çalışılan bir yer olduğu için menüde kendi satırı olsun.
   { to: '/ingilizce', label: 'İngilizce', short: 'İngilizce', Icon: Languages },
   { to: '/almanca', label: 'Almanca', short: 'Almanca', Icon: Languages },
+  { to: '/fransizca', label: 'Fransızca', short: 'Fransızca', Icon: Languages },
   { to: '/sorular', label: 'Sorunlu Sorular', short: 'Sorular', Icon: HelpCircle },
   { to: '/mesajlar', label: 'Mesajlar', short: 'Mesaj', Icon: MessageCircle },
 ]
