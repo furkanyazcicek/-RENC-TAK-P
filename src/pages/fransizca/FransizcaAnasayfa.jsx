@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import {
   ArrowRight, BookOpen, BrainCircuit, CalendarCheck, Compass, GraduationCap,
-  LibraryBig, LineChart, Mic, RefreshCw, Sparkles, Target,
+  Layers, LibraryBig, LineChart, Mic, RefreshCw, Sparkles, Target,
 } from 'lucide-react'
 import { AppShell, Badge, Button, ProgressBar } from '../../components/ui'
 import { DashboardHero } from '../../components/dashboard'
@@ -296,6 +296,7 @@ function GunlukAkis({ ilerleme }) {
             { to: '/fransizca/kutuphane', Icon: LibraryBig, ad: 'Ders kütüphanesi', not: 'Seviyelere ve modüllere göre bütün dersler' },
             { to: '/fransizca/yol-haritasi', Icon: CalendarCheck, ad: 'Yol haritam', not: 'Haftalık plan, 30 günlük hedef, kontrol noktaları' },
             { to: '/fransizca/tekrar', Icon: RefreshCw, ad: 'Kelime ve tekrar', not: 'Aralıklı tekrar — unutmadan önce hatırla' },
+            { to: '/fransizca/kartlar', Icon: Layers, ad: 'Dil kartları', not: 'İlgi alanına göre desteler — çevir, karşılığını ve örneği gör' },
             { to: '/fransizca/telaffuz', Icon: Mic, ad: 'Telaffuz laboratuvarı', not: 'Türkçede olmayan sesler, vurgu, ritim, kendi kaydın' },
             { to: '/fransizca/dusunme', Icon: BrainCircuit, ad: 'Fransızca düşünme', not: 'Çeviri alışkanlığını kıran antrenmanlar' },
             { to: '/fransizca/kilavuz', Icon: Compass, ad: 'Çalışma kılavuzu', not: 'Bu bölüm nasıl kullanılır, nereden başlanır' },

@@ -7,6 +7,7 @@ import YolHaritasi from './ispanyolca/YolHaritasi'
 import Kutuphane from './ispanyolca/Kutuphane'
 import Ders from './ispanyolca/Ders'
 import Tekrar from './ispanyolca/Tekrar'
+import Kartlar from './ispanyolca/Kartlar'
 import Telaffuz from './ispanyolca/Telaffuz'
 import Dusunme from './ispanyolca/Dusunme'
 import Gelisim from './ispanyolca/Gelisim'
@@ -35,6 +36,7 @@ import Kilavuz from './ispanyolca/Kilavuz'
  *   /ispanyolca/kutuphane        CEFR seviyelerine göre ders kütüphanesi
  *   /ispanyolca/ders/:dersId     ders oynatıcı
  *   /ispanyolca/tekrar           kelime ve aralıklı tekrar
+ *   /ispanyolca/kartlar            ilgi alanına göre dil kartları
  *   /ispanyolca/telaffuz         telaffuz laboratuvarı
  *   /ispanyolca/dusunme          İspanyolca düşünme antrenmanları
  *   /ispanyolca/gelisim          gelişim ekranı
@@ -52,6 +54,7 @@ export default function Ispanyolca() {
       <Route path="kutuphane" element={<Kutuphane />} />
       <Route path="ders/:dersId" element={<Ders />} />
       <Route path="tekrar" element={<Tekrar />} />
+      <Route path="kartlar" element={<Kartlar />} />
       <Route path="telaffuz" element={<Telaffuz />} />
       <Route path="dusunme" element={<Dusunme />} />
       <Route path="gelisim" element={<Gelisim />} />

@@ -21,6 +21,7 @@ import { KELIMELER as KELIMELER_SEHIR } from './kelime/a1-sehir.js'
 import { KELIMELER as KELIMELER_YEMEK } from './kelime/a1-yemek.js'
 import { KELIMELER as KELIMELER_BOS_ZAMAN } from './kelime/a1-bos-zaman.js'
 import { NOTLAR, notBul, modulNotlari } from './notlar/index.js'
+import { DESTELER, KART_HAVUZU, desteBul, kartBul } from './kartlar/index.js'
 import { SESLER, SHADOWING } from './telaffuz.js'
 import { ANTRENMANLAR, IC_SES_GOREVLERI } from './dusunme.js'
 import { MADDELER, YAZMA_GOREVI } from './seviyeTespitBankasi.js'
@@ -129,6 +130,10 @@ export {
   MODULLER,
   modulBul,
   seviyeModulleri,
+  DESTELER,
+  KART_HAVUZU,
+  desteBul,
+  kartBul,
   NOTLAR,
   notBul,
   modulNotlari,

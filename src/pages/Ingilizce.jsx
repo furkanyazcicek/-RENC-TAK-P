@@ -7,6 +7,7 @@ import YolHaritasi from './ingilizce/YolHaritasi'
 import Kutuphane from './ingilizce/Kutuphane'
 import Ders from './ingilizce/Ders'
 import Tekrar from './ingilizce/Tekrar'
+import Kartlar from './ingilizce/Kartlar'
 import Telaffuz from './ingilizce/Telaffuz'
 import Dusunme from './ingilizce/Dusunme'
 import Gelisim from './ingilizce/Gelisim'
@@ -35,6 +36,7 @@ import Kilavuz from './ingilizce/Kilavuz'
  *   /ingilizce/kutuphane        CEFR seviyelerine göre ders kütüphanesi
  *   /ingilizce/ders/:dersId     ders oynatıcı
  *   /ingilizce/tekrar           kelime ve aralıklı tekrar
+ *   /ingilizce/kartlar             ilgi alanına göre dil kartları
  *   /ingilizce/telaffuz         telaffuz laboratuvarı
  *   /ingilizce/dusunme          İngilizce düşünme antrenmanları
  *   /ingilizce/gelisim          gelişim ekranı
@@ -52,6 +54,7 @@ export default function Ingilizce() {
       <Route path="kutuphane" element={<Kutuphane />} />
       <Route path="ders/:dersId" element={<Ders />} />
       <Route path="tekrar" element={<Tekrar />} />
+      <Route path="kartlar" element={<Kartlar />} />
       <Route path="telaffuz" element={<Telaffuz />} />
       <Route path="dusunme" element={<Dusunme />} />
       <Route path="gelisim" element={<Gelisim />} />

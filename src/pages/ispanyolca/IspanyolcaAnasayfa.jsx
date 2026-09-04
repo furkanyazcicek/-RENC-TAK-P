@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import {
   ArrowRight, BookOpen, BrainCircuit, CalendarCheck, Compass, GraduationCap,
   LibraryBig, LineChart, Mic, RefreshCw, Sparkles, Target,
+  Layers,
 } from 'lucide-react'
 import { AppShell, Badge, Button, ProgressBar } from '../../components/ui'
 import { DashboardHero } from '../../components/dashboard'
@@ -291,6 +292,7 @@ function GunlukAkis({ ilerleme }) {
             { to: '/ispanyolca/kutuphane', Icon: LibraryBig, ad: 'Ders kütüphanesi', not: 'Seviyelere ve modüllere göre bütün dersler' },
             { to: '/ispanyolca/yol-haritasi', Icon: CalendarCheck, ad: 'Yol haritam', not: 'Haftalık plan, 30 günlük hedef, kontrol noktaları' },
             { to: '/ispanyolca/tekrar', Icon: RefreshCw, ad: 'Kelime ve tekrar', not: 'Aralıklı tekrar — unutmadan önce hatırla' },
+            { to: '/ispanyolca/kartlar', Icon: Layers, ad: 'Dil kartları', not: 'İlgi alanına göre desteler — çevir, karşılığını ve örneği gör' },
             { to: '/ispanyolca/telaffuz', Icon: Mic, ad: 'Telaffuz laboratuvarı', not: 'Türkçede olmayan sesler, vurgu, ritim, kendi kaydın' },
             { to: '/ispanyolca/dusunme', Icon: BrainCircuit, ad: 'İspanyolca düşünme', not: 'Çeviri alışkanlığını kıran antrenmanlar' },
             { to: '/ispanyolca/kilavuz', Icon: Compass, ad: 'Çalışma kılavuzu', not: 'Bu bölüm nasıl kullanılır, nereden başlanır' },

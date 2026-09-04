@@ -7,6 +7,7 @@ import YolHaritasi from './almanca/YolHaritasi'
 import Kutuphane from './almanca/Kutuphane'
 import Ders from './almanca/Ders'
 import Tekrar from './almanca/Tekrar'
+import Kartlar from './almanca/Kartlar'
 import Telaffuz from './almanca/Telaffuz'
 import Dusunme from './almanca/Dusunme'
 import Gelisim from './almanca/Gelisim'
@@ -35,6 +36,7 @@ import Kilavuz from './almanca/Kilavuz'
  *   /almanca/kutuphane        CEFR seviyelerine göre ders kütüphanesi
  *   /almanca/ders/:dersId     ders oynatıcı
  *   /almanca/tekrar           kelime ve aralıklı tekrar
+ *   /almanca/kartlar               ilgi alanına göre dil kartları
  *   /almanca/telaffuz         telaffuz laboratuvarı
  *   /almanca/dusunme          Almanca düşünme antrenmanları
  *   /almanca/gelisim          gelişim ekranı
@@ -52,6 +54,7 @@ export default function Almanca() {
       <Route path="kutuphane" element={<Kutuphane />} />
       <Route path="ders/:dersId" element={<Ders />} />
       <Route path="tekrar" element={<Tekrar />} />
+      <Route path="kartlar" element={<Kartlar />} />
       <Route path="telaffuz" element={<Telaffuz />} />
       <Route path="dusunme" element={<Dusunme />} />
       <Route path="gelisim" element={<Gelisim />} />

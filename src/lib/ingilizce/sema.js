@@ -269,3 +269,103 @@ export function kelimeDogrula(k) {
   if (!SEVIYE_SIRASI.includes(k?.seviye)) ek(`bilinmeyen seviye: ${k?.seviye}`)
   return h
 }
+
+/* ------------------------------------------------------------------ */
+/* DİL KARTLARI                                                        */
+/* ------------------------------------------------------------------ */
+/**
+ * Dil kartları ders müfredatından BAĞIMSIZDIR ve bilinçli olarak öyledir.
+ *
+ * Müfredat kelimeleri (kelime/ klasörü) seviyeye göre seçilir: A1 öğrencisi
+ * A1 kelimesi görür. Kartlar ise İLGİYE göre seçilir: futbol seven öğrenci
+ * futbol destesini açar. Bu ikisi aynı havuzdan beslenseydi ya müfredat
+ * bozulurdu ya da desteler yapay kalırdı.
+ *
+ * KART = ön yüz (hedef dilde) + arka yüz (Türkçe karşılık + örnek cümle).
+ * Örnek cümle ZORUNLUDUR: bir kelimeyi bağlamsız ezberlemek, onu
+ * kullanabilmek değildir. Örneğin Türkçesi de zorunludur; öğrenci yanında
+ * öğretmen olmadan çalışıyor.
+ */
+
+/* Ön yüzdeki yardımcı fiiller ve edatlar örnek cümlede biçim değiştirir
+   ya da hiç görünmez; kelimenin gerçekten geçip geçmediğini ölçerken
+   bunlara bakılmaz. */
+const DOLGU_KELIMELER = new Set([
+  /* Yardımcı ve çok genel fiiller: örnek cümlede çekilerek biçim değiştirir. */
+  'avoir', 'être', 'faire', 'aller', 'haben', 'sein', 'werden', 'machen',
+  'tener', 'estar', 'hacer', 'have', 'take', 'make', 'get', 'does',
+  /* Edatlar ve bağlaçlar: tek başlarına kelimeyi temsil etmez. */
+  'pour', 'dans', 'avec', 'nach', 'para', 'como', 'with', 'from', 'that',
+  'that', 'this', 'your', 'einen', 'eine', 'sich',
+  /* YER TUTUCULAR: kartın ön yüzünde "someone / something" yazar ama örnek
+     cümlede onların yerine gerçek bir kelime geçer. Bunları aramak, doğru
+     kartı yanlış saymak olurdu. */
+  'someone', 'something', 'somebody', 'jemanden', 'jemandem', 'etwas',
+  'alguien', 'algo', 'quelque', 'chose', "quelqu'un",
+])
+
+/** Bir kart kaydını doğrular. Hata dizisi döner (boşsa geçerli). */
+export function kartDogrula(k, yol = '') {
+  const h = []
+  const ek = (m) => h.push(`${yol}${yol ? ' → ' : ''}[${k?.id ?? '?'}] ${m}`)
+  if (!k || typeof k !== 'object') return [`${yol}: kart nesnesi değil.`]
+  if (!k.id) ek('id eksik.')
+  if (!k.on) ek('ön yüz eksik.')
+  if (!k.arka) ek('arka yüz (Türkçe karşılık) eksik.')
+  if (!k.ornek) ek('örnek cümle eksik — kelime bağlamsız öğretilemez.')
+  if (!k.ornekTr) ek('örnek cümlenin Türkçesi eksik — öğrenci yalnız çalışıyor.')
+  if (k.ornek && k.on) {
+    /* Örnek cümle kelimeyi GERÇEKTEN içermeli; içermiyorsa öğrenci
+       kelimeyi kullanımda göremez ve kart yarım kalır.
+       
+       AMA gevşek aranır, çünkü doğru kartlarda kelime örnekte biçim
+       değiştirir: dönüşlü fiilde zamir değişir (s'entraîner → m'entraîne),
+       yardımcı fiilli kalıpta yardımcı çekilir (avoir faim → j'ai faim),
+       isim çoğullaşır. Bu yüzden ön yüzdeki ANLAMLI kelimelerden EN AZ
+       BİRİNİN kökü örnekte geçiyorsa kart geçerli sayılır. */
+    /* KÖK KAÇIŞI: bazı kelimeler örnek cümlede tanınmayacak kadar
+       değişir — Almancanın kuvvetli fiilleri (verlieren → verloren) ve
+       ayrılabilir fiilleri (anschauen → schauen … an) gibi. Bunlarda
+       kart, örnekte aranacak kökü kendisi bildirir. Kaçış bilinçlidir
+       ve içerikte açıkça görünür; sessizce gevşetilmiş bir kural değildir. */
+    const govde = String(k.kok ?? k.on)
+      .toLocaleLowerCase('tr')
+      .replace(/^(le|la|les|un|une|der|die|das|ein|eine|el|los|las|the|to)\s+/i, '')
+      .replace(/^[lsdcjmtn]'/i, '')
+    const parcalar = govde
+      .split(/[\s/(),]+/)
+      /* Baştaki kısaltma eki ve kelimeye yapışmış noktalama temizlenir;
+         "to…?" gibi bir parça hiçbir cümlede bulunamazdı. */
+      .map((p) => p.replace(/^[lsdcjmtn]'/i, '').replace(/[.…?!:;"«»¿¡]+/g, ''))
+      /* Yardımcı fiil ve edatlar anlam taşımaz; onlara bakılmaz. */
+      .filter((p) => p.length >= 4 && !DOLGU_KELIMELER.has(p))
+    const metin = String(k.ornek).toLocaleLowerCase('tr')
+    const gecti = parcalar.length === 0 || parcalar.some((p) => {
+      const koku = p.length > 5 ? p.slice(0, Math.ceil(p.length * 0.6)) : p.slice(0, 4)
+      return metin.includes(koku)
+    })
+    if (!gecti) ek(`örnek cümle kelimeyi içermiyor: "${k.on}" → "${k.ornek}"`)
+  }
+  return h
+}
+
+/** Bir desteyi baştan sona doğrular. */
+export function desteDogrula(deste) {
+  const h = []
+  const ek = (m) => h.push(`[${deste?.id ?? '?'}] ${m}`)
+  if (!deste?.id) ek('id eksik.')
+  if (!deste?.ad) ek('ad eksik.')
+  if (!deste?.aciklama) ek('açıklama eksik — öğrenci destenin ne olduğunu bilmeli.')
+  if (!deste?.simge) ek('simge eksik.')
+  if (deste?.dil !== 'en') ek(`beklenmeyen dil: ${deste?.dil}`)
+  if (!Array.isArray(deste?.kartlar) || deste.kartlar.length < 5) {
+    ek('bir destede en az beş kart olmalı.')
+  }
+  const idler = new Set()
+  ;(deste?.kartlar ?? []).forEach((k, i) => {
+    if (idler.has(k?.id)) ek(`kart id tekrar ediyor: ${k.id}`)
+    idler.add(k?.id)
+    kartDogrula(k, `kart[${i}]`).forEach((m) => h.push(m))
+  })
+  return h
+}

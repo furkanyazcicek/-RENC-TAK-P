@@ -28,8 +28,10 @@ import {
   dersBul,
   kelimeBul,
   notBul,
+  DESTELER,
+  KART_HAVUZU,
 } from '../src/content/ingilizce/index.js'
-import { dersDogrula, kelimeDogrula, alistirmaDogrula } from '../src/lib/ingilizce/sema.js'
+import { dersDogrula, kelimeDogrula, alistirmaDogrula, desteDogrula } from '../src/lib/ingilizce/sema.js'
 import { alistirmaKontrol, DURUM } from '../src/lib/ingilizce/cevap.js'
 import { TURKCE_IZLERI, izleriBul } from '../src/lib/ingilizce/turkceIzleri.js'
 import { bosOturum, cevapIsle, sonrakiSoru, sonucla, yazmaEkle } from '../src/lib/ingilizce/seviyeTespit.js'
@@ -43,7 +45,7 @@ const UYARI = (m) => { console.warn(`  ! ${m}`); uyari += 1 }
 const TAMAM = (m) => console.log(`  ✓ ${m}`)
 
 console.log(`\n=== DRKOÇ İngilizce içerik denetimi ===`)
-console.log(`${DERSLER.length} ders · ${KELIME_HAVUZU.length} kelime · ${MODULLER.length} modül · ${NOTLAR.length} not · ${TESPIT_MADDELERI.length} tespit maddesi\n`)
+console.log(`${DERSLER.length} ders · ${KELIME_HAVUZU.length} kelime · ${MODULLER.length} modül · ${NOTLAR.length} not · ${TESPIT_MADDELERI.length} tespit maddesi · ${KART_HAVUZU.length} dil kartı\n`)
 
 /* ------------------------------------------------------------------ */
 console.log('1) Ders şeması')
@@ -373,6 +375,35 @@ for (const ses of SESLER) {
   if (!ses.karsitlik?.ciftler?.length) HATA(`Ses ${ses.id}: karşıtlık çifti yok`)
 }
 if (hata === telOncesi) TAMAM(`${SESLER.length} ses kaydı eksiksiz`)
+
+
+/* ------------------------------------------------------------------ */
+console.log('\n10) Dil kartları')
+const kartOncesi = hata
+const desteIdleri = new Set()
+const kartIdleri = new Set()
+for (const deste of DESTELER) {
+  if (desteIdleri.has(deste.id)) HATA(`Deste id tekrar ediyor: ${deste.id}`)
+  desteIdleri.add(deste.id)
+  desteDogrula(deste).forEach(HATA)
+  for (const kart of deste.kartlar ?? []) {
+    if (kartIdleri.has(kart.id)) HATA(`Kart id tekrar ediyor: ${kart.id}`)
+    kartIdleri.add(kart.id)
+  }
+  if (deste.kartlar.length < 8) UYARI(`${deste.id}: yalnız ${deste.kartlar.length} kart (en az 8 önerilir)`)
+  /* Bir destede her kartın notu olması gerekmez ama yarısından çoğu
+     notsuzsa deste "kelime listesi"ne dönüşmüş demektir. */
+  const notsuz = deste.kartlar.filter((k) => !k.not).length
+  if (notsuz > deste.kartlar.length / 2) {
+    UYARI(`${deste.id}: kartların yarısından fazlasında kullanım notu yok`)
+  }
+}
+if (KART_HAVUZU.length !== kartIdleri.size) {
+  HATA(`Kart havuzu ile benzersiz kart sayısı uyuşmuyor (${KART_HAVUZU.length} ≠ ${kartIdleri.size})`)
+}
+if (hata === kartOncesi) {
+  TAMAM(`${DESTELER.length} deste · ${KART_HAVUZU.length} kart eksiksiz (her kartta örnek cümle ve Türkçesi var)`)
+}
 
 /* ------------------------------------------------------------------ */
 console.log(`\n=== Sonuç: ${hata} hata, ${uyari} uyarı ===\n`)

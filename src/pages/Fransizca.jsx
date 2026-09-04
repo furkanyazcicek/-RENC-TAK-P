@@ -7,6 +7,7 @@ import YolHaritasi from './fransizca/YolHaritasi'
 import Kutuphane from './fransizca/Kutuphane'
 import Ders from './fransizca/Ders'
 import Tekrar from './fransizca/Tekrar'
+import Kartlar from './fransizca/Kartlar'
 import Telaffuz from './fransizca/Telaffuz'
 import Dusunme from './fransizca/Dusunme'
 import Gelisim from './fransizca/Gelisim'
@@ -35,6 +36,7 @@ import Kilavuz from './fransizca/Kilavuz'
  *   /fransizca/kutuphane        CEFR seviyelerine göre ders kütüphanesi
  *   /fransizca/ders/:dersId     ders oynatıcı
  *   /fransizca/tekrar           kelime ve aralıklı tekrar
+ *   /fransizca/kartlar          ilgi alanına göre dil kartları
  *   /fransizca/telaffuz         telaffuz laboratuvarı
  *   /fransizca/dusunme          Fransızca düşünme antrenmanları
  *   /fransizca/gelisim          gelişim ekranı
@@ -52,6 +54,7 @@ export default function Fransizca() {
       <Route path="kutuphane" element={<Kutuphane />} />
       <Route path="ders/:dersId" element={<Ders />} />
       <Route path="tekrar" element={<Tekrar />} />
+      <Route path="kartlar" element={<Kartlar />} />
       <Route path="telaffuz" element={<Telaffuz />} />
       <Route path="dusunme" element={<Dusunme />} />
       <Route path="gelisim" element={<Gelisim />} />
