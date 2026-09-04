@@ -15,6 +15,8 @@ import { PageLoader } from './Spinner'
  * gezinme, genişlik, iç boşluk ve yüklenme durumu.
  *
  * width: default (76rem) | narrow (56rem) | wide (tam genişlik)
+ * showPageIntro: Sayfa DashboardHero ile açılıyorsa aynı başlığı ikinci kez
+ * göstermemek için false verilir. Navbar başlığı görünmeye devam eder.
  *
  * KATMAN DÜZENİ — sırası önemli:
  *   AuroraBackground  z-0   (fixed, dekoratif)
@@ -37,6 +39,7 @@ export default function AppShell({
   loading = false,
   loadingLabel,
   width = 'default',
+  showPageIntro = true,
   className,
   children,
 }) {
@@ -59,13 +62,15 @@ export default function AppShell({
             className
           )}
         >
-          <div className="panel-page-intro flex flex-wrap items-end justify-between gap-3">
-            <div>
-              <p className="panel-page-kicker">Çalışma alanı</p>
-              <h1>{title}</h1>
-              {subtitle && <p>{subtitle}</p>}
+          {showPageIntro && (
+            <div className="panel-page-intro flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <p className="panel-page-kicker">Çalışma alanı</p>
+                <h1>{title}</h1>
+                {subtitle && <p>{subtitle}</p>}
+              </div>
             </div>
-          </div>
+          )}
           {children}
         </main>
       </div>

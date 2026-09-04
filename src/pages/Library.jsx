@@ -424,8 +424,10 @@ export default function Library() {
       subtitle="Sınav türüne, derse ve konuya göre düzenlenmiş kaynaklar"
       loading={loading}
       loadingLabel="Kütüphane yükleniyor…"
+      showPageIntro={false}
     >
       <DashboardHero
+        asPageHeader
         eyebrow="Ders Kütüphanesi / Notlar"
         title={selectedTopic?.name ?? selectedSubject?.name ?? currentCollection?.label ?? examType ?? 'Konu Kütüphanesi'}
         subtitle={

@@ -138,8 +138,10 @@ export default function TeacherDashboard() {
       subtitle="Sınıfının genel görünümü"
       loading={loading}
       loadingLabel="Panel hazırlanıyor…"
+      showPageIntro={false}
     >
       <DashboardHero
+        asPageHeader
         eyebrow="Öğretmen Paneli"
         title={firstName ? `Hoş geldin ${firstName}` : 'Hoş geldin'}
         subtitle={

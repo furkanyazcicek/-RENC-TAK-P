@@ -263,6 +263,7 @@ export default function Home() {
       subtitle="Günün özeti"
       loading={loading}
       loadingLabel="Anasayfan hazırlanıyor…"
+      showPageIntro={false}
       headerAction={
         <Button as={Link} to="/analiz" variant="secondary" size="sm" icon={BarChart3}>
           <span className="hidden sm:inline">Analize git</span>
@@ -272,6 +273,7 @@ export default function Home() {
     >
       {/* ---------- KARŞILAMA ---------- */}
       <DashboardHero
+        asPageHeader
         eyebrow="Anasayfa"
         title={firstName ? `Merhaba ${firstName}` : 'Merhaba'}
         subtitle={

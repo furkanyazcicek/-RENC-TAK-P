@@ -417,6 +417,7 @@ export default function ParentDashboard() {
           <>
             {/* ---------- KARŞILAMA ---------- */}
             <DashboardHero
+              asPageHeader
               eyebrow="Veli Paneli"
               title={studentName}
               subtitle="Aşağıdaki tablo yalnızca görüntülemeniz içindir; hiçbir kayıt değiştirilemez."

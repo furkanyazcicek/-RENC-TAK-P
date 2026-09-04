@@ -392,6 +392,7 @@ export default function Analytics() {
       title="Analiz"
       subtitle="Gelişimin, grafiklerle"
       width="default"
+      showPageIntro={false}
       headerAction={
         <Button as={Link} to="/anasayfa" variant="ghost" size="sm" icon={Home}>
           <span className="hidden sm:inline">Anasayfa</span>
@@ -400,6 +401,7 @@ export default function Analytics() {
     >
       {/* ---------- KARŞILAMA ---------- */}
       <DashboardHero
+        asPageHeader
         eyebrow="Analiz"
         title={firstName ? `${firstName}, gelişim tablon` : 'Gelişim tablon'}
         subtitle="Aşağıdaki her kart tıklanabilir — detayına inebilirsin."

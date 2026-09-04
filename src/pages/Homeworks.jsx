@@ -83,6 +83,7 @@ export default function Homeworks() {
       subtitle={isTeacher ? 'Öğrencilerine ödev ata ve takip et' : 'Sana atanan ödevler'}
       loading={loading}
       loadingLabel="Ödevler yükleniyor…"
+      showPageIntro={false}
       headerAction={
         isTeacher ? (
           <Button size="sm" icon={Plus} onClick={() => setFormOpen(true)}>
@@ -93,6 +94,7 @@ export default function Homeworks() {
       }
     >
       <DashboardHero
+        asPageHeader
         eyebrow="Ödevler"
         title={
           isTeacher

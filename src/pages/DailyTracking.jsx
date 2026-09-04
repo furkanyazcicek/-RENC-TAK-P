@@ -165,8 +165,10 @@ export default function DailyTracking() {
       loading={loading}
       loadingLabel="Çalışma kayıtların yükleniyor…"
       width="wide"
+      showPageIntro={false}
     >
       <DashboardHero
+        asPageHeader
         eyebrow="Günlük Çalışma"
         title={firstName ? `${firstName}, bu haftaki temposu` : 'Bu haftaki tempon'}
         subtitle={

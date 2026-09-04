@@ -236,8 +236,9 @@ export default function Profile() {
       .toLocaleUpperCase('tr-TR') || '?'
 
   return (
-    <AppShell title="Profilim" subtitle="Hesap bilgilerin ve tercihlerin" width="narrow">
+    <AppShell title="Profilim" subtitle="Hesap bilgilerin ve tercihlerin" width="narrow" showPageIntro={false}>
       <DashboardHero
+        asPageHeader
         eyebrow="Profil"
         title={profile?.full_name || 'Profilim'}
         subtitle={user?.email}

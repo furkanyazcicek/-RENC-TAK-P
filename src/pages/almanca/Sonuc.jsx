@@ -44,8 +44,9 @@ export default function Sonuc() {
   const otuzGun = otuzGunHedefi(ilerleme, DERSLER)
 
   return (
-    <AppShell title="Seviye tespiti sonucu" subtitle="Nerede olduğun ve nereden devam edeceğin">
+    <AppShell title="Seviye tespiti sonucu" subtitle="Nerede olduğun ve nereden devam edeceğin" showPageIntro={false}>
       <DashboardHero
+        asPageHeader
         eyebrow="Sonuç"
         title={`${sonuc.genelSeviye} — ${seviye?.ad ?? ''}`}
         subtitle={seviye?.ozet}

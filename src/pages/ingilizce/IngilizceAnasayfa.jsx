@@ -55,8 +55,10 @@ function Tanitim() {
       title="İngilizce"
       subtitle="Sıfırdan ileri düzeye, kendi hızında"
       width="narrow"
+      showPageIntro={false}
     >
       <DashboardHero
+        asPageHeader
         eyebrow="İngilizce Öğrenme Kütüphanesi"
         title="Nereden başlayacağını biz bulalım"
         subtitle="Önce hedefini soruyoruz, sonra kısa bir seviye tespitiyle nerede olduğunu ölçüyoruz. Sonunda sana özel bir çalışma yolu çıkıyor."
@@ -121,8 +123,9 @@ function Tanitim() {
 function TespitBekliyor({ ilerleme }) {
   const seviye = baslangicSeviyesi(ilerleme)
   return (
-    <AppShell title="İngilizce" subtitle="Sıradaki adım: seviye tespiti" width="narrow">
+    <AppShell title="İngilizce" subtitle="Sıradaki adım: seviye tespiti" width="narrow" showPageIntro={false}>
       <DashboardHero
+        asPageHeader
         eyebrow="Sıradaki adım"
         title="Seviyeni ölçelim"
         subtitle="Yaklaşık 10 dakika. Sorular cevaplarına göre zorlaşıp kolaylaşır; bilmediğin bir şey çıkarsa boş bırakabilirsin."
@@ -189,8 +192,10 @@ function GunlukAkis({ ilerleme }) {
           Gelişimim
         </Button>
       }
+      showPageIntro={false}
     >
       <DashboardHero
+        asPageHeader
         eyebrow="Bugün"
         title={gorevler.length ? 'Bugünün çalışması hazır' : 'Bugünlük her şey tamam'}
         subtitle={

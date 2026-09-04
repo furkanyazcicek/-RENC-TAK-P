@@ -14,6 +14,7 @@ import { cn } from '../../lib/cn'
  *     avatar="AY"
  *     highlights={[{ label: 'Kesintisiz seri', value: '5 gün' }]}
  *     badge={{ label: 'LGS', tone: 'glass' }}
+ *     asPageHeader
  *   />
  *
  * Bu, sayfadaki TEK dolu gradient yüzeydir. Bento ızgarasındaki kartlar
@@ -37,8 +38,11 @@ export default function DashboardHero({
   highlights = [],
   action,
   compact = false,
+  asPageHeader = false,
   className,
 }) {
+  const Heading = asPageHeader ? 'h1' : 'h2'
+
   return (
     <section
       className={cn(
@@ -83,12 +87,12 @@ export default function DashboardHero({
               )}
             </div>
 
-            <h2 className={cn(
+            <Heading className={cn(
               'font-display text-2xl font-extrabold tracking-[-0.03em] text-ink sm:text-3xl lg:text-[2rem]',
               compact ? 'mt-3' : 'mt-4'
             )}>
               {title}
-            </h2>
+            </Heading>
             {subtitle && <p className="mt-1.5 max-w-2xl text-sm font-medium leading-relaxed text-ink/62">{subtitle}</p>}
 
             <div className={cn('flex flex-wrap items-center gap-2', compact ? 'mt-4' : 'mt-5')}>

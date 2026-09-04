@@ -122,6 +122,7 @@ export default function MockExams() {
       subtitle="Genel ve branş denemelerinin net dökümü"
       loading={loading}
       loadingLabel="Denemelerin yükleniyor…"
+      showPageIntro={false}
       headerAction={
         <Button size="sm" icon={Plus} onClick={() => setMockModalOpen(true)}>
           <span className="hidden sm:inline">Deneme Ekle</span>
@@ -130,6 +131,7 @@ export default function MockExams() {
       }
     >
       <DashboardHero
+        asPageHeader
         eyebrow="Denemeler"
         title={firstName ? `${firstName}, deneme tablon` : 'Deneme tablon'}
         subtitle={

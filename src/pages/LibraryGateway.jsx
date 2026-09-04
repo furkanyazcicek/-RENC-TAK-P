@@ -94,8 +94,9 @@ const experiences = [
 
 export default function LibraryGateway() {
   return (
-    <AppShell title="Ders Kütüphanesi" subtitle="Çalışmak istediğin içerik türünü seç.">
+    <AppShell title="Ders Kütüphanesi" subtitle="Çalışmak istediğin içerik türünü seç." showPageIntro={false}>
       <DashboardHero
+        asPageHeader
         eyebrow="Ders Kütüphanesi"
         title="Nasıl çalışmak istersin?"
         subtitle="Konu anlatımları ve soru setleri ayrı alanlarda, aynı konu hiyerarşisiyle düzenlenir."

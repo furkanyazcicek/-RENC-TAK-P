@@ -119,6 +119,7 @@ export default function Questions() {
       subtitle={
         isTeacher ? 'Öğrencilerinden gelen sorular ve yanıtların' : 'Çözemediğin soruları gönder'
       }
+      showPageIntro={false}
       loading={loading}
       loadingLabel="Sorular yükleniyor…"
       headerAction={
@@ -131,6 +132,7 @@ export default function Questions() {
       }
     >
       <DashboardHero
+        asPageHeader
         eyebrow="Sorunlu Sorular"
         title={
           isTeacher

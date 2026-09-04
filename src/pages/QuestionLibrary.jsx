@@ -181,8 +181,8 @@ export default function QuestionLibrary() {
   if (selectedSubject) crumbs.push({ label: selectedSubject.name, onClick: () => go({ examType, subject: selectedSubject }) })
   if (selectedTopic) crumbs.push({ label: selectedTopic.name })
 
-  return <AppShell title="Soru Kütüphanesi" subtitle="Konu bazlı testler, kavrama soruları ve soru bankaları" loading={loading} loadingLabel="Soru kütüphanesi yükleniyor…">
-    <DashboardHero eyebrow="Ders Kütüphanesi / Sorular" title={selectedTopic?.name ?? selectedSubject?.name ?? currentCollection?.label ?? examType ?? 'Soru Kütüphanesi'} subtitle={selectedTopic ? `${selectedSubject?.name} · ${currentCollection?.label ?? examType} · Test ve soru setleri` : 'Sınavını veya sınıfını seç, dersten konuya inerek testlere ulaş'} />
+  return <AppShell title="Soru Kütüphanesi" subtitle="Konu bazlı testler, kavrama soruları ve soru bankaları" loading={loading} loadingLabel="Soru kütüphanesi yükleniyor…" showPageIntro={false}>
+    <DashboardHero asPageHeader eyebrow="Ders Kütüphanesi / Sorular" title={selectedTopic?.name ?? selectedSubject?.name ?? currentCollection?.label ?? examType ?? 'Soru Kütüphanesi'} subtitle={selectedTopic ? `${selectedSubject?.name} · ${currentCollection?.label ?? examType} · Test ve soru setleri` : 'Sınavını veya sınıfını seç, dersten konuya inerek testlere ulaş'} />
     <Breadcrumb items={crumbs} />
 
     {!examType && <LibraryCategorySelector examTypes={EXAM_TYPES} statsForKey={statsForKey} onSelect={(key) => go({ examType: key })} tone="accent" />}

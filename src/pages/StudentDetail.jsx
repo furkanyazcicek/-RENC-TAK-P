@@ -219,7 +219,7 @@ export default function StudentDetail() {
   const pendingQuestions = questions.filter((q) => q.status !== 'Çözüldü').length
 
   return (
-    <AppShell title={studentProfile?.full_name ?? 'Öğrenci'} subtitle="Detaylı performans analizi">
+    <AppShell title={studentProfile?.full_name ?? 'Öğrenci'} subtitle="Detaylı performans analizi" showPageIntro={false}>
       <div className="flex items-center justify-between gap-2 flex-wrap">
         <Button as={Link} to="/ogretmen" variant="ghost" size="sm" icon={ArrowLeft}>
           Tüm öğrencilere dön
@@ -230,6 +230,7 @@ export default function StudentDetail() {
       </div>
 
       <DashboardHero
+        asPageHeader
         eyebrow="Öğrenci Detayı"
         title={studentProfile?.full_name ?? 'Öğrenci'}
         subtitle="Aşağıdaki kartlara tıklayarak dökümlere inebilirsin."
