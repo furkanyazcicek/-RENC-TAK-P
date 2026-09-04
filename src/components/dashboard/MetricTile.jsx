@@ -91,24 +91,20 @@ export default function MetricTile({
         className
       )}
     >
-      <div className="flex items-start gap-3.5">
+      <div className="flex items-center gap-3.5">
         {Icon && <SoftIcon icon={Icon} tone={t.softTone} size="lg" className="group-hover:scale-105" />}
-        <div className="min-w-0 flex-1">
-          <span className="block text-xs font-extrabold leading-snug text-ink/54">{label}</span>
+        <span className="min-w-0 text-xs font-extrabold leading-snug text-ink/54">{label}</span>
+      </div>
 
-        {/* Değer ve eğilim çizgisi yan yana */}
-        <div className="mt-1.5 flex items-end justify-between gap-2">
-          <p className="min-w-0 truncate font-display text-2xl font-extrabold leading-none tabular text-ink sm:text-[1.85rem]">
-            {value}
-          </p>
-          {trend && trend.length > 1 && (
-            <Sparkline data={trend} width={68} color={t.line} className="shrink-0 opacity-75" />
-          )}
-        </div>
+      {/* Değer kendi satırında kalır; uzun süre ve soru sayıları kırpılmaz. */}
+      <p className="mt-3 break-words font-display text-2xl font-extrabold leading-none tabular text-ink sm:text-[1.85rem]">
+        {value}
+      </p>
 
-        {/* Değişim ve açıklama kendi satırında — kırpılmasın */}
-        {(delta || hint) && (
-          <div className="mt-2.5 flex min-h-5 flex-wrap items-center gap-x-1.5 gap-y-1">
+      {/* Açıklama ve eğilim çizgisi ayrı alt satırı paylaşır. */}
+      {(delta || hint || (trend && trend.length > 1)) && (
+        <div className="mt-3 flex min-h-8 flex-wrap items-end justify-between gap-x-2 gap-y-2">
+          <div className="flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-1">
             {delta && (
               <span
                 className={cn(
@@ -124,9 +120,12 @@ export default function MetricTile({
             )}
             {hint && <span className="text-xs text-ink/60">{hint}</span>}
           </div>
-        )}
+
+          {trend && trend.length > 1 && (
+            <Sparkline data={trend} width={64} height={28} color={t.line} className="shrink-0 opacity-75" />
+          )}
         </div>
-      </div>
+      )}
 
       {clickable && (
         <ArrowRight
