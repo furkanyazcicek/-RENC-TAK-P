@@ -1,0 +1,23 @@
+#!/bin/sh
+set -eu
+
+sifir_kimlik=0000000000000000000000000000000000000000
+
+while read -r yerel_ref yerel_kimlik uzak_ref uzak_kimlik; do
+  if [ "$yerel_ref" != "refs/heads/main" ] || [ "$uzak_ref" != "refs/heads/main" ]; then
+    echo "Yayın güvenliği: yalnızca main dalı origin/main dalına gönderilebilir." >&2
+    exit 1
+  fi
+
+  if [ "$yerel_kimlik" = "$sifir_kimlik" ]; then
+    echo "Yayın güvenliği: main dalı silinemez." >&2
+    exit 1
+  fi
+
+  if [ "$uzak_kimlik" != "$sifir_kimlik" ] && ! git merge-base --is-ancestor "$uzak_kimlik" "$yerel_kimlik"; then
+    echo "Yayın güvenliği: geçmişi ezen veya eski sürümü öne alan gönderim engellendi." >&2
+    exit 1
+  fi
+done
+
+npm run yayin:dogrula

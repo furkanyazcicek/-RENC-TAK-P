@@ -14,6 +14,15 @@ Bu dosya, bu depo içinde çalışan tüm Codex oturumları için kalıcı üst 
 
 Codex yalnızca çalışan koddan sorumlu değildir. Kullanıcıya görünen her işte aynı anda ürün tasarımı, UI/UX, etkileşim, eğitim deneyimi, görselleştirme, ön yüz mühendisliği ve görsel kalite bakışıyla çalış.
 
+## Tek yayın kaynağı — değişmez
+
+- Uygulamanın tek yetkili çalışma kopyası `/Users/furkantalhayazcicek/Desktop/DRKOÇ` klasörüdür. Belgeler, yedek, geçici klasör veya başka bir Codex çalışma ağacından yayın yapma.
+- Masaüstündeki `.git` gerçek ve bağımsız klasör olmalıdır; başka konuma giden worktree işaretçisi oluşturma. Doğrudan Vercel yayınını kapatmak için masaüstünde `.vercel` bağlantısı tutulmaz ve `vercel link` çalıştırılmaz.
+- Ana sayfanın tek sürümü `LandingPageEnhanced.jsx` içindeki kitaplı deneyimdir. `legacy`, `product`, tasarım önizlemesi veya ortam değişkeniyle sürüm seçimi geri eklenemez.
+- Üretim yayınından önce `npm run yayin:dogrula` zorunludur. Bu kapı; klasörü, Git ana dalını, Vercel proje kimliğini, eski sürüm kalıntılarını, ana sayfa testini ve üretim derlemesini denetler.
+- `vercel --prod` veya başka bir doğrudan Vercel komutuyla elle ikinci üretim yayını oluşturma. Kullanıcı yayın onayı verdikten sonra bu klasördeki temiz `main` dalı `origin/main` dalına normal (force olmayan) push ile gönderilir; Vercel tek yayını GitHub ana dalından üretir.
+- Yedek klasörlere ve onların Git/Vercel kayıtlarına dokunma.
+
 DRKOÇ arayüzleri şu nitelikleri taşımalıdır:
 
 - zeki, sofistike, çağdaş ve sakin;

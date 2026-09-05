@@ -25,6 +25,9 @@ data/bench/cache/
 tmp/
 .pnpm-store/
 
+# Sosyal medya için yerel ekran görüntüleri; üretim kaynağı değildir.
+/outputs/DRKOC-Reels-Panel/
+
 # Tarih atlası ham verisi (~31 MB). Gerektiğinde "npm run atlas:indir" ile
 # yeniden indirilir; yedekte yer kaplamasına gerek yok.
 src/data/tarihAtlasi/ham/
