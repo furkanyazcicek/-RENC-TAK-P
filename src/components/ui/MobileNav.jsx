@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Link, useLocation } from 'react-router-dom'
-import { ChevronRight, LogOut, Menu, X } from 'lucide-react'
+import { ChevronDown, ChevronRight, LogOut, Menu, X } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
 import { groupNavItems, navForRole, PROFILE_PATH, ROLE_LABELS, ROLE_TONES } from '../../lib/navigation'
 import { cn } from '../../lib/cn'
@@ -109,6 +109,9 @@ export default function MobileNav() {
 
 function NavDrawer({ items, pathname, onClose, profile, role, onSignOut }) {
   const groups = groupNavItems(items, role)
+  const [openGroups, setOpenGroups] = useState(() => ({
+    languages: ['/ingilizce', '/almanca', '/fransizca', '/ispanyolca'].includes(pathname),
+  }))
 
   return createPortal(
     <div
@@ -182,7 +185,65 @@ function NavDrawer({ items, pathname, onClose, profile, role, onSignOut }) {
                 <span className="h-px flex-1 bg-ink/[0.08]" aria-hidden="true" />
               </div>
               <ul className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-                {group.items.map(({ to, label, Icon, mark, tone }) => {
+                {group.items.map(({ id, to, label, Icon, mark, tone, children }) => {
+                  if (children) {
+                    const childActive = children.some((child) => pathname === child.to)
+                    const isOpen = Boolean(openGroups[id])
+
+                    return (
+                      <li key={id} className="col-span-full">
+                        <button
+                          type="button"
+                          onClick={() => setOpenGroups((current) => ({ ...current, [id]: !current[id] }))}
+                          aria-expanded={isOpen}
+                          aria-controls={`${id}-mobile-nav`}
+                          data-tone={tone}
+                          className={cn(
+                            'panel-mobile-nav-card focus-ring flex min-h-[4.65rem] w-full items-center gap-2.5 rounded-2xl p-2.5',
+                            'text-[13px] font-bold leading-tight transition-colors',
+                            childActive ? 'is-active text-ink' : 'text-ink/74'
+                          )}
+                        >
+                          <SoftIcon icon={Icon} tone={tone} size="sm" active={childActive} />
+                          <span className="min-w-0 flex-1 text-left">{label}</span>
+                          <span className="mr-1 text-[11px] font-semibold text-ink/42">{children.length} dil</span>
+                          <ChevronDown
+                            className={cn(
+                              'h-4 w-4 shrink-0 text-ink/42 transition-transform duration-200 motion-reduce:transition-none',
+                              isOpen && 'rotate-180'
+                            )}
+                            aria-hidden="true"
+                          />
+                        </button>
+
+                        {isOpen && (
+                          <ul id={`${id}-mobile-nav`} className="mt-2 grid grid-cols-2 gap-2">
+                            {children.map((child) => {
+                              const active = pathname === child.to
+                              return (
+                                <li key={child.to}>
+                                  <Link
+                                    to={child.to}
+                                    onClick={onClose}
+                                    aria-current={active ? 'page' : undefined}
+                                    data-tone={child.tone}
+                                    className={cn(
+                                      'panel-mobile-language-link focus-ring flex min-h-12 items-center gap-2 rounded-xl border border-line bg-white px-2.5 py-2 text-[12px]',
+                                      active ? 'is-active font-extrabold text-ink' : 'font-semibold text-ink/68'
+                                    )}
+                                  >
+                                    <SoftIcon mark={child.mark} tone={child.tone} size="xs" active={active} />
+                                    <span className="truncate">{child.label}</span>
+                                  </Link>
+                                </li>
+                              )
+                            })}
+                          </ul>
+                        )}
+                      </li>
+                    )
+                  }
+
                   const active = pathname === to
                   return (
                     <li key={to}>

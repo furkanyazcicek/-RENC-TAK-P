@@ -1,5 +1,6 @@
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ChevronLeft, ChevronRight, LogOut } from 'lucide-react'
+import { ChevronDown, ChevronLeft, ChevronRight, LogOut } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
 import { groupNavItems, navForRole, ROLE_LABELS, ROLE_TONES } from '../../lib/navigation'
 import { cn } from '../../lib/cn'
@@ -27,6 +28,18 @@ export default function Sidebar({ collapsed = false, onToggle }) {
   const items = navForRole(role)
   const homePath = items[0]?.to ?? '/'
   const groups = groupNavItems(items, role)
+  const [openGroups, setOpenGroups] = useState(() => ({
+    languages: ['/ingilizce', '/almanca', '/fransizca', '/ispanyolca'].includes(pathname),
+  }))
+
+  function toggleGroup(groupId) {
+    if (collapsed) {
+      onToggle?.()
+      setOpenGroups((current) => ({ ...current, [groupId]: true }))
+      return
+    }
+    setOpenGroups((current) => ({ ...current, [groupId]: !current[groupId] }))
+  }
 
   return (
     <aside
@@ -74,7 +87,66 @@ export default function Sidebar({ collapsed = false, onToggle }) {
             </p>
             </div>
             <ul className="flex flex-col gap-0.5">
-              {group.items.map(({ to, label, Icon, mark, tone }) => {
+              {group.items.map(({ id, to, label, Icon, mark, tone, children }) => {
+                if (children) {
+                  const childActive = children.some((child) => pathname === child.to)
+                  const isOpen = Boolean(openGroups[id])
+
+                  return (
+                    <li key={id}>
+                      <button
+                        type="button"
+                        onClick={() => toggleGroup(id)}
+                        aria-expanded={!collapsed && isOpen}
+                        aria-controls={`${id}-desktop-nav`}
+                        title={collapsed ? label : undefined}
+                        data-tone={tone}
+                        className={cn(
+                          'focus-ring panel-nav-link group relative flex w-full items-center py-2 text-[14px]',
+                          collapsed ? 'justify-center px-2' : 'gap-3 px-2.5',
+                          childActive ? 'panel-nav-active font-extrabold' : 'font-bold'
+                        )}
+                      >
+                        <SoftIcon icon={Icon} tone={tone} size="sm" active={childActive} />
+                        <span className={collapsed ? 'sr-only' : 'min-w-0 flex-1 truncate text-left'}>{label}</span>
+                        {!collapsed && (
+                          <ChevronDown
+                            className={cn(
+                              'h-4 w-4 shrink-0 text-ink/42 transition-transform duration-200 motion-reduce:transition-none',
+                              isOpen && 'rotate-180'
+                            )}
+                            aria-hidden="true"
+                          />
+                        )}
+                      </button>
+
+                      {!collapsed && isOpen && (
+                        <ul id={`${id}-desktop-nav`} className="panel-language-list ml-[1.82rem] mt-1 space-y-0.5 border-l border-line pl-3">
+                          {children.map((child) => {
+                            const active = pathname === child.to
+                            return (
+                              <li key={child.to}>
+                                <Link
+                                  to={child.to}
+                                  aria-current={active ? 'page' : undefined}
+                                  data-tone={child.tone}
+                                  className={cn(
+                                    'focus-ring panel-language-link flex min-h-10 items-center gap-2.5 rounded-btn px-2 py-1.5 text-[13px]',
+                                    active ? 'is-active font-extrabold text-ink' : 'font-semibold text-ink/64'
+                                  )}
+                                >
+                                  <SoftIcon mark={child.mark} tone={child.tone} size="xs" active={active} />
+                                  <span className="truncate">{child.label}</span>
+                                </Link>
+                              </li>
+                            )
+                          })}
+                        </ul>
+                      )}
+                    </li>
+                  )
+                }
+
                 const active = pathname === to
                 return (
                   <li key={to}>

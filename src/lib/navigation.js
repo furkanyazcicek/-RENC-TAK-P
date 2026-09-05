@@ -6,6 +6,7 @@ import {
   ClipboardCheck,
   Crosshair,
   House,
+  Languages,
   LayoutDashboard,
   MessageSquareText,
   NotebookPen,
@@ -59,15 +60,14 @@ export const STUDENT_NAV = [
   { to: '/odevler', label: 'Ödevler', short: 'Ödev', Icon: ClipboardCheck, tone: 'mint' },
   { to: '/kutuphane', label: 'Ders Kütüphanesi', short: 'Kütüphane', Icon: BookOpenText, tone: 'indigo' },
   { to: '/defterim', label: 'Defterim', short: 'Defterim', Icon: NotebookPen, tone: 'sage' },
-  // İngilizce kendi başına bir öğrenme sistemi (seviye tespiti, yol
-  // haritası, tekrar, telaffuz). Kütüphanenin içinde de bağlantısı var
-  // ama günlük çalışılan bir yer olduğu için menüde kendi satırı olsun.
+  // Diller arama ve rota erişimi için bu kaynakta ayrı kalır; menü
+  // sunumunda `navGroup` ile tek bir "Diller" açılır başlığında toplanır.
   // Bayrak yerine dile özgü kısa işaretler kullanılır: dil tek bir ülkeye
   // indirgenmez ve dört rota küçük ölçüde bile birbirinden ayrılır.
-  { to: '/ingilizce', label: 'İngilizce', short: 'İngilizce', mark: 'Hi', tone: 'peach' },
-  { to: '/almanca', label: 'Almanca', short: 'Almanca', mark: 'ß', tone: 'sun' },
-  { to: '/fransizca', label: 'Fransızca', short: 'Fransızca', mark: 'é', tone: 'raspberry' },
-  { to: '/ispanyolca', label: 'İspanyolca', short: 'İspanyolca', mark: 'ñ', tone: 'amber' },
+  { to: '/ingilizce', label: 'İngilizce', short: 'İngilizce', mark: 'Hi', tone: 'peach', navGroup: 'languages' },
+  { to: '/almanca', label: 'Almanca', short: 'Almanca', mark: 'ß', tone: 'sun', navGroup: 'languages' },
+  { to: '/fransizca', label: 'Fransızca', short: 'Fransızca', mark: 'é', tone: 'raspberry', navGroup: 'languages' },
+  { to: '/ispanyolca', label: 'İspanyolca', short: 'İspanyolca', mark: 'ñ', tone: 'amber', navGroup: 'languages' },
   { to: '/sorular', label: 'Sorunlu Sorular', short: 'Sorular', Icon: CircleHelp, tone: 'raspberry' },
   { to: '/mesajlar', label: 'Mesajlar', short: 'Mesaj', Icon: MessageSquareText, tone: 'aqua' },
 ]
@@ -115,16 +115,35 @@ export function groupNavItems(items, role) {
       ]
 
   const used = new Set()
-  const grouped = sections.map((section) => ({
-    label: section.label,
-    items: section.paths
+  const grouped = sections.map((section) => {
+    const sectionItems = section.paths
       .map((path) => items.find((item) => item.to === path))
       .filter((item) => {
         if (!item) return false
         used.add(item.to)
         return true
-      }),
-  })).filter((section) => section.items.length)
+      })
+
+    const compactItems = []
+    sectionItems.forEach((item) => {
+      if (item.navGroup !== 'languages') {
+        compactItems.push(item)
+        return
+      }
+
+      if (!compactItems.some((entry) => entry.id === 'languages')) {
+        compactItems.push({
+          id: 'languages',
+          label: 'Diller',
+          Icon: Languages,
+          tone: 'indigo',
+          children: sectionItems.filter((entry) => entry.navGroup === 'languages'),
+        })
+      }
+    })
+
+    return { label: section.label, items: compactItems }
+  }).filter((section) => section.items.length)
 
   const remaining = items.filter((item) => !used.has(item.to))
   if (remaining.length) grouped.push({ label: 'Diğer', items: remaining })
