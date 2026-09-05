@@ -124,6 +124,9 @@ const KitapGecisOnizleme = lazy(() => import('./pages/KitapGecisOnizleme'))
 /** Ana sayfadaki kitap dilinden türetilen iç panel yönlerini karşılaştırma ekranı. */
 const PanelDesignPreview = lazy(() => import('./pages/PanelDesignPreview'))
 
+/** Kişisel defter yalnız açıldığında yüklenir. */
+const Defterim = lazy(() => import('./pages/Defterim'))
+
 /** Route geçişlerinde gösterilen tam sayfa yükleyici (tasarım sisteminden). */
 function FullPageLoader() {
   return <PageLoader />
@@ -161,6 +164,8 @@ export default function App() {
 
   return (
     <Routes>
+      <Route path="/defterim/:defterId?" element={<ProtectedRoute allow={['student', 'teacher']}><Suspense fallback={<FullPageLoader />}><Defterim /></Suspense></ProtectedRoute>} />
+      {import.meta.env.DEV && <Route path="/defterim-onizleme/:defterId?" element={<Suspense fallback={<FullPageLoader />}><Defterim preview /></Suspense>} />}
       <Route
         path="/"
         element={

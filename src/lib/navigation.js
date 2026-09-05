@@ -8,6 +8,7 @@ import {
   House,
   LayoutDashboard,
   MessageSquareText,
+  NotebookPen,
   RadioTower,
   ScanSearch,
   Users,
@@ -57,6 +58,7 @@ export const STUDENT_NAV = [
   { to: '/denemeler', label: 'Denemeler', short: 'Deneme', Icon: Crosshair, tone: 'orange' },
   { to: '/odevler', label: 'Ödevler', short: 'Ödev', Icon: ClipboardCheck, tone: 'mint' },
   { to: '/kutuphane', label: 'Ders Kütüphanesi', short: 'Kütüphane', Icon: BookOpenText, tone: 'indigo' },
+  { to: '/defterim', label: 'Defterim', short: 'Defterim', Icon: NotebookPen, tone: 'sage' },
   // İngilizce kendi başına bir öğrenme sistemi (seviye tespiti, yol
   // haritası, tekrar, telaffuz). Kütüphanenin içinde de bağlantısı var
   // ama günlük çalışılan bir yer olduğu için menüde kendi satırı olsun.
@@ -72,6 +74,7 @@ export const STUDENT_NAV = [
 
 export const TEACHER_NAV = [
   { to: '/ogretmen', label: 'Öğrencilerim', short: 'Öğrenci', Icon: Users, tone: 'teal', primary: true },
+  { to: '/defterim', label: 'Defterim', short: 'Defterim', Icon: NotebookPen, tone: 'sage' },
   { to: '/odevler', label: 'Ödevler', short: 'Ödev', Icon: ClipboardCheck, tone: 'mint', primary: true },
   { to: '/sorular', label: 'Sorunlu Sorular', short: 'Sorular', Icon: CircleHelp, tone: 'raspberry', primary: true },
   { to: '/mesajlar', label: 'Mesajlar', short: 'Mesaj', Icon: MessageSquareText, tone: 'aqua', primary: true },
@@ -103,11 +106,11 @@ export function groupNavItems(items, role) {
   const sections = role === 'teacher'
     ? [
         { label: 'Öğretmen alanı', paths: ['/ogretmen', '/odevler', '/sorular', '/mesajlar'] },
-        { label: 'Ders araçları', paths: ['/ogretmen/canli-dersler', '/kutuphane'] },
+        { label: 'Ders araçları', paths: ['/ogretmen/canli-dersler', '/kutuphane', '/defterim'] },
       ]
     : [
         { label: 'Öğrenme alanı', paths: ['/anasayfa', '/soru-coz', '/ai-koc', '/analiz', '/gunluk-takip'] },
-        { label: 'Kaynaklar', paths: ['/canli-dersler', '/denemeler', '/odevler', '/kutuphane', '/ingilizce', '/almanca', '/fransizca', '/ispanyolca'] },
+        { label: 'Kaynaklar', paths: ['/canli-dersler', '/denemeler', '/odevler', '/kutuphane', '/defterim', '/ingilizce', '/almanca', '/fransizca', '/ispanyolca'] },
         { label: 'İletişim', paths: ['/sorular', '/mesajlar'] },
       ]
 
