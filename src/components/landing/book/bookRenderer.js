@@ -19,6 +19,21 @@ function text(ctx, value, x, y, size = 24, color = INK, family = SANS, weight = 
 function multiline(ctx, value, x, y, size, color = INK, family = SANS, leading = 1.5) {
   value.split('\n').forEach((part, i) => text(ctx, part, x, y + i * size * leading, size, color, family))
 }
+function wrappedText(ctx, value, x, y, maxWidth, size, color = INK, family = SANS, weight = 400, leading = 1.5) {
+  ctx.font = `${weight} ${size}px ${family}`
+  const lines = []
+  let current = ''
+  value.split(/\s+/).forEach((word) => {
+    const candidate = current ? `${current} ${word}` : word
+    if (current && ctx.measureText(candidate).width > maxWidth) {
+      lines.push(current)
+      current = word
+    } else current = candidate
+  })
+  if (current) lines.push(current)
+  lines.forEach((lineText, index) => text(ctx, lineText, x, y + index * size * leading, size, color, family, weight))
+  return y + Math.max(0, lines.length - 1) * size * leading
+}
 function makeCanvas() {
   const canvas = document.createElement('canvas'); canvas.width = TW; canvas.height = TH
   const ctx = canvas.getContext('2d')
@@ -145,19 +160,35 @@ function chapterTexture(chapter, index) {
   return canvas
 }
 
-function contentsTexture(chapters, final = false) {
+function contentsTexture(chapters, final = false, founderNote = null) {
   const [canvas, ctx] = makeCanvas(); paper(ctx)
   text(ctx, 'DRKOÇ', 86, 70, 24, INK, SANS, 600); line(ctx, 86, 99, 764, 99)
-  text(ctx, final ? 'SONRAKİ SAYFA SENİN.' : 'İÇİNDEKİLER', 86, 204, 18, MUTED)
-  multiline(ctx, final ? 'Merak et,\nkeşfet, öğren.' : 'Öğrenmenin\nyeni sayfası.', 86, 300, 60, INK, SERIF, 1.15)
-  multiline(ctx, 'Birbirine bağlanan beş deneyim.\nTek bir amaç: gerçekten anlamak.', 86, 478, 24, MUTED)
-  chapters.forEach((chapter, index) => {
-    const y = 597 + index * 85
-    line(ctx, 86, y + 26, 764, y + 26)
-    text(ctx, `0${index + 1}`, 86, y, 21, PURPLE)
-    text(ctx, chapter.ad, 159, y, 30, INK, SERIF)
-    text(ctx, chapter.eylem, 528, y, 19, MUTED)
-  })
+  if (!final && founderNote) {
+    text(ctx, founderNote.etiket, 86, 162, 17, PURPLE, SANS, 600)
+    multiline(ctx, founderNote.hitap, 86, 232, 43, INK, SERIF, 1.14)
+
+    let bodyY = 365
+    founderNote.paragraflar.forEach((paragraph) => {
+      bodyY = wrappedText(ctx, paragraph, 86, bodyY, 678, 20, MUTED, SANS, 400, 1.47) + 35
+    })
+
+    line(ctx, 86, bodyY - 4, 142, bodyY - 4, PURPLE, 2)
+    text(ctx, founderNote.alintiGirisi, 86, bodyY + 31, 17, MUTED, SANS, 500)
+    const quoteEnd = wrappedText(ctx, `“${founderNote.alinti}”`, 86, bodyY + 83, 640, 27, INK, SERIF, 400, 1.32)
+    text(ctx, `— ${founderNote.alintiSahibi}`, 86, quoteEnd + 38, 15, MUTED, SANS, 500)
+    text(ctx, founderNote.imza, 528, 1080, 17, INK, SERIF)
+  } else {
+    text(ctx, 'SONRAKİ SAYFA SENİN.', 86, 204, 18, MUTED)
+    multiline(ctx, 'Merak et,\nkeşfet, öğren.', 86, 300, 60, INK, SERIF, 1.15)
+    multiline(ctx, 'Birbirine bağlanan beş deneyim.\nTek bir amaç: gerçekten anlamak.', 86, 478, 24, MUTED)
+    chapters.forEach((chapter, index) => {
+      const y = 597 + index * 85
+      line(ctx, 86, y + 26, 764, y + 26)
+      text(ctx, `0${index + 1}`, 86, y, 21, PURPLE)
+      text(ctx, chapter.ad, 159, y, 30, INK, SERIF)
+      text(ctx, chapter.eylem, 528, y, 19, MUTED)
+    })
+  }
   text(ctx, 'LGS · TYT · AYT · KPSS · OKUL DERSLERİ', 86, 1120, 18, MUTED)
   return canvas
 }
@@ -179,9 +210,13 @@ function coverTexture(cloth, copy) {
   text(ctx, 'DRKOÇ', 456, 342, 91, '#080e19', SANS, 600)
   ctx.strokeStyle = 'rgba(116,137,164,.22)'; ctx.lineWidth = 1; ctx.strokeText('DRKOÇ', 456, 342)
   text(ctx, 'ETKİLEŞİMLİ ÖĞRENME', 456, 397, 17, '#8995a8')
-  copy.baslik.forEach((part, i) => text(ctx, part, 456, 551 + i * 72, 61, '#f2f0e8', SANS, 500))
-  line(ctx, 410, 707, 502, 707, 'rgba(190,170,123,.62)', 1)
-  text(ctx, 'MERAK ET. DENE. ANLA.', 456, 765, 18, '#b9b8b3')
+  const coverSize = copy.baslik.length > 2 ? 48 : 61
+  const coverGap = copy.baslik.length > 2 ? 58 : 72
+  const coverStart = copy.baslik.length > 2 ? 523 : 551
+  copy.baslik.forEach((part, i) => text(ctx, part, 456, coverStart + i * coverGap, coverSize, '#f2f0e8', SANS, 500))
+  const coverRuleY = coverStart + copy.baslik.length * coverGap + 18
+  line(ctx, 410, coverRuleY, 502, coverRuleY, 'rgba(190,170,123,.62)', 1)
+  text(ctx, 'MERAK ET. DENE. ANLA.', 456, coverRuleY + 58, 18, '#b9b8b3')
   text(ctx, 'LGS · TYT · AYT · KPSS', 456, 1038, 17, '#939eb0')
   ctx.textAlign = 'left'
   const spine = ctx.createLinearGradient(0, 0, 78, 0)
@@ -256,7 +291,7 @@ export function createBookRenderer(canvas, copy, cloth) {
   const ctx = canvas.getContext('2d', { alpha: true })
   if (!ctx) return null
   const cover = coverTexture(cloth, copy)
-  const contents = contentsTexture(copy.bolumler)
+  const contents = contentsTexture(copy.bolumler, false, copy.kurucuNotu)
   const ending = contentsTexture(copy.bolumler, true)
   const chapters = copy.bolumler.map(chapterTexture)
 

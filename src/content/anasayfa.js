@@ -4,7 +4,7 @@
  */
 export const ANASAYFA_ICERIGI = {
   kitap: {
-    baslik: ['Bir sayfa aç.', 'Bir fikri değiştir.'],
+    baslik: ['Kazanmak,', 'detayları herkesten', 'farklı yapmaktır.'],
     ustYazi: 'MERAKLA BAŞLAR. SENİNLE İLERLER.',
     aciklama: 'Atlaslardan ders notlarına, sorulardan kendi çalışma rotana. Öğrenmenin bütün sayfaları bir arada.',
     kaydir: 'Kaydırarak kitabı keşfet',
@@ -12,6 +12,20 @@ export const ANASAYFA_ICERIGI = {
     gec: 'Deneyime geç',
     sonBaslik: 'Merak et, keşfet, öğren.',
     sonAciklama: 'Artık sayfaya sen yön ver. Bir alan seç, değişkeni değiştir ve sonucu kendi gözlerinle gör.',
+    kurucuNotu: {
+      etiket: 'KURUCUDAN',
+      hitap: 'Değerli öğrencilerim,\nsayın velilerim,',
+      paragraflar: [
+        'Eğitim, hayatımızın ayrılmaz bir parçası; öğrenmek ise vazgeçilmez bir yaşam biçimidir. Amacımız yalnızca öğrencimizi bir sınava hazırlamak değil, ona yaşam boyu öğrenmenin ilke ve yöntemlerini kazandırmaktır.',
+        'Çok çalışacağız; evet. Ama farklı, daha bilinçli ve daha doğru çalışacağız. Kalıplardan sıyrılıp bireysel bir eğitim anlayışı geliştirmek temel hedefimizdir.',
+        'Bu nedenle ezberden çok anlamaya, sonuçtan çok yönteme odaklanacağız. Merakı, sorgulamayı ve anlatabilmeyi çalışmalarımızın merkezine koyacağız.',
+        'Unutmayın: Öğrenmek, sınavdan sınava bilgi ezberlemek değildir. Gerçek öğrenme, bildiğini sadeleştirip başkasına aktarabilmektir.',
+      ],
+      alintiGirisi: 'Einstein’a atfedilen şu söz, yaklaşımımızı özetliyor:',
+      alinti: 'Bir şeyi altı yaşındaki bir çocuğa açıklayamıyorsan, onu kendin de anlamamışsın demektir.',
+      alintiSahibi: 'Albert Einstein’a atfedilir',
+      imza: 'Furkan Talha Yazçiçek',
+    },
     bolumler: [
       { id: 'atlaslar', ad: 'Atlaslar', eylem: 'Keşfet', baslik: 'Soyut olanı\ngörünür kıl.', aciklama: 'Bir değişkeni değiştir. Modelin nasıl\ndavrandığını kendi gözlerinle gör.', alt: 'Fizik · Kimya · Biyoloji · Coğrafya · Tarih' },
       { id: 'notlar', ad: 'Ders Notu', eylem: 'Bağlantı kur', baslik: 'Bilgi, bağlantı\nkurunca kalır.', aciklama: 'Kısa anlatımı görsel modelle birleştir.\nOkuduğun kavramı adım adım keşfet.', alt: 'Görsel anlatım · etkileşimli ders okuyucu' },

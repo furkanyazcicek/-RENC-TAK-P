@@ -111,6 +111,9 @@ export default function BookHomeHero() {
         </div>
         <h1 id="kitap-baslik" className="sr-only">{copy.baslik.join(' ')}</h1>
         <p className="sr-only">{copy.aciklama} Sayfaları kaydırarak veya bölüm düğmeleriyle keşfedebilirsin.</p>
+        <p className="sr-only">
+          {copy.kurucuNotu.etiket}: {copy.kurucuNotu.hitap.replace('\n', ' ')} {copy.kurucuNotu.paragraflar.join(' ')} {copy.kurucuNotu.alintiGirisi} “{copy.kurucuNotu.alinti}” — {copy.kurucuNotu.alintiSahibi}. {copy.kurucuNotu.imza}
+        </p>
 
         <div className="book-home__scene" ref={stageRef}>
           <div className="book-home__desk-detail" aria-hidden="true">

@@ -4,7 +4,15 @@ import { chapterAt, chapterProgress, coverTurn, leafTurn, pageCurve, projectPoin
 assert.equal(coverTurn(0), 0)
 assert.equal(coverTurn(1), 1)
 for (let index = 0; index < 5; index += 1) {
-  assert.equal(chapterAt(chapterProgress(index)), index, `Bölüm ${index + 1} doğru seçilmeli`)
+  const progress = chapterProgress(index)
+  assert.equal(chapterAt(progress), index, `Bölüm ${index + 1} doğru seçilmeli`)
+  for (let leafIndex = 0; leafIndex < 5; leafIndex += 1) {
+    assert.equal(
+      leafTurn(progress, leafIndex),
+      leafIndex < index ? 1 : 0,
+      `Bölüm ${index + 1} durağında sayfalar tamamen açık olmalı`,
+    )
+  }
   assert.equal(leafTurn(0, index), 0)
   assert.equal(leafTurn(1, index), 1)
   let previous = 0
@@ -22,7 +30,10 @@ for (let index = 0; index < 5; index += 1) {
 }
 assert.ok(Math.abs(pageCurve(0).at(-1).x - PAGE_WIDTH) < 1e-8)
 assert.ok(Math.abs(pageCurve(1).at(-1).x + PAGE_WIDTH) < 1e-8)
-assert.ok(Array.from({ length: 5 }, (_, i) => leafTurn(0.58, i)).every((v) => v > 0 && v < 1), 'Beş yaprak aynı anda yelpaze oluşturmalı')
+for (let step = 0; step <= 100; step += 1) {
+  const movingLeaves = Array.from({ length: 5 }, (_, i) => leafTurn(step / 100, i)).filter((value) => value > 0 && value < 1)
+  assert.ok(movingLeaves.length <= 1, 'Bir anda yalnızca hedefe giden yaprak dönmeli')
+}
 assert.equal(chapterAt(-1), 0)
 assert.equal(chapterAt(2), 4)
-console.log('Kitap ana sayfa: 5 bölüm, ileri/geri eşleşmesi, cilt bağlantısı, yelpaze ve 33.330 izdüşüm kontrolü geçti.')
+console.log('Kitap ana sayfa: 5 tam açık bölüm durağı, ileri/geri eşleşmesi, cilt bağlantısı ve 33.330 izdüşüm kontrolü geçti.')

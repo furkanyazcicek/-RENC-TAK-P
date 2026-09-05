@@ -3,10 +3,19 @@ export const PAGE_WIDTH = 340
 export const PAGE_HEIGHT = 470
 export const clamp = (value, min = 0, max = 1) => Math.max(min, Math.min(max, value))
 export const smoothstep = (value) => { const t = clamp(value); return t * t * (3 - 2 * t) }
-export const chapterProgress = (index) => 0.22 + clamp(index, 0, 4) * 0.155
-export const chapterAt = (progress) => clamp(Math.floor((progress - 0.18) / 0.155), 0, 4)
+const FIRST_CHAPTER_PROGRESS = 0.22
+const CHAPTER_GAP = 0.155
+const PAGE_TURN_INSET = 0.015
+const PAGE_TURN_DURATION = CHAPTER_GAP - PAGE_TURN_INSET * 2
+
+export const chapterProgress = (index) => FIRST_CHAPTER_PROGRESS + clamp(index, 0, 4) * CHAPTER_GAP
+export const chapterAt = (progress) => clamp(Math.round((progress - FIRST_CHAPTER_PROGRESS) / CHAPTER_GAP), 0, 4)
 export const coverTurn = (progress) => smoothstep(progress / 0.21)
-export const leafTurn = (progress, index) => smoothstep((progress - 0.24 - index * 0.08) / 0.42)
+// Each chapter marker is a stable, fully open spread. A leaf only turns in the
+// space between two markers, so direct navigation can never stop mid-page.
+export const leafTurn = (progress, index) => smoothstep(
+  (progress - chapterProgress(index) - PAGE_TURN_INSET) / PAGE_TURN_DURATION,
+)
 
 // Integrating the changing tangent bends each leaf continuously around the
 // binding. The cover uses a rigid hinge; paper has a soft, delayed outer edge.
