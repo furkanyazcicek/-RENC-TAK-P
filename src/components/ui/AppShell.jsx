@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { cn } from '../../lib/cn'
 import Navbar from '../Navbar'
 import MobileNav from './MobileNav'
@@ -43,13 +44,34 @@ export default function AppShell({
   className,
   children,
 }) {
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
+    try {
+      return localStorage.getItem('drkoc-sidebar-collapsed') === 'true'
+    } catch {
+      return false
+    }
+  })
+
+  function toggleSidebar() {
+    const next = !sidebarCollapsed
+    setSidebarCollapsed(next)
+    try {
+      localStorage.setItem('drkoc-sidebar-collapsed', String(next))
+    } catch {
+      // Tarayıcı depolamayı engellese de panel açılıp kapanabilsin.
+    }
+  }
+
   if (loading) return <PageLoader label={loadingLabel} />
 
   return (
     <div className="app-soft-panel-theme panel-workspace-bg relative min-h-screen">
-      <Sidebar />
+      <Sidebar collapsed={sidebarCollapsed} onToggle={toggleSidebar} />
 
-      <div className="relative lg:pl-[16.875rem]">
+      <div className={cn(
+        'relative transition-[padding-left] duration-200 ease-out motion-reduce:transition-none',
+        sidebarCollapsed ? 'lg:pl-20' : 'lg:pl-[16.875rem]'
+      )}>
         <Navbar title={title} subtitle={subtitle} action={headerAction} />
 
         <main
