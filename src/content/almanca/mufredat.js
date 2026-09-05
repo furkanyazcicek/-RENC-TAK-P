@@ -198,9 +198,11 @@ export const MODULLER = [
       'Perfekt kurar ve haben/sein seçimini doğru yapar.',
       'Partizip II biçimlerini düzenli ve düzensiz fiillerde üretir.',
       'sein / haben / Modalverben için Präteritum kullanır.',
+      'Sıra belirteçleriyle olayları birbirine bağlar.',
+      '"als" ve "wenn" arasındaki farkı doğru uygular.',
     ],
-    durum: 'plan',
-    dersler: [],
+    durum: 'hazir',
+    dersler: ['a2-m1-d1', 'a2-m1-d2', 'a2-m1-d3', 'a2-m1-d4'],
   },
   {
     id: 'a2-m2',

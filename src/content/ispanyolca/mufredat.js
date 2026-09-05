@@ -199,9 +199,11 @@ export const MODULLER = [
       'Imperfecto çekimini kurar.',
       'Olay ile betimlemeyi bağlama göre ayırır.',
       'Çocukluğunu anlatan bir metin yazar.',
+      'Indefinido çekimini düzenli ve düzensiz fiillerde kurar.',
+      'Vurgu işaretinin zamanı belirlediğini fark eder.',
     ],
-    durum: 'plan',
-    dersler: [],
+    durum: 'hazir',
+    dersler: ['a2-m1-d1', 'a2-m1-d2', 'a2-m1-d3', 'a2-m1-d4'],
   },
   {
     id: 'a2-m2',

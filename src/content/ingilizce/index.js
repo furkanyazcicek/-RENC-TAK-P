@@ -20,8 +20,9 @@ import { KELIMELER as KELIMELER_RUTIN } from './kelime/a1-rutin.js'
 import { KELIMELER as KELIMELER_OKUL } from './kelime/a1-okul.js'
 import { KELIMELER as KELIMELER_YEMEK } from './kelime/a1-yemek.js'
 import { KELIMELER as KELIMELER_SEHIR } from './kelime/a1-sehir.js'
+import { KELIMELER as KELIMELER_A2_GECMIS } from './kelime/a2-gecmis.js'
 import { NOTLAR, notBul, modulNotlari } from './notlar/index.js'
-import { DESTELER, KART_HAVUZU, desteBul, kartBul } from './kartlar/index.js'
+import { DESTELER, KART_HAVUZU, desteBul, kartBul, modulDestesi } from './kartlar/index.js'
 import { SESLER, SHADOWING } from './telaffuz.js'
 import { ANTRENMANLAR, IC_SES_GOREVLERI } from './dusunme.js'
 import { MADDELER, YAZMA_GOREVI } from './seviyeTespitBankasi.js'
@@ -58,6 +59,10 @@ import a1M6D2 from './dersler/a1-m6-d2.js'
 import a1M6D3 from './dersler/a1-m6-d3.js'
 import a1M6D4 from './dersler/a1-m6-d4.js'
 import a1M6D5 from './dersler/a1-m6-d5.js'
+import a2M1D1 from './dersler/a2-m1-d1.js'
+import a2M1D2 from './dersler/a2-m1-d2.js'
+import a2M1D3 from './dersler/a2-m1-d3.js'
+import a2M1D4 from './dersler/a2-m1-d4.js'
 
 /**
  * MÜFREDAT SIRASI — ÖNEMLİ
@@ -103,6 +108,10 @@ const HAM_DERSLER = [
   a1M6D3,
   a1M6D4,
   a1M6D5,
+  a2M1D1,
+  a2M1D2,
+  a2M1D3,
+  a2M1D4,
 ]
 
 /** Seviye kodu → sıra numarası (Pre-A1 = 0). */
@@ -132,6 +141,7 @@ export const KELIME_HAVUZU = [
   ...KELIMELER_OKUL,
   ...KELIMELER_YEMEK,
   ...KELIMELER_SEHIR,
+  ...KELIMELER_A2_GECMIS,
 ]
 
 /**
@@ -156,6 +166,7 @@ export {
   DESTELER,
   KART_HAVUZU,
   desteBul,
+  modulDestesi,
   kartBul,
   NOTLAR,
   notBul,

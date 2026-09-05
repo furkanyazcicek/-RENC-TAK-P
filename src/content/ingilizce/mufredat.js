@@ -171,9 +171,15 @@ export const MODULLER = [
     ad: 'Geçmişi anlatmak',
     amac: 'Dün, geçen hafta, çocukluğun — olan bitenden söz et.',
     islev: 'Anlatı kurma, olay sıralama',
-    kazanimlar: ['Past Simple düzenli ve düzensiz fiilleri çeker.', 'Bir olayı zaman sırasıyla anlatır.'],
-    durum: 'plan',
-    dersler: [],
+    kazanimlar: [
+      'Past Simple düzenli ve düzensiz fiilleri çeker.',
+      'Olumsuz ve soruda geçmişi yardımcı fiile taşır, asıl fiili yalın bırakır.',
+      'Sıra belirteçleriyle olayları birbirine bağlar.',
+      '"when" ve "while" arasındaki farkı doğru uygular.',
+      'Bir olayı zaman sırasıyla anlatır.',
+    ],
+    durum: 'hazir',
+    dersler: ['a2-m1-d1', 'a2-m1-d2', 'a2-m1-d3', 'a2-m1-d4'],
   },
   {
     id: 'a2-m2',

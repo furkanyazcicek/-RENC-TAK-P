@@ -10,8 +10,9 @@ import DersBloklari from '../../components/ingilizce/DersBloklari'
 import Alistirma from '../../components/ingilizce/alistirmalar/Alistirma'
 import YazmaGorevi from '../../components/ingilizce/alistirmalar/YazmaGorevi'
 import { useIlerleme, useSes } from '../../components/ingilizce/useIngilizce'
-import { SesUyarisi } from '../../components/ingilizce/SesDugmesi'
-import { dersBul, dersKelimeleri, notBul } from '../../content/ingilizce'
+import SesDugmesi, { SesUyarisi } from '../../components/ingilizce/SesDugmesi'
+import DersKartlari from '../../components/dil/DersKartlari'
+import { dersBul, dersKelimeleri, modulDestesi, notBul } from '../../content/ingilizce'
 import { DURUM } from '../../lib/ingilizce/cevap'
 import {
   beceriGuncelle, dersBasla, dersTamamla, DURUMLAR, DURUM_ETIKETLERI, yazmaKaydet,
@@ -310,26 +311,14 @@ export default function Ders() {
             </ul>
           </section>
 
-          {kelimeler.length > 0 && (
-            <section className="rounded-card bg-surface-muted p-5 ring-1 ring-inset ring-line">
-              <h2 className="font-display text-base font-bold text-ink">Bu dersin tekrar kartları</h2>
-              <p className="mt-1 text-sm leading-relaxed text-ink/60">
-                Bu {kelimeler.length} kelime tekrar sistemine eklendi. Unutma noktasına yaklaştıklarında
-                günlük görevlerinde karşına çıkacaklar.
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {kelimeler.map((k) => (
-                  <span
-                    key={k.id}
-                    className="rounded-full bg-surface px-3 py-1.5 text-sm font-medium text-ink ring-1 ring-inset ring-line"
-                    lang="en"
-                  >
-                    {k.kelime}
-                  </span>
-                ))}
-              </div>
-            </section>
-          )}
+          <DersKartlari
+            kelimeler={kelimeler}
+            deste={modulDestesi(ders.modul)}
+            kartlarYolu="/ingilizce/kartlar"
+            dilKodu="en"
+            SesDugmesi={SesDugmesi}
+            sesHazir={sesHazir}
+          />
 
           <div className="flex justify-end">
             <Button size="lg" iconRight={ArrowRight} onClick={() => setAsama('sinav')}>

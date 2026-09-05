@@ -198,9 +198,11 @@ export const MODULLER = [
       'imparfait çekimini kurar.',
       'Olay ile betimlemeyi bağlama göre ayırır.',
       'Çocukluğunu anlatan bir metin yazar.',
+      'passé composé\'de avoir ve être seçimini doğru yapar.',
+      'être ile çekilen fiillerde participe passé uyumunu kurar.',
     ],
-    durum: 'plan',
-    dersler: [],
+    durum: 'hazir',
+    dersler: ['a2-m1-d1', 'a2-m1-d2', 'a2-m1-d3', 'a2-m1-d4'],
   },
   {
     id: 'a2-m2',

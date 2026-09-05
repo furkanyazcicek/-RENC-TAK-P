@@ -51,3 +51,33 @@ export function desteBul(id) {
 export function kartBul(id) {
   return KART_HAVUZU.find((k) => k.id === id) ?? null
 }
+
+/**
+ * MODÜL → DESTE KÖPRÜSÜ
+ *
+ * Desteler müfredattan bağımsızdır ve öyle kalmalıdır (yukarıdaki nota
+ * bakınız). Ama öğrenci bir dersi bitirdiğinde, o dersin konusuyla
+ * ilgilenen destenin varlığından haberdar olmalı; yoksa kartlar ayrı bir
+ * sekmede durur ve hiç açılmaz. Bu eşleme YALNIZCA bir öneri köprüsüdür:
+ * dersin içeriğini belirlemez, sadece "bu konuyu sevdiysen şu desteye de
+ * bak" der.
+ */
+const MODUL_DESTE = {
+  'prea1-m1': 'gunluk-konusma',
+  'prea1-m2': 'gunluk-konusma',
+  'a1-m1': 'gunluk-konusma',
+  'a1-m2': 'okul-arkadaslik',
+  'a1-m3': 'gunluk-konusma',
+  'a1-m4': 'okul-arkadaslik',
+  'a1-m5': 'yemek',
+  'a1-m6': 'seyahat',
+  'a2-m1': 'seyahat',
+  'a2-m2': 'gunluk-konusma',
+  'a2-m3': 'gunluk-konusma',
+  'a2-m4': 'seyahat',
+}
+
+/** Bir modülün konusuna en yakın deste. Eşleşme yoksa günlük konuşma. */
+export function modulDestesi(modulId) {
+  return desteBul(MODUL_DESTE[modulId] ?? 'gunluk-konusma')
+}
