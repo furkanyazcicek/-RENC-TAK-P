@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { ArrowLeft } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { LESSONS } from '../content/lessons'
+import { hamBilgiNotuBul } from '../content/hamBilgiNotlari'
+import HamBilgiNotuSeridi from '../components/HamBilgiNotuSeridi'
 import { auditLessonDepth, normalizeLessonDocument } from '../lib/lesson/schema'
 import LessonDocument from '../components/lessons/reader/LessonDocument'
 import LessonMasthead from '../components/lessons/reader/LessonMasthead'
@@ -100,6 +102,15 @@ export default function LessonPreview() {
   )
   const narrationItems = useMemo(() => buildNarrationItems(document, source.slug), [document, source.slug])
   const isNarrationPilot = narrationItems.length > 0
+  const hamBilgiNotu = useMemo(
+    () =>
+      hamBilgiNotuBul({
+        examType: source.placement.examType,
+        subject: source.placement.subject,
+        topic: source.placement.topic,
+      }),
+    [source]
+  )
 
   const lesson = {
     id: 'preview',
@@ -189,6 +200,13 @@ export default function LessonPreview() {
               else setVoicePanel({ kind: 'lesson', title: 'Hocayla Çalış', sections: narrationSections })
             }}
           />
+
+          {/* Konunun yazdırılabilir çalışma notu — kütüphanede dersin
+              üstünde görünen şeridin aynısı. Önizlemede de göstermek,
+              iki notun birlikte nasıl durduğunu denetlemeyi sağlar. */}
+          <div className="mt-6">
+            <HamBilgiNotuSeridi not={hamBilgiNotu} />
+          </div>
 
           {isNarrationPilot && narrationOpen && (
             <LessonNarrationPlayer

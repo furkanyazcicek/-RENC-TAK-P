@@ -28,6 +28,8 @@ import {
 } from '../data/highSchoolCurriculum'
 import { LESSONS } from '../content/lessons'
 import { emekliKonuMu } from '../content/emekliKonular'
+import { hamBilgiNotuBul } from '../content/hamBilgiNotlari'
+import HamBilgiNotuSeridi from '../components/HamBilgiNotuSeridi'
 import LibraryNoteForm from '../components/LibraryNoteForm'
 import LibraryNoteCard from '../components/LibraryNoteCard'
 import LessonEditor from '../components/lessons/LessonEditor'
@@ -361,7 +363,22 @@ export default function Library() {
       (a, b) => (a.order_index ?? 0) - (b.order_index ?? 0)
     )
   }, [bundledLessonsByTopic, lessonsByTopic, selectedTopic, topicId])
-  const totalCurrentItems = currentNotes.length + currentLessons.length
+
+  // Yazdırılabilir çalışma notu (ham bilgi PDF'i) siteyle birlikte gelir;
+  // veritabanına bakılmaz. Sınıf koleksiyonlarında ders adı farklı
+  // olabildiği için eşleşme bulunamazsa şerit hiç çizilmez.
+  const hamBilgiNotu = useMemo(
+    () =>
+      hamBilgiNotuBul({
+        examType,
+        subject: selectedSubject?.name,
+        topic: selectedTopic?.name,
+      }),
+    [examType, selectedSubject, selectedTopic]
+  )
+
+  const totalCurrentItems =
+    currentNotes.length + currentLessons.length + (hamBilgiNotu ? 1 : 0)
 
   const examSubjects = useMemo(
     () => subjects.filter((subject) => !subject.is_grade_collection),
@@ -641,7 +658,9 @@ export default function Library() {
               compact
             />
           ) : (
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+            <>
+              <HamBilgiNotuSeridi not={hamBilgiNotu} />
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {currentLessons.map((lesson) => (
                 <StructuredLessonCard
                   key={lesson.id}
@@ -658,7 +677,8 @@ export default function Library() {
                   onDeleted={() => loadNotesForTopic(topicId)}
                 />
               ))}
-            </div>
+              </div>
+            </>
           )}
         </Panel>
       )}
