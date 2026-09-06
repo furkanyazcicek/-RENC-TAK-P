@@ -19,7 +19,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — canlılık ölçütleri, virüsler ve organizasyon basamakları; ÖSYM tuzakları ve 40 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-biyoloji/canlilarin-ortak-ozellikleri.pdf",
     "sayfa": 14,
-    "boyutKB": 109
+    "boyutKB": 117
   },
   {
     "sinav": "TYT",
@@ -29,7 +29,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — sınıflandırma ölçütleri, taksonomik birimler ve altı âlemin tam dökümü; 40 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-biyoloji/canlilarin-siniflandirilmasi.pdf",
     "sayfa": 13,
-    "boyutKB": 98
+    "boyutKB": 106
   },
   {
     "sinav": "TYT",
@@ -39,7 +39,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — inorganik ve organik bileşikler, enzimler, nükleik asitler ve ATP; grafik yorumu ve 45 soruluk fasikül",
     "dosya": "/kutuphane-notlari/tyt-biyoloji/canlilarin-temel-bilesenleri.pdf",
     "sayfa": 14,
-    "boyutKB": 113
+    "boyutKB": 121
   },
   {
     "sinav": "TYT",
@@ -49,7 +49,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — ekosistem bileşenleri, besin zinciri, enerji akışı, madde döngüleri ve popülasyon; 45 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-biyoloji/ekosistem-ekolojisi.pdf",
     "sayfa": 12,
-    "boyutKB": 103
+    "boyutKB": 111
   },
   {
     "sinav": "TYT",
@@ -59,7 +59,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — hücre döngüsü, mitoz, mayoz ve üreme; kromozom-DNA grafikleri ve 45 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-biyoloji/hucre-bolunmeleri.pdf",
     "sayfa": 12,
-    "boyutKB": 103
+    "boyutKB": 111
   },
   {
     "sinav": "TYT",
@@ -69,7 +69,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — hücre zarı ve madde geçişleri, organeller, çekirdek; osmoz grafikleri ve 50 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-biyoloji/hucre.pdf",
     "sayfa": 14,
-    "boyutKB": 109
+    "boyutKB": 117
   },
   {
     "sinav": "TYT",
@@ -79,7 +79,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — Mendel ilkeleri, çaprazlama teknikleri, kan grupları, eşeye bağlı kalıtım ve soy ağacı; 45 soruluk fasikül",
     "dosya": "/kutuphane-notlari/tyt-biyoloji/kalitim.pdf",
     "sayfa": 12,
-    "boyutKB": 92
+    "boyutKB": 100
   },
   {
     "sinav": "TYT",
@@ -89,7 +89,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — asit-baz tanımları, pH ölçeği, nötrleşme ve günlük hayattaki karşılıkları; 45 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-kimya/asit-baz-ve-tuz.pdf",
     "sayfa": 11,
-    "boyutKB": 89
+    "boyutKB": 97
   },
   {
     "sinav": "TYT",
@@ -99,7 +99,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — atom modelleri, atomun yapısı, izotoplar, elektron dizilimi ve periyodik özellikler; 50 soruluk fasikül",
     "dosya": "/kutuphane-notlari/tyt-kimya/atom-ve-periyodik-sistem.pdf",
     "sayfa": 13,
-    "boyutKB": 94
+    "boyutKB": 102
   },
   {
     "sinav": "TYT",
@@ -109,7 +109,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — su, hava ve toprak kimyası, çevre sorunları ve sürdürülebilirlik; 40 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-kimya/doga-ve-kimya.pdf",
     "sayfa": 10,
-    "boyutKB": 86
+    "boyutKB": 94
   },
   {
     "sinav": "TYT",
@@ -119,7 +119,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — saf madde ve karışım ayrımı, homojen-heterojen, derişim hesapları ve ayırma yöntemleri; 45 soruluk fasikül",
     "dosya": "/kutuphane-notlari/tyt-kimya/karisimlar.pdf",
     "sayfa": 11,
-    "boyutKB": 84
+    "boyutKB": 92
   },
   {
     "sinav": "TYT",
@@ -129,7 +129,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — kimyanın tarihi, alt dalları, sembol ve formüller, laboratuvar güvenliği; 40 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-kimya/kimya-bilimi.pdf",
     "sayfa": 11,
-    "boyutKB": 74
+    "boyutKB": 82
   },
   {
     "sinav": "TYT",
@@ -139,7 +139,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — temizlik maddeleri, polimerler, ilaçlar, gıda katkıları ve yakıtlar; 40 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-kimya/kimya-her-yerde.pdf",
     "sayfa": 11,
-    "boyutKB": 84
+    "boyutKB": 92
   },
   {
     "sinav": "TYT",
@@ -149,7 +149,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — kütlenin korunumu, sabit oranlar ve katlı oranlar; denklem denkleştirme ve 45 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-kimya/kimyanin-temel-kanunlari.pdf",
     "sayfa": 11,
-    "boyutKB": 74
+    "boyutKB": 82
   },
   {
     "sinav": "TYT",
@@ -159,7 +159,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — güçlü ve zayıf etkileşimler, iyonik ve kovalent bağ, hidrojen bağı; fiziksel özellik yorumu ve 45 soruluk fasikül",
     "dosya": "/kutuphane-notlari/tyt-kimya/kimyasal-turler-arasi-etkilesimler.pdf",
     "sayfa": 11,
-    "boyutKB": 89
+    "boyutKB": 97
   },
   {
     "sinav": "TYT",
@@ -169,7 +169,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — katı, sıvı, gaz ve plazma; hâl değişimleri, ısınma-soğuma grafikleri ve gaz yasaları; 45 soruluk fasikül",
     "dosya": "/kutuphane-notlari/tyt-kimya/maddenin-halleri.pdf",
     "sayfa": 11,
-    "boyutKB": 92
+    "boyutKB": 100
   },
   {
     "sinav": "TYT",
@@ -179,7 +179,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — Avogadro sayısı, mol-kütle-hacim dönüşümleri, formül bulma ve tepkime hesapları; 45 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-kimya/mol-kavrami.pdf",
     "sayfa": 11,
-    "boyutKB": 82
+    "boyutKB": 90
   },
   {
     "sinav": "TYT",
@@ -189,7 +189,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — katı, sıvı ve gaz basıncı, Pascal ilkesi ve açık hava basıncı; 45 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-fizik/basinc.pdf",
     "sayfa": 11,
-    "boyutKB": 88
+    "boyutKB": 95
   },
   {
     "sinav": "TYT",
@@ -199,7 +199,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — dalga türleri, dalga büyüklükleri, yansıma, kırılma ve ses dalgaları; 40 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-fizik/dalgalar.pdf",
     "sayfa": 11,
-    "boyutKB": 82
+    "boyutKB": 90
   },
   {
     "sinav": "TYT",
@@ -209,7 +209,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — akım, gerilim, direnç, Ohm yasası, seri ve paralel bağlama; 45 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-fizik/elektrik-devreleri.pdf",
     "sayfa": 11,
-    "boyutKB": 87
+    "boyutKB": 95
   },
   {
     "sinav": "TYT",
@@ -219,7 +219,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — elektrik yükü, yükleme yolları, Coulomb yasası ve elektroskop; 40 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-fizik/elektrostatik.pdf",
     "sayfa": 11,
-    "boyutKB": 89
+    "boyutKB": 97
   },
   {
     "sinav": "TYT",
@@ -229,7 +229,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — fiziğin alt dalları, büyüklükler, birim sistemi, vektörler ve ölçme; 40 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-fizik/fizik-bilimine-giris.pdf",
     "sayfa": 11,
-    "boyutKB": 86
+    "boyutKB": 94
   },
   {
     "sinav": "TYT",
@@ -239,7 +239,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — düzgün ve ivmeli hareket, Newton yasaları, sürtünme ve serbest düşme; grafik yorumu ve 50 soruluk fasikül",
     "dosya": "/kutuphane-notlari/tyt-fizik/hareket-ve-kuvvet.pdf",
     "sayfa": 13,
-    "boyutKB": 90
+    "boyutKB": 98
   },
   {
     "sinav": "TYT",
@@ -249,7 +249,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — iş kavramı, kinetik ve potansiyel enerji, enerjinin korunumu ve verim; 45 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-fizik/is-guc-enerji.pdf",
     "sayfa": 11,
-    "boyutKB": 87
+    "boyutKB": 95
   },
   {
     "sinav": "TYT",
@@ -259,7 +259,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — ısı-sıcaklık ayrımı, öz ısı, hâl değişimi, ısı alışverişi ve genleşme; 45 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-fizik/isi-sicaklik-genlesme.pdf",
     "sayfa": 11,
-    "boyutKB": 93
+    "boyutKB": 100
   },
   {
     "sinav": "TYT",
@@ -269,7 +269,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — kütle, hacim, öz kütle, dayanıklılık ve adezyon-kohezyon; grafik yorumu ve 45 soruluk fasikül",
     "dosya": "/kutuphane-notlari/tyt-fizik/madde-ve-ozellikleri.pdf",
     "sayfa": 11,
-    "boyutKB": 89
+    "boyutKB": 97
   },
   {
     "sinav": "TYT",
@@ -279,7 +279,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — mıknatıslar, manyetik alan, akımın manyetik etkisi ve elektromıknatıs; 40 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-fizik/manyetizma.pdf",
     "sayfa": 10,
-    "boyutKB": 82
+    "boyutKB": 90
   },
   {
     "sinav": "TYT",
@@ -289,7 +289,7 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — ışığın yayılması, gölge, aynalar, kırılma ve mercekler; 45 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-fizik/optik.pdf",
     "sayfa": 11,
-    "boyutKB": 90
+    "boyutKB": 98
   },
   {
     "sinav": "TYT",
@@ -299,7 +299,177 @@ export const HAM_BILGI_NOTLARI = [
     "ozet": "Ham bilgi notu — Arşimet ilkesi, yüzme-batma koşulları ve görünür ağırlık; 40 soruluk çalışma fasikülü",
     "dosya": "/kutuphane-notlari/tyt-fizik/sivilarin-kaldirma-kuvveti.pdf",
     "sayfa": 10,
-    "boyutKB": 85
+    "boyutKB": 93
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "Basit Eşitsizlikler",
+    "baslik": "Basit Eşitsizlikler",
+    "ozet": "Ham bilgi notu — eşitsizlik kuralları, aralıklar, işaret tablosu ve sınır değer bulma; 40 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-matematik/basit-esitsizlikler.pdf",
+    "sayfa": 11,
+    "boyutKB": 80
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "Bölme ve Bölünebilme",
+    "baslik": "Bölme ve Bölünebilme",
+    "ozet": "Ham bilgi notu — bölme algoritması, bölünebilme kuralları, kalan bulma ve çarpan sayısı; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-matematik/bolme-ve-bolunebilme.pdf",
+    "sayfa": 13,
+    "boyutKB": 83
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "Çarpanlara Ayırma",
+    "baslik": "Çarpanlara Ayırma",
+    "ozet": "Ham bilgi notu — özdeşlikler, ortak çarpan, gruplandırma ve rasyonel ifade sadeleştirme; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-matematik/carpanlara-ayirma.pdf",
+    "sayfa": 13,
+    "boyutKB": 81
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "Denklem Çözme",
+    "baslik": "Denklem Çözme",
+    "ozet": "Ham bilgi notu — birinci dereceden denklemler, denklem sistemleri ve ikinci dereceden denklemler; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-matematik/denklem-cozme.pdf",
+    "sayfa": 13,
+    "boyutKB": 90
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "Fonksiyonlar (Temel)",
+    "baslik": "Fonksiyonlar (Temel)",
+    "ozet": "Ham bilgi notu — fonksiyon tanımı, çeşitleri, bileşke ve ters fonksiyon; grafik yorumu ve 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-matematik/fonksiyonlar-temel.pdf",
+    "sayfa": 14,
+    "boyutKB": 94
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "İstatistik ve Veri Analizi",
+    "baslik": "İstatistik ve Veri Analizi",
+    "ozet": "Ham bilgi notu — merkezî eğilim ve yayılım ölçüleri, grafik türleri ve yorumu; 40 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-matematik/istatistik-ve-veri-analizi.pdf",
+    "sayfa": 11,
+    "boyutKB": 98
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "Köklü Sayılar",
+    "baslik": "Köklü Sayılar",
+    "ozet": "Ham bilgi notu — kök kuralları, kök dışına çıkarma, paydayı rasyonel yapma ve kök sıralama; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-matematik/koklu-sayilar.pdf",
+    "sayfa": 13,
+    "boyutKB": 80
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "Kümeler",
+    "baslik": "Kümeler",
+    "ozet": "Ham bilgi notu — küme işlemleri, Venn şeması, eleman sayısı bağıntıları ve alt küme; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-matematik/kumeler.pdf",
+    "sayfa": 12,
+    "boyutKB": 95
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "Mutlak Değer",
+    "baslik": "Mutlak Değer",
+    "ozet": "Ham bilgi notu — tanım, özellikler, mutlak değerli denklem ve eşitsizlikler; 40 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-matematik/mutlak-deger.pdf",
+    "sayfa": 10,
+    "boyutKB": 78
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "OBEB - OKEK",
+    "baslik": "OBEB - OKEK",
+    "ozet": "Ham bilgi notu — en büyük ortak bölen, en küçük ortak kat, aralarında asallık ve problem tipleri; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-matematik/obeb-okek.pdf",
+    "sayfa": 12,
+    "boyutKB": 86
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "Oran - Orantı",
+    "baslik": "Oran - Orantı",
+    "ozet": "Ham bilgi notu — oran özellikleri, doğru ve ters orantı, orantı özellikleri ve karışım; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-matematik/oran-oranti.pdf",
+    "sayfa": 13,
+    "boyutKB": 93
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "Permütasyon - Kombinasyon - Olasılık",
+    "baslik": "Permütasyon - Kombinasyon - Olasılık",
+    "ozet": "Ham bilgi notu — sayma yolları, faktöriyel, sıralama ve seçme, olasılık hesabı; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-matematik/permutasyon-kombinasyon-olasilik.pdf",
+    "sayfa": 14,
+    "boyutKB": 96
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "Problemler",
+    "baslik": "Problemler",
+    "ozet": "Ham bilgi notu — sayı, yaş, işçi, hareket, yüzde ve kâr-zarar problemleri; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-matematik/problemler.pdf",
+    "sayfa": 14,
+    "boyutKB": 86
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "Rasyonel Sayılar",
+    "baslik": "Rasyonel Sayılar",
+    "ozet": "Ham bilgi notu — kesirlerde işlemler, sıralama, devirli ondalık açılım ve bileşik kesirler; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-matematik/rasyonel-sayilar.pdf",
+    "sayfa": 13,
+    "boyutKB": 82
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "Sayı Basamakları",
+    "baslik": "Sayı Basamakları",
+    "ozet": "Ham bilgi notu — basamak ve sayı değeri, çözümleme, rakam koşulları ve taban aritmetiği; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-matematik/sayi-basamaklari.pdf",
+    "sayfa": 12,
+    "boyutKB": 88
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "Temel Kavramlar",
+    "baslik": "Temel Kavramlar",
+    "ozet": "Ham bilgi notu — sayı kümeleri, tek-çift, ardışık sayılar, asal sayılar ve işlem önceliği; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-matematik/temel-kavramlar.pdf",
+    "sayfa": 14,
+    "boyutKB": 99
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Matematik",
+    "konu": "Üslü Sayılar",
+    "baslik": "Üslü Sayılar",
+    "ozet": "Ham bilgi notu — üs kuralları, negatif ve sıfır üs, bilimsel gösterim ve üslü denklemler; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-matematik/uslu-sayilar.pdf",
+    "sayfa": 13,
+    "boyutKB": 81
   }
 ]
 
