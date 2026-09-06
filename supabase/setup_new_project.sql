@@ -319,7 +319,8 @@ create table if not exists messages (
   attachment_name text,
   attachment_type text check (attachment_type in ('image', 'pdf', 'file') or attachment_type is null),
   created_at timestamptz default now(),
-  read_at timestamptz
+  read_at timestamptz,
+  edited_at timestamptz
 );
 
 alter table messages enable row level security;
@@ -335,6 +336,79 @@ create policy "Kullanıcı mesaj gönderebilir"
 drop policy if exists "Alıcı okundu bilgisini güncelleyebilir" on messages;
 create policy "Alıcı okundu bilgisini güncelleyebilir"
   on messages for update using (auth.uid() = receiver_id);
+
+-- Alıcı yalnızca okundu zamanını değiştirebilir; mesaj metni ve taraf
+-- kimlikleri istemciden doğrudan güncellenemez.
+revoke update on table public.messages from public, anon, authenticated;
+grant update (read_at) on table public.messages to authenticated;
+revoke delete on table public.messages from public, anon, authenticated;
+
+create or replace function public.edit_own_message(p_message_id uuid, p_content text)
+returns void
+language plpgsql
+security definer
+set search_path = public, pg_temp
+as $$
+declare
+  has_attachment boolean;
+  cleaned_content text := nullif(btrim(coalesce(p_content, '')), '');
+begin
+  if auth.uid() is null then
+    raise exception 'Oturum gerekli' using errcode = '42501';
+  end if;
+
+  select attachment_url is not null into has_attachment
+    from public.messages
+   where id = p_message_id and sender_id = auth.uid();
+
+  if not found then
+    raise exception 'Mesaj bulunamadı veya bu mesaj size ait değil' using errcode = '42501';
+  end if;
+
+  if cleaned_content is null and not has_attachment then
+    raise exception 'Mesaj metni boş olamaz' using errcode = '22023';
+  end if;
+
+  if char_length(coalesce(p_content, '')) > 4000 then
+    raise exception 'Mesaj 4000 karakterden uzun olamaz' using errcode = '22023';
+  end if;
+
+  update public.messages
+     set content = cleaned_content, edited_at = now()
+   where id = p_message_id and sender_id = auth.uid();
+end;
+$$;
+
+revoke all on function public.edit_own_message(uuid, text) from public;
+grant execute on function public.edit_own_message(uuid, text) to authenticated;
+
+create or replace function public.delete_own_message(p_message_id uuid)
+returns text
+language plpgsql
+security definer
+set search_path = public, pg_temp
+as $$
+declare
+  deleted_attachment_path text;
+begin
+  if auth.uid() is null then
+    raise exception 'Oturum gerekli' using errcode = '42501';
+  end if;
+
+  delete from public.messages
+   where id = p_message_id and sender_id = auth.uid()
+  returning attachment_url into deleted_attachment_path;
+
+  if not found then
+    raise exception 'Mesaj bulunamadı veya bu mesaj size ait değil' using errcode = '42501';
+  end if;
+
+  return deleted_attachment_path;
+end;
+$$;
+
+revoke all on function public.delete_own_message(uuid) from public;
+grant execute on function public.delete_own_message(uuid) to authenticated;
 
 -- Anlık mesaj için realtime (zaten ekliyse hata vermesin)
 do $$
@@ -487,6 +561,13 @@ create policy "Konuşmanın tarafı dosyayı görebilir"
 drop policy if exists "Gönderen kendi adına dosya yükleyebilir" on storage.objects;
 create policy "Gönderen kendi adına dosya yükleyebilir"
   on storage.objects for insert with check (
+    bucket_id = 'chat-attachments'
+    and auth.uid()::text = (storage.foldername(name))[1]
+  );
+
+drop policy if exists "Gönderen kendi mesaj ekini silebilir" on storage.objects;
+create policy "Gönderen kendi mesaj ekini silebilir"
+  on storage.objects for delete using (
     bucket_id = 'chat-attachments'
     and auth.uid()::text = (storage.foldername(name))[1]
   );

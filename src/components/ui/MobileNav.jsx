@@ -9,6 +9,7 @@ import Avatar from './Avatar'
 import Badge from './Badge'
 import Logo from './Logo'
 import SoftIcon from './SoftIcon'
+import UnreadBadge from './UnreadBadge'
 import { captureStudentProfile, isProductCapture } from '../../lib/productCapture'
 
 /**
@@ -24,7 +25,7 @@ import { captureStudentProfile, isProductCapture } from '../../lib/productCaptur
  * - Çubuk `pb-safe-bottom` ile iPhone gesture bar'ının altında kalmaz.
  * - AppShell içerik alanına alt boşluk verir, çubuk içeriği örtmez.
  */
-export default function MobileNav() {
+export default function MobileNav({ unreadMessageCount = 0 }) {
   const { profile, signOut } = useAuth()
   const { pathname } = useLocation()
   const visibleProfile = profile ?? (isProductCapture() ? captureStudentProfile() : null)
@@ -64,6 +65,7 @@ export default function MobileNav() {
         <ul className="flex items-stretch justify-around px-1.5 pt-1.5 pb-1.5">
           {primary.map(({ to, short, label, Icon, mark, tone }) => {
             const active = pathname === to
+            const showsUnread = to === '/mesajlar' && unreadMessageCount > 0
             return (
               <li key={to} className="flex-1">
                 <Link
@@ -71,7 +73,10 @@ export default function MobileNav() {
                   aria-current={active ? 'page' : undefined}
                   className="focus-ring flex flex-col items-center gap-1 rounded-btn px-1 py-1.5"
                 >
-                  <SoftIcon icon={Icon} mark={mark} tone={tone} size="mobile" active={active} />
+                  <span className="relative">
+                    <SoftIcon icon={Icon} mark={mark} tone={tone} size="mobile" active={active} />
+                    {showsUnread && <UnreadBadge count={unreadMessageCount} />}
+                  </span>
                   <span
                     className={cn(
                       'text-[10px] leading-none transition-colors',
@@ -80,6 +85,9 @@ export default function MobileNav() {
                   >
                     {short ?? label}
                   </span>
+                  {showsUnread && (
+                    <span className="sr-only">{unreadMessageCount} okunmamış mesaj</span>
+                  )}
                 </Link>
               </li>
             )
@@ -102,12 +110,22 @@ export default function MobileNav() {
         </ul>
       </nav>
 
-      {drawerOpen && <NavDrawer items={items} pathname={pathname} onClose={() => setDrawerOpen(false)} profile={visibleProfile} role={role} onSignOut={signOut} />}
+      {drawerOpen && (
+        <NavDrawer
+          items={items}
+          pathname={pathname}
+          onClose={() => setDrawerOpen(false)}
+          profile={visibleProfile}
+          role={role}
+          onSignOut={signOut}
+          unreadMessageCount={unreadMessageCount}
+        />
+      )}
     </>
   )
 }
 
-function NavDrawer({ items, pathname, onClose, profile, role, onSignOut }) {
+function NavDrawer({ items, pathname, onClose, profile, role, onSignOut, unreadMessageCount }) {
   const groups = groupNavItems(items, role)
   const [openGroups, setOpenGroups] = useState(() => ({
     languages: ['/ingilizce', '/almanca', '/fransizca', '/ispanyolca'].includes(pathname),
@@ -245,6 +263,7 @@ function NavDrawer({ items, pathname, onClose, profile, role, onSignOut }) {
                   }
 
                   const active = pathname === to
+                  const showsUnread = to === '/mesajlar' && unreadMessageCount > 0
                   return (
                     <li key={to}>
                       <Link
@@ -257,8 +276,14 @@ function NavDrawer({ items, pathname, onClose, profile, role, onSignOut }) {
                           active ? 'is-active text-ink' : 'text-ink/74'
                         )}
                       >
-                        <SoftIcon icon={Icon} mark={mark} tone={tone} size="sm" active={active} />
+                        <span className="relative shrink-0">
+                          <SoftIcon icon={Icon} mark={mark} tone={tone} size="sm" active={active} />
+                          {showsUnread && <UnreadBadge count={unreadMessageCount} />}
+                        </span>
                         <span className="line-clamp-2">{label}</span>
+                        {showsUnread && (
+                          <span className="sr-only">{unreadMessageCount} okunmamış mesaj</span>
+                        )}
                       </Link>
                     </li>
                   )

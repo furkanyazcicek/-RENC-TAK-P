@@ -8,6 +8,7 @@ import Avatar from './Avatar'
 import Badge from './Badge'
 import Logo from './Logo'
 import SoftIcon from './SoftIcon'
+import UnreadBadge from './UnreadBadge'
 import { captureStudentProfile, isProductCapture } from '../../lib/productCapture'
 
 /**
@@ -19,7 +20,7 @@ import { captureStudentProfile, isProductCapture } from '../../lib/productCaptur
  *
  * Mobilde gizlidir; orada `MobileNav` (alt çubuk + çekmece) devreye girer.
  */
-export default function Sidebar({ collapsed = false, onToggle }) {
+export default function Sidebar({ collapsed = false, onToggle, unreadMessageCount = 0 }) {
   const { profile, signOut } = useAuth()
   const { pathname } = useLocation()
   const visibleProfile = profile ?? (isProductCapture() ? captureStudentProfile() : null)
@@ -148,6 +149,7 @@ export default function Sidebar({ collapsed = false, onToggle }) {
                 }
 
                 const active = pathname === to
+                const showsUnread = to === '/mesajlar' && unreadMessageCount > 0
                 return (
                   <li key={to}>
                     <Link
@@ -161,8 +163,14 @@ export default function Sidebar({ collapsed = false, onToggle }) {
                         active ? 'panel-nav-active font-extrabold' : 'font-bold'
                       )}
                     >
-                      <SoftIcon icon={Icon} mark={mark} tone={tone} size="sm" active={active} />
+                      <span className="relative shrink-0">
+                        <SoftIcon icon={Icon} mark={mark} tone={tone} size="sm" active={active} />
+                        {showsUnread && <UnreadBadge count={unreadMessageCount} />}
+                      </span>
                       <span className={collapsed ? 'sr-only' : 'truncate'}>{label}</span>
+                      {showsUnread && (
+                        <span className="sr-only">{unreadMessageCount} okunmamış mesaj</span>
+                      )}
                     </Link>
                   </li>
                 )

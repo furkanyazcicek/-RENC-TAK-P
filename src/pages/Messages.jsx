@@ -3,12 +3,18 @@ import { MessageCircle, Search, Users } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
 import { cn } from '../lib/cn'
+import { isProductCapture } from '../lib/productCapture'
 import ChatThread from '../components/ChatThread'
 import ExamSurveyDialog from '../components/ExamSurveyDialog'
 import { AppShell, Avatar, EmptyState, Input } from '../components/ui'
 
+const CAPTURE_CONTACTS = [
+  { id: 'reels-teacher', full_name: 'Furkan Talha Yazçiçek', role: 'teacher' },
+]
+
 export default function Messages() {
   const { user, role } = useAuth()
+  const captureMode = isProductCapture()
   const [contacts, setContacts] = useState([])
   const [selected, setSelected] = useState(null)
   const [query, setQuery] = useState('')
@@ -18,6 +24,13 @@ export default function Messages() {
 
   useEffect(() => {
     async function loadContacts() {
+      if (captureMode) {
+        setContacts(CAPTURE_CONTACTS)
+        setSelected(CAPTURE_CONTACTS[0])
+        setLoading(false)
+        return
+      }
+
       const targetRole = isTeacher ? 'student' : 'teacher'
       // `*` bilinçli: sınav kolonları (migration_student_exam_profile.sql)
       // henüz eklenmemiş olabilir; adıyla seçmek sorguyu tümden hataya
@@ -31,8 +44,8 @@ export default function Messages() {
       if (data?.length === 1) setSelected(data[0])
       setLoading(false)
     }
-    if (user) loadContacts()
-  }, [user, isTeacher])
+    if (user || captureMode) loadContacts()
+  }, [user, isTeacher, captureMode])
 
   const filtered = useMemo(() => {
     const q = query.trim().toLocaleLowerCase('tr-TR')
