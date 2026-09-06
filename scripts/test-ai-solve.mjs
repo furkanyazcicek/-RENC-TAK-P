@@ -36,6 +36,13 @@ import { validatePath } from '../api/_lib/solve/image.js'
 import { userMessage } from '../api/_lib/errors.js'
 import { solveConfig, THINKING_LEVELS } from '../api/_lib/solve/config.js'
 import { plotCurves } from '../api/_lib/solve/plot.js'
+import {
+  filterHistory,
+  historyGroupForDate,
+  mergeStoredReviews,
+  needsReview,
+  summarizeHistory,
+} from '../src/lib/aiSolveHistory.js'
 
 let pass = 0
 let fail = 0
@@ -1233,6 +1240,69 @@ head('14) Uzun süren çözümde "bu soru zor" bilgisi')
   solveConfig.apiKey = realKey
   solveConfig.slowNoticeMs = realNotice
   solveConfig.skipTriage = realSkip
+}
+
+/* ==================================================================
+   15) ÇÖZÜM GEÇMİŞİ
+   ================================================================== */
+
+head('15) Çözüm geçmişi ve tekrar kuralları')
+
+{
+  const rows = [
+    {
+      id: 'a',
+      status: 'ok',
+      subject: 'Matematik',
+      canonical_topic: 'Fonksiyonlar',
+      question_text: 'Bileşke fonksiyon sorusu',
+      help_requested: 2,
+      student_correct: false,
+      error_type: 'islem_hatasi',
+      review_status: 'pending',
+    },
+    {
+      id: 'b',
+      status: 'ok',
+      subject: 'Fizik',
+      canonical_topic: 'Hareket',
+      question_text: 'Sabit ivmeli hareket',
+      help_requested: 0,
+      student_correct: true,
+      error_type: null,
+      review_status: 'completed',
+    },
+    { id: 'c', status: 'unreadable', subject: 'Kimya', review_status: 'none' },
+  ]
+
+  check('Zorlanılan soru tekrar listesine girer', needsReview(rows[0]) === true)
+  check('Tamamlanan tekrar yeniden beklemez', needsReview(rows[1]) === false)
+  check('Okunamayan kayıt tekrar sayılmaz', needsReview(rows[2]) === false)
+  check(
+    'Türkçe arama ve ders filtresi birlikte çalışır',
+    filterHistory(rows, { query: 'FONKSİYON', subject: 'Matematik' })[0]?.id === 'a'
+  )
+  check(
+    'Sorunlu kayıtlar ayrı filtrelenir',
+    filterHistory(rows, { tab: 'failed' }).map((row) => row.id).join(',') === 'c'
+  )
+
+  const summary = summarizeHistory(rows)
+  check(
+    'Özet çözülen, tekrar ve odak konusunu hesaplar',
+    summary.solvedCount === 2 && summary.reviewCount === 1 && summary.focusTopic === 'Fonksiyonlar',
+    JSON.stringify(summary)
+  )
+
+  const now = new Date('2026-09-07T18:00:00+03:00')
+  check('Bugünün kaydı doğru gruplanır', historyGroupForDate('2026-09-07T09:00:00+03:00', now) === 'Bugün')
+  check('Son yedi gün doğru gruplanır', historyGroupForDate('2026-09-02T09:00:00+03:00', now) === 'Bu hafta')
+  check('Eski kayıt doğru gruplanır', historyGroupForDate('2026-08-20T09:00:00+03:00', now) === 'Daha önce')
+  check(
+    'Yerel tekrar durumu yalnızca sunucu boşken devreye girer',
+    mergeStoredReviews(rows, { a: 'completed', b: 'pending' }).map((row) => row.review_status).join(',') ===
+      'pending,completed,none'
+  )
 }
 
 /* ==================================================================

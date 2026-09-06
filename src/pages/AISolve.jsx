@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import {
   ArrowLeft,
   Camera,
   ClipboardCheck,
   History,
   ImageOff,
-  Sparkles,
   TriangleAlert,
 } from 'lucide-react'
 
@@ -16,9 +16,9 @@ import {
   askStuck,
   askWhy,
   getSolution,
-  listSolutions,
   reportSelfResult,
   sendFeedback,
+  setSolutionReview,
   solveQuestion,
 } from '../lib/aiSolve'
 import { ImageError, publicUrlFor, uploadQuestionImage } from '../lib/whiteboard/imagePrep'
@@ -29,9 +29,7 @@ import {
   Button,
   Card,
   CardBody,
-  EmptyState,
   IconButton,
-  Modal,
   PageSection,
   useToast,
 } from '../components/ui'
@@ -51,6 +49,7 @@ import {
 } from '../components/aiSolve/SolutionPanels'
 import { MathText } from '../components/aiSolve/MathRenderer'
 import { buildAISolveCaptureResult, isProductCapture } from '../lib/productCapture'
+import { rememberReview } from '../lib/aiSolveHistory'
 
 /**
  * AISolve — /soru-coz
@@ -70,8 +69,15 @@ export default function AISolve() {
   const { user } = useAuth()
   const toast = useToast()
   const captureMode = isProductCapture()
+  const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
+  const solutionId = searchParams.get('oturum') ?? searchParams.get('tekrar')
+  const retryMode = Boolean(searchParams.get('tekrar'))
 
-  const [phase, setPhase] = useState(() => (captureMode ? 'result' : 'idle')) // idle | solving | result
+  const [phase, setPhase] = useState(() => {
+    if (captureMode) return retryMode ? 'retry' : 'result'
+    return solutionId ? 'solving' : 'idle'
+  }) // idle | solving | retry | result
   const [stages, setStages] = useState([])
   const [currentStage, setCurrentStage] = useState(null)
   const [result, setResult] = useState(() =>
@@ -85,15 +91,44 @@ export default function AISolve() {
   const [showCheck, setShowCheck] = useState(false)
   const [lightbox, setLightbox] = useState(false)
 
-  const [historyOpen, setHistoryOpen] = useState(false)
-  const [history, setHistory] = useState([])
-  const [historyLoading, setHistoryLoading] = useState(false)
-
   const abortRef = useRef(null)
 
   // Sekme kapanırsa/başka sayfaya geçilirse akan isteği iptal et —
   // sunucu Gemini çağrısını da iptal eder, boşa token yakılmaz.
   useEffect(() => () => abortRef.current?.abort(), [])
+
+  useEffect(() => {
+    if (captureMode || !solutionId) return undefined
+    let active = true
+
+    setPhase('solving')
+    setStages([{
+      key: 'load',
+      text: retryMode ? 'Soru hazırlanıyor…' : 'Çözüm açılıyor…',
+    }])
+    setCurrentStage('load')
+    setError(null)
+
+    getSolution(solutionId)
+      .then((session) => {
+        if (!active) return
+        setResult(toResult(session))
+        setImageUrl(publicUrlFor(session.imagePath))
+        setHelpState(null)
+        setAlternative(null)
+        setShowCheck(false)
+        setPhase(retryMode && session.status === 'ok' ? 'retry' : 'result')
+      })
+      .catch((err) => {
+        if (!active) return
+        setError(err instanceof AISolveError ? err.message : 'Çözüm açılamadı.')
+        setPhase('idle')
+      })
+
+    return () => {
+      active = false
+    }
+  }, [captureMode, retryMode, solutionId])
 
   /* ================================================================
      ÇÖZÜM
@@ -164,6 +199,7 @@ export default function AISolve() {
 
   function reset() {
     abortRef.current?.abort()
+    navigate('/soru-coz', { replace: true })
     setPhase('idle')
     setResult(null)
     setError(null)
@@ -240,50 +276,6 @@ export default function AISolve() {
   }
 
   /* ================================================================
-     GEÇMİŞ
-     ================================================================ */
-
-  async function openHistory() {
-    setHistoryOpen(true)
-    setHistoryLoading(true)
-    try {
-      setHistory(await listSolutions({ limit: 30 }))
-    } catch {
-      setHistory([])
-    } finally {
-      setHistoryLoading(false)
-    }
-  }
-
-  async function openSession(id) {
-    setHistoryOpen(false)
-    setPhase('solving')
-    setStages([{ key: 'load', text: 'Çözüm açılıyor…' }])
-    setCurrentStage('load')
-    try {
-      const session = await getSolution(id)
-      setResult({
-        status: session.status,
-        sessionId: session.id,
-        board: session.board,
-        question: session.question,
-        meta: session.meta,
-        help: session.help,
-        verification: session.verification,
-        feedback: session.feedback,
-        studentCorrect: session.studentCorrect,
-      })
-      setImageUrl(publicUrlFor(session.imagePath))
-      setHelpState(null)
-      setAlternative(null)
-      setPhase('result')
-    } catch (err) {
-      setError(err instanceof AISolveError ? err.message : 'Çözüm açılamadı.')
-      setPhase('idle')
-    }
-  }
-
-  /* ================================================================
      GÖRÜNÜM
      ================================================================ */
 
@@ -293,14 +285,14 @@ export default function AISolve() {
       subtitle="Sorunun fotoğrafını yükle, tahtada birlikte çözelim"
       headerAction={
         <div className="flex items-center gap-1.5">
-          {phase === 'result' && (
+          {(phase === 'result' || phase === 'retry') && (
             <IconButton icon={ArrowLeft} label="Yeni soru" variant="secondary" onClick={reset} />
           )}
           <IconButton
             icon={History}
             label="Çözüm geçmişi"
             variant="secondary"
-            onClick={openHistory}
+            onClick={() => navigate('/soru-coz/gecmis')}
           />
         </div>
       }
@@ -329,6 +321,34 @@ export default function AISolve() {
 
       {phase === 'solving' && <SolveStages stages={stages} current={currentStage} />}
 
+      {phase === 'retry' && result && (
+        <RetryView
+          result={result}
+          imageUrl={imageUrl}
+          onOpenImage={() => setLightbox(true)}
+          showCheck={showCheck}
+          onToggleCheck={() => setShowCheck((value) => !value)}
+          onReveal={() => setPhase('result')}
+          onCheckResult={async (checkResult) => {
+            if (
+              checkResult?.status !== 'ok' ||
+              checkResult.verdict !== 'dogru' ||
+              !result.sessionId
+            ) return
+            try {
+              await setSolutionReview({
+                sessionId: result.sessionId,
+                reviewStatus: 'completed',
+              })
+              toast.success('Bu tekrarı tamamladın.')
+            } catch {
+              rememberReview(user?.id, result.sessionId, 'completed')
+              toast.warning('Tekrar bu cihazda tamamlandı olarak kaydedildi.')
+            }
+          }}
+        />
+      )}
+
       {phase === 'result' && result && (
         <ResultView
           result={result}
@@ -349,64 +369,22 @@ export default function AISolve() {
       {lightbox && imageUrl && (
         <ImageLightbox src={imageUrl} alt="Soru görseli" onClose={() => setLightbox(false)} />
       )}
-
-      {/* ---------------- Geçmiş ---------------- */}
-      <Modal open={historyOpen} onClose={() => setHistoryOpen(false)} title="Çözüm geçmişin">
-        {historyLoading ? (
-          <p className="py-8 text-center text-sm text-ink/60">Yükleniyor…</p>
-        ) : history.length === 0 ? (
-          <EmptyState
-            icon={Sparkles}
-            title="Henüz çözdüğün soru yok"
-            description="İlk sorunu yüklediğinde burada birikmeye başlar."
-          />
-        ) : (
-          <ul className="flex flex-col divide-y divide-line">
-            {history.map((item) => (
-              <li key={item.id}>
-                <button
-                  type="button"
-                  onClick={() => openSession(item.id)}
-                  disabled={item.status !== 'ok'}
-                  className="focus-ring w-full rounded-btn px-2 py-3 text-left transition-colors hover:bg-ink/[0.04] disabled:opacity-50"
-                >
-                  <div className="flex items-center gap-2">
-                    <p className="min-w-0 flex-1 truncate text-sm font-medium text-ink">
-                      {item.canonical_topic ?? item.topic ?? item.subject ?? 'Soru'}
-                    </p>
-                    {item.status === 'ok' && item.answer_plain && (
-                      <Badge tone="neutral" size="sm">
-                        {item.answer_plain}
-                      </Badge>
-                    )}
-                    {item.status === 'unreadable' && (
-                      <Badge tone="warning" size="sm">
-                        Okunamadı
-                      </Badge>
-                    )}
-                    {item.status === 'refused' && (
-                      <Badge tone="warning" size="sm">
-                        Çözülemedi
-                      </Badge>
-                    )}
-                  </div>
-                  <p className="mt-0.5 text-xs text-ink/55">
-                    {item.subject ? `${item.subject} · ` : ''}
-                    {new Date(item.created_at).toLocaleDateString('tr-TR', {
-                      day: 'numeric',
-                      month: 'long',
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })}
-                  </p>
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </Modal>
     </AppShell>
   )
+}
+
+function toResult(session) {
+  return {
+    status: session.status,
+    sessionId: session.id,
+    board: session.board,
+    question: session.question,
+    meta: session.meta,
+    help: session.help,
+    verification: session.verification,
+    feedback: session.feedback,
+    studentCorrect: session.studentCorrect,
+  }
 }
 
 /* ================================================================== */
@@ -419,6 +397,92 @@ function HowStep({ n, children }) {
       </span>
       {children}
     </li>
+  )
+}
+
+function RetryView({
+  result,
+  imageUrl,
+  onOpenImage,
+  showCheck,
+  onToggleCheck,
+  onReveal,
+  onCheckResult,
+}) {
+  return (
+    <>
+      <Card variant="highlight" glow>
+        <CardBody className="flex flex-col gap-5 sm:p-7">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <Badge tone="brand" icon={History}>Cevap gizli</Badge>
+              <h2 className="mt-3 font-display text-xl font-bold text-ink sm:text-2xl">
+                Şimdi sıra sende
+              </h2>
+              <p className="mt-1.5 max-w-2xl text-sm leading-relaxed text-ink/65">
+                Eski çözümü göstermiyorum. Soruyu yeniden çöz; istersen çalışmanı
+                fotoğraflayıp kontrol ettir.
+              </p>
+            </div>
+            {result.meta?.subject && (
+              <div className="flex flex-wrap gap-1.5">
+                <Badge>{result.meta.subject}</Badge>
+                {result.meta.topic && <Badge>{result.meta.topic}</Badge>}
+              </div>
+            )}
+          </div>
+
+          {imageUrl && (
+            <button
+              type="button"
+              onClick={onOpenImage}
+              className="focus-ring w-fit rounded-input border border-line bg-surface p-1.5 transition-shadow hover:shadow-card"
+            >
+              <img
+                src={imageUrl}
+                alt="Tekrar çözeceğin soru"
+                className="max-h-56 w-auto rounded-lg object-contain"
+              />
+              <span className="mt-1 block text-2xs text-ink/50">Büyütmek için dokun</span>
+            </button>
+          )}
+
+          <div className="rounded-input bg-surface-sunken p-4 ring-1 ring-inset ring-line sm:p-5">
+            <p className="text-2xs font-bold uppercase tracking-wider text-ink/45">Soru</p>
+            <p className="mt-2 text-sm leading-relaxed text-ink sm:text-base">
+              <MathText text={result.question?.text ?? 'Soru metni kaydedilmedi.'} />
+            </p>
+            {result.question?.choices?.length > 0 && (
+              <ul className="mt-3 flex flex-col gap-1.5">
+                {result.question.choices.map((choice) => (
+                  <li key={choice.key} className="flex gap-2 text-sm text-ink/72">
+                    <span className="font-bold text-ink/50">{choice.key})</span>
+                    <MathText text={choice.text} />
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          <div className="flex flex-col gap-2 sm:flex-row">
+            <Button icon={ClipboardCheck} onClick={onToggleCheck}>
+              {showCheck ? 'Kontrol alanını kapat' : 'Çözümümü kontrol et'}
+            </Button>
+            <Button variant="secondary" onClick={onReveal}>
+              Kayıtlı çözümü göster
+            </Button>
+          </div>
+        </CardBody>
+      </Card>
+
+      {showCheck && (
+        <CheckWorkPanel
+          sessionId={result.sessionId}
+          questionText={result.question?.text}
+          onResult={onCheckResult}
+        />
+      )}
+    </>
   )
 }
 

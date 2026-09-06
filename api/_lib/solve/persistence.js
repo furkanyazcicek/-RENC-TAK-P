@@ -27,6 +27,16 @@ const SESSION_COLUMNS = `
   feedback, feedback_reason, created_at
 `
 
+const HISTORY_COLUMNS =
+  'id, status, source, subject, topic, canonical_topic, subtopic, difficulty, answer_plain, ' +
+  'confidence, feedback, image_path, question_text, help_requested, student_correct, error_type, ' +
+  'review_status, reviewed_at, created_at'
+
+const LEGACY_HISTORY_COLUMNS =
+  'id, status, source, subject, topic, canonical_topic, subtopic, difficulty, answer_plain, ' +
+  'confidence, feedback, image_path, question_text, help_requested, student_correct, error_type, ' +
+  'created_at'
+
 /**
  * Çözüm oturumunu kaydeder.
  *
@@ -73,21 +83,32 @@ export async function loadSession(supabase, studentId, sessionId) {
 
 /** Öğrencinin çözüm geçmişi — en yeni önce. */
 export async function listSessions(supabase, studentId, { limit = 20, offset = 0 } = {}) {
-  const { data, error } = await supabase
+  const query = (columns) => supabase
     .from('ai_solution_sessions')
-    .select(
-      'id, status, subject, topic, canonical_topic, subtopic, difficulty, answer_plain, ' +
-        'confidence, feedback, image_path, question_text, created_at'
-    )
+    .select(columns)
     .eq('student_id', studentId)
     .order('created_at', { ascending: false })
     .range(offset, offset + limit - 1)
+
+  let { data, error } = await query(HISTORY_COLUMNS)
+
+  // Yeni tekrar alanları henüz canlı veritabanına uygulanmadıysa
+  // geçmişi tamamen kaybetme; eski kolonlarla okumaya devam et.
+  if (error) {
+    const legacy = await query(LEGACY_HISTORY_COLUMNS)
+    data = legacy.data
+    error = legacy.error
+  }
 
   if (error) {
     logSolveError('listSessions', error, { studentId })
     return []
   }
-  return data ?? []
+  return (data ?? []).map((row) => ({
+    ...row,
+    review_status: row.review_status ?? 'none',
+    reviewed_at: row.reviewed_at ?? null,
+  }))
 }
 
 /**
@@ -180,6 +201,22 @@ export async function saveSelfReport(supabase, studentId, sessionId, studentCorr
     .eq('id', sessionId)
     .eq('student_id', studentId)
 
+  return !error
+}
+
+/** Öğrencinin tekrar çalışma durumunu kaydeder. */
+export async function saveReviewStatus(supabase, studentId, sessionId, reviewStatus) {
+  const completed = reviewStatus === 'completed'
+  const { error } = await supabase
+    .from('ai_solution_sessions')
+    .update({
+      review_status: reviewStatus,
+      reviewed_at: completed ? new Date().toISOString() : null,
+    })
+    .eq('id', sessionId)
+    .eq('student_id', studentId)
+
+  if (error) logSolveError('saveReviewStatus', error, { studentId })
   return !error
 }
 

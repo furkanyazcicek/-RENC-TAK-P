@@ -210,10 +210,12 @@ ayrıca soru fotoğraflarının yükleneceği depolama alanını otomatik kurar.
 >    panelinden düzenleyebilir/silebilirsiniz.
 >
 > **AI Soru Çözüm Merkezi'ni kullanacaksanız (`/soru-coz`):**
-> `supabase/migration_ai_solve.sql` dosyasını çalıştırın. Bu dosya
+> Önce `supabase/migration_ai_solve.sql`, ardından
+> `supabase/migration_ai_solve_history.sql` dosyasını çalıştırın. İlk dosya
 > **2 yeni tablo** ekler (`ai_solution_sessions` = çözülen her sorunun
 > kaydı, `ai_solution_events` = "neden?" / "takıldım" etkileşimleri) ve
-> ikisine de RLS kurar: bir öğrenci yalnızca kendi çözümlerini görür.
+> ikisine de RLS kurar: bir öğrenci yalnızca kendi çözümlerini görür. İkinci
+> dosya, geçmişteki soruları "tekrar çalış" olarak işaretlemek için iki alan ekler.
 >
 > **Mevcut hiçbir tabloya dokunulmaz.** Yeni Storage kovası da açılmaz —
 > soru fotoğrafları zaten kurulu olan `question-images` kovasına,
@@ -346,7 +348,8 @@ GEMINI_API_KEY = (aldığınız anahtar)
 
 ### Adım 3: Veritabanı göçünü çalıştırın
 
-`supabase/migration_ai_solve.sql` dosyasını SQL Editor'e yapıştırıp
+`supabase/migration_ai_solve.sql` ve ardından
+`supabase/migration_ai_solve_history.sql` dosyasını SQL Editor'e yapıştırıp
 çalıştırın (yukarıdaki nota bakın).
 
 ### Kullanılan modeller

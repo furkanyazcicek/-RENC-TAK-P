@@ -238,6 +238,11 @@ export function reportSelfResult({ sessionId, studentCorrect }) {
   return postJson('/sessions', { sessionId, studentCorrect })
 }
 
+/** Soruyu tekrar çalışma listesine alır veya tamamlandı olarak işaretler. */
+export function setSolutionReview({ sessionId, reviewStatus }) {
+  return postJson('/sessions', { sessionId, reviewStatus })
+}
+
 /** §42'deki beğenmeme sebepleri — sunucudaki liste ile aynı olmalı. */
 export const FEEDBACK_REASONS = [
   { value: 'yanlis_cozum', label: 'Çözüm yanlış' },

@@ -15,7 +15,13 @@
 
 import { authenticate } from '../_lib/auth.js'
 import { logSolveError, userMessage } from '../_lib/errors.js'
-import { listSessions, loadSession, saveFeedback, saveSelfReport } from '../_lib/solve/persistence.js'
+import {
+  listSessions,
+  loadSession,
+  saveFeedback,
+  saveReviewStatus,
+  saveSelfReport,
+} from '../_lib/solve/persistence.js'
 import { rehydrateBoard } from '../../src/lib/whiteboard/compile.js'
 
 /** §42'deki beğenmeme sebepleri — serbest metin değil, sabit liste. */
@@ -69,6 +75,13 @@ async function handlePost(req, res, supabase, user) {
   /* ---- Öz-değerlendirme: "bu soruyu ben doğru çözmüştüm" ---- */
   if (typeof body?.studentCorrect === 'boolean') {
     const ok = await saveSelfReport(supabase, user.id, body.sessionId, body.studentCorrect)
+    if (!ok) return sendError(res, 500, 'database_error')
+    return res.status(200).json({ ok: true })
+  }
+
+  /* ---- Tekrar çalışma durumu ---- */
+  if (['none', 'pending', 'completed'].includes(body?.reviewStatus)) {
+    const ok = await saveReviewStatus(supabase, user.id, body.sessionId, body.reviewStatus)
     if (!ok) return sendError(res, 500, 'database_error')
     return res.status(200).json({ ok: true })
   }

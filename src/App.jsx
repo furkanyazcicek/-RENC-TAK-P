@@ -25,6 +25,7 @@ import LibraryGateway from './pages/LibraryGateway'
 import QuestionLibrary from './pages/QuestionLibrary'
 import AICoach from './pages/AICoach'
 import AISolve from './pages/AISolve'
+import AISolveHistory from './pages/AISolveHistory'
 import LessonReader from './components/lessons/LessonReader'
 import LessonPreview from './pages/LessonPreview'
 import TopicTestSolve from './pages/TopicTestSolve'
@@ -412,6 +413,14 @@ export default function App() {
         element={
           <ProtectedRoute allow="student">
             <AISolve />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/soru-coz/gecmis"
+        element={
+          <ProtectedRoute allow="student">
+            <AISolveHistory />
           </ProtectedRoute>
         }
       />

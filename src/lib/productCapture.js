@@ -93,6 +93,108 @@ export function buildAISolveCaptureResult() {
   }
 }
 
+export function buildAISolveHistoryCaptureData() {
+  const at = (daysAgo, hour) => {
+    const date = new Date()
+    date.setDate(date.getDate() - daysAgo)
+    date.setHours(hour, 20, 0, 0)
+    return date.toISOString()
+  }
+
+  return [
+    {
+      id: 'capture-solve-1',
+      status: 'ok',
+      source: 'photo',
+      subject: 'Matematik',
+      canonical_topic: 'Fonksiyonlar',
+      subtopic: 'Bileşke Fonksiyon',
+      difficulty: 4,
+      question_text: 'f(x) = 2x + 1 ve g(x) = x² olduğuna göre (g ∘ f)(2) kaçtır?',
+      help_requested: 2,
+      student_correct: false,
+      error_type: 'islem_hatasi',
+      review_status: 'pending',
+      created_at: at(0, 18),
+    },
+    {
+      id: 'capture-solve-2',
+      status: 'ok',
+      source: 'photo',
+      subject: 'Fizik',
+      canonical_topic: 'Hareket',
+      subtopic: 'Sabit İvmeli Hareket',
+      difficulty: 2,
+      question_text: 'Durgun bir araç 3 m/s² ivmeyle 4 saniye hızlanıyor. Son hızı kaç m/s olur?',
+      help_requested: 0,
+      student_correct: true,
+      error_type: null,
+      review_status: 'completed',
+      created_at: at(0, 15),
+    },
+    {
+      id: 'capture-solve-3',
+      status: 'ok',
+      source: 'text',
+      subject: 'Kimya',
+      canonical_topic: 'Mol Kavramı',
+      subtopic: 'Tanecik Sayısı',
+      difficulty: 3,
+      question_text: '0,5 mol CO₂ kaç tane molekül içerir?',
+      help_requested: 1,
+      student_correct: null,
+      error_type: null,
+      review_status: 'none',
+      created_at: at(3, 20),
+    },
+    {
+      id: 'capture-solve-4',
+      status: 'ok',
+      source: 'photo',
+      subject: 'Geometri',
+      canonical_topic: 'Üçgenler',
+      subtopic: 'Benzerlik',
+      difficulty: 4,
+      question_text: 'ABC üçgeninde DE // BC ve |AD| / |DB| = 2 / 3 ise alan oranını bulunuz.',
+      help_requested: 0,
+      student_correct: false,
+      error_type: 'kavram_yanilgisi',
+      review_status: 'none',
+      created_at: at(6, 17),
+    },
+    {
+      id: 'capture-solve-5',
+      status: 'unreadable',
+      source: 'photo',
+      subject: 'Fizik',
+      canonical_topic: null,
+      subtopic: null,
+      difficulty: null,
+      question_text: null,
+      help_requested: 0,
+      student_correct: null,
+      error_type: null,
+      review_status: 'none',
+      created_at: at(12, 19),
+    },
+    {
+      id: 'capture-solve-6',
+      status: 'refused',
+      source: 'text',
+      subject: 'Matematik',
+      canonical_topic: 'Olasılık',
+      subtopic: null,
+      difficulty: 5,
+      question_text: 'Koşullu olasılık sorusundaki eksik tablo verilerine göre sonucu bulunuz.',
+      help_requested: 0,
+      student_correct: null,
+      error_type: null,
+      review_status: 'none',
+      created_at: at(22, 14),
+    },
+  ]
+}
+
 function dateKey(daysAgo) {
   const date = new Date()
   date.setHours(12, 0, 0, 0)

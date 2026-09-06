@@ -63,7 +63,7 @@ const ERROR_TYPES = {
   dikkatsizlik: 'Dikkatsizlik',
 }
 
-export default function CheckWorkPanel({ sessionId, questionText }) {
+export default function CheckWorkPanel({ sessionId, questionText, onResult }) {
   const { user } = useAuth()
 
   const [file, setFile] = useState(null)
@@ -108,6 +108,7 @@ export default function CheckWorkPanel({ sessionId, questionText }) {
       const { path } = await prepareAndUpload(file, user.id)
       const response = await checkMyWork({ sessionId, workPath: path, text: questionText })
       setResult(response)
+      onResult?.(response)
     } catch (err) {
       setError(
         err instanceof AISolveError || err instanceof ImageError
