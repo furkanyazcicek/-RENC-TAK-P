@@ -4,6 +4,7 @@ import Navbar from '../Navbar'
 import MobileNav from './MobileNav'
 import Sidebar from './Sidebar'
 import { PageLoader } from './Spinner'
+import useUnreadMessageCount from '../../hooks/useUnreadMessageCount'
 
 /**
  * AppShell — her iç sayfanın ortak iskeleti.
@@ -44,6 +45,7 @@ export default function AppShell({
   className,
   children,
 }) {
+  const unreadMessageCount = useUnreadMessageCount()
   const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
     try {
       return localStorage.getItem('drkoc-sidebar-collapsed') === 'true'
@@ -66,7 +68,11 @@ export default function AppShell({
 
   return (
     <div className="app-soft-panel-theme panel-workspace-bg relative min-h-screen">
-      <Sidebar collapsed={sidebarCollapsed} onToggle={toggleSidebar} />
+      <Sidebar
+        collapsed={sidebarCollapsed}
+        onToggle={toggleSidebar}
+        unreadMessageCount={unreadMessageCount}
+      />
 
       <div className={cn(
         'relative transition-[padding-left] duration-200 ease-out motion-reduce:transition-none',
@@ -97,7 +103,7 @@ export default function AppShell({
         </main>
       </div>
 
-      <MobileNav />
+      <MobileNav unreadMessageCount={unreadMessageCount} />
     </div>
   )
 }
