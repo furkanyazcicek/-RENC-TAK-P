@@ -180,6 +180,126 @@ export const HAM_BILGI_NOTLARI = [
     "dosya": "/kutuphane-notlari/tyt-kimya/mol-kavrami.pdf",
     "sayfa": 11,
     "boyutKB": 82
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Fizik",
+    "konu": "Basınç",
+    "baslik": "Basınç",
+    "ozet": "Ham bilgi notu — katı, sıvı ve gaz basıncı, Pascal ilkesi ve açık hava basıncı; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-fizik/basinc.pdf",
+    "sayfa": 11,
+    "boyutKB": 88
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Fizik",
+    "konu": "Dalgalar",
+    "baslik": "Dalgalar",
+    "ozet": "Ham bilgi notu — dalga türleri, dalga büyüklükleri, yansıma, kırılma ve ses dalgaları; 40 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-fizik/dalgalar.pdf",
+    "sayfa": 11,
+    "boyutKB": 82
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Fizik",
+    "konu": "Elektrik Devreleri",
+    "baslik": "Elektrik Devreleri",
+    "ozet": "Ham bilgi notu — akım, gerilim, direnç, Ohm yasası, seri ve paralel bağlama; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-fizik/elektrik-devreleri.pdf",
+    "sayfa": 11,
+    "boyutKB": 87
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Fizik",
+    "konu": "Elektrostatik",
+    "baslik": "Elektrostatik",
+    "ozet": "Ham bilgi notu — elektrik yükü, yükleme yolları, Coulomb yasası ve elektroskop; 40 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-fizik/elektrostatik.pdf",
+    "sayfa": 11,
+    "boyutKB": 89
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Fizik",
+    "konu": "Fizik Bilimine Giriş",
+    "baslik": "Fizik Bilimine Giriş",
+    "ozet": "Ham bilgi notu — fiziğin alt dalları, büyüklükler, birim sistemi, vektörler ve ölçme; 40 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-fizik/fizik-bilimine-giris.pdf",
+    "sayfa": 11,
+    "boyutKB": 86
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Fizik",
+    "konu": "Hareket ve Kuvvet",
+    "baslik": "Hareket ve Kuvvet",
+    "ozet": "Ham bilgi notu — düzgün ve ivmeli hareket, Newton yasaları, sürtünme ve serbest düşme; grafik yorumu ve 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-fizik/hareket-ve-kuvvet.pdf",
+    "sayfa": 13,
+    "boyutKB": 90
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Fizik",
+    "konu": "İş, Güç ve Enerji",
+    "baslik": "İş, Güç ve Enerji",
+    "ozet": "Ham bilgi notu — iş kavramı, kinetik ve potansiyel enerji, enerjinin korunumu ve verim; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-fizik/is-guc-enerji.pdf",
+    "sayfa": 11,
+    "boyutKB": 87
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Fizik",
+    "konu": "Isı, Sıcaklık ve Genleşme",
+    "baslik": "Isı, Sıcaklık ve Genleşme",
+    "ozet": "Ham bilgi notu — ısı-sıcaklık ayrımı, öz ısı, hâl değişimi, ısı alışverişi ve genleşme; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-fizik/isi-sicaklik-genlesme.pdf",
+    "sayfa": 11,
+    "boyutKB": 93
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Fizik",
+    "konu": "Madde ve Özellikleri",
+    "baslik": "Madde ve Özellikleri",
+    "ozet": "Ham bilgi notu — kütle, hacim, öz kütle, dayanıklılık ve adezyon-kohezyon; grafik yorumu ve 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-fizik/madde-ve-ozellikleri.pdf",
+    "sayfa": 11,
+    "boyutKB": 89
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Fizik",
+    "konu": "Manyetizma",
+    "baslik": "Manyetizma",
+    "ozet": "Ham bilgi notu — mıknatıslar, manyetik alan, akımın manyetik etkisi ve elektromıknatıs; 40 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-fizik/manyetizma.pdf",
+    "sayfa": 10,
+    "boyutKB": 82
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Fizik",
+    "konu": "Optik",
+    "baslik": "Optik",
+    "ozet": "Ham bilgi notu — ışığın yayılması, gölge, aynalar, kırılma ve mercekler; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-fizik/optik.pdf",
+    "sayfa": 11,
+    "boyutKB": 90
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Fizik",
+    "konu": "Sıvıların Kaldırma Kuvveti",
+    "baslik": "Sıvıların Kaldırma Kuvveti",
+    "ozet": "Ham bilgi notu — Arşimet ilkesi, yüzme-batma koşulları ve görünür ağırlık; 40 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-fizik/sivilarin-kaldirma-kuvveti.pdf",
+    "sayfa": 10,
+    "boyutKB": 85
   }
 ]
 
