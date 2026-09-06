@@ -468,14 +468,20 @@ def tablo(pdf, basliklar, satirlar, oranlar=None, boyut=8.8):
     pdf.ln(3)
 
 
-def gorsel(pdf, ciz, yukseklik, baslik=None, aciklama=None):
+def gorsel(pdf, ciz, yukseklik=None, baslik=None, aciklama=None):
     """
     Vektörel şema yerleştirir.
 
     `ciz(pdf, x, y, g, y_boyut)` çizim fonksiyonudur; kendisine ayrılan
     dikdörtgenin sol üst köşesi ve ölçüleri verilir. Şema bir sayfada
     bütün olarak durur, ortadan bölünmez.
+
+    Yükseklik verilmezse şemanın kendi bildirdiği ölçü kullanılır. Elle
+    yazılan yükseklik küçük kalırsa şema sessizce kırpılır — bu yüzden
+    varsayılan davranış, şemaya kendi boyunu sordurmaktır.
     """
+    if yukseklik is None:
+        yukseklik = getattr(ciz, "onerilen_yukseklik", 40.0)
     toplam = yukseklik + 7
     if baslik:
         toplam += 5
@@ -582,7 +588,7 @@ BLOK_CIZICILER = {
     "ezber": lambda pdf, b: ezber(pdf, b["baslik"], b.get("govde"), b.get("ogeler")),
     "cikmis": lambda pdf, b: cikmis(pdf, b["baslik"], b.get("govde"), b.get("ogeler")),
     "tablo": lambda pdf, b: tablo(pdf, b["basliklar"], b["satirlar"], b.get("oranlar")),
-    "gorsel": lambda pdf, b: gorsel(pdf, b["ciz"], b["yukseklik"], b.get("baslik"), b.get("aciklama")),
+    "gorsel": lambda pdf, b: gorsel(pdf, b["ciz"], b.get("yukseklik"), b.get("baslik"), b.get("aciklama")),
     "sayfa": lambda pdf, b: pdf.add_page(),
 }
 
