@@ -27,6 +27,8 @@ tmp/
 
 # Sosyal medya için yerel ekran görüntüleri; üretim kaynağı değildir.
 /outputs/DRKOC-Reels-Panel/
+/outputs/DRKOC-Reels-Panel.zip
+/outputs/DRKOC-Reels-Higgsfield/
 
 # Tarih atlası ham verisi (~31 MB). Gerektiğinde "npm run atlas:indir" ile
 # yeniden indirilir; yedekte yer kaplamasına gerek yok.
