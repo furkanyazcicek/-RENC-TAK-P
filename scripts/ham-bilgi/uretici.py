@@ -22,13 +22,18 @@ YENİ NOT EKLEME
   `NOT` adlı bir sözlük bulunsun. Şema için mevcut dosyalara bak.
 
 YAZIM KURALLARI (fontun sınırlarından doğar)
-  · Alt indis ve üstsimge karakterleri KULLANILMAZ. Liberation Sans'ta
-    yalnızca ¹ ² ³ vardır; ⁰ ve ⁴-⁹ yoktur. Yarısı görünen bir gösterim
-    kabul edilemez, bu yüzden hepsi düz yazılır:
-        CO2 · H2SO4 · "6,02 × 10 üzeri 23"
-  · Çift yönlü denge oku (⇌, ⇄) fontta yoktur; "↔" ya da "→" kullanılır.
-  · Şüphedeysen `uret.py` zaten durdurur: fontta olmayan bir karakter
-    bulursa PDF üretmeden hata verir.
+  · Alt indis kullanılmaz: CO2 · H2SO4 · NH4.
+  · Üstsimge yalnızca ² ve ³ için vardır; ⁰ ve ⁴-⁹ hiçbir fontta yok.
+    Bu yüzden:
+        – Fiziksel BİRİMLERDE ² ve ³ kullanılır: m/s² · cm³ · N/m²
+        – CEBİRSEL üslerde "^" kullanılır: 4^2 · (−2)^4 · x^3 · 10^23
+      Bir notun içinde bu ayrım tutarlı olmalıdır.
+  · Küme sembolleri (⊂ ⊆ ∈ ∪ ∩ ∅) yedek KaTeX fontundan gelir, serbestçe
+    kullanılabilir. Ancak ∉ ve ⊄ hiçbir fontta yok; onlar "elemanı
+    değildir", "alt kümesi değildir" diye yazılır.
+  · Çift yönlü denge oku (⇌, ⇄) yoktur; "↔" ya da "→" kullanılır.
+  · Şüphedeysen `uret.py` zaten durdurur: iki fontta da bulunmayan bir
+    karakter varsa PDF üretmeden hata verir.
 """
 
 from pathlib import Path
@@ -92,6 +97,14 @@ class HamBilgiPDF(FPDF):
         self.add_font("Liberation", "B", FONT_KLASORU / "LiberationSans-Bold.ttf")
         self.add_font("Liberation", "I", FONT_KLASORU / "LiberationSans-Italic.ttf")
         self.add_font("Liberation", "BI", FONT_KLASORU / "LiberationSans-BoldItalic.ttf")
+
+        # Liberation Sans'ta küme sembolleri yok. Matematiğin "Kümeler"
+        # konusu bunlarsız yazılamadığı için KaTeX'in matematik fontu
+        # yedek olarak bağlanıyor: eksik bir karakterle karşılaşıldığında
+        # fpdf2 kendiliğinden buraya düşüyor. (KaTeX, MIT lisanslıdır.)
+        self.add_font("Matematik", "", FONT_KLASORU / "KaTeX_Main-Regular.ttf")
+        self.add_font("Matematik", "B", FONT_KLASORU / "KaTeX_Main-Bold.ttf")
+        self.set_fallback_fonts(["Matematik"], exact_match=False)
 
     # -------------------- üst / alt bilgi --------------------
 

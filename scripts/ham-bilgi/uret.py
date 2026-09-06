@@ -56,10 +56,13 @@ def eksik_karakterleri_bul(veri):
     """
     from fontTools.ttLib import TTFont
 
+    # Ana font ve yedek matematik fontu birlikte taranır; yedekte bulunan
+    # bir sembol (küme işaretleri gibi) eksik sayılmaz.
     kapsam = set()
-    font = TTFont(KOK / "fontlar" / "LiberationSans-Regular.ttf")
-    for tablo in font["cmap"].tables:
-        kapsam.update(tablo.cmap.keys())
+    for dosya in ("LiberationSans-Regular.ttf", "KaTeX_Main-Regular.ttf"):
+        font = TTFont(KOK / "fontlar" / dosya)
+        for tablo in font["cmap"].tables:
+            kapsam.update(tablo.cmap.keys())
 
     bulunanlar = set()
 
