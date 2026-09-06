@@ -112,6 +112,7 @@ export function inkPath(stroke, bitti = true) {
 /** Saklanan şekli düşürür (silgi çizgiyi böldüğünde gerekir). */
 export function clearInkCache(stroke) {
   if (!stroke) return
+  penPaths.delete(stroke)
   delete stroke._inkImza
   delete stroke._inkPath
 }
@@ -137,12 +138,85 @@ function kalemGenisligi(stroke) {
   return Math.max(taban * 0.62, taban * (0.72 + 0.56 * basinc))
 }
 
-function drawReliablePen(ctx, stroke) {
+/**
+ * Canlı çizimde yalnızca son eklenen parçayı boyar.
+ *
+ * `paintedPoints`, bir önceki boyamada kaç gerçek noktanın görüldüğünü
+ * taşır. Yumuşak eğriyi kesintisiz bağlamak için en fazla son iki eski
+ * nokta yeniden kullanılır; bütün iz baştan dolaşılmaz ve tuval temizlenmez.
+ * Tahminî uç de aynı işlevle ayrı, küçük bir tuvale basılabilir.
+ */
+export function drawInkStrokeIncrement(ctx, stroke, paintedPoints = 0) {
+  const points = stroke?.p
+  const count = Array.isArray(points) ? Math.floor(points.length / 3) : 0
+  if (!ctx || count <= paintedPoints) return count
+
+  const start = paintedPoints <= 1 ? 0 : Math.max(0, paintedPoints - 2)
+  const partial = { ...stroke, p: points.slice(start * 3) }
+  const p = partial.p
+  const n = p.length / 3
+  const width = partial.t === 'hl' ? partial.w ?? 4 : kalemGenisligi(partial)
+
+  ctx.save()
+  ctx.fillStyle = partial.c
+  ctx.strokeStyle = partial.c
+  ctx.lineWidth = width
+  ctx.lineCap = 'round'
+  ctx.lineJoin = 'round'
+  if (partial.t === 'hl') ctx.globalAlpha *= HIGHLIGHT_INK_ALPHA
+
+  if (n === 1) {
+    ctx.beginPath()
+    ctx.arc(p[0], p[1], width / 2, 0, Math.PI * 2)
+    ctx.fill()
+    ctx.restore()
+    return count
+  }
+
+  ctx.beginPath()
+  ctx.moveTo(p[0], p[1])
+  for (let i = 1; i < n - 1; i++) {
+    const x = p[i * 3]
+    const y = p[i * 3 + 1]
+    const nextX = p[(i + 1) * 3]
+    const nextY = p[(i + 1) * 3 + 1]
+    ctx.quadraticCurveTo(x, y, (x + nextX) / 2, (y + nextY) / 2)
+  }
+  ctx.lineTo(p[(n - 1) * 3], p[(n - 1) * 3 + 1])
+  ctx.stroke()
+  ctx.restore()
+  return count
+}
+
+const penPaths = new WeakMap()
+
+// Canlı izde yalnız eklenen noktaları işle; bitişte basınç düzeltmesini yeniden hesapla.
+function cachedPen(stroke, finished) {
+  const p=stroke.p,n=p.length/3
+  let cache=penPaths.get(stroke)
+  if(!cache||cache.points!==p||cache.count>n||cache.finished!==finished) {
+    cache={points:p,count:0,curves:1,total:0,pressures:0,path:new Path2D(),finished}
+    cache.path.moveTo(p[0],p[1])
+    penPaths.set(stroke,cache)
+  }
+  for(let i=cache.count;i<n;i++)if(Number.isFinite(p[i*3+2])) {
+    cache.total+=Math.min(1,Math.max(0,p[i*3+2]));cache.pressures++
+  }
+  for(let i=cache.curves;i<n-1;i++)cache.path.quadraticCurveTo(p[i*3],p[i*3+1],(p[i*3]+p[(i+1)*3])/2,(p[i*3+1]+p[(i+1)*3+1])/2)
+  cache.curves=Math.max(1,n-1);cache.count=n
+  const pressure=cache.pressures?cache.total/cache.pressures:0.5,base=stroke.w??4
+  const path=new Path2D(cache.path)
+  path.lineTo(p[(n-1)*3],p[(n-1)*3+1])
+  return {path,width:Math.max(base*0.62,base*(0.72+0.56*pressure))}
+}
+
+function drawReliablePen(ctx, stroke, finished) {
   const p = stroke.p
   const n = p.length / 3
   if (!n) return
 
-  const genislik = kalemGenisligi(stroke)
+  const cached = n>1&&typeof Path2D!=='undefined'?cachedPen(stroke,finished):null
+  const genislik = cached?.width??kalemGenisligi(stroke)
   ctx.save()
   ctx.fillStyle = stroke.c
   ctx.strokeStyle = stroke.c
@@ -158,6 +232,7 @@ function drawReliablePen(ctx, stroke) {
     return
   }
 
+  if(cached){ctx.stroke(cached.path);ctx.restore();return}
   ctx.beginPath()
   ctx.moveTo(p[0], p[1])
   for (let i = 1; i < n - 1; i++) {
@@ -175,7 +250,7 @@ function drawReliablePen(ctx, stroke) {
 /** Çizgiyi tuvale basar. */
 export function drawInkStroke(ctx, stroke, bitti = true) {
   if (stroke?.t !== 'hl') {
-    drawReliablePen(ctx, stroke)
+    drawReliablePen(ctx, stroke, bitti)
     return
   }
   const path = inkPath(stroke, bitti)

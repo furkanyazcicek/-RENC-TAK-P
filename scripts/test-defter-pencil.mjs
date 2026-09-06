@@ -58,14 +58,16 @@ test('Kayıp bitişte yeni temas eskisini korur; iki harfi birleştirmez',()=>{
     assert.deepEqual(strokes.map(s=>s.map(p=>p.clientX)),[[10,20],[100,110]])
   }
 })
-test('Uyumluluk Pointer olayı ikinci çizgi açmaz; parmak gezinmesi boşta serbesttir',()=>{
+test('Uyumluluk Pointer olayı yalnızca etkin Touch Pencil temasında engellenir',()=>{
   const {input}=harness()
   const pointer=event([],[],{pointerType:'pen'})
-  assert.equal(input.blocksPointer(pointer),true);assert.equal(pointer.prevented,true)
+  // Touch yolu o temasta çalışmadıysa basınçlı Pointer yedeği açık kalır.
+  assert.equal(input.blocksPointer(pointer),false);assert.equal(pointer.prevented,false)
   assert.equal(input.blocksPointer(event([],[],{pointerType:'touch'})),false)
   input.start(event([pen(1)]))
   for(const type of ['touch','mouse','pen'])assert.equal(input.blocksPointer(event([],[],{pointerType:type})),true)
-  input.finish();assert.equal(input.blocksPointer(event([],[],{pointerType:'touch'})),false)
+  input.finish()
+  for(const type of ['touch','mouse','pen'])assert.equal(input.blocksPointer(event([],[],{pointerType:type})),false)
 })
 test('Odak kaybı/araç değişimi kapanışı bir kez kaydeder ve kilidi kaldırır',()=>{
   const {input,strokes}=harness()

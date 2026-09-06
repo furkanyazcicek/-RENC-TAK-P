@@ -465,6 +465,14 @@ export default function LessonBoard({
     })
   }, [paintLive])
 
+  // Yerel kalem izi ekran karesi kuyruğunu beklemez. Birleştirilmiş
+  // hareket örnekleri tamamlandıktan sonra olay başına yalnız bir kez çizilir.
+  const paintLiveNow = useCallback(() => {
+    cancelAnimationFrame(liveRafRef.current)
+    liveRafRef.current = 0
+    paintLive()
+  }, [paintLive])
+
   const resizeCanvases = useCallback(() => {
     const wrap = wrapRef.current
     if (!wrap) return
@@ -955,7 +963,7 @@ export default function LessonBoard({
     active._smoothPressure = pressure
     activeRef.current = active
     lastSentRef.current = 0
-    scheduleLive()
+    paintLiveNow()
   }
 
   function continueStroke(point, pressure) {
@@ -1058,7 +1066,7 @@ export default function LessonBoard({
     kayit(
       `  ● BİTTİ #${teshisRef.current?.bitti ?? '—'} · ${active.p.length / 3} nokta · ${islemSuresi.toFixed(1)}ms`
     )
-    scheduleLive()
+    paintLiveNow()
     channel?.send?.(CHANNEL_EVENTS.BOARD_STROKE, {
       phase: 'end',
       page: pageIndexRef.current,
@@ -1318,7 +1326,10 @@ export default function LessonBoard({
     if (eraseRef.current) continueErase(point)
     else if (lassoRef.current) continueLasso(point)
     else if (shapeRef.current) continueShape(point)
-    else if (activeRef.current) continueStroke(point, okuIosBasinc(touch))
+    else if (activeRef.current) {
+      continueStroke(point, okuIosBasinc(touch))
+      paintLiveNow()
+    }
   }
 
   function handleIosTouchEnd(event) {
@@ -1731,6 +1742,7 @@ export default function LessonBoard({
       } else {
         continueStroke(point, okuBasinc(e))
       }
+      paintLiveNow()
     }
   }
 

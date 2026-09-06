@@ -1,6 +1,6 @@
 import { cachedImage } from './media.js'
-import { drawInkStroke } from '../liveLesson/board/freehandInk'
-import { strokeHitsCircle } from '../solutionCanvas'
+import { drawInkStroke } from '../liveLesson/board/freehandInk.js'
+import { strokeHitsCircle } from '../solutionCanvas.js'
 import { shapeBounds, shapePaths, moveShape, hitShapeOutline } from './shapeGeometry.js'
 export { hitShapeOutline }
 
@@ -40,9 +40,9 @@ export function moveItem(item, dx, dy) {
   if (item.kind === 'shape') return moveShape(item,dx,dy)
   return { ...item, p: item.p.map((v, i) => i % 3 === 0 ? v + dx : i % 3 === 1 ? v + dy : v) }
 }
-export function drawItem(ctx, item) {
+export function drawItem(ctx, item, finished=true) {
   if(item.kind==='image'){const img=cachedImage(item.assetId);if(img?.complete&&img.naturalWidth)ctx.drawImage(img,item.x,item.y,item.w,item.h);return}
-  if (item.kind === 'stroke') { drawInkStroke(ctx, item); return }
+  if (item.kind === 'stroke') { drawInkStroke(ctx, item, finished); return }
   ctx.save(); ctx.fillStyle = item.c; ctx.strokeStyle = item.c; ctx.lineWidth = item.w; ctx.lineCap = 'round';ctx.lineJoin='round'
   ctx.globalAlpha *= item.opacity??1
   if (item.kind === 'text') {

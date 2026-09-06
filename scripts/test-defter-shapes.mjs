@@ -71,3 +71,11 @@ test('Anlamlı ve birikimli hareket beklemeyi yeniden başlatır; iptal eski saa
   const h=timerHarness();h.hold.start({x:0,y:0});h.tick(300);h.hold.move({x:4,y:0});h.hold.move({x:7,y:0});h.tick(250);assert.equal(h.fired.length,0);h.tick(250);assert.equal(h.fired.length,1)
   h.hold.start({x:0,y:0});h.hold.stop();h.tick(1000);assert.equal(h.fired.length,1)
 })
+
+test('Şekil bekleme zamanlayıcısı gerçek tarayıcıdaki alıcı kuralına uyar',()=>{
+  const originalSet=globalThis.setTimeout,originalClear=globalThis.clearTimeout
+  globalThis.setTimeout=function(){assert.ok(this===undefined||this===globalThis,'Hatalı zamanlayıcı alıcısı');return 1}
+  globalThis.clearTimeout=function(){assert.ok(this===undefined||this===globalThis,'Hatalı zamanlayıcı alıcısı')}
+  try{const hold=createShapeHold(()=>{});hold.start({x:0,y:0});hold.move({x:30,y:30});hold.stop()}
+  finally{globalThis.setTimeout=originalSet;globalThis.clearTimeout=originalClear}
+})

@@ -4,7 +4,14 @@ import { findIosStylusTouch, findTouchById, rawIosTouchPressure } from '../liveL
 export function createPencilInput({ enabled = () => true, onStart, onMove, onFinish }) {
   let touchId = null
   const prevent = event => { if (event.cancelable) event.preventDefault() }
-  const sample = touch => ({ clientX: touch.clientX, clientY: touch.clientY, pressure: rawIosTouchPressure(touch) })
+  const sample = touch => ({
+    clientX: touch.clientX,
+    clientY: touch.clientY,
+    pressure: rawIosTouchPressure(touch),
+    pointerType: 'pen',
+    pointerId: `ios-touch-${touch.identifier}`,
+    buttons: 1,
+  })
   function finish() {
     if (touchId === null) return
     touchId = null
@@ -14,7 +21,11 @@ export function createPencilInput({ enabled = () => true, onStart, onMove, onFin
   return {
     get active() { return touchId !== null },
     blocksPointer(event) {
-      if (event.pointerType !== 'pen' && touchId === null) return false
+      // iPad saptanması tek başına Pointer yolunu kapatmaz. Touch motoru
+      // o temasta gerçekten bir Pencil gördüyse uyumluluk Pointer olayları
+      // engellenir; Touch yolu çalışmayan WebKit sürümünde geçerli
+      // basınçlı Pointer olayı yedek olarak çizmeye devam eder.
+      if (touchId === null) return false
       prevent(event)
       return true
     },

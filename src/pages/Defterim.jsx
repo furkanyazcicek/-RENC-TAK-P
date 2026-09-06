@@ -10,6 +10,7 @@ import { AppShell, Button, Drawer, Field, IconButton, Input, Modal, PageLoader, 
 import { useAuth } from '../context/AuthContext'
 import NoteCanvas from '../components/defter/NoteCanvas'
 import { createLocalStore } from '../lib/defter/local'
+import { createSaveBuffer } from '../lib/defter/saveBuffer'
 import { createNotebookRepository } from '../lib/defter/repository'
 import { createNotebookRemote } from '../lib/defter/remote'
 import { changed, clone, COLORS, importNotebook, MAX_BYTES, newNotebook, newPage, pageText, PAPERS, uid, validateNotebook } from '../lib/defter/model'
@@ -21,7 +22,7 @@ const TOOLS = [
   ['select','Seç ve taşı',MousePointer2],['text','Metin',Type],['pan','Sayfayı kaydır',Hand],
 ]
 const SHAPES = [['line','Çizgi',Minus],['arrow','Ok',MoveUpRight],['rect','Dikdörtgen',Square],['ellipse','Elips',Circle]]
-const STATUS = {saving:'Kaydediliyor…',local:'Bu cihazda kaydedildi',syncing:'Hesabına kaydediliyor…',cloud:'Hesabına kaydedildi',offline:'Bağlantı bekleniyor',error:'Kaydedilemedi',conflict:'İki sürüm de korundu'}
+const STATUS = {saving:'Değişiklikler kaydediliyor…',local:'Cihazda kayıtlı',syncing:'Hesapla eşitleniyor…',cloud:'Hesapta kayıtlı',offline:'Bağlantı bekleniyor',error:'Kaydedilemedi',conflict:'İki sürüm de korundu'}
 
 export default function Defterim({ preview=false }) {
   const {user}=useAuth()
@@ -38,7 +39,7 @@ function NotebookWorkspace({owner,preview}) {
   const [categoryFilter,setCategoryFilter]=useState(''),[newCategory,setNewCategory]=useState(''),[newSubcategory,setNewSubcategory]=useState('')
   const [newTitle,setNewTitle]=useState(''),[subject,setSubject]=useState('')
   const closeCreating=useCallback(()=>setCreating(false),[])
-  const repoRef=useRef(null),pending=useRef(new Map()),importInput=useRef(null),alive=useRef(true),pathRef=useRef(defterId),navigateRef=useRef(navigate)
+  const saveBufferRef=useRef(null),pending=useRef(new Map()),importInput=useRef(null),alive=useRef(true),pathRef=useRef(defterId),navigateRef=useRef(navigate)
   pathRef.current=defterId
   navigateRef.current=navigate
   const remote=useMemo(()=>preview?null:createNotebookRemote(owner),[owner,preview])
@@ -50,21 +51,28 @@ function NotebookWorkspace({owner,preview}) {
       onStatus:(s,e)=>{setStatus(s);if(e&&s==='error')setError(e.message||'Kayıt tamamlanamadı. Yedeğini indirip yeniden dene.')},
       onFork:(oldId,newId)=>{pending.current.delete(oldId);setNotice('Başka bir yerde yapılan değişiklik bulundu. Yazdıkların “korunan kopya” defterinde saklandı.');if(pathRef.current===oldId)navigateRef.current(`${root}/${newId}`,{replace:true})},
     })
-    repoRef.current=repo
+    const buffer=createSaveBuffer(doc=>repo.save(doc))
+    saveBufferRef.current=buffer
     repo.load().then(()=>{if(!disposed)return repo.sync()}).catch(()=>{if(!disposed){setError('Defterler okunamadı. Tarayıcı depolamasına izin verip yeniden dene.');setStatus('error')}}).finally(()=>{if(!disposed)setLoading(false)})
-    const sync=()=>repo.sync()
+    const sync=async()=>{try{await buffer.flush()}catch{return}return repo.sync()}
+    const flush=()=>{void buffer.flush().catch(()=>{})}
+    const hidden=()=>{if(document.hidden)flush()}
+    document.addEventListener('visibilitychange',hidden)
+    window.addEventListener('pagehide',flush)
     const interval=setInterval(sync,5000)
     window.addEventListener('online',sync);window.addEventListener('focus',sync)
-    const before=e=>{if(pending.current.size){e.preventDefault();e.returnValue=''}}
+    const before=e=>{if(pending.current.size){flush();e.preventDefault();e.returnValue=''}}
     window.addEventListener('beforeunload',before)
-    return()=>{disposed=true;alive.current=false;repo.close();clearInterval(interval);window.removeEventListener('online',sync);window.removeEventListener('focus',sync);window.removeEventListener('beforeunload',before)}
+    return()=>{disposed=true;alive.current=false;flush();repo.close();document.removeEventListener('visibilitychange',hidden);window.removeEventListener('pagehide',flush);clearInterval(interval);window.removeEventListener('online',sync);window.removeEventListener('focus',sync);window.removeEventListener('beforeunload',before)}
   },[owner,remote,root])
-  const save=useCallback(async doc=>{
-    try{validateNotebook(doc)}catch(e){setError(e.message);return false}
+  const save=useCallback(async (doc,options)=>{
+    // Yerel yazma da bulut eşitlemesi de aynı sıralı kuyruktan geçer;
+    // kalem kalkışı hiçbir depolama ya da ağ yanıtını beklemez.
+    const saving=saveBufferRef.current.save(doc,{defer:Boolean(options?.defer)})
     pending.current.set(doc.id,doc)
     setDocs(all=>all.some(x=>x.id===doc.id)?all.map(x=>x.id===doc.id?doc:x):[...all,doc])
     try{
-      await repoRef.current.save(doc)
+      await saving
       if(pending.current.get(doc.id)===doc)pending.current.delete(doc.id)
       if(alive.current)setError('')
       return true
@@ -117,6 +125,19 @@ function NotebookWorkspace({owner,preview}) {
   </AppShell>
 }
 
+function SaveStatus({status,cloud}) {
+  const [visible,setVisible]=useState(status)
+  useEffect(()=>{
+    if(status!=='saving'&&status!=='syncing'){setVisible(status);return}
+    const timer=setTimeout(()=>setVisible(status),1200)
+    return()=>clearTimeout(timer)
+  },[status])
+  return <div className="defter-save" title={cloud?'Notların cihazına kaydedilir ve hesabınla eşitlenir.':'Notların bu tarayıcıda saklanır. Başka cihaz için yedeğini indir.'}>
+    <span className={`defter-save-dot ${visible==='error'?'is-error':''}`}/>
+    <span role="status">{STATUS[visible]}</span>
+  </div>
+}
+
 export function NotebookEditor({doc,onSave,root,status,cloud,preview}) {
   const [pageId,setPageId]=useState(doc.pages[0].id),[tool,setTool]=useState('pen'),[color,setColor]=useState(COLORS[0].value)
   const [width,setWidth]=useState(3),[zoom,setZoom]=useState(1),[finger,setFinger]=useState(false),[selected,setSelected]=useState(null)
@@ -134,14 +155,13 @@ export function NotebookEditor({doc,onSave,root,status,cloud,preview}) {
   latest.current=doc
   const page=doc.pages.find(p=>p.id===pageId)??doc.pages[0],pageIndex=doc.pages.indexOf(page)
   const currentHistory=()=>{
-    if(!history.current.has(page.id))history.current.set(page.id,{items:[clone(page)],at:0})
+    if(!history.current.has(page.id))history.current.set(page.id,{items:[page],at:0})
     return history.current.get(page.id)
   }
-  const h=currentHistory(),chosen=page.items.find(x=>x.id===selected),activeShape=SHAPES.find(([id])=>id===tool)
-  function update(next) {
+  const h=currentHistory(),chosen=selected?page.items.find(x=>x.id===selected):null,activeShape=SHAPES.find(([id])=>id===tool)
+  function update(next,options) {
     const value=changed(next)
-    try{validateNotebook(value)}catch(e){setExportError(e.message);return Promise.resolve(false)}
-    latest.current=value;lastOwn.current=value;return onSave(value)
+    latest.current=value;lastOwn.current=value;return onSave(value,options)
   }
   const recording=useNotebookRecording({doc,page,onSave:update})
   recording.rename=(id,title)=>update({...latest.current,recordings:latest.current.recordings.map(r=>r.id===id?{...r,title}:r)})
@@ -162,11 +182,12 @@ export function NotebookEditor({doc,onSave,root,status,cloud,preview}) {
     else if(chosen.kind==='shape') {const ratio=Math.min(factor,(1000-chosen.x1)/Math.max(1,chosen.x2-chosen.x1),(1414-chosen.y1)/Math.max(1,chosen.y2-chosen.y1));item={...chosen,x2:chosen.x1+(chosen.x2-chosen.x1)*ratio,y2:chosen.y1+(chosen.y2-chosen.y1)*ratio,...(chosen.vertices?{vertices:chosen.vertices.map(([x,y])=>[chosen.x1+(x-chosen.x1)*ratio,chosen.y1+(y-chosen.y1)*ratio])}:{})}}
     if(item)updatePage({...page,items:page.items.map(x=>x.id===item.id?item:x)})
   }
-  function updatePage(next,record=true) {
-    try{validateNotebook({...latest.current,pages:latest.current.pages.map(p=>p.id===next.id?next:p)})}catch(e){setExportError(e.message);return false}
+  function updatePage(next,record=true,defer=false) {
+    if(next.items.length>5000){setExportError('Bu sayfa 5.000 öğe sınırına ulaştı. Yeni bir sayfada devam edebilirsin.');return false}
     recording.capture(next,latest.current.pages.find(p=>p.id===next.id)??page)
-    if(record){const h=currentHistory();h.items=h.items.slice(0,h.at+1);h.items.push(clone(next));if(h.items.length>60)h.items.shift();h.at=h.items.length-1}
-    update({...latest.current,pages:latest.current.pages.map(p=>p.id===next.id?next:p)})
+    // Tamamlanan öğeler yerinde değiştirilmez; geçmiş aynı öğeleri güvenle paylaşır.
+    if(record){const h=currentHistory();h.items=h.items.slice(0,h.at+1);h.items.push(next);if(h.items.length>60)h.items.shift();h.at=h.items.length-1}
+    update({...latest.current,pages:latest.current.pages.map(p=>p.id===next.id?next:p)},{defer})
     refreshHistory(v=>v+1)
     return true
   }
@@ -228,7 +249,7 @@ export function NotebookEditor({doc,onSave,root,status,cloud,preview}) {
   }
   return <section className="defter-editor" aria-label="Defter düzenleyici">
     <header className="defter-editor-header"><Link to={root} onClick={e=>{if(recordingActive){e.preventDefault();recording.stop();setAudioOpen(true)}}} className="defter-back" aria-label="Defterlerime dön"><ArrowLeft size={20}/></Link>
-      <div className="defter-title-group"><input aria-label="Defter adı" value={doc.title} maxLength={120} onChange={e=>update({...doc,title:e.target.value})}/><div className="defter-save" role="status"><span className={`defter-save-dot ${status==='error'?'is-error':''}`}/>{STATUS[status]}{!cloud&&<span className="defter-only-local"> · Cihazlar arası kayıt kapalı</span>}</div></div>
+      <div className="defter-title-group"><input aria-label="Defter adı" value={doc.title} maxLength={120} onChange={e=>update({...doc,title:e.target.value})}/><SaveStatus status={status} cloud={cloud}/></div>
       <div className="defter-header-actions"><Button icon={Plus} onClick={()=>setInsertOpen(true)}>Ekle</Button><Button variant="ghost" icon={Download} onClick={()=>exportNotebook(doc)} className="defter-backup-button">Yedeği indir</Button><IconButton size="lg" label="Defter ayarları" icon={Settings2} onClick={()=>setSettings(true)}/></div>
     </header>
     <div className="defter-workspace">
@@ -245,7 +266,7 @@ export function NotebookEditor({doc,onSave,root,status,cloud,preview}) {
       {exportError&&<div className="defter-message" role="alert">{exportError}<button onClick={()=>setExportError('')}>Kapat</button></div>}
       <div className="defter-audio-dock" hidden={!audioOpen}><NotebookAudio doc={doc} page={page} rec={recording} onSeek={cue=>{setAudioCue(cue);if(cue.pageId!==page.id)switchPage(cue.pageId);setSelected(cue.itemId??null)}}/></div>
       {chosen&&<div className="defter-selection" role="group" aria-label="Seçili öğe"><span>1 öğe seçili</span>{['image','shape'].includes(chosen.kind)&&<><button aria-label="Seçili öğeyi küçült" onClick={()=>resizeChosen(.8)}><Minus size={16}/></button><button aria-label="Seçili öğeyi büyüt" onClick={()=>resizeChosen(1.2)}><Plus size={16}/></button></>}{chosen.kind==='text'&&<button onClick={()=>openText(null,chosen)}>Metni düzenle</button>}<button onClick={()=>{updatePage({...page,items:page.items.filter(x=>x.id!==chosen.id)});setSelected(null)}}><Trash2 size={15}/>Kaldır</button><button aria-label="Seçimi bırak" onClick={()=>setSelected(null)}><X size={16}/></button></div>}
-      <NoteCanvas key={page.id} page={page} assets={doc.assets} audioCue={audioCue} tool={tool} color={color} width={width} finger={finger} zoom={zoom} onZoom={setZoom} selected={selected} onSelect={setSelected} onText={openText} disabled={!!textEdit||pagesOpen||settings||textsOpen||insertOpen||sourceOpen} onCommit={items=>updatePage({...page,items})}/>
+      <NoteCanvas key={page.id} page={page} assets={doc.assets} audioCue={audioCue} tool={tool} color={color} width={width} finger={finger} zoom={zoom} onZoom={setZoom} selected={selected} onSelect={setSelected} onText={openText} disabled={!!textEdit||pagesOpen||settings||textsOpen||insertOpen||sourceOpen} onCommit={items=>updatePage({...page,items},true,true)}/>
       <footer className="defter-editor-footer"><button onClick={()=>setTextsOpen(true)}><FileText size={16}/><span>Sayfa metinleri</span></button><span className="defter-input-hint">{finger?'Parmakla çizim açık':tool==='pan'?'Sürükleyerek sayfada gezin':'Şekli çiz · Düzeltmek için basılı tut'}</span><div className="defter-zoom"><IconButton size="lg" icon={Minus} label="Uzaklaştır" disabled={zoom<=0.65} onClick={()=>setZoom(v=>Math.max(.65,v-.2))}/><button onClick={()=>setZoom(1)} aria-label="Sayfayı genişliğe sığdır">{Math.round(zoom*100)}%</button><IconButton size="lg" icon={Plus} label="Yakınlaştır" disabled={zoom>=3} onClick={()=>setZoom(v=>Math.min(3,v+.2))}/></div></footer>
     </div>
     <NotebookInsert open={insertOpen} onClose={closeInsert} doc={doc} page={page} color={color} width={width} onImport={importContent} onPage={next=>{updatePage(next);if(next.items.length>page.items.length){setTool('select');setSelected(next.items.at(-1).id)}}} onAudio={()=>setAudioOpen(true)} preview={preview}/>

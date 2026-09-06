@@ -20,7 +20,20 @@ export function useNotebookRecording({doc,page,onSave}) {
     if(last?.pageId===pageId&&last?.itemId===itemId&&time-last.time<.2)return
     s.cues.push({time,pageId,...(itemId?{itemId}:{})})
   }
-  function capture(next,previous){const ids=new Set(previous.items.map(x=>x.id));for(const x of next.items)if(!ids.has(x.id))mark(next.id,x.id)}
+  function capture(next,previous){
+    const active=session.current
+    if(!active||active.recorder.state!=='recording')return
+    // Olağan kalem akışı yalnızca sona yeni bir öğe ekler. Dolu sayfada
+    // her kalkışta binlerce kimliği yeniden Set'e kopyalamaya gerek yoktur.
+    const prefix=next.items.length>=previous.items.length&&(
+      previous.items.length===0||(
+        next.items[0]===previous.items[0]&&
+        next.items[previous.items.length-1]===previous.items.at(-1)
+      )
+    )
+    if(prefix){for(const item of next.items.slice(previous.items.length))mark(next.id,item.id);return}
+    const ids=new Set(previous.items.map(x=>x.id));for(const x of next.items)if(!ids.has(x.id))mark(next.id,x.id)
+  }
   function persist(s,final=false) {
     const blob=new Blob(s.chunks,{type:s.recorder.mimeType}),duration=seconds(s),cues=s.cues.filter(c=>c.time<=duration)
     if(!blob.size)return saving.current
