@@ -20,6 +20,15 @@ KULLANIM
 YENİ NOT EKLEME
   scripts/ham-bilgi/icerik/<ders>/<konu-slug>.py dosyası yaz; içinde
   `NOT` adlı bir sözlük bulunsun. Şema için mevcut dosyalara bak.
+
+YAZIM KURALLARI (fontun sınırlarından doğar)
+  · Alt indis ve üstsimge karakterleri KULLANILMAZ. Liberation Sans'ta
+    yalnızca ¹ ² ³ vardır; ⁰ ve ⁴-⁹ yoktur. Yarısı görünen bir gösterim
+    kabul edilemez, bu yüzden hepsi düz yazılır:
+        CO2 · H2SO4 · "6,02 × 10 üzeri 23"
+  · Çift yönlü denge oku (⇌, ⇄) fontta yoktur; "↔" ya da "→" kullanılır.
+  · Şüphedeysen `uret.py` zaten durdurur: fontta olmayan bir karakter
+    bulursa PDF üretmeden hata verir.
 """
 
 from pathlib import Path
@@ -468,6 +477,139 @@ def tablo(pdf, basliklar, satirlar, oranlar=None, boyut=8.8):
     pdf.ln(3)
 
 
+def formul(pdf, ifade, baslik=None, terimler=None, not_metni=None):
+    """
+    Ortada duran, çerçeveli formül levhası.
+
+    Sayısal derslerde formülün metnin içinde kaybolması en sık şikâyet.
+    Burada formül kendi zemininde durur, altında terimler tek tek açılır —
+    öğrenci sembolü nereden bulacağını aramak zorunda kalmaz.
+    """
+    ic_genislik = pdf.epw - 12
+    yukseklik = 5.0
+    if baslik:
+        yukseklik += 4.6
+    pdf.set_font("Liberation", "B", 13)
+    yukseklik += pdf.metin_yuksekligi(ifade, ic_genislik, 6.4, markdown=False)
+    if terimler:
+        pdf.set_font("Liberation", "", 9)
+        yukseklik += 1.6
+        for _, anlam in terimler:
+            yukseklik += max(4.4, pdf.metin_yuksekligi(anlam, ic_genislik - 24, 4.4))
+    if not_metni:
+        pdf.set_font("Liberation", "", 9)
+        yukseklik += 1.4 + pdf.metin_yuksekligi(not_metni, ic_genislik, 4.4)
+    yukseklik += 4.0
+
+    pdf.yer_ayir(yukseklik + 3)
+    y0 = pdf.get_y()
+    pdf.set_fill_color(*ZEMIN_SOLUK)
+    pdf.set_draw_color(*CIZGI)
+    pdf.set_line_width(0.35)
+    pdf.rect(KENAR, y0, pdf.epw, yukseklik, style="DF", round_corners=True, corner_radius=2)
+
+    pdf.set_y(y0 + 2.6)
+    if baslik:
+        pdf.set_font("Liberation", "B", 8.6)
+        pdf.set_text_color(*MARKA_KOYU)
+        pdf.set_x(KENAR + 6)
+        pdf.multi_cell(ic_genislik, 4.6, buyut(baslik), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+
+    pdf.set_font("Liberation", "B", 13)
+    pdf.set_text_color(*MUREKKEP)
+    pdf.set_x(KENAR + 6)
+    pdf.multi_cell(ic_genislik, 6.4, ifade, align="C",
+                   new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+
+    if terimler:
+        pdf.ln(1.6)
+        for sembol, anlam in terimler:
+            y1 = pdf.get_y()
+            pdf.set_font("Liberation", "B", 9)
+            pdf.set_text_color(*MARKA_KOYU)
+            pdf.set_xy(KENAR + 8, y1)
+            pdf.cell(22, 4.4, sembol)
+            pdf.set_font("Liberation", "", 9)
+            pdf.set_text_color(*MUREKKEP)
+            pdf.set_xy(KENAR + 30, y1)
+            pdf.multi_cell(ic_genislik - 24, 4.4, anlam, markdown=True,
+                           new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+
+    if not_metni:
+        pdf.ln(1.4)
+        pdf.set_font("Liberation", "", 9)
+        pdf.set_text_color(*MUREKKEP_SOLUK)
+        pdf.set_x(KENAR + 6)
+        pdf.multi_cell(ic_genislik, 4.4, not_metni, markdown=True,
+                       new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+
+    pdf.set_y(y0 + yukseklik + 3)
+    pdf.set_text_color(*MUREKKEP)
+
+
+def cozum(pdf, soru, adimlar, sonuc=None, baslik="Çözümlü Örnek"):
+    """
+    Numaralı basamaklarla çözülen örnek soru.
+
+    Sayısal derslerde "anladım ama yapamıyorum" sorununun ilacı budur:
+    her basamak ayrı satırda, ne yapıldığı açıkça yazılı.
+    """
+    ic_genislik = pdf.epw - 12
+    yukseklik = 5.2 + 4.6
+    pdf.set_font("Liberation", "", 9.8)
+    yukseklik += pdf.metin_yuksekligi(soru, ic_genislik, 4.8) + 2.0
+    for adim in adimlar:
+        yukseklik += max(4.6, pdf.metin_yuksekligi(adim, ic_genislik - 8, 4.6)) + 1.0
+    if sonuc:
+        yukseklik += 2.0 + pdf.metin_yuksekligi(sonuc, ic_genislik - 8, 4.8)
+    yukseklik += 3.0
+
+    pdf.yer_ayir(yukseklik + 3)
+    y0 = pdf.get_y()
+    pdf.set_fill_color(255, 255, 255)
+    pdf.set_draw_color(*MARKA)
+    pdf.set_line_width(0.35)
+    pdf.rect(KENAR, y0, pdf.epw, yukseklik, style="DF", round_corners=True, corner_radius=2)
+    pdf.set_fill_color(*MARKA)
+    pdf.rect(KENAR, y0, 2.2, yukseklik, style="F")
+
+    pdf.set_xy(KENAR + 6, y0 + 2.6)
+    pdf.set_font("Liberation", "B", 9.2)
+    pdf.set_text_color(*MARKA_KOYU)
+    pdf.multi_cell(ic_genislik, 4.6, buyut(baslik), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+
+    pdf.set_x(KENAR + 6)
+    pdf.set_font("Liberation", "", 9.8)
+    pdf.set_text_color(*MUREKKEP)
+    pdf.multi_cell(ic_genislik, 4.8, soru, markdown=True,
+                   new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.ln(2.0)
+
+    for i, adim in enumerate(adimlar, start=1):
+        y1 = pdf.get_y()
+        pdf.set_font("Liberation", "B", 8.8)
+        pdf.set_text_color(*MARKA)
+        pdf.set_xy(KENAR + 7, y1)
+        pdf.cell(7, 4.6, f"{i}.")
+        pdf.set_font("Liberation", "", 9.4)
+        pdf.set_text_color(*MUREKKEP)
+        pdf.set_xy(KENAR + 14, y1)
+        pdf.multi_cell(ic_genislik - 8, 4.6, adim, markdown=True,
+                       new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        pdf.ln(1.0)
+
+    if sonuc:
+        pdf.ln(2.0)
+        pdf.set_x(KENAR + 14)
+        pdf.set_font("Liberation", "B", 9.8)
+        pdf.set_text_color(*BASARI)
+        pdf.multi_cell(ic_genislik - 8, 4.8, sonuc, markdown=True,
+                       new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+
+    pdf.set_y(y0 + yukseklik + 3)
+    pdf.set_text_color(*MUREKKEP)
+
+
 def gorsel(pdf, ciz, yukseklik=None, baslik=None, aciklama=None):
     """
     Vektörel şema yerleştirir.
@@ -588,6 +730,9 @@ BLOK_CIZICILER = {
     "ezber": lambda pdf, b: ezber(pdf, b["baslik"], b.get("govde"), b.get("ogeler")),
     "cikmis": lambda pdf, b: cikmis(pdf, b["baslik"], b.get("govde"), b.get("ogeler")),
     "tablo": lambda pdf, b: tablo(pdf, b["basliklar"], b["satirlar"], b.get("oranlar")),
+    "formul": lambda pdf, b: formul(pdf, b["ifade"], b.get("baslik"), b.get("terimler"), b.get("not")),
+    "cozum": lambda pdf, b: cozum(pdf, b["soru"], b["adimlar"], b.get("sonuc"),
+                                  b.get("baslik", "Çözümlü Örnek")),
     "gorsel": lambda pdf, b: gorsel(pdf, b["ciz"], b.get("yukseklik"), b.get("baslik"), b.get("aciklama")),
     "sayfa": lambda pdf, b: pdf.add_page(),
 }
