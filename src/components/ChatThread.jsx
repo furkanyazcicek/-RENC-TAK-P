@@ -1,12 +1,67 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Paperclip, FileText, Download, MessageCircle, Send, X } from 'lucide-react'
+import {
+  Download,
+  FileText,
+  MessageCircle,
+  MoreHorizontal,
+  Paperclip,
+  Pencil,
+  Send,
+  Trash2,
+  X,
+} from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
 import { cn } from '../lib/cn'
+import { MESSAGE_READ_EVENT } from '../hooks/useUnreadMessageCount'
+import { captureStudentProfile, isProductCapture } from '../lib/productCapture'
 import ImageLightbox from './ImageLightbox'
-import { Alert, Avatar, Button, Input, Skeleton } from './ui'
+import { Alert, Avatar, Button, Input, Modal, Skeleton, Textarea, useToast } from './ui'
 
 const MAX_FILE_MB = 10
+const MAX_MESSAGE_LENGTH = 4000
+
+function captureMessages() {
+  const now = Date.now()
+  return [
+    {
+      id: 'capture-message-1',
+      sender_id: 'reels-teacher',
+      receiver_id: 'reels-student',
+      content: 'Fonksiyonlar denemesindeki 7. soruya birlikte bakalım.',
+      created_at: new Date(now - 28 * 60 * 1000).toISOString(),
+      read_at: null,
+      edited_at: null,
+    },
+    {
+      id: 'capture-message-2',
+      sender_id: 'reels-student',
+      receiver_id: 'reels-teacher',
+      content: 'Hocam, tanım kümesini bulurken takıldım.',
+      created_at: new Date(now - 22 * 60 * 1000).toISOString(),
+      read_at: new Date(now - 20 * 60 * 1000).toISOString(),
+      edited_at: null,
+    },
+    {
+      id: 'capture-message-3',
+      sender_id: 'reels-teacher',
+      receiver_id: 'reels-student',
+      content: 'Önce paydayı sıfır yapan değeri dışarıda bırak. Sonra birlikte kontrol ederiz.',
+      created_at: new Date(now - 18 * 60 * 1000).toISOString(),
+      read_at: null,
+      edited_at: null,
+    },
+    {
+      id: 'capture-message-4',
+      sender_id: 'reels-student',
+      receiver_id: 'reels-teacher',
+      content: 'Tamam, çözümü birazdan göndereceğim.',
+      created_at: new Date(now - 12 * 60 * 1000).toISOString(),
+      read_at: new Date(now - 10 * 60 * 1000).toISOString(),
+      edited_at: null,
+    },
+  ]
+}
 
 function attachmentTypeFor(file) {
   if (file.type.startsWith('image/')) return 'image'
@@ -33,6 +88,9 @@ function dayLabel(dateStr) {
  */
 export default function ChatThread({ contact, className }) {
   const { user } = useAuth()
+  const captureMode = isProductCapture()
+  const currentUserId = user?.id ?? (captureMode ? captureStudentProfile().id : null)
+  const toast = useToast()
   const [messages, setMessages] = useState([])
   const [text, setText] = useState('')
   const [file, setFile] = useState(null)
@@ -41,41 +99,122 @@ export default function ChatThread({ contact, className }) {
   const [error, setError] = useState(null)
   const [signedUrls, setSignedUrls] = useState({})
   const [lightboxSrc, setLightboxSrc] = useState(null)
+  const [openActionsId, setOpenActionsId] = useState(null)
+  const [editingMessage, setEditingMessage] = useState(null)
+  const [editText, setEditText] = useState('')
+  const [savingEdit, setSavingEdit] = useState(false)
+  const [deletingMessage, setDeletingMessage] = useState(null)
+  const [deleting, setDeleting] = useState(false)
   const bottomRef = useRef(null)
 
+  const markMessagesRead = useCallback(async (messageIds) => {
+    if (!currentUserId || messageIds.length === 0) return
+
+    const readAt = new Date().toISOString()
+    if (captureMode) {
+      setMessages((current) =>
+        current.map((message) =>
+          messageIds.includes(message.id) ? { ...message, read_at: readAt } : message
+        )
+      )
+      window.dispatchEvent(new Event(MESSAGE_READ_EVENT))
+      return
+    }
+
+    const { error: readError } = await supabase
+      .from('messages')
+      .update({ read_at: readAt })
+      .in('id', messageIds)
+      .eq('receiver_id', currentUserId)
+      .is('read_at', null)
+
+    if (readError) return
+
+    setMessages((current) =>
+      current.map((message) =>
+        messageIds.includes(message.id) ? { ...message, read_at: readAt } : message
+      )
+    )
+    window.dispatchEvent(new Event(MESSAGE_READ_EVENT))
+  }, [captureMode, currentUserId])
+
   const load = useCallback(async () => {
-    if (!user || !contact) return
-    const { data } = await supabase
+    if (!currentUserId || !contact) return
+
+    if (captureMode) {
+      const sampleMessages = captureMessages()
+      setMessages(sampleMessages)
+      setLoading(false)
+      markMessagesRead(
+        sampleMessages
+          .filter((message) => message.receiver_id === currentUserId && !message.read_at)
+          .map((message) => message.id)
+      )
+      return
+    }
+
+    const { data, error: loadError } = await supabase
       .from('messages')
       .select('*')
       .or(
-        `and(sender_id.eq.${user.id},receiver_id.eq.${contact.id}),and(sender_id.eq.${contact.id},receiver_id.eq.${user.id})`
+        `and(sender_id.eq.${currentUserId},receiver_id.eq.${contact.id}),and(sender_id.eq.${contact.id},receiver_id.eq.${currentUserId})`
       )
       .order('created_at', { ascending: true })
+
+    if (loadError) {
+      setError('Mesajlar yüklenemedi. Lütfen yeniden deneyin.')
+      setLoading(false)
+      return
+    }
+
     setMessages(data ?? [])
     setLoading(false)
-  }, [user, contact])
+
+    const unreadIds = (data ?? [])
+      .filter((message) => message.receiver_id === currentUserId && !message.read_at)
+      .map((message) => message.id)
+    markMessagesRead(unreadIds)
+  }, [captureMode, currentUserId, contact, markMessagesRead])
 
   useEffect(() => {
     load()
   }, [load])
 
-  // Yeni mesajları anlık olarak dinle
+  // Yeni, düzenlenmiş ve silinmiş mesajları anında iki tarafta da yansıt.
   useEffect(() => {
-    if (!user || !contact) return
+    if (captureMode || !currentUserId || !contact) return
     const channel = supabase
-      .channel(`messages-${user.id}-${contact.id}`)
+      .channel(`messages-${currentUserId}-${contact.id}`)
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'messages' }, (payload) => {
         const m = payload.new
         const belongsToThread =
-          (m.sender_id === user.id && m.receiver_id === contact.id) ||
-          (m.sender_id === contact.id && m.receiver_id === user.id)
-        if (belongsToThread) setMessages((prev) => [...prev, m])
+          (m.sender_id === currentUserId && m.receiver_id === contact.id) ||
+          (m.sender_id === contact.id && m.receiver_id === currentUserId)
+        if (!belongsToThread) return
+
+        setMessages((prev) => (prev.some((message) => message.id === m.id) ? prev : [...prev, m]))
+        if (m.receiver_id === currentUserId && !m.read_at) markMessagesRead([m.id])
+      })
+      .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'messages' }, (payload) => {
+        const m = payload.new
+        const belongsToThread =
+          (m.sender_id === currentUserId && m.receiver_id === contact.id) ||
+          (m.sender_id === contact.id && m.receiver_id === currentUserId)
+        if (!belongsToThread) return
+
+        setMessages((prev) =>
+          prev.some((message) => message.id === m.id)
+            ? prev.map((message) => (message.id === m.id ? m : message))
+            : [...prev, m]
+        )
+      })
+      .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'messages' }, (payload) => {
+        setMessages((prev) => prev.filter((message) => message.id !== payload.old.id))
       })
       .subscribe()
 
     return () => supabase.removeChannel(channel)
-  }, [user, contact])
+  }, [captureMode, currentUserId, contact, markMessagesRead])
 
   // chat-attachments private bucket olduğu için görüntülemeden önce
   // her ek için imzalı (süreli) bir URL almamız gerekiyor.
@@ -107,7 +246,28 @@ export default function ChatThread({ contact, className }) {
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages])
+  }, [messages.length])
+
+  useEffect(() => {
+    if (!openActionsId) return undefined
+
+    function closeActionsOnPointer(event) {
+      if (!event.target.closest?.(`[data-message-actions="${openActionsId}"]`)) {
+        setOpenActionsId(null)
+      }
+    }
+
+    function closeActionsOnEscape(event) {
+      if (event.key === 'Escape') setOpenActionsId(null)
+    }
+
+    document.addEventListener('pointerdown', closeActionsOnPointer)
+    document.addEventListener('keydown', closeActionsOnEscape)
+    return () => {
+      document.removeEventListener('pointerdown', closeActionsOnPointer)
+      document.removeEventListener('keydown', closeActionsOnEscape)
+    }
+  }, [openActionsId])
 
   function handleFileSelect(e) {
     const f = e.target.files?.[0]
@@ -127,12 +287,30 @@ export default function ChatThread({ contact, className }) {
     setError(null)
 
     try {
+      if (captureMode) {
+        setMessages((current) => [
+          ...current,
+          {
+            id: `capture-message-${Date.now()}`,
+            sender_id: currentUserId,
+            receiver_id: contact.id,
+            content: text.trim() || null,
+            created_at: new Date().toISOString(),
+            read_at: null,
+            edited_at: null,
+          },
+        ])
+        setText('')
+        setFile(null)
+        return
+      }
+
       let attachment_url = null
       let attachment_name = null
       let attachment_type = null
 
       if (file) {
-        const path = `${user.id}/${contact.id}/${Date.now()}-${file.name}`
+        const path = `${currentUserId}/${contact.id}/${Date.now()}-${file.name}`
         const { error: uploadError } = await supabase.storage
           .from('chat-attachments')
           .upload(path, file)
@@ -143,7 +321,7 @@ export default function ChatThread({ contact, className }) {
       }
 
       const { error: insertError } = await supabase.from('messages').insert({
-        sender_id: user.id,
+        sender_id: currentUserId,
         receiver_id: contact.id,
         content: text.trim() || null,
         attachment_url,
@@ -159,6 +337,99 @@ export default function ChatThread({ contact, className }) {
       setError(err.message ?? 'Gönderilemedi, tekrar deneyin.')
     } finally {
       setUploading(false)
+    }
+  }
+
+  function startEditing(message) {
+    setOpenActionsId(null)
+    setEditingMessage(message)
+    setEditText(message.content ?? '')
+  }
+
+  async function saveEdit(event) {
+    event.preventDefault()
+    if (!editingMessage) return
+
+    const nextContent = editText.trim()
+    if (!nextContent && !editingMessage.attachment_url) return
+
+    setSavingEdit(true)
+    if (captureMode) {
+      const editedAt = new Date().toISOString()
+      setMessages((current) =>
+        current.map((message) =>
+          message.id === editingMessage.id
+            ? { ...message, content: nextContent || null, edited_at: editedAt }
+            : message
+        )
+      )
+      setSavingEdit(false)
+      setEditingMessage(null)
+      setEditText('')
+      toast.success('Mesaj düzenlendi')
+      return
+    }
+
+    const { error: editError } = await supabase.rpc('edit_own_message', {
+      p_message_id: editingMessage.id,
+      p_content: nextContent,
+    })
+    setSavingEdit(false)
+
+    if (editError) {
+      toast.error('Mesaj düzenlenemedi', { description: 'Lütfen yeniden deneyin.' })
+      return
+    }
+
+    const editedAt = new Date().toISOString()
+    setMessages((current) =>
+      current.map((message) =>
+        message.id === editingMessage.id
+          ? { ...message, content: nextContent || null, edited_at: editedAt }
+          : message
+      )
+    )
+    setEditingMessage(null)
+    setEditText('')
+    toast.success('Mesaj düzenlendi')
+  }
+
+  async function deleteMessage() {
+    if (!deletingMessage) return
+
+    setDeleting(true)
+    if (captureMode) {
+      setMessages((current) => current.filter((message) => message.id !== deletingMessage.id))
+      setDeletingMessage(null)
+      setDeleting(false)
+      toast.success('Mesaj silindi')
+      return
+    }
+
+    const { data: attachmentPath, error: deleteError } = await supabase.rpc('delete_own_message', {
+      p_message_id: deletingMessage.id,
+    })
+
+    if (deleteError) {
+      setDeleting(false)
+      toast.error('Mesaj silinemedi', { description: 'Lütfen yeniden deneyin.' })
+      return
+    }
+
+    setMessages((current) => current.filter((message) => message.id !== deletingMessage.id))
+    setDeletingMessage(null)
+    setDeleting(false)
+    toast.success('Mesaj silindi')
+
+    if (attachmentPath) {
+      const { error: attachmentError } = await supabase.storage
+        .from('chat-attachments')
+        .remove([attachmentPath])
+      if (attachmentError) {
+        toast.warning('Mesaj silindi', {
+          description: 'Dosya eki depodan kaldırılamadı; görüşmede artık görünmüyor.',
+        })
+      }
     }
   }
 
@@ -218,7 +489,7 @@ export default function ChatThread({ contact, className }) {
             }
 
             const m = item.data
-            const mine = m.sender_id === user.id
+            const mine = m.sender_id === currentUserId
             const signedUrl = m.attachment_url ? signedUrls[m.attachment_url] : null
             const time = new Date(m.created_at).toLocaleTimeString('tr-TR', {
               hour: '2-digit',
@@ -226,10 +497,67 @@ export default function ChatThread({ contact, className }) {
             })
 
             return (
-              <div key={item.key} className={cn('flex', mine ? 'justify-end' : 'justify-start')}>
+              <div
+                key={item.key}
+                className={cn(
+                  'group/message flex items-end gap-1.5',
+                  mine ? 'justify-end' : 'justify-start'
+                )}
+              >
+                {mine && (
+                  <div
+                    data-message-actions={m.id}
+                    className={cn(
+                      'mb-0.5 flex shrink-0 flex-col rounded-xl border border-line bg-surface p-0.5 shadow-xs',
+                      'transition-opacity duration-150 motion-reduce:transition-none',
+                      openActionsId === m.id
+                        ? 'opacity-100'
+                        : 'opacity-100 sm:opacity-0 sm:group-hover/message:opacity-100 sm:group-focus-within/message:opacity-100'
+                    )}
+                  >
+                    {openActionsId === m.id ? (
+                      <>
+                        {m.content && (
+                          <button
+                            type="button"
+                            onClick={() => startEditing(m)}
+                            aria-label="Mesajı düzenle"
+                            title="Düzenle"
+                            className="focus-ring grid h-10 w-10 place-items-center rounded-lg text-ink/60 transition-colors hover:bg-brand-500/[0.08] hover:text-brand-700"
+                          >
+                            <Pencil className="h-4 w-4" aria-hidden="true" />
+                          </button>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setOpenActionsId(null)
+                            setDeletingMessage(m)
+                          }}
+                          aria-label="Mesajı sil"
+                          title="Sil"
+                          className="focus-ring grid h-10 w-10 place-items-center rounded-lg text-ink/60 transition-colors hover:bg-danger-500/[0.08] hover:text-danger-600"
+                        >
+                          <Trash2 className="h-4 w-4" aria-hidden="true" />
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => setOpenActionsId(m.id)}
+                        aria-label="Mesaj işlemlerini aç"
+                        aria-haspopup="true"
+                        aria-expanded={false}
+                        className="focus-ring grid h-10 w-10 place-items-center rounded-lg text-ink/55 transition-colors hover:bg-ink/[0.05] hover:text-ink"
+                      >
+                        <MoreHorizontal className="h-4 w-4" aria-hidden="true" />
+                      </button>
+                    )}
+                  </div>
+                )}
                 <div
                   className={cn(
-                    'max-w-[78%] rounded-card px-4 py-2.5 text-sm',
+                    'max-w-[calc(100%-3.25rem)] rounded-card px-4 py-2.5 text-sm sm:max-w-[78%]',
                     mine
                       ? 'rounded-br-md bg-aurora-gradient text-white shadow-aurora'
                       : 'rounded-bl-md border border-line bg-surface text-ink shadow-xs'
@@ -275,11 +603,12 @@ export default function ChatThread({ contact, className }) {
                   {m.content && <p className="leading-relaxed">{m.content}</p>}
                   <div
                     className={cn(
-                      'mt-1 text-[10px] tabular',
+                      'mt-1 flex items-center gap-1 text-[10px] tabular',
                       mine ? 'text-white/65' : 'text-ink/55'
                     )}
                   >
-                    {time}
+                    <span>{time}</span>
+                    {m.edited_at && <span>· düzenlendi</span>}
                   </div>
                 </div>
               </div>
@@ -324,6 +653,7 @@ export default function ChatThread({ contact, className }) {
             onChange={(e) => setText(e.target.value)}
             placeholder="Bir mesaj yaz…"
             aria-label="Mesaj"
+            maxLength={MAX_MESSAGE_LENGTH}
           />
 
           <Button
@@ -339,6 +669,79 @@ export default function ChatThread({ contact, className }) {
       </form>
 
       {lightboxSrc && <ImageLightbox src={lightboxSrc} onClose={() => setLightboxSrc(null)} />}
+
+      <Modal
+        open={Boolean(editingMessage)}
+        onClose={() => {
+          if (savingEdit) return
+          setEditingMessage(null)
+          setEditText('')
+        }}
+        title="Mesajı düzenle"
+        description={editingMessage?.attachment_url ? 'Dosya eki korunacak.' : undefined}
+        footer={
+          <>
+            <Button
+              variant="ghost"
+              onClick={() => {
+                setEditingMessage(null)
+                setEditText('')
+              }}
+              disabled={savingEdit}
+            >
+              Vazgeç
+            </Button>
+            <Button
+              type="submit"
+              form="message-edit-form"
+              loading={savingEdit}
+              disabled={!editText.trim() && !editingMessage?.attachment_url}
+            >
+              Kaydet
+            </Button>
+          </>
+        }
+      >
+        <form id="message-edit-form" onSubmit={saveEdit}>
+          <label htmlFor="message-edit-text" className="mb-2 block text-sm font-semibold text-ink">
+            Mesaj
+          </label>
+          <Textarea
+            id="message-edit-text"
+            value={editText}
+            onChange={(event) => setEditText(event.target.value)}
+            rows={5}
+            maxLength={MAX_MESSAGE_LENGTH}
+            aria-describedby="message-edit-count"
+          />
+          <p id="message-edit-count" className="mt-2 text-right text-2xs text-ink/55 tabular-nums">
+            {editText.length}/{MAX_MESSAGE_LENGTH}
+          </p>
+        </form>
+      </Modal>
+
+      <Modal
+        open={Boolean(deletingMessage)}
+        onClose={() => {
+          if (!deleting) setDeletingMessage(null)
+        }}
+        title="Mesaj silinsin mi?"
+        description="Bu işlem geri alınamaz ve mesaj iki taraftan da kaldırılır."
+        footer={
+          <>
+            <Button variant="ghost" onClick={() => setDeletingMessage(null)} disabled={deleting}>
+              Vazgeç
+            </Button>
+            <Button variant="danger" icon={Trash2} onClick={deleteMessage} loading={deleting}>
+              Mesajı sil
+            </Button>
+          </>
+        }
+      >
+        <div className="rounded-input border border-line bg-surface-muted px-4 py-3 text-sm leading-relaxed text-ink/70">
+          {deletingMessage?.content || deletingMessage?.attachment_name || 'Dosya eki'}
+        </div>
+      </Modal>
     </div>
   )
 }
