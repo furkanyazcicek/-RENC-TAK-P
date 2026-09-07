@@ -68,6 +68,8 @@ Hiyerarşiyi önce ölçek, boşluk, tipografi, hizalama, yakınlık, konum ve k
 
 ## Beceri yönlendirmesi
 
+- AI Koç, öğrenci analizi, öğrenme hafızası, öğrenme telemetrisi, konu eşleştirmesi veya bu sistemleri besleyen bir öğrenci akışı üzerinde çalışmadan önce docs/ai-koc/AI_KOC_URUN_HAFIZASI.md, docs/ai-koc/FAZ_PLANI.md ve docs/ai-koc/FAZ_DURUMU.md dosyalarını tamamen oku. Uygulama işi fazlı programın parçasıysa yalnız ilgili docs/ai-koc/prompts/ isteminin kapsamını uygula; kabul kanıtı olmadan fazı tamamlandı sayma.
+
 - Ön yüz, UI, UX, düzen, stil, bileşen, responsive davranış, etkileşim, ekran görüntüsüne göre tasarım veya görsel cila işi için `.codex/skills/drkoc-ui-designer/SKILL.md` becerisini kullan.
 - Atlas, simülasyon, etkileşimli görselleştirme, 3B öğrenme sahnesi, diyagram, harita, zaman çizelgesi, grafik veya keşif arayüzü için önce UI becerisini, ardından `.codex/skills/drkoc-atlas-designer/SKILL.md` becerisini kullan.
 - Tarihsel sınır/GeoJSON/veri üretimi için ayrıca `.codex/skills/drkoc-historical-gis/SKILL.md`; tarihsel iddia ve kaynak araştırması için `.codex/skills/drkoc-historical-research/SKILL.md`; harita sembolojisi, etiket ve kartografik sunum için `.codex/skills/drkoc-atlas-cartography/SKILL.md` becerisini kullan.
