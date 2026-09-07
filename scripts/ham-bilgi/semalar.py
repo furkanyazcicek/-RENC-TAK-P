@@ -560,11 +560,32 @@ def kartlar(ogeler, sutun=3):
     ogeler : [("Başlık", "kısa açıklama"), ...]
     Organel listesi, biyomoleküller, element grupları için.
     """
+    satir_sayisi = (len(ogeler) + sutun - 1) // sutun
+    bosluk = 3.4
+
+    def _kart_genisligi(g):
+        return (g - 12 - bosluk * (sutun - 1)) / sutun
+
+    def olcu(pdf, g):
+        """Kart yüksekliğini en uzun açıklamaya göre hesaplar.
+
+        Sabit yükseklik kullanıldığında üç satırlık açıklamalar kutunun
+        altından taşıp kırpılıyordu; ölçü artık içerikten çıkarılıyor.
+        """
+        kg = _kart_genisligi(g) - 3
+        en_yuksek = 0.0
+        for baslik, aciklama in ogeler:
+            yuk = pdf.zengin_metin(kg, 3.1, baslik, boyut=7.0, stil="B", olcum=True)
+            if aciklama:
+                yuk += 1.0 + pdf.zengin_metin(kg, 2.8, aciklama, boyut=6.4,
+                                              olcum=True)
+            en_yuksek = max(en_yuksek, yuk)
+        kart_h = en_yuksek + 4.0
+        return 8.0 + satir_sayisi * kart_h + bosluk * (satir_sayisi - 1)
+
     def ciz(pdf, x, y, g, h):
-        n = len(ogeler)
-        satir = (n + sutun - 1) // sutun
-        bosluk = 3.4
-        kart_g = (g - 12 - bosluk * (sutun - 1)) / sutun
+        satir = satir_sayisi
+        kart_g = _kart_genisligi(g)
         kart_h = (h - 8 - bosluk * (satir - 1)) / satir
         for i, (baslik, aciklama) in enumerate(ogeler):
             r, c = divmod(i, sutun)
@@ -576,7 +597,7 @@ def kartlar(ogeler, sutun=3):
             if aciklama:
                 _yazi(pdf, aciklama, cx + 1.5, cy + 5.6, kart_g - 3, 6.4,
                       "", MUREKKEP_SOLUK, "C", 2.8)
-    ciz.onerilen_yukseklik = 8.0 + ((len(ogeler) + sutun - 1) // sutun) * 15.0
+    ciz.onerilen_yukseklik = olcu
 
     return ciz
 

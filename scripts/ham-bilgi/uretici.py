@@ -834,7 +834,10 @@ def gorsel(pdf, ciz, yukseklik=None, baslik=None, aciklama=None):
     varsayılan davranış, şemaya kendi boyunu sordurmaktır.
     """
     if yukseklik is None:
-        yukseklik = getattr(ciz, "onerilen_yukseklik", 40.0)
+        onerilen = getattr(ciz, "onerilen_yukseklik", 40.0)
+        # Şema kendi boyunu içeriğe göre hesaplamak isteyebilir; bu durumda
+        # sabit bir sayı yerine (pdf, genislik) alan bir fonksiyon verir.
+        yukseklik = onerilen(pdf, pdf.epw) if callable(onerilen) else onerilen
     toplam = yukseklik + 7
     if baslik:
         toplam += 5
