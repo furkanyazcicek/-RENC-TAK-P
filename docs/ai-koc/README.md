@@ -15,6 +15,15 @@ Bu klasör AI Koç'un nihai ürün hedefini ve Codex uygulama sırasını taşı
 - AI_KOC_URUN_HAFIZASI.md: Değişmez ürün hedefi, kapsam ve tamamlanma tanımı.
 - FAZ_PLANI.md: Faz sırası ve ortak kalite kapıları.
 - FAZ_DURUMU.md: Gerçek ilerleme ve kanıt kaydı.
+- MEVCUT_DURUM_ENVANTERI.md: Faz 0'da doğrulanan mevcut ürün ve veri davranışı.
+- VERI_KAYNAKLARI_MATRISI.md: Kaynak, kimlik, kalıcılık, erişim ve AI Koç tüketim sicili.
+- VERI_AKISLARI.md: Kaynaktan AI Koç'a uçtan uca akışlar ve kopukluklar.
+- KABUL_SENARYOLARI.md: Sonraki fazların aynı sentetik öğrenci üzerinden ölçüleceği senaryolar.
+- BAZ_CIZGISI.md: Faz 0 test/derleme sonuçları ve tekrar çalıştırma komutları.
+- MIMARI_KARARLAR.md: Sonraki fazlara bırakılan kararlar, seçenekler ve riskler.
+- KONU_KIMLIGI_SOZLESMESI.md: Faz 1 değişmez konu kimliği, eski anahtar ve güvenli çözümleyici kuralları.
+- OGRENME_KANITI_SOZLESMESI.md: Faz 1 olay/snapshot/düzeltme/tombstone, ölçüm, güven ve gizlilik kuralları.
+- KAYNAK_KAYIT_DEFTERI.md: M01–M38 makine sicilinin insan-okunur sınıflandırması.
 - prompts/: Her fazın ayrıntılı Codex uygulama istemi.
 
 ## Codex'e verilecek kısa komut

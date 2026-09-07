@@ -1,0 +1,350 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-09-07T12:50:05Z",
+  "timezone_context": "Europe/Istanbul",
+  "git_head": "9319197f5d9969ba38b4ccf10933afda59ed1699",
+  "authoritative_working_copy": "/Users/furkantalhayazcicek/Desktop/DRKOÇ",
+  "working_tree": {
+    "clean": false,
+    "phase_1_artifacts_uncommitted": true,
+    "pre_existing_unrelated_changes_preserved": true
+  },
+  "phase_zero_precondition": {
+    "status": "Tamamlandı",
+    "acceptance_evidence_present": true
+  },
+  "canonical_identity": {
+    "method": "etiketten ve ortam UUID'lerinden bağımsız, ad alanlı ve sıralı public kimlik defteri",
+    "identity_version": "curriculum-identity@1",
+    "ledger_version": "curriculum-ledger@1",
+    "alias_set_version": "curriculum-aliases@1",
+    "ledger_arrays_frozen": true,
+    "contexts": 4,
+    "subjects": 33,
+    "topics": 330,
+    "aliases": 193,
+    "legacy_redirects": 523,
+    "graph_nodes_verified": 330,
+    "prerequisite_edges_verified": 307,
+    "unresolved_prerequisites": 0
+  },
+  "resolver": {
+    "version": "topic-resolver@1",
+    "preserves_ambiguity": true,
+    "first_candidate_is_never_silently_selected": true,
+    "profile_hint_is_not_authoritative_context": true,
+    "contradictory_explicit_context_is_quarantined": true,
+    "topic_matched_false_is_quarantined": true,
+    "subject_and_context_only_supported": true,
+    "source_scope_and_source_code_agreement_required": true,
+    "level_and_grade_context_supported": true,
+    "language_and_atlas_namespaces_separate": true,
+    "verified_relation_required_across_namespaces": true,
+    "subtopic_precedes_topic": true,
+    "objective_id_is_nullable_until_verified": true
+  },
+  "evidence_contract": {
+    "schema_version": "1.0",
+    "contract_version": "learning-evidence@1",
+    "record_kinds": [
+      "event",
+      "snapshot",
+      "correction",
+      "tombstone",
+      "derived"
+    ],
+    "evidence_classes": [
+      "direct_measurement",
+      "student_self_report",
+      "teacher_feedback",
+      "exposure",
+      "system_observation",
+      "model_inference",
+      "derived_result",
+      "operational_only"
+    ],
+    "occurred_at_precision_values": [
+      "exact",
+      "day",
+      "unknown"
+    ],
+    "activity_type_matches_semantic_event_type_in_v1": true,
+    "relations_supported": true,
+    "adapter_and_resolver_versions_recorded": true,
+    "record_and_measurement_provenance_validated": true,
+    "privileged_client_fields_rejected": true,
+    "metadata_allowlist_depth_text_key_and_byte_limits_verified": true,
+    "metadata_forbidden_content_checked_recursively": true,
+    "opaque_source_locator_verified": true,
+    "direct_measurement_requires_eligible_result": true,
+    "client_and_backfill_dedupe_verified": true,
+    "correction_and_tombstone_projection_verified": true,
+    "source_available_empty_unavailable_degraded_distinguished": true,
+    "accuracy_formula_versions": [
+      "accuracy-marked-v1",
+      "accuracy-total-v1"
+    ],
+    "net_formula_versions": [
+      "net-lgs-v1",
+      "net-standard-v1"
+    ]
+  },
+  "source_registry": {
+    "version": "learning-source-registry@1",
+    "sources": 38,
+    "app_routes_current": 62,
+    "app_routes_phase_zero_snapshot": 62,
+    "dynamic_app_route_diff_unexplained": 0,
+    "language_modules": 4,
+    "inner_routes_per_language": 15,
+    "language_routes_total": 60,
+    "classifications": {
+      "emitter": 3,
+      "conditional_emitter": 22,
+      "catalog": 2,
+      "derived_readonly": 5,
+      "excluded": 6
+    },
+    "event_specific_evidence_class_map_present": true,
+    "excluded_semantic_types_present": true,
+    "pure_adapters": 17,
+    "adapter_fixtures": 25,
+    "unresolved_decisions": 0
+  },
+  "scenario_fixtures": {
+    "S02": "passed",
+    "S05": "passed",
+    "S07": "passed",
+    "S08": "passed",
+    "S10": "passed",
+    "S11": "passed",
+    "S14": "passed"
+  },
+  "test_commands": [
+    {
+      "name": "faz-1",
+      "command": "npm run test:ai-koc-faz-1",
+      "exit_code": 0,
+      "wall_time_seconds": 0.18475375
+    },
+    {
+      "name": "context-curriculum",
+      "command": "node scripts/test-context-curriculum.mjs",
+      "exit_code": 0,
+      "wall_time_seconds": 0.000005583
+    },
+    {
+      "name": "curriculum",
+      "command": "node scripts/test-curriculum.mjs",
+      "exit_code": 0,
+      "wall_time_seconds": 0.000010375
+    },
+    {
+      "name": "ai-solve",
+      "command": "npm run test:ai-solve",
+      "exit_code": 0,
+      "wall_time_seconds": 6.927811042
+    },
+    {
+      "name": "lesson-document",
+      "command": "npm run test:lesson-document",
+      "exit_code": 0,
+      "wall_time_seconds": 0.016205708
+    },
+    {
+      "name": "lesson-content",
+      "command": "npm run test:lesson-content",
+      "exit_code": 0,
+      "wall_time_seconds": 0.174699042
+    },
+    {
+      "name": "lesson-narration",
+      "command": "npm run test:lesson-narration",
+      "exit_code": 0,
+      "wall_time_seconds": 0.10991675
+    },
+    {
+      "name": "library-curriculum",
+      "command": "npm run test:library-curriculum",
+      "exit_code": 0,
+      "wall_time_seconds": 0.008130417
+    },
+    {
+      "name": "ingilizce",
+      "command": "npm run test:ingilizce",
+      "exit_code": 0,
+      "wall_time_seconds": 0.061957083
+    },
+    {
+      "name": "almanca",
+      "command": "npm run test:almanca",
+      "exit_code": 0,
+      "wall_time_seconds": 0.060856667
+    },
+    {
+      "name": "fransizca",
+      "command": "npm run test:fransizca",
+      "exit_code": 0,
+      "wall_time_seconds": 0.051537292
+    },
+    {
+      "name": "ispanyolca",
+      "command": "npm run test:ispanyolca",
+      "exit_code": 0,
+      "wall_time_seconds": 0.07198675
+    },
+    {
+      "name": "matematik-soru-kutuphanesi",
+      "command": "npm run test:matematik-soru-kutuphanesi",
+      "exit_code": 0,
+      "wall_time_seconds": 0.013464791
+    },
+    {
+      "name": "felsefe-soru-kutuphanesi",
+      "command": "npm run test:felsefe-soru-kutuphanesi",
+      "exit_code": 0,
+      "wall_time_seconds": 0.054904209
+    },
+    {
+      "name": "tarih-soru-kutuphanesi",
+      "command": "npm run test:tarih-soru-kutuphanesi",
+      "exit_code": 0,
+      "wall_time_seconds": 1.369022667
+    },
+    {
+      "name": "exam-stats",
+      "command": "node scripts/test-exam-stats.mjs",
+      "exit_code": 0,
+      "wall_time_seconds": 0.000002709
+    },
+    {
+      "name": "parent-rls",
+      "command": "npm run test:parent-rls",
+      "exit_code": 0,
+      "wall_time_seconds": 1.922937667
+    },
+    {
+      "name": "live-lessons",
+      "command": "npm run test:live-lessons",
+      "exit_code": 0,
+      "wall_time_seconds": 1.9764443329999999
+    },
+    {
+      "name": "defter",
+      "command": "npm run test:defter",
+      "exit_code": 0,
+      "wall_time_seconds": 1.8603695
+    },
+    {
+      "name": "ink",
+      "command": "npm run test:ink",
+      "exit_code": 0,
+      "wall_time_seconds": 0.148186708
+    },
+    {
+      "name": "kimya",
+      "command": "npm run test:kimya",
+      "exit_code": 0,
+      "wall_time_seconds": 0.000003083
+    },
+    {
+      "name": "fizik",
+      "command": "npm run test:fizik",
+      "exit_code": 0,
+      "wall_time_seconds": 0.000001125
+    },
+    {
+      "name": "biyoloji",
+      "command": "npm run test:biyoloji",
+      "exit_code": 0,
+      "wall_time_seconds": 7.5e-7
+    },
+    {
+      "name": "cografya",
+      "command": "npm run test:cografya",
+      "exit_code": 0,
+      "wall_time_seconds": 7.92e-7
+    },
+    {
+      "name": "tarih",
+      "command": "npm run test:tarih",
+      "exit_code": 0,
+      "wall_time_seconds": 0.127356166
+    },
+    {
+      "name": "tts-cache",
+      "command": "npm run test:tts-cache",
+      "exit_code": 0,
+      "wall_time_seconds": 0.000001875
+    },
+    {
+      "name": "padisah-sesi",
+      "command": "npm run test:padisah-sesi",
+      "exit_code": 0,
+      "wall_time_seconds": 0.002780375
+    },
+    {
+      "name": "anasayfa",
+      "command": "npm run test:anasayfa",
+      "exit_code": 0,
+      "wall_time_seconds": 0.000001542
+    },
+    {
+      "name": "bench-test",
+      "command": "npm run bench:test",
+      "exit_code": 0,
+      "wall_time_seconds": 0.500348041
+    },
+    {
+      "name": "build",
+      "command": "npm run build",
+      "exit_code": 0,
+      "wall_time_seconds": 24.342452334
+    },
+    {
+      "name": "lesson-event-thenable",
+      "command": "node docs/ai-koc/kanitlar/faz-0/lesson-event-thenable.mjs",
+      "exit_code": 0,
+      "wall_time_seconds": 0.000003833
+    }
+  ],
+  "test_summary": {
+    "commands_total": 31,
+    "commands_passed": 31,
+    "commands_failed": 0,
+    "phase_1_sections": 14,
+    "phase_1_assertions": 1516,
+    "build_passed": true,
+    "existing_bundle_size_warning_present": true
+  },
+  "artifact_sha256": {
+    "src/lib/learning/curriculumIdentityLedger.js": "920a9ea61595f5e1ada5135027fa4854b2ff8d66bd3722a98df6c849a52feb3e",
+    "src/lib/learning/curriculumIdentity.js": "e41809eca4a44faa39114a09d5cb7ff9fc5e286b5c6d09ee8b625e9f83c8db65",
+    "src/lib/learning/topicResolver.js": "bea9f59c887201be77ccac3b0365fd20593509a2926f7a74a8d3c1bf2775b673",
+    "src/lib/learning/sourceRegistry.js": "97a584de4c03cb677e8f5e52d7ceabe6350eb5aef84ce16fcd51ee1e38e05f27",
+    "src/lib/learning/evidenceContract.js": "658ef0d709e86fad7e0e0572f3aa5d2970d38d6ea96975dce323e71adb9a5fab",
+    "src/lib/learning/adapters.js": "fef6f38e5d3eae064b0e874c379fe5753005235c534875ae0e9036724611088e",
+    "src/lib/learning/sourceFixtures.js": "d44973c15025659129f81628ba6099e8d0d4a9f5c75d4ae848d45821b0d7903c",
+    "scripts/test-phase-1-learning-contracts.mjs": "3ed28b6ce753f07ee4ec741695b90843476ac91f16dde421bcc62a5f4aeb1ae6"
+  },
+  "migration": {
+    "created": false,
+    "required_for_phase_1": false,
+    "applied_live": false,
+    "reason": "Kanonik kimlik defteri kodda sürümlü ve ortamdan bağımsızdır; kalıcı ortak olay altyapısı Faz 2 kapsamıdır."
+  },
+  "side_effect_boundaries": {
+    "product_event_writes_started": false,
+    "live_database_read_or_write": false,
+    "live_schema_changed": false,
+    "seed_run": false,
+    "backfill_run": false,
+    "paid_model_called": false,
+    "deployment_run": false
+  },
+  "acceptance": {
+    "result": "passed",
+    "phase_status": "Tamamlandı",
+    "phase_2_may_start": true
+  }
+}

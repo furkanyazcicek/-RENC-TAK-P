@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-09-07T11:50:00+03:00",
+  "git_head": "9319197f5d9969ba38b4ccf10933afda59ed1699",
+  "scope": {
+    "matrix_surfaces": 38,
+    "matrix_columns": 17,
+    "app_routes": 62,
+    "language_inner_routes_each": 15,
+    "languages": 4,
+    "server_tables": 43,
+    "sql_files": 37,
+    "storage_buckets": 4,
+    "acceptance_scenarios": 14
+  },
+  "checks": {
+    "matrix_ids_m01_through_m38_are_unique_and_sequential": true,
+    "every_matrix_row_has_17_columns": true,
+    "app_route_registry_matches_src_app_js_in_order": true,
+    "each_language_route_registry_matches_its_wrapper_in_order": true,
+    "server_table_registry_matches_static_sql_scan": true,
+    "storage_bucket_registry_matches_source_and_sql_scan": true,
+    "acceptance_scenarios_s01_through_s14_are_present": true,
+    "required_local_markdown_links_resolve": true,
+    "markdown_tables_have_consistent_columns": true,
+    "open_worktree_changes_outside_docs_ai_koc": false
+  },
+  "current_head_recheck": {
+    "lesson_content": {
+      "command": "npm run test:lesson-content",
+      "exit_code": 0,
+      "lessons": 185,
+      "errors": 0,
+      "existing_depth_warnings": 32
+    },
+    "build": {
+      "command": "npm run build",
+      "exit_code": 0,
+      "modules": 3735,
+      "existing_chunk_size_warning": true
+    }
+  },
+  "live_or_paid_calls": false,
+  "product_code_or_schema_changed_by_phase_0": false,
+  "phase_0_acceptance": "passed"
+}

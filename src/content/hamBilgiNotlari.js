@@ -12,6 +12,36 @@
 
 export const HAM_BILGI_NOTLARI = [
   {
+    "sinav": "AYT",
+    "ders": "Biyoloji",
+    "konu": "Bitki Biyolojisi",
+    "baslik": "Bitki Biyolojisi",
+    "ozet": "Ham bilgi notu — bitkisel dokular, kök–gövde–yaprak, madde taşınması, hormonlar, tropizma ve üreme; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-biyoloji/bitki-biyolojisi.pdf",
+    "sayfa": 12,
+    "boyutKB": 103
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Biyoloji",
+    "konu": "Canlılar ve Çevre",
+    "baslik": "Canlılar ve Çevre",
+    "ozet": "Ham bilgi notu — madde döngüleri, enerji akışı, biyomlar, çevre sorunları ve sürdürülebilirlik; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-biyoloji/canlilar-ve-cevre.pdf",
+    "sayfa": 11,
+    "boyutKB": 101
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Biyoloji",
+    "konu": "Canlılarda Enerji Dönüşümleri (Fotosentez - Kemosentez)",
+    "baslik": "Canlılarda Enerji Dönüşümleri",
+    "ozet": "Ham bilgi notu — fotosentez, kemosentez, oksijenli ve oksijensiz solunum; grafikler ve hesaplar; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-biyoloji/canlilarda-enerji-donusumleri.pdf",
+    "sayfa": 12,
+    "boyutKB": 103
+  },
+  {
     "sinav": "TYT",
     "ders": "Biyoloji",
     "konu": "Canlıların Ortak Özellikleri",
@@ -42,6 +72,36 @@ export const HAM_BILGI_NOTLARI = [
     "boyutKB": 120
   },
   {
+    "sinav": "AYT",
+    "ders": "Biyoloji",
+    "konu": "Destek ve Hareket Sistemi",
+    "baslik": "Destek ve Hareket Sistemi",
+    "ozet": "Ham bilgi notu — iskelet çeşitleri, kemik yapısı ve gelişimi, eklemler, kas çeşitleri ve kasılma düzeneği; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-biyoloji/destek-ve-hareket-sistemi.pdf",
+    "sayfa": 11,
+    "boyutKB": 102
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Biyoloji",
+    "konu": "Dolaşım ve Bağışıklık Sistemi",
+    "baslik": "Dolaşım ve Bağışıklık Sistemi",
+    "ozet": "Ham bilgi notu — kalp, damarlar, kan, küçük ve büyük dolaşım, lenf sistemi, özgül ve özgül olmayan bağışıklık; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-biyoloji/dolasim-ve-bagisiklik-sistemi.pdf",
+    "sayfa": 12,
+    "boyutKB": 107
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Biyoloji",
+    "konu": "Duyu Organları",
+    "baslik": "Duyu Organları",
+    "ozet": "Ham bilgi notu — göz, kulak, burun, dil ve deri; reseptör çeşitleri, görme ve işitme kusurları; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-biyoloji/duyu-organlari.pdf",
+    "sayfa": 11,
+    "boyutKB": 101
+  },
+  {
     "sinav": "TYT",
     "ders": "Biyoloji",
     "konu": "Ekosistem Ekolojisi",
@@ -50,6 +110,26 @@ export const HAM_BILGI_NOTLARI = [
     "dosya": "/kutuphane-notlari/tyt-biyoloji/ekosistem-ekolojisi.pdf",
     "sayfa": 12,
     "boyutKB": 105
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Biyoloji",
+    "konu": "Endokrin Sistem ve Hormonlar",
+    "baslik": "Endokrin Sistem ve Hormonlar",
+    "ozet": "Ham bilgi notu — iç salgı bezleri, hormonların etki biçimi, geri bildirim düzeneği ve hastalıklar; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-biyoloji/endokrin-sistem-ve-hormonlar.pdf",
+    "sayfa": 12,
+    "boyutKB": 107
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Biyoloji",
+    "konu": "Genden Proteine",
+    "baslik": "Genden Proteine",
+    "ozet": "Ham bilgi notu — nükleik asitler, DNA eşlenmesi, transkripsiyon, translasyon, mutasyon ve biyoteknoloji; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-biyoloji/genden-proteine.pdf",
+    "sayfa": 13,
+    "boyutKB": 107
   },
   {
     "sinav": "TYT",
@@ -80,6 +160,66 @@ export const HAM_BILGI_NOTLARI = [
     "dosya": "/kutuphane-notlari/tyt-biyoloji/kalitim.pdf",
     "sayfa": 12,
     "boyutKB": 109
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Biyoloji",
+    "konu": "Komünite ve Popülasyon Ekolojisi",
+    "baslik": "Komünite ve Popülasyon Ekolojisi",
+    "ozet": "Ham bilgi notu — komünite yapısı, süksesyon, popülasyon büyüme grafikleri ve yaş piramitleri; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-biyoloji/komunite-ve-populasyon-ekolojisi.pdf",
+    "sayfa": 11,
+    "boyutKB": 100
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Biyoloji",
+    "konu": "Sindirim Sistemi",
+    "baslik": "Sindirim Sistemi",
+    "ozet": "Ham bilgi notu — sindirim organları, enzimler, karaciğer ve pankreas, emilim ve düzenleyici hormonlar; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-biyoloji/sindirim-sistemi.pdf",
+    "sayfa": 11,
+    "boyutKB": 100
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Biyoloji",
+    "konu": "Sinir Sistemi",
+    "baslik": "Sinir Sistemi",
+    "ozet": "Ham bilgi notu — nöron yapısı, impuls ve iletim, sinaps, merkezî ve çevresel sinir sistemi, refleks; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-biyoloji/sinir-sistemi.pdf",
+    "sayfa": 13,
+    "boyutKB": 116
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Biyoloji",
+    "konu": "Solunum Sistemi",
+    "baslik": "Solunum Sistemi",
+    "ozet": "Ham bilgi notu — solunum yolları, soluk alıp verme düzeneği, gaz değişimi ve taşınması, solunumun denetimi; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-biyoloji/solunum-sistemi.pdf",
+    "sayfa": 11,
+    "boyutKB": 101
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Biyoloji",
+    "konu": "Üreme Sistemi ve Embriyonik Gelişim",
+    "baslik": "Üreme Sistemi ve Embriyonik Gelişim",
+    "ozet": "Ham bilgi notu — üreme organları, gamet oluşumu, menstrual döngü, döllenme ve embriyonik gelişim; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-biyoloji/ureme-sistemi-ve-embriyonik-gelisim.pdf",
+    "sayfa": 11,
+    "boyutKB": 99
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Biyoloji",
+    "konu": "Üriner Sistem",
+    "baslik": "Üriner Sistem",
+    "ozet": "Ham bilgi notu — böbrek yapısı, nefron, süzülme–geri emilim–salgılama, idrar oluşumu ve homeostazi; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-biyoloji/uriner-sistem.pdf",
+    "sayfa": 11,
+    "boyutKB": 101
   },
   {
     "sinav": "TYT",

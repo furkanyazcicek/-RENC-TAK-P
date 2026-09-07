@@ -475,6 +475,11 @@
       "src/components/LibraryNoteForm.jsx:80",
       "src/components/LibraryNoteForm.jsx:83",
       "src/components/LibraryNoteForm.jsx:104"
+    ],
+    "lesson-audio": [
+      "src/lib/lessonAudio.js:17",
+      "src/lib/lessonAudio.js:26",
+      "supabase/migration_structured_lessons.sql:209"
     ]
   }
 }

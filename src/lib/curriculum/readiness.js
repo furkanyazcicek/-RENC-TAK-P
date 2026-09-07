@@ -30,6 +30,7 @@
  */
 
 import { foldTr, splitSubjectTopic } from '../subjectSplit.js'
+import { canonicalTopicIdForLegacyPath } from '../learning/curriculumIdentity.js'
 import { CURRICULUM_GRAPH, examTypesFor } from './graph.js'
 
 /* ==================================================================
@@ -116,6 +117,7 @@ function buildIndex() {
       topics.forEach((node, order) => {
         const entry = {
           id: idOf(examType, subject, node.name),
+          canonicalId: canonicalTopicIdForLegacyPath(examType, subject, node.name),
           examType,
           subject,
           subjectKey: normName(subject),
@@ -479,6 +481,7 @@ export function buildLearningState({ logs, examType, examDate = null, now = new 
 
     topics.push({
       id,
+      canonicalId: node.canonicalId,
       examType: node.examType,
       subject: node.subject,
       topic: node.topic,
@@ -499,6 +502,7 @@ export function buildLearningState({ logs, examType, examDate = null, now = new 
       lastDate: state.evidence?.lastDate ?? null,
       missingPrereqs: missing,
       prereqs: prereqStates.map((p) => ({
+        canonicalId: p.node.canonicalId,
         subject: p.node.subject,
         topic: p.node.topic,
         examType: p.node.examType,

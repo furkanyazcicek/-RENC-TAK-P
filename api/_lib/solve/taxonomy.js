@@ -30,6 +30,7 @@
 
 import { CURRICULUM_GRAPH, examTypesFor } from '../../../src/lib/curriculum/graph.js'
 import { resolveTopicNode } from '../../../src/lib/curriculum/readiness.js'
+import { resolveTopicIdentity } from '../../../src/lib/learning/topicResolver.js'
 
 /**
  * Modelin ürettiği ders/konu/alt konu üçlüsünü müfredat ağacına eşler.
@@ -46,7 +47,7 @@ import { resolveTopicNode } from '../../../src/lib/curriculum/readiness.js'
  *
  * @returns {{
  *   subject: string, topic: string, subtopic: string|null,
- *   matched: boolean, canonicalTopic: string|null, examType: string|null,
+ *   matched: boolean, canonicalTopic: string|null, canonicalTopicId: string|null, examType: string|null,
  *   weight: number|null
  * }}
  */
@@ -61,11 +62,25 @@ export function resolveTopic({ subject, topic, subtopic, examType }) {
     subtopic: cleanSubtopic,
     matched: false,
     canonicalTopic: null,
+    canonicalTopicId: null,
     examType: null,
     weight: null,
   }
 
   if (!cleanTopic && !cleanSubtopic) return base
+
+  // `examType` bu akışta öğrenci profilinden gelir; ortak kimlik sözleşmesi
+  // profil ipucunun TYT/AYT gibi bağlamları sessizce kesinleştirmesine izin
+  // vermez. Eski görünür eşleşme davranışı aşağıda korunur, fakat kalıcı
+  // kimlik yalnız güvenli çözümleyici tek aday bulursa eklenir.
+  const identity = resolveTopicIdentity({
+    sourceCode: 'ai_solution_sessions',
+    subject: cleanSubject,
+    topic: cleanTopic,
+    subtopic: cleanSubtopic,
+    profileExamType: examType,
+    contextOrigin: 'profile_hint',
+  })
 
   // Öğrencinin hedef sınavı bilinmiyorsa tüm havuzlara bakılır; bilinen
   // sınav önce denenir çünkü aynı konu adı iki sınavda farklı derinlikte
@@ -83,6 +98,7 @@ export function resolveTopic({ subject, topic, subtopic, examType }) {
         ...base,
         matched: true,
         canonicalTopic: node.topic,
+        canonicalTopicId: identity.canonicalId ?? null,
         examType: node.examType,
         weight: node.weight ?? null,
       }

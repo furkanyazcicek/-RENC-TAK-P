@@ -92,7 +92,12 @@ ALT_KAYMA = 0.16        # aşağı kayma (punto oranı)
 # Parantez, içinde işlem yoksa kaldırılır: 10^(−4) → 10⁻⁴ ve
 # E_(k1) → Eₖ₁ okunur; ama a^(m+n) ve a^(m/n) parantezini korur.
 _YALIN_US = re.compile(
-    r"^[−+-]?(?=.)[0-9]*[A-Za-zğüşıöçĞÜŞİÖÇ]*[0-9]*$")
+    r"^[−+-]?(?=.)[0-9]*[A-Za-zğüşıöçĞÜŞİÖÇ]*[0-9]*[−+-]?$")
+
+# İşaretsiz sayı/harf, önünde ya da ardında yük işareti taşıyabilir:
+# Na^+ · Cl^− · Ca^2+ · a^-n
+_ISARETLI_US = re.compile(
+    r"[−+-]?(?:[0-9]+|[A-Za-zğüşıöçĞÜŞİÖÇ])[−+-]?|[−+-]")
 
 
 def _us_icerigi(metin, i, isaret):
@@ -102,10 +107,12 @@ def _us_icerigi(metin, i, isaret):
     Dönen: (icerik, sonraki_konum). İçerik yoksa (None, i) döner ve
     işaret düz metin olarak basılır.
 
-    Üç biçim tanınır:
+    Tanınan biçimler:
       ^(m+n)   parantezli — parantez içi dengeli okunur
       ^23      bir ya da daha çok rakam
       ^n       tek harf
+      ^+  ^−   yalın yük işareti (Na^+ · Cl^−)
+      ^2+ ^3−  iyon yükü (Ca^2+ · PO_4^3−)
     '2^9(2 − 1)' ifadesinde üs yalnızca **9**'dur; ardından gelen parantez
     ayrı bir çarpandır. Bu yüzden rakam okunduktan sonra parantez aranmaz.
     """
@@ -123,13 +130,9 @@ def _us_icerigi(metin, i, isaret):
                     return (ic if _YALIN_US.match(ic) else f"({ic})"), j + 1
             j += 1
         return None, i
-    j = i
-    while j < len(metin) and metin[j].isdigit():
-        j += 1
-    if j > i:
-        return metin[i:j], j
-    if metin[i].isalpha():
-        return metin[i], i + 1
+    esles = _ISARETLI_US.match(metin, i)
+    if esles:
+        return esles.group(0), esles.end()
     return None, i
 
 
@@ -413,9 +416,16 @@ def kapak(pdf, not_verisi):
         ("Bu notta ne var", kunye["kapsam"]),
         ("Nasıl çalışılır", kunye["nasil"]),
     ]
-    yukseklik = 5.0
+    # Ölçüm genişliği, çizim genişliğiyle AYNI olmalı; aksi hâlde satır
+    # sayısı eksik hesaplanır ve künye yazısı kutunun altından taşar.
+    kunye_genislik = pdf.epw - 48
+    # Ölçüm, çizimde kullanılacak fontla yapılmalı. Aksi hâlde satır sayısı
+    # yanlış çıkar; kutu içeriğinden uzun olur ve içindekiler listesi
+    # kutunun içine taşar.
+    pdf.set_font("Liberation", "", 9.4)
+    yukseklik = 5.5
     for _, deger in satirlar:
-        yukseklik += max(5.0, pdf.metin_yuksekligi(deger, pdf.epw - 44, 4.8))
+        yukseklik += max(5.0, pdf.metin_yuksekligi(deger, kunye_genislik, 4.8))
     pdf.set_fill_color(*ZEMIN_SOLUK)
     pdf.set_draw_color(*CIZGI)
     pdf.set_line_width(0.3)
@@ -433,7 +443,7 @@ def kapak(pdf, not_verisi):
         pdf.set_font("Liberation", "", 9.4)
         pdf.set_text_color(*MUREKKEP)
         pdf.set_xy(KENAR + 42, y0)
-        pdf.zengin_metin(pdf.epw - 48, 4.8, deger)
+        pdf.zengin_metin(kunye_genislik, 4.8, deger)
 
     # İçindekiler — bölüm başlıklarından türetilir, elle yazılmaz.
     basliklar = [b for b in not_verisi["bloklar"] if b["tur"] == "bolum"]

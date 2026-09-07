@@ -55,7 +55,7 @@ Araç sonuçları ayrıca JSON metninin ilk 8.000 karakterine kesilir (`api/ai-c
 - `student_correct=false` için “kendisi yanlış çözmüştü” denir (`api/_lib/context.js:718`), fakat alan hem öğrenci beyanından hem model kontrolünden güncellenebilir. Kaynağı ayıran alan yoktur.
 - Sadece zaman ayrılmış konu `readiness` içinde “öğrenilmiş, performans düşük” seviyesine girebilir. Sonuç ölçülmeden başarısızlık çıkarımı hedefle uyumlu değildir (`src/lib/curriculum/readiness.js:593`).
 - Öğrencinin kendi notları ve kayıt başlıkları sistem isteminin içine eklenir; bu içeriklerdeki talimatları veri olarak sınırlandıran açık kural `buildSystemPrompt` içinde bulunmadı. Yazma kartı otomatik veritabanı mutasyonunu önler fakat yanlış analiz ve hatalı teklif riskini ortadan kaldırmaz.
-- `PROMPT_VERSION` için “kullanım olaylarından izlenir” yorumu vardır; `recordUsage` satırına bu sürüm yazılmaz, şemada sürüm alanı yoktur (`api/_lib/ratelimit.js:100`, `supabase/migration_ai_coach.sql:230`).
+- `PROMPT_VERSION` için “kullanım olaylarından izlenir” yorumu vardır; `recordUsage` satırına bu sürüm yazılmaz, şemada sürüm alanı yoktur (`api/_lib/ratelimit.js:100`, `supabase/migration_ai_coach.sql:200`).
 
 ### 2.2. Yazma onayı ve tekrar gönderim
 
@@ -190,3 +190,83 @@ Politikanın veri türleri tablosunda AI Soru Çöz görselleri, yardım olaylar
 ## 7. Henüz birleşik olmayan öğrenme kaynakları
 
 AI Koç'un öğrenci öğrenme bağlamında **okumadığı** kaynaklar: `lesson_activity_events`, `student_question_set_attempts`, dil ilerleme depoları, atlas/simülasyon depoları, defter belgeleri ve çalışma blokları, canlı ders not/sonuçları, `ai_solution_events`, AI çözüm geri bildirimi ve tekrar durumu. Katalog aracı `library_subjects/topics` okur; bu öğrenci etkinliği okuması değildir. Ortak mesajlaşma `messages` ve özel öğretmen notları da okunmaz; bunları topluca bağlamak hedefin parçası değildir. İlgili öğrenme yüzeyleri, yetkili kaynaklar ve kararları `VERI_KAYNAKLARI_MATRISI.md` ve `VERI_AKISLARI.md` ile birlikte değerlendirilmelidir.
+
+## 8. Ders ve soru kütüphanesinin gerçek kayıt davranışı
+
+### 8.1. Üç ders yolu aynı davranmıyor
+
+| Ders türü | Yetkili içerik | Öğrenci kaydı | Cihaz/Koç sonucu | Kod kanıtı |
+|---|---|---|---|---|
+| Veritabanı yapılandırılmış ders | `structured_lessons.document`; `library_topics` ilişkisi; öğretmen düzenlemesinde `structured_lesson_revisions` | `LessonReader` açma, quiz, ÖSYM simülasyonu, bölüm/tamamlama ve ses olaylarını `lesson_activity_events` tablosuna yazmayı amaçlıyor | **Gerçekte yazmıyor.** `void supabase.from(...).insert(...)` thenable'ı tüketmediği için istek başlamıyor. Sentetik yerel deney mevcut biçimde 0, `await` ile 1 taklit istek ölçtü. Koç tabloyu zaten okumuyor. | `src/components/lessons/LessonReader.jsx:109–171`; `kanitlar/faz-0/lesson-event-thenable.log` |
+| Paketli yapılandırılmış ders | `src/content/lessons/`; `bundled-<slug>` kimliği ve paketli placement | `is_bundled` açma/quiz/tamamlama olaylarını ve kişiselleştirmeyi erken kesiyor; sonuç yalnız React state | Sayfa yenilenince cevap/tamamlama kaybolur; kullanıcı/deneme/sürüm kaydı ve Koç bağlantısı yoktur. | `LessonReader.jsx:49–75`, `:108`, `:165` |
+| PDF/görsel/metin ve paketli Ham Bilgi | `library_notes` + `library-files`; `src/content/hamBilgiNotlari.js` + public PDF'ler | Açma, büyütme, sayfa gezme veya yazdırma için öğrenci telemetrisi yok | PDF açılması maruz kalma bile sayılacaksa önce güvenilir olay gerekir; başarı/ustalık değildir. Koç okumaz. | `src/components/LibraryNoteCard.jsx`; `src/components/PdfViewer.jsx`; `src/components/HamBilgiNotuSeridi.jsx` |
+
+Şema tarafında `lesson_activity_events.event_name` CHECK listesi `lesson_opened`, `section_completed`, `lesson_completed`, `quiz_answered`, `audio_started`, `audio_section_completed`, `visual_audio_clicked` değerlerini kabul eder. UI'ın ürettiği `osym_simulation_answered` listede yoktur (`supabase/migration_structured_lessons.sql:112`, `LessonReader.jsx:214`). İstek başlatma hatası düzeltilse bile bu olay mevcut SQL'de reddedilir. Olaylarda benzersiz istemci eylem kimliği yoktur; yeniden gönderim kopya üretebilir.
+
+Ders kişiselleştirme ayrı bir akıştır. `buildPersonalization` son 160 günlük kaydı konu adında `includes` ile eşler; en az 10 işaretlenmiş soruda oran hesaplar, `readiness` ön koşullarını kullanır ve `lesson_personalizations` önbelleğine gerçekten `.then` ile yazmayı başlatır (`src/lib/lesson/personalize.js:63`). Bu, ders olayının kayıtlı olduğunu göstermez. Paketli ders kişiselleştirmeye girmez. Ses anlatımının konumu `sessionStorage` içinde `drkoc:narration:v1:<slug>` anahtarıyla yalnız sekme oturumunda tutulur; dinleme başarı değildir.
+
+### 8.2. Soru kütüphanesinde sonuç nerede kayboluyor
+
+Veritabanı seti `library_question_sets`, paketli setler `src/lib/questionLibrary.js` ve derslere özgü yükleyicilerden gelir. Her ikisinde de cevaplar `TopicTestSolve.answers` bileşen durumuna yazılır; bitişte `{answers,test,returnTo}` yalnız rota state'i ile sonuç sayfasına taşınır. `TopicTestResult` D/Y/B ve yüzdeyi yeniden hesaplar (`src/pages/TopicTestSolve.jsx:36–49`; `TopicTestResult.jsx:23–43`). Sayfa yenilenirse veya sonuç adresi doğrudan açılırsa “Sonuç Bulunamadı” görünür.
+
+`student_question_set_attempts` tablosu gerçekten tanımlıdır: öğrenci, set, başlangıç/tamamlanma, D/Y/B ve answers JSON taşır; RLS kendi satırını select/insert/update ile sınırlar (`supabase/migration_question_library.sql:46–75`). Ancak `src/`, `api/` ve işlevlerde bu tabloya hiçbir okuma/yazma çağrısı yoktur. Aynı şekilde hazırlanmış `student_topic_test_progress` ve `student_test_answers` tabloları da kullanılmıyor. Bu nedenle “soru sonucu tablosu var” doğru, “öğrenci sonuçları saklanıyor” yanlıştır. Paketli setlerin metin kimlikleri, ilk tablonun UUID yabancı anahtarına doğrudan uymaz.
+
+## 9. Dört dil ve atlas/simülasyon depoları
+
+### 9.1. Dört dil ayrı ayrı
+
+İngilizce, Almanca, Fransızca ve İspanyolca aynı motor biçimini kullanır fakat ayrı içerik dosyaları, ekran klasörleri, olay adları ve anahtarları vardır. Dördünde de `BOS_ILERLEME`: profil, tespit, dersler, tekrar kartları, beceriler, hata izleri, günlük toplamlar, yazmalar, favoriler, son ders ve arayüz durumunu taşır. Kart ekranı ayrıca başlangıç nesnesinde açıkça tanımlanmayan `kartDesteleri` ve `kartFavorileri` alanlarını dinamik olarak yazar; geçişte bunların unutulmaması gerekir.
+
+| Dil | Depo | Ayrı doğrulanan kayıt yolu | Kimlik/cihaz sonucu |
+|---|---|---|---|
+| İngilizce | `drkoc-ingilizce-v1` | `src/pages/ingilizce/*` → `src/lib/ingilizce/ilerleme.js` | Kullanıcı kimliği yok; aynı cihaz/tarayıcı profilindeki farklı hesap veriyi paylaşır, başka cihaz boş başlar |
+| Almanca | `drkoc-almanca-v1` | `src/pages/almanca/*` → `src/lib/almanca/ilerleme.js` | Aynı boşluk; İngilizce anahtarıyla karışmaz |
+| Fransızca | `drkoc-fransizca-v1` | `src/pages/fransizca/*` → `src/lib/fransizca/ilerleme.js` | Aynı boşluk; Fransızca içeriği ayrı test edildi |
+| İspanyolca | `drkoc-ispanyolca-v1` | `src/pages/ispanyolca/*` → `src/lib/ispanyolca/ilerleme.js` | Aynı boşluk; İspanyolca anahtarı ayrıdır |
+
+`dersTamamla` son deneme D/Y/toplam/oran/en iyi oranı saklar ve günlük toplamı artırır; bütün deneme olay geçmişini saklamaz. Tekrar ekranı aralıklı tekrar kartını günceller, oturum sonunda süreyi kart sayısından yaklaşık üretir. Düşünme egzersizi de yapılandırılmış süreyi günlük toplamına ekler. `gunlukKaydet` tekrar çağrılırsa aynı eylemi ayıran kimlik olmadığından toplam yeniden artar. “Biliyorum” kart işareti öz beyanıdır; favori tercihtir. Telaffuz ekranı MediaRecorder ile yalnız geçici Blob URL üretir, ses veya doğruluk puanı saklamaz. Dört dil testi içerik/işlev kurallarını doğrular; kullanıcı ayrımı ya da cihazlar arası eşitlemeyi doğrulamaz. Sunucu Koç bu dört localStorage deposunu okuyamaz.
+
+### 9.2. Atlas ve simülasyonlar
+
+| Yüzey | Depo ve ölçüm | Gerçek sınır |
+|---|---|---|
+| Fizik | `drkoc-fizik-ilerleme-v1`: deney/seviye tamamlamaları, yanılgı D/Y sayaçları, başarımlar, rozetler | Kullanıcı kimliği/kanonik konu/olay kimliği yok; yalnız cihaz. Favori/konum öğrenme kanıtı değildir. |
+| Biyoloji | `drkoc-biyoloji-v1`: tahmin+görev+kontrol koşullu tamamlama, hata defteri, ustalık/tekrar alanları | Aynı etkileşimin son hali tutulur; tarihsel deneme dizisi ve kullanıcı ayrımı yoktur. |
+| Coğrafya | `drkoc-cografya-v1`: görev/kontrol, hata, son 20 TYT denemesi | Deneme `Date.now()` kimliğiyle append edilir; yeniden gönderim kopya olabilir, 20 öncesi düşer. |
+| Kimya | MiniTest ve simülasyonlar yalnız `useState`; kalıcı öğrenme deposu yok | Sonuç yenilemede kaybolur; sadece tema saklanır. |
+| Tarih/Padişah | Harita seçimi URL/state; yalnız müzik tercihi yerel | Ölçülebilir öğrenme görevi/kontrol sonucu yoktur; ham gezinme başarı değildir. |
+| Geometri pilot | Dört soru seçimi ve puanı yalnız component state | Kullanıcı/deneme/konu kimliği ve kalıcı kayıt yoktur. |
+
+Dört atlas tema anahtarı ve padişah müzik tercihi akademik sinyal değildir. Bütün üretim ve deneysel yerel/oturum anahtarlarının sahiplik sicili [matriste](VERI_KAYNAKLARI_MATRISI.md#tarayıcı-ve-cihaz-depolarının-tam-sicili) yer alır.
+
+## 10. Günlük kayıt, deneme, ödev, sorunlu soru ve öğretmen yanıtı
+
+- **Günlük kayıt:** öğrenci `daily_logs` tablosuna tarih, serbest konu, süre, D/Y/B ve not ekler. Öğrenci ekranında düzenleme/silme yoktur; `StudentDetail` içindeki öğretmen modalı yalnız süre ve D/Y/B alanlarını update eder. Koç 90 günlük pencereyi ve araç çağrısında en çok 60 satırı kullanır. Bu öğrenci beyanıdır.
+- **Genel deneme:** `mock_exams` üst kaydı ve `mock_exam_subjects` ders satırları iki ayrı istemci isteğidir. Alt yazı başarısızsa üst kayıt geri alınmaz. UI sınav türüne göre net hesaplar; Koç tür içi kıyas yapar ama en çok 10 üst kayıt okur. Süre girilmediyse öğrenci panellerinde standart süre tahmin edilir; Koç süreyi almaz.
+- **Branş denemesi:** `exams` D/Y/B ve serbest ders/konu taşır. Eksik eski şemada sınav türü/süre alanları bilinmeyen kolon hatasında düşürülüp kayıt kurtarılır. UI LGS için yanlış/3, diğerlerinde yanlış/4 hesaplar; veritabanındaki oluşturulmuş `net` alanı sabit /4 olduğundan UI doğru/yanlıştan yeniden hesaplar.
+- **Ödev:** öğretmen atar, öğrenci `Yapılıyor/Tamamlandı` arasında değiştirir, öğretmen silebilir. `lesson_session_id` ile canlı derse bağlanabilen ödev vardır; sabit konu/kazanım bağı yoktur. Koç atama ve durumu görür; ödev tamamlamak ilgili konuyu başarma garantisi değildir.
+- **Sorunlu soru:** öğrenci metin/görsel ile gönderir; öğretmen durum, yazılı yanıt, yanıt görseli ve çözüm tuvali ekleyebilir. Koç en yeni 20 satırdan en çok 5 açık sorunun konu/durum/yanıt varlığını görür; soru/öğretmen cevabının içeriğini ve görseli görmez. Öğretmen yanıtı güçlü nitel kanıt olabilir, fakat bugün Koç'a ulaşmaz.
+
+Düzenleme/silme ve yeniden gönderme farkları kaynak bazında [akışlarda](VERI_AKISLARI.md) işaretlidir. Aynı denemenin günlük kayda da girilmesi panellerde otomatik ayıklanmaz (`src/lib/insights.js`); kaynak katkısı gösterilir fakat toplam şişebilir.
+
+## 11. Canlı ders, defter ve iletişim
+
+Canlı dersin `lesson_sessions`, katılımcı, tahta, materyal, özel not ve özet tabloları vardır. Katılım ve oturum süresi öğrenme başarısı değildir. Ham tahta, sohbet, ses ve video ortak Koç bağlamı için varsayılan kapsam dışıdır. `lesson_summaries` öğretmenin öğrenciyle paylaştığı konular/not/sonraki hedef ile öğrencinin geri bildirimini taşır; bu dar ve yetkili nitel kanıt adayıdır, ancak konu serbest metindir ve Koç okumaz. `lesson_private_notes` yalnız öğretmenin özel alanıdır; öğrenci, veli ve Koç okumamalıdır.
+
+Defter `drkoc-kisisel-defter-v1` IndexedDB veritabanında `[ownerId,id]` ile kullanıcı ayrımı yapar. Yazma tamponu ve `localVersion/baseRevision/requestId` modeli iki sekme/ağ tekrarında içeriği korur; çatışmada iki sürümü saklar. `VITE_NOTEBOOK_CLOUD_ENABLED==='true'` değilse `student_notebooks` yolu hiç açılmaz; açık olsa bile 4 MB üstü defter yalnız cihazda kalır (`src/lib/defter/remote.js`). Ham defter, çizim veya ses otomatik akademik kanıt değildir; öğrenci açıkça bir sonuç paylaşmadan Koç'a alınmamalıdır.
+
+`messages` ve özel `chat-attachments` öğrenci–öğretmen iletişimidir. Düzenleme, silme, okundu bilgisi ve canlı güncelleme vardır. Ürün hafızasına uygun biçimde Koç bu tabloyu okumaz. İçinde konu adı veya öğretmen yönlendirmesi geçmesi tüm özel mesajı öğrenme gözetimine açmaz.
+
+## 12. Sunucu şeması ve kurulum gerçekliği
+
+`supabase/` altındaki 37 SQL dosyası 43 uygulama tablosu ve 4 dosya kovası tanımlar. Bütün 43 tabloda depoda RLS açma ifadesi bulundu; güncel politika dosyalarının canlıda uygulanıp uygulanmadığı ölçülmedi. `setup_new_project.sql` bunların yalnız 17'sini, `schema.sql` yalnız 3'ünü oluşturur. `migration_daily_logs.sql` CREATE değil ALTER ile başladığı için sıfır kurulumda tek başına çalışamaz.
+
+Üç hazır soru sonuç tablosu dışında, doğrudan `.from()` çağrısı görünmeyen `teacher_students`, davet/veli deneme sayaçları ve bağlantı tabloları SQL RPC'leriyle kullanılır; yanlışlıkla “ölü tablo” sayılmadı. Kaynak çağrısı olup bütün SQL'de CREATE tanımı bulunmayan bir uygulama tablosu saptanmadı. Tablo, SQL kaynağı, sabit kod/RPC çağrısı, RLS özeti ve Koç kararı [sunucu tarama kanıtında](kanitlar/faz-0/sunucu-tablo-taramasi.json) ve [matris sicilinde](VERI_KAYNAKLARI_MATRISI.md#sunucu-tablosu-sahiplik-sicili--4343) kayıtlıdır.
+
+Eksik şema davranışı homojen değildir: Koç ana kaynak hataları `degraded` olurken AI Soru Çöz tablosu hatası sessiz boş diziye düşer; branş formu bazı kolonları düşürür; canlı ders açık bir şema eksikliği bildirimi gösterebilir; defter bulut yolu bayrakla tümden kapalıdır. “Boş geçmiş” ile “kaynağa erişilemedi” bütün modüllerde güvenilir biçimde ayrılmıyor.
+
+## 13. Faz 0 kabul sonucu
+
+Bu envanter `App.jsx` içindeki 62 rota, dört dilin 15'er iç rota karşılığı, 38 kaynak yüzeyi, tüm doğrudan tarayıcı/oturum/IndexedDB depoları, 43 uygulama tablosu, 4 dosya kovası ve 37 SQL dosyasını sahipleriyle eşleştirdi. AI Koç'un okuduğu tablolar ile okumadığı kaynaklar ayrıldı; müfredat/konu eşleştirme temeli “yok” diye raporlanmadı. Yapılandırılmış DB, paketli ve PDF ders; DB/paketli soru yolları; dört dil; düzenleme/silme/tekrar/cihaz boşlukları ayrı incelendi.
+
+Başlangıç testleri gerçek sonuçlarıyla [baz çizgisinde](BAZ_CIZGISI.md), sonraki fazların sentetik girdileri [kabul senaryolarında](KABUL_SENARYOLARI.md), açık mimari sorular [karar kaydında](MIMARI_KARARLAR.md) bulunur. Bu fazda ürün kodu, canlı şema/veri ve ürün davranışı değiştirilmedi. Faz 1'e belge ve yerel test girdisi olarak geçilebilir; bu, canlı RLS, model kalitesi veya uçtan uca cihaz akışlarının doğrulandığı anlamına gelmez.

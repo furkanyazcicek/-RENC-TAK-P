@@ -38,6 +38,7 @@
     "test:biyoloji": "node scripts/test-biyoloji-atlasi.mjs",
     "test:cografya": "node scripts/test-cografya-atlasi.mjs",
     "test:library-curriculum": "node scripts/test-library-curriculum.mjs",
+    "test:ai-koc-faz-1": "node scripts/test-phase-1-learning-contracts.mjs",
     "test:ingilizce": "node scripts/test-ingilizce.mjs",
     "test:almanca": "node scripts/test-almanca.mjs",
     "test:fransizca": "node scripts/test-fransizca.mjs",

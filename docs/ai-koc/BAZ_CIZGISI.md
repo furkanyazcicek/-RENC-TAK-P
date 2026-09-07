@@ -6,6 +6,10 @@
 
 Ürün, API, şema ve canlı öğrenci verisi değiştirilmedi. Var olan içerik/PDF değişiklikleri kullanıcı çalışması olarak korundu. Bu ölçüm mevcut çalışma kopyasını sınar; geçmiş temiz sürümle karşılaştırma değildir. Derleme yalnız yerel `dist/` çıktısı oluşturdu; yayın yapılmadı.
 
+## Güncel Git başında son doğrulama
+
+Görev sürerken çalışma kopyasının Git başı kullanıcı çalışmasıyla `9319197` sürümüne ilerledi. İlk test grubundan sonra gelen içerik/PDF commit'ini de kapsamak için 11:49'da `npm run test:lesson-content` ve `npm run build` yeniden çalıştırıldı. İçerik denetimi yine 185 ders, 0 hata ve 32 derinlik uyarısıyla; derleme 3.735 modül ve çıkış kodu 0 ile geçti. Ana/dil paket boyutu ve 500 kB uyarısı değişmedi. Bu iki tekrar, yukarıdaki benzersiz komut sayısına ikinci bir test türü olarak eklenmedi.
+
 ## Gerçek sonuçlar
 
 Tüm komutların çıkış kodu aşağıdadır. Tarih her satırda 2026-09-07; saat Türkiye saatidir. Ham çıktıda tam başlangıç tarihi, komut ve çıkış kodu saklıdır. “0” başarılı süreç demektir; listelenen uyarıları ortadan kaldırmaz.
@@ -67,6 +71,6 @@ Tüm komutların çıkış kodu aşağıdadır. Tarih her satırda 2026-09-07; s
 
 Komutlar `package.json` ve `scripts/test-*.mjs` kaynakları incelenerek seçildi. AI Koç bağlam/müfredat testleri npm kısayolu olmadığı için doğrudan Node ile çalıştırıldı. AI Soru Çöz ve ses testleri gerçek ağ yerine istek taklidi kullanıyor; veli/canlı ders/defter RLS testleri bellekte geçici PostgreSQL kuruyor. Hiçbir anahtar değeri rapora alınmadı.
 
-Tam süreç metaverisi: [test-sonuclari.json](kanitlar/faz-0/test-sonuclari.json), [build-sonucu.json](kanitlar/faz-0/build-sonucu.json), [lesson-event-sonucu.json](kanitlar/faz-0/lesson-event-sonucu.json).
+Tam süreç metaverisi: [test-sonuclari.json](kanitlar/faz-0/test-sonuclari.json), [build-sonucu.json](kanitlar/faz-0/build-sonucu.json), [lesson-event-sonucu.json](kanitlar/faz-0/lesson-event-sonucu.json) ve [envanter-kabul-sonucu.json](kanitlar/faz-0/envanter-kabul-sonucu.json).
 
 Bu baz çizgisi mevcut davranışın yerel başlangıç kanıtıdır. Yeni ortak öğrenme ağı, düzeltme/silme yayılımı, bütün kaynakların AI Koç tarafından okunması ve cihazlar arası dil devamlılığı henüz uygulanmış veya doğrulanmış sayılmaz.
