@@ -1,0 +1,8 @@
+{
+  "key": "lesson-event-thenable",
+  "command": "node docs/ai-koc/kanitlar/faz-0/lesson-event-thenable.mjs",
+  "start": "2026-09-07T10:54:33.211432+03:00",
+  "exit_code": 0,
+  "elapsed_seconds": 0.22,
+  "log": "docs/ai-koc/kanitlar/faz-0/lesson-event-thenable.log"
+}

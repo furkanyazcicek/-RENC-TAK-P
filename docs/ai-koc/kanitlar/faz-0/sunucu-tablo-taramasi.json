@@ -1,0 +1,480 @@
+{
+  "sql_files": [
+    "supabase/migration_ai_coach.sql",
+    "supabase/migration_ai_solve.sql",
+    "supabase/migration_ai_solve_history.sql",
+    "supabase/migration_branch_exam_type.sql",
+    "supabase/migration_branch_exam_upgrade.sql",
+    "supabase/migration_chat_attachments.sql",
+    "supabase/migration_daily_logs.sql",
+    "supabase/migration_exam_duration.sql",
+    "supabase/migration_kpss.sql",
+    "supabase/migration_lesson_learning_modes.sql",
+    "supabase/migration_lesson_ordering.sql",
+    "supabase/migration_library.sql",
+    "supabase/migration_live_lessons.sql",
+    "supabase/migration_live_lessons_fix_room_id.sql",
+    "supabase/migration_message_management.sql",
+    "supabase/migration_parent_verification.sql",
+    "supabase/migration_parent_verification_cleanup.sql",
+    "supabase/migration_push_notifications.sql",
+    "supabase/migration_question_library.sql",
+    "supabase/migration_question_taxonomy.sql",
+    "supabase/migration_reply_image.sql",
+    "supabase/migration_solution_canvas.sql",
+    "supabase/migration_structured_lessons.sql",
+    "supabase/migration_student_exam_profile.sql",
+    "supabase/migration_student_notebooks.sql",
+    "supabase/migration_teacher_materials.sql",
+    "supabase/migration_tiered_tests.sql",
+    "supabase/migration_tyt_din_kulturu_2026.sql",
+    "supabase/migration_tyt_turkce_curriculum.sql",
+    "supabase/migration_v2.sql",
+    "supabase/migration_yeni_ogrenci_onayi.sql",
+    "supabase/schema.sql",
+    "supabase/seed_library_curriculum.sql",
+    "supabase/seed_library_curriculum_v2.sql",
+    "supabase/seed_structured_lesson_pilots.sql",
+    "supabase/seed_tyt_felsefe_curriculum.sql",
+    "supabase/setup_new_project.sql"
+  ],
+  "tables": {
+    "ai_conversations": [
+      "supabase/migration_ai_coach.sql",
+      "supabase/setup_new_project.sql"
+    ],
+    "ai_messages": [
+      "supabase/migration_ai_coach.sql",
+      "supabase/setup_new_project.sql"
+    ],
+    "ai_student_memory": [
+      "supabase/migration_ai_coach.sql",
+      "supabase/setup_new_project.sql"
+    ],
+    "ai_study_tasks": [
+      "supabase/migration_ai_coach.sql",
+      "supabase/setup_new_project.sql"
+    ],
+    "ai_usage_events": [
+      "supabase/migration_ai_coach.sql",
+      "supabase/setup_new_project.sql"
+    ],
+    "ai_solution_sessions": [
+      "supabase/migration_ai_solve.sql"
+    ],
+    "ai_solution_events": [
+      "supabase/migration_ai_solve.sql"
+    ],
+    "library_subjects": [
+      "supabase/migration_library.sql",
+      "supabase/setup_new_project.sql"
+    ],
+    "library_topics": [
+      "supabase/migration_library.sql",
+      "supabase/setup_new_project.sql"
+    ],
+    "library_notes": [
+      "supabase/migration_library.sql",
+      "supabase/setup_new_project.sql"
+    ],
+    "teacher_students": [
+      "supabase/migration_live_lessons.sql"
+    ],
+    "teacher_invites": [
+      "supabase/migration_live_lessons.sql"
+    ],
+    "teacher_invite_attempts": [
+      "supabase/migration_live_lessons.sql"
+    ],
+    "lesson_sessions": [
+      "supabase/migration_live_lessons.sql"
+    ],
+    "lesson_private_notes": [
+      "supabase/migration_live_lessons.sql"
+    ],
+    "lesson_participants": [
+      "supabase/migration_live_lessons.sql"
+    ],
+    "lesson_materials": [
+      "supabase/migration_live_lessons.sql"
+    ],
+    "lesson_board_pages": [
+      "supabase/migration_live_lessons.sql"
+    ],
+    "lesson_summaries": [
+      "supabase/migration_live_lessons.sql"
+    ],
+    "parent_links": [
+      "supabase/migration_parent_verification.sql"
+    ],
+    "parent_link_codes": [
+      "supabase/migration_parent_verification.sql"
+    ],
+    "parent_link_attempts": [
+      "supabase/migration_parent_verification.sql"
+    ],
+    "push_subscriptions": [
+      "supabase/migration_push_notifications.sql",
+      "supabase/setup_new_project.sql"
+    ],
+    "library_question_sets": [
+      "supabase/migration_question_library.sql"
+    ],
+    "student_question_set_attempts": [
+      "supabase/migration_question_library.sql"
+    ],
+    "structured_lessons": [
+      "supabase/migration_structured_lessons.sql"
+    ],
+    "structured_lesson_revisions": [
+      "supabase/migration_structured_lessons.sql"
+    ],
+    "lesson_personalizations": [
+      "supabase/migration_structured_lessons.sql"
+    ],
+    "lesson_audio_assets": [
+      "supabase/migration_structured_lessons.sql"
+    ],
+    "lesson_generation_runs": [
+      "supabase/migration_structured_lessons.sql"
+    ],
+    "lesson_activity_events": [
+      "supabase/migration_structured_lessons.sql"
+    ],
+    "student_notebooks": [
+      "supabase/migration_student_notebooks.sql"
+    ],
+    "teacher_materials": [
+      "supabase/migration_teacher_materials.sql"
+    ],
+    "student_topic_test_progress": [
+      "supabase/migration_tiered_tests.sql"
+    ],
+    "student_test_answers": [
+      "supabase/migration_tiered_tests.sql"
+    ],
+    "homeworks": [
+      "supabase/migration_v2.sql",
+      "supabase/setup_new_project.sql"
+    ],
+    "mock_exams": [
+      "supabase/migration_v2.sql",
+      "supabase/setup_new_project.sql"
+    ],
+    "mock_exam_subjects": [
+      "supabase/migration_v2.sql",
+      "supabase/setup_new_project.sql"
+    ],
+    "messages": [
+      "supabase/migration_v2.sql",
+      "supabase/setup_new_project.sql"
+    ],
+    "profiles": [
+      "supabase/schema.sql",
+      "supabase/setup_new_project.sql"
+    ],
+    "exams": [
+      "supabase/schema.sql",
+      "supabase/setup_new_project.sql"
+    ],
+    "questions": [
+      "supabase/schema.sql",
+      "supabase/setup_new_project.sql"
+    ],
+    "daily_logs": [
+      "supabase/setup_new_project.sql"
+    ]
+  },
+  "calls": {
+    "profiles": [
+      "src/context/AuthContext.jsx:13",
+      "src/context/AuthContext.jsx:54",
+      "src/components/ExamSetupCard.jsx:78",
+      "src/components/HomeworkForm.jsx:26",
+      "src/lib/lesson/personalize.js:82",
+      "src/pages/TeacherDashboard.jsx:41",
+      "src/pages/Profile.jsx:131",
+      "src/pages/Profile.jsx:162",
+      "src/pages/StudentDetail.jsx:66",
+      "src/pages/MockExams.jsx:55",
+      "src/pages/Messages.jsx:39",
+      "src/pages/DailyTracking.jsx:79",
+      "src/pages/Homeworks.jsx:40",
+      "src/pages/Register.jsx:100",
+      "src/pages/Register.jsx:107",
+      "src/pages/Questions.jsx:48",
+      "api/live-lesson/room-token.js:132",
+      "api/_lib/auth.js:62",
+      "api/_lib/auth.js:95",
+      "api/ai-solve/solve.js:229"
+    ],
+    "messages": [
+      "src/components/ExamSurveyDialog.jsx:65",
+      "src/components/ChatThread.jsx:125",
+      "src/components/ChatThread.jsx:157",
+      "src/components/ChatThread.jsx:323",
+      "src/components/liveLesson/LessonChatPanel.jsx:31",
+      "src/components/liveLesson/LessonChatPanel.jsx:82",
+      "src/hooks/useUnreadMessageCount.js:26"
+    ],
+    "library_notes": [
+      "src/components/LibraryNoteCard.jsx:31",
+      "src/components/LibraryNoteForm.jsx:87",
+      "src/components/defter/NotebookLibrary.jsx:30",
+      "src/lib/liveLesson/materialSources.js:73",
+      "src/pages/Library.jsx:103",
+      "src/pages/Library.jsx:286"
+    ],
+    "mock_exams": [
+      "src/components/MockExamList.jsx:16",
+      "src/components/MockExamForm.jsx:70",
+      "src/components/liveLesson/StudentContextPanel.jsx:42",
+      "src/pages/Profile.jsx:103",
+      "src/pages/Analytics.jsx:146",
+      "src/pages/StudentDetail.jsx:83",
+      "src/pages/MockExams.jsx:46",
+      "src/pages/MockExams.jsx:113",
+      "src/pages/ParentDashboard.jsx:166",
+      "src/pages/DailyTracking.jsx:68",
+      "src/pages/Home.jsx:97",
+      "src/pages/StudentDashboard.jsx:46",
+      "api/_lib/tools.js:518",
+      "api/_lib/context.js:118"
+    ],
+    "questions": [
+      "src/components/QuestionForm.jsx:61",
+      "src/components/QuestionInbox.jsx:59",
+      "src/components/QuestionInbox.jsx:178",
+      "src/components/liveLesson/StudentContextPanel.jsx:54",
+      "src/lib/solutionReply.js:43",
+      "src/lib/solutionReply.js:71",
+      "src/lib/solutionReply.js:87",
+      "src/lib/liveLesson/materialSources.js:30",
+      "src/pages/TeacherDashboard.jsx:44",
+      "src/pages/StudentDetail.jsx:73",
+      "src/pages/Questions.jsx:37",
+      "src/pages/Questions.jsx:41",
+      "src/pages/Home.jsx:112",
+      "src/pages/StudentDashboard.jsx:50",
+      "api/_lib/context.js:139"
+    ],
+    "homeworks": [
+      "src/components/HomeworkForm.jsx:39",
+      "src/components/HomeworkList.jsx:51",
+      "src/components/HomeworkList.jsx:56",
+      "src/components/liveLesson/StudentContextPanel.jsx:48",
+      "src/lib/liveLesson/api.js:547",
+      "src/lib/liveLesson/api.js:559",
+      "src/pages/StudentDetail.jsx:88",
+      "src/pages/ParentDashboard.jsx:176",
+      "src/pages/Homeworks.jsx:31",
+      "src/pages/Home.jsx:107",
+      "api/_lib/tools.js:561",
+      "api/_lib/context.js:132"
+    ],
+    "mock_exam_subjects": [
+      "src/components/MockExamForm.jsx:95",
+      "src/pages/ParentDashboard.jsx:162"
+    ],
+    "exams": [
+      "src/components/AddExamForm.jsx:33",
+      "src/components/BranchExamList.jsx:27",
+      "src/lib/liveLesson/materialSources.js:51",
+      "src/pages/Profile.jsx:106",
+      "src/pages/Analytics.jsx:151",
+      "src/pages/StudentDetail.jsx:68",
+      "src/pages/MockExams.jsx:51",
+      "src/pages/ParentDashboard.jsx:171",
+      "src/pages/DailyTracking.jsx:73",
+      "src/pages/Home.jsx:102",
+      "src/pages/StudentDashboard.jsx:44",
+      "api/_lib/context.js:125"
+    ],
+    "daily_logs": [
+      "src/components/DailyLogForm.jsx:65",
+      "src/components/DailyLogEditModal.jsx:27",
+      "src/components/liveLesson/StudentContextPanel.jsx:36",
+      "src/lib/lesson/personalize.js:77",
+      "src/pages/TeacherDashboard.jsx:42",
+      "src/pages/Profile.jsx:101",
+      "src/pages/Analytics.jsx:141",
+      "src/pages/StudentDetail.jsx:78",
+      "src/pages/ParentDashboard.jsx:157",
+      "src/pages/DailyTracking.jsx:61",
+      "src/pages/Home.jsx:88",
+      "src/pages/StudentDashboard.jsx:51",
+      "api/_lib/tools.js:423",
+      "api/_lib/tools.js:468",
+      "api/_lib/tools.js:1006",
+      "api/_lib/context.js:111"
+    ],
+    "library_topics": [
+      "src/components/LibraryNoteForm.jsx:51",
+      "src/components/LibraryNoteForm.jsx:64",
+      "src/pages/DailyTracking.jsx:78",
+      "src/pages/QuestionLibrary.jsx:82",
+      "src/pages/Library.jsx:102",
+      "src/pages/StudentDashboard.jsx:53",
+      "api/_lib/tools.js:609"
+    ],
+    "lesson_summaries": [
+      "src/components/liveLesson/StudentContextPanel.jsx:61",
+      "src/lib/liveLesson/api.js:489",
+      "src/lib/liveLesson/api.js:501",
+      "src/lib/liveLesson/api.js:529"
+    ],
+    "structured_lessons": [
+      "src/components/defter/NotebookLibrary.jsx:31",
+      "src/components/lessons/LessonEditor.jsx:219",
+      "src/components/lessons/LessonEditor.jsx:223",
+      "src/components/lessons/LessonReader.jsx:80",
+      "src/pages/Library.jsx:104",
+      "src/pages/Library.jsx:294",
+      "api/lessons/regenerate-section.js:52"
+    ],
+    "structured_lesson_revisions": [
+      "src/components/lessons/LessonEditor.jsx:230"
+    ],
+    "lesson_activity_events": [
+      "src/components/lessons/LessonReader.jsx:112",
+      "src/components/lessons/LessonReader.jsx:169"
+    ],
+    "parent_link_codes": [
+      "src/lib/parentLink.js:75"
+    ],
+    "library_question_sets": [
+      "src/lib/questionLibrary.js:99",
+      "src/pages/QuestionLibrary.jsx:83"
+    ],
+    "lesson_audio_assets": [
+      "src/lib/lessonAudio.js:40"
+    ],
+    "push_subscriptions": [
+      "src/lib/push.js:41",
+      "src/lib/push.js:62",
+      "supabase/functions/send-push/index.ts:37",
+      "supabase/functions/send-push/index.ts:66"
+    ],
+    "teacher_invites": [
+      "src/lib/liveLesson/api.js:130"
+    ],
+    "lesson_sessions": [
+      "src/lib/liveLesson/api.js:190",
+      "src/lib/liveLesson/api.js:204",
+      "src/lib/liveLesson/api.js:219",
+      "src/lib/liveLesson/api.js:235",
+      "src/lib/liveLesson/api.js:271",
+      "src/lib/liveLesson/api.js:277",
+      "api/live-lesson/room-token.js:78"
+    ],
+    "lesson_private_notes": [
+      "src/lib/liveLesson/api.js:310",
+      "src/lib/liveLesson/api.js:321"
+    ],
+    "lesson_participants": [
+      "src/lib/liveLesson/api.js:355"
+    ],
+    "lesson_materials": [
+      "src/lib/liveLesson/api.js:371",
+      "src/lib/liveLesson/api.js:383",
+      "src/lib/liveLesson/api.js:392",
+      "src/lib/liveLesson/api.js:396"
+    ],
+    "teacher_materials": [
+      "src/lib/liveLesson/api.js:408",
+      "src/lib/liveLesson/api.js:421",
+      "src/lib/liveLesson/api.js:430",
+      "src/lib/liveLesson/api.js:434",
+      "src/lib/liveLesson/api.js:440"
+    ],
+    "lesson_board_pages": [
+      "src/lib/liveLesson/api.js:454"
+    ],
+    "student_notebooks": [
+      "src/lib/defter/remote.js:12",
+      "src/lib/defter/remote.js:18"
+    ],
+    "lesson_personalizations": [
+      "src/lib/lesson/personalize.js:63",
+      "src/lib/lesson/personalize.js:240"
+    ],
+    "library_subjects": [
+      "src/pages/DailyTracking.jsx:77",
+      "src/pages/QuestionLibrary.jsx:81",
+      "src/pages/Library.jsx:101",
+      "src/pages/StudentDashboard.jsx:52",
+      "api/_lib/tools.js:589"
+    ],
+    "ai_conversations": [
+      "api/ai-coach/conversations.js:34",
+      "api/ai-coach/conversations.js:42",
+      "api/ai-coach/conversations.js:60",
+      "api/ai-coach/conversations.js:72",
+      "api/ai-coach/chat.js:241",
+      "api/ai-coach/chat.js:254",
+      "api/ai-coach/chat.js:308",
+      "api/ai-coach/chat.js:321"
+    ],
+    "ai_messages": [
+      "api/ai-coach/conversations.js:82",
+      "api/ai-coach/chat.js:143",
+      "api/ai-coach/chat.js:229",
+      "api/ai-coach/chat.js:270",
+      "api/ai-coach/chat.js:340"
+    ],
+    "ai_study_tasks": [
+      "api/_lib/tools.js:709",
+      "api/_lib/tools.js:991",
+      "api/_lib/tools.js:1050",
+      "api/_lib/context.js:151"
+    ],
+    "ai_student_memory": [
+      "api/_lib/tools.js:1036",
+      "api/_lib/context.js:146"
+    ],
+    "ai_usage_events": [
+      "api/_lib/ratelimit.js:42",
+      "api/_lib/ratelimit.js:91"
+    ],
+    "ai_solution_sessions": [
+      "api/_lib/context.js:197",
+      "api/_lib/solve/persistence.js:51",
+      "api/_lib/solve/persistence.js:71",
+      "api/_lib/solve/persistence.js:87",
+      "api/_lib/solve/persistence.js:157",
+      "api/_lib/solve/persistence.js:166",
+      "api/_lib/solve/persistence.js:178",
+      "api/_lib/solve/persistence.js:199",
+      "api/_lib/solve/persistence.js:211",
+      "api/ai-solve/check.js:113"
+    ],
+    "ai_solution_events": [
+      "api/_lib/solve/persistence.js:121"
+    ],
+    "lesson_generation_runs": [
+      "api/lessons/regenerate-section.js:68",
+      "api/lessons/regenerate-section.js:108",
+      "api/lessons/regenerate-section.js:121"
+    ]
+  },
+  "buckets": {
+    "question-images": [
+      "src/components/QuestionForm.jsx:53",
+      "src/components/QuestionForm.jsx:57",
+      "src/components/QuestionInbox.jsx:51",
+      "src/components/QuestionInbox.jsx:54",
+      "src/lib/liveLesson/materialSources.js:130",
+      "src/lib/liveLesson/materialSources.js:155"
+    ],
+    "chat-attachments": [
+      "src/components/ChatThread.jsx:238",
+      "src/components/ChatThread.jsx:315",
+      "src/components/ChatThread.jsx:426"
+    ],
+    "library-files": [
+      "src/components/LibraryNoteForm.jsx:80",
+      "src/components/LibraryNoteForm.jsx:83",
+      "src/components/LibraryNoteForm.jsx:104"
+    ]
+  }
+}

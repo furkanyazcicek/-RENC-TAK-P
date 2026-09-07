@@ -1,0 +1,226 @@
+[
+  {
+    "key": "context-curriculum",
+    "command": "node scripts/test-context-curriculum.mjs",
+    "start": "2026-09-07T10:47:33.335771+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.23,
+    "log": "docs/ai-koc/kanitlar/faz-0/context-curriculum.log"
+  },
+  {
+    "key": "curriculum",
+    "command": "node scripts/test-curriculum.mjs",
+    "start": "2026-09-07T10:47:33.335908+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.22,
+    "log": "docs/ai-koc/kanitlar/faz-0/curriculum.log"
+  },
+  {
+    "key": "ai-solve",
+    "command": "npm run test:ai-solve",
+    "start": "2026-09-07T10:47:33.336549+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 7.34,
+    "log": "docs/ai-koc/kanitlar/faz-0/ai-solve.log"
+  },
+  {
+    "key": "lesson-document",
+    "command": "npm run test:lesson-document",
+    "start": "2026-09-07T10:47:33.338142+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.38,
+    "log": "docs/ai-koc/kanitlar/faz-0/lesson-document.log"
+  },
+  {
+    "key": "lesson-content",
+    "command": "npm run test:lesson-content",
+    "start": "2026-09-07T10:47:33.553689+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.37,
+    "log": "docs/ai-koc/kanitlar/faz-0/lesson-content.log"
+  },
+  {
+    "key": "lesson-narration",
+    "command": "npm run test:lesson-narration",
+    "start": "2026-09-07T10:47:33.565277+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.29,
+    "log": "docs/ai-koc/kanitlar/faz-0/lesson-narration.log"
+  },
+  {
+    "key": "library-curriculum",
+    "command": "npm run test:library-curriculum",
+    "start": "2026-09-07T10:47:33.720155+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.17,
+    "log": "docs/ai-koc/kanitlar/faz-0/library-curriculum.log"
+  },
+  {
+    "key": "ingilizce",
+    "command": "npm run test:ingilizce",
+    "start": "2026-09-07T10:47:33.854307+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.22,
+    "log": "docs/ai-koc/kanitlar/faz-0/ingilizce.log"
+  },
+  {
+    "key": "almanca",
+    "command": "npm run test:almanca",
+    "start": "2026-09-07T10:47:33.885902+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.22,
+    "log": "docs/ai-koc/kanitlar/faz-0/almanca.log"
+  },
+  {
+    "key": "fransizca",
+    "command": "npm run test:fransizca",
+    "start": "2026-09-07T10:47:33.920847+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.22,
+    "log": "docs/ai-koc/kanitlar/faz-0/fransizca.log"
+  },
+  {
+    "key": "ispanyolca",
+    "command": "npm run test:ispanyolca",
+    "start": "2026-09-07T10:47:34.075177+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.18,
+    "log": "docs/ai-koc/kanitlar/faz-0/ispanyolca.log"
+  },
+  {
+    "key": "matematik-soru-kutuphanesi",
+    "command": "npm run test:matematik-soru-kutuphanesi",
+    "start": "2026-09-07T10:47:34.104619+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.16,
+    "log": "docs/ai-koc/kanitlar/faz-0/matematik-soru-kutuphanesi.log"
+  },
+  {
+    "key": "felsefe-soru-kutuphanesi",
+    "command": "npm run test:felsefe-soru-kutuphanesi",
+    "start": "2026-09-07T10:47:34.137474+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.19,
+    "log": "docs/ai-koc/kanitlar/faz-0/felsefe-soru-kutuphanesi.log"
+  },
+  {
+    "key": "tarih-soru-kutuphanesi",
+    "command": "npm run test:tarih-soru-kutuphanesi",
+    "start": "2026-09-07T10:47:34.256170+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 2.38,
+    "log": "docs/ai-koc/kanitlar/faz-0/tarih-soru-kutuphanesi.log"
+  },
+  {
+    "key": "exam-stats",
+    "command": "node scripts/test-exam-stats.mjs",
+    "start": "2026-09-07T10:47:34.268650+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.04,
+    "log": "docs/ai-koc/kanitlar/faz-0/exam-stats.log"
+  },
+  {
+    "key": "parent-rls",
+    "command": "npm run test:parent-rls",
+    "start": "2026-09-07T10:47:34.313665+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 2.05,
+    "log": "docs/ai-koc/kanitlar/faz-0/parent-rls.log"
+  },
+  {
+    "key": "live-lessons",
+    "command": "npm run test:live-lessons",
+    "start": "2026-09-07T10:47:34.328688+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 2.09,
+    "log": "docs/ai-koc/kanitlar/faz-0/live-lessons.log"
+  },
+  {
+    "key": "defter",
+    "command": "npm run test:defter",
+    "start": "2026-09-07T10:47:36.366728+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 1.21,
+    "log": "docs/ai-koc/kanitlar/faz-0/defter.log"
+  },
+  {
+    "key": "ink",
+    "command": "npm run test:ink",
+    "start": "2026-09-07T10:47:36.417396+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.19,
+    "log": "docs/ai-koc/kanitlar/faz-0/ink.log"
+  },
+  {
+    "key": "kimya",
+    "command": "npm run test:kimya",
+    "start": "2026-09-07T10:47:36.612480+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.15,
+    "log": "docs/ai-koc/kanitlar/faz-0/kimya.log"
+  },
+  {
+    "key": "fizik",
+    "command": "npm run test:fizik",
+    "start": "2026-09-07T10:47:36.636178+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.15,
+    "log": "docs/ai-koc/kanitlar/faz-0/fizik.log"
+  },
+  {
+    "key": "biyoloji",
+    "command": "npm run test:biyoloji",
+    "start": "2026-09-07T10:47:36.764684+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.15,
+    "log": "docs/ai-koc/kanitlar/faz-0/biyoloji.log"
+  },
+  {
+    "key": "cografya",
+    "command": "npm run test:cografya",
+    "start": "2026-09-07T10:47:36.783373+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.15,
+    "log": "docs/ai-koc/kanitlar/faz-0/cografya.log"
+  },
+  {
+    "key": "tarih",
+    "command": "npm run test:tarih",
+    "start": "2026-09-07T10:47:36.914820+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.4,
+    "log": "docs/ai-koc/kanitlar/faz-0/tarih.log"
+  },
+  {
+    "key": "tts-cache",
+    "command": "npm run test:tts-cache",
+    "start": "2026-09-07T10:47:36.931027+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.25,
+    "log": "docs/ai-koc/kanitlar/faz-0/tts-cache.log"
+  },
+  {
+    "key": "padisah-sesi",
+    "command": "npm run test:padisah-sesi",
+    "start": "2026-09-07T10:47:37.184909+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.15,
+    "log": "docs/ai-koc/kanitlar/faz-0/padisah-sesi.log"
+  },
+  {
+    "key": "anasayfa",
+    "command": "npm run test:anasayfa",
+    "start": "2026-09-07T10:47:37.312589+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.15,
+    "log": "docs/ai-koc/kanitlar/faz-0/anasayfa.log"
+  },
+  {
+    "key": "bench-test",
+    "command": "npm run bench:test",
+    "start": "2026-09-07T10:47:37.332878+03:00",
+    "exit_code": 0,
+    "elapsed_seconds": 0.42,
+    "log": "docs/ai-koc/kanitlar/faz-0/bench-test.log"
+  }
+]
