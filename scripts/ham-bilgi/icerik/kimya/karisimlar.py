@@ -49,9 +49,9 @@ NOT = {
              ["Formülle gösterim", "**Var**", "**Yok**"],
          ]},
         {"tur": "maddeler", "ogeler": [
-            "**Element**: Tek cins atomdan oluşur (Fe, O2, He).",
+            "**Element**: Tek cins atomdan oluşur (Fe, O_2, He).",
             "**Bileşik**: Farklı cins atomların **belirli oranlarda** kimyasal "
-            "bağla birleşmesiyle oluşur (H2O, NaCl). **Kendini oluşturan elementlerin "
+            "bağla birleşmesiyle oluşur (H_2O, NaCl). **Kendini oluşturan elementlerin "
             "özelliklerini taşımaz**.",
             "**Karışım**: İki ya da daha fazla maddenin **kimyasal bağ kurmadan** "
             "bir araya gelmesidir. Bileşenler **özelliklerini korur**.",
@@ -139,7 +139,7 @@ NOT = {
             "Çözeltiye su eklendiğinde ya da su buharlaştırıldığında "
             "**çözünenin mol sayısı değişmez**:",
          "ogeler": [
-             "**M1 · V1 = M2 · V2** bağıntısı bu yüzden geçerlidir.",
+             "**M_1 · V_1 = M_2 · V_2** bağıntısı bu yüzden geçerlidir.",
              "**Su eklenirse**: hacim artar, derişim **azalır** (seyrelir).",
              "**Su buharlaştırılırsa**: hacim azalır, derişim **artar**.",
              "**Aynı çözeltiden bir miktar alınırsa derişim DEĞİŞMEZ** — homojen "
@@ -176,6 +176,21 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 5, "baslik": "Karışımları Ayırma Yöntemleri"},
+        {"tur": "gorsel", "baslik": "Şema 2 — Hangi karışım hangi yöntemle ayrılır?",
+         "aciklama": "Ayırma yöntemi seçilirken tek soru sorulur: **bileşenler hangi "
+                     "özellikleri bakımından farklı?** Yöntem her zaman o farkı "
+                     "kullanır.",
+         "ciz": S.kartlar([
+             ("Eleme", "**tanecik boyutu**\nfarklı — un/kepek"),
+             ("Süzme", "**katı + sıvı**\nçözünmemiş — çay"),
+             ("Buharlaştırma", "**çözünmüş katı**\nayrılır — tuzlu su"),
+             ("Damıtma", "**kaynama noktası**\nfarklı — alkol/su"),
+             ("Ayırma hunisi", "**karışmayan sıvılar**\n— su/zeytinyağı"),
+             ("Mıknatısla", "**bileşen mıknatısla\nçekilir** — demir tozu"),
+             ("Yüzdürme", "**yoğunluk** farkı\n— buğday/samanlı su"),
+             ("Diyaliz", "**tanecik boyutu**\n— kan temizleme"),
+             ("Kromatografi", "**tutunma hızı**\nfarklı — mürekkep"),
+         ], sutun=3)},
         {"tur": "tablo",
          "basliklar": ["Yöntem", "Dayandığı Fark", "Nerede Kullanılır?"],
          "oranlar": [0.24, 0.30, 0.46],
@@ -258,7 +273,7 @@ NOT = {
             "4 g NaOH ile hazırlanan 500 mL çözeltinin molaritesi kaçtır?",
             "0,5 molar 2 litre çözeltide kaç mol çözünen vardır?",
             "Molarite hesabında hacmin çözeltiye ait olmasının nedeni nedir?",
-            "M1·V1 = M2·V2 bağıntısı neden geçerlidir?",
+            "M_1·V_1 = M_2·V_2 bağıntısı neden geçerlidir?",
             "Bir çözeltiye su eklenirse derişim nasıl değişir?",
             "Bir çözeltiden su buharlaştırılırsa derişim nasıl değişir?",
             "200 mL çözeltiden 50 mL alınırsa alınan kısmın derişimi ne olur?",
@@ -285,7 +300,7 @@ NOT = {
             "**Saf maddenin** erime ve kaynama noktası **belirli ve sabittir**. **Karışımın** ise bir **aralıkta** gerçekleşir, sabit değildir.",
             "Maddenin **karışım** olduğunu gösterir; hâl değişimi boyunca sıcaklık sabit kalmamıştır.",
             "**Element** tek cins atomdan, **bileşik** farklı cins atomların belirli oranlarda kimyasal bağla birleşmesinden oluşur.",
-            "**Su (H2O)**: hidrojen yanıcı, oksijen yakıcıdır; ama su yangın söndürür. Bileşik yeni ve bağımsız bir maddedir.",
+            "**Su (H_2O)**: hidrojen yanıcı, oksijen yakıcıdır; ama su yangın söndürür. Bileşik yeni ve bağımsız bir maddedir.",
             "**Tuzlu su**: tuz hâlâ tuzlu, su hâlâ sudur; ikisi de kendi özelliğini korur ve fiziksel yolla ayrılabilir.",
             "Bileşimi **yere ve yüksekliğe göre değişir**, bileşenleri **kimyasal bağ kurmamıştır** ve **fiziksel yolla** ayrılabilir.",
             "**Karışımdır** (alaşım). Demir ve karbon kimyasal bağ kurmamıştır, oranları değişebilir; homojen bir karışımdır.",
@@ -310,11 +325,11 @@ NOT = {
             "Hacim arttığı için derişim **azalır** (çözelti seyrelir).",
             "Hacim azaldığı için derişim **artar**.",
             "**Değişmez**, aynı kalır. Çözelti homojendir; yalnızca alınan kısmın **mol sayısı ve kütlesi** azalır.",
-            "M1·V1 = M2·V2 → 0,4 × 100 = M2 × 400 → M2 = **0,1 M**.",
+            "M_1·V_1 = M_2·V_2 → 0,4 × 100 = M_2 × 400 → M_2 = **0,1 M**.",
             "Sıcaklık artışı **katıların** çözünürlüğünü genellikle **artırır**, **gazların** çözünürlüğünü **azaltır**.",
             "Yalnızca **gazların sıvıdaki** çözünürlüğünü etkiler; basınç arttıkça çözünürlük **artar**.",
             "**Gazların çözünürlüğü sıcaklık düştükçe artar**; soğuk gazozda karbondioksit daha çok çözünmüş hâlde kalır.",
-            "Kapak açılınca şişe içindeki **basınç düşer**; basınç azalınca gazın çözünürlüğü de azalır ve CO2 kabarcıklar hâlinde çıkar.",
+            "Kapak açılınca şişe içindeki **basınç düşer**; basınç azalınca gazın çözünürlüğü de azalır ve CO_2 kabarcıklar hâlinde çıkar.",
             "**Çözünme hızını** artırır. Çözünürlük (en fazla ne kadar çözüneceği) değişmez.",
             "Katının **yüzey alanını artırır**; çözücüyle temas eden yüzey büyüdüğü için çözünme **hızlanır**, ama çözünürlük değişmez.",
             "İkisi de **tanecik boyutu** farkına dayanır. **Eleme** katı-katı karışımlarda, **süzme** katı-sıvı karışımlarda kullanılır.",

@@ -61,6 +61,21 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 2, "baslik": "Fiziksel Büyüklükler ve Birimler"},
+        {"tur": "gorsel", "baslik": "Şema 1 — Yedi temel büyüklük ve birimleri",
+         "aciklama": "**Temel büyüklükler** başka büyüklüklerden türetilemez; "
+                     "geri kalan her şey (hız, kuvvet, enerji, basınç) bunların "
+                     "birleşiminden doğar ve **türetilmiş büyüklük** adını alır. "
+                     "TYT'de en sık sorulan ayrım budur.",
+         "ciz": S.kartlar([
+             ("Uzunluk", "metre — **m**"),
+             ("Kütle", "kilogram — **kg**"),
+             ("Zaman", "saniye — **s**"),
+             ("Akım şiddeti", "amper — **A**"),
+             ("Sıcaklık", "kelvin — **K**"),
+             ("Madde miktarı", "mol — **mol**"),
+             ("Işık şiddeti", "kandela — **cd**"),
+             ("Türetilmiş örnek", "hız **m/s**\nkuvvet **kg·m/s²**"),
+         ], sutun=4)},
         {"tur": "tablo",
          "basliklar": ["Temel Büyüklük", "Sembol", "SI Birimi", "Birim Sembolü"],
          "oranlar": [0.30, 0.18, 0.28, 0.24],
@@ -97,7 +112,7 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 3, "baslik": "Skaler ve Vektörel Büyüklükler"},
-        {"tur": "gorsel", "baslik": "Şema 1 — İki büyüklük türü",
+        {"tur": "gorsel", "baslik": "Şema 2 — İki büyüklük türü",
          "aciklama": "Ayırt edici tek soru: **yön bilgisi olmadan büyüklük anlamlı "
                      "mı?** Anlamlıysa skaler, değilse vektöreldir.",
          "ciz": S.karsilastirma(
@@ -134,7 +149,7 @@ NOT = {
             "**Zıt yönlü** iki vektörün bileşkesi: büyüklükler **çıkarılır**, yön "
             "**büyük olanın yönüdür**.",
             "**Dik (90°) iki vektörün** bileşkesi **Pisagor** ile bulunur: "
-            "R = kök(A² + B²).",
+            "R = √(A² + B²).",
             "**Bir vektörün zıt işaretlisi**, aynı büyüklükte ve **ters yönlüdür**; "
             "toplamları **sıfır**dır.",
         ]},
@@ -164,8 +179,8 @@ NOT = {
                  "bileşkesinin büyüklüğü kaçtır?",
          "adimlar": [
              "Dik vektörlerde **Pisagor bağıntısı** kullanılır.",
-             "R = kök(3² + 4²) = kök(9 + 16).",
-             "R = kök(25).",
+             "R = √(3² + 4²) = √(9 + 16).",
+             "R = √(25).",
          ],
          "sonuc": "Bileşke 5 birimdir."},
         {"tur": "taktik", "baslik": "Vektör Sorusunu Tanıma", "govde":
@@ -283,13 +298,13 @@ NOT = {
             "**Yönlü bir okla** gösterilir. Okun **uzunluğu** büyüklüğü, **yönü** vektörün yönünü belirtir.",
             "Büyüklükleri **toplanır**, bileşkenin yönü **aynı kalır**.",
             "Büyüklükleri **çıkarılır**; bileşkenin yönü **büyük olan vektörün yönüdür**.",
-            "**Pisagor bağıntısı**: R = kök(A² + B²).",
+            "**Pisagor bağıntısı**: R = √(A² + B²).",
             "**|A − B| ≤ R ≤ A + B.**",
             "En büyük 8 + 5 = 13, en küçük |8 − 5| = 3 → **3 ile 13 arasında**.",
             "En büyük 12, en küçük 0 → **0 ile 12 arasında**.",
             "**Büyüklüklerinin eşit ve yönlerinin zıt** olduğu söylenebilir.",
-            "R = kök(36 + 64) = kök(100) = **10 birim**.",
-            "R = kök(25 + 144) = kök(169) = **13 birim**.",
+            "R = √(36 + 64) = √(100) = **10 birim**.",
+            "R = √(25 + 144) = √(169) = **13 birim**.",
             "**Aynı büyüklükte, ters yönlü** vektördür. Toplamları **sıfırdır**.",
             "Vektörler uç uca eklendiğinde **kapalı bir üçgen** oluşturur; başlangıç ve bitiş noktası çakışır.",
             "Bir büyüklüğü, **birim olarak seçilen aynı türden** bir büyüklükle **karşılaştırma** işlemidir.",

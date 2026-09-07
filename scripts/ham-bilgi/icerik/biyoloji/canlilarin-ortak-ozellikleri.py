@@ -113,7 +113,7 @@ NOT = {
              ["Oksijen", "Gerekli", "Gerekmez"],
              ["Yer", "Sitoplazma + **mitokondri**", "Yalnızca **sitoplazma**"],
              ["ATP verimi", "Yüksek (glikoz başına ~30-32 ATP)", "Düşük (glikoz başına **2 ATP**)"],
-             ["Son ürün", "CO2 + H2O", "Etil alkol + CO2 **ya da** laktik asit"],
+             ["Son ürün", "CO_2 + H_2O", "Etil alkol + CO_2 **ya da** laktik asit"],
              ["Glikoz tam parçalanır mı", "Evet", "Hayır — ara ürün kalır"],
              ["Örnek", "İnsan, bitki, çoğu canlı", "Maya (alkol), laktik asit bakterisi, "
               "oksijensiz kalan kas hücresi"],
@@ -122,7 +122,7 @@ NOT = {
          "govde": "Çok yapılan hata budur. Bitki **her zaman** solunum yapar. Işık "
                   "varken **aynı anda** fotosentez de yapar. Gündüz fotosentez hızı "
                   "solunum hızından yüksek olduğu için bitki dışarıya net oksijen verir; "
-                  "gece fotosentez durduğu için net CO2 verir. Solunumun kendisi hiç "
+                  "gece fotosentez durduğu için net CO_2 verir. Solunumun kendisi hiç "
                   "durmaz."},
         {"tur": "cikmis", "baslik": "Klasik soru kalıbı", "govde":
             "'Bir bitkinin ışıksız ortamda bir süre bekletilmesi hangi olayı durdurur?' "
@@ -153,7 +153,7 @@ NOT = {
             "fazla suyu atar), difüzyon.",
             "**Bitkilerde**: yaprak dökümü, terleme (stoma), damlama, öz suyunda depolama. "
             "Bitkide **boşaltım organı yoktur**.",
-            "**İnsanda**: böbrek (üre), akciğer (CO2 ve su buharı), deri (ter), "
+            "**İnsanda**: böbrek (üre), akciğer (CO_2 ve su buharı), deri (ter), "
             "karaciğer (amonyağı üreye çevirir).",
             "Azotlu boşaltım ürünü, canlının yaşadığı ortama göre değişir: "
             "**amonyak** (bol su gerektirir, balıklar), **üre** (memeliler), "
@@ -162,7 +162,7 @@ NOT = {
         {"tur": "tuzak", "baslik": "Dışkı Boşaltım Ürünü Değildir", "govde":
             "Dışkı (feçes), **sindirilemeyen** besin artığıdır; hiç hücreye girmemiştir, "
             "metabolizma sonucu oluşmamıştır. Bu yüzden **boşaltım değil, atık "
-            "uzaklaştırmadır**. Boşaltım ürünü hücrede üretilir: üre, CO2, ürik asit."},
+            "uzaklaştırmadır**. Boşaltım ürünü hücrede üretilir: üre, CO_2, ürik asit."},
 
         {"tur": "altbolum", "baslik": "F. Metabolizma"},
         {"tur": "tanim", "kavram": "Metabolizma",

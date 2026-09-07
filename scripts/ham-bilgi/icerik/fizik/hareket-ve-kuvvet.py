@@ -71,24 +71,24 @@ NOT = {
              "Düzgün Hızlanan Hareket",
              ["Hız **düzgün artar/azalır**", "**İvme sabit** ve sıfırdan farklı",
               "Net kuvvet **sabit**", "Eşit zamanda artan yol",
-              "x = v0·t + a·t²/2"],
+              "x = v_0·t + a·t²/2"],
              "Ortak",
              ["Doğrusal yörünge", "İvme sabittir (biri sıfır)",
               "Grafiklerle incelenir"])},
         {"tur": "formul",
          "baslik": "Düzgün hızlanan hareket bağıntıları",
-         "ifade": "v = v0 + a·t\nx = v0·t + (a·t²) / 2\nv² = v0² + 2·a·x",
+         "ifade": "v = v_0 + a·t\nx = v_0·t + (a·t²) / 2\nv² = v_0² + 2·a·x",
          "terimler": [
-             ("v0", "**İlk hız** (m/s)"),
+             ("v_0", "**İlk hız** (m/s)"),
              ("v", "**Son hız** (m/s)"),
              ("a", "**İvme** (m/s²)"),
              ("x", "**Yer değiştirme** (m)"),
              ("t", "**Zaman** (s)"),
          ],
-         "not": "**Zaman verilmemişse** üçüncü bağıntıyı (v² = v0² + 2ax) kullan; "
+         "not": "**Zaman verilmemişse** üçüncü bağıntıyı (v² = v_0² + 2ax) kullan; "
                 "bu, soru çözümünde en çok zaman kazandıran seçimdir."},
         {"tur": "maddeler", "isaret": "nokta", "ogeler": [
-            "**İlk hızsız (v0 = 0) hareket** için bağıntılar sadeleşir: "
+            "**İlk hızsız (v_0 = 0) hareket** için bağıntılar sadeleşir: "
             "**v = a·t**, **x = a·t²/2**, **v² = 2·a·x**.",
             "İlk hızsız düzgün hızlanan harekette, ardışık eşit zaman aralıklarında "
             "alınan yollar **1 : 3 : 5 : 7 ...** oranındadır.",
@@ -96,6 +96,41 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 3, "baslik": "Hareket Grafikleri"},
+        {"tur": "gorsel", "baslik": "Şema 2 — Düzgün doğrusal hareketin üç grafiği",
+         "aciklama": "Hız sabit olduğu için **konum grafiği doğru**dur ve eğimi hızı "
+                     "verir; **hız grafiği yatay**dır, altındaki alan yolu verir; "
+                     "**ivme sıfır**dır. Üç grafik aynı hareketi üç ayrı pencereden "
+                     "gösterir — birini görüp diğer ikisini kurabilmelisin.",
+         "ciz": S.grafik_seti([
+             ("Konum – Zaman", "t", "x",
+              [("", [(0, 0.08), (0.94, 0.90)], MARKA)],
+              [(0.10, 0.76, "Eğim = **hız**")]),
+             ("Hız – Zaman", "t", "v",
+              [("", [(0, 0.60), (0.94, 0.60)], BILGI)],
+              [(0.20, 0.24, "Alan = **yol**")],
+              [(0, S.ZEMIN_MAVI)]),
+             ("İvme – Zaman", "t", "a",
+              [("", [(0, 0.03), (0.94, 0.03)], TEHLIKE)],
+              [(0.18, 0.30, "**a = 0**")]),
+         ], ortak_not="Düzgün doğrusal hareket:  v sabit  ·  a = 0  ·  x = v · t")},
+        {"tur": "gorsel", "baslik": "Şema 3 — Düzgün hızlanan hareketin üç grafiği",
+         "aciklama": "Sabit ivmede **konum grafiği paraboldür** (giderek dikleşir), "
+                     "**hız grafiği eğik doğrudur** (eğimi ivmeyi verir), **ivme "
+                     "grafiği yatay doğrudur**. Yavaşlayan harekette hız doğrusu bu "
+                     "kez aşağı doğru iner, ivme doğrusu eksenin altına düşer.",
+         "ciz": S.grafik_seti([
+             ("Konum – Zaman", "t", "x",
+              [("", [(0, 0.02), (0.24, 0.07), (0.47, 0.24), (0.71, 0.53),
+                     (0.94, 0.92)], MARKA)],
+              [(0.10, 0.62, "Parabol")]),
+             ("Hız – Zaman", "t", "v",
+              [("", [(0, 0.02), (0.94, 0.88)], BILGI)],
+              [(0.04, 0.86, "Eğim = **ivme**")],
+              [(0, S.ZEMIN_MAVI)]),
+             ("İvme – Zaman", "t", "a",
+              [("", [(0, 0.55), (0.94, 0.55)], BASARI)],
+              [(0.16, 0.24, "**a sabit**")]),
+         ], ortak_not="Düzgün hızlanan hareket:  a sabit  ·  v = v_0 + a·t  ·  x = v_0·t + a·t²/2")},
         {"tur": "tablo",
          "basliklar": ["Grafik", "Eğim Neyi Verir?", "Altındaki Alan Neyi Verir?"],
          "oranlar": [0.30, 0.34, 0.36],
@@ -104,7 +139,7 @@ NOT = {
              ["**Hız – Zaman**", "**İvme**", "**Yer değiştirme**"],
              ["**İvme – Zaman**", "Anlamsızdır", "**Hız değişimi (Δv)**"],
          ]},
-        {"tur": "gorsel", "baslik": "Şema 2 — Hız-zaman grafiğinin okunması",
+        {"tur": "gorsel", "baslik": "Şema 4 — Hız-zaman grafiğinin okunması",
          "aciklama": "**Yatay doğru** → sabit hız (ivme sıfır). **Yükselen doğru** "
                      "→ hızlanma. **Alçalan doğru** → yavaşlama. "
                      "Eksenin **altındaki alan negatif** yer değiştirmedir.",
@@ -112,7 +147,8 @@ NOT = {
              ("Hızlanıyor", [(0, 0.10), (0.30, 0.75)], MARKA),
              ("Sabit hız", [(0.30, 0.75), (0.62, 0.75)], BILGI),
              ("Yavaşlıyor", [(0.62, 0.75), (0.95, 0.08)], TEHLIKE),
-         ], gosterge="sol-ust")},
+         ], gosterge="sol-ust", dolgular=[(1, S.ZEMIN_MAVI)],
+            kilavuzlar=[(0.62, 0.75)])},
         {"tur": "taktik", "baslik": "Grafik Sorusunu Çözme Sırası", "govde":
             "Grafik sorularında panik yapma; şu sırayı izle:",
          "ogeler": [
@@ -158,9 +194,9 @@ NOT = {
          ]},
         {"tur": "formul",
          "baslik": "Dinamiğin temel ilkesi",
-         "ifade": "Fnet = m · a",
+         "ifade": "F_(net) = m · a",
          "terimler": [
-             ("Fnet", "**Net (bileşke) kuvvet** — newton (N)"),
+             ("F_(net)", "**Net (bileşke) kuvvet** — newton (N)"),
              ("m", "**Kütle** (kg)"),
              ("a", "**İvme** (m/s²) — **her zaman net kuvvetle aynı yönlüdür**"),
          ],
@@ -212,16 +248,32 @@ NOT = {
          "adimlar": [
              "Normal kuvveti bul: yatay zeminde N = G = m·g = 4 × 10 = **40 N**.",
              "Sürtünme kuvvetini bul: Fs = k · N = 0,25 × 40 = **10 N**.",
-             "Net kuvveti bul: Fnet = F − Fs = 20 − 10 = **10 N**.",
-             "İvmeyi bul: a = Fnet / m = 10 / 4.",
+             "Net kuvveti bul: F_(net) = F − Fs = 20 − 10 = **10 N**.",
+             "İvmeyi bul: a = F_(net) / m = 10 / 4.",
          ],
          "sonuc": "Cismin ivmesi 2,5 m/s²'dir."},
 
         # ==========================================================
         {"tur": "bolum", "numara": 6, "baslik": "Serbest Düşme"},
+        {"tur": "gorsel", "baslik": "Şema 5 — Serbest düşmenin üç grafiği",
+         "aciklama": "Serbest düşme, **ilk hızı sıfır olan düzgün hızlanan "
+                     "hareket**tir. Bu yüzden grafikleri Şema 3 ile birebir aynıdır; "
+                     "tek fark ivmenin yerçekimi ivmesi **g = 10 m/s²** olmasıdır.",
+         "ciz": S.grafik_seti([
+             ("Yol – Zaman", "t", "h",
+              [("", [(0, 0.02), (0.24, 0.07), (0.47, 0.24), (0.71, 0.53),
+                     (0.94, 0.92)], MARKA)],
+              [(0.06, 0.66, "h = **g·t²/2**")]),
+             ("Hız – Zaman", "t", "v",
+              [("", [(0, 0.02), (0.94, 0.88)], BILGI)],
+              [(0.06, 0.72, "v = **g·t**")]),
+             ("İvme – Zaman", "t", "a",
+              [("", [(0, 0.55), (0.94, 0.55)], TEHLIKE)],
+              [(0.10, 0.24, "**g = 10 m/s²**")]),
+         ], ortak_not="Kütle grafiklerin hiçbirinde yer almaz — bu yüzden ağır cisim daha hızlı düşmez.")},
         {"tur": "maddeler", "ogeler": [
             "**Serbest düşme**: Cismin yalnızca **yer çekimi etkisinde**, ilk hızsız "
-            "(v0 = 0) düşmesidir. **Sürtünme (hava direnci) yoktur**.",
+            "(v_0 = 0) düşmesidir. **Sürtünme (hava direnci) yoktur**.",
             "İvmesi **yer çekimi ivmesidir**: **g ≈ 10 m/s²** (yaklaşık 9,8).",
             "**Serbest düşmede cismin kütlesi düşme süresini ETKİLEMEZ.** "
             "Boşlukta tüy ile demir aynı anda düşer.",
@@ -249,7 +301,7 @@ NOT = {
             "**Hız-zaman grafiğinde: eğim = ivme, alan = yer değiştirme.**",
             "**Konum-zaman grafiğinde: eğim = hız.**",
             "İvme ile hız **aynı yönlüyse hızlanma**, **zıt yönlüyse yavaşlama**.",
-            "**Fnet = m·a**; net kuvvet sıfırsa cisim **durur ya da sabit hızla gider**.",
+            "**F_(net) = m·a**; net kuvvet sıfırsa cisim **durur ya da sabit hızla gider**.",
             "**Etki-tepki farklı cisimlere** etki eder, birbirini dengelemez.",
             "**Fs = k·N**; sürtünme **yüzey alanına ve hıza bağlı değildir**.",
             "Serbest düşmede **kütle etkisizdir**; **h = g·t²/2**.",
@@ -262,7 +314,7 @@ NOT = {
         "giris":
             "Grafik sorularında **mutlaka eksenleri oku**. Hesap sorularında "
             "bilinen ve istenen büyüklükleri listele, sonra uygun bağıntıyı seç. "
-            "Zaman verilmemişse **v² = v0² + 2ax** aklına gelsin.",
+            "Zaman verilmemişse **v² = v_0² + 2ax** aklına gelsin.",
         "satir_sayisi": 2,
         "sorular": [
             "Konum, yol ve yer değiştirmeyi tanımlayıp skaler-vektörel ayrımını yapınız.",
@@ -327,8 +379,8 @@ NOT = {
             "**Hayır.** Cisim negatif yönde hızlanıyorsa ivme negatiftir ama cisim hızlanmaktadır. Karar için **hız ve ivmenin işaretleri karşılaştırılır**.",
             "**Hız sabittir**, **ivme sıfırdır**, **net kuvvet sıfırdır** (eşit zamanlarda eşit yol alınır).",
             "**Hız düzgün değişir**, **ivme sabittir ve sıfırdan farklıdır**, **net kuvvet sabittir**.",
-            "**v = v0 + a·t**, **x = v0·t + a·t²/2**, **v² = v0² + 2·a·x**.",
-            "**v² = v0² + 2·a·x** bağıntısı; içinde zaman bulunmaz.",
+            "**v = v_0 + a·t**, **x = v_0·t + a·t²/2**, **v² = v_0² + 2·a·x**.",
+            "**v² = v_0² + 2·a·x** bağıntısı; içinde zaman bulunmaz.",
             "**v = a·t**, **x = a·t²/2**, **v² = 2·a·x**.",
             "**1 : 3 : 5 : 7 ...** (tek sayılar) oranındadır.",
             "v = a·t = 2 × 5 = **10 m/s**.",
@@ -345,7 +397,7 @@ NOT = {
             "Net kuvvet sıfırsa cisim **duruyorsa durmaya**, hareket ediyorsa **sabit hızla düzgün doğrusal hareketine** devam eder.",
             "**Kütle.**",
             "**Birinci yasa (eylemsizlik).** Yolcu hareket durumunu korumak ister; otobüs ileri gider, yolcu geride kalır.",
-            "**Fnet = m · a.**",
+            "**F_(net) = m · a.**",
             "İvme **kuvvetle doğru orantılı**, **kütleyle ters orantılıdır**.",
             "**Boş arabanın ivmesi büyüktür**; kütlesi küçük olduğu için aynı kuvvet daha büyük ivme kazandırır.",
             "Her etkiye **eşit büyüklükte ve zıt yönlü** bir tepki vardır; bu kuvvetler **farklı cisimlere** etki eder.",
@@ -363,7 +415,7 @@ NOT = {
             "**Yağlama**, **rulman/bilye kullanma**, **yüzeyi cilalama** (hava yastığı da yazılabilir).",
             "**Yürüyebilmek**, **frenleme**, **çivinin tahtada durması** (yazı yazabilmek de yazılabilir).",
             "**Aşınma**, **ısınma**, **enerji kaybı (verim düşüşü)**.",
-            "N = 4 × 10 = 40 N. Fs = 0,25 × 40 = 10 N. Fnet = 20 − 10 = 10 N. a = 10/4 = **2,5 m/s²**.",
+            "N = 4 × 10 = 40 N. Fs = 0,25 × 40 = 10 N. F_(net) = 20 − 10 = 10 N. a = 10/4 = **2,5 m/s²**.",
             "Cismin yalnızca **yer çekimi etkisinde**, **ilk hızsız** ve **hava direnci olmadan** düşmesidir.",
             "**Etkilemez.** Serbest düşmede ivme herkes için **g**'dir; bağıntılarda kütle yer almaz. Boşlukta tüy ve demir aynı anda düşer.",
             "45 = 10·t²/2 → 45 = 5t² → t² = 9 → t = **3 s**.",

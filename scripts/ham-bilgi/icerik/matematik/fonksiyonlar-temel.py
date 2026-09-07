@@ -29,6 +29,24 @@ NOT = {
     "bloklar": [
         # ==========================================================
         {"tur": "bolum", "numara": 1, "baslik": "Fonksiyon Kavramı"},
+        {"tur": "gorsel", "baslik": "Şema 1 — Ne zaman fonksiyondur, ne zaman değildir?",
+         "aciklama": "Fonksiyon olmanın iki koşulu vardır ve **ikisi de tanım "
+                     "kümesiyle** ilgilidir. Değer kümesinde açıkta eleman kalması "
+                     "ya da bir elemana iki ok gelmesi fonksiyonluğu bozmaz.",
+         "ciz": S.karsilastirma(
+             "FONKSİYONDUR",
+             ["Tanım kümesinin **her** elemanı eşleşmiş",
+              "Her eleman **yalnızca bir** görüntüye gitmiş",
+              "Değer kümesinde **boşta eleman kalabilir**",
+              "İki farklı eleman **aynı yere** gidebilir"],
+             "FONKSİYON DEĞİLDİR",
+             ["Tanım kümesinde **boşta eleman** var",
+              "Bir elemandan **iki ok** çıkıyor",
+              "Bu iki durum dışında bozulmaz"],
+             "Grafikte sınama",
+             ["**Düşey doğru testi**",
+              "Grafiğe çizilen her düşey doğru",
+              "grafiği **en çok bir** noktada kesmeli"])},
         {"tur": "tanim", "kavram": "Fonksiyon",
          "aciklama": "A kümesinden B kümesine tanımlı bir bağıntının fonksiyon "
                      "olması için **A'daki HER elemanın B'de TEK bir görüntüsü** "
@@ -145,7 +163,7 @@ NOT = {
          ],
          "not": "**a = 0 olursa** f(x) = b olur; bu bir **sabit fonksiyondur** "
                 "ve grafiği **x eksenine paralel** bir doğrudur."},
-        {"tur": "gorsel", "baslik": "Şema 1 — Eğimin grafiğe etkisi",
+        {"tur": "gorsel", "baslik": "Şema 2 — Eğimin grafiğe etkisi",
          "aciklama": "**Eğim işareti** doğrunun yönünü, **b değeri** y eksenini "
                      "kestiği yeri belirler.",
          "ciz": S.grafik("x", "f(x)", [
@@ -155,9 +173,9 @@ NOT = {
          ], gosterge="sag-ust")},
         {"tur": "maddeler", "isaret": "nokta", "ogeler": [
             "**İki noktadan geçen doğrunun eğimi**: "
-            "**a = (y2 − y1) / (x2 − x1)**.",
+            "**a = (y_2 − y_1) / (x_2 − x_1)**.",
             "**Paralel doğruların eğimleri eşittir.**",
-            "**Dik doğruların eğimleri çarpımı −1'dir**: a1 · a2 = −1.",
+            "**Dik doğruların eğimleri çarpımı −1'dir**: a_1 · a_2 = −1.",
         ]},
         {"tur": "cozum",
          "baslik": "Grafikten Fonksiyon Bulma",
@@ -342,11 +360,11 @@ NOT = {
             "**Artandır.**",
             "**Sabit fonksiyon** olur; grafiği x eksenine paralel bir doğrudur.",
             "2x − 8 = 0 → **x = 4**.",
-            "**a = (y2 − y1) / (x2 − x1).**",
+            "**a = (y_2 − y_1) / (x_2 − x_1).**",
             "(11 − 5)/(3 − 1) = **3**.",
             "5 = 3(1) + b → b = 2 → **f(x) = 3x + 2**.",
             "**Eşittirler.**",
-            "**Çarpımları −1'dir** (a1 · a2 = −1).",
+            "**Çarpımları −1'dir** (a_1 · a_2 = −1).",
             "**−1/2.**",
             "**(f o g)(x) = f(g(x))** — g'nin çıktısı f'ye girdi olur.",
             "**g** (içteki) önce uygulanır.",

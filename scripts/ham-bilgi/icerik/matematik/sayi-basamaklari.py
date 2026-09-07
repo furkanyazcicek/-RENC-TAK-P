@@ -115,6 +115,26 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 3, "baslik": "En Büyük ve En Küçük Sayı"},
+        {"tur": "gorsel", "baslik": "Şema 2 — En büyük ve en küçük sayı nasıl kurulur?",
+         "aciklama": "Kural basittir: **büyük sayı istiyorsan büyük rakamı sola, "
+                     "küçük sayı istiyorsan küçük rakamı sola** yazarsın. Tek "
+                     "istisna, **en soldaki basamağın 0 olamaması**dır — bu, en "
+                     "çok atlanan ayrıntıdır.",
+         "ciz": S.karsilastirma(
+             "EN BÜYÜK sayı",
+             ["Rakamları **büyükten küçüğe** diz",
+              "En büyük rakam **en sola**",
+              "Rakamlar farklı olmalıysa **tekrar etme**",
+              "Örnek (4 basamaklı): **9876**"],
+             "EN KÜÇÜK sayı",
+             ["Rakamları **küçükten büyüğe** diz",
+              "**İlk basamak 0 olamaz**",
+              "0 varsa **ikinci** basamağa konur",
+              "Örnek (4 basamaklı): **1023**"],
+             "Sık sorulan ek koşullar",
+             ["\"Rakamları farklı\" → tekrar yok",
+              "\"Çift sayı\" → son basamak çift",
+              "\"3'e bölünen\" → rakam toplamı 3'ün katı"])},
         {"tur": "maddeler", "ogeler": [
             "**En büyük sayıyı** oluşturmak için rakamlar **soldan sağa "
             "büyükten küçüğe** dizilir.",

@@ -110,8 +110,8 @@ NOT = {
                  "**4 g/cm³** olan **20 cm³** sıvı karıştırılıyor. Karışımın öz "
                  "kütlesi kaçtır? (Hacimler toplanabilir.)",
          "adimlar": [
-             "Birinci sıvının kütlesi: m1 = d1 × V1 = 2 × 30 = **60 g**.",
-             "İkinci sıvının kütlesi: m2 = d2 × V2 = 4 × 20 = **80 g**.",
+             "Birinci sıvının kütlesi: m_1 = d_1 × V_1 = 2 × 30 = **60 g**.",
+             "İkinci sıvının kütlesi: m_2 = d_2 × V_2 = 4 × 20 = **80 g**.",
              "Toplam kütle: 60 + 80 = **140 g**.",
              "Toplam hacim: 30 + 20 = **50 cm³**.",
              "Karışımın öz kütlesi: d = 140 / 50.",
@@ -123,8 +123,8 @@ NOT = {
                  "**8 g/cm³** olan **40 g** sıvı karıştırılıyor. Karışımın öz "
                  "kütlesi kaçtır?",
          "adimlar": [
-             "Birinci sıvının hacmi: V1 = m1 / d1 = 40 / 2 = **20 cm³**.",
-             "İkinci sıvının hacmi: V2 = m2 / d2 = 40 / 8 = **5 cm³**.",
+             "Birinci sıvının hacmi: V_1 = m_1 / d_1 = 40 / 2 = **20 cm³**.",
+             "İkinci sıvının hacmi: V_2 = m_2 / d_2 = 40 / 8 = **5 cm³**.",
              "Toplam kütle: 40 + 40 = **80 g**. Toplam hacim: 20 + 5 = **25 cm³**.",
              "d = 80 / 25.",
          ],
@@ -303,8 +303,8 @@ NOT = {
             "d = 60/20 = **3 g/cm³**.",
             "m = d × V = 2,5 × 40 = **100 g**.",
             "V = m/d = 100/4 = **25 cm³**.",
-            "m1 = 60 g, m2 = 80 g → toplam 140 g. Hacim 50 cm³ → d = 140/50 = **2,8 g/cm³**.",
-            "V1 = 20 cm³, V2 = 5 cm³ → toplam 25 cm³. Kütle 80 g → d = 80/25 = **3,2 g/cm³**.",
+            "m_1 = 60 g, m_2 = 80 g → toplam 140 g. Hacim 50 cm³ → d = 140/50 = **2,8 g/cm³**.",
+            "V_1 = 20 cm³, V_2 = 5 cm³ → toplam 25 cm³. Kütle 80 g → d = 80/25 = **3,2 g/cm³**.",
             "Öz kütle **kütle ile hacmin oranıdır**; iki oranın ortalaması, toplamların oranına eşit değildir. Her zaman **toplam kütle / toplam hacim** hesaplanmalıdır.",
             "**Evet, doğru sonuç verir.** Hacimler eşit olduğunda öz kütlelerin aritmetik ortalaması, toplam kütle/toplam hacim sonucuna eşit çıkar.",
             "Katı bir cismin dış kuvvetlere karşı **şeklini koruma direncidir**.",

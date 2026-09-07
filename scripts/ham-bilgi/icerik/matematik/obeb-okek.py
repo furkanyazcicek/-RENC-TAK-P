@@ -120,6 +120,28 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 4, "baslik": "Problem Tipleri"},
+        {"tur": "gorsel", "baslik": "Şema 2 — Soru OBEB mi OKEK mi istiyor?",
+         "aciklama": "Problemi çözmeden önce yapılacak tek şey, sorunun **bölme mi "
+                     "birleştirme mi** istediğini anlamaktır. Bölüyorsan OBEB, "
+                     "biriktiriyor ya da tekrar ettiriyorsan OKEK.",
+         "ciz": S.karsilastirma(
+             "OBEB istiyor (bölme)",
+             ["\"**En büyük** parçalara ayırma\"",
+              "\"Hiç artmadan **eşit** bölme\"",
+              "\"En **az sayıda** parça\"",
+              "Kumaş, tahta, arsa parçalama",
+              "Kalan varsa **sayıdan çıkarılır**"],
+             "OKEK istiyor (birleştirme)",
+             ["\"**En az kaç** tanesi gerekir\"",
+              "\"**Yeniden birlikte** ne zaman\"",
+              "\"En **küçük** kare/küp\"",
+              "Zil, tur, çalışma dönüşü",
+              "Kalan varsa **OKEK'e eklenir**"],
+             "Her ikisinde de",
+             ["Önce **asal çarpanlara** ayır",
+              "OBEB: **ortak olanlar, küçük üs**",
+              "OKEK: **hepsi, büyük üs**",
+              "**OBEB · OKEK = a · b**"])},
         {"tur": "taktik", "baslik": "OBEB mi OKEK mi? İki Soruyla Ayır", "govde":
             "Bu konudaki bütün problemler şu iki sorunun cevabına göre ayrılır:",
          "ogeler": [

@@ -62,6 +62,21 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 2, "baslik": "Aralık Gösterimi"},
+        {"tur": "gorsel", "baslik": "Şema 1 — Dört aralık türü sayı doğrusunda",
+         "aciklama": "**İçi dolu daire** uç noktanın kümeye **dâhil** olduğunu "
+                     "(≤ ve ≥), **içi boş daire** dâhil **olmadığını** (< ve >) "
+                     "gösterir. Sonsuzun ucu her zaman açıktır — sonsuz bir sayı "
+                     "değildir, ona ulaşılamaz.",
+         "ciz": S.sayi_dogrusu(satirlar=[
+             ("(2, 5)", [(0.30, "2"), (0.70, "5")],
+              [(0.30, 0.70, "acik", S.MARKA, "2 < x < 5")]),
+             ("[2, 5]", [(0.30, "2"), (0.70, "5")],
+              [(0.30, 0.70, "kapali", S.BILGI, "2 ≤ x ≤ 5")]),
+             ("(2, 5]", [(0.30, "2"), (0.70, "5")],
+              [(0.30, 0.70, "acik-kapali", S.BASARI, "2 < x ≤ 5")]),
+             ("[2, ∞)", [(0.30, "2")],
+              [(0.30, 1.00, "kapali-yok", S.UYARI, "x ≥ 2")]),
+         ], alt_not="Köşeli parantez dâhil, normal parantez hariç demektir.")},
         {"tur": "tablo",
          "basliklar": ["Eşitsizlik", "Aralık Gösterimi", "Uç Nokta"],
          "oranlar": [0.28, 0.30, 0.42],
@@ -129,6 +144,17 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 4, "baslik": "İşaret Tablosu"},
+        {"tur": "gorsel", "baslik": "Şema 2 — İşaret tablosu kurma sırası",
+         "aciklama": "İşaret tablosu, çarpanlara ayrılmış bir ifadenin hangi "
+                     "aralıkta pozitif hangi aralıkta negatif olduğunu gösterir. "
+                     "Bu beş adımı **her seferinde aynı sırayla** uygularsan "
+                     "hata yapma ihtimalin çok azalır.",
+         "ciz": S.akis([
+             "Çarpanlara ayır", "Kökleri bul", "Doğruya diz",
+             "Sağdan işaretle", "Aralığı oku"],
+             ["ifadeyi çarpım\nhâline getir", "her çarpanı\nsıfır yapan x",
+              "küçükten büyüğe\nsırala", "baş katsayı +\nise en sağ +",
+              "istenen işaretin\naralığını yaz"])},
         {"tur": "taktik", "baslik": "İşaret Tablosu Kurma", "govde":
             "Çarpım ve bölüm biçimindeki eşitsizlikler işaret tablosuyla "
             "çözülür:",

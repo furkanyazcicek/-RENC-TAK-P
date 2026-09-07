@@ -1,5 +1,6 @@
 """TYT Fizik — Dalgalar (ham bilgi notu)."""
 
+from uretici import BASARI, BILGI, MARKA, TEHLIKE
 import semalar as S
 
 NOT = {
@@ -66,6 +67,18 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 2, "baslik": "Dalga Büyüklükleri"},
+        {"tur": "gorsel", "baslik": "Şema 2 — Dalga büyüklükleri tek şekil üzerinde",
+         "aciklama": "**Genlik**, denge doğrusundan tepeye olan **düşey** uzaklıktır; "
+                     "tepeden çukura olan uzaklık **iki genliktir**. **Dalga boyu**, "
+                     "ardışık iki tepe (ya da iki çukur) arasındaki **yatay** uzaklıktır. "
+                     "Genliği düşeyde, dalga boyunu yatayda aramak bu konudaki tek "
+                     "ezberdir.",
+         "ciz": S.grafik("Konum (x)", "Yer değiştirme (y)", [
+             ("Dalga şekli", [(0.0, 0.5), (0.016, 0.583), (0.031, 0.663), (0.047, 0.735), (0.063, 0.797), (0.078, 0.846), (0.094, 0.88), (0.11, 0.898), (0.125, 0.898), (0.141, 0.88), (0.157, 0.846), (0.172, 0.797), (0.188, 0.735), (0.204, 0.663), (0.219, 0.583), (0.235, 0.5), (0.251, 0.417), (0.266, 0.337), (0.282, 0.265), (0.298, 0.203), (0.313, 0.154), (0.329, 0.12), (0.345, 0.102), (0.36, 0.102), (0.376, 0.12), (0.392, 0.154), (0.407, 0.203), (0.423, 0.265), (0.439, 0.337), (0.454, 0.417), (0.47, 0.5), (0.486, 0.583), (0.501, 0.663), (0.517, 0.735), (0.533, 0.797), (0.548, 0.846), (0.564, 0.88), (0.58, 0.898), (0.595, 0.898), (0.611, 0.88), (0.627, 0.846), (0.642, 0.797), (0.658, 0.735), (0.674, 0.663), (0.689, 0.583), (0.705, 0.5), (0.721, 0.417), (0.736, 0.337), (0.752, 0.265), (0.768, 0.203), (0.783, 0.154), (0.799, 0.12), (0.815, 0.102), (0.83, 0.102), (0.846, 0.12), (0.862, 0.154), (0.877, 0.203), (0.893, 0.265), (0.909, 0.337), (0.924, 0.417), (0.94, 0.5)], MARKA),
+             ("Denge doğrusu", [(0, 0.5), (0.94, 0.5)], BILGI),
+         ], gosterge="sag-alt",
+            notlar=[(0.05, 0.72, "Genlik = **A**"), (0.30, 0.98, "Dalga boyu = **λ**")],
+            kilavuzlar=[(0.117, 0.90), (0.586, 0.90)])},
         {"tur": "maddeler", "ogeler": [
             "**Genlik (A)**: Denge konumundan en uzak noktaya olan uzaklıktır. "
             "Dalganın **enerjisini** belirler; seste **şiddeti (gürlüğü)**, "

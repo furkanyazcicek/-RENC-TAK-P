@@ -128,6 +128,19 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 5, "baslik": "Dihibrit Çaprazlama (İki Karakter)"},
+        {"tur": "gorsel", "baslik": "Şema 3 — Genotipten gamet çeşidine",
+         "aciklama": "Gamet çeşidi sayısı **2^n** ile bulunur; buradaki **n, melez "
+                     "(heterozigot) gen çifti sayısı**dır. Saf (homozigot) çiftler "
+                     "gamet çeşidini artırmaz — bu, dihibrit soruların en kısa "
+                     "yoludur.",
+         "ciz": S.agac("Genotipteki melez çift sayısı", [
+             ("0 melez → 2⁰ = 1 çeşit",
+              ["**AABB** → yalnız AB", "**aabb** → yalnız ab"]),
+             ("1 melez → 2¹ = 2 çeşit",
+              ["**AaBB** → AB, aB", "**AAbb** yok, **Aabb** → Ab, ab"]),
+             ("2 melez → 2² = 4 çeşit",
+              ["**AaBb** → AB, Ab, aB, ab", "Dihibrit çaprazlamanın temeli"]),
+         ])},
         {"tur": "maddeler", "ogeler": [
             "**AaBb × AaBb** çaprazlamasında fenotip oranı **9 : 3 : 3 : 1**'dir.",
             "**9** → iki karakter de baskın · **3** → birinci baskın, ikinci çekinik "
@@ -252,6 +265,18 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 8, "baslik": "Soy Ağacı Analizi"},
+        {"tur": "gorsel", "baslik": "Şema 4 — Soy ağacı sorusunu çözme sırası",
+         "aciklama": "Soy ağacında ilk aranan şey **anne-baba sağlam, çocuk hasta** "
+                     "olan bir aile bağıdır; bu bulunursa hastalık kesinlikle "
+                     "**çekiniktir**. Ardından hasta bireyin cinsiyetine bakılarak "
+                     "genin **X'e bağlı mı otozomal mı** olduğu ayrılır.",
+         "ciz": S.akis([
+             "Baskın mı çekinik mi?", "Otozomal mı X'e bağlı mı?",
+             "Genotipleri yaz", "Olasılığı hesapla"],
+             ["sağlam ana-babadan\nhasta çocuk → **çekinik**",
+              "hasta kız varsa babası\nda hasta olmalı → **X**",
+              "kesin bilinenlerden\nbaşla, geriye yürü",
+              "çaprazlamayı kur,\nistenen oranı bul"])},
         {"tur": "maddeler", "ogeler": [
             "**Kare = erkek**, **daire = dişi**. **Dolu şekil = hasta**, "
             "**boş şekil = sağlam**. Yatay çizgi evliliği, dikey çizgi çocukları "

@@ -58,26 +58,26 @@ NOT = {
         # ==========================================================
         {"tur": "bolum", "numara": 2, "baslik": "Hücre Döngüsü"},
         {"tur": "gorsel", "baslik": "Şema 1 — Hücre döngüsünün evreleri",
-         "aciklama": "Döngünün **en uzun** bölümü interfazdır (G1 + S + G2). "
+         "aciklama": "Döngünün **en uzun** bölümü interfazdır (G_1 + S + G_2). "
                      "Bölünmenin kendisi (M evresi) döngünün küçük bir kısmıdır.",
          "ciz": S.dongu(
-             ["G1 — büyüme ve\norganel üretimi", "S — DNA eşlenir",
-              "G2 — bölünme\nhazırlığı", "M — mitoz ve\nsitokinez"],
+             ["G_1 — büyüme ve\norganel üretimi", "S — DNA eşlenir",
+              "G_2 — bölünme\nhazırlığı", "M — mitoz ve\nsitokinez"],
              "Hücre Döngüsü")},
         {"tur": "maddeler", "ogeler": [
-            "**İnterfaz (G1 + S + G2)**: Hücrenin bölünmeye hazırlandığı, en uzun "
+            "**İnterfaz (G_1 + S + G_2)**: Hücrenin bölünmeye hazırlandığı, en uzun "
             "evre. Hücre **büyür**, organel sayısı **artar**, protein ve enzim "
             "sentezlenir, **ATP biriktirilir**.",
-            "**G1**: Hücre büyür, organeller çoğalır. **DNA henüz eşlenmemiştir**.",
+            "**G_1**: Hücre büyür, organeller çoğalır. **DNA henüz eşlenmemiştir**.",
             "**S (sentez)**: **DNA eşlenir (replikasyon)**. Bu evrenin sonunda her "
             "kromozom **iki kardeş kromatitli** hâle gelir; DNA miktarı **iki katına** "
             "çıkar ama **kromozom sayısı değişmez**.",
-            "**G2**: Bölünme için gerekli proteinler ve **iğ iplikleri** hazırlanır. "
+            "**G_2**: Bölünme için gerekli proteinler ve **iğ iplikleri** hazırlanır. "
             "**Sentrozom eşlenmesi** de bu evrede tamamlanır.",
-            "**G0**: Bölünmeyi bırakmış, göreve odaklanmış hücrelerin evresi. "
-            "**Sinir hücresi ve çizgili kas hücresi** G0'dadır — bu yüzden "
+            "**G_0**: Bölünmeyi bırakmış, göreve odaklanmış hücrelerin evresi. "
+            "**Sinir hücresi ve çizgili kas hücresi** G_0'dadır — bu yüzden "
             "onarılmaları çok zordur.",
-            "**Kontrol noktaları**: G1, G2 ve M evrelerinde hücre denetlenir. Denetim "
+            "**Kontrol noktaları**: G_1, G_2 ve M evrelerinde hücre denetlenir. Denetim "
             "bozulursa **kontrolsüz bölünme (kanser)** ortaya çıkar.",
         ]},
         {"tur": "tuzak", "baslik": "İnterfaz Bölünmenin Parçası Değildir", "govde":
@@ -121,7 +121,7 @@ NOT = {
          "aciklama": "**DNA miktarı** S evresinde iki katına çıkar, telofazda "
                      "yarılanır. **Kromozom sayısı** yalnızca **anafazda** anlık "
                      "olarak iki katına çıkar ve sitokinezden sonra normale döner.",
-         "ciz": S.grafik("Evreler (G1 · S · G2 · P · M · A · T)", "Miktar / Sayı", [
+         "ciz": S.grafik("Evreler (G_1 · S · G_2 · P · M · A · T)", "Miktar / Sayı", [
              ("DNA miktarı", [(0, 0.35), (0.14, 0.35), (0.30, 0.70), (0.44, 0.70),
                               (0.58, 0.70), (0.72, 0.70), (0.86, 0.70),
                               (0.93, 0.35), (1.0, 0.35)], MARKA),
@@ -298,9 +298,9 @@ NOT = {
             "Homolog kromozomların 'aynı gen bölgelerini taşıması' ile 'aynı alelleri taşıması' aynı şey midir?",
             "Diploit ve haploit kavramlarını insan örneğiyle açıklayınız.",
             "İnterfazın hücre döngüsünün en uzun evresi olmasının nedeni nedir?",
-            "G1, S ve G2 evrelerinde sırasıyla ne olur?",
+            "G_1, S ve G_2 evrelerinde sırasıyla ne olur?",
             "'Mitozun ilk evresi interfazdır' ifadesindeki hatayı düzeltiniz.",
-            "G0 evresindeki hücrelere iki örnek veriniz ve bunun sonucunu yazınız.",
+            "G_0 evresindeki hücrelere iki örnek veriniz ve bunun sonucunu yazınız.",
             "Sinir hücresinin yaralanma sonrası zor onarılmasını hücre döngüsüyle açıklayınız.",
             "Mitozun evrelerini sırasıyla yazıp her birinde olan temel olayı bir cümleyle belirtiniz.",
             "Kromozomların en belirgin göründüğü evre hangisidir? Neden?",
@@ -346,10 +346,10 @@ NOT = {
             "**Aynı şey değildir.** Homologlar aynı **gen bölgelerini** taşır (örneğin göz rengi geni ikisinde de aynı yerdedir) ama taşıdıkları **aleller farklı olabilir** (biri mavi, biri kahverengi aleli).",
             "**Diploit (2n)**: homologlar çift hâlde, insanda **46**. **Haploit (n)**: homologlar tek hâlde, insanda **23** (gametler).",
             "Hücre bu evrede **büyür**, organellerini çoğaltır, DNA'sını eşler, protein ve ATP biriktirir; bölünmenin bütün hazırlığı burada yapılır.",
-            "**G1**: hücre büyür, organeller çoğalır. **S**: DNA eşlenir. **G2**: bölünme proteinleri ve iğ iplikleri hazırlanır.",
+            "**G_1**: hücre büyür, organeller çoğalır. **S**: DNA eşlenir. **G_2**: bölünme proteinleri ve iğ iplikleri hazırlanır.",
             "İnterfaz **bölünmenin değil, hazırlığın** evresidir. Mitozun ilk evresi **profazdır**.",
             "**Sinir hücresi** ve **çizgili kas hücresi**. Bölünmedikleri için yaralandıklarında **onarım çok sınırlıdır**.",
-            "Sinir hücresi **G0 evresindedir**; hücre döngüsünden çıkmıştır ve bölünmez. Bölünme olmayınca yerine yeni hücre üretilemez.",
+            "Sinir hücresi **G_0 evresindedir**; hücre döngüsünden çıkmıştır ve bölünmez. Bölünme olmayınca yerine yeni hücre üretilemez.",
             "**Profaz**: kromozomlar belirginleşir, çekirdek zarı erir. **Metafaz**: ekvatorda dizilim. **Anafaz**: sentromer bölünür, kromatitler kutuplara gider. **Telofaz**: çekirdek yeniden oluşur.",
             "**Metafaz.** Kromozomlar en çok kısalıp kalınlaştığı ve tek düzlemde dizildiği için en net görülür.",
             "İğ ipliklerinin kromozomlara **ulaşabilmesi** için engel kalkmalıdır; zar erimezse iplikler sentromere tutunamaz.",

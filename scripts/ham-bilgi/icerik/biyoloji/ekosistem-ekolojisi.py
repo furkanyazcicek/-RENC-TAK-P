@@ -187,15 +187,15 @@ NOT = {
 
         {"tur": "altbolum", "baslik": "C. Azot Döngüsü"},
         {"tur": "maddeler", "ogeler": [
-            "Atmosferin **%78'i azot gazıdır (N2)**; ama bitkiler ve hayvanlar bu "
+            "Atmosferin **%78'i azot gazıdır (N_2)**; ama bitkiler ve hayvanlar bu "
             "gazı **doğrudan kullanamaz**.",
             "**Azot bağlanması (fiksasyon)**: Azot gazının kullanılabilir bileşiklere "
             "dönüştürülmesi. **Baklagil köklerindeki Rhizobium bakterileri**, "
             "serbest toprak bakterileri ve **yıldırım** bunu yapar.",
             "**Amonifikasyon**: Ayrıştırıcıların, ölü canlı ve atıklardaki azotu "
-            "**amonyağa (NH3)** çevirmesi.",
+            "**amonyağa (NH_3)** çevirmesi.",
             "**Nitrifikasyon**: **Kemosentez yapan nitrit ve nitrat bakterileri** "
-            "amonyağı önce nitrite, sonra bitkilerin alabildiği **nitrata (NO3)** "
+            "amonyağı önce nitrite, sonra bitkilerin alabildiği **nitrata (NO_3)** "
             "çevirir.",
             "**Denitrifikasyon**: Denitrifikasyon bakterilerinin nitratı tekrar "
             "**azot gazına** çevirip atmosfere döndürmesi. Bu, toprağı azot "
@@ -203,10 +203,10 @@ NOT = {
             "Baklagil ekimi (nöbetleşe ekim), toprağın azotça zenginleşmesini sağlar.",
         ]},
         {"tur": "ezber", "baslik": "Azot Döngüsünün Dört Basamağı", "ogeler": [
-            "**Fiksasyon**: N2 gazı → kullanılabilir azot (Rhizobium, yıldırım)",
+            "**Fiksasyon**: N_2 gazı → kullanılabilir azot (Rhizobium, yıldırım)",
             "**Amonifikasyon**: Ölü organik madde → amonyak (ayrıştırıcılar)",
             "**Nitrifikasyon**: Amonyak → nitrit → **nitrat** (kemosentetik bakteriler)",
-            "**Denitrifikasyon**: Nitrat → **N2 gazı** (atmosfere geri döner)",
+            "**Denitrifikasyon**: Nitrat → **N_2 gazı** (atmosfere geri döner)",
         ]},
         {"tur": "dikkat", "baslik": "Nitrifikasyon Bakterileri Kemosentez Yapar",
          "govde": "Nitrit ve nitrat bakterileri, bu dönüşümlerden açığa çıkan "
@@ -260,7 +260,7 @@ NOT = {
         # ==========================================================
         {"tur": "bolum", "numara": 6, "baslik": "Çevre Sorunları"},
         {"tur": "maddeler", "ogeler": [
-            "**Sera etkisi ve küresel ısınma**: CO2, metan ve su buharının ısıyı "
+            "**Sera etkisi ve küresel ısınma**: CO_2, metan ve su buharının ısıyı "
             "tutması. Fosil yakıt kullanımı ve ormansızlaşma ile artar.",
             "**Ozon tabakasının incelmesi**: **CFC** gazları ozonu parçalar; "
             "**morötesi (UV) ışınların** yeryüzüne ulaşmasıyla cilt kanseri riski artar.",
@@ -368,8 +368,8 @@ NOT = {
             "**Terleme (transpirasyon).** Bitkiler topraktan aldıkları suyu yapraklardan buhar hâlinde atmosfere verir.",
             "**Fotosentez** (ve kemosentez). Karbondioksit ancak bu yolla organik maddeye bağlanır.",
             "**Solunum**, **ayrışma (çürüme)**, **yanma (fosil yakıt ve orman yangını)** ve **volkanik faaliyetler**.",
-            "Milyonlarca yıl **depolanmış** karbonu kısa sürede atmosfere salar; CO2 dengesi bozulur, **sera etkisi ve küresel ısınma** artar.",
-            "Atmosferdeki azot **N2 gazı** hâlindedir; bitkiler ve hayvanlar bu formu **doğrudan kullanamaz**. Önce bağlanıp nitrata dönüşmesi gerekir.",
+            "Milyonlarca yıl **depolanmış** karbonu kısa sürede atmosfere salar; CO_2 dengesi bozulur, **sera etkisi ve küresel ısınma** artar.",
+            "Atmosferdeki azot **N_2 gazı** hâlindedir; bitkiler ve hayvanlar bu formu **doğrudan kullanamaz**. Önce bağlanıp nitrata dönüşmesi gerekir.",
             "**Rhizobium gibi azot bağlayıcı bakteriler** ve **yıldırım (şimşek)**. (Serbest toprak bakterileri de yazılabilir.)",
             "**Baklagillerin** (fasulye, nohut, yonca, bezelye) köklerindeki yumrularda bulunur; havadaki azotu bağlayarak bitkinin kullanabileceği forma çevirir ve **toprağı zenginleştirir**.",
             "**Amonifikasyon**: ayrıştırıcılar ölü organik maddedeki azotu **amonyağa** çevirir. **Nitrifikasyon**: bakteriler amonyağı önce **nitrite**, sonra bitkilerin alabildiği **nitrata** dönüştürür.",

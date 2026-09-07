@@ -43,17 +43,17 @@ NOT = {
         {"tur": "maddeler", "ogeler": [
             "**Arrhenius tanımı** en dardır: yalnızca **sulu çözeltiler** için "
             "geçerlidir ve bazın mutlaka OH içermesini gerektirir.",
-            "**Brönsted-Lowry tanımı** daha geniştir: **NH3** gibi OH içermeyen "
-            "maddelerin de baz olduğunu açıklar (NH3 proton alır).",
+            "**Brönsted-Lowry tanımı** daha geniştir: **NH_3** gibi OH içermeyen "
+            "maddelerin de baz olduğunu açıklar (NH_3 proton alır).",
             "**Amfoter madde**: Hem asit hem baz gibi davranabilen madde. En bilinen "
-            "örnek **sudur (H2O)**. Ayrıca **Al2O3, ZnO** ve **HCO3−** iyonu da "
+            "örnek **sudur (H_2O)**. Ayrıca **Al_2O_3, ZnO** ve **HCO_3−** iyonu da "
             "amfoterdir.",
         ]},
         {"tur": "gorsel", "baslik": "Şema 1 — Asitlerin ve bazların özellikleri",
          "ciz": S.karsilastirma(
              "Asitler",
              ["Tadı **ekşi**", "**H+** verir", "Mavi turnusolu **kırmızıya** çevirir",
-              "pH **< 7**", "**Aktif metallerle H2 gazı** açığa çıkarır",
+              "pH **< 7**", "**Aktif metallerle H_2 gazı** açığa çıkarır",
               "Sulu çözeltisi **elektriği iletir**"],
              "Bazlar",
              ["Tadı **acı**, ele **kaygan** gelir", "**OH−** verir",
@@ -79,12 +79,12 @@ NOT = {
             "çözeltisi de hazırlanabilir.",
         ]},
         {"tur": "ezber", "baslik": "Ezberlenmesi Gerekenler", "ogeler": [
-            "**Kuvvetli asitler**: HCl, HBr, HI, **H2SO4**, **HNO3**, HClO4",
-            "**Zayıf asitler**: CH3COOH (asetik), H2CO3 (karbonik), H3PO4, HF, "
-            "H2S, sitrik asit",
-            "**Kuvvetli bazlar**: **NaOH**, **KOH**, LiOH, Ca(OH)2, Ba(OH)2 "
+            "**Kuvvetli asitler**: HCl, HBr, HI, **H_2SO_4**, **HNO_3**, HClO_4",
+            "**Zayıf asitler**: CH_3COOH (asetik), H_2CO_3 (karbonik), H_3PO_4, HF, "
+            "H_2S, sitrik asit",
+            "**Kuvvetli bazlar**: **NaOH**, **KOH**, LiOH, Ca(OH)_2, Ba(OH)_2 "
             "(yani 1A ve 2A metallerinin hidroksitleri)",
-            "**Zayıf bazlar**: **NH3 (amonyak)**, Al(OH)3, Fe(OH)3, Cu(OH)2",
+            "**Zayıf bazlar**: **NH_3 (amonyak)**, Al(OH)_3, Fe(OH)_3, Cu(OH)_2",
         ]},
         {"tur": "dikkat", "baslik": "HF Zayıf Asittir", "govde":
             "Halojen asitlerinden **HCl, HBr, HI kuvvetli**, ama **HF zayıftır**. "
@@ -148,8 +148,8 @@ NOT = {
          "baslik": "Nötrleşme tepkimesi",
          "ifade": "ASİT + BAZ  →  TUZ + SU",
          "terimler": [
-             ("Örnek", "HCl + NaOH → **NaCl** + H2O"),
-             ("Örnek", "H2SO4 + 2KOH → **K2SO4** + 2H2O"),
+             ("Örnek", "HCl + NaOH → **NaCl** + H_2O"),
+             ("Örnek", "H_2SO_4 + 2KOH → **K_2SO_4** + 2H_2O"),
              ("Tuz", "Asidin **anyonu** ile bazın **katyonunun** birleşmesiyle oluşur"),
          ],
          "not": "Nötrleşmede asidin **H+** iyonu ile bazın **OH−** iyonu birleşerek "
@@ -160,26 +160,26 @@ NOT = {
             "Sulu çözeltisi genellikle **elektriği iletir**.",
             "**Her tuzun çözeltisi nötr değildir**: kuvvetli asit + kuvvetli bazdan "
             "oluşan tuz (NaCl) **nötr**; kuvvetli asit + zayıf bazdan oluşan tuz "
-            "(NH4Cl) **asidik**; zayıf asit + kuvvetli bazdan oluşan tuz "
-            "(CH3COONa) **bazik** çözelti verir.",
-            "**Asit + Metal** tepkimesinde **hidrojen gazı (H2)** açığa çıkar. "
+            "(NH_4Cl) **asidik**; zayıf asit + kuvvetli bazdan oluşan tuz "
+            "(CH_3COONa) **bazik** çözelti verir.",
+            "**Asit + Metal** tepkimesinde **hidrojen gazı (H_2)** açığa çıkar. "
             "Ancak **soy metaller (Au, Ag, Pt)** ve **kurşun** çoğu asitle tepkimeye "
             "girmez.",
-            "**Asit + Karbonat** tepkimesinde **CO2 gazı** açığa çıkar (kabartma "
+            "**Asit + Karbonat** tepkimesinde **CO_2 gazı** açığa çıkar (kabartma "
             "tozuna sirke dökülünce köpürmesinin nedeni).",
         ]},
         {"tur": "cozum",
          "baslik": "Nötrleşme Ürününü Bulma",
-         "soru": "**H2SO4** ile **Ca(OH)2** tepkimeye girdiğinde oluşan tuzun "
+         "soru": "**H_2SO_4** ile **Ca(OH)_2** tepkimeye girdiğinde oluşan tuzun "
                  "formülü nedir?",
          "adimlar": [
-             "Asidin anyonu: H2SO4 → **SO4(−2)**.",
-             "Bazın katyonu: Ca(OH)2 → **Ca(+2)**.",
-             "Yükleri çaprazla ve sadeleştir: Ca(+2) ile SO4(−2) → yükler eşit, "
+             "Asidin anyonu: H_2SO_4 → **SO_4(−2)**.",
+             "Bazın katyonu: Ca(OH)_2 → **Ca(+2)**.",
+             "Yükleri çaprazla ve sadeleştir: Ca(+2) ile SO_4(−2) → yükler eşit, "
              "birebir birleşir.",
-             "Tuz: **CaSO4** (alçı taşı). Yanında **2H2O** oluşur.",
+             "Tuz: **CaSO_4** (alçı taşı). Yanında **2H_2O** oluşur.",
          ],
-         "sonuc": "H2SO4 + Ca(OH)2 → CaSO4 + 2H2O"},
+         "sonuc": "H_2SO_4 + Ca(OH)_2 → CaSO_4 + 2H_2O"},
 
         # ==========================================================
         {"tur": "bolum", "numara": 5, "baslik": "Günlük Hayatta Asitler ve Bazlar"},
@@ -219,11 +219,11 @@ NOT = {
             "Arrhenius: asit **H+ verir**, baz **OH− verir**. Brönsted: asit "
             "**proton verir**, baz **proton alır**.",
             "**HF zayıf**, HCl-HBr-HI kuvvetlidir.",
-            "**NH3 OH içermez ama bazdır** (proton alır).",
+            "**NH_3 OH içermez ama bazdır** (proton alır).",
             "pH'ta **1 birim = 10 kat** fark.",
             "**Fenolftalein bazda pembe**, asit ve nötrde **renksiz**.",
             "Asit + Baz → **Tuz + Su**, tepkime **ısı verir**.",
-            "Asit + aktif metal → **H2 gazı**. Asit + karbonat → **CO2 gazı**.",
+            "Asit + aktif metal → **H_2 gazı**. Asit + karbonat → **CO_2 gazı**.",
             "Seyreltmek asidin pH'ını 7'ye **yaklaştırır**, **geçirmez**.",
         ]},
     ],
@@ -239,7 +239,7 @@ NOT = {
         "sorular": [
             "Arrhenius'a göre asit ve bazı tanımlayınız.",
             "Brönsted-Lowry tanımının Arrhenius'tan farkı nedir?",
-            "NH3'ün OH içermediği hâlde baz sayılmasını hangi kuram açıklar?",
+            "NH_3'ün OH içermediği hâlde baz sayılmasını hangi kuram açıklar?",
             "Amfoter madde nedir? En bilinen örneğini yazınız.",
             "Asitlerin beş özelliğini yazınız.",
             "Bazların beş özelliğini yazınız.",
@@ -266,12 +266,12 @@ NOT = {
             "Metil oranjın asitteki rengi nedir?",
             "Nötrleşme tepkimesinin genel denklemini yazınız.",
             "HCl + NaOH tepkimesinin ürünlerini yazınız.",
-            "H2SO4 + Ca(OH)2 tepkimesinde oluşan tuzun formülü nedir?",
+            "H_2SO_4 + Ca(OH)_2 tepkimesinde oluşan tuzun formülü nedir?",
             "Nötrleşme tepkimesi ısı alır mı verir mi?",
             "Tuz nasıl oluşur? İyonik midir?",
             "Her tuzun çözeltisi nötr müdür? Üç durumu örnekle açıklayınız.",
-            "NH4Cl çözeltisi neden asidiktir?",
-            "CH3COONa çözeltisi neden baziktir?",
+            "NH_4Cl çözeltisi neden asidiktir?",
+            "CH_3COONa çözeltisi neden baziktir?",
             "Asit ile aktif metal tepkimesinde hangi gaz açığa çıkar?",
             "Hangi metaller asitlerle tepkimeye girmez?",
             "Kabartma tozuna sirke dökülünce köpürmesinin nedeni nedir?",
@@ -287,17 +287,17 @@ NOT = {
         "cevaplar": [
             "**Asit**: suda çözündüğünde **H+ (proton)** veren madde. **Baz**: suda çözündüğünde **OH− (hidroksit)** veren madde.",
             "Brönsted-Lowry **suya bağlı değildir** ve bazın OH içermesini gerektirmez: asit **proton veren**, baz **proton alan** maddedir. Bu yüzden daha geniştir.",
-            "**Brönsted-Lowry** kuramı. NH3 sudan **proton alarak** NH4+ oluşturur, yani baz gibi davranır.",
-            "Hem **asit hem baz** gibi davranabilen maddedir. En bilinen örnek **sudur (H2O)**.",
-            "Tadı **ekşi**; **H+** verir; mavi turnusolu **kırmızıya** çevirir; pH **< 7**; aktif metallerle **H2 gazı** açığa çıkarır (sulu çözeltisi iletken).",
+            "**Brönsted-Lowry** kuramı. NH_3 sudan **proton alarak** NH_4+ oluşturur, yani baz gibi davranır.",
+            "Hem **asit hem baz** gibi davranabilen maddedir. En bilinen örnek **sudur (H_2O)**.",
+            "Tadı **ekşi**; **H+** verir; mavi turnusolu **kırmızıya** çevirir; pH **< 7**; aktif metallerle **H_2 gazı** açığa çıkarır (sulu çözeltisi iletken).",
             "Tadı **acı**, ele **kaygan** gelir; **OH−** verir; kırmızı turnusolu **maviye** çevirir; pH **> 7**; **yağları çözer** (sulu çözeltisi iletken).",
             "Suda **iyonlaşırlar**; sulu çözeltileri **elektriği iletir**; ciltte **tahriş/yanık** yaparlar (birbirleriyle nötrleşmeleri de yazılabilir).",
             "**Kuvvetli** olan suda **tamamen (%100) iyonlaşır**; **zayıf** olan **kısmen** iyonlaşır, çözeltide iyonlaşmamış molekül de bulunur.",
             "**Aynı şey değildir.** Kuvvetlilik **iyonlaşma oranıyla**, derişiklik **birim hacimdeki madde miktarıyla** ilgilidir. Zayıf bir asidin derişik çözeltisi hazırlanabilir.",
-            "**HCl, HBr, HI, H2SO4, HNO3** (HClO4 de yazılabilir).",
-            "**CH3COOH, H2CO3, H3PO4, HF** (H2S, sitrik asit de yazılabilir).",
-            "**NaOH, KOH, Ca(OH)2, Ba(OH)2** (LiOH de yazılabilir).",
-            "**NH3** ve **Al(OH)3** (Fe(OH)3, Cu(OH)2 de yazılabilir).",
+            "**HCl, HBr, HI, H_2SO_4, HNO_3** (HClO_4 de yazılabilir).",
+            "**CH_3COOH, H_2CO_3, H_3PO_4, HF** (H_2S, sitrik asit de yazılabilir).",
+            "**NaOH, KOH, Ca(OH)_2, Ba(OH)_2** (LiOH de yazılabilir).",
+            "**NH_3** ve **Al(OH)_3** (Fe(OH)_3, Cu(OH)_2 de yazılabilir).",
             "**H—F bağı çok güçlüdür**; suda kolay ayrışmaz, bu yüzden kısmen iyonlaşır ve zayıf asit davranışı gösterir.",
             "Tamamen iyonlaştığı için çözeltide **serbest iyon sayısı fazladır**; yükü taşıyan tanecik çok olduğundan iletkenlik yüksektir.",
             "**0 ile 14** arasındadır; **nötr değer 7**'dir (25 °C'de).",
@@ -313,21 +313,21 @@ NOT = {
             "**Turnusol kâğıdı** (ya da metil oranj). Fenolftalein bu ayrımı yapamaz.",
             "**Kırmızı.**",
             "**Asit + Baz → Tuz + Su.**",
-            "**NaCl + H2O.**",
-            "**CaSO4** (yanında 2H2O oluşur).",
+            "**NaCl + H_2O.**",
+            "**CaSO_4** (yanında 2H_2O oluşur).",
             "**Isı verir** — ekzotermiktir.",
             "Asidin **anyonu** ile bazın **katyonunun** birleşmesiyle oluşur ve **iyonik** bir bileşiktir.",
-            "**Değildir.** Kuvvetli asit + kuvvetli baz → **nötr** (NaCl). Kuvvetli asit + zayıf baz → **asidik** (NH4Cl). Zayıf asit + kuvvetli baz → **bazik** (CH3COONa).",
-            "**Kuvvetli asit (HCl) ile zayıf bazdan (NH3)** oluşmuştur; çözeltide asidin etkisi baskın kalır.",
-            "**Zayıf asit (CH3COOH) ile kuvvetli bazdan (NaOH)** oluşmuştur; çözeltide bazın etkisi baskın kalır.",
-            "**Hidrojen gazı (H2).**",
+            "**Değildir.** Kuvvetli asit + kuvvetli baz → **nötr** (NaCl). Kuvvetli asit + zayıf baz → **asidik** (NH_4Cl). Zayıf asit + kuvvetli baz → **bazik** (CH_3COONa).",
+            "**Kuvvetli asit (HCl) ile zayıf bazdan (NH_3)** oluşmuştur; çözeltide asidin etkisi baskın kalır.",
+            "**Zayıf asit (CH_3COOH) ile kuvvetli bazdan (NaOH)** oluşmuştur; çözeltide bazın etkisi baskın kalır.",
+            "**Hidrojen gazı (H_2).**",
             "**Soy metaller (altın, gümüş, platin)** ve **kurşun** çoğu asitle tepkimeye girmez.",
-            "Sirkedeki **asetik asit**, kabartma tozundaki **karbonatla** tepkimeye girer ve **karbondioksit (CO2) gazı** açığa çıkar; köpürme bu gazdır.",
+            "Sirkedeki **asetik asit**, kabartma tozundaki **karbonatla** tepkimeye girer ve **karbondioksit (CO_2) gazı** açığa çıkar; köpürme bu gazdır.",
             "Limon: **sitrik asit**. Sirke: **asetik asit**. Yoğurt: **laktik asit**.",
             "**Hidroklorik asit (HCl)** — tuz ruhu olarak da bilinir.",
             "**Zehirli klor gazı** açığa çıkar. Solunduğunda akciğerlere ciddi zarar verir ve ölümcül olabilir.",
             "Fosil yakıtların yanmasıyla çıkan **kükürt ve azot oksitleri** atmosferdeki su buharıyla birleşir; **sülfürik ve nitrik asit** oluşturarak yağışla yeryüzüne iner.",
-            "Mermer **kalsiyum karbonattır (CaCO3)**; asitle tepkimeye girerek çözünür ve yapı aşınır.",
+            "Mermer **kalsiyum karbonattır (CaCO_3)**; asitle tepkimeye girerek çözünür ve yapı aşınır.",
             "**Baziktirler.** Midede fazla salgılanan **asidi nötrleştirerek** yanmayı giderirler.",
             "Ağızdaki bakteriler şekerden **asit** üretir; bu asit diş minesindeki kalsiyum bileşiklerini **çözer**. Diş macunları **bazik** olduğu için bu asidi nötrleştirir.",
         ],

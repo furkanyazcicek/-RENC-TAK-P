@@ -171,6 +171,15 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 4, "baslik": "Olasılık"},
+        {"tur": "gorsel", "baslik": "Şema 2 — Olasılık sorusunu kurma sırası",
+         "aciklama": "Olasılık, **istenen durum sayısının tüm durum sayısına "
+                     "oranı**dır. Payda her zaman örnek uzayın eleman sayısıdır. "
+                     "Zorlanılan yer hesap değil, **sayma** kısmıdır — bu yüzden "
+                     "önce permütasyon mu kombinasyon mu olduğuna karar ver.",
+         "ciz": S.akis([
+             "Örnek uzayı yaz", "Tüm durumu say", "İstenen durumu say", "Oranı kur"],
+             ["olabilecek bütün\nsonuçlar", "**payda** olur",
+              "sıra önemli mi\ndiye karar ver", "**P(A) = istenen / tüm**"])},
         {"tur": "formul",
          "baslik": "Klasik olasılık",
          "ifade": "P(A) = (İstenen durum sayısı) / (Tüm olası durum sayısı)",

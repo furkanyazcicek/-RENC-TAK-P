@@ -1,5 +1,6 @@
 """TYT Fizik — İş, Güç ve Enerji (ham bilgi notu)."""
 
+from uretici import BASARI, BILGI, MARKA, TEHLIKE
 import semalar as S
 
 NOT = {
@@ -87,15 +88,31 @@ NOT = {
          ],
          "sonuc": "Yapılan iş 1000 J, güç 100 watt."},
 
+        {"tur": "gorsel", "baslik": "Şema 1 — Kuvvet-yol grafiğinde iş, alandır",
+         "aciklama": "Kuvvet sabitse iş **dikdörtgenin alanı**, kuvvet düzgün "
+                     "değişiyorsa **üçgenin alanı**dır. Eksenin **altında kalan alan "
+                     "negatif iştir** (sürtünme kuvvetinin yaptığı iş gibi). "
+                     "Bu yüzden grafikte iş sorulduğunda tek yapılacak şey **alan "
+                     "hesaplamaktır**.",
+         "ciz": S.grafik_seti([
+             ("Sabit kuvvet", "Yol (x)", "Kuvvet (F)",
+              [("", [(0, 0.62), (0.94, 0.62)], MARKA)],
+              [(0.16, 0.26, "W = **F · x**")],
+              [(0, S.ZEMIN_MOR)]),
+             ("Düzgün değişen kuvvet", "Yol (x)", "Kuvvet (F)",
+              [("", [(0, 0.02), (0.94, 0.88)], BILGI)],
+              [(0.06, 0.72, "W = **alan**")],
+              [(0, S.ZEMIN_MAVI)]),
+         ], ortak_not="İş bir alandır: birimi J (joule), yönü yoktur, işareti vardır.")},
         # ==========================================================
         {"tur": "bolum", "numara": 2, "baslik": "Enerji Türleri"},
         {"tur": "formul",
          "baslik": "Mekanik enerjinin üç bileşeni",
-         "ifade": "Ek = (m · v²) / 2\nEp = m · g · h\nEes = (k · x²) / 2",
+         "ifade": "E_k = (m · v²) / 2\nE_p = m · g · h\nE_(es) = (k · x²) / 2",
          "terimler": [
-             ("Ek", "**Kinetik enerji** — hareketten doğar"),
-             ("Ep", "**Çekim potansiyel enerjisi** — yükseklikten doğar"),
-             ("Ees", "**Esneklik potansiyel enerjisi** — yaydaki sıkışma/gerilmeden doğar"),
+             ("E_k", "**Kinetik enerji** — hareketten doğar"),
+             ("E_p", "**Çekim potansiyel enerjisi** — yükseklikten doğar"),
+             ("E_(es)", "**Esneklik potansiyel enerjisi** — yaydaki sıkışma/gerilmeden doğar"),
              ("k", "Yay sabiti (N/m), **x** yayın uzama miktarı (m)"),
          ],
          "not": "**Kinetik enerji hızın KARESİYLE** orantılıdır: hız 2 katına "
@@ -115,8 +132,8 @@ NOT = {
          "soru": "Bir aracın hızı **2 katına** çıkarılırsa kinetik enerjisi kaç "
                  "katına çıkar? Fren mesafesi nasıl değişir?",
          "adimlar": [
-             "Ek = m·v²/2 bağıntısında hız yerine 2v yaz.",
-             "Ek' = m·(2v)² / 2 = m·4v² / 2 = **4 × (m·v²/2)**.",
+             "E_k = m·v²/2 bağıntısında hız yerine 2v yaz.",
+             "E_k' = m·(2v)² / 2 = m·4v² / 2 = **4 × (m·v²/2)**.",
              "Kinetik enerji **4 katına** çıkar.",
              "Fren mesafesi, sürtünme kuvvetinin bu enerjiyi yutmasıyla belirlenir; "
              "enerji 4 katına çıktığı için mesafe de **4 katına** çıkar.",
@@ -130,37 +147,48 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 3, "baslik": "Enerjinin Korunumu"},
+        {"tur": "gorsel", "baslik": "Şema 2 — Düşerken enerjinin paylaşımı",
+         "aciklama": "Serbest düşen cisimde **potansiyel enerji azalırken kinetik "
+                     "enerji tam o kadar artar**; toplamları (mekanik enerji) sürtünmesiz "
+                     "ortamda **yatay bir doğrudur, değişmez**. İki eğrinin kesiştiği "
+                     "yükseklik, E_p = E_k olduğu noktadır; orası **düşüş yolunun tam "
+                     "yarısıdır**.",
+         "ciz": S.grafik("Yükseklik (h)", "Enerji (E)", [
+             ("Potansiyel E_p", [(0, 0.03), (0.94, 0.80)], BILGI),
+             ("Kinetik E_k", [(0, 0.80), (0.94, 0.03)], TEHLIKE),
+             ("Toplam (sabit)", [(0, 0.83), (0.94, 0.83)], BASARI),
+         ], gosterge="sag-alt", kilavuzlar=[(0.47, 0.415)])},
         {"tur": "tanim", "kavram": "Enerjinin korunumu ilkesi",
          "aciklama": "Enerji **yoktan var edilemez, vardan yok edilemez**; yalnızca "
                      "**bir türden diğerine dönüşür** ya da bir cisimden diğerine "
                      "aktarılır. Toplam enerji **sabittir**."},
-        {"tur": "gorsel", "baslik": "Şema 1 — Serbest düşmede enerji dönüşümü",
+        {"tur": "gorsel", "baslik": "Şema 3 — Serbest düşmede enerji dönüşümü",
          "aciklama": "Sürtünmesiz ortamda **toplam mekanik enerji sabittir**: "
                      "potansiyel enerji azalırken kinetik enerji **aynı miktarda** "
                      "artar.",
          "ciz": S.akis(
              ["En yüksek nokta", "Yarı yükseklik", "Yere değme anı"],
-             ["**Ep en büyük**\nEk = 0", "Ep ve Ek **eşit**",
-              "**Ek en büyük**\nEp = 0"])},
+             ["**E_p en büyük**\nE_k = 0", "E_p ve E_k **eşit**",
+              "**E_k en büyük**\nE_p = 0"])},
         {"tur": "formul",
          "baslik": "Sürtünmesiz ortamda korunum",
-         "ifade": "Ek1 + Ep1  =  Ek2 + Ep2",
+         "ifade": "E_(k1) + E_(p1)  =  E_(k2) + E_(p2)",
          "terimler": [
              ("Sol taraf", "**Başlangıçtaki** kinetik + potansiyel enerji"),
              ("Sağ taraf", "**Sonraki** kinetik + potansiyel enerji"),
          ],
          "not": "**Sürtünme varsa** eşitlik bozulmaz; kaybolan mekanik enerji "
-                "**ısıya dönüşmüştür**: Ebaşlangıç = Eson + **Isı (sürtünme işi)**."},
+                "**ısıya dönüşmüştür**: Ebaşlangıç = E_(son) + **Isı (sürtünme işi)**."},
         {"tur": "cozum",
          "baslik": "Enerjinin Korunumu Uygulaması",
          "soru": "**20 metre** yükseklikten serbest bırakılan **2 kg** kütleli "
                  "cismin yere çarpma hızı kaçtır? (g = 10 m/s², sürtünme yok)",
          "adimlar": [
              "Başlangıçta yalnızca **potansiyel enerji** var: "
-             "Ep = m·g·h = 2 × 10 × 20 = **400 J**.",
+             "E_p = m·g·h = 2 × 10 × 20 = **400 J**.",
              "Yere değme anında yalnızca **kinetik enerji** var.",
-             "Korunum: Ep = Ek → 400 = m·v²/2 = 2·v²/2 = **v²**.",
-             "v² = 400 → v = kök(400).",
+             "Korunum: E_p = E_k → 400 = m·v²/2 = 2·v²/2 = **v²**.",
+             "v² = 400 → v = √(400).",
          ],
          "sonuc": "Yere çarpma hızı 20 m/s'dir."},
         {"tur": "taktik", "baslik": "Enerji Sorusunu Çözme Sırası", "govde":
@@ -168,7 +196,7 @@ NOT = {
          "ogeler": [
              "**1)** Başlangıç ve bitiş noktalarını seç.",
              "**2)** Her noktada **hangi enerji türlerinin** olduğunu yaz "
-             "(yükseklik varsa Ep, hız varsa Ek).",
+             "(yükseklik varsa E_p, hız varsa E_k).",
              "**3)** **Sürtünme var mı** diye bak. Yoksa doğrudan eşitle.",
              "**4)** Sürtünme varsa **kayıp enerjiyi ısı** olarak sağ tarafa ekle.",
              "**5)** Kütle çoğu zaman **sadeleşir** — sonuç kütleden bağımsız çıkar.",
@@ -216,9 +244,9 @@ NOT = {
             "**W = F · x**; kuvvet ve yer değiştirme **dik ise iş sıfırdır**.",
             "**Sürtünmenin yaptığı iş her zaman negatiftir.**",
             "**P = W/t**; aynı işi hızlı yapan **daha güçlüdür**, işi aynıdır.",
-            "**Ek = m·v²/2** — hız 2 katına çıkarsa Ek **4 katına** çıkar.",
-            "**Ep = m·g·h** — referans düzleme göre değişir.",
-            "Sürtünmesizde **Ek + Ep sabittir**; sürtünmelide fark **ısıya** dönüşür.",
+            "**E_k = m·v²/2** — hız 2 katına çıkarsa E_k **4 katına** çıkar.",
+            "**E_p = m·g·h** — referans düzleme göre değişir.",
+            "Sürtünmesizde **E_k + E_p sabittir**; sürtünmelide fark **ısıya** dönüşür.",
             "**Verim asla %100 olamaz.**",
             "Basit makineler **kuvvetten kazandırır, işten kazandırmaz**.",
         ]},
@@ -296,25 +324,25 @@ NOT = {
             "P = 1000 / 10 = **100 watt**.",
             "**P = W / t** ve **P = F · v**. Birimi **watt (W)**'tır.",
             "**İşleri eşittir**; kısa sürede yapanın **gücü büyüktür**.",
-            "**Ek = m · v² / 2.**",
+            "**E_k = m · v² / 2.**",
             "**Olamaz.** Kütle pozitif, hızın karesi de her zaman pozitiftir.",
-            "**Ep = m · g · h.**",
+            "**E_p = m · g · h.**",
             "Yükseklik (h) **seçilen sıfır düzlemine göre** ölçülür; referans değişirse potansiyel enerjinin sayısal değeri de değişir.",
-            "**Ees = k · x² / 2.** k yay sabiti, x uzama/sıkışma miktarıdır.",
+            "**E_(es) = k · x² / 2.** k yay sabiti, x uzama/sıkışma miktarıdır.",
             "**Kinetik enerji + potansiyel enerji.**",
             "**4 katına** (hızın karesiyle orantılıdır).",
             "**9 katına.**",
             "Fren sırasında sürtünme kuvveti **kinetik enerjiyi** yutar. Kinetik enerji hızın karesiyle arttığı için, aynı sürtünme kuvvetiyle durmak için gereken **mesafe de karesiyle** artar.",
             "Kinetik enerji **hızın karesiyle** arttığından, hızdaki küçük artışlar bile çarpışma enerjisini ve fren mesafesini **çok büyütür**.",
-            "Ek = 4 × 100 / 2 = **200 J**.",
-            "Ep = 2 × 10 × 15 = **300 J**.",
+            "E_k = 4 × 100 / 2 = **200 J**.",
+            "E_p = 2 × 10 × 15 = **300 J**.",
             "Enerji **yoktan var edilemez, vardan yok edilemez**; yalnızca **tür değiştirir** ya da aktarılır. Toplam enerji sabittir.",
-            "Yalnızca **potansiyel enerji** vardır (Ek = 0).",
-            "Yalnızca **kinetik enerji** vardır (Ep = 0).",
+            "Yalnızca **potansiyel enerji** vardır (E_k = 0).",
+            "Yalnızca **kinetik enerji** vardır (E_p = 0).",
             "**Birbirine eşittir**; potansiyel enerjinin yarısı kinetik enerjiye dönüşmüştür.",
-            "**Ek1 + Ep1 = Ek2 + Ep2.**",
-            "Kaybolan mekanik enerji **ısıya dönüşür**: **Ebaşlangıç = Eson + Isı (sürtünme işi)**.",
-            "Ep = Ek → m·g·h = m·v²/2 → v² = 2·g·h = 2 × 10 × 20 = 400 → v = **20 m/s**.",
+            "**E_(k1) + E_(p1) = E_(k2) + E_(p2).**",
+            "Kaybolan mekanik enerji **ısıya dönüşür**: **Ebaşlangıç = E_(son) + Isı (sürtünme işi)**.",
+            "E_p = E_k → m·g·h = m·v²/2 → v² = 2·g·h = 2 × 10 × 20 = 400 → v = **20 m/s**.",
             "**Bağlı değildir.** Denklemde kütle **sadeleşir**; sonuç yalnızca g ve h'ye bağlıdır.",
             "Enerji **kaybolmaz**. Doğru ifade: 'mekanik enerjinin bir kısmı **ısı enerjisine dönüştü**'dür.",
             "Ağırlıklı olarak **ısıya**, kısmen de **ses enerjisine** dönüşür.",

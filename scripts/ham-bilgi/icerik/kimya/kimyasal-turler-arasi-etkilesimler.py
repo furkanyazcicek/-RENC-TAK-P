@@ -34,11 +34,11 @@ NOT = {
             "**Atom**: Bir elementin bütün özelliklerini taşıyan en küçük birim "
             "(He, Fe, Na).",
             "**Molekül**: İki ya da daha fazla atomun **kovalent bağla** bağlanmasıyla "
-            "oluşan tanecik. **Element molekülü** (O2, N2, H2, Cl2, P4, S8) ve "
-            "**bileşik molekülü** (H2O, CO2, NH3) diye ikiye ayrılır.",
+            "oluşan tanecik. **Element molekülü** (O_2, N_2, H_2, Cl_2, P_4, S_8) ve "
+            "**bileşik molekülü** (H_2O, CO_2, NH_3) diye ikiye ayrılır.",
             "**İyon**: Yüklü tanecik. **Katyon** (+) ve **anyon** (−). "
-            "**Tek atomlu** (Na+, Cl−) ya da **çok atomlu (kök)** (SO4(−2), NH4(+1), "
-            "NO3(−1), CO3(−2), PO4(−3), OH(−1)) olabilir.",
+            "**Tek atomlu** (Na+, Cl−) ya da **çok atomlu (kök)** (SO_4(−2), NH_4(+1), "
+            "NO_3(−1), CO_3(−2), PO_4(−3), OH(−1)) olabilir.",
             "**Radikal**: **Ortaklanmamış (eşleşmemiş) elektronu** olan tanecik. "
             "Çok kararsız ve tepkindir. Örnek: OH radikali, Cl radikali.",
         ]},
@@ -62,7 +62,7 @@ NOT = {
         {"tur": "tuzak", "baslik": "Kaynama Zayıf Etkileşimi Kırar", "govde":
             "Su kaynadığında **O—H kovalent bağı kırılmaz**; kırılan şey su "
             "molekülleri **arasındaki hidrojen bağlarıdır**. Bu yüzden su buharı "
-            "hâlâ H2O'dur. 'Kaynama sırasında kovalent bağ kırılır' ifadesi "
+            "hâlâ H_2O'dur. 'Kaynama sırasında kovalent bağ kırılır' ifadesi "
             "**yanlıştır** ve ÖSYM'nin klasik çeldiricisidir."},
 
         # ==========================================================
@@ -87,25 +87,25 @@ NOT = {
         {"tur": "maddeler", "ogeler": [
             "**Ametal ile ametal** arasında, **elektronların ortaklaşa kullanılmasıyla** "
             "oluşur.",
-            "**Apolar kovalent bağ**: **Aynı cins** atomlar arasında (H2, O2, Cl2) ya "
+            "**Apolar kovalent bağ**: **Aynı cins** atomlar arasında (H_2, O_2, Cl_2) ya "
             "da elektronegatiflik farkı **çok küçük** olduğunda. Ortak elektronlar "
             "**eşit** paylaşılır.",
-            "**Polar kovalent bağ**: **Farklı cins** ametaller arasında (HCl, H2O, "
-            "NH3). Elektronegatifliği büyük olan atom elektronu **kendine daha çok "
+            "**Polar kovalent bağ**: **Farklı cins** ametaller arasında (HCl, H_2O, "
+            "NH_3). Elektronegatifliği büyük olan atom elektronu **kendine daha çok "
             "çeker**; kısmi (+) ve kısmi (−) uçlar oluşur.",
             "Bağ sayısına göre: **tekli** (H—H), **ikili** (O=O), **üçlü** "
             "(N ile N arasında). Bağ sayısı arttıkça **bağ enerjisi artar**, "
             "**bağ uzunluğu azalır**.",
         ]},
         {"tur": "tuzak", "baslik": "Polar Bağ ≠ Polar Molekül", "govde":
-            "**CO2**'de C=O bağları **polardır**; ama molekül **doğrusal** olduğu "
+            "**CO_2**'de C=O bağları **polardır**; ama molekül **doğrusal** olduğu "
             "için iki bağın çekimi birbirini götürür ve molekül **apolardır**. "
-            "**H2O**'da ise molekül **açısaldır**, çekimler birbirini götürmez ve "
+            "**H_2O**'da ise molekül **açısaldır**, çekimler birbirini götürmez ve "
             "molekül **polardır**. Yani: bağın polarlığına değil, "
             "**molekülün geometrisine** bakılır."},
         {"tur": "ezber", "baslik": "Sık Sorulan Molekül Polarlıkları", "ogeler": [
-            "**Apolar moleküller**: H2, O2, N2, Cl2, **CO2**, CH4, CCl4, BF3",
-            "**Polar moleküller**: **H2O**, **NH3**, HCl, HF, H2S, CHCl3, SO2",
+            "**Apolar moleküller**: H_2, O_2, N_2, Cl_2, **CO_2**, CH_4, CCl_4, BF_3",
+            "**Polar moleküller**: **H_2O**, **NH_3**, HCl, HF, H_2S, CHCl_3, SO_2",
             "Kural: molekül **simetrikse ve merkez atomda ortaklanmamış elektron "
             "çifti yoksa** genellikle apolardır.",
         ]},
@@ -129,16 +129,16 @@ NOT = {
              ["Tanecik", "Formül birimi (örgü)", "**Molekül**", "Kristal örgü"],
              ["Katı hâlde iletir mi", "**Hayır**", "Hayır (grafit hariç)", "**Evet**"],
              ["Sıvı hâlde iletir mi", "**Evet**", "Hayır", "**Evet**"],
-             ["Örnek", "NaCl, MgO, CaF2", "H2O, CO2, NH3", "Fe, Cu, Al"],
+             ["Örnek", "NaCl, MgO, CaF_2", "H_2O, CO_2, NH_3", "Fe, Cu, Al"],
          ]},
         {"tur": "taktik", "baslik": "Bağ Türünü 5 Saniyede Bulma", "govde":
             "Bileşikteki elementlerin **metal mi ametal mi** olduğuna bak:",
          "ogeler": [
              "**Metal + Ametal** → **iyonik** (NaCl, CaO, KBr)",
-             "**Ametal + Ametal** → **kovalent** (H2O, CO2, HCl)",
+             "**Ametal + Ametal** → **kovalent** (H_2O, CO_2, HCl)",
              "**Metal + Metal** → **metalik** (alaşımlar, saf metaller)",
-             "İçinde **NH4(+1)** kökü varsa, ametallerden oluşsa bile bileşik "
-             "**iyoniktir** (NH4Cl). Kökün içi kovalent, kök ile anyon arası iyoniktir.",
+             "İçinde **NH_4(+1)** kökü varsa, ametallerden oluşsa bile bileşik "
+             "**iyoniktir** (NH_4Cl). Kökün içi kovalent, kök ile anyon arası iyoniktir.",
          ]},
 
         # ==========================================================
@@ -149,17 +149,17 @@ NOT = {
          "satirlar": [
              ["**London (indüklenmiş dipol)**", "**Bütün** moleküllerde bulunur. "
               "Apolar moleküllerde tek etkileşim türüdür.", "**En zayıf**"],
-             ["**Dipol-dipol**", "**Polar** moleküller arasında (HCl, SO2)", "Orta"],
-             ["**Hidrojen bağı**", "H atomu **F, O veya N**'ye bağlıysa (H2O, NH3, HF)",
+             ["**Dipol-dipol**", "**Polar** moleküller arasında (HCl, SO_2)", "Orta"],
+             ["**Hidrojen bağı**", "H atomu **F, O veya N**'ye bağlıysa (H_2O, NH_3, HF)",
               "**Zayıflar içinde en güçlü**"],
              ["**İyon-dipol**", "İyon ile polar molekül arasında (NaCl'nin suda "
               "çözünmesi)", "Güçlü"],
          ]},
         {"tur": "maddeler", "ogeler": [
             "**London kuvvetleri**, molekülün **büyüklüğü (mol kütlesi) arttıkça "
-            "güçlenir**. Bu yüzden halojenlerde F2 gaz, Br2 sıvı, I2 katıdır.",
+            "güçlenir**. Bu yüzden halojenlerde F_2 gaz, Br_2 sıvı, I_2 katıdır.",
             "**Hidrojen bağının şartı**: Hidrojen, **doğrudan F, O ya da N** atomuna "
-            "bağlı olmalıdır. Molekülde H bulunması yetmez — CH4'te hidrojen bağı "
+            "bağlı olmalıdır. Molekülde H bulunması yetmez — CH_4'te hidrojen bağı "
             "**yoktur** (H, karbona bağlıdır).",
             "**Hidrojen bağı suyun anomalisini açıklar**: Su, benzer mol kütleli "
             "moleküllere göre çok **yüksek kaynama noktasına** sahiptir; buz suda "
@@ -182,22 +182,22 @@ NOT = {
               "**Düşük** — mol kütlesiyle artar"])},
         {"tur": "cozum",
          "baslik": "Kaynama Noktası Karşılaştırması",
-         "soru": "**H2O**, **H2S**, **CH4** ve **NaCl** maddelerini kaynama "
+         "soru": "**H_2O**, **H_2S**, **CH_4** ve **NaCl** maddelerini kaynama "
                  "noktalarına göre **büyükten küçüğe** sıralayınız.",
          "adimlar": [
              "**NaCl** iyonik bağlıdır; iyonik bağ bütün moleküller arası "
              "etkileşimlerden **çok daha güçlüdür** → en yüksek.",
-             "**H2O**'da hidrojen **oksijene** bağlıdır → **hidrojen bağı** vardır → "
+             "**H_2O**'da hidrojen **oksijene** bağlıdır → **hidrojen bağı** vardır → "
              "moleküller arası en güçlü ikinci.",
-             "**H2S** polardır ama kükürt F-O-N'den biri değildir → yalnızca "
+             "**H_2S** polardır ama kükürt F-O-N'den biri değildir → yalnızca "
              "**dipol-dipol** vardır.",
-             "**CH4** apolardır → yalnızca **London** kuvvetleri vardır → en düşük.",
+             "**CH_4** apolardır → yalnızca **London** kuvvetleri vardır → en düşük.",
          ],
-         "sonuc": "NaCl > H2O > H2S > CH4"},
-        {"tur": "tuzak", "baslik": "H2S'nin Kaynama Noktası H2O'dan Düşüktür",
-         "govde": "Kükürt oksijenden **daha ağırdır**; mol kütlesine bakarsan H2S'nin "
-                  "daha yüksek kaynaması gerekirdi. Ama H2O'da **hidrojen bağı** "
-                  "vardır, H2S'de yoktur. **Hidrojen bağı mol kütlesini yener.** "
+         "sonuc": "NaCl > H_2O > H_2S > CH_4"},
+        {"tur": "tuzak", "baslik": "H_2S'nin Kaynama Noktası H_2O'dan Düşüktür",
+         "govde": "Kükürt oksijenden **daha ağırdır**; mol kütlesine bakarsan H_2S'nin "
+                  "daha yüksek kaynaması gerekirdi. Ama H_2O'da **hidrojen bağı** "
+                  "vardır, H_2S'de yoktur. **Hidrojen bağı mol kütlesini yener.** "
                   "Bu, konunun en kritik sorusudur."},
 
         # ==========================================================
@@ -220,7 +220,7 @@ NOT = {
             "**metal + metal = metalik**.",
             "İyonik bileşik **katı hâlde iletmez**, **sıvı ve çözelti hâlinde iletir**.",
             "Metal **katı hâlde de iletir**.",
-            "**CO2 apolar**, **H2O polar** — geometriye bak.",
+            "**CO_2 apolar**, **H_2O polar** — geometriye bak.",
             "Hidrojen bağı için H, **F–O–N**'den birine bağlı olmalı.",
             "Kaynamada **zayıf etkileşim** kırılır, kovalent bağ **kırılmaz**.",
             "Sıralama ölçütü: **iyonik/metalik > hidrojen bağı > dipol-dipol > London**.",
@@ -242,7 +242,7 @@ NOT = {
             "İyon ile radikal arasındaki temel farkı yazınız.",
             "Güçlü ve zayıf etkileşimlerin nerede bulunduğunu (tanecik içi/arası) yazınız.",
             "Su kaynadığında hangi etkileşim kırılır? Kovalent bağ kırılır mı?",
-            "Su buharının hâlâ H2O olmasının nedeni nedir?",
+            "Su buharının hâlâ H_2O olmasının nedeni nedir?",
             "İyonik bağ hangi tür elementler arasında, nasıl oluşur?",
             "İyonik bileşiklerin molekül oluşturmamasının nedeni nedir?",
             "NaCl'nin katı hâlde elektriği iletmemesinin nedeni nedir?",
@@ -250,30 +250,30 @@ NOT = {
             "İyonik bileşiklerin sert ama kırılgan olmasını açıklayınız.",
             "Kovalent bağ nasıl oluşur? Hangi elementler arasında görülür?",
             "Apolar ve polar kovalent bağı elektronegatiflik farkıyla ayırınız.",
-            "H2, HCl ve O2 moleküllerindeki bağları polarlık bakımından sınıflandırınız.",
+            "H_2, HCl ve O_2 moleküllerindeki bağları polarlık bakımından sınıflandırınız.",
             "Bağ sayısı arttıkça bağ enerjisi ve bağ uzunluğu nasıl değişir?",
-            "CO2'de bağlar polar olduğu hâlde molekülün apolar olmasının nedeni nedir?",
-            "H2O'nun polar molekül olmasının nedeni nedir?",
+            "CO_2'de bağlar polar olduğu hâlde molekülün apolar olmasının nedeni nedir?",
+            "H_2O'nun polar molekül olmasının nedeni nedir?",
             "Apolar moleküllere dört örnek veriniz.",
             "Polar moleküllere dört örnek veriniz.",
             "Metalik bağı elektron denizi modeliyle açıklayınız.",
             "Metallerin katı hâlde iletken olmasının nedeni nedir?",
             "Metallerin tel ve levha hâline gelebilmesini bağ yapısıyla açıklayınız.",
-            "NH4Cl bileşiğinde hangi bağ türleri bir arada bulunur?",
-            "MgO, CH4 ve Cu bileşik/maddelerindeki bağ türlerini yazınız.",
+            "NH_4Cl bileşiğinde hangi bağ türleri bir arada bulunur?",
+            "MgO, CH_4 ve Cu bileşik/maddelerindeki bağ türlerini yazınız.",
             "London kuvvetleri hangi moleküllerde bulunur?",
             "London kuvvetlerinin gücü neye bağlı olarak artar?",
-            "Halojenlerde F2 gaz, Br2 sıvı, I2 katı olmasının nedeni nedir?",
+            "Halojenlerde F_2 gaz, Br_2 sıvı, I_2 katı olmasının nedeni nedir?",
             "Dipol-dipol etkileşimi hangi moleküller arasında görülür?",
             "Hidrojen bağının oluşabilmesi için gereken şartı yazınız.",
-            "CH4'te hidrojen bulunduğu hâlde hidrojen bağı olmamasının nedeni nedir?",
+            "CH_4'te hidrojen bulunduğu hâlde hidrojen bağı olmamasının nedeni nedir?",
             "Suyun beklenenden yüksek kaynama noktasına sahip olmasını açıklayınız.",
             "Buzun suda yüzmesini hidrojen bağlarıyla açıklayınız.",
             "İyon-dipol etkileşimi nerede görülür? Bir örnek veriniz.",
             "Zayıf etkileşimleri güçlerine göre sıralayınız.",
             "Kaynama noktası karşılaştırmasında izlenecek dört basamağı sırasıyla yazınız.",
-            "H2O, H2S, CH4 ve NaCl'yi kaynama noktasına göre sıralayınız.",
-            "H2S'nin mol kütlesi H2O'dan büyük olduğu hâlde kaynama noktasının düşük olmasının nedeni nedir?",
+            "H_2O, H_2S, CH_4 ve NaCl'yi kaynama noktasına göre sıralayınız.",
+            "H_2S'nin mol kütlesi H_2O'dan büyük olduğu hâlde kaynama noktasının düşük olmasının nedeni nedir?",
             "HF ve HCl'den hangisinin kaynama noktası daha yüksektir? Neden?",
             "'Benzer benzeri çözer' kuralını bir cümleyle açıklayınız.",
             "Yağın suda çözünmemesinin nedeni nedir?",
@@ -285,11 +285,11 @@ NOT = {
         ],
         "cevap_baslik": {"numara": 7, "metin": "Cevap Anahtarı ve Kısa Açıklamalar"},
         "cevaplar": [
-            "**Element molekülü** aynı cins atomlardan oluşur (O2, N2). **Bileşik molekülü** farklı cins atomlardan oluşur (H2O, CO2).",
-            "**SO4(−2), NO3(−1), NH4(+1)** (CO3(−2), PO4(−3), OH(−1) de yazılabilir).",
+            "**Element molekülü** aynı cins atomlardan oluşur (O_2, N_2). **Bileşik molekülü** farklı cins atomlardan oluşur (H_2O, CO_2).",
+            "**SO_4(−2), NO_3(−1), NH_4(+1)** (CO_3(−2), PO_4(−3), OH(−1) de yazılabilir).",
             "**İyon yüklüdür** (elektron alıp vermiştir). **Radikalin eşleşmemiş elektronu** vardır ve genellikle yüksüzdür.",
             "**Güçlü etkileşimler (bağlar) tanecik içindedir**; **zayıf etkileşimler tanecikler arasındadır**.",
-            "**Hidrojen bağları** kırılır. **Kovalent bağ kırılmaz** — kırılsaydı su artık H2O olmazdı.",
+            "**Hidrojen bağları** kırılır. **Kovalent bağ kırılmaz** — kırılsaydı su artık H_2O olmazdı.",
             "Kaynama **fiziksel bir değişimdir**; yalnızca moleküller arası çekimler yenilir, molekülün kendi yapısı korunur.",
             "**Metal ile ametal** arasında, **elektron alışverişiyle** oluşur. Metal katyona, ametal anyona dönüşür; zıt yükler elektrostatik olarak çekilir.",
             "İyonik bileşiklerde her katyon birden çok anyonla çevrilidir; belirli bir 'birim molekül' yoktur. Yapı **kristal örgüdür**, NaCl bir **formül birimidir**.",
@@ -298,21 +298,21 @@ NOT = {
             "Örgüdeki elektrostatik çekim güçlü olduğu için **serttir**; ancak katmanlar kaydırıldığında aynı yükler karşı karşıya gelip **itme** oluşturduğundan kristal aniden **kırılır**.",
             "**Ametal ile ametal** arasında, elektronların **ortaklaşa kullanılmasıyla** oluşur.",
             "**Apolarda** elektronegatiflik farkı yok denecek kadar azdır, ortak elektronlar **eşit** paylaşılır. **Polarda** fark vardır, elektronlar daha elektronegatif atoma **kayar**.",
-            "**H2 apolar**, **O2 apolar** (aynı cins atomlar); **HCl polar** (farklı cins ametaller).",
+            "**H_2 apolar**, **O_2 apolar** (aynı cins atomlar); **HCl polar** (farklı cins ametaller).",
             "Bağ sayısı arttıkça **bağ enerjisi artar** ve **bağ uzunluğu azalır**.",
             "Molekül **doğrusaldır**; iki C=O bağının kutup çekimi **eşit ve zıt yönlüdür**, birbirini götürür ve net kutuplaşma sıfır olur.",
             "Molekül **açısaldır** ve oksijende **ortaklanmamış elektron çiftleri** vardır; bağ kutupları birbirini götürmez, net bir kutuplaşma kalır.",
-            "**H2, O2, CO2, CH4** (N2, Cl2, CCl4, BF3 de yazılabilir).",
-            "**H2O, NH3, HCl, HF** (H2S, SO2, CHCl3 de yazılabilir).",
+            "**H_2, O_2, CO_2, CH_4** (N_2, Cl_2, CCl_4, BF_3 de yazılabilir).",
+            "**H_2O, NH_3, HCl, HF** (H_2S, SO_2, CHCl_3 de yazılabilir).",
             "Metal atomları **değerlik elektronlarını ortak bir havuza** bırakır. Oluşan hareketli **elektron denizi**, geride kalan katyonları bir arada tutar.",
             "Elektron denizindeki elektronlar **serbestçe hareket eder**; katı hâlde bile yük taşıyabilirler.",
             "Katmanlar kaydırıldığında **elektron denizi yeniden dağılır** ve bağ kopmaz; bu yüzden metal kırılmadan şekil alır (dövülebilirlik).",
             "Kök **içinde kovalent** (N—H bağları), **kök ile Cl(−1) arasında iyonik** bağ bulunur.",
-            "**MgO iyonik** (metal + ametal), **CH4 kovalent** (ametal + ametal), **Cu metalik**.",
+            "**MgO iyonik** (metal + ametal), **CH_4 kovalent** (ametal + ametal), **Cu metalik**.",
             "**Bütün moleküllerde** bulunur; apolar moleküllerde ise **tek** moleküller arası etkileşim türüdür.",
             "**Molekülün büyüklüğü (mol kütlesi ve elektron sayısı) arttıkça** güçlenir.",
-            "Hepsi apolardır ve aralarında yalnızca **London kuvvetleri** vardır. Mol kütlesi F2 < Br2 < I2 sırasında arttığı için London kuvvetleri güçlenir ve hâlleri gaz → sıvı → katı olur.",
-            "**Polar moleküller** arasında (HCl, SO2 gibi kalıcı dipolü olanlar).",
+            "Hepsi apolardır ve aralarında yalnızca **London kuvvetleri** vardır. Mol kütlesi F_2 < Br_2 < I_2 sırasında arttığı için London kuvvetleri güçlenir ve hâlleri gaz → sıvı → katı olur.",
+            "**Polar moleküller** arasında (HCl, SO_2 gibi kalıcı dipolü olanlar).",
             "Hidrojen atomu **doğrudan F, O veya N** atomuna bağlı olmalıdır.",
             "Hidrojen **karbona** bağlıdır. Karbon F-O-N'den biri değildir ve elektronegatifliği yeterince yüksek olmadığı için hidrojen bağı oluşmaz.",
             "Su molekülleri arasında **hidrojen bağı** bulunur. Bu bağlar dipol-dipol ve London kuvvetlerinden çok daha güçlüdür; kopmaları için fazladan enerji gerekir.",
@@ -320,8 +320,8 @@ NOT = {
             "**İyon ile polar molekül** arasında görülür. Örnek: **NaCl'nin suda çözünmesi** — su molekülleri iyonları sarar.",
             "**London < dipol-dipol < hidrojen bağı < iyon-dipol.**",
             "**1)** Bağ türü (iyonik/metalik en yüksek), **2)** hidrojen bağı var mı, **3)** polar mı apolar mı, **4)** mol kütlesi (London).",
-            "**NaCl > H2O > H2S > CH4.**",
-            "H2O'da **hidrojen bağı** vardır, H2S'de yoktur. Hidrojen bağının gücü, mol kütlesi farkının etkisini **fazlasıyla aşar**.",
+            "**NaCl > H_2O > H_2S > CH_4.**",
+            "H_2O'da **hidrojen bağı** vardır, H_2S'de yoktur. Hidrojen bağının gücü, mol kütlesi farkının etkisini **fazlasıyla aşar**.",
             "**HF.** Florda hidrojen bağı vardır; klorda (HCl) yalnızca dipol-dipol etkileşimi bulunur.",
             "**Polar maddeler polar çözücülerde**, **apolar maddeler apolar çözücülerde** çözünür.",
             "Yağ **apolardır**, su **polardır**. Su molekülleri birbirine hidrojen bağıyla tutunur ve apolar yağ moleküllerini aralarına almaz.",

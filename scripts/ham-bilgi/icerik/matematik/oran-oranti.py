@@ -105,8 +105,8 @@ NOT = {
               "Problemlerde birlikte kullanılabilir"])},
         {"tur": "formul",
          "baslik": "Orantı bağıntıları",
-         "ifade": "Doğru orantı:  x / y = k    →   x1/y1 = x2/y2\n"
-                  "Ters orantı:   x · y = k    →   x1 · y1 = x2 · y2",
+         "ifade": "Doğru orantı:  x / y = k    →   x_1/y_1 = x_2/y_2\n"
+                  "Ters orantı:   x · y = k    →   x_1 · y_1 = x_2 · y_2",
          "terimler": [
              ("k", "**Orantı sabiti** — problem boyunca değişmez"),
              ("Doğru orantıda", "**Bölüm** sabittir"),
@@ -120,9 +120,9 @@ NOT = {
                  "**9 işçi** kaç günde bitirir?",
          "adimlar": [
              "İşçi sayısı **artarsa** süre **azalır** → **ters orantı**.",
-             "Ters orantıda **çarpım sabittir**: x1 · y1 = x2 · y2.",
-             "12 × 15 = 9 × y2.",
-             "180 = 9 · y2 → y2 = 180 / 9.",
+             "Ters orantıda **çarpım sabittir**: x_1 · y_1 = x_2 · y_2.",
+             "12 × 15 = 9 × y_2.",
+             "180 = 9 · y_2 → y_2 = 180 / 9.",
          ],
          "sonuc": "9 işçi aynı işi 20 günde bitirir."},
         {"tur": "tuzak", "baslik": "Her İlişki Orantılı Değildir", "govde":
@@ -165,10 +165,24 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 4, "baslik": "Ortalamalar"},
+        {"tur": "gorsel", "baslik": "Şema 2 — Üç ortalama ve aralarındaki sıra",
+         "aciklama": "Pozitif sayılarda her zaman **Harmonik ≤ Geometrik ≤ "
+                     "Aritmetik** sırası geçerlidir; sayılar birbirine eşitse "
+                     "üçü de eşit olur. Hangi ortalamanın sorulduğunu anlamak için "
+                     "**büyüklüğün cinsine** bak: hız gibi \"bir şey başına\" "
+                     "büyüklüklerde harmonik ortalama kullanılır.",
+         "ciz": S.kartlar([
+             ("Aritmetik", "**(a + b) / 2**\nsıradan ortalama"),
+             ("Geometrik", "**√(a · b)**\noransal büyümede"),
+             ("Harmonik", "**2ab / (a + b)**\ngidiş-dönüş hızında"),
+             ("Sıralama", "**H ≤ G ≤ A**\neşitlik a = b iken"),
+             ("Ağırlıklı ortalama", "her veri **kendi ağırlığıyla**\nçarpılır"),
+             ("Sınav klasiği", "gidiş v_1, dönüş v_2\n→ **harmonik** ortalama"),
+         ], sutun=3)},
         {"tur": "formul",
          "baslik": "Aritmetik ve geometrik ortalama",
          "ifade": "Aritmetik ortalama = (a + b) / 2\n"
-                  "Geometrik ortalama = kök (a · b)",
+                  "Geometrik ortalama = √(a · b)",
          "terimler": [
              ("Aritmetik", "n sayı için: **toplam / n**"),
              ("Geometrik", "n sayı için: **çarpımın n. dereceden kökü**"),
@@ -338,8 +352,8 @@ NOT = {
             "6 × 8 × 10 = 8 × 6 × x → 480 = 48x → **x = 10 gün**.",
             "10 × 12 = 15 × x → x = **8 gün**.",
             "**(a + b) / 2** (n sayı için: toplam / n).",
-            "**kök (a · b)** (n sayı için: çarpımın n. dereceden kökü).",
-            "Aritmetik: (4+9)/2 = **6,5**. Geometrik: kök36 = **6**.",
+            "**√(a · b)** (n sayı için: çarpımın n. dereceden kökü).",
+            "Aritmetik: (4+9)/2 = **6,5**. Geometrik: √36 = **6**.",
             "Pozitif sayılarda **aritmetik ortalama ≥ geometrik ortalama**.",
             "Sayılar **birbirine eşit** olduğunda.",
             "(20×70 + 30×80) / 50 = 3800/50 = **76**.",

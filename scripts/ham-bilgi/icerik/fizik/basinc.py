@@ -1,5 +1,6 @@
 """TYT Fizik — Basınç (ham bilgi notu)."""
 
+from uretici import BASARI, BILGI, MARKA, TEHLIKE
 import semalar as S
 
 NOT = {
@@ -128,16 +129,30 @@ NOT = {
             "kadar akardı**."},
 
         # ==========================================================
+        {"tur": "gorsel", "baslik": "Şema 2 — Sıvı basıncı yalnızca derinliğe bağlıdır",
+         "aciklama": "Sıvı basıncı derinlikle **doğru orantılı** artar; grafiği "
+                     "**orijinden geçen bir doğrudur**. Doğrunun **eğimi d · g**'dir, "
+                     "yani **yoğun sıvının doğrusu daha diktir**. Kabın şekli, "
+                     "genişliği ve içindeki sıvının miktarı grafiği değiştirmez.",
+         "ciz": S.grafik_seti([
+             ("Basınç – Derinlik", "Derinlik (h)", "Basınç (P)",
+              [("Cıva (yoğun)", [(0, 0.02), (0.55, 0.92)], TEHLIKE),
+               ("Su", [(0, 0.02), (0.94, 0.60)], BILGI)],
+              [(0.03, 0.80, "Eğim = **d · g**")]),
+             ("Basınç – Miktar", "Sıvı miktarı", "Basınç (P)",
+              [("", [(0, 0.55), (0.94, 0.55)], BASARI)],
+              [(0.10, 0.24, "**Değişmez**")]),
+         ], ortak_not="Derinlik artarsa basınç artar; sıvı eklenip derinlik değişmezse basınç aynı kalır.")},
         {"tur": "bolum", "numara": 3, "baslik": "Pascal İlkesi"},
         {"tur": "tanim", "kavram": "Pascal ilkesi",
          "aciklama": "Kapalı bir kaptaki sıvıya uygulanan basınç, sıvının **her "
                      "noktasına ve kabın her yüzeyine aynen (azalmadan) iletilir**."},
         {"tur": "formul",
          "baslik": "Hidrolik pres (kaldıraç)",
-         "ifade": "P1 = P2   →   F1 / A1  =  F2 / A2",
+         "ifade": "P_1 = P_2   →   F_1 / A_1  =  F_2 / A_2",
          "terimler": [
-             ("F1, A1", "Küçük pistondaki **kuvvet** ve **alan**"),
-             ("F2, A2", "Büyük pistondaki **kuvvet** ve **alan**"),
+             ("F_1, A_1", "Küçük pistondaki **kuvvet** ve **alan**"),
+             ("F_2, A_2", "Büyük pistondaki **kuvvet** ve **alan**"),
              ("Sonuç", "Alan kaç kat büyükse, **kuvvet de o kadar kat büyür**"),
          ],
          "not": "Hidrolik pres **kuvvet kazandırır, işten kazandırmaz**. Büyük "
@@ -150,9 +165,9 @@ NOT = {
                  "uygulanırsa büyük piston kaç newtonluk yükü kaldırır?",
          "adimlar": [
              "Pascal ilkesi: iki pistondaki **basınçlar eşittir**.",
-             "F1/A1 = F2/A2 → 20/5 = F2/200.",
+             "F_1/A_1 = F_2/A_2 → 20/5 = F_2/200.",
              "20/5 = **4 Pa** (basınç).",
-             "F2 = 4 × 200.",
+             "F_2 = 4 × 200.",
          ],
          "sonuc": "Büyük piston 800 N kaldırır (40 kat kuvvet kazancı)."},
         {"tur": "maddeler", "isaret": "nokta", "ogeler": [
@@ -180,7 +195,7 @@ NOT = {
             "Deneyde cıva yerine **su** kullanılsaydı sütun yaklaşık **10,3 metre** "
             "olurdu; çünkü suyun öz kütlesi cıvanınkinden çok küçüktür.",
         ]},
-        {"tur": "gorsel", "baslik": "Şema 2 — Açık hava basıncını etkileyen etkenler",
+        {"tur": "gorsel", "baslik": "Şema 3 — Açık hava basıncını etkileyen etkenler",
          "aciklama": "Toricelli deneyinde tek belirleyici **düşey yüksekliktir**. "
                      "Boru ne kadar geniş ya da eğik olursa olsun sonuç değişmez.",
          "ciz": S.akis(
@@ -264,7 +279,7 @@ NOT = {
             "İki sıvının derinliği aynı, öz kütleleri farklıysa basınçları nasıl karşılaştırılır?",
             "Pascal ilkesini bir cümleyle ifade ediniz.",
             "Hidrolik preste kullanılan bağıntıyı yazınız.",
-            "Küçük piston 5 cm², büyük piston 200 cm² ve F1 = 20 N ise F2 kaçtır?",
+            "Küçük piston 5 cm², büyük piston 200 cm² ve F_1 = 20 N ise F_2 kaçtır?",
             "Hidrolik pres işten kazandırır mı? Gerekçelendiriniz.",
             "Hidrolik sistemlerde sıvı kullanılmasının nedeni nedir?",
             "Pascal ilkesinin üç uygulama alanını yazınız.",
@@ -311,8 +326,8 @@ NOT = {
             "P = 10 × 800 × 10 = **80 000 Pa**.",
             "Derinlik ve g eşit olduğundan basınçlar **öz kütlelerle doğru orantılıdır**; öz kütlesi büyük olanın basıncı büyüktür.",
             "Kapalı bir kaptaki sıvıya uygulanan basınç, sıvının **her noktasına ve kabın her yüzeyine azalmadan** iletilir.",
-            "**F1 / A1 = F2 / A2.**",
-            "20/5 = 4 → F2 = 4 × 200 = **800 N**.",
+            "**F_1 / A_1 = F_2 / A_2.**",
+            "20/5 = 4 → F_2 = 4 × 200 = **800 N**.",
             "**Kazandırmaz.** Kuvvet kazancı sağlar ama büyük piston **az yol** alır; yapılan **iş her iki tarafta eşittir**. Enerjinin korunumu geçerlidir.",
             "Sıvılar **sıkıştırılamaz**; bu yüzden uygulanan basıncı **azalmadan ve gecikmesiz** iletirler.",
             "**Hidrolik fren, oto lifti, hidrolik pres** (iş makineleri, dişçi koltuğu da yazılabilir).",

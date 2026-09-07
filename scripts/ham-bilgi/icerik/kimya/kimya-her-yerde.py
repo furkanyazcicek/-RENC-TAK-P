@@ -74,7 +74,7 @@ NOT = {
              ["**Diş macunu**", "Florür bileşikleri", "Hafif **bazik**"],
              ["**Şampuan**", "Yüzey aktif maddeler", "Nötre yakın"],
              ["**Kolonya**", "Etil alkol", "Antiseptik"],
-             ["**Oksijenli su**", "Hidrojen peroksit (H2O2)", "Antiseptik, ağartıcı"],
+             ["**Oksijenli su**", "Hidrojen peroksit (H_2O_2)", "Antiseptik, ağartıcı"],
          ]},
         {"tur": "dikkat", "baslik": "Asla Karıştırılmayacak İkili", "govde":
             "**Çamaşır suyu (bazik) + tuz ruhu (asidik)** → **zehirli klor gazı**. "
@@ -181,7 +181,7 @@ NOT = {
               "kontrol edilen"],
          ]},
         {"tur": "maddeler", "ogeler": [
-            "**Tam yanma**: Yeterli oksijen vardır; ürünler **CO2 ve H2O**'dur. "
+            "**Tam yanma**: Yeterli oksijen vardır; ürünler **CO_2 ve H_2O**'dur. "
             "Alev **mavi** renkli olur.",
             "**Eksik yanma**: Oksijen yetersizdir; **CO (karbonmonoksit)** ve **is "
             "(karbon)** oluşur. Alev **sarı-turuncu** ve isli olur.",
@@ -202,7 +202,7 @@ NOT = {
             "**Doğal polimer**: nişasta, selüloz, protein, DNA, kauçuk.",
             "**Sentetik polimer**: PE, PVC, naylon, polyester, teflon.",
             "**Antibiyotik virüse etki etmez**; gereksiz kullanım **direnç** yaratır.",
-            "**Tam yanma → CO2 + H2O (mavi alev)**. **Eksik yanma → CO + is (sarı alev)**.",
+            "**Tam yanma → CO_2 + H_2O (mavi alev)**. **Eksik yanma → CO + is (sarı alev)**.",
             "**Hidrojenin yanma ürünü yalnızca sudur.**",
             "Çamaşır suyu + tuz ruhu → **zehirli klor gazı**.",
         ]},
@@ -271,7 +271,7 @@ NOT = {
             "**Sodyum hipoklorit (NaClO)**; **bazik** ve ağartıcıdır.",
             "**Hidroklorik asit (HCl)**; **kuvvetli asittir**.",
             "**Sodyum hidroksit (NaOH)** — sud kostik; kuvvetli bazdır.",
-            "Kireç **kalsiyum karbonattır (CaCO3)**; asitlerle tepkimeye girip çözünür. Bu yüzden kireç çözücüler asetik ya da sitrik asit içerir.",
+            "Kireç **kalsiyum karbonattır (CaCO_3)**; asitlerle tepkimeye girip çözünür. Bu yüzden kireç çözücüler asetik ya da sitrik asit içerir.",
             "**Zehirli klor gazı.**",
             "**Zehirli kloramin gazı** açığa çıkar; solunum yollarına ciddi zarar verir.",
             "**Monomer** polimeri oluşturan küçük moleküldür. **Polimer**, monomerlerin çok sayıda tekrarlanarak bağlanmasıyla oluşan çok büyük moleküldür.",
@@ -296,9 +296,9 @@ NOT = {
             "**Söylenemez.** E kodu, maddenin **onaylı ve denetlenmiş** olduğunu gösteren bir kayıt numarasıdır; zararlılık göstergesi değildir.",
             "Yoğun **şeker ya da tuz** ortamı hipertoniktir; bozulmaya yol açan mikroorganizmalar **osmozla su kaybedip plazmolize** uğrar ve çoğalamaz.",
             "**Katı**: kömür, odun. **Sıvı**: benzin, motorin. **Gaz**: doğal gaz, LPG.",
-            "**Tam yanmada** yeterli oksijen vardır; ürün **CO2 ve H2O**, alev **mavidir**. **Eksik yanmada** oksijen yetersizdir; **CO ve is** oluşur, alev **sarı-turuncu** ve islidir.",
+            "**Tam yanmada** yeterli oksijen vardır; ürün **CO_2 ve H_2O**, alev **mavidir**. **Eksik yanmada** oksijen yetersizdir; **CO ve is** oluşur, alev **sarı-turuncu** ve islidir.",
             "**Eksik yanma** sonucu oluşan **karbonmonoksit (CO)**. Renksiz ve kokusuz olduğu için fark edilmeden hemoglobine bağlanır ve zehirler.",
-            "Yanma ürünü yalnızca **sudur (H2O)**; karbondioksit ya da kirletici gaz açığa çıkmaz.",
+            "Yanma ürünü yalnızca **sudur (H_2O)**; karbondioksit ya da kirletici gaz açığa çıkmaz.",
             "**Maliyet**, **taşıma ve depolama kolaylığı**, **bulunabilirlik** ve **çevreye etkisi (kirletici salımı)**.",
         ],
     },

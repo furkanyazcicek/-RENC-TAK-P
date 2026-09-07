@@ -1,5 +1,6 @@
 """TYT Fizik — Elektrostatik (ham bilgi notu)."""
 
+from uretici import BASARI, BILGI, MARKA, TEHLIKE
 import semalar as S
 
 NOT = {
@@ -90,7 +91,7 @@ NOT = {
             "Yükler iki cisim arasında **paylaşılır**.",
             "Dokunma sonrası **her iki cisim de aynı cins yükle** yüklenir.",
             "**Özdeş küreler** dokundurulup ayrılırsa, toplam yük **eşit olarak "
-            "paylaşılır**: her birinin son yükü **(q1 + q2) / 2** olur.",
+            "paylaşılır**: her birinin son yükü **(q_1 + q_2) / 2** olur.",
             "**Özdeş olmayan** cisimlerde paylaşım **yüzey alanına göre** yapılır.",
         ]},
         {"tur": "cozum",
@@ -140,13 +141,26 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 3, "baslik": "Coulomb Yasası"},
+        {"tur": "gorsel", "baslik": "Şema 3 — Coulomb kuvveti neye nasıl bağlı?",
+         "aciklama": "Kuvvet **yükle doğru orantılı**, **uzaklığın karesiyle ters "
+                     "orantılıdır**. Bu yüzden yük iki katına çıkınca kuvvet **2 kat**, "
+                     "uzaklık iki katına çıkınca kuvvet **4 kata düşer** (1/4'ü olur). "
+                     "Soruda 'uzaklık 3 katına çıkarsa' derse kuvvet **9'da 1'e** iner.",
+         "ciz": S.grafik_seti([
+             ("Kuvvet – Uzaklık", "Uzaklık (d)", "Kuvvet (F)",
+              [("", [(0.1, 0.94), (0.135, 0.516), (0.17, 0.325), (0.205, 0.224), (0.24, 0.163), (0.275, 0.124), (0.31, 0.098), (0.345, 0.079), (0.38, 0.065), (0.415, 0.055), (0.45, 0.046), (0.485, 0.04), (0.52, 0.035), (0.555, 0.031), (0.59, 0.027), (0.625, 0.024), (0.66, 0.022), (0.695, 0.019), (0.73, 0.018), (0.765, 0.016), (0.8, 0.015), (0.835, 0.013), (0.87, 0.012), (0.905, 0.011), (0.94, 0.011)], TEHLIKE)],
+              [(0.30, 0.62, "F ~ **1/d²**")]),
+             ("Kuvvet – Yük", "Yük (q)", "Kuvvet (F)",
+              [("", [(0, 0.02), (0.94, 0.90)], MARKA)],
+              [(0.05, 0.74, "F ~ **q**")]),
+         ], ortak_not="Uzaklık 2 kat → kuvvet 1/4 · Uzaklık 3 kat → kuvvet 1/9 · Yük 2 kat → kuvvet 2 kat")},
         {"tur": "formul",
          "baslik": "İki nokta yük arasındaki kuvvet",
-         "ifade": "F = k · (q1 · q2) / d²",
+         "ifade": "F = k · (q_1 · q_2) / d²",
          "terimler": [
              ("F", "**Elektriksel kuvvet** (N) — itme ya da çekme"),
-             ("k", "Coulomb sabiti (yaklaşık **9 × 10 üzeri 9** N·m²/C²)"),
-             ("q1, q2", "**Yük miktarları** (coulomb, C)"),
+             ("k", "Coulomb sabiti (yaklaşık **9 × 10^9** N·m²/C²)"),
+             ("q_1, q_2", "**Yük miktarları** (coulomb, C)"),
              ("d", "Yükler arasındaki **uzaklık** (m)"),
          ],
          "not": "Kuvvet, **yüklerin çarpımıyla doğru**, **uzaklığın KARESİYLE "
@@ -227,7 +241,7 @@ NOT = {
             "**İtme kesin bilgi verir**, **çekme vermez** (nötr de çekilir).",
             "İletkende yük **yüzeye** dağılır; **iç kısımda yük yoktur**.",
             "Sürtünme ile yüklenen iki cisim **zıt ve eşit** yük alır.",
-            "Özdeş kürelerde dokunma sonrası yük: **(q1 + q2) / 2**.",
+            "Özdeş kürelerde dokunma sonrası yük: **(q_1 + q_2) / 2**.",
             "**Etki ile yükleme geçicidir**; kalıcı olması için **topraklama** gerekir.",
             "Topraklamada **önce toprak kesilir, sonra çubuk uzaklaştırılır**.",
             "Coulomb: kuvvet **uzaklığın karesiyle ters** orantılıdır.",
@@ -303,7 +317,7 @@ NOT = {
             "**Cam (+)**, **ipek (−)** yüklenir.",
             "**Değişmez.** Biri elektron verirken diğeri aynı miktarda alır; toplam yük yine sıfırdır.",
             "**Evet, aynı cins olur.** Yükler paylaşıldığı için iki cisim de aynı işaretli yüke sahip olur.",
-            "Toplam yük **eşit paylaşılır**: her birinin son yükü **(q1 + q2) / 2** olur.",
+            "Toplam yük **eşit paylaşılır**: her birinin son yükü **(q_1 + q_2) / 2** olur.",
             "Toplam +6q → her birine **+3q**.",
             "Toplam +12q → her birine **+6q**.",
             "Toplam yük sıfırdır → her ikisi de **nötr** olur.",
@@ -316,7 +330,7 @@ NOT = {
             "Yükleyici çubuğun **zıt cinsiyle** kalıcı olarak yüklenir.",
             "**Önce toprak bağlantısı kesilmeli, sonra çubuk uzaklaştırılmalıdır.** Böylece ayrışan yük cisimde hapsolur.",
             "Yükler **yeniden dağılır** ve cisim **nötr kalır**; kalıcı yükleme gerçekleşmez.",
-            "**F = k · (q1 · q2) / d².**",
+            "**F = k · (q_1 · q_2) / d².**",
             "**Yüklerin çarpımıyla doğru orantılı**, **uzaklığın karesiyle ters orantılıdır**.",
             "**4'te 1'ine düşer.**",
             "**9'da 1'ine düşer.**",

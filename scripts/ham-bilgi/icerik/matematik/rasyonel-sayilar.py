@@ -89,6 +89,17 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 3, "baslik": "Kesirleri Sıralama"},
+        {"tur": "gorsel", "baslik": "Şema 1 — Kesirler sayı doğrusunda",
+         "aciklama": "**Payları eşitse paydası küçük olan büyüktür** (aynı bütün az "
+                     "parçaya bölünmüştür). **Paydaları eşitse payı büyük olan "
+                     "büyüktür.** İkisi de eşit değilse ya paydaları eşitle ya da "
+                     "**içler-dışlar çarpımı** ile karşılaştır.",
+         "ciz": S.sayi_dogrusu(
+             [(0.00, "0"), (0.25, "1/4"), (0.33, "1/3"), (0.50, "1/2"),
+              (0.67, "2/3"), (0.75, "3/4"), (1.00, "1")],
+             [(0.00, 0.50, "kapali", S.MARKA, "yarımdan küçük"),
+              (0.50, 1.00, "kapali", S.BILGI, "yarımdan büyük")],
+             alt_not="1/2 ile karşılaştırmak, sıralama sorularında en hızlı ön elemedir.")},
         {"tur": "taktik", "baslik": "Sıralamanın Üç Hızlı Yolu", "govde":
             "Payda eşitlemek her zaman gerekmez; duruma göre en hızlısını seç:",
          "ogeler": [
@@ -118,6 +129,17 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 4, "baslik": "Ondalık Açılım"},
+        {"tur": "gorsel", "baslik": "Şema 2 — Bir kesrin ondalık açılımı nasıl olur?",
+         "aciklama": "Kesir **en sade hâline** getirildikten sonra paydanın asal "
+                     "çarpanlarına bakılır. Paydada yalnızca **2 ve 5** varsa açılım "
+                     "sonludur; başka bir asal çarpan varsa **devirli**dir.",
+         "ciz": S.agac("Sade kesrin paydası", [
+             ("Yalnızca 2 ve/veya 5",
+              ["**Sonlu** açılım", "1/4 = 0,25", "3/8 = 0,375", "7/20 = 0,35"]),
+             ("Başka asal çarpan var",
+              ["**Devirli** açılım", "1/3 = 0,333...", "1/6 = 0,1666...",
+               "2/7 = 0,285714..."]),
+         ])},
         {"tur": "maddeler", "ogeler": [
             "**Sonlu ondalık açılım**: Kesir en sade hâldeyken paydası "
             "**yalnızca 2 ve 5** çarpanlarından oluşuyorsa açılım sonludur. "

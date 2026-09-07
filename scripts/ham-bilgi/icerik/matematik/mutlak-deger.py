@@ -29,6 +29,16 @@ NOT = {
     "bloklar": [
         # ==========================================================
         {"tur": "bolum", "numara": 1, "baslik": "Tanım"},
+        {"tur": "gorsel", "baslik": "Şema 1 — Mutlak değer, sıfıra olan uzaklıktır",
+         "aciklama": "|x| ifadesi **x sayısının sıfıra olan uzaklığı**dır. Uzaklık "
+                     "hiçbir zaman negatif olamayacağı için **|x| ≥ 0**'dır. "
+                     "−3 ile +3 sıfıra eşit uzaklıkta olduğundan |−3| = |3| = 3'tür.",
+         "ciz": S.sayi_dogrusu(
+             [(0.10, "−4"), (0.25, "−3"), (0.40, "−1"), (0.50, "0"),
+              (0.60, "1"), (0.75, "3"), (0.90, "4")],
+             [(0.25, 0.50, "kapali", S.MARKA, "|−3| = 3"),
+              (0.50, 0.75, "kapali", S.BILGI, "|3| = 3")],
+             alt_not="İki bandın uzunluğu eşittir — mutlak değer yönü değil, uzaklığı ölçer.")},
         {"tur": "formul",
          "baslik": "Mutlak değerin tanımı",
          "ifade": "|a| = a      (a ≥ 0 ise)\n|a| = −a     (a < 0 ise)",
@@ -63,7 +73,7 @@ NOT = {
               "değerlerin çarpımıdır"],
              ["**|a / b| = |a| / |b|**", "Bölme için de geçerlidir (b ≠ 0)"],
              ["**|a|^2 = a^2**", "Mutlak değerin karesi, sayının karesine eşittir"],
-             ["**kök(a^2) = |a|**", "Karekök her zaman mutlak değer verir"],
+             ["**√(a^2) = |a|**", "Karekök her zaman mutlak değer verir"],
              ["**|a + b| ≤ |a| + |b|**", "**Üçgen eşitsizliği.** Eşitlik ancak "
               "a ve b **aynı işaretliyse** sağlanır"],
              ["**|a| − |b| ≤ |a − b|**", "Farkın mutlak değeri, mutlak değerler "
@@ -138,6 +148,18 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 4, "baslik": "Mutlak Değerli Eşitsizlikler"},
+        {"tur": "gorsel", "baslik": "Şema 2 — İki eşitsizlik türü, iki farklı çözüm kümesi",
+         "aciklama": "**Küçüktür** ise çözüm **tek parça (arada)**, **büyüktür** ise "
+                     "çözüm **iki ayrı parça (dışarıda)**'dır. Bunu ezberlemek yerine "
+                     "\"uzaklık\" olarak düşün: |x| < 3 → sıfıra uzaklığı 3'ten az "
+                     "olanlar; |x| > 3 → uzaklığı 3'ten çok olanlar.",
+         "ciz": S.sayi_dogrusu(satirlar=[
+             ("|x| < 3", [(0.25, "−3"), (0.50, "0"), (0.75, "3")],
+              [(0.25, 0.75, "acik", S.MARKA, "−3 < x < 3")]),
+             ("|x| > 3", [(0.25, "−3"), (0.50, "0"), (0.75, "3")],
+              [(0.00, 0.25, "yok-acik", S.TEHLIKE, "x < −3"),
+               (0.75, 1.00, "acik-yok", S.TEHLIKE, "x > 3")]),
+         ], alt_not="Küçüktür → ARADA tek aralık. Büyüktür → DIŞARIDA iki aralık.")},
         {"tur": "formul",
          "baslik": "İki temel kural",
          "ifade": "|f(x)| < a   →   −a < f(x) < a\n"
@@ -178,7 +200,7 @@ NOT = {
             "**|a| = sayının sıfıra uzaklığı**; asla negatif olamaz.",
             "**|a| = |−a|** ve **|a − b| = |b − a|**.",
             "**Çarpma-bölmede mutlak değer dağılır**, **toplama-çıkarmada dağılmaz**.",
-            "**kök(a^2) = |a|**.",
+            "**√(a^2) = |a|**.",
             "**|f(x)| = a (a>0)** → iki denklem. **a < 0** → çözüm yok.",
             "**Küçükse arada**: −a < f(x) < a.",
             "**Büyükse dışarıda**: f(x) < −a **veya** f(x) > a.",
@@ -207,7 +229,7 @@ NOT = {
             "|a · b| ifadesi nasıl açılır?",
             "|a + b| ifadesi |a| + |b|'ye eşit midir? Örnekle açıklayınız.",
             "Üçgen eşitsizliğini yazınız. Eşitlik ne zaman sağlanır?",
-            "kök(a^2) ifadesi neye eşittir?",
+            "√(a^2) ifadesi neye eşittir?",
             "|a|^2 ifadesi neye eşittir?",
             "|3 + (−5)| ile |3| + |−5| değerlerini hesaplayıp karşılaştırınız.",
             "|f(x)| = a (a > 0) denklemi nasıl çözülür?",

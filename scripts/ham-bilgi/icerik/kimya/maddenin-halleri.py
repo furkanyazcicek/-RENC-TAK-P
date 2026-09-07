@@ -77,7 +77,7 @@ NOT = {
              ["**Donma**", "Sıvı → Katı", "**Verir**", "Suyun buz tutması"],
              ["**Buharlaşma**", "Sıvı → Gaz", "**Alır**", "Çamaşırın kuruması"],
              ["**Yoğuşma**", "Gaz → Sıvı", "**Verir**", "Cama buğu oluşması"],
-             ["**Süblimleşme**", "Katı → Gaz", "**Alır**", "Naftalin, kuru buz (katı CO2)"],
+             ["**Süblimleşme**", "Katı → Gaz", "**Alır**", "Naftalin, kuru buz (katı CO_2)"],
              ["**Kırağılaşma**", "Gaz → Katı", "**Verir**", "Kırağı, karın oluşması"],
          ]},
         {"tur": "maddeler", "isaret": "nokta", "ogeler": [
@@ -219,10 +219,10 @@ NOT = {
          "soru": "Sabit sıcaklıkta, **2 litre** hacimli bir gazın basıncı **3 atm**'dir. "
                  "Hacim **6 litreye** çıkarılırsa basınç kaç atm olur?",
          "adimlar": [
-             "Sıcaklık sabit olduğu için **Boyle yasası** geçerlidir: P1·V1 = P2·V2.",
-             "Değerleri yerine koy: 3 × 2 = P2 × 6.",
-             "6 = 6 · P2.",
-             "P2 = **1 atm**.",
+             "Sıcaklık sabit olduğu için **Boyle yasası** geçerlidir: P_1·V_1 = P_2·V_2.",
+             "Değerleri yerine koy: 3 × 2 = P_2 × 6.",
+             "6 = 6 · P_2.",
+             "P_2 = **1 atm**.",
          ],
          "sonuc": "Hacim 3 katına çıkınca basınç 3'te 1'ine düşer: 1 atm."},
         {"tur": "maddeler", "isaret": "nokta", "ogeler": [
@@ -343,7 +343,7 @@ NOT = {
             "Sabit sıcaklıkta **basınç ile hacim ters orantılıdır** (P·V = sabit). Örnek: şırınganın ucu kapalıyken pistonu bastırınca hacim küçülür, basınç artar.",
             "**Basınç** sabit tutulur; hacim ile mutlak sıcaklık doğru orantılıdır.",
             "**Gay-Lussac yasası.** Hacim sabitken sıcaklık arttıkça basınç artar ve kap dayanamayıp patlar.",
-            "P1·V1 = P2·V2 → 2 × 4 = P2 × 2 → **P2 = 4 atm**.",
+            "P_1·V_1 = P_2·V_2 → 2 × 4 = P_2 × 2 → **P_2 = 4 atm**.",
             "**P·V = n·R·T.** P atm, V litre, n mol, R = 0,082 L·atm/mol·K, T Kelvin.",
             "Kelvin **mutlak sıcaklık** ölçeğidir ve sıfır noktası taneciklerin hareketinin durduğu noktadır. Santigrat kullanılırsa oranlar bozulur ve negatif değerler anlamsız sonuç verir.",
             "25 + 273 = **298 K**.",

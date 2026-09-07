@@ -1,5 +1,6 @@
 """TYT Fizik — Elektrik Devreleri (ham bilgi notu)."""
 
+from uretici import BASARI, BILGI, MARKA, TEHLIKE
 import semalar as S
 
 NOT = {
@@ -75,6 +76,15 @@ NOT = {
          "not": "Sabit dirençte **akım gerilimle doğru orantılıdır**. "
                 "Sabit gerilimde **akım dirençle ters orantılıdır**. "
                 "Akım-gerilim grafiğinde **eğim = 1/R**'dir."},
+        {"tur": "gorsel", "baslik": "Şema 1 — Akım-gerilim grafiği ve direncin okunması",
+         "aciklama": "Sabit dirençte akım gerilimle **doğru orantılıdır**; grafik "
+                     "orijinden geçen bir doğrudur. Doğrunun **eğimi 1 / R**'dir: "
+                     "**dik doğru küçük direnç**, **yatık doğru büyük direnç** demektir. "
+                     "Eğimi tersten okumak, bu konudaki en sık hatadır.",
+         "ciz": S.grafik("Gerilim (V)", "Akım (I)", [
+             ("Küçük direnç (R küçük)", [(0, 0.02), (0.60, 0.92)], BASARI),
+             ("Büyük direnç (R büyük)", [(0, 0.02), (0.94, 0.44)], TEHLIKE),
+         ], gosterge="sag-alt", kilavuzlar=[(0.60, 0.92)])},
         {"tur": "cozum",
          "baslik": "Ohm Yasası Uygulaması",
          "soru": "**12 voltluk** bir pile **4 ohm**'luk direnç bağlanıyor. "
@@ -88,17 +98,17 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 3, "baslik": "Seri ve Paralel Bağlama"},
-        {"tur": "gorsel", "baslik": "Şema 1 — İki bağlama biçiminin karşılaştırması",
+        {"tur": "gorsel", "baslik": "Şema 2 — İki bağlama biçiminin karşılaştırması",
          "aciklama": "Tek cümlelik özet: **seride akım ortak, paralelde gerilim "
                      "ortaktır**. Bütün devre soruları bu iki cümleden türer.",
          "ciz": S.karsilastirma(
              "Seri Bağlama",
              ["**Akım her yerde AYNI**", "Gerilim **paylaşılır**",
-              "**Reş = R1 + R2 + ...**", "Eşdeğer direnç **artar**",
+              "**Reş = R_1 + R_2 + ...**", "Eşdeğer direnç **artar**",
               "Biri bozulursa **devre kesilir**", "Örnek: eski yılbaşı ışıkları"],
              "Paralel Bağlama",
              ["**Gerilim her kolda AYNI**", "Akım **paylaşılır**",
-              "**1/Reş = 1/R1 + 1/R2 + ...**", "Eşdeğer direnç **azalır**",
+              "**1/Reş = 1/R_1 + 1/R_2 + ...**", "Eşdeğer direnç **azalır**",
               "Biri bozulsa **diğerleri çalışır**", "Örnek: ev tesisatı"],
              "Ortak",
              ["Ohm yasası her kolda geçerli",
@@ -109,7 +119,7 @@ NOT = {
             "Bu, cevabını kontrol etmenin en hızlı yoludur.",
             "**Eşit dirençler paralel bağlanırsa** eşdeğer direnç, **bir direncin "
             "değerinin kol sayısına bölümüdür**: n tane R paralel → **R/n**.",
-            "**İki direnç paralelse** pratik formül: **Reş = (R1 · R2) / (R1 + R2)**.",
+            "**İki direnç paralelse** pratik formül: **Reş = (R_1 · R_2) / (R_1 + R_2)**.",
             "**Evlerde paralel bağlama kullanılır**; çünkü her aygıt **aynı "
             "gerilimi (220 V)** almalıdır ve biri bozulunca diğerleri çalışmaya "
             "devam etmelidir.",
@@ -123,11 +133,11 @@ NOT = {
              "Eşdeğer direnç: Reş = 2 + 4 = **6 ohm**.",
              "Ana akım: I = V / Reş = 12 / 6 = **2 A**. Seride akım **her yerde "
              "aynıdır**.",
-             "2 ohm üzerindeki gerilim: V1 = I · R1 = 2 × 2 = **4 V**.",
-             "4 ohm üzerindeki gerilim: V2 = I · R2 = 2 × 4 = **8 V**.",
+             "2 ohm üzerindeki gerilim: V_1 = I · R_1 = 2 × 2 = **4 V**.",
+             "4 ohm üzerindeki gerilim: V_2 = I · R_2 = 2 × 4 = **8 V**.",
              "Kontrol: 4 + 8 = 12 V — pil gerilimine eşit, doğru.",
          ],
-         "sonuc": "Reş = 6 ohm, I = 2 A, V1 = 4 V, V2 = 8 V."},
+         "sonuc": "Reş = 6 ohm, I = 2 A, V_1 = 4 V, V_2 = 8 V."},
         {"tur": "cozum",
          "baslik": "Paralel Devre Çözümü",
          "soru": "**12 V**'luk pile **6 ohm** ve **3 ohm**'luk dirençler **paralel** "
@@ -137,10 +147,10 @@ NOT = {
              "**2 ohm**.",
              "Kontrol: 2 ohm, en küçük dirençten (3) küçük — doğru.",
              "Paralelde **gerilim ortaktır**: her iki dirence de **12 V** düşer.",
-             "6 ohm'dan geçen akım: I1 = 12 / 6 = **2 A**.",
-             "3 ohm'dan geçen akım: I2 = 12 / 3 = **4 A**. Ana akım: 2 + 4 = **6 A**.",
+             "6 ohm'dan geçen akım: I_1 = 12 / 6 = **2 A**.",
+             "3 ohm'dan geçen akım: I_2 = 12 / 3 = **4 A**. Ana akım: 2 + 4 = **6 A**.",
          ],
-         "sonuc": "Reş = 2 ohm, I1 = 2 A, I2 = 4 A, ana akım 6 A."},
+         "sonuc": "Reş = 2 ohm, I_1 = 2 A, I_2 = 4 A, ana akım 6 A."},
         {"tur": "taktik", "baslik": "Devre Sorusu Çözme Sırası", "govde":
             "Karışık devrelerde şu sırayı izlersen kaybolmazsın:",
          "ogeler": [
@@ -207,7 +217,7 @@ NOT = {
 
         {"tur": "ezber", "baslik": "Sınav Öncesi Son Bakış", "ogeler": [
             "**Seride akım ortak**, **paralelde gerilim ortak**.",
-            "**Reş(seri) = R1 + R2**; **Reş(paralel) = (R1·R2)/(R1+R2)**.",
+            "**Reş(seri) = R_1 + R_2**; **Reş(paralel) = (R_1·R_2)/(R_1+R_2)**.",
             "Seri eşdeğer **en büyükten büyük**, paralel eşdeğer **en küçükten küçük**.",
             "**V = I · R**; akım-gerilim grafiğinde **eğim = 1/R**.",
             "**R = ρ·L/A**: tel uzarsa direnç **artar**, kalınlaşırsa **azalır**.",
@@ -294,17 +304,17 @@ NOT = {
             "**1/R** değerini verir (direncin tersini).",
             "**Akım her noktada aynıdır**; **gerilim dirençler arasında paylaşılır**.",
             "**Gerilim her kolda aynıdır**; **akım kollar arasında paylaşılır**.",
-            "**Reş = R1 + R2 + R3 + ...**",
-            "**1/Reş = 1/R1 + 1/R2 + 1/R3 + ...**",
-            "**Reş = (R1 · R2) / (R1 + R2).**",
+            "**Reş = R_1 + R_2 + R_3 + ...**",
+            "**1/Reş = 1/R_1 + 1/R_2 + 1/R_3 + ...**",
+            "**Reş = (R_1 · R_2) / (R_1 + R_2).**",
             "**Daha büyüktür.**",
             "**Daha küçüktür.**",
             "Eşit dirençlerde Reş = R/n = 6/3 = **2 ohm**.",
             "2 + 4 = **6 ohm**.",
             "(6 × 3)/(6 + 3) = 18/9 = **2 ohm**.",
             "Reş = 6 ohm → I = 12/6 = **2 A**.",
-            "V1 = 2 × 2 = **4 V**, V2 = 2 × 4 = **8 V** (toplam 12 V).",
-            "Gerilim ortak (12 V): I1 = 12/6 = **2 A**, I2 = 12/3 = **4 A**.",
+            "V_1 = 2 × 2 = **4 V**, V_2 = 2 × 4 = **8 V** (toplam 12 V).",
+            "Gerilim ortak (12 V): I_1 = 12/6 = **2 A**, I_2 = 12/3 = **4 A**.",
             "2 + 4 = **6 A**.",
             "Her aygıt **aynı gerilimi (220 V)** almalıdır; ayrıca biri bozulduğunda **diğerleri çalışmaya devam etmelidir**.",
             "**Devre tamamen kesilir**; hiçbir eleman çalışmaz.",

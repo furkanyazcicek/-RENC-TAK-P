@@ -29,6 +29,16 @@ NOT = {
     "bloklar": [
         # ==========================================================
         {"tur": "bolum", "numara": 1, "baslik": "Problem Çözme Stratejisi"},
+        {"tur": "gorsel", "baslik": "Şema 1 — Her problemde işleyen beş adım",
+         "aciklama": "Problem sorularında kaybedilen zamanın çoğu, denklemi kurmadan "
+                     "hesaba başlamaktan doğar. **Önce bilinmeyeni seç, sonra "
+                     "denklemi kur**; işlem en son adımdır.",
+         "ciz": S.akis([
+             "Oku ve anla", "Bilinmeyeni seç", "Denklemi kur", "Çöz",
+             "Soruyu yanıtla"],
+             ["ne veriliyor,\nne isteniyor", "genelde **en küçük**\nbüyüklük x olur",
+              "verilen ilişkiyi\nmatematiğe çevir", "denklemi\nsadeleştir ve çöz",
+              "x'i değil,\n**sorulanı** yaz"])},
         {"tur": "taktik", "baslik": "Her Problemde İzlenecek Beş Adım", "govde":
             "Problem tipi ne olursa olsun yol aynıdır:",
          "ogeler": [
@@ -105,7 +115,7 @@ NOT = {
          "baslik": "Birim zamanda yapılan iş",
          "ifade": "Bir işi t saatte bitiren birinin 1 saatte yaptığı iş = 1 / t",
          "terimler": [
-             ("Birlikte çalışma", "**Birim işler TOPLANIR**: 1/t1 + 1/t2 = 1/T"),
+             ("Birlikte çalışma", "**Birim işler TOPLANIR**: 1/t_1 + 1/t_2 = 1/T"),
              ("T", "Birlikte bitirme süresi"),
              ("Boşaltan musluk", "Birim işi **çıkarılır** (eksi ile yazılır)"),
          ],
@@ -139,6 +149,25 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 5, "baslik": "Hareket Problemleri"},
+        {"tur": "gorsel", "baslik": "Şema 2 — Hareket problemlerinde üç durum",
+         "aciklama": "Üçünde de temel bağıntı **yol = hız × zaman**'dır; değişen "
+                     "yalnızca hızların nasıl birleştiğidir. Soruyu okurken ilk "
+                     "belirlenmesi gereken şey **yönlerin aynı mı zıt mı** olduğudur.",
+         "ciz": S.karsilastirma(
+             "Zıt yönde (karşılıklı)",
+             ["Aralarındaki mesafe **azalır**",
+              "Hızlar **TOPLANIR**",
+              "Buluşma süresi = **mesafe / (v_1 + v_2)**",
+              "İki araç birbirine doğru gider"],
+             "Aynı yönde (kovalama)",
+             ["Aralarındaki mesafe **azalır ama yavaş**",
+              "Hızlar **ÇIKARILIR**",
+              "Yetişme süresi = **mesafe / (v_1 − v_2)**",
+              "Hızlı olan öndekini yakalar"],
+             "Ters yönde (uzaklaşma)",
+             ["Aralarındaki mesafe **artar**",
+              "Hızlar **TOPLANIR**",
+              "t saat sonra mesafe = **(v_1 + v_2) · t**"])},
         {"tur": "formul",
          "baslik": "Temel hareket bağıntısı",
          "ifade": "Yol = Hız × Zaman        (x = v · t)",
@@ -155,11 +184,11 @@ NOT = {
             "İki araç söz konusuysa durumu belirle:",
          "ogeler": [
              "**Karşılıklı hareket (birbirine doğru)**: hızlar **toplanır**. "
-             "Buluşma süresi = **aradaki mesafe / (v1 + v2)**.",
+             "Buluşma süresi = **aradaki mesafe / (v_1 + v_2)**.",
              "**Aynı yönde hareket (kovalama)**: hızlar **çıkarılır**. "
-             "Yetişme süresi = **aradaki mesafe / (v1 − v2)**.",
+             "Yetişme süresi = **aradaki mesafe / (v_1 − v_2)**.",
              "**Aynı anda zıt yönde ayrılma**: hızlar **toplanır**; "
-             "t saat sonra aralarındaki mesafe = **(v1 + v2) · t**.",
+             "t saat sonra aralarındaki mesafe = **(v_1 + v_2) · t**.",
              "**Tur problemlerinde** (aynı pistte) yeniden buluşma için "
              "**bir tur fark** atması gerekir.",
          ]},

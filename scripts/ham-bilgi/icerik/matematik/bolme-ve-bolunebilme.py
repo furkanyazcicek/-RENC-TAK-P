@@ -29,6 +29,16 @@ NOT = {
     "bloklar": [
         # ==========================================================
         {"tur": "bolum", "numara": 1, "baslik": "Bölme Algoritması"},
+        {"tur": "gorsel", "baslik": "Şema 1 — Bölme işleminin dört elemanı",
+         "aciklama": "Dört eleman arasındaki bağ **A = B · C + K**'dir ve "
+                     "**kalan bölenden küçük olmak zorundadır** (0 ≤ K < B). "
+                     "Sorularda verilmeyen elemanı bu bağıntıdan çekersin.",
+         "ciz": S.kartlar([
+             ("Bölünen (A)", "bölünecek olan\nbüyük sayı"),
+             ("Bölen (B)", "kaça bölündüğü\n— asla 0 olamaz"),
+             ("Bölüm (C)", "kaç kere\ntam bölündüğü"),
+             ("Kalan (K)", "artan miktar\n**0 ≤ K < B**"),
+         ], sutun=4)},
         {"tur": "formul",
          "baslik": "Bölme bağıntısı",
          "ifade": "A = B · C + K",
@@ -63,6 +73,22 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 2, "baslik": "Bölünebilme Kuralları"},
+        {"tur": "gorsel", "baslik": "Şema 2 — Bölünebilme kuralları tek bakışta",
+         "aciklama": "**Bileşik sayılara bölünebilme**, aralarında asal çarpanlarına "
+                     "bölünebilmekle sınanır: 6 = 2 · 3, 12 = 3 · 4, 15 = 3 · 5. "
+                     "Dikkat: 12 için 2 ve 6'ya bakmak **yanlıştır** (2 ile 6 "
+                     "aralarında asal değildir).",
+         "ciz": S.kartlar([
+             ("2 ile", "son basamak\n**çift**"),
+             ("3 ile", "rakamlar toplamı\n**3'ün katı**"),
+             ("4 ile", "son **iki** basamak\n4'ün katı"),
+             ("5 ile", "son basamak\n**0 ya da 5**"),
+             ("6 ile", "hem **2** hem **3**\nkuralı sağlanır"),
+             ("8 ile", "son **üç** basamak\n8'in katı"),
+             ("9 ile", "rakamlar toplamı\n**9'un katı**"),
+             ("10 ile", "son basamak\n**0**"),
+             ("11 ile", "birler − onlar +\n... farkı 11'in katı"),
+         ], sutun=3)},
         {"tur": "tablo",
          "basliklar": ["Sayı", "Kural", "Örnek"],
          "oranlar": [0.12, 0.56, 0.32],

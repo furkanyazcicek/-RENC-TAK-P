@@ -21,25 +21,29 @@ YENİ NOT EKLEME
   scripts/ham-bilgi/icerik/<ders>/<konu-slug>.py dosyası yaz; içinde
   `NOT` adlı bir sözlük bulunsun. Şema için mevcut dosyalara bak.
 
-YAZIM KURALLARI (fontun sınırlarından doğar)
-  · Alt indis kullanılmaz: CO2 · H2SO4 · NH4.
-  · Üstsimge yalnızca ² ve ³ için vardır; ⁰ ve ⁴-⁹ hiçbir fontta yok.
-    Bu yüzden:
-        – Fiziksel BİRİMLERDE ² ve ³ kullanılır: m/s² · cm³ · N/m²
-        – CEBİRSEL üslerde "^" kullanılır: 4^2 · (−2)^4 · x^3 · 10^23
-      Bir notun içinde bu ayrım tutarlı olmalıdır.
-  · Küme sembolleri (⊂ ⊆ ∈ ∪ ∩ ∅) yedek KaTeX fontundan gelir, serbestçe
-    kullanılabilir. Ancak ∉ ve ⊄ hiçbir fontta yok; onlar "elemanı
-    değildir", "alt kümesi değildir" diye yazılır.
+YAZIM KURALLARI
+  · Üs ve alt indis gerçek üstsimge/altsimge olarak dizilir. Metinde
+    işaretle yazılır, PDF'te küçültülüp kaydırılarak basılır:
+        a^n · 2^3 · (−2)^4 · 10^(23) · x^(m+n)   →   aⁿ · 2³ · (−2)⁴ ...
+        CO_2 · H_2SO_4 · NH_4                    →   CO₂ · H₂SO₄ ...
+    Kural: ^ ve _ işaretinden sonra ya tek harf, ya rakam dizisi, ya da
+    parantezli ifade gelir. "2^9(2 − 1)" ifadesinde üs yalnızca 9'dur.
+  · Fiziksel birimlerde hazır karakter de kullanılabilir: m/s² · cm³.
+    Aynı notun içinde tek bir üslup seçilir.
+  · **kalın** işaretlemesi her metin alanında geçerlidir.
+  · Küme sembolleri (⊂ ⊆ ∈ ∪ ∩ ∅) yedek KaTeX fontundan gelir. Ancak
+    ∉ ve ⊄ hiçbir fontta yok; "elemanı değildir", "alt kümesi değildir"
+    diye yazılır.
   · Çift yönlü denge oku (⇌, ⇄) yoktur; "↔" ya da "→" kullanılır.
   · Şüphedeysen `uret.py` zaten durdurur: iki fontta da bulunmayan bir
     karakter varsa PDF üretmeden hata verir.
 """
 
+import re
 from pathlib import Path
 
 from fpdf import FPDF
-from fpdf.enums import MethodReturnValue, XPos, YPos
+from fpdf.enums import XPos, YPos
 
 KOK = Path(__file__).resolve().parent
 FONT_KLASORU = KOK / "fontlar"
@@ -78,6 +82,117 @@ ZEMIN_SOLUK = (248, 248, 252)
 KENAR = 18.0
 UST_KENAR = 20.0
 ALT_KENAR = 16.0
+
+# Üstsimge / alt indis ölçüleri
+PT_MM = 0.3528          # 1 punto kaç mm
+KONUM_OLCEK = 0.66      # üst/alt yazının punto oranı
+UST_KAYMA = 0.32        # yukarı kayma (punto oranı)
+ALT_KAYMA = 0.16        # aşağı kayma (punto oranı)
+
+# Parantez, içinde işlem yoksa kaldırılır: 10^(−4) → 10⁻⁴ ve
+# E_(k1) → Eₖ₁ okunur; ama a^(m+n) ve a^(m/n) parantezini korur.
+_YALIN_US = re.compile(
+    r"^[−+-]?(?=.)[0-9]*[A-Za-zğüşıöçĞÜŞİÖÇ]*[0-9]*$")
+
+
+def _us_icerigi(metin, i, isaret):
+    """
+    `^` ya da `_` işaretinden sonraki üs/indis metnini ayıklar.
+
+    Dönen: (icerik, sonraki_konum). İçerik yoksa (None, i) döner ve
+    işaret düz metin olarak basılır.
+
+    Üç biçim tanınır:
+      ^(m+n)   parantezli — parantez içi dengeli okunur
+      ^23      bir ya da daha çok rakam
+      ^n       tek harf
+    '2^9(2 − 1)' ifadesinde üs yalnızca **9**'dur; ardından gelen parantez
+    ayrı bir çarpandır. Bu yüzden rakam okunduktan sonra parantez aranmaz.
+    """
+    if i >= len(metin):
+        return None, i
+    if metin[i] == "(":
+        derinlik, j = 0, i
+        while j < len(metin):
+            if metin[j] == "(":
+                derinlik += 1
+            elif metin[j] == ")":
+                derinlik -= 1
+                if derinlik == 0:
+                    ic = metin[i + 1:j]
+                    return (ic if _YALIN_US.match(ic) else f"({ic})"), j + 1
+            j += 1
+        return None, i
+    j = i
+    while j < len(metin) and metin[j].isdigit():
+        j += 1
+    if j > i:
+        return metin[i:j], j
+    if metin[i].isalpha():
+        return metin[i], i + 1
+    return None, i
+
+
+def cozumle(metin):
+    """
+    Metni satır → kelime → parça ağacına ayırır.
+
+    Parça: {"yazi": str, "kalin": bool, "konum": None | "UST" | "ALT"}
+    Kelime: boşlukla bölünmeyen parçalar listesi.
+    Satır: `\\n` ile ayrılmış kelime listesi.
+
+    Tanınan işaretler: **kalın**, ^üs, _indis.
+    """
+    bloklar = []
+    for satir in str(metin).split("\n"):
+        parcalar, tampon, kalin, i = [], "", False, 0
+
+        def tamponu_bosalt():
+            nonlocal tampon
+            if tampon:
+                parcalar.append({"yazi": tampon, "kalin": kalin, "konum": None})
+                tampon = ""
+
+        while i < len(satir):
+            if satir.startswith("**", i):
+                tamponu_bosalt()
+                kalin = not kalin
+                i += 2
+                continue
+            if satir[i] in "^_":
+                ic, sonraki = _us_icerigi(satir, i + 1, satir[i])
+                if ic is not None:
+                    tamponu_bosalt()
+                    parcalar.append({
+                        "yazi": ic, "kalin": kalin,
+                        "konum": "UST" if satir[i] == "^" else "ALT",
+                    })
+                    i = sonraki
+                    continue
+            tampon += satir[i]
+            i += 1
+        tamponu_bosalt()
+
+        # Parçaları boşluklarda kelimelere böl
+        kelimeler, gecerli = [], []
+        for parca in parcalar:
+            if parca["konum"] is None and " " in parca["yazi"]:
+                dilimler = parca["yazi"].split(" ")
+                for k, dilim in enumerate(dilimler):
+                    if k:
+                        # Boş kelime de eklenir: art arda gelen boşluklar
+                        # böylece korunur. Formül satırlarındaki hizalama
+                        # boşlukları buna dayanıyor.
+                        kelimeler.append(gecerli)
+                        gecerli = []
+                    if dilim:
+                        gecerli.append({**parca, "yazi": dilim})
+            else:
+                gecerli.append(parca)
+        if gecerli:
+            kelimeler.append(gecerli)
+        bloklar.append(kelimeler or [[{"yazi": "", "kalin": False, "konum": None}]])
+    return bloklar
 
 
 class HamBilgiPDF(FPDF):
@@ -137,28 +252,110 @@ class HamBilgiPDF(FPDF):
 
     # -------------------- ölçüm yardımcıları --------------------
 
+    # -------------------- zengin metin --------------------
+    #
+    # multi_cell yalnızca **kalın** işaretlemesini tanır; üstsimge ve alt
+    # indis desteği yoktur. Matematikte üsler, kimyada formüller bunlarsız
+    # doğru yazılamadığı için satır dizimi burada elle yapılıyor: metin
+    # parçalara ayrılır, her parça kendi punto ve taban çizgisiyle çizilir.
+
+    def _parca_fontu(self, parca, boyut, taban_stil):
+        """Bir parçanın punto ve stilini ayarlar; kullanılan puntoyu döndürür."""
+        stil = taban_stil
+        if parca["kalin"] and "B" not in stil:
+            stil += "B"
+        p = boyut * KONUM_OLCEK if parca["konum"] else boyut
+        self.set_font("Liberation", stil, p)
+        return p
+
+    def _parca_genislik(self, parca, boyut, taban_stil):
+        self._parca_fontu(parca, boyut, taban_stil)
+        return self.get_string_width(parca["yazi"])
+
+    def _satirlara_bol(self, metin, genislik, boyut, taban_stil):
+        """Metni, verilen genişliğe sığacak satırlara böler."""
+        satirlar = []
+        for blok in cozumle(metin):                 # \n ile ayrılmış bloklar
+            gecerli, gecerli_en = [], 0.0
+            for kelime in blok:
+                en = sum(self._parca_genislik(p, boyut, taban_stil) for p in kelime)
+                bosluk = 0.0
+                if gecerli:
+                    self.set_font("Liberation", taban_stil, boyut)
+                    bosluk = self.get_string_width(" ")
+                if gecerli and gecerli_en + bosluk + en > genislik:
+                    satirlar.append(gecerli)
+                    gecerli, gecerli_en = [kelime], en
+                else:
+                    gecerli.append(kelime)
+                    gecerli_en += bosluk + en
+            satirlar.append(gecerli)
+        return satirlar
+
+    def zengin_metin(self, genislik, satir_yuksekligi, metin, boyut=None,
+                     stil="", renk=None, hiza="L", olcum=False):
+        """
+        Üstsimge ve alt indis destekli, satır kaydıran metin çizer.
+
+        `olcum=True` verilirse hiçbir şey çizmez, yalnızca kaplayacağı
+        yüksekliği döndürür. Kutu ve tablo yükseklikleri buradan gelir.
+        """
+        boyut = boyut or self.font_size_pt
+        satirlar = self._satirlara_bol(metin, genislik, boyut, stil)
+        if olcum:
+            return len(satirlar) * satir_yuksekligi
+
+        if renk:
+            self.set_text_color(*renk)
+        sol, y = self.get_x(), self.get_y()
+        for satir in satirlar:
+            enler = [sum(self._parca_genislik(p, boyut, stil) for p in k) for k in satir]
+            self.set_font("Liberation", stil, boyut)
+            bosluk_en = self.get_string_width(" ")
+            toplam = sum(enler) + bosluk_en * max(0, len(satir) - 1)
+            if hiza == "C":
+                x = sol + (genislik - toplam) / 2
+            elif hiza == "R":
+                x = sol + genislik - toplam
+            else:
+                x = sol
+            for kelime in satir:
+                for parca in kelime:
+                    p = self._parca_fontu(parca, boyut, stil)
+                    kayma = 0.0
+                    if parca["konum"] == "UST":
+                        kayma = -boyut * UST_KAYMA * PT_MM
+                    elif parca["konum"] == "ALT":
+                        kayma = boyut * ALT_KAYMA * PT_MM
+                    self.set_xy(x, y + kayma)
+                    self.cell(self.get_string_width(parca["yazi"]),
+                              satir_yuksekligi, parca["yazi"])
+                    x += self.get_string_width(parca["yazi"])
+                x += bosluk_en
+            y += satir_yuksekligi
+        self.set_xy(sol, y)
+        self.set_font("Liberation", stil, boyut)
+        return len(satirlar) * satir_yuksekligi
+
     def metin_yuksekligi(self, metin, genislik, satir_yuksekligi, markdown=True):
         """
         Metnin kaç mm yer kaplayacağını, hiçbir şey çizmeden hesaplar.
 
         Kutuların ve tablo satırlarının yüksekliği buradan gelir; yanlış
-        ölçüm doğrudan taşan çerçeve demektir. `offset_rendering` bu iş
-        için kullanılamaz: bağlam bitince konumu geri sardığı için ölçü
-        her zaman sıfır çıkar.
+        ölçüm doğrudan taşan çerçeve demektir.
         """
-        return self.multi_cell(
-            genislik, satir_yuksekligi, metin, markdown=markdown,
-            dry_run=True, output=MethodReturnValue.HEIGHT,
-            new_x=XPos.LMARGIN, new_y=YPos.NEXT,
-        )
+        return self.zengin_metin(genislik, satir_yuksekligi, metin,
+                                 boyut=self.font_size_pt,
+                                 stil=self._taban_stil(), olcum=True)
 
     def satir_sayisi(self, metin, genislik, satir_yuksekligi, markdown=True):
         """Metnin kaç satıra bölüneceğini döndürür."""
-        return len(self.multi_cell(
-            genislik, satir_yuksekligi, metin, markdown=markdown,
-            dry_run=True, output=MethodReturnValue.LINES,
-            new_x=XPos.LMARGIN, new_y=YPos.NEXT,
-        ))
+        return round(self.metin_yuksekligi(metin, genislik, satir_yuksekligi)
+                     / satir_yuksekligi)
+
+    def _taban_stil(self):
+        """O an ayarlı olan font stilini (kalın/italik) döndürür."""
+        return self.font_style.replace("U", "")
 
     def yer_ayir(self, yukseklik):
         """İstenen yükseklik sayfaya sığmıyorsa yeni sayfaya geçer."""
@@ -174,10 +371,7 @@ def _yaz(pdf, metin, boyut=10.5, stil="", satir=5.0, renk=MUREKKEP, alt_bosluk=0
     pdf.set_font("Liberation", stil, boyut)
     pdf.set_text_color(*renk)
     pdf.set_x(KENAR + girinti)
-    pdf.multi_cell(
-        pdf.epw - girinti, satir, metin, markdown=True,
-        new_x=XPos.LMARGIN, new_y=YPos.NEXT,
-    )
+    pdf.zengin_metin(pdf.epw - girinti, satir, metin)
     if alt_bosluk:
         pdf.ln(alt_bosluk)
 
@@ -201,13 +395,13 @@ def kapak(pdf, not_verisi):
     pdf.set_font("Liberation", "B", 25)
     pdf.set_text_color(*MUREKKEP)
     pdf.set_x(KENAR)
-    pdf.multi_cell(pdf.epw, 10.5, not_verisi["baslik"], new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.zengin_metin(pdf.epw, 10.5, not_verisi["baslik"])
     pdf.ln(2.5)
 
     pdf.set_font("Liberation", "", 11.5)
     pdf.set_text_color(*MUREKKEP_SOLUK)
     pdf.set_x(KENAR)
-    pdf.multi_cell(pdf.epw, 5.6, not_verisi["alt_baslik"], new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.zengin_metin(pdf.epw, 5.6, not_verisi["alt_baslik"])
     pdf.ln(7)
 
     # Künye kutusu
@@ -239,8 +433,7 @@ def kapak(pdf, not_verisi):
         pdf.set_font("Liberation", "", 9.4)
         pdf.set_text_color(*MUREKKEP)
         pdf.set_xy(KENAR + 42, y0)
-        pdf.multi_cell(pdf.epw - 48, 4.8, deger, markdown=True,
-                       new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        pdf.zengin_metin(pdf.epw - 48, 4.8, deger)
 
     # İçindekiler — bölüm başlıklarından türetilir, elle yazılmaz.
     basliklar = [b for b in not_verisi["bloklar"] if b["tur"] == "bolum"]
@@ -267,8 +460,7 @@ def kapak(pdf, not_verisi):
             pdf.set_font("Liberation", "", 9.8)
             pdf.set_text_color(*MUREKKEP)
             pdf.set_xy(KENAR + 9, y0)
-            pdf.multi_cell(pdf.epw - 9, 5.4, b["baslik"],
-                           new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+            pdf.zengin_metin(pdf.epw - 9, 5.4, b["baslik"])
 
     pdf.set_y(pdf.h - 32)
     pdf.set_draw_color(*CIZGI_INCE)
@@ -277,8 +469,7 @@ def kapak(pdf, not_verisi):
     pdf.set_font("Liberation", "", 8.4)
     pdf.set_text_color(*MUREKKEP_SOLUK)
     pdf.set_x(KENAR)
-    pdf.multi_cell(pdf.epw, 4.2, not_verisi["kapak_dipnot"],
-                   new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.zengin_metin(pdf.epw, 4.2, not_verisi["kapak_dipnot"])
 
 
 def bolum(pdf, numara, baslik):
@@ -294,7 +485,7 @@ def bolum(pdf, numara, baslik):
     pdf.set_font("Liberation", "B", 14)
     pdf.set_text_color(*MUREKKEP)
     pdf.set_xy(KENAR + 12, y0)
-    pdf.multi_cell(pdf.epw - 12, 6.0, baslik, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.zengin_metin(pdf.epw - 12, 6.0, baslik)
     pdf.set_draw_color(*CIZGI)
     pdf.set_line_width(0.4)
     pdf.line(KENAR, pdf.get_y() + 1.6, pdf.w - KENAR, pdf.get_y() + 1.6)
@@ -310,7 +501,7 @@ def altbolum(pdf, baslik):
     pdf.set_font("Liberation", "B", 11)
     pdf.set_text_color(*MARKA_KOYU)
     pdf.set_xy(KENAR + 4.6, y0)
-    pdf.multi_cell(pdf.epw - 4.6, 5.4, baslik, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.zengin_metin(pdf.epw - 4.6, 5.4, baslik)
     pdf.ln(1.4)
 
 
@@ -389,14 +580,13 @@ def _kutu(pdf, baslik, govde, cerceve, zemin, ogeler=None):
     pdf.set_xy(KENAR + 6, y0 + ust_bosluk)
     pdf.set_font("Liberation", "B", 9.6)
     pdf.set_text_color(*cerceve)
-    pdf.multi_cell(ic_genislik, 4.6, baslik, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.zengin_metin(ic_genislik, 4.6, baslik)
 
     pdf.set_text_color(*MUREKKEP)
     if govde:
         pdf.set_x(KENAR + 6)
         pdf.set_font("Liberation", "", 9.7)
-        pdf.multi_cell(ic_genislik, 4.8, govde, markdown=True,
-                       new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        pdf.zengin_metin(ic_genislik, 4.8, govde)
     if ogeler:
         pdf.ln(0.6)
         for oge in ogeler:
@@ -405,8 +595,7 @@ def _kutu(pdf, baslik, govde, cerceve, zemin, ogeler=None):
             pdf.circle(KENAR + 7.6, y1 + 2.3, 0.85, style="F")
             pdf.set_x(KENAR + 11)
             pdf.set_font("Liberation", "", 9.7)
-            pdf.multi_cell(ic_genislik - 5, 4.6, oge, markdown=True,
-                           new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+            pdf.zengin_metin(ic_genislik - 5, 4.6, oge)
             pdf.ln(0.8)
 
     pdf.set_y(y0 + yukseklik + 3)
@@ -456,8 +645,7 @@ def tablo(pdf, basliklar, satirlar, oranlar=None, boyut=8.8):
         pdf.set_text_color(255, 255, 255)
         for metin, gen in zip(basliklar, genislikler):
             pdf.set_xy(x + 1.5, y + 1.3)
-            pdf.multi_cell(gen - 3, satir_yuksekligi, metin,
-                           new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+            pdf.zengin_metin(gen - 3, satir_yuksekligi, metin)
             x += gen
         pdf.set_text_color(*MUREKKEP)
         pdf.set_y(y + h)
@@ -480,8 +668,7 @@ def tablo(pdf, basliklar, satirlar, oranlar=None, boyut=8.8):
         pdf.set_font("Liberation", "", boyut)
         for j, (metin, gen) in enumerate(zip(satir, genislikler)):
             pdf.set_xy(x + 1.5, y + 1.3)
-            pdf.multi_cell(gen - 3, satir_yuksekligi, metin, markdown=True,
-                           new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+            pdf.zengin_metin(gen - 3, satir_yuksekligi, metin)
             if j:
                 pdf.set_draw_color(*CIZGI_INCE)
                 pdf.line(x, y, x, y + h)
@@ -504,11 +691,19 @@ def formul(pdf, ifade, baslik=None, terimler=None, not_metni=None):
         yukseklik += 4.6
     pdf.set_font("Liberation", "B", 13)
     yukseklik += pdf.metin_yuksekligi(ifade, ic_genislik, 6.4, markdown=False)
+    # Etiket sütunu, en uzun etikete göre genişler. Sabit genişlikte
+    # "Kuvvetin kuvveti" gibi uzun etiketler açıklama sütununa taşıyordu.
+    etiket_en = 22.0
+    if terimler:
+        pdf.set_font("Liberation", "B", 9)
+        etiket_en = max(22.0, *(pdf.get_string_width(s) + 3 for s, _ in terimler))
+        etiket_en = min(etiket_en, ic_genislik * 0.42)
+    aciklama_en = ic_genislik - etiket_en - 6
     if terimler:
         pdf.set_font("Liberation", "", 9)
         yukseklik += 1.6
         for _, anlam in terimler:
-            yukseklik += max(4.4, pdf.metin_yuksekligi(anlam, ic_genislik - 24, 4.4))
+            yukseklik += max(4.4, pdf.metin_yuksekligi(anlam, aciklama_en, 4.4))
     if not_metni:
         pdf.set_font("Liberation", "", 9)
         yukseklik += 1.4 + pdf.metin_yuksekligi(not_metni, ic_genislik, 4.4)
@@ -526,13 +721,12 @@ def formul(pdf, ifade, baslik=None, terimler=None, not_metni=None):
         pdf.set_font("Liberation", "B", 8.6)
         pdf.set_text_color(*MARKA_KOYU)
         pdf.set_x(KENAR + 6)
-        pdf.multi_cell(ic_genislik, 4.6, buyut(baslik), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        pdf.zengin_metin(ic_genislik, 4.6, buyut(baslik))
 
     pdf.set_font("Liberation", "B", 13)
     pdf.set_text_color(*MUREKKEP)
     pdf.set_x(KENAR + 6)
-    pdf.multi_cell(ic_genislik, 6.4, ifade, align="C",
-                   new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.zengin_metin(ic_genislik, 6.4, ifade, hiza="C")
 
     if terimler:
         pdf.ln(1.6)
@@ -541,20 +735,17 @@ def formul(pdf, ifade, baslik=None, terimler=None, not_metni=None):
             pdf.set_font("Liberation", "B", 9)
             pdf.set_text_color(*MARKA_KOYU)
             pdf.set_xy(KENAR + 8, y1)
-            pdf.cell(22, 4.4, sembol)
-            pdf.set_font("Liberation", "", 9)
+            pdf.zengin_metin(etiket_en, 4.4, sembol, boyut=9, stil="B")
             pdf.set_text_color(*MUREKKEP)
-            pdf.set_xy(KENAR + 30, y1)
-            pdf.multi_cell(ic_genislik - 24, 4.4, anlam, markdown=True,
-                           new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+            pdf.set_xy(KENAR + 8 + etiket_en, y1)
+            pdf.zengin_metin(aciklama_en, 4.4, anlam, boyut=9)
 
     if not_metni:
         pdf.ln(1.4)
         pdf.set_font("Liberation", "", 9)
         pdf.set_text_color(*MUREKKEP_SOLUK)
         pdf.set_x(KENAR + 6)
-        pdf.multi_cell(ic_genislik, 4.4, not_metni, markdown=True,
-                       new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        pdf.zengin_metin(ic_genislik, 4.4, not_metni)
 
     pdf.set_y(y0 + yukseklik + 3)
     pdf.set_text_color(*MUREKKEP)
@@ -589,13 +780,12 @@ def cozum(pdf, soru, adimlar, sonuc=None, baslik="Çözümlü Örnek"):
     pdf.set_xy(KENAR + 6, y0 + 2.6)
     pdf.set_font("Liberation", "B", 9.2)
     pdf.set_text_color(*MARKA_KOYU)
-    pdf.multi_cell(ic_genislik, 4.6, buyut(baslik), new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.zengin_metin(ic_genislik, 4.6, buyut(baslik))
 
     pdf.set_x(KENAR + 6)
     pdf.set_font("Liberation", "", 9.8)
     pdf.set_text_color(*MUREKKEP)
-    pdf.multi_cell(ic_genislik, 4.8, soru, markdown=True,
-                   new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.zengin_metin(ic_genislik, 4.8, soru)
     pdf.ln(2.0)
 
     for i, adim in enumerate(adimlar, start=1):
@@ -607,8 +797,7 @@ def cozum(pdf, soru, adimlar, sonuc=None, baslik="Çözümlü Örnek"):
         pdf.set_font("Liberation", "", 9.4)
         pdf.set_text_color(*MUREKKEP)
         pdf.set_xy(KENAR + 14, y1)
-        pdf.multi_cell(ic_genislik - 8, 4.6, adim, markdown=True,
-                       new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        pdf.zengin_metin(ic_genislik - 8, 4.6, adim)
         pdf.ln(1.0)
 
     if sonuc:
@@ -616,8 +805,7 @@ def cozum(pdf, soru, adimlar, sonuc=None, baslik="Çözümlü Örnek"):
         pdf.set_x(KENAR + 14)
         pdf.set_font("Liberation", "B", 9.8)
         pdf.set_text_color(*BASARI)
-        pdf.multi_cell(ic_genislik - 8, 4.8, sonuc, markdown=True,
-                       new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        pdf.zengin_metin(ic_genislik - 8, 4.8, sonuc)
 
     pdf.set_y(y0 + yukseklik + 3)
     pdf.set_text_color(*MUREKKEP)
@@ -648,7 +836,7 @@ def gorsel(pdf, ciz, yukseklik=None, baslik=None, aciklama=None):
         pdf.set_font("Liberation", "B", 9.2)
         pdf.set_text_color(*MARKA_KOYU)
         pdf.set_x(KENAR)
-        pdf.multi_cell(pdf.epw, 5, baslik, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        pdf.zengin_metin(pdf.epw, 5, baslik)
 
     y0 = pdf.get_y() + 1.5
     pdf.set_draw_color(*CIZGI)
@@ -662,8 +850,7 @@ def gorsel(pdf, ciz, yukseklik=None, baslik=None, aciklama=None):
         pdf.set_font("Liberation", "I", 8.6)
         pdf.set_text_color(*MUREKKEP_SOLUK)
         pdf.set_x(KENAR + 2)
-        pdf.multi_cell(pdf.epw - 4, 4.2, aciklama, markdown=True,
-                       new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        pdf.zengin_metin(pdf.epw - 4, 4.2, aciklama)
     pdf.set_text_color(*MUREKKEP)
     pdf.ln(2.5)
 
@@ -678,8 +865,7 @@ def fasikul(pdf, baslik, giris, sorular, satir_sayisi=2):
     pdf.set_font("Liberation", "", 10)
     pdf.set_text_color(*MUREKKEP)
     pdf.set_x(KENAR)
-    pdf.multi_cell(pdf.epw, 5.0, giris, markdown=True,
-                   new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.zengin_metin(pdf.epw, 5.0, giris)
     pdf.ln(4)
 
     for i, soru in enumerate(sorular, start=1):
@@ -697,8 +883,7 @@ def fasikul(pdf, baslik, giris, sorular, satir_sayisi=2):
         pdf.set_font("Liberation", "", 10)
         pdf.set_text_color(*MUREKKEP)
         pdf.set_xy(KENAR + 9, y0)
-        pdf.multi_cell(metin_genislik, 4.9, soru, markdown=True,
-                       new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        pdf.zengin_metin(metin_genislik, 4.9, soru)
 
         pdf.ln(1.6)
         pdf.set_draw_color(*CIZGI_INCE)

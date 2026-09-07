@@ -51,6 +51,19 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 2, "baslik": "Alt Küme"},
+        {"tur": "gorsel", "baslik": "Şema 1 — Alt küme sayıları nereden geliyor?",
+         "aciklama": "n elemanlı bir kümenin her elemanı için **\"alsam mı almasam "
+                     "mı\"** diye iki seçenek vardır; bu yüzden toplam alt küme "
+                     "sayısı **2^n**'dir. Boş küme ve kümenin kendisi de alt "
+                     "kümedir — özalt küme sayısında yalnızca **kendisi** çıkarılır.",
+         "ciz": S.kartlar([
+             ("Alt küme sayısı", "**2^n**\nn = eleman sayısı"),
+             ("Özalt küme", "**2^n − 1**\nkümenin kendisi hariç"),
+             ("k elemanlı alt küme", "**C(n, k)**\nkombinasyonla bulunur"),
+             ("Belirli 1 elemanı\nİÇEREN", "**2^(n−1)**"),
+             ("Belirli 1 elemanı\nİÇERMEYEN", "**2^(n−1)**"),
+             ("Örnek: n = 4", "16 alt küme\n15 özalt küme"),
+         ], sutun=3)},
         {"tur": "formul",
          "baslik": "Alt küme sayıları",
          "ifade": "Alt küme sayısı = 2^n\n"
@@ -106,7 +119,7 @@ NOT = {
          "not": "**Üç küme için**: s(A∪B∪C) = s(A) + s(B) + s(C) − s(A∩B) − "
                 "s(A∩C) − s(B∩C) + s(A∩B∩C). İkişerli kesişimler çıkarılır, "
                 "üçlü kesişim **geri eklenir**."},
-        {"tur": "gorsel", "baslik": "Şema 1 — İki kümeli Venn bölgeleri",
+        {"tur": "gorsel", "baslik": "Şema 2 — İki kümeli Venn bölgeleri",
          "aciklama": "İki kümeli bir Venn şemasında **dört bölge** vardır. "
                      "Problem çözerken bu dört bölgeyi ayrı ayrı adlandır.",
          "ciz": S.kartlar([

@@ -52,15 +52,15 @@ NOT = {
             "(a ve b tam sayı, **b sıfırdan farklı**). Ondalık açılımı **sonlu** "
             "ya da **devirli** olur.",
             "**İrrasyonel sayılar**: a/b biçiminde **yazılamayan** sayılar. "
-            "Ondalık açılımı **sonsuz ve devirsizdir**. Örnek: kök 2, kök 3, pi.",
+            "Ondalık açılımı **sonsuz ve devirsizdir**. Örnek: √2, √3, pi.",
             "**Gerçek (reel) sayılar (R)**: Rasyonel ve irrasyonel sayıların "
             "**birleşimidir**.",
         ]},
         {"tur": "tuzak", "baslik": "Her Kök İrrasyonel Değildir", "govde":
-            "**kök 4 = 2**'dir ve bu bir **tam sayıdır**, irrasyonel değildir. "
+            "**√4 = 2**'dir ve bu bir **tam sayıdır**, irrasyonel değildir. "
             "Bir kökün irrasyonel olması için içindeki sayının **tam kare "
-            "olmaması** gerekir. kök 9, kök 16, kök 25 rasyoneldir; "
-            "kök 2, kök 3, kök 5 irrasyoneldir. Bu ayrım doğrudan sorulur."},
+            "olmaması** gerekir. √9, √16, √25 rasyoneldir; "
+            "√2, √3, √5 irrasyoneldir. Bu ayrım doğrudan sorulur."},
         {"tur": "dikkat", "baslik": "Sıfır Hangi Kümelerdedir?", "govde":
             "**Sıfır**: doğal sayıdır, tam sayıdır, rasyoneldir, gerçek sayıdır. "
             "**Ama sayma sayısı değildir**, **pozitif değildir**, **negatif "
@@ -131,6 +131,19 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 4, "baslik": "Ardışık Sayılar"},
+        {"tur": "gorsel", "baslik": "Şema 2 — Ardışık sayı formülleri",
+         "aciklama": "Ardışık sayı sorularının tamamı **terim sayısı** ve "
+                     "**ortalama** üzerinden çözülür: toplam = terim sayısı × "
+                     "ortalama, ortalama da **(ilk + son) / 2**'dir. Bu iki cümle "
+                     "aşağıdaki formüllerin hepsini üretir.",
+         "ciz": S.kartlar([
+             ("Terim sayısı", "**(son − ilk) / artış + 1**"),
+             ("Toplam", "**terim sayısı × (ilk + son) / 2**"),
+             ("1'den n'e kadar", "**n · (n + 1) / 2**"),
+             ("İlk n tek sayı", "**n²**"),
+             ("İlk n çift sayı", "**n · (n + 1)**"),
+             ("Kareler toplamı", "**n(n+1)(2n+1) / 6**"),
+         ], sutun=3)},
         {"tur": "formul",
          "baslik": "Ardışık sayıların gösterimi",
          "ifade": "Ardışık tam sayılar: n, n+1, n+2, ...\n"
@@ -217,7 +230,7 @@ NOT = {
          "govde": "Sayının **kareköküne kadar** olan asal sayılara bölünüp "
                   "bölünmediğine bakılır:",
          "ogeler": [
-             "Örnek: **97** asal mı? kök 97 ≈ 9,8. O hâlde **2, 3, 5, 7**'ye "
+             "Örnek: **97** asal mı? √97 ≈ 9,8. O hâlde **2, 3, 5, 7**'ye "
              "bölünüyor mu diye bak.",
              "97 çift değil (2'ye bölünmez), rakam toplamı 16 (3'e bölünmez), "
              "5 ile bitmiyor, 7 × 13 = 91 ve 7 × 14 = 98 (7'ye bölünmez).",
@@ -256,7 +269,7 @@ NOT = {
             "**N ⊂ Z ⊂ Q ⊂ R**; irrasyoneller Q'nun dışındadır.",
             "**Sıfır**: doğal, tam, rasyonel ve **çifttir**; ama sayma sayısı, "
             "pozitif ya da negatif **değildir**.",
-            "**kök 4 = 2** rasyoneldir; irrasyonel olmak için içi **tam kare "
+            "**√4 = 2** rasyoneldir; irrasyonel olmak için içi **tam kare "
             "olmamalıdır**.",
             "Toplamda sonuç **tek terim sayısı tekse tektir**.",
             "Çarpmada **bir tane bile çift varsa sonuç çifttir**.",
@@ -282,8 +295,8 @@ NOT = {
             "Sıfır hangi sayı kümelerine aittir, hangilerine ait değildir?",
             "Rasyonel sayı tanımını yazınız ve ondalık açılımı hakkında ne söylenebilir?",
             "İrrasyonel sayıya üç örnek veriniz.",
-            "kök 4 irrasyonel midir? Gerekçelendiriniz.",
-            "kök 12 rasyonel midir irrasyonel midir?",
+            "√4 irrasyonel midir? Gerekçelendiriniz.",
+            "√12 rasyonel midir irrasyonel midir?",
             "Bir sayının irrasyonel köklü olması için içindeki sayı nasıl olmalıdır?",
             "0,333... sayısı rasyonel midir? Neden?",
             "Tek ve çift sayının genel gösterimini yazınız.",
@@ -334,9 +347,9 @@ NOT = {
             "**Sayma sayıları 1'den başlar** (1, 2, 3, ...); **doğal sayılara sıfır da dâhildir** (0, 1, 2, ...).",
             "**Aittir**: doğal, tam, rasyonel, gerçek sayılar. **Ait değildir**: sayma sayıları, pozitif sayılar, negatif sayılar.",
             "**a/b** biçiminde yazılabilen sayılardır (a, b tam sayı ve b sıfırdan farklı). Ondalık açılımı **sonlu** ya da **devirlidir**.",
-            "**kök 2, kök 3, pi** (kök 5, e de yazılabilir).",
-            "**İrrasyonel değildir.** kök 4 = **2**'dir; bir tam sayıdır, dolayısıyla rasyoneldir.",
-            "**İrrasyoneldir.** 12 tam kare değildir; kök 12 = 2·kök 3 biçimine iner ama kök 3 irrasyoneldir.",
+            "**√2, √3, pi** (√5, e de yazılabilir).",
+            "**İrrasyonel değildir.** √4 = **2**'dir; bir tam sayıdır, dolayısıyla rasyoneldir.",
+            "**İrrasyoneldir.** 12 tam kare değildir; √12 = 2·√3 biçimine iner ama √3 irrasyoneldir.",
             "İçindeki sayı **tam kare olmamalıdır**.",
             "**Rasyoneldir.** Ondalık açılımı **devirlidir** (1/3 biçiminde yazılabilir).",
             "**Çift: 2n**, **Tek: 2n + 1** (n tam sayı).",
@@ -370,7 +383,7 @@ NOT = {
             "**2**'dir. **Tek çift asal sayıdır**; diğer bütün asal sayılar tektir.",
             "Yalnızca **bir tane** pozitif böleni vardır (kendisi); tanım gereği asal sayının **iki** böleni olmalıdır.",
             "**2, 3, 5, 7, 11, 13, 17, 19.**",
-            "kök 97 ≈ 9,8 → 2, 3, 5, 7'ye bölünüyor mu bakılır. Hiçbirine bölünmez → **asaldır**.",
+            "√97 ≈ 9,8 → 2, 3, 5, 7'ye bölünüyor mu bakılır. Hiçbirine bölünmez → **asaldır**.",
             "**Asal değildir.** 91 = **7 × 13**.",
             "İki sayının **1'den başka ortak böleni bulunmamasıdır**.",
             "**Aralarında asaldır** (ortak bölenleri yalnızca 1). Ama **ikisi de asal sayı değildir**.",

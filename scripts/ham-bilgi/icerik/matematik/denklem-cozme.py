@@ -118,10 +118,29 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 3, "baslik": "İkinci Dereceden Denklemler"},
+        {"tur": "gorsel", "baslik": "Şema 2 — Diskriminant kaç kök olduğunu söyler",
+         "aciklama": "**Δ = b² − 4ac** hesaplandığında denklemin kaç gerçek kökü "
+                     "olduğu daha çözmeden bilinir. Grafikte bu, parabolün x eksenini "
+                     "kaç noktada kestiğidir: iki nokta, tek nokta (teğet) ya da hiç.",
+         "ciz": S.grafik_seti([
+             ("Δ > 0 — iki kök", "x", "y",
+              [("", [(0.10, 0.86), (0.24, 0.50), (0.38, 0.28), (0.50, 0.22),
+                     (0.62, 0.28), (0.76, 0.50), (0.90, 0.86)], S.MARKA)],
+              [(0.06, 0.06, "x eksenini **iki** noktada keser")]),
+             ("Δ = 0 — çakışık kök", "x", "y",
+              [("", [(0.10, 0.86), (0.24, 0.58), (0.38, 0.42), (0.50, 0.40),
+                     (0.62, 0.42), (0.76, 0.58), (0.90, 0.86)], S.BASARI)],
+              [(0.06, 0.06, "x eksenine **teğet**tir")]),
+             ("Δ < 0 — kök yok", "x", "y",
+              [("", [(0.10, 0.94), (0.24, 0.72), (0.38, 0.60), (0.50, 0.56),
+                     (0.62, 0.60), (0.76, 0.72), (0.90, 0.94)], S.TEHLIKE)],
+              [(0.06, 0.06, "x eksenini **kesmez**")]),
+         ], sifir=0.40,
+            ortak_not="Kökler toplamı = −b/a,  kökler çarpımı = c/a.  Bu ikisi Δ'dan bağımsızdır.")},
         {"tur": "formul",
          "baslik": "Genel biçim ve çözüm formülü",
          "ifade": "a·x^2 + b·x + c = 0        (a ≠ 0)\n\n"
-                  "x = ( −b ± kök(b^2 − 4ac) ) / (2a)",
+                  "x = ( −b ± √(b^2 − 4ac) ) / (2a)",
          "terimler": [
              ("Diskriminant", "**Δ = b^2 − 4ac** — kök sayısını belirler"),
              ("Δ > 0", "**İki farklı** gerçek kök"),
@@ -148,42 +167,42 @@ NOT = {
              "Katsayılar: a = 2, b = −4, c = −1.",
              "Diskriminantı hesapla: Δ = (−4)^2 − 4(2)(−1) = 16 + 8 = **24**.",
              "Δ > 0 → **iki farklı gerçek kök** var.",
-             "Formüle koy: x = (4 ± kök24) / 4.",
-             "kök24 = 2·kök6 → x = (4 ± 2·kök6) / 4 = **(2 ± kök6) / 2**.",
+             "Formüle koy: x = (4 ± √24) / 4.",
+             "√24 = 2·√6 → x = (4 ± 2·√6) / 4 = **(2 ± √6) / 2**.",
          ],
-         "sonuc": "Kökler (2 + kök6)/2 ve (2 − kök6)/2'dir."},
+         "sonuc": "Kökler (2 + √6)/2 ve (2 − √6)/2'dir."},
         {"tur": "formul",
          "baslik": "Kök-katsayı bağıntıları (Vieta)",
-         "ifade": "x1 + x2 = −b / a          x1 · x2 = c / a",
+         "ifade": "x_1 + x_2 = −b / a          x_1 · x_2 = c / a",
          "terimler": [
              ("Kökler toplamı", "**−b / a**"),
              ("Kökler çarpımı", "**c / a**"),
              ("Kullanım", "Kökleri **bulmadan** onlarla ilgili ifadeleri hesaplama"),
          ],
-         "not": "Bu bağıntılar sayesinde **kökleri hesaplamadan** x1^2 + x2^2, "
-                "1/x1 + 1/x2 gibi ifadeler bulunabilir. TYT'nin en sevdiği "
+         "not": "Bu bağıntılar sayesinde **kökleri hesaplamadan** x_1^2 + x_2^2, "
+                "1/x_1 + 1/x_2 gibi ifadeler bulunabilir. TYT'nin en sevdiği "
                 "kısayoldur."},
         {"tur": "taktik", "baslik": "Kökleri Bulmadan Hesap Yapma", "govde":
             "Sık sorulan ifadeleri toplam (T) ve çarpım (Ç) cinsinden yaz:",
          "ogeler": [
-             "**x1^2 + x2^2 = T^2 − 2Ç**",
-             "**1/x1 + 1/x2 = T / Ç**",
-             "**(x1 − x2)^2 = T^2 − 4Ç**",
-             "**x1^3 + x2^3 = T^3 − 3·Ç·T**",
+             "**x_1^2 + x_2^2 = T^2 − 2Ç**",
+             "**1/x_1 + 1/x_2 = T / Ç**",
+             "**(x_1 − x_2)^2 = T^2 − 4Ç**",
+             "**x_1^3 + x_2^3 = T^3 − 3·Ç·T**",
              "Soru 'köklerin karelerinin toplamı' diyorsa kökleri bulmaya "
              "**gerek yoktur**; T ve Ç yeterlidir.",
          ]},
         {"tur": "cozum",
          "baslik": "Vieta ile Hızlı Çözüm",
-         "soru": "**x^2 − 6x + 4 = 0** denkleminin kökleri x1 ve x2'dir. "
-                 "**x1^2 + x2^2** kaçtır?",
+         "soru": "**x^2 − 6x + 4 = 0** denkleminin kökleri x_1 ve x_2'dir. "
+                 "**x_1^2 + x_2^2** kaçtır?",
          "adimlar": [
              "Kökler toplamı: T = −b/a = **6**.",
              "Kökler çarpımı: Ç = c/a = **4**.",
-             "Bağıntıyı kullan: x1^2 + x2^2 = T^2 − 2Ç.",
+             "Bağıntıyı kullan: x_1^2 + x_2^2 = T^2 − 2Ç.",
              "= 6^2 − 2(4) = 36 − 8.",
          ],
-         "sonuc": "x1^2 + x2^2 = 28'dir."},
+         "sonuc": "x_1^2 + x_2^2 = 28'dir."},
         {"tur": "tuzak", "baslik": "Kökleri Sıfır Yapan Çarpanı Atma", "govde":
             "**x^2 = 5x** denklemini çözerken iki tarafı **x'e bölmek "
             "YANLIŞTIR**; x = 0 kökünü kaybedersin. Doğrusu: "
@@ -199,7 +218,7 @@ NOT = {
             "bilinmeyen yalnızsa **yerine koyma**.",
             "**Δ = b^2 − 4ac**: **>0 iki kök**, **=0 bir kök**, **<0 kök yok**.",
             "**Kökler toplamı = −b/a**, **kökler çarpımı = c/a**.",
-            "**x1^2 + x2^2 = T^2 − 2Ç.**",
+            "**x_1^2 + x_2^2 = T^2 − 2Ç.**",
             "**Denklemi bilinmeyene bölme** — kök kaybedersin.",
         ]},
     ],
@@ -249,11 +268,11 @@ NOT = {
             "Kökler toplamı formülünü yazınız.",
             "Kökler çarpımı formülünü yazınız.",
             "x^2 − 6x + 4 = 0 denkleminde kökler toplamı ve çarpımı kaçtır?",
-            "Aynı denklemde x1^2 + x2^2 kaçtır?",
-            "Aynı denklemde 1/x1 + 1/x2 kaçtır?",
-            "x1^2 + x2^2 ifadesini T ve Ç cinsinden yazınız.",
-            "(x1 − x2)^2 ifadesini T ve Ç cinsinden yazınız.",
-            "x^2 − 7x + 12 = 0 denkleminde 1/x1 + 1/x2 kaçtır?",
+            "Aynı denklemde x_1^2 + x_2^2 kaçtır?",
+            "Aynı denklemde 1/x_1 + 1/x_2 kaçtır?",
+            "x_1^2 + x_2^2 ifadesini T ve Ç cinsinden yazınız.",
+            "(x_1 − x_2)^2 ifadesini T ve Ç cinsinden yazınız.",
+            "x^2 − 7x + 12 = 0 denkleminde 1/x_1 + 1/x_2 kaçtır?",
             "x^2 = 5x denklemini çözünüz.",
             "Bu denklemi çözerken iki tarafı x'e bölmek neden yanlıştır?",
             "Kökleri 3 ve −2 olan ikinci dereceden denklemi yazınız.",
@@ -291,11 +310,11 @@ NOT = {
             "(x−2)(x−3) = 0 → **x = 2 ve x = 3**.",
             "(x−3)(x+3) = 0 → **x = 3 ve x = −3**.",
             "(x+2)^2 = 0 → **x = −2** (çift katlı kök).",
-            "Δ = 16 + 8 = 24 → x = (4 ± 2·kök6)/4 = **(2 ± kök6)/2**.",
+            "Δ = 16 + 8 = 24 → x = (4 ± 2·√6)/4 = **(2 ± √6)/2**.",
             "Δ = 1 − 4 = **−3 < 0** → **gerçek kök yoktur**.",
             "**Çarpanlara ayırma** önce denenmelidir; TYT sorularının çoğu buna uygun tasarlanır ve çok daha hızlıdır.",
-            "**x1 + x2 = −b / a.**",
-            "**x1 · x2 = c / a.**",
+            "**x_1 + x_2 = −b / a.**",
+            "**x_1 · x_2 = c / a.**",
             "Toplam = **6**, çarpım = **4**.",
             "T^2 − 2Ç = 36 − 8 = **28**.",
             "T / Ç = 6 / 4 = **3/2**.",

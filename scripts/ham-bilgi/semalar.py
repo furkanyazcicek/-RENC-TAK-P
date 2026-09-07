@@ -40,19 +40,18 @@ PALET = [
 # ------------------------------------------------------------------
 
 def _yazi(pdf, metin, x, y, g, boyut=7.4, stil="", renk=MUREKKEP, hiza="C", satir=3.3):
-    # Şema metinlerinde de **kalın** işaretlemesi çalışır; aksi hâlde
-    # yıldızlar olduğu gibi basılır.
-    pdf.set_font("Liberation", stil, boyut)
+    # Şema metinleri de üreticinin zengin dizicisinden geçer: **kalın**,
+    # ^üs ve _indis işaretlemeleri burada da çalışır. Grafik eksenlerinde
+    # "m/s^2" gibi birimler bu sayede doğru görünür.
     pdf.set_text_color(*renk)
     pdf.set_xy(x, y)
-    pdf.multi_cell(g, satir, metin, align=hiza, border=0, markdown=True)
+    pdf.zengin_metin(g, satir, metin, boyut=boyut, stil=stil, hiza=hiza)
 
 
 def _yazi_ortala(pdf, metin, x, y, g, h, boyut=7.4, stil="B", renk=MUREKKEP, satir=3.3):
     """Metni verilen kutunun dikey ortasına yerleştirir."""
-    pdf.set_font("Liberation", stil, boyut)
-    n = pdf.satir_sayisi(metin, g - 1.5, satir)
-    _yazi(pdf, metin, x, y + (h - n * satir) / 2, g, boyut, stil, renk, "C", satir)
+    yuk = pdf.zengin_metin(g - 1.5, satir, metin, boyut=boyut, stil=stil, olcum=True)
+    _yazi(pdf, metin, x, y + (h - yuk) / 2, g, boyut, stil, renk, "C", satir)
 
 
 def _kutu(pdf, x, y, g, h, cerceve, zemin, yaricap=1.6):
@@ -329,11 +328,10 @@ def karsilastirma(sol_baslik, sol, sag_baslik, sag, ortak_baslik=None, ortak=Non
                     break
                 pdf.set_fill_color(*cerceve)
                 pdf.circle(cx + 3.0, yy + 1.6, 0.7, style="F")
-                pdf.set_font("Liberation", "", 6.9)
                 pdf.set_text_color(*MUREKKEP)
                 pdf.set_xy(cx + 5.0, yy)
-                pdf.multi_cell(sut_g - 6.5, 3.2, oge, align="L", markdown=True)
-                yy = pdf.get_y() + 1.3
+                yuk = pdf.zengin_metin(sut_g - 6.5, 3.2, oge, boyut=6.9, hiza="L")
+                yy = yy + yuk + 1.3
     ciz.onerilen_yukseklik = 16.0 + max(
         len(sol), len(sag), len(ortak or [])
     ) * 7.4
@@ -373,61 +371,182 @@ def katmanlar(satirlar, sol_baslik=None):
 # 8) Grafik — enzim hızı, popülasyon, çözünürlük
 # ------------------------------------------------------------------
 
-def grafik(x_etiket, y_etiket, egriler, notlar=None, gosterge="sol-ust"):
+def _eksen_takimi(pdf, sol, ust, sag, alt, x_etiket, y_etiket, bolme=4, sifir=0.0):
     """
-    egriler  : [(ad, [(x, y), ...], renk)] — x ve y 0..1 aralığında oran
-    notlar   : [(x_oran, y_oran, "metin")] grafiğin üstüne düşülen not
-    gosterge : "sol-ust" | "sag-ust" | "sag-alt" — eğrilerin boş bıraktığı köşe
+    Standart eksen takımı: açık ızgara, ok uçlu eksenler, orijinde "O".
+
+    Fizik grafiklerinin hepsi bu aynı çerçeveyi kullanır; böylece
+    x–t, v–t ve a–t grafikleri yan yana konduğunda öğrenci farkı
+    çizim üslubunda değil, eğrinin kendisinde arar.
+
+    `sifir`, yatay eksenin nereye çizileceğini 0..1 oranıyla belirler.
+    Parabolün x eksenini kestiği grafiklerde eksen yukarı çekilir ki
+    eğri eksenin **altına** da inebilsin.
+    """
+    gen, yuk = sag - sol, alt - ust
+    taban = alt - yuk * sifir
+
+    pdf.set_draw_color(*CIZGI_INCE)
+    pdf.set_line_width(0.18)
+    for i in range(1, bolme):
+        pdf.line(sol, alt - yuk * i / bolme, sag, alt - yuk * i / bolme)
+        pdf.line(sol + gen * i / bolme, ust, sol + gen * i / bolme, alt)
+
+    pdf.set_draw_color(*MUREKKEP_SOLUK)
+    pdf.set_fill_color(*MUREKKEP_SOLUK)
+    pdf.set_line_width(0.45)
+    pdf.line(sol, alt, sol, ust - 2.4)                     # düşey eksen
+    pdf.line(sol, taban, sag + 2.4, taban)                 # yatay eksen
+    pdf.polygon([(sol, ust - 4.2), (sol - 1.05, ust - 1.9),
+                 (sol + 1.05, ust - 1.9)], style="F")      # yukarı ok
+    pdf.polygon([(sag + 4.2, taban), (sag + 1.9, taban - 1.05),
+                 (sag + 1.9, taban + 1.05)], style="F")    # sağa ok
+
+    _yazi(pdf, "O", sol - 4.4, taban + 0.4, 3.6, 6.4, "", MUREKKEP_SOLUK, "R", 3.0)
+    _yazi(pdf, y_etiket, sol - 1.5, ust - 8.4, gen * 0.62, 6.8, "B",
+          MUREKKEP_SOLUK, "L", 3.0)
+    _yazi(pdf, x_etiket, sag - 44, alt + 3.4, 48, 6.8, "B",
+          MUREKKEP_SOLUK, "R", 3.0)
+
+
+def _kesikli(pdf, x1, y1, x2, y2, renk=MUREKKEP_SOLUK, adim=1.1):
+    """Kılavuz çizgisi — noktadan eksene inen kesik doğru."""
+    uzun = ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5 or 1.0
+    bx, by = (x2 - x1) / uzun, (y2 - y1) / uzun
+    pdf.set_draw_color(*renk)
+    pdf.set_line_width(0.22)
+    t = 0.0
+    while t < uzun:
+        u = min(t + adim * 0.55, uzun)
+        pdf.line(x1 + bx * t, y1 + by * t, x1 + bx * u, y1 + by * u)
+        t += adim
+
+
+def _egrileri_ciz(pdf, sol, ust, sag, alt, egriler, dolgular=()):
+    """Eğrileri ve (istenirse) altlarında kalan alanı boyar."""
+    gen, yuk = sag - sol, alt - ust
+
+    for indis, renk_zemin in dolgular:
+        noktalar = egriler[indis][1]
+        kose = [(sol + gen * nx, alt - yuk * ny) for nx, ny in noktalar]
+        pdf.set_fill_color(*renk_zemin)
+        pdf.set_draw_color(*renk_zemin)
+        pdf.set_line_width(0.1)
+        pdf.polygon([(kose[0][0], alt)] + kose + [(kose[-1][0], alt)], style="F")
+
+    for _, noktalar, renk in egriler:
+        pdf.set_draw_color(*renk)
+        pdf.set_line_width(0.9)
+        for i in range(len(noktalar) - 1):
+            x1, y1 = noktalar[i]
+            x2, y2 = noktalar[i + 1]
+            pdf.line(sol + gen * x1, alt - yuk * y1, sol + gen * x2, alt - yuk * y2)
+
+
+def _gosterge_ciz(pdf, sol, ust, sag, alt, egriler, gosterge, kutu_g=40.0):
+    adli = [(ad, renk) for ad, _, renk in egriler if ad]
+    if not adli:
+        return
+    kutu_h = 3.9 * len(adli) + 2.4
+    kx = sol + 2.5 if gosterge.startswith("sol") else sag - kutu_g - 2.5
+    ky = ust + 1.5 if gosterge.endswith("ust") else alt - kutu_h - 2.5
+    pdf.set_fill_color(255, 255, 255)
+    pdf.set_draw_color(*CIZGI)
+    pdf.set_line_width(0.25)
+    pdf.rect(kx, ky, kutu_g, kutu_h, style="DF", round_corners=True, corner_radius=1.0)
+    for i, (ad, renk) in enumerate(adli):
+        yy = ky + 1.4 + i * 3.9
+        pdf.set_draw_color(*renk)
+        pdf.set_line_width(0.9)
+        pdf.line(kx + 2, yy + 1.6, kx + 7, yy + 1.6)
+        _yazi(pdf, ad, kx + 8.5, yy, kutu_g - 10, 6.3, "", MUREKKEP, "L", 3.1)
+
+
+def grafik(x_etiket, y_etiket, egriler, notlar=None, gosterge="sol-ust",
+           dolgular=(), kilavuzlar=(), yukseklik=48.0, sifir=0.0):
+    """
+    Tek eksen takımlı grafik.
+
+    x_etiket  : yatay eksenin adı — birimiyle ("Zaman (t)")
+    y_etiket  : düşey eksenin adı  — birimiyle ("Hız (v)")
+    egriler   : [(ad, [(x, y), ...], renk)] — x ve y 0..1 aralığında oran
+    notlar    : [(x_oran, y_oran, "metin")] grafiğin üstüne düşülen not
+    gosterge  : "sol-ust" | "sag-ust" | "sag-alt" — eğrilerin boş bıraktığı köşe
+    dolgular  : [(egri_sırası, zemin_rengi)] — eğrinin altındaki alanı boyar
+                (yol = hız-zaman grafiğinin altındaki alan gibi)
+    kilavuzlar: [(x_oran, y_oran)] — noktadan iki eksene inen kesik çizgi
+    sifir     : yatay eksenin yüksekliği (0..1). Eğri eksenin altına da
+                inecekse (parabol, negatif ivme) 0'dan büyük verilir.
     """
     def ciz(pdf, x, y, g, h):
-        sol, alt = x + 14, y + h - 12
-        sag, ust = x + g - 10, y + 9
+        sol, alt = x + 15, y + h - 12
+        sag, ust = x + g - 12, y + 11
+
+        _eksen_takimi(pdf, sol, ust, sag, alt, x_etiket, y_etiket, sifir=sifir)
+        _egrileri_ciz(pdf, sol, ust, sag, alt, egriler, dolgular)
+
         gen, yuk = sag - sol, alt - ust
+        for kx, ky in kilavuzlar:
+            px, py = sol + gen * kx, alt - yuk * ky
+            _kesikli(pdf, sol, py, px, py)
+            _kesikli(pdf, px, py, px, alt)
 
-        pdf.set_draw_color(*CIZGI_INCE)
-        pdf.set_line_width(0.2)
-        for i in range(1, 4):
-            pdf.line(sol, alt - yuk * i / 4, sag, alt - yuk * i / 4)
-            pdf.line(sol + gen * i / 4, ust, sol + gen * i / 4, alt)
-
-        pdf.set_draw_color(*MUREKKEP_SOLUK)
-        pdf.set_line_width(0.5)
-        pdf.line(sol, ust, sol, alt)
-        pdf.line(sol, alt, sag, alt)
-
-        for _, noktalar, renk in egriler:
-            pdf.set_draw_color(*renk)
-            pdf.set_line_width(0.9)
-            for i in range(len(noktalar) - 1):
-                x1, y1 = noktalar[i]
-                x2, y2 = noktalar[i + 1]
-                pdf.line(sol + gen * x1, alt - yuk * y1, sol + gen * x2, alt - yuk * y2)
-
-        # Eksen adları — eğrilerin üstüne düşmesin diye çerçevenin dışına
-        _yazi(pdf, y_etiket, x + 1, ust - 5.4, gen * 0.6, 6.8, "B", MUREKKEP_SOLUK, "L", 3.0)
-        _yazi(pdf, x_etiket, sag - 46, alt + 3.0, 46, 6.8, "B", MUREKKEP_SOLUK, "R", 3.0)
-
-        # Gösterge — sağ üst köşede, eğri adları burada okunur
-        adli = [(ad, renk) for ad, _, renk in egriler if ad]
-        if adli:
-            kutu_h = 3.9 * len(adli) + 2.4
-            kutu_g = 40.0
-            kx = sol + 2.5 if gosterge.startswith("sol") else sag - kutu_g - 2.5
-            ky = ust + 1.5 if gosterge.endswith("ust") else alt - kutu_h - 2.5
-            pdf.set_fill_color(255, 255, 255)
-            pdf.set_draw_color(*CIZGI)
-            pdf.set_line_width(0.25)
-            pdf.rect(kx, ky, kutu_g, kutu_h, style="DF", round_corners=True, corner_radius=1.0)
-            for i, (ad, renk) in enumerate(adli):
-                yy = ky + 1.4 + i * 3.9
-                pdf.set_draw_color(*renk)
-                pdf.set_line_width(0.9)
-                pdf.line(kx + 2, yy + 1.6, kx + 7, yy + 1.6)
-                _yazi(pdf, ad, kx + 8.5, yy, kutu_g - 10, 6.3, "", MUREKKEP, "L", 3.1)
+        _gosterge_ciz(pdf, sol, ust, sag, alt, egriler, gosterge)
 
         for nx, ny, metin in (notlar or []):
-            _yazi(pdf, metin, sol + gen * nx, alt - yuk * ny, 30, 6.4, "", MUREKKEP, "L", 2.9)
-    ciz.onerilen_yukseklik = 48.0
+            _yazi(pdf, metin, sol + gen * nx, alt - yuk * ny, 32, 6.4, "",
+                  MUREKKEP, "L", 2.9)
+    ciz.onerilen_yukseklik = yukseklik
+
+    return ciz
+
+
+def grafik_seti(paneller, ortak_not=None, sifir=0.0):
+    """
+    Yan yana duran 2–3 küçük grafik. Fizikte hareketin üç grafiği
+    (konum–zaman, hız–zaman, ivme–zaman) hep birlikte okunduğu için
+    hepsi tek şemada, aynı ölçekte ve aynı üslupta verilir.
+
+    paneller : [(baslik, x_etiket, y_etiket, egriler, notlar, dolgular)]
+               `notlar` ve `dolgular` isteğe bağlıdır.
+    """
+    def ciz(pdf, x, y, g, h):
+        n = len(paneller)
+        bosluk = 4.0
+        panel_g = (g - bosluk * (n - 1)) / n
+        for i, panel in enumerate(paneller):
+            baslik, x_etiket, y_etiket, egriler = panel[:4]
+            notlar = panel[4] if len(panel) > 4 else ()
+            dolgular = panel[5] if len(panel) > 5 else ()
+            px = x + i * (panel_g + bosluk)
+
+            _yazi(pdf, baslik, px + 2, y + 2.2, panel_g - 4, 7.2, "B",
+                  MARKA_KOYU, "C", 3.2)
+
+            # Ortak not varsa panelin altından yer ayrılır; yoksa
+            # eksen adı ile not üst üste biniyordu.
+            alt_pay = 17.0 if ortak_not else 11.0
+            sol, alt = px + 12, y + h - alt_pay
+            sag, ust = px + panel_g - 6, y + 12
+            _eksen_takimi(pdf, sol, ust, sag, alt, x_etiket, y_etiket,
+                          bolme=3, sifir=sifir)
+            _egrileri_ciz(pdf, sol, ust, sag, alt, egriler, dolgular)
+
+            gen, yuk = sag - sol, alt - ust
+            for nx, ny, metin in (notlar or ()):
+                _yazi(pdf, metin, sol + gen * nx, alt - yuk * ny, panel_g - 14,
+                      6.2, "", MUREKKEP, "L", 2.8)
+
+            if i < n - 1:                       # paneller arası ince ayraç
+                pdf.set_draw_color(*CIZGI_INCE)
+                pdf.set_line_width(0.25)
+                ax = px + panel_g + bosluk / 2
+                pdf.line(ax, y + 3, ax, y + h - 3)
+
+        if ortak_not:
+            _yazi(pdf, ortak_not, x + 3, y + h - 5.4, g - 6, 6.6, "",
+                  MUREKKEP_SOLUK, "C", 3.0)
+    ciz.onerilen_yukseklik = 52.0 if not ortak_not else 57.0
 
     return ciz
 
@@ -458,5 +577,93 @@ def kartlar(ogeler, sutun=3):
                 _yazi(pdf, aciklama, cx + 1.5, cy + 5.6, kart_g - 3, 6.4,
                       "", MUREKKEP_SOLUK, "C", 2.8)
     ciz.onerilen_yukseklik = 8.0 + ((len(ogeler) + sutun - 1) // sutun) * 15.0
+
+    return ciz
+
+
+# ------------------------------------------------------------------
+# 11) Sayı doğrusu — aralık, çözüm kümesi ve sıralama gösterimi
+# ------------------------------------------------------------------
+
+def sayi_dogrusu(isaretler=(), araliklar=(), satirlar=None, alt_not=None):
+    """
+    Matematiğin en çok ihtiyaç duyduğu şema: aralıkları ve çözüm
+    kümelerini gözle görülür kılar.
+
+    isaretler : [(oran, "etiket")] — 0..1 aralığında konum ve altına
+                yazılacak değer ("−3", "0", "2")
+    araliklar : [(bas_oran, bit_oran, "kapali|acik|kapali-acik|acik-kapali",
+                 renk, "üst etiket")] — boyalı bant
+    satirlar  : birden çok doğru gerekiyorsa
+                [("satır adı", isaretler, araliklar), ...] biçiminde verilir;
+                verilirse `isaretler`/`araliklar` yok sayılır.
+    alt_not   : şemanın altına düşülen tek satırlık açıklama
+    """
+    kumeler = satirlar or [(None, isaretler, araliklar)]
+
+    def ciz(pdf, x, y, g, h):
+        n = len(kumeler)
+        ust_pay = 6.0
+        alt_pay = 8.0 if alt_not else 3.0
+        dilim = (h - ust_pay - alt_pay) / n
+
+        for k, (ad, noktalar, bantlar) in enumerate(kumeler):
+            oy = y + ust_pay + dilim * k + dilim / 2
+            sol = x + (34 if ad else 12)
+            sag = x + g - 12
+
+            if ad:
+                _yazi(pdf, ad, x + 4, oy - 2.0, 28, 7.0, "B", MARKA_KOYU, "L", 3.2)
+
+            # Boyalı aralıklar doğrunun altında kalsın diye önce çizilir
+            for bant in bantlar or ():
+                b1, b2, uc, renk = bant[0], bant[1], bant[2], bant[3]
+                etiket = bant[4] if len(bant) > 4 else None
+                bx1, bx2 = sol + (sag - sol) * b1, sol + (sag - sol) * b2
+                pdf.set_draw_color(*renk)
+                pdf.set_line_width(1.7)
+                pdf.line(bx1, oy - 2.6, bx2, oy - 2.6)
+                if etiket:
+                    _yazi(pdf, etiket, (bx1 + bx2) / 2 - 20, oy - 8.6, 40,
+                          6.8, "B", renk, "C", 3.1)
+                # Uç işaretleri: dolu daire kapalı, boş daire açık uç.
+                # "yok" ucu işaretsiz bırakır — sonsuza giden uçlar için.
+                # fpdf'te circle(x, y, r) sol üst köşeyi ister; merkez için
+                # yarıçap kadar geri çekilir.
+                for konum, tur in ((bx1, uc.split("-")[0]),
+                                   (bx2, uc.split("-")[-1])):
+                    ry = 1.9
+                    pdf.set_draw_color(*renk)
+                    pdf.set_line_width(0.6)
+                    if tur == "kapali":
+                        pdf.set_fill_color(*renk)
+                        pdf.circle(konum - ry, oy - 2.6 - ry, ry, style="F")
+                    elif tur == "acik":
+                        pdf.set_fill_color(255, 255, 255)
+                        pdf.circle(konum - ry, oy - 2.6 - ry, ry, style="DF")
+
+            # Doğrunun kendisi — iki ucu da oklu, sonsuza gittiğini gösterir
+            pdf.set_draw_color(*MUREKKEP)
+            pdf.set_fill_color(*MUREKKEP)
+            pdf.set_line_width(0.5)
+            pdf.line(sol - 6, oy, sag + 6, oy)
+            pdf.polygon([(sag + 9, oy), (sag + 6, oy - 1.2),
+                         (sag + 6, oy + 1.2)], style="F")
+            pdf.polygon([(sol - 9, oy), (sol - 6, oy - 1.2),
+                         (sol - 6, oy + 1.2)], style="F")
+
+            for oran, etiket in noktalar or ():
+                px = sol + (sag - sol) * oran
+                pdf.set_draw_color(*MUREKKEP_SOLUK)
+                pdf.set_line_width(0.5)
+                pdf.line(px, oy - 1.6, px, oy + 1.6)
+                _yazi(pdf, etiket, px - 12, oy + 2.4, 24, 7.0, "B",
+                      MUREKKEP, "C", 3.2)
+
+        if alt_not:
+            _yazi(pdf, alt_not, x + 4, y + h - 6.4, g - 8, 6.8, "",
+                  MUREKKEP_SOLUK, "C", 3.0)
+
+    ciz.onerilen_yukseklik = 6.0 + 19.0 * len(kumeler) + (7.0 if alt_not else 3.0)
 
     return ciz

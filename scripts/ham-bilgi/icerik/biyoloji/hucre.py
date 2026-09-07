@@ -89,7 +89,7 @@ NOT = {
              ("Glikolipit ve glikoprotein",
               "Hücrenin kimliği; doku tanınması, bağışıklık ve hormon algısı burada"),
              ("Fosfolipit çift tabaka",
-              "Yağda çözünenler (O2, CO2, alkol, A-D-E-K vitaminleri) doğrudan geçer"),
+              "Yağda çözünenler (O_2, CO_2, alkol, A-D-E-K vitaminleri) doğrudan geçer"),
              ("Kanal ve taşıyıcı proteinler",
               "İyonlar, glikoz, aminoasit gibi suda çözünenler buradan geçer"),
              ("Kolesterol (yalnız hayvan hücresinde)",
@@ -112,7 +112,7 @@ NOT = {
         {"tur": "altbolum", "baslik": "A. Pasif Taşıma — ATP Harcanmaz"},
         {"tur": "maddeler", "ogeler": [
             "**Difüzyon (yayılma)**: Molekülün **çoktan aza** doğru, kendi "
-            "kinetik enerjisiyle geçmesidir. O2, CO2, alkol, küçük yağ asitleri.",
+            "kinetik enerjisiyle geçmesidir. O_2, CO_2, alkol, küçük yağ asitleri.",
             "**Osmoz**: **Suyun** az yoğun ortamdan çok yoğun ortama, yarı geçirgen "
             "zardan geçmesidir. Su **kendi yoğunluğunun çok olduğu** yerden aza gider.",
             "**Kolaylaştırılmış difüzyon**: Yine çoktan aza; ama molekül tek başına "
@@ -149,7 +149,7 @@ NOT = {
              ["ATP", "Harcanmaz", "Harcanmaz", "**Harcanır**"],
              ["Taşıyıcı protein", "Gerekmez", "**Gerekir**", "**Gerekir**"],
              ["Ölü hücrede", "Olur", "Olmaz", "Olmaz"],
-             ["Örnek", "O2, CO2", "Glikoz, aminoasit", "Na-K pompası"],
+             ["Örnek", "O_2, CO_2", "Glikoz, aminoasit", "Na-K pompası"],
          ]},
         {"tur": "taktik", "baslik": "Hangi Taşıma Olduğunu Bulma", "govde":
             "Soruda verilen üç bilgiye sırayla bak:",
@@ -339,7 +339,7 @@ NOT = {
             "Hücre zarında kütlece en çok bulunan madde ile sayıca en çok bulunan madde farklı mıdır? Açıklayınız.",
             "Hücre zarı ile hücre duvarını geçirgenlik ve canlılık ölçütlerine göre karşılaştırınız.",
             "Ölü bir hücrenin zarının tam geçirgen hâle gelmesi ne anlama gelir?",
-            "O2 ve CO2'nin zardan doğrudan geçebilmesinin nedeni nedir?",
+            "O_2 ve CO_2'nin zardan doğrudan geçebilmesinin nedeni nedir?",
             "Glikozun zardan geçerken taşıyıcı proteine ihtiyaç duymasının nedeni nedir?",
             "Kolaylaştırılmış difüzyon ile aktif taşımanın ortak ve farklı yönlerini yazınız.",
             "Difüzyon hızını artıran dört etken yazınız.",

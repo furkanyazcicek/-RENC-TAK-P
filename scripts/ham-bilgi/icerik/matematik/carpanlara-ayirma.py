@@ -29,6 +29,19 @@ NOT = {
     "bloklar": [
         # ==========================================================
         {"tur": "bolum", "numara": 1, "baslik": "Temel Özdeşlikler"},
+        {"tur": "gorsel", "baslik": "Şema 1 — Ezberlenmesi zorunlu beş özdeşlik",
+         "aciklama": "Bu beş kalıp TYT'de çarpanlara ayırma sorularının neredeyse "
+                     "tamamını kapsar. Soruyu görünce **hangi kalıba benzediğini** "
+                     "sor: iki terim varsa kare/küp farkı, üç terim varsa tam kare "
+                     "ya da üç terimli çarpanlara ayırma.",
+         "ciz": S.kartlar([
+             ("Tam kare (+)", "a² + 2ab + b²\n= **(a + b)²**"),
+             ("Tam kare (−)", "a² − 2ab + b²\n= **(a − b)²**"),
+             ("İki kare farkı", "a² − b²\n= **(a − b)(a + b)**"),
+             ("Küp farkı", "a³ − b³\n= **(a − b)(a² + ab + b²)**"),
+             ("Küp toplamı", "a³ + b³\n= **(a + b)(a² − ab + b²)**"),
+             ("Üç terimli", "x² + (m+n)x + mn\n= **(x + m)(x + n)**"),
+         ], sutun=3)},
         {"tur": "formul",
          "baslik": "Ezberlenmesi zorunlu özdeşlikler",
          "ifade": "(a + b)^2 = a^2 + 2ab + b^2\n"
@@ -135,6 +148,17 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 4, "baslik": "İkinci Dereceden Üç Terimli"},
+        {"tur": "gorsel", "baslik": "Şema 2 — Üç terimliyi ayırma sırası",
+         "aciklama": "**Çarpımı sabit terim, toplamı ortadaki katsayı** olan iki "
+                     "sayı aranır. Baş katsayı 1 değilse önce ortak çarpan var mı "
+                     "diye bak; yoksa **çarpanlara ayırma tablosu** (X yöntemi) "
+                     "kurulur.",
+         "ciz": S.akis([
+             "Ortak çarpan?", "Kaç terim?", "Kalıbı seç", "İki sayıyı bul",
+             "Çarpanları yaz"],
+             ["önce onu\ndışarı al", "2 terim → fark\n3 terim → üçlü",
+              "tam kare mi\nüç terimli mi", "çarpımı c\ntoplamı b",
+              "(x + m)(x + n)\nbiçiminde"])},
         {"tur": "taktik", "baslik": "Toplamı-Çarpımı Yöntemi", "govde":
             "**x^2 + bx + c** biçimindeki ifadeler için:",
          "ogeler": [

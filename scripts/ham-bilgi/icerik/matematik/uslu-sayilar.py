@@ -110,9 +110,9 @@ NOT = {
             "**(a/b)^(−n) = (b/a)^n** — kesirde negatif üs, kesri **ters çevirir**.",
             "**Negatif üs sayıyı negatif YAPMAZ.** 2^(−3) = 1/8'dir; **−8 değildir**. "
             "Bu, en yaygın yanlış anlamalardan biridir.",
-            "**Kesirli üs**: a^(1/n) = **n. dereceden kök a**. Örnek: "
+            "**Kesirli üs**: a^(1/n) = **n. dereceden √a**. Örnek: "
             "8^(1/3) = 2, 16^(1/2) = 4.",
-            "**a^(m/n) = (n. dereceden kök a)^m** biçiminde de yazılabilir.",
+            "**a^(m/n) = (n. dereceden √a)^m** biçiminde de yazılabilir.",
         ]},
         {"tur": "cozum",
          "baslik": "Negatif Üslü İşlem",
@@ -131,6 +131,27 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 4, "baslik": "İşaret Kuralları"},
+        {"tur": "gorsel", "baslik": "Şema 1 — Eksi işareti parantez içinde mi dışında mı?",
+         "aciklama": "Bu, üslü sayıların en çok hata yapılan noktasıdır. Tek soru "
+                     "şudur: **eksi, üssün etkisi altında mı?** Parantez içindeyse "
+                     "evet, dışındaysa hayır.",
+         "ciz": S.karsilastirma(
+             "(−a)^n  — eksi parantez İÇİNDE",
+             ["Eksi de **üsse dâhildir**",
+              "**n çift** ise sonuç **pozitif**",
+              "**n tek** ise sonuç **negatif**",
+              "(−2)² = **4**",
+              "(−2)³ = **−8**"],
+             "−a^n  — eksi parantez DIŞINDA",
+             ["Üs **yalnızca a'ya** aittir",
+              "Eksi işlemin **sonuna** eklenir",
+              "Sonuç **her zaman negatif**",
+              "−2² = **−4**",
+              "−2³ = **−8**"],
+             "Aklında kalsın",
+             ["(−2)⁴ = **16**",
+              "−2⁴ = **−16**",
+              "Fark yalnızca **parantez**tir"])},
         {"tur": "tablo",
          "basliklar": ["Durum", "Sonucun İşareti", "Örnek"],
          "oranlar": [0.34, 0.28, 0.38],
@@ -191,6 +212,14 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 6, "baslik": "Bilimsel Gösterim"},
+        {"tur": "gorsel", "baslik": "Şema 2 — Bilimsel gösterime çevirme",
+         "aciklama": "Bilimsel gösterimde sayı **a · 10^n** biçimindedir ve **1 ≤ a < 10** "
+                     "olmak zorundadır. Virgülü sola kaydırırsan üs **artar**, sağa "
+                     "kaydırırsan **azalır**.",
+         "ciz": S.akis([
+             "Virgülü taşı", "Kaç basamak?", "Yönü belirle", "Yaz ve kontrol et"],
+             ["ilk rakamdan\nsonraya getir", "kaç basamak\nkaydırdığını say",
+              "sola → **üs +**\nsağa → **üs −**", "1 ≤ a < 10\nolduğunu doğrula"])},
         {"tur": "formul",
          "baslik": "Bilimsel gösterim",
          "ifade": "a × 10^n           (1 ≤ a < 10  ve  n tam sayı)",
@@ -312,7 +341,7 @@ NOT = {
             "Kesir ters çevrilir: (3/2)^2 = **9/4**.",
             "(2/1)^3 = **8**.",
             "**Kesri ters çevirir** ve üssü pozitif yapar.",
-            "**n. dereceden kök a**'ya eşittir.",
+            "**n. dereceden √a**'ya eşittir.",
             "**2** (2^3 = 8).",
             "**4** (4^2 = 16).",
             "27^(1/3) = 3 → 3^2 = **9**.",

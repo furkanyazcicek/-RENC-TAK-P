@@ -37,7 +37,7 @@ NOT = {
             "Bu yüzden denizler iklimi **ılımanlaştırır** ve canlıların vücut "
             "sıcaklığı dengede kalır.",
             "**Yüksek kaynama noktası**: Benzer kütleli moleküllere göre çok yüksektir "
-            "(H2S gaz iken H2O sıvıdır). Nedeni **hidrojen bağıdır**.",
+            "(H_2S gaz iken H_2O sıvıdır). Nedeni **hidrojen bağıdır**.",
             "**Suyun anomalisi**: Su 4 °C'de **en yoğun** hâldedir. Donarken "
             "**genleşir**, bu yüzden **buz suda yüzer**. Göller yüzeyden donar, "
             "altta canlılar yaşamaya devam eder.",
@@ -58,7 +58,7 @@ NOT = {
             "oluşturur), çaydanlık ve borularda **kireç (kazan taşı)** birikir, "
             "deterjan tüketimi artar.",
             "**Yumuşatma yöntemleri**: **Kaynatma** (geçici sertliği giderir), "
-            "**soda (Na2CO3) ekleme**, **iyon değiştirici reçineler**, **damıtma**.",
+            "**soda (Na_2CO_3) ekleme**, **iyon değiştirici reçineler**, **damıtma**.",
             "**Yumuşak su**: Ca ve Mg iyonu az olan sudur; sabun **bol köpürür**.",
         ]},
         {"tur": "cikmis", "baslik": "Sabun köpürmesi sorusu", "govde":
@@ -73,10 +73,10 @@ NOT = {
          "aciklama": "Hava **homojen bir karışımdır**; oranlar yere ve yüksekliğe "
                      "göre değişebilir.",
          "ciz": S.kartlar([
-             ("Azot (N2)", "**%78**\nen bol gaz"),
-             ("Oksijen (O2)", "**%21**\nsolunum için"),
+             ("Azot (N_2)", "**%78**\nen bol gaz"),
+             ("Oksijen (O_2)", "**%21**\nsolunum için"),
              ("Argon (Ar)", "**%0,93**\nsoy gaz"),
-             ("Karbondioksit (CO2)", "**%0,04**\nfotosentez ve sera etkisi"),
+             ("Karbondioksit (CO_2)", "**%0,04**\nfotosentez ve sera etkisi"),
              ("Su buharı", "değişken\nnem"),
              ("Diğer soy gazlar", "eser miktarda\nNe, He, Kr, Xe"),
          ], sutun=3)},
@@ -84,36 +84,36 @@ NOT = {
          "basliklar": ["Kirletici", "Kaynağı", "Yol Açtığı Sorun"],
          "oranlar": [0.24, 0.34, 0.42],
          "satirlar": [
-             ["**CO2**", "Fosil yakıt, orman yangını, solunum",
+             ["**CO_2**", "Fosil yakıt, orman yangını, solunum",
               "**Sera etkisi**, küresel ısınma"],
              ["**CO (karbonmonoksit)**", "**Eksik yanma** (soba, egzoz)",
               "**Zehirlidir** — hemoglobine oksijenden daha güçlü bağlanır"],
-             ["**SO2 (kükürtdioksit)**", "Kükürtlü kömür, petrol",
+             ["**SO_2 (kükürtdioksit)**", "Kükürtlü kömür, petrol",
               "**Asit yağmuru**, solunum yolu hastalıkları"],
-             ["**NO2 (azot oksitler)**", "Motorlu taşıtlar, yüksek sıcaklıkta yanma",
+             ["**NO_2 (azot oksitler)**", "Motorlu taşıtlar, yüksek sıcaklıkta yanma",
               "**Asit yağmuru**, fotokimyasal duman (smog)"],
              ["**CFC (kloroflorokarbon)**", "Eski buzdolapları, spreyler",
               "**Ozon tabakasının incelmesi**"],
-             ["**Metan (CH4)**", "Bataklık, çöp sahaları, hayvancılık",
+             ["**Metan (CH_4)**", "Bataklık, çöp sahaları, hayvancılık",
               "Güçlü **sera gazı**"],
              ["**Partikül madde (toz, is)**", "Sanayi, inşaat, yakıt",
               "Solunum yolu ve kalp hastalıkları"],
          ]},
         {"tur": "ezber", "baslik": "Sorun–Gaz Eşleşmesi", "ogeler": [
-            "**Sera etkisi ve küresel ısınma** → CO2, CH4, su buharı, N2O",
-            "**Asit yağmuru** → SO2 ve NOx (azot oksitler)",
+            "**Sera etkisi ve küresel ısınma** → CO_2, CH_4, su buharı, N_2O",
+            "**Asit yağmuru** → SO_2 ve NOx (azot oksitler)",
             "**Ozon incelmesi** → CFC gazları",
             "**Zehirlenme (evde)** → CO — kokusuz ve renksizdir, bu yüzden tehlikeli",
             "**Fotokimyasal duman** → NOx + hidrokarbonlar + güneş ışığı",
         ]},
         {"tur": "tuzak", "baslik": "Sera Etkisi ile Ozon İncelmesi Farklı Sorunlardır",
-         "govde": "**Sera etkisi**, CO2 gibi gazların ısıyı tutmasıdır → sonuç "
+         "govde": "**Sera etkisi**, CO_2 gibi gazların ısıyı tutmasıdır → sonuç "
                   "**küresel ısınma**. **Ozon incelmesi**, CFC'lerin ozon tabakasını "
                   "parçalamasıdır → sonuç **morötesi (UV) ışınların artması**. "
                   "İkisinin nedeni de sonucu da farklıdır; sınavda birbirinin "
                   "yerine çeldirici olarak kullanılır."},
         {"tur": "maddeler", "isaret": "nokta", "ogeler": [
-            "**Ozon (O3) iki yerde bulunur**: **Stratosferde (yukarıda)** koruyucudur, "
+            "**Ozon (O_3) iki yerde bulunur**: **Stratosferde (yukarıda)** koruyucudur, "
             "UV'yi süzer. **Yeryüzünde (troposferde)** ise **kirleticidir**, solunum "
             "yollarına zarar verir. Aynı madde, bulunduğu yere göre yararlı ya da "
             "zararlıdır.",
@@ -170,7 +170,7 @@ NOT = {
             "Su **4 °C'de en yoğundur**; donarken **genleşir**, buz **yüzer**.",
             "Sert su: **Ca+2 ve Mg+2** fazla → sabun **köpürmez**, **kireç** yapar.",
             "Hava: **%78 azot, %21 oksijen**.",
-            "**CO2 → sera etkisi**, **SO2/NOx → asit yağmuru**, **CFC → ozon incelmesi**, "
+            "**CO_2 → sera etkisi**, **SO_2/NOx → asit yağmuru**, **CFC → ozon incelmesi**, "
             "**CO → zehirlenme**.",
             "Ozon **yukarıda koruyucu**, **aşağıda kirletici**.",
             "Gübrede **NPK**: azot yaprak, fosfor kök, potasyum meyve.",
@@ -188,7 +188,7 @@ NOT = {
         "sorular": [
             "Suyun polar olması ve hidrojen bağı içermesi hangi özelliklerine yol açar?",
             "Suyun yüksek öz ısısının iklim üzerindeki etkisini açıklayınız.",
-            "H2S gaz iken H2O'nun sıvı olmasının nedeni nedir?",
+            "H_2S gaz iken H_2O'nun sıvı olmasının nedeni nedir?",
             "Suyun anomalisi nedir? Kaç derecede en yoğundur?",
             "Buzun suda yüzmesinin göllerdeki canlılar için önemini açıklayınız.",
             "Kışın su borularının patlamasını suyun hangi özelliği açıklar?",
@@ -231,7 +231,7 @@ NOT = {
         "cevaplar": [
             "**Yüksek öz ısı, yüksek kaynama noktası, yüksek yüzey gerilimi, evrensel çözücü olması** ve **donarken genleşmesi** (anomali).",
             "Su çok ısı alsa bile sıcaklığı yavaş yükselir, yavaş soğur. Bu yüzden **denizler ve göller çevrelerindeki iklimi ılımanlaştırır**; gece-gündüz farkı azalır.",
-            "Su molekülleri arasında **hidrojen bağı** vardır; H2S'de yoktur. Hidrojen bağını kırmak için çok daha fazla enerji gerekir.",
+            "Su molekülleri arasında **hidrojen bağı** vardır; H_2S'de yoktur. Hidrojen bağını kırmak için çok daha fazla enerji gerekir.",
             "Su **4 °C'de en yoğundur**; bu sıcaklığın altında soğudukça **genleşir** ve yoğunluğu azalır. Bu, maddelerin genel davranışına aykırıdır.",
             "Buz **yüzeyde kalır** ve altındaki suyu yalıtır; göl dibe kadar donmaz, canlılar kış boyunca **yaşamaya devam eder**.",
             "Su donarken **genleşir (hacmi artar)**; borunun içinde oluşan basınç metali çatlatır.",
@@ -239,7 +239,7 @@ NOT = {
             "İçinde **kalsiyum (Ca+2)** ve **magnezyum (Mg+2)** iyonları bol bulunan sudur.",
             "Ca+2 ve Mg+2 iyonları sabunla birleşerek **çözünmeyen çökelek** oluşturur; sabun köpürmek yerine tortu bırakır.",
             "Sudaki kalsiyum ve magnezyum bileşikleri ısıtılınca **çözünürlüğünü kaybeder** ve kap yüzeyinde **kireç (kazan taşı)** olarak birikir.",
-            "**Kaynatma**, **soda (Na2CO3) ekleme**, **iyon değiştirici reçine** (damıtma da yazılabilir).",
+            "**Kaynatma**, **soda (Na_2CO_3) ekleme**, **iyon değiştirici reçine** (damıtma da yazılabilir).",
             "**%78 azot, %21 oksijen, %0,93 argon, %0,04 karbondioksit** ve değişken oranda su buharı.",
             "Her yerinde **aynı bileşimi ve özelliği** göstermesi; bileşenlerinin gözle ya da mikroskopla ayırt edilememesi.",
             "Yaklaşık **%0,04**. Artması **sera etkisini güçlendirir** ve küresel ısınmaya yol açar.",
@@ -248,14 +248,14 @@ NOT = {
             "**Renksiz ve kokusuzdur**; kişi zehirlendiğini fark etmeden bilincini kaybeder.",
             "**Kükürtlü kömür ve petrolün yanması.** Havadaki su buharıyla birleşip **asit yağmuru** oluşturur; solunum yolu hastalıklarına yol açar.",
             "**Motorlu taşıtlar ve yüksek sıcaklıkta yanma.** **Asit yağmuru** ve **fotokimyasal dumana** yol açar.",
-            "Fosil yakıtlardan çıkan **SO2 ve azot oksitler** atmosferdeki **su buharıyla** birleşir; **sülfürik asit ve nitrik asit** oluşur ve yağışla yeryüzüne iner.",
+            "Fosil yakıtlardan çıkan **SO_2 ve azot oksitler** atmosferdeki **su buharıyla** birleşir; **sülfürik asit ve nitrik asit** oluşur ve yağışla yeryüzüne iner.",
             "**Toprağın ve göllerin pH'ını düşürür**, ormanlara zarar verir, **mermer ve kireç taşı yapıları aşındırır** (metal yapıları korozyona uğratır).",
             "**Ozon tabakasının incelmesine** yol açar. Kaynağı **eski buzdolapları, klimalar ve sprey kutularıdır**.",
-            "**Sera etkisi**: CO2 gibi gazların ısıyı tutması → **küresel ısınma**. **Ozon incelmesi**: CFC'lerin ozonu parçalaması → **UV ışınlarının artması**. Nedenleri ve sonuçları farklıdır.",
-            "**Karbondioksit (CO2)**, **metan (CH4)**, **su buharı** (diazot monoksit de yazılabilir).",
+            "**Sera etkisi**: CO_2 gibi gazların ısıyı tutması → **küresel ısınma**. **Ozon incelmesi**: CFC'lerin ozonu parçalaması → **UV ışınlarının artması**. Nedenleri ve sonuçları farklıdır.",
+            "**Karbondioksit (CO_2)**, **metan (CH_4)**, **su buharı** (diazot monoksit de yazılabilir).",
             "**Stratosferde** UV ışınlarını süzdüğü için **koruyucudur**. **Yeryüzünde (troposferde)** solunum yollarına zarar verdiği için **kirleticidir**.",
             "**Azot oksitler (NOx)**, **hidrokarbonlar** ve **güneş ışığı**.",
-            "CO2'den **çok daha güçlü** bir sera gazıdır. Kaynakları: **bataklıklar, çöp depolama alanları, hayvancılık (geviş getirenler)** ve pirinç tarlaları.",
+            "CO_2'den **çok daha güçlü** bir sera gazıdır. Kaynakları: **bataklıklar, çöp depolama alanları, hayvancılık (geviş getirenler)** ve pirinç tarlaları.",
             "**Mineraller (kum, kil, silt)**, **organik madde (humus)**, **su** ve **hava**.",
             "Bitkinin topraktaki **mineralleri emebilmesi** pH'a bağlıdır. Uygun olmayan pH'ta mineraller çözünmez ve bitki besin alamaz; çoğu bitki **6-7 arası** pH ister.",
             "**Kireç (kalsiyum bileşiği)** eklenerek pH yükseltilir.",

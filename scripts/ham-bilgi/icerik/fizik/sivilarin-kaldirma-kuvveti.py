@@ -1,5 +1,6 @@
 """TYT Fizik — Sıvıların Kaldırma Kuvveti (ham bilgi notu)."""
 
+from uretici import BASARI, BILGI, MARKA, TEHLIKE
 import semalar as S
 
 NOT = {
@@ -35,11 +36,11 @@ NOT = {
                      "kadar** ve **yukarı yönlü** bir kaldırma kuvveti etki eder."},
         {"tur": "formul",
          "baslik": "Kaldırma kuvveti",
-         "ifade": "Fk = Vbatan · dsıvı · g",
+         "ifade": "F_k = V_(batan) · d_(sıvı) · g",
          "terimler": [
-             ("Fk", "**Kaldırma kuvveti** (N) — her zaman **yukarı** yönlüdür"),
-             ("Vbatan", "Cismin **sıvı içinde kalan hacmi** (m³)"),
-             ("dsıvı", "**Sıvının** öz kütlesi (kg/m³)"),
+             ("F_k", "**Kaldırma kuvveti** (N) — her zaman **yukarı** yönlüdür"),
+             ("V_(batan)", "Cismin **sıvı içinde kalan hacmi** (m³)"),
+             ("d_(sıvı)", "**Sıvının** öz kütlesi (kg/m³)"),
              ("g", "Yer çekimi ivmesi (yaklaşık 10 N/kg)"),
          ],
          "not": "Formülde **cismin öz kütlesi ve cismin toplam hacmi YOKTUR**. "
@@ -63,11 +64,11 @@ NOT = {
             "ifadesi **yanlıştır** ve en sık kurulan tuzaktır."},
         {"tur": "formul",
          "baslik": "Görünür ağırlık",
-         "ifade": "G' = G − Fk",
+         "ifade": "G' = G − F_k",
          "terimler": [
              ("G'", "**Görünür (sıvı içindeki) ağırlık** — dinamometrenin gösterdiği değer"),
              ("G", "Cismin **gerçek ağırlığı** (havadaki)"),
-             ("Fk", "**Kaldırma kuvveti**"),
+             ("F_k", "**Kaldırma kuvveti**"),
          ],
          "not": "Cisim sıvıya girdiğinde **gerçek ağırlığı değişmez**; yalnızca "
                 "**görünür ağırlığı** azalır. Suda kendimizi hafif hissetmemizin "
@@ -78,37 +79,51 @@ NOT = {
                  "batırıldığında dinamometre **30 N** gösteriyor. Kaldırma kuvveti "
                  "ve cismin hacmi kaçtır? (dsu = 1000 kg/m³, g = 10 N/kg)",
          "adimlar": [
-             "Kaldırma kuvvetini bul: Fk = G − G' = 50 − 30 = **20 N**.",
-             "Cisim **tamamen** battığı için Vbatan = Vcisim.",
+             "Kaldırma kuvvetini bul: F_k = G − G' = 50 − 30 = **20 N**.",
+             "Cisim **tamamen** battığı için V_(batan) = V_(cisim).",
              "Formülü yaz: 20 = V × 1000 × 10.",
              "V = 20 / 10 000.",
          ],
          "sonuc": "Kaldırma kuvveti 20 N, cismin hacmi 0,002 m³ (2000 cm³)."},
 
         # ==========================================================
+        {"tur": "gorsel", "baslik": "Şema 1 — Batırdıkça ne artar, ne azalır?",
+         "aciklama": "Cisim sıvıya girdikçe **batan hacim artar**, bu yüzden "
+                     "**kaldırma kuvveti artar** ve dinamometrenin gösterdiği değer "
+                     "(görünen ağırlık) **azalır**. Cisim **tamamen battıktan sonra** "
+                     "daha derine indirilse bile batan hacim değişmediği için "
+                     "**ikisi de sabit kalır** — grafiğin yatay kısmı budur.",
+         "ciz": S.grafik_seti([
+             ("Kaldırma kuvveti", "Batırma derinliği", "F_(kaldırma)",
+              [("", [(0, 0.02), (0.52, 0.72), (0.94, 0.72)], BASARI)],
+              [(0.44, 0.30, "Tam batınca\n**sabit**")]),
+             ("Dinamometre okuması", "Batırma derinliği", "Görünen ağırlık",
+              [("", [(0, 0.90), (0.52, 0.26), (0.94, 0.26)], TEHLIKE)],
+              [(0.44, 0.62, "Azalır,\nsonra **sabit**")]),
+         ], ortak_not="Görünen ağırlık = Gerçek ağırlık − Kaldırma kuvveti")},
         {"tur": "bolum", "numara": 2, "baslik": "Yüzme, Askıda Kalma ve Batma"},
-        {"tur": "gorsel", "baslik": "Şema 1 — Üç durum ve koşulları",
+        {"tur": "gorsel", "baslik": "Şema 2 — Üç durum ve koşulları",
          "aciklama": "Karar **öz kütle karşılaştırmasıyla** verilir. Cismin öz "
                      "kütlesi sıvınınkinden küçükse yüzer, eşitse askıda kalır, "
                      "büyükse batar.",
          "ciz": S.katmanlar([
-             ("YÜZER  ·  dcisim < dsıvı",
-              "Cisim kısmen batar. Denge hâlinde **Fk = G**. Tahta suda yüzer."),
-             ("ASKIDA KALIR  ·  dcisim = dsıvı",
-              "Cisim tamamen batar ama dibe inmez. **Fk = G**. Her yerde dengede kalır."),
-             ("BATAR  ·  dcisim > dsıvı",
-              "Cisim dibe iner. **Fk < G**; dibe ulaşınca kap tabanı da tepki uygular."),
+             ("YÜZER  ·  d_(cisim) < d_(sıvı)",
+              "Cisim kısmen batar. Denge hâlinde **F_k = G**. Tahta suda yüzer."),
+             ("ASKIDA KALIR  ·  d_(cisim) = d_(sıvı)",
+              "Cisim tamamen batar ama dibe inmez. **F_k = G**. Her yerde dengede kalır."),
+             ("BATAR  ·  d_(cisim) > d_(sıvı)",
+              "Cisim dibe iner. **F_k < G**; dibe ulaşınca kap tabanı da tepki uygular."),
          ], "DURUM")},
         {"tur": "maddeler", "ogeler": [
             "**Yüzme ve askıda kalmada** cisim dengededir: **kaldırma kuvveti = "
-            "ağırlık (Fk = G)**.",
-            "**Batmada** kaldırma kuvveti ağırlıktan küçüktür (**Fk < G**); cisim "
+            "ağırlık (F_k = G)**.",
+            "**Batmada** kaldırma kuvveti ağırlıktan küçüktür (**F_k < G**); cisim "
             "dibe iner.",
             "Yüzen bir cisimde **batan hacim oranı**, öz kütlelerin oranına eşittir.",
         ]},
         {"tur": "formul",
          "baslik": "Yüzen cisimde batan hacim oranı",
-         "ifade": "Vbatan / Vcisim  =  dcisim / dsıvı",
+         "ifade": "V_(batan) / V_(cisim)  =  d_(cisim) / d_(sıvı)",
          "terimler": [
              ("Anlamı", "Cismin **hangi kesrinin** sıvı içinde kaldığını verir"),
              ("Örnek", "Buzun öz kütlesi 0,9; suyunki 1 → buzun **%90'ı** su içindedir"),
@@ -120,8 +135,8 @@ NOT = {
          "soru": "Öz kütlesi **0,6 g/cm³** olan bir tahta parçası suda yüzüyor. "
                  "Tahtanın hacminin yüzde kaçı su içindedir? (dsu = 1 g/cm³)",
          "adimlar": [
-             "Bağıntıyı yaz: Vbatan / Vcisim = dcisim / dsıvı.",
-             "Değerleri yerleştir: Vbatan / Vcisim = 0,6 / 1.",
+             "Bağıntıyı yaz: V_(batan) / V_(cisim) = d_(cisim) / d_(sıvı).",
+             "Değerleri yerleştir: V_(batan) / V_(cisim) = 0,6 / 1.",
              "Oran = **0,6**.",
              "Yüzdeye çevir: 0,6 × 100 = **%60**.",
          ],
@@ -134,7 +149,7 @@ NOT = {
         {"tur": "taktik", "baslik": "Aynı Cisim Farklı Sıvılarda", "govde":
             "Aynı cisim farklı sıvılara atıldığında karşılaştırma yaparken:",
          "ogeler": [
-             "Cisim **yüzüyorsa**: her sıvıda **Fk = G**'dir → **kaldırma kuvvetleri "
+             "Cisim **yüzüyorsa**: her sıvıda **F_k = G**'dir → **kaldırma kuvvetleri "
              "EŞİTTİR**. Değişen şey **batan hacimdir**: öz kütlesi büyük sıvıda "
              "cisim **daha az batar**.",
              "Cisim **tamamen batıyorsa**: batan hacim her sıvıda aynıdır → "
@@ -164,19 +179,19 @@ NOT = {
             "**Hidrometre (dansimetre)**: Sıvının öz kütlesini ölçen araçtır; "
             "yoğun sıvıda **daha az batar**.",
         ]},
-        {"tur": "gorsel", "baslik": "Şema 2 — Denizaltının çalışma mantığı",
+        {"tur": "gorsel", "baslik": "Şema 3 — Denizaltının çalışma mantığı",
          "aciklama": "Denizaltı **hacmini değiştirmez**; **kütlesini** değiştirerek "
                      "ortalama öz kütlesini ayarlar.",
          "ciz": S.akis(
              ["Tanka su alınır", "Kütle artar", "Öz kütle artar", "Denizaltı batar"],
-             ["balast tankı", "hacim sabit", "d = m/V büyür", "dcisim > dsıvı"])},
+             ["balast tankı", "hacim sabit", "d = m/V büyür", "d_(cisim) > d_(sıvı)"])},
 
         {"tur": "ezber", "baslik": "Sınav Öncesi Son Bakış", "ogeler": [
-            "**Fk = Vbatan · dsıvı · g** — formülde **cismin öz kütlesi yoktur**.",
+            "**F_k = V_(batan) · d_(sıvı) · g** — formülde **cismin öz kütlesi yoktur**.",
             "**Derinlik kaldırma kuvvetini değiştirmez.**",
             "**Cismin şekli** kaldırma kuvvetini etkilemez, **batan hacmi** etkiler.",
-            "**Yüzme/askıda kalma → Fk = G**. **Batma → Fk < G**.",
-            "Yüzen cisimde **Vbatan/Vcisim = dcisim/dsıvı**.",
+            "**Yüzme/askıda kalma → F_k = G**. **Batma → F_k < G**.",
+            "Yüzen cisimde **V_(batan)/V_(cisim) = d_(cisim)/d_(sıvı)**.",
             "Aynı cisim farklı sıvılarda **yüzüyorsa kaldırma kuvvetleri eşittir**.",
             "Gemiler **ortalama öz kütlesi** sudan küçük olduğu için yüzer.",
             "Denizaltı **kütlesini** değiştirir, hacmini değil.",
@@ -236,35 +251,35 @@ NOT = {
         "cevap_baslik": {"numara": 5, "metin": "Cevap Anahtarı ve Kısa Açıklamalar"},
         "cevaplar": [
             "Bir sıvıya batırılan cisme, **taşırdığı sıvının ağırlığı kadar** ve **yukarı yönlü** bir kaldırma kuvveti etki eder.",
-            "**Fk = Vbatan · dsıvı · g.** Vbatan batan hacim, dsıvı sıvının öz kütlesi, g yer çekimi ivmesi.",
+            "**F_k = V_(batan) · d_(sıvı) · g.** V_(batan) batan hacim, d_(sıvı) sıvının öz kütlesi, g yer çekimi ivmesi.",
             "Her zaman **yukarı** (düşey yukarı) yönlüdür.",
             "Sıvı basıncı derinlikle arttığı için cismin **alt yüzeyine** yapılan basınç kuvveti, **üst yüzeyine** yapılandan büyüktür. Aradaki fark **yukarı yönlü** net kuvveti oluşturur.",
             "**Bağlı değildir.** Formülde cismin öz kütlesi yer almaz; yalnızca batan hacim ve sıvının öz kütlesi belirleyicidir.",
             "**Bağlı değildir.** Şekil ne olursa olsun belirleyici olan **batan hacimdir**.",
             "**Değişmez.** Cisim tamamen battıktan sonra batan hacim sabit kalır; alt-üst yüzey arasındaki basınç farkı da sabittir.",
-            "**G' = G − Fk.**",
+            "**G' = G − F_k.**",
             "**Değişmez.** Gerçek ağırlık aynı kalır; yalnızca **görünür ağırlık** azalır.",
             "Suyun uyguladığı **kaldırma kuvveti** ağırlığımızın bir kısmını dengeler; **görünür ağırlığımız** azalır.",
-            "Fk = 50 − 30 = **20 N**.",
+            "F_k = 50 − 30 = **20 N**.",
             "20 = V × 1000 × 10 → V = **0,002 m³** (2000 cm³).",
-            "Fk = 80 − 60 = 20 N → 20 = V × 1000 × 10 → V = **0,002 m³**.",
-            "**dcisim < dsıvı.**",
-            "**dcisim = dsıvı.**",
-            "**dcisim > dsıvı.**",
-            "**Eşittir (Fk = G).** Cisim dengededir.",
-            "**Kaldırma kuvveti ağırlıktan küçüktür (Fk < G).**",
-            "**Vbatan / Vcisim = dcisim / dsıvı.**",
+            "F_k = 80 − 60 = 20 N → 20 = V × 1000 × 10 → V = **0,002 m³**.",
+            "**d_(cisim) < d_(sıvı).**",
+            "**d_(cisim) = d_(sıvı).**",
+            "**d_(cisim) > d_(sıvı).**",
+            "**Eşittir (F_k = G).** Cisim dengededir.",
+            "**Kaldırma kuvveti ağırlıktan küçüktür (F_k < G).**",
+            "**V_(batan) / V_(cisim) = d_(cisim) / d_(sıvı).**",
             "0,6/1 = 0,6 → **%60**.",
             "0,8/1 = 0,8 → **%80**.",
             "0,92 / 1,03 ≈ **0,89** → yaklaşık **%89**'u su altındadır.",
             "Buzun öz kütlesi deniz suyununkine **çok yakındır**; bu yüzden hacminin yaklaşık **%89'u batar**, yalnızca **%11'i** yüzeyin üstünde kalır.",
-            "**Askıda kalır** (dcisim = dsıvı). Tamamen batar ama dibe inmez.",
-            "**Batar** (dcisim > dsıvı).",
-            "**Eşittir.** İkisinde de yüzdüğü için Fk = G'dir ve ağırlık değişmemiştir.",
+            "**Askıda kalır** (d_(cisim) = d_(sıvı)). Tamamen batar ama dibe inmez.",
+            "**Batar** (d_(cisim) > d_(sıvı)).",
+            "**Eşittir.** İkisinde de yüzdüğü için F_k = G'dir ve ağırlık değişmemiştir.",
             "Tuzlu suyun **öz kütlesi büyüktür**; aynı kaldırma kuvvetini oluşturmak için **daha az hacmin** batması yeterlidir.",
             "Deniz suyunun öz kütlesi tatlı sudan **büyüktür**; vücudumuzun **daha az kısmı batar** ve yüzeyde durmak kolaylaşır.",
             "Batan hacim her iki sıvıda **aynıdır** (cismin hacmi kadar). Bu durumda kaldırma kuvveti **sıvının öz kütlesiyle doğru orantılıdır**.",
-            "**Yüzen** cisimde denge şartı Fk = G olduğundan kaldırma kuvveti sabit, **batan hacim** değişkendir. **Tamamen batan** cisimde batan hacim sabit, **kaldırma kuvveti** değişkendir.",
+            "**Yüzen** cisimde denge şartı F_k = G olduğundan kaldırma kuvveti sabit, **batan hacim** değişkendir. **Tamamen batan** cisimde batan hacim sabit, **kaldırma kuvveti** değişkendir.",
             "Geminin içi **boştur**; hacmi büyük, kütlesi görece küçüktür. **Ortalama öz kütlesi** sudan **küçük** olduğu için yüzer.",
             "İçeri giren su **kütleyi artırır**, hacim değişmez; **ortalama öz kütle** sudan büyük hâle gelir ve gemi batar.",
             "**Balast tanklarına su alarak** kütlesini ve ortalama öz kütlesini artırır, **batar**. Suyu boşaltıp hava basarak öz kütlesini azaltır ve **yüzeye çıkar**.",
@@ -272,9 +287,9 @@ NOT = {
             "**Hava kesesi (yüzme kesesi)** ile.",
             "Öz kütlesi **çok düşük** malzeme (köpük, hava dolu bölmeler) kullanılarak kişinin **ortalama öz kütlesi düşürülür** ve suda yüzmesi sağlanır.",
             "**Sıvının öz kütlesini ölçer.** Öz kütlesi büyük (yoğun) sıvıda **daha az batar**.",
-            "Öz kütlesi **sudan küçük, yağdan büyüktür**: dyağ < dcisim < dsu.",
+            "Öz kütlesi **sudan küçük, yağdan büyüktür**: dyağ < d_(cisim) < dsu.",
             "**Cismin batan hacmine** (ve sıvının öz kütlesine) bağlıdır; sıvının derinliği kaldırma kuvvetini etkilemez.",
-            "**Kaldırma kuvveti** (Fk = G − G') ve buradan **cismin hacmi** hesaplanabilir; cisim tamamen batmışsa **öz kütlesi** de bulunabilir.",
+            "**Kaldırma kuvveti** (F_k = G − G') ve buradan **cismin hacmi** hesaplanabilir; cisim tamamen batmışsa **öz kütlesi** de bulunabilir.",
         ],
     },
 }

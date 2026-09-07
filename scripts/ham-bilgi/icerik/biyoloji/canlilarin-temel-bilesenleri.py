@@ -48,7 +48,7 @@ NOT = {
              ["Canlı üretebilir mi", "**Hayır** (D vitamini gibi istisnalar hariç)", "**Evet**"],
              ["Sindirilir mi", "**Hayır** — doğrudan geçer", "Büyükse **evet** (hidroliz)"],
              ["Enerji verir mi", "**Hayır**", "Karbonhidrat, lipit, protein **verir**"],
-             ["Karbon içerir mi", "Genelde hayır (CO2 istisna)", "**Evet** — karbon iskeleti"],
+             ["Karbon içerir mi", "Genelde hayır (CO_2 istisna)", "**Evet** — karbon iskeleti"],
              ["Örnek", "Su, Fe, Ca, HCl, NaCl", "Glikoz, yağ, protein, DNA, ATP"],
          ]},
 
@@ -205,7 +205,7 @@ NOT = {
              ["C, H, O içerir", "Enerji verir", "Hücre yapısına katılır"])},
         {"tur": "cikmis", "baslik": "Solunum suyu sorusu", "govde":
             "Eşit kütlede yağ ve karbonhidrat oksijenli solunumda yakıldığında "
-            "**yağ daha çok O2 harcar**, **daha çok su ve daha çok ATP** üretir. "
+            "**yağ daha çok O_2 harcar**, **daha çok su ve daha çok ATP** üretir. "
             "Bunun nedeni yağın yapısında **hidrojenin daha bol, oksijenin daha az** "
             "olmasıdır. Bu, sayısal olmayan ama mantık isteyen bir sorudur."},
 
@@ -335,7 +335,7 @@ NOT = {
             "vitamindir. Bu yüzden 'canlı vitamin üretemez' ifadesi mutlak değildir. "
             "K vitamini ve bazı B vitaminleri de bağırsak bakterilerince üretilir.",
             "Eksiklikleri: A → gece körlüğü, D → raşitizm, C → skorbüt, "
-            "B1 → beriberi, B12 → kansızlık, K → pıhtılaşma bozukluğu.",
+            "B_1 → beriberi, B_12 → kansızlık, K → pıhtılaşma bozukluğu.",
         ]},
 
         {"tur": "altbolum", "baslik": "B. Nükleik Asitler"},

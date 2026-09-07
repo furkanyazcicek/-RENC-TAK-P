@@ -30,6 +30,28 @@ NOT = {
     "bloklar": [
         # ==========================================================
         {"tur": "bolum", "numara": 1, "baslik": "Kütlenin Korunumu Kanunu"},
+        {"tur": "gorsel", "baslik": "Şema 1 — Kimyanın üç temel kanunu neyi söyler?",
+         "aciklama": "Üç kanun da **kütle** üzerinedir ama farklı sorulara yanıt "
+                     "verir: korunum **toplam kütleye**, sabit oranlar **tek bir "
+                     "bileşiğin içindeki orana**, katlı oranlar ise **aynı iki "
+                     "elementten oluşan farklı bileşiklerin karşılaştırılmasına** "
+                     "bakar.",
+         "ciz": S.karsilastirma(
+             "Kütlenin Korunumu",
+             ["**Girenler = Ürünler**",
+              "Tepkimede atomlar **yok olmaz**",
+              "Kapalı kapta kütle **değişmez**",
+              "Lavoisier"],
+             "Sabit Oranlar",
+             ["Bir bileşiğin **kendi içindeki** oran",
+              "H_2O'da **daima 1:8** (H:O)",
+              "Artan madde **tepkimeye girmez**",
+              "Proust"],
+             "Katlı Oranlar",
+             ["**İki farklı bileşik** karşılaştırılır",
+              "Aynı iki elementten oluşurlar",
+              "CO ile CO_2 → oksijen oranı **1:2**",
+              "Dalton"])},
         {"tur": "tanim", "kavram": "Kütlenin korunumu (Lavoisier)",
          "aciklama": "**Kapalı bir sistemde**, kimyasal tepkimeye giren maddelerin "
                      "toplam kütlesi, oluşan ürünlerin toplam kütlesine **eşittir**. "
@@ -48,7 +70,7 @@ NOT = {
         ]},
         {"tur": "tuzak", "baslik": "Mol Sayısı Korunmaz", "govde":
             "Kütle **her zaman** korunur; ama **mol sayısı korunmak zorunda "
-            "değildir**. N2 + 3H2 → 2NH3 tepkimesinde girenler 4 mol, ürün 2 moldür. "
+            "değildir**. N_2 + 3H_2 → 2NH3 tepkimesinde girenler 4 mol, ürün 2 moldür. "
             "'Tepkimede mol sayısı korunur' ifadesi **yanlıştır** ve sık kullanılan "
             "bir çeldiricidir."},
         {"tur": "cozum",
@@ -60,7 +82,7 @@ NOT = {
              "Girenlerin toplam kütlesi = 12 + 32 = **44 g**.",
              "Tepkime tam verimli (artan yok) → bütün kütle ürüne geçer.",
          ],
-         "sonuc": "Oluşan CO2 kütlesi = 44 g."},
+         "sonuc": "Oluşan CO_2 kütlesi = 44 g."},
 
         # ==========================================================
         {"tur": "bolum", "numara": 2, "baslik": "Sabit Oranlar Kanunu"},
@@ -118,41 +140,41 @@ NOT = {
             "**Tek bileşikte katlı oran aranmaz.** Üç element içeren bileşiklerde "
             "de bu kanun kullanılmaz.",
             "**Basit formülleri aynı olan bileşikler arasında katlı oran yoktur.** "
-            "Örneğin CH2 ile C2H4 basit formülce aynıdır (CH2); oranları 1/1 çıkar, "
+            "Örneğin CH_2 ile C_2H_4 basit formülce aynıdır (CH_2); oranları 1/1 çıkar, "
             "bu **katlı oran sayılmaz**.",
         ]},
         {"tur": "tablo",
          "basliklar": ["Bileşik Çifti", "Sabitlenen", "Katlı Oran", "Geçerli mi?"],
          "oranlar": [0.26, 0.22, 0.26, 0.26],
          "satirlar": [
-             ["CO ve CO2", "Karbon", "O kütleleri **1/2**", "**Evet**"],
-             ["SO2 ve SO3", "Kükürt", "O kütleleri **2/3**", "**Evet**"],
-             ["NO ve NO2", "Azot", "O kütleleri **1/2**", "**Evet**"],
-             ["H2O ve H2O2", "Hidrojen", "O kütleleri **1/2**", "**Evet**"],
-             ["CH4 ve C2H4", "—", "Basit formülleri farklı, hesaplanır", "**Evet**"],
-             ["C2H4 ve C3H6", "—", "Basit formül ikisinde de **CH2**", "**Hayır**"],
-             ["NO2 ve SO2", "—", "**Farklı elementler** içeriyor", "**Hayır**"],
+             ["CO ve CO_2", "Karbon", "O kütleleri **1/2**", "**Evet**"],
+             ["SO_2 ve SO_3", "Kükürt", "O kütleleri **2/3**", "**Evet**"],
+             ["NO ve NO_2", "Azot", "O kütleleri **1/2**", "**Evet**"],
+             ["H_2O ve H_2O_2", "Hidrojen", "O kütleleri **1/2**", "**Evet**"],
+             ["CH_4 ve C_2H_4", "—", "Basit formülleri farklı, hesaplanır", "**Evet**"],
+             ["C_2H_4 ve C_3H_6", "—", "Basit formül ikisinde de **CH_2**", "**Hayır**"],
+             ["NO_2 ve SO_2", "—", "**Farklı elementler** içeriyor", "**Hayır**"],
          ]},
         {"tur": "cozum",
          "baslik": "Katlı Oran Hesabı",
-         "soru": "**SO2** ve **SO3** bileşiklerinde, **sabit miktardaki kükürde** "
+         "soru": "**SO_2** ve **SO_3** bileşiklerinde, **sabit miktardaki kükürde** "
                  "karşılık oksijen kütleleri arasındaki katlı oranı bulunuz.",
          "adimlar": [
              "Kükürdü **sabitle**: her iki bileşikte de **1 kükürt atomu** var, "
              "zaten sabit.",
-             "SO2'de oksijen atom sayısı **2**, SO3'te **3**.",
+             "SO_2'de oksijen atom sayısı **2**, SO_3'te **3**.",
              "Kütleler atom sayısıyla doğru orantılıdır (aynı element olduğu için).",
              "Oran = **2/3**.",
          ],
          "sonuc": "Katlı oran 2/3'tür."},
         {"tur": "cozum",
          "baslik": "Sabitleme Gerektiren Katlı Oran",
-         "soru": "**N2O** ve **NO2** bileşiklerinde **sabit miktardaki azota** "
+         "soru": "**N_2O** ve **NO_2** bileşiklerinde **sabit miktardaki azota** "
                  "karşılık oksijen kütlelerinin oranını bulunuz.",
          "adimlar": [
-             "Azot sayıları eşit değil: N2O'da **2**, NO2'de **1**. Önce eşitle.",
-             "NO2 formülünü **2 ile** çarp → **N2O4**. Artık ikisinde de 2 azot var.",
-             "Oksijen sayıları: N2O'da **1**, N2O4'te **4**.",
+             "Azot sayıları eşit değil: N_2O'da **2**, NO_2'de **1**. Önce eşitle.",
+             "NO_2 formülünü **2 ile** çarp → **N_2O_4**. Artık ikisinde de 2 azot var.",
+             "Oksijen sayıları: N_2O'da **1**, N_2O_4'te **4**.",
              "Oran = **1/4**.",
          ],
          "sonuc": "Katlı oran 1/4'tür."},
@@ -168,6 +190,17 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 4, "baslik": "Kimyasal Denklemler ve Denkleştirme"},
+        {"tur": "gorsel", "baslik": "Şema 2 — Denkleştirme sırası",
+         "aciklama": "Denkleştirmede **formüllerin alt indisleri asla değiştirilmez**; "
+                     "yalnızca formüllerin **önündeki katsayılar** değişir. Alt indisi "
+                     "değiştirmek maddeyi değiştirmek demektir — H_2O'yu H_2O_2 yapmak "
+                     "suyu oksijenli suya çevirir.",
+         "ciz": S.akis([
+             "Formülleri yaz", "Atom sayıla", "C → H → O sırası", "Kesirden kurtul",
+             "Son kontrol"],
+             ["girenler ve ürünler\ndoğru yazılmalı", "her elementten\nkaçar atom var",
+              "oksijeni **en sona**\nbırak", "hepsini uygun\nsayıyla çarp",
+              "iki tarafta atom\nsayıları eşit mi"])},
         {"tur": "maddeler", "ogeler": [
             "**Girenler** solda, **ürünler** sağda yazılır; aralarına **ok** konur.",
             "Fiziksel hâl parantez içinde belirtilir: **(k)** katı, **(s)** sıvı, "
@@ -179,16 +212,16 @@ NOT = {
         ]},
         {"tur": "cozum",
          "baslik": "Denklem Denkleştirme",
-         "soru": "**C3H8 + O2 → CO2 + H2O** denklemini denkleştiriniz.",
+         "soru": "**C_3H_8 + O_2 → CO_2 + H_2O** denklemini denkleştiriniz.",
          "adimlar": [
-             "**Karbonla başla**: solda 3 C var → sağda CO2 önüne **3** yaz. "
-             "C3H8 + O2 → **3**CO2 + H2O",
-             "**Hidrojene geç**: solda 8 H var → sağda H2O önüne **4** yaz "
-             "(4 × 2 = 8). C3H8 + O2 → 3CO2 + **4**H2O",
+             "**Karbonla başla**: solda 3 C var → sağda CO_2 önüne **3** yaz. "
+             "C_3H_8 + O_2 → **3**CO_2 + H_2O",
+             "**Hidrojene geç**: solda 8 H var → sağda H_2O önüne **4** yaz "
+             "(4 × 2 = 8). C_3H_8 + O_2 → 3CO2 + **4**H_2O",
              "**Oksijeni en son say**: sağda 3×2 + 4×1 = **10 oksijen** var.",
-             "Solda O2 önüne **5** yaz (5 × 2 = 10).",
+             "Solda O_2 önüne **5** yaz (5 × 2 = 10).",
          ],
-         "sonuc": "C3H8 + 5O2 → 3CO2 + 4H2O"},
+         "sonuc": "C_3H_8 + 5O_2 → 3CO2 + 4H_2O"},
         {"tur": "taktik", "baslik": "Denkleştirme Sırası", "govde":
             "Rastgele denemek yerine şu sırayı izle — neredeyse her yanma "
             "denklemini tek seferde çözer:",
@@ -230,7 +263,7 @@ NOT = {
             "Kütlenin korunmasının atom düzeyindeki nedeni nedir?",
             "Kimyasal tepkimede korunan dört büyüklük yazınız.",
             "Kimyasal tepkimede korunmayan üç büyüklük yazınız.",
-            "N2 + 3H2 → 2NH3 tepkimesinde mol sayısı korunur mu? Gerekçelendiriniz.",
+            "N_2 + 3H_2 → 2NH3 tepkimesinde mol sayısı korunur mu? Gerekçelendiriniz.",
             "Açık kapta yakılan bir maddenin kütlesi neden azalmış görünür?",
             "Demirin paslanmasında kütle artar. Bu kütlenin korunumuna aykırı mıdır?",
             "Kapalı kapta 8 g kükürt ile 8 g oksijen tam verimle tepkiyorsa ürün kütlesi kaçtır?",
@@ -247,26 +280,26 @@ NOT = {
             "Katlı oranlar kanununu bir cümleyle ifade ediniz.",
             "Katlı oranlar kanununun uygulanabilmesi için gereken iki şartı yazınız.",
             "Tek bir bileşikte katlı oran aranabilir mi? Neden?",
-            "CO ve CO2 arasında, sabit karbona karşılık oksijen katlı oranını bulunuz.",
-            "SO2 ve SO3 arasındaki katlı oranı bulunuz.",
-            "NO ve NO2 arasındaki katlı oranı bulunuz.",
-            "H2O ve H2O2 arasındaki katlı oranı bulunuz.",
-            "N2O ve NO2 arasında sabit azota karşılık oksijen oranını bulunuz.",
-            "C2H4 ile C3H6 arasında katlı oran var mıdır? Nedenini yazınız.",
-            "NO2 ile SO2 arasında katlı oran aranabilir mi? Neden?",
+            "CO ve CO_2 arasında, sabit karbona karşılık oksijen katlı oranını bulunuz.",
+            "SO_2 ve SO_3 arasındaki katlı oranı bulunuz.",
+            "NO ve NO_2 arasındaki katlı oranı bulunuz.",
+            "H_2O ve H_2O_2 arasındaki katlı oranı bulunuz.",
+            "N_2O ve NO_2 arasında sabit azota karşılık oksijen oranını bulunuz.",
+            "C_2H_4 ile C_3H_6 arasında katlı oran var mıdır? Nedenini yazınız.",
+            "NO_2 ile SO_2 arasında katlı oran aranabilir mi? Neden?",
             "Katlı oranın 1/1 çıkması ne anlama gelir?",
             "Katlı oran çözümünde ilk adım nedir?",
             "Kimyasal denklemde girenler ve ürünler nasıl gösterilir?",
             "Denklemde (k), (s), (g) ve (suda) kısaltmaları neyi belirtir?",
             "Denkleştirme işleminin kütlenin korunumuyla ilişkisini yazınız.",
             "Denkleştirirken alt indisler neden değiştirilemez?",
-            "CH4 + O2 → CO2 + H2O denklemini denkleştiriniz.",
-            "C3H8 + O2 → CO2 + H2O denklemini denkleştiriniz.",
-            "C2H6 + O2 → CO2 + H2O denklemini denkleştiriniz.",
+            "CH_4 + O_2 → CO_2 + H_2O denklemini denkleştiriniz.",
+            "C_3H_8 + O_2 → CO_2 + H_2O denklemini denkleştiriniz.",
+            "C_2H_6 + O_2 → CO_2 + H_2O denklemini denkleştiriniz.",
             "Denkleştirmede neden önce karbon, en son oksijen sayılır?",
             "Denkleştirmede kesirli katsayı çıkarsa ne yapılır?",
-            "Al + O2 → Al2O3 denklemini denkleştiriniz.",
-            "Fe + Cl2 → FeCl3 denklemini denkleştiriniz.",
+            "Al + O_2 → Al_2O_3 denklemini denkleştiriniz.",
+            "Fe + Cl_2 → FeCl_3 denklemini denkleştiriniz.",
             "Bir denklemde katsayıların toplamı neyi ifade eder?",
             "Denkleştirilmiş bir denklemde iki tarafın kütlesi eşit midir? Neden?",
             "Lavoisier'in kimyaya en önemli katkısı nedir?",
@@ -299,22 +332,22 @@ NOT = {
             "Kükürt sabit (ikisinde de 1). Oksijenler **2/3**.",
             "Azot sabit (ikisinde de 1). Oksijenler **1/2**.",
             "Hidrojen sabit (ikisinde de 2). Oksijenler **1/2**.",
-            "Azotları eşitle: NO2 → **N2O4**. Oksijenler 1 ve 4 → oran **1/4**.",
-            "**Yoktur.** İkisinin de basit formülü **CH2**'dir; oran 1/1 çıkar, bu katlı oran sayılmaz.",
+            "Azotları eşitle: NO_2 → **N_2O_4**. Oksijenler 1 ve 4 → oran **1/4**.",
+            "**Yoktur.** İkisinin de basit formülü **CH_2**'dir; oran 1/1 çıkar, bu katlı oran sayılmaz.",
             "**Aranamaz.** Katlı oranlar kanunu **aynı iki elementten** oluşan bileşikler için geçerlidir; burada azot ve kükürt farklı elementlerdir.",
             "Bileşiklerin **basit formüllerinin aynı** olduğunu, yani gerçekte farklı iki bileşik gibi karşılaştırılamayacağını gösterir.",
             "Sabitlenecek elementin **atom sayılarını eşitlemek** (formülleri uygun tam sayılarla çarparak).",
             "**Girenler solda, ürünler sağda** yazılır; aralarına **ok** konur.",
             "Maddenin **fiziksel hâlini** belirtir: katı, sıvı, gaz ve sulu çözelti.",
             "Denkleştirme, okun iki tarafındaki **atom sayılarını eşitler**. Atom sayıları eşitse kütleler de eşit olur; yani denkleştirme kütlenin korunumunun denklemdeki karşılığıdır.",
-            "İndis değişirse **bileşiğin kendisi değişir**. H2O'yu H2O2 yapmak suyu hidrojen peroksite çevirmek demektir.",
-            "**CH4 + 2O2 → CO2 + 2H2O**",
-            "**C3H8 + 5O2 → 3CO2 + 4H2O**",
-            "**2C2H6 + 7O2 → 4CO2 + 6H2O**",
-            "Oksijen **hem CO2'de hem H2O'da** bulunur; önce sayılırsa diğer katsayılar değiştikçe sürekli yeniden hesaplanması gerekir. En son sayıldığında tek adımda çözülür.",
+            "İndis değişirse **bileşiğin kendisi değişir**. H_2O'yu H_2O_2 yapmak suyu hidrojen peroksite çevirmek demektir.",
+            "**CH_4 + 2O_2 → CO_2 + 2H_2O**",
+            "**C_3H_8 + 5O_2 → 3CO2 + 4H_2O**",
+            "**2C_2H_6 + 7O_2 → 4CO2 + 6H_2O**",
+            "Oksijen **hem CO_2'de hem H_2O'da** bulunur; önce sayılırsa diğer katsayılar değiştikçe sürekli yeniden hesaplanması gerekir. En son sayıldığında tek adımda çözülür.",
             "**Bütün denklem** o kesrin paydasıyla çarpılır; böylece katsayılar tam sayı olur.",
-            "**4Al + 3O2 → 2Al2O3**",
-            "**2Fe + 3Cl2 → 2FeCl3**",
+            "**4Al + 3O_2 → 2Al_2O_3**",
+            "**2Fe + 3Cl_2 → 2FeCl3**",
             "Tepkimeye giren ve oluşan taneciklerin **mol oranlarını** ifade eder.",
             "**Evet eşittir.** Atom cinsi ve sayısı iki tarafta da aynı olduğu için toplam kütle de aynıdır.",
             "**Kütlenin korunumu kanununu** deneysel olarak ortaya koyması ve kimyayı **ölçüme dayalı** bir bilim hâline getirmesi.",

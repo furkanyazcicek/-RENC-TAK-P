@@ -76,6 +76,19 @@ NOT = {
 
         # ==========================================================
         {"tur": "bolum", "numara": 2, "baslik": "Öz Isı ve Isı Hesapları"},
+        {"tur": "gorsel", "baslik": "Şema 2 — Isınma ve hâl değişimi grafiği",
+         "aciklama": "**Eğik bölümlerde** madde ısınır, sıcaklığı yükselir; burada "
+                     "**Q = m · c · ΔT** kullanılır. **Yatay bölümlerde** hâl değişir, "
+                     "sıcaklık sabit kalır; burada **Q = m · L** kullanılır. Yatay "
+                     "bölümde ısı verilmeye devam eder ama termometre kımıldamaz — "
+                     "sınavda en çok sorulan ayrım budur.",
+         "ciz": S.grafik("Verilen ısı (Q)", "Sıcaklık (°C)", [
+             ("", [(0, 0.10), (0.18, 0.34)], MARKA),
+             ("Erime (sabit)", [(0.18, 0.34), (0.42, 0.34)], BILGI),
+             ("", [(0.42, 0.34), (0.60, 0.72)], MARKA),
+             ("Kaynama (sabit)", [(0.60, 0.72), (0.86, 0.72)], TEHLIKE),
+             ("", [(0.86, 0.72), (0.96, 0.90)], MARKA),
+         ], gosterge="sol-ust", kilavuzlar=[(0.18, 0.34), (0.60, 0.72)])},
         {"tur": "formul",
          "baslik": "Sıcaklık değişimi ısısı",
          "ifade": "Q = m · c · ΔT",
@@ -114,10 +127,10 @@ NOT = {
          "adimlar": [
              "**Basamak 1** — Buzu −10 °C'den 0 °C'ye ısıt: sıcaklık değişiyor, "
              "**Q = m·c·ΔT** kullanılır.",
-             "Q1 = 20 × 0,5 × 10 = **100 cal**.",
+             "Q_1 = 20 × 0,5 × 10 = **100 cal**.",
              "**Basamak 2** — 0 °C'deki buzu erit: hâl değişiyor, **Q = m·L** "
              "kullanılır.",
-             "Q2 = 20 × 80 = **1600 cal**.",
+             "Q_2 = 20 × 80 = **1600 cal**.",
              "Toplam: Q = 100 + 1600.",
          ],
          "sonuc": "Toplam 1700 kalori gerekir."},
@@ -126,7 +139,7 @@ NOT = {
          "ifade": "Alınan Isı = Verilen Isı",
          "terimler": [
              ("Kural", "Sıcak cismin **verdiği** ısı, soğuk cismin **aldığı** ısıya eşittir"),
-             ("Yazılışı", "m1·c1·(Td − T1) = m2·c2·(T2 − Td)"),
+             ("Yazılışı", "m_1·c_1·(Td − T_1) = m_2·c_2·(T_2 − Td)"),
              ("Td", "**Denge sıcaklığı** — iki başlangıç sıcaklığının **arasındadır**"),
          ],
          "not": "Denge sıcaklığı hesaplandığında iki başlangıç sıcaklığının "
@@ -155,6 +168,15 @@ NOT = {
              "**Yatay bölümün varlığı maddenin SAF olduğunu** gösterir.",
          ]},
 
+        {"tur": "gorsel", "baslik": "Şema 3 — Öz ısı farkı grafikte nasıl görünür?",
+         "aciklama": "Aynı kütledeki iki maddeye **eşit ısı** verildiğinde, **öz ısısı "
+                     "küçük olan daha çok ısınır** — yani grafikte **dik** olan doğru "
+                     "öz ısısı küçük maddeye aittir. Grafiğin eğimi **1 / (m · c)** ile "
+                     "orantılıdır; bu yüzden dik doğru = kolay ısınan madde.",
+         "ciz": S.grafik("Verilen ısı (Q)", "Sıcaklık (ΔT)", [
+             ("Öz ısısı küçük (demir)", [(0, 0.02), (0.62, 0.92)], TEHLIKE),
+             ("Öz ısısı büyük (su)", [(0, 0.02), (0.94, 0.42)], BILGI),
+         ], gosterge="sag-alt")},
         # ==========================================================
         {"tur": "bolum", "numara": 3, "baslik": "Isı İletim Yolları"},
         {"tur": "tablo",
@@ -189,16 +211,16 @@ NOT = {
         ]},
         {"tur": "formul",
          "baslik": "Boyca genleşme",
-         "ifade": "ΔL = L0 · a · ΔT",
+         "ifade": "ΔL = L_0 · a · ΔT",
          "terimler": [
              ("ΔL", "**Boy artışı**"),
-             ("L0", "**İlk boy**"),
+             ("L_0", "**İlk boy**"),
              ("a", "**Boyca genleşme katsayısı** (madde cinsine bağlı)"),
              ("ΔT", "**Sıcaklık farkı**"),
          ],
          "not": "Yüzeyce genleşme katsayısı **2a**, hacimce genleşme katsayısı "
                 "**3a**'dır. Yani aynı madde için oran her zaman **a : 2a : 3a**'dır."},
-        {"tur": "gorsel", "baslik": "Şema 2 — Genleşmenin günlük hayattaki izleri",
+        {"tur": "gorsel", "baslik": "Şema 4 — Genleşmenin günlük hayattaki izleri",
          "aciklama": "Genleşme bazen **istenmez** (raylar, köprüler) bazen "
                      "**kullanılır** (termostat, termometre).",
          "ciz": S.kartlar([
@@ -315,7 +337,7 @@ NOT = {
             "Erime ısısı **80 cal/g**, buharlaşma ısısı **540 cal/g**.",
             "Q = 20 × 1 × 10 = **200 cal**.",
             "Q = 20 × 80 = **1600 cal**.",
-            "Q1 = 20 × 0,5 × 10 = 100 cal, Q2 = 20 × 80 = 1600 cal → toplam **1700 cal**.",
+            "Q_1 = 20 × 0,5 × 10 = 100 cal, Q_2 = 20 × 80 = 1600 cal → toplam **1700 cal**.",
             "**Her basamak ayrı hesaplanır** (sıcaklık değişimleri m·c·ΔT ile, hâl değişimleri m·L ile) ve sonra **toplanır**.",
             "**Alınan ısı = Verilen ısı.**",
             "100(80 − Td) = 200(Td − 20) → 8000 − 100Td = 200Td − 4000 → 300Td = 12 000 → Td = **40 °C**.",
@@ -333,7 +355,7 @@ NOT = {
             "Sıcaklık artınca tanecikler **daha hızlı ve geniş genlikte titreşir**; aralarındaki ortalama uzaklık artar ve madde **büyür**.",
             "**Üç tür**: boyca, yüzeyce ve hacimce genleşme.",
             "Sıvı ve gazların **belirli bir şekli yoktur**; kabın şeklini aldıkları için boy ve yüzey kavramları anlamsızdır.",
-            "**ΔL = L0 · a · ΔT.** ΔL boy artışı, L0 ilk boy, a genleşme katsayısı, ΔT sıcaklık farkı.",
+            "**ΔL = L_0 · a · ΔT.** ΔL boy artışı, L_0 ilk boy, a genleşme katsayısı, ΔT sıcaklık farkı.",
             "**a : 2a : 3a** (boyca : yüzeyce : hacimce).",
             "Sıcaklık arttığında raylar **boyca genleşir**; boşluk bırakılmazsa raylar birbirini iter, **eğilir ve deforme olur**.",
             "Genleşme katsayıları **farklı** iki metal birleştirilmiştir. Isıtılınca **çok genleşen dış tarafa**, az genleşen iç tarafa gelecek biçimde **bükülür**; bu hareket devreyi açıp kapatır.",

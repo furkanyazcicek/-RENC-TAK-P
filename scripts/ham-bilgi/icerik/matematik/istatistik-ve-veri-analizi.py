@@ -30,6 +30,25 @@ NOT = {
     "bloklar": [
         # ==========================================================
         {"tur": "bolum", "numara": 1, "baslik": "Merkezî Eğilim Ölçüleri"},
+        {"tur": "gorsel", "baslik": "Şema 1 — Üç merkezî eğilim ölçüsü",
+         "aciklama": "Üçü de \"verinin ortası\" sorusuna yanıt verir ama farklı "
+                     "yollarla. **Aşırı uç değer varsa ortalama yanılır**, medyan "
+                     "yanılmaz — bu, sınavda yorum sorularının çıkış noktasıdır.",
+         "ciz": S.karsilastirma(
+             "Aritmetik Ortalama",
+             ["Toplam / eleman sayısı",
+              "**Her veriyi** hesaba katar",
+              "**Uç değerden çok etkilenir**",
+              "Veri sayısal olmalı"],
+             "Medyan (Ortanca)",
+             ["Sıralanınca **tam ortadaki** değer",
+              "Çift sayıda veride **ortadaki ikisinin ortalaması**",
+              "**Uç değerden etkilenmez**",
+              "Önce **sıralamak zorunludur**"],
+             "Mod (Tepe Değer)",
+             ["**En çok tekrar eden** değer",
+              "Hiç olmayabilir ya da **birden çok** olabilir",
+              "Sayısal olmayan veride de kullanılır"])},
         {"tur": "formul",
          "baslik": "Üç temel ölçü",
          "ifade": "Aritmetik ortalama = (Verilerin toplamı) / (Veri sayısı)\n"
@@ -92,7 +111,7 @@ NOT = {
             "**Bütün veriler eşitse standart sapma SIFIRDIR.**",
             "**Standart sapma asla negatif olamaz.**",
         ]},
-        {"tur": "gorsel", "baslik": "Şema 1 — Aynı ortalama, farklı yayılım",
+        {"tur": "gorsel", "baslik": "Şema 2 — Aynı ortalama, farklı yayılım",
          "aciklama": "İki grubun **ortalaması aynı** olabilir ama **dağılımları "
                      "tamamen farklı** olabilir. Bu yüzden ortalama tek başına "
                      "yeterli değildir; **yayılım ölçüsü de gerekir**.",
