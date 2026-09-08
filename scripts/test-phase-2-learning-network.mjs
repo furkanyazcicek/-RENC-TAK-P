@@ -1725,6 +1725,27 @@ try {
       ),
       1
     )
+    const globalLateVisibilityCatchup = await processDiagnosticBatch({
+      repository: pgRepository,
+      workerId: uuid(61000000, 61),
+      batchSize: 1,
+    })
+    check(globalLateVisibilityCatchup.claimed)
+    equal(
+      await queryCount(
+        db,
+        `select count(distinct cursor_id) from public.learning_evidence_processing
+          where projection_name = $1::text
+            and projection_version = $2::text
+            and record_id = $3::uuid and status = 'succeeded'`,
+        [
+          DIAGNOSTIC_PROJECTION_NAME,
+          DIAGNOSTIC_PROJECTION_VERSION,
+          lateVisibility.record_id,
+        ]
+      ),
+      2
+    )
     summary.replay = {
       initial_rows: firstReplay.row_count,
       initial_checksum: firstReplay.checksum,
@@ -1738,6 +1759,7 @@ try {
       retry_recovered: true,
       two_worker_claim_duplicate_effect: false,
       late_visible_lower_sequence_recovered: true,
+      processing_scope_isolation_verified: true,
       permanent_poison_advanced_to_healthy_record: true,
       final_rows: finalReplay.row_count,
       final_checksum: finalReplay.checksum,
@@ -2614,14 +2636,22 @@ try {
         [STUDENT_B]
       )
     ).rows
+    const benchmarkCursorId = (
+      await db.query(
+        `insert into public.learning_projection_cursors (
+           projection_name, projection_version, last_ingestion_sequence
+         ) values ('benchmark_probe', 'benchmark@1', 0)
+         returning cursor_id`
+      )
+    ).rows[0].cursor_id
     for (const record of benchmarkRecordIds) {
       await db.query(
         `insert into public.learning_evidence_processing (
-           projection_name, projection_version, record_id, ingestion_sequence,
+           cursor_id, projection_name, projection_version, record_id, ingestion_sequence,
            status, retry_count
-         ) values ('benchmark_probe', 'benchmark@1', $1::uuid, $2::bigint, 'pending', 0)
+         ) values ($1::uuid, 'benchmark_probe', 'benchmark@1', $2::uuid, $3::bigint, 'pending', 0)
          on conflict do nothing`,
-        [record.record_id, record.ingestion_sequence]
+        [benchmarkCursorId, record.record_id, record.ingestion_sequence]
       )
     }
     const processingPlan = JSON.stringify(

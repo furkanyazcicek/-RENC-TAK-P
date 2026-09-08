@@ -220,7 +220,7 @@ NOT = {
              ("Zayıf asit – kuvvetli baz",
               [(0.04, 0.24), (0.24, 0.38), (0.42, 0.48), (0.50, 0.64),
                (0.56, 0.84), (0.70, 0.90), (0.94, 0.94)], S.BASARI),
-         ], notlar=[(0.14, 0.56, "**eşdeğerlik noktası**\ndik bölge")],
+         ], notlar=[(0.14, 0.66, "**eşdeğerlik noktası**\ndik bölge")],
             kilavuzlar=[(0.52, 0.50)], gosterge="sag-alt", yukseklik=56.0)},
 
         # ==========================================================
