@@ -432,6 +432,16 @@ export const HAM_BILGI_NOTLARI = [
     "boyutKB": 111
   },
   {
+    "sinav": "AYT",
+    "ders": "Fizik",
+    "konu": "Atom Fiziği ve Radyoaktivite",
+    "baslik": "Atom Fiziği ve Radyoaktivite",
+    "ozet": "Ham bilgi notu — atom modelleri, enerji düzeyleri, çekirdek yapısı, bozunmalar ve nükleer tepkimeler; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-fizik/atom-fizigi-ve-radyoaktivite.pdf",
+    "sayfa": 12,
+    "boyutKB": 105
+  },
+  {
     "sinav": "TYT",
     "ders": "Fizik",
     "konu": "Basınç",
@@ -440,6 +450,36 @@ export const HAM_BILGI_NOTLARI = [
     "dosya": "/kutuphane-notlari/tyt-fizik/basinc.pdf",
     "sayfa": 11,
     "boyutKB": 96
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Fizik",
+    "konu": "Basit Harmonik Hareket",
+    "baslik": "Basit Harmonik Hareket",
+    "ozet": "Ham bilgi notu — geri çağırıcı kuvvet, yay ve sarkaç, enerji dönüşümü ve grafikler; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-fizik/basit-harmonik-hareket.pdf",
+    "sayfa": 11,
+    "boyutKB": 98
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Fizik",
+    "konu": "Çembersel Hareket ve Kütle Çekimi",
+    "baslik": "Çembersel Hareket ve Kütle Çekimi",
+    "ozet": "Ham bilgi notu — düzgün çembersel hareket, merkezcil kuvvet, açısal momentum, kütle çekimi ve Kepler yasaları; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-fizik/cembersel-hareket-ve-kutle-cekimi.pdf",
+    "sayfa": 12,
+    "boyutKB": 104
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Fizik",
+    "konu": "Dalga Mekaniği",
+    "baslik": "Dalga Mekaniği",
+    "ozet": "Ham bilgi notu — dalga olayları, girişim, kırınım, Doppler ve elektromanyetik dalgalar; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-fizik/dalga-mekanigi.pdf",
+    "sayfa": 11,
+    "boyutKB": 98
   },
   {
     "sinav": "TYT",
@@ -462,6 +502,26 @@ export const HAM_BILGI_NOTLARI = [
     "boyutKB": 97
   },
   {
+    "sinav": "AYT",
+    "ders": "Fizik",
+    "konu": "Elektriksel Kuvvet ve Elektrik Alan",
+    "baslik": "Elektriksel Kuvvet ve Elektrik Alan",
+    "ozet": "Ham bilgi notu — Coulomb yasası, elektrik alan, alan çizgileri ve düzgün alan; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-fizik/elektriksel-kuvvet-ve-alan.pdf",
+    "sayfa": 11,
+    "boyutKB": 101
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Fizik",
+    "konu": "Elektriksel Potansiyel ve Sığa",
+    "baslik": "Elektriksel Potansiyel ve Sığa",
+    "ozet": "Ham bilgi notu — potansiyel, potansiyel fark, sığa, kondansatörler ve bağlanma biçimleri; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-fizik/elektriksel-potansiyel-ve-siga.pdf",
+    "sayfa": 11,
+    "boyutKB": 99
+  },
+  {
     "sinav": "TYT",
     "ders": "Fizik",
     "konu": "Elektrostatik",
@@ -470,6 +530,16 @@ export const HAM_BILGI_NOTLARI = [
     "dosya": "/kutuphane-notlari/tyt-fizik/elektrostatik.pdf",
     "sayfa": 11,
     "boyutKB": 95
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Fizik",
+    "konu": "Enerji ve Hareket",
+    "baslik": "Enerji ve Hareket",
+    "ozet": "Ham bilgi notu — iş, enerji, korunum, yay enerjisi ve güç; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-fizik/enerji-ve-hareket.pdf",
+    "sayfa": 11,
+    "boyutKB": 105
   },
   {
     "sinav": "TYT",
@@ -492,6 +562,16 @@ export const HAM_BILGI_NOTLARI = [
     "boyutKB": 104
   },
   {
+    "sinav": "AYT",
+    "ders": "Fizik",
+    "konu": "İki Boyutta Hareket",
+    "baslik": "İki Boyutta Hareket",
+    "ozet": "Ham bilgi notu — yatay atış, eğik atış ve düşey atış; grafik yorumu ve hesaplar; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-fizik/iki-boyutta-hareket.pdf",
+    "sayfa": 11,
+    "boyutKB": 97
+  },
+  {
     "sinav": "TYT",
     "ders": "Fizik",
     "konu": "İş, Güç ve Enerji",
@@ -512,6 +592,16 @@ export const HAM_BILGI_NOTLARI = [
     "boyutKB": 102
   },
   {
+    "sinav": "AYT",
+    "ders": "Fizik",
+    "konu": "İtme ve Çizgisel Momentum",
+    "baslik": "İtme ve Çizgisel Momentum",
+    "ozet": "Ham bilgi notu — momentum, itme, korunum yasası ve çarpışmalar; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-fizik/itme-ve-cizgisel-momentum.pdf",
+    "sayfa": 11,
+    "boyutKB": 101
+  },
+  {
     "sinav": "TYT",
     "ders": "Fizik",
     "konu": "Madde ve Özellikleri",
@@ -522,6 +612,16 @@ export const HAM_BILGI_NOTLARI = [
     "boyutKB": 95
   },
   {
+    "sinav": "AYT",
+    "ders": "Fizik",
+    "konu": "Manyetizma ve Elektromanyetik İndüklenme",
+    "baslik": "Manyetizma ve Elektromanyetik İndüklenme",
+    "ozet": "Ham bilgi notu — manyetik alan, akım kuvveti, indüksiyon, Lenz yasası, alternatif akım ve transformatör; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-fizik/manyetizma-ve-indukleme.pdf",
+    "sayfa": 11,
+    "boyutKB": 103
+  },
+  {
     "sinav": "TYT",
     "ders": "Fizik",
     "konu": "Manyetizma",
@@ -530,6 +630,26 @@ export const HAM_BILGI_NOTLARI = [
     "dosya": "/kutuphane-notlari/tyt-fizik/manyetizma.pdf",
     "sayfa": 10,
     "boyutKB": 85
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Fizik",
+    "konu": "Modern Fizik",
+    "baslik": "Modern Fizik",
+    "ozet": "Ham bilgi notu — özel görelilik, fotoelektrik olay, Compton, madde dalgaları ve teknolojik uygulamalar; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-fizik/modern-fizik.pdf",
+    "sayfa": 12,
+    "boyutKB": 108
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Fizik",
+    "konu": "Newton'un Hareket Yasaları",
+    "baslik": "Newton'un Hareket Yasaları",
+    "ozet": "Ham bilgi notu — serbest cisim diyagramı, bağlı cisimler, sürtünme ve eğik düzlem; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-fizik/newton-hareket-yasalari.pdf",
+    "sayfa": 12,
+    "boyutKB": 105
   },
   {
     "sinav": "TYT",
@@ -550,6 +670,26 @@ export const HAM_BILGI_NOTLARI = [
     "dosya": "/kutuphane-notlari/tyt-fizik/sivilarin-kaldirma-kuvveti.pdf",
     "sayfa": 11,
     "boyutKB": 92
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Fizik",
+    "konu": "Tork ve Denge",
+    "baslik": "Tork ve Denge",
+    "ozet": "Ham bilgi notu — tork, denge koşulları, ağırlık merkezi ve basit makineler; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-fizik/tork-ve-denge.pdf",
+    "sayfa": 11,
+    "boyutKB": 100
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Fizik",
+    "konu": "Vektörler ve Bağıl Hareket",
+    "baslik": "Vektörler ve Bağıl Hareket",
+    "ozet": "Ham bilgi notu — vektör işlemleri, bileşenlere ayırma, bağıl hız ve nehir problemleri; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-fizik/vektorler-ve-bagil-hareket.pdf",
+    "sayfa": 11,
+    "boyutKB": 100
   },
   {
     "sinav": "TYT",
