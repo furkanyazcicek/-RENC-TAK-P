@@ -1,7 +1,7 @@
 # AI Koç Faz Durumu
 
-Son güncelleme: 7 Eylül 2026  
-Program durumu: Faz 1 tamamlandı; Faz 2 için doğrulanmış sözleşmeler hazır
+Son güncelleme: 8 Eylül 2026
+Program durumu: Faz 2 veri ağı çekirdeği yerel kabul doğrulamasında
 
 Bu dosya fazların gerçek ilerleme kaydıdır. Bir Codex görevi yalnız kendi fazına ait satırı, kanıtları ve açık sorunları günceller. Kabul ölçütlerinin tamamı geçmeden durum “tamamlandı” yapılamaz.
 
@@ -19,7 +19,7 @@ Bu dosya fazların gerçek ilerleme kaydıdır. Bir Codex görevi yalnız kendi 
 |---|---|---|---|
 | 0 — Envanter | Tamamlandı | [Mevcut durum envanteri](MEVCUT_DURUM_ENVANTERI.md), [veri kaynakları matrisi](VERI_KAYNAKLARI_MATRISI.md), [veri akışları](VERI_AKISLARI.md), [kabul senaryoları](KABUL_SENARYOLARI.md), [baz çizgisi](BAZ_CIZGISI.md), [mimari kararlar](MIMARI_KARARLAR.md), [otomatik kabul kaydı](kanitlar/faz-0/envanter-kabul-sonucu.json) | — |
 | 1 — Konu ve olay sözleşmesi | Tamamlandı | [Konu kimliği sözleşmesi](KONU_KIMLIGI_SOZLESMESI.md), [öğrenme kanıtı sözleşmesi](OGRENME_KANITI_SOZLESMESI.md), [kaynak kayıt defteri](KAYNAK_KAYIT_DEFTERI.md), [otomatik kabul kaydı](kanitlar/faz-1/faz-1-kabul-sonucu.json) | — |
-| 2 — Veri ağı çekirdeği | Başlamadı | — | Faz 1 gerekli |
+| 2 — Veri ağı çekirdeği | Devam ediyor | Yerel kabul kanıtı hazırlanıyor | Yerel kapılar henüz sonuçlanmadı |
 | 3 — İçerik yüzeyleri | Başlamadı | — | Faz 2 gerekli |
 | 4 — Ana akademik kayıtlar | Başlamadı | — | Faz 2 gerekli |
 | 5 — Diller | Başlamadı | — | Faz 2 gerekli |

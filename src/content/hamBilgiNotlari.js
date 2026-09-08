@@ -252,6 +252,36 @@ export const HAM_BILGI_NOTLARI = [
     "boyutKB": 92
   },
   {
+    "sinav": "AYT",
+    "ders": "Kimya",
+    "konu": "Enerji Kaynakları ve Bilimsel Gelişmeler",
+    "baslik": "Enerji Kaynakları ve Bilimsel Gelişmeler",
+    "ozet": "Ham bilgi notu — fosil yakıtlar, yenilenebilir enerji, nükleer kimya ve sürdürülebilirlik; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-kimya/enerji-kaynaklari-ve-bilimsel-gelismeler.pdf",
+    "sayfa": 11,
+    "boyutKB": 100
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Kimya",
+    "konu": "Gazlar",
+    "baslik": "Gazlar",
+    "ozet": "Ham bilgi notu — gaz yasaları, ideal gaz denklemi, gaz karışımları, kısmi basınç ve difüzyon; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-kimya/gazlar.pdf",
+    "sayfa": 13,
+    "boyutKB": 103
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Kimya",
+    "konu": "Karbon Kimyasına Giriş",
+    "baslik": "Karbon Kimyasına Giriş",
+    "ozet": "Ham bilgi notu — organik-anorganik ayrımı, hibritleşme, formül çeşitleri ve izomerlik; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-kimya/karbon-kimyasina-giris.pdf",
+    "sayfa": 11,
+    "boyutKB": 103
+  },
+  {
     "sinav": "TYT",
     "ders": "Kimya",
     "konu": "Karışımlar",
@@ -282,6 +312,16 @@ export const HAM_BILGI_NOTLARI = [
     "boyutKB": 92
   },
   {
+    "sinav": "AYT",
+    "ders": "Kimya",
+    "konu": "Kimya ve Elektrik",
+    "baslik": "Kimya ve Elektrik",
+    "ozet": "Ham bilgi notu — redoks tepkimeleri, elektrokimyasal hücreler, elektrot potansiyelleri, elektroliz ve korozyon; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-kimya/kimya-ve-elektrik.pdf",
+    "sayfa": 12,
+    "boyutKB": 103
+  },
+  {
     "sinav": "TYT",
     "ders": "Kimya",
     "konu": "Kimyanın Temel Kanunları",
@@ -290,6 +330,36 @@ export const HAM_BILGI_NOTLARI = [
     "dosya": "/kutuphane-notlari/tyt-kimya/kimyanin-temel-kanunlari.pdf",
     "sayfa": 11,
     "boyutKB": 98
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Kimya",
+    "konu": "Kimyasal Tepkimelerde Denge",
+    "baslik": "Kimyasal Tepkimelerde Denge",
+    "ozet": "Ham bilgi notu — denge sabiti, Le Chatelier ilkesi ve denge hesapları; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-kimya/kimyasal-tepkimelerde-denge.pdf",
+    "sayfa": 12,
+    "boyutKB": 104
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Kimya",
+    "konu": "Kimyasal Tepkimelerde Enerji",
+    "baslik": "Kimyasal Tepkimelerde Enerji",
+    "ozet": "Ham bilgi notu — entalpi, tepkime ısıları, Hess yasası ve bağ enerjileri; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-kimya/kimyasal-tepkimelerde-enerji.pdf",
+    "sayfa": 12,
+    "boyutKB": 101
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Kimya",
+    "konu": "Kimyasal Tepkimelerde Hız",
+    "baslik": "Kimyasal Tepkimelerde Hız",
+    "ozet": "Ham bilgi notu — hız bağıntısı, aktifleşme enerjisi, hıza etki eden etkenler ve katalizör; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-kimya/kimyasal-tepkimelerde-hiz.pdf",
+    "sayfa": 11,
+    "boyutKB": 96
   },
   {
     "sinav": "TYT",
@@ -312,6 +382,16 @@ export const HAM_BILGI_NOTLARI = [
     "boyutKB": 98
   },
   {
+    "sinav": "AYT",
+    "ders": "Kimya",
+    "konu": "Modern Atom Teorisi",
+    "baslik": "Modern Atom Teorisi",
+    "ozet": "Ham bilgi notu — kuantum sayıları, orbital dizilimi, periyodik özellikler ve yükseltgenme basamakları; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-kimya/modern-atom-teorisi.pdf",
+    "sayfa": 12,
+    "boyutKB": 104
+  },
+  {
     "sinav": "TYT",
     "ders": "Kimya",
     "konu": "Mol Kavramı",
@@ -320,6 +400,36 @@ export const HAM_BILGI_NOTLARI = [
     "dosya": "/kutuphane-notlari/tyt-kimya/mol-kavrami.pdf",
     "sayfa": 11,
     "boyutKB": 100
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Kimya",
+    "konu": "Organik Bileşikler",
+    "baslik": "Organik Bileşikler",
+    "ozet": "Ham bilgi notu — hidrokarbonlar, fonksiyonel gruplar, adlandırma ve tepkimeler; 55 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-kimya/organik-bilesikler.pdf",
+    "sayfa": 12,
+    "boyutKB": 100
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Kimya",
+    "konu": "Sıvı Çözeltiler ve Çözünürlük",
+    "baslik": "Sıvı Çözeltiler ve Çözünürlük",
+    "ozet": "Ham bilgi notu — derişim birimleri, çözünürlük eğrileri ve koligatif özellikler; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/ayt-kimya/sivi-cozeltiler-ve-cozunurluk.pdf",
+    "sayfa": 13,
+    "boyutKB": 107
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Kimya",
+    "konu": "Sulu Çözelti Dengeleri",
+    "baslik": "Sulu Çözelti Dengeleri",
+    "ozet": "Ham bilgi notu — asit-baz kuramları, pH hesapları, tampon çözeltiler, titrasyon ve çözünürlük çarpımı; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-kimya/sulu-cozelti-dengeleri.pdf",
+    "sayfa": 13,
+    "boyutKB": 111
   },
   {
     "sinav": "TYT",

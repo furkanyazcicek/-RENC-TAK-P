@@ -709,15 +709,18 @@ create policy "Öğrenci kendi kullanımını kaydedebilir"
 
 
 -- ============================================================
--- BİTTİ — ama bir dosya daha çalıştırın:
+-- BİTTİ — ama sıralı migration dosyalarını da çalıştırın:
 --
 --   supabase/migration_parent_verification.sql
+--   supabase/migration_learning_evidence_network.sql
 --
 -- Veli doğrulama sistemi (parent_links, davet kodları, veliye veri
 -- okuma izni) ve profil politikalarının sıkılaştırılmış hâli orada.
 -- Bu dosyadaki `profiles` politikaları (özellikle SELECT `using (true)`)
 -- o göç tarafından DEĞİŞTİRİLİR — sıralama önemlidir: önce bu dosya,
--- sonra migration_parent_verification.sql, en son scripts/import-data.mjs.
+-- sonra migration_parent_verification.sql, ardından Faz 2 veri ağı
+-- migration'ı, en son scripts/import-data.mjs. Faz 2 şeması bu dosyaya
+-- kopyalanmaz; tek yetkili kaynak migration_learning_evidence_network.sql'dir.
 --
 -- Doğrulama:
 --   select table_name from information_schema.tables

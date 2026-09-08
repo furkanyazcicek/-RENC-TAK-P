@@ -526,8 +526,10 @@ def grafik_seti(paneller, ortak_not=None, sifir=0.0):
             # Ortak not varsa panelin altından yer ayrılır; yoksa
             # eksen adı ile not üst üste biniyordu.
             alt_pay = 17.0 if ortak_not else 11.0
+            # Üst pay, panel başlığı ile düşey eksen adının üst üste
+            # binmemesi için başlık yüksekliği kadar aşağıda başlar.
             sol, alt = px + 12, y + h - alt_pay
-            sag, ust = px + panel_g - 6, y + 12
+            sag, ust = px + panel_g - 6, y + 15
             _eksen_takimi(pdf, sol, ust, sag, alt, x_etiket, y_etiket,
                           bolme=3, sifir=sifir)
             _egrileri_ciz(pdf, sol, ust, sag, alt, egriler, dolgular)

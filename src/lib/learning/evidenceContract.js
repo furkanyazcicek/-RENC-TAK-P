@@ -623,6 +623,17 @@ export function enrichTrustedEvidence(draft, trusted, { expectedSourceCode = nul
  */
 export function projectEvidenceHistory(records = []) {
   const ordered = [...records].sort((a, b) => {
+    const leftSequence = Number(a.ingestion_sequence)
+    const rightSequence = Number(b.ingestion_sequence)
+    if (
+      Number.isSafeInteger(leftSequence) &&
+      Number.isSafeInteger(rightSequence) &&
+      leftSequence >= 0 &&
+      rightSequence >= 0 &&
+      leftSequence !== rightSequence
+    ) {
+      return leftSequence - rightSequence
+    }
     const time = parseTime(a.recorded_at) - parseTime(b.recorded_at)
     return time || String(a.record_id).localeCompare(String(b.record_id))
   })
