@@ -1000,6 +1000,216 @@ export const HAM_BILGI_NOTLARI = [
     "dosya": "/kutuphane-notlari/ayt-matematik/uzay-geometri.pdf",
     "sayfa": 11,
     "boyutKB": 96
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Anlatım Bozuklukları",
+    "baslik": "Anlatım Bozuklukları",
+    "ozet": "Ham bilgi notu — anlama ve yapıya dayalı bozukluklar, düzeltme yolları; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-turkce/anlatim-bozukluklari.pdf",
+    "sayfa": 12,
+    "boyutKB": 95
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Cümle Türleri",
+    "baslik": "Cümle Türleri",
+    "ozet": "Ham bilgi notu — yapısına, yükleminin türüne, yerine ve anlamına göre cümleler; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-turkce/cumle-turleri.pdf",
+    "sayfa": 12,
+    "boyutKB": 94
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Cümlede Anlam",
+    "baslik": "Cümlede Anlam",
+    "ozet": "Ham bilgi notu — cümlede anlam ilişkileri, yorum-yargı ayrımı ve kavramlar; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-turkce/cumlede-anlam.pdf",
+    "sayfa": 12,
+    "boyutKB": 94
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Cümlenin Ögeleri",
+    "baslik": "Cümlenin Ögeleri",
+    "ozet": "Ham bilgi notu — yüklem, özne, nesne, tümleçler ve öge bulma sırası; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-turkce/cumlenin-ogeleri.pdf",
+    "sayfa": 12,
+    "boyutKB": 91
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Fiilimsi",
+    "baslik": "Fiilimsi",
+    "ozet": "Ham bilgi notu — isim-fiil, sıfat-fiil, zarf-fiil ve cümledeki görevleri; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-turkce/fiilimsi.pdf",
+    "sayfa": 11,
+    "boyutKB": 89
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Fiiller",
+    "baslik": "Fiiller",
+    "ozet": "Ham bilgi notu — anlam ve kip, haber ve dilek kipleri, çatı ve ek fiil; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-turkce/fiiller.pdf",
+    "sayfa": 12,
+    "boyutKB": 94
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "İsim ve Sıfat",
+    "baslik": "İsim ve Sıfat",
+    "ozet": "Ham bilgi notu — isim çeşitleri, isim çekim ekleri, sıfat türleri ve adlaşmış sıfat; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-turkce/isim-ve-sifat.pdf",
+    "sayfa": 12,
+    "boyutKB": 96
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Noktalama İşaretleri",
+    "baslik": "Noktalama İşaretleri",
+    "ozet": "Ham bilgi notu — virgül, noktalı virgül, iki nokta, tırnak ve diğer işaretler; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-turkce/noktalama-isaretleri.pdf",
+    "sayfa": 12,
+    "boyutKB": 94
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Paragraf Okuma Mekanizması",
+    "baslik": "Paragraf Okuma Mekanizması",
+    "ozet": "Ham bilgi notu — okuma stratejisi, soru türleri, zaman yönetimi ve çeldirici tanıma; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-turkce/paragraf-okuma-mekanizmasi.pdf",
+    "sayfa": 11,
+    "boyutKB": 96
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Paragraf Yapısı",
+    "baslik": "Paragraf Yapısı",
+    "ozet": "Ham bilgi notu — giriş-gelişme-sonuç, cümle sıralama, akışı bozan cümle ve paragraf tamamlama; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-turkce/paragraf-yapisi.pdf",
+    "sayfa": 11,
+    "boyutKB": 96
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Paragrafta Ana Düşünce",
+    "baslik": "Paragrafta Ana Düşünce",
+    "ozet": "Ham bilgi notu — ana düşünce, konu, başlık ve yardımcı düşünce ayrımı; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-turkce/paragrafta-ana-dusunce.pdf",
+    "sayfa": 11,
+    "boyutKB": 93
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Paragrafta Anlam ve Yapı",
+    "baslik": "Paragrafta Anlam ve Yapı",
+    "ozet": "Ham bilgi notu — soru türlerinin birlikte çözümü, karma sorular ve genel strateji; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-turkce/paragrafta-anlam-ve-yapi.pdf",
+    "sayfa": 10,
+    "boyutKB": 94
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Paragrafta Anlatım Teknikleri",
+    "baslik": "Paragrafta Anlatım Teknikleri",
+    "ozet": "Ham bilgi notu — açıklama, tartışma, öyküleme, betimleme ve anlatıcı bakış açıları; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-turkce/paragrafta-anlatim-teknikleri.pdf",
+    "sayfa": 11,
+    "boyutKB": 94
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Paragrafta Düşünceyi Geliştirme Yolları",
+    "baslik": "Paragrafta Düşünceyi Geliştirme Yolları",
+    "ozet": "Ham bilgi notu — tanımlama, örnekleme, karşılaştırma, tanık gösterme, sayısal veri ve benzetme; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-turkce/paragrafta-dusunceyi-gelistirme-yollari.pdf",
+    "sayfa": 10,
+    "boyutKB": 94
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Ses Bilgisi",
+    "baslik": "Ses Bilgisi",
+    "ozet": "Ham bilgi notu — ünlü ve ünsüz uyumları, ses olayları ve istisnalar; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-turkce/ses-bilgisi.pdf",
+    "sayfa": 12,
+    "boyutKB": 96
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Sözcük Türleri",
+    "baslik": "Sözcük Türleri",
+    "ozet": "Ham bilgi notu — sekiz sözcük türü, edat, bağlaç, ünlem ve tür kayması; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-turkce/sozcuk-turleri.pdf",
+    "sayfa": 12,
+    "boyutKB": 95
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Sözcükte Anlam",
+    "baslik": "Sözcükte Anlam",
+    "ozet": "Ham bilgi notu — gerçek ve mecaz anlam, anlam ilişkileri, deyim ve atasözleri; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-turkce/sozcukte-anlam.pdf",
+    "sayfa": 12,
+    "boyutKB": 97
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Tamlamalar",
+    "baslik": "Tamlamalar",
+    "ozet": "Ham bilgi notu — isim ve sıfat tamlaması, tamlama çeşitleri ve karma tamlamalar; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-turkce/tamlamalar.pdf",
+    "sayfa": 11,
+    "boyutKB": 90
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Yapı Bilgisi",
+    "baslik": "Yapı Bilgisi",
+    "ozet": "Ham bilgi notu — kök, gövde, yapım ve çekim ekleri, sözcük yapısı; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-turkce/yapi-bilgisi.pdf",
+    "sayfa": 12,
+    "boyutKB": 95
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Yazım Kuralları",
+    "baslik": "Yazım Kuralları",
+    "ozet": "Ham bilgi notu — büyük harf, ayrı-bitişik yazım, kesme işareti ve sayıların yazımı; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-turkce/yazim-kurallari.pdf",
+    "sayfa": 11,
+    "boyutKB": 93
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Türkçe",
+    "konu": "Zamir ve Zarf",
+    "baslik": "Zamir ve Zarf",
+    "ozet": "Ham bilgi notu — zamir çeşitleri, ek hâlindeki zamirler ve zarf türleri; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-turkce/zamir-ve-zarf.pdf",
+    "sayfa": 12,
+    "boyutKB": 92
   }
 ]
 
