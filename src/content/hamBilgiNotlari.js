@@ -692,6 +692,26 @@ export const HAM_BILGI_NOTLARI = [
     "boyutKB": 100
   },
   {
+    "sinav": "AYT",
+    "ders": "Matematik",
+    "konu": "Analitik Geometri — Çember",
+    "baslik": "Analitik Geometri — Çember",
+    "ozet": "Ham bilgi notu — çember denklemi, doğru-çember ve çember-çember ilişkileri, teğet denklemleri; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-matematik/analitik-geometri-cember.pdf",
+    "sayfa": 11,
+    "boyutKB": 98
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Matematik",
+    "konu": "Analitik Geometri — Doğru",
+    "baslik": "Analitik Geometri — Doğru",
+    "ozet": "Ham bilgi notu — eğim, doğru denklemleri, paralellik-diklik, uzaklık formülleri ve üçgende analitik; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-matematik/analitik-geometri-dogru.pdf",
+    "sayfa": 13,
+    "boyutKB": 103
+  },
+  {
     "sinav": "TYT",
     "ders": "Matematik",
     "konu": "Basit Eşitsizlikler",
@@ -732,6 +752,36 @@ export const HAM_BILGI_NOTLARI = [
     "boyutKB": 95
   },
   {
+    "sinav": "AYT",
+    "ders": "Matematik",
+    "konu": "Denklem ve Eşitsizlik Sistemleri",
+    "baslik": "Denklem ve Eşitsizlik Sistemleri",
+    "ozet": "Ham bilgi notu — doğrusal sistemler, ikinci dereceden sistemler, eşitsizlik bölgeleri ve mutlak değer; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-matematik/denklem-ve-esitsizlik-sistemleri.pdf",
+    "sayfa": 11,
+    "boyutKB": 103
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Matematik",
+    "konu": "Diziler",
+    "baslik": "Diziler",
+    "ozet": "Ham bilgi notu — genel terim, aritmetik ve geometrik diziler, toplam formülleri ve seriler; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-matematik/diziler.pdf",
+    "sayfa": 11,
+    "boyutKB": 94
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Matematik",
+    "konu": "Dönüşümler",
+    "baslik": "Dönüşümler",
+    "ozet": "Ham bilgi notu — öteleme, yansıma, dönme ve fonksiyon grafiklerinin dönüşümü; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-matematik/donusumler.pdf",
+    "sayfa": 11,
+    "boyutKB": 96
+  },
+  {
     "sinav": "TYT",
     "ders": "Matematik",
     "konu": "Fonksiyonlar (Temel)",
@@ -740,6 +790,26 @@ export const HAM_BILGI_NOTLARI = [
     "dosya": "/kutuphane-notlari/tyt-matematik/fonksiyonlar-temel.pdf",
     "sayfa": 14,
     "boyutKB": 98
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Matematik",
+    "konu": "İkinci Dereceden Fonksiyonlar",
+    "baslik": "İkinci Dereceden Fonksiyonlar",
+    "ozet": "Ham bilgi notu — parabolün grafiği, tepe noktası, kökler, işaret incelemesi ve en değer problemleri; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-matematik/ikinci-dereceden-fonksiyonlar.pdf",
+    "sayfa": 11,
+    "boyutKB": 101
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Matematik",
+    "konu": "İntegral",
+    "baslik": "İntegral",
+    "ozet": "Ham bilgi notu — belirsiz integral, alma yöntemleri, belirli integral ve alan hesapları; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-matematik/integral.pdf",
+    "sayfa": 12,
+    "boyutKB": 101
   },
   {
     "sinav": "TYT",
@@ -772,6 +842,16 @@ export const HAM_BILGI_NOTLARI = [
     "boyutKB": 94
   },
   {
+    "sinav": "AYT",
+    "ders": "Matematik",
+    "konu": "Limit ve Süreklilik",
+    "baslik": "Limit ve Süreklilik",
+    "ozet": "Ham bilgi notu — soldan-sağdan limit, belirsizlikler, sonsuzda limit ve süreklilik; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-matematik/limit-ve-sureklilik.pdf",
+    "sayfa": 11,
+    "boyutKB": 98
+  },
+  {
     "sinav": "TYT",
     "ders": "Matematik",
     "konu": "Mutlak Değer",
@@ -790,6 +870,16 @@ export const HAM_BILGI_NOTLARI = [
     "dosya": "/kutuphane-notlari/tyt-matematik/obeb-okek.pdf",
     "sayfa": 13,
     "boyutKB": 92
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Matematik",
+    "konu": "Olasılık",
+    "baslik": "Olasılık",
+    "ozet": "Ham bilgi notu — koşullu olasılık, bağımsız olaylar, bileşik olaylar ve Bayes yaklaşımı; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-matematik/olasilik.pdf",
+    "sayfa": 11,
+    "boyutKB": 102
   },
   {
     "sinav": "TYT",
@@ -852,6 +942,36 @@ export const HAM_BILGI_NOTLARI = [
     "boyutKB": 101
   },
   {
+    "sinav": "AYT",
+    "ders": "Matematik",
+    "konu": "Trigonometri",
+    "baslik": "Trigonometri",
+    "ozet": "Ham bilgi notu — birim çember, trigonometrik fonksiyonlar, toplam-fark ve dönüşüm formülleri, denklemler; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-matematik/trigonometri.pdf",
+    "sayfa": 13,
+    "boyutKB": 103
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Matematik",
+    "konu": "Türev",
+    "baslik": "Türev",
+    "ozet": "Ham bilgi notu — türev tanımı, alma kuralları, zincir kuralı ve teğet-normal denklemleri; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-matematik/turev.pdf",
+    "sayfa": 12,
+    "boyutKB": 96
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Matematik",
+    "konu": "Türevin Uygulamaları",
+    "baslik": "Türevin Uygulamaları",
+    "ozet": "Ham bilgi notu — artan-azalan, ekstremum, bükeylik, grafik çizimi ve en değer problemleri; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-matematik/turevin-uygulamalari.pdf",
+    "sayfa": 11,
+    "boyutKB": 99
+  },
+  {
     "sinav": "TYT",
     "ders": "Matematik",
     "konu": "Üslü Sayılar",
@@ -860,6 +980,26 @@ export const HAM_BILGI_NOTLARI = [
     "dosya": "/kutuphane-notlari/tyt-matematik/uslu-sayilar.pdf",
     "sayfa": 14,
     "boyutKB": 98
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Matematik",
+    "konu": "Üstel ve Logaritmik Fonksiyonlar",
+    "baslik": "Üstel ve Logaritmik Fonksiyonlar",
+    "ozet": "Ham bilgi notu — üstel fonksiyon, logaritma tanımı ve özellikleri, denklem ve eşitsizlikler; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-matematik/ustel-ve-logaritmik-fonksiyonlar.pdf",
+    "sayfa": 13,
+    "boyutKB": 105
+  },
+  {
+    "sinav": "AYT",
+    "ders": "Matematik",
+    "konu": "Uzay Geometri",
+    "baslik": "Uzay Geometri",
+    "ozet": "Ham bilgi notu — prizma, piramit, silindir, koni ve küre; alan ve hacim bağıntıları; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/ayt-matematik/uzay-geometri.pdf",
+    "sayfa": 11,
+    "boyutKB": 96
   }
 ]
 
