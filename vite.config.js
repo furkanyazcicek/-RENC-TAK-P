@@ -161,27 +161,17 @@ export default defineConfig({
       strategies: 'injectManifest',
       srcDir: 'src',
       filename: 'sw.js',
+      // Kaydı src/main.jsx yönetir: böylece kurulu uygulama öne geldiğinde
+      // ve bağlantı geri döndüğünde de sürüm kontrolü yapılabilir.
+      injectRegister: false,
       injectManifest: {
-        // Ders kütüphanesi büyüdükçe ana uygulama parçası önce 6, sonra 10
-        // MiB eşiğini geçti; şu an yaklaşık 17 MiB. Bu yalnız önbellek kabul
-        // sınırıdır; istemciye giden dosyanın boyutunu değiştirmez.
-        //
-        // DİKKAT: eşiği yükseltmek asıl sorunu çözmez. 17 MiB'lık tek bir
-        // paket, telefondan giren öğrencinin ilk açılışını ciddi biçimde
-        // yavaşlatıyor. Sebep, App.jsx'te 25 sayfanın tamamının statik
-        // import edilmesi — maplibre, pdfjs, recharts, katex o sayfaları
-        // hiç açmayan öğrenciye de iniyor. Kalıcı çözüm sayfaları React.lazy
-        // ile geç yüklemek; bu yapıldığında eşik tekrar düşürülmeli.
-        maximumFileSizeToCacheInBytes: 18 * 1024 * 1024,
-        globPatterns: ['**/*.{js,css,html,svg,png,ico}'],
-        // pdf.js (~0.5 MB js + 1.3 MB worker) yalnızca PDF ders notu açan
-        // kullanıcıya lazım; ön belleğe alınırsa herkes ilk açılışta indirir.
-        // Tarih atlasının dönem geometrisi de yaklaşık 17 MB ve zaten uzak
-        // harita altlığı olmadan çevrimdışı çalışmıyor. Bu iki ağır, isteğe
-        // bağlı kaynağı uygulama kabuğuna katmak ilk kurulumu gereksiz yere
-        // büyütür; sayfaları açıldıklarında normal ağ önbelleğiyle yüklenirler.
-        // (Parça adları değişirse bu desenler de güncellenmeli.)
-        globIgnores: ['**/pdf-*.js', '**/pdf.worker*', '**/donemler-*.js'],
+        // Yeni service worker kurulumu, listelenen HER dosya tamamlanana kadar
+        // etkinleşmez. Tüm atlasları, soru bankalarını ve pazarlama görsellerini
+        // burada tutmak mobilde 50+ MB'lık atomik güncelleme oluşturuyordu.
+        // Yalnız çevrimdışı açılış için gereken uygulama kabuğu önceden
+        // saklanır; rota parçaları ihtiyaç anında normal ağ önbelleğine girer.
+        maximumFileSizeToCacheInBytes: 7 * 1024 * 1024,
+        globPatterns: ['index.html', 'assets/index-*.{js,css}'],
       },
       registerType: 'autoUpdate',
       includeAssets: ['logo.png'],

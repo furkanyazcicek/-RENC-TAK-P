@@ -25,6 +25,33 @@ if (import.meta.env.DEV && 'serviceWorker' in navigator) {
 } else if ('serviceWorker' in navigator) {
   const hadController = Boolean(navigator.serviceWorker.controller)
   let reloading = false
+  let registration = null
+  let lastUpdateCheckAt = 0
+
+  // Uygulama telefonda günlerce arka planda açık kalabilir. Tarayıcının
+  // belirsiz aralıklı kontrolüne yaslanmak yerine açılışta, yeniden öne
+  // geldiğinde ve bağlantı geri döndüğünde yeni sürümü sorarız.
+  // Beş dakikalık alt sınır art arda odaklanmalarda gereksiz istekleri önler.
+  const checkForPwaUpdate = async ({ force = false } = {}) => {
+    if (!navigator.onLine) return
+
+    const now = Date.now()
+    if (!force && now - lastUpdateCheckAt < 5 * 60 * 1000) return
+    lastUpdateCheckAt = now
+
+    try {
+      registration ??= await navigator.serviceWorker.register('/sw.js', {
+        scope: '/',
+        // Service worker ve içe aktardığı dosyalar her kontrolde ağda
+        // yeniden doğrulansın; HTTP önbelleği eski sürümü tutmasın.
+        updateViaCache: 'none',
+      })
+      await registration.update()
+    } catch {
+      // Çevrimdışı/geçici ağ hatası uygulamanın açılmasını
+      // engellemez; sonraki görünürlük veya saatlik kontrolde tekrar denenir.
+    }
+  }
 
   navigator.serviceWorker.addEventListener('controllerchange', () => {
     if (!hadController || reloading) return
@@ -33,7 +60,14 @@ if (import.meta.env.DEV && 'serviceWorker' in navigator) {
   })
 
   window.addEventListener('load', () => {
-    navigator.serviceWorker.getRegistration().then((registration) => registration?.update()).catch(() => {})
+    void checkForPwaUpdate({ force: true })
+    window.setInterval(() => void checkForPwaUpdate(), 60 * 60 * 1000)
+  })
+
+  window.addEventListener('online', () => void checkForPwaUpdate({ force: true }))
+  window.addEventListener('pageshow', () => void checkForPwaUpdate())
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') void checkForPwaUpdate()
   })
 }
 

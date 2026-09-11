@@ -22,15 +22,11 @@ import Questions from './pages/Questions'
 import Messages from './pages/Messages'
 import Library from './pages/Library'
 import LibraryGateway from './pages/LibraryGateway'
-import QuestionLibrary from './pages/QuestionLibrary'
 import AICoach from './pages/AICoach'
 import AISolve from './pages/AISolve'
 import AISolveHistory from './pages/AISolveHistory'
 import LessonReader from './components/lessons/LessonReader'
 import LessonPreview from './pages/LessonPreview'
-import TopicTestSolve from './pages/TopicTestSolve'
-import TopicTestResult from './pages/TopicTestResult'
-import TarihAtlasi from './pages/TarihAtlasi'
 
 import { PageLoader } from './components/ui'
 
@@ -121,6 +117,19 @@ const QuestionBankReview = lazy(() => import('./pages/QuestionBankReview'))
 
 /** Kişisel defter yalnız açıldığında yüklenir. */
 const Defterim = lazy(() => import('./pages/Defterim'))
+
+/**
+ * Soru bankaları binlerce paketli soru içerir. Bu ekranlar ana uygulama
+ * kabuğuna katılırsa her PWA güncellemesinde öğrenci kullanmayacağı yaklaşık
+ * 15 MB veriyi de yeniden indirmek zorunda kalır. Yalnız ilgili rota
+ * açıldığında yüklenirler.
+ */
+const QuestionLibrary = lazy(() => import('./pages/QuestionLibrary'))
+const TopicTestSolve = lazy(() => import('./pages/TopicTestSolve'))
+const TopicTestResult = lazy(() => import('./pages/TopicTestResult'))
+
+/** Tarih haritası ve MapLibre motoru da yalnız atlas açıldığında indirilir. */
+const TarihAtlasi = lazy(() => import('./pages/TarihAtlasi'))
 
 /** Route geçişlerinde gösterilen tam sayfa yükleyici (tasarım sisteminden). */
 function FullPageLoader() {
@@ -227,7 +236,10 @@ export default function App() {
         path="/sosyal/reels/drkoc-uygulama-tanitimi"
         element={<Suspense fallback={<FullPageLoader />}><ReelsDrkocUygulamaTanitim /></Suspense>}
       />
-      <Route path="/tarih-atlasi" element={<TarihAtlasi />} />
+      <Route
+        path="/tarih-atlasi"
+        element={<Suspense fallback={<FullPageLoader />}><TarihAtlasi /></Suspense>}
+      />
       <Route
         path="/geometri-pilot"
         element={<Suspense fallback={<FullPageLoader />}><GeometriPilot /></Suspense>}
@@ -516,19 +528,19 @@ export default function App() {
       />
       <Route
         path="/kutuphane/sorular"
-        element={<ProtectedRoute><QuestionLibrary /></ProtectedRoute>}
+        element={<ProtectedRoute><Suspense fallback={<FullPageLoader />}><QuestionLibrary /></Suspense></ProtectedRoute>}
       />
       <Route
         path="/kutuphane/sorular/:examType"
-        element={<ProtectedRoute><QuestionLibrary /></ProtectedRoute>}
+        element={<ProtectedRoute><Suspense fallback={<FullPageLoader />}><QuestionLibrary /></Suspense></ProtectedRoute>}
       />
       <Route
         path="/kutuphane/sorular/:examType/:subjectSlug"
-        element={<ProtectedRoute><QuestionLibrary /></ProtectedRoute>}
+        element={<ProtectedRoute><Suspense fallback={<FullPageLoader />}><QuestionLibrary /></Suspense></ProtectedRoute>}
       />
       <Route
         path="/kutuphane/sorular/:examType/:subjectSlug/:topicSlug"
-        element={<ProtectedRoute><QuestionLibrary /></ProtectedRoute>}
+        element={<ProtectedRoute><Suspense fallback={<FullPageLoader />}><QuestionLibrary /></Suspense></ProtectedRoute>}
       />
       <Route
         path="/kutuphane/notlar/ders/:lessonId"
@@ -542,7 +554,7 @@ export default function App() {
         path="/kutuphane/sorular/test/:topicSlug/:testId"
         element={
           <ProtectedRoute allow={['student', 'teacher']}>
-            <TopicTestSolve />
+            <Suspense fallback={<FullPageLoader />}><TopicTestSolve /></Suspense>
           </ProtectedRoute>
         }
       />
@@ -550,7 +562,7 @@ export default function App() {
         path="/kutuphane/sorular/test/:topicSlug/:testId/result"
         element={
           <ProtectedRoute allow={['student', 'teacher']}>
-            <TopicTestResult />
+            <Suspense fallback={<FullPageLoader />}><TopicTestResult /></Suspense>
           </ProtectedRoute>
         }
       />
