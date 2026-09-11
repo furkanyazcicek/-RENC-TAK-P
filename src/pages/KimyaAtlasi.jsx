@@ -38,7 +38,7 @@ const KESIF_KARTLARI = [
 const HIZLI_ORNEKLER = ['H₂O', 'CO₂', 'NH₃', 'NO₃⁻', 'Ca(OH)₂']
 const TEMA_ANAHTARI = 'drkoc-kimya-tema'
 
-export default function KimyaAtlasi() {
+export default function KimyaAtlasi({ demo = false, returnTo = '/' }) {
   const [parametreler, setParametreler] = useSearchParams()
   const [bolum, setBolum] = useState(() => {
     const istenen = parametreler.get('bolum')
@@ -46,6 +46,7 @@ export default function KimyaAtlasi() {
   })
   const [tema, setTema] = useState(() => {
     if (typeof window === 'undefined') return 'acik'
+    if (demo) return 'acik'
     const kayitli = window.localStorage.getItem(TEMA_ANAHTARI)
     if (kayitli === 'acik' || kayitli === 'koyu') return kayitli
     return window.matchMedia?.('(prefers-color-scheme: dark)')?.matches ? 'koyu' : 'acik'
@@ -56,8 +57,9 @@ export default function KimyaAtlasi() {
   const [girisFormul, setGirisFormul] = useState('H₂O')
 
   useEffect(() => {
+    if (demo) return
     try { window.localStorage.setItem(TEMA_ANAHTARI, tema) } catch { /* depolama kapalı olabilir */ }
-  }, [tema])
+  }, [demo, tema])
 
   useEffect(() => {
     const yeni = new URLSearchParams(parametreler)
@@ -115,9 +117,15 @@ export default function KimyaAtlasi() {
 
   return (
     <div className="kimya-atlasi" data-tema={tema}>
+      {demo && (
+        <div className="ka-demo-bant" role="status">
+          <span><strong>Deneyim modu</strong> · Etkileşimler çalışır, ilerleme kaydedilmez.</span>
+          <Link to={returnTo}><ArrowLeft size={15} /> Örnek panele dön</Link>
+        </div>
+      )}
       <div className="ka-kabuk">
         <header className="ka-ustbar">
-          <Link to="/" className="ka-marka" title="Dr. Koç ana sayfasına dön">
+          <Link to={returnTo} className="ka-marka" title={demo ? 'Örnek öğrenci paneline dön' : 'Dr. Koç ana sayfasına dön'}>
             <span className="ka-marka-isaret"><Beaker size={19} /></span>
             <span style={{ minWidth: 0 }}>
               <span className="ka-marka-ad" style={{ display: 'block' }}>Kimya Atlası</span>
@@ -173,8 +181,8 @@ export default function KimyaAtlasi() {
             <button type="button" className="ka-yan-oge" onClick={rastgeleKesfet}>
               <Sparkles size={16} /> Rastgele tür getir
             </button>
-            <Link to="/" className="ka-yan-oge" style={{ textDecoration: 'none' }}>
-              <ArrowLeft size={16} /> Dr. Koç'a dön
+            <Link to={returnTo} className="ka-yan-oge" style={{ textDecoration: 'none' }}>
+              <ArrowLeft size={16} /> {demo ? 'Örnek panele dön' : "Dr. Koç'a dön"}
             </Link>
           </nav>
 

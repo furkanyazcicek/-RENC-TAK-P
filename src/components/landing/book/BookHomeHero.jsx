@@ -141,6 +141,7 @@ export default function BookHomeHero() {
               <p>{copy.aciklama}</p>
               <div>
                 <button type="button" className="book-home__open focus-ring" onClick={() => goToChapter(0)}>{copy.ac}<ArrowDown aria-hidden="true" /></button>
+                <Link to="/deneyim" className="book-home__try focus-ring">Deneyimle<ArrowRight aria-hidden="true" /></Link>
                 <span className="book-home__scroll-hint"><Mouse aria-hidden="true" />{reduced ? 'Hareket azaltılmış görünüm' : copy.kaydir}</span>
               </div>
             </div>

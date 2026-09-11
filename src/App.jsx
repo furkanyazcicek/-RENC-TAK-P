@@ -128,6 +128,9 @@ const QuestionLibrary = lazy(() => import('./pages/QuestionLibrary'))
 const TopicTestSolve = lazy(() => import('./pages/TopicTestSolve'))
 const TopicTestResult = lazy(() => import('./pages/TopicTestResult'))
 
+/** Giriş gerektirmeyen, yalnız sentetik verilerle çalışan ürün deneyimi. */
+const ExperienceRoutes = lazy(() => import('./pages/experience/ExperienceRoutes'))
+
 /** Tarih haritası ve MapLibre motoru da yalnız atlas açıldığında indirilir. */
 const TarihAtlasi = lazy(() => import('./pages/TarihAtlasi'))
 
@@ -193,6 +196,10 @@ export default function App() {
             <Login />
           )
         }
+      />
+      <Route
+        path="/deneyim/*"
+        element={<Suspense fallback={<FullPageLoader />}><ExperienceRoutes /></Suspense>}
       />
       
       {/* YENİ EKLENEN SAYFALAR BAŞLANGIÇ */}
