@@ -1210,19 +1210,237 @@ export const HAM_BILGI_NOTLARI = [
     "dosya": "/kutuphane-notlari/tyt-turkce/zamir-ve-zarf.pdf",
     "sayfa": 12,
     "boyutKB": 92
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Devrimler Çağında Değişen Devlet-Toplum İlişkileri",
+    "baslik": "Atatürk Dönemi İç ve Dış Politika",
+    "ozet": "Ham bilgi notu — iç isyanlar, çok partili denemeler, Lozan'dan kalan sorunlar ve dış politika; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-tarih/ataturk-donemi-ic-ve-dis-politika.pdf",
+    "sayfa": 12,
+    "boyutKB": 99
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Devrimler Çağında Değişen Devlet-Toplum İlişkileri",
+    "baslik": "Atatürk İlke ve İnkılapları",
+    "ozet": "Ham bilgi notu — siyasi, hukuk, eğitim, toplumsal ve ekonomik inkılaplar ile altı ilke; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-tarih/ataturk-ilke-ve-inkilaplari.pdf",
+    "sayfa": 13,
+    "boyutKB": 101
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Devrimler Çağında Değişen Devlet-Toplum İlişkileri",
+    "baslik": "Balta Limanı ve Osmanlı Ekonomisi",
+    "ozet": "Ham bilgi notu — kapitülasyonlardan Düyun-ı Umumiye'ye Osmanlı ekonomisinin çöküşü; 45 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-tarih/balta-limani-ve-osmanli-ekonomisi.pdf",
+    "sayfa": 11,
+    "boyutKB": 94
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Beylikten Devlete Osmanlı",
+    "baslik": "Beylikten Devlete Osmanlı",
+    "ozet": "Ham bilgi notu — Osmanlı'nın kuruluşu, Rumeli'ye geçiş, Fetret Devri ve İstanbul'un fethine giden yol; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-tarih/beylikten-devlete-osmanli.pdf",
+    "sayfa": 13,
+    "boyutKB": 102
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Devrimler Çağında Değişen Devlet-Toplum İlişkileri",
+    "baslik": "I. Dünya Savaşı",
+    "ozet": "Ham bilgi notu — nedenler, bloklar, Osmanlı cepheleri, gizli antlaşmalar ve savaşın sonu; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-tarih/birinci-dunya-savasi.pdf",
+    "sayfa": 13,
+    "boyutKB": 104
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Dünya Gücü Osmanlı",
+    "baslik": "Dünya Gücü Osmanlı",
+    "ozet": "Ham bilgi notu — Fatih, II. Bayezid, Yavuz ve Kanuni dönemleri; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-tarih/dunya-gucu-osmanli.pdf",
+    "sayfa": 12,
+    "boyutKB": 101
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Devrimler Çağında Değişen Devlet-Toplum İlişkileri",
+    "baslik": "II. Dünya Savaşı ve Sonrası",
+    "ozet": "Ham bilgi notu — savaşın nedenleri, Türkiye'nin tutumu, Soğuk Savaş ve çok partili hayat; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-tarih/ikinci-dunya-savasi-ve-sonrasi.pdf",
+    "sayfa": 13,
+    "boyutKB": 103
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "İlk ve Orta Çağlarda Türk Dünyası",
+    "baslik": "İlk ve Orta Çağlarda Türk Dünyası",
+    "ozet": "Ham bilgi notu — İslamiyet öncesi Türk devletleri, kültür ve medeniyeti; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-tarih/ilk-ve-orta-caglarda-turk-dunyasi.pdf",
+    "sayfa": 13,
+    "boyutKB": 106
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "İnsanlığın İlk Dönemleri",
+    "baslik": "İnsanlığın İlk Dönemleri",
+    "ozet": "Ham bilgi notu — tarih öncesi çağlar ve İlk Çağ uygarlıkları; 50 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-tarih/insanligin-ilk-donemleri.pdf",
+    "sayfa": 13,
+    "boyutKB": 101
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "İslam Medeniyeti ve Türkler",
+    "baslik": "İslam Medeniyeti ve Türkler",
+    "ozet": "Ham bilgi notu — İslamiyet'in doğuşu, dört halife, Emeviler, Abbasiler ve Türklerin İslamiyet'e girişi; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-tarih/islam-medeniyeti-ve-turkler.pdf",
+    "sayfa": 13,
+    "boyutKB": 104
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Devrimler Çağında Değişen Devlet-Toplum İlişkileri",
+    "baslik": "Kurtuluş Savaşı",
+    "ozet": "Ham bilgi notu — TBMM dönemi, cepheler, antlaşmalar ve Lozan'a giden yol; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-tarih/kurtulus-savasi.pdf",
+    "sayfa": 13,
+    "boyutKB": 104
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Devrimler Çağında Değişen Devlet-Toplum İlişkileri",
+    "baslik": "Mondros ve Millî Mücadele Hazırlık Dönemi",
+    "ozet": "Ham bilgi notu — Mondros, işgaller, cemiyetler, genelgeler, kongreler ve TBMM'nin açılışı; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-tarih/mondros-ve-milli-mucadele-hazirlik.pdf",
+    "sayfa": 12,
+    "boyutKB": 102
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Devrimler Çağında Değişen Devlet-Toplum İlişkileri",
+    "baslik": "XIX. Yüzyılda Osmanlı",
+    "ozet": "Ham bilgi notu — II. Mahmut, Tanzimat, Islahat ve I. Meşrutiyet; milliyetçi isyanlar ve dağılma; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-tarih/on-dokuzuncu-yuzyilda-osmanli.pdf",
+    "sayfa": 12,
+    "boyutKB": 101
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Arayış Yılları",
+    "baslik": "XVIII. Yüzyılda Osmanlı",
+    "ozet": "Ham bilgi notu — Lale Devri, Batı tarzı ıslahatlar, XVIII. yüzyıl savaşları ve antlaşmaları; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-tarih/on-sekizinci-yuzyilda-osmanli.pdf",
+    "sayfa": 13,
+    "boyutKB": 100
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Arayış Yılları",
+    "baslik": "XVII. Yüzyılda Osmanlı",
+    "ozet": "Ham bilgi notu — duraklamanın nedenleri, iç isyanlar, ıslahat girişimleri ve dış siyaset; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-tarih/on-yedinci-yuzyilda-osmanli.pdf",
+    "sayfa": 13,
+    "boyutKB": 102
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Ortaçağda Dünya",
+    "baslik": "Ortaçağda Dünya",
+    "ozet": "Ham bilgi notu — feodalite, kilise, Bizans, Haçlı Seferleri ve Orta Çağ ekonomisi; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-tarih/ortacagda-dunya.pdf",
+    "sayfa": 12,
+    "boyutKB": 100
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Dünya Gücü Osmanlı",
+    "baslik": "Osmanlı Kültür ve Medeniyeti",
+    "ozet": "Ham bilgi notu — devlet teşkilatı, toprak ve vergi düzeni, ordu, hukuk, eğitim, toplum ve sanat; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-tarih/osmanli-kultur-ve-medeniyeti.pdf",
+    "sayfa": 13,
+    "boyutKB": 108
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Tarih ve Zaman",
+    "baslik": "Tarih ve Zaman",
+    "ozet": "Ham bilgi notu — tarih biliminin yöntemi, kaynak türleri, takvimler ve çağ ayrımı; 45 soruluk çalışma fasikülü",
+    "dosya": "/kutuphane-notlari/tyt-tarih/tarih-ve-zaman.pdf",
+    "sayfa": 12,
+    "boyutKB": 99
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Türk-İslam Devletleri",
+    "baslik": "Türk-İslam Devletleri",
+    "ozet": "Ham bilgi notu — Büyük Selçuklu Devleti, diğer Türk-İslam devletleri ve Türk-İslam kültürü; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-tarih/turk-islam-devletleri.pdf",
+    "sayfa": 13,
+    "boyutKB": 102
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Türk-İslam Devletleri",
+    "baslik": "Türkiye Selçukluları ve Beylikler",
+    "ozet": "Ham bilgi notu — Anadolu'nun Türkleşmesi, Türkiye Selçuklu Devleti, Anadolu Beylikleri ve Anadolu'da kültür; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-tarih/turkiye-tarihi-selcuklular-ve-beylikler.pdf",
+    "sayfa": 12,
+    "boyutKB": 98
+  },
+  {
+    "sinav": "TYT",
+    "ders": "Tarih",
+    "konu": "Devrimler Çağında Değişen Devlet-Toplum İlişkileri",
+    "baslik": "XX. Yüzyıl Başlarında Osmanlı",
+    "ozet": "Ham bilgi notu — II. Meşrutiyet, fikir akımları, Trablusgarp ve Balkan Savaşları; 50 soruluk fasikül",
+    "dosya": "/kutuphane-notlari/tyt-tarih/yirminci-yuzyil-baslarinda-osmanli.pdf",
+    "sayfa": 12,
+    "boyutKB": 98
   }
 ]
 
-/** Bir konunun ham bilgi notunu döndürür; yoksa null. */
-export function hamBilgiNotuBul({ examType, subject, topic }) {
-  return (
-    HAM_BILGI_NOTLARI.find(
-      (kayit) =>
-        kayit.sinav === examType &&
-        kayit.ders === subject &&
-        kayit.konu === topic,
-    ) ?? null
+/**
+ * Bir konunun ham bilgi notlarını döndürür; yoksa boş dizi.
+ *
+ * Bir konu birden çok not taşıyabilir: MEB üniteleri kimi derste
+ * çok geniştir ("Devrimler Çağı" gibi) ve tek PDF'e sığmaz.
+ */
+export function hamBilgiNotlariBul({ examType, subject, topic }) {
+  return HAM_BILGI_NOTLARI.filter(
+    (kayit) =>
+      kayit.sinav === examType &&
+      kayit.ders === subject &&
+      kayit.konu === topic,
   )
+}
+
+/** Konunun ilk ham bilgi notunu döndürür; yoksa null. */
+export function hamBilgiNotuBul(secim) {
+  return hamBilgiNotlariBul(secim)[0] ?? null
 }
 
 export default HAM_BILGI_NOTLARI

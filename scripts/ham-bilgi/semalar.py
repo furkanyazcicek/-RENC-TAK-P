@@ -162,8 +162,17 @@ def dongu(adimlar, merkez=""):
     Kutular bir elips üstüne oturur; yön, elipsin üstündeki dört ok ucuyla
     verilir. Kutudan kutuya düz ok çekmek çapraz yönlerde çirkin durduğu
     için tercih edilmedi.
+
+    Şema tam olarak dört kutu çizer. Daha fazla adım verilirse fazlası
+    sessizce kaybolup şemayı yanlış anlatır; bu yüzden hata verilir.
     """
     import math
+
+    if len(adimlar) != 4:
+        raise ValueError(
+            f"dongu() tam olarak 4 adım ister, {len(adimlar)} adım verildi. "
+            "Adımları dörde indir ya da akis/dikey_akis kullan."
+        )
 
     def ciz(pdf, x, y, g, h):
         kutu_g, kutu_h = min(44.0, g * 0.26), 11.5

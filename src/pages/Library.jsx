@@ -28,7 +28,7 @@ import {
 } from '../data/highSchoolCurriculum'
 import { LESSONS } from '../content/lessons'
 import { emekliKonuMu } from '../content/emekliKonular'
-import { hamBilgiNotuBul } from '../content/hamBilgiNotlari'
+import { hamBilgiNotlariBul } from '../content/hamBilgiNotlari'
 import HamBilgiNotuSeridi from '../components/HamBilgiNotuSeridi'
 import LibraryNoteForm from '../components/LibraryNoteForm'
 import LibraryNoteCard from '../components/LibraryNoteCard'
@@ -367,9 +367,9 @@ export default function Library() {
   // Yazdırılabilir çalışma notu (ham bilgi PDF'i) siteyle birlikte gelir;
   // veritabanına bakılmaz. Sınıf koleksiyonlarında ders adı farklı
   // olabildiği için eşleşme bulunamazsa şerit hiç çizilmez.
-  const hamBilgiNotu = useMemo(
+  const hamBilgiNotlari = useMemo(
     () =>
-      hamBilgiNotuBul({
+      hamBilgiNotlariBul({
         examType,
         subject: selectedSubject?.name,
         topic: selectedTopic?.name,
@@ -378,7 +378,7 @@ export default function Library() {
   )
 
   const totalCurrentItems =
-    currentNotes.length + currentLessons.length + (hamBilgiNotu ? 1 : 0)
+    currentNotes.length + currentLessons.length + hamBilgiNotlari.length
 
   const examSubjects = useMemo(
     () => subjects.filter((subject) => !subject.is_grade_collection),
@@ -659,7 +659,7 @@ export default function Library() {
             />
           ) : (
             <>
-              <HamBilgiNotuSeridi not={hamBilgiNotu} />
+              <HamBilgiNotuSeridi notlar={hamBilgiNotlari} />
               <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
               {currentLessons.map((lesson) => (
                 <StructuredLessonCard

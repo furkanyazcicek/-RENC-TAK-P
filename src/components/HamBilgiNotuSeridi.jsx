@@ -2,18 +2,26 @@ import { Download, FileText, Printer } from 'lucide-react'
 import { Badge } from './ui'
 
 /**
- * HamBilgiNotuSeridi — bir konunun yazdırılabilir çalışma notu.
+ * HamBilgiNotuSeridi — bir konunun yazdırılabilir çalışma notları.
  *
- * Etkileşimli ders notu öğretir; bu PDF **tekrar ettirir**. İkisi aynı
- * konuda yan yana durduğu için kart ızgarasına karışmaz: derslerin
- * üstünde kendi şeridinde, tek ve belirgin bir çağrı olarak görünür.
+ * Etkileşimli ders notu öğretir; bu PDF'ler **tekrar ettirir**. Aynı
+ * konuda yan yana durdukları için kart ızgarasına karışmaz: derslerin
+ * üstünde kendi şeritlerinde, belirgin birer çağrı olarak görünürler.
  *
- * Dosya `public/kutuphane-notlari/` altında durur ve siteyle birlikte
+ * Bir konu birden çok not taşıyabilir; MEB ünitesi geniş olduğunda
+ * (tarihte "Devrimler Çağı" gibi) konu birkaç PDF'e bölünür.
+ *
+ * Dosyalar `public/kutuphane-notlari/` altında durur ve siteyle birlikte
  * yayına gider; indirme için ağ isteği veya oturum gerekmez.
  */
-export default function HamBilgiNotuSeridi({ not }) {
-  if (!not) return null
+export default function HamBilgiNotuSeridi({ not, notlar }) {
+  const liste = notlar ?? (not ? [not] : [])
+  if (liste.length === 0) return null
 
+  return liste.map((kayit) => <NotSeridi key={kayit.dosya} not={kayit} />)
+}
+
+function NotSeridi({ not }) {
   return (
     <section className="mb-4 overflow-hidden rounded-card bg-brand-500/[0.06] ring-1 ring-inset ring-brand-500/15">
       <div className="flex flex-col gap-4 p-4 sm:flex-row sm:items-center sm:gap-5">
