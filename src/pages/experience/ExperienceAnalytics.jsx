@@ -16,7 +16,6 @@ export default function ExperienceAnalytics() {
         asPageHeader
         eyebrow="Öğrenme Analizi"
         title="Beş ayda 19,25 netlik gelişim"
-        subtitle="Deniz’in Mayıs başlangıç denemesinden Eylül denemesine kadar oluşan sentetik çalışma örüntüsü. Rakamlar yalnız ürün deneyimini göstermek için hazırlanmıştır."
         badge={{ label: 'Mayıs—Eylül 2026', tone: 'glass' }}
         highlights={[
           { label: 'son TYT neti', value: '72,5' },
@@ -34,7 +33,7 @@ export default function ExperienceAnalytics() {
         </Panel>
       </section>
 
-      <Panel title="Deneme gelişimi" description="Satıra dokunarak ders bazlı netleri açabilirsin" icon={BarChart3} iconTone="#B5813E" padding={false} footnote="Net = doğru − yanlış / 4. Bu sonuçların tamamı sentetik örnek veridir.">
+      <Panel title="Deneme gelişimi" description="Satıra dokunarak ders bazlı netleri açabilirsin" icon={BarChart3} iconTone="#B5813E" padding={false} footnote="Net = doğru − yanlış / 4">
         <div className="p-4 sm:p-6">
           <ExamAccordion rows={EXPERIENCE_EXAMS} />
         </div>
@@ -62,7 +61,7 @@ export default function ExperienceAnalytics() {
           </ul>
         </Panel>
 
-        <Panel title="AI çözüm geçmişi" description="Farklı derslerden son örnek oturumlar" icon={Bot} iconTone="#5E88A7" padding={false}>
+        <Panel title="AI çözüm geçmişi" description="Farklı derslerden son oturumlar" icon={Bot} iconTone="#5E88A7" padding={false}>
           <ul className="divide-y divide-line">
             {EXPERIENCE_AI_SOLVES.map((item, index) => (
               <li key={item.id} className="px-5 py-5 sm:px-6">

@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft, BookOpenText, Clock3, TestTube2 } from 'lucide-react'
 import LessonDocument from '../../components/lessons/reader/LessonDocument'
 import TeacherVoice from '../../components/lessons/reader/TeacherVoice'
-import { Badge, Button, EmptyState, Modal, PageLoader, SoftIcon } from '../../components/ui'
+import { Badge, Button, EmptyState, Modal, PageLoader } from '../../components/ui'
 import { normalizeLessonDocument } from '../../lib/lesson/schema'
 import { experienceContentById, loadExperienceLesson } from './experienceData'
 
@@ -34,13 +34,13 @@ export default function ExperienceLesson() {
     [state.lesson?.document]
   )
 
-  if (state.status === 'loading') return <PageLoader label="Konu demosu açılıyor…" />
+  if (state.status === 'loading') return <PageLoader label="Konu açılıyor…" />
 
   if (!content || !state.lesson) {
     return (
       <EmptyState
         icon={BookOpenText}
-        title="Bu konu demosu bulunamadı"
+        title="Bu konu bulunamadı"
         description="Konu kütüphanesindeki dört hazır dersten birini açabilirsin."
         action={<Button as={Link} to="/deneyim/konu-kutuphanesi">Konu kütüphanesine dön</Button>}
       />
@@ -59,16 +59,11 @@ export default function ExperienceLesson() {
           <div className="relative z-10 max-w-4xl">
             <div className="flex flex-wrap items-center gap-2">
               <Badge tone={content.subject === 'Kimya' ? 'aqua' : 'accent'}>{content.subjectCode}</Badge>
-              <Badge tone="success">Demo açık</Badge>
               <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-ink/48"><Clock3 className="h-3.5 w-3.5" /> {document.estimated_minutes} dk</span>
             </div>
             <p className="mt-6 text-[11px] font-extrabold uppercase tracking-[0.15em] text-brand-700">{content.topic}</p>
             <h1 className="mt-2 max-w-3xl font-display text-3xl font-extrabold leading-tight tracking-[-0.035em] text-ink sm:text-4xl">{state.lesson.title}</h1>
             <p className="mt-4 max-w-3xl text-base leading-7 text-ink/62">{state.lesson.subtitle}</p>
-            <div className="mt-7 flex items-start gap-3 rounded-2xl border border-brand-100 bg-brand-50/60 px-4 py-3 text-sm leading-6 text-ink/68">
-              <SoftIcon icon={BookOpenText} tone="indigo" size="sm" />
-              <p><strong className="font-extrabold text-ink">Salt okunur konu demosu.</strong> Tablo, karşılaştırma, mini quiz ve görsel etkileşimleri kullanabilirsin; ilerleme ve yanıtlar kaydedilmez.</p>
-            </div>
           </div>
         </header>
 
@@ -86,7 +81,6 @@ export default function ExperienceLesson() {
         open={Boolean(voicePanel)}
         onClose={() => setVoicePanel(null)}
         title={voicePanel?.title || 'Görseli Hocayla İncele'}
-        description="Bu anlatım demo boyunca okunabilir; hesabına etkinlik yazılmaz."
         maxWidth="max-w-2xl"
       >
         <TeacherVoice script={voicePanel?.audio_script} />

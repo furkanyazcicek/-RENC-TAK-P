@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import {
   ArrowLeft,
@@ -7,9 +7,10 @@ import {
   FlaskConical,
   LayoutDashboard,
   LockKeyhole,
-  Sparkles,
+  MessageCircle,
   TestTube2,
 } from 'lucide-react'
+import LandingInfoDialogs from '../../components/landing/product/LandingInfoDialogs'
 import { Avatar, Badge, Button, Logo, SoftIcon } from '../../components/ui'
 import { cn } from '../../lib/cn'
 import { EXPERIENCE_PROFILE } from './experienceData'
@@ -30,14 +31,15 @@ const PAGE_TITLES = {
 }
 
 function titleForPath(pathname) {
-  if (pathname.startsWith('/deneyim/konu/')) return 'Konu demosu'
-  if (pathname.startsWith('/deneyim/test/')) return 'Test demosu'
+  if (pathname.startsWith('/deneyim/konu/')) return 'Konu anlatımı'
+  if (pathname.startsWith('/deneyim/test/')) return 'Kavrama testi'
   return PAGE_TITLES[pathname] ?? 'DRKOÇ deneyimi'
 }
 
 export default function ExperienceShell() {
   const { pathname } = useLocation()
   const pageTitle = titleForPath(pathname)
+  const [contactOpen, setContactOpen] = useState(false)
 
   useEffect(() => {
     document.title = `${pageTitle} — DRKOÇ`
@@ -53,14 +55,6 @@ export default function ExperienceShell() {
           <Link to="/deneyim" className="focus-ring rounded-xl" aria-label="DRKOÇ deneyim paneli">
             <Logo variant="panel" size="lg" />
           </Link>
-        </div>
-
-        <div className="experience-mode-card mx-4 mb-4 rounded-2xl border border-brand-100 bg-brand-50/65 px-3.5 py-3">
-          <div className="experience-mode-card__title flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.15em] text-brand-700">
-            <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-            Deneyim modu
-          </div>
-          <p className="experience-mode-card__copy mt-1.5 text-xs leading-5 text-ink/62">Beş aylık sentetik veriler gösterilir. Hiçbir işlem hesabına kaydedilmez.</p>
         </div>
 
         <nav className="min-h-0 flex-1 overflow-y-auto px-4 py-1" aria-label="Deneyim bölümleri">
@@ -122,21 +116,22 @@ export default function ExperienceShell() {
               <span className="lg:hidden"><Logo size="sm" markOnly variant="panel" /></span>
               <div className="min-w-0">
                 <p className="truncate font-display text-sm font-extrabold text-ink sm:text-base">{pageTitle}</p>
-                <p className="hidden text-xs text-ink/48 sm:block">Deniz’in sentetik çalışma alanı · Mayıs—Eylül 2026</p>
               </div>
             </div>
-            <div className="flex items-center gap-2 sm:gap-3">
-              <Badge tone="success" size="sm" className="hidden sm:inline-flex">Salt okunur örnek</Badge>
-              <Button as={Link} to="/register" size="sm" className="whitespace-nowrap">Ücretsiz başla</Button>
+            <div className="flex items-center">
+              <Button
+                size="sm"
+                className="whitespace-nowrap"
+                onClick={() => setContactOpen(true)}
+              >
+                <MessageCircle className="hidden h-4 w-4 sm:block" aria-hidden="true" />
+                Hadi başlayalım
+              </Button>
             </div>
           </div>
         </header>
 
         <main className="relative z-10 mx-auto flex w-full max-w-content flex-col gap-5 px-4 py-6 pb-28 sm:gap-6 sm:px-6 lg:px-8 lg:py-9 lg:pb-12">
-          <div className="flex items-start gap-3 rounded-2xl border border-[#b79252]/20 bg-[#fbf6ea] px-4 py-3 text-sm text-[#6f5628]" role="status">
-            <LockKeyhole className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-            <p><strong className="font-extrabold">Demo güvenli alanı:</strong> Profil, deneme ve çözüm kayıtları tamamen örnektir; verdiğin test yanıtları bu sayfadan ayrılınca kaybolur.</p>
-          </div>
           <Outlet />
         </main>
       </div>
@@ -157,6 +152,11 @@ export default function ExperienceShell() {
           ))}
         </ul>
       </nav>
+
+      <LandingInfoDialogs
+        activeDialog={contactOpen ? 'contact' : null}
+        onClose={() => setContactOpen(false)}
+      />
     </div>
   )
 }

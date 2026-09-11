@@ -85,9 +85,6 @@
 
 /* ————— Kabuk ————— */
 .ka-kabuk { display: flex; flex-direction: column; min-height: 100dvh; }
-.ka-demo-bant { min-height: 40px; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 7px 18px; border-bottom: 1px solid rgb(var(--ka-cizgi)); background: rgb(var(--ka-yuzey)); color: rgb(var(--ka-metin-2)); font-size: 12px; }
-.ka-demo-bant strong { color: rgb(var(--ka-metin)); }
-.ka-demo-bant a { display: inline-flex; min-height: 32px; align-items: center; gap: 6px; color: rgb(var(--ka-vurgu)); font-weight: 700; text-decoration: none; }
 
 .ka-ustbar {
   position: sticky;
@@ -599,8 +596,6 @@
 }
 @media (max-width: 620px) {
   .kimya-atlasi { font-size: 14.5px; }
-  .ka-demo-bant { align-items: flex-start; padding: 8px 12px; font-size: 10px; line-height: 1.45; }
-  .ka-demo-bant a { flex-shrink: 0; font-size: 10px; }
   .ka-ustbar { flex-wrap: wrap; gap: 9px; padding: 9px 12px; }
   .ka-arama { order: 3; flex-basis: 100%; max-width: none; }
   .ka-marka-alt { display: none; }

@@ -6,16 +6,6 @@
   color: #f19a83;
 }
 
-.app-soft-panel-theme .experience-sidebar .experience-mode-card {
-  border-color: rgb(255 255 255 / 0.1);
-  background: rgb(255 255 255 / 0.065);
-}
-
-.app-soft-panel-theme .experience-sidebar .experience-mode-card__title {
-  color: #a7dfd2;
-}
-
-.app-soft-panel-theme .experience-sidebar .experience-mode-card__copy,
 .app-soft-panel-theme .experience-sidebar .panel-nav-group,
 .app-soft-panel-theme .experience-sidebar .experience-locked-area {
   color: rgb(241 244 241 / 0.62);

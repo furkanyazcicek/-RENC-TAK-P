@@ -39,7 +39,7 @@ export default function ExperienceTest() {
     return (
       <EmptyState
         icon={TestTube2}
-        title="Bu demo testi bulunamadı"
+        title="Bu test bulunamadı"
         description="Soru kütüphanesindeki dört hazır testten birini açabilirsin."
         action={<Button as={Link} to="/deneyim/soru-kutuphanesi">Soru kütüphanesine dön</Button>}
       />
@@ -72,7 +72,7 @@ export default function ExperienceTest() {
         <header className="border-b border-line px-5 py-5 sm:px-7 sm:py-6">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
-              <p className="text-[11px] font-extrabold uppercase tracking-[0.15em] text-brand-700">Demo testi · Kaydedilmez</p>
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.15em] text-brand-700">Kavrama testi</p>
               <h1 className="mt-2 font-display text-2xl font-extrabold tracking-tight text-ink sm:text-3xl">{content.topic}</h1>
               <p className="mt-1 text-sm text-ink/58">{content.test.title} · {questions.length} soru</p>
             </div>
@@ -121,9 +121,8 @@ export default function ExperienceTest() {
               <div className="flex flex-wrap items-center gap-4">
                 <span className="grid h-12 w-12 place-items-center rounded-full bg-success-600 text-white"><CheckCircle2 className="h-6 w-6" /></span>
                 <div className="min-w-0 flex-1">
-                  <p className="text-xs font-extrabold uppercase tracking-[0.13em] text-success-700">Demo test tamamlandı</p>
+                  <p className="text-xs font-extrabold uppercase tracking-[0.13em] text-success-700">Test tamamlandı</p>
                   <h2 className="mt-1 font-display text-2xl font-extrabold text-ink">{result.correct} doğru · {result.answered - result.correct} yanlış · {result.blank} boş</h2>
-                  <p className="mt-1 text-sm text-ink/58">Sonuç yalnız bu sayfada gösterilir; öğrenci profiline veya veritabanına yazılmaz.</p>
                 </div>
                 <Button variant="secondary" size="sm" icon={RotateCcw} onClick={reset}>Yeniden çöz</Button>
               </div>

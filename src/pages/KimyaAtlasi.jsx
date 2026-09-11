@@ -117,12 +117,6 @@ export default function KimyaAtlasi({ demo = false, returnTo = '/' }) {
 
   return (
     <div className="kimya-atlasi" data-tema={tema}>
-      {demo && (
-        <div className="ka-demo-bant" role="status">
-          <span><strong>Deneyim modu</strong> · Etkileşimler çalışır, ilerleme kaydedilmez.</span>
-          <Link to={returnTo}><ArrowLeft size={15} /> Örnek panele dön</Link>
-        </div>
-      )}
       <div className="ka-kabuk">
         <header className="ka-ustbar">
           <Link to={returnTo} className="ka-marka" title={demo ? 'Örnek öğrenci paneline dön' : 'Dr. Koç ana sayfasına dön'}>

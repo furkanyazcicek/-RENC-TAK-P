@@ -10,7 +10,7 @@ import {
   TestTube2,
 } from 'lucide-react'
 import { DashboardHero, Panel } from '../../components/dashboard'
-import { Badge, SoftIcon } from '../../components/ui'
+import { SoftIcon } from '../../components/ui'
 import { EXPERIENCE_CONTENT } from './experienceData'
 
 function SubjectMark({ subject }) {
@@ -29,12 +29,9 @@ function ContentCard({ item, kind }) {
     <Link
       to={to}
       className="card-interactive focus-ring group flex min-h-60 flex-col p-5 sm:p-6"
-      aria-label={`${item.subjectCode}, ${item.topic}: ${isLesson ? 'konu demosunu aç' : 'testi başlat'}`}
+      aria-label={`${item.subjectCode}, ${item.topic}: ${isLesson ? 'konu anlatımını aç' : 'testi başlat'}`}
     >
-      <div className="flex items-start justify-between gap-3">
-        <SubjectMark subject={item.subject} />
-        <Badge tone={item.subject === 'Kimya' ? 'aqua' : 'accent'} size="sm">Demo açık</Badge>
-      </div>
+      <SubjectMark subject={item.subject} />
       <p className="mt-5 text-[11px] font-extrabold uppercase tracking-[0.15em] text-ink/46">{item.subjectCode}</p>
       <h3 className="mt-1 font-display text-xl font-extrabold leading-7 text-ink">{item.topic}</h3>
       <p className="mt-2 text-sm leading-6 text-ink/60">{isLesson ? item.lessonTitle : item.test?.description}</p>
@@ -63,10 +60,7 @@ function LibraryPage({ kind }) {
       <DashboardHero
         asPageHeader
         eyebrow={`Ders Kütüphanesi / ${isLesson ? 'Konular' : 'Sorular'}`}
-        title={isLesson ? 'Dört konu demosu hazır' : 'Dört test doğrudan hazır'}
-        subtitle={isLesson
-          ? 'TYT Türkçe ve TYT Kimya’nın ilk iki konusu seçim adımı olmadan okunabilir ve etkileşimli biçimde açılır.'
-          : 'Her dersin ilk iki konusunda yalnız birer test var. Sınav, ders veya konu seçmene gerek kalmadan çözmeye başlayabilirsin.'}
+        title={isLesson ? 'Dört konu hazır' : 'Dört test hazır'}
         badge={{ label: 'TYT · 2 ders · 4 konu', tone: 'glass' }}
         highlights={[
           { label: isLesson ? 'açık konu' : 'açık test', value: '4' },
@@ -75,16 +69,13 @@ function LibraryPage({ kind }) {
         ]}
       />
 
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-line bg-white px-4 py-3 shadow-xs">
-        <p className="text-sm text-ink/62">
-          <strong className="font-extrabold text-ink">Hazır demo:</strong> Yalnız seçili dört içerik gösterilir; diğer kütüphane içerikleri üyelik alanında kalır.
-        </p>
+      <div className="flex justify-end">
         <Link
           to={isLesson ? '/deneyim/soru-kutuphanesi' : '/deneyim/konu-kutuphanesi'}
           className="focus-ring inline-flex min-h-10 items-center gap-2 rounded-btn px-3 text-sm font-extrabold text-brand-700 hover:bg-brand-50"
         >
           {isLesson ? <TestTube2 className="h-4 w-4" /> : <BookOpenText className="h-4 w-4" />}
-          {isLesson ? 'Soru demolarına geç' : 'Konu demolarına geç'}
+          {isLesson ? 'Sorulara geç' : 'Konulara geç'}
         </Link>
       </div>
 

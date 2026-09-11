@@ -61,7 +61,6 @@ export default function ExperienceDashboard() {
         asPageHeader
         eyebrow="Genel Bakış"
         title={`Merhaba ${EXPERIENCE_PROFILE.fullName.split(' ')[0]}`}
-        subtitle="Beş aylık çalışma ritmin, deneme gelişimin ve sıradaki odakların tek yerde. Bu profil tanıtım için hazırlanmış sentetik bir örnektir."
         avatar={EXPERIENCE_PROFILE.initials}
         badge={{ label: EXPERIENCE_PROFILE.exam, tone: 'glass' }}
         highlights={[
@@ -69,7 +68,7 @@ export default function ExperienceDashboard() {
           { label: '5 aylık isabet', value: '%70' },
           { label: 'çalışma serisi', value: '8 gün' },
         ]}
-        action={<Button as={Link} to="/deneyim/soru-kutuphanesi" size="sm" icon={TestTube2}>Demo testi çöz</Button>}
+        action={<Button as={Link} to="/deneyim/soru-kutuphanesi" size="sm" icon={TestTube2}>Test çöz</Button>}
       />
 
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4" aria-label="Beş aylık özet">
