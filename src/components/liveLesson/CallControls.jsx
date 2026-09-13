@@ -36,6 +36,14 @@ import { Button, Drawer } from '../ui'
  * kaydırmak gerekiyordu. Bunun yerine telefonda yalnızca mikrofon, kamera,
  * "Daha fazla" ve çıkış görünür; kalanlar alttan açılan sayfada.
  *
+ * TAHTA ODAK MODU: `compact`
+ * --------------------------
+ * Tablette tahta kahramandır; alt şerit ona alan bırakmalıdır. `compact`
+ * açıkken ikincil araçların hepsi (materyal, mesaj, öğrenci bağlamı, not,
+ * ekran paylaşımı, cihaz ayarları) TEK bir "Ders araçları" menüsünde
+ * toplanır. Mikrofon, kamera ve kritik durumlar görünür kalır; "Dersi
+ * bitir" onay penceresiyle birlikte yerinde durur.
+ *
  * Durumlar yalnız renkle anlatılmaz: kapalı mikrofon hem üstü çizili simge,
  * hem kırmızı zemin, hem de erişilebilir adında "kapalı" taşır.
  */
@@ -114,6 +122,7 @@ export default function CallControls({
   unreadChat = 0,
   onLeave,
   onEnd,
+  compact = false,
   className,
 }) {
   const [moreOpen, setMoreOpen] = useState(false)
@@ -126,7 +135,8 @@ export default function CallControls({
     <>
       <div
         className={cn(
-          'flex items-center gap-1.5 rounded-card bg-ink/[0.92] px-2 py-2 shadow-overlay',
+          'flex items-center gap-1.5 rounded-card bg-ink/[0.92] shadow-overlay',
+          compact ? 'gap-1 px-1.5 py-1' : 'px-2 py-2',
           className
         )}
       >
@@ -147,16 +157,21 @@ export default function CallControls({
           disabled={!allowCamera}
         />
 
-        {/* Telefonda tek düğme, masaüstünde açık liste */}
+        {/* Telefonda ve tahta odak modunda tek düğme; geniş masaüstünde
+            açık liste. Menünün içeriği ikisinde de aynıdır. */}
         <ControlButton
-          label="Daha fazla ders aracı"
+          label="Ders araçları"
           Icon={MoreHorizontal}
           onClick={() => setMoreOpen(true)}
           badge={unreadChat}
-          className="md:hidden"
+          className={compact ? '' : 'md:hidden'}
         />
 
-        <div className="hidden items-center gap-1.5 md:flex">
+        {showBackToBoard && compact && (
+          <ControlButton label="Tahtaya dön" Icon={PenLine} onClick={onBackToBoard} />
+        )}
+
+        <div className={cn('hidden items-center gap-1.5', !compact && 'md:flex')}>
           <ControlButton
             active={screenOn}
             label={screenOn ? 'Ekran paylaşımını durdur' : 'Ekranını paylaş'}
@@ -216,7 +231,7 @@ export default function CallControls({
         onClose={() => setMoreOpen(false)}
         title="Ders araçları"
         width="sm"
-        className="md:hidden"
+        className={compact ? undefined : 'md:hidden'}
       >
         <div className="flex flex-col gap-1">
           {showBackToBoard && (

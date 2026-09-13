@@ -126,6 +126,18 @@
   transform: scale(0.98);
 }
 
+/* Uzun Türkçe düğme metinleri dar ekranda şeridi taşırmasın; erişilebilir
+   ad `aria-label` ile her koşulda korunur. */
+.ders-studyo__ust-dugme-metin {
+  display: none;
+}
+
+@media (min-width: 860px) {
+  .ders-studyo__ust-dugme-metin {
+    display: inline;
+  }
+}
+
 .ders-studyo__sure {
   display: inline-flex;
   padding-inline: 0.625rem;
@@ -190,15 +202,15 @@
   box-shadow: theme('boxShadow.elevated');
 }
 
-.ders-studyo .tahta-araclari__ana,
-.ders-studyo .tahta-araclari__ayar {
+.ders-studyo .tahta-araclari__ana {
   background: rgb(var(--c-surface) / 0.94);
   backdrop-filter: blur(18px);
 }
 
-.ders-studyo .tahta-araclari__ayar {
-  background: rgb(var(--c-surface-muted) / 0.74);
-  box-shadow: theme('boxShadow.card');
+/* Bağlamsal araç paneli tahtanın ÜSTÜNDE yüzer; yerleşimden yer almaz. */
+.ders-studyo .tahta-araclari__panel {
+  background: rgb(var(--c-surface));
+  backdrop-filter: blur(18px);
 }
 
 @media (min-width: 1024px) {
@@ -241,27 +253,38 @@
   }
 }
 
-/* Tablet: video şeridi yerini sahnenin sağ üstünde yüzen küçük
-   kutulara bırakır. Tahta tam genişlikte kalır. */
-.ders-studyo__yuzen {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 9.5rem;
+/* ══════════════════════════════════════════════════════════════════
+   KAMERA YERLEŞİĞİ
+   ------------------------------------------------------------------
+   Eski "yüzen video kutusu" kaldırıldı. Dikey tablette 152×86 piksellik
+   o kutu, öğretmenin yazdığı köşenin tam üstünde duruyordu ve kapatma
+   yolu yoktu.
+
+   Yerine gelen yerleşik, tahtanın TUVAL KABININ içinde mutlak konumda
+   durur: açılması, kapanması ve köşe değiştirmesi tahtanın ölçüsünü
+   değiştirmez. Kapalıyken tek satırlık bir durum rozetinden ibarettir.
+   ══════════════════════════════════════════════════════════════════ */
+.ders-studyo__kamera-rozet {
+  border: 1px solid rgb(var(--c-line));
+  border-radius: theme('borderRadius.btn');
+  background: rgb(var(--c-surface) / 0.92);
+  color: rgb(var(--c-ink) / 0.72);
+  backdrop-filter: blur(18px);
+  box-shadow: theme('boxShadow.card');
+  transition-property: background-color, color, box-shadow;
+  transition-duration: 150ms;
 }
 
-.ders-studyo__yuzen-video {
+.ders-studyo__kamera-rozet:hover {
+  background: rgb(var(--c-surface));
+  color: rgb(var(--c-ink));
+}
+
+.ders-studyo__kamera-kutu {
+  border: 1px solid rgb(255 255 255 / 0.14);
   background: rgb(var(--c-ink) / 0.94);
-}
-
-@media (min-width: 1024px) {
-  .ders-studyo__yuzen {
-    display: none;
-  }
+  backdrop-filter: blur(18px);
+  box-shadow: theme('boxShadow.overlay');
 }
 
 /* Telefon: tek odak.
@@ -306,10 +329,6 @@
 
   .ders-studyo__ana {
     padding: 0 0.625rem 0.5rem;
-  }
-
-  .ders-studyo__yuzen {
-    display: none;
   }
 
   /* Sahne telefonda İÇERİĞİ KADAR yer kaplar. `flex: 1` bırakılırsa
@@ -366,4 +385,64 @@
   .ders-studyo__ust-dugme {
     transition-duration: 0.01ms;
   }
+}
+
+
+/* ══════════════════════════════════════════════════════════════════
+   TAHTA ODAK MODU
+   ------------------------------------------------------------------
+   Ölçülen sorun: 1024×768 yatay tablette gerçek çizim alanı 728×365 px
+   kalıyordu — ekranın yalnızca %34'ü. Alanı yiyenler: sağda 240 px sabit
+   katılımcı sütunu, 81 px üst şerit, 78 px alt şerit ve 62+80 px'lik iki
+   satırlı araç çubuğu.
+
+   Odak modu bunların hepsini aynı anda ele alır. Katılımcı sütunu
+   React'te hiç kurulmaz (gizlemek yetmez, DOM'da kalırsa yine ölçülür);
+   şeritler tek satıra iner; araç ayrıntıları yüzen panele taşınır.
+
+   Bu bir tam ekran efekti DEĞİLDİR: tarayıcının gerçek tam ekran
+   desteğine hiç bağlı değildir, uygulama içi yerleşim olarak çalışır.
+   ══════════════════════════════════════════════════════════════════ */
+
+.ders-studyo.is-odak .ders-studyo__ust {
+  min-height: 2.75rem;
+  gap: 0.625rem;
+  padding: 0.25rem 0.625rem;
+}
+
+/* Kompakt şeritte kalan tek kimlik satırı ders başlığıdır; ders süresi,
+   bağlantı durumu ve çıkış yolu sağda görünür kalır. */
+.ders-studyo.is-odak .ders-studyo__rozetler,
+.ders-studyo.is-odak .ders-studyo__altbaslik {
+  display: none;
+}
+
+.ders-studyo.is-odak .ders-studyo__kimlik {
+  padding-left: 0;
+}
+
+.ders-studyo.is-odak .ders-studyo__ust-dugme,
+.ders-studyo.is-odak .ders-studyo__sure,
+.ders-studyo.is-odak .ders-studyo__baglanti {
+  height: 2rem;
+}
+
+.ders-studyo.is-odak .ders-studyo__ana {
+  gap: 0;
+  padding: 0.375rem 0.375rem 0.25rem;
+}
+
+.ders-studyo.is-odak .ders-studyo__sahne {
+  border-radius: theme('borderRadius.card');
+  padding: 0.375rem;
+}
+
+.ders-studyo.is-odak .ders-studyo__alt {
+  padding: 0.25rem 0.375rem 0.375rem;
+}
+
+/* Odak modunda katılımcı sütunu genişlik AYIRMAZ. React zaten
+   oluşturmuyor; bu kural eski bir DOM kalıntısına karşı emniyettir. */
+.ders-studyo.is-odak .ders-studyo__seritler {
+  display: none;
 }

@@ -18,12 +18,71 @@ Bu karar düzene doğrudan yansır:
 
 | Cihaz | Ana alan | Video |
 |---|---|---|
-| Masaüstü | Tahta/materyal — genişliğin ~%80'i | Sağda sabit genişlikli dar şerit (15–17rem) |
-| Tablet | Tahta tam genişlik | Sahnenin köşesinde yüzen küçük kutu |
-| Telefon | Tek odak: tahta **veya** materyal **veya** görüntü | Tahtanın altında şerit |
+| Geniş masaüstü (≥1280 px) | Tahta/materyal — genişliğin ~%80'i | Sağda sabit genişlikli dar şerit (15–17rem) |
+| Tablet ve dar masaüstü (<1280 px) | **Tahta odak modu**: tahta tam genişlik | Tahtanın üstünde daraltılabilir kamera yerleşiği |
+| Telefon (<768 px) | Tek odak: tahta **veya** materyal **veya** görüntü | Tahtanın altında şerit |
 
 Video şeridinin genişliği bilinçli olarak **sabittir**, yüzde değil: yüzdeyle
 verilseydi geniş ekranda videolar büyüyüp tahtayla yarışırdı.
+
+### 1a) Tahta odak modu
+
+Ölçülen sorun: 1024×768 yatay tablette gerçek çizim alanı **728×365 piksel**
+kalıyordu — ekranın yalnızca **%34'ü**. Alanı yiyenler sağda 240 px'lik sabit
+katılımcı sütunu, 81 px üst şerit, 78 px alt şerit ve kalem ayarları sarıldığı
+için 62+80 px'e çıkan iki satırlı araç çubuğuydu. Öğretmen dersi tam olarak bu
+ekrandan, kalemle anlatıyor.
+
+Tahta odak modu aynı anda dört şeyi birden yapar:
+
+- sabit katılımcı sütunu **hiç oluşturulmaz** (gizlemek yetmez; DOM'da kalırsa
+  yine ölçülür ve genişlik ayırır),
+- kamera, tahtanın ölçüsünü değiştirmeyen yüzen bir katmana döner,
+- üst ve alt şeritler tek satırlık kompakt hâle iner,
+- ikincil araçlar tek bir "Ders araçları" menüsünde toplanır.
+
+Sonuç (aynı ekranda ölçüldü): **998×570 piksel**, ekranın **%72'si** — çizim
+yüzeyi alan olarak **%114 büyüdü**.
+
+| Ekran | Önce | Sonra |
+|---|---|---|
+| 1024×768 (yatay tablet) | 728×365 | **998×570** |
+| 768×1024 (dikey tablet) | 726×625 | **742×826** |
+| 1440×900 normal görünüm | 1112×523 | **1112×631** |
+| 1440×900 tahta odak modu | — | **1414×702** |
+
+Mod, **cihaz tahmin edilerek değil kullanılabilir alana bakılarak** açılır
+(`src/lib/liveLesson/boardFocus.js`). Kullanıcı aracısına bakmanın anlamı yok:
+iPadOS kendini masaüstü Safari gibi tanıtıyor, Android tabletler telefondan
+ayırt edilemiyor. Eşik **1280 px**: altındaki her cihazda varsayılan açık,
+üstünde kapalı ve "Tahtayı büyüt" düğmesiyle elle açılır. Çıkış yolu her zaman
+görünür: "Normal görünüme dön".
+
+Tercih **cihazda** saklanır (`localStorage`), dersin veri modeline yazılmaz.
+Öğretmen modu açtığında öğrenciye ders kanalından **tek bir** bildirim gider ve
+öğrencinin ekranı da tahta odaklı hâle gelir; öğrenci sonradan kendi isteğiyle
+normal görünüme dönebilir ve kamerayı açabilir.
+
+Mod **tarayıcının gerçek tam ekran desteğine bağlı değildir**; uygulama içi bir
+yerleşim değişikliğidir.
+
+### 1b) Kamera yerleşiği
+
+Kamera kutuları artık yerleşimin parçası değil, tahtanın tuval kabının içine
+basılan mutlak konumlu bir katman (`LessonCameraDock.jsx`):
+
+- açılıp kapanması ve köşe değiştirmesi tahtanın ölçüsünü **değiştirmez**,
+- varsayılan olarak **daraltılmıştır**; dokununca küçük bir resim içinde resim
+  açılır, tekrar dokununca kapanır,
+- dört köşeden birine taşınabilir (tercih cihazda hatırlanır),
+- karşı tarafın kamerası kapalıysa veya bağlantı yoksa **büyük boş video kutusu
+  yerine** tek satırlık bir durum rozeti kalır,
+- tahta odak modunda öğretmenin kendi önizlemesi sürekli gösterilmez; "Tablet —
+  anlatım ve tahta" rolünde kendi kamera kutusu hiç kurulmaz.
+
+Eski "yüzen video kutusu" kaldırıldı: dikey tablette 152×86 piksellik o kutu
+doğrudan tahtanın sağ üstünü, yani yazılan yeri kapatıyordu ve kapatma yolu
+yoktu.
 
 ---
 
@@ -74,6 +133,10 @@ imkânsızdır. `scripts/test-live-lessons-rls.mjs` bunu ayrıca test eder.
 
 Test: `npm run test:live-lessons` (55 senaryo, PGlite üzerinde gerçek
 PostgreSQL ile; üretim veritabanına dokunmaz).
+
+Tahtanın dikey sayfa akışı ve tahta odak modu için: `npm run test:tahta-akisi`
+(62 senaryo; sayfa yerleşimi, koordinat dönüşümü, sınırlar, ivme ve odak modu
+varsayılanları — gerçek cihaz gerekmez).
 
 ---
 
@@ -203,7 +266,83 @@ Her pointer hareketi veritabanına yazılmaz; tüm sayfa da yayınlanmaz. Bir
 
 Tahta çizerken React state'i güncellenmez: sayfa verisi `pagesRef` içinde
 yaşar, çizim doğrudan canvas'a yapılır. Aksi hâlde her noktada bütün stüdyo
-(video kutuları, kontroller, paneller) yeniden render edilirdi.
+(video kutuları, kontroller, paneller) yeniden render edilirdi. Aynı kural
+**kaydırma** için de geçerlidir: görünüm `viewRef` içinde yaşar, yakınlaştırma
+yüzdesi ancak gerçekten değiştiğinde state'e yazılır.
+
+### 5a) Dikey sayfa akışı
+
+Tahta artık tek tek değiştirilen slaytlar değil, yukarıdan aşağıya ilerleyen
+bir **belge**. Boş sayfalar ve PDF sayfaları aynı akışta alt alta dizilir
+(`src/lib/liveLesson/board/pageFlow.js`).
+
+Üç koordinat uzayı vardır ve karıştırılmamalıdır:
+
+| Uzay | Nedir |
+|---|---|
+| sayfa | Bir sayfanın kendi içindeki (x, y). Çizim verisi burada saklanır, veri tabanına giden budur. |
+| belge | Bütün sayfaların alt alta dizildiği uzay. Sayfa n'in belge y'si `box.y`. |
+| ekran | belge × ölçek + (tx, ty) |
+
+Kurallar:
+
+- **Sayfa oranı bozulmaz.** Genişlik sabit (1600), yükseklik PDF'in gerçek
+  en-boy oranından gelir. "Dikey format", sayfaların dikey bir akışta
+  ilerlemesidir; hepsini aynı dikey ölçüye çevirmek değildir.
+- **Çizim, bakılan sayfaya değil dokunulan sayfaya yazılır.** Ekranda iki sayfa
+  birden görünebilir; "etkin sayfa" ekranda en çok yer kaplayan sayfadır ve
+  yalnız göstergeyi, geri alı ve temizlemeyi ilgilendirir.
+- **Süren bir çizgi sayfa değiştirmez.** Kalem sayfa sınırını aşarsa çizgi kendi
+  sayfasının uzayında ölçülmeye devam eder; koordinat komşu sayfanın sıfırına
+  dönüp ekranda zıplamaz.
+- **Bütün belge tek dev Canvas'a çizilmez.** Tuval ekran kadardır; yalnız görünür
+  (artı bir ekran payı) sayfalar boyanır. 40 sayfalık bir PDF'te fark budur.
+- **Kaydırma gerçek ivmeyle sürer.** `scroll-behavior: smooth` bu işi görmez; o
+  yalnız programatik geçişi yumuşatır, parmağın hızını taşımaz. Son hareketlerin
+  hızı ölçülür, bırakınca sönümlenerek devam eder ve belge sınırında durur.
+- **Ana gezinme yönü dikeydir.** Normal ölçekte belge yatayda ortalanır ve yatay
+  hareket kilitlidir — eğik parmak sayfayı yana savuramaz. Yakınlaştırılmış bir
+  PDF sayfasında belge ekrandan genişler ve yatay konumlandırma kendiliğinden
+  açılır.
+- **Yeni sayfa akışın altına eklenir** ve ekran oraya kaydırılır. Önceki/sonraki
+  düğmeleri erişilebilir alternatif olarak durur; bastırıldığında ilgili sayfaya
+  kontrollü biçimde kaydırır.
+- `prefers-reduced-motion` açıkken ivme hiç başlamaz, programatik geçiş anlıktır.
+
+Girdi kuralları değişmedi:
+
+| Durum | Tek parmak | İki parmak | Kalem |
+|---|---|---|---|
+| Varsayılan | sayfayı kaydırır | yakınlaştırır / konumlandırır | çizer |
+| "Parmakla çiz" açık | çizer | yakınlaştırır / konumlandırır | çizer |
+
+Kural kullanıcıya kalem ayarları panelinde tek cümleyle yazılı olarak gösterilir.
+iPad ve Apple Pencil için mevcut doğrudan Touch Events yolu, avuç reddi ve
+basınç davranışı korunmuştur; dikey akış bu motorun üstüne kuruldu.
+
+Eşitleme: öğretmenin **etkin sayfası değiştiğinde** öğrenciye sınırlı sıklıkta
+(en fazla ~400 ms'de bir) sayfa odağı bildirilir. Sürekli kaydırma konumu ve
+yakınlaştırma **yayınlanmaz**; öğrencinin kendi yakınlaştırması ezilmez.
+Görünmeyen bir sayfaya karşı taraftan gelen çizim kaybolmaz, o sayfa görünür
+olduğunda doğru yerde çizilir.
+
+### 5b) Araç çubuğu: tek satır, ayrıntılar istendiğinde
+
+Kalem ayarlarının oluşturduğu **kalıcı ikinci satır kaldırıldı**. Çubuk her
+zaman tek satırdır; seçili aracın ayrıntıları yalnız istendiğinde, tahtanın
+üstünde yüzen bir panelde açılır. Panel mutlak konumludur: açılıp kapanması
+tahtanın ölçüsünü değiştirmez, sayfa konumunu zıplatmaz.
+
+Panel iki yoldan açılır: seçili araca **tekrar** dokunarak ya da yanındaki
+**sabit** ayarlar düğmesine basarak. Düğmenin yeri sabittir; araç değiştikçe
+çubuk yana kaymaz. Panel dışarı dokunma ve Escape ile kapanır, kapanınca odak
+onu açan düğmeye döner. Dışarı dokunma olayı engellenmediği için kalemin ilk
+darbesi kaybolmaz — panel kapanır, çizgi normal başlar.
+
+Sayfa sayısı ve sayfa geçişleri ana çubuğa taşındı; tahtanın altındaki ayrı
+sayfa şeridi kaldırıldı. Seyrek kullanılan şekil, PDF, yakınlaştırma ve
+"sayfayı temizle" tek bir açılır araç alanına alındı. Kalem, fosforlu, silgi,
+geri al ve ileri al tek dokunuşla erişilebilir kaldı.
 
 ---
 

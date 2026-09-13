@@ -6,6 +6,8 @@ import {
   Clock3,
   Copy,
   Laptop,
+  Maximize2,
+  Minimize2,
   Radio,
   RefreshCw,
   Loader2,
@@ -21,6 +23,7 @@ import CallControls from '../../components/liveLesson/CallControls'
 import DeviceSetup from '../../components/liveLesson/DeviceSetup'
 import DeviceRolePicker from '../../components/liveLesson/DeviceRolePicker'
 import LessonBoard from '../../components/liveLesson/LessonBoard'
+import LessonCameraDock from '../../components/liveLesson/LessonCameraDock'
 import LessonChatPanel from '../../components/liveLesson/LessonChatPanel'
 import LessonStatusBadge from '../../components/liveLesson/LessonStatusBadge'
 import MaterialPanel from '../../components/liveLesson/MaterialPanel'
@@ -45,6 +48,7 @@ import {
 import { CHANNEL_EVENTS, useLessonChannel } from '../../lib/liveLesson/channel'
 import { useLessonMedia } from '../../lib/liveLesson/useLessonMedia'
 import { DEVICE_ROLES, deviceRoleInfo, loadDeviceRole, saveDeviceRole } from '../../lib/liveLesson/deviceRole'
+import { odakDurumu, odakTercihiOku, odakTercihiYaz, telefonDuzeni } from '../../lib/liveLesson/boardFocus'
 import { CONNECTION_LABELS } from '../../lib/liveLesson/rtc/provider'
 import { canJoin } from '../../lib/liveLesson/status'
 import { formatClock } from '../../lib/liveLesson/time'
@@ -67,10 +71,27 @@ import '../../styles/canli-ders.css'
  * ═══════════════════════════════════════════════════════════════════
  * KAHRAMAN: ÖĞRENME NESNESİ
  * ═══════════════════════════════════════════════════════════════════
- * Merkez alan her zaman tahta veya materyaldir. Video kutuları
- * masaüstünde sabit genişlikli dar bir şeritte, tablet ve telefonda ise
- * sahnenin köşesinde yüzen küçük kutulardadır. Hiçbir düzende video
+ * Merkez alan her zaman tahta veya materyaldir. Hiçbir düzende video
  * tahtadan büyük olamaz.
+ *
+ * ═══════════════════════════════════════════════════════════════════
+ * TAHTA ODAK MODU
+ * ═══════════════════════════════════════════════════════════════════
+ * 1024×768 gibi yaygın YATAY TABLETLERDE eski düzen tahtaya ekranın
+ * yalnızca üçte birini bırakıyordu: sağda 240 px sabit katılımcı sütunu,
+ * 81 px üst şerit, 78 px alt şerit ve 142 px'e varan iki satırlı araç
+ * çubuğu. Öğretmen dersi bu ekrandan kalemle anlatıyor.
+ *
+ * Tahta odak modu bunu tersine çevirir:
+ *   • sabit katılımcı sütunu tahtadan GENİŞLİK ALMAZ,
+ *   • kamera, tahtanın ölçüsünü değiştirmeyen yüzen bir katmana döner,
+ *   • üst ve alt şeritler tek satırlık kompakt hâle iner,
+ *   • ikincil araçlar tek bir "Ders araçları" menüsünde toplanır.
+ *
+ * Mod, CİHAZ TAHMİN EDİLEREK değil KULLANILABİLİR ALANA bakılarak açılır
+ * (`lib/liveLesson/boardFocus.js`). Masaüstünde "Tahtayı büyüt" düğmesiyle
+ * elle açılır, "Normal görünüm" ile kapanır. Tercih cihazda hatırlanır;
+ * dersin veri modeline yazılmaz.
  */
 
 const DRAWERS = { NONE: null, MATERIALS: 'materials', CONTEXT: 'context', CHAT: 'chat', DEVICES: 'devices', NOTE: 'note' }
@@ -103,6 +124,60 @@ export default function LessonStudio() {
   const [autoMuted, setAutoMuted] = useState(false)
   const [linkCopied, setLinkCopied] = useState(false)
   const [deviceRole, setDeviceRole] = useState(() => loadDeviceRole())
+
+  /* ---------------- Tahta odak modu ---------------- */
+  const [odakTercihi, setOdakTercihi] = useState(() => odakTercihiOku())
+  const [ekranGenisligi, setEkranGenisligi] = useState(() =>
+    typeof window === 'undefined' ? 1280 : window.innerWidth
+  )
+  useEffect(() => {
+    const olc = () => setEkranGenisligi(window.innerWidth)
+    window.addEventListener('resize', olc)
+    window.addEventListener('orientationchange', olc)
+    return () => {
+      window.removeEventListener('resize', olc)
+      window.removeEventListener('orientationchange', olc)
+    }
+  }, [])
+  const telefon = telefonDuzeni(ekranGenisligi)
+  const tahtaOdak = odakDurumu(ekranGenisligi, odakTercihi)
+
+  /** Kamera yerleşiği: açık mı, hangi köşede? Cihazda hatırlanır. */
+  const [kameraAcik, setKameraAcik] = useState(() => {
+    try {
+      return window.localStorage.getItem('drk-tahta-kamera') === 'acik'
+    } catch {
+      return false
+    }
+  })
+  /**
+   * Varsayılan köşe SAĞ ALT: sayfa yukarıdan aşağıya yazılıyor, sağ üst
+   * ise yeni sayfanın başlık bölgesi. Kullanıcı dört köşeden birine
+   * taşıyabilir ve tercih cihazda kalır.
+   */
+  const [kameraKose, setKameraKose] = useState(() => {
+    try {
+      return window.localStorage.getItem('drk-tahta-kamera-kose') ?? 'sag-alt'
+    } catch {
+      return 'sag-alt'
+    }
+  })
+  const kamerayiDegistir = useCallback((acik) => {
+    setKameraAcik(acik)
+    try {
+      window.localStorage.setItem('drk-tahta-kamera', acik ? 'acik' : 'kapali')
+    } catch {
+      /* gizli sekme */
+    }
+  }, [])
+  const koseyiDegistir = useCallback((kose) => {
+    setKameraKose(kose)
+    try {
+      window.localStorage.setItem('drk-tahta-kamera-kose', kose)
+    } catch {
+      /* gizli sekme */
+    }
+  }, [])
   const leftRef = useRef(false)
   const joinedRecordRef = useRef(false)
   const lobbyMediaState = useMemo(() => {
@@ -415,11 +490,28 @@ export default function LessonStudio() {
     [channel, user?.id]
   )
 
-  /* Öğretmen bir materyali açtığında öğrencinin ekranı da oraya baksın */
+  /**
+   * ODAK KANALI — materyal odağı ve tahta odak modu aynı olayı paylaşır.
+   *
+   * Öğretmen "Tahtayı büyüt" dediğinde öğrencinin ekranı da öğrenme
+   * yüzeyi öncelikli hâle gelir. Bu BİR KEZ yapılır: öğrenci sonradan
+   * kendi kamerasını açıp inceleyebilir, normal görünüme dönebilir.
+   * Cihaza özel kamera/mikrofon tercihleri ve kaydırma konumu asla
+   * eşitlenmez.
+   */
   useEffect(() => {
     if (!channel?.subscribe) return undefined
     return channel.subscribe(CHANNEL_EVENTS.FOCUS, (payload) => {
       if (!payload || payload.from === channel.deviceId) return
+
+      if (typeof payload.boardFocus === 'boolean') {
+        if (!isTeacher) {
+          setOdakTercihi(payload.boardFocus)
+          odakTercihiYaz(payload.boardFocus)
+        }
+        if (!('materialId' in payload)) return
+      }
+
       if (payload.materialId === null) {
         setOpenMaterial(null)
         setMobileView('board')
@@ -432,6 +524,21 @@ export default function LessonStudio() {
       }
     })
   }, [channel, materials, isTeacher])
+
+  /**
+   * TAHTA ODAK MODUNU AÇ/KAPA.
+   *
+   * Tercih cihazda saklanır (`localStorage`), dersin veri modeline
+   * YAZILMAZ. Öğretmen açtığında öğrenciye tek bir bildirim gider.
+   */
+  const odakDegistir = useCallback(
+    (acik) => {
+      setOdakTercihi(acik)
+      odakTercihiYaz(acik)
+      if (isTeacher) channel?.send?.(CHANNEL_EVENTS.FOCUS, { boardFocus: acik, by: user?.id })
+    },
+    [channel, isTeacher, user?.id]
+  )
 
   /**
    * BELGEYİ TAHTAYA AÇ — dersin asıl çalışma biçimi.
@@ -686,12 +793,48 @@ export default function LessonStudio() {
     </>
   )
 
+  /**
+   * KAMERA YERLEŞİĞİ — öğrenme yüzeyinin ÜSTÜNDE, ölçüsünü değiştirmeden.
+   *
+   * Yalnız tahta odak modunda kurulur. Normal masaüstü görünümünde
+   * katılımcı sütunu zaten var; ikisini birden göstermek aynı görüntüyü
+   * iki kez basardı. Telefonda mevcut Tahta / Materyal / Görüntü yapısı
+   * korunur.
+   *
+   * "Tablet — anlatım ve tahta" rolünde kendi kamera önizlemesi hiç
+   * kurulmaz: o cihazda kamera zaten kapalıdır ve boş bir kutu tahtanın
+   * üstünde yer kaplamamalıdır.
+   */
+  const kameraYerlesigi =
+    tahtaOdak && !telefon ? (
+      <LessonCameraDock
+        open={kameraAcik}
+        onToggle={() => kamerayiDegistir(!kameraAcik)}
+        corner={kameraKose}
+        onCornerChange={koseyiDegistir}
+        remoteStream={remote?.stream ?? null}
+        remoteName={counterpart?.full_name ?? (isTeacher ? 'Öğrenci' : 'Öğretmen')}
+        remoteCamOn={remote?.camOn ?? false}
+        remoteMicOn={remote?.micOn ?? peerState?.micOn ?? false}
+        remoteSpeaking={remote?.speaking ?? false}
+        remotePresent={Boolean(remote) || peerPresent}
+        remoteMediaAvailable={media.remoteMediaAvailable}
+        audioOutputEnabled={media.audioOutputEnabled}
+        selfStream={media.stream}
+        selfName={profile?.full_name ?? 'Sen'}
+        selfCamOn={media.camOn}
+        showSelf={deviceRole !== DEVICE_ROLES.BOARD}
+      />
+    ) : null
+
   return (
-    <div className="ders-studyo">
-      {/* Üst şerit — ders kimliği solda, teknik durumlar sağda. */}
+    <div className={cn('ders-studyo', tahtaOdak && 'is-odak')}>
+      {/* Üst şerit — ders kimliği solda, teknik durumlar sağda.
+          Tahta odak modunda tek satırlık kompakt ders durum şeridine iner;
+          süre, bağlantı ve çıkış yolu KAYBOLMAZ. */}
       <header className="ders-studyo__ust text-white">
         <div className="ders-studyo__kimlik min-w-0 flex-1">
-          <div className="mb-0.5 flex items-center gap-2">
+          <div className="ders-studyo__rozetler mb-0.5 flex items-center gap-2">
             <span className="ders-studyo__canli-etiket">
               <Radio className="h-3 w-3" strokeWidth={2.2} aria-hidden="true" />
               Ders stüdyosu
@@ -699,7 +842,7 @@ export default function LessonStudio() {
             <span className="hidden text-2xs font-medium text-white/35 sm:inline">DRKOÇ</span>
           </div>
           <p className="ders-studyo__baslik font-display text-sm font-bold sm:text-base">{session.title}</p>
-          <p className="ders-studyo__baslik text-2xs text-white/55">
+          <p className="ders-studyo__baslik ders-studyo__altbaslik text-2xs text-white/55">
             {counterpart?.full_name}
             {session.subject ? ` · ${session.subject}` : ''}
             {session.topic ? ` · ${session.topic}` : ''}
@@ -754,6 +897,31 @@ export default function LessonStudio() {
             <span className="ders-studyo__baglanti-nokta" aria-hidden="true" />
             {CONNECTION_LABELS[channel.status] ?? 'Bağlantı'}
           </span>
+
+          {/* Tahta odak modu — telefonda zaten tek odak var, orada gizli. */}
+          {!telefon && (
+            <button
+              type="button"
+              onClick={() => odakDegistir(!tahtaOdak)}
+              aria-pressed={tahtaOdak}
+              aria-label={tahtaOdak ? 'Normal görünüme dön' : 'Tahtayı büyüt'}
+              title={
+                tahtaOdak
+                  ? 'Normal görünüme dön — katılımcı sütunu geri gelir'
+                  : 'Tahtayı büyüt — yardımcı paneller küçülür'
+              }
+              className="ders-studyo__ust-dugme focus-ring"
+            >
+              {tahtaOdak ? (
+                <Minimize2 className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+              ) : (
+                <Maximize2 className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+              )}
+              <span className="ders-studyo__ust-dugme-metin">
+                {tahtaOdak ? 'Normal görünüm' : 'Tahtayı büyüt'}
+              </span>
+            </button>
+          )}
 
           {/* Bağlantı toparlanmadıysa elle deneme yolu AÇIK olmalı —
               "sayfayı yenile" ders ortasında kabul edilebilir bir çözüm değil. */}
@@ -822,26 +990,34 @@ export default function LessonStudio() {
                     Tahtaya dön
                   </Button>
                 </div>
-                <VideoTile
-                  stream={media.screenStream}
-                  name="Paylaşılan ekran"
-                  muted
-                  cameraOn
-                  micOn
-                  connection="connected"
-                  className="min-h-0 flex-1"
-                />
+                {/* Ekran paylaşımında da aynı kural: öğrenme yüzeyi önce,
+                    kamera onun üstünde küçük bir katman. */}
+                <div className="relative min-h-0 flex-1">
+                  <VideoTile
+                    stream={media.screenStream}
+                    name="Paylaşılan ekran"
+                    muted
+                    cameraOn
+                    micOn
+                    connection="connected"
+                    className="h-full w-full"
+                  />
+                  {kameraYerlesigi}
+                </div>
               </div>
             ) : showMaterial ? (
-              <MaterialViewer
-                material={openMaterial}
-                onSendToBoard={isTeacher ? sendToBoard : undefined}
-                onClose={() => {
-                  setOpenMaterial(null)
-                  setMobileView('board')
-                  channel.send(CHANNEL_EVENTS.FOCUS, { materialId: null, by: user?.id })
-                }}
-              />
+              <div className="relative flex min-h-0 flex-1 flex-col">
+                <MaterialViewer
+                  material={openMaterial}
+                  onSendToBoard={isTeacher ? sendToBoard : undefined}
+                  onClose={() => {
+                    setOpenMaterial(null)
+                    setMobileView('board')
+                    channel.send(CHANNEL_EVENTS.FOCUS, { materialId: null, by: user?.id })
+                  }}
+                />
+                {kameraYerlesigi}
+              </div>
             ) : (
               <LessonBoard
                 sessionId={sessionId}
@@ -859,24 +1035,9 @@ export default function LessonStudio() {
                    Kabı sayfanın oranına sabitleyince boşluk kalmıyor ve
                    kazanılan alan katılımcı şeridine gidiyor. */
                 wrapperClassName="max-md:flex-none max-md:aspect-[16/10]"
-                overlay={
-                  /* Tablet ve telefonda yüzen kamera kutusu. Tahtanın
-                     TUVAL kabının içine basılır; sahnenin köşesine
-                     konsaydı araç çubuğunun üstüne biner ve araçları
-                     örterdi. */
-                  <div className="ders-studyo__yuzen max-md:hidden">
-                    <VideoTile
-                      stream={media.stream}
-                      name={profile?.full_name ?? 'Sen'}
-                      muted
-                      mirrored
-                      cameraOn={media.camOn}
-                      micOn={media.micOn}
-                      connection="connected"
-                      className="ders-studyo__yuzen-video aspect-video w-full shadow-elevated"
-                    />
-                  </div>
-                }
+                /* Kamera, tuval kabının İÇİNE mutlak konumda basılır:
+                   açılıp kapanması tahtanın ölçüsünü değiştirmez. */
+                overlay={kameraYerlesigi}
               />
             )}
           </div>
@@ -906,7 +1067,9 @@ export default function LessonStudio() {
           )}
         </section>
 
-        {/* Masaüstü video şeridi */}
+        {/* Masaüstü video şeridi — tahta odak modunda hiç oluşturulmaz:
+            gizlemek yetmez, DOM'da kalırsa da ölçülür ve genişlik ayırırdı. */}
+        {!tahtaOdak && (
         <aside className="ders-studyo__seritler" aria-label="Katılımcılar">
           <div className="ders-studyo__serit-baslik">
             <span className="inline-flex items-center gap-1.5">
@@ -923,6 +1086,7 @@ export default function LessonStudio() {
             </p>
           )}
         </aside>
+        )}
       </main>
 
       {/* Kontrol şeridi */}
@@ -946,6 +1110,7 @@ export default function LessonStudio() {
       <footer className="ders-studyo__alt">
         <CallControls
           className="ders-studyo__kontroller"
+          compact={tahtaOdak}
           role={role}
           micOn={media.micOn}
           camOn={media.camOn}

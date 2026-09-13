@@ -20,6 +20,7 @@
     "test:live-lessons": "node scripts/test-live-lessons-rls.mjs",
     "test:live-lesson-media": "node scripts/test-live-lesson-media.mjs",
     "test:ink": "node scripts/test-ink-stroke.mjs && node scripts/test-ink-cache.mjs",
+    "test:tahta-akisi": "node scripts/test-board-page-flow.mjs",
     "test:defter": "node --test scripts/test-defter*.mjs",
     "bench:defter": "node scripts/bench-defter-performance.mjs",
     "test:ai-solve": "node scripts/test-ai-solve.mjs",

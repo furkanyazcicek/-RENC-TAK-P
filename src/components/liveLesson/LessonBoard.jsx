@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
-import { ChevronLeft, ChevronRight, CloudOff, Loader2, Check, Plus } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 import { cn } from '../../lib/cn'
 import { Button, Modal } from '../ui'
 import BoardToolbar from './BoardToolbar'
@@ -27,12 +27,30 @@ import {
   makeShapeItem,
   makeTextItem,
   makeImageItem,
+  PAGE_WIDTH,
   pageSize,
   renderPageToCanvas,
   translateItem,
   widthSpec,
 } from '../../lib/liveLesson/board/model'
 import { readPdfPages } from '../../lib/liveLesson/board/pdfBackground'
+import {
+  EDGE_PAD,
+  boxForIndex,
+  buildPageLayout,
+  canPanHorizontally,
+  clampView,
+  createVelocityTracker,
+  decayVelocity,
+  dominantPage,
+  easeOutCubic,
+  glideDuration,
+  glideFinished,
+  pageAtDocY,
+  scrollOffsetForPage,
+  shouldGlide,
+  visiblePages,
+} from '../../lib/liveLesson/board/pageFlow'
 import {
   DEFAULT_PRESSURE,
   applyRemotePoints,
@@ -236,6 +254,35 @@ export default function LessonBoard({
   const pageIndexRef = useRef(0)
   const historyRef = useRef(new Map())
 
+  /**
+   * DİKEY BELGE YERLEŞİMİ.
+   *
+   * Sayfalar alt alta dizilir; `layoutRef` her sayfanın belge içindeki
+   * y konumunu ve ölçüsünü tutar. Sayfa listesi her değiştiğinde
+   * `yerlesimiKur()` ile tazelenir.
+   */
+  const layoutRef = useRef(buildPageLayout([createPage(0)], pageSize))
+  /** O an çizilen nesnenin AİT OLDUĞU sayfa. Etkin sayfadan farklı olabilir. */
+  const drawPageRef = useRef(0)
+  /** Seçimin (lasso) yaşadığı sayfa. */
+  const selectionPageRef = useRef(0)
+  /** Parmak bırakıldıktan sonra süren kaydırma. */
+  const glideRef = useRef(null)
+  /** Programatik sayfa geçişi animasyonu. */
+  const pageGlideRef = useRef(null)
+  const velocityRef = useRef(createVelocityTracker())
+  const zoomYuzdeRef = useRef(100)
+  const sayfaYayinRef = useRef({ at: 0, timer: 0, page: -1 })
+  /**
+   * Etkin sayfa denetimi `setView` içinden çağrılır ama geçmiş bayrakları
+   * ve kanal yayını AŞAĞIDA tanımlı. Döngüsel bağımlılık olmasın diye
+   * geç bağlanan bir referans üzerinden çağrılıyor (repaintSoonRef ile
+   * aynı kalıp).
+   */
+  const etkinSayfaRef = useRef(null)
+  /** Yazılan sayfayı etkin sayfa yapar; `applyItems` içinden çağrılır. */
+  const sayfaSabitleRef = useRef(null)
+
   const activeRef = useRef(null) // devam eden kendi çizgimiz
   const shapeRef = useRef(null) // devam eden şekil önizlemesi
   const remoteLiveRef = useRef(new Map()) // karşı tarafın devam eden çizgileri
@@ -323,6 +370,23 @@ export default function LessonBoard({
     return rectRef.current
   }, [])
 
+  /** Sayfa listesi değiştiğinde dikey yerleşimi yeniden kurar. */
+  const yerlesimiKur = useCallback(() => {
+    layoutRef.current = buildPageLayout(pagesRef.current, pageSize)
+    return layoutRef.current
+  }, [])
+
+  /**
+   * GÖRÜNEN SAYFALARI ÇİZ — hepsini değil.
+   *
+   * Belge 40 sayfalık bir PDF olabilir. Tamamını her karede çizmek
+   * tableti kilitler; tamamını tek dev Canvas'a almak ise bellek
+   * sınırlarını aşar. Bu yüzden tuval EKRAN KADARDIR ve yalnız görünür
+   * (artı bir ekran payı) sayfalar boyanır.
+   *
+   * Zeminler önce, nesneler sonra: bir sayfanın alt kenarını aşan çizgi,
+   * bir sonraki sayfanın beyaz zemini altında kaybolmasın.
+   */
   const paintBase = useCallback(() => {
     const canvas = baseRef.current
     if (!canvas) return
@@ -330,26 +394,42 @@ export default function LessonBoard({
     ctx.setTransform(1, 0, 0, 1, 0, 0)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     const dpr = dprRef.current
-    const { scale, tx, ty } = viewRef.current
-    ctx.setTransform(dpr * scale, 0, 0, dpr * scale, dpr * tx, dpr * ty)
+    const view = viewRef.current
+    const rect = boardRect()
+    if (!rect) return
+    ctx.setTransform(dpr * view.scale, 0, 0, dpr * view.scale, dpr * view.tx, dpr * view.ty)
 
-    const current = pagesRef.current[pageIndexRef.current] ?? createPage(0)
-    const size = pageSize(current)
+    const layout = layoutRef.current
+    const kutular = visiblePages(layout, view, rect)
+    const tazele = () => repaintSoonRef.current?.()
 
-    drawBoardBackground(ctx, current, { grid: true, onPdfReady: () => repaintSoonRef.current?.() })
-    // Sayfa kenarı: koyu stüdyo zemininde beyaz sayfanın sınırı belli olsun.
-    ctx.save()
-    ctx.strokeStyle = 'rgba(19, 19, 41, 0.22)'
-    ctx.lineWidth = 1 / viewRef.current.scale
-    ctx.strokeRect(0, 0, size.w, size.h)
-    ctx.restore()
-
-    drawPageItems(ctx, current, () => repaintSoonRef.current?.())
-    if (teshisRef.current) {
-      teshisRef.current.sayfada = current.items.length
-      teshisRef.current.zemin = 'tam boya'
+    for (const box of kutular) {
+      const page = pagesRef.current[box.at]
+      if (!page) continue
+      ctx.save()
+      ctx.translate(0, box.y)
+      drawBoardBackground(ctx, page, { grid: true, onPdfReady: tazele })
+      // Sayfa kenarı: koyu stüdyo zemininde beyaz sayfanın sınırı belli olsun.
+      ctx.strokeStyle = 'rgba(19, 19, 41, 0.22)'
+      ctx.lineWidth = 1 / view.scale
+      ctx.strokeRect(0, 0, box.w, box.h)
+      ctx.restore()
     }
-  }, [])
+
+    for (const box of kutular) {
+      const page = pagesRef.current[box.at]
+      if (!page) continue
+      ctx.save()
+      ctx.translate(0, box.y)
+      drawPageItems(ctx, page, tazele)
+      ctx.restore()
+    }
+
+    if (teshisRef.current) {
+      teshisRef.current.sayfada = (pagesRef.current[pageIndexRef.current]?.items.length) ?? 0
+      teshisRef.current.zemin = `tam boya · ${kutular.length} sayfa`
+    }
+  }, [boardRect])
 
   const schedulePaint = useCallback(() => {
     if (baseRafRef.current) return
@@ -371,14 +451,19 @@ export default function LessonBoard({
    * Tam yeniden çizim yalnız gerçekten gerektiğinde yapılır: silgi,
    * geri al, sayfa değişimi, yakınlaştırma.
    */
-  const stampToBase = useCallback((item) => {
+  const stampToBase = useCallback((item, pageIndex) => {
     const canvas = baseRef.current
     if (!canvas || !item) return false
+    const box = boxForIndex(layoutRef.current, pageIndex ?? pageIndexRef.current)
+    if (!box) return false
     const ctx = canvas.getContext('2d')
     const dpr = dprRef.current
     const { scale, tx, ty } = viewRef.current
     ctx.setTransform(dpr * scale, 0, 0, dpr * scale, dpr * tx, dpr * ty)
+    ctx.save()
+    ctx.translate(0, box.y)
     drawItem(ctx, item)
+    ctx.restore()
     if (teshisRef.current) teshisRef.current.zemin = 'tek damga'
     return true
   }, [])
@@ -395,39 +480,55 @@ export default function LessonBoard({
   }, [paintBase])
   repaintSoonRef.current = repaintSoon
 
+  /** Sayfa uzayındaki bir çizimi belge uzayına taşıyıp çizer. */
+  function sayfadaCiz(ctx, pageIndex, ciz) {
+    const box = boxForIndex(layoutRef.current, pageIndex)
+    if (!box) return
+    ctx.save()
+    ctx.translate(0, box.y)
+    ciz()
+    ctx.restore()
+  }
+
   function drawSelectionGuide(ctx) {
     const lasso = lassoRef.current
     if (lasso?.points?.length > 1 && !lasso.moving) {
-      ctx.save()
-      ctx.strokeStyle = 'rgba(124, 58, 237, 0.9)'
-      ctx.fillStyle = 'rgba(124, 58, 237, 0.06)'
-      ctx.lineWidth = 2 / viewRef.current.scale
-      ctx.setLineDash([9 / viewRef.current.scale, 7 / viewRef.current.scale])
-      ctx.beginPath()
-      ctx.moveTo(lasso.points[0].x, lasso.points[0].y)
-      for (let i = 1; i < lasso.points.length; i++) ctx.lineTo(lasso.points[i].x, lasso.points[i].y)
-      ctx.stroke()
-      ctx.fill()
-      ctx.restore()
+      sayfadaCiz(ctx, lasso.page ?? selectionPageRef.current, () => {
+        ctx.save()
+        ctx.strokeStyle = 'rgba(124, 58, 237, 0.9)'
+        ctx.fillStyle = 'rgba(124, 58, 237, 0.06)'
+        ctx.lineWidth = 2 / viewRef.current.scale
+        ctx.setLineDash([9 / viewRef.current.scale, 7 / viewRef.current.scale])
+        ctx.beginPath()
+        ctx.moveTo(lasso.points[0].x, lasso.points[0].y)
+        for (let i = 1; i < lasso.points.length; i++) ctx.lineTo(lasso.points[i].x, lasso.points[i].y)
+        ctx.stroke()
+        ctx.fill()
+        ctx.restore()
+      })
     }
 
     const ids = selectionRef.current
     if (!ids.size) return
-    const boxes = currentPage().items.map((item) => (ids.has(item.id) ? itemBounds(item) : null)).filter(Boolean)
+    const secimSayfasi = pagesRef.current[selectionPageRef.current]
+    if (!secimSayfasi) return
+    const boxes = secimSayfasi.items.map((item) => (ids.has(item.id) ? itemBounds(item) : null)).filter(Boolean)
     if (!boxes.length) return
     const minX = Math.min(...boxes.map((box) => box.x))
     const minY = Math.min(...boxes.map((box) => box.y))
     const maxX = Math.max(...boxes.map((box) => box.x + box.w))
     const maxY = Math.max(...boxes.map((box) => box.y + box.h))
     const pad = 10 / viewRef.current.scale
-    ctx.save()
-    ctx.strokeStyle = 'rgba(124, 58, 237, 0.95)'
-    ctx.fillStyle = 'rgba(124, 58, 237, 0.05)'
-    ctx.lineWidth = 2 / viewRef.current.scale
-    ctx.setLineDash([8 / viewRef.current.scale, 6 / viewRef.current.scale])
-    ctx.fillRect(minX - pad, minY - pad, maxX - minX + pad * 2, maxY - minY + pad * 2)
-    ctx.strokeRect(minX - pad, minY - pad, maxX - minX + pad * 2, maxY - minY + pad * 2)
-    ctx.restore()
+    sayfadaCiz(ctx, selectionPageRef.current, () => {
+      ctx.save()
+      ctx.strokeStyle = 'rgba(124, 58, 237, 0.95)'
+      ctx.fillStyle = 'rgba(124, 58, 237, 0.05)'
+      ctx.lineWidth = 2 / viewRef.current.scale
+      ctx.setLineDash([8 / viewRef.current.scale, 6 / viewRef.current.scale])
+      ctx.fillRect(minX - pad, minY - pad, maxX - minX + pad * 2, maxY - minY + pad * 2)
+      ctx.strokeRect(minX - pad, minY - pad, maxX - minX + pad * 2, maxY - minY + pad * 2)
+      ctx.restore()
+    })
   }
 
   const paintLive = useCallback(() => {
@@ -440,20 +541,26 @@ export default function LessonBoard({
     const { scale, tx, ty } = viewRef.current
     ctx.setTransform(dpr * scale, 0, 0, dpr * scale, dpr * tx, dpr * ty)
 
-    if (activeRef.current) drawItem(ctx, activeRef.current, undefined, true)
-    if (shapeRef.current) drawItem(ctx, shapeRef.current)
-    for (const item of remoteLiveRef.current.values()) drawItem(ctx, item, undefined, true)
+    // Devam eden çizimler SAYFA uzayındadır; belge uzayına taşınır.
+    if (activeRef.current) sayfadaCiz(ctx, drawPageRef.current, () => drawItem(ctx, activeRef.current, undefined, true))
+    if (shapeRef.current) sayfadaCiz(ctx, drawPageRef.current, () => drawItem(ctx, shapeRef.current))
+    for (const item of remoteLiveRef.current.values()) {
+      sayfadaCiz(ctx, item._page ?? pageIndexRef.current, () => drawItem(ctx, item, undefined, true))
+    }
     drawSelectionGuide(ctx)
 
     // Silgi halkası — nereyi sileceğini görsün.
     if (eraseRef.current) {
-      ctx.save()
-      ctx.strokeStyle = 'rgba(225, 29, 72, 0.7)'
-      ctx.lineWidth = 2 / viewRef.current.scale
-      ctx.beginPath()
-      ctx.arc(eraseRef.current.x, eraseRef.current.y, eraseRef.current.r, 0, Math.PI * 2)
-      ctx.stroke()
-      ctx.restore()
+      const state = eraseRef.current
+      sayfadaCiz(ctx, state.page, () => {
+        ctx.save()
+        ctx.strokeStyle = 'rgba(225, 29, 72, 0.7)'
+        ctx.lineWidth = 2 / viewRef.current.scale
+        ctx.beginPath()
+        ctx.arc(state.x, state.y, state.r, 0, Math.PI * 2)
+        ctx.stroke()
+        ctx.restore()
+      })
     }
   }, [])
 
@@ -476,6 +583,7 @@ export default function LessonBoard({
   const resizeCanvases = useCallback(() => {
     const wrap = wrapRef.current
     if (!wrap) return
+    const onceki = { ...viewRef.current }
     rectRef.current = null
     const rect = wrap.getBoundingClientRect()
     rectRef.current = rect
@@ -488,69 +596,91 @@ export default function LessonBoard({
       canvas.style.width = `${rect.width}px`
       canvas.style.height = `${rect.height}px`
     }
-    // Ekran boyutu değişti: kullanıcı görünümü elle ayarlamadıysa tahtayı
-    // yeniden sığdır. Bu yapılmazsa telefonda/tablette sayfa kabın dışında
-    // kalıyor ve öğrenci tahtanın yarısını göremiyordu.
-    if (!userAdjustedRef.current) {
-      const size = pageSize(pagesRef.current[pageIndexRef.current])
-      const pad = 12
-      const tall = size.h / size.w > (rect.height - pad * 2) / (rect.width - pad * 2)
-      const scale = tall
-        ? (rect.width - pad * 2) / size.w
-        : Math.min((rect.width - pad * 2) / size.w, (rect.height - pad * 2) / size.h)
-      viewRef.current = {
-        scale,
-        tx: (rect.width - size.w * scale) / 2,
-        ty: tall ? pad : (rect.height - size.h * scale) / 2,
-      }
-      setZoom(scale)
-    }
+    /**
+     * EKRAN ÖLÇÜSÜ DEĞİŞTİ — KAYDIRMA KONUMU KORUNUR.
+     *
+     * Kamera açılması, araç panelinin kapanması, ekranın dönmesi ve tahta
+     * odak moduna geçiş hep buraya düşüyor. Eskiden her seferinde tahta
+     * baştan sığdırılıyordu; öğretmen 12. sayfada yazarken kamera açsa
+     * belgenin başına dönüyordu.
+     *
+     * Artık ekranın ÜST KENARINDAKİ belge noktası çıpa alınır: ölçek
+     * değişse bile aynı nokta yine üstte kalır.
+     */
+    yerlesimiKur()
+    const ankrajY = onceki.scale > 0 ? -onceki.ty / onceki.scale : 0
+    const ankrajX = onceki.scale > 0 ? -onceki.tx / onceki.scale : 0
+    const scale = userAdjustedRef.current ? onceki.scale : genislikOlcegi(rect)
+    viewRef.current = clampView(
+      layoutRef.current,
+      rect,
+      { scale, tx: -ankrajX * scale, ty: -ankrajY * scale },
+      { minScale: MIN_SCALE, maxScale: MAX_SCALE }
+    )
+    zoomYaz(viewRef.current.scale)
+    // Ölçek ve kap değişti: ekranda en çok görünen sayfa da değişmiş
+    // olabilir. Yapılmazsa gösterge eski sayfada takılı kalıyordu.
+    etkinSayfaRef.current?.()
     paintBase()
     paintLive()
-  }, [paintBase, paintLive])
+  }, [paintBase, paintLive, yerlesimiKur])
 
   /* ================================================================ */
   /*  Görünüm                                                          */
   /* ================================================================ */
 
+  /**
+   * Görünüm değişimi React state'i GÜNCELLEMEZ.
+   *
+   * Kaydırma saniyede 60 kare üretir; her karede `setZoom` çağırmak bütün
+   * tahtayı (araç çubuğu, sayfa göstergesi, kayıt durumu) yeniden render
+   * ediyordu. Yüzde değeri gerçekten değiştiğinde bir kez yazılır.
+   */
+  function zoomYaz(scale) {
+    const yuzde = Math.round(scale * 100)
+    if (yuzde === zoomYuzdeRef.current) return
+    zoomYuzdeRef.current = yuzde
+    setZoom(scale)
+  }
+
   const setView = useCallback(
     (next) => {
       const rect = boardRect()
       if (!rect) return
-      const size = pageSize(pagesRef.current[pageIndexRef.current])
-      const scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, next.scale))
-      const w = size.w * scale
-      const h = size.h * scale
-      viewRef.current = {
-        scale,
-        tx: Math.min(rect.width * 0.85, Math.max(rect.width * 0.15 - w, next.tx)),
-        ty: Math.min(rect.height * 0.85, Math.max(rect.height * 0.15 - h, next.ty)),
-      }
-      setZoom(scale)
+      viewRef.current = clampView(layoutRef.current, rect, next, {
+        minScale: MIN_SCALE,
+        maxScale: MAX_SCALE,
+      })
+      zoomYaz(viewRef.current.scale)
+      etkinSayfaRef.current?.()
       schedulePaint()
       scheduleLive()
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [boardRect, schedulePaint, scheduleLive]
   )
+
+  /**
+   * SAYFA GENİŞLİĞİNE SIĞDIR.
+   *
+   * Dikey belgede doğru ölçek genişlik ölçeğidir: yazı en büyük hâliyle
+   * görünür, öğretmen aşağı kaydırarak ilerler. Yüksekliğe sığdırmak
+   * çok sayfalı PDF'te yazıyı okunmaz hâle getiriyordu.
+   */
+  function genislikOlcegi(rect) {
+    const layout = layoutRef.current
+    const w = layout.width || PAGE_WIDTH
+    return Math.min(MAX_SCALE, Math.max(MIN_SCALE, (rect.width - EDGE_PAD * 2) / w))
+  }
 
   const fitBoard = useCallback(() => {
     const rect = boardRect()
     if (!rect) return
     userAdjustedRef.current = false
-    const size = pageSize(pagesRef.current[pageIndexRef.current])
-    const pad = 12
-    // PDF sayfaları dikey ve uzun olabiliyor. Yüksekliğe sığdırmak yazıyı
-    // okunamaz hâle getirdiği için GENİŞLİĞE sığdırıp üstten başlıyoruz —
-    // öğretmen aşağı kaydırarak ilerler, defter gibi.
-    const tall = size.h / size.w > (rect.height - pad * 2) / (rect.width - pad * 2)
-    const scale = tall
-      ? (rect.width - pad * 2) / size.w
-      : Math.min((rect.width - pad * 2) / size.w, (rect.height - pad * 2) / size.h)
-    setView({
-      scale,
-      tx: (rect.width - size.w * scale) / 2,
-      ty: tall ? pad : (rect.height - size.h * scale) / 2,
-    })
+    durdurKaydirma()
+    const scale = genislikOlcegi(rect)
+    setView({ scale, tx: 0, ty: scrollOffsetForPage(layoutRef.current, pageIndexRef.current, scale) })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [boardRect, setView])
 
   const zoomAt = useCallback(
@@ -577,8 +707,8 @@ export default function LessonBoard({
     [boardRect, zoomAt]
   )
 
-  /** Ekran koordinatını tahta koordinatına çevirir. */
-  const toBoard = useCallback(
+  /** Ekran koordinatını BELGE koordinatına çevirir. */
+  const toDoc = useCallback(
     (clientX, clientY) => {
       const rect = boardRect()
       const { scale, tx, ty } = viewRef.current
@@ -590,11 +720,160 @@ export default function LessonBoard({
     [boardRect]
   )
 
+  /**
+   * Ekran koordinatını SAYFA koordinatına çevirir ve hangi sayfa olduğunu
+   * söyler. Çizim verisi her zaman sayfa uzayında saklanır; belge
+   * kaydırma miktarı ya da üstteki sayfaların yüksekliği bu hesabı
+   * etkilemez.
+   */
+  const toBoard = useCallback(
+    (clientX, clientY) => {
+      const doc = toDoc(clientX, clientY)
+      const box = pageAtDocY(layoutRef.current, doc.y)
+      if (!box) return { x: doc.x, y: doc.y, page: 0 }
+      return { x: doc.x, y: doc.y - box.y, page: box.index }
+    },
+    [toDoc]
+  )
+
+  /**
+   * SÜREN BİR ÇİZİM SAYFA DEĞİŞTİRMEZ.
+   *
+   * `toBoard` ekrandaki noktanın DÜŞTÜĞÜ sayfayı bulur; yeni bir çizim
+   * başlatırken doğrusu budur. Ama devam eden bir çizgi sayfa sınırını
+   * aşarsa aynı hesap koordinatı bir anda komşu sayfanın sıfırına
+   * döndürür ve çizgi ekranda zıplardı. Süren jest, kendi sayfasının
+   * uzayında ölçülmeyi sürdürür.
+   */
+  const toActivePage = useCallback(
+    (clientX, clientY) => {
+      const doc = toDoc(clientX, clientY)
+      const box = boxForIndex(layoutRef.current, drawPageRef.current)
+      if (!box) return { x: doc.x, y: doc.y, page: drawPageRef.current }
+      return { x: doc.x, y: doc.y - box.y, page: box.index }
+    },
+    [toDoc]
+  )
+
+  /* ================================================================ */
+  /*  Dikey kaydırma: ivme ve programatik geçiş                        */
+  /* ================================================================ */
+
+  /** Süren her kaydırma hareketini durdurur (yeni temas, zoom, geçiş). */
+  function durdurKaydirma() {
+    if (glideRef.current) {
+      cancelAnimationFrame(glideRef.current.raf)
+      glideRef.current = null
+    }
+    if (pageGlideRef.current) {
+      cancelAnimationFrame(pageGlideRef.current.raf)
+      pageGlideRef.current = null
+    }
+  }
+
+  function hareketAzaltilsin() {
+    return typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+  }
+
+  /* ---- Tek parmak / kalem ile belge kaydırma ---- */
+
+  /**
+   * KAYDIRMANIN ANA YÖNÜ DİKEYDİR.
+   *
+   * Normal ölçekte belge ekrandan dar olduğu için yatay hareket
+   * KİLİTLİDİR: parmak eğik kaydığında sayfa yana savrulmaz. Kullanıcı
+   * bir PDF sayfasını yakınlaştırdığında belge ekrandan genişler ve
+   * yatay konumlandırma kendiliğinden serbest kalır.
+   */
+  function panBaslat(clientX, clientY, type, pointerId) {
+    durdurKaydirma()
+    const rect = boardRect()
+    velocityRef.current.reset()
+    velocityRef.current.sample(performance.now(), clientX, clientY)
+    panRef.current = {
+      x: clientX,
+      y: clientY,
+      view: { ...viewRef.current },
+      yatay: rect ? canPanHorizontally(layoutRef.current, rect, viewRef.current.scale) : false,
+      type,
+      pointerId,
+    }
+  }
+
+  function panSurdur(clientX, clientY) {
+    const start = panRef.current
+    if (!start) return
+    velocityRef.current.sample(performance.now(), clientX, clientY)
+    setView({
+      scale: start.view.scale,
+      tx: start.yatay ? start.view.tx + (clientX - start.x) : start.view.tx,
+      ty: start.view.ty + (clientY - start.y),
+    })
+  }
+
+  function panBitir() {
+    const start = panRef.current
+    panRef.current = null
+    if (!start) return
+    const { vx, vy } = velocityRef.current.velocity()
+    velocityRef.current.reset()
+    ivmeBaslat(start.yatay ? vx : 0, vy)
+  }
+
+  /**
+   * PARMAK BIRAKILDIKTAN SONRA HAREKET SÜRER.
+   *
+   * Hız `pageFlow.js` içindeki sönümlemeyle azalır; belge sınırına
+   * çarpınca durur. `prefers-reduced-motion` açıkken hiç başlamaz.
+   */
+  function ivmeBaslat(vx, vy) {
+    durdurKaydirma()
+    if (hareketAzaltilsin() || !shouldGlide(vy, vx)) return
+    const state = { vx, vy, last: performance.now(), raf: 0 }
+    glideRef.current = state
+    const adim = () => {
+      if (glideRef.current !== state) return
+      const now = performance.now()
+      const dt = Math.min(64, now - state.last)
+      state.last = now
+      const rect = boardRect()
+      if (!rect) {
+        glideRef.current = null
+        return
+      }
+      const onceki = viewRef.current
+      setView({ scale: onceki.scale, tx: onceki.tx + state.vx * dt, ty: onceki.ty + state.vy * dt })
+      const sonra = viewRef.current
+      // Sınıra çarptıysak hız boşa harcanmasın; hemen dur.
+      const durduY = Math.abs(sonra.ty - (onceki.ty + state.vy * dt)) > 0.5
+      const durduX = Math.abs(sonra.tx - (onceki.tx + state.vx * dt)) > 0.5
+      if (durduY) state.vy = 0
+      if (durduX) state.vx = 0
+      state.vx = decayVelocity(state.vx, dt)
+      state.vy = decayVelocity(state.vy, dt)
+      if (glideFinished(state.vy, state.vx)) {
+        glideRef.current = null
+        return
+      }
+      state.raf = requestAnimationFrame(adim)
+    }
+    state.raf = requestAnimationFrame(adim)
+  }
+
   /* ================================================================ */
   /*  Sayfa ve geçmiş                                                  */
   /* ================================================================ */
 
   const currentPage = () => pagesRef.current[pageIndexRef.current] ?? pagesRef.current[0]
+
+  /**
+   * ÇİZİLEN SAYFA, BAKILAN SAYFADAN FARKLI OLABİLİR.
+   *
+   * Dikey akışta ekranda iki sayfa birden görünebiliyor. Kalem hangi
+   * sayfaya değdiyse çizim ORAYA yazılır; sayfa göstergesi ise ekranda
+   * en çok yer kaplayan sayfayı gösterir.
+   */
+  const drawPage = () => pagesRef.current[drawPageRef.current] ?? currentPage()
 
   const historyFor = (index) => {
     if (!historyRef.current.has(index)) {
@@ -625,24 +904,37 @@ export default function LessonBoard({
       trimmed.push(nextItems)
       if (trimmed.length > 50) trimmed.shift()
       historyRef.current.set(index, { stack: trimmed, cursor: trimmed.length - 1 })
+
+      /**
+       * YAZILAN SAYFA, BAKILAN SAYFA OLUR.
+       *
+       * Etkin sayfa normalde "ekranda en çok görünen sayfa"dır. Öğretmen
+       * iki sayfanın göründüğü anda alttakinin şeridine yazarsa, sayfa
+       * göstergesi ve "geri al" başka sayfayı işaret eder ve geri alma
+       * hiçbir şey yapmamış gibi görünürdü. Kalem nereye yazdıysa etkin
+       * sayfa orasıdır; bir sonraki kaydırmada gösterge yine kendini
+       * günceller.
+       */
+      if (index !== pageIndexRef.current) sayfaSabitleRef.current?.(index)
       refreshHistoryFlags(index)
 
       syncRef.current?.markDirty(index)
-      if (index === pageIndexRef.current) {
-        /**
-         * KALEM HER KALKTIĞINDA SAYFANIN TAMAMINI ÇİZMEK EL YAZISINI KOPARIR.
-         *
-         * PDF zemini ve yüzlerce çizgi varken tam yeniden çizim iPad'de
-         * 30-80 ms sürüyor. Hızlı yazarken harf başına bir kez yaşanan bu
-         * duraklama, bekleyen kalem olaylarını biriktirip yazının kopuk
-         * görünmesine yol açıyordu. Yeni biten çizgi tek başına zemine
-         * damgalanır; geri kalan görüntüye dokunulmaz.
-         */
-        if (stamp && !baseRafRef.current && stampToBase(stamp)) {
-          /* zemin damgalandı, tam yeniden çizime gerek yok */
-        } else {
-          schedulePaint()
-        }
+      /**
+       * KALEM HER KALKTIĞINDA SAYFANIN TAMAMINI ÇİZMEK EL YAZISINI KOPARIR.
+       *
+       * PDF zemini ve yüzlerce çizgi varken tam yeniden çizim iPad'de
+       * 30-80 ms sürüyor. Hızlı yazarken harf başına bir kez yaşanan bu
+       * duraklama, bekleyen kalem olaylarını biriktirip yazının kopuk
+       * görünmesine yol açıyordu. Yeni biten çizgi tek başına zemine
+       * damgalanır; geri kalan görüntüye dokunulmaz.
+       *
+       * Dikey akışta görünmeyen sayfaya gelen değişiklik de kaydedilir;
+       * yalnız o sayfa ekranda değilse boyamaya gerek yoktur.
+       */
+      if (stamp && !baseRafRef.current && stampToBase(stamp, index)) {
+        /* zemin damgalandı, tam yeniden çizime gerek yok */
+      } else {
+        schedulePaint()
       }
 
       if (broadcast && channel?.send) {
@@ -705,19 +997,50 @@ export default function LessonBoard({
     [channel, refreshHistoryFlags, schedulePaint, userId]
   )
 
+  /**
+   * SAYFA DEĞİŞİMİ ARTIK BİR KAYDIRMADIR.
+   *
+   * Önceki/sonraki düğmeleri, öğrencinin öğretmeni takibi ve "yeni sayfa"
+   * hep buradan geçer: belge o sayfaya kadar YUMUŞAKÇA kaydırılır. Sayfa
+   * gizlenip yenisi gösterilmez — akış kesilmez.
+   *
+   * `prefers-reduced-motion` açıkken geçiş anlıktır.
+   */
   const goToPage = useCallback(
-    (index, { broadcast = true } = {}) => {
+    (index, { broadcast = true, smooth = true } = {}) => {
       const clamped = Math.max(0, Math.min(index, pagesRef.current.length - 1))
+      const rect = boardRect()
+      durdurKaydirma()
       pageIndexRef.current = clamped
       setPageIndex(clamped)
       refreshHistoryFlags(clamped)
-      remoteLiveRef.current.clear()
-      activeRef.current = null
-      shapeRef.current = null
-      lassoRef.current = null
-      selectionRef.current = new Set()
-      setSelectionIds([])
-      fitBoard()
+
+      if (rect) {
+        const hedefTy = scrollOffsetForPage(layoutRef.current, clamped, viewRef.current.scale)
+        const baslangic = viewRef.current.ty
+        const mesafe = hedefTy - baslangic
+        const sure = smooth && !hareketAzaltilsin() ? glideDuration(mesafe) : 0
+        if (sure <= 0) {
+          setView({ scale: viewRef.current.scale, tx: viewRef.current.tx, ty: hedefTy })
+        } else {
+          const basladi = performance.now()
+          const state = { raf: 0 }
+          pageGlideRef.current = state
+          const adim = () => {
+            if (pageGlideRef.current !== state) return
+            const t = (performance.now() - basladi) / sure
+            const k = easeOutCubic(t)
+            setView({ scale: viewRef.current.scale, tx: viewRef.current.tx, ty: baslangic + mesafe * k })
+            if (t >= 1) {
+              pageGlideRef.current = null
+              return
+            }
+            state.raf = requestAnimationFrame(adim)
+          }
+          state.raf = requestAnimationFrame(adim)
+        }
+      }
+
       schedulePaint()
       scheduleLive()
       // `broadcast: false` = karşı tarafı TAKİP ederken kullanılır; yoksa
@@ -731,25 +1054,95 @@ export default function LessonBoard({
         })
       }
     },
-    [channel, fitBoard, refreshHistoryFlags, schedulePaint, scheduleLive, userId, isTeacher]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [boardRect, channel, refreshHistoryFlags, schedulePaint, scheduleLive, setView, userId, isTeacher]
   )
 
+  /**
+   * ETKİN SAYFA = ekranda en çok yer kaplayan sayfa.
+   *
+   * Kaydırma sırasında her karede React state'i yazılmaz; yalnız sayfa
+   * gerçekten değiştiğinde gösterge ve geri al bayrakları tazelenir.
+   * Öğretmende ayrıca öğrenciye SINIRLI SIKLIKTA sayfa odağı bildirilir
+   * (her kaydırma karesinde değil — kanal hakkı buna yetmez).
+   */
+  function etkinSayfaDenetle() {
+    const rect = rectRef.current
+    if (!rect) return
+    const box = dominantPage(layoutRef.current, viewRef.current, rect)
+    if (!box || box.index === pageIndexRef.current) return
+    pageIndexRef.current = box.index
+    setPageIndex(box.index)
+    refreshHistoryFlags(box.index)
+    if (!isTeacher || !channel?.send) return
+    sayfaOdagiBildir(box.index)
+  }
+  etkinSayfaRef.current = etkinSayfaDenetle
+
+  function etkinSayfayiSabitle(index) {
+    pageIndexRef.current = index
+    setPageIndex(index)
+    if (isTeacher && channel?.send) sayfaOdagiBildir(index)
+  }
+  sayfaSabitleRef.current = etkinSayfayiSabitle
+
+  const SAYFA_YAYIN_ARALIGI_MS = 400
+  function sayfaOdagiBildir(index) {
+    const durum = sayfaYayinRef.current
+    durum.page = index
+    const gonder = () => {
+      durum.at = performance.now()
+      durum.timer = 0
+      channel?.send?.(CHANNEL_EVENTS.BOARD_PAGE, {
+        page: durum.page,
+        count: pagesRef.current.length,
+        by: userId,
+        teacher: true,
+      })
+    }
+    const gecen = performance.now() - durum.at
+    if (gecen >= SAYFA_YAYIN_ARALIGI_MS) {
+      if (durum.timer) window.clearTimeout(durum.timer)
+      gonder()
+      return
+    }
+    if (durum.timer) return
+    durum.timer = window.setTimeout(gonder, SAYFA_YAYIN_ARALIGI_MS - gecen)
+  }
+
+  /**
+   * YENİ SAYFA AKIŞIN ALTINA EKLENİR.
+   *
+   * Defterde olduğu gibi: yeni sayfa belgenin sonuna gelir ve ekran
+   * güvenli biçimde oraya kaydırılır. Öğretmen yazmaya devam eder.
+   */
   const addPage = useCallback(() => {
     const next = createPage(pagesRef.current.length)
     pagesRef.current = [...pagesRef.current, next]
     setPageCount(pagesRef.current.length)
+    yerlesimiKur()
     syncRef.current?.markDirty(next.index)
     goToPage(next.index)
-  }, [goToPage])
+  }, [goToPage, yerlesimiKur])
 
   /* ================================================================ */
   /*  Nesne ekleme                                                     */
   /* ================================================================ */
 
+  /**
+   * NESNE, BAKILAN SAYFAYA DEĞİL AİT OLDUĞU SAYFAYA EKLENİR.
+   *
+   * Dikey akışta ekranda iki sayfa birden görünebiliyor ve "etkin sayfa"
+   * ekranda en çok yer kaplayan sayfadır. Kalem alttaki sayfanın görünen
+   * şeridine yazdığında nesne etkin sayfaya eklenseydi yazı komşu sayfaya
+   * düşerdi. `page` verilmediğinde etkin sayfa kullanılır (materyalden
+   * görsel yerleştirme gibi durumlar).
+   */
   const addItem = useCallback(
-    (item, options) => {
-      const index = pageIndexRef.current
+    (item, { page: hedef, ...options } = {}) => {
+      const index = hedef ?? pageIndexRef.current
       const page = pagesRef.current[index]
+      if (!page) return
       applyItems(index, [...page.items, item], { previous: page.items, ...options })
     },
     [applyItems]
@@ -780,6 +1173,7 @@ export default function LessonBoard({
         pagesRef.current = replace ? created : [...pagesRef.current, ...created]
         historyRef.current = new Map()
         setPageCount(pagesRef.current.length)
+        yerlesimiKur()
 
         // Kalıcı kayda hemen yaz: öğrenci ders ortasında katılsa bile
         // belgeyi veri tabanından bulur.
@@ -790,6 +1184,7 @@ export default function LessonBoard({
         setPageIndex(startIndex)
         refreshHistoryFlags(startIndex)
         userAdjustedRef.current = false
+        // Belge açıldı: genişliğe sığdır ve ilk sayfanın üstünden başla.
         fitBoard()
         schedulePaint()
 
@@ -805,7 +1200,7 @@ export default function LessonBoard({
         return { ok: false, error: err }
       }
     },
-    [channel, fitBoard, refreshHistoryFlags, schedulePaint, isTeacher]
+    [channel, fitBoard, refreshHistoryFlags, schedulePaint, isTeacher, yerlesimiKur]
   )
 
   const importPdfFile = useCallback(
@@ -903,12 +1298,14 @@ export default function LessonBoard({
   }
 
   function beginErase(point) {
+    drawPageRef.current = point.page ?? drawPageRef.current
     eraseRef.current = {
+      page: drawPageRef.current,
       x: point.x,
       y: point.y,
       r: spec.eraser / viewRef.current.scale,
       removed: new Set(),
-      before: currentPage().items,
+      before: drawPage().items,
       changed: false,
     }
     // Not uygulamalarındaki gibi tek dokunuş da siler; hareket beklenmez.
@@ -918,9 +1315,22 @@ export default function LessonBoard({
   function continueErase(point) {
     const state = eraseRef.current
     if (!state) return
+    /**
+     * SİLGİ SAYFA SINIRINI GEÇEBİLİR.
+     *
+     * Belge akışında parmak bir sayfadan diğerine kayabiliyor. Koordinat
+     * her sayfanın KENDİ uzayında olduğu için, sayfa değiştiğinde eski
+     * sayfadaki silme işlemi kapatılıp yenisi açılır — yoksa silgi
+     * komşu sayfanın yanlış yerine vururdu.
+     */
+    if (point.page != null && point.page !== state.page) {
+      endErase()
+      beginErase(point)
+      return
+    }
     state.x = point.x
     state.y = point.y
-    const page = currentPage()
+    const page = drawPage()
     const survivors = []
     let changed = false
     for (const item of page.items) {
@@ -948,10 +1358,13 @@ export default function LessonBoard({
     eraseRef.current = null
     scheduleLive()
     if (!state || !state.changed) return
-    applyItems(pageIndexRef.current, currentPage().items, { previous: state.before })
+    applyItems(state.page, pagesRef.current[state.page]?.items ?? [], { previous: state.before })
   }
 
   function beginStroke(point, pressure) {
+    // Çizgi, kalemin İLK değdiği sayfaya aittir; sonradan komşu sayfaya
+    // taşsa bile aynı nesnede kalır ve doğru sayfaya kaydedilir.
+    if (point.page != null) drawPageRef.current = point.page
     const active = beginStrokeItem({
       tool: toolRef.current,
       color: colorRef.current,
@@ -989,7 +1402,7 @@ export default function LessonBoard({
       lastSentRef.current = active.p.length
       channel.send(CHANNEL_EVENTS.BOARD_STROKE, {
         phase: 'draw',
-        page: pageIndexRef.current,
+        page: drawPageRef.current,
         id: active.id,
         t: active.t,
         c: active.c,
@@ -1056,10 +1469,10 @@ export default function LessonBoard({
      * gereksiz ikinci mesaj, hızlı yazarken haktan taşıp bağlantının
      * kopmasına ve "Yeniden bağlanılıyor" uyarısına yol açıyordu.
      */
-    addItem(active, { broadcast: false, stamp: active })
+    addItem(active, { broadcast: false, stamp: active, page: drawPageRef.current })
     const islemSuresi = performance.now() - islemBaslangici
     teshisSay('bitti', {
-      sayfada: currentPage().items.length,
+      sayfada: drawPage().items.length,
       islem: `${islemSuresi.toFixed(1)} ms`,
       basinc: `${enDusukBasinc.toFixed(2)}–${enYuksekBasinc.toFixed(2)}`,
     })
@@ -1069,13 +1482,14 @@ export default function LessonBoard({
     paintLiveNow()
     channel?.send?.(CHANNEL_EVENTS.BOARD_STROKE, {
       phase: 'end',
-      page: pageIndexRef.current,
+      page: drawPageRef.current,
       item: active,
       by: userId,
     })
   }
 
   function beginShape(point) {
+    if (point.page != null) drawPageRef.current = point.page
     shapeRef.current = makeShapeItem({
       shape: toolRef.current,
       x1: point.x,
@@ -1102,12 +1516,14 @@ export default function LessonBoard({
     scheduleLive()
     if (!shape) return
     if (Math.hypot(shape.x2 - shape.x1, shape.y2 - shape.y1) < 4) return
-    addItem(shape)
+    addItem(shape, { page: drawPageRef.current })
   }
 
   function selectionBounds() {
     const ids = selectionRef.current
-    const boxes = currentPage().items.map((item) => (ids.has(item.id) ? itemBounds(item) : null)).filter(Boolean)
+    const sayfa = pagesRef.current[selectionPageRef.current]
+    if (!sayfa) return null
+    const boxes = sayfa.items.map((item) => (ids.has(item.id) ? itemBounds(item) : null)).filter(Boolean)
     if (!boxes.length) return null
     const x = Math.min(...boxes.map((box) => box.x))
     const y = Math.min(...boxes.map((box) => box.y))
@@ -1119,18 +1535,24 @@ export default function LessonBoard({
   function beginLasso(point) {
     const box = selectionBounds()
     const pad = 18 / viewRef.current.scale
+    const ayniSayfa = point.page == null || point.page === selectionPageRef.current
     const insideSelection =
+      ayniSayfa &&
       box && point.x >= box.x - pad && point.x <= box.x + box.w + pad && point.y >= box.y - pad && point.y <= box.y + box.h + pad
     if (insideSelection) {
+      drawPageRef.current = selectionPageRef.current
       lassoRef.current = {
         moving: true,
+        page: selectionPageRef.current,
         start: point,
-        before: currentPage().items,
+        before: pagesRef.current[selectionPageRef.current].items,
       }
     } else {
+      if (point.page != null) drawPageRef.current = point.page
+      selectionPageRef.current = drawPageRef.current
       selectionRef.current = new Set()
       setSelectionIds([])
-      lassoRef.current = { moving: false, points: [point] }
+      lassoRef.current = { moving: false, page: drawPageRef.current, points: [point] }
     }
     scheduleLive()
   }
@@ -1142,7 +1564,8 @@ export default function LessonBoard({
       const dx = point.x - lasso.start.x
       const dy = point.y - lasso.start.y
       const ids = selectionRef.current
-      currentPage().items = lasso.before.map((item) => (ids.has(item.id) ? translateItem(item, dx, dy) : item))
+      const sayfa = pagesRef.current[lasso.page]
+      if (sayfa) sayfa.items = lasso.before.map((item) => (ids.has(item.id) ? translateItem(item, dx, dy) : item))
       schedulePaint()
     } else {
       const previous = lasso.points[lasso.points.length - 1]
@@ -1157,11 +1580,14 @@ export default function LessonBoard({
     const lasso = lassoRef.current
     lassoRef.current = null
     if (!lasso) return
+    const sayfa = pagesRef.current[lasso.page]
+    if (!sayfa) return
     if (lasso.moving) {
-      applyItems(pageIndexRef.current, currentPage().items, { previous: lasso.before })
+      applyItems(lasso.page, sayfa.items, { previous: lasso.before })
     } else {
-      const selected = itemsInsideLasso(currentPage().items, lasso.points ?? [])
+      const selected = itemsInsideLasso(sayfa.items, lasso.points ?? [])
       const ids = selected.map((item) => item.id)
+      selectionPageRef.current = lasso.page
       selectionRef.current = new Set(ids)
       setSelectionIds(ids)
     }
@@ -1171,8 +1597,10 @@ export default function LessonBoard({
   const deleteSelection = useCallback(() => {
     const ids = selectionRef.current
     if (!ids.size) return
-    const page = currentPage()
-    applyItems(pageIndexRef.current, page.items.filter((item) => !ids.has(item.id)), { previous: page.items })
+    const index = selectionPageRef.current
+    const page = pagesRef.current[index]
+    if (!page) return
+    applyItems(index, page.items.filter((item) => !ids.has(item.id)), { previous: page.items })
     selectionRef.current = new Set()
     setSelectionIds([])
     scheduleLive()
@@ -1181,9 +1609,11 @@ export default function LessonBoard({
   const duplicateSelection = useCallback(() => {
     const ids = selectionRef.current
     if (!ids.size) return
-    const page = currentPage()
+    const index = selectionPageRef.current
+    const page = pagesRef.current[index]
+    if (!page) return
     const copies = duplicateItems(page.items, ids, userId, 28 / viewRef.current.scale)
-    applyItems(pageIndexRef.current, [...page.items, ...copies], { previous: page.items })
+    applyItems(index, [...page.items, ...copies], { previous: page.items })
     const nextIds = copies.map((item) => item.id)
     selectionRef.current = new Set(nextIds)
     setSelectionIds(nextIds)
@@ -1228,8 +1658,20 @@ export default function LessonBoard({
    * komutlarına bağlanır. Parmak teması seçilmez; mevcut parmakla
    * kaydırma/yakınlaştırma davranışı Pointer yolunda kalır.
    */
+  /**
+   * TAHTANIN ÜSTÜNDE YÜZEN ARAYÜZ ÇİZİM BAŞLATMAZ.
+   *
+   * Kamera kutusu ve metin girişi tuvalin İÇİNE basılıyor (sahnenin
+   * köşesine konsa araç çubuğunu örterdi). Onlara dokunmak tahtaya
+   * çizgi atmamalı.
+   */
+  function ustKatmanMi(target) {
+    return target instanceof Element && Boolean(target.closest('[data-tahta-ustu]'))
+  }
+
   function handleIosTouchStart(event) {
     if (!iosTouchInput || activeTouchIdRef.current !== null) return
+    if (ustKatmanMi(event.target)) return
     const touch = findIosStylusTouch(event.changedTouches)
     if (!touch) return
     if (event.cancelable) event.preventDefault()
@@ -1269,16 +1711,12 @@ export default function LessonBoard({
 
     const activeTool = toolRef.current
     if (activeTool === BOARD_TOOLS.PAN) {
-      userAdjustedRef.current = true
-      panRef.current = {
-        x: touch.clientX,
-        y: touch.clientY,
-        view: { ...viewRef.current },
-        type: 'ios-touch',
-        pointerId: sahip,
-      }
+      panBaslat(touch.clientX, touch.clientY, 'ios-touch', sahip)
       return
     }
+    // Kalem yazmaya başlıyor: süren kaydırma anında durur, yoksa sayfa
+    // kalemin altından kayar ve çizgi eğri çıkardı.
+    durdurKaydirma()
 
     if (!canEdit) return
 
@@ -1289,9 +1727,11 @@ export default function LessonBoard({
     if (activeTool === BOARD_TOOLS.ERASER) beginErase(point)
     else if (activeTool === BOARD_TOOLS.LASSO) beginLasso(point)
     else if (activeTool === BOARD_TOOLS.TEXT) {
+      drawPageRef.current = point.page ?? drawPageRef.current
       setTextDraft({
         x: point.x,
         y: point.y,
+        page: drawPageRef.current,
         clientX: touch.clientX,
         clientY: touch.clientY,
         value: '',
@@ -1312,22 +1752,16 @@ export default function LessonBoard({
     })
 
     if (panRef.current?.type === 'ios-touch') {
-      const start = panRef.current
-      setView({
-        scale: start.view.scale,
-        tx: start.view.tx + (touch.clientX - start.x),
-        ty: start.view.ty + (touch.clientY - start.y),
-      })
+      panSurdur(touch.clientX, touch.clientY)
       return
     }
 
     if (!canEdit) return
-    const point = toBoard(touch.clientX, touch.clientY)
-    if (eraseRef.current) continueErase(point)
-    else if (lassoRef.current) continueLasso(point)
-    else if (shapeRef.current) continueShape(point)
+    if (eraseRef.current) continueErase(toBoard(touch.clientX, touch.clientY))
+    else if (lassoRef.current) continueLasso(toActivePage(touch.clientX, touch.clientY))
+    else if (shapeRef.current) continueShape(toActivePage(touch.clientX, touch.clientY))
     else if (activeRef.current) {
-      continueStroke(point, okuIosBasinc(touch))
+      continueStroke(toActivePage(touch.clientX, touch.clientY), okuIosBasinc(touch))
       paintLiveNow()
     }
   }
@@ -1357,7 +1791,7 @@ export default function LessonBoard({
     }
 
     if (panRef.current?.type === 'ios-touch') {
-      panRef.current = null
+      panBitir()
       return
     }
 
@@ -1367,7 +1801,7 @@ export default function LessonBoard({
     else if (activeRef.current) {
       // Touch Events yolunda iptal de eldeki tüm örnekleri hemen
       // tamamlar. Pointer yolundaki askı/bekleme hilesine gerek yoktur.
-      endStroke(touch ? toBoard(touch.clientX, touch.clientY) : null)
+      endStroke(touch ? toActivePage(touch.clientX, touch.clientY) : null)
     }
   }
 
@@ -1380,6 +1814,7 @@ export default function LessonBoard({
     }
     const wrap = wrapRef.current
     if (!wrap) return
+    if (ustKatmanMi(e.target)) return
     teshisSay('indi', { tur: `${e.pointerType} b:${e.buttons} p:${(e.pressure ?? 0).toFixed(2)}` })
     kayit(`▼ İNDİ ${e.pointerType} id:${e.pointerId} b:${e.buttons} p:${(e.pressure ?? 0).toFixed(2)}`)
 
@@ -1394,7 +1829,7 @@ export default function LessonBoard({
      */
     const surdur = iptalSurdurRef.current
     if (surdur && e.pointerType === 'pen' && activeRef.current && activeRef.current === surdur.item) {
-      const nokta = toBoard(e.clientX, e.clientY)
+      const nokta = toActivePage(e.clientX, e.clientY)
       const n = surdur.item.p.length
       const uzaklik = Math.hypot(nokta.x - surdur.item.p[n - 3], nokta.y - surdur.item.p[n - 2])
       if (
@@ -1519,6 +1954,7 @@ export default function LessonBoard({
     const touches = [...pointersRef.current.values()].filter((p) => p.type === 'touch')
     if (touches.length === 2 && !penDownRef.current) {
       kayit('  ✗ İKİ PARMAK → yakınlaştırma kipi')
+      durdurKaydirma()
       activeRef.current = null
       shapeRef.current = null
       lassoRef.current = null
@@ -1541,13 +1977,15 @@ export default function LessonBoard({
 
     if (panning) {
       kayit(`  ✗ KAYDIRMA kipi (${e.pointerType})`)
-      userAdjustedRef.current = true
       // Kaydırmayı KİM başlattı: kalem indiğinde yalnızca dokunmayla
       // açılmış kaydırma iptal edilir, kalemle "el" aracı kullanmak
       // çalışmaya devam eder.
-      panRef.current = { x: e.clientX, y: e.clientY, view: { ...viewRef.current }, type: e.pointerType, pointerId: e.pointerId }
+      panBaslat(e.clientX, e.clientY, e.pointerType, e.pointerId)
       return
     }
+
+    // Çizim başlıyor: süren ivmeli kaydırma hemen durur.
+    durdurKaydirma()
 
     if (!canEdit) return
 
@@ -1562,7 +2000,8 @@ export default function LessonBoard({
     if (activeTool === BOARD_TOOLS.ERASER) beginErase(point)
     else if (activeTool === BOARD_TOOLS.LASSO) beginLasso(point)
     else if (activeTool === BOARD_TOOLS.TEXT) {
-      setTextDraft({ x: point.x, y: point.y, clientX: e.clientX, clientY: e.clientY, value: '' })
+      drawPageRef.current = point.page ?? drawPageRef.current
+      setTextDraft({ x: point.x, y: point.y, page: drawPageRef.current, clientX: e.clientX, clientY: e.clientY, value: '' })
     } else if (isShapeTool(activeTool)) beginShape(point)
     else beginStroke(point, pressure)
   }
@@ -1627,12 +2066,7 @@ export default function LessonBoard({
     }
 
     if (panRef.current) {
-      const start = panRef.current
-      setView({
-        scale: start.view.scale,
-        tx: start.view.tx + (e.clientX - start.x),
-        ty: start.view.ty + (e.clientY - start.y),
-      })
+      panSurdur(e.clientX, e.clientY)
       return
     }
 
@@ -1727,8 +2161,8 @@ export default function LessonBoard({
     }
 
     if (eraseRef.current) continueErase(point)
-    else if (lassoRef.current) continueLasso(point)
-    else if (shapeRef.current) continueShape(point)
+    else if (lassoRef.current) continueLasso(toActivePage(e.clientX, e.clientY))
+    else if (shapeRef.current) continueShape(toActivePage(e.clientX, e.clientY))
     else if (activeRef.current) {
       // Birleştirilmiş olaylar: tabletlerde tek harekette 10+ nokta gelir.
       // Pencere düzeyinden gelen olayda `nativeEvent` sarmalayıcısı yoktur.
@@ -1736,11 +2170,10 @@ export default function LessonBoard({
       const events = ham.getCoalescedEvents?.() ?? []
       if (events.length > 1) {
         for (const ev of events) {
-          const p = toBoard(ev.clientX, ev.clientY)
-          continueStroke(p, okuBasinc(ev, e.pointerType))
+          continueStroke(toActivePage(ev.clientX, ev.clientY), okuBasinc(ev, e.pointerType))
         }
       } else {
-        continueStroke(point, okuBasinc(e))
+        continueStroke(toActivePage(e.clientX, e.clientY), okuBasinc(e))
       }
       paintLiveNow()
     }
@@ -1781,7 +2214,7 @@ export default function LessonBoard({
       return
     }
     if (panRef.current && (panRef.current.pointerId === e.pointerId || panRef.current.pointerId == null)) {
-      panRef.current = null
+      panBitir()
       return
     }
 
@@ -1809,7 +2242,7 @@ export default function LessonBoard({
        *
        * Konum son örnekle aynıysa zaten eklenmez.
        */
-      const kalkisNoktasi = toBoard(e.clientX, e.clientY)
+      const kalkisNoktasi = toActivePage(e.clientX, e.clientY)
       if (shouldAppendLiftPoint(askidaki.p, kalkisNoktasi.x, kalkisNoktasi.y)) {
         appendStrokePoint(askidaki, kalkisNoktasi.x, kalkisNoktasi.y, askidaki._smoothPressure ?? DEFAULT_PRESSURE)
         scheduleLive()
@@ -1849,7 +2282,7 @@ export default function LessonBoard({
     else if (activeRef.current) {
       // Kalkış konumu çizginin son noktasıdır — olay ister "kalktı"
       // ister "iptal" olsun. Konum son örnekle aynıysa eklenmez.
-      endStroke(toBoard(e.clientX, e.clientY))
+      endStroke(toActivePage(e.clientX, e.clientY))
     }
   }
 
@@ -1882,14 +2315,18 @@ export default function LessonBoard({
   touchMoveRef.current = handleIosTouchMove
   touchEndRef.current = handleIosTouchEnd
 
+  /**
+   * Fare tekerleği ve dokunmatik yüzey: belgeyi dikey kaydırır.
+   * Ctrl/Cmd basılıyken (ya da iki parmakla kıstırma) yakınlaştırır.
+   */
   function handleWheel(e) {
+    durdurKaydirma()
     if (e.ctrlKey || e.metaKey) {
       e.preventDefault()
       zoomAt(e.deltaY < 0 ? 1.12 : 1 / 1.12, e.clientX, e.clientY)
       return
     }
     const view = viewRef.current
-    userAdjustedRef.current = true
     setView({ scale: view.scale, tx: view.tx - e.deltaX, ty: view.ty - e.deltaY })
   }
 
@@ -1902,7 +2339,10 @@ export default function LessonBoard({
     setTextDraft(null)
     const value = draft?.value?.trim()
     if (!value) return
-    addItem(makeTextItem({ x: draft.x, y: draft.y, text: value, color: colorRef.current, size: spec.text, userId }))
+    addItem(
+      makeTextItem({ x: draft.x, y: draft.y, text: value, color: colorRef.current, size: spec.text, userId }),
+      { page: draft.page ?? pageIndexRef.current }
+    )
   }
 
   /* ================================================================ */
@@ -1938,6 +2378,7 @@ export default function LessonBoard({
         pagesRef.current = pages
         historyRef.current = new Map()
         setPageCount(pages.length)
+        yerlesimiKur()
         const nextIndex = keepView ? Math.min(pageIndexRef.current, pages.length - 1) : 0
         pageIndexRef.current = nextIndex
         setPageIndex(nextIndex)
@@ -1948,7 +2389,7 @@ export default function LessonBoard({
         if (!keepView) pagesRef.current = [createPage(0)]
       }
     },
-    [sessionId, refreshHistoryFlags, schedulePaint]
+    [sessionId, refreshHistoryFlags, schedulePaint, yerlesimiKur]
   )
 
   useEffect(() => {
@@ -2181,13 +2622,21 @@ export default function LessonBoard({
       // baksaydı kendi tabletinden gelen çizgiyi eleyip hiç göstermezdi.
       if (!payload || payload.from === deviceId) return
       if (payload.phase === 'draw') {
-        if (payload.page !== pageIndexRef.current) return
+        /**
+         * DİKEY AKIŞTA ÇİZİM HANGİ SAYFADAYSA ORAYA GİDER.
+         *
+         * Eskiden yalnız "seçili sayfa" kabul ediliyordu; öğretmen bir alt
+         * sayfaya geçip yazarken öğrenci çizimi hiç görmüyordu. Artık
+         * sayfa bilgisi çizgiyle birlikte taşınır; o sayfa ekranda değilse
+         * yalnız boyanmaz, veri kaybolmaz.
+         */
         if (bitmisCizgilerRef.current.has(payload.id)) return
         let item = remoteLiveRef.current.get(payload.id)
         if (!item) {
-          item = { id: payload.id, kind: 'stroke', t: payload.t, c: payload.c, w: payload.w, p: [], by: payload.by }
+          item = { id: payload.id, kind: 'stroke', t: payload.t, c: payload.c, w: payload.w, p: [], by: payload.by, _page: payload.page }
           remoteLiveRef.current.set(payload.id, item)
         }
+        item._page = payload.page ?? item._page
         // Ofset elimizdekinden geriyse paket tekrarıdır: aynı noktaları
         // ikinci kez eklemek çizgiyi kendi üzerine katlıyordu.
         applyRemotePoints(item, payload.off, payload.pts)
@@ -2211,14 +2660,13 @@ export default function LessonBoard({
           pagesRef.current = [...pagesRef.current, createPage(pagesRef.current.length)]
         }
         setPageCount(pagesRef.current.length)
+        yerlesimiKur()
         const page = pagesRef.current[payload.page]
         if (page && !page.items.some((i) => i.id === payload.item.id)) {
           page.items = [...page.items, payload.item]
           syncRef.current?.markDirty(payload.page)
-          if (payload.page === pageIndexRef.current) {
-            schedulePaint()
-            scheduleLive()
-          }
+          schedulePaint()
+          scheduleLive()
         }
       }
     })
@@ -2237,7 +2685,7 @@ export default function LessonBoard({
       const added = (payload.add ?? []).filter((i) => !existing.has(i.id))
       page.items = [...kept, ...added]
       syncRef.current?.markDirty(payload.page)
-      if (payload.page === pageIndexRef.current) schedulePaint()
+      schedulePaint()
     })
 
     const offClear = channel.subscribe(CHANNEL_EVENTS.BOARD_CLEAR, (payload) => {
@@ -2249,7 +2697,7 @@ export default function LessonBoard({
       if (!page) return
       page.items = []
       syncRef.current?.markDirty(payload.page)
-      if (payload.page === pageIndexRef.current) schedulePaint()
+      schedulePaint()
     })
 
     const offPage = channel.subscribe(CHANNEL_EVENTS.BOARD_PAGE, (payload) => {
@@ -2278,6 +2726,8 @@ export default function LessonBoard({
         pagesRef.current = [...pagesRef.current, createPage(pagesRef.current.length)]
       }
       setPageCount(pagesRef.current.length)
+      yerlesimiKur()
+      schedulePaint()
 
       /**
        * ÖĞRENCİ ÖĞRETMENİN SAYFASINI TAKİP EDER.
@@ -2299,7 +2749,7 @@ export default function LessonBoard({
       offClear()
       offPage()
     }
-  }, [channel, schedulePaint, scheduleLive, deviceId, reloadPages, goToPage, isTeacher])
+  }, [channel, schedulePaint, scheduleLive, deviceId, reloadPages, goToPage, isTeacher, yerlesimiKur])
 
   /* Klavye kısayolları — tahta araçlarının klavye alternatifi */
   useEffect(() => {
@@ -2354,15 +2804,52 @@ export default function LessonBoard({
        * çıkmadığını cihaz olmadan ölçebilmek için duruyor.
        */
       debugPages: () => (import.meta.env.DEV ? pagesRef.current : null),
+      /**
+       * TEŞHİS: kaydırma konumu, belge yerleşimi ve etkin sayfa.
+       * Dikey akışın gerçekten aktığını (ve bırakınca ivmeyle sürdüğünü)
+       * gerçek tarayıcıda ölçebilmek için var. Yayındaki pakette
+       * `import.meta.env.DEV` sabit `false` olduğu için ölü koda düşer.
+       */
+      debugView: () =>
+        import.meta.env.DEV
+          ? {
+              view: { ...viewRef.current },
+              layout: layoutRef.current,
+              page: pageIndexRef.current,
+              gliding: Boolean(glideRef.current),
+            }
+          : null,
     }),
     [placeImage, openPdf]
   )
 
-  const saveLabel = useMemo(() => {
-    if (saveState === 'saving') return { text: 'Kaydediliyor…', Icon: Loader2, tone: 'text-ink/50', spin: true }
-    if (saveState === 'error') return { text: 'Kaydedilemedi', Icon: CloudOff, tone: 'text-danger-600' }
-    if (saveState === 'dirty') return { text: 'Değişiklik var', Icon: Loader2, tone: 'text-ink/45' }
-    return { text: 'Kaydedildi', Icon: Check, tone: 'text-ink/45' }
+  /**
+   * Geliştirici önizlemesinde tahtayı pencereye bağla.
+   * Yalnız `npm run dev` altında çalışır; üretim paketinde ölü koddur.
+   */
+  useEffect(() => {
+    if (!import.meta.env.DEV) return undefined
+    window.__drkTahta = boardApiRef?.current ?? null
+    return () => {
+      if (window.__drkTahta === boardApiRef?.current) delete window.__drkTahta
+    }
+  })
+
+  /* Bileşen sökülürken süren kaydırma animasyonu ve bekleyen sayfa
+     bildirimi bırakılmasın. */
+  useEffect(
+    () => () => {
+      durdurKaydirma()
+      if (sayfaYayinRef.current.timer) window.clearTimeout(sayfaYayinRef.current.timer)
+    },
+    []
+  )
+
+  const kayitMetni = useMemo(() => {
+    if (saveState === 'saving') return 'Kaydediliyor'
+    if (saveState === 'error') return 'Kaydedilemedi'
+    if (saveState === 'dirty') return 'Değişiklik var'
+    return 'Kaydedildi'
   }, [saveState])
 
   return (
@@ -2382,6 +2869,7 @@ export default function LessonBoard({
         onZoomIn={() => zoomCenter(1.2)}
         onZoomOut={() => zoomCenter(1 / 1.2)}
         onFit={fitBoard}
+        zoom={zoom}
         onImportPdf={isTeacher && onImportPdf ? () => pdfInputRef.current?.click() : undefined}
         importingPdf={importingPdf}
         eraserMode={eraserMode}
@@ -2394,6 +2882,13 @@ export default function LessonBoard({
         onDeleteSelection={deleteSelection}
         onDuplicateSelection={duplicateSelection}
         readOnly={!canEdit}
+        pageIndex={pageIndex}
+        pageCount={pageCount}
+        onPrevPage={() => goToPage(pageIndex - 1)}
+        onNextPage={() => goToPage(pageIndex + 1)}
+        onAddPage={addPage}
+        saveState={saveState}
+        showSaveState={isTeacher}
       />
 
       {isTeacher && onImportPdf && (
@@ -2496,7 +2991,7 @@ export default function LessonBoard({
 
         {/* Ekran okuyucuya tahtanın içeriğini metinle bildir */}
         <p className="sr-only" aria-live="polite">
-          {`Tahta, sayfa ${pageIndex + 1} / ${pageCount}. ${currentPage()?.items.length ?? 0} nesne.${isTeacher ? ` ${saveLabel.text}` : ''}`}
+          {`Tahta, dikey belge akışı. Etkin sayfa ${pageIndex + 1} / ${pageCount}. ${currentPage()?.items.length ?? 0} nesne.${isTeacher ? ` ${kayitMetni}` : ''}`}
         </p>
 
         {/* Yüzen video kutuları tuvalin İÇİNE basılır: sahnenin köşesine
@@ -2505,6 +3000,7 @@ export default function LessonBoard({
 
         {textDraft && (
           <div
+            data-tahta-ustu="evet"
             className="absolute z-10"
             style={{
               left: Math.max(8, (textDraft.clientX ?? 0) - (boardRect()?.left ?? 0)),
@@ -2532,50 +3028,6 @@ export default function LessonBoard({
             />
           </div>
         )}
-      </div>
-
-      {/* Sayfa şeridi ve kayıt durumu */}
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-1.5">
-          <button
-            type="button"
-            onClick={() => goToPage(pageIndex - 1)}
-            disabled={pageIndex === 0}
-            aria-label="Önceki sayfa"
-            className="focus-ring grid h-9 w-9 place-items-center rounded-btn text-ink/60 transition-colors hover:bg-ink/[0.06] disabled:opacity-35"
-          >
-            <ChevronLeft className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-          </button>
-          <span className="min-w-[4.5rem] text-center text-xs font-semibold tabular-nums text-ink/70">
-            Sayfa {pageIndex + 1} / {pageCount}
-          </span>
-          <button
-            type="button"
-            onClick={() => goToPage(pageIndex + 1)}
-            disabled={pageIndex >= pageCount - 1}
-            aria-label="Sonraki sayfa"
-            className="focus-ring grid h-9 w-9 place-items-center rounded-btn text-ink/60 transition-colors hover:bg-ink/[0.06] disabled:opacity-35"
-          >
-            <ChevronRight className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
-          </button>
-          {canEdit && (
-            <Button variant="ghost" size="xs" icon={Plus} onClick={addPage}>
-              Yeni sayfa
-            </Button>
-          )}
-        </div>
-
-        {/* Kayıt durumu yalnız öğretmende: tahtayı kaydeden odur. Öğrenciye
-            "Kaydedildi" yazmak, kaydı onun yaptığını sandırırdı. */}
-        <p className={cn('flex items-center gap-1.5 text-xs', saveLabel.tone)}>
-          {isTeacher && (
-            <>
-              <saveLabel.Icon className={cn('h-3.5 w-3.5', saveLabel.spin && 'animate-spin')} aria-hidden="true" />
-              <span className="hidden sm:inline">{saveLabel.text}</span>
-            </>
-          )}
-          <span className="tabular-nums text-ink/40">%{Math.round(zoom * 100)}</span>
-        </p>
       </div>
 
       <Modal
