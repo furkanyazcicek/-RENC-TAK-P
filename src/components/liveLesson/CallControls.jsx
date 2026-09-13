@@ -99,6 +99,8 @@ export default function CallControls({
   micOn,
   camOn,
   screenOn,
+  allowMic = true,
+  allowCamera = true,
   onToggleMic,
   onToggleCam,
   onToggleScreen,
@@ -131,16 +133,18 @@ export default function CallControls({
         <ControlButton
           active={micOn}
           danger={!micOn}
-          label={micOn ? 'Mikrofonu kapat' : 'Mikrofon kapalı — açmak için dokunun'}
+          label={allowMic ? (micOn ? 'Mikrofonu kapat' : 'Mikrofon kapalı — açmak için dokunun') : 'Mikrofon bu cihaz rolünde kapalı'}
           Icon={micOn ? Mic : MicOff}
           onClick={onToggleMic}
+          disabled={!allowMic}
         />
         <ControlButton
           active={camOn}
           danger={!camOn}
-          label={camOn ? 'Kamerayı kapat' : 'Kamera kapalı — açmak için dokunun'}
+          label={allowCamera ? (camOn ? 'Kamerayı kapat' : 'Kamera kapalı — açmak için dokunun') : 'Kamera bu cihaz rolünde kapalı'}
           Icon={camOn ? Camera : VideoOff}
           onClick={onToggleCam}
+          disabled={!allowCamera}
         />
 
         {/* Telefonda tek düğme, masaüstünde açık liste */}

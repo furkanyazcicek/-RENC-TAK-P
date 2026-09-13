@@ -17,6 +17,15 @@
  * sökülmez (bkz. useLessonMedia).
  */
 
+import {
+  describeMediaError,
+  mediaSupportProblem,
+  requestUserMedia,
+  stopMediaStream,
+} from './mediaAccess.js'
+
+export { describeMediaError } from './mediaAccess.js'
+
 const EVENTS = [
   'local-stream',
   'screen-stream',
@@ -26,54 +35,6 @@ const EVENTS = [
   'error',
   'permission',
 ]
-
-/** getUserMedia hatalarını Türkçe, eyleme dönük mesajlara çevirir. */
-export function describeMediaError(error, kind = 'kamera') {
-  const name = error?.name ?? ''
-  switch (name) {
-    case 'NotAllowedError':
-    case 'PermissionDeniedError':
-      return {
-        code: 'permission_denied',
-        title: `${kind === 'mikrofon' ? 'Mikrofon' : 'Kamera'} izni verilmedi`,
-        detail:
-          'Tarayıcı adres çubuğunun solundaki kilit simgesine dokunup izni "İzin ver" yapın, ardından sayfayı yenileyin. ' +
-          'Telefonda: Ayarlar → Tarayıcı → Kamera/Mikrofon.',
-      }
-    case 'NotFoundError':
-    case 'DevicesNotFoundError':
-      return {
-        code: 'not_found',
-        title: `${kind === 'mikrofon' ? 'Mikrofon' : 'Kamera'} bulunamadı`,
-        detail: `Cihazınıza bağlı bir ${kind} görünmüyor. Derse ${kind} olmadan da katılabilirsiniz.`,
-      }
-    case 'NotReadableError':
-    case 'TrackStartError':
-      return {
-        code: 'in_use',
-        title: `${kind === 'mikrofon' ? 'Mikrofon' : 'Kamera'} başka bir uygulamada açık`,
-        detail: 'Zoom, Meet veya kamera uygulaması açıksa kapatıp tekrar deneyin.',
-      }
-    case 'OverconstrainedError':
-      return {
-        code: 'constraints',
-        title: 'Seçilen cihaz kullanılamıyor',
-        detail: 'Listeden başka bir cihaz seçin.',
-      }
-    case 'NotSupportedError':
-      return {
-        code: 'insecure',
-        title: 'Tarayıcı kamera erişimine izin vermiyor',
-        detail: 'Kamera yalnızca güvenli (https) bağlantıda çalışır. Siteyi https adresinden açın.',
-      }
-    default:
-      return {
-        code: 'unknown',
-        title: `${kind === 'mikrofon' ? 'Mikrofon' : 'Kamera'} açılamadı`,
-        detail: 'Cihazı kontrol edip tekrar deneyin. Sorun sürerse sayfayı yenileyin.',
-      }
-  }
-}
 
 export function createLocalPreviewProvider({ session, user, role, initialMic = true, initialCamera = true } = {}) {
   const listeners = new Map(EVENTS.map((e) => [e, new Set()]))
@@ -106,17 +67,6 @@ export function createLocalPreviewProvider({ session, user, role, initialMic = t
     emit('connection', next)
   }
 
-  function stopStream(stream) {
-    if (!stream) return
-    for (const track of stream.getTracks()) {
-      try {
-        track.stop()
-      } catch {
-        /* track zaten kapanmış olabilir */
-      }
-    }
-  }
-
   /** Cihaz listesini okur. İzin verilmeden önce etiketler boş gelir. */
   async function getDevices() {
     if (!navigator.mediaDevices?.enumerateDevices) return devices
@@ -134,15 +84,17 @@ export function createLocalPreviewProvider({ session, user, role, initialMic = t
     return devices
   }
 
-  function buildConstraints() {
-    const video = cameraEnabled
+  function buildConstraints({ withVideo = cameraEnabled, withAudio = micEnabled } = {}) {
+    const video = withVideo
       ? selected.camera
         ? { deviceId: { exact: selected.camera } }
         : { facingMode }
       : false
-    const audio = selected.microphone
-      ? { deviceId: { exact: selected.microphone }, echoCancellation: true, noiseSuppression: true }
-      : { echoCancellation: true, noiseSuppression: true }
+    const audio = withAudio
+      ? selected.microphone
+        ? { deviceId: { exact: selected.microphone }, echoCancellation: true, noiseSuppression: true }
+        : { echoCancellation: true, noiseSuppression: true }
+      : false
     return { video, audio }
   }
 
@@ -150,48 +102,35 @@ export function createLocalPreviewProvider({ session, user, role, initialMic = t
    * Akışı (yeniden) kurar. Kamera reddedilse bile mikrofonla devam etmeyi
    * dener: "kamerası olmayan öğrenci derse giremesin" olmaz.
    */
-  async function openMedia({ withVideo = true, withAudio = true } = {}) {
-    if (!navigator.mediaDevices?.getUserMedia) {
-      const info = { code: 'unsupported', title: 'Tarayıcı desteklemiyor', detail: 'Bu tarayıcı kamera ve mikrofon erişimini desteklemiyor. Güncel Chrome, Safari veya Edge deneyin.' }
+  async function openMedia({ withVideo = cameraEnabled, withAudio = micEnabled } = {}) {
+    const supportProblem = mediaSupportProblem()
+    if (supportProblem) {
+      const info = supportProblem
       emit('error', info)
       return { stream: null, problems: [info] }
     }
 
-    const problems = []
-    stopStream(localStream)
+    stopMediaStream(localStream)
     localStream = null
 
-    const constraints = buildConstraints()
-    if (!withVideo) constraints.video = false
-    if (!withAudio) constraints.audio = false
-
-    try {
-      localStream = await navigator.mediaDevices.getUserMedia(constraints)
-    } catch (err) {
-      // Video sorunluysa yalnız sesle dene.
-      if (constraints.video && constraints.audio) {
-        problems.push(describeMediaError(err, 'kamera'))
-        try {
-          localStream = await navigator.mediaDevices.getUserMedia({ video: false, audio: constraints.audio })
-          cameraEnabled = false
-        } catch (audioErr) {
-          problems.push(describeMediaError(audioErr, 'mikrofon'))
-        }
-      } else {
-        problems.push(describeMediaError(err, constraints.video ? 'kamera' : 'mikrofon'))
-      }
-    }
+    cameraEnabled = Boolean(withVideo)
+    micEnabled = Boolean(withAudio)
+    const constraints = buildConstraints({ withVideo, withAudio })
+    const result = await requestUserMedia(constraints)
+    localStream = result.stream
 
     if (localStream) {
+      if (withAudio && !localStream.getAudioTracks().length) micEnabled = false
+      if (withVideo && !localStream.getVideoTracks().length) cameraEnabled = false
       for (const track of localStream.getAudioTracks()) track.enabled = micEnabled
       for (const track of localStream.getVideoTracks()) track.enabled = cameraEnabled
       // İzin verildikten SONRA cihaz etiketleri okunabilir hâle gelir.
       await getDevices()
     }
 
-    for (const problem of problems) emit('permission', problem)
+    for (const problem of result.problems) emit('permission', problem)
     emit('local-stream', localStream)
-    return { stream: localStream, problems }
+    return { stream: localStream, problems: result.problems }
   }
 
   return {
@@ -223,8 +162,8 @@ export function createLocalPreviewProvider({ session, user, role, initialMic = t
     },
 
     async leaveRoom() {
-      stopStream(screenStream)
-      stopStream(localStream)
+      stopMediaStream(screenStream)
+      stopMediaStream(localStream)
       screenStream = null
       localStream = null
       emit('screen-stream', null)
@@ -234,7 +173,9 @@ export function createLocalPreviewProvider({ session, user, role, initialMic = t
 
     async toggleMicrophone(next) {
       micEnabled = typeof next === 'boolean' ? next : !micEnabled
-      if (localStream) {
+      if (!localStream) {
+        if (micEnabled) await openMedia()
+      } else {
         const tracks = localStream.getAudioTracks()
         if (micEnabled && tracks.length === 0) {
           await openMedia()
@@ -305,7 +246,7 @@ export function createLocalPreviewProvider({ session, user, role, initialMic = t
     },
 
     async stopScreenShare() {
-      stopStream(screenStream)
+      stopMediaStream(screenStream)
       screenStream = null
       emit('screen-stream', null)
     },
@@ -375,8 +316,8 @@ export function createLocalPreviewProvider({ session, user, role, initialMic = t
 
     destroy() {
       destroyed = true
-      stopStream(screenStream)
-      stopStream(localStream)
+      stopMediaStream(screenStream)
+      stopMediaStream(localStream)
       screenStream = null
       localStream = null
       for (const set of listeners.values()) set.clear()

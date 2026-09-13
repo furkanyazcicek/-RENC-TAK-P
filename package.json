@@ -18,6 +18,7 @@
     "bench:report": "node scripts/bench/report.mjs",
     "test:parent-rls": "node scripts/test-parent-rls.mjs",
     "test:live-lessons": "node scripts/test-live-lessons-rls.mjs",
+    "test:live-lesson-media": "node scripts/test-live-lesson-media.mjs",
     "test:ink": "node scripts/test-ink-stroke.mjs && node scripts/test-ink-cache.mjs",
     "test:defter": "node --test scripts/test-defter*.mjs",
     "bench:defter": "node scripts/bench-defter-performance.mjs",

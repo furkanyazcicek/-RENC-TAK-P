@@ -20,7 +20,12 @@
  * kalır; tarayıcıya hiçbir zaman inmez.
  */
 
-import { describeMediaError } from './localPreview'
+import {
+  describeMediaError,
+  mediaSupportProblem,
+  requestUserMedia,
+  stopMediaStream,
+} from './mediaAccess.js'
 
 const EVENTS = [
   'local-stream',
@@ -143,17 +148,6 @@ export function createLiveKitProvider({
     emit('connection', next)
   }
 
-  function stopStream(stream) {
-    if (!stream) return
-    for (const track of stream.getTracks()) {
-      try {
-        track.stop()
-      } catch {
-        /* zaten kapanmış olabilir */
-      }
-    }
-  }
-
   async function loadSdk() {
     if (RoomCtor) return
     const sdk = await import('livekit-client')
@@ -187,43 +181,42 @@ export function createLiveKitProvider({
    * önizleme kapatılır — aynı kamerayı iki kez açık tutmak bazı
    * cihazlarda "kamera meşgul" hatası veriyor.
    */
-  async function openPreview() {
-    const problems = []
-    stopStream(localStream)
+  async function openPreview({ withVideo = cameraEnabled, withAudio = micEnabled } = {}) {
+    const supportProblem = mediaSupportProblem()
+    if (supportProblem) {
+      emit('error', supportProblem)
+      return { stream: null, problems: [supportProblem] }
+    }
+
+    stopMediaStream(localStream)
     localStream = null
 
-    const video = cameraEnabled
+    cameraEnabled = Boolean(withVideo)
+    micEnabled = Boolean(withAudio)
+
+    const video = withVideo
       ? selected.camera
         ? { deviceId: { exact: selected.camera } }
         : { facingMode }
       : false
-    const audio = selected.microphone
-      ? { deviceId: { exact: selected.microphone }, echoCancellation: true, noiseSuppression: true }
-      : { echoCancellation: true, noiseSuppression: true }
+    const audio = withAudio
+      ? selected.microphone
+        ? { deviceId: { exact: selected.microphone }, echoCancellation: true, noiseSuppression: true }
+        : { echoCancellation: true, noiseSuppression: true }
+      : false
 
-    try {
-      localStream = await navigator.mediaDevices.getUserMedia({ video, audio })
-    } catch (err) {
-      if (video) {
-        problems.push(describeMediaError(err, 'kamera'))
-        try {
-          localStream = await navigator.mediaDevices.getUserMedia({ video: false, audio })
-          cameraEnabled = false
-        } catch (audioErr) {
-          problems.push(describeMediaError(audioErr, 'mikrofon'))
-        }
-      } else {
-        problems.push(describeMediaError(err, 'mikrofon'))
-      }
-    }
+    const result = await requestUserMedia({ video, audio })
+    localStream = result.stream
 
     if (localStream) {
+      if (withAudio && !localStream.getAudioTracks().length) micEnabled = false
+      if (withVideo && !localStream.getVideoTracks().length) cameraEnabled = false
       for (const t of localStream.getAudioTracks()) t.enabled = micEnabled
       await readDevices()
     }
-    for (const problem of problems) emit('permission', problem)
+    for (const problem of result.problems) emit('permission', problem)
     emit('local-stream', localStream)
-    return { stream: localStream, problems }
+    return { stream: localStream, problems: result.problems }
   }
 
   function refreshParticipants() {
@@ -238,7 +231,7 @@ export function createLiveKitProvider({
     const stream = new MediaStream()
     for (const pub of room.localParticipant.trackPublications.values()) {
       if (pub.source === Track.Source.ScreenShare) continue
-      if (pub.track?.mediaStreamTrack && pub.kind === 'video') {
+      if (pub.track?.mediaStreamTrack && (pub.kind === 'video' || pub.kind === 'audio')) {
         stream.addTrack(pub.track.mediaStreamTrack)
       }
     }
@@ -287,7 +280,7 @@ export function createLiveKitProvider({
         await loadSdk()
         // Yerel önizlemeyi kapat: aynı kamerayı iki yerden açık tutmak
         // bazı cihazlarda "kamera başka uygulamada" hatası veriyor.
-        stopStream(localStream)
+        stopMediaStream(localStream)
         localStream = null
 
         room = new RoomCtor({
@@ -319,7 +312,12 @@ export function createLiveKitProvider({
             emit('participants', participants)
           })
           .on(RoomEvent.MediaDevicesError, (err) => {
-            emit('permission', describeMediaError(err, 'kamera'))
+            const micError = room?.localParticipant?.lastMicrophoneError
+            const cameraError = room?.localParticipant?.lastCameraError
+            if (micError === err) emit('permission', describeMediaError(err, 'mikrofon'))
+            if (cameraError === err || (!micError && !cameraError)) {
+              emit('permission', describeMediaError(err, 'kamera'))
+            }
           })
 
         await room.connect(credentials.url, credentials.token)
@@ -329,11 +327,13 @@ export function createLiveKitProvider({
           await room.localParticipant.setMicrophoneEnabled(micEnabled)
         } catch (err) {
           emit('permission', describeMediaError(err, 'mikrofon'))
+          micEnabled = false
         }
         try {
           await room.localParticipant.setCameraEnabled(cameraEnabled)
         } catch (err) {
           emit('permission', describeMediaError(err, 'kamera'))
+          cameraEnabled = false
         }
 
         publishLocalView()
@@ -354,7 +354,7 @@ export function createLiveKitProvider({
     },
 
     async leaveRoom() {
-      stopStream(screenStream)
+      stopMediaStream(screenStream)
       screenStream = null
       if (room) {
         try {
@@ -364,7 +364,7 @@ export function createLiveKitProvider({
         }
         room = null
       }
-      stopStream(localStream)
+      stopMediaStream(localStream)
       localStream = null
       participants = []
       emit('participants', participants)
@@ -380,8 +380,11 @@ export function createLiveKitProvider({
           await room.localParticipant.setMicrophoneEnabled(micEnabled)
         } catch (err) {
           emit('permission', describeMediaError(err, 'mikrofon'))
+          micEnabled = Boolean(room.localParticipant.isMicrophoneEnabled)
         }
-      } else if (localStream) {
+      } else if (!localStream || (micEnabled && !localStream.getAudioTracks().length)) {
+        if (micEnabled) await openPreview()
+      } else {
         for (const t of localStream.getAudioTracks()) t.enabled = micEnabled
       }
       return micEnabled
@@ -394,6 +397,7 @@ export function createLiveKitProvider({
           await room.localParticipant.setCameraEnabled(cameraEnabled)
         } catch (err) {
           emit('permission', describeMediaError(err, 'kamera'))
+          cameraEnabled = Boolean(room.localParticipant.isCameraEnabled)
         }
         publishLocalView()
       } else {
@@ -445,7 +449,7 @@ export function createLiveKitProvider({
           /* zaten kapalı olabilir */
         }
       }
-      stopStream(screenStream)
+      stopMediaStream(screenStream)
       screenStream = null
       emit('screen-stream', null)
     },
@@ -542,8 +546,8 @@ export function createLiveKitProvider({
         }
         room = null
       }
-      stopStream(screenStream)
-      stopStream(localStream)
+      stopMediaStream(screenStream)
+      stopMediaStream(localStream)
       screenStream = null
       localStream = null
       for (const set of listeners.values()) set.clear()

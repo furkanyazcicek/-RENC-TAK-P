@@ -20,7 +20,8 @@ export function useLessonMedia({
   role,
   displayName,
   deviceRole = DEVICE_ROLES.SOLO,
-  autoStart = true,
+  autoStart = false,
+  autoStartOptions = null,
 } = {}) {
   const roleSpec = deviceRoleInfo(deviceRole)
   const providerRef = useRef(null)
@@ -33,6 +34,7 @@ export function useLessonMedia({
   const [problems, setProblems] = useState([])
   const [connection, setConnection] = useState('idle')
   const [starting, setStarting] = useState(false)
+  const [prepared, setPrepared] = useState(false)
   const [remoteParticipants, setRemoteParticipants] = useState([])
   const [joined, setJoined] = useState(false)
 
@@ -56,6 +58,9 @@ export function useLessonMedia({
       },
     })
     providerRef.current = provider
+    setStarting(false)
+    setPrepared(false)
+    setProblems([])
 
     const offs = [
       provider.on('local-stream', (next) => {
@@ -96,19 +101,30 @@ export function useLessonMedia({
     setCamOn(roleSpec.camera)
   }, [roleSpec.mic, roleSpec.camera])
 
-  const start = useCallback(async (options) => {
+  const start = useCallback(async (options = {}) => {
     const provider = providerRef.current
-    if (!provider) return
+    if (!provider) return null
     setStarting(true)
     setProblems([])
-    await provider.prepareRoom(options)
-    setSelected(provider.getSelectedDevices())
-    setStarting(false)
-  }, [])
+    try {
+      const result = await provider.prepareRoom({
+        withVideo: roleSpec.camera,
+        withAudio: roleSpec.mic,
+        ...options,
+      })
+      if (providerRef.current === provider) {
+        setSelected(provider.getSelectedDevices())
+        setPrepared(true)
+      }
+      return result
+    } finally {
+      if (providerRef.current === provider) setStarting(false)
+    }
+  }, [roleSpec.camera, roleSpec.mic])
 
   useEffect(() => {
-    if (autoStart) start()
-  }, [autoStart, start])
+    if (autoStart) start(autoStartOptions ?? {})
+  }, [autoStart, autoStartOptions, start])
 
   const toggleMic = useCallback(async (next) => {
     const value = await providerRef.current?.toggleMicrophone(next)
@@ -143,10 +159,7 @@ export function useLessonMedia({
     await providerRef.current?.switchCamera()
   }, [])
 
-  const retry = useCallback(async () => {
-    setProblems([])
-    await providerRef.current?.reconnect()
-  }, [])
+  const retry = useCallback(() => start(), [start])
 
   /** Gerçek görüşme odasına katıl (LiveKit). Yerel önizlemede işlevsizdir. */
   const join = useCallback(async () => {
@@ -173,9 +186,12 @@ export function useLessonMedia({
     problems,
     connection,
     starting,
+    prepared,
     joined,
     remoteParticipants,
     deviceRole,
+    wantsMicrophone: roleSpec.mic,
+    wantsCamera: roleSpec.camera,
     /**
      * Kamera cihazında uzak SES ÇALINMAZ. Çalsaydı, tabletin sesi
      * kameranın hoparlöründen çıkıp tabletin mikrofonuna geri girer ve

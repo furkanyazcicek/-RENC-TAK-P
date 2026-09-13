@@ -133,6 +133,16 @@ edilmez, sorulur** (`src/lib/liveLesson/deviceRole.js`):
 Seçim bekleme odasında yapılır, cihazda hatırlanır ve ders sırasında
 cihaz çekmecesinden değiştirilebilir.
 
+### Kamera ve mikrofon izni
+
+Bekleme odası açıldığında kamera ve mikrofon kendiliğinden çalışmaz.
+Kullanıcı önce hangi cihazların kullanılacağını görür; **Kamera ve
+mikrofonu etkinleştir** düğmesine bastığında tarayıcının zorunlu izin
+penceresi açılır. Site bu izni atlayamaz. Kullanıcı izinlerden yalnızca
+birini verirse ders diğer çalışan cihazla devam edebilir ve engellenen cihaz
+için tarayıcıya uygun düzeltme yönergesi gösterilir. Doğrudan stüdyo
+adresine gidilirse de izin istemek yerine bekleme odasına yönlendirilir.
+
 ### Ses çıkışı neden kapatılıyor
 
 Yankıyı önlemenin tek kesin yolu bu. Kamera cihazının hoparlörü açık

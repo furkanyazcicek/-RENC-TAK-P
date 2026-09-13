@@ -74,7 +74,9 @@ export default function LessonLobby() {
     role,
     displayName: profile?.full_name,
     deviceRole,
-    autoStart: Boolean(session),
+    // Sayfa açılır açılmaz izin isteme. Kamera/mikrofon yalnızca
+    // kullanıcının açıklamalı düğmeye basmasıyla hazırlanır.
+    autoStart: false,
   })
 
   const channel = useLessonChannel({
@@ -96,25 +98,43 @@ export default function LessonLobby() {
   const joinable = session ? canJoin(session, role) : false
 
   const checklist = useMemo(
-    () => [
-      {
+    () => {
+      const permissionReady =
+        (!media.wantsCamera || media.hasVideo) &&
+        (!media.wantsMicrophone || media.hasAudio)
+      const mediaRows = []
+      if (media.wantsMicrophone) {
+        mediaRows.push({
+          key: 'mic',
+          label: 'Mikrofon',
+          ok: media.hasAudio,
+          detail: media.hasAudio
+            ? (media.micOn ? 'Açık' : 'Kapalı — dilersen aç')
+            : media.prepared ? 'Açılamadı' : 'Etkinleştirme bekleniyor',
+        })
+      }
+      if (media.wantsCamera) {
+        mediaRows.push({
+          key: 'cam',
+          label: 'Kamera',
+          ok: media.hasVideo,
+          detail: media.hasVideo
+            ? (media.camOn ? 'Açık' : 'Kapalı — dilersen aç')
+            : media.prepared ? 'Açılamadı (zorunlu değil)' : 'Etkinleştirme bekleniyor',
+        })
+      }
+
+      return [{
         key: 'permission',
         label: 'Tarayıcı izinleri',
-        ok: media.hasVideo || media.hasAudio,
-        detail: media.hasVideo || media.hasAudio ? 'Verildi' : 'Kamera/mikrofon izni bekleniyor',
+        ok: permissionReady,
+        detail: permissionReady
+          ? 'Hazır'
+          : media.prepared
+            ? (media.hasVideo || media.hasAudio ? 'Kısmen hazır' : 'İzin gerekli')
+            : 'Etkinleştirme bekleniyor',
       },
-      {
-        key: 'mic',
-        label: 'Mikrofon',
-        ok: media.hasAudio,
-        detail: media.hasAudio ? (media.micOn ? 'Açık' : 'Kapalı — dilersen aç') : 'Bulunamadı',
-      },
-      {
-        key: 'cam',
-        label: 'Kamera',
-        ok: media.hasVideo,
-        detail: media.hasVideo ? (media.camOn ? 'Açık' : 'Kapalı — dilersen aç') : 'Bulunamadı (zorunlu değil)',
-      },
+      ...mediaRows,
       {
         key: 'channel',
         label: 'Ders bağlantısı',
@@ -125,9 +145,18 @@ export default function LessonLobby() {
             : channel.status === 'failed'
               ? 'Kurulamadı — internetini kontrol et'
               : 'Kuruluyor…',
-      },
-    ],
-    [media.hasVideo, media.hasAudio, media.micOn, media.camOn, channel.status]
+      }]
+    },
+    [
+      media.hasVideo,
+      media.hasAudio,
+      media.micOn,
+      media.camOn,
+      media.prepared,
+      media.wantsCamera,
+      media.wantsMicrophone,
+      channel.status,
+    ]
   )
 
   function chooseRole(next) {
@@ -140,7 +169,31 @@ export default function LessonLobby() {
     setJoining(true)
     setError(null)
     try {
+      let availableMedia = {
+        video: media.hasVideo && media.camOn,
+        audio: media.hasAudio && media.micOn,
+      }
+      // Kullanıcı cihaz düğmesine basmadan doğrudan katılırsa izin
+      // isteği yine bu tıklamanın içinde, Türkçe açıklamanın ardından yapılır.
+      if (!media.prepared) {
+        try {
+          const result = await media.start()
+          availableMedia = {
+            video: Boolean(result?.stream?.getVideoTracks?.().some((track) => track.enabled)),
+            audio: Boolean(result?.stream?.getAudioTracks?.().some((track) => track.enabled)),
+          }
+        } catch {
+          // Cihaz hatası derse girişi engellemez; kullanıcı tahta ve
+          // mesajlarla devam edip cihazını stüdyoda yeniden deneyebilir.
+          availableMedia = { video: false, audio: false }
+        }
+      }
       await joinLesson(sessionId)
+      window.sessionStorage.setItem(
+        `drk-lesson-media-attempted-${sessionId}`,
+        JSON.stringify(availableMedia)
+      )
+      window.sessionStorage.setItem(`drk-lesson-joined-${sessionId}`, '1')
       navigate(`/canli-ders/${sessionId}/studyo`)
     } catch (err) {
       setError(err.message)
@@ -272,9 +325,19 @@ export default function LessonLobby() {
           <Card>
             <CardBody className="flex flex-col gap-4">
               <div>
-                <h2 className="section-title">Kamera ve mikrofon</h2>
+                <h2 className="section-title">
+                  {media.wantsCamera && media.wantsMicrophone
+                    ? 'Kamera ve mikrofon'
+                    : media.wantsCamera
+                      ? 'Kamera'
+                      : 'Mikrofon'}
+                </h2>
                 <p className="mt-0.5 text-sm text-ink/60">
-                  Derse girmeden önce kendini gör, mikrofonuna konuşup çubuğun oynadığını kontrol et.
+                  {media.wantsCamera && media.wantsMicrophone
+                    ? 'Derse girmeden önce kendini gör, mikrofonuna konuşup çubuğun oynadığını kontrol et.'
+                    : media.wantsCamera
+                      ? 'Derse girmeden önce kamera görüntünü kontrol et.'
+                      : 'Derse girmeden önce mikrofonuna konuşup çubuğun oynadığını kontrol et.'}
                 </p>
               </div>
 
@@ -291,8 +354,12 @@ export default function LessonLobby() {
                     >
                       {item.ok ? (
                         <CheckCircle2 className="h-3.5 w-3.5" strokeWidth={2.4} aria-hidden="true" />
-                      ) : (
+                      ) : media.starting || (item.key === 'channel' && channel.status !== 'failed') ? (
                         <Loader2 className="h-3 w-3 animate-spin" aria-hidden="true" />
+                      ) : !media.prepared ? (
+                        <span className="h-1.5 w-1.5 rounded-full bg-current" aria-hidden="true" />
+                      ) : (
+                        <ShieldAlert className="h-3.5 w-3.5" strokeWidth={2.2} aria-hidden="true" />
                       )}
                     </span>
                     <span className="text-ink/75">{item.label}</span>
@@ -305,9 +372,10 @@ export default function LessonLobby() {
 
           {!media.remoteMediaAvailable && (
             <Alert tone="info" icon={Wifi} title="Yerel önizleme">
-              Görüntülü görüşme sağlayıcısı henüz bağlanmadı. Kameran ve mikrofonun gerçekten
-              çalışıyor, tahta ve mesajlar canlı olarak karşılıklı gidiyor; ancak karşı tarafın
-              GÖRÜNTÜSÜ ve SESİ bu sürümde aktarılmıyor.
+              Görüntülü görüşme sağlayıcısı henüz bağlanmadı.{' '}
+              {media.prepared
+                ? 'Hazırladığın cihazlar çalışıyor; tahta ve mesajlar canlı olarak karşılıklı gidiyor. Ancak karşı tarafın görüntüsü ve sesi bu sürümde aktarılmıyor.'
+                : 'Cihazlarını etkinleştirdikten sonra seçtiğin kamera veya mikrofonu burada deneyebilirsin. Tahta ve mesajlar canlı olarak karşılıklı gider; ancak karşı tarafın görüntüsü ve sesi bu sürümde aktarılmaz.'}
             </Alert>
           )}
 
@@ -329,7 +397,7 @@ export default function LessonLobby() {
             >
               Derslerime dön
             </Button>
-            {!media.hasVideo && joinable && (
+            {media.prepared && media.wantsCamera && !media.hasVideo && joinable && (
               <Badge tone="neutral" size="sm">
                 Kamerasız katılıyorsun
               </Badge>

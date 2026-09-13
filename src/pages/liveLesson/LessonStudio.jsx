@@ -104,6 +104,28 @@ export default function LessonStudio() {
   const [linkCopied, setLinkCopied] = useState(false)
   const [deviceRole, setDeviceRole] = useState(() => loadDeviceRole())
   const leftRef = useRef(false)
+  const joinedRecordRef = useRef(false)
+  const lobbyMediaState = useMemo(() => {
+    const stored = window.sessionStorage.getItem(`drk-lesson-media-attempted-${sessionId}`)
+    if (!stored) return null
+    try {
+      const parsed = JSON.parse(stored)
+      return {
+        video: Boolean(parsed?.video),
+        audio: Boolean(parsed?.audio),
+      }
+    } catch {
+      return null
+    }
+  }, [sessionId])
+  const mediaAttemptedInLobby = lobbyMediaState !== null
+  const mediaAutoStartOptions = useMemo(
+    () => ({
+      withVideo: Boolean(lobbyMediaState?.video),
+      withAudio: Boolean(lobbyMediaState?.audio),
+    }),
+    [lobbyMediaState?.video, lobbyMediaState?.audio]
+  )
 
   const isTeacher = role === 'teacher'
 
@@ -128,6 +150,13 @@ export default function LessonStudio() {
     let cancelled = false
 
     async function boot() {
+      // Stüdyo kamera/mikrofon iznini kendiliğinden istemez. Doğrudan
+      // adresle gelindiyse kullanıcıyı açıklamalı izin ekranına al.
+      if (!mediaAttemptedInLobby) {
+        navigate(`/canli-ders/${sessionId}`, { replace: true })
+        return
+      }
+
       const data = await load()
       if (cancelled || !data) {
         setLoading(false)
@@ -140,6 +169,7 @@ export default function LessonStudio() {
         try {
           await joinLesson(sessionId)
           window.sessionStorage.setItem(flag, '1')
+          joinedRecordRef.current = true
         } catch (err) {
           if (!cancelled) {
             setAccessError(err.message)
@@ -148,6 +178,8 @@ export default function LessonStudio() {
           return
         }
         if (!cancelled) await load()
+      } else {
+        joinedRecordRef.current = true
       }
 
       if (!cancelled) {
@@ -168,7 +200,7 @@ export default function LessonStudio() {
     return () => {
       cancelled = true
     }
-  }, [sessionId, load, isTeacher])
+  }, [sessionId, load, isTeacher, mediaAttemptedInLobby, navigate])
 
   /* ---------------- Medya ve kanal ---------------- */
   const media = useLessonMedia({
@@ -177,7 +209,8 @@ export default function LessonStudio() {
     role,
     displayName: profile?.full_name,
     deviceRole,
-    autoStart: Boolean(session),
+    autoStart: Boolean(session) && mediaAttemptedInLobby,
+    autoStartOptions: mediaAutoStartOptions,
   })
   const channel = useLessonChannel({
     roomId: session?.provider_room_id,
@@ -220,10 +253,20 @@ export default function LessonStudio() {
    */
   const joinedRoomRef = useRef(false)
   useEffect(() => {
-    if (!session || !media.remoteMediaAvailable || joinedRoomRef.current) return
+    joinedRoomRef.current = false
+  }, [deviceRole, session?.id])
+
+  useEffect(() => {
+    if (
+      !session ||
+      !mediaAttemptedInLobby ||
+      !media.prepared ||
+      !media.remoteMediaAvailable ||
+      joinedRoomRef.current
+    ) return
     joinedRoomRef.current = true
     media.join()
-  }, [session, media])
+  }, [session?.id, mediaAttemptedInLobby, media.prepared, media.remoteMediaAvailable, media.join])
 
   /* Süre sayacı */
   useEffect(() => {
@@ -236,11 +279,12 @@ export default function LessonStudio() {
   /* Ayrılırken katılım süresini yaz ve medyayı kapat */
   useEffect(() => {
     return () => {
-      if (leftRef.current) return
+      if (leftRef.current || !joinedRecordRef.current) return
       leftRef.current = true
       const seconds = Math.floor((Date.now() - joinedAtRef.current) / 1000)
       leaveLesson(sessionId, seconds)
       window.sessionStorage.removeItem(`drk-lesson-joined-${sessionId}`)
+      window.sessionStorage.removeItem(`drk-lesson-media-attempted-${sessionId}`)
     }
   }, [sessionId])
 
@@ -906,6 +950,8 @@ export default function LessonStudio() {
           micOn={media.micOn}
           camOn={media.camOn}
           screenOn={media.screenOn}
+          allowMic={media.wantsMicrophone}
+          allowCamera={media.wantsCamera}
           onToggleMic={() => media.toggleMic()}
           onToggleCam={() => media.toggleCam()}
           onToggleScreen={() => (media.screenOn ? media.stopScreen() : media.startScreen())}
