@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Download, Flag, Mic, Pause, Play, Square } from 'lucide-react'
 import { Button } from '../ui'
 import { uid } from '../../lib/defter/model'
-import { blobData } from '../../lib/defter/media'
+import { assetUrl, blobData } from '../../lib/defter/media'
 import { downloadBlob } from '../../lib/defter/drawing'
 export const audioTime=value=>`${Math.floor(value/60)}:${String(Math.floor(value%60)).padStart(2,'0')}`
 
@@ -81,11 +81,18 @@ export function useNotebookRecording({doc,page,onSave}) {
   },[])
   return {state,elapsed,error,recovery,start,pause,stop,mark,capture,downloadRecovery:()=>{if(recoveryRef.current){downloadBlob(recoveryRef.current,`Ders-kaydi.${recoveryRef.current.type.includes('mp4')?'m4a':'webm'}`);setRecovery(null);setError('')}}}
 }
+/** Ses cihazdaysa veriden, buluttaysa indirilen dosyadan çalınır. */
+function useAssetUrl(asset) {
+  const [url,setUrl]=useState(asset?.data??'')
+  useEffect(()=>{let alive=true;assetUrl(asset).then(next=>{if(alive)setUrl(next)}).catch(()=>{if(alive)setUrl('')});return()=>{alive=false}},[asset?.data,asset?.path])
+  return url
+}
 export default function NotebookAudio({doc,page,rec,onSeek}) {
   const [selected,setSelected]=useState(''),[follow,setFollow]=useState(true),[playError,setPlayError]=useState('')
   const player=useRef(null),lastCue=useRef('')
   const recordings=doc.recordings??[],recording=recordings.find(r=>r.id===selected)??recordings.at(-1)
   const active=['recording','paused','saving','starting'].includes(rec.state)
+  const audioSrc=useAssetUrl(recording?doc.assets?.[recording.assetId]:null)
   function sync(t,force=false){if(!recording||(!follow&&!force))return;const cue=[...recording.cues].reverse().find(c=>c.time<=t);if(cue){const key=`${recording.id}:${cue.time}`;if(force||lastCue.current!==key){lastCue.current=key;onSeek(cue)}}}
   function seek(cue){if(player.current){player.current.currentTime=cue.time;sync(cue.time,true)}}
   return <div className="defter-audio-panel">
@@ -97,11 +104,11 @@ export default function NotebookAudio({doc,page,rec,onSeek}) {
     {rec.error&&<p role="alert">{rec.error}</p>}{rec.recovery&&<Button icon={Download} onClick={rec.downloadRecovery}>Ses dosyasını kurtar</Button>}
     {!active&&recording&&<div className="defter-audio-playback"><label>Dinlenecek kayıt<select aria-label="Dinlenecek kayıt" value={recording.id} onChange={e=>{setSelected(e.target.value);lastCue.current='';setPlayError('')}}>{recordings.map(r=><option key={r.id} value={r.id}>{r.title} · {audioTime(r.duration)}</option>)}</select></label>
       <input aria-label="Ses kaydının adı" value={recording.title} maxLength={120} onChange={e=>rec.rename?.(recording.id,e.target.value)}/>
-      <audio key={recording.id} ref={player} controls preload="metadata" src={doc.assets?.[recording.assetId]?.data} onTimeUpdate={e=>sync(e.currentTarget.currentTime)} onSeeked={e=>sync(e.currentTarget.currentTime)} onError={()=>setPlayError('Ses bu tarayıcıda oynatılamadı. Ses dosyasını indirip açabilirsin.')}/>
+      <audio key={recording.id} ref={player} controls preload="metadata" src={audioSrc||undefined} onTimeUpdate={e=>sync(e.currentTarget.currentTime)} onSeeked={e=>sync(e.currentTarget.currentTime)} onError={()=>setPlayError('Ses bu tarayıcıda oynatılamadı. Ses dosyasını indirip açabilirsin.')}/>
       {playError&&<p role="alert">{playError}</p>}
       <label>Dinleme hızı<select aria-label="Dinleme hızı" defaultValue="1" onChange={e=>{if(player.current)player.current.playbackRate=Number(e.target.value)}}><option value="0.75">0,75×</option><option value="1">1×</option><option value="1.25">1,25×</option><option value="1.5">1,5×</option><option value="2">2×</option></select></label><label className="defter-check"><input type="checkbox" checked={follow} onChange={e=>setFollow(e.target.checked)}/><span>Sesi dinlerken ilgili sayfayı ve notu takip et</span></label>
       <div className="defter-cues">{recording.cues.filter((c,i,a)=>i===0||c.pageId!==a[i-1].pageId||!c.itemId).map((cue,i)=><button key={i} onClick={()=>seek(cue)}>{audioTime(cue.time)} · {doc.pages.find(p=>p.id===cue.pageId)?.title||'Not sayfası'}</button>)}</div>
-      <Button variant="ghost" icon={Download} onClick={async()=>{const blob=await (await fetch(doc.assets[recording.assetId].data)).blob();downloadBlob(blob,`${recording.title}.${blob.type.includes('mp4')?'m4a':blob.type.includes('ogg')?'ogg':'webm'}`)}}>Ses dosyasını indir</Button>
+      <Button variant="ghost" icon={Download} onClick={async()=>{if(!audioSrc)return;const blob=await (await fetch(audioSrc)).blob();downloadBlob(blob,`${recording.title}.${blob.type.includes('mp4')?'m4a':blob.type.includes('ogg')?'ogg':'webm'}`)}}>Ses dosyasını indir</Button>
     </div>}
     {!recordings.length&&!active&&<p className="defter-help">Henüz ses kaydın yok. Dersi kaydederken Defterim’de yazmaya devam edebilirsin.</p>}
   </div>

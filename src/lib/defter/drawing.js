@@ -40,8 +40,8 @@ export function moveItem(item, dx, dy) {
   if (item.kind === 'shape') return moveShape(item,dx,dy)
   return { ...item, p: item.p.map((v, i) => i % 3 === 0 ? v + dx : i % 3 === 1 ? v + dy : v) }
 }
-export function drawItem(ctx, item, finished=true) {
-  if(item.kind==='image'){const img=cachedImage(item.assetId);if(img?.complete&&img.naturalWidth)ctx.drawImage(img,item.x,item.y,item.w,item.h);return}
+export function drawItem(ctx, item, finished=true, getImage=cachedImage) {
+  if(item.kind==='image'){const img=getImage(item.assetId);if(img?.complete&&img.naturalWidth)ctx.drawImage(img,item.x,item.y,item.w,item.h);return}
   if (item.kind === 'stroke') { drawInkStroke(ctx, item, finished); return }
   ctx.save(); ctx.fillStyle = item.c; ctx.strokeStyle = item.c; ctx.lineWidth = item.w; ctx.lineCap = 'round';ctx.lineJoin='round'
   ctx.globalAlpha *= item.opacity??1
@@ -56,7 +56,7 @@ export function drawItem(ctx, item, finished=true) {
   }
   ctx.restore()
 }
-export function drawPage(ctx, page) {
+export function drawPage(ctx, page, getImage=cachedImage) {
   // Bunlar tema değil, dışa aktarılan kâğıdın sabit mürekkep renkleridir.
   ctx.fillStyle = '#ffffff'; ctx.fillRect(0,0,page.width,page.height)
   ctx.strokeStyle = '#e5e8ef'; ctx.fillStyle = '#d5dae5'; ctx.lineWidth = 0.8
@@ -88,7 +88,7 @@ export function drawPage(ctx, page) {
     line(48,1190,952,1190);label('NE ÖĞRENDİM? · HATIRLATMA',60,1230)
   }
   ctx.stroke()
-  page.items.forEach(item => drawItem(ctx,item))
+  page.items.forEach(item => drawItem(ctx,item,true,getImage))
 }
 export function downloadBlob(blob, name) {
   const url=URL.createObjectURL(blob), a=document.createElement('a')

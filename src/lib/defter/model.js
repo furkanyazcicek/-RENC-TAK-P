@@ -2,6 +2,9 @@
 export const FORMAT = 'drkoc-defter'
 export const VERSION = 1
 export const MAX_BYTES = 32 * 1024 * 1024
+export const MAX_PAGES = 100
+export const PAGE_WIDTH = 1000
+export const PAGE_HEIGHT = 1414
 export const COLORS = [
   { name: 'Siyah', value: '#131329' }, { name: 'Mavi', value: '#2563EB' },
   { name: 'Kırmızı', value: '#E11D48' }, { name: 'Yeşil', value: '#059669' },
@@ -11,34 +14,66 @@ export const PAPERS = { blank: 'Düz', ruled: 'Çizgili', grid: 'Kareli', dots: 
 export const uid = () => crypto.randomUUID()
 export const clone = (value) => structuredClone(value)
 export function newPage(paper = 'ruled') {
-  return { id: uid(), title: '', width: 1000, height: 1414, paper, items: [] }
+  return { id: uid(), title: '', width: PAGE_WIDTH, height: PAGE_HEIGHT, paper, items: [] }
 }
-export function newNotebook(title = 'İsimsiz defter', subject = '') {
+/** Not uygulamalarındaki gibi tarihli varsayılan ad: "Not 13 Eyl 2026". */
+export function defaultNoteTitle(date = new Date()) {
+  return `Not ${date.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short', year: 'numeric' })}`
+}
+export function newNotebook(title = 'İsimsiz defter', subject = '', extra = {}) {
+  const now = new Date().toISOString()
   return { format: FORMAT, version: VERSION, id: uid(), title, subject, archived: false,
-    updatedAt: new Date().toISOString(), pages: [newPage()] }
+    createdAt: now, updatedAt: now, pages: [newPage()], ...extra }
 }
 export function changed(doc) { return { ...doc, updatedAt: new Date().toISOString() } }
 export function forkNotebook(doc) {
   return changed({ ...clone(doc), id: uid(), title: `${doc.title.slice(0, 95)} · korunan kopya` })
 }
 export function pageText(page) { return page.items.filter(x => x.kind === 'text').map(x => x.text).join(' ') }
+
+/**
+ * Kalemden gelen koordinatlar 15-16 basamaklı ondalık taşır. Sayfa 1000
+ * birim genişliğinde olduğundan 0,01 birim ekranda görünmez; kısaltmak
+ * belgeyi yaklaşık üçte bire indirir ve bulut sınırına çok daha geç ulaşır.
+ */
+export function compactStroke(item) {
+  if (item?.kind !== 'stroke' || !Array.isArray(item.p)) return item
+  const p = item.p
+  for (let i = 0; i < p.length; i++) {
+    p[i] = i % 3 === 2 ? Math.round(p[i] * 1000) / 1000 : Math.round(p[i] * 100) / 100
+  }
+  return item
+}
+
 const finite = (v, max = 100000) => typeof v === 'number' && Number.isFinite(v) && Math.abs(v) <= max
 const uuid = value => typeof value === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(value)
+/** Buluttaki ek dosyasının yolu: sahip klasörü / ek kimliği(-sürüm).uzantı */
+export const ASSET_PATH = /^[0-9a-f-]{36}\/[0-9a-f-]{36}(-[0-9a-z]{1,12})?\.(jpg|png|webp|webm|m4a|ogg|mp3|wav)$/
+export const isUuid = uuid
+
 /** İçe aktarma, yerel kayıt ve buluttan okumada aynı doğrulama uygulanır. */
 export function validateNotebook(doc) {
   const fail = () => { throw new Error('Bu dosya geçerli bir DRKOÇ defteri değil veya desteklenmeyen içerik taşıyor.') }
   if (!doc || doc.format !== FORMAT || doc.version !== VERSION || !uuid(doc.id) ||
     typeof doc.title !== 'string' || doc.title.length > 120 || typeof doc.subject !== 'string' || doc.subject.length > 80 ||
     typeof doc.archived !== 'boolean' || typeof doc.updatedAt !== 'string' || !Number.isFinite(Date.parse(doc.updatedAt)) ||
-    !Array.isArray(doc.pages) || doc.pages.length < 1 || doc.pages.length > 100) fail()
+    !Array.isArray(doc.pages) || doc.pages.length < 1 || doc.pages.length > MAX_PAGES) fail()
   for (const key of ['category','subcategory']) if(doc[key]!==undefined&&(typeof doc[key]!=='string'||doc[key].length>80)) fail()
+  if (doc.folderId !== undefined && doc.folderId !== null && !uuid(doc.folderId)) fail()
+  if (doc.favorite !== undefined && typeof doc.favorite !== 'boolean') fail()
+  if (doc.createdAt !== undefined && (typeof doc.createdAt !== 'string' || !Number.isFinite(Date.parse(doc.createdAt)))) fail()
   const assets=doc.assets??{}
   if(!assets||typeof assets!=='object'||Array.isArray(assets)||Object.keys(assets).length>500)fail()
   for(const [id,a] of Object.entries(assets)) {
-    if(!a||!uuid(id)||a.id!==id||typeof a.name!=='string'||a.name.length>160||typeof a.data!=='string')fail()
-    if(a.type==='image') {if(!/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(a.data)||!finite(a.width,5000)||a.width<=0||!finite(a.height,5000)||a.height<=0)fail()}
-    else if(a.type==='audio') {if(!/^data:audio\/(webm|ogg|mp4|mpeg|wav|x-m4a)(;codecs=[a-z0-9.,-]+)?;base64,[A-Za-z0-9+/=]+$/i.test(a.data))fail()}
+    if(!a||!uuid(id)||a.id!==id||typeof a.name!=='string'||a.name.length>160)fail()
+    // Ek ya cihazdaki veriyi ya da buluttaki dosya yolunu (ya da ikisini) taşır.
+    if(a.data===undefined&&a.path===undefined)fail()
+    if(a.path!==undefined&&(typeof a.path!=='string'||!ASSET_PATH.test(a.path)))fail()
+    if(a.data!==undefined&&typeof a.data!=='string')fail()
+    if(a.type==='image') {if((a.data!==undefined&&!/^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(a.data))||!finite(a.width,5000)||a.width<=0||!finite(a.height,5000)||a.height<=0)fail()}
+    else if(a.type==='audio') {if(a.data!==undefined&&!/^data:audio\/(webm|ogg|mp4|mpeg|wav|x-m4a)(;codecs=[a-z0-9.,-]+)?;base64,[A-Za-z0-9+/=]+$/i.test(a.data))fail()}
     else fail()
+    if(a.mime!==undefined&&(typeof a.mime!=='string'||!/^(image|audio)\/[a-z0-9.+-]{1,40}$/i.test(a.mime)))fail()
   }
   const sources=doc.sources??[]
   if(!Array.isArray(sources)||sources.length>100)fail()
@@ -62,7 +97,7 @@ export function validateNotebook(doc) {
   const pageIds = new Set()
   for (const p of doc.pages) {
     if (!p || !uuid(p.id) || pageIds.has(p.id) || !Object.hasOwn(PAPERS, p.paper) ||
-      p.width !== 1000 || p.height !== 1414 || typeof p.title !== 'string' || p.title.length > 120 ||
+      p.width !== PAGE_WIDTH || p.height !== PAGE_HEIGHT || typeof p.title !== 'string' || p.title.length > 120 ||
       !Array.isArray(p.items) || p.items.length > 5000) fail()
     for(const key of ['section','subsection'])if(p[key]!==undefined&&(typeof p[key]!=='string'||p[key].length>80))fail()
     if(p.sourceId!==undefined&&!sourceIds.has(p.sourceId))fail()
@@ -77,7 +112,7 @@ export function validateNotebook(doc) {
       } else if (x.kind === 'text') {
         if (!finite(x.x) || !finite(x.y) || !finite(x.size, 80) || x.size < 12 || typeof x.text !== 'string' || x.text.length > 10000) fail()
       } else if (x.kind === 'image') {
-        if(assets[x.assetId]?.type!=='image'||![x.x,x.y,x.h].every(v=>finite(v))||x.h<=0||x.h>1414||(x.locked!==undefined&&typeof x.locked!=='boolean'))fail()
+        if(assets[x.assetId]?.type!=='image'||![x.x,x.y,x.h].every(v=>finite(v))||x.h<=0||x.h>PAGE_HEIGHT||(x.locked!==undefined&&typeof x.locked!=='boolean'))fail()
       } else if (x.kind === 'shape') {
         if (!['line', 'rect', 'ellipse', 'arrow', 'triangle'].includes(x.shape) || ![x.x1, x.y1, x.x2, x.y2].every(v => finite(v))) fail()
         if (x.rotation !== undefined && !finite(x.rotation, Math.PI*2)) fail()
@@ -95,7 +130,15 @@ export function importNotebook(text) {
   let value
   try { value = JSON.parse(text) } catch { throw new Error('Dosya okunamadı. DRKOÇ defter yedeğini seç.') }
   validateNotebook(value)
-  return changed({ ...value, id: uid(), title: `${value.title.slice(0, 100)} · içe aktarıldı` })
+  // Başka hesabın bulut ekleri bu hesapta açılamaz; yalnız verisi olan ekler taşınır.
+  if (Object.values(value.assets ?? {}).some(a => a.data === undefined)) {
+    throw new Error('Bu yedekte bu cihaza indirilmemiş ekler var. Yedeği ekler görünürken yeniden indir.')
+  }
+  const assets = Object.fromEntries(Object.entries(value.assets ?? {}).map(([id, a]) => {
+    const { path: _path, ...rest } = a
+    return [id, rest]
+  }))
+  return changed({ ...value, ...(value.assets ? { assets } : {}), id: uid(), folderId: value.folderId ?? null, title: `${value.title.slice(0, 100)} · içe aktarıldı` })
 }
 
 /** Saf eşitleme kararı; hiçbir sürüm sessizce silinmez. */
