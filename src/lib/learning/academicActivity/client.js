@@ -16,6 +16,8 @@ const RPC_BY_ACTION = Object.freeze({
   lesson_summary: 'save_academic_lesson_summary',
 })
 
+const MISSING_RPC_CODES = new Set(['PGRST202', '42883'])
+
 function rpcParams(payload, actionId) {
   return Object.fromEntries([
     ...Object.entries(payload).filter(([, value]) => value !== undefined).map(([key, value]) => [`p_${key}`, value]),
@@ -31,6 +33,36 @@ export function mapAcademicResult(result) {
   if (['schema_unavailable', 'dependency_unavailable'].includes(status)) return ACADEMIC_UI_STATUS.unavailable
   if (status === 'validation_rejected') return ACADEMIC_UI_STATUS.invalid
   return ACADEMIC_UI_STATUS.pending
+}
+
+function academicErrorResult(error) {
+  if (MISSING_RPC_CODES.has(String(error?.code ?? ''))) return { status: 'schema_unavailable' }
+  if (error?.code === '42501') return { status: 'permission_denied' }
+  return { status: 'retryable_failure' }
+}
+
+// Faz 4 migration'ı canlıya kontrollü biçimde alınana kadar yalnız günlük kayıt
+// oluşturmayı mevcut RLS korumalı tablo yoluyla sürdürür. Öğrenci kimliği formdan
+// değil doğrulanmış oturumdan gelir; yeni RPC hazır olduğunda bu yol kullanılmaz.
+async function createLegacyDailyLog({ supabase, userId, payload, actionId }) {
+  try {
+    const response = await supabase.from('daily_logs').insert({
+      student_id: userId,
+      study_date: payload.study_date,
+      topic: payload.topic,
+      duration_minutes: payload.duration_minutes,
+      correct: payload.correct,
+      incorrect: payload.incorrect,
+      empty: payload.empty,
+      notes: payload.notes,
+    })
+    const result = response?.error
+      ? academicErrorResult(response.error)
+      : { status: 'created', compatibility_mode: 'legacy_daily_logs' }
+    return { result, status: mapAcademicResult(result), actionId }
+  } catch {
+    return { result: { status: 'retryable_failure' }, status: ACADEMIC_UI_STATUS.pending, actionId }
+  }
 }
 
 export function academicStatusMessage(status) {
@@ -60,8 +92,11 @@ export function createAcademicActivityClient({ supabase, userId, storage = globa
     if (!rpc) throw new TypeError('academic_sensitive_action_unknown')
     try {
       const response = await supabase.rpc(rpc, rpcParams(payload, actionId))
+      if (type === 'daily_log_create' && MISSING_RPC_CODES.has(String(response?.error?.code ?? ''))) {
+        return createLegacyDailyLog({ supabase, userId, payload, actionId })
+      }
       const result = response?.error
-        ? { status: ['PGRST202', '42883'].includes(response.error.code) ? 'schema_unavailable' : response.error.code === '42501' ? 'permission_denied' : 'retryable_failure' }
+        ? academicErrorResult(response.error)
         : response?.data ?? { status: 'retryable_failure' }
       return { result, status: mapAcademicResult(result), actionId }
     } catch {
