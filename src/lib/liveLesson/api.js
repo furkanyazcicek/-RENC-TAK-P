@@ -17,6 +17,10 @@
  */
 import { supabase } from '../supabaseClient'
 import {
+  joinLessonWithCompatibility,
+  leaveLessonWithCompatibility,
+} from './attendanceCompatibility'
+import {
   isLessonPreview,
   previewBoardPages,
   previewHomeworks,
@@ -347,7 +351,14 @@ function clearLessonAction(action) {
 export async function joinLesson(sessionId) {
   if (isLessonPreview()) return { participant_role: 'teacher', lesson_status: 'live' }
   const action = durableLessonAction('join', sessionId)
-  const result = unwrap(await supabase.rpc('join_academic_lesson', { p_session_id: sessionId, p_client_action_id: action.id }), 'Derse katılınamadı.')
+  const result = unwrap(
+    await joinLessonWithCompatibility(
+      (name, params) => supabase.rpc(name, params),
+      sessionId,
+      action.id
+    ),
+    'Derse katılınamadı.'
+  )
   if (!['created', 'duplicate', 'no_change'].includes(result?.status)) throw new Error('Derse katılınamadı.')
   clearLessonAction(action)
   return result
@@ -358,12 +369,15 @@ export async function leaveLesson(sessionId, seconds) {
   // Ayrılış kaydı en iyi çabadır: sekme kapanırken hata çıkarsa kullanıcıya
   // gösterecek ekran zaten yok, ama süre kaydı da kritik değil.
   const action = durableLessonAction('leave', sessionId)
-  const { data, error } = await supabase.rpc('leave_academic_lesson', {
-    p_session_id: sessionId,
-    p_seconds: Math.max(0, Math.round(seconds || 0)),
-    p_client_action_id: action.id,
-  })
-  if (!error && ['created', 'duplicate', 'no_change'].includes(data?.status)) clearLessonAction(action)
+  const safeSeconds = Math.max(0, Math.round(seconds || 0))
+  const { data, error } = await leaveLessonWithCompatibility(
+    (name, params) => supabase.rpc(name, params),
+    sessionId,
+    safeSeconds,
+    action.id
+  )
+  // Eski RPC void döner; hatasız tamamlanması da kalıcı eylemi temizler.
+  if (!error && (!data || ['created', 'duplicate', 'no_change'].includes(data?.status))) clearLessonAction(action)
   if (error) console.warn('Ders ayrılış kaydı yazılamadı:', error.message)
 }
 
