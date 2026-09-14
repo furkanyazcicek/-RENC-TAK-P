@@ -1,0 +1,51 @@
+DRKOÇ AI Koç Faz 2 — veri ağı kabul testi
+Komut: npm run test:ai-koc-faz-2
+Exit code: 0
+Duvar süresi (s): 4.383222667
+
+
+> ogrenci-takip@1.0.0 test:ai-koc-faz-2
+> node scripts/test-phase-2-learning-network.mjs
+
+✓ Kanonik serileştirme ve semantik fingerprint
+✓ SOURCE_CONTRACT — 38 satır ve immutable parity
+✓ M03 — adaptDailyLog ve doğrulanmış sahiplik alımı
+✓ İstemci ayrıcalıklı alan reddi
+✓ Tekilleştirme — duplicate, conflict ve iki gerçek istemci eylemi
+✓ Kimlik karantinası ve konu projeksiyonu dışlama
+✓ Kaynak health — available/empty/unavailable/degraded
+✓ S02 — aynı kanonik konu farklı kaynaklarda ayrı provenance
+✓ S05 — belirsizlik karantinası ve düşük örneklem
+✓ S07 — topic_matched=false ve net formülü sınırı
+✓ S08 — doğrulanmış öğretmen ilişkisi ve paylaşılabilir dar alan
+✓ S10 — dört dil kendi kaynak ad alanında kalıyor
+✓ S11 — correction/tombstone etkin sonucu 40→20→0
+✓ S14 — öğrenci kapsamı ve sahiplik ayrımı
+✓ Deterministik diagnostic projection checksum
+✓ Backfill — dry-run/apply/retry/pause-resume/cancel/poison
+
+Faz 2 JavaScript testleri geçti: 16 bölüm, 166 doğrulama.
+✓ Ön koşullar ve Faz 1/2 saf sözleşme paketi (34.237 ms)
+✓ Migration, 38/38 parity ve şema envanteri (907.028 ms)
+✓ Hatalı migration tam rollback ve yeni proje kurulum parity (1220.952 ms)
+✓ M03: auth.uid sahiplik sarmalayıcısından gerçek PG alımı (19.641 ms)
+✓ Migration ikinci uygulama: veri korunumu ve nesne tekilliği (19.276 ms)
+✓ DB tekilleştirme: 2, 10, paralel 10, retry ve conflict (41.596 ms)
+✓ Karantina, ayrıcalıklı alanlar ve SQL şema sınırları (19.883 ms)
+✓ Correction/tombstone 40→20→0 ve SQL/JS etkin görünüm parity (15.877 ms)
+✓ Snapshot son-sürüm ve geç-gelen ordering semantiği (7.076 ms)
+✓ Diagnostic projection: replay, generation, cursor, retry ve claim (89.044 ms)
+✓ Backfill: PG run store, dry-run, apply, retry, cursor ve iptal (31.463 ms)
+✓ Kısmi şema ve source health dört durum ayrımı (524.488 ms)
+✓ Kişisel verisiz operasyonel ölçüm özeti (5.973 ms)
+✓ RLS, grant/revoke ve SECURITY DEFINER arama yolu (13.513 ms)
+✓ Hesap silme cascade ve actor ON DELETE SET NULL (15.4 ms)
+✓ 10.000 sentetik kanıt: indeksli sorgular ve sınırlı batch (1329.428 ms)
+✓ Yerel eşzamanlılık sınırı ve yan etki denetimi (6.438 ms)
+
+Faz 2 veri ağı kabul testleri geçti: 17 bölüm, 353 doğrulama.
+
+
+[Kanıt notu] Tek satırlık FAZ2_RESULT_JSON çıktısı, veri kaybı olmadan
+faz-2-kabul-sonucu.json ve migration-sema-ozeti.json dosyalarına ayrıştırıldı.
+

@@ -1,14 +1,20 @@
 import { BookOpen, Clock3, Layers, Sparkles } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { normalizeLessonDocument } from '../../lib/lesson/schema'
 import { Badge } from '../ui'
 
 export default function StructuredLessonCard({ lesson, canManage, onEdit }) {
+  const location = useLocation()
   const document = normalizeLessonDocument(lesson.document)
   const foundation = lesson.learning_mode === 'foundation'
+  const returnTo = `${location.pathname}${location.search}${location.hash}`
   return (
     <article className="card-interactive group flex min-h-52 flex-col overflow-hidden">
-      <Link to={`/kutuphane/notlar/ders/${lesson.id}`} className="focus-ring flex flex-1 flex-col p-4">
+      <Link
+        to={`/kutuphane/notlar/ders/${lesson.id}`}
+        state={{ returnTo }}
+        className="focus-ring flex flex-1 flex-col p-4"
+      >
         <div className="flex items-start justify-between gap-2">
           <span className={`grid h-11 w-11 place-items-center rounded-xl ring-1 ring-inset ${foundation ? 'bg-aqua-50 text-aqua-700 ring-aqua-500/10' : 'bg-brand-50 text-brand-600 ring-brand-500/10'}`}>
             {foundation ? <Layers className="h-5 w-5" aria-hidden="true" /> : <BookOpen className="h-5 w-5" aria-hidden="true" />}

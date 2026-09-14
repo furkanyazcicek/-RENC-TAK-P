@@ -131,9 +131,9 @@ export default function Kilavuz() {
           Verilerim nerede duruyor?
         </h2>
         <p className="mt-1.5 text-sm leading-relaxed text-ink/65">
-          İspanyolca ilerlemen şu an yalnızca kullandığın tarayıcıda saklanıyor; başka bir cihaza
-          geçtiğinde yanında gelmez. Gelişim ekranından yedek indirebilirsin. Bu bölüm buluta
-          taşındığında ilerlemen aktarılacak.
+          Oturum açıkken İspanyolca ilerlemen hesabına bağlıdır ve diğer cihazlarında da güncellenir.
+          Bu cihazdaki eski anonim kayıt varsa, Gelişim ekranında açıkça onay vermeden hesabına
+          aktarılmaz. Aynı ekrandan yedek indirebilir ve eşitleme durumunu görebilirsin.
         </p>
         <Button as={Link} to="/ispanyolca/gelisim" variant="secondary" size="sm" className="mt-3">
           Gelişim ekranına git

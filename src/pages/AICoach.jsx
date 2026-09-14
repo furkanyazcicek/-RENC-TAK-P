@@ -15,12 +15,14 @@ import {
   deleteAllConversations,
   deleteConversation,
   getConversation,
+  getBriefing,
   listConversations,
   sendMessage,
 } from '../lib/aiCoach'
 import { AppShell, Badge, Button, Card, EmptyState, IconButton, Modal, Spinner, useToast } from '../components/ui'
 import ChatMessage, { CoachAvatar } from '../components/ai/ChatMessage'
 import QuickActions from '../components/ai/QuickActions'
+import CoachingTaskCard from '../components/ai/CoachingTaskCard'
 import { cn } from '../lib/cn'
 import { captureStudentProfile, isProductCapture } from '../lib/productCapture'
 
@@ -94,6 +96,104 @@ const CAPTURE_MESSAGES = [
   },
 ]
 
+const PHASE_8_RECOMMENDATION = {
+  type: 'accept_coaching_recommendation',
+  client_action_id: '88000000-0000-4000-8000-000000000011',
+  title: 'Fonksiyonlar · kısa ölçüm',
+  label: 'Görevi Planla',
+  summary: '15 soru · orta güven',
+  payload: {
+    recommendation: {
+      contract_version: 'coaching-recommendation@1',
+      recommendation_id: '88000000-0000-4000-8000-000000000010',
+      recommendation_version: 1,
+      student_id: null,
+      created_at: '2026-09-13T12:00:00.000Z',
+      education_context_id: 'drkoc:curriculum:context:v1:tyt',
+      subject_id: 'drkoc:curriculum:subject:v1:s008',
+      topic_id: 'drkoc:curriculum:topic:v1:t0052',
+      objective_id: null,
+      subject_label: 'Matematik',
+      topic_label: 'Fonksiyonlar',
+      recommendation_type: 'practice',
+      reason_summary: 'Son iki doğrudan ölçümde bu konuda desteğe ihtiyaç görünürken yeni bir karşılaştırılabilir sonuç henüz yok.',
+      evidence_refs: [
+        'drkoc-ref:v1:question_bank:phase8evidence01',
+        'drkoc-ref:v1:practice_exams:phase8evidence02',
+      ],
+      projection_generation_id: '88000000-0000-4000-8000-000000000001',
+      confidence_level: 'medium',
+      data_limitations: ['Platform dışı çalışma beyanı ölçülmüş sonuç değildir.'],
+      suggested_amount: { kind: 'questions', value: 15 },
+      target: {
+        status: 'available',
+        target_type: 'question_filter',
+        target_ref: 'question-filter:tyt:matematik:fonksiyonlar',
+        path: '/kutuphane/sorular/tyt/matematik/fonksiyonlar',
+        label: 'Fonksiyonlar sorularını aç',
+        published: true,
+        accessible: true,
+        level_appropriate: true,
+      },
+      success_criteria: {
+        kind: 'minimum_count',
+        minimum_count: 15,
+        evidence_types: ['question_answered', 'test_completed'],
+        source_codes: ['db_question_test', 'bundled_question_test'],
+        description: 'Görevden sonra en az 15 soru sonucu kaydedildiğinde platform doğrular.',
+      },
+      decision: 'pending',
+      valid_until: '2026-09-20T12:00:00.000Z',
+      status: 'proposed',
+    },
+  },
+}
+
+function phase8CaptureState() {
+  if (typeof window === 'undefined') return null
+  return new URLSearchParams(window.location.search).get('faz8-onizleme')
+}
+
+function captureMessages() {
+  const state = phase8CaptureState()
+  if (!state) return CAPTURE_MESSAGES
+  const recommendationAction = state === 'oner'
+    ? PHASE_8_RECOMMENDATION
+    : state === 'onay'
+      ? { ...PHASE_8_RECOMMENDATION, preview_state: 'done' }
+      : null
+  return [
+    { id: 'capture-phase8-user', role: 'user', content: 'Bugün ne çalışmalıyım ve bittiğini nasıl anlayacağız?' },
+    {
+      id: 'capture-phase8-ai', role: 'assistant',
+      content: 'Fonksiyonlar için önce kısa ve karşılaştırılabilir bir ölçüm öneriyorum. Görev, yalnız sen onayladıktan sonra planlanacak.',
+      actions: recommendationAction ? [recommendationAction] : [],
+    },
+  ]
+}
+
+function captureCoachingBriefing(state) {
+  if (!state || state === 'oner' || state === 'onay') return null
+  if (state === 'bos') return { mode: 'empty', item: null }
+  return {
+    mode: state === 'hata' ? 'error' : state === 'tamam' ? 'complete' : 'ready',
+    item: {
+      id: '88000000-0000-4000-8000-000000000020',
+      task_id: '88000000-0000-4000-8000-000000000020',
+      title: 'Fonksiyonlar · 15 soru',
+      detail: state === 'tamam'
+        ? 'Yeni ve karşılaştırılabilir sonuç göreve bağlandı.'
+        : 'Görevden sonra kaydedilen 9 soru sonucu eşleşti; 6 soru daha gerekiyor.',
+      status: state === 'tamam' ? 'evaluated' : 'partial',
+      progress_ratio: state === 'tamam' ? 1 : 0.6,
+      outcome: state === 'tamam'
+        ? 'Sonrasında ölçümlerde iyileşme görüldü; bu tek başına neden-sonuç kanıtı değildir.'
+        : null,
+      target: PHASE_8_RECOMMENDATION.payload.recommendation.target,
+    },
+  }
+}
+
 export default function AICoach() {
   const { profile } = useAuth()
   const captureMode = isProductCapture()
@@ -103,13 +203,16 @@ export default function AICoach() {
   const toast = useToast()
 
   const [conversationId, setConversationId] = useState(null)
-  const [messages, setMessages] = useState(() => (captureMode ? CAPTURE_MESSAGES : []))
+  const [messages, setMessages] = useState(() => (captureMode ? captureMessages() : []))
   const [input, setInput] = useState('')
   const [streaming, setStreaming] = useState(false)
   const [status, setStatus] = useState(null)
   const [historyOpen, setHistoryOpen] = useState(false)
   const [conversations, setConversations] = useState([])
   const [loadingConversation, setLoadingConversation] = useState(false)
+  const [coachingFocus, setCoachingFocus] = useState(() => (
+    captureMode ? captureCoachingBriefing(phase8CaptureState()) : null
+  ))
 
   const scrollRef = useRef(null)
   const textareaRef = useRef(null)
@@ -263,6 +366,24 @@ export default function AICoach() {
     refreshConversations()
   }, [refreshConversations, conversationId])
 
+  const refreshCoachingFocus = useCallback(async () => {
+    if (captureMode) {
+      setCoachingFocus(captureCoachingBriefing(phase8CaptureState()))
+      return
+    }
+    try {
+      const briefing = await getBriefing()
+      const item = briefing?.coaching?.daily?.primary
+      setCoachingFocus(item?.source === 'coaching_task' ? { mode: 'ready', item } : null)
+    } catch {
+      setCoachingFocus(null)
+    }
+  }, [captureMode])
+
+  useEffect(() => {
+    refreshCoachingFocus()
+  }, [refreshCoachingFocus])
+
   async function openConversation(id) {
     setHistoryOpen(false)
     setLoadingConversation(true)
@@ -372,16 +493,24 @@ export default function AICoach() {
             <div className="flex h-full items-center justify-center">
               <Spinner />
             </div>
-          ) : isEmpty ? (
+          ) : isEmpty && !coachingFocus ? (
             <WelcomeScreen name={visibleProfile?.full_name?.split(' ')[0]} onSelect={submit} />
           ) : (
             <div className="flex flex-col gap-5">
+              {coachingFocus && (
+                <CoachingTaskCard
+                  item={coachingFocus.item}
+                  mode={coachingFocus.mode}
+                  onChanged={refreshCoachingFocus}
+                />
+              )}
               {messages.map((message, i) => (
                 <ChatMessage
                   key={message.id ?? i}
                   message={message}
                   studentName={visibleProfile?.full_name}
                   streaming={streaming && i === messages.length - 1 && message.role === 'assistant'}
+                  onActionCompleted={refreshCoachingFocus}
                   onRetry={
                     message.error && !streaming && lastPromptRef.current
                       ? () => {

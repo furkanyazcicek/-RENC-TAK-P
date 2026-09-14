@@ -281,7 +281,7 @@ section('K08 — M01–M38 kayıt defteri ve rota kapsamı eksiksiz', () => {
   const audit = validateSourceRegistry()
   check(audit.ok, JSON.stringify(audit.errors))
   equal(audit.counts.sources, 38)
-  equal(audit.counts.appRoutes, 62)
+  equal(audit.counts.appRoutes, 63)
   equal(audit.counts.languageRoutes, 60)
   equal(SOURCE_REGISTRY.map((entry) => entry.matrix_id), Array.from({ length: 38 }, (_, i) => `M${String(i + 1).padStart(2, '0')}`))
   SOURCE_REGISTRY.forEach((entry) => check(SOURCE_CLASSIFICATIONS.includes(entry.classification)))
@@ -289,7 +289,7 @@ section('K08 — M01–M38 kayıt defteri ve rota kapsamı eksiksiz', () => {
   const appText = readFileSync(new URL('../src/App.jsx', import.meta.url), 'utf8')
   const actualRoutes = [...appText.matchAll(/\bpath\s*=\s*["']([^"']+)["']/g)].map((match) => match[1])
   const registeredRoutes = APP_ROUTE_SOURCE_MAP.map((entry) => entry.route)
-  equal(new Set(actualRoutes).size, 62)
+  equal(new Set(actualRoutes).size, 63)
   equal([...new Set(actualRoutes)].sort(), [...registeredRoutes].sort())
 
   const languageFiles = ['Ingilizce', 'Almanca', 'Fransizca', 'Ispanyolca']

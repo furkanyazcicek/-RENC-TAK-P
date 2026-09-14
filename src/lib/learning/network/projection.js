@@ -195,6 +195,7 @@ export async function processDiagnosticBatch({
         while (true) {
           const page = await (claim.repository ?? repository).listLedgerBatch({
             studentId,
+            sourceCode: claim.source_code,
             afterSequence: cursor,
             limit: 500,
           })

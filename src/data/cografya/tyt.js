@@ -13,6 +13,10 @@ export const TYT_AYARLARI = {
   kaynakIdleri: ['osym-2026-tyt', 'meb-cografya-2026'],
 }
 
+// Metinden, ekrandaki sıradan ve tarih damgasından bağımsız kalıcı
+// assessment kimliği. Sürüm/hash içerik manifestinden türetilir.
+export const TYT_DENEME_ID = 'cografya-atlasi-tyt-kamp-v1'
+
 export const TYT_KAPSAM_MATRISI = [
   ['tyt-01', 'Coğrafyanın bölümleri ve coğrafi bakış', 'COĞ.9.1.1', 'düşük', 'Kavram ağı'],
   ['tyt-02', 'Dünya’nın şekli ve hareketleri', 'COĞ.9.2.2', 'orta', 'Dünya–Güneş modeli'],
@@ -126,3 +130,5 @@ export const TYT_SORU_BANKASI = [
 export const tytSorulariniSec = (sayi = TYT_AYARLARI.soruSayisi) => (
   TYT_SORU_BANKASI.slice(0, Math.max(1, Math.min(sayi, TYT_SORU_BANKASI.length)))
 )
+
+export const TYT_DENEME_SORULARI = Object.freeze(tytSorulariniSec())

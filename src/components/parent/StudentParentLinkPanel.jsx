@@ -20,6 +20,7 @@ import {
   respondParentLink,
   revokeParentLink,
 } from '../../lib/parentLink'
+import { isProductCapture } from '../../lib/productCapture'
 import { Alert, Badge, Button, EmptyState, useToast } from '../ui'
 import { Panel } from '../dashboard'
 
@@ -46,6 +47,14 @@ export default function StudentParentLinkPanel() {
 
   const load = useCallback(async () => {
     setLoading(true)
+    if (isProductCapture()) {
+      setCode(null)
+      setExpiresAt(null)
+      setLinks([])
+      setError('')
+      setLoading(false)
+      return
+    }
     const [codeRes, linkRes] = await Promise.all([getActiveParentCode(), listStudentParentLinks()])
 
     if (codeRes.error) setError(codeRes.error)

@@ -16,6 +16,7 @@
  */
 
 import { logSolveError } from '../errors.js'
+import { getAcademicSolveWriter } from './academicWriter.js'
 
 const SESSION_COLUMNS = `
   id, status, source, image_path, question_text, student_note,
@@ -45,18 +46,16 @@ const LEGACY_HISTORY_COLUMNS =
  * şeyi bozmak olurdu. Kayıt olmadan yalnızca "Neden?"/geçmiş özellikleri
  * çalışmaz ve bu istemcide açıkça ele alınıyor.
  */
-export async function saveSession(supabase, studentId, payload) {
+export async function saveSession(supabase, studentId, payload, clientActionId) {
   try {
-    const { data, error } = await supabase
-      .from('ai_solution_sessions')
-      .insert({ student_id: studentId, ...payload })
-      .select('id, created_at')
-      .single()
-
-    if (error) throw error
-    return data
+    const writer = getAcademicSolveWriter()
+    const { data, error } = await writer.rpc('finalize_academic_ai_solve', {
+      p_student_id: studentId, p_client_action_id: clientActionId, p_result: payload,
+    })
+    if (error || !['created', 'duplicate'].includes(data?.status)) throw error ?? new Error(data?.status ?? 'finalize_failed')
+    return { id: data.session_id, created_at: null }
   } catch (error) {
-    logSolveError('saveSession', error, { studentId })
+    logSolveError('saveSession', error)
     return null
   }
 }
@@ -75,7 +74,7 @@ export async function loadSession(supabase, studentId, sessionId) {
     .maybeSingle()
 
   if (error) {
-    logSolveError('loadSession', error, { studentId })
+    logSolveError('loadSession', error)
     return null
   }
   return data
@@ -101,7 +100,7 @@ export async function listSessions(supabase, studentId, { limit = 20, offset = 0
   }
 
   if (error) {
-    logSolveError('listSessions', error, { studentId })
+    logSolveError('listSessions', error)
     return []
   }
   return (data ?? []).map((row) => ({
@@ -118,106 +117,66 @@ export async function listSessions(supabase, studentId, { limit = 20, offset = 0
  */
 export async function recordEvent(supabase, studentId, sessionId, event) {
   try {
-    await supabase.from('ai_solution_events').insert({
-      session_id: sessionId,
-      student_id: studentId,
-      kind: event.kind,
-      step_index: event.stepIndex ?? null,
-      question: event.question ?? null,
-      answer: event.answer ?? null,
-      model_role: event.role ?? null,
-      model_id: event.modelId ?? null,
-      input_tokens: event.usage?.input ?? null,
-      output_tokens: event.usage?.output ?? null,
-      cost_usd: event.costUsd ?? null,
-      duration_ms: event.durationMs ?? null,
+    const writer = getAcademicSolveWriter()
+    const { data, error } = await writer.rpc('record_academic_ai_solve_help', {
+      p_student_id: studentId,p_session_id: sessionId,p_kind: event.kind,p_step_index: event.stepIndex ?? null,
+      p_question: event.question ?? null,p_answer: event.answer ?? null,p_model_role: event.role ?? null,
+      p_model_id: event.modelId ?? null,p_client_action_id: event.clientActionId,
     })
+    if (error || !['created', 'duplicate', 'no_change'].includes(data?.status)) throw error ?? new Error(data?.status ?? 'event_failed')
+    return true
   } catch (error) {
-    logSolveError('recordEvent', error, { studentId })
-  }
-
-  // Yardım sayacı yalnızca GERÇEK zorlanma sinyallerinde artar.
-  // "Alternatif yöntem" merak, "kontrol" ayrı bir akış — ikisi de
-  // zorlandığı anlamına gelmez ve sayacı şişirirse veri yanıltır.
-  if (event.kind === 'why' || event.kind === 'stuck') {
-    await bumpHelpCounter(supabase, studentId, sessionId)
+    logSolveError('recordEvent', error)
+    return false
   }
 }
 
-/**
- * Sayaç artırımı OKU-YAZ ile yapılıyor, atomik `increment` ile değil.
- * Gerekçe: atomik artırım bir Postgres fonksiyonu (RPC) gerektirirdi,
- * bu da göçe fazladan bir nesne eklerdi. Buradaki yarış koşulu riski
- * gerçek ama zararsız: aynı öğrencinin aynı anda iki "Neden?" tıklaması
- * sayacı 2 yerine 1 artırabilir. Bu bir istatistik alanı; hassas değil.
- */
-async function bumpHelpCounter(supabase, studentId, sessionId) {
+export async function recordCheckEvent(studentId, sessionId, event) {
   try {
-    const { data } = await supabase
-      .from('ai_solution_sessions')
-      .select('help_requested')
-      .eq('id', sessionId)
-      .eq('student_id', studentId)
-      .maybeSingle()
-
-    if (!data) return
-
-    await supabase
-      .from('ai_solution_sessions')
-      .update({ help_requested: (data.help_requested ?? 0) + 1 })
-      .eq('id', sessionId)
-      .eq('student_id', studentId)
+    const writer = getAcademicSolveWriter()
+    const { data, error } = await writer.rpc('record_academic_ai_solve_check', {
+      p_student_id: studentId,p_session_id: sessionId,p_student_correct: event.studentCorrect,
+      p_event_payload: { answer: event.answer ?? null, model_role: event.role ?? null, model_id: event.modelId ?? null, error_type: event.errorType ?? null },
+      p_client_action_id: event.clientActionId,
+    })
+    if (error || !['created', 'duplicate', 'no_change'].includes(data?.status)) throw error ?? new Error(data?.status ?? 'check_failed')
+    return true
   } catch (error) {
-    logSolveError('bumpHelpCounter', error, { studentId })
+    logSolveError('recordCheckEvent', error)
+    return false
   }
 }
 
 /** Öğrencinin 👍/👎 geri bildirimi (§42). */
-export async function saveFeedback(supabase, studentId, sessionId, { feedback, reason, note }) {
-  const { error } = await supabase
-    .from('ai_solution_sessions')
-    .update({
-      feedback,
-      feedback_reason: reason ?? null,
-      // Serbest metin 500 karaktere kırpılır: buraya uzun kişisel bilgi
-      // yazılmasının önüne geçmek de dahil (§43 KVKK notu).
-      feedback_note: typeof note === 'string' ? note.slice(0, 500) : null,
-    })
-    .eq('id', sessionId)
-    .eq('student_id', studentId)
+export async function saveFeedback(supabase, studentId, sessionId, { feedback, reason, note, clientActionId }) {
+  const { data, error } = await supabase.rpc('feedback_academic_ai_solve', {
+    p_session_id: sessionId,p_feedback: feedback,p_reason: reason ?? null,
+    p_note: typeof note === 'string' ? note.slice(0, 500) : null,p_client_action_id: clientActionId,
+  })
 
   if (error) {
-    logSolveError('saveFeedback', error, { studentId })
+    logSolveError('saveFeedback', error)
     return false
   }
-  return true
+  return ['created', 'duplicate', 'no_change'].includes(data?.status)
 }
 
 /** Öğrencinin "ben bunu doğru çözmüştüm / çözememiştim" beyanı (§19). */
-export async function saveSelfReport(supabase, studentId, sessionId, studentCorrect) {
-  const { error } = await supabase
-    .from('ai_solution_sessions')
-    .update({ student_correct: studentCorrect })
-    .eq('id', sessionId)
-    .eq('student_id', studentId)
-
-  return !error
+export async function saveSelfReport(supabase, studentId, sessionId, studentCorrect, clientActionId) {
+  const { data, error } = await supabase.rpc('report_academic_ai_solve_result', {
+    p_session_id: sessionId,p_student_correct: studentCorrect,p_client_action_id: clientActionId,
+  })
+  return !error && ['created', 'duplicate', 'no_change'].includes(data?.status)
 }
 
 /** Öğrencinin tekrar çalışma durumunu kaydeder. */
-export async function saveReviewStatus(supabase, studentId, sessionId, reviewStatus) {
-  const completed = reviewStatus === 'completed'
-  const { error } = await supabase
-    .from('ai_solution_sessions')
-    .update({
-      review_status: reviewStatus,
-      reviewed_at: completed ? new Date().toISOString() : null,
-    })
-    .eq('id', sessionId)
-    .eq('student_id', studentId)
+export async function saveReviewStatus(supabase, studentId, sessionId, reviewStatus, clientActionId) {
+  const { data, error } = await supabase.rpc('update_academic_ai_review', {
+    p_session_id: sessionId,p_review_status: reviewStatus,p_client_action_id: clientActionId,
+  })
 
-  if (error) logSolveError('saveReviewStatus', error, { studentId })
-  return !error
+  if (error) logSolveError('saveReviewStatus', error)
+  return !error && ['created', 'duplicate', 'no_change'].includes(data?.status)
 }
 
 /**

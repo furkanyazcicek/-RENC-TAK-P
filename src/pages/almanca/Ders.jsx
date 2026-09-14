@@ -15,7 +15,7 @@ import DersKartlari from '../../components/dil/DersKartlari'
 import { dersBul, dersKelimeleri, modulDestesi, notBul } from '../../content/almanca'
 import { DURUM } from '../../lib/almanca/cevap'
 import {
-  beceriGuncelle, dersBasla, dersTamamla, DURUMLAR, DURUM_ETIKETLERI, yazmaKaydet,
+  beceriGuncelle, dersBasla, dersTamamla, dilEtkinligiKaydet, DURUMLAR, DURUM_ETIKETLERI, yazmaKaydet,
 } from '../../lib/almanca/ilerleme'
 import { BECERILER } from '../../lib/almanca/seviyeler'
 
@@ -101,6 +101,9 @@ export default function Ders() {
       toplam: yeniSkor.toplam,
       dakika,
       izler: izRef.current,
+      icerikSurumu: String(ders.surum ?? 1),
+      beceri: ders.odakBeceri ?? 'general',
+      seviye: ders.seviye,
     })
     const oran = yeniSkor.toplam ? Math.round((yeniSkor.dogru / yeniSkor.toplam) * 100) : 0
     ;(ders.beceriler ?? [ders.odakBeceri]).forEach((b) => beceriGuncelle(b, oran))
@@ -109,6 +112,8 @@ export default function Ders() {
 
   const cevapAlindi = (s) => {
     const dogruMu = s.durum === DURUM.DOGRU || s.durum === DURUM.YAKIN
+    const etkinlik = asama === 'sinav' ? sinav[sinavIndeks] : alistirmalar[alistirmaIndeks]
+    dilEtkinligiKaydet({ activityType: 'lesson_result_snapshot', activityId: `${ders.id}:${asama}:${etkinlik?.id ?? 'bilinmeyen'}`, contentRevision: String(ders.surum ?? 1), skillDomain: etkinlik?.beceri ?? ders.odakBeceri ?? 'general', correctCount: dogruMu ? 1 : 0, incorrectCount: dogruMu ? 0 : 1, blankCount: 0, helpCount: dogruMu ? 0 : 1, completionStatus: 'answered', cefrLevel: ders.seviye })
     skorRef.current = {
       dogru: skorRef.current.dogru + (dogruMu ? 1 : 0),
       toplam: skorRef.current.toplam + 1,
@@ -260,6 +265,7 @@ export default function Ders() {
               baslangicTaslak={ilerleme.yazmalar?.[alistirmalar[alistirmaIndeks].id]?.taslak ?? ''}
               onTamamla={({ ilkSurum, sonSurum }) => {
                 yazmaKaydet(alistirmalar[alistirmaIndeks].id, { taslak: ilkSurum, son: sonSurum })
+                dilEtkinligiKaydet({ activityType: 'self_report_snapshot', activityId: `${ders.id}:alistirma:${alistirmalar[alistirmaIndeks].id}`, contentRevision: String(ders.surum ?? 1), skillDomain: 'yazma', completionStatus: 'completed', cefrLevel: ders.seviye })
                 // Yazma görevi doğru/yanlış olarak puanlanmaz; tamamlanması
                 // yeterlidir. Skora "yapıldı" olarak girer.
                 skorRef.current = {

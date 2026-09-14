@@ -1,0 +1,31 @@
+{
+  "schema_version": "phase-5-device-import-dry-run@1",
+  "mode": "synthetic_device_import_dry_run",
+  "candidates": 4,
+  "validated": 4,
+  "would_write": 4,
+  "live_writes": 0,
+  "languages": {
+    "en": {
+      "candidates": 1,
+      "validated": 1,
+      "would_write": 1
+    },
+    "de": {
+      "candidates": 1,
+      "validated": 1,
+      "would_write": 1
+    },
+    "fr": {
+      "candidates": 1,
+      "validated": 1,
+      "would_write": 1
+    },
+    "es": {
+      "candidates": 1,
+      "validated": 1,
+      "would_write": 1
+    }
+  },
+  "note": "Sunucu localStorage verisini toplu okuyamaz; canlı aktarım yalnız ilgili cihazda açık öğrenci onayıyla mümkündür."
+}

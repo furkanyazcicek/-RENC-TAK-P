@@ -1,0 +1,123 @@
+{
+  "status": "passed",
+  "healthy": {
+    "version": "learning-hardening-observability@1",
+    "status": "healthy",
+    "checks": [
+      {
+        "metric": "source_last_success_age_minutes",
+        "operator": "max",
+        "threshold": 60,
+        "owner": "learning_platform",
+        "actual": 2,
+        "breached": false
+      },
+      {
+        "metric": "event_rejection_rate",
+        "operator": "max",
+        "threshold": 0.02,
+        "owner": "source_owner",
+        "actual": 0.005,
+        "breached": false
+      },
+      {
+        "metric": "queue_lag_minutes",
+        "operator": "max",
+        "threshold": 5,
+        "owner": "learning_platform",
+        "actual": 1,
+        "breached": false
+      },
+      {
+        "metric": "projection_age_minutes",
+        "operator": "max",
+        "threshold": 15,
+        "owner": "learning_platform",
+        "actual": 3,
+        "breached": false
+      },
+      {
+        "metric": "quarantine_rate",
+        "operator": "max",
+        "threshold": 0.01,
+        "owner": "data_quality",
+        "actual": 0.002,
+        "breached": false
+      },
+      {
+        "metric": "reconciliation_difference",
+        "operator": "max_abs",
+        "threshold": 0,
+        "owner": "data_quality",
+        "actual": 0,
+        "breached": false
+      },
+      {
+        "metric": "ai_tool_error_rate",
+        "operator": "max",
+        "threshold": 0.02,
+        "owner": "ai_platform",
+        "actual": 0.005,
+        "breached": false
+      },
+      {
+        "metric": "claim_validation_rejection_rate",
+        "operator": "max",
+        "threshold": 0.01,
+        "owner": "ai_quality",
+        "actual": 0.003,
+        "breached": false
+      },
+      {
+        "metric": "coach_response_p95_ms",
+        "operator": "max",
+        "threshold": 60000,
+        "owner": "ai_platform",
+        "actual": 900,
+        "breached": false
+      },
+      {
+        "metric": "coach_cost_usd_p95",
+        "operator": "max",
+        "threshold": 0.01,
+        "owner": "product_owner",
+        "actual": 0.00192,
+        "breached": false
+      },
+      {
+        "metric": "broken_task_target_rate",
+        "operator": "max",
+        "threshold": 0.005,
+        "owner": "product_engineering",
+        "actual": 0,
+        "breached": false
+      },
+      {
+        "metric": "language_transfer_error_rate",
+        "operator": "max",
+        "threshold": 0.02,
+        "owner": "language_platform",
+        "actual": 0,
+        "breached": false
+      }
+    ],
+    "alarm_payload_fields": [
+      "metric",
+      "actual",
+      "threshold",
+      "owner",
+      "source_code",
+      "reason_code"
+    ],
+    "raw_student_text_allowed": false,
+    "raw_source_content_allowed": false
+  },
+  "alarm_probe": {
+    "metric": "reconciliation_difference",
+    "operator": "max_abs",
+    "threshold": 0,
+    "owner": "data_quality",
+    "actual": 1,
+    "breached": true
+  }
+}

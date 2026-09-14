@@ -1,3 +1,5 @@
+import lgsQuestionAvailability from '../../../generated/lgsQuestionAvailability.js'
+
 const BANK_ROOT = '/LGS_Turkce_Testleri'
 
 const BANK_TOPICS = [
@@ -62,32 +64,20 @@ export function lgsTurkceQuestionSetsForTopic(topicName, { examType, subjectName
   const topic = BANK_TOPICS.find((item) => item.libraryTopic === topicName)
   if (!topic) return []
 
-  const levels = ['Kolay', 'Orta', 'Zor']
-  const tests = []
-  
-  for (const level of levels) {
-    let testCount = level === 'Kolay' ? 10 : 1;
-    // Fiilde Çatı'nın 10 Orta testi var
-    if (topic.folder === 'Fiilde_Cati' && level === 'Orta') {
-      testCount = 10;
-    }
-    
-    for (let i = 1; i <= testCount; i++) {
-      tests.push({
-        id: `lgs-turkce-${topic.order}-test-${level.toLowerCase()}-${i}`,
-        title: `${topic.label} · ${level} Test ${i}`,
-        description: '10 soruluk konu testi',
-        difficulty: level.toLowerCase() === 'kolay' ? 'easy' : level.toLowerCase() === 'orta' ? 'medium' : 'hard',
-        question_count: 10,
-        subject: 'Türkçe',
-        topic: topic.label,
-        bankTopic: topic,
-        level,
-        testIndex: i,
-      })
-    }
-  }
-  return tests
+  return lgsQuestionAvailability.entries
+    .filter((entry) => entry.folder === topic.folder)
+    .map((entry) => ({
+      id: `lgs-turkce-${topic.order}-test-${entry.level.toLowerCase()}-${entry.test}`,
+      title: `${topic.label} · ${entry.level} Test ${entry.test}`,
+      description: `${entry.question_count} soruluk konu testi`,
+      difficulty: entry.level === 'Kolay' ? 'easy' : entry.level === 'Orta' ? 'medium' : 'hard',
+      question_count: entry.question_count,
+      subject: 'Türkçe',
+      topic: topic.label,
+      bankTopic: topic,
+      level: entry.level,
+      testIndex: entry.test,
+    }))
 }
 
 export async function loadLgsTurkceQuestionSet(testId) {
@@ -105,19 +95,43 @@ export async function loadLgsTurkceQuestionSet(testId) {
   if (!response.ok) return null
   
   const rawData = await response.json()
-  const questions = rawData.sorular.map((q) => ({
-    id: `${testId}-soru-${q.soru_no}`,
-    question: q.soru_metni,
-    options: Object.entries(q.secenekler).map(([key, val]) => ({ id: key, text: val })),
-    correctOptionId: q.dogru_cevap,
-    explanation: q.cozum || '',
-    difficulty: levelStr === 'kolay' ? 'easy' : levelStr === 'orta' ? 'medium' : 'hard',
-    topic: topic.label,
-  }))
+  const rawQuestions = Array.isArray(rawData)
+    ? rawData
+    : Array.isArray(rawData?.sorular)
+      ? rawData.sorular
+      : Array.isArray(rawData?.questions)
+        ? rawData.questions
+        : []
+
+  if (rawQuestions.length === 0) return null
+
+  const questions = rawQuestions.map((q, questionIndex) => {
+    const rawOptions = q.secenekler ?? q.options ?? {}
+    const options = Array.isArray(rawOptions)
+      ? rawOptions.map((option, optionIndex) => ({
+          id: typeof option === 'object' && option !== null
+            ? String(option.id ?? option.key ?? String.fromCharCode(65 + optionIndex))
+            : String.fromCharCode(65 + optionIndex),
+          text: typeof option === 'object' && option !== null
+            ? String(option.text ?? option.label ?? option.value ?? '')
+            : String(option),
+        }))
+      : Object.entries(rawOptions).map(([key, value]) => ({ id: key, text: String(value) }))
+
+    return {
+      id: `${testId}-soru-${q.soru_no ?? q.questionNumber ?? questionIndex + 1}`,
+      question: q.soru_metni ?? q.questionText ?? q.question ?? '',
+      options,
+      correctOptionId: String(q.dogru_cevap ?? q.correctAnswer ?? q.correctOptionId ?? ''),
+      explanation: q.cozum ?? q.explanation ?? '',
+      difficulty: levelStr === 'kolay' ? 'easy' : levelStr === 'orta' ? 'medium' : 'hard',
+      topic: topic.label,
+    }
+  })
 
   return {
     id: testId,
-    title: rawData.test_adi || `${topic.label} · ${level} Test ${test}`,
+    title: rawData?.test_adi ?? rawData?.title ?? `${topic.label} · ${level} Test ${test}`,
     description: 'Konu testi',
     difficulty: levelStr === 'kolay' ? 'easy' : levelStr === 'orta' ? 'medium' : 'hard',
     subject: 'Türkçe',

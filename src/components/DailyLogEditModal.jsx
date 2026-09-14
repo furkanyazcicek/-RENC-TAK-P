@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { supabase } from '../lib/supabaseClient';
+import useAcademicActivity from '../hooks/useAcademicActivity';
+import { academicStatusMessage } from '../lib/learning/academicActivity/client';
 import { splitSubjectTopic } from '../lib/topicHelpers';
 import Modal from './Modal';
 import { Alert, Button, Field, Input } from './ui';
 
 export default function DailyLogEditModal({ log, onClose, onUpdated }) {
+  const academic = useAcademicActivity();
   const { subject, topic } = splitSubjectTopic(log.topic);
   const [duration, setDuration] = useState(log.duration_minutes || 0);
   const [correct, setCorrect] = useState(log.correct || 0);
@@ -20,29 +22,18 @@ export default function DailyLogEditModal({ log, onClose, onUpdated }) {
     setError('');
     setSuccess(false);
 
-    // .select() olmadan Supabase, RLS bu satırı filtrelese bile hata
-    // döndürmez (sessizce 0 satır günceller) — bu yüzden gerçekten
-    // güncellenen satırı geri isteyip kontrol ediyoruz.
-    const { data, error: updateError } = await supabase
-      .from('daily_logs')
-      .update({
-        duration_minutes: Number(duration),
-        correct: Number(correct),
-        incorrect: Number(incorrect),
-        empty: Number(empty),
-      })
-      .eq('id', log.id)
-      .select();
+    const response = await academic.perform('daily_log_update', {
+      record_id: log.id,
+      duration_minutes: Number(duration),
+      correct: Number(correct),
+      incorrect: Number(incorrect),
+      empty: Number(empty),
+    });
 
     setLoading(false);
 
-    if (updateError) {
-      setError('Güncelleme başarısız: ' + updateError.message);
-      return;
-    }
-
-    if (!data || data.length === 0) {
-      setError('Kayıt güncellenemedi — bu kaydı düzenleme yetkiniz olmayabilir.');
+    if (response.status !== 'saved') {
+      setError(academicStatusMessage(response.status));
       return;
     }
 

@@ -1,0 +1,65 @@
+{
+  "status": "passed",
+  "profiles": [
+    {
+      "profile": "small",
+      "evidence_records": 250,
+      "projection_rows": 24,
+      "projection_ms": 0.384
+    },
+    {
+      "profile": "medium",
+      "evidence_records": 5000,
+      "projection_rows": 180,
+      "projection_ms": 8.583
+    },
+    {
+      "profile": "intense",
+      "evidence_records": 25000,
+      "projection_rows": 600,
+      "projection_ms": 20.528
+    }
+  ],
+  "measurements": {
+    "event_write_p95_ms": 1.074,
+    "projection_small_p95_ms": 0.384,
+    "projection_medium_p95_ms": 8.583,
+    "projection_intense_p95_ms": 20.528,
+    "overview_query_p95_ms": 0.167,
+    "topic_query_p95_ms": 0.165,
+    "coach_first_byte_contract_ms": 250,
+    "coach_total_contract_ms": 900,
+    "coach_context_chars": 11500,
+    "coach_tool_calls": 4,
+    "coach_prompt_tokens": 8000,
+    "coach_completion_tokens": 1200,
+    "synthetic_model_cost_usd_per_message": 0.00192,
+    "backfill_records_per_second_min": 1217849,
+    "phone_outbox_enqueue_p95_ms": 0.089
+  },
+  "budgets": {
+    "event_write_p95_ms": 120,
+    "projection_small_p95_ms": 350,
+    "projection_medium_p95_ms": 900,
+    "projection_intense_p95_ms": 2500,
+    "overview_query_p95_ms": 120,
+    "topic_query_p95_ms": 160,
+    "coach_first_byte_contract_ms": 4000,
+    "coach_total_contract_ms": 60000,
+    "coach_context_chars": 12000,
+    "coach_tool_calls": 4,
+    "coach_prompt_tokens": 8000,
+    "coach_completion_tokens": 1200,
+    "synthetic_model_cost_usd_per_message": 0.01,
+    "backfill_records_per_second_min": 100,
+    "phone_outbox_enqueue_p95_ms": 16
+  },
+  "model_tariff": {
+    "version": "openai-gpt-4o-mini-public-2026-09-13",
+    "input_usd_per_million": 0.15,
+    "output_usd_per_million": 0.6,
+    "paid_call_made": false
+  },
+  "query_plan_captured": true,
+  "cache_scope": "none_global_personal"
+}

@@ -1,0 +1,1043 @@
+{
+  "schema_version": "phase-9-acceptance@1",
+  "phase": 9,
+  "status": "passed",
+  "generated_at": "2026-09-13T15:03:49.761Z",
+  "sections": [
+    {
+      "name": "Ön koşullar, checksum ve beşli kaynak kapsamı",
+      "status": "passed",
+      "duration_ms": 19.621
+    },
+    {
+      "name": "API sınırları, hata günlükleri, enjeksiyon ve maliyet koruması",
+      "status": "passed",
+      "duration_ms": 200.338
+    },
+    {
+      "name": "Gerçek JWT, FORCE RLS ve çoklu bağlantılı PostgreSQL saldırı testi",
+      "status": "passed",
+      "duration_ms": 724.477
+    },
+    {
+      "name": "Mahremiyet, öğrenci kontrolü ve hesap silme",
+      "status": "passed",
+      "duration_ms": 0.429
+    },
+    {
+      "name": "Kaynak uzlaştırma, replay ve düzeltme kalıntısı",
+      "status": "passed",
+      "duration_ms": 0.975
+    },
+    {
+      "name": "Kesinti, yeniden deneme ve zehirli kayıt senaryoları",
+      "status": "passed",
+      "duration_ms": 1.523
+    },
+    {
+      "name": "Küçük, orta ve yoğun performans/maliyet bütçeleri",
+      "status": "passed",
+      "duration_ms": 34.945
+    },
+    {
+      "name": "24 sentetik altın profil ile AI Koç kalite eşiği",
+      "status": "passed",
+      "duration_ms": 0.339
+    },
+    {
+      "name": "Kişisel verisiz operasyonel gözlem ve alarm",
+      "status": "passed",
+      "duration_ms": 0.265
+    },
+    {
+      "name": "Sunucu bayrakları, gölge karşılaştırma ve güvenli geri dönüş",
+      "status": "passed",
+      "duration_ms": 0.564
+    },
+    {
+      "name": "Faz 10 pilot/geri dönüş planı ve sıfır canlı yan etki",
+      "status": "passed",
+      "duration_ms": 0.1
+    }
+  ],
+  "assertions": 109,
+  "scenarios": [
+    {
+      "name": "ingest_unavailable",
+      "status": "passed",
+      "evidence": "durable_or_safe_fallback"
+    },
+    {
+      "name": "database_timeout",
+      "status": "passed",
+      "evidence": "durable_or_safe_fallback"
+    },
+    {
+      "name": "worker_interrupted",
+      "status": "passed",
+      "evidence": "durable_or_safe_fallback"
+    },
+    {
+      "name": "double_worker",
+      "status": "passed",
+      "evidence": "durable_or_safe_fallback"
+    },
+    {
+      "name": "late_event",
+      "status": "passed",
+      "evidence": "durable_or_safe_fallback"
+    },
+    {
+      "name": "poison_record",
+      "status": "passed",
+      "evidence": "durable_or_safe_fallback"
+    },
+    {
+      "name": "model_timeout",
+      "status": "passed",
+      "evidence": "durable_or_safe_fallback"
+    },
+    {
+      "name": "partial_tool_failure",
+      "status": "passed",
+      "evidence": "durable_or_safe_fallback"
+    },
+    {
+      "name": "browser_refresh",
+      "status": "passed",
+      "evidence": "durable_or_safe_fallback"
+    },
+    {
+      "name": "language_network_outage",
+      "status": "passed",
+      "evidence": "durable_or_safe_fallback"
+    },
+    {
+      "name": "removed_target",
+      "status": "passed",
+      "evidence": "durable_or_safe_fallback"
+    }
+  ],
+  "gates": [
+    {
+      "id": 1,
+      "status": "passed",
+      "evidence": "11/11 zorunlu öğrenme yüzeyi ve 38/38 kaynak için beşli kanıt; kod/kayıt defteri drift sıfır."
+    },
+    {
+      "id": 2,
+      "status": "passed",
+      "evidence": "API ve gerçek JWT/FORCE RLS saldırı sınırları ile ham içerik minimizasyonu, kullanıcı kapsamlı dışa aktarım, unutma ve hesap silme zinciri birlikte doğrulandı."
+    },
+    {
+      "id": 3,
+      "status": "passed",
+      "evidence": "38/38 kaynak sayım farkı sıfır; tam/artımlı replay aynı; düzeltme ve silme eski sonucu yaşatmıyor."
+    },
+    {
+      "id": 4,
+      "status": "passed",
+      "evidence": "11/11 kesinti senaryosunda kuyruk/replay veya güvenli geri dönüş; veri kaybı ve çift sayım yok."
+    },
+    {
+      "id": 5,
+      "status": "passed",
+      "evidence": "Küçük/orta/yoğun hacimler, yazma/projeksiyon/sorgu/koç bağlamı/maliyet/backfill/telefon bütçeleri sayısal ve geçti."
+    },
+    {
+      "id": 6,
+      "status": "passed",
+      "evidence": "24 sentetik altın profil; 10 kritik metrik %100, açıklık/uygulanabilirlik %100; 12 örnek Faz 10 insan incelemesine seçildi."
+    },
+    {
+      "id": 7,
+      "status": "passed",
+      "evidence": "12 kişisel verisiz operasyon metriği ve alarm eşiği; kaynak/kullanıcı/test grubu bayrakları, gölge görünmezliği, ayrı yazma anahtarı ve güvenli geri dönüş birlikte doğrulandı."
+    },
+    {
+      "id": 8,
+      "status": "passed",
+      "evidence": "Faz 10 sentetik→test hesabı→sınırlı pilot sırası, günlük kontrol, durdurma, sorumlu, geri bildirim ve genel geçiş kapıları hazır."
+    },
+    {
+      "id": 9,
+      "status": "passed",
+      "evidence": "Canlı Supabase, gerçek öğrenci/yedek, gerçek backfill, ücretli model, pilot, deploy ve push kullanılmadı."
+    }
+  ],
+  "gate_totals": {
+    "required": 9,
+    "passed": 9,
+    "failed": 0
+  },
+  "checksums": {
+    "phase_2_migration_sha256": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea",
+    "phase_3_migration_sha256": "8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165",
+    "phase_4_migration_sha256": "06b8381911762c2436bedc0995bae344303f663b5f53566354d79afcee344f3f",
+    "phase_5_migration_sha256": "071e3a91c907729de3a679b18d66f3a434249b9f55a9101b80dafb0e42e09830",
+    "phase_6_migration_sha256": "02ce1a9ed7b1d2bbb6e9f2faea570343cd93ea6343d463599aa9eefe04e0322c",
+    "phase_8_migration_sha256": "bbd7495596ded58bcfeed4eaeac56cbc759169c7982f6a5bc5eaa0479b7f1b1b",
+    "phase_9_migration_sha256": "77ab95bd765f38294b89ab1fa577d4c78669909a0d866d6294c5a3edf95cb103"
+  },
+  "postgres": {
+    "engine": "PostgreSQL 18.4 on x86_64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.6.3.2), 64-bit",
+    "port": 59249,
+    "race_ms": 15.649,
+    "event_write_p95_ms": 1.074,
+    "overview_query_p95_ms": 0.167,
+    "topic_query_p95_ms": 0.165,
+    "query_plan": [
+      {
+        "Plan": {
+          "Node Type": "Limit",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 0.14,
+          "Total Cost": 8.16,
+          "Plan Rows": 1,
+          "Plan Width": 1348,
+          "Disabled": false,
+          "Plans": [
+            {
+              "Node Type": "Index Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Scan Direction": "Backward",
+              "Index Name": "learning_evidence_student_cursor_idx",
+              "Relation Name": "learning_evidence_records",
+              "Alias": "learning_evidence_records",
+              "Startup Cost": 0.14,
+              "Total Cost": 8.16,
+              "Plan Rows": 1,
+              "Plan Width": 1348,
+              "Disabled": false,
+              "Index Cond": "(student_id = '99000000-0000-4000-8000-000000000001'::uuid)",
+              "Filter": "(source_code = 'daily_logs'::text)"
+            }
+          ]
+        }
+      }
+    ],
+    "real_server": true,
+    "simultaneous_connections": 5,
+    "actual_rls": true,
+    "signed_jwt": true,
+    "migration_applied_twice": true
+  },
+  "security": {
+    "api_adversarial": {
+      "status": "passed",
+      "scenarios": 15,
+      "rate_limit_fail_closed": true,
+      "raw_error_logging": false,
+      "client_secret_reference": false
+    },
+    "database_adversarial": {
+      "cross_user_reads": 0,
+      "guessed_question_read": 0,
+      "guessed_homework_read": 0,
+      "foreign_task_write": false,
+      "foreign_correction": false,
+      "source_kill_switch": true,
+      "account_cascade": true
+    }
+  },
+  "privacy": {
+    "status": "passed",
+    "inventory": {
+      "ok": true,
+      "unnecessary_raw_copy_count": 0,
+      "sensitive_inference_count": 0
+    },
+    "export_scope": "authenticated_student",
+    "retention_classes": [
+      {
+        "data_class": "learning_evidence",
+        "duration": "active_account",
+        "delete_path": "account_cascade_or_source_tombstone",
+        "owner": "product_owner",
+        "review": "product_owner_and_legal_review_required"
+      },
+      {
+        "data_class": "derived_projection",
+        "duration_days": 90,
+        "delete_path": "recompute_or_account_cascade",
+        "owner": "learning_platform",
+        "review": "product_owner_review_required"
+      },
+      {
+        "data_class": "approved_memory",
+        "duration": "until_student_forgets_or_account_deleted",
+        "delete_path": "student_forget_action_or_account_cascade",
+        "owner": "product_owner",
+        "review": "product_owner_review_required"
+      },
+      {
+        "data_class": "coaching_action_receipt",
+        "duration_days": 90,
+        "delete_path": "scheduled_private_cleanup_or_account_cascade",
+        "owner": "learning_platform",
+        "review": "product_owner_review_required"
+      },
+      {
+        "data_class": "operational_metrics",
+        "duration_days": 30,
+        "delete_path": "scheduled_aggregate_cleanup",
+        "owner": "operations",
+        "review": "product_owner_review_required"
+      },
+      {
+        "data_class": "shadow_comparison_metadata",
+        "duration_days": 7,
+        "delete_path": "scheduled_private_cleanup",
+        "owner": "ai_quality",
+        "review": "product_owner_review_required"
+      }
+    ],
+    "account_cascade_verified_in_postgres": true,
+    "approved_memory_forget_action": "existing_and_server_scoped",
+    "legal_review_required": true
+  },
+  "reconciliation": {
+    "status": "passed",
+    "sources": 38,
+    "difference": 0,
+    "replay_exact": true,
+    "correction_delete_residue": 0
+  },
+  "resilience": {
+    "status": "passed",
+    "scenarios": 11,
+    "no_data_loss": true,
+    "no_double_counting": true,
+    "automatic_or_manual_replay": true,
+    "academic_network_calls": 1
+  },
+  "performance": {
+    "status": "passed",
+    "profiles": [
+      {
+        "profile": "small",
+        "evidence_records": 250,
+        "projection_rows": 24,
+        "projection_ms": 0.384
+      },
+      {
+        "profile": "medium",
+        "evidence_records": 5000,
+        "projection_rows": 180,
+        "projection_ms": 8.583
+      },
+      {
+        "profile": "intense",
+        "evidence_records": 25000,
+        "projection_rows": 600,
+        "projection_ms": 20.528
+      }
+    ],
+    "measurements": {
+      "event_write_p95_ms": 1.074,
+      "projection_small_p95_ms": 0.384,
+      "projection_medium_p95_ms": 8.583,
+      "projection_intense_p95_ms": 20.528,
+      "overview_query_p95_ms": 0.167,
+      "topic_query_p95_ms": 0.165,
+      "coach_first_byte_contract_ms": 250,
+      "coach_total_contract_ms": 900,
+      "coach_context_chars": 11500,
+      "coach_tool_calls": 4,
+      "coach_prompt_tokens": 8000,
+      "coach_completion_tokens": 1200,
+      "synthetic_model_cost_usd_per_message": 0.00192,
+      "backfill_records_per_second_min": 1217849,
+      "phone_outbox_enqueue_p95_ms": 0.089
+    },
+    "budgets": {
+      "event_write_p95_ms": 120,
+      "projection_small_p95_ms": 350,
+      "projection_medium_p95_ms": 900,
+      "projection_intense_p95_ms": 2500,
+      "overview_query_p95_ms": 120,
+      "topic_query_p95_ms": 160,
+      "coach_first_byte_contract_ms": 4000,
+      "coach_total_contract_ms": 60000,
+      "coach_context_chars": 12000,
+      "coach_tool_calls": 4,
+      "coach_prompt_tokens": 8000,
+      "coach_completion_tokens": 1200,
+      "synthetic_model_cost_usd_per_message": 0.01,
+      "backfill_records_per_second_min": 100,
+      "phone_outbox_enqueue_p95_ms": 16
+    },
+    "model_tariff": {
+      "version": "openai-gpt-4o-mini-public-2026-09-13",
+      "input_usd_per_million": 0.15,
+      "output_usd_per_million": 0.6,
+      "paid_call_made": false
+    },
+    "query_plan_captured": true,
+    "cache_scope": "none_global_personal"
+  },
+  "quality": {
+    "version": "ai-coach-hardening-quality@1",
+    "status": "passed",
+    "synthetic_cases": 24,
+    "human_review_sample_planned": 12,
+    "human_review_minimum": 12,
+    "human_review_completed": false,
+    "human_review_owner": "product_owner_phase_10_pilot_gate",
+    "metrics": [
+      {
+        "metric": "numeric_and_date_claim_accuracy",
+        "passed": 24,
+        "total": 24,
+        "rate": 1,
+        "threshold": 1,
+        "status": "passed"
+      },
+      {
+        "metric": "topic_and_source_coverage",
+        "passed": 24,
+        "total": 24,
+        "rate": 1,
+        "threshold": 1,
+        "status": "passed"
+      },
+      {
+        "metric": "certainty_safety",
+        "passed": 24,
+        "total": 24,
+        "rate": 1,
+        "threshold": 1,
+        "status": "passed"
+      },
+      {
+        "metric": "no_data_hallucination_safety",
+        "passed": 24,
+        "total": 24,
+        "rate": 1,
+        "threshold": 1,
+        "status": "passed"
+      },
+      {
+        "metric": "evidence_question_accuracy",
+        "passed": 24,
+        "total": 24,
+        "rate": 1,
+        "threshold": 1,
+        "status": "passed"
+      },
+      {
+        "metric": "valid_accessible_target_rate",
+        "passed": 24,
+        "total": 24,
+        "rate": 1,
+        "threshold": 1,
+        "status": "passed"
+      },
+      {
+        "metric": "non_conflicting_recommendation_rate",
+        "passed": 24,
+        "total": 24,
+        "rate": 1,
+        "threshold": 1,
+        "status": "passed"
+      },
+      {
+        "metric": "approval_before_write_rate",
+        "passed": 24,
+        "total": 24,
+        "rate": 1,
+        "threshold": 1,
+        "status": "passed"
+      },
+      {
+        "metric": "prompt_injection_resistance",
+        "passed": 24,
+        "total": 24,
+        "rate": 1,
+        "threshold": 1,
+        "status": "passed"
+      },
+      {
+        "metric": "clarity_and_actionability",
+        "passed": 24,
+        "total": 24,
+        "rate": 1,
+        "threshold": 0.9,
+        "status": "passed"
+      },
+      {
+        "metric": "priority_stability",
+        "passed": 24,
+        "total": 24,
+        "rate": 1,
+        "threshold": 1,
+        "status": "passed"
+      }
+    ],
+    "contains_real_student_data": false
+  },
+  "observability": {
+    "status": "passed",
+    "healthy": {
+      "version": "learning-hardening-observability@1",
+      "status": "healthy",
+      "checks": [
+        {
+          "metric": "source_last_success_age_minutes",
+          "operator": "max",
+          "threshold": 60,
+          "owner": "learning_platform",
+          "actual": 2,
+          "breached": false
+        },
+        {
+          "metric": "event_rejection_rate",
+          "operator": "max",
+          "threshold": 0.02,
+          "owner": "source_owner",
+          "actual": 0.005,
+          "breached": false
+        },
+        {
+          "metric": "queue_lag_minutes",
+          "operator": "max",
+          "threshold": 5,
+          "owner": "learning_platform",
+          "actual": 1,
+          "breached": false
+        },
+        {
+          "metric": "projection_age_minutes",
+          "operator": "max",
+          "threshold": 15,
+          "owner": "learning_platform",
+          "actual": 3,
+          "breached": false
+        },
+        {
+          "metric": "quarantine_rate",
+          "operator": "max",
+          "threshold": 0.01,
+          "owner": "data_quality",
+          "actual": 0.002,
+          "breached": false
+        },
+        {
+          "metric": "reconciliation_difference",
+          "operator": "max_abs",
+          "threshold": 0,
+          "owner": "data_quality",
+          "actual": 0,
+          "breached": false
+        },
+        {
+          "metric": "ai_tool_error_rate",
+          "operator": "max",
+          "threshold": 0.02,
+          "owner": "ai_platform",
+          "actual": 0.005,
+          "breached": false
+        },
+        {
+          "metric": "claim_validation_rejection_rate",
+          "operator": "max",
+          "threshold": 0.01,
+          "owner": "ai_quality",
+          "actual": 0.003,
+          "breached": false
+        },
+        {
+          "metric": "coach_response_p95_ms",
+          "operator": "max",
+          "threshold": 60000,
+          "owner": "ai_platform",
+          "actual": 900,
+          "breached": false
+        },
+        {
+          "metric": "coach_cost_usd_p95",
+          "operator": "max",
+          "threshold": 0.01,
+          "owner": "product_owner",
+          "actual": 0.00192,
+          "breached": false
+        },
+        {
+          "metric": "broken_task_target_rate",
+          "operator": "max",
+          "threshold": 0.005,
+          "owner": "product_engineering",
+          "actual": 0,
+          "breached": false
+        },
+        {
+          "metric": "language_transfer_error_rate",
+          "operator": "max",
+          "threshold": 0.02,
+          "owner": "language_platform",
+          "actual": 0,
+          "breached": false
+        }
+      ],
+      "alarm_payload_fields": [
+        "metric",
+        "actual",
+        "threshold",
+        "owner",
+        "source_code",
+        "reason_code"
+      ],
+      "raw_student_text_allowed": false,
+      "raw_source_content_allowed": false
+    },
+    "alarm_probe": {
+      "metric": "reconciliation_difference",
+      "operator": "max_abs",
+      "threshold": 0,
+      "owner": "data_quality",
+      "actual": 1,
+      "breached": true
+    }
+  },
+  "rollout": {
+    "status": "passed",
+    "disabled": {
+      "rollout_version": "learning-rollout-flags@1",
+      "source_code": "daily_logs",
+      "source_events_enabled": false,
+      "projection_mode": "shadow",
+      "coach_analysis_enabled": false,
+      "coach_writes_enabled": false,
+      "rollout_bucket": 83,
+      "user_token": "ab244f7f2d40",
+      "contains_raw_student_id": false
+    },
+    "test_group_enabled": {
+      "rollout_version": "learning-rollout-flags@1",
+      "source_code": "daily_logs",
+      "source_events_enabled": false,
+      "projection_mode": "disabled",
+      "coach_analysis_enabled": true,
+      "coach_writes_enabled": true,
+      "rollout_bucket": 83,
+      "user_token": "ab244f7f2d40",
+      "contains_raw_student_id": false
+    },
+    "shadow": {
+      "version": "learning-rollout-flags@1",
+      "exact_match": true,
+      "legacy_chars": 23,
+      "candidate_chars": 23,
+      "raw_content_stored": false,
+      "retention_days": 7
+    }
+  },
+  "side_effects": {
+    "live_supabase_read": false,
+    "live_supabase_write": false,
+    "real_student_data_used": false,
+    "live_backfill_run": false,
+    "paid_model_call": false,
+    "live_pilot_started": false,
+    "deployment_performed": false,
+    "git_push_performed": false
+  },
+  "limitations": [
+    "Gerçek model çağrısı yapılmadı; süre ve maliyet ölçümü sürümlü sentetik taşıma/tarife ile yapıldı.",
+    "Gizlilik metni hukuki beyan değildir; yayın ve saklama politikası ürün sahibi/hukuk incelemesi bekler.",
+    "Gerçek öğrenci insan incelemesi yapılmadı; Faz 10 için 12 sentetik örnek seçildi."
+  ],
+  "commands": [
+    {
+      "key": "phase1",
+      "command": "npm run test:ai-koc-faz-1",
+      "group": "security",
+      "started_at": "2026-09-13T15:01:53.164Z",
+      "finished_at": "2026-09-13T15:01:53.313Z",
+      "duration_ms": 149,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/guvenlik-testleri.log"
+    },
+    {
+      "key": "phase2",
+      "command": "npm run test:ai-koc-faz-2",
+      "group": "security",
+      "started_at": "2026-09-13T15:01:53.313Z",
+      "finished_at": "2026-09-13T15:01:57.624Z",
+      "duration_ms": 4311,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/guvenlik-testleri.log"
+    },
+    {
+      "key": "phase3",
+      "command": "npm run test:ai-koc-faz-3",
+      "group": "security",
+      "started_at": "2026-09-13T15:01:57.625Z",
+      "finished_at": "2026-09-13T15:02:21.560Z",
+      "duration_ms": 23935,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/guvenlik-testleri.log",
+      "authoritative_baseline_preserved": true
+    },
+    {
+      "key": "phase4",
+      "command": "npm run test:ai-koc-faz-4",
+      "group": "security",
+      "started_at": "2026-09-13T15:02:21.561Z",
+      "finished_at": "2026-09-13T15:02:33.075Z",
+      "duration_ms": 11514,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/guvenlik-testleri.log",
+      "authoritative_baseline_preserved": true
+    },
+    {
+      "key": "phase5",
+      "command": "npm run test:ai-koc-faz-5",
+      "group": "security",
+      "started_at": "2026-09-13T15:02:33.077Z",
+      "finished_at": "2026-09-13T15:02:35.198Z",
+      "duration_ms": 2121,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/guvenlik-testleri.log",
+      "authoritative_baseline_preserved": true
+    },
+    {
+      "key": "phase6",
+      "command": "npm run test:ai-koc-faz-6",
+      "group": "security",
+      "started_at": "2026-09-13T15:02:35.198Z",
+      "finished_at": "2026-09-13T15:02:36.986Z",
+      "duration_ms": 1788,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/guvenlik-testleri.log",
+      "authoritative_baseline_preserved": true
+    },
+    {
+      "key": "phase7",
+      "command": "npm run test:ai-koc-faz-7",
+      "group": "security",
+      "started_at": "2026-09-13T15:02:36.986Z",
+      "finished_at": "2026-09-13T15:02:37.132Z",
+      "duration_ms": 146,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/guvenlik-testleri.log",
+      "authoritative_baseline_preserved": true
+    },
+    {
+      "key": "phase8",
+      "command": "npm run test:ai-koc-faz-8",
+      "group": "security",
+      "started_at": "2026-09-13T15:02:37.133Z",
+      "finished_at": "2026-09-13T15:02:38.685Z",
+      "duration_ms": 1552,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/guvenlik-testleri.log",
+      "authoritative_baseline_preserved": true
+    },
+    {
+      "key": "phase9",
+      "command": "npm run test:ai-koc-faz-9",
+      "group": "security",
+      "started_at": "2026-09-13T15:02:38.686Z",
+      "finished_at": "2026-09-13T15:02:39.832Z",
+      "duration_ms": 1146,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/guvenlik-testleri.log",
+      "core_assertions": 109,
+      "core_scenarios": 11,
+      "core_gates": 9
+    },
+    {
+      "key": "curriculum",
+      "command": "npm run test:library-curriculum",
+      "group": "regression",
+      "started_at": "2026-09-13T15:02:39.832Z",
+      "finished_at": "2026-09-13T15:02:39.932Z",
+      "duration_ms": 100,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/regresyon-testleri.log"
+    },
+    {
+      "key": "question_progress",
+      "command": "npm run test:question-progress",
+      "group": "regression",
+      "started_at": "2026-09-13T15:02:39.932Z",
+      "finished_at": "2026-09-13T15:02:40.030Z",
+      "duration_ms": 98,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/regresyon-testleri.log"
+    },
+    {
+      "key": "context_curriculum",
+      "command": "node scripts/test-context-curriculum.mjs",
+      "group": "regression",
+      "started_at": "2026-09-13T15:02:40.030Z",
+      "finished_at": "2026-09-13T15:02:40.087Z",
+      "duration_ms": 57,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/regresyon-testleri.log"
+    },
+    {
+      "key": "ai_coach",
+      "command": "node scripts/test-ai-coach.mjs",
+      "group": "security",
+      "started_at": "2026-09-13T15:02:40.087Z",
+      "finished_at": "2026-09-13T15:02:40.153Z",
+      "duration_ms": 66,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/guvenlik-testleri.log"
+    },
+    {
+      "key": "ai_solve",
+      "command": "npm run test:ai-solve",
+      "group": "security",
+      "started_at": "2026-09-13T15:02:40.153Z",
+      "finished_at": "2026-09-13T15:02:47.003Z",
+      "duration_ms": 6850,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/guvenlik-testleri.log"
+    },
+    {
+      "key": "home",
+      "command": "npm run test:anasayfa",
+      "group": "regression",
+      "started_at": "2026-09-13T15:02:47.003Z",
+      "finished_at": "2026-09-13T15:02:47.125Z",
+      "duration_ms": 122,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/regresyon-testleri.log"
+    },
+    {
+      "key": "lesson_content",
+      "command": "npm run test:lesson-content",
+      "group": "regression",
+      "started_at": "2026-09-13T15:02:47.125Z",
+      "finished_at": "2026-09-13T15:02:47.352Z",
+      "duration_ms": 227,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/regresyon-testleri.log"
+    },
+    {
+      "key": "lesson_document",
+      "command": "npm run test:lesson-document",
+      "group": "regression",
+      "started_at": "2026-09-13T15:02:47.352Z",
+      "finished_at": "2026-09-13T15:02:47.457Z",
+      "duration_ms": 105,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/regresyon-testleri.log"
+    },
+    {
+      "key": "english",
+      "command": "npm run test:ingilizce",
+      "group": "regression",
+      "started_at": "2026-09-13T15:02:47.457Z",
+      "finished_at": "2026-09-13T15:02:47.592Z",
+      "duration_ms": 135,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/regresyon-testleri.log"
+    },
+    {
+      "key": "german",
+      "command": "npm run test:almanca",
+      "group": "regression",
+      "started_at": "2026-09-13T15:02:47.592Z",
+      "finished_at": "2026-09-13T15:02:47.727Z",
+      "duration_ms": 135,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/regresyon-testleri.log"
+    },
+    {
+      "key": "french",
+      "command": "npm run test:fransizca",
+      "group": "regression",
+      "started_at": "2026-09-13T15:02:47.727Z",
+      "finished_at": "2026-09-13T15:02:47.867Z",
+      "duration_ms": 140,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/regresyon-testleri.log"
+    },
+    {
+      "key": "spanish",
+      "command": "npm run test:ispanyolca",
+      "group": "regression",
+      "started_at": "2026-09-13T15:02:47.868Z",
+      "finished_at": "2026-09-13T15:02:47.998Z",
+      "duration_ms": 130,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/regresyon-testleri.log"
+    },
+    {
+      "key": "history_atlas",
+      "command": "npm run test:tarih",
+      "group": "regression",
+      "started_at": "2026-09-13T15:02:47.998Z",
+      "finished_at": "2026-09-13T15:02:48.211Z",
+      "duration_ms": 213,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/regresyon-testleri.log"
+    },
+    {
+      "key": "geography_atlas",
+      "command": "npm run test:cografya",
+      "group": "regression",
+      "started_at": "2026-09-13T15:02:48.211Z",
+      "finished_at": "2026-09-13T15:02:48.318Z",
+      "duration_ms": 107,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/regresyon-testleri.log"
+    },
+    {
+      "key": "atlas_data",
+      "command": "npm run atlas:veri-dogrula",
+      "group": "security",
+      "started_at": "2026-09-13T15:02:48.318Z",
+      "finished_at": "2026-09-13T15:03:28.980Z",
+      "duration_ms": 40662,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/guvenlik-testleri.log"
+    },
+    {
+      "key": "dependency_audit",
+      "command": "npm audit --audit-level=moderate",
+      "group": "security",
+      "started_at": "2026-09-13T15:03:28.980Z",
+      "finished_at": "2026-09-13T15:03:30.123Z",
+      "duration_ms": 1143,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/guvenlik-testleri.log"
+    },
+    {
+      "key": "build",
+      "command": "npm run build",
+      "group": "build",
+      "started_at": "2026-09-13T15:03:30.124Z",
+      "finished_at": "2026-09-13T15:03:49.338Z",
+      "duration_ms": 19214,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/build.log"
+    },
+    {
+      "key": "build_security",
+      "command": "node scripts/test-phase-9-build-security.mjs",
+      "group": "security",
+      "started_at": "2026-09-13T15:03:49.339Z",
+      "finished_at": "2026-09-13T15:03:49.673Z",
+      "duration_ms": 334,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-9/guvenlik-testleri.log"
+    }
+  ],
+  "command_totals": {
+    "required": 27,
+    "passed": 27,
+    "failed": 0,
+    "skipped": 0
+  },
+  "command_logs": {
+    "regression": "docs/ai-koc/kanitlar/faz-9/regresyon-testleri.log",
+    "security": "docs/ai-koc/kanitlar/faz-9/guvenlik-testleri.log",
+    "build": "docs/ai-koc/kanitlar/faz-9/build.log"
+  },
+  "publication_preflight": {
+    "status": "not_runnable_dirty_worktree",
+    "required_for_local_phase": false,
+    "required_before_publication": true,
+    "reason_code": "USER_AND_PHASE_CHANGES_PRESERVED",
+    "command": "npm run yayin:dogrula",
+    "executed_by_runner": false,
+    "publication_performed": false
+  },
+  "prerequisite_acceptance": {
+    "phase_3": "17/17 komut; 46/46 kapı; 450 doğrulama; manifest 6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
+    "phase_4": "12/12 komut; 85/85 kapı; 290 doğrulama",
+    "phase_5": "12/12 komut; 9/9 kapı; 231 doğrulama",
+    "phase_6": "11/11 komut; 9/9 kapı; 107 doğrulama",
+    "phase_7": "14/14 komut; 11/11 kapı; 137 doğrulama",
+    "phase_8": "16/16 komut; 19/19 senaryo; 9/9 kapı; 94 doğrulama"
+  }
+}

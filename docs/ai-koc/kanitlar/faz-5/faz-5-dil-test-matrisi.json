@@ -1,0 +1,14 @@
+{
+  "schema_version": "phase-5-language-matrix@1",
+  "languages": {
+    "en": "passed",
+    "de": "passed",
+    "fr": "passed",
+    "es": "passed"
+  },
+  "sync": {
+    "offline_resume": "passed",
+    "duplicate_2_and_10": "passed",
+    "account_scoped_outbox": "passed"
+  }
+}

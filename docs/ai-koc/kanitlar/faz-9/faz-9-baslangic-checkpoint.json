@@ -1,0 +1,25 @@
+{
+  "schema_version": "phase-9-start-checkpoint@1",
+  "status": "passed",
+  "phase_8": {
+    "commands": "16/16",
+    "gates": "9/9",
+    "assertions": 94
+  },
+  "checksums": {
+    "phase_2_migration_sha256": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea",
+    "phase_3_migration_sha256": "8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165",
+    "phase_4_migration_sha256": "06b8381911762c2436bedc0995bae344303f663b5f53566354d79afcee344f3f",
+    "phase_5_migration_sha256": "071e3a91c907729de3a679b18d66f3a434249b9f55a9101b80dafb0e42e09830",
+    "phase_6_migration_sha256": "02ce1a9ed7b1d2bbb6e9f2faea570343cd93ea6343d463599aa9eefe04e0322c",
+    "phase_8_migration_sha256": "bbd7495596ded58bcfeed4eaeac56cbc759169c7982f6a5bc5eaa0479b7f1b1b",
+    "phase_9_migration_sha256": "77ab95bd765f38294b89ab1fa577d4c78669909a0d866d6294c5a3edf95cb103"
+  },
+  "manifest": {
+    "version": "learning-content-manifest@1",
+    "checksum": "6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
+    "entries": 4344,
+    "public_answer_key_present": false
+  },
+  "transition": "Doğrulanmış Faz 8 baz çizgisinden Faz 9 sertleştirmesine geçiş; önceki migrationlar değiştirilmedi."
+}

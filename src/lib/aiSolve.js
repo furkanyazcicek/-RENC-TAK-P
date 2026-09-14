@@ -75,7 +75,7 @@ async function readError(response) {
  * @param {object}  params.handlers    { onStage, onResult, onError }
  * @param {AbortSignal?} params.signal
  */
-export async function solveQuestion({ imagePath, text, note, source = 'photo', handlers = {}, signal }) {
+export async function solveQuestion({ imagePath, text, note, source = 'photo', clientActionId = crypto.randomUUID(), handlers = {}, signal }) {
   const headers = await authHeaders()
 
   let response
@@ -88,6 +88,7 @@ export async function solveQuestion({ imagePath, text, note, source = 'photo', h
         text: text ?? null,
         note: note ?? null,
         source,
+        clientActionId,
       }),
       signal,
     })
@@ -185,27 +186,27 @@ async function postJson(path, body, signal) {
 
 /** "Bu işlemi neden yaptık?" — adımın kendi `why` alanı yetmediğinde. */
 export function askWhy({ sessionId, stepIndex, signal }) {
-  return postJson('/ask', { kind: 'why', sessionId, stepIndex }, signal)
+  return postJson('/ask', { kind: 'why', sessionId, stepIndex, clientActionId: crypto.randomUUID() }, signal)
 }
 
 /** "Burada takıldım" (§11). */
 export function askStuck({ sessionId, stepIndex, signal }) {
-  return postJson('/ask', { kind: 'stuck', sessionId, stepIndex }, signal)
+  return postJson('/ask', { kind: 'stuck', sessionId, stepIndex, clientActionId: crypto.randomUUID() }, signal)
 }
 
 /** Serbest takip sorusu (§36). */
 export function askQuestion({ sessionId, stepIndex, question, signal }) {
-  return postJson('/ask', { kind: 'chat', sessionId, stepIndex, question }, signal)
+  return postJson('/ask', { kind: 'chat', sessionId, stepIndex, question, clientActionId: crypto.randomUUID() }, signal)
 }
 
 /** "Başka yöntem" (§12). */
 export function askAlternative({ sessionId, signal }) {
-  return postJson('/ask', { kind: 'alternative', sessionId }, signal)
+  return postJson('/ask', { kind: 'alternative', sessionId, clientActionId: crypto.randomUUID() }, signal)
 }
 
 /** "Çözümümü kontrol et" (§18, §38). */
 export function checkMyWork({ sessionId, workPath, questionPath, text, signal }) {
-  return postJson('/check', { sessionId, workPath, questionPath, text }, signal)
+  return postJson('/check', { sessionId, workPath, questionPath, text, clientActionId: crypto.randomUUID() }, signal)
 }
 
 /* ==================================================================
@@ -230,17 +231,17 @@ export async function getSolution(id) {
 
 /** 👍 / 👎 (§42). */
 export function sendFeedback({ sessionId, feedback, reason, note }) {
-  return postJson('/sessions', { sessionId, feedback, reason, note })
+  return postJson('/sessions', { sessionId, feedback, reason, note, clientActionId: crypto.randomUUID() })
 }
 
 /** "Bu soruyu ben doğru çözmüştüm / çözememiştim" (§19). */
 export function reportSelfResult({ sessionId, studentCorrect }) {
-  return postJson('/sessions', { sessionId, studentCorrect })
+  return postJson('/sessions', { sessionId, studentCorrect, clientActionId: crypto.randomUUID() })
 }
 
 /** Soruyu tekrar çalışma listesine alır veya tamamlandı olarak işaretler. */
 export function setSolutionReview({ sessionId, reviewStatus }) {
-  return postJson('/sessions', { sessionId, reviewStatus })
+  return postJson('/sessions', { sessionId, reviewStatus, clientActionId: crypto.randomUUID() })
 }
 
 /** §42'deki beğenmeme sebepleri — sunucudaki liste ile aynı olmalı. */

@@ -1,0 +1,157 @@
+{
+  "schema_version": "phase-10-preflight@1",
+  "phase": 10,
+  "status": "waiting_for_explicit_live_prerequisites",
+  "phase_status": "Devam ediyor",
+  "generated_at": "2026-09-13T15:15:55.893Z",
+  "mode": "read_only_local_preflight",
+  "ready_for_live_write": false,
+  "workspace": {
+    "path": "/Users/furkantalhayazcicek/Desktop/DRKOÇ",
+    "authorized_path_match": true,
+    "git_directory_independent": true,
+    "branch": "main",
+    "origin": "https://github.com/furkanyazcicek/-RENC-TAK-P.git",
+    "authorized_origin_match": true,
+    "head": "056e1e5b92975169c2329f85ba6530af1dc6d14f",
+    "origin_main_comparison_from_local_ref": {
+      "remote_ahead": 0,
+      "local_ahead": 0
+    },
+    "worktree_clean": false,
+    "tracked_change_count": 148,
+    "untracked_count": 90,
+    "user_changes_preserved": true,
+    "vercel_link_absent": true
+  },
+  "phase_9_baseline": {
+    "status": "passed",
+    "commands": "27/27",
+    "assertions": 109,
+    "outage_scenarios": "11/11",
+    "gates": "9/9",
+    "acceptance_path": "docs/ai-koc/kanitlar/faz-9/faz-9-kabul-sonucu.json"
+  },
+  "content_baseline": {
+    "manifest_version": "learning-content-manifest@1",
+    "manifest_checksum": "6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
+    "entries": 4344
+  },
+  "migration_plan": {
+    "status": "candidate_order_verified_locally_live_history_reconciliation_pending",
+    "prerequisite_not_blindly_reapplied": "supabase/migration_ai_coach.sql",
+    "prerequisite_note": "Canlı migration geçmişinde profiles, kaynak tabloları ve ai_study_tasks doğrulanmadan sıra uygulanmaz.",
+    "ordered_new_migrations": [
+      {
+        "phase": "phase_2",
+        "file": "supabase/migration_learning_evidence_network.sql",
+        "sha256": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea",
+        "status": "passed"
+      },
+      {
+        "phase": "phase_3",
+        "file": "supabase/migration_learning_content_activity.sql",
+        "sha256": "8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165",
+        "status": "passed"
+      },
+      {
+        "phase": "phase_4",
+        "file": "supabase/migration_learning_academic_records.sql",
+        "sha256": "06b8381911762c2436bedc0995bae344303f663b5f53566354d79afcee344f3f",
+        "status": "passed"
+      },
+      {
+        "phase": "phase_5",
+        "file": "supabase/migration_learning_language_progress.sql",
+        "sha256": "071e3a91c907729de3a679b18d66f3a434249b9f55a9101b80dafb0e42e09830",
+        "status": "passed"
+      },
+      {
+        "phase": "phase_6",
+        "file": "supabase/migration_learning_student_topic_model.sql",
+        "sha256": "02ce1a9ed7b1d2bbb6e9f2faea570343cd93ea6343d463599aa9eefe04e0322c",
+        "status": "passed"
+      },
+      {
+        "phase": "phase_8",
+        "file": "supabase/migration_learning_coaching_loop.sql",
+        "sha256": "bbd7495596ded58bcfeed4eaeac56cbc759169c7982f6a5bc5eaa0479b7f1b1b",
+        "status": "passed"
+      },
+      {
+        "phase": "phase_9",
+        "file": "supabase/migration_learning_hardening.sql",
+        "sha256": "77ab95bd765f38294b89ab1fa577d4c78669909a0d866d6294c5a3edf95cb103",
+        "status": "passed"
+      }
+    ],
+    "live_schema_dry_run": "not_run_live_target_unverified",
+    "destructive_rollback": false,
+    "recovery_strategy": "flags_off_then_forward_fix_preserve_queues_cursors_and_last_verified_generation"
+  },
+  "live_target": {
+    "verified": false,
+    "configured_project_identity_present": false,
+    "expected_project_identity_declared": false,
+    "identifiers_redacted": true,
+    "live_connection_attempted": false
+  },
+  "backup_and_recovery": {
+    "verified": false,
+    "backup_timestamp_evidence_present": false,
+    "recovery_test_evidence_present": false,
+    "restore_attempted": false
+  },
+  "rollout_guards": {
+    "status": "passed",
+    "source_events_default": false,
+    "projection_default": "disabled",
+    "coach_analysis_default": "disabled",
+    "coach_analysis_percent_default": 0,
+    "coach_writes_default": false,
+    "safe_fallback_default": true
+  },
+  "observability": {
+    "status": "ready_locally",
+    "metric_count": 12,
+    "live_alarm_delivery_verified": false
+  },
+  "product_review": {
+    "privacy_and_retention_reviewed": false,
+    "review_evidence_present": false,
+    "test_accounts_selected": false,
+    "named_rollout_owners_assigned": false
+  },
+  "explicit_authorizations": {
+    "live_database_migrations": false,
+    "live_backfill_or_transform": false,
+    "real_student_shadow": false,
+    "limited_pilot_visibility": false,
+    "production_publication": false,
+    "general_release": false,
+    "generic_continue_treated_as_authorization": false
+  },
+  "publication_preflight": {
+    "command": "npm run yayin:dogrula",
+    "executed": false,
+    "ready": false,
+    "reason_code": "DIRTY_WORKTREE_USER_AND_PHASE_CHANGES_PRESERVED"
+  },
+  "blocking_gate": {
+    "code": "LIVE_TARGET_AND_RECOVERY_UNVERIFIED",
+    "detail": "Canlı Supabase proje kimliği ile yedek/geri kazanım kanıtı doğrulanmadı; canlı şema kuru çalışması ve bütün canlı yazılar durduruldu.",
+    "next_required_input": "Doğrulanabilir canlı proje kimliği ve tarihli yedek/geri kazanım kanıtı; sonrasında canlı migration için ayrı açık onay."
+  },
+  "side_effects": {
+    "live_supabase_read": false,
+    "live_supabase_write": false,
+    "real_student_data_used": false,
+    "live_backfill_run": false,
+    "paid_model_call": false,
+    "live_shadow_started": false,
+    "live_pilot_started": false,
+    "deployment_performed": false,
+    "git_commit_created": false,
+    "git_push_performed": false
+  }
+}

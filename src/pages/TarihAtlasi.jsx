@@ -5,7 +5,7 @@ import {
   Play, Plus, RotateCcw, Route as RouteIcon, Search, ShieldCheck, Swords, X,
 } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router-dom'
-import maplibregl from 'maplibre-gl'
+import * as maplibregl from 'maplibre-gl'
 import { filterByDate } from '@openhistoricalmap/maplibre-gl-dates'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { KILIT_TARIHLER } from '../data/tarihAtlasi/kilitTarihler'

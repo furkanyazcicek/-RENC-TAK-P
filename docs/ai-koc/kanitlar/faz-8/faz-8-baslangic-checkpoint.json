@@ -1,0 +1,71 @@
+{
+  "schema_version": "phase-8-start-checkpoint@1",
+  "phase": 8,
+  "status": "passed",
+  "transition": {
+    "kind": "verified_phase_3_content_baseline_update",
+    "description": "Doğrulanmış Faz 3 içerik baz çizgisi güncellemesi",
+    "superseded_manifest_checksum": "dbd0274f0d4b02aa7b229e9f1fbe07cdb207ee32dda368540a04c046fbcc19c0",
+    "authoritative_manifest_checksum": "6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
+    "reason": "Güncel manifest mevcut Faz 3 içerik ağacından deterministik olarak yeniden üretildi ve tam Faz 3 kabul koşusu geçti; eski değer önceki içerik anlık görüntüsüne aittir.",
+    "route_fix_caused_checksum_change": false,
+    "phase_2_migration_changed": false,
+    "phase_3_migration_changed": false
+  },
+  "prerequisites": {
+    "phase_3": {
+      "status": "passed",
+      "commands": "17/17",
+      "gates": "46/46",
+      "assertions": 450,
+      "manifest_version": "learning-content-manifest@1",
+      "manifest_checksum": "6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
+      "manifest_entries": 4344,
+      "public_answer_keys_present": false
+    },
+    "phase_6": {
+      "status": "passed",
+      "commands": "11/11",
+      "gates": "9/9",
+      "assertions": 107
+    },
+    "phase_7": {
+      "status": "passed",
+      "commands": "14/14",
+      "gates": "11/11",
+      "assertions": 137,
+      "prompt_version": "v3-phase7-evidence"
+    }
+  },
+  "migration_checksums": {
+    "phase_2": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea",
+    "phase_3": "8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165",
+    "phase_4": "06b8381911762c2436bedc0995bae344303f663b5f53566354d79afcee344f3f",
+    "phase_5": "071e3a91c907729de3a679b18d66f3a434249b9f55a9101b80dafb0e42e09830",
+    "phase_6": "02ce1a9ed7b1d2bbb6e9f2faea570343cd93ea6343d463599aa9eefe04e0322c"
+  },
+  "phase_8_scope": {
+    "recommendation_contract": "coaching-recommendation@1",
+    "task_contract": "coaching-task@1",
+    "outcome_contract": "coaching-outcome@1",
+    "prompt_version": "v4-phase8-closed-loop",
+    "required_e2e_scenarios": 19,
+    "required_acceptance_gates": 9
+  },
+  "authorization": {
+    "live_supabase": false,
+    "real_student_or_backup_data": false,
+    "real_backfill": false,
+    "paid_model": false,
+    "deployment": false,
+    "git_push": false,
+    "phase_9_capacity_automation": false,
+    "phase_10_live_rollout": false
+  },
+  "workspace": {
+    "path": "/Users/furkantalhayazcicek/Desktop/DRKOÇ",
+    "dirty_worktree_preserved": true,
+    "unrelated_user_changes_preserved": true
+  },
+  "recorded_at": "2026-09-13T16:45:00+03:00"
+}

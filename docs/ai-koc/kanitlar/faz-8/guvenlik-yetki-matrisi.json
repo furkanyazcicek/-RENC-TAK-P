@@ -1,0 +1,32 @@
+{
+  "schema_version": "phase-8-security-matrix@1",
+  "generated_at": "2026-09-13T15:02:38.659Z",
+  "status": "core_passed_runner_pending",
+  "force_rls_tables": [
+    "student_coaching_recommendations",
+    "student_coaching_tasks",
+    "student_coaching_task_events",
+    "student_coaching_task_evidence",
+    "student_coaching_outcomes",
+    "student_coaching_feedback"
+  ],
+  "authenticated_direct_insert": false,
+  "authenticated_direct_update": false,
+  "cross_student_read": false,
+  "cross_student_transition": false,
+  "evidence_reference_server_verified": true,
+  "safe_target_server_verified": true,
+  "action_receipts_idempotent": true,
+  "side_effects": {
+    "live_supabase_read": false,
+    "live_supabase_write": false,
+    "live_schema_change": false,
+    "real_student_data_used": false,
+    "live_backfill_run": false,
+    "paid_model_call": false,
+    "deployment_performed": false,
+    "git_push_performed": false,
+    "phase_9_capacity_automation_implemented": false,
+    "phase_10_live_rollout_implemented": false
+  }
+}

@@ -26,13 +26,25 @@ import { registerAudioElement } from '../../../lib/lessonAudioBus'
  * yazan şeyi tekrar etmez; yönlendirir, durdurur, bağlantı kurdurur.
  */
 
-export default function TeacherVoice({ script, audioUrl, durationSeconds, compact = false }) {
+export default function TeacherVoice({
+  script,
+  audioUrl,
+  durationSeconds,
+  compact = false,
+  onAudioStart,
+  onAudioComplete,
+}) {
   if (!script && !audioUrl) return null
 
   return (
     <div className="flex flex-col gap-4">
       {audioUrl ? (
-        <AudioPlayer src={audioUrl} durationSeconds={durationSeconds} />
+        <AudioPlayer
+          src={audioUrl}
+          durationSeconds={durationSeconds}
+          onStart={onAudioStart}
+          onComplete={onAudioComplete}
+        />
       ) : (
         <p className="m-0 flex items-start gap-2 text-[0.875rem] leading-relaxed text-ink/50">
           <AudioLines className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
@@ -59,17 +71,19 @@ function formatTime(seconds) {
  * Sade oynatıcı. Ses yüklenemezse (ağ hatası, silinmiş dosya) bileşen
  * sessizce metne düşer; ders akışı bozulmaz (§50).
  */
-function AudioPlayer({ src, durationSeconds }) {
+function AudioPlayer({ src, durationSeconds, onStart, onComplete }) {
   const audioRef = useRef(null)
   const [playing, setPlaying] = useState(false)
   const [progress, setProgress] = useState(0)
   const [duration, setDuration] = useState(durationSeconds ?? null)
   const [failed, setFailed] = useState(false)
+  const startedRef = useRef(false)
 
   useEffect(() => {
     setPlaying(false)
     setProgress(0)
     setFailed(false)
+    startedRef.current = false
   }, [src])
 
   // Ortak ses hattı: sayfadaki anlatım oynatıcısıyla aynı anda çalmasın.
@@ -128,7 +142,17 @@ function AudioPlayer({ src, durationSeconds }) {
         preload="none"
         onLoadedMetadata={(event) => setDuration(event.currentTarget.duration)}
         onTimeUpdate={(event) => setProgress(event.currentTarget.currentTime)}
-        onEnded={() => setPlaying(false)}
+        onPlaying={() => {
+          setPlaying(true)
+          if (!startedRef.current) {
+            startedRef.current = true
+            onStart?.()
+          }
+        }}
+        onEnded={() => {
+          setPlaying(false)
+          onComplete?.()
+        }}
         onError={() => setFailed(true)}
       />
     </div>

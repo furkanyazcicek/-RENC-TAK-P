@@ -1,0 +1,114 @@
+{
+  "schema_version": "phase-4-ui-validation@1",
+  "generated_at": "2026-09-13T07:57:07.750Z",
+  "browser": "chromium-playwright-1.55.0",
+  "live_data_used": false,
+  "cases": [
+    {
+      "name": "sorular-ogrenci",
+      "route": "/sorular?capture=reels",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "docs/ai-koc/kanitlar/faz-4/gorsel/sorular-ogrenci-1440x900.png",
+      "horizontal_overflow": false,
+      "reduced_motion": true,
+      "disallowed_external_requests": [],
+      "page_errors": []
+    },
+    {
+      "name": "sorular-ogretmen-form",
+      "route": "/sorular?capture=reels&capture-role=teacher&capture-state=form",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "docs/ai-koc/kanitlar/faz-4/gorsel/sorular-ogretmen-form-1440x900.png",
+      "horizontal_overflow": false,
+      "reduced_motion": true,
+      "disallowed_external_requests": [],
+      "page_errors": []
+    },
+    {
+      "name": "denemeler-genel-form",
+      "route": "/denemeler?capture=reels&capture-state=mock-form",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "docs/ai-koc/kanitlar/faz-4/gorsel/denemeler-genel-form-768x1024.png",
+      "horizontal_overflow": false,
+      "reduced_motion": true,
+      "disallowed_external_requests": [],
+      "page_errors": []
+    },
+    {
+      "name": "sorular-ogrenci-form",
+      "route": "/sorular?capture=reels&capture-state=form",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "docs/ai-koc/kanitlar/faz-4/gorsel/sorular-ogrenci-form-390x844.png",
+      "horizontal_overflow": false,
+      "reduced_motion": true,
+      "disallowed_external_requests": [],
+      "page_errors": []
+    },
+    {
+      "name": "gunluk-kayit",
+      "route": "/gunluk-takip?capture=reels",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "docs/ai-koc/kanitlar/faz-4/gorsel/gunluk-kayit-1440x900.png",
+      "horizontal_overflow": false,
+      "reduced_motion": true,
+      "disallowed_external_requests": [],
+      "page_errors": []
+    },
+    {
+      "name": "odevler-ogretmen-form",
+      "route": "/odevler?capture=reels&capture-role=teacher&capture-state=form",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "docs/ai-koc/kanitlar/faz-4/gorsel/odevler-ogretmen-form-768x1024.png",
+      "horizontal_overflow": false,
+      "reduced_motion": true,
+      "disallowed_external_requests": [],
+      "page_errors": []
+    },
+    {
+      "name": "profil-sinav-hedefi",
+      "route": "/profil?capture=reels",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "docs/ai-koc/kanitlar/faz-4/gorsel/profil-sinav-hedefi-390x844.png",
+      "horizontal_overflow": false,
+      "reduced_motion": true,
+      "disallowed_external_requests": [],
+      "page_errors": []
+    }
+  ],
+  "assertions": {
+    "dialog_visible": true,
+    "initial_focus_inside": true,
+    "forward_focus_trap": true,
+    "backward_focus_trap": true,
+    "escape_closes": true,
+    "trigger_focus_restored": true,
+    "semantic_labels": true,
+    "unlabeled_controls": [],
+    "minimum_touch_target_44": true,
+    "undersized_controls": [],
+    "validation_visible_and_form_preserved": true,
+    "no_live_or_personal_data_requests": true,
+    "disallowed_external_requests": []
+  }
+}

@@ -19,6 +19,8 @@ const MESSAGES = {
   not_configured: 'AI Koç henüz yapılandırılmamış. Öğretmeninle iletişime geçebilirsin.',
   rate_limited: 'Bugünlük AI Koç kullanım sınırına ulaştın. Biraz sonra tekrar deneyebilirsin.',
   rate_limited_hour: 'Kısa sürede çok fazla soru sordun. Birkaç dakika sonra tekrar deneyebilirsin.',
+  rate_limit_unavailable: 'Kullanım hakkını şu anda güvenle doğrulayamıyorum. Birkaç dakika sonra tekrar deneyebilir misin?',
+  feature_temporarily_unavailable: 'Bu özellik şu anda güvenli moda alındı. Kısa bir süre sonra tekrar deneyebilirsin.',
   invalid_request: 'Mesajın işlenemedi. Kısaltıp tekrar dener misin?',
   message_too_long: 'Mesajın biraz uzun kaçtı. Daha kısa yazıp tekrar dener misin?',
   conversation_not_found: 'Bu sohbet bulunamadı. Yeni bir sohbet başlatabilirsin.',
@@ -105,9 +107,28 @@ export function mapUpstreamStatus(status) {
  * tarafından kullanılıyordu ve mevcut çağrıların hiçbiri değişmesin diye
  * imzanın sonuna eklendi.
  */
+export function safeErrorSummary(error) {
+  const suppliedName = error instanceof Error ? error.name : 'NonError'
+  const name = /^[A-Za-z][A-Za-z0-9_.-]{1,63}$/.test(suppliedName) ? suppliedName : 'Error'
+  const suppliedCode = error && typeof error === 'object' ? String(error.code ?? '') : ''
+  const code = /^[A-Z0-9][A-Z0-9_.-]{1,63}$/i.test(suppliedCode) ? suppliedCode : 'UNCLASSIFIED'
+  return Object.freeze({ name, code, raw_message_recorded: false })
+}
+
+export function sanitizeLogExtra(extra = {}) {
+  const allowed = new Set([
+    'type', 'status', 'reasonCode', 'reason_code', 'sourceCode', 'source_code',
+    'tool', 'kind', 'attempt', 'count', 'duration_ms', 'http_status', 'dependency',
+  ])
+  return Object.freeze(Object.fromEntries(Object.entries(extra)
+    .filter(([key, value]) => allowed.has(key) && ['string', 'number', 'boolean'].includes(typeof value))
+    .map(([key, value]) => [key, typeof value === 'string' ? value.slice(0, 96) : value])))
+}
+
 export function logError(scope, error, extra = {}, module = 'ai-coach') {
-  const detail = error instanceof Error ? `${error.name}: ${error.message}` : String(error)
-  console.error(`[${module}:${scope}] ${detail}`, extra)
+  const safeScope = /^[a-z0-9_.-]{1,64}$/i.test(String(scope)) ? scope : 'unknown'
+  const safeModule = /^[a-z0-9_.-]{1,64}$/i.test(String(module)) ? module : 'server'
+  console.error(`[${safeModule}:${safeScope}]`, safeErrorSummary(error), sanitizeLogExtra(extra))
 }
 
 /** AI Soru Çözüm modülü için önceden bağlanmış logger. */

@@ -802,10 +802,10 @@ export default function SolveBoard({ question, onClose, onSaved }) {
     try {
       const canvas = renderFlattened(boardRef.current, strokesRef.current, imgRef.current)
       const { blob, ext } = await canvasToBlob(canvas)
-      const imageUrl = await uploadSolutionImage(blob, user.id, ext)
+      const media = await uploadSolutionImage(blob, question.student_id, user.id, ext)
       await publishSolution({
         questionId: question.id,
-        imageUrl,
+        mediaActionId: media.mediaActionId,
         strokes: serialize(boardRef.current, strokesRef.current),
       })
       setSaveState('saved')

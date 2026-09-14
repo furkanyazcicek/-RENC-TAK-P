@@ -24,13 +24,14 @@
  */
 
 import { authenticate } from '../_lib/auth.js'
+import { createHash } from 'node:crypto'
 import { logSolveError, userMessage } from '../_lib/errors.js'
 import { checkRateLimit, recordUsage } from '../_lib/ratelimit.js'
 import { limitsForProfile, missingSolveConfig, solveConfig } from '../_lib/solve/config.js'
 import { solveQuestion } from '../_lib/solve/engine.js'
 import { GeminiError } from '../_lib/solve/gemini.js'
 import { validatePath } from '../_lib/solve/image.js'
-import { saveSession, sessionRowFromResult } from '../_lib/solve/persistence.js'
+import { loadSession, saveSession, sessionRowFromResult } from '../_lib/solve/persistence.js'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -56,6 +57,8 @@ export default async function handler(req, res) {
   const text = typeof body?.text === 'string' ? body.text.trim() : ''
   const studentNote = typeof body?.note === 'string' ? body.note.trim().slice(0, 300) : ''
   const source = ['photo', 'gallery', 'text', 'pdf'].includes(body?.source) ? body.source : 'photo'
+  const clientActionId = isUuid(body?.clientActionId) ? body.clientActionId : null
+  if (!clientActionId) return sendJsonError(res, 400, 'invalid_request')
 
   if (text.length > solveConfig.maxQuestionChars) {
     return sendJsonError(res, 400, 'solve_question_too_long')
@@ -68,7 +71,7 @@ export default async function handler(req, res) {
   const rawPath = body?.imagePath
   const imagePath = rawPath ? validatePath(rawPath, user.id) : null
   if (rawPath && !imagePath) {
-    logSolveError('path', 'geçersiz görsel yolu', { studentId: user.id })
+    logSolveError('path', Object.assign(new Error('invalid_path'), { code: 'INVALID_PATH' }))
     return sendJsonError(res, 400, 'solve_invalid_image')
   }
 
@@ -76,12 +79,31 @@ export default async function handler(req, res) {
     return sendJsonError(res, 400, 'solve_no_input')
   }
 
+  // Model çağrısından ÖNCE kalıcı claim: aynı action retry'ı ikinci
+  // ücretli çağrıyı başlatamaz; farklı girdi aynı id ile çakışır.
+  const inputFingerprint = createHash('sha256').update(JSON.stringify({ source, imagePath, text, studentNote })).digest('hex')
+  const { data: claim, error: claimError } = await supabase.rpc('claim_academic_ai_solve', {
+    p_source: source,p_input_fingerprint: inputFingerprint,p_client_action_id: clientActionId,
+  })
+  if (claimError) return sendJsonError(res, 503, 'database_error')
+  if (claim?.status === 'idempotency_conflict') return sendJsonError(res, 409, 'invalid_request')
+  if (claim?.status === 'processing') return sendJsonError(res, 409, 'database_error')
+  if (claim?.status === 'duplicate') {
+    const stored = await loadSession(supabase, user.id, claim.session_id)
+    if (!stored) return sendJsonError(res, 503, 'database_error')
+    res.writeHead(200, { 'Content-Type': 'text/event-stream; charset=utf-8', 'Cache-Control': 'no-cache, no-transform', Connection: 'keep-alive', 'X-Accel-Buffering': 'no' })
+    res.write(`event: result\ndata: ${JSON.stringify(storedClientResult(stored))}\n\n`)
+    res.write(`event: done\ndata: ${JSON.stringify({ sessionId: stored.id })}\n\n`)
+    return res.end()
+  }
+  if (claim?.status !== 'claimed') return sendJsonError(res, 400, 'invalid_request')
+
   /* ---------- 3) Hız sınırı ---------- */
   const limit = await checkRateLimit(supabase, user.id, {
     kind: 'solve',
     limits: limitsForProfile(profile),
   })
-  if (!limit.allowed) return sendJsonError(res, 429, limit.code)
+  if (!limit.allowed) return sendJsonError(res, limit.code === 'rate_limit_unavailable' ? 503 : 429, limit.code)
 
   /* ---------- 4) SSE başlat ---------- */
   res.writeHead(200, {
@@ -130,7 +152,8 @@ export default async function handler(req, res) {
       questionText: text || null,
       studentNote: studentNote || null,
     })
-    const saved = await saveSession(supabase, user.id, row)
+    const saved = await saveSession(supabase, user.id, row, clientActionId)
+    if (!saved) throw new Error('academic_finalize_failed')
 
     // Hız sınırı sayacı: yalnızca gerçekten model çağrısı yapıldığında.
     await recordUsage(supabase, user.id, {
@@ -145,7 +168,7 @@ export default async function handler(req, res) {
   } catch (error) {
     const code = error instanceof GeminiError ? error.code : 'unknown'
     // Ham hata detayı YALNIZCA sunucu loguna. Kullanıcı sade cümle görür.
-    logSolveError('solve', error, { studentId: user.id, detail: error?.detail })
+    logSolveError('solve', error)
     send('error', { code, message: userMessage(code) })
   } finally {
     if (!res.writableEnded) res.end()
@@ -242,6 +265,20 @@ function safeParse(value) {
     return JSON.parse(value)
   } catch {
     return null
+  }
+}
+
+function isUuid(value) {
+  return typeof value === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value)
+}
+
+function storedClientResult(row) {
+  return {
+    status: row.status,sessionId: row.id,board: row.board ?? null,
+    question: { text: row.question_text ?? null, choices: row.analysis?.choices ?? [], figureDescription: row.analysis?.figureDescription ?? null },
+    meta: { subject: row.subject,topic: row.canonical_topic ?? row.topic,subtopic: row.subtopic,difficulty: row.difficulty,goal: row.analysis?.goal ?? null,givens: row.analysis?.givens ?? [],unknowns: row.analysis?.unknowns ?? [],concepts: row.analysis?.concepts ?? [],strategy: row.analysis?.strategy ?? null },
+    help: { commonMistake: row.student_help?.common_mistake ?? null,keyConcept: row.student_help?.key_concept ?? null,shortTip: row.student_help?.short_tip ?? null,wrongChoices: row.student_help?.wrong_choices ?? [] },
+    verification: { status: row.verification?.status ?? null },
   }
 }
 

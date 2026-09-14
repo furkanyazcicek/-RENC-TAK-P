@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
+import { hydrateAcademicQuestionMedia } from '../lib/learning/academicActivity/media'
 import { useAuth } from '../context/AuthContext'
 import { CalendarPlus, Clock, HelpCircle, Inbox, Radio, TrendingUp, UserPlus, Users } from 'lucide-react'
 
@@ -99,7 +100,7 @@ export default function TeacherDashboard() {
 
     setStudents(enrichedStudents)
     setDailyLogs(logs)
-    setQuestions(questionsRes.data ?? [])
+    setQuestions(await hydrateAcademicQuestionMedia(questionsRes.data ?? []))
     setLoading(false)
   }, [])
 

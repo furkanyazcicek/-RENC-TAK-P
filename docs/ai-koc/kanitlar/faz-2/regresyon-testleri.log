@@ -1,0 +1,3295 @@
+DRKOÇ AI Koç Faz 2 — güvenli regresyon koşusu
+Komut sayısı: 30
+Geçen: 30
+Başarısız: 0
+
+===== faz-1 =====
+Komut: npm run test:ai-koc-faz-1
+Exit code: 0
+Duvar süresi (s): 0.06699425
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:ai-koc-faz-1
+> node scripts/test-phase-1-learning-contracts.mjs
+
+✓ K01/K02 — değişmez müfredat kimliği ve eski kimlik yönlendirmesi
+✓ K03 — güvenli çözümleyici belirsizliği ve bağlamı koruyor
+✓ K08 — M01–M38 kayıt defteri ve rota kapsamı eksiksiz
+✓ K05/K09/K10/K11 — kanıt alanları, güven sınırı, gizlilik ve tekrar önleme
+✓ Kaynak özel anlamlar başarıya sessizce yükseltilmiyor
+✓ Kaynak adaptörü sentetik fixture sözleşmesi
+✓ S02 — aynı konu, dört kaynak ve tekrar gönderim ayrımı
+✓ S05 — tek doğru düşük güvenli tek madde olarak kalıyor
+✓ S07 — sınav türüne özgü net formülü ve bilinmeyen tür
+✓ S08 — eşleşmeyen/komut içeren etiket karantinada
+✓ S10 — dört dil kimliği, cihaz tekrarı ve hesap ayrımı
+✓ S11 — düzeltme ve tombstone güncel görünümü değiştiriyor
+✓ S14 — aynı eylem tek kayıt, farklı gerçek deneme ayrı kayıt
+✓ Düzeltme, iptal ve türetilmiş kayıt yapısal kuralları
+
+Faz 1 sözleşme testleri geçti: 14 bölüm, 1516 doğrulama.
+{"status":"passed","sections":14,"assertions":1516,"sources":38,"topics":330,"appRoutes":62,"fixtures":25}
+
+----- RESULT PASSED -----
+
+===== context-curriculum =====
+Komut: node scripts/test-context-curriculum.mjs
+Exit code: 0
+Duvar süresi (s): 0.000002583
+----- stdout/stderr -----
+
+[1] buildFacts — müfredat katmanı yerinde mi?
+──────────────────────────────────────────────────────────────────
+  ✓ facts.learning üretildi
+  ✓ Hedef sınava göre havuz TYT + AYT
+  ✓ Sınav tarihinden kalan gün hesaplandı
+  ✓ Geçen haftanın gerçekleşme oranı hesaplandı
+  ✓ Hazır konular listesi dolu
+  ✓ Erken konular listesi dolu
+  ✓ Hücre "öğrenilmiş ama zayıf" (seviye 3)
+  ✓ Bitki Biyolojisi engelli listesinde
+  ✓ Bitki Biyolojisi hazır listesinde DEĞİL
+
+[2] renderContext — prompt metnine yansıyor mu?
+──────────────────────────────────────────────────────────────────
+  ✓ "ŞU AN öğrenmeye hazır konular" başlığı var
+  ✓ "ERKEN olan konular" başlığı var
+  ✓ Ders bazlı kapsama tablosu var
+  ✓ Sınava kalan süre yazıldı
+  ✓ Geçen haftanın gerçekleşmesi yazıldı
+  ✓ Bağlam makul boyutta (< 6000 karakter)
+  ✓ Prompt sürümü ilerletildi (v2)
+  ✓ Prompt "Eksik konu ≠ şimdi çalışılacak konu" kuralını içeriyor
+  ✓ Prompt ön koşul kontrolü aracını tarif ediyor
+
+[3] Araç şemaları
+──────────────────────────────────────────────────────────────────
+  ✓ get_learning_path tanımlı
+  ✓ check_topic_prerequisites tanımlı
+  ✓ Silme/başka öğrenci aracı YOK
+
+[4] runTool — müfredat araçları
+──────────────────────────────────────────────────────────────────
+  ✓ get_learning_path sonuç döndü
+  ✓ Her hazır konunun "neden şimdi" gerekçesi var
+  ✓ too_early listesi ön koşul adı taşıyor
+  ✓ check_topic_prerequisites konuyu buldu
+  ✓ Fotosentez şu an "hazır" değil
+  ✓ Eksik ön koşullar adlandırıldı
+  ✓ Ön koşulu tamam olan konu "hazır" dönüyor
+
+[5] create_study_plan — sıra düzeltme ve uyarı
+──────────────────────────────────────────────────────────────────
+  ✓ Aksiyon kartı üretildi
+  ✓ Onay bekliyor (kayıt YAPILMADI)
+  ✓ Sıra bozukluğu yakalandı
+  ✓ Hücre plana önce yerleşti
+  ✓ Modele düzeltilmiş sıra bildirildi
+  ✓ "neden" alanı payload’da korundu
+
+[6] update_student_memory — sınav tarihi doğrulaması
+──────────────────────────────────────────────────────────────────
+  ✓ Gelecekteki sınav tarihi kabul edildi
+  ✓ Geçmiş tarih REDDEDİLDİ
+  ✓ Biçimsiz tarih REDDEDİLDİ
+  ✓ Beyaz liste dışı anahtar REDDEDİLDİ
+
+==================================================================
+Sonuç: 38 geçti, 0 kaldı
+==================================================================
+
+
+----- RESULT PASSED -----
+
+===== curriculum =====
+Komut: node scripts/test-curriculum.mjs
+Exit code: 0
+Duvar süresi (s): 0.000003208
+----- stdout/stderr -----
+
+[1] Grafik tutarlılığı
+──────────────────────────────────────────────────────────────────
+  ✓ Her ön koşul referansı gerçek bir konuya çözülüyor
+  ✓ Hiçbir konu kendi kendisinin ön koşulu değil
+  ✓ Ders içi dizi sırası öğrenme sırasıyla uyumlu
+  ✓ Tüm sınav türlerinde durum kurulabiliyor (döngü yok)
+
+[2] Konu adı eşleştirme
+──────────────────────────────────────────────────────────────────
+  ✓ "Biyoloji - fotosentez" → Canlılarda Enerji Dönüşümleri (Fotosentez - Kemosentez)
+  ✓ "Biyoloji - Hücre" → Hücre
+  ✓ "Matematik - obeb okek" → OBEB - OKEK
+  ✓ "Matematik - EBOB EKOK" → OBEB - OKEK
+  ✓ "Matematik - türev" → Türev
+  ✓ "Geometri - Özel Üçgenler" → Özel Üçgenler (Dik, İkizkenar, Eşkenar)
+  ✓ "Türkçe - paragraf" → Paragrafta Anlam ve Yapı
+  ✓ "Biyoloji - organeller" → Hücre
+  ✓ Tanınmayan konu uydurulmuyor (null döner)
+
+[3] YKS’ye yeni başlayan öğrenci
+──────────────────────────────────────────────────────────────────
+  ✓ Bitki Biyolojisi EKSİK olarak görünüyor
+  ✓ Bitki Biyolojisi ÖNERİLMİYOR (hazır listesinde yok)
+  ✓ Bitki Biyolojisi engelli listesinde ve ön koşulu adlandırılmış
+  ✓ Biyolojide ilk adım temel konu (Canlıların Ortak Özellikleri)
+  ✓ Matematikte ilk adım Temel Kavramlar
+  ✓ Hazır listesindeki her konunun seviyesi ≥ 2
+  ✓ Hazır listesinde eksik ön koşullu konu YOK
+  ✓ AYT Türev hazır değil (TYT fonksiyon temeli yok)
+
+[4] Öğrencinin istediği konu erken olduğunda
+──────────────────────────────────────────────────────────────────
+  ✓ Konu bulundu
+  ✓ Verdict "hazır" DEĞİL
+  ✓ Eksik ön koşullar arasında Hücre var
+  ✓ Önerilen sıra Hücre’yi fotosentezden ÖNCE veriyor
+  ✓ Zincirin sonu istenen konunun kendisi
+
+[5] İleri seviyedeki öğrenci
+──────────────────────────────────────────────────────────────────
+  ✓ TYT Temel Kavramlar "yeterli" sayıldı (çıkarım)
+  ✓ Temel Kavramlar çıkarım bayrağı taşıyor
+  ✓ Temel Kavramlar çalışma önerisi olarak VERİLMİYOR
+  ✓ Türev seviyesi 5 (hakimiyet)
+  ✓ Türev tekrar önerilmiyor
+  ✓ İntegral artık hazır
+
+[6] Çalışılmış ama performansı düşük konu
+──────────────────────────────────────────────────────────────────
+  ✓ Hücre seviyesi 3 (öğrenilmiş, performans düşük)
+  ✓ Hücre "tekrar" listesinde
+  ✓ Gerekçe isabet oranını içeriyor
+  ✓ Zayıf olsa da öncelik listesinde üst sıralarda
+
+[7] Haftalık planın kendi içindeki sırası
+──────────────────────────────────────────────────────────────────
+  ✓ Hücre plana en önce yerleşti
+  ✓ Fotosentez Bitki Biyolojisi’nden önce
+  ✓ Tarih iskeleti korundu (aynı 3 tarih)
+  ✓ Yapılan değişiklikler raporlandı
+  ✓ Ön koşul uyarısı üretildi (Hücre’nin kendi ön koşulu eksik)
+  ✓ Doğru sıradaki plana dokunulmuyor
+  ✓ Bağımsız maddeler yerinde kalıyor
+
+[8] Sınava kalan sürenin etkisi
+──────────────────────────────────────────────────────────────────
+  ✓ Kalan gün hesaplanıyor
+  ✓ Uzak sınavda da hesaplanıyor
+  ✓ Süre daralınca uzun konunun göreli önceliği düşüyor
+  ✓ Sınav tarihi yoksa daysLeft null
+
+[9] Müfredat dışı / tanınmayan konular
+──────────────────────────────────────────────────────────────────
+  ✓ Tanınmayan konu offGraph listesine düştü
+  ✓ Tanınmayan konu bir düğüme yanlışlıkla yazılmadı
+  ✓ Sistem yine de çalışıyor
+
+[10] Hedef sınav odağı
+──────────────────────────────────────────────────────────────────
+  ✓ TYT hedefinde ilk 5 öneri TYT havuzundan
+  ✓ AYT konuları yine de görünür (yok sayılmıyor)
+  ✓ AYT hedefinde TYT temeli hâlâ öneriliyor
+  ✓ AYT hedefinde AYT konuları öne çıkabiliyor
+  ✓ Merkez konu (çok konu açar) yaprak konudan önce
+
+==================================================================
+Sonuç: 55 geçti, 0 kaldı
+==================================================================
+
+
+----- RESULT PASSED -----
+
+===== ai-solve =====
+Komut: npm run test:ai-solve
+Exit code: 0
+Duvar süresi (s): 6.721665625
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:ai-solve
+> node scripts/test-ai-solve.mjs
+
+
+──────────────────────────────────────────────────────────────────────
+1) GÜVENLİK: tahta action doğrulaması
+──────────────────────────────────────────────────────────────────────
+  ✓ Bilinmeyen action türü DÜŞÜRÜLÜR
+  ✓ HTML içeren action türü uydurulamaz
+  ✓ Tanınmayan alanlar action nesnesine TAŞINMAZ
+  ✓ format yalnızca latex|text olabilir
+  ✓ image: protokollü URL reddedilir (dış istek engellenir)
+  ✓ image: dizin tırmanma reddedilir
+  ✓ image: kendi depolama yolu kabul edilir
+  ✓ Boş içerikli write düşürülür (boş tahta karesi olmaz)
+  ✓ Aşırı uzun içerik kırpılır
+  ✓ Adım başına action sayısı sınırlı
+  ✓ Null/undefined action listesi çökertmez
+  ✓ pause süresi makul aralığa çekilir
+
+──────────────────────────────────────────────────────────────────────
+2) GÜVENLİK: şekil doğrulaması
+──────────────────────────────────────────────────────────────────────
+  ✓ kind yoksa şekil yok
+  ✓ Bilinmeyen kind reddedilir
+  ✓ Sonsuz/NaN koordinat düşürülür
+  ✓ Hiç geçerli eleman kalmazsa şekil tamamen düşer (boş eksen çizilmez)
+  ✓ Görünüm penceresi yoksa içerikten hesaplanır
+  ✓ LaTeX içeren eğri ifadesi reddedilir (yanlış eğri çizilmez)
+  ✓ Akış şemasında var olmayan düğüme giden ok düşürülür
+  ✓ Başlıksız tablo reddedilir
+  ✓ Ters sayı doğrusu (max <= min) reddedilir
+
+──────────────────────────────────────────────────────────────────────
+3) Tahta derleyicisi
+──────────────────────────────────────────────────────────────────────
+  ✓ Adımlar derlendi
+  ✓ Cevap çıkarıldı
+  ✓ Sonuç adımı KUTU action üretir
+  ✓ Cevap zaten yazıldıysa tekrar Sonuç adımı EKLENMEZ
+  ✓ Kontrol adımı model beyanından eklenir
+  ✓ "Neden?" gerekçesi önceden üretilip taşınır
+  ✓ Kilit adım işaretlenir
+  ✓ Boş adım (ne metin ne matematik ne şekil) atlanır
+  ✓ Cevap ayrı yazılmamışsa Sonuç adımı EKLENİR
+  ✓ Şık harfi metinden ayıklanır ("C şıkkı" → "C")
+  ✓ Kayıttan okuma: zararlı action elenir
+  ✓ Kayıttan okuma: cevap biçimi korunur
+  ✓ Kayıttan okuma: bozuk girdi çökertmez
+
+──────────────────────────────────────────────────────────────────────
+4) Deterministik doğrulama
+──────────────────────────────────────────────────────────────────────
+  ✓ Doğru cebir GEÇER (x=6 → 2x+6 = 18)
+  ✓ YANLIŞ cebir ÇÜRÜR (x=5 → 2x+6 ≠ 18)
+  ✓ equation_check iki tarafı ayrı hesaplar
+  ✓ Kod çalıştırma denemesi REDDEDİLİR (import)
+  ✓ Kod çalıştırma denemesi REDDEDİLİR (constructor zinciri)
+  ✓ LaTeX kalıntılı ifade reddedilir (sessizce yanlış hesaplanmaz)
+  ✓ Aşırı uzun ifade reddedilir (parse bombası)
+  ✓ İddia yoksa "no_claims" — başarısızlık DEĞİL
+  ✓ Tolerans bağıl olarak çalışır (ondalık sonuç)
+  ✓ Okunabilir soruda 0 adım YAPISAL HATA
+  ✓ Aralık dışı güven yakalanır
+
+──────────────────────────────────────────────────────────────────────
+5) Birleşik güven skoru
+──────────────────────────────────────────────────────────────────────
+  ✓ Doğrulama geçince güven yüksek
+  ✓ Doğrulama çürüyünce güven ÇÖKER
+  ✓ Okuma güveni TAVAN görevi görür
+  ✓ Kesilmiş yanıt güveni SIFIRLAR
+  ✓ Model belirsizlik bildirince güven düşer
+
+──────────────────────────────────────────────────────────────────────
+6) Model yönlendirme
+──────────────────────────────────────────────────────────────────────
+  ✓ Kolay soru → Flash
+  ✓ Zor soru → Pro
+  ✓ Çok adımlı soru → Pro
+  ✓ Derin akıl yürütme → Pro
+  ✓ Triyaj güveni düşükse → Pro
+  ✓ Geometri + karmaşık şekil → Pro
+  ✓ Basit cebirde şekil şeması İSTENMEZ (token tasarrufu)
+  ✓ Biyolojide şekil şeması istenir (akış diyagramı)
+  ✓ Yönlendirme gerekçesi loglanabilir
+  ✓ Flash çürütüldüyse Pro’ya YÜKSELT
+  ✓ Pro da çürütüldüyse ÇÖZÜM GÖSTERME (§30)
+  ✓ Düşük güvenli Flash → yükselt
+  ✓ Yükseltmeden sonra hâlâ çok düşükse REDDET
+  ✓ Yeterli güven → kabul
+
+──────────────────────────────────────────────────────────────────────
+7) Konu eşleştirme (müfredat ağacına bağlanma)
+──────────────────────────────────────────────────────────────────────
+  ✓ Bilinen konu müfredat ağacına eşleşir
+  ✓ Kanonik ad döner
+  ✓ Ders/konu adı büyük-küçük harften bağımsız eşleşir
+  ✓ Ders adı normalize edilir
+  ✓ Uydurma konu EŞLEŞMEZ (matched:false)
+  ✓ Uydurma konu ham hâliyle saklanır ama kanonik değil
+  ✓ Konu etiketi "Ders - Konu" biçiminde (daily_logs ile uyumlu)
+
+──────────────────────────────────────────────────────────────────────
+8) Maliyet hesabı
+──────────────────────────────────────────────────────────────────────
+  ✓ 1M girdi token = girdi fiyatı
+  ✓ 1M çıktı token = çıktı fiyatı
+  ✓ Çok çağrılı oturum toplanır
+  ✓ Fiyat doğrulanmadı bayrağı taşınır
+  ✓ Negatif token maliyeti düşürmez
+
+──────────────────────────────────────────────────────────────────────
+9) Gemini şema çevirisi
+──────────────────────────────────────────────────────────────────────
+  ✓ additionalProperties ayıklanır (Gemini 400 vermez)
+  ✓ exclusiveMinimum ayıklanır
+  ✓ Birleşik tip nullable:true olur
+  ✓ propertyOrdering eklenir (cevap çözümden önce üretilmesin)
+  ✓ Tam çözüm şeması yasaklı anahtar İÇERMEZ
+  ✓ Şema serileştirilebilir
+  ✓ Triyaj şeması çözüm şemasından belirgin şekilde KÜÇÜK (maliyet)
+  ✓ Düz JSON ayrıştırılır
+  ✓ Kod bloğuna sarılmış JSON kurtarılır
+  ✓ Önüne cümle yazılmış JSON kurtarılır
+  ✓ Tamamen bozuk çıktı null döner
+
+──────────────────────────────────────────────────────────────────────
+9.5) Düşünme düzeyi yapılandırması
+──────────────────────────────────────────────────────────────────────
+  ✓ Düşünme düzeyi METİN, sayı değil
+  ✓ Tüm düzeyler Gemini’nin kabul ettiği değerlerden
+  ✓ Hiçbir rolde düşünme KAPALI değil (0/off geçersiz)
+  ✓ Pro, hızlı modelden daha derin düşünür
+  ✓ Geçersiz ortam değeri varsayılana düşer (400 üretmez)
+
+──────────────────────────────────────────────────────────────────────
+10) Görsel yolu doğrulaması
+──────────────────────────────────────────────────────────────────────
+  ✓ Kendi klasörü kabul edilir
+  ✓ BAŞKASININ klasörü REDDEDİLİR
+  ✓ Dizin tırmanma reddedilir
+  ✓ Mutlak yol reddedilir
+  ✓ Mutlak URL reddedilir
+  ✓ Başka kova öneki reddedilir
+  ✓ Boş/geçersiz girdi reddedilir
+
+──────────────────────────────────────────────────────────────────────
+11) Fonksiyon örnekleme ve grafik derlemesi
+──────────────────────────────────────────────────────────────────────
+  ✓ Parabol örneklenir
+  ✓ Tanımsız noktalar atlanır (1/x, x=0)
+  ✓ Zararlı ifade örneklenmez
+  ✓ Eğri sunucuda noktalara çevrildi
+  ✓ Ham ifade istemciye GÖNDERİLMEZ
+  ✓ Eğri işaretlenir (renderer ince çizsin)
+  ✓ Örneklenen nokta sayısı sınırı aşmaz
+
+──────────────────────────────────────────────────────────────────────
+12) Okunamayan görsel mesajları
+──────────────────────────────────────────────────────────────────────
+  ✓ Her enum değerinin öğrenciye gösterilecek karşılığı var
+  ✓ Bilinmeyen enum null döner (uydurma mesaj yok)
+  ✓ Mesajlar öğrenciye NE YAPACAĞINI söyler (soru işareti içerir)
+
+──────────────────────────────────────────────────────────────────────
+12b) Doğrulama iddialarının biçim toleransı
+──────────────────────────────────────────────────────────────────────
+  ✓ Tek taraflı denklem (=0 biçimi) koşturulur
+  ✓ "sol = sağ" biçimi çalışmaya devam eder
+  ✓ Gerçekten tutmayan denklem ÇÜRÜR
+  ✓ Koşturulamayan iddia "çürüdü" değil "kullanılamaz" sayılır
+  ✓ Eksik değişken de çürütme sayılmaz
+
+──────────────────────────────────────────────────────────────────────
+13) Gemini reddinde kendini toparlama
+──────────────────────────────────────────────────────────────────────
+[ai-solve:gemini] gemini-3.6-flash HTTP 400 (schema_rejected) {"error":{"code":400,"message":"Invalid JSON payload: responseSchema is too complex"}}
+[ai-solve:gemini] gemini-3.6-flash 400 — onarım: düşünme yapılandırması bırakıldı (thinkingLevel="low")
+[ai-solve:gemini] gemini-3.6-flash HTTP 400 (schema_rejected) {"error":{"code":400,"message":"Invalid JSON payload: responseSchema is too complex"}}
+[ai-solve:gemini] gemini-3.6-flash 400 — onarım: şema sadeleştirildi (şekil alanları düşürüldü)
+  ✓ Şema reddinde çözüm sade şemayla üretilir
+  ✓ Düşüş çağırana bildirilir (schemaDowngraded)
+  ✓ Düşünme düzeyi doğru alana yazılır (thinkingConfig)
+  ✓ Sebep şema olduğunda düşünme düzeyi GERİ ALINIR
+  ✓ Onarımlar yeniden deneme bütçesini tüketmez
+[ai-solve:gemini] gemini-3.6-flash HTTP 400 (bad_request) {"error":{"code":400,"message":"thinkingLevel is not supported by this model"}}
+[ai-solve:gemini] gemini-3.6-flash 400 — onarım: düşünme yapılandırması bırakıldı (thinkingLevel="high")
+  ✓ Düşünme düzeyi reddinde çözüm yine üretilir
+  ✓ Şekil alanları gereksiz yere düşürülmez
+[ai-solve:gemini] gemini-3.7-flash HTTP 429 (quota) {"error":{"message":"You exceeded your current quota"}}
+[ai-solve:gemini] pro kullanılamadı (quota) → fast ile deneniyor
+  ✓ Pro kotası dolunca Flash devralır
+  ✓ Devralma sessiz değil (fallbackFrom taşınır)
+  ✓ Kota hatasında Pro tekrar tekrar denenmez
+[ai-solve:gemini] gemini-3.7-flash HTTP 503 (server) {"error":{"message":"high demand"}}
+[ai-solve:gemini] pro kullanılamadı (server) → fast ile deneniyor
+  ✓ 503 alan model ısrarla denenmez
+  ✓ 503 sonrası yedek model çözer
+[ai-solve:gemini] gemini-3.6-flash HTTP 429 (quota) {"error":{"message":"You exceeded your current quota","details":[{"violations":[{"quotaValue":"20"}]}]}}
+[ai-solve:gemini] gemini-3.6-flash HTTP 429 (quota_unavailable) {"error":{"message":"Quota exceeded for metric: generate_content_free_tier_requests, limit: 0"}}
+  ✓ Günlük hak dolduğunda "yarın dene" denir
+  ✓ Günlük hak mesajı "yapılandırma" demez
+  ✓ Katmanda hiç hak yoksa yapılandırma sorunudur
+[ai-solve:gemini] gemini-3.7-flash HTTP 401 (auth) {"error":{"message":"API key not valid"}}
+  ✓ Anahtar hatası yutulmaz
+  ✓ Anahtar hatasında ikinci model denenmez
+  ✓ Öğrenciye giden kod "yapılandırma"
+[ai-solve:gemini] gemini-3.6-flash süre bütçesi bitti (kalan 2000ms)
+  ✓ Umutsuz bütçede istek hiç atılmaz
+  ✓ Umutsuz bütçe anında biter
+[ai-solve:gemini] gemini-3.6-flash HTTP 408 (timeout) timeout
+  ✓ Bekleme süresi kalan bütçeyle sınırlanır
+  ✓ Zaman aşımından sonra yeniden denenmez
+  ✓ Öğrenciye Soru Çöz diliyle zaman aşımı mesajı gider
+
+──────────────────────────────────────────────────────────────────────
+14) Uzun süren çözümde "bu soru zor" bilgisi
+──────────────────────────────────────────────────────────────────────
+  ✓ Uzun sürünce "zor soru" aşaması bildirilir
+  ✓ Normal aşamalar da bildirilmeye devam eder
+  ✓ Hızlı çözümde gereksiz uyarı GÖSTERİLMEZ
+
+──────────────────────────────────────────────────────────────────────
+15) Çözüm geçmişi ve tekrar kuralları
+──────────────────────────────────────────────────────────────────────
+  ✓ Zorlanılan soru tekrar listesine girer
+  ✓ Tamamlanan tekrar yeniden beklemez
+  ✓ Okunamayan kayıt tekrar sayılmaz
+  ✓ Türkçe arama ve ders filtresi birlikte çalışır
+  ✓ Sorunlu kayıtlar ayrı filtrelenir
+  ✓ Özet çözülen, tekrar ve odak konusunu hesaplar
+  ✓ Bugünün kaydı doğru gruplanır
+  ✓ Son yedi gün doğru gruplanır
+  ✓ Eski kayıt doğru gruplanır
+  ✓ Yerel tekrar durumu yalnızca sunucu boşken devreye girer
+
+======================================================================
+Sonuç: 150 geçti, 0 kaldı
+======================================================================
+
+
+----- RESULT PASSED -----
+
+===== lesson-document =====
+Komut: npm run test:lesson-document
+Exit code: 0
+Duvar süresi (s): 0.000003917
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:lesson-document
+> node scripts/test-lesson-document.mjs
+
+✓ Geçerli belge kabul ediliyor
+✓ Ön koşul korunuyor
+✓ Kazanım korunuyor
+✓ Bölüm rolü korunuyor
+✓ Kavram terimi korunuyor
+✓ Görsel anlatım metni korunuyor
+✓ Quiz seçenekleri korunuyor
+✓ explanation → prose
+✓ visual → figure ve kind taşınıyor
+✓ visual_audio_script → audio_script
+✓ exam_tip → exam
+✓ reflection → checkpoint
+✓ teacher_intervention → teacher_note
+✓ Boş belge reddediliyor
+✓ Eksik quiz seçeneği reddediliyor
+✓ Cevapsız dur-düşün reddediliyor
+✓ İçi boş blok okuyucuya gitmiyor
+✓ İçerik hash’i sabit
+✓ İçerik değişince hash değişiyor
+✓ Bölüm hash’i sabit
+✓ Kısa ders uyarı üretiyor
+✓ Kelime sayısı hesaplanıyor
+✓ Kapsanan roller raporlanıyor
+✓ Düzenlenebilir her tipin alan tanımı var
+✓ Alan tanımlarındaki her isim şemada üretiliyor
+
+✅ 25 geçti, 0 kaldı
+
+----- RESULT PASSED -----
+
+===== lesson-content =====
+Komut: npm run test:lesson-content
+Exit code: 0
+Duvar süresi (s): 0.09726
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:lesson-content
+> node scripts/test-lesson-content.mjs
+
+
+=== DrKoç ders içeriği denetimi — 185 ders ===
+
+▸ Felsefenin Konusu: Soru Sormaktan Gerekçe Kurmaya
+  TYT · Felsefe · Felsefenin Konusu  ·  sıra 1
+  968 kelime · 8 bölüm · 0 şekil · puan 1/100
+  ⚠ Ders toplam 968 kelime. Bu öğrenme profili genelde en az 1200 kelime gerekiyor — açıklamaları kısaltmayın, gereksiz kelimeyi atın.
+  ⚠ “Felsefe her soruyu sormak değil, soruyu temellendirmektir” bölümü yalnızca 139 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Felsefe: tanımdan paragrafı tanımaya” bölümü yalnızca 149 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Felsefi soru: tanımdan paragrafı tanımaya” bölümü yalnızca 158 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Temellendirme: tanımdan paragrafı tanımaya” bölümü yalnızca 128 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Kavramları yan yana koy: asıl ayrım nerede?” bölümü yalnızca 75 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Filozof → görüş → anahtar mantık → karşı görüş” bölümü yalnızca 87 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Paragrafı görüşe çevir” bölümü yalnızca 120 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Sık karıştırılanlar ve spot bilgiler” bölümü yalnızca 112 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ Hiçbir yerde “neden böyle?” sorusu cevaplanmamış — not ezber listesine dönüşür.
+  ⚠ Hiç görsel yok. Bu konuda gerçekten gerekmiyorsa görmezden gelin.
+
+▸ Felsefi Düşüncenin Özellikleri: Paragraftaki Düşünme Biçimini Tanı
+  TYT · Felsefe · Felsefi Düşüncenin Özellikleri  ·  sıra 2
+  1.039 kelime · 9 bölüm · 0 şekil · puan 0/100
+  ⚠ Ders toplam 1039 kelime. Bu öğrenme profili genelde en az 1200 kelime gerekiyor — açıklamaları kısaltmayın, gereksiz kelimeyi atın.
+  ⚠ “Özellikleri listeleme; metnin ne yaptığına bak” bölümü yalnızca 124 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Eleştirellik: tanımdan paragrafı tanımaya” bölümü yalnızca 135 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Tutarlılık: tanımdan paragrafı tanımaya” bölümü yalnızca 131 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Refleksiflik: tanımdan paragrafı tanımaya” bölümü yalnızca 136 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Kümülatif ilerleme: tanımdan paragrafı tanımaya” bölümü yalnızca 150 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Kavramları yan yana koy: asıl ayrım nerede?” bölümü yalnızca 67 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Filozof → görüş → anahtar mantık → karşı görüş” bölümü yalnızca 76 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Paragrafı görüşe çevir” bölümü yalnızca 123 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Sık karıştırılanlar ve spot bilgiler” bölümü yalnızca 97 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ Hiçbir yerde “neden böyle?” sorusu cevaplanmamış — not ezber listesine dönüşür.
+  ⚠ Hiç görsel yok. Bu konuda gerçekten gerekmiyorsa görmezden gelin.
+
+▸ Bilgi Felsefesi: Nereden Biliyoruz?
+  TYT · Felsefe · Bilgi Felsefesi  ·  sıra 3
+  1.035 kelime · 10 bölüm · 0 şekil · puan 0/100
+  ⚠ Ders toplam 1035 kelime. Bu öğrenme profili genelde en az 1200 kelime gerekiyor — açıklamaları kısaltmayın, gereksiz kelimeyi atın.
+  ⚠ “Önce soruyu bul: mümkün mü, kaynağı ne, ölçütü ne?” bölümü yalnızca 135 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Dogmatizm: tanımdan paragrafı tanımaya” bölümü yalnızca 112 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Septisizm: tanımdan paragrafı tanımaya” bölümü yalnızca 119 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Rasyonalizm: tanımdan paragrafı tanımaya” bölümü yalnızca 111 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Empirizm: tanımdan paragrafı tanımaya” bölümü yalnızca 93 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Kritisizm: tanımdan paragrafı tanımaya” bölümü yalnızca 127 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Kavramları yan yana koy: asıl ayrım nerede?” bölümü yalnızca 79 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Filozof → görüş → anahtar mantık → karşı görüş” bölümü yalnızca 98 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Paragrafı görüşe çevir” bölümü yalnızca 85 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Sık karıştırılanlar ve spot bilgiler” bölümü yalnızca 76 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ Hiçbir yerde “neden böyle?” sorusu cevaplanmamış — not ezber listesine dönüşür.
+  ⚠ Hiç görsel yok. Bu konuda gerçekten gerekmiyorsa görmezden gelin.
+
+▸ Varlık Felsefesi: Gerçekte Ne Var?
+  TYT · Felsefe · Varlık Felsefesi  ·  sıra 4
+  830 kelime · 9 bölüm · 0 şekil · puan 0/100
+  ⚠ Ders toplam 830 kelime. Bu öğrenme profili genelde en az 1200 kelime gerekiyor — açıklamaları kısaltmayın, gereksiz kelimeyi atın.
+  ⚠ “Aynı masaya bakıp farklı ontolojiler kurmak” bölümü yalnızca 109 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Realizm: tanımdan paragrafı tanımaya” bölümü yalnızca 97 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “İdealizm: tanımdan paragrafı tanımaya” bölümü yalnızca 109 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Materyalizm: tanımdan paragrafı tanımaya” bölümü yalnızca 101 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Oluşçuluk: tanımdan paragrafı tanımaya” bölümü yalnızca 102 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Kavramları yan yana koy: asıl ayrım nerede?” bölümü yalnızca 70 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Filozof → görüş → anahtar mantık → karşı görüş” bölümü yalnızca 78 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Paragrafı görüşe çevir” bölümü yalnızca 80 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Sık karıştırılanlar ve spot bilgiler” bölümü yalnızca 84 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ Hiçbir yerde “neden böyle?” sorusu cevaplanmamış — not ezber listesine dönüşür.
+  ⚠ Hiç görsel yok. Bu konuda gerçekten gerekmiyorsa görmezden gelin.
+
+▸ Ahlak Felsefesi: İyi Eylemi Hangi Ölçüt Belirler?
+  TYT · Felsefe · Ahlak Felsefesi  ·  sıra 5
+  1.169 kelime · 10 bölüm · 0 şekil · puan 0/100
+  ⚠ Ders toplam 1169 kelime. Bu öğrenme profili genelde en az 1200 kelime gerekiyor — açıklamaları kısaltmayın, gereksiz kelimeyi atın.
+  ⚠ “Aynı eylem, farklı gerekçeler” bölümü yalnızca 145 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Ahlaki relativizm: tanımdan paragrafı tanımaya” bölümü yalnızca 140 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Hedonizm: tanımdan paragrafı tanımaya” bölümü yalnızca 119 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Utilitarizm: tanımdan paragrafı tanımaya” bölümü yalnızca 126 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Ödev ahlakı: tanımdan paragrafı tanımaya” bölümü yalnızca 134 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Stoacılık: tanımdan paragrafı tanımaya” bölümü yalnızca 114 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Kavramları yan yana koy: asıl ayrım nerede?” bölümü yalnızca 85 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Filozof → görüş → anahtar mantık → karşı görüş” bölümü yalnızca 108 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Paragrafı görüşe çevir” bölümü yalnızca 103 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Sık karıştırılanlar ve spot bilgiler” bölümü yalnızca 95 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ Hiçbir yerde “neden böyle?” sorusu cevaplanmamış — not ezber listesine dönüşür.
+  ⚠ Hiç görsel yok. Bu konuda gerçekten gerekmiyorsa görmezden gelin.
+
+▸ Sanat Felsefesi: Güzel, Eser ve Yorum
+  TYT · Felsefe · Sanat Felsefesi  ·  sıra 6
+  729 kelime · 8 bölüm · 0 şekil · puan 1/100
+  ⚠ Ders toplam 729 kelime. Bu öğrenme profili genelde en az 1200 kelime gerekiyor — açıklamaları kısaltmayın, gereksiz kelimeyi atın.
+  ⚠ ““Güzel” yalnız hoşuma giden midir?” bölümü yalnızca 109 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Estetik yargı: tanımdan paragrafı tanımaya” bölümü yalnızca 115 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Taklit kuramı: tanımdan paragrafı tanımaya” bölümü yalnızca 107 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Yaratma kuramı: tanımdan paragrafı tanımaya” bölümü yalnızca 120 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Kavramları yan yana koy: asıl ayrım nerede?” bölümü yalnızca 49 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Filozof → görüş → anahtar mantık → karşı görüş” bölümü yalnızca 68 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Paragrafı görüşe çevir” bölümü yalnızca 78 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Sık karıştırılanlar ve spot bilgiler” bölümü yalnızca 83 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ Hiçbir yerde “neden böyle?” sorusu cevaplanmamış — not ezber listesine dönüşür.
+  ⚠ Hiç görsel yok. Bu konuda gerçekten gerekmiyorsa görmezden gelin.
+
+▸ Din Felsefesi: Tanrı, İnanç ve Akıl
+  TYT · Felsefe · Din Felsefesi  ·  sıra 7
+  729 kelime · 8 bölüm · 0 şekil · puan 1/100
+  ⚠ Ders toplam 729 kelime. Bu öğrenme profili genelde en az 1200 kelime gerekiyor — açıklamaları kısaltmayın, gereksiz kelimeyi atın.
+  ⚠ “İnanmak, reddetmek ve bilinemeyeceğini söylemek aynı değildir” bölümü yalnızca 100 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Teizm: tanımdan paragrafı tanımaya” bölümü yalnızca 114 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Deizm: tanımdan paragrafı tanımaya” bölümü yalnızca 104 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Agnostisizm: tanımdan paragrafı tanımaya” bölümü yalnızca 106 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Kavramları yan yana koy: asıl ayrım nerede?” bölümü yalnızca 70 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Filozof → görüş → anahtar mantık → karşı görüş” bölümü yalnızca 79 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Paragrafı görüşe çevir” bölümü yalnızca 71 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Sık karıştırılanlar ve spot bilgiler” bölümü yalnızca 85 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ Hiçbir yerde “neden böyle?” sorusu cevaplanmamış — not ezber listesine dönüşür.
+  ⚠ Hiç görsel yok. Bu konuda gerçekten gerekmiyorsa görmezden gelin.
+
+▸ Siyaset Felsefesi: İktidar Ne Zaman Meşrudur?
+  TYT · Felsefe · Siyaset Felsefesi  ·  sıra 8
+  725 kelime · 8 bölüm · 0 şekil · puan 1/100
+  ⚠ Ders toplam 725 kelime. Bu öğrenme profili genelde en az 1200 kelime gerekiyor — açıklamaları kısaltmayın, gereksiz kelimeyi atın.
+  ⚠ “Güç sahibi olmak haklı olmak değildir” bölümü yalnızca 100 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Meşruiyet: tanımdan paragrafı tanımaya” bölümü yalnızca 115 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Siyasal özgürlük: tanımdan paragrafı tanımaya” bölümü yalnızca 115 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Adalet: tanımdan paragrafı tanımaya” bölümü yalnızca 121 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Kavramları yan yana koy: asıl ayrım nerede?” bölümü yalnızca 57 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Filozof → görüş → anahtar mantık → karşı görüş” bölümü yalnızca 63 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Paragrafı görüşe çevir” bölümü yalnızca 78 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Sık karıştırılanlar ve spot bilgiler” bölümü yalnızca 76 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ Hiçbir yerde “neden böyle?” sorusu cevaplanmamış — not ezber listesine dönüşür.
+  ⚠ Hiç görsel yok. Bu konuda gerçekten gerekmiyorsa görmezden gelin.
+
+▸ Bilim Felsefesi: Bilimsel Bilgiyi Ne Ayırır?
+  TYT · Felsefe · Bilim Felsefesi  ·  sıra 9
+  745 kelime · 8 bölüm · 0 şekil · puan 1/100
+  ⚠ Ders toplam 745 kelime. Bu öğrenme profili genelde en az 1200 kelime gerekiyor — açıklamaları kısaltmayın, gereksiz kelimeyi atın.
+  ⚠ “Bilim sonuç listesi değil, sınanabilir açıklama etkinliğidir” bölümü yalnızca 107 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Yanlışlanabilirlik: tanımdan paragrafı tanımaya” bölümü yalnızca 117 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Paradigma: tanımdan paragrafı tanımaya” bölümü yalnızca 122 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Bilimsel nesnellik: tanımdan paragrafı tanımaya” bölümü yalnızca 118 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Kavramları yan yana koy: asıl ayrım nerede?” bölümü yalnızca 50 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Filozof → görüş → anahtar mantık → karşı görüş” bölümü yalnızca 70 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Paragrafı görüşe çevir” bölümü yalnızca 75 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Sık karıştırılanlar ve spot bilgiler” bölümü yalnızca 86 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ Hiçbir yerde “neden böyle?” sorusu cevaplanmamış — not ezber listesine dönüşür.
+  ⚠ Hiç görsel yok. Bu konuda gerçekten gerekmiyorsa görmezden gelin.
+
+▸ Felsefi Akımlar: Karşıt Görüşler Atlası
+  TYT · Felsefe · Felsefi Akımlar  ·  sıra 10
+  687 kelime · 8 bölüm · 0 şekil · puan 1/100
+  ⚠ Ders toplam 687 kelime. Bu öğrenme profili genelde en az 1200 kelime gerekiyor — açıklamaları kısaltmayın, gereksiz kelimeyi atın.
+  ⚠ “Akımı alan + soru + cevap üçlüsüyle bul” bölümü yalnızca 106 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Determinizm: tanımdan paragrafı tanımaya” bölümü yalnızca 101 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “İndeterminizm: tanımdan paragrafı tanımaya” bölümü yalnızca 105 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Varoluşçuluk: tanımdan paragrafı tanımaya” bölümü yalnızca 103 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Kavramları yan yana koy: asıl ayrım nerede?” bölümü yalnızca 67 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Filozof → görüş → anahtar mantık → karşı görüş” bölümü yalnızca 52 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Paragrafı görüşe çevir” bölümü yalnızca 78 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Sık karıştırılanlar ve spot bilgiler” bölümü yalnızca 75 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ Hiçbir yerde “neden böyle?” sorusu cevaplanmamış — not ezber listesine dönüşür.
+  ⚠ Hiç görsel yok. Bu konuda gerçekten gerekmiyorsa görmezden gelin.
+
+▸ Temel Filozof–Görüş İlişkileri: İsimden Değil Savdan Tanı
+  TYT · Felsefe · Temel Filozof-Görüş İlişkileri  ·  sıra 11
+  673 kelime · 7 bölüm · 0 şekil · puan 10/100
+  ⚠ Ders toplam 673 kelime. Bu öğrenme profili genelde en az 1200 kelime gerekiyor — açıklamaları kısaltmayın, gereksiz kelimeyi atın.
+  ⚠ “Biyografi değil görüş izi” bölümü yalnızca 101 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Görüş izi: tanımdan paragrafı tanımaya” bölümü yalnızca 113 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Karşı görüş kontrolü: tanımdan paragrafı tanımaya” bölümü yalnızca 127 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Kavramları yan yana koy: asıl ayrım nerede?” bölümü yalnızca 85 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Filozof → görüş → anahtar mantık → karşı görüş” bölümü yalnızca 87 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Paragrafı görüşe çevir” bölümü yalnızca 71 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Sık karıştırılanlar ve spot bilgiler” bölümü yalnızca 89 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ Hiçbir yerde “neden böyle?” sorusu cevaplanmamış — not ezber listesine dönüşür.
+  ⚠ Hiç görsel yok. Bu konuda gerçekten gerekmiyorsa görmezden gelin.
+
+▸ Fizik Bilimine Giriş
+  TYT · Fizik · Fizik Bilimine Giriş  ·  sıra 1
+  4.573 kelime · 9 bölüm · 5 şekil · puan 100/100
+
+▸ Madde ve Özellikleri
+  TYT · Fizik · Madde ve Özellikleri  ·  sıra 1
+  3.029 kelime · 6 bölüm · 4 şekil · puan 100/100
+
+▸ Sıvıların Kaldırma Kuvveti
+  TYT · Fizik · Sıvıların Kaldırma Kuvveti  ·  sıra 1
+  2.540 kelime · 6 bölüm · 2 şekil · puan 100/100
+
+▸ Basınç
+  TYT · Fizik · Basınç  ·  sıra 1
+  2.140 kelime · 6 bölüm · 2 şekil · puan 100/100
+
+▸ Isı, Sıcaklık ve Genleşme
+  TYT · Fizik · Isı, Sıcaklık ve Genleşme  ·  sıra 1
+  3.150 kelime · 8 bölüm · 3 şekil · puan 100/100
+
+▸ Hareket ve Kuvvet
+  TYT · Fizik · Hareket ve Kuvvet  ·  sıra 1
+  2.235 kelime · 6 bölüm · 2 şekil · puan 100/100
+
+▸ İş, Güç ve Enerji
+  TYT · Fizik · İş, Güç ve Enerji  ·  sıra 1
+  2.381 kelime · 7 bölüm · 2 şekil · puan 100/100
+
+▸ Elektrostatik
+  TYT · Fizik · Elektrostatik  ·  sıra 1
+  2.344 kelime · 7 bölüm · 2 şekil · puan 100/100
+
+▸ Elektrik Devreleri
+  TYT · Fizik · Elektrik Devreleri  ·  sıra 1
+  2.242 kelime · 7 bölüm · 2 şekil · puan 100/100
+
+▸ Manyetizma
+  TYT · Fizik · Manyetizma  ·  sıra 1
+  2.544 kelime · 7 bölüm · 2 şekil · puan 100/100
+
+▸ Dalgalar
+  TYT · Fizik · Dalgalar  ·  sıra 1
+  2.557 kelime · 7 bölüm · 2 şekil · puan 100/100
+
+▸ Optik
+  TYT · Fizik · Optik  ·  sıra 1
+  2.833 kelime · 7 bölüm · 2 şekil · puan 100/100
+
+▸ Sözcükte Anlam: Anlamı Bağlamdan Kurmak
+  TYT · Türkçe · Sözcükte Anlam  ·  sıra 0
+  3.993 kelime · 10 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 158 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 103 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Cümlede Anlam: Yargı, Tutum ve İlişki
+  TYT · Türkçe · Cümlede Anlam  ·  sıra 0
+  3.205 kelime · 9 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 167 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 100 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Paragraf Okuma Mekanizması
+  TYT · Türkçe · Paragrafta Anlam ve Yapı  ·  sıra 1
+  3.251 kelime · 9 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 177 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 109 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Paragrafta Konu, Ana Düşünce ve Başlık
+  TYT · Türkçe · Paragrafta Anlam ve Yapı  ·  sıra 2
+  2.800 kelime · 8 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 179 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 117 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Paragraf Yapısı ve Akış
+  TYT · Türkçe · Paragrafta Anlam ve Yapı  ·  sıra 3
+  4.516 kelime · 10 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 174 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 113 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Paragrafta Anlatım Teknikleri
+  TYT · Türkçe · Paragrafta Anlam ve Yapı  ·  sıra 4
+  4.444 kelime · 11 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 167 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 94 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Düşünceyi Geliştirme Yolları
+  TYT · Türkçe · Paragrafta Düşünceyi Geliştirme Yolları  ·  sıra 0
+  4.788 kelime · 11 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 172 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 95 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ İsim ve Sıfat: Sözcüğün Cümledeki Görevi
+  TYT · Türkçe · Sözcük Türleri  ·  sıra 1
+  4.447 kelime · 11 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 159 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 93 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Zamir ve Zarf: Yerine Geçen ile Etkileyeni Ayır
+  TYT · Türkçe · Sözcük Türleri  ·  sıra 2
+  4.010 kelime · 10 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 156 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 96 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Edat, Bağlaç ve Ünlem
+  TYT · Türkçe · Sözcük Türleri  ·  sıra 3
+  3.777 kelime · 10 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 138 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 95 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Fiiller: Anlam, Kip, Kişi ve Yapı
+  TYT · Türkçe · Fiiller  ·  sıra 1
+  4.727 kelime · 11 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 137 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 101 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Fiilde Çatı ve Ek Fiil
+  TYT · Türkçe · Fiiller  ·  sıra 2
+  4.946 kelime · 12 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 150 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 95 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Fiilimsi: Fiilden Türeyen Yan Yargılar
+  TYT · Türkçe · Fiilimsi  ·  sıra 0
+  4.489 kelime · 11 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 135 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 99 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Cümlenin Öğeleri: Yüklemden Dışarı Doğru Çözüm
+  TYT · Türkçe · Cümlenin Öğeleri  ·  sıra 0
+  5.668 kelime · 12 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 143 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 93 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Cümle Türleri: Dört Ayrı Sınıflandırma Ekseni
+  TYT · Türkçe · Cümle Türleri  ·  sıra 0
+  5.934 kelime · 11 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 130 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 88 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Anlatım Bozuklukları: Anlamdan Yapıya Tanı Koymak
+  TYT · Türkçe · Anlatım Bozuklukları  ·  sıra 0
+  6.963 kelime · 12 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 133 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 111 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Ses Bilgisi: Kök ile Söyleniş Arasındaki Değişim
+  TYT · Türkçe · Ses Bilgisi  ·  sıra 0
+  5.087 kelime · 10 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 158 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 86 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Sözcükte Yapı: Kök, Gövde ve Ek
+  TYT · Türkçe · Yapı Bilgisi  ·  sıra 1
+  5.473 kelime · 10 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 128 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 93 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Tamlamalar: İsimler Arasında Aitlik, Sıfatla Niteleme
+  TYT · Türkçe · Tamlamalar  ·  sıra 0
+  4.842 kelime · 9 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 145 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 88 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Yazım Kuralları: Kuralı Görevden Türetmek
+  TYT · Türkçe · Yazım Kuralları  ·  sıra 0
+  5.765 kelime · 15 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 143 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 147 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Noktalama İşaretleri: Cümlenin İlişki Haritası
+  TYT · Türkçe · Noktalama İşaretleri  ·  sıra 0
+  5.576 kelime · 13 bölüm · 0 şekil · puan 82/100
+  ⚠ “Örnek üzerinde uygula” bölümü yalnızca 170 kelime — burada anlatım yüzeysel kalmış olabilir.
+  ⚠ “Son kontrol” bölümü yalnızca 163 kelime — burada anlatım yüzeysel kalmış olabilir.
+
+▸ Allah-İnsan İlişkisi: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · Allah-İnsan İlişkisi  ·  sıra 1
+  1.358 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ İslam'da İnanç Esasları: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · İslam'da İnanç Esasları  ·  sıra 1
+  1.300 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ İslam'da İbadetler: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · İslam'da İbadetler  ·  sıra 1
+  1.353 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ İslam'da Ahlak İlkeleri: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · İslam'da Ahlak İlkeleri  ·  sıra 1
+  1.309 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ Kur'an'a Göre Hz. Muhammed: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · Kur'an'a Göre Hz. Muhammed  ·  sıra 1
+  1.270 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ İslam'da Varlık ve Bilgi: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · İslam'da Varlık ve Bilgi  ·  sıra 1
+  1.318 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ Allah'ı Tanımak: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · Allah'ı Tanımak  ·  sıra 1
+  1.287 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ İslam'ın Evrensel Mesajları: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · İslam'ın Evrensel Mesajları  ·  sıra 1
+  1.273 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ Din, Çevre ve Teknoloji: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · Din, Çevre ve Teknoloji  ·  sıra 1
+  1.278 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ İslam Düşüncesinde İtikadi-Siyasi ve Fıkhi Yorumlar: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · İslam Düşüncesinde İtikadi-Siyasi ve Fıkhi Yorumlar  ·  sıra 1
+  1.293 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ Kader, İrade ve Sorumluluk: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · Kader, İrade ve Sorumluluk  ·  sıra 1
+  1.321 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ Din, Felsefe, Bilim ve Sanat: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · Din, Felsefe, Bilim ve Sanat  ·  sıra 1
+  1.266 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ İslam Medeniyeti ve Gönül Coğrafyamız: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · İslam Medeniyeti ve Gönül Coğrafyamız  ·  sıra 1
+  1.267 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ İnançla İlgili Meseleler: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · İnançla İlgili Meseleler  ·  sıra 1
+  1.232 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ Yahudilik ve Hristiyanlık: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · Yahudilik ve Hristiyanlık  ·  sıra 1
+  1.223 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ Kur’an-ı Kerim: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · Kur’an-ı Kerim  ·  sıra 1
+  1.209 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ Din ve Aile: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · Din ve Aile  ·  sıra 1
+  1.209 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ Güncel Dinî Meseleler: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · Güncel Dinî Meseleler  ·  sıra 1
+  1.276 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ İslam Düşüncesinde Tasavvufi Yorumlar: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · İslam Düşüncesinde Tasavvufi Yorumlar  ·  sıra 1
+  1.231 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ Hint ve Çin Dinleri: Kavramları Ayır, Yorumu Yakala
+  TYT · Din Kültürü ve Ahlak Bilgisi · Hint ve Çin Dinleri  ·  sıra 1
+  1.296 kelime · 5 bölüm · 0 şekil · puan 100/100
+
+▸ Kimya Bilimi: Maddeden Kanıta, Sembolden Güvenli Kullanıma
+  TYT · Kimya · Kimya Bilimi  ·  sıra 0
+  3.463 kelime · 9 bölüm · 3 şekil · puan 100/100
+
+▸ Atom ve Periyodik Sistem: Kimlikten Düzene, Düzenden Özelliğe
+  TYT · Kimya · Atom ve Periyodik Sistem  ·  sıra 0
+  2.550 kelime · 8 bölüm · 4 şekil · puan 100/100
+
+▸ Kimyasal Türler Arası Etkileşimler: Elektrondan Bağa, Bağdan Özelliğe
+  TYT · Kimya · Kimyasal Türler Arası Etkileşimler  ·  sıra 0
+  2.301 kelime · 9 bölüm · 4 şekil · puan 100/100
+
+▸ Maddenin Hâlleri: Tanecik Düzeninden Gözlenebilir Özelliğe
+  TYT · Kimya · Maddenin Halleri  ·  sıra 0
+  2.529 kelime · 9 bölüm · 4 şekil · puan 100/100
+
+▸ Doğa ve Kimya: Suyun Yaşamından Kirleticinin Yolculuğuna
+  TYT · Kimya · Doğa ve Kimya  ·  sıra 0
+  2.494 kelime · 9 bölüm · 4 şekil · puan 100/100
+
+▸ Kimyanın Temel Kanunları: Ölçümden Orana, Orandan Kanıta
+  TYT · Kimya · Kimyanın Temel Kanunları  ·  sıra 0
+  1.860 kelime · 6 bölüm · 4 şekil · puan 100/100
+
+▸ Mol Kavramı: Görünmeyen Tanecikten Ölçülebilir Tepkimeye
+  TYT · Kimya · Mol Kavramı  ·  sıra 0
+  1.622 kelime · 6 bölüm · 4 şekil · puan 100/100
+
+▸ Karışımlar: Tanecik Dağılımından Ayırma Stratejisine
+  TYT · Kimya · Karışımlar  ·  sıra 0
+  1.541 kelime · 6 bölüm · 4 şekil · puan 100/100
+
+▸ Asit, Baz ve Tuz: Tanecikten Tepkimeye, Tepkimeden Güvenli Yaşama
+  TYT · Kimya · Asit, Baz ve Tuz  ·  sıra 0
+  1.651 kelime · 6 bölüm · 4 şekil · puan 100/100
+
+▸ Kimya Her Yerde: Ürünün Yapısından Bilinçli Kullanıma
+  TYT · Kimya · Kimya Her Yerde  ·  sıra 0
+  1.708 kelime · 6 bölüm · 4 şekil · puan 100/100
+
+▸ Doğa ve İnsan
+  TYT · Coğrafya · Doğa ve İnsan  ·  sıra 1
+  3.402 kelime · 7 bölüm · 7 şekil · puan 100/100
+
+▸ Dünya’nın Şekli ve Hareketleri
+  TYT · Coğrafya · Dünya'nın Şekli ve Hareketleri  ·  sıra 1
+  2.446 kelime · 7 bölüm · 4 şekil · puan 100/100
+
+▸ Coğrafi Konum
+  TYT · Coğrafya · Coğrafi Konum  ·  sıra 1
+  1.348 kelime · 5 bölüm · 3 şekil · puan 100/100
+
+▸ Harita Bilgisi
+  TYT · Coğrafya · Harita Bilgisi  ·  sıra 1
+  1.228 kelime · 5 bölüm · 3 şekil · puan 100/100
+
+▸ Atmosfer ve İklim
+  TYT · Coğrafya · Atmosfer ve İklim  ·  sıra 1
+  1.295 kelime · 5 bölüm · 3 şekil · puan 100/100
+
+▸ Yerin Şekillenmesi: İç ve Dış Kuvvetler
+  TYT · Coğrafya · Yerin Şekillenmesi (İç ve Dış Kuvvetler)  ·  sıra 1
+  1.290 kelime · 5 bölüm · 3 şekil · puan 100/100
+
+▸ Su, Toprak ve Bitkiler
+  TYT · Coğrafya · Su, Toprak ve Bitkiler  ·  sıra 1
+  1.391 kelime · 5 bölüm · 3 şekil · puan 100/100
+
+▸ Nüfus
+  TYT · Coğrafya · Nüfus  ·  sıra 1
+  1.243 kelime · 5 bölüm · 3 şekil · puan 100/100
+
+▸ Yerleşme
+  TYT · Coğrafya · Yerleşme  ·  sıra 1
+  1.200 kelime · 5 bölüm · 3 şekil · puan 100/100
+
+▸ Ekonomik Faaliyetler
+  TYT · Coğrafya · Ekonomik Faaliyetler  ·  sıra 1
+  1.343 kelime · 5 bölüm · 3 şekil · puan 100/100
+
+▸ Temel Kavramlar: Mantık, Yöntem ve TYT Uygulaması
+  TYT · Matematik · Temel Kavramlar  ·  sıra 1
+  1.926 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Sayı Basamakları: Mantık, Yöntem ve TYT Uygulaması
+  TYT · Matematik · Sayı Basamakları  ·  sıra 2
+  1.693 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Bölme ve Bölünebilme: Mantık, Yöntem ve TYT Uygulaması
+  TYT · Matematik · Bölme ve Bölünebilme  ·  sıra 3
+  1.636 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ OBEB - OKEK: Mantık, Yöntem ve TYT Uygulaması
+  TYT · Matematik · OBEB - OKEK  ·  sıra 4
+  1.707 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Rasyonel Sayılar: Mantık, Yöntem ve TYT Uygulaması
+  TYT · Matematik · Rasyonel Sayılar  ·  sıra 5
+  1.534 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Basit Eşitsizlikler: Kavramdan TYT Akıl Yürütmesine
+  TYT · Matematik · Basit Eşitsizlikler  ·  sıra 6
+  1.524 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Mutlak Değer: Kavramdan TYT Akıl Yürütmesine
+  TYT · Matematik · Mutlak Değer  ·  sıra 7
+  1.413 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Üslü Sayılar: Kavramdan TYT Akıl Yürütmesine
+  TYT · Matematik · Üslü Sayılar  ·  sıra 8
+  1.322 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Köklü Sayılar: Kavramdan TYT Akıl Yürütmesine
+  TYT · Matematik · Köklü Sayılar  ·  sıra 9
+  1.309 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Çarpanlara Ayırma: Kavramdan TYT Akıl Yürütmesine
+  TYT · Matematik · Çarpanlara Ayırma  ·  sıra 10
+  1.378 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Oran - Orantı: Kavramdan TYT Akıl Yürütmesine
+  TYT · Matematik · Oran - Orantı  ·  sıra 11
+  1.461 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Denklem Çözme: Kavramdan TYT Akıl Yürütmesine
+  TYT · Matematik · Denklem Çözme  ·  sıra 12
+  1.413 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Problemler: Metinden Modele, Modelden Kontrole
+  TYT · Matematik · Problemler  ·  sıra 13
+  2.178 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Kümeler ve Temel Mantık
+  TYT · Matematik · Kümeler  ·  sıra 14
+  1.628 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Fonksiyonlar, Polinom ve İkinci Dereceye Giriş
+  TYT · Matematik · Fonksiyonlar (Temel)  ·  sıra 15
+  1.582 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Sayma, Permütasyon, Kombinasyon ve Olasılık
+  TYT · Matematik · Permütasyon - Kombinasyon - Olasılık  ·  sıra 16
+  1.710 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ İstatistik ve Veri Analizi: Kavramdan TYT Akıl Yürütmesine
+  TYT · Matematik · İstatistik ve Veri Analizi  ·  sıra 17
+  1.712 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Temel Kavramlar ve Doğruda Açılar: Kavramdan TYT Akıl Yürütmesine
+  TYT · Geometri · Temel Kavramlar ve Doğruda Açılar  ·  sıra 1
+  1.476 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Üçgende Açılar: Kavramdan TYT Akıl Yürütmesine
+  TYT · Geometri · Üçgende Açılar  ·  sıra 2
+  1.555 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Özel Üçgenler (Dik, İkizkenar, Eşkenar): Kavramdan TYT Akıl Yürütmesine
+  TYT · Geometri · Özel Üçgenler (Dik, İkizkenar, Eşkenar)  ·  sıra 3
+  1.516 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Üçgende Alan: Kavramdan TYT Akıl Yürütmesine
+  TYT · Geometri · Üçgende Alan  ·  sıra 4
+  1.548 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Açıortay ve Kenarortay: Kavramdan TYT Akıl Yürütmesine
+  TYT · Geometri · Açıortay ve Kenarortay  ·  sıra 5
+  1.549 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Eşlik ve Benzerlik: Kavramdan TYT Akıl Yürütmesine
+  TYT · Geometri · Eşlik ve Benzerlik  ·  sıra 6
+  1.505 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Çokgenler: Kavramdan TYT Akıl Yürütmesine
+  TYT · Geometri · Çokgenler  ·  sıra 7
+  1.444 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Çember ve Daire: Kavramdan TYT Akıl Yürütmesine
+  TYT · Geometri · Çember ve Daire  ·  sıra 8
+  1.504 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Katı Cisimler: Kavramdan TYT Akıl Yürütmesine
+  TYT · Geometri · Katı Cisimler  ·  sıra 9
+  1.508 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Analitik Geometri (Nokta - Doğru): Kavramdan TYT Akıl Yürütmesine
+  TYT · Geometri · Analitik Geometri (Nokta - Doğru)  ·  sıra 10
+  1.490 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Canlıların Ortak Özellikleri: Ayrıntılı Temel Not
+  TYT · Biyoloji · Canlıların Ortak Özellikleri  ·  sıra 0
+  3.917 kelime · 14 bölüm · 5 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Canlıların Ortak Özellikleri: “Canlı” Olmak Ne Gerektirir?
+  TYT · Biyoloji · Canlıların Ortak Özellikleri  ·  sıra 1
+  2.839 kelime · 8 bölüm · 5 şekil · puan 100/100
+
+▸ Canlıların Temel Bileşenleri: Ayrıntılı Temel Not
+  TYT · Biyoloji · Canlıların Temel Bileşenleri  ·  sıra 0
+  6.129 kelime · 16 bölüm · 12 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ İnorganik Bileşikler: Su, Mineraller ve pH
+  TYT · Biyoloji · Canlıların Temel Bileşenleri  ·  sıra 1
+  2.073 kelime · 7 bölüm · 2 şekil · puan 100/100
+
+▸ Karbonhidratlar ve Lipitler: Yakıt, Depo ve Yapı
+  TYT · Biyoloji · Canlıların Temel Bileşenleri  ·  sıra 2
+  2.517 kelime · 8 bölüm · 2 şekil · puan 100/100
+
+▸ Proteinler ve Enzimler: Şekil İşlevi Belirler
+  TYT · Biyoloji · Canlıların Temel Bileşenleri  ·  sıra 3
+  2.769 kelime · 9 bölüm · 4 şekil · puan 100/100
+
+▸ Vitaminler, Nükleik Asitler ve ATP
+  TYT · Biyoloji · Canlıların Temel Bileşenleri  ·  sıra 4
+  2.642 kelime · 7 bölüm · 4 şekil · puan 100/100
+
+▸ Hücre: Ayrıntılı Temel Not
+  TYT · Biyoloji · Hücre  ·  sıra 0
+  5.545 kelime · 16 bölüm · 14 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Hücre Zarı: Yapı ve Pasif Taşıma
+  TYT · Biyoloji · Hücre  ·  sıra 1
+  2.969 kelime · 8 bölüm · 4 şekil · puan 100/100
+
+▸ Osmoz ve Hücrenin Su Dengesi
+  TYT · Biyoloji · Hücre  ·  sıra 2
+  2.038 kelime · 7 bölüm · 2 şekil · puan 100/100
+
+▸ Aktif Taşıma ve Toplu Taşıma
+  TYT · Biyoloji · Hücre  ·  sıra 3
+  2.000 kelime · 6 bölüm · 2 şekil · puan 100/100
+
+▸ Sitoplazma ve Organeller
+  TYT · Biyoloji · Hücre  ·  sıra 4
+  2.181 kelime · 6 bölüm · 3 şekil · puan 100/100
+
+▸ Çekirdek ve Hücre Tipleri
+  TYT · Biyoloji · Hücre  ·  sıra 5
+  2.321 kelime · 7 bölüm · 3 şekil · puan 100/100
+
+▸ Canlıların Sınıflandırılması ve Biyoçeşitlilik: Ayrıntılı Temel Not
+  TYT · Biyoloji · Canlıların Sınıflandırılması  ·  sıra 0
+  4.599 kelime · 14 bölüm · 4 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Canlıların Sınıflandırılması: Akrabalığa Göre Düzen
+  TYT · Biyoloji · Canlıların Sınıflandırılması  ·  sıra 1
+  1.988 kelime · 6 bölüm · 2 şekil · puan 100/100
+
+▸ Hücre Bölünmeleri ve Üreme: Ayrıntılı Temel Not
+  TYT · Biyoloji · Hücre Bölünmeleri  ·  sıra 0
+  4.700 kelime · 15 bölüm · 4 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Hücre Döngüsü ve Mitoz
+  TYT · Biyoloji · Hücre Bölünmeleri  ·  sıra 1
+  1.946 kelime · 6 bölüm · 2 şekil · puan 100/100
+
+▸ Canlılarda Enerji Dönüşümleri: Ayrıntılı Temel Not
+  AYT · Biyoloji · Canlılarda Enerji Dönüşümleri (Fotosentez - Kemosentez)  ·  sıra 0
+  5.162 kelime · 10 bölüm · 5 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Fotosentez ve Kemosentez: Enerjiyi Yakala, Karbonu Organik Maddeye Bağla
+  AYT · Biyoloji · Canlılarda Enerji Dönüşümleri (Fotosentez - Kemosentez)  ·  sıra 1
+  3.596 kelime · 9 bölüm · 5 şekil · puan 100/100
+
+▸ Mitokondri: Hücrenin Enerji Santrali Nasıl Çalışır?
+  AYT · Biyoloji · Canlılarda Enerji Dönüşümleri (Fotosentez - Kemosentez)  ·  sıra 10
+  3.707 kelime · 7 bölüm · 7 şekil · puan 100/100
+
+▸ Bitki Biyolojisi: Ayrıntılı Temel Not
+  AYT · Biyoloji · Bitki Biyolojisi  ·  sıra 0
+  5.159 kelime · 10 bölüm · 5 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Bitki Biyolojisi: Dokudan Taşımaya, Hormondan Tohuma
+  AYT · Biyoloji · Bitki Biyolojisi  ·  sıra 1
+  3.326 kelime · 9 bölüm · 5 şekil · puan 100/100
+
+▸ Canlılar ve Çevre: Ayrıntılı Temel Not
+  AYT · Biyoloji · Canlılar ve Çevre  ·  sıra 0
+  4.613 kelime · 10 bölüm · 5 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Canlılar ve Çevre: Varyasyondan Seçilime
+  AYT · Biyoloji · Canlılar ve Çevre  ·  sıra 1
+  2.167 kelime · 8 bölüm · 5 şekil · puan 100/100
+
+▸ Kalıtım: Ayrıntılı Temel Not
+  TYT · Biyoloji · Kalıtım  ·  sıra 0
+  3.958 kelime · 11 bölüm · 4 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Kalıtım: Alelden Soy Ağacına
+  TYT · Biyoloji · Kalıtım  ·  sıra 1
+  2.674 kelime · 8 bölüm · 4 şekil · puan 100/100
+
+▸ Ekosistem Ekolojisi: Ayrıntılı Temel Not
+  TYT · Biyoloji · Ekosistem Ekolojisi  ·  sıra 0
+  4.024 kelime · 10 bölüm · 4 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Ekosistem Ekolojisi: Doğadaki Ağı Okumak
+  TYT · Biyoloji · Ekosistem Ekolojisi  ·  sıra 1
+  2.626 kelime · 8 bölüm · 4 şekil · puan 100/100
+
+▸ Sinir Sistemi: Ayrıntılı Temel Not
+  AYT · Biyoloji · Sinir Sistemi  ·  sıra 0
+  4.879 kelime · 10 bölüm · 5 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Sinir Sistemi: Uyarıdan Tepkiye
+  AYT · Biyoloji · Sinir Sistemi  ·  sıra 1
+  4.205 kelime · 9 bölüm · 5 şekil · puan 100/100
+
+▸ Endokrin Sistem ve Hormonlar: Ayrıntılı Temel Not
+  AYT · Biyoloji · Endokrin Sistem ve Hormonlar  ·  sıra 0
+  4.675 kelime · 10 bölüm · 5 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Endokrin Sistem: Hormonlarla İç Denge
+  AYT · Biyoloji · Endokrin Sistem ve Hormonlar  ·  sıra 1
+  3.083 kelime · 8 bölüm · 5 şekil · puan 100/100
+
+▸ Duyu Organları: Ayrıntılı Temel Not
+  AYT · Biyoloji · Duyu Organları  ·  sıra 0
+  4.169 kelime · 10 bölüm · 5 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Duyu Organları: Uyarandan Algıya
+  AYT · Biyoloji · Duyu Organları  ·  sıra 2
+  2.672 kelime · 8 bölüm · 5 şekil · puan 100/100
+
+▸ Destek ve Hareket Sistemi: Ayrıntılı Temel Not
+  AYT · Biyoloji · Destek ve Hareket Sistemi  ·  sıra 0
+  5.025 kelime · 10 bölüm · 5 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Destek ve Hareket Sistemi: Komuttan Kuvvete
+  AYT · Biyoloji · Destek ve Hareket Sistemi  ·  sıra 3
+  3.460 kelime · 9 bölüm · 5 şekil · puan 100/100
+
+▸ Sindirim Sistemi: Ayrıntılı Temel Not
+  AYT · Biyoloji · Sindirim Sistemi  ·  sıra 0
+  4.362 kelime · 10 bölüm · 5 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Sindirim Sistemi: Besinden Hücreye
+  AYT · Biyoloji · Sindirim Sistemi  ·  sıra 4
+  3.020 kelime · 9 bölüm · 5 şekil · puan 100/100
+
+▸ Dolaşım ve Bağışıklık Sistemi: Ayrıntılı Temel Not
+  AYT · Biyoloji · Dolaşım ve Bağışıklık Sistemi  ·  sıra 0
+  4.608 kelime · 10 bölüm · 5 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Dolaşım ve Bağışıklık: Taşı, Dengele, Savun
+  AYT · Biyoloji · Dolaşım ve Bağışıklık Sistemi  ·  sıra 5
+  3.157 kelime · 9 bölüm · 5 şekil · puan 100/100
+
+▸ Solunum Sistemi: Ayrıntılı Temel Not
+  AYT · Biyoloji · Solunum Sistemi  ·  sıra 0
+  4.832 kelime · 10 bölüm · 5 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Solunum Sistemi: Havadan Hücreye Gaz Yolculuğu
+  AYT · Biyoloji · Solunum Sistemi  ·  sıra 6
+  3.598 kelime · 9 bölüm · 5 şekil · puan 100/100
+
+▸ Üriner Sistem: Ayrıntılı Temel Not
+  AYT · Biyoloji · Üriner Sistem  ·  sıra 0
+  4.809 kelime · 10 bölüm · 5 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Üriner Sistem: Kanı Süz, İç Dengeyi Yeniden Kur
+  AYT · Biyoloji · Üriner Sistem  ·  sıra 7
+  3.357 kelime · 9 bölüm · 5 şekil · puan 100/100
+
+▸ Üreme Sistemi ve Embriyonik Gelişim: Ayrıntılı Temel Not
+  AYT · Biyoloji · Üreme Sistemi ve Embriyonik Gelişim  ·  sıra 0
+  5.169 kelime · 10 bölüm · 5 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Üreme Sistemi ve Embriyonik Gelişim: Gametten Yeni Bireye
+  AYT · Biyoloji · Üreme Sistemi ve Embriyonik Gelişim  ·  sıra 8
+  3.784 kelime · 9 bölüm · 5 şekil · puan 100/100
+
+▸ Genden Proteine: Ayrıntılı Temel Not
+  AYT · Biyoloji · Genden Proteine  ·  sıra 0
+  5.054 kelime · 10 bölüm · 5 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Genden Proteine: DNA’daki Bilgiyi İşlevsel Moleküle Çevir
+  AYT · Biyoloji · Genden Proteine  ·  sıra 9
+  3.991 kelime · 9 bölüm · 5 şekil · puan 100/100
+
+▸ Komünite ve Popülasyon Ekolojisi: Ayrıntılı Temel Not
+  AYT · Biyoloji · Komünite ve Popülasyon Ekolojisi  ·  sıra 0
+  5.492 kelime · 10 bölüm · 5 şekil · puan 100/100
+  ★ biology-v1 temel not standardını geçti
+
+▸ Komünite ve Popülasyon Ekolojisi: Tür İlişkisinden Nüfus Dinamiğine
+  AYT · Biyoloji · Komünite ve Popülasyon Ekolojisi  ·  sıra 10
+  3.293 kelime · 8 bölüm · 5 şekil · puan 100/100
+
+▸ Tarih Bilimi: Geçmişten Kanıta, Kanıttan Yoruma
+  TYT · Tarih · Tarih ve Zaman  ·  sıra 0
+  1.556 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ İlk Çağ Uygarlıkları: Yerleşme, Üretim ve Devletin Doğuşu
+  TYT · Tarih · İnsanlığın İlk Dönemleri  ·  sıra 0
+  1.782 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Orta Çağ’da Dünya: Feodalite, Ticaret ve Değişen Güç Merkezleri
+  TYT · Tarih · Ortaçağda Dünya  ·  sıra 0
+  1.751 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ İslamiyet Öncesi Türk Tarihi: Bozkırdan Devlet Geleneğine
+  TYT · Tarih · İlk ve Orta Çağlarda Türk Dünyası  ·  sıra 0
+  1.792 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ İslam Tarihi ve Uygarlığı: Tebliğden Medeniyete
+  TYT · Tarih · İslam Medeniyeti ve Türkler  ·  sıra 0
+  1.731 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Türk-İslam Devletleri: Gelenek ile Yeni Kurumların Sentezi
+  TYT · Tarih · Türk-İslam Devletleri  ·  sıra 0
+  2.956 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Türkiye Tarihi: Anadolu’nun Türkleşmesi ve Siyasi Birliğin Aranışı
+  TYT · Tarih · Türk-İslam Devletleri  ·  sıra 1
+  3.104 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Osmanlı Devleti’nin Kuruluşu: Uç Beyliğinden Devlete
+  TYT · Tarih · Beylikten Devlete Osmanlı  ·  sıra 0
+  3.160 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Osmanlı Yükselme Dönemi: Merkezî Güçten Dünya Siyasetine
+  TYT · Tarih · Dünya Gücü Osmanlı  ·  sıra 0
+  1.783 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Osmanlı Kültür ve Medeniyeti: Kurumlar Nasıl Bir Sistem Kurdu?
+  TYT · Tarih · Dünya Gücü Osmanlı  ·  sıra 1
+  1.502 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ 17. Yüzyıl Osmanlı: Değişen Dünyada Düzeni Koruma Arayışı
+  TYT · Tarih · Arayış Yılları  ·  sıra 0
+  1.732 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ 18. Yüzyıl Osmanlı: Avrupa’yı Tanımaktan Yeni Düzen Arayışına
+  TYT · Tarih · Arayış Yılları  ·  sıra 1
+  1.691 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ 19. Yüzyıl Osmanlı: Merkezîleşme, Tanzimat ve Meşrutiyet
+  TYT · Tarih · Devrimler Çağında Değişen Devlet-Toplum İlişkileri  ·  sıra 0
+  1.805 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Balta Limanı Ticaret Antlaşması: Ekonomik Taviz Neden Verildi?
+  TYT · Tarih · Devrimler Çağında Değişen Devlet-Toplum İlişkileri  ·  sıra 1
+  1.790 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ 20. Yüzyıl Başlarında Osmanlı: Fikir Akımları ve Dağılma Baskısı
+  TYT · Tarih · Devrimler Çağında Değişen Devlet-Toplum İlişkileri  ·  sıra 2
+  1.439 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Trablusgarp Savaşı: Sömürgecilik, Gönüllü Direniş ve Son Afrika Toprağı
+  TYT · Tarih · Devrimler Çağında Değişen Devlet-Toplum İlişkileri  ·  sıra 3
+  1.640 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Balkan Savaşları: İttifaktan Paylaşım Kavgasına
+  TYT · Tarih · Devrimler Çağında Değişen Devlet-Toplum İlişkileri  ·  sıra 4
+  1.720 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ I. Dünya Savaşı: Küresel Rekabetten Osmanlı Cephelerine
+  TYT · Tarih · Devrimler Çağında Değişen Devlet-Toplum İlişkileri  ·  sıra 5
+  1.776 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Mondros Ateşkesi: Savaşı Durduran Metin Nasıl İşgali Başlattı?
+  TYT · Tarih · Devrimler Çağında Değişen Devlet-Toplum İlişkileri  ·  sıra 6
+  1.714 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Millî Mücadele Hazırlık Dönemi: Yerel Direnişten Millî Egemenliğe
+  TYT · Tarih · Devrimler Çağında Değişen Devlet-Toplum İlişkileri  ·  sıra 7
+  1.777 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Kurtuluş Savaşı: Cephe, Diplomasi ve Millî Egemenlik
+  TYT · Tarih · Devrimler Çağında Değişen Devlet-Toplum İlişkileri  ·  sıra 8
+  1.804 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Atatürk İlke ve İnkılapları: Yeni Devlet Hangi Sorunu Nasıl Çözdü?
+  TYT · Tarih · Devrimler Çağında Değişen Devlet-Toplum İlişkileri  ·  sıra 9
+  1.514 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ Atatürk Dönemi İç ve Dış Politika: Kurumlaşma ve Barışçı Denge
+  TYT · Tarih · Devrimler Çağında Değişen Devlet-Toplum İlişkileri  ·  sıra 10
+  1.782 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+▸ II. Dünya Savaşı ve Sonrası: Denge Politikasından Çok Partili Hayata
+  TYT · Tarih · Devrimler Çağında Değişen Devlet-Toplum İlişkileri  ·  sıra 11
+  1.843 kelime · 7 bölüm · 0 şekil · puan 100/100
+
+
+TYT Fizik üretimi: 12/12 konu · Gold Standard 5 yapılandırılabilir laboratuvar · 100/100 kalite kapısı.
+
+
+TYT Coğrafya Gold Standard: 7 veri odaklı görsel · 6 harita noktası · 100/100 kalite kapısı.
+
+
+TYT Tarih uretimi: 24 ders · kronoloji ve neden-sonuc omurgasi dogrulandi.
+Tam ders modelleri: 3 · olay orgusu + etkilesimli sematik harita + karsilastirma + sinav refleksi dogrulandi.
+
+Etkilesimli tarih atlasi: 20 cografi konu · tekil harita ve kaynak notu dogrulandi.
+
+--- Kütüphane yerleşimi ---
+TYT · Felsefe · Felsefenin Konusu
+    1. Felsefenin Konusu: Soru Sormaktan Gerekçe Kurmaya
+TYT · Felsefe · Felsefi Düşüncenin Özellikleri
+    2. Felsefi Düşüncenin Özellikleri: Paragraftaki Düşünme Biçimini Tanı
+TYT · Felsefe · Bilgi Felsefesi
+    3. Bilgi Felsefesi: Nereden Biliyoruz?
+TYT · Felsefe · Varlık Felsefesi
+    4. Varlık Felsefesi: Gerçekte Ne Var?
+TYT · Felsefe · Ahlak Felsefesi
+    5. Ahlak Felsefesi: İyi Eylemi Hangi Ölçüt Belirler?
+TYT · Felsefe · Sanat Felsefesi
+    6. Sanat Felsefesi: Güzel, Eser ve Yorum
+TYT · Felsefe · Din Felsefesi
+    7. Din Felsefesi: Tanrı, İnanç ve Akıl
+TYT · Felsefe · Siyaset Felsefesi
+    8. Siyaset Felsefesi: İktidar Ne Zaman Meşrudur?
+TYT · Felsefe · Bilim Felsefesi
+    9. Bilim Felsefesi: Bilimsel Bilgiyi Ne Ayırır?
+TYT · Felsefe · Felsefi Akımlar
+    10. Felsefi Akımlar: Karşıt Görüşler Atlası
+TYT · Felsefe · Temel Filozof-Görüş İlişkileri
+    11. Temel Filozof–Görüş İlişkileri: İsimden Değil Savdan Tanı
+TYT · Fizik · Fizik Bilimine Giriş
+    1. Fizik Bilimine Giriş
+TYT · Fizik · Madde ve Özellikleri
+    1. Madde ve Özellikleri
+TYT · Fizik · Sıvıların Kaldırma Kuvveti
+    1. Sıvıların Kaldırma Kuvveti
+TYT · Fizik · Basınç
+    1. Basınç
+TYT · Fizik · Isı, Sıcaklık ve Genleşme
+    1. Isı, Sıcaklık ve Genleşme
+TYT · Fizik · Hareket ve Kuvvet
+    1. Hareket ve Kuvvet
+TYT · Fizik · İş, Güç ve Enerji
+    1. İş, Güç ve Enerji
+TYT · Fizik · Elektrostatik
+    1. Elektrostatik
+TYT · Fizik · Elektrik Devreleri
+    1. Elektrik Devreleri
+TYT · Fizik · Manyetizma
+    1. Manyetizma
+TYT · Fizik · Dalgalar
+    1. Dalgalar
+TYT · Fizik · Optik
+    1. Optik
+TYT · Türkçe · Sözcükte Anlam
+    0. Sözcükte Anlam: Anlamı Bağlamdan Kurmak
+TYT · Türkçe · Cümlede Anlam
+    0. Cümlede Anlam: Yargı, Tutum ve İlişki
+TYT · Türkçe · Paragrafta Anlam ve Yapı
+    1. Paragraf Okuma Mekanizması
+    2. Paragrafta Konu, Ana Düşünce ve Başlık
+    3. Paragraf Yapısı ve Akış
+    4. Paragrafta Anlatım Teknikleri
+TYT · Türkçe · Paragrafta Düşünceyi Geliştirme Yolları
+    0. Düşünceyi Geliştirme Yolları
+TYT · Türkçe · Sözcük Türleri
+    1. İsim ve Sıfat: Sözcüğün Cümledeki Görevi
+    2. Zamir ve Zarf: Yerine Geçen ile Etkileyeni Ayır
+    3. Edat, Bağlaç ve Ünlem
+TYT · Türkçe · Fiiller
+    1. Fiiller: Anlam, Kip, Kişi ve Yapı
+    2. Fiilde Çatı ve Ek Fiil
+TYT · Türkçe · Fiilimsi
+    0. Fiilimsi: Fiilden Türeyen Yan Yargılar
+TYT · Türkçe · Cümlenin Öğeleri
+    0. Cümlenin Öğeleri: Yüklemden Dışarı Doğru Çözüm
+TYT · Türkçe · Cümle Türleri
+    0. Cümle Türleri: Dört Ayrı Sınıflandırma Ekseni
+TYT · Türkçe · Anlatım Bozuklukları
+    0. Anlatım Bozuklukları: Anlamdan Yapıya Tanı Koymak
+TYT · Türkçe · Ses Bilgisi
+    0. Ses Bilgisi: Kök ile Söyleniş Arasındaki Değişim
+TYT · Türkçe · Yapı Bilgisi
+    1. Sözcükte Yapı: Kök, Gövde ve Ek
+TYT · Türkçe · Tamlamalar
+    0. Tamlamalar: İsimler Arasında Aitlik, Sıfatla Niteleme
+TYT · Türkçe · Yazım Kuralları
+    0. Yazım Kuralları: Kuralı Görevden Türetmek
+TYT · Türkçe · Noktalama İşaretleri
+    0. Noktalama İşaretleri: Cümlenin İlişki Haritası
+TYT · Din Kültürü ve Ahlak Bilgisi · Allah-İnsan İlişkisi
+    1. Allah-İnsan İlişkisi: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · İslam'da İnanç Esasları
+    1. İslam'da İnanç Esasları: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · İslam'da İbadetler
+    1. İslam'da İbadetler: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · İslam'da Ahlak İlkeleri
+    1. İslam'da Ahlak İlkeleri: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · Kur'an'a Göre Hz. Muhammed
+    1. Kur'an'a Göre Hz. Muhammed: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · İslam'da Varlık ve Bilgi
+    1. İslam'da Varlık ve Bilgi: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · Allah'ı Tanımak
+    1. Allah'ı Tanımak: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · İslam'ın Evrensel Mesajları
+    1. İslam'ın Evrensel Mesajları: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · Din, Çevre ve Teknoloji
+    1. Din, Çevre ve Teknoloji: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · İslam Düşüncesinde İtikadi-Siyasi ve Fıkhi Yorumlar
+    1. İslam Düşüncesinde İtikadi-Siyasi ve Fıkhi Yorumlar: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · Kader, İrade ve Sorumluluk
+    1. Kader, İrade ve Sorumluluk: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · Din, Felsefe, Bilim ve Sanat
+    1. Din, Felsefe, Bilim ve Sanat: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · İslam Medeniyeti ve Gönül Coğrafyamız
+    1. İslam Medeniyeti ve Gönül Coğrafyamız: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · İnançla İlgili Meseleler
+    1. İnançla İlgili Meseleler: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · Yahudilik ve Hristiyanlık
+    1. Yahudilik ve Hristiyanlık: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · Kur’an-ı Kerim
+    1. Kur’an-ı Kerim: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · Din ve Aile
+    1. Din ve Aile: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · Güncel Dinî Meseleler
+    1. Güncel Dinî Meseleler: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · İslam Düşüncesinde Tasavvufi Yorumlar
+    1. İslam Düşüncesinde Tasavvufi Yorumlar: Kavramları Ayır, Yorumu Yakala
+TYT · Din Kültürü ve Ahlak Bilgisi · Hint ve Çin Dinleri
+    1. Hint ve Çin Dinleri: Kavramları Ayır, Yorumu Yakala
+TYT · Kimya · Kimya Bilimi
+    0. Kimya Bilimi: Maddeden Kanıta, Sembolden Güvenli Kullanıma
+TYT · Kimya · Atom ve Periyodik Sistem
+    0. Atom ve Periyodik Sistem: Kimlikten Düzene, Düzenden Özelliğe
+TYT · Kimya · Kimyasal Türler Arası Etkileşimler
+    0. Kimyasal Türler Arası Etkileşimler: Elektrondan Bağa, Bağdan Özelliğe
+TYT · Kimya · Maddenin Halleri
+    0. Maddenin Hâlleri: Tanecik Düzeninden Gözlenebilir Özelliğe
+TYT · Kimya · Doğa ve Kimya
+    0. Doğa ve Kimya: Suyun Yaşamından Kirleticinin Yolculuğuna
+TYT · Kimya · Kimyanın Temel Kanunları
+    0. Kimyanın Temel Kanunları: Ölçümden Orana, Orandan Kanıta
+TYT · Kimya · Mol Kavramı
+    0. Mol Kavramı: Görünmeyen Tanecikten Ölçülebilir Tepkimeye
+TYT · Kimya · Karışımlar
+    0. Karışımlar: Tanecik Dağılımından Ayırma Stratejisine
+TYT · Kimya · Asit, Baz ve Tuz
+    0. Asit, Baz ve Tuz: Tanecikten Tepkimeye, Tepkimeden Güvenli Yaşama
+TYT · Kimya · Kimya Her Yerde
+    0. Kimya Her Yerde: Ürünün Yapısından Bilinçli Kullanıma
+TYT · Coğrafya · Doğa ve İnsan
+    1. Doğa ve İnsan
+TYT · Coğrafya · Dünya'nın Şekli ve Hareketleri
+    1. Dünya’nın Şekli ve Hareketleri
+TYT · Coğrafya · Coğrafi Konum
+    1. Coğrafi Konum
+TYT · Coğrafya · Harita Bilgisi
+    1. Harita Bilgisi
+TYT · Coğrafya · Atmosfer ve İklim
+    1. Atmosfer ve İklim
+TYT · Coğrafya · Yerin Şekillenmesi (İç ve Dış Kuvvetler)
+    1. Yerin Şekillenmesi: İç ve Dış Kuvvetler
+TYT · Coğrafya · Su, Toprak ve Bitkiler
+    1. Su, Toprak ve Bitkiler
+TYT · Coğrafya · Nüfus
+    1. Nüfus
+TYT · Coğrafya · Yerleşme
+    1. Yerleşme
+TYT · Coğrafya · Ekonomik Faaliyetler
+    1. Ekonomik Faaliyetler
+TYT · Matematik · Temel Kavramlar
+    1. Temel Kavramlar: Mantık, Yöntem ve TYT Uygulaması
+TYT · Matematik · Sayı Basamakları
+    2. Sayı Basamakları: Mantık, Yöntem ve TYT Uygulaması
+TYT · Matematik · Bölme ve Bölünebilme
+    3. Bölme ve Bölünebilme: Mantık, Yöntem ve TYT Uygulaması
+TYT · Matematik · OBEB - OKEK
+    4. OBEB - OKEK: Mantık, Yöntem ve TYT Uygulaması
+TYT · Matematik · Rasyonel Sayılar
+    5. Rasyonel Sayılar: Mantık, Yöntem ve TYT Uygulaması
+TYT · Matematik · Basit Eşitsizlikler
+    6. Basit Eşitsizlikler: Kavramdan TYT Akıl Yürütmesine
+TYT · Matematik · Mutlak Değer
+    7. Mutlak Değer: Kavramdan TYT Akıl Yürütmesine
+TYT · Matematik · Üslü Sayılar
+    8. Üslü Sayılar: Kavramdan TYT Akıl Yürütmesine
+TYT · Matematik · Köklü Sayılar
+    9. Köklü Sayılar: Kavramdan TYT Akıl Yürütmesine
+TYT · Matematik · Çarpanlara Ayırma
+    10. Çarpanlara Ayırma: Kavramdan TYT Akıl Yürütmesine
+TYT · Matematik · Oran - Orantı
+    11. Oran - Orantı: Kavramdan TYT Akıl Yürütmesine
+TYT · Matematik · Denklem Çözme
+    12. Denklem Çözme: Kavramdan TYT Akıl Yürütmesine
+TYT · Matematik · Problemler
+    13. Problemler: Metinden Modele, Modelden Kontrole
+TYT · Matematik · Kümeler
+    14. Kümeler ve Temel Mantık
+TYT · Matematik · Fonksiyonlar (Temel)
+    15. Fonksiyonlar, Polinom ve İkinci Dereceye Giriş
+TYT · Matematik · Permütasyon - Kombinasyon - Olasılık
+    16. Sayma, Permütasyon, Kombinasyon ve Olasılık
+TYT · Matematik · İstatistik ve Veri Analizi
+    17. İstatistik ve Veri Analizi: Kavramdan TYT Akıl Yürütmesine
+TYT · Geometri · Temel Kavramlar ve Doğruda Açılar
+    1. Temel Kavramlar ve Doğruda Açılar: Kavramdan TYT Akıl Yürütmesine
+TYT · Geometri · Üçgende Açılar
+    2. Üçgende Açılar: Kavramdan TYT Akıl Yürütmesine
+TYT · Geometri · Özel Üçgenler (Dik, İkizkenar, Eşkenar)
+    3. Özel Üçgenler (Dik, İkizkenar, Eşkenar): Kavramdan TYT Akıl Yürütmesine
+TYT · Geometri · Üçgende Alan
+    4. Üçgende Alan: Kavramdan TYT Akıl Yürütmesine
+TYT · Geometri · Açıortay ve Kenarortay
+    5. Açıortay ve Kenarortay: Kavramdan TYT Akıl Yürütmesine
+TYT · Geometri · Eşlik ve Benzerlik
+    6. Eşlik ve Benzerlik: Kavramdan TYT Akıl Yürütmesine
+TYT · Geometri · Çokgenler
+    7. Çokgenler: Kavramdan TYT Akıl Yürütmesine
+TYT · Geometri · Çember ve Daire
+    8. Çember ve Daire: Kavramdan TYT Akıl Yürütmesine
+TYT · Geometri · Katı Cisimler
+    9. Katı Cisimler: Kavramdan TYT Akıl Yürütmesine
+TYT · Geometri · Analitik Geometri (Nokta - Doğru)
+    10. Analitik Geometri (Nokta - Doğru): Kavramdan TYT Akıl Yürütmesine
+TYT · Biyoloji · Canlıların Ortak Özellikleri
+    0. Canlıların Ortak Özellikleri: Ayrıntılı Temel Not
+    1. Canlıların Ortak Özellikleri: “Canlı” Olmak Ne Gerektirir?
+TYT · Biyoloji · Canlıların Temel Bileşenleri
+    0. Canlıların Temel Bileşenleri: Ayrıntılı Temel Not
+    1. İnorganik Bileşikler: Su, Mineraller ve pH
+    2. Karbonhidratlar ve Lipitler: Yakıt, Depo ve Yapı
+    3. Proteinler ve Enzimler: Şekil İşlevi Belirler
+    4. Vitaminler, Nükleik Asitler ve ATP
+TYT · Biyoloji · Hücre
+    0. Hücre: Ayrıntılı Temel Not
+    1. Hücre Zarı: Yapı ve Pasif Taşıma
+    2. Osmoz ve Hücrenin Su Dengesi
+    3. Aktif Taşıma ve Toplu Taşıma
+    4. Sitoplazma ve Organeller
+    5. Çekirdek ve Hücre Tipleri
+TYT · Biyoloji · Canlıların Sınıflandırılması
+    0. Canlıların Sınıflandırılması ve Biyoçeşitlilik: Ayrıntılı Temel Not
+    1. Canlıların Sınıflandırılması: Akrabalığa Göre Düzen
+TYT · Biyoloji · Hücre Bölünmeleri
+    0. Hücre Bölünmeleri ve Üreme: Ayrıntılı Temel Not
+    1. Hücre Döngüsü ve Mitoz
+AYT · Biyoloji · Canlılarda Enerji Dönüşümleri (Fotosentez - Kemosentez)
+    0. Canlılarda Enerji Dönüşümleri: Ayrıntılı Temel Not
+    1. Fotosentez ve Kemosentez: Enerjiyi Yakala, Karbonu Organik Maddeye Bağla
+    10. Mitokondri: Hücrenin Enerji Santrali Nasıl Çalışır?
+AYT · Biyoloji · Bitki Biyolojisi
+    0. Bitki Biyolojisi: Ayrıntılı Temel Not
+    1. Bitki Biyolojisi: Dokudan Taşımaya, Hormondan Tohuma
+AYT · Biyoloji · Canlılar ve Çevre
+    0. Canlılar ve Çevre: Ayrıntılı Temel Not
+    1. Canlılar ve Çevre: Varyasyondan Seçilime
+TYT · Biyoloji · Kalıtım
+    0. Kalıtım: Ayrıntılı Temel Not
+    1. Kalıtım: Alelden Soy Ağacına
+TYT · Biyoloji · Ekosistem Ekolojisi
+    0. Ekosistem Ekolojisi: Ayrıntılı Temel Not
+    1. Ekosistem Ekolojisi: Doğadaki Ağı Okumak
+AYT · Biyoloji · Sinir Sistemi
+    0. Sinir Sistemi: Ayrıntılı Temel Not
+    1. Sinir Sistemi: Uyarıdan Tepkiye
+AYT · Biyoloji · Endokrin Sistem ve Hormonlar
+    0. Endokrin Sistem ve Hormonlar: Ayrıntılı Temel Not
+    1. Endokrin Sistem: Hormonlarla İç Denge
+AYT · Biyoloji · Duyu Organları
+    0. Duyu Organları: Ayrıntılı Temel Not
+    2. Duyu Organları: Uyarandan Algıya
+AYT · Biyoloji · Destek ve Hareket Sistemi
+    0. Destek ve Hareket Sistemi: Ayrıntılı Temel Not
+    3. Destek ve Hareket Sistemi: Komuttan Kuvvete
+AYT · Biyoloji · Sindirim Sistemi
+    0. Sindirim Sistemi: Ayrıntılı Temel Not
+    4. Sindirim Sistemi: Besinden Hücreye
+AYT · Biyoloji · Dolaşım ve Bağışıklık Sistemi
+    0. Dolaşım ve Bağışıklık Sistemi: Ayrıntılı Temel Not
+    5. Dolaşım ve Bağışıklık: Taşı, Dengele, Savun
+AYT · Biyoloji · Solunum Sistemi
+    0. Solunum Sistemi: Ayrıntılı Temel Not
+    6. Solunum Sistemi: Havadan Hücreye Gaz Yolculuğu
+AYT · Biyoloji · Üriner Sistem
+    0. Üriner Sistem: Ayrıntılı Temel Not
+    7. Üriner Sistem: Kanı Süz, İç Dengeyi Yeniden Kur
+AYT · Biyoloji · Üreme Sistemi ve Embriyonik Gelişim
+    0. Üreme Sistemi ve Embriyonik Gelişim: Ayrıntılı Temel Not
+    8. Üreme Sistemi ve Embriyonik Gelişim: Gametten Yeni Bireye
+AYT · Biyoloji · Genden Proteine
+    0. Genden Proteine: Ayrıntılı Temel Not
+    9. Genden Proteine: DNA’daki Bilgiyi İşlevsel Moleküle Çevir
+AYT · Biyoloji · Komünite ve Popülasyon Ekolojisi
+    0. Komünite ve Popülasyon Ekolojisi: Ayrıntılı Temel Not
+    10. Komünite ve Popülasyon Ekolojisi: Tür İlişkisinden Nüfus Dinamiğine
+TYT · Tarih · Tarih ve Zaman
+    0. Tarih Bilimi: Geçmişten Kanıta, Kanıttan Yoruma
+TYT · Tarih · İnsanlığın İlk Dönemleri
+    0. İlk Çağ Uygarlıkları: Yerleşme, Üretim ve Devletin Doğuşu
+TYT · Tarih · Ortaçağda Dünya
+    0. Orta Çağ’da Dünya: Feodalite, Ticaret ve Değişen Güç Merkezleri
+TYT · Tarih · İlk ve Orta Çağlarda Türk Dünyası
+    0. İslamiyet Öncesi Türk Tarihi: Bozkırdan Devlet Geleneğine
+TYT · Tarih · İslam Medeniyeti ve Türkler
+    0. İslam Tarihi ve Uygarlığı: Tebliğden Medeniyete
+TYT · Tarih · Türk-İslam Devletleri
+    0. Türk-İslam Devletleri: Gelenek ile Yeni Kurumların Sentezi
+    1. Türkiye Tarihi: Anadolu’nun Türkleşmesi ve Siyasi Birliğin Aranışı
+TYT · Tarih · Beylikten Devlete Osmanlı
+    0. Osmanlı Devleti’nin Kuruluşu: Uç Beyliğinden Devlete
+TYT · Tarih · Dünya Gücü Osmanlı
+    0. Osmanlı Yükselme Dönemi: Merkezî Güçten Dünya Siyasetine
+    1. Osmanlı Kültür ve Medeniyeti: Kurumlar Nasıl Bir Sistem Kurdu?
+TYT · Tarih · Arayış Yılları
+    0. 17. Yüzyıl Osmanlı: Değişen Dünyada Düzeni Koruma Arayışı
+    1. 18. Yüzyıl Osmanlı: Avrupa’yı Tanımaktan Yeni Düzen Arayışına
+TYT · Tarih · Devrimler Çağında Değişen Devlet-Toplum İlişkileri
+    0. 19. Yüzyıl Osmanlı: Merkezîleşme, Tanzimat ve Meşrutiyet
+    1. Balta Limanı Ticaret Antlaşması: Ekonomik Taviz Neden Verildi?
+    2. 20. Yüzyıl Başlarında Osmanlı: Fikir Akımları ve Dağılma Baskısı
+    3. Trablusgarp Savaşı: Sömürgecilik, Gönüllü Direniş ve Son Afrika Toprağı
+    4. Balkan Savaşları: İttifaktan Paylaşım Kavgasına
+    5. I. Dünya Savaşı: Küresel Rekabetten Osmanlı Cephelerine
+    6. Mondros Ateşkesi: Savaşı Durduran Metin Nasıl İşgali Başlattı?
+    7. Millî Mücadele Hazırlık Dönemi: Yerel Direnişten Millî Egemenliğe
+    8. Kurtuluş Savaşı: Cephe, Diplomasi ve Millî Egemenlik
+    9. Atatürk İlke ve İnkılapları: Yeni Devlet Hangi Sorunu Nasıl Çözdü?
+    10. Atatürk Dönemi İç ve Dış Politika: Kurumlaşma ve Barışçı Denge
+    11. II. Dünya Savaşı ve Sonrası: Denge Politikasından Çok Partili Hayata
+
+✅ 185 ders denetlendi · 0 hata · 32 ders derinlik uyarısı aldı
+
+Temel biyoloji üretimi: 21/21 konu tamamlandı.
+
+----- RESULT PASSED -----
+
+===== lesson-narration =====
+Komut: npm run test:lesson-narration
+Exit code: 0
+Duvar süresi (s): 0.03007525
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:lesson-narration
+> node scripts/test-lesson-narration.mjs
+
+✓ Pilot not sekiz mantıksal anlatım bloğuna ayrılmış
+✓ Diğer dersler pilot oynatıcıya istemeden alınmıyor
+✓ Bölüm atlama ilk anlatım bloğuna gider
+✓ Tekrar oynatma aynı sürümlü ses URL’sini kullanır
+✓ Sayfa yenilemede konum ve hız geri gelir, oynatma kendiliğinden başlamaz
+✓ OpenAI adapter mevcut sunucu anahtarını kullanıp ses akışını korur
+✓ Ses sağlayıcısı açıkça seçilmeden kendiliğinden açılmaz
+✓ Sağlayıcı seçiliyse mevcut OPENAI_API_KEY yeniden kullanılır
+✓ Geçersiz anahtar yukarı akış hatasına çevrilir
+✓ Yapılandırılmamış adapter güvenli hata verir
+✓ Ses API’si üretilen dosyayı parça parça aktarır ve cache başlıklarını koyar
+✓ Ses API’si eksik sağlayıcıda okunabilir hata döndürür
+✓ Mitokondri dersi on anlatım parçasına ayrılmış
+✓ Her anlatım parçası ekrandaki bir bloğa bağlı ve o blok gerçekten var
+✓ Anlatım metni ekrandaki notu kelimesi kelimesine okumuyor
+✓ Anlatım uzunlukları ses üretimi sınırının altında
+✓ Normalleştirme hedef bloğu ve vurgu listesini koruyor
+✓ Hazır kayıt yoksa ses adresi API sürümüne düşer
+✓ Sesli anlatım yalnızca açık derslerde çalışır
+✓ Ses API’si mitokondri bloğunu tanıyıp anlatım yönergesini sağlayıcıya iletir
+✓ Sesli anlatımı kapalı bir ders API’den ses alamaz
+✓ ElevenLabs adapteri aynı sözleşmeyle çalışır
+✓ ElevenLabs ses kimliği verilmezse sessizce devre dışı kalır
+✓ Öğretmen tonu yönergesi her seslendirmede gönderilir
+✓ İkinci ses başlayınca birincisi susar
+✓ Hattan ayrılan oynatıcı başkalarını artık durduramaz
+
+----- RESULT PASSED -----
+
+===== library-curriculum =====
+Komut: npm run test:library-curriculum
+Exit code: 0
+Duvar süresi (s): 0.000001541
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:library-curriculum
+> node scripts/test-library-curriculum.mjs
+
+Kütüphane müfredatı: 4 sınıf, rota ve içerik referansları doğrulandı.
+
+----- RESULT PASSED -----
+
+===== ingilizce =====
+Komut: npm run test:ingilizce
+Exit code: 0
+Duvar süresi (s): 0.000002708
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:ingilizce
+> node scripts/test-ingilizce.mjs
+
+
+=== DRKOÇ İngilizce içerik denetimi ===
+36 ders · 104 kelime · 21 modül · 10 not · 45 tespit maddesi · 800 dil kartı
+
+1) Ders şeması
+  ✓ 36 dersin tamamı şemaya uygun
+
+2) Kelime kayıtları
+  ✓ 104 kelime kaydı eksiksiz
+
+3) Bağlantılar
+  ✓ Ders, kelime, not ve modül bağlantılarının tamamı geçerli
+
+4) Cevap motoru kendi doğru cevabını kabul ediyor mu
+  ✓ 445 alıştırmanın doğru cevabı motor tarafından kabul edildi
+
+5) Cevap motoru esneklik sınaması
+  ✓ 12 esneklik vakası doğru değerlendirildi
+
+6) Türkçe düşünme izleri
+  ✓ 26 iz kendi örneğini yakalıyor, doğru cümleler temiz geçiyor
+
+7) Seviye tespit motoru
+  ✓ sıfır öğrencisi → Pre-A1 (18 soru, güven: yuksek)
+  ✓ A1 öğrencisi → A1 (18 soru, güven: orta)
+  ✓ A2 öğrencisi → A2 (18 soru, güven: orta)
+  ✓ B1 öğrencisi → B1 (18 soru, güven: yuksek)
+  ✓ B2 öğrencisi → B2 (18 soru, güven: yuksek)
+  ✓ C1 öğrencisi → C1 (18 soru, güven: yuksek)
+  ✓ Ses yokken dinleme sorulmuyor ve "ölçülemedi" olarak raporlanıyor
+  ✓ Yazma analizi çalışıyor (23 kelime, 3 bulgu)
+  ✓ Yazma metnindeki Türkçe düşünme izi yakalanıyor
+  ✓ Seviye tespit motoru baştan sona çalışıyor
+
+8) Zorluk ve beceri dağılımı (uyarı düzeyi)
+  Tespit bankası beceri dağılımı: kelime=8 · gramer=11 · dizim=6 · okuma=6 · dinleme=6 · telaffuz=3 · dusunme=5
+
+9) Telaffuz laboratuvarı
+  ✓ 11 ses kaydı eksiksiz
+
+10) Dil kartları
+  ✓ 8 deste · 800 kart eksiksiz (her kartta örnek cümle ve Türkçesi var)
+
+=== Sonuç: 0 hata, 0 uyarı ===
+
+
+----- RESULT PASSED -----
+
+===== almanca =====
+Komut: npm run test:almanca
+Exit code: 0
+Duvar süresi (s): 0.000001417
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:almanca
+> node scripts/test-almanca.mjs
+
+
+=== DRKOÇ Almanca içerik denetimi ===
+38 ders · 144 kelime · 21 modül · 10 not · 45 tespit maddesi · 800 dil kartı
+
+1) Ders şeması
+  ✓ 38 dersin tamamı şemaya uygun
+
+2) Kelime kayıtları
+  ✓ 144 kelime kaydı eksiksiz
+
+3) Bağlantılar
+  ✓ Ders, kelime, not ve modül bağlantılarının tamamı geçerli
+
+4) Cevap motoru kendi doğru cevabını kabul ediyor mu
+  ✓ 462 alıştırmanın doğru cevabı motor tarafından kabul edildi
+
+5) Cevap motoru esneklik sınaması
+  ✓ 15 esneklik vakası doğru değerlendirildi
+
+6) Türkçe düşünme izleri
+  ✓ 30 iz kendi örneğini yakalıyor, doğru cümleler temiz geçiyor
+
+7) Seviye tespit motoru
+  ✓ sıfır öğrencisi → Pre-A1 (18 soru, güven: yuksek)
+  ✓ A1 öğrencisi → A1 (18 soru, güven: yuksek)
+  ✓ A2 öğrencisi → A2 (18 soru, güven: yuksek)
+  ✓ B1 öğrencisi → B1 (18 soru, güven: yuksek)
+  ✓ B2 öğrencisi → B2 (18 soru, güven: yuksek)
+  ✓ C1 öğrencisi → B2 (18 soru, güven: yuksek)
+  ✓ Ses yokken dinleme sorulmuyor ve "ölçülemedi" olarak raporlanıyor
+  ✓ Yazma analizi çalışıyor (20 kelime, 2 bulgu)
+  ✓ Yazma metnindeki Türkçe düşünme izi yakalanıyor
+  ✓ Seviye tespit motoru baştan sona çalışıyor
+
+8) Zorluk ve beceri dağılımı (uyarı düzeyi)
+  Tespit bankası beceri dağılımı: kelime=8 · gramer=11 · dizim=7 · okuma=6 · telaffuz=3 · dinleme=5 · dusunme=5
+
+9) Telaffuz laboratuvarı
+  ✓ 11 ses kaydı eksiksiz
+
+10) Dil kartları
+  ✓ 8 deste · 800 kart eksiksiz (her kartta örnek cümle ve Türkçesi var)
+
+=== Sonuç: 0 hata, 0 uyarı ===
+
+
+----- RESULT PASSED -----
+
+===== fransizca =====
+Komut: npm run test:fransizca
+Exit code: 0
+Duvar süresi (s): 0.000002792
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:fransizca
+> node scripts/test-fransizca.mjs
+
+
+=== DRKOÇ Fransızca içerik denetimi ===
+38 ders · 144 kelime · 10 modül · 9 not · 45 tespit maddesi · 800 dil kartı
+
+1) Ders şeması
+  ✓ 38 dersin tamamı şemaya uygun
+
+2) Kelime kayıtları
+  ✓ 144 kelime kaydı eksiksiz
+
+3) Bağlantılar
+  ✓ Ders, kelime, not ve modül bağlantılarının tamamı geçerli
+
+4) Cevap motoru kendi doğru cevabını kabul ediyor mu
+  ✓ 442 alıştırmanın doğru cevabı motor tarafından kabul edildi
+
+5) Cevap motoru esneklik sınaması
+  ✓ 16 esneklik vakası doğru değerlendirildi
+
+6) Türkçe düşünme izleri
+  ✓ 19 iz kendi örneğini yakalıyor, doğru cümleler temiz geçiyor
+
+7) Seviye tespit motoru
+  ✓ sıfır öğrencisi → Pre-A1 (18 soru, güven: yuksek)
+  ✓ A1 öğrencisi → A1 (18 soru, güven: yuksek)
+  ✓ A2 öğrencisi → A2 (18 soru, güven: yuksek)
+  ✓ B1 öğrencisi → B1 (18 soru, güven: yuksek)
+  ✓ B2 öğrencisi → B2 (18 soru, güven: yuksek)
+  ✓ C1 öğrencisi → B2 (18 soru, güven: yuksek)
+  ✓ Ses yokken dinleme sorulmuyor ve "ölçülemedi" olarak raporlanıyor
+  ✓ Yazma analizi çalışıyor (20 kelime, 2 bulgu)
+  ✓ Yazma metnindeki Türkçe düşünme izi yakalanıyor
+  ✓ Seviye tespit motoru baştan sona çalışıyor
+
+8) Zorluk ve beceri dağılımı (uyarı düzeyi)
+  Tespit bankası beceri dağılımı: kelime=10 · telaffuz=1 · dinleme=5 · gramer=20 · dizim=2 · dusunme=4 · okuma=3
+
+9) Telaffuz laboratuvarı
+  ✓ 8 ses kaydı eksiksiz
+
+10) Dil kartları
+  ✓ 8 deste · 800 kart eksiksiz (her kartta örnek cümle ve Türkçesi var)
+
+=== Sonuç: 0 hata, 0 uyarı ===
+
+
+----- RESULT PASSED -----
+
+===== ispanyolca =====
+Komut: npm run test:ispanyolca
+Exit code: 0
+Duvar süresi (s): 0.000002792
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:ispanyolca
+> node scripts/test-ispanyolca.mjs
+
+
+=== DRKOÇ İspanyolca içerik denetimi ===
+38 ders · 144 kelime · 10 modül · 9 not · 45 tespit maddesi · 800 dil kartı
+
+1) Ders şeması
+  ✓ 38 dersin tamamı şemaya uygun
+
+2) Kelime kayıtları
+  ✓ 144 kelime kaydı eksiksiz
+
+3) Bağlantılar
+  ✓ Ders, kelime, not ve modül bağlantılarının tamamı geçerli
+
+4) Cevap motoru kendi doğru cevabını kabul ediyor mu
+  ✓ 408 alıştırmanın doğru cevabı motor tarafından kabul edildi
+
+5) Cevap motoru esneklik sınaması
+  ✓ 16 esneklik vakası doğru değerlendirildi
+
+6) Türkçe düşünme izleri
+  ✓ 22 iz kendi örneğini yakalıyor, doğru cümleler temiz geçiyor
+
+7) Seviye tespit motoru
+  ✓ sıfır öğrencisi → Pre-A1 (18 soru, güven: yuksek)
+  ✓ A1 öğrencisi → A1 (18 soru, güven: yuksek)
+  ✓ A2 öğrencisi → A2 (18 soru, güven: yuksek)
+  ✓ B1 öğrencisi → B1 (18 soru, güven: yuksek)
+  ✓ B2 öğrencisi → B2 (18 soru, güven: yuksek)
+  ✓ C1 öğrencisi → B2 (18 soru, güven: yuksek)
+  ✓ Ses yokken dinleme sorulmuyor ve "ölçülemedi" olarak raporlanıyor
+  ✓ Yazma analizi çalışıyor (18 kelime, 2 bulgu)
+  ✓ Yazma metnindeki Türkçe düşünme izi yakalanıyor
+  ✓ Seviye tespit motoru baştan sona çalışıyor
+
+8) Zorluk ve beceri dağılımı (uyarı düzeyi)
+  Tespit bankası beceri dağılımı: kelime=11 · telaffuz=1 · dinleme=5 · gramer=19 · dizim=2 · dusunme=4 · okuma=3
+
+9) Telaffuz laboratuvarı
+  ✓ 8 ses kaydı eksiksiz
+
+10) Dil kartları
+  ✓ 8 deste · 800 kart eksiksiz (her kartta örnek cümle ve Türkçesi var)
+
+=== Sonuç: 0 hata, 0 uyarı ===
+
+
+----- RESULT PASSED -----
+
+===== matematik-soru-kutuphanesi =====
+Komut: npm run test:matematik-soru-kutuphanesi
+Exit code: 0
+Duvar süresi (s): 0.00000325
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:matematik-soru-kutuphanesi
+> node scripts/test-matematik-soru-kutuphanesi.mjs
+
+Matematik soru kütüphanesi: Türkçe ile ortak akış şeması ve uç testler doğrulandı.
+
+----- RESULT PASSED -----
+
+===== felsefe-soru-kutuphanesi =====
+Komut: npm run test:felsefe-soru-kutuphanesi
+Exit code: 0
+Duvar süresi (s): 0.000002792
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:felsefe-soru-kutuphanesi
+> node scripts/test-felsefe-soru-kutuphanesi.mjs
+
+280 test dosyası ve 2800 soru doğrulandı.
+
+----- RESULT PASSED -----
+
+===== tarih-soru-kutuphanesi =====
+Komut: npm run test:tarih-soru-kutuphanesi
+Exit code: 0
+Duvar süresi (s): 1.042868709
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:tarih-soru-kutuphanesi
+> node scripts/test-tarih-soru-kutuphanesi.mjs
+
+200 test ve 2000 özgün soru doğrulandı.
+Cevap dağılımı: {"A":400,"B":400,"C":400,"D":400,"E":400}
+
+----- RESULT PASSED -----
+
+===== exam-stats =====
+Komut: node scripts/test-exam-stats.mjs
+Exit code: 0
+Duvar süresi (s): 0.000002958
+----- stdout/stderr -----
+
+=== 1) SÜRE TAHMİNİ ===
+  ✓ TYT denemesi süresi girilmemişse 165 dk (tahmin)
+  ✓ Girilen süre tahmini ezer
+  ✓ AYT 180, LGS 155, KPSS 130
+  ✓ Branş denemesi süresi soru sayısından çıkar (20 soru TYT ≈ 28 dk)
+  ✓ Türü belirtilmemiş branş denemesi TYT temposu varsayar
+  ✓ Soru girilmemiş branş denemesi 0 dakika — çalışılmış sayılmaz
+
+=== 2) GENEL DENEME → ÇALIŞMA SATIRLARI ===
+  ✓ Her ders ayrı satır olur
+  ✓ Süre soru sayısı oranında paylaşılır (40/80 ve 40/80 → 83+83)
+  ✓ Doğru/yanlış/boş ders satırından birebir gelir
+  ✓ Ders adı korunur (ders bazlı dağılım için)
+  ✓ Kaynak deneme olarak işaretlenir
+  ✓ Boş bırakılan derse süre payı düşmez
+
+=== 3) TARİHSİZ KAYIT ATLANIR ===
+  ✓ exam_date yoksa satır üretilmez (yanlış güne düşmesin)
+
+=== 4) TOPLAMLARA KATILMA ===
+  ✓ Sadece günlük kayıt: 60 dk, 25 soru
+  ✓ Denemelerle: 60 + 166 + 40 = 266 dk, 25 + 80 + 20 = 125 soru
+  ✓ Doğru/yanlış da toplanır (20+30+25+12=87 doğru, 5+8+5+4=22 yanlış)
+  ✓ İsabet oranı denemeleri kapsar (87/109)
+
+=== 5) KAYNAK AYRIMI (çift sayım görünür kalsın) ===
+  ✓ Günlük kayıt payı ayrı hesaplanır
+  ✓ Deneme payı ayrı hesaplanır
+  ✓ Tahmini süre içerdiği bildirilir
+  ✓ Tüm süreler girilmişse tahmin bayrağı düşer
+
+=== 6) SERİ VE DERS DAĞILIMI ===
+  ✓ Deneme çözülen gün de seriye sayılır (dün + bugün = 2)
+  ✓ Ders dağılımına denemeler de girer
+  ✓ Matematik = günlük 25 + deneme 40 = 65 soru
+
+=== SONUÇ: 24 geçti, 0 başarısız ===
+
+
+----- RESULT PASSED -----
+
+===== parent-rls =====
+Komut: npm run test:parent-rls
+Exit code: 0
+Duvar süresi (s): 0.941119167
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:parent-rls
+> node scripts/test-parent-rls.mjs
+
+
+=== 1) ŞEMA HAZIRLIĞI (Supabase taklidi) ===
+  ✓ taban şema kuruldu
+  ✓ göç öncesi veri yazıldı (eski usul veli bağı dahil)
+
+=== 2) GÖÇ ÇALIŞTIRILIYOR ===
+  ✓ migration_parent_verification.sql hatasız çalıştı
+
+=== 3) MEVCUT BAĞ KORUNDU MU ===
+  ✓ eski veli bağı active olarak taşındı
+  ✓ yalnızca 1 bağ oluştu (yanlış eşleşme yok)
+
+=== 4) MİGRE EDİLEN VELİ VERİYİ GÖREBİLİYOR MU ===
+  ✓ kendi öğrencisinin çalışma kayıtlarını görüyor (2 satır)
+  ✓ başka öğrencinin kaydı sızmıyor
+  ✓ yalnızca kendi öğrencisinin ders netleri
+  ✓ yalnızca kendi öğrencisinin ödevleri
+  ✓ branş denemeleri de görünüyor
+  ✓ profillerde ilgisiz öğrenci (Ayşe) GÖRÜNMÜYOR
+  ✓ kendi öğrencisinin profili görünüyor
+
+=== 5) BAĞLANTISIZ VELİ HİÇBİR ŞEY GÖREMİYOR ===
+  ✓ çalışma kaydı görmüyor
+  ✓ deneme netlerini görmüyor
+  ✓ ödev görmüyor
+  ✓ öğrenci adlarını listeleyemiyor
+
+=== 6) ANONİM ERİŞİM KAPANDI MI ===
+  ✓ giriş yapmamış ziyaretçi profil listeleyemiyor
+
+=== 7) ROL YÜKSELTME ENGELLENDİ Mİ ===
+  ✓ veli kendini öğretmen yapamıyor
+  ✓ veli student_id kolonunu değiştiremiyor
+
+=== 8) VELİ KENDİNE BAĞ EKLEYEMİYOR ===
+  ✓ parent_links tablosuna doğrudan INSERT reddedildi
+  ✓ parent_links UPDATE ile kendini onaylayamıyor
+
+=== 9) KOD AKIŞI: ÖĞRENCİ → VELİ → ONAY ===
+  ✓ öğrenci 8 karakterli kod üretti
+  ✓ kodda karışan harf yok (I, L, O, U)
+  ✓ yanlış kod reddedildi
+  ✓ küçük harf + tireli kod tanındı
+  ✓ ön izleme öğrenci adını döndürdü
+  ✓ ön izleme bağlantı isteği OLUŞTURMADI
+  ✓ kod kullanıldı, istek oluştu
+
+=== 10) ONAY ÖNCESİ VELİ HÂLÂ VERİ GÖREMEZ ===
+  ✓ bekleyen istekle çalışma kaydı görünmüyor
+  ✓ kendi listesinde pending olarak görünüyor
+
+=== 11) KOD TEK KULLANIMLIK MI ===
+  ✓ aynı kod ikinci kez kullanılamıyor
+
+=== 12) ÖĞRENCİ REDDEDERSE ===
+  ✓ öğrenci bekleyen isteği görüyor
+  ✓ istek sahibinin e-postası görünüyor
+  ✓ REDDEDİLEN veli hiçbir veri göremiyor
+  ✓ reddedilen bağ velinin listesinden düştü
+
+=== 13) YENİ KOD + ONAY ===
+  ✓ reddedilmiş veli yeni kodla tekrar istek gönderebiliyor
+  ✓ onaydan sonra veli çalışma kayıtlarını görüyor
+  ✓ onaydan sonra deneme netleri görünüyor
+  ✓ yine de yalnızca kendi öğrencisi
+
+=== 14) İKİ ÇOCUKLU VELİ / İKİ VELİLİ ÖĞRENCİ ===
+  ✓ veli iki öğrencinin de velisi olabiliyor
+  ✓ iki öğrencinin kaydına da erişiyor
+  ✓ öğrenci bazlı filtre karışmıyor (S1 = 2 kayıt)
+  ✓ bir öğrencinin ikinci velisi olabilir mi — zaten bağlıysa reddediliyor
+  ✓ mesaj "zaten onaylı" diyor
+
+=== 15) BAĞLANTIYI KALDIRMA ===
+  ✓ bağ kaldırılınca veli o öğrencinin verisini göremiyor
+  ✓ diğer öğrencinin verisi etkilenmedi
+
+=== 16) KABA KUVVET SINIRI ===
+  ✓ 11+ hatalı denemeden sonra sınır devreye girdi
+
+=== 17) VELİ KOD TABLOSUNU OKUYAMAZ ===
+  ✓ veli davet kodlarını listeleyemiyor
+  ✓ öğrenci kendi kodlarını görebiliyor
+  ✓ başkasının kodu görünmüyor
+
+=== 18) ÖĞRETMEN ETKİLENMEDİ Mİ ===
+  ✓ öğretmen tüm çalışma kayıtlarını görüyor (3)
+  ✓ öğretmen tüm profilleri görüyor (5)
+
+=== 19) ÖĞRENCİ KENDİ VERİSİNİ GÖRÜYOR / BAŞKASININKİNİ GÖRMÜYOR ===
+  ✓ öğrenci kendi 2 kaydını görüyor
+  ✓ öğrenci başka öğrenciyi göremiyor
+  ✓ öğrenci öğretmeni görebiliyor (Mesajlar için)
+
+=== SONUÇ: 53 geçti, 0 başarısız ===
+
+
+----- RESULT PASSED -----
+
+===== live-lessons =====
+Komut: npm run test:live-lessons
+Exit code: 0
+Duvar süresi (s): 0.884802583
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:live-lessons
+> node scripts/test-live-lessons-rls.mjs
+
+
+=== 1) ŞEMA HAZIRLIĞI (Supabase taklidi) ===
+  ✓ taban şema kuruldu
+  ✓ göç öncesi veri yazıldı (tek öğretmen, iki öğrenci)
+
+=== 2) ÖNCEKİ GÖÇLER + CANLI DERS GÖÇÜ ===
+  ✓ migration_parent_verification.sql hatasız çalıştı
+  ✓ migration_live_lessons.sql hatasız çalıştı
+
+=== 3) MEVCUT ERİŞİM KORUNDU MU ===
+  ✓ göç öncesi öğretmen–öğrenci çiftleri active taşındı (2)
+
+=== 4) ÖĞRETMEN KENDİ ÖĞRENCİSİNİ GÖRÜYOR, BAŞKASININKİNİ GÖRMÜYOR ===
+  ✓ kendi öğrencilerini görüyor
+  ✓ göç sonrası kayıt olan öğrenci KENDİLİĞİNDEN görünmüyor
+  ✓ kendi öğrencilerinin çalışma kayıtları görünüyor (2)
+  ✓ yeni öğretmen HİÇBİR öğrenci profili göremiyor
+  ✓ yeni öğretmen hiçbir çalışma kaydı göremiyor
+  ✓ yeni öğretmen hiçbir ödev göremiyor
+  ✓ yeni öğretmen hiçbir soru göremiyor
+
+=== 5) DAVET AKIŞI ===
+  ✓ öğretmen davet bağlantısı üretebiliyor
+  ✓ belirteç veritabanında AÇIK METİN tutulmuyor
+  ✓ yalnızca SHA-256 özeti saklanıyor
+  ✓ öğrenci daveti ön izleyebiliyor ve öğretmenin adını görüyor
+  ✓ yanlış belirteçte anlaşılır Türkçe hata dönüyor
+  ✓ öğrenci daveti kabul edebiliyor
+  ✓ kabul sonrası öğretmen öğrencisini görüyor
+  ✓ yeni öğretmen HÂLÂ diğer öğrencileri göremiyor
+
+=== 6) İPTAL EDİLMİŞ / KULLANILMIŞ DAVET TEKRAR KULLANILAMIYOR ===
+  ✓ kullanılmış davet ikinci kez kabul edilemiyor
+  ✓ İPTAL EDİLMİŞ davet kullanılamıyor
+  ✓ iptal edilmiş davet ön izlemede de reddediliyor
+  ✓ SÜRESİ DOLMUŞ davet kullanılamıyor
+
+=== 7) DERS OLUŞTURMA VE GÖRÜNÜRLÜK ===
+  ✓ öğretmen kendi öğrencisine ders oluşturabiliyor
+  ✓ oda kimliği İSTEMCİDEN alınmıyor, sunucuda üretiliyor
+  ✓ öğretmen BAŞKASININ öğrencisine ders oluşturamıyor
+  ✓ ÖĞRENCİ KENDİ DERSİNİ GÖREBİLİYOR
+  ✓ öğrenciye açık hazırlık notu görünüyor
+  ✓ ÖĞRENCİ BAŞKA ÖĞRENCİNİN DERSİNİ GÖREMİYOR
+  ✓ başka öğretmen bu dersi göremiyor
+
+=== 8) ÖĞRETMENİN ÖZEL NOTU ÖĞRENCİYE SIZMIYOR ===
+  ✓ öğretmen kendi özel notunu okuyabiliyor
+  ✓ ÖĞRENCİ ÖĞRETMENİN ÖZEL NOTUNU OKUYAMIYOR (0 satır)
+  ✓ özel not lesson_sessions içinde KOLON olarak da yok
+  ✓ öğrenci özel not YAZAMIYOR
+
+=== 9) KATILIM KAYDI ===
+  ✓ öğrenci ders odası AÇILMADAN katılamıyor
+  ✓ öğretmen katılınca bekleme odası açılıyor
+  ✓ öğrenci oda açıldıktan sonra katılabiliyor
+  ✓ YETKİSİZ KULLANICI KATILAMIYOR
+  ✓ YETKİSİZ KULLANICI KATILIM KAYDI OLUŞTURAMIYOR (doğrudan INSERT)
+  ✓ katılımcı BAŞKASI ADINA katılım kaydı yazamıyor
+  ✓ katılımcı kendi adına bile doğrudan INSERT yapamıyor (yalnız RPC)
+  ✓ şişirilmiş süre sunucuda kırpılıyor
+
+=== 10) TAHTA ===
+  ✓ öğrenci canlı derste tahtaya yazabiliyor
+  ✓ yabancı kullanıcı tahtaya yazamıyor
+  ✓ yabancı kullanıcı tahtayı okuyamıyor
+
+=== 11) DERS SONU VE ÖZET ===
+  ✓ DERS BİTTİKTEN SONRA ODAYA GİRİLEMİYOR
+  ✓ PAYLAŞILMAMIŞ özet öğrenciye kapalı
+  ✓ paylaşılan özeti öğrenci görebiliyor
+  ✓ öğrenci geri bildirim bırakabiliyor
+  ✓ öğrenci özetin ÖĞRETMEN metnini değiştiremiyor (0 satır)
+  ✓ öğretmenin özet metni değişmedi
+  ✓ başka öğrenci paylaşılan özeti bile göremiyor
+
+=== 12) BAĞ SONLANDIRILINCA ERİŞİM KAPANIYOR ===
+  ✓ bağ sonlandırılan öğrenci artık görünmüyor
+  ✓ o öğrencinin çalışma kaydı da kapandı (1 satır kaldı)
+
+=== 13) VELİ ERİŞİMİ BOZULMADI ===
+  ✓ veli hâlâ kendi öğrencisinin kaydını görüyor
+  ✓ veli canlı ders kayıtlarını GÖREMİYOR
+
+=== SONUÇ: 55 geçti, 0 kaldı ===
+
+
+----- RESULT PASSED -----
+
+===== defter =====
+Komut: npm run test:defter
+Exit code: 0
+Duvar süresi (s): 0.869319709
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:defter
+> node --test scripts/test-defter*.mjs
+
+✔ Eski yedekler ve bütün yeni zeminler açılır (6.570458ms)
+✔ Görsel, ses, zaman eşleşmesi ve başlıklar yedekte birlikte korunur (2.072709ms)
+✔ Eksik ek, çalıştırılabilir veri ve bozuk boyutlar reddedilir (0.760542ms)
+✔ Olmayan sayfaya işaret ve sırasız/negatif ses zamanı reddedilir (0.347875ms)
+✔ Kaynak ilişkileri ve uzun kategoriler doğrulanır (0.273667ms)
+✔ Pencil Touch yolu ilk/son koordinatı ve ham basıncı taşır (1.828625ms)
+✔ Hızlı 100 ayrı temas ve noktalar eksiksiz, birbirinden ayrı tamamlanır (0.298792ms)
+✔ touchcancel yazılmış örnekleri korur ve sonraki kalem temasını engellemez (0.095291ms)
+✔ Eksik changedTouches ve boş touches girişi kilitlemeden bitirir (0.057375ms)
+✔ Avuç/parmak kalemin hareketini veya kalkışını üstlenmez (0.29025ms)
+✔ Kayıp bitişte yeni temas eskisini korur; iki harfi birleştirmez (0.402334ms)
+✔ Uyumluluk Pointer olayı yalnızca etkin Touch Pencil temasında engellenir (0.175ms)
+✔ Odak kaybı/araç değişimi kapanışı bir kez kaydeder ve kilidi kaldırır (0.133083ms)
+✔ Düzenleyici kapalıyken yeni iz başlamaz (0.222667ms)
+✔ Eski WebKit Pencil ve basınç alanları kullanılır (0.167125ms)
+✔ 1.000 noktalı canlı iz doğrusal boyanır ve tam tuval temizlenmez (2.909667ms)
+✔ 5.000 noktalı canlı iz doğrusal boyanır ve tam tuval temizlenmez (1.339792ms)
+✔ 1.000 çizgili sayfada yeni iz tek öğe olarak tabana eklenir (6.0635ms)
+✔ 5.000 çizgili sayfada yeni iz tek öğe olarak tabana eklenir (13.685334ms)
+✔ Başlangıç olayı kaçan basınçlı kalem hareketi izi başlatır (5.67725ms)
+✔ pointercancel izi silmez; devam eden hareket aynı çizgiye eklenir (0.519167ms)
+✔ pointercancel sonrası hareket gelmezse alınan iz güvenle tamamlanır (0.438375ms)
+✔ lostpointercapture kalem kalkışı sayılmaz ve iz korunur (0.24175ms)
+✔ Sayfa dışına taşan pencere hareketi ve kalkışı kaybolmaz (0.296917ms)
+✔ Yeni temas ve değişen pointerId önceki açık izi ezmeden tamamlar (0.394625ms)
+✔ Hızlı art arda 100 kısa çizginin tamamı ayrı kalır (0.31425ms)
+✔ Hızlı dairede birleştirilmiş örnekler ve kapanış noktası korunur (1.12475ms)
+✔ Birleştirilmiş dizi ana olayı içermese de son gerçek koordinat kaybolmaz (0.120875ms)
+✔ Avuç ve ikinci işaretçi Pencil çizgisini sahiplenmez veya kesmez (0.135084ms)
+✔ Tahminî uç gösterilir fakat kalıcı çizgi verisine girmez (0.109708ms)
+✔ Fare ve parmak kendi temas kimlikleriyle çizer; birbirine karışmaz (0.077792ms)
+Defter erişimi: tekrar kurulum, sahiplik, doğrudan yazma/silme engeli, revizyon çatışması, yinelenen istek, bozuk belge ve anonim erişim kontrolleri geçti.
+✔ scripts/test-defter-rls.mjs (895.206958ms)
+✔ Hızlı yüz çizgide pahalı kayıt giriş olayında çalışmaz; en son belge bir kez yazılır (2.302375ms)
+✔ Durmadan yazarken de kayıt en geç 1200 ms içinde başlatılır (0.296708ms)
+✔ Sayfadan ayrılma bekleyen bütün defterleri yazar (0.192333ms)
+✔ Hemen kaydetme son sürümü kullanır; eski zamanlayıcı geri yazamaz (0.095083ms)
+✔ Yazma başarısızsa bekleyen bütün çağrılar hatayı alır; tekrar deneme çalışır (0.354667ms)
+✔ Devam eden kayıt sırasında yeni yazı son sürüm olarak korunur (0.181042ms)
+✔ Gerçek kayıt doğrulaması korunur; geçersiz belge depoya yazılamaz (6.836ms)
+✔ Tarayıcı zamanlayıcısı yabancı bir nesneye bağlanmadan çağrılır (0.192584ms)
+✔ Basılı tutunca line yeterli güvenle tanınır (1.827166ms)
+✔ Basılı tutunca circle yeterli güvenle tanınır (0.768625ms)
+✔ Basılı tutunca ellipse yeterli güvenle tanınır (1.312167ms)
+✔ Basılı tutunca square yeterli güvenle tanınır (0.400583ms)
+✔ Basılı tutunca rectangle yeterli güvenle tanınır (0.305208ms)
+✔ Basılı tutunca triangle yeterli güvenle tanınır (2.676459ms)
+✔ Basılı tutunca arrow yeterli güvenle tanınır (0.444417ms)
+✔ Döndürülmüş dikdörtgenin yönü korunur (1.966333ms)
+✔ Karalama, açık yay, spiral, harf ve beşgen zorla dönüştürülmez (3.183916ms)
+✔ Zoom tanınan şeklin sayfa koordinatlarını değiştirmez (1.764834ms)
+✔ Şekiller renk/kalınlık/saydamlık ve döndürmeyle kaydedilip yeniden açılır (2.62375ms)
+✔ Üçgen taşınır; silgi yalnız şeklin çizgisine dokununca isabet eder (0.291292ms)
+✔ Hemen bırakılan çizgi için tanıma hiç çalışmaz (0.122583ms)
+✔ 500 ms sabit tutma tek tanıma yapar; küçük titreme süreyi sıfırlamaz (0.055958ms)
+✔ Anlamlı ve birikimli hareket beklemeyi yeniden başlatır; iptal eski saati susturur (0.045625ms)
+✔ Şekil bekleme zamanlayıcısı gerçek tarayıcıdaki alıcı kuralına uyar (0.071042ms)
+✔ İçe aktarma özgün defteri ezmez ve metni değiştirmez (3.404625ms)
+✔ Bilinmeyen sürüm, bozuk koordinat ve tekrar eden sayfa kimliği reddedilir (0.218417ms)
+✔ Uzak yeni sürüm yerel değişiklik varken birleşmez; temiz sürümde sekme revizyonu ilerler (0.126333ms)
+✔ Yerel yazma hatasında sahte kayıt başarısı verilmez (0.3265ms)
+✔ İki sekmenin değişiklikleri ayrı defterlerde korunur; sıradaki yazılar da kopyaya gider (0.975709ms)
+✔ Ağ yanıtı gecikirken yazılan yeni içerik kaybolmaz ve beklemede kalır (0.295375ms)
+✔ Uzak revizyon çatışması öğrencinin yerel içeriğini kopyada saklar (0.204709ms)
+ℹ tests 63
+ℹ suites 0
+ℹ pass 63
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 903.345958
+
+----- RESULT PASSED -----
+
+===== ink =====
+Komut: npm run test:ink
+Exit code: 0
+Duvar süresi (s): 0.000004625
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:ink
+> node scripts/test-ink-stroke.mjs && node scripts/test-ink-cache.mjs
+
+
+=== 1) BASINÇ: düşük değer noktayı ASLA düşürmez ===
+  ✓ çizgi başındaki 0 basınç geçerli bir değere düşüyor
+  ✓ görsel alt sınıra çekiliyor
+  ✓ çizgi sonundaki 0 basınç son geçerli değeri koruyor
+  ✓ gerçek basınç olduğu gibi geçiyor
+  ✓ pozitif ama görünmez basınç alt sınıra çekiliyor
+  ✓ 1 üstü basınç kırpılıyor
+  ✓ fare için orta değer
+  ✓ parmak için orta değer
+  ✓ basınç kapalıyken sabit değer
+  ✓ geçersiz (NaN) basınç çökmüyor
+
+=== 2) BASINÇ YUMUŞATMA: hızlı yazıyı geciktirmiyor ===
+  ✓ ilk örnek olduğu gibi
+  ✓ tek adımda yeni değere doğru belirgin hareket
+  ✓ 6 örnekte neredeyse yeni değere ulaşıyor (gecikme yok)
+
+=== 3) ÖRNEK ELEME: yalnız gerçekten gereksizi eler ===
+  ✓ boş çizgide ilk nokta her zaman kabul
+  ✓ aynı yerdeki tekrar eleniyor
+  ✓ eşiğin altındaki mikro hareket eleniyor
+  ✓ eşiği aşan hareket kabul
+
+=== 4) KALEM KALKIŞ NOKTASI: harflerin bitişi kırpılmıyor ===
+  ✓ nokta yoksa kalkış noktası eklenir
+  ✓ kalkış son örnekten farklıysa eklenir
+  ✓ kalkış son örnekle AYNIYSA eklenmez
+  ✓ yarım piksellik fark bile eklenir (uçlar kırpılmaz)
+
+=== 5) TEK DOKUNUŞ ve KISA ÇİZGİ ===
+  ✓ tek dokunuş 1 nokta üretiyor
+  ✓ tek dokunuşun basıncı geçerli
+  ✓ aynı yere kalkış çizgiyi bozmaz
+  ✓ iki noktalı kısa çizgi korunuyor
+
+=== 5b) BASINÇSIZ İZ GÖRÜNÜR KALINLIĞA ÇEKİLİR ===
+  ✓ cihaz hiç basınç vermediyse nokta normal kalınlıkta
+  ✓ gerçek basınç ölçülen çizgiye DOKUNULMUYOR
+  ✓ gerçek çizginin ince başlangıcı korunuyor
+  ✓ iki noktalı silik çizgi de görünür oluyor
+  ✓ boş çizgi güvenle atlanıyor
+
+=== 6) AĞ PAKETLERİ: sıra, tekrar ve boşluk ===
+  ✓ ilk paket uygulanıyor
+  ✓ sıradaki paket ekleniyor
+  ✓ TEKRAR eden paket yok sayılıyor (çizgi katlanmıyor)
+  ✓ geç gelen ESKİ paket yok sayılıyor
+  ✓ arada paket kaybolduysa eldeki YİNE DE ekleniyor
+  ✓ boş paket güvenle yok sayılıyor
+  ✓ çizgi yoksa çökmüyor
+
+=== 7) HAYALET ÇİZGİ TEMİZLİĞİ ===
+  ✓ taze çizgi silinmiyor
+  ✓ süresi dolan çizgi temizleniyor
+  ✓ hiç görülmemiş çizgi temizleniyor
+
+=== 8) TEŞHİS RAPORU ===
+  ✓ nokta sayısı doğru
+  ✓ ilk/son basınç doğru
+  ✓ en düşük/en yüksek basınç doğru
+  ✓ ek alanlar korunuyor
+
+=== 9) GERÇEK EL YAZISI SENARYOSU ===
+  ✓ gövde bütün noktaları koruyor
+  ✓ gövdenin İLK noktası düşük basınçla da duruyor
+  ✓ gövdenin SON noktası kalkış konumunda
+  ✓ üstteki nokta ayrı bir çizgi
+  ✓ iki çizgi birbirine bağlanmıyor
+
+=== 10) MERKEZ YOL MOTORU: HAM NOKTALAR KAYBOLMAZ ===
+  ✓ hızlı çizgi tek Canvas vuruşuyla çiziliyor
+  ✓ ilk ham nokta yolun başlangıcı
+  ✓ son ham nokta yolun sonu
+  ✓ ara noktalar yumuşak yola katılıyor
+  ✓ i noktası dolu daire olarak çiziliyor
+
+=== 11) iPadOS TOUCH MOTORU: PENCIL AYRI YOLDAN GELİR ===
+  ✓ gerçek iPad Touch motorunu açıyor
+  ✓ masaüstü site kipindeki iPad de tanınıyor
+  ✓ MacBook Pointer motorunda kalıyor
+  ✓ Touch Events yoksa iPad bile Pointer yedeğinde kalıyor
+  ✓ Pencil stylus olarak sınıflanıyor
+  ✓ parmak stylus sanılmıyor
+  ✓ karışık temaslardan yalnız Pencil seçiliyor
+  ✓ yalnız parmak varsa çizim teması seçilmiyor
+  ✓ aktif Touch kimliği doğru bulunuyor
+  ✓ Touch basıncı mevcut basınç motoruna aktarılıyor
+  ✓ eski WebKit basınç alanı destekleniyor
+
+=== SONUÇ: 65 geçti, 0 kaldı ===
+
+✔ Canlı izde önbellek eski motorla aynı yol ve kalınlığı verir (3.727ms)
+✔ Bin noktalı izde eski eğriler her karede yeniden hesaplanmaz (1.698542ms)
+✔ Bitişte basınç düzeltmesi ve yeni nokta dizisi hesaba katılır (0.116375ms)
+✔ Silgi önbelleği temizlediğinde değiştirilmiş yol yeniden hesaplanır (0.07775ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8.321042
+
+----- RESULT PASSED -----
+
+===== kimya =====
+Komut: npm run test:kimya
+Exit code: 0
+Duvar süresi (s): 0.000003542
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:kimya
+> node scripts/test-kimya-atlasi.mjs
+
+
+1) Element verisi (118 element)
+   118 element denetlendi.
+
+2) Formül çözümleyici (zorunlu örnekler)
+   H2O           → H₂O             3 atom, yük 0
+   CO2           → CO₂             3 atom, yük 0
+   NH3           → NH₃             4 atom, yük 0
+   CH4           → CH₄             5 atom, yük 0
+   O2            → O₂              2 atom, yük 0
+   N2            → N₂              2 atom, yük 0
+   HCl           → HCl             2 atom, yük 0
+   NaCl          → NaCl            2 atom, yük 0
+   NO3-          → NO₃⁻            4 atom, yük -1
+   NH4+          → NH₄⁺            5 atom, yük 1
+   CO3^2-        → CO₃²⁻           4 atom, yük -2
+   SO4^2-        → SO₄²⁻           5 atom, yük -2
+   Ca(OH)2       → Ca(OH)₂         5 atom, yük 0
+   Al2(SO4)3     → Al₂(SO₄)₃       17 atom, yük 0
+   Fe2(SO4)3     → Fe₂(SO₄)₃       17 atom, yük 0
+   C2H5OH        → C₂H₅OH          9 atom, yük 0
+   CH3COOH       → CH₃COOH         8 atom, yük 0
+   CuSO4·5H2O    → CuSO₄ · 5H₂O    21 atom, yük 0
+   K4[Fe(CN)6]   → K₄(Fe(CN)₆)     17 atom, yük 0
+   PO43-         → PO₄³⁻           5 atom, yük -3
+
+   Hatalı girdiler reddediliyor mu?
+
+3) Lewis yapıları — formal yük toplamı = net yük
+
+4) 3B yapı — atom bileşimi formülle uyuşuyor mu?
+
+5) Bağ açısı denetimi
+   H2O       104.5°  (beklenen 104.5°)
+   NH3       107.0°  (beklenen 107°)
+   CH4       109.5°  (beklenen 109.5°)
+   CO2       180.0°  (beklenen 180°)
+   NO3^-     120.0°  (beklenen 120°)
+   CO3^2-    120.0°  (beklenen 120°)
+   SO4^2-    109.5°  (beklenen 109.5°)
+   NH4^+     109.5°  (beklenen 109.5°)
+   SO2       119.0°  (beklenen 119°)
+   BF3       120.0°  (beklenen 120°)
+   CCl4      109.5°  (beklenen 109.5°)
+   O3        117.0°  (beklenen 117°)
+
+────────────────────────────────────────────────────────────
+✅ Tüm denetimler geçti (681 kontrol).
+
+----- RESULT PASSED -----
+
+===== fizik =====
+Komut: npm run test:fizik
+Exit code: 0
+Duvar süresi (s): 0.000003042
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:fizik
+> node scripts/test-fizik-atlasi.mjs
+
+
+1) Birim sistemi ve sayı biçimlendirme
+   46 birim tanımlı, dönüşümler tutarlı.
+
+2) Vektör matematiği
+
+3) Sabit ivmeli hareket
+
+   Sürtünme
+
+4) Atış hareketleri
+
+5) İş, güç ve enerji
+
+6) Isı, ısıl denge ve genleşme
+
+7) Basınç ve kaldırma kuvveti
+
+8) Elektrostatik
+
+9) Elektrik devreleri
+
+10) Manyetizma
+
+11) Dalgalar ve ses
+
+12) Optik
+
+13) Ölçme ve belirsizlik
+
+14) İlerleme takibi
+
+15) Bölge ve içerik bütünlüğü
+   13 bölge, 36 deney, 46 kontrol sorusu denetlendi.
+
+16) Sınav notu ve bölge çizimleri
+   13 bölgenin sınav notu ve çizimi denetlendi.
+
+17) Rozet kuralları
+   8 rozetin tamamı ulaşılabilir.
+
+──────────────────────────────────────────────────────────
+✓ Tüm testler geçti — 965 denetim başarılı.
+
+----- RESULT PASSED -----
+
+===== biyoloji =====
+Komut: npm run test:biyoloji
+Exit code: 0
+Duvar süresi (s): 0.000002167
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:biyoloji
+> node scripts/test-biyoloji-atlasi.mjs
+
+
+1) Manifest ↔ gerçek bileşen/motor kayıt sözleşmesi
+  ✓ 44 müfredat alt başlığı var
+  ✓ 44 bağımsız etkileşim kaydı var
+  ✓ manifest kimlikleri benzersiz
+  ✓ registry kimlikleri benzersiz
+  ✓ manifest ve registry bire bir aynı kimlik kümesi
+  ✓ componentKey alanları bire bir
+  ✓ davranış testleri konuya özgü ve benzersiz
+  ✓ deney-tasarim: componentKey
+  ✓ deney-tasarim: engineKey kayıtlı
+  ✓ deney-tasarim: interactionType
+  ✓ kanit-sinifla: componentKey
+  ✓ kanit-sinifla: engineKey kayıtlı
+  ✓ kanit-sinifla: interactionType
+  ✓ denge-dongusu: componentKey
+  ✓ denge-dongusu: engineKey kayıtlı
+  ✓ denge-dongusu: interactionType
+  ✓ molekul-esle: componentKey
+  ✓ molekul-esle: engineKey kayıtlı
+  ✓ molekul-esle: interactionType
+  ✓ molekul-kur: componentKey
+  ✓ molekul-kur: engineKey kayıtlı
+  ✓ molekul-kur: interactionType
+  ✓ ayirac-lab: componentKey
+  ✓ ayirac-lab: engineKey kayıtlı
+  ✓ ayirac-lab: interactionType
+  ✓ enzim-lab: componentKey
+  ✓ enzim-lab: engineKey kayıtlı
+  ✓ enzim-lab: interactionType
+  ✓ hucre-mercek: componentKey
+  ✓ hucre-mercek: engineKey kayıtlı
+  ✓ hucre-mercek: interactionType
+  ✓ organel-rota: componentKey
+  ✓ organel-rota: engineKey kayıtlı
+  ✓ organel-rota: interactionType
+  ✓ yuzey-hacim: componentKey
+  ✓ yuzey-hacim: engineKey kayıtlı
+  ✓ yuzey-hacim: interactionType
+  ✓ zar-lab: componentKey
+  ✓ zar-lab: engineKey kayıtlı
+  ✓ zar-lab: interactionType
+  ✓ zar-degisken: componentKey
+  ✓ zar-degisken: engineKey kayıtlı
+  ✓ zar-degisken: interactionType
+  ✓ tonisite-lab: componentKey
+  ✓ tonisite-lab: engineKey kayıtlı
+  ✓ tonisite-lab: interactionType
+  ✓ vezikul-sirala: componentKey
+  ✓ vezikul-sirala: engineKey kayıtlı
+  ✓ vezikul-sirala: interactionType
+  ✓ takson-mercek: componentKey
+  ✓ takson-mercek: engineKey kayıtlı
+  ✓ takson-mercek: interactionType
+  ✓ canlilik-agaci: componentKey
+  ✓ canlilik-agaci: engineKey kayıtlı
+  ✓ canlilik-agaci: interactionType
+  ✓ dallanmis-anahtar: componentKey
+  ✓ dallanmis-anahtar: engineKey kayıtlı
+  ✓ dallanmis-anahtar: interactionType
+  ✓ biyo-veri: componentKey
+  ✓ biyo-veri: engineKey kayıtlı
+  ✓ biyo-veri: interactionType
+  ✓ bolunme-zaman: componentKey
+  ✓ bolunme-zaman: engineKey kayıtlı
+  ✓ bolunme-zaman: interactionType
+  ✓ kromozom-kur: componentKey
+  ✓ kromozom-kur: engineKey kayıtlı
+  ✓ kromozom-kur: interactionType
+  ✓ dna-grafik: componentKey
+  ✓ dna-grafik: engineKey kayıtlı
+  ✓ dna-grafik: interactionType
+  ✓ bolunme-karsilastir: componentKey
+  ✓ bolunme-karsilastir: engineKey kayıtlı
+  ✓ bolunme-karsilastir: interactionType
+  ✓ ureme-sinifla: componentKey
+  ✓ ureme-sinifla: engineKey kayıtlı
+  ✓ ureme-sinifla: interactionType
+  ✓ ureme-strateji: componentKey
+  ✓ ureme-strateji: engineKey kayıtlı
+  ✓ ureme-strateji: interactionType
+  ✓ yasam-dongu: componentKey
+  ✓ yasam-dongu: engineKey kayıtlı
+  ✓ yasam-dongu: interactionType
+  ✓ punnett-lab: componentKey
+  ✓ punnett-lab: engineKey kayıtlı
+  ✓ punnett-lab: interactionType
+  ✓ kalitim-kavram: componentKey
+  ✓ kalitim-kavram: engineKey kayıtlı
+  ✓ kalitim-kavram: interactionType
+  ✓ kan-grubu: componentKey
+  ✓ kan-grubu: engineKey kayıtlı
+  ✓ kan-grubu: interactionType
+  ✓ soyagaci: componentKey
+  ✓ soyagaci: engineKey kayıtlı
+  ✓ soyagaci: interactionType
+  ✓ organizasyon-esle: componentKey
+  ✓ organizasyon-esle: engineKey kayıtlı
+  ✓ organizasyon-esle: interactionType
+  ✓ iliski-senaryo: componentKey
+  ✓ iliski-senaryo: engineKey kayıtlı
+  ✓ iliski-senaryo: interactionType
+  ✓ besin-agi: componentKey
+  ✓ besin-agi: engineKey kayıtlı
+  ✓ besin-agi: interactionType
+  ✓ trofik-lab: componentKey
+  ✓ trofik-lab: engineKey kayıtlı
+  ✓ trofik-lab: interactionType
+  ✓ populasyon-lab: componentKey
+  ✓ populasyon-lab: engineKey kayıtlı
+  ✓ populasyon-lab: interactionType
+  ✓ dongu-tamamla: componentKey
+  ✓ dongu-tamamla: engineKey kayıtlı
+  ✓ dongu-tamamla: interactionType
+  ✓ cevre-agi: componentKey
+  ✓ cevre-agi: engineKey kayıtlı
+  ✓ cevre-agi: interactionType
+  ✓ atik-karar: componentKey
+  ✓ atik-karar: engineKey kayıtlı
+  ✓ atik-karar: interactionType
+  ✓ ayak-izi: componentKey
+  ✓ ayak-izi: engineKey kayıtlı
+  ✓ ayak-izi: interactionType
+  ✓ yerel-veri: componentKey
+  ✓ yerel-veri: engineKey kayıtlı
+  ✓ yerel-veri: interactionType
+  ✓ atp-model: componentKey
+  ✓ atp-model: engineKey kayıtlı
+  ✓ atp-model: interactionType
+  ✓ fotosentez-lab: componentKey
+  ✓ fotosentez-lab: engineKey kayıtlı
+  ✓ fotosentez-lab: interactionType
+  ✓ kemofoto-karsilastir: componentKey
+  ✓ kemofoto-karsilastir: engineKey kayıtlı
+  ✓ kemofoto-karsilastir: interactionType
+  ✓ glikoz-yolculuk: componentKey
+  ✓ glikoz-yolculuk: engineKey kayıtlı
+  ✓ glikoz-yolculuk: interactionType
+  ✓ solunum-karsilastir: componentKey
+  ✓ solunum-karsilastir: engineKey kayıtlı
+  ✓ solunum-karsilastir: interactionType
+  ✓ bilim-canlilik: ön koşul dizisi
+  ✓ bilesenler: ön koşul dizisi
+  ✓ hucre: ön koşul dizisi
+  ✓ zar-gecis: ön koşul dizisi
+  ✓ siniflandirma: ön koşul dizisi
+  ✓ bolunmeler: ön koşul dizisi
+  ✓ ureme: ön koşul dizisi
+  ✓ kalitim: ön koşul dizisi
+  ✓ ekoloji: ön koşul dizisi
+  ✓ cevre: ön koşul dizisi
+  ✓ enerji: ön koşul dizisi
+
+2) Kayıtlı her motorun başlangıç → girdi → ara durum → reset davranışı
+  ✓ deney-tasarim: girdi state'i değiştirir
+  ✓ deney-tasarim: çalıştırma ara durum üretir
+  ✓ deney-tasarim: reset canonical başlangıç
+  ✓ kanit-sinifla: girdi state'i değiştirir
+  ✓ kanit-sinifla: çalıştırma ara durum üretir
+  ✓ kanit-sinifla: reset canonical başlangıç
+  ✓ homeostazi: girdi state'i değiştirir
+  ✓ homeostazi: çalıştırma ara durum üretir
+  ✓ homeostazi: reset canonical başlangıç
+  ✓ molekul-esle: girdi state'i değiştirir
+  ✓ molekul-esle: çalıştırma ara durum üretir
+  ✓ molekul-esle: reset canonical başlangıç
+  ✓ molekul-kur: girdi state'i değiştirir
+  ✓ molekul-kur: çalıştırma ara durum üretir
+  ✓ molekul-kur: reset canonical başlangıç
+  ✓ ayirac: girdi state'i değiştirir
+  ✓ ayirac: çalıştırma ara durum üretir
+  ✓ ayirac: reset canonical başlangıç
+  ✓ enzim: girdi state'i değiştirir
+  ✓ enzim: çalıştırma ara durum üretir
+  ✓ enzim: reset canonical başlangıç
+  ✓ hucre-mercek: girdi state'i değiştirir
+  ✓ hucre-mercek: çalıştırma ara durum üretir
+  ✓ hucre-mercek: reset canonical başlangıç
+  ✓ organel-rota: girdi state'i değiştirir
+  ✓ organel-rota: çalıştırma ara durum üretir
+  ✓ organel-rota: reset canonical başlangıç
+  ✓ yuzey-hacim: girdi state'i değiştirir
+  ✓ yuzey-hacim: çalıştırma ara durum üretir
+  ✓ yuzey-hacim: reset canonical başlangıç
+  ✓ zar: girdi state'i değiştirir
+  ✓ zar: çalıştırma ara durum üretir
+  ✓ zar: reset canonical başlangıç
+  ✓ zar-degisken: girdi state'i değiştirir
+  ✓ zar-degisken: çalıştırma ara durum üretir
+  ✓ zar-degisken: reset canonical başlangıç
+  ✓ tonisite: girdi state'i değiştirir
+  ✓ tonisite: çalıştırma ara durum üretir
+  ✓ tonisite: reset canonical başlangıç
+  ✓ vezikul: girdi state'i değiştirir
+  ✓ vezikul: çalıştırma ara durum üretir
+  ✓ vezikul: reset canonical başlangıç
+  ✓ takson: girdi state'i değiştirir
+  ✓ takson: çalıştırma ara durum üretir
+  ✓ takson: reset canonical başlangıç
+  ✓ domain-agaci: girdi state'i değiştirir
+  ✓ domain-agaci: çalıştırma ara durum üretir
+  ✓ domain-agaci: reset canonical başlangıç
+  ✓ dallanmis-anahtar: girdi state'i değiştirir
+  ✓ dallanmis-anahtar: çalıştırma ara durum üretir
+  ✓ dallanmis-anahtar: reset canonical başlangıç
+  ✓ biyo-veri: girdi state'i değiştirir
+  ✓ biyo-veri: çalıştırma ara durum üretir
+  ✓ biyo-veri: reset canonical başlangıç
+  ✓ bolunme: girdi state'i değiştirir
+  ✓ bolunme: çalıştırma ara durum üretir
+  ✓ bolunme: reset canonical başlangıç
+  ✓ kromozom: girdi state'i değiştirir
+  ✓ kromozom: çalıştırma ara durum üretir
+  ✓ kromozom: reset canonical başlangıç
+  ✓ dna-grafik: girdi state'i değiştirir
+  ✓ dna-grafik: çalıştırma ara durum üretir
+  ✓ dna-grafik: reset canonical başlangıç
+  ✓ bolunme-karsilastir: girdi state'i değiştirir
+  ✓ bolunme-karsilastir: çalıştırma ara durum üretir
+  ✓ bolunme-karsilastir: reset canonical başlangıç
+  ✓ ureme-sinifla: girdi state'i değiştirir
+  ✓ ureme-sinifla: çalıştırma ara durum üretir
+  ✓ ureme-sinifla: reset canonical başlangıç
+  ✓ ureme-strateji: girdi state'i değiştirir
+  ✓ ureme-strateji: çalıştırma ara durum üretir
+  ✓ ureme-strateji: reset canonical başlangıç
+  ✓ yasam-dongu: girdi state'i değiştirir
+  ✓ yasam-dongu: çalıştırma ara durum üretir
+  ✓ yasam-dongu: reset canonical başlangıç
+  ✓ punnett: girdi state'i değiştirir
+  ✓ punnett: çalıştırma ara durum üretir
+  ✓ punnett: reset canonical başlangıç
+  ✓ kalitim-kavram: girdi state'i değiştirir
+  ✓ kalitim-kavram: çalıştırma ara durum üretir
+  ✓ kalitim-kavram: reset canonical başlangıç
+  ✓ kan-grubu: girdi state'i değiştirir
+  ✓ kan-grubu: çalıştırma ara durum üretir
+  ✓ kan-grubu: reset canonical başlangıç
+  ✓ soyagaci: girdi state'i değiştirir
+  ✓ soyagaci: çalıştırma ara durum üretir
+  ✓ soyagaci: reset canonical başlangıç
+  ✓ organizasyon: girdi state'i değiştirir
+  ✓ organizasyon: çalıştırma ara durum üretir
+  ✓ organizasyon: reset canonical başlangıç
+  ✓ iliski: girdi state'i değiştirir
+  ✓ iliski: çalıştırma ara durum üretir
+  ✓ iliski: reset canonical başlangıç
+  ✓ besin-agi: girdi state'i değiştirir
+  ✓ besin-agi: çalıştırma ara durum üretir
+  ✓ besin-agi: reset canonical başlangıç
+  ✓ trofik: girdi state'i değiştirir
+  ✓ trofik: çalıştırma ara durum üretir
+  ✓ trofik: reset canonical başlangıç
+  ✓ populasyon: girdi state'i değiştirir
+  ✓ populasyon: çalıştırma ara durum üretir
+  ✓ populasyon: reset canonical başlangıç
+  ✓ madde-dongu: girdi state'i değiştirir
+  ✓ madde-dongu: çalıştırma ara durum üretir
+  ✓ madde-dongu: reset canonical başlangıç
+  ✓ cevre-agi: girdi state'i değiştirir
+  ✓ cevre-agi: çalıştırma ara durum üretir
+  ✓ cevre-agi: reset canonical başlangıç
+  ✓ atik: girdi state'i değiştirir
+  ✓ atik: çalıştırma ara durum üretir
+  ✓ atik: reset canonical başlangıç
+  ✓ ayak-izi: girdi state'i değiştirir
+  ✓ ayak-izi: çalıştırma ara durum üretir
+  ✓ ayak-izi: reset canonical başlangıç
+  ✓ yerel-veri: girdi state'i değiştirir
+  ✓ yerel-veri: çalıştırma ara durum üretir
+  ✓ yerel-veri: reset canonical başlangıç
+  ✓ atp: girdi state'i değiştirir
+  ✓ atp: çalıştırma ara durum üretir
+  ✓ atp: reset canonical başlangıç
+  ✓ fotosentez: girdi state'i değiştirir
+  ✓ fotosentez: çalıştırma ara durum üretir
+  ✓ fotosentez: reset canonical başlangıç
+  ✓ kemofoto: girdi state'i değiştirir
+  ✓ kemofoto: çalıştırma ara durum üretir
+  ✓ kemofoto: reset canonical başlangıç
+  ✓ glikoz-yolu: girdi state'i değiştirir
+  ✓ glikoz-yolu: çalıştırma ara durum üretir
+  ✓ glikoz-yolu: reset canonical başlangıç
+  ✓ solunum: girdi state'i değiştirir
+  ✓ solunum: çalıştırma ara durum üretir
+  ✓ solunum: reset canonical başlangıç
+
+3) Enzim motoru değişmezleri ve karşılaştırmalı deney
+  ✓ 37 °C ürünü 60 °C ürününden fazladır
+  ✓ 60 °C denatürasyon gösterir
+  ✓ optimumdan sonra hız düşer
+  ✓ substrat doygunluğu artışı sınırlanır
+  ✓ hız negatif olmaz
+  ✓ enzim reset ürün/grafik/zamanı temizler
+
+4) Zar motoru: gradyan, ATP, kanal, denge ve büyük molekül
+  ✓ O₂ ATP olmadan gradyana doğru geçer
+  ✓ iyon gradyana karşı ATP yokken hareket etmez
+  ✓ ATP açılınca aktif taşıma başlar
+  ✓ denge sonrası net akış sıfırdır
+  ✓ denge sonrası moleküler hareket sürer
+  ✓ büyük molekül ATP olmadan vezikülle taşınmaz
+
+5) Homeostazi ve bölünme sayaçları
+  ✓ homeostazi sapmayı hedefe yaklaştırır
+  ✓ mitoz S evresinde kromozom sabit, DNA iki kat
+  ✓ mitoz anafazda kardeş kromatit ayrılır
+  ✓ mayoz I sonunda homologlar ayrılmış ve hücre haploit
+  ✓ mayoz II sonunda 4 haploit hücre
+  ✓ bölünme reset G1
+  ✓ doğru DNA grafiği kabul edilir
+  ✓ hatalı DNA grafiği evreyi gösterir
+
+6) Kalıtım, fotosentez, popülasyon ve besin ağı motorları
+  ✓ Aa×Aa: Punnett toplam olasılık 1
+  ✓ AA×aa: Punnett toplam olasılık 1
+  ✓ aa×aa: Punnett toplam olasılık 1
+  ✓ CO₂ sınırlayıcı faktör olarak bulunur
+  ✓ uygun koşul düşük CO₂’den hızlıdır
+  ✓ aşırı sıcaklık fotosentez hızını düşürür
+  ✓ fotosentez yalnız çalıştırılınca zaman/O₂ üretir
+  ✓ popülasyon negatif olmaz
+  ✓ popülasyon kapasiteye yaklaşır
+  ✓ kapasite değişimi uzun dönem sonucu değiştirir
+  ✓ besin oku doğru yönde kabul edilir
+  ✓ besin oku ters yönde neden ile reddedilir
+  ✓ doğrudan etki ilk adımda yayılır
+  ✓ dolaylı etki ikinci adımda güvenli kalır
+  ✓ besin ağı kanonik bağlantıları benzersiz
+
+7) Render kapsamı, ilerleme kapısı ve sahte jenerik kalıp yasağı
+  ✓ deney-tasarim: gerçek JSX render kaydı
+  ✓ kanit-sinifla: gerçek JSX render kaydı
+  ✓ denge-dongusu: gerçek JSX render kaydı
+  ✓ molekul-esle: gerçek JSX render kaydı
+  ✓ molekul-kur: gerçek JSX render kaydı
+  ✓ ayirac-lab: gerçek JSX render kaydı
+  ✓ enzim-lab: gerçek JSX render kaydı
+  ✓ hucre-mercek: gerçek JSX render kaydı
+  ✓ organel-rota: gerçek JSX render kaydı
+  ✓ yuzey-hacim: gerçek JSX render kaydı
+  ✓ zar-lab: gerçek JSX render kaydı
+  ✓ zar-degisken: gerçek JSX render kaydı
+  ✓ tonisite-lab: gerçek JSX render kaydı
+  ✓ vezikul-sirala: gerçek JSX render kaydı
+  ✓ takson-mercek: gerçek JSX render kaydı
+  ✓ canlilik-agaci: gerçek JSX render kaydı
+  ✓ dallanmis-anahtar: gerçek JSX render kaydı
+  ✓ biyo-veri: gerçek JSX render kaydı
+  ✓ bolunme-zaman: gerçek JSX render kaydı
+  ✓ kromozom-kur: gerçek JSX render kaydı
+  ✓ dna-grafik: gerçek JSX render kaydı
+  ✓ bolunme-karsilastir: gerçek JSX render kaydı
+  ✓ ureme-sinifla: gerçek JSX render kaydı
+  ✓ ureme-strateji: gerçek JSX render kaydı
+  ✓ yasam-dongu: gerçek JSX render kaydı
+  ✓ punnett-lab: gerçek JSX render kaydı
+  ✓ kalitim-kavram: gerçek JSX render kaydı
+  ✓ kan-grubu: gerçek JSX render kaydı
+  ✓ soyagaci: gerçek JSX render kaydı
+  ✓ organizasyon-esle: gerçek JSX render kaydı
+  ✓ iliski-senaryo: gerçek JSX render kaydı
+  ✓ besin-agi: gerçek JSX render kaydı
+  ✓ trofik-lab: gerçek JSX render kaydı
+  ✓ populasyon-lab: gerçek JSX render kaydı
+  ✓ dongu-tamamla: gerçek JSX render kaydı
+  ✓ cevre-agi: gerçek JSX render kaydı
+  ✓ atik-karar: gerçek JSX render kaydı
+  ✓ ayak-izi: gerçek JSX render kaydı
+  ✓ yerel-veri: gerçek JSX render kaydı
+  ✓ atp-model: gerçek JSX render kaydı
+  ✓ fotosentez-lab: gerçek JSX render kaydı
+  ✓ kemofoto-karsilastir: gerçek JSX render kaydı
+  ✓ glikoz-yolculuk: gerçek JSX render kaydı
+  ✓ solunum-karsilastir: gerçek JSX render kaydı
+  ✓ KapsamAlanlari sahte üreticisi silindi
+  ✓ tamamlanma yalnız kontrolle verilmez
+  ✓ tamamlanma yalnız görevle verilmez
+  ✓ tamamlanma görev + kontrol ister
+  ✓ ortak kabuk component/engine/type kimliği render eder
+
+8) Süreç animasyonu ve görünür kanıt sözleşmesi
+  ✓ zar-gecis-akisi: görünür süreç katmanı
+  ✓ osmoz-akisi: görünür süreç katmanı
+  ✓ enzim-tepkime-akisi: görünür süreç katmanı
+  ✓ homeostazi-akisi: görünür süreç katmanı
+  ✓ fotosentez-girdi-akisi: görünür süreç katmanı
+  ✓ besin-agi-akisi: görünür süreç katmanı
+  ✓ populasyon-hareketi: görünür süreç katmanı
+  ✓ ba-zar-iceri: hareket anahtarı tanımlı
+  ✓ ba-zar-disari: hareket anahtarı tanımlı
+  ✓ ba-substrat-yaklas: hareket anahtarı tanımlı
+  ✓ ba-su-iceri: hareket anahtarı tanımlı
+  ✓ ba-evre-dalgasi: hareket anahtarı tanımlı
+  ✓ ba-foton-gir: hareket anahtarı tanımlı
+  ✓ ba-besin-ok: hareket anahtarı tanımlı
+  ✓ ba-pop-hareket: hareket anahtarı tanımlı
+  ✓ azaltılmış hareket tercihi korunuyor
+
+──────────────────────────────────────────────────────────────
+✅ Biyoloji Atlası motor ve mimari denetimleri geçti (382 davranış kontrolü).
+
+----- RESULT PASSED -----
+
+===== cografya =====
+Komut: npm run test:cografya
+Exit code: 0
+Duvar süresi (s): 0.000002083
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:cografya
+> node scripts/test-cografya-atlasi.mjs
+
+
+1) Müfredat ve veri sözleşmeleri
+  ✓ 10 TYT ana konusu var
+  ✓ 13 atlas bölgesi var
+  ✓ 21 ana etkileşim kayıtlı
+  ✓ etkileşim kimlikleri benzersiz
+  ✓ her etkileşim gerçek bir bölgeye bağlı
+  ✓ her etkileşim transfer ve motor kimliği taşıyor
+  ✓ müfredat alt başlıkları etkileşimlere bağlı
+  ✓ 14 kavram yanılgısı benzersiz
+  ✓ harita noktaları tam veri sözleşmesine uyuyor
+  ✓ harita koordinatları normalize aralıkta
+  ✓ MEB modeli 28 resmî üniteyi kapsıyor
+  ✓ MEB modeli 73 benzersiz öğrenme çıktısı taşıyor
+  ✓ sınıf çıktı sayıları 18/17/19/19
+  ✓ her MEB çıktısı öğrenme zincirini taşıyor
+  ✓ müfredat özeti veriyle tutarlı
+  ✓ TYT kampı varsayılan 5 sorudur
+  ✓ TYT kapsam matrisi 23 konudur
+  ✓ TYT soruları ipucu, yanılgı ve ayrı transfer taşır
+  ✓ kaynak kataloğunda kullanılan ve aday statüleri ayrıdır
+  ✓ AFAD tehlike kaydı risk olmadığını açıklar
+
+2) Saf hesap motorları
+  ✓ 15° doğu yerel saati 60 dakika ilerletir
+  ✓ koordinat özeti yarım küreleri ayırır
+  ✓ 1/500.000 haritada 6 cm = 30 km
+  ✓ ölçek uzaklık hesabı tersine çevrilebilir
+  ✓ küçük payda daha ayrıntılıdır
+  ✓ profil başlangıç ve bitiş mesafesini korur
+  ✓ egim hesabı sonlu ve mutlak değer üretir
+  ✓ iklim motoru Güney Yarım Küre desenini bulur
+  ✓ bağıl nem kapasiteye oranlanır ve 100 ile sınırlanır
+  ✓ Kuzey ve Güney mevsimleri ters çalışır
+  ✓ hazırlık arttığında risk azalır
+  ✓ ağırlıklı yer puanı beklenen aralıkta
+  ✓ fizyolojik yoğunluk aritmetikten büyüktür
+  ✓ genç piramit doğru sınıflanır
+
+3) Render ve öğrenme kapısı
+  ✓ sistem-katmanlari: gerçek JSX durağı var
+  ✓ bolge-olustur: gerçek JSX durağı var
+  ✓ gunes-modeli: gerçek JSX durağı var
+  ✓ koordinat-saati: gerçek JSX durağı var
+  ✓ goreceli-konum: gerçek JSX durağı var
+  ✓ olcek-laboratuvari: gerçek JSX durağı var
+  ✓ izohips-profili: gerçek JSX durağı var
+  ✓ atmosfer-laboratuvari: gerçek JSX durağı var
+  ✓ iklim-grafigi: gerçek JSX durağı var
+  ✓ levha-surecleri: gerçek JSX durağı var
+  ✓ dis-kuvvetler: gerçek JSX durağı var
+  ✓ havza-rejimi: gerçek JSX durağı var
+  ✓ toprak-biyom: gerçek JSX durağı var
+  ✓ yogunluk-laboratuvari: gerçek JSX durağı var
+  ✓ nufus-piramidi: gerçek JSX durağı var
+  ✓ yer-secimi: gerçek JSX durağı var
+  ✓ kent-agi: gerçek JSX durağı var
+  ✓ kurulus-yeri: gerçek JSX durağı var
+  ✓ ulasim-enerji: gerçek JSX durağı var
+  ✓ risk-katmanlari: gerçek JSX durağı var
+  ✓ afet-dongusu: gerçek JSX durağı var
+  ✓ tamamlanma yalnız görevle açılmaz
+  ✓ tamamlanma yalnız kontrolle açılmaz
+  ✓ tamamlanma model görevi + kontrol ister
+  ✓ her bölge dosyası ayrı yüklenebilir
+
+4) Görsel katman: çizimler ve sahne kadrajı
+  ✓ 13 bölgenin de kendi çizimi var
+  ✓ 13 bölgenin de kendi sahnesi var
+  ✓ her sahne var olan bir zemine bağlı
+  ✓ her sahnenin üç kanıt katmanı var
+  ✓ her katmanda en az iki kanıt noktası var
+  ✓ kanıt noktaları var olmayan katmana bağlanmıyor
+  ✓ kanıt noktaları güvenli kadrajın içinde
+  ✓ kanıt kimlikleri sahne içinde benzersiz
+  ✓ bolgeSahnesi bilinmeyen kodda da çalışır
+  ✓ bölge künyesi ad ve rengi elle yazmıyor
+  ✓ her bölgenin sınav künyesi var
+  ✓ ImageGen varlıklarının dosyaları mevcut
+  ✓ ImageGen varlıkları öğretim modeli sınırını taşıyor
+  ✓ Harita Bilgisi ve Yerküre katmanları özgün zeminlere bağlı
+
+──────────────────────────────────────────────────────────────
+✅ Coğrafya Atlası denetimleri geçti (73 kontrol).
+
+----- RESULT PASSED -----
+
+===== tarih =====
+Komut: npm run test:tarih
+Exit code: 0
+Duvar süresi (s): 0.064429792
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:tarih
+> node scripts/test-tarih-atlasi.mjs
+
+Tarih atlası model testleri geçti.
+
+----- RESULT PASSED -----
+
+===== tts-cache =====
+Komut: npm run test:tts-cache
+Exit code: 0
+Duvar süresi (s): 0.000003042
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:tts-cache
+> node scripts/test-tts-cache.mjs
+
+✓ Aynı ses girdisi aynı cache key üretir
+✓ İçerik değişince cache key değişir
+✓ Kişiselleştirme değişince cache key değişir
+✓ Cache key SHA-256 uzunluğundadır
+
+----- RESULT PASSED -----
+
+===== padisah-sesi =====
+Komut: npm run test:padisah-sesi
+Exit code: 0
+Duvar süresi (s): 0.0000025
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:padisah-sesi
+> node scripts/test-padisah-sesi.mjs
+
+✓ Kaydı olmayan padişah sessiz moda düşer
+✓ Sürümü tutan kayıt kullanılır
+✓ Metin değişince eski ses kaydı devre dışı kalır
+✓ Anlatım metni bölümleri boş satırla ayırır
+✓ Ses yokken çizelge tahmini sürelerle çalışır
+✓ Gerçek ses süresi verilince çizelge tam ona oturur
+✓ Belgesel tonu öğretmen tonundan ayrıdır
+✓ Her padişahın seslendirilecek metni vardır
+
+Tüm seslendirme testleri geçti.
+
+
+----- RESULT PASSED -----
+
+===== anasayfa =====
+Komut: npm run test:anasayfa
+Exit code: 0
+Duvar süresi (s): 0.000002667
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 test:anasayfa
+> node scripts/test-book-home.mjs
+
+Kitap ana sayfa: 5 tam açık bölüm durağı, ileri/geri eşleşmesi, cilt bağlantısı ve 33.330 izdüşüm kontrolü geçti.
+
+----- RESULT PASSED -----
+
+===== bench-test =====
+Komut: npm run bench:test
+Exit code: 0
+Duvar süresi (s): 0.323977333
+----- stdout/stderr -----
+
+> ogrenci-takip@1.0.0 bench:test
+> node scripts/bench/verify.test.mjs
+
+
+DOĞRU ÇALIŞMA
+  ✓ x=8 kökü sağlıyor
+  ✓ x=9 kökü sağlıyor
+  ✓ x=7 kökü SAĞLAMIYOR (yakalanmalı)
+  ✓ aritmetik
+  ✓ denklem iki taraf
+  ✓ ondalık tolerans
+  ✓ tolerans dışı
+  ✓ birden çok iddia, hepsi geçer
+  ✓ birden çok iddia, biri kalır
+
+İDDİA YOKLUĞU (başarısızlık DEĞİL)
+  ✓ boş iddia listesi → no_claims
+
+GÜVENLİK — hiçbiri çalıştırılmamalı
+  ✓ import("fs")
+  ✓ process.exit
+  ✓ constructor kaçışı
+  ✓ createUnit
+  ✓ evaluate iç içe
+  ✓ __proto__ değişken adı
+  ✓ LaTeX \frac
+  ✓ LaTeX $ işareti
+  ✓ aşırı uzun ifade
+  ✓ çok fazla değişken
+  ✓ bilinmeyen iddia türü
+
+SAYISAL DAYANIKLILIK
+  ✓ üs bombası → sonsuz
+  ✓ sıfıra bölme
+  ✓ NaN üretimi
+  ✓ expect sayı değil
+
+──────────────────────────────────────────────────
+25 geçti, 0 kaldı
+──────────────────────────────────────────────────
+
+
+----- RESULT PASSED -----
+
+===== lesson-event-thenable =====
+Komut: node docs/ai-koc/kanitlar/faz-0/lesson-event-thenable.mjs
+Exit code: 0
+Duvar süresi (s): 0.000002416
+----- stdout/stderr -----
+DOĞRULANDI: void insert sonrasında istek taklidi çağrısı = 0.
+KARŞILAŞTIRMA: await insert sonrasında istek taklidi çağrısı = 1.
+Sonuç: 3 kontrol geçti; mevcut LessonReader olay yazma biçimi isteği başlatmıyor. Gerçek ağ çağrısı = 0.
+
+----- RESULT PASSED -----
+
+

@@ -6,21 +6,20 @@
  * seviye tespit sonucu, ders durumları, kelime tekrar kartları, beceri
  * ölçümleri, hata defteri ve günlük çalışma kaydı.
  *
- * NEDEN ŞİMDİLİK TARAYICIDA: bu veriyi Supabase'e yazmak yeni tablo ve
- * yeni RLS kuralı demek. Veritabanı yapısını değiştirmek onay gerektiren
- * bir iş olduğu için ilk sürüm tarayıcı deposuyla çalışıyor — atlaslarda
- * kullanılan kalıbın aynısı (bkz. lib/biyoloji/ilerleme.js).
- *
- * BULUTA TAŞIMA HAZIRLIĞI: ekranlar `localStorage`'a hiç dokunmaz; yalnız
- * buradaki fonksiyonları çağırır. Supabase tablosu açıldığında yalnız bu
- * dosyanın `oku`/`yaz` gövdesi değişir, tek bir ekran dosyası değişmez.
- * `disariAktar()` mevcut durumun tamamını JSON olarak verir; taşıma günü
- * öğrencinin ilerlemesi kaybolmaz.
+ * Yerel-öncelikli depo, oturum açmış öğrencide hesap kapsamlı bir cihaz
+ * kopyası kullanır. Bulut senkronu LanguageProgressBoundary tarafından
+ * yürütülür; eski anonim cihaz kaydı açık onay olmadan hesaba bağlanmaz.
  */
 
 import { BECERI_ANAHTARLARI } from './seviyeler.js'
+import {
+  emitLanguageActivity,
+  readLanguageProgress,
+  resetLocalLanguageProgress,
+  writeLanguageProgress,
+} from '../learning/languageActivity/storage.js'
 
-const ANAHTAR = 'drkoc-ingilizce-v1'
+const DIL = 'en'
 const SURUM = 1
 
 /** Ders/modül ustalık durumları — arayüzdeki tek doğruluk kaynağı. */
@@ -72,23 +71,8 @@ export const BOS_ILERLEME = {
 /* Depo                                                                */
 /* ------------------------------------------------------------------ */
 
-function klon(nesne) {
-  return typeof structuredClone === 'function'
-    ? structuredClone(nesne)
-    : JSON.parse(JSON.stringify(nesne))
-}
-
 export function ilerlemeOku() {
-  if (typeof localStorage === 'undefined') return klon(BOS_ILERLEME)
-  try {
-    const ham = localStorage.getItem(ANAHTAR)
-    if (!ham) return klon(BOS_ILERLEME)
-    const veri = JSON.parse(ham)
-    if (veri?.surum !== SURUM) return klon(BOS_ILERLEME)
-    return { ...klon(BOS_ILERLEME), ...veri }
-  } catch {
-    return klon(BOS_ILERLEME)
-  }
+  return readLanguageProgress({ language: DIL, empty: BOS_ILERLEME })
 }
 
 /**
@@ -97,17 +81,11 @@ export function ilerlemeOku() {
  * dinleyerek kendini tazeler; her ekran ayrı bir zamanlayıcı kurmaz.
  */
 export function ilerlemeYaz(yama) {
-  const yeni = { ...ilerlemeOku(), ...yama, surum: SURUM }
-  try {
-    localStorage.setItem(ANAHTAR, JSON.stringify(yeni))
-  } catch {
-    /* Tarayıcı depolamayı kapatmış ya da kota dolmuş olabilir. Ekran
-       çalışmaya devam eder, yalnız kayıt tutulmaz. */
-  }
-  if (typeof window !== 'undefined') {
-    window.dispatchEvent(new CustomEvent('ingilizce-ilerleme', { detail: yeni }))
-  }
-  return yeni
+  return writeLanguageProgress({ language: DIL, empty: BOS_ILERLEME, patch: yama })
+}
+
+export function dilEtkinligiKaydet(etkinlik) {
+  return emitLanguageActivity(DIL, etkinlik)
 }
 
 /** Öğrencinin tüm ilerlemesini JSON olarak verir (yedek / buluta taşıma). */
@@ -118,15 +96,7 @@ export function disariAktar() {
 /** Yalnızca açık onayla siler — yanlışlıkla sıfırlama olmasın. */
 export function ilerlemeyiSil(onay) {
   if (onay !== 'INGILIZCE-SIFIRLA') return false
-  try {
-    localStorage.removeItem(ANAHTAR)
-    if (typeof window !== 'undefined') {
-      window.dispatchEvent(new CustomEvent('ingilizce-ilerleme', { detail: klon(BOS_ILERLEME) }))
-    }
-    return true
-  } catch {
-    return false
-  }
+  return resetLocalLanguageProgress({ language: DIL, empty: BOS_ILERLEME })
 }
 
 /* ------------------------------------------------------------------ */
@@ -134,7 +104,9 @@ export function ilerlemeyiSil(onay) {
 /* ------------------------------------------------------------------ */
 
 export function profilKaydet(profil) {
-  return ilerlemeYaz({ profil: { ...profil, tarih: new Date().toISOString() } })
+  const kayit = ilerlemeYaz({ profil: { ...profil, tarih: new Date().toISOString() } })
+  dilEtkinligiKaydet({ activityType: 'self_report_snapshot', activityId: 'profil', skillDomain: 'general', completionStatus: 'updated' })
+  return kayit
 }
 
 export function tespitKaydet(sonuc) {
@@ -148,11 +120,17 @@ export function tespitKaydet(sonuc) {
   ;(sonuc.izler ?? []).forEach((kod) => {
     izler[kod] = { sayi: (izler[kod]?.sayi ?? 0) + 1, sonTarih: new Date().toISOString() }
   })
-  return ilerlemeYaz({
+  const kayit = ilerlemeYaz({
     tespit: { ...sonuc, tarih: new Date().toISOString() },
     beceriler,
     izler,
   })
+  dilEtkinligiKaydet({
+    activityType: 'placement_snapshot', activityId: 'seviye-tespit', skillDomain: 'general',
+    correctCount: sonuc.dogruSayisi, incorrectCount: sonuc.yanlisSayisi,
+    blankCount: sonuc.bosSayisi, completionStatus: 'completed', cefrLevel: sonuc.genelSeviye,
+  })
+  return kayit
 }
 
 /** Öğrenci ilk kullanım akışını tamamlamış mı? */
@@ -206,7 +184,9 @@ export function dersBasla(dersId) {
  * Öğrenci zayıf olduğu dersi tekrar çalıştığında yeni performansa göre
  * durum yükselir; eski düşük sonuç öğrenciyi kilitlemez.
  */
-export function dersTamamla(dersId, { dogru, toplam, dakika = 0, izler = [] }) {
+export function dersTamamla(dersId, {
+  dogru, toplam, dakika = 0, izler = [], icerikSurumu = 'v1', beceri = 'general', seviye = null,
+}) {
   const eski = ilerlemeOku()
   const onceki = eski.dersler[dersId] ?? { deneme: 0 }
   const oran = toplam > 0 ? dogru / toplam : 0
@@ -253,6 +233,11 @@ export function dersTamamla(dersId, { dogru, toplam, dakika = 0, izler = [] }) {
   })
 
   gunlukKaydet({ dakika, alistirma: toplam, dogru, dersId })
+  dilEtkinligiKaydet({
+    activityType: 'lesson_result_snapshot', activityId: dersId, contentRevision: icerikSurumu,
+    skillDomain: beceri, correctCount: dogru, incorrectCount: Math.max(0, toplam - dogru),
+    blankCount: 0, completionStatus: 'completed', durationMinutes: dakika, cefrLevel: seviye,
+  })
   return guncel
 }
 
@@ -269,12 +254,14 @@ export function beceriGuncelle(beceri, yeniPuan) {
   const eski = ilerlemeOku()
   const mevcut = eski.beceriler[beceri]?.puan
   const puan = mevcut == null ? yeniPuan : Math.round(mevcut * 0.7 + yeniPuan * 0.3)
-  return ilerlemeYaz({
+  const kayit = ilerlemeYaz({
     beceriler: {
       ...eski.beceriler,
       [beceri]: { puan: Math.max(0, Math.min(100, puan)), olcum: 'alistirma', sonTarih: new Date().toISOString() },
     },
   })
+  dilEtkinligiKaydet({ activityType: 'skill_snapshot', activityId: `beceri:${beceri}`, skillDomain: beceri, completionStatus: 'updated' })
+  return kayit
 }
 
 /* ------------------------------------------------------------------ */

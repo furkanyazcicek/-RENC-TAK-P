@@ -1358,6 +1358,26 @@ try {
       ),
       1
     )
+    const globalGeneration = (
+      await db.query(
+        `select source_registry_version, source_code, source_adapter_version
+           from public.learning_projection_generations
+          where generation_id = $1::uuid`,
+        [firstReplay.generation_id]
+      )
+    ).rows[0]
+    equal(globalGeneration.source_registry_version, SOURCE_REGISTRY_VERSION)
+    equal(globalGeneration.source_code, null)
+    equal(globalGeneration.source_adapter_version, null)
+    equal(
+      await queryCount(
+        db,
+        `select count(*) from public.learning_source_contracts
+          where registry_version = $1::text`,
+        [SOURCE_REGISTRY_VERSION]
+      ),
+      38
+    )
     const dryComparison = await replayDiagnosticProjection({
       repository: pgRepository,
       batchSize: 2,
@@ -1430,6 +1450,22 @@ try {
     equal(sourceGeneration.source_registry_version, SOURCE_REGISTRY_VERSION)
     equal(sourceGeneration.source_code, 'daily_logs')
     equal(sourceGeneration.source_adapter_version, 'learning-source-adapters@1')
+    const sourceScopedBatch = await processDiagnosticBatch({
+      repository: pgRepository,
+      workerId: uuid(61000000, 100),
+      batchSize: 1,
+      sourceCode: 'daily_logs',
+    })
+    check(sourceScopedBatch.claimed)
+    equal(
+      await queryCount(
+        db,
+        `select count(*) from public.learning_diagnostic_projection_rows
+          where generation_id = $1::uuid and source_code <> 'daily_logs'`,
+        [sourceReplay.generation_id]
+      ),
+      0
+    )
 
     const studentComparison = await replayDiagnosticProjection({
       repository: pgRepository,
@@ -1506,7 +1542,9 @@ try {
           workerId: uuid(61000000, 2),
           batchSize: 1,
         },
-        async () => {
+        async (batch) => {
+          check(!('ingest' in batch.repository))
+          check(!('stageProjectionRows' in batch.repository))
           throw Object.assign(new Error('synthetic_worker_crash'), {
             code: 'SYNTHETIC_WORKER_CRASH',
           })
@@ -1753,6 +1791,8 @@ try {
       dry_compare_equal: true,
       student_source_version_and_start_cursor_modes: true,
       source_registry_and_adapter_version_recorded: true,
+      global_generation_pins_full_source_registry: true,
+      source_scoped_worker_rows_restricted: true,
       future_start_cursor_rejected: true,
       failed_generation_preserved_previous_active: true,
       cursor_unchanged_on_worker_failure: true,
@@ -2128,10 +2168,19 @@ try {
       check(!safeText.includes(forbidden))
     }
     summary.observability = {
+      ingest_outcome_groups: ingestMetrics.counts.length,
+      ingest_last_success_groups: ingestMetrics.last_success.length,
+      rejection_reason_groups: ingestMetrics.counts.filter(
+        (item) => item.reason_code !== 'none'
+      ).length,
       accepted_source_event_groups: operational.accepted_by_source_event.length,
       identity_status_groups: operational.identity_resolution_by_status.length,
       processing_status_groups: operational.processing_by_status.length,
       cursor_lag_groups: operational.projection_cursor_lag.length,
+      unprocessed_records_observed: operational.projection_cursor_lag.reduce(
+        (total, item) => total + item.unprocessed_record_count,
+        0
+      ),
       source_health_statuses: [...new Set(
         operational.source_health_by_status.map((item) => item.status)
       )].sort(),

@@ -39,7 +39,11 @@ assert.ok(EXPERIENCE_ACTIVITY.every((item) => !Number.isNaN(Date.parse(item.date
 
 const heroSource = await readFile(new URL('../src/components/landing/book/BookHomeHero.jsx', import.meta.url), 'utf8')
 const appSource = await readFile(new URL('../src/App.jsx', import.meta.url), 'utf8')
-assert.match(heroSource, /to="\/deneyim"[^>]*>Deneyimle/, 'Hero, Deneyimle bağlantısını göstermeli.')
+assert.match(
+  heroSource,
+  /to="\/deneyim"[^>]*>[\s\S]*?Demoyu deneyimle[\s\S]*?<\/Link>/,
+  'Hero, Demoyu deneyimle bağlantısını göstermeli.'
+)
 assert.match(appSource, /path="\/deneyim\/\*"/, 'Deneyim rotası oturum açmadan erişilebilir olmalı.')
 
 const demoFlowFiles = [

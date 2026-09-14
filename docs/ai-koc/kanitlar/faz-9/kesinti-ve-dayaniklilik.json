@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "scenarios": 11,
+  "no_data_loss": true,
+  "no_double_counting": true,
+  "automatic_or_manual_replay": true,
+  "academic_network_calls": 1
+}

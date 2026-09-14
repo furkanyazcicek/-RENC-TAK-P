@@ -12,10 +12,17 @@ import {
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
 import { buildQuestionInsights, questionStats } from '../lib/insights'
+import { hydrateAcademicQuestionMedia } from '../lib/learning/academicActivity/media'
+import {
+  captureStudentProfile,
+  isProductCapture,
+  isProductCaptureState,
+} from '../lib/productCapture'
 import { BRAND, STATUS, colorForKey } from '../lib/chartTheme'
 import QuestionForm from '../components/QuestionForm'
 import MyQuestionsList from '../components/MyQuestionsList'
 import QuestionInbox from '../components/QuestionInbox'
+import TeacherQuestionForm from '../components/TeacherQuestionForm'
 import SubjectTopicFilter, { useSubjectTopicFilter } from '../components/SubjectTopicFilter'
 import { AppShell, Button, Modal, Tabs } from '../components/ui'
 import { DashboardHero, DonutChart, InsightBar, MetricTile, Panel } from '../components/dashboard'
@@ -26,12 +33,20 @@ export default function Questions() {
   const [profile, setProfile] = useState(null)
   const [loading, setLoading] = useState(true)
   const [tab, setTab] = useState('active')
-  const [formOpen, setFormOpen] = useState(false)
+  const [formOpen, setFormOpen] = useState(() => isProductCaptureState('form'))
 
   const isTeacher = role === 'teacher'
 
   const load = useCallback(async () => {
     if (!user) return
+    if (isProductCapture()) {
+      setQuestions([
+        { id: 'capture-question-1', student_id: '44000000-0000-4000-8000-000000000001', content: 'Bu problemde hangi eşitliği kurmalıyım?', subject: 'Matematik', topic: 'Problemler', status: 'İnceleniyor', origin: 'student_submitted', created_at: '2026-09-13T08:30:00Z', profiles: { full_name: 'Deniz Kaya' } },
+        { id: 'capture-question-2', student_id: '44000000-0000-4000-8000-000000000001', content: 'Bunu derste birlikte çözelim.', subject: 'Fizik', topic: 'Hareket', status: 'Derste Çözülecek', origin: 'teacher_shared', assigned_by: '44000000-0000-4000-8000-000000000003', created_at: '2026-09-12T12:00:00Z', profiles: { full_name: 'Deniz Kaya' } },
+        { id: 'capture-question-3', student_id: '44000000-0000-4000-8000-000000000001', content: 'Çözümümü kontrol eder misiniz?', subject: 'Kimya', topic: 'Mol', status: 'Çözüldü', origin: 'student_submitted', teacher_reply: 'Mol oranını doğru kurmuşsun.', created_at: '2026-09-11T12:00:00Z', profiles: { full_name: 'Deniz Kaya' } },
+      ])
+      setProfile(captureStudentProfile()); setLoading(false); return
+    }
     const query = isTeacher
       ? supabase
           .from('questions')
@@ -48,7 +63,7 @@ export default function Questions() {
       supabase.from('profiles').select('full_name').eq('id', user.id).maybeSingle(),
     ])
 
-    setQuestions(data ?? [])
+    setQuestions(await hydrateAcademicQuestionMedia(data ?? []))
     setProfile(profileRes.data ?? null)
     setLoading(false)
   }, [user, isTeacher])
@@ -123,9 +138,9 @@ export default function Questions() {
       loading={loading}
       loadingLabel="Sorular yükleniyor…"
       headerAction={
-        isTeacher ? null : (
+        (
           <Button size="sm" icon={Plus} onClick={() => setFormOpen(true)}>
-            <span className="hidden sm:inline">Soru Gönder</span>
+            <span className="hidden sm:inline">{isTeacher ? 'Öğrenciye Soru Gönder' : 'Soru Gönder'}</span>
             <span className="sm:hidden">Gönder</span>
           </Button>
         )
@@ -168,9 +183,9 @@ export default function Questions() {
             : []
         }
         action={
-          isTeacher ? null : (
+          (
             <Button variant="secondary" size="sm" icon={Plus} onClick={() => setFormOpen(true)}>
-              Soru Gönder
+              {isTeacher ? 'Öğrenciye Soru Gönder' : 'Soru Gönder'}
             </Button>
           )
         }
@@ -312,23 +327,19 @@ export default function Questions() {
         </div>
       </Panel>
 
-      {!isTeacher && (
-        <Modal
-          open={formOpen}
-          onClose={() => setFormOpen(false)}
-          title="Çözemediğin bir soru mu var?"
-          description="Sorunu yaz ya da fotoğrafını ekle — öğretmenine iletilsin."
-          maxWidth="max-w-xl"
-        >
-          <QuestionForm
-            bare
-            onSubmitted={() => {
-              load()
-              setFormOpen(false)
-            }}
-          />
-        </Modal>
-      )}
+      <Modal
+        open={formOpen}
+        onClose={() => setFormOpen(false)}
+        title={isTeacher ? 'Öğrenciye sorunlu soru gönder' : 'Çözemediğin bir soru mu var?'}
+        description={isTeacher ? 'Aktif bağın olan öğrenciyle ders için bir soru paylaş.' : 'Sorunu yaz ya da fotoğrafını ekle — öğretmenine iletilsin.'}
+        maxWidth="max-w-xl"
+      >
+        {isTeacher ? (
+          <TeacherQuestionForm onSubmitted={() => { load(); setFormOpen(false) }} />
+        ) : (
+          <QuestionForm bare onSubmitted={() => { load(); setFormOpen(false) }} />
+        )}
+      </Modal>
     </AppShell>
   )
 }

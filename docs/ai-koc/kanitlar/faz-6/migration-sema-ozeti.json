@@ -1,0 +1,24 @@
+{
+  "schema_version": "phase-6-migration-summary@1",
+  "status": "passed",
+  "migration": "supabase/migration_learning_student_topic_model.sql",
+  "sha256": "02ce1a9ed7b1d2bbb6e9f2faea570343cd93ea6343d463599aa9eefe04e0322c",
+  "first_apply": "passed",
+  "second_apply": "passed",
+  "rollback": "passed",
+  "public_tables": [
+    "student_behavior_patterns",
+    "student_coaching_decision_history",
+    "student_learning_projection_disputes",
+    "student_learning_projection_evidence_refs",
+    "student_learning_projection_rows",
+    "student_model_contracts"
+  ],
+  "force_rls": true,
+  "query_plans": [
+    "support",
+    "trend",
+    "repeat"
+  ],
+  "live_schema_changed": false
+}

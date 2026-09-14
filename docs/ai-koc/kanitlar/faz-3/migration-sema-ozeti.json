@@ -1,0 +1,1646 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-09-13T15:02:21.510Z",
+  "tables": [
+    "bundled_lesson_activity_events",
+    "learning_content_action_receipts",
+    "learning_content_aliases",
+    "learning_content_backfill_decisions",
+    "learning_content_revisions",
+    "learning_content_topic_mappings",
+    "library_note_exposure_events",
+    "student_atlas_import_receipts",
+    "student_atlas_task_state_revisions",
+    "student_atlas_task_states",
+    "student_lesson_progress",
+    "student_question_answer_revisions",
+    "student_question_attempt_answers",
+    "student_question_set_attempts"
+  ],
+  "functions": [
+    {
+      "schema_name": "learning_private",
+      "function_name": "finalize_question_attempt",
+      "arguments": "p_source_code text, p_attempt_id uuid, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "learning_private",
+      "function_name": "import_atlas_snapshot",
+      "arguments": "p_source_code text, p_snapshot jsonb, p_snapshot_hash text, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "learning_private",
+      "function_name": "record_atlas_snapshot",
+      "arguments": "p_source_code text, p_content_id text, p_content_revision text, p_task_id text, p_completed boolean, p_prediction_used boolean, p_client_action_id uuid, p_origin text"
+    },
+    {
+      "schema_name": "learning_private",
+      "function_name": "record_lesson_event",
+      "arguments": "p_source_code text, p_content_kind text, p_content_id text, p_content_revision text, p_event_name text, p_block_id text, p_section_id text, p_selected_option_id text, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "learning_private",
+      "function_name": "record_note_open",
+      "arguments": "p_content_id text, p_content_revision text, p_content_kind text, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "learning_private",
+      "function_name": "reset_question_attempt",
+      "arguments": "p_source_code text, p_attempt_id uuid, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "learning_private",
+      "function_name": "save_lesson_progress",
+      "arguments": "p_source_code text, p_content_kind text, p_content_id text, p_content_revision text, p_section_id text, p_completed_section_ids text[], p_client_action_id uuid"
+    },
+    {
+      "schema_name": "learning_private",
+      "function_name": "start_question_attempt",
+      "arguments": "p_source_code text, p_content_id text, p_content_revision text, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "learning_private",
+      "function_name": "sync_structured_lesson_after_write",
+      "arguments": ""
+    },
+    {
+      "schema_name": "learning_private",
+      "function_name": "sync_structured_lesson_before_write",
+      "arguments": ""
+    },
+    {
+      "schema_name": "public",
+      "function_name": "finalize_bundled_question_attempt",
+      "arguments": "p_attempt_id uuid, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "finalize_chemistry_atlas_attempt",
+      "arguments": "p_attempt_id uuid, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "finalize_db_question_attempt",
+      "arguments": "p_attempt_id uuid, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "get_learning_content_capability",
+      "arguments": "p_source_code text"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "get_question_attempt_result",
+      "arguments": "p_attempt_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "import_biology_atlas_snapshot",
+      "arguments": "p_snapshot jsonb, p_snapshot_hash text, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "import_geography_atlas_snapshot",
+      "arguments": "p_snapshot jsonb, p_snapshot_hash text, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "import_physics_atlas_snapshot",
+      "arguments": "p_snapshot jsonb, p_snapshot_hash text, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "record_biology_atlas_snapshot",
+      "arguments": "p_content_id text, p_content_revision text, p_task_id text, p_completed boolean, p_prediction_used boolean, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "record_bundled_lesson_event",
+      "arguments": "p_content_id text, p_content_revision text, p_event_name text, p_client_action_id uuid, p_block_id text, p_section_id text, p_selected_option_id text"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "record_geography_atlas_snapshot",
+      "arguments": "p_content_id text, p_content_revision text, p_task_id text, p_completed boolean, p_prediction_used boolean, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "record_library_note_open",
+      "arguments": "p_content_id text, p_content_revision text, p_content_kind text, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "record_physics_atlas_snapshot",
+      "arguments": "p_content_id text, p_content_revision text, p_task_id text, p_completed boolean, p_prediction_used boolean, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "record_structured_lesson_event",
+      "arguments": "p_lesson_id uuid, p_content_revision text, p_event_name text, p_client_action_id uuid, p_block_id text, p_section_id text, p_selected_option_id text"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "reset_bundled_question_attempt",
+      "arguments": "p_attempt_id uuid, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "reset_chemistry_atlas_attempt",
+      "arguments": "p_attempt_id uuid, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "reset_db_question_attempt",
+      "arguments": "p_attempt_id uuid, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "save_bundled_lesson_progress",
+      "arguments": "p_content_id text, p_content_revision text, p_completed_section_ids text[], p_client_action_id uuid, p_section_id text"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "save_chemistry_atlas_answer",
+      "arguments": "p_attempt_id uuid, p_question_id text, p_selected_option_id text, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "save_structured_lesson_progress",
+      "arguments": "p_lesson_id uuid, p_content_revision text, p_completed_section_ids text[], p_client_action_id uuid, p_section_id text"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "start_bundled_question_attempt",
+      "arguments": "p_content_id text, p_content_revision text, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "start_chemistry_atlas_attempt",
+      "arguments": "p_content_id text, p_content_revision text, p_client_action_id uuid"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "start_db_question_attempt",
+      "arguments": "p_content_id text, p_content_revision text, p_client_action_id uuid"
+    }
+  ],
+  "indexes": [
+    {
+      "schemaname": "learning_private",
+      "tablename": "learning_content_items",
+      "indexname": "learning_content_items_order_idx"
+    },
+    {
+      "schemaname": "learning_private",
+      "tablename": "learning_content_items",
+      "indexname": "learning_content_items_pk"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "bundled_lesson_activity_events",
+      "indexname": "bundled_lesson_activity_action_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "bundled_lesson_activity_events",
+      "indexname": "bundled_lesson_activity_events_pkey"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "bundled_lesson_activity_events",
+      "indexname": "bundled_lesson_activity_family_idx"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_action_receipts",
+      "indexname": "learning_content_action_receipt_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_action_receipts",
+      "indexname": "learning_content_action_receipts_pkey"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_action_receipts",
+      "indexname": "learning_content_action_student_idx"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_aliases",
+      "indexname": "learning_content_aliases_pk"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_backfill_decisions",
+      "indexname": "learning_content_backfill_decisions_pkey"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_backfill_decisions",
+      "indexname": "learning_content_backfill_decisions_source_code_key"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_revisions",
+      "indexname": "learning_content_available_idx"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_revisions",
+      "indexname": "learning_content_hash_identity_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_revisions",
+      "indexname": "learning_content_previous_revision_idx"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_revisions",
+      "indexname": "learning_content_revisions_pk"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_topic_mappings",
+      "indexname": "learning_content_quarantine_mapping_idx"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_topic_mappings",
+      "indexname": "learning_content_topic_mapping_idx"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_topic_mappings",
+      "indexname": "learning_content_topic_mappings_pk"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "lesson_activity_events",
+      "indexname": "lesson_activity_events_action_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "lesson_activity_events",
+      "indexname": "lesson_activity_events_family_idx"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "lesson_activity_events",
+      "indexname": "lesson_activity_events_pkey"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "structured_lesson_revisions",
+      "indexname": "structured_lesson_revisions_lesson_id_revision_key"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "structured_lesson_revisions",
+      "indexname": "structured_lesson_revisions_pkey"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "structured_lessons",
+      "indexname": "structured_lessons_pkey"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_atlas_import_receipts",
+      "indexname": "student_atlas_import_action_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_atlas_import_receipts",
+      "indexname": "student_atlas_import_device_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_atlas_import_receipts",
+      "indexname": "student_atlas_import_global_hash_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_atlas_import_receipts",
+      "indexname": "student_atlas_import_receipts_pkey"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_atlas_import_receipts",
+      "indexname": "student_atlas_import_student_hash_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_atlas_import_receipts",
+      "indexname": "student_atlas_import_student_idx"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_atlas_task_state_revisions",
+      "indexname": "student_atlas_state_revision_student_idx"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_atlas_task_state_revisions",
+      "indexname": "student_atlas_state_revision_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_atlas_task_state_revisions",
+      "indexname": "student_atlas_task_state_revisions_pkey"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_atlas_task_states",
+      "indexname": "student_atlas_task_action_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_atlas_task_states",
+      "indexname": "student_atlas_task_state_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_atlas_task_states",
+      "indexname": "student_atlas_task_states_pkey"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_atlas_task_states",
+      "indexname": "student_atlas_task_student_idx"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_lesson_progress",
+      "indexname": "student_lesson_progress_pkey"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_lesson_progress",
+      "indexname": "student_lesson_progress_student_idx"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_lesson_progress",
+      "indexname": "student_lesson_progress_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_question_answer_revisions",
+      "indexname": "student_question_answer_revision_student_idx"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_question_answer_revisions",
+      "indexname": "student_question_answer_revisions_pkey"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_question_answer_revisions",
+      "indexname": "student_question_answer_revisions_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_question_attempt_answers",
+      "indexname": "student_question_answer_action_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_question_attempt_answers",
+      "indexname": "student_question_answers_student_idx"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_question_attempt_answers",
+      "indexname": "student_question_attempt_answers_pk"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_question_set_attempts",
+      "indexname": "student_question_attempt_id_student_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_question_set_attempts",
+      "indexname": "student_question_attempt_identity_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_question_set_attempts",
+      "indexname": "student_question_attempt_start_action_uq"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_question_set_attempts",
+      "indexname": "student_question_attempt_student_status_idx"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_question_set_attempts",
+      "indexname": "student_question_set_attempts_pkey"
+    }
+  ],
+  "policies": [
+    {
+      "schemaname": "public",
+      "tablename": "bundled_lesson_activity_events",
+      "policyname": "Faz 3 öğrenci paketli etkinliğini görür",
+      "cmd": "SELECT"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_action_receipts",
+      "policyname": "Faz 3 öğrenci action kaydını görür",
+      "cmd": "SELECT"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_aliases",
+      "policyname": "Faz 3 içerik aliası okunur",
+      "cmd": "SELECT"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_backfill_decisions",
+      "policyname": "Faz 3 backfill kararı okunur",
+      "cmd": "SELECT"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_revisions",
+      "policyname": "Faz 3 içerik sicili okunur",
+      "cmd": "SELECT"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "learning_content_topic_mappings",
+      "policyname": "Faz 3 konu eşlemesi okunur",
+      "cmd": "SELECT"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "lesson_activity_events",
+      "policyname": "Faz 3 öğrenci structured etkinliğini görür",
+      "cmd": "SELECT"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "library_note_exposure_events",
+      "policyname": "Faz 3 öğrenci not açılışını görür",
+      "cmd": "SELECT"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_atlas_import_receipts",
+      "policyname": "Faz 3 öğrenci atlas aktarımını görür",
+      "cmd": "SELECT"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_atlas_task_state_revisions",
+      "policyname": "Faz 3 öğrenci atlas state geçmişini görür",
+      "cmd": "SELECT"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_atlas_task_states",
+      "policyname": "Faz 3 öğrenci atlas state görür",
+      "cmd": "SELECT"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_lesson_progress",
+      "policyname": "Faz 3 öğrenci ders ilerlemesini görür",
+      "cmd": "SELECT"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_question_answer_revisions",
+      "policyname": "Faz 3 öğrenci cevap geçmişini görür",
+      "cmd": "SELECT"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_question_attempt_answers",
+      "policyname": "Faz 3 öğrenci etkin cevaplarını görür",
+      "cmd": "SELECT"
+    },
+    {
+      "schemaname": "public",
+      "tablename": "student_question_set_attempts",
+      "policyname": "Faz 3 öğrenci girişimini görür",
+      "cmd": "SELECT"
+    }
+  ],
+  "constraints": [
+    {
+      "table_name": "bundled_lesson_activity_events",
+      "constraint_name": "bundled_lesson_activity_action_uq"
+    },
+    {
+      "table_name": "bundled_lesson_activity_events",
+      "constraint_name": "bundled_lesson_activity_events_content_id_not_null"
+    },
+    {
+      "table_name": "bundled_lesson_activity_events",
+      "constraint_name": "bundled_lesson_activity_events_content_revision_not_null"
+    },
+    {
+      "table_name": "bundled_lesson_activity_events",
+      "constraint_name": "bundled_lesson_activity_events_created_at_not_null"
+    },
+    {
+      "table_name": "bundled_lesson_activity_events",
+      "constraint_name": "bundled_lesson_activity_events_event_name_check"
+    },
+    {
+      "table_name": "bundled_lesson_activity_events",
+      "constraint_name": "bundled_lesson_activity_events_event_name_not_null"
+    },
+    {
+      "table_name": "bundled_lesson_activity_events",
+      "constraint_name": "bundled_lesson_activity_events_id_not_null"
+    },
+    {
+      "table_name": "bundled_lesson_activity_events",
+      "constraint_name": "bundled_lesson_activity_events_pkey"
+    },
+    {
+      "table_name": "bundled_lesson_activity_events",
+      "constraint_name": "bundled_lesson_activity_events_record_kind_check"
+    },
+    {
+      "table_name": "bundled_lesson_activity_events",
+      "constraint_name": "bundled_lesson_activity_events_record_kind_not_null"
+    },
+    {
+      "table_name": "bundled_lesson_activity_events",
+      "constraint_name": "bundled_lesson_activity_events_source_record_id_not_null"
+    },
+    {
+      "table_name": "bundled_lesson_activity_events",
+      "constraint_name": "bundled_lesson_activity_events_source_revision_check"
+    },
+    {
+      "table_name": "bundled_lesson_activity_events",
+      "constraint_name": "bundled_lesson_activity_events_source_revision_not_null"
+    },
+    {
+      "table_name": "bundled_lesson_activity_events",
+      "constraint_name": "bundled_lesson_activity_events_student_id_fkey"
+    },
+    {
+      "table_name": "bundled_lesson_activity_events",
+      "constraint_name": "bundled_lesson_activity_events_student_id_not_null"
+    },
+    {
+      "table_name": "bundled_lesson_activity_events",
+      "constraint_name": "bundled_lesson_activity_events_target_event_id_fkey"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_hash_check"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_kind_check"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_receip_source_registry_version_not_null"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_receipt_uq"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_receipts_action_kind_not_null"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_receipts_client_action_id_not_null"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_receipts_created_at_not_null"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_receipts_payload_hash_not_null"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_receipts_pkey"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_receipts_receipt_id_not_null"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_receipts_source_code_not_null"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_receipts_status_not_null"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_receipts_student_id_fkey"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_receipts_student_id_not_null"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_registry_check"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_result_check"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_source_fk"
+    },
+    {
+      "table_name": "learning_content_action_receipts",
+      "constraint_name": "learning_content_action_status_check"
+    },
+    {
+      "table_name": "learning_content_aliases",
+      "constraint_name": "learning_content_alias_not_self"
+    },
+    {
+      "table_name": "learning_content_aliases",
+      "constraint_name": "learning_content_alias_target_fk"
+    },
+    {
+      "table_name": "learning_content_aliases",
+      "constraint_name": "learning_content_alias_version_check"
+    },
+    {
+      "table_name": "learning_content_aliases",
+      "constraint_name": "learning_content_aliases_alias_content_id_not_null"
+    },
+    {
+      "table_name": "learning_content_aliases",
+      "constraint_name": "learning_content_aliases_alias_version_not_null"
+    },
+    {
+      "table_name": "learning_content_aliases",
+      "constraint_name": "learning_content_aliases_content_kind_not_null"
+    },
+    {
+      "table_name": "learning_content_aliases",
+      "constraint_name": "learning_content_aliases_created_at_not_null"
+    },
+    {
+      "table_name": "learning_content_aliases",
+      "constraint_name": "learning_content_aliases_pk"
+    },
+    {
+      "table_name": "learning_content_aliases",
+      "constraint_name": "learning_content_aliases_reason_not_null"
+    },
+    {
+      "table_name": "learning_content_aliases",
+      "constraint_name": "learning_content_aliases_source_code_not_null"
+    },
+    {
+      "table_name": "learning_content_aliases",
+      "constraint_name": "learning_content_aliases_target_content_id_not_null"
+    },
+    {
+      "table_name": "learning_content_aliases",
+      "constraint_name": "learning_content_aliases_target_content_revision_not_null"
+    },
+    {
+      "table_name": "learning_content_backfill_decisions",
+      "constraint_name": "learning_content_backfill_decisio_historical_authority_not_null"
+    },
+    {
+      "table_name": "learning_content_backfill_decisions",
+      "constraint_name": "learning_content_backfill_decisions_created_at_not_null"
+    },
+    {
+      "table_name": "learning_content_backfill_decisions",
+      "constraint_name": "learning_content_backfill_decisions_decision_version_not_null"
+    },
+    {
+      "table_name": "learning_content_backfill_decisions",
+      "constraint_name": "learning_content_backfill_decisions_live_apply_allowed_not_null"
+    },
+    {
+      "table_name": "learning_content_backfill_decisions",
+      "constraint_name": "learning_content_backfill_decisions_matrix_id_not_null"
+    },
+    {
+      "table_name": "learning_content_backfill_decisions",
+      "constraint_name": "learning_content_backfill_decisions_pkey"
+    },
+    {
+      "table_name": "learning_content_backfill_decisions",
+      "constraint_name": "learning_content_backfill_decisions_source_code_key"
+    },
+    {
+      "table_name": "learning_content_backfill_decisions",
+      "constraint_name": "learning_content_backfill_decisions_source_code_not_null"
+    },
+    {
+      "table_name": "learning_content_backfill_decisions",
+      "constraint_name": "learning_content_backfill_decisions_strategy_check"
+    },
+    {
+      "table_name": "learning_content_backfill_decisions",
+      "constraint_name": "learning_content_backfill_decisions_strategy_not_null"
+    },
+    {
+      "table_name": "learning_content_backfill_decisions",
+      "constraint_name": "learning_content_backfill_matrix_check"
+    },
+    {
+      "table_name": "learning_content_backfill_decisions",
+      "constraint_name": "learning_content_backfill_provider_check"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_answer_check"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_content_fk"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_content_id_not_null"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_content_kind_not_null"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_content_revision_not_null"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_hash_check"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_id_check"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_item_hash_not_null"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_item_id_not_null"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_item_kind_not_null"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_kind_check"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_metadata_check"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_metadata_not_null"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_pk"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_position_check"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_position_not_null"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_required_not_null"
+    },
+    {
+      "table_name": "learning_content_items",
+      "constraint_name": "learning_content_items_source_code_not_null"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_hash_check"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_id_check"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_item_count_check"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_kind_check"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_locator_check"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_manifest_check"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_metadata_check"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_registry_check"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_revision_check"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_revisions_content_hash_not_null"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_revisions_content_id_not_null"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_revisions_content_kind_not_null"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_revisions_content_revision_not_null"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_revisions_created_at_not_null"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_revisions_item_count_not_null"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_revisions_manifest_version_not_null"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_revisions_metadata_not_null"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_revisions_pk"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_revisions_source_code_not_null"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_revisions_source_locator_token_not_null"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_revisions_source_owner_not_null"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_revisions_source_registry_version_not_null"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_revisions_status_not_null"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_source_fk"
+    },
+    {
+      "table_name": "learning_content_revisions",
+      "constraint_name": "learning_content_status_check"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_mapping_identity_check"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_mapping_status_check"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_mapping_versions_check"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_topic_content_fk"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_topic_mappings_aliases_version_not_null"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_topic_mappings_content_id_not_null"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_topic_mappings_content_kind_not_null"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_topic_mappings_content_revision_not_null"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_topic_mappings_created_at_not_null"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_topic_mappings_decision_source_not_null"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_topic_mappings_ledger_version_not_null"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_topic_mappings_mapping_method_not_null"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_topic_mappings_mapping_status_not_null"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_topic_mappings_objective_ids_not_null"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_topic_mappings_pk"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_topic_mappings_resolver_version_not_null"
+    },
+    {
+      "table_name": "learning_content_topic_mappings",
+      "constraint_name": "learning_content_topic_mappings_source_code_not_null"
+    },
+    {
+      "table_name": "lesson_activity_events",
+      "constraint_name": "lesson_activity_events_created_at_not_null"
+    },
+    {
+      "table_name": "lesson_activity_events",
+      "constraint_name": "lesson_activity_events_event_name_not_null"
+    },
+    {
+      "table_name": "lesson_activity_events",
+      "constraint_name": "lesson_activity_events_id_not_null"
+    },
+    {
+      "table_name": "lesson_activity_events",
+      "constraint_name": "lesson_activity_events_lesson_id_fkey"
+    },
+    {
+      "table_name": "lesson_activity_events",
+      "constraint_name": "lesson_activity_events_lesson_id_not_null"
+    },
+    {
+      "table_name": "lesson_activity_events",
+      "constraint_name": "lesson_activity_events_phase3_event_check"
+    },
+    {
+      "table_name": "lesson_activity_events",
+      "constraint_name": "lesson_activity_events_phase3_kind_check"
+    },
+    {
+      "table_name": "lesson_activity_events",
+      "constraint_name": "lesson_activity_events_pkey"
+    },
+    {
+      "table_name": "lesson_activity_events",
+      "constraint_name": "lesson_activity_events_record_kind_not_null"
+    },
+    {
+      "table_name": "lesson_activity_events",
+      "constraint_name": "lesson_activity_events_source_revision_not_null"
+    },
+    {
+      "table_name": "lesson_activity_events",
+      "constraint_name": "lesson_activity_events_student_id_fkey"
+    },
+    {
+      "table_name": "lesson_activity_events",
+      "constraint_name": "lesson_activity_events_student_id_not_null"
+    },
+    {
+      "table_name": "structured_lesson_revisions",
+      "constraint_name": "structured_lesson_revisions_created_at_not_null"
+    },
+    {
+      "table_name": "structured_lesson_revisions",
+      "constraint_name": "structured_lesson_revisions_created_by_fkey"
+    },
+    {
+      "table_name": "structured_lesson_revisions",
+      "constraint_name": "structured_lesson_revisions_document_not_null"
+    },
+    {
+      "table_name": "structured_lesson_revisions",
+      "constraint_name": "structured_lesson_revisions_id_not_null"
+    },
+    {
+      "table_name": "structured_lesson_revisions",
+      "constraint_name": "structured_lesson_revisions_lesson_id_fkey"
+    },
+    {
+      "table_name": "structured_lesson_revisions",
+      "constraint_name": "structured_lesson_revisions_lesson_id_not_null"
+    },
+    {
+      "table_name": "structured_lesson_revisions",
+      "constraint_name": "structured_lesson_revisions_lesson_id_revision_key"
+    },
+    {
+      "table_name": "structured_lesson_revisions",
+      "constraint_name": "structured_lesson_revisions_pkey"
+    },
+    {
+      "table_name": "structured_lesson_revisions",
+      "constraint_name": "structured_lesson_revisions_revision_not_null"
+    },
+    {
+      "table_name": "structured_lessons",
+      "constraint_name": "structured_lessons_created_at_not_null"
+    },
+    {
+      "table_name": "structured_lessons",
+      "constraint_name": "structured_lessons_current_revision_not_null"
+    },
+    {
+      "table_name": "structured_lessons",
+      "constraint_name": "structured_lessons_document_not_null"
+    },
+    {
+      "table_name": "structured_lessons",
+      "constraint_name": "structured_lessons_id_not_null"
+    },
+    {
+      "table_name": "structured_lessons",
+      "constraint_name": "structured_lessons_pkey"
+    },
+    {
+      "table_name": "structured_lessons",
+      "constraint_name": "structured_lessons_status_not_null"
+    },
+    {
+      "table_name": "structured_lessons",
+      "constraint_name": "structured_lessons_teacher_id_fkey"
+    },
+    {
+      "table_name": "structured_lessons",
+      "constraint_name": "structured_lessons_title_not_null"
+    },
+    {
+      "table_name": "structured_lessons",
+      "constraint_name": "structured_lessons_topic_id_fkey"
+    },
+    {
+      "table_name": "structured_lessons",
+      "constraint_name": "structured_lessons_updated_at_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_action_uq"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_counts_check"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_device_uq"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_global_hash_uq"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_hash_check"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_allowed_count_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_client_action_id_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_consented_at_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_created_at_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_cursor_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_device_import_id_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_excluded_count_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_import_id_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_pkey"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_processed_count_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_rejected_count_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_schema_version_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_snapshot_hash_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_source_code_check"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_source_code_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_status_check"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_status_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_student_id_fkey"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_student_id_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_receipts_updated_at_not_null"
+    },
+    {
+      "table_name": "student_atlas_import_receipts",
+      "constraint_name": "student_atlas_import_student_hash_uq"
+    },
+    {
+      "table_name": "student_atlas_task_state_revisions",
+      "constraint_name": "student_atlas_state_revision_uq"
+    },
+    {
+      "table_name": "student_atlas_task_state_revisions",
+      "constraint_name": "student_atlas_task_state_revisions_completed_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_state_revisions",
+      "constraint_name": "student_atlas_task_state_revisions_created_at_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_state_revisions",
+      "constraint_name": "student_atlas_task_state_revisions_pkey"
+    },
+    {
+      "table_name": "student_atlas_task_state_revisions",
+      "constraint_name": "student_atlas_task_state_revisions_prediction_used_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_state_revisions",
+      "constraint_name": "student_atlas_task_state_revisions_record_kind_check"
+    },
+    {
+      "table_name": "student_atlas_task_state_revisions",
+      "constraint_name": "student_atlas_task_state_revisions_record_kind_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_state_revisions",
+      "constraint_name": "student_atlas_task_state_revisions_revision_id_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_state_revisions",
+      "constraint_name": "student_atlas_task_state_revisions_state_id_fkey"
+    },
+    {
+      "table_name": "student_atlas_task_state_revisions",
+      "constraint_name": "student_atlas_task_state_revisions_state_id_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_state_revisions",
+      "constraint_name": "student_atlas_task_state_revisions_state_revision_check"
+    },
+    {
+      "table_name": "student_atlas_task_state_revisions",
+      "constraint_name": "student_atlas_task_state_revisions_state_revision_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_state_revisions",
+      "constraint_name": "student_atlas_task_state_revisions_student_id_fkey"
+    },
+    {
+      "table_name": "student_atlas_task_state_revisions",
+      "constraint_name": "student_atlas_task_state_revisions_student_id_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_state_revisions",
+      "constraint_name": "student_atlas_task_state_revisions_target_revision_id_fkey"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_action_uq"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_state_uq"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_active_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_completed_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_content_id_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_content_revision_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_created_at_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_origin_check"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_origin_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_pkey"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_prediction_used_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_source_code_check"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_source_code_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_state_id_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_state_revision_check"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_state_revision_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_student_id_fkey"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_student_id_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_task_id_not_null"
+    },
+    {
+      "table_name": "student_atlas_task_states",
+      "constraint_name": "student_atlas_task_states_updated_at_not_null"
+    },
+    {
+      "table_name": "student_lesson_progress",
+      "constraint_name": "student_lesson_progress_completed_section_ids_not_null"
+    },
+    {
+      "table_name": "student_lesson_progress",
+      "constraint_name": "student_lesson_progress_content_id_not_null"
+    },
+    {
+      "table_name": "student_lesson_progress",
+      "constraint_name": "student_lesson_progress_content_kind_check"
+    },
+    {
+      "table_name": "student_lesson_progress",
+      "constraint_name": "student_lesson_progress_content_kind_not_null"
+    },
+    {
+      "table_name": "student_lesson_progress",
+      "constraint_name": "student_lesson_progress_content_revision_not_null"
+    },
+    {
+      "table_name": "student_lesson_progress",
+      "constraint_name": "student_lesson_progress_created_at_not_null"
+    },
+    {
+      "table_name": "student_lesson_progress",
+      "constraint_name": "student_lesson_progress_pkey"
+    },
+    {
+      "table_name": "student_lesson_progress",
+      "constraint_name": "student_lesson_progress_progress_id_not_null"
+    },
+    {
+      "table_name": "student_lesson_progress",
+      "constraint_name": "student_lesson_progress_source_code_check"
+    },
+    {
+      "table_name": "student_lesson_progress",
+      "constraint_name": "student_lesson_progress_source_code_not_null"
+    },
+    {
+      "table_name": "student_lesson_progress",
+      "constraint_name": "student_lesson_progress_status_check"
+    },
+    {
+      "table_name": "student_lesson_progress",
+      "constraint_name": "student_lesson_progress_status_not_null"
+    },
+    {
+      "table_name": "student_lesson_progress",
+      "constraint_name": "student_lesson_progress_student_id_fkey"
+    },
+    {
+      "table_name": "student_lesson_progress",
+      "constraint_name": "student_lesson_progress_student_id_not_null"
+    },
+    {
+      "table_name": "student_lesson_progress",
+      "constraint_name": "student_lesson_progress_updated_at_not_null"
+    },
+    {
+      "table_name": "student_lesson_progress",
+      "constraint_name": "student_lesson_progress_uq"
+    },
+    {
+      "table_name": "student_question_answer_revisions",
+      "constraint_name": "student_question_answer_revision_attempt_fk"
+    },
+    {
+      "table_name": "student_question_answer_revisions",
+      "constraint_name": "student_question_answer_revisions_answer_revision_check"
+    },
+    {
+      "table_name": "student_question_answer_revisions",
+      "constraint_name": "student_question_answer_revisions_answer_revision_not_null"
+    },
+    {
+      "table_name": "student_question_answer_revisions",
+      "constraint_name": "student_question_answer_revisions_attempt_id_not_null"
+    },
+    {
+      "table_name": "student_question_answer_revisions",
+      "constraint_name": "student_question_answer_revisions_created_at_not_null"
+    },
+    {
+      "table_name": "student_question_answer_revisions",
+      "constraint_name": "student_question_answer_revisions_pkey"
+    },
+    {
+      "table_name": "student_question_answer_revisions",
+      "constraint_name": "student_question_answer_revisions_question_id_not_null"
+    },
+    {
+      "table_name": "student_question_answer_revisions",
+      "constraint_name": "student_question_answer_revisions_record_kind_check"
+    },
+    {
+      "table_name": "student_question_answer_revisions",
+      "constraint_name": "student_question_answer_revisions_record_kind_not_null"
+    },
+    {
+      "table_name": "student_question_answer_revisions",
+      "constraint_name": "student_question_answer_revisions_revision_id_not_null"
+    },
+    {
+      "table_name": "student_question_answer_revisions",
+      "constraint_name": "student_question_answer_revisions_student_id_not_null"
+    },
+    {
+      "table_name": "student_question_answer_revisions",
+      "constraint_name": "student_question_answer_revisions_target_revision_id_fkey"
+    },
+    {
+      "table_name": "student_question_answer_revisions",
+      "constraint_name": "student_question_answer_revisions_uq"
+    },
+    {
+      "table_name": "student_question_attempt_answers",
+      "constraint_name": "student_question_answer_action_uq"
+    },
+    {
+      "table_name": "student_question_attempt_answers",
+      "constraint_name": "student_question_answer_attempt_student_fk"
+    },
+    {
+      "table_name": "student_question_attempt_answers",
+      "constraint_name": "student_question_attempt_answers_active_not_null"
+    },
+    {
+      "table_name": "student_question_attempt_answers",
+      "constraint_name": "student_question_attempt_answers_answer_revision_check"
+    },
+    {
+      "table_name": "student_question_attempt_answers",
+      "constraint_name": "student_question_attempt_answers_answer_revision_not_null"
+    },
+    {
+      "table_name": "student_question_attempt_answers",
+      "constraint_name": "student_question_attempt_answers_attempt_id_fkey"
+    },
+    {
+      "table_name": "student_question_attempt_answers",
+      "constraint_name": "student_question_attempt_answers_attempt_id_not_null"
+    },
+    {
+      "table_name": "student_question_attempt_answers",
+      "constraint_name": "student_question_attempt_answers_client_action_id_not_null"
+    },
+    {
+      "table_name": "student_question_attempt_answers",
+      "constraint_name": "student_question_attempt_answers_created_at_not_null"
+    },
+    {
+      "table_name": "student_question_attempt_answers",
+      "constraint_name": "student_question_attempt_answers_is_correct_not_null"
+    },
+    {
+      "table_name": "student_question_attempt_answers",
+      "constraint_name": "student_question_attempt_answers_pk"
+    },
+    {
+      "table_name": "student_question_attempt_answers",
+      "constraint_name": "student_question_attempt_answers_question_id_not_null"
+    },
+    {
+      "table_name": "student_question_attempt_answers",
+      "constraint_name": "student_question_attempt_answers_selected_option_id_not_null"
+    },
+    {
+      "table_name": "student_question_attempt_answers",
+      "constraint_name": "student_question_attempt_answers_student_id_fkey"
+    },
+    {
+      "table_name": "student_question_attempt_answers",
+      "constraint_name": "student_question_attempt_answers_student_id_not_null"
+    },
+    {
+      "table_name": "student_question_attempt_answers",
+      "constraint_name": "student_question_attempt_answers_updated_at_not_null"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_attempt_phase3_counts_check"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_attempt_phase3_status_check"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_attempt_phase3_timer_check"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_set_attempts_answers_not_null"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_set_attempts_correct_count_not_null"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_set_attempts_empty_count_not_null"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_set_attempts_id_not_null"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_set_attempts_marked_count_not_null"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_set_attempts_pkey"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_set_attempts_question_set_id_fkey"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_set_attempts_reset_count_not_null"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_set_attempts_started_at_not_null"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_set_attempts_status_not_null"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_set_attempts_student_id_fkey"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_set_attempts_student_id_not_null"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_set_attempts_total_count_not_null"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_set_attempts_updated_at_not_null"
+    },
+    {
+      "table_name": "student_question_set_attempts",
+      "constraint_name": "student_question_set_attempts_wrong_count_not_null"
+    }
+  ],
+  "force_rls_tables": [
+    "bundled_lesson_activity_events",
+    "learning_content_action_receipts",
+    "learning_content_aliases",
+    "learning_content_backfill_decisions",
+    "learning_content_revisions",
+    "learning_content_topic_mappings",
+    "lesson_activity_events",
+    "student_atlas_import_receipts",
+    "student_atlas_task_state_revisions",
+    "student_atlas_task_states",
+    "student_lesson_progress",
+    "student_question_answer_revisions",
+    "student_question_attempt_answers",
+    "student_question_set_attempts"
+  ]
+}

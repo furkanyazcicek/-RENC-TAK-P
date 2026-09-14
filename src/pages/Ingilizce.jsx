@@ -13,6 +13,8 @@ import Dusunme from './ingilizce/Dusunme'
 import Gelisim from './ingilizce/Gelisim'
 import Yazdir from './ingilizce/Yazdir'
 import Kilavuz from './ingilizce/Kilavuz'
+import LanguageProgressBoundary from '../components/learning/LanguageProgressBoundary'
+import { BOS_ILERLEME } from '../lib/ingilizce/ilerleme'
 
 /**
  * İNGİLİZCE ÖĞRENME KÜTÜPHANESİ — bölüm kabuğu.
@@ -45,7 +47,8 @@ import Kilavuz from './ingilizce/Kilavuz'
  */
 export default function Ingilizce() {
   return (
-    <Routes>
+    <LanguageProgressBoundary language="en" emptyProgress={BOS_ILERLEME}>
+      <Routes>
       <Route index element={<IngilizceAnasayfa />} />
       <Route path="baslangic" element={<Baslangic />} />
       <Route path="seviye-tespit" element={<SeviyeTespit />} />
@@ -63,6 +66,7 @@ export default function Ingilizce() {
       {/* Bilinmeyen alt adres bölümün ana sayfasına düşer; öğrenci
           uygulamanın tamamen dışına atılmaz. */}
       <Route path="*" element={<Navigate to="/ingilizce" replace />} />
-    </Routes>
+      </Routes>
+    </LanguageProgressBoundary>
   )
 }

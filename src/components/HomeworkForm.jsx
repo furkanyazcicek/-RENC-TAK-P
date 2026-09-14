@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Plus } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
-import { useAuth } from '../context/AuthContext'
+import useAcademicActivity from '../hooks/useAcademicActivity'
+import { academicStatusMessage } from '../lib/learning/academicActivity/client'
+import { isProductCapture } from '../lib/productCapture'
 import { Alert, Button, Card, CardBody, CardHeader, Field, Input, Select, Textarea } from './ui'
 
 /**
@@ -11,7 +13,7 @@ import { Alert, Button, Card, CardBody, CardHeader, Field, Input, Select, Textar
  * kart içinde kart görüntüsü oluşmasın diye bu kullanılır.
  */
 export default function HomeworkForm({ onAssigned, defaultStudentId, bare = false }) {
-  const { user } = useAuth()
+  const academic = useAcademicActivity()
   const [students, setStudents] = useState([])
   const [studentId, setStudentId] = useState(defaultStudentId ?? '')
   const [title, setTitle] = useState('')
@@ -23,6 +25,10 @@ export default function HomeworkForm({ onAssigned, defaultStudentId, bare = fals
   useEffect(() => {
     async function loadStudents() {
       if (defaultStudentId) return
+      if (isProductCapture()) {
+        const fixture = [{ id: '44000000-0000-4000-8000-000000000001', full_name: 'Deniz Kaya' }]
+        setStudents(fixture); setStudentId(fixture[0].id); return
+      }
       const { data } = await supabase.from('profiles').select('id, full_name').eq('role', 'student')
       setStudents(data ?? [])
       if (data?.length) setStudentId(data[0].id)
@@ -36,17 +42,17 @@ export default function HomeworkForm({ onAssigned, defaultStudentId, bare = fals
 
     setSaving(true)
     setFeedback(null)
-    const { error } = await supabase.from('homeworks').insert({
+    const response = await academic.performSensitive('homework_assign', {
       student_id: studentId,
-      teacher_id: user.id,
       title: title.trim(),
       description: description.trim() || null,
       due_date: dueDate || null,
+      lesson_session_id: null,
     })
     setSaving(false)
 
-    if (error) {
-      setFeedback({ type: 'danger', text: error.message })
+    if (response.status !== 'saved') {
+      setFeedback({ type: response.status === 'offline_pending' ? 'warning' : 'danger', text: academicStatusMessage(response.status) })
     } else {
       setTitle('')
       setDescription('')

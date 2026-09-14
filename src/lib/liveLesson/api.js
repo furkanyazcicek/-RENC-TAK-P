@@ -331,20 +331,39 @@ export async function savePrivateNote(sessionId, teacherId, patch) {
 /*  Katılım                                                            */
 /* ------------------------------------------------------------------ */
 
+function durableLessonAction(kind, sessionId) {
+  const key = `drkoc:academic-lesson-action:v1:${kind}:${sessionId}`
+  try {
+    const existing = localStorage.getItem(key)
+    if (existing) return { key, id: existing }
+    const id = crypto.randomUUID(); localStorage.setItem(key, id); return { key, id }
+  } catch { return { key: null, id: crypto.randomUUID() } }
+}
+
+function clearLessonAction(action) {
+  if (action.key) try { localStorage.removeItem(action.key) } catch { /* depolama kapalı olabilir */ }
+}
+
 export async function joinLesson(sessionId) {
   if (isLessonPreview()) return { participant_role: 'teacher', lesson_status: 'live' }
-  const rows = unwrap(await supabase.rpc('lesson_join', { p_session: sessionId }), 'Derse katılınamadı.')
-  return Array.isArray(rows) ? rows[0] : rows
+  const action = durableLessonAction('join', sessionId)
+  const result = unwrap(await supabase.rpc('join_academic_lesson', { p_session_id: sessionId, p_client_action_id: action.id }), 'Derse katılınamadı.')
+  if (!['created', 'duplicate', 'no_change'].includes(result?.status)) throw new Error('Derse katılınamadı.')
+  clearLessonAction(action)
+  return result
 }
 
 export async function leaveLesson(sessionId, seconds) {
   if (isLessonPreview()) return
   // Ayrılış kaydı en iyi çabadır: sekme kapanırken hata çıkarsa kullanıcıya
   // gösterecek ekran zaten yok, ama süre kaydı da kritik değil.
-  const { error } = await supabase.rpc('lesson_leave', {
-    p_session: sessionId,
+  const action = durableLessonAction('leave', sessionId)
+  const { data, error } = await supabase.rpc('leave_academic_lesson', {
+    p_session_id: sessionId,
     p_seconds: Math.max(0, Math.round(seconds || 0)),
+    p_client_action_id: action.id,
   })
+  if (!error && ['created', 'duplicate', 'no_change'].includes(data?.status)) clearLessonAction(action)
   if (error) console.warn('Ders ayrılış kaydı yazılamadı:', error.message)
 }
 
@@ -496,30 +515,22 @@ export async function fetchSummary(sessionId) {
 
 export async function saveSummary(sessionId, { teacherId, studentId, ...patch }) {
   if (isLessonPreview()) return { lesson_session_id: sessionId, teacher_id: teacherId, student_id: studentId, ...patch }
-  return unwrap(
-    await supabase
-      .from('lesson_summaries')
-      .upsert(
-        {
-          lesson_session_id: sessionId,
-          teacher_id: teacherId,
-          student_id: studentId,
-          ...patch,
-          updated_at: new Date().toISOString(),
-        },
-        { onConflict: 'lesson_session_id' }
-      )
-      .select(SUMMARY_COLUMNS)
-      .single(),
-    'Ders özeti kaydedilemedi.'
-  )
+  const result = unwrap(await supabase.rpc('save_academic_lesson_summary', {
+    p_session_id: sessionId,p_covered_topics: patch.covered_topics ?? null,p_public_note: patch.public_note ?? null,
+    p_next_goal: patch.next_goal ?? null,p_board_image_url: patch.board_image_url ?? null,
+    p_board_snapshot: patch.board_snapshot ?? null,p_shared_with_student: patch.shared_with_student === true,
+    p_client_action_id: crypto.randomUUID(),
+  }), 'Ders özeti kaydedilemedi.')
+  if (!['created', 'duplicate', 'no_change'].includes(result?.status)) throw new Error('Ders özeti kaydedilemedi.')
+  return { lesson_session_id: sessionId, ...patch }
 }
 
 export async function submitStudentFeedback(sessionId, feedback) {
-  unwrap(
-    await supabase.rpc('lesson_student_feedback', { p_session: sessionId, p_feedback: feedback }),
+  const result = unwrap(
+    await supabase.rpc('feedback_academic_lesson_summary', { p_session_id: sessionId, p_feedback: feedback, p_client_action_id: crypto.randomUUID() }),
     'Geri bildirim kaydedilemedi.'
   )
+  if (!['created', 'duplicate', 'no_change'].includes(result?.status)) throw new Error('Geri bildirim kaydedilemedi.')
 }
 
 /** Öğrencinin ders geçmişi — paylaşılmış özetler. */
@@ -554,19 +565,10 @@ export async function fetchLessonHomeworks(sessionId) {
 }
 
 export async function createLessonHomework({ sessionId, studentId, teacherId, title, description, dueDate }) {
-  return unwrap(
-    await supabase
-      .from('homeworks')
-      .insert({
-        lesson_session_id: sessionId,
-        student_id: studentId,
-        teacher_id: teacherId,
-        title,
-        description: description || null,
-        due_date: dueDate || null,
-      })
-      .select('id, title, description, due_date, status')
-      .single(),
-    'Ödev oluşturulamadı.'
-  )
+  const result = unwrap(await supabase.rpc('assign_academic_homework', {
+    p_student_id: studentId,p_title: title,p_description: description || null,p_due_date: dueDate || null,
+    p_lesson_session_id: sessionId,p_client_action_id: crypto.randomUUID(),
+  }), 'Ödev oluşturulamadı.')
+  if (!['created', 'duplicate', 'no_change'].includes(result?.status)) throw new Error('Ödev oluşturulamadı.')
+  return result
 }

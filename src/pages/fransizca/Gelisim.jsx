@@ -3,10 +3,12 @@ import { AlertTriangle, Download, Flame, RotateCcw, TrendingUp } from 'lucide-re
 import { useState } from 'react'
 import { cn } from '../../lib/cn'
 import { AppShell, Badge, Button, Modal } from '../../components/ui'
+import LanguageSyncPanel from '../../components/learning/LanguageSyncPanel'
+import { useLanguageProgressSync } from '../../components/learning/LanguageProgressBoundary'
 import { useIlerleme } from '../../components/fransizca/useFransizca'
 import { DERSLER, KELIME_HAVUZU } from '../../content/fransizca'
 import {
-  disariAktar, DURUMLAR, DURUM_ETIKETLERI, ilerlemeyiSil, seriHesapla, sikIzler, sonGunler,
+  disariAktar, DURUMLAR, DURUM_ETIKETLERI, ilerlemeOku, ilerlemeyiSil, seriHesapla, sikIzler, sonGunler,
 } from '../../lib/fransizca/ilerleme'
 import { BECERILER, SEVIYELER } from '../../lib/fransizca/seviyeler'
 import { bekleyenSayisi, kartOzeti } from '../../lib/fransizca/tekrar'
@@ -27,6 +29,7 @@ import { baslangicSeviyesi, seviyeTamamlanmaDurumu } from '../../lib/fransizca/y
  */
 export default function Gelisim() {
   const ilerleme = useIlerleme()
+  const sync = useLanguageProgressSync()
   const [silmeAcik, setSilmeAcik] = useState(false)
   const seviye = baslangicSeviyesi(ilerleme)
   const seri = seriHesapla(ilerleme)
@@ -53,6 +56,13 @@ export default function Gelisim() {
     bag.download = `drkoc-fransizca-ilerleme-${new Date().toISOString().slice(0, 10)}.json`
     bag.click()
     URL.revokeObjectURL(adres)
+  }
+
+  const ilerlemeyiSifirla = async () => {
+    if (!ilerlemeyiSil('FRANSIZCA-SIFIRLA')) return
+    const guncel = ilerlemeOku()
+    await sync.deleteProgress(guncel._sync?.generation ?? 1)
+    setSilmeAcik(false)
   }
 
   return (
@@ -233,15 +243,15 @@ export default function Gelisim() {
       <section className="rounded-card bg-surface-muted p-5 ring-1 ring-inset ring-line">
         <h2 className="font-display text-base font-bold text-ink">Verilerin</h2>
         <p className="mt-1.5 text-sm leading-relaxed text-ink/65">
-          Fransızca ilerlemen şu an <strong className="font-semibold text-ink">yalnızca bu
-          tarayıcıda</strong> saklanıyor. Tarayıcı verilerini silersen ya da başka bir cihaza
-          geçersen kaybolur. Yedek almak için aşağıdaki düğmeyi kullanabilirsin.
+          Oturum açıkken Fransızca ilerlemen hesabına bağlıdır ve cihazların arasında güncellenir.
+          Bağlantın kesilirse çalışmaya devam edebilirsin; kayıt daha sonra yeniden gönderilir.
         </p>
+        <LanguageSyncPanel className="mt-3" />
         <div className="mt-3 flex flex-wrap gap-2">
-          <Button onClick={disaAktar} variant="secondary" size="sm" icon={Download}>
+          <Button onClick={disaAktar} variant="secondary" size="md" icon={Download}>
             Yedek indir
           </Button>
-          <Button onClick={() => setSilmeAcik(true)} variant="ghost" size="sm" icon={RotateCcw}>
+          <Button onClick={() => setSilmeAcik(true)} variant="ghost" size="md" icon={RotateCcw}>
             İlerlemeyi sıfırla
           </Button>
         </div>
@@ -251,8 +261,9 @@ export default function Gelisim() {
         <div className="flex items-start gap-3">
           <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-warning-600" aria-hidden="true" />
           <p className="text-[0.95rem] leading-relaxed text-ink/75">
-            Ders durumların, kelime kartların, seviye tespit sonucun ve hata defterin silinecek.
-            Bu işlem geri alınamaz. Önce yedek indirmek ister misin?
+            Ders durumların, kelime kartların, seviye tespit sonucun ve hata defterin hesabından
+            silinecek; diğer cihazların da bir sonraki eşitlemede sıfırlanacak. Bu işlem geri
+            alınamaz. Önce yedek indirmek ister misin?
           </p>
         </div>
         <div className="mt-5 flex flex-wrap justify-end gap-2">
@@ -260,7 +271,7 @@ export default function Gelisim() {
           <Button variant="secondary" icon={Download} onClick={disaAktar}>Önce yedek al</Button>
           <Button
             variant="danger"
-            onClick={() => { ilerlemeyiSil('FRANSIZCA-SIFIRLA'); setSilmeAcik(false) }}
+            onClick={() => void ilerlemeyiSifirla()}
           >
             Evet, sıfırla
           </Button>

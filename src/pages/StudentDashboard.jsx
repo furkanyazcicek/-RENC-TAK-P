@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
+import { hydrateAcademicQuestionMedia } from '../lib/learning/academicActivity/media'
 import { useAuth } from '../context/AuthContext'
 import { ClipboardList, Percent, AlertTriangle, HelpCircle, Clock } from 'lucide-react'
 import Navbar from '../components/Navbar'
@@ -54,7 +55,7 @@ export default function StudentDashboard() {
     ])
     setExams(examsRes.data ?? [])
     setMockExams(mockExamsRes.data ?? [])
-    setQuestions(questionsRes.data ?? [])
+    setQuestions(await hydrateAcademicQuestionMedia(questionsRes.data ?? []))
     setDailyLogs(dailyLogsRes.data ?? [])
     setLibrarySubjects(librarySubjectsRes.data ?? [])
     setLibraryTopics(libraryTopicsRes.data ?? [])

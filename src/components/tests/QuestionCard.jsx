@@ -49,9 +49,11 @@ export default function QuestionCard({ question, index, selectedOptionId, onSele
           return (
             <button
               key={option.id}
+              type="button"
               disabled={disabled || showCorrect}
               onClick={() => onSelectOption && onSelectOption(option.id)}
-              className={`flex items-start gap-4 p-4 rounded-xl border text-left transition-all ${borderClass}`}
+              aria-pressed={!showCorrect ? isSelected : undefined}
+              className={`focus-ring flex min-h-11 items-start gap-4 rounded-xl border p-4 text-left transition-all ${borderClass}`}
             >
               <div className={`flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full font-semibold border ${circleClass}`}>
                 {option.id}

@@ -178,21 +178,35 @@ export default function AICoachCard() {
             <p className="mt-3 text-xs leading-relaxed text-ink/60">{suggestion.hint}</p>
           )}
 
+          {suggestion.progressRatio != null && (
+            <div className="mt-3">
+              <div className="flex items-center justify-between text-2xs text-ink/55">
+                <span>Kaydedilen ilerleme</span>
+                <span className="font-semibold tabular text-ink">%{Math.round(suggestion.progressRatio * 100)}</span>
+              </div>
+              <ProgressBar value={Math.round(suggestion.progressRatio * 100)} tone="aurora" className="mt-2" />
+            </div>
+          )}
+
           <Button
             size="sm"
             icon={ArrowRight}
             className="mt-3.5"
-            onClick={() =>
-              ask(
-                suggestion.kind === 'plan'
-                  ? 'Bugünkü planımı gözden geçir. Eksik veya fazla bir şey var mı?'
-                  : hasData
-                    ? 'Bugün ne çalışmalıyım? Verilerime göre bir plan hazırla.'
-                    : 'AI Koç nasıl çalışıyor? Nereden başlamalıyım?'
-              )
-            }
+            onClick={() => suggestion.target?.status === 'available'
+              ? navigate(suggestion.target.path)
+              : ask(
+                  suggestion.kind === 'plan' || suggestion.kind === 'coaching_task'
+                    ? 'Bugünkü planımı gözden geçir. Eksik veya fazla bir şey var mı?'
+                    : hasData
+                      ? 'Bugün ne çalışmalıyım? Verilerime göre bir plan hazırla.'
+                      : 'AI Koç nasıl çalışıyor? Nereden başlamalıyım?'
+                )}
           >
-            {suggestion.kind === 'plan' ? 'Planı gözden geçir' : 'Plan oluştur'}
+            {suggestion.target?.status === 'available'
+              ? suggestion.target.label
+              : suggestion.kind === 'plan' || suggestion.kind === 'coaching_task'
+                ? 'Planı gözden geçir'
+                : 'Plan oluştur'}
           </Button>
         </div>
       </div>

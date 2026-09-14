@@ -1,0 +1,98 @@
+{
+  "schema_version": "phase-7-baseline@1",
+  "phase": 7,
+  "status": "measured",
+  "method": "deterministic_static_capability_fixture",
+  "questions": [
+    {
+      "id": "B01",
+      "question": "Son iki haftada hangi konularda zorlandım, neden?",
+      "status": "failed",
+      "classifications": [
+        "eksik_kaynak",
+        "kanitsiz_cikarim_riski"
+      ],
+      "observation": "Günlük kayıt özeti ve AI Soru Çöz bağlamı var; Faz 6 konu durumu, güven ve kanıt bağı yok."
+    },
+    {
+      "id": "B02",
+      "question": "Bu konuda platform dışı ve içi çalışmalarımı birlikte değerlendir.",
+      "status": "failed",
+      "classifications": [
+        "eksik_kaynak"
+      ],
+      "observation": "Dış günlük kayıtları okunuyor; soru kütüphanesi, ders ve atlas kanıtları aynı konu sorgusunda birleşmiyor."
+    },
+    {
+      "id": "B03",
+      "question": "Deneme sonucum ile soru kütüphanesi performansım neden çelişiyor?",
+      "status": "failed",
+      "classifications": [
+        "eksik_kaynak",
+        "kanitsiz_neden_riski"
+      ],
+      "observation": "Deneme aracı var; soru kütüphanesi kanıtı ve Faz 6 çelişki açıklaması yok."
+    },
+    {
+      "id": "B04",
+      "question": "Bugün ne çalışmalıyım ve neden?",
+      "status": "partial",
+      "classifications": [
+        "kanit_bagi_eksik",
+        "guven_duzeyi_eksik"
+      ],
+      "observation": "Kural tabanlı öneri var; öneri Faz 6 projeksiyonuna ve opak kanıt referanslarına geri izlenemiyor."
+    },
+    {
+      "id": "B05",
+      "question": "Dil çalışmamda hangi becerim geride?",
+      "status": "failed",
+      "classifications": [
+        "eksik_kaynak"
+      ],
+      "observation": "Dört dilin Faz 5/Faz 6 ilerlemesini okuyan AI Koç aracı yok."
+    },
+    {
+      "id": "B06",
+      "question": "Hakkımda hangi bilgileri biliyorsun ve bunlara ne kadar güveniyorsun?",
+      "status": "failed",
+      "classifications": [
+        "hafiza_katmanlari_karisik",
+        "guven_duzeyi_eksik"
+      ],
+      "observation": "Onaylı tercih hafızası var; türetilmiş durum, davranış örüntüsü ve güven birlikte açıklanamıyor."
+    },
+    {
+      "id": "B07",
+      "question": "Verim yoksa ne söylemelisin?",
+      "status": "passed",
+      "classifications": [],
+      "observation": "Mevcut prompt veri yokluğunda analiz uydurmamayı açıkça emrediyor."
+    }
+  ],
+  "totals": {
+    "required": 7,
+    "passed": 1,
+    "partial": 1,
+    "failed": 5
+  },
+  "capabilities": {
+    "phase6Projection": false,
+    "topicEvidenceRefs": false,
+    "languageProgress": false,
+    "coverageTool": false,
+    "claimValidation": false,
+    "progressiveBootstrap": false,
+    "legacyDailyLogs": true,
+    "legacyExams": true,
+    "safeNoDataPrompt": true
+  },
+  "privacy": {
+    "live_supabase_read": false,
+    "real_student_data_used": false,
+    "backup_student_data_used": false,
+    "paid_model_call": false,
+    "raw_personal_content_recorded": false
+  },
+  "recorded_at": "2026-09-13T11:42:31.340Z"
+}

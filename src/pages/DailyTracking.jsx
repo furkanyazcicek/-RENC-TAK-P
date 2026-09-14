@@ -9,6 +9,7 @@ import {
 } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
+import { captureStudentProfile, isProductCapture } from '../lib/productCapture'
 import { buildTopicOptions, resolveCurriculumExamTypes } from '../lib/topicHelpers'
 import { STATUS } from '../lib/chartTheme'
 import {
@@ -49,6 +50,14 @@ export default function DailyTracking() {
 
   const load = useCallback(async () => {
     if (!user) return
+    if (isProductCapture()) {
+      setDailyLogs([
+        { id: 'capture-log-1', student_id: user.id, study_date: '2026-09-13', topic: 'Matematik - Problemler', duration_minutes: 45, correct: 18, incorrect: 3, empty: 1, notes: 'Yeni nesil sorular' },
+        { id: 'capture-log-2', student_id: user.id, study_date: '2026-09-12', topic: 'Fizik - Hareket', duration_minutes: 35, correct: 12, incorrect: 2, empty: 0, notes: null },
+      ])
+      setMockExams([]); setBranchExams([]); setLibrarySubjects([]); setLibraryTopics([])
+      setProfile(captureStudentProfile()); setLoading(false); return
+    }
     const [
       logsRes,
       mockExamsRes,

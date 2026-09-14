@@ -1,69 +1,26 @@
 import { supabase } from './supabaseClient'
-import canlilarinOrtakOzellikleri from '../content/tests/biyoloji/canlilarin-ortak-ozellikleri'
-import canlilarinTemelBilesenleri from '../content/tests/biyoloji/canlilarin-temel-bilesenleri'
-import bitkiBiyolojisi from '../content/tests/biyoloji/bitki-biyolojisi'
-import bolunmeDonguMitoz from '../content/tests/biyoloji/bolunme-1-dongu-mitoz.js'
-import canlilarVeCevre from '../content/tests/biyoloji/canlilar-ve-cevre.js'
-import canlilarinOrtakOzellikleriTemel from '../content/tests/biyoloji/canlilarin-ortak-ozellikleri-temel.js'
-import canlilarinSiniflandirilmasiTemel from '../content/tests/biyoloji/canlilarin-siniflandirilmasi-temel.js'
-import canlilarinTemelBilesenleriTemel from '../content/tests/biyoloji/canlilarin-temel-bilesenleri-temel.js'
-import destekHareketSistemiTemel from '../content/tests/biyoloji/destek-hareket-sistemi-temel.js'
-import destekHareketSistemi from '../content/tests/biyoloji/destek-hareket-sistemi.js'
-import dolasimBagisiklikSistemi from '../content/tests/biyoloji/dolasim-bagisiklik-sistemi.js'
-import duyuOrganlariTemel from '../content/tests/biyoloji/duyu-organlari-temel.js'
-import duyuOrganlari from '../content/tests/biyoloji/duyu-organlari.js'
-import ekosistemEkolojisi from '../content/tests/biyoloji/ekosistem-ekolojisi.js'
-import ekosistemEkolojisiTemel from '../content/tests/biyoloji/ekosistem-ekolojisi-temel.js'
-import endokrinSistemTemel from '../content/tests/biyoloji/endokrin-sistem-temel.js'
-import fotosentezKemosentez from "../content/tests/biyoloji/fotosentez-kemosentez.js";
-import endokrinSistem from '../content/tests/biyoloji/endokrin-sistem.js'
 import { slugifyLibraryValue } from './libraryRoutes'
-import { turkceTests } from '../content/tests/turkce/index.js'
-import { kimyaTests } from '../content/tests/kimya/index.js'
+import {
+  LEGACY_BUNDLED_QUESTION_SETS,
+  legacyBundledQuestionSetsForTopic,
+} from '../content/tests/bundledCatalog.js'
 import { loadMathQuestionSet, mathQuestionSetsForTopic } from '../content/tests/matematik/question-bank.js'
 import { loadPhilosophyQuestionSet, philosophyQuestionSetsForTopic } from '../content/tests/felsefe/question-bank.js'
 import { loadHistoryQuestionSet, historyQuestionSetsForTopic } from '../content/tests/tarih/question-bank.js'
 import { loadDinKulturuQuestionSet, dinKulturuQuestionSetsForTopic } from '../content/tests/din_kulturu/question-bank.js'
 import { loadCografyaQuestionSet, cografyaQuestionSetsForTopic } from '../content/tests/cografya/question-bank.js'
 import { loadLgsTurkceQuestionSet, lgsTurkceQuestionSetsForTopic } from '../content/tests/lgs_turkce/question-bank.js'
+import { describeBundledQuestionSet, publicQuestionSet } from './learning/contentActivity/identity.js'
+import { indexLatestQuestionProgress } from './questionProgress.js'
 
 // Geçiş döneminde mevcut kod tabanındaki testler kaybolmasın. Yeni testler
 // `library_question_sets` tablosuna yazılır; bu sabit kaynak yalnızca eski
 // pilot içeriğin uyumluluk köprüsüdür.
-const BUNDLED_SETS = {
-  ...Object.fromEntries(Object.entries(turkceTests).map(([k, v]) => [k, { tests: v }])),
-  ...Object.fromEntries(Object.entries(kimyaTests).map(([k, v]) => [k, { tests: v }])),
-  'kimyanin-temel-kanunlari': { tests: (kimyaTests['kimyanin-temel-kanunlari-ve-kimyasal-hesaplamalar'] || []).slice(0, 15) },
-  'mol-kavrami': { tests: (kimyaTests['kimyanin-temel-kanunlari-ve-kimyasal-hesaplamalar'] || []).slice(15, 30) },
-  'asit-baz-ve-tuz': { tests: kimyaTests['asitler-bazlar-ve-tuzlar'] || [] },
-  'yapi-bilgisi': { tests: turkceTests['sozcuk-yapisi'] || [] },
-  'sozcuk-turleri': { tests: [...(turkceTests['isimler']||[]), ...(turkceTests['sifatlar']||[]), ...(turkceTests['zarflar']||[]), ...(turkceTests['zamirler']||[]), ...(turkceTests['edat-baglac-unlem']||[])] },
-  'fiilimsi': { tests: turkceTests['fiilimsiler'] || [] },
-  'paragrafta-anlam-ve-yapi': { tests: turkceTests['paragrafta-anlam'] || [] },
-  'paragrafta-dusunceyi-gelistirme-yollari': { tests: turkceTests['dusunceyi-gelistirme'] || [] },
-  'canlilarin-ortak-ozellikleri': canlilarinOrtakOzellikleri,
-  'canlilarin-temel-bilesenleri': canlilarinTemelBilesenleri,
-  'bitki-biyolojisi': bitkiBiyolojisi,
-  'bolunme-1-dongu-mitoz': { tests: bolunmeDonguMitoz },
-  'canlilar-ve-cevre': { tests: canlilarVeCevre },
-  'canlilarin-ortak-ozellikleri-temel': { tests: canlilarinOrtakOzellikleriTemel },
-  'canlilarin-siniflandirilmasi-temel': { tests: canlilarinSiniflandirilmasiTemel },
-  'canlilarin-temel-bilesenleri-temel': { tests: canlilarinTemelBilesenleriTemel },
-  'destek-hareket-sistemi-temel': { tests: destekHareketSistemiTemel },
-  'destek-hareket-sistemi': { tests: destekHareketSistemi },
-  'dolasim-bagisiklik-sistemi': { tests: dolasimBagisiklikSistemi },
-  'duyu-organlari-temel': { tests: duyuOrganlariTemel },
-  'duyu-organlari': { tests: duyuOrganlari },
-  'ekosistem-ekolojisi': { tests: ekosistemEkolojisi },
-  'ekosistem-ekolojisi-temel': { tests: ekosistemEkolojisiTemel },
-  'endokrin-sistem-temel': { tests: endokrinSistemTemel },
-  'endokrin-sistem': { tests: endokrinSistem },
-  'fotosentez-kemosentez': { tests: fotosentezKemosentez },
-}
+export const BUNDLED_SETS = LEGACY_BUNDLED_QUESTION_SETS
 
 export function bundledQuestionSetsForTopic(topicName, context = {}) {
   return [
-    ...(BUNDLED_SETS[slugifyLibraryValue(topicName)]?.tests ?? []),
+    ...legacyBundledQuestionSetsForTopic(slugifyLibraryValue(topicName)),
     ...mathQuestionSetsForTopic(topicName, context),
     ...philosophyQuestionSetsForTopic(topicName, context),
     ...historyQuestionSetsForTopic(topicName, context),
@@ -73,36 +30,84 @@ export function bundledQuestionSetsForTopic(topicName, context = {}) {
   ]
 }
 
+async function withBundledIdentity(questionSet) {
+  if (!questionSet) return null
+  try {
+    const descriptor = await describeBundledQuestionSet(questionSet)
+    return publicQuestionSet({ ...questionSet, source_code: 'bundled_question_test' }, descriptor)
+  } catch {
+    // Stable soru/blok kimliği olmayan eski kayıt çalıştırılmaz; manifestte
+    // karantinada kalır ve tarayıcıdan güvenilir sonuç üretemez.
+    return null
+  }
+}
+
 export async function loadQuestionSet(testId, topicSlug) {
   const mathSet = await loadMathQuestionSet(testId)
-  if (mathSet) return mathSet
+  if (mathSet) return withBundledIdentity(mathSet)
 
   const philosophySet = await loadPhilosophyQuestionSet(testId)
-  if (philosophySet) return philosophySet
+  if (philosophySet) return withBundledIdentity(philosophySet)
 
   const historySet = await loadHistoryQuestionSet(testId)
-  if (historySet) return historySet
+  if (historySet) return withBundledIdentity(historySet)
 
   const dinKulturuSet = await loadDinKulturuQuestionSet(testId)
-  if (dinKulturuSet) return dinKulturuSet
+  if (dinKulturuSet) return withBundledIdentity(dinKulturuSet)
 
   const cografyaSet = await loadCografyaQuestionSet(testId)
-  if (cografyaSet) return cografyaSet
+  if (cografyaSet) return withBundledIdentity(cografyaSet)
 
   const lgsTurkceSet = await loadLgsTurkceQuestionSet(testId)
-  if (lgsTurkceSet) return lgsTurkceSet
+  if (lgsTurkceSet) return withBundledIdentity(lgsTurkceSet)
 
   const bundled = BUNDLED_SETS[topicSlug]?.tests?.find((test) => test.id === testId)
-  if (bundled) return bundled
+  if (bundled) return withBundledIdentity(bundled)
 
   const { data, error } = await supabase
     .from('library_question_sets')
-    .select('id, title, description, difficulty, questions, question_count')
+    .select('id, title, description, difficulty, questions, question_count, content_revision, content_hash')
     .eq('id', testId)
     .eq('status', 'published')
     .maybeSingle()
 
   // Migration henüz uygulanmadıysa eski test deneyimi bozulmasın.
   if (error || !data) return null
-  return { ...data, questions: data.questions ?? [] }
+  return {
+    ...data,
+    source_code: 'db_question_test',
+    content_id: data.id,
+    content_revision: `db-${data.content_revision}`,
+    questions: data.questions ?? [],
+  }
+}
+
+export async function loadQuestionProgressForSets(studentId, questionSets = []) {
+  const contentIds = [...new Set(questionSets
+    .map((questionSet) => questionSet?.content_id ?? questionSet?.id)
+    .filter(Boolean)
+    .map(String))]
+
+  if (!studentId || contentIds.length === 0) {
+    return { status: 'available', progressByKey: {} }
+  }
+
+  try {
+    const { data, error } = await supabase
+      .from('student_question_set_attempts')
+      .select('id, source_code, content_id, content_revision, status, marked_count, total_count, correct_count, wrong_count, empty_count, started_at, updated_at')
+      .eq('student_id', studentId)
+      .in('source_code', ['db_question_test', 'bundled_question_test'])
+      .in('status', ['in_progress', 'completed'])
+      .in('content_id', contentIds)
+      .order('updated_at', { ascending: false })
+
+    if (error) return { status: 'unavailable', progressByKey: {} }
+    return {
+      status: 'available',
+      progressByKey: indexLatestQuestionProgress(data ?? []),
+    }
+  } catch {
+    return { status: 'unavailable', progressByKey: {} }
+  }
 }

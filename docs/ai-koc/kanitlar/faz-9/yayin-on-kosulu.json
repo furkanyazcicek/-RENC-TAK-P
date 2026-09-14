@@ -1,0 +1,9 @@
+{
+  "status": "not_runnable_dirty_worktree",
+  "required_for_local_phase": false,
+  "required_before_publication": true,
+  "reason_code": "USER_AND_PHASE_CHANGES_PRESERVED",
+  "command": "npm run yayin:dogrula",
+  "executed_by_runner": false,
+  "publication_performed": false
+}

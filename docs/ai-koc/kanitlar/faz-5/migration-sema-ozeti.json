@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "checksums": {
+    "phase_2_migration_sha256": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea",
+    "phase_5_migration_sha256": "071e3a91c907729de3a679b18d66f3a434249b9f55a9101b80dafb0e42e09830"
+  },
+  "migration": {
+    "first_apply": "passed",
+    "second_apply": "passed",
+    "public_tables": [
+      "student_language_activity_events",
+      "student_language_import_receipts",
+      "student_language_progress_revisions",
+      "student_language_progress_states",
+      "student_language_sync_conflicts"
+    ],
+    "policies": 5
+  }
+}

@@ -12,17 +12,25 @@
  *  - `executeAction` gövdedeki her alanı yeniden doğrular; istemci sahte
  *    bir aksiyon üretse bile yapabileceği en fazla şey, arayüzden zaten
  *    yapabildiği bir kaydı kendi hesabına eklemektir.
- *  - Silme veya başka kullanıcıya dokunan bir aksiyon türü TANIMLI DEĞİL.
+ *  - Yalnız açık onaylı tercih unutma işlemi silme yapabilir; öğrenci kapsamı
+ *    ve beyaz liste sunucuda yeniden doğrulanır. Başka kullanıcıya dokunulmaz.
  */
 
 import { authenticate } from '../_lib/auth.js'
 import { logError, sendError } from '../_lib/errors.js'
 import { executeAction } from '../_lib/tools.js'
+import { resolveLearningRollout } from '../_lib/learning/rollout.js'
 
 const ALLOWED_TYPES = new Set([
+  'accept_coaching_recommendation',
+  'reject_coaching_recommendation',
+  'transition_coaching_task',
+  'refresh_coaching_outcome',
+  'report_coaching_feedback',
   'create_study_plan',
   'log_study_session',
   'update_student_memory',
+  'forget_student_memory',
   'complete_study_task',
 ])
 
@@ -36,6 +44,11 @@ export default async function handler(req, res) {
   if (!auth.ok) return sendError(res, auth.status, auth.code)
 
   const { user, supabase } = auth
+
+  const rollout = resolveLearningRollout({ studentId: user.id, sourceCode: 'ai_coach_actions' })
+  if (!rollout.coach_writes.enabled) {
+    return sendError(res, 503, 'feature_temporarily_unavailable')
+  }
 
   const body = typeof req.body === 'string' ? safeParse(req.body) : req.body
   const action = body?.action
@@ -57,7 +70,7 @@ export default async function handler(req, res) {
       result: outcome.result ?? null,
     })
   } catch (error) {
-    logError('action', error, { studentId: user.id, type: action.type })
+    logError('action', error, { type: action.type })
     return sendError(res, 500, 'database_error')
   }
 }

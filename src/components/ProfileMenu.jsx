@@ -10,10 +10,11 @@ import {
   UserRound,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
-import { getPushPermissionState, isPushSupported, subscribeToPush } from '../lib/push'
+import { getPushStatus, isPushSupported, subscribeToPush } from '../lib/push'
 import { listStudentParentLinks } from '../lib/parentLink'
 import { PROFILE_PATH, ROLE_LABELS, ROLE_TONES } from '../lib/navigation'
 import { cn } from '../lib/cn'
+import { isProductCapture } from '../lib/productCapture'
 import { Avatar, Badge } from './ui'
 import { useToast } from './ui/Toast'
 
@@ -35,7 +36,11 @@ export default function ProfileMenu() {
   const toast = useToast()
   const { pathname } = useLocation()
   const [open, setOpen] = useState(false)
-  const [permission, setPermission] = useState('default')
+  const [pushStatus, setPushStatus] = useState({
+    supported: isPushSupported(),
+    permission: 'default',
+    subscribed: false,
+  })
   const [subscribing, setSubscribing] = useState(false)
   const ref = useRef(null)
 
@@ -46,11 +51,11 @@ export default function ProfileMenu() {
   const [pendingParentLinks, setPendingParentLinks] = useState(0)
 
   useEffect(() => {
-    getPushPermissionState().then(setPermission)
+    getPushStatus().then(setPushStatus).catch(() => {})
   }, [])
 
   useEffect(() => {
-    if (role !== 'student' || !profile?.id) return
+    if (isProductCapture() || role !== 'student' || !profile?.id) return
     let cancelled = false
     listStudentParentLinks().then(({ links }) => {
       if (cancelled) return
@@ -86,7 +91,7 @@ export default function ProfileMenu() {
     setSubscribing(true)
     try {
       await subscribeToPush(profile.id)
-      setPermission('granted')
+      setPushStatus(await getPushStatus())
       toast.success('Bildirimler açıldı')
     } catch (err) {
       toast.error('Bildirimler açılamadı', { description: err.message })
@@ -194,7 +199,7 @@ export default function ProfileMenu() {
           {isPushSupported() && (
             <>
               <div className="divider" />
-              {permission === 'granted' ? (
+              {pushStatus.subscribed ? (
                 <div className="flex w-full items-center gap-3 px-4 py-3 text-sm text-success-700">
                   <BellRing className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
                   <span>Bildirimler açık</span>
@@ -204,13 +209,13 @@ export default function ProfileMenu() {
                   type="button"
                   role="menuitem"
                   onClick={handleEnableNotifications}
-                  disabled={subscribing || permission === 'denied'}
+                  disabled={subscribing || pushStatus.permission === 'denied'}
                   className="focus-ring flex w-full items-center gap-3 px-4 py-3 text-sm font-medium
                              text-brand-700 transition-colors hover:bg-brand-500/[0.07] disabled:opacity-50"
                 >
                   <Bell className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
                   <span>
-                    {permission === 'denied'
+                    {pushStatus.permission === 'denied'
                       ? 'Bildirimler engellendi'
                       : subscribing
                         ? 'Açılıyor…'

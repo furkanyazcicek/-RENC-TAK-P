@@ -1,0 +1,959 @@
+{
+  "schema_version": "1.0",
+  "status": "passed",
+  "environment": {
+    "engine": "PGlite/WASM",
+    "serialized_connection": true,
+    "real_concurrency_claimed": false,
+    "live_supabase_used": false,
+    "real_student_data_used": false,
+    "model_or_paid_service_used": false,
+    "deployment_performed": false
+  },
+  "workspace": "/Users/furkantalhayazcicek/Desktop/DRKOÇ/",
+  "branch": "main",
+  "git_head": "6e7105a99113067d79d4bd178ca20c3867330530",
+  "migration": {
+    "phase_2_sha256": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea",
+    "phase_3_file": "supabase/migration_learning_content_activity.sql",
+    "phase_3_sha256": "8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165"
+  },
+  "manifest": {
+    "version": "learning-content-manifest@1",
+    "checksum": "6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
+    "entries": 4344
+  },
+  "sections": [
+    {
+      "name": "Temiz kurulum ve ikinci migration uygulaması",
+      "status": "passed",
+      "duration_ms": 832.162
+    },
+    {
+      "name": "Paketli gerçek manifest private kataloğa atomik yüklenir",
+      "status": "passed",
+      "duration_ms": 13632.127
+    },
+    {
+      "name": "Gerçek paketli katalog kaynak RPC uçlarında çalışır",
+      "status": "passed",
+      "duration_ms": 155.22
+    },
+    {
+      "name": "M13–M26 registry ve SQL anlam parity",
+      "status": "passed",
+      "duration_ms": 1.141
+    },
+    {
+      "name": "İçerik fixture ve stable kimlik kataloğu",
+      "status": "passed",
+      "duration_ms": 44.915
+    },
+    {
+      "name": "Fixture sonrası ikinci migration veriyi korur",
+      "status": "passed",
+      "duration_ms": 31.319
+    },
+    {
+      "name": "Structured ve bundled ders atomik olayları",
+      "status": "passed",
+      "duration_ms": 25.162
+    },
+    {
+      "name": "Kütüphane notu yalnız tam görüntülemede exposure üretir",
+      "status": "passed",
+      "duration_ms": 6.229
+    },
+    {
+      "name": "DB soru seti ortak attempt yaşam döngüsünü kullanır",
+      "status": "passed",
+      "duration_ms": 6.413
+    },
+    {
+      "name": "Kimya sekizli manifest, retry ve server puanlama",
+      "status": "passed",
+      "duration_ms": 14.302
+    },
+    {
+      "name": "Geometri boş final ve sonuç ayrıntısı",
+      "status": "passed",
+      "duration_ms": 5.245
+    },
+    {
+      "name": "Coğrafya sunucu süresi ve yalnız final direct measurement",
+      "status": "passed",
+      "duration_ms": 8.893
+    },
+    {
+      "name": "Soru attempt, server scoring, correction ve refresh",
+      "status": "passed",
+      "duration_ms": 10.515
+    },
+    {
+      "name": "İçerik v2 eski sonucu yeniden puanlamaz",
+      "status": "passed",
+      "duration_ms": 7.772
+    },
+    {
+      "name": "Reset tombstone ve etkin kanıt",
+      "status": "passed",
+      "duration_ms": 7.339
+    },
+    {
+      "name": "Finalizasyon hata halinde kaynak ve kanıtı birlikte rollback eder",
+      "status": "passed",
+      "duration_ms": 7.676
+    },
+    {
+      "name": "Post-claim hata receiptleri ve PGlite seri retry",
+      "status": "passed",
+      "duration_ms": 6.87
+    },
+    {
+      "name": "Atlas snapshot, correction ve sahiplik",
+      "status": "passed",
+      "duration_ms": 10.394
+    },
+    {
+      "name": "Atlas açık sahiplik aktarımı ve kısmi resume",
+      "status": "passed",
+      "duration_ms": 55.829
+    },
+    {
+      "name": "Outbox kullanıcı kapsamı ve güvenli bozulma",
+      "status": "passed",
+      "duration_ms": 2.01
+    },
+    {
+      "name": "RLS ve private sınır",
+      "status": "passed",
+      "duration_ms": 4.036
+    },
+    {
+      "name": "M13, M18 ve M25 bilinçli olarak olay üretmez",
+      "status": "passed",
+      "duration_ms": 17.413
+    },
+    {
+      "name": "Manifest parity, JS adaptör, backfill ve health",
+      "status": "passed",
+      "duration_ms": 2.376
+    },
+    {
+      "name": "Faz 3 effective ledger deterministik replay checksum",
+      "status": "passed",
+      "duration_ms": 53.078
+    },
+    {
+      "name": "M13–M26 kaynak kapsamı makine kanıtı",
+      "status": "passed",
+      "duration_ms": 3.606
+    },
+    {
+      "name": "10.000 satır indeks planı ve deterministik manifest rebuild",
+      "status": "passed",
+      "duration_ms": 5906.1
+    },
+    {
+      "name": "Şema envanteri ve setup sırası",
+      "status": "passed",
+      "duration_ms": 9.656
+    }
+  ],
+  "assertions": 450,
+  "scenarios": {
+    "P3-S01": {
+      "status": "passed",
+      "evidence": "Structured/paketli ders, ders quiz, soru attempt ve atlas aynı doğrulanmış fixture konu bağında; sınıflar ayrı."
+    },
+    "P3-S02": {
+      "status": "passed",
+      "evidence": "Kullanıcı kapsamlı outbox, timeout, refresh, 10 retry ve server finali."
+    },
+    "P3-S03": {
+      "status": "passed",
+      "evidence": "v1/v2 pinned soru anahtarı ayrı; v1 sonucu yeniden puanlanmadı."
+    },
+    "P3-S04": {
+      "status": "passed",
+      "evidence": "Yanlış→doğru correction, reset tombstone ve sıfır etkin kanıt."
+    },
+    "P3-S05": {
+      "status": "passed",
+      "evidence": "A/B hesapları, açık sahiplik onayı, receipt/cursor resume ve ownership_conflict."
+    },
+    "P3-S06": {
+      "status": "passed",
+      "evidence": "Tarih atlası UI kodunda writer yok; M25 sıfır evidence."
+    },
+    "P3-S07": {
+      "status": "passed",
+      "evidence": "Başka öğrenci read/finalize/reset/import yolları not_found veya ownership_conflict."
+    },
+    "supporting_checks": {
+      "migration_twice": "passed",
+      "real_catalog_materialization": "passed",
+      "real_catalog_source_rpc_e2e": "passed",
+      "source_coverage_artifact": "passed",
+      "deterministic_replay_checksum": "passed"
+    }
+  },
+  "commands": [
+    {
+      "command": "npm run test:ai-koc-faz-1",
+      "script": "test:ai-koc-faz-1",
+      "group": "security",
+      "started_at": "2026-09-13T08:23:56.507Z",
+      "finished_at": "2026-09-13T08:23:56.720Z",
+      "duration_ms": 213,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/guvenlik-testleri.log"
+    },
+    {
+      "command": "npm run test:ai-koc-faz-2",
+      "script": "test:ai-koc-faz-2",
+      "group": "security",
+      "started_at": "2026-09-13T08:23:56.720Z",
+      "finished_at": "2026-09-13T08:24:00.972Z",
+      "duration_ms": 4252,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/guvenlik-testleri.log"
+    },
+    {
+      "command": "npm run test:ai-koc-faz-3",
+      "script": "test:ai-koc-faz-3",
+      "group": "security",
+      "started_at": "2026-09-13T08:24:00.972Z",
+      "finished_at": "2026-09-13T08:24:24.856Z",
+      "duration_ms": 23884,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/guvenlik-testleri.log"
+    },
+    {
+      "command": "npm run test:lesson-document",
+      "script": "test:lesson-document",
+      "group": "regression",
+      "started_at": "2026-09-13T08:24:24.856Z",
+      "finished_at": "2026-09-13T08:24:24.991Z",
+      "duration_ms": 135,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
+    },
+    {
+      "command": "npm run test:lesson-content",
+      "script": "test:lesson-content",
+      "group": "regression",
+      "started_at": "2026-09-13T08:24:24.991Z",
+      "finished_at": "2026-09-13T08:24:25.218Z",
+      "duration_ms": 227,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
+    },
+    {
+      "command": "npm run test:lesson-narration",
+      "script": "test:lesson-narration",
+      "group": "regression",
+      "started_at": "2026-09-13T08:24:25.218Z",
+      "finished_at": "2026-09-13T08:24:25.403Z",
+      "duration_ms": 185,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
+    },
+    {
+      "command": "npm run test:library-curriculum",
+      "script": "test:library-curriculum",
+      "group": "regression",
+      "started_at": "2026-09-13T08:24:25.403Z",
+      "finished_at": "2026-09-13T08:24:25.503Z",
+      "duration_ms": 100,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
+    },
+    {
+      "command": "npm run test:matematik-soru-kutuphanesi",
+      "script": "test:matematik-soru-kutuphanesi",
+      "group": "regression",
+      "started_at": "2026-09-13T08:24:25.504Z",
+      "finished_at": "2026-09-13T08:24:25.616Z",
+      "duration_ms": 112,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
+    },
+    {
+      "command": "npm run test:felsefe-soru-kutuphanesi",
+      "script": "test:felsefe-soru-kutuphanesi",
+      "group": "regression",
+      "started_at": "2026-09-13T08:24:25.616Z",
+      "finished_at": "2026-09-13T08:24:25.734Z",
+      "duration_ms": 117,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
+    },
+    {
+      "command": "npm run test:tarih-soru-kutuphanesi",
+      "script": "test:tarih-soru-kutuphanesi",
+      "group": "regression",
+      "started_at": "2026-09-13T08:24:25.734Z",
+      "finished_at": "2026-09-13T08:24:26.923Z",
+      "duration_ms": 1189,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
+    },
+    {
+      "command": "npm run test:kimya",
+      "script": "test:kimya",
+      "group": "regression",
+      "started_at": "2026-09-13T08:24:26.923Z",
+      "finished_at": "2026-09-13T08:24:27.031Z",
+      "duration_ms": 108,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
+    },
+    {
+      "command": "npm run test:fizik",
+      "script": "test:fizik",
+      "group": "regression",
+      "started_at": "2026-09-13T08:24:27.031Z",
+      "finished_at": "2026-09-13T08:24:27.141Z",
+      "duration_ms": 110,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
+    },
+    {
+      "command": "npm run test:biyoloji",
+      "script": "test:biyoloji",
+      "group": "regression",
+      "started_at": "2026-09-13T08:24:27.141Z",
+      "finished_at": "2026-09-13T08:24:27.249Z",
+      "duration_ms": 108,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
+    },
+    {
+      "command": "npm run test:cografya",
+      "script": "test:cografya",
+      "group": "regression",
+      "started_at": "2026-09-13T08:24:27.249Z",
+      "finished_at": "2026-09-13T08:24:27.361Z",
+      "duration_ms": 112,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
+    },
+    {
+      "command": "npm run test:tarih",
+      "script": "test:tarih",
+      "group": "regression",
+      "started_at": "2026-09-13T08:24:27.361Z",
+      "finished_at": "2026-09-13T08:24:27.572Z",
+      "duration_ms": 211,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
+    },
+    {
+      "command": "npm run test:anasayfa",
+      "script": "test:anasayfa",
+      "group": "regression",
+      "started_at": "2026-09-13T08:24:27.572Z",
+      "finished_at": "2026-09-13T08:24:27.679Z",
+      "duration_ms": 107,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
+    },
+    {
+      "command": "npm run build",
+      "script": "build",
+      "group": "build",
+      "started_at": "2026-09-13T08:24:27.680Z",
+      "finished_at": "2026-09-13T08:24:47.131Z",
+      "duration_ms": 19451,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-3/build.log"
+    }
+  ],
+  "gates": [
+    {
+      "id": 1,
+      "description": "Faz 1/Faz 2 testleri ve Faz 2 checksum",
+      "status": "passed",
+      "evidence": "npm run test:ai-koc-faz-1, npm run test:ai-koc-faz-2 ve sabit Faz 2 SHA-256"
+    },
+    {
+      "id": 2,
+      "description": "Faz 3 migration temiz ve ikinci uygulama",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 3,
+      "description": "M13–M26 bağlantı veya açık dışlama kararlı",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 4,
+      "description": "M13 katalog gezinmesi sıfır common evidence",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 5,
+      "description": "M14 stable kimlik, revision/hash ve mapping/karantina",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 6,
+      "description": "M15 structured ders source+evidence atomikliği",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 7,
+      "description": "M16 bütün paketli dersler ve doğal kimlik",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 8,
+      "description": "Structured/bundled ortak kanıt anlamı",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 9,
+      "description": "Ders açma exposure, tamamlama direct değil",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 10,
+      "description": "Ders quiz/ÖSYM correctness server pinned revision",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 11,
+      "description": "Ders progress refresh-safe, sözleşmesiz event yok",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 12,
+      "description": "M17 yalnız gerçek viewer/lightbox exposure",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 13,
+      "description": "PDF açılışı başarı/tamamlama/ustalık değil",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 14,
+      "description": "DB ve paketli soru tek attempt lifecycle",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 15,
+      "description": "Cevap refresh/ağ/retry dayanıklı",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 16,
+      "description": "Attempt+question benzersiz kimlik",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 17,
+      "description": "D/Y/B/toplam/accuracy server-katalog kaynaklı",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 18,
+      "description": "Finalizasyon source attempt+evidence atomik",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 19,
+      "description": "Sonuç ekranı refresh sonrası server attempt",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 20,
+      "description": "Answer correction ve reset tombstone etkin sonucu geri alır",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 21,
+      "description": "İçerik revision geçmiş sonucu yeniden puanlamaz",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 22,
+      "description": "M21 yalnız Fizik görev/kavram snapshot",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 23,
+      "description": "M22 yalnız doğrulanmış Biyoloji görev/kontrol",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 24,
+      "description": "M23 Coğrafya görev ve server-scored timed test ayrımı",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 25,
+      "description": "M24 Kimya stable attempt ve server scoring",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 26,
+      "description": "M25 tarih gezinmesi sıfır evidence",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 27,
+      "description": "M26 Geometri stable attempt ve server scoring",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 28,
+      "description": "Atlas eski local veri sessizce hesaba bağlanmaz",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 29,
+      "description": "Atlas explicit import retry ve hesap izolasyonu",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 30,
+      "description": "Excluded local alanlar common evidence dışı",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 31,
+      "description": "Outbox kullanıcı kapsamlı",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 32,
+      "description": "Aynı action 2/10/yerel concurrency tekilleşir",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 33,
+      "description": "Aynı action farklı payload conflict",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 34,
+      "description": "Normal roller ledger/private/trusted DML yapamaz",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 35,
+      "description": "Başka öğrenci izolasyonu",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 36,
+      "description": "Ambiguous/unmatched zorla eşlenmez",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 37,
+      "description": "Correction/tombstone view ve replay deterministik",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 38,
+      "description": "Backfill dry-run yazmaz, history uydurmaz",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 39,
+      "description": "Health dört durumu ayrı",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 40,
+      "description": "Migration yokken kontrollü bozulma",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 41,
+      "description": "Temel ürün akışları regresyonsuz",
+      "status": "passed",
+      "evidence": "Zorunlu ders, soru kütüphanesi ve atlas regresyon komutları"
+    },
+    {
+      "id": 42,
+      "description": "Masaüstü ve telefon görsel/etkileşim doğrulaması",
+      "status": "passed",
+      "evidence": "docs/ai-koc/kanitlar/faz-3/gorsel-dogrulama.md"
+    },
+    {
+      "id": 43,
+      "description": "Build ve zorunlu regresyon komutları",
+      "status": "passed",
+      "evidence": "docs/ai-koc/kanitlar/faz-3/regresyon-komutlari.json"
+    },
+    {
+      "id": 44,
+      "description": "Kapsam Faz 3 dışına taşmadı",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 45,
+      "description": "Canlı/gerçek veri/backfill/seed/servis/yayın değişmedi",
+      "status": "passed",
+      "evidence": "scripts/test-phase-3-learning-content.mjs yerel PGlite kabul senaryoları"
+    },
+    {
+      "id": 46,
+      "description": "Kabul JSON gerçek komutlardan ve kanıtlardan üretildi",
+      "status": "passed",
+      "evidence": "regresyon-komutlari.json + faz-3 kabul çekirdeği + gorsel-dogrulama.md"
+    }
+  ],
+  "limits": [
+    "PGlite tek bağlantıyı seri işler; Promise.all sınaması gerçek çok bağlantılı PostgreSQL yarışı değildir.",
+    "Canlı Supabase şeması, gerçek öğrenci satırları ve üretim SLA davranışı bu pakette sınanmaz."
+  ],
+  "catalog_materialization": {
+    "status": "passed",
+    "loader_version": "phase-3-content-catalog-loader@1",
+    "manifest_entries": 4344,
+    "private_catalog_items": 45815,
+    "first_apply_writes": 54503,
+    "second_apply_writes": 0,
+    "dry_run_writes": 0,
+    "conflict_rollback_verified": true,
+    "public_answer_keys_present": false
+  },
+  "real_catalog_e2e": {
+    "status": "passed",
+    "synthetic_student_only": true,
+    "lesson_content_id": "asit-baz-ve-tuz",
+    "bundled_question_set_id": "lgs-turkce-10-test-kolay-1",
+    "library_note_id": "kutuphane-notlari/ayt-biyoloji/bitki-biyolojisi.pdf",
+    "assessment_attempt_count": 4,
+    "atlas_task_sources": [
+      "physics_atlas",
+      "biology_atlas",
+      "geography_atlas"
+    ],
+    "evidence_record_count": 12
+  },
+  "backfill": {
+    "mode": "dry_run",
+    "decision_count": 14,
+    "scanned_count": 4,
+    "ready_count": 1,
+    "quarantined_count": 3,
+    "writes_performed": 0,
+    "sql_decision_parity": true,
+    "live_apply_performed": false
+  },
+  "health": {
+    "statuses_tested": [
+      "available",
+      "empty",
+      "unavailable",
+      "degraded"
+    ],
+    "status": "passed"
+  },
+  "replay": {
+    "projection": "learning_evidence_probe",
+    "first_generation_id": "58535f19-cd82-4df0-b1dd-51a18994a8c3",
+    "second_generation_id": "cad295c6-aa59-4423-bd09-76a8717158ea",
+    "row_count": 52,
+    "high_water_mark": 72,
+    "checksum": "ce904fb8f95bc1dfca0431c68ae831d9f14c16577500dbdd34222fb04442d238",
+    "ledger_record_count": 71,
+    "effective_record_count": 63,
+    "projected_active_record_count": 63,
+    "deterministic_across_batch_sizes": true,
+    "persisted_generation_verified": true,
+    "ledger_mutated_by_replay": false
+  },
+  "source_coverage": {
+    "matrix_range": "M13-M26",
+    "source_count": 14,
+    "missing_matrix_ids": [],
+    "local_status_reported_for_every_source": true,
+    "live_status_reported_for_every_source": true,
+    "excluded_zero_evidence": true,
+    "live_apply_performed": false
+  },
+  "performance": {
+    "engine": "PGlite/WASM",
+    "progress_rows": 10000,
+    "insert_duration_ms": 110.959,
+    "indexed_query_duration_ms": 0.332,
+    "index_plan_observed": true,
+    "manifest_entries": 4344,
+    "manifest_rebuild_duration_ms": 5750.262,
+    "manifest_checksum_stable": true,
+    "manifest_rebuild_attempts": 2,
+    "concurrent_source_change_retries": 0
+  },
+  "schema": {
+    "table_count": 14,
+    "function_count": 33,
+    "index_count": 51,
+    "policy_count": 15,
+    "constraint_count": 273,
+    "force_rls_count": 14
+  },
+  "event_distribution": [
+    {
+      "evidence_class": "direct_measurement",
+      "record_kind": "correction",
+      "semantic_event_type": "question_answered",
+      "count": 1
+    },
+    {
+      "evidence_class": "direct_measurement",
+      "record_kind": "event",
+      "semantic_event_type": "concept_check_answered",
+      "count": 3
+    },
+    {
+      "evidence_class": "direct_measurement",
+      "record_kind": "event",
+      "semantic_event_type": "mini_test_completed",
+      "count": 2
+    },
+    {
+      "evidence_class": "direct_measurement",
+      "record_kind": "event",
+      "semantic_event_type": "question_answered",
+      "count": 6
+    },
+    {
+      "evidence_class": "direct_measurement",
+      "record_kind": "event",
+      "semantic_event_type": "quiz_answered",
+      "count": 2
+    },
+    {
+      "evidence_class": "direct_measurement",
+      "record_kind": "event",
+      "semantic_event_type": "test_completed",
+      "count": 6
+    },
+    {
+      "evidence_class": "direct_measurement",
+      "record_kind": "event",
+      "semantic_event_type": "timed_test_completed",
+      "count": 3
+    },
+    {
+      "evidence_class": "direct_measurement",
+      "record_kind": "tombstone",
+      "semantic_event_type": "question_answered",
+      "count": 2
+    },
+    {
+      "evidence_class": "direct_measurement",
+      "record_kind": "tombstone",
+      "semantic_event_type": "test_completed",
+      "count": 1
+    },
+    {
+      "evidence_class": "exposure",
+      "record_kind": "event",
+      "semantic_event_type": "audio_completed",
+      "count": 1
+    },
+    {
+      "evidence_class": "exposure",
+      "record_kind": "event",
+      "semantic_event_type": "audio_started",
+      "count": 1
+    },
+    {
+      "evidence_class": "exposure",
+      "record_kind": "event",
+      "semantic_event_type": "lesson_opened",
+      "count": 3
+    },
+    {
+      "evidence_class": "exposure",
+      "record_kind": "event",
+      "semantic_event_type": "note_opened",
+      "count": 1
+    },
+    {
+      "evidence_class": "system_observation",
+      "record_kind": "correction",
+      "semantic_event_type": "atlas_task_state",
+      "count": 1
+    },
+    {
+      "evidence_class": "system_observation",
+      "record_kind": "event",
+      "semantic_event_type": "lesson_completed",
+      "count": 2
+    },
+    {
+      "evidence_class": "system_observation",
+      "record_kind": "snapshot",
+      "semantic_event_type": "atlas_task_state",
+      "count": 36
+    }
+  ],
+  "idempotency": {
+    "same_action_retry_2": "passed",
+    "same_action_retry_10": "passed",
+    "pglite_serialized_parallel_10": "passed",
+    "same_action_different_payload": "idempotency_conflict",
+    "real_multi_connection_postgresql": "not_run",
+    "real_multi_connection_target_phase": 9
+  },
+  "server_side_scoring": {
+    "forged_client_correctness_accepted": false,
+    "answer_rpc_leaks_correctness_before_finalize": false,
+    "private_catalog_used": true,
+    "status": "passed"
+  },
+  "interfaces_for_later_phases": {
+    "phase_4": [
+      "learning_content_revisions",
+      "student_question_set_attempts",
+      "learning_evidence_records"
+    ],
+    "phase_6": [
+      "learning_evidence_effective",
+      "learning_projection_generations"
+    ],
+    "consumers_added_in_phase_3": false
+  },
+  "preexisting_changes": {
+    "baseline_git_head": "521d860ac75107f28440dbfea3feba0fcaad471d",
+    "preserved": true,
+    "note": "Faz 3 başlangıcındaki kirli çalışma alanı ve oturum sırasında gelen ilgisiz içerik/PDF değişiklikleri geri alınmadı."
+  },
+  "skipped_tests": [
+    {
+      "name": "Gerçek çok bağlantılı PostgreSQL yarışı",
+      "status": "not_run",
+      "passed": false,
+      "reason": "PGlite tek bağlantıyı seri işler; yerel makinede izole çok bağlantılı PostgreSQL hedefi yok.",
+      "target_phase": 9
+    }
+  ],
+  "generated_at": "2026-09-13T08:24:47.134Z",
+  "command_totals": {
+    "required": 17,
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0
+  },
+  "command_logs": {
+    "regression": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log",
+    "security": "docs/ai-koc/kanitlar/faz-3/guvenlik-testleri.log",
+    "build": "docs/ai-koc/kanitlar/faz-3/build.log"
+  },
+  "visual_validation": {
+    "status": "passed",
+    "evidence_path": "docs/ai-koc/kanitlar/faz-3/gorsel-dogrulama.md",
+    "viewports": [
+      "1440x900",
+      "768x1024",
+      "390x844"
+    ],
+    "live_data_used": false
+  },
+  "gate_totals": {
+    "required": 46,
+    "passed": 46,
+    "failed": 0,
+    "pending": 0
+  }
+}

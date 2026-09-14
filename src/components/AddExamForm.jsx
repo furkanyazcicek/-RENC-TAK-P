@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { FlaskConical, Save } from 'lucide-react'
-import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
+import useAcademicActivity from '../hooks/useAcademicActivity'
+import { academicStatusMessage } from '../lib/learning/academicActivity/client'
 import { COMMON_SUBJECTS, calcNet } from '../lib/examHelpers'
 import { toKey } from '../lib/insights'
 import { Alert, Button, Card, CardBody, CardHeader, Field, Input, Select } from './ui'
@@ -9,41 +10,6 @@ import { Alert, Button, Card, CardBody, CardHeader, Field, Input, Select } from 
 // toISOString() UTC verir; gece yarısından sonra "dün"e düşer.
 function todayStr() {
   return toKey(new Date())
-}
-
-// `exams` tablosunda henüz olmayabilecek alanlar. Bu proje iki farklı şema
-// geçmişi taşıyor (migration_*.sql dosyaları ile canlı şema örtüşmüyor —
-// bkz. supabase/setup_new_project.sql başlığı), o yüzden kolonun varlığına
-// güvenmek yerine yokluğunu tolere ediyoruz: PostgREST bilinmeyen kolonu
-// PGRST204 ile reddediyor, biz de tüm kaydı çöpe atmaktansa o alanı düşürüp
-// yeniden deniyor ve neyin eksik kaldığını öğrenciye söylüyoruz.
-const OPTIONAL_COLUMNS = ['exam_type', 'duration_minutes']
-
-const OPTIONAL_COLUMN_LABELS = {
-  exam_type: 'sınav türü',
-  duration_minutes: 'süre',
-}
-
-async function insertExam(supabaseClient, payload) {
-  const body = { ...payload }
-  const dropped = []
-
-  // En kötü ihtimalle her isteğe bağlı kolon için bir tur.
-  for (let attempt = 0; attempt <= OPTIONAL_COLUMNS.length; attempt++) {
-    const { error } = await supabaseClient.from('exams').insert(body)
-    if (!error) return { dropped }
-
-    const missing =
-      error.code === 'PGRST204'
-        ? OPTIONAL_COLUMNS.find((col) => col in body && error.message?.includes(`'${col}'`))
-        : null
-    if (!missing) return { error, dropped }
-
-    delete body[missing]
-    dropped.push(missing)
-  }
-
-  return { error: new Error('Branş denemesi kaydedilemedi.'), dropped }
 }
 
 /**
@@ -57,6 +23,7 @@ async function insertExam(supabaseClient, payload) {
  */
 export default function AddExamForm({ studentId, onAdded, bare = false }) {
   const { user } = useAuth()
+  const academic = useAcademicActivity()
   const targetStudentId = studentId ?? user?.id
 
   const [subject, setSubject] = useState('')
@@ -91,8 +58,9 @@ export default function AddExamForm({ studentId, onAdded, bare = false }) {
     // yazılmasına izin vermez — net gönderildiği sürece her kayıt hata
     // dönüyordu. LGS'nin /3 katsayısı okuma tarafında calcNet ile uygulanır
     // (bkz. BranchExamList#resolveNet).
-    const { error, dropped } = await insertExam(supabase, {
+    const response = await academic.performSensitive('branch_exam_create', {
       student_id: targetStudentId,
+      subject,
       topic: subject,
       exam_type: examType || null,
       exam_date: examDate,
@@ -103,8 +71,8 @@ export default function AddExamForm({ studentId, onAdded, bare = false }) {
     })
     setSaving(false)
 
-    if (error) {
-      setFeedback({ tone: 'danger', text: error.message })
+    if (response.status !== 'saved') {
+      setFeedback({ tone: response.status === 'offline_pending' ? 'warning' : 'danger', text: academicStatusMessage(response.status) })
     } else {
       setSubject('')
       setExamType('')
@@ -112,16 +80,7 @@ export default function AddExamForm({ studentId, onAdded, bare = false }) {
       setIncorrect('')
       setEmpty('')
       setDurationMinutes('')
-      setFeedback(
-        dropped.length
-          ? {
-              tone: 'warning',
-              text: `Branş denemesi kaydedildi (${net} net), ancak ${dropped
-                .map((col) => OPTIONAL_COLUMN_LABELS[col] ?? col)
-                .join(' ve ')} bilgisi veritabanında saklanamadı — eksik göç var.`,
-            }
-          : { tone: 'success', text: `Branş denemesi kaydedildi (${net} net).` }
-      )
+      setFeedback({ tone: 'success', text: `Branş denemesi kaydedildi (${net} net).` })
       onAdded?.()
     }
   }

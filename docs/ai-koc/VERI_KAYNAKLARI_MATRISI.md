@@ -49,7 +49,7 @@ Bir satır aynı kaynağı kullanan rotaları toplar; aşağıdaki tam rota sici
 | M37 — Açık/geliştirme/destek rotaları; /* fallback | Ürün içerik sahibi | LandingPage; PrivacyPolicy; LessonPreview; Reels; QuestionBankReview; preview defter | Statik dosya/örnek state; demo defter IndexedDB ayrı owner | Demo öğrenci değil | İçerik id/preview id | Ders önizleme örnek kazanımı olabilir | Gezinme/örnek etkileşim | Gerçek öğrenci sonucu yok | Demo state; içerik kaynakta değişir | Öğrenci olayı yok | Kamu veya DEV; protected capture sadece DEV | Hayır | Öğrenme kanıtı değil | Örnek/capture verisini gerçek öğrenci geçmişine katma | 1 | öğrenme sinyali değil |
 | M38 — Öğretmen/veli özel rotaları | Öğretmen/veli | Yetkili akademik tablolar ve ilişkiler | Supabase | Evet | Kaynak UUID | Kaynağına göre | Öğretmen atama/düzeltme M03–07; veli salt özet | Yeni öğrenci ölçümü yok | Yetkili kaynakta | Kaynak satırlarında açıklandı | ProtectedRoute role + RLS; veli özel sohbet/soru okuyamaz | Yalnız ortak akademik kaynaklar | Kaynağına bağlı | Öğrenci rotası değiller; kapsamdan sessizce çıkarılmadı | 4,9 | öğrenme sinyali değil |
 
-## App.jsx tam rota sicili — 62 rota
+## App.jsx tam rota sicili — 63 rota
 
 Öğrenci, kamu, eski yönlendirme, geliştirici ve öğretmen/veli yolları birlikte listelendi. Böylece rol veya görünür menü farkı bir rotayı taramadan düşürmez. Tembel yüklenen 24 sayfa da kendi kaynak satırına bağlıdır; kesin tembel yük listesi kaynakta `lazy(() => import(...))` çağrılarıdır.
 
@@ -59,6 +59,7 @@ Bir satır aynı kaynağı kullanan rotaları toplar; aşağıdaki tam rota sici
 | `/defterim-onizleme/:defterId?` | M37 | `src/App.jsx:163` |
 | `/` | M37 | `src/App.jsx:165` |
 | `/login` | M36 | `src/App.jsx:177` |
+| `/deneyim/*` | M37 | `src/App.jsx:201` |
 | `/register` | M36 | `src/App.jsx:191` |
 | `/update-password` | M36 | `src/App.jsx:203` |
 | `/gizlilik` | M37 | `src/App.jsx:208` |
@@ -156,9 +157,9 @@ Kaynak taraması `src/` içindeki bütün doğrudan `localStorage`, `sessionStor
 | `drkoc-almanca-v1` | M28; Almanca için aynı anlam ailesi | Kullanıcı kimliği yok; yalnız bu tarayıcı profili | Bağlanacak Faz 5 |
 | `drkoc-fransizca-v1` | M29; Fransızca için aynı anlam ailesi | Kullanıcı kimliği yok; yalnız bu tarayıcı profili | Bağlanacak Faz 5 |
 | `drkoc-ispanyolca-v1` | M30; İspanyolca için aynı anlam ailesi | Kullanıcı kimliği yok; yalnız bu tarayıcı profili | Bağlanacak Faz 5 |
-| `drkoc-fizik-ilerleme-v1` | M21; deney/seviye/kavram/başarım/rozet/konum | Kullanıcı kimliği yok; yalnız cihaz | Bağlanacak Faz 3 |
-| `drkoc-biyoloji-v1` | M22; görev+kontrol, hata, favori, ustalık/tekrar | Kullanıcı kimliği yok; yalnız cihaz | Bağlanacak Faz 3 |
-| `drkoc-cografya-v1` | M23; görev, hata ve son 20 TYT denemesi | Kullanıcı kimliği yok; yalnız cihaz | Bağlanacak Faz 3 |
+| `drkoc-fizik-ilerleme-v1` | M21; deney/seviye/kavram/başarım/rozet/konum | Kullanıcı kimliği yok; yalnız cihaz | Faz 3'te açık, hash'li snapshot aktarımı yerelde bağlandı; sessiz sahiplenme yok, canlıya uygulanmadı |
+| `drkoc-biyoloji-v1` | M22; görev+kontrol, hata, favori, ustalık/tekrar | Kullanıcı kimliği yok; yalnız cihaz | Faz 3'te açık, hash'li snapshot aktarımı yerelde bağlandı; sessiz sahiplenme yok, canlıya uygulanmadı |
+| `drkoc-cografya-v1` | M23; görev, hata ve son 20 TYT denemesi | Kullanıcı kimliği yok; yalnız cihaz | Faz 3'te açık, hash'li snapshot aktarımı yerelde bağlandı; TYT finali sunucu puanlı, canlıya uygulanmadı |
 | `drkoc-ai-solve-reviews:<userId>` | M12; oturum kimliğine göre tekrar durumu yedeği | Kullanıcı kimliği anahtarda; yalnız cihaz, sunucu yazısı başarılıysa cihazlar arası | Bağlanacak Faz 4/8 |
 | `drkoc:exam-setup-snoozed-until` | Sınav profili kurulum kartının erteleme tarihi | Kullanıcı kimliği yok; cihaz tercihi | Öğrenme sinyali değil |
 | `drkoc-sidebar-collapsed` | Masaüstü kenar çubuğu açık/kapalı | Kullanıcı kimliği yok; cihaz tercihi | Öğrenme sinyali değil |
@@ -205,3 +206,20 @@ Depodaki 37 SQL dosyasından çıkarılan bütün uygulama tabloları aşağıda
 | `library-files` | Kütüphane PDF/görsel; public okuma, öğretmen yazma/silme | İçerik kaynağı; açılması başarı değil |
 | `chat-attachments` | Özel mesaj eki; konuşma taraflarına süreli URL | Koç kapsamı dışında |
 | `lesson-audio` | Ders anlatım önbelleği; özel kova ve imzalı URL | Varlık/oynatma akademik sonuç değil |
+
+## Faz 4 yerel akademik bağlantı izdüşümü — 13 Eylül 2026
+
+Faz 0 satırları başlangıç envanteri olarak korunur. Güncel yerel uygulamada `learning-academic-registry@1` ve `learning-academic-adapters@1`, M03–M07, M11–M12, M31, M33 ve M36'yı kaynak anlamını değiştirmeden Faz 2 defterine bağlar. M01/M02/M32/M38 ikinci bir kanıt üretmez.
+
+| Kaynak | Yerel bağlantı | Kanıt/anlam sınırı |
+|---|---|---|
+| M03 günlük | Kaynak-özel create/correction/tombstone RPC; dış/platform/AI Koç kökeni açık | Süre/soru sayısı öğrenci beyanıdır; not common metadata'ya girmez. |
+| M04–M05 denemeler | Parent+child tek transaction; LGS `/3`, diğer türler `/4`; correction/tombstone | Genel ve branş denemesi benzer ad/tarihle birleşmez; bilinmeyen türden net uydurulmaz. |
+| M06 ödev | Aktif öğretmen atar, öğrenci yalnız durum değiştirir | Tamamlandı başarı/doğruluk değildir; atama ve öğrenci durumu ayrı olaydır. |
+| M07 soru | Öğrenci gönderimi, öğretmen yanıtı/canvas ve öğretmen→öğrenci paylaşımı kaynak-özel RPC'dir | Soru/yanıt/strokes/path deftere kopyalanmaz; `Çözüldü` öğrenci doğruluğu değildir. |
+| M11–M12 AI Solve | Dayanıklı claim/finalize dar sunucu sınırı; yardım/kontrol/açık öz bildirim/kalite/review ayrık | Model çıktısı model çıkarımıdır; kalite oyu doğruluk değildir; tekrar correction/snapshot olarak izlenir. |
+| M31 canlı katılım | İdempotent katılım kaydı | Katılım sistem gözlemidir, ustalık değildir. |
+| M33 paylaşılan özet | Draft kanıt değildir; share/update/unshare ve öğrenci enum feedback sürümlüdür | Ham özet/tahta/private not deftere girmez. |
+| M36 profil hedefi | Sınav hedefi/öğrenci bağlamı `context_only` öz bildirimidir | Profil bağlamı öğrenme başarısı değildir. |
+
+Yeni `academic-question-images` kovası private'tır; yalnız sahip öğrenci ve aktif bağlı öğretmen kontrollü erişir. Eski public `question-images` nesnelerinin canlı/yıkıcı taşınması yapılmadı ve Faz 9 borcu olarak kaldı. Ayrıntı [Faz 4 mimarisinde](FAZ_4_ANA_AKADEMIK_KAYIT_MIMARISI.md), makine kapsamı [kaynak kanıtındadır](kanitlar/faz-4/faz-4-kaynak-kapsami.json).

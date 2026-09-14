@@ -130,7 +130,7 @@ export default function LessonDocument({
                     type="button"
                     onClick={() => onSectionComplete(section.id)}
                     disabled={done}
-                    className={`focus-ring inline-flex items-center gap-2 rounded-btn px-3 py-1.5 text-[0.875rem] font-semibold transition-colors ${
+                    className={`focus-ring inline-flex min-h-11 items-center gap-2 rounded-btn px-3 py-1.5 text-[0.875rem] font-semibold transition-colors ${
                       done
                         ? 'cursor-default text-success-700'
                         : 'border border-line-strong bg-surface text-ink/70 hover:border-brand-400 hover:text-brand-700'

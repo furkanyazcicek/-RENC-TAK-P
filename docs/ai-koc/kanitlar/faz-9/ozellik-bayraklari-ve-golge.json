@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "disabled": {
+    "rollout_version": "learning-rollout-flags@1",
+    "source_code": "daily_logs",
+    "source_events_enabled": false,
+    "projection_mode": "shadow",
+    "coach_analysis_enabled": false,
+    "coach_writes_enabled": false,
+    "rollout_bucket": 83,
+    "user_token": "ab244f7f2d40",
+    "contains_raw_student_id": false
+  },
+  "test_group_enabled": {
+    "rollout_version": "learning-rollout-flags@1",
+    "source_code": "daily_logs",
+    "source_events_enabled": false,
+    "projection_mode": "disabled",
+    "coach_analysis_enabled": true,
+    "coach_writes_enabled": true,
+    "rollout_bucket": 83,
+    "user_token": "ab244f7f2d40",
+    "contains_raw_student_id": false
+  },
+  "shadow": {
+    "version": "learning-rollout-flags@1",
+    "exact_match": true,
+    "legacy_chars": 23,
+    "candidate_chars": 23,
+    "raw_content_stored": false,
+    "retention_days": 7
+  }
+}

@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { MessageCircle, Search, Users } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
@@ -14,6 +15,7 @@ const CAPTURE_CONTACTS = [
 
 export default function Messages() {
   const { user, role } = useAuth()
+  const [searchParams] = useSearchParams()
   const captureMode = isProductCapture()
   const [contacts, setContacts] = useState([])
   const [selected, setSelected] = useState(null)
@@ -21,6 +23,9 @@ export default function Messages() {
   const [loading, setLoading] = useState(true)
 
   const isTeacher = role === 'teacher'
+  const requestedContactId = isTeacher
+    ? searchParams.get('ogrenci')
+    : searchParams.get('ogretmen')
 
   useEffect(() => {
     async function loadContacts() {
@@ -46,6 +51,13 @@ export default function Messages() {
     }
     if (user || captureMode) loadContacts()
   }, [user, isTeacher, captureMode])
+
+  // Bildirimden gelindiğinde iki rolde de doğru sohbeti doğrudan aç.
+  useEffect(() => {
+    if (!requestedContactId || contacts.length === 0) return
+    const requested = contacts.find((contact) => contact.id === requestedContactId)
+    if (requested) setSelected(requested)
+  }, [contacts, requestedContactId])
 
   const filtered = useMemo(() => {
     const q = query.trim().toLocaleLowerCase('tr-TR')

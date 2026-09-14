@@ -9,6 +9,11 @@ import {
 } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
+import {
+  captureStudentProfile,
+  isProductCapture,
+  isProductCaptureState,
+} from '../lib/productCapture'
 import { buildHomeworkInsights, homeworkStats, isHomeworkOverdue } from '../lib/insights'
 import HomeworkForm from '../components/HomeworkForm'
 import HomeworkList from '../components/HomeworkList'
@@ -21,12 +26,19 @@ export default function Homeworks() {
   const [profile, setProfile] = useState(null)
   const [loading, setLoading] = useState(true)
   const [tab, setTab] = useState('pending')
-  const [formOpen, setFormOpen] = useState(false)
+  const [formOpen, setFormOpen] = useState(() => isProductCaptureState('form'))
 
   const isTeacher = role === 'teacher'
 
   const load = useCallback(async () => {
     if (!user) return
+    if (isProductCapture()) {
+      setHomeworks([
+        { id: 'capture-homework-1', student_id: '44000000-0000-4000-8000-000000000001', title: 'Problemler · 20 soru', description: 'Karma yeni nesil sorular', due_date: '2026-09-15', status: 'Yapılıyor', profiles: { full_name: 'Deniz Kaya' } },
+        { id: 'capture-homework-2', student_id: '44000000-0000-4000-8000-000000000001', title: 'Hareket konu tekrarı', description: null, due_date: '2026-09-11', status: 'Tamamlandı', profiles: { full_name: 'Deniz Kaya' } },
+      ])
+      setProfile(captureStudentProfile()); setLoading(false); return
+    }
     let query = supabase
       .from('homeworks')
       .select(isTeacher ? '*, profiles!homeworks_student_id_fkey(full_name)' : '*')

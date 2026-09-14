@@ -84,7 +84,7 @@ export default function BookHomeHero() {
   }, [])
 
   function goToChapter(index) {
-    if (reducedRef.current || fallback) { goToExperience(); return }
+    if (reducedRef.current || fallback) return
     const section = sectionRef.current
     const sticky = section.querySelector('.book-home__sticky')
     const top = window.scrollY + section.getBoundingClientRect().top - 73
@@ -94,20 +94,11 @@ export default function BookHomeHero() {
     window.scrollTo({ top: top + (section.offsetHeight - sticky.clientHeight) * chapterProgress(index), behavior: 'instant' })
   }
 
-  function goToExperience(event) {
-    event?.preventDefault()
-    const destination = document.getElementById('kitap-deneyimi')
-    // The skip action must move keyboard focus, not just the viewport.
-    destination?.querySelector('h2')?.focus({ preventScroll: true })
-    destination?.scrollIntoView({ behavior: reducedRef.current ? 'instant' : 'smooth', block: 'start' })
-  }
-
   return (
     <section ref={sectionRef} id="top" className={`book-home${reduced || fallback ? ' book-home--still' : ''}`} aria-labelledby="kitap-baslik" data-chapter={active}>
       <div className="book-home__sticky">
         <div className="book-home__overline">
           <span>{copy.ustYazi}</span>
-          <a href="#kitap-deneyimi" onClick={goToExperience} className="book-home__skip focus-ring">{copy.gec}<ArrowRight aria-hidden="true" /></a>
         </div>
         <h1 id="kitap-baslik" className="sr-only">{copy.baslik.join(' ')}</h1>
         <p className="sr-only">{copy.aciklama} Sayfaları kaydırarak veya bölüm düğmeleriyle keşfedebilirsin.</p>
@@ -140,8 +131,11 @@ export default function BookHomeHero() {
             <div className="book-home__invitation">
               <p>{copy.aciklama}</p>
               <div>
-                <button type="button" className="book-home__open focus-ring" onClick={() => goToChapter(0)}>{copy.ac}<ArrowDown aria-hidden="true" /></button>
-                <Link to="/deneyim" className="book-home__try focus-ring">Deneyimle<ArrowRight aria-hidden="true" /></Link>
+                {!reduced && !fallback && <button type="button" className="book-home__open focus-ring" onClick={() => goToChapter(0)}>{copy.ac}<ArrowDown aria-hidden="true" /></button>}
+                <Link to="/deneyim" className="book-home__try focus-ring">
+                  <span><small>Hesap gerekmez</small><strong>Demoyu deneyimle</strong></span>
+                  <ArrowRight aria-hidden="true" />
+                </Link>
                 <span className="book-home__scroll-hint"><Mouse aria-hidden="true" />{reduced ? 'Hareket azaltılmış görünüm' : copy.kaydir}</span>
               </div>
             </div>
@@ -153,7 +147,7 @@ export default function BookHomeHero() {
               </nav>
               <div className="book-home__arrows">
                 <button type="button" aria-label="Önceki bölüm" disabled={active === 0} onClick={() => goToChapter(active - 1)} className="focus-ring"><ChevronLeft aria-hidden="true" /></button>
-                <button type="button" aria-label={active === 4 ? 'Canlı deneyime geç' : 'Sonraki bölüm'} onClick={() => active === 4 ? goToExperience() : goToChapter(active + 1)} className="focus-ring"><ChevronRight aria-hidden="true" /></button>
+                <button type="button" aria-label={active === 4 ? 'Son bölümdesin' : 'Sonraki bölüm'} disabled={active === 4} onClick={() => goToChapter(active + 1)} className="focus-ring"><ChevronRight aria-hidden="true" /></button>
               </div>
             </div>
           )}

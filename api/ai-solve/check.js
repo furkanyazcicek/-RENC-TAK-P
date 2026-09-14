@@ -27,7 +27,7 @@ import { totalCost } from '../_lib/solve/cost.js'
 import { checkStudentWork } from '../_lib/solve/engine.js'
 import { GeminiError } from '../_lib/solve/gemini.js'
 import { validatePath } from '../_lib/solve/image.js'
-import { loadSession, recordEvent } from '../_lib/solve/persistence.js'
+import { loadSession, recordCheckEvent } from '../_lib/solve/persistence.js'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -53,6 +53,7 @@ export default async function handler(req, res) {
   if (!workPath) return sendError(res, 400, 'solve_invalid_image')
 
   const sessionId = isUuid(body?.sessionId) ? body.sessionId : null
+  if (!isUuid(body?.clientActionId)) return sendError(res, 400, 'invalid_request')
 
   let session = null
   if (sessionId) {
@@ -71,7 +72,7 @@ export default async function handler(req, res) {
     kind: 'solve',
     limits: limitsForProfile(profile),
   })
-  if (!limit.allowed) return sendError(res, 429, limit.code)
+  if (!limit.allowed) return sendError(res, limit.code === 'rate_limit_unavailable' ? 503 : 429, limit.code)
 
   const startedAt = Date.now()
   const abortController = new AbortController()
@@ -96,27 +97,14 @@ export default async function handler(req, res) {
     })
 
     if (session) {
-      await recordEvent(supabase, user.id, session.id, {
-        kind: 'check',
+      await recordCheckEvent(user.id, session.id, {
         answer: result.verdict ?? null,
+        studentCorrect: result.status === 'ok' ? result.verdict === 'dogru' : false,
+        errorType: result.firstError?.error_type ?? null,
         role: result.role,
         modelId: result.modelId,
-        usage: result.usage,
-        costUsd: cost.usd,
-        durationMs: Date.now() - startedAt,
+        clientActionId: body.clientActionId,
       })
-
-      // Öğrencinin bu soruyu doğru çözüp çözmediği ve hangi hatayı
-      // yaptığı — §19'daki performans alanları ve §20'deki AI Koç
-      // sinyali buradan besleniyor.
-      await supabase
-        .from('ai_solution_sessions')
-        .update({
-          student_correct: result.status === 'ok' ? result.verdict === 'dogru' : null,
-          error_type: result.firstError?.error_type ?? null,
-        })
-        .eq('id', session.id)
-        .eq('student_id', user.id)
     }
 
     if (result.status === 'unreadable') {
@@ -140,7 +128,7 @@ export default async function handler(req, res) {
     })
   } catch (error) {
     const code = error instanceof GeminiError ? error.code : 'unknown'
-    logSolveError('check', error, { studentId: user.id })
+    logSolveError('check', error)
     return sendError(res, 502, code)
   }
 }

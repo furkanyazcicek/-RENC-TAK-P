@@ -128,7 +128,7 @@ export default function Modal({
               )}
               {description && <p className="mt-0.5 text-sm text-ink/65">{description}</p>}
             </div>
-            <IconButton icon={X} label="Kapat" onClick={onClose} className="-mr-1 -mt-0.5 shrink-0" />
+            <IconButton icon={X} label="Kapat" size="lg" onClick={onClose} className="-mr-1 -mt-0.5 shrink-0" />
           </div>
 
           <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5 sm:p-6">{children}</div>

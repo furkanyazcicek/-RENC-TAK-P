@@ -1,12 +1,15 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { supabase } from '../lib/supabaseClient'
+import { unsubscribeFromPush } from '../lib/push'
+import { captureStudentProfile, isProductCapture } from '../lib/productCapture'
 
 const AuthContext = createContext(null)
 
 export function AuthProvider({ children }) {
-  const [session, setSession] = useState(null)
-  const [profile, setProfile] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const captureProfile = isProductCapture() ? captureStudentProfile() : null
+  const [session, setSession] = useState(() => captureProfile ? { user: { id: captureProfile.id } } : null)
+  const [profile, setProfile] = useState(() => captureProfile)
+  const [loading, setLoading] = useState(() => !captureProfile)
 
   async function loadProfile(userId) {
     const { data, error } = await supabase
@@ -23,6 +26,12 @@ export function AuthProvider({ children }) {
   }
 
   useEffect(() => {
+    if (captureProfile) {
+      setSession({ user: { id: captureProfile.id } })
+      setProfile(captureProfile)
+      setLoading(false)
+      return undefined
+    }
     supabase.auth.getSession().then(async ({ data: { session } }) => {
       setSession(session)
       if (session?.user) await loadProfile(session.user.id)
@@ -39,7 +48,7 @@ export function AuthProvider({ children }) {
     })
 
     return () => listener.subscription.unsubscribe()
-  }, [])
+  }, [captureProfile?.id])
 
   async function signIn(email, password) {
     const { error } = await supabase.auth.signInWithPassword({ email, password })
@@ -62,6 +71,15 @@ export function AuthProvider({ children }) {
   }
 
   async function signOut() {
+    // Push aboneliği hesap sahibine bağlıdır. Aynı tablette başka bir hesap
+    // açıldığında eski öğretmenin bildirimleri görünmesin diye çıkıştan önce
+    // bu cihazın aboneliğini kaldırırız. Tarayıcı desteği/bağlantı yoksa çıkış
+    // yine devam eder.
+    try {
+      await unsubscribeFromPush()
+    } catch {
+      // Oturum kapatma, bildirim temizliğindeki geçici hataya bağlanamaz.
+    }
     await supabase.auth.signOut()
   }
 

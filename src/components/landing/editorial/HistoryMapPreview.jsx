@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowUpRight, Compass, Minus, Plus, RotateCcw } from 'lucide-react'
-import maplibregl from 'maplibre-gl'
+import * as maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { kaynakZamanBaglami } from '../../../lib/tarihAtlasi/veriModeli'
 import {

@@ -9,7 +9,6 @@ export const ANASAYFA_ICERIGI = {
     aciklama: 'Atlaslardan ders notlarına, sorulardan kendi çalışma rotana. Öğrenmenin bütün sayfaları bir arada.',
     kaydir: 'Kaydırarak kitabı keşfet',
     ac: 'Kitabı aç',
-    gec: 'Deneyime geç',
     sonBaslik: 'Merak et, keşfet, öğren.',
     sonAciklama: 'Artık sayfaya sen yön ver. Bir alan seç, değişkeni değiştir ve sonucu kendi gözlerinle gör.',
     kurucuNotu: {
@@ -36,7 +35,6 @@ export const ANASAYFA_ICERIGI = {
   },
   navigasyon: {
     baglantilar: [
-      { href: '#deneyim', etiket: 'Deneyim' },
       { href: '#nasil-calisir', etiket: 'Nasıl çalışır' },
       { href: '#guven', etiket: 'Güven' },
     ],
@@ -53,7 +51,6 @@ export const ANASAYFA_ICERIGI = {
     aciklama:
       'Atlasları keşfet, zorlandığın soruyu adım adım çöz ve bugünkü çalışmanı kendi verine göre şekillendir. DRKOÇ, öğrenmeyi ekrandan çıkan bir deneyime dönüştürür.',
     birincilCta: { etiket: 'Öğrenmeye Başla', hedef: '/register' },
-    ikincilCta: { etiket: 'Deneyimi Keşfet', hedef: '#deneyim' },
     guvenNotlari: [
       'Öğrenci, öğretmen ve veli için ayrı deneyim',
       'Tanıtım sahnesi hiçbir veriyi kaydetmez',

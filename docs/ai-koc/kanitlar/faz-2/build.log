@@ -1,0 +1,246 @@
+DRKOÇ AI Koç Faz 2 — üretim derlemesi
+Komut: npm run build
+Exit code: 0
+Duvar süresi (s): 25.685856292
+
+
+> ogrenci-takip@1.0.0 build
+> node --max-old-space-size=6144 node_modules/vite/bin/vite.js build
+
+vite v5.4.21 building for production...
+transforming...
+✓ 3737 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/registerSW.js                                         0.13 kB
+dist/manifest.webmanifest                                  0.53 kB
+dist/index.html                                            1.22 kB │ gzip:     0.57 kB
+dist/assets/KaTeX_Size3-Regular-CTq5MqoE.woff              4.42 kB
+dist/assets/KaTeX_Size4-Regular-Dl5lxZxV.woff2             4.93 kB
+dist/assets/KaTeX_Size2-Regular-Dy4dx90m.woff2             5.21 kB
+dist/assets/KaTeX_Size1-Regular-mCD8mA8B.woff2             5.47 kB
+dist/assets/KaTeX_Size4-Regular-BF-4gkZK.woff              5.98 kB
+dist/assets/KaTeX_Size2-Regular-oD1tc_U0.woff              6.19 kB
+dist/assets/KaTeX_Size1-Regular-C195tn64.woff              6.50 kB
+dist/assets/KaTeX_Caligraphic-Regular-Di6jR-x-.woff2       6.91 kB
+dist/assets/KaTeX_Caligraphic-Bold-Dq_IR9rO.woff2          6.91 kB
+dist/assets/KaTeX_Size3-Regular-DgpXs0kz.ttf               7.59 kB
+dist/assets/KaTeX_Caligraphic-Regular-CTRA-rTL.woff        7.66 kB
+dist/assets/KaTeX_Caligraphic-Bold-BEiXGLvX.woff           7.72 kB
+dist/assets/KaTeX_Script-Regular-D3wIWfF6.woff2            9.64 kB
+dist/assets/KaTeX_SansSerif-Regular-DDBCnlJ7.woff2        10.34 kB
+dist/assets/KaTeX_Size4-Regular-DWFBv043.ttf              10.36 kB
+dist/assets/KaTeX_Script-Regular-D5yQViql.woff            10.59 kB
+dist/assets/KaTeX_Fraktur-Regular-CTYiF6lA.woff2          11.32 kB
+dist/assets/KaTeX_Fraktur-Bold-CL6g_b3V.woff2             11.35 kB
+dist/assets/KaTeX_Size2-Regular-B7gKUWhC.ttf              11.51 kB
+dist/assets/KaTeX_SansSerif-Italic-C3H0VqGB.woff2         12.03 kB
+dist/assets/KaTeX_SansSerif-Bold-D1sUS0GD.woff2           12.22 kB
+dist/assets/KaTeX_Size1-Regular-Dbsnue_I.ttf              12.23 kB
+dist/assets/KaTeX_SansSerif-Regular-CS6fqUqJ.woff         12.32 kB
+dist/assets/KaTeX_Caligraphic-Regular-wX97UBjC.ttf        12.34 kB
+dist/assets/KaTeX_Caligraphic-Bold-ATXxdsX0.ttf           12.37 kB
+dist/assets/KaTeX_Fraktur-Regular-Dxdc4cR9.woff           13.21 kB
+dist/assets/KaTeX_Fraktur-Bold-BsDP51OF.woff              13.30 kB
+dist/assets/KaTeX_Typewriter-Regular-CO6r4hn1.woff2       13.57 kB
+dist/assets/KaTeX_SansSerif-Italic-DN2j7dab.woff          14.11 kB
+dist/assets/KaTeX_SansSerif-Bold-DbIhKOiC.woff            14.41 kB
+dist/assets/KaTeX_Typewriter-Regular-C0xS9mPB.woff        16.03 kB
+dist/assets/KaTeX_Math-BoldItalic-CZnvNsCZ.woff2          16.40 kB
+dist/assets/KaTeX_Math-Italic-t53AETM-.woff2              16.44 kB
+dist/assets/KaTeX_Script-Regular-C5JkGWo-.ttf             16.65 kB
+dist/assets/KaTeX_Main-BoldItalic-DxDJ3AOS.woff2          16.78 kB
+dist/assets/KaTeX_Main-Italic-NWA7e6Wa.woff2              16.99 kB
+dist/assets/KaTeX_Math-BoldItalic-iY-2wyZ7.woff           18.67 kB
+dist/assets/KaTeX_Math-Italic-DA0__PXp.woff               18.75 kB
+dist/assets/KaTeX_Main-BoldItalic-SpSLRI95.woff           19.41 kB
+dist/assets/KaTeX_SansSerif-Regular-BNo7hRIc.ttf          19.44 kB
+dist/assets/KaTeX_Fraktur-Regular-CB_wures.ttf            19.57 kB
+dist/assets/KaTeX_Fraktur-Bold-BdnERNNW.ttf               19.58 kB
+dist/assets/KaTeX_Main-Italic-BMLOBm91.woff               19.68 kB
+dist/assets/KaTeX_SansSerif-Italic-YYjJ1zSn.ttf           22.36 kB
+dist/assets/KaTeX_SansSerif-Bold-CFMepnvq.ttf             24.50 kB
+dist/assets/KaTeX_Main-Bold-Cx986IdX.woff2                25.32 kB
+dist/assets/KaTeX_Main-Regular-B22Nviop.woff2             26.27 kB
+dist/assets/KaTeX_Typewriter-Regular-D3Ib7_Hf.ttf         27.56 kB
+dist/assets/KaTeX_AMS-Regular-BQhdFMY1.woff2              28.08 kB
+dist/assets/KaTeX_Main-Bold-Jm3AIy58.woff                 29.91 kB
+dist/assets/KaTeX_Main-Regular-Dr94JaBh.woff              30.77 kB
+dist/assets/KaTeX_Math-BoldItalic-B3XSjfu4.ttf            31.20 kB
+dist/assets/KaTeX_Math-Italic-flOr_0UB.ttf                31.31 kB
+dist/assets/KaTeX_Main-BoldItalic-DzxPMmG6.ttf            32.97 kB
+dist/assets/KaTeX_AMS-Regular-DMm9YOAa.woff               33.52 kB
+dist/assets/KaTeX_Main-Italic-3WenGoN9.ttf                33.58 kB
+dist/assets/KaTeX_Main-Bold-waoOVXN0.ttf                  51.34 kB
+dist/assets/KaTeX_Main-Regular-ypZvNtVU.ttf               53.58 kB
+dist/assets/KaTeX_AMS-Regular-DRggAlZN.ttf                63.63 kB
+dist/assets/pdf.worker.min-Dr1KORA9.mjs                1,286.28 kB
+dist/assets/ReelsSabitIvmeliHareket-CJQOkVNr.css           3.40 kB │ gzip:     0.65 kB
+dist/assets/Almanca-DBzN3bBI.css                           3.77 kB │ gzip:     1.08 kB
+dist/assets/Ingilizce-fwBnFIed.css                         3.77 kB │ gzip:     1.08 kB
+dist/assets/Fransizca-CQGQOunU.css                         3.77 kB │ gzip:     1.08 kB
+dist/assets/Ispanyolca-BPYlXpqj.css                        3.77 kB │ gzip:     1.09 kB
+dist/assets/reels-sabit-ivmeli-atis-y03ABrjs.css           3.80 kB │ gzip:     1.31 kB
+dist/assets/HistoryMapPreview-LLyUxS4Z.css                 5.04 kB │ gzip:     1.58 kB
+dist/assets/LessonStudio-C-aAuwzB.css                      5.04 kB │ gzip:     1.47 kB
+dist/assets/ReelsDrkocUygulamaTanitim-CJDyTjMZ.css         6.72 kB │ gzip:     1.73 kB
+dist/assets/atlas-ortak-Bw3BIa9Y.css                      12.47 kB │ gzip:     2.91 kB
+dist/assets/Defterim-D11bsf2Z.css                         19.77 kB │ gzip:     4.21 kB
+dist/assets/KimyaAtlasi-CSudSL9-.css                      27.57 kB │ gzip:     5.89 kB
+dist/assets/katex-dRWncRqa.css                            29.23 kB │ gzip:     8.04 kB
+dist/assets/FizikAtlasi-BTgGuTAY.css                      38.46 kB │ gzip:     7.91 kB
+dist/assets/PadisahGecidi-LTPOndmr.css                    57.37 kB │ gzip:    10.78 kB
+dist/assets/BiyolojiAtlasi-B10TwKld.css                   91.68 kB │ gzip:    17.86 kB
+dist/assets/LandingPageEnhanced-DsqpF0TZ.css             115.15 kB │ gzip:    21.27 kB
+dist/assets/CografyaAtlasi-nZUrvo7i.css                  156.55 kB │ gzip:    27.83 kB
+dist/assets/index-DQYSOUlh.css                           374.64 kB │ gzip:    61.16 kB
+dist/assets/pdf.worker.min-8tKisUQY.js                     0.07 kB │ gzip:     0.09 kB
+dist/assets/moon-CzedDgKs.js                               0.31 kB │ gzip:     0.25 kB
+dist/assets/OlcumPaneli-EaNWgG3A.js                        0.32 kB │ gzip:     0.23 kB
+dist/assets/move-up-right-Du5aaTOK.js                      0.33 kB │ gzip:     0.27 kB
+dist/assets/gauge-C-DI8Wrp.js                              0.35 kB │ gzip:     0.27 kB
+dist/assets/triangle-C4voRUOw.js                           0.35 kB │ gzip:     0.27 kB
+dist/assets/droplet-kpTJ5yjw.js                            0.38 kB │ gzip:     0.29 kB
+dist/assets/star-8SKK71Nx.js                               0.38 kB │ gzip:     0.29 kB
+dist/assets/atlas-ortak-CdHggLB3.js                        0.39 kB │ gzip:     0.29 kB
+dist/assets/beaker-DsHcv4NW.js                             0.39 kB │ gzip:     0.29 kB
+dist/assets/heart-DHXKP1od.js                              0.41 kB │ gzip:     0.31 kB
+dist/assets/book-marked-Cxf_TzVZ.js                        0.42 kB │ gzip:     0.31 kB
+dist/assets/mouse-pointer-2-DBKF2Mkh.js                    0.42 kB │ gzip:     0.32 kB
+dist/assets/compass-DvFWreuf.js                            0.42 kB │ gzip:     0.31 kB
+dist/assets/log-in-B06kxa5w.js                             0.43 kB │ gzip:     0.32 kB
+dist/assets/mic-Ca2fgSGc.js                                0.44 kB │ gzip:     0.32 kB
+dist/assets/shapes-Drank6Rl.js                             0.49 kB │ gzip:     0.35 kB
+dist/assets/BolgeBasligi-DLkOIDDh.js                       0.49 kB │ gzip:     0.32 kB
+dist/assets/shield-alert-3ebMb1kA.js                       0.52 kB │ gzip:     0.36 kB
+dist/assets/scale-DGxFPUYf.js                              0.53 kB │ gzip:     0.34 kB
+dist/assets/droplets-CZTKySEk.js                           0.54 kB │ gzip:     0.39 kB
+dist/assets/shuffle-DHtJPOAh.js                            0.55 kB │ gzip:     0.36 kB
+dist/assets/ruler-BEyQcM7B.js                              0.57 kB │ gzip:     0.35 kB
+dist/assets/map-pinned-7NApnC7g.js                         0.57 kB │ gzip:     0.40 kB
+dist/assets/sprout-2onEcBlz.js                             0.57 kB │ gzip:     0.39 kB
+dist/assets/waves-4Wfror_l.js                              0.59 kB │ gzip:     0.31 kB
+dist/assets/map-DgHDEMwH.js                                0.59 kB │ gzip:     0.38 kB
+dist/assets/eye-off-pRr4NR6F.js                            0.60 kB │ gzip:     0.38 kB
+dist/assets/zap-DECny-db.js                                0.82 kB │ gzip:     0.42 kB
+dist/assets/Arac-CJ18dQah.js                               0.83 kB │ gzip:     0.47 kB
+dist/assets/AtlasPreviewFrame---73HKhj.js                  0.91 kB │ gzip:     0.53 kB
+dist/assets/vektor-CnUQsjXy.js                             0.96 kB │ gzip:     0.53 kB
+dist/assets/brain-circuit-B7BH8jRf.js                      0.97 kB │ gzip:     0.50 kB
+dist/assets/video-off-CAqsKN7T.js                          1.01 kB │ gzip:     0.49 kB
+dist/assets/modeller-DI56AyTE.js                           1.02 kB │ gzip:     0.55 kB
+dist/assets/zaman-CDBplzBo.js                              1.04 kB │ gzip:     0.53 kB
+dist/assets/hareket-BWD1Lvjq.js                            1.05 kB │ gzip:     0.57 kB
+dist/assets/volume-x-CRaD3ZAA.js                           1.07 kB │ gzip:     0.44 kB
+dist/assets/Grafikler-Hae5hK6u.js                          1.81 kB │ gzip:     0.92 kB
+dist/assets/PusulaBolgesi-Cbib7Usw.js                      2.06 kB │ gzip:     0.99 kB
+dist/assets/sistemler-C_gapon_.js                          2.16 kB │ gzip:     1.11 kB
+dist/assets/BiyolojiGrafik-B0FdfB5k.js                     2.42 kB │ gzip:     1.17 kB
+dist/assets/StudentLessons-CQsYQL6k.js                     2.53 kB │ gzip:     1.35 kB
+dist/assets/Gorseller-BgySTOHY.js                          2.59 kB │ gzip:     1.22 kB
+dist/assets/KimyaOnizleme-DEIsu9uP.js                      2.68 kB │ gzip:     1.17 kB
+dist/assets/GezegenBolgesi-CIJbqZkK.js                     2.89 kB │ gzip:     1.49 kB
+dist/assets/LessonRow-6yTTnn77.js                          2.89 kB │ gzip:     1.23 kB
+dist/assets/basinc-DL2IzFBE.js                             3.30 kB │ gzip:     1.54 kB
+dist/assets/BiyolojiOnizleme-3SMlKOBC.js                   3.34 kB │ gzip:     1.42 kB
+dist/assets/TeacherLessons-lhjnOBWH.js                     3.76 kB │ gzip:     1.75 kB
+dist/assets/YerkureBolgesi-BZey0kUB.js                     3.82 kB │ gzip:     1.96 kB
+dist/assets/TeacherInvitePage-0fEW2Mwp.js                  4.31 kB │ gzip:     1.85 kB
+dist/assets/CografyaOnizleme-DbWTUwFf.js                   4.64 kB │ gzip:     1.99 kB
+dist/assets/YasamKusaklariBolgesi-763uZb3K.js              4.76 kB │ gzip:     2.23 kB
+dist/assets/Grafik-DK-FbRx9.js                             4.79 kB │ gzip:     1.95 kB
+dist/assets/FizikOnizleme-C1CitTuF.js                      4.86 kB │ gzip:     2.20 kB
+dist/assets/NufusBolgesi-CJ1GdP15.js                       5.03 kB │ gzip:     2.32 kB
+dist/assets/KonumBolgesi-Btl0YgDK.js                       5.06 kB │ gzip:     2.32 kB
+dist/assets/YerlesmeBolgesi-Dr6ioP3_.js                    5.07 kB │ gzip:     2.36 kB
+dist/assets/HaritaBolgesi-BefXeUAO.js                      5.08 kB │ gzip:     2.34 kB
+dist/assets/EkonomiBolgesi-Bz4QW-na.js                     5.31 kB │ gzip:     2.43 kB
+dist/assets/KampBolgesi-Cwyk5dg1.js                        5.86 kB │ gzip:     2.20 kB
+dist/assets/IklimBolgesi-BWa3DbIe.js                       5.89 kB │ gzip:     2.67 kB
+dist/assets/DersKartlari-XENooEL3.js                       6.20 kB │ gzip:     2.25 kB
+dist/assets/SistemlerBolgesi-HE1j43QH.js                   6.81 kB │ gzip:     3.28 kB
+dist/assets/HistoryMapPreview-BkBB2WYA.js                  6.93 kB │ gzip:     2.91 kB
+dist/assets/LessonLobby-BW1uoMzF.js                        7.41 kB │ gzip:     3.17 kB
+dist/assets/GeometriPilot-CpXuBhZj.js                      7.74 kB │ gzip:     3.00 kB
+dist/assets/AfetBolgesi-L8kG94cr.js                        9.02 kB │ gzip:     3.67 kB
+dist/assets/PusulaBolgesi-Cc33Ifbz.js                      9.11 kB │ gzip:     4.44 kB
+dist/assets/LessonForm-DtGvKNmF.js                         9.73 kB │ gzip:     3.92 kB
+dist/assets/BolunmeBolgesi-DZivHxdR.js                    10.02 kB │ gzip:     4.03 kB
+dist/assets/KalitimBolgesi-B4_UGLtp.js                    10.44 kB │ gzip:     4.06 kB
+dist/assets/Kontroller-ZkR8SyFO.js                        10.97 kB │ gzip:     3.76 kB
+dist/assets/YasamBolgesi-CnECm4hS.js                      11.26 kB │ gzip:     4.68 kB
+dist/assets/HucreLaboratuvarlari-Djpj7x39.js              11.56 kB │ gzip:     4.76 kB
+dist/assets/HucreBolgesi-B4xw4id-.js                      11.86 kB │ gzip:     5.08 kB
+dist/assets/EkosistemBolgesi-CPTRhBM0.js                  11.91 kB │ gzip:     5.26 kB
+dist/assets/ReelsSabitIvmeliAtis-Cf4erKkC.js              12.22 kB │ gzip:     4.07 kB
+dist/assets/SiniflandirmaBolgesi-CAYVjTDw.js              12.32 kB │ gzip:     4.94 kB
+dist/assets/LessonSummaryPage-Cl_1Euzr.js                 12.38 kB │ gzip:     4.07 kB
+dist/assets/MaddeBolgesi-zbCfljQR.js                      12.88 kB │ gzip:     4.56 kB
+dist/assets/EnerjiBolgesi-BHUyZp_R.js                     13.15 kB │ gzip:     5.35 kB
+dist/assets/iosTouchInput-THI9AJLW.js                     13.20 kB │ gzip:     5.55 kB
+dist/assets/MaterialPanel-Da4S9PO4.js                     13.81 kB │ gzip:     5.40 kB
+dist/assets/QuestionBankReview-DRyzETFo.js                13.95 kB │ gzip:     5.32 kB
+dist/assets/VektorBolgesi-CVvSfNin.js                     14.20 kB │ gzip:     5.09 kB
+dist/assets/OlcmeBolgesi-B7_YQAGK.js                      15.61 kB │ gzip:     5.58 kB
+dist/assets/TamamlayiciIstasyonlar-Cw8M239V.js            15.82 kB │ gzip:     6.93 kB
+dist/assets/MolekulBolgesi-BWdSA0tx.js                    16.05 kB │ gzip:     6.60 kB
+dist/assets/KampBolgesi-C_553skp.js                       16.75 kB │ gzip:     6.59 kB
+dist/assets/ModulKabugu-By6oD74R.js                       17.06 kB │ gzip:     6.47 kB
+dist/assets/AtisBolgesi-DaEnItL-.js                       17.59 kB │ gzip:     6.35 kB
+dist/assets/HareketBolgesi-YTKRuG2s.js                    18.46 kB │ gzip:     6.45 kB
+dist/assets/ElektrostatikBolgesi-CSCj7ssC.js              18.68 kB │ gzip:     6.85 kB
+dist/assets/ilerleme-D9C9XkKA.js                          20.47 kB │ gzip:     8.08 kB
+dist/assets/PeriyodikSistem-B1kFlVH4.js                   20.96 kB │ gzip:     7.95 kB
+dist/assets/EnerjiBolgesi-BwkZyPY8.js                     22.05 kB │ gzip:     7.33 kB
+dist/assets/DalgaBolgesi-CtPiyF0N.js                      22.16 kB │ gzip:     7.58 kB
+dist/assets/YerSekilleriLaboratuvari-CoVqqWbs.js          22.25 kB │ gzip:     7.75 kB
+dist/assets/BasincBolgesi-Bj-4fmlv.js                     22.57 kB │ gzip:     7.13 kB
+dist/assets/BiyolojiAtlasi-Bzy-2oaA.js                    22.89 kB │ gzip:     7.81 kB
+dist/assets/IsiBolgesi-CwmIysaP.js                        23.72 kB │ gzip:     8.41 kB
+dist/assets/ReelsSabitIvmeliHareket-CmbflFMV.js           24.88 kB │ gzip:     6.43 kB
+dist/assets/ReelsDrkocUygulamaTanitim-DTHBB9fd.js         27.04 kB │ gzip:     6.95 kB
+dist/assets/ManyetizmaBolgesi-BIePUYen.js                 27.20 kB │ gzip:     9.16 kB
+dist/assets/channel-C-56jMdQ.js                           31.35 kB │ gzip:    10.95 kB
+dist/assets/OptikBolgesi-SU1ycSBO.js                      32.32 kB │ gzip:    10.28 kB
+dist/assets/DevreBolgesi-DmL8chEu.js                      33.73 kB │ gzip:    10.86 kB
+dist/assets/FizikAtlasi-BfnoYzX8.js                       82.21 kB │ gzip:    26.52 kB
+dist/assets/LandingPageEnhanced-CNykWOhH.js               87.86 kB │ gzip:    29.34 kB
+dist/assets/Defterim-DWLqgXLB.js                          90.79 kB │ gzip:    32.79 kB
+dist/assets/ModulKabugu-C6ghF61y.js                       93.24 kB │ gzip:    34.58 kB
+dist/assets/LessonStudio-CpJ1U4gy.js                      93.97 kB │ gzip:    30.78 kB
+dist/assets/CografyaAtlasi-CsOvHg9s.js                   174.36 kB │ gzip:    54.92 kB
+dist/assets/KimyaAtlasi-fkWscm7-.js                      197.12 kB │ gzip:    57.83 kB
+dist/assets/katex-C5jXJg4s.js                            258.49 kB │ gzip:    77.57 kB
+dist/assets/PadisahGecidi-gkhMJmVI.js                    337.00 kB │ gzip:   113.37 kB
+dist/assets/pdf-C0-xfYc7.js                              517.82 kB │ gzip:   156.88 kB
+dist/assets/livekit-client.esm-B6Ms0E9q.js               582.12 kB │ gzip:   152.28 kB
+dist/assets/Ispanyolca-CeQNnHZT.js                       865.05 kB │ gzip:   257.36 kB
+dist/assets/Fransizca-BMuMkdSg.js                        885.12 kB │ gzip:   262.97 kB
+dist/assets/Ingilizce-Cmdl0VBn.js                        892.26 kB │ gzip:   264.84 kB
+dist/assets/Almanca-DsKI7P7S.js                          940.56 kB │ gzip:   282.53 kB
+dist/assets/index-ByOhkbm-.js                         17,226.80 kB │ gzip: 4,801.45 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 23.68s
+
+PWA v0.20.5
+Building src/sw.js service worker ("es" format)...
+vite v5.4.21 building for production...
+transforming...
+✓ 53 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/sw.mjs  16.72 kB │ gzip: 5.69 kB
+✓ built in 114ms
+
+PWA v0.20.5
+mode      injectManifest
+format:   es
+precache  231 entries (37235.64 KiB)
+files generated
+  dist/sw.js
+
+

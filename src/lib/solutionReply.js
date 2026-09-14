@@ -22,28 +22,18 @@
  */
 
 import { supabase } from './supabaseClient'
-
-const BUCKET = 'question-images'
-
-/**
- * PostgREST, olmayan kolon için 42703 döner. Bu, migration'ın
- * (supabase/migration_solution_canvas.sql) henüz çalıştırılmadığı
- * anlamına gelir — bağlantı hatasından ayırt edip öğretmene ne
- * yapması gerektiğini söyleyebilelim diye ayrıca yakalıyoruz.
- */
-const MISSING_COLUMN = '42703'
+import { stageAndUploadAcademicQuestionMedia } from './learning/academicActivity/media'
 
 export function isMissingStrokesColumn(error) {
-  return error?.code === MISSING_COLUMN
+  return ['42703', 'PGRST202', '42883'].includes(error?.code)
 }
 
 /** Taslağı kaydeder. Başarılıysa true döner; hata sessizce yutulmaz. */
 export async function saveStrokes(questionId, payload) {
-  const { error } = await supabase
-    .from('questions')
-    .update({ teacher_reply_strokes: payload })
-    .eq('id', questionId)
-  if (error) throw error
+  const { data, error } = await supabase.rpc('save_academic_question_canvas_draft', {
+    p_record_id: questionId, p_strokes: payload, p_client_action_id: crypto.randomUUID(),
+  })
+  if (error || !['created', 'duplicate', 'no_change'].includes(data?.status)) throw error ?? new Error('Taslak kaydedilemedi.')
   return true
 }
 
@@ -52,13 +42,8 @@ export async function saveStrokes(questionId, payload) {
  * Yol, öğretmenin fotoğraflı yanıtıyla aynı: replies/<öğretmen-id>/…
  * Böylece mevcut storage politikaları olduğu gibi geçerli kalır.
  */
-export async function uploadSolutionImage(blob, teacherId, ext = 'webp') {
-  const path = `replies/${teacherId}/${Date.now()}-cozum.${ext}`
-  const { error } = await supabase.storage
-    .from(BUCKET)
-    .upload(path, blob, { contentType: blob.type, upsert: false })
-  if (error) throw error
-  return supabase.storage.from(BUCKET).getPublicUrl(path).data.publicUrl
+export async function uploadSolutionImage(blob, studentId, teacherId) {
+  return stageAndUploadAcademicQuestionMedia({ studentId, actorId: teacherId, mediaKind: 'teacher_canvas', file: blob })
 }
 
 /**
@@ -66,27 +51,11 @@ export async function uploadSolutionImage(blob, teacherId, ext = 'webp') {
  * `strokes` de aynı işlemde yazılır ki gönderilen görsel ile
  * düzenlenebilir kaynak birbirinden ayrı düşmesin.
  */
-export async function publishSolution({ questionId, imageUrl, strokes }) {
-  const { error } = await supabase
-    .from('questions')
-    .update({
-      teacher_reply_image_url: imageUrl,
-      teacher_reply_strokes: strokes,
-      status: 'Çözüldü',
-    })
-    .eq('id', questionId)
-
-  if (!error) return true
-
-  // Migration çalıştırılmamışsa çözümün ÖĞRENCİYE GİTMESİ engellenmemeli:
-  // düzenlenebilir kaynak olmadan, mevcut alanlarla gönderilir. Öğretmen
-  // sonradan tekrar açıp düzenleyemez, o kadar.
-  if (!isMissingStrokesColumn(error)) throw error
-
-  const fallback = await supabase
-    .from('questions')
-    .update({ teacher_reply_image_url: imageUrl, status: 'Çözüldü' })
-    .eq('id', questionId)
-  if (fallback.error) throw fallback.error
+export async function publishSolution({ questionId, mediaActionId, strokes }) {
+  await saveStrokes(questionId, strokes)
+  const { data, error } = await supabase.rpc('publish_academic_question_canvas', {
+    p_record_id: questionId, p_media_action_id: mediaActionId, p_status: 'Çözüldü', p_client_action_id: crypto.randomUUID(),
+  })
+  if (error || !['created', 'duplicate', 'no_change'].includes(data?.status)) throw error ?? new Error('Çözüm gönderilemedi.')
   return true
 }

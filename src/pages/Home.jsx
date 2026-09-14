@@ -18,6 +18,7 @@ import {
 } from 'lucide-react'
 
 import { supabase } from '../lib/supabaseClient'
+import { hydrateAcademicQuestionMedia } from '../lib/learning/academicActivity/media'
 import { useAuth } from '../context/AuthContext'
 import { splitSubjectTopic } from '../lib/topicHelpers'
 import { needsExamSetup, resolveExamCountdown } from '../lib/examProfile'
@@ -118,7 +119,7 @@ export default function Home() {
     setMockExams(examsRes.data ?? [])
     setBranchExams(branchExamsRes.data ?? [])
     setHomeworks(homeworkRes.data ?? [])
-    setQuestions(questionRes.data ?? [])
+    setQuestions(await hydrateAcademicQuestionMedia(questionRes.data ?? []))
     setLoading(false)
 
     // Yaklaşan canlı ders — anasayfanın en üstündeki katılım eylemi.

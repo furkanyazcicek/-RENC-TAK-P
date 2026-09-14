@@ -20,6 +20,7 @@
  */
 
 import { createClient } from '@supabase/supabase-js'
+import { executeAction, runTool } from '../api/_lib/tools.js'
 
 const SITE = process.env.TEST_SITE || 'https://www.drkoc.com.tr'
 const SUPABASE_URL = 'https://aazadigklxnvbtwrtszj.supabase.co'
@@ -27,11 +28,6 @@ const SUPABASE_ANON_KEY = 'sb_publishable_Jo5hJ5JDfbdVgdgfKQutow_HhmFJ_Zq'
 
 const email = process.argv[2]
 const password = process.argv[3]
-
-if (!email || !password) {
-  console.error('\nKullanım: node scripts/test-ai-coach.mjs ogrenci@eposta.com "sifre"\n')
-  process.exit(1)
-}
 
 const line = (c = '─') => console.log(c.repeat(64))
 
@@ -45,6 +41,34 @@ const check = (name, ok, extra = '') => {
     fail += 1
     console.log(`  ✗ ${name}${extra ? ' — ' + extra : ''}`)
   }
+}
+
+async function offlineContractTest() {
+  console.log('\nAI KOÇ — ÇEVRİMDIŞI SÖZLEŞME TESTİ')
+  const proposed = await runTool({
+    name: 'log_study_session',
+    args: { subject: 'Matematik', topic: 'Problemler', study_date: '2026-09-12', duration_minutes: 30, correct: 8, incorrect: 2, empty: 0 },
+    supabase: null, studentId: '44000000-0000-4000-8000-000000000001', facts: {},
+  })
+  check('model yalnız kullanıcı onayı bekleyen aksiyon öneriyor', proposed.result.status === 'awaiting_user_confirmation')
+  check('öneri kalıcı ve geçerli bir action kimliği taşıyor', /^[0-9a-f-]{36}$/i.test(proposed.action.client_action_id))
+  const calls = []
+  const supabase = { rpc: async (name, params) => { calls.push({ name, params }); return { data: { status: 'created' }, error: null } } }
+  const first = await executeAction(supabase, '44000000-0000-4000-8000-000000000001', proposed.action)
+  check('onaylı günlük kaynak-özel RPC ile kaydediliyor', first.ok && calls[0]?.name === 'create_academic_daily_log')
+  check('öğrenci kimliği gövdeden değil JWT kapsamından türetiliyor', !('p_student_id' in calls[0].params))
+  check('AI Koç kökeni açıkça işaretleniyor', calls[0].params.p_entry_origin === 'ai_coach_confirmed')
+  const second = await executeAction(supabase, '44000000-0000-4000-8000-000000000001', proposed.action)
+  check('retry aynı client action kimliğini kullanıyor', second.ok && calls[1].params.p_client_action_id === calls[0].params.p_client_action_id)
+  const invalid = await executeAction(supabase, '44000000-0000-4000-8000-000000000001', { ...proposed.action, client_action_id: 'gecersiz' })
+  check('sahte action kimliği reddediliyor', invalid.code === 'action_invalid')
+  console.log(`Sonuç: ${pass} geçti, ${fail} kaldı; ağ/model/gerçek öğrenci kullanılmadı.\n`)
+  if (fail) process.exitCode = 1
+}
+
+if (!email || !password) {
+  await offlineContractTest()
+  process.exit(fail ? 1 : 0)
 }
 
 async function main() {

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { ArrowLeft, BookOpen } from 'lucide-react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { BookOpen } from 'lucide-react'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { supabase } from '../../lib/supabaseClient'
 import { useAuth } from '../../context/AuthContext'
 import { normalizeLessonDocument } from '../../lib/lesson/schema'
@@ -13,6 +13,11 @@ import TeacherVoice from './reader/TeacherVoice'
 import LessonNarrationPlayer from './reader/LessonNarrationPlayer'
 import { buildNarrationItems } from '../../lib/lessonNarration'
 import { AppShell, Button, EmptyState, Modal, PageLoader } from '../ui'
+import LibraryReturnButton from '../library/LibraryReturnButton'
+import SaveStatus from '../learning/SaveStatus'
+import { describeBundledLesson } from '../../lib/learning/contentActivity/identity.js'
+import { createClientActionId, sessionActionId, useContentActivity } from '../../hooks/useContentActivity.js'
+import { libraryPath, libraryReturnPath } from '../../lib/libraryRoutes.js'
 
 /**
  * DERS OKUYUCUSU
@@ -27,6 +32,8 @@ export default function LessonReader() {
   const { lessonId } = useParams()
   const { profile, user, role } = useAuth()
   const navigate = useNavigate()
+  const location = useLocation()
+  const { status: saveStatus, perform, flush } = useContentActivity(user?.id)
 
   const [lesson, setLesson] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -46,31 +53,48 @@ export default function LessonReader() {
     setLoading(true)
     setError(null)
 
-    const bundledSource = lessonId?.startsWith('bundled-')
-      ? lessonBySlug(lessonId.slice('bundled-'.length))
-      : null
+    const structuredVisualPreview = import.meta.env.DEV
+      && lessonId === 'faz3-yapilandirilmis-onizleme'
+    const bundledSource = structuredVisualPreview
+      ? lessonBySlug('asit-baz-ve-tuz')
+      : lessonId?.startsWith('bundled-')
+        ? lessonBySlug(lessonId.slice('bundled-'.length))
+        : null
 
     if (bundledSource) {
-      setLesson({
-        id: lessonId,
-        title: bundledSource.title,
-        subtitle: bundledSource.subtitle,
-        slug: bundledSource.slug,
-        document: bundledSource.document,
-        status: 'published',
-        learning_mode: bundledSource.learningMode ?? 'interactive',
-        part_label: bundledSource.partLabel ?? null,
-        is_gold_standard: Boolean(bundledSource.goldStandard),
-        is_bundled: true,
-        library_topics: {
-          name: bundledSource.placement.topic,
-          library_subjects: {
-            name: bundledSource.placement.subject,
-            exam_type: bundledSource.placement.examType,
-          },
-        },
-      })
-      setLoading(false)
+      void describeBundledLesson(bundledSource)
+        .then((descriptor) => {
+          if (cancelled) return
+          setLesson({
+            id: structuredVisualPreview ? '00000000-0000-4000-8000-000000000315' : lessonId,
+            content_id: structuredVisualPreview ? '00000000-0000-4000-8000-000000000315' : bundledSource.slug,
+            content_revision: structuredVisualPreview ? 'db-preview-1' : descriptor.content_revision,
+            content_hash: descriptor.content_hash,
+            title: bundledSource.title,
+            subtitle: bundledSource.subtitle,
+            slug: bundledSource.slug,
+            document: bundledSource.document,
+            status: 'published',
+            learning_mode: bundledSource.learningMode ?? 'interactive',
+            part_label: bundledSource.partLabel ?? null,
+            is_gold_standard: Boolean(bundledSource.goldStandard),
+            is_bundled: !structuredVisualPreview,
+            is_visual_preview: structuredVisualPreview,
+            library_topics: {
+              name: bundledSource.placement.topic,
+              library_subjects: {
+                name: bundledSource.placement.subject,
+                exam_type: bundledSource.placement.examType,
+              },
+            },
+          })
+          setLoading(false)
+        })
+        .catch(() => {
+          if (cancelled) return
+          setError('Bu dersin içerik kimliği doğrulanamadı.')
+          setLoading(false)
+        })
       return () => {
         cancelled = true
       }
@@ -88,7 +112,11 @@ export default function LessonReader() {
           setLoading(false)
           return
         }
-        setLesson(data)
+        setLesson({
+          ...data,
+          content_id: data.id,
+          content_revision: `db-${data.current_revision}`,
+        })
         setLoading(false)
       })
 
@@ -105,19 +133,9 @@ export default function LessonReader() {
 
   /* ---------------- Yan katmanlar (okumayı bekletmez) ---------------- */
   useEffect(() => {
-    if (!lesson?.id || lesson.is_bundled) return
-
-    // Telemetri asla notu açmayı engellemez.
-    if (role === 'student' && user?.id) {
-      void supabase.from('lesson_activity_events').insert({
-        lesson_id: lesson.id,
-        student_id: user.id,
-        event_name: 'lesson_opened',
-      })
-    }
-
+    if (!lesson?.id || lesson.is_bundled || lesson.is_visual_preview) return
     void loadLessonAudio(lesson.id).then(setAudioAssets)
-  }, [lesson?.id, lesson?.is_bundled, role, user?.id])
+  }, [lesson?.id, lesson?.is_bundled, lesson?.is_visual_preview])
 
   useEffect(() => {
     if (!lesson || lesson.is_bundled || role !== 'student' || !user?.id) return
@@ -136,6 +154,61 @@ export default function LessonReader() {
   }, [lesson, profile?.full_name, role, user?.id])
 
   const document = useMemo(() => normalizeLessonDocument(lesson?.document), [lesson?.document])
+
+  const recordEvent = useCallback(
+    (eventName, payload = {}, options = {}) => {
+      if (role !== 'student' || !user?.id || !lesson?.id || !lesson.content_revision) return Promise.resolve(null)
+      const type = lesson.is_bundled ? 'bundled_lesson_event' : 'structured_lesson_event'
+      const eventPayload = lesson.is_bundled
+        ? {
+            content_id: lesson.content_id,
+            content_revision: lesson.content_revision,
+            event_name: eventName,
+            block_id: payload.blockId,
+            section_id: payload.sectionId,
+            selected_option_id: payload.selectedOptionId,
+          }
+        : {
+            lesson_id: lesson.id,
+            content_revision: lesson.content_revision,
+            event_name: eventName,
+            block_id: payload.blockId,
+            section_id: payload.sectionId,
+            selected_option_id: payload.selectedOptionId,
+          }
+      return perform(type, eventPayload, {
+        actionId: options.actionId ?? createClientActionId(),
+      })
+    },
+    [lesson, perform, role, user?.id]
+  )
+
+  useEffect(() => {
+    if (!lesson?.content_revision || role !== 'student' || !user?.id) return
+    const actionId = sessionActionId(
+      `${user.id}:${lesson.is_bundled ? 'bundled' : 'structured'}:${lesson.content_id}:lesson_opened:${location.key}`
+    )
+    void recordEvent('lesson_opened', {}, { actionId })
+  }, [lesson?.content_id, lesson?.content_revision, lesson?.is_bundled,
+    location.key, recordEvent, role, user?.id])
+
+  useEffect(() => {
+    if (!lesson?.content_revision || role !== 'student' || !user?.id) return
+    let cancelled = false
+    supabase
+      .from('student_lesson_progress')
+      .select('completed_section_ids')
+      .eq('source_code', lesson.is_bundled ? 'bundled_lesson_activity' : 'structured_lesson_activity')
+      .eq('content_id', lesson.content_id)
+      .eq('content_revision', lesson.content_revision)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (!cancelled && Array.isArray(data?.completed_section_ids)) {
+          setCompletedSections(new Set(data.completed_section_ids))
+        }
+      })
+    return () => { cancelled = true }
+  }, [lesson?.content_id, lesson?.content_revision, lesson?.is_bundled, role, user?.id])
 
   const narrationSections = useMemo(
     () =>
@@ -163,23 +236,9 @@ export default function LessonReader() {
     })
   }, [activeNarration?.targetBlockId])
 
-  const recordEvent = useCallback(
-    (eventName, payload = {}) => {
-      if (role !== 'student' || !user?.id || !lesson?.id || lesson.is_bundled) return
-      void supabase.from('lesson_activity_events').insert({
-        lesson_id: lesson.id,
-        student_id: user.id,
-        event_name: eventName,
-        block_id: payload.blockId ?? null,
-        metadata: payload.metadata ?? null,
-      })
-    },
-    [lesson?.id, lesson?.is_bundled, role, user?.id]
-  )
-
   const openFigureVoice = useCallback(
     async (block) => {
-      recordEvent('visual_audio_clicked', { blockId: block.id })
+      if (!lesson?.is_bundled) void recordEvent('visual_audio_clicked', { blockId: block.id })
       const asset = findAudio(audioAssets, { scope: 'visual', blockId: block.id })
       const url = asset ? await signedAudioUrl(asset.storage_path) : null
       setVoicePanel({
@@ -190,7 +249,7 @@ export default function LessonReader() {
         durationSeconds: asset?.duration_seconds ?? null,
       })
     },
-    [audioAssets, recordEvent]
+    [audioAssets, lesson?.is_bundled, recordEvent]
   )
 
   const openLessonVoice = useCallback(async () => {
@@ -198,7 +257,6 @@ export default function LessonReader() {
       setNarrationOpen((open) => !open)
       return
     }
-    recordEvent('audio_started')
     const asset = findAudio(audioAssets, { scope: 'master' })
     const url = asset ? await signedAudioUrl(asset.storage_path) : null
     setVoicePanel({
@@ -208,23 +266,52 @@ export default function LessonReader() {
       audioUrl: url,
       durationSeconds: asset?.duration_seconds ?? null,
     })
-  }, [audioAssets, isNarrationPilot, narrationSections, recordEvent])
+  }, [audioAssets, isNarrationPilot, narrationSections])
 
   function handleInteraction(result) {
+    const sectionId = document.sections.find((section) =>
+      section.blocks.some((block) => block.id === result?.blockId))?.id
     if (result?.kind === 'quiz') {
-      recordEvent('quiz_answered', { blockId: result.blockId, metadata: { correct: result.correct } })
+      void recordEvent('quiz_answered', {
+        blockId: result.blockId,
+        sectionId,
+        selectedOptionId: result.selectedOptionId,
+      })
     } else if (result?.kind === 'osym_simulation') {
-      recordEvent('osym_simulation_answered', { blockId: result.blockId, metadata: { correct: result.correct } })
+      void recordEvent('osym_simulation_answered', {
+        blockId: result.blockId,
+        sectionId,
+        selectedOptionId: result.selectedOptionId,
+      })
     }
   }
 
   function completeSection(sectionId) {
-    setCompletedSections((previous) => {
-      const next = new Set(previous)
-      next.add(sectionId)
-      if (next.size === document.sections.length) recordEvent('lesson_completed')
-      return next
-    })
+    const next = new Set(completedSections)
+    const wasComplete = next.size === document.sections.length
+    next.add(sectionId)
+    setCompletedSections(next)
+    const type = lesson.is_bundled ? 'bundled_lesson_progress' : 'structured_lesson_progress'
+    const progressPayload = lesson.is_bundled
+      ? {
+          content_id: lesson.content_id,
+          content_revision: lesson.content_revision,
+          section_id: sectionId,
+          completed_section_ids: [...next],
+        }
+      : {
+          lesson_id: lesson.id,
+          content_revision: lesson.content_revision,
+          section_id: sectionId,
+          completed_section_ids: [...next],
+        }
+    void perform(type, progressPayload, { actionId: createClientActionId() })
+    if (!wasComplete && next.size === document.sections.length) {
+      const actionId = sessionActionId(
+        `${user?.id}:${lesson.is_bundled ? 'bundled' : 'structured'}:${lesson.content_id}:lesson_completed:${location.key}`
+      )
+      void recordEvent('lesson_completed', {}, { actionId })
+    }
   }
 
   if (loading) return <PageLoader label="Ders açılıyor…" />
@@ -244,14 +331,27 @@ export default function LessonReader() {
 
   const topic = lesson.library_topics
   const subject = topic?.library_subjects
+  const topicLibraryPath = subject && topic
+    ? libraryPath('notes', { examType: subject.exam_type, subject, topic })
+    : '/kutuphane/notlar'
+  const returnTo = libraryReturnPath('notes', location.state?.returnTo, topicLibraryPath)
 
   return (
-    <AppShell title="Ders Notu" subtitle={subject ? `${subject.name} · ${subject.exam_type}` : 'DrKoç ders materyali'}>
-      <Button variant="ghost" size="sm" icon={ArrowLeft} className="w-fit" onClick={() => navigate('/kutuphane/notlar')}>
-        Not Kütüphanesi'ne dön
-      </Button>
-
+    <AppShell
+      title="Ders Notu"
+      subtitle={subject ? `${subject.name} · ${subject.exam_type}` : 'DrKoç ders materyali'}
+      headerAction={<LibraryReturnButton kind="notes" onClick={() => navigate(returnTo)} />}
+    >
       <ReadingProgress targetRef={articleRef} />
+      <div className="flex min-h-8 justify-end py-1">
+        <SaveStatus status={saveStatus} onRetry={flush} />
+      </div>
+
+      {lesson.is_visual_preview ? (
+        <p className="mx-auto mb-4 max-w-3xl rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-sm text-brand-900" role="status">
+          Yapılandırılmış ders görsel doğrulama örneği; canlı veritabanı okunmaz ve kayıt yazılmaz.
+        </p>
+      ) : null}
 
       <article ref={articleRef}>
         <LessonMasthead
@@ -295,7 +395,13 @@ export default function LessonReader() {
       >
         {voicePanel?.kind === 'lesson' ? (
           <div className="flex flex-col gap-6">
-            <TeacherVoice script="" audioUrl={voicePanel.audioUrl} durationSeconds={voicePanel.durationSeconds} />
+            <TeacherVoice
+              script=""
+              audioUrl={voicePanel.audioUrl}
+              durationSeconds={voicePanel.durationSeconds}
+              onAudioStart={!lesson.is_bundled ? () => void recordEvent('audio_started') : undefined}
+              onAudioComplete={!lesson.is_bundled ? () => void recordEvent('audio_completed') : undefined}
+            />
             {voicePanel.sections?.length ? (
               voicePanel.sections.map((section) => (
                 <section key={section.id}>

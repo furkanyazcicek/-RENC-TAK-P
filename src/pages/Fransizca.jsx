@@ -13,6 +13,8 @@ import Dusunme from './fransizca/Dusunme'
 import Gelisim from './fransizca/Gelisim'
 import Yazdir from './fransizca/Yazdir'
 import Kilavuz from './fransizca/Kilavuz'
+import LanguageProgressBoundary from '../components/learning/LanguageProgressBoundary'
+import { BOS_ILERLEME } from '../lib/fransizca/ilerleme'
 
 /**
  * FRANSIZCA ÖĞRENME KÜTÜPHANESİ — bölüm kabuğu.
@@ -45,7 +47,8 @@ import Kilavuz from './fransizca/Kilavuz'
  */
 export default function Fransizca() {
   return (
-    <Routes>
+    <LanguageProgressBoundary language="fr" emptyProgress={BOS_ILERLEME}>
+      <Routes>
       <Route index element={<FransizcaAnasayfa />} />
       <Route path="baslangic" element={<Baslangic />} />
       <Route path="seviye-tespit" element={<SeviyeTespit />} />
@@ -63,6 +66,7 @@ export default function Fransizca() {
       {/* Bilinmeyen alt adres bölümün ana sayfasına düşer; öğrenci
           uygulamanın tamamen dışına atılmaz. */}
       <Route path="*" element={<Navigate to="/fransizca" replace />} />
-    </Routes>
+      </Routes>
+    </LanguageProgressBoundary>
   )
 }

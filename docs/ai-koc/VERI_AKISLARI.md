@@ -91,3 +91,76 @@ Telaffuz alt akışında MediaRecorder yalnız geçici Blob URL üretir; ses sun
 ## Düzenleme, silme ve cihaz değişiminde ortak davranış
 
 Bulut alan kaydı düzenlenir veya silinirse Koç'un bir sonraki taze sorgusu yeni durumu görür. Bununla birlikte eski `ai_messages`, teklif kartı, plan gerekçesi veya geçmiş öneri geçersiz işaretlenmez. Yerel dil/atlas kayıtları yalnız aynı tarayıcı profilinde kalır; kullanıcı kimliği taşımayanlar aynı cihazdaki hesaplar arasında ayrışmaz. Defter yerel anahtarında `ownerId`, AI çözüm tekrar yedeğinde kullanıcı kimliği vardır; yine de başka cihaz için bulut yazısının başarılı olması gerekir. Bu nedenle “kaynak güncel”, “eski analiz güncel” ve “başka cihazda devam eder” üç ayrı kabul koşuludur.
+
+## Faz 3 yerel uygulama akışları — 11 Eylül 2026
+
+Yukarıdaki tablolar Faz 0 başlangıç gerçeğini tarihsel olarak korur. Bu
+bölüm M13–M26 için oluşturulan **yerel** Faz 3 yolunu kaydeder. Migration
+canlıya uygulanmadı; Faz 6/7 AI Koç tüketimi de bu fazda eklenmedi.
+
+### Ortak güven zinciri
+
+`student action → source-specific hook → user-scoped outbox → source-specific
+authenticated RPC → auth.uid + student role → trusted content/revision →
+authoritative source row → Phase 1 semantic envelope → private ingest →
+safe acknowledgement`
+
+Kaynak satırı ve kanıt tek transaction'dır. İstemci yalnız kaynak kimliği,
+içerik revizyonu, soru/görev/seçenek kimliği ve eylem UUID'si gönderir;
+öğrenci kimliği, doğruluk, toplam, kanıt sınıfı ve konu anlamı
+sunucuda belirlenir. Ayrıntı [Faz 3 içerik kayıt
+mimarisindedir](FAZ_3_ICERIK_KAYIT_MIMARISI.md).
+
+### Kaynak bazında yeni yerel zincir
+
+| Kaynak | Faz 3 yerel zinciri | Yetkili sonuç ve kesinti davranışı |
+|---|---|---|
+| M13 Kütüphane geçidi | Arama/gezinme → katalog/state → yazıcı RPC yok | Katalog seçimi akademik kanıt değildir; sıfır olay beklenir. |
+| M14 İçerik kataloğu | Paketli build veya DB içerik yazısı → `learning_content_revisions` + topic mapping/alias → öğrenci olayı yok | İçerik kimliği ve revizyonu sağlar. `unmatched/ambiguous` anlam karantinasıdır. |
+| M15 DB ders | Ders eylemi → `useContentActivity` → `record_structured_lesson_event` / progress RPC → `lesson_activity_events` / `student_lesson_progress` → private alım | Quiz doğruluğu private madde kataloğundan gelir. Olay/kanıt atomik; şema yoksa mevcut UI çalışması korunur ve kayıt durumu açık kalır. |
+| M16 Paketli ders | Aynı eylemler → `record_bundled_lesson_event` / bundled progress → `bundled_lesson_activity_events` / ortak progress → private alım | Paketli slug, manifest revizyonuyla kullanılır; DB UUID'sine zorlanmaz. |
+| M17 Not maruziyeti | Not tam görüntülemesi → `record_library_note_open` → `library_note_exposure_events` → exposure kanıtı | Kart/listenin render edilmesi olay değildir; açma ustalık değildir. |
+| M18 Kişiselleştirme | Kaynak kanıtları → mevcut kural/cache → ders sunumu | `derived_readonly`; ikinci temel kanıt üretmez. |
+| M19 DB soru seti | Set+revizyon → start RPC → tek `student_question_set_attempts` satırı → answer/revision RPC'leri → server finalize → final kanıtı → `get_question_attempt_result` ile yenileme | Cevap sırasında doğruluk sızmaz. Final private anahtardan D/Y/B/marked/total hesaplar; yeni içerik eski denemeyi yeniden puanlamaz. |
+| M20 Paketli soru seti | Public answersız manifest → M19 ile aynı ortak deneme yaşam döngüsü | Route state artık yetkili sonuç değildir. Outbox retry ve sunucu get-result yenilemeyi korur. |
+| M21 Fizik atlası | Görev/kontrol → `useAtlasCloudActivity` → `record_physics_atlas_snapshot` → atlas state+revision → snapshot/correction kanıtı | Yerel kayıt anonim/bağlantısız pratikte korunur. Eski cihaz durumu yalnız açık, hash'li import ile sahiplenilir. |
+| M22 Biyoloji atlası | Tahmin+kontrol → biology snapshot RPC → atlas state+revision → kanıt | Tamamlanma için tahmin/kontrol işareti doğrulanır; salt gezinme tamamlanma olmaz. |
+| M23 Coğrafya atlası | Görev için geography snapshot; TYT akışı için server timed start/answer/finalize → ortak attempt → yalnız final kanıtı | Beş dakika sunucu `expires_at` ile belirlenir; cevap RPC'si doğruluk döndürmez. Refresh sunucu denemesini geri kurar. |
+| M24 Kimya atlası | Mini test manifesti → server attempt → deterministik sekiz soru → answer/finalize/reset | Doğruluk private anahtardan gelir; geçersiz/geçmiş sürüm reddedilir. |
+| M25 Tarih atlası | Harita/yıl/katman/müzik gezinmesi → UI/URL/local tercih → yazıcı RPC yok | `excluded`; ölçülebilir ayrı görev tanımlanmadan kanıt oluşmaz. |
+| M26 Geometri pilotu | Sürümlü dört soru → server attempt/answer/finalize/reset → final sonuç | Boş final sunucuda da korunur; istemci puanı otorite değildir. |
+
+### Düzeltme, reset ve cihaz değişimi
+
+- Aynı cevap/görev durumu ve aynı eylem kimliği duplicate'tır; aynı
+  eylem kimliği farklı payload ile conflict'tir.
+- Cevap veya atlas durumu değişirse append-only correction oluşur; test
+  reset'i etkin cevap/final kanıtlarına tombstone yazar, audit'i silmez.
+- `drkoc:learning-outbox:v1:<userId>` hesaplar arasında paylaşılmaz.
+- M21–M23 eski cihaz snapshot'ı sessizce yeni hesaba bağlanmaz; açık import
+  makbuzu olmadan başka cihaz/hesap devamı iddia edilmez.
+
+### Güncel kopukluklar
+
+Yerel paket, Faz 2 kanıt ağına yazma zincirini kurar; AI Koç bu kayıtları
+henüz öğrenci modeli olarak tüketmez. Son envanterde 110 soru seti cevap veya
+seçenek biçimi nedeniyle karantinada, 1.804 konu bağı eşleşmemiştir.
+Yerel tam paket 17/17 komut, üretim derlemesi, masaüstü/tablet/telefon
+görsel kaydı ve 46/46 kabul kapısıyla geçti. Canlı şema, gerçek öğrenci/RLS
+ve gerçek çok bağlantılı PostgreSQL yarışı ise çalıştırılmadı ve
+başarılı sayılmadı. Bu nedenle bu bölüm Faz 0 “kopuk” satırlarının
+canlıda kapandığı iddiası değildir.
+
+## Faz 4 yerel akademik akışları — 13 Eylül 2026
+
+M03–M07, M11–M12, M31, M33 ve M36 için yerel yazma zinciri şöyledir:
+
+`ürün formu/eylemi → useAcademicActivity → kullanıcı kapsamlı outbox → kaynak-özel authenticated RPC veya dar AI Solve server finalizer → JWT/aktif ilişki/kaynak sahipliği doğrulaması → kaynak satırı + append-only kaynak revizyonu → learning_private.ingest_evidence → güvenli ack`
+
+Kaynak ile kanıt aynı transaction'da tamamlanır. İstemci öğrenci/aktör rolü, evidence class/strength, konu kimliği, kaynak revizyonu veya correction hedefi seçemez. Günlük/deneme/ödev/soru anlamları ayrı RPC'lerde kalır; AI Solve dış model çağrısı transaction dışında dayanıklı `processing/completed/failed` claim ile tekilleştirilir ve yalnız tamamlanan claim dar sunucu finalizer tarafından yazılır.
+
+Offline/geçici hata sunucu onayı gibi gösterilmez: eylem hesap kapsamlı kuyrukta kalır, kullanıcı teknik olmayan `bekliyor/yeniden dene` durumu görür ve yalnız `created/completed/duplicate/no_change` cevabı kaydedildi sayılır. Correction/tombstone append-only audit'i korur; etkin replay aynı sentetik veriyle deterministik checksum üretir.
+
+Faz 4 historical provider matrisi 10 pozitif kaynak ve dört açık `no-history` kararı taşır. 1.000 sentetik kayıt dry-run'da sıfır yazı, ikinci sentetik apply'da sıfır yeni kayıt üretti. Canlı/gerçek backfill yapılmadı. AI Koç veya öğrenci modeli bu defteri tüketmez; bu görev yalnız kaynak yazma ve kanıt ağı bağlantısını kurar.
+
+Yerel uçtan uca kabul 12/12 komut ve 85/85 kapıyla geçti. Canlı Supabase, gerçek öğrenci verisi, ücretli model, deploy ve push kullanılmadı; gerçek çok bağlantılı yarış Faz 9'a kaldı.

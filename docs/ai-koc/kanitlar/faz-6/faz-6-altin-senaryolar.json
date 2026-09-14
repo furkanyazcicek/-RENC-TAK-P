@@ -1,0 +1,59 @@
+{
+  "schema_version": "phase-6-golden-scenarios@1",
+  "status": "passed",
+  "total": 13,
+  "scenarios": [
+    {
+      "name": "aynı konuda dört kaynak",
+      "status": "passed"
+    },
+    {
+      "name": "yalnız ders açma",
+      "status": "passed"
+    },
+    {
+      "name": "tek soruda yüzde 100",
+      "status": "passed"
+    },
+    {
+      "name": "çok ve karışık zorlukta tutarlı başarı",
+      "status": "passed"
+    },
+    {
+      "name": "çözümden sonra doğru",
+      "status": "passed"
+    },
+    {
+      "name": "eski başarıdan sonra yeni başarısızlık",
+      "status": "passed"
+    },
+    {
+      "name": "kaynaklar arası çelişki",
+      "status": "passed"
+    },
+    {
+      "name": "yanlış konu etiketi veya karantina",
+      "status": "passed"
+    },
+    {
+      "name": "düzenlenmiş ve silinmiş günlük",
+      "status": "passed"
+    },
+    {
+      "name": "iki kez aktarılan dil ilerlemesi",
+      "status": "passed"
+    },
+    {
+      "name": "genel denemede konu dağılımı yok",
+      "status": "passed"
+    },
+    {
+      "name": "planı işaretleyip akademik kanıt üretmeme",
+      "status": "passed"
+    },
+    {
+      "name": "veri bulunmayan yeni öğrenci",
+      "status": "passed"
+    }
+  ]
+}

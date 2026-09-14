@@ -1,8 +1,11 @@
 import { useCallback, useState } from 'react'
 // `Image` global adıyla karışmasın diye ImageIcon olarak alınır.
 import { FileText, Image as ImageIcon, Maximize2, Trash2 } from 'lucide-react'
+import { useAuth } from '../context/AuthContext'
 import { supabase } from '../lib/supabaseClient'
+import { createClientActionId, useContentActivity } from '../hooks/useContentActivity'
 import ImageLightbox from './ImageLightbox'
+import SaveStatus from './learning/SaveStatus'
 import PdfThumbnail from './PdfThumbnail'
 import PdfViewer from './PdfViewer'
 import { IconButton } from './ui'
@@ -21,6 +24,8 @@ import { IconButton } from './ui'
  * görünür — dosya adına bakmadan hangi not olduğu anlaşılır.
  */
 export default function LibraryNoteCard({ note, canManage, onDeleted }) {
+  const { user, role } = useAuth()
+  const activity = useContentActivity(role === 'student' ? user?.id : null)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [viewerOpen, setViewerOpen] = useState(false)
   const [pageCount, setPageCount] = useState(null)
@@ -40,12 +45,30 @@ export default function LibraryNoteCard({ note, canManage, onDeleted }) {
   const isPdf = note.file_url && note.file_type === 'pdf'
   const hasCover = isImage || isPdf
 
+  function handleOpen() {
+    // Pozlama yalnızca tam görüntüleyici gerçekten açıldığında
+    // kaydedilir. Kart render'ı, küçük resim, indirme ve yazdırma
+    // öğrenme kanıtı değildir.
+    if (isPdf) setViewerOpen(true)
+    else setLightboxOpen(true)
+
+    if (role !== 'student' || !user?.id || !note?.id || !note?.content_revision) return
+    const revision = String(note.content_revision).startsWith('db-')
+      ? String(note.content_revision)
+      : `db-${note.content_revision}`
+    void activity.perform('library_note_open', {
+      content_id: String(note.id),
+      content_revision: revision,
+      content_kind: 'library_note',
+    }, { actionId: createClientActionId() })
+  }
+
   return (
     <article className="card-interactive group flex flex-col overflow-hidden">
       {hasCover && (
         <button
           type="button"
-          onClick={() => (isPdf ? setViewerOpen(true) : setLightboxOpen(true))}
+          onClick={handleOpen}
           className="focus-ring relative block aspect-[4/3] w-full overflow-hidden bg-surface-sunken"
           aria-label={`${note.title} — ${isPdf ? 'PDF' : 'görsel'} olarak aç`}
         >
@@ -118,6 +141,10 @@ export default function LibraryNoteCard({ note, canManage, onDeleted }) {
 
         {note.content && (
           <p className="whitespace-pre-line text-sm leading-relaxed text-ink/60">{note.content}</p>
+        )}
+
+        {role === 'student' && activity.status !== 'idle' && (
+          <SaveStatus status={activity.status} onRetry={activity.flush} className="mt-auto pt-1" />
         )}
       </div>
 

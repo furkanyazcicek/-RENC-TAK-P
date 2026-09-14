@@ -4,11 +4,15 @@ import {
   ArrowLeft, Compass, Map as MapIcon, Moon, RotateCcw, Sun, Trash2,
 } from 'lucide-react'
 import AtlasHaritasi from '../components/fizik/AtlasHaritasi.jsx'
+import AtlasOwnershipNotice from '../components/learning/AtlasOwnershipNotice.jsx'
+import SaveStatus from '../components/learning/SaveStatus.jsx'
 import { BOLGELER, bolgeBul } from '../data/fizik/bolgeler.js'
 import { ikonBul } from '../data/fizik/ikonlar.js'
 import {
-  bolgeYuzdesi, ilerlemeOku, ilerlemeyiSil, konumKaydet,
+  atlasGorevTanimla, bolgeYuzdesi, ilerlemeOku, ilerlemeyiSil, konumKaydet,
+  yerelAktarimAdayi,
 } from '../lib/fizik/ilerleme.js'
+import { useAtlasCloudActivity } from '../hooks/useAtlasCloudActivity.js'
 import { IlerlemeCubugu, Not } from '../components/fizik/ortak/index.js'
 import '../styles/fizik-atlasi.css'
 
@@ -60,6 +64,28 @@ export default function FizikAtlasi() {
   })
   const [ilerleme, setIlerleme] = useState(ilerlemeOku)
   const [silOnayi, setSilOnayi] = useState(false)
+  const atlasCloud = useAtlasCloudActivity({
+    sourceCode: 'physics_atlas',
+    snapshotAction: 'physics_atlas_snapshot',
+    importAction: 'physics_atlas_import',
+    resolveTask: atlasGorevTanimla,
+    buildLegacyCandidate: yerelAktarimAdayi,
+  })
+
+  const gorunenIlerleme = useMemo(() => {
+    if (!atlasCloud.isStudent) return ilerleme
+    // Oturum açıkken cihaz-genel eski tamamlamalar hesaba aitmiş gibi
+    // gösterilmez. Yalnızca açık aktarım veya yeni sunucu onayı ilerler.
+    const tamamlanan = {}
+    for (const state of atlasCloud.cloudStates) {
+      if (!state.completed) continue
+      const ayirici = state.content_id.indexOf('/')
+      if (ayirici < 1) continue
+      const region = state.content_id.slice(0, ayirici)
+      tamamlanan[region] = { ...(tamamlanan[region] ?? {}), [state.task_id]: true }
+    }
+    return { ...ilerleme, tamamlanan, seviyeler: {} }
+  }, [atlasCloud.cloudStates, atlasCloud.isStudent, ilerleme])
 
   useEffect(() => {
     try { window.localStorage.setItem(TEMA_ANAHTARI, tema) } catch { /* depolama kapalı olabilir */ }
@@ -99,11 +125,11 @@ export default function FizikAtlasi() {
   }, [])
 
   const yuzdeler = useMemo(() => Object.fromEntries(
-    BOLGELER.map((b) => [b.kod, bolgeYuzdesi(ilerleme, b.kod, b.deneyler.length)]),
-  ), [ilerleme])
+    BOLGELER.map((b) => [b.kod, bolgeYuzdesi(gorunenIlerleme, b.kod, b.deneyler.length)]),
+  ), [gorunenIlerleme])
 
-  const devamEt = ilerleme.sonBolge && BOLGELER.some((b) => b.kod === ilerleme.sonBolge)
-    ? bolgeBul(ilerleme.sonBolge)
+  const devamEt = gorunenIlerleme.sonBolge && BOLGELER.some((b) => b.kod === gorunenIlerleme.sonBolge)
+    ? bolgeBul(gorunenIlerleme.sonBolge)
     : null
 
   const AktifModul = bolge !== 'harita' ? MODULLER[bolge] : null
@@ -213,6 +239,13 @@ export default function FizikAtlasi() {
 
           <main className="fa-icerik">
             <div className="fa-kapsa">
+              <AtlasOwnershipNotice atlas={atlasCloud} />
+              {atlasCloud.isStudent && ['unavailable', 'degraded'].includes(atlasCloud.cloudStatus) ? (
+                <div className="fa-kart" role="status" style={{ marginBottom: 16 }}>
+                  Bulut ilerlemesi şu anda okunamıyor. Yeni görevler bu hesaba ait güvenli kuyrukta korunur.
+                  <SaveStatus status={atlasCloud.saveStatus} onRetry={atlasCloud.retry} />
+                </div>
+              ) : null}
               {silOnayi ? (
                 <div className="fa-kart" style={{ marginBottom: 16, borderColor: 'rgb(var(--fa-hata) / 0.4)' }}>
                   <Not tur="hata" baslik="İlerlemeni silmek üzeresin">
@@ -225,7 +258,9 @@ export default function FizikAtlasi() {
                       type="button"
                       className="fa-dugme"
                       style={{ borderColor: 'rgb(var(--fa-hata) / 0.5)', color: 'rgb(var(--fa-hata))' }}
-                      onClick={() => {
+                      onClick={async () => {
+                        const bulutSilindi = await atlasCloud.resetCloud()
+                        if (atlasCloud.isStudent && !bulutSilindi) return
                         ilerlemeyiSil('EVET-SIL')
                         setIlerleme(ilerlemeOku())
                         setSilOnayi(false)
@@ -255,7 +290,7 @@ export default function FizikAtlasi() {
                       </div>
                     </div>
                   ) : null}
-                  <AtlasHaritasi ilerleme={ilerleme} onBolgeSec={bolgeAc} />
+                  <AtlasHaritasi ilerleme={gorunenIlerleme} onBolgeSec={bolgeAc} />
 
                   {/* Yan menü yalnızca geniş ekranda var; telefonda ilerlemeyi
                       sıfırlama ve platforma dönüş buradan erişilebilir olmalı. */}

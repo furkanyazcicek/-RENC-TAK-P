@@ -7,7 +7,7 @@ import {
   isGradeCollectionKey,
   topicSourceIds,
 } from '../src/data/highSchoolCurriculum.js'
-import { libraryPath } from '../src/lib/libraryRoutes.js'
+import { libraryPath, libraryReturnPath } from '../src/lib/libraryRoutes.js'
 
 assert.deepEqual(GRADE_COLLECTIONS.map(({ grade }) => grade), [9, 10, 11, 12])
 assert.match(HIGH_SCHOOL_CURRICULUM_META.sourceUrl, /^https:\/\/tymm\.meb\.gov\.tr\//)
@@ -33,5 +33,17 @@ assert.equal(isGradeCollectionKey('SINIF-9'), true)
 assert.equal(isGradeCollectionKey('TYT'), false)
 assert.equal(libraryPath('notes', { examType: 'SINIF-9' }), '/kutuphane/notlar/sinif-9')
 assert.equal(libraryPath('questions', { examType: 'SINIF-12' }), '/kutuphane/sorular/sinif-12')
+assert.equal(
+  libraryReturnPath('notes', '/kutuphane/notlar/tyt/cografya/konum'),
+  '/kutuphane/notlar/tyt/cografya/konum'
+)
+assert.equal(
+  libraryReturnPath('questions', '/kutuphane/sorular/test/konum/test-1'),
+  '/kutuphane/sorular'
+)
+assert.equal(
+  libraryReturnPath('notes', 'https://ornek.com', '/kutuphane/notlar/tyt/cografya/konum'),
+  '/kutuphane/notlar/tyt/cografya/konum'
+)
 
-console.log('Kütüphane müfredatı: 4 sınıf, rota ve içerik referansları doğrulandı.')
+console.log('Kütüphane müfredatı: 4 sınıf, rota, geri dönüş ve içerik referansları doğrulandı.')

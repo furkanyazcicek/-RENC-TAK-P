@@ -1,0 +1,38 @@
+{
+  "schema_version": "phase-5-source-scope@1",
+  "registry_version": "learning-language-registry@1",
+  "sources": [
+    {
+      "matrix_id": "M27",
+      "language": "en",
+      "source_code": "ingilizce_learning",
+      "legacy_key": "drkoc-ingilizce-v1",
+      "program_context": "independent_language_learning",
+      "status": "locally_implemented_live_not_applied"
+    },
+    {
+      "matrix_id": "M28",
+      "language": "de",
+      "source_code": "almanca_learning",
+      "legacy_key": "drkoc-almanca-v1",
+      "program_context": "independent_language_learning",
+      "status": "locally_implemented_live_not_applied"
+    },
+    {
+      "matrix_id": "M29",
+      "language": "fr",
+      "source_code": "fransizca_learning",
+      "legacy_key": "drkoc-fransizca-v1",
+      "program_context": "independent_language_learning",
+      "status": "locally_implemented_live_not_applied"
+    },
+    {
+      "matrix_id": "M30",
+      "language": "es",
+      "source_code": "ispanyolca_learning",
+      "legacy_key": "drkoc-ispanyolca-v1",
+      "program_context": "independent_language_learning",
+      "status": "locally_implemented_live_not_applied"
+    }
+  ]
+}

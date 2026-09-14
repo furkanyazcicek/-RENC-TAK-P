@@ -13,6 +13,8 @@ import Dusunme from './ispanyolca/Dusunme'
 import Gelisim from './ispanyolca/Gelisim'
 import Yazdir from './ispanyolca/Yazdir'
 import Kilavuz from './ispanyolca/Kilavuz'
+import LanguageProgressBoundary from '../components/learning/LanguageProgressBoundary'
+import { BOS_ILERLEME } from '../lib/ispanyolca/ilerleme'
 
 /**
  * İSPANYOLCA ÖĞRENME KÜTÜPHANESİ — bölüm kabuğu.
@@ -45,7 +47,8 @@ import Kilavuz from './ispanyolca/Kilavuz'
  */
 export default function Ispanyolca() {
   return (
-    <Routes>
+    <LanguageProgressBoundary language="es" emptyProgress={BOS_ILERLEME}>
+      <Routes>
       <Route index element={<IspanyolcaAnasayfa />} />
       <Route path="baslangic" element={<Baslangic />} />
       <Route path="seviye-tespit" element={<SeviyeTespit />} />
@@ -63,6 +66,7 @@ export default function Ispanyolca() {
       {/* Bilinmeyen alt adres bölümün ana sayfasına düşer; öğrenci
           uygulamanın tamamen dışına atılmaz. */}
       <Route path="*" element={<Navigate to="/ispanyolca" replace />} />
-    </Routes>
+      </Routes>
+    </LanguageProgressBoundary>
   )
 }

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CalendarPlus, Check, ClipboardCheck, PenLine, Target } from 'lucide-react'
+import { CalendarPlus, Check, ClipboardCheck, ExternalLink, Info, PenLine, Target, X } from 'lucide-react'
 import { runAction, AICoachError } from '../../lib/aiCoach'
 import { Button, useToast } from '../ui'
 import { cn } from '../../lib/cn'
@@ -18,6 +18,7 @@ const ICONS = {
   log_study_session: PenLine,
   update_student_memory: Target,
   complete_study_task: ClipboardCheck,
+  accept_coaching_recommendation: Target,
 }
 
 const ACTIVITY_LABELS = {
@@ -48,8 +49,10 @@ function formatDay(dateStr) {
 }
 
 export default function ActionCard({ action, onCompleted }) {
-  const [state, setState] = useState('idle') // idle | running | done
+  const [state, setState] = useState(action.preview_state === 'done' ? 'done' : 'idle') // idle | running | done | rejected
   const [error, setError] = useState(null)
+  const [editing, setEditing] = useState(false)
+  const [editedAmount, setEditedAmount] = useState(action.payload?.recommendation?.suggested_amount?.value ?? '')
   const toast = useToast()
 
   const Icon = ICONS[action.type] ?? Check
@@ -58,7 +61,26 @@ export default function ActionCard({ action, onCompleted }) {
     setState('running')
     setError(null)
     try {
-      const result = await runAction(action)
+      const nextAction = action.type === 'accept_coaching_recommendation' && editing
+        ? {
+            ...action,
+            payload: {
+              ...action.payload,
+              recommendation: {
+                ...action.payload.recommendation,
+                recommendation_version: Number(action.payload.recommendation.recommendation_version ?? 1) + 1,
+                suggested_amount: {
+                  ...action.payload.recommendation.suggested_amount,
+                  value: Math.max(1, Math.min(240, Math.floor(Number(editedAmount) || 1))),
+                },
+                decision: 'edited',
+                status: 'edited',
+              },
+            },
+          }
+        : action
+      if (action.preview_state === 'error') throw new AICoachError('Hedef içerik artık erişilebilir değil. Alternatif bir çalışma seçebilirsin.', 'target_unavailable')
+      const result = await runAction(nextAction)
       setState('done')
       toast.success(result.message ?? 'İşlem tamamlandı.')
       onCompleted?.(action, result)
@@ -70,7 +92,139 @@ export default function ActionCard({ action, onCompleted }) {
     }
   }
 
+  async function handleReject() {
+    if (action.preview_state) {
+      setState('rejected')
+      return
+    }
+    setState('running')
+    setError(null)
+    try {
+      const result = await runAction({
+        type: 'reject_coaching_recommendation',
+        client_action_id: globalThis.crypto.randomUUID(),
+        payload: { ...action.payload, reason_code: 'not_relevant' },
+      })
+      setState('rejected')
+      toast.success(result.message ?? 'Öneri kaldırıldı.')
+      onCompleted?.(action, result)
+    } catch (err) {
+      setState('idle')
+      setError(err instanceof AICoachError ? err.message : 'Öneri kaldırılamadı. Tekrar dener misin?')
+    }
+  }
+
   const planItems = action.type === 'create_study_plan' ? (action.payload?.items ?? []) : null
+  const recommendation = action.type === 'accept_coaching_recommendation'
+    ? action.payload?.recommendation
+    : null
+
+  if (recommendation) {
+    const confidence = { high: 'Yüksek güven', medium: 'Orta güven', low: 'Düşük güven', insufficient: 'Ön ölçüm gerekli' }[recommendation.confidence_level]
+    const amount = recommendation.suggested_amount
+    const unit = amount?.kind === 'minutes' ? 'dakika' : amount?.kind === 'questions' ? 'soru' : 'etkinlik'
+    const target = recommendation.target
+    return (
+      <div className={cn(
+        'mt-3 overflow-hidden rounded-card border bg-surface shadow-card transition-colors',
+        state === 'done' ? 'border-success-500/30' : state === 'rejected' ? 'border-line' : 'border-brand-500/25'
+      )}>
+        <div className="h-1 bg-aurora-line" aria-hidden="true" />
+        <div className="px-4 py-4 sm:px-5">
+          <div className="flex items-start gap-3">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-500/10 text-brand-700 ring-1 ring-inset ring-brand-500/15">
+              <Target className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="text-2xs font-bold uppercase tracking-[0.14em] text-brand-700">Önerilen çalışma</p>
+              <p className="mt-1 font-display text-base font-extrabold text-ink">{action.title}</p>
+              <p className="mt-1 text-sm leading-relaxed text-ink/70">{recommendation.reason_summary}</p>
+            </div>
+          </div>
+
+          <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 border-y border-line py-3 text-xs sm:grid-cols-3">
+            <div>
+              <dt className="text-ink/55">Çalışma</dt>
+              <dd className="mt-0.5 font-semibold text-ink">{amount ? `${editing ? editedAmount : amount.value} ${unit}` : 'Kısa görev'}</dd>
+            </div>
+            <div>
+              <dt className="text-ink/55">Güven</dt>
+              <dd className="mt-0.5 font-semibold text-ink">{confidence}</dd>
+            </div>
+            <div className="col-span-2 sm:col-span-1">
+              <dt className="text-ink/55">Tamamlanma</dt>
+              <dd className="mt-0.5 font-semibold text-ink">{recommendation.success_criteria?.description}</dd>
+            </div>
+          </dl>
+
+          {editing && amount && (
+            <label className="mt-3 block text-xs font-semibold text-ink">
+              Miktarı düzenle
+              <span className="mt-1.5 flex items-center gap-2">
+                <input
+                  type="number"
+                  min="1"
+                  max="240"
+                  value={editedAmount}
+                  onChange={(event) => setEditedAmount(event.target.value)}
+                  className="input-base h-11 w-24"
+                />
+                <span className="font-normal text-ink/60">{unit}</span>
+              </span>
+            </label>
+          )}
+
+          <details className="mt-3 rounded-input bg-surface-muted px-3 py-2.5">
+            <summary className="focus-ring -m-1 flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-btn p-1 text-xs font-semibold text-ink/75">
+              <Info className="h-4 w-4 text-brand-600" aria-hidden="true" />
+              Neye göre?
+            </summary>
+            <div className="pb-1 pt-2 text-xs leading-relaxed text-ink/65">
+              <p>{recommendation.evidence_refs?.length ?? 0} doğrulanmış kanıt bağı kullanıldı.</p>
+              {recommendation.data_limitations?.length > 0 && (
+                <p className="mt-1">Sınır: {recommendation.data_limitations.join(' ')}</p>
+              )}
+              <p className="mt-1">Öğrenci beyanı, platformun doğruladığı sonuçla aynı sayılmaz.</p>
+            </div>
+          </details>
+
+          {target?.status === 'available' ? (
+            <p className="mt-3 flex items-center gap-2 text-xs text-ink/65">
+              <ExternalLink className="h-4 w-4 text-brand-600" aria-hidden="true" />
+              Onaydan sonra: <span className="font-semibold text-ink">{target.label}</span>
+            </p>
+          ) : (
+            <p className="mt-3 text-xs text-warning-700">Uygun içerik hedefi yok: {target?.unavailable_reason}</p>
+          )}
+        </div>
+
+        <div className="flex flex-wrap items-center justify-between gap-2 border-t border-line bg-surface-muted px-4 py-3 sm:px-5">
+          {state === 'done' ? (
+            <p className="flex min-h-10 items-center gap-2 text-xs font-semibold text-success-700">
+              <Check className="h-4 w-4" aria-hidden="true" /> Görev planlandı
+            </p>
+          ) : state === 'rejected' ? (
+            <p className="flex min-h-10 items-center gap-2 text-xs font-semibold text-ink/65">
+              <X className="h-4 w-4" aria-hidden="true" /> Öneri kaldırıldı
+            </p>
+          ) : (
+            <>
+              <div className="flex flex-wrap gap-1.5">
+                <Button variant="ghost" size="sm" className="min-h-11" onClick={handleReject} disabled={state === 'running'}>İlgili değil</Button>
+                {amount && (
+                  <Button variant="secondary" size="sm" className="min-h-11" onClick={() => setEditing((value) => !value)} disabled={state === 'running'}>
+                    {editing ? 'Düzenlemeyi kapat' : 'Düzenle'}
+                  </Button>
+                )}
+              </div>
+              <Button size="sm" className="min-h-11" loading={state === 'running'} onClick={handleRun}>{action.label ?? 'Görevi Planla'}</Button>
+            </>
+          )}
+        </div>
+        {error && <p role="alert" className="border-t border-line bg-danger-500/[0.06] px-4 py-2.5 text-xs text-danger-700">{error}</p>}
+      </div>
+    )
+  }
 
   return (
     <div

@@ -493,8 +493,9 @@ Bu bir hata değil, bilinçli bir davranış: sistem okuyamadığı soruda
 tamamı (şıklar dahil) kadraja girecek şekilde çekin. Tek karede birden
 fazla soru varsa yalnızca çözdürmek istediğinizi kırpın.
 
-**Sorunlu soru bildirimi gelmiyor / SQL hatası veriyor.**
-`supabase/migration_push_notifications.sql` dosyasını yeniden çalıştırın
-(içindeki `notify_new_question` fonksiyonu güncellendi) — `<PROJECT_REF>`
-ve `<WEBHOOK_SECRET>` yer tutucularını kendi değerlerinizle değiştirmeyi
-unutmayın.
+**Öğretmen veya öğrenci bildirimleri gelmiyor.**
+Yeni çift yönlü bildirim merkezi ve tablet kurulumu için
+[`docs/ogretmen-bildirimleri.md`](docs/ogretmen-bildirimleri.md) belgesindeki
+adımları izleyin. Eski `migration_push_notifications.sql` dosyasındaki doğrudan
+mesaj/soru tetikleyicileri artık kullanılmaz; yeni göç bunları yinelenen ve
+yetkisiz bildirim oluşturmamaları için kaldırır.

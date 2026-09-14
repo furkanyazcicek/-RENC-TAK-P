@@ -373,5 +373,6 @@ export function missingSolveConfig() {
   if (!solveConfig.apiKey) missing.push('GEMINI_API_KEY')
   if (!solveConfig.models.fast) missing.push('GEMINI_FAST_MODEL')
   if (!solveConfig.models.pro) missing.push('GEMINI_PRO_MODEL')
+  if (!process.env.SUPABASE_SERVICE_ROLE_KEY) missing.push('SUPABASE_SERVICE_ROLE_KEY')
   return missing
 }

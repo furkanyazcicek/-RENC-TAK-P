@@ -51,7 +51,7 @@ export default function LandingInfoDialogs({ activeDialog, onClose }) {
         open={activeDialog === 'contact'}
         onClose={onClose}
         title="İletişim"
-        description="Platform ve koçluk programı hakkında ulaşabilirsin"
+        description="Koçluk ve özel dersler hakkında detaylı bilgi için lütfen iletişime geçiniz."
         maxWidth="max-w-xl"
       >
         <div className="grid gap-3">

@@ -72,6 +72,7 @@ export const APP_ROUTE_SOURCE_MAP = Object.freeze([
   route('/register', 'M36'),
   route('/update-password', 'M36'),
   route('/gizlilik', 'M37'),
+  route('/deneyim/*', 'M37'),
   route('/ders-notu-onizleme', 'M37'),
   route('/soru-bankasi-onizleme', 'M37'),
   route('/sosyal/reels/sabit-ivmeli-atis', 'M37'),

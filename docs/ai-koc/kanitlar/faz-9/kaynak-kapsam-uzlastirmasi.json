@@ -1,0 +1,1406 @@
+{
+  "version": "learning-hardening-coverage@1",
+  "source_registry_version": "learning-source-registry@1",
+  "status": "passed",
+  "counts": {
+    "mandatory_surfaces": 11,
+    "covered_surfaces": 11,
+    "registry_sources": 38,
+    "sources_with_five_proofs": 38,
+    "app_routes": 63,
+    "language_routes": 60
+  },
+  "surfaces": [
+    {
+      "id": "lesson_library",
+      "label": "Ders kütüphanesi, paketli ve PDF içerik",
+      "sources": [
+        "M13",
+        "M14",
+        "M15",
+        "M16",
+        "M17",
+        "M18"
+      ],
+      "status": "covered",
+      "missing_sources": [],
+      "incomplete_sources": []
+    },
+    {
+      "id": "question_library",
+      "label": "Soru kütüphanesi",
+      "sources": [
+        "M19",
+        "M20",
+        "M26"
+      ],
+      "status": "covered",
+      "missing_sources": [],
+      "incomplete_sources": []
+    },
+    {
+      "id": "ai_solve",
+      "label": "AI Soru Çöz",
+      "sources": [
+        "M11",
+        "M12"
+      ],
+      "status": "covered",
+      "missing_sources": [],
+      "incomplete_sources": []
+    },
+    {
+      "id": "teacher_questions",
+      "label": "Sorunlu sorular ve öğretmen bağlantısı",
+      "sources": [
+        "M07",
+        "M33",
+        "M38"
+      ],
+      "status": "covered",
+      "missing_sources": [],
+      "incomplete_sources": []
+    },
+    {
+      "id": "homeworks",
+      "label": "Ödevler",
+      "sources": [
+        "M06"
+      ],
+      "status": "covered",
+      "missing_sources": [],
+      "incomplete_sources": []
+    },
+    {
+      "id": "daily_work",
+      "label": "Günlük iç ve dış çalışma",
+      "sources": [
+        "M03"
+      ],
+      "status": "covered",
+      "missing_sources": [],
+      "incomplete_sources": []
+    },
+    {
+      "id": "exams",
+      "label": "Genel ve branş denemeleri",
+      "sources": [
+        "M04",
+        "M05"
+      ],
+      "status": "covered",
+      "missing_sources": [],
+      "incomplete_sources": []
+    },
+    {
+      "id": "languages",
+      "label": "İngilizce, Almanca, Fransızca ve İspanyolca",
+      "sources": [
+        "M27",
+        "M28",
+        "M29",
+        "M30"
+      ],
+      "status": "covered",
+      "missing_sources": [],
+      "incomplete_sources": []
+    },
+    {
+      "id": "atlases",
+      "label": "Atlas ve simülasyonlar",
+      "sources": [
+        "M21",
+        "M22",
+        "M23",
+        "M24",
+        "M25",
+        "M26"
+      ],
+      "status": "covered",
+      "missing_sources": [],
+      "incomplete_sources": []
+    },
+    {
+      "id": "coaching_loop",
+      "label": "AI Koç planları, kararları ve sonuçları",
+      "sources": [
+        "M08",
+        "M09",
+        "M10"
+      ],
+      "status": "covered",
+      "missing_sources": [],
+      "incomplete_sources": []
+    },
+    {
+      "id": "new_surface_governance",
+      "label": "Yeni öğrenme yüzeylerinin kayıt defteri zorunluluğu",
+      "sources": [
+        "M37"
+      ],
+      "status": "covered",
+      "missing_sources": [],
+      "incomplete_sources": []
+    }
+  ],
+  "sources": [
+    {
+      "matrix_id": "M01",
+      "source_code": "home_summary",
+      "classification": "derived_readonly",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "versioned_computation_scope",
+          "detail": "Kalıcı kaynak satırı değil; giriş sürümleri ve hesap sözleşmesiyle yeniden üretilir."
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "inherits_versioned_input_identity",
+          "detail": "derived input identity is preserved in explanation"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "no_learning_event_by_contract",
+          "detail": "read_only"
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "recompute_or_expire",
+          "detail": "recomputable_or_ephemeral"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "derived_with_versioned_explanation",
+          "detail": "derived_result"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M02",
+      "source_code": "analytics_view",
+      "classification": "derived_readonly",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "versioned_computation_scope",
+          "detail": "Kalıcı kaynak satırı değil; giriş sürümleri ve hesap sözleşmesiyle yeniden üretilir."
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "inherits_versioned_input_identity",
+          "detail": "derived input identity is preserved in explanation"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "no_learning_event_by_contract",
+          "detail": "read_only"
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "recompute_or_expire",
+          "detail": "recomputable_or_ephemeral"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "derived_with_versioned_explanation",
+          "detail": "derived_result"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M03",
+      "source_code": "daily_logs",
+      "classification": "emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "daily_logs.id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "daily_logs.id; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,correction,tombstone"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "self_or_authorized_teacher; student_self_report; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M04",
+      "source_code": "mock_exam_subjects",
+      "classification": "emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "mock_exams.id + mock_exam_subjects.id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "mock_exams.id + mock_exam_subjects.id; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,correction,tombstone"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; student_self_report; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M05",
+      "source_code": "branch_exams",
+      "classification": "emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "exams.id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "exams.id; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,correction,tombstone"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "self_or_authorized_teacher; student_self_report; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M06",
+      "source_code": "homeworks",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "homeworks.id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "homeworks.id; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,snapshot,correction,tombstone"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "self_or_authorized_teacher; student_self_report; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M07",
+      "source_code": "questions_teacher_feedback",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "questions.id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "questions.id; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,snapshot,correction"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "self_or_authorized_teacher; teacher_feedback; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M08",
+      "source_code": "ai_coach_chat",
+      "classification": "derived_readonly",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "ai_messages.id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "inherits_versioned_input_identity",
+          "detail": "derived input identity is preserved in explanation"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "no_learning_event_by_contract",
+          "detail": "read_only"
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "recompute_or_expire",
+          "detail": "recomputable_or_ephemeral"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "derived_with_versioned_explanation",
+          "detail": "model_inference"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M09",
+      "source_code": "ai_coach_actions",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "ai_study_tasks.id or ai_student_memory(student_id,key)"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "ai_study_tasks.id or ai_student_memory(student_id,key); Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,snapshot,correction"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; student_self_report; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M10",
+      "source_code": "daily_briefing",
+      "classification": "derived_readonly",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "versioned_computation_scope",
+          "detail": "Kalıcı kaynak satırı değil; giriş sürümleri ve hesap sözleşmesiyle yeniden üretilir."
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "inherits_versioned_input_identity",
+          "detail": "derived input identity is preserved in explanation"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "no_learning_event_by_contract",
+          "detail": "read_only"
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "recompute_or_expire",
+          "detail": "recomputable_or_ephemeral"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "derived_with_versioned_explanation",
+          "detail": "derived_result"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M11",
+      "source_code": "ai_solution_sessions",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "ai_solution_sessions.id + ai_solution_events.id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "ai_solution_sessions.id + ai_solution_events.id; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,snapshot,correction"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; system_observation; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M12",
+      "source_code": "ai_solution_review",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "ai_solution_sessions.id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "ai_solution_sessions.id; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "snapshot,correction"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; student_self_report; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M13",
+      "source_code": "library_gateway",
+      "classification": "catalog",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "content route"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "no_learning_event_by_contract",
+          "detail": "read_only"
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "content_lifecycle",
+          "detail": "content_lifecycle"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "catalog_context_only",
+          "detail": "operational_only"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M14",
+      "source_code": "library_catalog",
+      "classification": "catalog",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "library_topics.id or bundled slug"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "no_learning_event_by_contract",
+          "detail": "content_versioned"
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "content_lifecycle",
+          "detail": "content_lifecycle"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "catalog_context_only",
+          "detail": "operational_only"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M15",
+      "source_code": "structured_lesson_activity",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "lesson_activity_events.id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "lesson_activity_events.id; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,correction,tombstone"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; system_observation; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M16",
+      "source_code": "bundled_lesson_activity",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "bundled lesson slug + content revision + block id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "bundled lesson slug + content revision + block id; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,correction,tombstone"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; system_observation; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M17",
+      "source_code": "library_note_exposure",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "library_notes.id or bundled path"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "library_notes.id or bundled path; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "immutable_historical_exposure_plus_account_cascade",
+          "detail": "Kaynak olayı tarihsel kalır; hesap silme zincirinde silinir."
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; exposure; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M18",
+      "source_code": "lesson_personalization",
+      "classification": "derived_readonly",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "lesson_personalizations.id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "inherits_versioned_input_identity",
+          "detail": "derived input identity is preserved in explanation"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "no_learning_event_by_contract",
+          "detail": "cache_only"
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "recompute_or_expire",
+          "detail": "recomputable_or_ephemeral"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "derived_with_versioned_explanation",
+          "detail": "derived_result"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M19",
+      "source_code": "db_question_test",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "question_set id + attempt id + question id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "question_set id + attempt id + question id; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,snapshot,correction,tombstone"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; direct_measurement; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M20",
+      "source_code": "bundled_question_test",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "set id + content revision + local attempt id + question id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "set id + content revision + local attempt id + question id; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,snapshot,correction,tombstone"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; direct_measurement; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M21",
+      "source_code": "physics_atlas",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "region/experiment/task code + local revision"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "region/experiment/task code + local revision; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "snapshot,correction,tombstone"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; system_observation; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M22",
+      "source_code": "biology_atlas",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "interaction/question code + local revision"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "interaction/question code + local revision; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "snapshot,correction,tombstone"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; system_observation; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M23",
+      "source_code": "geography_atlas",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "task/question id + local revision"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "task/question id + local revision; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,snapshot,correction,tombstone"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; system_observation; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M24",
+      "source_code": "chemistry_atlas",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "content revision + question position + local attempt id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "content revision + question position + local attempt id; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,snapshot"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; direct_measurement; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M25",
+      "source_code": "history_atlas_navigation",
+      "classification": "excluded",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "explicit_non_learning_identity",
+          "detail": "Öğrenme kaydı üretmez; kimlik uydurulmaz."
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "visible_non_curriculum_scope",
+          "detail": "non_learning"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "no_learning_event_by_contract",
+          "detail": "excluded"
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "nothing_copied",
+          "detail": "not_copied_to_learning_evidence"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "explicitly_denied_to_ai",
+          "detail": "AI Koç öğrenme kanıtı olarak kullanamaz."
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M26",
+      "source_code": "geometry_pilot",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "content revision + local attempt id + question id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "content revision + local attempt id + question id; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,snapshot"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; direct_measurement; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M27",
+      "source_code": "ingilizce_learning",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "lesson/word/exercise id + local revision"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "lesson/word/exercise id + local revision; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,snapshot,correction,tombstone"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; system_observation; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M28",
+      "source_code": "almanca_learning",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "lesson/word/exercise id + local revision"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "lesson/word/exercise id + local revision; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,snapshot,correction,tombstone"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; system_observation; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M29",
+      "source_code": "fransizca_learning",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "lesson/word/exercise id + local revision"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "lesson/word/exercise id + local revision; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,snapshot,correction,tombstone"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; system_observation; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M30",
+      "source_code": "ispanyolca_learning",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "lesson/word/exercise id + local revision"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "lesson/word/exercise id + local revision; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,snapshot,correction,tombstone"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; system_observation; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M31",
+      "source_code": "live_lesson_attendance",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "lesson_session + participant"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "lesson_session + participant; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "event,snapshot,correction"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; exposure; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M32",
+      "source_code": "live_lesson_raw_stream",
+      "classification": "excluded",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "explicit_non_learning_identity",
+          "detail": "Öğrenme kaydı üretmez; kimlik uydurulmaz."
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "visible_non_curriculum_scope",
+          "detail": "non_learning"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "no_learning_event_by_contract",
+          "detail": "excluded"
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "nothing_copied",
+          "detail": "not_copied_to_learning_evidence"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "explicitly_denied_to_ai",
+          "detail": "AI Koç öğrenme kanıtı olarak kullanamaz."
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M33",
+      "source_code": "live_lesson_shared_summary",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "lesson_summaries.lesson_session_id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "lesson_summaries.lesson_session_id; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "snapshot,correction,tombstone"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authorized_teacher_or_self; teacher_feedback; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M34",
+      "source_code": "notebook_content",
+      "classification": "excluded",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "explicit_non_learning_identity",
+          "detail": "Öğrenme kaydı üretmez; kimlik uydurulmaz."
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "visible_non_curriculum_scope",
+          "detail": "non_learning"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "no_learning_event_by_contract",
+          "detail": "excluded"
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "nothing_copied",
+          "detail": "not_copied_to_learning_evidence"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "explicitly_denied_to_ai",
+          "detail": "AI Koç öğrenme kanıtı olarak kullanamaz."
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M35",
+      "source_code": "private_messages",
+      "classification": "excluded",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "explicit_non_learning_identity",
+          "detail": "Öğrenme kaydı üretmez; kimlik uydurulmaz."
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "visible_non_curriculum_scope",
+          "detail": "non_learning"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "no_learning_event_by_contract",
+          "detail": "excluded"
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "nothing_copied",
+          "detail": "not_copied_to_learning_evidence"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "explicitly_denied_to_ai",
+          "detail": "AI Koç öğrenme kanıtı olarak kullanamaz."
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M36",
+      "source_code": "student_profile",
+      "classification": "conditional_emitter",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "registry_source_record_key",
+          "detail": "profiles.id"
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "versioned_resolver",
+          "detail": "topic-resolver@1"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "source_identity_plus_revision_or_client_action",
+          "detail": "profiles.id; Kaynak satırının güncellenme sürümü; yoksa ilk bağlamada v1."
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "correction_tombstone_or_superseding_snapshot",
+          "detail": "snapshot,correction"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "authorized_evidence_reference",
+          "detail": "authenticated_student; student_self_report; opak kaynak bağlantısı"
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M37",
+      "source_code": "public_demo_routes",
+      "classification": "excluded",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "explicit_non_learning_identity",
+          "detail": "Öğrenme kaydı üretmez; kimlik uydurulmaz."
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "visible_non_curriculum_scope",
+          "detail": "non_learning"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "no_learning_event_by_contract",
+          "detail": "excluded"
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "nothing_copied",
+          "detail": "not_copied_to_learning_evidence"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "explicitly_denied_to_ai",
+          "detail": "AI Koç öğrenme kanıtı olarak kullanamaz."
+        }
+      },
+      "covered": true
+    },
+    {
+      "matrix_id": "M38",
+      "source_code": "teacher_parent_support_routes",
+      "classification": "excluded",
+      "proofs": {
+        "stable_identity": {
+          "ok": true,
+          "strategy": "explicit_non_learning_identity",
+          "detail": "Öğrenme kaydı üretmez; kimlik uydurulmaz."
+        },
+        "canonical_topic_or_visible_uncertainty": {
+          "ok": true,
+          "strategy": "visible_non_curriculum_scope",
+          "detail": "non_learning"
+        },
+        "deduplication": {
+          "ok": true,
+          "strategy": "no_learning_event_by_contract",
+          "detail": "excluded"
+        },
+        "correction_and_deletion": {
+          "ok": true,
+          "strategy": "nothing_copied",
+          "detail": "not_copied_to_learning_evidence"
+        },
+        "authorized_explainable_ai_use": {
+          "ok": true,
+          "strategy": "explicitly_denied_to_ai",
+          "detail": "AI Koç öğrenme kanıtı olarak kullanamaz."
+        }
+      },
+      "covered": true
+    }
+  ],
+  "drift": {
+    "registry_errors": [],
+    "unrouted_registry_sources": []
+  }
+}

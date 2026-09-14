@@ -5,9 +5,21 @@ export function isProductCapture() {
   return new URLSearchParams(window.location.search).get('capture') === CAPTURE_VALUE
 }
 
+export function isProductCaptureState(state) {
+  if (!isProductCapture() || typeof window === 'undefined') return false
+  return new URLSearchParams(window.location.search).get('capture-state') === state
+}
+
 export function captureStudentProfile() {
+  const teacher = typeof window !== 'undefined'
+    && new URLSearchParams(window.location.search).get('capture-role') === 'teacher'
+  if (teacher) return {
+    id: '44000000-0000-4000-8000-000000000003',
+    role: 'teacher',
+    full_name: 'Ece Öğretmen',
+  }
   return {
-    id: 'reels-student',
+    id: '44000000-0000-4000-8000-000000000001',
     role: 'student',
     full_name: 'Deniz Kaya',
     grade: 12,

@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "inventory": {
+    "ok": true,
+    "unnecessary_raw_copy_count": 0,
+    "sensitive_inference_count": 0
+  },
+  "export_scope": "authenticated_student",
+  "retention_classes": [
+    {
+      "data_class": "learning_evidence",
+      "duration": "active_account",
+      "delete_path": "account_cascade_or_source_tombstone",
+      "owner": "product_owner",
+      "review": "product_owner_and_legal_review_required"
+    },
+    {
+      "data_class": "derived_projection",
+      "duration_days": 90,
+      "delete_path": "recompute_or_account_cascade",
+      "owner": "learning_platform",
+      "review": "product_owner_review_required"
+    },
+    {
+      "data_class": "approved_memory",
+      "duration": "until_student_forgets_or_account_deleted",
+      "delete_path": "student_forget_action_or_account_cascade",
+      "owner": "product_owner",
+      "review": "product_owner_review_required"
+    },
+    {
+      "data_class": "coaching_action_receipt",
+      "duration_days": 90,
+      "delete_path": "scheduled_private_cleanup_or_account_cascade",
+      "owner": "learning_platform",
+      "review": "product_owner_review_required"
+    },
+    {
+      "data_class": "operational_metrics",
+      "duration_days": 30,
+      "delete_path": "scheduled_aggregate_cleanup",
+      "owner": "operations",
+      "review": "product_owner_review_required"
+    },
+    {
+      "data_class": "shadow_comparison_metadata",
+      "duration_days": 7,
+      "delete_path": "scheduled_private_cleanup",
+      "owner": "ai_quality",
+      "review": "product_owner_review_required"
+    }
+  ],
+  "account_cascade_verified_in_postgres": true,
+  "approved_memory_forget_action": "existing_and_server_scoped",
+  "legal_review_required": true
+}

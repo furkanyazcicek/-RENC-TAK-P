@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { supabase } from '../lib/supabaseClient'
+import { hydrateAcademicQuestionMedia } from '../lib/learning/academicActivity/media'
 import { ArrowLeft, ClipboardList, HelpCircle, Clock, CheckCircle2, Flame, MessageCircle } from 'lucide-react'
 import { AppShell, Badge, Button, PageLoader } from '../components/ui'
 import { DashboardHero, InsightBar, MetricTile, Panel } from '../components/dashboard'
@@ -92,7 +93,7 @@ export default function StudentDetail() {
     ])
     setStudentProfile(profileRes.data)
     setExams(examsRes.data ?? [])
-    setQuestions(questionsRes.data ?? [])
+    setQuestions(await hydrateAcademicQuestionMedia(questionsRes.data ?? []))
     setDailyLogs(dailyLogsRes.data ?? [])
     setMockExams(mockExamsRes.data ?? [])
     setHomeworks(homeworksRes.data ?? [])

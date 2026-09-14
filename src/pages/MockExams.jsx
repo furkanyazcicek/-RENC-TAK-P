@@ -9,13 +9,20 @@ import {
 } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
+import useAcademicActivity from '../hooks/useAcademicActivity'
+import { academicStatusMessage } from '../lib/learning/academicActivity/client'
+import {
+  captureStudentProfile,
+  isProductCapture,
+  isProductCaptureState,
+} from '../lib/productCapture'
 import { buildSubjectPerformance } from '../lib/examHelpers'
 import { buildExamInsights, examStats, formatNumber, mockExamRows } from '../lib/insights'
 import MockExamTrendChart from '../components/MockExamTrendChart'
 import MockExamForm from '../components/MockExamForm'
 import AddExamForm from '../components/AddExamForm'
 import BranchExamList from '../components/BranchExamList'
-import { AppShell, Button, Modal, Tabs } from '../components/ui'
+import { AppShell, Button, Modal, Tabs, useToast } from '../components/ui'
 import {
   DashboardHero,
   ExamAccordion,
@@ -29,18 +36,28 @@ const EXAM_TYPE_ALL = 'Tümü'
 
 export default function MockExams() {
   const { user } = useAuth()
+  const academic = useAcademicActivity()
+  const toast = useToast()
   const [exams, setExams] = useState([]) // genel denemeler (LGS/TYT/AYT/KPSS)
   const [branchExams, setBranchExams] = useState([]) // branş denemeleri
   const [profile, setProfile] = useState(null)
   const [loading, setLoading] = useState(true)
 
-  const [mockModalOpen, setMockModalOpen] = useState(false)
-  const [branchModalOpen, setBranchModalOpen] = useState(false)
+  const [mockModalOpen, setMockModalOpen] = useState(() => isProductCaptureState('mock-form'))
+  const [branchModalOpen, setBranchModalOpen] = useState(() => isProductCaptureState('branch-form'))
   const [typeFilter, setTypeFilter] = useState(EXAM_TYPE_ALL)
   const [listTab, setListTab] = useState('general')
 
   const load = useCallback(async () => {
     if (!user) return
+    if (isProductCapture()) {
+      setExams([{ id: 'capture-exam-1', student_id: user.id, exam_type: 'TYT', exam_name: 'Gelişim Denemesi', exam_date: '2026-09-12', duration_minutes: 165, mock_exam_subjects: [
+        { id: 'capture-subject-1', subject: 'Matematik', correct: 30, incorrect: 6, empty: 4, net: 28.5 },
+        { id: 'capture-subject-2', subject: 'Türkçe', correct: 32, incorrect: 5, empty: 3, net: 30.75 },
+      ] }])
+      setBranchExams([{ id: 'capture-branch-1', subject: 'Fizik', topic: 'Hareket', exam_date: '2026-09-10', correct: 9, incorrect: 2, empty: 1, net: 8.5 }])
+      setProfile(captureStudentProfile()); setLoading(false); return
+    }
     const [mockRes, examsRes, profileRes] = await Promise.all([
       supabase
         .from('mock_exams')
@@ -110,8 +127,9 @@ export default function MockExams() {
         }
 
   async function handleDeleteExam(id) {
-    const { error } = await supabase.from('mock_exams').delete().eq('id', id)
-    if (!error) load()
+    const response = await academic.perform('mock_exam_delete', { record_id: id })
+    if (response.status === 'saved') load()
+    else toast.error(academicStatusMessage(response.status))
   }
 
   const firstName = profile?.full_name?.split(' ')[0]

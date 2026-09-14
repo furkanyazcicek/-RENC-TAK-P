@@ -41,6 +41,8 @@ const BANK_TOPICS = [
   libraryTopic,
 }))
 
+export const mathQuestionBankTopics = BANK_TOPICS
+
 const BUNDLED_MATH_SUBJECTS = [
   { id: 'bundled-tyt-matematik', exam_type: 'TYT', name: 'Matematik', order_index: 1 },
   { id: 'bundled-tyt-geometri', exam_type: 'TYT', name: 'Geometri', order_index: 2 },

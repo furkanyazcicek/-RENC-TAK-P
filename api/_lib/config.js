@@ -130,6 +130,9 @@ export const config = {
     process.env.SUPABASE_ANON_KEY ||
     process.env.VITE_SUPABASE_ANON_KEY ||
     FALLBACK_SUPABASE_ANON_KEY,
+  // Yalnız Faz 4 AI Soru Çöz claim/finalize RPC'lerinde kullanılan dar sunucu anahtarı.
+  // Normal okuma ve kullanıcı-otoriteli yazılar kullanıcı JWT'siyle kalır.
+  supabaseServiceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY || null,
 }
 
 /** Eksik zorunlu ayarları tek yerde raporlar (sunucu loglarına yazılır). */

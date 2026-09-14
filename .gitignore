@@ -4,6 +4,9 @@ dist/
 .env.local
 .DS_Store
 *.log
+!docs/ai-koc/kanitlar/faz-2/veri-agi-testleri.log
+!docs/ai-koc/kanitlar/faz-2/regresyon-testleri.log
+!docs/ai-koc/kanitlar/faz-2/build.log
 .vercel
 
 .vercel
@@ -29,6 +32,12 @@ tmp/
 /outputs/DRKOC-Reels-Panel/
 /outputs/DRKOC-Reels-Panel.zip
 /outputs/DRKOC-Reels-Higgsfield/
+
+# Yeniden üretilebilir sosyal medya çıktıları. Tam yerel yedekte korunur;
+# Git deposunu gereksiz büyütmemesi için GitHub'a gönderilmez.
+/outputs/drkoc-ozel-ders-koclugu-posters/
+/outputs/drkoc-poster-alternatif-sakin/
+/outputs/drkoc-poster-serisi-sakin-v2/
 
 # Tarih atlası ham verisi (~31 MB). Gerektiğinde "npm run atlas:indir" ile
 # yeniden indirilir; yedekte yer kaplamasına gerek yok.

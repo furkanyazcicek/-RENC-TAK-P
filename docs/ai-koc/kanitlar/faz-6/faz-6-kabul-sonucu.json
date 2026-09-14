@@ -1,0 +1,397 @@
+{
+  "schema_version": "phase-6-acceptance@1",
+  "phase": 6,
+  "status": "passed",
+  "sections": [
+    {
+      "name": "Sürümlü model, çözünürlük ve dört hafıza katmanı",
+      "status": "passed",
+      "duration_ms": 9.305
+    },
+    {
+      "name": "13 pedagojik altın senaryo",
+      "status": "passed",
+      "duration_ms": 2.185
+    },
+    {
+      "name": "Açıklanabilirlik ve hızlı sorgular",
+      "status": "passed",
+      "duration_ms": 0.858
+    },
+    {
+      "name": "Deterministik replay, sürüm artışı ve artımlı eşitlik",
+      "status": "passed",
+      "duration_ms": 6.277
+    },
+    {
+      "name": "Migration tekrarı, rollback, RLS, itiraz ve sorgu planları",
+      "status": "passed",
+      "duration_ms": 1566.986
+    },
+    {
+      "name": "10.000 kanıtlı sentetik performans bütçesi",
+      "status": "passed",
+      "duration_ms": 272.155
+    },
+    {
+      "name": "Faz sınırları ve sıfır canlı yan etki",
+      "status": "passed",
+      "duration_ms": 0.139
+    }
+  ],
+  "assertions": 107,
+  "gates": [
+    {
+      "id": 1,
+      "status": "passed",
+      "evidence": "öğrenci durumu genel, program, ders, konu ve kazanım çözünürlüğünde"
+    },
+    {
+      "id": 2,
+      "status": "passed",
+      "evidence": "maruz kalma, hacim, performans, yardım, kalıcılık, akıcılık, zorlanma, tutarlılık, plan, güncellik ve güven ayrı"
+    },
+    {
+      "id": 3,
+      "status": "passed",
+      "evidence": "konu, tarih, kaynak, bağımsız kanıt, yardım, dışlama ve güven makinece açıklanıyor"
+    },
+    {
+      "id": 4,
+      "status": "passed",
+      "evidence": "kararlı sıra, sürümlü tam replay ve checksum karşılaştırması geçti"
+    },
+    {
+      "id": 5,
+      "status": "passed",
+      "evidence": "düzeltme, silme ve geç gelen olay eski etkiyi kaldırarak doğru sonuca girdi"
+    },
+    {
+      "id": 6,
+      "status": "passed",
+      "evidence": "onaylı tercih, türetilmiş durum, süreli davranış örüntüsü ve Faz 8 karar ilişkisi ayrı"
+    },
+    {
+      "id": 7,
+      "status": "passed",
+      "evidence": "tek soru, veri yokluğu ve kaynak çelişkisi kesin sonuca dönüşmedi"
+    },
+    {
+      "id": 8,
+      "status": "passed",
+      "evidence": "13/13 altın senaryo pedagojik iddialarla geçti"
+    },
+    {
+      "id": 9,
+      "status": "passed",
+      "evidence": "canlı veri, gerçek backfill, ücretli model, deploy, push, Faz 7 ve Faz 8 uygulanmadı"
+    }
+  ],
+  "checksums": {
+    "phase_2_migration_sha256": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea",
+    "phase_6_migration_sha256": "02ce1a9ed7b1d2bbb6e9f2faea570343cd93ea6343d463599aa9eefe04e0322c"
+  },
+  "model": {
+    "model_version": "student-topic-model@1",
+    "config_version": "student-topic-model-config@1",
+    "behavior_rule_version": "student-behavior-rules@1",
+    "scope_types": [
+      "general",
+      "program",
+      "subject",
+      "topic",
+      "objective"
+    ]
+  },
+  "golden_scenarios": [
+    {
+      "name": "aynı konuda dört kaynak",
+      "status": "passed"
+    },
+    {
+      "name": "yalnız ders açma",
+      "status": "passed"
+    },
+    {
+      "name": "tek soruda yüzde 100",
+      "status": "passed"
+    },
+    {
+      "name": "çok ve karışık zorlukta tutarlı başarı",
+      "status": "passed"
+    },
+    {
+      "name": "çözümden sonra doğru",
+      "status": "passed"
+    },
+    {
+      "name": "eski başarıdan sonra yeni başarısızlık",
+      "status": "passed"
+    },
+    {
+      "name": "kaynaklar arası çelişki",
+      "status": "passed"
+    },
+    {
+      "name": "yanlış konu etiketi veya karantina",
+      "status": "passed"
+    },
+    {
+      "name": "düzenlenmiş ve silinmiş günlük",
+      "status": "passed"
+    },
+    {
+      "name": "iki kez aktarılan dil ilerlemesi",
+      "status": "passed"
+    },
+    {
+      "name": "genel denemede konu dağılımı yok",
+      "status": "passed"
+    },
+    {
+      "name": "planı işaretleyip akademik kanıt üretmeme",
+      "status": "passed"
+    },
+    {
+      "name": "veri bulunmayan yeni öğrenci",
+      "status": "passed"
+    }
+  ],
+  "migration": {
+    "first_apply": "passed",
+    "second_apply": "passed",
+    "tables": [
+      "student_behavior_patterns",
+      "student_coaching_decision_history",
+      "student_learning_projection_disputes",
+      "student_learning_projection_evidence_refs",
+      "student_learning_projection_rows",
+      "student_model_contracts"
+    ],
+    "forced_rls": true,
+    "query_plans": [
+      "support",
+      "trend",
+      "repeat"
+    ]
+  },
+  "security": {
+    "own_projection_only": true,
+    "cross_student_evidence_ref_blocked": true,
+    "cross_student_behavior_ref_blocked": true,
+    "direct_score_write_blocked": true,
+    "dispute_without_score_mutation": true,
+    "account_deletion_cascade": true,
+    "other_student_preserved": true
+  },
+  "replay": {
+    "deterministic_checksum": "bc9917618427a2a64e1676f1fcdcb49e5186a70ed6e4af5b0a5d8b3ec61d6c50",
+    "full_incremental_equal": true,
+    "late_event_included": true,
+    "version_comparison": {
+      "before_model_version": "student-topic-model@1",
+      "after_model_version": "student-topic-model@2",
+      "before_checksum": "0b21eea8acccdca96e23d9c1321c92844664a5142e731a87c3e2da328d53d5a6",
+      "after_checksum": "987a24939d3529a08e6e4c00d51e5f61922b868169ccd0f9042749972d50c700",
+      "row_count_before": 5,
+      "row_count_after": 5,
+      "changed": true
+    },
+    "poison_student_isolated": true
+  },
+  "performance": {
+    "synthetic_evidence_count": 10000,
+    "topic_count": 50,
+    "duration_ms": 268.38,
+    "budget_ms": 5000,
+    "status": "passed"
+  },
+  "side_effects": {
+    "live_supabase_read": false,
+    "live_supabase_write": false,
+    "live_schema_change": false,
+    "real_student_data_used": false,
+    "live_backfill_run": false,
+    "paid_model_call": false,
+    "deployment_performed": false,
+    "git_push_performed": false,
+    "phase_7_ai_coach_consumption_implemented": false,
+    "phase_8_coaching_loop_implemented": false
+  },
+  "limitations": [
+    "PGlite tek bağlantıyı seri işler; çok bağlantılı yarış ve canlı kapasite Faz 9 kapsamındadır."
+  ],
+  "gate_totals": {
+    "required": 9,
+    "passed": 9,
+    "failed": 0,
+    "pending": 0
+  },
+  "generated_at": "2026-09-13T11:33:57.276Z",
+  "commands": [
+    {
+      "key": "phase1",
+      "command": "npm run test:ai-koc-faz-1",
+      "group": "security",
+      "started_at": "2026-09-13T11:32:52.712Z",
+      "finished_at": "2026-09-13T11:32:52.856Z",
+      "duration_ms": 144,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-6/guvenlik-testleri.log"
+    },
+    {
+      "key": "phase2",
+      "command": "npm run test:ai-koc-faz-2",
+      "group": "security",
+      "started_at": "2026-09-13T11:32:52.856Z",
+      "finished_at": "2026-09-13T11:32:56.984Z",
+      "duration_ms": 4128,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-6/guvenlik-testleri.log"
+    },
+    {
+      "key": "phase3",
+      "command": "npm run test:ai-koc-faz-3",
+      "group": "security",
+      "started_at": "2026-09-13T11:32:56.985Z",
+      "finished_at": "2026-09-13T11:33:20.900Z",
+      "duration_ms": 23915,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-6/guvenlik-testleri.log",
+      "authoritative_baseline_preserved": true
+    },
+    {
+      "key": "phase4",
+      "command": "npm run test:ai-koc-faz-4",
+      "group": "security",
+      "started_at": "2026-09-13T11:33:20.901Z",
+      "finished_at": "2026-09-13T11:33:32.581Z",
+      "duration_ms": 11680,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-6/guvenlik-testleri.log",
+      "authoritative_baseline_preserved": true
+    },
+    {
+      "key": "phase5",
+      "command": "npm run test:ai-koc-faz-5",
+      "group": "security",
+      "started_at": "2026-09-13T11:33:32.582Z",
+      "finished_at": "2026-09-13T11:33:34.747Z",
+      "duration_ms": 2165,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-6/guvenlik-testleri.log",
+      "authoritative_baseline_preserved": true
+    },
+    {
+      "key": "phase6",
+      "command": "npm run test:ai-koc-faz-6",
+      "group": "security",
+      "started_at": "2026-09-13T11:33:34.747Z",
+      "finished_at": "2026-09-13T11:33:36.760Z",
+      "duration_ms": 2013,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-6/guvenlik-testleri.log",
+      "core_assertions": 107,
+      "core_gates": 9
+    },
+    {
+      "key": "curriculum",
+      "command": "npm run test:library-curriculum",
+      "group": "regression",
+      "started_at": "2026-09-13T11:33:36.761Z",
+      "finished_at": "2026-09-13T11:33:36.864Z",
+      "duration_ms": 103,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-6/regresyon-testleri.log"
+    },
+    {
+      "key": "question_progress",
+      "command": "npm run test:question-progress",
+      "group": "regression",
+      "started_at": "2026-09-13T11:33:36.865Z",
+      "finished_at": "2026-09-13T11:33:36.963Z",
+      "duration_ms": 98,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-6/regresyon-testleri.log"
+    },
+    {
+      "key": "ai_coach",
+      "command": "node scripts/test-ai-coach.mjs",
+      "group": "regression",
+      "started_at": "2026-09-13T11:33:36.963Z",
+      "finished_at": "2026-09-13T11:33:37.027Z",
+      "duration_ms": 64,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-6/regresyon-testleri.log"
+    },
+    {
+      "key": "home",
+      "command": "npm run test:anasayfa",
+      "group": "regression",
+      "started_at": "2026-09-13T11:33:37.027Z",
+      "finished_at": "2026-09-13T11:33:37.138Z",
+      "duration_ms": 111,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-6/regresyon-testleri.log"
+    },
+    {
+      "key": "build",
+      "command": "npm run build",
+      "group": "build",
+      "started_at": "2026-09-13T11:33:37.138Z",
+      "finished_at": "2026-09-13T11:33:57.275Z",
+      "duration_ms": 20137,
+      "exit_code": 0,
+      "signal": null,
+      "status": "passed",
+      "reason": null,
+      "log_path": "docs/ai-koc/kanitlar/faz-6/build.log"
+    }
+  ],
+  "command_totals": {
+    "required": 11,
+    "passed": 11,
+    "failed": 0,
+    "skipped": 0
+  },
+  "command_logs": {
+    "regression": "docs/ai-koc/kanitlar/faz-6/regresyon-testleri.log",
+    "security": "docs/ai-koc/kanitlar/faz-6/guvenlik-testleri.log",
+    "build": "docs/ai-koc/kanitlar/faz-6/build.log"
+  },
+  "prerequisite_acceptance": {
+    "phase_3": "17/17 commands; 46/46 gates; 450 assertions; manifest 6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
+    "phase_4": "12/12 commands; 85/85 gates; 290 assertions",
+    "phase_5": "12/12 commands; 9/9 gates; 231 assertions"
+  }
+}

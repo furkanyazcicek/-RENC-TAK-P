@@ -14,6 +14,7 @@
 import { authenticate } from '../_lib/auth.js'
 import { logError, sendError } from '../_lib/errors.js'
 import { buildFacts, fetchStudentData } from '../_lib/context.js'
+import { buildDeterministicCoachingBriefing } from '../../src/lib/learning/coachingLoop/index.js'
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -29,13 +30,26 @@ export default async function handler(req, res) {
   try {
     const raw = await fetchStudentData(supabase, user.id)
     const facts = buildFacts(profile, raw)
+    const closedLoopData = await fetchClosedLoopBriefingData(supabase, user.id)
+    const coaching = buildDeterministicCoachingBriefing({
+      tasks: closedLoopData.tasks,
+      homeworks: raw.homeworks,
+      projections: closedLoopData.projections,
+      outcomes: closedLoopData.outcomes,
+    })
+    const legacySuggestion = buildSuggestion(facts)
 
     return res.status(200).json({
       greeting: greetingFor(new Date()),
       firstName: facts.profile.firstName,
       today: facts.today,
       progress: buildProgress(facts),
-      suggestion: buildSuggestion(facts),
+      suggestion: suggestionFromCoachingBriefing(coaching, legacySuggestion),
+      coaching: {
+        ...coaching,
+        status: closedLoopData.status,
+        user_report_is_platform_verification: false,
+      },
       stats: {
         streak: facts.study.streak,
         thisWeekMinutes: facts.study.thisWeekMinutes,
@@ -47,8 +61,70 @@ export default async function handler(req, res) {
       hasData: facts.study.logCount > 0 || facts.exams.totalMock > 0,
     })
   } catch (error) {
-    logError('briefing', error, { studentId: user.id })
+    logError('briefing', error)
     return sendError(res, 500, 'database_error')
+  }
+}
+
+async function fetchClosedLoopBriefingData(supabase, studentId) {
+  try {
+    const [taskResult, projectionResult, outcomeResult] = await Promise.all([
+      supabase
+        .from('student_coaching_tasks')
+        .select('task_id,recommendation_id,title,status,target,topic_id,objective_id,minimum_evidence_count,accumulated_evidence_count,progress_ratio,work_window_end,created_at,student_coaching_recommendations(topic_label,subject_label,success_criteria)')
+        .eq('student_id', studentId)
+        .in('status', ['accepted', 'planned', 'started', 'partial', 'user_reported_complete'])
+        .order('work_window_end', { ascending: true })
+        .limit(12),
+      supabase
+        .from('student_learning_projection_rows')
+        .select('scope_type,scope_key,topic_id,data_state,performance_state,repeat_due_at,explanation')
+        .eq('student_id', studentId)
+        .eq('scope_type', 'topic')
+        .eq('is_active', true)
+        .eq('consumer_visible', true)
+        .order('repeat_due_at', { ascending: true, nullsFirst: false })
+        .limit(20),
+      supabase
+        .from('student_coaching_outcomes')
+        .select('outcome_id,task_id,topic_id,assessment,enough_data,explanation,evaluated_at')
+        .eq('student_id', studentId)
+        .order('evaluated_at', { ascending: false })
+        .limit(2),
+    ])
+    const tasks = (taskResult.data ?? []).map((task) => ({
+      ...task,
+      topic_label: task.student_coaching_recommendations?.topic_label ?? null,
+      subject_label: task.student_coaching_recommendations?.subject_label ?? null,
+      success_criteria: task.student_coaching_recommendations?.success_criteria ?? null,
+    }))
+    const errors = [taskResult, projectionResult, outcomeResult].filter((result) => result.error).length
+    return {
+      status: errors === 0 ? 'available' : errors === 3 ? 'unavailable' : 'degraded',
+      tasks,
+      projections: projectionResult.data ?? [],
+      outcomes: outcomeResult.data ?? [],
+    }
+  } catch {
+    return { status: 'unavailable', tasks: [], projections: [], outcomes: [] }
+  }
+}
+
+function suggestionFromCoachingBriefing(coaching, fallback) {
+  const primary = coaching.daily.primary
+  if (!primary) return fallback
+  const target = primary.target?.status === 'available' ? primary.target : null
+  return {
+    kind: primary.kind === 'coaching_task_active' ? 'coaching_task' : primary.kind,
+    title: primary.title,
+    basis: primary.detail,
+    items: [],
+    hint: coaching.daily.secondary
+      ? `İkinci odak: ${coaching.daily.secondary.title}`
+      : null,
+    target,
+    taskId: primary.source === 'coaching_task' ? primary.id : null,
+    progressRatio: primary.progress_ratio ?? null,
   }
 }
 

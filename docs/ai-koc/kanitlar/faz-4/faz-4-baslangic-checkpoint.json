@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "checkpoint": "phase_4_verified_start",
+  "status": "passed",
+  "verified_at": "2026-09-13T03:43:46+03:00",
+  "transition": {
+    "kind": "verified_phase_3_content_baseline_update",
+    "description": "Doğrulanmış Faz 3 içerik baz çizgisi güncellemesi",
+    "superseded_manifest_checksum": "dbd0274f0d4b02aa7b229e9f1fbe07cdb207ee32dda368540a04c046fbcc19c0",
+    "authoritative_manifest_checksum": "6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
+    "reason": "Güncel manifest mevcut Faz 3 içerik ağacından deterministik olarak yeniden üretildi ve tam Faz 3 kabul koşusu geçti; eski değer önceki içerik anlık görüntüsüne aittir.",
+    "route_fix_caused_checksum_change": false,
+    "phase_2_migration_changed": false,
+    "phase_3_migration_changed": false
+  },
+  "workspace": {
+    "path": "/Users/furkantalhayazcicek/Desktop/DRKOÇ",
+    "branch": "main",
+    "git_head": "3853e655fb266114325cc326cbbcd611e7d37033",
+    "dirty": true,
+    "dirty_entry_count_at_checkpoint": 91,
+    "dirty_status_sha256": "82b093b1ae811ddadb58ad266c9a6c080e5d5d35f2886126716f8fd5301b6659",
+    "unrelated_user_changes_preserved": true
+  },
+  "phase_1": {
+    "test_status": "passed",
+    "sections": 14,
+    "assertions": 1516,
+    "app_routes": 63
+  },
+  "phase_2": {
+    "acceptance_status": "passed",
+    "local_gates": {
+      "required": 24,
+      "passed": 24,
+      "failed": 0
+    },
+    "test_status": "passed",
+    "sections": 17,
+    "assertions": 353,
+    "migration_file": "supabase/migration_learning_evidence_network.sql",
+    "migration_sha256": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea"
+  },
+  "phase_3": {
+    "acceptance_status": "passed",
+    "commands": {
+      "required": 17,
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0
+    },
+    "gates": {
+      "required": 46,
+      "passed": 46,
+      "failed": 0,
+      "pending": 0
+    },
+    "test_status": "passed",
+    "assertions": 450,
+    "migration_file": "supabase/migration_learning_content_activity.sql",
+    "migration_sha256": "8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165",
+    "manifest": {
+      "file": "src/generated/learning-content-manifest.json",
+      "version": "learning-content-manifest@1",
+      "checksum_algorithm": "sha256/stable-json",
+      "declared_checksum": "6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
+      "recomputed_checksum": "6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
+      "entries": 4344,
+      "public_answer_keys_present": false
+    }
+  },
+  "verification_commands": [
+    {
+      "command": "npm run test:ai-koc-faz-1",
+      "status": "passed",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run test:ai-koc-faz-2",
+      "status": "passed",
+      "exit_code": 0
+    },
+    {
+      "command": "npm run test:ai-koc-faz-3",
+      "status": "passed",
+      "exit_code": 0
+    }
+  ],
+  "environment": {
+    "database_engine": "PGlite/WASM",
+    "serialized_connection": true,
+    "real_multi_connection_concurrency_claimed": false
+  },
+  "side_effects": {
+    "live_supabase_read": false,
+    "live_supabase_write": false,
+    "live_schema_change": false,
+    "real_student_data_used": false,
+    "live_backfill_run": false,
+    "live_seed_run": false,
+    "paid_model_call": false,
+    "deployment_performed": false,
+    "git_push_performed": false
+  }
+}

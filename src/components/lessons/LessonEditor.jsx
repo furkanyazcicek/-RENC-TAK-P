@@ -227,13 +227,16 @@ export default function LessonEditor({ topicId, lesson, onSaved, onCancel }) {
 
       // Sürüm kaydı: AI yeniden üretimi veya elle düzenleme sonrası eski
       // içerik kaybolmaz, geri alınabilir (§43).
-      const { error: revisionError } = await supabase.from('structured_lesson_revisions').insert({
+      const { error: revisionError } = await supabase.from('structured_lesson_revisions').upsert({
         lesson_id: saved.id,
-        revision: nextRevision,
+        // Faz 3 DB trigger'ı hash'i yeniden türetir ve yalnız gerçek içerik
+        // değişiminde revizyonu artırır. Kaydedilen değeri kullanmak,
+        // salt durum değişiminde sahte bir yeni revizyon oluşturmaz.
+        revision: saved.current_revision,
         document: cleanDocument,
         change_note: lesson?.id ? 'Öğretmen düzenlemesi' : 'İlk sürüm',
         created_by: user?.id ?? null,
-      })
+      }, { onConflict: 'lesson_id,revision' })
       if (revisionError) throw revisionError
 
       onSaved?.(saved)

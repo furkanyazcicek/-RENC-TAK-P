@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { CheckCircle2, Circle, Trash2, CalendarClock, ClipboardList, PartyPopper } from 'lucide-react'
-import { supabase } from '../lib/supabaseClient'
+import useAcademicActivity from '../hooks/useAcademicActivity'
+import { academicStatusMessage } from '../lib/learning/academicActivity/client'
 import { cn } from '../lib/cn'
 import { isHomeworkOverdue } from '../lib/insights'
-import { Badge, EmptyState, IconButton } from './ui'
+import { Alert, Badge, EmptyState, IconButton } from './ui'
 
 function formatDate(dateStr) {
   if (!dateStr) return null
@@ -46,15 +48,21 @@ export default function HomeworkList({
   showStudentName = false,
   emptyVariant = 'pending',
 }) {
+  const academic = useAcademicActivity()
+  const [error, setError] = useState('')
   async function toggleStatus(hw) {
     const nextStatus = hw.status === 'Tamamlandı' ? 'Yapılıyor' : 'Tamamlandı'
-    const { error } = await supabase.from('homeworks').update({ status: nextStatus }).eq('id', hw.id)
-    if (!error) onChanged?.()
+    setError('')
+    const response = await academic.perform('homework_status', { record_id: hw.id, status: nextStatus })
+    if (response.status === 'saved') onChanged?.()
+    else setError(academicStatusMessage(response.status))
   }
 
   async function handleDelete(id) {
-    const { error } = await supabase.from('homeworks').delete().eq('id', id)
-    if (!error) onChanged?.()
+    setError('')
+    const response = await academic.perform('homework_delete', { record_id: id })
+    if (response.status === 'saved') onChanged?.()
+    else setError(academicStatusMessage(response.status))
   }
 
   if (!homeworks || homeworks.length === 0) {
@@ -79,6 +87,7 @@ export default function HomeworkList({
 
   return (
     <div className="grid gap-4 sm:grid-cols-2">
+      {error && <div className="sm:col-span-2"><Alert tone="danger">{error}</Alert></div>}
       {homeworks.map((hw) => {
         const overdue = isHomeworkOverdue(hw)
         const done = hw.status === 'Tamamlandı'
@@ -96,7 +105,7 @@ export default function HomeworkList({
             <button
               type="button"
               onClick={() => toggleStatus(hw)}
-              className="focus-ring mt-0.5 shrink-0 rounded-full"
+              className="focus-ring mt-0.5 grid h-11 w-11 shrink-0 place-items-center rounded-full"
               aria-label={done ? 'Tamamlanmadı olarak işaretle' : 'Tamamlandı olarak işaretle'}
             >
               {done ? (
@@ -123,7 +132,7 @@ export default function HomeworkList({
                   <IconButton
                     icon={Trash2}
                     label="Ödevi sil"
-                    size="xs"
+                    size="lg"
                     onClick={() => handleDelete(hw.id)}
                     className="-mr-1 -mt-0.5 shrink-0 text-ink/45 hover:bg-danger-50 hover:text-danger-600 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"
                   />

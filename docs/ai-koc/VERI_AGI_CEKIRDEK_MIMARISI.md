@@ -1,7 +1,7 @@
 # Veri Ağı Çekirdek Mimarisi — Faz 2
 
 Tarih: 8 Eylül 2026  
-Durum: Yerel kabul tamamlanana kadar `Devam ediyor`  
+Durum: `Yerel olarak tamamlandı, canlı onay bekliyor`
 Sözleşmeler: `learning-evidence@1` / `1.0`, `learning-source-registry@1`
 
 ## Amaç ve kapsam
@@ -183,6 +183,13 @@ tamamlanınca atomik olarak `active` olur. Hata durumunda eski active generation
 okunabilir kalır. Replay deftere yazmaz. Aynı defter+sürüm iki çalıştırmada
 aynı normalize satırları ve checksum'ı vermelidir.
 
+Global generation, 38 kaynak sözleşmesinin tamamını temsil eden
+`source_registry_version` değerini sabitler; bu kapsamda tek bir
+`source_adapter_version` yazılmaz. Kaynak kapsamındaki generation ise aynı
+registry sürümünün yanında `source_code` ve o kaynağın adaptör sürümünü de
+saklar. Böylece replay'in sözleşme/adaptör/projeksiyon bileşimi sonradan
+denetlenebilir.
+
 V1'de `startSequence`, generation'ın kayıtlı başlangıç checkpoint'idir;
 seçilen öğrenci/kaynak kapsamını eksik bir aktif nesille değiştirmemek için
 replay yine o kapsamın tam geçmişini hesaplar. Cursor mevcut high-water mark'ı
@@ -289,3 +296,15 @@ sunucusu/Docker/Supabase CLI yoktur. Gerçek yarış Faz 9 provasına açık ve
 başarılı sayılmamış bir sınır olarak taşınır. Geç görünür daha düşük sıra için
 anti-join kurtarma testi vardır; gerçek çoklu bağlantıda claim kilidi, unique
 sonuç ve replay sırasında eşzamanlı commit davranışı yine Faz 9'da sınanacaktır.
+
+Yerel kabul ayrıntıları [Faz 2 makine kaydında](kanitlar/faz-2/faz-2-kabul-sonucu.json),
+şema envanteri ise [migration özetinde](kanitlar/faz-2/migration-sema-ozeti.json)
+saklanır.
+
+## Faz 4 kaynak bağlantısı
+
+Faz 2 private ingest tek ortak defter alım sınırı olarak korunur. Faz 4, bu iç fonksiyonu normal rollere açmadan `learning_private.emit_academic_evidence` üzerinden yalnız kaynak-özel ve transaction içi çağırır. Akademik receipt, source revision ve private audit tabloları Faz 3 içerik fişlerinden ayrıdır; kaynak anlamı ve güven allowlist'i `learning-academic-registry@1` ile sabitlenir.
+
+RLS öğrenci sahipliğini, aktif öğretmen–öğrenci bağını, veli salt-okuma sınırını ve private storage erişimini doğrular. AI Solve model yazısı tarayıcıdan değil, claim ve JWT öğrenci kimliğini doğrulayan dar sunucu finalizer'dan geçer. Correction/tombstone etkin görünümü append-only audit'ten deterministik olarak üretir; health/uzlaştırma kişisel veri taşımaz.
+
+Bu genişleme yalnız yerel PGlite/fixture üzerinde 85/85 kapıyla doğrulanmıştır. Canlı migration/backfill ve gerçek çok bağlantılı yarış uygulanmadı. Ayrıntı [Faz 4 ana akademik kayıt mimarisindedir](FAZ_4_ANA_AKADEMIK_KAYIT_MIMARISI.md).

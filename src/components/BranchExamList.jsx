@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { FlaskConical, Trash2 } from 'lucide-react'
-import { supabase } from '../lib/supabaseClient'
+import useAcademicActivity from '../hooks/useAcademicActivity'
+import { academicStatusMessage } from '../lib/learning/academicActivity/client'
 import { calcNet } from '../lib/examHelpers'
 import { colorForKey } from '../lib/chartTheme'
-import { Badge, EmptyState, IconButton } from './ui'
+import { Alert, Badge, EmptyState, IconButton } from './ui'
 
 // Doğru/yanlış girilmişse net HER ZAMAN burada hesaplanır. Veritabanındaki
 // `net` generated column'u sabit /4 uygular, LGS'nin /3 katsayısını bilmez —
@@ -23,9 +25,13 @@ function resolveNet(exam) {
  * böylece aynı ders uygulamanın her yerinde aynı renkte görünür.
  */
 export default function BranchExamList({ exams, onChanged, readOnly = false, emptyAction }) {
+  const academic = useAcademicActivity()
+  const [error, setError] = useState('')
   async function handleDelete(id) {
-    const { error } = await supabase.from('exams').delete().eq('id', id)
-    if (!error) onChanged?.()
+    setError('')
+    const response = await academic.perform('branch_exam_delete', { record_id: id })
+    if (response.status === 'saved') onChanged?.()
+    else setError(academicStatusMessage(response.status))
   }
 
   if (!exams || exams.length === 0) {
@@ -42,6 +48,7 @@ export default function BranchExamList({ exams, onChanged, readOnly = false, emp
 
   return (
     <div className="card divide-y divide-line overflow-hidden">
+      {error && <div className="p-3"><Alert tone="danger">{error}</Alert></div>}
       {exams.map((e) => {
         const net = resolveNet(e)
         const subject = String(e.topic ?? '').split('-')[0].trim() || 'Genel'
@@ -99,7 +106,7 @@ export default function BranchExamList({ exams, onChanged, readOnly = false, emp
                 <IconButton
                   icon={Trash2}
                   label="Branş denemesini sil"
-                  size="xs"
+                  size="lg"
                   onClick={() => handleDelete(e.id)}
                   className="text-ink/45 hover:bg-danger-50 hover:text-danger-600 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"
                 />

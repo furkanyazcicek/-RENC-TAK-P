@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "registry": {
+    "version": "learning-academic-registry@1",
+    "source_count": 14,
+    "positive_count": 10,
+    "parity": "passed"
+  },
+  "sources": {
+    "home_summary": {
+      "matrix_id": "M01",
+      "classification": "derived_readonly",
+      "decision_status": "local_derived_confirmed",
+      "semantic_event_types": []
+    },
+    "analytics_view": {
+      "matrix_id": "M02",
+      "classification": "derived_readonly",
+      "decision_status": "local_derived_confirmed",
+      "semantic_event_types": []
+    },
+    "daily_logs": {
+      "matrix_id": "M03",
+      "classification": "emitter",
+      "decision_status": "locally_implemented_live_not_applied",
+      "semantic_event_types": [
+        "study_session_reported",
+        "question_counts_reported"
+      ]
+    },
+    "mock_exam_subjects": {
+      "matrix_id": "M04",
+      "classification": "emitter",
+      "decision_status": "locally_implemented_live_not_applied",
+      "semantic_event_types": [
+        "mock_exam_session_reported",
+        "mock_exam_subject_result_reported"
+      ]
+    },
+    "branch_exams": {
+      "matrix_id": "M05",
+      "classification": "emitter",
+      "decision_status": "locally_implemented_live_not_applied",
+      "semantic_event_types": [
+        "branch_exam_result_reported",
+        "branch_exam_result_entered_by_teacher"
+      ]
+    },
+    "homeworks": {
+      "matrix_id": "M06",
+      "classification": "conditional_emitter",
+      "decision_status": "locally_implemented_live_not_applied",
+      "semantic_event_types": [
+        "homework_assigned",
+        "homework_status_reported"
+      ]
+    },
+    "questions_teacher_feedback": {
+      "matrix_id": "M07",
+      "classification": "conditional_emitter",
+      "decision_status": "locally_implemented_live_not_applied",
+      "semantic_event_types": [
+        "question_submitted",
+        "teacher_feedback_shared",
+        "teacher_problem_question_shared"
+      ]
+    },
+    "ai_solution_sessions": {
+      "matrix_id": "M11",
+      "classification": "conditional_emitter",
+      "decision_status": "locally_implemented_live_not_applied",
+      "semantic_event_types": [
+        "solution_requested",
+        "help_requested",
+        "answer_checked",
+        "feedback_reported"
+      ]
+    },
+    "ai_solution_review": {
+      "matrix_id": "M12",
+      "classification": "conditional_emitter",
+      "decision_status": "locally_implemented_live_not_applied",
+      "semantic_event_types": [
+        "review_state_reported"
+      ]
+    },
+    "live_lesson_attendance": {
+      "matrix_id": "M31",
+      "classification": "conditional_emitter",
+      "decision_status": "locally_implemented_live_not_applied",
+      "semantic_event_types": [
+        "lesson_attendance_state"
+      ]
+    },
+    "live_lesson_raw_stream": {
+      "matrix_id": "M32",
+      "classification": "excluded",
+      "decision_status": "local_exclusion_confirmed",
+      "semantic_event_types": []
+    },
+    "live_lesson_shared_summary": {
+      "matrix_id": "M33",
+      "classification": "conditional_emitter",
+      "decision_status": "locally_implemented_live_not_applied",
+      "semantic_event_types": [
+        "teacher_summary_shared",
+        "student_feedback_reported"
+      ]
+    },
+    "student_profile": {
+      "matrix_id": "M36",
+      "classification": "conditional_emitter",
+      "decision_status": "locally_implemented_live_not_applied",
+      "semantic_event_types": [
+        "education_goal_snapshot"
+      ]
+    },
+    "teacher_parent_support_routes": {
+      "matrix_id": "M38",
+      "classification": "excluded",
+      "decision_status": "local_exclusion_confirmed",
+      "semantic_event_types": []
+    }
+  }
+}

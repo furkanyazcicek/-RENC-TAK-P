@@ -115,6 +115,125 @@ async function insertProjectionRows(queryable, generationId, rows, {
   }
 }
 
+function studentModelRowPayload(row) {
+  return {
+    student_id: row.student_id,
+    model_version: row.model_version,
+    config_version: row.config_version,
+    topic_contract_version: row.topic_contract_version,
+    scope_type: row.scope_type,
+    scope_key: row.scope_key,
+    education_context_id: row.education_context_id ?? null,
+    subject_id: row.subject_id ?? null,
+    topic_id: row.topic_id ?? null,
+    objective_id: row.objective_id ?? null,
+    data_state: row.data_state,
+    confidence_level: row.confidence_level,
+    performance_state: row.dimensions?.performance?.state ?? 'insufficient',
+    performance_score: row.dimensions?.performance?.weighted_accuracy ?? null,
+    trend_state: row.dimensions?.performance?.trend?.state ?? 'insufficient',
+    conflict_flag: row.conflict_flag === true,
+    source_diversity: Number(row.source_diversity) || 0,
+    oldest_evidence_at: row.oldest_evidence_at ?? null,
+    newest_evidence_at: row.newest_evidence_at ?? null,
+    repeat_due_at: row.repeat_due_at ?? null,
+    excluded_evidence_count: Number(row.excluded_evidence_count) || 0,
+    unmatched_evidence_count: Number(row.unmatched_evidence_count) || 0,
+    max_ingestion_sequence: Number(row.max_ingestion_sequence) || 0,
+    evidence_counts: row.evidence_counts ?? {},
+    dimensions: row.dimensions ?? {},
+    source_summaries: row.source_summaries ?? [],
+    explanation: row.explanation ?? {},
+    computed_at: row.computed_at,
+    reference_time: row.reference_time,
+  }
+}
+
+async function insertStudentModelRows(queryable, generationId, rows, {
+  isActive = false,
+  consumerVisible = false,
+} = {}) {
+  for (const input of rows) {
+    const row = studentModelRowPayload(input)
+    const checksum = await sha256Hex(stableStringify(row))
+    await queryable.query(
+      `insert into public.student_learning_projection_rows (
+         generation_id, student_id, model_version, config_version,
+         topic_contract_version, scope_type, scope_key, education_context_id,
+         subject_id, topic_id, objective_id, data_state, confidence_level,
+         performance_state, performance_score, trend_state, conflict_flag,
+         source_diversity, oldest_evidence_at, newest_evidence_at, repeat_due_at,
+         excluded_evidence_count, unmatched_evidence_count, max_ingestion_sequence,
+         evidence_counts, dimensions, source_summaries, explanation, row_checksum,
+         computed_at, reference_time, is_active, consumer_visible
+       ) values (
+         $1::uuid, $2::uuid, $3::text, $4::text, $5::text, $6::text, $7::text,
+         $8::text, $9::text, $10::text, $11::text, $12::text, $13::text,
+         $14::text, $15::numeric, $16::text, $17::boolean, $18::integer,
+         $19::timestamptz, $20::timestamptz, $21::timestamptz, $22::integer,
+         $23::integer, $24::bigint, $25::jsonb, $26::jsonb, $27::jsonb,
+         $28::jsonb, $29::text, $30::timestamptz, $31::timestamptz,
+         $32::boolean, $33::boolean
+       )`,
+      [
+        generationId, row.student_id, row.model_version, row.config_version,
+        row.topic_contract_version, row.scope_type, row.scope_key,
+        row.education_context_id, row.subject_id, row.topic_id, row.objective_id,
+        row.data_state, row.confidence_level, row.performance_state,
+        row.performance_score, row.trend_state, row.conflict_flag,
+        row.source_diversity, row.oldest_evidence_at, row.newest_evidence_at,
+        row.repeat_due_at, row.excluded_evidence_count, row.unmatched_evidence_count,
+        row.max_ingestion_sequence, JSON.stringify(row.evidence_counts),
+        JSON.stringify(row.dimensions), JSON.stringify(row.source_summaries),
+        JSON.stringify(row.explanation), checksum, row.computed_at,
+        row.reference_time, isActive, consumerVisible,
+      ]
+    )
+  }
+}
+
+async function insertStudentModelDetails(queryable, generationId, { patterns = [], evidenceRefs = [] } = {}, {
+  isActive = false,
+  consumerVisible = false,
+} = {}) {
+  for (const pattern of patterns) {
+    await queryable.query(
+      `insert into public.student_behavior_patterns (
+         generation_id, student_id, pattern_code, rule_version, state,
+         confidence_level, sample_count, supporting_record_ids,
+         refuting_record_ids, last_verified_at, valid_until,
+         is_active, consumer_visible
+       ) values (
+         $1::uuid, $2::uuid, $3::text, $4::text, $5::text, $6::text,
+         $7::integer, $8::uuid[], $9::uuid[], $10::timestamptz,
+         $11::timestamptz, $12::boolean, $13::boolean
+       )`,
+      [
+        generationId, pattern.student_id, pattern.pattern_code, pattern.rule_version,
+        pattern.state, pattern.confidence, Number(pattern.sample_count) || 0,
+        pattern.supporting_record_ids ?? [], pattern.refuting_record_ids ?? [],
+        pattern.last_verified_at, pattern.valid_until, isActive, consumerVisible,
+      ]
+    )
+  }
+  for (const ref of evidenceRefs) {
+    await queryable.query(
+      `insert into public.student_learning_projection_evidence_refs (
+         generation_id, student_id, scope_key, record_id, source_code,
+         source_locator, evidence_class, occurred_at, included, exclusion_reason
+       ) values (
+         $1::uuid, $2::uuid, $3::text, $4::uuid, $5::text,
+         $6::text, $7::text, $8::timestamptz, $9::boolean, $10::text
+       )`,
+      [
+        generationId, ref.student_id, ref.scope_key, ref.record_id,
+        ref.source_code, ref.source_locator, ref.evidence_class,
+        ref.occurred_at, ref.included === true, ref.exclusion_reason ?? null,
+      ]
+    )
+  }
+}
+
 /**
  * Yalnız güvenilir kaynak sarmalamasından çağrılır. Queryable bir sunucu
  * PostgreSQL bağlantısıdır; tarayıcı Supabase istemcisi veya service_role
@@ -244,7 +363,7 @@ export function createPgLearningEvidenceRepository(queryable) {
 
   async function stageProjectionRows(generationId, rows) {
     const generation = await queryable.query(
-      `select status from public.learning_projection_generations
+      `select status, projection_name from public.learning_projection_generations
         where generation_id = $1::uuid`,
       [generationId]
     )
@@ -253,7 +372,25 @@ export function createPgLearningEvidenceRepository(queryable) {
         code: 'PROJECTION_GENERATION_NOT_BUILDING',
       })
     }
-    await insertProjectionRows(queryable, generationId, rows)
+    if (generation.rows[0].projection_name === 'student_topic_model') {
+      await insertStudentModelRows(queryable, generationId, rows)
+    } else {
+      await insertProjectionRows(queryable, generationId, rows)
+    }
+  }
+
+  async function stageStudentModelDetails(generationId, details) {
+    const generation = await queryable.query(
+      `select status, projection_name from public.learning_projection_generations
+        where generation_id = $1::uuid`,
+      [generationId]
+    )
+    if (generation.rows[0]?.status !== 'building' || generation.rows[0]?.projection_name !== 'student_topic_model') {
+      throw Object.assign(new Error('student_model_generation_not_building'), {
+        code: 'STUDENT_MODEL_GENERATION_NOT_BUILDING',
+      })
+    }
+    await insertStudentModelDetails(queryable, generationId, details)
   }
 
   async function activateProjectionGeneration(generationId, {
@@ -274,12 +411,7 @@ export function createPgLearningEvidenceRepository(queryable) {
           code: 'PROJECTION_GENERATION_NOT_BUILDING',
         })
       }
-      await transaction.query(
-        `update public.learning_diagnostic_projection_rows
-            set is_active = false,
-                consumer_visible = false,
-                updated_at = pg_catalog.clock_timestamp()
-          where generation_id in (
+      const previousGenerationSql = `
             select existing.generation_id
               from public.learning_projection_generations as existing
              where existing.status = 'active'
@@ -287,16 +419,37 @@ export function createPgLearningEvidenceRepository(queryable) {
                and existing.projection_version = $2::text
                and existing.student_id is not distinct from $3::uuid
                and existing.source_code is not distinct from $4::text
-               and existing.generation_id <> $5::uuid
-          )`,
-        [
+               and existing.generation_id <> $5::uuid`
+      const scopeParams = [
           generation.projection_name,
           generation.projection_version,
           generation.student_id,
           generation.source_code,
           generationId,
         ]
-      )
+      if (generation.projection_name === 'student_topic_model') {
+        await transaction.query(
+          `update public.student_learning_projection_rows
+              set is_active = false, consumer_visible = false
+            where generation_id in (${previousGenerationSql})`,
+          scopeParams
+        )
+        await transaction.query(
+          `update public.student_behavior_patterns
+              set is_active = false, consumer_visible = false
+            where generation_id in (${previousGenerationSql})`,
+          scopeParams
+        )
+      } else {
+        await transaction.query(
+          `update public.learning_diagnostic_projection_rows
+              set is_active = false,
+                  consumer_visible = false,
+                  updated_at = pg_catalog.clock_timestamp()
+            where generation_id in (${previousGenerationSql})`,
+          scopeParams
+        )
+      }
       await transaction.query(
         `update public.learning_projection_generations
             set status = 'superseded'
@@ -328,14 +481,30 @@ export function createPgLearningEvidenceRepository(queryable) {
                     end_ingestion_sequence`,
         [generationId, Number(highWaterMark) || 0, Number(rowCount) || 0, checksum]
       )
-      await transaction.query(
-        `update public.learning_diagnostic_projection_rows
-            set is_active = true,
-                consumer_visible = $2::boolean,
-                updated_at = pg_catalog.clock_timestamp()
-          where generation_id = $1::uuid`,
-        [generationId, generation.student_id == null && generation.source_code == null]
-      )
+      const consumerVisible = generation.student_id == null && generation.source_code == null
+      if (generation.projection_name === 'student_topic_model') {
+        await transaction.query(
+          `update public.student_learning_projection_rows
+              set is_active = true, consumer_visible = $2::boolean
+            where generation_id = $1::uuid`,
+          [generationId, consumerVisible]
+        )
+        await transaction.query(
+          `update public.student_behavior_patterns
+              set is_active = true, consumer_visible = $2::boolean
+            where generation_id = $1::uuid`,
+          [generationId, consumerVisible]
+        )
+      } else {
+        await transaction.query(
+          `update public.learning_diagnostic_projection_rows
+              set is_active = true,
+                  consumer_visible = $2::boolean,
+                  updated_at = pg_catalog.clock_timestamp()
+            where generation_id = $1::uuid`,
+          [generationId, consumerVisible]
+        )
+      }
       return activated.rows[0]
     })
   }
@@ -394,7 +563,7 @@ export function createPgLearningEvidenceRepository(queryable) {
       if (!cursor) throw new Error('projection_cursor_unavailable')
 
       const generationResult = await transaction.query(
-        `select generation_id, student_id, source_code
+        `select generation_id, projection_name, projection_version, student_id, source_code
            from public.learning_projection_generations
           where projection_name = $1::text
             and projection_version = $2::text
@@ -484,15 +653,48 @@ export function createPgLearningEvidenceRepository(queryable) {
       }
 
       const transactionRepository = createPgLearningEvidenceRepository(transaction)
+      const projectionReadRepository = Object.freeze({
+        getRecord: transactionRepository.getRecord,
+        listEffective: transactionRepository.listEffective,
+        listLedgerBatch: transactionRepository.listLedgerBatch,
+        listReplayStudents: transactionRepository.listReplayStudents,
+        stageStudentModelDetails: transactionRepository.stageStudentModelDetails,
+      })
       let handled
       try {
         handled = await handler({
           cursor: Number(cursor.last_ingestion_sequence),
           records,
           generation_id: generationId,
-          repository: transactionRepository,
+          repository: projectionReadRepository,
           source_code: options.sourceCode ?? null,
         })
+        const claimedRecordIds = new Set(records.map((record) => record.record_id))
+        const claimedStudentIds = new Set(records.map((record) => record.student_id))
+        const handledScopeKeys = new Set((handled?.rows ?? []).map((row) => `${row?.student_id}|${row?.scope_key}`))
+        if (
+          !handled || typeof handled !== 'object' ||
+          !Array.isArray(handled.rows ?? []) ||
+          !Array.isArray(handled.replaceStudentIds ?? []) ||
+          !Array.isArray(handled.quarantinedRecordIds ?? []) ||
+          !Array.isArray(handled.patterns ?? []) ||
+          !Array.isArray(handled.evidenceRefs ?? []) ||
+          (handled.replaceStudentIds ?? []).some((studentId) => !claimedStudentIds.has(studentId)) ||
+          (handled.rows ?? []).some((row) =>
+            !claimedStudentIds.has(row?.student_id) ||
+            (activeGeneration.source_code != null && row?.source_code !== activeGeneration.source_code)
+          ) ||
+          (handled.patterns ?? []).some((pattern) => !claimedStudentIds.has(pattern?.student_id)) ||
+          (handled.evidenceRefs ?? []).some((ref) =>
+            !claimedStudentIds.has(ref?.student_id) ||
+            !handledScopeKeys.has(`${ref?.student_id}|${ref?.scope_key}`)
+          ) ||
+          (handled.quarantinedRecordIds ?? []).some((recordId) => !claimedRecordIds.has(recordId))
+        ) {
+          throw Object.assign(new Error('projection_handler_result_invalid'), {
+            code: 'PROJECTION_HANDLER_RESULT_INVALID',
+          })
+        }
       } catch (error) {
         handlerFailure = error
         for (const record of records) {
@@ -534,17 +736,27 @@ export function createPgLearningEvidenceRepository(queryable) {
 
       const replaceStudentIds = [...new Set(handled.replaceStudentIds ?? [])]
       for (const studentId of replaceStudentIds) {
-        await transaction.query(
-          `delete from public.learning_diagnostic_projection_rows
-            where generation_id = $1::uuid and student_id = $2::uuid`,
-          [generationId, studentId]
-        )
+        if (activeGeneration.projection_name === 'student_topic_model') {
+          await transaction.query('delete from public.student_learning_projection_evidence_refs where generation_id = $1::uuid and student_id = $2::uuid', [generationId, studentId])
+          await transaction.query('delete from public.student_behavior_patterns where generation_id = $1::uuid and student_id = $2::uuid', [generationId, studentId])
+          await transaction.query('delete from public.student_learning_projection_rows where generation_id = $1::uuid and student_id = $2::uuid', [generationId, studentId])
+        } else {
+          await transaction.query(
+            `delete from public.learning_diagnostic_projection_rows
+              where generation_id = $1::uuid and student_id = $2::uuid`,
+            [generationId, studentId]
+          )
+        }
       }
-      await insertProjectionRows(transaction, generationId, handled.rows ?? [], {
-        isActive: true,
-        consumerVisible:
-          activeGeneration.student_id == null && activeGeneration.source_code == null,
-      })
+      const consumerVisible = activeGeneration.student_id == null && activeGeneration.source_code == null
+      if (activeGeneration.projection_name === 'student_topic_model') {
+        await insertStudentModelRows(transaction, generationId, handled.rows ?? [], { isActive: true, consumerVisible })
+        await insertStudentModelDetails(transaction, generationId, {
+          patterns: handled.patterns ?? [], evidenceRefs: handled.evidenceRefs ?? [],
+        }, { isActive: true, consumerVisible })
+      } else {
+        await insertProjectionRows(transaction, generationId, handled.rows ?? [], { isActive: true, consumerVisible })
+      }
       const quarantined = new Set(handled.quarantinedRecordIds ?? [])
       for (const record of records) {
         const isQuarantined = quarantined.has(record.record_id)
@@ -647,12 +859,26 @@ export function createPgLearningEvidenceRepository(queryable) {
                        and (cursor.source_code is null or record.source_code = cursor.source_code)
                   ), cursor.last_ingestion_sequence) - cursor.last_ingestion_sequence,
                   0
-                )::bigint as lag
+                )::bigint as lag,
+                (
+                  select count(*)::bigint
+                    from public.learning_evidence_records as pending_record
+                   where (cursor.student_id is null or pending_record.student_id = cursor.student_id)
+                     and (cursor.source_code is null or pending_record.source_code = cursor.source_code)
+                     and not exists (
+                       select 1
+                         from public.learning_evidence_processing as processed
+                        where processed.cursor_id = cursor.cursor_id
+                          and processed.record_id = pending_record.record_id
+                          and processed.status in ('succeeded', 'quarantined')
+                     )
+                ) as unprocessed_record_count
            from public.learning_projection_cursors as cursor
        )
        select projection_name, projection_version,
               count(*)::bigint as cursor_count,
-              max(lag)::bigint as max_record_lag
+              max(lag)::bigint as max_record_lag,
+              sum(unprocessed_record_count)::bigint as unprocessed_record_count
          from cursor_lag
         group by projection_name, projection_version
         order by projection_name, projection_version`
@@ -705,7 +931,9 @@ export function createPgLearningEvidenceRepository(queryable) {
       accepted_by_source_event: Object.freeze(numeric(accepted.rows, ['accepted_count'])),
       identity_resolution_by_status: Object.freeze(numeric(identity.rows, ['record_count', 'ratio'])),
       processing_by_status: Object.freeze(numeric(processing.rows, ['record_count', 'retry_count'])),
-      projection_cursor_lag: Object.freeze(numeric(cursorLag.rows, ['cursor_count', 'max_record_lag'])),
+      projection_cursor_lag: Object.freeze(numeric(cursorLag.rows, [
+        'cursor_count', 'max_record_lag', 'unprocessed_record_count',
+      ])),
       source_health_by_status: Object.freeze(numeric(health.rows, ['scope_count'])),
       backfill_by_status: Object.freeze(numeric(backfill.rows, [
         'run_count', 'scanned_count', 'inserted_count', 'duplicate_count',
@@ -741,6 +969,7 @@ export function createPgLearningEvidenceRepository(queryable) {
     listReplayStudents,
     beginProjectionGeneration,
     stageProjectionRows,
+    stageStudentModelDetails,
     activateProjectionGeneration,
     failProjectionGeneration,
     runProjectionClaim,

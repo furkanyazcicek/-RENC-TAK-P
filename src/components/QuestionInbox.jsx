@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { ImagePlus, Inbox, MessageSquareQuote, PenLine, Send, X, ZoomIn } from 'lucide-react'
-import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
+import useAcademicActivity from '../hooks/useAcademicActivity'
+import { academicStatusMessage } from '../lib/learning/academicActivity/client'
+import { stageAndUploadAcademicQuestionMedia } from '../lib/learning/academicActivity/media'
 import { cn } from '../lib/cn'
 import { colorForKey } from '../lib/chartTheme'
 import StatusBadge from './StatusBadge'
@@ -18,6 +20,7 @@ const STATUS_OPTIONS = ['İnceleniyor', 'Derste Çözülecek', 'Çözüldü']
  */
 function ReplyBox({ question, onChanged, onCancel }) {
   const { user } = useAuth()
+  const academic = useAcademicActivity()
   const [value, setValue] = useState(question.teacher_reply ?? '')
   const [file, setFile] = useState(null)
   const [previewUrl, setPreviewUrl] = useState(null)
@@ -43,27 +46,16 @@ function ReplyBox({ question, onChanged, onCancel }) {
     setSaving(true)
     setError(null)
 
-    let imageUrl = existingImageUrl
     try {
+      let mediaActionId = null
       if (file) {
-        const path = `replies/${user.id}/${Date.now()}-${file.name}`
-        const { error: uploadError } = await supabase.storage
-          .from('question-images')
-          .upload(path, file)
-        if (uploadError) throw uploadError
-        const { data: publicUrlData } = supabase.storage.from('question-images').getPublicUrl(path)
-        imageUrl = publicUrlData.publicUrl
+        const media = await stageAndUploadAcademicQuestionMedia({ studentId: question.student_id, actorId: user.id, mediaKind: 'teacher_reply', file })
+        mediaActionId = media.mediaActionId
       }
-
-      const { error: updateError } = await supabase
-        .from('questions')
-        .update({
-          teacher_reply: value.trim() || null,
-          teacher_reply_image_url: imageUrl,
-          status: 'Çözüldü',
-        })
-        .eq('id', question.id)
-      if (updateError) throw updateError
+      const response = await academic.performSensitive('question_reply', {
+        record_id: question.id, reply: value.trim() || null, media_action_id: mediaActionId, status: 'Çözüldü',
+      })
+      if (response.status !== 'saved') throw new Error(academicStatusMessage(response.status))
 
       onChanged?.()
     } catch (err) {
@@ -99,7 +91,7 @@ function ReplyBox({ question, onChanged, onCancel }) {
               setExistingImageUrl(null)
             }}
             aria-label="Görseli kaldır"
-            className="focus-ring absolute -right-2 -top-2 grid h-6 w-6 place-items-center rounded-full bg-danger-500 text-white shadow-card"
+            className="focus-ring absolute -right-3 -top-3 grid h-11 w-11 place-items-center rounded-full bg-danger-500 text-white shadow-card"
           >
             <X className="h-3.5 w-3.5" strokeWidth={2.5} />
           </button>
@@ -107,7 +99,7 @@ function ReplyBox({ question, onChanged, onCancel }) {
       )}
 
       <div className="flex flex-wrap items-center gap-2">
-        <label className="focus-ring inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-dashed border-brand-300 px-3 py-1.5 text-xs font-semibold text-brand-600 transition-colors hover:bg-brand-50">
+        <label className="focus-ring inline-flex min-h-11 cursor-pointer items-center gap-1.5 rounded-lg border border-dashed border-brand-300 px-3 py-1.5 text-xs font-semibold text-brand-600 transition-colors hover:bg-brand-50">
           <ImagePlus className="h-3.5 w-3.5" aria-hidden="true" />
           Fotoğraf ekle
           <input
@@ -120,11 +112,11 @@ function ReplyBox({ question, onChanged, onCancel }) {
 
         <div className="ml-auto flex items-center gap-2">
           {onCancel && (
-            <Button variant="ghost" size="xs" onClick={onCancel}>
+            <Button variant="ghost" onClick={onCancel}>
               Vazgeç
             </Button>
           )}
-          <Button size="xs" icon={Send} loading={saving} onClick={handleSave}>
+          <Button icon={Send} loading={saving} onClick={handleSave}>
             {saving ? 'Kaydediliyor…' : 'Yanıtla ve kapat'}
           </Button>
         </div>
@@ -161,6 +153,8 @@ export default function QuestionInbox({
   // Gönderme işini yine mevcut alanlar üstlenir; tahta yalnızca
   // çizimi üretir.
   const [boardQuestion, setBoardQuestion] = useState(null)
+  const [actionError, setActionError] = useState('')
+  const academic = useAcademicActivity()
 
   function openLightbox(q, wanted) {
     const items = [
@@ -175,8 +169,10 @@ export default function QuestionInbox({
   const visible = filterable ? filtered : questions
 
   async function updateStatus(id, status) {
-    const { error } = await supabase.from('questions').update({ status }).eq('id', id)
-    if (!error) onChanged?.()
+    setActionError('')
+    const response = await academic.perform('question_status', { record_id: id, status })
+    if (response.status === 'saved') onChanged?.()
+    else setActionError(academicStatusMessage(response.status))
   }
 
   if (!questions || questions.length === 0) {
@@ -192,6 +188,7 @@ export default function QuestionInbox({
 
   return (
     <div className="flex flex-col gap-4">
+      {actionError && <Alert tone="danger">{actionError}</Alert>}
       {filterable && subjects.length > 0 && (
         <div className="rounded-card border border-line bg-surface-muted p-4">
           <SubjectTopicFilter
@@ -334,13 +331,13 @@ export default function QuestionInbox({
                     <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-2">
                       <Button
                         variant="secondary"
-                        size="xs"
+                        size="md"
                         icon={PenLine}
                         onClick={() => setBoardQuestion(q)}
                       >
                         {drafted ? 'Çözüme devam et' : 'Kalemle Çöz'}
                       </Button>
-                      <Button variant="link" size="xs" onClick={() => setOpenReplyId(q.id)}>
+                      <Button variant="link" size="xs" className="min-h-11 px-2" onClick={() => setOpenReplyId(q.id)}>
                         {answered ? 'Yanıtı düzenle' : 'Yanıtla'}
                       </Button>
                     </div>
@@ -353,7 +350,7 @@ export default function QuestionInbox({
                     value={q.status}
                     onChange={(e) => updateStatus(q.id, e.target.value)}
                     aria-label="Soru durumu"
-                    className="h-9 w-auto py-0 text-xs"
+                    className="h-11 w-auto py-0 text-xs"
                   >
                     {STATUS_OPTIONS.map((opt) => (
                       <option key={opt} value={opt}>

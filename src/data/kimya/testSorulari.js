@@ -4,8 +4,11 @@
  * `konu` alanı, öğrenciye hangi bölümü tekrar etmesi gerektiğini söyler.
  */
 
+export const KIMYA_MINI_TEST_ID = 'kimya-atlasi-mini-test-v1'
+
 export const TEST_SORULARI = [
   {
+    id: 'chem-co2-molecular-geometry',
     konu: 'Molekül geometrisi',
     soru: 'CO₂ molekülünün geometrisi nedir?',
     secenekler: ['Açısal (kırık)', 'Doğrusal', 'Tetrahedral', 'Trigonal piramidal'],
@@ -14,6 +17,7 @@ export const TEST_SORULARI = [
     tuzak: 'SO₂ ile karıştırılır: SO₂’de kükürdün bir ortaklanmamış çifti olduğu için o molekül açısaldır.',
   },
   {
+    id: 'chem-co2-dipole-cancellation',
     konu: 'Molekül polaritesi',
     soru: 'CO₂ molekülünün bağları polar olduğu hâlde molekül neden apolardır?',
     secenekler: [
@@ -27,6 +31,7 @@ export const TEST_SORULARI = [
     tuzak: '"Polar bağ varsa molekül de polardır" yanılgısı en sık burada görülür.',
   },
   {
+    id: 'chem-element-and-molecule-o2',
     konu: 'Madde sınıflandırma',
     soru: 'Aşağıdakilerden hangisi hem element hem moleküldür?',
     secenekler: ['H₂O', 'O₂', 'NaCl', 'CO₂'],
@@ -35,6 +40,7 @@ export const TEST_SORULARI = [
     tuzak: '"Element = tek atom" sanılır. Ölçüt atom sayısı değil, atom çeşididir.',
   },
   {
+    id: 'chem-nacl-formula-unit',
     konu: 'Tanecik türü',
     soru: 'NaCl için aşağıdaki ifadelerden hangisi doğrudur?',
     secenekler: [
@@ -48,6 +54,7 @@ export const TEST_SORULARI = [
     tuzak: 'İyonik bileşiklere "molekül" demek yaygın bir hatadır.',
   },
   {
+    id: 'chem-nitrate-polyatomic-ion',
     konu: 'Çok atomlu iyon',
     soru: 'NO₃⁻ taneciği için hangisi doğrudur?',
     secenekler: [
@@ -61,6 +68,7 @@ export const TEST_SORULARI = [
     tuzak: '"NO₃ molekülü" ifadesi yanlıştır.',
   },
   {
+    id: 'chem-aluminium-sulfate-atom-count',
     konu: 'Formül okuma',
     soru: 'Al₂(SO₄)₃ formülünde toplam kaç atom vardır?',
     secenekler: ['9', '12', '17', '20'],
@@ -69,6 +77,7 @@ export const TEST_SORULARI = [
     tuzak: 'Parantez dışındaki katsayının yalnızca ilk atomu çarptığı sanılır.',
   },
   {
+    id: 'chem-calcium-hydroxide-oxygen-count',
     konu: 'Formül okuma',
     soru: 'Ca(OH)₂ bileşiğinde kaç oksijen atomu vardır?',
     secenekler: ['1', '2', '3', '4'],
@@ -76,6 +85,7 @@ export const TEST_SORULARI = [
     aciklama: 'Parantez içinde 1 oksijen vardır, parantezin dışındaki 2 ile çarpılır → 2 oksijen atomu. Bileşikte toplam 5 atom bulunur (1 Ca, 2 O, 2 H).',
   },
   {
+    id: 'chem-water-boiling-interaction',
     konu: 'Moleküller arası etkileşim',
     soru: 'Su kaynarken kopan bağ hangisidir?',
     secenekler: [
@@ -89,6 +99,7 @@ export const TEST_SORULARI = [
     tuzak: 'Kovalent bağın koptuğu sanılırsa suyun H₂ ve O₂’ye ayrışması gerekirdi — bu kimyasal bir değişimdir.',
   },
   {
+    id: 'chem-hydrogen-bond-h2s',
     konu: 'Hidrojen bağı',
     soru: 'Aşağıdaki moleküllerden hangisi kendi molekülleri arasında hidrojen bağı yapamaz?',
     secenekler: ['H₂O', 'NH₃', 'H₂S', 'HF'],
@@ -97,6 +108,7 @@ export const TEST_SORULARI = [
     tuzak: 'H₂S suya benzediği için hidrojen bağı yapacağı sanılır. Bu yüzden su 100 °C’de, H₂S −60 °C’de kaynar.',
   },
   {
+    id: 'chem-ammonia-geometry-angle',
     konu: 'Molekül geometrisi',
     soru: 'NH₃ molekülünün geometrisi ve yaklaşık bağ açısı hangisidir?',
     secenekler: [
@@ -110,6 +122,7 @@ export const TEST_SORULARI = [
     tuzak: 'Elektron geometrisi ile molekül geometrisi karıştırılır.',
   },
   {
+    id: 'chem-sodium-chloride-bond-type',
     konu: 'Bağ türü',
     soru: 'Elektronegatiflik farkı 2,23 olan Na ile Cl arasında hangi bağ oluşur?',
     secenekler: ['Apolar kovalent', 'Polar kovalent', 'İyonik', 'Metalik'],
@@ -117,6 +130,7 @@ export const TEST_SORULARI = [
     aciklama: 'Sodyum metal, klor ametaldir ve elektronegatiflik farkı 1,7’nin çok üzerindedir. Elektron ortaklaşılmaz, sodyumdan klora aktarılır; oluşan Na⁺ ve Cl⁻ iyonları elektrostatik olarak çekilir.',
   },
   {
+    id: 'chem-calcium-hydroxide-bond-types',
     konu: 'Bağ türü',
     soru: 'Ca(OH)₂ bileşiğinde hangi bağ türleri birlikte bulunur?',
     secenekler: [
@@ -130,6 +144,7 @@ export const TEST_SORULARI = [
     tuzak: 'Çok atomlu iyon içeren bileşiklerde iki bağ türünün bir arada olabileceği gözden kaçar.',
   },
   {
+    id: 'chem-oxygen-valence-electrons',
     konu: 'Periyodik sistem',
     soru: 'Oksijen atomunun (₈O) değerlik elektron sayısı kaçtır?',
     secenekler: ['2', '4', '6', '8'],
@@ -137,6 +152,7 @@ export const TEST_SORULARI = [
     aciklama: 'Elektron dizilimi 1s² 2s² 2p⁴’tür. Son katman (n = 2) 2 + 4 = 6 elektron içerir. 16. grupta olması da 6 değerlik elektronunu gösterir.',
   },
   {
+    id: 'chem-element-identity-proton-count',
     konu: 'Periyodik sistem',
     soru: 'Bir atomun kimyasal kimliğini belirleyen şey nedir?',
     secenekler: [
@@ -149,6 +165,7 @@ export const TEST_SORULARI = [
     aciklama: 'Proton sayısı (atom numarası) elementin kimliğidir. Nötron sayısı değişirse izotop, elektron sayısı değişirse iyon oluşur — ama element değişmez.',
   },
   {
+    id: 'chem-magnesium-cation-formation',
     konu: 'İyon oluşumu',
     soru: 'Mg atomu 2 elektron verdiğinde ne olur?',
     secenekler: [
@@ -161,6 +178,7 @@ export const TEST_SORULARI = [
     aciklama: 'Elektron verildiğinde elektron sayısı 12’den 10’a düşer, proton sayısı 12 olarak kalır. Net yük +2 olur. Elektron dizilimi neona benzer (izoelektronik).',
   },
   {
+    id: 'chem-homogeneous-mixture-air',
     konu: 'Madde sınıflandırma',
     soru: 'Aşağıdakilerden hangisi homojen karışımdır?',
     secenekler: ['Zeytinyağı + su', 'Kum + su', 'Hava', 'Saf su'],
@@ -169,6 +187,7 @@ export const TEST_SORULARI = [
     tuzak: 'Homojen olmak "saf madde" olmak anlamına gelmez.',
   },
   {
+    id: 'chem-nitrate-resonance-equivalence',
     konu: 'Rezonans',
     soru: 'NO₃⁻ iyonundaki üç N–O bağı için hangisi doğrudur?',
     secenekler: [
@@ -182,6 +201,7 @@ export const TEST_SORULARI = [
     tuzak: 'Tek bir Lewis yapısının gerçeği tam yansıttığı sanılır.',
   },
   {
+    id: 'chem-polar-molecule-water',
     konu: 'Molekül polaritesi',
     soru: 'Aşağıdaki moleküllerden hangisi polardır?',
     secenekler: ['CCl₄', 'BF₃', 'H₂O', 'CH₄'],
@@ -189,6 +209,7 @@ export const TEST_SORULARI = [
     aciklama: 'CCl₄ tetrahedral, BF₃ trigonal düzlemsel, CH₄ tetrahedraldir; üçü de simetrik olduğu için bağ dipolleri birbirini götürür. H₂O açısal olduğu için dipoller toplanır ve molekül polardır.',
   },
   {
+    id: 'chem-lewis-structure-limit',
     konu: 'Lewis yapısı',
     soru: 'Lewis yapısı bize aşağıdakilerden hangisini **göstermez**?',
     secenekler: [
@@ -201,6 +222,7 @@ export const TEST_SORULARI = [
     aciklama: 'Lewis yapısı elektron dağılımını gösteren düzlemsel bir gösterimdir. Gerçek üç boyutlu şekil ve bağ açıları için VSEPR kuramına ve molekül geometrisine bakılır.',
   },
   {
+    id: 'chem-metal-conductivity-electrons',
     konu: 'Metalik bağ',
     soru: 'Metallerin elektriği iyi iletmesinin nedeni nedir?',
     secenekler: [
@@ -213,6 +235,7 @@ export const TEST_SORULARI = [
     aciklama: 'Metalik bağda değerlik elektronları belirli bir atoma ait değildir; kafes boyunca serbestçe hareket eder. Elektrik alanı uygulandığında bu elektronlar sürüklenir ve akım oluşur.',
   },
   {
+    id: 'chem-compound-mixture-distinction',
     konu: 'Bileşik ve karışım',
     soru: 'Bileşiklerle karışımlar arasındaki en temel fark hangisidir?',
     secenekler: [
@@ -225,6 +248,7 @@ export const TEST_SORULARI = [
     aciklama: 'Bileşikte sabit bir kütle oranı ve kimyasal bağ vardır; ayrıştırmak için kimyasal yöntem gerekir. Karışımda oran değişebilir ve bileşenler fiziksel yöntemlerle ayrılabilir.',
   },
   {
+    id: 'chem-ammonium-coordinate-bond',
     konu: 'Koordine kovalent bağ',
     soru: 'NH₄⁺ iyonundaki dördüncü N–H bağı nasıl oluşur?',
     secenekler: [
@@ -237,6 +261,7 @@ export const TEST_SORULARI = [
     aciklama: 'H⁺ iyonunun elektronu yoktur. Azot, ortaklanmamış elektron çiftini bu boş orbitale vererek koordine (datif) kovalent bağ kurar. Bağ oluştuktan sonra dört N–H bağı birbirinden ayırt edilemez.',
   },
   {
+    id: 'chem-halogen-london-forces',
     konu: 'London kuvvetleri',
     soru: 'F₂ gaz, Br₂ sıvı, I₂ katı hâldedir. Bu sıralamanın nedeni nedir?',
     secenekler: [
@@ -249,6 +274,7 @@ export const TEST_SORULARI = [
     aciklama: 'Halojen molekülleri apolardır; aralarında yalnızca London kuvvetleri bulunur. Molekül büyüdükçe elektron bulutu daha kolay kutuplanır (polarlanabilirlik artar) ve etkileşim güçlenir.',
   },
   {
+    id: 'chem-water-lone-pair-angle',
     konu: 'Molekül geometrisi',
     soru: 'H₂O molekülünde bağ açısı neden 109,5° yerine 104,5°’dir?',
     secenekler: [

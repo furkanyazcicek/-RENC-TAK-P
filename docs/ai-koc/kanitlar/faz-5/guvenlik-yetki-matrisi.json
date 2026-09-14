@@ -1,0 +1,8 @@
+{
+  "schema_version": "1.0",
+  "auth_uid_derived": "passed",
+  "rls_cross_user": "passed",
+  "private_work_separated": "passed",
+  "import_ownership": "passed",
+  "account_delete_cascade": "passed"
+}

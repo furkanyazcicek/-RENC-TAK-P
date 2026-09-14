@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "phase": 6,
+  "status": "completed",
+  "recorded_at": "2026-09-13T13:57:01+03:00",
+  "workspace": "/Users/furkantalhayazcicek/Desktop/DRKOÇ",
+  "git": {
+    "branch": "main",
+    "head": "056e1e5b92975169c2329f85ba6530af1dc6d14f",
+    "dirty_worktree_preserved": true
+  },
+  "prerequisites": {
+    "phase_3": {
+      "status": "passed",
+      "commands": "17/17",
+      "gates": "46/46",
+      "assertions": 450,
+      "migration_sha256": "8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165",
+      "manifest_version": "learning-content-manifest@1",
+      "manifest_checksum": "6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
+      "manifest_entries": 4344
+    },
+    "phase_4": {
+      "status": "passed",
+      "commands": "12/12",
+      "gates": "85/85",
+      "assertions": 290,
+      "migration_sha256": "06b8381911762c2436bedc0995bae344303f663b5f53566354d79afcee344f3f"
+    },
+    "phase_5": {
+      "status": "passed",
+      "commands": "12/12",
+      "gates": "9/9",
+      "assertions": 231,
+      "migration_sha256": "071e3a91c907729de3a679b18d66f3a434249b9f55a9101b80dafb0e42e09830"
+    },
+    "phase_2_migration_sha256": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea"
+  },
+  "scope_guards": {
+    "phase_7_ai_coach_consumption": false,
+    "phase_8_closed_loop": false,
+    "live_supabase": false,
+    "real_student_data": false,
+    "real_backfill": false,
+    "paid_model": false,
+    "deploy": false,
+    "git_push": false
+  },
+  "completion": {
+    "acceptance": "docs/ai-koc/kanitlar/faz-6/faz-6-kabul-sonucu.json",
+    "commands": "11/11",
+    "gates": "9/9",
+    "assertions": 107,
+    "phase_6_migration_sha256": "02ce1a9ed7b1d2bbb6e9f2faea570343cd93ea6343d463599aa9eefe04e0322c",
+    "status": "local_complete_live_approval_pending"
+  }
+}

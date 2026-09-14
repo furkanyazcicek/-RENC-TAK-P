@@ -1,0 +1,106 @@
+{
+  "schema_version": "phase-8-e2e-scenarios@1",
+  "generated_at": "2026-09-13T15:02:38.659Z",
+  "totals": {
+    "required": 19,
+    "passed": 19,
+    "failed": 0
+  },
+  "scenarios": [
+    {
+      "name": "zayıf konu kanıtından gerekçeli öneri oluşturma",
+      "status": "passed",
+      "duration_ms": 1.525
+    },
+    {
+      "name": "istemin enjeksiyonunun görev alanlarına geçememesi",
+      "status": "passed",
+      "duration_ms": 0.373
+    },
+    {
+      "name": "hedef derse veya soru setine güvenli bağlantı",
+      "status": "passed",
+      "duration_ms": 0.122
+    },
+    {
+      "name": "içerik kaldırılması ve yetki kaybı",
+      "status": "passed",
+      "duration_ms": 0.181
+    },
+    {
+      "name": "dil becerisi ve platform dışı çalışma",
+      "status": "passed",
+      "duration_ms": 0.083
+    },
+    {
+      "name": "soru seti kısmi ilerleme ve gerçek tamamlama",
+      "status": "passed",
+      "duration_ms": 0.13
+    },
+    {
+      "name": "kullanıcı beyanı ile otomatik doğrulamanın ayrılması",
+      "status": "passed",
+      "duration_ms": 0.069
+    },
+    {
+      "name": "görev öncesi eski kanıtın tamamlamaması",
+      "status": "passed",
+      "duration_ms": 0.011
+    },
+    {
+      "name": "aynı kanıtın iki görevi tamamlamaması",
+      "status": "passed",
+      "duration_ms": 0.018
+    },
+    {
+      "name": "görev düzenleme, erteleme, reddetme ve iptal",
+      "status": "passed",
+      "duration_ms": 0.019
+    },
+    {
+      "name": "öneri sonrası yeni sonuçla öğrenci modelinin güncellenmesi",
+      "status": "passed",
+      "duration_ms": 0.09
+    },
+    {
+      "name": "gecikmeli tekrar sonucu",
+      "status": "passed",
+      "duration_ms": 0.022
+    },
+    {
+      "name": "veri yetersizliğinde ölçüm odaklı öneri",
+      "status": "passed",
+      "duration_ms": 0.11
+    },
+    {
+      "name": "çelişkili kaynaklarda temkinli öneri",
+      "status": "passed",
+      "duration_ms": 0.049
+    },
+    {
+      "name": "günlük brifingin aynı veriyle kararlı öncelik vermesi",
+      "status": "passed",
+      "duration_ms": 0.115
+    },
+    {
+      "name": "yazma aracı için onaysız çağrının reddedilmesi",
+      "status": "passed",
+      "duration_ms": 0.408
+    },
+    {
+      "name": "öneriyi önizleme, onaylama ve göreve dönüştürme",
+      "status": "passed",
+      "duration_ms": 7.209
+    },
+    {
+      "name": "kullanıcılar arası görev ve kanıt erişiminin reddedilmesi",
+      "status": "passed",
+      "duration_ms": 2.966
+    },
+    {
+      "name": "mevcut sohbet ve plan akışının bozulmaması",
+      "status": "passed",
+      "duration_ms": 0.196
+    }
+  ]
+}

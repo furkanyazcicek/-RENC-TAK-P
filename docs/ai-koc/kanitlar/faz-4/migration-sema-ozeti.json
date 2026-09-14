@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "checksums": {
+    "phase_2_migration_sha256": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea",
+    "phase_3_migration_sha256": "8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165",
+    "phase_4_migration_sha256": "06b8381911762c2436bedc0995bae344303f663b5f53566354d79afcee344f3f"
+  },
+  "migration": {
+    "first_apply": "passed",
+    "second_apply": "passed",
+    "preserved_fixture_rows": 1,
+    "registry_rows": 14,
+    "schema_inventory": {
+      "tables": 48,
+      "views": 2,
+      "functions": 118,
+      "indexes": 122,
+      "constraints": 756,
+      "policies": 23
+    }
+  }
+}

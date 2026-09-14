@@ -1,8 +1,11 @@
 -- ============================================================
--- PWA PUSH NOTIFICATIONS — Veritabanı Tarafı
--- Bu dosyayı Supabase SQL Editor'e yapıştırıp çalıştırın.
--- Önce bu SQL'i çalıştırın, SONRA Edge Function'ı deploy edin
--- (talimatlar supabase/functions/send-push/README.md'de).
+-- PWA PUSH ABONELİKLERİ — UYUMLULUK GÖÇÜ
+--
+-- Bu dosya yalnızca eski kurulumlarda push_subscriptions tablosunu hazırlar.
+-- Öğretmen bildirimleri için bundan sonra sırasıyla
+-- migration_live_lessons.sql, migration_teacher_notifications.sql ve
+-- account_notifications INSERT Database Webhook'u kullanılır.
+-- Ayrıntı: docs/ogretmen-bildirimleri.md
 -- ============================================================
 
 -- 1) Her cihazın push aboneliğini saklayan tablo
@@ -32,76 +35,10 @@ create policy "Kullanıcı kendi aboneliğini silebilir"
   on push_subscriptions for delete
   using (auth.uid() = user_id);
 
--- ============================================================
--- 2) pg_net ile veritabanından doğrudan Edge Function tetikleme
---    (Dashboard > Database > Webhooks kullanmak isterseniz bu adımı
---    atlayıp aynısını arayüzden de kurabilirsiniz — ikisi aynı işi yapar.)
--- ============================================================
-create extension if not exists pg_net;
-
--- AŞAĞIDAKİ İKİ YERİ KENDİ DEĞERLERİNİZLE DEĞİŞTİRİN:
---   <PROJECT_REF>      → Supabase proje referansınız (Project Settings > General)
---   <WEBHOOK_SECRET>   → kendi belirleyeceğiniz gizli bir metin (Edge Function'da da aynısını kullanacaksınız)
-
-create or replace function notify_new_message() returns trigger as $$
-begin
-  perform net.http_post(
-    url := 'https://<PROJECT_REF>.functions.supabase.co/send-push',
-    headers := jsonb_build_object(
-      'Content-Type', 'application/json',
-      'x-webhook-secret', '<WEBHOOK_SECRET>'
-    ),
-    body := jsonb_build_object(
-      'user_id', new.receiver_id,
-      'title', 'Yeni Mesaj',
-      'body', coalesce(new.content, '📎 Bir dosya gönderildi'),
-      'url', '/mesajlar'
-    )
-  );
-  return new;
-end;
-$$ language plpgsql security definer;
-
+-- Eski pg_net tetikleyicileri mesaj metnini bildirim gövdesine kopyalıyor
+-- ve bir soruyu tüm öğretmenlere yolluyordu. Yeni bildirim merkezi yalnızca
+-- aktif bağlı öğretmeni hedeflediği için eski yol kapatılır.
 drop trigger if exists on_new_message_notify on messages;
-create trigger on_new_message_notify
-  after insert on messages
-  for each row execute function notify_new_message();
-
--- Yeni "sorunlu soru" geldiğinde TÜM öğretmenlere bildirim gönderir
-create or replace function notify_new_question() returns trigger as $$
-declare
-  teacher record;
-  student_name text;
-  preview text;
-begin
-  select full_name into student_name from profiles where id = new.student_id;
-
-  -- Sorular tablosunda `title` yok, metin alanı `content` — önizleme için kısaltıyoruz
-  preview := coalesce(new.content, '📎 Fotoğraflı bir soru');
-  if length(preview) > 80 then
-    preview := substring(preview from 1 for 80) || '...';
-  end if;
-
-  for teacher in select id from profiles where role = 'teacher' loop
-    perform net.http_post(
-      url := 'https://<PROJECT_REF>.functions.supabase.co/send-push',
-      headers := jsonb_build_object(
-        'Content-Type', 'application/json',
-        'x-webhook-secret', '<WEBHOOK_SECRET>'
-      ),
-      body := jsonb_build_object(
-        'user_id', teacher.id,
-        'title', 'Yeni Sorunlu Soru',
-        'body', coalesce(student_name, 'Bir öğrenci') || ': ' || preview,
-        'url', '/sorular'
-      )
-    );
-  end loop;
-  return new;
-end;
-$$ language plpgsql security definer;
-
 drop trigger if exists on_new_question_notify on questions;
-create trigger on_new_question_notify
-  after insert on questions
-  for each row execute function notify_new_question();
+drop function if exists notify_new_message();
+drop function if exists notify_new_question();

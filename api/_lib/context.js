@@ -38,6 +38,8 @@ import {
 import { splitSubjectTopic } from '../../src/lib/subjectSplit.js'
 import { buildLearningState } from '../../src/lib/curriculum/readiness.js'
 import { config } from './config.js'
+import { renderCoachBootstrap } from './coachAnalysis.js'
+import { fetchCoachApprovedMemory, fetchCoachBootstrapData } from './coachDataTools.js'
 
 const DAY_MS = 24 * 60 * 60 * 1000
 
@@ -909,9 +911,28 @@ function renderLearning(L, learning) {
   }
 }
 
-/** Tek adımda: veriyi çek → özetle → metne çevir. */
-export async function buildStudentContext(supabase, profile) {
+/**
+ * Eski ayrıntılı bağlam yalnız müfredat/plan aracı gerçekten çağrıldığında
+ * yüklenir. Başlangıç mesaj akışında kullanılmaz.
+ */
+export async function buildLegacyStudentFacts(supabase, profile) {
   const raw = await fetchStudentData(supabase, profile.id)
-  const facts = buildFacts(profile, raw)
-  return { facts, text: renderContext(facts) }
+  return buildFacts(profile, raw)
+}
+
+/** Tek adımda: onaylı tercih + Faz 6 kısa projeksiyonu. */
+export async function buildStudentContext(supabase, profile) {
+  const memory = await fetchCoachApprovedMemory(supabase, profile.id)
+  const coachBootstrap = await fetchCoachBootstrapData(supabase, profile, memory)
+  const firstName = profile.full_name?.trim().split(/\s+/)[0] || 'Öğrenci'
+  return {
+    facts: {
+      profile: { id: profile.id, firstName },
+      memory,
+      coachBootstrap,
+      legacyContextLoaded: false,
+    },
+    text: renderCoachBootstrap(coachBootstrap),
+    bootstrap: coachBootstrap,
+  }
 }

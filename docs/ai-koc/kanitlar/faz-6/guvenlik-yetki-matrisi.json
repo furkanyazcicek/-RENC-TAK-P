@@ -1,0 +1,12 @@
+{
+  "schema_version": "phase-6-security-matrix@1",
+  "status": "passed",
+  "own_projection_only": true,
+  "cross_student_evidence_ref_blocked": true,
+  "cross_student_behavior_ref_blocked": true,
+  "direct_score_write_blocked": true,
+  "dispute_without_score_mutation": true,
+  "account_deletion_cascade": true,
+  "other_student_preserved": true,
+  "live_data_used": false
+}

@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { ChevronDown, Target, Trash2 } from 'lucide-react'
-import { supabase } from '../lib/supabaseClient'
+import useAcademicActivity from '../hooks/useAcademicActivity'
+import { academicStatusMessage } from '../lib/learning/academicActivity/client'
 import { cn } from '../lib/cn'
-import { Badge, Card, EmptyState, IconButton } from './ui'
+import { Alert, Badge, Card, EmptyState, IconButton } from './ui'
 
 function formatDate(dateStr) {
   return new Date(dateStr).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' })
@@ -10,11 +11,15 @@ function formatDate(dateStr) {
 
 export default function MockExamList({ exams, readOnly = false, onChanged }) {
   const [openId, setOpenId] = useState(null)
+  const [error, setError] = useState('')
+  const academic = useAcademicActivity()
 
   async function handleDelete(id, e) {
     e.stopPropagation()
-    const { error } = await supabase.from('mock_exams').delete().eq('id', id)
-    if (!error) onChanged?.()
+    setError('')
+    const response = await academic.perform('mock_exam_delete', { record_id: id })
+    if (response.status === 'saved') onChanged?.()
+    else setError(academicStatusMessage(response.status))
   }
 
   if (!exams || exams.length === 0) {
@@ -34,6 +39,7 @@ export default function MockExamList({ exams, readOnly = false, onChanged }) {
 
   return (
     <Card className="divide-y divide-line overflow-hidden">
+      {error && <div className="p-3"><Alert tone="danger">{error}</Alert></div>}
       {exams.map((exam) => {
         const totalNet =
           exam.mock_exam_subjects?.reduce((sum, s) => sum + Number(s.net || 0), 0) ?? 0
@@ -69,7 +75,7 @@ export default function MockExamList({ exams, readOnly = false, onChanged }) {
                   <IconButton
                     icon={Trash2}
                     label="Denemeyi sil"
-                    size="xs"
+                    size="lg"
                     onClick={(e) => handleDelete(exam.id, e)}
                     className="text-ink/40 hover:bg-danger-500/10 hover:text-danger-600"
                   />

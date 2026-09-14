@@ -1,0 +1,8 @@
+{
+  "schema_version": "phase-6-performance@1",
+  "synthetic_evidence_count": 10000,
+  "topic_count": 50,
+  "duration_ms": 268.38,
+  "budget_ms": 5000,
+  "status": "passed"
+}

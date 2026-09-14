@@ -1,0 +1,32 @@
+{
+  "schema_version": "phase-5-start-checkpoint@1",
+  "recorded_at": "2026-09-13T00:00:00+03:00",
+  "workspace": "/Users/furkantalhayazcicek/Desktop/DRKOÇ",
+  "git_head": "6e7105a99113067d79d4bd178ca20c3867330530",
+  "phase": 5,
+  "status": "started",
+  "precondition": {
+    "phase_2_local_acceptance": "passed",
+    "phase_2_migration_sha256": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea"
+  },
+  "prompt": {
+    "path": "docs/ai-koc/prompts/faz-05-dillerin-buluta-tasinmasi.md",
+    "sha256": "9cdd342e3594e03095b60a0b2b53f6560d337e192eb4fceadcbbbac5921d4347"
+  },
+  "authoritative_local_keys": {
+    "en": "drkoc-ingilizce-v1",
+    "de": "drkoc-almanca-v1",
+    "fr": "drkoc-fransizca-v1",
+    "es": "drkoc-ispanyolca-v1"
+  },
+  "constraints": {
+    "live_supabase_read": false,
+    "live_supabase_write": false,
+    "real_student_data": false,
+    "live_backfill": false,
+    "paid_model": false,
+    "deployment": false,
+    "git_push": false
+  },
+  "note": "Faz 5 mevcut kirli çalışma ağacındaki ilgisiz kullanıcı ve Faz 1-4 değişiklikleri korunarak başlatıldı. Bu kayıt commit veya yayın değildir."
+}

@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "sources": 38,
+  "difference": 0,
+  "replay_exact": true,
+  "correction_delete_residue": 0
+}

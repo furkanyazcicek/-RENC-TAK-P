@@ -1,0 +1,53 @@
+{
+  "schema_version": "phase-10-local-preflight-commands@1",
+  "phase": 10,
+  "status": "local_preflight_passed_live_prerequisites_pending",
+  "generated_at": "2026-09-13T15:15:56.038Z",
+  "workspace": "/Users/furkantalhayazcicek/Desktop/DRKOÇ",
+  "totals": {
+    "required": 2,
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0
+  },
+  "commands": [
+    {
+      "command": "npm run test:ai-koc-faz-10:preflight",
+      "started_at": "2026-09-13T15:15:55.737Z",
+      "finished_at": "2026-09-13T15:15:55.932Z",
+      "duration_ms": 194,
+      "exit_code": 0,
+      "status": "passed"
+    },
+    {
+      "command": "npm run test:ai-koc-faz-10:migration-plan",
+      "started_at": "2026-09-13T15:15:55.932Z",
+      "finished_at": "2026-09-13T15:15:56.038Z",
+      "duration_ms": 106,
+      "exit_code": 0,
+      "status": "passed"
+    }
+  ],
+  "evidence": {
+    "checkpoint": "docs/ai-koc/kanitlar/faz-10/faz-10-baslangic-checkpoint.json",
+    "migration_plan": "docs/ai-koc/kanitlar/faz-10/faz-10-migration-operasyon-plani.json"
+  },
+  "ready_for_live_write": false,
+  "blocker": {
+    "code": "LIVE_TARGET_AND_RECOVERY_UNVERIFIED",
+    "detail": "Canlı Supabase proje kimliği ile yedek/geri kazanım kanıtı doğrulanmadı; canlı şema kuru çalışması ve bütün canlı yazılar durduruldu.",
+    "next_required_input": "Doğrulanabilir canlı proje kimliği ve tarihli yedek/geri kazanım kanıtı; sonrasında canlı migration için ayrı açık onay."
+  },
+  "side_effects": {
+    "live_supabase_read": false,
+    "live_supabase_write": false,
+    "real_student_data_used": false,
+    "live_backfill_run": false,
+    "paid_model_call": false,
+    "live_shadow_started": false,
+    "live_pilot_started": false,
+    "deployment_performed": false,
+    "git_commit_created": false,
+    "git_push_performed": false
+  }
+}

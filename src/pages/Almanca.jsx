@@ -13,6 +13,8 @@ import Dusunme from './almanca/Dusunme'
 import Gelisim from './almanca/Gelisim'
 import Yazdir from './almanca/Yazdir'
 import Kilavuz from './almanca/Kilavuz'
+import LanguageProgressBoundary from '../components/learning/LanguageProgressBoundary'
+import { BOS_ILERLEME } from '../lib/almanca/ilerleme'
 
 /**
  * ALMANCA ÖĞRENME KÜTÜPHANESİ — bölüm kabuğu.
@@ -45,7 +47,8 @@ import Kilavuz from './almanca/Kilavuz'
  */
 export default function Almanca() {
   return (
-    <Routes>
+    <LanguageProgressBoundary language="de" emptyProgress={BOS_ILERLEME}>
+      <Routes>
       <Route index element={<AlmancaAnasayfa />} />
       <Route path="baslangic" element={<Baslangic />} />
       <Route path="seviye-tespit" element={<SeviyeTespit />} />
@@ -63,6 +66,7 @@ export default function Almanca() {
       {/* Bilinmeyen alt adres bölümün ana sayfasına düşer; öğrenci
           uygulamanın tamamen dışına atılmaz. */}
       <Route path="*" element={<Navigate to="/almanca" replace />} />
-    </Routes>
+      </Routes>
+    </LanguageProgressBoundary>
   )
 }

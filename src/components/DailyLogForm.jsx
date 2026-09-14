@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { PenLine, Save } from 'lucide-react'
-import { supabase } from '../lib/supabaseClient'
-import { useAuth } from '../context/AuthContext'
+import useAcademicActivity from '../hooks/useAcademicActivity'
+import { academicStatusMessage } from '../lib/learning/academicActivity/client'
 import { resolveTopicLabel } from '../lib/topicHelpers'
 import { calcNet } from '../lib/examHelpers'
 import { toKey } from '../lib/insights'
@@ -22,7 +22,7 @@ function todayStr() {
  * öğrenci kaydetmeden önce günün nasıl geçtiğini görebiliyor.
  */
 export default function DailyLogForm({ onSubmitted, existingTopics = [] }) {
-  const { user } = useAuth()
+  const academic = useAcademicActivity()
   const [studyDate, setStudyDate] = useState(todayStr())
   const [topic, setTopic] = useState('')
   const [duration, setDuration] = useState('')
@@ -62,8 +62,7 @@ export default function DailyLogForm({ onSubmitted, existingTopics = [] }) {
     setSaving(true)
     setFeedback(null)
 
-    const { error } = await supabase.from('daily_logs').insert({
-      student_id: user.id,
+    const response = await academic.performSensitive('daily_log_create', {
       study_date: studyDate,
       topic: normalizedTopic,
       duration_minutes: duration === '' ? 0 : Number(duration),
@@ -71,12 +70,13 @@ export default function DailyLogForm({ onSubmitted, existingTopics = [] }) {
       incorrect: incorrect === '' ? 0 : Number(incorrect),
       empty: empty === '' ? 0 : Number(empty),
       notes: notes.trim() || null,
+      entry_origin: 'manual_external_self_report',
     })
 
     setSaving(false)
 
-    if (error) {
-      setFeedback({ tone: 'danger', text: error.message })
+    if (response.status !== 'saved') {
+      setFeedback({ tone: response.status === 'offline_pending' ? 'warning' : 'danger', text: academicStatusMessage(response.status) })
     } else {
       resetForm()
       setFeedback({ tone: 'success', text: 'Çalışman kaydedildi.' })

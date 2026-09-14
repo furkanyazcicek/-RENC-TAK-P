@@ -5,11 +5,16 @@ import {
 } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router-dom'
 import AtlasHaritasi from '../components/biyoloji/AtlasHaritasi.jsx'
+import AtlasOwnershipNotice from '../components/learning/AtlasOwnershipNotice.jsx'
+import SaveStatus from '../components/learning/SaveStatus.jsx'
 import GlobalArama from '../components/biyoloji/GlobalArama.jsx'
 import MufredatKapsami from '../components/biyoloji/MufredatKapsami.jsx'
 import { BOLGELER, bolgeBul } from '../data/biyoloji/bolgeler.js'
 import { bolgeKonulari } from '../data/biyoloji/kapsam.js'
-import { ilerlemeOku, ilerlemeyiSil } from '../lib/biyoloji/ilerleme.js'
+import {
+  atlasGorevTanimla, ilerlemeOku, ilerlemeyiSil, yerelAktarimAdayi,
+} from '../lib/biyoloji/ilerleme.js'
+import { useAtlasCloudActivity } from '../hooks/useAtlasCloudActivity.js'
 import '../styles/biyoloji-atlasi.css'
 import '../styles/atlas-ortak.css'
 
@@ -63,6 +68,28 @@ export default function BiyolojiAtlasi() {
   const [mobilMenu, setMobilMenu] = useState(false)
   const cekmeceRef = useRef(null)
   const menuDugmesiRef = useRef(null)
+  const atlasCloud = useAtlasCloudActivity({
+    sourceCode: 'biology_atlas',
+    snapshotAction: 'biology_atlas_snapshot',
+    importAction: 'biology_atlas_import',
+    resolveTask: atlasGorevTanimla,
+    buildLegacyCandidate: yerelAktarimAdayi,
+  })
+
+  const gorunenIlerleme = useMemo(() => {
+    if (!atlasCloud.isStudent) return ilerleme
+    const tamamlananlar = {}
+    for (const state of atlasCloud.cloudStates) {
+      if (!state.completed) continue
+      tamamlananlar[state.task_id] = tamamlananlar[state.task_id] ?? {
+        tahmin: Boolean(state.prediction_used),
+        gorev: true,
+        kontrol: true,
+        bulut: true,
+      }
+    }
+    return { ...ilerleme, tamamlananlar }
+  }, [atlasCloud.cloudStates, atlasCloud.isStudent, ilerleme])
 
   useEffect(() => {
     try { window.localStorage.setItem(TEMA_ANAHTARI, tema) } catch { /* Depolama kapalı olabilir. */ }
@@ -137,9 +164,9 @@ export default function BiyolojiAtlasi() {
 
   const yuzdeler = useMemo(() => Object.fromEntries(BOLGELER.map((kayit) => {
     const konular = bolgeKonulari(kayit.kod)
-    const biten = konular.filter((konu) => ilerleme.tamamlananlar[konu.etkilesimId]).length
+    const biten = konular.filter((konu) => gorunenIlerleme.tamamlananlar[konu.etkilesimId]).length
     return [kayit.kod, konular.length ? Math.round((biten / konular.length) * 100) : 0]
-  })), [ilerleme])
+  })), [gorunenIlerleme])
 
   const olculenBolgeler = BOLGELER.filter((kayit) => bolgeKonulari(kayit.kod).length)
   const genel = Math.round(
@@ -245,6 +272,16 @@ export default function BiyolojiAtlasi() {
           </aside>
 
           <main className="atlas-icerik">
+            <AtlasOwnershipNotice atlas={atlasCloud} />
+            {atlasCloud.isStudent && ['unavailable', 'degraded'].includes(atlasCloud.cloudStatus) ? (
+              <section className="atlas-uyari-satir" role="status">
+                <div>
+                  <b>Bulut ilerlemesi şu anda okunamıyor</b>
+                  <p>Yeni görevlerin bu hesaba ait güvenli kuyrukta korunur; sunucu onayı gelmeden kaydedildi sayılmaz.</p>
+                  <SaveStatus status={atlasCloud.saveStatus} onRetry={atlasCloud.retry} />
+                </div>
+              </section>
+            ) : null}
             {silOnayi ? (
               <section className="atlas-uyari-satir" role="alertdialog" aria-modal="true" aria-labelledby="ba-sil-baslik">
                 <Trash2 aria-hidden="true" />
@@ -255,7 +292,9 @@ export default function BiyolojiAtlasi() {
                 <button
                   type="button"
                   className="atlas-dugme tehlike"
-                  onClick={() => {
+                  onClick={async () => {
+                    const bulutSilindi = await atlasCloud.resetCloud()
+                    if (atlasCloud.isStudent && !bulutSilindi) return
                     ilerlemeyiSil('BIYOLOJI-SIL')
                     setIlerleme(ilerlemeOku())
                     setSilOnayi(false)
@@ -287,11 +326,11 @@ export default function BiyolojiAtlasi() {
             </section>
 
             {bolge === 'harita' ? (
-              <AtlasHaritasi kapsam={kapsam} ilerleme={ilerleme} yuzdeler={yuzdeler} onBolgeSec={bolgeAc} />
+              <AtlasHaritasi kapsam={kapsam} ilerleme={gorunenIlerleme} yuzdeler={yuzdeler} onBolgeSec={bolgeAc} />
             ) : bolge === 'mufredat' ? (
               <MufredatKapsami
                 kapsam={kapsam}
-                ilerleme={ilerleme}
+                ilerleme={gorunenIlerleme}
                 onSec={({ bolge: hedefBolge, id }) => bolgeAc(hedefBolge, id)}
               />
             ) : AktifModul ? (

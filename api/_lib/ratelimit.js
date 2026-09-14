@@ -20,10 +20,9 @@ const DAY_MS = 24 * HOUR_MS
  * Öğrencinin kotasını kontrol eder.
  * Dönüş: { allowed: true, remaining } | { allowed: false, code }
  *
- * Veritabanı okunamazsa istek ENGELLENMEZ (fail-open). Gerekçe: sayaç
- * okunamadığı için öğrenciyi tamamen erişimsiz bırakmak, kısa süreli bir
- * altyapı arızasını tam kesintiye çevirirdi. Asıl maliyet tavanını
- * `maxOutputTokens` ve `maxToolRounds` zaten sağlıyor.
+ * Veritabanı okunamazsa ücretli model çağrısı ENGELLENİR (fail-closed).
+ * Kullanıcıya güvenli ve geçici bir geri dönüş gösterilir. Böylece sayaç
+ * arızası sınırsız ücretli çağrıya dönüşmez.
  *
  * `options` SONRADAN EKLENDİ (AI Soru Çözüm modülü için) ve varsayılanları
  * eski davranışın birebir aynısıdır — mevcut AI Koç çağrıları
@@ -38,15 +37,17 @@ export async function checkRateLimit(supabase, studentId, options = {}) {
   const now = Date.now()
   const dayAgo = new Date(now - DAY_MS).toISOString()
 
-  const { data, error } = await supabase
+  let query = supabase
     .from('ai_usage_events')
     .select('created_at')
     .eq('student_id', studentId)
     .eq('kind', kind)
     .gte('created_at', dayAgo)
+  if (typeof query.limit === 'function') query = query.limit(Math.max(1, limits.perDay + 1))
+  const { data, error } = await query
 
   if (error) {
-    return { allowed: true, remaining: null, degraded: true }
+    return { allowed: false, code: 'rate_limit_unavailable', remaining: null, degraded: true }
   }
 
   const events = data ?? []

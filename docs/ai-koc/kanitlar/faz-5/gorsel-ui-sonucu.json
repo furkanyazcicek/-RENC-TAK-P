@@ -1,0 +1,79 @@
+{
+  "schema_version": "phase-5-ui-validation@1",
+  "generated_at": "2026-09-13T09:48:09.628Z",
+  "browser": "chromium-playwright-152.0.7977.54",
+  "live_data_used": false,
+  "cases": [
+    {
+      "name": "ingilizce-eski-ilerleme-aktarimi",
+      "route": "/ingilizce/gelisim?capture=reels&faz5-onizleme=aktarim",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "screenshot": "docs/ai-koc/kanitlar/faz-5/gorsel/ingilizce-eski-ilerleme-aktarimi-1440x900.png",
+      "horizontal_overflow": false,
+      "reduced_motion": true,
+      "disallowed_external_requests": [],
+      "page_errors": []
+    },
+    {
+      "name": "fransizca-aktarim-tamamlandi",
+      "route": "/fransizca/gelisim?capture=reels&faz5-onizleme=tamam",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "screenshot": "docs/ai-koc/kanitlar/faz-5/gorsel/fransizca-aktarim-tamamlandi-768x1024.png",
+      "horizontal_overflow": false,
+      "reduced_motion": true,
+      "disallowed_external_requests": [],
+      "page_errors": []
+    },
+    {
+      "name": "almanca-cevrimdisi-yeniden-dene",
+      "route": "/almanca/gelisim?capture=reels&faz5-onizleme=hata",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "docs/ai-koc/kanitlar/faz-5/gorsel/almanca-cevrimdisi-yeniden-dene-390x844.png",
+      "horizontal_overflow": false,
+      "reduced_motion": true,
+      "disallowed_external_requests": [],
+      "page_errors": []
+    },
+    {
+      "name": "ispanyolca-sifirlama-etkisi",
+      "route": "/ispanyolca/gelisim?capture=reels&faz5-onizleme=tamam",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screenshot": "docs/ai-koc/kanitlar/faz-5/gorsel/ispanyolca-sifirlama-etkisi-390x844.png",
+      "horizontal_overflow": false,
+      "reduced_motion": true,
+      "disallowed_external_requests": [],
+      "page_errors": []
+    }
+  ],
+  "assertions": {
+    "explicit_import_consent": true,
+    "import_disabled_before_consent": true,
+    "import_success_visible": true,
+    "retry_state_visible": true,
+    "reset_effect_visible_before_action": true,
+    "dialog_visible": true,
+    "initial_focus_inside": true,
+    "escape_closes": true,
+    "trigger_focus_restored": true,
+    "semantic_checkbox_label": true,
+    "minimum_touch_target_44": true,
+    "undersized_controls": [],
+    "status_not_color_only": true,
+    "no_horizontal_overflow": true,
+    "no_page_errors": true,
+    "no_live_or_personal_data_requests": true,
+    "disallowed_external_requests": []
+  }
+}

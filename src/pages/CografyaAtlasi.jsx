@@ -5,13 +5,18 @@ import {
 } from 'lucide-react'
 import { Link, useSearchParams } from 'react-router-dom'
 import AtlasHaritasi from '../components/cografya/AtlasHaritasi.jsx'
+import AtlasOwnershipNotice from '../components/learning/AtlasOwnershipNotice.jsx'
+import SaveStatus from '../components/learning/SaveStatus.jsx'
 import BolgeKesifYuzeyi from '../components/cografya/BolgeKesifYuzeyi.jsx'
 import BolgeSeridi from '../components/cografya/BolgeSeridi.jsx'
 import GlobalArama from '../components/cografya/GlobalArama.jsx'
 import MufredatKapsami from '../components/cografya/MufredatKapsami.jsx'
 import { BOLGELER, bolgeBul } from '../data/cografya/bolgeler.js'
 import { bolgeEtkilesimleri } from '../data/cografya/kapsam.js'
-import { ilerlemeOku, ilerlemeyiSil } from '../lib/cografya/ilerleme.js'
+import {
+  atlasGorevTanimla, ilerlemeOku, ilerlemeyiSil, yerelAktarimAdayi,
+} from '../lib/cografya/ilerleme.js'
+import { useAtlasCloudActivity } from '../hooks/useAtlasCloudActivity.js'
 import '../styles/cografya-atlasi.css'
 import '../styles/cografya-atlasi-2026.css'
 import '../styles/atlas-ortak.css'
@@ -71,6 +76,28 @@ export default function CografyaAtlasi() {
   const [silOnayi, setSilOnayi] = useState(false)
   const [mobilMenu, setMobilMenu] = useState(false)
   const cekmeceRef = useRef(null)
+  const atlasCloud = useAtlasCloudActivity({
+    sourceCode: 'geography_atlas',
+    snapshotAction: 'geography_atlas_snapshot',
+    importAction: 'geography_atlas_import',
+    resolveTask: atlasGorevTanimla,
+    buildLegacyCandidate: yerelAktarimAdayi,
+  })
+
+  const gorunenIlerleme = useMemo(() => {
+    if (!atlasCloud.isStudent) return ilerleme
+    const tamamlananlar = {}
+    for (const state of atlasCloud.cloudStates) {
+      if (!state.completed) continue
+      tamamlananlar[state.task_id] = tamamlananlar[state.task_id] ?? {
+        tahmin: Boolean(state.prediction_used),
+        gorev: true,
+        kontrol: true,
+        bulut: true,
+      }
+    }
+    return { ...ilerleme, tamamlananlar }
+  }, [atlasCloud.cloudStates, atlasCloud.isStudent, ilerleme])
 
   useEffect(() => {
     try { window.localStorage.setItem(TEMA_ANAHTARI, tema) } catch { /* Depolama kapalı olabilir. */ }
@@ -149,8 +176,8 @@ export default function CografyaAtlasi() {
       return
     }
     if (bolge === 'harita' || bolge === 'mufredat') {
-      const sonBolge = ilerleme.sonBolge && bolgeBul(ilerleme.sonBolge)
-        ? ilerleme.sonBolge
+      const sonBolge = gorunenIlerleme.sonBolge && bolgeBul(gorunenIlerleme.sonBolge)
+        ? gorunenIlerleme.sonBolge
         : 'sistemler'
       bolgeAc(sonBolge)
       return
@@ -170,9 +197,9 @@ export default function CografyaAtlasi() {
 
   const yuzdeler = useMemo(() => Object.fromEntries(BOLGELER.map((kayit) => {
     const duraklar = bolgeEtkilesimleri(kayit.kod)
-    const tamam = duraklar.filter((durak) => ilerleme.tamamlananlar[durak.id]).length
+    const tamam = duraklar.filter((durak) => gorunenIlerleme.tamamlananlar[durak.id]).length
     return [kayit.kod, duraklar.length ? Math.round((tamam / duraklar.length) * 100) : 0]
-  })), [ilerleme])
+  })), [gorunenIlerleme])
 
   const olculenBolgeler = BOLGELER.filter((kayit) => bolgeEtkilesimleri(kayit.kod).length)
   const genel = Math.round(
@@ -297,6 +324,16 @@ export default function CografyaAtlasi() {
           </aside>
 
           <main className="atlas-icerik">
+            <AtlasOwnershipNotice atlas={atlasCloud} />
+            {atlasCloud.isStudent && ['unavailable', 'degraded'].includes(atlasCloud.cloudStatus) ? (
+              <section className="atlas-uyari-satir" role="status">
+                <div>
+                  <b>Bulut ilerlemesi şu anda okunamıyor</b>
+                  <p>Yeni görevlerin bu hesaba ait güvenli kuyrukta korunur; sunucu onayı gelmeden kaydedildi sayılmaz.</p>
+                  <SaveStatus status={atlasCloud.saveStatus} onRetry={atlasCloud.retry} />
+                </div>
+              </section>
+            ) : null}
             {silOnayi ? (
               <section className="atlas-uyari-satir" role="alertdialog" aria-modal="true" aria-labelledby="ca-sil-baslik">
                 <Trash2 aria-hidden="true" />
@@ -307,7 +344,9 @@ export default function CografyaAtlasi() {
                 <button
                   type="button"
                   className="atlas-dugme tehlike"
-                  onClick={() => {
+                  onClick={async () => {
+                    const bulutSilindi = await atlasCloud.resetCloud()
+                    if (atlasCloud.isStudent && !bulutSilindi) return
                     ilerlemeyiSil('COGRAFYA-SIL')
                     setIlerleme(ilerlemeOku())
                     setSilOnayi(false)
@@ -339,11 +378,11 @@ export default function CografyaAtlasi() {
             </section>
 
             {bolge === 'harita' ? (
-              <AtlasHaritasi kapsam={kapsam} ilerleme={ilerleme} yuzdeler={yuzdeler} onBolgeSec={bolgeAc} />
+              <AtlasHaritasi kapsam={kapsam} ilerleme={gorunenIlerleme} yuzdeler={yuzdeler} onBolgeSec={bolgeAc} />
             ) : bolge === 'mufredat' ? (
               <MufredatKapsami
                 kapsam={kapsam}
-                ilerleme={ilerleme}
+                ilerleme={gorunenIlerleme}
                 onSec={({ bolge: hedefBolge, id }) => bolgeAc(hedefBolge, id)}
               />
             ) : AktifModul ? (

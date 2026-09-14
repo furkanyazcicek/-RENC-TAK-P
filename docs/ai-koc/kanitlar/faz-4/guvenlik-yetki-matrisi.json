@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "other_student": "denied",
+  "unrelated_teacher": "denied",
+  "anonymous_storage": "denied",
+  "parent_storage": "denied",
+  "active_teacher_storage": "allowed",
+  "direct_source_dml": "revoked",
+  "private_schema": "closed",
+  "bucket_public": false,
+  "legacy_public_media": "documented_phase_9_debt",
+  "common_evidence_raw_content": "rejected_by_assertions"
+}

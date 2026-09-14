@@ -76,9 +76,9 @@ Bu alanlardan biri eksilirse otomatik kabul testi başarısız olur. Kaynak adap
 
 ## Rota kapsamı
 
-- `APP_ROUTE_SOURCE_MAP`, `src/App.jsx` içindeki 62/62 rota kalıbını kapsar. Bir rota birden çok gerçek kaynağı birleştiriyorsa tüm M kodları ayrı listelenir.
+- `APP_ROUTE_SOURCE_MAP`, `src/App.jsx` içindeki 63/63 rota kalıbını kapsar. Faz 0 anık görüntüsündeki 62 rotaya sonradan eklenen `/deneyim/*`, sentetik ve herkese açık bir ürün deneyimi olduğu için M37 altında `excluded` olarak kayıtlıdır. Bir rota birden çok gerçek kaynağı birleştiriyorsa tüm M kodları ayrı listelenir.
 - Dört dil sarmalayıcısının her biri index dâhil 15 iç rota taşır; toplam 60 dil alt rotası ayrıca makine kaydına bağlıdır.
-- Rota sayısı yalnız sabit `62` karşılaştırmasıyla değil, güncel `App.jsx` dosyasından dinamik çıkarılan kümenin kayıt defteriyle eşitliğiyle denetlenir.
+- Rota sayısı yalnız sabit `63` karşılaştırmasıyla değil, güncel `App.jsx` dosyasından dinamik çıkarılan kümenin kayıt defteriyle eşitliğiyle denetlenir.
 - Yeni rota veya dil alt rotası eklenirse, sınıflandırması yapılmadan Faz 1 testi geçmez.
 
 ## Kritik kaynak kararları
@@ -111,3 +111,9 @@ Kaynak bağlantısı yalnız opak iç başvurudur. Kayıt defteri genel URL, do�
 - Canlı veritabanı, gerçek hesap, ücretli model veya yayın kullanılmadı.
 
 Kabul komutu: `npm run test:ai-koc-faz-1`.
+
+## Faz 4 akademik izdüşümü — 13 Eylül 2026
+
+Faz 1 kayıtları değişmez. Ek `learning-academic-registry@1`, M03–M07, M11–M12, M31, M33 ve M36 için kaynak-özel sürümlü event/evidence kararlarını SQL ve JavaScript adaptörleriyle birebir tutar. M01/M02/M32/M38 olay üretmeyen negatif sınırdır. Yetkili makine listesi `src/lib/learning/academicActivity/registry.js`, SQL izdüşümü `learning_private.learning_academic_source_specs`, kanıtı ise `kanitlar/faz-4/faz-4-kaynak-kapsami.json` dosyasıdır.
+
+Günlük, deneme, ödev, soru, AI Solve, canlı katılım/özet ve profil bağlamı aynı genel endpoint'te eritilmez. Her kaynak düzeltme, tombstone, aktör ve kanıt sınıfını kendi allowlist'iyle belirler. Tam yerel kabul komutu `npm run test:ai-koc-faz-4`; bütünleşik toplayıcı `node scripts/run-phase-4-regressions.mjs` komutudur.

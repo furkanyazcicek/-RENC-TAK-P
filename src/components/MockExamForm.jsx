@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Save } from 'lucide-react'
-import { supabase } from '../lib/supabaseClient'
-import { useAuth } from '../context/AuthContext'
+import useAcademicActivity from '../hooks/useAcademicActivity'
+import { academicStatusMessage } from '../lib/learning/academicActivity/client'
 import { SUBJECT_PRESETS, calcNet } from '../lib/examHelpers'
 import { EXAM_DURATIONS, durationHint } from '../lib/examDuration'
 import { toKey } from '../lib/insights'
@@ -25,7 +25,7 @@ function buildRows(type) {
  * Form Modal içinde açıldığı için kendi kart çerçevesini çizmez.
  */
 export default function MockExamForm({ onSubmitted }) {
-  const { user } = useAuth()
+  const academic = useAcademicActivity()
   const [examType, setExamType] = useState('TYT')
   const [examName, setExamName] = useState('')
   const [examDate, setExamDate] = useState(todayStr())
@@ -66,38 +66,25 @@ export default function MockExamForm({ onSubmitted }) {
     setSaving(true)
     setFeedback(null)
 
-    const { data: exam, error: examError } = await supabase
-      .from('mock_exams')
-      .insert({
-        student_id: user.id,
-        exam_type: examType,
-        exam_name: examName.trim() || null,
-        exam_date: examDate,
-        duration_minutes: durationMinutes === '' ? null : Number(durationMinutes),
-      })
-      .select()
-      .single()
-
-    if (examError) {
-      setFeedback({ tone: 'danger', text: examError.message })
-      setSaving(false)
-      return
-    }
-
-    const subjectRows = touched.map((r) => ({
-      mock_exam_id: exam.id,
+    const subjects = touched.map((r) => ({
       subject: r.subject,
       correct: r.correct === '' ? 0 : Number(r.correct),
       incorrect: r.incorrect === '' ? 0 : Number(r.incorrect),
       empty: r.empty === '' ? 0 : Number(r.empty),
     }))
 
-    const { error: subjectsError } = await supabase.from('mock_exam_subjects').insert(subjectRows)
+    const response = await academic.performSensitive('mock_exam_create', {
+      exam_type: examType,
+      exam_name: examName.trim() || null,
+      exam_date: examDate,
+      duration_minutes: durationMinutes === '' ? null : Number(durationMinutes),
+      subjects,
+    })
 
     setSaving(false)
 
-    if (subjectsError) {
-      setFeedback({ tone: 'danger', text: subjectsError.message })
+    if (response.status !== 'saved') {
+      setFeedback({ tone: response.status === 'offline_pending' ? 'warning' : 'danger', text: academicStatusMessage(response.status) })
     } else {
       setExamName('')
       setDurationMinutes('')
@@ -177,7 +164,7 @@ export default function MockExamForm({ onSubmitted }) {
                 aria-label={`${row.subject} doğru`}
                 value={row.correct}
                 onChange={(e) => updateRow(i, 'correct', e.target.value)}
-                className="h-10 px-1 py-0 text-center"
+                className="h-11 px-1 py-0 text-center"
               />
               <Input
                 type="number"
@@ -186,7 +173,7 @@ export default function MockExamForm({ onSubmitted }) {
                 aria-label={`${row.subject} yanlış`}
                 value={row.incorrect}
                 onChange={(e) => updateRow(i, 'incorrect', e.target.value)}
-                className="h-10 px-1 py-0 text-center"
+                className="h-11 px-1 py-0 text-center"
               />
               <Input
                 type="number"
@@ -195,7 +182,7 @@ export default function MockExamForm({ onSubmitted }) {
                 aria-label={`${row.subject} boş`}
                 value={row.empty}
                 onChange={(e) => updateRow(i, 'empty', e.target.value)}
-                className="h-10 px-1 py-0 text-center"
+                className="h-11 px-1 py-0 text-center"
               />
             </div>
           ))}

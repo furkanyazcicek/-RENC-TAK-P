@@ -254,6 +254,8 @@ export function sonucla(oturum, profil = null, secenek = {}) {
   ;(yazmaAnaliz?.bulgular ?? []).forEach((b) => { if (b.iz?.kod) izKodlari.add(b.iz.kod) })
 
   const dogruSayisi = gecmis.filter((g) => g.dogruMu).length
+  const yanlisSayisi = gecmis.filter((g) => !g.dogruMu).length
+  const bosSayisi = 0
 
   /* Güven düzeyi: kaç soru soruldu ve sonuç ne kadar tutarlı?
      Az soru + dalgalı cevap = düşük güven, ekranda açıkça söylenir. */
@@ -278,6 +280,8 @@ export function sonucla(oturum, profil = null, secenek = {}) {
     izler: [...izKodlari],
     soruSayisi,
     dogruSayisi,
+    yanlisSayisi,
+    bosSayisi,
     guven,
     yazma: oturum.yazma
       ? { metin: oturum.yazma.metin, analiz: yazmaAnaliz, seviye: yazmaSeviyesi }

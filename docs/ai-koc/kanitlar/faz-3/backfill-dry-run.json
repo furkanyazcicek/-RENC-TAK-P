@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0",
+  "decision_version": "phase-3-backfill@1",
+  "mode": "dry_run",
+  "writes_performed": 0,
+  "scanned_count": 4,
+  "ready_count": 1,
+  "quarantined_count": 3,
+  "sources": {
+    "structured_lesson_activity": {
+      "scanned": 2,
+      "ready": [
+        {
+          "source_record_id": "safe",
+          "student_id": "31000000-0000-4000-8000-000000000001"
+        }
+      ],
+      "quarantined": [
+        {
+          "source_record_id": "unsafe",
+          "reason_code": "content_revision_missing"
+        }
+      ]
+    },
+    "db_question_test": {
+      "scanned": 2,
+      "ready": [],
+      "quarantined": [
+        {
+          "source_record_id": "safe",
+          "reason_code": "server_counts_missing"
+        },
+        {
+          "source_record_id": "unsafe",
+          "reason_code": "attempt_not_completed"
+        }
+      ]
+    }
+  },
+  "decisions": [
+    {
+      "matrix_id": "M13",
+      "source_code": "library_gateway",
+      "strategy": "catalog_only",
+      "provider_name": null,
+      "historical_authority": "navigation_is_not_learning_evidence",
+      "live_apply_allowed": false,
+      "decision_version": "phase-3-backfill@1"
+    },
+    {
+      "matrix_id": "M14",
+      "source_code": "library_catalog",
+      "strategy": "catalog_only",
+      "provider_name": null,
+      "historical_authority": "content_identity_only",
+      "live_apply_allowed": false,
+      "decision_version": "phase-3-backfill@1"
+    },
+    {
+      "matrix_id": "M15",
+      "source_code": "structured_lesson_activity",
+      "strategy": "historical_provider",
+      "provider_name": "phase3StructuredLessonEvents",
+      "historical_authority": "only_rows_with_pinned_revision_and_verified_meaning",
+      "live_apply_allowed": false,
+      "decision_version": "phase-3-backfill@1"
+    },
+    {
+      "matrix_id": "M16",
+      "source_code": "bundled_lesson_activity",
+      "strategy": "no_historical_source",
+      "provider_name": null,
+      "historical_authority": "no_persistent_source_before_phase_3",
+      "live_apply_allowed": false,
+      "decision_version": "phase-3-backfill@1"
+    },
+    {
+      "matrix_id": "M17",
+      "source_code": "library_note_exposure",
+      "strategy": "no_historical_source",
+      "provider_name": null,
+      "historical_authority": "viewer_open_was_not_recorded",
+      "live_apply_allowed": false,
+      "decision_version": "phase-3-backfill@1"
+    },
+    {
+      "matrix_id": "M18",
+      "source_code": "lesson_personalization",
+      "strategy": "derived_no_evidence",
+      "provider_name": null,
+      "historical_authority": "cache_overlay_is_derived",
+      "live_apply_allowed": false,
+      "decision_version": "phase-3-backfill@1"
+    },
+    {
+      "matrix_id": "M19",
+      "source_code": "db_question_test",
+      "strategy": "historical_provider",
+      "provider_name": "phase3DbQuestionAttempts",
+      "historical_authority": "only_completed_attempts_with_pinned_revision",
+      "live_apply_allowed": false,
+      "decision_version": "phase-3-backfill@1"
+    },
+    {
+      "matrix_id": "M20",
+      "source_code": "bundled_question_test",
+      "strategy": "no_historical_source",
+      "provider_name": null,
+      "historical_authority": "route_state_was_not_authoritative",
+      "live_apply_allowed": false,
+      "decision_version": "phase-3-backfill@1"
+    },
+    {
+      "matrix_id": "M21",
+      "source_code": "physics_atlas",
+      "strategy": "explicit_device_import_only",
+      "provider_name": null,
+      "historical_authority": "ownerless_device_data_requires_consent",
+      "live_apply_allowed": false,
+      "decision_version": "phase-3-backfill@1"
+    },
+    {
+      "matrix_id": "M22",
+      "source_code": "biology_atlas",
+      "strategy": "explicit_device_import_only",
+      "provider_name": null,
+      "historical_authority": "ownerless_device_data_requires_consent",
+      "live_apply_allowed": false,
+      "decision_version": "phase-3-backfill@1"
+    },
+    {
+      "matrix_id": "M23",
+      "source_code": "geography_atlas",
+      "strategy": "explicit_device_import_only",
+      "provider_name": null,
+      "historical_authority": "aggregate_scores_are_not_direct_measurement",
+      "live_apply_allowed": false,
+      "decision_version": "phase-3-backfill@1"
+    },
+    {
+      "matrix_id": "M24",
+      "source_code": "chemistry_atlas",
+      "strategy": "no_historical_source",
+      "provider_name": null,
+      "historical_authority": "no_versioned_attempt_source",
+      "live_apply_allowed": false,
+      "decision_version": "phase-3-backfill@1"
+    },
+    {
+      "matrix_id": "M25",
+      "source_code": "history_atlas_navigation",
+      "strategy": "excluded",
+      "provider_name": null,
+      "historical_authority": "navigation_and_audio_are_not_learning_evidence",
+      "live_apply_allowed": false,
+      "decision_version": "phase-3-backfill@1"
+    },
+    {
+      "matrix_id": "M26",
+      "source_code": "geometry_pilot",
+      "strategy": "no_historical_source",
+      "provider_name": null,
+      "historical_authority": "no_versioned_attempt_source",
+      "live_apply_allowed": false,
+      "decision_version": "phase-3-backfill@1"
+    }
+  ],
+  "generated_at": "2026-09-13T15:02:15.652Z",
+  "environment": "PGlite/WASM + sentetik fixture",
+  "live_database_read": false,
+  "live_apply_performed": false,
+  "sql_decision_parity": true
+}

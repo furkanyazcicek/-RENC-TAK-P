@@ -92,7 +92,7 @@
   "source_registry": {
     "version": "learning-source-registry@1",
     "sources": 38,
-    "app_routes_current": 62,
+    "app_routes_current": 63,
     "app_routes_phase_zero_snapshot": 62,
     "dynamic_app_route_diff_unexplained": 0,
     "language_modules": 4,
@@ -111,6 +111,37 @@
     "adapter_fixtures": 25,
     "unresolved_decisions": 0
   },
+  "post_acceptance_corrections": [
+    {
+      "date": "2026-09-12",
+      "reason": "Faz 1 sonrasında eklenen herkese açık /deneyim/* rotasının kaynak sicilinde bulunmaması",
+      "route": "/deneyim/*",
+      "source": "M37",
+      "classification": "excluded",
+      "learning_evidence_emitted": false,
+      "backward_compatible": true,
+      "database_migration_changed": false,
+      "revalidation": {
+        "phase_1": {
+          "status": "passed",
+          "sections": 14,
+          "assertions": 1516,
+          "app_routes": 63
+        },
+        "phase_2": {
+          "status": "passed",
+          "sections": 17,
+          "assertions": 353,
+          "migration_sha256": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea"
+        },
+        "phase_3": {
+          "status": "passed",
+          "assertions": 450,
+          "migration_sha256": "8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165"
+        }
+      }
+    }
+  ],
   "scenario_fixtures": {
     "S02": "passed",
     "S05": "passed",

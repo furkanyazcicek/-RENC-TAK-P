@@ -1,0 +1,955 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-09-08T17:09:31.479Z",
+  "acceptance": {
+    "result": "passed",
+    "status": "Yerel olarak tamamlandı, canlı onay bekliyor",
+    "local_gates_total": 24,
+    "local_gates_passed": 24,
+    "local_gates_failed": 0
+  },
+  "authoritative_working_copy": "/Users/furkantalhayazcicek/Desktop/DRKOÇ",
+  "git": {
+    "branch": "main",
+    "head": "521d860ac75107f28440dbfea3feba0fcaad471d",
+    "initial_head_observed": "86859a86e8680c67e8756cf05eb7545ca21764ed",
+    "working_tree_clean": false,
+    "status_captured_before_acceptance_file_write": [
+      "M api/_lib/learning/repository.js",
+      " M docs/ai-koc/VERI_AGI_CEKIRDEK_MIMARISI.md",
+      " M scripts/test-phase-2-learning-network.mjs",
+      " M src/lib/learning/network/projection.js",
+      "?? docs/ai-koc/kanitlar/faz-2/migration-sema-ozeti.json"
+    ],
+    "unrelated_changes_preserved": true,
+    "note": "Görev sırasında HEAD eşzamanlı olarak ilerledi; kullanıcıya ait PDF/ham bilgi değişiklikleri geri alınmadı veya Faz 2 kapsamında değiştirilmedi.",
+    "concurrent_commits_observed": [
+      "1bbc7385f477503c69c5e1a8f887a545ff0a7095",
+      "521d860ac75107f28440dbfea3feba0fcaad471d"
+    ]
+  },
+  "phase_one_precondition": {
+    "acceptance": "passed",
+    "evidence_contract_version": "learning-evidence@1",
+    "evidence_schema_version": "1.0",
+    "source_registry_version": "learning-source-registry@1",
+    "unchanged_contract_test": "passed",
+    "phase_one_contract_sections": 14,
+    "phase_one_contract_assertions": 1516,
+    "phase_two_pure_javascript_sections": 16,
+    "phase_two_pure_javascript_assertions": 166
+  },
+  "migration": {
+    "file": "supabase/migration_learning_evidence_network.sql",
+    "sha256": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea",
+    "first_apply": "passed",
+    "failed_apply_full_rollback": "passed",
+    "second_apply": "passed",
+    "existing_synthetic_data_preserved": true,
+    "setup_parity": "passed",
+    "new_project_sequence": [
+      "setup_new_project.sql",
+      "migration_parent_verification.sql",
+      "migration_learning_evidence_network.sql"
+    ],
+    "source_contract_rows": 38,
+    "source_contract_ingest_allowed": 25,
+    "source_contract_decided_not_connected": 38,
+    "source_contract_parity": "passed"
+  },
+  "schema_inventory": {
+    "tables": {
+      "count": 9,
+      "names": [
+        "learning_diagnostic_projection_rows",
+        "learning_evidence_backfill_runs",
+        "learning_evidence_processing",
+        "learning_evidence_quarantine",
+        "learning_evidence_records",
+        "learning_projection_cursors",
+        "learning_projection_generations",
+        "learning_source_contracts",
+        "learning_source_health"
+      ]
+    },
+    "views": {
+      "count": 1,
+      "names": [
+        "learning_evidence_effective"
+      ]
+    },
+    "functions": {
+      "count": 17,
+      "names": [
+        "derivation_is_valid(p_value jsonb)",
+        "diagnostic_measurement_totals_are_valid(p_value jsonb)",
+        "direct_measurement_has_result(p_value jsonb)",
+        "ingest_evidence(p_record jsonb, p_semantic_fingerprint text, p_origin text, p_backfill_run_id uuid)",
+        "jsonb_key_count(p_value jsonb)",
+        "jsonb_keys_allowed(p_value jsonb, p_allowed text[])",
+        "jsonb_shape_is_safe(p_value jsonb, p_depth integer)",
+        "measurement_is_valid(p_value jsonb, p_evidence_class text)",
+        "metadata_is_safe(p_value jsonb)",
+        "metadata_keys_are_safe(p_value jsonb)",
+        "quarantine_evidence(p_entry jsonb)",
+        "relations_are_valid(p_value jsonb)",
+        "safe_date(p_value text)",
+        "safe_timestamptz(p_value text)",
+        "source_locator_is_valid(p_locator text, p_source_code text)",
+        "text_array_matches(p_values text[], p_pattern text)",
+        "uri_component(p_value text)"
+      ]
+    },
+    "constraints": {
+      "count": 238,
+      "names": [
+        "learning_diagnostic_projection_rows.learning_diagnostic_checksum_check",
+        "learning_diagnostic_projection_rows.learning_diagnostic_class_check",
+        "learning_diagnostic_projection_rows.learning_diagnostic_counts_check",
+        "learning_diagnostic_projection_rows.learning_diagnostic_measurement_totals_check",
+        "learning_diagnostic_projection_rows.learning_diagnostic_projection__max_ingestion_sequence_not_null",
+        "learning_diagnostic_projection_rows.learning_diagnostic_projection_r_measured_record_count_not_null",
+        "learning_diagnostic_projection_rows.learning_diagnostic_projection_row_active_record_count_not_null",
+        "learning_diagnostic_projection_rows.learning_diagnostic_projection_rows_checksum_not_null",
+        "learning_diagnostic_projection_rows.learning_diagnostic_projection_rows_consumer_visible_not_null",
+        "learning_diagnostic_projection_rows.learning_diagnostic_projection_rows_evidence_class_not_null",
+        "learning_diagnostic_projection_rows.learning_diagnostic_projection_rows_generation_id_fkey",
+        "learning_diagnostic_projection_rows.learning_diagnostic_projection_rows_generation_id_not_null",
+        "learning_diagnostic_projection_rows.learning_diagnostic_projection_rows_is_active_not_null",
+        "learning_diagnostic_projection_rows.learning_diagnostic_projection_rows_measurement_totals_not_null",
+        "learning_diagnostic_projection_rows.learning_diagnostic_projection_rows_pkey",
+        "learning_diagnostic_projection_rows.learning_diagnostic_projection_rows_row_id_not_null",
+        "learning_diagnostic_projection_rows.learning_diagnostic_projection_rows_source_code_not_null",
+        "learning_diagnostic_projection_rows.learning_diagnostic_projection_rows_student_id_fkey",
+        "learning_diagnostic_projection_rows.learning_diagnostic_projection_rows_student_id_not_null",
+        "learning_diagnostic_projection_rows.learning_diagnostic_projection_rows_updated_at_not_null",
+        "learning_diagnostic_projection_rows.learning_diagnostic_visibility_check",
+        "learning_evidence_backfill_runs.learning_backfill_batch_check",
+        "learning_evidence_backfill_runs.learning_backfill_counts_check",
+        "learning_evidence_backfill_runs.learning_backfill_cursor_check",
+        "learning_evidence_backfill_runs.learning_backfill_error_check",
+        "learning_evidence_backfill_runs.learning_backfill_mode_check",
+        "learning_evidence_backfill_runs.learning_backfill_scope_check",
+        "learning_evidence_backfill_runs.learning_backfill_source_fk",
+        "learning_evidence_backfill_runs.learning_backfill_status_check",
+        "learning_evidence_backfill_runs.learning_backfill_time_check",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_run_source_registry_version_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_adapted_count_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_batch_size_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_conflict_count_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_contract_version_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_created_at_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_created_by_fkey",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_duplicate_count_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_error_count_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_inserted_count_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_mode_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_pkey",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_quarantine_count_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_restart_count_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_run_id_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_scanned_count_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_scope_kind_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_source_adapter_version_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_source_code_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_status_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_student_id_fkey",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_topic_resolver_version_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_updated_at_not_null",
+        "learning_evidence_backfill_runs.learning_evidence_backfill_runs_would_insert_count_not_null",
+        "learning_evidence_processing.learning_evidence_processing_cursor_id_fkey",
+        "learning_evidence_processing.learning_evidence_processing_cursor_id_not_null",
+        "learning_evidence_processing.learning_evidence_processing_generation_id_fkey",
+        "learning_evidence_processing.learning_evidence_processing_ingestion_sequence_not_null",
+        "learning_evidence_processing.learning_evidence_processing_projection_name_not_null",
+        "learning_evidence_processing.learning_evidence_processing_projection_version_not_null",
+        "learning_evidence_processing.learning_evidence_processing_record_id_fkey",
+        "learning_evidence_processing.learning_evidence_processing_record_id_not_null",
+        "learning_evidence_processing.learning_evidence_processing_retry_count_not_null",
+        "learning_evidence_processing.learning_evidence_processing_status_not_null",
+        "learning_evidence_processing.learning_evidence_processing_updated_at_not_null",
+        "learning_evidence_processing.learning_processing_claim_check",
+        "learning_evidence_processing.learning_processing_error_check",
+        "learning_evidence_processing.learning_processing_name_check",
+        "learning_evidence_processing.learning_processing_pk",
+        "learning_evidence_processing.learning_processing_retry_check",
+        "learning_evidence_processing.learning_processing_status_check",
+        "learning_evidence_quarantine.learning_evidence_quarantine_backfill_run_id_fkey",
+        "learning_evidence_quarantine.learning_evidence_quarantine_dedupe_key_not_null",
+        "learning_evidence_quarantine.learning_evidence_quarantine_first_seen_at_not_null",
+        "learning_evidence_quarantine.learning_evidence_quarantine_identity_status_not_null",
+        "learning_evidence_quarantine.learning_evidence_quarantine_last_seen_at_not_null",
+        "learning_evidence_quarantine.learning_evidence_quarantine_pkey",
+        "learning_evidence_quarantine.learning_evidence_quarantine_quarantine_id_not_null",
+        "learning_evidence_quarantine.learning_evidence_quarantine_reason_code_not_null",
+        "learning_evidence_quarantine.learning_evidence_quarantine_record_origin_not_null",
+        "learning_evidence_quarantine.learning_evidence_quarantine_resolution_record_id_fkey",
+        "learning_evidence_quarantine.learning_evidence_quarantine_semantic_event_type_not_null",
+        "learning_evidence_quarantine.learning_evidence_quarantine_semantic_fingerprint_not_null",
+        "learning_evidence_quarantine.learning_evidence_quarantine_source_code_not_null",
+        "learning_evidence_quarantine.learning_evidence_quarantine_source_record_id_not_null",
+        "learning_evidence_quarantine.learning_evidence_quarantine_source_registry_version_not_null",
+        "learning_evidence_quarantine.learning_evidence_quarantine_source_revision_not_null",
+        "learning_evidence_quarantine.learning_evidence_quarantine_status_not_null",
+        "learning_evidence_quarantine.learning_evidence_quarantine_student_id_fkey",
+        "learning_evidence_quarantine.learning_evidence_quarantine_student_id_not_null",
+        "learning_evidence_quarantine.learning_quarantine_dedupe_uq",
+        "learning_evidence_quarantine.learning_quarantine_fingerprint_check",
+        "learning_evidence_quarantine.learning_quarantine_identity_check",
+        "learning_evidence_quarantine.learning_quarantine_locator_check",
+        "learning_evidence_quarantine.learning_quarantine_origin_check",
+        "learning_evidence_quarantine.learning_quarantine_reason_check",
+        "learning_evidence_quarantine.learning_quarantine_resolution_check",
+        "learning_evidence_quarantine.learning_quarantine_source_fk",
+        "learning_evidence_quarantine.learning_quarantine_status_check",
+        "learning_evidence_records.learning_evidence_actor_check",
+        "learning_evidence_records.learning_evidence_availability_check",
+        "learning_evidence_records.learning_evidence_class_check",
+        "learning_evidence_records.learning_evidence_contract_check",
+        "learning_evidence_records.learning_evidence_dedupe_check",
+        "learning_evidence_records.learning_evidence_direct_measurement_check",
+        "learning_evidence_records.learning_evidence_fingerprint_check",
+        "learning_evidence_records.learning_evidence_future_time_check",
+        "learning_evidence_records.learning_evidence_identity_check",
+        "learning_evidence_records.learning_evidence_ingestion_sequence_uq",
+        "learning_evidence_records.learning_evidence_kind_check",
+        "learning_evidence_records.learning_evidence_kind_target_check",
+        "learning_evidence_records.learning_evidence_locator_check",
+        "learning_evidence_records.learning_evidence_measurement_check",
+        "learning_evidence_records.learning_evidence_metadata_check",
+        "learning_evidence_records.learning_evidence_origin_check",
+        "learning_evidence_records.learning_evidence_provenance_check",
+        "learning_evidence_records.learning_evidence_record_student_uq",
+        "learning_evidence_records.learning_evidence_records_activity_type_not_null",
+        "learning_evidence_records.learning_evidence_records_actor_id_fkey",
+        "learning_evidence_records.learning_evidence_records_actor_role_not_null",
+        "learning_evidence_records.learning_evidence_records_actor_student_relation_not_null",
+        "learning_evidence_records.learning_evidence_records_backfill_run_id_fkey",
+        "learning_evidence_records.learning_evidence_records_contract_version_not_null",
+        "learning_evidence_records.learning_evidence_records_dedupe_key_not_null",
+        "learning_evidence_records.learning_evidence_records_evidence_class_not_null",
+        "learning_evidence_records.learning_evidence_records_evidence_strength_not_null",
+        "learning_evidence_records.learning_evidence_records_ingestion_sequence_not_null",
+        "learning_evidence_records.learning_evidence_records_measurement_not_null",
+        "learning_evidence_records.learning_evidence_records_metadata_not_null",
+        "learning_evidence_records.learning_evidence_records_occurred_at_precision_not_null",
+        "learning_evidence_records.learning_evidence_records_pkey",
+        "learning_evidence_records.learning_evidence_records_provenance_not_null",
+        "learning_evidence_records.learning_evidence_records_record_id_not_null",
+        "learning_evidence_records.learning_evidence_records_record_kind_not_null",
+        "learning_evidence_records.learning_evidence_records_record_origin_not_null",
+        "learning_evidence_records.learning_evidence_records_recorded_at_not_null",
+        "learning_evidence_records.learning_evidence_records_relations_not_null",
+        "learning_evidence_records.learning_evidence_records_retention_class_not_null",
+        "learning_evidence_records.learning_evidence_records_schema_version_not_null",
+        "learning_evidence_records.learning_evidence_records_semantic_event_type_not_null",
+        "learning_evidence_records.learning_evidence_records_semantic_fingerprint_not_null",
+        "learning_evidence_records.learning_evidence_records_source_adapter_version_not_null",
+        "learning_evidence_records.learning_evidence_records_source_availability_not_null",
+        "learning_evidence_records.learning_evidence_records_source_code_not_null",
+        "learning_evidence_records.learning_evidence_records_source_record_id_not_null",
+        "learning_evidence_records.learning_evidence_records_source_registry_version_not_null",
+        "learning_evidence_records.learning_evidence_records_source_revision_not_null",
+        "learning_evidence_records.learning_evidence_records_student_id_fkey",
+        "learning_evidence_records.learning_evidence_records_student_id_not_null",
+        "learning_evidence_records.learning_evidence_records_topic_resolver_version_not_null",
+        "learning_evidence_records.learning_evidence_records_trust_level_not_null",
+        "learning_evidence_records.learning_evidence_relations_check",
+        "learning_evidence_records.learning_evidence_snapshot_check",
+        "learning_evidence_records.learning_evidence_source_fields_check",
+        "learning_evidence_records.learning_evidence_source_fk",
+        "learning_evidence_records.learning_evidence_strength_check",
+        "learning_evidence_records.learning_evidence_target_student_fk",
+        "learning_evidence_records.learning_evidence_time_check",
+        "learning_evidence_records.learning_evidence_trust_check",
+        "learning_projection_cursors.learning_projection_cursor_claim_check",
+        "learning_projection_cursors.learning_projection_cursor_name_check",
+        "learning_projection_cursors.learning_projection_cursor_seq_check",
+        "learning_projection_cursors.learning_projection_cursors_cursor_id_not_null",
+        "learning_projection_cursors.learning_projection_cursors_generation_id_fkey",
+        "learning_projection_cursors.learning_projection_cursors_last_ingestion_sequence_not_null",
+        "learning_projection_cursors.learning_projection_cursors_pkey",
+        "learning_projection_cursors.learning_projection_cursors_projection_name_not_null",
+        "learning_projection_cursors.learning_projection_cursors_projection_version_not_null",
+        "learning_projection_cursors.learning_projection_cursors_student_id_fkey",
+        "learning_projection_cursors.learning_projection_cursors_updated_at_not_null",
+        "learning_projection_generations.learning_projection_generatio_start_ingestion_sequence_not_null",
+        "learning_projection_generations.learning_projection_generation_checksum_check",
+        "learning_projection_generations.learning_projection_generation_counts_check",
+        "learning_projection_generations.learning_projection_generation_error_check",
+        "learning_projection_generations.learning_projection_generation_name_check",
+        "learning_projection_generations.learning_projection_generation_source_fk",
+        "learning_projection_generations.learning_projection_generation_source_registry_version_not_null",
+        "learning_projection_generations.learning_projection_generation_source_version_check",
+        "learning_projection_generations.learning_projection_generation_status_check",
+        "learning_projection_generations.learning_projection_generations_generation_id_not_null",
+        "learning_projection_generations.learning_projection_generations_pkey",
+        "learning_projection_generations.learning_projection_generations_projection_name_not_null",
+        "learning_projection_generations.learning_projection_generations_projection_version_not_null",
+        "learning_projection_generations.learning_projection_generations_row_count_not_null",
+        "learning_projection_generations.learning_projection_generations_started_at_not_null",
+        "learning_projection_generations.learning_projection_generations_status_not_null",
+        "learning_projection_generations.learning_projection_generations_student_id_fkey",
+        "learning_source_contracts.learning_source_contracts_actor_student_relation_not_null",
+        "learning_source_contracts.learning_source_contracts_allowed_measurements_not_null",
+        "learning_source_contracts.learning_source_contracts_allowed_metadata_not_null",
+        "learning_source_contracts.learning_source_contracts_allowlists_check",
+        "learning_source_contracts.learning_source_contracts_authority_not_null",
+        "learning_source_contracts.learning_source_contracts_class_check",
+        "learning_source_contracts.learning_source_contracts_classification_not_null",
+        "learning_source_contracts.learning_source_contracts_contract_version_not_null",
+        "learning_source_contracts.learning_source_contracts_data_class_not_null",
+        "learning_source_contracts.learning_source_contracts_decision_status_not_null",
+        "learning_source_contracts.learning_source_contracts_default_class_check",
+        "learning_source_contracts.learning_source_contracts_default_evidence_class_not_null",
+        "learning_source_contracts.learning_source_contracts_event_classes_check",
+        "learning_source_contracts.learning_source_contracts_events_check",
+        "learning_source_contracts.learning_source_contracts_evidence_class_by_event_not_null",
+        "learning_source_contracts.learning_source_contracts_identity_scope_not_null",
+        "learning_source_contracts.learning_source_contracts_ingest_allowed_not_null",
+        "learning_source_contracts.learning_source_contracts_ingest_check",
+        "learning_source_contracts.learning_source_contracts_locator_check",
+        "learning_source_contracts.learning_source_contracts_matrix_check",
+        "learning_source_contracts.learning_source_contracts_matrix_id_not_null",
+        "learning_source_contracts.learning_source_contracts_matrix_uq",
+        "learning_source_contracts.learning_source_contracts_module_owner_not_null",
+        "learning_source_contracts.learning_source_contracts_mutation_semantics_not_null",
+        "learning_source_contracts.learning_source_contracts_pk",
+        "learning_source_contracts.learning_source_contracts_record_kinds_check",
+        "learning_source_contracts.learning_source_contracts_record_kinds_not_null",
+        "learning_source_contracts.learning_source_contracts_registry_check",
+        "learning_source_contracts.learning_source_contracts_registry_version_not_null",
+        "learning_source_contracts.learning_source_contracts_retention_class_not_null",
+        "learning_source_contracts.learning_source_contracts_seeded_at_not_null",
+        "learning_source_contracts.learning_source_contracts_semantic_event_types_not_null",
+        "learning_source_contracts.learning_source_contracts_source_check",
+        "learning_source_contracts.learning_source_contracts_source_code_not_null",
+        "learning_source_contracts.learning_source_contracts_source_locator_policy_not_null",
+        "learning_source_contracts.learning_source_contracts_source_record_key_not_null",
+        "learning_source_contracts.learning_source_contracts_trust_authority_not_null",
+        "learning_source_health.learning_source_health_capability_check",
+        "learning_source_health.learning_source_health_capability_version_not_null",
+        "learning_source_health.learning_source_health_checked_at_not_null",
+        "learning_source_health.learning_source_health_count_check",
+        "learning_source_health.learning_source_health_error_check",
+        "learning_source_health.learning_source_health_pk",
+        "learning_source_health.learning_source_health_source_code_not_null",
+        "learning_source_health.learning_source_health_source_fk",
+        "learning_source_health.learning_source_health_source_registry_version_not_null",
+        "learning_source_health.learning_source_health_status_check",
+        "learning_source_health.learning_source_health_status_not_null",
+        "learning_source_health.learning_source_health_student_id_fkey",
+        "learning_source_health.learning_source_health_student_id_not_null",
+        "learning_source_health.learning_source_health_updated_at_not_null"
+      ]
+    },
+    "indexes": {
+      "count": 34,
+      "names": [
+        "learning_backfill_status_cursor_idx",
+        "learning_diagnostic_projection_rows_pkey",
+        "learning_diagnostic_scope_uq",
+        "learning_diagnostic_student_topic_idx",
+        "learning_evidence_backfill_runs_pkey",
+        "learning_evidence_client_idempotency_uq",
+        "learning_evidence_ingestion_sequence_uq",
+        "learning_evidence_quarantine_pkey",
+        "learning_evidence_record_student_uq",
+        "learning_evidence_records_pkey",
+        "learning_evidence_source_idempotency_uq",
+        "learning_evidence_source_record_idx",
+        "learning_evidence_student_cursor_idx",
+        "learning_evidence_student_source_time_idx",
+        "learning_evidence_student_subject_time_idx",
+        "learning_evidence_student_time_idx",
+        "learning_evidence_student_topic_time_idx",
+        "learning_evidence_target_idx",
+        "learning_processing_claim_idx",
+        "learning_processing_pk",
+        "learning_projection_active_generation_uq",
+        "learning_projection_cursor_claim_idx",
+        "learning_projection_cursor_scope_uq",
+        "learning_projection_cursors_pkey",
+        "learning_projection_generation_status_idx",
+        "learning_projection_generations_pkey",
+        "learning_quarantine_dedupe_uq",
+        "learning_quarantine_status_reason_idx",
+        "learning_quarantine_student_source_idx",
+        "learning_source_contracts_matrix_uq",
+        "learning_source_contracts_pk",
+        "learning_source_health_pk",
+        "learning_source_health_status_idx",
+        "learning_source_health_student_idx"
+      ]
+    },
+    "policies": {
+      "count": 3,
+      "names": [
+        "learning_diagnostic_projection_rows.learning_diagnostic_student_read",
+        "learning_evidence_records.learning_evidence_student_read",
+        "learning_source_health.learning_source_health_student_read"
+      ],
+      "definitions": [
+        {
+          "table": "learning_diagnostic_projection_rows",
+          "name": "learning_diagnostic_student_read",
+          "roles": [
+            "authenticated"
+          ],
+          "command": "SELECT"
+        },
+        {
+          "table": "learning_evidence_records",
+          "name": "learning_evidence_student_read",
+          "roles": [
+            "authenticated"
+          ],
+          "command": "SELECT"
+        },
+        {
+          "table": "learning_source_health",
+          "name": "learning_source_health_student_read",
+          "roles": [
+            "authenticated"
+          ],
+          "command": "SELECT"
+        }
+      ]
+    },
+    "rls_force_tables": {
+      "count": 9,
+      "names": [
+        "learning_diagnostic_projection_rows",
+        "learning_evidence_backfill_runs",
+        "learning_evidence_processing",
+        "learning_evidence_quarantine",
+        "learning_evidence_records",
+        "learning_projection_cursors",
+        "learning_projection_generations",
+        "learning_source_contracts",
+        "learning_source_health"
+      ]
+    }
+  },
+  "rls": {
+    "force_rls_table_count": 9,
+    "student_reads_only_own_raw_and_effective": true,
+    "student_reads_only_own_projection_and_health": true,
+    "student_projection_reads_only_active_global_generation": true,
+    "cross_student_rows_visible": 0,
+    "direct_insert_update_delete_blocked": true,
+    "quarantine_and_contract_tables_private": true,
+    "anonymous_access_blocked": true,
+    "teacher_blanket_access": false,
+    "internal_function_execute_for_product_roles": false,
+    "security_invoker_view_verified": true,
+    "security_definer_search_path_empty": true,
+    "shadowing_attack_changed_result": false
+  },
+  "valid_ingest": {
+    "status": "passed",
+    "source": "M03/daily_logs",
+    "record_id_matches_persisted": true,
+    "database_generated_record_id": true,
+    "raw_note_persisted": false,
+    "canonical_topic_resolved": true,
+    "auth_uid_wrapper_verified": true,
+    "source_record_id_database_generated": true,
+    "source_and_evidence_same_transaction_rollback_verified": true
+  },
+  "dedupe": {
+    "sequential_2": {
+      "rows": 1,
+      "created": 1,
+      "duplicate": 1
+    },
+    "sequential_10": {
+      "rows": 1,
+      "created": 1,
+      "duplicate": 9
+    },
+    "parallel_10_pglite": {
+      "rows": 1,
+      "created": 1,
+      "duplicate": 9
+    },
+    "response_loss_retry_returns_original_id": true,
+    "same_key_different_payload": "idempotency_conflict",
+    "different_client_action_ids_remain_distinct": true,
+    "same_source_record_different_students_remain_distinct": true,
+    "database_unique_indexes": [
+      "learning_evidence_client_idempotency_uq",
+      "learning_evidence_source_idempotency_uq"
+    ],
+    "actual_multi_connection_postgresql_race": "not_run",
+    "pglite_parallelism_limit_explicit": true
+  },
+  "security_validation": {
+    "privileged_client_fields_rejected": 15,
+    "unknown_catalog_excluded_derived_sources_rejected": true,
+    "event_kind_class_allowlists_enforced": true,
+    "metadata_recursive_and_2k_limits_enforced": true,
+    "measurement_consistency_enforced": true,
+    "time_union_and_future_limit_enforced": true,
+    "opaque_locator_enforced": true,
+    "arbitrary_objective_rejected": true,
+    "identity_quarantine_excludes_ledger": true,
+    "quarantine_conflict_is_not_silent_duplicate": true,
+    "quarantine_raw_payload_columns": false
+  },
+  "correction_tombstone": {
+    "effective_sequence": [
+      40,
+      20,
+      0
+    ],
+    "audit_rows": 3,
+    "duplicate_mutations_add_rows": false,
+    "missing_and_cross_student_targets_rejected": true,
+    "self_or_forward_cycle": "record_id DB tarafından üretildiği ve yalnız mevcut hedef kabul edildiği için yapısal olarak oluşturulamaz; istemci record_id alanı ayrıca reddedilir.",
+    "sql_js_effective_view_parity": true
+  },
+  "snapshot": {
+    "active_rows_in_family": 1,
+    "late_arrival_rule": "persistent ingestion_sequence; legacy fixtures fall back to recorded_at then record_id",
+    "late_older_as_of_insert_wins": true,
+    "missing_as_of_rejected": true,
+    "sql_js_parity": true
+  },
+  "replay": {
+    "initial_rows": 3,
+    "initial_checksum": "eebe4691e46b26bf75220103109ecd94b1354b53d26c372bbae0b0082c8cf7e0",
+    "deterministic_second_replay": true,
+    "dry_compare_equal": true,
+    "student_source_version_and_start_cursor_modes": true,
+    "source_registry_and_adapter_version_recorded": true,
+    "global_generation_pins_full_source_registry": true,
+    "source_scoped_worker_rows_restricted": true,
+    "future_start_cursor_rejected": true,
+    "failed_generation_preserved_previous_active": true,
+    "cursor_unchanged_on_worker_failure": true,
+    "retry_recovered": true,
+    "two_worker_claim_duplicate_effect": false,
+    "late_visible_lower_sequence_recovered": true,
+    "processing_scope_isolation_verified": true,
+    "permanent_poison_advanced_to_healthy_record": true,
+    "final_rows": 3,
+    "final_checksum": "5d430be205a8b14ae3497fc4c86d8bc419dc82640b923eaa6ffcb0ceee89b614",
+    "ledger_mutated_by_replay": false
+  },
+  "backfill": {
+    "dry_run": {
+      "scanned": 4,
+      "adapted": 2,
+      "would_create": 2,
+      "created": 0,
+      "duplicate": 0,
+      "conflict": 0,
+      "quarantine": 1,
+      "error": 1
+    },
+    "second_dry_run_equal": true,
+    "apply": {
+      "scanned": 4,
+      "adapted": 2,
+      "would_create": 0,
+      "created": 2,
+      "duplicate": 0,
+      "conflict": 0,
+      "quarantine": 1,
+      "error": 1
+    },
+    "second_apply": {
+      "scanned": 4,
+      "adapted": 0,
+      "would_create": 0,
+      "created": 0,
+      "duplicate": 2,
+      "conflict": 0,
+      "quarantine": 1,
+      "error": 1
+    },
+    "paused_cursor": "1",
+    "resumed_restart_count": 1,
+    "version_mismatch_rejected_before_start": true,
+    "safe_pg_failure_code": "backfill_page_invalid",
+    "cancelled_without_restart": true,
+    "source_rows_mutated": false,
+    "persistent_pg_run_store": true,
+    "real_product_data_read_or_written": false
+  },
+  "health": {
+    "available": "passed",
+    "empty": "passed",
+    "unavailable": "passed",
+    "degraded": "passed",
+    "missing_table_is_not_empty": true,
+    "unauthorized_is_not_empty": true,
+    "registry_capability_rows": 38
+  },
+  "observability": {
+    "ingest_outcome_groups": 10,
+    "ingest_last_success_groups": 2,
+    "rejection_reason_groups": 4,
+    "accepted_source_event_groups": 2,
+    "identity_status_groups": 6,
+    "processing_status_groups": 2,
+    "cursor_lag_groups": 1,
+    "unprocessed_records_observed": 25,
+    "source_health_statuses": [
+      "available",
+      "degraded",
+      "empty",
+      "unavailable"
+    ],
+    "backfill_status_groups": 5,
+    "replay_comparison_available": true,
+    "high_cardinality_student_labels": false,
+    "raw_content_in_summary": false
+  },
+  "account_deletion": {
+    "deleted_student_ledger_rows": 0,
+    "deleted_student_quarantine_rows": 0,
+    "deleted_student_projection_rows": 0,
+    "deleted_student_scoped_generation_cursor_health_backfill_rows": 0,
+    "other_students_preserved": true,
+    "deleted_teacher_actor_id_set_null": true,
+    "teacher_evidence_preserved": true,
+    "source_tombstone_deleted_account": false
+  },
+  "benchmark": {
+    "synthetic_records": 10000,
+    "insert_ms": 1154.637,
+    "engine": "PostgreSQL 18.3 (PGlite 0.5.5) on wasm32-unknown-linux-gnu, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.74 (1092ec30a3fb1d46b1782ff1b4db5094d3d06ae5), 32-bit",
+    "production_sla_claimed": false,
+    "queries": [
+      {
+        "name": "student_time",
+        "duration_ms": 0.734,
+        "rows": 50,
+        "expected_index": "learning_evidence_student_time_idx",
+        "index_present": true,
+        "plan_mentions_expected_index": true,
+        "plan_node_index_scan": true
+      },
+      {
+        "name": "student_topic_time",
+        "duration_ms": 0.276,
+        "rows": 50,
+        "expected_index": "learning_evidence_student_topic_time_idx",
+        "index_present": true,
+        "plan_mentions_expected_index": false,
+        "plan_node_index_scan": true
+      },
+      {
+        "name": "student_source",
+        "duration_ms": 0.245,
+        "rows": 50,
+        "expected_index": "learning_evidence_student_source_time_idx",
+        "index_present": true,
+        "plan_mentions_expected_index": false,
+        "plan_node_index_scan": true
+      },
+      {
+        "name": "source_record",
+        "duration_ms": 0.186,
+        "rows": 1,
+        "expected_index": "learning_evidence_source_record_idx",
+        "index_present": true,
+        "plan_mentions_expected_index": true,
+        "plan_node_index_scan": true
+      }
+    ],
+    "processing_query_worked": true,
+    "quarantine_query_worked": true,
+    "processing_index_present": true,
+    "quarantine_index_present": true,
+    "replay_batch_limit_verified": 500
+  },
+  "scenarios": {
+    "S02": "passed",
+    "S05": "passed",
+    "S07": "passed",
+    "S08": "passed",
+    "S10": "passed",
+    "S11": "passed",
+    "S14": "passed"
+  },
+  "tests": {
+    "commands_total": 32,
+    "commands_passed": 32,
+    "commands_failed": 0,
+    "commands_skipped": 0,
+    "skipped_validations": 1,
+    "phase_two_sections": 17,
+    "phase_two_assertions": 353,
+    "phase_one_contract_sections": 14,
+    "phase_one_contract_assertions": 1516,
+    "assertions_are_not_counted_as_commands": true,
+    "commands": [
+      {
+        "name": "faz-2-veri-agi",
+        "command": "npm run test:ai-koc-faz-2",
+        "exit_code": 0,
+        "wall_time_seconds": 4.383222667
+      },
+      {
+        "name": "faz-1",
+        "command": "npm run test:ai-koc-faz-1",
+        "exit_code": 0,
+        "wall_time_seconds": 0.06699425
+      },
+      {
+        "name": "context-curriculum",
+        "command": "node scripts/test-context-curriculum.mjs",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000002583
+      },
+      {
+        "name": "curriculum",
+        "command": "node scripts/test-curriculum.mjs",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000003208
+      },
+      {
+        "name": "ai-solve",
+        "command": "npm run test:ai-solve",
+        "exit_code": 0,
+        "wall_time_seconds": 6.721665625
+      },
+      {
+        "name": "lesson-document",
+        "command": "npm run test:lesson-document",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000003917
+      },
+      {
+        "name": "lesson-content",
+        "command": "npm run test:lesson-content",
+        "exit_code": 0,
+        "wall_time_seconds": 0.09726
+      },
+      {
+        "name": "lesson-narration",
+        "command": "npm run test:lesson-narration",
+        "exit_code": 0,
+        "wall_time_seconds": 0.03007525
+      },
+      {
+        "name": "library-curriculum",
+        "command": "npm run test:library-curriculum",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000001541
+      },
+      {
+        "name": "ingilizce",
+        "command": "npm run test:ingilizce",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000002708
+      },
+      {
+        "name": "almanca",
+        "command": "npm run test:almanca",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000001417
+      },
+      {
+        "name": "fransizca",
+        "command": "npm run test:fransizca",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000002792
+      },
+      {
+        "name": "ispanyolca",
+        "command": "npm run test:ispanyolca",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000002792
+      },
+      {
+        "name": "matematik-soru-kutuphanesi",
+        "command": "npm run test:matematik-soru-kutuphanesi",
+        "exit_code": 0,
+        "wall_time_seconds": 0.00000325
+      },
+      {
+        "name": "felsefe-soru-kutuphanesi",
+        "command": "npm run test:felsefe-soru-kutuphanesi",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000002792
+      },
+      {
+        "name": "tarih-soru-kutuphanesi",
+        "command": "npm run test:tarih-soru-kutuphanesi",
+        "exit_code": 0,
+        "wall_time_seconds": 1.042868709
+      },
+      {
+        "name": "exam-stats",
+        "command": "node scripts/test-exam-stats.mjs",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000002958
+      },
+      {
+        "name": "parent-rls",
+        "command": "npm run test:parent-rls",
+        "exit_code": 0,
+        "wall_time_seconds": 0.941119167
+      },
+      {
+        "name": "live-lessons",
+        "command": "npm run test:live-lessons",
+        "exit_code": 0,
+        "wall_time_seconds": 0.884802583
+      },
+      {
+        "name": "defter",
+        "command": "npm run test:defter",
+        "exit_code": 0,
+        "wall_time_seconds": 0.869319709
+      },
+      {
+        "name": "ink",
+        "command": "npm run test:ink",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000004625
+      },
+      {
+        "name": "kimya",
+        "command": "npm run test:kimya",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000003542
+      },
+      {
+        "name": "fizik",
+        "command": "npm run test:fizik",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000003042
+      },
+      {
+        "name": "biyoloji",
+        "command": "npm run test:biyoloji",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000002167
+      },
+      {
+        "name": "cografya",
+        "command": "npm run test:cografya",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000002083
+      },
+      {
+        "name": "tarih",
+        "command": "npm run test:tarih",
+        "exit_code": 0,
+        "wall_time_seconds": 0.064429792
+      },
+      {
+        "name": "tts-cache",
+        "command": "npm run test:tts-cache",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000003042
+      },
+      {
+        "name": "padisah-sesi",
+        "command": "npm run test:padisah-sesi",
+        "exit_code": 0,
+        "wall_time_seconds": 0.0000025
+      },
+      {
+        "name": "anasayfa",
+        "command": "npm run test:anasayfa",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000002667
+      },
+      {
+        "name": "bench-test",
+        "command": "npm run bench:test",
+        "exit_code": 0,
+        "wall_time_seconds": 0.323977333
+      },
+      {
+        "name": "lesson-event-thenable",
+        "command": "node docs/ai-koc/kanitlar/faz-0/lesson-event-thenable.mjs",
+        "exit_code": 0,
+        "wall_time_seconds": 0.000002416
+      },
+      {
+        "name": "build",
+        "command": "npm run build",
+        "exit_code": 0,
+        "wall_time_seconds": 25.685856292
+      }
+    ]
+  },
+  "build": {
+    "passed": true,
+    "wall_time_seconds": 25.685856292,
+    "existing_500_kb_warning_present": true,
+    "phase_one_baseline_main_bundle_kb": 17219.12,
+    "phase_one_baseline_main_bundle_gzip_kb": 4799.53,
+    "current_main_bundle_kb": 17226.8,
+    "current_main_bundle_gzip_kb": 4801.45,
+    "difference_kb": 7.68,
+    "difference_gzip_kb": 1.92,
+    "attribution_note": "Karşılaştırma görev sırasında gelen eşzamanlı içerik commitlerini de kapsar; fark yalnız Faz 2'ye atfedilmez."
+  },
+  "skipped_validations": [
+    {
+      "check": "real_multi_connection_postgresql_race",
+      "reason": "İzole yerel PostgreSQL sunucusu/ikilisi yok. PGlite tek bağlantıda çağrıları serileştirebilir; gerçek çoklu bağlantı yarışı Faz 9 provasına taşındı.",
+      "treated_as_passed": false,
+      "blocks_local_phase_two": false
+    }
+  ],
+  "side_effects": {
+    "live_supabase_read": false,
+    "live_supabase_write": false,
+    "live_schema_change": false,
+    "real_source_binding": false,
+    "real_data_read": false,
+    "real_backfill": false,
+    "seed_command_run": false,
+    "paid_model_call": false,
+    "deployment": false,
+    "live_database_migration": false,
+    "live_seed": false,
+    "live_backfill": false,
+    "source_registry_connected_flags_changed": false
+  },
+  "evidence_files": [
+    "docs/ai-koc/kanitlar/faz-2/veri-agi-testleri.log",
+    "docs/ai-koc/kanitlar/faz-2/regresyon-testleri.log",
+    "docs/ai-koc/kanitlar/faz-2/build.log",
+    "docs/ai-koc/kanitlar/faz-2/migration-sema-ozeti.json",
+    "docs/ai-koc/kanitlar/faz-2/faz-2-kabul-sonucu.json"
+  ],
+  "phase_three_to_five_interface": {
+    "local_development_may_start": true,
+    "interfaces": [
+      "Faz 1 SOURCE_ADAPTERS ve kaynak sözleşmesi parity katmanı",
+      "createLearningEvidenceIngestor ile güvenilir zenginleştirme/doğrulama",
+      "createPgLearningEvidenceRepository ile private SQL alımı, etkin görünüm, cursor, replay ve health",
+      "createBackfillProviderRegistry/runBackfill ile sürüm kilitli provider akışı",
+      "Kaynak-özel aynı-transaction sarmalayıcı; genel istemci kanıt yazma ucu yok"
+    ],
+    "still_not_authorized": [
+      "Gerçek ürün kaynağı bağlantısı",
+      "Canlı öğrenci verisi okuma/yazma",
+      "Canlı migration, seed veya backfill",
+      "Üretim yayını"
+    ]
+  },
+  "remaining_limit": {
+    "only_open_local_limit": "Gerçek çoklu bağlantılı PostgreSQL yarış testi çalıştırılmadı.",
+    "reason": "İzole yerel PostgreSQL sunucusu/ikilisi yok. PGlite tek bağlantıda çağrıları serileştirebilir; gerçek çoklu bağlantı yarışı Faz 9 provasına taşındı.",
+    "target_phase": 9,
+    "treated_as_passed": false,
+    "blocks_phase_two_local_acceptance": false
+  },
+  "environment": {
+    "engine": "PGlite/WASM",
+    "serialized_connection": true,
+    "production_sla_claimed": false,
+    "postgresql_compatibility": "PostgreSQL 18.3 (PGlite 0.5.5) on wasm32-unknown-linux-gnu, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 3.1.74 (1092ec30a3fb1d46b1782ff1b4db5094d3d06ae5), 32-bit"
+  }
+}

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { HelpCircle, ImagePlus, Send, X } from 'lucide-react'
-import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
+import useAcademicActivity from '../hooks/useAcademicActivity'
+import { academicStatusMessage } from '../lib/learning/academicActivity/client'
+import { stageAndUploadAcademicQuestionMedia } from '../lib/learning/academicActivity/media'
 import { COMMON_SUBJECTS } from '../lib/examHelpers'
 import { Alert, Button, Card, CardBody, CardHeader, Field, Input, Select, Textarea } from './ui'
 
@@ -14,8 +16,9 @@ import { Alert, Button, Card, CardBody, CardHeader, Field, Input, Select, Textar
  * `bare` verilirse kendi kart çerçevesini çizmez — Modal içinde açıldığında
  * kart içinde kart görüntüsü oluşmasın diye bu kullanılır.
  */
-export default function QuestionForm({ onSubmitted, bare = false }) {
+export default function QuestionForm({ onSubmitted, bare = false, studentId = null, teacherMode = false }) {
   const { user } = useAuth()
+  const academic = useAcademicActivity()
   const [content, setContent] = useState('')
   const [subject, setSubject] = useState('')
   const [topic, setTopic] = useState('')
@@ -41,38 +44,45 @@ export default function QuestionForm({ onSubmitted, bare = false }) {
       setFeedback({ tone: 'warning', text: 'Bir soru yaz ya da fotoğraf ekle.' })
       return
     }
+    if (teacherMode && !studentId) {
+      setFeedback({ tone: 'warning', text: 'Önce öğrenciyi seç.' })
+      return
+    }
 
     setSending(true)
     setFeedback(null)
 
-    let imageUrl = null
+    let mediaActionId = null
     try {
       if (file) {
-        const path = `${user.id}/${Date.now()}-${file.name}`
-        const { error: uploadError } = await supabase.storage
-          .from('question-images')
-          .upload(path, file)
-        if (uploadError) throw uploadError
-
-        const { data: publicUrlData } = supabase.storage.from('question-images').getPublicUrl(path)
-        imageUrl = publicUrlData.publicUrl
+        const media = await stageAndUploadAcademicQuestionMedia({
+          studentId: teacherMode ? studentId : user.id,
+          actorId: user.id,
+          mediaKind: 'student_question',
+          file,
+        })
+        mediaActionId = media.mediaActionId
       }
 
-      const { error: insertError } = await supabase.from('questions').insert({
-        student_id: user.id,
+      const response = await academic.performSensitive(
+        teacherMode ? 'question_teacher_share' : 'question_submit',
+        {
+        ...(teacherMode ? { student_id: studentId } : {}),
         content: content.trim() || null,
         subject: subject || null,
         topic: topic.trim() || null,
-        image_url: imageUrl,
-        status: 'İnceleniyor',
+        media_action_id: mediaActionId,
       })
-      if (insertError) throw insertError
+      if (response.status !== 'saved') {
+        setFeedback({ tone: response.status === 'offline_pending' ? 'warning' : 'danger', text: academicStatusMessage(response.status) })
+        return
+      }
 
       setContent('')
       setSubject('')
       setTopic('')
       setFile(null)
-      setFeedback({ tone: 'success', text: 'Sorun öğretmenine iletildi.' })
+      setFeedback({ tone: 'success', text: teacherMode ? 'Soru öğrenciyle paylaşıldı.' : 'Sorun öğretmenine iletildi.' })
       onSubmitted?.()
     } catch (err) {
       setFeedback({ tone: 'danger', text: err.message ?? 'Gönderilemedi, tekrar dene.' })
@@ -132,7 +142,7 @@ export default function QuestionForm({ onSubmitted, bare = false }) {
             type="button"
             onClick={() => setFile(null)}
             aria-label="Fotoğrafı kaldır"
-            className="focus-ring absolute -right-2 -top-2 grid h-6 w-6 place-items-center rounded-full bg-danger-500 text-white shadow-card"
+            className="focus-ring absolute -right-3 -top-3 grid h-11 w-11 place-items-center rounded-full bg-danger-500 text-white shadow-card"
           >
             <X className="h-3.5 w-3.5" strokeWidth={2.5} />
           </button>
@@ -140,7 +150,7 @@ export default function QuestionForm({ onSubmitted, bare = false }) {
       )}
 
       <div className="flex flex-col gap-3 border-t border-line pt-4 sm:flex-row sm:items-center">
-        <label className="focus-ring inline-flex w-fit cursor-pointer items-center gap-2 rounded-xl border border-dashed border-brand-300 px-4 py-2.5 text-sm font-semibold text-brand-600 transition-colors hover:bg-brand-50">
+        <label className="focus-ring inline-flex min-h-11 w-fit cursor-pointer items-center gap-2 rounded-xl border border-dashed border-brand-300 px-4 py-2.5 text-sm font-semibold text-brand-600 transition-colors hover:bg-brand-50">
           <ImagePlus className="h-4 w-4" aria-hidden="true" />
           <span className="max-w-[14rem] truncate">{file ? file.name : 'Fotoğraf ekle'}</span>
           <input
@@ -152,7 +162,7 @@ export default function QuestionForm({ onSubmitted, bare = false }) {
         </label>
 
         <Button type="submit" loading={sending} icon={Send} className="sm:ml-auto">
-          {sending ? 'Gönderiliyor…' : 'Öğretmenime Gönder'}
+          {sending ? 'Gönderiliyor…' : teacherMode ? 'Öğrenciye Gönder' : 'Öğretmenime Gönder'}
         </Button>
       </div>
 

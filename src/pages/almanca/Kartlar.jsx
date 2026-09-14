@@ -8,7 +8,7 @@ import { AppShell, Badge, Button, EmptyState, ProgressBar } from '../../componen
 import SesDugmesi from '../../components/almanca/SesDugmesi'
 import { useSes } from '../../components/almanca/useAlmanca'
 import { DESTELER, desteBul } from '../../content/almanca'
-import { gunlukKaydet, ilerlemeOku, ilerlemeYaz } from '../../lib/almanca/ilerleme'
+import { dilEtkinligiKaydet, gunlukKaydet, ilerlemeOku, ilerlemeYaz } from '../../lib/almanca/ilerleme'
 
 /**
  * DİL KARTLARI
@@ -257,6 +257,7 @@ function DesteOturumu({ deste, durum, setDurum, onGeri }) {
     if (bildi) bilinen.add(kart.id)
     else bilinen.delete(kart.id)
     bilinenYaz(bilinen)
+    dilEtkinligiKaydet({ activityType: 'self_report_snapshot', activityId: `kart:${deste.id}:${kart.id}`, skillDomain: 'tanima', reviewOutcome: bildi ? 'recalled' : 'forgotten', completionStatus: 'answered' })
     setDurum({ bilinen, favoriler: mevcut.favoriler })
     setOturumSkoru((s) => ({
       bildim: s.bildim + (bildi ? 1 : 0),
@@ -280,7 +281,7 @@ function DesteOturumu({ deste, durum, setDurum, onGeri }) {
       return
     }
     setIndeks((i) => i + 1)
-  }, [kart, indeks, sira.length, toplam, setDurum])
+  }, [deste.id, kart, indeks, sira.length, toplam, setDurum])
 
   const favoriDegistir = () => {
     const mevcut = kartDurumlariniOku()

@@ -1,0 +1,466 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-09-13T15:02:15.707Z",
+  "scope": "M13-M26",
+  "registry_version": "learning-content-registry@1",
+  "manifest_version": "learning-content-manifest@1",
+  "manifest_checksum": "6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
+  "environment": "PGlite/WASM + sentetik fixture + paketli manifest",
+  "live_database_read": false,
+  "live_apply_performed": false,
+  "source_count": 14,
+  "sources": [
+    {
+      "matrix_id": "M13",
+      "source_code": "library_gateway",
+      "classification": "catalog",
+      "ingest_allowed": false,
+      "semantic_event_types": [],
+      "decision_status": "local_catalog_confirmed",
+      "backfill_strategy": "catalog_only",
+      "provider_name": null,
+      "live_apply_allowed": false,
+      "implemented_source_writer": null,
+      "implemented_source_reader": "library gateway/catalog UI",
+      "transaction_boundary": "none_no_student_evidence_write",
+      "content_identity_revision_source": "delegated_to_M14_catalog",
+      "retry_idempotency_strategy": "not_applicable_no_writer",
+      "correction_tombstone_strategy": "not_applicable_no_student_evidence",
+      "rls_test_result": "passed_no_student_writer_or_evidence",
+      "end_to_end_test_result": "passed_zero_common_evidence",
+      "local_implementation_status": "catalog_contract_confirmed",
+      "live_status": "not_applied",
+      "local_catalog_and_fixture_revision_count": 0,
+      "generated_manifest_entry_count": 0,
+      "topic_mapping_state": {
+        "generated_manifest_status_counts": {},
+        "unmatched_or_ambiguous_ingest": "quarantined"
+      },
+      "synthetic_evidence_record_count": 0
+    },
+    {
+      "matrix_id": "M14",
+      "source_code": "library_catalog",
+      "classification": "catalog",
+      "ingest_allowed": false,
+      "semantic_event_types": [],
+      "decision_status": "local_catalog_confirmed",
+      "backfill_strategy": "catalog_only",
+      "provider_name": null,
+      "live_apply_allowed": false,
+      "implemented_source_writer": "manifest builder + DB content triggers + atomic catalog loader",
+      "implemented_source_reader": "public identity manifest + private server catalog",
+      "transaction_boundary": "public_revision_mapping_and_private_items_same_database_transaction",
+      "content_identity_revision_source": "normalized_content_sha256_or_server_computed_DB_revision",
+      "retry_idempotency_strategy": "checksum_verified_upsert; second_apply_zero; conflict_full_rollback",
+      "correction_tombstone_strategy": "immutable_revision_chain_and_explicit_alias; no_student_evidence",
+      "rls_test_result": "passed_private_catalog_and_trusted_DML_revoked",
+      "end_to_end_test_result": "passed_real_packaged_catalog_materialization",
+      "local_implementation_status": "catalog_contract_confirmed",
+      "live_status": "not_applied",
+      "local_catalog_and_fixture_revision_count": 0,
+      "generated_manifest_entry_count": 0,
+      "topic_mapping_state": {
+        "generated_manifest_status_counts": {
+          "source_scope_only": 103,
+          "unmatched": 1804,
+          "unique_with_explicit_context": 1400,
+          "context_scope_only": 1037
+        },
+        "unmatched_or_ambiguous_ingest": "quarantined"
+      },
+      "synthetic_evidence_record_count": 0
+    },
+    {
+      "matrix_id": "M15",
+      "source_code": "structured_lesson_activity",
+      "classification": "conditional_emitter",
+      "ingest_allowed": true,
+      "semantic_event_types": [
+        "lesson_opened",
+        "quiz_answered",
+        "osym_simulation_answered",
+        "lesson_completed",
+        "audio_started",
+        "audio_completed",
+        "visual_audio_clicked"
+      ],
+      "decision_status": "locally_implemented_live_not_applied",
+      "backfill_strategy": "historical_provider",
+      "provider_name": "phase3StructuredLessonEvents",
+      "live_apply_allowed": false,
+      "implemented_source_writer": "useContentActivity -> structured lesson event/progress RPCs",
+      "implemented_source_reader": "structured lesson revision + student progress",
+      "transaction_boundary": "authoritative_source_row_and_evidence_same_postgresql_transaction",
+      "content_identity_revision_source": "structured_lessons server hash/revision triggers",
+      "retry_idempotency_strategy": "user_scoped_outbox_plus_action_receipt_payload_hash",
+      "correction_tombstone_strategy": "append_only_event_contract_plus_revision_pinned_progress",
+      "rls_test_result": "passed_owner_read_and_no_direct_trusted_DML",
+      "end_to_end_test_result": "passed_structured_fixture_source_and_evidence",
+      "local_implementation_status": "implemented_and_locally_tested",
+      "live_status": "not_applied",
+      "local_catalog_and_fixture_revision_count": 1,
+      "generated_manifest_entry_count": 0,
+      "topic_mapping_state": {
+        "generated_manifest_status_counts": {},
+        "unmatched_or_ambiguous_ingest": "quarantined"
+      },
+      "synthetic_evidence_record_count": 5
+    },
+    {
+      "matrix_id": "M16",
+      "source_code": "bundled_lesson_activity",
+      "classification": "conditional_emitter",
+      "ingest_allowed": true,
+      "semantic_event_types": [
+        "lesson_opened",
+        "quiz_answered",
+        "lesson_completed"
+      ],
+      "decision_status": "locally_implemented_live_not_applied",
+      "backfill_strategy": "no_historical_source",
+      "provider_name": null,
+      "live_apply_allowed": false,
+      "implemented_source_writer": "useContentActivity -> bundled lesson event/progress RPCs",
+      "implemented_source_reader": "bundled lesson manifest + student progress",
+      "transaction_boundary": "authoritative_source_row_and_evidence_same_postgresql_transaction",
+      "content_identity_revision_source": "packaged_lesson_normalized_sha256_manifest",
+      "retry_idempotency_strategy": "user_scoped_outbox_plus_action_receipt_payload_hash",
+      "correction_tombstone_strategy": "append_only_event_contract_plus_revision_pinned_progress",
+      "rls_test_result": "passed_owner_read_and_no_direct_trusted_DML",
+      "end_to_end_test_result": "passed_real_packaged_lesson_with_synthetic_student",
+      "local_implementation_status": "implemented_and_locally_tested",
+      "live_status": "not_applied",
+      "local_catalog_and_fixture_revision_count": 186,
+      "generated_manifest_entry_count": 185,
+      "topic_mapping_state": {
+        "generated_manifest_status_counts": {
+          "unmatched": 20,
+          "unique_with_explicit_context": 165
+        },
+        "unmatched_or_ambiguous_ingest": "quarantined"
+      },
+      "synthetic_evidence_record_count": 4
+    },
+    {
+      "matrix_id": "M17",
+      "source_code": "library_note_exposure",
+      "classification": "conditional_emitter",
+      "ingest_allowed": true,
+      "semantic_event_types": [
+        "note_opened"
+      ],
+      "decision_status": "locally_implemented_live_not_applied",
+      "backfill_strategy": "no_historical_source",
+      "provider_name": null,
+      "live_apply_allowed": false,
+      "implemented_source_writer": "viewer/lightbox -> record_library_note_open RPC",
+      "implemented_source_reader": "DB note revision or packaged note manifest",
+      "transaction_boundary": "note_exposure_row_and_evidence_same_postgresql_transaction",
+      "content_identity_revision_source": "DB note trigger or packaged_file_sha256_manifest",
+      "retry_idempotency_strategy": "user_scoped_outbox_plus_action_receipt_payload_hash",
+      "correction_tombstone_strategy": "immutable_open_exposure; card_render_creates_no_event",
+      "rls_test_result": "passed_owner_read_and_no_direct_trusted_DML",
+      "end_to_end_test_result": "passed_real_packaged_note_open_with_synthetic_student",
+      "local_implementation_status": "implemented_and_locally_tested",
+      "live_status": "not_applied",
+      "local_catalog_and_fixture_revision_count": 142,
+      "generated_manifest_entry_count": 141,
+      "topic_mapping_state": {
+        "generated_manifest_status_counts": {
+          "unmatched": 141
+        },
+        "unmatched_or_ambiguous_ingest": "quarantined"
+      },
+      "synthetic_evidence_record_count": 1
+    },
+    {
+      "matrix_id": "M18",
+      "source_code": "lesson_personalization",
+      "classification": "derived_readonly",
+      "ingest_allowed": false,
+      "semantic_event_types": [],
+      "decision_status": "local_derived_confirmed",
+      "backfill_strategy": "derived_no_evidence",
+      "provider_name": null,
+      "live_apply_allowed": false,
+      "implemented_source_writer": null,
+      "implemented_source_reader": "existing lesson personalization derived cache",
+      "transaction_boundary": "none_no_primary_evidence_write",
+      "content_identity_revision_source": "upstream_lesson_and_evidence_revisions",
+      "retry_idempotency_strategy": "not_applicable_derived_readonly",
+      "correction_tombstone_strategy": "recompute_from_effective_upstream_evidence",
+      "rls_test_result": "passed_no_primary_evidence_writer",
+      "end_to_end_test_result": "passed_zero_new_common_evidence",
+      "local_implementation_status": "derived_readonly_contract_confirmed",
+      "live_status": "not_applied",
+      "local_catalog_and_fixture_revision_count": 0,
+      "generated_manifest_entry_count": 0,
+      "topic_mapping_state": {
+        "generated_manifest_status_counts": {},
+        "unmatched_or_ambiguous_ingest": "quarantined"
+      },
+      "synthetic_evidence_record_count": 0
+    },
+    {
+      "matrix_id": "M19",
+      "source_code": "db_question_test",
+      "classification": "conditional_emitter",
+      "ingest_allowed": true,
+      "semantic_event_types": [
+        "question_answered",
+        "test_completed"
+      ],
+      "decision_status": "locally_implemented_live_not_applied",
+      "backfill_strategy": "historical_provider",
+      "provider_name": "phase3DbQuestionAttempts",
+      "live_apply_allowed": false,
+      "implemented_source_writer": "useServerAssessment -> DB start/answer/finalize/reset RPCs",
+      "implemented_source_reader": "get_question_attempt_result RPC",
+      "transaction_boundary": "attempt_answer_or_final_row_and_evidence_same_postgresql_transaction",
+      "content_identity_revision_source": "library_question_sets server revision trigger",
+      "retry_idempotency_strategy": "action_receipt_plus_attempt_question_unique_identity",
+      "correction_tombstone_strategy": "append_only_answer_revision; reset_tombstones_active_evidence",
+      "rls_test_result": "passed_owner_read_cross_student_not_found_and_no_direct_DML",
+      "end_to_end_test_result": "passed_DB_question_fixture_lifecycle",
+      "local_implementation_status": "implemented_and_locally_tested",
+      "live_status": "not_applied",
+      "local_catalog_and_fixture_revision_count": 1,
+      "generated_manifest_entry_count": 0,
+      "topic_mapping_state": {
+        "generated_manifest_status_counts": {},
+        "unmatched_or_ambiguous_ingest": "quarantined"
+      },
+      "synthetic_evidence_record_count": 0
+    },
+    {
+      "matrix_id": "M20",
+      "source_code": "bundled_question_test",
+      "classification": "conditional_emitter",
+      "ingest_allowed": true,
+      "semantic_event_types": [
+        "question_answered",
+        "test_completed"
+      ],
+      "decision_status": "locally_implemented_live_not_applied",
+      "backfill_strategy": "no_historical_source",
+      "provider_name": null,
+      "live_apply_allowed": false,
+      "implemented_source_writer": "useServerAssessment -> bundled start/answer/finalize/reset RPCs",
+      "implemented_source_reader": "get_question_attempt_result RPC",
+      "transaction_boundary": "attempt_answer_or_final_row_and_evidence_same_postgresql_transaction",
+      "content_identity_revision_source": "packaged_question_set_normalized_sha256_manifest",
+      "retry_idempotency_strategy": "action_receipt_plus_attempt_question_unique_identity",
+      "correction_tombstone_strategy": "append_only_answer_revision; reset_tombstones_active_evidence",
+      "rls_test_result": "passed_owner_read_cross_student_not_found_and_no_direct_DML",
+      "end_to_end_test_result": "passed_real_packaged_question_set_with_synthetic_student",
+      "local_implementation_status": "implemented_and_locally_tested",
+      "live_status": "not_applied",
+      "local_catalog_and_fixture_revision_count": 3916,
+      "generated_manifest_entry_count": 3914,
+      "topic_mapping_state": {
+        "generated_manifest_status_counts": {
+          "context_scope_only": 1037,
+          "unmatched": 1643,
+          "unique_with_explicit_context": 1234
+        },
+        "unmatched_or_ambiguous_ingest": "quarantined"
+      },
+      "synthetic_evidence_record_count": 12
+    },
+    {
+      "matrix_id": "M21",
+      "source_code": "physics_atlas",
+      "classification": "conditional_emitter",
+      "ingest_allowed": true,
+      "semantic_event_types": [
+        "atlas_task_state",
+        "concept_check_state"
+      ],
+      "decision_status": "locally_implemented_live_not_applied",
+      "backfill_strategy": "explicit_device_import_only",
+      "provider_name": null,
+      "live_apply_allowed": false,
+      "implemented_source_writer": "useAtlasCloudActivity -> physics snapshot/import RPCs",
+      "implemented_source_reader": "physics task manifest + student atlas state",
+      "transaction_boundary": "atlas_state_revision_and_evidence_same_postgresql_transaction",
+      "content_identity_revision_source": "physics_atlas_task_sha256_manifest",
+      "retry_idempotency_strategy": "action_receipt_plus_hash_pinned_chunked_import_receipt",
+      "correction_tombstone_strategy": "append_only_state_revision; meaningful_change_is_correction",
+      "rls_test_result": "passed_owner_read_import_ownership_and_no_direct_DML",
+      "end_to_end_test_result": "passed_real_task_snapshot_and_explicit_import",
+      "local_implementation_status": "implemented_and_locally_tested",
+      "live_status": "not_applied",
+      "local_catalog_and_fixture_revision_count": 67,
+      "generated_manifest_entry_count": 36,
+      "topic_mapping_state": {
+        "generated_manifest_status_counts": {
+          "source_scope_only": 36
+        },
+        "unmatched_or_ambiguous_ingest": "quarantined"
+      },
+      "synthetic_evidence_record_count": 33
+    },
+    {
+      "matrix_id": "M22",
+      "source_code": "biology_atlas",
+      "classification": "conditional_emitter",
+      "ingest_allowed": true,
+      "semantic_event_types": [
+        "atlas_task_state",
+        "concept_check_state"
+      ],
+      "decision_status": "locally_implemented_live_not_applied",
+      "backfill_strategy": "explicit_device_import_only",
+      "provider_name": null,
+      "live_apply_allowed": false,
+      "implemented_source_writer": "useAtlasCloudActivity -> biology snapshot/import RPCs",
+      "implemented_source_reader": "biology task manifest + student atlas state",
+      "transaction_boundary": "atlas_state_revision_and_evidence_same_postgresql_transaction",
+      "content_identity_revision_source": "biology_atlas_task_sha256_manifest",
+      "retry_idempotency_strategy": "action_receipt_plus_hash_pinned_chunked_import_receipt",
+      "correction_tombstone_strategy": "append_only_state_revision; prediction_and_check_required",
+      "rls_test_result": "passed_owner_read_import_ownership_and_no_direct_DML",
+      "end_to_end_test_result": "passed_real_task_snapshot_and_explicit_import",
+      "local_implementation_status": "implemented_and_locally_tested",
+      "live_status": "not_applied",
+      "local_catalog_and_fixture_revision_count": 45,
+      "generated_manifest_entry_count": 44,
+      "topic_mapping_state": {
+        "generated_manifest_status_counts": {
+          "source_scope_only": 44
+        },
+        "unmatched_or_ambiguous_ingest": "quarantined"
+      },
+      "synthetic_evidence_record_count": 2
+    },
+    {
+      "matrix_id": "M23",
+      "source_code": "geography_atlas",
+      "classification": "conditional_emitter",
+      "ingest_allowed": true,
+      "semantic_event_types": [
+        "atlas_task_state",
+        "concept_check_state",
+        "timed_test_completed"
+      ],
+      "decision_status": "locally_implemented_live_not_applied",
+      "backfill_strategy": "explicit_device_import_only",
+      "provider_name": null,
+      "live_apply_allowed": false,
+      "implemented_source_writer": "useAtlasCloudActivity + timed assessment source-specific RPCs",
+      "implemented_source_reader": "geography task manifest + get_question_attempt_result RPC",
+      "transaction_boundary": "atlas_or_timed_attempt_source_row_and_evidence_same_transaction",
+      "content_identity_revision_source": "geography_task_and_timed_assessment_sha256_manifest",
+      "retry_idempotency_strategy": "action_receipt; attempt_question_unique; hash_pinned_import_receipt",
+      "correction_tombstone_strategy": "atlas_state_revisions; timed_answers_revisioned; reset_tombstones",
+      "rls_test_result": "passed_owner_read_cross_student_and_no_direct_DML",
+      "end_to_end_test_result": "passed_real_task_and_server_timed_assessment",
+      "local_implementation_status": "implemented_and_locally_tested",
+      "live_status": "not_applied",
+      "local_catalog_and_fixture_revision_count": 24,
+      "generated_manifest_entry_count": 22,
+      "topic_mapping_state": {
+        "generated_manifest_status_counts": {
+          "source_scope_only": 22
+        },
+        "unmatched_or_ambiguous_ingest": "quarantined"
+      },
+      "synthetic_evidence_record_count": 5
+    },
+    {
+      "matrix_id": "M24",
+      "source_code": "chemistry_atlas",
+      "classification": "conditional_emitter",
+      "ingest_allowed": true,
+      "semantic_event_types": [
+        "concept_check_answered",
+        "mini_test_completed"
+      ],
+      "decision_status": "locally_implemented_live_not_applied",
+      "backfill_strategy": "no_historical_source",
+      "provider_name": null,
+      "live_apply_allowed": false,
+      "implemented_source_writer": "useServerAssessment -> chemistry start/answer/finalize/reset RPCs",
+      "implemented_source_reader": "get_question_attempt_result RPC",
+      "transaction_boundary": "attempt_answer_or_final_row_and_evidence_same_postgresql_transaction",
+      "content_identity_revision_source": "chemistry_assessment_normalized_sha256_manifest",
+      "retry_idempotency_strategy": "action_receipt_plus_attempt_question_unique_identity",
+      "correction_tombstone_strategy": "append_only_answer_revision; reset_tombstones_active_evidence",
+      "rls_test_result": "passed_owner_read_cross_student_not_found_and_no_direct_DML",
+      "end_to_end_test_result": "passed_real_eight_question_server_scored_assessment",
+      "local_implementation_status": "implemented_and_locally_tested",
+      "live_status": "not_applied",
+      "local_catalog_and_fixture_revision_count": 2,
+      "generated_manifest_entry_count": 1,
+      "topic_mapping_state": {
+        "generated_manifest_status_counts": {
+          "source_scope_only": 1
+        },
+        "unmatched_or_ambiguous_ingest": "quarantined"
+      },
+      "synthetic_evidence_record_count": 5
+    },
+    {
+      "matrix_id": "M25",
+      "source_code": "history_atlas_navigation",
+      "classification": "excluded",
+      "ingest_allowed": false,
+      "semantic_event_types": [],
+      "decision_status": "local_exclusion_confirmed",
+      "backfill_strategy": "excluded",
+      "provider_name": null,
+      "live_apply_allowed": false,
+      "implemented_source_writer": null,
+      "implemented_source_reader": "history map/year/layer/navigation UI only",
+      "transaction_boundary": "none_no_learning_evidence_write",
+      "content_identity_revision_source": "not_applicable_navigation_is_excluded",
+      "retry_idempotency_strategy": "not_applicable_no_writer",
+      "correction_tombstone_strategy": "not_applicable_no_learning_evidence",
+      "rls_test_result": "passed_no_public_learning_writer",
+      "end_to_end_test_result": "passed_zero_common_evidence_and_static_writer_scan",
+      "local_implementation_status": "excluded_by_contract",
+      "live_status": "not_applied",
+      "local_catalog_and_fixture_revision_count": 0,
+      "generated_manifest_entry_count": 0,
+      "topic_mapping_state": {
+        "generated_manifest_status_counts": {},
+        "unmatched_or_ambiguous_ingest": "quarantined"
+      },
+      "synthetic_evidence_record_count": 0
+    },
+    {
+      "matrix_id": "M26",
+      "source_code": "geometry_pilot",
+      "classification": "conditional_emitter",
+      "ingest_allowed": true,
+      "semantic_event_types": [
+        "question_answered",
+        "test_completed"
+      ],
+      "decision_status": "locally_implemented_live_not_applied",
+      "backfill_strategy": "no_historical_source",
+      "provider_name": null,
+      "live_apply_allowed": false,
+      "implemented_source_writer": "useServerAssessment -> geometry start/answer/finalize/reset RPCs",
+      "implemented_source_reader": "get_question_attempt_result RPC",
+      "transaction_boundary": "attempt_answer_or_final_row_and_evidence_same_postgresql_transaction",
+      "content_identity_revision_source": "geometry_assessment_normalized_sha256_manifest",
+      "retry_idempotency_strategy": "action_receipt_plus_attempt_question_unique_identity",
+      "correction_tombstone_strategy": "append_only_answer_revision; reset_tombstones_active_evidence",
+      "rls_test_result": "passed_owner_read_cross_student_not_found_and_no_direct_DML",
+      "end_to_end_test_result": "passed_real_geometry_server_scored_assessment",
+      "local_implementation_status": "implemented_and_locally_tested",
+      "live_status": "not_applied",
+      "local_catalog_and_fixture_revision_count": 2,
+      "generated_manifest_entry_count": 1,
+      "topic_mapping_state": {
+        "generated_manifest_status_counts": {
+          "unique_with_explicit_context": 1
+        },
+        "unmatched_or_ambiguous_ingest": "quarantined"
+      },
+      "synthetic_evidence_record_count": 4
+    }
+  ]
+}

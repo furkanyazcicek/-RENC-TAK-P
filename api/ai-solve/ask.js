@@ -59,6 +59,7 @@ export default async function handler(req, res) {
   if (!kind) return sendError(res, 400, 'invalid_request')
 
   if (!isUuid(body?.sessionId)) return sendError(res, 400, 'invalid_request')
+  if (!isUuid(body?.clientActionId)) return sendError(res, 400, 'invalid_request')
 
   const question = typeof body?.question === 'string' ? body.question.trim() : ''
   if (kind === 'chat' && !question) return sendError(res, 400, 'invalid_request')
@@ -79,7 +80,7 @@ export default async function handler(req, res) {
     kind: 'solve',
     limits: limitsForProfile(profile),
   })
-  if (!limit.allowed) return sendError(res, 429, limit.code)
+  if (!limit.allowed) return sendError(res, limit.code === 'rate_limit_unavailable' ? 503 : 429, limit.code)
 
   /* ---------- Oturum ---------- */
   // Oturum ÖĞRENCİNİN KENDİ JWT'siyle okunur; başkasının oturumu RLS
@@ -117,6 +118,7 @@ export default async function handler(req, res) {
         usage: result.usage,
         costUsd: cost.usd,
         durationMs: Date.now() - startedAt,
+        clientActionId: body.clientActionId,
       })
       await recordUsage(supabase, user.id, {
         kind: 'solve',
@@ -158,6 +160,7 @@ export default async function handler(req, res) {
       usage: result.usage,
       costUsd: result.cost?.usd ?? null,
       durationMs: Date.now() - startedAt,
+      clientActionId: body.clientActionId,
     })
     await recordUsage(supabase, user.id, {
       kind: 'solve',
@@ -174,7 +177,7 @@ export default async function handler(req, res) {
     })
   } catch (error) {
     const code = error instanceof GeminiError ? error.code : 'unknown'
-    logSolveError('ask', error, { studentId: user.id, kind })
+    logSolveError('ask', error, { kind })
     return sendError(res, 502, code)
   }
 }

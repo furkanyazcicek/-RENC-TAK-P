@@ -976,7 +976,12 @@ export function QuizBlock({ block, onAnswered }) {
   function submit() {
     if (selected == null || submitted) return
     setSubmitted(true)
-    onAnswered?.({ blockId: block.id, kind: 'quiz', correct: selected === block.answer_index })
+    onAnswered?.({
+      blockId: block.id,
+      kind: 'quiz',
+      selectedOptionId: String.fromCharCode(65 + selected),
+      correct: selected === block.answer_index,
+    })
   }
 
   return (
@@ -1065,7 +1070,12 @@ export function OsyMSimulationBlock({ block, onAnswered }) {
   function reveal() {
     if (selected == null || revealed) return
     setRevealed(true)
-    onAnswered?.({ blockId: block.id, kind: 'osym_simulation', correct: selected === block.answer_index })
+    onAnswered?.({
+      blockId: block.id,
+      kind: 'osym_simulation',
+      selectedOptionId: String.fromCharCode(65 + selected),
+      correct: selected === block.answer_index,
+    })
   }
 
   return (

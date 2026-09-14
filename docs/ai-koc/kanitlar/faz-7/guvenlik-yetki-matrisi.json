@@ -1,0 +1,21 @@
+{
+  "schema_version": "phase-7-security@1",
+  "status": "passed",
+  "session_identity_only": true,
+  "cross_student_rejected": true,
+  "source_prompt_injection_blocked": true,
+  "raw_content_in_tools": false,
+  "direct_sql_tool": false,
+  "write_requires_confirmation": true,
+  "side_effects": {
+    "live_supabase_read": false,
+    "live_supabase_write": false,
+    "live_schema_change": false,
+    "real_student_data_used": false,
+    "backup_student_data_used": false,
+    "paid_model_call": false,
+    "deployment_performed": false,
+    "git_push_performed": false,
+    "phase_8_closed_loop_implemented": false
+  }
+}

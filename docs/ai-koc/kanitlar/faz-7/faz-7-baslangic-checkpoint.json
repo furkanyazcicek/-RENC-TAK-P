@@ -1,0 +1,40 @@
+{
+  "schema_version": "phase-7-start-checkpoint@1",
+  "phase": 7,
+  "status": "passed",
+  "transition": "Faz 6 öğrenci modeli kabulünden Faz 7 kanıtlı AI Koç analizine yerel geçiş",
+  "prerequisite": {
+    "phase_6_status": "passed",
+    "phase_6_commands": "11/11",
+    "phase_6_gates": "9/9",
+    "phase_6_assertions": 107,
+    "student_model_version": "student-topic-model@1",
+    "student_model_config_version": "student-topic-model-config@1"
+  },
+  "migration_checksums": {
+    "phase_2": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea",
+    "phase_3": "8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165",
+    "phase_4": "06b8381911762c2436bedc0995bae344303f663b5f53566354d79afcee344f3f",
+    "phase_5": "071e3a91c907729de3a679b18d66f3a434249b9f55a9101b80dafb0e42e09830",
+    "phase_6": "02ce1a9ed7b1d2bbb6e9f2faea570343cd93ea6343d463599aa9eefe04e0322c"
+  },
+  "phase_7_baseline": {
+    "artifact": "docs/ai-koc/kanitlar/faz-7/faz-7-baslangic-degerlendirmesi.json",
+    "method": "deterministic_static_capability_fixture",
+    "questions": 7,
+    "passed": 1,
+    "partial": 1,
+    "failed": 5,
+    "frozen_before_product_changes": true
+  },
+  "authorization": {
+    "live_supabase": false,
+    "real_student_or_backup_data": false,
+    "real_backfill": false,
+    "paid_model": false,
+    "deployment": false,
+    "git_push": false,
+    "phase_8_closed_loop": false
+  },
+  "recorded_at": "2026-09-13T11:42:31.340Z"
+}

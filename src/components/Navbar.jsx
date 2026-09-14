@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CalendarClock, CalendarDays, Command, Search } from 'lucide-react'
 import ProfileMenu from './ProfileMenu'
+import AccountNotificationCenter from './notifications/TeacherNotificationCenter'
 import Logo from './ui/Logo'
 import SoftIcon from './ui/SoftIcon'
 import { useAuth } from '../context/AuthContext'
@@ -48,7 +49,9 @@ export default function Navbar({ title, action }) {
       <div className="flex min-h-[5.75rem] items-center gap-3 px-4 sm:px-6 lg:px-8">
         <div className="flex min-w-0 items-center gap-3 lg:hidden">
           <Logo size="sm" markOnly variant="panel" />
-          <span className="max-w-[8rem] truncate text-sm font-extrabold text-ink sm:max-w-none">{title}</span>
+          <span className="hidden max-w-[8rem] truncate text-sm font-extrabold text-ink min-[480px]:inline sm:max-w-none">
+            {title}
+          </span>
         </div>
 
         <div className="panel-search-wrap relative hidden w-full max-w-[49rem] lg:block">
@@ -108,6 +111,7 @@ export default function Navbar({ title, action }) {
             <span className="capitalize">{today}</span>
           </div>
           {action}
+          {['teacher', 'student'].includes(visibleProfile?.role) && <AccountNotificationCenter />}
           <ProfileMenu />
         </div>
       </div>

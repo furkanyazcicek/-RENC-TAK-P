@@ -15,8 +15,11 @@ import {
 
 import { supabase } from '../lib/supabaseClient'
 import { useAuth } from '../context/AuthContext'
+import useAcademicActivity from '../hooks/useAcademicActivity'
+import { academicStatusMessage } from '../lib/learning/academicActivity/client'
+import { isProductCapture } from '../lib/productCapture'
 import {
-  getPushPermissionState,
+  getPushStatus,
   isPushSupported,
   subscribeToPush,
   unsubscribeFromPush,
@@ -26,7 +29,6 @@ import { formatMinutes } from '../lib/insights'
 import {
   defaultExamYear,
   gradeLabel,
-  isMissingColumnError,
   MIGRATION_HINT,
   resolveExamCountdown,
 } from '../lib/examProfile'
@@ -48,6 +50,7 @@ import { CountdownRing, DashboardHero, MetricTile, Panel } from '../components/d
 export default function Profile() {
   const { user, profile, role, refreshProfile, signOut } = useAuth()
   const toast = useToast()
+  const academic = useAcademicActivity()
 
   const [fullName, setFullName] = useState('')
   const [savingName, setSavingName] = useState(false)
@@ -57,7 +60,11 @@ export default function Profile() {
   const [savingPassword, setSavingPassword] = useState(false)
   const [passwordError, setPasswordError] = useState('')
 
-  const [permission, setPermission] = useState('default')
+  const [pushStatus, setPushStatus] = useState({
+    supported: isPushSupported(),
+    permission: 'default',
+    subscribed: false,
+  })
   const [pushBusy, setPushBusy] = useState(false)
 
   const [stats, setStats] = useState(null)
@@ -92,11 +99,15 @@ export default function Profile() {
   ])
 
   useEffect(() => {
-    getPushPermissionState().then(setPermission)
+    getPushStatus().then(setPushStatus).catch(() => {})
   }, [])
 
   const loadStats = useCallback(async () => {
     if (!user || !isStudent) return
+    if (isProductCapture()) {
+      setStats({ logCount: 12, minutes: 480, examCount: 4 })
+      return
+    }
     const [logsRes, mockRes, branchRes] = await Promise.all([
       supabase.from('daily_logs').select('duration_minutes').eq('student_id', user.id),
       supabase
@@ -156,14 +167,13 @@ export default function Profile() {
         : (exam.exam_year ??
           defaultExamYear(exam.grade, exam.target_exam, exam.is_exam_year)),
       exam_date: noExam ? null : exam.exam_date || null,
-      exam_profile_updated_at: new Date().toISOString(),
     }
 
-    const { error } = await supabase.from('profiles').update(payload).eq('id', user.id)
+    const response = await academic.perform('profile_goal', payload)
     setSavingExam(false)
 
-    if (error) {
-      setExamError(isMissingColumnError(error) ? MIGRATION_HINT : error.message)
+    if (response.status !== 'saved') {
+      setExamError(response.status === 'unavailable' ? MIGRATION_HINT : academicStatusMessage(response.status))
       return
     }
     await refreshProfile()
@@ -199,17 +209,16 @@ export default function Profile() {
   async function handleTogglePush() {
     setPushBusy(true)
     try {
-      if (permission === 'granted') {
+      if (pushStatus.subscribed) {
         await unsubscribeFromPush()
         toast.success('Bildirimler kapatıldı', {
           description: 'Tarayıcı iznini tamamen kaldırmak için site ayarlarını kullanabilirsin.',
         })
-        setPermission(await getPushPermissionState())
       } else {
         await subscribeToPush(user.id)
-        setPermission('granted')
         toast.success('Bildirimler açıldı')
       }
+      setPushStatus(await getPushStatus())
     } catch (err) {
       toast.error('Bildirim ayarı değiştirilemedi', { description: err.message })
     } finally {
@@ -370,14 +379,20 @@ export default function Profile() {
       {/* ---------- BİLDİRİMLER ---------- */}
       <Panel
         title="Bildirimler"
-        description="Yeni ödev, mesaj ve soru yanıtı için tarayıcı bildirimi"
+        description={
+          isStudent
+            ? 'Yeni ödev, mesaj ve soru yanıtı için cihaz bildirimi'
+            : role === 'teacher'
+              ? 'Öğrencilerin mesaj, çalışma, deneme ve tamamlama kayıtları için cihaz bildirimi'
+              : 'Hesabınla ilgili yeni gelişmeler için cihaz bildirimi'
+        }
         icon={Bell}
         iconTone="#D97706"
-        footnote="Bildirimler cihaz bazlıdır — kullandığın her tarayıcıda ayrı açman gerekir."
+        footnote="Bildirimler cihaz bazlıdır. iPad veya iPhone'da siteyi önce Safari'deki Paylaş menüsünden Ana Ekran'a ekle, sonra bu ekrandan aç."
       >
-        {!isPushSupported() ? (
+        {!pushStatus.supported ? (
           <Alert tone="info">Bu tarayıcı push bildirimlerini desteklemiyor.</Alert>
-        ) : permission === 'denied' ? (
+        ) : pushStatus.permission === 'denied' ? (
           <Alert tone="warning">
             Bildirimler tarayıcı ayarlarından engellenmiş. Açmak için adres çubuğundaki kilit
             simgesinden bu siteye bildirim izni ver.
@@ -387,12 +402,12 @@ export default function Profile() {
             <div className="flex items-center gap-3">
               <span
                 className={
-                  permission === 'granted'
+                  pushStatus.subscribed
                     ? 'grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-success-500/10 text-success-600'
                     : 'grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-500/10 text-brand-600'
                 }
               >
-                {permission === 'granted' ? (
+                {pushStatus.subscribed ? (
                   <BellRing className="h-5 w-5" strokeWidth={2.1} aria-hidden="true" />
                 ) : (
                   <Bell className="h-5 w-5" strokeWidth={2.1} aria-hidden="true" />
@@ -400,22 +415,24 @@ export default function Profile() {
               </span>
               <div>
                 <p className="text-sm font-semibold text-ink">
-                  {permission === 'granted' ? 'Bildirimler açık' : 'Bildirimler kapalı'}
+                  {pushStatus.subscribed ? 'Bildirimler açık' : 'Bildirimler kapalı'}
                 </p>
                 <p className="text-xs text-ink/60">
-                  {permission === 'granted'
+                  {pushStatus.subscribed
                     ? 'Bu cihazda bildirim alıyorsun.'
-                    : 'Açarsan ödev ve mesajlardan anında haberin olur.'}
+                    : role === 'teacher'
+                      ? 'Açarsan öğrenci hareketlerinden anında haberin olur.'
+                      : 'Açarsan mesaj, yeni ödev ve soru çözümlerinden anında haberin olur.'}
                 </p>
               </div>
             </div>
             <Button
-              variant={permission === 'granted' ? 'secondary' : 'primary'}
-              icon={permission === 'granted' ? BellOff : Bell}
+              variant={pushStatus.subscribed ? 'secondary' : 'primary'}
+              icon={pushStatus.subscribed ? BellOff : Bell}
               loading={pushBusy}
               onClick={handleTogglePush}
             >
-              {permission === 'granted' ? 'Bildirimleri kapat' : 'Bildirimleri aç'}
+              {pushStatus.subscribed ? 'Bildirimleri kapat' : 'Bildirimleri aç'}
             </Button>
           </div>
         )}

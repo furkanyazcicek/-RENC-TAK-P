@@ -71,17 +71,18 @@ async function handlePost(req, res, supabase, user) {
   const body = typeof req.body === 'string' ? safeParse(req.body) : req.body
 
   if (!isUuid(body?.sessionId)) return sendError(res, 400, 'invalid_request')
+  if (!isUuid(body?.clientActionId)) return sendError(res, 400, 'invalid_request')
 
   /* ---- Öz-değerlendirme: "bu soruyu ben doğru çözmüştüm" ---- */
   if (typeof body?.studentCorrect === 'boolean') {
-    const ok = await saveSelfReport(supabase, user.id, body.sessionId, body.studentCorrect)
+    const ok = await saveSelfReport(supabase, user.id, body.sessionId, body.studentCorrect, body.clientActionId)
     if (!ok) return sendError(res, 500, 'database_error')
     return res.status(200).json({ ok: true })
   }
 
   /* ---- Tekrar çalışma durumu ---- */
   if (['none', 'pending', 'completed'].includes(body?.reviewStatus)) {
-    const ok = await saveReviewStatus(supabase, user.id, body.sessionId, body.reviewStatus)
+    const ok = await saveReviewStatus(supabase, user.id, body.sessionId, body.reviewStatus, body.clientActionId)
     if (!ok) return sendError(res, 500, 'database_error')
     return res.status(200).json({ ok: true })
   }
@@ -96,6 +97,7 @@ async function handlePost(req, res, supabase, user) {
     feedback,
     reason,
     note: body?.note,
+    clientActionId: body.clientActionId,
   })
   if (!ok) return sendError(res, 500, 'database_error')
 

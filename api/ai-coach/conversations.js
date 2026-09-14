@@ -50,7 +50,7 @@ export default async function handler(req, res) {
     res.setHeader('Allow', 'GET, DELETE')
     return sendError(res, 405, 'invalid_request')
   } catch (error) {
-    logError('conversations', error, { studentId: user.id })
+    logError('conversations', error)
     return sendError(res, 500, 'database_error')
   }
 }

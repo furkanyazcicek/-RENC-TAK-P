@@ -8,7 +8,7 @@ import SesDugmesi from '../../components/almanca/SesDugmesi'
 import { useIlerleme, useSes } from '../../components/almanca/useAlmanca'
 import { KELIME_HAVUZU } from '../../content/almanca'
 import { DURUM } from '../../lib/almanca/cevap'
-import { favoriDegistir, gunlukKaydet, ilerlemeOku, ilerlemeYaz } from '../../lib/almanca/ilerleme'
+import { dilEtkinligiKaydet, favoriDegistir, gunlukKaydet, ilerlemeOku, ilerlemeYaz } from '../../lib/almanca/ilerleme'
 import {
   BOYUTLAR, kartCevapla, kartOzeti, sonrakiBoyut, tekrarOturumu,
 } from '../../lib/almanca/tekrar'
@@ -67,6 +67,7 @@ export default function Tekrar() {
     const boyut = sonrakiBoyut(suanki.kart)
     const yeniKart = kartCevapla(mevcut.kartlar?.[suanki.kelime.id] ?? suanki.kart, boyut, dogruMu)
     ilerlemeYaz({ kartlar: { ...mevcut.kartlar, [suanki.kelime.id]: yeniKart } })
+    dilEtkinligiKaydet({ activityType: 'review_result_snapshot', activityId: `tekrar:${suanki.kelime.id}:${boyut}`, skillDomain: boyut, correctCount: dogruMu ? 1 : 0, incorrectCount: dogruMu ? 0 : 1, blankCount: 0, helpCount: dogruMu ? 0 : 1, reviewOutcome: dogruMu ? 'recalled' : 'forgotten', completionStatus: 'answered', cefrLevel: suanki.kelime.seviye })
     setSkor((e) => ({ dogru: e.dogru + (dogruMu ? 1 : 0), toplam: e.toplam + 1 }))
     setCevaplandi(true)
   }

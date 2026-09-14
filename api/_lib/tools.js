@@ -23,6 +23,14 @@
 import { toKey } from '../../src/lib/insights.js'
 import { splitSubjectTopic } from '../../src/lib/subjectSplit.js'
 import { checkPrerequisites, orderPlanItems } from '../../src/lib/curriculum/readiness.js'
+import {
+  cleanCoachingText,
+  isSafeCoachingPath,
+  normalizeCoachingTarget,
+  normalizeRecommendation,
+  resolveCoachingTarget,
+} from '../../src/lib/learning/coachingLoop/index.js'
+import { runCoachAnalysisReader } from './coachDataTools.js'
 
 const DAY_MS = 24 * 60 * 60 * 1000
 
@@ -44,11 +52,108 @@ const MEMORY_KEYS = {
 const ACTIVITIES = ['soru_cozumu', 'konu_tekrari', 'yanlis_analizi', 'deneme']
 const EXAM_TYPES = ['LGS', 'TYT', 'AYT', 'KPSS']
 
+const PHASE_7_READ_TOOL_SCHEMAS = [
+  {
+    type: 'function',
+    function: {
+      name: 'get_student_overview',
+      description: 'Faz 6 öğrenci modelinden küçük genel görünümü, güveni, dikkat isteyen konuları, güncel davranış örüntülerini ve veri kapsamını getirir.',
+      parameters: { type: 'object', properties: {}, additionalProperties: false },
+    },
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'get_topic_analysis',
+      description: 'Belirli bir kanonik konu için Faz 6 durumunu, kaynak bazlı ölçümleri, çelişkiyi, güveni ve opak kanıt bağlantılarını getirir; ham içerik döndürmez.',
+      parameters: {
+        type: 'object',
+        properties: {
+          topic_id: { type: 'string' }, topic: { type: 'string' }, subject: { type: 'string' },
+          exam_type: { type: 'string', enum: EXAM_TYPES },
+          from: { type: 'string', description: 'YYYY-AA-GG' }, to: { type: 'string', description: 'YYYY-AA-GG' },
+          limit: { type: 'integer', minimum: 1, maximum: 24 },
+        },
+        additionalProperties: false,
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'get_learning_timeline',
+      description: 'İzinli opak kanıt referanslarından en çok 90 gün ve 40 sonuçluk öğrenme zaman çizelgesi getirir; ham günlük, soru, mesaj veya not taşımaz.',
+      parameters: {
+        type: 'object',
+        properties: {
+          topic_id: { type: 'string' }, topic: { type: 'string' }, subject: { type: 'string' },
+          exam_type: { type: 'string', enum: EXAM_TYPES }, days: { type: 'integer', minimum: 1, maximum: 90 },
+          from: { type: 'string', description: 'YYYY-AA-GG' }, to: { type: 'string', description: 'YYYY-AA-GG' },
+          limit: { type: 'integer', minimum: 1, maximum: 40 },
+        },
+        additionalProperties: false,
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'get_academic_context',
+      description: 'Deneme, ödev, sorunlu soru ve AI Soru Çöz kaynaklarından yalnız yapılandırılmış, sınırlı bağlam getirir; serbest açıklama, öğretmen yanıtı ve çözüm metni döndürmez.',
+      parameters: {
+        type: 'object',
+        properties: {
+          sources: { type: 'array', items: { type: 'string', enum: ['exams', 'homeworks', 'questions', 'ai_solve'] }, maxItems: 4 },
+          days: { type: 'integer', minimum: 1, maximum: 90 }, limit: { type: 'integer', minimum: 1, maximum: 40 },
+        },
+        additionalProperties: false,
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'get_language_progress',
+      description: 'İngilizce, Almanca, Fransızca veya İspanyolca bağımsız dil programının beceri düzeyindeki Faz 6 projeksiyonlarını güveniyle getirir.',
+      parameters: {
+        type: 'object',
+        properties: { language: { type: 'string', enum: ['ingilizce', 'almanca', 'fransizca', 'ispanyolca'] }, limit: { type: 'integer', minimum: 1, maximum: 40 } },
+        required: ['language'], additionalProperties: false,
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'get_coaching_history',
+      description: 'Önceki öneri ve plan karar geçmişini getirir. Sonuç değerlendirmesi Faz 8 kapsamındadır.',
+      parameters: { type: 'object', properties: { limit: { type: 'integer', minimum: 1, maximum: 40 } }, additionalProperties: false },
+    },
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'get_data_coverage',
+      description: 'Projeksiyon kaynak kapsamını, eksik kaynakları, eşleşmeyen/karantinalı ve dışlanan kanıt sayılarını getirir; erişilemeyen kaynakla gerçek boşluğu ayırır.',
+      parameters: { type: 'object', properties: {}, additionalProperties: false },
+    },
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'get_authorized_evidence_detail',
+      description: 'Yalnız daha önce alınan opak kanıt referansının kaynak türü, sınıfı, tarihi ve dahil edilme durumunu doğrular; ham içerik döndürmez.',
+      parameters: { type: 'object', properties: { evidence_ref: { type: 'string' } }, required: ['evidence_ref'], additionalProperties: false },
+    },
+  },
+]
+
 /* ==================================================================
    ŞEMA — OpenAI'a gönderilen araç tanımları
    ================================================================== */
 
 export const TOOL_SCHEMAS = [
+  ...PHASE_7_READ_TOOL_SCHEMAS,
   {
     type: 'function',
     function: {
@@ -219,6 +324,59 @@ export const TOOL_SCHEMAS = [
   {
     type: 'function',
     function: {
+      name: 'create_coaching_recommendation',
+      description:
+        'Kanıtlı tek bir çalışma önerisini sürümlü görev önizlemesine dönüştürür. Veritabanına yazmaz; öğrenci onay kartından kabul veya ret kararı verir. Somut önerilerde create_study_plan yerine bunu kullan. Kanonik konu, opak kanıt bağları, güven, sınırlama ve ölçülebilir tamamlanma ölçütü gerekir.',
+      parameters: {
+        type: 'object',
+        properties: {
+          education_context_id: { type: 'string' },
+          subject_id: { type: 'string' },
+          topic_id: { type: 'string' },
+          objective_id: { type: 'string' },
+          projection_generation_id: { type: 'string' },
+          subject_label: { type: 'string' },
+          topic_label: { type: 'string' },
+          recommendation_type: {
+            type: 'string',
+            enum: ['learn', 'practice', 'repeat', 'review_error', 'review_exam', 'language_skill', 'external_study'],
+          },
+          reason_summary: { type: 'string', description: 'Yalnız araç sonucundaki kanıta dayanan kısa gerekçe.' },
+          evidence_refs: { type: 'array', maxItems: 12, items: { type: 'string' } },
+          confidence_level: { type: 'string', enum: ['insufficient', 'low', 'medium', 'high'] },
+          data_limitations: { type: 'array', maxItems: 8, items: { type: 'string' } },
+          suggested_amount: {
+            type: 'object',
+            properties: {
+              kind: { type: 'string', enum: ['minutes', 'questions', 'activities'] },
+              value: { type: 'integer', minimum: 1, maximum: 240 },
+            },
+            required: ['kind', 'value'],
+            additionalProperties: false,
+          },
+          success_criteria: {
+            type: 'object',
+            properties: {
+              kind: { type: 'string', enum: ['content_completion', 'minimum_count', 'practice_result', 'student_report'] },
+              minimum_count: { type: 'integer', minimum: 1, maximum: 200 },
+              evidence_types: { type: 'array', maxItems: 12, items: { type: 'string' } },
+              source_codes: { type: 'array', maxItems: 12, items: { type: 'string' } },
+              description: { type: 'string' },
+            },
+            required: ['kind', 'minimum_count', 'description'],
+            additionalProperties: false,
+          },
+          valid_until: { type: 'string', description: 'ISO tarih/saat; en çok 30 gün.' },
+        },
+        required: ['subject_label', 'recommendation_type', 'reason_summary', 'confidence_level', 'success_criteria'],
+        additionalProperties: false,
+      },
+    },
+  },
+
+  {
+    type: 'function',
+    function: {
       name: 'create_study_plan',
       description:
         'Öğrenci için çalışma planı önerir. ÖNEMLİ: bu araç planı kaydetmez, kullanıcıya onay kartı gösterir. Konuları önce müfredat ön koşullarına göre seç; araç bozuk bir sırayı düzeltir ve neyi değiştirdiğini sana bildirir. Çağırdıktan sonra planı metin olarak DÜZELTİLMİŞ sırayla özetle ve "onaylarsan kaydedeceğim" de.',
@@ -333,13 +491,36 @@ export const TOOL_SCHEMAS = [
       },
     },
   },
+  {
+    type: 'function',
+    function: {
+      name: 'forget_student_memory',
+      description:
+        'Öğrencinin açıkça "unut" dediği onaylı tercih anahtarlarını silmeyi önerir. İşlemi doğrudan yapmaz; kullanıcıya onay kartı gösterir.',
+      parameters: {
+        type: 'object',
+        properties: {
+          keys: {
+            type: 'array',
+            items: { type: 'string', enum: Object.keys(MEMORY_KEYS) },
+            minItems: 1,
+            maxItems: 5,
+          },
+        },
+        required: ['keys'],
+        additionalProperties: false,
+      },
+    },
+  },
 ]
 
 /** Yazma araçlarının adları — bunlar hiçbir zaman otomatik çalıştırılmaz. */
 export const WRITE_TOOLS = new Set([
+  'create_coaching_recommendation',
   'create_study_plan',
   'log_study_session',
   'update_student_memory',
+  'forget_student_memory',
   'complete_study_task',
 ])
 
@@ -421,7 +602,7 @@ const READERS = {
 
     const { data, error } = await supabase
       .from('daily_logs')
-      .select('study_date, topic, duration_minutes, correct, incorrect, empty, notes')
+      .select('study_date, topic, duration_minutes, correct, incorrect, empty')
       .eq('student_id', studentId)
       .gte('study_date', cutoff)
       .order('study_date', { ascending: false })
@@ -451,7 +632,6 @@ const READERS = {
           correct: l.correct ?? 0,
           incorrect: l.incorrect ?? 0,
           empty: l.empty ?? 0,
-          note: l.notes ?? null,
         }
       }),
     }
@@ -559,7 +739,7 @@ const READERS = {
 
     let query = supabase
       .from('homeworks')
-      .select('title, description, due_date, status, created_at')
+      .select('title, due_date, status, created_at')
       .eq('student_id', studentId)
       .order('due_date', { ascending: true, nullsFirst: false })
       .limit(30)
@@ -573,7 +753,6 @@ const READERS = {
     const today = toKey(new Date())
     const items = (data ?? []).map((h) => ({
       title: h.title,
-      description: h.description ? String(h.description).slice(0, 200) : null,
       due_date: h.due_date,
       status: h.status,
       overdue: Boolean(h.due_date && h.due_date < today && h.status !== 'Tamamlandı'),
@@ -734,6 +913,55 @@ const READERS = {
 function proposeAction(name, args, facts) {
   const today = toKey(new Date())
 
+  if (name === 'create_coaching_recommendation') {
+    const normalized = normalizeRecommendation({
+      ...args,
+      recommendation_id: globalThis.crypto?.randomUUID?.(),
+      recommendation_version: 1,
+    }, {
+      now: new Date(),
+      studentId: null,
+      recentLoadMinutes: facts?.study?.thisWeekMinutes ?? 0,
+      availableMinutes: Number(facts?.memory?.gunluk_hedef_dakika) || null,
+      createId: () => globalThis.crypto?.randomUUID?.(),
+    })
+    if (!normalized.ok) {
+      return {
+        toolResult: {
+          status: 'error',
+          reason: 'Öneri güvenli görev sözleşmesine uymadı.',
+          reason_codes: normalized.errors,
+        },
+      }
+    }
+    const target = resolveCoachingTarget(normalized.value, facts?.coachingTargetCandidates ?? [])
+    const recommendation = { ...normalized.value, target }
+    const amount = recommendation.suggested_amount
+    const amountLabel = amount
+      ? `${amount.value} ${amount.kind === 'minutes' ? 'dk' : amount.kind === 'questions' ? 'soru' : 'etkinlik'}`
+      : 'kısa çalışma'
+    return {
+      toolResult: {
+        status: 'awaiting_user_confirmation',
+        note: 'Öneri doğrulandı ama HENÜZ görev oluşturulmadı. Öğrenci kabul veya ret kararı vermeli.',
+        recommendation_id: recommendation.recommendation_id,
+        target_status: target.status,
+        target: target.status === 'available'
+          ? { target_type: target.target_type, label: target.label, path: target.path }
+          : { target_type: 'none', unavailable_reason: target.unavailable_reason },
+        success_criteria: recommendation.success_criteria,
+      },
+      action: {
+        type: 'accept_coaching_recommendation',
+        client_action_id: globalThis.crypto?.randomUUID?.(),
+        title: recommendation.topic_label ?? recommendation.subject_label ?? 'Kişisel çalışma',
+        label: 'Görevi Planla',
+        summary: `${amountLabel} · ${recommendation.confidence_level === 'high' ? 'yüksek' : recommendation.confidence_level === 'medium' ? 'orta' : recommendation.confidence_level === 'low' ? 'düşük' : 'yetersiz'} güven`,
+        payload: { recommendation },
+      },
+    }
+  }
+
   if (name === 'create_study_plan') {
     const rawItems = Array.isArray(args.items) ? args.items.slice(0, 12) : []
     const items = []
@@ -845,6 +1073,7 @@ function proposeAction(name, args, facts) {
       },
       action: {
         type: 'log_study_session',
+        client_action_id: globalThis.crypto.randomUUID(),
         title: 'Çalışma kaydı',
         label: 'Kaydı Ekle',
         summary: `${date} · ${payload.topic} · ${payload.duration_minutes} dk`,
@@ -884,6 +1113,27 @@ function proposeAction(name, args, facts) {
         label: 'Kaydet',
         summary: entries.map((e) => `${e.label}: ${e.value}`).join(' · '),
         payload: { entries: entries.map(({ key, value }) => ({ key, value })) },
+      },
+    }
+  }
+
+  if (name === 'forget_student_memory') {
+    const keys = [...new Set((Array.isArray(args.keys) ? args.keys : []).filter((key) => MEMORY_KEYS[key]))].slice(0, 5)
+    if (!keys.length) {
+      return { toolResult: { status: 'error', reason: 'Unutulacak geçerli tercih anahtarı bulunamadı.' } }
+    }
+    return {
+      toolResult: {
+        status: 'awaiting_user_confirmation',
+        note: 'Tercihler HENÜZ silinmedi; kullanıcı onay kartından onaylamalı.',
+        preview: keys.map((key) => MEMORY_KEYS[key].label),
+      },
+      action: {
+        type: 'forget_student_memory',
+        title: 'Tercihleri unut',
+        label: 'Unutmayı Onayla',
+        summary: keys.map((key) => MEMORY_KEYS[key].label).join(' · '),
+        payload: { keys },
       },
     }
   }
@@ -933,6 +1183,15 @@ export async function runTool({ name, args, supabase, studentId, facts }) {
     return { result: toolResult, action }
   }
 
+  const coachAnalysisResult = await runCoachAnalysisReader({
+    name,
+    args: args ?? {},
+    supabase,
+    studentId,
+    facts,
+  })
+  if (coachAnalysisResult) return { result: coachAnalysisResult }
+
   const reader = READERS[name]
   if (!reader) {
     return { result: { status: 'error', reason: 'Bilinmeyen araç.' } }
@@ -963,6 +1222,100 @@ export async function executeAction(supabase, studentId, action) {
   const type = action?.type
   const payload = action?.payload ?? {}
   const today = toKey(new Date())
+
+  if (type === 'accept_coaching_recommendation' || type === 'reject_coaching_recommendation') {
+    const raw = payload.recommendation
+    const normalized = normalizeRecommendation(raw, {
+      now: new Date(),
+      studentId,
+      createId: () => null,
+    })
+    const target = normalizeCoachingTarget(raw?.target)
+    const clientActionId = cleanText(action.client_action_id, 36)
+    if (!normalized.ok || !target || (target.status === 'available' && !isSafeCoachingPath(target.path))
+        || !clientActionId || !/^[0-9a-f-]{36}$/i.test(clientActionId)) {
+      return { ok: false, code: 'action_invalid' }
+    }
+    const recommendation = {
+      ...normalized.value,
+      student_id: studentId,
+      target,
+      success_criteria: {
+        ...normalized.value.success_criteria,
+        source_codes: [...new Set((Array.isArray(raw?.success_criteria?.source_codes)
+          ? raw.success_criteria.source_codes
+          : []).filter((item) => /^[a-z][a-z0-9_]{1,63}$/.test(item)))].slice(0, 12),
+      },
+    }
+    const rpcName = type === 'accept_coaching_recommendation'
+      ? 'confirm_coaching_recommendation'
+      : 'reject_coaching_recommendation'
+    const rpcArgs = type === 'accept_coaching_recommendation'
+      ? { p_recommendation: recommendation, p_client_action_id: clientActionId }
+      : {
+          p_recommendation: recommendation,
+          p_client_action_id: clientActionId,
+          p_reason_code: cleanCoachingText(payload.reason_code, 40) ?? 'not_relevant',
+        }
+    const { data, error } = await supabase.rpc(rpcName, rpcArgs)
+    if (error) return { ok: false, code: 'database_error' }
+    return {
+      ok: true,
+      message: type === 'accept_coaching_recommendation'
+        ? 'Öneri onaylandı ve çalışma görevin oluşturuldu.'
+        : 'Öneri kaldırıldı. Bu karar sonraki önerilerde dikkate alınacak.',
+      result: data,
+    }
+  }
+
+  if (type === 'transition_coaching_task') {
+    const taskId = cleanText(payload.task_id, 36)
+    const toStatus = cleanText(payload.to_status, 40)
+    const clientActionId = cleanText(action.client_action_id, 36)
+    const allowed = ['started', 'partial', 'user_reported_complete', 'postponed', 'edited', 'cancelled']
+    if (!/^[0-9a-f-]{36}$/i.test(taskId ?? '') || !/^[0-9a-f-]{36}$/i.test(clientActionId ?? '') || !allowed.includes(toStatus)) {
+      return { ok: false, code: 'action_invalid' }
+    }
+    const { data, error } = await supabase.rpc('transition_coaching_task', {
+      p_task_id: taskId,
+      p_to_status: toStatus,
+      p_client_action_id: clientActionId,
+      p_reason_code: cleanCoachingText(payload.reason_code, 60),
+      p_patch: payload.patch && typeof payload.patch === 'object' ? payload.patch : {},
+    })
+    if (error) return { ok: false, code: 'database_error' }
+    return { ok: true, message: 'Görev durumu güncellendi.', result: data }
+  }
+
+  if (type === 'refresh_coaching_outcome') {
+    const taskId = cleanText(payload.task_id, 36)
+    const feedback = ['helpful', 'not_helpful', 'unsure'].includes(payload.student_feedback)
+      ? payload.student_feedback
+      : null
+    if (!/^[0-9a-f-]{36}$/i.test(taskId ?? '')) return { ok: false, code: 'action_invalid' }
+    const { data, error } = await supabase.rpc('refresh_coaching_task_outcome', {
+      p_task_id: taskId,
+      p_student_feedback: feedback,
+    })
+    if (error) return { ok: false, code: 'database_error' }
+    return { ok: true, message: data?.explanation ?? 'Görev sonucu değerlendirildi.', result: data }
+  }
+
+  if (type === 'report_coaching_feedback') {
+    const recommendationId = cleanText(payload.recommendation_id, 36)
+    const taskId = cleanText(payload.task_id, 36)
+    const reasonCode = cleanText(payload.reason_code, 60)
+    if (!['recommendation_irrelevant', 'target_unavailable', 'evidence_mismatched', 'result_incorrect', 'other_without_free_text'].includes(reasonCode)) {
+      return { ok: false, code: 'action_invalid' }
+    }
+    const { data, error } = await supabase.rpc('report_coaching_feedback', {
+      p_recommendation_id: /^[0-9a-f-]{36}$/i.test(recommendationId ?? '') ? recommendationId : null,
+      p_task_id: /^[0-9a-f-]{36}$/i.test(taskId ?? '') ? taskId : null,
+      p_reason_code: reasonCode,
+    })
+    if (error) return { ok: false, code: 'database_error' }
+    return { ok: true, message: 'Bildirimin kaydedildi; puanın doğrudan değiştirilmedi.', result: { feedback_id: data } }
+  }
 
   if (type === 'create_study_plan') {
     const rawItems = Array.isArray(payload.items) ? payload.items.slice(0, 12) : []
@@ -1003,17 +1356,18 @@ export async function executeAction(supabase, studentId, action) {
     const topic = cleanText(payload.topic, 140)
     if (!date || !topic || date > today) return { ok: false, code: 'action_invalid' }
 
-    const { error } = await supabase.from('daily_logs').insert({
-      student_id: studentId,
-      study_date: date,
-      topic,
-      duration_minutes: clampInt(payload.duration_minutes, 0, 720, 0),
-      correct: clampInt(payload.correct, 0, 2000, 0),
-      incorrect: clampInt(payload.incorrect, 0, 2000, 0),
-      empty: clampInt(payload.empty, 0, 2000, 0),
-      notes: cleanText(payload.notes, 300),
+    const clientActionId = cleanText(action.client_action_id, 36)
+    if (!clientActionId || !/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(clientActionId)) return { ok: false, code: 'action_invalid' }
+    const { data, error } = await supabase.rpc('create_academic_daily_log', {
+      p_study_date: date,p_topic: topic,
+      p_duration_minutes: clampInt(payload.duration_minutes, 0, 720, 0),
+      p_correct: clampInt(payload.correct, 0, 2000, 0),
+      p_incorrect: clampInt(payload.incorrect, 0, 2000, 0),
+      p_empty: clampInt(payload.empty, 0, 2000, 0),
+      p_notes: cleanText(payload.notes, 300),p_entry_origin: 'ai_coach_confirmed',
+      p_client_action_id: clientActionId,
     })
-    if (error) return { ok: false, code: 'database_error' }
+    if (error || !['created','duplicate','no_change','identity_quarantined'].includes(data?.status)) return { ok: false, code: data?.status === 'idempotency_conflict' ? 'action_conflict' : 'database_error' }
 
     return { ok: true, message: 'Çalışma kaydın eklendi.' }
   }
@@ -1038,6 +1392,18 @@ export async function executeAction(supabase, studentId, action) {
     if (error) return { ok: false, code: 'database_error' }
 
     return { ok: true, message: 'Tercihin kaydedildi.' }
+  }
+
+  if (type === 'forget_student_memory') {
+    const keys = [...new Set((Array.isArray(payload.keys) ? payload.keys : []).filter((key) => MEMORY_KEYS[key]))].slice(0, 5)
+    if (!keys.length) return { ok: false, code: 'action_invalid' }
+    const { error } = await supabase
+      .from('ai_student_memory')
+      .delete()
+      .eq('student_id', studentId)
+      .in('key', keys)
+    if (error) return { ok: false, code: 'database_error' }
+    return { ok: true, message: 'Seçtiğin tercihler unutuldu.' }
   }
 
   if (type === 'complete_study_task') {

@@ -32,7 +32,10 @@ self.addEventListener('push', (event) => {
       body: data.body,
       icon: '/icon-192x192.png',
       badge: '/icon-192x192.png',
-      data: { url: data.url ?? '/' },
+      tag: data.notificationId ? `account-notification-${data.notificationId}` : undefined,
+      renotify: false,
+      timestamp: Number(data.timestamp) || Date.now(),
+      data: { url: data.url ?? '/', notificationId: data.notificationId ?? null },
       vibrate: [100, 50, 100],
     })
   )
@@ -44,7 +47,11 @@ self.addEventListener('push', (event) => {
 // ============================================================
 self.addEventListener('notificationclick', (event) => {
   event.notification.close()
-  const targetUrl = event.notification.data?.url ?? '/'
+  const rawTarget = event.notification.data?.url ?? '/'
+  const notificationId = event.notification.data?.notificationId
+  const target = new URL(rawTarget, self.location.origin)
+  if (notificationId) target.searchParams.set('bildirim', notificationId)
+  const targetUrl = `${target.pathname}${target.search}${target.hash}`
 
   event.waitUntil(
     self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {

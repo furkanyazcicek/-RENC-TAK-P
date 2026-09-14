@@ -10,8 +10,61 @@
  */
 
 import { BOLGELER, DEVRE_ARIZALARI } from '../../data/fizik/bolgeler.js'
+import { describeContent } from '../learning/contentActivity/identity.js'
 
 const ANAHTAR = 'drkoc-fizik-ilerleme-v1'
+const ATLAS_SOURCE_CODE = 'physics_atlas'
+const ATLAS_TASK_EVENT = 'drkoc-atlas-task-state'
+
+const FIZIK_GOREVLERI = new Map(BOLGELER.flatMap((bolge) => (
+  (bolge.deneyler ?? []).map((deney) => [`${bolge.kod}/${deney.kod}`, { bolge, deney }])
+)))
+
+export async function atlasGorevTanimla({ taskId, region, completed = true, predictionUsed = false }) {
+  const kayit = FIZIK_GOREVLERI.get(`${region}/${taskId}`)
+  if (!kayit) return null
+  const contentId = `${kayit.bolge.kod}/${kayit.deney.kod}`
+  const descriptor = await describeContent({
+    sourceCode: ATLAS_SOURCE_CODE,
+    contentKind: 'atlas_task',
+    contentId,
+    value: {
+      region: kayit.bolge.kod,
+      id: kayit.deney.kod,
+      name: kayit.deney.ad,
+      description: kayit.deney.tanim,
+    },
+    sourceOwner: 'src/data/fizik/bolgeler.js',
+  })
+  return {
+    content_id: contentId,
+    content_revision: descriptor.content_revision,
+    task_id: kayit.deney.kod,
+    completed: Boolean(completed),
+    prediction_used: Boolean(predictionUsed),
+  }
+}
+
+export async function yerelAktarimAdayi({ describe = true } = {}) {
+  const veri = guvenliOku()
+  const ham = Object.entries(veri.tamamlanan ?? {}).flatMap(([region, tasks]) => (
+    Object.keys(tasks ?? {}).filter((taskId) => tasks[taskId]).map((taskId) => ({ taskId, region }))
+  ))
+  const gecerli = ham.filter(({ taskId, region }) => FIZIK_GOREVLERI.has(`${region}/${taskId}`))
+  const excludedCount = ham.length - gecerli.length
+    + (veri.rozetler?.length ?? 0)
+    + (veri.favoriler?.length ?? 0)
+    + Object.keys(veri.kavramPusulasi ?? {}).length
+    + Object.keys(veri.basarimlar ?? {}).length
+    + Object.keys(veri.seviyeler ?? {}).length
+  return {
+    allowedCount: gecerli.length,
+    excludedCount,
+    tasks: describe
+      ? (await Promise.all(gecerli.map((task) => atlasGorevTanimla(task)))).filter(Boolean)
+      : [],
+  }
+}
 
 /** Boş ilerleme kaydı — şemanın tek kaynağı. */
 export function bosIlerleme() {
@@ -101,6 +154,17 @@ export function deneyiTamamla(bolgeKodu, deneyKodu) {
   v.sonBolge = bolgeKodu
   v.sonDeney = deneyKodu
   guvenliYaz(v)
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent(ATLAS_TASK_EVENT, {
+      detail: {
+        sourceCode: ATLAS_SOURCE_CODE,
+        region: bolgeKodu,
+        taskId: deneyKodu,
+        completed: true,
+        predictionUsed: false,
+      },
+    }))
+  }
   return v
 }
 

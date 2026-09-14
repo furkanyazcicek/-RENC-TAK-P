@@ -1,0 +1,169 @@
+{
+  "schema_version": "phase-8-ui-validation@1",
+  "generated_at": "2026-09-13T13:52:19.890Z",
+  "browser": "chromium-playwright-152.0.7977.54",
+  "server_started_by_runner": false,
+  "live_data_used": false,
+  "cases": [
+    {
+      "state": "oner",
+      "viewport": "1440x900",
+      "route": "/ai-koc?capture=reels&faz8-onizleme=oner",
+      "screenshot": "docs/ai-koc/kanitlar/faz-8/gorsel/oner-masaustu-1440x900.png",
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "horizontal_overflow_px": 0,
+      "phase_control_count": 4
+    },
+    {
+      "state": "onay",
+      "viewport": "1440x900",
+      "route": "/ai-koc?capture=reels&faz8-onizleme=onay",
+      "screenshot": "docs/ai-koc/kanitlar/faz-8/gorsel/onay-masaustu-1440x900.png",
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "horizontal_overflow_px": 0,
+      "phase_control_count": 1
+    },
+    {
+      "state": "ilerleme",
+      "viewport": "1440x900",
+      "route": "/ai-koc?capture=reels&faz8-onizleme=ilerleme",
+      "screenshot": "docs/ai-koc/kanitlar/faz-8/gorsel/ilerleme-masaustu-1440x900.png",
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "horizontal_overflow_px": 0,
+      "phase_control_count": 3
+    },
+    {
+      "state": "hata",
+      "viewport": "1440x900",
+      "route": "/ai-koc?capture=reels&faz8-onizleme=hata",
+      "screenshot": "docs/ai-koc/kanitlar/faz-8/gorsel/hata-masaustu-1440x900.png",
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "horizontal_overflow_px": 0,
+      "phase_control_count": 1
+    },
+    {
+      "state": "bos",
+      "viewport": "1440x900",
+      "route": "/ai-koc?capture=reels&faz8-onizleme=bos",
+      "screenshot": "docs/ai-koc/kanitlar/faz-8/gorsel/bos-masaustu-1440x900.png",
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "horizontal_overflow_px": 0,
+      "phase_control_count": 0
+    },
+    {
+      "state": "tamam",
+      "viewport": "1440x900",
+      "route": "/ai-koc?capture=reels&faz8-onizleme=tamam",
+      "screenshot": "docs/ai-koc/kanitlar/faz-8/gorsel/tamam-masaustu-1440x900.png",
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "horizontal_overflow_px": 0,
+      "phase_control_count": 1
+    },
+    {
+      "state": "oner",
+      "viewport": "390x844",
+      "route": "/ai-koc?capture=reels&faz8-onizleme=oner",
+      "screenshot": "docs/ai-koc/kanitlar/faz-8/gorsel/oner-telefon-390x844.png",
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "horizontal_overflow_px": 0,
+      "phase_control_count": 4
+    },
+    {
+      "state": "onay",
+      "viewport": "390x844",
+      "route": "/ai-koc?capture=reels&faz8-onizleme=onay",
+      "screenshot": "docs/ai-koc/kanitlar/faz-8/gorsel/onay-telefon-390x844.png",
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "horizontal_overflow_px": 0,
+      "phase_control_count": 1
+    },
+    {
+      "state": "ilerleme",
+      "viewport": "390x844",
+      "route": "/ai-koc?capture=reels&faz8-onizleme=ilerleme",
+      "screenshot": "docs/ai-koc/kanitlar/faz-8/gorsel/ilerleme-telefon-390x844.png",
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "horizontal_overflow_px": 0,
+      "phase_control_count": 3
+    },
+    {
+      "state": "hata",
+      "viewport": "390x844",
+      "route": "/ai-koc?capture=reels&faz8-onizleme=hata",
+      "screenshot": "docs/ai-koc/kanitlar/faz-8/gorsel/hata-telefon-390x844.png",
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "horizontal_overflow_px": 0,
+      "phase_control_count": 1
+    },
+    {
+      "state": "bos",
+      "viewport": "390x844",
+      "route": "/ai-koc?capture=reels&faz8-onizleme=bos",
+      "screenshot": "docs/ai-koc/kanitlar/faz-8/gorsel/bos-telefon-390x844.png",
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "horizontal_overflow_px": 0,
+      "phase_control_count": 0
+    },
+    {
+      "state": "tamam",
+      "viewport": "390x844",
+      "route": "/ai-koc?capture=reels&faz8-onizleme=tamam",
+      "screenshot": "docs/ai-koc/kanitlar/faz-8/gorsel/tamam-telefon-390x844.png",
+      "status": "passed",
+      "page_errors": [],
+      "external_requests": [],
+      "horizontal_overflow_px": 0,
+      "phase_control_count": 1
+    }
+  ],
+  "assertions": {
+    "recommendation_preview_visible": true,
+    "explicit_approval_state_visible": true,
+    "progress_visible": true,
+    "error_preserves_task_message": true,
+    "empty_state_visible": true,
+    "completion_and_noncausal_language_visible": true,
+    "evidence_progressive_disclosure": true,
+    "keyboard_opens_evidence": true,
+    "edit_control_keyboard_focusable": true,
+    "focus_indicator_visible": true,
+    "semantic_alert": true,
+    "semantic_task_region": true,
+    "minimum_touch_target_44": true,
+    "undersized_phase8_controls": [],
+    "readable_text_contrast": true,
+    "reduced_motion_active": true,
+    "no_horizontal_overflow": true,
+    "no_page_errors": true,
+    "no_live_or_personal_data_requests": true,
+    "disallowed_external_requests": []
+  },
+  "status": "passed",
+  "totals": {
+    "required": 12,
+    "passed": 12,
+    "failed": 0
+  }
+}

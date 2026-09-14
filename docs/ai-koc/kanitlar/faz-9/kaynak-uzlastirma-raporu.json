@@ -1,0 +1,702 @@
+{
+  "version": "learning-source-reconciliation@1",
+  "generated_at": "2026-09-13T12:00:00.000Z",
+  "status": "passed",
+  "rows": [
+    {
+      "source_code": "home_summary",
+      "field_record_count": 0,
+      "expected_event_count": 0,
+      "actual_event_count": 0,
+      "valid_evidence_count": 0,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 0,
+      "duplicate_attempt_count": 0,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_000_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "analytics_view",
+      "field_record_count": 0,
+      "expected_event_count": 0,
+      "actual_event_count": 0,
+      "valid_evidence_count": 0,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 0,
+      "duplicate_attempt_count": 0,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_001_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "daily_logs",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_002_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "mock_exam_subjects",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_003_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "branch_exams",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_004_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "homeworks",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_005_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "questions_teacher_feedback",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_006_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "ai_coach_chat",
+      "field_record_count": 0,
+      "expected_event_count": 0,
+      "actual_event_count": 0,
+      "valid_evidence_count": 0,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 0,
+      "duplicate_attempt_count": 0,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_007_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "ai_coach_actions",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_008_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "daily_briefing",
+      "field_record_count": 0,
+      "expected_event_count": 0,
+      "actual_event_count": 0,
+      "valid_evidence_count": 0,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 0,
+      "duplicate_attempt_count": 0,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_009_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "ai_solution_sessions",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_010_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "ai_solution_review",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_011_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "library_gateway",
+      "field_record_count": 0,
+      "expected_event_count": 0,
+      "actual_event_count": 0,
+      "valid_evidence_count": 0,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 0,
+      "duplicate_attempt_count": 0,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_012_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "library_catalog",
+      "field_record_count": 0,
+      "expected_event_count": 0,
+      "actual_event_count": 0,
+      "valid_evidence_count": 0,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 0,
+      "duplicate_attempt_count": 0,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_013_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "structured_lesson_activity",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_014_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "bundled_lesson_activity",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_015_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "library_note_exposure",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 0,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_016_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "lesson_personalization",
+      "field_record_count": 0,
+      "expected_event_count": 0,
+      "actual_event_count": 0,
+      "valid_evidence_count": 0,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 0,
+      "duplicate_attempt_count": 0,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_017_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "db_question_test",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_018_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "bundled_question_test",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_019_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "physics_atlas",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_020_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "biology_atlas",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_021_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "geography_atlas",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_022_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "chemistry_atlas",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 0,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_023_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "history_atlas_navigation",
+      "field_record_count": 0,
+      "expected_event_count": 0,
+      "actual_event_count": 0,
+      "valid_evidence_count": 0,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 0,
+      "duplicate_attempt_count": 0,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_024_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "geometry_pilot",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 0,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_025_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "ingilizce_learning",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_026_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "almanca_learning",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_027_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "fransizca_learning",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_028_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "ispanyolca_learning",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_029_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "live_lesson_attendance",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_030_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "live_lesson_raw_stream",
+      "field_record_count": 0,
+      "expected_event_count": 0,
+      "actual_event_count": 0,
+      "valid_evidence_count": 0,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 0,
+      "duplicate_attempt_count": 0,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_031_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "live_lesson_shared_summary",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_032_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "notebook_content",
+      "field_record_count": 0,
+      "expected_event_count": 0,
+      "actual_event_count": 0,
+      "valid_evidence_count": 0,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 0,
+      "duplicate_attempt_count": 0,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_033_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "private_messages",
+      "field_record_count": 0,
+      "expected_event_count": 0,
+      "actual_event_count": 0,
+      "valid_evidence_count": 0,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 0,
+      "duplicate_attempt_count": 0,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_034_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "student_profile",
+      "field_record_count": 1,
+      "expected_event_count": 3,
+      "actual_event_count": 3,
+      "valid_evidence_count": 3,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 1,
+      "duplicate_attempt_count": 1,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_035_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "public_demo_routes",
+      "field_record_count": 0,
+      "expected_event_count": 0,
+      "actual_event_count": 0,
+      "valid_evidence_count": 0,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 0,
+      "duplicate_attempt_count": 0,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_036_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    },
+    {
+      "source_code": "teacher_parent_support_routes",
+      "field_record_count": 0,
+      "expected_event_count": 0,
+      "actual_event_count": 0,
+      "valid_evidence_count": 0,
+      "quarantined_count": 0,
+      "invalidated_or_corrected_count": 0,
+      "duplicate_attempt_count": 0,
+      "unprocessed_or_failed_count": 0,
+      "reconciliation_difference": 0,
+      "projection_updated_at": "2026-09-13T12:00:00.000Z",
+      "sample_source_tokens": [
+        "src_037_opaque"
+      ],
+      "contains_personal_content": false,
+      "status": "matched"
+    }
+  ],
+  "totals": {
+    "field_record_count": 25,
+    "expected_event_count": 75,
+    "actual_event_count": 75,
+    "valid_evidence_count": 75,
+    "quarantined_count": 0,
+    "invalidated_or_corrected_count": 22,
+    "duplicate_attempt_count": 25,
+    "unprocessed_or_failed_count": 0,
+    "reconciliation_difference": 0
+  }
+}
