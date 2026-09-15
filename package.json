@@ -25,6 +25,7 @@
     "test:defter": "node --test scripts/test-defter*.mjs",
     "bench:defter": "node scripts/bench-defter-performance.mjs",
     "test:ai-solve": "node scripts/test-ai-solve.mjs",
+    "test:solve-board": "node --test scripts/test-solve-board-compatibility.mjs",
     "test:lesson-document": "node scripts/test-lesson-document.mjs",
     "test:tts-cache": "node scripts/test-tts-cache.mjs",
     "ses:uret": "node scripts/ders-sesi-uret.mjs",

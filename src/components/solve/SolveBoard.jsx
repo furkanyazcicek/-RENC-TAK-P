@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { Check, CloudUpload, Loader2, PenLine, Send, TriangleAlert, X } from 'lucide-react'
+import { Check, CloudOff, CloudUpload, Loader2, PenLine, Send, TriangleAlert, X } from 'lucide-react'
 import { cn } from '../../lib/cn'
 import { colorForKey } from '../../lib/chartTheme'
 import { useAuth } from '../../context/AuthContext'
@@ -23,12 +23,7 @@ import {
   simplifyStroke,
   strokeHitsCircle,
 } from '../../lib/solutionCanvas'
-import {
-  isMissingStrokesColumn,
-  publishSolution,
-  saveStrokes,
-  uploadSolutionImage,
-} from '../../lib/solutionReply'
+import { saveStrokes, sendSolution } from '../../lib/solutionReply'
 import SolveToolbar from './SolveToolbar'
 
 /**
@@ -66,6 +61,8 @@ import SolveToolbar from './SolveToolbar'
 const PALM_GUARD_MS = 350
 const SIMPLIFY_TOLERANCE = 0.7
 const AUTOSAVE_DELAY = 1200
+const AUTOSAVE_IDLE_POLL = 240
+const SLOW_SAVE_NOTICE_DELAY = 650
 /** Bundan yakın noktalar hiç kaydedilmez: gözle görülmez ama Apple
  *  Pencil saniyede 240 örnekle çizgiyi gereksiz yere şişirir. */
 const MIN_SAMPLE_PX = 1.1
@@ -120,6 +117,11 @@ export default function SolveBoard({ question, onClose, onSaved }) {
   const baseRafRef = useRef(0)
   const revisionRef = useRef(0)
   const saveStateRef = useRef('idle')
+  const savedRevisionRef = useRef(0)
+  const savePromiseRef = useRef(null)
+  const draftPersistenceRef = useRef(null)
+  const autosaveUnavailableRef = useRef(false)
+  const sendingRef = useRef(false)
   const apiRef = useRef({})
 
   revisionRef.current = revision
@@ -344,6 +346,40 @@ export default function SolveBoard({ question, onClose, onSaved }) {
   }
 
   /**
+   * Taslak yazımlarını tek sıraya alır. Eski bir ağ isteğinin yeni
+   * çizimin ardından bitip sunucuda daha eski taslağı bırakmasını önler.
+   */
+  async function persistDraft(targetRevision = revisionRef.current) {
+    while (savePromiseRef.current) {
+      try {
+        await savePromiseRef.current
+      } catch {
+        // Önceki hata yeni denemeyi engellemez.
+      }
+    }
+
+    if (savedRevisionRef.current >= targetRevision && draftPersistenceRef.current) {
+      return draftPersistenceRef.current
+    }
+
+    const payload = serialize(boardRef.current, strokesRef.current)
+    const request = saveStrokes(question.id, payload)
+    savePromiseRef.current = request
+    try {
+      const persistence = await request
+      draftPersistenceRef.current = persistence
+      if (persistence.status === 'session_only') {
+        autosaveUnavailableRef.current = true
+      } else {
+        savedRevisionRef.current = Math.max(savedRevisionRef.current, targetRevision)
+      }
+      return persistence
+    } finally {
+      if (savePromiseRef.current === request) savePromiseRef.current = null
+    }
+  }
+
+  /**
    * Tahta kurulduktan sonraki tek seferlik hazırlık: kayıtlı çizimi
    * getir, canvas'ı ölçülendir, soruyu ekrana yerleştir.
    */
@@ -478,6 +514,13 @@ export default function SolveBoard({ question, onClose, onSaved }) {
     simplifyStroke(stroke, SIMPLIFY_TOLERANCE / viewRef.current.scale)
     stampToBase(stroke)
     pushHistory([...strokesRef.current, stroke])
+
+    // Bir önceki taslak isteği bu darbe sürerken tamamlandıysa durum
+    // metnini kalem kalktıktan sonra göster. Çizerken üst alan değişmez.
+    if (draftPersistenceRef.current?.status === 'session_only') setSaveState('session')
+    else if (draftPersistenceRef.current?.status === 'saved' && saveStateRef.current === 'idle') {
+      setSaveState('saved')
+    }
   }
 
   function eraseAt(point) {
@@ -738,27 +781,52 @@ export default function SolveBoard({ question, onClose, onSaved }) {
     }
   }, [])
 
-  // Otomatik kayıt — öğretmen çizmeyi bıraktıktan kısa süre sonra.
+  // Otomatik kayıt — yalnızca gerçek bir yazma molasında. Önceki
+  // darbenin zamanlayıcısı yeni darbe sürerken dolarsa bekler; böylece
+  // kayıt durumu veya ağ cevabı kalemin ortasında tuvali etkileyemez.
   useEffect(() => {
-    if (revision === 0) return undefined
-    setSaveState('saving')
-    const timer = setTimeout(async () => {
-      try {
-        await saveStrokes(question.id, serialize(boardRef.current, strokesRef.current))
-        setSaveState('saved')
-      } catch (err) {
-        setSaveState('error')
-        // "Kaydedilemedi" tek başına ne yapılacağını söylemiyor. Kolon
-        // eksikse sorun bağlantı değil, atlanmış bir migration.
-        if (isMissingStrokesColumn(err)) {
-          setError(
-            'Taslak kaydı için veritabanı güncellemesi gerekiyor ' +
-              '(supabase/migration_solution_canvas.sql). Çözümü yine de gönderebilirsiniz.'
-          )
-        }
+    if (revision === 0 || autosaveUnavailableRef.current) return undefined
+    let disposed = false
+    let timer = 0
+    let slowNoticeTimer = 0
+
+    async function saveAfterPause() {
+      if (disposed) return
+      if (drawPointerRef.current !== null || activeRef.current || savePromiseRef.current || sendingRef.current) {
+        timer = window.setTimeout(saveAfterPause, AUTOSAVE_IDLE_POLL)
+        return
       }
-    }, AUTOSAVE_DELAY)
-    return () => clearTimeout(timer)
+
+      const targetRevision = revisionRef.current
+      // İlk başarılı kayıttan sonra gösterge sabit kalır. Hızlı her
+      // otomatik kayıtta "Kaydediliyor/Kaydedildi" diye yanıp sönmez.
+      if (saveStateRef.current === 'idle') {
+        slowNoticeTimer = window.setTimeout(() => {
+          if (!disposed && drawPointerRef.current === null) setSaveState('saving')
+        }, SLOW_SAVE_NOTICE_DELAY)
+      }
+
+      try {
+        const persistence = await persistDraft(targetRevision)
+        if (!disposed && drawPointerRef.current === null) {
+          setSaveState(persistence.status === 'session_only' ? 'session' : 'saved')
+        }
+      } catch {
+        if (!disposed && drawPointerRef.current === null) setSaveState('error')
+      } finally {
+        window.clearTimeout(slowNoticeTimer)
+      }
+    }
+
+    timer = window.setTimeout(saveAfterPause, AUTOSAVE_DELAY)
+    return () => {
+      disposed = true
+      window.clearTimeout(timer)
+      window.clearTimeout(slowNoticeTimer)
+    }
+    // persistDraft güncel referanslardan okur; bu efektin tetikleyicisi
+    // yalnızca yeni çizim revizyonudur.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [revision, question.id])
 
   useEffect(
@@ -776,14 +844,19 @@ export default function SolveBoard({ question, onClose, onSaved }) {
   async function handleClose() {
     // Bekleyen taslak varsa çıkmadan önce yazılır: öğretmen çizip hemen
     // kapatınca son çizgileri kaybetmesin.
-    if (revisionRef.current > 0 && saveStateRef.current !== 'saved') {
+    if (
+      revisionRef.current > savedRevisionRef.current &&
+      !autosaveUnavailableRef.current &&
+      !sendingRef.current
+    ) {
       try {
-        await saveStrokes(question.id, serialize(boardRef.current, strokesRef.current))
+        const persistence = await persistDraft(revisionRef.current)
+        setSaveState(persistence.status === 'session_only' ? 'session' : 'saved')
       } catch {
         /* kapanışı engellemez; taslak zaten en son kaydedilen halde kalır */
       }
     }
-    if (revisionRef.current > 0) onSaved?.()
+    if (savedRevisionRef.current > 0) onSaved?.()
     onClose()
   }
 
@@ -797,22 +870,35 @@ export default function SolveBoard({ question, onClose, onSaved }) {
       return
     }
 
+    sendingRef.current = true
     setSending(true)
     setError(null)
     try {
+      let draftPersistence = draftPersistenceRef.current
+      if (!autosaveUnavailableRef.current && savedRevisionRef.current < revisionRef.current) {
+        draftPersistence = await persistDraft(revisionRef.current)
+      }
+      if (!draftPersistence) draftPersistence = await persistDraft(revisionRef.current)
+
+      const strokes = serialize(boardRef.current, strokesRef.current)
       const canvas = renderFlattened(boardRef.current, strokesRef.current, imgRef.current)
       const { blob, ext } = await canvasToBlob(canvas)
-      const media = await uploadSolutionImage(blob, question.student_id, user.id, ext)
-      await publishSolution({
+      await sendSolution({
         questionId: question.id,
-        mediaActionId: media.mediaActionId,
-        strokes: serialize(boardRef.current, strokesRef.current),
+        studentId: question.student_id,
+        teacherId: user.id,
+        blob,
+        ext,
+        strokes,
+        draftPersistence,
       })
+      savedRevisionRef.current = revisionRef.current
       setSaveState('saved')
       onSaved?.()
       onClose()
     } catch (err) {
       setError(err?.message ?? 'Çözüm gönderilemedi, tekrar deneyin.')
+      sendingRef.current = false
       setSending(false)
     }
   }
@@ -917,13 +1003,6 @@ export default function SolveBoard({ question, onClose, onSaved }) {
         onToggleFinger={() => setFingerDraws((v) => !v)}
       />
 
-      {error && (
-        <div className="flex shrink-0 items-center gap-2 bg-danger-500/15 px-4 py-2.5 text-xs font-semibold text-danger-100">
-          <TriangleAlert className="h-4 w-4 shrink-0" aria-hidden="true" />
-          {error}
-        </div>
-      )}
-
       {/* ---------------- Çizim alanı ----------------
           touch-action: none — tarayıcının kendi kaydırma/zoom'u devreye
           girerse kalem ile çizgi arasında gecikme oluşuyor; hareketleri
@@ -941,6 +1020,33 @@ export default function SolveBoard({ question, onClose, onSaved }) {
         <canvas ref={baseRef} className="absolute inset-0 h-full w-full" />
         <canvas ref={liveRef} className="pointer-events-none absolute inset-0 h-full w-full" />
 
+        {/* Hata tuvali aşağı itmez. Kalem darbesi sırasında boyut
+            değişmediği için çizginin ortası kesilmez. */}
+        {error && (
+          <div
+            className="pointer-events-none absolute left-3 right-3 top-3 z-10 mx-auto flex max-w-2xl items-center gap-2
+                       rounded-xl border border-danger-500/25 bg-ink/90 px-3.5 py-2.5 text-xs font-semibold text-white shadow-overlay"
+            role="alert"
+          >
+            <TriangleAlert className="h-4 w-4 shrink-0 text-danger-500" aria-hidden="true" />
+            {error}
+          </div>
+        )}
+
+        {/* İpucu da tuvalin içinde yüzer. İlk çizgiden sonra kaybolurken
+            tuval 33 px büyüyüp ikinci kalem darbesinin koordinatını kaydırmaz. */}
+        {(imageFailed || revision === 0) && (
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 px-4 pb-safe-bottom">
+            <p className="mx-auto w-fit max-w-full rounded-t-lg bg-ink/75 px-3 py-2 text-center text-2xs text-white/55">
+              {imageFailed
+                ? 'Soru görseli yüklenemedi — boş sayfaya çözüm yazabilirsiniz.'
+                : fingerDraws
+                  ? 'Parmak çiziyor · iki parmakla yakınlaştırıp gezebilirsiniz'
+                  : 'Kalemle çizin · parmakla gezin, iki parmakla yakınlaştırın · çizerken avucunuz sayfayı kaydırmaz'}
+            </p>
+          </div>
+        )}
+
         {!ready && (
           <div className="absolute inset-0 grid place-items-center">
             <span className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold text-white/80">
@@ -951,21 +1057,6 @@ export default function SolveBoard({ question, onClose, onSaved }) {
         )}
       </div>
 
-      {/* ---------------- Alt ipucu ----------------
-          Öğretmen çizmeye başlayınca kaybolur: tablet ekranında her satır
-          çizim alanından çalınıyor ve bu metin bir kez okunup bitiyor.
-          Görsel yüklenememişse uyarı kalıcıdır — o bilgi tek seferlik değil. */}
-      {(imageFailed || revision === 0) && (
-        <div className="shrink-0 border-t border-white/10 px-4 pb-safe-bottom">
-          <p className="py-2 text-center text-2xs text-white/45">
-            {imageFailed
-              ? 'Soru görseli yüklenemedi — boş sayfaya çözüm yazabilirsiniz.'
-              : fingerDraws
-                ? 'Parmak çiziyor · iki parmakla yakınlaştırıp gezebilirsiniz'
-                : 'Kalemle çizin · parmakla gezin, iki parmakla yakınlaştırın · çizerken avucunuz sayfayı kaydırmaz'}
-          </p>
-        </div>
-      )}
     </div>,
     document.body
   )
@@ -977,9 +1068,10 @@ function SaveIndicator({ state }) {
   if (state === 'idle') return null
 
   const map = {
-    saving: { icon: CloudUpload, text: 'Kaydediliyor…', tone: 'text-white/60' },
-    saved: { icon: Check, text: 'Kaydedildi', tone: 'text-success-500' },
-    error: { icon: TriangleAlert, text: 'Kaydedilemedi', tone: 'text-danger-500' },
+    saving: { icon: CloudUpload, text: 'Taslak hazırlanıyor…', tone: 'text-white/60' },
+    saved: { icon: Check, text: 'Otomatik kayıt açık', tone: 'text-success-500' },
+    session: { icon: CloudOff, text: 'Gönderene kadar açık', tone: 'text-warning-500' },
+    error: { icon: CloudOff, text: 'Bağlantı bekleniyor', tone: 'text-warning-500' },
   }
   const { icon: Icon, text, tone } = map[state]
 

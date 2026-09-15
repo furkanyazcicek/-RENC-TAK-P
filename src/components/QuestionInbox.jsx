@@ -3,9 +3,9 @@ import { ImagePlus, Inbox, MessageSquareQuote, PenLine, Send, X, ZoomIn } from '
 import { useAuth } from '../context/AuthContext'
 import useAcademicActivity from '../hooks/useAcademicActivity'
 import { academicStatusMessage } from '../lib/learning/academicActivity/client'
-import { stageAndUploadAcademicQuestionMedia } from '../lib/learning/academicActivity/media'
 import { cn } from '../lib/cn'
 import { colorForKey } from '../lib/chartTheme'
+import { sendReply } from '../lib/solutionReply'
 import StatusBadge from './StatusBadge'
 import ImageLightbox from './ImageLightbox'
 import SolveBoard from './solve/SolveBoard'
@@ -20,7 +20,6 @@ const STATUS_OPTIONS = ['İnceleniyor', 'Derste Çözülecek', 'Çözüldü']
  */
 function ReplyBox({ question, onChanged, onCancel }) {
   const { user } = useAuth()
-  const academic = useAcademicActivity()
   const [value, setValue] = useState(question.teacher_reply ?? '')
   const [file, setFile] = useState(null)
   const [previewUrl, setPreviewUrl] = useState(null)
@@ -47,16 +46,14 @@ function ReplyBox({ question, onChanged, onCancel }) {
     setError(null)
 
     try {
-      let mediaActionId = null
-      if (file) {
-        const media = await stageAndUploadAcademicQuestionMedia({ studentId: question.student_id, actorId: user.id, mediaKind: 'teacher_reply', file })
-        mediaActionId = media.mediaActionId
-      }
-      const response = await academic.performSensitive('question_reply', {
-        record_id: question.id, reply: value.trim() || null, media_action_id: mediaActionId, status: 'Çözüldü',
+      await sendReply({
+        questionId: question.id,
+        studentId: question.student_id,
+        teacherId: user.id,
+        reply: value.trim(),
+        file,
+        existingImageUrl,
       })
-      if (response.status !== 'saved') throw new Error(academicStatusMessage(response.status))
-
       onChanged?.()
     } catch (err) {
       setError(err.message ?? 'Bir şeyler ters gitti, tekrar deneyin.')
@@ -98,8 +95,8 @@ function ReplyBox({ question, onChanged, onCancel }) {
         </div>
       )}
 
-      <div className="flex flex-wrap items-center gap-2">
-        <label className="focus-ring inline-flex min-h-11 cursor-pointer items-center gap-1.5 rounded-lg border border-dashed border-brand-300 px-3 py-1.5 text-xs font-semibold text-brand-600 transition-colors hover:bg-brand-50">
+      <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center">
+        <label className="focus-ring inline-flex min-h-11 w-full cursor-pointer items-center justify-center gap-1.5 rounded-lg border border-dashed border-brand-300 px-3 py-1.5 text-xs font-semibold text-brand-600 transition-colors hover:bg-brand-50 sm:w-auto">
           <ImagePlus className="h-3.5 w-3.5" aria-hidden="true" />
           Fotoğraf ekle
           <input
@@ -110,13 +107,13 @@ function ReplyBox({ question, onChanged, onCancel }) {
           />
         </label>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="flex w-full flex-col gap-2 sm:ml-auto sm:w-auto sm:flex-row sm:items-center">
           {onCancel && (
-            <Button variant="ghost" onClick={onCancel}>
+            <Button variant="ghost" className="w-full sm:w-auto" onClick={onCancel}>
               Vazgeç
             </Button>
           )}
-          <Button icon={Send} loading={saving} onClick={handleSave}>
+          <Button className="w-full sm:w-auto" icon={Send} loading={saving} onClick={handleSave}>
             {saving ? 'Kaydediliyor…' : 'Yanıtla ve kapat'}
           </Button>
         </div>
