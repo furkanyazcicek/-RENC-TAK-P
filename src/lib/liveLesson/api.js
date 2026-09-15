@@ -21,6 +21,10 @@ import {
   leaveLessonWithCompatibility,
 } from './attendanceCompatibility'
 import {
+  saveLessonSummaryWithCompatibility,
+  submitLessonFeedbackWithCompatibility,
+} from './summaryCompatibility'
+import {
   isLessonPreview,
   previewBoardPages,
   previewHomeworks,
@@ -529,19 +533,41 @@ export async function fetchSummary(sessionId) {
 
 export async function saveSummary(sessionId, { teacherId, studentId, ...patch }) {
   if (isLessonPreview()) return { lesson_session_id: sessionId, teacher_id: teacherId, student_id: studentId, ...patch }
-  const result = unwrap(await supabase.rpc('save_academic_lesson_summary', {
-    p_session_id: sessionId,p_covered_topics: patch.covered_topics ?? null,p_public_note: patch.public_note ?? null,
-    p_next_goal: patch.next_goal ?? null,p_board_image_url: patch.board_image_url ?? null,
-    p_board_snapshot: patch.board_snapshot ?? null,p_shared_with_student: patch.shared_with_student === true,
-    p_client_action_id: crypto.randomUUID(),
-  }), 'Ders özeti kaydedilemedi.')
+  const legacyRow = {
+    lesson_session_id: sessionId,
+    teacher_id: teacherId,
+    student_id: studentId,
+    ...patch,
+    updated_at: new Date().toISOString(),
+  }
+  const response = await saveLessonSummaryWithCompatibility(
+    () => supabase.rpc('save_academic_lesson_summary', {
+      p_session_id: sessionId,p_covered_topics: patch.covered_topics ?? null,p_public_note: patch.public_note ?? null,
+      p_next_goal: patch.next_goal ?? null,p_board_image_url: patch.board_image_url ?? null,
+      p_board_snapshot: patch.board_snapshot ?? null,p_shared_with_student: patch.shared_with_student === true,
+      p_client_action_id: crypto.randomUUID(),
+    }),
+    () => supabase
+      .from('lesson_summaries')
+      .upsert(legacyRow, { onConflict: 'lesson_session_id' })
+      .select(SUMMARY_COLUMNS)
+      .single()
+  )
+  const result = unwrap(response, 'Ders özeti kaydedilemedi.')
   if (!['created', 'duplicate', 'no_change'].includes(result?.status)) throw new Error('Ders özeti kaydedilemedi.')
-  return { lesson_session_id: sessionId, ...patch }
+  return result.record ?? { lesson_session_id: sessionId, ...patch }
 }
 
 export async function submitStudentFeedback(sessionId, feedback) {
   const result = unwrap(
-    await supabase.rpc('feedback_academic_lesson_summary', { p_session_id: sessionId, p_feedback: feedback, p_client_action_id: crypto.randomUUID() }),
+    await submitLessonFeedbackWithCompatibility(
+      () => supabase.rpc('feedback_academic_lesson_summary', {
+        p_session_id: sessionId,
+        p_feedback: feedback,
+        p_client_action_id: crypto.randomUUID(),
+      }),
+      () => supabase.rpc('lesson_student_feedback', { p_session: sessionId, p_feedback: feedback })
+    ),
     'Geri bildirim kaydedilemedi.'
   )
   if (!['created', 'duplicate', 'no_change'].includes(result?.status)) throw new Error('Geri bildirim kaydedilemedi.')

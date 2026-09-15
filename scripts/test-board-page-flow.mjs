@@ -43,6 +43,8 @@ import {
   visiblePages,
 } from '../src/lib/liveLesson/board/pageFlow.js'
 import {
+  etkinAlan,
+  KISA_EKRAN_ESIGI,
   MASAUSTU_ESIGI,
   odakDurumu,
   odakVarsayilani,
@@ -282,11 +284,15 @@ console.log('\n=== 8) PROGRAMATİK GEÇİŞ ===')
 
 console.log('\n=== 9) TAHTA ODAK MODU VARSAYILANI ===')
 {
-  check('1024×768 yatay tablette varsayılan AÇIK', odakVarsayilani(1024) === true)
-  check('768 dikey tablette varsayılan AÇIK', odakVarsayilani(768) === true)
-  check('1180 tablette varsayılan AÇIK', odakVarsayilani(1180) === true)
-  check('1280 masaüstünde varsayılan KAPALI', odakVarsayilani(MASAUSTU_ESIGI) === false)
-  check('1440 masaüstünde varsayılan KAPALI', odakVarsayilani(1440) === false)
+  check('1024×768 yatay tablette varsayılan AÇIK', odakVarsayilani(1024, 768) === true)
+  check('768 dikey tablette varsayılan AÇIK', odakVarsayilani(768, 1024) === true)
+  check('1180 tablette varsayılan AÇIK', odakVarsayilani(1180, 820) === true)
+  check('1280×900 bilgisayarda varsayılan AÇIK', odakVarsayilani(MASAUSTU_ESIGI, 900) === true)
+  check('1440×900 masaüstünde varsayılan KAPALI', odakVarsayilani(1440, 900) === false)
+  check('1440×720 kısa masaüstünde varsayılan AÇIK', odakVarsayilani(1440, KISA_EKRAN_ESIGI - 80) === true)
+  check('büyük yazı 1440 px alanı etkin olarak daraltır', Math.round(etkinAlan(1440, 20)) === 1152)
+  check('1440 masaüstü büyük yazıyla odak görünümünü açar', odakVarsayilani(1440, 900, 20) === true)
+  check('1920 geniş ekran büyük yazıyla normal kalır', odakVarsayilani(1920, 1080, 20) === false)
 
   check('375 telefon sayılır', telefonDuzeni(375) === true)
   check('768 telefon sayılmaz', telefonDuzeni(768) === false)
@@ -295,7 +301,7 @@ console.log('\n=== 9) TAHTA ODAK MODU VARSAYILANI ===')
   check('kullanıcı kapattıysa tablette de kapalı', odakDurumu(1024, false) === false)
   check('kullanıcı açtıysa masaüstünde de açık', odakDurumu(1440, true) === true)
   check('tercih yoksa ekran ölçüsü karar verir', odakDurumu(1024, null) === true)
-  check('tercih yoksa masaüstü kapalı kalır', odakDurumu(1440, null) === false)
+  check('tercih yoksa geniş masaüstü kapalı kalır', odakDurumu(1440, null, 900, 16) === false)
 }
 
 console.log(`\n${fail === 0 ? '✅' : '❌'}  ${pass} geçti, ${fail} kaldı\n`)

@@ -127,20 +127,38 @@ export default function LessonStudio() {
 
   /* ---------------- Tahta odak modu ---------------- */
   const [odakTercihi, setOdakTercihi] = useState(() => odakTercihiOku())
-  const [ekranGenisligi, setEkranGenisligi] = useState(() =>
-    typeof window === 'undefined' ? 1280 : window.innerWidth
-  )
+  const [ekran, setEkran] = useState(() => ({
+    genislik: typeof window === 'undefined' ? 1280 : window.innerWidth,
+    yukseklik: typeof window === 'undefined' ? 900 : window.innerHeight,
+    kokYaziBoyutu:
+      typeof window === 'undefined'
+        ? 16
+        : Number.parseFloat(window.getComputedStyle(document.documentElement).fontSize) || 16,
+  }))
   useEffect(() => {
-    const olc = () => setEkranGenisligi(window.innerWidth)
+    const olc = () =>
+      setEkran({
+        genislik: window.innerWidth,
+        yukseklik: window.innerHeight,
+        kokYaziBoyutu:
+          Number.parseFloat(window.getComputedStyle(document.documentElement).fontSize) || 16,
+      })
     window.addEventListener('resize', olc)
     window.addEventListener('orientationchange', olc)
+    window.visualViewport?.addEventListener('resize', olc)
     return () => {
       window.removeEventListener('resize', olc)
       window.removeEventListener('orientationchange', olc)
+      window.visualViewport?.removeEventListener('resize', olc)
     }
   }, [])
-  const telefon = telefonDuzeni(ekranGenisligi)
-  const tahtaOdak = odakDurumu(ekranGenisligi, odakTercihi)
+  const telefon = telefonDuzeni(ekran.genislik)
+  const tahtaOdak = odakDurumu(
+    ekran.genislik,
+    odakTercihi,
+    ekran.yukseklik,
+    ekran.kokYaziBoyutu
+  )
 
   /** Kamera yerleşiği: açık mı, hangi köşede? Cihazda hatırlanır. */
   const [kameraAcik, setKameraAcik] = useState(() => {

@@ -9,10 +9,13 @@
  * tabletlerin dizesi ise telefondan ayırt edilemiyor. Bizi ilgilendiren
  * zaten cihazın adı değil, TAHTAYA KALAN ALAN.
  *
- * Eşik 1280 px: bunun altındaki her yatay tablet (1024×768, 1180×820,
- * 1112×834) ve dikey tablet, yardımcı arayüzleri sürekli açık tutacak
- * kadar geniş değil. 1280 ve üstü masaüstü gibi davranır; oradaki
- * kullanıcı "Tahtayı büyüt" ile aynı moda elle geçer.
+ * Yalnız genişliğe bakmak yetmez. 1280×720 bir bilgisayarda veya
+ * tarayıcının varsayılan yazısı 18–20 px'e çıkarılmış bir ekranda, ölçülen
+ * CSS genişliği masaüstü gibi görünse bile araç şeritleri tahtayı daraltır.
+ * Bu yüzden kullanılabilir genişlik ve yükseklik, kök yazı boyutuna göre
+ * 16 px'lik tasarım ölçeğine çevrilir. 1280 px genişlik ya da 800 px'den
+ * kısa alan odak görünümüyle başlar; geniş ve yüksek masaüstünde kullanıcı
+ * isterse "Tahtayı büyüt" ile aynı moda elle geçer.
  *
  * ═══════════════════════════════════════════════════════════════════
  * TERCİH CİHAZDA KALIR
@@ -23,14 +26,41 @@
 
 const KEY = 'drk-tahta-odak'
 
-/** Yardımcı arayüzlerin sürekli açık kalabileceği en dar genişlik. */
+/** Yardımcı arayüzlerin sürekli açık kalabileceği en dar etkin genişlik. */
 export const MASAUSTU_ESIGI = 1280
+/** Normal stüdyo kromunun tahtadan fazla yükseklik aldığı eşik. */
+export const KISA_EKRAN_ESIGI = 800
+/** Tasarım sisteminin hedeflediği tarayıcı kök yazı boyutu. */
+export const STANDART_YAZI_BOYUTU = 16
 /** Telefon düzeni (tek odak sekmeleri) bu eşiğin altında çalışır. */
 export const TELEFON_ESIGI = 768
 
-/** Ekran ölçüsüne göre odak modunun varsayılanı. */
-export function odakVarsayilani(width = typeof window === 'undefined' ? 0 : window.innerWidth) {
-  return width < MASAUSTU_ESIGI
+/**
+ * Varsayılan yazı büyütülmüşse, arayüzün gerçekten kullanabildiği alanı
+ * tasarımın 16 px tabanına çevir. Küçük yazı kullanan bir bilgisayarın
+ * alanını yapay olarak büyütmüyoruz; yalnız büyümenin tahta üzerindeki
+ * maliyetini hesaba katıyoruz.
+ */
+export function etkinAlan(olcu, kokYaziBoyutu = STANDART_YAZI_BOYUTU) {
+  const guvenliOlcu = Number.isFinite(olcu) ? Math.max(0, olcu) : 0
+  const guvenliYazi = Number.isFinite(kokYaziBoyutu) ? kokYaziBoyutu : STANDART_YAZI_BOYUTU
+  const katsayi = Math.max(1, guvenliYazi / STANDART_YAZI_BOYUTU)
+  return guvenliOlcu / katsayi
+}
+
+/** Ekran ölçüsü ve yazı ölçeğine göre odak modunun varsayılanı. */
+export function odakVarsayilani(
+  width = typeof window === 'undefined' ? 0 : window.innerWidth,
+  height = typeof window === 'undefined' ? 900 : window.innerHeight,
+  rootFontSize =
+    typeof window === 'undefined'
+      ? STANDART_YAZI_BOYUTU
+      : Number.parseFloat(window.getComputedStyle(document.documentElement).fontSize)
+) {
+  return (
+    etkinAlan(width, rootFontSize) <= MASAUSTU_ESIGI ||
+    etkinAlan(height, rootFontSize) < KISA_EKRAN_ESIGI
+  )
 }
 
 /** Telefon mu? Telefonda odak modu değil, mevcut sekmeli düzen geçerlidir. */
@@ -65,8 +95,16 @@ export function odakTercihiYaz(acik) {
 }
 
 /** Kaydedilmiş tercihi ekran ölçüsüyle birleştirir. */
-export function odakDurumu(width, tercih = odakTercihiOku()) {
+export function odakDurumu(
+  width,
+  tercih = odakTercihiOku(),
+  height = typeof window === 'undefined' ? 900 : window.innerHeight,
+  rootFontSize =
+    typeof window === 'undefined'
+      ? STANDART_YAZI_BOYUTU
+      : Number.parseFloat(window.getComputedStyle(document.documentElement).fontSize)
+) {
   if (telefonDuzeni(width)) return false
   if (tercih !== null) return tercih
-  return odakVarsayilani(width)
+  return odakVarsayilani(width, height, rootFontSize)
 }

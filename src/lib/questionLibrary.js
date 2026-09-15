@@ -1,5 +1,5 @@
-import { supabase } from './supabaseClient'
-import { slugifyLibraryValue } from './libraryRoutes'
+import { supabase } from './supabaseClient.js'
+import { slugifyLibraryValue } from './libraryRoutes.js'
 import {
   LEGACY_BUNDLED_QUESTION_SETS,
   legacyBundledQuestionSetsForTopic,

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-13T15:02:21.510Z",
+  "generated_at": "2026-09-15T22:43:48.171Z",
   "tables": [
     "bundled_lesson_activity_events",
     "learning_content_action_receipts",

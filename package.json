@@ -68,6 +68,7 @@
     "test:matematik-soru-kutuphanesi": "node scripts/test-matematik-soru-kutuphanesi.mjs",
     "test:felsefe-soru-kutuphanesi": "node scripts/test-felsefe-soru-kutuphanesi.mjs",
     "test:tarih-soru-kutuphanesi": "node scripts/test-tarih-soru-kutuphanesi.mjs",
+    "test:turkce-soru-kutuphanesi": "node scripts/test-turkce-soru-kutuphanesi.mjs",
     "seed:lessons": "node scripts/seed-lessons.mjs",
     "atlas:indir": "node scripts/tarihAtlasiIndir.mjs",
     "atlas:uret": "node scripts/tarihAtlasiUret.mjs",

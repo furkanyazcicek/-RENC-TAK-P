@@ -49,6 +49,10 @@ import {
   withLgsTurkceQuestionBankSubjects,
   withLgsTurkceQuestionBankTopics,
 } from '../content/tests/lgs_turkce/question-bank.js'
+import {
+  withTurkceQuestionBankSubjects,
+  withTurkceQuestionBankTopics,
+} from '../content/tests/turkce/question-bank.js'
 
 import { emekliKonuMu } from '../content/emekliKonular'
 import { useAuth } from '../context/AuthContext'
@@ -243,14 +247,15 @@ export default function QuestionLibrary() {
     const philosophySubjects = withPhilosophyQuestionBankSubjects(mathSubjects)
     const catalogSubjects = withHistoryQuestionBankSubjects(philosophySubjects)
     const cografyaSubjects = withCografyaQuestionBankSubjects(catalogSubjects)
-    const dinKulturuSubjects = withDinKulturuQuestionBankSubjects(cografyaSubjects)
-    const finalSubjects = withLgsTurkceQuestionBankSubjects(dinKulturuSubjects)
+    const lgsTurkceSubjects = withLgsTurkceQuestionBankSubjects(dinKulturuSubjects)
+    const finalSubjects = withTurkceQuestionBankSubjects(lgsTurkceSubjects)
     const mathTopics = withMathQuestionBankTopics(finalSubjects, topicsRes.data ?? [])
     const philosophyTopics = withPhilosophyQuestionBankTopics(finalSubjects, mathTopics)
     const historyTopics = withHistoryQuestionBankTopics(finalSubjects, philosophyTopics)
     const cografyaTopics = withCografyaQuestionBankTopics(finalSubjects, historyTopics)
     const dinKulturuTopics = withDinKulturuQuestionBankTopics(finalSubjects, cografyaTopics)
-    const finalTopics = withLgsTurkceQuestionBankTopics(finalSubjects, dinKulturuTopics)
+    const lgsTurkceTopics = withLgsTurkceQuestionBankTopics(finalSubjects, dinKulturuTopics)
+    const finalTopics = withTurkceQuestionBankTopics(finalSubjects, lgsTurkceTopics)
     const gradeData = createGradeLibraryData(finalSubjects, finalTopics)
     setSubjects([...finalSubjects, ...gradeData.subjects])
     setTopics([...finalTopics, ...gradeData.topics])

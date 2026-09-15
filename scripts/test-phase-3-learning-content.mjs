@@ -1838,14 +1838,21 @@ async function main() {
              or p.proname like '%personalization%')`)
       equal(publicWriters.rows, [], 'Dışlanan kaynaklar için public writer RPC olmamalı')
 
-      const historyUiSearch = spawnSync('rg', [
-        '-n',
-        'useContentActivity|learning_evidence|record_history|history_atlas_navigation',
+      const pattern = 'useContentActivity|learning_evidence|record_history|history_atlas_navigation'
+      const targets = [
         'src/pages/TarihAtlasi.jsx',
         'src/pages/PadisahGecidi.jsx',
         'src/components/tarih',
-      ], { cwd: REPO, encoding: 'utf8' })
-      equal(historyUiSearch.status, 1,
+      ]
+      let searchStatus = 1
+      const rgSearch = spawnSync('rg', ['-n', pattern, ...targets], { cwd: REPO, encoding: 'utf8' })
+      if (rgSearch.error?.code === 'ENOENT') {
+        const grepSearch = spawnSync('grep', ['-E', '-r', '-n', pattern, ...targets], { cwd: REPO, encoding: 'utf8' })
+        searchStatus = grepSearch.status
+      } else {
+        searchStatus = rgSearch.status
+      }
+      equal(searchStatus, 1,
         'Tarih harita/yıl/katman/müzik/ses UI’ında evidence writer bulunmamalı')
     })
 

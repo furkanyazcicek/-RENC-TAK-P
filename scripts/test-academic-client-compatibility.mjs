@@ -9,6 +9,10 @@ import {
   joinLessonWithCompatibility,
   leaveLessonWithCompatibility,
 } from '../src/lib/liveLesson/attendanceCompatibility.js'
+import {
+  saveLessonSummaryWithCompatibility,
+  submitLessonFeedbackWithCompatibility,
+} from '../src/lib/liveLesson/summaryCompatibility.js'
 
 const USER_ID = '44000000-0000-4000-8000-000000000001'
 const ACTION_ID = '44000000-0000-4000-8000-000000000010'
@@ -149,4 +153,57 @@ test('yeni ayrılış RPC\'si yoksa süre mevcut ders RPC\'siyle kaydedilir', as
   assert.equal(response.error, null)
   assert.deepEqual(calls.map((call) => call.name), ['leave_academic_lesson', 'lesson_leave'])
   assert.deepEqual(calls[1].params, { p_session: 'lesson-1', p_seconds: 75 })
+})
+
+test('yeni özet RPC\'si yoksa mevcut RLS korumalı özet yolu kullanılır', async () => {
+  const calls = []
+  const response = await saveLessonSummaryWithCompatibility(
+    async () => {
+      calls.push('academic')
+      return { data: null, error: { code: 'PGRST202' } }
+    },
+    async () => {
+      calls.push('legacy')
+      return { data: { lesson_session_id: 'lesson-1' }, error: null }
+    }
+  )
+
+  assert.equal(response.error, null)
+  assert.equal(response.data.status, 'created')
+  assert.equal(response.data.record.lesson_session_id, 'lesson-1')
+  assert.equal(response.data.compatibility_mode, 'legacy_lesson_summary')
+  assert.deepEqual(calls, ['academic', 'legacy'])
+})
+
+test('özet kaydında yetki hatası eski yola düşmez', async () => {
+  let legacyCalled = false
+  const response = await saveLessonSummaryWithCompatibility(
+    async () => ({ data: null, error: { code: '42501', message: 'Yetki yok' } }),
+    async () => {
+      legacyCalled = true
+      return { data: null, error: null }
+    }
+  )
+
+  assert.equal(response.error.code, '42501')
+  assert.equal(legacyCalled, false)
+})
+
+test('yeni ders geri bildirimi RPC\'si yoksa mevcut dar RPC kullanılır', async () => {
+  const calls = []
+  const response = await submitLessonFeedbackWithCompatibility(
+    async () => {
+      calls.push('academic')
+      return { data: null, error: { code: '42883' } }
+    },
+    async () => {
+      calls.push('legacy')
+      return { data: null, error: null }
+    }
+  )
+
+  assert.equal(response.error, null)
+  assert.equal(response.data.status, 'created')
+  assert.equal(response.data.compatibility_mode, 'legacy_lesson_student_feedback')
+  assert.deepEqual(calls, ['academic', 'legacy'])
 })

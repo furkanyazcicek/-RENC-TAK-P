@@ -97,7 +97,7 @@ function ToolButton({ active, label, Icon, onClick, disabled, badge, expanded, h
       aria-expanded={hasPanel ? expanded : undefined}
       title={label}
       className={cn(
-        'focus-ring relative grid h-11 w-11 shrink-0 place-items-center rounded-btn transition-[transform,background-color,color,box-shadow] duration-150 active:scale-[0.96]',
+        'tahta-araclari__dugme focus-ring relative grid h-11 w-11 shrink-0 place-items-center rounded-btn transition-[transform,background-color,color,box-shadow] duration-150 active:scale-[0.96]',
         'disabled:cursor-not-allowed disabled:opacity-40',
         active
           ? 'bg-brand-600 text-white shadow-xs ring-1 ring-inset ring-brand-400/30'
@@ -432,7 +432,7 @@ export default function BoardToolbar({
           aria-label="Şekil, belge ve görünüm araçları"
           title="Şekil, belge ve görünüm araçları"
           className={cn(
-            'focus-ring grid h-11 w-11 shrink-0 place-items-center rounded-btn transition-colors',
+            'tahta-araclari__dugme focus-ring grid h-11 w-11 shrink-0 place-items-center rounded-btn transition-colors',
             panel === 'daha' ? 'bg-ink/[0.07] text-ink' : 'text-ink/62 hover:bg-surface-muted hover:text-ink'
           )}
         >

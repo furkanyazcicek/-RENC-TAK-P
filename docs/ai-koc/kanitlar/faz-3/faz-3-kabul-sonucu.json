@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "status": "passed",
+  "status": "core_passed_runner_pending",
   "environment": {
     "engine": "PGlite/WASM",
     "serialized_connection": true,
@@ -12,7 +12,7 @@
   },
   "workspace": "/Users/furkantalhayazcicek/Desktop/DRKOÇ/",
   "branch": "main",
-  "git_head": "6e7105a99113067d79d4bd178ca20c3867330530",
+  "git_head": "ad88c88ff3ec51c1c1f6c6b6f412f1c0be12bcd3",
   "migration": {
     "phase_2_sha256": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea",
     "phase_3_file": "supabase/migration_learning_content_activity.sql",
@@ -20,144 +20,144 @@
   },
   "manifest": {
     "version": "learning-content-manifest@1",
-    "checksum": "6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
+    "checksum": "27736c5621643255abe01538cd26566b021ca3a90a67a7caad35eed2d789c02f",
     "entries": 4344
   },
   "sections": [
     {
       "name": "Temiz kurulum ve ikinci migration uygulaması",
       "status": "passed",
-      "duration_ms": 832.162
+      "duration_ms": 872.235
     },
     {
       "name": "Paketli gerçek manifest private kataloğa atomik yüklenir",
       "status": "passed",
-      "duration_ms": 13632.127
+      "duration_ms": 13536.291
     },
     {
       "name": "Gerçek paketli katalog kaynak RPC uçlarında çalışır",
       "status": "passed",
-      "duration_ms": 155.22
+      "duration_ms": 156.047
     },
     {
       "name": "M13–M26 registry ve SQL anlam parity",
       "status": "passed",
-      "duration_ms": 1.141
+      "duration_ms": 1.094
     },
     {
       "name": "İçerik fixture ve stable kimlik kataloğu",
       "status": "passed",
-      "duration_ms": 44.915
+      "duration_ms": 53.446
     },
     {
       "name": "Fixture sonrası ikinci migration veriyi korur",
       "status": "passed",
-      "duration_ms": 31.319
+      "duration_ms": 31.611
     },
     {
       "name": "Structured ve bundled ders atomik olayları",
       "status": "passed",
-      "duration_ms": 25.162
+      "duration_ms": 26.072
     },
     {
       "name": "Kütüphane notu yalnız tam görüntülemede exposure üretir",
       "status": "passed",
-      "duration_ms": 6.229
+      "duration_ms": 5.971
     },
     {
       "name": "DB soru seti ortak attempt yaşam döngüsünü kullanır",
       "status": "passed",
-      "duration_ms": 6.413
+      "duration_ms": 7.132
     },
     {
       "name": "Kimya sekizli manifest, retry ve server puanlama",
       "status": "passed",
-      "duration_ms": 14.302
+      "duration_ms": 15.517
     },
     {
       "name": "Geometri boş final ve sonuç ayrıntısı",
       "status": "passed",
-      "duration_ms": 5.245
+      "duration_ms": 5.424
     },
     {
       "name": "Coğrafya sunucu süresi ve yalnız final direct measurement",
       "status": "passed",
-      "duration_ms": 8.893
+      "duration_ms": 23.918
     },
     {
       "name": "Soru attempt, server scoring, correction ve refresh",
       "status": "passed",
-      "duration_ms": 10.515
+      "duration_ms": 16.635
     },
     {
       "name": "İçerik v2 eski sonucu yeniden puanlamaz",
       "status": "passed",
-      "duration_ms": 7.772
+      "duration_ms": 7.893
     },
     {
       "name": "Reset tombstone ve etkin kanıt",
       "status": "passed",
-      "duration_ms": 7.339
+      "duration_ms": 7.852
     },
     {
       "name": "Finalizasyon hata halinde kaynak ve kanıtı birlikte rollback eder",
       "status": "passed",
-      "duration_ms": 7.676
+      "duration_ms": 8.003
     },
     {
       "name": "Post-claim hata receiptleri ve PGlite seri retry",
       "status": "passed",
-      "duration_ms": 6.87
+      "duration_ms": 7.766
     },
     {
       "name": "Atlas snapshot, correction ve sahiplik",
       "status": "passed",
-      "duration_ms": 10.394
+      "duration_ms": 10.403
     },
     {
       "name": "Atlas açık sahiplik aktarımı ve kısmi resume",
       "status": "passed",
-      "duration_ms": 55.829
+      "duration_ms": 57.885
     },
     {
       "name": "Outbox kullanıcı kapsamı ve güvenli bozulma",
       "status": "passed",
-      "duration_ms": 2.01
+      "duration_ms": 2.365
     },
     {
       "name": "RLS ve private sınır",
       "status": "passed",
-      "duration_ms": 4.036
+      "duration_ms": 4.563
     },
     {
       "name": "M13, M18 ve M25 bilinçli olarak olay üretmez",
       "status": "passed",
-      "duration_ms": 17.413
+      "duration_ms": 14.563
     },
     {
       "name": "Manifest parity, JS adaptör, backfill ve health",
       "status": "passed",
-      "duration_ms": 2.376
+      "duration_ms": 2.514
     },
     {
       "name": "Faz 3 effective ledger deterministik replay checksum",
       "status": "passed",
-      "duration_ms": 53.078
+      "duration_ms": 60.953
     },
     {
       "name": "M13–M26 kaynak kapsamı makine kanıtı",
       "status": "passed",
-      "duration_ms": 3.606
+      "duration_ms": 3.808
     },
     {
       "name": "10.000 satır indeks planı ve deterministik manifest rebuild",
       "status": "passed",
-      "duration_ms": 5906.1
+      "duration_ms": 5672.732
     },
     {
       "name": "Şema envanteri ve setup sırası",
       "status": "passed",
-      "duration_ms": 9.656
+      "duration_ms": 9.579
     }
   ],
   "assertions": 450,
@@ -198,235 +198,13 @@
       "deterministic_replay_checksum": "passed"
     }
   },
-  "commands": [
-    {
-      "command": "npm run test:ai-koc-faz-1",
-      "script": "test:ai-koc-faz-1",
-      "group": "security",
-      "started_at": "2026-09-13T08:23:56.507Z",
-      "finished_at": "2026-09-13T08:23:56.720Z",
-      "duration_ms": 213,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/guvenlik-testleri.log"
-    },
-    {
-      "command": "npm run test:ai-koc-faz-2",
-      "script": "test:ai-koc-faz-2",
-      "group": "security",
-      "started_at": "2026-09-13T08:23:56.720Z",
-      "finished_at": "2026-09-13T08:24:00.972Z",
-      "duration_ms": 4252,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/guvenlik-testleri.log"
-    },
-    {
-      "command": "npm run test:ai-koc-faz-3",
-      "script": "test:ai-koc-faz-3",
-      "group": "security",
-      "started_at": "2026-09-13T08:24:00.972Z",
-      "finished_at": "2026-09-13T08:24:24.856Z",
-      "duration_ms": 23884,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/guvenlik-testleri.log"
-    },
-    {
-      "command": "npm run test:lesson-document",
-      "script": "test:lesson-document",
-      "group": "regression",
-      "started_at": "2026-09-13T08:24:24.856Z",
-      "finished_at": "2026-09-13T08:24:24.991Z",
-      "duration_ms": 135,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
-    },
-    {
-      "command": "npm run test:lesson-content",
-      "script": "test:lesson-content",
-      "group": "regression",
-      "started_at": "2026-09-13T08:24:24.991Z",
-      "finished_at": "2026-09-13T08:24:25.218Z",
-      "duration_ms": 227,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
-    },
-    {
-      "command": "npm run test:lesson-narration",
-      "script": "test:lesson-narration",
-      "group": "regression",
-      "started_at": "2026-09-13T08:24:25.218Z",
-      "finished_at": "2026-09-13T08:24:25.403Z",
-      "duration_ms": 185,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
-    },
-    {
-      "command": "npm run test:library-curriculum",
-      "script": "test:library-curriculum",
-      "group": "regression",
-      "started_at": "2026-09-13T08:24:25.403Z",
-      "finished_at": "2026-09-13T08:24:25.503Z",
-      "duration_ms": 100,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
-    },
-    {
-      "command": "npm run test:matematik-soru-kutuphanesi",
-      "script": "test:matematik-soru-kutuphanesi",
-      "group": "regression",
-      "started_at": "2026-09-13T08:24:25.504Z",
-      "finished_at": "2026-09-13T08:24:25.616Z",
-      "duration_ms": 112,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
-    },
-    {
-      "command": "npm run test:felsefe-soru-kutuphanesi",
-      "script": "test:felsefe-soru-kutuphanesi",
-      "group": "regression",
-      "started_at": "2026-09-13T08:24:25.616Z",
-      "finished_at": "2026-09-13T08:24:25.734Z",
-      "duration_ms": 117,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
-    },
-    {
-      "command": "npm run test:tarih-soru-kutuphanesi",
-      "script": "test:tarih-soru-kutuphanesi",
-      "group": "regression",
-      "started_at": "2026-09-13T08:24:25.734Z",
-      "finished_at": "2026-09-13T08:24:26.923Z",
-      "duration_ms": 1189,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
-    },
-    {
-      "command": "npm run test:kimya",
-      "script": "test:kimya",
-      "group": "regression",
-      "started_at": "2026-09-13T08:24:26.923Z",
-      "finished_at": "2026-09-13T08:24:27.031Z",
-      "duration_ms": 108,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
-    },
-    {
-      "command": "npm run test:fizik",
-      "script": "test:fizik",
-      "group": "regression",
-      "started_at": "2026-09-13T08:24:27.031Z",
-      "finished_at": "2026-09-13T08:24:27.141Z",
-      "duration_ms": 110,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
-    },
-    {
-      "command": "npm run test:biyoloji",
-      "script": "test:biyoloji",
-      "group": "regression",
-      "started_at": "2026-09-13T08:24:27.141Z",
-      "finished_at": "2026-09-13T08:24:27.249Z",
-      "duration_ms": 108,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
-    },
-    {
-      "command": "npm run test:cografya",
-      "script": "test:cografya",
-      "group": "regression",
-      "started_at": "2026-09-13T08:24:27.249Z",
-      "finished_at": "2026-09-13T08:24:27.361Z",
-      "duration_ms": 112,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
-    },
-    {
-      "command": "npm run test:tarih",
-      "script": "test:tarih",
-      "group": "regression",
-      "started_at": "2026-09-13T08:24:27.361Z",
-      "finished_at": "2026-09-13T08:24:27.572Z",
-      "duration_ms": 211,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
-    },
-    {
-      "command": "npm run test:anasayfa",
-      "script": "test:anasayfa",
-      "group": "regression",
-      "started_at": "2026-09-13T08:24:27.572Z",
-      "finished_at": "2026-09-13T08:24:27.679Z",
-      "duration_ms": 107,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log"
-    },
-    {
-      "command": "npm run build",
-      "script": "build",
-      "group": "build",
-      "started_at": "2026-09-13T08:24:27.680Z",
-      "finished_at": "2026-09-13T08:24:47.131Z",
-      "duration_ms": 19451,
-      "exit_code": 0,
-      "signal": null,
-      "status": "passed",
-      "reason": null,
-      "log_path": "docs/ai-koc/kanitlar/faz-3/build.log"
-    }
-  ],
+  "commands": [],
   "gates": [
     {
       "id": 1,
       "description": "Faz 1/Faz 2 testleri ve Faz 2 checksum",
-      "status": "passed",
-      "evidence": "npm run test:ai-koc-faz-1, npm run test:ai-koc-faz-2 ve sabit Faz 2 SHA-256"
+      "status": "pending",
+      "evidence": "Zorunlu regresyon runnerı ve/veya görsel kanıt birleştirilecek."
     },
     {
       "id": 2,
@@ -665,20 +443,20 @@
     {
       "id": 41,
       "description": "Temel ürün akışları regresyonsuz",
-      "status": "passed",
-      "evidence": "Zorunlu ders, soru kütüphanesi ve atlas regresyon komutları"
+      "status": "pending",
+      "evidence": "Zorunlu regresyon runnerı ve/veya görsel kanıt birleştirilecek."
     },
     {
       "id": 42,
       "description": "Masaüstü ve telefon görsel/etkileşim doğrulaması",
-      "status": "passed",
-      "evidence": "docs/ai-koc/kanitlar/faz-3/gorsel-dogrulama.md"
+      "status": "pending",
+      "evidence": "Zorunlu regresyon runnerı ve/veya görsel kanıt birleştirilecek."
     },
     {
       "id": 43,
       "description": "Build ve zorunlu regresyon komutları",
-      "status": "passed",
-      "evidence": "docs/ai-koc/kanitlar/faz-3/regresyon-komutlari.json"
+      "status": "pending",
+      "evidence": "Zorunlu regresyon runnerı ve/veya görsel kanıt birleştirilecek."
     },
     {
       "id": 44,
@@ -695,8 +473,8 @@
     {
       "id": 46,
       "description": "Kabul JSON gerçek komutlardan ve kanıtlardan üretildi",
-      "status": "passed",
-      "evidence": "regresyon-komutlari.json + faz-3 kabul çekirdeği + gorsel-dogrulama.md"
+      "status": "pending",
+      "evidence": "Zorunlu regresyon runnerı ve/veya görsel kanıt birleştirilecek."
     }
   ],
   "limits": [
@@ -707,8 +485,8 @@
     "status": "passed",
     "loader_version": "phase-3-content-catalog-loader@1",
     "manifest_entries": 4344,
-    "private_catalog_items": 45815,
-    "first_apply_writes": 54503,
+    "private_catalog_items": 45802,
+    "first_apply_writes": 54490,
     "second_apply_writes": 0,
     "dry_run_writes": 0,
     "conflict_rollback_verified": true,
@@ -749,8 +527,8 @@
   },
   "replay": {
     "projection": "learning_evidence_probe",
-    "first_generation_id": "58535f19-cd82-4df0-b1dd-51a18994a8c3",
-    "second_generation_id": "cad295c6-aa59-4423-bd09-76a8717158ea",
+    "first_generation_id": "3802e743-55f5-4375-af63-25eadb801085",
+    "second_generation_id": "c8ce786a-ce1d-4884-a5bd-2871421872ad",
     "row_count": 52,
     "high_water_mark": 72,
     "checksum": "ce904fb8f95bc1dfca0431c68ae831d9f14c16577500dbdd34222fb04442d238",
@@ -773,11 +551,11 @@
   "performance": {
     "engine": "PGlite/WASM",
     "progress_rows": 10000,
-    "insert_duration_ms": 110.959,
-    "indexed_query_duration_ms": 0.332,
+    "insert_duration_ms": 108.21,
+    "indexed_query_duration_ms": 0.323,
     "index_plan_observed": true,
     "manifest_entries": 4344,
-    "manifest_rebuild_duration_ms": 5750.262,
+    "manifest_rebuild_duration_ms": 5520.058,
     "manifest_checksum_stable": true,
     "manifest_rebuild_attempts": 2,
     "concurrent_source_change_retries": 0
@@ -928,32 +706,5 @@
       "target_phase": 9
     }
   ],
-  "generated_at": "2026-09-13T08:24:47.134Z",
-  "command_totals": {
-    "required": 17,
-    "passed": 17,
-    "failed": 0,
-    "skipped": 0
-  },
-  "command_logs": {
-    "regression": "docs/ai-koc/kanitlar/faz-3/regresyon-testleri.log",
-    "security": "docs/ai-koc/kanitlar/faz-3/guvenlik-testleri.log",
-    "build": "docs/ai-koc/kanitlar/faz-3/build.log"
-  },
-  "visual_validation": {
-    "status": "passed",
-    "evidence_path": "docs/ai-koc/kanitlar/faz-3/gorsel-dogrulama.md",
-    "viewports": [
-      "1440x900",
-      "768x1024",
-      "390x844"
-    ],
-    "live_data_used": false
-  },
-  "gate_totals": {
-    "required": 46,
-    "passed": 46,
-    "failed": 0,
-    "pending": 0
-  }
+  "generated_at": "2026-09-15T22:43:48.172Z"
 }

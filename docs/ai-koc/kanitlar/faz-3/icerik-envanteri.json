@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-13T15:02:21.264Z",
+  "generated_at": "2026-09-15T22:43:47.940Z",
   "workspace": "/Users/furkantalhayazcicek/Desktop/DRKOÇ/",
   "remote_services_used": false,
   "real_student_data_used": false,
@@ -30,8 +30,8 @@
     "lesson_quizzes": 428,
     "lesson_osym_simulations": 165,
     "question_sets": 3917,
-    "questions": 39271,
-    "private_catalog_items": 45815,
+    "questions": 39258,
+    "private_catalog_items": 45802,
     "database_fixture_structured_lessons": 0,
     "database_fixture_question_sets": 0
   },

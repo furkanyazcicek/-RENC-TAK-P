@@ -58,7 +58,7 @@ function ControlButton({ active, danger, label, Icon, onClick, badge, disabled, 
       aria-pressed={active !== undefined ? active : undefined}
       title={label}
       className={cn(
-        'focus-ring relative grid h-11 w-11 shrink-0 place-items-center rounded-btn border border-transparent transition-[transform,background-color,border-color,color] duration-150 active:scale-[0.96]',
+        'canli-kontrol__ikon focus-ring relative grid h-11 w-11 shrink-0 place-items-center rounded-btn border border-transparent transition-[transform,background-color,border-color,color] duration-150 active:scale-[0.96]',
         'disabled:cursor-not-allowed disabled:opacity-40',
         danger
           ? 'border-danger-400/20 bg-danger-500 text-white hover:bg-danger-600'

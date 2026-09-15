@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-13T15:02:15.707Z",
+  "generated_at": "2026-09-15T22:43:42.488Z",
   "scope": "M13-M26",
   "registry_version": "learning-content-registry@1",
   "manifest_version": "learning-content-manifest@1",
-  "manifest_checksum": "6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
+  "manifest_checksum": "27736c5621643255abe01538cd26566b021ca3a90a67a7caad35eed2d789c02f",
   "environment": "PGlite/WASM + sentetik fixture + paketli manifest",
   "live_database_read": false,
   "live_apply_performed": false,
@@ -64,8 +64,8 @@
         "generated_manifest_status_counts": {
           "source_scope_only": 103,
           "unmatched": 1804,
-          "unique_with_explicit_context": 1400,
-          "context_scope_only": 1037
+          "unique_with_explicit_context": 1442,
+          "context_scope_only": 995
         },
         "unmatched_or_ambiguous_ingest": "quarantined"
       },
@@ -260,9 +260,9 @@
       "generated_manifest_entry_count": 3914,
       "topic_mapping_state": {
         "generated_manifest_status_counts": {
-          "context_scope_only": 1037,
+          "context_scope_only": 995,
           "unmatched": 1643,
-          "unique_with_explicit_context": 1234
+          "unique_with_explicit_context": 1276
         },
         "unmatched_or_ambiguous_ingest": "quarantined"
       },
