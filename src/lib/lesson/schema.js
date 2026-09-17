@@ -220,10 +220,14 @@ export const BLOCK_SPECS = {
   // Konu sonunda "hangi bilgiyi sorar?" yerine ÖSYM'nin gerçekte ölçtüğü
   // yorumlama ve ilişki kurma becerisini görünür kılar.
   osym_insight: {
-    label: 'ÖSYM bu konuda neyi ölçüyor?',
+    label: 'Sınav bu konuda neyi ölçüyor?',
     role: 'exam',
     weight: 1,
+    // `exam` alanı bir SUNUM kararı değil, bağlam bilgisidir: aynı blok TYT'de
+    // ÖSYM'yi, LGS'de MEB merkezî sınavını anlatır. Varsayılan 'ÖSYM' olduğu
+    // için mevcut TYT dersleri kelimesi kelimesine aynı kalır.
     normalize: (b) => ({
+      exam: text(b.exam, 24) || 'ÖSYM',
       title: text(b.title, LIMITS.title),
       body: richText(b.body, LIMITS.body),
       measures: strList(b.measures ?? b.patterns, LIMITS.short, 8),
@@ -670,7 +674,7 @@ export const BLOCK_SPECS = {
   // uygulama. Her seçenek kendi gerekçesini taşır; öğrenci çözümü açınca
   // yalnız doğruyu değil çeldiricinin neden inandırıcı göründüğünü de görür.
   osym_simulation: {
-    label: 'Mini ÖSYM simülasyonu',
+    label: 'Mini sınav simülasyonu',
     role: 'active',
     weight: 2,
     normalize: (b) => {
@@ -688,6 +692,7 @@ export const BLOCK_SPECS = {
         6
       )
       return {
+        exam: text(b.exam, 24) || 'ÖSYM',
         title: text(b.title, LIMITS.title),
         passage: richText(b.passage ?? b.prompt, LIMITS.prose),
         question: richText(b.question, LIMITS.body),

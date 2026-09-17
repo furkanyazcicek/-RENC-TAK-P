@@ -115,6 +115,7 @@ import dogaVeInsan from './cografya/doga-ve-insan.js'
 import dunyaninSekliVeHareketleri from './cografya/dunyanin-sekli-ve-hareketleri.js'
 import { TYT_GEOGRAPHY_LESSONS } from './cografya/topics.js'
 import { TYT_MATH_LESSONS } from './matematik/index.js'
+import { LGS_LESSONS } from './lgs/index.js'
 
 export const LESSONS = [
   ...philosophyLessons,
@@ -197,6 +198,7 @@ export const LESSONS = [
   komunitePopulasyonEkolojisiTemel,
   komunitePopulasyonEkolojisi,
   ...TYT_HISTORY_LESSONS,
+  ...LGS_LESSONS,
 ]
 
 /** Belirli bir dersi slug ile getirir. */

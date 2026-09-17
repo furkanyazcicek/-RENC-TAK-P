@@ -251,7 +251,7 @@ export function QuestionClueBlock({ block }) {
 export function OsyMInsightBlock({ block }) {
   return (
     <aside className="border-y border-line py-5">
-      <Eyebrow tone="brand">ÖSYM bu konuda neyi ölçüyor?</Eyebrow>
+      <Eyebrow tone="brand">{block.exam || 'ÖSYM'} bu konuda neyi ölçüyor?</Eyebrow>
       <BlockTitle size="sm">{block.title}</BlockTitle>
       <Prose text={block.body} className="mt-2 text-[0.9375rem] leading-[1.75]" />
       {block.measures?.length > 0 && (
@@ -1080,7 +1080,7 @@ export function OsyMSimulationBlock({ block, onAnswered }) {
 
   return (
     <section className="lesson-stop">
-      <Eyebrow tone="exam">Mini ÖSYM simülasyonu</Eyebrow>
+      <Eyebrow tone="exam">Mini {block.exam || 'ÖSYM'} simülasyonu</Eyebrow>
       <BlockTitle>{block.title}</BlockTitle>
       {block.passage && <div className="mt-4 border-s-2 border-aqua-400 ps-4"><Prose text={block.passage} className="text-[1rem] leading-[1.85]" /></div>}
       <p className="m-0 mt-4 font-display text-[1.0625rem] font-bold leading-[1.65] text-ink"><Inline text={block.question} /></p>
