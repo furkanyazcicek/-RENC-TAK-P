@@ -12,5 +12,13 @@
  */
 
 import baglamdaSozcukAnlami from './baglamda-sozcuk-anlami.js'
+import deyimAtasozuOzdeyis from './deyim-atasozu-ozdeyis.js'
+import cumledeAnlamIliskileri from './cumlede-anlam-iliskileri.js'
+import oznelNesnelBakisAcisi from './oznel-nesnel-bakis-acisi.js'
 
-export const LGS_TURKCE_DERSLERI = [baglamdaSozcukAnlami]
+export const LGS_TURKCE_DERSLERI = [
+  baglamdaSozcukAnlami,
+  deyimAtasozuOzdeyis,
+  cumledeAnlamIliskileri,
+  oznelNesnelBakisAcisi,
+]
