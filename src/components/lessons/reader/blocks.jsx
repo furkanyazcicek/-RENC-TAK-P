@@ -406,7 +406,7 @@ export function TableBlock({ block }) {
                         type="button"
                         onClick={() => setSelectedRow(selectedRow === rowIndex ? null : rowIndex)}
                         aria-pressed={selectedRow === rowIndex}
-                        className={`focus-ring flex w-full items-center gap-2 rounded text-start font-semibold ${selectedRow === rowIndex ? 'text-brand-800' : 'text-ink'}`}
+                        className={`focus-ring flex min-h-[28px] w-full items-center gap-2 rounded text-start font-semibold ${selectedRow === rowIndex ? 'text-brand-800' : 'text-ink'}`}
                       >
                         <span className={`h-5 w-0.5 shrink-0 rounded-full ${selectedRow === rowIndex ? 'bg-brand-700' : 'bg-line-strong'}`} aria-hidden="true" />
                         <Inline text={cell} />
@@ -473,7 +473,7 @@ export function CompareBlock({ block }) {
                       type="button"
                       onClick={() => setSelectedRow(selectedRow === rowIndex ? null : rowIndex)}
                       aria-pressed={selectedRow === rowIndex}
-                      className={`focus-ring flex w-full items-center gap-2 rounded text-start ${selectedRow === rowIndex ? 'text-brand-800' : ''}`}
+                      className={`focus-ring flex min-h-[28px] w-full items-center gap-2 rounded text-start ${selectedRow === rowIndex ? 'text-brand-800' : ''}`}
                     >
                       <span className={`h-5 w-0.5 shrink-0 rounded-full ${selectedRow === rowIndex ? 'bg-brand-700' : 'bg-line-strong'}`} aria-hidden="true" />
                       <Inline text={row.label} />
@@ -936,7 +936,7 @@ export function CheckpointBlock({ block, onAnswered }) {
               <Inline text={block.hint} />
             </p>
           ) : (
-            <button type="button" onClick={() => setHintOpen(true)} className="focus-ring rounded text-[0.875rem] font-semibold text-ink/50 underline underline-offset-4 hover:text-ink/75">
+            <button type="button" onClick={() => setHintOpen(true)} className="focus-ring inline-flex min-h-[28px] items-center rounded text-[0.875rem] font-semibold text-ink/50 underline underline-offset-4 hover:text-ink/75">
               Küçük bir ipucu ver
             </button>
           )}
