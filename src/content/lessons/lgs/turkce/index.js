@@ -20,6 +20,10 @@ import paragrafYapisiVeAkisi from './paragraf-yapisi-ve-akisi.js'
 import anlatimBicimleri from './anlatim-bicimleri.js'
 import dusunceyiGelistirmeYollari from './dusunceyi-gelistirme-yollari.js'
 import metinlerArasiKarsilastirma from './metinler-arasi-karsilastirma.js'
+import sozSanatlari from './soz-sanatlari.js'
+import fiilimsiler from './fiilimsiler.js'
+import cumleninOgeleri from './cumlenin-ogeleri.js'
+import fiildeCati from './fiilde-cati.js'
 
 export const LGS_TURKCE_DERSLERI = [
   baglamdaSozcukAnlami,
@@ -31,4 +35,8 @@ export const LGS_TURKCE_DERSLERI = [
   anlatimBicimleri,
   dusunceyiGelistirmeYollari,
   metinlerArasiKarsilastirma,
+  sozSanatlari,
+  fiilimsiler,
+  cumleninOgeleri,
+  fiildeCati,
 ]
