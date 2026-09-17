@@ -28,10 +28,18 @@ export function createSupabaseContentActivityClient({ supabase, storage, userId,
   async function getAttempt(attemptId) {
     try {
       const response = await supabase.rpc('get_question_attempt_result', { p_attempt_id: attemptId })
-      if (response.error) return { status: 'unavailable', result: null }
+      if (response.error) {
+        return {
+          status: 'unavailable',
+          reason: ['PGRST202', '42883'].includes(response.error.code)
+            ? 'schema_unavailable'
+            : 'connection_unavailable',
+          result: null,
+        }
+      }
       return { status: response.data?.status ?? 'available', result: response.data }
     } catch {
-      return { status: 'unavailable', result: null }
+      return { status: 'unavailable', reason: 'connection_unavailable', result: null }
     }
   }
 

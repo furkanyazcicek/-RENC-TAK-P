@@ -44,7 +44,7 @@
     "test:library-curriculum": "node scripts/test-library-curriculum.mjs",
     "test:lgs": "node scripts/test-lgs-lessons.mjs",
     "test:question-progress": "node scripts/test-question-library-progress.mjs",
-    "test:academic-client": "node --test scripts/test-academic-client-compatibility.mjs",
+    "test:academic-client": "node --test scripts/test-academic-client-compatibility.mjs scripts/test-question-attempt-compatibility.mjs",
     "test:ai-koc-faz-1": "node scripts/test-phase-1-learning-contracts.mjs",
     "test:ai-koc-faz-2": "node scripts/test-phase-2-learning-network.mjs",
     "test:ai-koc-faz-3": "node scripts/build-phase-3-content-manifest.mjs && node scripts/test-phase-3-learning-content.mjs",

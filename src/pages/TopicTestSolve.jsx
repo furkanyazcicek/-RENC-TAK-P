@@ -7,6 +7,11 @@ import QuestionCard from '../components/tests/QuestionCard'
 import SaveStatus from '../components/learning/SaveStatus'
 import { useAuth } from '../context/AuthContext'
 import { ACTION_STATUS, isSuccessfulActionResult } from '../lib/learning/contentActivity/outbox.js'
+import {
+  browserLocalStorage,
+  readLocalQuestionAttempt,
+  saveLocalQuestionAttempt,
+} from '../lib/learning/contentActivity/questionAttemptCompatibility.js'
 import { createClientActionId, sessionActionId, useContentActivity } from '../hooks/useContentActivity.js'
 import { loadQuestionSet } from '../lib/questionLibrary'
 import { libraryReturnPath } from '../lib/libraryRoutes.js'
@@ -32,6 +37,7 @@ const SOURCE_ACTIONS = {
 }
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
+const SERVICE_PROBE_ATTEMPT_ID = '00000000-0000-4000-8000-000000000000'
 
 function hasPinnedQuestionSet(saved, test) {
   const questionIds = saved?.question_ids
@@ -60,6 +66,7 @@ export default function TopicTestSolve() {
   const [attemptState, setAttemptState] = useState('opening')
   const [answers, setAnswers] = useState({})
   const [isFinishing, setIsFinishing] = useState(false)
+  const [localPersistence, setLocalPersistence] = useState('unknown')
   const [message, setMessage] = useState('')
   const [openVersion, setOpenVersion] = useState(0)
   const startKeyRef = useRef(null)
@@ -122,16 +129,50 @@ export default function TopicTestSolve() {
     setMessage('')
 
     async function openAttempt() {
+      const localAttempt = readLocalQuestionAttempt({
+        storage: browserLocalStorage(),
+        userId: user.id,
+        test,
+      })
+
+      const useLocalCompatibility = () => {
+        setAttemptId(null)
+        setAttemptState('local_ready')
+        setAnswers(localAttempt?.answers ?? {})
+        const savedLocally = saveLocalQuestionAttempt({
+          storage: browserLocalStorage(),
+          userId: user.id,
+          test,
+          answers: localAttempt?.answers ?? {},
+          status: 'in_progress',
+        })
+        setLocalPersistence(savedLocally ? 'saved' : 'memory')
+        setMessage(savedLocally
+          ? 'Bulut kaydı şu anda kullanılamıyor. Testi tamamlayıp sonucunu görebilirsin; bu deneme hesabına ve AI Koç ilerlemene eklenmeyecek.'
+          : 'Bulut kaydı ve cihaz deposu kullanılamıyor. Testi bu sekme açık kaldığı sürece tamamlayabilirsin; bu deneme hesabına eklenmeyecek.')
+      }
+
+      if (localAttempt?.status === 'in_progress') {
+        useLocalCompatibility()
+        return
+      }
+
+      if (attemptParam && !UUID.test(attemptParam)) {
+        setAttemptState('error')
+        setMessage('Deneme bağlantısı geçersiz. Yeni bir girişim başlatabilirsin.')
+        return
+      }
+
+      const serviceProbe = await getAttempt(attemptParam || SERVICE_PROBE_ATTEMPT_ID)
+      if (!active) return
+      if (serviceProbe.status === 'unavailable') {
+        useLocalCompatibility()
+        return
+      }
+
       if (attemptParam) {
-        if (!UUID.test(attemptParam)) {
-          setAttemptState('error')
-          setMessage('Deneme bağlantısı geçersiz. Yeni bir girişim başlatabilirsin.')
-          return
-        }
-        const response = await getAttempt(attemptParam)
-        if (!active) return
-        const saved = response.result
-        if (response.status !== 'available' || !saved
+        const saved = serviceProbe.result
+        if (serviceProbe.status !== 'available' || !saved
           || saved.source_code !== test.source_code
           || saved.content_id !== contentId
           || saved.content_revision !== contentRevision
@@ -199,7 +240,8 @@ export default function TopicTestSolve() {
 
   const answeredCount = Object.keys(answers).length
   const totalCount = test?.questions?.length ?? 0
-  const canAnswer = Boolean(attemptState === 'ready' && attemptId && sourceActions
+  const isLocalCompatibility = attemptState === 'local_ready'
+  const canAnswer = Boolean((isLocalCompatibility || (attemptState === 'ready' && attemptId)) && sourceActions
     && (role === 'student' || visualPreview) && !isFinishing)
   const difficulty = useMemo(
     () => DIFFICULTY_LABELS[test?.questions?.[0]?.difficulty] || 'Kavrama',
@@ -208,7 +250,21 @@ export default function TopicTestSolve() {
 
   async function handleSelect(questionId, optionId) {
     if (!canAnswer || finishingRef.current) return
-    setAnswers((previous) => ({ ...previous, [questionId]: optionId }))
+    setAnswers((previous) => {
+      const next = { ...previous, [questionId]: optionId }
+      if (isLocalCompatibility) {
+        const savedLocally = saveLocalQuestionAttempt({
+          storage: browserLocalStorage(),
+          userId: user.id,
+          test,
+          answers: next,
+          status: 'in_progress',
+        })
+        setLocalPersistence(savedLocally ? 'saved' : 'memory')
+      }
+      return next
+    })
+    if (isLocalCompatibility) return
     if (visualPreview) {
       setMessage(visualNetworkError
         ? 'Seçimin bu cihazda korunuyor; bağlantı geldiğinde yeniden gönderilecek.'
@@ -233,6 +289,19 @@ export default function TopicTestSolve() {
 
   async function handleFinish() {
     if (!canAnswer || finishingRef.current) return
+    if (isLocalCompatibility) {
+      saveLocalQuestionAttempt({
+        storage: browserLocalStorage(),
+        userId: user.id,
+        test,
+        answers,
+        status: 'completed',
+      })
+      navigate(`/kutuphane/sorular/test/${topicSlug}/${testId}/result?local=1`, {
+        state: { returnTo, localAnswers: answers },
+      })
+      return
+    }
     if (visualPreview) {
       if (visualNetworkError) {
         setMessage('Bekleyen cevapların henüz sunucuya ulaşmadı. Seçimlerin bu cihazda korunuyor.')
@@ -381,8 +450,12 @@ export default function TopicTestSolve() {
 
         <div className="sticky bottom-3 z-10 flex flex-col items-center justify-between gap-3 rounded-2xl border border-line bg-background/95 p-3 shadow-xl backdrop-blur-md sm:bottom-6 sm:flex-row sm:p-4">
           <SaveStatus
-            status={visualNetworkError ? ACTION_STATUS.retrying : status}
-            onRetry={visualPreview
+            status={isLocalCompatibility
+              ? localPersistence === 'saved' ? ACTION_STATUS.protected_local : ACTION_STATUS.idle
+              : visualNetworkError ? ACTION_STATUS.retrying : status}
+            onRetry={isLocalCompatibility
+              ? null
+              : visualPreview
               ? () => setMessage('Bağlantı hâlâ yok; seçimin bu cihazda korunuyor.')
               : () => void retryPending()}
             className="[&_button]:min-h-11"

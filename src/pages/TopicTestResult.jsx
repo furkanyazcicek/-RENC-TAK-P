@@ -1,11 +1,17 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import { AlertCircle, ArrowRight, CheckCircle } from 'lucide-react'
+import { AlertCircle, ArrowRight, CheckCircle, CloudOff } from 'lucide-react'
 import { AppShell, Button, EmptyState } from '../components/ui'
 import LibraryReturnButton from '../components/library/LibraryReturnButton'
 import QuestionCard from '../components/tests/QuestionCard'
 import { useAuth } from '../context/AuthContext'
 import { clearSessionActionId, useContentActivity } from '../hooks/useContentActivity.js'
+import {
+  browserLocalStorage,
+  buildLocalQuestionResult,
+  clearLocalQuestionAttempt,
+  readLocalQuestionAttempt,
+} from '../lib/learning/contentActivity/questionAttemptCompatibility.js'
 import { loadQuestionSet } from '../lib/questionLibrary'
 import { libraryReturnPath } from '../lib/libraryRoutes.js'
 
@@ -18,6 +24,7 @@ export default function TopicTestResult() {
   const { user, loading: authLoading } = useAuth()
   const [searchParams] = useSearchParams()
   const attemptId = searchParams.get('attempt')
+  const localMode = searchParams.get('local') === '1'
   const visualPreview = import.meta.env.DEV && searchParams.get('faz3-onizleme') === 'sonuc'
   const returnTo = libraryReturnPath('questions', location.state?.returnTo)
   const [test, setTest] = useState(null)
@@ -27,6 +34,34 @@ export default function TopicTestResult() {
   const { getAttempt } = useContentActivity(user?.id)
 
   useEffect(() => {
+    if (localMode) {
+      if (authLoading || !user?.id) return undefined
+      let active = true
+      setState('loading')
+      loadQuestionSet(testId, topicSlug).then((foundTest) => {
+        if (!active) return
+        if (!foundTest) {
+          setState('not_found')
+          return
+        }
+        const saved = readLocalQuestionAttempt({
+          storage: browserLocalStorage(),
+          userId: user.id,
+          test: foundTest,
+        })
+        const localAnswers = saved?.status === 'completed'
+          ? saved.answers
+          : location.state?.localAnswers
+        if (!localAnswers) {
+          setState('not_found')
+          return
+        }
+        setTest(foundTest)
+        setResult(buildLocalQuestionResult(foundTest, localAnswers))
+        setState('ready')
+      })
+      return () => { active = false }
+    }
     if (visualPreview) {
       let active = true
       setState('loading')
@@ -102,7 +137,8 @@ export default function TopicTestResult() {
       setState('ready')
     })
     return () => { active = false }
-  }, [attemptId, authLoading, getAttempt, retryVersion, testId, topicSlug, user?.id, visualPreview])
+  }, [attemptId, authLoading, getAttempt, localMode, location.state?.localAnswers,
+    retryVersion, testId, topicSlug, user?.id, visualPreview])
 
   const answers = useMemo(
     () => Object.fromEntries((result?.answers ?? []).map((answer) => [answer.question_id, answer])),
@@ -120,7 +156,9 @@ export default function TopicTestResult() {
     && Number(result?.total_count) === detailQuestionIds.length)
 
   function startAgain() {
-    if (user?.id && test && result) {
+    if (result?.local_only && user?.id && test) {
+      clearLocalQuestionAttempt({ storage: browserLocalStorage(), userId: user.id, test })
+    } else if (user?.id && test && result) {
       clearSessionActionId(`${user.id}:${result.source_code}:${result.content_id}:${result.content_revision}:start`)
     }
     navigate(`/kutuphane/sorular/test/${topicSlug}/${testId}`, { state: { returnTo } })
@@ -165,6 +203,14 @@ export default function TopicTestResult() {
       headerAction={<LibraryReturnButton kind="questions" onClick={() => navigate(returnTo)} />}
     >
       <main className="mx-auto max-w-3xl px-4 py-8 sm:py-12">
+        {result.local_only ? (
+          <div className="mb-6 flex items-start gap-3 rounded-xl border border-warning-500/25 bg-warning-50 p-4 text-left text-sm text-ink" role="status">
+            <CloudOff className="mt-0.5 h-4 w-4 shrink-0 text-warning-700" aria-hidden="true" />
+            <p className="m-0">
+              Bu sonuç yalnız bu cihazda hesaplandı. Canlı kayıt servisi hazır olmadığı için hesabına ve AI Koç ilerlemene eklenmedi.
+            </p>
+          </div>
+        ) : null}
         {result.visual_preview ? (
           <p className="mb-6 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-left text-sm text-brand-900" role="status">
             Sonuç ekranı görsel doğrulama örneği; canlı girişim veya öğrenci verisi kullanılmaz.
@@ -176,7 +222,9 @@ export default function TopicTestResult() {
           </div>
           <h1 id="result-title" className="mb-2 text-2xl font-bold sm:text-3xl">Test tamamlandı</h1>
           <p className="mx-auto mb-8 max-w-xl text-base text-muted sm:text-lg">
-            Aşağıdaki sayılar sabitlenmiş içerik sürümündeki cevap anahtarından sunucuda hesaplandı.
+            {result.local_only
+              ? 'Aşağıdaki sonuç bu testin mevcut cevap anahtarına göre cihazında hesaplandı.'
+              : 'Aşağıdaki sayılar sabitlenmiş içerik sürümündeki cevap anahtarından sunucuda hesaplandı.'}
           </p>
 
           <dl className="mb-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-4">
