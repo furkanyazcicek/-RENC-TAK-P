@@ -21,7 +21,10 @@ import {
   bundledQuestionSetsForTopic,
   loadQuestionProgressForSets,
 } from '../lib/questionLibrary'
-import { createQuestionLibraryCatalog } from '../lib/questionLibraryCatalog'
+import {
+  createQuestionLibraryCatalog,
+  resolveQuestionLibraryRemoteData,
+} from '../lib/questionLibraryCatalog'
 import {
   indexLatestQuestionProgress,
   progressForQuestionSet,
@@ -38,6 +41,7 @@ import {
 } from '../data/highSchoolCurriculum'
 import {
   AppShell,
+  Alert,
   Badge,
   Button,
   EmptyState,
@@ -202,6 +206,7 @@ export default function QuestionLibrary() {
   const [setsByTopic, setSetsByTopic] = useState({})
   const [loading, setLoading] = useState(true)
   const [loadError, setLoadError] = useState(false)
+  const [remoteWarning, setRemoteWarning] = useState(false)
   const [search, setSearch] = useState('')
   const [progressView, setProgressView] = useState({
     scope: null,
@@ -212,19 +217,23 @@ export default function QuestionLibrary() {
   const load = useCallback(async () => {
     setLoading(true)
     setLoadError(false)
+    setRemoteWarning(false)
 
     try {
-      const [subjectsRes, topicsRes, setsRes] = await Promise.all([
+      const results = await Promise.allSettled([
         supabase.from('library_subjects').select('*').order('exam_type').order('order_index'),
         supabase.from('library_topics').select('*').order('order_index'),
         supabase.from('library_question_sets').select('id, topic_id, title, description, difficulty, question_count, questions').eq('status', 'published').order('order_index'),
       ])
-      const requestError = subjectsRes.error ?? topicsRes.error ?? setsRes.error
-      if (requestError) throw requestError
+      const remote = resolveQuestionLibraryRemoteData(results)
+      if (remote.errors.length > 0) {
+        console.warn('Soru kütüphanesinin çevrimiçi kaynağı kullanılamıyor:', remote.errors)
+      }
+      setRemoteWarning(remote.hasUnexpectedError)
 
       const grouped = {}
-      ;(setsRes.data ?? []).forEach((set) => { (grouped[set.topic_id] ??= []).push(set) })
-      const catalog = createQuestionLibraryCatalog(subjectsRes.data ?? [], topicsRes.data ?? [])
+      remote.questionSets.forEach((set) => { (grouped[set.topic_id] ??= []).push(set) })
+      const catalog = createQuestionLibraryCatalog(remote.subjects, remote.topics)
       const gradeData = createGradeLibraryData(catalog.subjects, catalog.topics)
       setSubjects([...catalog.subjects, ...gradeData.subjects])
       setTopics([...catalog.topics, ...gradeData.topics])
@@ -398,6 +407,15 @@ export default function QuestionLibrary() {
   return <AppShell title="Soru Kütüphanesi" subtitle="Konu bazlı testler, kavrama soruları ve soru bankaları" loading={loading} loadingLabel="Soru kütüphanesi yükleniyor…" showPageIntro={false}>
     <DashboardHero asPageHeader eyebrow="Ders Kütüphanesi / Sorular" title={selectedTopic?.name ?? selectedSubject?.name ?? currentCollection?.label ?? examType ?? 'Soru Kütüphanesi'} subtitle={selectedTopic ? `${selectedSubject?.name} · ${currentCollection?.label ?? examType} · Test ve soru setleri` : 'Sınavını veya sınıfını seç, dersten konuya inerek testlere ulaş'} />
     <Breadcrumb items={crumbs} />
+
+    {remoteWarning && (
+      <Alert tone="warning" title="Çevrimiçi soru setlerine ulaşılamadı">
+        <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <span>Hazır soru bankalarını kullanmaya devam edebilirsin. Bağlantı düzeldiğinde diğer setler de yeniden görünecek.</span>
+          <Button variant="ghost" size="sm" onClick={load}>Yeniden dene</Button>
+        </div>
+      </Alert>
+    )}
 
     {!examType && <LibraryCategorySelector examTypes={EXAM_TYPES} statsForKey={statsForKey} onSelect={(key) => go({ examType: key })} tone="accent" />}
 

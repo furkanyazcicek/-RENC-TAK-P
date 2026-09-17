@@ -9,11 +9,28 @@ import {
   bundledQuestionSetsForTopic,
   loadQuestionSet,
 } from '../src/lib/questionLibrary.js'
-import { createQuestionLibraryCatalog } from '../src/lib/questionLibraryCatalog.js'
+import {
+  createQuestionLibraryCatalog,
+  resolveQuestionLibraryRemoteData,
+} from '../src/lib/questionLibraryCatalog.js'
+
+const remoteFallback = resolveQuestionLibraryRemoteData([
+  { status: 'fulfilled', value: { data: [], error: null } },
+  { status: 'fulfilled', value: { data: [], error: null } },
+  {
+    status: 'fulfilled',
+    value: {
+      data: null,
+      error: { code: 'PGRST205', message: "Could not find 'public.library_question_sets'" },
+    },
+  },
+])
+assert.deepEqual(remoteFallback.questionSets, [])
+assert.equal(remoteFallback.hasUnexpectedError, false)
 
 // Paketli soru bankalarının sayfa kataloğunda birlikte kurulabildiğini
 // doğrula. Bu zincirdeki tek bir eksik adım ekranı yükleniyor durumunda bırakır.
-const catalog = createQuestionLibraryCatalog([], [])
+const catalog = createQuestionLibraryCatalog(remoteFallback.subjects, remoteFallback.topics)
 assert.equal(
   catalog.subjects.some((subject) => subject.exam_type === 'TYT' && subject.name === 'Din Kültürü ve Ahlak Bilgisi'),
   true,
