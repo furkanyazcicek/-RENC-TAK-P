@@ -9,6 +9,21 @@ import {
   bundledQuestionSetsForTopic,
   loadQuestionSet,
 } from '../src/lib/questionLibrary.js'
+import { createQuestionLibraryCatalog } from '../src/lib/questionLibraryCatalog.js'
+
+// Paketli soru bankalarının sayfa kataloğunda birlikte kurulabildiğini
+// doğrula. Bu zincirdeki tek bir eksik adım ekranı yükleniyor durumunda bırakır.
+const catalog = createQuestionLibraryCatalog([], [])
+assert.equal(
+  catalog.subjects.some((subject) => subject.exam_type === 'TYT' && subject.name === 'Din Kültürü ve Ahlak Bilgisi'),
+  true,
+  'Din Kültürü soru bankası katalog zincirinde bulunmalı.'
+)
+assert.equal(
+  catalog.subjects.some((subject) => subject.exam_type === 'TYT' && subject.name === 'Türkçe'),
+  true,
+  'TYT Türkçe soru bankası katalog zincirinde bulunmalı.'
+)
 
 // 1. Ders Listesi Doğrulaması
 const emptySubjects = withTurkceQuestionBankSubjects([])

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import {
   ArrowLeft,
+  AlertCircle,
   Award,
   BookOpen,
   Briefcase,
@@ -20,39 +21,12 @@ import {
   bundledQuestionSetsForTopic,
   loadQuestionProgressForSets,
 } from '../lib/questionLibrary'
+import { createQuestionLibraryCatalog } from '../lib/questionLibraryCatalog'
 import {
   indexLatestQuestionProgress,
   progressForQuestionSet,
   summarizeQuestionProgress,
 } from '../lib/questionProgress'
-import {
-  withMathQuestionBankSubjects,
-  withMathQuestionBankTopics,
-} from '../content/tests/matematik/question-bank.js'
-import {
-  withPhilosophyQuestionBankSubjects,
-  withPhilosophyQuestionBankTopics,
-} from '../content/tests/felsefe/question-bank.js'
-import {
-  withHistoryQuestionBankSubjects,
-  withHistoryQuestionBankTopics,
-} from '../content/tests/tarih/question-bank.js'
-import {
-  withDinKulturuQuestionBankSubjects,
-  withDinKulturuQuestionBankTopics,
-} from '../content/tests/din_kulturu/question-bank.js'
-import {
-  withCografyaQuestionBankSubjects,
-  withCografyaQuestionBankTopics,
-} from '../content/tests/cografya/question-bank.js'
-import {
-  withLgsTurkceQuestionBankSubjects,
-  withLgsTurkceQuestionBankTopics,
-} from '../content/tests/lgs_turkce/question-bank.js'
-import {
-  withTurkceQuestionBankSubjects,
-  withTurkceQuestionBankTopics,
-} from '../content/tests/turkce/question-bank.js'
 
 import { emekliKonuMu } from '../content/emekliKonular'
 import { useAuth } from '../context/AuthContext'
@@ -227,6 +201,7 @@ export default function QuestionLibrary() {
   const [topics, setTopics] = useState([])
   const [setsByTopic, setSetsByTopic] = useState({})
   const [loading, setLoading] = useState(true)
+  const [loadError, setLoadError] = useState(false)
   const [search, setSearch] = useState('')
   const [progressView, setProgressView] = useState({
     scope: null,
@@ -235,32 +210,31 @@ export default function QuestionLibrary() {
   })
 
   const load = useCallback(async () => {
-    const [subjectsRes, topicsRes, setsRes] = await Promise.all([
-      supabase.from('library_subjects').select('*').order('exam_type').order('order_index'),
-      supabase.from('library_topics').select('*').order('order_index'),
-      supabase.from('library_question_sets').select('id, topic_id, title, description, difficulty, question_count, questions').eq('status', 'published').order('order_index'),
-    ])
-    const grouped = {}
-    ;(setsRes.data ?? []).forEach((set) => { (grouped[set.topic_id] ??= []).push(set) })
-    const remoteSubjects = subjectsRes.data ?? []
-    const mathSubjects = withMathQuestionBankSubjects(remoteSubjects)
-    const philosophySubjects = withPhilosophyQuestionBankSubjects(mathSubjects)
-    const catalogSubjects = withHistoryQuestionBankSubjects(philosophySubjects)
-    const cografyaSubjects = withCografyaQuestionBankSubjects(catalogSubjects)
-    const lgsTurkceSubjects = withLgsTurkceQuestionBankSubjects(dinKulturuSubjects)
-    const finalSubjects = withTurkceQuestionBankSubjects(lgsTurkceSubjects)
-    const mathTopics = withMathQuestionBankTopics(finalSubjects, topicsRes.data ?? [])
-    const philosophyTopics = withPhilosophyQuestionBankTopics(finalSubjects, mathTopics)
-    const historyTopics = withHistoryQuestionBankTopics(finalSubjects, philosophyTopics)
-    const cografyaTopics = withCografyaQuestionBankTopics(finalSubjects, historyTopics)
-    const dinKulturuTopics = withDinKulturuQuestionBankTopics(finalSubjects, cografyaTopics)
-    const lgsTurkceTopics = withLgsTurkceQuestionBankTopics(finalSubjects, dinKulturuTopics)
-    const finalTopics = withTurkceQuestionBankTopics(finalSubjects, lgsTurkceTopics)
-    const gradeData = createGradeLibraryData(finalSubjects, finalTopics)
-    setSubjects([...finalSubjects, ...gradeData.subjects])
-    setTopics([...finalTopics, ...gradeData.topics])
-    setSetsByTopic(grouped)
-    setLoading(false)
+    setLoading(true)
+    setLoadError(false)
+
+    try {
+      const [subjectsRes, topicsRes, setsRes] = await Promise.all([
+        supabase.from('library_subjects').select('*').order('exam_type').order('order_index'),
+        supabase.from('library_topics').select('*').order('order_index'),
+        supabase.from('library_question_sets').select('id, topic_id, title, description, difficulty, question_count, questions').eq('status', 'published').order('order_index'),
+      ])
+      const requestError = subjectsRes.error ?? topicsRes.error ?? setsRes.error
+      if (requestError) throw requestError
+
+      const grouped = {}
+      ;(setsRes.data ?? []).forEach((set) => { (grouped[set.topic_id] ??= []).push(set) })
+      const catalog = createQuestionLibraryCatalog(subjectsRes.data ?? [], topicsRes.data ?? [])
+      const gradeData = createGradeLibraryData(catalog.subjects, catalog.topics)
+      setSubjects([...catalog.subjects, ...gradeData.subjects])
+      setTopics([...catalog.topics, ...gradeData.topics])
+      setSetsByTopic(grouped)
+    } catch (error) {
+      console.error('Soru kütüphanesi yüklenemedi:', error)
+      setLoadError(true)
+    } finally {
+      setLoading(false)
+    }
   }, [])
 
   useEffect(() => { load() }, [load])
@@ -407,6 +381,19 @@ export default function QuestionLibrary() {
   if (examType) crumbs.push({ label: currentCollection?.label ?? examType, onClick: () => go({ examType }) })
   if (selectedSubject) crumbs.push({ label: selectedSubject.name, onClick: () => go({ examType, subject: selectedSubject }) })
   if (selectedTopic) crumbs.push({ label: selectedTopic.name })
+
+  if (loadError) {
+    return (
+      <AppShell title="Soru Kütüphanesi" subtitle="Konu bazlı testler, kavrama soruları ve soru bankaları">
+        <EmptyState
+          icon={AlertCircle}
+          title="Soru kütüphanesi yüklenemedi"
+          description="Bağlantını kontrol edip yeniden deneyebilirsin. Kayıtlı test sonuçların bu durumdan etkilenmedi."
+          action={<Button onClick={load}>Yeniden dene</Button>}
+        />
+      </AppShell>
+    )
+  }
 
   return <AppShell title="Soru Kütüphanesi" subtitle="Konu bazlı testler, kavrama soruları ve soru bankaları" loading={loading} loadingLabel="Soru kütüphanesi yükleniyor…" showPageIntro={false}>
     <DashboardHero asPageHeader eyebrow="Ders Kütüphanesi / Sorular" title={selectedTopic?.name ?? selectedSubject?.name ?? currentCollection?.label ?? examType ?? 'Soru Kütüphanesi'} subtitle={selectedTopic ? `${selectedSubject?.name} · ${currentCollection?.label ?? examType} · Test ve soru setleri` : 'Sınavını veya sınıfını seç, dersten konuya inerek testlere ulaş'} />
