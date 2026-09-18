@@ -1095,6 +1095,13 @@ export const LGS_SCIENCE_FIGURES = {
     // SIRA ÖNEMLİ: uretici → birincil → ikincil → ucuncul
     regions: ['uretici', 'birincil', 'ikincil', 'ucuncul'],
   },
+  'lgs-fen-karbon-dongusu': {
+    label: 'Karbon ve oksijen döngüsü',
+    minWidth: 620,
+    markers: 'numbered',
+    // SIRA ÖNEMLİ: fotosentez → solunum → ayristirma → yanma
+    regions: ['fotosentez', 'solunum', 'ayristirma', 'yanma'],
+  },
 }
 
 Object.assign(FIGURE_META, LGS_SCIENCE_FIGURES)

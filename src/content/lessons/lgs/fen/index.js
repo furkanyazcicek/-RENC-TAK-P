@@ -23,6 +23,7 @@ import turkiyedeKimyaEndustrisi from './turkiyede-kimya-endustrisi.js'
 import basitMakineler from './basit-makineler.js'
 import besinZinciri from './besin-zinciri-ve-enerji-akisi.js'
 import fotosentezVeSolunum from './fotosentez-ve-solunum.js'
+import maddeDonguleriVeIklim from './madde-donguleri-ve-iklim.js'
 
 export const LGS_FEN_DERSLERI = [
   mevsimlerinOlusumu,
@@ -43,4 +44,5 @@ export const LGS_FEN_DERSLERI = [
   basitMakineler,
   besinZinciri,
   fotosentezVeSolunum,
+  maddeDonguleriVeIklim,
 ]
