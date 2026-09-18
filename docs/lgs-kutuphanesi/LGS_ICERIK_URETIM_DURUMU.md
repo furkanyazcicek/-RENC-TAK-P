@@ -18,15 +18,14 @@
 | Aşama 2 — LGS içerik altyapısı | ✅ Tamamlandı |
 | Aşama 3 — Türkçe Gold Standard | ✅ Tamamlandı |
 | Aşama 4 — **Türkçe kapsamı** | ✅ **Tamamlandı — 41/41 ölçülebilir kazanım (%100)** |
-| Aşama 5 — Fen Bilimleri | 🔄 Sürüyor — 50/61 kazanım (%82) |
-| Aşama 6 — İnkılap Tarihi | ⏸ Fen bitene kadar başlamaz |
+| Aşama 5 — **Fen Bilimleri** | ✅ **Tamamlandı — 61/61 ölçülebilir kazanım (%100) · 23 ders** |
+| Aşama 6 — İnkılap Tarihi | 🔄 Başlıyor |
 | Aşama 7 — Son denetim | ⏸ — |
 
-**Aktif ders:** Fen Bilimleri
-**Son tamamlanan ders notu:** `lgs-fen-surdurulebilir-kalkinma` (F.8.6.4.1–F.8.6.4.5)
-**Tamamlanan üniteler:** F.8.1 · F.8.2 · F.8.3 · F.8.4 · F.8.5 · F.8.6 (6/7)
-**Sıradaki kesin kazanım:** F.8.7.1.1 — “Elektriklenmeyi, bazı doğa olayları ve teknolojideki uygulama örnekleri ile açıklar.”
-**Sıradaki ders notu:** `lgs-fen-elektriklenme` · konu: Elektrik Yükleri ve Elektrik Enerjisi · sıra 1
+**Aktif ders:** T.C. İnkılap Tarihi ve Atatürkçülük
+**Son tamamlanan ders:** Fen Bilimleri (23 ders · 61 kazanım · 7/7 ünite)
+**Sıradaki kesin kazanım:** İTA.8.1.1
+**Sıradaki ders notu:** İnkılap Tarihi planının 1. dersi (matris §4)
 
 ---
 
@@ -79,23 +78,27 @@ Her ders, kazanım açıklamasındaki sınırı **açıkça** uygular ve öğren
 
 ---
 
-## 3. Fen Bilimleri — sürüyor
+## 3. Fen Bilimleri — tamamlandı
 
-**Kapsama: 50/61 ölçülebilir kazanım (%82) · 20 ders · 6/7 ünite tamamlandı**
+**Kapsama: 61/61 ölçülebilir kazanım (%100) · 23 ders · 7/7 ünite · hepsi 100/100**
 
-İlk 15 dersin tablosu önceki sürümdedir; 16–20. dersler:
+16–23. dersler (ilk 15 ders yukarıdaki tabloda):
 
-| # | Ders notu | Kazanımlar | Durum |
+| # | Ders notu | Kazanımlar | Not |
 |---|---|---|---|
-| 16 | Basit Makineler: Kazanç Neyin Kazancı? | F.8.5.1.1 · F.8.5.1.2 | ✅ iki yeni şema: kaldıraç türleri; dişli, vida, kasnak |
-| 17 | Besin Zinciri, Besin Ağı ve Ekoloji Piramidi | F.8.6.1.1 | ✅ yeni şema: ekoloji piramidi |
-| 18 | Fotosentez ve Solunum: Enerjinin İki Yüzü | F.8.6.2.1–3 | ✅ |
-| 19 | Madde Döngüleri ve Küresel İklim Değişikliği | F.8.6.3.1–3 | ✅ yeni şema: karbon ve oksijen döngüsü |
-| 20 | Sürdürülebilir Yaşam: Tasarruf, Geri Dönüşüm ve Gelecek | F.8.6.4.1–5 | ✅ |
+| 16 | Basit Makineler: Kazanç Neyin Kazancı? | F.8.5.1.1 · F.8.5.1.2 | şemalar: kaldıraç türleri; dişli, vida, kasnak |
+| 17 | Besin Zinciri, Besin Ağı ve Ekoloji Piramidi | F.8.6.1.1 | şema: ekoloji piramidi |
+| 18 | Fotosentez ve Solunum: Enerjinin İki Yüzü | F.8.6.2.1–3 | kimyasal denklem yok |
+| 19 | Madde Döngüleri ve Küresel İklim Değişikliği | F.8.6.3.1–3 | şema: karbon ve oksijen döngüsü |
+| 20 | Sürdürülebilir Yaşam: Tasarruf, Geri Dönüşüm ve Gelecek | F.8.6.4.1–5 | Sıfır Atık renk standardı doğrulandı |
+| 21 | Elektriklenme: Elektronun Yolculuğu | F.8.7.1.1–3 | şema: elektriklenme çeşitleri |
+| 22 | Nötr Cisim, Elektroskop ve Topraklama | F.8.7.2.1 · F.8.7.2.2 | şema: yük durumları ve topraklama; elektroskop prensibine girilmedi |
+| 23 | Elektrik Enerjisi: Dönüşüm, Üretim ve Tasarruf | F.8.7.3.1–6 | şema: güç santrallerinin ortak zinciri; model yalnız pille |
 
-Bütün Fen dersleri 100/100 derinlik puanı alıyor; kelime sayıları 3.883–5.210 arasında.
-
-**Kalan ünite:** F.8.7 Elektrik Yükleri ve Elektrik Enerjisi (11 kazanım, 3 ders)
+**Yeni şemalar (10):** değişken ilişkisi, ısınma grafiği, kaldıraç türleri, dişli–vida–kasnak,
+ekoloji piramidi, karbon döngüsü, elektriklenme çeşitleri, yük durumları, güç santralleri
+(ve Gold Standard için değişken şeması). Hepsi masaüstünde çakışma/taşma ölçümünden geçti;
+telefonda kendi kutusunda yatay kayar, sayfa taşmaz.
 
 Ders planının tamamı: `LGS_MUFREDAT_KAZANIM_MATRISI.md` §3.1 (23 ders).
 
@@ -198,14 +201,13 @@ yazılmıştı; `Prose` bileşeni bilinçli olarak Markdown tablosu desteklemiyo
 
 ## 8. Sonraki oturum buradan devam eder
 
-1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**F.8.7.1.1**).
-2. Elektrik ünitesinin üç dersini yaz: `lgs-fen-elektriklenme` (F.8.7.1.1–3),
-   `lgs-fen-elektroskop-ve-topraklama` (F.8.7.2.1–2), `lgs-fen-elektrik-enerjisi-donusumu`
-   (F.8.7.3.1–6). **Program açıklamaları:** nötr cisim yüksüz değildir; elektroskopun çalışma
-   prensibine girilmez; topraklamada can ve mal güvenliği vurgulanır; sigortanın önemi,
-   robotlar; hidroelektrik, termik, rüzgâr, jeotermal ve nükleer santraller; kaçak elektriğin
-   zararı; tasarım kazanımı (F.8.7.3.2) önce çizimle.
-3. Ders dosyasında yalnız kazanım kodu yaz; fabrika resmî metni kendisi basar.
-4. `npm run test:lgs` → `npm run test:lesson-content` → `npm run build`.
-5. Fen %100 olunca Aşama 6 (İnkılap Tarihi) başlar; matris §4'teki 25 derslik plan izlenir.
-6. Bu dosyayı ve matristeki durum sütununu güncelle.
+1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.1.1**).
+2. İnkılap Tarihi için önce altyapı: `src/content/lessons/lgs/inkilap/` klasörü, Fen'deki
+   gibi `resmiProgram.js` (K3 tam metninden birebir) ve kendi fabrikası (kronoloji,
+   sebep–gelişme–sonuç–sonraki etki, birincil/ikincil kaynak, belge yorumu).
+3. **Bağlayıcı kurallar:** tarih, isim ve antlaşma maddeleri en az iki güvenilir resmî
+   kaynakla doğrulanır; tek nedenli anlatı yok; koordinat, sınır ya da cephe hattı
+   uydurulmaz — şematik harita kullanılırsa “şematiktir” notu ve kaynak notu taşır;
+   TYT tarih içeriği kopyalanmaz.
+4. İlk İnkılap dersi Gold Standard adayıdır: masaüstü ve telefonda önizleme zorunlu.
+5. Her ders sonrası `npm run test:lgs` → `npm run test:lesson-content` → `npm run build`.

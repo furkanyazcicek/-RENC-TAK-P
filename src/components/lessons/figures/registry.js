@@ -1116,6 +1116,13 @@ export const LGS_SCIENCE_FIGURES = {
     // SIRA ÖNEMLİ: pozitif → notr → negatif → topraklama
     regions: ['pozitif', 'notr', 'negatif', 'topraklama'],
   },
+  'lgs-fen-guc-santralleri': {
+    label: 'Güç santrallerinin ortak zinciri',
+    minWidth: 620,
+    markers: 'numbered',
+    // SIRA ÖNEMLİ: hidroelektrik → termik → ruzgar → jeotermal → nukleer
+    regions: ['hidroelektrik', 'termik', 'ruzgar', 'jeotermal', 'nukleer'],
+  },
 }
 
 Object.assign(FIGURE_META, LGS_SCIENCE_FIGURES)

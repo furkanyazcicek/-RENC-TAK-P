@@ -215,7 +215,7 @@ düzeltmesi gerekmiyor.
 | 20 | Enerji Dönüşümleri ve Çevre Bilimi | Sürdürülebilir Kalkınma ve Geri Dönüşüm | `lgs-fen-surdurulebilir-kalkinma` | F.8.6.4.1–F.8.6.4.5 | ✅ tamamlandı |
 | 21 | Elektrik Yükleri ve Elektrik Enerjisi | Elektriklenme ve Elektrik Yükleri | `lgs-fen-elektriklenme` | F.8.7.1.1, F.8.7.1.2, F.8.7.1.3 | ✅ tamamlandı |
 | 22 | Elektrik Yükleri ve Elektrik Enerjisi | Yüklü Cisimler, Elektroskop ve Topraklama | `lgs-fen-elektroskop-ve-topraklama` | F.8.7.2.1, F.8.7.2.2 | ✅ tamamlandı |
-| 23 | Elektrik Yükleri ve Elektrik Enerjisi | Elektrik Enerjisinin Dönüşümü ve Güç Santralleri | `lgs-fen-elektrik-enerjisi-donusumu` | F.8.7.3.1–F.8.7.3.6 | planlandı |
+| 23 | Elektrik Yükleri ve Elektrik Enerjisi | Elektrik Enerjisinin Dönüşümü ve Güç Santralleri | `lgs-fen-elektrik-enerjisi-donusumu` | F.8.7.3.1–F.8.7.3.6 | ✅ tamamlandı |
 
 ## 3.2. Fen — kazanım listesi ve bağlayıcı sınırlar
 
