@@ -5,7 +5,7 @@
 > bağlanabiliyorsa yazılır, bir kazanım ancak burada "tamamlandı" işaretliyse bitmiş sayılır.
 
 **Hedef sınav:** 2027 LGS · **Kohort:** 2026-2027 8. sınıf · **Program:** 2018/2019 MEB programları
-**Son doğrulama:** 18 Eylül 2026
+**Son doğrulama:** 18 Eylül 2026 · **Türkçe kapsamı 18.09.2026 tarihinde %100 tamamlandı**
 
 **Durum kodları:** `planlandı` · `yazılıyor` · `doğrulandı` (testler geçti, önizleme görüldü) · `tamamlandı` · `kapsam dışı` (gerekçeli)
 
@@ -36,25 +36,25 @@ medya metinlerinin amacı) okuma kazanımlarıyla örtüşür ve ilgili ders not
 | # | Kütüphane konusu | Ders notu başlığı | `slug` | Kazanımlar | Durum |
 |---|---|---|---|---|---|
 | 1 | Sözcükte Anlam | Bağlamda Sözcük Anlamı: Kanıttan Yoruma ★ **Gold Standard** | `lgs-turkce-baglamda-sozcuk-anlami` | T.8.3.5, T.8.1.2 | tamamlandı |
-| 2 | Sözcükte Anlam | Deyim, Atasözü ve Özdeyiş: Metne Ne Katar? | `lgs-turkce-deyim-atasozu-ozdeyis` | T.8.3.6, T.8.4.7 | planlandı |
-| 3 | Cümlede Anlam | Cümlede Anlam İlişkileri: Neden, Amaç, Koşul, Karşılaştırma | `lgs-turkce-cumlede-anlam-iliskileri` | T.8.3.25 | planlandı |
-| 4 | Cümlede Anlam | Öznel–Nesnel Yargı ve Yazarın Bakış Açısı | `lgs-turkce-oznel-nesnel-bakis-acisi` | T.8.3.21, T.8.3.24 | planlandı |
-| 5 | Paragrafta Anlam | Konu, Ana Fikir, Yardımcı Fikir ve Başlık | `lgs-turkce-konu-ana-fikir-baslik` | T.8.3.16, T.8.3.17, T.8.3.18, T.8.3.19, T.8.3.13 | planlandı |
-| 6 | Paragrafta Anlam | Paragrafın Yapısı ve Akışı | `lgs-turkce-paragraf-yapisi-ve-akisi` | T.8.3.10, T.8.3.12, T.8.3.28, T.8.3.4 | planlandı |
-| 7 | Paragrafta Anlam | Anlatım Biçimleri | `lgs-turkce-anlatim-bicimleri` | T.8.3.11, T.8.4.9 | planlandı |
-| 8 | Paragrafta Anlam | Düşünceyi Geliştirme Yolları | `lgs-turkce-dusunceyi-gelistirme-yollari` | T.8.3.34, T.8.1.12 | planlandı |
-| 9 | Paragrafta Anlam | Metinler Arası Karşılaştırma ve Çıkarım | `lgs-turkce-metinler-arasi-karsilastirma` | T.8.3.23, T.8.3.14, T.8.3.33 | planlandı |
-| 10 | Söz Sanatları | Söz Sanatları: Benzetme, Kişileştirme, Konuşturma, Karşıtlık, Abartma | `lgs-turkce-soz-sanatlari` | T.8.3.7 | planlandı |
-| 11 | Fiilimsiler | Fiilimsiler: Cümledeki İşlevi | `lgs-turkce-fiilimsiler` | T.8.3.9 | planlandı |
-| 12 | Cümlenin Öğeleri | Cümlenin Ögeleri | `lgs-turkce-cumlenin-ogeleri` | T.8.4.18 | planlandı |
-| 13 | Fiilde Çatı | Fiilde Çatı: Anlama Katkısı | `lgs-turkce-fiilde-cati` | T.8.4.20 | planlandı |
-| 14 | Yazım Kuralları | Yazım Kuralları | `lgs-turkce-yazim-kurallari` | T.8.4.16 (+ alt sınıf kural tabanı) | planlandı |
-| 15 | Noktalama İşaretleri | Noktalama İşaretleri | `lgs-turkce-noktalama-isaretleri` | T.8.4.16 (+ alt sınıf kural tabanı), T.8.3.1 | planlandı |
-| 16 | Metin Türleri | Metin Türleri: Fıkra, Makale, Deneme, Roman, Destan | `lgs-turkce-metin-turleri` | T.8.3.26, T.8.3.20, T.8.3.2 | planlandı |
-| 17 | Metin Türleri | Medya Metinleri ve Bilgi Kaynağının Güvenilirliği | `lgs-turkce-medya-metinleri-ve-bilgi-guvenilirligi` | T.8.3.29, T.8.3.30, T.8.3.31, T.8.1.11 | planlandı |
-| 18 | **Anlatım Bozuklukları** *(yeni konu)* | Anlatım Bozuklukları: Dil Bilgisi Yönünden | `lgs-turkce-anlatim-bozukluklari` | T.8.3.8, T.8.4.16a | planlandı |
-| 19 | **Cümle Türleri** *(yeni konu)* | Cümle Türleri | `lgs-turkce-cumle-turleri` | T.8.4.19 | planlandı |
-| 20 | **Görsel Okuma** *(yeni konu)* | Görsel, Tablo ve Grafik Okuma | `lgs-turkce-gorsel-tablo-grafik-okuma` | T.8.3.27, T.8.3.32, T.8.3.35 | planlandı |
+| 2 | Sözcükte Anlam | Deyim, Atasözü ve Özdeyiş: Metne Ne Katar? | `lgs-turkce-deyim-atasozu-ozdeyis` | T.8.3.6, T.8.4.7 | tamamlandı |
+| 3 | Cümlede Anlam | Cümlede Anlam İlişkileri: Neden, Amaç, Koşul, Karşılaştırma | `lgs-turkce-cumlede-anlam-iliskileri` | T.8.3.25 | tamamlandı |
+| 4 | Cümlede Anlam | Öznel–Nesnel Yargı ve Yazarın Bakış Açısı | `lgs-turkce-oznel-nesnel-bakis-acisi` | T.8.3.21, T.8.3.24 | tamamlandı |
+| 5 | Paragrafta Anlam | Konu, Ana Fikir, Yardımcı Fikir ve Başlık | `lgs-turkce-konu-ana-fikir-baslik` | T.8.3.16, T.8.3.17, T.8.3.18, T.8.3.19, T.8.3.13 | tamamlandı |
+| 6 | Paragrafta Anlam | Paragrafın Yapısı ve Akışı | `lgs-turkce-paragraf-yapisi-ve-akisi` | T.8.3.10, T.8.3.12, T.8.3.28, T.8.3.4 | tamamlandı |
+| 7 | Paragrafta Anlam | Anlatım Biçimleri | `lgs-turkce-anlatim-bicimleri` | T.8.3.11, T.8.4.9 | tamamlandı |
+| 8 | Paragrafta Anlam | Düşünceyi Geliştirme Yolları | `lgs-turkce-dusunceyi-gelistirme-yollari` | T.8.3.34, T.8.1.12 | tamamlandı |
+| 9 | Paragrafta Anlam | Metinler Arası Karşılaştırma ve Çıkarım | `lgs-turkce-metinler-arasi-karsilastirma` | T.8.3.23, T.8.3.14, T.8.3.33 | tamamlandı |
+| 10 | Söz Sanatları | Söz Sanatları: Benzetme, Kişileştirme, Konuşturma, Karşıtlık, Abartma | `lgs-turkce-soz-sanatlari` | T.8.3.7 | tamamlandı |
+| 11 | Fiilimsiler | Fiilimsiler: Cümledeki İşlevi | `lgs-turkce-fiilimsiler` | T.8.3.9 | tamamlandı |
+| 12 | Cümlenin Öğeleri | Cümlenin Ögeleri | `lgs-turkce-cumlenin-ogeleri` | T.8.4.18 | tamamlandı |
+| 13 | Fiilde Çatı | Fiilde Çatı: Anlama Katkısı | `lgs-turkce-fiilde-cati` | T.8.4.20 | tamamlandı |
+| 14 | Yazım Kuralları | Yazım Kuralları | `lgs-turkce-yazim-kurallari` | T.8.4.16 (+ alt sınıf kural tabanı) | tamamlandı |
+| 15 | Noktalama İşaretleri | Noktalama İşaretleri | `lgs-turkce-noktalama-isaretleri` | T.8.4.16 (+ alt sınıf kural tabanı), T.8.3.1 | tamamlandı |
+| 16 | Metin Türleri | Metin Türleri: Fıkra, Makale, Deneme, Roman, Destan | `lgs-turkce-metin-turleri` | T.8.3.26, T.8.3.20, T.8.3.2 | tamamlandı |
+| 17 | Metin Türleri | Medya Metinleri ve Bilgi Kaynağının Güvenilirliği | `lgs-turkce-medya-metinleri-ve-bilgi-guvenilirligi` | T.8.3.29, T.8.3.30, T.8.3.31, T.8.1.11 | tamamlandı |
+| 18 | **Anlatım Bozuklukları** *(yeni konu)* | Anlatım Bozuklukları: Dil Bilgisi Yönünden | `lgs-turkce-anlatim-bozukluklari` | T.8.3.8, T.8.4.16a | tamamlandı |
+| 19 | **Cümle Türleri** *(yeni konu)* | Cümle Türleri | `lgs-turkce-cumle-turleri` | T.8.4.19 | tamamlandı |
+| 20 | **Görsel Okuma** *(yeni konu)* | Görsel, Tablo ve Grafik Okuma | `lgs-turkce-gorsel-tablo-grafik-okuma` | T.8.3.27, T.8.3.32, T.8.3.35 | tamamlandı |
 
 ★ *Yeni konu* işaretli üç başlık kütüphane konu ağacında yok. Bkz. §2.5 fark analizi.
 
@@ -62,52 +62,52 @@ medya metinlerinin amacı) okuma kazanımlarıyla örtüşür ve ilgili ders not
 
 | Kod | Resmî kazanım ifadesi | Açıklama / sınır | Ön koşul | LGS'de ölçülen beceri | Sık yapılan hata | Ders | Durum |
 |---|---|---|---|---|---|---|---|
-| T.8.3.1 | Noktalama işaretlerine dikkat ederek sesli ve sessiz okur. | — | 7. sınıf akıcı okuma | Dolaylı: noktalamanın anlamı değiştirmesi | Noktalamayı süs sanma | 15 | planlandı |
-| T.8.3.2 | Metni türün özelliklerine uygun biçimde okur. | Edebî değeri olan şiir ve kısa yazılar | Metin türü bilgisi | Dolaylı | — | 16 | planlandı |
+| T.8.3.1 | Noktalama işaretlerine dikkat ederek sesli ve sessiz okur. | — | 7. sınıf akıcı okuma | Dolaylı: noktalamanın anlamı değiştirmesi | Noktalamayı süs sanma | 15 | tamamlandı |
+| T.8.3.2 | Metni türün özelliklerine uygun biçimde okur. | Edebî değeri olan şiir ve kısa yazılar | Metin türü bilgisi | Dolaylı | — | 16 | tamamlandı |
 | T.8.3.3 | Farklı yazı karakterleri ile yazılmış yazıları okur. | — | — | Sınıf içi beceri | — | *kapsam dışı* | kapsam dışı — çoktan seçmeli sınavda ölçülemez |
-| T.8.3.4 | Okuma stratejilerini kullanır. | Göz atarak, özetleyerek, not alarak, tartışarak, eleştirerek okuma | — | Soru çözüm hızı ve doğruluğu | Her paragrafı aynı hızda okumak | 6 | planlandı |
+| T.8.3.4 | Okuma stratejilerini kullanır. | Göz atarak, özetleyerek, not alarak, tartışarak, eleştirerek okuma | — | Soru çözüm hızı ve doğruluğu | Her paragrafı aynı hızda okumak | 6 | tamamlandı |
 | **T.8.3.5** | **Bağlamdan yararlanarak bilmediği kelime ve kelime gruplarının anlamını tahmin eder.** | a) Sözlük, atasözü ve deyimler sözlüğü kullanılabilir. b) Öğrencinin kendi sözlüğünü oluşturması teşvik edilir. | Sözcük, cümle kavramı | Bağlamdan anlam çıkarma, yakın seçenekleri kanıtla eleme | Sözlükteki ilk anlamı otomatik seçmek | **1 ★** | **tamamlandı** |
-| T.8.3.6 | Deyim, atasözü ve özdeyişlerin metne katkısını belirler. | — | Sözcükte anlam | Kalıp sözün metindeki işlevini görme | Deyimi ezberden tanımlamak, metne katkısını atlamak | 2 | planlandı |
-| T.8.3.7 | Metindeki söz sanatlarını tespit eder. | Benzetme (teşbih), kişileştirme (teşhis), konuşturma (intak), karşıtlık (tezat), abartma (mübalağa) — **yalnız bu beşi** | Mecaz anlam | Sanatı bağlamda tanıma | Her mecazı benzetme sanmak; program dışı sanat aramak | 10 | planlandı |
-| T.8.3.8 | Metindeki anlatım bozukluklarını belirler. | **Dil bilgisi yönünden** anlatım bozuklukları üzerinde durulur | Cümlenin ögeleri, çatı | Bozuk cümleyi ve kaynağını görme | Anlama dayalı bozuklukla karıştırmak (o 7. sınıf) | 18 | planlandı |
-| T.8.3.9 | Fiilimsilerin cümledeki işlevlerini kavrar. | Türleri fark ettirilir, **ekler ezberletilmez** | Fiil, isim, sıfat, zarf | İşlev ve yan cümle kurma | Ek listesi ezberi; "-me/-ma" olumsuzluk ekiyle karıştırma | 11 | planlandı |
-| T.8.3.10 | Geçiş ve bağlantı ifadelerinin metnin anlamına olan katkısını değerlendirir. | Oysaki, başka bir deyişle, özellikle, kısaca, böylece, ilk olarak, son olarak | — | Paragraf akışını izleme | Bağlacı yalnız "bağlaç" diye etiketlemek | 6 | planlandı |
-| T.8.3.11 | Metindeki anlatım biçimlerini belirler. | — | Metin türü | Açıklayıcı/öyküleyici/betimleyici/tartışmacı ayrımı | Betimleme ile öykülemeyi karıştırmak | 7 | planlandı |
-| T.8.3.12 | Görsel ve başlıktan hareketle okuyacağı metnin konusunu tahmin eder. | — | — | Ön tahmin | — | 6 | planlandı |
-| T.8.3.13 | Okuduklarını özetler. | — | Ana/yardımcı fikir | Öz çıkarma | Özet yerine ilk cümleyi almak | 5 | planlandı |
-| T.8.3.14 | Metinle ilgili soruları cevaplar. | **Metin içi ve metin dışı anlam ilişkisi** kurulur | — | Metinden kanıt gösterme | Metinde olmayanı "mantıklı" diye seçmek | 9 | planlandı |
+| T.8.3.6 | Deyim, atasözü ve özdeyişlerin metne katkısını belirler. | — | Sözcükte anlam | Kalıp sözün metindeki işlevini görme | Deyimi ezberden tanımlamak, metne katkısını atlamak | 2 | tamamlandı |
+| T.8.3.7 | Metindeki söz sanatlarını tespit eder. | Benzetme (teşbih), kişileştirme (teşhis), konuşturma (intak), karşıtlık (tezat), abartma (mübalağa) — **yalnız bu beşi** | Mecaz anlam | Sanatı bağlamda tanıma | Her mecazı benzetme sanmak; program dışı sanat aramak | 10 | tamamlandı |
+| T.8.3.8 | Metindeki anlatım bozukluklarını belirler. | **Dil bilgisi yönünden** anlatım bozuklukları üzerinde durulur | Cümlenin ögeleri, çatı | Bozuk cümleyi ve kaynağını görme | Anlama dayalı bozuklukla karıştırmak (o 7. sınıf) | 18 | tamamlandı |
+| T.8.3.9 | Fiilimsilerin cümledeki işlevlerini kavrar. | Türleri fark ettirilir, **ekler ezberletilmez** | Fiil, isim, sıfat, zarf | İşlev ve yan cümle kurma | Ek listesi ezberi; "-me/-ma" olumsuzluk ekiyle karıştırma | 11 | tamamlandı |
+| T.8.3.10 | Geçiş ve bağlantı ifadelerinin metnin anlamına olan katkısını değerlendirir. | Oysaki, başka bir deyişle, özellikle, kısaca, böylece, ilk olarak, son olarak | — | Paragraf akışını izleme | Bağlacı yalnız "bağlaç" diye etiketlemek | 6 | tamamlandı |
+| T.8.3.11 | Metindeki anlatım biçimlerini belirler. | — | Metin türü | Açıklayıcı/öyküleyici/betimleyici/tartışmacı ayrımı | Betimleme ile öykülemeyi karıştırmak | 7 | tamamlandı |
+| T.8.3.12 | Görsel ve başlıktan hareketle okuyacağı metnin konusunu tahmin eder. | — | — | Ön tahmin | — | 6 | tamamlandı |
+| T.8.3.13 | Okuduklarını özetler. | — | Ana/yardımcı fikir | Öz çıkarma | Özet yerine ilk cümleyi almak | 5 | tamamlandı |
+| T.8.3.14 | Metinle ilgili soruları cevaplar. | **Metin içi ve metin dışı anlam ilişkisi** kurulur | — | Metinden kanıt gösterme | Metinde olmayanı "mantıklı" diye seçmek | 9 | tamamlandı |
 | T.8.3.15 | Metinle ilgili sorular sorar. | — | — | Sınıf içi üretim | — | *kapsam dışı* | kapsam dışı — üretimsel, çoktan seçmeli ölçmede yok |
-| T.8.3.16 | Metnin konusunu belirler. | — | — | Konu–ana fikir ayrımı | Konuyu ana fikir sanmak | 5 | planlandı |
-| T.8.3.17 | Metnin ana fikrini/ana duygusunu belirler. | — | Konu | Ana fikri metnin tamamından çıkarma | Tek cümleye bakıp karar vermek | 5 | planlandı |
-| T.8.3.18 | Metindeki yardımcı fikirleri belirler. | — | Ana fikir | Destekleyici yargı ayrımı | Yardımcı fikri ana fikir sanmak | 5 | planlandı |
-| T.8.3.19 | Metnin içeriğine uygun başlık/başlıklar belirler. | — | Ana fikir | Kapsam denetimi | Fazla dar / fazla geniş başlık seçmek | 5 | planlandı |
-| T.8.3.20 | Okuduğu metinlerdeki hikâye unsurlarını belirler. | Olay örgüsü, mekân, zaman, şahıs ve varlık kadrosu, anlatıcı | — | Anlatı çözümleme | Anlatıcı ile yazarı karıştırmak | 16 | planlandı |
-| T.8.3.21 | Metnin içeriğini yorumlar. | a) Yazarın bakış açısı b) Öznel ve nesnel yaklaşımlar c) Örnek ve ayrıntılara atıf | — | Öznel/nesnel ayrımı, bakış açısı | Kanıtlanabilir yargıyı öznel sanmak | 4 | planlandı |
+| T.8.3.16 | Metnin konusunu belirler. | — | — | Konu–ana fikir ayrımı | Konuyu ana fikir sanmak | 5 | tamamlandı |
+| T.8.3.17 | Metnin ana fikrini/ana duygusunu belirler. | — | Konu | Ana fikri metnin tamamından çıkarma | Tek cümleye bakıp karar vermek | 5 | tamamlandı |
+| T.8.3.18 | Metindeki yardımcı fikirleri belirler. | — | Ana fikir | Destekleyici yargı ayrımı | Yardımcı fikri ana fikir sanmak | 5 | tamamlandı |
+| T.8.3.19 | Metnin içeriğine uygun başlık/başlıklar belirler. | — | Ana fikir | Kapsam denetimi | Fazla dar / fazla geniş başlık seçmek | 5 | tamamlandı |
+| T.8.3.20 | Okuduğu metinlerdeki hikâye unsurlarını belirler. | Olay örgüsü, mekân, zaman, şahıs ve varlık kadrosu, anlatıcı | — | Anlatı çözümleme | Anlatıcı ile yazarı karıştırmak | 16 | tamamlandı |
+| T.8.3.21 | Metnin içeriğini yorumlar. | a) Yazarın bakış açısı b) Öznel ve nesnel yaklaşımlar c) Örnek ve ayrıntılara atıf | — | Öznel/nesnel ayrımı, bakış açısı | Kanıtlanabilir yargıyı öznel sanmak | 4 | tamamlandı |
 | T.8.3.22 | Metinde ele alınan sorunlara farklı çözümler üretir. | — | — | Sınıf içi üretim | — | *kapsam dışı* | kapsam dışı — üretimsel |
-| T.8.3.23 | Metinler arasında karşılaştırma yapar. | Aynı metnin çeviri, farklı baskı vb. özellikleri | — | İki metni ortak eksende okuma | Tek metne bakıp genelleme | 9 | planlandı |
-| T.8.3.24 | Metindeki gerçek ve kurgusal unsurları ayırt eder. | — | — | Gerçeklik denetimi | Gerçekçi anlatımı "gerçek" sanmak | 4 | planlandı |
-| **T.8.3.25** | **Okudukları ile ilgili çıkarımlarda bulunur.** | Neden-sonuç, amaç-sonuç, koşul, karşılaştırma, benzetme, örneklendirme, abartma, nesnel, öznel ve duygu belirten ifadeler | Cümle yapısı | Cümledeki anlam ilişkisini adlandırma | Amaç-sonuç ile neden-sonucu karıştırmak | 3 | planlandı |
-| T.8.3.26 | Metin türlerini ayırt eder. | a) Fıkra (köşe yazısı), makale, deneme, roman, destan b) **Ayrıntılı bilgi verilmemelidir** | — | Tür ipucunu metinden okuma | Ansiklopedik tür tanımı ezberi | 16 | planlandı |
-| T.8.3.27 | Görsellerle ilgili soruları cevaplar. | a) Çizgi roman ve karikatür yorumu b) Görsel yorumcuların haberi nasıl ilettiği | — | Görselden çıkarım | Karikatürü yalnız "komik" okumak | 20 | planlandı |
-| T.8.3.28 | Metinde önemli noktaların vurgulanış biçimlerini kavrar. | Altını çizme, koyu/italik yazma, renklendirme, farklı punto/font | — | Biçimsel vurgunun işlevi | Vurguyu süs sanmak | 6 | planlandı |
-| T.8.3.29 | Medya metinlerini analiz eder. | Amaçlar: kültür aktarma, olay yorumlama, bilgilendirme, eğlendirme, ikna etme | — | Metnin amacını belirleme | Her medya metnini "bilgilendirme" saymak | 17 | planlandı |
-| T.8.3.30 | Bilgi kaynaklarını etkili bir şekilde kullanır. | — | — | Kaynak seçimi | — | 17 | planlandı |
-| T.8.3.31 | Bilgi kaynaklarının güvenilirliğini sorgular. | a) Blog ve şahsi sayfaların güvenilirliği b) "edu" ve "gov" uzantılı siteler | — | Güvenilirlik ölçütü uygulama | Çok paylaşılanı güvenilir sanmak | 17 | planlandı |
-| **T.8.3.32** | **Grafik, tablo ve çizelgeyle sunulan bilgileri yorumlar.** | — | Sayı okuma | Veriden çıkarım, veriyle desteklenmeyeni eleme | Grafikte olmayanı yorumlamak | 20 | planlandı |
-| T.8.3.33 | Edebî eserin yazılı metni ile medya sunumunu karşılaştırır. | Kahraman, mekân, zaman, olay yönünden | — | Uyarlama karşılaştırması | — | 9 | planlandı |
-| **T.8.3.34** | **Okuduklarında kullanılan düşünceyi geliştirme yollarını belirler.** | — | Anlatım biçimleri | Tanımlama, örneklendirme, tanık gösterme, sayısal veri, karşılaştırma, benzetme ayrımı | Tanık gösterme ile örneklendirmeyi karıştırmak | 8 | planlandı |
-| T.8.3.35 | Metindeki iş ve işlem basamaklarını kavrar. | Kullanım kılavuzları inceletilir | — | Yönerge okuma | Basamak sırasını atlamak | 20 | planlandı |
+| T.8.3.23 | Metinler arasında karşılaştırma yapar. | Aynı metnin çeviri, farklı baskı vb. özellikleri | — | İki metni ortak eksende okuma | Tek metne bakıp genelleme | 9 | tamamlandı |
+| T.8.3.24 | Metindeki gerçek ve kurgusal unsurları ayırt eder. | — | — | Gerçeklik denetimi | Gerçekçi anlatımı "gerçek" sanmak | 4 | tamamlandı |
+| **T.8.3.25** | **Okudukları ile ilgili çıkarımlarda bulunur.** | Neden-sonuç, amaç-sonuç, koşul, karşılaştırma, benzetme, örneklendirme, abartma, nesnel, öznel ve duygu belirten ifadeler | Cümle yapısı | Cümledeki anlam ilişkisini adlandırma | Amaç-sonuç ile neden-sonucu karıştırmak | 3 | tamamlandı |
+| T.8.3.26 | Metin türlerini ayırt eder. | a) Fıkra (köşe yazısı), makale, deneme, roman, destan b) **Ayrıntılı bilgi verilmemelidir** | — | Tür ipucunu metinden okuma | Ansiklopedik tür tanımı ezberi | 16 | tamamlandı |
+| T.8.3.27 | Görsellerle ilgili soruları cevaplar. | a) Çizgi roman ve karikatür yorumu b) Görsel yorumcuların haberi nasıl ilettiği | — | Görselden çıkarım | Karikatürü yalnız "komik" okumak | 20 | tamamlandı |
+| T.8.3.28 | Metinde önemli noktaların vurgulanış biçimlerini kavrar. | Altını çizme, koyu/italik yazma, renklendirme, farklı punto/font | — | Biçimsel vurgunun işlevi | Vurguyu süs sanmak | 6 | tamamlandı |
+| T.8.3.29 | Medya metinlerini analiz eder. | Amaçlar: kültür aktarma, olay yorumlama, bilgilendirme, eğlendirme, ikna etme | — | Metnin amacını belirleme | Her medya metnini "bilgilendirme" saymak | 17 | tamamlandı |
+| T.8.3.30 | Bilgi kaynaklarını etkili bir şekilde kullanır. | — | — | Kaynak seçimi | — | 17 | tamamlandı |
+| T.8.3.31 | Bilgi kaynaklarının güvenilirliğini sorgular. | a) Blog ve şahsi sayfaların güvenilirliği b) "edu" ve "gov" uzantılı siteler | — | Güvenilirlik ölçütü uygulama | Çok paylaşılanı güvenilir sanmak | 17 | tamamlandı |
+| **T.8.3.32** | **Grafik, tablo ve çizelgeyle sunulan bilgileri yorumlar.** | — | Sayı okuma | Veriden çıkarım, veriyle desteklenmeyeni eleme | Grafikte olmayanı yorumlamak | 20 | tamamlandı |
+| T.8.3.33 | Edebî eserin yazılı metni ile medya sunumunu karşılaştırır. | Kahraman, mekân, zaman, olay yönünden | — | Uyarlama karşılaştırması | — | 9 | tamamlandı |
+| **T.8.3.34** | **Okuduklarında kullanılan düşünceyi geliştirme yollarını belirler.** | — | Anlatım biçimleri | Tanımlama, örneklendirme, tanık gösterme, sayısal veri, karşılaştırma, benzetme ayrımı | Tanık gösterme ile örneklendirmeyi karıştırmak | 8 | tamamlandı |
+| T.8.3.35 | Metindeki iş ve işlem basamaklarını kavrar. | Kullanım kılavuzları inceletilir | — | Yönerge okuma | Basamak sırasını atlamak | 20 | tamamlandı |
 
 ## 2.3. T.8.4 YAZMA — LGS'de ölçülen kazanımlar
 
 | Kod | Resmî kazanım ifadesi | Açıklama / sınır | Ders | Durum |
 |---|---|---|---|---|
-| T.8.4.7 | Yazılarını zenginleştirmek için atasözleri, deyimler ve özdeyişler kullanır. | — | 2 | planlandı |
-| T.8.4.9 | Yazılarında anlatım biçimlerini kullanır. | — | 7 | planlandı |
-| **T.8.4.16** | **Yazdıklarını düzenler.** | a) **Dil bilgisine dayalı anlatım bozuklukları** bakımından gözden geçirme b) **Metinde yer alan yazım ve noktalama kuralları ile sınırlı tutulur** | 14, 15, 18 | planlandı |
-| **T.8.4.18** | **Cümlenin ögelerini ayırt eder.** | — | 12 | planlandı |
-| **T.8.4.19** | **Cümle türlerini tanır.** | **Kavramsal tanımlamalara girilmez** | 19 | planlandı |
-| **T.8.4.20** | **Fiillerin çatı özelliklerinin anlama olan katkısını kavrar.** | **Kavram tanımlarına girilmeden anlamsal farklılıklara değinilir** | 13 | planlandı |
+| T.8.4.7 | Yazılarını zenginleştirmek için atasözleri, deyimler ve özdeyişler kullanır. | — | 2 | tamamlandı |
+| T.8.4.9 | Yazılarında anlatım biçimlerini kullanır. | — | 7 | tamamlandı |
+| **T.8.4.16** | **Yazdıklarını düzenler.** | a) **Dil bilgisine dayalı anlatım bozuklukları** bakımından gözden geçirme b) **Metinde yer alan yazım ve noktalama kuralları ile sınırlı tutulur** | 14, 15, 18 | tamamlandı |
+| **T.8.4.18** | **Cümlenin ögelerini ayırt eder.** | — | 12 | tamamlandı |
+| **T.8.4.19** | **Cümle türlerini tanır.** | **Kavramsal tanımlamalara girilmez** | 19 | tamamlandı |
+| **T.8.4.20** | **Fiillerin çatı özelliklerinin anlama olan katkısını kavrar.** | **Kavram tanımlarına girilmeden anlamsal farklılıklara değinilir** | 13 | tamamlandı |
 
 **Kapsam dışı (gerekçeli):** T.8.4.1 (şiir yazar), T.8.4.2 (bilgilendirici metin yazar),
 T.8.4.3 (hikâye edici metin yazar), T.8.4.4 (yazma stratejileri), T.8.4.5 (grafik/tablo
@@ -427,9 +427,9 @@ Konu adını düzeltmek canlı kütüphanede bağlantı kırar; kazanç risk etm
 
 | Ders | Resmî kazanım | Derse bağlanan | Gerekçeli kapsam dışı | Planlanan ders notu | Tamamlanan |
 |---|---|---|---|---|---|
-| Türkçe | 76 | 39 | 37 | 20 | 1 |
+| Türkçe | 76 | 39 | 37 | 20 | **20 (tamamlandı)** |
 | Fen Bilimleri | 61 | 61 | 0 | 23 | 0 |
 | T.C. İnkılap Tarihi ve Atatürkçülük | 39 | 39 | 0 | 25 | 0 |
-| **Toplam** | **176** | **139** | **37** | **68** | **1** |
+| **Toplam** | **176** | **139** | **37** | **68** | **20** |
 
 Güncel durum için: `LGS_ICERIK_URETIM_DURUMU.md`

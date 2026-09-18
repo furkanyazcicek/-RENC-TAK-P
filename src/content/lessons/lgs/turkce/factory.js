@@ -131,6 +131,14 @@ export function createLgsTurkishLesson(config) {
     examInsight,
     /** { title, passage, question, options, answer_index, stem_analysis, critical_point, takeaway } */
     simulation,
+    /**
+     * Simülasyondan ÖNCE gösterilen veri tablosu.
+     * `passage` içine Markdown tablosu yazılamaz: `Prose` bileşeni bilinçli
+     * olarak yalnız kalın/eğik/liste/LaTeX destekler (bkz. Prose.jsx). Tablo
+     * gerekiyorsa `table` bloğu kullanılır — bu alan onu üretir.
+     * { title, columns, rows, caption }
+     */
+    simulationTable = null,
     /** [{ question, options, answer_index, explanation, purpose }] */
     quizzes = [],
     /** string[] */
@@ -251,6 +259,17 @@ export function createLgsTurkishLesson(config) {
         body: examInsight.body,
         measures: examInsight.measures,
       },
+      ...(simulationTable
+        ? [{
+            id: blockId(slug, 'sinav', 'veri'),
+            type: 'table',
+            interactive: true,
+            title: simulationTable.title,
+            columns: simulationTable.columns,
+            rows: simulationTable.rows,
+            caption: simulationTable.caption,
+          }]
+        : []),
       {
         id: blockId(slug, 'sinav', 'simulasyon'),
         type: 'osym_simulation',

@@ -27,6 +27,10 @@ import fiildeCati from './fiilde-cati.js'
 import yazimKurallari from './yazim-kurallari.js'
 import noktalamaIsaretleri from './noktalama-isaretleri.js'
 import metinTurleri from './metin-turleri.js'
+import medyaMetinleri from './medya-metinleri-ve-bilgi-guvenilirligi.js'
+import anlatimBozukluklari from './anlatim-bozukluklari.js'
+import cumleTurleri from './cumle-turleri.js'
+import gorselTabloGrafikOkuma from './gorsel-tablo-grafik-okuma.js'
 
 export const LGS_TURKCE_DERSLERI = [
   baglamdaSozcukAnlami,
@@ -45,4 +49,8 @@ export const LGS_TURKCE_DERSLERI = [
   yazimKurallari,
   noktalamaIsaretleri,
   metinTurleri,
+  medyaMetinleri,
+  anlatimBozukluklari,
+  cumleTurleri,
+  gorselTabloGrafikOkuma,
 ]
