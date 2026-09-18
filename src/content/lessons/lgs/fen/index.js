@@ -16,6 +16,8 @@ import katiBasinci from './kati-basinci.js'
 import siviVeGazBasinci from './sivi-ve-gaz-basinci.js'
 import periyodikSistem from './periyodik-sistem.js'
 import fizikselKimyasalDegisim from './fiziksel-kimyasal-degisim.js'
+import asitlerVeBazlar from './asitler-ve-bazlar.js'
+import asitYagmurlari from './asit-yagmurlari.js'
 
 export const LGS_FEN_DERSLERI = [
   mevsimlerinOlusumu,
@@ -29,4 +31,6 @@ export const LGS_FEN_DERSLERI = [
   siviVeGazBasinci,
   periyodikSistem,
   fizikselKimyasalDegisim,
+  asitlerVeBazlar,
+  asitYagmurlari,
 ]
