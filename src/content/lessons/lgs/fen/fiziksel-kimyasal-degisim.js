@@ -5,9 +5,12 @@ import { createLgsScienceLesson } from './factory.js'
  * Kazanım : F.8.4.2.1 · F.8.4.3.1
  * Dayanak : MEB Fen Bilimleri Dersi Öğretim Programı, Ankara 2018
  *
- * PROGRAM SINIRI — BAĞLAYICI
- *   F.8.4.3.1 → "Kimyasal tepkime sonucunda yeni maddelerin oluştuğu
- *               belirtilir." FORMÜLLERLE DENKLEM YAZDIRILMAZ.
+ * PROGRAMIN AÇIKLAMASI (resmiProgram.js'ten basılır)
+ *   F.8.4.3.1 → "Kimyasal tepkime denklemlerine formüller kullanılarak
+ *               girilmez."
+ *   Konu / Kavramlar (F.8.4.3): "Kimyasal tepkimelerin oluşumu, kütlenin
+ *   korunumu" — bu yüzden derste bileşik oluşumu ve kütlenin korunumu
+ *   için ayrı bir bölüm var.
  *
  * Bu yüzden derste kimyasal denklem (H₂ + O₂ → H₂O gibi) HİÇ YAZILMAZ,
  * denklem denkleştirme yapılmaz ve formül ezberletilmez. Ders, tepkimenin
@@ -27,17 +30,7 @@ const lesson = createLgsScienceLesson({
   subtitle:
     'Tek bir soru bütün olayları ayırır: madde hâlâ aynı madde mi, yoksa yeni bir madde mi oluştu?',
   minutes: 42,
-  kazanimlar: [
-    {
-      kod: 'F.8.4.2.1',
-      metin: 'Fiziksel ve kimyasal değişim arasındaki farkları, çeşitli olayları gözlemleyerek açıklar.',
-    },
-    {
-      kod: 'F.8.4.3.1',
-      metin: 'Kimyasal tepkime sonucunda yeni maddelerin oluştuğunu bilir.',
-      sinir: '**Formüllerle denklem yazdırılmaz.** Bu yüzden bu derste kimyasal denklem yazılmaz.',
-    },
-  ],
+  kazanimlar: ['F.8.4.2.1', 'F.8.4.3.1'],
   prerequisites: [
     { topic: 'Periyodik Sistem: Düzenin Kendisi Bilgidir', why: 'Element ve madde kavramları orada tazelendi.' },
     { topic: 'Maddenin hâlleri', why: 'Hâl değişimlerinin neden fiziksel olduğunu anlamak için gereklidir.' },
@@ -46,7 +39,7 @@ const lesson = createLgsScienceLesson({
     'Fiziksel ve kimyasal değişimi tek bir ölçütle ayırabileceksin.',
     'Bir olayı gözlemleyip hangi tür değişim olduğunu söyleyebileceksin.',
     'Renk değişimi ve gaz çıkışı gibi belirtilerin neden tek başına yetmediğini açıklayabileceksin.',
-    'Kimyasal tepkime sonucunda yeni madde oluştuğunu ifade edebileceksin.',
+    'Bileşiklerin kimyasal tepkime sonucunda oluştuğunu ve tepkimede kütlenin korunduğunu açıklayabileceksin.',
     'Geri dönebilirlik ölçütünün sınırlarını bileceksin.',
   ],
 
@@ -75,7 +68,7 @@ Cevap “hayır” ise fiziksel, “evet” ise kimyasal değişimdir.
 
 Bu yüzden biz önce **ölçütü** kuracağız, belirtileri sonra ve **sınırlarıyla** ekleyeceğiz.
 
-Bir kapsam uyarısı: *program bu kazanımda **formüllerle denklem yazdırılmamasını** ister.* Bu yüzden bu derste kimyasal denklem yazmayacağız. Senden istenen, tepkime sonucunda **yeni maddelerin oluştuğunu** bilmek ve bir olayı doğru sınıflandırmak.`,
+Bir kapsam uyarısı: *program kimyasal tepkime denklemlerine **formüller kullanılarak girilmemesini** ister.* Bu yüzden bu derste kimyasal denklem yazmayacağız. Senden istenen, **bileşiklerin kimyasal tepkime sonucunda oluştuğunu** bilmek, tepkimede **kütlenin korunduğunu** görmek ve bir olayı doğru sınıflandırmak.`,
   },
 
   concepts: [
@@ -363,7 +356,7 @@ Dördüncü adım önemlidir. Ölçütle belirtiler çelişiyorsa, çoğu zaman 
     {
       id: 'lgs-fen-degisim-tepkime',
       title: 'Kimyasal tepkime: yeni madde nasıl oluşuyor?',
-      lead: 'Kazanım F.8.4.3.1 tek bir şey ister: tepkime sonucunda yeni maddelerin oluştuğunu bilmek.',
+      lead: 'Kazanım F.8.4.3.1 şunu ister: bileşiklerin kimyasal tepkime sonucunda oluştuğunu bilmek.',
       blocks: [
         {
           id: 'lgs-fen-degisim-tepkime-anlatim',
@@ -382,19 +375,23 @@ Aynı şey yanma için de geçerlidir. Kâğıt yandığında oluşan kül, “k
 
 **Karışım oluşturmak kimyasal tepkime değildir.** Şekeri suya attığında bir karışım oluşur; ama şeker hâlâ şeker, su hâlâ sudur. Yeni bir madde oluşmamıştır. Karışımların oluşumu **fiziksel** bir olaydır.
 
-**Bileşik oluşumu ise kimyasal bir tepkimedir.** Farklı elementler kimyasal tepkimeye girerek bileşik oluşturur ve bileşik, kendisini oluşturan elementlerden farklı özellikler gösterir.
+**Bileşik oluşumu ise kimyasal bir tepkimedir.** İki ya da daha fazla farklı element kimyasal tepkimeye girerek **bileşik** oluşturur ve bileşik, kendisini oluşturan elementlerden farklı özellikler gösterir.
+
+En tanıdık örnek sudur. Su, hidrojen ile oksijenin tepkimeye girmesiyle oluşan bir bileşiktir. Özelliklerini karşılaştır: hidrojen de oksijen de oda sıcaklığında gazdır, su ise sıvıdır. Hidrojen yanıcıdır, oksijen yanmayı destekler; su ise yangın söndürmede kullanılır. Bileşik, kendisini oluşturan elementlerin “toplamı” gibi davranmaz; **yeni bir maddedir.**
+
+Sofra tuzu da böyledir: kendisini oluşturan elementlerin ikisi de tek başına tehlikeli maddelerdir, ama oluşan bileşik her gün yemeğe kattığımız tuzdur.
 
 Bu fark önemlidir: karışımda maddeler kimliklerini korur, bileşik oluşumunda ise yeni bir madde meydana gelir.
 
 Şimdi bu dersin en önemli kapsam uyarısına gelelim.
 
-*Program bu kazanımda **formüllerle denklem yazdırılmamasını** açıkça ister.* Yani:
+*Program kimyasal tepkime denklemlerine **formüller kullanılarak girilmemesini** açıkça ister.* Yani:
 
 - Kimyasal denklem yazman istenmez.
 - Denklem denkleştirmen istenmez.
 - Formül ezberlemen istenmez.
 
-Senden istenen tek şey şudur: **kimyasal tepkime sonucunda yeni maddelerin oluştuğunu bilmek.**
+Senden istenen şudur: **bileşiklerin kimyasal tepkime sonucunda oluştuğunu bilmek.**
 
 Bu sınırı bilmek çalışma zamanını doğrudan korur. Piyasadaki bazı kaynaklar bu konuda denklem çalışmaları veriyor; bunlar 8. sınıf kazanımının dışındadır.
 
@@ -431,6 +428,60 @@ Bu örneklerin hepsinde ortak olan şey aynıdır: olayın sonunda başlangıçt
           tone: 'note',
           body:
             'Sorularda sık kullanılan bir kalıp: birkaç olay verilir ve “hangileri kimyasal değişimdir?” diye sorulur. Her olay için tek tek ölçütü uygula; toplu bakma. Bir olayda yanılmak bütün seçeneği elemene yol açar.',
+        },
+      ],
+    },
+
+    {
+      id: 'lgs-fen-degisim-kutle',
+      title: 'Kütlenin korunumu: madde kaybolmaz, dönüşür',
+      lead: 'Programın konu/kavram listesinde “kütlenin korunumu” açıkça yer alır. Tepkimede yeni madde oluşur ama madde yoktan var olmaz, vardan yok olmaz.',
+      blocks: [
+        {
+          id: 'lgs-fen-degisim-kutle-anlatim',
+          type: 'prose',
+          body: `Kimyasal tepkimede maddelerin kimliği değişir. Peki **kütlesi** de değişir mi?
+
+Cevap: **Hayır.** Kapalı bir ortamda gerçekleşen kimyasal tepkimede, tepkimeye giren maddelerin toplam kütlesi, tepkime sonunda oluşan maddelerin toplam kütlesine **eşittir.** Buna **kütlenin korunumu** denir.
+
+Madde yoktan var olmaz, vardan yok olmaz; yalnız **başka maddelere dönüşür.**
+
+İlk bakışta bu, günlük gözlemlerle çelişiyor gibi görünür. İki örneğe bakalım.
+
+**Örnek 1 — Kâğıt yanınca geriye kalan kül, kâğıttan çok daha hafiftir.** Kütle kayboldu mu? Hayır. Yanma sırasında oluşan maddelerin bir kısmı **gazdır** ve havaya karışmıştır. Kül ile havaya karışan gazların kütleleri toplandığında, kâğıt ile yanma için kullanılan havanın kütlesine eşit olur. Açık ortamda gazları tartamadığımız için kütle “azalmış” gibi görünür.
+
+**Örnek 2 — Demir paslandığında pas, demirden daha ağırdır.** Kütle yoktan mı oluştu? Hayır. Paslanma sırasında demir, **havadaki bir gazla** birleşir. Havadan alınan bu gazın kütlesi pasa eklendiği için pas daha ağırdır.
+
+İki örneğin ortak dersi şudur: **kütle değişmiş gibi görünüyorsa, ortama gaz girmiş ya da ortamdan gaz çıkmıştır.**
+
+Bunu göstermenin en temiz yolu tepkimeyi **kapalı bir kapta** yapmaktır. Örneğin sirke ile karbonat bir şişenin içinde, ağzı balonla kapatılarak tepkimeye sokulursa gaz çıkar ve balon şişer; ama şişe–balon düzeneğinin toplam kütlesi **değişmez.** Aynı tepkime ağzı açık bir kapta yapılırsa gaz havaya karışır ve tartıdaki değer azalır.
+
+Kapalı ile açık düzenek arasındaki bu fark, kütlenin gerçekten korunduğunu; kaybolmuş gibi görünen kütlenin yalnız **ölçüm dışında kaldığını** gösterir.
+
+*Kapsam notu: bu düzeyde kütle hesabı yapılmaz ve denklem yazılmaz. Senden istenen, kütlenin korunduğunu bilmek ve “kütle değişti” gibi görünen durumları doğru açıklayabilmektir.*`,
+        },
+        {
+          id: 'lgs-fen-degisim-kutle-tablo',
+          type: 'table',
+          interactive: true,
+          title: 'Kütle değişmiş gibi görünen üç durum',
+          columns: ['Durum', 'Gözlenen', 'Gerçekte ne oldu?', 'Toplam kütle korundu mu?'],
+          rows: [
+            ['Kâğıdın açık ortamda yanması', 'Kül kâğıttan hafif', 'Oluşan gazlar havaya karıştı', 'Evet — gazlar tartılmadı'],
+            ['Demirin paslanması', 'Pas demirden ağır', 'Demir havadaki bir gazla birleşti', 'Evet — havadan gelen gaz eklendi'],
+            ['Sirke ve karbonat, ağzı açık kap', 'Tartı değeri azaldı', 'Oluşan gaz kaptan çıktı', 'Evet — gaz kaptan çıktı'],
+            ['Sirke ve karbonat, ağzı balonla kapalı kap', 'Tartı değeri değişmedi', 'Gaz balonda tutuldu', 'Evet — ve doğrudan görüldü'],
+          ],
+          caption:
+            'Dört satırın dördünde de kütle korunmuştur. Yalnız son satırda bütün maddeler tartının üzerinde kaldığı için bu, doğrudan gözlenebilmiştir.',
+        },
+        {
+          id: 'lgs-fen-degisim-kutle-tuzak',
+          type: 'trap',
+          title: 'Yanmada maddenin yok olduğunu sanmak',
+          wrong: 'Kâğıt yanınca kütlesinin büyük kısmı yok olur; geriye yalnız kül kalır.',
+          right: 'Madde yok olmaz; yanma sırasında oluşan gazlar havaya karışır. Kapalı bir ortamda bütün ürünler tartılsaydı toplam kütlenin değişmediği görülürdü.',
+          body: 'Kütle değişmiş gibi görünüyorsa önce şu soruyu sor: ortama gaz girdi mi, ortamdan gaz çıktı mı? Cevap çoğu zaman oradadır.',
         },
       ],
     },
@@ -529,7 +580,7 @@ Bu örneklerin hepsinde ortak olan şey aynıdır: olayın sonunda başlangıçt
       'Belirtilerin tek başına yeterli olup olmadığının sorgulanması',
       'Bir öğrenci çıkarımındaki hatanın bulunması',
       'Karışım oluşumu ile kimyasal tepkimenin ayırt edilmesi',
-      'Kimyasal tepkime sonucunda yeni madde oluştuğunun sorulması',
+      'Bileşik oluşumu ya da kütlenin korunumuyla ilgili bir gözlemin yorumlanması',
     ],
   },
 
@@ -560,14 +611,14 @@ Bu örneklerin hepsinde ortak olan şey aynıdır: olayın sonunda başlangıçt
   examInsight: {
     title: 'Ölçülen şey liste değil, ölçüt uygulama',
     body:
-      'Kazanımın fiili “çeşitli olayları **gözlemleyerek** açıklar” biçiminde; ikinci kazanım ise yalnız “yeni maddelerin oluştuğunu **bilir**” diyor ve formülle denklem yazdırılmamasını şart koşuyor. İkisi birlikte şunu söyler: bu konuda senden denklem ya da hesap beklenmez; verilen bir olayı doğru sınıflandırman ve gerekçelendirmen beklenir. MEB merkezî sınav kılavuzu da soruların yorumlama ve analiz becerilerini ölçecek nitelikte hazırlandığını belirtir.',
+      'Kazanımın fiili “çeşitli olayları **gözlemleyerek** açıklar” biçiminde; ikinci kazanım ise “bileşiklerin kimyasal tepkime sonucunda oluştuğunu **bilir**” diyor ve denklemlere formüllerle girilmemesini şart koşuyor. İkisi birlikte şunu söyler: bu konuda senden denklem ya da hesap beklenmez; verilen bir olayı doğru sınıflandırman ve gerekçelendirmen beklenir. MEB merkezî sınav kılavuzu da soruların yorumlama ve analiz becerilerini ölçecek nitelikte hazırlandığını belirtir.',
     measures: [
       'Bir olayda maddenin kimliğinin değişip değişmediğini belirleyebilme',
       'Fiziksel ve kimyasal değişimi gerekçesiyle ayırt edebilme',
       'Belirtilerin ipucu olduğunu, kanıt olmadığını bilme',
       'Hâl değişimlerinin fiziksel olduğunu açıklayabilme',
       'Karışım oluşumu ile kimyasal tepkimeyi ayırt edebilme',
-      'Kimyasal tepkime sonucunda yeni madde oluştuğunu ifade edebilme',
+      'Bileşiklerin kimyasal tepkimeyle oluştuğunu ve kütlenin korunduğunu açıklayabilme',
     ],
   },
 
@@ -680,6 +731,8 @@ Bu örneklerin hepsinde ortak olan şey aynıdır: olayın sonunda başlangıçt
     'Kimyasal değişime yol açan olaya kimyasal tepkime denir.',
     'Kimyasal tepkime sonucunda başlangıçtakilerden farklı özelliklere sahip yeni maddeler oluşur.',
     'Karışım oluşumu fiziksel, bileşik oluşumu kimyasal bir olaydır.',
+    'Bileşikler kimyasal tepkime sonucunda oluşur ve kendilerini oluşturan elementlerden farklı özellikler gösterir.',
+    'Kapalı ortamdaki kimyasal tepkimede toplam kütle korunur; madde yok olmaz, başka maddelere dönüşür.',
     'Bu düzeyde kimyasal denklem yazılması istenmez.',
   ],
 

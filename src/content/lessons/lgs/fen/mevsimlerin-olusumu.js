@@ -31,14 +31,7 @@ const lesson = createLgsScienceLesson({
   subtitle:
     'Aynı anda bir yarım kürede yaz, ötekinde kış yaşanıyor. Uzaklık ikisi için de aynıysa farkı ne yaratıyor?',
   minutes: 45,
-  kazanimlar: [
-    {
-      kod: 'F.8.1.1.1',
-      metin: 'Mevsimlerin oluşumuna yönelik tahminlerde bulunur.',
-      sinir:
-        'Program üç noktaya değinilmesini ister: Dünya’nın dönme ekseni, eksen ile dolanma düzlemi arasındaki ilişki ve ışığın birim yüzeye düşen enerji miktarının etkisi. Kavram listesinde belirli tarih ezberi yoktur.',
-    },
-  ],
+  kazanimlar: ['F.8.1.1.1'],
   prerequisites: [
     { topic: 'Dünya’nın kendi ekseni etrafında dönmesi', why: 'Eksen kavramını bilmeden eksen eğikliğini kuramazsın.' },
     { topic: 'Işık ve enerji ilişkisi', why: 'Işığın yüzeye enerji taşıdığını bilmek, birim yüzey hesabının temelidir.' },

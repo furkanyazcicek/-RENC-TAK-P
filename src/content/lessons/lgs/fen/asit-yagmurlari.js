@@ -5,10 +5,9 @@ import { createLgsScienceLesson } from './factory.js'
  * Kazanım : F.8.4.4.7
  * Dayanak : MEB Fen Bilimleri Dersi Öğretim Programı, Ankara 2018
  *
- * PROGRAM ÇERÇEVESİ
- *   F.8.4.4.7 → "Asit yağmurlarının önlenmesine yönelik çözüm önerileri
- *               sunar." Oluşum sebeplerine ve çevreye verdiği zararlara
- *               değinilir.
+ * PROGRAMIN AÇIKLAMASI (resmiProgram.js'ten basılır)
+ *   F.8.4.4.7 → "Asit yağmurlarının oluşum sebepleri ve sonuçlarına
+ *               değinilir."
  *
  * KAPSAM KARARI
  * Kazanımın fiili "ÇÖZÜM ÖNERİSİ SUNAR". Bu yüzden dersin ağırlık merkezi
@@ -29,13 +28,7 @@ const lesson = createLgsScienceLesson({
   subtitle:
     'Bir çevre sorununu ezberlemek kolaydır. Zor olan, çözümün zincirin hangi halkasına yerleşeceğini görmektir.',
   minutes: 40,
-  kazanimlar: [
-    {
-      kod: 'F.8.4.4.7',
-      metin: 'Asit yağmurlarının önlenmesine yönelik çözüm önerileri sunar.',
-      sinir: 'Asit yağmurlarının oluşum sebeplerine ve çevreye verdiği zararlara değinilir.',
-    },
-  ],
+  kazanimlar: ['F.8.4.4.7'],
   prerequisites: [
     { topic: 'Asitler ve Bazlar: Özellik, Ayraç, pH ve Güvenlik', why: 'pH ölçeği ve asitlerin aşındırıcı etkisi orada kuruldu.' },
     { topic: 'Fiziksel ve Kimyasal Değişim: Kimlik Değişti mi?', why: 'Yapılardaki aşınmanın neden kimyasal bir olay olduğunu açıklar.' },
@@ -282,7 +275,7 @@ Ve bu düşünme biçimi bu konuya özel değildir. Küresel iklim değişikliğ
     {
       id: 'lgs-fen-asit-yagmuru-zararlar',
       title: 'Çevreye verdiği zararlar',
-      lead: 'Dört başlık: toprak, su, canlılar, yapılar. Program bu zararlara değinilmesini ister.',
+      lead: 'Dört başlık: toprak, su, canlılar, yapılar. Program asit yağmurlarının sonuçlarına değinilmesini ister.',
       blocks: [
         {
           id: 'lgs-fen-asit-yagmuru-zararlar-anlatim',
@@ -308,7 +301,7 @@ Bu özellik sorunu iki açıdan zorlaştırır:
 
 Bu yüzden asit yağmuru, çözümü yalnız yerel değil **ortak** olan bir sorundur. Bir sonraki bölümde çözüm önerilerini bu çerçevede kuracağız.
 
-*Kapsam notu: bu düzeyde gazların adlarını ve formüllerini bilmen istenmez. Program “oluşum sebeplerine ve çevreye verdiği zararlara değinilir” diyor; senden istenen, zinciri ve zararları anlatabilmek.*`,
+*Kapsam notu: bu düzeyde gazların adlarını ve formüllerini bilmen istenmez. Program “oluşum sebepleri ve sonuçlarına değinilir” diyor; senden istenen, zinciri ve zararları anlatabilmek.*`,
         },
         {
           id: 'lgs-fen-asit-yagmuru-zararlar-tablo',
@@ -559,7 +552,7 @@ Bu üç parçalı yapı, kazanımın istediği “çözüm önerisi sunma” bec
   examInsight: {
     title: 'Ölçülen şey bilgi değil, çözüm üretme',
     body:
-      'Kazanımın fiili çok açık: “önlenmesine yönelik **çözüm önerileri sunar**.” Program oluşum sebeplerine ve zararlara “değinilmesini” ister; yani bunlar amaç değil, çözüm üretmek için gereken arka plandır. MEB merkezî sınav kılavuzu da soruların yorumlama, analiz ve değerlendirme becerilerini ölçecek nitelikte hazırlandığını belirtir. Bu konudaki somut karşılığı, verilen bir öneriyi değerlendirip önleyici mi koruyucu mu olduğunu söyleyebilmendir.',
+      'Kazanımın fiili çok açık: “önlenmesine yönelik **çözüm önerileri sunar**.” Program oluşum sebepleri ve sonuçlarına “değinilmesini” ister; yani bunlar amaç değil, çözüm üretmek için gereken arka plandır. MEB merkezî sınav kılavuzu da soruların yorumlama, analiz ve değerlendirme becerilerini ölçecek nitelikte hazırlandığını belirtir. Bu konudaki somut karşılığı, verilen bir öneriyi değerlendirip önleyici mi koruyucu mu olduğunu söyleyebilmendir.',
     measures: [
       'Asit yağmurunun oluşum zincirini sıralayabilme',
       'Çevreye verdiği zararları alan alan sayabilme',

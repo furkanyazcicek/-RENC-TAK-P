@@ -5,12 +5,14 @@ import { createLgsScienceLesson } from './factory.js'
  * Kazanım : F.8.2.5.1 · F.8.2.5.2 · F.8.2.5.3
  * Dayanak : MEB Fen Bilimleri Dersi Öğretim Programı, Ankara 2018
  *
- * PROGRAM ÇERÇEVESİ — BAĞLAYICI
- *   F.8.2.5.1 → Islah, aşılama, gen aktarımı, klonlama ve gen tedavisi
- *               gibi uygulamalar üzerinde durulur.
- *   F.8.2.5.2 → Konu İKİLEMLER üzerinden tartıştırılır; tek yönlü bir
- *               "iyidir / kötüdür" anlatımı kazanıma aykırıdır.
- *   F.8.2.5.3 → Gelecekteki olası sonuçlar hakkında TAHMİN yaptırılır.
+ * PROGRAMIN AÇIKLAMASI (resmiProgram.js'ten basılır)
+ *   F.8.2.5.1 → "Islah, aşılama, gen aktarımı, klonlama, gen tedavisi
+ *               örnekleri üzerinde durulur."
+ *   F.8.2.5.2 ve F.8.2.5.3 için açıklama yoktur; "ikilem" ve "tahmin"
+ *   kazanım cümlelerinin kendisinden gelir.
+ *   Konu / Kavramlar (F.8.2.5): "Genetik mühendisliği, yapay seçilim,
+ *   biyoteknolojik çalışmalar, biyoteknoloji uygulamalarının çevreye
+ *   etkisi" — ıslah bu yüzden "yapay seçilim" adıyla da tanıtılır.
  *
  * KAPSAM KARARI
  * Uygulamaların laboratuvar basamakları (enzim adları, plazmid, vektör
@@ -27,24 +29,7 @@ const lesson = createLgsScienceLesson({
   subtitle:
     'Bir teknoloji hem hastalığı tedavi edebilir hem yeni sorular doğurabilir. Kazanım senden taraf tutmanı değil, ikilemi görmeni istiyor.',
   minutes: 44,
-  kazanimlar: [
-    {
-      kod: 'F.8.2.5.1',
-      metin: 'Genetik mühendisliğini ve biyoteknolojiyi ilişkilendirir.',
-      sinir: 'Islah, aşılama, gen aktarımı, klonlama ve gen tedavisi gibi uygulamalar üzerinde durulur.',
-    },
-    {
-      kod: 'F.8.2.5.2',
-      metin:
-        'Biyoteknolojik uygulamalar kapsamında oluşturulan ikilemlerle bu uygulamaların insanlık için yararlı ve zararlı yönlerini tartışır.',
-      sinir: 'Konu ikilemler üzerinden tartıştırılır; tek yönlü bir değerlendirme kazanıma uymaz.',
-    },
-    {
-      kod: 'F.8.2.5.3',
-      metin:
-        'Gelecekteki genetik mühendisliği uygulamalarının neler olabileceği hakkında tahminlerde bulunur.',
-    },
-  ],
+  kazanimlar: ['F.8.2.5.1', 'F.8.2.5.2', 'F.8.2.5.3'],
   prerequisites: [
     { topic: 'DNA’nın Yapısı: Nükleotidden Kromozoma', why: 'Gen aktarımının ne anlama geldiğini anlamak için gen kavramı gereklidir.' },
     { topic: 'Kalıtım Kavramları: Görünen ve Yazılı Olan', why: 'Islah çalışmalarının neden saf döl elde etmeyi hedeflediği buradan anlaşılır.' },
@@ -94,7 +79,7 @@ Bu, aynı zamanda LGS’de ölçülen bir beceridir: bir metinde verilen iki yö
     },
     {
       term: 'Islah',
-      body: 'İstenen özellikleri taşıyan canlıların seçilip çoğaltılmasıyla daha verimli çeşitler elde etme çalışmasıdır. Kalıtım bilgisine dayanır ve çok eskiden beri uygulanır.',
+      body: 'İstenen özellikleri taşıyan canlıların seçilip çoğaltılmasıyla daha verimli çeşitler elde etme çalışmasıdır. Seçimi doğa değil insan yaptığı için **yapay seçilim** olarak da adlandırılır. Kalıtım bilgisine dayanır ve çok eskiden beri uygulanır.',
     },
     {
       term: 'Aşılama',
@@ -232,6 +217,8 @@ Bu yüzden bu derste her uygulamayı **iki sütunlu** düşüneceğiz: ne sağl�
           id: 'lgs-fen-biyo-uygulamalar-anlatim',
           type: 'prose',
           body: `**1. Islah.** İstenen özellikleri taşıyan canlıların seçilip çoğaltılmasıdır. Verimi yüksek buğday çeşitleri, daha çok süt veren inekler, daha iri meyve veren ağaçlar ıslah çalışmalarının sonucudur.
+
+Islahın bir başka adı **yapay seçilimdir.** Bir önceki derste doğal seçilimi görmüştün: çevreye uygun kalıtsal özellikler, doğanın “seçmesiyle” kuşaklar boyunca yaygınlaşıyordu. Yapay seçilimde seçimi **insan** yapar: hangi bireylerin çoğaltılacağına insan karar verir. Mantık aynıdır, seçen farklıdır.
 
 Islah kalıtım bilgisine dayanır: hangi özelliğin kalıtsal olduğu, saf döl elde etmenin nasıl mümkün olduğu bilinmeden ıslah yapılamaz. Bu yüzden ıslah, bu ünitede öğrendiğin her şeyin doğrudan uygulaması sayılır.
 

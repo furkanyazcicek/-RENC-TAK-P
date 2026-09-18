@@ -5,13 +5,15 @@ import { createLgsScienceLesson } from './factory.js'
  * Kazanım : F.8.3.1.2 · F.8.3.1.3
  * Dayanak : MEB Fen Bilimleri Dersi Öğretim Programı, Ankara 2018
  *
- * PROGRAM SINIRLARI — BAĞLAYICI VE SERT
- *   F.8.3.1.2 → a) Gazların da basınç uyguladığı ve AÇIK HAVA BASINCININ
- *                  varlığı belirtilir.
- *               b) MATEMATİKSEL BAĞINTILARA GİRİLMEZ.
- *               c) GAZ BASINCININ BAĞLI OLDUĞU DEĞİŞKENLERE GİRİLMEZ.
- *   F.8.3.1.3 → Pascal prensibi vurgulanır; "ilke" ve "prensip"
- *               kavramlarına değinilir.
+ * PROGRAMIN AÇIKLAMASI (resmiProgram.js'ten basılır)
+ *   F.8.3.1.2 → a) "Gazların da sıvılara benzer şekilde basınç uyguladıkları
+ *                  belirtilir. Açık hava basıncı örneklendirilir."
+ *               b) "Matematiksel bağıntılara girilmez."
+ *               c) "Gaz basıncını etkileyen değişkenlere girilmez."
+ *   F.8.3.1.3 → a) "Sıvı basıncı ile ilgili Pascal prensibinin
+ *                  uygulamalarından örnekler verilir."
+ *               b) "Bilimsel bilgi türü olarak ilke ve prensiplere vurgu
+ *                  yapılır."
  *
  * Bu yüzden derste:
  *   • Sıvı basıncı formülü (P = h·d·g) HİÇ YAZILMAZ, sayısal hesap yok.
@@ -29,20 +31,7 @@ const lesson = createLgsScienceLesson({
   subtitle:
     'Sıvı basıncını kabın biçimi de içindeki su miktarı da belirlemez. Belirleyen iki şey vardır.',
   minutes: 44,
-  kazanimlar: [
-    {
-      kod: 'F.8.3.1.2',
-      metin: 'Sıvı basıncını etkileyen değişkenleri tahmin eder ve tahminlerini test eder.',
-      sinir:
-        'Gazların da basınç uyguladığı ve açık hava basıncının varlığı belirtilir. **Matematiksel bağıntılara girilmez** ve **gaz basıncının bağlı olduğu değişkenlere girilmez.**',
-    },
-    {
-      kod: 'F.8.3.1.3',
-      metin:
-        'Katı, sıvı ve gaz basıncının günlük yaşam ve teknolojideki uygulamalarına örnekler verir.',
-      sinir: 'Pascal prensibi vurgulanır; “ilke” ve “prensip” kavramlarına değinilir.',
-    },
-  ],
+  kazanimlar: ['F.8.3.1.2', 'F.8.3.1.3'],
   prerequisites: [
     { topic: 'Katı Basıncı: Ağırlık mı, Yüzey mi?', why: 'Basınç kavramı ve değişken kontrolü kuralı orada kuruldu.' },
     { topic: 'Yoğunluk', why: 'Sıvı basıncını etkileyen iki değişkenden biri sıvının yoğunluğudur.' },
@@ -104,7 +93,7 @@ Bu derste üç iş yapacağız:
     },
     {
       term: 'İlke ve prensip',
-      body: 'Çok sayıda gözlemle doğrulanmış, bir alanda genel geçer kabul edilen temel kurala **ilke** (prensip) denir. “Pascal prensibi” adındaki “prensip” sözcüğü bunu anlatır.',
+      body: 'Bilimsel bilginin türlerinden biridir: çok sayıda gözlem ve deneyle doğrulanmış, belirli koşullarda her zaman geçerli olan temel kurala **ilke** (prensip) denir. “Pascal prensibi” adındaki “prensip” sözcüğü bunu anlatır. Program ilke ve prensiplerin bir bilimsel bilgi türü olarak vurgulanmasını ister.',
     },
   ],
 

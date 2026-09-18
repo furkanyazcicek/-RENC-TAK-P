@@ -17,14 +17,7 @@ const lesson = createLgsScienceLesson({
   subtitle:
     'Bugün hava soğuk olabilir; bu, iklimin soğuduğu anlamına gelmez. Farkı süre ve alan belirler.',
   minutes: 40,
-  kazanimlar: [
-    { kod: 'F.8.1.2.1', metin: 'İklim ve hava olayları arasındaki farkı açıklar.' },
-    {
-      kod: 'F.8.1.2.2',
-      metin:
-        'İklim biliminin (klimatoloji) bir bilim dalı olduğunu ve bu alanda çalışan uzmanlara iklim bilimci (klimatolog) adı verildiğini söyler.',
-    },
-  ],
+  kazanimlar: ['F.8.1.2.1', 'F.8.1.2.2'],
   prerequisites: [
     { topic: 'Mevsimlerin oluşumu', why: 'Mevsim döngüsünü bilmeden iklimin neden uzun süreli bir kavram olduğunu göremezsin.' },
     { topic: 'Ortalama kavramı', why: 'İklim, ölçümlerin uzun yıllara yayılan ortalamasıyla tanımlanır.' },

@@ -5,10 +5,15 @@ import { createLgsScienceLesson } from './factory.js'
  * Kazanım : F.8.4.1.1 · F.8.4.1.2
  * Dayanak : MEB Fen Bilimleri Dersi Öğretim Programı, Ankara 2018
  *
- * PROGRAM SINIRLARI — BAĞLAYICI
- *   F.8.4.1.1 → Periyodik sistemin oluşturulma sürecine kısaca değinilir.
- *   F.8.4.1.2 → a) ELEMENT ÖZELLİKLERİNE GİRİLMEZ.
- *               b) Soy gazların kararlı yapıda olduğu üzerinde durulur.
+ * PROGRAMIN AÇIKLAMASI (resmiProgram.js'ten basılır)
+ *   F.8.4.1.1 → "Periyodik sisteme duyulan ihtiyaç ve periyodik sistemin
+ *               oluşturulma süreci ayrıntıya girilmeden vurgulanır."
+ *   F.8.4.1.2 → a) "Elementlerin özelliklerine girilmez."
+ *               b) "Soygazların üzerinde durulur."
+ *
+ * Program soy gazlar için yalnız "üzerinde durulur" der; derste öne
+ * çıkarılan KARARLILIK özelliği DRKOÇ'un seçimidir ve programa
+ * atfedilmez.
  *
  * Bu yüzden derste tek tek elementlerin özellikleri (erime noktası,
  * yoğunluk, tepkime davranışı, elektron dizilimi) ANLATILMAZ. Ders
@@ -28,19 +33,7 @@ const lesson = createLgsScienceLesson({
   subtitle:
     'Periyodik sistem bir liste değil, bir düzendir. Bir elementin tablodaki yeri sana onun hakkında bir şey söyler.',
   minutes: 40,
-  kazanimlar: [
-    {
-      kod: 'F.8.4.1.1',
-      metin: 'Periyodik sistemde grup ve periyotların nasıl oluşturulduğunu açıklar.',
-      sinir: 'Periyodik sistemin oluşturulma sürecine kısaca değinilir.',
-    },
-    {
-      kod: 'F.8.4.1.2',
-      metin: 'Elementleri periyodik tablo üzerinde metal, yarı metal ve ametal olarak sınıflandırır.',
-      sinir:
-        '**Element özelliklerine girilmez.** Soy gazların kararlı yapıda olduğu üzerinde durulur.',
-    },
-  ],
+  kazanimlar: ['F.8.4.1.1', 'F.8.4.1.2'],
   prerequisites: [
     { topic: 'Element ve sembol kavramı', why: 'Tabloda yer alan birimlerin ne olduğunu bilmeden düzeni okuyamazsın.' },
     { topic: 'Atom kavramı', why: 'Elementlerin atomlardan oluştuğunu bilmek sınıflandırmayı anlamlandırır.' },
@@ -100,11 +93,11 @@ Bu sınır işine yarar: çalışırken element ezberlemeye değil, düzeni anla
     },
     {
       term: 'Yarı metal',
-      body: 'Metaller ile ametaller arasındaki sınır bölgesinde yer alan element sınıfıdır. Adından da anlaşılacağı gibi iki sınıfın arasında bir konumdadır.',
+      body: 'Metaller ile ametaller arasındaki sınır bölgesinde yer alan element sınıfıdır. Adından da anlaşılacağı gibi iki sınıfın arasında bir konumdadır. Kazanım metninde “yarımetal” biçiminde bitişik yazılır; ikisi aynı sınıfı anlatır.',
     },
     {
       term: 'Soy gaz',
-      body: 'Periyodik sistemin en sağındaki grupta yer alan elementlerdir. **Kararlı yapıdadırlar**; bu yüzden başka elementlerle kolayca etkileşime girmezler. Program bu noktanın üzerinde durulmasını ister.',
+      body: 'Periyodik sistemin en sağındaki grupta yer alan elementlerdir. **Kararlı yapıdadırlar**; bu yüzden başka elementlerle kolayca etkileşime girmezler. Program soy gazların üzerinde ayrıca durulmasını ister.',
     },
   ],
 
@@ -116,7 +109,7 @@ Elementleri adlarının ilk harfine göre dizseydik, yan yana duran iki element 
 
 Periyodik sistem farklı bir yol izler: elementleri **benzerliklerine göre** gruplar. Bu sayede tablo bir arama aracı olmaktan çıkıp bir **düşünme aracı** hâline gelir.
 
-Kısaca oluşum sürecine bakalım. *Program bu sürece “kısaca değinilmesini” ister; bu yüzden ayrıntıya girmeyeceğiz.*
+Kısaca oluşum sürecine bakalım. *Program, periyodik sisteme duyulan ihtiyacın ve oluşturulma sürecinin “ayrıntıya girilmeden” vurgulanmasını ister; bu yüzden yalnız ana fikri göreceğiz.*
 
 Bilim insanları elementleri düzenlemek için uzun süre uğraştı. Bir noktada şu fark edildi: elementler belirli bir özelliğe göre sıralandığında, bazı benzerlikler **düzenli aralıklarla tekrar ediyordu.** Yani belirli bir sayıda element sonra benzer davranışlar yeniden ortaya çıkıyordu.
 
@@ -207,7 +200,7 @@ Son bir nokta: tabloda benzerlik ekseni **dikeydir.** Yani birbirine en çok ben
     {
       title: 'Soy gazları sıradan bir ametal grubu sanmak',
       wrong: 'Soy gazlar da öbür ametaller gibi davranır.',
-      right: 'Soy gazlar **kararlı yapıdadır**; bu yüzden başka elementlerle kolayca etkileşime girmezler. Program bu özelliğin üzerinde durulmasını açıkça ister.',
+      right: 'Soy gazlar **kararlı yapıdadır**; bu yüzden başka elementlerle kolayca etkileşime girmezler. Program soy gazların üzerinde ayrıca durulmasını ister; bu grubun en belirgin özelliği kararlılığıdır.',
       body: 'Tablonun en sağındaki sütunda yer alırlar. “Soy” sözcüğü buradan gelir: kendi hâlinde duran, kolay kolay birleşmeyen anlamında.',
     },
   ],
@@ -235,7 +228,7 @@ Bu, bir sinema salonundaki koltuk numarasına benzer. “7. sıra, 4. koltuk” 
 
 **Kullanım 1 — Benzer elementleri bulmak.** Bir elementin grubunu biliyorsan, o gruptaki öbür elementlerin ona benzediğini bilirsin. Bu, tablonun sana verdiği en güçlü bilgidir.
 
-**Kullanım 2 — Sınıfı belirlemek.** Bir elementin tablodaki bölgesini biliyorsan, metal mi ametal mi yarı metal mi olduğunu söyleyebilirsin. Sol ve orta bölüm metal, sağ üst bölüm ametal, aradaki sınır bölgesi yarı metaldir.
+**Kullanım 2 — Sınıfı belirlemek.** Bir elementin tablodaki bölgesini biliyorsan, metal mi ametal mi yarı metal mi olduğunu söyleyebilirsin. Sol ve orta bölüm metal (hidrojen hariç), sağ üst bölüm ametal, aradaki sınır bölgesi yarı metaldir.
 
 **Kullanım 3 — Karşılaştırma yapmak.** İki element verildiğinde, aynı grupta mı aynı periyotta mı olduklarına bakarsın. Aynı gruptaysalar benzer özellikler gösterirler; aynı periyottaysalar yalnız bir sırayı paylaşırlar.
 
@@ -294,6 +287,8 @@ Bu sınıflandırmanın en pratik yanı şudur: sınıfı belirlemek için eleme
 **Metaller** tablonun **sol ve orta** bölümünde yer alır. Bilinen elementlerin büyük bölümü metaldir; tabloya baktığında en geniş alanı onlar kaplar.
 
 **Ametaller** tablonun **sağ üst** bölümünde yer alır. Kapladıkları alan metallere göre küçüktür.
+
+Bu konum kuralının bilinen bir istisnası var; onu mutlaka bil: **hidrojen** tablonun sol üst köşesinde, 1. grubun başında durur ama bir **ametaldir.** Periyodik tablolarda bu yüzden çoğu zaman metallerden farklı bir renkle gösterilir. Bir soruda tablo renkli verilmişse rengi, konumdan önce oku.
 
 **Yarı metaller** ikisinin arasındaki **sınır bölgesinde** yer alır. Bu isim tesadüf değildir: konumları gibi özellikleri de iki sınıfın arasındadır.
 
@@ -398,7 +393,7 @@ Son olarak sınıflandırmanın mantığını bir cümlede toplayalım: **konum 
         { title: '3. L’yi sınıflandır', body: 'L sağ üst bölümde bulunuyor; öyleyse **ametaldir.**' },
         { title: '4. M’yi sınıflandır', body: 'M sınır şeridinde bulunuyor; öyleyse **yarı metaldir.**' },
         { title: '5. N’yi sınıflandır', body: 'N en sağdaki sütunda bulunuyor; öyleyse bir **soy gazdır.**' },
-        { title: '6. N hakkında çıkarım yap', body: 'Soy gazlar **kararlı yapıdadır**; başka elementlerle kolayca etkileşime girmezler. Program bu özelliğin bilinmesini ister.' },
+        { title: '6. N hakkında çıkarım yap', body: 'Soy gazlar **kararlı yapıdadır**; başka elementlerle kolayca etkileşime girmezler. Soy gazlar, programın ayrıca üzerinde durulmasını istediği gruptur.' },
       ],
       answer:
         'K metal, L ametal, M yarı metal, N ise soy gazdır. N kararlı yapıda olduğu için başka elementlerle kolayca etkileşime girmez.',
@@ -467,10 +462,10 @@ Son olarak sınıflandırmanın mantığını bir cümlede toplayalım: **konum 
     },
     {
       prompt:
-        'Soy gazların hangi özelliği program tarafından özellikle vurgulanır ve bu özellik ne anlama gelir?',
+        'Program soy gazların üzerinde ayrıca durulmasını ister. Bu grubun en belirgin özelliği nedir ve ne anlama gelir?',
       hint: 'Adlarındaki “soy” sözcüğü ne anlatıyor?',
       answer:
-        'Soy gazların **kararlı yapıda** olmaları vurgulanır. Kararlı olmak, başka elementlerle kolayca etkileşime girmemek demektir; soy gazlar kendi hâllerinde durur. Tablonun en sağındaki grupta yer alırlar ve her periyodun sonunda bir soy gaz bulunur. Bu düzenli tekrar, periyodik sistemin kuruluş mantığının en görünür işaretlerinden biridir.',
+        'Soy gazların en belirgin özelliği **kararlı yapıda** olmalarıdır. Kararlı olmak, başka elementlerle kolayca etkileşime girmemek demektir; soy gazlar kendi hâllerinde durur. Tablonun en sağındaki grupta yer alırlar ve her periyodun sonunda bir soy gaz bulunur. Bu düzenli tekrar, periyodik sistemin kuruluş mantığının en görünür işaretlerinden biridir.',
     },
   ],
 
@@ -595,7 +590,7 @@ Son olarak sınıflandırmanın mantığını bir cümlede toplayalım: **konum 
     'Yatay sıralara periyot denir; bir periyot soldan sağa okunur.',
     'Benzerlik ekseni dikeydir: birbirine en çok benzeyen elementler alt alta bulunur.',
     'Bir elementin tablodaki yeri, o element hakkında bilgi taşır.',
-    'Metaller sol ve orta bölümde, ametaller sağ üst bölümde yer alır.',
+    'Metaller sol ve orta bölümde, ametaller sağ üst bölümde yer alır; hidrojen 1. grupta durduğu hâlde ametaldir.',
     'Yarı metaller ikisinin arasındaki sınır şeridinde bulunur.',
     'Bilinen elementlerin büyük bölümü metaldir.',
     'Soy gazlar en sağdaki grupta yer alır ve kararlı yapıdadır.',

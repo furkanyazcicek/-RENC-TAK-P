@@ -5,11 +5,13 @@ import { createLgsScienceLesson } from './factory.js'
  * Kazanım : F.8.2.2.2 · F.8.2.2.3
  * Dayanak : MEB Fen Bilimleri Dersi Öğretim Programı, Ankara 2018
  *
- * PROGRAM SINIRLARI — BAĞLAYICI
- *   F.8.2.2.2 → a) Çaprazlamalarda YALNIZ bezelye karakterleri kullanılır.
- *               b) Cinsiyetin belirlenmesinde babadan gelen eşey
- *                  kromozomunun etkili olduğu vurgulanır.
- *   F.8.2.2.3 → Akraba evliliklerinin genetik sonuçları tartışılır.
+ * PROGRAMIN AÇIKLAMASI (resmiProgram.js'ten basılır)
+ *   F.8.2.2.2 → a) "Çaprazlamalarda sadece bezelye karakterleri kullanılır."
+ *               b) "Diğer canlılarda da karakterlerin aktarımının benzer
+ *                  olduğu vurgulanır."
+ *               c) "İnsanda çocuğun cinsiyetinin babadan gelen eşey
+ *                  kromozomu ile belirlendiği vurgulanır."
+ *   F.8.2.2.3 → açıklama yok; kazanımın fiili "tartışır".
  *
  * KAPSAM KARARI
  * Çaprazlama örnekleri bezelye ile sınırlı tutuldu. İnsan karakteri
@@ -27,19 +29,7 @@ const lesson = createLgsScienceLesson({
   subtitle:
     'Çaprazlama bir kehanet değil, bir olasılık hesabıdır. Bu farkı gören öğrenci sorunun yarısını çözmüştür.',
   minutes: 46,
-  kazanimlar: [
-    {
-      kod: 'F.8.2.2.2',
-      metin: 'Tek karakter çaprazlamaları ile ilgili problemler çözerek sonuçlar hakkında yorum yapar.',
-      sinir:
-        'Çaprazlamalarda yalnızca bezelye karakterleri kullanılır. Cinsiyetin belirlenmesinde babadan gelen eşey kromozomunun etkili olduğu vurgulanır.',
-    },
-    {
-      kod: 'F.8.2.2.3',
-      metin: 'Akraba evliliklerinin genetik sonuçlarını tartışır.',
-      sinir: 'Konu, çekinik genlerin taşınması ve olasılığın artması üzerinden ele alınır.',
-    },
-  ],
+  kazanimlar: ['F.8.2.2.2', 'F.8.2.2.3'],
   prerequisites: [
     { topic: 'Kalıtım Kavramları: Görünen ve Yazılı Olan', why: 'Genotip, saf döl, melez döl, baskın ve çekinik kavramları kurulmadan çaprazlama yapılamaz.' },
     { topic: 'DNA’nın Yapısı: Nükleotidden Kromozoma', why: 'Kromozom kavramı, cinsiyetin belirlenmesini anlamak için gereklidir.' },
@@ -237,7 +227,9 @@ Dikkat: genotip oranı ile fenotip oranı **farklıdır**. Genotipte üç çeşi
 
 Bir de şu ayrımı not et: dört kutu, “dört yavru olacak” demek değildir. Dört kutu, **dört eşit olasılıklı ihtimal** demektir. Bir bitkinin yüzlerce yavrusu olabilir; her birinin olasılığı yine aynıdır.
 
-Son olarak *programın sınırını* tekrar hatırlatalım: bu çaprazlamalar bezelye karakterleriyle sınırlıdır. Bezelyede kullanılan karakterler şunlardır: çiçek rengi (mor–beyaz), tohum rengi (sarı–yeşil), tohum biçimi (düz–buruşuk), bitki boyu (uzun–kısa).`,
+Son olarak *programın sınırını* tekrar hatırlatalım: bu çaprazlamalar bezelye karakterleriyle sınırlıdır. Bezelyede kullanılan karakterler şunlardır: çiçek rengi (mor–beyaz), tohum rengi (sarı–yeşil), tohum biçimi (düz–buruşuk), bitki boyu (uzun–kısa).
+
+Ama bu sınırı yanlış okuma: çaprazlama **problemleri** bezelyeyle sınırlıdır, **kurallar** değil. Program aynı açıklamada şunun da vurgulanmasını ister: **diğer canlılarda da karakterlerin aktarımı benzerdir.** Genlerin çift hâlde bulunması, her üreme hücresinin çiftin yalnız bir üyesini taşıması, baskın genin çekinik geni örtmesi — bunlar yalnız bezelyeye özgü değildir; hayvanlarda ve insanda da karakterler benzer biçimde aktarılır. Bezelyenin seçilme nedeni, karakterlerinin net olması ve çevreden az etkilenmesidir; kuralların yalnız onda geçerli olması değil.`,
         },
         {
           id: 'lgs-fen-caprazlama-tablo-veri',
@@ -389,7 +381,7 @@ Bir noktayı daha netleştirelim: akrabalık derecesi arttıkça (yani akrabalı
 
 Peki ne yapılabilir? Evlilik öncesinde yapılan **genetik danışmanlık** ve tarama uygulamaları, ailede taşınan çekinik genlerin belirlenmesine yardımcı olur. Böylece aileler bilgilendirilmiş olur. Ülkemizde evlilik öncesi bazı taramalar yaygın biçimde uygulanmaktadır.
 
-*Programın çerçevesi: bu kazanım bir tartışma kazanımıdır. Senden istenen, sonucu ezberlemek değil, taşıyıcılık ve olasılık kavramlarını kullanarak nedenini açıklayabilmektir.*`,
+*Kapsam notu: bu kazanımın fiili “tartışır”dır. Senden istenen, sonucu ezberlemek değil, taşıyıcılık ve olasılık kavramlarını kullanarak nedenini açıklayabilmektir.*`,
         },
         {
           id: 'lgs-fen-caprazlama-akraba-tablo',
@@ -666,6 +658,7 @@ Peki ne yapılabilir? Evlilik öncesinde yapılan **genetik danışmanlık** ve 
     'AA × aa → yavruların hepsi Aa olur ve hepsi baskın fenotipi gösterir.',
     'Aa × Aa → genotipte %25 AA, %50 Aa, %25 aa; fenotipte %75 baskın, %25 çekinik.',
     'Aa × aa → fenotipte %50 baskın, %50 çekinik; bilinmeyen genotipi sınamak için kullanılır.',
+    'Çaprazlama problemleri bezelyeyle sınırlıdır; ama diğer canlılarda da karakterlerin aktarımı benzerdir.',
     'Genotip oranı ile fenotip oranı farklıdır; sorunun hangisini istediğini oku.',
     'Çaprazlama sonucu bir kesinlik değil, her yavru için geçerli bir olasılıktır.',
     'İnsanda 23. kromozom çifti eşey kromozomudur: kadında XX, erkekte XY.',

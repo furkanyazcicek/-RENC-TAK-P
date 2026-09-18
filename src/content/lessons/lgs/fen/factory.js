@@ -32,19 +32,56 @@
  * içermez (sunum `src/components/lessons/reader/*` katmanındadır).
  */
 
+import { FEN_RESMI_KAZANIMLAR } from './resmiProgram.js'
+
 const blockId = (slug, section, name) => `${slug}-${section}-${name}`
 
-/** Kazanım künyesi + programın çizdiği sınır. */
-function kazanimNotu(slug, kazanimlar, soruSayisi) {
+/**
+ * Ders dosyasındaki kazanım listesini resmî metne bağlar.
+ *
+ * Ders dosyası YALNIZ kodu verir ('F.8.4.4.1' ya da { kod }). Kazanım
+ * cümlesi ve açıklamaları `resmiProgram.js` dosyasından gelir. Ders
+ * dosyasında `metin` ya da `sinir` yazılmışsa derleme durdurulur: bu iki
+ * alan elle yazıldığında programdan kayıyordu ve programda olmayan
+ * sınırlar programa atfediliyordu.
+ */
+function resmiKazanimlar(slug, kazanimlar) {
+  return kazanimlar.map((giris) => {
+    const kod = typeof giris === 'string' ? giris : giris?.kod
+    if (typeof giris === 'object' && giris && ('metin' in giris || 'sinir' in giris)) {
+      throw new Error(
+        `${slug}: ${kod} için "metin"/"sinir" elle yazılmış. Kazanım metni ve açıklamaları ` +
+          `resmiProgram.js dosyasından okunur; ders dosyasında yalnız kod bulunmalıdır.`
+      )
+    }
+    const resmi = FEN_RESMI_KAZANIMLAR[kod]
+    if (!resmi) throw new Error(`${slug}: ${kod} resmî Fen programında bulunamadı.`)
+    return { kod, metin: resmi.metin, aciklama: resmi.aciklama }
+  })
+}
+
+/**
+ * Kazanım künyesi.
+ * "Programın açıklaması" başlığı altında YALNIZ programın kendi cümleleri
+ * durur. Dersin kendi kapsam kararları varsa ayrı bir başlıkla ("DRKOÇ
+ * kapsam notu") yazılır; ikisi hiçbir zaman karıştırılmaz.
+ */
+function kazanimNotu(slug, kazanimlar, soruSayisi, kapsamNotu) {
   const satirlar = kazanimlar
-    .map((k) => (k.sinir ? `**${k.kod}** — ${k.metin}\n*Program sınırı:* ${k.sinir}` : `**${k.kod}** — ${k.metin}`))
+    .map((k) => {
+      const baslik = `**${k.kod}** — ${k.metin}`
+      if (!k.aciklama.length) return baslik
+      const maddeler = k.aciklama.map((a) => `- ${a}`).join('\n')
+      return `${baslik}\n\n*Programın açıklaması:*\n${maddeler}`
+    })
     .join('\n\n')
+  const not = kapsamNotu ? `\n\n*DRKOÇ kapsam notu:* ${kapsamNotu}` : ''
   return {
     id: blockId(slug, 'olay', 'kazanim'),
     type: 'teacher_note',
     tone: 'exam',
     body:
-      `Bu ders, MEB 8. sınıf Fen Bilimleri Dersi Öğretim Programı'ndaki şu kazanımları karşılar:\n\n${satirlar}\n\n` +
+      `Bu ders, MEB 8. sınıf Fen Bilimleri Dersi Öğretim Programı'ndaki şu kazanımları karşılar:\n\n${satirlar}${not}\n\n` +
       `LGS'nin ikinci oturumunda Fen Bilimleri alt testi ${soruSayisi} sorudur ve sorular 8. sınıf ` +
       `öğretim programındaki kazanımlar esas alınarak hazırlanır.`,
   }
@@ -134,8 +171,10 @@ export function createLgsScienceLesson(config) {
     subtitle,
     minutes = 42,
     goldStandard = false,
-    /** [{ kod, metin, sinir? }] — resmî kazanım künyesi ve program sınırı. */
+    /** ['F.8.x.y.z', …] — yalnız kod; metin ve açıklama resmiProgram.js'ten gelir. */
     kazanimlar = [],
+    /** Dersin kendi kapsam kararı (programa atfedilmez, ayrı başlıkla basılır). */
+    kapsamNotu = null,
     soruSayisi = 20,
     prerequisites = [],
     outcomes = [],
@@ -190,6 +229,7 @@ export function createLgsScienceLesson(config) {
     next = [],
   } = config
 
+  const resmi = resmiKazanimlar(slug, kazanimlar)
   const sections = []
 
   /* ---------- 1. OLAY ---------- */
@@ -199,7 +239,7 @@ export function createLgsScienceLesson(config) {
     title: opening.title,
     lead: opening.lead,
     blocks: [
-      kazanimNotu(slug, kazanimlar, soruSayisi),
+      kazanimNotu(slug, resmi, soruSayisi, kapsamNotu),
       { id: blockId(slug, 'olay', 'anlatim'), type: 'prose', body: opening.body },
       ...kavramBloklari(slug, concepts),
       { id: blockId(slug, 'olay', 'neden'), type: 'why', question: why.question, body: why.body },
@@ -421,7 +461,7 @@ export function createLgsScienceLesson(config) {
     title,
     subtitle,
     goldStandard,
-    kazanimlar: kazanimlar.map((k) => k.kod),
+    kazanimlar: resmi.map((k) => k.kod),
     document: {
       version: 2,
       estimated_minutes: minutes,

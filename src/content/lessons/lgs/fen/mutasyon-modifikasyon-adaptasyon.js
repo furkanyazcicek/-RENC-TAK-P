@@ -5,12 +5,12 @@ import { createLgsScienceLesson } from './factory.js'
  * Kazanım : F.8.2.3.1 · F.8.2.3.2 · F.8.2.3.3 · F.8.2.4.1
  * Dayanak : MEB Fen Bilimleri Dersi Öğretim Programı, Ankara 2018
  *
- * PROGRAM SINIRLARI — BAĞLAYICI
- *   F.8.2.3.1 → Mutasyon örneklerden yola çıkarak açıklanır.
- *   F.8.2.3.2 → Modifikasyon örneklerden yola çıkarak açıklanır.
- *   F.8.2.3.3 → İkisi arasındaki farklar için ÇIKARIM yaptırılır.
- *   F.8.2.4.1 → Uyum gözlem yoluyla açıklanır; ADAPTASYONLARIN
- *               KALITSAL OLDUĞU vurgulanır.
+ * PROGRAMIN AÇIKLAMASI (resmiProgram.js'ten basılır)
+ *   F.8.2.4.1 → "Adaptasyonların kalıtsal olduğu vurgulanır."
+ *   F.8.2.3.1–3 için açıklama yoktur.
+ *   Konu / Kavramlar (F.8.2.4): "Adaptasyon, doğal seçilim, varyasyon" —
+ *   bu yüzden adaptasyon bölümünde doğal seçilim ve varyasyon adıyla
+ *   tanımlanır.
  *
  * KAPSAM KARARI
  * Üç kavram tek derste toplandı; çünkü kazanım F.8.2.3.3 doğrudan
@@ -31,16 +31,7 @@ const lesson = createLgsScienceLesson({
   subtitle:
     'Üç kavramın tek ayırt edici sorusu var: DNA değişti mi, değişiklik yavruya geçer mi?',
   minutes: 45,
-  kazanimlar: [
-    { kod: 'F.8.2.3.1', metin: 'Örneklerden yola çıkarak mutasyonu açıklar.' },
-    { kod: 'F.8.2.3.2', metin: 'Örneklerden yola çıkarak modifikasyonu açıklar.' },
-    { kod: 'F.8.2.3.3', metin: 'Mutasyonla modifikasyon arasındaki farklar ile ilgili çıkarımda bulunur.' },
-    {
-      kod: 'F.8.2.4.1',
-      metin: 'Canlıların yaşadıkları çevreye uyumlarını gözlem yaparak açıklar.',
-      sinir: 'Adaptasyonların kalıtsal olduğu vurgulanır.',
-    },
-  ],
+  kazanimlar: ['F.8.2.3.1', 'F.8.2.3.2', 'F.8.2.3.3', 'F.8.2.4.1'],
   prerequisites: [
     { topic: 'DNA’nın Yapısı: Nükleotidden Kromozoma', why: 'Mutasyonun DNA’daki bir değişiklik olduğunu anlamak için gereklidir.' },
     { topic: 'Kalıtım Kavramları: Görünen ve Yazılı Olan', why: 'Genotip–fenotip ayrımı kurulmadan bu üç kavram ayırt edilemez.' },
@@ -90,6 +81,14 @@ Kazanım F.8.2.3.3 zaten “farklar ile ilgili çıkarımda bulunur” diyor. Ya
     {
       term: 'Adaptasyon (uyum)',
       body: 'Bir canlının yaşadığı çevrede hayatta kalmasını ve üremesini kolaylaştıran **kalıtsal** özelliklerdir. Uzun süre içinde ortaya çıkar ve yavruya aktarılır.',
+    },
+    {
+      term: 'Varyasyon',
+      body: 'Aynı türün bireyleri arasındaki **kalıtsal farklılıklardır.** Doğal seçilimin üzerinde çalıştığı çeşitliliği sağlar.',
+    },
+    {
+      term: 'Doğal seçilim',
+      body: 'Çevreye uygun kalıtsal özellikleri taşıyan bireylerin daha çok hayatta kalıp daha çok üremesi ve bu özelliklerin kuşaklar boyunca **yaygınlaşmasıdır.**',
     },
     {
       term: 'Mutasyona neden olan etkenler',
@@ -348,6 +347,14 @@ Bütün bu örneklerin ortak özelliği nedir? **Hepsi kalıtsaldır.** Yani bu 
 Bu **yanlıştır.** Neden yanlış olduğunu artık biliyorsun: bir bireyin yaşamı boyunca çevreye alışarak kazandığı özellikler fenotipte kalır; DNA’da bir değişiklik yaratmaz. Yani bunlar **modifikasyondur** ve yavruya aktarılmaz.
 
 Doğru anlayış şudur: **Adaptasyon kalıtsal özelliklere dayanır.** Bir popülasyonda zaten var olan kalıtsal farklardan, o çevrede avantaj sağlayanlar kuşaklar boyunca daha çok aktarılır ve yaygınlaşır. Süreç bir bireyin yaşamı içinde değil, **kuşaklar boyunca** gerçekleşir.
+
+Bu süreçteki iki kavramın adını koyalım; ikisi de programın kavram listesinde yer alır.
+
+**Varyasyon:** Aynı türün bireyleri arasındaki **kalıtsal farklılıklardır.** Bir tavşan popülasyonunda kimi bireylerin kürkü daha kalın, kimininki daha incedir; kimi daha açık, kimi daha koyu renklidir. Mutasyonlar ve üremede genlerin farklı biçimlerde bir araya gelmesi bu çeşitliliğin kaynaklarıdır.
+
+**Doğal seçilim:** Çevre koşullarına uygun kalıtsal özellikleri taşıyan bireylerin **daha çok hayatta kalıp daha çok üremesi**, böylece bu özelliklerin sonraki kuşaklarda **yaygınlaşmasıdır.** Karlı bir bölgede açık renkli tavşanlar yırtıcılardan daha kolay saklanır; daha çok hayatta kalır, daha çok yavru bırakır. Kuşaklar geçtikçe popülasyonda açık renkli bireylerin oranı artar.
+
+Üç kavram bir zincir kurar: **varyasyon** seçilecek çeşitliliği sağlar, **doğal seçilim** çevreye uygun olanı ayıklar, sonuçta ortaya çıkan kalıtsal uyum **adaptasyondur.** Dikkat et: bu zincirin hiçbir halkasında bireyin çabayla bir özellik kazanması yoktur.
 
 İki cümleyi yan yana koyalım; fark net görünsün:
 
@@ -688,6 +695,7 @@ Peki kutup ayısının kalın kürkü neden adaptasyondur? Çünkü kalıtsal bi
     'Modifikasyon, koşul ortadan kalkınca genellikle geri döner.',
     'Adaptasyon, canlının çevresinde yaşamasını kolaylaştıran kalıtsal özelliklerdir.',
     'Adaptasyonlar kalıtsaldır; bireyin çabasıyla kazanılmaz, kuşaklar boyunca yaygınlaşır.',
+    'Varyasyon bireyler arasındaki kalıtsal farklılıklardır; doğal seçilim çevreye uygun olanların yaygınlaşmasını sağlar.',
     'Üç kavramı ayırmanın yolu iki sorudur: DNA değişti mi, değişiklik yavruya geçiyor mu?',
   ],
 

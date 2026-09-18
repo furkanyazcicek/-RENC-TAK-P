@@ -5,10 +5,12 @@ import { createLgsScienceLesson } from './factory.js'
  * Kazanım : F.8.2.2.1
  * Dayanak : MEB Fen Bilimleri Dersi Öğretim Programı, Ankara 2018
  *
- * PROGRAM SINIRI — BAĞLAYICI
- *   F.8.2.2.1 → Gen, kromozom ve DNA arasındaki ilişki hatırlatılır;
- *               fenotip, genotip, saf döl (homozigot), melez döl
- *               (heterozigot), baskın ve çekinik kavramları verilir.
+ * PROGRAMIN AÇIKLAMASI (resmiProgram.js'ten basılır)
+ *   F.8.2.2.1 → a) "Gen, fenotip, genotip, saf döl ve melez döl
+ *                  kavramlarına değinilir."
+ *               b) "Baskın ve çekinik gen kavramlarına değinilir."
+ *   "Homozigot/heterozigot" karşılıkları programda geçmez; derste yalnız
+ *   ayraç içinde, öğrencinin başka kaynaklarda karşılaşacağı için verilir.
  *
  * KAPSAM KARARI
  * Bu ders yalnız KAVRAMLARI kurar. Çaprazlama problemleri ve oran
@@ -26,14 +28,7 @@ const lesson = createLgsScienceLesson({
   subtitle:
     'Genotip yazılı olandır, fenotip görünen. Bu iki sözcüğü ayırdığın anda kalıtımın yarısı çözülür.',
   minutes: 41,
-  kazanimlar: [
-    {
-      kod: 'F.8.2.2.1',
-      metin: 'Kalıtım ile ilgili kavramları tanımlar.',
-      sinir:
-        'Gen, kromozom ve DNA arasındaki ilişki hatırlatılır; fenotip, genotip, saf döl (homozigot), melez döl (heterozigot), baskın ve çekinik kavramları verilir. Çaprazlama problemleri bu kazanımın değil, F.8.2.2.2’nin konusudur.',
-    },
-  ],
+  kazanimlar: ['F.8.2.2.1'],
   prerequisites: [
     { topic: 'DNA’nın Yapısı: Nükleotidden Kromozoma', why: 'Gen kavramı kurulmadan genotip tanımlanamaz.' },
     { topic: 'Kromozom ve gen ilişkisi', why: 'Genlerin neden çiftler hâlinde bulunduğu buradan anlaşılır.' },
@@ -347,7 +342,7 @@ Peki baskın fenotipli bir bireyin genotipi hiç mi belirlenemez? Belirlenebilir
 
 Bu akıl yürütmeyi dikkatle oku: sonuca fenotipe bakarak değil, **yavrudan geriye giderek** ulaştık. Kalıtım sorularında en çok ölçülen düşünme becerisi budur — verilen bilgiden yola çıkarak görünmeyen bir bilgiye ulaşmak.
 
-*Programın sınırı: bu dersin kazanımı kavramları tanımlamaktır. Çaprazlama problemleri ve oran hesapları bir sonraki kazanımın (F.8.2.2.2) konusudur ve orada bezelye karakterleriyle sınırlı olarak işlenir.*`,
+*Kapsam notu: bu dersin kazanımı kavramları tanımlamaktır. Çaprazlama problemleri ve oran hesapları bir sonraki kazanımın (F.8.2.2.2) konusudur ve orada bezelye karakterleriyle sınırlı olarak işlenir.*`,
         },
         {
           id: 'lgs-fen-kalitim-yon-karsilastirma',

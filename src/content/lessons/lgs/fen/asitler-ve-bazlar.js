@@ -5,17 +5,18 @@ import { createLgsScienceLesson } from './factory.js'
  * Kazanım : F.8.4.4.1 · F.8.4.4.2 · F.8.4.4.3 · F.8.4.4.4 · F.8.4.4.5 · F.8.4.4.6
  * Dayanak : MEB Fen Bilimleri Dersi Öğretim Programı, Ankara 2018
  *
- * PROGRAM SINIRLARI — BAĞLAYICI
- *   F.8.4.4.1 → Asit ve bazların YAPISINA GİRİLMEZ; yalnız genel
- *               özellikleri üzerinde durulur.
- *   F.8.4.4.3 → Ayraç olarak GÜNLÜK HAYATTA ULAŞILABİLECEK malzemeler
- *               kullanılır (mor lahana, çay, türlü bitki özleri).
- *   F.8.4.4.6 → Temizlik malzemelerinin bilinçsiz kullanımının
- *               tehlikeleri ve alınacak tedbirler vurgulanır.
+ * PROGRAMIN AÇIKLAMASI (resmiProgram.js'ten basılır)
+ *   Bu altı kazanımdan yalnız F.8.4.4.4'ün açıklaması vardır:
+ *   "Konu ile ilgili deney yolu ile çıkarımlarda bulunmaları sağlanır."
+ *   Bu yüzden deney bölümüne pH kâğıdı ölçümü de eklendi.
+ *
+ * DRKOÇ KAPSAM KARARI (programa atfedilmez)
+ * Kazanımlar asit ve bazların "genel özelliklerini" ister; yapıları,
+ * formülleri ve nötrleşme denklemi istenmediği için derste yazılmadı.
  *
  * GÜVENLİK KARARI
- * Program temizlik malzemelerinin karıştırılmasının tehlikesini öğretmeyi
- * ZORUNLU kılıyor. Ders bu tehlikeyi AÇIKÇA söyler ama hiçbir yerde
+ * F.8.4.4.6 temizlik malzemelerinin kullanımında "gerekli tedbirleri
+ * alma"yı kazanım olarak istiyor. Ders tehlikeyi AÇIKÇA söyler ama hiçbir yerde
  * "hangi oranla ne olur" türü bir tarif vermez; yalnız "karıştırma" ve
  * "ne yapmalı" düzeyinde kalır. Bu, kazanımın koruyucu amacına uygundur.
  *
@@ -31,26 +32,9 @@ const lesson = createLgsScienceLesson({
   subtitle:
     'Bir maddenin asit mi baz mı olduğunu tadına bakarak anlamaya çalışmazsın. Bunun için ayraçlar ve pH vardır.',
   minutes: 48,
-  kazanimlar: [
-    {
-      kod: 'F.8.4.4.1',
-      metin: 'Asit ve bazların genel özelliklerini ifade eder.',
-      sinir: 'Asit ve bazların **yapısına girilmez**; yalnız genel özellikleri üzerinde durulur.',
-    },
-    { kod: 'F.8.4.4.2', metin: 'Asit ve bazlara günlük yaşamdan örnekler verir.' },
-    {
-      kod: 'F.8.4.4.3',
-      metin: 'Maddelerin asitlik ve bazlık durumlarını ayraçlar kullanarak belirler.',
-      sinir: 'Günlük hayatta ulaşılabilecek malzemeler (mor lahana suyu gibi) ayraç olarak kullanılır.',
-    },
-    { kod: 'F.8.4.4.4', metin: 'pH değerinin maddenin asitlik ve bazlık durumu hakkında bilgi verdiğini bilir.' },
-    { kod: 'F.8.4.4.5', metin: 'Asit ve bazların çeşitli maddeler üzerindeki etkilerini gözlemler.' },
-    {
-      kod: 'F.8.4.4.6',
-      metin: 'Asit ve bazların temizlik malzemesi olarak kullanımı sırasında oluşabilecek tehlikelere karşı tedbir alır.',
-      sinir: 'Bilinçsiz kullanımın tehlikeleri ve alınacak tedbirler vurgulanır.',
-    },
-  ],
+  kazanimlar: ['F.8.4.4.1', 'F.8.4.4.2', 'F.8.4.4.3', 'F.8.4.4.4', 'F.8.4.4.5', 'F.8.4.4.6'],
+  kapsamNotu:
+    'Kazanımlar asit ve bazların genel özelliklerini ister; bu yüzden asit ve bazların yapısına, formüllerine ve nötrleşme denklemine bu derste girilmez.',
   prerequisites: [
     { topic: 'Fiziksel ve Kimyasal Değişim: Kimlik Değişti mi?', why: 'Asitlerin maddeler üzerindeki etkisi bir kimyasal değişimdir.' },
     { topic: 'Periyodik Sistem: Düzenin Kendisi Bilgidir', why: 'Maddelerin sınıflandırılması fikri orada kuruldu.' },
@@ -86,7 +70,7 @@ Ders boyunca altı işimiz var: genel özellikleri tanımak, günlük hayattan �
 
 Sonuncusu yalnız bir sınav konusu değil; evde işine yarayacak bir bilgi. Program da bunu ayrı bir kazanım olarak istiyor.
 
-Bir kapsam uyarısı: *program bu kazanımda asit ve bazların **yapısına girilmemesini** ister.* Yani asitlerin ve bazların içyapısı, formülleri ya da hangi parçacıklardan oluştuğu bu derste anlatılmayacak. Senden istenen **genel özellikleri** bilmek ve ayraç ile pH’ı kullanabilmek.`,
+Bir kapsam notu: kazanım asit ve bazların **genel özelliklerini** ister. Bu yüzden asitlerin ve bazların içyapısı, formülleri ya da hangi parçacıklardan oluştuğu bu derste anlatılmayacak. Senden istenen genel özellikleri bilmek ve ayraç ile pH’ı kullanabilmek.`,
   },
 
   concepts: [
@@ -152,7 +136,7 @@ Sayı doğrusunu şöyle düşün: 7 ortadadır. Soluna gittikçe asitlik güçl
 
 Son olarak bir kavram daha kuralım: **nötrleşme.** Bir asit ile bir baz karşılaştığında birbirlerinin etkisini azaltır. Bu yüzden asidik bir durumu gidermek için bazik bir madde kullanılır. Arı sokmasında ya da mide yanmasında kullanılan bazı çözümler bu ilkeye dayanır.
 
-*Kapsam notu: program asit ve bazların yapısına girilmemesini ister; bu yüzden nötrleşmeyi de bir denklemle değil, sonucuyla anlatıyoruz.*`,
+*Kapsam notu: kazanımlar asit ve bazların genel özelliklerini istediği için nötrleşmeyi bir denklemle değil, sonucuyla anlatıyoruz.*`,
   },
 
   mechanism: {
@@ -229,7 +213,7 @@ Son olarak bir kavram daha kuralım: **nötrleşme.** Bir asit ile bir baz karş
       title: 'Temizlik malzemelerini karıştırmanın daha etkili olacağını sanmak',
       wrong: 'İki farklı temizlik malzemesini karıştırırsam daha iyi temizler.',
       right: 'Temizlik malzemeleri **kesinlikle karıştırılmamalıdır.** Karıştırıldıklarında sağlığa ciddi zarar verebilecek gazlar açığa çıkabilir.',
-      body: 'Bu, programın açıkça öğretilmesini istediği bir güvenlik bilgisidir. Ürünlerin etiketlerinde de bu uyarı bulunur. Doğru kullanım, her ürünü etiketindeki yönergeye göre **ayrı ayrı** kullanmaktır.',
+      body: 'Bu, F.8.4.4.6 kazanımının doğrudan konusu olan bir güvenlik bilgisidir. Ürünlerin etiketlerinde de bu uyarı bulunur. Doğru kullanım, her ürünü etiketindeki yönergeye göre **ayrı ayrı** kullanmaktır.',
     },
   ],
 
@@ -270,7 +254,7 @@ Son olarak bir kavram daha kuralım: **nötrleşme.** Bir asit ile bir baz karş
       { title: '3. Birinci kaba limon suyu ekle', body: 'Az miktarda limon suyu eklenir ve oluşan renk kaydedilir.' },
       { title: '4. İkinci kaba saf su ekle', body: 'Aynı miktarda saf su eklenir ve oluşan renk kaydedilir. Bu kap karşılaştırma içindir.' },
       { title: '5. Üçüncü kaba sabun köpüğü ekle', body: 'Aynı miktarda sabun köpüğü eklenir ve oluşan renk kaydedilir.' },
-      { title: '6. Renkleri karşılaştır', body: 'Üç kaptaki renkler yan yana konarak karşılaştırılır. Renk farkının tek olası nedeni eklenen maddedir; çünkü ayraç ve miktarlar sabit tutulmuştur.' },
+      { title: '6. Renkleri karşılaştır ve pH ile doğrula', body: 'Üç kaptaki renkler yan yana konarak karşılaştırılır; aynı maddelere pH kâğıdı da değdirilir ve renk cetveliyle okunur. Renk farkının tek olası nedeni eklenen maddedir; çünkü ayraç ve miktarlar sabit tutulmuştur.' },
     ],
     takeaway:
       'Ayraç, maddeye dokunmadan bilgi almanı sağlar. Bilimsel yöntemin güvenlik yönü tam olarak budur.',
@@ -278,14 +262,14 @@ Son olarak bir kavram daha kuralım: **nötrleşme.** Bir asit ile bir baz karş
 
   dataTable: {
     title: 'Gözlem kaydı: ayraç ve turnusol sonuçları',
-    columns: ['Madde', 'Mor lahana ayracında renk', 'Mavi turnusol', 'Kırmızı turnusol', 'Sonuç'],
+    columns: ['Madde', 'Mor lahana ayracında renk', 'Mavi turnusol', 'Kırmızı turnusol', 'pH kâğıdı', 'Sonuç'],
     rows: [
-      ['Limon suyu', 'Kırmızıya çalan ton', 'Kırmızıya döndü', 'Değişmedi', 'Asit'],
-      ['Saf su', 'Mor (değişmedi)', 'Değişmedi', 'Değişmedi', 'Nötr'],
-      ['Sabun köpüğü', 'Yeşile çalan ton', 'Değişmedi', 'Maviye döndü', 'Baz'],
+      ['Limon suyu', 'Kırmızıya çalan ton', 'Kırmızıya döndü', 'Değişmedi', 'Yaklaşık 2', 'Asit'],
+      ['Saf su', 'Mor (değişmedi)', 'Değişmedi', 'Değişmedi', '7', 'Nötr'],
+      ['Sabun köpüğü', 'Yeşile çalan ton', 'Değişmedi', 'Maviye döndü', 'Yaklaşık 9–10', 'Baz'],
     ],
     caption:
-      'İki ayracın sonuçları birbirini doğruluyor. Bir belirlemeyi iki ayrı ayraçla sınamak, sonucun güvenilirliğini artırır. *(Renk tonları örnek gözlem olarak verilmiştir.)*',
+      'Üç ayrı ölçüm birbirini doğruluyor. Ayraçlar maddenin grubunu, pH kâğıdı ise asitlik ya da bazlık durumunun gücünü gösterir; F.8.4.4.4’ün istediği “deney yoluyla çıkarım” budur. *(Renk tonları ve pH değerleri örnek gözlem olarak verilmiştir.)*',
   },
 
   deepDiveSections: [
@@ -344,11 +328,11 @@ Son bir ayrım: **pH bir madde miktarı değildir.** “pH’ı yüksek” demek
           title: 'pH değerini okumak',
           columns: ['pH değeri', 'Madde grubu', 'Özelliğin gücü', 'Örnek düzey'],
           rows: [
-            ['0 – 3', 'Asit', 'Güçlü asit', 'Endüstriyel asitler, mide öz suyu'],
-            ['4 – 6', 'Asit', 'Zayıf asit', 'Limon suyu, sirke, kola'],
+            ['0 – 3', 'Asit', 'Güçlü asit', 'Mide öz suyu, limon suyu, sirke, kola'],
+            ['4 – 6', 'Asit', 'Zayıf asit', 'Domates suyu, kahve, normal yağmur suyu'],
             ['7', 'Nötr', '—', 'Saf su'],
-            ['8 – 10', 'Baz', 'Zayıf baz', 'Kabartma tozu çözeltisi, diş macunu'],
-            ['11 – 14', 'Baz', 'Güçlü baz', 'Bazı temizlik malzemeleri'],
+            ['8 – 10', 'Baz', 'Zayıf baz', 'Deniz suyu, kabartma tozu çözeltisi, diş macunu, sabun'],
+            ['11 – 14', 'Baz', 'Güçlü baz', 'Çamaşır suyu, lavabo açıcı gibi temizlik malzemeleri'],
           ],
           caption:
             'Tabloyu tek yönde oku: ortadan (7) uzaklaştıkça özellik güçlenir. Örnek düzey sütunu ezberlenecek bir liste değil, aralıkları somutlaştırmak içindir.',
@@ -411,7 +395,7 @@ Nötrleşmenin günlük hayattaki karşılıkları:
 - Arı sokmasında ve bazı böcek ısırıklarında farklı yaklaşımlar önerilmesinin nedeni, bunların farklı asitlik durumlarına sahip olmasıdır.
 - Tarımda toprağın asitlik durumu, uygun maddeler eklenerek düzenlenir.
 
-*Kapsam notu: program asit ve bazların yapısına girilmemesini istediği için nötrleşmeyi de bir denklemle değil, sonucuyla anlattık. Senden istenen, etkilerin gözlenmesi ve sonuçlarının bilinmesidir.*`,
+*Kapsam notu: kazanım asit ve bazların maddeler üzerindeki etkilerinin gözlenmesini ister; bu yüzden nötrleşmeyi bir denklemle değil, sonucuyla anlattık.*`,
         },
         {
           id: 'lgs-fen-asit-baz-etki-tablo',
@@ -456,7 +440,7 @@ Nötrleşmenin günlük hayattaki karşılıkları:
           type: 'prose',
           body: `Evlerde kullanılan temizlik malzemelerinin büyük bölümü güçlü asit ya da güçlü baz içerir. Bu maddeler doğru kullanıldığında yararlıdır; bilinçsiz kullanıldığında **ciddi zarar verebilir.**
 
-Program bu konuda tek bir şey ister: tehlikeleri bilmek ve **tedbir almak.** Kuralları tek tek görelim.
+Kazanım bu konuda açıktır: tehlikelerle ilgili **gerekli tedbirleri almak.** Kuralları tek tek görelim.
 
 **Kural 1 — Temizlik malzemeleri birbiriyle karıştırılmaz.**
 
@@ -596,7 +580,7 @@ Son olarak şunu vurgulayalım: bu bilgi bir sınav sorusundan ibaret değildir.
     reasoning:
       'Bu işaretler iki farklı işlem ister: ayraç sonucunu gruba çevirmek ya da pH sayısını konuma çevirmek. Güvenlik soruları ise tedbir listesini uygulatır.',
     boundary:
-      'Bu ipuçlarını “pH büyükse asit güçlüdür” gibi ters bir kısayola çevirme. Ayrıca asit ve bazların yapısına, formüllerine bu düzeyde girilmez; sorular genel özellik ve kullanım üzerinden gelir.',
+      'Bu ipuçlarını “pH büyükse asit güçlüdür” gibi ters bir kısayola çevirme. Ayrıca kazanımlar asit ve bazların yapısını ya da formüllerini sormaz; sorular genel özellik, ayraç, pH ve güvenli kullanım üzerinden gelir.',
   },
 
   examShape: {
@@ -639,7 +623,7 @@ Son olarak şunu vurgulayalım: bu bilgi bir sınav sorusundan ibaret değildir.
   examInsight: {
     title: 'Ölçülen şey tanım değil, sonucu okuma ve tedbir alma',
     body:
-      'Altı kazanımın fiillerine bak: “ifade eder”, “örnekler verir”, “ayraçlar kullanarak belirler”, “bilgi verdiğini bilir”, “gözlemler”, “tedbir alır”. Son üçü doğrudan uygulama fiilleridir. Program ayrıca asit ve bazların yapısına girilmemesini ister. İkisi birlikte şunu söyler: bu konuda senden yapı ya da formül bilgisi beklenmez; bir ayraç sonucunu ya da pH değerini okuyup doğru sonuca varman ve doğru tedbiri seçmen beklenir.',
+      'Altı kazanımın fiillerine bak: “ifade eder”, “örnekler verir”, “ayracı olarak kullanır”, “pH değerlerini kullanarak çıkarımda bulunur”, “gözlemler”, “tedbirleri alır”. Son dördü doğrudan uygulama fiilleridir; F.8.4.4.4’ün açıklaması da çıkarımların deney yoluyla yapılmasını ister. Bu yüzden senden yapı ya da formül bilgisi değil, bir ayraç sonucunu ya da pH değerini okuyup doğru sonuca varman ve doğru tedbiri seçmen beklenir.',
     measures: [
       'Asit ve bazların genel özelliklerini ayırt edebilme',
       'Günlük maddeleri doğru gruba yerleştirebilme',

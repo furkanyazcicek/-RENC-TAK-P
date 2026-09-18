@@ -42,6 +42,7 @@ import {
   konuVeritabaninaEklenmeliMi,
   olculebilirKazanimlar,
 } from '../src/content/lessons/lgs/mufredat.js'
+import { FEN_KONU_KAVRAMLAR, FEN_RESMI_KAZANIMLAR } from '../src/content/lessons/lgs/fen/resmiProgram.js'
 
 let hata = 0
 let uyari = 0
@@ -351,6 +352,69 @@ if (bekleyenKonular.length) {
   console.log('\n--- Veritabanına eklenmesi gereken konular (onay bekliyor) ---')
   bekleyenKonular.forEach((satir) => console.log(`  • ${satir}`))
   console.log('  Dosya: supabase/migration_lgs_konu_tamamlama.sql — canlı veritabanında ÇALIŞTIRILMADI.')
+}
+
+/* ------------------------------------------------------------------
+   4b) Fen: resmî program metnine bağlılık
+   Denetimde ders dosyalarındaki elle yazılmış kazanım cümlelerinin
+   programdan kaydığı, bazı "program sınırı" notlarının programda
+   bulunmadığı görüldü. Bu bölüm üç şeyi zorunlu kılar:
+     a) resmiProgram.js ile mufredat.js aynı 61 kazanımı aynı metinle taşır;
+     b) her Fen dersinin künyesi resmî cümleyi ve açıklamaları BİREBİR basar;
+     c) programın "Konu / Kavramlar" satırındaki terimler, o alt başlığa
+        bağlı derslerde geçer (geçmeyenler uyarı olarak listelenir).
+   ------------------------------------------------------------------ */
+console.log('\n--- Fen: resmî program metnine bağlılık ---')
+{
+  const norm = (m) => String(m).replace(/[’']/g, "'").replace(/\s+/g, ' ').trim()
+  const fenListe = LGS_KAZANIMLAR['Fen Bilimleri']
+  const resmiKodlar = Object.keys(FEN_RESMI_KAZANIMLAR)
+  if (resmiKodlar.length !== fenListe.length) {
+    hataVer(`resmiProgram.js ${resmiKodlar.length} kazanım, mufredat.js ${fenListe.length} kazanım taşıyor`)
+  }
+  for (const k of fenListe) {
+    const r = FEN_RESMI_KAZANIMLAR[k.kod]
+    if (!r) hataVer(`${k.kod} resmiProgram.js içinde yok`)
+    else if (norm(r.metin) !== norm(k.metin)) hataVer(`${k.kod} metni resmiProgram.js ile mufredat.js arasında farklı`)
+  }
+
+  const fenDersleri = LGS_LESSONS.filter((d) => d.placement?.subject === 'Fen Bilimleri')
+  for (const ders of fenDersleri) {
+    const kunye = ders.document.sections
+      .flatMap((b) => b.blocks)
+      .find((b) => b.id === `${ders.slug}-olay-kazanim`)
+    if (!kunye) {
+      hataVer(`${ders.slug}: kazanım künyesi bloğu bulunamadı`)
+      continue
+    }
+    const govde = norm(kunye.body)
+    for (const kod of ders.kazanimlar) {
+      const r = FEN_RESMI_KAZANIMLAR[kod]
+      if (!r) continue
+      if (!govde.includes(norm(r.metin))) hataVer(`${ders.slug}: ${kod} künyesi resmî cümleyi birebir basmıyor`)
+      for (const a of r.aciklama) {
+        if (!govde.includes(norm(a))) hataVer(`${ders.slug}: ${kod} açıklaması künyede yok → “${a.slice(0, 60)}…”`)
+      }
+    }
+  }
+
+  // c) Konu / Kavramlar kapsaması — yalnız dersi yazılmış alt başlıklar
+  const kucuk = (m) => norm(m).toLocaleLowerCase('tr-TR').replace(/[^\p{L}\p{N}\s]/gu, ' ').replace(/\s+/g, ' ')
+  let eksikTerim = 0
+  for (const [altBaslik, satir] of Object.entries(FEN_KONU_KAVRAMLAR)) {
+    const bagli = fenDersleri.filter((d) => d.kazanimlar.some((k) => k.startsWith(`${altBaslik}.`)))
+    if (!bagli.length) continue
+    const metin = kucuk(JSON.stringify(bagli.map((d) => d.document)))
+    for (const terim of satir.split(',').map((t) => t.trim()).filter(Boolean)) {
+      const t = kucuk(terim)
+      if (metin.includes(t)) continue
+      const kokler = t.split(' ').filter((w) => w.length >= 4).map((w) => w.slice(0, 5))
+      if (kokler.length && kokler.every((k) => metin.includes(k))) continue
+      uyariVer(`${altBaslik} konu/kavram listesindeki “${terim}” bağlı derslerde geçmiyor`)
+      eksikTerim += 1
+    }
+  }
+  console.log(`  ${fenDersleri.length} Fen dersi resmî metne karşı denetlendi · konu/kavram eksiği: ${eksikTerim}`)
 }
 
 /* ------------------------------------------------------------------

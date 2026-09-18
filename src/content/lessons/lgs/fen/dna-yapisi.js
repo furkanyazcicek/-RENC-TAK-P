@@ -29,25 +29,7 @@ const lesson = createLgsScienceLesson({
   subtitle:
     'Dört harfle yazılmış bir bilgi. Nükleotid, gen, DNA ve kromozom aynı şeyin farklı ölçekleridir.',
   minutes: 43,
-  kazanimlar: [
-    {
-      kod: 'F.8.2.1.1',
-      metin: 'Nükleotid, gen, DNA ve kromozom kavramlarını açıklayarak bu kavramlar arasında ilişki kurar.',
-      sinir: 'Bazların isimleri verilirken pürin ve pirimidin ayrımına girilmez.',
-    },
-    {
-      kod: 'F.8.2.1.2',
-      metin: 'DNA’nın yapısını model üzerinde gösterir.',
-      sinir:
-        'Hidrojen, glikozit, ester ve fosfodiester bağlarına girilmez. DNA’daki nükleotid hesaplamaları verilmez. DNA’daki hataların onarılıp onarılmadığı belirtilir.',
-    },
-    {
-      kod: 'F.8.2.1.3',
-      metin: 'DNA’nın kendini nasıl eşlediğini ifade eder.',
-      sinir:
-        '“Replikasyon” ifadesi kullanılmaz, eşlenme deneyleri anlatılmaz ve eşlenme ile ilgili hesaplama sorularına girilmez.',
-    },
-  ],
+  kazanimlar: ['F.8.2.1.1', 'F.8.2.1.2', 'F.8.2.1.3'],
   prerequisites: [
     { topic: 'Hücre ve çekirdek', why: 'DNA’nın nerede bulunduğunu bilmeden yapısını konumlandıramazsın.' },
     { topic: 'Model kavramı', why: 'Kazanım DNA’nın yapısının model üzerinde gösterilmesini ister; modelin ne olduğunu bilmek gerekir.' },

@@ -5,10 +5,9 @@ import { createLgsScienceLesson } from './factory.js'
  * Kazanım : F.8.3.1.1
  * Dayanak : MEB Fen Bilimleri Dersi Öğretim Programı, Ankara 2018
  *
- * PROGRAM SINIRI — BAĞLAYICI VE SERT
- *   F.8.3.1.1 → "Katı basıncını etkileyen değişkenleri deneyerek keşfeder."
- *               a) Basınç birimi olarak PASCAL verilir.
- *               b) MATEMATİKSEL BAĞINTILARA GİRİLMEZ.
+ * PROGRAMIN AÇIKLAMASI (resmiProgram.js'ten basılır)
+ *   F.8.3.1.1 → "Basınç birimi olarak Pascal verilir. Matematiksel
+ *               bağıntılara girilmez."
  *
  * Bu yüzden derste P = F / A bağıntısı HİÇ YAZILMAZ ve sayısal basınç
  * hesabı yapılmaz. `formula` alanı bilinçli olarak kullanılmadı.
@@ -27,14 +26,7 @@ const lesson = createLgsScienceLesson({
   subtitle:
     'Aynı ağırlık, farklı yüzey, farklı sonuç. Basınç bir kuvvet değil; kuvvetin yüzeye nasıl dağıldığıdır.',
   minutes: 42,
-  kazanimlar: [
-    {
-      kod: 'F.8.3.1.1',
-      metin: 'Katı basıncını etkileyen değişkenleri deneyerek keşfeder.',
-      sinir:
-        'Basınç birimi olarak Pascal verilir. **Matematiksel bağıntılara girilmez**; bu yüzden bu derste formül yazılmaz ve sayısal basınç hesabı yapılmaz.',
-    },
-  ],
+  kazanimlar: ['F.8.3.1.1'],
   prerequisites: [
     { topic: 'Kuvvet ve ağırlık', why: 'Basıncı kuvvetten ayırabilmek için kuvvet kavramı gereklidir.' },
     { topic: 'Yüzey alanı', why: 'Temas yüzeyinin büyüklüğü basıncı etkileyen iki değişkenden biridir.' },
@@ -283,7 +275,7 @@ Bu deney bir sonuç vermez. Elinde bir gözlem var ama bir **çıkarım** yok.
 
 Burada ağırlık değişmedi; aynı tuğlayı kullandık. Değişen tek şey temas yüzeyi. Öyleyse batmadaki artışın tek olası nedeni yüzeyin daralmasıdır. Bu bir **çıkarımdır.**
 
-Şimdi değişkenleri adlandıralım. Bu adlandırma programda birçok kazanımda açıkça isteniyor:
+Şimdi değişkenleri adlandıralım. Program bu adlandırmayı ısı ünitesinde açıkça ister (F.8.4.5.1: “Bağımlı, bağımsız ve kontrol edilen değişkenler örneklerle açıklanır.”); burada şimdiden kuruyoruz:
 
 - **Bağımsız değişken:** benim değiştirdiğim. (Burada: temas yüzeyinin alanı.)
 - **Bağımlı değişken:** benim ölçtüğüm; bağımsız değişkene bağlı olarak değişen. (Burada: batma miktarı.)
