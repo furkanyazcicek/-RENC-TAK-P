@@ -14,6 +14,8 @@ import mutasyonModifikasyonAdaptasyon from './mutasyon-modifikasyon-adaptasyon.j
 import biyoteknoloji from './biyoteknoloji.js'
 import katiBasinci from './kati-basinci.js'
 import siviVeGazBasinci from './sivi-ve-gaz-basinci.js'
+import periyodikSistem from './periyodik-sistem.js'
+import fizikselKimyasalDegisim from './fiziksel-kimyasal-degisim.js'
 
 export const LGS_FEN_DERSLERI = [
   mevsimlerinOlusumu,
@@ -25,4 +27,6 @@ export const LGS_FEN_DERSLERI = [
   biyoteknoloji,
   katiBasinci,
   siviVeGazBasinci,
+  periyodikSistem,
+  fizikselKimyasalDegisim,
 ]
