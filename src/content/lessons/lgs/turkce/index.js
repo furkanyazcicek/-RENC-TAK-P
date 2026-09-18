@@ -24,6 +24,9 @@ import sozSanatlari from './soz-sanatlari.js'
 import fiilimsiler from './fiilimsiler.js'
 import cumleninOgeleri from './cumlenin-ogeleri.js'
 import fiildeCati from './fiilde-cati.js'
+import yazimKurallari from './yazim-kurallari.js'
+import noktalamaIsaretleri from './noktalama-isaretleri.js'
+import metinTurleri from './metin-turleri.js'
 
 export const LGS_TURKCE_DERSLERI = [
   baglamdaSozcukAnlami,
@@ -39,4 +42,7 @@ export const LGS_TURKCE_DERSLERI = [
   fiilimsiler,
   cumleninOgeleri,
   fiildeCati,
+  yazimKurallari,
+  noktalamaIsaretleri,
+  metinTurleri,
 ]
