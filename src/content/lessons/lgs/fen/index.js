@@ -26,6 +26,7 @@ import fotosentezVeSolunum from './fotosentez-ve-solunum.js'
 import maddeDonguleriVeIklim from './madde-donguleri-ve-iklim.js'
 import surdurulebilirKalkinma from './surdurulebilir-kalkinma.js'
 import elektriklenme from './elektriklenme.js'
+import elektroskopVeTopraklama from './elektroskop-ve-topraklama.js'
 
 export const LGS_FEN_DERSLERI = [
   mevsimlerinOlusumu,
@@ -49,4 +50,5 @@ export const LGS_FEN_DERSLERI = [
   maddeDonguleriVeIklim,
   surdurulebilirKalkinma,
   elektriklenme,
+  elektroskopVeTopraklama,
 ]

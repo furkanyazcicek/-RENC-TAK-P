@@ -1109,6 +1109,13 @@ export const LGS_SCIENCE_FIGURES = {
     // SIRA ÖNEMLİ: surtunme → dokunma → etki
     regions: ['surtunme', 'dokunma', 'etki'],
   },
+  'lgs-fen-yuk-durumlari': {
+    label: 'Yük durumları ve topraklama',
+    minWidth: 620,
+    markers: 'numbered',
+    // SIRA ÖNEMLİ: pozitif → notr → negatif → topraklama
+    regions: ['pozitif', 'notr', 'negatif', 'topraklama'],
+  },
 }
 
 Object.assign(FIGURE_META, LGS_SCIENCE_FIGURES)
