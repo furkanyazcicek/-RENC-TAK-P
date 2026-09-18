@@ -662,7 +662,7 @@ const lesson = createLgsHistoryLesson({
   examInsight: {
     title: 'LGS bu kazanımda neyi ölçüyor?',
     body:
-      'İTA.8.1.1 bir “kavrar” kazanımıdır: öğrenciden olayları ezberden saymasını değil, 20. yüzyıl başındaki Osmanlı’nın durumunu Avrupa’daki gelişmelerle ilişkilendirmesini ister. Bu kazanıma dayanan bir soru bir durum verip o durumun sebebini ya da sonucunu sorabilir; doğru cevap çoğunlukla verilen bilgilerle desteklenebilen, aşırı genelleme yapmayan yargıdır.',
+      'İTA.8.1.1 bir “kavrar” kazanımıdır: öğrenciden olayları ezberden saymasını değil, 20. yüzyıl başındaki Osmanlı’nın durumunu Avrupa’daki gelişmelerle ilişkilendirmesini ister. Bu kazanıma dayanan bir soru bir durum verip o durumun sebebini ya da sonucunu sorabilir. Böyle bir soruda doğru cevap, verilen bilgilerle desteklenebilen ve aşırı genelleme yapmayan yargıdır.',
     measures: [
       'Fransız İhtilali fikirlerinin çok uluslu devlet üzerindeki etkisini açıklama',
       'Sömürgeciliği Osmanlı’nın toprak ve ekonomi kayıplarıyla ilişkilendirme',

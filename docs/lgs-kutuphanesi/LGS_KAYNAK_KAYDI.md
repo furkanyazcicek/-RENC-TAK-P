@@ -266,3 +266,34 @@ bloğunun “Metnin niteliği” satırını taşıdığını denetler.
 
 **Harita:** `historical_map` bloğu sınır, ölçek ya da koordinat iddiası taşımaz; konumlar
 yaklaşık yerleşimdir ve kaynak notu blokta yazılıdır.
+
+### Ders 2 — `lgs-tarih-mustafa-kemalin-yetismesi` (İTA.8.1.2, İTA.8.1.3)
+
+Kaynak kısaltmaları: **MEB-ÖERH** = MEB Özel Eğitim ve Rehberlik Hizmetleri GM, “Mustafa
+Kemal’in Hayatı” (orgm.meb.gov.tr); **MSB** = Millî Savunma Bakanlığı Ata sayfaları
+(ata.msb.gov.tr: Kronoloji, Aile, Harbiye, Harp Akademisi); **AA** = Atatürk Ansiklopedisi;
+**TMA** = Türk Maarif Ansiklopedisi.
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Doğum | 1881, Selanik | MSB Kronoloji | MEB-ÖERH; TMA | Doğrulandı |
+| Aile | Ali Rıza Efendi (gümrük memurluğu → kereste ticareti), Zübeyde Hanım; 6 çocuktan yalnız Mustafa ve Makbule yetişkinliğe ulaştı | AA “Ali Rıza Efendi” | MSB Aile | Doğrulandı |
+| Babanın ölüm yılı | **Yazılmadı** | MSB Aile: 23 Mayıs 1886 | MSB Kronoloji: 1888; AA madde başlıkları 1886 ve 1893 | **Çelişkili** → derste “çocukluk yılları” |
+| Okula başlama | 1886; önce mahalle mektebi, birkaç gün sonra Şemsi Efendi | MSB Kronoloji | MEB-ÖERH (zaman şeridi ve 1922 hatırası) | Doğrulandı |
+| Çiftlik yılları | Dayısı Hüseyin Ağa, Langaza | MEB-ÖERH | AA (arama özeti: “dayısı Hüseyin”, çiftlik) | Doğrulandı |
+| Selanik’e dönüş | Halası Emine Hanım’ın çağırması | MEB-ÖERH | AA | Doğrulandı |
+| Mülkiye Rüştiyesi’ni bırakma | Öğretmenin kötü davranması | MEB-ÖERH | MSB Kronoloji (“matematik öğretmeniyle yaşanan olay”) | Doğrulandı |
+| Askerî Rüştiye | 1893; annesi istemese de; “Kemal” adını matematik öğretmeni Yüzbaşı Mustafa Bey verdi | MSB Kronoloji; MEB-ÖERH | TMA; AA | Doğrulandı. Adın veriliş gerekçesi kaynaklarda farklı anlatıldığı için “başarısı ve olgunluğu nedeniyle” genel ifadesi kullanıldı |
+| Manastır Askerî İdadisi | 1896; Ömer Naci (edebiyat), Mehmet Tevfik Bey (tarih), tatillerde Fransızca | MEB-ÖERH | MSB Kronoloji (1896); TMA (Fransızca özel ders) | Doğrulandı |
+| 1897 Osmanlı–Yunan Savaşı | Savaş alanında zafer; büyük devletlerin araya girmesi; Girit özerkliğinin genişlemesi | TDV İA “Girit” | DergiPark (1897 savaşı makaleleri) | Doğrulandı |
+| Harp Okulu | 13 Mart 1899 | MSB Harbiye | MSB Kronoloji; MEB-ÖERH | Doğrulandı |
+| Gizli gazete | Öğrenciyken arkadaşlarıyla gizlice gazete çıkardı | MSB Harbiye | MEB-ÖERH (Akademi yılları) | Doğrulandı; okul (Harbiye/Akademi) kaynaklarda farklı olduğu için “öğrenciyken” yazıldı |
+| Okuduğu şairler | Namık Kemal, Tevfik Fikret (Harbiye’de sık okuduğu) | MSB Harbiye | MEB-ÖERH | Doğrulandı |
+| Harp Akademisi | 1902 teğmen; 11 Ocak 1905 kurmay yüzbaşı; Şam 5. Ordu | MSB Kronoloji ve Harp Akademisi sayfası | MEB-ÖERH | Doğrulandı |
+| Vatan ve Hürriyet Cemiyeti | Şam’da, arkadaşlarıyla | MEB-ÖERH | MSB Kronoloji | Doğrulandı; kuruluş yılı kaynaklarda 1905/1906 olarak değiştiği için **yıl yazılmadı** |
+| 1922 hatırası | Vakit gazetesi, Ahmet Emin (Yalman), Ocak 1922 | AA “Ahmet Emin Yalman” (10 Ocak 1922) | MEB-ÖERH | Doğrulandı; derste **sadeleştirme** olarak etiketli |
+| Selanik’in nüfus yapısı | Türk, Rum, Yahudi, Bulgar ve Ermeni toplulukları | MEB-ÖERH | TDV İA / genel tarih kaynakları | Çok kültürlülük doğrulandı. MEB-ÖERH’deki “nüfusun çoğunluğu Türk” ifadesi başka kaynaklarla uyuşmadığı için **kullanılmadı** |
+
+**Kullanılmayan, tek kaynaklı bilgiler:** Harbiye ve Akademi başarı sıraları (yalnız MSB),
+Tevfik Fikret ve Ziya Gökalp’e atfedilen doğrudan sözler (tek kaynak, birebir metne
+ulaşılamadı), mezuniyet sonrası tutuklanma (incelenen kaynaklarda yok).
