@@ -153,8 +153,13 @@ export function createLgsScienceLesson(config) {
     comparison = null,
     /** kavram yanılgıları */
     traps = [],
-    /** { title, lead, question, independent, setup, dependent, controlled, caption, focus? } */
-    variables,
+    /**
+     * { title, lead, question, independent, setup, dependent, controlled, caption, focus? }
+     * Kazanım bir deney ya da veri incelemesi içermiyorsa null bırakılabilir;
+     * o zaman "Değişkenler" bölümü hiç üretilmez. Boş bir bölüm basmaktansa
+     * bölümü hiç açmamak doğrudur.
+     */
+    variables = null,
     /** { title, intro, steps:[{title,body}], takeaway } — deney düzeneği/işlem sırası */
     experiment = null,
     /** { title, columns, rows, caption } — gözlem verisi */
@@ -244,7 +249,8 @@ export function createLgsScienceLesson(config) {
   })
 
   /* ---------- 3. DEĞİŞKENLER VE DENEY ---------- */
-  sections.push({
+  if (variables) {
+    sections.push({
     id: `${slug}-degisken`,
     kind: 'build',
     title: variables.title,
@@ -272,7 +278,8 @@ export function createLgsScienceLesson(config) {
           }]
         : []),
     ],
-  })
+    })
+  }
 
   /* ---------- 4. DERİNLEŞME ---------- */
   deepDiveSections.forEach((section, index) => {

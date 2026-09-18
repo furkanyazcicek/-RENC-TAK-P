@@ -6,5 +6,13 @@
  */
 
 import mevsimlerinOlusumu from './mevsimlerin-olusumu.js'
+import iklimVeHavaOlaylari from './iklim-ve-hava-olaylari.js'
+import dnaYapisi from './dna-yapisi.js'
+import kalitimKavramlari from './kalitim-kavramlari.js'
 
-export const LGS_FEN_DERSLERI = [mevsimlerinOlusumu]
+export const LGS_FEN_DERSLERI = [
+  mevsimlerinOlusumu,
+  iklimVeHavaOlaylari,
+  dnaYapisi,
+  kalitimKavramlari,
+]
