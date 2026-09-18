@@ -18,14 +18,15 @@
 | Aşama 2 — LGS içerik altyapısı | ✅ Tamamlandı |
 | Aşama 3 — Türkçe Gold Standard | ✅ Tamamlandı |
 | Aşama 4 — **Türkçe kapsamı** | ✅ **Tamamlandı — 41/41 ölçülebilir kazanım (%100)** |
-| Aşama 5 — Fen Bilimleri | 🔄 Başlıyor |
+| Aşama 5 — Fen Bilimleri | 🔄 Sürüyor — 16/61 kazanım (%26) |
 | Aşama 6 — İnkılap Tarihi | ⏸ Fen bitene kadar başlamaz |
 | Aşama 7 — Son denetim | ⏸ — |
 
 **Aktif ders:** Fen Bilimleri
-**Son tamamlanan ders:** Türkçe (20 ders · 41 kazanım)
-**Sıradaki kesin kazanım:** F.8.1.1.1 — “Mevsimlerin oluşumuna yönelik tahminlerde bulunur.”
-**Sıradaki ders notu:** `lgs-fen-mevsimlerin-olusumu` · konu: Mevsimler ve İklim · sıra 1 · **Fen Gold Standard**
+**Son tamamlanan ders notu:** `lgs-fen-biyoteknoloji` (F.8.2.5.1 · F.8.2.5.2 · F.8.2.5.3)
+**Tamamlanan üniteler:** F.8.1 Mevsimler ve İklim (3/3) · F.8.2 DNA ve Genetik Kod (13/13)
+**Sıradaki kesin kazanım:** F.8.3.1.1 — “Katı basıncını etkileyen değişkenleri deneyerek keşfeder.”
+**Sıradaki ders notu:** `lgs-fen-kati-basinci` · konu: Basınç · sıra 1
 
 ---
 
@@ -78,21 +79,46 @@ Her ders, kazanım açıklamasındaki sınırı **açıkça** uygular ve öğren
 
 ---
 
-## 3. Fen Bilimleri — başlıyor
+## 3. Fen Bilimleri — sürüyor
 
-**Kapsama: 0/61 kazanım.**
-**İlk hedef:** `lgs-fen-mevsimlerin-olusumu` — Fen Gold Standard dersi (F.8.1.1.1).
+**Kapsama: 16/61 ölçülebilir kazanım (%26) · 7 ders**
+
+| # | Ders notu | Kazanımlar | Kelime | Bölüm | Puan | Durum |
+|---|---|---|---|---|---|---|
+| 1 | Mevsimlerin Oluşumu: Uzaklık Değil, Açı ★ | F.8.1.1.1 | 4.924 | 9 | 100/100 | ✅ Gold Standard |
+| 2 | İklim ve Hava Olayları: Aynı Şey Değil | F.8.1.2.1 · F.8.1.2.2 | 4.388 | 9 | 100/100 | ✅ |
+| 3 | DNA’nın Yapısı: Nükleotidden Kromozoma | F.8.2.1.1 · F.8.2.1.2 · F.8.2.1.3 | 4.504 | 9 | 100/100 | ✅ |
+| 4 | Kalıtım Kavramları: Görünen ve Yazılı Olan | F.8.2.2.1 | ~4.300 | 9 | 100/100 | ✅ |
+| 5 | Çaprazlama, Cinsiyet ve Akraba Evliliği | F.8.2.2.2 · F.8.2.2.3 | ~4.900 | 8 | 100/100 | ✅ |
+| 6 | Mutasyon, Modifikasyon ve Adaptasyon | F.8.2.3.1–F.8.2.4.1 | ~4.800 | 9 | 100/100 | ✅ |
+| 7 | Genetik Mühendisliği ve Biyoteknoloji | F.8.2.5.1 · F.8.2.5.2 · F.8.2.5.3 | ~4.700 | 8 | 100/100 | ✅ |
+
+**Tamamlanan üniteler:** F.8.1 (3/3) · F.8.2 (13/13)
+**Kalan üniteler:** F.8.3 Basınç · F.8.4 Madde ve Endüstri · F.8.5 Basit Makineler ·
+F.8.6 Enerji Dönüşümleri ve Çevre Bilimi · F.8.7 Elektrik Yükleri ve Elektrik Enerjisi
 
 Ders planının tamamı: `LGS_MUFREDAT_KAZANIM_MATRISI.md` §3.1 (23 ders).
 
-**Fen’e özgü ek standartlar** (Türkçe derslerinde olmayan):
+### Fen’e özgü ek standartlar (Türkçe derslerinde olmayan)
 - Gözlemlenebilir olay/problem ile başlama
 - Bağımlı, bağımsız ve kontrol edilen değişken ayrımı
 - Deney düzeneği ya da veri yorumlama
 - Bilimsel süreç becerisi
 - Birim ve sembol doğruluğu
 - Programın “girilmez/değinilmez” sınırlarına birebir uyum
-  (örn. F.8.3.1.1’de **matematiksel bağıntı yok**, F.8.4.5.1’de **Q=m·c·Δt yok**)
+
+### Programın bağlayıcı sınırlarına uyum (Fen)
+
+| Kazanım | Program sınırı | Derste nasıl uygulandı? |
+|---|---|---|
+| F.8.2.1.1 | Pürin–pirimidin ayrımına girilmez | Bazlar yalnız ad olarak verildi; ayrım hiç geçmiyor |
+| F.8.2.1.2 | Bağ türlerine girilmez · nükleotid hesabı verilmez | Bağ adı hiç geçmiyor; hesap sorusu yok, yalnız dizi tamamlama var |
+| F.8.2.1.2 | DNA’daki hataların onarılıp onarılmadığı **belirtilir** | Mekanizmanın 6. adımında ve ayrı bir yanılgı bloğunda açıkça belirtildi |
+| F.8.2.1.3 | “Replikasyon” kullanılmaz · eşlenme deneyleri anlatılmaz | Terim hiç kullanılmadı; deney anlatımı yok |
+| F.8.2.2.2 | Çaprazlamalar **yalnız bezelye** karakterleriyle | Bütün çaprazlamalar bezelye; insan yalnız cinsiyet ve akraba evliliğinde geçiyor |
+| F.8.2.2.2 | Cinsiyette **babadan** gelen eşey kromozomu vurgulanır | Ayrı bir derinleşme bölümü + neden-sonuç bloğu + yanılgı bloğu |
+| F.8.2.4.1 | Adaptasyonların **kalıtsal** olduğu vurgulanır | Ayrı bölüm, karşılaştırma tablosu ve iki ayrı yanılgı bloğu |
+| F.8.2.5.2 | **İkilem** üzerinden tartıştırılır | Yarar/risk iki sütunlu; ders bilinçli olarak taraf tutmuyor |
 
 ---
 
@@ -164,10 +190,11 @@ yazılmıştı; `Prose` bileşeni bilinçli olarak Markdown tablosu desteklemiyo
 
 ## 8. Sonraki oturum buradan devam eder
 
-1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**F.8.1.1.1**).
-2. `src/content/lessons/lgs/fen/factory.js` dosyasını yaz — Fen’e özgü omurga
-   (gözlemlenebilir olay → değişkenler → mekanizma → veri → kavram yanılgısı → uygulama).
-3. `lgs-fen-mevsimlerin-olusumu` Gold Standard dersini yaz.
+1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**F.8.3.1.1**).
+2. `lgs-fen-kati-basinci` dersini yaz (Basınç ünitesi, sıra 1).
+   **Dikkat:** F.8.3.1.1’de **matematiksel bağıntıya girilmez**; birim olarak
+   yalnız Pascal verilir. Ders değişken keşfi üzerine kurulmalıdır.
+3. Dersi `src/content/lessons/lgs/fen/index.js` içine kaydet.
 4. `npm run test:lgs` → `npm run test:lesson-content` → `npm run build`.
-5. Önizlemede masaüstü ve telefon genişliğinde kontrol et.
-6. Bu dosyayı ve matristeki durumu güncelle.
+5. Basınç ünitesinin ilk dersini önizlemede masaüstü ve telefon genişliğinde kontrol et.
+6. Bu dosyayı ve matristeki durum sütununu güncelle.

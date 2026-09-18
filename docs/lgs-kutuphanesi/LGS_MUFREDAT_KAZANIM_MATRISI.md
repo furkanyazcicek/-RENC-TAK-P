@@ -193,13 +193,13 @@ düzeltmesi gerekmiyor.
 
 | # | Konu | Ders notu başlığı | `slug` | Kazanımlar | Durum |
 |---|---|---|---|---|---|
-| 1 | Mevsimler ve İklim | Mevsimler Nasıl Oluşur? Eksen Eğikliği ve Birim Yüzeye Düşen Enerji ★ **Gold Standard adayı** | `lgs-fen-mevsimlerin-olusumu` | F.8.1.1.1 | planlandı |
-| 2 | Mevsimler ve İklim | İklim ve Hava Olayları: Aynı Şey Değil | `lgs-fen-iklim-ve-hava-olaylari` | F.8.1.2.1, F.8.1.2.2 | planlandı |
-| 3 | DNA ve Genetik Kod | DNA'nın Yapısı: Nükleotidden Kromozoma | `lgs-fen-dna-yapisi` | F.8.2.1.1, F.8.2.1.2, F.8.2.1.3 | planlandı |
-| 4 | DNA ve Genetik Kod | Kalıtım Kavramları: Gen, Genotip, Fenotip, Baskın, Çekinik | `lgs-fen-kalitim-kavramlari` | F.8.2.2.1 | planlandı |
-| 5 | DNA ve Genetik Kod | Tek Karakter Çaprazlamaları ve Cinsiyetin Belirlenmesi | `lgs-fen-caprazlama-ve-cinsiyet` | F.8.2.2.2, F.8.2.2.3 | planlandı |
-| 6 | DNA ve Genetik Kod | Mutasyon, Modifikasyon ve Adaptasyon | `lgs-fen-mutasyon-modifikasyon-adaptasyon` | F.8.2.3.1, F.8.2.3.2, F.8.2.3.3, F.8.2.4.1 | planlandı |
-| 7 | DNA ve Genetik Kod | Genetik Mühendisliği ve Biyoteknoloji | `lgs-fen-biyoteknoloji` | F.8.2.5.1, F.8.2.5.2, F.8.2.5.3 | planlandı |
+| 1 | Mevsimler ve İklim | Mevsimler Nasıl Oluşur? Eksen Eğikliği ve Birim Yüzeye Düşen Enerji ★ **Gold Standard adayı** | `lgs-fen-mevsimlerin-olusumu` | F.8.1.1.1 | ✅ tamamlandı |
+| 2 | Mevsimler ve İklim | İklim ve Hava Olayları: Aynı Şey Değil | `lgs-fen-iklim-ve-hava-olaylari` | F.8.1.2.1, F.8.1.2.2 | ✅ tamamlandı |
+| 3 | DNA ve Genetik Kod | DNA'nın Yapısı: Nükleotidden Kromozoma | `lgs-fen-dna-yapisi` | F.8.2.1.1, F.8.2.1.2, F.8.2.1.3 | ✅ tamamlandı |
+| 4 | DNA ve Genetik Kod | Kalıtım Kavramları: Gen, Genotip, Fenotip, Baskın, Çekinik | `lgs-fen-kalitim-kavramlari` | F.8.2.2.1 | ✅ tamamlandı |
+| 5 | DNA ve Genetik Kod | Çaprazlama, Cinsiyet ve Akraba Evliliği | `lgs-fen-caprazlama-ve-cinsiyet` | F.8.2.2.2, F.8.2.2.3 | ✅ tamamlandı |
+| 6 | DNA ve Genetik Kod | Mutasyon, Modifikasyon ve Adaptasyon | `lgs-fen-mutasyon-modifikasyon-adaptasyon` | F.8.2.3.1, F.8.2.3.2, F.8.2.3.3, F.8.2.4.1 | ✅ tamamlandı |
+| 7 | DNA ve Genetik Kod | Genetik Mühendisliği ve Biyoteknoloji | `lgs-fen-biyoteknoloji` | F.8.2.5.1, F.8.2.5.2, F.8.2.5.3 | ✅ tamamlandı |
 | 8 | Basınç | Katı Basıncı ve Değişkenleri | `lgs-fen-kati-basinci` | F.8.3.1.1 | planlandı |
 | 9 | Basınç | Sıvı ve Gaz Basıncı, Günlük Yaşam Uygulamaları | `lgs-fen-sivi-ve-gaz-basinci` | F.8.3.1.2, F.8.3.1.3 | planlandı |
 | 10 | Madde ve Endüstri | Periyodik Sistem: Grup, Periyot, Metal–Ametal | `lgs-fen-periyodik-sistem` | F.8.4.1.1, F.8.4.1.2 | planlandı |

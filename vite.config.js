@@ -148,6 +148,30 @@ export default defineConfig({
   resolve: {
     dedupe: ['react', 'react-dom'],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // DERS İÇERİĞİ UYGULAMA KABUĞUNDAN AYRILIR.
+        //
+        // `src/content/lessons/` altındaki ders belgeleri düz veri modülleridir
+        // ve kütüphane büyüdükçe büyürler. Hepsi giriş parçasına (index-*.js)
+        // girdiğinde o dosya megabaytlarca şişiyor; service worker da yalnız
+        // `assets/index-*.js` dosyasını önceden sakladığı için bütün ders
+        // kütüphanesi ATOMİK güncellemenin içine düşüyordu: mobilde her sürümde
+        // yeniden indirilen devasa bir paket ve 7 MB sınırında patlayan bir
+        // derleme.
+        //
+        // Ders belgelerini kendi parçasına alınca giriş dosyası yeniden
+        // uygulama kabuğu boyutuna iner; ders içeriği ihtiyaç anında normal
+        // ağ önbelleğiyle gelir. Bu, injectManifest yorumunda anlatılan
+        // "yalnız kabuk önceden saklanır" kuralının sürdürülmesidir.
+        manualChunks(id) {
+          if (id.includes('/src/content/lessons/')) return 'ders-icerikleri'
+          return undefined
+        },
+      },
+    },
+  },
   plugins: [
     react(),
     matematikSoruBankasiAssets(),
