@@ -1058,6 +1058,20 @@ export const FIGURE_ALIASES = {
   electromagnetism: 'manyetik-kuvvet',
 }
 
+/* ---------- LGS Fen · ortak şemalar (saf SVG, veri odaklı) ---------- */
+export const LGS_SCIENCE_FIGURES = {
+  'lgs-fen-degisken-iliskisi': {
+    label: 'Değişken ilişkisi: değiştirdiğim, ölçtüğüm, sabit tuttuğum',
+    minWidth: 620,
+    markers: 'numbered',
+    // SIRA ÖNEMLİ: ders içeriğindeki `focus` maddeleri bu sırayla eşleşir.
+    regions: ['bagimsiz', 'duzenek', 'bagimli', 'kontrol'],
+  },
+}
+
+Object.assign(FIGURE_META, LGS_SCIENCE_FIGURES)
+
+
 export function canonicalFigureKind(kind) {
   return FIGURE_ALIASES[kind] ?? kind
 }
