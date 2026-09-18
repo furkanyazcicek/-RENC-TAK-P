@@ -212,7 +212,7 @@ düzeltmesi gerekmiyor.
 | 17 | Enerji Dönüşümleri ve Çevre Bilimi | Besin Zinciri, Besin Ağı ve Ekoloji Piramidi | `lgs-fen-besin-zinciri-ve-enerji-akisi` | F.8.6.1.1 | ✅ tamamlandı |
 | 18 | Enerji Dönüşümleri ve Çevre Bilimi | Fotosentez ve Solunum | `lgs-fen-fotosentez-ve-solunum` | F.8.6.2.1, F.8.6.2.2, F.8.6.2.3 | ✅ tamamlandı |
 | 19 | Enerji Dönüşümleri ve Çevre Bilimi | Madde Döngüleri ve Küresel İklim Değişikliği | `lgs-fen-madde-donguleri-ve-iklim` | F.8.6.3.1, F.8.6.3.2, F.8.6.3.3 | ✅ tamamlandı |
-| 20 | Enerji Dönüşümleri ve Çevre Bilimi | Sürdürülebilir Kalkınma ve Geri Dönüşüm | `lgs-fen-surdurulebilir-kalkinma` | F.8.6.4.1–F.8.6.4.5 | planlandı |
+| 20 | Enerji Dönüşümleri ve Çevre Bilimi | Sürdürülebilir Kalkınma ve Geri Dönüşüm | `lgs-fen-surdurulebilir-kalkinma` | F.8.6.4.1–F.8.6.4.5 | ✅ tamamlandı |
 | 21 | Elektrik Yükleri ve Elektrik Enerjisi | Elektriklenme ve Elektrik Yükleri | `lgs-fen-elektriklenme` | F.8.7.1.1, F.8.7.1.2, F.8.7.1.3 | planlandı |
 | 22 | Elektrik Yükleri ve Elektrik Enerjisi | Yüklü Cisimler, Elektroskop ve Topraklama | `lgs-fen-elektroskop-ve-topraklama` | F.8.7.2.1, F.8.7.2.2 | planlandı |
 | 23 | Elektrik Yükleri ve Elektrik Enerjisi | Elektrik Enerjisinin Dönüşümü ve Güç Santralleri | `lgs-fen-elektrik-enerjisi-donusumu` | F.8.7.3.1–F.8.7.3.6 | planlandı |

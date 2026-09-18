@@ -197,6 +197,7 @@ sıklık iddiası bulunmaz; bunun yerine resmî ve sayılabilir olan tek veri ku
 | 18.09.2026 | Fen ders dosyalarındaki kazanım cümleleri ve "program sınırı" notları K2 tam metniyle karşılaştırıldı | **8 kazanım cümlesi yeniden ifade edilmiş, 6 açıklama programda olmadığı hâlde programa atfedilmiş bulundu.** Tamamı düzeltildi (bkz. Ç5) |
 | 18.09.2026 | Türkçe ders dosyalarındaki program atıfları K1 tam metniyle karşılaştırıldı | Tamamı resmî açıklamalarla örtüşüyor; düzeltme gerekmedi |
 | 18.09.2026 | “Türkiye’de Kimya Endüstrisi” dersindeki kuruluş yılları ikincil kaynaklarla sınandı: İzmit Rafinerisi 1961, PETKİM 1965, TÜPRAŞ 1983 (Tüpraş kurumsal sayfası, İMO yayını); MKE 1950 (DergiPark akademik makaleler) | Doğrulandı. Yıldan yıla değişen ithalat/ihracat tutarları bilinçli olarak derse yazılmadı |
+| 18.09.2026 | Sıfır Atık biriktirme ekipmanı renk standardı ikincil kaynaklarla sınandı (Çevre, Şehircilik ve İklim Değişikliği Bakanlığı Sıfır Atık rehberi; il MEB sıfır atık sayfaları) | Mavi kâğıt, sarı plastik, yeşil cam, açık gri metal, kahverengi organik, koyu gri diğer — derste bu standart kullanıldı |
 
 ### Ç5 — Fen ders notlarında programdan kayan künyeler (çözüldü)
 

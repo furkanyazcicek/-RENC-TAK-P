@@ -18,15 +18,15 @@
 | Aşama 2 — LGS içerik altyapısı | ✅ Tamamlandı |
 | Aşama 3 — Türkçe Gold Standard | ✅ Tamamlandı |
 | Aşama 4 — **Türkçe kapsamı** | ✅ **Tamamlandı — 41/41 ölçülebilir kazanım (%100)** |
-| Aşama 5 — Fen Bilimleri | 🔄 Sürüyor — 36/61 kazanım (%59) |
+| Aşama 5 — Fen Bilimleri | 🔄 Sürüyor — 50/61 kazanım (%82) |
 | Aşama 6 — İnkılap Tarihi | ⏸ Fen bitene kadar başlamaz |
 | Aşama 7 — Son denetim | ⏸ — |
 
 **Aktif ders:** Fen Bilimleri
-**Son tamamlanan ders notu:** `lgs-fen-turkiyede-kimya-endustrisi` (F.8.4.6.1 · F.8.4.6.2)
-**Tamamlanan üniteler:** F.8.1 Mevsimler ve İklim · F.8.2 DNA ve Genetik Kod · F.8.3 Basınç · F.8.4 Madde ve Endüstri
-**Sıradaki kesin kazanım:** F.8.5.1.1 — “Basit makinelerin sağladığı avantajları örnekler üzerinden açıklar.”
-**Sıradaki ders notu:** `lgs-fen-basit-makineler` · konu: Basit Makineler · sıra 1
+**Son tamamlanan ders notu:** `lgs-fen-surdurulebilir-kalkinma` (F.8.6.4.1–F.8.6.4.5)
+**Tamamlanan üniteler:** F.8.1 · F.8.2 · F.8.3 · F.8.4 · F.8.5 · F.8.6 (6/7)
+**Sıradaki kesin kazanım:** F.8.7.1.1 — “Elektriklenmeyi, bazı doğa olayları ve teknolojideki uygulama örnekleri ile açıklar.”
+**Sıradaki ders notu:** `lgs-fen-elektriklenme` · konu: Elektrik Yükleri ve Elektrik Enerjisi · sıra 1
 
 ---
 
@@ -81,28 +81,21 @@ Her ders, kazanım açıklamasındaki sınırı **açıkça** uygular ve öğren
 
 ## 3. Fen Bilimleri — sürüyor
 
-**Kapsama: 36/61 ölçülebilir kazanım (%59) · 15 ders · 4/7 ünite tamamlandı**
+**Kapsama: 50/61 ölçülebilir kazanım (%82) · 20 ders · 6/7 ünite tamamlandı**
 
-| # | Ders notu | Kazanımlar | Kelime | Bölüm | Puan | Durum |
-|---|---|---|---|---|---|---|
-| 1 | Mevsimlerin Oluşumu: Uzaklık Değil, Açı ★ | F.8.1.1.1 | 4.925 | 9 | 100/100 | ✅ Gold Standard |
-| 2 | İklim ve Hava Olayları: Aynı Şey Değil | F.8.1.2.1 · F.8.1.2.2 | 4.388 | 9 | 100/100 | ✅ |
-| 3 | DNA’nın Yapısı: Nükleotidden Kromozoma | F.8.2.1.1–3 | 4.509 | 9 | 100/100 | ✅ |
-| 4 | Kalıtım Kavramları: Görünen ve Yazılı Olan | F.8.2.2.1 | 4.516 | 9 | 100/100 | ✅ |
-| 5 | Çaprazlama, Cinsiyet ve Akraba Evliliği | F.8.2.2.2 · F.8.2.2.3 | 4.589 | 8 | 100/100 | ✅ |
-| 6 | Mutasyon, Modifikasyon ve Adaptasyon | F.8.2.3.1–3 · F.8.2.4.1 | 4.352 | 9 | 100/100 | ✅ |
-| 7 | Genetik Mühendisliği ve Biyoteknoloji | F.8.2.5.1–3 | 4.082 | 8 | 100/100 | ✅ |
-| 8 | Katı Basıncı: Ağırlık mı, Yüzey mi? | F.8.3.1.1 | 4.133 | 8 | 100/100 | ✅ |
-| 9 | Sıvı ve Gaz Basıncı: Derinlik, Yoğunluk, Açık Hava | F.8.3.1.2 · F.8.3.1.3 | 4.540 | 8 | 100/100 | ✅ |
-| 10 | Periyodik Sistem: Düzenin Kendisi Bilgidir | F.8.4.1.1 · F.8.4.1.2 | 3.883 | 7 | 100/100 | ✅ |
-| 11 | Fiziksel ve Kimyasal Değişim: Kimlik Değişti mi? | F.8.4.2.1 · F.8.4.3.1 | 4.613 | 9 | 100/100 | ✅ |
-| 12 | Asitler ve Bazlar: Özellik, Ayraç, pH ve Güvenlik | F.8.4.4.1–6 | 4.867 | 9 | 100/100 | ✅ |
-| 13 | Asit Yağmurları: Zinciri Nerede Kırabiliriz? | F.8.4.4.7 | 4.303 | 8 | 100/100 | ✅ |
-| 14 | Isı ve Hâl Değişimi: Sıcaklık Neden Durur? | F.8.4.5.1–4 | 5.210 | 9 | 100/100 | ✅ yeni şema: ısınma grafiği |
-| 15 | Türkiye’de Kimya Endüstrisi: Hammaddeden Mesleğe | F.8.4.6.1 · F.8.4.6.2 | 4.290 | 8 | 100/100 | ✅ |
+İlk 15 dersin tablosu önceki sürümdedir; 16–20. dersler:
 
-**Kalan üniteler:** F.8.5 Basit Makineler (2 kazanım) · F.8.6 Enerji Dönüşümleri ve Çevre
-Bilimi (12 kazanım) · F.8.7 Elektrik Yükleri ve Elektrik Enerjisi (11 kazanım)
+| # | Ders notu | Kazanımlar | Durum |
+|---|---|---|---|
+| 16 | Basit Makineler: Kazanç Neyin Kazancı? | F.8.5.1.1 · F.8.5.1.2 | ✅ iki yeni şema: kaldıraç türleri; dişli, vida, kasnak |
+| 17 | Besin Zinciri, Besin Ağı ve Ekoloji Piramidi | F.8.6.1.1 | ✅ yeni şema: ekoloji piramidi |
+| 18 | Fotosentez ve Solunum: Enerjinin İki Yüzü | F.8.6.2.1–3 | ✅ |
+| 19 | Madde Döngüleri ve Küresel İklim Değişikliği | F.8.6.3.1–3 | ✅ yeni şema: karbon ve oksijen döngüsü |
+| 20 | Sürdürülebilir Yaşam: Tasarruf, Geri Dönüşüm ve Gelecek | F.8.6.4.1–5 | ✅ |
+
+Bütün Fen dersleri 100/100 derinlik puanı alıyor; kelime sayıları 3.883–5.210 arasında.
+
+**Kalan ünite:** F.8.7 Elektrik Yükleri ve Elektrik Enerjisi (11 kazanım, 3 ders)
 
 Ders planının tamamı: `LGS_MUFREDAT_KAZANIM_MATRISI.md` §3.1 (23 ders).
 
@@ -205,14 +198,14 @@ yazılmıştı; `Prose` bileşeni bilinçli olarak Markdown tablosu desteklemiyo
 
 ## 8. Sonraki oturum buradan devam eder
 
-1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**F.8.5.1.1**).
-2. `lgs-fen-basit-makineler` dersini yaz (F.8.5.1.1, F.8.5.1.2).
-   **Program açıklaması:** sabit makara, hareketli makara, palanga, kaldıraç, eğik düzlem ve
-   çıkrık üzerinde durulur; dişli çark, vida ve kasnağın basit makine olduğu görsellerle
-   belirtilir, ayrıntıya girilmez; **işten kazanç olmadığı vurgulanır; matematiksel
-   bağıntılara girilmez.** F.8.5.1.2 tasarım kazanımıdır (önce çizim).
-3. Dersi `src/content/lessons/lgs/fen/index.js` içine kaydet; ders dosyasında yalnız
-   kazanım kodu yaz (metin/sınır yazma — fabrika resmî metni kendisi basar).
+1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**F.8.7.1.1**).
+2. Elektrik ünitesinin üç dersini yaz: `lgs-fen-elektriklenme` (F.8.7.1.1–3),
+   `lgs-fen-elektroskop-ve-topraklama` (F.8.7.2.1–2), `lgs-fen-elektrik-enerjisi-donusumu`
+   (F.8.7.3.1–6). **Program açıklamaları:** nötr cisim yüksüz değildir; elektroskopun çalışma
+   prensibine girilmez; topraklamada can ve mal güvenliği vurgulanır; sigortanın önemi,
+   robotlar; hidroelektrik, termik, rüzgâr, jeotermal ve nükleer santraller; kaçak elektriğin
+   zararı; tasarım kazanımı (F.8.7.3.2) önce çizimle.
+3. Ders dosyasında yalnız kazanım kodu yaz; fabrika resmî metni kendisi basar.
 4. `npm run test:lgs` → `npm run test:lesson-content` → `npm run build`.
-5. Yeni bir şema yazılırsa önizlemede 390 px ve 1440 px genişlikte kontrol et.
+5. Fen %100 olunca Aşama 6 (İnkılap Tarihi) başlar; matris §4'teki 25 derslik plan izlenir.
 6. Bu dosyayı ve matristeki durum sütununu güncelle.
