@@ -43,6 +43,7 @@ import {
   olculebilirKazanimlar,
 } from '../src/content/lessons/lgs/mufredat.js'
 import { FEN_KONU_KAVRAMLAR, FEN_RESMI_KAZANIMLAR } from '../src/content/lessons/lgs/fen/resmiProgram.js'
+import { INKILAP_RESMI_KAZANIMLAR } from '../src/content/lessons/lgs/inkilap/resmiProgram.js'
 
 let hata = 0
 let uyari = 0
@@ -415,6 +416,79 @@ console.log('\n--- Fen: resmî program metnine bağlılık ---')
     }
   }
   console.log(`  ${fenDersleri.length} Fen dersi resmî metne karşı denetlendi · konu/kavram eksiği: ${eksikTerim}`)
+}
+
+/* ------------------------------------------------------------------
+   4c) İnkılap Tarihi: resmî program metnine bağlılık + tarih kuralları
+   Fen'de görülen kaymanın (Ç5) İnkılap'ta hiç yaşanmaması için künye
+   baştan resmiProgram.js'e bağlandı. Bu bölüm ayrıca tarih notlarına
+   özgü kuralları denetler:
+     a) resmiProgram.js ile mufredat.js aynı 39 kazanımı aynı metinle taşır;
+     b) her dersin künyesi resmî cümleyi ve açıklamaları BİREBİR basar;
+     c) ders "history" derinlik profiliyle denetlenir;
+     d) kronoloji, sebep–sonuç zinciri, şahsiyet, veri tablosu, birincil
+        ve ikincil kaynak okuması ve dönem özeti bulunur;
+     e) tarih haritası varsa "şematik" etiketi ve kaynak notu taşır.
+   ------------------------------------------------------------------ */
+console.log('\n--- İnkılap Tarihi: resmî program metni ve tarih kuralları ---')
+{
+  const norm = (m) => String(m).replace(/[’']/g, "'").replace(/\s+/g, ' ').trim()
+  const liste = LGS_KAZANIMLAR['T.C. İnkılap Tarihi ve Atatürkçülük']
+  const resmiKodlar = Object.keys(INKILAP_RESMI_KAZANIMLAR)
+  if (resmiKodlar.length !== liste.length) {
+    hataVer(`İnkılap resmiProgram.js ${resmiKodlar.length} kazanım, mufredat.js ${liste.length} kazanım taşıyor`)
+  }
+  for (const k of liste) {
+    const r = INKILAP_RESMI_KAZANIMLAR[k.kod]
+    if (!r) hataVer(`${k.kod} İnkılap resmiProgram.js içinde yok`)
+    else if (norm(r.metin) !== norm(k.metin)) hataVer(`${k.kod} metni resmiProgram.js ile mufredat.js arasında farklı`)
+  }
+
+  const dersler = LGS_LESSONS.filter((d) => d.placement?.subject === 'T.C. İnkılap Tarihi ve Atatürkçülük')
+  for (const ders of dersler) {
+    const bloklar = ders.document.sections.flatMap((b) => b.blocks)
+    const kunye = bloklar.find((b) => b.id === `${ders.slug}-baglam-kazanim`)
+    if (!kunye) {
+      hataVer(`${ders.slug}: kazanım künyesi bloğu bulunamadı`)
+    } else {
+      const govde = norm(kunye.body)
+      for (const kod of ders.kazanimlar) {
+        const r = INKILAP_RESMI_KAZANIMLAR[kod]
+        if (!r) continue
+        if (!govde.includes(norm(r.metin))) hataVer(`${ders.slug}: ${kod} künyesi resmî cümleyi birebir basmıyor`)
+        for (const a of r.aciklama) {
+          if (!govde.includes(norm(a))) hataVer(`${ders.slug}: ${kod} açıklaması künyede yok → “${a.slice(0, 60)}…”`)
+        }
+      }
+    }
+
+    if (ders.qualityProfile !== 'history') hataVer(`${ders.slug}: tarih dersi "history" derinlik profiliyle denetlenmiyor`)
+
+    const tipler = new Set(bloklar.map((b) => b.type))
+    const gerekli = [
+      ['timeline', 'kronoloji'],
+      ['cause_effect', 'sebep–gelişme–sonuç–sonraki etki zinciri'],
+      ['historical_figures', 'şahsiyet–karar bağlantısı'],
+      ['table', 'veri tablosu'],
+      ['period_summary', 'dönem özeti'],
+    ]
+    gerekli.forEach(([tip, ad]) => {
+      if (!tipler.has(tip)) hataVer(`${ders.slug}: tarih notunda ${ad} yok`)
+    })
+    const kaynaklar = bloklar.filter((b) => b.id.startsWith(`${ders.slug}-kaynak-belge-`))
+    const birincil = kaynaklar.filter((b) => String(b.title).startsWith('Birincil kaynak'))
+    const ikincil = kaynaklar.filter((b) => String(b.title).startsWith('İkincil kaynak'))
+    if (!birincil.length || !ikincil.length) hataVer(`${ders.slug}: birincil ve ikincil kaynak okumasının ikisi de bulunmalı`)
+    kaynaklar.forEach((b) => {
+      if (!/Metnin niteliği:/.test(b.prompt)) hataVer(`${ders.slug}: ${b.id} metnin niteliğini (birebir/sadeleştirme/örnek) söylemiyor`)
+    })
+
+    bloklar.filter((b) => b.type === 'historical_map').forEach((harita) => {
+      if (!/şematik/i.test(harita.map_label || '')) hataVer(`${ders.slug}: tarih haritası şematik olduğunu söylemiyor`)
+      if (!harita.source_note) hataVer(`${ders.slug}: tarih haritasında kaynak notu yok`)
+    })
+  }
+  console.log(`  ${dersler.length} İnkılap dersi resmî metne ve tarih kurallarına karşı denetlendi`)
 }
 
 /* ------------------------------------------------------------------

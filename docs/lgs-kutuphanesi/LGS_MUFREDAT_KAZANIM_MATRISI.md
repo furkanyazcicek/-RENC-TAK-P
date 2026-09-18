@@ -327,7 +327,7 @@ Konu adını düzeltmek canlı kütüphanede bağlantı kırar; kazanç risk etm
 
 | # | Ünite | Ders notu başlığı | `slug` | Kazanımlar | Durum |
 |---|---|---|---|---|---|
-| 1 | İTA.8.1 | 20. Yüzyıl Başında Osmanlı Devleti ve Fikir Akımları ★ **Gold Standard adayı** | `lgs-tarih-yirminci-yuzyil-basinda-osmanli` | İTA.8.1.1 | planlandı |
+| 1 | İTA.8.1 | 20. Yüzyıl Başında Osmanlı Devleti ve Fikir Akımları ★ **Gold Standard adayı** | `lgs-tarih-yirminci-yuzyil-basinda-osmanli` | İTA.8.1.1 | ✅ tamamlandı |
 | 2 | İTA.8.1 | Mustafa Kemal'in Yetişmesi: Çocukluk, Öğrenim, Fikir Hayatı | `lgs-tarih-mustafa-kemalin-yetismesi` | İTA.8.1.2, İTA.8.1.3 | planlandı |
 | 3 | İTA.8.1 | Mustafa Kemal'in Askerlik Hayatı | `lgs-tarih-mustafa-kemal-askerlik-hayati` | İTA.8.1.4 | planlandı |
 | 4 | İTA.8.2 | I. Dünya Savaşı: Sebepler ve Bloklaşma | `lgs-tarih-birinci-dunya-savasi-sebepler` | İTA.8.2.1 | planlandı |
@@ -427,9 +427,12 @@ Konu adını düzeltmek canlı kütüphanede bağlantı kırar; kazanç risk etm
 
 | Ders | Resmî kazanım | Derse bağlanan | Gerekçeli kapsam dışı | Planlanan ders notu | Tamamlanan |
 |---|---|---|---|---|---|
-| Türkçe | 76 | 39 | 37 | 20 | **20 (tamamlandı)** |
-| Fen Bilimleri | 61 | 61 | 0 | 23 | 0 |
-| T.C. İnkılap Tarihi ve Atatürkçülük | 39 | 39 | 0 | 25 | 0 |
-| **Toplam** | **176** | **139** | **37** | **68** | **20** |
+| Türkçe | 76 | 41 | 35 | 20 | **20 (tamamlandı · 41/41)** |
+| Fen Bilimleri | 61 | 61 | 0 | 23 | **23 (tamamlandı · 61/61)** |
+| T.C. İnkılap Tarihi ve Atatürkçülük | 39 | 39 | 0 | 25 | 1 (sürüyor · 1/39) |
+| **Toplam** | **176** | **141** | **35** | **68** | **44** |
+
+*Sayılar `npm run test:lgs` çıktısından alınır (mufredat.js: Türkçe 41 ölçülür + 35 gerekçeli
+kapsam dışı).*
 
 Güncel durum için: `LGS_ICERIK_URETIM_DURUMU.md`

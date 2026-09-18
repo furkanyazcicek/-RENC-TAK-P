@@ -19,19 +19,19 @@
 | Aşama 3 — Türkçe Gold Standard | ✅ Tamamlandı |
 | Aşama 4 — **Türkçe kapsamı** | ✅ **Tamamlandı — 41/41 ölçülebilir kazanım (%100)** |
 | Aşama 5 — **Fen Bilimleri** | ✅ **Tamamlandı — 61/61 ölçülebilir kazanım (%100) · 23 ders** |
-| Aşama 6 — İnkılap Tarihi | 🔄 Başlıyor |
+| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 1/39 kazanım · 1/25 ders (Gold Standard ✅) |
 | Aşama 7 — Son denetim | ⏸ — |
 
 **Aktif ders:** T.C. İnkılap Tarihi ve Atatürkçülük
-**Son tamamlanan ders:** Fen Bilimleri (23 ders · 61 kazanım · 7/7 ünite)
-**Sıradaki kesin kazanım:** İTA.8.1.1
-**Sıradaki ders notu:** İnkılap Tarihi planının 1. dersi (matris §4)
+**Son tamamlanan ders notu:** İnkılap 1 — 20. Yüzyıl Başında Osmanlı Devleti ve Fikir Akımları ★ (İTA.8.1.1)
+**Sıradaki kesin kazanım:** İTA.8.1.2
+**Sıradaki ders notu:** İnkılap planının 2. dersi — `lgs-tarih-mustafa-kemalin-yetismesi` (İTA.8.1.2, İTA.8.1.3)
 
 ---
 
 ## 2. Türkçe — tamamlandı
 
-**Kapsama: 41/41 ölçülebilir kazanım (%100).** 37 kazanım gerekçeli olarak kapsam dışıdır
+**Kapsama: 41/41 ölçülebilir kazanım (%100).** 35 kazanım gerekçeli olarak kapsam dışıdır
 (dinleme, konuşma ve üretimsel yazma kazanımları — bkz. matris §2.4).
 
 | # | Konu | Ders | Kelime | Puan |
@@ -133,6 +133,38 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 
 ---
 
+## 3b. T.C. İnkılap Tarihi ve Atatürkçülük — sürüyor
+
+**Kapsama: 1/39 kazanım · 1/25 ders**
+
+| # | Ders notu | Kazanımlar | Kelime | Puan | Not |
+|---|---|---|---|---|---|
+| 1 | 20. Yüzyıl Başında Osmanlı Devleti ve Fikir Akımları ★ | İTA.8.1.1 | 6.195 | 100/100 | şematik atlas (3 katman, 20 nokta), 3 kaynak okuması |
+
+### İnkılap altyapısı
+- `src/content/lessons/lgs/inkilap/resmiProgram.js` — K3'ten birebir: 7 ünite adı, 39 kazanım
+  cümlesi ve açıklamaları. mufredat.js ile fark: 0.
+- `src/content/lessons/lgs/inkilap/factory.js` — tarih fabrikası. Omurga: bağlam → kronoloji
+  (+ şematik harita + veri tablosu) → sebep–gelişme–sonuç–sonraki etki zinciri → şahsiyetler
+  (kararlarıyla) → derinleşme → **kaynaktan çıkarım** (birincil + ikincil) → uygulama →
+  sınav → kapanış (dönem özeti).
+- Fabrika derleme anında şunları durdurur: elle yazılmış kazanım metni; **ikiden az sebep**
+  (tek nedenli anlatım); eksik zincir aşaması; birincil ya da ikincil kaynağın eksikliği;
+  “metnin niteliği” yazılmamış kaynak; kaynak notu ya da “şematik” etiketi olmayan harita.
+- `npm run test:lgs` İnkılap için ayrıca: künyenin resmî metni birebir basması, `history`
+  derinlik profili, kronoloji/zincir/şahsiyet/veri tablosu/dönem özeti varlığı.
+- Doğrulama günlüğü: `LGS_KAYNAK_KAYDI.md` §7 (her bilgi iki kaynak).
+
+### Okuyucuda düzeltilen iki eski hata (bütün tarih haritalarını etkiliyordu)
+- **Harita genişliği:** Harita tuvali en az 44rem genişliğinde, konduğu sütun 40rem idi;
+  masaüstünde bile yatay kaydırma çıkıyordu. Harita artık şemalar gibi tam genişlikte.
+- **Rota çizgileri:** Çizginin açısı ve uzunluğu tuvalin 16:9 oranı hesaba katılmadan
+  hesaplanıyordu; çizgiler hedef noktayı ıskalıyordu. Düzeltildi; TYT haritalarında da
+  çizgiler artık noktaları birleştiriyor.
+- Ek: listeden sonra gelen paragrafın üst boşluğu eksikti; eklendi (bütün dersler).
+
+---
+
 ## 4. Kurulan altyapı
 
 | Dosya | İş |
@@ -201,13 +233,15 @@ yazılmıştı; `Prose` bileşeni bilinçli olarak Markdown tablosu desteklemiyo
 
 ## 8. Sonraki oturum buradan devam eder
 
-1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.1.1**).
-2. İnkılap Tarihi için önce altyapı: `src/content/lessons/lgs/inkilap/` klasörü, Fen'deki
-   gibi `resmiProgram.js` (K3 tam metninden birebir) ve kendi fabrikası (kronoloji,
-   sebep–gelişme–sonuç–sonraki etki, birincil/ikincil kaynak, belge yorumu).
-3. **Bağlayıcı kurallar:** tarih, isim ve antlaşma maddeleri en az iki güvenilir resmî
-   kaynakla doğrulanır; tek nedenli anlatı yok; koordinat, sınır ya da cephe hattı
-   uydurulmaz — şematik harita kullanılırsa “şematiktir” notu ve kaynak notu taşır;
-   TYT tarih içeriği kopyalanmaz.
-4. İlk İnkılap dersi Gold Standard adayıdır: masaüstü ve telefonda önizleme zorunlu.
+1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.1.2**).
+2. İnkılap altyapısı hazır: yeni ders `src/content/lessons/lgs/inkilap/` altına, fabrika
+   `createLgsHistoryLesson` ile yazılır ve `inkilap/index.js` listesine eklenir.
+3. **Bağlayıcı kurallar:** tarih, isim ve antlaşma maddeleri en az iki güvenilir kaynakla
+   doğrulanır ve `LGS_KAYNAK_KAYDI.md` §7'ye işlenir; kaynaklar arasında gün farkı varsa
+   yalnız ay/yıl yazılır; tek nedenli anlatı yok; koordinat, sınır ya da cephe hattı
+   uydurulmaz; belge alıntıları sadeleştirme ise öyle etiketlenir; TYT tarih içeriği
+   kopyalanmaz.
+4. Özellikle dikkat: İTA.8.2.2 (ç) 1915 Olayları ve Tehcir Kanunu — olgusal, programın
+   çerçevesinde, iki kaynakla; farklı değerlendirmeler olduğu ve Türkiye'nin ortak tarih
+   komisyonu önerisi belirtilir.
 5. Her ders sonrası `npm run test:lgs` → `npm run test:lesson-content` → `npm run build`.

@@ -102,7 +102,9 @@ const LAYOUT = {
   timeline: 'lesson-wide',
   cause_effect: 'lesson-wide',
   period_summary: 'lesson-wide',
-  historical_map: 'lesson-wide',
+  // Harita tuvalinin en küçük genişliği 44rem; 40rem'lik sütunda masaüstünde
+  // bile yatay kaydırma çıkıyordu. Tam genişlikte kenar sütununu da kullanır.
+  historical_map: 'lesson-full',
   historical_figures: 'lesson-wide',
   sentence_analysis: 'lesson-wide',
   decision_tree: 'lesson-wide',

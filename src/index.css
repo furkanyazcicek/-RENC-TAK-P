@@ -4059,7 +4059,10 @@
     margin: 0;
   }
 
-  .lesson-prose p + p {
+  .lesson-prose p + p,
+  .lesson-prose ul + p {
+    /* Listeden sonra gelen paragraf da nefes almalı; yoksa son madde ile
+       paragraf tek bir blok gibi okunuyordu. */
     margin-top: 1.15em;
   }
 

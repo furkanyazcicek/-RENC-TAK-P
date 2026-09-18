@@ -566,6 +566,9 @@ export function ConceptMapBlock({ block }) {
   )
 }
 
+/** Harita tuvalinin yükseklik/genişlik oranı — index.css'teki `aspect-ratio: 16 / 9` ile aynı olmalı. */
+const MAP_ASPECT = 9 / 16
+
 /**
  * Tarihsel sinir iddiasi tasimayan, katmanlari ve konum aciklamalari
  * etkileşimli bir sematik atlas. Cizgiler DOM/CSS ile kurulur; mobilde
@@ -635,8 +638,11 @@ export function HistoricalMapBlock({ block }) {
             const from = locations.get(route.from)
             const to = locations.get(route.to)
             if (!from || !to || !visible(from) || !visible(to)) return null
+            // x yüzdesi tuval GENİŞLİĞİNE, y yüzdesi YÜKSEKLİĞİNE göredir.
+            // Tuval 16:9 olduğu için dikey farkı genişlik birimine çevirmeden
+            // açı ve uzunluk hesaplanırsa çizgi hedef noktayı ıskalıyordu.
             const dx = to.x - from.x
-            const dy = to.y - from.y
+            const dy = (to.y - from.y) * MAP_ASPECT
             const length = Math.hypot(dx, dy)
             const angle = Math.atan2(dy, dx) * (180 / Math.PI)
             return (

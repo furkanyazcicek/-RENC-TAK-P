@@ -222,3 +222,47 @@ terimlerinin bağlı derslerde geçtiğini denetler.
 alan" yazım hataları öğrenciye yanlış yazım göstermemek için düzeltildi; not dosyanın
 başındadır.
 
+
+---
+
+## 7. İnkılap Tarihi doğrulama günlüğü
+
+Tarih notları için kural: her tarih, ad ve belge bilgisi **en az iki güvenilir kaynakla**
+karşılaştırılır. Kaynaklar arasında gün farkı çıkan bilgilerde (ör. meclisin kapatılış günü)
+derste yalnız ay ve yıl yazılır. MEB Açık Öğretim Ortaokulu ders kitabının adresi
+(`aok.meb.gov.tr`) doğrulama sırasında erişilemedi; bu yüzden TDV İslâm Ansiklopedisi, TÜBİTAK
+Ansiklopedisi, Türk Tarih Kurumu, Türk Maarif Ansiklopedisi ve hakemli DergiPark makaleleri
+kullanıldı.
+
+**Resmî metin:** `src/content/lessons/lgs/inkilap/resmiProgram.js`, K3'ün PDF metninden birebir
+üretildi (7 ünite adı, 39 kazanım cümlesi, açıklamalar). mufredat.js'teki 39 kazanım
+metniyle karşılaştırıldı: **fark 0.** İnkılap fabrikası künyeyi yalnız bu dosyadan basar.
+
+### Ders 1 — `lgs-tarih-yirminci-yuzyil-basinda-osmanli` (İTA.8.1.1)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Tanzimat Fermanı | 3 Kasım 1839, Gülhane; Abdülmecid adına Mustafa Reşid Paşa okudu | TDV İA “Tanzimat” | TÜBİTAK Ansiklopedi “Tanzimat Fermanı”; DergiPark (Eğitim ve Toplum, 2023) | Doğrulandı |
+| Islahat Fermanı | 18 Şubat 1856 (derste yalnız yıl) | TDV İA “Islahat Fermanı” | TDV İA “Tanzimat”; DergiPark aynı makale | Doğrulandı |
+| Kanun-ı Esasi | 23 Aralık 1876 | TDV İA “Meşrutiyet”, “Kanun-ı Esasi” | DergiPark (Gazi Eğitim Fak. Dergisi, I. Meşrutiyet makalesi) | Doğrulandı |
+| Meclis-i Mebusan’ın toplanması | 1877 (derste gün yok) | TDV İA “Meclis-i Meb‘ûsan” (19 Mart 1877) | Türk Maarif Ansiklopedisi “Meclis-i Mebusan” | Doğrulandı |
+| Meclisin kapatılması | Şubat 1878 (gün yazılmadı) | TDV İA “Meşrutiyet” (13 Şubat) | DergiPark I. Meşrutiyet makalesi (14 Şubat) | **Gün farkı var** → derste yalnız ay ve yıl |
+| II. Meşrutiyet | Temmuz 1908 | TDV İA “Meşrutiyet” (23–24 Temmuz) | TTK yayını (23 Temmuz 1908) | Doğrulandı |
+| Kanun-ı Esasi 113. madde ve Mithat Paşa’nın sürgünü | Padişaha sürgün yetkisi; Mithat Paşa 1877 başında bu maddeyle gönderildi | TDV İA “Kanun-ı Esasi” | DergiPark “1876 Tarihli Kanun-ı Esasi’de Yürütme Organı”; erdem.gov.tr makalesi | Doğrulandı; madde metni derste **sadeleştirme** olarak etiketli |
+| Balta Limanı Antlaşması | 1838, İngiltere; görüşmeler Reşid Paşa’nın Baltalimanı’ndaki yalısında | TDV İA “Balta Limanı Antlaşması” (16 Ağustos 1838) | TDV İA “Tanzimat” | Doğrulandı |
+| İlk dış borç | 1854, Kırım Savaşı | TDV İA “Düyûn-ı Umûmiyye” (24 Ağustos 1854) | DergiPark (Balkan Sosyal Bilimler Dergisi, Düyun-u Umumiye makalesi) | Doğrulandı |
+| Düyun-u Umumiye | 1881, Muharrem Kararnamesi | TDV İA “Düyûn-ı Umûmiyye” (20 Aralık 1881) | DergiPark (GJEBS, Muhasebe ve Finans Tarihi makaleleri) | Doğrulandı |
+| Cezayir 1830, Tunus 1881, Mısır 1882, Kıbrıs 1878 | Yıllar | TDV İA “Osmanlılar” | TDV İA “Tunus”; Türk Maarif Ans. “Tunus” | Doğrulandı |
+| 1908 kayıpları | Bulgaristan bağımsızlığı, Bosna-Hersek ilhakı, Girit’in Yunanistan’a bağlandığını ilanı | TDV İA “Osmanlıcılık” | TTK “200 Yıllık Tarihe Bakış” yayını (Bosna-Hersek 5 Ekim 1908, Bulgaristan 1908) | Doğrulandı; Girit için 1913 kesinleşmesi derse yazılmadı |
+| Trablusgarp Savaşı | 1911 saldırı, 1912 Uşi; Mustafa Kemal Tobruk–Derne | TDV İA “Trablusgarp Savaşı” (29 Eylül 1911; 18 Ekim 1912) | TDV İA “Osmanlılar” | Doğrulandı |
+| Üç Tarz-ı Siyaset | 1904, Kahire, Türk gazetesi | TDV İA “Türkçülük” (14 Nisan 1904) | Ötüken yayını (Latin harflerine aktarım, giriş); ansiklopedik kayıtlar | Doğrulandı |
+| İctihad dergisi | 1904, Cenevre | TDV İA “Abdullah Cevdet” | TDV İA “Garpçılık” (temsilci olarak) | Doğrulandı. Sık atfedilen “gülüyle dikeniyle” sözü kaynakta bulunamadığı için **kullanılmadı** |
+| Osmanlıcılık, İslamcılık, Türkçülük | Tanım, temsilci, zayıflama nedenleri | TDV İA “Osmanlıcılık”, “İslâmcılık”, “Türkçülük” | K3 açıklaması (akım adları) | Doğrulandı |
+
+**Kaynak metinlerin niteliği:** Derste iki birincil kaynak (Tanzimat Fermanı, Kanun-ı Esasi
+113. madde) **sadeleştirilmiş** olarak verildi ve öyle etiketlendi. İkincil kaynak örneği
+DRKOÇ’un yazdığı bir örnek metindir; gerçek bir yazara atfedilmedi. Test kapısı her kaynak
+bloğunun “Metnin niteliği” satırını taşıdığını denetler.
+
+**Harita:** `historical_map` bloğu sınır, ölçek ya da koordinat iddiası taşımaz; konumlar
+yaklaşık yerleşimdir ve kaynak notu blokta yazılıdır.

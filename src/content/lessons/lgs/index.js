@@ -14,7 +14,8 @@
 
 import { LGS_TURKCE_DERSLERI } from './turkce/index.js'
 import { LGS_FEN_DERSLERI } from './fen/index.js'
+import { LGS_INKILAP_DERSLERI } from './inkilap/index.js'
 
-export const LGS_LESSONS = [...LGS_TURKCE_DERSLERI, ...LGS_FEN_DERSLERI]
+export const LGS_LESSONS = [...LGS_TURKCE_DERSLERI, ...LGS_FEN_DERSLERI, ...LGS_INKILAP_DERSLERI]
 
-export { LGS_TURKCE_DERSLERI, LGS_FEN_DERSLERI }
+export { LGS_TURKCE_DERSLERI, LGS_FEN_DERSLERI, LGS_INKILAP_DERSLERI }
