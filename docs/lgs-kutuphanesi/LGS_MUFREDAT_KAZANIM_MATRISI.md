@@ -200,14 +200,14 @@ düzeltmesi gerekmiyor.
 | 5 | DNA ve Genetik Kod | Çaprazlama, Cinsiyet ve Akraba Evliliği | `lgs-fen-caprazlama-ve-cinsiyet` | F.8.2.2.2, F.8.2.2.3 | ✅ tamamlandı |
 | 6 | DNA ve Genetik Kod | Mutasyon, Modifikasyon ve Adaptasyon | `lgs-fen-mutasyon-modifikasyon-adaptasyon` | F.8.2.3.1, F.8.2.3.2, F.8.2.3.3, F.8.2.4.1 | ✅ tamamlandı |
 | 7 | DNA ve Genetik Kod | Genetik Mühendisliği ve Biyoteknoloji | `lgs-fen-biyoteknoloji` | F.8.2.5.1, F.8.2.5.2, F.8.2.5.3 | ✅ tamamlandı |
-| 8 | Basınç | Katı Basıncı ve Değişkenleri | `lgs-fen-kati-basinci` | F.8.3.1.1 | planlandı |
-| 9 | Basınç | Sıvı ve Gaz Basıncı, Günlük Yaşam Uygulamaları | `lgs-fen-sivi-ve-gaz-basinci` | F.8.3.1.2, F.8.3.1.3 | planlandı |
-| 10 | Madde ve Endüstri | Periyodik Sistem: Grup, Periyot, Metal–Ametal | `lgs-fen-periyodik-sistem` | F.8.4.1.1, F.8.4.1.2 | planlandı |
-| 11 | Madde ve Endüstri | Fiziksel ve Kimyasal Değişim | `lgs-fen-fiziksel-kimyasal-degisim` | F.8.4.2.1, F.8.4.3.1 | planlandı |
-| 12 | Madde ve Endüstri | Asitler ve Bazlar: Özellikler, pH, Güvenlik | `lgs-fen-asitler-ve-bazlar` | F.8.4.4.1–F.8.4.4.6 | planlandı |
-| 13 | Madde ve Endüstri | Asit Yağmurları | `lgs-fen-asit-yagmurlari` | F.8.4.4.7 | planlandı |
-| 14 | Madde ve Endüstri | Maddenin Isı ile Etkileşimi ve Hâl Değişim Grafikleri | `lgs-fen-isi-ve-hal-degisimi` | F.8.4.5.1–F.8.4.5.4 | planlandı |
-| 15 | Madde ve Endüstri | Türkiye'de Kimya Endüstrisi | `lgs-fen-turkiyede-kimya-endustrisi` | F.8.4.6.1, F.8.4.6.2 | planlandı |
+| 8 | Basınç | Katı Basıncı ve Değişkenleri | `lgs-fen-kati-basinci` | F.8.3.1.1 | ✅ tamamlandı |
+| 9 | Basınç | Sıvı ve Gaz Basıncı, Günlük Yaşam Uygulamaları | `lgs-fen-sivi-ve-gaz-basinci` | F.8.3.1.2, F.8.3.1.3 | ✅ tamamlandı |
+| 10 | Madde ve Endüstri | Periyodik Sistem: Grup, Periyot, Metal–Ametal | `lgs-fen-periyodik-sistem` | F.8.4.1.1, F.8.4.1.2 | ✅ tamamlandı |
+| 11 | Madde ve Endüstri | Fiziksel ve Kimyasal Değişim | `lgs-fen-fiziksel-kimyasal-degisim` | F.8.4.2.1, F.8.4.3.1 | ✅ tamamlandı |
+| 12 | Madde ve Endüstri | Asitler ve Bazlar: Özellikler, pH, Güvenlik | `lgs-fen-asitler-ve-bazlar` | F.8.4.4.1–F.8.4.4.6 | ✅ tamamlandı |
+| 13 | Madde ve Endüstri | Asit Yağmurları | `lgs-fen-asit-yagmurlari` | F.8.4.4.7 | ✅ tamamlandı |
+| 14 | Madde ve Endüstri | Maddenin Isı ile Etkileşimi ve Hâl Değişim Grafikleri | `lgs-fen-isi-ve-hal-degisimi` | F.8.4.5.1–F.8.4.5.4 | ✅ tamamlandı |
+| 15 | Madde ve Endüstri | Türkiye'de Kimya Endüstrisi | `lgs-fen-turkiyede-kimya-endustrisi` | F.8.4.6.1, F.8.4.6.2 | ✅ tamamlandı |
 | 16 | Basit Makineler | Basit Makineler: Kazanç Neyin Kazancı? | `lgs-fen-basit-makineler` | F.8.5.1.1, F.8.5.1.2 | planlandı |
 | 17 | Enerji Dönüşümleri ve Çevre Bilimi | Besin Zinciri, Besin Ağı ve Ekoloji Piramidi | `lgs-fen-besin-zinciri-ve-enerji-akisi` | F.8.6.1.1 | planlandı |
 | 18 | Enerji Dönüşümleri ve Çevre Bilimi | Fotosentez ve Solunum | `lgs-fen-fotosentez-ve-solunum` | F.8.6.2.1, F.8.6.2.2, F.8.6.2.3 | planlandı |

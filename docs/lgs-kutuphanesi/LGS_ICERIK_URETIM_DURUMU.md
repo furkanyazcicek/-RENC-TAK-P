@@ -18,15 +18,15 @@
 | Aşama 2 — LGS içerik altyapısı | ✅ Tamamlandı |
 | Aşama 3 — Türkçe Gold Standard | ✅ Tamamlandı |
 | Aşama 4 — **Türkçe kapsamı** | ✅ **Tamamlandı — 41/41 ölçülebilir kazanım (%100)** |
-| Aşama 5 — Fen Bilimleri | 🔄 Sürüyor — 16/61 kazanım (%26) |
+| Aşama 5 — Fen Bilimleri | 🔄 Sürüyor — 36/61 kazanım (%59) |
 | Aşama 6 — İnkılap Tarihi | ⏸ Fen bitene kadar başlamaz |
 | Aşama 7 — Son denetim | ⏸ — |
 
 **Aktif ders:** Fen Bilimleri
-**Son tamamlanan ders notu:** `lgs-fen-biyoteknoloji` (F.8.2.5.1 · F.8.2.5.2 · F.8.2.5.3)
-**Tamamlanan üniteler:** F.8.1 Mevsimler ve İklim (3/3) · F.8.2 DNA ve Genetik Kod (13/13)
-**Sıradaki kesin kazanım:** F.8.3.1.1 — “Katı basıncını etkileyen değişkenleri deneyerek keşfeder.”
-**Sıradaki ders notu:** `lgs-fen-kati-basinci` · konu: Basınç · sıra 1
+**Son tamamlanan ders notu:** `lgs-fen-turkiyede-kimya-endustrisi` (F.8.4.6.1 · F.8.4.6.2)
+**Tamamlanan üniteler:** F.8.1 Mevsimler ve İklim · F.8.2 DNA ve Genetik Kod · F.8.3 Basınç · F.8.4 Madde ve Endüstri
+**Sıradaki kesin kazanım:** F.8.5.1.1 — “Basit makinelerin sağladığı avantajları örnekler üzerinden açıklar.”
+**Sıradaki ders notu:** `lgs-fen-basit-makineler` · konu: Basit Makineler · sıra 1
 
 ---
 
@@ -81,23 +81,38 @@ Her ders, kazanım açıklamasındaki sınırı **açıkça** uygular ve öğren
 
 ## 3. Fen Bilimleri — sürüyor
 
-**Kapsama: 16/61 ölçülebilir kazanım (%26) · 7 ders**
+**Kapsama: 36/61 ölçülebilir kazanım (%59) · 15 ders · 4/7 ünite tamamlandı**
 
 | # | Ders notu | Kazanımlar | Kelime | Bölüm | Puan | Durum |
 |---|---|---|---|---|---|---|
-| 1 | Mevsimlerin Oluşumu: Uzaklık Değil, Açı ★ | F.8.1.1.1 | 4.924 | 9 | 100/100 | ✅ Gold Standard |
+| 1 | Mevsimlerin Oluşumu: Uzaklık Değil, Açı ★ | F.8.1.1.1 | 4.925 | 9 | 100/100 | ✅ Gold Standard |
 | 2 | İklim ve Hava Olayları: Aynı Şey Değil | F.8.1.2.1 · F.8.1.2.2 | 4.388 | 9 | 100/100 | ✅ |
-| 3 | DNA’nın Yapısı: Nükleotidden Kromozoma | F.8.2.1.1 · F.8.2.1.2 · F.8.2.1.3 | 4.504 | 9 | 100/100 | ✅ |
-| 4 | Kalıtım Kavramları: Görünen ve Yazılı Olan | F.8.2.2.1 | ~4.300 | 9 | 100/100 | ✅ |
-| 5 | Çaprazlama, Cinsiyet ve Akraba Evliliği | F.8.2.2.2 · F.8.2.2.3 | ~4.900 | 8 | 100/100 | ✅ |
-| 6 | Mutasyon, Modifikasyon ve Adaptasyon | F.8.2.3.1–F.8.2.4.1 | ~4.800 | 9 | 100/100 | ✅ |
-| 7 | Genetik Mühendisliği ve Biyoteknoloji | F.8.2.5.1 · F.8.2.5.2 · F.8.2.5.3 | ~4.700 | 8 | 100/100 | ✅ |
+| 3 | DNA’nın Yapısı: Nükleotidden Kromozoma | F.8.2.1.1–3 | 4.509 | 9 | 100/100 | ✅ |
+| 4 | Kalıtım Kavramları: Görünen ve Yazılı Olan | F.8.2.2.1 | 4.516 | 9 | 100/100 | ✅ |
+| 5 | Çaprazlama, Cinsiyet ve Akraba Evliliği | F.8.2.2.2 · F.8.2.2.3 | 4.589 | 8 | 100/100 | ✅ |
+| 6 | Mutasyon, Modifikasyon ve Adaptasyon | F.8.2.3.1–3 · F.8.2.4.1 | 4.352 | 9 | 100/100 | ✅ |
+| 7 | Genetik Mühendisliği ve Biyoteknoloji | F.8.2.5.1–3 | 4.082 | 8 | 100/100 | ✅ |
+| 8 | Katı Basıncı: Ağırlık mı, Yüzey mi? | F.8.3.1.1 | 4.133 | 8 | 100/100 | ✅ |
+| 9 | Sıvı ve Gaz Basıncı: Derinlik, Yoğunluk, Açık Hava | F.8.3.1.2 · F.8.3.1.3 | 4.540 | 8 | 100/100 | ✅ |
+| 10 | Periyodik Sistem: Düzenin Kendisi Bilgidir | F.8.4.1.1 · F.8.4.1.2 | 3.883 | 7 | 100/100 | ✅ |
+| 11 | Fiziksel ve Kimyasal Değişim: Kimlik Değişti mi? | F.8.4.2.1 · F.8.4.3.1 | 4.613 | 9 | 100/100 | ✅ |
+| 12 | Asitler ve Bazlar: Özellik, Ayraç, pH ve Güvenlik | F.8.4.4.1–6 | 4.867 | 9 | 100/100 | ✅ |
+| 13 | Asit Yağmurları: Zinciri Nerede Kırabiliriz? | F.8.4.4.7 | 4.303 | 8 | 100/100 | ✅ |
+| 14 | Isı ve Hâl Değişimi: Sıcaklık Neden Durur? | F.8.4.5.1–4 | 5.210 | 9 | 100/100 | ✅ yeni şema: ısınma grafiği |
+| 15 | Türkiye’de Kimya Endüstrisi: Hammaddeden Mesleğe | F.8.4.6.1 · F.8.4.6.2 | 4.290 | 8 | 100/100 | ✅ |
 
-**Tamamlanan üniteler:** F.8.1 (3/3) · F.8.2 (13/13)
-**Kalan üniteler:** F.8.3 Basınç · F.8.4 Madde ve Endüstri · F.8.5 Basit Makineler ·
-F.8.6 Enerji Dönüşümleri ve Çevre Bilimi · F.8.7 Elektrik Yükleri ve Elektrik Enerjisi
+**Kalan üniteler:** F.8.5 Basit Makineler (2 kazanım) · F.8.6 Enerji Dönüşümleri ve Çevre
+Bilimi (12 kazanım) · F.8.7 Elektrik Yükleri ve Elektrik Enerjisi (11 kazanım)
 
 Ders planının tamamı: `LGS_MUFREDAT_KAZANIM_MATRISI.md` §3.1 (23 ders).
+
+### Resmî metne bağlılık (18.09.2026 düzeltmesi)
+Fen derslerinin kazanım künyesi artık `src/content/lessons/lgs/fen/resmiProgram.js`
+dosyasından basılıyor (61 kazanım cümlesi + açıklamaları + konu/kavram satırları, K2'den
+birebir). Ders dosyası yalnız kazanım kodunu verir; elle metin ya da “sınır” yazılırsa derleme
+durur. Dersin kendi kapsam kararları “DRKOÇ kapsam notu” başlığıyla ayrı basılır.
+`npm run test:lgs` künyenin resmî metni birebir taşıdığını ve konu/kavram listesindeki
+terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK_KAYDI.md` Ç5.
 
 ### Fen’e özgü ek standartlar (Türkçe derslerinde olmayan)
 - Gözlemlenebilir olay/problem ile başlama
@@ -190,11 +205,14 @@ yazılmıştı; `Prose` bileşeni bilinçli olarak Markdown tablosu desteklemiyo
 
 ## 8. Sonraki oturum buradan devam eder
 
-1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**F.8.3.1.1**).
-2. `lgs-fen-kati-basinci` dersini yaz (Basınç ünitesi, sıra 1).
-   **Dikkat:** F.8.3.1.1’de **matematiksel bağıntıya girilmez**; birim olarak
-   yalnız Pascal verilir. Ders değişken keşfi üzerine kurulmalıdır.
-3. Dersi `src/content/lessons/lgs/fen/index.js` içine kaydet.
+1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**F.8.5.1.1**).
+2. `lgs-fen-basit-makineler` dersini yaz (F.8.5.1.1, F.8.5.1.2).
+   **Program açıklaması:** sabit makara, hareketli makara, palanga, kaldıraç, eğik düzlem ve
+   çıkrık üzerinde durulur; dişli çark, vida ve kasnağın basit makine olduğu görsellerle
+   belirtilir, ayrıntıya girilmez; **işten kazanç olmadığı vurgulanır; matematiksel
+   bağıntılara girilmez.** F.8.5.1.2 tasarım kazanımıdır (önce çizim).
+3. Dersi `src/content/lessons/lgs/fen/index.js` içine kaydet; ders dosyasında yalnız
+   kazanım kodu yaz (metin/sınır yazma — fabrika resmî metni kendisi basar).
 4. `npm run test:lgs` → `npm run test:lesson-content` → `npm run build`.
-5. Basınç ünitesinin ilk dersini önizlemede masaüstü ve telefon genişliğinde kontrol et.
+5. Yeni bir şema yazılırsa önizlemede 390 px ve 1440 px genişlikte kontrol et.
 6. Bu dosyayı ve matristeki durum sütununu güncelle.
