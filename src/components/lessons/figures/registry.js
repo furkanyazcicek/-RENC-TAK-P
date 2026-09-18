@@ -1102,6 +1102,13 @@ export const LGS_SCIENCE_FIGURES = {
     // SIRA ÖNEMLİ: fotosentez → solunum → ayristirma → yanma
     regions: ['fotosentez', 'solunum', 'ayristirma', 'yanma'],
   },
+  'lgs-fen-elektriklenme-cesitleri': {
+    label: 'Elektriklenme çeşitleri: sürtünme, dokunma, etki',
+    minWidth: 620,
+    markers: 'numbered',
+    // SIRA ÖNEMLİ: surtunme → dokunma → etki
+    regions: ['surtunme', 'dokunma', 'etki'],
+  },
 }
 
 Object.assign(FIGURE_META, LGS_SCIENCE_FIGURES)

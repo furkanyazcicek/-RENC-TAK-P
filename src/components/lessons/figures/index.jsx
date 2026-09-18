@@ -57,6 +57,7 @@ import ScienceLeverTypes from './ScienceLeverTypes'
 import ScienceOtherMachines from './ScienceOtherMachines'
 import ScienceEcologyPyramid from './ScienceEcologyPyramid'
 import ScienceCarbonCycle from './ScienceCarbonCycle'
+import ScienceChargingTypes from './ScienceChargingTypes'
 import InheritanceConceptMap from './InheritanceConceptMap'
 import KingdomDecisionTree from './KingdomDecisionTree'
 import MagneticForce from './MagneticForce'
@@ -126,6 +127,7 @@ const COMPONENTS = {
   'lgs-fen-disli-vida-kasnak': ScienceOtherMachines,
   'lgs-fen-ekoloji-piramidi': ScienceEcologyPyramid,
   'lgs-fen-karbon-dongusu': ScienceCarbonCycle,
+  'lgs-fen-elektriklenme-cesitleri': ScienceChargingTypes,
   'su-polarlik': WaterPolarity,
   'ph-skalasi': PhScale,
   'sentez-hidroliz': SynthesisHydrolysis,
