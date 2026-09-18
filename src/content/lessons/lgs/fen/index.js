@@ -12,6 +12,7 @@ import kalitimKavramlari from './kalitim-kavramlari.js'
 import caprazlamaVeCinsiyet from './caprazlama-ve-cinsiyet.js'
 import mutasyonModifikasyonAdaptasyon from './mutasyon-modifikasyon-adaptasyon.js'
 import biyoteknoloji from './biyoteknoloji.js'
+import katiBasinci from './kati-basinci.js'
 
 export const LGS_FEN_DERSLERI = [
   mevsimlerinOlusumu,
@@ -21,4 +22,5 @@ export const LGS_FEN_DERSLERI = [
   caprazlamaVeCinsiyet,
   mutasyonModifikasyonAdaptasyon,
   biyoteknoloji,
+  katiBasinci,
 ]
