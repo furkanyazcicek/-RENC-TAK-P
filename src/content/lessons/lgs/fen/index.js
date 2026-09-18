@@ -18,6 +18,7 @@ import periyodikSistem from './periyodik-sistem.js'
 import fizikselKimyasalDegisim from './fiziksel-kimyasal-degisim.js'
 import asitlerVeBazlar from './asitler-ve-bazlar.js'
 import asitYagmurlari from './asit-yagmurlari.js'
+import isiVeHalDegisimi from './isi-ve-hal-degisimi.js'
 
 export const LGS_FEN_DERSLERI = [
   mevsimlerinOlusumu,
@@ -33,4 +34,5 @@ export const LGS_FEN_DERSLERI = [
   fizikselKimyasalDegisim,
   asitlerVeBazlar,
   asitYagmurlari,
+  isiVeHalDegisimi,
 ]

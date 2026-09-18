@@ -131,7 +131,9 @@ function degiskenSemasi(slug, degiskenler) {
     type: 'figure',
     kind: 'lgs-fen-degisken-iliskisi',
     title: 'Bu deneyde neyi değiştiriyorum, neyi ölçüyorum?',
-    width: 'wide',
+    // 'full': şemanın en küçük genişliği (620 px) 40rem'lik okuma sütununa
+    // dolgusuyla sığmıyor; masaüstünde gereksiz yatay kaydırma çıkıyordu.
+    width: 'full',
     complexity: 'medium',
     caption,
     purpose: 'Değişken ayrımını tek bakışta görünür kılmak',

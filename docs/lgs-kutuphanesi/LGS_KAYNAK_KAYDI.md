@@ -194,3 +194,29 @@ sıklık iddiası bulunmaz; bunun yerine resmî ve sayılabilir olan tek veri ku
 | 18.09.2026 | Fen Bilimleri 8. sınıf kazanımları (K2) tam metin alındı | 61 kazanım / 7 ünite doğrulandı |
 | 18.09.2026 | İnkılap Tarihi 8. sınıf kazanımları (K3) tam metin alındı | 39 kazanım / 7 ünite doğrulandı |
 | 18.09.2026 | LGS soru sayıları (K4, Tablo-1) doğrulandı | Türkçe 20 · Fen 20 · İnkılap 10 |
+| 18.09.2026 | Fen ders dosyalarındaki kazanım cümleleri ve "program sınırı" notları K2 tam metniyle karşılaştırıldı | **8 kazanım cümlesi yeniden ifade edilmiş, 6 açıklama programda olmadığı hâlde programa atfedilmiş bulundu.** Tamamı düzeltildi (bkz. Ç5) |
+| 18.09.2026 | Türkçe ders dosyalarındaki program atıfları K1 tam metniyle karşılaştırıldı | Tamamı resmî açıklamalarla örtüşüyor; düzeltme gerekmedi |
+
+### Ç5 — Fen ders notlarında programdan kayan künyeler (çözüldü)
+
+**Bulgu:** İlk 13 Fen dersinde kazanım cümlesi ve "program sınırı" notu ders dosyasına elle
+yazılmıştı. Denetimde şunlar görüldü:
+- 8 kazanım cümlesi resmî metinden farklıydı (ör. F.8.4.3.1 "Bileşiklerin kimyasal tepkime
+  sonucunda oluştuğunu bilir." yerine "yeni maddelerin oluştuğunu bilir" yazılmıştı).
+- Bazı notlar programda bulunmadığı hâlde programa atfedilmişti (ör. F.8.4.4.1 için
+  "yapısına girilmez", F.8.2.2.3 ve F.8.2.5.2 için yorum niteliğinde "sınırlar").
+- Bazı resmî açıklamalar ve konu/kavram terimleri derslerde eksikti: F.8.2.2.2 (b) "diğer
+  canlılarda da aktarımın benzer olduğu", F.8.4.3 "kütlenin korunumu", F.8.2.4 "doğal
+  seçilim, varyasyon", F.8.2.5 "yapay seçilim".
+
+**Çözüm:** `src/content/lessons/lgs/fen/resmiProgram.js` dosyası K2'den birebir üretildi
+(61 kazanım cümlesi + açıklamaları + alt başlıkların "Konu / Kavramlar" satırı). Fen
+fabrikası künyeyi yalnız bu dosyadan basar; ders dosyasında elle yazılmış metin ya da sınır
+derlemeyi durdurur. Dersin kendi kapsam kararları "DRKOÇ kapsam notu" başlığıyla, programdan
+ayrı basılır. `npm run test:lgs` artık künyenin resmî metni birebir taşıdığını ve konu/kavram
+terimlerinin bağlı derslerde geçtiğini denetler.
+
+**Tek bilinçli sapma:** K2'deki F.8.7.3.2 cümlesinde bulunan "Elektirik" ve "dönüşümü temel
+alan" yazım hataları öğrenciye yanlış yazım göstermemek için düzeltildi; not dosyanın
+başındadır.
+

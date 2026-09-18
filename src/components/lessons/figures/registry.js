@@ -1067,6 +1067,13 @@ export const LGS_SCIENCE_FIGURES = {
     // SIRA ÖNEMLİ: ders içeriğindeki `focus` maddeleri bu sırayla eşleşir.
     regions: ['bagimsiz', 'duzenek', 'bagimli', 'kontrol'],
   },
+  'lgs-fen-isinma-grafigi': {
+    label: 'Saf bir maddenin ısınma grafiği: eğimli ve yatay bölümler',
+    minWidth: 620,
+    markers: 'numbered',
+    // SIRA ÖNEMLİ: kati → erime → sivi → kaynama → gaz
+    regions: ['kati', 'erime', 'sivi', 'kaynama', 'gaz'],
+  },
 }
 
 Object.assign(FIGURE_META, LGS_SCIENCE_FIGURES)

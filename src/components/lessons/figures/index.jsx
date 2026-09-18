@@ -52,6 +52,7 @@ import { BoneTissuePlate, CartilageJointPlate, MovementIntegration, MuscleContra
 import EnzymeRateGraphs from './EnzymeRateGraphs'
 import HomeostasisLoop from './HomeostasisLoop'
 import ScienceVariableRelation from './ScienceVariableRelation'
+import ScienceHeatingCurve from './ScienceHeatingCurve'
 import InheritanceConceptMap from './InheritanceConceptMap'
 import KingdomDecisionTree from './KingdomDecisionTree'
 import MagneticForce from './MagneticForce'
@@ -116,6 +117,7 @@ const COMPONENTS = {
   'metabolizma-atp': MetabolismAtp,
   'homeostazi-dongusu': HomeostasisLoop,
   'lgs-fen-degisken-iliskisi': ScienceVariableRelation,
+  'lgs-fen-isinma-grafigi': ScienceHeatingCurve,
   'su-polarlik': WaterPolarity,
   'ph-skalasi': PhScale,
   'sentez-hidroliz': SynthesisHydrolysis,
