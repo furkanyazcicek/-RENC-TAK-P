@@ -53,6 +53,8 @@ import EnzymeRateGraphs from './EnzymeRateGraphs'
 import HomeostasisLoop from './HomeostasisLoop'
 import ScienceVariableRelation from './ScienceVariableRelation'
 import ScienceHeatingCurve from './ScienceHeatingCurve'
+import ScienceLeverTypes from './ScienceLeverTypes'
+import ScienceOtherMachines from './ScienceOtherMachines'
 import InheritanceConceptMap from './InheritanceConceptMap'
 import KingdomDecisionTree from './KingdomDecisionTree'
 import MagneticForce from './MagneticForce'
@@ -118,6 +120,8 @@ const COMPONENTS = {
   'homeostazi-dongusu': HomeostasisLoop,
   'lgs-fen-degisken-iliskisi': ScienceVariableRelation,
   'lgs-fen-isinma-grafigi': ScienceHeatingCurve,
+  'lgs-fen-kaldirac-turleri': ScienceLeverTypes,
+  'lgs-fen-disli-vida-kasnak': ScienceOtherMachines,
   'su-polarlik': WaterPolarity,
   'ph-skalasi': PhScale,
   'sentez-hidroliz': SynthesisHydrolysis,

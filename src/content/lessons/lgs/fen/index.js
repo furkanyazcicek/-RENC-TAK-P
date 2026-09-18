@@ -20,6 +20,7 @@ import asitlerVeBazlar from './asitler-ve-bazlar.js'
 import asitYagmurlari from './asit-yagmurlari.js'
 import isiVeHalDegisimi from './isi-ve-hal-degisimi.js'
 import turkiyedeKimyaEndustrisi from './turkiyede-kimya-endustrisi.js'
+import basitMakineler from './basit-makineler.js'
 
 export const LGS_FEN_DERSLERI = [
   mevsimlerinOlusumu,
@@ -37,4 +38,5 @@ export const LGS_FEN_DERSLERI = [
   asitYagmurlari,
   isiVeHalDegisimi,
   turkiyedeKimyaEndustrisi,
+  basitMakineler,
 ]

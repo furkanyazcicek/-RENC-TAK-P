@@ -1074,6 +1074,20 @@ export const LGS_SCIENCE_FIGURES = {
     // SIRA ÖNEMLİ: kati → erime → sivi → kaynama → gaz
     regions: ['kati', 'erime', 'sivi', 'kaynama', 'gaz'],
   },
+  'lgs-fen-kaldirac-turleri': {
+    label: 'Kaldıraç türleri: destek, yük ve kuvvetin yerleşimi',
+    minWidth: 620,
+    markers: 'numbered',
+    // SIRA ÖNEMLİ: destek-ortada → yuk-ortada → kuvvet-ortada
+    regions: ['destek-ortada', 'yuk-ortada', 'kuvvet-ortada'],
+  },
+  'lgs-fen-disli-vida-kasnak': {
+    label: 'Dişli çark, vida ve kasnak',
+    minWidth: 620,
+    markers: 'numbered',
+    // SIRA ÖNEMLİ: disli → vida → kasnak
+    regions: ['disli', 'vida', 'kasnak'],
+  },
 }
 
 Object.assign(FIGURE_META, LGS_SCIENCE_FIGURES)

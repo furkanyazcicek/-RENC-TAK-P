@@ -208,7 +208,7 @@ düzeltmesi gerekmiyor.
 | 13 | Madde ve Endüstri | Asit Yağmurları | `lgs-fen-asit-yagmurlari` | F.8.4.4.7 | ✅ tamamlandı |
 | 14 | Madde ve Endüstri | Maddenin Isı ile Etkileşimi ve Hâl Değişim Grafikleri | `lgs-fen-isi-ve-hal-degisimi` | F.8.4.5.1–F.8.4.5.4 | ✅ tamamlandı |
 | 15 | Madde ve Endüstri | Türkiye'de Kimya Endüstrisi | `lgs-fen-turkiyede-kimya-endustrisi` | F.8.4.6.1, F.8.4.6.2 | ✅ tamamlandı |
-| 16 | Basit Makineler | Basit Makineler: Kazanç Neyin Kazancı? | `lgs-fen-basit-makineler` | F.8.5.1.1, F.8.5.1.2 | planlandı |
+| 16 | Basit Makineler | Basit Makineler: Kazanç Neyin Kazancı? | `lgs-fen-basit-makineler` | F.8.5.1.1, F.8.5.1.2 | ✅ tamamlandı |
 | 17 | Enerji Dönüşümleri ve Çevre Bilimi | Besin Zinciri, Besin Ağı ve Ekoloji Piramidi | `lgs-fen-besin-zinciri-ve-enerji-akisi` | F.8.6.1.1 | planlandı |
 | 18 | Enerji Dönüşümleri ve Çevre Bilimi | Fotosentez ve Solunum | `lgs-fen-fotosentez-ve-solunum` | F.8.6.2.1, F.8.6.2.2, F.8.6.2.3 | planlandı |
 | 19 | Enerji Dönüşümleri ve Çevre Bilimi | Madde Döngüleri ve Küresel İklim Değişikliği | `lgs-fen-madde-donguleri-ve-iklim` | F.8.6.3.1, F.8.6.3.2, F.8.6.3.3 | planlandı |
