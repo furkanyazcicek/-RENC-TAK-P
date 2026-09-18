@@ -297,3 +297,19 @@ Kemal’in Hayatı” (orgm.meb.gov.tr); **MSB** = Millî Savunma Bakanlığı A
 **Kullanılmayan, tek kaynaklı bilgiler:** Harbiye ve Akademi başarı sıraları (yalnız MSB),
 Tevfik Fikret ve Ziya Gökalp’e atfedilen doğrudan sözler (tek kaynak, birebir metne
 ulaşılamadı), mezuniyet sonrası tutuklanma (incelenen kaynaklarda yok).
+
+### Ders 3 — `lgs-tarih-mustafa-kemal-askerlik-hayati` (İTA.8.1.4)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| İlk görev | 1905, Şam, 5. Ordu | MSB Kronoloji ve Askerî Görevleri | MEB-ÖERH | Doğrulandı |
+| 3. Ordu | 1907, Makedonya | MSB (13 Ekim 1907, Manastır) | MEB-ÖERH (1907, Manastır) | Doğrulandı; derste “Makedonya” |
+| Askerî kitap çevirisi | 1908, bir Alman generalin eğitim kitabı | MSB Kronoloji (Litzmann) | MEB-ÖERH (“Takımın Muharebe Talimi” eser listesinde) | Doğrulandı |
+| 31 Mart Olayı | 13 Nisan 1909; talepler; Hareket Ordusu (2. ve 3. Ordu birlikleri), komutan Mahmud Şevket Paşa; II. Abdülhamid 27 Nisan’da meclisçe tahttan indirildi; V. Mehmed Reşad | TDV İA “Otuzbir Mart Vakası” | AA “31 Mart Vakası”; MSB | Doğrulandı |
+| Hareket Ordusu’nda görevi | Kurmay başkanı; ordunun adını koydu | AA “Hareket Ordusu ve Kurmay Yüzbaşı Mustafa Kemal” | MSB Askerî Görevleri; MEB-ÖERH; TTK kütüphane kaydı “Selanik’ten İstanbul’a: Hareket Ordusu Kurmay Başkanı” | Doğrulandı |
+| 1909 kongresi | Selanik; ordunun siyasetten çekilmesi önerisi; önde gelenler benimsemedi | Belleten (TTK), 1974, cilt 38, sayı 150 | AA; MSB Kronoloji | Doğrulandı |
+| Trablusgarp | İtalya saldırısı 1911; gönüllü ve gizli geçiş; Tobruk ve Derne; binbaşılık (27 Kasım 1911) | TDV İA “Trablusgarp Savaşı” | MSB Kronoloji; DergiPark (Trablusgarp’ta Mustafa Kemal makaleleri); MEB-ÖERH | Doğrulandı |
+| Uşi Antlaşması | 18 Ekim 1912; 2. madde (karşılıklı çekilme; adaların boşaltılması Trablusgarp’ın boşaltılmasından sonra) | TTK “Antlaşmalar (Tam Metin)” — Nihat Erim, Düstur’dan | TDV İA “Trablusgarp Savaşı”, “Oniki Ada”; DergiPark | Doğrulandı; madde derste **sadeleştirme** |
+| Selanik’in kaybı | Dönüş yolunda öğrendi (Kasım 1912) | AA “Balkan Savaşı’nda Atatürk” | MSB Kronoloji (Balkan Savaşı Ekim 1912) | Doğrulandı |
+| Balkan Savaşı görevi | Bolayır’da kurmay; Edirne harekâtında görev | AA “Balkan Savaşı’nda Atatürk” | MSB Kronoloji | Doğrulandı; unvan (kurmay başkanı / harekât şube müdürü) farklı verildiği için “kurmay” yazıldı |
+| Sofya | 27 Ekim 1913 ataşemiliter; Sofya’da yarbay (1 Mart 1914) | MSB Askerî Görevleri | MEB-ÖERH | Doğrulandı; Belgrad–Çetine ataşeliği tek kaynaklı olduğu için **yazılmadı** |

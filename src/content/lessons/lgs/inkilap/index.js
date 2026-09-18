@@ -7,5 +7,6 @@
 
 import yirminciYuzyilBasindaOsmanli from './yirminci-yuzyil-basinda-osmanli.js'
 import mustafaKemalinYetismesi from './mustafa-kemalin-yetismesi.js'
+import mustafaKemalAskerlikHayati from './mustafa-kemal-askerlik-hayati.js'
 
-export const LGS_INKILAP_DERSLERI = [yirminciYuzyilBasindaOsmanli, mustafaKemalinYetismesi]
+export const LGS_INKILAP_DERSLERI = [yirminciYuzyilBasindaOsmanli, mustafaKemalinYetismesi, mustafaKemalAskerlikHayati]

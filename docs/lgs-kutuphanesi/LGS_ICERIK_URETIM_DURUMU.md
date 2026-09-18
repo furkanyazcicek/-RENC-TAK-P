@@ -19,13 +19,13 @@
 | Aşama 3 — Türkçe Gold Standard | ✅ Tamamlandı |
 | Aşama 4 — **Türkçe kapsamı** | ✅ **Tamamlandı — 41/41 ölçülebilir kazanım (%100)** |
 | Aşama 5 — **Fen Bilimleri** | ✅ **Tamamlandı — 61/61 ölçülebilir kazanım (%100) · 23 ders** |
-| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 3/39 kazanım · 2/25 ders (Gold Standard ✅) |
+| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 4/39 kazanım · 3/25 ders · 1. ünite tamam (Gold Standard ✅) |
 | Aşama 7 — Son denetim | ⏸ — |
 
 **Aktif ders:** T.C. İnkılap Tarihi ve Atatürkçülük
-**Son tamamlanan ders notu:** İnkılap 2 — Mustafa Kemal’in Yetişmesi (İTA.8.1.2, İTA.8.1.3)
-**Sıradaki kesin kazanım:** İTA.8.1.4
-**Sıradaki ders notu:** İnkılap planının 3. dersi — `lgs-tarih-mustafa-kemal-askerlik-hayati` (İTA.8.1.4)
+**Son tamamlanan ders notu:** İnkılap 3 — Mustafa Kemal’in Askerlik Hayatı (İTA.8.1.4) · 1. ünite tamam
+**Sıradaki kesin kazanım:** İTA.8.2.1
+**Sıradaki ders notu:** İnkılap planının 4. dersi — `lgs-tarih-birinci-dunya-savasi-sebepler` (İTA.8.2.1)
 
 ---
 
@@ -135,12 +135,13 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 
 ## 3b. T.C. İnkılap Tarihi ve Atatürkçülük — sürüyor
 
-**Kapsama: 3/39 kazanım · 2/25 ders**
+**Kapsama: 4/39 kazanım · 3/25 ders · 1. ünite (Bir Kahraman Doğuyor) tamam**
 
 | # | Ders notu | Kazanımlar | Kelime | Puan | Not |
 |---|---|---|---|---|---|
 | 1 | 20. Yüzyıl Başında Osmanlı Devleti ve Fikir Akımları ★ | İTA.8.1.1 | 6.195 | 100/100 | şematik atlas (3 katman, 20 nokta), 3 kaynak okuması |
 | 2 | Mustafa Kemal’in Yetişmesi: Aile, Okul, Şehir ve Fikirler | İTA.8.1.2 · İTA.8.1.3 | 4.933 | 100/100 | kanıt→çıkarım→aşırı çıkarım tablosu; şehirler atlası; 1922 hatırası okuması |
+| 3 | Mustafa Kemal’in Askerlik Hayatı: Şam’dan Sofya’ya | İTA.8.1.4 | 4.503 | 100/100 | görev yerleri atlası (3 katman); Uşi 2. madde okuması; 1909 ordu–siyaset önerisi |
 
 ### İnkılap altyapısı
 - `src/content/lessons/lgs/inkilap/resmiProgram.js` — K3'ten birebir: 7 ünite adı, 39 kazanım
@@ -234,7 +235,7 @@ yazılmıştı; `Prose` bileşeni bilinçli olarak Markdown tablosu desteklemiyo
 
 ## 8. Sonraki oturum buradan devam eder
 
-1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.1.4**).
+1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.2.1**).
 2. İnkılap altyapısı hazır: yeni ders `src/content/lessons/lgs/inkilap/` altına, fabrika
    `createLgsHistoryLesson` ile yazılır ve `inkilap/index.js` listesine eklenir.
 3. **Bağlayıcı kurallar:** tarih, isim ve antlaşma maddeleri en az iki güvenilir kaynakla
