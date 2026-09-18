@@ -1088,6 +1088,13 @@ export const LGS_SCIENCE_FIGURES = {
     // SIRA ÖNEMLİ: disli → vida → kasnak
     regions: ['disli', 'vida', 'kasnak'],
   },
+  'lgs-fen-ekoloji-piramidi': {
+    label: 'Ekoloji piramidi: yukarı çıktıkça ne değişir?',
+    minWidth: 620,
+    markers: 'numbered',
+    // SIRA ÖNEMLİ: uretici → birincil → ikincil → ucuncul
+    regions: ['uretici', 'birincil', 'ikincil', 'ucuncul'],
+  },
 }
 
 Object.assign(FIGURE_META, LGS_SCIENCE_FIGURES)

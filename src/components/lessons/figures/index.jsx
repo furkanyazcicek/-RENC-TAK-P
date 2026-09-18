@@ -55,6 +55,7 @@ import ScienceVariableRelation from './ScienceVariableRelation'
 import ScienceHeatingCurve from './ScienceHeatingCurve'
 import ScienceLeverTypes from './ScienceLeverTypes'
 import ScienceOtherMachines from './ScienceOtherMachines'
+import ScienceEcologyPyramid from './ScienceEcologyPyramid'
 import InheritanceConceptMap from './InheritanceConceptMap'
 import KingdomDecisionTree from './KingdomDecisionTree'
 import MagneticForce from './MagneticForce'
@@ -122,6 +123,7 @@ const COMPONENTS = {
   'lgs-fen-isinma-grafigi': ScienceHeatingCurve,
   'lgs-fen-kaldirac-turleri': ScienceLeverTypes,
   'lgs-fen-disli-vida-kasnak': ScienceOtherMachines,
+  'lgs-fen-ekoloji-piramidi': ScienceEcologyPyramid,
   'su-polarlik': WaterPolarity,
   'ph-skalasi': PhScale,
   'sentez-hidroliz': SynthesisHydrolysis,
