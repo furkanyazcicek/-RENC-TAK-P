@@ -576,3 +576,19 @@ dersin içinde “Mustafa Kemal’in 1927’deki bakış açısını taşır” 
 | Serbest Cumhuriyet Fırkası | 12 Ağustos 1930; Fethi (Okyar); Mustafa Kemal’in isteği; 17 Kasım 1930’da feshedildi | Atatürk Ansiklopedisi “Serbest Cumhuriyet Fırkası” | TDV İA “Okyar, Ali Fethi” | Doğrulandı |
 | Menemen Olayı | 23 Aralık 1930; Kubilay ve iki bekçi | Menemen Belediyesi | ATAM Dergisi (2012); historystudies | Doğrulandı |
 | Olağanüstü tedbirlerin savunusu | “…kanunun fevkine çıkmak için vasıta olarak kullanmadık.” **birebir** | Nutuk 18. bölüm | — | Mustafa Kemal’in savunması olarak etiketlendi |
+
+### Ders 21 — `lgs-tarih-ataturk-donemi-dis-politika` (İTA.8.6.1 · İTA.8.6.2)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| “Yurtta sulh, cihanda sulh” | İlk kez 20 Nisan 1931 seçim beyannamesinde | Cumhuriyet (M. Balbay) | AYK yayını (H. Eroğlu); Milliyet | Doğrulandı |
+| Tam bağımsızlık tanımı | “İstiklâli tâm denildiği zaman … harsî … her hususta” **birebir** | Nutuk 12. bölüm (Franklin-Bouillon görüşmesi) | — | Birebir (Nutuk) |
+| Yabancı okullar | Tevhid-i Tedrisat (1924) ile denetim; 1926 Maarif Teşkilatı Kanunu: Türkçe, tarih, coğrafya Türk öğretmenlerce; 1925–1926 genelgeleriyle dinî simgeler; iç mesele | Türk Maarif Ansiklopedisi “Yabancı Okullar” | Atatürk Ansiklopedisi “Atatürk Döneminde Yabancı Okullar” | Doğrulandı |
+| Musul | Haliç Konferansı 19 Mayıs–5 Haziran 1924; MC kararı 16 Aralık 1925; Ankara Antlaşması 5 Haziran 1926 (Türkiye–İngiltere–Irak; Tevfik Rüştü); m. 14 petrol %10, 25 yıl **birebir** | Vikikaynak antlaşma metni (Osmanlıca) | ATAM Dergisi “Musul Sorunu ve Lozan”; Hacettepe ÇTAD (N. Yazıcı) | Doğrulandı; TTK nüshası taranmış görüntü olduğu için Vikikaynak metni kullanıldı |
+| Dış borçlar | Lozan paylaşımı; 13 Haziran 1928 Paris; 1930’larda yeniden düzenleme; son taksit 25 Mayıs 1954 | Vikipedi “Türkiye’de dış borç tarihi” (kaynakçalı) | DergiPark (N. Dikmen); historystudies (1930–1933 yapılandırma) | Doğrulandı |
+| Mübadele ve Türk–Yunan dostluğu | 30 Ocak 1923; 10 Haziran 1930 Ankara Sözleşmesi; Venizelos ziyareti 27–31 Ekim 1930; dostluk antlaşması | TTK (İ. Soysal) “1930 Türk-Yunan Dostluk … Andlaşması” tarihçesi | TDV İA “Lozan Antlaşması” (mübadele) | Doğrulandı; antlaşmanın günü yerine “Ekim 1930” |
+| Milletler Cemiyeti | 18 Temmuz 1932, davet üzerine | MEB EBA ders materyali | DergiPark / tarih portalları | Doğrulandı |
+| Balkan Antantı | 9 Şubat 1934, Atina; Türkiye, Yunanistan, Yugoslavya, Romanya | MEB EBA ders materyali | UPA; DergiPark | Doğrulandı |
+| Montrö | 20 Temmuz 1936; m. 24 ve Protokol m. 1 **birebir**; Türk heyeti başkanı Tevfik Rüştü Aras; 15 Ağustos 1936’dan geçici uygulama | Vikikaynak sözleşme metni | Genel kronolojiler | Doğrulandı |
+| Sadabat Paktı | 8 Temmuz 1937, Tahran; Türkiye, İran, Irak, Afganistan | DergiPark (Sadabat makalesi) | MEB EBA | Doğrulandı |
+| Harita | Başkentlerin yaklaşık yerleri; Musul, Boğazlar | Yukarıdaki kaynaklar | — | Şematik; sınır çizilmedi |
