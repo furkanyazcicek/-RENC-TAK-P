@@ -19,13 +19,13 @@
 | Aşama 3 — Türkçe Gold Standard | ✅ Tamamlandı |
 | Aşama 4 — **Türkçe kapsamı** | ✅ **Tamamlandı — 41/41 ölçülebilir kazanım (%100)** |
 | Aşama 5 — **Fen Bilimleri** | ✅ **Tamamlandı — 61/61 ölçülebilir kazanım (%100) · 23 ders** |
-| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 17/39 kazanım · 13/25 ders · 1. ve 2. ünite tamam, 3. ünite sürüyor (Gold Standard ✅) |
+| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 19/39 kazanım · 14/25 ders · 1., 2. ve 3. üniteler tamam (Gold Standard ✅) |
 | Aşama 7 — Son denetim | ⏸ — |
 
 **Aktif ders:** T.C. İnkılap Tarihi ve Atatürkçülük
-**Son tamamlanan ders notu:** İnkılap 13 — Tekâlif-i Millîye, Sakarya ve Büyük Taarruz (İTA.8.3.4 · İTA.8.3.5)
-**Sıradaki kesin kazanım:** İTA.8.3.6
-**Sıradaki ders notu:** İnkılap planının 14. dersi — `lgs-tarih-lozan-antlasmasi` (İTA.8.3.6 · İTA.8.3.7)
+**Son tamamlanan ders notu:** İnkılap 14 — Lozan Antlaşması ve Millî Mücadele’nin Sanata Yansıması (İTA.8.3.6 · İTA.8.3.7) · 3. ünite tamam
+**Sıradaki kesin kazanım:** İTA.8.4.1
+**Sıradaki ders notu:** İnkılap planının 15. dersi — `lgs-tarih-ataturk-ilkeleri` (İTA.8.4.1 · İTA.8.4.9)
 
 ---
 
@@ -135,7 +135,7 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 
 ## 3b. T.C. İnkılap Tarihi ve Atatürkçülük — sürüyor
 
-**Kapsama: 17/39 kazanım · 13/25 ders · 1. ve 2. üniteler tamam, 3. ünite sürüyor**
+**Kapsama: 19/39 kazanım · 14/25 ders · 1., 2. ve 3. üniteler tamam**
 
 | # | Ders notu | Kazanımlar | Kelime | Puan | Not |
 |---|---|---|---|---|---|
@@ -152,6 +152,7 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 | 11 | Doğu ve Güney Cepheleri: İlk Zafer ve Şehirlerin Direnişi | İTA.8.3.1 | 4.189 | 100/100 | iki katmanlı cephe atlası (harekât çizgisi / şehir savunmaları); Gümrü 10. madde ve Nutuk’taki Gümrü değerlendirmesi birebir; şehir–kahraman–unvan tablosu |
 | 12 | Batı Cephesi: Düzenli Ordu, İnönü Zaferleri ve Maarif Kongresi | İTA.8.3.2 · İTA.8.3.3 | 5.507 | 100/100 | üç katmanlı Batı Cephesi atlası; Teşkilât-ı Esasiye 1–3 (TBMM 1921 metni), Moskova 1. madde, “makûs talih” telgrafı ve Maarif Kongresi konuşması birebir; iki İnönü arası siyasi adımlar tablosu |
 | 13 | Tekâlif-i Millîye, Sakarya ve Büyük Taarruz: Bütün Bir Milletin Savaşı | İTA.8.3.4 · İTA.8.3.5 | 5.430 | 100/100 | Sakarya–Büyük Taarruz–Mudanya atlası; on emirlik Tekâlif-i Millîye tablosu (Nutuk); Başkumandanlık Kanunu (TBMM), “Hatt-ı müdafaa” emri ve Mudanya maddeleri birebir; Kars–Ankara–Mudanya tablosu |
+| 14 | Lozan Antlaşması ve Millî Mücadele’nin Sanata Yansıması | İTA.8.3.6 · İTA.8.3.7 | 4.807 | 100/100 | sınırlar–adalar–Boğazlar atlası; Misakımillî ile konu konu analiz tablosu; Nutuk’un Sevr–Lozan karşılaştırması; Lozan 3. ve 28. maddeler (Düstur) ve İstiklal Marşı 3–4. kıtalar birebir; olaydan esere kanıt tablosu |
 
 ### İnkılap altyapısı
 - `src/content/lessons/lgs/inkilap/resmiProgram.js` — K3'ten birebir: 7 ünite adı, 39 kazanım
@@ -245,7 +246,7 @@ yazılmıştı; `Prose` bileşeni bilinçli olarak Markdown tablosu desteklemiyo
 
 ## 8. Sonraki oturum buradan devam eder
 
-1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.3.6**).
+1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.4.1**).
 2. İnkılap altyapısı hazır: yeni ders `src/content/lessons/lgs/inkilap/` altına, fabrika
    `createLgsHistoryLesson` ile yazılır ve `inkilap/index.js` listesine eklenir.
 3. **Bağlayıcı kurallar:** tarih, isim ve antlaşma maddeleri en az iki güvenilir kaynakla

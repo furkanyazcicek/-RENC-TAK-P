@@ -466,3 +466,26 @@ dersin içinde “Mustafa Kemal’in 1927’deki bakış açısını taşır” 
 | Büyük Taarruz | 26 Ağustos 1922, 5.30, Kocatepe; 30 Ağustos Başkomutan Meydan Muharebesi, Trikopis esir; 9 Eylül İzmir | Nutuk 13. bölüm | TTK Mudanya tarihçesi (İ. Soysal) | Doğrulandı |
 | “İlk hedefiniz Akdeniz’dir” | 1 Eylül 1922 | Harita Genel Müdürlüğü yayını | Nutuk 13. bölüm (“ilk verdiğim hedefe, Akdeniz’e”) | Doğrulandı; birincil kaynak bloğu olarak kullanılmadı |
 | Mudanya | 3 Ekim’de başladı; 11 Ekim 1922 imza; 14/15 Ekim yürürlük; Doğu Trakya Edirne ile Meriç’e kadar; m. 5 ve m. 7 **birebir**; İstanbul ve Boğazlar barışa kadar İtilaf’ta; Edirne’de Türk yönetimi 25 Kasım 1922 | TTK “1922 Mudanya Silah Bırakışımı Sözleşmesi” (İ. Soysal, 1983) | Nutuk 13. bölüm “Mudanya Konferansı” | Doğrulandı |
+
+### Ders 14 — `lgs-tarih-lozan-antlasmasi` (İTA.8.3.6 · İTA.8.3.7)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Konferans tarihleri | 20 Kasım 1922 açılış; 4 Şubat 1923 kesinti; 23 Nisan 1923 ikinci dönem; 24 Temmuz 1923 imza | TDV İA “Lozan Antlaşması” | Nutuk 14. bölüm (“21 Teşrinisani” genel ictima; “iki devir, sekiz ay”) ve Düstur (24 Temmuz 1923) | Doğrulandı. Nutuk’taki 21 Kasım, görüşmelerin başladığı gün (TDV: tören 20, görüşmeler 21 Kasım) |
+| Türk heyeti | İsmet Paşa (Hariciye Vekili, başkan), Rıza Nur, Hasan Bey | Nutuk 14. bölüm | TDV İA | Doğrulandı |
+| Meclis onayı | 23 Ağustos 1923, Kanun no 340 | Düstur III. Tertip C. 5 (kanun metni ve müzakere tarihleri 22–23 Ağustos) | — | **Çelişki:** TDV “2 Ağustos 1923” yazıyor; II. Meclis 11 Ağustos’ta toplandığı ve resmî kanun tarihi 23 Ağustos olduğu için Düstur esas alındı |
+| 28. madde (kapitülasyonlar) | **Birebir** (Düstur, Osmanlıca resmî metin) | Düstur | TDV İA (günümüz Türkçesiyle aynı madde) | Doğrulandı |
+| 3. madde (Suriye ve Irak) | Suriye: 1921 Ankara İtilafnamesi m. 8 sınırı; Irak: 9 ay, olmazsa Cemiyet-i Akvam — **birebir** | Düstur | Nutuk 15. bölüm (“Lozan’da: Halli tehir edilmiştir”) | Doğrulandı |
+| Adalar | m. 6 (kıyıdan 3 milden yakın adalar), m. 12 (İmroz, Bozcaada Türkiye’de; Limni, Semadirek, Midilli, Sakız, Sisam, Nikarya Yunanistan’a), m. 15 (Onikiadalar ve Meis İtalya’ya) | Düstur | TDV İA | Doğrulandı |
+| Borçlar | Osmanlı’dan ayrılan devletler arasında paylaştırma; yıllık taksitler | Düstur (Düyun-u Umumiye faslı) | TDV İA | Doğrulandı |
+| Tazminat | m. 59: Yunanistan tamir yükümlülüğünü tanıdı, Türkiye tazminattan vazgeçti; Karaağaç ayrı protokol | Düstur (m. 59 ve kanunda sayılan protokol) | Nutuk 15. bölüm (“Karaağaç da bizde olmak üzere Meriç hattı”) | Doğrulandı; “Karaağaç tazminata karşılık” bağlantısı iki kaynakla doğrulanamadığı için kurulmadı |
+| Azınlıklar, Patrikhane | Yalnız gayrimüslimler (m. 37–44); Patrikhane için hüküm yok | Nutuk 15. bölüm | TDV İA | Doğrulandı; Patrikhane derste anılmadı |
+| Boğazlar | Gayri askerî bölge; İstanbul’da 12.000’i geçmeyen kuvvet; Boğazlar Komisyonu, başkanı Türk | Düstur (Boğazlar Mukavelenamesi m. 10, 12) | Nutuk 15. bölüm; TDV İA | Doğrulandı |
+| Sevr–Lozan karşılaştırması | Trakya, İzmir, Doğu Anadolu, kapitülasyonlar, ordu (Sevr 50.700 + yabancı subay), maliye, Boğazlar; ordu bölümü **birebir** | Nutuk 15. bölüm “…dört sulh teklifi arasında bir mukayese” | Sevr metni (TTK, Ders 10) | Doğrulandı |
+| Mübadele | 30 Ocak 1923 sözleşmesi | Düstur (kanunda sayılan ekler) | TDV İA | Doğrulandı |
+| İstanbul’un boşaltılması | Ekim 1923 | TTK Mudanya tarihçesi (İ. Soysal) | TDV İA | Doğrulandı |
+| İstiklal Marşı | 3. ve 4. kıta **birebir** (Cerîde-i Resmiye, 21 Mart 1921); “Kahraman Ordumuza” ithafı, Sebîlürreşâd 17 Şubat 1921; savaşta farklı besteler, 1930’da Osman Zeki Üngör bestesi resmî | Vikikaynak (kaynak: TBMM 2021 belgeler kitabı) | TDV İA “İstiklâl Marşı” | Doğrulandı; kamu malı metin |
+| Ateşten Gömlek | Halide Edib; İkdam’da Haziran–Ağustos 1922 tefrika; Millî Mücadele’yi anlatan ilk roman; yaralı askerin hastane hatıraları | DergiPark (“Halide Edib’in Ateşten Gömlek Romanında Epik Kahraman”) | Vikipedi (kaynakçalı) | Doğrulandı; telifli metinden alıntı yapılmadı |
+| Yakup Kadri | Sodom ve Gomore (1928, Mütareke İstanbul’u), Yaban (1932, köy, aydın–halk); 1921’de Anadolu’ya geçti | TDV İA “Karaosmanoğlu, Yakup Kadri” | turkedebiyati.org (roman listesi) | Doğrulandı |
+| Nâzım Hikmet | Kurtuluş Savaşı Destanı (yayımı 1965) | TDV İA “Nâzım Hikmet” (eserler listesi) | Milliyet “Milli Mücadele’nin edebiyata yansıması” | Yalnız eser adı ve yayım yılı yazıldı; alıntı yok |
+| Zafer Anıtı | Heinrich Krippel; 24 Kasım 1927, Ulus; at üstünde Mustafa Kemal, iki asker, top mermisi taşıyan kadın | Goethe-Institut “Bir Başkentin Oluşumu” | Koç Üniversitesi dijital koleksiyonu (anıt fotoğrafları) | Doğrulandı |
