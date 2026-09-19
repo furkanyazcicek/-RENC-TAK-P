@@ -377,3 +377,17 @@ dersin içinde “Mustafa Kemal’in 1927’deki bakış açısını taşır” 
 | Ayvalık | 29 Mayıs 1919; Yarbay Ali Bey (Çetinkaya) | AA “Kuvâ-yı Millîye” | DergiPark (Batı Anadolu’da Kuvâ-yı Millîye) | Doğrulandı |
 | Batı Anadolu kongreleri | Balıkesir (1919 yazı), Alaşehir (16–25 Ağustos 1919) | TDV İA “Balıkesir Kongreleri” | TTK kütüphane kaydı “Alaşehir Kongresi (16–25 Ağustos 1919)”; AA “Millî Mücadele Döneminde Kongreler” | Doğrulandı; Balıkesir’in tarihleri (birden çok kongre) nedeniyle “yaz 1919” |
 | Düzenli orduya geçiş | 1920’den itibaren; Kuvâ-yı Millîye 1921 başında kaldırıldı (2 Ocak 1921) | AA “Düzenli Ordunun Kurulması” | DergiPark (Anadolu Üniv. SBD, Kuvâ-yı Millîye’den düzenli orduya geçiş) | Doğrulandı |
+
+### Ders 8 — `lgs-tarih-hazirlik-donemi-genelgeler-kongreler` (İTA.8.2.5)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Samsun, Havza | 19 Mayıs 1919; Havza’da 25 Mayıs–12 Haziran; Havza Genelgesi 28 Mayıs 1919 (metin) | Nutuk, 2. bölüm (“Millî teşkilât vücuda getirilmesi…”) — birebir | MSB “Millî Mücadele Dönemi”; MEB 12. sınıf ders kitabı (EBA) | Doğrulandı; genelge **birebir alıntı** |
+| Amasya Genelgesi | 21/22 Haziran 1919; 8 madde; Sivas’ta kongre; gizlilik | Nutuk, 2. bölüm (“Sivas’ta umumi bir millî heyet toplama kararı”) — birebir | MEB 12. sınıf ders kitabı (EBA, 22 Haziran 1919) | Doğrulandı; maddeler **birebir alıntı** |
+| Askerlikten istifa | 8/9 Temmuz 1919 | Nutuk, 2. bölüm başlığı (“Resmî sıfat ve salâhiyetleri bırakarak…”) | MSB Kronoloji | Doğrulandı |
+| Erzurum Kongresi | 23 Temmuz–7 Ağustos 1919 (14 gün); ilkeler (vatan bir bütündür, manda ve himaye kabul olunamaz…); Heyet-i Temsiliye üyeleri | Nutuk, 2. bölüm (“Erzurum Kongresi beyannamesi ve kararları”) — birebir | TDV İA “Anadolu ve Rumeli Müdâfaa-i Hukuk Cemiyeti” | Doğrulandı |
+| Sivas Kongresi | 4–11 Eylül 1919; cemiyetin adı ve Heyet-i Temsiliye’nin temsil alanındaki değişiklik; İttihatçılık yemini; manda tartışması (İsmail Fazıl Paşa) | Nutuk, 2. bölüm (“Sivas Kongresi’nin meşgul olduğu işler”, “Manda meselesinin kongrede müzakeresi”) — birebir | TDV İA “Anadolu ve Rumeli Müdâfaa-i Hukuk Cemiyeti” (4–11 Eylül 1919) | Doğrulandı |
+| Ali Galip olayı; Damat Ferit’in istifası | Eylül 1919; 1 Ekim 1919 | Nutuk, 2. bölüm başlıkları (“Ali Galip Bey Sivas’ta”, “Ferit Paşa’nın istifası”) | MEB/MSB kronolojileri | Doğrulandı; istifa günü genel kaynaklarla uyumlu |
+| Amasya Görüşmeleri | 20–22 Ekim 1919; Salih Paşa; protokoller; Heyet-i Temsiliye’nin resmen muhatap alınması | Nutuk, 3. bölüm (“Amasya mülakatı”) — birebir | MSB “Millî Mücadele Dönemi” | Doğrulandı |
+| Ankara | Heyet-i Temsiliye 27 Aralık 1919’da Ankara’da | Nutuk, 3. bölüm başlığı (“Ankara’ya geliş”) | MSB Kronoloji | Doğrulandı |
+| Basın | İrade-i Milliye 14 Eylül 1919 (Sivas); Hâkimiyet-i Milliye 10 Ocak 1920 (Ankara); Anadolu Ajansı 6 Nisan 1920 | AA “İrade-i Milliye Gazetesi”; TDV İA “Hâkimiyet-i Milliye” | Anadolu Ajansı “Tarihçe”; ATAM Dergisi | Doğrulandı |
