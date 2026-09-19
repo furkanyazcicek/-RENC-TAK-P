@@ -518,3 +518,22 @@ dersin içinde “Mustafa Kemal’in 1927’deki bakış açısını taşır” 
 | 1 Mart 1924 konuşması | Cumhuriyet’in korunması; tedrisatın tevhidi | Nutuk 17. bölüm | — | Nutuk’tan birebir alındı |
 | 1924 Anayasası | No 491, 20 Nisan 1924; m. 3, 4–8, 31, 68–69 (**3, 68, 69 birebir**), 88; 1928, 1934, 1937 değişiklikleri | Anayasa Mahkemesi “1924 Anayasası” | TBMM “1924 Teşkilat-ı Esasiye Kanunu İlk Metin ve Değişiklikler” | Doğrulandı |
 | Harita | Bu derste harita yok | — | — | Konu coğrafi değil; görsel omurga kronoloji |
+
+### Ders 17 — `lgs-tarih-hukuk-egitim-kultur-inkilaplari` (İTA.8.4.3 · İTA.8.4.4)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Tevhid-i Tedrisat | 3 Mart 1924, Kanun no 430; m. 1, 2, 4 **birebir** | TBMM kanun arşivi | Nutuk 17. bölüm | Doğrulandı |
+| Şer’iye mahkemeleri | Kanun no 469, 8 Nisan 1924; yürürlük 1 Mayıs 1924 | TBMM kanun arşivi | — (kanun metninin kendisi) | Resmî metinden doğrulandı |
+| 1926 kanunları | Medeni no 743 (17 Şubat; RG 4 Nisan; yürürlük 4 Ekim), Ceza no 765 (1 Mart), Borçlar no 818 (22 Nisan), Ticaret no 865 (29 Mayıs) | TBMM kanun arşivi (kanuntbmmc004) | DergiPark (hukuk inkılabı makaleleri), Vikikaynak 743 künyesi | Doğrulandı |
+| Kaynak ülkeler | Medeni ve Borçlar İsviçre; Ceza İtalya (1889); Ticaret Alman ve İtalyan kanunlarından yararlanılarak | DergiPark (hukuk inkılabı) | Vikipedi “Türk Ceza Kanunu (1926)” | Doğrulandı; derste yalnız Medeni için İsviçre açıkça yazıldı |
+| Medeni Kanun maddeleri | m. 93 (tek eşlilik), 108 (resmî nikâh, iki şahit), 110 (evlenme kâğıdı, dinî tören sonra), 129 (iki eşe dava hakkı), 439 (çocuklar eşit mirasçı) — 93, 110, 439 **birebir** | TBMM arşivindeki 1926 ilk metin | Vikikaynak (birleştirilmiş sonraki metin; yalnız varlık kontrolü) | Doğrulandı; 1926 ilk metni esas alındı |
+| Medeni Kanun gerekçesi | Mahmut Esat Bozkurt; dinî kuralların değişmezliği–hayatın değişmesi fikri | Hukuk Sokağı (gerekçenin günümüz Türkçesi) | Aydınlık (köşe yazısı) | Yalnız **özetlendi**; birebir alıntı yapılmadı (özgün metne ulaşılamadı) |
+| Harf İnkılabı | 9 Ağustos 1928 Sarayburnu; Kanun no 1353, 1 Kasım 1928 (RG 3 Kasım 1928); m. 1, 9 **birebir**; süreler (1 Ocak 1929, Aralık 1928, 1929 başı) | TBMM kanun arşivi | Ç.Ü. Türkoloji “Yazı Devriminin Öyküsü”; A. Saltık | Doğrulandı |
+| Millet Mektepleri | 1 Ocak 1929; yetişkinler; Atatürk başöğretmen; Mustafa Necati’nin ölümü; 24 Kasım talimatnamesi | Türk Maarif Ansiklopedisi “Millet Mektepleri” | Genel kronolojiler | Doğrulandı |
+| Türk Tarih Kurumu | 15 Nisan 1931 Türk Tarihi Tetkik Cemiyeti; 1935’te Türk Tarih Kurumu | TTK “Brief History” | TDV İA “Türk Tarih Kurumu” | Doğrulandı |
+| Türk Dil Kurumu | 12 Temmuz 1932; kurucular Sâmih Rif’at, Ruşen Eşref, Celâl Sâhir, Yakup Kadri; ilk başkan Sâmih Rif’at | TDK “Tarihçe” | TDV İA / genel | Doğrulandı |
+| Halkevleri | 19 Şubat 1932 | Türk Maarif Ansiklopedisi “Halkevleri” | Genel | Doğrulandı |
+| 1933 Üniversite Reformu | Kanun no 2252, kabul 31 Mayıs 1933; Darülfünun 31 Temmuz’da kaldırıldı; İstanbul Üniversitesi 1 Ağustos 1933; yabancı uzman kadrosu; Malche raporu; Almanya’dan gelen bilim insanları | TBMM kanun arşivi | TTK yayını (Alman iktisatçılar), Tarih Tetkikleri Dergisi (Malche Raporu) | Doğrulandı |
+| Sanat ve spor | Musiki Muallim Mektebi 1924 → Ankara Devlet Konservatuvarı 1936; Beden Terbiyesi Kanunu no 3530, 29 Haziran 1938 | Hacettepe ADK tarihçesi; MEB sayfası | GSB tarihçesi; MEB EBA ders kitabı | Doğrulandı |
+| Atatürk’ün sanat ve spor sözleri | “Sanatsız kalan bir milletin…”, “Ben sporcunun zeki, çevik…” | Yalnız alıntı siteleri ve okul sayfaları | — | **Kullanılmadı**: güvenilir iki kaynakta birebir biçimi ve tarihi doğrulanamadı |
