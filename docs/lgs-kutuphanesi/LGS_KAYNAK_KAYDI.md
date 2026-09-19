@@ -629,3 +629,26 @@ dersin içinde “Mustafa Kemal’in 1927’deki bakış açısını taşır” 
 | Yazılı eserler | Takımın Muharebe Talimi (1908, çeviri), Cumalı Ordugâhı (1909), Tâbiye Tatbikat ve Seyahati (1911), Zabit ve Kumandan ile Hasbihal (1914 yazım, 1918 yayım), Nutuk (1927), Medeni Bilgiler (1930, Afet adıyla), Geometri (1937, adsız) | MEB “Atatürk: Yazılı Eserleri” | Vikipedi (Zabit ve Kumandan, Medeni Bilgiler, Geometri maddeleri); MSB ATA sitesi | Doğrulandı |
 | “En büyük eserim Türkiye Cumhuriyeti’dir.” | Atatürk’e atfedilen söz; kesin tarih ve yer belgelenmedi | MEB öğretim programı (açıklamada geçer) | Resmî Gazete 4059 (aynı düşünce hükûmet tebliğinde) | Atfedilen söz olarak sunuldu |
 | UNESCO | 1978 Genel Konferans kararı; 1981 Atatürk Yılı; gerekçe özeti | UNESCO Türkiye Millî Komisyonu | Vikipedi “Atatürk Yılı”; ATAM (A. Canlı) | Doğrulandı; gerekçe özetlendi |
+
+### Ders 24 — `lgs-tarih-ikinci-dunya-savasi-ve-turkiye` (İTA.8.7.3 · İTA.8.7.4)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Atatürk’ün 1936 tespiti | “görüşmeler ve silahlanma yarışları için, büyük bir hazırlık yılı” **birebir**; Montrö: savaşan gemilerin geçişi yasak | Vikikaynak (TBMM günümüz Türkçesi, 1 Kasım 1936) | Montrö m. 19/2 (Vikikaynak) | Doğrulandı |
+| Atatürk’ün 1938 tespiti | “Son aylar içinde barış, çetin bir sınav geçirdi…” **birebir** (sadeleştirilmiş) | Vikikaynak (TBMM günümüz Türkçesi) | TBMM Zabıt Ceridesi D. V, C. 27, 1. inikad, s. 6 (aslı: “Son aylar zarfında sulh, çetin bir imtihan geçirdi…”) | İki metin karşılaştırıldı; anlam aynı |
+| MacArthur metni | Kullanılmadı; kaynak eleştirisi örneği olarak “1951’de yayımlandı, güvenilirliği sorgulandı” | C. Akalın, *Atatürk–Mac Arthur Görüşmesinin İçyüzü* (Kaynak Yay.) | U. Er, “Bir Soğuk Savaş Propagandası Olarak Atatürk–MacArthur Görüşmesi” (Akademik Tarih; BirGün); karşı görüşte M. S. Dilek ve F. Ezer makaleleri metni kabul eder | Tartışmalı olduğu için belge olarak kullanılmadı |
+| 12 Mayıs / 23 Haziran 1939 bildirileri | İngiltere ve Fransa ile ortak bildiriler | İnönü, 1 Kasım 1939 nutku (TBMM ZC D. VI, C. 6) | ATAM Dergisi 2025, sayı 111 | Doğrulandı |
+| Üçlü İttifak | 19 Ekim 1939, Ankara; 2 numaralı protokol (Sovyet çekincesi); Refik Saydam imzaladı | ATAM Dergisi 2025, sayı 111 | G. Sarıçoban, ATASOBED 24/4 (2020); M. Özçelik (Gazi Ü.) | Doğrulandı |
+| İnönü’nün 1939 nutku | “…memleketimizi harb mıntakası haricinde bırakmayı…” **birebir** | TBMM Zabıt Ceridesi D. VI, C. 6, 1. inikad, s. 3 | — | Birebir; PDF tarama hataları (mmtakası, ıstrrab vb.) düzeltildi |
+| 1940 savaş dışı kalma | İtalya savaşa girince 2 numaralı protokole dayanıldı | M. Özçelik | Sarıçoban 2020 | Doğrulandı |
+| Türk–Alman Antlaşması | 18 Haziran 1941 | M. Özçelik | Sarıçoban 2020 | Doğrulandı |
+| Adana ve Kahire | 30–31 Ocak 1943 Adana (Churchill); Aralık 1943 Kahire (Roosevelt, Churchill) | M. Özçelik | Sarıçoban 2020 | Doğrulandı; Kahire günü yazılmadı |
+| 1944 adımları | Nisan: krom satışı durdu; 2 Ağustos: ilişkiler kesildi | ATAM Dergisi 2025 | Sarıçoban 2020; Özçelik | Doğrulandı |
+| Savaş ilanı ve BM | 23 Şubat 1945; BM kuruluş konferansına katılım koşulu | Sarıçoban 2020 | Özçelik | Doğrulandı |
+| Sovyet notası ve istekleri | 19 Mart 1945; 1925 antlaşmasının feshi; Boğazlarda üs, sınır değişikliği | Özçelik | Sarıçoban 2020 | Doğrulandı |
+| Millî Korunma Kanunu | No 3780, 18 Ocak 1940, RG 26 Ocak 1940/4417; m. 1 **birebir** | TBMM kanun arşivi (Düstur c021) | S. Dokuyan–F. Özçelik, Türk Kültürü İncelemeleri Dergisi 31 (2014) | Birebir; tarama hataları düzeltildi |
+| Ekmek karnesi | Ocak 1942, önce İstanbul ve Ankara | Dokuyan–Özçelik 2014 (İstanbul 11 Ocak dağıtım, 14 Ocak ilk alım; Ankara 17 Ocak) | İÜ Yakın Dönem Türkiye Araştırmaları makalesi; arama özetinde 13 Ocak | Gün farkı nedeniyle “Ocak 1942” |
+| Varlık Vergisi | 11 Kasım 1942, No 4305; komisyonların keyfî ve eşitsiz uygulaması; gayrimüslimlere ağır yük; Aşkale; 15 Mart 1944 No 4530 ile kalan borçlar silindi | TBMM kanun arşivi (4305, 4530) | Dokuyan–Özçelik 2014; Vikipedi “Varlık Vergisi” | Doğrulandı; dengeli ve eleştirel biçimde sunuldu |
+| Toprak Mahsulleri Vergisi | 1943 | Dokuyan–Özçelik 2014 (4 Haziran 1943) | — | Yıl düzeyinde yazıldı |
+| Savaş sonrası | Truman Doktrini 12 Mart 1947; Marshall Planı 1948; NATO 18 Şubat 1952 | DergiPark (Truman Doktrini makaleleri) | AA; Cumhurbaşkanlığı (NATO); TTK Marshall makalesi | Doğrulandı; Marshall günü kaynaklarda farklı → yıl |
+| Harita | Sofya, Atina, Boğazlar, Ankara, Adana, Kahire; yaklaşık yerleşim | Yukarıdaki kaynaklar | — | Şematik; sınır ve cephe çizilmedi |
