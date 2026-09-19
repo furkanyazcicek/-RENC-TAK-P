@@ -341,7 +341,7 @@ Konu adını düzeltmek canlı kütüphanede bağlantı kırar; kazanç risk etm
 | 12 | İTA.8.3 | Batı Cephesi: Düzenli Ordu ve İnönü Muharebeleri | `lgs-tarih-bati-cephesi` | İTA.8.3.2, İTA.8.3.3 | ✅ tamamlandı |
 | 13 | İTA.8.3 | Tekalif-i Millîye, Sakarya ve Büyük Taarruz | `lgs-tarih-sakarya-ve-buyuk-taarruz` | İTA.8.3.4, İTA.8.3.5 | ✅ tamamlandı |
 | 14 | İTA.8.3 | Lozan Antlaşması | `lgs-tarih-lozan-antlasmasi` | İTA.8.3.6, İTA.8.3.7 | ✅ tamamlandı |
-| 15 | İTA.8.4 | Atatürk İlkeleri ve Temel Esaslar | `lgs-tarih-ataturk-ilkeleri` | İTA.8.4.1, İTA.8.4.9 | planlandı |
+| 15 | İTA.8.4 | Atatürk İlkeleri ve Temel Esaslar | `lgs-tarih-ataturk-ilkeleri` | İTA.8.4.1, İTA.8.4.9 | ✅ tamamlandı |
 | 16 | İTA.8.4 | Siyasi Alanda İnkılaplar | `lgs-tarih-siyasi-inkilaplar` | İTA.8.4.2 | planlandı |
 | 17 | İTA.8.4 | Hukuk, Eğitim ve Kültür Alanında İnkılaplar | `lgs-tarih-hukuk-egitim-kultur-inkilaplari` | İTA.8.4.3, İTA.8.4.4 | planlandı |
 | 18 | İTA.8.4 | Toplumsal ve Ekonomik Alanda İnkılaplar | `lgs-tarih-toplumsal-ve-ekonomik-inkilaplar` | İTA.8.4.5, İTA.8.4.6, İTA.8.4.7 | planlandı |
@@ -429,8 +429,8 @@ Konu adını düzeltmek canlı kütüphanede bağlantı kırar; kazanç risk etm
 |---|---|---|---|---|---|
 | Türkçe | 76 | 41 | 35 | 20 | **20 (tamamlandı · 41/41)** |
 | Fen Bilimleri | 61 | 61 | 0 | 23 | **23 (tamamlandı · 61/61)** |
-| T.C. İnkılap Tarihi ve Atatürkçülük | 39 | 39 | 0 | 25 | 14 (sürüyor · 19/39) |
-| **Toplam** | **176** | **141** | **35** | **68** | **57** |
+| T.C. İnkılap Tarihi ve Atatürkçülük | 39 | 39 | 0 | 25 | 15 (sürüyor · 21/39) |
+| **Toplam** | **176** | **141** | **35** | **68** | **58** |
 
 *Sayılar `npm run test:lgs` çıktısından alınır (mufredat.js: Türkçe 41 ölçülür + 35 gerekçeli
 kapsam dışı).*

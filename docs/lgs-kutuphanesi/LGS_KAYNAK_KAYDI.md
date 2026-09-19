@@ -489,3 +489,17 @@ dersin içinde “Mustafa Kemal’in 1927’deki bakış açısını taşır” 
 | Yakup Kadri | Sodom ve Gomore (1928, Mütareke İstanbul’u), Yaban (1932, köy, aydın–halk); 1921’de Anadolu’ya geçti | TDV İA “Karaosmanoğlu, Yakup Kadri” | turkedebiyati.org (roman listesi) | Doğrulandı |
 | Nâzım Hikmet | Kurtuluş Savaşı Destanı (yayımı 1965) | TDV İA “Nâzım Hikmet” (eserler listesi) | Milliyet “Milli Mücadele’nin edebiyata yansıması” | Yalnız eser adı ve yayım yılı yazıldı; alıntı yok |
 | Zafer Anıtı | Heinrich Krippel; 24 Kasım 1927, Ulus; at üstünde Mustafa Kemal, iki asker, top mermisi taşıyan kadın | Goethe-Institut “Bir Başkentin Oluşumu” | Koç Üniversitesi dijital koleksiyonu (anıt fotoğrafları) | Doğrulandı |
+
+### Ders 15 — `lgs-tarih-ataturk-ilkeleri` (İTA.8.4.1 · İTA.8.4.9)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| 1924 Anayasası | Kanun no 491, kabul 20 Nisan 1924; m. 1 “Türkiye Devleti bir Cumhuriyettir”; m. 2 özgün hâli (devlet dini) | Anayasa Mahkemesi “1924 Anayasası” (maddelerin özgün ve değişik hâlleri) | TBMM “1924 Teşkilat-ı Esasiye Kanunu İlk Metin ve Değişiklikler” | Doğrulandı |
+| 1928 değişikliği | 10 Nisan 1928, Kanun no 1222; devlet dini hükmü kaldırıldı | TBMM değişiklik listesi | Anayasa Mahkemesi (m. 2 ilk değişiklik); Ş. S. Kişi (Ege Üniv.) | Doğrulandı |
+| 1937 değişikliği | 5 Şubat 1937, Kanun no 3115; m. 2 **birebir** | Resmî Gazete 13 Şubat 1937, sayı 3533 | TBMM değişiklik listesi; Anayasa Mahkemesi | Doğrulandı |
+| 1927 nizamnamesi | “Cümhuriyetçi, Halkçı, Milliyetçi”; m. 3 din ile dünyanın ayrılması | H. Uzun, ÇTTAD IX/20-21 (2010), nizamname aktarımı | Ş. S. Kişi, “Atatürk’ün Din ve Laiklik Anlayışı” (Ege Üniv.) | Doğrulandı; “laik” sözcüğünün 1927’deki durumu tartışmalı olduğundan yalnız “din ile dünya işlerinin ayrılması” yazıldı |
+| 20 Nisan 1931 beyannamesi | Altı nitelik bir arada | H. Uzun (Atatürk’ün beyannamesinden aktarım) | Ş. S. Kişi | Doğrulandı; “ilk kez” ifadesi iki kaynakla kanıtlanamadığı için kullanılmadı |
+| 1931 kongresi ve programı | Mayıs 1931 (10 Mayıs’ta toplandı); altı ilke ve tanımları **birebir** (Nizamname ve Program 1931, s. 30–31) | H. Uzun (program aktarımı) | Ş. S. Kişi (kongre tarihi ve altı ilke) | Tanımlar tek akademik aktarımdan; künyede açıkça “aktaran” diye belirtildi. Laiklik tanımı Medenî Bilgiler (1930) metniyle ikinci kaynaktan örtüşüyor |
+| Devletçiliğin sınırı (Mustafa Şeref Bey) | Düzenler, denetler, korur; kâr amacıyla ticarete girmez | H. Uzun (CHF Üçüncü Büyük Kongre Zabıtları aktarımı) | — | Yalnız kişi kartında özetlendi; birincil kaynak bloğu yapılmadı |
+| 1982 Anayasası | m. 2 (Atatürk milliyetçiliğine bağlı, demokratik, laik ve sosyal hukuk devleti), m. 4 (değiştirilemez hükümler) | Vikikaynak 1982 Anayasası metni | Anayasa Mahkemesi mevzuat sayfası | Doğrulandı |
+| Harita | Bu derste harita yok; görsel omurga kronoloji ve kavram zinciri | — | — | Program “kavramsal düzey” istediği için coğrafi harita uydurulmadı |
