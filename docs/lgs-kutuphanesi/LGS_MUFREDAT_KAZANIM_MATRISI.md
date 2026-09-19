@@ -331,7 +331,7 @@ Konu adını düzeltmek canlı kütüphanede bağlantı kırar; kazanç risk etm
 | 2 | İTA.8.1 | Mustafa Kemal'in Yetişmesi: Çocukluk, Öğrenim, Fikir Hayatı | `lgs-tarih-mustafa-kemalin-yetismesi` | İTA.8.1.2, İTA.8.1.3 | ✅ tamamlandı |
 | 3 | İTA.8.1 | Mustafa Kemal'in Askerlik Hayatı | `lgs-tarih-mustafa-kemal-askerlik-hayati` | İTA.8.1.4 | ✅ tamamlandı |
 | 4 | İTA.8.2 | I. Dünya Savaşı: Sebepler ve Bloklaşma | `lgs-tarih-birinci-dunya-savasi-sebepler` | İTA.8.2.1 | ✅ tamamlandı |
-| 5 | İTA.8.2 | I. Dünya Savaşı'nda Osmanlı Cepheleri | `lgs-tarih-osmanli-cepheleri` | İTA.8.2.2 | planlandı |
+| 5 | İTA.8.2 | I. Dünya Savaşı'nda Osmanlı Cepheleri | `lgs-tarih-osmanli-cepheleri` | İTA.8.2.2 | ✅ tamamlandı |
 | 6 | İTA.8.2 | Mondros Ateşkes Antlaşması ve İşgaller Karşısında Tutumlar | `lgs-tarih-mondros-ve-tutumlar` | İTA.8.2.3 | planlandı |
 | 7 | İTA.8.2 | Kuvâ-yı Millîye ve Cemiyetler | `lgs-tarih-kuvayi-milliye-ve-cemiyetler` | İTA.8.2.4 | planlandı |
 | 8 | İTA.8.2 | Millî Mücadele'nin Hazırlık Dönemi: Genelgeler ve Kongreler | `lgs-tarih-hazirlik-donemi-genelgeler-kongreler` | İTA.8.2.5 | planlandı |
@@ -429,8 +429,8 @@ Konu adını düzeltmek canlı kütüphanede bağlantı kırar; kazanç risk etm
 |---|---|---|---|---|---|
 | Türkçe | 76 | 41 | 35 | 20 | **20 (tamamlandı · 41/41)** |
 | Fen Bilimleri | 61 | 61 | 0 | 23 | **23 (tamamlandı · 61/61)** |
-| T.C. İnkılap Tarihi ve Atatürkçülük | 39 | 39 | 0 | 25 | 4 (sürüyor · 5/39) |
-| **Toplam** | **176** | **141** | **35** | **68** | **47** |
+| T.C. İnkılap Tarihi ve Atatürkçülük | 39 | 39 | 0 | 25 | 5 (sürüyor · 6/39) |
+| **Toplam** | **176** | **141** | **35** | **68** | **48** |
 
 *Sayılar `npm run test:lgs` çıktısından alınır (mufredat.js: Türkçe 41 ölçülür + 35 gerekçeli
 kapsam dışı).*

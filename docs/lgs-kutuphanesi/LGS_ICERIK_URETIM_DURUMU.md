@@ -19,13 +19,13 @@
 | Aşama 3 — Türkçe Gold Standard | ✅ Tamamlandı |
 | Aşama 4 — **Türkçe kapsamı** | ✅ **Tamamlandı — 41/41 ölçülebilir kazanım (%100)** |
 | Aşama 5 — **Fen Bilimleri** | ✅ **Tamamlandı — 61/61 ölçülebilir kazanım (%100) · 23 ders** |
-| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 5/39 kazanım · 4/25 ders · 1. ünite tamam (Gold Standard ✅) |
+| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 6/39 kazanım · 5/25 ders · 1. ünite tamam (Gold Standard ✅) |
 | Aşama 7 — Son denetim | ⏸ — |
 
 **Aktif ders:** T.C. İnkılap Tarihi ve Atatürkçülük
-**Son tamamlanan ders notu:** İnkılap 4 — Birinci Dünya Savaşı: Sebepler, Bloklar ve Osmanlı’nın Savaşa Girişi (İTA.8.2.1)
-**Sıradaki kesin kazanım:** İTA.8.2.2
-**Sıradaki ders notu:** İnkılap planının 5. dersi — `lgs-tarih-osmanli-cepheleri` (İTA.8.2.2)
+**Son tamamlanan ders notu:** İnkılap 5 — Birinci Dünya Savaşı’nda Osmanlı Devleti: Cepheler, Zaferler ve Sonuçlar (İTA.8.2.2)
+**Sıradaki kesin kazanım:** İTA.8.2.3
+**Sıradaki ders notu:** İnkılap planının 6. dersi — `lgs-tarih-mondros-ve-tutumlar` (İTA.8.2.3)
 
 ---
 
@@ -135,7 +135,7 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 
 ## 3b. T.C. İnkılap Tarihi ve Atatürkçülük — sürüyor
 
-**Kapsama: 5/39 kazanım · 4/25 ders · 1. ünite (Bir Kahraman Doğuyor) tamam**
+**Kapsama: 6/39 kazanım · 5/25 ders · 1. ünite (Bir Kahraman Doğuyor) tamam**
 
 | # | Ders notu | Kazanımlar | Kelime | Puan | Not |
 |---|---|---|---|---|---|
@@ -143,6 +143,7 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 | 2 | Mustafa Kemal’in Yetişmesi: Aile, Okul, Şehir ve Fikirler | İTA.8.1.2 · İTA.8.1.3 | 4.933 | 100/100 | kanıt→çıkarım→aşırı çıkarım tablosu; şehirler atlası; 1922 hatırası okuması |
 | 3 | Mustafa Kemal’in Askerlik Hayatı: Şam’dan Sofya’ya | İTA.8.1.4 | 4.503 | 100/100 | görev yerleri atlası (3 katman); Uşi 2. madde okuması; 1909 ordu–siyaset önerisi |
 | 4 | Birinci Dünya Savaşı: Sebepler, Bloklar ve Osmanlı’nın Savaşa Girişi | İTA.8.2.1 | 4.509 | 100/100 | blok atlası (4 katman); Sırbistan notası okuması; “tarafsız kalabilir miydi?” tartışması |
+| 5 | Birinci Dünya Savaşı’nda Osmanlı Devleti: Cepheler, Zaferler ve Sonuçlar | İTA.8.2.2 | 5.589 | 100/100 | cephe atlası (taarruz/savunma/yardım); Mustafa Kemal’in 1918 mülakatından birebir alıntı; 1915 Olayları olgu–gerekçe–değerlendirme ayrımıyla |
 
 ### İnkılap altyapısı
 - `src/content/lessons/lgs/inkilap/resmiProgram.js` — K3'ten birebir: 7 ünite adı, 39 kazanım
@@ -236,7 +237,7 @@ yazılmıştı; `Prose` bileşeni bilinçli olarak Markdown tablosu desteklemiyo
 
 ## 8. Sonraki oturum buradan devam eder
 
-1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.2.2**).
+1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.2.3**).
 2. İnkılap altyapısı hazır: yeni ders `src/content/lessons/lgs/inkilap/` altına, fabrika
    `createLgsHistoryLesson` ile yazılır ve `inkilap/index.js` listesine eklenir.
 3. **Bağlayıcı kurallar:** tarih, isim ve antlaşma maddeleri en az iki güvenilir kaynakla

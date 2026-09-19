@@ -327,3 +327,25 @@ ulaşılamadı), mezuniyet sonrası tutuklanma (incelenen kaynaklarda yok).
 | Yavuz ve Midilli | 10 Ağustos 1914 Çanakkale’den geçiş | TTK | TDV İA | Doğrulandı |
 | Kapitülasyonlar | Eylül 1914’te ilan (8/9 Eylül irade), 1 Ekim 1914 yürürlük | DergiPark (Karadeniz Araştırmaları; kapitülasyonların kaldırılması makaleleri) | DergiPark (History Studies, Amerikan belgeleri) | Doğrulandı; derste “Eylül–Ekim 1914” |
 | 29 Ekim 1914 | Rus limanlarının bombardımanı; fiilen savaşa giriş | TTK | DergiPark (Midilli kruvazörü makalesi); Belleten 2019 | Doğrulandı; resmî savaş ilanı günleri kaynaklarda farklı olduğu için derste “Kasım 1914” |
+
+### Ders 5 — `lgs-tarih-osmanli-cepheleri` (İTA.8.2.2)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Cepheler ve nitelikleri | Kafkas, Kanal taarruz; Çanakkale, Irak, Suriye–Filistin, Hicaz–Yemen savunma; Galiçya, Makedonya, Romanya yardım | K3 İTA.8.2.2 açıklaması | TTK “Osmanlı İmparatorluğu’nun I. Dünya Harbine Girişi ve Çarpıştığı Cepheler” | Doğrulandı |
+| Sarıkamış | 22 Aralık 1914–4 Ocak 1915; Enver Paşa; kış, donanım, ikmal, hastalık | TDV İA “Sarıkamış Harekâtı” | TTK cepheler yazısı | Doğrulandı; kayıp sayısı kaynaklar arasında çok farklı olduğu için “on binlerce” yazıldı |
+| Kanal | I. harekât Şubat 1915; II. harekât Ağustos 1916 (4–5 Ağustos, Romani) | TDV İA “Cemal Paşa” | DergiPark (Kanal Cephesi makaleleri) | Doğrulandı; derste II. harekât için yalnız yıl |
+| 18 Mart 1915 | Nusret 8 Mart’ta Erenköy Koyu’na 26 mayın; Bouvet, Irresistible, Ocean battı | Çanakkale Savaşları Ansiklopedisi “Nusret Mayın Gemisi” | TTK “100. Yılında 1. Dünya Savaşı” deniz harekâtı sayfası; ATAM Dergisi “18 Mart Çanakkale Deniz Savaşı” | Doğrulandı |
+| Kara savaşları | 25 Nisan 1915 çıkarma; Mustafa Kemal 19. Tümen; 8 Ağustos 1915 Anafartalar Grubu; 9–10 Ağustos Anafartalar, Conkbayırı; 1 Haziran 1915 albay | TTK “Arıburnu Muharebeleri”, “Anafartalar Zaferi” | MSB Kronoloji ve Askerî Görevleri; Çanakkale Savaşları Ansiklopedisi “Mustafa Kemal” | Doğrulandı |
+| Çekilme ve sonuçlar | Aralık 1915–Ocak 1916; Rusya’ya yardım gidemedi, savaş uzadı, Bulgaristan savaşa girdi, Mustafa Kemal tanındı | TTK “Savaşın Sonuçları” | TDV İA arama sonuçları (“Çanakkale Savaşları”) | Doğrulandı; kayıp sayısı yazılmadı (“yüz binlerle ifade edilir”) |
+| Mustafa Kemal’in sözü | “Size ben taarruz emretmiyorum, ölmeyi emrediyorum…” | Ruşen Eşref (Ünaydın), “Anafartalar Kumandanı Mustafa Kemal ile Mülakat”, 24–28 Mart 1918, Yeni Mecmua — MSB’nin yayımladığı metin | ATAM Dergisi “Atatürk’ün Arıburnu Muharebeleri Raporu” | **Birebir alıntı** (1918 metni) |
+| Kut’ül-Amâre | Kuşatma 5 Aralık 1915–29 Nisan 1916; Halil Paşa; Townshend teslim; Bağdat Mart 1917 | TDV İA “Kûtülamâre” | TTK cepheler yazısı | Doğrulandı; esir sayısı yazılmadı |
+| Hicaz | Şerif Hüseyin isyanı Haziran 1916; Fahreddin Paşa; Medine Ocak 1919’da teslim | TDV İA “Şerîf Hüseyin”, “Fahreddin Paşa” | ATAM Dergisi (Medine’nin tahliyesi) | Doğrulandı |
+| Mustafa Kemal 1916–1918 | 1 Nisan 1916 generallik; 7–8 Ağustos 1916 Muş ve Bitlis; 1918 Halep’in kuzeyi | MSB Kronoloji | MEB-ÖERH; Çanakkale Savaşları Ansiklopedisi | Doğrulandı |
+| 1915 Olayları | 24 Nisan 1915 tutuklamalar; 27 Mayıs 1915 Sevk ve İskân Kanunu (geçici); gerekçe güvenlik; 1917’de sona erdi; göç sırasında çok sayıda can kaybı; kayıp sayıları tartışmalı | TDV İA “Tehcîr” | TTK “Osmanlı Ermenileri’nin 1915’teki Tehciri: Bir Değerlendirme” | Doğrulandı; sayı yazılmadı |
+| Türkiye’nin tutumu | Arşivler açık; 2005 ortak tarih komisyonu önerisi; bazı ülkelerin farklı nitelendirmeleri | İletişim Başkanlığı “1915 Olayları” | T.C. Dışişleri Bakanlığı açıklamaları | Doğrulandı |
+| Savaşın sonuçları | Dört imparatorluğun yıkılması; Versay, Saint-Germain, Nöyyi (1919), Trianon (1920), Sevr (1920) | TDV İA “Birinci Dünya Savaşı” | Britannica (antlaşma maddeleri) | Doğrulandı |
+
+**Anlatım ilkesi (1915 Olayları):** Program “değinilir” der. Ders; olguyu, hükümetin gerekçesini
+ve bugünkü farklı değerlendirmeleri ayrı başlıklarla verir; can kayıplarını açıkça yazar; sayı
+vermez; hiçbir tarafa ait tartışmalı nitelendirmeyi olgu gibi sunmaz.
