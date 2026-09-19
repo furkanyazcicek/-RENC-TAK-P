@@ -360,3 +360,20 @@ vermez; hiçbir tarafa ait tartışmalı nitelendirmeyi olgu gibi sunmaz.
 | “Geldikleri gibi giderler.” | 13 Kasım 1918; yaveri Cevat Abbas’a söylendi; 1939 hatıraları | AA “Cevat Abbas Gürer” | DergiPark (Mustafa Kemal’in İstanbul’daki faaliyetleri) | Doğrulandı; derste **hatıra yoluyla aktarılan söz** olarak etiketli |
 | Meclisin dağıtılması | 21 Aralık 1918, Sultan Vahdettin | TDV İA “Meclis-i Meb‘ûsan” | DergiPark (1919 seçimleri makaleleri) | Doğrulandı |
 | Dörtyol | Aralık 1918’de işgalcilere karşı silahlı direniş | ATAM Dergisi (“Millî Mücadele’nin ilk kurşunu…”) | DergiPark (Çukurova’da Millî Mücadele makaleleri) | Doğrulandı; “ilk kurşun” tartışması nedeniyle derste “silahlı direniş başladı” yazıldı |
+
+### Ders 7 — `lgs-tarih-kuvayi-milliye-ve-cemiyetler` (İTA.8.2.4)
+
+**Yeni birincil kaynak: Nutuk (1927).** Mustafa Kemal 1938’de öldüğü için eser kamu malıdır.
+Metin Vikikaynak’taki “Nutuk/1. bölüm” sayfalarından (ham metin) alındı; alıntılar birebirdir ve
+dersin içinde “Mustafa Kemal’in 1927’deki bakış açısını taşır” diye etiketlenmiştir.
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Millî cemiyetler | Trakya-Paşaeli ve İzmir Müdafaa-i Hukuk-ı Osmaniye Aralık 1918; Vilâyât-ı Şarkiye (merkez İstanbul; Erzurum, Elazığ şubeleri); Trabzon Muhafaza-i Hukuk Şubat 1919 | Nutuk, 1. bölüm (“Mukabil halâs çareleri”, “Millî teşekküller…”) | AA “Trabzon Muhafaza-i Hukuk-ı Millîye Cemiyeti”, “Şarkî Trakya Paşaeli Müdafaa Heyet-i Osmaniyesi”; DergiPark | Doğrulandı; kuruluş günleri kaynaklarda 1/2 Aralık olarak değiştiği için yalnız ay/yıl |
+| Redd-i İlhak | 14/15 Mayıs 1919 gecesi İzmir’de ortaya atıldı | Nutuk, 1. bölüm | AA “İzmir Redd-i İlhak Heyet-i Milliyesi” | Doğrulandı |
+| Erzurum şubesinin üç kararı | “Kat’iyen muhâceret etmemek…” | Nutuk, 1. bölüm (birebir) | ATAM Dergisi (Vilâyât-ı Şarkiye Erzurum şubesi makalesi) | **Birebir alıntı** |
+| Zararlı cemiyetler | Mavri Mira, Pontus; Kürt Teâli (yabancı himayesinde Kürt hükümeti); Teâli-i İslâm; Sulh ve Selâmet; İngiliz Muhipleri (Sait Molla, İngiliz himayesi) | Nutuk, 1. bölüm (birebir) | MEB 12. sınıf İnkılap ders kitabı (EBA, 2. ünite s. 7); AA “Mavri Mira Cemiyeti” | Doğrulandı |
+| Wilson Prensipleri Cemiyeti | ABD mandası; kurucuları arasında Halide Edip | DergiPark (Halide Edip ve mandacılık makaleleri) | ATAM Dergisi (Wilson Prensipleri makaleleri) | Doğrulandı; kuruluş günü (Ocak 1919) derse yazılmadı |
+| Ayvalık | 29 Mayıs 1919; Yarbay Ali Bey (Çetinkaya) | AA “Kuvâ-yı Millîye” | DergiPark (Batı Anadolu’da Kuvâ-yı Millîye) | Doğrulandı |
+| Batı Anadolu kongreleri | Balıkesir (1919 yazı), Alaşehir (16–25 Ağustos 1919) | TDV İA “Balıkesir Kongreleri” | TTK kütüphane kaydı “Alaşehir Kongresi (16–25 Ağustos 1919)”; AA “Millî Mücadele Döneminde Kongreler” | Doğrulandı; Balıkesir’in tarihleri (birden çok kongre) nedeniyle “yaz 1919” |
+| Düzenli orduya geçiş | 1920’den itibaren; Kuvâ-yı Millîye 1921 başında kaldırıldı (2 Ocak 1921) | AA “Düzenli Ordunun Kurulması” | DergiPark (Anadolu Üniv. SBD, Kuvâ-yı Millîye’den düzenli orduya geçiş) | Doğrulandı |
