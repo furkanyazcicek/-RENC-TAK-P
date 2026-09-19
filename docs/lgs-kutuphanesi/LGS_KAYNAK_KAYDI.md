@@ -404,3 +404,12 @@ dersin içinde “Mustafa Kemal’in 1927’deki bakış açısını taşır” 
 | Hıyanet-i Vataniye Kanunu | 29 Nisan 1920; Kanun no 2; 1. madde birebir | TBMM kanun arşivi (kanuntbmmc00100002) ve AA “Hıyanet-i Vataniye Kanunu (29 Nisan 1920)” | Vikikaynak kanun metni; DergiPark (Vakanüvis) | Doğrulandı. Vikikaynak künyesindeki “kabul 09.02.1921” tarihi Resmî Ceride yayım tarihiyle karışmış görünüyor; derste TBMM ve AA’daki 29 Nisan 1920 kullanıldı |
 | İstiklal Mahkemeleri | Eylül 1920 | TDV İA “İstiklâl Mahkemeleri” | TBMM kanun arşivi (İstiklal mehakimi kanunu) | Doğrulandı; kanun/kuruluş günleri (11/18 Eylül) nedeniyle “Eylül 1920” |
 | Ayaklanmalar | Anzavur, Kuvâ-yı İnzibatiye, Bolu–Düzce–Hendek, Yozgat, Konya, Çerkez Ethem, Demirci Mehmet Efe, Koçgiri | AA “Kuvâ-yı Seyyare”, “Çerkes Ethem” | ATAM Dergisi (Damat Ferit hükümetleri ve Kuvâ-yı Millîye) | Doğrulandı; günler kaynaklarda farklı olduğundan yalnız dönem/yıl |
+
+### Ders 10 — `lgs-tarih-sevr-ve-tepkiler` (İTA.8.2.8)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Sevr metni | 10 Ağustos 1920; maddeler 36 (İstanbul şartlı), 37–38 (Boğazlar Komisyonu), 62–64 (özerk Kürt bölgesi), 69 ve 83 (İzmir), 84 (Trakya, İmroz, Bozcaada), 88–89 (Ermenistan; ABD başkanının hakemliği), 136 (yargı), 152–155 (ordu; 155. madde birebir); onay şartı | TTK “Antlaşmalar (Tam Metin)”: Sevr Metni (Nihat Erim 1953) | TDV İA “Birinci Dünya Savaşı” (Sevr 1920) | Doğrulandı; 155. madde **birebir** |
+| İmzalayanlar | Hadi Paşa, Rıza Tevfik, Reşad Halis | TTK Sevr metni (imza listesi) | Genel kaynaklar | Doğrulandı |
+| Mustafa Kemal’in sözü | “Sevr Muâhedesi, Türk milleti için o kadar meş’ûm bir idam kararnamesidir…” | Nutuk, 12. bölüm (Franklin-Bouillon görüşmesi) — Vikikaynak | MEB ders kitaplarındaki “idam fermanı” ifadesi | **Birebir alıntı**; derste Nutuk’taki özgün biçim kullanıldı |
+| Nüfuz bölgeleri | Aynı gün İngiltere–Fransa–İtalya arasında ayrı antlaşma | Genel diplomasi tarihi kaynakları (Üçlü Antlaşma, 10 Ağustos 1920) | TDV İA | Sevr’in maddesi olmadığı derste ayrıca belirtildi |
