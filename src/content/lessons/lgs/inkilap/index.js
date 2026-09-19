@@ -8,5 +8,6 @@
 import yirminciYuzyilBasindaOsmanli from './yirminci-yuzyil-basinda-osmanli.js'
 import mustafaKemalinYetismesi from './mustafa-kemalin-yetismesi.js'
 import mustafaKemalAskerlikHayati from './mustafa-kemal-askerlik-hayati.js'
+import birinciDunyaSavasiSebepler from './birinci-dunya-savasi-sebepler.js'
 
-export const LGS_INKILAP_DERSLERI = [yirminciYuzyilBasindaOsmanli, mustafaKemalinYetismesi, mustafaKemalAskerlikHayati]
+export const LGS_INKILAP_DERSLERI = [yirminciYuzyilBasindaOsmanli, mustafaKemalinYetismesi, mustafaKemalAskerlikHayati, birinciDunyaSavasiSebepler]

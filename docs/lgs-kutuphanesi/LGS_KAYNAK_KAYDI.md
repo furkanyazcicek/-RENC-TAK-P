@@ -313,3 +313,17 @@ ulaşılamadı), mezuniyet sonrası tutuklanma (incelenen kaynaklarda yok).
 | Selanik’in kaybı | Dönüş yolunda öğrendi (Kasım 1912) | AA “Balkan Savaşı’nda Atatürk” | MSB Kronoloji (Balkan Savaşı Ekim 1912) | Doğrulandı |
 | Balkan Savaşı görevi | Bolayır’da kurmay; Edirne harekâtında görev | AA “Balkan Savaşı’nda Atatürk” | MSB Kronoloji | Doğrulandı; unvan (kurmay başkanı / harekât şube müdürü) farklı verildiği için “kurmay” yazıldı |
 | Sofya | 27 Ekim 1913 ataşemiliter; Sofya’da yarbay (1 Mart 1914) | MSB Askerî Görevleri | MEB-ÖERH | Doğrulandı; Belgrad–Çetine ataşeliği tek kaynaklı olduğu için **yazılmadı** |
+
+### Ders 4 — `lgs-tarih-birinci-dunya-savasi-sebepler` (İTA.8.2.1)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Savaşın temel sebebi ve bloklar | Sanayileşmiş devletlerin rekabeti; Üçlü İttifak ve Üçlü İtilaf | TDV İA “Birinci Dünya Savaşı” | Britannica “Triple Entente” | Doğrulandı |
+| Blok tarihleri | 1879 ikili ittifak, 1882 Üçlü İttifak, 1894 Fransa–Rusya, 1904 İngiltere–Fransa, 1907 İngiltere–Rusya | Britannica (“Dual Alliance”, “Entente Cordiale”, “Anglo-Russian Entente”) | DergiPark (Uluslararası İlişkiler Dergisi ve blok makaleleri) | Doğrulandı |
+| Saraybosna suikastı | 28 Haziran 1914; veliaht ve eşi; Sırp milliyetçisi | TDV İA | habsburger.net | Doğrulandı |
+| Nota | 23 Temmuz 1914; 48 saat; Avusturya görevlilerinin soruşturmaya katılması maddesi reddedildi | UK National Archives blog | habsburger.net “The ultimatum” | Doğrulandı; derste **sadeleştirme** |
+| Osmanlı–Almanya ittifakı | 2 Ağustos 1914 gizli; 3 Ağustos seferberlik, silahlı tarafsızlık; Enver Paşa’nın teklifi | TTK “Osmanlı İmparatorluğu’nun I. Dünya Harbine Girişi…” | TDV İA “Birinci Dünya Savaşı” | Doğrulandı |
+| Gemilere el konulması | 3 Ağustos 1914; Sultan Osman ve Reşadiye; halkın bağışları | Çanakkale Savaşları Ansiklopedisi “Türk Donanması” | DergiPark (Donanma Cemiyeti makaleleri) | Doğrulandı |
+| Yavuz ve Midilli | 10 Ağustos 1914 Çanakkale’den geçiş | TTK | TDV İA | Doğrulandı |
+| Kapitülasyonlar | Eylül 1914’te ilan (8/9 Eylül irade), 1 Ekim 1914 yürürlük | DergiPark (Karadeniz Araştırmaları; kapitülasyonların kaldırılması makaleleri) | DergiPark (History Studies, Amerikan belgeleri) | Doğrulandı; derste “Eylül–Ekim 1914” |
+| 29 Ekim 1914 | Rus limanlarının bombardımanı; fiilen savaşa giriş | TTK | DergiPark (Midilli kruvazörü makalesi); Belleten 2019 | Doğrulandı; resmî savaş ilanı günleri kaynaklarda farklı olduğu için derste “Kasım 1914” |
