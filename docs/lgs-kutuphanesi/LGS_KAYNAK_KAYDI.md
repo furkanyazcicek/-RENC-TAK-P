@@ -391,3 +391,16 @@ dersin içinde “Mustafa Kemal’in 1927’deki bakış açısını taşır” 
 | Amasya Görüşmeleri | 20–22 Ekim 1919; Salih Paşa; protokoller; Heyet-i Temsiliye’nin resmen muhatap alınması | Nutuk, 3. bölüm (“Amasya mülakatı”) — birebir | MSB “Millî Mücadele Dönemi” | Doğrulandı |
 | Ankara | Heyet-i Temsiliye 27 Aralık 1919’da Ankara’da | Nutuk, 3. bölüm başlığı (“Ankara’ya geliş”) | MSB Kronoloji | Doğrulandı |
 | Basın | İrade-i Milliye 14 Eylül 1919 (Sivas); Hâkimiyet-i Milliye 10 Ocak 1920 (Ankara); Anadolu Ajansı 6 Nisan 1920 | AA “İrade-i Milliye Gazetesi”; TDV İA “Hâkimiyet-i Milliye” | Anadolu Ajansı “Tarihçe”; ATAM Dergisi | Doğrulandı |
+
+### Ders 9 — `lgs-tarih-misakimilli-ve-bmm` (İTA.8.2.6, İTA.8.2.7)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Misakımillî metni | 28 Kânunusani 1336 (28 Ocak 1920); altı madde; 6. madde birebir | Sefer Yazıcı (ed.), *Millî Egemenlik Belgeleri*, TBMM Basımevi 2015 (Vikikaynak, sayfa görüntülü) | Nutuk, 5. bölüm (“Misak-ı Millî hazırlanıyor”) | Doğrulandı; 6. madde **birebir**, diğerleri sadeleştirme |
+| Son Meclis-i Mebusan | 12 Ocak 1920 açıldı; Misakımillî Şubat 1920’de duyuruldu | Genel kronolojiler (MSB) | TDV İA “Türkiye Büyük Millet Meclisi” | Doğrulandı; ilan günü yazılmadı |
+| İstanbul’un resmen işgali | 16 Mart 1920 | DergiPark (Vakanüvis, Hıyanet-i Vataniye makalesi) | MSB | Doğrulandı |
+| Büyük Millet Meclisi | 23 Nisan 1920; Mustafa Kemal ertesi gün başkan | TDV İA “Türkiye Büyük Millet Meclisi” | DergiPark | Doğrulandı |
+| Fetva ve karşı fetva | 11 Nisan 1920 Dürrizâde fetvası; Rifat Efendi’nin karşı fetvası, 25 Nisan’da azli | TDV İA “Dürrîzâde Abdullah Beyefendi” | AA “Dürrizâde Abdullah”; ATAM Dergisi | Doğrulandı |
+| Hıyanet-i Vataniye Kanunu | 29 Nisan 1920; Kanun no 2; 1. madde birebir | TBMM kanun arşivi (kanuntbmmc00100002) ve AA “Hıyanet-i Vataniye Kanunu (29 Nisan 1920)” | Vikikaynak kanun metni; DergiPark (Vakanüvis) | Doğrulandı. Vikikaynak künyesindeki “kabul 09.02.1921” tarihi Resmî Ceride yayım tarihiyle karışmış görünüyor; derste TBMM ve AA’daki 29 Nisan 1920 kullanıldı |
+| İstiklal Mahkemeleri | Eylül 1920 | TDV İA “İstiklâl Mahkemeleri” | TBMM kanun arşivi (İstiklal mehakimi kanunu) | Doğrulandı; kanun/kuruluş günleri (11/18 Eylül) nedeniyle “Eylül 1920” |
+| Ayaklanmalar | Anzavur, Kuvâ-yı İnzibatiye, Bolu–Düzce–Hendek, Yozgat, Konya, Çerkez Ethem, Demirci Mehmet Efe, Koçgiri | AA “Kuvâ-yı Seyyare”, “Çerkes Ethem” | ATAM Dergisi (Damat Ferit hükümetleri ve Kuvâ-yı Millîye) | Doğrulandı; günler kaynaklarda farklı olduğundan yalnız dönem/yıl |

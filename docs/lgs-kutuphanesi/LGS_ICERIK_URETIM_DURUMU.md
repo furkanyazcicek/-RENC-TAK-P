@@ -19,13 +19,13 @@
 | Aşama 3 — Türkçe Gold Standard | ✅ Tamamlandı |
 | Aşama 4 — **Türkçe kapsamı** | ✅ **Tamamlandı — 41/41 ölçülebilir kazanım (%100)** |
 | Aşama 5 — **Fen Bilimleri** | ✅ **Tamamlandı — 61/61 ölçülebilir kazanım (%100) · 23 ders** |
-| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 9/39 kazanım · 8/25 ders · 1. ünite tamam (Gold Standard ✅) |
+| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 11/39 kazanım · 9/25 ders · 1. ünite tamam (Gold Standard ✅) |
 | Aşama 7 — Son denetim | ⏸ — |
 
 **Aktif ders:** T.C. İnkılap Tarihi ve Atatürkçülük
-**Son tamamlanan ders notu:** İnkılap 8 — Millî Mücadele’nin Hazırlık Dönemi: Samsun’dan Ankara’ya (İTA.8.2.5)
-**Sıradaki kesin kazanım:** İTA.8.2.6
-**Sıradaki ders notu:** İnkılap planının 9. dersi — `lgs-tarih-misakimilli-ve-bmm` (İTA.8.2.6, İTA.8.2.7)
+**Son tamamlanan ders notu:** İnkılap 9 — Misakımillî, Büyük Millet Meclisi ve Meclis’e Karşı Ayaklanmalar (İTA.8.2.6, İTA.8.2.7)
+**Sıradaki kesin kazanım:** İTA.8.2.8
+**Sıradaki ders notu:** İnkılap planının 10. dersi — `lgs-tarih-sevr-ve-tepkiler` (İTA.8.2.8)
 
 ---
 
@@ -135,7 +135,7 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 
 ## 3b. T.C. İnkılap Tarihi ve Atatürkçülük — sürüyor
 
-**Kapsama: 9/39 kazanım · 8/25 ders · 1. ünite (Bir Kahraman Doğuyor) tamam**
+**Kapsama: 11/39 kazanım · 9/25 ders · 1. ünite (Bir Kahraman Doğuyor) tamam**
 
 | # | Ders notu | Kazanımlar | Kelime | Puan | Not |
 |---|---|---|---|---|---|
@@ -147,6 +147,7 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 | 6 | Mondros Ateşkes Antlaşması ve İşgaller Karşısında Tutumlar | İTA.8.2.3 | 4.726 | 100/100 | işgal atlası (4 katman); Mondros ilk teklif–son metin karşılaştırması (TTK metni); üç tutum karşılaştırması |
 | 7 | Kuvâ-yı Millîye ve Cemiyetler: Milletin Kendi Kendini Savunması | İTA.8.2.4 | 4.659 | 100/100 | cemiyet atlası (4 katman); Nutuk’tan iki birebir alıntı; Kuvâ-yı Millîye–düzenli ordu karşılaştırması |
 | 8 | Millî Mücadele’nin Hazırlık Dönemi: Samsun’dan Ankara’ya | İTA.8.2.5 | 5.084 | 100/100 | yol atlası; Havza ve Amasya genelgeleri ile Sivas manda tartışması Nutuk’tan birebir; sorun→çözüm tablosu; basın |
+| 9 | Misakımillî, Büyük Millet Meclisi ve Meclis’e Karşı Ayaklanmalar | İTA.8.2.6 · İTA.8.2.7 | 4.726 | 100/100 | ayaklanma atlası; Misakımillî 6. madde ve Hıyanet-i Vataniye 1. madde birebir; iki meclis karşılaştırması |
 
 ### İnkılap altyapısı
 - `src/content/lessons/lgs/inkilap/resmiProgram.js` — K3'ten birebir: 7 ünite adı, 39 kazanım
@@ -240,7 +241,7 @@ yazılmıştı; `Prose` bileşeni bilinçli olarak Markdown tablosu desteklemiyo
 
 ## 8. Sonraki oturum buradan devam eder
 
-1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.2.6**).
+1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.2.8**).
 2. İnkılap altyapısı hazır: yeni ders `src/content/lessons/lgs/inkilap/` altına, fabrika
    `createLgsHistoryLesson` ile yazılır ve `inkilap/index.js` listesine eklenir.
 3. **Bağlayıcı kurallar:** tarih, isim ve antlaşma maddeleri en az iki güvenilir kaynakla
