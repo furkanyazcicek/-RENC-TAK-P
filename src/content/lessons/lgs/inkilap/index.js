@@ -10,5 +10,6 @@ import mustafaKemalinYetismesi from './mustafa-kemalin-yetismesi.js'
 import mustafaKemalAskerlikHayati from './mustafa-kemal-askerlik-hayati.js'
 import birinciDunyaSavasiSebepler from './birinci-dunya-savasi-sebepler.js'
 import osmanliCepheleri from './osmanli-cepheleri.js'
+import mondrosVeTutumlar from './mondros-ve-tutumlar.js'
 
-export const LGS_INKILAP_DERSLERI = [yirminciYuzyilBasindaOsmanli, mustafaKemalinYetismesi, mustafaKemalAskerlikHayati, birinciDunyaSavasiSebepler, osmanliCepheleri]
+export const LGS_INKILAP_DERSLERI = [yirminciYuzyilBasindaOsmanli, mustafaKemalinYetismesi, mustafaKemalAskerlikHayati, birinciDunyaSavasiSebepler, osmanliCepheleri, mondrosVeTutumlar]

@@ -19,13 +19,13 @@
 | Aşama 3 — Türkçe Gold Standard | ✅ Tamamlandı |
 | Aşama 4 — **Türkçe kapsamı** | ✅ **Tamamlandı — 41/41 ölçülebilir kazanım (%100)** |
 | Aşama 5 — **Fen Bilimleri** | ✅ **Tamamlandı — 61/61 ölçülebilir kazanım (%100) · 23 ders** |
-| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 6/39 kazanım · 5/25 ders · 1. ünite tamam (Gold Standard ✅) |
+| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 7/39 kazanım · 6/25 ders · 1. ünite tamam (Gold Standard ✅) |
 | Aşama 7 — Son denetim | ⏸ — |
 
 **Aktif ders:** T.C. İnkılap Tarihi ve Atatürkçülük
-**Son tamamlanan ders notu:** İnkılap 5 — Birinci Dünya Savaşı’nda Osmanlı Devleti: Cepheler, Zaferler ve Sonuçlar (İTA.8.2.2)
-**Sıradaki kesin kazanım:** İTA.8.2.3
-**Sıradaki ders notu:** İnkılap planının 6. dersi — `lgs-tarih-mondros-ve-tutumlar` (İTA.8.2.3)
+**Son tamamlanan ders notu:** İnkılap 6 — Mondros Ateşkes Antlaşması ve İşgaller Karşısında Tutumlar (İTA.8.2.3)
+**Sıradaki kesin kazanım:** İTA.8.2.4
+**Sıradaki ders notu:** İnkılap planının 7. dersi — `lgs-tarih-kuvayi-milliye-ve-cemiyetler` (İTA.8.2.4)
 
 ---
 
@@ -135,7 +135,7 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 
 ## 3b. T.C. İnkılap Tarihi ve Atatürkçülük — sürüyor
 
-**Kapsama: 6/39 kazanım · 5/25 ders · 1. ünite (Bir Kahraman Doğuyor) tamam**
+**Kapsama: 7/39 kazanım · 6/25 ders · 1. ünite (Bir Kahraman Doğuyor) tamam**
 
 | # | Ders notu | Kazanımlar | Kelime | Puan | Not |
 |---|---|---|---|---|---|
@@ -144,6 +144,7 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 | 3 | Mustafa Kemal’in Askerlik Hayatı: Şam’dan Sofya’ya | İTA.8.1.4 | 4.503 | 100/100 | görev yerleri atlası (3 katman); Uşi 2. madde okuması; 1909 ordu–siyaset önerisi |
 | 4 | Birinci Dünya Savaşı: Sebepler, Bloklar ve Osmanlı’nın Savaşa Girişi | İTA.8.2.1 | 4.509 | 100/100 | blok atlası (4 katman); Sırbistan notası okuması; “tarafsız kalabilir miydi?” tartışması |
 | 5 | Birinci Dünya Savaşı’nda Osmanlı Devleti: Cepheler, Zaferler ve Sonuçlar | İTA.8.2.2 | 5.589 | 100/100 | cephe atlası (taarruz/savunma/yardım); Mustafa Kemal’in 1918 mülakatından birebir alıntı; 1915 Olayları olgu–gerekçe–değerlendirme ayrımıyla |
+| 6 | Mondros Ateşkes Antlaşması ve İşgaller Karşısında Tutumlar | İTA.8.2.3 | 4.726 | 100/100 | işgal atlası (4 katman); Mondros ilk teklif–son metin karşılaştırması (TTK metni); üç tutum karşılaştırması |
 
 ### İnkılap altyapısı
 - `src/content/lessons/lgs/inkilap/resmiProgram.js` — K3'ten birebir: 7 ünite adı, 39 kazanım
@@ -237,7 +238,7 @@ yazılmıştı; `Prose` bileşeni bilinçli olarak Markdown tablosu desteklemiyo
 
 ## 8. Sonraki oturum buradan devam eder
 
-1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.2.3**).
+1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.2.4**).
 2. İnkılap altyapısı hazır: yeni ders `src/content/lessons/lgs/inkilap/` altına, fabrika
    `createLgsHistoryLesson` ile yazılır ve `inkilap/index.js` listesine eklenir.
 3. **Bağlayıcı kurallar:** tarih, isim ve antlaşma maddeleri en az iki güvenilir kaynakla

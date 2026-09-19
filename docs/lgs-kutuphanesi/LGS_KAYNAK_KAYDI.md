@@ -349,3 +349,14 @@ ulaşılamadı), mezuniyet sonrası tutuklanma (incelenen kaynaklarda yok).
 **Anlatım ilkesi (1915 Olayları):** Program “değinilir” der. Ders; olguyu, hükümetin gerekçesini
 ve bugünkü farklı değerlendirmeleri ayrı başlıklarla verir; can kayıplarını açıkça yazar; sayı
 vermez; hiçbir tarafa ait tartışmalı nitelendirmeyi olgu gibi sunmaz.
+
+### Ders 6 — `lgs-tarih-mondros-ve-tutumlar` (İTA.8.2.3)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Mondros metni | 30 Ekim 1918; Limni, Mondros limanı, Agamemnon; Calthorpe – Rauf Bey, Reşat Hikmet, Sadullah; 25 madde; maddeler 1, 5, 6, 7, 10, 12, 15, 16, 24; ilk teklif ve son metin | TTK “Antlaşmalar (Tam Metin)”: Mondros Mütarekenamesi (Nihat Erim 1953, Ali Türkgeldi’den) | TDV İA “Millî Mücadele” | Doğrulandı; maddeler derste **sadeleştirme** |
+| İşgaller | Musul ve İskenderun Kasım 1918; İtilaf donanması 13 Kasım 1918; Adana–Mersin (Fransız) Aralık 1918; Antalya (İtalyan) 1919 ilkbaharı; İzmir 15 Mayıs 1919 | DergiPark (Mustafa Kemal Paşa’nın İstanbul’daki faaliyetleri; işgal makaleleri) | TDV İA “Millî Mücadele”; MSB “Millî Mücadele Dönemi” | Doğrulandı; günleri kaynaklarda farklı olanlar için yalnız ay/yıl |
+| İskenderun ve Mustafa Kemal | Direnme emri; hükümetin 6 Kasım’da direnilmemesini bildirmesi; Yıldırım Orduları Grubu 7 Kasım’da kaldırıldı | DergiPark (Çağdaş Türkiye Tarihi Araştırmaları Dergisi: Mustafa Kemal Paşa’nın Yıldırım Orduları Grup Komutanlığı…) | ATAM Dergisi (“ilk kurşun” ve Hatay makalesi) | Doğrulandı |
+| “Geldikleri gibi giderler.” | 13 Kasım 1918; yaveri Cevat Abbas’a söylendi; 1939 hatıraları | AA “Cevat Abbas Gürer” | DergiPark (Mustafa Kemal’in İstanbul’daki faaliyetleri) | Doğrulandı; derste **hatıra yoluyla aktarılan söz** olarak etiketli |
+| Meclisin dağıtılması | 21 Aralık 1918, Sultan Vahdettin | TDV İA “Meclis-i Meb‘ûsan” | DergiPark (1919 seçimleri makaleleri) | Doğrulandı |
+| Dörtyol | Aralık 1918’de işgalcilere karşı silahlı direniş | ATAM Dergisi (“Millî Mücadele’nin ilk kurşunu…”) | DergiPark (Çukurova’da Millî Mücadele makaleleri) | Doğrulandı; “ilk kurşun” tartışması nedeniyle derste “silahlı direniş başladı” yazıldı |
