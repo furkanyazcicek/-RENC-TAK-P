@@ -19,13 +19,13 @@
 | Aşama 3 — Türkçe Gold Standard | ✅ Tamamlandı |
 | Aşama 4 — **Türkçe kapsamı** | ✅ **Tamamlandı — 41/41 ölçülebilir kazanım (%100)** |
 | Aşama 5 — **Fen Bilimleri** | ✅ **Tamamlandı — 61/61 ölçülebilir kazanım (%100) · 23 ders** |
-| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 34/39 kazanım · 21/25 ders · 1.–5. üniteler tamam, 6. ünite sürüyor (Gold Standard ✅) |
+| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 34/39 kazanım · 22/25 ders · 1.–6. üniteler tamam, 7. ünite kaldı (Gold Standard ✅) |
 | Aşama 7 — Son denetim | ⏸ — |
 
 **Aktif ders:** T.C. İnkılap Tarihi ve Atatürkçülük
-**Son tamamlanan ders notu:** İnkılap 21 — Atatürk Dönemi Dış Politikası (İTA.8.6.1 · İTA.8.6.2)
-**Sıradaki kesin kazanım:** İTA.8.6.3
-**Sıradaki ders notu:** İnkılap planının 22. dersi — `lgs-tarih-hatayin-anavatana-katilmasi` (İTA.8.6.3)
+**Son tamamlanan ders notu:** İnkılap 22 — Hatay’ın Anavatana Katılması (İTA.8.6.3)
+**Sıradaki kesin kazanım:** İTA.8.7.1
+**Sıradaki ders notu:** İnkılap planının 23. dersi — `lgs-tarih-ataturkun-olumu-ve-eserleri` (İTA.8.7.1 · İTA.8.7.2)
 
 ---
 
@@ -135,7 +135,9 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 
 ## 3b. T.C. İnkılap Tarihi ve Atatürkçülük — sürüyor
 
-**Kapsama: 34/39 kazanım · 21/25 ders · 1.–5. üniteler tamam, 6. ünite sürüyor**
+**Kapsama: 34/39 kazanım · 22/25 ders · 1.–6. üniteler tamam, 7. ünite kaldı**
+
+> Sayaç düzeltmesi: 19., 20. ve 21. derslerin kayıt mesajlarında ve bu belgede kazanım sayısı bir fazla yazılmıştı (29, 32, 34). Doğrusu 28, 31 ve 33’tür. `npm run test:lgs` sayımı esas alındı; 22. dersten sonra gerçek durum 34/39’dur.
 
 | # | Ders notu | Kazanımlar | Kelime | Puan | Not |
 |---|---|---|---|---|---|
@@ -160,6 +162,7 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 | 19 | Cumhuriyet’in Kazanımları ve Atatürk’ün Hedefleri | İTA.8.4.8 | 4.071 | 100/100 | haritasız; 1918–1938 kazanım tablosu; üç metin karşılaştırması (Nutuk–Hitabe–Onuncu Yıl); kişilik özellikleri–kanıt tablosu; Nutuk sonu, Hitabe ve Onuncu Yıl Nutku birebir |
 | 20 | Demokratikleşme Çabaları: Partiler, Suikast Girişimi ve Tehditler | İTA.8.5.1 · İTA.8.5.2 · İTA.8.5.3 | 4.410 | 100/100 | haritasız; üç parti karşılaştırması; tehdit analizi tablosu; Nutuk’tan üç bölüm (iktidarın bakış açısı olarak etiketli) ve Takrir-i Sükûn Kanunu birebir; çok nedenli yorum |
 | 21 | Atatürk Dönemi Dış Politikası: İlkeler ve Gelişmeler | İTA.8.6.1 · İTA.8.6.2 | 4.226 | 100/100 | şematik dış politika atlası (Balkan–Sadabat–Musul/Boğazlar); yedi ilke–örnek tablosu; beş mesele sorun–çözüm–ilke tablosu; Nutuk (tam bağımsızlık), 1926 Ankara m. 14 ve Montrö m. 24 birebir |
+| 22 | Hatay’ın Anavatana Katılması: Atatürk’ün Son Büyük Davası | İTA.8.6.3 | 4.119 | 100/100 | şematik Hatay atlası (Hatay 1937–1939 / Atatürk’ün yolculukları); aşama–ilke tablosu; Musul–Hatay karşılaştırması; 1936, 1937 ve 1938 Meclis açış konuşmaları birebir; özveri kanıtları (belge–davranış–aktarım ayrımı) |
 
 ### İnkılap altyapısı
 - `src/content/lessons/lgs/inkilap/resmiProgram.js` — K3'ten birebir: 7 ünite adı, 39 kazanım
@@ -253,7 +256,7 @@ yazılmıştı; `Prose` bileşeni bilinçli olarak Markdown tablosu desteklemiyo
 
 ## 8. Sonraki oturum buradan devam eder
 
-1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.6.3**).
+1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.7.1**).
 2. İnkılap altyapısı hazır: yeni ders `src/content/lessons/lgs/inkilap/` altına, fabrika
    `createLgsHistoryLesson` ile yazılır ve `inkilap/index.js` listesine eklenir.
 3. **Bağlayıcı kurallar:** tarih, isim ve antlaşma maddeleri en az iki güvenilir kaynakla

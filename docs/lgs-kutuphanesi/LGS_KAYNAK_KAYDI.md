@@ -592,3 +592,22 @@ dersin içinde “Mustafa Kemal’in 1927’deki bakış açısını taşır” 
 | Montrö | 20 Temmuz 1936; m. 24 ve Protokol m. 1 **birebir**; Türk heyeti başkanı Tevfik Rüştü Aras; 15 Ağustos 1936’dan geçici uygulama | Vikikaynak sözleşme metni | Genel kronolojiler | Doğrulandı |
 | Sadabat Paktı | 8 Temmuz 1937, Tahran; Türkiye, İran, Irak, Afganistan | DergiPark (Sadabat makalesi) | MEB EBA | Doğrulandı |
 | Harita | Başkentlerin yaklaşık yerleri; Musul, Boğazlar | Yukarıdaki kaynaklar | — | Şematik; sınır çizilmedi |
+
+### Ders 22 — `lgs-tarih-hatayin-anavatana-katilmasi` (İTA.8.6.3)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Sorunun kökü | 1921 Ankara Antlaşması m. 7 (İskenderun için özel idare, Türkçe resmî dil); Lozan’da Suriye sınırı olarak 1921 sınırı | Vikikaynak Ankara İtilafnamesi (Ders 13’te kullanıldı) | Belleten 1985, sayı 193 “Hatay Sorunu ve Türk-Fransız Siyasal İlişkileri” | Doğrulandı |
+| 1 Kasım 1936 konuşması | “…gerçek sahibi öz Türk olan İskenderun - Antakya…” ve “Her zaman dostluğuna çok önem verdiğimiz Fransa…” **birebir** | Vikikaynak (TBMM’nin yayımladığı günümüz Türkçesi metin) | Belleten 1985 | Birebir; sadeleştirilmiş metin olduğu belirtildi |
+| 1 Kasım 1937 konuşması | “Büyük bir milli davamız olan Hatay…” ve “önemli bir ölçü ve etken” **birebir** | Vikikaynak (TBMM metni) | — | Birebir |
+| 1 Kasım 1938 konuşması | Başbakan Celal Bayar okudu; “…Hatay, Millet Meclisine ve bağımsızlığına kavuştu.” **birebir** | Vikikaynak (kaynak: Millet Meclisi Tutanak Dergisi D. V, C. 27) | MEB Atatürk kronolojisi | Birebir |
+| MC kararı ve statü | 27 Ocak 1937: iç işlerinde bağımsız, dış işlerinde Suriye’ye bağlı, Türkçe resmî dil; 29 Mayıs 1937: statü, temel yasa ve Türk–Fransız güvence anlaşması | Belleten 1985 | ATAM Dergisi 2018, sayı 97 (Hatay’ın katılma süreci); Vikipedi “1937’de Türkiye” (29 Mayıs) | Doğrulandı |
+| Eskişehir–Konya (Ocak 1937) | Eskişehir’de İnönü, Fevzi Çakmak, Tevfik Rüştü, Şükrü Kaya ile değerlendirme; Konya’ya geçiş | Cumhuriyet/Sözcü (S. Meydan, 5 Ocak 1937 yola çıkış) | Tepebaşı Belediyesi “Atatürk Eskişehir’de” (6 Ocak) | Gün kaynaklarda 5/6 Ocak → “Ocak 1937” |
+| “Vazgeçilmez dava” ve istifa sözü | “Aktarıldığına göre” / “yakınlarının anılarına göre” olarak verildi | Sözcü (S. Meydan; Hasan Rıza Soyak aktarımı) | Aydınlık; Journo (Asım Us yazıları, Ocak 1937) | Farklı ifadelerle aktarıldığı için birincil kaynak bloğu yapılmadı |
+| “Hatay benim şahsi meselemdir” | Fransız büyükelçisine söylediği aktarılır | Antakya Gazetesi | Sözcü (İ. Başbuğ) | Aktarım olarak verildi; birebir alıntı yapılmadı |
+| Çukurova gezisi | 19 Mayıs 1938’de hastayken trenle Adana’ya; Adana ve Mersin’de geçit törenleri | ATAM Dergisi (E. Çanak, “Atatürk’ün Adana Ziyaretleri”) | MEB “Atatürk’ün son yılları”; Sözcü (S. Meydan) | Doğrulandı |
+| Türk birliklerinin girişi | Temmuz 1938; Türk–Fransız askerî anlaşması; ortak bulunma | Sözcü (S. Meydan: 5 Temmuz) | Diğer kaynaklarda 3 Temmuz (anlaşma) / 5 Temmuz (giriş) | Gün yazılmadı → “Temmuz 1938” |
+| Hatay Devleti | 2 Eylül 1938; Tayfur Sökmen devlet başkanı | Atatürk Ansiklopedisi “Tayfur Sökmen” | TDV İA “Sökmen, Tayfur” | Doğrulandı |
+| Katılış | 23 Haziran 1939 Türk–Fransız anlaşması; 29 Haziran 1939 Hatay Meclisi’nin katılma kararı | T.C. Hatay Valiliği “Tarihçe” | Cumhuriyet “Haftanın tarihine bakış”; ATAM Dergisi 2020, sayı 101 | Doğrulandı; S. Meydan “30 Haziran” yazıyor, çoğunluk ve resmî kaynak 29 Haziran → 29 Haziran |
+| Tevfik Rüştü Aras | Dışişleri Bakanı 1925–1938 | T.C. Dışişleri Bakanlığı özgeçmiş | Vikipedi | Doğrulandı (4 Mart 1925–11 Kasım 1938) |
+| Harita | Ankara, Konya, Adana, Mersin, İskenderun, Antakya, Halep; yaklaşık yerleşim | Yukarıdaki kaynaklar | — | Şematik; sınır çizilmedi |
