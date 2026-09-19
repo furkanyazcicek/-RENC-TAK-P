@@ -217,7 +217,10 @@ export function QuestionClueBlock({ block }) {
   return (
     <div className="lesson-band">
       <Eyebrow tone="exam">Soruda nasıl tanırım?</Eyebrow>
-      <BlockTitle size="sm">{block.concept && `Soruda ${block.concept} nasıl tanınır?`}</BlockTitle>
+      {/* Kavram zaten soru cümlesiyse (tarih notları) olduğu gibi göster; değilse kalıba yerleştir. */}
+      <BlockTitle size="sm">
+        {block.concept && (block.concept.trim().endsWith('?') ? block.concept : `Soruda ${block.concept} nasıl tanınır?`)}
+      </BlockTitle>
       {block.statement && (
         <div className="mt-3 border-s-2 border-aqua-500/45 ps-4">
           <Prose text={block.statement} className="text-[0.9375rem] italic leading-[1.75]" />
