@@ -17,5 +17,6 @@ import misakimilliVeBmm from './misakimilli-ve-bmm.js'
 import sevrVeTepkiler from './sevr-ve-tepkiler.js'
 import doguVeGuneyCepheleri from './dogu-ve-guney-cepheleri.js'
 import batiCephesi from './bati-cephesi.js'
+import sakaryaVeBuyukTaarruz from './sakarya-ve-buyuk-taarruz.js'
 
-export const LGS_INKILAP_DERSLERI = [yirminciYuzyilBasindaOsmanli, mustafaKemalinYetismesi, mustafaKemalAskerlikHayati, birinciDunyaSavasiSebepler, osmanliCepheleri, mondrosVeTutumlar, kuvayiMilliyeVeCemiyetler, hazirlikDonemi, misakimilliVeBmm, sevrVeTepkiler, doguVeGuneyCepheleri, batiCephesi]
+export const LGS_INKILAP_DERSLERI = [yirminciYuzyilBasindaOsmanli, mustafaKemalinYetismesi, mustafaKemalAskerlikHayati, birinciDunyaSavasiSebepler, osmanliCepheleri, mondrosVeTutumlar, kuvayiMilliyeVeCemiyetler, hazirlikDonemi, misakimilliVeBmm, sevrVeTepkiler, doguVeGuneyCepheleri, batiCephesi, sakaryaVeBuyukTaarruz]
