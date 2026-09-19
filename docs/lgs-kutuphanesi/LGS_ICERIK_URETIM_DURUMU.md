@@ -19,13 +19,13 @@
 | Aşama 3 — Türkçe Gold Standard | ✅ Tamamlandı |
 | Aşama 4 — **Türkçe kapsamı** | ✅ **Tamamlandı — 41/41 ölçülebilir kazanım (%100)** |
 | Aşama 5 — **Fen Bilimleri** | ✅ **Tamamlandı — 61/61 ölçülebilir kazanım (%100) · 23 ders** |
-| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 24/39 kazanım · 17/25 ders · 1., 2. ve 3. üniteler tamam, 4. ünite sürüyor (Gold Standard ✅) |
+| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 27/39 kazanım · 18/25 ders · 1., 2. ve 3. üniteler tamam, 4. ünite sürüyor (Gold Standard ✅) |
 | Aşama 7 — Son denetim | ⏸ — |
 
 **Aktif ders:** T.C. İnkılap Tarihi ve Atatürkçülük
-**Son tamamlanan ders notu:** İnkılap 17 — Hukuk, Eğitim ve Kültür Alanında İnkılaplar (İTA.8.4.3 · İTA.8.4.4)
-**Sıradaki kesin kazanım:** İTA.8.4.5
-**Sıradaki ders notu:** İnkılap planının 18. dersi — `lgs-tarih-toplumsal-ve-ekonomik-inkilaplar` (İTA.8.4.5 · İTA.8.4.6 · İTA.8.4.7)
+**Son tamamlanan ders notu:** İnkılap 18 — Toplumsal Hayat, Ekonomi ve Sağlık (İTA.8.4.5 · İTA.8.4.6 · İTA.8.4.7)
+**Sıradaki kesin kazanım:** İTA.8.4.8
+**Sıradaki ders notu:** İnkılap planının 19. dersi — `lgs-tarih-cumhuriyetin-kazanimlari` (İTA.8.4.8)
 
 ---
 
@@ -135,7 +135,7 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 
 ## 3b. T.C. İnkılap Tarihi ve Atatürkçülük — sürüyor
 
-**Kapsama: 24/39 kazanım · 17/25 ders · 1., 2. ve 3. üniteler tamam, 4. ünite sürüyor**
+**Kapsama: 27/39 kazanım · 18/25 ders · 1., 2. ve 3. üniteler tamam, 4. ünite sürüyor**
 
 | # | Ders notu | Kazanımlar | Kelime | Puan | Not |
 |---|---|---|---|---|---|
@@ -156,6 +156,7 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 | 15 | Atatürk İlkeleri ve Temel Esasları: Çağdaş Türkiye’nin Pusulası | İTA.8.4.1 · İTA.8.4.9 | 4.575 | 100/100 | haritasız (kavramsal ders): kronoloji + yedi temel esas kavram zinciri; 1931 programındaki altı tanım ve 1937 anayasa maddesi birebir; eski düzen–yeni düzen karşılaştırması |
 | 16 | Siyasi Alanda İnkılaplar: Saltanattan Cumhuriyete | İTA.8.4.2 | 4.470 | 100/100 | haritasız; saltanat–halifelik–cumhuriyet karşılaştırması; neden–sonuç–ilke tablosu; Nutuk (saltanat) ve Kanun no 364, 429, 431 ile 1924 Anayasası maddeleri birebir |
 | 17 | Hukuk, Eğitim ve Kültür Alanında İnkılaplar | İTA.8.4.3 · İTA.8.4.4 | 4.748 | 100/100 | haritasız; Medeni Kanun önce–sonra tablosu (1926 ilk metin maddeleri); üç eğitim inkılabı karşılaştırması; kurum–amaç–temel esas tablosu; Tevhid-i Tedrisat, Medeni, Harf ve Darülfünun kanunları birebir |
+| 18 | Toplumsal Hayat, Ekonomi ve Sağlık: Gündelik Hayatta Cumhuriyet | İTA.8.4.5 · İTA.8.4.6 · İTA.8.4.7 | 4.878 | 100/100 | haritasız; toplumsal düzenlemeler tablosu; kadın hakları ülke tablosu; toplum–ekonomi–sağlık karşılaştırması; İnebolu ve İzmir İktisat Kongresi konuşmaları, Soyadı–Unvan ve Umumi Hıfzıssıhha kanunları birebir |
 
 ### İnkılap altyapısı
 - `src/content/lessons/lgs/inkilap/resmiProgram.js` — K3'ten birebir: 7 ünite adı, 39 kazanım
@@ -249,7 +250,7 @@ yazılmıştı; `Prose` bileşeni bilinçli olarak Markdown tablosu desteklemiyo
 
 ## 8. Sonraki oturum buradan devam eder
 
-1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.4.5**).
+1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.4.8**).
 2. İnkılap altyapısı hazır: yeni ders `src/content/lessons/lgs/inkilap/` altına, fabrika
    `createLgsHistoryLesson` ile yazılır ve `inkilap/index.js` listesine eklenir.
 3. **Bağlayıcı kurallar:** tarih, isim ve antlaşma maddeleri en az iki güvenilir kaynakla
