@@ -351,7 +351,7 @@ Konu adını düzeltmek canlı kütüphanede bağlantı kırar; kazanç risk etm
 | 22 | İTA.8.6 | Hatay'ın Anavatana Katılması | `lgs-tarih-hatayin-anavatana-katilmasi` | İTA.8.6.3 | ✅ tamamlandı |
 | 23 | İTA.8.7 | Atatürk'ün Ölümü ve Bıraktığı Eserler | `lgs-tarih-ataturkun-olumu-ve-eserleri` | İTA.8.7.1, İTA.8.7.2 | ✅ tamamlandı |
 | 24 | İTA.8.7 | II. Dünya Savaşı ve Türkiye'nin Denge Siyaseti | `lgs-tarih-ikinci-dunya-savasi-ve-turkiye` | İTA.8.7.3, İTA.8.7.4 | ✅ tamamlandı |
-| 25 | İTA.8.7 | Çok Partili Siyasi Hayata Geçiş | `lgs-tarih-cok-partili-hayata-gecis` | İTA.8.7.5 | planlandı |
+| 25 | İTA.8.7 | Çok Partili Siyasi Hayata Geçiş | `lgs-tarih-cok-partili-hayata-gecis` | İTA.8.7.5 | ✅ tamamlandı |
 
 ## 4.2. İnkılap Tarihi — kazanım listesi ve bağlayıcı sınırlar
 
@@ -429,8 +429,8 @@ Konu adını düzeltmek canlı kütüphanede bağlantı kırar; kazanç risk etm
 |---|---|---|---|---|---|
 | Türkçe | 76 | 41 | 35 | 20 | **20 (tamamlandı · 41/41)** |
 | Fen Bilimleri | 61 | 61 | 0 | 23 | **23 (tamamlandı · 61/61)** |
-| T.C. İnkılap Tarihi ve Atatürkçülük | 39 | 39 | 0 | 25 | 24 (sürüyor · 38/39) |
-| **Toplam** | **176** | **141** | **35** | **68** | **67** |
+| T.C. İnkılap Tarihi ve Atatürkçülük | 39 | 39 | 0 | 25 | 25 (tamam · 39/39) |
+| **Toplam** | **176** | **141** | **35** | **68** | **68** |
 
 *Sayılar `npm run test:lgs` çıktısından alınır (mufredat.js: Türkçe 41 ölçülür + 35 gerekçeli
 kapsam dışı).*

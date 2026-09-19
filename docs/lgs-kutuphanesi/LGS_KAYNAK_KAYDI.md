@@ -652,3 +652,20 @@ dersin içinde “Mustafa Kemal’in 1927’deki bakış açısını taşır” 
 | Toprak Mahsulleri Vergisi | 1943 | Dokuyan–Özçelik 2014 (4 Haziran 1943) | — | Yıl düzeyinde yazıldı |
 | Savaş sonrası | Truman Doktrini 12 Mart 1947; Marshall Planı 1948; NATO 18 Şubat 1952 | DergiPark (Truman Doktrini makaleleri) | AA; Cumhurbaşkanlığı (NATO); TTK Marshall makalesi | Doğrulandı; Marshall günü kaynaklarda farklı → yıl |
 | Harita | Sofya, Atina, Boğazlar, Ankara, Adana, Kahire; yaklaşık yerleşim | Yukarıdaki kaynaklar | — | Şematik; sınır ve cephe çizilmedi |
+
+### Ders 25 — `lgs-tarih-cok-partili-hayata-gecis` (İTA.8.7.5)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| İnönü, 19 Mayıs 1945 | Savaş tedbirleri kalktıkça demokrasi genişleyecek (özet) | I. Tuna, ÇTTAD XV/30 (2015) | Dörtlü Takrir metnindeki atıf | Özetlendi; birebir alıntı yapılmadı (iki kaynakta ifade farklı) |
+| Dörtlü Takrir | 7 Haziran 1945; Bayar, Koraltan, Menderes, Köprülü; giriş cümlesi ve üç madde **birebir** | Vikikaynak “Dörtlü Takrir” | Tuna 2015 (BCA 490..1.0.0/572.2277..3 alıntıları) | Doğrulandı |
+| Takririn reddi | 12 Haziran 1945, CHP Meclis Grubu | Tuna 2015 | Vikipedi “Dörtlü Takrir” | Doğrulandı |
+| Çiftçiyi Topraklandırma Kanunu | No 4753, 11 Haziran 1945; Menderes’in muhalefeti | TBMM kanun arşivi (Düstur c027) | Tuna 2015 | Doğrulandı |
+| BM Antlaşması | 26 Haziran 1945; Türkiye kurucu üye | Sarıçoban 2020; Özçelik | Genel kronolojiler | Doğrulandı; “demokratik” yerine Şart’ın ifadesi olan “insan hakları ve temel özgürlükler” kullanıldı |
+| Millî Kalkınma Partisi | Nuri Demirağ; başvuru 18 Temmuz 1945, onay 5 Eylül 1945 | Vikipedi (kaynakçalı) | Bilkent Ü. deposu; Khazar Ü. makalesi | Doğrulandı; derste “1945” |
+| Menderes ve Köprülü’nün ihracı | 21 Eylül 1945 | Tuna 2015 | Vikipedi | Doğrulandı; Koraltan ve Bayar için “ayrıldı” denildi (ihraç/istifa ayrıntısı kaynaklarda farklı) |
+| İnönü, 1 Kasım 1945 | “Bizim tek eksiğimiz…”, “Söz ve yazı hürriyeti…”, “1947 seçiminde…” **birebir** | TBMM Tutanak Dergisi D. VII, C. 20, 1. birleşim | Tuna 2015 (özet) | Birebir; tarama hataları düzeltildi |
+| Demokrat Parti | 7 Ocak 1946; genel başkan Bayar | Tuna 2015 | Vikipedi | Doğrulandı |
+| Tek dereceli seçim | Milletvekilleri Seçimi Kanunu No 4918, 5 Haziran 1946 | TBMM kanun arşivi (Düstur c028) | İnönü 1 Kasım 1945 (tek dereceli seçim isteği) | Doğrulandı |
+| 1946 seçimi | 21 Temmuz 1946; CHP 397, DP 61, bağımsız 7; ayrıntılı oy sayıları yayımlanmadı; “açık oy, gizli tasnif” | O. Akandere, ATAM Dergisi XXVI/76 (2010) | AA “Çok partili demokrasinin ilk sınavı” | Doğrulandı |
+| Seçim tartışması | Menderes (Kütahya) 26 Ağustos 1946 **birebir**; Barutçu’nun cevabı özetlendi | TBMM Tutanak Dergisi D. VIII, C. 1, 6. birleşim, s. 96–97, 202–203 | Akandere 2010 | Doğrulandı; iki taraf da verildi |

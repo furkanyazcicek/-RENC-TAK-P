@@ -19,13 +19,13 @@
 | Aşama 3 — Türkçe Gold Standard | ✅ Tamamlandı |
 | Aşama 4 — **Türkçe kapsamı** | ✅ **Tamamlandı — 41/41 ölçülebilir kazanım (%100)** |
 | Aşama 5 — **Fen Bilimleri** | ✅ **Tamamlandı — 61/61 ölçülebilir kazanım (%100) · 23 ders** |
-| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 38/39 kazanım · 24/25 ders · 1.–6. üniteler tamam, 7. ünite sürüyor (Gold Standard ✅) |
+| Aşama 6 — **İnkılap Tarihi** | ✅ **Tamamlandı — 39/39 kazanım (%100) · 25 ders** |
 | Aşama 7 — Son denetim | ⏸ — |
 
-**Aktif ders:** T.C. İnkılap Tarihi ve Atatürkçülük
-**Son tamamlanan ders notu:** İnkılap 24 — İkinci Dünya Savaşı ve Türkiye: Denge Siyaseti (İTA.8.7.3 · İTA.8.7.4)
-**Sıradaki kesin kazanım:** İTA.8.7.5
-**Sıradaki ders notu:** İnkılap planının 25. dersi — `lgs-tarih-cok-partili-hayata-gecis` (İTA.8.7.5)
+**Aktif ders:** — (üç dersin de bütün ölçülebilir kazanımları bağlandı)
+**Son tamamlanan ders notu:** İnkılap 25 — Çok Partili Siyasi Hayata Geçiş (İTA.8.7.5)
+**Sıradaki kesin kazanım:** — (kalan kazanım yok)
+**Sıradaki iş:** Aşama 7 son denetim (bkz. §6)
 
 ---
 
@@ -135,7 +135,7 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 
 ## 3b. T.C. İnkılap Tarihi ve Atatürkçülük — sürüyor
 
-**Kapsama: 38/39 kazanım · 24/25 ders · 1.–6. üniteler tamam, 7. ünite sürüyor**
+**Kapsama: 39/39 kazanım (%100) · 25 ders · 7 ünitenin hepsi tamam**
 
 > Sayaç düzeltmesi: 19., 20. ve 21. derslerin kayıt mesajlarında ve bu belgede kazanım sayısı bir fazla yazılmıştı (29, 32, 34). Doğrusu 28, 31 ve 33’tür. `npm run test:lgs` sayımı esas alındı; 22. dersten sonra gerçek durum 34/39’dur.
 
@@ -165,6 +165,7 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 | 22 | Hatay’ın Anavatana Katılması: Atatürk’ün Son Büyük Davası | İTA.8.6.3 | 4.119 | 100/100 | şematik Hatay atlası (Hatay 1937–1939 / Atatürk’ün yolculukları); aşama–ilke tablosu; Musul–Hatay karşılaştırması; 1936, 1937 ve 1938 Meclis açış konuşmaları birebir; özveri kanıtları (belge–davranış–aktarım ayrımı) |
 | 23 | Atatürk’ün Ölümü ve Bıraktığı Eserler | İTA.8.7.1 · İTA.8.7.2 | 4.550 | 100/100 | haritasız (kazanım coğrafi değil); yerli–yabancı basın tablosu; eser haritası (Cumhuriyet → inkılaplar → kurumlar → ilkeler → yazılı eserler); yazılı eserler tablosu; Resmî Gazete 4059, TBMM 11 Kasım 1938 tutanağı ve vasiyetname birebir |
 | 24 | İkinci Dünya Savaşı ve Türkiye: Denge Siyaseti | İTA.8.7.3 · İTA.8.7.4 | 5.056 | 100/100 | şematik atlas (yaklaşan tehditler / diplomasi); siyasi–sosyal–ekonomik etkiler tablosu; denge siyaseti adım tablosu; etkiler zinciri; Atatürk 1938 ve İnönü 1939 konuşmaları ile Millî Korunma Kanunu birebir; MacArthur metni için kaynak eleştirisi |
+| 25 | Çok Partili Siyasi Hayata Geçiş | İTA.8.7.5 | 4.422 | 100/100 | haritasız (kazanım coğrafi değil); demokrasinin gerekleri tablosu; hızlandıran gelişmeler zinciri; önceki denemeler karşılaştırması; Dörtlü Takrir, İnönü 1 Kasım 1945 ve Menderes 26 Ağustos 1946 birebir (iktidar cevabıyla birlikte) |
 
 ### İnkılap altyapısı
 - `src/content/lessons/lgs/inkilap/resmiProgram.js` — K3'ten birebir: 7 ünite adı, 39 kazanım
