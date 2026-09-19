@@ -413,3 +413,21 @@ dersin içinde “Mustafa Kemal’in 1927’deki bakış açısını taşır” 
 | İmzalayanlar | Hadi Paşa, Rıza Tevfik, Reşad Halis | TTK Sevr metni (imza listesi) | Genel kaynaklar | Doğrulandı |
 | Mustafa Kemal’in sözü | “Sevr Muâhedesi, Türk milleti için o kadar meş’ûm bir idam kararnamesidir…” | Nutuk, 12. bölüm (Franklin-Bouillon görüşmesi) — Vikikaynak | MEB ders kitaplarındaki “idam fermanı” ifadesi | **Birebir alıntı**; derste Nutuk’taki özgün biçim kullanıldı |
 | Nüfuz bölgeleri | Aynı gün İngiltere–Fransa–İtalya arasında ayrı antlaşma | Genel diplomasi tarihi kaynakları (Üçlü Antlaşma, 10 Ağustos 1920) | TDV İA | Sevr’in maddesi olmadığı derste ayrıca belirtildi |
+
+### Ders 11 — `lgs-tarih-dogu-ve-guney-cepheleri` (İTA.8.3.1)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Doğu harekâtı | 28 Eylül 1920’de başladı; Sarıkamış 29 Eylül, Kars 30 Ekim, Gümrü 7 Kasım 1920; komutan Kâzım Karabekir Paşa (15. Kolordu, Doğu Cephesi) | TDV İA “Kâzım Karabekir” | AA; DergiPark (Doğu Cephesi makaleleri) | Doğrulandı |
+| Gümrü Antlaşması | 2/3 Aralık 1920; taraflar “Türkiye Büyük Millet Meclisi Hükûmeti” ve “Ermenistan Cumhuriyeti”; imzalayanlar Kâzım Karabekir, Hamid Bey, Süleyman Necati; 10. madde **birebir** | Vikikaynak “Gümrü Antlaşması” (günümüz Türkçesiyle yayımlanmış metin) | Atatürk Ansiklopedisi “Gümrü Antlaşması”; Nutuk 7. bölüm | Doğrulandı; 10. madde birebir. Gün farkı (2/3 Aralık) nedeniyle “2/3 Aralık” |
+| Mustafa Kemal’in değerlendirmesi | “Efendiler, Gümrü Muâhedesi hükümet-i milliyenin akdettiği ilk muâhededir…” | Nutuk, 7. bölüm — Vikikaynak | Moskova (16 Mart 1921) ve Kars (13 Ekim 1921) antlaşmalarının tarihleri (Vikikaynak antlaşma metinleri) | **Birebir alıntı** |
+| Kars’ın durumu | 1878’de kaybedildi; Mondros’tan sonra Ermenistan’ın yönetimine girdi (İngilizler Nisan 1919’da Cenub-i Garbî Kafkas Hükûmeti’ni dağıtıp şehri Ermenilere bıraktı) | DergiPark “1877-1878’den 1920’ye Kadar Kars ve Çevresinde Rus-Ermeni İşbirliği” | E. Korkmaz, “30 Ekim Kars’ın Kurtuluş Savaşı” | Doğrulandı; 1918’deki geçici geri alma ve Nisan 1919 ayrıntısı derste yazılmadı |
+| Güneyde Fransız işgali | Maraş 29 Ekim, Urfa Ekim, Antep 5 Kasım 1919 (İngilizlerden devir); Fransız ordusunda Ermeni lejyonları | Kahramanmaraş Büyükşehir Belediyesi “Sütçü İmam Olayı”; TÜBA “Antep’in İşgali ve Kurtuluşu” | DergiPark “Antep Savunması: Bir Albayın Hatıratı” (A. Efe); TÜBA “Urfa’nın İşgali ve Kurtuluşu” | Doğrulandı; derste “Ekim–Kasım 1919” |
+| Sütçü İmam | 31 Ekim 1919 Uzunoluk olayı; Maraş direnişinin başlangıcı | AA “Maraş’ın işgaline karşı ilk kurşunu atan kahraman: Sütçü İmam” | Kahramanmaraş Büyükşehir Belediyesi | Doğrulandı |
+| Maraş’ın kurtuluşu | 12 Şubat 1920; yaklaşık üç hafta süren sokak savaşları | TDV İA “Kahramanmaraş” | AA “Millî Mücadele’de Güney Cephesi” | Doğrulandı |
+| Urfa | Ali Saip Bey önderliğinde kuşatma; Fransızlar 10–11 Nisan gecesi çekilmeye başladı | TÜBA “Urfa’nın İşgali ve Kurtuluşu” | AA “Urfa’yı ‘şanlı’ yapan destansı mücadele” | Doğrulandı; derste “11 Nisan’da çekilmeye başladı” |
+| Şahin Bey | Kilis–Antep yolunda (Elmalı Köprüsü) Fransız destek birliklerine karşı savaşırken şehit oldu; Karayılan onun komutasında | AA “Antep savunmasının simgesi: Şahin Bey” | TÜBA “Antep’in İşgali ve Kurtuluşu” (Mustafa Can) | Doğrulandı; gün (26/28 Mart) kaynaklarda farklı olduğundan yalnız “Mart 1920” |
+| Kılıç Ali | Mustafa Kemal (Heyet-i Temsiliye) tarafından Maraş–Antep Kuvâ-yı Millîye komutanı olarak gönderildi (Ekim 1919) | DergiPark “Millî Mücadele’de Güney Cephesinde Kılıç Ali Bey’in…” | DergiPark “Antep Savunmasında Kılıç Ali’nin Rolüne Yeniden Bakmak”; TÜBA | Doğrulandı |
+| Antep | 6 Şubat 1921 “Gazi” unvanı (Büyük Millet Meclisi); 8 Şubat 1921 teslim | TBMM tutanakları | TÜBA (Antep bölümü); AA | Doğrulandı |
+| Unvanlar | Maraş “Kahraman” (7 Şubat 1973), Urfa “Şanlı” (1984) | TDV İA “Kahramanmaraş”, “Şanlıurfa” | AA | Doğrulandı |
+| Güney Cephesi’nin kapanışı | Ankara Antlaşması (20 Ekim 1921) | Vikikaynak antlaşma metni | TTK antlaşma metinleri | Yalnız köprü olarak anıldı; ayrıntı İTA.8.3.5 dersinde |

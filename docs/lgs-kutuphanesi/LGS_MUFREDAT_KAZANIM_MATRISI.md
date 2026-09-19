@@ -337,7 +337,7 @@ Konu adını düzeltmek canlı kütüphanede bağlantı kırar; kazanç risk etm
 | 8 | İTA.8.2 | Millî Mücadele'nin Hazırlık Dönemi: Genelgeler ve Kongreler | `lgs-tarih-hazirlik-donemi-genelgeler-kongreler` | İTA.8.2.5 | ✅ tamamlandı |
 | 9 | İTA.8.2 | Misakımillî ve Büyük Millet Meclisi'nin Açılışı | `lgs-tarih-misakimilli-ve-bmm` | İTA.8.2.6, İTA.8.2.7 | ✅ tamamlandı |
 | 10 | İTA.8.2 | Sevr Antlaşması ve Tepkiler | `lgs-tarih-sevr-ve-tepkiler` | İTA.8.2.8 | ✅ tamamlandı |
-| 11 | İTA.8.3 | Doğu ve Güney Cepheleri | `lgs-tarih-dogu-ve-guney-cepheleri` | İTA.8.3.1 | planlandı |
+| 11 | İTA.8.3 | Doğu ve Güney Cepheleri | `lgs-tarih-dogu-ve-guney-cepheleri` | İTA.8.3.1 | ✅ tamamlandı |
 | 12 | İTA.8.3 | Batı Cephesi: Düzenli Ordu ve İnönü Muharebeleri | `lgs-tarih-bati-cephesi` | İTA.8.3.2, İTA.8.3.3 | planlandı |
 | 13 | İTA.8.3 | Tekalif-i Millîye, Sakarya ve Büyük Taarruz | `lgs-tarih-sakarya-ve-buyuk-taarruz` | İTA.8.3.4, İTA.8.3.5 | planlandı |
 | 14 | İTA.8.3 | Lozan Antlaşması | `lgs-tarih-lozan-antlasmasi` | İTA.8.3.6, İTA.8.3.7 | planlandı |
@@ -429,8 +429,8 @@ Konu adını düzeltmek canlı kütüphanede bağlantı kırar; kazanç risk etm
 |---|---|---|---|---|---|
 | Türkçe | 76 | 41 | 35 | 20 | **20 (tamamlandı · 41/41)** |
 | Fen Bilimleri | 61 | 61 | 0 | 23 | **23 (tamamlandı · 61/61)** |
-| T.C. İnkılap Tarihi ve Atatürkçülük | 39 | 39 | 0 | 25 | 10 (sürüyor · 12/39) |
-| **Toplam** | **176** | **141** | **35** | **68** | **53** |
+| T.C. İnkılap Tarihi ve Atatürkçülük | 39 | 39 | 0 | 25 | 11 (sürüyor · 13/39) |
+| **Toplam** | **176** | **141** | **35** | **68** | **54** |
 
 *Sayılar `npm run test:lgs` çıktısından alınır (mufredat.js: Türkçe 41 ölçülür + 35 gerekçeli
 kapsam dışı).*

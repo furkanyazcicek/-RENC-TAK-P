@@ -19,13 +19,13 @@
 | Aşama 3 — Türkçe Gold Standard | ✅ Tamamlandı |
 | Aşama 4 — **Türkçe kapsamı** | ✅ **Tamamlandı — 41/41 ölçülebilir kazanım (%100)** |
 | Aşama 5 — **Fen Bilimleri** | ✅ **Tamamlandı — 61/61 ölçülebilir kazanım (%100) · 23 ders** |
-| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 12/39 kazanım · 10/25 ders · 1. ve 2. ünite tamam (Gold Standard ✅) |
+| Aşama 6 — İnkılap Tarihi | 🔄 Sürüyor — 13/39 kazanım · 11/25 ders · 1. ve 2. ünite tamam, 3. ünite başladı (Gold Standard ✅) |
 | Aşama 7 — Son denetim | ⏸ — |
 
 **Aktif ders:** T.C. İnkılap Tarihi ve Atatürkçülük
-**Son tamamlanan ders notu:** İnkılap 10 — Sevr Antlaşması ve Tepkiler (İTA.8.2.8) · 2. ünite tamam
-**Sıradaki kesin kazanım:** İTA.8.3.1
-**Sıradaki ders notu:** İnkılap planının 11. dersi — `lgs-tarih-dogu-ve-guney-cepheleri` (İTA.8.3.1)
+**Son tamamlanan ders notu:** İnkılap 11 — Doğu ve Güney Cepheleri (İTA.8.3.1) · 3. ünite başladı
+**Sıradaki kesin kazanım:** İTA.8.3.2
+**Sıradaki ders notu:** İnkılap planının 12. dersi — `lgs-tarih-bati-cephesi` (İTA.8.3.2 · İTA.8.3.3)
 
 ---
 
@@ -135,7 +135,7 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 
 ## 3b. T.C. İnkılap Tarihi ve Atatürkçülük — sürüyor
 
-**Kapsama: 12/39 kazanım · 10/25 ders · 1. ve 2. üniteler tamam**
+**Kapsama: 13/39 kazanım · 11/25 ders · 1. ve 2. üniteler tamam, 3. ünite sürüyor**
 
 | # | Ders notu | Kazanımlar | Kelime | Puan | Not |
 |---|---|---|---|---|---|
@@ -149,6 +149,7 @@ terimlerin derslerde geçtiğini denetler. Bulgular ve düzeltmeler: `LGS_KAYNAK
 | 8 | Millî Mücadele’nin Hazırlık Dönemi: Samsun’dan Ankara’ya | İTA.8.2.5 | 5.084 | 100/100 | yol atlası; Havza ve Amasya genelgeleri ile Sivas manda tartışması Nutuk’tan birebir; sorun→çözüm tablosu; basın |
 | 9 | Misakımillî, Büyük Millet Meclisi ve Meclis’e Karşı Ayaklanmalar | İTA.8.2.6 · İTA.8.2.7 | 4.726 | 100/100 | ayaklanma atlası; Misakımillî 6. madde ve Hıyanet-i Vataniye 1. madde birebir; iki meclis karşılaştırması |
 | 10 | Sevr Antlaşması ve Tepkiler: Kâğıt Üzerinde Kalan Bir Paylaşım | İTA.8.2.8 | 4.226 | 100/100 | Sevr paylaşım atlası (madde/nüfuz ayrımı); Sevr–Misakımillî tablosu; Sevr 155. madde ve Nutuk’taki “idam kararnamesi” sözü birebir |
+| 11 | Doğu ve Güney Cepheleri: İlk Zafer ve Şehirlerin Direnişi | İTA.8.3.1 | 4.189 | 100/100 | iki katmanlı cephe atlası (harekât çizgisi / şehir savunmaları); Gümrü 10. madde ve Nutuk’taki Gümrü değerlendirmesi birebir; şehir–kahraman–unvan tablosu |
 
 ### İnkılap altyapısı
 - `src/content/lessons/lgs/inkilap/resmiProgram.js` — K3'ten birebir: 7 ünite adı, 39 kazanım
@@ -242,7 +243,7 @@ yazılmıştı; `Prose` bileşeni bilinçli olarak Markdown tablosu desteklemiyo
 
 ## 8. Sonraki oturum buradan devam eder
 
-1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.3.1**).
+1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.3.2**).
 2. İnkılap altyapısı hazır: yeni ders `src/content/lessons/lgs/inkilap/` altına, fabrika
    `createLgsHistoryLesson` ile yazılır ve `inkilap/index.js` listesine eklenir.
 3. **Bağlayıcı kurallar:** tarih, isim ve antlaşma maddeleri en az iki güvenilir kaynakla
