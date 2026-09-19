@@ -4134,6 +4134,8 @@
     font-size: 0.9375rem;
     line-height: 1.7;
     color: rgb(var(--c-ink) / 0.74);
+    /* Dar kenar sütununda “Dinlediklerinde/izlediklerinde” gibi uzun ifadeler taşmasın */
+    overflow-wrap: break-word;
   }
 
   @container lesson (min-width: 56rem) {
@@ -4301,8 +4303,10 @@
   .lesson-cause-effect-item {
     position: relative;
     display: grid;
-    grid-template-columns: auto 1fr;
+    /* minmax(0, …): dört sütunlu düzende uzun Türkçe kelimeler (ör. “cumhurbaşkanlığı”) kutuyu taşırmasın */
+    grid-template-columns: auto minmax(0, 1fr);
     gap: 0.7rem;
+    overflow-wrap: break-word;
     border-top: 2px solid rgb(var(--c-brand-300));
     padding-top: 0.75rem;
   }

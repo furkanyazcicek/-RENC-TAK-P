@@ -4,7 +4,7 @@
 > "Tamamlandı" yazan bir satır, testleri geçmiş ve önizlemede görülmüş içerik demektir.
 > Yarım iş "tamamlandı" işaretlenmez.
 
-**Son güncelleme:** 18 Eylül 2026
+**Son güncelleme:** 19 Eylül 2026
 **Hedef:** 2027 LGS · 2026-2027 8. sınıf kohortu · 2018/2019 MEB programları
 
 ---
@@ -20,12 +20,12 @@
 | Aşama 4 — **Türkçe kapsamı** | ✅ **Tamamlandı — 41/41 ölçülebilir kazanım (%100)** |
 | Aşama 5 — **Fen Bilimleri** | ✅ **Tamamlandı — 61/61 ölçülebilir kazanım (%100) · 23 ders** |
 | Aşama 6 — **İnkılap Tarihi** | ✅ **Tamamlandı — 39/39 kazanım (%100) · 25 ders** |
-| Aşama 7 — Son denetim | ⏸ — |
+| Aşama 7 — **Son denetim** | ✅ **Tamamlandı — 6 komutun hepsi geçti · 68 ders masaüstü ve telefonda tarandı** |
 
 **Aktif ders:** — (üç dersin de bütün ölçülebilir kazanımları bağlandı)
 **Son tamamlanan ders notu:** İnkılap 25 — Çok Partili Siyasi Hayata Geçiş (İTA.8.7.5)
 **Sıradaki kesin kazanım:** — (kalan kazanım yok)
-**Sıradaki iş:** Aşama 7 son denetim (bkz. §6)
+**Sıradaki iş:** Kullanıcı onayı bekleyen işler (bkz. §8)
 
 ---
 
@@ -225,25 +225,33 @@ yükleme betiği konuyu bulamazsa o üç dersi atlar (mevcut güvenlik davranı�
 
 ---
 
-## 6. Çalıştırılan doğrulamalar
+## 6. Çalıştırılan doğrulamalar (Aşama 7 — son denetim, 19 Eylül 2026)
 
 | Komut | Sonuç |
 |---|---|
-| `npm run test:lgs` | ✅ 20 ders · 0 hata · 3 uyarı (üçü de eksik konu uyarısı) |
-| `npm run test:lesson-content` | ✅ 205 ders · 0 hata |
-| `npm run test:lesson-document` | ✅ 25 geçti |
+| `npm run test:lesson-document` | ✅ 25 geçti, 0 kaldı |
+| `npm run test:lesson-content` | ✅ 253 ders · 0 hata · **68 LGS dersinin hepsi 100/100, hiçbirinde derinlik uyarısı yok** (32 uyarı yalnız TYT/AYT derslerinde, önceden vardı) |
 | `npm run test:library-curriculum` | ✅ geçti |
-| `npm run build` | ✅ geçti |
-| `npm run seed:lessons -- --dry` | ✅ 205 ders hazır, yazma yapılmadı |
+| `npm run test:lgs` | ✅ 68 ders · 0 hata · 3 uyarı (üçü de onay bekleyen Türkçe veritabanı konusu) · Türkçe 41/41, Fen 61/61, İnkılap 39/39 |
+| `npm run build` | ✅ geçti (stil düzeltmesinden sonra yeniden çalıştırıldı) |
+| `npm run seed:lessons -- --dry` | ✅ 253 dersin hepsi şemadan geçti, 0 red · **veritabanına hiçbir şey yazılmadı** |
 
-**Görsel önizleme:** Masaüstü (1100 px) ve telefon (390 px) genişliklerinde incelendi.
-Yatay taşma yok, konsol hatası yok, dokunma hedefleri ≥ 24 px, tablolar mobilde
-okunabilir kalıyor, etkileşimli bloklar (karar ağacı, cümle analizi, simülasyon)
-doğru/yanlış/seçili durumlarını gösteriyor.
+**Görsel denetim:** 68 LGS dersinin hepsi önizlemede hem masaüstü (1024 px) hem telefon
+(390 px) genişliğinde otomatik tarandı: sayfa yana kaymıyor, konsol hatası yok. Harita
+içeren her tarih dersinde etiket çakışması ve tuval dışına taşan etiket denetlendi (0).
+Telefonda harita kaydırma alanının kenar boşluğuna 8 px uzanması tasarım gereğidir
+(`.lesson-map-scroll` negatif kenar payı), hata değildir.
 
-**Düzeltilen bir sorun:** Görsel Okuma dersinin simülasyon metnine Markdown tablosu
-yazılmıştı; `Prose` bileşeni bilinçli olarak Markdown tablosu desteklemiyor. Fabrikaya
-`simulationTable` alanı eklendi ve veri gerçek bir `table` bloğu olarak sunuldu.
+**Son denetimde düzeltilenler (okuyucu ve stil):**
+- **Soru ipucu başlığı:** Tarih notlarında başlık “Soruda Soruda … nasıl anlarım? nasıl
+  tanınır?” biçiminde bozuk görünüyordu. Kavram zaten soru cümlesiyse artık olduğu gibi
+  gösteriliyor (`blocks.jsx`). Türkçe ve Fen başlıkları değişmedi.
+- **Sebep–sonuç kutuları:** Dört sütunlu düzende “cumhurbaşkanlığı” gibi uzun kelimeler
+  kutuyu 6–15 px taşırıyordu (4 tarih dersi). Metin sütunu daralabilir hâle getirildi.
+- **Kenar notları:** “Dinlediklerinde/izlediklerinde” gibi uzun ifadeler dar kenar
+  sütununu 15 px taşırıyordu (2 Türkçe dersi). Güvenli satır kırma eklendi.
+- **Sayaç düzeltmesi:** 19–21. İnkılap derslerinin kayıt mesajlarında kazanım sayısı bir
+  fazla yazılmıştı; belgeler `test:lgs` sayımına göre düzeltildi.
 
 ---
 
@@ -259,15 +267,14 @@ yazılmıştı; `Prose` bileşeni bilinçli olarak Markdown tablosu desteklemiyo
 
 ## 8. Sonraki oturum buradan devam eder
 
-1. `npm run test:lgs` çalıştır; “Sıradaki kesin kazanım” satırını oku (**İTA.8.7.5**).
-2. İnkılap altyapısı hazır: yeni ders `src/content/lessons/lgs/inkilap/` altına, fabrika
-   `createLgsHistoryLesson` ile yazılır ve `inkilap/index.js` listesine eklenir.
-3. **Bağlayıcı kurallar:** tarih, isim ve antlaşma maddeleri en az iki güvenilir kaynakla
-   doğrulanır ve `LGS_KAYNAK_KAYDI.md` §7'ye işlenir; kaynaklar arasında gün farkı varsa
-   yalnız ay/yıl yazılır; tek nedenli anlatı yok; koordinat, sınır ya da cephe hattı
-   uydurulmaz; belge alıntıları sadeleştirme ise öyle etiketlenir; TYT tarih içeriği
-   kopyalanmaz.
-4. Özellikle dikkat: İTA.8.2.2 (ç) 1915 Olayları ve Tehcir Kanunu — olgusal, programın
-   çerçevesinde, iki kaynakla; farklı değerlendirmeler olduğu ve Türkiye'nin ortak tarih
-   komisyonu önerisi belirtilir.
-5. Her ders sonrası `npm run test:lgs` → `npm run test:lesson-content` → `npm run build`.
+Üretim görevi tamamlandı: Türkçe 41/41, Fen 61/61, İnkılap 39/39 ölçülebilir kazanım,
+68 ders notu. Kalan işlerin hepsi **kullanıcı onayı** gerektirir:
+
+1. **Veritabanı konu eklemesi:** `supabase/migration_lgs_konu_tamamlama.sql` (Türkçe’de üç
+   eksik başlık). Onay gelmeden çalıştırılmaz. Onaydan sonra yedek alınır, önce deneme.
+2. **Ders notlarının veritabanına yüklenmesi:** `npm run seed:lessons` (deneme modu
+   geçti). Canlı yazma yalnız açık onayla yapılır.
+3. **Yayına alma:** Bu görevin bütün kayıtları yalnız yerelde; `origin/main`’e gönderilmedi.
+   `main`’e gönderilen her şey doğrudan canlı siteye iner — ayrı onay gerekir.
+4. **İsteğe bağlı:** Yazdırılabilir çalışma notları (`scripts/ham-bilgi/`) ve çıkmış LGS
+   sorularının kazanıma göre sayımı (sıklık bilgisi için).
