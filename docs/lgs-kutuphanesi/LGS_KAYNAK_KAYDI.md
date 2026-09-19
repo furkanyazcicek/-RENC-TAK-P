@@ -611,3 +611,21 @@ dersin içinde “Mustafa Kemal’in 1927’deki bakış açısını taşır” 
 | Katılış | 23 Haziran 1939 Türk–Fransız anlaşması; 29 Haziran 1939 Hatay Meclisi’nin katılma kararı | T.C. Hatay Valiliği “Tarihçe” | Cumhuriyet “Haftanın tarihine bakış”; ATAM Dergisi 2020, sayı 101 | Doğrulandı; S. Meydan “30 Haziran” yazıyor, çoğunluk ve resmî kaynak 29 Haziran → 29 Haziran |
 | Tevfik Rüştü Aras | Dışişleri Bakanı 1925–1938 | T.C. Dışişleri Bakanlığı özgeçmiş | Vikipedi | Doğrulandı (4 Mart 1925–11 Kasım 1938) |
 | Harita | Ankara, Konya, Adana, Mersin, İskenderun, Antakya, Halep; yaklaşık yerleşim | Yukarıdaki kaynaklar | — | Şematik; sınır çizilmedi |
+
+### Ders 23 — `lgs-tarih-ataturkun-olumu-ve-eserleri` (İTA.8.7.1 · İTA.8.7.2)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Ölüm saati ve yeri | 10 Kasım 1938 Perşembe, 9.05, Dolmabahçe | Resmî Gazete 4059 (10 Teşrinisani 1938), tabip raporu | TBMM Zabıt Ceridesi D. V, C. 27, 3. inikad (Başvekâlet tezkeresi); Bayram 2025 (NYT aktarımı) | Doğrulandı |
+| Hükûmet tebliği | “…insanlık büyük evlâdını kaybetti…”, “ölmez olan onun büyük eseri Cumhuriyet Türkiyesidir”, “vediası” **birebir**; m. 33 vekâlet, m. 34 derhal seçim | Resmî Gazete 4059, s. 1 | Bayram 2025 (NYT 11 Kasım 1938 s. 1’de tebliğin çevirisi) | Birebir; bir cümle (“ziyamdan”) PDF okuma hatası şüphesiyle alıntıya alınmadı |
+| Anayasal geçiş | 1924 Anayasası m. 31, 33, 34 | Anayasa Mahkemesi 1924 metni | Resmî Gazete 4059 | Doğrulandı |
+| İnönü’nün seçimi | 11 Kasım 1938; 348 katılım, 348 oy, “müttefikan”; Malatya mebusu; konuşmadan bölüm **birebir** | TBMM Zabıt Ceridesi 11 Kasım 1938, s. 17–18 | Vikipedi “1938 Türkiye cumhurbaşkanlığı seçimi”; AA “1923’ten günümüze Cumhurbaşkanı seçimleri” | Doğrulandı; toplam milletvekili sayısı yazılmadı |
+| Yerli basın manşetleri | Ulus, Tan, Son Posta (11 Kasım 1938) | C. Akseki, “Atatürk’ün Ölümünün Türk Ulusal Basınına Yansıması (1938-1939)”, 2016 (gazetelere dayanır) | Resmî Gazete tebliğiyle ifade uyumu (Son Posta 10 Kasım manşeti tebliği tekrarlar) | Manşetler tek araştırmadan; ikincil aktarım olarak etiketlendi |
+| Yabancı basın | NYT 11 Kasım 1938 s. 1; TWP 11 Kasım 1938 “Modern Türkiye’nin Mimarı”; devrimlerin sayılması; iç ve dış politikanın sürmesi beklentisi | İ. Bayram, Vakanüvis 10/1 (2025) | Akseki 2016 (yabancı gazetelerin çevirileri) | Doğrulandı; ifadeler Türkçe çeviri olarak etiketlendi; TWP haberi s. 14’te olduğu için “ilk sayfalarda” genellemesi kullanılmadı |
+| Cenaze takvimi | 16–18 Kasım Dolmabahçe; 17 Kasım izdiham 11 ölü; 19 Kasım top arabası–Sarayburnu–Yavuz–İzmit–tren; 20 Kasım Ankara, TBMM önü katafalk; 21 Kasım tören, Etnografya Müzesi | Akseki 2016 | Vikipedi “Atatürk’ün ölümü ve devlet cenaze töreni” (T. Boran, Ankara Ü. TİTE) | Doğrulandı |
+| Yabancı savaş gemileri ve birlikler | İngiltere, SSCB, Yunanistan, Fransa, Romanya gemileri; Ankara’da yabancı askerî birlikler | Akseki 2016 (Ulus, Cumhuriyet 20–22 Kasım 1938) | Vikipedi (yabancı katılımlı tören) | Gemi listesi tek kaynakta → “dönemin gazetelerine göre” diye verildi |
+| Anıtkabir | 10 Kasım 1953 nakil | Vikipedi | Bayram 2025 (mozole beklentisi) / genel kronolojiler | Doğrulandı |
+| Vasiyetname | 5 Eylül 1938, el yazısı; giriş + m. 1 + m. 6 **birebir** | Türk Tarih Kurumu “Atatürk’ün Vasiyeti” | Hukuki Haber; A. İ. Karacan (vasiyetname incelemesi) | Doğrulandı |
+| Yazılı eserler | Takımın Muharebe Talimi (1908, çeviri), Cumalı Ordugâhı (1909), Tâbiye Tatbikat ve Seyahati (1911), Zabit ve Kumandan ile Hasbihal (1914 yazım, 1918 yayım), Nutuk (1927), Medeni Bilgiler (1930, Afet adıyla), Geometri (1937, adsız) | MEB “Atatürk: Yazılı Eserleri” | Vikipedi (Zabit ve Kumandan, Medeni Bilgiler, Geometri maddeleri); MSB ATA sitesi | Doğrulandı |
+| “En büyük eserim Türkiye Cumhuriyeti’dir.” | Atatürk’e atfedilen söz; kesin tarih ve yer belgelenmedi | MEB öğretim programı (açıklamada geçer) | Resmî Gazete 4059 (aynı düşünce hükûmet tebliğinde) | Atfedilen söz olarak sunuldu |
+| UNESCO | 1978 Genel Konferans kararı; 1981 Atatürk Yılı; gerekçe özeti | UNESCO Türkiye Millî Komisyonu | Vikipedi “Atatürk Yılı”; ATAM (A. Canlı) | Doğrulandı; gerekçe özetlendi |

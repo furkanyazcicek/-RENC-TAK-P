@@ -349,7 +349,7 @@ Konu adını düzeltmek canlı kütüphanede bağlantı kırar; kazanç risk etm
 | 20 | İTA.8.5 | Demokratikleşme Çabaları: Partiler, Suikast Girişimi, Tehditler | `lgs-tarih-demokratiklesme-cabalari` | İTA.8.5.1, İTA.8.5.2, İTA.8.5.3 | ✅ tamamlandı |
 | 21 | İTA.8.6 | Atatürk Dönemi Dış Politikası: İlkeler ve Gelişmeler | `lgs-tarih-ataturk-donemi-dis-politika` | İTA.8.6.1, İTA.8.6.2 | ✅ tamamlandı |
 | 22 | İTA.8.6 | Hatay'ın Anavatana Katılması | `lgs-tarih-hatayin-anavatana-katilmasi` | İTA.8.6.3 | ✅ tamamlandı |
-| 23 | İTA.8.7 | Atatürk'ün Ölümü ve Bıraktığı Eserler | `lgs-tarih-ataturkun-olumu-ve-eserleri` | İTA.8.7.1, İTA.8.7.2 | planlandı |
+| 23 | İTA.8.7 | Atatürk'ün Ölümü ve Bıraktığı Eserler | `lgs-tarih-ataturkun-olumu-ve-eserleri` | İTA.8.7.1, İTA.8.7.2 | ✅ tamamlandı |
 | 24 | İTA.8.7 | II. Dünya Savaşı ve Türkiye'nin Denge Siyaseti | `lgs-tarih-ikinci-dunya-savasi-ve-turkiye` | İTA.8.7.3, İTA.8.7.4 | planlandı |
 | 25 | İTA.8.7 | Çok Partili Siyasi Hayata Geçiş | `lgs-tarih-cok-partili-hayata-gecis` | İTA.8.7.5 | planlandı |
 
@@ -429,8 +429,8 @@ Konu adını düzeltmek canlı kütüphanede bağlantı kırar; kazanç risk etm
 |---|---|---|---|---|---|
 | Türkçe | 76 | 41 | 35 | 20 | **20 (tamamlandı · 41/41)** |
 | Fen Bilimleri | 61 | 61 | 0 | 23 | **23 (tamamlandı · 61/61)** |
-| T.C. İnkılap Tarihi ve Atatürkçülük | 39 | 39 | 0 | 25 | 22 (sürüyor · 34/39) |
-| **Toplam** | **176** | **141** | **35** | **68** | **65** |
+| T.C. İnkılap Tarihi ve Atatürkçülük | 39 | 39 | 0 | 25 | 23 (sürüyor · 36/39) |
+| **Toplam** | **176** | **141** | **35** | **68** | **66** |
 
 *Sayılar `npm run test:lgs` çıktısından alınır (mufredat.js: Türkçe 41 ölçülür + 35 gerekçeli
 kapsam dışı).*

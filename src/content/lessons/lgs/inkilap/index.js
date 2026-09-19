@@ -27,5 +27,6 @@ import cumhuriyetinKazanimlari from './cumhuriyetin-kazanimlari.js'
 import demokratiklesmeCabalari from './demokratiklesme-cabalari.js'
 import ataturkDonemiDisPolitika from './ataturk-donemi-dis-politika.js'
 import hatayinAnavatanaKatilmasi from './hatayin-anavatana-katilmasi.js'
+import ataturkunOlumuVeEserleri from './ataturkun-olumu-ve-eserleri.js'
 
-export const LGS_INKILAP_DERSLERI = [yirminciYuzyilBasindaOsmanli, mustafaKemalinYetismesi, mustafaKemalAskerlikHayati, birinciDunyaSavasiSebepler, osmanliCepheleri, mondrosVeTutumlar, kuvayiMilliyeVeCemiyetler, hazirlikDonemi, misakimilliVeBmm, sevrVeTepkiler, doguVeGuneyCepheleri, batiCephesi, sakaryaVeBuyukTaarruz, lozanAntlasmasi, ataturkIlkeleri, siyasiInkilaplar, hukukEgitimKultur, toplumsalVeEkonomik, cumhuriyetinKazanimlari, demokratiklesmeCabalari, ataturkDonemiDisPolitika, hatayinAnavatanaKatilmasi]
+export const LGS_INKILAP_DERSLERI = [yirminciYuzyilBasindaOsmanli, mustafaKemalinYetismesi, mustafaKemalAskerlikHayati, birinciDunyaSavasiSebepler, osmanliCepheleri, mondrosVeTutumlar, kuvayiMilliyeVeCemiyetler, hazirlikDonemi, misakimilliVeBmm, sevrVeTepkiler, doguVeGuneyCepheleri, batiCephesi, sakaryaVeBuyukTaarruz, lozanAntlasmasi, ataturkIlkeleri, siyasiInkilaplar, hukukEgitimKultur, toplumsalVeEkonomik, cumhuriyetinKazanimlari, demokratiklesmeCabalari, ataturkDonemiDisPolitika, hatayinAnavatanaKatilmasi, ataturkunOlumuVeEserleri]
