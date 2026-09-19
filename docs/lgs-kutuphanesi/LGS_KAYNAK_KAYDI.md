@@ -562,3 +562,17 @@ dersin içinde “Mustafa Kemal’in 1927’deki bakış açısını taşır” 
 | Akılcılık kanıtı | Sakarya’ya çekilme direktifi; “Askerliğin icabını bilâ-tereddüt tatbik edelim.” | Nutuk 12. bölüm (Ders 13) | — | Birebir (Nutuk) |
 | Geometri kitabı | 1936–1937 kışı; 1937’de yazar adı olmadan yayımlandı; 1971 TDK ikinci baskısı, Agop Dilaçar önsözü; terimler | Vikipedi “Geometri (kitap)” | Sözcü; matematikciler.com | Kişi kartında “Dilaçar’ın belirttiğine göre” biçiminde aktarıldı |
 | Kaynağı tartışmalı sözler | “Benim manevi mirasım…”, bazı sanat–spor sözleri | — | — | **Kullanılmadı** |
+
+### Ders 20 — `lgs-tarih-demokratiklesme-cabalari` (İTA.8.5.1 · İTA.8.5.2 · İTA.8.5.3)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Halk Fırkası | 7 Aralık 1922 duyuru (**birebir**, Nutuk); 9 Eylül 1923 kuruluş; 10 Kasım 1924 “Cumhuriyet” eklendi | Nutuk 15. bölüm “Halk Fırkasını teşkil teşebbüsü” | Atatürk Ansiklopedisi “Cumhuriyet Halk Fırkası (1923-1938)”; DergiPark | Doğrulandı |
+| Terakkiperver Cumhuriyet Fırkası | 17 Kasım 1924; Kâzım Karabekir (başkan), Rauf, Ali Fuat, Refet, Adnan; 3 Haziran 1925’te Takrir-i Sükûn’a dayanılarak kapatıldı; program maddesi “efkâr ve i’tikadât-ı diniyeye hürmetkâr” | TDV İA (Cebesoy, İnönü, İstiklal Mahkemeleri maddeleri) | Nutuk 18. bölüm (program eleştirisi **birebir**) | Doğrulandı; Nutuk eleştirisi iktidarın görüşü olarak etiketlendi |
+| Şeyh Said İsyanı | Şubat 1925 başladı, Nisan 1925 bastırıldı | Nutuk 18. bölüm (“Şark İsyanı”) | TDV İA (İstiklal Mahkemeleri) | Doğrulandı; gün yazılmadı; sebepler çok boyutlu sunuldu |
+| Takrir-i Sükûn | Kanun no 578, 4 Mart 1925; m. 1–2 **birebir**; iki yıl | TBMM kanun arşivi | Nutuk 18. bölüm (süre sonunda Meclis’e getirildi) | Doğrulandı; “1929’a kadar” ifadesi ikinci kaynakla doğrulanmadığı için çıkarıldı |
+| İzmir suikast girişimi | Haziran 1926; Giritli Şevki’nin ihbarı; Ziya Hurşit; otelde silah ve bombalar; İstiklal Mahkemesi; muhalefetin tasfiyesi; komutanların çoğu beraat | Cumhuriyet (İzmir Suikastı, 16 Haziran–9 Temmuz 1926; S. Meydan) | Vikipedi (kaynakçalı); belgeseltarih.com | Plan günü kaynaklarda 14/15/16 Haziran → “Haziran 1926”; idam sayısı yazılmadı |
+| “Benim naçiz vücudum…” | Yaygın aktarım olarak verildi | İşte Atatürk | Cumhuriyet, Vikipedi | Birincil kaynak bloğu olarak kullanılmadı; “yaygın olarak aktarılır” diye sunuldu |
+| Serbest Cumhuriyet Fırkası | 12 Ağustos 1930; Fethi (Okyar); Mustafa Kemal’in isteği; 17 Kasım 1930’da feshedildi | Atatürk Ansiklopedisi “Serbest Cumhuriyet Fırkası” | TDV İA “Okyar, Ali Fethi” | Doğrulandı |
+| Menemen Olayı | 23 Aralık 1930; Kubilay ve iki bekçi | Menemen Belediyesi | ATAM Dergisi (2012); historystudies | Doğrulandı |
+| Olağanüstü tedbirlerin savunusu | “…kanunun fevkine çıkmak için vasıta olarak kullanmadık.” **birebir** | Nutuk 18. bölüm | — | Mustafa Kemal’in savunması olarak etiketlendi |
