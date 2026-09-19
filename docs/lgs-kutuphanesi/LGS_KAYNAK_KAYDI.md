@@ -503,3 +503,18 @@ dersin içinde “Mustafa Kemal’in 1927’deki bakış açısını taşır” 
 | Devletçiliğin sınırı (Mustafa Şeref Bey) | Düzenler, denetler, korur; kâr amacıyla ticarete girmez | H. Uzun (CHF Üçüncü Büyük Kongre Zabıtları aktarımı) | — | Yalnız kişi kartında özetlendi; birincil kaynak bloğu yapılmadı |
 | 1982 Anayasası | m. 2 (Atatürk milliyetçiliğine bağlı, demokratik, laik ve sosyal hukuk devleti), m. 4 (değiştirilemez hükümler) | Vikikaynak 1982 Anayasası metni | Anayasa Mahkemesi mevzuat sayfası | Doğrulandı |
 | Harita | Bu derste harita yok; görsel omurga kronoloji ve kavram zinciri | — | — | Program “kavramsal düzey” istediği için coğrafi harita uydurulmadı |
+
+### Ders 16 — `lgs-tarih-siyasi-inkilaplar` (İTA.8.4.2)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Saltanatın kaldırılması | 1 Kasım 1922; Lozan’a “müşterek davet” sebep; halifelik ayrıldı ve bırakıldı; Müşterek Encümen konuşması **birebir** | Nutuk 14. bölüm (“Saltanatın lağvı”, “Müşterek Encümen’e anlattığım hakikat”, “…son safhası”) | TDV İA “Lozan Antlaşması” (davet) | Doğrulandı; davet günü (27 Ekim) yerine “Ekim 1922” |
+| Vahdettin’in ayrılışı | 17 Kasım 1922, İngiliz savaş gemisi, İngiliz himayesi | Nutuk 14. bölüm (17 Teşrinisani telgrafı ve Harrington mektubu) | Genel kronolojiler | Doğrulandı |
+| Abdülmecid Efendi | Kasım 1922’de Meclis halife seçti; 3 Mart 1924’te hanedanla yurt dışına | Nutuk 14. bölüm | Kanun no 431 | Doğrulandı; seçim günü yazılmadı |
+| Ankara | İsmet Paşa teklifi 9 Ekim 1923 (≈14 imza); kabul 13 Ekim 1923; “makarr-ı idâresi, Ankara şehridir”; Refet Paşa ve bazı İstanbul mebusları İstanbul’u savundu | Nutuk 15. bölüm “Türkiye Devleti’nin makarr-ı idâresi Ankara şehridir” | MEB okul sayfaları (13 Ekim 1923) | Doğrulandı |
+| Cumhuriyet | 29 Ekim 1923; Kanun no 364 m. 1 **birebir**; hükümet bunalımı; 158 oyla Cumhurbaşkanı; İsmet Paşa ilk kabine; Fethi Bey Meclis Başkanı; Abdurrahman Şeref “Doğan çocuğun adıdır” | TBMM kanun arşivi (kanuntbmmc00200364) | Nutuk 16. bölüm (üç alt başlık) | Doğrulandı |
+| 3 Mart 1924 kanunları | No 429 (Şer’iye ve Evkaf, Erkân-ı Harbiye; Diyanet İşleri Reisliği, Evkaf Umum Müdürlüğü, Erkân-ı Harbiye-i Umumiye Riyaseti), No 430 (Tevhid-i Tedrisat), No 431 (hilafet) — m. 1 ve m. 2, 8 **birebir** | TBMM kanun arşivi | Nutuk 17. bölüm (“Hilâfetin lağvı zamanı gelmişti”, “…tedrisatın tevhîdi kararı”) | Doğrulandı |
+| Halifeliğin gerekçesi | Halifenin padişah gibi davranması (cuma alayları, yabancı temsilcilerle ilişki); Cumhuriyet karşıtlarının etrafında toplanması | Nutuk 17. bölüm (İsmet Paşa’ya telgraf) | Nutuk 16. bölüm (“Cumhuriyetin ilânı üzerine halifeye yaptırılmak istenen rol”) | Doğrulandı |
+| 1 Mart 1924 konuşması | Cumhuriyet’in korunması; tedrisatın tevhidi | Nutuk 17. bölüm | — | Nutuk’tan birebir alındı |
+| 1924 Anayasası | No 491, 20 Nisan 1924; m. 3, 4–8, 31, 68–69 (**3, 68, 69 birebir**), 88; 1928, 1934, 1937 değişiklikleri | Anayasa Mahkemesi “1924 Anayasası” | TBMM “1924 Teşkilat-ı Esasiye Kanunu İlk Metin ve Değişiklikler” | Doğrulandı |
+| Harita | Bu derste harita yok | — | — | Konu coğrafi değil; görsel omurga kronoloji |
