@@ -345,7 +345,7 @@ Konu adını düzeltmek canlı kütüphanede bağlantı kırar; kazanç risk etm
 | 16 | İTA.8.4 | Siyasi Alanda İnkılaplar | `lgs-tarih-siyasi-inkilaplar` | İTA.8.4.2 | ✅ tamamlandı |
 | 17 | İTA.8.4 | Hukuk, Eğitim ve Kültür Alanında İnkılaplar | `lgs-tarih-hukuk-egitim-kultur-inkilaplari` | İTA.8.4.3, İTA.8.4.4 | ✅ tamamlandı |
 | 18 | İTA.8.4 | Toplumsal ve Ekonomik Alanda İnkılaplar | `lgs-tarih-toplumsal-ve-ekonomik-inkilaplar` | İTA.8.4.5, İTA.8.4.6, İTA.8.4.7 | ✅ tamamlandı |
-| 19 | İTA.8.4 | Cumhuriyet'in Kazanımları ve Atatürk'ün Hedefleri | `lgs-tarih-cumhuriyetin-kazanimlari` | İTA.8.4.8 | planlandı |
+| 19 | İTA.8.4 | Cumhuriyet'in Kazanımları ve Atatürk'ün Hedefleri | `lgs-tarih-cumhuriyetin-kazanimlari` | İTA.8.4.8 | ✅ tamamlandı |
 | 20 | İTA.8.5 | Demokratikleşme Çabaları: Partiler, Suikast Girişimi, Tehditler | `lgs-tarih-demokratiklesme-cabalari` | İTA.8.5.1, İTA.8.5.2, İTA.8.5.3 | planlandı |
 | 21 | İTA.8.6 | Atatürk Dönemi Dış Politikası: İlkeler ve Gelişmeler | `lgs-tarih-ataturk-donemi-dis-politika` | İTA.8.6.1, İTA.8.6.2 | planlandı |
 | 22 | İTA.8.6 | Hatay'ın Anavatana Katılması | `lgs-tarih-hatayin-anavatana-katilmasi` | İTA.8.6.3 | planlandı |
@@ -429,8 +429,8 @@ Konu adını düzeltmek canlı kütüphanede bağlantı kırar; kazanç risk etm
 |---|---|---|---|---|---|
 | Türkçe | 76 | 41 | 35 | 20 | **20 (tamamlandı · 41/41)** |
 | Fen Bilimleri | 61 | 61 | 0 | 23 | **23 (tamamlandı · 61/61)** |
-| T.C. İnkılap Tarihi ve Atatürkçülük | 39 | 39 | 0 | 25 | 18 (sürüyor · 27/39) |
-| **Toplam** | **176** | **141** | **35** | **68** | **61** |
+| T.C. İnkılap Tarihi ve Atatürkçülük | 39 | 39 | 0 | 25 | 19 (sürüyor · 29/39) |
+| **Toplam** | **176** | **141** | **35** | **68** | **62** |
 
 *Sayılar `npm run test:lgs` çıktısından alınır (mufredat.js: Türkçe 41 ölçülür + 35 gerekçeli
 kapsam dışı).*

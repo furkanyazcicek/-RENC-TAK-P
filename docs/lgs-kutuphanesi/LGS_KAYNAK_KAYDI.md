@@ -551,3 +551,14 @@ dersin içinde “Mustafa Kemal’in 1927’deki bakış açısını taşır” 
 | Ekonomik kanunlar | Aşar no 552 (17 Şubat 1925), Kabotaj no 815 (19 Nisan 1926; yürürlük 1 Temmuz 1926), Teşvik-i Sanayi no 1055 (28 Mayıs 1927), Merkez Bankası no 1715 (1930), Sümerbank no 2262 (1933) | TBMM kanun arşivi | Genel kronolojiler | Doğrulandı |
 | 1929 bunalımı | Millî İktisat ve Tasarruf Cemiyeti 14 Aralık 1929; Yerli Malı Haftası (Aralık); devletçiliğe geçiş | Atatürk Ansiklopedisi “Millî İktisat ve Tasarruf Cemiyeti” | DergiPark (BUTOBİD; Kafkas Üniv.) | Doğrulandı |
 | Sağlık | Kanun no 3 (2 Mayıs 1920; 11 vekâlet, Sıhhiye ve Muavenet-i İçtimaiye); Sıtma no 839 (13 Mayıs 1926); Hıfzıssıhha Enstitüsü 1928; Umumi Hıfzıssıhha no 1593 (1930; RG 6 Mayıs 1930) m. 1 **birebir**; Refik Saydam 1925–1937 | TBMM kanun arşivi | ÇTTAD (Refik Saydam makalesi); Lokman Hekim Dergisi | Doğrulandı |
+
+### Ders 19 — `lgs-tarih-cumhuriyetin-kazanimlari` (İTA.8.4.8)
+
+| Bilgi | Derste yazılan | Kaynak 1 | Kaynak 2 | Sonuç |
+|---|---|---|---|---|
+| Nutuk | 15–20 Ekim 1927; CHF İkinci Büyük Kongresi; altı gün; 1919–1927 | Atatürk Ansiklopedisi “Atatürk’ün Nutuk Adlı Eseri” | Belleten (1966, 120) “Büyük Nutuk’ta Atatürk’ün Gençliğe Hitabesi” | Doğrulandı. Süre kaynaklarda 36 sa 33 dk / 36 sa 31 dk → “yaklaşık 36,5 saat” |
+| Nutuk’un sonu ve Gençliğe Hitabe | “Efendiler, bu beyânâtımla…”, “Ey Türk gençliği! Birinci vazifen…”, son cümle **birebir** | Vikikaynak Nutuk 19. bölüm | Belleten (1966) | Doğrulandı; 20. bölüm “Vesikalar” |
+| Onuncu Yıl Nutku | 29 Ekim 1933; “Az zamanda çok ve büyük işler…”, “muasır medeniyet seviyesinin üstüne”, “müspet ilim”, “Ne mutlu Türküm diyene!” **birebir** | Vikikaynak (kaynak: K. İşeri, NWSA 2010) | Genel aktarımlar | Doğrulandı |
+| Akılcılık kanıtı | Sakarya’ya çekilme direktifi; “Askerliğin icabını bilâ-tereddüt tatbik edelim.” | Nutuk 12. bölüm (Ders 13) | — | Birebir (Nutuk) |
+| Geometri kitabı | 1936–1937 kışı; 1937’de yazar adı olmadan yayımlandı; 1971 TDK ikinci baskısı, Agop Dilaçar önsözü; terimler | Vikipedi “Geometri (kitap)” | Sözcü; matematikciler.com | Kişi kartında “Dilaçar’ın belirttiğine göre” biçiminde aktarıldı |
+| Kaynağı tartışmalı sözler | “Benim manevi mirasım…”, bazı sanat–spor sözleri | — | — | **Kullanılmadı** |

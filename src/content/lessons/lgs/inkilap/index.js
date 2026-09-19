@@ -23,5 +23,6 @@ import ataturkIlkeleri from './ataturk-ilkeleri.js'
 import siyasiInkilaplar from './siyasi-inkilaplar.js'
 import hukukEgitimKultur from './hukuk-egitim-kultur-inkilaplari.js'
 import toplumsalVeEkonomik from './toplumsal-ve-ekonomik-inkilaplar.js'
+import cumhuriyetinKazanimlari from './cumhuriyetin-kazanimlari.js'
 
-export const LGS_INKILAP_DERSLERI = [yirminciYuzyilBasindaOsmanli, mustafaKemalinYetismesi, mustafaKemalAskerlikHayati, birinciDunyaSavasiSebepler, osmanliCepheleri, mondrosVeTutumlar, kuvayiMilliyeVeCemiyetler, hazirlikDonemi, misakimilliVeBmm, sevrVeTepkiler, doguVeGuneyCepheleri, batiCephesi, sakaryaVeBuyukTaarruz, lozanAntlasmasi, ataturkIlkeleri, siyasiInkilaplar, hukukEgitimKultur, toplumsalVeEkonomik]
+export const LGS_INKILAP_DERSLERI = [yirminciYuzyilBasindaOsmanli, mustafaKemalinYetismesi, mustafaKemalAskerlikHayati, birinciDunyaSavasiSebepler, osmanliCepheleri, mondrosVeTutumlar, kuvayiMilliyeVeCemiyetler, hazirlikDonemi, misakimilliVeBmm, sevrVeTepkiler, doguVeGuneyCepheleri, batiCephesi, sakaryaVeBuyukTaarruz, lozanAntlasmasi, ataturkIlkeleri, siyasiInkilaplar, hukukEgitimKultur, toplumsalVeEkonomik, cumhuriyetinKazanimlari]
