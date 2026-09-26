@@ -65,10 +65,12 @@ kapsamın tek gerçek kaynağı öğretim programlarıdır.
 | K1 | Türkçe Dersi Öğretim Programı (İlkokul ve Ortaokul 1-8. Sınıflar) | Ankara – 2019 | 8. sınıf: 76 kazanım (T.8.1–T.8.4) | `https://mufredat.meb.gov.tr/Dosyalar/20195716392253-02-Türkçe Öğretim Programı 2019.pdf` |
 | K2 | Fen Bilimleri Dersi Öğretim Programı (İlkokul ve Ortaokul 3-8. Sınıflar) | Ankara – 2018 | 8. sınıf: 61 kazanım, 7 ünite (F.8.1–F.8.7) | `https://mufredat.meb.gov.tr/Dosyalar/201812312311937-FEN BİLİMLERİ ÖĞRETİM PROGRAMI2018.pdf` |
 | K3 | T.C. İnkılap Tarihi ve Atatürkçülük Dersi Öğretim Programı (Ortaokul 8. Sınıf) | Ankara – 2018 | 39 kazanım, 7 ünite (İTA.8.1–İTA.8.7) | `https://mufredat.meb.gov.tr/Dosyalar/201812104016155-İNKILAP TARİHİ VE ATATÜRKÇÜLÜK ÖĞRETİM PROGRAMI.pdf` |
+| K10 | Matematik Dersi Öğretim Programı (1–8. Sınıflar) | Ankara – 2018 | 8. sınıf: 52 kazanım; kütüphanede 36'sı Matematik, 16'sı Geometri altında | `https://mufredat.meb.gov.tr/Dosyalar/201813017165445-MATEMAT%C4%B0K%20%C3%96%C4%9ERET%C4%B0M%20PROGRAMI%202018v.pdf` |
 
-Kazanım metinleri bu belgelerden **birebir** alınmış; kısaltma veya yeniden yazım
-yapılmamıştır. Kazanım açıklamalarındaki sınırlamalar ("… girilmez", "… değinilmez")
-içerik sınırı olarak aynen uygulanır.
+K1–K3 kazanım metinleri belgelerden **birebir** alınmıştır. K10 için
+`src/content/lessons/lgs/matematik/resmiProgram.js` kazanım kodları ve özgün kısa
+özetler taşır; bunlar resmî metinden birebir alıntı olarak sunulmaz. Derslerdeki
+program sınırları K10'un açıklamalarına göre uygulanır.
 
 ### 2.2. Sınav kapsamı ve uygulama (MEB ÖDSGM)
 

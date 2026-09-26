@@ -19,6 +19,7 @@
  *   K2  Fen Bilimleri Dersi Öğretim Programı, MEB TTKB, Ankara 2018
  *   K3  T.C. İnkılap Tarihi ve Atatürkçülük Dersi Öğretim Programı, MEB TTKB, Ankara 2018
  *   K4  Merkezî Sınav Başvuru ve Uygulama Kılavuzu 2026, MEB ÖDSGM
+ *   K10 Matematik Dersi Öğretim Programı, MEB TTKB, Ankara 2018
  *
  * UYARI — 2028 LGS
  * Türkiye Yüzyılı Maarif Modeli 2026-2027'de 8. sınıfta uygulanmıyor
@@ -26,12 +27,14 @@
  * 2027-2028'de 8. sınıf da modele geçer ve bu dosya yeniden yazılır.
  */
 
+import { LGS_MATEMATIK_KAZANIMLARI } from './matematik/resmiProgram.js'
+
 export const LGS_HEDEF = {
   sinavYili: 2027,
   kohort: '2026-2027 eğitim öğretim yılı 8. sınıf',
   programDayanagi: '2018/2019 MEB öğretim programları',
   kilavuzDayanagi: 'Merkezî Sınav Başvuru ve Uygulama Kılavuzu 2026 (ÖDSGM) — 2027 kılavuzu henüz yayımlanmadı',
-  sonDogrulama: '2026-09-18',
+  sonDogrulama: '2026-09-26',
 }
 
 /** Resmî soru sayıları — K4, Tablo-1. Sıklık iddiası yerine bu sayı kullanılır. */
@@ -47,7 +50,7 @@ export const LGS_SORU_SAYILARI = {
 /* ==================================================================
    KÜTÜPHANE KONU AĞACI
    ------------------------------------------------------------------
-   `mevcut: true`  → supabase/seed_library_curriculum_v2.sql içinde var,
+   `mevcut: true`  → supabase/seed_library_curriculum.sql veya v2 içinde var,
                      canlı veritabanında bulunuyor.
    `mevcut: false` → resmî kazanımı olduğu hâlde ağaçta yok; eklenmesi
                      supabase/migration_lgs_konu_tamamlama.sql ile
@@ -92,7 +95,17 @@ export const LGS_KONU_AGACI = {
     { ad: 'Atatürkçülük ve Çağdaşlaşan Türkiye', mevcut: true },
     { ad: 'Demokratikleşme Çabaları', mevcut: true },
     { ad: 'Atatürk Dönemi Türk Dış Politikası', mevcut: true },
-    { ad: 'Atatürk’ün Ölümü ve Sonrası', mevcut: true },
+    { ad: "Atatürk'ün Ölümü ve Sonrası", mevcut: true },
+  ],
+  Matematik: [
+    { ad: 'Çarpanlar ve Katlar', mevcut: true },
+    { ad: 'Üslü İfadeler', mevcut: true },
+    { ad: 'Kareköklü İfadeler', mevcut: true },
+    { ad: 'Veri Analizi', mevcut: true },
+    { ad: 'Olasılık', mevcut: true, resmiAd: 'Basit Olayların Olma Olasılığı' },
+    { ad: 'Cebirsel İfadeler ve Özdeşlikler', mevcut: true },
+    { ad: 'Doğrusal Denklemler', mevcut: true },
+    { ad: 'Eşitsizlikler', mevcut: true },
   ],
 }
 
@@ -106,6 +119,7 @@ export const LGS_KONU_AGACI = {
    ================================================================== */
 
 export const LGS_KAZANIMLAR = {
+  Matematik: LGS_MATEMATIK_KAZANIMLARI,
   Türkçe: [
     // --- T.8.1 DİNLEME/İZLEME ---
     { kod: 'T.8.1.1', metin: 'Dinlediklerinde/izlediklerinde geçen olayların gelişimi ve sonucu hakkında tahminde bulunur.', kapsam: 'disi', gerekce: 'Sesli/görüntülü uyaran gerektirir; yazılı çoktan seçmeli sınavda ölçülemez.' },
@@ -300,7 +314,7 @@ export const LGS_KAZANIMLAR = {
 }
 
 /** Üretim sırası — bir ders bitmeden sonrakine geçilmez. */
-export const LGS_URETIM_SIRASI = ['Türkçe', 'Fen Bilimleri', 'T.C. İnkılap Tarihi ve Atatürkçülük']
+export const LGS_URETIM_SIRASI = ['Türkçe', 'Fen Bilimleri', 'T.C. İnkılap Tarihi ve Atatürkçülük', 'Matematik']
 
 /** Belirli bir dersin ölçülebilir kazanım kodları. */
 export function olculebilirKazanimlar(ders) {

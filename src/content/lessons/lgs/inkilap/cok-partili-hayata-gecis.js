@@ -27,7 +27,7 @@ const SLUG = 'lgs-tarih-cok-partili-hayata-gecis'
 
 const lesson = createLgsHistoryLesson({
   slug: SLUG,
-  topic: 'Atatürk’ün Ölümü ve Sonrası',
+  topic: "Atatürk'ün Ölümü ve Sonrası",
   order: 3,
   title: 'Çok Partili Siyasi Hayata Geçiş',
   subtitle:

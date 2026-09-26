@@ -28,7 +28,7 @@ const SLUG = 'lgs-tarih-ikinci-dunya-savasi-ve-turkiye'
 
 const lesson = createLgsHistoryLesson({
   slug: SLUG,
-  topic: 'Atatürk’ün Ölümü ve Sonrası',
+  topic: "Atatürk'ün Ölümü ve Sonrası",
   order: 2,
   title: 'İkinci Dünya Savaşı ve Türkiye: Denge Siyaseti',
   subtitle:

@@ -29,7 +29,7 @@ const SLUG = 'lgs-tarih-ataturkun-olumu-ve-eserleri'
 
 const lesson = createLgsHistoryLesson({
   slug: SLUG,
-  topic: 'Atatürk’ün Ölümü ve Sonrası',
+  topic: "Atatürk'ün Ölümü ve Sonrası",
   order: 1,
   title: 'Atatürk’ün Ölümü ve Bıraktığı Eserler',
   subtitle:
