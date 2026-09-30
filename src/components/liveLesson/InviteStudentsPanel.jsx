@@ -34,6 +34,9 @@ export default function InviteStudentsPanel({ onChanged }) {
   const [freshLink, setFreshLink] = useState(null)
   const [copied, setCopied] = useState(false)
   const [error, setError] = useState(null)
+  const [search, setSearch] = useState('')
+  const [confirmingId, setConfirmingId] = useState(null)
+  const [endingId, setEndingId] = useState(null)
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -84,10 +87,31 @@ export default function InviteStudentsPanel({ onChanged }) {
     }
   }
 
+  async function handleEndLink(student) {
+    setEndingId(student.link_id)
+    setError(null)
+    try {
+      await endLink(student.link_id)
+      toast.success(`${student.student_name} listenden çıkarıldı`)
+      setConfirmingId(null)
+      await load()
+      onChanged?.()
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setEndingId(null)
+    }
+  }
+
   if (schemaMissing) return <SchemaMissingNotice />
 
   const openInvites = invites.filter(
     (i) => !i.used_at && !i.revoked_at && new Date(i.expires_at) > new Date()
+  )
+  const matchingStudents = students.filter((student) =>
+    `${student.student_name} ${student.student_email || ''}`
+      .toLocaleLowerCase('tr-TR')
+      .includes(search.trim().toLocaleLowerCase('tr-TR'))
   )
 
   return (
@@ -97,6 +121,89 @@ export default function InviteStudentsPanel({ onChanged }) {
           {error}
         </Alert>
       )}
+
+      <section aria-labelledby="active-students-heading">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h3 id="active-students-heading" className="font-display text-base font-bold text-ink">
+              Aktif öğrencilerin <span className="font-normal text-ink/55">({students.length})</span>
+            </h3>
+            <p className="mt-1 text-sm text-ink/60">
+              Listenden çıkarılan öğrencinin hesabı ve çalışma kayıtları korunur.
+            </p>
+          </div>
+          {students.length > 5 && (
+            <Field label="Öğrenci ara" className="sm:w-56">
+              {({ id }) => (
+                <Input
+                  id={id}
+                  value={search}
+                  onChange={(event) => setSearch(event.target.value)}
+                  placeholder="Ad veya e-posta"
+                  autoComplete="off"
+                />
+              )}
+            </Field>
+          )}
+        </div>
+
+        {loading ? (
+          <p className="flex items-center gap-2 py-5 text-sm text-ink/55">
+            <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+            Yükleniyor…
+          </p>
+        ) : students.length === 0 ? (
+          <EmptyState
+            compact
+            icon={Users}
+            title="Henüz bağlı öğrencin yok"
+            description="Aşağıdan bir davet bağlantısı oluşturabilirsin."
+          />
+        ) : matchingStudents.length === 0 ? (
+          <p className="py-5 text-sm text-ink/60">Aramana uyan öğrenci bulunamadı.</p>
+        ) : (
+          <ul className="mt-3 divide-y divide-line border-y border-line">
+            {matchingStudents.map((student) => (
+              <li key={student.link_id} className="py-3">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-semibold text-ink">{student.student_name}</p>
+                    {student.student_email && (
+                      <p className="truncate text-xs text-ink/55">{student.student_email}</p>
+                    )}
+                  </div>
+                  <Badge tone="success" size="sm" dot className="self-start sm:self-auto">Aktif</Badge>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="min-h-11 self-start sm:self-auto"
+                    disabled={endingId !== null}
+                    onClick={() => setConfirmingId(student.link_id)}
+                  >
+                    Listemden çıkar
+                  </Button>
+                </div>
+                {confirmingId === student.link_id && (
+                  <div className="mt-3 rounded-input bg-surface-muted p-3" role="group" aria-label={`${student.student_name} için çıkarma onayı`}>
+                    <p className="text-sm font-semibold text-ink">{student.student_name} listenden çıkarılsın mı?</p>
+                    <p className="mt-1 text-xs leading-relaxed text-ink/65">
+                      Öğrencinin hesabı ve verileri silinmez. Senin listenden çıkar, çalışma verilerine erişimin kapanır. Planlanmış dersler otomatik iptal edilmez.
+                    </p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      <Button variant="secondary" size="sm" className="min-h-11" disabled={endingId !== null} onClick={() => setConfirmingId(null)}>
+                        Vazgeç
+                      </Button>
+                      <Button variant="danger" size="sm" className="min-h-11" loading={endingId === student.link_id} onClick={() => handleEndLink(student)}>
+                        Evet, listemden çıkar
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
 
       {/* Davet üretimi */}
       <section className="rounded-card border border-line bg-surface-muted p-4">
@@ -183,56 +290,6 @@ export default function InviteStudentsPanel({ onChanged }) {
         </section>
       )}
 
-      {/* Aktif öğrenciler */}
-      <section>
-        <h3 className="mb-2 text-xs font-bold uppercase tracking-wide text-ink/50">
-          Öğrencilerin ({students.length})
-        </h3>
-        {loading ? (
-          <p className="flex items-center gap-2 py-4 text-sm text-ink/55">
-            <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-            Yükleniyor…
-          </p>
-        ) : students.length === 0 ? (
-          <EmptyState
-            compact
-            icon={Users}
-            title="Henüz bağlı öğrencin yok"
-            description="Yukarıdan bir davet bağlantısı oluşturup öğrencine gönder."
-          />
-        ) : (
-          <ul className="flex flex-col divide-y divide-line">
-            {students.map((s) => (
-              <li key={s.link_id} className="flex items-center gap-3 py-2.5">
-                <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium text-ink">{s.student_name}</p>
-                  {s.student_email && <p className="truncate text-xs text-ink/55">{s.student_email}</p>}
-                </div>
-                <Badge tone="success" size="sm" dot>
-                  Aktif
-                </Badge>
-                <Button
-                  size="xs"
-                  variant="ghost"
-                  onClick={async () => {
-                    if (!window.confirm(`${s.student_name} ile bağlantını sonlandırmak istiyor musun? Verilerine erişimin kapanır.`)) return
-                    try {
-                      await endLink(s.link_id)
-                      toast.success('Bağlantı sonlandırıldı')
-                      await load()
-                      onChanged?.()
-                    } catch (err) {
-                      setError(err.message)
-                    }
-                  }}
-                >
-                  Kaldır
-                </Button>
-              </li>
-            ))}
-          </ul>
-        )}
-      </section>
     </div>
   )
 }

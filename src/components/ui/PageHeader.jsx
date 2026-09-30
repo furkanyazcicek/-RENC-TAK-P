@@ -9,16 +9,16 @@ import { IconButton } from './Button'
  *     <StudentList … />
  *   </PageSection>
  */
-export function PageSection({ title, description, action, className, children }) {
+export function PageSection({ title, description, action, stackAction = false, className, children }) {
   return (
     <section className={cn('flex flex-col gap-3', className)}>
       {(title || action) && (
-        <div className="flex items-end justify-between gap-3">
+        <div className={cn('flex items-end justify-between gap-3', stackAction && 'flex-col items-stretch sm:flex-row sm:flex-wrap sm:items-end')}>
           <div className="min-w-0">
             {title && <h2 className="section-title">{title}</h2>}
             {description && <p className="text-sm text-ink/60 mt-0.5">{description}</p>}
           </div>
-          {action && <div className="shrink-0">{action}</div>}
+          {action && <div className={cn('shrink-0', stackAction && 'max-w-full')}>{action}</div>}
         </div>
       )}
       {children}

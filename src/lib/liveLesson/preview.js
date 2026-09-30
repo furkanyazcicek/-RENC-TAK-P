@@ -228,6 +228,12 @@ export function previewUnlinkedStudents() {
   ]
 }
 
+const removedPreviewLinks = new Set()
+
+export function previewEndLink(linkId) {
+  removedPreviewLinks.add(linkId)
+}
+
 export function previewStudents() {
   return [
     {
@@ -246,7 +252,7 @@ export function previewStudents() {
       status: 'active',
       linked_at: at(-30000),
     },
-  ]
+  ].filter((student) => !removedPreviewLinks.has(student.link_id))
 }
 
 export function previewInvites() {

@@ -27,6 +27,7 @@ import {
 import {
   isLessonPreview,
   previewBoardPages,
+  previewEndLink,
   previewHomeworks,
   previewInvites,
   previewLesson,
@@ -157,6 +158,7 @@ export async function revokeInvite(inviteId) {
 }
 
 export async function endLink(linkId) {
+  if (isLessonPreview()) return previewEndLink(linkId)
   unwrap(await supabase.rpc('end_teacher_student_link', { p_link_id: linkId }), 'Bağlantı sonlandırılamadı.')
 }
 
