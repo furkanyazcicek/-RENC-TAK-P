@@ -32,7 +32,7 @@ import {
   buildTopicStats,
   formatDuration,
 } from '../lib/topicHelpers'
-import { buildSubjectPerformance } from '../lib/examHelpers'
+import { buildSubjectPerformance, formatBranchExamResult } from '../lib/examHelpers'
 import {
   accuracy,
   buildInsights,
@@ -174,7 +174,7 @@ export default function StudentDetail() {
       type: 'Branş',
       label: e.exam_name || e.topic,
       date: e.exam_date ?? e.created_at,
-      detail: e.net != null ? `${Number(e.net).toFixed(2)} net` : `%${e.score}`,
+      detail: formatBranchExamResult(e),
     }))
     const general = mockExams.map((e) => ({
       id: `mock-${e.id}`,

@@ -36,6 +36,24 @@ export function calcNet(correct, incorrect, examType) {
   return Math.round((c - i / divider) * 100) / 100
 }
 
+// Eski form boş doğru/yanlış/boş alanlarını 0/0/0 olarak kaydedebiliyordu.
+// Böyle bir satır ölçülmüş bir 0 net değildir. Gerçekten bütün soruları boş
+// bırakılmış bir denemede ise empty > 0 olur ve sonuç 0 net olarak gösterilir.
+export function resolveBranchExamNet(exam) {
+  const counts = [exam.correct, exam.incorrect, exam.empty]
+  if (counts.some((count) => count != null)) {
+    const total = counts.reduce((sum, count) => sum + (Number(count) || 0), 0)
+    return total > 0 ? calcNet(exam.correct, exam.incorrect, exam.exam_type) : null
+  }
+  return exam.net != null ? Number(exam.net) : null
+}
+
+export function formatBranchExamResult(exam) {
+  const net = resolveBranchExamNet(exam)
+  if (net != null) return `${net.toFixed(2)} net`
+  return exam.score != null ? `%${exam.score} (eski kayıt)` : 'Sonuç girilmemiş'
+}
+
 // Öğrencinin TÜM deneme sınavlarındaki (mock_exams + mock_exam_subjects)
 // sonuçlarını ana derse göre gruplar. Başarı, ham doğru/yanlış oranı değil,
 // DOĞRUDAN NET üzerinden hesaplanır: yanlışların (-0.25) ve boşların netlere

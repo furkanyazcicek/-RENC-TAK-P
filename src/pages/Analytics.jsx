@@ -19,6 +19,7 @@ import {
 import StudyTimeChart from '../components/StudyTimeChart'
 import MockExamTrendChart from '../components/MockExamTrendChart'
 import BranchExamNetChart from '../components/BranchExamNetChart'
+import { formatBranchExamResult } from '../lib/examHelpers'
 import TopicBarChart from '../components/TopicBarChart'
 import TrendLineChart from '../components/TrendLineChart'
 import QuestionDistributionChart from '../components/QuestionDistributionChart'
@@ -322,7 +323,7 @@ export default function Analytics() {
       type: 'Branş',
       label: e.exam_name || e.topic,
       date: e.exam_date ?? e.created_at,
-      detail: e.net != null ? `${Number(e.net).toFixed(2)} net` : `%${e.score}`,
+      detail: formatBranchExamResult(e),
     }))
     const general = rangeMockExams.map((e) => ({
       id: `mock-${e.id}`,

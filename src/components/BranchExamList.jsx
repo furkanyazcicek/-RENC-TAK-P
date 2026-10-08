@@ -2,21 +2,9 @@ import { useState } from 'react'
 import { FlaskConical, Trash2 } from 'lucide-react'
 import useAcademicActivity from '../hooks/useAcademicActivity'
 import { academicStatusMessage } from '../lib/learning/academicActivity/client'
-import { calcNet } from '../lib/examHelpers'
+import { formatBranchExamResult, resolveBranchExamNet } from '../lib/examHelpers'
 import { colorForKey } from '../lib/chartTheme'
 import { Alert, Badge, EmptyState, IconButton } from './ui'
-
-// Doğru/yanlış girilmişse net HER ZAMAN burada hesaplanır. Veritabanındaki
-// `net` generated column'u sabit /4 uygular, LGS'nin /3 katsayısını bilmez —
-// ona güvenilirse LGS branş denemesi, formun gösterdiği önizlemeden farklı
-// bir netle listelenir. Saklı değere yalnızca doğru/yanlışı olmayan eski
-// kayıtlarda düşülür.
-function resolveNet(exam) {
-  if (exam.correct != null || exam.incorrect != null) {
-    return calcNet(exam.correct, exam.incorrect, exam.exam_type)
-  }
-  return exam.net != null ? Number(exam.net) : null
-}
 
 /**
  * BranchExamList — tek ders üzerine yapılan branş denemelerinin listesi.
@@ -50,7 +38,7 @@ export default function BranchExamList({ exams, onChanged, readOnly = false, emp
     <div className="card divide-y divide-line overflow-hidden">
       {error && <div className="p-3"><Alert tone="danger">{error}</Alert></div>}
       {exams.map((e) => {
-        const net = resolveNet(e)
+        const net = resolveBranchExamNet(e)
         const subject = String(e.topic ?? '').split('-')[0].trim() || 'Genel'
 
         return (
@@ -99,7 +87,7 @@ export default function BranchExamList({ exams, onChanged, readOnly = false, emp
                   </p>
                 </div>
               ) : (
-                <span className="text-sm text-ink/55">%{e.score} (eski kayıt)</span>
+                <span className="text-sm text-ink/55">{formatBranchExamResult(e)}</span>
               )}
 
               {!readOnly && (

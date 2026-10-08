@@ -1,22 +1,11 @@
 import { useMemo, useState } from 'react'
 import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
-import { calcNet } from '../lib/examHelpers'
-
-// Doğru/yanlış girilmişse net burada hesaplanır: veritabanındaki `net`
-// generated column'u sabit /4 uygular, LGS'nin /3 katsayısını bilmez.
-// Saklı değer yalnızca doğru/yanlışı olmayan eski kayıtlar için kullanılır.
-// (Aynı kural BranchExamList#resolveNet içinde de geçerli.)
-function resolveNet(exam) {
-  if (exam.correct != null || exam.incorrect != null) {
-    return calcNet(exam.correct, exam.incorrect, exam.exam_type)
-  }
-  return exam.net != null ? Number(exam.net) : null
-}
+import { resolveBranchExamNet } from '../lib/examHelpers'
 
 export default function BranchExamNetChart({ exams }) {
-  // Sadece net hesaplanabilen (doğru/yanlış girilmiş) branş denemeleri
+  // Sadece soru sonucu bulunan denemeler net grafiğine girer.
   const netCapable = useMemo(
-    () => (exams ?? []).filter((e) => resolveNet(e) != null),
+    () => (exams ?? []).filter((e) => resolveBranchExamNet(e) != null),
     [exams]
   )
 
@@ -36,14 +25,14 @@ export default function BranchExamNetChart({ exams }) {
       .sort((a, b) => new Date(a.exam_date) - new Date(b.exam_date))
       .map((e) => ({
         label: new Date(e.exam_date).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short' }),
-        net: resolveNet(e),
+        net: resolveBranchExamNet(e),
       }))
   }, [netCapable, activeSubject])
 
   if (subjects.length === 0) {
     return (
       <div className="h-56 grid place-items-center text-sm text-ink/55 text-center px-4">
-        Henüz doğru/yanlış/boş girilmiş bir branş denemesi yok.
+        Henüz sonucu girilmiş bir branş denemesi yok.
       </div>
     )
   }

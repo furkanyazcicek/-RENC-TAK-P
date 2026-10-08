@@ -9,6 +9,7 @@ import TrendLineChart from '../components/TrendLineChart'
 import DependentSubjectTopicSelect from '../components/DependentSubjectTopicSelect'
 import TopicHierarchyAccordion from '../components/TopicHierarchyAccordion'
 import BranchExamNetChart from '../components/BranchExamNetChart'
+import { formatBranchExamResult } from '../lib/examHelpers'
 import Modal from '../components/Modal'
 import QuestionForm from '../components/QuestionForm'
 import MyQuestionsList from '../components/MyQuestionsList'
@@ -98,7 +99,7 @@ export default function StudentDashboard() {
       type: 'Branş',
       label: e.exam_name || e.topic,
       date: e.exam_date ?? e.created_at,
-      detail: e.net != null ? `${Number(e.net).toFixed(2)} net` : `%${e.score}`,
+      detail: formatBranchExamResult(e),
     }))
     const general = mockExams.map((e) => ({
       id: `mock-${e.id}`,

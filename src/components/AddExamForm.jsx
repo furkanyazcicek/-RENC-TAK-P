@@ -51,6 +51,12 @@ export default function AddExamForm({ studentId, onAdded, bare = false }) {
 
     const correctNum = correct === '' ? 0 : Number(correct)
     const incorrectNum = incorrect === '' ? 0 : Number(incorrect)
+    const emptyNum = empty === '' ? 0 : Number(empty)
+    if (correctNum + incorrectNum + emptyNum === 0) {
+      setSaving(false)
+      setFeedback({ tone: 'danger', text: 'Sonucu kaydetmek için doğru, yanlış veya boş soru sayısını gir.' })
+      return
+    }
     const net = calcNet(correctNum, incorrectNum, examType)
 
     // DİKKAT: `net` payload'a KONMAZ. Veritabanında generated column'dur
@@ -66,7 +72,7 @@ export default function AddExamForm({ studentId, onAdded, bare = false }) {
       exam_date: examDate,
       correct: correctNum,
       incorrect: incorrectNum,
-      empty: empty === '' ? 0 : Number(empty),
+      empty: emptyNum,
       duration_minutes: durationMinutes === '' ? null : Number(durationMinutes),
     })
     setSaving(false)
