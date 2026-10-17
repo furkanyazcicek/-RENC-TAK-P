@@ -1,8 +1,8 @@
 {
   "schema_version": "phase-8-ui-validation@1",
-  "generated_at": "2026-10-12T15:36:44.372Z",
+  "generated_at": "2026-10-17T23:04:55.474Z",
   "browser": "chromium-playwright-152.0.7977.54",
-  "server_started_by_runner": false,
+  "server_started_by_runner": true,
   "live_data_used": false,
   "cases": [
     {

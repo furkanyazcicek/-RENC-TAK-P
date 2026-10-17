@@ -1,0 +1,16 @@
+{
+  "method": "free-evidence-coach@1",
+  "status": "opened",
+  "opened_at": "2026-10-17T23:11:06.822309+00:00",
+  "migrations": 11,
+  "private_items": 49474,
+  "catalog_chunks": 73,
+  "analysis_enabled": true,
+  "paid_model_calls": 0,
+  "content_revisions": 4414,
+  "manifest_checksum": "3a4875885df96de0271b97c5157b5caeac8edc70baffc3a704beb6cd771c5dc9",
+  "source_records_changed": false,
+  "writes_require_student_approval": true,
+  "observed_at": "2026-10-17T23:11:16.458Z",
+  "project_ref": "aazadigklxnvbtwrtszj"
+}

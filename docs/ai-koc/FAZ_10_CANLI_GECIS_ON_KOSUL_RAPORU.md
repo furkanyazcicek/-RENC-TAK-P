@@ -1,5 +1,7 @@
 # Faz 10 — Canlı Geçiş Ön Koşul Raporu
 
+> 18 Ekim 2026: Bu belgenin önceki yöntem/durum kayıtları tarihseldir. Güncel ücretsiz birleşik Koç için [çalışma yöntemi](FAZ_10_UCRETSIZ_CALISMA_YONTEMI.md) ve [faz durumu](FAZ_DURUMU.md) geçerlidir. Eski bekleyen kontroller geçmiş gibi işaretlenmemiştir.
+
 Durum: **Devam ediyor; canlı yazma kapalı.**
 
 ## 11 Ekim 2026 hızlandırma kararı

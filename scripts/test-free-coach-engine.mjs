@@ -4,9 +4,10 @@ import { randomUUID } from 'node:crypto'
 import { buildFacts } from '../api/_lib/context.js'
 import { buildFreeCoachSnapshot, findRequestedTopic, generateFreeCoachResponse } from '../api/_lib/freeCoachEngine.js'
 import { createFreeCoachChatHandler } from '../api/_lib/freeCoachChat.js'
-import { readOwnEvidence } from '../api/_lib/freeCoachSnapshotData.js'
+import { readOwnEvidence,loadFreeCoachSnapshot } from '../api/_lib/freeCoachSnapshotData.js'
 import { createFreeCoachTestSession, TEST_STUDENT } from './lib/free-coach-test-session.mjs'
 import { isFreeCoachEnabled, isFreeCoachWritesEnabled, ownFreeCoachFlag, ownFreeCoachWrites } from '../api/_lib/freeCoachGate.js'
+import { editCoachingAmount } from '../src/lib/learning/coachingLoop/editAmount.js'
 
 const studentId = '10000000-0000-4000-8000-000000000001'
 const otherId = '10000000-0000-4000-8000-000000000002'
@@ -28,6 +29,16 @@ function snapshot(input = raw(), records = [], options = {}) {
   return buildFreeCoachSnapshot({ studentId, raw: input, facts, records, asOf, ...options })
 }
 const ask = (message, s) => generateFreeCoachResponse({ message, snapshot: s, studentId, supabase: {} })
+test('öğrenci soru miktarını değiştirince görev ölçütü de değişir',()=>{
+  const original={recommendation_version:1,suggested_amount:{kind:'questions',value:10},success_criteria:{kind:'minimum_count',minimum_count:10}}
+  const edited=editCoachingAmount(original,'15')
+  assert.equal(edited.suggested_amount.value,15)
+  assert.equal(edited.success_criteria.minimum_count,15)
+  assert.match(edited.success_criteria.description,/15 yeni soru/)
+  assert.equal(original.success_criteria.minimum_count,10)
+  assert.equal(editCoachingAmount(original,'0'),null)
+  assert.equal(editCoachingAmount(original,'201'),null)
+})
 
 test('sınav bağlamı ve takma ad gerçek kanonik konuyu seçer', () => {
   assert.equal(findRequestedTopic('TYT Matematik Fonksiyonlar nasıl gidiyor?', { exam: {} }).topic_id, topic)
@@ -211,6 +222,17 @@ test('veritabanı yazma kapısı arızada veya kapalı yanıtta kapalı kalır',
   assert.equal(await ownFreeCoachFlag({ rpc: async () => ({ error: {}, data: true }) }, 'coach_writes'), false)
   assert.equal(await ownFreeCoachFlag({ rpc: async () => ({ data: false }) }, 'coach_writes'), false)
   assert.equal(await ownFreeCoachFlag({ rpc: async () => { throw new Error('bağlantı') } }, 'coach_writes'), false)
+})
+test('analiz kapalıyken ücretsiz Koç kaynak verilerini okumaz',async()=>{
+ const supabase={rpc:async()=>({data:false,error:null}),from:()=>assert.fail('kapalı analiz kaynak okumamalı')}
+ const result=await loadFreeCoachSnapshot(supabase,{id:studentId})
+ assert.equal(result.coachingAnalysisEnabled,false)
+ const session=createFreeCoachTestSession()
+ const handler=createFreeCoachChatHandler({authenticate:session.authenticate,loadSnapshot:async()=>result,generateResponse:()=>assert.fail('kapalı analiz yanıt üretmemeli')})
+ const res=httpResponse()
+ await handler({method:'POST',body:{message:'Merhaba'}},res)
+ assert.equal(res.code,503)
+ assert.equal(session.tables.ai_messages.length,0)
 })
 test('açık kendi-hesabı kapısında ölçülebilir Faz 8 görev önizlemesi üretir', async () => {
   const s = snapshot(raw(), [evidence()]); s.coachingWriteEnabled = true

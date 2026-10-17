@@ -1,5 +1,7 @@
 # Ücretsiz Koç Rehberi — 12 Ekim 2026 kararı
 
+> 18 Ekim 2026: Bu belgenin önceki yöntem/durum kayıtları tarihseldir. Güncel ücretsiz birleşik Koç için [çalışma yöntemi](FAZ_10_UCRETSIZ_CALISMA_YONTEMI.md) ve [faz durumu](FAZ_DURUMU.md) geçerlidir. Eski bekleyen kontroller geçmiş gibi işaretlenmemiştir.
+
 ## Kullanıcı kararı ve ürün sınırı
 
 Ürün sahibi, Faz 10 canlı geçişini bu sürüm için atlayıp ek ücret oluşturmayan bir DRKOÇ koçluk deneyimi istedi. Bu karar Faz 10'un şema, geri doldurma, gölge, pilot ve nihai kabul kapılarını geçmiş saymaz. Tam birleşik AI Koç hedefi `AI_KOC_URUN_HAFIZASI.md` içinde değişmeden durur; bu sürüm onun ücretsiz ve sınırlı bir alternatifidir.

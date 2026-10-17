@@ -1,5 +1,7 @@
 # Faz 10 — Kontrollü Pilot ve Geri Dönüş Planı
 
+> 18 Ekim 2026: Bu belgenin önceki yöntem/durum kayıtları tarihseldir. Güncel ücretsiz birleşik Koç için [çalışma yöntemi](FAZ_10_UCRETSIZ_CALISMA_YONTEMI.md) ve [faz durumu](FAZ_DURUMU.md) geçerlidir. Eski bekleyen kontroller geçmiş gibi işaretlenmemiştir.
+
 Durum: **Yalnız plan. Pilot başlatılmadı; gerçek öğrenci alınmadı.**
 
 ## 11 Ekim 2026 — hızlandırılmış genel açılış kararı

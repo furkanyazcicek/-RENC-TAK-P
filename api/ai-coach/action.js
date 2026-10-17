@@ -59,7 +59,7 @@ export default async function handler(req, res) {
   let actionMode = resolveCoachActionMode(rollout, action.type)
   if (!isPaidChatEnabled()) {
     if (!isFreeCoachEnabled() || !isFreeCoachWritesEnabled()) actionMode = 'denied'
-    else if (await ownFreeCoachWrites(supabase)) actionMode = 'modern'
+    else actionMode = await ownFreeCoachWrites(supabase) ? 'modern' : 'denied'
   }
   if (actionMode === 'denied') return sendError(res, 503, 'feature_temporarily_unavailable')
 

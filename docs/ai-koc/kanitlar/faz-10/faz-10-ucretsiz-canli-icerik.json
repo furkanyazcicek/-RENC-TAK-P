@@ -1,0 +1,89 @@
+{
+  "version": "phase-10-free-live-catalog@2",
+  "project_ref": "aazadigklxnvbtwrtszj",
+  "status": "passed",
+  "manifest_checksum": "3a4875885df96de0271b97c5157b5caeac8edc70baffc3a704beb6cd771c5dc9",
+  "transport_bundles": [
+    {
+      "bundle": 1,
+      "status": "passed",
+      "verified_chunks": 7,
+      "observed_at": "2026-10-17T22:59:34.128Z"
+    },
+    {
+      "bundle": 2,
+      "status": "passed",
+      "verified_chunks": 11,
+      "observed_at": "2026-10-17T22:59:56.026Z"
+    },
+    {
+      "bundle": 3,
+      "status": "passed",
+      "verified_chunks": 14,
+      "observed_at": "2026-10-17T23:01:15.375Z"
+    },
+    {
+      "bundle": 4,
+      "status": "passed",
+      "verified_chunks": 19,
+      "observed_at": "2026-10-17T23:01:46.114Z"
+    },
+    {
+      "bundle": 5,
+      "status": "passed",
+      "verified_chunks": 24,
+      "observed_at": "2026-10-17T23:02:54.220Z"
+    },
+    {
+      "bundle": 6,
+      "status": "passed",
+      "verified_chunks": 29,
+      "observed_at": "2026-10-17T23:03:49.790Z"
+    },
+    {
+      "bundle": 7,
+      "status": "passed",
+      "verified_chunks": 34,
+      "observed_at": "2026-10-17T23:04:43.151Z"
+    },
+    {
+      "bundle": 8,
+      "status": "passed",
+      "verified_chunks": 39,
+      "observed_at": "2026-10-17T23:05:11.268Z"
+    },
+    {
+      "bundle": 9,
+      "status": "passed",
+      "verified_chunks": 45,
+      "observed_at": "2026-10-17T23:07:11.139Z"
+    },
+    {
+      "bundle": 10,
+      "status": "passed",
+      "verified_chunks": 54,
+      "observed_at": "2026-10-17T23:08:12.476Z"
+    },
+    {
+      "bundle": 11,
+      "status": "passed",
+      "verified_chunks": 60,
+      "observed_at": "2026-10-17T23:09:00.833Z"
+    },
+    {
+      "bundle": 12,
+      "status": "passed",
+      "verified_chunks": 69,
+      "observed_at": "2026-10-17T23:09:48.989Z"
+    },
+    {
+      "bundle": 13,
+      "status": "passed",
+      "verified_chunks": 73,
+      "observed_at": "2026-10-17T23:10:32.380Z"
+    }
+  ],
+  "logical_chunks": 73,
+  "private_answers_reported": false,
+  "paid_resources": 0
+}

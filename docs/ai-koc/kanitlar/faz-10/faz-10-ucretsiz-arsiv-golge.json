@@ -1,0 +1,137 @@
+{
+  "version": "phase-10-free-archive-shadow@1",
+  "generated_at": "2026-10-17T22:56:25.192Z",
+  "status": "passed",
+  "environment": "read_only_current_application_archive",
+  "student_count": 17,
+  "answer_count": 204,
+  "cases_per_student": 12,
+  "engine_response_p95_ms": 1.331,
+  "samples": [
+    {
+      "ordinal": 1,
+      "input_records": 56,
+      "topic_rows": 8,
+      "replay_identical": true,
+      "duration_ms": 24
+    },
+    {
+      "ordinal": 2,
+      "input_records": 117,
+      "topic_rows": 6,
+      "replay_identical": true,
+      "duration_ms": 24
+    },
+    {
+      "ordinal": 3,
+      "input_records": 591,
+      "topic_rows": 53,
+      "replay_identical": true,
+      "duration_ms": 125
+    },
+    {
+      "ordinal": 4,
+      "input_records": 77,
+      "topic_rows": 9,
+      "replay_identical": true,
+      "duration_ms": 17
+    },
+    {
+      "ordinal": 5,
+      "input_records": 0,
+      "topic_rows": 0,
+      "replay_identical": true,
+      "duration_ms": 3
+    },
+    {
+      "ordinal": 6,
+      "input_records": 121,
+      "topic_rows": 3,
+      "replay_identical": true,
+      "duration_ms": 115
+    },
+    {
+      "ordinal": 7,
+      "input_records": 1,
+      "topic_rows": 1,
+      "replay_identical": true,
+      "duration_ms": 12
+    },
+    {
+      "ordinal": 8,
+      "input_records": 0,
+      "topic_rows": 0,
+      "replay_identical": true,
+      "duration_ms": 12
+    },
+    {
+      "ordinal": 9,
+      "input_records": 87,
+      "topic_rows": 2,
+      "replay_identical": true,
+      "duration_ms": 99
+    },
+    {
+      "ordinal": 10,
+      "input_records": 74,
+      "topic_rows": 4,
+      "replay_identical": true,
+      "duration_ms": 80
+    },
+    {
+      "ordinal": 11,
+      "input_records": 21,
+      "topic_rows": 4,
+      "replay_identical": true,
+      "duration_ms": 30
+    },
+    {
+      "ordinal": 12,
+      "input_records": 0,
+      "topic_rows": 0,
+      "replay_identical": true,
+      "duration_ms": 12
+    },
+    {
+      "ordinal": 13,
+      "input_records": 46,
+      "topic_rows": 15,
+      "replay_identical": true,
+      "duration_ms": 14
+    },
+    {
+      "ordinal": 14,
+      "input_records": 55,
+      "topic_rows": 0,
+      "replay_identical": true,
+      "duration_ms": 69
+    },
+    {
+      "ordinal": 15,
+      "input_records": 85,
+      "topic_rows": 5,
+      "replay_identical": true,
+      "duration_ms": 41
+    },
+    {
+      "ordinal": 16,
+      "input_records": 17,
+      "topic_rows": 1,
+      "replay_identical": true,
+      "duration_ms": 34
+    },
+    {
+      "ordinal": 17,
+      "input_records": 3,
+      "topic_rows": 1,
+      "replay_identical": true,
+      "duration_ms": 14
+    }
+  ],
+  "live_http_pilot": false,
+  "human_output_review": false,
+  "ledger_before_installation": true,
+  "model_calls": 0,
+  "live_writes": 0,
+  "private_rows_or_answers_reported": false
+}

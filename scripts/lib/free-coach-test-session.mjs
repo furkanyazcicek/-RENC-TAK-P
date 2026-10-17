@@ -38,5 +38,6 @@ export function createFreeCoachTestSession() {
   const record = { record_id: randomUUID(), student_id: TEST_STUDENT, source_code: 'bundled_question_test', source_record_id: 'free-coach-fixture-question', source_revision: '1', dedupe_key: 'free-coach-fixture-question', source_locator: 'drkoc-ref:v1:bundled_question_test:freeCoachFixture01', record_kind: 'event', semantic_event_type: 'question_answered', topic_id: 'drkoc:curriculum:topic:v1:t0066', subject_id: 'drkoc:curriculum:subject:v1:s008', education_context_id: 'drkoc:curriculum:context:v1:tyt', identity_resolution: { status: 'matched' }, evidence_class: 'direct_measurement', occurred_at: now, ingestion_sequence: 1, measurement: { correct_count: 3, incorrect_count: 7, total_count: 10 } }
   const profile = { id: TEST_STUDENT, full_name: 'Deniz Kaya', role: 'student' }
   const snapshot = buildFreeCoachSnapshot({ studentId: TEST_STUDENT, raw, facts: buildFacts(profile, raw), records: [record], asOf: now })
+  snapshot.coachingAnalysisEnabled=true
   return { tables, reads, supabase, snapshot, authenticate: async () => ({ ok: true, user: { id: TEST_STUDENT }, profile, supabase }) }
 }

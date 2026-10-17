@@ -153,12 +153,24 @@ try {
   if (process.argv[3]) {
     const files=readdirSync(process.argv[3]).filter(p=>/^\d+\.sql$/.test(p)).sort()
     for(const file of files) await client.query(readFileSync(join(process.argv[3],file),'utf8'))
-    report.catalog_sql_batches={count:files.length,status:'passed'}
+    const logical=(await client.query('select count(*)::integer n from learning_private.phase10_catalog_receipts')).rows[0].n
+    report.catalog_sql_batches={count:files.length,logical_chunks:logical,status:'passed'}
   }
   report.catalog = await materializePhase3ContentCatalog({ db,manifest,privateCatalog })
   if(process.argv[3]) assert.equal(report.catalog.writes_performed,0,'catalog_sql_parity_failed')
   stage = 'native_free_coach'
   report.native_probe = await probeFreeCoachNative({client,manifest,privateCatalog,students:profiles.rows.filter(r=>r.role==='student').map(r=>r.id)})
+  stage='live_sql_pilot_rehearsal'
+  const sqlPilot=await client.query(readFileSync('scripts/phase-10-live-free-pilot.sql','utf8'))
+  const sqlResult=sqlPilot.find(r=>r.rows?.[0]?.result)?.rows[0].result
+  assert.equal(sqlResult?.status,'passed','sql_pilot_failed')
+  report.sql_pilot_rehearsal={...sqlResult,environment:'local_postgres_live_sql_rehearsal'}
+  stage='release_gate_rehearsal'
+  const release=await client.query(readFileSync('scripts/phase-10-free-release.sql','utf8'))
+  assert.equal(release.find(r=>r.rows?.[0]?.result)?.rows[0].result.status,'opened')
+  await client.query(readFileSync('scripts/phase-10-free-disable.sql','utf8'))
+  assert.equal((await client.query("select count(*)::integer n from learning_private.learning_feature_flags where feature_key in ('coach_analysis','coach_writes') and enabled")).rows[0].n,0)
+  report.release_and_stop_rehearsal='passed'
   stage = 'final_source_verification'; await verifyRows()
   report.status = 'passed'
 } catch (error) {

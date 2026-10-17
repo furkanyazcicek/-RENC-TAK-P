@@ -137,7 +137,7 @@
     }
   },
   "performance": {
-    "claim_ledger_10000_ms": 8.463,
+    "claim_ledger_10000_ms": 8.441,
     "context_chars": 3868,
     "observation": {
       "schema_version": "ai-coach-observation@1",

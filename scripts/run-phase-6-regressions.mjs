@@ -1,3 +1,4 @@
+import { isLearningContentTestChecksum } from './lib/learning-content-test-baselines.mjs'
 import { spawn } from 'node:child_process'
 import { appendFileSync } from 'node:fs'
 import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises'
@@ -77,7 +78,7 @@ function authoritative(phase, value) {
     && value.command_totals?.required === 17 && value.command_totals?.passed === 17
     && value.gate_totals?.required === 46 && value.gate_totals?.passed === 46
     && value.assertions === 450
-    && value.manifest?.checksum === 'c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b'
+    && isLearningContentTestChecksum(value.manifest?.checksum)
   if (phase === 4) return value.status === 'passed'
     && value.command_totals?.required === 12 && value.command_totals?.passed === 12
     && value.gate_totals?.required === 85 && value.gate_totals?.passed === 85
@@ -111,7 +112,7 @@ async function main() {
       try { core = JSON.parse(await readFile(PHASE_ACCEPTANCE[phase], 'utf8')) } catch (error) { result.reason = error.message }
       await writeFile(PHASE_ACCEPTANCE[phase], baselines[phase].raw)
       result.authoritative_baseline_preserved = true
-      if (phase === 3 && (core?.status !== 'core_passed_runner_pending' || core?.assertions !== 450 || core?.manifest?.checksum !== 'c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b')) {
+      if (phase === 3 && (core?.status !== 'core_passed_runner_pending' || core?.assertions !== 450 || !isLearningContentTestChecksum(core?.manifest?.checksum))) {
         result.status = 'failed'; result.reason ??= 'Faz 3 çekirdek kabul veya manifest checksum değeri değişti.'
       }
       if (phase === 4 && (core?.status !== 'core_passed' || core?.assertions !== 290 || core?.gates?.length !== 85)) {

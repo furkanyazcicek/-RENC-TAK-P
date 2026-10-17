@@ -3,6 +3,7 @@ import { CalendarPlus, Check, ClipboardCheck, ExternalLink, Info, PenLine, Targe
 import { runAction, AICoachError } from '../../lib/aiCoach'
 import { Button, useToast } from '../ui'
 import { cn } from '../../lib/cn'
+import { editCoachingAmount } from '../../lib/learning/coachingLoop/editAmount.js'
 
 /**
  * ActionCard — AI'ın önerdiği işlemin onay kartı.
@@ -56,26 +57,20 @@ export default function ActionCard({ action, onCompleted }) {
   const toast = useToast()
 
   const Icon = ICONS[action.type] ?? Check
+  const originalRecommendation=action.type==='accept_coaching_recommendation'?action.payload?.recommendation:null
+  const editedRecommendation=originalRecommendation?editCoachingAmount(originalRecommendation,editedAmount):null
 
   async function handleRun() {
+    if(originalRecommendation&&!editedRecommendation){setError('Geçerli bir çalışma miktarı yaz.');return}
     setState('running')
     setError(null)
     try {
-      const nextAction = action.type === 'accept_coaching_recommendation' && editing
+      const nextAction = originalRecommendation && editedRecommendation!==originalRecommendation
         ? {
             ...action,
             payload: {
               ...action.payload,
-              recommendation: {
-                ...action.payload.recommendation,
-                recommendation_version: Number(action.payload.recommendation.recommendation_version ?? 1) + 1,
-                suggested_amount: {
-                  ...action.payload.recommendation.suggested_amount,
-                  value: Math.max(1, Math.min(240, Math.floor(Number(editedAmount) || 1))),
-                },
-                decision: 'edited',
-                status: 'edited',
-              },
+              recommendation: editedRecommendation,
             },
           }
         : action
@@ -116,7 +111,7 @@ export default function ActionCard({ action, onCompleted }) {
 
   const planItems = action.type === 'create_study_plan' ? (action.payload?.items ?? []) : null
   const recommendation = action.type === 'accept_coaching_recommendation'
-    ? action.payload?.recommendation
+    ? editedRecommendation ?? originalRecommendation
     : null
 
   if (recommendation) {
@@ -145,7 +140,7 @@ export default function ActionCard({ action, onCompleted }) {
           <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-3 border-y border-line py-3 text-xs sm:grid-cols-3">
             <div>
               <dt className="text-ink/55">Çalışma</dt>
-              <dd className="mt-0.5 font-semibold text-ink">{amount ? `${editing ? editedAmount : amount.value} ${unit}` : 'Kısa görev'}</dd>
+              <dd className="mt-0.5 font-semibold text-ink">{amount ? `${amount.value} ${unit}` : 'Kısa görev'}</dd>
             </div>
             <div>
               <dt className="text-ink/55">Güven</dt>
@@ -163,8 +158,9 @@ export default function ActionCard({ action, onCompleted }) {
               <span className="mt-1.5 flex items-center gap-2">
                 <input
                   type="number"
-                  min="1"
-                  max="240"
+                  min={amount.kind==='minutes'?5:1}
+                  max={amount.kind==='minutes'?240:200}
+                  aria-invalid={!editedRecommendation}
                   value={editedAmount}
                   onChange={(event) => setEditedAmount(event.target.value)}
                   className="input-base h-11 w-24"

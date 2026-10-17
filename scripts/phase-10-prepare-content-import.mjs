@@ -15,10 +15,20 @@ const db={exec:async()=>{},query:async(sql,args)=>{
 await materializePhase3ContentCatalog({db,manifest,privateCatalog})
 const folder=mkdtempSync(join(tmpdir(),'drkoc-phase10-catalog-'));chmodSync(folder,0o700)
 const key=r=>[r.source_code,r.content_kind,r.content_id,r.content_revision].join('|')
-const json=value=>`$phase10catalog$${JSON.stringify(value,null,1)}$phase10catalog$::jsonb`
-const count=Math.ceil(data.content.length/200)
+const json=value=>`$phase10catalog$[${value.map(r=>JSON.stringify(r)).join(',\n')}]$phase10catalog$::jsonb`
+const mappingByKey=new Map(data.mapping.map(r=>[key(r),r]))
+const itemsByKey=new Map()
+for(const item of data.item){const k=key(item);const list=itemsByKey.get(k)??[];list.push(item);itemsByKey.set(k,list)}
+const groups=[];let group=[],bytes=0
+for(const row of data.content){
+ const size=Buffer.byteLength(JSON.stringify([row,mappingByKey.get(key(row)),itemsByKey.get(key(row))??[]]))
+ if(group.length&&bytes+size>500000){groups.push(group);group=[];bytes=0}
+ group.push(row);bytes+=size
+}
+if(group.length)groups.push(group)
+const count=groups.length
 for(let i=0;i<count;i++){
- const content=data.content.slice(i*200,(i+1)*200),keys=new Set(content.map(key))
+ const content=groups[i],keys=new Set(content.map(key))
  const mapping=data.mapping.filter(r=>keys.has(key(r))),items=data.item.filter(r=>keys.has(key(r)))
  const checksum=createHash('sha256').update(JSON.stringify([content,mapping,items])).digest('hex')
  const sql=`begin;

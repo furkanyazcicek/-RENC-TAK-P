@@ -1,0 +1,76 @@
+{
+  "version": "phase-10-free-live-migrations@1",
+  "project_ref": "aazadigklxnvbtwrtszj",
+  "migrations": [
+    {
+      "migration": "migration_learning_evidence_network.sql",
+      "status": "passed",
+      "observed_at": "2026-10-17T22:48:57.854Z",
+      "source_rows_preserved": true
+    },
+    {
+      "migration": "migration_learning_content_activity.sql",
+      "status": "passed",
+      "observed_at": "2026-10-17T22:49:07.168Z",
+      "source_rows_preserved": true
+    },
+    {
+      "migration": "migration_learning_academic_records.sql",
+      "status": "passed",
+      "observed_at": "2026-10-17T22:49:26.965Z",
+      "source_rows_preserved": true
+    },
+    {
+      "migration": "migration_learning_language_progress.sql",
+      "status": "passed",
+      "observed_at": "2026-10-17T22:49:37.224Z",
+      "source_rows_preserved": true
+    },
+    {
+      "migration": "migration_learning_student_topic_model.sql",
+      "status": "passed",
+      "observed_at": "2026-10-17T22:49:41.338Z",
+      "source_rows_preserved": true
+    },
+    {
+      "migration": "migration_learning_coaching_loop.sql",
+      "status": "passed",
+      "observed_at": "2026-10-17T22:49:56.860Z",
+      "source_rows_preserved": true
+    },
+    {
+      "migration": "migration_learning_hardening.sql",
+      "status": "passed",
+      "observed_at": "2026-10-17T22:50:04.968Z",
+      "source_rows_preserved": true
+    },
+    {
+      "migration": "migration_learning_coach_pilot_gate.sql",
+      "status": "passed",
+      "observed_at": "2026-10-17T22:50:33.540Z",
+      "source_rows_preserved": true
+    },
+    {
+      "migration": "migration_learning_coaching_evidence_reconciliation.sql",
+      "status": "passed",
+      "observed_at": "2026-10-17T22:50:41.819Z",
+      "source_rows_preserved": true
+    },
+    {
+      "migration": "migration_learning_free_coach_outcome.sql",
+      "status": "passed",
+      "observed_at": "2026-10-17T22:50:48.419Z",
+      "source_rows_preserved": true
+    },
+    {
+      "migration": "migration_learning_free_coach_release_gate.sql",
+      "status": "passed",
+      "observed_at": "2026-10-17T22:51:07.271Z",
+      "source_rows_preserved": true
+    }
+  ],
+  "status": "schema_applied",
+  "source_rows_preserved": true,
+  "paid_model_calls": 0,
+  "new_paid_resources": 0
+}

@@ -1,7 +1,7 @@
 {
   "schema_version": "phase-8-security-matrix@1",
-  "generated_at": "2026-10-17T22:45:32.667Z",
-  "status": "core_passed_runner_pending",
+  "generated_at": "2026-10-17T23:07:48.177Z",
+  "status": "passed",
   "force_rls_tables": [
     "student_coaching_recommendations",
     "student_coaching_tasks",
@@ -28,5 +28,9 @@
     "git_push_performed": false,
     "phase_9_capacity_automation_implemented": false,
     "phase_10_live_rollout_implemented": false
-  }
+  },
+  "regression_commands_passed": 16,
+  "regression_commands_required": 16,
+  "visual_cases_passed": 12,
+  "visual_cases_required": 12
 }

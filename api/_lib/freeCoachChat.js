@@ -33,6 +33,7 @@ export function createFreeCoachChatHandler(dependencies = {}) {
       const quota = await limit(supabase, user.id)
       if (!quota.allowed) return sendError(res, quota.code === 'rate_limit_unavailable' ? 503 : 429, quota.code)
       const snapshot = await load(supabase, profile)
+      if(snapshot.coachingAnalysisEnabled!==true)return sendError(res,503,'feature_temporarily_unavailable')
       if (snapshot.facts.degraded) return sendError(res, 503, 'data_unavailable')
       let conversation
       let isNew = false

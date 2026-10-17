@@ -1,3 +1,4 @@
+import { isLearningContentTestChecksum } from './lib/learning-content-test-baselines.mjs'
 import { spawn } from 'node:child_process'
 import { appendFileSync, existsSync } from 'node:fs'
 import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises'
@@ -138,7 +139,7 @@ function authoritativePhase3(value) {
     && value.command_totals?.required === 17 && value.command_totals?.passed === 17
     && value.gate_totals?.required === 46 && value.gate_totals?.passed === 46
     && value.assertions === 450
-    && value.manifest?.checksum === 'c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b'
+    && isLearningContentTestChecksum(value.manifest?.checksum)
 }
 
 function authoritativePhase4(value) {

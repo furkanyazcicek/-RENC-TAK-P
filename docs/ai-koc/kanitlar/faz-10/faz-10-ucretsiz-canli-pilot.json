@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "environment": "live_supabase_rollback_transaction",
+  "task_verified": true,
+  "paid_model_calls": 0,
+  "question_grading": true,
+  "reset_reconciled": true,
+  "database_kill_switch": true,
+  "before_after_verified": true,
+  "correction_reconciled": true,
+  "private_rows_reported": false,
+  "foreign_attempt_denied": true,
+  "persistent_test_writes": false,
+  "approval_duplicate_safe": true,
+  "rls_foreign_read_denied": true,
+  "stale_outcome_invalidated": true,
+  "source_write_with_coach_closed": true,
+  "observed_at": "2026-10-17T23:11:05.711Z",
+  "identity_test": "admin_transaction_set_local_authenticated_role",
+  "live_signed_jwt_ui_pilot": false
+}

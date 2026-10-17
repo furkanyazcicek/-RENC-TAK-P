@@ -1,7 +1,7 @@
 /** Yalnız oturumdaki öğrencinin dar, kişisel içerik içermeyen öğrenme kayıtları. */
 import { buildFacts } from './context.js'
 import { buildFreeCoachSnapshot } from './freeCoachEngine.js'
-import { ownFreeCoachWrites } from './freeCoachGate.js'
+import { ownFreeCoachFlag, isFreeCoachWritesEnabled } from './freeCoachGate.js'
 
 const PAGE = 500
 const MAX_RECORDS = 10000
@@ -20,6 +20,8 @@ export async function readOwnEvidence(supabase, studentId) {
 }
 
 export async function loadFreeCoachSnapshot(supabase, profile) {
+  const analysisEnabled=await ownFreeCoachFlag(supabase,'coach_analysis')
+  if(!analysisEnabled)return {coachingAnalysisEnabled:false,coachingWriteEnabled:false,facts:{degraded:false}}
   const id = profile.id
   const definitions = [
     ['logs', 'daily_logs', 'id,study_date,topic,duration_minutes,correct,incorrect,empty', 'study_date', 1000],
@@ -43,6 +45,7 @@ export async function loadFreeCoachSnapshot(supabase, profile) {
   const facts = buildFacts(profile, raw)
   facts.today = new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Istanbul' })
   const snapshot = buildFreeCoachSnapshot({ studentId: id, raw, facts, records: ledger.records, ledgerAvailable: ledger.available })
-  snapshot.coachingWriteEnabled = await ownFreeCoachWrites(supabase)
+  snapshot.coachingAnalysisEnabled = true
+  snapshot.coachingWriteEnabled = isFreeCoachWritesEnabled() && await ownFreeCoachFlag(supabase,'coach_writes')
   return snapshot
 }

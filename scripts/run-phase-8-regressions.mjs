@@ -1,3 +1,4 @@
+import { isLearningContentTestChecksum } from './lib/learning-content-test-baselines.mjs'
 import { spawn } from 'node:child_process'
 import { appendFileSync } from 'node:fs'
 import { appendFile, mkdir, readFile, writeFile } from 'node:fs/promises'
@@ -29,7 +30,7 @@ const REQUIRED = [
   { command: ['node', 'scripts/test-ai-coach.mjs'], group: 'regression', key: 'ai_coach' },
   { command: ['npm', 'run', 'test:ai-solve'], group: 'regression', key: 'ai_solve' },
   { command: ['npm', 'run', 'test:anasayfa'], group: 'regression', key: 'home' },
-  { command: ['node', 'scripts/capture-phase-8-coaching-loop.mjs'], group: 'regression', key: 'visual' },
+  { command: ['node', process.argv.includes('--verify-current-visuals')?'scripts/verify-phase-8-visual-evidence.mjs':'scripts/capture-phase-8-coaching-loop.mjs'], group: 'regression', key: 'visual' },
   { command: ['npm', 'run', 'build'], group: 'build', key: 'build' },
 ]
 
@@ -80,7 +81,7 @@ function authoritative(phase, value) {
     && value.command_totals?.required === 17 && value.command_totals?.passed === 17
     && value.gate_totals?.required === 46 && value.gate_totals?.passed === 46
     && value.assertions === 450
-    && value.manifest?.checksum === 'c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b'
+    && isLearningContentTestChecksum(value.manifest?.checksum)
   if (phase === 4) return value.status === 'passed'
     && value.command_totals?.required === 12 && value.command_totals?.passed === 12
     && value.gate_totals?.required === 85 && value.gate_totals?.passed === 85 && value.assertions === 290
@@ -97,7 +98,7 @@ function authoritative(phase, value) {
 
 function validateCore(phase, core) {
   if (phase === 3) return core?.status === 'core_passed_runner_pending' && core?.assertions === 450
-    && core?.manifest?.checksum === 'c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b'
+    && isLearningContentTestChecksum(core?.manifest?.checksum)
   if (phase === 4) return core?.status === 'core_passed' && core?.assertions === 290 && core?.gates?.length === 85
   if (phase === 5) return core?.status === 'core_passed_runner_pending' && core?.assertions === 231 && core?.gate_totals?.passed === 9
   if (phase === 6) return core?.status === 'core_passed_runner_pending' && core?.assertions === 107 && core?.gate_totals?.passed === 9

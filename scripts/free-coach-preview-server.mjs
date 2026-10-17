@@ -4,6 +4,7 @@ import { createFreeCoachChatHandler } from '../api/_lib/freeCoachChat.js'
 import { createFreeCoachTestSession } from './lib/free-coach-test-session.mjs'
 
 const session = createFreeCoachTestSession()
+session.snapshot.coachingWriteEnabled = true
 const handler = createFreeCoachChatHandler({ authenticate: session.authenticate, loadSnapshot: async () => session.snapshot })
 async function previewApi(req, res, next) {
   if (!req.url.startsWith('/api/ai-coach/')) return next()

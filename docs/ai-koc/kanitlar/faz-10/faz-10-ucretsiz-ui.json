@@ -1,0 +1,36 @@
+{
+  "version": "phase-10-free-ui@1",
+  "status": "passed",
+  "generated_at": "2026-10-17T23:17:13.614Z",
+  "environment": "cua_local_real_handler_synthetic_student",
+  "viewports": [
+    {
+      "height": 900,
+      "horizontal_overflow": false,
+      "scroll_height": 900,
+      "width": 1440
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "scroll_height": 1024,
+      "horizontal_overflow": false
+    },
+    {
+      "height": 844,
+      "horizontal_overflow": false,
+      "scroll_height": 844,
+      "width": 390
+    }
+  ],
+  "edited_quantity_updates_completion": true,
+  "keyboard_focus_verified": true,
+  "source_sha256": {
+    "src/pages/AICoach.jsx": "9b416511958fbd43f58f6ebd50cbf8b80d4ea02fa211130b1159c63d3a319032",
+    "src/components/ai/ActionCard.jsx": "a6c7693a170103911aa17fa8a0a5c2408168acbc3a3522f78f171c341dcdc0b1",
+    "src/components/ai/Markdown.jsx": "3ee3051433077d37c0c8a2c294a2ab72d223d515ac5d999b7ba0fd167ab838ef",
+    "src/lib/learning/coachingLoop/editAmount.js": "82991eededb5b85641e1e5d83254985526af8f34dec1295ea58e95e21d688a98",
+    "src/lib/aiCoach.js": "dfe97a5074109756492120b786e71ab3c4c3f0006f76753f0bdf4152dff00167"
+  },
+  "live_student_ui_session": false
+}

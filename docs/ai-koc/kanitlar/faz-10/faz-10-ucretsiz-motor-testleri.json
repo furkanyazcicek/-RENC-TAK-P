@@ -1,0 +1,15 @@
+{
+  "version": "phase-10-free-engine-tests@1",
+  "generated_at": "2026-10-17T23:16:38.178Z",
+  "passed": 44,
+  "failed": 0,
+  "source_sha256": {
+    "api/_lib/freeCoachEngine.js": "52fb5e0fe2c264904f94181e8df6e32d69dec38df4d14e2104d0edc9e2cd82ff",
+    "api/_lib/freeCoachChat.js": "36971d248b3cc856ace3123fae8f34cbdd82936e360b5d42b898a7dd8ef5df03",
+    "api/_lib/freeCoachSnapshotData.js": "45f37b943ed71c9feaa9d6e9aca14433ac99f6fa7275b516397ec7f5ae6d9d9b",
+    "api/_lib/freeCoachGate.js": "44db5c08f730567c3dbc1d21bccfd4450cc2decf64207b0d015a84454ba85088",
+    "api/ai-coach/action.js": "30e95691361db567dc38068577f405705e8a1400213b2a7fe3c3d10034d95e4a",
+    "src/lib/learning/coachingLoop/editAmount.js": "82991eededb5b85641e1e5d83254985526af8f34dec1295ea58e95e21d688a98"
+  },
+  "paid_model_calls": 0
+}

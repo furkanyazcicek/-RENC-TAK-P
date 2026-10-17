@@ -27,6 +27,7 @@
     "test:ai-solve": "node scripts/test-ai-solve.mjs",
     "test:ucretsiz-koc": "node --test scripts/test-free-coach.mjs",
     "test:ai-koc-ucretsiz": "node --test scripts/test-free-coach-engine.mjs",
+    "test:ai-koc-faz-10:ucretsiz-kabul": "node scripts/verify-phase-10-free-acceptance.mjs",
     "test:solve-board": "node --test scripts/test-solve-board-compatibility.mjs",
     "test:lesson-document": "node scripts/test-lesson-document.mjs",
     "test:tts-cache": "node scripts/test-tts-cache.mjs",

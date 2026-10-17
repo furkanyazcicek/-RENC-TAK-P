@@ -1,0 +1,86 @@
+{
+  "observed_at": "2026-10-17T23:13:13.032325+00:00",
+  "global_flags": [
+    {
+      "mode": "enabled",
+      "enabled": true,
+      "feature": "coach_analysis"
+    },
+    {
+      "mode": "enabled",
+      "enabled": true,
+      "feature": "coach_writes"
+    },
+    {
+      "mode": "enabled",
+      "enabled": true,
+      "feature": "source_events"
+    }
+  ],
+  "private_items": 49474,
+  "logical_chunks": 73,
+  "topic_mappings": 4414,
+  "content_revisions": 4414,
+  "migration_receipts": [
+    {
+      "name": "migration_learning_evidence_network.sql",
+      "sha256": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea",
+      "applied_at": "2026-10-17T22:48:36.835517+00:00"
+    },
+    {
+      "name": "migration_learning_content_activity.sql",
+      "sha256": "8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165",
+      "applied_at": "2026-10-17T22:49:00.828907+00:00"
+    },
+    {
+      "name": "migration_learning_academic_records.sql",
+      "sha256": "06b8381911762c2436bedc0995bae344303f663b5f53566354d79afcee344f3f",
+      "applied_at": "2026-10-17T22:49:20.250753+00:00"
+    },
+    {
+      "name": "migration_learning_language_progress.sql",
+      "sha256": "071e3a91c907729de3a679b18d66f3a434249b9f55a9101b80dafb0e42e09830",
+      "applied_at": "2026-10-17T22:49:29.678363+00:00"
+    },
+    {
+      "name": "migration_learning_student_topic_model.sql",
+      "sha256": "02ce1a9ed7b1d2bbb6e9f2faea570343cd93ea6343d463599aa9eefe04e0322c",
+      "applied_at": "2026-10-17T22:49:39.466782+00:00"
+    },
+    {
+      "name": "migration_learning_coaching_loop.sql",
+      "sha256": "bbd7495596ded58bcfeed4eaeac56cbc759169c7982f6a5bc5eaa0479b7f1b1b",
+      "applied_at": "2026-10-17T22:49:43.848689+00:00"
+    },
+    {
+      "name": "migration_learning_hardening.sql",
+      "sha256": "77ab95bd765f38294b89ab1fa577d4c78669909a0d866d6294c5a3edf95cb103",
+      "applied_at": "2026-10-17T22:49:58.717864+00:00"
+    },
+    {
+      "name": "migration_learning_coach_pilot_gate.sql",
+      "sha256": "32711a206397b553fbfeccef97751deeef2e50430fc39ce719153b27f39274cc",
+      "applied_at": "2026-10-17T22:50:24.377793+00:00"
+    },
+    {
+      "name": "migration_learning_coaching_evidence_reconciliation.sql",
+      "sha256": "852b267d4fe046fc49cfb6148d338d2459e55e74e860550921afdacdf91bf10d",
+      "applied_at": "2026-10-17T22:50:36.038117+00:00"
+    },
+    {
+      "name": "migration_learning_free_coach_outcome.sql",
+      "sha256": "3e1d787918b7f7cafca957bd81ba7fed4e9e3937a7b352bc61b4a6036e1ff018",
+      "applied_at": "2026-10-17T22:50:44.507725+00:00"
+    },
+    {
+      "name": "migration_learning_free_coach_release_gate.sql",
+      "sha256": "10e36419a7a8262bf6569bccb4a0f0fae74784070cf8a6a08006156510b07e1a",
+      "applied_at": "2026-10-17T22:50:50.424883+00:00"
+    }
+  ],
+  "coaching_tables_force_rls": true,
+  "own_gate_anon_can_execute": false,
+  "private_items_anon_can_read": false,
+  "private_items_student_can_read": false,
+  "persistent_pilot_recommendations": 0
+}
