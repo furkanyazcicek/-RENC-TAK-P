@@ -74,6 +74,18 @@ test('alan kaydı ve aynı kaydın defter kopyası iki kez sayılmaz', () => {
   assert.equal(s.records.length, 1)
   assert.equal(s.model.rows.find((r) => r.topic_id === topic).dimensions.performance.questions, 10)
 })
+test('gerçek session öneki aynı AI çözümünü çoğaltmaz ve kanonik eşlemeyi korur',()=>{
+ const id=randomUUID()
+ const s=snapshot(raw({solveSessions:[{id,status:'ok',subject:'Matematik',topic:'Eski ad',canonical_topic:'Eski ad',topic_matched:true,created_at:asOf}]}),
+  [evidence({source_code:'ai_solution_sessions',source_record_id:`session:${id}`,semantic_event_type:'solution_requested',evidence_class:'exposure',measurement:{}})])
+ assert.equal(s.records.length,1)
+ assert.equal(s.records[0].topic_id,topic)
+})
+test('branş denemesinin açık sınav türü güncel hedefe çevrilmez',()=>{
+ const s=snapshot(raw({branchExams:[{id:randomUUID(),subject:'Matematik',topic:'Fonksiyonlar',exam_type:'AYT',exam_date:today,correct:5,incorrect:5}]}))
+ assert.equal(s.records[0].education_context_id,'drkoc:curriculum:context:v1:ayt')
+ assert.notEqual(s.records[0].topic_id,topic)
+})
 test('kaynak düzeltmesi analizi değiştirir, silinince eski başarı kalmaz', () => {
   const row = { id: randomUUID(), topic: 'Matematik - Fonksiyonlar', study_date: today, correct: 8, incorrect: 2 }
   const first = snapshot(raw({ logs: [row] }))

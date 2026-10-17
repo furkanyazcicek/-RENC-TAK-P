@@ -1,33 +1,33 @@
 {
   "version": "phase-10-free-archive-shadow@1",
-  "generated_at": "2026-10-17T22:56:25.192Z",
+  "generated_at": "2026-10-17T23:19:37.216Z",
   "status": "passed",
   "environment": "read_only_current_application_archive",
   "student_count": 17,
   "answer_count": 204,
   "cases_per_student": 12,
-  "engine_response_p95_ms": 1.331,
+  "engine_response_p95_ms": 1.285,
   "samples": [
     {
       "ordinal": 1,
       "input_records": 56,
       "topic_rows": 8,
       "replay_identical": true,
-      "duration_ms": 24
+      "duration_ms": 23
     },
     {
       "ordinal": 2,
       "input_records": 117,
       "topic_rows": 6,
       "replay_identical": true,
-      "duration_ms": 24
+      "duration_ms": 20
     },
     {
       "ordinal": 3,
       "input_records": 591,
       "topic_rows": 53,
       "replay_identical": true,
-      "duration_ms": 125
+      "duration_ms": 127
     },
     {
       "ordinal": 4,
@@ -48,7 +48,7 @@
       "input_records": 121,
       "topic_rows": 3,
       "replay_identical": true,
-      "duration_ms": 115
+      "duration_ms": 118
     },
     {
       "ordinal": 7,
@@ -69,7 +69,7 @@
       "input_records": 87,
       "topic_rows": 2,
       "replay_identical": true,
-      "duration_ms": 99
+      "duration_ms": 100
     },
     {
       "ordinal": 10,
@@ -83,7 +83,7 @@
       "input_records": 21,
       "topic_rows": 4,
       "replay_identical": true,
-      "duration_ms": 30
+      "duration_ms": 27
     },
     {
       "ordinal": 12,
@@ -104,14 +104,14 @@
       "input_records": 55,
       "topic_rows": 0,
       "replay_identical": true,
-      "duration_ms": 69
+      "duration_ms": 70
     },
     {
       "ordinal": 15,
       "input_records": 85,
       "topic_rows": 5,
       "replay_identical": true,
-      "duration_ms": 41
+      "duration_ms": 42
     },
     {
       "ordinal": 16,
@@ -125,7 +125,7 @@
       "input_records": 3,
       "topic_rows": 1,
       "replay_identical": true,
-      "duration_ms": 14
+      "duration_ms": 16
     }
   ],
   "live_http_pilot": false,

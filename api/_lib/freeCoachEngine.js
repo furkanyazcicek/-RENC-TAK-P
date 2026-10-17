@@ -18,6 +18,8 @@ const uuid = (value) => {
 const safe = (value) => String(value ?? '').replace(/[\u0000-\u001f]/g, ' ').slice(0, 120)
 const percent = (value) => Number.isFinite(value) ? Math.round(value * 100) : null
 const languageNames = { ingilizce: 'İngilizce', almanca: 'Almanca', fransizca: 'Fransızca', ispanyolca: 'İspanyolca' }
+const legacySourceId=record=>String(record.source_record_id??'').replace(
+  record.source_code==='ai_solution_sessions'?/^session:/:record.source_code==='mock_exam_subjects'?/^subject:/:/^$/, '')
 
 function displayFor(row) {
   const canonical = topicDisplay(row.topic_id)
@@ -31,7 +33,7 @@ function displayFor(row) {
 export function buildFreeCoachSnapshot({ studentId, raw, facts, records = [], asOf = new Date().toISOString(), ledgerAvailable = true }) {
   const historical = []
   const mappedSources = new Map(projectEvidenceHistory(records.filter((r) => r.student_id === studentId)).active
-    .filter((r) => r.topic_id).map((r) => [`${r.source_code}|${r.source_record_id}`, r]))
+    .filter((r) => r.topic_id).map((r) => [`${r.source_code}|${legacySourceId(r)}`, r]))
   const exam = facts.exam?.declared ?? facts.exam?.inferred
   function add(sourceCode, row, adapter, labels, occurredAt) {
     if (!row.id || row.student_id && row.student_id !== studentId) return
@@ -77,7 +79,7 @@ export function buildFreeCoachSnapshot({ studentId, raw, facts, records = [], as
   const academic = new Set(['daily_logs', 'branch_exams', 'mock_exam_subjects', 'homeworks', 'questions_teacher_feedback'])
   const solveIds = new Set(historical.filter((r) => r.source_code === 'ai_solution_sessions').map((r) => r.source_record_id))
   const own = records.filter((r) => r.student_id === studentId && !academic.has(r.source_code)
-    && !(r.source_code === 'ai_solution_sessions' && r.semantic_event_type === 'solution_requested' && solveIds.has(r.source_record_id)))
+    && !(r.source_code === 'ai_solution_sessions' && r.semantic_event_type === 'solution_requested' && solveIds.has(legacySourceId(r))))
   const combined = [...historical, ...own]
   return {
     version: FREE_COACH_VERSION, asOf, ledgerAvailable,

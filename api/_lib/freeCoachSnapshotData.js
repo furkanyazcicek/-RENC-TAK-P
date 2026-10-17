@@ -26,7 +26,7 @@ export async function loadFreeCoachSnapshot(supabase, profile) {
   const definitions = [
     ['logs', 'daily_logs', 'id,study_date,topic,duration_minutes,correct,incorrect,empty', 'study_date', 1000],
     ['mockExams', 'mock_exams', 'id,exam_type,exam_name,exam_date,mock_exam_subjects(id,subject,correct,incorrect,empty,net)', 'exam_date', 100],
-    ['branchExams', 'exams', 'id,subject,topic,exam_date,correct,incorrect,empty,net', 'exam_date', 200],
+    ['branchExams', 'exams', 'id,subject,topic,exam_type,exam_date,duration_minutes,correct,incorrect,empty,net', 'exam_date', 200],
     ['homeworks', 'homeworks', 'id,title,due_date,status,created_at', 'created_at', 500],
     ['questions', 'questions', 'id,subject,topic,status,teacher_reply,created_at', 'created_at', 500],
     ['solveSessions', 'ai_solution_sessions', 'id,subject,topic,canonical_topic,topic_matched,status,help_requested,student_correct,error_type,created_at', 'created_at', 500],
