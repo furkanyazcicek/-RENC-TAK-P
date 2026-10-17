@@ -3,6 +3,7 @@
  * Bellekteki PGlite/WASM fixture'ı dışında veri veya ağ kullanmaz.
  */
 import assert from 'node:assert/strict'
+import { assertLearningContentTestBaseline } from './lib/learning-content-test-baselines.mjs'
 import { createHash, randomUUID } from 'node:crypto'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
@@ -191,8 +192,9 @@ async function main() {
     equal(summary.checksums.phase_3_migration_sha256, '8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165', 'Faz 3 checksum')
     const manifest = JSON.parse(readFileSync(MANIFEST_PATH, 'utf8'))
     equal(manifest.manifest_version, 'learning-content-manifest@1', 'Faz 3 manifest sürümü')
-    equal(manifest.entries.length, 4485, 'Faz 3 manifest kayıt sayısı')
-    equal(manifest.manifest_checksum, 'c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b', 'yetkili manifest checksum')
+    const baseline=assertLearningContentTestBaseline(manifest)
+    equal(manifest.entries.length,baseline.count,'manifest kayıt sayısı')
+    equal(manifest.manifest_checksum,baseline.checksum,'sabit içerik imzası')
     equal(sha(stableJson(manifest.entries)), manifest.manifest_checksum, 'manifest yeniden hesaplanan checksum')
     check(!JSON.stringify(manifest).match(/answer_key|correct_answer|dogru_cevap|answerKey/u), 'public manifest cevap anahtarı içermiyor')
     const db = new PGlite(); await installBase(db)
@@ -206,7 +208,7 @@ async function main() {
     const second = await db.query(`select count(*)::integer n from public.learning_source_contracts where registry_version='learning-academic-registry@1'`)
     equal(second.rows[0].n, first.rows[0].n, 'ikinci uygulama nesne/veri çoğaltmadı')
     summary.migration = { first_apply: 'passed', second_apply: 'passed', preserved_fixture_rows: 1, registry_rows: second.rows[0].n }
-    passGate(3, 'Faz 2 checksum doğrulandı'); passGate(5, 'Faz 3 migration + manifest checksum ve 4.485 kayıt doğrulandı'); passGate(6, 'PGlite first apply'); passGate(8, 'PGlite second apply'); passGate(9, 'legacy fixture preserved')
+    passGate(3, 'Faz 2 checksum doğrulandı'); passGate(5, `Faz 3 migration + manifest checksum ve ${manifest.entries.length} kayıt doğrulandı`); passGate(6, 'PGlite first apply'); passGate(8, 'PGlite second apply'); passGate(9, 'legacy fixture preserved')
     await db.close()
   })
 

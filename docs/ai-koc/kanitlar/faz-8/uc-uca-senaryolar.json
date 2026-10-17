@@ -1,6 +1,6 @@
 {
   "schema_version": "phase-8-e2e-scenarios@1",
-  "generated_at": "2026-10-13T23:03:17.488Z",
+  "generated_at": "2026-10-17T22:45:32.667Z",
   "totals": {
     "required": 19,
     "passed": 19,
@@ -10,37 +10,37 @@
     {
       "name": "zayıf konu kanıtından gerekçeli öneri oluşturma",
       "status": "passed",
-      "duration_ms": 1.519
+      "duration_ms": 1.104
     },
     {
       "name": "istemin enjeksiyonunun görev alanlarına geçememesi",
       "status": "passed",
-      "duration_ms": 0.62
+      "duration_ms": 0.594
     },
     {
       "name": "hedef derse veya soru setine güvenli bağlantı",
       "status": "passed",
-      "duration_ms": 0.189
+      "duration_ms": 0.123
     },
     {
       "name": "içerik kaldırılması ve yetki kaybı",
       "status": "passed",
-      "duration_ms": 0.211
+      "duration_ms": 0.173
     },
     {
       "name": "dil becerisi ve platform dışı çalışma",
       "status": "passed",
-      "duration_ms": 0.091
+      "duration_ms": 0.085
     },
     {
       "name": "soru seti kısmi ilerleme ve gerçek tamamlama",
       "status": "passed",
-      "duration_ms": 0.144
+      "duration_ms": 0.137
     },
     {
       "name": "kullanıcı beyanı ile otomatik doğrulamanın ayrılması",
       "status": "passed",
-      "duration_ms": 0.072
+      "duration_ms": 0.068
     },
     {
       "name": "görev öncesi eski kanıtın tamamlamaması",
@@ -50,47 +50,47 @@
     {
       "name": "aynı kanıtın iki görevi tamamlamaması",
       "status": "passed",
-      "duration_ms": 0.019
+      "duration_ms": 0.017
     },
     {
       "name": "görev düzenleme, erteleme, reddetme ve iptal",
       "status": "passed",
-      "duration_ms": 0.022
+      "duration_ms": 0.019
     },
     {
       "name": "öneri sonrası yeni sonuçla öğrenci modelinin güncellenmesi",
       "status": "passed",
-      "duration_ms": 0.087
+      "duration_ms": 0.078
     },
     {
       "name": "gecikmeli tekrar sonucu",
       "status": "passed",
-      "duration_ms": 0.021
+      "duration_ms": 0.02
     },
     {
       "name": "veri yetersizliğinde ölçüm odaklı öneri",
       "status": "passed",
-      "duration_ms": 0.116
+      "duration_ms": 0.11
     },
     {
       "name": "çelişkili kaynaklarda temkinli öneri",
       "status": "passed",
-      "duration_ms": 0.061
+      "duration_ms": 0.047
     },
     {
       "name": "günlük brifingin aynı veriyle kararlı öncelik vermesi",
       "status": "passed",
-      "duration_ms": 0.118
+      "duration_ms": 0.115
     },
     {
       "name": "yazma aracı için onaysız çağrının reddedilmesi",
       "status": "passed",
-      "duration_ms": 0.434
+      "duration_ms": 0.401
     },
     {
       "name": "öneriyi önizleme, onaylama ve göreve dönüştürme",
       "status": "passed",
-      "duration_ms": 8.158
+      "duration_ms": 8.861
     },
     {
       "name": "kullanıcılar arası görev ve kanıt erişiminin reddedilmesi",
@@ -100,7 +100,7 @@
     {
       "name": "mevcut sohbet ve plan akışının bozulmaması",
       "status": "passed",
-      "duration_ms": 0.193
+      "duration_ms": 0.252
     }
   ]
 }

@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-13T23:02:58.077Z",
+  "generated_at": "2026-10-17T22:45:09.702Z",
   "workspace": "/Users/furkantalhayazcicek/Desktop/DRKOÇ/",
   "remote_services_used": false,
   "real_student_data_used": false,
   "counts": {
-    "content_revisions": 4485,
+    "content_revisions": 4414,
     "by_kind": {
       "atlas_task": 101,
-      "bundled_lesson": 326,
+      "bundled_lesson": 255,
       "bundled_question_set": 3914,
       "atlas_assessment": 2,
       "geometry_assessment": 1,
@@ -16,7 +16,7 @@
     },
     "by_source": {
       "biology_atlas": 44,
-      "bundled_lesson_activity": 326,
+      "bundled_lesson_activity": 255,
       "bundled_question_test": 3914,
       "chemistry_atlas": 1,
       "geography_atlas": 22,
@@ -24,14 +24,14 @@
       "library_note_exposure": 141,
       "physics_atlas": 36
     },
-    "bundled_lessons": 326,
-    "lesson_sections": 2595,
-    "lesson_blocks": 11527,
-    "lesson_quizzes": 850,
-    "lesson_osym_simulations": 373,
+    "bundled_lessons": 255,
+    "lesson_sections": 2056,
+    "lesson_blocks": 9161,
+    "lesson_quizzes": 677,
+    "lesson_osym_simulations": 235,
     "question_sets": 3917,
     "questions": 39258,
-    "private_catalog_items": 52379,
+    "private_catalog_items": 49474,
     "database_fixture_structured_lessons": 0,
     "database_fixture_question_sets": 0
   },

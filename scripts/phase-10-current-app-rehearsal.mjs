@@ -1,13 +1,14 @@
 /** Gerçek uygulama yedeği yalnız yerel PostgreSQL'de geri yüklenir ve geçiş denenir. */
 import assert from 'node:assert/strict'
 import { createHash, randomBytes } from 'node:crypto'
-import { readFileSync, writeFileSync, mkdtempSync, chmodSync } from 'node:fs'
+import { readFileSync, writeFileSync, mkdtempSync, chmodSync, readdirSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import EmbeddedPostgres from 'embedded-postgres'
 import { freePort, MIGRATIONS, applyMigration } from './test-phase-10-live-volume-rehearsal.mjs'
 import { materializePhase3ContentCatalog } from './lib/load-phase-3-content-catalog.mjs'
 import { probeFreeCoachNative } from './lib/phase-10-free-native-probe.mjs'
+import { guardedMigrationSql } from './lib/phase-10-guarded-migration.mjs'
 
 const quote = (s) => `"${String(s).replaceAll('"', '""')}"`
 const literal = (s) => `'${String(s).replaceAll("'", "''")}'`
@@ -133,9 +134,10 @@ try {
   for (const migration of [...MIGRATIONS,
     { phase: 10, path: join(process.cwd(), 'supabase/migration_learning_coach_pilot_gate.sql') },
     { phase: '10-reconciliation', path: join(process.cwd(), 'supabase/migration_learning_coaching_evidence_reconciliation.sql') },
-    { phase: '10-free-outcome', path: join(process.cwd(), 'supabase/migration_learning_free_coach_outcome.sql') }]) {
+    { phase: '10-free-outcome', path: join(process.cwd(), 'supabase/migration_learning_free_coach_outcome.sql') },
+    { phase: '10-free-release', path: join(process.cwd(), 'supabase/migration_learning_free_coach_release_gate.sql') }]) {
     const start = performance.now()
-    await applyMigration(db, migration)
+    await db.exec(guardedMigrationSql(migration,archive))
     report.migrations.push({ phase: migration.phase, sha256: digest(readFileSync(migration.path)), duration_ms: Math.round(performance.now() - start), status: 'passed' })
   }
   stage = 'post_migration_verification'; await verifyRows()
@@ -148,7 +150,13 @@ try {
     try { const result=await run(db); await client.query('commit'); return result }
     catch(error) { await client.query('rollback'); throw error }
   }
+  if (process.argv[3]) {
+    const files=readdirSync(process.argv[3]).filter(p=>/^\d+\.sql$/.test(p)).sort()
+    for(const file of files) await client.query(readFileSync(join(process.argv[3],file),'utf8'))
+    report.catalog_sql_batches={count:files.length,status:'passed'}
+  }
   report.catalog = await materializePhase3ContentCatalog({ db,manifest,privateCatalog })
+  if(process.argv[3]) assert.equal(report.catalog.writes_performed,0,'catalog_sql_parity_failed')
   stage = 'native_free_coach'
   report.native_probe = await probeFreeCoachNative({client,manifest,privateCatalog,students:profiles.rows.filter(r=>r.role==='student').map(r=>r.id)})
   stage = 'final_source_verification'; await verifyRows()

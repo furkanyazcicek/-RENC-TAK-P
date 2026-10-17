@@ -4,6 +4,7 @@
  * gerçek öğrenci, ücretli model, backfill, pilot, deploy ve push kullanmaz.
  */
 import assert from 'node:assert/strict'
+import { assertLearningContentTestBaseline } from './lib/learning-content-test-baselines.mjs'
 import { createHash, createHmac, randomUUID, timingSafeEqual } from 'node:crypto'
 import { mkdirSync, mkdtempSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs'
 import { createServer } from 'node:net'
@@ -260,8 +261,9 @@ async function main() {
     equal(summary.checksums.phase_2_migration_sha256, '993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea', 'Faz 2 checksum')
     equal(summary.checksums.phase_3_migration_sha256, '8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165', 'Faz 3 checksum')
     equal(summary.checksums.phase_8_migration_sha256, 'bbd7495596ded58bcfeed4eaeac56cbc759169c7982f6a5bc5eaa0479b7f1b1b', 'Faz 8 checksum')
-    equal(manifest.entries.length, 4485, 'manifest kayıt sayısı')
-    equal(manifest.manifest_checksum, 'c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b', 'manifest checksum')
+    const baseline=assertLearningContentTestBaseline(manifest)
+    equal(manifest.entries.length,baseline.count,'manifest kayıt sayısı')
+    equal(manifest.manifest_checksum,baseline.checksum,'sabit içerik imzası')
     check(!/(answer_key|correct_answer|dogru_cevap|answerKey)/u.test(JSON.stringify(manifest)), 'public manifest cevap anahtarı içermez')
     const coverage = buildCoverageReconciliation()
     equal(coverage.status, 'passed', 'kapsam kayıt defteri kodla uzlaşmalı')

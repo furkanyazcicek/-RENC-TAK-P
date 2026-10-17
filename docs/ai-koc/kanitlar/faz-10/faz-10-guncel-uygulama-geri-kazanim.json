@@ -1,6 +1,6 @@
 {
   "version": "phase-10-current-app-rehearsal@1",
-  "generated_at": "2026-10-17T22:38:48.870Z",
+  "generated_at": "2026-10-17T22:47:01.783Z",
   "status": "passed",
   "archive": {
     "sha256": "a3cf780c986c52c688c4ad3d591b18e1e555fe532fb7052f36043c403250f239",
@@ -11,61 +11,67 @@
     {
       "phase": 2,
       "sha256": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea",
-      "duration_ms": 51,
+      "duration_ms": 200,
       "status": "passed"
     },
     {
       "phase": 3,
       "sha256": "8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165",
-      "duration_ms": 89,
+      "duration_ms": 224,
       "status": "passed"
     },
     {
       "phase": 4,
       "sha256": "06b8381911762c2436bedc0995bae344303f663b5f53566354d79afcee344f3f",
-      "duration_ms": 52,
+      "duration_ms": 200,
       "status": "passed"
     },
     {
       "phase": 5,
       "sha256": "071e3a91c907729de3a679b18d66f3a434249b9f55a9101b80dafb0e42e09830",
-      "duration_ms": 27,
+      "duration_ms": 186,
       "status": "passed"
     },
     {
       "phase": 6,
       "sha256": "02ce1a9ed7b1d2bbb6e9f2faea570343cd93ea6343d463599aa9eefe04e0322c",
-      "duration_ms": 25,
+      "duration_ms": 183,
       "status": "passed"
     },
     {
       "phase": 8,
       "sha256": "bbd7495596ded58bcfeed4eaeac56cbc759169c7982f6a5bc5eaa0479b7f1b1b",
-      "duration_ms": 27,
+      "duration_ms": 186,
       "status": "passed"
     },
     {
       "phase": 9,
       "sha256": "77ab95bd765f38294b89ab1fa577d4c78669909a0d866d6294c5a3edf95cb103",
-      "duration_ms": 8,
+      "duration_ms": 174,
       "status": "passed"
     },
     {
       "phase": 10,
       "sha256": "32711a206397b553fbfeccef97751deeef2e50430fc39ce719153b27f39274cc",
-      "duration_ms": 2,
+      "duration_ms": 188,
       "status": "passed"
     },
     {
       "phase": "10-reconciliation",
       "sha256": "852b267d4fe046fc49cfb6148d338d2459e55e74e860550921afdacdf91bf10d",
-      "duration_ms": 2,
+      "duration_ms": 164,
       "status": "passed"
     },
     {
       "phase": "10-free-outcome",
       "sha256": "3e1d787918b7f7cafca957bd81ba7fed4e9e3937a7b352bc61b4a6036e1ff018",
-      "duration_ms": 2,
+      "duration_ms": 165,
+      "status": "passed"
+    },
+    {
+      "phase": "10-free-release",
+      "sha256": "10e36419a7a8262bf6569bccb4a0f0fae74784070cf8a6a08006156510b07e1a",
+      "duration_ms": 170,
       "status": "passed"
     }
   ],
@@ -80,20 +86,24 @@
   },
   "restore_verified": true,
   "source_rows_preserved": true,
+  "catalog_sql_batches": {
+    "count": 23,
+    "status": "passed"
+  },
   "catalog": {
     "mode": "apply",
     "loader_version": "phase-3-content-catalog-loader@1",
     "manifest_version": "learning-content-manifest@1",
-    "manifest_checksum": "c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b",
-    "private_catalog_checksum": "9c2feff2be72abe3e062330db7bc8bcc2c9f7aef2fd5a9231ee382d5b0744df0",
-    "content_revisions": 4485,
-    "topic_mappings": 4485,
-    "private_items": 52379,
-    "writes_performed": 61349,
+    "manifest_checksum": "3a4875885df96de0271b97c5157b5caeac8edc70baffc3a704beb6cd771c5dc9",
+    "private_catalog_checksum": "5e5b850d8c703f2f254a11540e45db31455caa55890ff18d8d8e99d24489652a",
+    "content_revisions": 4414,
+    "topic_mappings": 4414,
+    "private_items": 49474,
+    "writes_performed": 0,
     "status": "applied",
-    "inserted_content_revisions": 4485,
-    "inserted_topic_mappings": 4485,
-    "inserted_private_items": 52379
+    "inserted_content_revisions": 0,
+    "inserted_topic_mappings": 0,
+    "inserted_private_items": 0
   },
   "native_probe": {
     "question_grading": true,
@@ -105,6 +115,8 @@
     "reset_reconciled": true,
     "before_after_verified": true,
     "stale_outcome_invalidated": true,
+    "database_kill_switch": true,
+    "source_write_with_coach_closed": true,
     "private_answers_public": false,
     "rolled_back": true
   }

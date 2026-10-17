@@ -1,6 +1,6 @@
 {
   "schema_version": "phase-8-security-matrix@1",
-  "generated_at": "2026-10-13T23:03:17.488Z",
+  "generated_at": "2026-10-17T22:45:32.667Z",
   "status": "core_passed_runner_pending",
   "force_rls_tables": [
     "student_coaching_recommendations",

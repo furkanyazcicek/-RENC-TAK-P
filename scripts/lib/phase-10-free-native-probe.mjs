@@ -14,7 +14,7 @@ export async function probeFreeCoachNative({ client, manifest, privateCatalog, s
   const stats = { question_grading: false, onay_required: true, duplicate_safe: false,
     own_student_rls: false, foreign_attempt_denied: false, correction_reconciled: false,
     reset_reconciled: false, before_after_verified: false, stale_outcome_invalidated: false,
-    private_answers_public: false, rolled_back: false }
+    database_kill_switch:false,source_write_with_coach_closed:false,private_answers_public: false, rolled_back: false }
   await client.query('begin')
   const asStudent = async (id) => {
     await client.query('reset role')
@@ -24,8 +24,15 @@ export async function probeFreeCoachNative({ client, manifest, privateCatalog, s
   const call = async (sql,args) => (await client.query(sql,args)).rows[0].result
   try {
     await client.query('grant select on public.profiles to authenticated')
+    await asStudent(students[0])
+    assert.equal((await client.query("select public.learning_coach_own_rollout('coach_analysis') allowed")).rows[0].allowed,false)
+    const log=await call("select public.create_academic_daily_log(current_date,'Matematik - Fonksiyonlar',10,1,1,0,null,'manual_external_self_report',$1) result",[randomUUID()])
+    assert.ok(['created','identity_quarantined'].includes(log.status),'source_write_blocked_by_coach_flag')
+    stats.source_write_with_coach_closed=true
+    await client.query('reset role')
     await client.query("update learning_private.learning_feature_flags set enabled=true,mode='enabled' where feature_key in ('source_events','coach_analysis','coach_writes') and scope_type='global'")
     await asStudent(students[0])
+    assert.equal((await client.query("select public.learning_coach_own_rollout('coach_writes') allowed")).rows[0].allowed,true)
     assert.equal((await client.query('select count(*)::integer n from public.student_coaching_tasks')).rows[0].n,0)
     const baseline = await call('select public.start_bundled_question_attempt($1,$2,$3) result',[entry.content_id,entry.content_revision,randomUUID()])
     for (const [i,item] of items.entries()) await call('select public.save_bundled_question_answer($1,$2,$3,$4) result',[
@@ -91,6 +98,15 @@ export async function probeFreeCoachNative({ client, manifest, privateCatalog, s
     await call('select public.reset_bundled_question_attempt($1,$2) result',[attempt,randomUUID()])
     assert.deepEqual(await task(),{status:'planned',accumulated_evidence_count:0})
     stats.reset_reconciled=true
+    await client.query('reset role')
+    await client.query("update learning_private.learning_feature_flags set enabled=false,mode='disabled' where feature_key='coach_writes'")
+    await asStudent(students[0])
+    await client.query('savepoint kill_switch')
+    let blocked=false
+    try {await call('select public.confirm_coaching_recommendation($1::jsonb,$2::uuid) result',[{...rec,recommendation_id:randomUUID()},randomUUID()])}
+    catch(error){blocked=error.message==='COACHING_WRITES_DISABLED';await client.query('rollback to savepoint kill_switch')}
+    assert.ok(blocked,'database_kill_switch_failed')
+    stats.database_kill_switch=true
   } finally { await client.query('rollback'); stats.rolled_back=true }
   return stats
 }

@@ -17,8 +17,8 @@
   },
   "manifest": {
     "version": "learning-content-manifest@1",
-    "checksum": "c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b",
-    "entries": 4485,
+    "checksum": "3a4875885df96de0271b97c5157b5caeac8edc70baffc3a704beb6cd771c5dc9",
+    "entries": 4414,
     "public_answer_key_present": false
   },
   "transition": "Doğrulanmış Faz 8 baz çizgisinden Faz 9 sertleştirmesine geçiş; önceki migrationlar değiştirilmedi."

@@ -2,11 +2,11 @@
   "status": "passed",
   "postgres": {
     "engine": "PostgreSQL 18.4 on x86_64-apple-darwin24.6.0, compiled by Apple clang version 17.0.0 (clang-1700.6.3.2), 64-bit",
-    "port": 54704,
-    "race_ms": 20.819,
-    "event_write_p95_ms": 1.44,
-    "overview_query_p95_ms": 0.149,
-    "topic_query_p95_ms": 0.148,
+    "port": 65461,
+    "race_ms": 12.627,
+    "event_write_p95_ms": 1.053,
+    "overview_query_p95_ms": 0.202,
+    "topic_query_p95_ms": 0.14,
     "query_plan": [
       {
         "Plan": {
