@@ -2,6 +2,10 @@
 
 Bu plan AI_KOC_URUN_HAFIZASI.md içindeki nihai hedefi uygulanabilir ve doğrulanabilir parçalara böler. Fazlar sırayla ilerler. Bir fazın zorunlu kabul kapıları geçmeden sonraki faz tamamlanmış sayılamaz.
 
+12 Ekim 2026 ürün kararı: Ek ücret istemeyen ürün sahibi için mevcut kayıtları kullanan ayrı [Ücretsiz Koç Rehberi](UCRETSIZ_KOC_REHBERI_KARARI.md) yolu yerelde hazırlandı. Bu yol aşağıdaki Faz 10 geçişini gerçekleştirmez ve Faz 0–10 nihai kabulünün yerine geçmez; tam birleşik AI Koç hedefi korunur.
+
+Aynı gün yinelenen ürün talebi, ücretsiz rehberin bekletilmeden gerçek öğrencilere açılmasını önceliklendirdi. Bu, eski Faz 10 kapılarına sahte `passed` yazma yetkisi vermez: sınırlı ücretsiz sürüm ayrı kabul edilir; üretim yayını yine temiz ana dal ve `npm run yayin:dogrula` koşuluna bağlıdır.
+
 Her faz ayrı bir Codex görevi olarak yürütülmelidir. İlgili ayrıntılı istem docs/ai-koc/prompts klasöründedir.
 
 ## Genel uygulama yöntemi

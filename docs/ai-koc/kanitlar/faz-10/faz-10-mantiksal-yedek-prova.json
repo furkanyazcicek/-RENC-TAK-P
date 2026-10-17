@@ -1,0 +1,90 @@
+{
+  "schema_version": "phase-10-logical-recovery-rehearsal@1",
+  "phase": 10,
+  "status": "passed_synthetic_logical_backup_restore",
+  "started_at": "2026-09-30T20:37:12.809Z",
+  "finished_at": "2026-09-30T20:37:16.134Z",
+  "engine": "18.4",
+  "before_migration": {
+    "archive": {
+      "sha256": "2ccda96e62708a9e1fdef9d683e0f3d9e0c2dfe7ae9ca4c8ec3aeefca5baba5e",
+      "bytes": 83892
+    },
+    "tables": 20,
+    "rows": 795,
+    "data_fingerprints_match": true,
+    "schema_checksum": "f30e2b0ed43641a3a36609f2e70cdc89c342b46f1d3672dfa7311549aecb73ea",
+    "schema_matches": true
+  },
+  "migrations": [
+    {
+      "phase": 2,
+      "sha256": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea",
+      "duration_ms": 27.226
+    },
+    {
+      "phase": 3,
+      "sha256": "8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165",
+      "duration_ms": 36.184
+    },
+    {
+      "phase": 4,
+      "sha256": "06b8381911762c2436bedc0995bae344303f663b5f53566354d79afcee344f3f",
+      "duration_ms": 16.8
+    },
+    {
+      "phase": 5,
+      "sha256": "071e3a91c907729de3a679b18d66f3a434249b9f55a9101b80dafb0e42e09830",
+      "duration_ms": 11.754
+    },
+    {
+      "phase": 6,
+      "sha256": "02ce1a9ed7b1d2bbb6e9f2faea570343cd93ea6343d463599aa9eefe04e0322c",
+      "duration_ms": 10.775
+    },
+    {
+      "phase": 8,
+      "sha256": "bbd7495596ded58bcfeed4eaeac56cbc759169c7982f6a5bc5eaa0479b7f1b1b",
+      "duration_ms": 13.006
+    },
+    {
+      "phase": 9,
+      "sha256": "77ab95bd765f38294b89ab1fa577d4c78669909a0d866d6294c5a3edf95cb103",
+      "duration_ms": 4.229
+    }
+  ],
+  "after_migration": {
+    "archive": {
+      "sha256": "2b701507b2066187b435ec3728249f30c38a2597a814737aa2360d24fad5dc37",
+      "bytes": 836799
+    },
+    "tables": 77,
+    "policies": 43,
+    "constraints": 1220,
+    "triggers": 9,
+    "data_fingerprints_match": true,
+    "schema_checksum": "e12d52f8156a6e6e60ae3ec57f9d06d16e54619622d533be85d2d3fe4d25e98e",
+    "restored_schema_checksum": "2c80cd7d2168eb87b38a2d1914f797b50bf2caaef151c4ed6a51e418980a4bb6",
+    "schema_text_matches": false,
+    "catalog_definitions_match": true,
+    "schema_text_note": "CHECK içindeki BETWEEN ifadesi pg_dump/restore sonrası eşdeğer AND parantezleriyle yeniden yazılabilir; katalog tanımları pretty-print ile karşılaştırılır."
+  },
+  "negative_checks": {
+    "remote_restore_rejected": true,
+    "corrupt_archive_rejected": true,
+    "corrupt_archive_target_unchanged": true
+  },
+  "limitations": [
+    "Sentetik kayıtlar kullanıldı; canlı yedek henüz alınmadı.",
+    "Canlı rol şifreleri/sahiplikleri, Storage dosyaları, servis sırları ve fiziksel yedek bu provada doğrulanmaz.",
+    "Yerel prova canlı Supabase performansı veya gerçek model kalitesi kanıtı değildir."
+  ],
+  "live_recovery_gate_passed": false,
+  "ready_for_live_write": false,
+  "side_effects": {
+    "live_database_access": false,
+    "real_student_data_used": false,
+    "paid_resource_created": false,
+    "deployment_or_push": false
+  }
+}

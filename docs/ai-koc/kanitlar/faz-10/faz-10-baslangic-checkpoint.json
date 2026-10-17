@@ -1,9 +1,9 @@
 {
   "schema_version": "phase-10-preflight@1",
   "phase": 10,
-  "status": "waiting_for_explicit_live_prerequisites",
+  "status": "waiting_for_fresh_administrative_and_backup_verification",
   "phase_status": "Devam ediyor",
-  "generated_at": "2026-09-13T15:15:55.893Z",
+  "generated_at": "2026-10-07T17:39:39.720Z",
   "mode": "read_only_local_preflight",
   "ready_for_live_write": false,
   "workspace": {
@@ -13,14 +13,14 @@
     "branch": "main",
     "origin": "https://github.com/furkanyazcicek/-RENC-TAK-P.git",
     "authorized_origin_match": true,
-    "head": "056e1e5b92975169c2329f85ba6530af1dc6d14f",
+    "head": "f317fb7f56aeb39f44a767d1b47d9614bab03e55",
     "origin_main_comparison_from_local_ref": {
       "remote_ahead": 0,
       "local_ahead": 0
     },
     "worktree_clean": false,
-    "tracked_change_count": 148,
-    "untracked_count": 90,
+    "tracked_change_count": 56,
+    "untracked_count": 41,
     "user_changes_preserved": true,
     "vercel_link_absent": true
   },
@@ -33,9 +33,11 @@
     "acceptance_path": "docs/ai-koc/kanitlar/faz-9/faz-9-kabul-sonucu.json"
   },
   "content_baseline": {
+    "transition": "verified_phase_3_content_baseline_update",
+    "superseded_manifest_checksum": "6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
     "manifest_version": "learning-content-manifest@1",
-    "manifest_checksum": "6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
-    "entries": 4344
+    "manifest_checksum": "4f4c38f0beb4d8ea2df5e1ed16a682118ea3aad0a1e8ba53408e740fdf21b3e6",
+    "entries": 4412
   },
   "migration_plan": {
     "status": "candidate_order_verified_locally_live_history_reconciliation_pending",
@@ -85,22 +87,122 @@
         "status": "passed"
       }
     ],
-    "live_schema_dry_run": "not_run_live_target_unverified",
+    "live_schema_dry_run": "passed_on_restored_public_and_storage_subset_live_target_fresh_check_pending",
     "destructive_rollback": false,
     "recovery_strategy": "flags_off_then_forward_fix_preserve_queues_cursors_and_last_verified_generation"
   },
   "live_target": {
-    "verified": false,
-    "configured_project_identity_present": false,
-    "expected_project_identity_declared": false,
+    "verified": true,
+    "configured_project_identity_present": true,
+    "expected_project_identity_declared": true,
+    "production_bundle_and_repository_match": true,
+    "public_schema_reachable": true,
+    "representative_phase_tables_missing": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      8
+    ],
+    "dashboard_access": "not_checked_by_public_metadata_probe",
+    "administrative_access_verified": false,
+    "administrative_access_observed_at": null,
+    "last_administrative_observation_at": "2026-09-30T21:01:32Z",
+    "administrative_observation_fresh": false,
     "identifiers_redacted": true,
-    "live_connection_attempted": false
+    "live_connection_attempted": true,
+    "live_connection_scope": "public_metadata_only_limit_0_no_student_rows",
+    "discovery_evidence": "docs/ai-koc/kanitlar/faz-10/faz-10-canli-hedef-kesfi.json"
   },
   "backup_and_recovery": {
     "verified": false,
-    "backup_timestamp_evidence_present": false,
+    "affected_application_and_storage_data_locally_restored": true,
+    "auth_tables_and_data_locally_restored": true,
+    "realtime_tables_and_data_locally_restored": true,
+    "storage_object_bytes_locally_backed_up": true,
+    "storage_object_count": 159,
+    "storage_object_bytes": 244168205,
+    "source_archive_created_at": "2026-09-30T20:09:49.141Z",
+    "storage_public_locally_reverified_at": "2026-10-07T17:39:14.939Z",
+    "storage_private_locally_reverified_at": "2026-10-07T17:39:14.596Z",
+    "storage_public_evidence": "docs/ai-koc/kanitlar/faz-10/faz-10-storage-acik-dosya-yedegi.json",
+    "storage_private_evidence": "docs/ai-koc/kanitlar/faz-10/faz-10-storage-ozel-dosya-yedegi.json",
+    "local_archive_evidence": "docs/ai-koc/kanitlar/faz-10/faz-10-canli-public-geri-yukleme.json",
+    "local_migration_evidence": "docs/ai-koc/kanitlar/faz-10/faz-10-canli-yedek-migration-prova.json",
+    "full_supabase_restore_verified": false,
+    "backup_timestamp_evidence_present": true,
+    "backup_observed_at": "2026-09-30T21:01:32Z",
+    "backup_observation_fresh": false,
+    "backup_snapshot_fresh": false,
+    "latest_scheduled_backup_at": "2026-09-30T04:31:24Z",
+    "restore_capability": "unverified_by_public_metadata_probe",
     "recovery_test_evidence_present": false,
-    "restore_attempted": false
+    "restore_attempted": true,
+    "restore_attempt_scope": "local_public_auth_storage_and_realtime_only"
+  },
+  "no_cost_live_shape_rehearsal": {
+    "status": "passed_synthetic_live_shape_rehearsal",
+    "evidence": "docs/ai-koc/kanitlar/faz-10/faz-10-canli-hacim-yerel-prova.json",
+    "synthetic_rows": 758,
+    "rows_preserved": true,
+    "idempotent_second_apply": true,
+    "primary_engine": {
+      "name": "PostgreSQL 18 embedded",
+      "real_postgresql_server": true,
+      "serialized_connection": false
+    },
+    "secondary_engine": {
+      "name": "PGlite/WASM",
+      "real_postgresql_server": false,
+      "serialized_connection": true
+    },
+    "lock_contention_rehearsal": {
+      "engine": "PostgreSQL 18 embedded",
+      "simultaneous_connections": 3,
+      "held_lock": "daily_logs AccessShareLock via open read transaction",
+      "migration_lock_timeout_ms": 150,
+      "expected_error_code": "55P03",
+      "transaction_rolled_back": true,
+      "partial_phase_4_registry_rows_after_failure": 0,
+      "source_rows_preserved_after_failure": true,
+      "retry_after_lock_release": "passed",
+      "retry_duration_ms": 25.806,
+      "source_rows_preserved_after_retry": true
+    },
+    "live_missing_phase_4_columns_covered": 16,
+    "paid_service_used": false,
+    "live_write": false
+  },
+  "live_schema_contract": {
+    "status": "passed_read_only_live_schema_contract",
+    "evidence": "docs/ai-koc/kanitlar/faz-10/faz-10-canli-sema-sozlesmesi.json",
+    "checksum": "cc7c7b40182691aff5733a331dc1db3da6289b1081a68cda530e902e81a77216",
+    "observed_at": "2026-09-23T14:44:31.117Z",
+    "current_live_schema_not_rechecked_by_local_contract_test": true,
+    "totals": {
+      "tables": 13,
+      "columns": 163,
+      "constraints": 64,
+      "indexes": 24,
+      "policies": 57,
+      "triggers": 5,
+      "nonnegative_estimated_rows": 758,
+      "total_bytes": 3858432,
+      "table_bytes": 262144,
+      "index_bytes": 417792
+    },
+    "table_rows_selected": false,
+    "live_write": false
+  },
+  "cost_guard": {
+    "status": "passed_no_paid_recovery_action_blocked",
+    "evidence": "docs/ai-koc/kanitlar/faz-10/faz-10-ucret-kisiti-karari.json",
+    "paid_operations_authorized": false,
+    "reason_code": "NO_PAID_RESOURCE_AND_NO_DESTRUCTIVE_LIVE_RESTORE",
+    "recovery_copy_gate_completed": false,
+    "paid_service_used": false,
+    "restore_executed": false
   },
   "rollout_guards": {
     "status": "passed",
@@ -120,16 +222,27 @@
     "privacy_and_retention_reviewed": false,
     "review_evidence_present": false,
     "test_accounts_selected": false,
+    "pilot_scope": "owner_test_accounts_only_exact_account_ids_pending",
     "named_rollout_owners_assigned": false
   },
   "explicit_authorizations": {
-    "live_database_migrations": false,
-    "live_backfill_or_transform": false,
-    "real_student_shadow": false,
-    "limited_pilot_visibility": false,
-    "production_publication": false,
-    "general_release": false,
+    "status": "granted_by_user_for_all_phase_10_steps_subject_to_safety_gates",
+    "recorded_at": "2026-09-23",
+    "evidence": "Kullanıcı bütün gerekli adımların uygulanmasını ve adımlar oluşturulurken ek onay beklenmemesini açıkça istedi.",
+    "live_database_migrations": true,
+    "live_backfill_or_transform": true,
+    "real_student_shadow": true,
+    "limited_pilot_visibility": true,
+    "production_publication": true,
+    "general_release": true,
     "generic_continue_treated_as_authorization": false
+  },
+  "user_constraints": {
+    "recorded_at": "2026-09-23",
+    "paid_resources_authorized": false,
+    "long_running_shadow_and_pilot_requested_now": false,
+    "skipped_steps_are_not_treated_as_passed": true,
+    "effect": "paid recovery copy and time-bound pilot deferred; Phase 10 remains in progress"
   },
   "publication_preflight": {
     "command": "npm run yayin:dogrula",
@@ -138,14 +251,16 @@
     "reason_code": "DIRTY_WORKTREE_USER_AND_PHASE_CHANGES_PRESERVED"
   },
   "blocking_gate": {
-    "code": "LIVE_TARGET_AND_RECOVERY_UNVERIFIED",
-    "detail": "Canlı Supabase proje kimliği ile yedek/geri kazanım kanıtı doğrulanmadı; canlı şema kuru çalışması ve bütün canlı yazılar durduruldu.",
-    "next_required_input": "Doğrulanabilir canlı proje kimliği ve tarihli yedek/geri kazanım kanıtı; sonrasında canlı migration için ayrı açık onay."
+    "code": "FRESH_ADMIN_AND_BACKUP_VERIFICATION_PENDING",
+    "detail": "Doğru canlı proje ve temel şema bugün salt okunur doğrulandı. Son yönetim/yedek gözlemi eski; bugünkü yönetim erişimi, güncel yedek ve tam geri kazanım kanıtlanmadı. Canlı migration ve bütün yazılar durduruldu.",
+    "next_required_input": "Güncel yönetim/yedek gözlemi ve ücretsiz tam geri kazanım kanıtı; pilot yalnız ürün sahibinin kimliği belirlenmiş test hesaplarıyla sınırlı."
   },
   "side_effects": {
-    "live_supabase_read": false,
+    "live_supabase_read": true,
+    "live_supabase_read_scope": "public_metadata_only_limit_0_no_student_rows",
     "live_supabase_write": false,
     "real_student_data_used": false,
+    "real_student_data_used_by_separate_local_recovery": true,
     "live_backfill_run": false,
     "paid_model_call": false,
     "live_shadow_started": false,

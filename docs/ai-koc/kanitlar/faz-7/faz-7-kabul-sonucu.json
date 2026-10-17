@@ -6,42 +6,42 @@
     {
       "name": "Faz 6 ön koşulu ve sürümlü analiz sözleşmesi",
       "status": "passed",
-      "duration_ms": 0.329
+      "duration_ms": 0.327
     },
     {
       "name": "Küçük başlangıç bağlamı ve kademeli yükleme",
       "status": "passed",
-      "duration_ms": 3.073
+      "duration_ms": 3.078
     },
     {
       "name": "Faz 7 okuma araçları ve kaynak birleştirme",
       "status": "passed",
-      "duration_ms": 1.402
+      "duration_ms": 1.409
     },
     {
       "name": "İddia doğrulama, belirsizlik ve güvenli geri dönüş",
       "status": "passed",
-      "duration_ms": 2.457
+      "duration_ms": 2.607
     },
     {
       "name": "Oturum kimliği, istem enjeksiyonu ve hafıza sınırları",
       "status": "passed",
-      "duration_ms": 2.215
+      "duration_ms": 2.203
     },
     {
       "name": "15 zorunlu değerlendirme senaryosu",
       "status": "passed",
-      "duration_ms": 9.27
+      "duration_ms": 9.377
     },
     {
       "name": "Başlangıç/son ölçüm, gözlem ve mevcut yazma akışı",
       "status": "passed",
-      "duration_ms": 0.81
+      "duration_ms": 0.763
     },
     {
       "name": "Faz sınırı ve sıfır canlı yan etki",
       "status": "passed",
-      "duration_ms": 0.13
+      "duration_ms": 0.149
     }
   ],
   "assertions": 137,
@@ -251,7 +251,7 @@
     "maximum_timeline_days": 90
   },
   "performance": {
-    "claim_ledger_10000_ms": 8.351,
+    "claim_ledger_10000_ms": 8.43,
     "context_chars": 3868,
     "observation": {
       "schema_version": "ai-coach-observation@1",
@@ -292,15 +292,15 @@
     "failed": 0,
     "pending": 0
   },
-  "generated_at": "2026-09-13T13:40:09.199Z",
+  "generated_at": "2026-10-12T00:26:56.572Z",
   "commands": [
     {
       "key": "phase1",
       "command": "npm run test:ai-koc-faz-1",
       "group": "security",
-      "started_at": "2026-09-13T13:38:59.568Z",
-      "finished_at": "2026-09-13T13:38:59.726Z",
-      "duration_ms": 158,
+      "started_at": "2026-10-12T00:25:45.343Z",
+      "finished_at": "2026-10-12T00:25:45.611Z",
+      "duration_ms": 268,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -311,9 +311,9 @@
       "key": "phase2",
       "command": "npm run test:ai-koc-faz-2",
       "group": "security",
-      "started_at": "2026-09-13T13:38:59.726Z",
-      "finished_at": "2026-09-13T13:39:03.965Z",
-      "duration_ms": 4239,
+      "started_at": "2026-10-12T00:25:45.612Z",
+      "finished_at": "2026-10-12T00:25:49.957Z",
+      "duration_ms": 4345,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -324,9 +324,9 @@
       "key": "phase3",
       "command": "npm run test:ai-koc-faz-3",
       "group": "security",
-      "started_at": "2026-09-13T13:39:03.965Z",
-      "finished_at": "2026-09-13T13:39:27.514Z",
-      "duration_ms": 23549,
+      "started_at": "2026-10-12T00:25:49.957Z",
+      "finished_at": "2026-10-12T00:26:16.361Z",
+      "duration_ms": 26404,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -338,9 +338,9 @@
       "key": "phase4",
       "command": "npm run test:ai-koc-faz-4",
       "group": "security",
-      "started_at": "2026-09-13T13:39:27.515Z",
-      "finished_at": "2026-09-13T13:39:38.860Z",
-      "duration_ms": 11345,
+      "started_at": "2026-10-12T00:26:16.362Z",
+      "finished_at": "2026-10-12T00:26:27.959Z",
+      "duration_ms": 11597,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -352,9 +352,9 @@
       "key": "phase5",
       "command": "npm run test:ai-koc-faz-5",
       "group": "security",
-      "started_at": "2026-09-13T13:39:38.861Z",
-      "finished_at": "2026-09-13T13:39:40.986Z",
-      "duration_ms": 2125,
+      "started_at": "2026-10-12T00:26:27.961Z",
+      "finished_at": "2026-10-12T00:26:30.154Z",
+      "duration_ms": 2193,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -366,9 +366,9 @@
       "key": "phase6",
       "command": "npm run test:ai-koc-faz-6",
       "group": "security",
-      "started_at": "2026-09-13T13:39:40.986Z",
-      "finished_at": "2026-09-13T13:39:42.782Z",
-      "duration_ms": 1796,
+      "started_at": "2026-10-12T00:26:30.155Z",
+      "finished_at": "2026-10-12T00:26:32.004Z",
+      "duration_ms": 1849,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -380,9 +380,9 @@
       "key": "phase7",
       "command": "npm run test:ai-koc-faz-7",
       "group": "security",
-      "started_at": "2026-09-13T13:39:42.783Z",
-      "finished_at": "2026-09-13T13:39:42.934Z",
-      "duration_ms": 151,
+      "started_at": "2026-10-12T00:26:32.005Z",
+      "finished_at": "2026-10-12T00:26:32.157Z",
+      "duration_ms": 152,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -395,9 +395,9 @@
       "key": "curriculum",
       "command": "npm run test:library-curriculum",
       "group": "regression",
-      "started_at": "2026-09-13T13:39:42.935Z",
-      "finished_at": "2026-09-13T13:39:43.036Z",
-      "duration_ms": 101,
+      "started_at": "2026-10-12T00:26:32.158Z",
+      "finished_at": "2026-10-12T00:26:32.263Z",
+      "duration_ms": 105,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -408,9 +408,9 @@
       "key": "question_progress",
       "command": "npm run test:question-progress",
       "group": "regression",
-      "started_at": "2026-09-13T13:39:43.036Z",
-      "finished_at": "2026-09-13T13:39:43.134Z",
-      "duration_ms": 98,
+      "started_at": "2026-10-12T00:26:32.263Z",
+      "finished_at": "2026-10-12T00:26:32.365Z",
+      "duration_ms": 102,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -421,9 +421,9 @@
       "key": "context_curriculum",
       "command": "node scripts/test-context-curriculum.mjs",
       "group": "regression",
-      "started_at": "2026-09-13T13:39:43.134Z",
-      "finished_at": "2026-09-13T13:39:43.191Z",
-      "duration_ms": 57,
+      "started_at": "2026-10-12T00:26:32.365Z",
+      "finished_at": "2026-10-12T00:26:32.425Z",
+      "duration_ms": 60,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -434,9 +434,9 @@
       "key": "ai_coach",
       "command": "node scripts/test-ai-coach.mjs",
       "group": "regression",
-      "started_at": "2026-09-13T13:39:43.192Z",
-      "finished_at": "2026-09-13T13:39:43.257Z",
-      "duration_ms": 65,
+      "started_at": "2026-10-12T00:26:32.426Z",
+      "finished_at": "2026-10-12T00:26:32.590Z",
+      "duration_ms": 164,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -447,9 +447,9 @@
       "key": "ai_solve",
       "command": "npm run test:ai-solve",
       "group": "regression",
-      "started_at": "2026-09-13T13:39:43.257Z",
-      "finished_at": "2026-09-13T13:39:50.117Z",
-      "duration_ms": 6860,
+      "started_at": "2026-10-12T00:26:32.590Z",
+      "finished_at": "2026-10-12T00:26:39.516Z",
+      "duration_ms": 6926,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -460,9 +460,9 @@
       "key": "home",
       "command": "npm run test:anasayfa",
       "group": "regression",
-      "started_at": "2026-09-13T13:39:50.117Z",
-      "finished_at": "2026-09-13T13:39:50.238Z",
-      "duration_ms": 121,
+      "started_at": "2026-10-12T00:26:39.517Z",
+      "finished_at": "2026-10-12T00:26:39.639Z",
+      "duration_ms": 122,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -473,9 +473,9 @@
       "key": "build",
       "command": "npm run build",
       "group": "build",
-      "started_at": "2026-09-13T13:39:50.239Z",
-      "finished_at": "2026-09-13T13:40:09.198Z",
-      "duration_ms": 18959,
+      "started_at": "2026-10-12T00:26:39.640Z",
+      "finished_at": "2026-10-12T00:26:56.571Z",
+      "duration_ms": 16931,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -495,7 +495,7 @@
     "build": "docs/ai-koc/kanitlar/faz-7/build.log"
   },
   "prerequisite_acceptance": {
-    "phase_3": "17/17 komut; 46/46 kapı; 450 doğrulama; manifest 6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
+    "phase_3": "17/17 komut; 46/46 kapı; 450 doğrulama; manifest c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b",
     "phase_4": "12/12 komut; 85/85 kapı; 290 doğrulama",
     "phase_5": "12/12 komut; 9/9 kapı; 231 doğrulama",
     "phase_6": "11/11 komut; 9/9 kapı; 107 doğrulama"

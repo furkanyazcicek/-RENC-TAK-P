@@ -7,6 +7,9 @@
     "projection_mode": "shadow",
     "coach_analysis_enabled": false,
     "coach_writes_enabled": false,
+    "pilot_only_mode": false,
+    "pilot_allowlist_valid": true,
+    "general_release_enabled": false,
     "rollout_bucket": 83,
     "user_token": "ab244f7f2d40",
     "contains_raw_student_id": false
@@ -18,6 +21,9 @@
     "projection_mode": "disabled",
     "coach_analysis_enabled": true,
     "coach_writes_enabled": true,
+    "pilot_only_mode": false,
+    "pilot_allowlist_valid": true,
+    "general_release_enabled": false,
     "rollout_bucket": 83,
     "user_token": "ab244f7f2d40",
     "contains_raw_student_id": false

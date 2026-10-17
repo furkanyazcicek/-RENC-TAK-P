@@ -1,0 +1,295 @@
+{
+  "schema_version": "phase-10-live-volume-local-rehearsal@1",
+  "phase": 10,
+  "status": "passed_synthetic_live_shape_rehearsal",
+  "generated_at": "2026-10-10T20:49:33.393Z",
+  "evidence_basis": {
+    "live_schema_compatibility": "docs/ai-koc/kanitlar/faz-10/faz-10-canli-sema-uyumluluk.json",
+    "live_schema_contract": "docs/ai-koc/kanitlar/faz-10/faz-10-canli-sema-sozlesmesi.json",
+    "live_schema_contract_checksum": "cc7c7b40182691aff5733a331dc1db3da6289b1081a68cda530e902e81a77216",
+    "live_schema_tables": 13,
+    "live_catalog_estimate_rows": 758,
+    "student_rows_read_from_live": false,
+    "synthetic_data_only": true
+  },
+  "fixture": {
+    "row_counts": {
+      "profiles": 15,
+      "daily_logs": 572,
+      "questions": 51,
+      "homeworks": 1,
+      "mock_exam_subjects": 86,
+      "lesson_participants": 33
+    },
+    "total_live_shaped_rows": 758,
+    "placeholder_email_domain": "example.invalid",
+    "real_student_data_used": false
+  },
+  "migration_rehearsal": {
+    "engine": {
+      "name": "PostgreSQL 18 embedded",
+      "real_postgresql_server": true,
+      "serialized_connection": false
+    },
+    "ordered_phases": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+    ],
+    "first_apply": [
+      {
+        "phase": 2,
+        "duration_ms": 24.581
+      },
+      {
+        "phase": 3,
+        "duration_ms": 34.815
+      },
+      {
+        "phase": 4,
+        "duration_ms": 17.421
+      },
+      {
+        "phase": 5,
+        "duration_ms": 11.338
+      },
+      {
+        "phase": 6,
+        "duration_ms": 10.269
+      },
+      {
+        "phase": 8,
+        "duration_ms": 12.459
+      },
+      {
+        "phase": 9,
+        "duration_ms": 3.846
+      }
+    ],
+    "second_apply": [
+      {
+        "phase": 2,
+        "duration_ms": 7.662
+      },
+      {
+        "phase": 3,
+        "duration_ms": 10.972
+      },
+      {
+        "phase": 4,
+        "duration_ms": 7.64
+      },
+      {
+        "phase": 5,
+        "duration_ms": 2.805
+      },
+      {
+        "phase": 6,
+        "duration_ms": 1.915
+      },
+      {
+        "phase": 8,
+        "duration_ms": 5.417
+      },
+      {
+        "phase": 9,
+        "duration_ms": 0.965
+      }
+    ],
+    "row_counts_before_apply": {
+      "profiles": 15,
+      "daily_logs": 572,
+      "questions": 51,
+      "homeworks": 1,
+      "mock_exam_subjects": 86,
+      "lesson_participants": 33
+    },
+    "row_counts_after_first_apply": {
+      "profiles": 15,
+      "daily_logs": 572,
+      "questions": 51,
+      "homeworks": 1,
+      "mock_exam_subjects": 86,
+      "lesson_participants": 33
+    },
+    "row_counts_after_second_apply": {
+      "profiles": 15,
+      "daily_logs": 572,
+      "questions": 51,
+      "homeworks": 1,
+      "mock_exam_subjects": 86,
+      "lesson_participants": 33
+    },
+    "rows_preserved": true,
+    "idempotent_second_apply": true,
+    "phase_4_live_existing_columns_modeled": 12,
+    "phase_4_live_target_columns_after_apply": 28,
+    "phase_4_live_missing_columns_covered": 16,
+    "phase_4_live_missing_columns_expected": 16,
+    "live_prerequisite_ai_study_tasks_columns_modeled": 11,
+    "legacy_default_rows_verified": {
+      "daily_logs": 572,
+      "questions": 51,
+      "homeworks": 1,
+      "mock_exam_subjects": 86,
+      "profiles": 15
+    },
+    "academic_registry_rows": 14,
+    "base_tables_with_rls_enabled": 10
+  },
+  "secondary_pglite_rehearsal": {
+    "engine": {
+      "name": "PGlite/WASM",
+      "real_postgresql_server": false,
+      "serialized_connection": true
+    },
+    "ordered_phases": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      9
+    ],
+    "first_apply": [
+      {
+        "phase": 2,
+        "duration_ms": 44.401
+      },
+      {
+        "phase": 3,
+        "duration_ms": 52.482
+      },
+      {
+        "phase": 4,
+        "duration_ms": 24.436
+      },
+      {
+        "phase": 5,
+        "duration_ms": 15.018
+      },
+      {
+        "phase": 6,
+        "duration_ms": 13.666
+      },
+      {
+        "phase": 8,
+        "duration_ms": 17.56
+      },
+      {
+        "phase": 9,
+        "duration_ms": 4.719
+      }
+    ],
+    "second_apply": [
+      {
+        "phase": 2,
+        "duration_ms": 13.674
+      },
+      {
+        "phase": 3,
+        "duration_ms": 20.074
+      },
+      {
+        "phase": 4,
+        "duration_ms": 12.459
+      },
+      {
+        "phase": 5,
+        "duration_ms": 4.983
+      },
+      {
+        "phase": 6,
+        "duration_ms": 3.447
+      },
+      {
+        "phase": 8,
+        "duration_ms": 6.259
+      },
+      {
+        "phase": 9,
+        "duration_ms": 1.343
+      }
+    ],
+    "row_counts_before_apply": {
+      "profiles": 15,
+      "daily_logs": 572,
+      "questions": 51,
+      "homeworks": 1,
+      "mock_exam_subjects": 86,
+      "lesson_participants": 33
+    },
+    "row_counts_after_first_apply": {
+      "profiles": 15,
+      "daily_logs": 572,
+      "questions": 51,
+      "homeworks": 1,
+      "mock_exam_subjects": 86,
+      "lesson_participants": 33
+    },
+    "row_counts_after_second_apply": {
+      "profiles": 15,
+      "daily_logs": 572,
+      "questions": 51,
+      "homeworks": 1,
+      "mock_exam_subjects": 86,
+      "lesson_participants": 33
+    },
+    "rows_preserved": true,
+    "idempotent_second_apply": true,
+    "phase_4_live_existing_columns_modeled": 12,
+    "phase_4_live_target_columns_after_apply": 28,
+    "phase_4_live_missing_columns_covered": 16,
+    "phase_4_live_missing_columns_expected": 16,
+    "live_prerequisite_ai_study_tasks_columns_modeled": 11,
+    "legacy_default_rows_verified": {
+      "daily_logs": 572,
+      "questions": 51,
+      "homeworks": 1,
+      "mock_exam_subjects": 86,
+      "profiles": 15
+    },
+    "academic_registry_rows": 14,
+    "base_tables_with_rls_enabled": 10
+  },
+  "lock_contention_rehearsal": {
+    "engine": "PostgreSQL 18 embedded",
+    "simultaneous_connections": 3,
+    "held_lock": "daily_logs AccessShareLock via open read transaction",
+    "migration_lock_timeout_ms": 150,
+    "expected_error_code": "55P03",
+    "transaction_rolled_back": true,
+    "partial_phase_4_registry_rows_after_failure": 0,
+    "source_rows_preserved_after_failure": true,
+    "retry_after_lock_release": "passed",
+    "retry_duration_ms": 26.636,
+    "source_rows_preserved_after_retry": true
+  },
+  "conclusion": {
+    "no_cost_local_risk_reduction_complete": true,
+    "local_lock_failure_and_retry_verified": true,
+    "live_migration_rehearsal_complete": false,
+    "live_lock_duration_measured": false,
+    "recovery_copy_rehearsal_complete": false,
+    "ready_for_live_write": false,
+    "blocking_gate": "RECOVERY_DRILL_AND_LONG_PILOT_DEFERRED_BY_USER"
+  },
+  "limitations": [
+    "Gerçek PostgreSQL motoru kullanılsa da bu prova canlı Supabase kilit davranışını veya geri-yükleme süresini ölçmez.",
+    "Canlı tablo istatistikleri yaklaşık olabilir; öğrenci satırları okunmadan yalnız katalog tahminleri kullanıldı.",
+    "Ücretli geri kazanım kopyası ve uzun pilot kullanıcı isteğiyle atlandı; bu kapılar geçmiş sayılmadı."
+  ],
+  "side_effects": {
+    "live_connection": false,
+    "live_write": false,
+    "live_schema_change": false,
+    "real_student_data_used": false,
+    "paid_service_used": false,
+    "deployment_or_push": false
+  }
+}

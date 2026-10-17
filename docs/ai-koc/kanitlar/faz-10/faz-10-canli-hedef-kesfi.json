@@ -1,0 +1,110 @@
+{
+  "schema_version": "phase-10-live-target-discovery@1",
+  "phase": 10,
+  "status": "passed_read_only_live_discovery",
+  "generated_at": "2026-10-13T22:33:08.277Z",
+  "production_deployment": {
+    "url": "https://www.drkoc.com.tr/",
+    "asset_url": "https://www.drkoc.com.tr/assets/index-_MUDK5Y8.js",
+    "project_ref": "aazadigklxnvbtwrtszj",
+    "repository_and_deployment_match": true
+  },
+  "live_service": {
+    "auth_settings_http_status": 200,
+    "baseline_profiles_schema_http_status": 200,
+    "reachable": true
+  },
+  "phase_schema_probes": [
+    {
+      "phase": 2,
+      "table": "learning_evidence_records",
+      "http_status": 404,
+      "postgrest_code": "PGRST205",
+      "present_in_public_schema": false,
+      "row_limit": 0
+    },
+    {
+      "phase": 3,
+      "table": "learning_content_revisions",
+      "http_status": 404,
+      "postgrest_code": "PGRST205",
+      "present_in_public_schema": false,
+      "row_limit": 0
+    },
+    {
+      "phase": 4,
+      "table": "learning_academic_media",
+      "http_status": 404,
+      "postgrest_code": "PGRST205",
+      "present_in_public_schema": false,
+      "row_limit": 0
+    },
+    {
+      "phase": 5,
+      "table": "student_language_progress_states",
+      "http_status": 404,
+      "postgrest_code": "PGRST205",
+      "present_in_public_schema": false,
+      "row_limit": 0
+    },
+    {
+      "phase": 6,
+      "table": "student_model_contracts",
+      "http_status": 404,
+      "postgrest_code": "PGRST205",
+      "present_in_public_schema": false,
+      "row_limit": 0
+    },
+    {
+      "phase": 8,
+      "table": "student_coaching_recommendations",
+      "http_status": 404,
+      "postgrest_code": "PGRST205",
+      "present_in_public_schema": false,
+      "row_limit": 0
+    }
+  ],
+  "conclusion": {
+    "live_target_identity_verified": true,
+    "representative_phase_tables_missing": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      8
+    ],
+    "phase_9_private_schema_not_probed_with_publishable_key": true,
+    "dashboard_access": "not_checked_by_public_metadata_probe",
+    "dashboard_access_observed_at": null,
+    "backup_and_recovery_evidence": "unverified",
+    "ready_for_live_write": false
+  },
+  "live_schema": {
+    "dashboard_migration_history": "unverified_by_public_metadata_probe",
+    "sql_editor_read_only_inventory_completed": false,
+    "baseline_tables_present": true,
+    "representative_phase_tables_present": false
+  },
+  "backup_and_recovery": {
+    "latest_scheduled_backup_at": null,
+    "backup_type": "unverified_by_public_metadata_probe",
+    "restore_capability": "unverified_by_public_metadata_probe",
+    "recovery_drill_completed": false,
+    "recovery_test_id": null
+  },
+  "privacy": {
+    "query_limit": 0,
+    "student_rows_requested": false,
+    "student_rows_read": false,
+    "auth_session_created": false,
+    "credentials_logged": false
+  },
+  "side_effects": {
+    "live_public_metadata_read": true,
+    "live_supabase_write": false,
+    "migration_executed": false,
+    "backup_created_or_restored": false,
+    "real_student_data_used": false
+  }
+}

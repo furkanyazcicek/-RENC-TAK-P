@@ -1,0 +1,93 @@
+{
+  "schema_version": "phase-10-recovered-public-migration-rehearsal@1",
+  "generated_at": "2026-09-30T20:55:12.297Z",
+  "status": "passed_on_public_storage_clone",
+  "source_archive_sha256": "49cc746b5bdb3a5857a7bcebdf4e165c43a109ac7c511505157cc94e977214de",
+  "public_tables_restored": 31,
+  "public_rows_restored": 2077,
+  "auth_restore": {
+    "status": "restored_locally",
+    "tables": 27,
+    "rows": 472,
+    "data_and_rls_verified": true,
+    "deferred_app_trigger_verified": true
+  },
+  "storage_restore": {
+    "status": "restored_locally",
+    "tables": 8,
+    "rows": 235,
+    "data_and_rls_verified": true
+  },
+  "additional_schema_restores": {
+    "realtime": {
+      "status": "restored_locally",
+      "tables": 10,
+      "rows": 88,
+      "data_and_rls_verified": true
+    },
+    "vault": {
+      "status": "blocked_local",
+      "failure_code": "DEPENDENCY_RELATION_MISSING",
+      "diagnostic": "pg_restore: error: could not execute query: ERROR:  relation [identifier] does not exist"
+    }
+  },
+  "migration_results": [
+    {
+      "phase": 2,
+      "status": "passed_local",
+      "duration_ms": 30.175,
+      "source_rows_preserved": true
+    },
+    {
+      "phase": 3,
+      "status": "passed_local",
+      "duration_ms": 40.579,
+      "source_rows_preserved": true
+    },
+    {
+      "phase": 4,
+      "status": "passed_local",
+      "duration_ms": 27.562,
+      "source_rows_preserved": true
+    },
+    {
+      "phase": 5,
+      "status": "passed_local",
+      "duration_ms": 13.834,
+      "source_rows_preserved": true
+    },
+    {
+      "phase": 6,
+      "status": "passed_local",
+      "duration_ms": 11.174,
+      "source_rows_preserved": true
+    },
+    {
+      "phase": 8,
+      "status": "passed_local",
+      "duration_ms": 13.426,
+      "source_rows_preserved": true
+    },
+    {
+      "phase": 9,
+      "status": "passed_local",
+      "duration_ms": 3.702,
+      "source_rows_preserved": true
+    }
+  ],
+  "lock_contention_rehearsal": {
+    "status": "passed_local",
+    "expected_error_code": "55P03",
+    "transaction_rolled_back": true,
+    "retry_after_lock_release": "passed_local"
+  },
+  "rls_rehearsal": {
+    "status": "passed_local",
+    "own_visible": 1,
+    "other_visible": 0
+  },
+  "full_supabase_restore_verified": false,
+  "production_migration_approved_by_this_proof": false,
+  "live_write": false,
+  "paid_resource_created": false
+}

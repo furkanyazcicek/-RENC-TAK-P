@@ -260,8 +260,8 @@ async function main() {
     equal(summary.checksums.phase_2_migration_sha256, '993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea', 'Faz 2 checksum')
     equal(summary.checksums.phase_3_migration_sha256, '8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165', 'Faz 3 checksum')
     equal(summary.checksums.phase_8_migration_sha256, 'bbd7495596ded58bcfeed4eaeac56cbc759169c7982f6a5bc5eaa0479b7f1b1b', 'Faz 8 checksum')
-    equal(manifest.entries.length, 4344, 'manifest kayıt sayısı')
-    equal(manifest.manifest_checksum, '6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc', 'manifest checksum')
+    equal(manifest.entries.length, 4485, 'manifest kayıt sayısı')
+    equal(manifest.manifest_checksum, 'c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b', 'manifest checksum')
     check(!/(answer_key|correct_answer|dogru_cevap|answerKey)/u.test(JSON.stringify(manifest)), 'public manifest cevap anahtarı içermez')
     const coverage = buildCoverageReconciliation()
     equal(coverage.status, 'passed', 'kapsam kayıt defteri kodla uzlaşmalı')
@@ -308,7 +308,7 @@ async function main() {
     let writes = 0
     const proposal = await runTool({
       name: 'create_study_plan', studentId: IDS.a, facts: {},
-      args: { items: [{ subject: 'Matematik', activity: 'soru_cozumu', planned_date: '2026-09-14', duration_minutes: 30 }] },
+      args: { items: [{ subject: 'Matematik', activity: 'soru_cozumu', planned_date: '2099-09-14', duration_minutes: 30 }] },
       supabase: { from() { writes += 1; throw new Error('yazma olmamalı') } },
     })
     equal(writes, 0, 'onaydan önce yazma yok')

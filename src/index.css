@@ -1,6 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss' source(none);
+@source '../index.html';
+@source '.';
+@config '../tailwind.config.js';
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* ==================================================================
    Dr. Koç — AURORA GRADIENT DESIGN SYSTEM / Token Katmanı
@@ -1411,7 +1413,7 @@
   }
 
   .card-interactive {
-    @apply card transition-all duration-200 ease-smooth
+    @apply min-w-0 rounded-card bg-surface border border-line shadow-card transition-all duration-200 ease-smooth
            hover:shadow-card-hover hover:-translate-y-0.5 hover:border-brand-200;
   }
 

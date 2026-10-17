@@ -140,13 +140,12 @@ export function splitBySource(entries = []) {
   }
 }
 
-/** 'YYYY-MM-DD' — yerel saate göre, UTC kayması olmadan. */
+const schoolDateFormatter = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Istanbul', year: 'numeric', month: '2-digit', day: '2-digit' })
+/** 'YYYY-MM-DD' — öğrenci ekranları ve sunucuda aynı Türkiye takvim günü. */
 export function toKey(date) {
+  if (typeof date === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(date)) return date
   const d = date instanceof Date ? date : new Date(date)
-  const y = d.getFullYear()
-  const m = String(d.getMonth() + 1).padStart(2, '0')
-  const day = String(d.getDate()).padStart(2, '0')
-  return `${y}-${m}-${day}`
+  return schoolDateFormatter.format(d)
 }
 
 function logTotals(logs) {
@@ -555,28 +554,26 @@ export function buildExamInsights(exams = [], branchExams = []) {
    ================================================================== */
 
 function startOfToday() {
-  const d = new Date()
-  d.setHours(0, 0, 0, 0)
-  return d
+  return toKey(new Date())
 }
 
 /** Bir ödevin geciktiğini söyler (tamamlananlar hiçbir zaman gecikmez). */
 export function isHomeworkOverdue(hw) {
   if (!hw?.due_date || hw.status === 'Tamamlandı') return false
-  return new Date(hw.due_date) < startOfToday()
+  return toKey(hw.due_date) < startOfToday()
 }
 
 /** Ödev sekmesinin metrikleri. */
 export function homeworkStats(homeworks = []) {
   const today = startOfToday()
-  const weekEnd = new Date(today.getTime() + 7 * DAY)
+  const weekEnd = toKey(new Date(Date.now() + 7 * DAY))
 
   const done = homeworks.filter((h) => h.status === 'Tamamlandı')
   const pending = homeworks.filter((h) => h.status !== 'Tamamlandı')
   const overdue = pending.filter(isHomeworkOverdue)
-  const dueToday = pending.filter((h) => h.due_date && toKey(h.due_date) === toKey(today))
+  const dueToday = pending.filter((h) => h.due_date && toKey(h.due_date) === today)
   const dueThisWeek = pending.filter(
-    (h) => h.due_date && new Date(h.due_date) >= today && new Date(h.due_date) < weekEnd
+    (h) => h.due_date && toKey(h.due_date) >= today && toKey(h.due_date) < weekEnd
   )
 
   return {

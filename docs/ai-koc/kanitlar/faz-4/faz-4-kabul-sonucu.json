@@ -6,102 +6,102 @@
     {
       "name": "Checksum ve migration ilk/ikinci uygulama",
       "status": "passed",
-      "duration_ms": 936.39
+      "duration_ms": 946.901
     },
     {
       "name": "Kastılı hata tam rollback",
       "status": "passed",
-      "duration_ms": 629.905
+      "duration_ms": 636.082
     },
     {
       "name": "Faz 4 sicil, SQL ve adaptör parity",
       "status": "passed",
-      "duration_ms": 614.579
+      "duration_ms": 627.604
     },
     {
       "name": "M03 günlük kayıt zinciri",
       "status": "passed",
-      "duration_ms": 636.425
+      "duration_ms": 662.266
     },
     {
       "name": "M04 genel deneme atomikliği ve formülleri",
       "status": "passed",
-      "duration_ms": 628.417
+      "duration_ms": 682.705
     },
     {
       "name": "M05 branş denemesi provenance ve unknown tür",
       "status": "passed",
-      "duration_ms": 620.962
+      "duration_ms": 652.85
     },
     {
       "name": "M06 atama ve öğrenci durum ayrımı",
       "status": "passed",
-      "duration_ms": 614.484
+      "duration_ms": 638.418
     },
     {
       "name": "M07 iki yönlü soru ve feedback",
       "status": "passed",
-      "duration_ms": 641.366
+      "duration_ms": 665.298
     },
     {
       "name": "M11 claim/finalize ve etkileşim atomikliği",
       "status": "passed",
-      "duration_ms": 634.712
+      "duration_ms": 643.595
     },
     {
       "name": "M12 tekrar snapshot ve correction",
       "status": "passed",
-      "duration_ms": 634.498
+      "duration_ms": 644.599
     },
     {
       "name": "M31 idempotent katılım",
       "status": "passed",
-      "duration_ms": 747.498
+      "duration_ms": 630.565
     },
     {
       "name": "M33 özet share/update/unshare ve feedback",
       "status": "passed",
-      "duration_ms": 638.198
+      "duration_ms": 637.694
     },
     {
       "name": "M36 context_only hedef profili",
       "status": "passed",
-      "duration_ms": 614.322
+      "duration_ms": 624.508
     },
     {
       "name": "Negatif yüzeyler, tekrar ve atomik hata enjeksiyonu",
       "status": "passed",
-      "duration_ms": 617.549
+      "duration_ms": 619.577
     },
     {
       "name": "Yetki, private sınır ve yeni medya RLS matrisi",
       "status": "passed",
-      "duration_ms": 611.912
+      "duration_ms": 621.642
     },
     {
       "name": "Correction hedefi ve deterministik effective replay",
       "status": "passed",
-      "duration_ms": 613.891
+      "duration_ms": 626.446
     },
     {
       "name": "Backfill dry-run/sentetik apply ve sağlık durumları",
       "status": "passed",
-      "duration_ms": 5.141
+      "duration_ms": 4.958
     },
     {
       "name": "Hesap kapsamlı outbox ve güvenli kullanıcı onayı",
       "status": "passed",
-      "duration_ms": 1.152
+      "duration_ms": 1.137
     },
     {
       "name": "10.000 revizyon, 1.000 receipt ve çok-child performans kanıtı",
       "status": "passed",
-      "duration_ms": 942.092
+      "duration_ms": 941.533
     },
     {
       "name": "Kişisel veri minimizasyonu ve Faz sınırı",
       "status": "passed",
-      "duration_ms": 2.238
+      "duration_ms": 2.56
     }
   ],
   "assertions": 290,
@@ -129,7 +129,7 @@
     {
       "id": 5,
       "status": "passed",
-      "evidence": "Faz 3 migration + manifest checksum ve 4.344 kayıt doğrulandı"
+      "evidence": "Faz 3 migration + manifest checksum ve 4.485 kayıt doğrulandı"
     },
     {
       "id": 6,
@@ -439,7 +439,7 @@
     {
       "id": 67,
       "status": "passed",
-      "evidence": "effective replay SHA-256 ba677b9a34a44e6cb4f95af74f2d46ef836f36352c5db261331968191481857d"
+      "evidence": "effective replay SHA-256 2d5ada7cc3a42d7d1a602dffdb6edf2fe2cc6d575c263030749e476b9b956401"
     },
     {
       "id": 68,
@@ -5976,11 +5976,11 @@
     "pending_receipts": 1000,
     "backfill_items": 1000,
     "mock_exam_children": 32,
-    "revision_insert_ms": 255.782,
-    "receipt_lookup_ms": 0.699,
-    "student_scoped_list_ms": 2.112,
-    "effective_view_ms": 1.409,
-    "mock_exam_batch_ms": 36.155,
+    "revision_insert_ms": 259.716,
+    "receipt_lookup_ms": 0.691,
+    "student_scoped_list_ms": 2.143,
+    "effective_view_ms": 1.42,
+    "mock_exam_batch_ms": 36.836,
     "query_plan": "[{\"QUERY PLAN\":\"Limit  (cost=8.44..8.44 rows=1 width=80)\"},{\"QUERY PLAN\":\"  ->  Sort  (cost=8.44..8.44 rows=1 width=80)\"},{\"QUERY PLAN\":\"        Sort Key: source_revision DESC, created_at DESC\"},{\"QUERY PLAN\":\"        ->  Index Scan using learning_academic_audit_source_idx on learning_academic_source_revisions  (cost=0.41..8.43 rows=1 width=80)\"},{\"QUERY PLAN\":\"              Index Cond: ((student_id = '44000000-0000-4000-8000-000000000001'::uuid) AND (source_code = 'daily_logs'::text))\"}]",
     "thresholds_claimed": false
   },
@@ -6006,7 +6006,7 @@
     "PGlite tek bağlantıyı seri işler; gerçek çok bağlantılı yarış sertifikasyonu Faz 9 kapsamındadır."
   ],
   "replay": {
-    "checksum": "ba677b9a34a44e6cb4f95af74f2d46ef836f36352c5db261331968191481857d",
+    "checksum": "2d5ada7cc3a42d7d1a602dffdb6edf2fe2cc6d575c263030749e476b9b956401",
     "effective_rows": 1,
     "cross_student_target": "rejected",
     "fork": "rejected",
@@ -6091,9 +6091,9 @@
       "key": "phase1",
       "command": "npm run test:ai-koc-faz-1",
       "group": "security",
-      "started_at": "2026-09-13T08:25:05.994Z",
-      "finished_at": "2026-09-13T08:25:06.197Z",
-      "duration_ms": 203,
+      "started_at": "2026-10-08T16:24:23.588Z",
+      "finished_at": "2026-10-08T16:24:23.827Z",
+      "duration_ms": 239,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -6104,9 +6104,9 @@
       "key": "phase2",
       "command": "npm run test:ai-koc-faz-2",
       "group": "security",
-      "started_at": "2026-09-13T08:25:06.198Z",
-      "finished_at": "2026-09-13T08:25:10.422Z",
-      "duration_ms": 4224,
+      "started_at": "2026-10-08T16:24:23.827Z",
+      "finished_at": "2026-10-08T16:24:28.050Z",
+      "duration_ms": 4223,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -6117,9 +6117,9 @@
       "key": "phase3",
       "command": "npm run test:ai-koc-faz-3",
       "group": "security",
-      "started_at": "2026-09-13T08:25:10.423Z",
-      "finished_at": "2026-09-13T08:25:34.145Z",
-      "duration_ms": 23722,
+      "started_at": "2026-10-08T16:24:28.050Z",
+      "finished_at": "2026-10-08T16:24:54.649Z",
+      "duration_ms": 26599,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -6132,9 +6132,9 @@
       "key": "phase4",
       "command": "npm run test:ai-koc-faz-4",
       "group": "security",
-      "started_at": "2026-09-13T08:25:34.146Z",
-      "finished_at": "2026-09-13T08:25:45.710Z",
-      "duration_ms": 11564,
+      "started_at": "2026-10-08T16:24:54.650Z",
+      "finished_at": "2026-10-08T16:25:06.351Z",
+      "duration_ms": 11701,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -6145,9 +6145,9 @@
       "key": "parent",
       "command": "npm run test:parent-rls",
       "group": "security",
-      "started_at": "2026-09-13T08:25:45.711Z",
-      "finished_at": "2026-09-13T08:25:46.653Z",
-      "duration_ms": 942,
+      "started_at": "2026-10-08T16:25:06.351Z",
+      "finished_at": "2026-10-08T16:25:07.310Z",
+      "duration_ms": 959,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -6158,9 +6158,9 @@
       "key": "live",
       "command": "npm run test:live-lessons",
       "group": "security",
-      "started_at": "2026-09-13T08:25:46.653Z",
-      "finished_at": "2026-09-13T08:25:47.588Z",
-      "duration_ms": 935,
+      "started_at": "2026-10-08T16:25:07.310Z",
+      "finished_at": "2026-10-08T16:25:08.262Z",
+      "duration_ms": 952,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -6171,9 +6171,9 @@
       "key": "notifications",
       "command": "npm run test:teacher-notifications",
       "group": "security",
-      "started_at": "2026-09-13T08:25:47.589Z",
-      "finished_at": "2026-09-13T08:25:58.487Z",
-      "duration_ms": 10898,
+      "started_at": "2026-10-08T16:25:08.262Z",
+      "finished_at": "2026-10-08T16:25:19.211Z",
+      "duration_ms": 10949,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -6184,9 +6184,9 @@
       "key": "solve",
       "command": "npm run test:ai-solve",
       "group": "regression",
-      "started_at": "2026-09-13T08:25:58.488Z",
-      "finished_at": "2026-09-13T08:26:05.339Z",
-      "duration_ms": 6851,
+      "started_at": "2026-10-08T16:25:19.212Z",
+      "finished_at": "2026-10-08T16:25:26.123Z",
+      "duration_ms": 6911,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -6197,9 +6197,9 @@
       "key": "coach",
       "command": "node scripts/test-ai-coach.mjs",
       "group": "regression",
-      "started_at": "2026-09-13T08:26:05.340Z",
-      "finished_at": "2026-09-13T08:26:05.415Z",
-      "duration_ms": 75,
+      "started_at": "2026-10-08T16:25:26.124Z",
+      "finished_at": "2026-10-08T16:25:26.206Z",
+      "duration_ms": 82,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -6210,9 +6210,9 @@
       "key": "exam",
       "command": "node scripts/test-exam-stats.mjs",
       "group": "regression",
-      "started_at": "2026-09-13T08:26:05.415Z",
-      "finished_at": "2026-09-13T08:26:05.442Z",
-      "duration_ms": 27,
+      "started_at": "2026-10-08T16:25:26.206Z",
+      "finished_at": "2026-10-08T16:25:26.234Z",
+      "duration_ms": 28,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -6223,9 +6223,9 @@
       "key": "home",
       "command": "npm run test:anasayfa",
       "group": "regression",
-      "started_at": "2026-09-13T08:26:05.442Z",
-      "finished_at": "2026-09-13T08:26:05.546Z",
-      "duration_ms": 104,
+      "started_at": "2026-10-08T16:25:26.234Z",
+      "finished_at": "2026-10-08T16:25:26.351Z",
+      "duration_ms": 117,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -6236,9 +6236,9 @@
       "key": "build",
       "command": "npm run build",
       "group": "build",
-      "started_at": "2026-09-13T08:26:05.546Z",
-      "finished_at": "2026-09-13T08:26:24.493Z",
-      "duration_ms": 18947,
+      "started_at": "2026-10-08T16:25:26.351Z",
+      "finished_at": "2026-10-08T16:25:49.274Z",
+      "duration_ms": 22923,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -6267,5 +6267,5 @@
     ],
     "live_data_used": false
   },
-  "generated_at": "2026-09-13T08:26:24.495Z"
+  "generated_at": "2026-10-08T16:25:49.277Z"
 }

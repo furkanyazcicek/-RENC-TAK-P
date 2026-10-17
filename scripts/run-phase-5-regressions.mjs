@@ -138,7 +138,7 @@ function authoritativePhase3(value) {
     && value.command_totals?.required === 17 && value.command_totals?.passed === 17
     && value.gate_totals?.required === 46 && value.gate_totals?.passed === 46
     && value.assertions === 450
-    && value.manifest?.checksum === '6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc'
+    && value.manifest?.checksum === 'c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b'
 }
 
 function authoritativePhase4(value) {

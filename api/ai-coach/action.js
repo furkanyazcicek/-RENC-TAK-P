@@ -19,7 +19,9 @@
 import { authenticate } from '../_lib/auth.js'
 import { logError, sendError } from '../_lib/errors.js'
 import { executeAction } from '../_lib/tools.js'
-import { resolveLearningRollout } from '../_lib/learning/rollout.js'
+import { applyCoachDatabaseGate, resolveCoachActionMode, resolveLearningRollout } from '../_lib/learning/rollout.js'
+import { isPaidChatEnabled } from '../_lib/paidChatGate.js'
+import { isFreeCoachEnabled, isFreeCoachWritesEnabled, ownFreeCoachWrites } from '../_lib/freeCoachGate.js'
 
 const ALLOWED_TYPES = new Set([
   'accept_coaching_recommendation',
@@ -45,11 +47,6 @@ export default async function handler(req, res) {
 
   const { user, supabase } = auth
 
-  const rollout = resolveLearningRollout({ studentId: user.id, sourceCode: 'ai_coach_actions' })
-  if (!rollout.coach_writes.enabled) {
-    return sendError(res, 503, 'feature_temporarily_unavailable')
-  }
-
   const body = typeof req.body === 'string' ? safeParse(req.body) : req.body
   const action = body?.action
 
@@ -57,8 +54,17 @@ export default async function handler(req, res) {
     return sendError(res, 400, 'action_invalid')
   }
 
+  const rollout = await applyCoachDatabaseGate(supabase,
+    resolveLearningRollout({ studentId: user.id, sourceCode: 'ai_coach_actions' }))
+  let actionMode = resolveCoachActionMode(rollout, action.type)
+  if (!isPaidChatEnabled()) {
+    if (!isFreeCoachEnabled() || !isFreeCoachWritesEnabled()) actionMode = 'denied'
+    else if (await ownFreeCoachWrites(supabase)) actionMode = 'modern'
+  }
+  if (actionMode === 'denied') return sendError(res, 503, 'feature_temporarily_unavailable')
+
   try {
-    const outcome = await executeAction(supabase, user.id, action)
+    const outcome = await executeAction(supabase, user.id, action, { legacy: actionMode === 'legacy' })
     if (!outcome.ok) {
       const status = outcome.code === 'action_not_found' ? 404 : 400
       return sendError(res, status, outcome.code)

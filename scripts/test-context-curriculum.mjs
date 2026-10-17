@@ -25,7 +25,8 @@ const check = (name, ok, extra = '') => {
 }
 const line = (c = '─') => console.log(c.repeat(66))
 
-const today = new Date()
+const todayKey = new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Istanbul' })
+const today = new Date(`${todayKey}T12:00:00+03:00`)
 const dayKey = (offset) => {
   const d = new Date(today.getTime() + offset * 86400000)
   return d.toISOString().slice(0, 10)

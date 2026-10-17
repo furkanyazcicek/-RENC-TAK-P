@@ -1,0 +1,16 @@
+{
+  "schema_version": "phase-10-storage-public-backup@1",
+  "generated_at": "2026-10-07T17:39:14.939Z",
+  "status": "passed_public_object_bytes_verified",
+  "source_archive_sha256": "49cc746b5bdb3a5857a7bcebdf4e165c43a109ac7c511505157cc94e977214de",
+  "public_object_count": 153,
+  "public_object_bytes": 233213225,
+  "aggregate_sha256": "4177d5ac832614f93708dc76c87d6b5bb7dbfb5a91503547cb5d6ae7e9516927",
+  "source_etag_md5_matches": 151,
+  "source_etag_not_simple_md5": 2,
+  "source_etag_md5_mismatches": 0,
+  "private_objects_not_included": 6,
+  "full_storage_recovery_verified": false,
+  "live_write": false,
+  "paid_resource_created": false
+}

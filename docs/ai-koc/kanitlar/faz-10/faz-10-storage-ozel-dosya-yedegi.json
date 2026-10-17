@@ -1,0 +1,19 @@
+{
+  "schema_version": "phase-10-storage-private-backup@1",
+  "generated_at": "2026-10-07T17:39:14.596Z",
+  "status": "passed_private_object_bytes_verified",
+  "source_archive_sha256": "49cc746b5bdb3a5857a7bcebdf4e165c43a109ac7c511505157cc94e977214de",
+  "private_object_count": 6,
+  "private_object_bytes": 10954980,
+  "source_etag_md5_matches": 6,
+  "source_etag_not_simple_md5": 0,
+  "source_etag_md5_mismatches": 0,
+  "aggregate_sha256": "4ed334040817ea417ec224f631b86549e7573c839f470b9ff95e90fb6d8c40ee",
+  "zip_artifacts": [
+    "storage-private-download-1.zip",
+    "storage-private-download-2.zip"
+  ],
+  "full_supabase_restore_verified": false,
+  "live_write": false,
+  "paid_resource_created": false
+}

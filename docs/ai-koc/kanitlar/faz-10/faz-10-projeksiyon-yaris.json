@@ -1,0 +1,23 @@
+{
+  "schema_version": "phase-10-projection-race@1",
+  "phase": 10,
+  "status": "passed",
+  "generated_at": "2026-10-10T20:49:36.974Z",
+  "assertions": 4,
+  "scenarios": [
+    "geri dönüş bayrağı önce kilitlenir",
+    "etkinleştirme bayrağı önce kilitler"
+  ],
+  "side_effects": {
+    "live_supabase_read": false,
+    "live_supabase_write": false,
+    "real_student_data_used": false,
+    "live_backfill_run": false,
+    "paid_model_call": false,
+    "deployment_performed": false,
+    "git_push_performed": false
+  },
+  "limitations": [
+    "İzole PostgreSQL kilit sıralaması kanıtıdır; canlı platform yetkisi veya gerçek pilot değildir."
+  ]
+}

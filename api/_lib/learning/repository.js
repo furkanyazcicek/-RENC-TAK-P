@@ -71,6 +71,54 @@ function boundedLimit(value, maximum = 1000) {
   return Math.min(Math.max(Number(value) || 1, 1), maximum)
 }
 
+async function hasProjectionRolloutFlag(queryable) {
+  const result = await queryable.query(
+    `select pg_catalog.to_regprocedure(
+      'learning_private.resolve_learning_rollout(text,uuid,text,text)'
+    ) is not null as available`
+  )
+  return result.rows[0]?.available === true
+}
+
+function projectionExecutionClause(alias) {
+  return `and learning_private.resolve_learning_rollout(
+    'projection', ${alias}.student_id, ${alias}.source_code, null
+  ) @> '{"enabled": true, "scope_type": "student"}'::jsonb
+  and learning_private.resolve_learning_rollout(
+    'projection', ${alias}.student_id, ${alias}.source_code, null
+  )->>'mode' in ('enabled', 'shadow')`
+}
+
+/** Faz 9 bayrağı varsa çalışma/görünürlük yalnız öğrenci kararından gelir. */
+async function projectionAllowedStudentIds(queryable, studentIds, sourceCode, {
+  legacyAllowed = true,
+  modes = ['enabled'],
+} = {}) {
+  const ids = [...new Set(studentIds.filter(Boolean))]
+  if (!ids.length) return new Set()
+  if (!await hasProjectionRolloutFlag(queryable)) {
+    return new Set(legacyAllowed ? ids : [])
+  }
+  await queryable.query(
+    `select student_id from learning_private.learning_student_feature_flags
+      where feature_key = 'projection' and student_id = any($1::uuid[])
+      order by student_id for update`,
+    [ids]
+  )
+  const decision = await queryable.query(
+    `select candidate.student_id
+       from pg_catalog.unnest($1::uuid[]) as candidate(student_id)
+      where learning_private.resolve_learning_rollout(
+        'projection', candidate.student_id, $2::text, null
+      ) @> '{"enabled": true, "scope_type": "student"}'::jsonb
+        and learning_private.resolve_learning_rollout(
+          'projection', candidate.student_id, $2::text, null
+        )->>'mode' = any($3::text[])`,
+    [ids, sourceCode ?? null, modes]
+  )
+  return new Set(decision.rows.map((row) => row.student_id))
+}
+
 function projectionRowPayload(row) {
   return {
     student_id: row.student_id,
@@ -304,12 +352,14 @@ export function createPgLearningEvidenceRepository(queryable) {
   }
 
   async function listLedgerBatch({ studentId = null, sourceCode = null, afterSequence = 0, limit = 500 } = {}) {
+    const projectionFlagAvailable = await hasProjectionRolloutFlag(queryable)
     const result = await queryable.query(
-      `select * from public.learning_evidence_records
-        where ($1::uuid is null or student_id = $1::uuid)
-          and ($2::text is null or source_code = $2::text)
-          and ingestion_sequence > $3::bigint
-        order by ingestion_sequence
+      `select record.* from public.learning_evidence_records as record
+        where ($1::uuid is null or record.student_id = $1::uuid)
+          and ($2::text is null or record.source_code = $2::text)
+          and record.ingestion_sequence > $3::bigint
+          ${projectionFlagAvailable ? projectionExecutionClause('record') : ''}
+        order by record.ingestion_sequence
         limit $4::integer`,
       [studentId, sourceCode, afterSequence, boundedLimit(limit)]
     )
@@ -317,15 +367,76 @@ export function createPgLearningEvidenceRepository(queryable) {
   }
 
   async function listReplayStudents({ sourceCode = null, afterSequence = 0 } = {}) {
+    const projectionFlagAvailable = await hasProjectionRolloutFlag(queryable)
     const result = await queryable.query(
-      `select distinct student_id
-         from public.learning_evidence_records
-        where ($1::text is null or source_code = $1::text)
-          and ingestion_sequence > $2::bigint
-        order by student_id`,
+      `select distinct record.student_id
+         from public.learning_evidence_records as record
+        where ($1::text is null or record.source_code = $1::text)
+          and record.ingestion_sequence > $2::bigint
+          ${projectionFlagAvailable ? projectionExecutionClause('record') : ''}
+        order by record.student_id`,
       [sourceCode, Number(afterSequence) || 0]
     )
     return result.rows.map((row) => row.student_id)
+  }
+
+  async function isProjectionExecutionEnabled(studentId, sourceCode = null) {
+    if (!studentId) throw new TypeError('projection_student_required')
+    if (!await hasProjectionRolloutFlag(queryable)) return true
+    const result = await queryable.query(
+      `select exists (
+        select 1 from public.learning_evidence_records as record
+         where record.student_id = $1::uuid
+           and ($2::text is null or record.source_code = $2::text)
+           ${projectionExecutionClause('record')}
+      ) as allowed`,
+      [studentId, sourceCode]
+    )
+    return result.rows[0]?.allowed === true
+  }
+
+  /** Faz 10 geri dönüşü: bayrak ve daha önce görünür satırlar tek işlemde kapanır. */
+  async function revokeStudentProjectionVisibility(studentId) {
+    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(studentId ?? '')) {
+      throw new TypeError('projection_student_id_invalid')
+    }
+    return withTransaction(queryable, async (transaction) => {
+      if (!await hasProjectionRolloutFlag(transaction)) {
+        throw Object.assign(new Error('projection_rollout_schema_required'), {
+          code: 'PROJECTION_ROLLOUT_SCHEMA_REQUIRED',
+        })
+      }
+      await transaction.query(
+        `insert into learning_private.learning_student_feature_flags
+           (feature_key, student_id, enabled, mode, reason_code)
+         values ('projection', $1::uuid, false, 'disabled', 'PHASE10_KILL_SWITCH')
+         on conflict (feature_key, student_id)
+         do update set enabled = false, mode = 'disabled',
+                       reason_code = 'PHASE10_KILL_SWITCH',
+                       updated_at = pg_catalog.clock_timestamp()`,
+        [studentId]
+      )
+      const diagnostic = await transaction.query(
+        `update public.learning_diagnostic_projection_rows
+            set consumer_visible = false, updated_at = pg_catalog.clock_timestamp()
+          where student_id = $1::uuid and consumer_visible`, [studentId]
+      )
+      const model = await transaction.query(
+        `update public.student_learning_projection_rows
+            set consumer_visible = false
+          where student_id = $1::uuid and consumer_visible`, [studentId]
+      )
+      const patterns = await transaction.query(
+        `update public.student_behavior_patterns
+            set consumer_visible = false
+          where student_id = $1::uuid and consumer_visible`, [studentId]
+      )
+      return Object.freeze({
+        diagnostic_rows_hidden: diagnostic.rowCount ?? 0,
+        model_rows_hidden: model.rowCount ?? 0,
+        pattern_rows_hidden: patterns.rowCount ?? 0,
+      })
+    })
   }
 
   async function beginProjectionGeneration({
@@ -411,6 +522,25 @@ export function createPgLearningEvidenceRepository(queryable) {
           code: 'PROJECTION_GENERATION_NOT_BUILDING',
         })
       }
+      const legacyGlobalVisible = generation.student_id == null && generation.source_code == null
+      const stagedStudents = await transaction.query(
+        generation.projection_name === 'student_topic_model'
+          ? `select distinct student_id from (
+               select student_id from public.student_learning_projection_rows where generation_id = $1::uuid
+               union all
+               select student_id from public.student_behavior_patterns where generation_id = $1::uuid
+             ) as staged`
+          : `select distinct student_id from public.learning_diagnostic_projection_rows
+              where generation_id = $1::uuid`,
+        [generationId]
+      )
+      const visibleStudents = await projectionAllowedStudentIds(
+        transaction,
+        stagedStudents.rows.map((row) => row.student_id),
+        generation.source_code,
+        { legacyAllowed: legacyGlobalVisible },
+      )
+      const visibleIds = [...visibleStudents]
       const previousGenerationSql = `
             select existing.generation_id
               from public.learning_projection_generations as existing
@@ -481,28 +611,27 @@ export function createPgLearningEvidenceRepository(queryable) {
                     end_ingestion_sequence`,
         [generationId, Number(highWaterMark) || 0, Number(rowCount) || 0, checksum]
       )
-      const consumerVisible = generation.student_id == null && generation.source_code == null
       if (generation.projection_name === 'student_topic_model') {
         await transaction.query(
           `update public.student_learning_projection_rows
-              set is_active = true, consumer_visible = $2::boolean
+              set is_active = true, consumer_visible = student_id = any($2::uuid[])
             where generation_id = $1::uuid`,
-          [generationId, consumerVisible]
+          [generationId, visibleIds]
         )
         await transaction.query(
           `update public.student_behavior_patterns
-              set is_active = true, consumer_visible = $2::boolean
+              set is_active = true, consumer_visible = student_id = any($2::uuid[])
             where generation_id = $1::uuid`,
-          [generationId, consumerVisible]
+          [generationId, visibleIds]
         )
       } else {
         await transaction.query(
           `update public.learning_diagnostic_projection_rows
               set is_active = true,
-                  consumer_visible = $2::boolean,
+                  consumer_visible = student_id = any($2::uuid[]),
                   updated_at = pg_catalog.clock_timestamp()
             where generation_id = $1::uuid`,
-          [generationId, consumerVisible]
+          [generationId, visibleIds]
         )
       }
       return activated.rows[0]
@@ -532,6 +661,15 @@ export function createPgLearningEvidenceRepository(queryable) {
     }
     let handlerFailure = null
     const outcome = await withTransaction(queryable, async (transaction) => {
+      if (options.studentId && await hasProjectionRolloutFlag(transaction)) {
+        const allowedStudents = await projectionAllowedStudentIds(
+          transaction, [options.studentId], options.sourceCode,
+          { legacyAllowed: false, modes: ['enabled', 'shadow'] },
+        )
+        if (!allowedStudents.has(options.studentId)) {
+          return { claimed: false, code: 'projection_flag_disabled', rows: [] }
+        }
+      }
       await transaction.query(
         `insert into public.learning_projection_cursors (
            projection_name, projection_version, student_id, source_code,
@@ -596,11 +734,13 @@ export function createPgLearningEvidenceRepository(queryable) {
           where cursor_id = $1::uuid`,
         [cursor.cursor_id, workerId]
       )
+      const projectionFlagAvailable = await hasProjectionRolloutFlag(transaction)
       const recordsResult = await transaction.query(
         `select record.*
            from public.learning_evidence_records as record
           where ($2::uuid is null or record.student_id = $2::uuid)
             and ($3::text is null or record.source_code = $3::text)
+            ${projectionFlagAvailable ? projectionExecutionClause('record') : ''}
             and (
               record.ingestion_sequence > $1::bigint
               or not exists (
@@ -735,6 +875,12 @@ export function createPgLearningEvidenceRepository(queryable) {
       }
 
       const replaceStudentIds = [...new Set(handled.replaceStudentIds ?? [])]
+      const visibleStudents = await projectionAllowedStudentIds(
+        transaction,
+        replaceStudentIds,
+        activeGeneration.source_code,
+        { legacyAllowed: activeGeneration.student_id == null && activeGeneration.source_code == null },
+      )
       for (const studentId of replaceStudentIds) {
         if (activeGeneration.projection_name === 'student_topic_model') {
           await transaction.query('delete from public.student_learning_projection_evidence_refs where generation_id = $1::uuid and student_id = $2::uuid', [generationId, studentId])
@@ -748,14 +894,23 @@ export function createPgLearningEvidenceRepository(queryable) {
           )
         }
       }
-      const consumerVisible = activeGeneration.student_id == null && activeGeneration.source_code == null
       if (activeGeneration.projection_name === 'student_topic_model') {
-        await insertStudentModelRows(transaction, generationId, handled.rows ?? [], { isActive: true, consumerVisible })
-        await insertStudentModelDetails(transaction, generationId, {
-          patterns: handled.patterns ?? [], evidenceRefs: handled.evidenceRefs ?? [],
-        }, { isActive: true, consumerVisible })
+        for (const studentId of replaceStudentIds) {
+          const consumerVisible = visibleStudents.has(studentId)
+          await insertStudentModelRows(transaction, generationId,
+            (handled.rows ?? []).filter((row) => row.student_id === studentId),
+            { isActive: true, consumerVisible })
+          await insertStudentModelDetails(transaction, generationId, {
+            patterns: (handled.patterns ?? []).filter((row) => row.student_id === studentId),
+            evidenceRefs: (handled.evidenceRefs ?? []).filter((row) => row.student_id === studentId),
+          }, { isActive: true, consumerVisible })
+        }
       } else {
-        await insertProjectionRows(transaction, generationId, handled.rows ?? [], { isActive: true, consumerVisible })
+        for (const studentId of replaceStudentIds) {
+          await insertProjectionRows(transaction, generationId,
+            (handled.rows ?? []).filter((row) => row.student_id === studentId),
+            { isActive: true, consumerVisible: visibleStudents.has(studentId) })
+        }
       }
       const quarantined = new Set(handled.quarantinedRecordIds ?? [])
       for (const record of records) {
@@ -967,6 +1122,9 @@ export function createPgLearningEvidenceRepository(queryable) {
     listEffective,
     listLedgerBatch,
     listReplayStudents,
+    isProjectionRolloutInstalled: () => hasProjectionRolloutFlag(queryable),
+    isProjectionExecutionEnabled,
+    revokeStudentProjectionVisibility,
     beginProjectionGeneration,
     stageProjectionRows,
     stageStudentModelDetails,

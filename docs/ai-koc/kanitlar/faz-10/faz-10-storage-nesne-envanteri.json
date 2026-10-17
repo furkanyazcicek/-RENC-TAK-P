@@ -1,0 +1,25 @@
+{
+  "schema_version": "phase-10-storage-object-inventory@1",
+  "generated_at": "2026-09-30T20:59:55.184Z",
+  "status": "passed_archive_metadata_inventory_only",
+  "source_archive_sha256": "49cc746b5bdb3a5857a7bcebdf4e165c43a109ac7c511505157cc94e977214de",
+  "buckets": 3,
+  "objects": 159,
+  "by_visibility": {
+    "public": {
+      "bucket_count": 2,
+      "object_count": 153,
+      "metadata_size_bytes": 233213225
+    },
+    "private": {
+      "bucket_count": 1,
+      "object_count": 6,
+      "metadata_size_bytes": 10954980
+    }
+  },
+  "total_metadata_size_bytes": 244168205,
+  "scope_limit": "Nesne adları, dosya içerikleri ve indirme bağlantıları kanıta yazılmadı; baytlar geri yüklenmedi.",
+  "object_bytes_downloaded": false,
+  "live_write": false,
+  "paid_resource_created": false
+}

@@ -30,6 +30,7 @@ const MESSAGES = {
   upstream_rate_limited: 'AI Koç şu anda yoğun. Birkaç saniye sonra tekrar deneyebilirsin.',
   upstream_error: 'AI Koç şu anda yanıt veremiyor. Birkaç saniye sonra tekrar deneyebilirsin.',
   database_error: 'Verilerine şu anda ulaşılamıyor. Birkaç saniye sonra tekrar deneyebilirsin.',
+  data_unavailable: 'Kayıtlarının bir kısmına erişilemedi. Tam bir kişisel analiz için birkaç dakika sonra yeniden deneyebilirsin.',
   unknown: 'Beklenmedik bir sorun oluştu. Birkaç saniye sonra tekrar deneyebilirsin.',
 
   /* ---------- AI Soru Çözüm Merkezi (api/ai-solve/*) ----------

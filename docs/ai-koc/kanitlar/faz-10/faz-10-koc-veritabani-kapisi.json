@@ -1,0 +1,26 @@
+{
+  "schema_version": "phase-10-coach-database-gate@1",
+  "phase": 10,
+  "status": "passed",
+  "generated_at": "2026-10-10T20:49:38.383Z",
+  "assertions": 27,
+  "scenarios": [
+    "ek migration tekrar güvenli",
+    "yalnız kendi öğrenci bayrağı ve dar execute yetkisi",
+    "sohbet, eylem ve özet çift kapısı",
+    "gerçek PostgreSQL yetki ve ikinci uygulama"
+  ],
+  "migration_sha256": "32711a206397b553fbfeccef97751deeef2e50430fc39ce719153b27f39274cc",
+  "side_effects": {
+    "live_supabase_read": false,
+    "live_supabase_write": false,
+    "real_student_data_used": false,
+    "paid_model_call": false,
+    "deployment_performed": false,
+    "git_push_performed": false
+  },
+  "limitations": [
+    "Yerel sentetik PostgreSQL ve sahte RPC istemcisi doğrulandı; canlı Supabase PostgREST/RLS entegrasyonu ve gerçek model çağrısı yapılmadı."
+  ],
+  "real_postgresql": true
+}

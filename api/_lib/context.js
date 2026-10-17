@@ -920,6 +920,12 @@ export async function buildLegacyStudentFacts(supabase, profile) {
   return buildFacts(profile, raw)
 }
 
+/** Yeni öğrenme şeması kapalıyken mevcut Koç bağlamını korur. */
+export async function buildLegacyStudentContext(supabase, profile) {
+  const facts = await buildLegacyStudentFacts(supabase, profile)
+  return { facts, text: renderContext(facts), bootstrap: null }
+}
+
 /** Tek adımda: onaylı tercih + Faz 6 kısa projeksiyonu. */
 export async function buildStudentContext(supabase, profile) {
   const memory = await fetchCoachApprovedMemory(supabase, profile.id)

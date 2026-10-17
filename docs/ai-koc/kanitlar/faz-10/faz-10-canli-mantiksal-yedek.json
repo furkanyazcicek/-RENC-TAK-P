@@ -1,0 +1,34 @@
+{
+  "schema_version": "phase-10-live-logical-backup@1",
+  "phase": 10,
+  "status": "blocked_live_backup_or_local_restore",
+  "generated_at": "2026-09-30T20:09:49.141Z",
+  "source_identity": {
+    "project_ref": "aazadigklxnvbtwrtszj",
+    "password_saved": false,
+    "postgres_version": "17.6",
+    "read_only_transaction_verified": true
+  },
+  "live_backup_created": true,
+  "local_restore_verified": false,
+  "ready_for_live_write": false,
+  "phase_10_complete": false,
+  "limitations": [
+    "Bu çalışma canlı migration, backfill veya yayını başlatmaz.",
+    "Veritabanı dosyası Storage nesnelerinin kendisini veya servis sırlarını yedeklemez.",
+    "Yerel mantıksal geri yükleme Supabase fiziksel yedeğinin/altyapısının kurtarılması değildir.",
+    "Rol giriş şifreleri, sahiplik ve rol üyelikleri bu yerel provada sertifikalanmaz."
+  ],
+  "side_effects": {
+    "live_connection": true,
+    "live_write": false,
+    "paid_resource_created": false,
+    "real_student_backup_downloaded": true,
+    "deployment_or_push": false
+  },
+  "archive": {
+    "sha256": "49cc746b5bdb3a5857a7bcebdf4e165c43a109ac7c511505157cc94e977214de",
+    "bytes": 2626115
+  },
+  "failure_code": "PG_TOOL_FAILED"
+}

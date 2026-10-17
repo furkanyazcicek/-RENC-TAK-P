@@ -98,6 +98,18 @@ export async function replayDiagnosticProjection({
     throw new TypeError('projection_start_sequence_invalid')
   }
   const pageSize = Math.min(Math.max(Number(batchSize) || 1, 1), 1000)
+  if (studentId && repository.isProjectionExecutionEnabled
+      && !await repository.isProjectionExecutionEnabled(studentId)) {
+    throw Object.assign(new Error('projection_flag_disabled'), { code: 'PROJECTION_FLAG_DISABLED' })
+  }
+  const studentIds = studentId
+    ? [studentId]
+    : await repository.listReplayStudents({ sourceCode, afterSequence: 0 })
+  if (!studentIds.length) {
+    throw Object.assign(new Error('projection_no_eligible_students'), {
+      code: 'PROJECTION_NO_ELIGIBLE_STUDENTS',
+    })
+  }
   const generation = dryCompare
     ? { generation_id: null }
     : await repository.beginProjectionGeneration({
@@ -110,9 +122,6 @@ export async function replayDiagnosticProjection({
   const allRows = []
   let highWaterMark = 0
   try {
-    const studentIds = studentId
-      ? [studentId]
-      : await repository.listReplayStudents({ sourceCode, afterSequence: 0 })
     for (const currentStudentId of studentIds) {
       if (signal?.aborted) throw Object.assign(new Error('projection_cancelled'), { code: 'PROJECTION_CANCELLED' })
       let cursor = 0

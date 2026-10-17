@@ -1,0 +1,19 @@
+{
+  "schema_version": "phase-10-projection-pg-apply@1",
+  "phase": 10,
+  "status": "passed",
+  "generated_at": "2026-10-10T20:49:36.355Z",
+  "assertions": 10,
+  "engine": "isolated PostgreSQL",
+  "synthetic_students": 2,
+  "side_effects": {
+    "live_supabase_read": false,
+    "live_supabase_write": false,
+    "real_student_data_used": false,
+    "paid_model_call": false,
+    "deployment_performed": false
+  },
+  "limitations": [
+    "Gerçek PostgreSQL üzerinde sentetik yazma/geri dönüş provasıdır; canlı Supabase, gerçek öğrenci pilotu veya üretim zamanlayıcısı kanıtı değildir."
+  ]
+}

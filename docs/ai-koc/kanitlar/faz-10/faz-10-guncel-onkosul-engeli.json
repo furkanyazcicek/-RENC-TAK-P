@@ -1,0 +1,98 @@
+{
+  "schema_version": "phase-10-current-preflight-blocker@1",
+  "phase": 10,
+  "status": "failed_current_preflight",
+  "phase_status": "Devam ediyor",
+  "generated_at": "2026-10-13T22:32:55.837Z",
+  "previous_checkpoint_is_historical": true,
+  "ready_for_live_write": false,
+  "content_baseline": {
+    "expected": {
+      "manifest_version": "learning-content-manifest@1",
+      "checksum": "c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b",
+      "entries": 4485
+    },
+    "current": {
+      "manifest_version": "learning-content-manifest@1",
+      "checksum": "c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b",
+      "entries": 4485
+    },
+    "matches": true,
+    "exact_comparison": {
+      "added": 73,
+      "removed": 0,
+      "modified": 3,
+      "unchanged": 4409,
+      "added_by_kind": {
+        "bundled_lesson": 73
+      },
+      "modified_entries": [
+        {
+          "content_id": "lgs-tarih-ataturkun-olumu-ve-eserleri",
+          "old_content_revision": "sha256-02d36bbd77596e172b587d6e",
+          "new_content_revision": "sha256-04de53717c961df0d1e75075",
+          "old_content_hash": "02d36bbd77596e172b587d6e5ab1ba1c3221b3689c86cdbbceba0ba7de365e1c",
+          "new_content_hash": "04de53717c961df0d1e75075ba04d271dca7032d0173654d6ac774006ef9e3eb",
+          "item_count_unchanged": true,
+          "changed_manifest_fields": [
+            "content_revision",
+            "content_hash"
+          ]
+        },
+        {
+          "content_id": "lgs-tarih-cok-partili-hayata-gecis",
+          "old_content_revision": "sha256-a7e02f21e4cc7c4e5672c57d",
+          "new_content_revision": "sha256-1133545f1e44d63c0bf530dd",
+          "old_content_hash": "a7e02f21e4cc7c4e5672c57da348a72c607b4f06437e962e9382242120de3961",
+          "new_content_hash": "1133545f1e44d63c0bf530dd080bb99c0a1e31e7547f06792f0eca593e09b865",
+          "item_count_unchanged": true,
+          "changed_manifest_fields": [
+            "content_revision",
+            "content_hash"
+          ]
+        },
+        {
+          "content_id": "lgs-tarih-ikinci-dunya-savasi-ve-turkiye",
+          "old_content_revision": "sha256-a767d89d3d20efa461dc6009",
+          "new_content_revision": "sha256-f96cc7848f5c4d08ac652402",
+          "old_content_hash": "a767d89d3d20efa461dc6009c06b90a03ad08e48c271623a5f5b56770a0ffbb5",
+          "new_content_hash": "f96cc7848f5c4d08ac652402e3ea4a33488ebe8486bb813b72970a2630456e49",
+          "item_count_unchanged": true,
+          "changed_manifest_fields": [
+            "content_revision",
+            "content_hash"
+          ]
+        }
+      ]
+    },
+    "owner_review_accepted": false
+  },
+  "phase_9_current_acceptance": {
+    "status": "passed",
+    "command_totals": {
+      "required": 27,
+      "passed": 27,
+      "failed": 0,
+      "skipped": 0
+    }
+  },
+  "accelerated_rollout_decision": {
+    "requested_at": "2026-10-11",
+    "target": "all_students_after_staged_evidence",
+    "fixed_2_plus_3_plus_7_day_schedule_superseded": true,
+    "real_pilot_and_safety_evidence_still_required": true
+  },
+  "blocking_gate": {
+    "code": "CONTENT_OWNER_REVIEW_PENDING",
+    "detail": "Teknik içerik baz çizgisi geçse de ürün sahibinin manuel ders incelemesi henüz kayıtlı değil; canlı adıma başlanmaz."
+  },
+  "side_effects": {
+    "live_supabase_write": false,
+    "live_backfill_run": false,
+    "paid_model_call": false,
+    "live_shadow_started": false,
+    "live_pilot_started": false,
+    "deployment_performed": false,
+    "git_push_performed": false
+  }
+}

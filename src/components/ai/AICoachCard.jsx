@@ -71,7 +71,7 @@ export default function AICoachCard() {
             <Sparkles className="h-5 w-5" strokeWidth={2.2} aria-hidden="true" />
           </span>
           <div>
-            <p className="font-display font-bold text-ink">AI Koç</p>
+            <p className="font-display font-bold text-ink">Ücretsiz AI Koç</p>
             <p className="text-sm text-ink/60">Verilerine göre çalışma önerisi al.</p>
           </div>
         </div>
@@ -93,7 +93,7 @@ export default function AICoachCard() {
             <Sparkles className="h-5 w-5" strokeWidth={2.2} aria-hidden="true" />
           </span>
           <div className="min-w-0">
-            <p className="text-2xs font-bold uppercase tracking-[0.14em] text-brand-600">AI Koç</p>
+            <p className="text-2xs font-bold uppercase tracking-[0.14em] text-brand-600">Ücretsiz AI Koç</p>
             <h2 className="truncate font-display text-lg font-extrabold text-ink">
               {greeting}
               {firstName ? ` ${firstName}` : ''}

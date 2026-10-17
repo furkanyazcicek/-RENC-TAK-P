@@ -1,0 +1,31 @@
+{
+  "schema_version": "phase-10-projection-visibility@1",
+  "phase": 10,
+  "status": "passed",
+  "generated_at": "2026-10-10T20:49:34.671Z",
+  "assertions": 38,
+  "scenarios": [
+    "Faz 9 öncesi küresel davranış",
+    "toplu tekrar seçimi",
+    "küresel nesilde öğrenci bazlı görünürlük",
+    "artımlı yürütücü seçimi",
+    "öğrenci kapsamlı model ve örüntü",
+    "pilot dışı hesap görünmez",
+    "gölge kipte görünmezlik",
+    "kapalı bayrakta işleme yok",
+    "geniş kaynak bayrağı pilot sınırını aşamaz"
+  ],
+  "side_effects": {
+    "live_supabase_read": false,
+    "live_supabase_write": false,
+    "real_student_data_used": false,
+    "live_backfill_run": false,
+    "paid_model_call": false,
+    "deployment_performed": false,
+    "git_push_performed": false
+  },
+  "limitations": [
+    "Bu test yerel nesil etkinleştirme, toplu tekrar seçimi ve artımlı claim yolunu doğrular; üretim yürütücüsü/gölge işleme entegrasyonu kanıtı değildir.",
+    "Geri dönüş yordamı bu sentetik bağlantıda doğrulandı; çoklu bağlantı yarışı ayrı yerel provada geçse de canlı yetkiler ve üretim operasyon çağrısı henüz kanıtlanmadı."
+  ]
+}

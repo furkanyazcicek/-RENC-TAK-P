@@ -1,0 +1,56 @@
+{
+  "schema_version": "phase-10-cost-guard-decision@1",
+  "phase": 10,
+  "status": "passed_no_paid_recovery_action_blocked",
+  "generated_at": "2026-09-23T15:01:19Z",
+  "user_constraint": {
+    "paid_operations_authorized": false,
+    "long_running_pilot_requested_now": false,
+    "skipped_gates_treated_as_passed": false
+  },
+  "official_sources": [
+    {
+      "title": "Restore to a new project",
+      "url": "https://supabase.com/docs/guides/platform/clone-project",
+      "finding": "Restoration creates an independent project with mirrored compute and disk attributes; Supabase displays and charges additional monthly project costs."
+    },
+    {
+      "title": "Manage Compute usage",
+      "url": "https://supabase.com/docs/guides/platform/manage-your-usage/compute",
+      "finding": "Every launched project adds dedicated compute usage and increases monthly compute costs."
+    },
+    {
+      "title": "Pricing",
+      "url": "https://supabase.com/pricing",
+      "finding": "Paid-plan additional projects start from 10 USD per month before any extra disk or add-on usage."
+    },
+    {
+      "title": "Database Backups",
+      "url": "https://supabase.com/docs/guides/platform/backups",
+      "finding": "Restoring a backup in place makes the source project inaccessible during restoration and changes the live database."
+    }
+  ],
+  "decision": {
+    "restore_to_new_project_started": false,
+    "in_place_restore_started": false,
+    "pitr_enabled": false,
+    "reason_code": "NO_PAID_RESOURCE_AND_NO_DESTRUCTIVE_LIVE_RESTORE",
+    "reason": "A separate recovery copy would add project charges; an in-place restore would modify and interrupt production. Neither is allowed under the current user constraint.",
+    "safe_alternative_completed": "Read-only live schema contract plus 758-row synthetic full-chain and PostgreSQL lock/rollback rehearsal."
+  },
+  "conclusion": {
+    "free_isolated_supabase_restore_available": false,
+    "recovery_copy_gate_completed": false,
+    "phase_10_status": "Devam ediyor",
+    "ready_for_live_write": false,
+    "blocking_gate": "RECOVERY_DRILL_PENDING"
+  },
+  "side_effects": {
+    "paid_service_used": false,
+    "project_created": false,
+    "restore_executed": false,
+    "live_write": false,
+    "real_student_data_used": false,
+    "deployment_or_push": false
+  }
+}

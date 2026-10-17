@@ -73,7 +73,10 @@ async function readError(response) {
  * @param {AbortSignal?} params.signal
  */
 export async function sendMessage({ message, conversationId, handlers = {}, signal }) {
-  const headers = await authHeaders()
+  const localEnginePreview = import.meta.env.DEV && typeof window !== 'undefined'
+    && window.location.hostname === '127.0.0.1' && window.location.port === '5180'
+    && new URLSearchParams(window.location.search).get('capture-state') === 'free-engine'
+  const headers = localEnginePreview ? {} : await authHeaders()
 
   let response
   try {
@@ -218,6 +221,14 @@ export async function runAction(action) {
 export async function getBriefing() {
   const headers = await authHeaders()
   const response = await fetch(`${BASE}/briefing`, { headers })
+  if (!response.ok) throw await readError(response)
+  return response.json()
+}
+
+/** Model çağrısı yapmayan, mevcut kayıtlardan hesaplanan çalışma rehberi. */
+export async function getFreeGuide() {
+  const headers = await authHeaders()
+  const response = await fetch(`${BASE}/free-guide`, { headers })
   if (!response.ok) throw await readError(response)
   return response.json()
 }

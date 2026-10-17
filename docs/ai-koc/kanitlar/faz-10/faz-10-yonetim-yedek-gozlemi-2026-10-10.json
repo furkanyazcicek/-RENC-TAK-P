@@ -1,0 +1,48 @@
+{
+  "schema_version": "phase-10-admin-backup-observation@1",
+  "phase": 10,
+  "status": "observed_read_only",
+  "observed_at": "2026-10-10T20:44:32Z",
+  "source": "Supabase Dashboard project overview, scheduled backups, database migrations and SQL Editor pages in the user's authenticated Safari session",
+  "target": {
+    "project_ref": "aazadigklxnvbtwrtszj",
+    "branch": "main",
+    "environment": "PRODUCTION",
+    "project_health": "Healthy",
+    "compute_size": "NANO"
+  },
+  "migration_history": {
+    "dashboard_state": "No migrations",
+    "phase_2_to_10_migrations_recorded": false
+  },
+  "live_catalog_check": {
+    "method": "read-only pg_catalog aggregate query on 13 named public baseline tables",
+    "table_count": 13,
+    "rls_enabled_count": 13,
+    "column_count": 163,
+    "total_relation_bytes": 4374528,
+    "estimated_rows_nonnegative_sum": 1043,
+    "student_rows_selected": false,
+    "ddl_executed": false
+  },
+  "scheduled_backup": {
+    "latest_at": "2026-10-10T07:30:22Z",
+    "type": "PHYSICAL",
+    "storage_object_bytes_included": false,
+    "restore_executed": false
+  },
+  "limitations": [
+    "Dashboard backup listing does not prove that the current backup can be fully restored.",
+    "No new database dump, full Supabase restore, live lock measurement or student-data query was performed.",
+    "The 13-table and 163-column totals do not refresh or prove equality of the complete 23 September column definitions, indexes, policies, constraints and triggers.",
+    "pg_class.reltuples is an estimate, not an exact count of student rows; the previous 758-row fixture is not current live-shape evidence.",
+    "This observation expires for the live preflight after 24 hours; backup freshness expires after 48 hours."
+  ],
+  "side_effects": {
+    "live_write": false,
+    "restore_executed": false,
+    "migration_executed": false,
+    "paid_service_used": false,
+    "deployment_or_push": false
+  }
+}

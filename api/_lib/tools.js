@@ -514,6 +514,16 @@ export const TOOL_SCHEMAS = [
   },
 ]
 
+// Canlı Faz 2–9 şeması kurulmadan önceki Koç akışında yalnız bu araçlar vardır.
+// Pilot dışındaki öğrenciye yeni projeksiyon veya görev araçları sunulmaz.
+const LEGACY_TOOL_NAMES = new Set([
+  'get_study_sessions', 'get_subject_detail', 'get_exam_detail', 'get_homeworks',
+  'get_curriculum_topics', 'get_learning_path', 'check_topic_prerequisites',
+  'get_study_plan', 'create_study_plan', 'log_study_session',
+  'update_student_memory', 'complete_study_task',
+])
+export const LEGACY_TOOL_SCHEMAS = TOOL_SCHEMAS.filter((schema) => LEGACY_TOOL_NAMES.has(schema.function.name))
+
 /** Yazma araçlarının adları — bunlar hiçbir zaman otomatik çalıştırılmaz. */
 export const WRITE_TOOLS = new Set([
   'create_coaching_recommendation',
@@ -1218,7 +1228,7 @@ export async function runTool({ name, args, supabase, studentId, facts }) {
  * Bu yüzden istemci sahte bir aksiyon üretse bile yapabileceği en fazla
  * şey, arayüzden zaten yapabildiği bir kaydı kendi hesabına eklemektir.
  */
-export async function executeAction(supabase, studentId, action) {
+export async function executeAction(supabase, studentId, action, { legacy = false } = {}) {
   const type = action?.type
   const payload = action?.payload ?? {}
   const today = toKey(new Date())
@@ -1356,7 +1366,11 @@ export async function executeAction(supabase, studentId, action) {
     const topic = cleanText(payload.topic, 140)
     if (!date || !topic || date > today) return { ok: false, code: 'action_invalid' }
 
+    // Eski sohbetlerde kaydedilmiş onay kartları bu kimliği taşımayabilir.
+    // Yalnız eski modda sunucu yeni kimlik üretir; eski akış zaten tekrar
+    // denemede tekilleştirme garantisi vermiyordu.
     const clientActionId = cleanText(action.client_action_id, 36)
+      || (legacy ? globalThis.crypto?.randomUUID?.() : null)
     if (!clientActionId || !/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(clientActionId)) return { ok: false, code: 'action_invalid' }
     const { data, error } = await supabase.rpc('create_academic_daily_log', {
       p_study_date: date,p_topic: topic,
@@ -1367,6 +1381,22 @@ export async function executeAction(supabase, studentId, action) {
       p_notes: cleanText(payload.notes, 300),p_entry_origin: 'ai_coach_confirmed',
       p_client_action_id: clientActionId,
     })
+    if (legacy && ['PGRST202', '42883'].includes(error?.code)) {
+      // Eski şemada kaynak-özel RPC yoktur; yalnız bu bilinen eksiklikte
+      // önceki öğrenci-kapsamlı günlük yazma yolu kullanılır.
+      const oldWrite = await supabase.from('daily_logs').insert({
+        student_id: studentId,
+        study_date: date,
+        topic,
+        duration_minutes: clampInt(payload.duration_minutes, 0, 720, 0),
+        correct: clampInt(payload.correct, 0, 2000, 0),
+        incorrect: clampInt(payload.incorrect, 0, 2000, 0),
+        empty: clampInt(payload.empty, 0, 2000, 0),
+        notes: cleanText(payload.notes, 300),
+      })
+      if (oldWrite.error) return { ok: false, code: 'database_error' }
+      return { ok: true, message: 'Çalışma kaydın eklendi.' }
+    }
     if (error || !['created','duplicate','no_change','identity_quarantined'].includes(data?.status)) return { ok: false, code: data?.status === 'idempotency_conflict' ? 'action_conflict' : 'database_error' }
 
     return { ok: true, message: 'Çalışma kaydın eklendi.' }

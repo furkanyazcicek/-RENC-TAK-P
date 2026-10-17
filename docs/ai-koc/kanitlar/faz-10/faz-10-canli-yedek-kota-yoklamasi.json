@@ -1,0 +1,30 @@
+{
+  "schema_version": "phase-10-backup-and-usage-observation@1",
+  "observed_at": "2026-09-30T21:01:32Z",
+  "method": "Kimliği doğrulanmış Supabase yönetim ekranında salt okunur gözlem",
+  "scheduled_backup": {
+    "dashboard_path": "/dashboard/project/aazadigklxnvbtwrtszj/database/backups/scheduled",
+    "latest_at": "2026-09-30T04:31:24Z",
+    "type": "PHYSICAL",
+    "storage_object_bytes_included": false,
+    "restore_executed": false
+  },
+  "organization_usage": {
+    "dashboard_path": "/dashboard/org/criusxedxhjbafccsmnp/usage",
+    "billing_cycle_start": "2026-09-14",
+    "billing_cycle_end": "2026-10-14",
+    "plan": "Pro",
+    "uncached_egress_gb_used": 0.519,
+    "uncached_egress_gb_included": 250,
+    "cached_egress_gb_used": 14.234,
+    "cached_egress_gb_included": 250,
+    "uncached_egress_gb_overage": 0,
+    "cached_egress_gb_overage": 0,
+    "dashboard_warning": "Kullanım verisi bir saate kadar gecikmeli yenilenebilir; ek kullanım için faturalandırma şu an etkin görünmüyor."
+  },
+  "storage_archive_inventory_evidence": "docs/ai-koc/kanitlar/faz-10/faz-10-storage-nesne-envanteri.json",
+  "storage_object_metadata_bytes": 244168205,
+  "storage_bytes_backed_up_by_this_observation": false,
+  "live_write": false,
+  "paid_resource_created": false
+}

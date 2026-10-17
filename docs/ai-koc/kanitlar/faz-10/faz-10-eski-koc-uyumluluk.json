@@ -1,0 +1,15 @@
+{
+  "schema_version": "phase-10-legacy-coach-compatibility@1",
+  "phase": 10,
+  "status": "passed_local_synthetic_compatibility",
+  "generated_at": "2026-10-13T23:41:56.959Z",
+  "assertions": 21,
+  "real_student_used": false,
+  "paid_model_called": false,
+  "deployment_performed": false,
+  "live_database_written": false,
+  "limits": [
+    "Canlı API ve gerçek model uçtan uca çalıştırılmadı.",
+    "Eski şemada günlük yazma önceki davranıştaki gibi tekrar denemede çift kayıt riski taşır."
+  ]
+}

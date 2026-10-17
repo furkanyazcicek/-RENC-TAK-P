@@ -9,6 +9,8 @@ Bu dosya AI Koç ve öğrenci öğrenme verisiyle ilgili bütün geliştirmelerd
 
 Bu hedef kullanıcı açıkça değiştirmedikçe daraltılamaz, genişletilemez veya yalnızca sohbet ekranı geliştirmesine indirgenemez. Teknik kararlar değişebilir; aşağıdaki ürün sonucu değişmez.
 
+18 Ekim 2026 teknik uygulama kararı: Ürün sahibinin ek ücret istemeyen talebi için [ücretsiz çalışma yöntemi](FAZ_10_UCRETSIZ_CALISMA_YONTEMI.md) uygulanır. Birleşik öğrenci modeli korunur; yanıt üretimi doğrulanmış kurallar ve mevcut kayıtlarla çalışır, ücretli dil modeli çağırmaz. Bu karar ürün sonucunu dört kaynaklı salt okunur rehbere daraltmaz.
+
 ## 1. Nihai hedef
 
 AI Koç, öğrencinin DRKOÇ içindeki eğitim açısından anlamlı çalışmalarını ve öğrencinin kendisinin eklediği dış çalışma kayıtlarını tek bir öğrenme hikâyesinde birleştiren kişisel öğrenme asistanı olacaktır.

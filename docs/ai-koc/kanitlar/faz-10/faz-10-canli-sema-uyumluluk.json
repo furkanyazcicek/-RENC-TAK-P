@@ -1,0 +1,105 @@
+{
+  "schema_version": "phase-10-live-schema-compatibility@1",
+  "phase": 10,
+  "status": "passed_read_only_live_schema_compatibility",
+  "generated_at": "2026-09-23T14:19:58Z",
+  "target": {
+    "project_ref": "aazadigklxnvbtwrtszj",
+    "branch": "main",
+    "environment": "PRODUCTION",
+    "dashboard_access": "granted",
+    "sql_editor_access": "granted"
+  },
+  "backup": {
+    "latest_scheduled_physical_backup_at": "2026-09-23T04:27:45Z",
+    "restore_capability_visible": true,
+    "restore_executed": false,
+    "recovery_drill_completed": false
+  },
+  "migration_history": {
+    "dashboard_state": "empty",
+    "interpretation": "Temel canlı şema mevcut olduğu için eski SQL dosyaları migration geçmişine bakılarak körlemesine yeniden uygulanamaz; nesne bazlı uzlaştırma gerekir."
+  },
+  "prerequisite_tables": {
+    "required": 13,
+    "compatible": 13,
+    "rls_enabled": 13,
+    "incompatible": [],
+    "by_phase": [
+      {
+        "phase": 2,
+        "required": 1,
+        "compatible": 1,
+        "rls_enabled": 1,
+        "estimated_rows": 15
+      },
+      {
+        "phase": 3,
+        "required": 1,
+        "compatible": 1,
+        "rls_enabled": 1,
+        "estimated_rows": 0
+      },
+      {
+        "phase": 4,
+        "required": 10,
+        "compatible": 10,
+        "rls_enabled": 10,
+        "estimated_rows": 758
+      },
+      {
+        "phase": 8,
+        "required": 1,
+        "compatible": 1,
+        "rls_enabled": 1,
+        "estimated_rows": 0
+      }
+    ]
+  },
+  "phase_4_column_impact": {
+    "target_columns": 28,
+    "already_present": 12,
+    "to_add": 16,
+    "missing_columns": [
+      "ai_solution_sessions.academic_request_id",
+      "ai_solution_sessions.academic_revision",
+      "ai_solution_sessions.review_revision",
+      "daily_logs.academic_revision",
+      "exams.academic_revision",
+      "homeworks.academic_revision",
+      "lesson_participants.attendance_revision",
+      "lesson_summaries.academic_revision",
+      "mock_exam_subjects.academic_revision",
+      "mock_exams.academic_revision",
+      "profiles.academic_goal_revision",
+      "questions.academic_revision",
+      "questions.assigned_by",
+      "questions.image_path",
+      "questions.origin",
+      "questions.teacher_reply_image_path"
+    ]
+  },
+  "representative_new_phase_tables": {
+    "phase_2_to_8_present": false,
+    "missing_phases": [2, 3, 4, 5, 6, 8]
+  },
+  "privacy": {
+    "student_rows_selected": false,
+    "student_content_selected": false,
+    "only_catalog_and_relation_statistics_read": true
+  },
+  "side_effects": {
+    "live_write": false,
+    "ddl_executed": false,
+    "migration_executed": false,
+    "restore_executed": false,
+    "backfill_executed": false
+  },
+  "conclusion": {
+    "base_schema_compatible": true,
+    "live_object_reconciliation_complete": true,
+    "full_migration_rehearsal_complete": false,
+    "ready_for_live_write": false,
+    "blocking_gate": "RECOVERY_DRILL_PENDING"
+  }
+}

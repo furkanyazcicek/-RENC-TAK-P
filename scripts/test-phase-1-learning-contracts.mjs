@@ -143,7 +143,7 @@ function completeRecord(values) {
 section('K01/K02 — değişmez müfredat kimliği ve eski kimlik yönlendirmesi', () => {
   const audit = validateCurriculumIdentityLedger()
   check(audit.ok, JSON.stringify(audit.errors))
-  equal(audit.counts, { contexts: 4, subjects: 33, topics: 330, aliases: 193, prerequisites: 307, unresolvedPrerequisites: 0, legacyRedirects: 523 })
+  equal(audit.counts, { contexts: 4, subjects: 33, topics: 330, aliases: 194, prerequisites: 307, unresolvedPrerequisites: 0, legacyRedirects: 524 })
   check(Object.isFrozen(CURRICULUM_CONTEXT_LEDGER) && Object.isFrozen(CURRICULUM_CONTEXT_LEDGER[0]), 'Bağlam defteri salt okunur olmalı.')
   check(Object.isFrozen(CURRICULUM_SUBJECT_LEDGER) && Object.isFrozen(CURRICULUM_SUBJECT_LEDGER[0]), 'Ders defteri salt okunur olmalı.')
   check(Object.isFrozen(CURRICULUM_TOPIC_LEDGER) && Object.isFrozen(CURRICULUM_TOPIC_LEDGER[0]), 'Konu defteri salt okunur olmalı.')
@@ -183,6 +183,8 @@ section('K01/K02 — değişmez müfredat kimliği ve eski kimlik yönlendirmesi
   const historicalAlias = resolveLegacyTopicId('LGS|Matematik|EBOB EKOK')
   equal(historicalAlias.redirectType, 'versioned_alias')
   equal(historicalAlias.canonicalId, original.id)
+  equal(canonicalTopicIdForLegacyPath('KPSS', 'Vatandaşlık', 'Yürütme (Cumhurbaşkanı)'), 'drkoc:curriculum:topic:v1:t0327')
+  equal(canonicalTopicIdForLegacyPath('KPSS', 'Vatandaşlık', 'Yürütme (Cumhurbaşkanı ve Bakanlar Kurulu)'), 'drkoc:curriculum:topic:v1:t0327')
 
   const readinessNode = resolveTopicNode('Matematik', 'Problemler', ['TYT'])
   check(Boolean(readinessNode?.canonicalId), 'Hazırlık grafiği kanonik kimlik taşımalı.')

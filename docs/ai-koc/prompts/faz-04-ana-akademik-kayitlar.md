@@ -226,7 +226,7 @@ Kod yazmadan önce aşağıdakileri gerçek komut ve dosya sonuçlarıyla doğru
 5. Faz 3 durumu Yerel olarak tamamlandı, canlı onay bekliyor.
 6. Faz 3 kabulü 46/46 kapı, 17/17 komut ve 450 assertion ile passed.
 7. Faz 3 migration SHA-256 değeri 8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165.
-8. Faz 3 manifest sürümü learning-content-manifest@1, checksum değeri 6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc ve kayıt sayısı 4.344.
+8. Faz 3 manifest sürümü learning-content-manifest@1, güncel teknik kabul koşusuyla doğrulanmış checksum değeri c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b ve kayıt sayısı 4.485. Önceki 4.412 kayıtlı 4f4c38f0beb4d8ea2df5e1ed16a682118ea3aad0a1e8ba53408e740fdf21b3e6 ile daha eski 6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc tarihsel içerik baz çizgileridir. Bu teknik kabul, 73 yeni ve 3 mevcut dersin ürün sahibi tarafından manuel incelendiği anlamına gelmez.
 9. npm run test:ai-koc-faz-1 başarılı.
 10. npm run test:ai-koc-faz-2 başarılı.
 11. npm run test:ai-koc-faz-3 başarılı.

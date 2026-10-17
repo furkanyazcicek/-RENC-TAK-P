@@ -80,7 +80,7 @@ function authoritative(phase, value) {
     && value.command_totals?.required === 17 && value.command_totals?.passed === 17
     && value.gate_totals?.required === 46 && value.gate_totals?.passed === 46
     && value.assertions === 450
-    && value.manifest?.checksum === '6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc'
+    && value.manifest?.checksum === 'c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b'
   if (phase === 4) return value.status === 'passed'
     && value.command_totals?.required === 12 && value.command_totals?.passed === 12
     && value.gate_totals?.required === 85 && value.gate_totals?.passed === 85 && value.assertions === 290
@@ -97,7 +97,7 @@ function authoritative(phase, value) {
 
 function validateCore(phase, core) {
   if (phase === 3) return core?.status === 'core_passed_runner_pending' && core?.assertions === 450
-    && core?.manifest?.checksum === '6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc'
+    && core?.manifest?.checksum === 'c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b'
   if (phase === 4) return core?.status === 'core_passed' && core?.assertions === 290 && core?.gates?.length === 85
   if (phase === 5) return core?.status === 'core_passed_runner_pending' && core?.assertions === 231 && core?.gate_totals?.passed === 9
   if (phase === 6) return core?.status === 'core_passed_runner_pending' && core?.assertions === 107 && core?.gate_totals?.passed === 9
@@ -192,7 +192,7 @@ async function main() {
     build: path.relative(ROOT, BUILD_LOG),
   }
   acceptance.prerequisite_acceptance = {
-    phase_3: '17/17 komut; 46/46 kapı; 450 doğrulama; manifest 6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc',
+    phase_3: '17/17 komut; 46/46 kapı; 450 doğrulama; manifest c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b',
     phase_4: '12/12 komut; 85/85 kapı; 290 doğrulama',
     phase_5: '12/12 komut; 9/9 kapı; 231 doğrulama',
     phase_6: '11/11 komut; 9/9 kapı; 107 doğrulama',

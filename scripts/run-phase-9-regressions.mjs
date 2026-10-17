@@ -199,7 +199,7 @@ async function main() {
   }
   acceptance.publication_preflight = publicationPreflight
   acceptance.prerequisite_acceptance = {
-    phase_3: '17/17 komut; 46/46 kapı; 450 doğrulama; manifest 6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc',
+    phase_3: '17/17 komut; 46/46 kapı; 450 doğrulama; manifest c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b',
     phase_4: '12/12 komut; 85/85 kapı; 290 doğrulama',
     phase_5: '12/12 komut; 9/9 kapı; 231 doğrulama',
     phase_6: '11/11 komut; 9/9 kapı; 107 doğrulama',

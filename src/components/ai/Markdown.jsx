@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import { cn } from '../../lib/cn'
+import { isSafeCoachingPath } from '../../lib/learning/coachingLoop/targets'
 
 /**
  * Markdown — modelin ürettiği metnin küçük ve GÜVENLİ bir alt kümesini basar.
@@ -19,7 +20,7 @@ import { cn } from '../../lib/cn'
 /* ---------- Satır içi biçimlendirme ---------- */
 
 // Sıra önemli: önce kalın (**), sonra italik (*) — aksi halde `*` kalını böler.
-const INLINE_RE = /(\*\*[^*]+\*\*|\*[^*\n]+\*|`[^`\n]+`)/g
+const INLINE_RE = /(\[[^\]\n]+\]\(\/[^\s)]+\)|\*\*[^*]+\*\*|\*[^*\n]+\*|`[^`\n]+`)/g
 
 function renderInline(text, keyPrefix) {
   const parts = String(text).split(INLINE_RE)
@@ -27,6 +28,11 @@ function renderInline(text, keyPrefix) {
   return parts.map((part, i) => {
     const key = `${keyPrefix}-${i}`
     if (!part) return null
+
+    const link = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(part)
+    if (link && isSafeCoachingPath(link[2])) {
+      return <a key={key} href={link[2]} className="focus-ring font-semibold text-brand-700 underline underline-offset-4">{link[1]}</a>
+    }
 
     if (part.startsWith('**') && part.endsWith('**') && part.length > 4) {
       return (

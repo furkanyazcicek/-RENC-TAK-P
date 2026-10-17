@@ -14,7 +14,15 @@
 import { authenticate } from '../_lib/auth.js'
 import { logError, sendError } from '../_lib/errors.js'
 import { buildFacts, fetchStudentData } from '../_lib/context.js'
+import { applyCoachDatabaseGate, resolveCoachChatMode, resolveLearningRollout } from '../_lib/learning/rollout.js'
 import { buildDeterministicCoachingBriefing } from '../../src/lib/learning/coachingLoop/index.js'
+import { isPaidChatEnabled } from '../_lib/paidChatGate.js'
+import { isFreeCoachEnabled, ownFreeCoachFlag } from '../_lib/freeCoachGate.js'
+
+export async function loadModernBriefingIfEnabled(rollout, load) {
+  if (resolveCoachChatMode(rollout) !== 'modern') return null
+  return load()
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -30,13 +38,17 @@ export default async function handler(req, res) {
   try {
     const raw = await fetchStudentData(supabase, user.id)
     const facts = buildFacts(profile, raw)
-    const closedLoopData = await fetchClosedLoopBriefingData(supabase, user.id)
-    const coaching = buildDeterministicCoachingBriefing({
+    const rollout = await applyCoachDatabaseGate(supabase,
+      resolveLearningRollout({ studentId: user.id, sourceCode: 'ai_coach_briefing' }))
+    const freeAnalysis = !isPaidChatEnabled() && isFreeCoachEnabled() && await ownFreeCoachFlag(supabase, 'coach_analysis')
+    const closedLoopData = freeAnalysis ? await fetchClosedLoopBriefingData(supabase, user.id)
+      : await loadModernBriefingIfEnabled(rollout, () => fetchClosedLoopBriefingData(supabase, user.id))
+    const coaching = closedLoopData ? buildDeterministicCoachingBriefing({
       tasks: closedLoopData.tasks,
       homeworks: raw.homeworks,
       projections: closedLoopData.projections,
       outcomes: closedLoopData.outcomes,
-    })
+    }) : null
     const legacySuggestion = buildSuggestion(facts)
 
     return res.status(200).json({
@@ -44,12 +56,12 @@ export default async function handler(req, res) {
       firstName: facts.profile.firstName,
       today: facts.today,
       progress: buildProgress(facts),
-      suggestion: suggestionFromCoachingBriefing(coaching, legacySuggestion),
-      coaching: {
+      suggestion: coaching ? suggestionFromCoachingBriefing(coaching, legacySuggestion) : legacySuggestion,
+      coaching: coaching ? {
         ...coaching,
         status: closedLoopData.status,
         user_report_is_platform_verification: false,
-      },
+      } : null,
       stats: {
         streak: facts.study.streak,
         thisWeekMinutes: facts.study.thisWeekMinutes,
@@ -268,7 +280,7 @@ function buildSuggestion(facts) {
         minutes: null,
         activityLabel: 'başlangıç konusu',
       })),
-      hint: 'Bir çalışma kaydı girdiğinde AI Koç senin verinle konuşmaya başlar.',
+      hint: 'Bir çalışma kaydı girdiğinde rehber önerisini senin verilerine göre yeniler.',
     }
   }
 
@@ -281,6 +293,6 @@ function buildSuggestion(facts) {
         ? `Son 30 günde isabet oranın %${facts.study.accuracy30}, belirgin bir zayıf konu görünmüyor`
         : 'Kayıtların dengeli görünüyor',
     items: [],
-    hint: 'AI Koç’a "bu hafta için plan yap" diyerek programını çıkarabilirsin.',
+    hint: 'Yeni bir çalışma veya deneme kaydı eklediğinde rehber yeniden hesaplanır.',
   }
 }

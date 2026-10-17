@@ -1,0 +1,17 @@
+{
+  "schema_version": "phase-10-content-owner-review@1",
+  "phase": 10,
+  "status": "pending_owner_review",
+  "manifest_version": "learning-content-manifest@1",
+  "manifest_checksum": "c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b",
+  "manifest_entries": 4485,
+  "review_scope": {
+    "new_lessons": 73,
+    "existing_lgs_history_lessons_with_changed_content_hash": 3,
+    "removed_entries": 0
+  },
+  "owner_review_completed_at": null,
+  "owner_review_evidence": null,
+  "technical_rebaseline_is_editorial_approval": false,
+  "live_use_authorized_by_this_record": false
+}

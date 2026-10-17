@@ -1,0 +1,90 @@
+{
+  "schema_version": "phase-10-history-content-identity-check@1",
+  "phase": 10,
+  "status": "factory_display_edit_excluded_historical_identity_delta_unexplained",
+  "current_manifest_checksum": "c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b",
+  "historical_manifest_checksum": "4f4c38f0beb4d8ea2df5e1ed16a682118ea3aad0a1e8ba53408e740fdf21b3e6",
+  "checked_lessons": 3,
+  "results": [
+    {
+      "content_id": "lgs-tarih-ataturkun-olumu-ve-eserleri",
+      "changed_display_leads": [
+        {
+          "section_id": "lgs-tarih-ataturkun-olumu-ve-eserleri-uygulama",
+          "old_present": true,
+          "new_present": false
+        },
+        {
+          "section_id": "lgs-tarih-ataturkun-olumu-ve-eserleri-sinav",
+          "old_present": true,
+          "new_present": true
+        },
+        {
+          "section_id": "lgs-tarih-ataturkun-olumu-ve-eserleri-kapanis",
+          "old_present": true,
+          "new_present": false
+        }
+      ],
+      "normalized_identity_unchanged_by_factory_edit": true,
+      "current_manifest_hash_matches_source": true,
+      "historical_hash_differs_from_both_factory_variants": true,
+      "historical_content_hash": "02d36bbd77596e172b587d6e5ab1ba1c3221b3689c86cdbbceba0ba7de365e1c",
+      "current_content_hash": "04de53717c961df0d1e75075ba04d271dca7032d0173654d6ac774006ef9e3eb"
+    },
+    {
+      "content_id": "lgs-tarih-cok-partili-hayata-gecis",
+      "changed_display_leads": [
+        {
+          "section_id": "lgs-tarih-cok-partili-hayata-gecis-uygulama",
+          "old_present": true,
+          "new_present": false
+        },
+        {
+          "section_id": "lgs-tarih-cok-partili-hayata-gecis-sinav",
+          "old_present": true,
+          "new_present": true
+        },
+        {
+          "section_id": "lgs-tarih-cok-partili-hayata-gecis-kapanis",
+          "old_present": true,
+          "new_present": false
+        }
+      ],
+      "normalized_identity_unchanged_by_factory_edit": true,
+      "current_manifest_hash_matches_source": true,
+      "historical_hash_differs_from_both_factory_variants": true,
+      "historical_content_hash": "a7e02f21e4cc7c4e5672c57da348a72c607b4f06437e962e9382242120de3961",
+      "current_content_hash": "1133545f1e44d63c0bf530dd080bb99c0a1e31e7547f06792f0eca593e09b865"
+    },
+    {
+      "content_id": "lgs-tarih-ikinci-dunya-savasi-ve-turkiye",
+      "changed_display_leads": [
+        {
+          "section_id": "lgs-tarih-ikinci-dunya-savasi-ve-turkiye-uygulama",
+          "old_present": true,
+          "new_present": false
+        },
+        {
+          "section_id": "lgs-tarih-ikinci-dunya-savasi-ve-turkiye-sinav",
+          "old_present": true,
+          "new_present": true
+        },
+        {
+          "section_id": "lgs-tarih-ikinci-dunya-savasi-ve-turkiye-kapanis",
+          "old_present": true,
+          "new_present": false
+        }
+      ],
+      "normalized_identity_unchanged_by_factory_edit": true,
+      "current_manifest_hash_matches_source": true,
+      "historical_hash_differs_from_both_factory_variants": true,
+      "historical_content_hash": "a767d89d3d20efa461dc6009c06b90a03ad08e48c271623a5f5b56770a0ffbb5",
+      "current_content_hash": "f96cc7848f5c4d08ac652402e3ea4a33488ebe8486bb813b72970a2630456e49"
+    }
+  ],
+  "conclusion": "Güncel ortak ders şablonundaki giriş metni değişiklikleri normalize edilmiş içerik kimliğini değiştirmiyor. Üç tarihsel içerik hash farkının kaynağı ayrıca uzlaştırılmalı; bu kontrol baz çizgisi güncellemesini onaylamaz.",
+  "live_supabase_read": false,
+  "live_supabase_write": false,
+  "real_student_data_used": false,
+  "baseline_updated": false
+}

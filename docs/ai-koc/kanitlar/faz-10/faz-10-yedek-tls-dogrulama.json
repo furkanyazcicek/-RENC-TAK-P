@@ -1,0 +1,24 @@
+{
+  "generated_at": "2026-09-30T20:07:22.952Z",
+  "status": "passed_tls_only",
+  "checks_passed": 3,
+  "host": "aws-0-eu-central-1.pooler.supabase.com",
+  "previous_error_reproduced": "SELF_SIGNED_CERT_IN_CHAIN",
+  "verified": {
+    "authorized": true,
+    "protocol": "TLSv1.3",
+    "subject": "*.pooler.supabase.com",
+    "issuer": "Supabase Intermediate 2021 CA",
+    "valid_to": "Mar 11 15:56:33 2030 GMT"
+  },
+  "wrong_hostname_rejected": "ERR_TLS_CERT_ALTNAME_INVALID",
+  "ca_file_sha256": "700723581420dd1ac98fd7e9ac529f0ef210eadcaf87fc868a3ad7d114c2f3b7",
+  "ca_fingerprint_sha256": "80:70:25:AD:50:D4:ED:21:9D:2C:9C:7D:29:9C:00:4F:82:4E:B0:0C:F7:F6:5A:FE:F6:07:D0:7B:72:E6:CA:FA",
+  "password_used": false,
+  "authentication_attempted": false,
+  "sql_executed": false,
+  "live_write": false,
+  "paid_resource_created": false,
+  "live_backup_verified": false,
+  "phase_10_complete": false
+}

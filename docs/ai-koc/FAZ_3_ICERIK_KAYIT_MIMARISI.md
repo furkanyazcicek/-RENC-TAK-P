@@ -252,13 +252,13 @@ canlı kaynak okunmamış, gerçek provider apply edilmemiştir.
 
 ## Yerel kabul sonucu ve açık sınırlar
 
-11 Eylül 2026 tarihli kabul artefaktının sabitlediği envanter:
+23 Eylül 2026 tarihli güncel tam kabul artefaktının sabitlediği envanter:
 
-- 4.344 içerik revizyonu: 185 paketli ders, 3.914 paketli soru seti,
+- 4.412 içerik revizyonu: 253 paketli ders, 3.914 paketli soru seti,
   101 atlas görevi, 2 atlas değerlendirmesi, 1 geometri değerlendirmesi ve
   141 kütüphane notu;
-- 1.452 ders bölümü, 6.093 ders bloğu, 428 quiz, 165 ÖSYM simülasyonu,
-  3.917 soru seti, 39.271 soru ve 45.815 private katalog maddesi;
+- 2.042 ders bölümü, 9.105 ders bloğu, 671 quiz, 233 ÖSYM simülasyonu,
+  3.917 soru seti, 39.258 soru ve 49.404 private katalog maddesi;
 - public manifestte soru/cevap içeriği yok; eksik/çakışan madde kimliği,
   private katalog çatışması veya public/private parity hatası yok;
 - seçenek/cevap biçimi doğrulanamayan **110 değerlendirme seti açıkça
@@ -268,7 +268,7 @@ canlı kaynak okunmamış, gerçek provider apply edilmemiştir.
 - DB yapılandırılmış ders ve soru seti sayıları canlıdan okunmadı.
 
 Gerçek paketli manifest yerel private kataloğa atomik olarak yüklendi:
-ilk uygulama 54.503 yazı, ikinci uygulama ve `dry_run` sıfır yazı üretti;
+ilk uygulama 58.228 yazı, ikinci uygulama ve `dry_run` sıfır yazı üretti;
 çatışma deneyi tüm transaction'ı geri aldı. Aynı katalogdan seçilen
 paketli ders, soru seti, PDF notu, kimya/coğrafya/geometri değerlendirmesi
 ve üç atlas kaynağı kaynak-özel RPC'lerde sentetik öğrenciyle uçtan uca

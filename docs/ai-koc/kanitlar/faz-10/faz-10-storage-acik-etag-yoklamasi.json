@@ -1,0 +1,12 @@
+{
+  "schema_version": "phase-10-storage-public-etag-probe@1",
+  "generated_at": "2026-09-30T21:12:31.852Z",
+  "status": "passed_public_object_head",
+  "source_archive_sha256": "49cc746b5bdb3a5857a7bcebdf4e165c43a109ac7c511505157cc94e977214de",
+  "object_size_bytes": 55470,
+  "non_simple_source_etags": 2,
+  "source_etag_head_matches": 2,
+  "source_etag_head_mismatches": 0,
+  "object_bytes_downloaded_by_probe": false,
+  "live_write": false
+}

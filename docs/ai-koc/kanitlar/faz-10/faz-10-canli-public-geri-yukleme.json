@@ -1,0 +1,25 @@
+{
+  "schema_version": "phase-10-public-recovery@1",
+  "generated_at": "2026-09-30T20:55:11.592Z",
+  "status": "passed_public_data_restore_only",
+  "source_archive_sha256": "49cc746b5bdb3a5857a7bcebdf4e165c43a109ac7c511505157cc94e977214de",
+  "public_tables": 31,
+  "public_rows": 2077,
+  "all_public_copy_blocks_matched": true,
+  "comparison": "PostgreSQL COPY kolonları ve sıralanmış satırlarının SHA-256 eşitliği; zaman damgaları aynı UTC anına dönüştürüldü.",
+  "row_count_and_rls_flags_matched": true,
+  "auth_users_loaded_for_foreign_keys": true,
+  "auth_schema_restore": {
+    "status": "restored_locally",
+    "tables": 27,
+    "rows": 472,
+    "data_and_rls_verified": true,
+    "deferred_app_trigger_verified": true
+  },
+  "full_supabase_restore_verified": false,
+  "extension_managed_schemas_restored": false,
+  "storage_object_bytes_restored": false,
+  "migration_rehearsal_recorded_separately": true,
+  "live_write": false,
+  "paid_resource_created": false
+}

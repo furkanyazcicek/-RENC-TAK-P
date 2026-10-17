@@ -1,0 +1,27 @@
+{
+  "schema_version": "phase-10-vault-catalog-observation@1",
+  "phase": 10,
+  "status": "observed_read_only",
+  "observed_at": "2026-10-10T20:53:49Z",
+  "target_project_ref": "aazadigklxnvbtwrtszj",
+  "target_environment": "main / PRODUCTION",
+  "method": "Authenticated Supabase SQL Editor; SELECT extname FROM pg_extension and SELECT count(*) FROM vault.secrets",
+  "installed_extensions": [
+    "pg_net",
+    "pg_stat_statements",
+    "pgcrypto",
+    "plpgsql",
+    "supabase_vault",
+    "uuid-ossp"
+  ],
+  "vault_secret_count": 0,
+  "secret_values_selected": false,
+  "student_rows_selected": false,
+  "interpretation": "The earlier local vault-table restore failure does not indicate lost Vault secret rows in the current production catalog. This count does not certify extension, role, service or full-platform recovery.",
+  "side_effects": {
+    "live_write": false,
+    "migration_executed": false,
+    "restore_executed": false,
+    "paid_service_used": false
+  }
+}

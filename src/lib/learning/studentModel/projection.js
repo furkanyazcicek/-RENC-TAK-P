@@ -12,8 +12,10 @@ function normalizedProjection(result) {
     .map(({ generation_id: _generation, ...row }) => row)
     .sort((left, right) => `${left.student_id}|${left.scope_key}`.localeCompare(`${right.student_id}|${right.scope_key}`))
   const patterns = [...(result?.patterns ?? [])]
+    .map(({ generation_id: _generation, ...row }) => row)
     .sort((left, right) => `${left.student_id}|${left.pattern_code}`.localeCompare(`${right.student_id}|${right.pattern_code}`))
   const refs = [...(result?.evidence_refs ?? [])]
+    .map(({ generation_id: _generation, ...row }) => row)
     .sort((left, right) => `${left.student_id}|${left.scope_key}|${left.record_id}`.localeCompare(`${right.student_id}|${right.scope_key}|${right.record_id}`))
   return { rows, patterns, evidence_refs: refs }
 }
@@ -79,6 +81,16 @@ export async function replayStudentTopicProjection({
   const start = Number(startSequence)
   if (!Number.isSafeInteger(start) || start < 0) throw new TypeError('student_model_start_sequence_invalid')
   const pageSize = Math.min(Math.max(Number(batchSize) || 1, 1), 1000)
+  if (studentId && repository.isProjectionExecutionEnabled
+      && !await repository.isProjectionExecutionEnabled(studentId)) {
+    throw Object.assign(new Error('projection_flag_disabled'), { code: 'PROJECTION_FLAG_DISABLED' })
+  }
+  const studentIds = studentId ? [studentId] : await repository.listReplayStudents({ afterSequence: 0 })
+  if (!studentIds.length) {
+    throw Object.assign(new Error('projection_no_eligible_students'), {
+      code: 'PROJECTION_NO_ELIGIBLE_STUDENTS',
+    })
+  }
   const generation = dryCompare
     ? { generation_id: null }
     : await repository.beginProjectionGeneration({
@@ -91,7 +103,6 @@ export async function replayStudentTopicProjection({
   const combined = { rows: [], patterns: [], evidence_refs: [] }
   let highWaterMark = 0
   try {
-    const studentIds = studentId ? [studentId] : await repository.listReplayStudents({ afterSequence: 0 })
     for (const currentStudentId of studentIds) {
       if (signal?.aborted) throw Object.assign(new Error('student_model_projection_cancelled'), { code: 'STUDENT_MODEL_PROJECTION_CANCELLED' })
       const records = await readStudentLedger(repository, currentStudentId, pageSize)

@@ -1,0 +1,123 @@
+{
+  "schema_version": "phase-10-content-baseline-drift@1",
+  "phase": 10,
+  "status": "verified_delta_technical_rebaseline_owner_review_pending",
+  "generated_at": "2026-10-10T20:49:38.659Z",
+  "historical_baseline": {
+    "source": "docs/ai-koc/kanitlar/faz-10/faz-10-tarihsel-manifest-imzalari.json",
+    "source_git_blob_sha1": "210ac58848bffa3bddfbfb86cdc574f5d78fbbca",
+    "full_git_blob_available": true,
+    "entry_signature_checksum": "74405a42ccde7e36dfb26bd24391d53fafe7250a2d8d667b4e9ce6f090c1c756",
+    "version": "learning-content-manifest@1",
+    "entries": 4412,
+    "checksum": "4f4c38f0beb4d8ea2df5e1ed16a682118ea3aad0a1e8ba53408e740fdf21b3e6",
+    "counts": {
+      "bundled_lesson": 253,
+      "bundled_question_set": 3914,
+      "atlas_task": 101,
+      "atlas_assessment": 2,
+      "geometry_assessment": 1,
+      "library_note": 141
+    }
+  },
+  "current": {
+    "version": "learning-content-manifest@1",
+    "entries": 4485,
+    "checksum": "c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b",
+    "counts": {
+      "bundled_lesson": 326,
+      "bundled_question_set": 3914,
+      "atlas_task": 101,
+      "atlas_assessment": 2,
+      "geometry_assessment": 1,
+      "library_note": 141
+    },
+    "public_answer_key_present": false
+  },
+  "delta": {
+    "total_entries": 73,
+    "bundled_lessons": 73,
+    "kpss_lessons": 71,
+    "lgs_math_lessons": [
+      "lgs-matematik-carpanlar-ve-katlar",
+      "lgs-matematik-uslu-ifadeler"
+    ],
+    "lgs_math_commit": "6cc28c2523bc7be348fec8cf58a94e0de7e574b7",
+    "kpss_files_tracked_in_git": false,
+    "exact_entry_comparison": {
+      "added": 73,
+      "removed": 0,
+      "modified": 3,
+      "unchanged": 4409,
+      "added_by_kind": {
+        "bundled_lesson": 73
+      },
+      "modified_entries": [
+        {
+          "content_id": "lgs-tarih-ataturkun-olumu-ve-eserleri",
+          "old_content_revision": "sha256-02d36bbd77596e172b587d6e",
+          "new_content_revision": "sha256-04de53717c961df0d1e75075",
+          "old_content_hash": "02d36bbd77596e172b587d6e5ab1ba1c3221b3689c86cdbbceba0ba7de365e1c",
+          "new_content_hash": "04de53717c961df0d1e75075ba04d271dca7032d0173654d6ac774006ef9e3eb",
+          "item_count_unchanged": true,
+          "changed_manifest_fields": [
+            "content_revision",
+            "content_hash"
+          ]
+        },
+        {
+          "content_id": "lgs-tarih-cok-partili-hayata-gecis",
+          "old_content_revision": "sha256-a7e02f21e4cc7c4e5672c57d",
+          "new_content_revision": "sha256-1133545f1e44d63c0bf530dd",
+          "old_content_hash": "a7e02f21e4cc7c4e5672c57da348a72c607b4f06437e962e9382242120de3961",
+          "new_content_hash": "1133545f1e44d63c0bf530dd080bb99c0a1e31e7547f06792f0eca593e09b865",
+          "item_count_unchanged": true,
+          "changed_manifest_fields": [
+            "content_revision",
+            "content_hash"
+          ]
+        },
+        {
+          "content_id": "lgs-tarih-ikinci-dunya-savasi-ve-turkiye",
+          "old_content_revision": "sha256-a767d89d3d20efa461dc6009",
+          "new_content_revision": "sha256-f96cc7848f5c4d08ac652402",
+          "old_content_hash": "a767d89d3d20efa461dc6009c06b90a03ad08e48c271623a5f5b56770a0ffbb5",
+          "new_content_hash": "f96cc7848f5c4d08ac652402e3ea4a33488ebe8486bb813b72970a2630456e49",
+          "item_count_unchanged": true,
+          "changed_manifest_fields": [
+            "content_revision",
+            "content_hash"
+          ]
+        }
+      ]
+    }
+  },
+  "quality": {
+    "kpss_lesson_count": 71,
+    "kpss_schema_errors": 0,
+    "kpss_depth_warning_count": 9,
+    "kpss_warning_classes": [
+      "Hiç görsel yok. Bu konuda gerçekten gerekmiyorsa görmezden gelin."
+    ],
+    "phase_3_core_status": "passed",
+    "phase_3_core_assertions": 450
+  },
+  "migration_sha256": {
+    "phase_2": "993437ba3bb34b5c97e14a5c6e126d482f769e65be34ca2d08d20832b47ebdea",
+    "phase_3": "8452d4497fc01f35eb8dc7a2c80ec029d6255c4067c548dfacfdce20009c7165"
+  },
+  "acceptance_ready": false,
+  "limitations": [
+    "Tam tarihsel manifest Git nesnesinden kurtarılarak 4.412 kayıt imzası sabitlendi. Üç mevcut LGS Tarih dersinin içerik hash değişikliği için editoryal kabul hâlâ yoktur.",
+    "Şema/derinlik kontrolleri editoryal doğruluk ve ürün sahibinin içerik onayı yerine geçmez.",
+    "Güncel checksum teknik Faz 3–9 kabul betiklerine bağlandı; bu editoryal onay veya Faz 9 güvenlik taramasının geçmesi anlamına gelmez."
+  ],
+  "side_effects": {
+    "live_supabase_read": false,
+    "live_supabase_write": false,
+    "real_student_data_used": false,
+    "paid_model_call": false,
+    "deployment_performed": false,
+    "git_push_performed": false
+  }
+}

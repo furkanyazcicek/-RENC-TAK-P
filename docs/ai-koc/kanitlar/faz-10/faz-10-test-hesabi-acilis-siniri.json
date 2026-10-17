@@ -1,0 +1,26 @@
+{
+  "schema_version": "phase-10-owner-test-rollout@1",
+  "phase": 10,
+  "status": "passed_local_synthetic_owner_only_gate",
+  "generated_at": "2026-10-12T00:22:25.192Z",
+  "assertions": 19,
+  "synthetic_account_count": 3,
+  "max_pilot_accounts": 20,
+  "real_test_account_ids_selected": false,
+  "real_pilot_started": false,
+  "controls": {
+    "analysis_requires_enabled_mode": true,
+    "pilot_allowlist_restricts_percentage_and_group": true,
+    "source_events_and_projection_scoped_to_allowlist": true,
+    "invalid_allowlist_fails_closed": true,
+    "writes_require_same_student_analysis_access": true,
+    "percentage_requires_separate_general_release_switch": true,
+    "raw_student_ids_in_observation": false
+  },
+  "side_effects": {
+    "live_supabase_read": false,
+    "live_supabase_write": false,
+    "paid_model_call": false,
+    "deployment": false
+  }
+}

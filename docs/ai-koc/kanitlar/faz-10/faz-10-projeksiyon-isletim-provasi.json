@@ -1,0 +1,32 @@
+{
+  "schema_version": "phase-10-projection-operator@1",
+  "phase": 10,
+  "status": "passed",
+  "generated_at": "2026-10-10T20:49:35.621Z",
+  "assertions": 32,
+  "scenarios": [
+    "kesin hesap listesi ve ayrı yazma kapısı",
+    "Faz 9 şema ve öğrenci bayrağı zorunlu",
+    "öğrenci bazlı kuru karşılaştırma ve gizli özet",
+    "karşılaştırma sonrası öğrenci bazlı yazma eşitliği",
+    "kısmi başarısızlıkta seçili hesapları kapatma",
+    "yerel salt okunur CLI hedef kapısı",
+    "gerçek yerel PostgreSQL üzerinde yalnız seçili hesap kuru provası"
+  ],
+  "side_effects": {
+    "live_supabase_read": false,
+    "live_supabase_write": false,
+    "real_student_data_used": false,
+    "paid_model_call": false,
+    "deployment_performed": false
+  },
+  "limitations": [
+    "Yazma/geri dönüş akışı sentetik bellek deposunda, salt okunur CLI izole gerçek PostgreSQL üzerinde sınandı; canlı yürütücü, canlı yetki ve gerçek öğrenci pilotu kanıtı değildir.",
+    "localhost adresi bir tünele yönlendirilebilir; komut salt okunur işlem ve sunucunun bildirdiği yerel adresi de denetler, fakat hedef kimliğinin bağımsız doğrulamasının yerini almaz."
+  ],
+  "local_postgres": {
+    "engine": "isolated PostgreSQL",
+    "source_records": 2,
+    "writes": 0
+  }
+}

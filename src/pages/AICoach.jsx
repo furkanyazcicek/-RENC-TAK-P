@@ -42,7 +42,7 @@ import { captureStudentProfile, isProductCapture } from '../lib/productCapture'
 const CHAT_HEIGHT = cn(
   'h-[calc(100dvh-4.25rem-var(--safe-area-inset-top)-8.5rem)]',
   'lg:h-[calc(100dvh-4.25rem-var(--safe-area-inset-top)-5rem)]',
-  'min-h-[26rem]'
+  'min-h-[11.25rem]'
 )
 
 const CAPTURE_MESSAGES = [
@@ -155,6 +155,7 @@ function phase8CaptureState() {
 }
 
 function captureMessages() {
+  if (new URLSearchParams(window.location.search).get('capture-state') === 'free-engine') return []
   const state = phase8CaptureState()
   if (!state) return CAPTURE_MESSAGES
   const recommendationAction = state === 'oner'
@@ -215,9 +216,35 @@ export default function AICoach() {
   ))
 
   const scrollRef = useRef(null)
+  const chatFrameRef = useRef(null)
+  const [chatHeight, setChatHeight] = useState(null)
   const textareaRef = useRef(null)
   const abortRef = useRef(null)
   const lastPromptRef = useRef(null)
+
+  // Başlık ve açıklama satırları da alan kullanır. Gerçek üst konumu ölçmek
+  // uzun Türkçe metinlerde ve ekran klavyesinde sabit çıkarımları önler.
+  useLayoutEffect(() => {
+    const frame = chatFrameRef.current
+    if (!frame) return
+    const measure = () => {
+      const viewport = window.visualViewport
+      const bottomSpace = window.innerWidth < 1024 ? 112 : 48
+      const top = frame.getBoundingClientRect().top + window.scrollY
+      const height = Math.max(180, Math.floor((viewport?.height ?? window.innerHeight) - top - bottomSpace))
+      setChatHeight((previous) => previous === height ? previous : height)
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    window.visualViewport?.addEventListener('resize', measure)
+    const observer = new ResizeObserver(measure)
+    observer.observe(frame)
+    return () => {
+      window.removeEventListener('resize', measure)
+      window.visualViewport?.removeEventListener('resize', measure)
+      observer.disconnect()
+    }
+  }, [])
   // Panelden gelen hazır sorunun yalnızca bir kez gönderilmesini sağlar.
   const autoSentRef = useRef(false)
 
@@ -464,7 +491,9 @@ export default function AICoach() {
   return (
     <AppShell
       title="AI Koç"
-      subtitle="Verilerine göre kişisel çalışma koçun"
+      subtitle={captureMode && new URLSearchParams(location.search).get('capture-state') === 'free-engine'
+        ? 'Örnek öğrenci verisi · ücretsiz motorun yerel testi'
+        : 'Kayıtlarınla çalışan ücretsiz kişisel koçun'}
       headerAction={
         <div className="flex items-center gap-1.5">
           <IconButton
@@ -482,7 +511,8 @@ export default function AICoach() {
         </div>
       }
     >
-      <Card className={cn('flex min-w-0 flex-col overflow-hidden', CHAT_HEIGHT)}>
+      <div ref={chatFrameRef} className={CHAT_HEIGHT} style={chatHeight ? { height: chatHeight } : undefined}>
+      <Card className="flex h-full min-w-0 flex-col overflow-hidden">
         {/* ---------------- Mesajlar ---------------- */}
         <div
           ref={scrollRef}
@@ -596,6 +626,7 @@ export default function AICoach() {
           </p>
         </div>
       </Card>
+      </div>
 
       {/* ---------------- Geçmiş ---------------- */}
       <Modal open={historyOpen} onClose={() => setHistoryOpen(false)} title="Sohbet geçmişi">
@@ -666,12 +697,13 @@ function WelcomeScreen({ name, onSelect }) {
           {name ? `Merhaba ${name}` : 'Merhaba'}
         </h2>
         <p className="mt-2 text-sm leading-relaxed text-ink/65">
-          Çalışma kayıtlarını, denemelerini ve ödevlerini görebiliyorum. Ne çalışacağını
-          sorabilir, program isteyebilir ya da son denemeni analiz ettirebilirsin.
+          Konu analizi, deneme karşılaştırması ve çalışma planı isteyebilirsin.
+          Yanıtlar erişilebilen kendi öğrenme kayıtlarından hazırlanır;
+          plan ve tercihlerin yalnız onayınla kaydedilir.
         </p>
         <div className="mt-3 flex justify-center">
           <Badge tone="neutral" size="sm">
-            Sadece senin verilerini görür
+            Ücretsiz · yalnız senin kayıtların
           </Badge>
         </div>
       </div>

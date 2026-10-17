@@ -1,0 +1,3031 @@
+{
+  "schema_version": "phase-10-live-schema-contract@1",
+  "phase": 10,
+  "status": "passed_read_only_live_schema_contract",
+  "generated_at": "2026-09-23T14:44:31.117Z",
+  "target": {
+    "project_ref": "aazadigklxnvbtwrtszj",
+    "branch": "main",
+    "environment": "PRODUCTION"
+  },
+  "source": {
+    "method": "Supabase SQL Editor read-only pg_catalog and information_schema query",
+    "exported_rows": 13,
+    "raw_export_sha256": "d30dc4cab82496e110c2533a418b3d5901cc5a738f5f418976d11c0369f26d97",
+    "raw_export_stored_in_repository": false
+  },
+  "contract_checksum": "cc7c7b40182691aff5733a331dc1db3da6289b1081a68cda530e902e81a77216",
+  "totals": {
+    "tables": 13,
+    "columns": 163,
+    "constraints": 64,
+    "indexes": 24,
+    "policies": 57,
+    "triggers": 5,
+    "nonnegative_estimated_rows": 758,
+    "total_bytes": 3858432,
+    "table_bytes": 262144,
+    "index_bytes": 417792
+  },
+  "tables": [
+    {
+      "table_name": "ai_solution_sessions",
+      "estimated_rows": -1,
+      "total_bytes": 188416,
+      "table_bytes": 40960,
+      "index_bytes": 49152,
+      "rls_enabled": true,
+      "column_count": 40,
+      "columns": [
+        {
+          "name": "id",
+          "default": "gen_random_uuid()",
+          "ordinal": 1,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "student_id",
+          "default": null,
+          "ordinal": 2,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "status",
+          "default": "'ok'::text",
+          "ordinal": 3,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "source",
+          "default": "'photo'::text",
+          "ordinal": 4,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "image_path",
+          "default": null,
+          "ordinal": 5,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "question_text",
+          "default": null,
+          "ordinal": 6,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "student_note",
+          "default": null,
+          "ordinal": 7,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "subject",
+          "default": null,
+          "ordinal": 8,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "topic",
+          "default": null,
+          "ordinal": 9,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "subtopic",
+          "default": null,
+          "ordinal": 10,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "canonical_topic",
+          "default": null,
+          "ordinal": 11,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "topic_matched",
+          "default": "false",
+          "ordinal": 12,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "16",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "boolean"
+        },
+        {
+          "name": "exam_type",
+          "default": null,
+          "ordinal": 13,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "difficulty",
+          "default": null,
+          "ordinal": 14,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        },
+        {
+          "name": "question_type",
+          "default": null,
+          "ordinal": 15,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "answer_latex",
+          "default": null,
+          "ordinal": 16,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "answer_plain",
+          "default": null,
+          "ordinal": 17,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "answer_unit",
+          "default": null,
+          "ordinal": 18,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "answer_choice",
+          "default": null,
+          "ordinal": 19,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "board",
+          "default": null,
+          "ordinal": 20,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "3802",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "jsonb"
+        },
+        {
+          "name": "analysis",
+          "default": null,
+          "ordinal": 21,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "3802",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "jsonb"
+        },
+        {
+          "name": "student_help",
+          "default": null,
+          "ordinal": 22,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "3802",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "jsonb"
+        },
+        {
+          "name": "verification",
+          "default": null,
+          "ordinal": 23,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "3802",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "jsonb"
+        },
+        {
+          "name": "confidence",
+          "default": null,
+          "ordinal": 24,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1700",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "numeric"
+        },
+        {
+          "name": "refusal_reason",
+          "default": null,
+          "ordinal": 25,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "model_role",
+          "default": null,
+          "ordinal": 26,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "model_id",
+          "default": null,
+          "ordinal": 27,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "escalated",
+          "default": "false",
+          "ordinal": 28,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "16",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "boolean"
+        },
+        {
+          "name": "input_tokens",
+          "default": null,
+          "ordinal": 29,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        },
+        {
+          "name": "output_tokens",
+          "default": null,
+          "ordinal": 30,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        },
+        {
+          "name": "cost_usd",
+          "default": null,
+          "ordinal": 31,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1700",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "numeric(10,6)"
+        },
+        {
+          "name": "duration_ms",
+          "default": null,
+          "ordinal": 32,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        },
+        {
+          "name": "routing_log",
+          "default": null,
+          "ordinal": 33,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "3802",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "jsonb"
+        },
+        {
+          "name": "help_requested",
+          "default": "0",
+          "ordinal": 34,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        },
+        {
+          "name": "student_correct",
+          "default": null,
+          "ordinal": 35,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "16",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "boolean"
+        },
+        {
+          "name": "error_type",
+          "default": null,
+          "ordinal": 36,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "feedback",
+          "default": null,
+          "ordinal": 37,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "feedback_reason",
+          "default": null,
+          "ordinal": 38,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "feedback_note",
+          "default": null,
+          "ordinal": 39,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "created_at",
+          "default": "now()",
+          "ordinal": 40,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "ai_solution_sessions_confidence_check",
+          "type": "c",
+          "definition": "CHECK (confidence >= 0::numeric AND confidence <= 1::numeric)"
+        },
+        {
+          "name": "ai_solution_sessions_difficulty_check",
+          "type": "c",
+          "definition": "CHECK (difficulty >= 1 AND difficulty <= 5)"
+        },
+        {
+          "name": "ai_solution_sessions_feedback_check",
+          "type": "c",
+          "definition": "CHECK (feedback = ANY (ARRAY['up'::text, 'down'::text]))"
+        },
+        {
+          "name": "ai_solution_sessions_model_role_check",
+          "type": "c",
+          "definition": "CHECK (model_role = ANY (ARRAY['fast'::text, 'pro'::text]))"
+        },
+        {
+          "name": "ai_solution_sessions_pkey",
+          "type": "p",
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "name": "ai_solution_sessions_source_check",
+          "type": "c",
+          "definition": "CHECK (source = ANY (ARRAY['photo'::text, 'text'::text, 'gallery'::text, 'pdf'::text]))"
+        },
+        {
+          "name": "ai_solution_sessions_status_check",
+          "type": "c",
+          "definition": "CHECK (status = ANY (ARRAY['ok'::text, 'unreadable'::text, 'refused'::text, 'error'::text]))"
+        },
+        {
+          "name": "ai_solution_sessions_student_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (student_id) REFERENCES profiles(id) ON DELETE CASCADE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ai_solution_sessions_pkey",
+          "definition": "CREATE UNIQUE INDEX ai_solution_sessions_pkey ON public.ai_solution_sessions USING btree (id)"
+        },
+        {
+          "name": "ai_solution_sessions_student_idx",
+          "definition": "CREATE INDEX ai_solution_sessions_student_idx ON public.ai_solution_sessions USING btree (student_id, created_at DESC)"
+        },
+        {
+          "name": "ai_solution_sessions_topic_idx",
+          "definition": "CREATE INDEX ai_solution_sessions_topic_idx ON public.ai_solution_sessions USING btree (student_id, subject, canonical_topic)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "Öğrenci kendi çözümlerini görebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(auth.uid() = student_id)",
+          "command": "SELECT"
+        },
+        {
+          "name": "Öğrenci kendi çözümünü güncelleyebilir",
+          "check": "(auth.uid() = student_id)",
+          "roles": [
+            "public"
+          ],
+          "using": "(auth.uid() = student_id)",
+          "command": "UPDATE"
+        },
+        {
+          "name": "Öğrenci kendi çözümünü kaydedebilir",
+          "check": "(auth.uid() = student_id)",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "command": "INSERT"
+        },
+        {
+          "name": "Öğrenci kendi çözümünü silebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(auth.uid() = student_id)",
+          "command": "DELETE"
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "table_name": "ai_study_tasks",
+      "estimated_rows": -1,
+      "total_bytes": 49152,
+      "table_bytes": 8192,
+      "index_bytes": 32768,
+      "rls_enabled": true,
+      "column_count": 11,
+      "columns": [
+        {
+          "name": "id",
+          "default": "gen_random_uuid()",
+          "ordinal": 1,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "student_id",
+          "default": null,
+          "ordinal": 2,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "plan_group",
+          "default": null,
+          "ordinal": 3,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "subject",
+          "default": null,
+          "ordinal": 4,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "topic",
+          "default": null,
+          "ordinal": 5,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "activity",
+          "default": "'soru_cozumu'::text",
+          "ordinal": 6,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "planned_date",
+          "default": "CURRENT_DATE",
+          "ordinal": 7,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "1082",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "date"
+        },
+        {
+          "name": "duration_minutes",
+          "default": "30",
+          "ordinal": 8,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        },
+        {
+          "name": "status",
+          "default": "'planlandı'::text",
+          "ordinal": 9,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "created_at",
+          "default": "now()",
+          "ordinal": 10,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        },
+        {
+          "name": "completed_at",
+          "default": null,
+          "ordinal": 11,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "ai_study_tasks_activity_check",
+          "type": "c",
+          "definition": "CHECK (activity = ANY (ARRAY['soru_cozumu'::text, 'konu_tekrari'::text, 'yanlis_analizi'::text, 'deneme'::text]))"
+        },
+        {
+          "name": "ai_study_tasks_duration_minutes_check",
+          "type": "c",
+          "definition": "CHECK (duration_minutes >= 5 AND duration_minutes <= 480)"
+        },
+        {
+          "name": "ai_study_tasks_pkey",
+          "type": "p",
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "name": "ai_study_tasks_status_check",
+          "type": "c",
+          "definition": "CHECK (status = ANY (ARRAY['planlandı'::text, 'tamamlandı'::text, 'iptal'::text]))"
+        },
+        {
+          "name": "ai_study_tasks_student_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (student_id) REFERENCES profiles(id) ON DELETE CASCADE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "ai_study_tasks_pkey",
+          "definition": "CREATE UNIQUE INDEX ai_study_tasks_pkey ON public.ai_study_tasks USING btree (id)"
+        },
+        {
+          "name": "ai_study_tasks_student_date_idx",
+          "definition": "CREATE INDEX ai_study_tasks_student_date_idx ON public.ai_study_tasks USING btree (student_id, planned_date)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "Öğrenci kendi plan maddelerini görebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(auth.uid() = student_id)",
+          "command": "SELECT"
+        },
+        {
+          "name": "Öğrenci kendi plan maddesini ekleyebilir",
+          "check": "(auth.uid() = student_id)",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "command": "INSERT"
+        },
+        {
+          "name": "Öğrenci kendi plan maddesini güncelleyebilir",
+          "check": "(auth.uid() = student_id)",
+          "roles": [
+            "public"
+          ],
+          "using": "(auth.uid() = student_id)",
+          "command": "UPDATE"
+        },
+        {
+          "name": "Öğrenci kendi plan maddesini silebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(auth.uid() = student_id)",
+          "command": "DELETE"
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "table_name": "daily_logs",
+      "estimated_rows": 572,
+      "total_bytes": 180224,
+      "table_bytes": 106496,
+      "index_bytes": 40960,
+      "rls_enabled": true,
+      "column_count": 10,
+      "columns": [
+        {
+          "name": "id",
+          "default": "gen_random_uuid()",
+          "ordinal": 1,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "student_id",
+          "default": null,
+          "ordinal": 2,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "study_date",
+          "default": "CURRENT_DATE",
+          "ordinal": 3,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1082",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "date"
+        },
+        {
+          "name": "topic",
+          "default": null,
+          "ordinal": 4,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "duration_minutes",
+          "default": null,
+          "ordinal": 5,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        },
+        {
+          "name": "correct",
+          "default": "0",
+          "ordinal": 6,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        },
+        {
+          "name": "incorrect",
+          "default": "0",
+          "ordinal": 7,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        },
+        {
+          "name": "empty",
+          "default": "0",
+          "ordinal": 8,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        },
+        {
+          "name": "notes",
+          "default": null,
+          "ordinal": 9,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "created_at",
+          "default": "timezone('utc'::text, now())",
+          "ordinal": 10,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "daily_logs_pkey",
+          "type": "p",
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "name": "daily_logs_student_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (student_id) REFERENCES profiles(id) ON DELETE CASCADE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "daily_logs_pkey",
+          "definition": "CREATE UNIQUE INDEX daily_logs_pkey ON public.daily_logs USING btree (id)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "Kendi kaydƒ±nƒ± veya √∂ƒüretmeni g√∂rebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "((auth.uid() = student_id) OR is_active_teacher_of(student_id))",
+          "command": "SELECT"
+        },
+        {
+          "name": "Kendi kayıtlarını veya öğretmen tümünü görebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "((auth.uid() = student_id) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'teacher'::text)))))",
+          "command": "SELECT"
+        },
+        {
+          "name": "Veli onaylı öğrencisinin kayıtlarını görebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "is_linked_parent_of(student_id)",
+          "command": "SELECT"
+        },
+        {
+          "name": "Öğrenci kendi kaydını düzenleyebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(auth.uid() = student_id)",
+          "command": "UPDATE"
+        },
+        {
+          "name": "Öğrenci kendi kaydını ekleyebilir",
+          "check": "(auth.uid() = student_id)",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "command": "INSERT"
+        },
+        {
+          "name": "Öğrenci kendi kaydını silebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(auth.uid() = student_id)",
+          "command": "DELETE"
+        },
+        {
+          "name": "Öğretmen kayıtları düzenleyebilir",
+          "check": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'teacher'::text))))",
+          "roles": [
+            "public"
+          ],
+          "using": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'teacher'::text))))",
+          "command": "UPDATE"
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "table_name": "exams",
+      "estimated_rows": -1,
+      "total_bytes": 32768,
+      "table_bytes": 8192,
+      "index_bytes": 16384,
+      "rls_enabled": true,
+      "column_count": 12,
+      "columns": [
+        {
+          "name": "id",
+          "default": "gen_random_uuid()",
+          "ordinal": 1,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "student_id",
+          "default": null,
+          "ordinal": 2,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "subject",
+          "default": null,
+          "ordinal": 3,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "exam_date",
+          "default": null,
+          "ordinal": 4,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "1082",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "date"
+        },
+        {
+          "name": "correct",
+          "default": "0",
+          "ordinal": 5,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1700",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "numeric"
+        },
+        {
+          "name": "incorrect",
+          "default": "0",
+          "ordinal": 6,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1700",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "numeric"
+        },
+        {
+          "name": "empty",
+          "default": "0",
+          "ordinal": 7,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1700",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "numeric"
+        },
+        {
+          "name": "net",
+          "default": "0",
+          "ordinal": 8,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1700",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "numeric"
+        },
+        {
+          "name": "created_at",
+          "default": "timezone('utc'::text, now())",
+          "ordinal": 9,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        },
+        {
+          "name": "topic",
+          "default": null,
+          "ordinal": 10,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "exam_type",
+          "default": null,
+          "ordinal": 11,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "duration_minutes",
+          "default": null,
+          "ordinal": 12,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "exams_duration_minutes_check",
+          "type": "c",
+          "definition": "CHECK (duration_minutes IS NULL OR duration_minutes >= 0 AND duration_minutes <= 1440)"
+        },
+        {
+          "name": "exams_exam_type_check",
+          "type": "c",
+          "definition": "CHECK (exam_type IS NULL OR (exam_type = ANY (ARRAY['LGS'::text, 'TYT'::text, 'AYT'::text, 'KPSS'::text])))"
+        },
+        {
+          "name": "exams_pkey",
+          "type": "p",
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "name": "exams_student_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (student_id) REFERENCES profiles(id) ON DELETE CASCADE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "exams_pkey",
+          "definition": "CREATE UNIQUE INDEX exams_pkey ON public.exams USING btree (id)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "Veli onaylı öğrencisinin branş denemelerini görebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "is_linked_parent_of(student_id)",
+          "command": "SELECT"
+        },
+        {
+          "name": "Öğrenciler kendi branş denemelerini ekleyebilir",
+          "check": "(auth.uid() = student_id)",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "command": "INSERT"
+        },
+        {
+          "name": "Öğrenciler kendi branş denemelerini görebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(auth.uid() = student_id)",
+          "command": "SELECT"
+        },
+        {
+          "name": "Öğrenciler kendi branş denemelerini silebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(auth.uid() = student_id)",
+          "command": "DELETE"
+        },
+        {
+          "name": "√ñƒürenci kendi sonu√ßlarƒ±nƒ± g√∂rebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "((auth.uid() = student_id) OR is_active_teacher_of(student_id))",
+          "command": "SELECT"
+        },
+        {
+          "name": "√ñƒüretmen sonu√ß ekleyebilir",
+          "check": "((auth.uid() = student_id) OR is_active_teacher_of(student_id))",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "command": "INSERT"
+        },
+        {
+          "name": "√ñƒüretmen sonu√ß g√ºncelleyebilir",
+          "check": "((auth.uid() = student_id) OR is_active_teacher_of(student_id))",
+          "roles": [
+            "public"
+          ],
+          "using": "((auth.uid() = student_id) OR is_active_teacher_of(student_id))",
+          "command": "UPDATE"
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "table_name": "homeworks",
+      "estimated_rows": 1,
+      "total_bytes": 49152,
+      "table_bytes": 8192,
+      "index_bytes": 32768,
+      "rls_enabled": true,
+      "column_count": 9,
+      "columns": [
+        {
+          "name": "id",
+          "default": "gen_random_uuid()",
+          "ordinal": 1,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "student_id",
+          "default": null,
+          "ordinal": 2,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "teacher_id",
+          "default": null,
+          "ordinal": 3,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "title",
+          "default": null,
+          "ordinal": 4,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "description",
+          "default": null,
+          "ordinal": 5,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "due_date",
+          "default": null,
+          "ordinal": 6,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1082",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "date"
+        },
+        {
+          "name": "status",
+          "default": "'Yapılıyor'::text",
+          "ordinal": 7,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "created_at",
+          "default": "now()",
+          "ordinal": 8,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        },
+        {
+          "name": "lesson_session_id",
+          "default": null,
+          "ordinal": 9,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "homeworks_lesson_session_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (lesson_session_id) REFERENCES lesson_sessions(id) ON DELETE SET NULL"
+        },
+        {
+          "name": "homeworks_pkey",
+          "type": "p",
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "name": "homeworks_status_check",
+          "type": "c",
+          "definition": "CHECK (status = ANY (ARRAY['Yapılıyor'::text, 'Tamamlandı'::text]))"
+        },
+        {
+          "name": "homeworks_student_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (student_id) REFERENCES profiles(id) ON DELETE CASCADE"
+        },
+        {
+          "name": "homeworks_teacher_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (teacher_id) REFERENCES profiles(id) ON DELETE SET NULL"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "homeworks_lesson_idx",
+          "definition": "CREATE INDEX homeworks_lesson_idx ON public.homeworks USING btree (lesson_session_id)"
+        },
+        {
+          "name": "homeworks_pkey",
+          "definition": "CREATE UNIQUE INDEX homeworks_pkey ON public.homeworks USING btree (id)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "Kendi ödevini veya öğretmen tümünü görebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "((auth.uid() = student_id) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'teacher'::text)))))",
+          "command": "SELECT"
+        },
+        {
+          "name": "Kendi √∂devini veya √∂ƒüretmen t√ºm√ºn√º g",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "((auth.uid() = student_id) OR is_active_teacher_of(student_id))",
+          "command": "SELECT"
+        },
+        {
+          "name": "Veli onaylı öğrencisinin ödevlerini görebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "is_linked_parent_of(student_id)",
+          "command": "SELECT"
+        },
+        {
+          "name": "Öğrenci durumunu, öğretmen her şeyi güncelleyebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "((auth.uid() = student_id) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'teacher'::text)))))",
+          "command": "UPDATE"
+        },
+        {
+          "name": "Öğretmen ödev atayabilir",
+          "check": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'teacher'::text))))",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "command": "INSERT"
+        },
+        {
+          "name": "Öğretmen ödev silebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'teacher'::text))))",
+          "command": "DELETE"
+        },
+        {
+          "name": "√ñƒürenci durumunu, √∂ƒüretmen her ≈üeyi g√ºnc",
+          "check": "((auth.uid() = student_id) OR is_active_teacher_of(student_id))",
+          "roles": [
+            "public"
+          ],
+          "using": "((auth.uid() = student_id) OR is_active_teacher_of(student_id))",
+          "command": "UPDATE"
+        },
+        {
+          "name": "√ñƒüretmen √∂dev atayabilir",
+          "check": "(is_active_teacher_of(student_id) AND (teacher_id = auth.uid()))",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "command": "INSERT"
+        },
+        {
+          "name": "√ñƒüretmen √∂dev silebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "is_active_teacher_of(student_id)",
+          "command": "DELETE"
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "table_name": "lesson_participants",
+      "estimated_rows": 33,
+      "total_bytes": 81920,
+      "table_bytes": 8192,
+      "index_bytes": 65536,
+      "rls_enabled": true,
+      "column_count": 11,
+      "columns": [
+        {
+          "name": "id",
+          "default": "gen_random_uuid()",
+          "ordinal": 1,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "lesson_session_id",
+          "default": null,
+          "ordinal": 2,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "user_id",
+          "default": null,
+          "ordinal": 3,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "role",
+          "default": null,
+          "ordinal": 4,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "first_joined_at",
+          "default": null,
+          "ordinal": 5,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        },
+        {
+          "name": "last_left_at",
+          "default": null,
+          "ordinal": 6,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        },
+        {
+          "name": "total_seconds",
+          "default": "0",
+          "ordinal": 7,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        },
+        {
+          "name": "reconnect_count",
+          "default": "0",
+          "ordinal": 8,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        },
+        {
+          "name": "attended",
+          "default": "false",
+          "ordinal": 9,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "16",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "boolean"
+        },
+        {
+          "name": "created_at",
+          "default": "now()",
+          "ordinal": 10,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "default": "now()",
+          "ordinal": 11,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "lesson_participants_lesson_session_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (lesson_session_id) REFERENCES lesson_sessions(id) ON DELETE CASCADE"
+        },
+        {
+          "name": "lesson_participants_pkey",
+          "type": "p",
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "name": "lesson_participants_reconnect_count_check",
+          "type": "c",
+          "definition": "CHECK (reconnect_count >= 0)"
+        },
+        {
+          "name": "lesson_participants_role_check",
+          "type": "c",
+          "definition": "CHECK (role = ANY (ARRAY['teacher'::text, 'student'::text]))"
+        },
+        {
+          "name": "lesson_participants_total_seconds_check",
+          "type": "c",
+          "definition": "CHECK (total_seconds >= 0)"
+        },
+        {
+          "name": "lesson_participants_unique",
+          "type": "u",
+          "definition": "UNIQUE (lesson_session_id, user_id)"
+        },
+        {
+          "name": "lesson_participants_user_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (user_id) REFERENCES profiles(id) ON DELETE CASCADE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "lesson_participants_pkey",
+          "definition": "CREATE UNIQUE INDEX lesson_participants_pkey ON public.lesson_participants USING btree (id)"
+        },
+        {
+          "name": "lesson_participants_session_idx",
+          "definition": "CREATE INDEX lesson_participants_session_idx ON public.lesson_participants USING btree (lesson_session_id)"
+        },
+        {
+          "name": "lesson_participants_unique",
+          "definition": "CREATE UNIQUE INDEX lesson_participants_unique ON public.lesson_participants USING btree (lesson_session_id, user_id)"
+        },
+        {
+          "name": "lesson_participants_user_idx",
+          "definition": "CREATE INDEX lesson_participants_user_idx ON public.lesson_participants USING btree (user_id)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "Katƒ±lƒ±mƒ± ders taraflarƒ± g√∂rebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "is_lesson_participant(lesson_session_id)",
+          "command": "SELECT"
+        }
+      ],
+      "triggers": [
+        {
+          "name": "lesson_participants_touch",
+          "enabled": "O",
+          "definition": "CREATE TRIGGER lesson_participants_touch BEFORE UPDATE ON lesson_participants FOR EACH ROW EXECUTE FUNCTION touch_updated_at()"
+        }
+      ]
+    },
+    {
+      "table_name": "lesson_summaries",
+      "estimated_rows": -1,
+      "total_bytes": 2777088,
+      "table_bytes": 8192,
+      "index_bytes": 32768,
+      "rls_enabled": true,
+      "column_count": 14,
+      "columns": [
+        {
+          "name": "lesson_session_id",
+          "default": null,
+          "ordinal": 1,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "teacher_id",
+          "default": null,
+          "ordinal": 2,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "student_id",
+          "default": null,
+          "ordinal": 3,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "covered_topics",
+          "default": null,
+          "ordinal": 4,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "public_note",
+          "default": null,
+          "ordinal": 5,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "next_goal",
+          "default": null,
+          "ordinal": 6,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "board_image_url",
+          "default": null,
+          "ordinal": 7,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "board_snapshot",
+          "default": null,
+          "ordinal": 8,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "3802",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "jsonb"
+        },
+        {
+          "name": "student_feedback",
+          "default": null,
+          "ordinal": 9,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "student_feedback_at",
+          "default": null,
+          "ordinal": 10,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        },
+        {
+          "name": "shared_with_student",
+          "default": "false",
+          "ordinal": 11,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "16",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "boolean"
+        },
+        {
+          "name": "completed_at",
+          "default": null,
+          "ordinal": 12,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        },
+        {
+          "name": "created_at",
+          "default": "now()",
+          "ordinal": 13,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "default": "now()",
+          "ordinal": 14,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "lesson_summaries_lesson_session_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (lesson_session_id) REFERENCES lesson_sessions(id) ON DELETE CASCADE"
+        },
+        {
+          "name": "lesson_summaries_pkey",
+          "type": "p",
+          "definition": "PRIMARY KEY (lesson_session_id)"
+        },
+        {
+          "name": "lesson_summaries_student_feedback_check",
+          "type": "c",
+          "definition": "CHECK (student_feedback IS NULL OR (student_feedback = ANY (ARRAY['anladim'::text, 'tekrar_gerekli'::text, 'yeniden_anlatilmali'::text])))"
+        },
+        {
+          "name": "lesson_summaries_student_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (student_id) REFERENCES profiles(id) ON DELETE CASCADE"
+        },
+        {
+          "name": "lesson_summaries_teacher_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (teacher_id) REFERENCES profiles(id) ON DELETE CASCADE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "lesson_summaries_pkey",
+          "definition": "CREATE UNIQUE INDEX lesson_summaries_pkey ON public.lesson_summaries USING btree (lesson_session_id)"
+        },
+        {
+          "name": "lesson_summaries_student_idx",
+          "definition": "CREATE INDEX lesson_summaries_student_idx ON public.lesson_summaries USING btree (student_id, updated_at DESC)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "√ñzeti √∂ƒüretmen g√ºnceller",
+          "check": "(auth.uid() = teacher_id)",
+          "roles": [
+            "public"
+          ],
+          "using": "(auth.uid() = teacher_id)",
+          "command": "UPDATE"
+        },
+        {
+          "name": "√ñzeti √∂ƒüretmen yazar",
+          "check": "((auth.uid() = teacher_id) AND is_lesson_teacher(lesson_session_id))",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "command": "INSERT"
+        },
+        {
+          "name": "√ñzeti √∂ƒüretmen, payla≈üƒ±ldƒ±ysa √∂ƒür",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "((auth.uid() = teacher_id) OR ((auth.uid() = student_id) AND shared_with_student))",
+          "command": "SELECT"
+        }
+      ],
+      "triggers": [
+        {
+          "name": "lesson_summaries_touch",
+          "enabled": "O",
+          "definition": "CREATE TRIGGER lesson_summaries_touch BEFORE UPDATE ON lesson_summaries FOR EACH ROW EXECUTE FUNCTION touch_updated_at()"
+        }
+      ]
+    },
+    {
+      "table_name": "library_notes",
+      "estimated_rows": -1,
+      "total_bytes": 32768,
+      "table_bytes": 8192,
+      "index_bytes": 16384,
+      "rls_enabled": true,
+      "column_count": 8,
+      "columns": [
+        {
+          "name": "id",
+          "default": "gen_random_uuid()",
+          "ordinal": 1,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "topic_id",
+          "default": null,
+          "ordinal": 2,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "teacher_id",
+          "default": null,
+          "ordinal": 3,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "title",
+          "default": null,
+          "ordinal": 4,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "content",
+          "default": null,
+          "ordinal": 5,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "file_url",
+          "default": null,
+          "ordinal": 6,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "file_type",
+          "default": null,
+          "ordinal": 7,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "created_at",
+          "default": "now()",
+          "ordinal": 8,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "library_notes_file_type_check",
+          "type": "c",
+          "definition": "CHECK (file_type = ANY (ARRAY['pdf'::text, 'image'::text]))"
+        },
+        {
+          "name": "library_notes_pkey",
+          "type": "p",
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "name": "library_notes_teacher_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (teacher_id) REFERENCES profiles(id) ON DELETE SET NULL"
+        },
+        {
+          "name": "library_notes_topic_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (topic_id) REFERENCES library_topics(id) ON DELETE CASCADE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "library_notes_pkey",
+          "definition": "CREATE UNIQUE INDEX library_notes_pkey ON public.library_notes USING btree (id)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "Giriş yapan herkes notları görebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(auth.uid() IS NOT NULL)",
+          "command": "SELECT"
+        },
+        {
+          "name": "Öğretmen not ekleyebilir/düzenleyebilir/silebilir",
+          "check": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'teacher'::text))))",
+          "roles": [
+            "public"
+          ],
+          "using": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'teacher'::text))))",
+          "command": "ALL"
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "table_name": "mock_exam_subjects",
+      "estimated_rows": 86,
+      "total_bytes": 65536,
+      "table_bytes": 16384,
+      "index_bytes": 16384,
+      "rls_enabled": true,
+      "column_count": 7,
+      "columns": [
+        {
+          "name": "id",
+          "default": "gen_random_uuid()",
+          "ordinal": 1,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "mock_exam_id",
+          "default": null,
+          "ordinal": 2,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "subject",
+          "default": null,
+          "ordinal": 3,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "correct",
+          "default": "0",
+          "ordinal": 4,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        },
+        {
+          "name": "incorrect",
+          "default": "0",
+          "ordinal": 5,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        },
+        {
+          "name": "empty",
+          "default": "0",
+          "ordinal": 6,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        },
+        {
+          "name": "net",
+          "default": "((correct)::numeric - ((incorrect)::numeric * 0.25))",
+          "ordinal": 7,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1700",
+          "collation": null,
+          "generated": "s",
+          "formatted_type": "numeric"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "mock_exam_subjects_mock_exam_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (mock_exam_id) REFERENCES mock_exams(id) ON DELETE CASCADE"
+        },
+        {
+          "name": "mock_exam_subjects_pkey",
+          "type": "p",
+          "definition": "PRIMARY KEY (id)"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "mock_exam_subjects_pkey",
+          "definition": "CREATE UNIQUE INDEX mock_exam_subjects_pkey ON public.mock_exam_subjects USING btree (id)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "Deneme sahibi ders sonucu ekleyebilir",
+          "check": "(EXISTS ( SELECT 1\n   FROM mock_exams\n  WHERE ((mock_exams.id = mock_exam_subjects.mock_exam_id) AND (mock_exams.student_id = auth.uid()))))",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "command": "INSERT"
+        },
+        {
+          "name": "Deneme sahibi ders sonucunu silebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(EXISTS ( SELECT 1\n   FROM mock_exams\n  WHERE ((mock_exams.id = mock_exam_subjects.mock_exam_id) AND (mock_exams.student_id = auth.uid()))))",
+          "command": "DELETE"
+        },
+        {
+          "name": "Deneme sahibinin ders sonuçlarını görme yetkisi",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(EXISTS ( SELECT 1\n   FROM mock_exams\n  WHERE ((mock_exams.id = mock_exam_subjects.mock_exam_id) AND ((mock_exams.student_id = auth.uid()) OR (EXISTS ( SELECT 1\n           FROM profiles\n          WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'teacher'::text))))))))",
+          "command": "SELECT"
+        },
+        {
+          "name": "Deneme sahibinin ders sonu√ßlarƒ±nƒ± g√∂rme yetkisi",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(EXISTS ( SELECT 1\n   FROM mock_exams\n  WHERE ((mock_exams.id = mock_exam_subjects.mock_exam_id) AND ((mock_exams.student_id = auth.uid()) OR is_active_teacher_of(mock_exams.student_id)))))",
+          "command": "SELECT"
+        },
+        {
+          "name": "Veli onaylı öğrencisinin ders netlerini görebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(EXISTS ( SELECT 1\n   FROM mock_exams\n  WHERE ((mock_exams.id = mock_exam_subjects.mock_exam_id) AND is_linked_parent_of(mock_exams.student_id))))",
+          "command": "SELECT"
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "table_name": "mock_exams",
+      "estimated_rows": -1,
+      "total_bytes": 32768,
+      "table_bytes": 8192,
+      "index_bytes": 16384,
+      "rls_enabled": true,
+      "column_count": 7,
+      "columns": [
+        {
+          "name": "id",
+          "default": "gen_random_uuid()",
+          "ordinal": 1,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "student_id",
+          "default": null,
+          "ordinal": 2,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "exam_type",
+          "default": null,
+          "ordinal": 3,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "exam_name",
+          "default": null,
+          "ordinal": 4,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "exam_date",
+          "default": "CURRENT_DATE",
+          "ordinal": 5,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "1082",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "date"
+        },
+        {
+          "name": "created_at",
+          "default": "now()",
+          "ordinal": 6,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        },
+        {
+          "name": "duration_minutes",
+          "default": null,
+          "ordinal": 7,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "23",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "integer"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "mock_exams_duration_minutes_check",
+          "type": "c",
+          "definition": "CHECK (duration_minutes IS NULL OR duration_minutes >= 0 AND duration_minutes <= 1440)"
+        },
+        {
+          "name": "mock_exams_exam_type_check",
+          "type": "c",
+          "definition": "CHECK (exam_type = ANY (ARRAY['LGS'::text, 'TYT'::text, 'AYT'::text, 'KPSS'::text]))"
+        },
+        {
+          "name": "mock_exams_pkey",
+          "type": "p",
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "name": "mock_exams_student_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (student_id) REFERENCES profiles(id) ON DELETE CASCADE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "mock_exams_pkey",
+          "definition": "CREATE UNIQUE INDEX mock_exams_pkey ON public.mock_exams USING btree (id)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "Kendi denemesini veya öğretmen tümünü görebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "((auth.uid() = student_id) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'teacher'::text)))))",
+          "command": "SELECT"
+        },
+        {
+          "name": "Kendi denemesini veya √∂ƒüretmen t√ºm√ºn√º g√",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "((auth.uid() = student_id) OR is_active_teacher_of(student_id))",
+          "command": "SELECT"
+        },
+        {
+          "name": "Veli onaylı öğrencisinin denemelerini görebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "is_linked_parent_of(student_id)",
+          "command": "SELECT"
+        },
+        {
+          "name": "Öğrenci kendi denemesini ekleyebilir",
+          "check": "(auth.uid() = student_id)",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "command": "INSERT"
+        },
+        {
+          "name": "Öğrenci kendi denemesini silebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(auth.uid() = student_id)",
+          "command": "DELETE"
+        }
+      ],
+      "triggers": []
+    },
+    {
+      "table_name": "profiles",
+      "estimated_rows": 15,
+      "total_bytes": 32768,
+      "table_bytes": 8192,
+      "index_bytes": 16384,
+      "rls_enabled": true,
+      "column_count": 11,
+      "columns": [
+        {
+          "name": "id",
+          "default": null,
+          "ordinal": 1,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "full_name",
+          "default": null,
+          "ordinal": 2,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "role",
+          "default": null,
+          "ordinal": 3,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "created_at",
+          "default": "now()",
+          "ordinal": 4,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        },
+        {
+          "name": "student_id",
+          "default": null,
+          "ordinal": 5,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "grade",
+          "default": null,
+          "ordinal": 6,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "21",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "smallint"
+        },
+        {
+          "name": "target_exam",
+          "default": null,
+          "ordinal": 7,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "exam_year",
+          "default": null,
+          "ordinal": 8,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "21",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "smallint"
+        },
+        {
+          "name": "is_exam_year",
+          "default": null,
+          "ordinal": 9,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "16",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "boolean"
+        },
+        {
+          "name": "exam_date",
+          "default": null,
+          "ordinal": 10,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1082",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "date"
+        },
+        {
+          "name": "exam_profile_updated_at",
+          "default": null,
+          "ordinal": 11,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "profiles_exam_year_check",
+          "type": "c",
+          "definition": "CHECK (exam_year IS NULL OR exam_year >= 2020 AND exam_year <= 2100)"
+        },
+        {
+          "name": "profiles_grade_check",
+          "type": "c",
+          "definition": "CHECK (grade IS NULL OR grade >= 5 AND grade <= 13)"
+        },
+        {
+          "name": "profiles_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (id) REFERENCES auth.users(id) ON DELETE CASCADE"
+        },
+        {
+          "name": "profiles_pkey",
+          "type": "p",
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "name": "profiles_student_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (student_id) REFERENCES profiles(id) ON DELETE SET NULL"
+        },
+        {
+          "name": "profiles_target_exam_check",
+          "type": "c",
+          "definition": "CHECK (target_exam IS NULL OR (target_exam = ANY (ARRAY['LGS'::text, 'YKS'::text, 'KPSS'::text, 'YOK'::text])))"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "profiles_pkey",
+          "definition": "CREATE UNIQUE INDEX profiles_pkey ON public.profiles USING btree (id)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "Kullanıcı kendi profilini güncelleyebilir",
+          "check": "(auth.uid() = id)",
+          "roles": [
+            "public"
+          ],
+          "using": "(auth.uid() = id)",
+          "command": "UPDATE"
+        },
+        {
+          "name": "Kullanıcı kendi profilini oluşturabilir",
+          "check": "((auth.uid() = id) AND (role = ANY (ARRAY['student'::text, 'parent'::text])))",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "command": "INSERT"
+        },
+        {
+          "name": "Profil görünürlüğü",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "((auth.uid() IS NOT NULL) AND ((auth.uid() = id) OR is_teacher() OR (role = 'teacher'::text) OR is_linked_parent_of(id)))",
+          "command": "SELECT"
+        },
+        {
+          "name": "Profil g√∂r√ºn√ºrl√ºƒü√º",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "((auth.uid() IS NOT NULL) AND ((auth.uid() = id) OR (role = 'teacher'::text) OR is_active_teacher_of(id) OR is_linked_parent_of(id)))",
+          "command": "SELECT"
+        }
+      ],
+      "triggers": [
+        {
+          "name": "profiles_freeze_privileged_columns_trg",
+          "enabled": "O",
+          "definition": "CREATE TRIGGER profiles_freeze_privileged_columns_trg BEFORE UPDATE ON profiles FOR EACH ROW EXECUTE FUNCTION profiles_freeze_privileged_columns()"
+        }
+      ]
+    },
+    {
+      "table_name": "questions",
+      "estimated_rows": 51,
+      "total_bytes": 253952,
+      "table_bytes": 24576,
+      "index_bytes": 16384,
+      "rls_enabled": true,
+      "column_count": 11,
+      "columns": [
+        {
+          "name": "id",
+          "default": "gen_random_uuid()",
+          "ordinal": 1,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "student_id",
+          "default": null,
+          "ordinal": 2,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "content",
+          "default": null,
+          "ordinal": 3,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "image_url",
+          "default": null,
+          "ordinal": 4,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "status",
+          "default": "'İnceleniyor'::text",
+          "ordinal": 5,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "created_at",
+          "default": "now()",
+          "ordinal": 6,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        },
+        {
+          "name": "teacher_reply",
+          "default": null,
+          "ordinal": 7,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "subject",
+          "default": null,
+          "ordinal": 8,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "topic",
+          "default": null,
+          "ordinal": 9,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "teacher_reply_image_url",
+          "default": null,
+          "ordinal": 10,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "teacher_reply_strokes",
+          "default": null,
+          "ordinal": 11,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "3802",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "jsonb"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "questions_pkey",
+          "type": "p",
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "name": "questions_status_check",
+          "type": "c",
+          "definition": "CHECK (status = ANY (ARRAY['İnceleniyor'::text, 'Derste Çözülecek'::text, 'Çözüldü'::text]))"
+        },
+        {
+          "name": "questions_student_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (student_id) REFERENCES profiles(id) ON DELETE CASCADE"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "questions_pkey",
+          "definition": "CREATE UNIQUE INDEX questions_pkey ON public.questions USING btree (id)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "Öğrenci kendi sorularını görebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "((auth.uid() = student_id) OR (EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'teacher'::text)))))",
+          "command": "SELECT"
+        },
+        {
+          "name": "Öğrenci soru gönderebilir",
+          "check": "(auth.uid() = student_id)",
+          "roles": [
+            "public"
+          ],
+          "using": null,
+          "command": "INSERT"
+        },
+        {
+          "name": "Öğretmen soru durumunu güncelleyebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "(EXISTS ( SELECT 1\n   FROM profiles\n  WHERE ((profiles.id = auth.uid()) AND (profiles.role = 'teacher'::text))))",
+          "command": "UPDATE"
+        },
+        {
+          "name": "√ñƒürenci kendi sorularƒ±nƒ± g√∂rebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "((auth.uid() = student_id) OR is_active_teacher_of(student_id))",
+          "command": "SELECT"
+        },
+        {
+          "name": "√ñƒüretmen soru durumunu g√ºncelleyebilir",
+          "check": "is_active_teacher_of(student_id)",
+          "roles": [
+            "public"
+          ],
+          "using": "is_active_teacher_of(student_id)",
+          "command": "UPDATE"
+        }
+      ],
+      "triggers": [
+        {
+          "name": "on_new_question_notify",
+          "enabled": "O",
+          "definition": "CREATE TRIGGER on_new_question_notify AFTER INSERT ON questions FOR EACH ROW EXECUTE FUNCTION notify_new_question()"
+        }
+      ]
+    },
+    {
+      "table_name": "teacher_students",
+      "estimated_rows": -1,
+      "total_bytes": 81920,
+      "table_bytes": 8192,
+      "index_bytes": 65536,
+      "rls_enabled": true,
+      "column_count": 12,
+      "columns": [
+        {
+          "name": "id",
+          "default": "gen_random_uuid()",
+          "ordinal": 1,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "teacher_id",
+          "default": null,
+          "ordinal": 2,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "student_id",
+          "default": null,
+          "ordinal": 3,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "status",
+          "default": "'pending'::text",
+          "ordinal": 4,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "created_by",
+          "default": null,
+          "ordinal": 5,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "created_via",
+          "default": "'invite'::text",
+          "ordinal": 6,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "25",
+          "collation": "default",
+          "generated": "",
+          "formatted_type": "text"
+        },
+        {
+          "name": "invited_at",
+          "default": "now()",
+          "ordinal": 7,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        },
+        {
+          "name": "responded_at",
+          "default": null,
+          "ordinal": 8,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        },
+        {
+          "name": "ended_at",
+          "default": null,
+          "ordinal": 9,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        },
+        {
+          "name": "ended_by",
+          "default": null,
+          "ordinal": 10,
+          "identity": "",
+          "not_null": false,
+          "type_oid": "2950",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "uuid"
+        },
+        {
+          "name": "created_at",
+          "default": "now()",
+          "ordinal": 11,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        },
+        {
+          "name": "updated_at",
+          "default": "now()",
+          "ordinal": 12,
+          "identity": "",
+          "not_null": true,
+          "type_oid": "1184",
+          "collation": null,
+          "generated": "",
+          "formatted_type": "timestamp with time zone"
+        }
+      ],
+      "constraints": [
+        {
+          "name": "teacher_students_created_by_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (created_by) REFERENCES profiles(id) ON DELETE SET NULL"
+        },
+        {
+          "name": "teacher_students_created_via_check",
+          "type": "c",
+          "definition": "CHECK (created_via = ANY (ARRAY['invite'::text, 'legacy'::text, 'teacher_add'::text]))"
+        },
+        {
+          "name": "teacher_students_ended_by_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (ended_by) REFERENCES profiles(id) ON DELETE SET NULL"
+        },
+        {
+          "name": "teacher_students_not_self",
+          "type": "c",
+          "definition": "CHECK (teacher_id <> student_id)"
+        },
+        {
+          "name": "teacher_students_pkey",
+          "type": "p",
+          "definition": "PRIMARY KEY (id)"
+        },
+        {
+          "name": "teacher_students_status_check",
+          "type": "c",
+          "definition": "CHECK (status = ANY (ARRAY['pending'::text, 'active'::text, 'rejected'::text, 'removed'::text]))"
+        },
+        {
+          "name": "teacher_students_student_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (student_id) REFERENCES profiles(id) ON DELETE CASCADE"
+        },
+        {
+          "name": "teacher_students_teacher_id_fkey",
+          "type": "f",
+          "definition": "FOREIGN KEY (teacher_id) REFERENCES profiles(id) ON DELETE CASCADE"
+        },
+        {
+          "name": "teacher_students_unique_pair",
+          "type": "u",
+          "definition": "UNIQUE (teacher_id, student_id)"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "teacher_students_pkey",
+          "definition": "CREATE UNIQUE INDEX teacher_students_pkey ON public.teacher_students USING btree (id)"
+        },
+        {
+          "name": "teacher_students_student_idx",
+          "definition": "CREATE INDEX teacher_students_student_idx ON public.teacher_students USING btree (student_id, status)"
+        },
+        {
+          "name": "teacher_students_teacher_idx",
+          "definition": "CREATE INDEX teacher_students_teacher_idx ON public.teacher_students USING btree (teacher_id, status)"
+        },
+        {
+          "name": "teacher_students_unique_pair",
+          "definition": "CREATE UNIQUE INDEX teacher_students_unique_pair ON public.teacher_students USING btree (teacher_id, student_id)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "Baƒüƒ± taraflarƒ± g√∂rebilir",
+          "check": null,
+          "roles": [
+            "public"
+          ],
+          "using": "((auth.uid() = teacher_id) OR (auth.uid() = student_id))",
+          "command": "SELECT"
+        }
+      ],
+      "triggers": [
+        {
+          "name": "teacher_students_touch",
+          "enabled": "O",
+          "definition": "CREATE TRIGGER teacher_students_touch BEFORE UPDATE ON teacher_students FOR EACH ROW EXECUTE FUNCTION touch_updated_at()"
+        }
+      ]
+    }
+  ],
+  "privacy": {
+    "table_rows_selected": false,
+    "student_content_selected": false,
+    "authentication_rows_selected": false,
+    "schema_metadata_only": true
+  },
+  "side_effects": {
+    "live_write": false,
+    "ddl_executed": false,
+    "migration_executed": false,
+    "paid_service_used": false,
+    "deployment_or_push": false
+  }
+}

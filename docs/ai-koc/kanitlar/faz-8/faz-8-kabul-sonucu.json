@@ -2,37 +2,37 @@
   "schema_version": "phase-8-acceptance@1",
   "phase": 8,
   "status": "passed",
-  "generated_at": "2026-09-13T13:52:42.492Z",
+  "generated_at": "2026-10-12T15:37:00.967Z",
   "sections": [
     {
       "name": "Öneri sözleşmesi, miktar sınırı ve enjeksiyon koruması",
       "status": "passed",
-      "duration_ms": 2.205
+      "duration_ms": 2.2
     },
     {
       "name": "Hedef seçimi, kaldırılan içerik ve bağımsız çalışma",
       "status": "passed",
-      "duration_ms": 0.496
+      "duration_ms": 0.568
     },
     {
       "name": "Yaşam döngüsü, kanıt eşleme ve sonuç dili",
       "status": "passed",
-      "duration_ms": 0.447
+      "duration_ms": 0.497
     },
     {
       "name": "Kararlı günlük/haftalık brifing ve temkinli veri davranışı",
       "status": "passed",
-      "duration_ms": 0.341
+      "duration_ms": 0.419
     },
     {
       "name": "Onay kapısı, migration, RLS ve gerçek veritabanı döngüsü",
       "status": "passed",
-      "duration_ms": 1435.533
+      "duration_ms": 1412.764
     },
     {
       "name": "Mevcut sohbet/plan uyumluluğu ve sınır denetimi",
       "status": "passed",
-      "duration_ms": 0.261
+      "duration_ms": 0.242
     }
   ],
   "assertions": 94,
@@ -40,97 +40,97 @@
     {
       "name": "zayıf konu kanıtından gerekçeli öneri oluşturma",
       "status": "passed",
-      "duration_ms": 1.561
+      "duration_ms": 1.538
     },
     {
       "name": "istemin enjeksiyonunun görev alanlarına geçememesi",
       "status": "passed",
-      "duration_ms": 0.598
+      "duration_ms": 0.619
     },
     {
       "name": "hedef derse veya soru setine güvenli bağlantı",
       "status": "passed",
-      "duration_ms": 0.175
+      "duration_ms": 0.214
     },
     {
       "name": "içerik kaldırılması ve yetki kaybı",
       "status": "passed",
-      "duration_ms": 0.2
+      "duration_ms": 0.232
     },
     {
       "name": "dil becerisi ve platform dışı çalışma",
       "status": "passed",
-      "duration_ms": 0.089
+      "duration_ms": 0.093
     },
     {
       "name": "soru seti kısmi ilerleme ve gerçek tamamlama",
       "status": "passed",
-      "duration_ms": 0.136
+      "duration_ms": 0.159
     },
     {
       "name": "kullanıcı beyanı ile otomatik doğrulamanın ayrılması",
       "status": "passed",
-      "duration_ms": 0.072
+      "duration_ms": 0.09
     },
     {
       "name": "görev öncesi eski kanıtın tamamlamaması",
       "status": "passed",
-      "duration_ms": 0.011
+      "duration_ms": 0.012
     },
     {
       "name": "aynı kanıtın iki görevi tamamlamaması",
       "status": "passed",
-      "duration_ms": 0.019
+      "duration_ms": 0.02
     },
     {
       "name": "görev düzenleme, erteleme, reddetme ve iptal",
       "status": "passed",
-      "duration_ms": 0.019
+      "duration_ms": 0.02
     },
     {
       "name": "öneri sonrası yeni sonuçla öğrenci modelinin güncellenmesi",
       "status": "passed",
-      "duration_ms": 0.081
+      "duration_ms": 0.089
     },
     {
       "name": "gecikmeli tekrar sonucu",
       "status": "passed",
-      "duration_ms": 0.02
+      "duration_ms": 0.023
     },
     {
       "name": "veri yetersizliğinde ölçüm odaklı öneri",
       "status": "passed",
-      "duration_ms": 0.118
+      "duration_ms": 0.134
     },
     {
       "name": "çelişkili kaynaklarda temkinli öneri",
       "status": "passed",
-      "duration_ms": 0.053
+      "duration_ms": 0.082
     },
     {
       "name": "günlük brifingin aynı veriyle kararlı öncelik vermesi",
       "status": "passed",
-      "duration_ms": 0.115
+      "duration_ms": 0.147
     },
     {
       "name": "yazma aracı için onaysız çağrının reddedilmesi",
       "status": "passed",
-      "duration_ms": 0.417
+      "duration_ms": 0.452
     },
     {
       "name": "öneriyi önizleme, onaylama ve göreve dönüştürme",
       "status": "passed",
-      "duration_ms": 7.462
+      "duration_ms": 7.882
     },
     {
       "name": "kullanıcılar arası görev ve kanıt erişiminin reddedilmesi",
       "status": "passed",
-      "duration_ms": 2.969
+      "duration_ms": 3.314
     },
     {
       "name": "mevcut sohbet ve plan akışının bozulmaması",
       "status": "passed",
-      "duration_ms": 0.216
+      "duration_ms": 0.197
     }
   ],
   "gates": [
@@ -231,7 +231,7 @@
       "weekly_limit": 5,
       "stable_order_key": "teacher_commitment_overdue|2026-09-12||h1|Öğretmen ödevi||coaching_task_active|2026-09-14T12:00:00.000Z|drkoc:curriculum:topic:v1:t0052|t1|Fonksiyonlar||measurement_needed||drkoc:curriculum:topic:v1:t0053|topic|drkoc:curriculum:topic:v1:t0053|Önce kısa bir ölçüm yap||recent_outcome||drkoc:curriculum:topic:v1:t0052|o1|Son çalışmanın sonucu"
     },
-    "primary_task_id": "b746edcc-8f53-4c0d-8c3b-63ffb47a21f8"
+    "primary_task_id": "7133c0e9-fd0e-4e7e-a352-4a462b8f960d"
   },
   "side_effects": {
     "live_supabase_read": false,
@@ -254,9 +254,9 @@
       "key": "phase1",
       "command": "npm run test:ai-koc-faz-1",
       "group": "security",
-      "started_at": "2026-09-13T13:51:14.514Z",
-      "finished_at": "2026-09-13T13:51:14.688Z",
-      "duration_ms": 174,
+      "started_at": "2026-10-12T15:35:33.755Z",
+      "finished_at": "2026-10-12T15:35:33.934Z",
+      "duration_ms": 179,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -267,9 +267,9 @@
       "key": "phase2",
       "command": "npm run test:ai-koc-faz-2",
       "group": "security",
-      "started_at": "2026-09-13T13:51:14.688Z",
-      "finished_at": "2026-09-13T13:51:19.182Z",
-      "duration_ms": 4494,
+      "started_at": "2026-10-12T15:35:33.934Z",
+      "finished_at": "2026-10-12T15:35:38.223Z",
+      "duration_ms": 4289,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -280,9 +280,9 @@
       "key": "phase3",
       "command": "npm run test:ai-koc-faz-3",
       "group": "security",
-      "started_at": "2026-09-13T13:51:19.183Z",
-      "finished_at": "2026-09-13T13:51:43.187Z",
-      "duration_ms": 24004,
+      "started_at": "2026-10-12T15:35:38.224Z",
+      "finished_at": "2026-10-12T15:36:04.304Z",
+      "duration_ms": 26080,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -294,9 +294,9 @@
       "key": "phase4",
       "command": "npm run test:ai-koc-faz-4",
       "group": "security",
-      "started_at": "2026-09-13T13:51:43.188Z",
-      "finished_at": "2026-09-13T13:51:54.622Z",
-      "duration_ms": 11434,
+      "started_at": "2026-10-12T15:36:04.305Z",
+      "finished_at": "2026-10-12T15:36:15.693Z",
+      "duration_ms": 11388,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -308,9 +308,9 @@
       "key": "phase5",
       "command": "npm run test:ai-koc-faz-5",
       "group": "security",
-      "started_at": "2026-09-13T13:51:54.624Z",
-      "finished_at": "2026-09-13T13:51:56.764Z",
-      "duration_ms": 2140,
+      "started_at": "2026-10-12T15:36:15.694Z",
+      "finished_at": "2026-10-12T15:36:17.797Z",
+      "duration_ms": 2103,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -322,9 +322,9 @@
       "key": "phase6",
       "command": "npm run test:ai-koc-faz-6",
       "group": "security",
-      "started_at": "2026-09-13T13:51:56.765Z",
-      "finished_at": "2026-09-13T13:51:58.562Z",
-      "duration_ms": 1797,
+      "started_at": "2026-10-12T15:36:17.798Z",
+      "finished_at": "2026-10-12T15:36:19.621Z",
+      "duration_ms": 1823,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -336,9 +336,9 @@
       "key": "phase7",
       "command": "npm run test:ai-koc-faz-7",
       "group": "security",
-      "started_at": "2026-09-13T13:51:58.562Z",
-      "finished_at": "2026-09-13T13:51:58.711Z",
-      "duration_ms": 149,
+      "started_at": "2026-10-12T15:36:19.622Z",
+      "finished_at": "2026-10-12T15:36:19.772Z",
+      "duration_ms": 150,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -350,9 +350,9 @@
       "key": "phase8",
       "command": "npm run test:ai-koc-faz-8",
       "group": "security",
-      "started_at": "2026-09-13T13:51:58.711Z",
-      "finished_at": "2026-09-13T13:52:00.296Z",
-      "duration_ms": 1585,
+      "started_at": "2026-10-12T15:36:19.773Z",
+      "finished_at": "2026-10-12T15:36:21.335Z",
+      "duration_ms": 1562,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -366,9 +366,9 @@
       "key": "curriculum",
       "command": "npm run test:library-curriculum",
       "group": "regression",
-      "started_at": "2026-09-13T13:52:00.297Z",
-      "finished_at": "2026-09-13T13:52:00.404Z",
-      "duration_ms": 107,
+      "started_at": "2026-10-12T15:36:21.335Z",
+      "finished_at": "2026-10-12T15:36:21.439Z",
+      "duration_ms": 104,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -379,9 +379,9 @@
       "key": "question_progress",
       "command": "npm run test:question-progress",
       "group": "regression",
-      "started_at": "2026-09-13T13:52:00.404Z",
-      "finished_at": "2026-09-13T13:52:00.502Z",
-      "duration_ms": 98,
+      "started_at": "2026-10-12T15:36:21.439Z",
+      "finished_at": "2026-10-12T15:36:21.542Z",
+      "duration_ms": 103,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -392,9 +392,9 @@
       "key": "context_curriculum",
       "command": "node scripts/test-context-curriculum.mjs",
       "group": "regression",
-      "started_at": "2026-09-13T13:52:00.502Z",
-      "finished_at": "2026-09-13T13:52:00.560Z",
-      "duration_ms": 58,
+      "started_at": "2026-10-12T15:36:21.542Z",
+      "finished_at": "2026-10-12T15:36:21.601Z",
+      "duration_ms": 59,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -405,9 +405,9 @@
       "key": "ai_coach",
       "command": "node scripts/test-ai-coach.mjs",
       "group": "regression",
-      "started_at": "2026-09-13T13:52:00.560Z",
-      "finished_at": "2026-09-13T13:52:00.628Z",
-      "duration_ms": 68,
+      "started_at": "2026-10-12T15:36:21.601Z",
+      "finished_at": "2026-10-12T15:36:21.668Z",
+      "duration_ms": 67,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -418,9 +418,9 @@
       "key": "ai_solve",
       "command": "npm run test:ai-solve",
       "group": "regression",
-      "started_at": "2026-09-13T13:52:00.628Z",
-      "finished_at": "2026-09-13T13:52:07.483Z",
-      "duration_ms": 6855,
+      "started_at": "2026-10-12T15:36:21.668Z",
+      "finished_at": "2026-10-12T15:36:28.568Z",
+      "duration_ms": 6900,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -431,9 +431,9 @@
       "key": "home",
       "command": "npm run test:anasayfa",
       "group": "regression",
-      "started_at": "2026-09-13T13:52:07.484Z",
-      "finished_at": "2026-09-13T13:52:07.612Z",
-      "duration_ms": 128,
+      "started_at": "2026-10-12T15:36:28.568Z",
+      "finished_at": "2026-10-12T15:36:28.690Z",
+      "duration_ms": 122,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -444,9 +444,9 @@
       "key": "visual",
       "command": "node scripts/capture-phase-8-coaching-loop.mjs",
       "group": "regression",
-      "started_at": "2026-09-13T13:52:07.613Z",
-      "finished_at": "2026-09-13T13:52:19.929Z",
-      "duration_ms": 12316,
+      "started_at": "2026-10-12T15:36:28.690Z",
+      "finished_at": "2026-10-12T15:36:44.409Z",
+      "duration_ms": 15719,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -458,9 +458,9 @@
       "key": "build",
       "command": "npm run build",
       "group": "build",
-      "started_at": "2026-09-13T13:52:19.929Z",
-      "finished_at": "2026-09-13T13:52:42.491Z",
-      "duration_ms": 22562,
+      "started_at": "2026-10-12T15:36:44.410Z",
+      "finished_at": "2026-10-12T15:37:00.966Z",
+      "duration_ms": 16556,
       "exit_code": 0,
       "signal": null,
       "status": "passed",
@@ -486,7 +486,7 @@
     "build": "docs/ai-koc/kanitlar/faz-8/build.log"
   },
   "prerequisite_acceptance": {
-    "phase_3": "17/17 komut; 46/46 kapı; 450 doğrulama; manifest 6fa891678666328167f7aff4c3c8ca497cbc0310678c3deacc1f91e68d7840cc",
+    "phase_3": "17/17 komut; 46/46 kapı; 450 doğrulama; manifest c816e78b0a6288fa66bd76281c91fa26dfe929624ee8bf29ebd10bde2005be2b",
     "phase_4": "12/12 komut; 85/85 kapı; 290 doğrulama",
     "phase_5": "12/12 komut; 9/9 kapı; 231 doğrulama",
     "phase_6": "11/11 komut; 9/9 kapı; 107 doğrulama",

@@ -24,12 +24,14 @@
 
 import { authenticate } from '../_lib/auth.js'
 import { config, missingConfig } from '../_lib/config.js'
-import { buildLegacyStudentFacts, buildStudentContext } from '../_lib/context.js'
+import { buildLegacyStudentContext, buildLegacyStudentFacts, buildStudentContext } from '../_lib/context.js'
 import { logError, userMessage } from '../_lib/errors.js'
 import { streamChat, quickCompletion, UpstreamError } from '../_lib/openai.js'
-import { buildSystemPrompt, TITLE_PROMPT } from '../_lib/prompt.js'
+import { isPaidChatEnabled } from '../_lib/paidChatGate.js'
+import freeCoachChat from '../_lib/freeCoachChat.js'
+import { buildLegacySystemPrompt, buildSystemPrompt, TITLE_PROMPT } from '../_lib/prompt.js'
 import { checkRateLimit, recordUsage } from '../_lib/ratelimit.js'
-import { runTool, TOOL_SCHEMAS } from '../_lib/tools.js'
+import { LEGACY_TOOL_SCHEMAS, runTool, TOOL_SCHEMAS } from '../_lib/tools.js'
 import {
   buildCoachObservation,
   coachValidationFallback,
@@ -37,7 +39,7 @@ import {
   safeToolResultJson,
   validateCoachResponse,
 } from '../_lib/coachAnalysis.js'
-import { resolveLearningRollout } from '../_lib/learning/rollout.js'
+import { applyCoachDatabaseGate, resolveCoachChatMode, resolveLearningRollout } from '../_lib/learning/rollout.js'
 
 /** Araç çalışırken kullanıcıya gösterilen insanca durum cümleleri. */
 const TOOL_STATUS = {
@@ -79,6 +81,11 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: { code: 'invalid_request', message: userMessage('invalid_request') } })
   }
 
+  // Ücretsiz rehber döneminde doğrudan API isteği de ücretli modele ulaşamaz.
+  if (!isPaidChatEnabled()) {
+    return freeCoachChat(req, res)
+  }
+
   /* ---------- 0) Yapılandırma ---------- */
   const missing = missingConfig()
   if (missing.length) {
@@ -106,8 +113,11 @@ export default async function handler(req, res) {
 
   const requestedConversationId = isUuid(body?.conversationId) ? body.conversationId : null
 
-  const rollout = resolveLearningRollout({ studentId: user.id, sourceCode: 'ai_coach_chat' })
-  if (!rollout.coach_analysis.enabled) {
+  const rollout = await applyCoachDatabaseGate(supabase,
+    resolveLearningRollout({ studentId: user.id, sourceCode: 'ai_coach_chat' }))
+  const chatMode = resolveCoachChatMode(rollout)
+  const legacyMode = chatMode === 'legacy'
+  if (chatMode === 'denied') {
     return res.status(503).json({
       error: { code: 'feature_temporarily_unavailable', message: userMessage('feature_temporarily_unavailable') },
     })
@@ -165,16 +175,18 @@ export default async function handler(req, res) {
     send('status', { text: 'Verilerini inceliyorum…' })
 
     const [studentContext, history] = await Promise.all([
-      buildStudentContext(supabase, profile),
+      legacyMode ? buildLegacyStudentContext(supabase, profile) : buildStudentContext(supabase, profile),
       loadHistory(supabase, conversation),
     ])
     let { facts } = studentContext
     const { text: contextText, bootstrap } = studentContext
-    const contextPlan = planCoachContextLoad(rawMessage, bootstrap)
-    evidencePackets.push(bootstrap)
+    const contextPlan = legacyMode ? null : planCoachContextLoad(rawMessage, bootstrap)
+    if (bootstrap) evidencePackets.push(bootstrap)
 
     const messages = [
-      { role: 'system', content: buildSystemPrompt({ contextText, firstName: facts.profile.firstName, contextPlan }) },
+      { role: 'system', content: legacyMode
+        ? buildLegacySystemPrompt({ contextText, firstName: facts.profile.firstName })
+        : buildSystemPrompt({ contextText, firstName: facts.profile.firstName, contextPlan }) },
       ...history,
       { role: 'user', content: rawMessage },
     ]
@@ -196,7 +208,7 @@ export default async function handler(req, res) {
         messages,
         // Son turda araç verilmez: model mecburen metin cevabı üretir,
         // böylece döngü kesin biter.
-        tools: isFinalRound ? null : TOOL_SCHEMAS,
+        tools: isFinalRound ? null : (legacyMode ? LEGACY_TOOL_SCHEMAS : TOOL_SCHEMAS),
         onText: (chunk) => {
           roundText += chunk
         },
@@ -236,7 +248,7 @@ export default async function handler(req, res) {
           continue
         }
 
-        if (LEGACY_CONTEXT_TOOLS.has(name) && !facts.legacyContextLoaded) {
+        if (!legacyMode && LEGACY_CONTEXT_TOOLS.has(name) && !facts.legacyContextLoaded) {
           const legacyFacts = await buildLegacyStudentFacts(supabase, profile)
           facts = { ...legacyFacts, coachBootstrap: bootstrap, legacyContextLoaded: true }
         }
@@ -274,12 +286,12 @@ export default async function handler(req, res) {
         'Bu isteği şu anda yanıtlayamadım. Sorunu biraz daha açık yazarsan tekrar deneyebilirim.'
     }
 
-    const validation = validateCoachResponse({
+    const validation = legacyMode ? { ok: true, legacy_compatibility_mode: true } : validateCoachResponse({
       text: fullText,
       packets: evidencePackets,
       pendingActions,
     })
-    if (!validation.ok) {
+    if (!legacyMode && !validation.ok) {
       fullText = coachValidationFallback(bootstrap)
       pendingActions.length = 0
     }
@@ -320,7 +332,7 @@ export default async function handler(req, res) {
       usage: totalUsage,
       contextChars: contextText.length,
     })
-    console.info('[ai-coach:observation]', { ...observation, rollout: rollout.observation })
+    console.info('[ai-coach:observation]', { ...observation, legacy_compatibility_mode: legacyMode, rollout: rollout.observation })
 
     /* ---------- 9) İlk mesajsa sohbete anlamlı bir başlık ver ---------- */
     if (conversation.isNew) {

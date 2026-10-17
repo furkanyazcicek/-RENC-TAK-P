@@ -1,9 +1,9 @@
 {
   "schema_version": "phase-9-build-security@1",
-  "generated_at": "2026-09-13T15:03:49.666Z",
+  "generated_at": "2026-10-13T23:04:49.420Z",
   "status": "passed",
-  "scanned_files": 6284,
-  "scanned_text_files": 494,
+  "scanned_files": 6300,
+  "scanned_text_files": 496,
   "source_maps": 0,
   "forbidden_name_leaks": 0,
   "secret_value_leaks": 0,
