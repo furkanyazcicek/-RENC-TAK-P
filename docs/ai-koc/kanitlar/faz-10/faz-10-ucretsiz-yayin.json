@@ -1,0 +1,16 @@
+{
+  "version": "phase-10-free-production@1",
+  "generated_at": "2026-10-17T23:24:41.007Z",
+  "commit": "c1b0c337d43899221a45f0be5fb2dddd5ed0a66d",
+  "vercel_status": "success",
+  "vercel_url": "https://vercel.com/furkanyzck/renc-tak-p/9XA9JVM35CVcv8cU7jMDmLkJE3uh",
+  "production_url": "https://www.drkoc.com.tr/ai-koc",
+  "page_http_status": 200,
+  "production_asset": "https://www.drkoc.com.tr/assets/index-B_nO4kf9.js",
+  "asset_sha256": "9ec643df34360358da11141055ba0d52bec29712f7f0b612db8af7dddea5bf98",
+  "free_ui_marker_present": true,
+  "chat_unauthenticated_status": 401,
+  "chat_cache_control": "private, no-store",
+  "authenticated_student_messages_sent": 0,
+  "paid_model_calls": 0
+}

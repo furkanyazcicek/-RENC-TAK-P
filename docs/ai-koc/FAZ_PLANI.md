@@ -91,3 +91,8 @@ FAZ_DURUMU.md içindeki her tamamlanma kaydında dosya, test veya gözlem kanıt
 - “AI doğru yanıtladı” şeklindeki tek örnek;
 - yalnız mutlu yol testi;
 - yalnız sahte arayüz verisi.
+
+
+## 18 Ekim 2026 ücretsiz uygulama sonucu
+
+Faz 10, [ücretsiz çalışma yöntemi](FAZ_10_UCRETSIZ_CALISMA_YONTEMI.md) kapsamında canlıda tamamlandı. Bu yol mevcut Supabase üzerinde kaynakları okuma anında birleştirir; ücretli model veya sürekli projeksiyon işçisi gerektirmez. [12/12 kabul kapısı](kanitlar/faz-10/faz-10-ucretsiz-kabul-sonucu.json) ve [üretim gözlemi](kanitlar/faz-10/faz-10-ucretsiz-yayin.json) yetkili sonuçtur. Önceki LLM/ücretli tam platform klonu ile yayımlanmamış içerik için tutulan tarihsel bekleme kayıtları bu sürümün kabulü olarak kullanılmaz.

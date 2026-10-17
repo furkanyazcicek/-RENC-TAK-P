@@ -1,0 +1,28 @@
+{
+  "version": "phase-10-free-acceptance@1",
+  "status": "passed",
+  "generated_at": "2026-10-17T23:25:41.312Z",
+  "method": "free-evidence-coach@1",
+  "production_url": "https://www.drkoc.com.tr/ai-koc",
+  "published_commit": "c1b0c337d43899221a45f0be5fb2dddd5ed0a66d",
+  "gates": {
+    "free_engine": true,
+    "live_migrations": true,
+    "source_preservation": true,
+    "private_grading_catalog": true,
+    "live_rollback_pilot": true,
+    "rls": true,
+    "approval_and_outcome": true,
+    "correction_and_reset": true,
+    "global_release": true,
+    "stop_switch": true,
+    "desktop_tablet_phone": true,
+    "github_vercel_release": true
+  },
+  "paid_model_calls": 0,
+  "new_paid_resources": 0,
+  "long_term_educational_effect_claimed": false,
+  "live_signed_jwt_ui_pilot": false,
+  "physical_supabase_restore_claimed": false,
+  "unpublished_other_content_released": false
+}
