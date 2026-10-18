@@ -50,8 +50,9 @@ function formatDay(dateStr) {
 }
 
 export default function ActionCard({ action, onCompleted }) {
-  const [state, setState] = useState(action.preview_state === 'done' ? 'done' : 'idle') // idle | running | done | rejected
-  const [error, setError] = useState(null)
+  const [state, setState] = useState(action.execution_state ?? (action.preview_state === 'done' ? 'done' : 'idle'))
+  const [error, setError] = useState(action.execution_state === 'unavailable'
+    ? 'Önerinin onay durumu doğrulanamadı. Sayfayı yenileyerek tekrar dene.' : null)
   const [editing, setEditing] = useState(false)
   const [editedAmount, setEditedAmount] = useState(action.payload?.recommendation?.suggested_amount?.value ?? '')
   const toast = useToast()
@@ -206,14 +207,14 @@ export default function ActionCard({ action, onCompleted }) {
           ) : (
             <>
               <div className="flex flex-wrap gap-1.5">
-                <Button variant="ghost" size="sm" className="min-h-11" onClick={handleReject} disabled={state === 'running'}>İlgili değil</Button>
+                <Button variant="ghost" size="sm" className="min-h-11" onClick={handleReject} disabled={state === 'running' || state === 'unavailable'}>İlgili değil</Button>
                 {amount && (
-                  <Button variant="secondary" size="sm" className="min-h-11" onClick={() => setEditing((value) => !value)} disabled={state === 'running'}>
+                  <Button variant="secondary" size="sm" className="min-h-11" onClick={() => setEditing((value) => !value)} disabled={state === 'running' || state === 'unavailable'}>
                     {editing ? 'Düzenlemeyi kapat' : 'Düzenle'}
                   </Button>
                 )}
               </div>
-              <Button size="sm" className="min-h-11" loading={state === 'running'} onClick={handleRun}>{action.label ?? 'Görevi Planla'}</Button>
+              <Button size="sm" className="min-h-11" loading={state === 'running'} disabled={state === 'unavailable'} onClick={handleRun}>{action.label ?? 'Görevi Planla'}</Button>
             </>
           )}
         </div>

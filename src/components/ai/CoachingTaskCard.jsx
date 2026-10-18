@@ -41,6 +41,18 @@ export default function CoachingTaskCard({ item, mode = 'ready', onChanged }) {
     } finally { setBusy(false) }
   }
 
+  async function evaluateResult() {
+    if (mode !== 'ready') return
+    setBusy(true); setError(null)
+    try {
+      const result = await runAction({ type: 'refresh_coaching_outcome', payload: { task_id: item.id ?? item.task_id } })
+      toast.success(result.message ?? 'Çalışma sonucu değerlendirildi.')
+      onChanged?.()
+    } catch (err) {
+      setError(err instanceof AICoachError ? err.message : 'Sonuç değerlendirilemedi. Tekrar dener misin?')
+    } finally { setBusy(false) }
+  }
+
   return (
     <section aria-label="Bugünkü koçluk görevi" className="mb-4 overflow-hidden rounded-card border border-brand-500/20 bg-surface shadow-card">
       <div className="flex items-start gap-3 px-4 py-4 sm:px-5">
@@ -76,7 +88,10 @@ export default function CoachingTaskCard({ item, mode = 'ready', onChanged }) {
         {item.target?.status === 'available' && (
           <Button as="a" href={item.target.path} variant="secondary" size="sm" className="min-h-11" icon={ArrowRight}>Çalışmaya git</Button>
         )}
-        {mode === 'ready' && !['evaluated', 'cancelled'].includes(status) && (
+        {mode === 'ready' && status === 'platform_verified' && (
+          <Button size="sm" className="ml-auto min-h-11" onClick={evaluateResult} loading={busy}>Sonucu değerlendir</Button>
+        )}
+        {mode === 'ready' && !['platform_verified', 'evaluated', 'cancelled'].includes(status) && (
           <div className="ml-auto flex flex-wrap gap-1.5">
             {status === 'planned' && <Button variant="ghost" size="sm" className="min-h-11" onClick={() => update('started')} disabled={busy}>Başladım</Button>}
             <Button variant="ghost" size="sm" className="min-h-11" icon={Clock3} onClick={() => update('postponed', { work_window_end: new Date(Date.now() + 2 * 86_400_000).toISOString() })} disabled={busy}>Ertele</Button>

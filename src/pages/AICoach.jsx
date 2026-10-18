@@ -400,7 +400,7 @@ export default function AICoach() {
     }
     try {
       const briefing = await getBriefing()
-      const item = briefing?.coaching?.daily?.primary
+      const item = briefing?.coaching?.active_task ?? briefing?.coaching?.daily?.primary
       setCoachingFocus(item?.source === 'coaching_task' ? { mode: 'ready', item } : null)
     } catch {
       setCoachingFocus(null)

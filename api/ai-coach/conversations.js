@@ -12,10 +12,12 @@
 
 import { authenticate } from '../_lib/auth.js'
 import { logError, sendError } from '../_lib/errors.js'
+import { hydrateCoachingHistory } from '../_lib/coachingHistory.js'
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
 
 export default async function handler(req, res) {
+  res.setHeader('Cache-Control', 'private, no-store')
   const auth = await authenticate(req)
   if (!auth.ok) return sendError(res, auth.status, auth.code)
 
@@ -87,5 +89,6 @@ async function getMessages(res, supabase, studentId, conversationId) {
     .limit(200)
 
   if (error) throw error
-  return res.status(200).json({ conversation, messages: data ?? [] })
+  const messages = await hydrateCoachingHistory(supabase, studentId, data ?? [])
+  return res.status(200).json({ conversation, messages })
 }

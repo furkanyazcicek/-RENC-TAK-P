@@ -678,8 +678,14 @@ export function questionStats(questions = []) {
   const answered = questions.filter((q) => q.teacher_reply || q.teacher_reply_image_url)
 
   const today = startOfToday()
-  const weekAgo = new Date(today.getTime() - 6 * DAY)
-  const thisWeek = questions.filter((q) => new Date(q.created_at) >= weekAgo)
+  const weekAgo = toKey(new Date(Date.now() - 6 * DAY))
+  const thisWeek = questions.filter((q) => {
+    if (!q.created_at) return false
+    const createdAt = new Date(q.created_at)
+    if (!Number.isFinite(createdAt.getTime())) return false
+    const day = toKey(createdAt)
+    return day >= weekAgo && day <= today
+  })
 
   // Ders bazlı dağılım — dersi girilmemiş sorular sayılmaz
   const bySubject = {}

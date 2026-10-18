@@ -1,3 +1,5 @@
+import { toKey } from '../../insights.js'
+
 const PRIORITY = Object.freeze({
   teacher_commitment_overdue: 100,
   teacher_commitment_due: 95,
@@ -5,6 +7,7 @@ const PRIORITY = Object.freeze({
   repeat_due: 80,
   topic_needs_support: 70,
   measurement_needed: 60,
+  coaching_task_complete: 50,
   recent_outcome: 40,
 })
 
@@ -19,7 +22,7 @@ function compare(left, right) {
 }
 
 export function buildDeterministicCoachingBriefing({ tasks = [], homeworks = [], projections = [], outcomes = [], now = Date.now() } = {}) {
-  const today = new Date(now).toISOString().slice(0, 10)
+  const today = toKey(new Date(now))
   const items = []
   homeworks.forEach((homework) => {
     if (['Tamamlandı', 'completed'].includes(homework.status)) return
@@ -36,13 +39,16 @@ export function buildDeterministicCoachingBriefing({ tasks = [], homeworks = [],
     })
   })
   tasks.forEach((task) => {
-    if (!['accepted', 'planned', 'started', 'partial', 'user_reported_complete'].includes(task.status)) return
+    if (!['accepted', 'planned', 'started', 'partial', 'user_reported_complete', 'platform_verified', 'evaluated'].includes(task.status)) return
+    const complete = ['platform_verified', 'evaluated'].includes(task.status)
+    const outcome = outcomes.find((row) => row.task_id === task.task_id)
     items.push({
-      kind: 'coaching_task_active', score: PRIORITY.coaching_task_active, id: task.task_id,
+      kind: complete ? 'coaching_task_complete' : 'coaching_task_active',
+      score: complete ? PRIORITY.coaching_task_complete : PRIORITY.coaching_task_active, id: task.task_id,
       title: task.title ?? task.topic_label ?? 'Koçluk görevi',
       detail: task.status === 'user_reported_complete'
         ? 'Sen tamamladığını bildirdin; platform kanıtı henüz bekleniyor.'
-        : task.success_criteria?.description ?? 'Hedef çalışmayı tamamla.',
+        : outcome?.explanation ?? (complete ? 'Yeni soru sonuçları çalışma hedefini doğruladı. Bu, konuya hâkimiyet garantisi değildir.' : task.success_criteria?.description ?? 'Hedef çalışmayı tamamla.'),
       due_at: task.work_window_end ?? task.expires_at,
       topic_id: task.topic_id,
       target: task.target,
@@ -50,6 +56,7 @@ export function buildDeterministicCoachingBriefing({ tasks = [], homeworks = [],
       recommendation_id: task.recommendation_id ?? null,
       success_criteria: task.success_criteria ?? null,
       progress_ratio: Number(task.progress_ratio ?? 0),
+      outcome: outcome?.explanation ?? null,
       source: 'coaching_task',
     })
   })
@@ -70,6 +77,7 @@ export function buildDeterministicCoachingBriefing({ tasks = [], homeworks = [],
   return {
     contract_version: 'coaching-briefing@1',
     as_of_date: today,
+    active_task: unique.find((item) => item.source === 'coaching_task') ?? null,
     daily: { primary: unique[0] ?? null, secondary: unique[1] ?? null, count: Math.min(2, unique.length) },
     weekly: unique.slice(0, 5),
     stable_order_key: unique.slice(0, 5).map(keyOf).join('||'),

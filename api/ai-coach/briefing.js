@@ -83,10 +83,10 @@ async function fetchClosedLoopBriefingData(supabase, studentId) {
     const [taskResult, projectionResult, outcomeResult] = await Promise.all([
       supabase
         .from('student_coaching_tasks')
-        .select('task_id,recommendation_id,title,status,target,topic_id,objective_id,minimum_evidence_count,accumulated_evidence_count,progress_ratio,work_window_end,created_at,student_coaching_recommendations(topic_label,subject_label,success_criteria)')
+        .select('task_id,recommendation_id,title,status,target,topic_id,objective_id,minimum_evidence_count,accumulated_evidence_count,progress_ratio,work_window_end,created_at,student_coaching_recommendations!student_coaching_tasks_recommendation_id_fkey(topic_label,subject_label,success_criteria)')
         .eq('student_id', studentId)
-        .in('status', ['accepted', 'planned', 'started', 'partial', 'user_reported_complete'])
-        .order('work_window_end', { ascending: true })
+        .in('status', ['accepted', 'planned', 'started', 'partial', 'user_reported_complete', 'platform_verified', 'evaluated'])
+        .order('created_at', { ascending: false })
         .limit(12),
       supabase
         .from('student_learning_projection_rows')

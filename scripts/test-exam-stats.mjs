@@ -15,6 +15,7 @@ import {
   accuracy,
   combineStudyEntries,
   examsAsStudyEntries,
+  questionStats,
   splitBySource,
   studyStreak,
   subjectBreakdown,
@@ -194,6 +195,23 @@ check(
   bySubject.find((s) => s.subject === 'Matematik').solved,
   65
 )
+
+console.log('\n=== 7) ANA SAYFA SORU ÖZETİ VE TÜRKİYE TAKVİMİ ===')
+check('Boş öğrenci hesabında soru özeti hata vermeden açılır', questionStats().thisWeek, [])
+const firstDay = toKey(new Date(Date.now() - 6 * 86400000))
+const questionSamples = [
+  { id: 'first-midnight', created_at: `${firstDay}T00:00:00+03:00`, status: 'Çözüldü' },
+  { id: 'before-window', created_at: new Date(Date.parse(`${firstDay}T00:00:00+03:00`) - 1).toISOString() },
+  { id: 'today', created_at: `${today}T23:59:59+03:00`, status: 'İnceleniyor' },
+  { id: 'future', created_at: new Date(Date.parse(`${today}T23:59:59+03:00`) + 1000).toISOString() },
+  { id: 'invalid', created_at: 'geçersiz-tarih' },
+  { id: 'missing' },
+]
+const questionSummary = questionStats(questionSamples)
+check('Son yedi gün Türkiye gece yarısı sınırlarını kapsar; eski, gelecek ve bozuk tarihleri katmaz',
+  questionSummary.thisWeek.map((q) => q.id), ['first-midnight', 'today'])
+check('Tarih elemesi toplamı ve çözüm durumlarını değiştirmez',
+  [questionSummary.total, questionSummary.solved.length, questionSummary.reviewing.length], [6, 1, 1])
 
 console.log(`\n=== SONUÇ: ${pass} geçti, ${fail} başarısız ===\n`)
 process.exit(fail > 0 ? 1 : 0)
