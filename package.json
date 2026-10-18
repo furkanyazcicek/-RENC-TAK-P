@@ -9,7 +9,7 @@
     "test:anasayfa": "node scripts/test-book-home.mjs",
     "test:ogrenci-ozeti": "node scripts/test-exam-stats.mjs",
     "test:koc-kalici-akis": "node --test scripts/test-coaching-history.mjs",
-    "yayin:dogrula": "node scripts/yayin-kaynagi-dogrula.mjs && npm run test:academic-client && npm run test:ogrenci-ozeti && npm run test:koc-kalici-akis && npm run test:anasayfa && npm run build",
+    "yayin:dogrula": "node scripts/yayin-kaynagi-dogrula.mjs && npm run test:academic-client && npm run test:question-progress && npm run test:ogrenci-ozeti && npm run test:koc-kalici-akis && npm run test:anasayfa && npm run build",
     "build:historical-map": "node scripts/buildHistoricalMap.mjs 1526",
     "preview": "vite preview",
     "preview:open": "npm run build && vite preview --host 127.0.0.1 --open /ders-notu-onizleme",

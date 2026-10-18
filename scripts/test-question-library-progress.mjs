@@ -75,4 +75,17 @@ assert.deepEqual(summarizeQuestionProgress(questionSets, progressByKey), {
   notStarted: 1,
 })
 
+const liveProgress = indexLatestQuestionProgress([
+  { ...rows[1], id: 'live-partial', marked_count: 0, active_answers: [{ count: 5 }] },
+  { ...rows[2], active_answers: [{ count: 99 }] },
+])
+assert.equal(liveProgress[bundledKey].answeredCount, 5,
+  'Test bitmeden de kaydedilmiş beş cevap gösterilir; kesin sonuç sayacı sıfır kalabilir.')
+assert.equal(progressForQuestionSet(liveProgress, questionSets[1]).answeredCount, 8,
+  'Tamamlanan testin sabit sonucu canlı cevap sayısıyla değiştirilmez.')
+assert.equal(progressForQuestionSet(liveProgress, questionSets[1]).correctCount, 6)
+const emptyProgress = indexLatestQuestionProgress([{ ...rows[1], active_answers: [{ count: 0 }] }])
+assert.equal(emptyProgress[bundledKey].answeredCount, 0,
+  'Etkin cevap sıfırsa eski sayaçtan hayalî ilerleme üretilmez.')
+
 console.log('Soru kütüphanesi ilerleme kontrolleri geçti.')

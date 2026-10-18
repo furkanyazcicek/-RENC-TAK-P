@@ -29,7 +29,11 @@ export function indexLatestQuestionProgress(rows = []) {
     if (!key || latestByKey[key]) continue
 
     const totalCount = safeCount(row.total_count)
-    const answeredCount = Math.min(totalCount, safeCount(row.marked_count))
+    // Kesin sonuç sayaçları test bitince sabitlenir; sürmekte olan testin
+    // ilerlemesi kendi etkin cevaplarının sayısından okunur.
+    const answeredCount = Math.min(totalCount, safeCount(row.status === 'in_progress'
+      ? row.active_answers?.[0]?.count ?? row.marked_count
+      : row.marked_count))
     latestByKey[key] = {
       attemptId: row.id,
       status: row.status,

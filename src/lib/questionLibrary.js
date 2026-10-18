@@ -91,8 +91,9 @@ export async function loadQuestionProgressForSets(studentId, questionSets = []) 
   try {
     const { data, error } = await supabase
       .from('student_question_set_attempts')
-      .select('id, source_code, content_id, content_revision, status, marked_count, total_count, correct_count, wrong_count, empty_count, started_at, updated_at')
+      .select('id, source_code, content_id, content_revision, status, marked_count, total_count, correct_count, wrong_count, empty_count, started_at, updated_at, active_answers:student_question_attempt_answers!student_question_answer_attempt_student_fk(count)')
       .eq('student_id', studentId)
+      .eq('active_answers.active', true)
       .in('source_code', ['db_question_test', 'bundled_question_test'])
       .in('status', ['in_progress', 'completed'])
       .in('content_id', contentIds)
