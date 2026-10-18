@@ -69,7 +69,7 @@ export default function CoachingTaskCard({ item, mode = 'ready', onChanged }) {
           {status === 'user_reported_complete' && (
             <p className="mt-2 text-xs font-semibold text-warning-700">Beyanın kaydedildi; platform sonucu henüz doğrulamadı.</p>
           )}
-          {status === 'evaluated' && item.outcome && (
+          {status === 'evaluated' && item.outcome && item.outcome !== item.detail && (
             <p className="mt-2 text-xs font-semibold text-success-700">{item.outcome}</p>
           )}
         </div>

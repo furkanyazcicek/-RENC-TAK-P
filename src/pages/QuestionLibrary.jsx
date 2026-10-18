@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
+import { readPublishedQuestionSets } from '../lib/questionLibraryRemote.js'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import {
   ArrowLeft,
@@ -135,7 +136,7 @@ function QuestionSetCard({ questionSet, progress, progressState, onOpen }) {
   const buttonVariant = completed ? 'secondary' : 'primary'
   const difficulty = questionSet.difficulty === 'hard' || questionSet.type === 'mastery'
     ? 'Zor'
-    : DIFFICULTY_LABELS[questionSet.difficulty] ?? 'Orta'
+    : DIFFICULTY_LABELS[questionSet.difficulty] ?? 'Düzey belirtilmedi'
 
   return (
     <article className="card-interactive flex min-h-56 min-w-0 flex-col p-5">
@@ -223,7 +224,7 @@ export default function QuestionLibrary() {
       const results = await Promise.allSettled([
         supabase.from('library_subjects').select('*').order('exam_type').order('order_index'),
         supabase.from('library_topics').select('*').order('order_index'),
-        supabase.from('library_question_sets').select('id, topic_id, title, description, difficulty, question_count, questions').eq('status', 'published').order('order_index'),
+        readPublishedQuestionSets(supabase),
       ])
       const remote = resolveQuestionLibraryRemoteData(results)
       if (remote.errors.length > 0) {

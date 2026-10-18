@@ -12,6 +12,7 @@ import { loadCografyaQuestionSet, cografyaQuestionSetsForTopic } from '../conten
 import { loadLgsTurkceQuestionSet, lgsTurkceQuestionSetsForTopic } from '../content/tests/lgs_turkce/question-bank.js'
 import { describeBundledQuestionSet, publicQuestionSet } from './learning/contentActivity/identity.js'
 import { indexLatestQuestionProgress } from './questionProgress.js'
+import { readPublishedQuestionSets } from './questionLibraryRemote.js'
 
 // Geçiş döneminde mevcut kod tabanındaki testler kaybolmasın. Yeni testler
 // `library_question_sets` tablosuna yazılır; bu sabit kaynak yalnızca eski
@@ -64,12 +65,7 @@ export async function loadQuestionSet(testId, topicSlug) {
   const bundled = BUNDLED_SETS[topicSlug]?.tests?.find((test) => test.id === testId)
   if (bundled) return withBundledIdentity(bundled)
 
-  const { data, error } = await supabase
-    .from('library_question_sets')
-    .select('id, title, description, difficulty, questions, question_count, content_revision, content_hash')
-    .eq('id', testId)
-    .eq('status', 'published')
-    .maybeSingle()
+  const { data, error } = await readPublishedQuestionSets(supabase, { id: testId })
 
   // Migration henüz uygulanmadıysa eski test deneyimi bozulmasın.
   if (error || !data) return null

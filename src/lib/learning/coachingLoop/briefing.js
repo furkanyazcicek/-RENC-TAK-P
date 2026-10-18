@@ -48,7 +48,10 @@ export function buildDeterministicCoachingBriefing({ tasks = [], homeworks = [],
       title: task.title ?? task.topic_label ?? 'Koçluk görevi',
       detail: task.status === 'user_reported_complete'
         ? 'Sen tamamladığını bildirdin; platform kanıtı henüz bekleniyor.'
-        : outcome?.explanation ?? (complete ? 'Yeni soru sonuçları çalışma hedefini doğruladı. Bu, konuya hâkimiyet garantisi değildir.' : task.success_criteria?.description ?? 'Hedef çalışmayı tamamla.'),
+        : outcome?.explanation ?? (task.status === 'platform_verified'
+          ? 'Yeni çalışma kayıtları hedefini doğruladı. Bu, konuya hâkimiyet garantisi değildir.'
+          : task.status === 'evaluated' ? 'Değerlendirme ayrıntısına şu anda ulaşılamıyor.'
+            : task.success_criteria?.description ?? 'Hedef çalışmayı tamamla.'),
       due_at: task.work_window_end ?? task.expires_at,
       topic_id: task.topic_id,
       target: task.target,
