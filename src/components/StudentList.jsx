@@ -13,6 +13,7 @@ const TREND_LABELS = {
   steady: { label: 'Sabit', tone: 'neutral' },
   down: { label: 'Yavaşladı', tone: 'warning' },
   idle: { label: 'Bu hafta yok', tone: 'danger' },
+  active: { label: 'Bu hafta kayıt var', tone: 'info' },
   none: { label: 'Kayıt yok', tone: 'neutral' },
 }
 

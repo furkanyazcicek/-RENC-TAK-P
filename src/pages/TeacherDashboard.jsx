@@ -12,10 +12,66 @@ import PendingStudentsPanel from '../components/liveLesson/PendingStudentsPanel'
 import InstantLessonDialog from '../components/liveLesson/InstantLessonDialog'
 import { Alert, AppShell, Badge, Button, Modal, PageSection } from '../components/ui'
 import { DashboardHero, MetricTile, Panel } from '../components/dashboard'
-import { formatMinutes } from '../lib/insights'
+import { formatMinutes, toKey } from '../lib/insights'
 import { fetchMyStudents, fetchTeacherLessons } from '../lib/liveLesson/api'
 import { isLessonPreview, useLessonAuth } from '../lib/liveLesson/preview'
 import { isActiveStatus } from '../lib/liveLesson/status'
+
+const DAY_MS = 24 * 60 * 60 * 1000
+
+function getStudyWindows(now = Date.now()) {
+  const dayKey = (daysBack) => toKey(new Date(now - daysBack * DAY_MS))
+  return {
+    currentStart: dayKey(6),
+    currentEnd: dayKey(0),
+    previousStart: dayKey(13),
+    previousEnd: dayKey(7),
+  }
+}
+
+function inDateRange(log, start, end) {
+  return log.study_date >= start && log.study_date <= end
+}
+
+function studyVolume(logs) {
+  return logs.reduce((total, log) => {
+    const minutes = Math.max(0, Number(log.duration_minutes) || 0)
+    const solved = ['correct', 'incorrect', 'empty'].reduce(
+      (sum, key) => sum + Math.max(0, Number(log[key]) || 0),
+      0
+    )
+    return { minutes: total.minutes + minutes, solved: total.solved + solved }
+  }, { minutes: 0, solved: 0 })
+}
+
+function compareWeeklyVolume(current, previous) {
+  if (current >= previous * 1.1) return 'up'
+  if (current <= previous * 0.75) return 'down'
+  return 'steady'
+}
+
+function getStudentStudyStatus(logs, windows) {
+  if (logs.length === 0) return { trend: 'none', recentMinutes: 0 }
+
+  const currentLogs = logs.filter((log) => inDateRange(log, windows.currentStart, windows.currentEnd))
+  const previousLogs = logs.filter((log) => inDateRange(log, windows.previousStart, windows.previousEnd))
+  const current = studyVolume(currentLogs)
+  const previous = studyVolume(previousLogs)
+
+  if (currentLogs.length === 0) return { trend: 'idle', recentMinutes: 0 }
+
+  let trend = 'active'
+  if (current.minutes > 0 && previous.minutes > 0) {
+    trend = compareWeeklyVolume(current.minutes, previous.minutes)
+  } else if (current.solved > 0 && previous.solved > 0) {
+    trend = compareWeeklyVolume(current.solved, previous.solved)
+  } else if (current.minutes > 0 || current.solved > 0) {
+    const previousHasMeasuredActivity = previous.minutes > 0 || previous.solved > 0
+    if (!previousHasMeasuredActivity) trend = 'up'
+  }
+
+  return { trend, recentMinutes: current.minutes }
+}
 
 export default function TeacherDashboard() {
   const { profile, user } = useLessonAuth()
@@ -63,12 +119,9 @@ export default function TeacherDashboard() {
       setDataError(Boolean(dailyLogsRes.error || questionsRes.error))
       const logs = dailyLogsRes.error ? [] : dailyLogsRes.data ?? []
 
-      // Son 7 gün ile önceki 7 günü karşılaştırıp öğrencinin eğilimini çıkarıyoruz
-      const dayMs = 24 * 60 * 60 * 1000
-      const key = (offset) => new Date(Date.now() - offset * dayMs).toISOString().slice(0, 10)
-      const last7Start = key(6)
-      const prev7Start = key(13)
-      const prev7End = key(7)
+      // Pencereler Türkiye takvim gününe göre kurulur; tarih aralıkları birbirini
+      // izler ve hem dakika hem soru kaydı öğrenci etkinliği sayılır.
+      const studyWindows = getStudyWindows()
 
       const enrichedStudents = ownStudents.map((link) => {
         const s = { id: link.student_id, full_name: link.student_name }
@@ -79,26 +132,13 @@ export default function TeacherDashboard() {
           0
         )
 
-        const recent = studentLogs
-          .filter((l) => l.study_date >= last7Start)
-          .reduce((sum, l) => sum + (l.duration_minutes || 0), 0)
-        const previous = studentLogs
-          .filter((l) => l.study_date >= prev7Start && l.study_date <= prev7End)
-          .reduce((sum, l) => sum + (l.duration_minutes || 0), 0)
-
-        let trend = 'new'
-        if (studentLogs.length === 0) trend = 'none'
-        else if (recent === 0) trend = 'idle'
-        else if (previous === 0) trend = 'up'
-        else if (recent >= previous * 1.1) trend = 'up'
-        else if (recent <= previous * 0.75) trend = 'down'
-        else trend = 'steady'
+        const { trend, recentMinutes } = getStudentStudyStatus(studentLogs, studyWindows)
 
         return {
           ...s,
           totalMinutes: studentLogs.length ? totalMinutes : null,
           totalSolved: studentLogs.length ? totalSolved : null,
-          recentMinutes: recent,
+          recentMinutes,
           trend,
         }
       })
@@ -135,9 +175,13 @@ export default function TeacherDashboard() {
     const incorrect = dailyLogs.reduce((s, l) => s + (l.incorrect || 0), 0)
     const classAccuracy = correct + incorrect > 0 ? Math.round((correct / (correct + incorrect)) * 100) : null
 
-    // Son 7 günde hiç kaydı olmayan öğrenciler
-    const cutoff = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10)
-    const activeIds = new Set(dailyLogs.filter((l) => l.study_date >= cutoff).map((l) => l.student_id))
+    // Satırdaki öğrenci durumu ve sınıf özeti aynı Türkiye tarih aralığını kullanır.
+    const studyWindows = getStudyWindows()
+    const activeIds = new Set(
+      dailyLogs
+        .filter((log) => inDateRange(log, studyWindows.currentStart, studyWindows.currentEnd))
+        .map((log) => log.student_id)
+    )
     const idle = students.filter((s) => !activeIds.has(s.id))
 
     return { pending, classMinutes, classAccuracy, idle }
